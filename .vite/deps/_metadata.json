@@ -1,0 +1,124 @@
+{
+  "hash": "9047b7a3",
+  "configHash": "7dfd7325",
+  "lockfileHash": "0fe01f6c",
+  "browserHash": "9f4acd4c",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "6cc45496",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "52c88dc2",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "f2077dcb",
+      "needsInterop": true
+    },
+    "motion/react": {
+      "src": "../../node_modules/motion/dist/es/react.mjs",
+      "file": "motion_react.js",
+      "fileHash": "0d62cc8c",
+      "needsInterop": false
+    },
+    "react-icons/pi": {
+      "src": "../../node_modules/react-icons/pi/index.mjs",
+      "file": "react-icons_pi.js",
+      "fileHash": "786e4024",
+      "needsInterop": false
+    },
+    "zustand": {
+      "src": "../../node_modules/zustand/esm/index.mjs",
+      "file": "zustand.js",
+      "fileHash": "70de56e1",
+      "needsInterop": false
+    },
+    "zustand/middleware": {
+      "src": "../../node_modules/zustand/esm/middleware.mjs",
+      "file": "zustand_middleware.js",
+      "fileHash": "274485dd",
+      "needsInterop": false
+    },
+    "@supabase/supabase-js": {
+      "src": "../../node_modules/@supabase/supabase-js/dist/index.mjs",
+      "file": "@supabase_supabase-js.js",
+      "fileHash": "04cb3cfe",
+      "needsInterop": false
+    },
+    "lottie-react": {
+      "src": "../../node_modules/lottie-react/build/index.es.js",
+      "file": "lottie-react.js",
+      "fileHash": "d8f3bd83",
+      "needsInterop": false
+    },
+    "react-dom": {
+      "src": "../../node_modules/react-dom/index.js",
+      "file": "react-dom.js",
+      "fileHash": "2b48876f",
+      "needsInterop": true
+    },
+    "react-icons/lu": {
+      "src": "../../node_modules/react-icons/lu/index.mjs",
+      "file": "react-icons_lu.js",
+      "fileHash": "a79be092",
+      "needsInterop": false
+    },
+    "clsx": {
+      "src": "../../node_modules/clsx/dist/clsx.mjs",
+      "file": "clsx.js",
+      "fileHash": "854fd8f0",
+      "needsInterop": false
+    },
+    "tailwind-merge": {
+      "src": "../../node_modules/tailwind-merge/dist/bundle-mjs.mjs",
+      "file": "tailwind-merge.js",
+      "fileHash": "3011549a",
+      "needsInterop": false
+    },
+    "@tanstack/react-virtual": {
+      "src": "../../node_modules/@tanstack/react-virtual/dist/esm/index.js",
+      "file": "@tanstack_react-virtual.js",
+      "fileHash": "ab239c61",
+      "needsInterop": false
+    },
+    "hanzi-writer": {
+      "src": "../../node_modules/hanzi-writer/dist/index.esm.js",
+      "file": "hanzi-writer.js",
+      "fileHash": "bc245050",
+      "needsInterop": false
+    },
+    "react-icons/hi2": {
+      "src": "../../node_modules/react-icons/hi2/index.mjs",
+      "file": "react-icons_hi2.js",
+      "fileHash": "05977da1",
+      "needsInterop": false
+    },
+    "idb-keyval": {
+      "src": "../../node_modules/idb-keyval/dist/index.js",
+      "file": "idb-keyval.js",
+      "fileHash": "e77fa467",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-XEVFY7WE": {
+      "file": "chunk-XEVFY7WE.js"
+    },
+    "chunk-LKCXFENR": {
+      "file": "chunk-LKCXFENR.js"
+    },
+    "chunk-UYSWIWPF": {
+      "file": "chunk-UYSWIWPF.js"
+    },
+    "chunk-PR4QN5HX": {
+      "file": "chunk-PR4QN5HX.js"
+    }
+  }
+}
