@@ -88,8 +88,19 @@
 
 ---
 
+## Runtime Fixes (2026-06-22 06:42)
+
+### 19. [COMPLETED] Supabase rate limiting (429 errors) in useCloudSync
+- **Symptoms**: Flood of 429 (rate limit), 403, 406 errors from Supabase auth and API calls
+- **Root cause**: `useCloudSync` auto-save debounce was only 2s, each save made 5+ Supabase requests, causing free-tier rate limit to be hit constantly
+- **Fix**: Increased debounce from 2s → 10s, added `isSaving` guard to prevent overlapping saves, added exponential backoff (15s increments, up to 60s max) on 429 errors
+- **File**: `src/hooks/useCloudSync.ts`
+- **Commit**: `250505f`
+
+---
+
 ## Summary
-- **Total issues resolved**: 18 (15 architectural + 3 deployment)
+- **Total issues resolved**: 19 (15 architectural + 3 deployment + 1 runtime)
 - **Build status**: ✅ Passing
 - **Deployment**: ✅ Pushed to GitHub, Render auto-deploying
-- **Git history**: Clean single commit (orphan branch rewrite)
+- **Git history**: Clean, no secrets
