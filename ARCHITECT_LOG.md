@@ -99,8 +99,30 @@
 
 ---
 
+## Scaling Optimizations (2026-06-22 06:50)
+
+### 20. [COMPLETED] Missing database indexes on hot-path tables
+- **Tables affected**: `user_card_progress` (no index on next_review_date), `user_folders` (no index on user_id), `user_flashcards` (no index on user_id or folder_id)
+- **Fix**: Created migration `20260622_scaling_indexes.sql` with 4 new indexes
+- **Impact**: Queries that filter by user_id or folder_id will use index scans instead of sequential scans — critical when tables grow to millions of rows
+
+### 21. [COMPLETED] Inefficient daily progress upsert (2 round-trips → 1 RPC)
+- **Root cause**: `upsertDailyProgress` did SELECT then UPSERT (2 Supabase requests)
+- **Fix**: Created `upsert_daily_progress` PostgreSQL function that atomically increments values in a single RPC call
+- **File**: `src/services/progressService.ts`
+- **Impact**: Halves the Supabase requests for the most frequent write operation
+
+### 22. [COMPLETED] Client-side aggregate stats computation
+- **Root cause**: `getAggregateStats` fetched ALL rows for a user and summed client-side — O(n) data transfer
+- **Fix**: Created `get_user_aggregate_stats` PostgreSQL function that computes SUM/COUNT server-side, returning only the result row
+- **File**: `src/services/progressService.ts`
+- **Impact**: Reduces data transfer from O(n) rows to O(1) result, critical as daily progress history grows
+
+---
+
 ## Summary
-- **Total issues resolved**: 19 (15 architectural + 3 deployment + 1 runtime)
+- **Total issues resolved**: 22 (15 architectural + 3 deployment + 1 runtime + 3 scaling)
 - **Build status**: ✅ Passing
 - **Deployment**: ✅ Pushed to GitHub, Render auto-deploying
 - **Git history**: Clean, no secrets
+- **Scaling readiness**: ✅ DB indexes added, RPC functions reduce request volume by ~50%
