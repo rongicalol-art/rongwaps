@@ -64,16 +64,24 @@ class AudioService {
     const queue = [...validNames];
 
     const fetchAudioBlob = async (fileName: string): Promise<Blob> => {
-      // Use the Supabase client's download method which handles auth properly
-      const { data, error } = await supabase.storage.from(AUDIO_BUCKET).download(fileName);
-      if (error || !data) {
-        // Fallback to public URL fetch
-        const { data: pubData } = supabase.storage.from(AUDIO_BUCKET).getPublicUrl(fileName);
-        const response = await fetch(pubData.publicUrl);
-        if (!response.ok) throw new Error(`Failed to fetch audio: ${response.statusText}`);
-        return await response.blob();
+      // Try signed URL first (bypasses CORS issues)
+      try {
+        const { data: signedData, error: signedError } = await supabase.storage.from(AUDIO_BUCKET).createSignedUrl(fileName, 3600);
+        if (!signedError && signedData?.signedUrl) {
+          const response = await fetch(signedData.signedUrl);
+          if (response.ok) return await response.blob();
+        }
+      } catch (e) {
+        // Signed URL failed, try next method
       }
-      return data;
+      // Fallback to download()
+      const { data, error } = await supabase.storage.from(AUDIO_BUCKET).download(fileName);
+      if (!error && data) return data;
+      // Last resort: public URL
+      const { data: pubData } = supabase.storage.from(AUDIO_BUCKET).getPublicUrl(fileName);
+      const response = await fetch(pubData.publicUrl);
+      if (!response.ok) throw new Error(`Failed to fetch audio: ${response.statusText}`);
+      return await response.blob();
     };
 
     const processNext = async (): Promise<void> => {
@@ -227,20 +235,34 @@ class AudioService {
             handleTTSFallback();
           }
         } else {
-          // Fetch, decode, play using download() to avoid CORS issues
+          // Fetch, decode, play — try signed URL first, then download(), then public URL
           const promise = (async () => {
+            // 1. Try signed URL (bypasses CORS)
+            try {
+              const { data: signedData, error: signedError } = await supabase.storage.from(AUDIO_BUCKET).createSignedUrl(audioFileName, 3600);
+              if (!signedError && signedData?.signedUrl) {
+                const res = await fetch(signedData.signedUrl);
+                if (res.ok) {
+                  const arrayBuffer = await res.arrayBuffer();
+                  const buffer = await this.audioContext!.decodeAudioData(arrayBuffer);
+                  this.buffers.set(audioFileName, buffer);
+                  return buffer;
+                }
+              }
+            } catch (e) { /* try next */ }
+            // 2. Try download()
             const { data, error } = await supabase.storage.from(AUDIO_BUCKET).download(audioFileName);
-            if (error || !data) {
-              // Fallback to public URL
-              const { data: pubData } = supabase.storage.from(AUDIO_BUCKET).getPublicUrl(audioFileName);
-              const res = await fetch(pubData.publicUrl);
-              if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
-              const arrayBuffer = await res.arrayBuffer();
+            if (!error && data) {
+              const arrayBuffer = await data.arrayBuffer();
               const buffer = await this.audioContext!.decodeAudioData(arrayBuffer);
               this.buffers.set(audioFileName, buffer);
               return buffer;
             }
-            const arrayBuffer = await data.arrayBuffer();
+            // 3. Last resort: public URL
+            const { data: pubData } = supabase.storage.from(AUDIO_BUCKET).getPublicUrl(audioFileName);
+            const res = await fetch(pubData.publicUrl);
+            if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
+            const arrayBuffer = await res.arrayBuffer();
             const buffer = await this.audioContext!.decodeAudioData(arrayBuffer);
             this.buffers.set(audioFileName, buffer);
             return buffer;
