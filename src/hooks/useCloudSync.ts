@@ -35,6 +35,9 @@ export function useCloudSync() {
   const syncTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastDailySyncCount = useRef(0);
   const hasFetchedForUser = useRef<string | null>(null);
+  const isSaving = useRef(false);
+  const saveBackoffMs = useRef(0);
+  const pendingSave = useRef(false);
 
   // ── Fetch from cloud ──────────────────────────────────────────────
   const fetchFromCloud = useCallback(async () => {
@@ -310,9 +313,28 @@ export function useCloudSync() {
 
     if (currentUser && hasFetchedForUser.current === currentUser.id) {
       if (syncTimeout.current) clearTimeout(syncTimeout.current);
-      syncTimeout.current = setTimeout(() => {
-        saveToCloud();
-      }, 2000);
+
+      pendingSave.current = true;
+      const delay = 10000 + saveBackoffMs.current;
+
+      syncTimeout.current = setTimeout(async () => {
+        if (isSaving.current) return;
+        isSaving.current = true;
+        try {
+          await saveToCloud();
+          saveBackoffMs.current = 0;
+        } catch (e: any) {
+          console.error("Auto-save failed:", e);
+          if (e?.message?.includes('rate limit') || e?.status === 429) {
+            saveBackoffMs.current = Math.min(saveBackoffMs.current + 15000, 60000);
+          }
+        } finally {
+          isSaving.current = false;
+          if (pendingSave.current) {
+            pendingSave.current = false;
+          }
+        }
+      }, delay);
     }
 
     return () => {
