@@ -235,18 +235,18 @@ export async function searchVocabulary(queryStr: string): Promise<Flashcard[]> {
       const normalizedQuery = normalizePinyin(queryTrimmed);
 
       // Fast path: single Chinese character lookup
-      // Check all cached vocabulary pages instead of fetching everything
+      // Check all cached vocabulary pages for words containing this character
       const isSingleChar = queryTrimmed.length === 1 && /[\u4E00-\u9FFF\u3400-\u4DBF\u{20000}-\u{2A6DF}\u{2A700}-\u{2B73F}\u{2B740}-\u{2B81F}\u{2B820}-\u{2CEAF}]/u.test(queryTrimmed);
       if (isSingleChar) {
         const results: Flashcard[] = [];
         const seen = new Set<string>();
-        // Scan all vocabulary cache keys for matches
+        // Scan all vocabulary cache keys for matches (including compound words)
         const vocabKeys = ['vocab-all-all', 'vocab-1-all', 'vocab-2-all', 'vocab-3-all', 'vocab-4-all', 'vocab-5-all', 'vocab-6-all'];
         for (const key of vocabKeys) {
           const cached = vocabularyCache.get<Flashcard[]>(key);
           if (cached) {
             for (const card of cached) {
-              if (card.front === queryTrimmed && !seen.has(card.id)) {
+              if (card.front.includes(queryTrimmed) && !seen.has(card.id)) {
                 seen.add(card.id);
                 results.push(card);
               }
@@ -255,6 +255,14 @@ export async function searchVocabulary(queryStr: string): Promise<Flashcard[]> {
         }
         // If we found matches in cache, return immediately without fetching all vocab
         if (results.length > 0) {
+          // Sort: exact matches first, then by length (shorter first), then by book/lesson
+          results.sort((a, b) => {
+            if (a.front === queryTrimmed && b.front !== queryTrimmed) return -1;
+            if (a.front !== queryTrimmed && b.front === queryTrimmed) return 1;
+            if (a.front.length !== b.front.length) return a.front.length - b.front.length;
+            if (a.bookId !== b.bookId) return a.bookId - b.bookId;
+            return a.lessonId - b.lessonId;
+          });
           vocabularyCache.set(cacheKey, results);
           return results;
         }
