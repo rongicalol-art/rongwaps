@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Serif+TC:wght@400;500;600;700;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-chinese: "BiauKai", "Kaiti TC", "標楷體", "DFKai-SB", "MoeStandardKai", "STKaiti", "LXGW WenKai TC", "Noto Serif TC", serif;
+  
+  --color-brand-primary: #1cb0f6;
+  --color-brand-primary-edge: #1899d6;
+  --color-brand-secondary: #ff9600;
+  --color-brand-secondary-edge: #e58700;
+  --color-brand-disabled: #e5e5e5;
+  --color-brand-disabled-edge: #afb6bb;
+  --color-brand-text-secondary: #afb6bb;
+}
+
+/* 
+💡 OPTIONAL: To use your custom Taiwanese MoE Calligraphy Font (MoeStandardKai) externally:
+1. Upload your 'MoeStandardKai.woff2' (7.6MB) to a free hosting provider or static asset CDN.
+   (Examples: GitHub Pages, raw GitHub repository, Vercel, Supabase Storage, or Firebase Storage)
+2. Uncomment the @font-face definition below and replace the URL with your external file URL.
+
+@font-face {
+  font-family: 'MoeStandardKai';
+  src: url('https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/MoeStandardKai.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+html, body, #root {
+  overscroll-behavior-y: none;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+body {
+  background: #F7F7F7;
+  background-attachment: fixed;
+  color: #4B4B4B;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hide scrollbars globally */
+*::-webkit-scrollbar {
+  display: none !important;
+}
+* {
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important; /* Firefox */
+}
+
+/* Custom scrolling fade mask for lists to prevent sudden sharp cutoff */
+.scroll-faded-y {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12px,
+    black calc(100% - 12px),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12px,
+    black calc(100% - 12px),
+    transparent 100%
+  );
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}

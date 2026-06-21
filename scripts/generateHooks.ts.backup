@@ -1,0 +1,323 @@
+/**
+ * Interactive Memory Hook Generator
+ * Usage: npx tsx scripts/generateHooks.ts <book_number>
+ * Example: npx tsx scripts/generateHooks.ts 1
+ *
+ * Generates mnemonics for all missing vocab in the specified book.
+ * Shows live progress 1-by-1 with progress bar.
+ * Skips existing mnemonics. Ctrl+C to stop anytime.
+ */
+
+import { createClient } from '@supabase/supabase-js';
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+import { cleanVocabText } from '../src/utils/vocabCleaner';
+
+// ─── Load .env ───────────────────────────────────────────────────────
+function loadEnv(): Record<string, string> {
+  const env: Record<string, string> = {};
+  try {
+    const content = readFileSync(resolve(process.cwd(), '.env'), 'utf-8');
+    for (const line of content.split('\n')) {
+      const t = line.trim();
+      if (!t || t.startsWith('#')) continue;
+      const i = t.indexOf('=');
+      if (i === -1) continue;
+      let v = t.slice(i + 1).trim();
+      if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) v = v.slice(1, -1);
+      env[t.slice(0, i).trim()] = v;
+    }
+  } catch { /* noop */ }
+  return env;
+}
+
+const env = loadEnv();
+const GEMINI_API_KEY = env['GEMINI_API_KEY'] || '';
+const OPENROUTER_API_KEY = env['OPENROUTER_API_KEY'] || '';
+const supabase = createClient(env['VITE_SUPABASE_URL'] || '', env['VITE_SUPABASE_ANON_KEY'] || '');
+
+const DELAY_MS = 2000;
+const BATCH_SIZE = 50; // auto-save checkpoint every N items
+
+const MODELS = [
+  { provider: 'gemini', model: 'gemini-2.5-flash-lite' },
+  // OpenRouter fallbacks (limited to 200/day free tier)
+  { provider: 'openrouter', model: 'openai/gpt-oss-120b:free' },
+  { provider: 'openrouter', model: 'qwen/qwen3-32b:free' },
+];
+
+const CHAR_SYS = `Write a 1-sentence mnemonic for this Chinese character.
+
+Use this EXACT template:
+"[Story connecting components], so this character means MEANING (CHARACTER)."
+
+Rules:
+- Mention each component's English meaning followed by its Chinese character in parentheses
+- Keep it to 1-2 sentences
+- The ending MUST be exactly: "so this character means MEANING (CHARACTER)."
+
+Example: "A person (亻) resting against a tree (木), so this character means to rest (休)."
+
+IMPORTANT: Do NOT use **bold** markers. Just write plain text. We will format it later.`;
+
+const WORD_SYS = `Write a 1-sentence mnemonic for this Chinese word.
+
+Use this EXACT template:
+"[Story connecting characters], so together means MEANING (WORD)."
+
+Rules:
+- Mention each character's English meaning followed by its Chinese character in parentheses
+- Keep it to 1-2 sentences
+- The ending MUST be exactly: "so together means MEANING (WORD)."
+
+Example: "A mouth (口) begging (乞) for food, so together means to eat (吃)."
+
+IMPORTANT: Do NOT use **bold** markers. Just write plain text. We will format it later.`;
+
+const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
+
+async function callLLM(system: string, user: string): Promise<string> {
+  for (const m of MODELS) {
+    try {
+      if (m.provider === 'gemini' && GEMINI_API_KEY) {
+        const { GoogleGenAI } = await import('@google/genai');
+        const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
+        const response = await ai.models.generateContent({
+          model: m.model, contents: user,
+          config: { systemInstruction: system, temperature: 0.2 },
+        });
+        const text = response?.text?.trim() || '';
+        if (text && text.length > 5) {
+          process.stderr.write(`  [gemini]\n`);
+          return text;
+        }
+        process.stderr.write(`  [gemini] empty response, falling through\n`);
+      } else if (m.provider === 'openrouter') {
+        // Retry up to 2 times on 429 with exponential backoff
+        for (let attempt = 0; attempt < 3; attempt++) {
+          const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+            method: 'POST',
+            headers: { Authorization: `Bearer ${OPENROUTER_API_KEY}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ model: m.model, messages: [{ role: 'system', content: system }, { role: 'user', content: user }], temperature: 0.2, max_tokens: 200 }),
+          });
+          if (res.ok) {
+            const json = await res.json();
+            return json.choices?.[0]?.message?.content?.trim() || '';
+          }
+          if (res.status === 429) {
+            const backoff = (attempt + 1) * 15000;
+            process.stderr.write(`\n  [429] ${m.model} rate limited, retrying in ${backoff/1000}s...\n`);
+            await sleep(backoff);
+            continue;
+          }
+          process.stderr.write(`\n  [fallback] ${m.model} failed (${res.status})\n`);
+          break; // Non-429 error, don't retry this model
+        }
+      }
+    } catch (err: any) {
+      process.stderr.write(`\n  [fallback] ${m.model}: ${err.message}\n`);
+    }
+  }
+  throw new Error('All models failed');
+}
+
+async function getCharacterBreakdown(char: string): Promise<any> {
+  const { data } = await supabase.from('character_breakdowns').select('*').eq('character', char).limit(1).single();
+  return data;
+}
+
+function renderBar(current: number, total: number): string {
+  const pct = Math.round((current / total) * 100);
+  const filled = Math.round((current / total) * 30);
+  const bar = '█'.repeat(filled) + '░'.repeat(30 - filled);
+  return `[${bar}] ${pct}% (${current}/${total})`;
+}
+
+// ─── Regex formatter: fixes bolding that LLM forgot ──────────────────
+function fixFormatting(mnemonic: string, type: 'character' | 'word', charText: string): string {
+  let fixed = mnemonic.trim();
+  fixed = fixed.replace(/\.\s*$/, '');
+
+  // Bold unbolded component mentions: "word (char)" → "**word** (char)"
+  fixed = fixed.replace(/(?<!\*\*)([a-zA-Z][a-zA-Z\s,.'-]*?)\s*([(\uff08])([\u4e00-\u9fa5]+)([)\uff29])/g, (match, word, openP, chars, closeP) => {
+    const trimmed = word.trim();
+    if (trimmed.startsWith('**')) return match;
+    const skip = ['so', 'this', 'together', 'means', 'character', 'the', 'a', 'an', 'is', 'to', 'and', 'or', 'if', 'when', 'each'];
+    if (skip.includes(trimmed.toLowerCase())) return match;
+    if (trimmed.length < 2) return match;
+    return `**${trimmed}** ${openP}${chars}${closeP}`;
+  });
+
+  // Bold the final meaning in the ending
+  if (type === 'character') {
+    fixed = fixed.replace(/so this character means\s+([a-zA-Z][a-zA-Z\s,]*?)\s*([(\uff08])([\u4e00-\u9fa5]+)([)\uff29])/,
+      (match, meaning, openP, chars, closeP) => {
+        const trimmed = meaning.trim();
+        return trimmed.startsWith('**') ? match : `so this character means **${trimmed}** ${openP}${chars}${closeP}`;
+      });
+    if (!fixed.includes('so this character means')) {
+      fixed += `, so this character means **${charText}** (${charText}).`;
+    }
+  } else {
+    fixed = fixed.replace(/so together means\s+([a-zA-Z][a-zA-Z\s,]*?)\s*([(\uff08])([\u4e00-\u9fa5]+)([)\uff29])/,
+      (match, meaning, openP, chars, closeP) => {
+        const trimmed = meaning.trim();
+        return trimmed.startsWith('**') ? match : `so together means **${trimmed}** ${openP}${chars}${closeP}`;
+      });
+    if (!fixed.includes('so together means')) {
+      fixed += `, so together means **${charText}** (${charText}).`;
+    }
+  }
+
+  return fixed;
+}
+
+// ─── Main ────────────────────────────────────────────────────────────
+async function main() {
+  const bookArg = process.argv[2];
+  if (!bookArg) {
+    console.log('\nUsage: npx tsx scripts/generateHooks.ts <book_number>');
+    console.log('Example: npx tsx scripts/generateHooks.ts 1\n');
+    process.exit(1);
+  }
+
+  const bookNum = parseInt(bookArg);
+  if (isNaN(bookNum) || bookNum < 1) { console.log('Invalid book number'); process.exit(1); }
+  const book = 'B' + bookNum;
+
+  // --- Show available books ---
+  const { data: allVocab } = await supabase.from('book_vocabulary').select('*');
+  if (!allVocab) { console.log('No vocabulary found'); process.exit(1); }
+
+  const bookMap = new Map<string, { lessons: string[]; total: number; missing: number }>();
+  const { data: existingMnems } = await supabase.from('mnemonics').select('id, character');
+  const existingIds = new Set((existingMnems as any[])?.map((r: any) => r.id) || []);
+  const existingChars = new Set((existingMnems as any[])?.filter((r: any) => r.character).map((r: any) => r.character) || []);
+
+  for (const row of allVocab as any[]) {
+    const match = row.id.match(/^(B\d+)L(\d+)/);
+    if (!match) continue;
+    const b = match[1];
+    if (!bookMap.has(b)) bookMap.set(b, { lessons: [], total: 0, missing: 0 });
+    const entry = bookMap.get(b)!;
+    const lessonNum = 'L' + match[2];
+    if (!entry.lessons.includes(lessonNum)) entry.lessons.push(lessonNum);
+    entry.total++;
+    const text = row.traditional || row.simplified || row.word || '';
+    const cleanedText = cleanVocabText(text);
+    // Skip if exists by vocab ID OR by character text
+    if (!existingIds.has(row.id) && !(cleanedText && existingChars.has(cleanedText))) entry.missing++;
+  }
+
+  console.log('\n╔══════════════════════════════════════════════════╗');
+  console.log('║          Memory Hook Generator                   ║');
+  console.log('╚══════════════════════════════════════════════════╝\n');
+
+  for (const [b, info] of [...bookMap.entries()].sort()) {
+    const marker = b === book ? ' ◄── selected' : '';
+    const status = info.missing === 0 ? '✓' : `${info.missing} missing`;
+    console.log(`  ${b}: ${info.total} vocab, ${info.lessons.length} lessons  [${status}]${marker}`);
+  }
+
+  // Get target vocab (missing only) — skip if exists by vocab ID OR by character text
+  const vocab = (allVocab as any[])
+    .filter((r: any) => r.id.startsWith(book))
+    .filter((r: any) => {
+      if (existingIds.has(r.id)) return false;
+      const text = r.traditional || r.simplified || r.word || '';
+      const cleaned = cleanVocabText(text);
+      if (cleaned && existingChars.has(cleaned)) return false;
+      return true;
+    });
+
+  if (vocab.length === 0) {
+    console.log(`\n✓ All mnemonics already exist for ${book}. Nothing to do.\n`);
+    process.exit(0);
+  }
+
+  console.log(`\n${book}: Generating ${vocab.length} mnemonics (${DELAY_MS}ms delay between calls)...`);
+  console.log('─────────────────────────────────────────────────\n');
+
+  let success = 0;
+  let failed = 0;
+  const total = vocab.length;
+  const startTime = Date.now();
+
+  for (let i = 0; i < vocab.length; i++) {
+    const item = vocab[i] as any;
+    const text = item.traditional || item.simplified || item.word || '';
+    const def = item.meaning || item.definition || '';
+    const cleanedText = cleanVocabText(text);
+
+    const itemNum = i + 1;
+
+    if (!cleanedText) {
+      console.log(`  ${renderBar(itemNum, total)} SKIP (empty): ${item.id}`);
+      continue;
+    }
+
+    const isWord = cleanedText.length > 1;
+    const typeLabel = isWord ? 'word' : 'char';
+
+    try {
+      let mnemonic: string;
+
+      if (!isWord) {
+        const breakdown = await getCharacterBreakdown(cleanedText);
+        const shortDef = breakdown?.definition ? breakdown.definition.split(/[;,/]/)[0].trim() : def;
+        let componentsInfo = '';
+        if (breakdown?.decomposition) {
+          const decompChars = [...breakdown.decomposition].filter(c => /[\u4e00-\u9fa5]/.test(c) && c !== cleanedText);
+          if (decompChars.length > 1) {
+            const componentData = await Promise.all(decompChars.map(async (c: string) => {
+              const b = await getCharacterBreakdown(c);
+              return { char: c, definition: b?.definition || '' };
+            }));
+            componentsInfo = componentData.map((c: any) => `${c.char}/${c.definition.split(/[;,/]/)[0].trim()}`).join(', ');
+          }
+        }
+        const prompt = componentsInfo ? `${cleanedText} | ${shortDef} | ${componentsInfo}` : `${cleanedText} | ${shortDef}`;
+        mnemonic = await callLLM(CHAR_SYS, prompt);
+      } else {
+        // Build character-by-character info for word mnemonics
+        const chars = [...cleanedText].filter(c => /[\u4e00-\u9fa5]/.test(c));
+        const charInfos = [];
+        for (const c of chars) {
+          const b = await getCharacterBreakdown(c);
+          const shortDef = b?.definition ? b.definition.split(/[;,/]/)[0].trim() : '';
+          charInfos.push(`${c}/${shortDef}`);
+        }
+        mnemonic = await callLLM(WORD_SYS, `${cleanedText} | ${def} | ${charInfos.join(', ')}`);
+      }
+
+      // Apply regex formatter to fix bolding (handles what LLM forgets)
+      if (mnemonic && mnemonic.length > 10) {
+        mnemonic = fixFormatting(mnemonic, isWord ? 'word' : 'character', cleanedText);
+      }
+
+      if (mnemonic && mnemonic.length > 10) {
+        await supabase.from('mnemonics').upsert({ id: item.id, character: cleanedText, mnemonic, content_type: isWord ? 'word' : 'character' });
+        success++;
+        // Truncate mnemonic for display if too long
+        const displayMnem = mnemonic.length > 80 ? mnemonic.slice(0, 77) + '...' : mnemonic;
+        console.log(`  ${renderBar(itemNum, total)} ✓ ${typeLabel} "${cleanedText}"`);
+        console.log(`    → ${displayMnem}`);
+      } else {
+        failed++;
+        console.log(`  ${renderBar(itemNum, total)} ✗ ${typeLabel} "${cleanedText}" (empty response)`);
+      }
+    } catch (err: any) {
+      failed++;
+      console.log(`  ${renderBar(itemNum, total)} ✗ ${typeLabel} "${cleanedText}" (${err.message})`);
+    }
+
+    if (i < vocab.length - 1) await sleep(DELAY_MS);
+  }
+
+  const elapsed = ((Date.now() - startTime) / 1000 / 60).toFixed(1);
+  console.log(`\n═══════════════════════════════════════════════`);
+  console.log(`  ${book} DONE: ${success} generated, ${failed} failed in ${elapsed}min`);
+  console.log(`═══════════════════════════════════════════════\n`);
+}
+
+main().catch(err => { console.error('Fatal:', err); process.exit(1); });
