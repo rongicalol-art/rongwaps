@@ -64,22 +64,8 @@ class AudioService {
     const queue = [...validNames];
 
     const fetchAudioBlob = async (fileName: string): Promise<Blob> => {
-      // Try signed URL first (bypasses CORS issues)
-      try {
-        const { data: signedData, error: signedError } = await supabase.storage.from(AUDIO_BUCKET).createSignedUrl(fileName, 3600);
-        if (!signedError && signedData?.signedUrl) {
-          const response = await fetch(signedData.signedUrl);
-          if (response.ok) return await response.blob();
-        }
-      } catch (e) {
-        // Signed URL failed, try next method
-      }
-      // Fallback to download()
-      const { data, error } = await supabase.storage.from(AUDIO_BUCKET).download(fileName);
-      if (!error && data) return data;
-      // Last resort: public URL
-      const { data: pubData } = supabase.storage.from(AUDIO_BUCKET).getPublicUrl(fileName);
-      const response = await fetch(pubData.publicUrl);
+      // Use our own server proxy to avoid CORS issues on all browsers
+      const response = await fetch(`/api/audio/${fileName}`);
       if (!response.ok) throw new Error(`Failed to fetch audio: ${response.statusText}`);
       return await response.blob();
     };
@@ -236,9 +222,8 @@ class AudioService {
       this.globalAudio.onended = null;
       this.globalAudio.onerror = null;
 
-      // Use public URL directly — <audio> elements don't trigger CORS for simple playback
-      const { data: pubData } = supabase.storage.from(AUDIO_BUCKET).getPublicUrl(audioFileName);
-      const sourceUrl = pubData.publicUrl;
+      // Use our own server proxy to avoid CORS issues on Safari
+      const sourceUrl = `/api/audio/${audioFileName}`;
 
       this.globalAudio.src = sourceUrl;
       this.globalAudio.playbackRate = playbackRate;

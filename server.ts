@@ -142,6 +142,41 @@ Example: Three drops of water flowing downward, so this character means **water*
   }
 });
 
+// ─── Audio proxy endpoint (bypasses CORS for Safari) ──────────────────
+// GET /api/audio/:filename — downloads from Supabase Storage and streams to client
+app.get("/api/audio/*", async (req: express.Request, res: express.Response) => {
+  try {
+    const fileName = req.params[0];
+    if (!fileName) {
+      return res.status(400).json({ error: "Missing filename" });
+    }
+
+    const { data, error } = await supabase.storage.from("vocabulary-audio").download(fileName);
+    if (error || !data) {
+      console.warn(`Audio proxy: file not found: ${fileName}`, error?.message);
+      return res.status(404).json({ error: "Audio file not found" });
+    }
+
+    const buffer = Buffer.from(await data.arrayBuffer());
+    const ext = fileName.split(".").pop()?.toLowerCase();
+    const mimeMap: Record<string, string> = {
+      mp3: "audio/mpeg",
+      wav: "audio/wav",
+      ogg: "audio/ogg",
+      m4a: "audio/mp4",
+    };
+    const contentType = mimeMap[ext || ""] || "audio/mpeg";
+
+    res.setHeader("Content-Type", contentType);
+    res.setHeader("Content-Length", buffer.length);
+    res.setHeader("Cache-Control", "public, max-age=86400");
+    res.send(buffer);
+  } catch (err: any) {
+    console.error("Audio proxy error:", err);
+    res.status(500).json({ error: "Failed to fetch audio" });
+  }
+});
+
 // Bootstrap Vite middleware in Development OR serve Static Files in Production
 async function bootstrap() {
   if (process.env.NODE_ENV !== "production") {
