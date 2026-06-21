@@ -61,8 +61,20 @@ class AudioService {
 
     const validNames = audioFileNames.filter(Boolean) as string[];
     const maxConcurrent = 3;
-    let activeCount = 0;
     const queue = [...validNames];
+
+    const fetchAudioBlob = async (fileName: string): Promise<Blob> => {
+      // Use the Supabase client's download method which handles auth properly
+      const { data, error } = await supabase.storage.from(AUDIO_BUCKET).download(fileName);
+      if (error || !data) {
+        // Fallback to public URL fetch
+        const { data: pubData } = supabase.storage.from(AUDIO_BUCKET).getPublicUrl(fileName);
+        const response = await fetch(pubData.publicUrl);
+        if (!response.ok) throw new Error(`Failed to fetch audio: ${response.statusText}`);
+        return await response.blob();
+      }
+      return data;
+    };
 
     const processNext = async (): Promise<void> => {
       if (queue.length === 0) return;
@@ -72,10 +84,8 @@ class AudioService {
         if (this.audioContext) {
           if (!this.buffers.has(fileName) && !this.fetchPromises.has(fileName)) {
             const promise = (async () => {
-              const { data } = supabase.storage.from(AUDIO_BUCKET).getPublicUrl(fileName);
-              const response = await fetch(data.publicUrl);
-              if (!response.ok) throw new Error(`Failed to fetch audio: ${response.statusText}`);
-              const arrayBuffer = await response.arrayBuffer();
+              const blob = await fetchAudioBlob(fileName);
+              const arrayBuffer = await blob.arrayBuffer();
               const audioBuffer = await this.audioContext!.decodeAudioData(arrayBuffer);
               this.buffers.set(fileName, audioBuffer);
               return audioBuffer;
@@ -86,10 +96,7 @@ class AudioService {
         } else {
           if (!this.objectUrls.has(fileName) && !this.blobPromises.has(fileName)) {
             const promise = (async () => {
-               const { data } = supabase.storage.from(AUDIO_BUCKET).getPublicUrl(fileName);
-               const response = await fetch(data.publicUrl);
-               if (!response.ok) throw new Error(`Failed to fetch audio: ${response.statusText}`);
-               const blob = await response.blob();
+               const blob = await fetchAudioBlob(fileName);
                const objectUrl = URL.createObjectURL(blob);
                this.objectUrls.set(fileName, objectUrl);
                return objectUrl;
@@ -220,12 +227,20 @@ class AudioService {
             handleTTSFallback();
           }
         } else {
-          // Fetch, decode, play
+          // Fetch, decode, play using download() to avoid CORS issues
           const promise = (async () => {
-            const { data } = supabase.storage.from(AUDIO_BUCKET).getPublicUrl(audioFileName);
-            const res = await fetch(data.publicUrl);
-            if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
-            const arrayBuffer = await res.arrayBuffer();
+            const { data, error } = await supabase.storage.from(AUDIO_BUCKET).download(audioFileName);
+            if (error || !data) {
+              // Fallback to public URL
+              const { data: pubData } = supabase.storage.from(AUDIO_BUCKET).getPublicUrl(audioFileName);
+              const res = await fetch(pubData.publicUrl);
+              if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
+              const arrayBuffer = await res.arrayBuffer();
+              const buffer = await this.audioContext!.decodeAudioData(arrayBuffer);
+              this.buffers.set(audioFileName, buffer);
+              return buffer;
+            }
+            const arrayBuffer = await data.arrayBuffer();
             const buffer = await this.audioContext!.decodeAudioData(arrayBuffer);
             this.buffers.set(audioFileName, buffer);
             return buffer;
@@ -298,14 +313,15 @@ class AudioService {
           handleTTSFallback();
         }
       } else {
-        const { data } = supabase.storage.from(AUDIO_BUCKET).getPublicUrl(audioFileName);
-        const sourceUrl = data.publicUrl;
-        
+        // Use download() to avoid CORS issues, then create object URL
         const promise = (async () => {
-          const res = await fetch(sourceUrl);
-          if (!res.ok) throw new Error(`HTTP error ${res.status}`);
-          const blob = await res.blob();
-          const objectUrl = URL.createObjectURL(blob);
+          const { data, error } = await supabase.storage.from(AUDIO_BUCKET).download(audioFileName);
+          if (error || !data) {
+            // Fallback: use public URL directly (may fail due to CORS)
+            const { data: pubData } = supabase.storage.from(AUDIO_BUCKET).getPublicUrl(audioFileName);
+            return pubData.publicUrl;
+          }
+          const objectUrl = URL.createObjectURL(data);
           
           if (this.objectUrls.size > 50) {
             const firstKey = this.objectUrls.keys().next().value;
@@ -322,12 +338,12 @@ class AudioService {
         
         this.blobPromises.set(audioFileName, promise);
         
-        // Play immediately with the external URL while we cache the blob
-        doPlay(sourceUrl);
-        
-        promise.catch(() => {
-          this.blobPromises.delete(audioFileName);
-        });
+        // Try to play immediately while we cache
+        promise.then(cachedSrc => doPlay(cachedSrc))
+               .catch(() => {
+                 this.blobPromises.delete(audioFileName);
+                 handleTTSFallback();
+               });
       }
     });
   }
