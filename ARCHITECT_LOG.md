@@ -120,9 +120,18 @@
 
 ---
 
+## Sync (2026-06-22 06:58)
+
+### 23. [COMPLETED] Supabase migration applied and CLI tracking repaired
+- User applied `20260622_scaling_indexes.sql` via Supabase SQL Editor
+- Repaired CLI migration tracking for all 11 migrations
+- `supabase migration list --linked` shows local and remote in sync
+- Render deployment live (commit `c175d6c`)
+
+---
+
 ## Summary
-- **Total issues resolved**: 22 (15 architectural + 3 deployment + 1 runtime + 3 scaling)
+- **Total issues resolved**: 23 (15 architectural + 3 deployment + 1 runtime + 3 scaling + 1 sync)
 - **Build status**: ✅ Passing
-- **Deployment**: ✅ Pushed to GitHub, Render auto-deploying
+- **Deployment**: ✅ Render live, Supabase migrated, CLI in sync
 - **Git history**: Clean, no secrets
-- **Scaling readiness**: ✅ DB indexes added, RPC functions reduce request volume by ~50%
