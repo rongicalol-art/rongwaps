@@ -134,7 +134,8 @@ export const progressService = {
     }));
   },
 
-  // Upsert today's progress (call after each review batch / session end)
+  // Upsert today's progress using the database stored procedure
+  // This is a single RPC call instead of 2 round-trips (SELECT + UPSERT)
   upsertDailyProgress: async (
     userId: string,
     updates: {
@@ -149,54 +150,31 @@ export const progressService = {
     try {
       const today = getLocalDateString();
 
-      // Fetch existing record
-      const { data: existing } = await supabase
+      const { error } = await supabase.rpc('upsert_daily_progress', {
+        p_user_id: userId,
+        p_date: today,
+        p_xp_earned: updates.xpEarned || 0,
+        p_cards_reviewed: updates.cardsReviewed || 0,
+        p_cards_learned: updates.cardsLearned || 0,
+        p_study_time_minutes: updates.studyTimeMinutes || 0,
+        p_activity_type: updates.activityType || null,
+        p_activity_count: updates.activityCount || 0,
+      });
+
+      if (error) {
+        console.error('Error upserting daily progress via RPC:', error);
+        return null;
+      }
+
+      // Fetch the updated record to return
+      const { data } = await supabase
         .from('user_daily_progress')
         .select('*')
         .eq('user_id', userId)
         .eq('date', today)
         .maybeSingle();
 
-      const existingBreakdown: Record<string, number> = existing?.activities_breakdown || {
-        flashcards: 0,
-        quiz: 0,
-        listening: 0,
-        writing: 0,
-      };
-
-      // Apply increments
-      const newBreakdown = { ...existingBreakdown };
-      if (updates.activityType && updates.activityCount) {
-        const key = updates.activityType;
-        newBreakdown[key] = (newBreakdown[key] || 0) + updates.activityCount;
-      }
-
-      const upsertData = {
-        user_id: userId,
-        date: today,
-        xp_earned: (existing?.xp_earned || 0) + (updates.xpEarned || 0),
-        cards_reviewed: (existing?.cards_reviewed || 0) + (updates.cardsReviewed || 0),
-        cards_learned: (existing?.cards_learned || 0) + (updates.cardsLearned || 0),
-        study_time_minutes: (existing?.study_time_minutes || 0) + (updates.studyTimeMinutes || 0),
-        activities_breakdown: newBreakdown,
-        updated_at: new Date().toISOString(),
-      };
-
-      // If record doesn't exist, set created_at
-      if (!existing) {
-        upsertData['created_at'] = new Date().toISOString();
-      }
-
-      const { data, error } = await supabase
-        .from('user_daily_progress')
-        .upsert(upsertData, { onConflict: 'user_id,date' })
-        .select()
-        .single();
-
-      if (error) {
-        console.error('Error upserting daily progress:', error);
-        return null;
-      }
+      if (!data) return null;
 
       return {
         date: data.date,
@@ -204,7 +182,9 @@ export const progressService = {
         cardsReviewed: data.cards_reviewed || 0,
         cardsLearned: data.cards_learned || 0,
         studyTimeMinutes: data.study_time_minutes || 0,
-        activitiesBreakdown: data.activities_breakdown || newBreakdown,
+        activitiesBreakdown: data.activities_breakdown || {
+          flashcards: 0, quiz: 0, listening: 0, writing: 0,
+        },
       };
     } catch (e) {
       console.error('upsertDailyProgress exception:', e);
@@ -228,10 +208,11 @@ export const progressService = {
     return calcStreak(data || []);
   },
 
-  // Get aggregate stats
+  // Get aggregate stats using the database stored procedure
+  // Much more efficient than fetching all rows and computing client-side
   getAggregateStats: async (
     userId: string,
-    recentDays: number = 30,
+    _recentDays: number = 30,
   ): Promise<{
     totalXp: number;
     totalCardsReviewed: number;
@@ -240,14 +221,12 @@ export const progressService = {
     longestStreak: number;
     lastStudyDate: string | null;
   }> => {
-    const { data, error } = await supabase
-      .from('user_daily_progress')
-      .select('*')
-      .eq('user_id', userId)
-      .order('date', { ascending: false });
+    const { data, error } = await supabase.rpc('get_user_aggregate_stats', {
+      p_user_id: userId,
+    });
 
     if (error) {
-      console.error('Error fetching aggregate stats:', error);
+      console.error('Error fetching aggregate stats via RPC:', error);
       return {
         totalXp: 0,
         totalCardsReviewed: 0,
@@ -269,19 +248,14 @@ export const progressService = {
       };
     }
 
-    const totalXp = data.reduce((sum, d) => sum + (d.xp_earned || 0), 0);
-    const totalCardsReviewed = data.reduce((sum, d) => sum + (d.cards_reviewed || 0), 0);
-    const totalCardsLearned = data.reduce((sum, d) => sum + (d.cards_learned || 0), 0);
-    const lastStudyDate = data[0]?.date || null;
-    const { current, longest } = calcStreak(data);
-
+    const row = data[0];
     return {
-      totalXp,
-      totalCardsReviewed,
-      totalCardsLearned,
-      currentStreak: current,
-      longestStreak: longest,
-      lastStudyDate,
+      totalXp: Number(row.total_xp) || 0,
+      totalCardsReviewed: Number(row.total_cards_reviewed) || 0,
+      totalCardsLearned: Number(row.total_cards_learned) || 0,
+      currentStreak: row.current_streak || 0,
+      longestStreak: row.longest_streak || 0,
+      lastStudyDate: row.last_study_date || null,
     };
   },
 };
