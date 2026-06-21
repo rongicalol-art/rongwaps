@@ -53,18 +53,21 @@ export async function getCachedMnemonic(cacheKey: string): Promise<string | null
       .from('mnemonics')
       .select('mnemonic')
       .eq('character', lookupText)
-      .in('content_type', ['character', 'word', 'story'])
+      .or('content_type.is.null,content_type.in.(character,word,story)')
       .limit(1)
-      .single();
+      .maybeSingle();
     if (!error && data && data.mnemonic) {
       mnemonicCache.set(cacheKey, data.mnemonic);
       debugLogger.info("Supabase", `Supabase hit for "${cacheKey}"`, { mnemonic: data.mnemonic });
       return data.mnemonic;
     }
+    if (error) {
+      debugLogger.warn("Cache", `Supabase error for "${cacheKey}"`, { error: error.message, code: error.code });
+    }
     debugLogger.info("Cache", `Supabase miss for "${cacheKey}". Ready to generate...`);
-  } catch (error) {
-    debugLogger.warn("Cache", `Failed checking cache/Supabase for "${cacheKey}"`, error);
-    console.warn("Could not fetch from global cache:", error);
+  } catch (error: any) {
+    debugLogger.warn("Cache", `Failed checking cache/Supabase for "${cacheKey}"`, { error: error?.message });
+    console.warn("Could not fetch from global cache:", error?.message);
   }
   return null;
 }
