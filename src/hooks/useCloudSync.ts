@@ -127,17 +127,24 @@ export function useCloudSync() {
       }
 
       // 3. Fetch custom folders from user_folders table
-      const { data: foldersData, error: foldersError } = await supabase
-        .from('user_folders')
-        .select('id, name, color')
-        .eq('user_id', currentUser.id);
+      try {
+        const { data: foldersData, error: foldersError } = await supabase
+          .from('user_folders')
+          .select('id, name, color')
+          .eq('user_id', currentUser.id);
 
-      if (!foldersError && foldersData && foldersData.length > 0) {
-        setCustomFolders(foldersData.map((f: any) => ({
-          id: f.id,
-          name: f.name,
-          color: f.color,
-        })));
+        if (!foldersError && foldersData && foldersData.length > 0) {
+          setCustomFolders(foldersData.map((f: any) => ({
+            id: f.id,
+            name: f.name,
+            color: f.color,
+          })));
+        }
+        if (foldersError) {
+          console.warn("Failed to fetch user folders:", foldersError.message);
+        }
+      } catch (folderErr: any) {
+        console.warn("Error fetching user folders:", folderErr?.message);
       }
 
       hasFetchedForUser.current = currentUser.id;
