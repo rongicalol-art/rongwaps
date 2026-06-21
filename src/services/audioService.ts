@@ -202,84 +202,28 @@ class AudioService {
         return handleTTSFallback();
       }
 
-      // 1. Play using Web Audio API (Zero Latency)
-      if (this.audioContext) {
+      // 1. Play using Web Audio API (Zero Latency) — if buffer already cached
+      if (this.audioContext && this.buffers.has(audioFileName)) {
         if (this.currentSource) {
           try { this.currentSource.stop(); } catch (e) {}
         }
         
-        const doWebAudioPlay = (buffer: AudioBuffer) => {
-          if (!this.audioContext) return handleTTSFallback();
-          // Ensure context is running (iOS interaction requirement)
-          if (this.audioContext.state === 'suspended') {
-            this.audioContext.resume().catch(() => {});
-          }
-          
-          const source = this.audioContext.createBufferSource();
-          source.buffer = buffer;
-          source.playbackRate.value = playbackRate;
-          source.connect(this.audioContext.destination);
-          
-          source.onended = () => resolve();
-          source.start(0);
-          this.currentSource = source;
-        };
-
-        if (this.buffers.has(audioFileName)) {
-          doWebAudioPlay(this.buffers.get(audioFileName)!);
-        } else if (this.fetchPromises.has(audioFileName)) {
-          try {
-            const buffer = await this.fetchPromises.get(audioFileName)!;
-            doWebAudioPlay(buffer);
-          } catch(err) {
-            handleTTSFallback();
-          }
-        } else {
-          // Fetch, decode, play — try signed URL first, then download(), then public URL
-          const promise = (async () => {
-            // 1. Try signed URL (bypasses CORS)
-            try {
-              const { data: signedData, error: signedError } = await supabase.storage.from(AUDIO_BUCKET).createSignedUrl(audioFileName, 3600);
-              if (!signedError && signedData?.signedUrl) {
-                const res = await fetch(signedData.signedUrl);
-                if (res.ok) {
-                  const arrayBuffer = await res.arrayBuffer();
-                  const buffer = await this.audioContext!.decodeAudioData(arrayBuffer);
-                  this.buffers.set(audioFileName, buffer);
-                  return buffer;
-                }
-              }
-            } catch (e) { /* try next */ }
-            // 2. Try download()
-            const { data, error } = await supabase.storage.from(AUDIO_BUCKET).download(audioFileName);
-            if (!error && data) {
-              const arrayBuffer = await data.arrayBuffer();
-              const buffer = await this.audioContext!.decodeAudioData(arrayBuffer);
-              this.buffers.set(audioFileName, buffer);
-              return buffer;
-            }
-            // 3. Last resort: public URL
-            const { data: pubData } = supabase.storage.from(AUDIO_BUCKET).getPublicUrl(audioFileName);
-            const res = await fetch(pubData.publicUrl);
-            if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
-            const arrayBuffer = await res.arrayBuffer();
-            const buffer = await this.audioContext!.decodeAudioData(arrayBuffer);
-            this.buffers.set(audioFileName, buffer);
-            return buffer;
-          })();
-          this.fetchPromises.set(audioFileName, promise);
-          
-          promise.then(buffer => doWebAudioPlay(buffer))
-                 .catch(err => {
-                    console.warn('Web Audio playback failed, trying TTS fallback', err);
-                    this.fetchPromises.delete(audioFileName);
-                    handleTTSFallback();
-                 });
+        const buffer = this.buffers.get(audioFileName)!;
+        if (this.audioContext.state === 'suspended') {
+          this.audioContext.resume().catch(() => {});
         }
+        
+        const source = this.audioContext.createBufferSource();
+        source.buffer = buffer;
+        source.playbackRate.value = playbackRate;
+        source.connect(this.audioContext.destination);
+        source.onended = () => resolve();
+        source.start(0);
+        this.currentSource = source;
         return;
       }
 
-      // 2. Play using HTMLAudioElement Fallback
+      // 2. Play using HTMLAudioElement with public URL (no CORS issues for simple playback)
       if (!this.globalAudio) return handleTTSFallback();
 
       if (this.activeFallbackResolve) {
@@ -292,81 +236,37 @@ class AudioService {
       this.globalAudio.onended = null;
       this.globalAudio.onerror = null;
 
-      let src = this.objectUrls.get(audioFileName);
+      // Use public URL directly — <audio> elements don't trigger CORS for simple playback
+      const { data: pubData } = supabase.storage.from(AUDIO_BUCKET).getPublicUrl(audioFileName);
+      const sourceUrl = pubData.publicUrl;
 
-      const doPlay = (sourceUrl: string) => {
-        if (!this.globalAudio) return handleTTSFallback();
-        this.globalAudio.src = sourceUrl;
-        this.globalAudio.playbackRate = playbackRate;
-        this.globalAudio.currentTime = 0;
-        
-        this.globalAudio.onended = () => {
-          if (this.activeFallbackResolve) {
-            this.activeFallbackResolve();
-            this.activeFallbackResolve = null;
-          }
-        };
-        this.globalAudio.onerror = () => {
-          console.warn('HTML Audio Element error, trying TTS');
-          if (this.activeFallbackResolve) {
-            this.activeFallbackResolve();
-            this.activeFallbackResolve = null;
-          }
-          handleTTSFallback();
-        };
-
-        this.globalAudio.play().catch(err => {
-          console.warn('Audio fallback playback failed, trying TTS fallback', err);
-          if (this.activeFallbackResolve) {
-            this.activeFallbackResolve();
-            this.activeFallbackResolve = null;
-          }
-          handleTTSFallback();
-        });
+      this.globalAudio.src = sourceUrl;
+      this.globalAudio.playbackRate = playbackRate;
+      this.globalAudio.currentTime = 0;
+      
+      this.globalAudio.onended = () => {
+        if (this.activeFallbackResolve) {
+          this.activeFallbackResolve();
+          this.activeFallbackResolve = null;
+        }
+      };
+      this.globalAudio.onerror = () => {
+        console.warn('HTML Audio Element error, trying TTS');
+        if (this.activeFallbackResolve) {
+          this.activeFallbackResolve();
+          this.activeFallbackResolve = null;
+        }
+        handleTTSFallback();
       };
 
-      if (src) {
-        doPlay(src);
-      } else if (this.blobPromises.has(audioFileName)) {
-        try {
-          const resolvedSrc = await this.blobPromises.get(audioFileName)!;
-          doPlay(resolvedSrc);
-        } catch (err) {
-          handleTTSFallback();
+      this.globalAudio.play().catch(err => {
+        console.warn('Audio playback failed, trying TTS fallback', err);
+        if (this.activeFallbackResolve) {
+          this.activeFallbackResolve();
+          this.activeFallbackResolve = null;
         }
-      } else {
-        // Use download() to avoid CORS issues, then create object URL
-        const promise = (async () => {
-          const { data, error } = await supabase.storage.from(AUDIO_BUCKET).download(audioFileName);
-          if (error || !data) {
-            // Fallback: use public URL directly (may fail due to CORS)
-            const { data: pubData } = supabase.storage.from(AUDIO_BUCKET).getPublicUrl(audioFileName);
-            return pubData.publicUrl;
-          }
-          const objectUrl = URL.createObjectURL(data);
-          
-          if (this.objectUrls.size > 50) {
-            const firstKey = this.objectUrls.keys().next().value;
-            if (firstKey) {
-              const oldUrl = this.objectUrls.get(firstKey);
-              if (oldUrl) URL.revokeObjectURL(oldUrl);
-              this.objectUrls.delete(firstKey);
-            }
-          }
-          
-          this.objectUrls.set(audioFileName, objectUrl);
-          return objectUrl;
-        })();
-        
-        this.blobPromises.set(audioFileName, promise);
-        
-        // Try to play immediately while we cache
-        promise.then(cachedSrc => doPlay(cachedSrc))
-               .catch(() => {
-                 this.blobPromises.delete(audioFileName);
-                 handleTTSFallback();
-               });
-      }
+        handleTTSFallback();
+      });
     });
   }
 }
