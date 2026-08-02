@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { getCharacterBreakdown } from '../services/breakdownService';
 import { DBCharacterBreakdown } from '../types/database';
 import { breakdownCache } from '../utils/cache';

@@ -156,7 +156,7 @@ export function CharNodeItem({
                   </div>
                 )}
                 
-                <div className="flex flex-col w-full bg-white border-[3px] border-[#E5E5E5] rounded-[16px] sm:rounded-[20px] overflow-hidden">
+                <div className="flex flex-col w-full bg-white border-2 border-[#E5E5E5] rounded-[16px] sm:rounded-[20px] overflow-hidden">
                   {subChars.map((c, i) => (
                     <div key={`${c}-${i}`} className="relative flex flex-col">
                       {i > 0 && <div className="w-full h-[2px] bg-[#E5E5E5]" />}

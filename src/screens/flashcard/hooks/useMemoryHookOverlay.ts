@@ -1,8 +1,15 @@
 import { useState, useEffect } from 'react';
 import { getOrGenerateMnemonic, getCachedMnemonic } from '../../../services/aiService';
 import { RankedExample } from '../../../utils/courseExamples';
+import type { Flashcard } from '../../../data/flashcards';
 
-export function useMemoryHookOverlay(activeMemoryHook: any) {
+export type MemoryHookCard = Flashcard & {
+  english?: string;
+  measureWords?: string[];
+  measure_words?: string[];
+};
+
+export function useMemoryHookOverlay(activeMemoryHook: MemoryHookCard | null) {
   const [mnemonic, setMnemonic] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [showAllOverlay, setShowAllOverlay] = useState(false);
@@ -80,7 +87,7 @@ export function useMemoryHookOverlay(activeMemoryHook: any) {
     setLoading(true);
     try {
       const pinyin = activeMemoryHook.pinyin || "";
-      const english = activeMemoryHook.english || "";
+      const english = activeMemoryHook.english || activeMemoryHook.back || "";
       const result = await getOrGenerateMnemonic(activeMemoryHook.front, pinyin, english, true);
       setMnemonic(result);
     } catch (err) {

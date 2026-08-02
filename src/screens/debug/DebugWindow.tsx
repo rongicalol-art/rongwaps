@@ -6,7 +6,7 @@ const icons = import.meta.glob('/src/assets/icons/*.svg', { query: '?raw', impor
 
 export const DebugWindow = () => {
   const [activeTab, setActiveTab] = useState<'icons' | 'mnemonics' | 'logs'>('logs');
-  const [mnemonics, setMnemonics] = useState<any[]>([]);
+  const [mnemonics, setMnemonics] = useState<Awaited<ReturnType<typeof fetchAllMnemonicsDebug>>>([]);
   const [loading, setLoading] = useState(false);
   const [logs, setLogs] = useState<DebugLog[]>([]);
   const [expandedLogId, setExpandedLogId] = useState<string | null>(null);
@@ -20,12 +20,13 @@ export const DebugWindow = () => {
     try {
       await clearAllMnemonics();
       setMnemonics([]);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
-      if (err.message?.includes('permissions')) {
+      const message = err instanceof Error ? err.message : '';
+      if (message.includes('permissions')) {
         setErrorMessage("Permission denied. You must be signed in to clear the global database.");
       } else {
-        setErrorMessage(err.message || 'An error occurred.');
+        setErrorMessage(message || 'An error occurred.');
       }
     } finally {
       setLoading(false);
@@ -86,7 +87,7 @@ export const DebugWindow = () => {
           <a 
             href="https://supabase.com/dashboard/projects" 
             target="_blank" rel="noreferrer"
-            className="px-4 py-2 font-black text-xs md:text-sm uppercase tracking-wider rounded-xl border-b-[4px] active:border-b-0 active:translate-y-[4px] bg-[#1C1C1C] border-black text-white hover:brightness-110 transition-all select-none"
+            className="px-4 py-2 font-black text-xs md:text-sm uppercase tracking-wider rounded-xl border-b-2 active:border-b-0 active:translate-y-[4px] bg-[#1C1C1C] border-black text-white hover:brightness-110 transition-all select-none"
           >
             Open Supabase DB
           </a>
@@ -96,7 +97,7 @@ export const DebugWindow = () => {
       <div className="flex flex-wrap gap-2 mb-6 border-b border-[#E5E5E5] pb-4">
         <button 
           onClick={() => setActiveTab('logs')}
-          className={`px-4 py-2 text-xs md:text-sm font-black uppercase tracking-wide rounded-xl border-b-[4px] active:border-b-0 active:translate-y-[4px] transition-all select-none ${
+          className={`px-4 py-2 text-xs md:text-sm font-black uppercase tracking-wide rounded-xl border-b-2 active:border-b-0 active:translate-y-[4px] transition-all select-none ${
             activeTab === 'logs' 
               ? 'bg-[#58CC02] border-[#46A302] text-white' 
               : 'bg-white border-[#E5E5E5] text-[#4B4B4B] hover:bg-[#F7F7F7]'
@@ -106,7 +107,7 @@ export const DebugWindow = () => {
         </button>
         <button 
           onClick={() => setActiveTab('mnemonics')}
-          className={`px-4 py-2 text-xs md:text-sm font-black uppercase tracking-wide rounded-xl border-b-[4px] active:border-b-0 active:translate-y-[4px] transition-all select-none ${
+          className={`px-4 py-2 text-xs md:text-sm font-black uppercase tracking-wide rounded-xl border-b-2 active:border-b-0 active:translate-y-[4px] transition-all select-none ${
             activeTab === 'mnemonics' 
               ? 'bg-[#58CC02] border-[#46A302] text-white' 
               : 'bg-white border-[#E5E5E5] text-[#4B4B4B] hover:bg-[#F7F7F7]'
@@ -116,7 +117,7 @@ export const DebugWindow = () => {
         </button>
         <button 
           onClick={() => setActiveTab('icons')}
-          className={`px-4 py-2 text-xs md:text-sm font-black uppercase tracking-wide rounded-xl border-b-[4px] active:border-b-0 active:translate-y-[4px] transition-all select-none ${
+          className={`px-4 py-2 text-xs md:text-sm font-black uppercase tracking-wide rounded-xl border-b-2 active:border-b-0 active:translate-y-[4px] transition-all select-none ${
             activeTab === 'icons' 
               ? 'bg-[#58CC02] border-[#46A302] text-white' 
               : 'bg-white border-[#E5E5E5] text-[#4B4B4B] hover:bg-[#F7F7F7]'
@@ -208,7 +209,7 @@ export const DebugWindow = () => {
               {!showConfirmDelete ? (
                 <button
                   onClick={() => setShowConfirmDelete(true)}
-                  className="px-4 py-2 bg-[#FF4B4B] border-b-[4px] border-[#C82333] active:border-b-0 active:translate-y-[4px] text-white text-xs font-black uppercase rounded-xl transition-all hover:brightness-110 select-none"
+                  className="px-4 py-2 bg-[#FF4B4B] border-b-2 border-[#C82333] active:border-b-0 active:translate-y-[4px] text-white text-xs font-black uppercase rounded-xl transition-all hover:brightness-110 select-none"
                 >
                   Clear All Mnemonics
                 </button>
@@ -216,13 +217,13 @@ export const DebugWindow = () => {
                 <div className="flex gap-2">
                   <button
                     onClick={clearAllMnemonicsFromDb}
-                    className="px-3 py-2 bg-[#58CC02] border-b-[4px] border-[#46A302] text-white text-xs font-black uppercase rounded-xl transition-all hover:brightness-110 select-none"
+                    className="px-3 py-2 bg-[#58CC02] border-b-2 border-[#46A302] text-white text-xs font-black uppercase rounded-xl transition-all hover:brightness-110 select-none"
                   >
                     Confirm Delete
                   </button>
                   <button
                     onClick={() => setShowConfirmDelete(false)}
-                    className="px-3 py-2 bg-white border-2 border-[#E5E5E5] border-b-[4px] active:border-b-[2px] active:translate-y-[2px] text-[#4B4B4B] text-xs font-black uppercase rounded-xl transition-all hover:bg-[#F7F7F7] select-none"
+                    className="px-3 py-2 bg-white border-2 border-[#E5E5E5] border-b-2 active:border-b-[2px] active:translate-y-[2px] text-[#4B4B4B] text-xs font-black uppercase rounded-xl transition-all hover:bg-[#F7F7F7] select-none"
                   >
                     Cancel
                   </button>

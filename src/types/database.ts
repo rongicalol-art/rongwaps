@@ -1,7 +1,7 @@
 // Maps to `user_progress` table in Supabase (legacy — kept for backwards compat)
 export interface DBUserProgress {
   user_id: string;
-  srs_data: Record<string, any>;
+  srs_data: Record<string, unknown>;
   learned_cards: string[];
   last_activity: string | null;
   updated_at: string;
@@ -29,6 +29,26 @@ export interface DBCharacterBreakdown {
   definition: string | null;
   decomposition: string | null;
   components_historical: string[] | null;
+  audio?: string | null;
+}
+
+export interface DBDictionaryRow {
+  id: number;
+  traditional: string;
+  simplified: string;
+  pinyin_accented: string | null;
+  pinyin_flat: string | null;
+  definitions: string[] | Record<string, string> | null;
+}
+
+export interface DBVocabularyRow {
+  id: string;
+  traditional: string | null;
+  simplified: string | null;
+  meaning: string | null;
+  pinyin: string | null;
+  audio: string | null;
+  examples: string | null;
 }
 
 // Maps to `global_dictionary` table in Supabase

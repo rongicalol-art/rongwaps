@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import HanziWriter from 'hanzi-writer';
-
-const hanziCache = new Map<string, any>();
+import { DESIGN_TOKENS } from '../../data/designTokens';
+import { loadHanziCharacterData } from '../../services/contentAssetService';
+import { resolveDesignTokenColor } from '../../utils/resolveDesignTokenColor';
 
 interface StrokeOrderBoxProps {
   char: string;
@@ -11,11 +12,13 @@ interface StrokeOrderBoxProps {
 
 export function StrokeOrderBox({ char, size = 140, accentHex = '#1CB0F6' }: StrokeOrderBoxProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const writerRef = useRef<any>(null);
+  const writerRef = useRef<ReturnType<typeof HanziWriter.create> | null>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
     containerRef.current.innerHTML = '';
+    const resolvedStrokeColor = resolveDesignTokenColor(accentHex, '#1CB0F6');
+    const resolvedOutlineColor = resolveDesignTokenColor(DESIGN_TOKENS.color.border, '#C3C8CC');
     
     // Fallback/dummy writer if not hanzi, though we filter it in parent usually.
     const writer = HanziWriter.create(containerRef.current, char, {
@@ -23,54 +26,16 @@ export function StrokeOrderBox({ char, size = 140, accentHex = '#1CB0F6' }: Stro
       width: size,
       height: size,
       padding: size * 0.08,
-      showCharacter: false, 
+      showCharacter: true,
       showOutline: true,
-      strokeColor: accentHex, 
-      outlineColor: '#E5E5E5',
+      strokeColor: resolvedStrokeColor,
+      outlineColor: resolvedOutlineColor,
       strokeAnimationSpeed: 2,
       delayBetweenStrokes: 100,
       delayBetweenLoops: 1500,
-      charDataLoader: (char, onLoad, onError) => {
-        if (hanziCache.has(char)) {
-            onLoad(hanziCache.get(char));
-            return;
-        }
-
-        const encodedChar = encodeURIComponent(char);
-        // Try jsdelivr first, fallback to unpkg, then github
-        fetch(`https://cdn.jsdelivr.net/npm/hanzi-writer-data@2.0.1/${encodedChar}.json`)
-          .then(res => {
-            if (!res.ok) throw new Error('Not found');
-            return res.json();
-          })
-          .then(data => {
-            hanziCache.set(char, data);
-            onLoad(data);
-          })
-          .catch(() => {
-            fetch(`https://unpkg.com/hanzi-writer-data@2.0.1/${encodedChar}.json`)
-              .then(res => {
-                if (!res.ok) throw new Error('Not found');
-                return res.json();
-              })
-              .then(data => {
-                hanziCache.set(char, data);
-                onLoad(data);
-              })
-              .catch(() => {
-                fetch(`https://raw.githubusercontent.com/chanind/hanzi-writer-data/master/data/${encodedChar}.json`)
-                  .then(res => {
-                    if (!res.ok) throw new Error('Not found');
-                    return res.json();
-                  })
-                  .then(data => {
-                    hanziCache.set(char, data);
-                    onLoad(data);
-                  })
-                  .catch(onError);
-              });
-          });
-      }
+      charDataLoader: (requestedChar, onLoad, onError) => {
+        loadHanziCharacterData(requestedChar).then(onLoad).catch(onError);
+      },
     });
     writerRef.current = writer;
     

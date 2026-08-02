@@ -2,16 +2,86 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
-  --font-chinese: "BiauKai", "Kaiti TC", "標楷體", "DFKai-SB", "MoeStandardKai", "STKaiti", "LXGW WenKai TC", "Noto Serif TC", serif;
-  
+  --font-sans: "Nunito", "LXGW WenKai TC", "Noto Serif TC", ui-sans-serif, system-ui, sans-serif;
+  --font-chinese: "LXGW WenKai TC", "Noto Serif TC", "BiauKai", "Kaiti TC", "標楷體", "DFKai-SB", "STKaiti", serif;
+
+  /* Soft off-white canvases keep white controls and cards visually distinct. */
+  --color-ui-canvas: #f2f3f4;
+  --color-ui-practice-canvas: #e9eef1;
+  --color-ui-surface: #ffffff;
+  --color-ui-surface-hover: #fafafa;
+  --color-ui-ink-strong: #2f3237;
+  --color-ui-ink: #4b4b4b;
+  --color-ui-muted-strong: #777777;
+  --color-ui-muted: #8c959b;
+  --color-ui-border: #c3c8cc;
+  --color-ui-divider: #d6dade;
+  --color-ui-hover: #f0f2f3;
+
   --color-brand-primary: #1cb0f6;
   --color-brand-primary-edge: #1899d6;
+  --color-brand-primary-deep: #117cad;
   --color-brand-secondary: #ff9600;
   --color-brand-secondary-edge: #e58700;
-  --color-brand-disabled: #e5e5e5;
-  --color-brand-disabled-edge: #afb6bb;
-  --color-brand-text-secondary: #afb6bb;
+  --color-brand-disabled: var(--color-ui-border);
+  --color-brand-disabled-edge: var(--color-ui-muted);
+  --color-brand-text-secondary: var(--color-ui-muted);
+
+  --color-feedback-success: #58cc02;
+  --color-feedback-success-edge: #58a700;
+  --color-feedback-success-hover: #46a302;
+  --color-feedback-success-surface: #d7ffb8;
+  --color-feedback-warning: #ffc800;
+  --color-feedback-warning-edge: #e0a900;
+  --color-feedback-danger: #ff4b4b;
+  --color-feedback-danger-surface: #ffdfe0;
+  --color-feedback-danger-edge: #ea2b2b;
+  --color-feedback-danger-hover: #ff2b2b;
+
+  --radius-compact: 14px;
+  --radius-control: 20px;
+  --radius-feature: 24px;
+}
+
+:root {
+  --depth-compact: 4px;
+  --depth-control: 6px;
+  --depth-card: 4px;
+  --size-window-header: 71px;
+  --workspace-nav-width: 0px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --workspace-nav-width: 288px;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --workspace-nav-width: 288px;
+  }
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    font-family: inherit;
+  }
 }
 
 /* 
@@ -36,9 +106,9 @@ html, body, #root {
 }
 
 body {
-  background: #F7F7F7;
+  background: var(--color-ui-canvas);
   background-attachment: fixed;
-  color: #4B4B4B;
+  color: var(--color-ui-ink);
   margin: 0;
   -webkit-font-smoothing: antialiased;
 }
@@ -71,6 +141,23 @@ body {
 }
 
 @layer utilities {
+  .workspace-window {
+    left: var(--workspace-nav-width) !important;
+  }
+
+  .window-header {
+    height: var(--size-window-header);
+    min-height: var(--size-window-header);
+  }
+
+  .grammar-learn-workspace {
+    background-color: transparent;
+  }
+
+  .grammar-practice-workspace {
+    background-color: color-mix(in srgb, var(--color-ui-canvas) 86%, transparent);
+  }
+
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
@@ -79,3 +166,28 @@ body {
     scrollbar-width: none; /* Firefox */
   }
 }
+
+/* Card Maker Animations */
+@keyframes slideInFwd {
+  0% { transform: translateX(50px) scale(0.95); opacity: 0; }
+  100% { transform: translateX(0) scale(1); opacity: 1; }
+}
+@keyframes slideInBack {
+  0% { transform: translateX(-50px) scale(0.95); opacity: 0; }
+  100% { transform: translateX(0) scale(1); opacity: 1; }
+}
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.anim-fwd { animation: slideInFwd 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+.anim-back { animation: slideInBack 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+.anim-pop { animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+.anim-float { animation: float 3s ease-in-out infinite; }
+.spring-transition { transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }

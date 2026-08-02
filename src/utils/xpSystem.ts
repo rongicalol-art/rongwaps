@@ -33,7 +33,7 @@ export function calculateXpForReview(quality: number, isNewCard: boolean, curren
   }
 
   const streakBonus = Math.round(baseXp * (multiplier - 1));
-  const newCardXp = isNewCard ? NEW_CARD_BONUS_XP : 0;
+  const newCardXp = isNewCard && baseXp > 0 ? NEW_CARD_BONUS_XP : 0;
 
   return baseXp + streakBonus + newCardXp;
 }

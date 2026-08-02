@@ -9,8 +9,8 @@ import { resolve } from 'path';
 
 dotenv.config({ path: resolve(process.cwd(), '.env') });
 
-const GEMINI_API_KEY=proces..._KEY || '';
-const OPENROUTER_API_KEY=proces..._KEY || '';
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '';
 const supabase = createClient(process.env.VITE_SUPABASE_URL || '', process.env.VITE_SUPABASE_ANON_KEY || '');
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 

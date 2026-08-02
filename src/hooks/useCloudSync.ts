@@ -1,17 +1,77 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useAuth } from './useAuth';
 import { useAppStore } from '../store/useAppStore';
 import { userService } from '../services/userService';
 import { progressService } from '../services/progressService';
 import { authService } from '../services/authService';
-import { supabase } from '../services/supabaseClient';
+import {
+  createCloudSyncFingerprint,
+  createSingleFlightSaveCoordinator,
+  getNextCloudSyncBackoff,
+  getSessionProgressDelta,
+  hasSessionProgressDelta,
+  reconcileAggregateProgress,
+  type SyncProgressCounters,
+} from '../utils/cloudSyncQueue';
+import { createEmptySessionProgress } from '../utils/reviewProgress';
+
+type AppStoreSnapshot = ReturnType<typeof useAppStore.getState>;
+
+interface CloudSaveSnapshot {
+  userId: string;
+  userMetadata: Record<string, unknown>;
+  store: AppStoreSnapshot;
+}
+
+interface SaveCoordinator {
+  request: () => Promise<void>;
+}
+
+function getProgressCounters(store: AppStoreSnapshot): SyncProgressCounters {
+  return {
+    xpEarned: store.sessionProgress.xpEarned,
+    cardsReviewed: store.sessionProgress.cardsReviewed,
+    cardsLearned: store.sessionProgress.cardsLearned,
+  };
+}
+
+function getDailyActivity(
+  activity: AppStoreSnapshot['lastActivity'],
+): 'flashcards' | 'quiz' | 'listening' | 'writing' | undefined {
+  if (activity === 'flashcards' || activity === 'flashcards-review') return 'flashcards';
+  if (activity === 'quiz' || activity === 'listening' || activity === 'writing') return activity;
+  return undefined;
+}
+
+function errorMessage(error: unknown, fallback: string): string {
+  return error instanceof Error && error.message ? error.message : fallback;
+}
+
+function stringArray(value: unknown): string[] | null {
+  return Array.isArray(value) && value.every((item) => typeof item === 'string')
+    ? value
+    : null;
+}
+
+function numberArray(value: unknown): number[] | null {
+  return Array.isArray(value) && value.every((item) => typeof item === 'number')
+    ? value
+    : null;
+}
+
+function numberRecord(value: unknown): Record<string, number> | null {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+  const entries = Object.entries(value);
+  return entries.every(([, item]) => typeof item === 'number')
+    ? Object.fromEntries(entries) as Record<string, number>
+    : null;
+}
 
 export function useCloudSync() {
   const { currentUser } = useAuth();
   const {
     srsData,
     learnedCards,
-    setSrsDataAndLearnedCards,
     favorites,
     activeBookId,
     characterPreference,
@@ -22,7 +82,8 @@ export function useCloudSync() {
     selectedBooks,
     customFolders,
     sessionProgress,
-    lastActivity: lastActivityType,
+    lastActivity,
+    setSrsDataAndLearnedCards,
     setProgressStats,
     setCustomFolders,
     setSyncStatus,
@@ -30,331 +91,319 @@ export function useCloudSync() {
     setLastCloudUpdate,
   } = useAppStore();
 
-  const lastSyncedUserId = useRef<string | null>(null);
-  const isInitialLoad = useRef(true);
-  const syncTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const lastDailySyncCount = useRef(0);
-  const hasFetchedForUser = useRef<string | null>(null);
-  const isSaving = useRef(false);
-  const saveBackoffMs = useRef(0);
-  const pendingSave = useRef(false);
+  const hasFetchedForUserRef = useRef<string | null>(null);
+  const activeUserIdRef = useRef<string | null>(null);
+  const coordinatorRef = useRef<SaveCoordinator | null>(null);
+  const performSaveRef = useRef<(snapshot: CloudSaveSnapshot) => Promise<void>>(async () => {});
+  const syncTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const saveBackoffMsRef = useRef(0);
+  const lastSyncedSessionRef = useRef<SyncProgressCounters>({
+    xpEarned: 0,
+    cardsReviewed: 0,
+    cardsLearned: 0,
+  });
 
-  // ── Fetch from cloud ──────────────────────────────────────────────
   const fetchFromCloud = useCallback(async () => {
     if (!currentUser) return;
+
     try {
       setSyncStatus('syncing');
       setSyncError(null);
 
       const activeUser = await authService.getCurrentUser() || currentUser;
-      const metadata = activeUser.user_metadata;
-
-      const localLastUpdate = useAppStore.getState().lastCloudUpdate;
-
-      // 1. Fetch card-level SRS progress + legacy metadata
+      const metadata = (activeUser.user_metadata || {}) as Record<string, unknown>;
       const cloudData = await userService.getProgress(currentUser.id);
+      const isAccountSwitch = activeUserIdRef.current !== null && activeUserIdRef.current !== currentUser.id;
 
       if (cloudData) {
-        const cloudTime = cloudData.lastUpdated
-          ? new Date(cloudData.lastUpdated).getTime()
-          : 0;
-        const localTime = localLastUpdate
-          ? new Date(localLastUpdate).getTime()
-          : 0;
+        const cloudTime = cloudData.lastUpdated ? new Date(cloudData.lastUpdated).getTime() : 0;
+        const localLastUpdate = useAppStore.getState().lastCloudUpdate;
+        const localTime = localLastUpdate ? new Date(localLastUpdate).getTime() : 0;
 
-        // Only override local if cloud is strictly newer
-        if (cloudTime > localTime) {
+        if (isAccountSwitch || cloudTime > localTime) {
+          const metadataFavorites = stringArray(metadata.favorites);
+          const metadataLessons = numberArray(metadata.selectedLessons);
+          const metadataBooks = numberArray(metadata.selectedBooks);
+          const metadataSessionIndex = numberRecord(metadata.sessionProgressIndex);
+
           setLastCloudUpdate(cloudData.lastUpdated || null);
+          if (metadataFavorites || isAccountSwitch) {
+            useAppStore.setState({ favorites: metadataFavorites ?? [] });
+          }
+          if (typeof metadata.activeBookId === 'number') {
+            useAppStore.setState({ activeBookId: metadata.activeBookId });
+          } else if (isAccountSwitch) {
+            useAppStore.setState({ activeBookId: 1 });
+          }
+          if (metadata.characterPreference === 'traditional' || metadata.characterPreference === 'simplified') {
+            useAppStore.setState({ characterPreference: metadata.characterPreference });
+          } else if (isAccountSwitch) {
+            useAppStore.setState({ characterPreference: 'traditional' });
+          }
+          if (metadata.activeTab === 'path' || metadata.activeTab === 'search' || metadata.activeTab === 'library' || metadata.activeTab === 'profile') {
+            useAppStore.setState({ activeTab: metadata.activeTab });
+          } else if (isAccountSwitch) {
+            useAppStore.setState({ activeTab: 'path' });
+          }
+          if (metadataLessons || isAccountSwitch) {
+            useAppStore.setState({ selectedLessons: metadataLessons ?? [] });
+          }
+          if (metadataBooks || isAccountSwitch) {
+            useAppStore.setState({ selectedBooks: metadataBooks ?? [] });
+          }
 
-          // Restore from user_metadata (preferences, session state)
-          if (metadata) {
-            if (metadata.favorites && Array.isArray(metadata.favorites)) {
-              useAppStore.setState({ favorites: metadata.favorites });
-            }
-            if (metadata.activeBookId) {
-              useAppStore.setState({ activeBookId: metadata.activeBookId });
-            }
-            if (metadata.characterPreference) {
-              useAppStore.setState({ characterPreference: metadata.characterPreference });
-            }
-            if (metadata.activeTab) {
-              useAppStore.setState({ activeTab: metadata.activeTab });
-            }
-            if (metadata.activeActivity !== undefined) {
-              useAppStore.setState({ activeActivity: metadata.activeActivity });
-            }
-            if (metadata.selectedLessons) {
-              useAppStore.setState({ selectedLessons: metadata.selectedLessons });
-            }
-            if (metadata.selectedBooks) {
-              useAppStore.setState({ selectedBooks: metadata.selectedBooks });
-            }
-            if (metadata.sessionProgressIndex) {
-              const localIndex = useAppStore.getState().sessionProgressIndex || {};
+          if (metadataSessionIndex) {
+            const localIndex = useAppStore.getState().sessionProgressIndex;
+            if (isAccountSwitch) {
+              useAppStore.setState({ sessionProgressIndex: metadataSessionIndex });
+            } else {
               const mergedIndex = { ...localIndex };
-              for (const [key, cloudVal] of Object.entries(metadata.sessionProgressIndex)) {
-                const localVal = localIndex[key];
-                if (localVal === undefined || (typeof cloudVal === 'number' && cloudVal > (localVal as number))) {
-                  mergedIndex[key] = cloudVal as number;
+              for (const [key, cloudValue] of Object.entries(metadataSessionIndex)) {
+                const localValue = localIndex[key];
+                if (localValue === undefined || cloudValue > localValue) {
+                  mergedIndex[key] = cloudValue;
                 }
               }
               useAppStore.setState({ sessionProgressIndex: mergedIndex });
             }
+          } else if (isAccountSwitch) {
+            useAppStore.setState({ sessionProgressIndex: {} });
           }
 
-          // Merge SRS data: cloud wins for overlapping cards (it's newer)
-          const currentSrs = useAppStore.getState().srsData;
-          const currentLearned = useAppStore.getState().learnedCards;
-          const mergedSrs = { ...currentSrs, ...cloudData.srsData };
-          const mergedLearned = Array.from(
-            new Set([...currentLearned, ...cloudData.learnedCards])
+          const localProgress = useAppStore.getState();
+          setSrsDataAndLearnedCards(
+            isAccountSwitch ? cloudData.srsData : { ...localProgress.srsData, ...cloudData.srsData },
+            isAccountSwitch
+              ? cloudData.learnedCards
+              : Array.from(new Set([...localProgress.learnedCards, ...cloudData.learnedCards])),
           );
-          setSrsDataAndLearnedCards(mergedSrs, mergedLearned);
         }
       }
 
-      // 2. Fetch aggregate stats (streak, total XP, etc.)
       const aggregateStats = await progressService.getAggregateStats(currentUser.id);
-      if (aggregateStats) {
-        setProgressStats({
-          currentStreak: aggregateStats.currentStreak,
-          longestStreak: aggregateStats.longestStreak,
-          totalXp: aggregateStats.totalXp,
-          totalCardsReviewed: aggregateStats.totalCardsReviewed,
-          totalCardsLearned: aggregateStats.totalCardsLearned,
-          lastStudyDate: aggregateStats.lastStudyDate,
-        });
-      }
+      const latest = useAppStore.getState();
+      const reconciled = reconcileAggregateProgress(
+        aggregateStats,
+        {
+          totalXp: latest.totalXp,
+          totalCardsReviewed: latest.totalCardsReviewed,
+          totalCardsLearned: latest.totalCardsLearned,
+        },
+        lastSyncedSessionRef.current,
+        getProgressCounters(latest),
+      );
+      setProgressStats({ ...aggregateStats, ...reconciled });
 
-      // 3. Fetch custom folders from user_folders table
-      try {
-        const { data: foldersData, error: foldersError } = await supabase
-          .from('user_folders')
-          .select('id, name, color')
-          .eq('user_id', currentUser.id);
+      const folders = await userService.getCustomFolders(currentUser.id);
+      setCustomFolders(folders);
 
-        if (!foldersError && foldersData && foldersData.length > 0) {
-          setCustomFolders(foldersData.map((f: any) => ({
-            id: f.id,
-            name: f.name,
-            color: f.color,
-          })));
-        }
-        if (foldersError) {
-          console.warn("Failed to fetch user folders:", foldersError.message);
-        }
-      } catch (folderErr: any) {
-        console.warn("Error fetching user folders:", folderErr?.message);
-      }
-
-      hasFetchedForUser.current = currentUser.id;
+      lastSyncedSessionRef.current = getProgressCounters(useAppStore.getState());
+      hasFetchedForUserRef.current = currentUser.id;
+      activeUserIdRef.current = currentUser.id;
       setSyncStatus('success');
-    } catch (e: any) {
-      console.error("Failed to fetch from cloud:", e);
+    } catch (error: unknown) {
+      console.error('Failed to fetch from cloud:', error);
       setSyncStatus('error');
-      setSyncError(e?.message || 'Failed to sync from cloud');
+      setSyncError(errorMessage(error, 'Failed to sync from cloud'));
     }
-  }, [currentUser, setSyncStatus, setSyncError, setLastCloudUpdate, setSrsDataAndLearnedCards, setProgressStats, setCustomFolders]);
+  }, [
+    currentUser,
+    setCustomFolders,
+    setLastCloudUpdate,
+    setProgressStats,
+    setSrsDataAndLearnedCards,
+    setSyncError,
+    setSyncStatus,
+  ]);
 
-  // ── Save to cloud ─────────────────────────────────────────────────
-  const saveToCloud = useCallback(
-    async (isUnload = false) => {
-      if (!currentUser) return;
-      const store = useAppStore.getState();
+  const performSave = useCallback(async (snapshot: CloudSaveSnapshot) => {
+    const { store, userId, userMetadata } = snapshot;
+    await userService.syncCardProgress(userId, store.srsData);
+    await userService.syncMetadata(userId, {
+      learnedCards: store.learnedCards,
+      lastActivity: store.lastActivity,
+    });
 
-      try {
-        setSyncStatus('syncing');
-        setSyncError(null);
+    const metadataChanged =
+      JSON.stringify(userMetadata.favorites) !== JSON.stringify(store.favorites) ||
+      userMetadata.activeBookId !== store.activeBookId ||
+      userMetadata.characterPreference !== store.characterPreference ||
+      JSON.stringify(userMetadata.sessionProgressIndex) !== JSON.stringify(store.sessionProgressIndex) ||
+      userMetadata.activeTab !== store.activeTab ||
+      userMetadata.activeActivity !== store.activeActivity ||
+      JSON.stringify(userMetadata.selectedLessons) !== JSON.stringify(store.selectedLessons) ||
+      JSON.stringify(userMetadata.selectedBooks) !== JSON.stringify(store.selectedBooks);
 
-        // 1. Sync card progress (granular rows)
-        await userService.syncCardProgress(currentUser.id, store.srsData);
-
-        // 2. Sync metadata (learned_cards, last_activity)
-        await userService.syncMetadata(currentUser.id, {
-          learnedCards: store.learnedCards,
-          lastActivity: store.lastActivity,
-        });
-
-        // 3. Sync user_metadata (preferences, session state) via service layer
-        const currentMeta = currentUser.user_metadata || {};
-        const needMetaUpdate =
-          JSON.stringify(currentMeta.favorites) !== JSON.stringify(store.favorites) ||
-          currentMeta.activeBookId !== store.activeBookId ||
-          currentMeta.characterPreference !== store.characterPreference ||
-          JSON.stringify(currentMeta.sessionProgressIndex) !== JSON.stringify(store.sessionProgressIndex) ||
-          currentMeta.activeTab !== store.activeTab ||
-          currentMeta.activeActivity !== store.activeActivity ||
-          JSON.stringify(currentMeta.selectedLessons) !== JSON.stringify(store.selectedLessons) ||
-          JSON.stringify(currentMeta.selectedBooks) !== JSON.stringify(store.selectedBooks);
-
-        if (needMetaUpdate) {
-          await authService.updateUserMetadata({
-            favorites: store.favorites,
-            activeBookId: store.activeBookId,
-            characterPreference: store.characterPreference,
-            sessionProgressIndex: store.sessionProgressIndex,
-            activeTab: store.activeTab,
-            activeActivity: store.activeActivity,
-            selectedLessons: store.selectedLessons,
-            selectedBooks: store.selectedBooks,
-          });
-        }
-
-        // 4. Sync custom folders to user_folders table
-        if (store.customFolders.length > 0) {
-          const folderRows = store.customFolders.map((f: any) => ({
-            id: f.id,
-            user_id: currentUser.id,
-            name: f.name,
-            color: f.color,
-          }));
-          await supabase
-            .from('user_folders')
-            .upsert(folderRows, { onConflict: 'id' });
-        }
-
-        // 5. Update aggregate stats from cloud after saving
-        const aggregateStats = await progressService.getAggregateStats(currentUser.id);
-        if (aggregateStats) {
-          setProgressStats({
-            currentStreak: aggregateStats.currentStreak,
-            longestStreak: aggregateStats.longestStreak,
-            totalXp: aggregateStats.totalXp,
-            totalCardsReviewed: aggregateStats.totalCardsReviewed,
-            totalCardsLearned: aggregateStats.totalCardsLearned,
-            lastStudyDate: aggregateStats.lastStudyDate,
-          });
-        }
-
-        setLastCloudUpdate(new Date().toISOString());
-        setSyncStatus('success');
-      } catch (e: any) {
-        console.error("Failed to sync to cloud:", e);
-        setSyncStatus('error');
-        setSyncError(e?.message || 'Failed to save to cloud');
-      }
-    },
-    [currentUser, setSyncStatus, setSyncError, setLastCloudUpdate, setProgressStats]
-  );
-
-  // ── Sync daily progress when session cards reviewed changes ───────
-  useEffect(() => {
-    if (!currentUser || isInitialLoad.current) return;
-
-    const currentCount = sessionProgress.cardsReviewed;
-    const newReviews = currentCount - lastDailySyncCount.current;
-
-    if (newReviews > 0 && lastActivityType) {
-      lastDailySyncCount.current = currentCount;
-
-      let dailyActivity: 'flashcards' | 'quiz' | 'listening' | 'writing' | null = null;
-      if (lastActivityType === 'flashcards' || lastActivityType === 'flashcards-review') {
-        dailyActivity = 'flashcards';
-      } else if (lastActivityType === 'quiz') {
-        dailyActivity = 'quiz';
-      } else if (lastActivityType === 'listening') {
-        dailyActivity = 'listening';
-      } else if (lastActivityType === 'writing') {
-        dailyActivity = 'writing';
-      }
-
-      if (dailyActivity) {
-        progressService.upsertDailyProgress(currentUser.id, {
-          cardsReviewed: newReviews,
-          activityType: dailyActivity,
-          activityCount: newReviews,
-        }).catch((e) => console.error('Daily progress sync failed:', e));
-      }
+    if (metadataChanged) {
+      await authService.updateUserMetadata({
+        favorites: store.favorites,
+        activeBookId: store.activeBookId,
+        characterPreference: store.characterPreference,
+        sessionProgressIndex: store.sessionProgressIndex,
+        activeTab: store.activeTab,
+        activeActivity: store.activeActivity,
+        selectedLessons: store.selectedLessons,
+        selectedBooks: store.selectedBooks,
+      });
     }
-  }, [sessionProgress.cardsReviewed, currentUser, lastActivityType]);
 
-  // ── Initial load & visibility/focus listeners ─────────────────────
-  useEffect(() => {
-    if (currentUser) {
-      if (lastSyncedUserId.current !== currentUser.id) {
-        lastSyncedUserId.current = currentUser.id;
-        hasFetchedForUser.current = null;
-        lastDailySyncCount.current = useAppStore.getState().sessionProgress.cardsReviewed;
-        fetchFromCloud();
-      }
-
-      const handleVisibility = () => {
-        if (document.visibilityState === 'visible') {
-          fetchFromCloud();
-        } else if (document.visibilityState === 'hidden') {
-          saveToCloud(true);
-        }
-      };
-
-      const handleBlur = () => {
-        saveToCloud(true);
-      };
-
-      window.addEventListener('blur', handleBlur);
-      document.addEventListener('visibilitychange', handleVisibility);
-
-      return () => {
-        window.removeEventListener('blur', handleBlur);
-        document.removeEventListener('visibilitychange', handleVisibility);
-      };
-    } else {
-      lastSyncedUserId.current = null;
+    if (store.customFolders.length > 0) {
+      await userService.syncCustomFolders(userId, store.customFolders);
     }
-  }, [currentUser, fetchFromCloud, saveToCloud]);
 
-  // ── Beforeunload: best-effort save ────────────────────────────────
-  useEffect(() => {
-    const handleUnload = () => {
-      saveToCloud(true);
-    };
-    window.addEventListener('beforeunload', handleUnload);
-    return () => window.removeEventListener('beforeunload', handleUnload);
-  }, [saveToCloud]);
+    const savedSession = lastSyncedSessionRef.current;
+    const snapshotSession = getProgressCounters(store);
+    const dailyDelta = getSessionProgressDelta(snapshotSession, savedSession);
+    if (hasSessionProgressDelta(dailyDelta)) {
+      await progressService.upsertDailyProgress(userId, {
+        xpEarned: dailyDelta.xpEarned,
+        cardsReviewed: dailyDelta.cardsReviewed,
+        cardsLearned: dailyDelta.cardsLearned,
+        activityType: getDailyActivity(store.lastActivity),
+        activityCount: dailyDelta.cardsReviewed,
+      });
+      lastSyncedSessionRef.current = snapshotSession;
+    }
 
-  // ── Debounced auto-save on state changes ──────────────────────────
+    const aggregateStats = await progressService.getAggregateStats(userId);
+    const latest = useAppStore.getState();
+    const reconciled = reconcileAggregateProgress(
+      aggregateStats,
+      {
+        totalXp: latest.totalXp,
+        totalCardsReviewed: latest.totalCardsReviewed,
+        totalCardsLearned: latest.totalCardsLearned,
+      },
+      lastSyncedSessionRef.current,
+      getProgressCounters(latest),
+    );
+    setProgressStats({ ...aggregateStats, ...reconciled });
+    setLastCloudUpdate(new Date().toISOString());
+  }, [setLastCloudUpdate, setProgressStats]);
+
+  performSaveRef.current = performSave;
+
   useEffect(() => {
-    if (isInitialLoad.current) {
-      isInitialLoad.current = false;
+    if (!currentUser) {
+      coordinatorRef.current = null;
+      hasFetchedForUserRef.current = null;
       return;
     }
 
-    if (currentUser && hasFetchedForUser.current === currentUser.id) {
-      if (syncTimeout.current) clearTimeout(syncTimeout.current);
-
-      pendingSave.current = true;
-      const delay = 10000 + saveBackoffMs.current;
-
-      syncTimeout.current = setTimeout(async () => {
-        if (isSaving.current) return;
-        isSaving.current = true;
-        try {
-          await saveToCloud();
-          saveBackoffMs.current = 0;
-        } catch (e: any) {
-          console.error("Auto-save failed:", e);
-          if (e?.message?.includes('rate limit') || e?.status === 429) {
-            saveBackoffMs.current = Math.min(saveBackoffMs.current + 15000, 60000);
-          }
-        } finally {
-          isSaving.current = false;
-          if (pendingSave.current) {
-            pendingSave.current = false;
-          }
-        }
-      }, delay);
+    const userId = currentUser.id;
+    const isAccountSwitch = activeUserIdRef.current !== null && activeUserIdRef.current !== userId;
+    if (isAccountSwitch) {
+      useAppStore.setState({
+        srsData: {},
+        learnedCards: [],
+        favorites: [],
+        customFolders: [],
+        sessionProgress: createEmptySessionProgress(),
+        sessionProgressIndex: {},
+        selectedLessonParts: {},
+        selectedLessons: [],
+        selectedBooks: [],
+        activeActivity: null,
+        lastActivity: null,
+        currentStreak: 0,
+        longestStreak: 0,
+        totalXp: 0,
+        totalCardsReviewed: 0,
+        totalCardsLearned: 0,
+        lastStudyDate: null,
+        lastCloudUpdate: null,
+      });
     }
+    coordinatorRef.current = createSingleFlightSaveCoordinator(
+      () => {
+        if (hasFetchedForUserRef.current !== userId) return null;
+        const store = useAppStore.getState();
+        return {
+          fingerprint: createCloudSyncFingerprint(userId, store),
+          value: {
+            userId,
+            userMetadata: (currentUser.user_metadata || {}) as Record<string, unknown>,
+            store,
+          },
+        };
+      },
+      (snapshot) => performSaveRef.current(snapshot),
+    );
+  }, [currentUser]);
+
+  const requestSave = useCallback(async () => {
+    if (!currentUser || !coordinatorRef.current) return;
+    setSyncStatus('syncing');
+    setSyncError(null);
+    try {
+      await coordinatorRef.current.request();
+      saveBackoffMsRef.current = 0;
+      setSyncStatus('success');
+    } catch (error: unknown) {
+      saveBackoffMsRef.current = getNextCloudSyncBackoff(saveBackoffMsRef.current, error);
+      setSyncStatus('error');
+      setSyncError(errorMessage(error, 'Failed to save to cloud'));
+      throw error;
+    }
+  }, [currentUser, setSyncError, setSyncStatus]);
+
+  useEffect(() => {
+    if (!currentUser) return;
+    hasFetchedForUserRef.current = null;
+    lastSyncedSessionRef.current = getProgressCounters(useAppStore.getState());
+    void fetchFromCloud();
+  }, [currentUser, fetchFromCloud]);
+
+  useEffect(() => {
+    if (!currentUser) return;
+    const requestBestEffortSave = () => {
+      void requestSave().catch((error: unknown) => {
+        console.error('Background cloud save failed:', error);
+      });
+    };
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') void fetchFromCloud();
+      else requestBestEffortSave();
+    };
+
+    window.addEventListener('blur', requestBestEffortSave);
+    window.addEventListener('pagehide', requestBestEffortSave);
+    document.addEventListener('visibilitychange', handleVisibility);
+    return () => {
+      window.removeEventListener('blur', requestBestEffortSave);
+      window.removeEventListener('pagehide', requestBestEffortSave);
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
+  }, [currentUser, fetchFromCloud, requestSave]);
+
+  useEffect(() => {
+    if (!currentUser || hasFetchedForUserRef.current !== currentUser.id) return;
+    if (syncTimeoutRef.current) clearTimeout(syncTimeoutRef.current);
+
+    syncTimeoutRef.current = setTimeout(() => {
+      void requestSave().catch((error: unknown) => {
+        console.error('Auto-save failed:', error);
+      });
+    }, 10_000 + saveBackoffMsRef.current);
 
     return () => {
-      if (syncTimeout.current) clearTimeout(syncTimeout.current);
+      if (syncTimeoutRef.current) clearTimeout(syncTimeoutRef.current);
     };
   }, [
-    srsData,
-    learnedCards,
-    favorites,
+    activeActivity,
     activeBookId,
+    activeTab,
     characterPreference,
-    customFolders,
     currentUser,
-    saveToCloud,
+    customFolders,
+    favorites,
+    lastActivity,
+    learnedCards,
+    requestSave,
+    selectedBooks,
+    selectedLessons,
+    sessionProgress,
+    sessionProgressIndex,
+    srsData,
   ]);
 }

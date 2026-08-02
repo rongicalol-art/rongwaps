@@ -65,9 +65,10 @@ export async function getCachedMnemonic(cacheKey: string): Promise<string | null
       debugLogger.warn("Cache", `Supabase error for "${cacheKey}"`, { error: error.message, code: error.code });
     }
     debugLogger.info("Cache", `Supabase miss for "${cacheKey}". Ready to generate...`);
-  } catch (error: any) {
-    debugLogger.warn("Cache", `Failed checking cache/Supabase for "${cacheKey}"`, { error: error?.message });
-    console.warn("Could not fetch from global cache:", error?.message);
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : String(error);
+    debugLogger.warn("Cache", `Failed checking cache/Supabase for "${cacheKey}"`, { error: message });
+    console.warn("Could not fetch from global cache:", message);
   }
   return null;
 }

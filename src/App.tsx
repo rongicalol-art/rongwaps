@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { PiXBold } from 'react-icons/pi';
 import { useAppNavigation } from './hooks/useAppNavigation.tsx';
 import { useAudioUnlock } from './hooks/useAudioUnlock';
 import { useAppStore } from './store/useAppStore';
 import { SAMPLE_BOOKS } from './data/books';
 import { prefetchLocalDictionary } from './services/dictionaryService';
+import { getInteractiveGrammarPart } from './data/interactiveGrammarPages';
 
 import {
   GlobalDictionaryModal,
   LayoutShell,
-  ErrorBoundary
+  ErrorBoundary,
+  AppSettingsDrawer,
+  AppIcon,
+  IconActionButton,
+  LoadingScreen
 } from './lib/widgets';
 
 import { CurriculumLibrary } from './screens/curriculum';
@@ -18,10 +22,20 @@ import { ProfileScreen } from './screens/profile';
 import { SearchScreen } from './screens/search';
 import { LibraryScreen } from './screens/library';
 import { ActivityModals } from './screens/activities/ActivityModals';
-import { DebugWindow } from './screens/debug/DebugWindow';
+import { GrammarLessonScreen } from './screens/grammar-lesson';
 import { useCloudSync } from './hooks/useCloudSync';
 import { useAuth } from './hooks/useAuth';
-import { AuthScreen } from './screens/auth/AuthScreen';
+import { userService } from './services/userService';
+import { useGrammarLessonStore } from './store/useGrammarLessonStore';
+import { useReadingLessonStore } from './store/useReadingLessonStore';
+
+const DebugWindow = React.lazy(() => (
+  import('./screens/debug/DebugWindow').then((module) => ({ default: module.DebugWindow }))
+));
+
+const isDesktopViewport = () => (
+  typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches
+);
 
 export default function App() {
   // Initialize global audio
@@ -35,9 +49,15 @@ export default function App() {
     prefetchLocalDictionary();
   }, []);
 
-  const { activeBookId, setActiveBookId } = useAppStore();
+  const {
+    activeBookId,
+    setActiveBookId,
+    characterPreference,
+    setCharacterPreference,
+    isSettingsOpen,
+    setIsSettingsOpen,
+  } = useAppStore();
   const { currentUser, isLoading } = useAuth();
-  const [isAuthDrawerOpen, setIsAuthDrawerOpen] = useState(false);
   
   const {
     activeTab,
@@ -46,13 +66,100 @@ export default function App() {
     setActiveActivity,
     selectedLessons,
     toggleLesson,
-    selectedBooks,
-    toggleBook,
-    headerProps
+    headerProps,
+    startPathPractice
   } = useAppNavigation();
 
-  const [isNavOpen, setIsNavOpen] = React.useState(() => typeof window !== 'undefined' ? window.innerWidth >= 768 : true);
+  const [isNavOpen, setIsNavOpen] = React.useState(() => isDesktopViewport());
   const [showDebugWindow, setShowDebugWindow] = useState(false);
+  const [activeGrammarPartId, setActiveGrammarPartId] = useState<string | null>(null);
+  const activeGrammarPart = activeGrammarPartId
+    ? getInteractiveGrammarPart(activeGrammarPartId)
+    : undefined;
+
+  const handleResetProgress = React.useCallback(async () => {
+    const appState = useAppStore.getState();
+    const grammarState = useGrammarLessonStore.getState();
+    const readingState = useReadingLessonStore.getState();
+    const appSnapshot = {
+      srsData: appState.srsData,
+      learnedCards: appState.learnedCards,
+      sessionProgress: appState.sessionProgress,
+      currentStreak: appState.currentStreak,
+      longestStreak: appState.longestStreak,
+      totalXp: appState.totalXp,
+      totalCardsReviewed: appState.totalCardsReviewed,
+      totalCardsLearned: appState.totalCardsLearned,
+      lastStudyDate: appState.lastStudyDate,
+      sessionProgressIndex: appState.sessionProgressIndex,
+      lastActivity: appState.lastActivity,
+      isReviewMode: appState.isReviewMode,
+      activeReviewSessionCards: appState.activeReviewSessionCards,
+      swipeFeedback: appState.swipeFeedback,
+    };
+    const grammarSnapshot = {
+      startedPartIds: grammarState.startedPartIds,
+      completedPageIds: grammarState.completedPageIds,
+      completedPartIds: grammarState.completedPartIds,
+    };
+    const readingSnapshot = {
+      startedPartIds: readingState.startedPartIds,
+      completedPartIds: readingState.completedPartIds,
+      savedIntroductions: readingState.savedIntroductions,
+    };
+
+    if (currentUser && appState.syncStatus === 'syncing') {
+      await new Promise<void>((resolve, reject) => {
+        const timeout = window.setTimeout(() => {
+          unsubscribe();
+          reject(new Error('Cloud sync did not become idle before reset.'));
+        }, 10_000);
+        const unsubscribe = useAppStore.subscribe((state) => {
+          if (state.syncStatus === 'syncing') return;
+          window.clearTimeout(timeout);
+          unsubscribe();
+          resolve();
+        });
+      });
+    }
+
+    appState.resetProgress();
+    grammarState.resetProgress();
+    readingState.resetProgress();
+
+    try {
+      if (currentUser) await userService.resetLearningProgress();
+      setActiveActivity(null);
+      setActiveGrammarPartId(null);
+    } catch (error) {
+      useAppStore.setState(appSnapshot);
+      useGrammarLessonStore.setState(grammarSnapshot);
+      useReadingLessonStore.setState(readingSnapshot);
+      throw error;
+    }
+  }, [currentUser, setActiveActivity]);
+
+  const setResponsiveNavOpen = React.useCallback((open: boolean) => {
+    setIsNavOpen(isDesktopViewport() ? true : open);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const desktopQuery = window.matchMedia('(min-width: 768px)');
+    const syncNavToViewport = () => {
+      setIsNavOpen(desktopQuery.matches);
+    };
+
+    syncNavToViewport();
+    desktopQuery.addEventListener('change', syncNavToViewport);
+    window.addEventListener('resize', syncNavToViewport);
+
+    return () => {
+      desktopQuery.removeEventListener('change', syncNavToViewport);
+      window.removeEventListener('resize', syncNavToViewport);
+    };
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -69,12 +176,9 @@ export default function App() {
   const isLibraryOrSearch = activeTab === 'library' || activeTab === 'search';
   const activeBook = isLibraryOrSearch ? SAMPLE_BOOKS[0] : actualActiveBook;
 
-  // Global handler to open auth drawer from any child component
-  const openAuthDrawer = () => setIsAuthDrawerOpen(true);
-
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-[#F7F7F7]">
+      <div className="flex items-center justify-center min-h-screen bg-ui-canvas">
         <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-[#1CB0F6]"></div>
       </div>
     );
@@ -87,18 +191,22 @@ export default function App() {
         activeActivity={activeActivity}
         activeBook={activeBook}
         isNavOpen={isNavOpen}
-        setIsNavOpen={setIsNavOpen}
+        setIsNavOpen={setResponsiveNavOpen}
         headerProps={headerProps}
         onProfileClick={() => setActiveTab('profile')}
-        onSignInClick={openAuthDrawer}
+        onSettingsClick={() => {
+          setIsSettingsOpen(true);
+          if (!isDesktopViewport()) setIsNavOpen(false);
+        }}
         onTabChange={(tab) => {
           setActiveTab(tab);
           setActiveActivity(null);
+          setActiveGrammarPartId(null);
           const store = useAppStore.getState();
           store.setIsReviewMode(false);
           store.setActiveReviewSessionCards(null);
           store.setIsSearchOpen(false);
-          if (window.innerWidth < 768) setIsNavOpen(false);
+          if (!isDesktopViewport()) setIsNavOpen(false);
         }}
         activityModals={
           <ActivityModals 
@@ -122,7 +230,7 @@ export default function App() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
-              className="flex-1 flex flex-col w-full"
+              className="flex w-full shrink-0 flex-col"
             >
               <ErrorBoundary>
                 <CurriculumLibrary
@@ -130,8 +238,7 @@ export default function App() {
                   onActiveBookChange={setActiveBookId}
                   selectedLessons={selectedLessons}
                   onToggleLesson={toggleLesson}
-                  selectedBooks={selectedBooks}
-                  onToggleBook={toggleBook}
+                  onStartPractice={startPathPractice}
                 />
               </ErrorBoundary>
             </motion.div>
@@ -164,7 +271,7 @@ export default function App() {
               transition={{ duration: 0.15 }}
               className="flex-1 flex flex-col w-full h-full overflow-hidden"
             >
-              <div className="w-full max-w-4xl mx-auto px-4 md:px-8 pt-3 pb-2 md:pb-6 flex flex-col gap-6 flex-1 overflow-hidden h-full">
+              <div className="mx-auto flex h-full w-full max-w-[1240px] flex-1 flex-col gap-6 overflow-hidden px-4 pb-2 pt-3 md:px-8 md:pb-6">
                 <ErrorBoundary>
                   <SearchScreen />
                 </ErrorBoundary>
@@ -189,7 +296,6 @@ export default function App() {
                     store.setActiveReviewSessionCards(null);
                     setActiveActivity('flashcards-review');
                   }}
-                  onSignInClick={openAuthDrawer}
                 />
               </ErrorBoundary>
             </motion.div>
@@ -197,12 +303,24 @@ export default function App() {
         </AnimatePresence>
       </LayoutShell>
 
-      {/* Auth Drawer (global overlay, accessible from anywhere) */}
-      {!currentUser && (
-        <AuthScreen isOpen={isAuthDrawerOpen} onClose={() => setIsAuthDrawerOpen(false)} />
-      )}
+      <AnimatePresence>
+        {activeGrammarPart && (
+          <GrammarLessonScreen
+            key={activeGrammarPart.id}
+            part={activeGrammarPart}
+            onClose={() => setActiveGrammarPartId(null)}
+          />
+        )}
+      </AnimatePresence>
 
       <GlobalDictionaryModal />
+      <AppSettingsDrawer
+        isOpen={isSettingsOpen}
+        onClose={() => setIsSettingsOpen(false)}
+        characterPreference={characterPreference}
+        onCharacterPreferenceChange={setCharacterPreference}
+        onResetProgress={handleResetProgress}
+      />
       
       <AnimatePresence>
         {showDebugWindow && (
@@ -210,17 +328,21 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 z-[1000] bg-white flex flex-col overflow-auto overscroll-none"
+            className="workspace-window absolute inset-0 z-[1000] bg-white flex flex-col overflow-auto overscroll-none"
           >
             <div className="sticky top-0 right-0 p-4 shrink-0 flex justify-end bg-white/90 backdrop-blur-sm shadow-sm z-10">
-              <button 
+              <IconActionButton
                 onClick={() => setShowDebugWindow(false)}
-                className="w-12 h-12 bg-[#F7F7F7] text-[#4B4B4B] rounded-full flex items-center justify-center hover:bg-[#E5E5E5] transition-colors"
-              >
-                <PiXBold size={24} />
-              </button>
+                label="Close debug tools"
+                icon={<AppIcon name="close" size={24} />}
+                className="h-12 w-12 rounded-full"
+              />
             </div>
-            <DebugWindow />
+            <div className="relative isolate flex min-h-0 flex-1">
+              <React.Suspense fallback={<LoadingScreen message="Loading debug tools..." />}>
+                <DebugWindow />
+              </React.Suspense>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

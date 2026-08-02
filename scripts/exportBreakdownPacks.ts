@@ -1,0 +1,180 @@
+import { createHash } from 'node:crypto';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { createClient } from '@supabase/supabase-js';
+import * as dotenv from 'dotenv';
+import type { DBCharacterBreakdown } from '../src/types/database';
+
+dotenv.config({ path: resolve(process.cwd(), '.env') });
+
+const PAGE_SIZE = 1000;
+const SCHEMA_VERSION = 1;
+const SHARD_COUNT = 32;
+const OUTPUT_DIRECTORY = resolve(process.cwd(), 'public/data/breakdowns');
+const BREAKDOWN_COLUMNS = 'character,radical,pinyin,definition,decomposition,components_historical';
+
+interface BreakdownPack {
+  schemaVersion: number;
+  shard: number;
+  count: number;
+  items: DBCharacterBreakdown[];
+}
+
+interface ManifestShard {
+  shard: number;
+  count: number;
+  path: string;
+  sha256: string;
+  bytes: number;
+}
+
+function requireEnvironmentVariable(name: string): string {
+  const value = process.env[name];
+  if (!value) throw new Error(`Missing required environment variable: ${name}`);
+  return value;
+}
+
+function getShard(character: string): number {
+  const codePoint = character.codePointAt(0);
+  if (codePoint === undefined) throw new Error('Cannot shard an empty character');
+  return codePoint % SHARD_COUNT;
+}
+
+function hash(content: string): string {
+  return createHash('sha256').update(content).digest('hex');
+}
+
+function shardFilename(shard: number): string {
+  return `shard-${String(shard).padStart(2, '0')}.json`;
+}
+
+async function fetchAllBreakdowns(): Promise<DBCharacterBreakdown[]> {
+  const supabase = createClient(
+    requireEnvironmentVariable('VITE_SUPABASE_URL'),
+    requireEnvironmentVariable('VITE_SUPABASE_ANON_KEY'),
+  );
+  const rows: DBCharacterBreakdown[] = [];
+
+  for (let from = 0; ; from += PAGE_SIZE) {
+    const { data, error } = await supabase
+      .from('character_breakdowns_v2')
+      .select(BREAKDOWN_COLUMNS)
+      .order('character', { ascending: true })
+      .range(from, from + PAGE_SIZE - 1);
+
+    if (error) throw new Error(`Breakdown export failed: ${error.message}`);
+
+    const page = (data || []) as DBCharacterBreakdown[];
+    rows.push(...page);
+    console.log(`Fetched ${rows.length} character breakdowns`);
+
+    if (page.length < PAGE_SIZE) break;
+  }
+
+  return rows;
+}
+
+async function writePacks(rows: DBCharacterBreakdown[]): Promise<void> {
+  const rowsByShard = Array.from(
+    { length: SHARD_COUNT },
+    () => [] as DBCharacterBreakdown[],
+  );
+
+  for (const row of rows) rowsByShard[getShard(row.character)].push(row);
+
+  await mkdir(OUTPUT_DIRECTORY, { recursive: true });
+
+  const shards: ManifestShard[] = [];
+  for (let shard = 0; shard < SHARD_COUNT; shard += 1) {
+    const items = rowsByShard[shard];
+    const pack: BreakdownPack = {
+      schemaVersion: SCHEMA_VERSION,
+      shard,
+      count: items.length,
+      items,
+    };
+    const content = `${JSON.stringify(pack)}\n`;
+    const filename = shardFilename(shard);
+
+    await writeFile(resolve(OUTPUT_DIRECTORY, filename), content, 'utf8');
+    shards.push({
+      shard,
+      count: items.length,
+      path: `/data/breakdowns/${filename}`,
+      sha256: hash(content),
+      bytes: Buffer.byteLength(content),
+    });
+  }
+
+  const contentVersion = hash(shards.map((shard) => shard.sha256).join(':')).slice(0, 16);
+  const manifest = {
+    schemaVersion: SCHEMA_VERSION,
+    version: contentVersion,
+    generatedAt: new Date().toISOString(),
+    totalCount: rows.length,
+    shardCount: SHARD_COUNT,
+    shardStrategy: 'unicode-code-point-modulo',
+    shards,
+  };
+
+  await writeFile(
+    resolve(OUTPUT_DIRECTORY, 'manifest.json'),
+    `${JSON.stringify(manifest, null, 2)}\n`,
+    'utf8',
+  );
+}
+
+async function verifyPacks(sourceRows: DBCharacterBreakdown[]): Promise<void> {
+  const manifest = JSON.parse(
+    await readFile(resolve(OUTPUT_DIRECTORY, 'manifest.json'), 'utf8'),
+  ) as { totalCount: number; shardCount: number; shards: ManifestShard[] };
+  const exportedCharacters: string[] = [];
+
+  if (manifest.shardCount !== SHARD_COUNT || manifest.shards.length !== SHARD_COUNT) {
+    throw new Error('Breakdown manifest has the wrong shard count');
+  }
+
+  for (const manifestShard of manifest.shards) {
+    const packPath = resolve(process.cwd(), 'public', manifestShard.path.replace(/^\//, ''));
+    const content = await readFile(packPath, 'utf8');
+    const pack = JSON.parse(content) as BreakdownPack;
+
+    if (pack.shard !== manifestShard.shard || pack.count !== pack.items.length) {
+      throw new Error(`Invalid metadata in breakdown shard ${manifestShard.shard}`);
+    }
+    if (hash(content) !== manifestShard.sha256) {
+      throw new Error(`Hash mismatch in breakdown shard ${manifestShard.shard}`);
+    }
+    if (pack.items.some((item) => getShard(item.character) !== pack.shard)) {
+      throw new Error(`Character stored in the wrong breakdown shard ${pack.shard}`);
+    }
+
+    exportedCharacters.push(...pack.items.map((item) => item.character));
+  }
+
+  const sourceCharacters = sourceRows.map((row) => row.character).sort();
+  exportedCharacters.sort();
+
+  if (manifest.totalCount !== sourceCharacters.length || exportedCharacters.length !== sourceCharacters.length) {
+    throw new Error(`Count mismatch: source=${sourceCharacters.length}, exported=${exportedCharacters.length}`);
+  }
+  if (new Set(exportedCharacters).size !== exportedCharacters.length) {
+    throw new Error('Duplicate characters found in exported breakdown packs');
+  }
+  if (sourceCharacters.some((character, index) => character !== exportedCharacters[index])) {
+    throw new Error('Exported breakdown characters do not exactly match Supabase');
+  }
+
+  console.log(`Verified ${exportedCharacters.length} breakdowns across ${SHARD_COUNT} shards`);
+}
+
+async function main(): Promise<void> {
+  const rows = await fetchAllBreakdowns();
+  await writePacks(rows);
+  await verifyPacks(rows);
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

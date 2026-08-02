@@ -20,15 +20,15 @@ export function Card3D({
   ...props 
 }: Card3DProps) {
   const depthClasses = {
-    sm: 'border-b-[3px]',
-    md: 'border-b-[4px]',
-    lg: 'border-b-[6px]'
+    sm: 'border-b-2',
+    md: 'border-b-2',
+    lg: 'border-b-2'
   };
 
   return (
     <div 
       className={cn(
-        "bg-white rounded-[24px] border-[3px] flex flex-col shadow-sm relative",
+        "relative flex flex-col rounded-[24px] border-2 bg-white",
         edgeColor,
         depthClasses[depth],
         className

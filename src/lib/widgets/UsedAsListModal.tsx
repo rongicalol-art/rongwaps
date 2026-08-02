@@ -1,25 +1,24 @@
 import React from 'react';
-import { motion } from 'motion/react';
-import { ScreenHeader } from './ScreenHeader';
+import { WorkspaceDetailShell } from './WorkspaceDetailShell';
 import { useAppStore } from '../../store/useAppStore';
 import { UsedAsCompactItem } from './breakdown/UsedAsCompactItem';
 import { vocabularyCache } from '../../utils/cache';
 import { FLASHCARDS_DATA } from '../../data/flashcards';
 import type { Flashcard } from '../../data/flashcards';
-import { useCompactHeaderOnScroll } from '../../hooks/useCompactHeaderOnScroll';
+import { SAMPLE_BOOKS } from '../../data/books';
+
+type CourseBook = (typeof SAMPLE_BOOKS)[number];
 
 interface UsedAsListModalProps {
   initialChar: string;
   usedAsComponents: string[];
-  activeBook: any;
+  activeBook: CourseBook;
   onClose: () => void;
   onWordClick?: (w: string) => void;
 }
 
 export function UsedAsListModal({ initialChar, usedAsComponents, activeBook, onClose, onWordClick }: UsedAsListModalProps) {
   const { setDictionaryWord } = useAppStore();
-  const { isHeaderCompact, handleHeaderScroll } = useCompactHeaderOnScroll();
-
   const { inCourseItems, outOfCourseItems } = React.useMemo(() => {
     const keys = ['vocab-all-all', 'vocab-1-all', 'vocab-2-all', 'vocab-3-all', 'vocab-4-all', 'vocab-5-all', 'vocab-6-all'];
     const loadedList: Flashcard[] = [];
@@ -77,22 +76,13 @@ export function UsedAsListModal({ initialChar, usedAsComponents, activeBook, onC
   }, [usedAsComponents]);
 
   return (
-    <motion.div 
-      initial={{ x: '100%' }}
-      animate={{ x: 0 }}
-      exit={{ x: '100%' }}
-      transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] }}
-      className="absolute inset-0 z-[400] w-full h-full bg-[#F7F7F7] flex flex-col pt-0 font-sans shadow-2xl"
+    <WorkspaceDetailShell
+      ariaLabel={`Characters containing ${initialChar}`}
+      title={`Characters with ${initialChar}`}
+      onClose={onClose}
+      maxWidthClassName="max-w-[900px]"
+      contentInnerClassName="flex flex-col gap-5 pb-24"
     >
-      <ScreenHeader 
-         onClose={onClose}
-         title={`Characters with ${initialChar}`}
-         compact={isHeaderCompact}
-         className="bg-white border-b-[3px] border-[#E5E5E5] w-full max-w-full px-4 sm:px-6 shadow-sm"
-      />
-
-      <div className="flex-1 overflow-y-auto custom-scrollbar" onScroll={handleHeaderScroll}>
-        <div className="max-w-[768px] mx-auto w-full px-4 py-6 sm:py-8 flex flex-col pb-24 relative min-h-full gap-5">
           {(() => {
             if (inCourseItems.length === 0) return null;
             const groups: { [key: number]: typeof inCourseItems } = {};
@@ -108,7 +98,7 @@ export function UsedAsListModal({ initialChar, usedAsComponents, activeBook, onC
                 {sortedIds.map(bookId => {
                   const items = groups[bookId];
                   return (
-                    <div key={bookId} className="flex flex-col w-full bg-white rounded-[20px] border-[2px] border-[#E5E5E5] border-b-[4px] overflow-hidden">
+                    <div key={bookId} className="flex w-full flex-col overflow-hidden rounded-[20px] bg-ui-surface shadow-sm">
                       {items.map((item, idx) => (
                         <UsedAsCompactItem
                           key={item.char}
@@ -128,10 +118,10 @@ export function UsedAsListModal({ initialChar, usedAsComponents, activeBook, onC
 
           {outOfCourseItems.length > 0 && (
             <div className="flex flex-col gap-2">
-              <div className="text-[12px] font-black uppercase tracking-wider text-[#AFB6BB] ml-3 select-none">
+              <div className="ml-3 select-none text-[12px] font-black uppercase tracking-wider text-ui-muted">
                 Other Characters
               </div>
-              <div className="flex flex-col w-full bg-white rounded-[20px] border-[2px] border-[#E5E5E5] border-b-[4px] overflow-hidden">
+              <div className="flex w-full flex-col overflow-hidden rounded-[20px] bg-ui-surface shadow-sm">
                 {outOfCourseItems.map((item, idx) => (
                   <UsedAsCompactItem
                     key={item.char}
@@ -145,8 +135,6 @@ export function UsedAsListModal({ initialChar, usedAsComponents, activeBook, onC
               </div>
             </div>
           )}
-        </div>
-      </div>
-    </motion.div>
+    </WorkspaceDetailShell>
   );
 }

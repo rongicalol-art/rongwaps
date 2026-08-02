@@ -1,13 +1,9 @@
 import React, { memo } from 'react';
 import { LottiePlayer } from './LottiePlayer';
 import sleepingAnimation from '../../assets/animations/Sleeping.json';
-import rainbowAnimation from '../../assets/animations/rainbow_twist.json';
-import runningAnimation from '../../assets/animations/Cute Boy Running.json';
 import sandyLoadingAnimation from '../../assets/animations/sandy-loading.json';
 import book2Animation from '../../assets/animations/book 2logo.json';
 import book3Animation from '../../assets/animations/book 3 logo.json';
-
-import gymAnimation from '../../assets/animations/Lifestyle of when weighing gym.json';
 
 export const CourseIcon = memo(({ id, className = '' }: { id: number; className?: string }) => {
   switch (id) {

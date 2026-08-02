@@ -3,7 +3,7 @@
  * database reads (like characters and dictionary fetches).
  */
 export class AppCache {
-  private cache = new Map<string, any>();
+  private cache = new Map<string, unknown>();
   private maxSize: number;
 
   constructor(maxSize: number = 500) {

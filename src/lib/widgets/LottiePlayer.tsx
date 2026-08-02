@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import Lottie, { LottieComponentProps } from 'lottie-react';
+import React, { lazy, Suspense, useState, useEffect } from 'react';
+import type { LottieComponentProps } from 'lottie-react';
+import { loadJsonAsset } from '../../services/contentAssetService';
+
+const Lottie = lazy(() => import('lottie-react'));
 
 export interface LottiePlayerProps extends Omit<LottieComponentProps, 'animationData'> {
   /**
    * Directly imported JSON data (e.g., `import animation from '../assets/anim.json'`)
    */
-  animationData?: any;
+  animationData?: LottieComponentProps['animationData'];
   /**
    * Or a URL to a Lottie JSON file to fetch from the web
    */
@@ -22,7 +25,7 @@ export const LottiePlayer: React.FC<LottiePlayerProps> = ({
   style,
   ...props 
 }) => {
-  const [data, setData] = useState<any>(animationData);
+  const [data, setData] = useState<LottieComponentProps['animationData']>(animationData);
   const [loading, setLoading] = useState<boolean>(!animationData && !!src);
   const [error, setError] = useState<boolean>(false);
 
@@ -36,22 +39,25 @@ export const LottiePlayer: React.FC<LottiePlayerProps> = ({
 
     // Otherwise, fetch from src URL
     if (src && !animationData) {
+      let isCurrent = true;
       setLoading(true);
       setError(false);
-      fetch(src)
-        .then(res => {
-          if (!res.ok) throw new Error("Failed to fetch");
-          return res.json();
-        })
+      loadJsonAsset<LottieComponentProps['animationData']>(src)
         .then(json => {
+          if (!isCurrent) return;
           setData(json);
           setLoading(false);
         })
         .catch(err => {
+          if (!isCurrent) return;
           console.error("Failed to load Lottie source:", err);
           setError(true);
           setLoading(false);
         });
+
+      return () => {
+        isCurrent = false;
+      };
     }
   }, [src, animationData]);
 
@@ -59,7 +65,7 @@ export const LottiePlayer: React.FC<LottiePlayerProps> = ({
     return (
       <div 
         style={{ width, height, ...style }} 
-        className="animate-pulse bg-[#E5E5E5] rounded-[24px] flex items-center justify-center"
+        className="animate-pulse bg-ui-border rounded-[24px] flex items-center justify-center"
       />
     );
   }
@@ -68,16 +74,18 @@ export const LottiePlayer: React.FC<LottiePlayerProps> = ({
     return (
       <div 
         style={{ width, height, ...style }} 
-        className="bg-[#F7F7F7] border-[3px] border-[#E5E5E5] rounded-[24px] flex items-center justify-center p-4 text-center"
+        className="bg-ui-canvas border-2 border-ui-border rounded-[24px] flex items-center justify-center p-4 text-center"
       >
-        <span className="text-[#AFB6BB] font-bold text-sm">Failed to load animation</span>
+        <span className="text-ui-muted font-bold text-sm">Failed to load animation</span>
       </div>
     );
   }
 
   return (
     <div style={{ width, height, ...style }} className="flex justify-center items-center">
-      <Lottie animationData={data} {...props} style={{ width: '100%', height: '100%' }} />
+      <Suspense fallback={<div className="h-full w-full animate-pulse rounded-[24px] bg-ui-border" />}>
+        <Lottie animationData={data} {...props} style={{ width: '100%', height: '100%' }} />
+      </Suspense>
     </div>
   );
 };

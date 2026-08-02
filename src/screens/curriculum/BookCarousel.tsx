@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { PiLockKeyFill } from 'react-icons/pi';
-import { CourseIcon } from '../../lib/widgets';
+import { AppIcon, CourseIcon } from '../../lib/widgets';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { motion } from 'motion/react';
 
@@ -140,7 +139,7 @@ export function BookCarousel({ activeBookId, onActiveBookChange }: BookCarouselP
 
   return (
     <>
-      <div className="w-full pb-6 pt-6 relative overflow-hidden">
+      <div className="relative -mt-3 w-full overflow-hidden pb-3 pt-0 sm:-mt-2 md:-mt-1 md:pb-5 md:pt-0">
         <div 
           ref={containerRef}
           onScroll={handleScroll}
@@ -149,7 +148,11 @@ export function BookCarousel({ activeBookId, onActiveBookChange }: BookCarouselP
             scrollbarWidth: 'none', 
             msOverflowStyle: 'none',
             WebkitOverflowScrolling: 'touch',
-            touchAction: 'pan-x pan-y',
+            // The book strip is a horizontal gesture surface. Allowing pan-y
+            // here lets downward drags that begin on the artwork move the
+            // page unexpectedly instead of selecting a book.
+            touchAction: 'pan-x',
+            overscrollBehaviorY: 'none',
             WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
             maskImage: "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
           }}
@@ -180,8 +183,8 @@ export function BookCarousel({ activeBookId, onActiveBookChange }: BookCarouselP
                     />
                     {book.status === "locked" && (
                       <div className="absolute inset-0 z-30 flex items-center justify-center">
-                        <div className="w-16 h-16 rounded-[24px] bg-white/70 backdrop-blur-md flex items-center justify-center border-b-[4px] border-[#E5E5E5]">
-                          <PiLockKeyFill size={32} className="text-[#AFB6BB]" />
+                        <div className="flex h-16 w-16 items-center justify-center rounded-[24px] border-b-4 border-ui-border bg-white/70 text-ui-muted backdrop-blur-md">
+                          <AppIcon name="lock" size={32} />
                         </div>
                       </div>
                     )}
@@ -200,7 +203,7 @@ export function BookCarousel({ activeBookId, onActiveBookChange }: BookCarouselP
             className={`h-2 rounded-full transition-all duration-300 ${
               b.id === activeBookId
                 ? `w-4 ${SAMPLE_BOOKS.find((sb) => sb.id === activeBookId)?.accentBg}`
-                : "w-2 bg-[#E5E5E5]"
+                : "w-2 bg-ui-border"
             }`}
           />
         ))}

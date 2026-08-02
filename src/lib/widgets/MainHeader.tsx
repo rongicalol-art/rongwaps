@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
-import { PiPlayFill, PiGearBold, PiSignInBold } from 'react-icons/pi';
+import React from 'react';
 import { cn } from '../../utils/cn';
 import { motion } from 'motion/react';
 import { useAppStore } from '../../store/useAppStore';
 import { useAuth } from '../../hooks/useAuth';
+import { Soft3DButton } from './Soft3DButton';
+import { AppIcon } from './AppIcon';
+import { SAMPLE_BOOKS } from '../../data/books';
 
-interface MainHeaderProps {
-  activeBook: any; // Using any for simplicity here to access .accentBgLight, .accent, etc.
+type CourseBook = (typeof SAMPLE_BOOKS)[number];
+
+export interface MainHeaderProps {
+  activeBook: CourseBook;
   title?: string;
   leftIcon?: React.ReactNode;
   onLeftIconClick?: () => void;
-  onSignInClick?: () => void;
   extraLeftContent?: React.ReactNode;
   rightContent?: React.ReactNode;
   extraRightContent?: React.ReactNode;
   showPlayButton?: boolean;
   onPlayClick?: () => void;
-  compact?: boolean;
 }
 
 export function MainHeader({ 
@@ -24,24 +26,32 @@ export function MainHeader({
   title = "Study Space",
   leftIcon,
   onLeftIconClick,
-  onSignInClick,
   extraLeftContent,
   rightContent,
   extraRightContent,
   showPlayButton, 
-  onPlayClick,
-  compact = false
+  onPlayClick
 }: MainHeaderProps) {
-  const { characterPreference, setCharacterPreference, isSearchOpen } = useAppStore();
+  const { isSearchOpen } = useAppStore();
   const { currentUser } = useAuth();
-  const [showSettings, setShowSettings] = useState(false);
+  const resolvedLeftIcon = leftIcon !== undefined ? leftIcon : (
+    (currentUser?.user_metadata?.avatar_url || currentUser?.user_metadata?.picture) ? (
+      <img
+        src={currentUser?.user_metadata?.avatar_url || currentUser?.user_metadata?.picture}
+        alt=""
+        className="h-10 w-10 shrink-0 rounded-full border-2 border-ui-border bg-ui-surface object-cover transition-all duration-200"
+        referrerPolicy="no-referrer"
+      />
+    ) : (
+      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${activeBook.accentBg}`}>
+        <span className="font-bold text-white">{activeBook.title?.[0] || 'S'}</span>
+      </span>
+    )
+  );
 
   return (
-    <header className={`flex flex-col w-full sticky top-0 z-[100] bg-white transition-all duration-200 ease-out border-b-[4px] border-[#E5E5E5]`}>
-      <div className={cn(
-        "flex items-center justify-between px-6 md:px-12 w-full max-w-5xl mx-auto relative z-10 transition-all duration-200 ease-out",
-        compact ? "py-2" : "py-3 md:py-4"
-      )}>
+    <header className="window-header sticky top-0 z-[100] flex w-full flex-col border-b-2 border-ui-border bg-ui-surface">
+      <div className="relative z-10 mx-auto flex w-full max-w-5xl items-center justify-between px-3 py-2.5 sm:px-6 md:px-12">
         <motion.div layout transition={{ type: "spring", stiffness: 450, damping: 30 }} className="flex items-center gap-3 relative overflow-hidden">
           <div className="relative z-10 shrink-0">
              {extraLeftContent}
@@ -57,65 +67,37 @@ export function MainHeader({
             transition={{ type: "spring", stiffness: 450, damping: 30 }}
             className="flex items-center gap-3 origin-left whitespace-nowrap"
           >
-            <div 
-              onClick={onLeftIconClick} 
-              className={onLeftIconClick ? "cursor-pointer hover:opacity-80 active:scale-95 transition-all" : ""}
-            >
-              {leftIcon !== undefined ? leftIcon : (
-                (currentUser?.user_metadata?.avatar_url || currentUser?.user_metadata?.picture) ? (
-                  <img 
-                    src={currentUser?.user_metadata?.avatar_url || currentUser?.user_metadata?.picture} 
-                    alt="Profile" 
-                    className={cn(
-                      "rounded-full shrink-0 transition-all duration-200 object-cover border-[2px] border-[#E5E5E5] bg-white shadow-sm",
-                      compact ? "h-8 w-8" : "h-10 w-10"
-                    )}
-                    referrerPolicy="no-referrer"
-                  />
-                ) : (
-                  <div className={cn(
-                    `rounded-full flex items-center justify-center shrink-0 transition-all duration-200 ${activeBook.accentBg}`,
-                    compact ? "h-8 w-8" : "h-10 w-10"
-                  )}>
-                    <span className="text-white font-bold">{activeBook.title?.[0] || 'S'}</span>
-                  </div>
-                )
-              )}
-            </div>
-            <h1 
+            {resolvedLeftIcon !== null && (
+              onLeftIconClick ? (
+                <button
+                  type="button"
+                  onClick={onLeftIconClick}
+                  aria-label="Open profile"
+                  className="flex min-h-11 min-w-11 items-center justify-center rounded-full transition-all hover:opacity-80 active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25"
+                >
+                  {resolvedLeftIcon}
+                </button>
+              ) : resolvedLeftIcon
+            )}
+            <div
               className={cn(
                 "font-extrabold text-[#4B4B4B] tracking-tight whitespace-nowrap shrink-0 transition-all duration-200",
-                compact ? "text-[15px] md:text-[16px]" : "text-[19px] md:text-xl"
+                "text-[19px] md:text-xl"
               )}
             >
               {title}
-            </h1>
+            </div>
           </motion.div>
         </motion.div>
         <motion.div layout transition={{ type: "spring", stiffness: 450, damping: 30 }} className="flex items-center gap-2 justify-end flex-1 max-w-full">
-          {/* If user is not signed in and onSignInClick is provided, show a "Sign In" button in the header */}
-          {!currentUser && onSignInClick ? (
-            <button
-              onClick={onSignInClick}
-              className={cn(
-                "flex items-center gap-2 rounded-[16px] bg-[#1CB0F6] text-white font-extrabold border-b-[3px] border-[#1899D6] active:border-b-[0px] active:translate-y-[3px] transition-all hover:brightness-110",
-                compact ? "px-3 py-1.5 text-xs" : "px-4 py-2 text-sm"
-              )}
-            >
-              <PiSignInBold size={16} />
-              Sign In
-            </button>
-          ) : rightContent !== undefined ? (
+          {rightContent !== undefined ? (
             rightContent
           ) : (
-            /* Header Play Button (2 States: Active / Inactive) */
             <motion.div
               initial={false}
-              animate={{ 
-                scale: showPlayButton ? 1 : 0.8,
-                opacity: showPlayButton ? 1 : 0.8,
-                width: compact ? 40 : 48,
-                height: compact ? 40 : 48,
+              animate={{
+                scale: showPlayButton ? 1 : 0.96,
+                opacity: showPlayButton ? 1 : 0.82,
               }}
               transition={{ 
                 type: "spring", 
@@ -125,30 +107,32 @@ export function MainHeader({
               }}
               className="flex items-center justify-center shrink-0"
             >
-              <motion.button 
+              <Soft3DButton
+                type="button"
                 disabled={!showPlayButton}
                 onClick={showPlayButton ? onPlayClick : undefined}
                 aria-label={showPlayButton ? "Start practice" : "Practice not available"}
-                animate={{
-                  borderBottomWidth: 4
-                }}
-                whileTap={showPlayButton ? { y: 4, borderBottomWidth: 0, transition: { duration: 0.05 } } : {}}
+                variant={showPlayButton ? "custom" : "locked"}
+                depth="sm"
                 className={cn(
-                   "relative rounded-full flex items-center justify-center outline-none group border-[3px] transition-colors duration-150 w-full h-full",
-                   showPlayButton
-                      ? `text-white ${activeBook.accentBg} ${activeBook.buttonEdge} border-transparent cursor-pointer`
-                      : `bg-[#F7F7F7] text-[#AFB6BB] border-[#E5E5E5] cursor-not-allowed`
+                  "min-h-11 w-auto rounded-full px-3 py-2 text-[11px] shadow-sm transition-all duration-150 md:px-4 md:py-2.5 md:text-[12px]",
+                  showPlayButton
+                    ? `${activeBook.accentBg} ${activeBook.buttonEdge} text-white`
+                    : "bg-[#F7F7F7] text-[#AFB6BB] border-[#E5E5E5]"
                 )}
-                style={{ WebkitTapHighlightColor: 'transparent' }}
               >
-                <div 
-                   className={cn("ml-0.5 transition-transform duration-300", !showPlayButton ? 'scale-90 opacity-70' : 'scale-100 group-active:scale-95')}
-                >
-                  <PiPlayFill size={20} />
+                <div className={cn(
+                  "flex items-center gap-2 font-black tracking-wide uppercase transition-transform duration-300",
+                  "text-[12px] md:text-[13px]",
+                  !showPlayButton ? 'scale-95 opacity-80' : 'scale-100 group-active:scale-95'
+                )}>
+                  <AppIcon name="play" size={16} className="shrink-0" />
+                  <span>Practice</span>
                 </div>
-              </motion.button>
+              </Soft3DButton>
             </motion.div>
           )}
+
           {extraRightContent}
         </motion.div>
       </div>

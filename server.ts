@@ -12,6 +12,33 @@ dotenv.config();
 const app = express();
 const PORT = 3000;
 
+interface MnemonicPart {
+  char: string;
+  definition?: string;
+}
+
+interface GenerateMnemonicBody {
+  char?: string;
+  word?: string;
+  definition?: string;
+  components?: MnemonicPart[];
+  charactersInfo?: MnemonicPart[];
+}
+
+function getErrorMessage(error: unknown): string {
+  if (error instanceof Error) return error.message;
+  if (typeof error === 'object' && error !== null && 'message' in error) {
+    return typeof error.message === 'string' ? error.message : '';
+  }
+  return typeof error === 'string' ? error : '';
+}
+
+function getErrorStatus(error: unknown): unknown {
+  return typeof error === 'object' && error !== null && 'status' in error
+    ? error.status
+    : undefined;
+}
+
 app.use(express.json());
 
 // Initialize Google Gen AI client with server-side API Key
@@ -50,7 +77,7 @@ app.post("/api/generate-mnemonic", async (req: express.Request, res: express.Res
       return res.status(401).json({ error: "Unauthorized request." });
     }
 
-    const { char, word, pinyin, definition, components, charactersInfo } = req.body;
+    const { char, word, definition, components, charactersInfo } = req.body as GenerateMnemonicBody;
 
     // Determine mode: word or character
     const isWord = !!word;
@@ -80,7 +107,7 @@ app.post("/api/generate-mnemonic", async (req: express.Request, res: express.Res
       // ── Word mnemonic ───────────────────────────────────────────────
       let charactersDetails = "";
       if (charactersInfo && charactersInfo.length > 0) {
-        charactersDetails = charactersInfo.map((c: any) => {
+        charactersDetails = charactersInfo.map((c) => {
           const shortDef = (c.definition || "unknown").split(/[;,/]/)[0].trim();
           return `${c.char}/${shortDef}`;
         }).join(", ");
@@ -98,7 +125,7 @@ Example: A **mouth** (口) **begging** (乞) for food, so together means **to ea
       // ── Character mnemonic ──────────────────────────────────────────
       let componentsInfo = "";
       if (components && components.length > 0) {
-        componentsInfo = components.map((c: any) => {
+        componentsInfo = components.map((c) => {
           const shortDef = (c.definition || "unknown").split(/[;,/]/)[0].trim();
           return `${c.char}/${shortDef}`;
         }).join(", ");
@@ -133,12 +160,13 @@ Example: Three drops of water flowing downward, so this character means **water*
 
     const resultText = response.text?.trim() || "Could not generate a mnemonic at this time.";
     res.json({ mnemonic: resultText, usage });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Backend Error /api/generate-mnemonic:", error);
-    if (error?.status === "RESOURCE_EXHAUSTED" || error?.message?.includes("exceeded")) {
+    const message = getErrorMessage(error);
+    if (getErrorStatus(error) === "RESOURCE_EXHAUSTED" || message.includes("exceeded")) {
       return res.status(200).json({ mnemonic: "Generating online failed (Quota Over). Consider contributing to the local pre-generated dictionary file!" });
     }
-    res.status(500).json({ error: error.message || "Failed to generate mnemonic" });
+    res.status(500).json({ error: message || "Failed to generate mnemonic" });
   }
 });
 
@@ -171,7 +199,7 @@ app.get("/api/audio/*", async (req: express.Request, res: express.Response) => {
     res.setHeader("Content-Length", buffer.length);
     res.setHeader("Cache-Control", "public, max-age=86400");
     res.send(buffer);
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("Audio proxy error:", err);
     res.status(500).json({ error: "Failed to fetch audio" });
   }

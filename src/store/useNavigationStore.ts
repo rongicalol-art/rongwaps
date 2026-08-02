@@ -1,10 +1,11 @@
 import { create } from 'zustand';
+import type { ActivityType } from '../types/models';
 
 interface NavigationState {
   activeTab: 'path' | 'search' | 'library' | 'profile';
   setActiveTab: (tab: 'path' | 'search' | 'library' | 'profile') => void;
-  activeActivity: 'flashcards' | 'flashcards-review' | 'flashcards-library' | 'listening' | 'quiz' | 'writing' | 'create-card' | 'personal-vocab' | null;
-  setActiveActivity: (activity: 'flashcards' | 'flashcards-review' | 'flashcards-library' | 'listening' | 'quiz' | 'writing' | 'create-card' | 'personal-vocab' | null) => void;
+  activeActivity: ActivityType;
+  setActiveActivity: (activity: ActivityType) => void;
   selectedLessons: number[];
   setSelectedLessons: (lessons: number[] | ((prev: number[]) => number[])) => void;
   selectedBooks: number[];

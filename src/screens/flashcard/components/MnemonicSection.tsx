@@ -1,10 +1,13 @@
 import { PiLightbulbFill } from 'react-icons/pi';
 import { formatMemoryHook } from '../../../utils/textUtils';
+import { SAMPLE_BOOKS } from '../../../data/books';
+
+type CourseBook = (typeof SAMPLE_BOOKS)[number];
 
 interface MnemonicSectionProps {
   loading: boolean;
   mnemonic: string | null;
-  activeBook: any;
+  activeBook: CourseBook;
   handleGenerateMnemonic: () => void;
 }
 
@@ -16,7 +19,7 @@ export function MnemonicSection({
 }: MnemonicSectionProps) {
   if (loading) {
     return (
-      <div className="relative w-full rounded-[24px] border-[3px] border-b-[6px] border-[#E5E5E5] bg-white p-5 sm:p-6 overflow-hidden">
+      <div className="relative w-full rounded-[24px] border-2 border-b-[6px] border-[#E5E5E5] bg-white p-5 sm:p-6 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-2 bg-[#E5E5E5]" />
         <div className="flex flex-row items-start gap-4">
           <div className="shrink-0 mt-1">
@@ -34,7 +37,7 @@ export function MnemonicSection({
 
   if (mnemonic) {
     return (
-      <div className="relative w-full rounded-[24px] border-[3px] border-b-[6px] border-[#E5E5E5] bg-white p-5 sm:p-6 overflow-hidden">
+      <div className="relative w-full rounded-[24px] border-2 border-b-[6px] border-[#E5E5E5] bg-white p-5 sm:p-6 overflow-hidden">
         {/* Colorful top ribbon */}
         <div className={`absolute top-0 left-0 w-full h-2 ${activeBook.accentBg || 'bg-[#1CB0F6]'}`} />
         
@@ -56,7 +59,7 @@ export function MnemonicSection({
   }
 
   return (
-    <div className="w-full rounded-[24px] border-[3px] border-dashed border-[#E5E5E5] p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#F7F7F7]">
+    <div className="w-full rounded-[24px] border-2 border-dashed border-[#E5E5E5] p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#F7F7F7]">
       <div className="flex flex-row items-center text-left gap-4 flex-1">
         <div className="shrink-0">
           <PiLightbulbFill size={36} className="text-[#AFB6BB] opacity-60" />

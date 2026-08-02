@@ -37,7 +37,7 @@ export function GardenVisualization({ onWaterGarden }: { onWaterGarden: () => vo
   const cardsToReview = gardenStats.withered;
 
   return (
-    <div className="w-full bg-white rounded-[24px] border-[3px] border-b-[6px] border-[#E5E5E5] p-6 flex flex-col gap-6 relative overflow-hidden">
+    <div className="w-full bg-white rounded-[24px] border-2 border-b-[6px] border-[#E5E5E5] p-6 flex flex-col gap-6 relative overflow-hidden">
       {/* Decorative background element using active book theme color */}
       <div 
         className="absolute -right-10 -bottom-10 w-40 h-40 rounded-full blur-2xl pointer-events-none opacity-20"

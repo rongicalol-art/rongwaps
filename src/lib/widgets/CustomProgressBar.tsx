@@ -2,16 +2,24 @@ export interface CustomProgressBarProps {
   progress: number; // 0 to 100
   className?: string;
   showText?: boolean;
+  size?: 'sm' | 'md';
+  accentClassName?: string;
 }
 
-export function CustomProgressBar({ progress, className = '', showText = false }: CustomProgressBarProps) {
+export function CustomProgressBar({
+  progress,
+  className = '',
+  showText = false,
+  size = 'md',
+  accentClassName = 'bg-brand-primary',
+}: CustomProgressBarProps) {
   const clampedProgress = Math.min(100, Math.max(0, progress));
   
   return (
     <div className={`flex items-center gap-3 w-full ${className}`}>
-      <div className="h-4 w-full bg-[#E5E5E5] rounded-full flex-1 relative overflow-hidden">
+      <div className={`${size === 'sm' ? 'h-2.5' : 'h-4'} w-full bg-ui-border rounded-full flex-1 relative overflow-hidden`}>
         <div 
-          className="h-full bg-brand-primary rounded-full transition-all duration-500 ease-out relative"
+          className={`h-full ${accentClassName} rounded-full transition-all duration-500 ease-out relative`}
           style={{ width: `${clampedProgress}%`, minWidth: clampedProgress > 0 ? '24px' : '0px' }}
         >
           {clampedProgress > 0 && (

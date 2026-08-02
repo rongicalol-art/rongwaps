@@ -2,6 +2,7 @@ export interface Flashcard {
   id: string;
   bookId: number;
   lessonId: number;
+  partId?: number;
   front: string;
   back: string;
   pinyin?: string; // or pronunciation

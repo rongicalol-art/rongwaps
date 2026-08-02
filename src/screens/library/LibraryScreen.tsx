@@ -1,22 +1,66 @@
-import { AnimatePresence, motion } from 'motion/react';
-import { 
-  PiPlusBold,
-  PiBookmarkSimpleFill,
-} from 'react-icons/pi';
+import { motion } from 'motion/react';
+import { PiPlusBold, PiBookmarkSimpleFill, PiSparkleFill, PiCaretLeftBold } from 'react-icons/pi';
 import { useLibrary } from './hooks/useLibrary';
 import { FolderModal } from './FolderModal';
 import { DeleteCardModal } from './DeleteCardModal';
 import { DeleteFolderModal } from './DeleteFolderModal';
-import { VirtualizedList } from './VirtualizedList';
-import { FolderItem } from './components/FolderItem';
 import { LibrarySkeleton } from './components/LibrarySkeleton';
+import { SpellCard } from './components/SpellCard';
+import { LibraryHomeView } from './components/LibraryHomeView';
+import { SearchBar3D, Soft3DButton } from '../../lib/widgets';
+import { cn } from '../../utils/cn';
+import type { DBDictionaryEntry } from '../../types/database';
+import type { UserFlashcard } from '../../types/models';
 
 interface LibraryScreenProps {
   onAddCard?: () => void;
   onPlayFlashcards?: () => void;
 }
 
-export function LibraryScreen({ onAddCard }: LibraryScreenProps) {
+// Clean Duo-style empty state
+function EmptyState({ onAddCard, isStarred }: { onAddCard?: () => void; isStarred: boolean }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+      className="flex flex-col items-center justify-center py-20 px-6"
+    >
+      {/* Big friendly icon */}
+      <motion.div
+        animate={{ y: [0, -6, 0] }}
+        transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut' }}
+        className={`w-24 h-24 rounded-full flex items-center justify-center mb-6 ${
+          isStarred ? 'bg-[#FFF3D0]' : 'bg-[#E5F7FF]'
+        }`}
+      >
+        {isStarred ? (
+          <PiBookmarkSimpleFill size={48} className="text-[#FFB020]" />
+        ) : (
+          <PiSparkleFill size={48} className="text-[#1CB0F6]" />
+        )}
+      </motion.div>
+
+      <h3 className="font-black text-ui-ink-strong text-[20px] mb-2 text-center">
+        {isStarred ? 'No starred words yet!' : 'Nothing here yet!'}
+      </h3>
+      <p className="text-[14px] font-bold text-ui-muted text-center leading-relaxed max-w-[260px] mb-6">
+        {isStarred
+          ? 'Tap the star on words in the dictionary to save them here.'
+          : 'Create your first flashcard to start collecting!'}
+      </p>
+
+      {!isStarred && onAddCard && (
+        <Soft3DButton variant="primary" onClick={onAddCard} className="w-auto px-8">
+          <PiPlusBold size={18} />
+          Create Card
+        </Soft3DButton>
+      )}
+    </motion.div>
+  );
+}
+
+export function LibraryScreen({ onAddCard, onPlayFlashcards }: LibraryScreenProps) {
   const {
     toggleFavorite,
     setDictionaryWord,
@@ -42,122 +86,144 @@ export function LibraryScreen({ onAddCard }: LibraryScreenProps) {
     activeCollection,
     items,
     activeView,
-  } = useLibrary(onAddCard);
+    setActiveView,
+  } = useLibrary();
+
+  const isStarred = libraryActiveFolder === 'starred';
 
   return (
-    <div className="flex-1 flex flex-col w-full text-[#4B4B4B] h-full overflow-y-auto relative bg-[#F7F7F7]">
-      <AnimatePresence mode="wait">
-        {activeView === 'home' && (
-          <motion.div 
-            key="home-view"
-            className="flex flex-col pb-16 pt-2 animate-in fade-in zoom-in-[0.98] duration-500 ease-out w-full overflow-x-hidden min-h-full"
-          >
-            {/* Folders Scroll List */}
-            <div className="w-full pb-8 pt-4 relative overflow-x-auto flex px-4 custom-scrollbar">
-              <div className="flex gap-4 sm:gap-8 min-w-max pb-2 mx-auto grow shrink-0 lg:justify-center justify-start items-start">
-                {allCollections.map((c) => {
-                  const isActive = c.id === libraryActiveFolder;
+    <div className="flex-1 flex flex-col w-full text-ui-ink h-full overflow-y-auto relative bg-ui-canvas">
+      {activeView === 'home' && (
+        <motion.div
+          key="home-view"
+          className="mx-auto flex min-h-full w-full max-w-6xl flex-col px-4 pb-24 pt-5 md:px-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.15 }}
+        >
+          <LibraryHomeView
+            collections={allCollections}
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
+            onSelectCollection={(id) => {
+              setLibraryActiveFolder(id);
+              setSearchQuery('');
+              setActiveView('folder');
+            }}
+            onDeleteFolder={(id, name) => setDeleteFolderTarget({ id, name })}
+            onCreateFolder={() => { setNewFolderName(''); setShowFolderModal(true); }}
+            onPracticeCollection={onPlayFlashcards ? (id) => {
+              setLibraryActiveFolder(id);
+              onPlayFlashcards();
+            } : undefined}
+            onAddCard={onAddCard}
+          />
+        </motion.div>
+      )}
+
+      {activeView === 'folder' && (
+        <motion.div
+          key="folder-view"
+          className="flex flex-col w-full min-h-full px-4 md:px-8 pt-6 pb-24 max-w-5xl mx-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.15 }}
+        >
+          {/* Folder Header (Combined Back + Title) */}
+          <div className="flex items-center gap-3 mb-6 mt-2 w-full">
+            <button
+              onClick={() => { setSearchQuery(''); setActiveView('home'); }}
+              className="p-2 -ml-2 text-ui-muted hover:text-ui-ink transition-colors rounded-full hover:bg-ui-divider active:scale-95"
+            >
+              <PiCaretLeftBold size={24} />
+            </button>
+            <div className="text-ui-ink scale-110 ml-1">
+              {activeCollection.icon}
+            </div>
+            <h1 className="font-black text-[24px] sm:text-[28px] text-ui-ink-strong truncate pr-4">
+              {activeCollection.title}
+            </h1>
+          </div>
+
+          {/* ── Divider ── */}
+          <div className="w-full mb-6">
+            <div className="h-[3px] w-full bg-ui-border rounded-full" />
+          </div>
+
+          <SearchBar3D
+            value={searchQuery}
+            onValueChange={setSearchQuery}
+            onSubmit={setSearchQuery}
+            showSubmit={false}
+            placeholder={`Search ${activeCollection.title}...`}
+            className="mb-6"
+          />
+
+          {/* ── CONTENT AREA ── */}
+          {isLoadingFavs && isStarred ? (
+            <LibrarySkeleton />
+          ) : items.length === 0 ? (
+            <div className="w-full h-full flex flex-col items-center justify-center py-10">
+              <EmptyState onAddCard={onAddCard} isStarred={isStarred} />
+            </div>
+          ) : (
+            <div className="w-full">
+              {/* Header row */}
+              <div className="flex items-center justify-between mb-4 px-1">
+                <h2 className="font-black text-[16px] text-ui-ink-strong">
+                  {items.length} {items.length === 1 ? 'card' : 'cards'}
+                </h2>
+              </div>
+
+              {/* Masonry layout — card height driven by content */}
+              <div className="columns-2 gap-3">
+                {items.map((item: DBDictionaryEntry | UserFlashcard, idx: number) => {
+                  const key = isStarred
+                    ? `star-${(item as DBDictionaryEntry).traditional}`
+                    : `custom-${(item as UserFlashcard).id}`;
                   return (
-                    <FolderItem
-                      key={c.id}
-                      id={c.id}
-                      title={c.title}
-                      icon={c.icon}
-                      accentBg={c.accentBg}
-                      accentBorder={c.accentBorder}
-                      accentColor={c.accentColor}
-                      isActive={isActive}
-                      onSelect={() => {
-                        setLibraryActiveFolder(c.id);
-                        setSearchQuery('');
+                    <SpellCard
+                      key={key}
+                      item={item}
+                      activeTab={libraryActiveFolder}
+                      index={idx}
+                      onAction={(e) => {
+                        e.stopPropagation();
+                        if (isStarred) toggleFavorite(item.traditional);
+                        else handleDeleteCustomCard((item as UserFlashcard).id);
                       }}
-                      onDeleteRequest={() => setDeleteFolderTarget({ id: c.id, name: c.title })}
+                      onClick={() => {
+                        setDictionaryWord(
+                          isStarred ? item.traditional : (item.traditional || item.simplified)
+                        );
+                      }}
                     />
                   );
                 })}
-                
-                {/* Create Folder Button (Visual) */}
-                <motion.div
-                  initial={false}
-                  animate={{ scale: 0.95, opacity: 0.7 }}
-                  whileHover={{ scale: 1.08, opacity: 1 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    setNewFolderName('');
-                    setShowFolderModal(true);
-                  }}
-                  className="cursor-pointer flex flex-col items-center gap-3 shrink-0"
-                >
-                  <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-[24px] md:rounded-[28px] border-[3px] border-dashed border-[#E5E5E5] bg-[#F7F7F7] hover:bg-white hover:border-[#AFB6BB] hover:text-[#4B4B4B] text-[#AFB6BB] flex items-center justify-center transition-all duration-200">
-                     <PiPlusBold size={40} />
+
+                {/* Add Card Inline Button */}
+                {!isStarred && onAddCard && (
+                  <div className="break-inside-avoid mb-3">
+                    <motion.button
+                      whileTap={{ scale: 0.95 }}
+                      onClick={onAddCard}
+                      className={cn(
+                        "cursor-pointer w-full flex flex-col justify-center items-center text-center select-none outline-none transition-colors duration-150",
+                        "min-h-[120px] rounded-[24px] border-2 border-b-[6px] bg-transparent border-dashed border-ui-border hover:border-[#1CB0F6] hover:bg-white text-ui-muted hover:text-[#1CB0F6]"
+                      )}
+                    >
+                      <PiPlusBold size={24} className="mb-2" />
+                      <span className="block font-black text-[14px] uppercase tracking-wider">
+                        Add Card
+                      </span>
+                    </motion.button>
                   </div>
-                  <div className="text-center w-full px-1">
-                    <span className="block font-extrabold text-[15px] sm:text-[17px] text-[#AFB6BB] mt-1">
-                      New Folder
-                    </span>
-                  </div>
-                </motion.div>
+                )}
               </div>
             </div>
-
-            {/* Content List aligned with learning list layout */}
-            <div className="px-6 md:px-12 w-full pb-12 max-w-5xl mx-auto flex flex-col items-center">
-               {isLoadingFavs && libraryActiveFolder === 'starred' ? (
-                 <LibrarySkeleton />
-               ) : items.length === 0 ? (
-                 <div className="w-full pb-8">
-                   {libraryActiveFolder === 'starred' ? (
-                     <div className="w-full py-16 text-center flex flex-col items-center justify-center">
-                        <div className={`w-20 h-20 rounded-[20px] ${activeCollection.lightBg} ${activeCollection.accentColor} flex items-center justify-center mb-4`}>
-                           <PiBookmarkSimpleFill size={40} />
-                        </div>
-                        <p className="font-extrabold text-[#AFB6BB] text-xl">Empty Collection</p>
-                        <p className="text-sm font-bold text-[#AFB6BB] mt-2 opacity-70">
-                          Find words in the dictionary to star.
-                        </p>
-                     </div>
-                   ) : (
-                     <div className="flex flex-col w-full bg-white border-[2px] border-b-[4px] border-[#E5E5E5] rounded-[16px] overflow-hidden">
-                       {/* Inline Add Card Button when empty */}
-                       <div 
-                         onClick={onAddCard}
-                         className="w-full bg-[#F7F7F7] px-4 py-4 flex flex-row items-center justify-center gap-2 cursor-pointer hover:bg-white transition-all text-[#AFB6BB] hover:text-[#1CB0F6] font-extrabold group"
-                       >
-                         <PiPlusBold size={20} className="group-hover:scale-110 transition-transform" />
-                         <span className="text-sm tracking-widest uppercase">Add Flashcard</span>
-                       </div>
-                     </div>
-                   )}
-                 </div>
-               ) : (
-                 <div className="w-full pb-8">
-                   <div className="flex flex-col w-full bg-white border-[2px] border-b-[4px] border-[#E5E5E5] rounded-[16px] overflow-hidden">
-                     <VirtualizedList 
-                        items={items}
-                        libraryActiveFolder={libraryActiveFolder}
-                        activeCollection={activeCollection}
-                        toggleFavorite={toggleFavorite}
-                        handleDeleteCustomCard={handleDeleteCustomCard}
-                        setDictionaryWord={setDictionaryWord}
-                     />
-                     
-                     {/* Inline Add Card Button */}
-                     {libraryActiveFolder !== 'starred' && (
-                       <div 
-                         onClick={onAddCard}
-                         className={`w-full bg-[#F7F7F7] px-4 py-4 flex flex-row items-center justify-center gap-2 cursor-pointer hover:bg-white transition-all text-[#AFB6BB] hover:text-[#1CB0F6] font-extrabold group ${items.length > 0 ? 'border-t-[2px] border-[#F0F0F0]' : ''}`}
-                       >
-                         <PiPlusBold size={20} className="group-hover:scale-110 transition-transform" />
-                         <span className="text-sm tracking-widest uppercase">Add Flashcard</span>
-                       </div>
-                     )}
-                   </div>
-                 </div>
-               )}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </motion.div>
+      )}
 
       <FolderModal
         showFolderModal={showFolderModal}
@@ -167,13 +233,11 @@ export function LibraryScreen({ onAddCard }: LibraryScreenProps) {
         isCreatingFolder={isCreatingFolder}
         handleCreateFolder={handleCreateFolder}
       />
-
       <DeleteCardModal
         deleteTargetId={deleteTargetId}
         setDeleteTargetId={setDeleteTargetId}
         confirmDelete={confirmDelete}
       />
-
       <DeleteFolderModal
         deleteFolderTarget={deleteFolderTarget}
         setDeleteFolderTarget={setDeleteFolderTarget}

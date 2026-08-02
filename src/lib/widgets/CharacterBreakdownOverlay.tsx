@@ -3,12 +3,15 @@ import { AnimatePresence } from "motion/react";
 import { useAppStore } from "../../store/useAppStore";
 import { SingleBreakdownView } from "./breakdown/SingleBreakdownView";
 import { createPortal } from "react-dom";
+import { SAMPLE_BOOKS } from '../../data/books';
+
+type CourseBook = (typeof SAMPLE_BOOKS)[number];
 
 interface CharacterBreakdownOverlayProps {
   activeBreakdown: string | null;
   initialCharIndex?: number;
   onClose: () => void;
-  activeBook: any;
+  activeBook: CourseBook;
 }
 
 export function CharacterBreakdownOverlay({

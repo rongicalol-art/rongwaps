@@ -5,9 +5,9 @@ import { DBDictionaryEntry } from '../../types/database';
 import { UserFlashcard } from '../../types/models';
 
 interface VirtualizedListProps {
-  items: any[];
+  items: Array<DBDictionaryEntry | UserFlashcard>;
   libraryActiveFolder: string;
-  activeCollection: any;
+  activeCollection: { accentColor: string };
   toggleFavorite: (id: string) => void;
   handleDeleteCustomCard: (id: string) => void;
   setDictionaryWord: (w: string) => void;
@@ -26,7 +26,7 @@ export function VirtualizedList({
   const rowVirtualizer = useVirtualizer({
     count: items.length,
     getScrollElement: () => parentRef.current,
-    estimateSize: () => 72, 
+    estimateSize: () => 104,
     overscan: 5,
   });
 

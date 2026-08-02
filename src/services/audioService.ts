@@ -1,6 +1,8 @@
-import { supabase } from './supabaseClient';
-
 export const AUDIO_BUCKET = 'vocabulary-audio';
+
+type WindowWithWebkitAudioContext = Window & {
+  webkitAudioContext?: typeof AudioContext;
+};
 
 /**
  * Audio playback service with a 3-tier fallback chain:
@@ -13,7 +15,7 @@ export const AUDIO_BUCKET = 'vocabulary-audio';
  * and falls back gracefully when Web Audio isn't available.
  * Call `initialize()` on first user interaction to unlock audio on iOS.
  */
-class AudioService {
+export class AudioService {
   private audioContext: AudioContext | null = null;
   private buffers: Map<string, AudioBuffer> = new Map();
   private fetchPromises: Map<string, Promise<AudioBuffer>> = new Map();
@@ -26,16 +28,26 @@ class AudioService {
   private isInitialized = false;
   private currentSource: AudioBufferSourceNode | null = null;
   private currentUtterance: SpeechSynthesisUtterance | null = null;
-  private activeFallbackResolve: (() => void) | null = null;
+  private activePlaybackFinish: (() => void) | null = null;
 
   constructor() {
-    // Only create Audio in browser environment
+    // Only create browser audio primitives in a browser environment.
     if (typeof window !== 'undefined') {
-      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+      const AudioContextClass = window.AudioContext
+        || (window as WindowWithWebkitAudioContext).webkitAudioContext;
       if (AudioContextClass) {
-        this.audioContext = new AudioContextClass();
-      } else {
-        this.globalAudio = new Audio();
+        try {
+          this.audioContext = new AudioContextClass();
+        } catch (error) {
+          console.warn('Web Audio initialization failed; using HTML audio fallback', error);
+        }
+      }
+      if (typeof Audio !== 'undefined') {
+        try {
+          this.globalAudio = new Audio();
+        } catch (error) {
+          console.warn('HTML audio initialization failed; using TTS fallback', error);
+        }
       }
     }
   }
@@ -45,12 +57,20 @@ class AudioService {
     if (this.isInitialized) return;
     
     if (this.audioContext && this.audioContext.state === 'suspended') {
-      this.audioContext.resume();
+      try {
+        this.audioContext.resume().catch(() => {});
+      } catch {
+        // A later user gesture can retry the context resume.
+      }
     }
     
     if (this.globalAudio) {
-      this.globalAudio.src = 'data:audio/mp3;base64,//OkwAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAB//OkwAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAB//OkwAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAB';
-      this.globalAudio.play().catch(() => {});
+      try {
+        this.globalAudio.src = 'data:audio/mp3;base64,//OkwAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAB//OkwAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAB//OkwAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAB';
+        this.globalAudio.play()?.catch(() => {});
+      } catch {
+        // Unlock is best-effort; regular playback still has TTS fallback.
+      }
     }
     
     this.isInitialized = true;
@@ -119,139 +139,253 @@ class AudioService {
     await Promise.all(initialWorkers);
   }
 
-  public speakTTS(text: string, rate: number = 1.0): Promise<void> {
-    return new Promise((resolve) => {
-      if (typeof window === 'undefined' || !window.speechSynthesis) {
-        return resolve();
+  private trackPlayback(resolve: () => void): () => void {
+    let settled = false;
+    const finish = () => {
+      if (settled) return;
+      settled = true;
+      if (this.activePlaybackFinish === finish) {
+        this.activePlaybackFinish = null;
       }
+      resolve();
+    };
+    this.activePlaybackFinish = finish;
+    return finish;
+  }
 
-      try {
-        window.speechSynthesis.cancel();
-      } catch (e) {
-        console.warn('speechSynthesis cancel failed', e);
-      }
+  private startSpeech(
+    text: string,
+    language: string,
+    rate: number,
+    finish: () => void,
+    preferAnyChineseVoice = false,
+  ): void {
+    if (
+      !text.trim()
+      || typeof window === 'undefined'
+      || !window.speechSynthesis
+      || typeof SpeechSynthesisUtterance === 'undefined'
+    ) {
+      finish();
+      return;
+    }
 
+    try {
       const utterance = new SpeechSynthesisUtterance(text);
-      this.currentUtterance = utterance; // Prevent GC
-      utterance.lang = 'zh-CN';
+      this.currentUtterance = utterance;
+      utterance.lang = language;
       utterance.rate = rate;
 
-      // Find best Chinese voice
       const voices = window.speechSynthesis.getVoices();
-      const zhVoice = voices.find(v => v.lang.startsWith('zh') || v.lang.includes('CN') || v.lang.includes('TW'));
-      if (zhVoice) {
-        utterance.voice = zhVoice;
-      }
+      utterance.voice = preferAnyChineseVoice
+        ? voices.find((voice) => (
+            voice.lang.startsWith('zh')
+            || voice.lang.includes('CN')
+            || voice.lang.includes('TW')
+          )) ?? null
+        : voices.find((voice) => voice.lang === language)
+          ?? voices.find((voice) => voice.lang.startsWith(language.split('-')[0]))
+          ?? null;
 
       utterance.onend = () => {
-        this.currentUtterance = null;
-        resolve();
+        if (this.currentUtterance === utterance) {
+          this.currentUtterance = null;
+        }
+        finish();
       };
-      
-      utterance.onerror = (err) => {
-        this.currentUtterance = null;
-        console.warn('SpeechSynthesis error:', err);
-        resolve();
+      utterance.onerror = (error) => {
+        if (this.currentUtterance === utterance) {
+          this.currentUtterance = null;
+        }
+        console.warn('SpeechSynthesis error:', error);
+        finish();
       };
 
       window.speechSynthesis.speak(utterance);
+    } catch (error) {
+      this.currentUtterance = null;
+      console.warn('SpeechSynthesis playback failed:', error);
+      finish();
+    }
+  }
+
+  public speakTTS(text: string, rate: number = 1.0): Promise<void> {
+    this.stop();
+    return new Promise((resolve) => {
+      const finish = this.trackPlayback(resolve);
+      this.startSpeech(text, 'zh-CN', rate, finish, true);
     });
   }
 
-  play(audioFileName?: string, playbackRate: number = 1.0, textFallback?: string): Promise<void> {
-    const isChineseText = (text: string): boolean => {
-      return /[\u4e00-\u9fa5]/.test(text);
-    };
+  public speakText(text: string, language = 'zh-CN', rate = 1.0): Promise<void> {
+    this.stop();
+    return new Promise((resolve) => {
+      const finish = this.trackPlayback(resolve);
+      this.startSpeech(text, language, rate, finish);
+    });
+  }
 
+  public stop(): void {
+    const source = this.currentSource;
+    this.currentSource = null;
+    if (source) {
+      source.onended = null;
+      try {
+        source.stop();
+      } catch {
+        // The source may already have ended.
+      }
+      try {
+        source.disconnect();
+      } catch {
+        // The source may already be disconnected.
+      }
+    }
+
+    if (this.globalAudio) {
+      this.globalAudio.onended = null;
+      this.globalAudio.onerror = null;
+      try {
+        this.globalAudio.pause();
+        this.globalAudio.currentTime = 0;
+      } catch {
+        // Some browsers reject media operations before metadata is available.
+      }
+    }
+
+    if (this.currentUtterance) {
+      this.currentUtterance.onend = null;
+      this.currentUtterance.onerror = null;
+      this.currentUtterance = null;
+    }
+    if (typeof window !== 'undefined') {
+      try {
+        window.speechSynthesis?.cancel();
+      } catch (error) {
+        console.warn('SpeechSynthesis cancellation failed:', error);
+      }
+    }
+
+    const finish = this.activePlaybackFinish;
+    this.activePlaybackFinish = null;
+    finish?.();
+  }
+
+  public play(audioFileName?: string, playbackRate: number = 1.0, textFallback?: string): Promise<void> {
+    const isChineseText = (text: string): boolean => /[\u4e00-\u9fa5]/.test(text);
     const isProperAudioFile = (filename?: string): boolean => {
       if (!filename) return false;
       const lowercase = filename.toLowerCase();
-      return lowercase.endsWith('.mp3') || 
-             lowercase.endsWith('.wav') || 
-             lowercase.endsWith('.ogg') || 
-             lowercase.endsWith('.m4a') ||
-             lowercase.startsWith('http://') ||
-             lowercase.startsWith('https://');
+      return lowercase.endsWith('.mp3')
+        || lowercase.endsWith('.wav')
+        || lowercase.endsWith('.ogg')
+        || lowercase.endsWith('.m4a')
+        || lowercase.startsWith('http://')
+        || lowercase.startsWith('https://');
     };
 
-    const textToSpeak = textFallback || (audioFileName && isChineseText(audioFileName) && !isProperAudioFile(audioFileName) ? audioFileName : undefined);
+    this.stop();
 
-    return new Promise(async (resolve) => {
-      const handleTTSFallback = async () => {
+    const textToSpeak = textFallback
+      || (
+        audioFileName
+        && isChineseText(audioFileName)
+        && !isProperAudioFile(audioFileName)
+          ? audioFileName
+          : undefined
+      );
+
+    return new Promise((resolve) => {
+      const finish = this.trackPlayback(resolve);
+      const startSpeechFallback = () => {
         if (textToSpeak) {
-          await this.speakTTS(textToSpeak, playbackRate);
+          this.startSpeech(textToSpeak, 'zh-CN', playbackRate, finish, true);
+        } else {
+          finish();
         }
-        resolve();
       };
 
       if (!audioFileName || !isProperAudioFile(audioFileName)) {
-        return handleTTSFallback();
-      }
-
-      // 1. Play using Web Audio API (Zero Latency) — if buffer already cached
-      if (this.audioContext && this.buffers.has(audioFileName)) {
-        if (this.currentSource) {
-          try { this.currentSource.stop(); } catch (e) {}
-        }
-        
-        const buffer = this.buffers.get(audioFileName)!;
-        if (this.audioContext.state === 'suspended') {
-          this.audioContext.resume().catch(() => {});
-        }
-        
-        const source = this.audioContext.createBufferSource();
-        source.buffer = buffer;
-        source.playbackRate.value = playbackRate;
-        source.connect(this.audioContext.destination);
-        source.onended = () => resolve();
-        source.start(0);
-        this.currentSource = source;
+        startSpeechFallback();
         return;
       }
 
-      // 2. Play using HTMLAudioElement with public URL (no CORS issues for simple playback)
-      if (!this.globalAudio) return handleTTSFallback();
+      // 1. Play using Web Audio API (zero latency) when a decoded buffer exists.
+      if (this.audioContext && this.buffers.has(audioFileName)) {
+        try {
+          const buffer = this.buffers.get(audioFileName)!;
+          if (this.audioContext.state === 'suspended') {
+            this.audioContext.resume().catch(() => {});
+          }
 
-      if (this.activeFallbackResolve) {
-        this.activeFallbackResolve();
-        this.activeFallbackResolve = null;
+          const source = this.audioContext.createBufferSource();
+          source.buffer = buffer;
+          source.playbackRate.value = playbackRate;
+          source.connect(this.audioContext.destination);
+          source.onended = () => {
+            if (this.currentSource === source) {
+              this.currentSource = null;
+            }
+            try {
+              source.disconnect();
+            } catch {
+              // The source may already be disconnected.
+            }
+            finish();
+          };
+          this.currentSource = source;
+          source.start(0);
+          return;
+        } catch (error) {
+          this.currentSource = null;
+          console.warn('Web Audio playback failed, trying HTML audio', error);
+        }
       }
-      this.activeFallbackResolve = resolve;
 
-      this.globalAudio.pause();
-      this.globalAudio.onended = null;
-      this.globalAudio.onerror = null;
+      // 2. Fall back to one shared HTMLAudioElement.
+      const audio = this.globalAudio;
+      if (!audio) {
+        startSpeechFallback();
+        return;
+      }
 
-      // Use our own server proxy to avoid CORS issues on Safari
-      const sourceUrl = `/api/audio/${audioFileName}`;
-
-      this.globalAudio.src = sourceUrl;
-      this.globalAudio.playbackRate = playbackRate;
-      this.globalAudio.currentTime = 0;
-      
-      this.globalAudio.onended = () => {
-        if (this.activeFallbackResolve) {
-          this.activeFallbackResolve();
-          this.activeFallbackResolve = null;
+      let fallbackStarted = false;
+      const handleAudioFailure = (error?: unknown) => {
+        if (fallbackStarted || this.activePlaybackFinish !== finish) return;
+        fallbackStarted = true;
+        audio.onended = null;
+        audio.onerror = null;
+        try {
+          audio.pause();
+        } catch {
+          // Continue to TTS even if the media element cannot be paused.
         }
-      };
-      this.globalAudio.onerror = () => {
-        console.warn('HTML Audio Element error, trying TTS');
-        if (this.activeFallbackResolve) {
-          this.activeFallbackResolve();
-          this.activeFallbackResolve = null;
+        if (error) {
+          console.warn('HTML audio playback failed, trying TTS fallback', error);
         }
-        handleTTSFallback();
+        startSpeechFallback();
       };
 
-      this.globalAudio.play().catch(err => {
-        console.warn('Audio playback failed, trying TTS fallback', err);
-        if (this.activeFallbackResolve) {
-          this.activeFallbackResolve();
-          this.activeFallbackResolve = null;
-        }
-        handleTTSFallback();
-      });
+      const isRemoteUrl = /^https?:\/\//i.test(audioFileName);
+      try {
+        audio.src = isRemoteUrl
+          ? audioFileName
+          : this.objectUrls.get(audioFileName) ?? `/api/audio/${audioFileName}`;
+        audio.playbackRate = playbackRate;
+        audio.currentTime = 0;
+        audio.onended = () => {
+          if (this.activePlaybackFinish !== finish) return;
+          audio.onended = null;
+          audio.onerror = null;
+          finish();
+        };
+        audio.onerror = () => handleAudioFailure();
+
+        const playPromise = audio.play();
+        playPromise?.catch(handleAudioFailure);
+      } catch (error) {
+        handleAudioFailure(error);
+      }
     });
   }
 }

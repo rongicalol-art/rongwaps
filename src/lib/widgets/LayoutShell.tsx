@@ -1,23 +1,26 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { PiListBold, PiXBold } from 'react-icons/pi';
-import { SideNav } from './SideNav';
+import { SideNav, type SideNavProps } from './SideNav';
 import { DynamicBackground } from './DynamicBackground';
-import { MainHeader } from './MainHeader';
+import { AppIcon } from './AppIcon';
+import { MainHeader, type MainHeaderProps } from './MainHeader';
 import { ExpandableSearch } from './ExpandableSearch';
 import { useAppStore } from '../../store/useAppStore';
+import { SAMPLE_BOOKS } from '../../data/books';
+
+type CourseBook = (typeof SAMPLE_BOOKS)[number];
 
 interface LayoutShellProps {
   children: React.ReactNode;
-  activeTab: string;
+  activeTab: SideNavProps['activeTab'];
   activeActivity?: string | null;
-  activeBook: any;
+  activeBook: CourseBook;
   isNavOpen: boolean;
   setIsNavOpen: (open: boolean) => void;
-  headerProps: any;
-  onTabChange: (tab: any) => void;
+  headerProps: Omit<MainHeaderProps, 'activeBook'>;
+  onTabChange: SideNavProps['onTabChange'];
   onProfileClick: () => void;
-  onSignInClick?: () => void;
+  onSettingsClick: () => void;
   activityModals?: React.ReactNode;
 }
 
@@ -31,7 +34,7 @@ export function LayoutShell({
   headerProps,
   onTabChange,
   onProfileClick,
-  onSignInClick,
+  onSettingsClick,
   activityModals
 }: LayoutShellProps) {
   const {
@@ -39,30 +42,12 @@ export function LayoutShell({
     setIsSearchOpen,
     searchQuery,
     setSearchQuery,
-    isMainHeaderCompact,
-    setIsMainHeaderCompact
   } = useAppStore();
-
-  useEffect(() => {
-    setIsMainHeaderCompact(false);
-  }, [activeTab, setIsMainHeaderCompact]);
-
-  const handleMainScroll = (event: React.UIEvent<HTMLElement>) => {
-    if (activeTab === 'search') return;
-    const nextIsCompact = event.currentTarget.scrollTop > 24;
-    if (nextIsCompact !== isMainHeaderCompact) {
-      setIsMainHeaderCompact(nextIsCompact);
-    }
-  };
 
   return (
     <div className={`font-sans flex h-[100dvh] w-full relative overflow-hidden transition-colors duration-700 overscroll-none`}>
-      <DynamicBackground 
-        color={activeBook.accentHex}
-        patternOpacity={activeBook.patternOpacity}
-      />
+      <DynamicBackground variant={activeActivity ? 'practice' : 'default'} />
 
-      {/* Desktop Side Nav */}
       <AnimatePresence>
         {isNavOpen && (
           <>
@@ -79,67 +64,72 @@ export function LayoutShell({
               animate={{ width: "auto", opacity: 1 }}
               exit={{ width: 0, opacity: 0 }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-              className="flex shrink-0 h-full overflow-hidden absolute md:relative z-[260] md:z-auto border-r-2 border-[#E5E5E5] shadow-2xl md:shadow-none bg-white md:bg-transparent"
+              className="absolute inset-y-3 left-3 z-[260] flex shrink-0 overflow-hidden rounded-[28px] border-b-[6px] border-ui-divider bg-ui-surface md:inset-y-4 md:left-4"
             >
               <SideNav 
-                activeTab={activeTab as any}
+                activeTab={activeTab}
                 activeActivity={activeActivity}
                 onTabChange={onTabChange} 
+                onSettingsClick={onSettingsClick}
                 accentClass={activeBook.accent}
-                accentBgClass={activeBook.accentBgLight}
+                buttonEdgeClass={activeBook.buttonEdge}
               />
             </motion.div>
           </>
         )}
       </AnimatePresence>
       
-      <div className="flex flex-col flex-1 relative overflow-hidden w-full">
-        {/* Global Main Header */}
-        <div className="shrink-0 z-50">
-          <MainHeader 
-            activeBook={activeBook} 
-            compact={isMainHeaderCompact}
-            {...headerProps}
-            onLeftIconClick={onProfileClick}
-            onSignInClick={activeTab === 'search' ? undefined : onSignInClick}
-            extraLeftContent={
-              <div className="flex items-center">
-                <button 
+      <div className="absolute inset-y-0 left-0 right-0 z-10 flex flex-col overflow-hidden md:left-[288px]">
+        {activeTab === 'path' ? (
+          <button
+            type="button"
+            onClick={() => setIsNavOpen(!isNavOpen)}
+            className="absolute left-3 top-[calc(0.5rem+env(safe-area-inset-top,0px))] z-[100] flex min-h-11 min-w-11 items-center justify-center rounded-xl text-ui-muted transition-colors hover:bg-ui-surface hover:text-ui-ink focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25 md:hidden"
+            aria-label="Toggle navigation"
+          >
+            <AppIcon name="menu" size={24} />
+          </button>
+        ) : (
+          <div className="shrink-0 z-50 md:hidden">
+            <MainHeader
+              activeBook={activeBook}
+              {...headerProps}
+              onLeftIconClick={onProfileClick}
+              extraLeftContent={
+                <button
+                  type="button"
                   onClick={() => setIsNavOpen(!isNavOpen)}
-                  className="flex p-2 -ml-2 rounded-xl text-[#AFB6BB] hover:bg-[#F7F7F7] hover:text-[#4B4B4B] transition-colors"
-                  aria-label="Toggle Menu"
+                  className="-ml-2 flex min-h-11 min-w-11 items-center justify-center rounded-xl text-ui-muted transition-colors hover:bg-ui-canvas hover:text-ui-ink focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25"
+                  aria-label="Toggle navigation"
                 >
-                  <PiListBold size={24} />
+                  <AppIcon name="menu" size={24} />
                 </button>
-              </div>
-            }
-            extraRightContent={
-              activeTab === 'search' ? (
-                <motion.div className="flex items-center ml-2 justify-end flex-1 max-w-full">
-                  <ExpandableSearch
-                    value={searchQuery}
-                    onChange={setSearchQuery}
-                    placeholder="Search dictionary..."
-                    isExpanded={isSearchOpen}
-                    onExpandedChange={setIsSearchOpen}
-                  />
-                </motion.div>
-              ) : null
-            }
-          />
-        </div>
+              }
+              extraRightContent={
+                activeTab === 'search' ? (
+                  <motion.div className="flex items-center ml-2 justify-end flex-1 max-w-full">
+                    <ExpandableSearch
+                      value={searchQuery}
+                      onChange={setSearchQuery}
+                      placeholder="Search dictionary..."
+                      isExpanded={isSearchOpen}
+                      onExpandedChange={setIsSearchOpen}
+                    />
+                  </motion.div>
+                ) : null
+              }
+            />
+          </div>
+        )}
 
-        {/* Main Scrollable Content */}
         <main 
           className={`flex-1 w-full relative overflow-x-hidden overscroll-none flex flex-col ${
             activeTab === 'search' ? 'overflow-hidden' : 'overflow-y-auto'
           }`}
-          onScroll={handleMainScroll}
         >
           {children}
         </main>
-        
-        {/* Render activities here so they fill the right side (flex-1) and cover the header but NOT the side nav */}
+
         {activityModals}
       </div>
     </div>

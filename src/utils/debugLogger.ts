@@ -4,7 +4,7 @@ export interface DebugLog {
   level: 'info' | 'warn' | 'error';
   category: 'AI' | 'Firestore' | 'Supabase' | 'Auth' | 'Cache';
   message: string;
-  details?: any;
+  details?: unknown;
 }
 
 type LogListener = (logs: DebugLog[]) => void;
@@ -14,7 +14,7 @@ class DebugLogger {
   private listeners = new Set<LogListener>();
   private maxLogs = 200;
 
-  private createLog(level: 'info' | 'warn' | 'error', category: DebugLog['category'], message: string, details?: any): DebugLog {
+  private createLog(level: 'info' | 'warn' | 'error', category: DebugLog['category'], message: string, details?: unknown): DebugLog {
     return {
       id: Math.random().toString(36).substring(2, 9),
       timestamp: new Date().toLocaleTimeString(),
@@ -44,15 +44,15 @@ class DebugLogger {
     });
   }
 
-  info(category: DebugLog['category'], message: string, details?: any) {
+  info(category: DebugLog['category'], message: string, details?: unknown) {
     this.addLog(this.createLog('info', category, message, details));
   }
 
-  warn(category: DebugLog['category'], message: string, details?: any) {
+  warn(category: DebugLog['category'], message: string, details?: unknown) {
     this.addLog(this.createLog('warn', category, message, details));
   }
 
-  error(category: DebugLog['category'], message: string, details?: any) {
+  error(category: DebugLog['category'], message: string, details?: unknown) {
     this.addLog(this.createLog('error', category, message, details));
   }
 

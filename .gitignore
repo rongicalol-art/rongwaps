@@ -6,3 +6,18 @@ coverage/
 !.env.example
 dist/
 .openrouter_key
+
+# Datasets & backups
+ids.txt
+*.json.backup
+*.backup
+scripts/mnemonics_backup*.json
+
+# IDE / Tooling config
+.vscode/
+.idea/
+.hermes/
+.eslintcache
+tmp/
+output/
+*.original.md

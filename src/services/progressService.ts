@@ -146,7 +146,7 @@ export const progressService = {
       activityType?: 'flashcards' | 'quiz' | 'listening' | 'writing';
       activityCount?: number;
     },
-  ): Promise<DailyProgress | null> => {
+  ): Promise<void> => {
     try {
       const today = getLocalDateString();
 
@@ -163,32 +163,11 @@ export const progressService = {
 
       if (error) {
         console.error('Error upserting daily progress via RPC:', error);
-        return null;
+        throw error;
       }
-
-      // Fetch the updated record to return
-      const { data } = await supabase
-        .from('user_daily_progress')
-        .select('*')
-        .eq('user_id', userId)
-        .eq('date', today)
-        .maybeSingle();
-
-      if (!data) return null;
-
-      return {
-        date: data.date,
-        xpEarned: data.xp_earned || 0,
-        cardsReviewed: data.cards_reviewed || 0,
-        cardsLearned: data.cards_learned || 0,
-        studyTimeMinutes: data.study_time_minutes || 0,
-        activitiesBreakdown: data.activities_breakdown || {
-          flashcards: 0, quiz: 0, listening: 0, writing: 0,
-        },
-      };
     } catch (e) {
       console.error('upsertDailyProgress exception:', e);
-      return null;
+      throw e;
     }
   },
 
@@ -210,10 +189,7 @@ export const progressService = {
 
   // Get aggregate stats using the database stored procedure
   // Much more efficient than fetching all rows and computing client-side
-  getAggregateStats: async (
-    userId: string,
-    _recentDays: number = 30,
-  ): Promise<{
+  getAggregateStats: async (userId: string): Promise<{
     totalXp: number;
     totalCardsReviewed: number;
     totalCardsLearned: number;
@@ -227,14 +203,7 @@ export const progressService = {
 
     if (error) {
       console.error('Error fetching aggregate stats via RPC:', error);
-      return {
-        totalXp: 0,
-        totalCardsReviewed: 0,
-        totalCardsLearned: 0,
-        currentStreak: 0,
-        longestStreak: 0,
-        lastStudyDate: null,
-      };
+      throw error;
     }
 
     if (!data || data.length === 0) {

@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import type { PartSegment, PracticeHeaderActions } from '../types/models';
 
 interface UiState {
   isSearchOpen: boolean;
@@ -22,12 +23,11 @@ interface UiState {
     currentIndex: number;
     totalCount: number;
     showLightbulb: boolean;
+    partSegments?: PartSegment[];
+    onPartSegmentClick?: (startIndex: number) => void;
   };
   setPracticeHeader: (state: Partial<UiState['practiceHeader']>) => void;
-  practiceHeaderActions: {
-    onLightbulbClick?: () => void;
-    onSettingsClick?: () => void;
-  };
+  practiceHeaderActions: PracticeHeaderActions;
   setPracticeHeaderActions: (actions: Partial<UiState['practiceHeaderActions']>) => void;
   isSettingsOpen: boolean;
   setIsSettingsOpen: (open: boolean) => void;

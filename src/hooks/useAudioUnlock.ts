@@ -7,14 +7,14 @@ export function useAudioUnlock() {
     const unlockAudio = () => {
       audioService.initialize();
       document.removeEventListener('click', unlockAudio);
-      document.removeEventListener('touchstart', unlockAudio);
+      document.removeEventListener('touchend', unlockAudio);
     };
     document.addEventListener('click', unlockAudio);
-    document.addEventListener('touchstart', unlockAudio);
+    document.addEventListener('touchend', unlockAudio);
     
     return () => {
       document.removeEventListener('click', unlockAudio);
-      document.removeEventListener('touchstart', unlockAudio);
+      document.removeEventListener('touchend', unlockAudio);
     };
   }, []);
 }
