@@ -42,6 +42,32 @@ const PROGRESS_SPRING = {
   mass: 0.7,
 };
 
+function InactivePartOutline() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 h-full w-full text-ui-border opacity-80 transition-opacity duration-200 group-hover:opacity-100"
+      preserveAspectRatio="none"
+      shapeRendering="geometricPrecision"
+      viewBox="0 0 100 20"
+    >
+      <rect
+        x="1"
+        y="1"
+        width="98"
+        height="18"
+        rx="9"
+        fill="none"
+        pathLength="96"
+        stroke="currentColor"
+        strokeDasharray="4 2"
+        strokeWidth="2"
+        vectorEffect="non-scaling-stroke"
+      />
+    </svg>
+  );
+}
+
 function PartButton({
   selected,
   progress,
@@ -217,12 +243,13 @@ export function StudyPartProgressRail({
             title={`Part ${part.id} · ${cardCount} cards`}
             style={{ flex: flexWeight }}
             className={cn(
-              'group relative h-5 w-full min-w-0 cursor-pointer select-none overflow-hidden rounded-full border-2 border-transparent outline-none transition-[transform,background-color,border-color,opacity] duration-200 hover:scale-[1.02] focus-visible:ring-4 focus-visible:ring-brand-primary/25 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50',
+              'group relative h-5 w-full min-w-0 cursor-pointer select-none overflow-hidden rounded-full border-2 border-transparent outline-none transition-transform duration-200 hover:scale-[1.02] focus-visible:ring-4 focus-visible:ring-brand-primary/25 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50',
               isSelected
                 ? 'bg-ui-divider'
-                : 'border-dashed border-ui-border bg-transparent opacity-80 hover:opacity-100',
+                : 'bg-transparent',
             )}
           >
+            {!isSelected && <InactivePartOutline />}
             {isSelected && (
               <motion.span
                 aria-hidden="true"
