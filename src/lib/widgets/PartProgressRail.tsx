@@ -217,10 +217,10 @@ export function StudyPartProgressRail({
             title={`Part ${part.id} · ${cardCount} cards`}
             style={{ flex: flexWeight }}
             className={cn(
-              'group relative h-4 w-full min-w-0 cursor-pointer select-none overflow-hidden rounded-full outline-none transition-[transform,opacity] duration-200 hover:scale-[1.02] focus-visible:ring-4 focus-visible:ring-brand-primary/25 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50',
+              'group relative h-4 w-full min-w-0 cursor-pointer select-none overflow-hidden rounded-full outline-none transition-[transform,opacity,background-color,border-color] duration-200 hover:scale-[1.02] focus-visible:ring-4 focus-visible:ring-brand-primary/25 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50',
               isSelected
                 ? 'bg-ui-divider'
-                : 'progress-part-inactive opacity-70 hover:opacity-100',
+                : 'border-dashed border-ui-border bg-transparent opacity-75 hover:opacity-100',
             )}
           >
             {isSelected && (
