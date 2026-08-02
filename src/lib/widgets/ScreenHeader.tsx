@@ -104,7 +104,7 @@ export function ScreenHeader({
                 />
               ) : (
                 <div className={cn(
-                  "progress-rail-track relative h-3 w-full overflow-hidden rounded-full sm:h-3.5",
+                  "relative h-5 w-full overflow-hidden rounded-full bg-ui-divider",
                 )}>
                   <motion.div
                     className={`absolute bottom-0 left-0 top-0 min-w-0 overflow-hidden rounded-full ${accentBgClassName} will-change-[width]`}
@@ -113,7 +113,7 @@ export function ScreenHeader({
                     transition={{ type: 'spring', stiffness: 280, damping: 32, mass: 0.7 }}
                   >
                     {progress > 0 && (
-                      <div className="absolute left-2 right-2 top-1 h-1 rounded-full bg-white/30" />
+                      <div className="absolute left-2 right-2 top-1 h-1.5 rounded-full bg-white/30" />
                     )}
                   </motion.div>
                 </div>

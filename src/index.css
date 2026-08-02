@@ -166,26 +166,22 @@ body {
     scrollbar-width: none; /* Firefox */
   }
 
-  /*
-   * Progress rails stay quiet when there is nothing to fill. A single
-   * centered dashed line keeps the inactive state legible without turning
-   * the header into another heavy pill-shaped control.
-   */
-  .progress-rail-track {
+  /* Unselected lesson parts read as available, but intentionally inactive. */
+  .progress-part-inactive {
     background-color: transparent;
-    background-image: repeating-linear-gradient(
-      90deg,
-      var(--color-ui-border) 0 7px,
-      transparent 7px 12px
+    background-image: radial-gradient(
+      circle at center,
+      var(--color-ui-border) 0 1.5px,
+      transparent 1.75px
     );
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 2px;
+    background-position: left center;
+    background-repeat: repeat-x;
+    background-size: 9px 4px;
     transition: opacity 180ms ease;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .progress-rail-track {
+    .progress-part-inactive {
       transition: none;
     }
   }
