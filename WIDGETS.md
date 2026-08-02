@@ -282,7 +282,7 @@ Animated rounded progress bar with accent colors.
 - `className?: string`
 
 ## PartProgressRail
-Split lesson-part progress controls. `StudyPartProgressRail` renders unselected parts as an empty, rounded, dashed neutral outline matching the progress-bar shape; selected parts use the solid neutral track with a left-revealing blue fill. `PracticePartProgressRail` keeps the solid rounded track and growing inner highlight of the continuous practice progress bar. `SelectablePartProgressRail` is available for larger selection cards.
+Split lesson-part progress controls. `StudyPartProgressRail` renders unselected parts as an empty, rounded, high-contrast dashed neutral outline matching the progress-bar shape; selected parts use the solid neutral track with a left-revealing blue fill. `PracticePartProgressRail` keeps the solid rounded track and growing inner highlight of the continuous practice progress bar. `SelectablePartProgressRail` is available for larger selection cards.
 
 **Props:**
 - `parts: CourseLessonPartProgress[]`
