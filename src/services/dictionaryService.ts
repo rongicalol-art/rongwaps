@@ -1,9 +1,21 @@
 import { supabase } from './supabaseClient';
-import { DBDictionaryEntry } from '../types/database';
+import { DBDictionaryEntry, DBDictionaryRow } from '../types/database';
 import { dictionaryCache, dictionarySearchCache } from '../utils/cache';
+import { timeDataRequest } from '../utils/requestTiming';
+
+const DICTIONARY_COLUMNS = 'traditional,simplified,pinyin_accented,pinyin_flat,definitions';
 
 // Local Dictionary Trie Cache for O(1) synchronous word validation
-let localDictionaryData: any[] | null = null;
+export type LocalDictionaryRow = readonly [
+  id: number,
+  traditional: string,
+  simplified: string,
+  pinyinFlat: string,
+  pinyinAccented: string,
+  definitions: unknown,
+];
+
+let localDictionaryData: LocalDictionaryRow[] | null = null;
 let validWordsSet: Set<string> | null = null;
 let loadingDictionaryPromise: Promise<void> | null = null;
 
@@ -20,11 +32,21 @@ export async function prefetchLocalDictionary(): Promise<void> {
       if (!res.ok) throw new Error('File not found');
       return res.json();
     })
-    .then((data) => {
-      localDictionaryData = data;
+    .then((data: unknown) => {
+      localDictionaryData = Array.isArray(data)
+        ? data.filter((row): row is LocalDictionaryRow => (
+            Array.isArray(row)
+            && typeof row[0] === 'number'
+            && typeof row[1] === 'string'
+            && typeof row[2] === 'string'
+            && typeof row[3] === 'string'
+            && typeof row[4] === 'string'
+            && row.length >= 6
+          ))
+        : [];
       validWordsSet = new Set();
       // data format: [id, trad, simp, pinyin_flat, pinyin_acc, defs]
-      for (const row of data) {
+      for (const row of localDictionaryData) {
         if (row[1]) validWordsSet.add(row[1]);
         if (row[2]) validWordsSet.add(row[2]);
       }
@@ -36,7 +58,7 @@ export async function prefetchLocalDictionary(): Promise<void> {
   return loadingDictionaryPromise;
 }
 
-export function getLocalDictionaryData(): any[] | null {
+export function getLocalDictionaryData(): LocalDictionaryRow[] | null {
   return localDictionaryData;
 }
 
@@ -55,16 +77,19 @@ export function isValidChineseWordLocal(word: string): boolean | null {
  * @param queryNormalized - The normalized (lowercased, trimmed) query
  * @returns Array of dictionary entries from the RPC
  */
-export async function executeRemoteSearch(queryNormalized: string): Promise<any[]> {
+export async function executeRemoteSearch(queryNormalized: string): Promise<unknown[]> {
   if (dictionarySearchCache.has(queryNormalized)) {
-    return dictionarySearchCache.get<any[]>(queryNormalized) || [];
+    return dictionarySearchCache.get<unknown[]>(queryNormalized) || [];
   }
   
   try {
-    const { data, error } = await supabase.rpc('search_dictionary', {
-      search_query: queryNormalized,
-      result_limit: 30
-    });
+    const { data, error } = await timeDataRequest(
+      'dictionary search',
+      () => supabase.rpc('search_dictionary', {
+        search_query: queryNormalized,
+        result_limit: 30
+      }),
+    );
     if (error) throw error;
     
     if (data) {
@@ -91,10 +116,13 @@ export async function getDictionaryEntries(word: string): Promise<DBDictionaryEn
 
   try {
     // 2. Query Supabase (search both simplified AND traditional columns)
-    const { data, error } = await supabase
-      .from('dictionary')
-      .select('*')
-      .or(`simplified.eq.${trimmedWord},traditional.eq.${trimmedWord}`);
+    const { data, error } = await timeDataRequest(
+      'dictionary exact lookup',
+      () => supabase
+        .from('dictionary')
+        .select(DICTIONARY_COLUMNS)
+        .or(`simplified.eq.${trimmedWord},traditional.eq.${trimmedWord}`),
+    );
 
     if (error) {
       console.error(`Supabase error fetching dictionary entry for ${trimmedWord}:`, error);
@@ -102,7 +130,8 @@ export async function getDictionaryEntries(word: string): Promise<DBDictionaryEn
     }
 
     // 3. Cache and return mapping to new schema
-    const results = (data || []).map((row: any) => ({
+    const rows = (data || []) as DBDictionaryRow[];
+    const results = rows.map((row) => ({
       traditional: row.traditional,
       simplified: row.simplified,
       pinyin: [(row.pinyin_accented || row.pinyin_flat || '')],
@@ -147,10 +176,13 @@ export async function getDictionaryEntriesBatch(words: string[]): Promise<Map<st
       const chunk = toFetch.slice(i, i + chunkSize);
       const formattedChunk = chunk.map(w => `"${w.replace(/"/g, '\\"')}"`).join(',');
       fetchPromises.push(
-        supabase
-          .from('dictionary')
-          .select('*')
-          .or(`traditional.in.(${formattedChunk}),simplified.in.(${formattedChunk})`)
+        timeDataRequest(
+          `dictionary batch (${chunk.length} words)`,
+          () => supabase
+            .from('dictionary')
+            .select(DICTIONARY_COLUMNS)
+            .or(`traditional.in.(${formattedChunk}),simplified.in.(${formattedChunk})`),
+        )
           .then(({ data, error }) => {
              if (error) {
                console.error(`Supabase error fetching dictionary entries:`, error);

@@ -1,6 +1,10 @@
 import { supabase } from './supabaseClient';
 import { DBCharacterBreakdown } from '../types/database';
 import { breakdownCache, AppCache } from '../utils/cache';
+import { timeDataRequest } from '../utils/requestTiming';
+import { fetchBreakdownsFromPacks } from './breakdownPackService';
+
+const BREAKDOWN_COLUMNS = 'character,radical,pinyin,definition,decomposition,components_historical';
 
 const pendingRequests = new Map<string, Promise<DBCharacterBreakdown | null>>();
 
@@ -33,13 +37,24 @@ export async function getCharacterBreakdown(character: string): Promise<DBCharac
 
   (async () => {
     try {
+      const packedResults = await fetchBreakdownsFromPacks([character]);
+      const packedData = packedResults[character];
+      if (packedData) {
+        breakdownCache.set(character, packedData);
+        resolvePromise(packedData);
+        return;
+      }
+
       // 3. Query Supabase
-      const { data, error } = await supabase
-        .from('character_breakdowns_v2')
-        .select('*')
-        .eq('character', character)
-        .limit(1)
-        .single();
+      const { data, error } = await timeDataRequest(
+        'character breakdown',
+        () => supabase
+          .from('character_breakdowns_v2')
+          .select(BREAKDOWN_COLUMNS)
+          .eq('character', character)
+          .limit(1)
+          .single(),
+      );
 
       if (error) {
         if (error.code !== 'PGRST116') { // PGRST116 = No rows found (which is fine, not a critical error)
@@ -99,11 +114,14 @@ export async function getCharactersUsingComponent(component: string): Promise<st
       for (const batch of batches) {
         const orFilter = batch.map(c => `decomposition.like.%${c}%`).join(',');
         
-        const { data, error } = await supabase
-          .from('character_breakdowns_v2')
-          .select('character')
-          .or(orFilter)
-          .limit(2000);
+        const { data, error } = await timeDataRequest(
+          `component usage (${batch.length} components)`,
+          () => supabase
+            .from('character_breakdowns_v2')
+            .select('character')
+            .or(orFilter)
+            .limit(2000),
+        );
 
         if (error) {
           console.error("Error in getCharactersUsingComponent batch:", error);
@@ -157,16 +175,28 @@ export async function getMultipleBreakdowns(characters: string[]): Promise<Recor
 
   // Fetch only the missing characters in concurrent chunks
   try {
+    const packedResults = await fetchBreakdownsFromPacks(missingCharacters);
+    for (const [character, breakdown] of Object.entries(packedResults)) {
+      results[character] = breakdown;
+      breakdownCache.set(character, breakdown);
+    }
+
+    const databaseCharacters = missingCharacters.filter((character) => !packedResults[character]);
+    if (databaseCharacters.length === 0) return results;
+
     const chunkSize = 100;
     const fetchPromises = [];
     
-    for (let i = 0; i < missingCharacters.length; i += chunkSize) {
-      const chunk = missingCharacters.slice(i, i + chunkSize);
+    for (let i = 0; i < databaseCharacters.length; i += chunkSize) {
+      const chunk = databaseCharacters.slice(i, i + chunkSize);
       fetchPromises.push(
-        supabase
-          .from('character_breakdowns_v2')
-          .select('*')
-          .in('character', chunk)
+        timeDataRequest(
+          `breakdown batch (${chunk.length} characters)`,
+          () => supabase
+            .from('character_breakdowns_v2')
+            .select(BREAKDOWN_COLUMNS)
+            .in('character', chunk),
+        )
       );
     }
     

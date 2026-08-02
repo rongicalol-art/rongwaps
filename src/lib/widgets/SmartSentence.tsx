@@ -15,7 +15,7 @@ interface SegmentData {
   isWordLike?: boolean;
 }
 
-export function SmartSentence({ text, className = '', bookAccent = 'text-[#1CB0F6]' }: SmartSentenceProps) {
+export function SmartSentence({ text, className = '' }: SmartSentenceProps) {
   const { setDictionaryWord } = useAppStore();
   const [finalSegments, setFinalSegments] = useState<SegmentData[]>([]);
 
@@ -38,7 +38,7 @@ export function SmartSentence({ text, className = '', bookAccent = 'text-[#1CB0F
         const initialSegments = Array.from(segmenter.segment(text));
         
         let processed: SegmentData[] = [];
-        let wordsRequiringNetworkValidation: string[] = [];
+        const wordsRequiringNetworkValidation: string[] = [];
         
         // Pass 1: Local synchronous validation
         for (const seg of initialSegments) {
@@ -83,7 +83,7 @@ export function SmartSentence({ text, className = '', bookAccent = 'text-[#1CB0F
 
         if (!isMounted) return;
         setFinalSegments(processed);
-      } catch (e) {
+      } catch {
         if (!isMounted) return;
         setFinalSegments([{ segment: text, isWordLike: true, index: 0, input: text }]);
       }

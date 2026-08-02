@@ -7,7 +7,7 @@ import type { Flashcard } from '../../../../data/flashcards';
 const HANZI_RE = /[\u4E00-\u9FFF\u3400-\u4DBF\u2E80-\u2FDF\u{20000}-\u{2A6DF}\u{2A700}-\u{2B73F}\u{2B740}-\u{2B81F}\u{2B820}-\u{2CEAF}]/u;
 const NON_CHAR_RE = /[⿰⿱⿲⿳⿴⿵⿶⿷⿸⿹⿺⿻\s！？?]/;
 
-export function useSingleBreakdown(word: string, initialCharIndex: number, activeBook: any) {
+export function useSingleBreakdown(word: string, initialCharIndex: number, activeBook: { id: number }) {
   const [breakdownCharIndex, setBreakdownCharIndex] = useState(initialCharIndex);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export function useSingleBreakdown(word: string, initialCharIndex: number, activ
   }, [initialCharIndex, word]);
 
   const chars = useMemo(
-    () => Array.from(word || "").filter((c) => HANZI_RE.test(c as string)),
+    () => Array.from(word || "").filter((c) => HANZI_RE.test(c)),
     [word],
   );
   
@@ -73,8 +73,8 @@ export function useSingleBreakdown(word: string, initialCharIndex: number, activ
   useEffect(() => {
     if (charData?.decomposition) {
       const subChars = Array.from(charData.decomposition).filter(
-        (c: any) => !NON_CHAR_RE.test(c as string) && c !== activeChar
-      ) as string[];
+        (c) => !NON_CHAR_RE.test(c) && c !== activeChar
+      );
       if (subChars.length > 0) {
         getMultipleBreakdowns(subChars).catch(err => {
           console.error("Error prefetching sub components:", err);
@@ -86,7 +86,7 @@ export function useSingleBreakdown(word: string, initialCharIndex: number, activ
   const components = useMemo(() => {
     if (!charData?.decomposition) return [];
     return Array.from(charData.decomposition).filter(
-      (c: any) => !NON_CHAR_RE.test(c as string) && c !== activeChar,
+      (c) => !NON_CHAR_RE.test(c) && c !== activeChar,
     );
   }, [charData, activeChar]);
 

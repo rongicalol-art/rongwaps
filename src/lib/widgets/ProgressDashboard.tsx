@@ -9,8 +9,6 @@ export function ProgressDashboard({ compact = false }: ProgressDashboardProps) {
   const {
     currentStreak,
     totalXp,
-    totalCardsLearned,
-    totalCardsReviewed,
     sessionProgress,
     learnedCards,
     srsData,
@@ -52,7 +50,7 @@ export function ProgressDashboard({ compact = false }: ProgressDashboardProps) {
     <div className="w-full">
       {/* Today's Session Summary */}
       {(todayXp > 0 || todayCards > 0) && (
-        <div className="mb-4 bg-[#D7FFB8] border-[3px] border-b-[4px] border-[#A5ED5B] rounded-[24px] p-4">
+        <div className="mb-4 bg-[#D7FFB8] border-2 border-b-2 border-[#A5ED5B] rounded-[24px] p-4">
           <div className="flex items-center justify-between mb-2">
             <h4 className="text-[13px] font-extrabold uppercase tracking-widest text-[#58A700]">Today's Session</h4>
             <PiCheckCircleFill className="text-[#58CC02]" size={20} />
@@ -73,7 +71,7 @@ export function ProgressDashboard({ compact = false }: ProgressDashboardProps) {
       {/* Stats Grid */}
       <div className="grid grid-cols-2 gap-3 w-full">
         {/* Streak */}
-        <div className="bg-white border-[3px] border-b-[4px] border-[#E5E5E5] rounded-[24px] p-4 flex items-start gap-3 hover:bg-[#F7F7F7] transition-all cursor-default">
+        <div className="bg-white border-2 border-b-2 border-[#E5E5E5] rounded-[24px] p-4 flex items-start gap-3 hover:bg-[#F7F7F7] transition-all cursor-default">
           <div className="w-10 h-10 shrink-0 rounded-full bg-[#FF9600]/10 flex items-center justify-center mt-1">
             <PiFireFill className="text-[#FF9600]" size={24} />
           </div>
@@ -84,7 +82,7 @@ export function ProgressDashboard({ compact = false }: ProgressDashboardProps) {
         </div>
 
         {/* Total XP */}
-        <div className="bg-white border-[3px] border-b-[4px] border-[#E5E5E5] rounded-[24px] p-4 flex items-start gap-3 hover:bg-[#F7F7F7] transition-all cursor-default">
+        <div className="bg-white border-2 border-b-2 border-[#E5E5E5] rounded-[24px] p-4 flex items-start gap-3 hover:bg-[#F7F7F7] transition-all cursor-default">
           <div className="w-10 h-10 shrink-0 rounded-full bg-[#FFC800]/10 flex items-center justify-center mt-1">
             <PiLightningFill className="text-[#FFC800]" size={24} />
           </div>
@@ -95,7 +93,7 @@ export function ProgressDashboard({ compact = false }: ProgressDashboardProps) {
         </div>
 
         {/* Words Learned */}
-        <div className="bg-white border-[3px] border-b-[4px] border-[#E5E5E5] rounded-[24px] p-4 flex items-start gap-3 hover:bg-[#F7F7F7] transition-all cursor-default">
+        <div className="bg-white border-2 border-b-2 border-[#E5E5E5] rounded-[24px] p-4 flex items-start gap-3 hover:bg-[#F7F7F7] transition-all cursor-default">
           <div className="w-10 h-10 shrink-0 rounded-full bg-[#1CB0F6]/10 flex items-center justify-center mt-1">
             <PiBookOpenFill className="text-[#1CB0F6]" size={24} />
           </div>
@@ -106,7 +104,7 @@ export function ProgressDashboard({ compact = false }: ProgressDashboardProps) {
         </div>
 
         {/* Total Reviews */}
-        <div className="bg-white border-[3px] border-b-[4px] border-[#E5E5E5] rounded-[24px] p-4 flex items-start gap-3 hover:bg-[#F7F7F7] transition-all cursor-default">
+        <div className="bg-white border-2 border-b-2 border-[#E5E5E5] rounded-[24px] p-4 flex items-start gap-3 hover:bg-[#F7F7F7] transition-all cursor-default">
           <div className="w-10 h-10 shrink-0 rounded-full bg-[#58CC02]/10 flex items-center justify-center mt-1">
             <PiCheckCircleFill className="text-[#58CC02]" size={24} />
           </div>
@@ -119,7 +117,7 @@ export function ProgressDashboard({ compact = false }: ProgressDashboardProps) {
 
       {/* Cards Due Banner */}
       {cardsToReview > 0 && (
-        <div className="mt-4 bg-[#E5F5FF] border-[3px] border-b-[4px] border-[#BBE3FF] rounded-[24px] p-4 flex items-center gap-3">
+        <div className="mt-4 bg-[#E5F5FF] border-2 border-b-2 border-[#BBE3FF] rounded-[24px] p-4 flex items-center gap-3">
           <div className="w-10 h-10 shrink-0 rounded-full bg-[#1CB0F6]/10 flex items-center justify-center">
             <PiChartBarFill className="text-[#1CB0F6]" size={22} />
           </div>

@@ -7,6 +7,14 @@ let globalUser: User | null = null;
 let globalIsLoading = true;
 const listeners = new Set<() => void>();
 
+// Safety net: if Supabase never responds, stop blocking the app after 3s
+const loadingTimeout = setTimeout(() => {
+  if (globalIsLoading) {
+    globalIsLoading = false;
+    listeners.forEach(listener => listener());
+  }
+}, 3000);
+
 function userToSnapshot(user: User | null): UserSnapshot | null {
   if (!user) return null;
   return {
@@ -24,6 +32,7 @@ function subscribe(callback: () => void) {
 
   if (listeners.size === 1 && !unsubscribeAuth) {
     unsubscribeAuth = authService.onAuthStateChanged((user) => {
+      clearTimeout(loadingTimeout);
       globalUser = user;
       globalIsLoading = false;
       const snapshot = userToSnapshot(user);
@@ -53,7 +62,7 @@ export function useAuth() {
         console.warn("Profile upsert failed (non-critical):", err);
       });
     }
-  }, [currentUser?.id]);
+  }, [currentUser]);
 
   const loginWithGoogle = useCallback(async () => {
     setIsAuthActionLoading(true);

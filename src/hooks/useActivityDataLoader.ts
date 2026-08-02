@@ -5,10 +5,14 @@ import { getDictionaryEntriesBatch } from '../services/dictionaryService';
 import { flashcardService } from '../services/flashcardService';
 import { useAppStore } from '../store/useAppStore';
 import { useAuth } from './useAuth';
+import {
+  getCurriculumSelectionFingerprint,
+  isCardInPartSelection,
+} from '../utils/lessonPartSelection';
 
 
 export function useActivityDataLoader(activeBookId: number, selectedLessons: number[], isReviewDeck: boolean = false, isLibraryDeck: boolean = false) {
-  const { libraryActiveFolder } = useAppStore();
+  const { libraryActiveFolder, selectedLessonParts } = useAppStore();
   const [cards, setCards] = useState<Flashcard[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -17,6 +21,10 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
   const stableSelectedLessonsKey = useMemo(() => {
     return (selectedLessons || []).join(',');
   }, [selectedLessons]);
+  const stablePartSelectionKey = useMemo(
+    () => getCurriculumSelectionFingerprint(activeBookId, selectedLessons || [], selectedLessonParts),
+    [activeBookId, selectedLessonParts, selectedLessons],
+  );
 
   // ── Main data loader ─────────────────────────────────────────────────
   // Loads cards from three possible sources:
@@ -24,7 +32,7 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
   //   2. Review deck (SRS-filtered due cards from all books)
   //   3. Normal curriculum (book/lesson vocabulary, with optional lesson filter)
   useEffect(() => {
-    let unsubscribe: any = null;
+    let unsubscribe: (() => void) | null = null;
     let isMounted = true;
 
     async function loadData() {
@@ -137,8 +145,11 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
         } else {
           const parsedLessons = stableSelectedLessonsKey ? stableSelectedLessonsKey.split(',').map(Number) : [];
           if (parsedLessons.length > 0) {
-            // Normal mode: filter by selected lessons
-            filtered = filtered.filter(c => parsedLessons.includes(c.lessonId));
+            // Normal mode: filter by the selected lessons and their selected parts.
+            filtered = filtered.filter((card) => (
+              parsedLessons.includes(card.lessonId)
+              && isCardInPartSelection(card, selectedLessonParts)
+            ));
           }
         }
         
@@ -163,7 +174,7 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
       isMounted = false;
       if (unsubscribe && typeof unsubscribe === 'function') unsubscribe();
     };
-  }, [activeBookId, stableSelectedLessonsKey, isReviewDeck, isLibraryDeck, libraryActiveFolder, currentUser]);
+  }, [activeBookId, stableSelectedLessonsKey, stablePartSelectionKey, isReviewDeck, isLibraryDeck, libraryActiveFolder, currentUser, selectedLessonParts]);
 
   return { cards, isLoading, error };
 }

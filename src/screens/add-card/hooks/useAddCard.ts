@@ -9,7 +9,7 @@ type Direction = 'fwd' | 'back' | 'none';
 
 export function useAddCard(onClose: () => void) {
   const { currentUser } = useAuth();
-  const { customFolders, libraryActiveFolder } = useAppStore();
+  const { customFolders, libraryActiveFolder, addLocalFlashcard } = useAppStore();
   
   const folderId = libraryActiveFolder;
   const folderName = folderId === 'starred' ? 'Starred' : customFolders.find(f => f.id === folderId)?.name || 'Library';
@@ -107,32 +107,34 @@ export function useAddCard(onClose: () => void) {
   };
 
   const handleSave = async () => {
-    if (!currentUser) {
-      setSaveError("Please login via the Profile tab to save your vocabulary cards.");
-      return;
-    }
     if (cardData.meaning.trim() && cardData.front.trim()) {
-      try {
-        await flashcardService.createFlashcard({
-          id: crypto.randomUUID(),
-          userId: currentUser.id,
-          folderId: folderId === 'starred' ? 'custom' : folderId,
-          simplified: cardData.front.trim(),
-          traditional: cardData.front.trim(),
-          pinyin: cardData.pinyin.trim(),
-          translation: cardData.meaning.trim(),
-          measure_words: cardData.measureWords && cardData.measureWords.length > 0 ? cardData.measureWords : undefined,
-          createdAt: Date.now()
-        });
+      const newCard = {
+        id: crypto.randomUUID(),
+        userId: currentUser?.id || 'guest',
+        folderId: folderId === 'starred' ? 'custom' : folderId,
+        simplified: cardData.front.trim(),
+        traditional: cardData.front.trim(),
+        pinyin: cardData.pinyin.trim(),
+        translation: cardData.meaning.trim(),
+        measure_words: cardData.measureWords && cardData.measureWords.length > 0 ? cardData.measureWords : undefined,
+        createdAt: Date.now()
+      };
 
-        setSaveError(null);
-        setDirection('fwd');
-        setCardData({ front: '', meaning: '', pinyin: '', availableMeanings: [], measureWords: [] });
-        setView('front');
-      } catch (e) {
-        console.error("Failed to save flashcard", e);
-        setSaveError("Failed to save card. Please try again.");
-      }
+      // Close the screen first so the exit transition starts instantly
+      onClose();
+
+      // Defer the state write until the transition is complete
+      setTimeout(async () => {
+        try {
+          if (currentUser) {
+            await flashcardService.createFlashcard(newCard);
+          } else {
+            addLocalFlashcard(newCard);
+          }
+        } catch (e) {
+          console.error("Failed to save flashcard asynchronously:", e);
+        }
+      }, 350);
     }
   };
 

@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { PiLightbulbFill, PiGearFill } from 'react-icons/pi';
+import React, { useMemo, useState } from 'react';
+import { motion } from 'motion/react';
 import { Flashcard } from '../../data/flashcards';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { PracticeHeader } from '../../lib/widgets/PracticeHeader';
 import { FeedbackBottomBar } from '../../lib/widgets/FeedbackBottomBar';
 import { CharacterBreakdownOverlay } from '../../lib/widgets/CharacterBreakdownOverlay';
 import { LessonComplete } from '../../lib/widgets/LessonComplete';
 import { MemoryHookOverlay } from '../flashcard/MemoryHookOverlay';
 import { useQuizTyping } from './hooks/useQuiz';
-import { useAppStore } from '../../store/useAppStore';
+import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
+import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
+import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
+import { buildPracticePartSegments } from '../../utils/practicePartSegments';
+import { AppIcon } from '../../lib/widgets';
+import { numberToToneMarks } from '../../utils/pinyin';
 
 interface QuizModeProps {
   cards: Flashcard[];
@@ -22,13 +25,12 @@ interface QuizTypingCardProps {
   currentCard: Flashcard;
   input: string;
   status: 'idle' | 'correct' | 'wrong';
-  setInput: (val: string) => void;
-  handleCheck: (e?: React.FormEvent) => void;
-  activeBook: any;
+  onInputChange: (val: string) => void;
+  onSubmit: () => void;
 }
 
 const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
-  currentCard, input, status, setInput, handleCheck, activeBook
+  currentCard, input, status, onInputChange, onSubmit
 }) => {
   const frontLength = currentCard?.front?.length || 1;
   const getFrontFontSize = (len: number) => {
@@ -42,29 +44,58 @@ const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.15 }}
-      className="flex flex-col w-full"
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.14, ease: 'easeOut' }}
+      className="flex w-full flex-col will-change-transform"
     >
-      <div className="flex flex-col items-center justify-center py-8 mb-4 w-full">
-         <h2 className={`${getFrontFontSize(frontLength)} leading-tight font-chinese text-[#4B4B4B] text-center break-words w-full px-4`}>
+      <div className="flex w-full flex-col items-center justify-center pb-7 pt-8">
+         <h2 className={`${getFrontFontSize(frontLength)} w-full break-words px-4 text-center font-chinese leading-tight text-ui-ink`}>
            {currentCard.front}
          </h2>
       </div>
 
-      <form onSubmit={handleCheck} className="w-full relative px-2">
-        <input
-          type="text"
-          value={input}
-          onChange={e => setInput(e.target.value)}
-          disabled={status !== 'idle'}
-          className={`w-full p-6 text-[22px] font-bold text-left bg-[#F7F7F7] border-[3px] border-[#E5E5E5] rounded-[20px] outline-none transition-all duration-200 placeholder-[#AFB6BB] focus:bg-white focus:ring-[3px] focus:ring-[#E5E5E5] text-[#4B4B4B]`}
-          style={{ '--tw-ring-color': activeBook.accentHex, borderColor: status === 'idle' && input ? activeBook.accentHex : undefined } as any}
-          placeholder="Your answer..."
-          autoFocus
-        />
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          onSubmit();
+        }}
+        className="w-full px-2"
+      >
+        <label htmlFor="quiz-pinyin-answer" className="mb-2 block text-sm font-extrabold text-ui-muted-strong">
+          Pinyin
+        </label>
+        <div className="relative">
+          <AppIcon
+            name="keyboard"
+            size={22}
+            className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-ui-muted"
+          />
+          <input
+            id="quiz-pinyin-answer"
+            type="text"
+            value={input}
+            onChange={(event) => onInputChange(event.target.value)}
+            onKeyDown={(event) => {
+              if (event.key !== 'Enter' || event.repeat || event.nativeEvent.isComposing) return;
+              event.preventDefault();
+              onSubmit();
+            }}
+            disabled={status !== 'idle'}
+            className={`w-full rounded-[20px] border-2 bg-ui-surface py-5 pl-14 pr-5 text-left text-[21px] font-extrabold text-ui-ink outline-none transition-[border-color,box-shadow,background-color] placeholder:text-ui-muted focus:ring-4 disabled:bg-ui-hover ${
+              status === 'correct'
+                ? 'border-feedback-success focus:border-feedback-success focus:ring-feedback-success/15'
+                : status === 'wrong'
+                  ? 'border-feedback-danger focus:border-feedback-danger focus:ring-feedback-danger/15'
+                  : 'border-ui-border focus:border-brand-primary focus:ring-brand-primary/15'
+            }`}
+            placeholder="Type the pronunciation"
+            autoCapitalize="none"
+            autoComplete="off"
+            spellCheck={false}
+            autoFocus
+          />
+        </div>
       </form>
     </motion.div>
   );
@@ -72,37 +103,54 @@ const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
 
 export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, activeBookId, sessionKey }) => {
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
-  const [activeMemoryHook, setActiveMemoryHook] = useState<any | null>(null);
+  const [activeMemoryHook, setActiveMemoryHook] = useState<Flashcard | null>(null);
   const {
     activeCards,
     currentIndex,
     currentCard,
     input,
-    setInput,
+    handleInputChange,
     status,
     handleCheck,
-    handleSkip,
+    retryAnswer,
     completed,
     resetAll,
     reviewUnlearned,
     unlearnedCount,
-    learnedCount
-  } = useQuizTyping(cards, sessionKey, onEnd);
+    learnedCount,
+    isShuffled,
+    toggleShuffle,
+  } = useQuizTyping(cards, sessionKey);
+  const autoAdvanceCorrect = usePracticePreferencesStore((state) => state.autoAdvanceCorrect);
+  const autoAdvance = status === 'correct' ? autoAdvanceCorrect : false;
+  const handleTypingSubmit = () => {
+    if (status === 'wrong') {
+      retryAnswer();
+      return;
+    }
+    handleCheck();
+  };
 
-  const { setPracticeHeader, setPracticeHeaderActions } = useAppStore();
-
-  React.useEffect(() => {
-    setPracticeHeader({
-      progress: activeCards.length > 0 ? (currentIndex / activeCards.length) * 100 : 0,
-      currentIndex,
-      totalCount: activeCards.length,
-      showLightbulb: !!currentCard
-    });
-    setPracticeHeaderActions({
-      onLightbulbClick: currentCard ? () => setActiveMemoryHook(currentCard) : undefined,
-      onSettingsClick: () => {}
-    });
-  }, [currentIndex, activeCards.length, currentCard, setActiveMemoryHook, setPracticeHeader, setPracticeHeaderActions]);
+  usePracticeAnswerAutomation({
+    status,
+    onAdvance: handleCheck,
+    advanceWrong: false,
+    blocked: Boolean(activeBreakdown || activeMemoryHook),
+  });
+  const partSegments = useMemo(
+    () => (isShuffled ? [] : buildPracticePartSegments(activeCards)),
+    [activeCards, isShuffled],
+  );
+  usePracticeHeaderRegistration({
+    currentIndex,
+    totalCount: activeCards.length,
+    showLightbulb: !!currentCard,
+    partSegments,
+    onLightbulbClick: currentCard ? () => setActiveMemoryHook(currentCard) : undefined,
+    onShuffleClick: toggleShuffle,
+    onRestartClick: resetAll,
+    isShuffled,
+  });
 
   const activeBook = SAMPLE_BOOKS.find(b => b.id === activeBookId) || SAMPLE_BOOKS[0];
 
@@ -122,42 +170,38 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, activeBookId
   if (!currentCard) return null;
 
   return (
-    <div className="flex-1 flex flex-col bg-[#F7F7F7] overflow-hidden text-[#4B4B4B] font-sans pt-[72px]">
+    <div className="relative flex-1 flex flex-col bg-transparent overflow-hidden text-ui-ink font-sans pt-[72px]">
       <div className="flex-1 flex flex-col max-w-lg mx-auto w-full px-4 sm:px-6 pb-[200px] overscroll-none overflow-y-auto">
-        <h2 className="text-[26px] font-extrabold text-[#4B4B4B] mt-4 mb-8 tracking-tight text-left w-full px-2">
-          Type the pinyin or meaning
-        </h2>
+        <div className="mt-4 flex w-full items-center justify-start px-2">
+          <h2 className="text-[24px] font-extrabold text-ui-ink sm:text-[26px]">
+            Type the pinyin
+          </h2>
+        </div>
 
-        <AnimatePresence mode="wait">
-          <QuizTypingCard 
-            key={currentCard.id}
-            currentCard={currentCard}
-            input={input}
-            status={status}
-            setInput={setInput}
-            handleCheck={handleCheck}
-            activeBook={activeBook}
-          />
-        </AnimatePresence>
+        <QuizTypingCard
+          key={`${currentIndex}:${currentCard.id}`}
+          currentCard={currentCard}
+          input={input}
+          status={status}
+          onInputChange={handleInputChange}
+          onSubmit={handleTypingSubmit}
+        />
       </div>
 
-      <FeedbackBottomBar 
+      <FeedbackBottomBar
         status={status}
-        correctAnswer={currentCard.back}
-        pinyin={currentCard.pinyin}
-        onContinue={() => handleCheck()}
-        onCheck={() => handleCheck()}
+        correctAnswer={numberToToneMarks(currentCard.pinyin || '')}
+        onContinue={status === 'correct' ? () => handleCheck() : retryAnswer}
+        showCheck={false}
         isCheckDisabled={!input.trim()}
-        onSkip={handleSkip}
+        hideWhenAutoAdvance={autoAdvance && status !== 'idle'}
+        showContinueOnWrong
+        keyboardShortcutDisabled={Boolean(activeBreakdown || activeMemoryHook)}
         onBreakdown={() => setActiveBreakdown(currentCard.front)}
         activeBook={activeBook}
       />
 
-      <CharacterBreakdownOverlay 
-        activeBreakdown={activeBreakdown}
-        onClose={() => setActiveBreakdown(null)}
-        activeBook={activeBook}
-      />
+      <CharacterBreakdownOverlay activeBreakdown={activeBreakdown} onClose={() => setActiveBreakdown(null)} activeBook={activeBook} />
 
       <MemoryHookOverlay 
         activeMemoryHook={activeMemoryHook}

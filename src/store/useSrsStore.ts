@@ -1,7 +1,11 @@
 import { create } from 'zustand';
-import { SRSData, Quality, calculateNextReview } from '../utils/srsEngine';
-import { calculateXpForReview } from '../utils/xpSystem';
-import type { SessionProgress } from '../types/models';
+import { SRSData, Quality } from '../utils/srsEngine';
+import {
+  applyCardReview,
+  createClearedReviewProgress,
+  createEmptySessionProgress,
+} from '../utils/reviewProgress';
+import type { LastActivityType, SessionProgress } from '../types/models';
 
 interface SrsState {
   srsData: Record<string, SRSData>;
@@ -30,8 +34,8 @@ interface SrsState {
     lastStudyDate: string | null;
   }>) => void;
 
-  lastActivity: 'flashcards' | 'flashcards-review' | 'listening' | 'quiz' | 'writing' | 'personal-vocab' | null;
-  setLastActivity: (activity: 'flashcards' | 'flashcards-review' | 'listening' | 'quiz' | 'writing' | 'personal-vocab' | null) => void;
+  lastActivity: LastActivityType;
+  setLastActivity: (activity: LastActivityType) => void;
 
   sessionProgressIndex: Record<string, number>;
   setSessionProgressIndex: (key: string, index: number) => void;
@@ -40,42 +44,16 @@ interface SrsState {
   resetProgress: () => void;
 }
 
-const initialSessionProgress: SessionProgress = {
-  xpEarned: 0,
-  cardsReviewed: 0,
-  cardsLearned: 0,
-  startTime: null as unknown as number,
-};
-
-export const useSrsStore = create<SrsState>()((set, get) => ({
+export const useSrsStore = create<SrsState>()((set) => ({
   srsData: {},
   learnedCards: [],
   setSrsDataAndLearnedCards: (srs, learned) => set({ srsData: srs, learnedCards: learned }),
 
-  markCardReviewed: (cardId, quality) => {
-    const state = get();
-    const existing = state.srsData[cardId];
-    const updatedData = calculateNextReview(existing, cardId, quality);
-    const isNew = !existing || existing.repetition === 0;
-    const xpGained = calculateXpForReview(quality, isNew, state.currentStreak);
+  markCardReviewed: (cardId, quality) => set((state) => (
+    applyCardReview(state, cardId, quality)
+  )),
 
-    set((s) => ({
-      srsData: { ...s.srsData, [cardId]: updatedData },
-      learnedCards: isNew && quality >= 3
-        ? [...new Set([...s.learnedCards, cardId])]
-        : s.learnedCards,
-      sessionProgress: {
-        ...s.sessionProgress,
-        xpEarned: s.sessionProgress.xpEarned + xpGained,
-        cardsReviewed: s.sessionProgress.cardsReviewed + 1,
-        cardsLearned: isNew && quality >= 3
-          ? s.sessionProgress.cardsLearned + 1
-          : s.sessionProgress.cardsLearned,
-      },
-    }));
-  },
-
-  sessionProgress: { ...initialSessionProgress },
+  sessionProgress: createEmptySessionProgress(),
   startSession: () => set((s) => ({
     sessionProgress: { ...s.sessionProgress, startTime: Date.now() },
   })),
@@ -89,7 +67,7 @@ export const useSrsStore = create<SrsState>()((set, get) => ({
       cardsLearned: isNew ? s.sessionProgress.cardsLearned + 1 : s.sessionProgress.cardsLearned,
     },
   })),
-  resetSessionProgress: () => set({ sessionProgress: { ...initialSessionProgress } }),
+  resetSessionProgress: () => set({ sessionProgress: createEmptySessionProgress() }),
 
   currentStreak: 0,
   longestStreak: 0,
@@ -114,14 +92,13 @@ export const useSrsStore = create<SrsState>()((set, get) => ({
     sessionProgressIndex: { ...s.sessionProgressIndex, [key]: index },
   })),
   clearSessionProgressIndex: (key) => set((s) => {
-    const { [key]: _, ...rest } = s.sessionProgressIndex;
-    return { sessionProgressIndex: rest };
+    const nextProgress = { ...s.sessionProgressIndex };
+    delete nextProgress[key];
+    return { sessionProgressIndex: nextProgress };
   }),
 
   resetProgress: () => set({
-    srsData: {},
-    learnedCards: [],
-    sessionProgress: { ...initialSessionProgress },
-    sessionProgressIndex: {},
+    ...createClearedReviewProgress(),
+    lastActivity: null,
   }),
 }));

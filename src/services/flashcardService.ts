@@ -267,7 +267,7 @@ class FlashcardService {
         .eq("user_id", userId);
 
       if (!error && data) {
-        const remoteIds = new Set(data.map((f: any) => f.id));
+        const remoteIds = new Set((data as Array<{ id: string }>).map((folder) => folder.id));
         const offlineOnly = localFolders.filter(f => !remoteIds.has(f.id));
 
         if (offlineOnly.length > 0) {

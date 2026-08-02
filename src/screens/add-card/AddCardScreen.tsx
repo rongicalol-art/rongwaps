@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { PiXBold, PiGearBold, PiTextTBold, PiArrowLeftBold } from 'react-icons/pi';
+import { PiXBold, PiTextTBold } from 'react-icons/pi';
 import { useAddCard } from './hooks/useAddCard';
+import { AppIcon, IconActionButton, ScreenHeader } from '../../lib/widgets';
 
 interface AddCardScreenProps {
   onClose: () => void;
@@ -27,32 +28,6 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
     handleKeyDown
   } = useAddCard(onClose);
 
-  const customStyles = `
-    @keyframes slideInFwd {
-      0% { transform: translateX(50px) scale(0.95); opacity: 0; }
-      100% { transform: translateX(0) scale(1); opacity: 1; }
-    }
-    @keyframes slideInBack {
-      0% { transform: translateX(-50px) scale(0.95); opacity: 0; }
-      100% { transform: translateX(0) scale(1); opacity: 1; }
-    }
-    @keyframes popIn {
-      0% { transform: scale(0.5); opacity: 0; }
-      60% { transform: scale(1.1); opacity: 1; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-    
-    .anim-fwd { animation: slideInFwd 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-    .anim-back { animation: slideInBack 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-    .anim-pop { animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-    .anim-float { animation: float 3s ease-in-out infinite; }
-    .spring-transition { transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-  `;
-
   const renderFrontScreen = () => (
     <div key="front" className={`flex-1 flex flex-col items-center justify-center px-4 w-full h-full pb-8 ${direction === 'none' ? '' : direction === 'fwd' ? 'anim-fwd' : 'anim-back'}`}>
       <div className="mb-4 text-center sm:text-left w-full max-w-[320px] sm:max-w-[400px] md:max-w-[460px]">
@@ -63,7 +38,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
       <div className="w-full max-w-[320px] sm:max-w-[400px] md:max-w-[460px] relative pointer-events-auto flex flex-col justify-center">
         <motion.div 
           onClick={() => frontInputRef.current?.focus()}
-          className={`w-full relative min-h-[380px] sm:min-h-[420px] bg-white rounded-[32px] border-[3px] border-b-[8px] cursor-text flex flex-col items-center justify-center p-6 sm:p-8 pb-8 transition-colors overflow-hidden
+          className={`w-full relative min-h-[380px] sm:min-h-[420px] bg-white rounded-[32px] border-2 cursor-text flex flex-col items-center justify-center p-6 sm:p-8 pb-8 transition-colors overflow-hidden
             ${!cardData.front && !isFocused ? 'anim-float' : ''}
             ${isFocused ? 'border-[#1CB0F6] shadow-[0_8px_24px_rgba(28,176,246,0.25)] bg-[#F2F9FF] -translate-y-2' : 'border-[#E5E5E5] hover:border-[#AFB6BB] hover:bg-[#F7F7F7]'}`}
         >
@@ -92,10 +67,10 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
           <AnimatePresence>
             {suggestions.length > 0 && view === 'front' && (
               <motion.div 
-                initial={{ opacity: 0, y: 10, height: 0 }}
-                animate={{ opacity: 1, y: 0, height: 'auto' }}
-                exit={{ opacity: 0, y: 10, height: 0 }}
-                transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.2 }}
                 className="w-full flex gap-2 flex-col pt-4 mt-auto overflow-hidden shrink-0"
               >
                 <div className="w-full flex items-center gap-2 mb-2">
@@ -110,7 +85,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
                       whileHover={{ scale: 1.02, x: 2 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={(e) => { e.stopPropagation(); handleSelectSuggestion(s); }}
-                      className="w-full flex items-center text-left px-3 py-2 sm:px-4 sm:py-3 bg-[#F7F7F7] rounded-[16px] border-[2px] border-[#E5E5E5] border-b-[4px] hover:border-[#1CB0F6] hover:bg-[#F2F9FF] transition-colors group shrink-0"
+                      className="w-full flex items-center text-left px-3 py-2 sm:px-4 sm:py-3 bg-[#F7F7F7] rounded-[16px] border-[2px] border-[#E5E5E5] border-b-2 hover:border-[#1CB0F6] hover:bg-[#F2F9FF] transition-colors group shrink-0"
                     >
                       <span className="font-chinese text-[22px] sm:text-[28px] font-black text-[#4B4B4B] group-hover:text-[#1CB0F6] transition-colors shrink-0 w-12 sm:w-16 text-center">
                         {s.traditional || s.simplified}
@@ -144,10 +119,10 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
       <div className="w-full max-w-[320px] sm:max-w-[400px] md:max-w-[460px] relative pointer-events-auto flex flex-col justify-center">
         <motion.div 
           onClick={() => meaningInputRef.current?.focus()}
-          className={`w-full relative min-h-[380px] sm:min-h-[420px] bg-white rounded-[32px] border-[3px] border-b-[8px] cursor-text flex flex-col items-center justify-center p-6 sm:p-8 pb-8 transition-colors
+          className={`w-full relative min-h-[380px] sm:min-h-[420px] bg-white rounded-[32px] border-2 cursor-text flex flex-col items-center justify-center p-6 sm:p-8 pb-8 transition-colors
             ${isFocused ? 'border-[#1CB0F6] shadow-[0_8px_24px_rgba(28,176,246,0.25)] bg-[#F2F9FF] -translate-y-2' : 'border-[#E5E5E5] hover:border-[#AFB6BB] hover:bg-[#F7F7F7]'}`}
         >
-          <motion.div className="absolute -top-5 left-6 flex items-center gap-2 text-[#AFB6BB] font-bold text-sm bg-white px-4 py-2 rounded-2xl border-[3px] border-[#E5E5E5] shadow-sm spring-transition hover:-translate-y-1">
+          <motion.div className="absolute -top-5 left-6 flex items-center gap-2 text-[#AFB6BB] font-bold text-sm bg-white px-4 py-2 rounded-2xl border-2 border-[#E5E5E5] shadow-sm spring-transition hover:-translate-y-1">
             <span className="opacity-70 uppercase text-xs tracking-wider">Front</span>
             <span className="text-xl text-[#1CB0F6] font-chinese">{cardData.front}</span>
           </motion.div>
@@ -176,10 +151,10 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
           <AnimatePresence>
             {cardData.availableMeanings.length > 1 && (
               <motion.div 
-                initial={{ opacity: 0, y: 10, height: 0 }}
-                animate={{ opacity: 1, y: 0, height: 'auto' }}
-                exit={{ opacity: 0, y: 10, height: 0 }}
-                transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.2 }}
                 className="w-full flex gap-2 flex-col pt-4 overflow-hidden shrink-0 mt-auto"
               >
                 <div className="w-full flex items-center gap-2 mb-2">
@@ -193,13 +168,13 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
                       <motion.button 
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.9, height: 0, marginBottom: 0 }}
-                        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.15 }}
                         key={meaning} 
                         whileHover={{ scale: 1.02, y: -2 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={(e) => { e.stopPropagation(); setCardData({...cardData, meaning}); }}
-                        className="w-full text-center px-4 py-3 bg-[#F7F7F7] border-[2px] border-[#E5E5E5] border-b-[4px] text-[#AFAFAF] hover:text-[#1CB0F6] hover:border-[#1CB0F6] hover:bg-[#F2F9FF] font-bold rounded-[16px] text-xs sm:text-sm transition-colors leading-tight shrink-0 whitespace-normal text-balance"
+                        className="w-full text-center px-4 py-3 bg-[#F7F7F7] border-[2px] border-[#E5E5E5] border-b-2 text-[#AFAFAF] hover:text-[#1CB0F6] hover:border-[#1CB0F6] hover:bg-[#F2F9FF] font-bold rounded-[16px] text-xs sm:text-sm transition-colors leading-tight shrink-0 whitespace-normal text-balance"
                       >
                         {meaning}
                       </motion.button>
@@ -215,19 +190,13 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
   );
 
   return (
-    <div className="flex flex-col w-full h-full bg-white overflow-hidden overscroll-none font-sans selection:bg-[#1CB0F6] selection:text-white">
-      <style>{customStyles}</style>
-      
-      {/* HEADER */}
-      <header className="flex items-center justify-between p-4 md:p-6 text-[#AFAFAF] z-10 w-full shrink-0">
-          <button 
-            onClick={view === 'back' ? handleBack : onClose}
-            className="p-2 -ml-2 text-[#AFB6BB] hover:bg-[#F7F7F7] hover:text-[#4B4B4B] rounded-[16px] spring-transition active:scale-90"
-          >
-            {view === 'back' ? <PiArrowLeftBold size={28} /> : <PiXBold size={28} />}
-          </button>
-          
-          <div className="flex-1 mx-4 md:mx-6 flex flex-col items-center gap-2">
+    <div className="relative flex h-full w-full flex-col overflow-hidden bg-ui-practice-canvas font-sans selection:bg-[#1CB0F6] selection:text-white overscroll-none">
+      <ScreenHeader
+        onBack={view === 'back' ? handleBack : undefined}
+        onClose={view === 'front' ? onClose : undefined}
+        maxWidth="none"
+        centerContent={(
+          <div className="flex w-full flex-col items-center gap-2">
             <span className="font-bold text-[#AFB6BB] uppercase tracking-widest text-[10px] md:text-xs">
               Adding to <span className="text-[#1CB0F6]">{folderName}</span>
             </span>
@@ -240,19 +209,24 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
               </div>
             </div>
           </div>
-          
-          <button className="p-2 -mr-2 text-[#AFB6BB] hover:bg-[#F7F7F7] hover:text-[#4B4B4B] rounded-[16px] spring-transition active:scale-90 relative z-30">
-            <PiGearBold size={28} />
-          </button>
-      </header>
+        )}
+        rightAction={(
+          <IconActionButton
+            disabled
+            label="Card settings coming soon"
+            icon={<AppIcon name="settings" size={25} />}
+          />
+        )}
+        className="relative z-20 border-b-0 bg-transparent shadow-none"
+      />
 
       {/* MAIN CONTENT AREA */}
-      <main className="flex-1 flex flex-col relative overflow-y-auto overflow-x-hidden p-2 hide-scrollbar w-full max-w-4xl mx-auto items-center justify-center">
+      <main className="relative z-10 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center overflow-x-hidden overflow-y-auto p-2 hide-scrollbar">
         {view === 'front' ? renderFrontScreen() : renderBackScreen()}
       </main>
 
       {/* BOTTOM FIXED ACTION BAR */}
-      <footer className="shrink-0 p-4 md:p-6 bg-white border-t-2 border-[#E5E5E5]">
+      <footer className="pointer-events-none relative z-20 shrink-0 bg-gradient-to-t from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent p-4 pt-8 md:p-6 md:pt-10">
           <div className="max-w-4xl mx-auto w-full">
             {saveError && (
               <div className="mb-3 px-4 py-3 bg-[#FFF2F2] border-[2px] border-[#FFD6D6] rounded-[16px] text-[#E03A3A] font-bold text-sm text-center">
@@ -269,7 +243,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
             <button
               onClick={view === 'front' ? handleNext : handleSave}
               disabled={view === 'front' ? !cardData.front.trim() : !cardData.meaning.trim()}
-              className={`w-full py-4 rounded-[20px] font-black text-xl tracking-widest transition-all duration-150 flex items-center justify-center
+              className={`pointer-events-auto w-full py-4 rounded-[20px] font-black text-xl tracking-widest transition-all duration-150 flex items-center justify-center
                 ${(view === 'front' ? cardData.front.trim() : cardData.meaning.trim())
                   ? 'bg-[#1CB0F6] text-white border-[#1899D6] border-b-[6px] hover:bg-[#1899D6] active:border-b-[0px] active:translate-y-[6px]' 
                   : 'bg-[#F7F7F7] text-[#AFB6BB] border-[2px] border-[#E5E5E5] border-b-[6px] shadow-sm cursor-not-allowed'}`}

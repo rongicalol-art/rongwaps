@@ -1,104 +1,210 @@
 # Prompt/Agent Instructions
 
-These instructions are automatically injected into my brain every time we start working on this project. This ensures I never forget how you like your code structured.
+Auto-injected each project session. Keep code structure + user preferences.
 
 **Core Rules for AI Agent:**
 
 1. **Separation of Concerns:**
-   - **Designs & UI:** Reusable buttons, cards, and styling components *MUST* go in `src/lib/widgets/`. Do not bloat screens with massive SVG/JSX definitions. Extract them.
-   - **Page Layouts:** Entire pages/screens go in `src/screens/` (e.g., CurriculumLibrary).
-   - **Logic & State:** Any complex React logic (like spaced repetition drawing, scoring) goes into custom hooks inside `src/hooks/`.
-   - **Functions:** Pure javascript helper functions (math, formatting, text processing) belong in `src/utils/`.
-   - **Data:** Static content and types go in `src/data/`.
+   - **Designs & UI:** Reusable buttons/cards/style widgets go in `src/lib/widgets/`. No massive SVG/JSX inside screens.
+   - **Page Layouts:** Screens/pages go in `src/screens/`.
+   - **Logic & State:** Complex React logic goes in hooks inside `src/hooks/`.
+   - **Functions:** Pure JS helpers go in `src/utils/`.
+   - **Data:** Static content/types go in `src/data/`.
 
 2. **Clean Code Philosophy:**
-   - Always prefer smaller, composable components over huge monolithic files.
-   - Screen files (`src/screens/`) should primarily be "glue" code that calls a hook (`useFlashcards()`) and passes data down to "dumb" UI widgets.
+   - Prefer small composable components over huge files.
+   - Screens glue hooks + dumb UI widgets.
 
-3. **Design Aesthetics (Duolingo-Style UI & Vibes - STRICT CODES):**
-   - We are building a playful, approachable study tool with a Duolingo-inspired UI. It must have chunky 3D borders, glassmorphism, and bold, vivid flat colors. DO NOT USE default Tailwind grays like `slate-400` or `gray-200`.
-   - **Neutral Border/Shape:** `#E5E5E5`
-   - **Neutral Active Text:** `#4B4B4B`
-   - **Neutral Muted Text:** `#AFB6BB`
-   - **Neutral BG:** `bg-[#F7F7F7]` or `bg-white`
-   - **Buttons:** ALWAYS make buttons 3D tactile. Give them thick bottom borders without side/top borders, e.g. `border-b-[6px] active:border-b-[0px] active:translate-y-[6px] rounded-[24px]` (or similar proportional values). Do not use full borders (like `border-2`) on buttons unless it's an outlined styling specifically requested.
-   - **Icons:** Use `react-icons` for all icons. You can mix and match from different packs (e.g. `react-icons/fa6`, `react-icons/hi2`, `react-icons/lu`, `react-icons/io5` etc.). This explicitly overrides rules limiting icons to `lucide-react`.
+3. **Design Aesthetics (Premium-Playful Learning UI):**
+   - Playful approachable study tool. Duolingo clarity, vivid flat colors. Tactile depth only for emphasis. DO NOT USE default Tailwind grays like `slate-400` or `gray-200`.
+   - **Neutral Border/Shape:** `border-ui-border`, `bg-ui-border`, or `var(--color-ui-border)`
+   - **Neutral Active Text:** `text-ui-ink` or `var(--color-ui-ink)`
+   - **Neutral Muted Text:** `text-ui-muted` or `var(--color-ui-muted)`
+   - **Neutral BG:** `bg-ui-canvas` or `bg-ui-surface`
+   - **Buttons:** Use shared action hierarchy. Strong depth for primary next action + direct manipulation only. Secondary restrained. Nav/settings/audio/close utility quiet.
+   - **Icons:** Use semantic `AppIcon` gateway + approved Phosphor family. Add semantic name there.
 
 4. **Self-Updating Documentation (Living Docs):**
-   - If I (the AI) create a new reusable button or widget, I MUST automatically update `WIDGETS.md` to document its props and usage.
-   - If the user specifies a new project-wide rule or convention, I MUST automatically append it to this `AGENTS.md` file so it is permanently remembered.
+   - New reusable button/widget => update `WIDGETS.md` props + usage.
+   - New project-wide user rule => append to `AGENTS.md`.
 
 5. **Screen Refactoring & Cleanups:**
-   - Always extract distinct "views" or modal wrappers into their own files in `src/screens/` rather than keeping massive inline `motion.div` blocks with placeholder UI inside `App.tsx`.
-   - Ensure the `App.tsx` retains only the high-level routing/state logic and the global layout shell.
-   - Any reusable icons, especially SVGs, should be placed in `src/lib/widgets/` or `src/assets/` to prevent cluttering standard components.
+   - Extract distinct views/modal wrappers to `src/screens/`; no huge inline `motion.div` placeholders in `App.tsx`.
+   - Keep `App.tsx` high-level routing/state + global shell only.
+   - Reusable icons/SVGs live in `src/lib/widgets/` or `src/assets/`.
 
 6. **State & Persistence:**
-   - Always use the Zustand store (`src/store/useAppStore.ts`) for global state like `activeBookId`, `learnedCards`, and `srsData`.
+   - Use Zustand store `src/store/useAppStore.ts` for global state: `activeBookId`, `learnedCards`, `srsData`.
    - Never lift heavy state into `App.tsx`.
 
-7. **Header Management:**
-   - Always reuse the global `MainHeader` widget inside `App.tsx` instead of creating standalone headers for different screens.
-   - If a screen or mode needs a different title, left icon, or right action, pass these via `title`, `leftIcon`, and `rightContent` props down to `MainHeader`.
+7. **Top-Level Navigation & Headers:**
+   - Top-level tab screens (`Books`, `Dictionary`, `Library`, `Profile`) headerless on desktop.
+   - Desktop/wide (`md`+) side nav permanent/open. Mobile may closable drawer.
+   - Keep compact global `MainHeader` on mobile.
+   - Desktop actions live in screen workspace, contextual actions, or floating tactile selection action.
+   - `ScreenHeader`/`PracticeHeader` for overlays, drill-downs, active study sessions.
 
 8. **Remote Data, Services, & Caching:**
-   - All external data fetching (e.g. Supabase) MUST go inside `src/services/`.
-   - UI Components (`src/screens/`, `src/lib/widgets/`) MUST NEVER query Supabase directly. They must use the service layer.
-   - For high-frequency lookups (like dictionary terms, character breakdowns), the service layer MUST implement an in-memory application cache (e.g., a `Map` in `src/utils/cache.ts`) to avoid duplicate network paths and preserve fast UI responsiveness.
+   - External fetching (Supabase) goes inside `src/services/`.
+   - UI (`src/screens/`, `src/lib/widgets/`) NEVER query Supabase directly. Use service layer.
+   - High-frequency lookups use in-memory app cache, e.g. `Map` in `src/utils/cache.ts`.
 
 9. **Strict UI Reusability (Anti-Spaghetti Protocol):**
-   - **Reuse Before Creating:** ALWAYS check `src/lib/widgets/` to see if a component (Button, Card, Modal, Input) already exists before building a new one from scratch. Do not hardcode raw `<button className="...">` or `<div className="rounded-xl border...">` inside screen components if a widget already handles it.
-   - **Make New UI Reusable Default:** If you must create a *new* UI element that could be used elsewhere, you MUST build it as an unopinionated, reusable React component in `src/lib/widgets/` rather than burying it inside a specific page structure.
-   - **Prop-Driven Design:** Every reusable UI component must accept standard HTML attributes (via `extends React.HTMLAttributes<HTMLDivElement>`) and a `className` override so it remains highly composable without needing to be duplicated in the future.
+   - **Reuse Before Creating:** Check `src/lib/widgets/` before new Button/Card/Modal/Input. Avoid raw hardcoded buttons/cards in screens.
+   - **Make New UI Reusable Default:** New reusable UI goes in `src/lib/widgets/`, unopinionated.
+   - **Prop-Driven Design:** Reusable UI accepts standard HTML attrs (e.g. `extends React.HTMLAttributes<HTMLDivElement>`) + `className`.
 
-## PHASE 3: Architectural Guardrails
+10. **Architectural Guardrails:**
+    - **Component Rules:**
+      - File max rough: screen containers/hooks 250 lines; presentational widgets/helpers 150 lines. Extract when bigger.
+      - Components dumb when possible; pass data/callbacks.
+      - Structure: `[Hooks/State] -> [Derived Data] -> [UI Rendering]`.
+    - **Styling Rules (Tailwind CSS):**
+      - Use Tailwind utility classes.
+      - Extract repeated class strings into variables/widgets.
+      - Premium-playful aesthetic: rounded geometry, vivid semantic accents, depth proportional to importance.
+    - **Data Rules:**
+      - Backend fetching resides in `src/services/`.
+      - Screens/components no raw fetch, Axios, direct DB client. Use hook => service.
+    - **State Rules:**
+      - **Local State** (`useState`, `useReducer`): visual-only state.
+      - **Global State** (`Zustand`): persisted cross-screen state.
+      - Never lift complex app state into `App.tsx`.
 
-- **Component Rules:** 
-  - Maximum line count per file should generally not exceed 150 lines. If a component grows beyond this, extract UI blocks into `src/lib/widgets/` or distinct feature components in the local directory.
-  - Components must remain "dumb" wherever possible. Pass data and callbacks as props.
-  - Strict Component Structure: `[Hooks/State] -> [Derived Data] -> [UI Rendering]`. Do not mix data fetching logic inside JSX elements.
+11. **Anti-Spaghetti & Feature Architecture:**
+    - **Feature-Based Folder Structure (Vertical Slices):**
+      - Complex screens become feature folder, e.g. `src/screens/library/`.
+      - Feature folder may contain `components/`, `hooks/`, `utils/`.
+      - Use `index.ts` to export public API only.
+    - **Strict Container vs. Presenter Pattern:**
+      - **Containers (Smart):** data fetching via hooks, state, props down.
+      - **Presenters (Dumb):** pure props; avoid `useAppStore`/services unless needed.
+    - **Centralized Types:**
+      - DB/API types in `src/types/database.ts`.
+      - App/UI models in `src/types/models.ts`.
+      - No complex shared interfaces inline.
+    - **No Service Leakage:**
+      - Direct `supabase` imports inside `/src/screens/` or `/src/lib/widgets/` STRICTLY FORBIDDEN.
+      - UI calls hook (e.g. `useDictionarySearch`) => service (e.g. `dictionaryService.ts`) => only service touches Supabase.
 
-- **Styling Rules (Tailwind CSS):** 
-  - Strictly use Tailwind CSS utility classes.
-  - Extract repetitive class strings into variables, or ideally, into reusable widgets in `src/lib/widgets/` for elements like Buttons and Cards.
-  - Maintain the Duolingo-style aesthetic: playful `rounded-[24px]`, `border-b-[Xpx]`, and solid hex color borders.
+12. **Memory Hooks (Pre-generated Mnemonics):**
+    - **Concept:** Mnemonics pre-generated by batch script, stored in Supabase `mnemonics`. Frontend checks DB cache first for instant display.
+    - **Key convention:** Word mnemonic id `word_{text}` (e.g. `word_你好`); character id `{char}` (e.g. `好`). Applies batch script, frontend cache, pre-generation hook, Supabase `mnemonics.id`.
+    - **Pre-generation hook:** `preGenerateMnemonics(items[])` in `src/services/aiService.ts`; called entering study session.
+    - **Batch script:** `scripts/batchMnemonics.ts`; reads vocab from Supabase, generates via Gemini + OpenRouter fallback, saves to `mnemonics`. Run `npx tsx scripts/batchMnemonics.ts`. Supports `--start`/`--end`.
+    - **Server API:** `POST /api/generate-mnemonic`; single endpoint for character + word. Used frontend on-demand + pre-generation.
+    - **Static mnemonics:** `src/data/pregeneratedMnemonics.ts`; checked before API.
 
-- **Data Rules:** 
-  - All data fetching from the backend (Supabase) must reside inside `src/services/`.
-  - Screens and Components MUST NEVER contain raw fetch calls, Axios logic, or direct DB client queries. They must use a custom hook (e.g., `useVocabulary()`) which then calls the service layer.
+13. **Design System Foundations:**
+    - Use semantic `AppIcon` for functional icons. Phosphor default. Add semantic name instead of duplicate icon family.
+    - Shared design values live in `src/data/designTokens.ts` + Tailwind tokens in `src/index.css`.
+    - Branded nav illustrations must be coherent family. Current Adventure Time SVGs temporary; replace with licensed/original RongWaps art before public launch.
 
-- **State Rules:** 
-  - **Local State** (`useState`, `useReducer`): Use for purely visual component states (toggles, input fields, open/closed modals).
-  - **Global State** (`Zustand`): Use strictly for cross-screen data that persists throughout the session (e.g., active user configuration, SRS progress, selected curriculums).
-  - Never lift complex application state into `App.tsx`. Use Zustand instead.
+14. **Semantic Neutral Colors:**
+    - Never hardcode neutral border/disabled/divider/surface/hover/text hex in components. Use `ui-*` tokens: `ui-border`, `ui-divider`, `ui-muted`, `ui-ink`, `ui-canvas`, `ui-surface`.
+    - Non-Tailwind APIs use `DESIGN_TOKENS.color` from `src/data/designTokens.ts`.
+    - Adjust neutral contrast centrally only.
 
-## PHASE 4: Anti-Spaghetti & Feature Architecture
+15. **Typography Roles:**
+    - Use `font-sans` for UI copy + mixed Latin/Chinese. Stack uses Nunito + LXGW WenKai-based Chinese.
+    - Every Chinese glyph uses single `font-chinese` stack: controls, labels, examples, inputs, dictionary, handwriting, teaching.
+    - Never hardcode `font-family` in components. Tailwind tokens / `DESIGN_TOKENS.font` own families.
+    - Default letter spacing zero. Only short uppercase category labels may positive tracking. Headings + Chinese normal tracking.
 
-- **Feature-Based Folder Structure (Vertical Slices):**
-  - As screens grow complex (e.g., `LibraryScreen.tsx`), they MUST be broken down into a dedicated feature folder (e.g., `src/screens/library/`).
-  - Inside a feature folder, subdivide further if needed: `components/` (local UI), `hooks/` (local logic), `utils/`.
-  - Use `index.ts` files inside feature folders to export only the public interfaces/components. This encapsulates internal helpers and avoids deep import chains.
+16. **Workspace-Bounded Windows:**
+    - Full-screen study windows/drawers/settings/dictionary/breakdowns/top overlays stay inside main workspace on desktop/wide; never cover permanent left nav.
+    - Use shared `workspace-window` utility for top-level fixed/root absolute windows. Mobile full viewport; `md`+ offset by nav width.
+    - Nested overlays inside workspace-bounded parent inherit bounds; do not offset twice.
 
-- **Strict Container vs. Presenter Pattern:**
-  - **Containers (Smart):** A top-level screen component should handle data fetching (via custom hooks), state management, and passing props down.
-  - **Presenters (Dumb):** Sub-components must be pure functions of their props. They should not directly call `useAppStore` or services unless absolutely necessary.
-  
-- **Centralized Types:**
-  - Database schemas and API response types go in `src/types/database.ts`.
-  - Application models and UI interfaces go in `src/types/models.ts`.
-  - Do not define complex shared interfaces inline within component files.
+17. **Country Flags:**
+    - Never use platform flag emoji. Use `CountryFlag` widget + committed vector assets for consistent rectangle ratio/weight.
+    - Flags flat; no shadow.
 
-- **No Service Leakage:**
-  - Direct imports of `supabase` client inside `/src/screens/` or `/src/lib/widgets/` is STRICTLY FORBIDDEN.
-  - UI must call a hook (e.g., `useDictionarySearch`), which then calls a function in `/src/services/` (e.g., `dictionaryService.ts`), which is the ONLY place allowed to touch the Supabase client.
+18. **Reading-Centered Lesson Parts:**
+    - Lesson `Part` = one source-book `Reading` section (`短文／Reading`), not one grammar point/dialogue.
+    - `Reading` umbrella content type: dialogue/story/narrative/self-intro/letter/article/etc.
+    - Grammar points for same Reading stay grouped in same lesson/part. No duplicate parts because multiple grammar points.
+    - Store source Reading once; reference from every grammar point in part. Preserve format; keep `Reading` top-level curriculum identity.
+    - Track grammar progress in part; complete part after required grammar + final Reading/comprehension.
 
-## Memory Hooks (Pre-generated Mnemonics)
+19. **Self-Paced Grammar Navigation:**
+    - Grammar explanation + exercise are two modes of one grammar point. Header exposes only `Grammar` and `Reading`; internal modes `Learn`/`Practice`.
+    - Multi-grammar part needs Previous/Next grammar controls in learn + review. Learners revisit or move forward without sequence restart.
+    - Changing grammar with Previous/Next returns to Learn. Switching Learn/Practice keeps current grammar selected.
 
-- **Concept:** Mnemonics are pre-generated via batch script and stored in Supabase `mnemonics` table. The frontend checks DB cache first, so users see mnemonics instantly without waiting for AI.
-- **Key convention:** Word mnemonics use `id: "word_{text}"` (e.g. `"word_你好"`), character mnemonics use `id: "{char}"` (e.g. `"好"`). This applies everywhere: batch script, frontend cache, pre-generation hook, and Supabase `mnemonics.id` field.
-- **Pre-generation hook:** `preGenerateMnemonics(items[])` in `src/services/aiService.ts` — called when entering a study session to background-generate mnemonics for all characters/words in the lesson.
-- **Batch script:** `scripts/batchMnemonics.ts` — reads vocab from Supabase, generates via Gemini + OpenRouter fallback, saves to `mnemonics` table. Run: `npx tsx scripts/batchMnemonics.ts`. Supports `--start` and `--end` flags for parallel runs.
-- **Server API:** `POST /api/generate-mnemonic` — single endpoint for both character and word mnemonics. Called by frontend on-demand and by pre-generation hook.
-- **Static mnemonics:** `src/data/pregeneratedMnemonics.ts` — hand-written mnemonics for common words/characters, checked before API calls.
+20. **Temporary Grammar-Only Lesson Experience:**
+    - Preserve source Reading data. Hide Reading nav/completion when dedicated Reading experience missing; expose implemented Reading only.
+    - Current product direction: hide learner-facing Reading path/window entirely for now. Do not render Reading cards, open Reading overlays, or count Reading as required progress until re-enabled.
+    - Active flow: `Grammar Learn + Practice -> next Grammar -> Part complete`. Part completes after every grammar exercise complete.
+    - Grammar lessons: flat book-reading workspace, full-width header, left `Grammar X of Y`, long progress bar, quiet Prev/Next, unframed reading content, bottom Learn/Practice dock.
+    - Grammar practice uses `bg-ui-canvas`, never solid white page. White surfaces only for profile/question/feedback/mode cards.
+    - Study header owns `Grammar X of Y`. Do not repeat `語法 · Grammar X` / `Practice · Grammar X` eyebrow in content.
+    - Learn content one grammar title only. No duplicate focus-character blue subtitle. Printed-page badge in right title column, no wrap under title.
+    - Grammar examples/practice/blanks/answer tiles use shared compact teaching-text scale.
+    - Pattern tables/example lists keep one semantic DOM + same reading order mobile/desktop. Breakpoints adjust proportions only. Pattern meanings span full row below Chinese structure. Example controls align with sentence.
+    - Every Chinese grammar-learning glyph (titles, explanations, notes, sentence spine, contrasts, examples) gets shared hover/focus + dictionary click. Lesson contextual meanings beat generic dictionary glosses.
+    - Fill-in answer tiles compact character controls, restrained depth. Blank width reflects expected answer length.
 
+21. **Purposeful Action Hierarchy:**
+    - Use `ActionButton` for primary/secondary/quiet/danger; `IconActionButton` for icon utilities; `SegmentedControl` for modes. Legacy `Soft3DButton`/`IconButton3D` compatibility only.
+    - One dominant primary action per surface/group. Check/Continue/Complete/Start/destructive confirm may strong depth when clear next step.
+    - Reset/Review/Retry/Cancel/alternatives secondary or quiet unless workflow makes one primary.
+    - Close/Back/Previous/Next/Settings/Audio/Expand/overflow quiet/light surface, no thick tactile edge.
+    - Learn/Practice and similar modes are segmented navigation, not separate tactile CTAs.
+    - Selected control keeps persistent signal across hover/focus. Hover never demotes selected to gray. Selected color not duplicated on selector + result panel.
+    - No tactile buttons inside tactile container. No card depth on plain page sections. Use layout/type/whitespace before border/shadow.
 
+22. **Grammar Reading Aids & Phrase Lookup:**
+    - Pinyin supports Chinese; it stays visually quieter and smaller than characters and translations.
+    - Audio is a quiet inline utility, never a competing card action.
+    - If a tapped teaching phrase has no exact dictionary entry, segment it into useful words and show each word’s definitions. Do not default to a “not found” dead end or character-by-character breakdown.
+    - Teaching glossary tokens may be words, established short phrases, or the grammar form being taught. Never register a complete clause or sentence as one dictionary lookup target.
+    - Practice section labels appear once per group. Do not repeat labels such as “Learned skills” above every question.
+    - Grammar Learn pages should include at least four varied examples when authored beyond source minimum, with visual manipulation or contrast when word order is hard to understand.
+
+23. **Grammar Workspace Texture & Pattern Maps:**
+    - Grammar workspaces use a calm solid canvas. Grid/paper texture belongs inside a clearly bounded work-mat panel, following Library’s graph-panel treatment; never use floating texture scraps or full-page wallpaper.
+    - Pattern tables use a blue formula bar/header only. Lower sentence cards stay neutral white with quiet solid dividers; no highlighted column wash and no dotted connector rails.
+    - Pattern columns follow authored sentence structure. Never invent or preserve an empty spacer column to force a three-column table.
+    - One-, two-, and three-part patterns share the same component; populated groups determine the visible columns and available width.
+    - The active header segment uses a distinct deeper blue bottom edge so it does not blend into the header shadow.
+    - Grammar example number badges use the Dictionary's yellow-gold family for a small repeated accent.
+    - Practice groups may sit inside one graph-paper work mat. Questions use solid surfaces and restrained card lift. Avoid dotted wallpaper and decorative noise.
+    - Interactive grammar labs are texture-free and reading-first: strong title hierarchy, one compact segmented choice rail, one spacious white teaching surface, and one quiet takeaway strip. Avoid nested cards and repeated graph texture.
+
+24. **Lesson Part Practice Selection:**
+    - Lesson tiles never render part selectors beneath the lesson card.
+    - Current lesson parts live in the course progress panel as one segmented practice rail.
+    - Selecting a lesson enables only its first available part by default.
+    - At least one part must remain enabled for a selected lesson.
+    - Curriculum practice loading and session keys must respect enabled parts.
+    - Active practice progress may split into labeled part segments; shuffled sessions fall back to one continuous bar.
+
+25. **Typing Pinyin Quiz:**
+    - Quiz entry exposes Multiple Choice and Type Pinyin as explicit modes.
+    - Type Pinyin grades pronunciation only, never the English meaning.
+    - Pinyin matching ignores case, spacing, punctuation, tone marks, and tone numbers.
+    - Parenthesized pinyin is optional, and either slash-separated pronunciation is accepted.
+    - Keep misspellings incorrect; forgiving input formatting must not become fuzzy spelling correction.
+
+26. **Quiz Answer Progression:**
+    - Multiple-choice quiz answers grade immediately when an option is selected; quiz screens do not render a Check action.
+    - Type Pinyin answers submit with Enter; manual feedback exposes only Continue.
+    - A wrong-answer Continue action resets the current card for another attempt; it never advances the session.
+    - When the selected auto-next setting applies to the result, hide the feedback action overlay while the timer advances to the next card.
+    - The shared Check action remains available to activities that still use explicit checking, such as Writing.
+
+27. **Source-First Grammar Learn Pages:**
+    - The source-book rule, pattern, examples, page reference, and exercise sequence are the lesson authority.
+    - Grammar Learn headers provide a quiet `View book page` action. It opens only the referenced printed pages exported from the owned source PDFs; do not expose whole source PDFs in the learner UI.
+    - Default Learn view shows the source explanation, pattern, and examples before any supplemental teaching.
+    - Put the one primary teaching interaction and added mistake/contrast help inside one quiet disclosure after the source examples. Keep it closed by default.
+    - Prefer the authored specialized lab over a second generic discovery lab.
+    - Keep the Learn opening concise: one title and one plain-language explanation. Do not repeat the same promise in a separate callout.
+    - Lesson context, character art, and illustrations appear only when they clarify meaning that text and sentence structure cannot show more directly.
+    - Default order: concise explanation → source pattern → source examples → collapsed optional interactive help.
+
+28. **Consistent Neutral Borders:**
+    - Neutral outlines use one consistent 2px width across headers, cards, docks, progress rails, inputs, selectors, and practice surfaces.
+    - Neutral cards and utility containers stay flat; do not create depth with a thicker bottom border.
+    - Thicker bottom edges are reserved for the single primary action, destructive confirmation, or direct-manipulation control whose tactile role is intentional.

@@ -1,19 +1,22 @@
 import { useState, useEffect } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
-import { ScreenHeader } from '../../lib/widgets';
+import { AnimatePresence } from 'motion/react';
+import { WorkspaceDetailShell } from '../../lib/widgets';
 import { useAppStore } from '../../store/useAppStore';
 import { createPortal } from 'react-dom';
-import { useCompactHeaderOnScroll } from '../../hooks/useCompactHeaderOnScroll';
 
 import { AllExamplesSubOverlay } from './components/AllExamplesSubOverlay';
 import { MnemonicSection } from './components/MnemonicSection';
 import { SentencesSection } from './components/SentencesSection';
 import { useMemoryHookOverlay } from './hooks/useMemoryHookOverlay';
+import type { MemoryHookCard } from './hooks/useMemoryHookOverlay';
+import { SAMPLE_BOOKS } from '../../data/books';
+
+type CourseBook = (typeof SAMPLE_BOOKS)[number];
 
 interface MemoryHookOverlayProps {
-  activeMemoryHook: any;
-  setActiveMemoryHook: (hook: any | null) => void;
-  activeBook: any;
+  activeMemoryHook: MemoryHookCard | null;
+  setActiveMemoryHook: (hook: MemoryHookCard | null) => void;
+  activeBook: CourseBook;
 }
 
 export function MemoryHookOverlay({
@@ -22,8 +25,6 @@ export function MemoryHookOverlay({
   activeBook,
 }: MemoryHookOverlayProps) {
   const setIsOverlayOpen = useAppStore(state => state.setIsOverlayOpen);
-  const { isHeaderCompact, handleHeaderScroll } = useCompactHeaderOnScroll();
-
   const {
     mnemonic,
     loading,
@@ -46,33 +47,22 @@ export function MemoryHookOverlay({
   const overlayContent = (
     <AnimatePresence>
       {activeMemoryHook && (
-        <motion.div
-          initial={{ y: "100%" }}
-          animate={{ y: 0 }}
-          exit={{ y: "100%" }}
-          transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] }}
-          className="absolute inset-0 z-[300] w-full h-full bg-[#F7F7F7] flex flex-col pointer-events-auto font-sans shadow-2xl"
-        >
-          <ScreenHeader 
-            onClose={() => setActiveMemoryHook(null)}
+        <>
+          <WorkspaceDetailShell
+            ariaLabel={`Insights and examples for ${activeMemoryHook.front}`}
             title="Insights & Examples"
-            compact={isHeaderCompact}
-            className="bg-white border-b-[3px] border-[#E5E5E5] w-full max-w-full px-4 sm:px-6 shadow-sm"
-          />
-
-          <div
-            className="flex-1 overflow-y-auto custom-scrollbar"
-            onScroll={handleHeaderScroll}
-            style={{ backgroundColor: activeBook.neutralBg || "#F7F7F7" }}
+            onClose={() => setActiveMemoryHook(null)}
+            zIndexClassName="z-[300]"
+            maxWidthClassName="max-w-[900px]"
+            contentInnerClassName="flex flex-col gap-8 pb-16"
           >
-            <div className="max-w-[768px] mx-auto w-full px-4 py-8 sm:py-10 flex flex-col gap-8 pb-12 relative min-h-full">
               <div className="space-y-8">
                 {(activeMemoryHook?.measureWords || activeMemoryHook?.measure_words) && (
                   <div>
-                    <h4 className="text-[15px] font-bold text-[#AFB6BB] uppercase tracking-[0.05em] mb-4 pl-1">Measure Words</h4>
+                    <h4 className="mb-4 pl-1 text-[15px] font-bold uppercase tracking-[0.05em] text-ui-muted">Measure Words</h4>
                     <div className="flex flex-wrap gap-2 pl-1">
                       {(activeMemoryHook.measureWords || activeMemoryHook.measure_words).map((mw: string, idx: number) => (
-                        <span key={idx} className="bg-white text-[#4B4B4B] border-[3px] border-b-[6px] border-[#E5E5E5] px-4 py-2 rounded-[20px] font-bold text-2xl font-chinese shadow-sm">
+                        <span key={idx} className="rounded-[18px] border-b-4 border-ui-divider bg-ui-surface px-4 py-2 font-chinese text-2xl font-bold text-ui-ink">
                           {mw}
                         </span>
                       ))}
@@ -99,8 +89,7 @@ export function MemoryHookOverlay({
                 />
 
               </div>
-            </div>
-          </div>
+          </WorkspaceDetailShell>
 
           {/* All Example Sentences Sub-Overlay */}
           <AllExamplesSubOverlay
@@ -109,7 +98,7 @@ export function MemoryHookOverlay({
             smartSentences={smartSentences}
             activeBook={activeBook}
           />
-        </motion.div>
+        </>
       )}
     </AnimatePresence>
   );

@@ -1,8 +1,12 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Flashcard } from '../../../data/flashcards';
 import { useAppStore } from '../../../store/useAppStore';
 import { audioService } from '../../../services/audioService';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
+import { shuffleItems } from '../../../utils/sessionOrder';
+import { getCurriculumSessionKey } from '../../../utils/lessonPartSelection';
+import { retainCurrentCardIndex } from '../../../utils/sessionProgress';
+import type { Quality } from '../../../utils/srsEngine';
 
 /**
  * Core hook for the flashcard review session.
@@ -21,35 +25,45 @@ import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
  *   level 4 → quality 5 (Easy / Perfect)
  */
 export function useFlashcards(activeBookId: number, selectedLessons: number[], isReviewDeck: boolean = false, isLibraryDeck: boolean = false) {
-  const { markCardReviewed, sessionProgressIndex, setSessionProgressIndex, clearSessionProgressIndex, libraryActiveFolder } = useAppStore();
-  const sessionKey = isReviewDeck ? `shared_deck_review_${activeBookId}` : isLibraryDeck ? `shared_deck_library_${libraryActiveFolder}` : `shared_deck_${activeBookId}_${selectedLessons?.slice().sort().join(',') || 'all'}`;
+  const { markCardReviewed, sessionProgressIndex, setSessionProgressIndex, clearSessionProgressIndex, libraryActiveFolder, selectedLessonParts } = useAppStore();
+  const sessionKey = isReviewDeck ? `shared_deck_review_${activeBookId}` : isLibraryDeck ? `shared_deck_library_${libraryActiveFolder}` : getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
 
   const { cards: loadedCards, isLoading, error } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
   const [cards, setCards] = useState<Flashcard[]>([]);
+  const [isShuffled, setIsShuffled] = useState(false);
+  const canonicalOrderRef = useRef<Flashcard[]>([]);
   const sessionStartedRef = useRef(false);
-
-  useEffect(() => {
-    sessionStartedRef.current = false;
-  }, [sessionKey]);
+  const currentCardIdRef = useRef<string | null>(null);
+  const gradingCardIdRef = useRef<string | null>(null);
+  const gradedCardIdsRef = useRef<Set<string>>(new Set());
 
   useEffect(() => {
     setCards(loadedCards);
+    setIsShuffled(false);
+    canonicalOrderRef.current = loadedCards;
     if (loadedCards.length > 0) {
       audioService.preload(loadedCards.map(c => c.audio));
 
       // Bounds-check the loaded index (Bug 11) and prevent cloud sync override mid-session (Bug 5)
       if (!sessionStartedRef.current) {
-        const saved = sessionProgressIndex[sessionKey] || 0;
+        const saved = useAppStore.getState().sessionProgressIndex[sessionKey] || 0;
         const target = saved >= loadedCards.length ? 0 : saved;
         setCurrentIndex(target);
         sessionStartedRef.current = true;
       } else {
-        setCurrentIndex(prev => (prev >= loadedCards.length ? 0 : prev));
+        setCurrentIndex((previousIndex) => (
+          retainCurrentCardIndex(loadedCards, currentCardIdRef.current, previousIndex)
+        ));
       }
     }
-  }, [loadedCards, sessionKey, sessionProgressIndex]);
+  }, [loadedCards, sessionKey]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    gradingCardIdRef.current = null;
+    gradedCardIdsRef.current.clear();
+  }, [sessionKey]);
 
   const [maxVisitedIndex, setMaxVisitedIndex] = useState(() => {
     return sessionProgressIndex[sessionKey] || 0;
@@ -62,12 +76,15 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
   }, [currentIndex, maxVisitedIndex]);
 
   const resetAll = async () => {
-    // Just reset states, the cards are already loaded in state
+    setCards([...canonicalOrderRef.current]);
+    setIsShuffled(false);
     setCurrentIndex(0);
     setMaxVisitedIndex(0);
     setCompleted(false);
     setSessionResults({});
     setIsFlipped(false);
+    gradingCardIdRef.current = null;
+    gradedCardIdsRef.current.clear();
   };
 
   useEffect(() => {
@@ -92,7 +109,7 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
   const [sessionResults, setSessionResults] = useState<Record<string, number>>({});
   const [activeBreakdown, setActiveBreakdownState] = useState<string | null>(null);
   const [activeBreakdownIndex, setActiveBreakdownIndex] = useState<number>(0);
-  const [activeMemoryHook, setActiveMemoryHook] = useState<any | null>(null);
+  const [activeMemoryHook, setActiveMemoryHook] = useState<Flashcard | null>(null);
 
   const setActiveBreakdown = (text: string | null, index: number = 0) => {
     setActiveBreakdownState(text);
@@ -100,9 +117,26 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
   };
 
   const currentCard = cards[currentIndex];
+  if (currentCard) currentCardIdRef.current = currentCard.id;
+
+  useEffect(() => {
+    gradingCardIdRef.current = null;
+  }, [currentCard?.id]);
+
+  const toggleShuffle = useCallback(() => {
+    const nextShuffled = !isShuffled;
+    const baseCards = canonicalOrderRef.current;
+    setCards(nextShuffled ? shuffleItems(baseCards) : [...baseCards]);
+    setCurrentIndex(0);
+    setMaxVisitedIndex(0);
+    setCompleted(false);
+    setIsFlipped(false);
+    setIsShuffled(nextShuffled);
+  }, [isShuffled]);
 
   const handleNext = (level: number) => {
-    if (!currentCard) return;
+    if (!currentCard || gradingCardIdRef.current === currentCard.id) return;
+    gradingCardIdRef.current = currentCard.id;
 
     // Convert UI level (1-4) to SRS quality (1-5).
     // The UI skips quality 3 (difficult) for simplicity — users pick
@@ -113,11 +147,15 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     if (level === 3) quality = 4;
     if (level === 4) quality = 5;
 
-    markCardReviewed(currentCard.id, quality as any);
-    
-    setSessionResults(prev => ({ ...prev, [currentCard.id]: quality }));
+    // Navigating back to an already-rated card must not apply SRS/XP twice.
+    // The second rating still advances so keyboard and swipe navigation remain fluid.
+    if (!gradedCardIdsRef.current.has(currentCard.id)) {
+      gradedCardIdsRef.current.add(currentCard.id);
+      markCardReviewed(currentCard.id, quality as Quality);
+      setSessionResults(prev => ({ ...prev, [currentCard.id]: quality }));
+    }
     setIsFlipped(false);
-    
+
     if (currentIndex < cards.length - 1) {
       setCurrentIndex(prev => prev + 1);
     } else {
@@ -141,7 +179,7 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
   // so they can focus on weak cards before moving on.
   const reviewUnlearned = () => {
     const unlearnedIds = Object.entries(sessionResults)
-      .filter(([id, q]) => q === 1 || q === 2)
+      .filter(([, q]) => q === 1 || q === 2)
       .map(([id]) => id);
       
     const unlearnedCards = cards.filter(c => unlearnedIds.includes(c.id));
@@ -153,11 +191,15 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     }
 
     setCards(unlearnedCards);
+    canonicalOrderRef.current = unlearnedCards;
+    setIsShuffled(false);
     setCurrentIndex(0);
     setMaxVisitedIndex(0);
     setCompleted(false);
     setSessionResults({});
     setIsFlipped(false);
+    gradingCardIdRef.current = null;
+    gradedCardIdsRef.current.clear();
   };
 
   // Helper stats for Recap screen
@@ -183,6 +225,8 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     reviewUnlearned,
     unlearnedCount,
     learnedCount,
+    isShuffled,
+    toggleShuffle,
     isLoading,
     error
   };

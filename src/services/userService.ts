@@ -20,6 +20,7 @@ export const userService = {
 
       if (cardError) {
         console.error("Error fetching card progress:", cardError);
+        throw cardError;
       }
 
       // 2. Fetch legacy row for learned_cards, last_activity, updated_at
@@ -31,6 +32,7 @@ export const userService = {
 
       if (legacyError && legacyError.code !== 'PGRST116') {
         console.error("Error fetching legacy progress:", legacyError);
+        throw legacyError;
       }
 
       // Convert card_progress rows back into SRSData map
@@ -58,7 +60,7 @@ export const userService = {
       };
     } catch (e) {
       console.error("Fetch exception:", e);
-      return null;
+      throw e;
     }
   },
 
@@ -151,5 +153,58 @@ export const userService = {
     }
 
     await Promise.all(promises);
+  },
+
+  // Delete only learning progress. Saved words, custom folders, and custom cards
+  // deliberately remain intact.
+  resetLearningProgress: async (): Promise<void> => {
+    const { error } = await supabase.rpc('reset_user_learning_progress');
+    if (error) {
+      console.error('Learning progress reset failed:', error);
+      throw error;
+    }
+  },
+
+  // Fetch custom folders for a user
+  getCustomFolders: async (userId: string): Promise<{ id: string; name: string; color: string }[]> => {
+    try {
+      const { data, error } = await supabase
+        .from('user_folders')
+        .select('id, name, color')
+        .eq('user_id', userId);
+
+      if (error) {
+        console.warn("Failed to fetch user folders:", error.message);
+        throw error;
+      }
+      return data || [];
+    } catch (e) {
+      console.error("getCustomFolders exception:", e);
+      throw e;
+    }
+  },
+
+  // Sync custom folders for a user
+  syncCustomFolders: async (userId: string, folders: { id: string; name: string; color: string }[]): Promise<void> => {
+    if (folders.length === 0) return;
+    try {
+      const folderRows = folders.map(f => ({
+        id: f.id,
+        user_id: userId,
+        name: f.name,
+        color: f.color,
+      }));
+      const { error } = await supabase
+        .from('user_folders')
+        .upsert(folderRows, { onConflict: 'id' });
+
+      if (error) {
+        console.error("Error upserting custom folders:", error);
+        throw error;
+      }
+    } catch (e) {
+      console.error("syncCustomFolders exception:", e);
+      throw e;
+    }
   },
 };

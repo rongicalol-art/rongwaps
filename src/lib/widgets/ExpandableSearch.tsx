@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { PiMagnifyingGlassBold, PiXBold } from 'react-icons/pi';
+import { AppIcon } from './AppIcon';
 
 interface ExpandableSearchProps {
   value: string;
@@ -47,38 +47,54 @@ export function ExpandableSearch({
       <div
         className={`w-full min-w-[44px] relative flex items-center h-[44px] rounded-[16px] overflow-hidden ${
           isExpanded 
-            ? 'bg-white border-[3px] border-b-[5px] border-[#E5E5E5]' 
-            : 'bg-white border-[3px] border-b-[5px] border-[#E5E5E5] hover:bg-[#F7F7F7] cursor-pointer transition-colors'
+            ? 'border-2 border-b-[5px] border-ui-border bg-ui-surface focus-within:ring-4 focus-within:ring-brand-primary/20'
+            : 'border-2 border-b-[5px] border-ui-border bg-ui-surface transition-colors hover:bg-ui-hover'
         }`}
-        onClick={() => {
-          if (!isExpanded) {
-            handleSetExpanded(true);
-          }
-        }}
       >
-        <div
-          className={`absolute inset-y-0 left-0 flex items-center justify-center w-[40px] transition-colors ${
-            isExpanded ? 'text-[#AFB6BB] pointer-events-none' : 'text-[#4B4B4B]'
-          }`}
-        >
-          <PiMagnifyingGlassBold size={18} />
-        </div>
-        
-        <input
-          ref={inputRef}
-          type="text"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={isExpanded ? placeholder : ""}
-          className="w-full h-full bg-transparent outline-none font-bold text-[#4B4B4B] pl-[38px] pr-10 pb-0.5 text-[16px] md:text-md"
-          onBlur={() => {
-            if (!value) handleSetExpanded(false);
-          }}
-        />
+        {isExpanded ? (
+          <>
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 left-0 flex w-10 items-center justify-center text-ui-muted"
+            >
+              <AppIcon name="search" size={18} />
+            </span>
+
+            <input
+              ref={inputRef}
+              type="search"
+              value={value}
+              onChange={(e) => onChange(e.target.value)}
+              placeholder={placeholder}
+              aria-label={placeholder}
+              className="h-full w-full bg-transparent pb-0.5 pl-[38px] pr-11 text-[16px] font-bold text-ui-ink outline-none placeholder:text-ui-muted md:text-base"
+              onKeyDown={(event) => {
+                if (event.key !== 'Escape') return;
+                event.preventDefault();
+                if (value) onChange('');
+                else handleSetExpanded(false);
+              }}
+              onBlur={() => {
+                if (!value) handleSetExpanded(false);
+              }}
+            />
+          </>
+        ) : (
+          <button
+            type="button"
+            onClick={() => handleSetExpanded(true)}
+            aria-label="Open dictionary search"
+            aria-expanded="false"
+            className="flex h-full w-full items-center justify-center text-ui-ink outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-brand-primary/25"
+          >
+            <AppIcon name="search" size={18} />
+          </button>
+        )}
 
         <AnimatePresence>
           {isExpanded && value && (
             <motion.button
+              type="button"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
@@ -87,9 +103,10 @@ export function ExpandableSearch({
                 onChange('');
                 inputRef.current?.focus();
               }}
-              className="absolute inset-y-0 right-0 pr-3 flex items-center justify-center text-[#AFB6BB] hover:text-[#4B4B4B] cursor-pointer outline-none"
+              aria-label="Clear dictionary search"
+              className="absolute inset-y-0 right-0 flex w-11 items-center justify-center text-ui-muted outline-none hover:text-ui-ink focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-brand-primary/25"
             >
-              <PiXBold size={16} />
+              <AppIcon name="close" size={16} />
             </motion.button>
           )}
         </AnimatePresence>

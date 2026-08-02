@@ -2,10 +2,12 @@ import { SmartSentence } from '../../../lib/widgets';
 import { RankedExample } from '../../../utils/courseExamples';
 import { SAMPLE_BOOKS } from '../../../data/books';
 
+type CourseBook = (typeof SAMPLE_BOOKS)[number];
+
 interface SentencesSectionProps {
   smartSentences: RankedExample[];
   isSentencesLoading: boolean;
-  activeBook: any;
+  activeBook: CourseBook;
   setShowAllOverlay: (show: boolean) => void;
 }
 
@@ -33,7 +35,7 @@ export function SentencesSection({
         )}
       </div>
       
-      <div className="bg-white border-[3px] border-b-[6px] border-[#E5E5E5] rounded-[24px] flex flex-col overflow-hidden">
+      <div className="bg-white border-2 border-b-[6px] border-[#E5E5E5] rounded-[24px] flex flex-col overflow-hidden">
         {isSentencesLoading ? (
           <>
             <div className="p-5 sm:p-6 border-b-[2px] border-[#F0F0F0]">

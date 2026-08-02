@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { searchVocabulary } from '../services/vocabularyService';
-import { vocabularyCache } from '../utils/cache';
 import type { Flashcard } from '../data/flashcards';
 
 export interface ComponentVocabRelation {

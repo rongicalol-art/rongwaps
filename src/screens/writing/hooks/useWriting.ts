@@ -1,8 +1,12 @@
-import { useState, useMemo, useEffect, useCallback } from 'react';
+import { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import { Flashcard } from '../../../data/flashcards';
 import { useAppStore } from '../../../store/useAppStore';
 import { audioService } from '../../../services/audioService';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
+import { shuffleItems } from '../../../utils/sessionOrder';
+import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
+import { getCurriculumSessionKey } from '../../../utils/lessonPartSelection';
+import { retainCurrentCardIndex } from '../../../utils/sessionProgress';
 
 /**
  * Manages the character-writing quiz session.
@@ -24,27 +28,39 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
     sessionProgressIndex,
     setSessionProgressIndex,
     clearSessionProgressIndex,
-    libraryActiveFolder
+    libraryActiveFolder,
+    selectedLessonParts,
   } = useAppStore();
-  const sessionKey = isReviewDeck ? `shared_deck_review_${activeBookId}` : isLibraryDeck ? `shared_deck_library_${libraryActiveFolder}` : `shared_deck_${activeBookId}_${selectedLessons?.slice().sort().join(',') || 'all'}`;
+  const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
+  const autoPlayAudio = usePracticePreferencesStore((state) => state.autoPlayAudio);
+  const sessionKey = isReviewDeck ? `shared_deck_review_${activeBookId}` : isLibraryDeck ? `shared_deck_library_${libraryActiveFolder}` : getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
 
   const [screenState, setScreenState] = useState<'playing' | 'complete'>('playing');
   const [currentIndex, setCurrentIndex] = useState(() => {
     return sessionProgressIndex[sessionKey] || 0;
   });
 
-  const storeIndexWriting = sessionProgressIndex[sessionKey];
-  useEffect(() => {
-    if (storeIndexWriting !== undefined && storeIndexWriting !== currentIndex) {
-      setCurrentIndex(storeIndexWriting);
-    }
-  }, [storeIndexWriting]);
-
   const { cards: loadedCards, isLoading, error: loadError } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
   const [cards, setCards] = useState<Flashcard[]>([]);
+  const [isShuffled, setIsShuffled] = useState(false);
+  const canonicalOrderRef = useRef<Flashcard[]>([]);
+  const currentCardIdRef = useRef<string | null>(null);
+  const charCompletionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearCharCompletionTimer = useCallback(() => {
+    if (charCompletionTimerRef.current !== null) {
+      clearTimeout(charCompletionTimerRef.current);
+      charCompletionTimerRef.current = null;
+    }
+  }, []);
 
   useEffect(() => {
     setCards(loadedCards);
+    setCurrentIndex((previousIndex) => (
+      retainCurrentCardIndex(loadedCards, currentCardIdRef.current, previousIndex)
+    ));
+    setIsShuffled(false);
+    canonicalOrderRef.current = loadedCards;
     if (loadedCards.length > 0) {
       audioService.preload(loadedCards.map(c => c.audio));
     }
@@ -79,14 +95,36 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
   }, [cards]);
 
   const currentCard = playlist[currentIndex];
+  if (currentCard) currentCardIdRef.current = currentCard.id;
   const chars: string[] = currentCard ? Array.from(currentCard.front) : [];
+
+  useEffect(() => {
+    clearCharCompletionTimer();
+    return () => {
+      clearCharCompletionTimer();
+      audioService.stop();
+    };
+  }, [clearCharCompletionTimer, currentCard?.id, screenState]);
+
+  const toggleShuffle = useCallback(() => {
+    clearCharCompletionTimer();
+    const nextShuffled = !isShuffled;
+    setCards(nextShuffled ? shuffleItems(canonicalOrderRef.current) : [...canonicalOrderRef.current]);
+    setCurrentIndex(0);
+    setScreenState('playing');
+    setActiveCharIndex(0);
+    setCompletedChars(new Set());
+    setStatus('idle');
+    setResetCounter((counter) => counter + 1);
+    setIsShuffled(nextShuffled);
+  }, [clearCharCompletionTimer, isShuffled]);
 
   // Play audio when the card changes
   useEffect(() => {
-    if (currentCard && currentIndex >= 0) {
-      audioService.play(currentCard.audio, 1.0, currentCard.front);
+    if (autoPlayAudio && currentCard && currentIndex >= 0) {
+      audioService.play(currentCard.audio, pronunciationRate, currentCard.front);
     }
-  }, [currentIndex, currentCard]);
+  }, [autoPlayAudio, currentIndex, currentCard, pronunciationRate]);
 
   // Save progress
   useEffect(() => {
@@ -130,6 +168,7 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
   }, [activeCharIndex, chars.length, currentCard, markCardReviewed, status]);
 
   const handleCharComplete = useCallback((index: number) => {
+    clearCharCompletionTimer();
     setCompletedChars(prev => {
       const next = new Set(prev);
       next.add(index);
@@ -139,20 +178,35 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
     // Wait 600ms so the user sees the character turn green before
     // the next character becomes active. This gives a smooth,
     // satisfying "chain" feeling as you write each character.
-    setTimeout(() => {
+    charCompletionTimerRef.current = setTimeout(() => {
+      charCompletionTimerRef.current = null;
       setActiveCharIndex(prev => {
         if (prev === index) return prev + 1;
         return prev;
       });
     }, 600);
-  }, []);
+  }, [clearCharCompletionTimer]);
 
   const handleRetry = useCallback(() => {
+    clearCharCompletionTimer();
     setActiveCharIndex(0);
     setCompletedChars(new Set());
     setStatus('idle');
     setResetCounter(c => c + 1);
-  }, []);
+  }, [clearCharCompletionTimer]);
+
+  const restartRound = useCallback(() => {
+    clearCharCompletionTimer();
+    setCards(loadedCards);
+    canonicalOrderRef.current = loadedCards;
+    setIsShuffled(false);
+    setCurrentIndex(0);
+    setScreenState('playing');
+    setActiveCharIndex(0);
+    setCompletedChars(new Set());
+    setStatus('idle');
+    setResetCounter((counter) => counter + 1);
+  }, [clearCharCompletionTimer, loadedCards]);
 
   return {
     screenState,
@@ -173,6 +227,9 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
     handleCharComplete,
     isLoading,
     loadError,
-    handleRetry
+    handleRetry,
+    restartRound,
+    isShuffled,
+    toggleShuffle,
   };
 }

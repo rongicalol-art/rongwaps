@@ -25,7 +25,7 @@ function RootTree({
   return (
     <div className="flex flex-col items-center w-full relative pt-2 px-4 sm:px-0">
        <div className="w-full flex flex-col relative z-10 gap-6">
-         <div className="flex flex-col w-full bg-white border-[3px] border-[#E5E5E5] border-b-[6px] rounded-[24px] sm:rounded-[28px] overflow-hidden z-10 relative">
+         <div className="flex flex-col w-full bg-white border-2 border-[#E5E5E5] border-b-[6px] rounded-[24px] sm:rounded-[28px] overflow-hidden z-10 relative">
            <CharNodeItem 
              char={char} 
              isRoot={true} 
@@ -57,11 +57,11 @@ export function CharacterBreakdown({
   selectedCharIndex?: number;
   onWordClick?: (char: string) => void;
 }) {
+  const { activeBookId } = useAppStore();
   const chars = Array.from(character || '').filter(c => c.trim().length > 0);
   if (chars.length === 0) return null;
   const activeChar = chars[selectedCharIndex] || chars[0];
 
-  const { activeBookId } = useAppStore();
   const activeBook = SAMPLE_BOOKS.find(b => b.id === activeBookId) || SAMPLE_BOOKS[0];
 
   return (

@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence, useDragControls } from 'motion/react';
-import { PiXBold } from 'react-icons/pi';
+import React, { useId, useRef, useState } from 'react';
+import { motion, AnimatePresence, useDragControls, useReducedMotion } from 'motion/react';
 import { cn } from '../../utils/cn';
 import { createPortal } from 'react-dom';
+import { useModalFocus } from '../../hooks/useModalFocus';
+import { AppIcon } from './AppIcon';
+import { IconActionButton } from './IconActionButton';
 
 export interface BottomDrawerProps {
   isOpen: boolean;
@@ -11,10 +13,29 @@ export interface BottomDrawerProps {
   className?: string;
   title?: string;
   topAccessory?: React.ReactNode;
+  ariaLabel?: string;
+  workspaceBound?: boolean;
 }
 
-export function BottomDrawer({ isOpen, onClose, children, className, title, topAccessory }: BottomDrawerProps) {
+export function BottomDrawer({
+  isOpen,
+  onClose,
+  children,
+  className,
+  title,
+  topAccessory,
+  ariaLabel,
+  workspaceBound = true,
+}: BottomDrawerProps) {
   const dragControls = useDragControls();
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const titleId = useId();
+  const reduceMotion = useReducedMotion();
+  const modalFocusProps = useModalFocus({
+    containerRef: drawerRef,
+    isActive: isOpen,
+    onEscape: onClose,
+  });
   // Resolve portal target once on mount — no need to re-run on every isOpen change
   const [portalNode] = useState<HTMLElement | null>(() => {
     if (typeof document !== 'undefined') {
@@ -26,22 +47,31 @@ export function BottomDrawer({ isOpen, onClose, children, className, title, topA
   const output = (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[500] pointer-events-none">
+        <div className={cn('fixed inset-0 z-[500] pointer-events-none', workspaceBound && 'workspace-window')}>
           {/* Backdrop */}
           <motion.div
+            aria-hidden="true"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: reduceMotion ? 0 : 0.18 }}
             onClick={onClose}
             className="absolute inset-0 bg-black/60 pointer-events-auto"
           />
 
           {/* Drawer content */}
           <motion.div
-            initial={{ y: '100%' }}
-            animate={{ y: 0 }}
-            exit={{ y: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300, mass: 0.8 }}
+            ref={drawerRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={title ? undefined : (ariaLabel ?? 'Drawer')}
+            aria-labelledby={title ? titleId : undefined}
+            tabIndex={-1}
+            onKeyDown={modalFocusProps.onKeyDown}
+            initial={reduceMotion ? { opacity: 0 } : { y: '100%' }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={reduceMotion ? { opacity: 0 } : { y: '100%' }}
+            transition={reduceMotion ? { duration: 0 } : { type: 'spring', damping: 25, stiffness: 300, mass: 0.8 }}
             drag="y"
             dragListener={false}
             dragControls={dragControls}
@@ -78,14 +108,13 @@ export function BottomDrawer({ isOpen, onClose, children, className, title, topA
             {/* Header (Optional) */}
             {title && (
               <div className="flex items-center justify-between px-6 pb-4 shrink-0">
-                <h3 className="text-xl font-extrabold text-[#4B4B4B] tracking-tight">{title}</h3>
-                <button 
+                <h2 id={titleId} className="text-xl font-extrabold text-ui-ink tracking-normal">{title}</h2>
+                <IconActionButton
                   onClick={onClose}
-                  className="w-8 h-8 flex items-center justify-center bg-[#F7F7F7] text-[#AFB6BB] rounded-full hover:bg-[#E5E5E5] hover:text-[#4B4B4B] transition-colors"
-                  aria-label="Close drawer"
-                >
-                  <PiXBold size={18} />
-                </button>
+                  label="Close drawer"
+                  icon={<AppIcon name="close" size={20} />}
+                  className="h-11 w-11 rounded-full"
+                />
               </div>
             )}
 

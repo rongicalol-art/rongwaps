@@ -127,7 +127,7 @@ export async function getOrGenerateMnemonic(
   if (isWord) {
     try {
       const chars = Array.from(cleanedText).filter(c => /[\u4e00-\u9fa5]/.test(c as string)) as string[];
-      let charactersInfo: any[] = [];
+      let charactersInfo: { char: string; pinyin?: string; definition?: string }[] = [];
       try {
         const breakdowns = await getMultipleBreakdowns(chars);
         charactersInfo = chars.map(c => ({
@@ -145,18 +145,13 @@ export async function getOrGenerateMnemonic(
     }
   } else {
     try {
-      let breakdown: any = null;
-      let components: any[] = [];
+      let breakdown: DBCharacterBreakdown | null = null;
+      let components: { char: string; pinyin?: string; definition?: string }[] = [];
       try {
         const breakdowns = await getMultipleBreakdowns([cleanedText]);
         const b = breakdowns[cleanedText];
         if (b) {
-          breakdown = {
-            id: cleanedText,
-            pinyin: b.pinyin,
-            definition: b.definition,
-            decomposition: b.decomposition
-          };
+          breakdown = b;
           const subChars = Array.from(b.decomposition || "").filter(c => /[\u4e00-\u9fa5]/.test(c as string)) as string[];
           if (subChars.length > 0) {
             const subBreakdowns = await getMultipleBreakdowns(subChars);

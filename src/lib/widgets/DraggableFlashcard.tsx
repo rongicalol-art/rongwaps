@@ -1,22 +1,20 @@
 import React from 'react';
-import { motion, useMotionValue, useTransform } from 'motion/react';
+import { motion } from 'motion/react';
 import { numberToToneMarks } from '../../utils/pinyin';
+import type { Flashcard } from '../../data/flashcards';
 
 export interface DraggableFlashcardProps {
-  card: any;
+  card: Flashcard;
   direction: number;
   isFlipped: boolean;
   setIsFlipped: React.Dispatch<React.SetStateAction<boolean>>;
   setActiveBreakdown: (char: string, index?: number) => void;
-  setActiveMemoryHook: (card: any) => void;
+  setActiveMemoryHook: (card: Flashcard) => void;
   triggerSwipeRate: (level: number) => void;
   onCardTap: (e: React.MouseEvent) => void;
+  showPinyin?: boolean;
+  showTranslation?: boolean;
 }
-
-const swipeConfidenceThreshold = 100;
-const swipePower = (offset: number, velocity: number) => {
-  return Math.abs(offset) * velocity;
-};
 
 const variants = {
   enter: (direction: number) => {
@@ -43,22 +41,11 @@ const variants = {
 };
 
 export const DraggableFlashcard = ({
-  card, direction, isFlipped, setIsFlipped,
-  setActiveBreakdown, triggerSwipeRate, onCardTap
+  card, direction, isFlipped,
+  setActiveBreakdown, triggerSwipeRate, onCardTap,
+  showPinyin = true, showTranslation = true,
 }: DraggableFlashcardProps) => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateZ = useTransform(x, [-300, 300], [-12, 12]);
-  const rotateX = useTransform(y, [-200, 200], [6, -6]);
-  const draggedBorderColor = useTransform(
-    x,
-    [-150, 0, 150],
-    ['#FF4B4B', '#E5E5E5', '#58CC02']
-  );
-
-  const [isDragging, setIsDragging] = React.useState(false);
   const isDraggingRef = React.useRef(false);
-  const borderColor = isDragging ? draggedBorderColor : '#E5E5E5';
 
   const frontLength = card?.front?.length || 1;
   const getFrontFontSize = (len: number) => {
@@ -96,13 +83,11 @@ export const DraggableFlashcard = ({
       dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
       onDragStart={() => {
         isDraggingRef.current = true;
-        setIsDragging(true);
       }}
       onDragEnd={(e, info) => {
-        setIsDragging(false);
-        // slight delay so we don't fire tap events accidentally
-        setTimeout(() => { isDraggingRef.current = false; }, 100);
-        
+        // Small delay to allow click handler to detect drag vs tap
+        setTimeout(() => { isDraggingRef.current = false; }, 50);
+
         if (info.offset.x < -80) {
           triggerSwipeRate(1);
         } else if (info.offset.x > 80) {
@@ -110,18 +95,11 @@ export const DraggableFlashcard = ({
         }
       }}
       onClick={(e: React.MouseEvent) => {
-        if (isDraggingRef.current) {
-          e.stopPropagation();
-          return;
-        }
+        if (isDraggingRef.current) return;
         if ((e.target as HTMLElement).closest('button')) return;
         onCardTap(e);
       }}
       style={{
-        x,
-        y,
-        rotateZ,
-        rotateX,
         touchAction: 'none',
         userSelect: 'none',
         WebkitUserSelect: 'none',
@@ -129,26 +107,25 @@ export const DraggableFlashcard = ({
       className="absolute inset-x-0 mx-auto w-full max-w-[320px] sm:max-w-[400px] md:max-w-[460px]"
     >
       <motion.div
-        initial={{ rotateY: 0 }}
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
+        transition={{ type: 'tween', duration: 0.35, ease: 'easeInOut' }}
         style={{ transformStyle: 'preserve-3d' }}
         className="w-full relative h-[420px] sm:h-[480px] max-h-[60vh] cursor-pointer"
       >
         {/* Front Side */}
         <motion.div
-          className="absolute inset-0 bg-white rounded-[32px] flex flex-col items-center justify-center p-8 border-[3px] border-b-[8px]"
-          style={{ borderColor, backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+          className="absolute inset-0 flex flex-col items-center justify-center rounded-[32px] border-b-4 border-ui-border bg-white p-8"
+          style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
         >
           <div className="flex-1 flex flex-col items-center justify-center w-full mt-8">
             <div className="flex flex-row items-center justify-center flex-wrap">
-              {Array.from(card.front).map((char: any, i) => {
+              {Array.from(card.front).map((char, i) => {
                 const isHanzi = /[\u4E00-\u9FFF\u3400-\u4DBF\u2E80-\u2FDF\u{20000}-\u{2A6DF}\u{2A700}-\u{2B73F}\u{2B740}-\u{2B81F}\u{2B820}-\u{2CEAF}]/u.test(char);
-                const hanziIndex = Array.from(card.front).slice(0, i).filter((c: any) => /[\u4E00-\u9FFF\u3400-\u4DBF\u2E80-\u2FDF\u{20000}-\u{2A6DF}\u{2A700}-\u{2B73F}\u{2B740}-\u{2B81F}\u{2B820}-\u{2CEAF}]/u.test(c)).length;
+                const hanziIndex = Array.from(card.front).slice(0, i).filter((c) => /[\u4E00-\u9FFF\u3400-\u4DBF\u2E80-\u2FDF\u{20000}-\u{2A6DF}\u{2A700}-\u{2B73F}\u{2B740}-\u{2B81F}\u{2B820}-\u{2CEAF}]/u.test(c)).length;
 
                 if (!isHanzi) {
                   return (
-                    <span key={i} className={`${getFrontFontSize(frontLength)} px-1 sm:px-2 py-4 sm:py-6 text-[#AFB6BB] leading-[1.1] font-chinese text-center mt-2`}>
+                    <span key={i} className={`${getFrontFontSize(frontLength)} px-1 sm:px-2 py-4 sm:py-6 text-ui-muted leading-[1.1] font-chinese text-center mt-2`}>
                       {char}
                     </span>
                   );
@@ -157,74 +134,80 @@ export const DraggableFlashcard = ({
                 return (
                   <button
                     key={i}
+                    aria-label={`Open character breakdown for ${char}`}
                     onClick={(e) => {
                       e.stopPropagation();
                       if (isDraggingRef.current) return;
                       setActiveBreakdown(card.front, hanziIndex);
                     }}
-                    className="group flex flex-col items-center justify-center rounded-[24px] px-1 sm:px-2 py-4 sm:py-6 outline-none hover:bg-[#F7F7F7] transition-colors"
+                    className="group flex flex-col items-center justify-center rounded-[24px] px-1 sm:px-2 py-4 sm:py-6 outline-none hover:bg-ui-canvas transition-colors"
                   >
-                    <h1 className={`${getFrontFontSize(frontLength)} leading-[1.1] text-[#4B4B4B] tracking-tight text-center font-chinese`}>
+                    <span className={`${getFrontFontSize(frontLength)} block leading-[1.1] text-ui-ink tracking-normal text-center font-chinese`}>
                       {char}
-                    </h1>
+                    </span>
                   </button>
                 );
               })}
             </div>
           </div>
           <div className="mt-4 mb-2 h-12 w-full flex items-end justify-center pointer-events-none">
-            <p className="text-[#AFB6BB] text-[15px] font-bold tracking-wider uppercase">TAP TO FLIP</p>
+            <p className="text-ui-muted text-[15px] font-bold">Tap to reveal the answer</p>
           </div>
         </motion.div>
 
         {/* Back Side */}
         <motion.div
-          className="absolute inset-0 bg-white rounded-[32px] flex flex-col p-6 sm:p-8 pb-10 border-[3px] border-b-[8px]"
-          style={{ borderColor, backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+          className="absolute inset-0 flex flex-col rounded-[32px] border-b-4 border-ui-border bg-white p-6 pb-10 sm:p-8 sm:pb-10"
+          style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
         >
           <div className="flex-1 flex flex-col items-center justify-center w-full">
             <div className="mb-4 sm:mb-6 flex flex-col items-center justify-center bg-transparent py-4 px-8 rounded-[24px]">
               <div className="flex flex-row items-center justify-center flex-wrap mb-3">
-                {Array.from(card.front).map((char: any, i) => {
+                {Array.from(card.front).map((char, i) => {
                   const isHanzi = /[\u4E00-\u9FFF\u3400-\u4DBF\u2E80-\u2FDF\u{20000}-\u{2A6DF}\u{2A700}-\u{2B73F}\u{2B740}-\u{2B81F}\u{2B820}-\u{2CEAF}]/u.test(char);
-                  const hanziIndex = Array.from(card.front).slice(0, i).filter((c: any) => /[\u4E00-\u9FFF\u3400-\u4DBF\u2E80-\u2FDF\u{20000}-\u{2A6DF}\u{2A700}-\u{2B73F}\u{2B740}-\u{2B81F}\u{2B820}-\u{2CEAF}]/u.test(c)).length;
+                  const hanziIndex = Array.from(card.front).slice(0, i).filter((c) => /[\u4E00-\u9FFF\u3400-\u4DBF\u2E80-\u2FDF\u{20000}-\u{2A6DF}\u{2A700}-\u{2B73F}\u{2B740}-\u{2B81F}\u{2B820}-\u{2CEAF}]/u.test(c)).length;
 
                   if (!isHanzi) {
                     return (
-                      <span key={i} className={`${getBackFrontFontSize(frontLength)} px-1 text-[#AFB6BB] leading-none font-chinese text-center mt-2`}>
+                      <span key={i} className={`${getBackFrontFontSize(frontLength)} px-1 text-ui-muted leading-none font-chinese text-center mt-2`}>
                         {char}
                       </span>
                     );
                   }
 
                   return (
-                    <button
-                      key={i}
-                      onClick={(e) => {
+                  <button
+                    key={i}
+                    aria-label={`Open character breakdown for ${char}`}
+                    onClick={(e) => {
                         e.stopPropagation();
                         if (isDraggingRef.current) return;
                         setActiveBreakdown(card.front, hanziIndex);
                       }}
-                      className="group flex flex-col items-center justify-center rounded-[16px] px-1 py-1 outline-none hover:bg-[#F7F7F7] transition-colors"
+                      className="group flex flex-col items-center justify-center rounded-[16px] px-1 py-1 outline-none hover:bg-ui-canvas transition-colors"
                     >
-                      <h1 className={`${getBackFrontFontSize(frontLength)} leading-none text-[#4B4B4B] tracking-tight text-center font-chinese`}>
+                      <span className={`${getBackFrontFontSize(frontLength)} block leading-none text-ui-ink tracking-normal text-center font-chinese`}>
                         {char}
-                      </h1>
+                      </span>
                     </button>
                   );
                 })}
               </div>
-              <span className="text-[18px] sm:text-[20px] font-bold text-[#4B4B4B] tracking-wide relative after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-16 after:h-[2px] after:bg-[#E5E5E5] after:rounded-full mt-2">
-                {numberToToneMarks(card.pinyin)}
-              </span>
+              {showPinyin && (
+                <span className="text-[18px] sm:text-[20px] font-bold text-ui-ink tracking-wide relative after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-16 after:h-[2px] after:bg-ui-border after:rounded-full mt-2">
+                  {numberToToneMarks(card.pinyin)}
+                </span>
+              )}
             </div>
-            <h2 className={`${
-              card.back?.length > 40 ? 'text-[16px] sm:text-[18px] md:text-[20px]' :
-              card.back?.length > 20 ? 'text-[18px] sm:text-[22px] md:text-[24px]' :
-              'text-[22px] sm:text-[26px] md:text-[30px]'
-            } text-[#4B4B4B] font-extrabold text-center leading-tight mt-2 px-2 overflow-y-auto max-h-[140px] hide-scrollbar w-full break-words`}>
-              {card.back}
-            </h2>
+            {showTranslation && (
+              <h2 className={`${
+                card.back?.length > 40 ? 'text-[16px] sm:text-[18px] md:text-[20px]' :
+                card.back?.length > 20 ? 'text-[18px] sm:text-[22px] md:text-[24px]' :
+                'text-[22px] sm:text-[26px] md:text-[30px]'
+              } text-ui-ink font-extrabold text-center leading-tight mt-2 px-2 overflow-y-auto max-h-[140px] hide-scrollbar w-full break-words`}>
+                {card.back}
+              </h2>
+            )}
           </div>
           <div className="mt-2 flex items-end justify-center w-full pointer-events-none shrink-0 min-h-[16px]" />
         </motion.div>

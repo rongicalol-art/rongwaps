@@ -70,9 +70,9 @@ export function AiMnemonicCard({
   if (compact) {
     if (loading) {
       return (
-        <div className="w-full bg-white/80 border-[2px] border-[#E5E5E5] border-b-[4px] rounded-[20px] px-4 py-3 flex items-center gap-3">
-          <PiSpinnerBold size={18} className="animate-spin text-[#AFB6BB] shrink-0" />
-          <span className="text-[12px] font-extrabold uppercase tracking-wider text-[#AFB6BB]">
+        <div className="flex w-full items-center gap-3 rounded-[20px] bg-ui-surface px-4 py-3 shadow-sm">
+          <PiSpinnerBold size={18} className="shrink-0 animate-spin text-ui-muted" />
+          <span className="text-[12px] font-extrabold uppercase tracking-wider text-ui-muted">
             Loading memory hook
           </span>
         </div>
@@ -82,13 +82,13 @@ export function AiMnemonicCard({
     if (!mnemonic) return null;
 
     return (
-      <div className="w-full bg-white/85 border-[2px] border-[#E5E5E5] border-b-[4px] rounded-[20px] px-4 py-3 flex items-start gap-3 shadow-sm">
+      <div className="flex w-full items-start gap-3 rounded-[20px] bg-ui-surface px-4 py-3 shadow-sm">
         <PiLightbulbFill size={18} className="text-amber-400 shrink-0 mt-0.5" />
         <div className="min-w-0 flex-1 text-left">
           <div className={`text-[11px] font-extrabold uppercase tracking-widest mb-1 ${accentTextClass}`}>
             Memory Hook
           </div>
-          <p className="text-[13px] sm:text-[14px] text-[#4B4B4B] font-bold leading-snug">
+          <p className="text-[13px] font-bold leading-snug text-ui-ink sm:text-[14px]">
             {formatMemoryHook(mnemonic)}
           </p>
         </div>
@@ -97,7 +97,7 @@ export function AiMnemonicCard({
   }
 
   return (
-    <div className="w-full bg-white border-[3px] border-[#E5E5E5] border-b-[6px] rounded-[24px] p-5 md:p-6 flex flex-col items-center shadow-sm">
+    <div className="w-full bg-white border-2 border-[#E5E5E5] border-b-[6px] rounded-[24px] p-5 md:p-6 flex flex-col items-center shadow-sm">
       <div className={`flex items-center gap-2 mb-4 ${accentTextClass} font-black text-[13px] md:text-[14px] uppercase tracking-widest shrink-0`}>
         <PiLightbulbFill size={20} />
         Memory Hook

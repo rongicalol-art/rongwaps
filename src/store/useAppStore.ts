@@ -17,9 +17,20 @@ import { create } from 'zustand';
 import { persist, createJSONStorage, StateStorage } from 'zustand/middleware';
 import { get, set, del } from 'idb-keyval';
 import { SRSData, Quality } from '../utils/srsEngine';
-import type { SessionProgress } from '../types/models';
+import {
+  applyCardReview,
+  createClearedReviewProgress,
+  createEmptySessionProgress,
+} from '../utils/reviewProgress';
+import type {
+  LessonPartSelectionMap,
+  PartSegment,
+  PracticeHeaderActions,
+  ActivityType,
+  SessionProgress,
+  UserFlashcard,
+} from '../types/models';
 import type { UserSnapshot } from './useAuthStore';
-import { useSrsStore } from './useSrsStore';
 
 const idbStorage: StateStorage = {
   getItem: async (name: string): Promise<string | null> => {
@@ -99,12 +110,16 @@ export interface AppState {
   // Navigation State
   activeTab: 'path' | 'search' | 'library' | 'profile';
   setActiveTab: (tab: 'path' | 'search' | 'library' | 'profile') => void;
-  activeActivity: 'flashcards' | 'flashcards-review' | 'flashcards-library' | 'listening' | 'quiz' | 'writing' | 'create-card' | 'personal-vocab' | null;
-  setActiveActivity: (activity: 'flashcards' | 'flashcards-review' | 'flashcards-library' | 'listening' | 'quiz' | 'writing' | 'create-card' | 'personal-vocab' | null) => void;
+  activeActivity: ActivityType;
+  setActiveActivity: (activity: ActivityType) => void;
   selectedLessons: number[];
   setSelectedLessons: (lessons: number[] | ((prev: number[]) => number[])) => void;
   selectedBooks: number[];
   setSelectedBooks: (books: number[] | ((prev: number[]) => number[])) => void;
+  selectedLessonParts: LessonPartSelectionMap;
+  setSelectedLessonParts: (
+    parts: LessonPartSelectionMap | ((prev: LessonPartSelectionMap) => LessonPartSelectionMap)
+  ) => void;
 
   // Cloud Sync
   lastCloudUpdate: string | null;
@@ -136,12 +151,10 @@ export interface AppState {
     currentIndex: number;
     totalCount: number;
     showLightbulb: boolean;
+    partSegments: PartSegment[];
   };
   setPracticeHeader: (state: Partial<AppState['practiceHeader']>) => void;
-  practiceHeaderActions: {
-    onLightbulbClick?: () => void;
-    onSettingsClick?: () => void;
-  };
+  practiceHeaderActions: PracticeHeaderActions;
   setPracticeHeaderActions: (actions: Partial<AppState['practiceHeaderActions']>) => void;
 
   // Library State
@@ -151,6 +164,9 @@ export interface AppState {
   setCustomFolders: (folders: { id: string; name: string; color: string }[]) => void;
   addCustomFolder: (name: string, color: string, id?: string) => void;
   deleteCustomFolder: (id: string) => void;
+  localFlashcards: UserFlashcard[];
+  addLocalFlashcard: (card: UserFlashcard) => void;
+  deleteLocalFlashcard: (id: string) => void;
   resetProgress: () => void;
 }
 
@@ -166,7 +182,7 @@ export { useSyncStore } from './useSyncStore';
 // Keep the persisted store for backward compatibility
 export const useAppStore = create<AppState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       // Auth
       currentUser: null,
       setCurrentUser: (user) => set({ currentUser: user }),
@@ -195,21 +211,12 @@ export const useAppStore = create<AppState>()(
       srsData: {},
       learnedCards: [],
       setSrsDataAndLearnedCards: (srs, learned) => set({ srsData: srs, learnedCards: learned }),
-      markCardReviewed: (cardId: string, quality: Quality) => {
-        // Delegate to useSrsStore
-        useSrsStore.getState().markCardReviewed(cardId, quality);
-        
-        // Sync state back to useAppStore for backward compatibility and persistence
-        const srsState = useSrsStore.getState();
-        set({
-          srsData: srsState.srsData,
-          learnedCards: srsState.learnedCards,
-          sessionProgress: srsState.sessionProgress,
-        });
-      },
+      markCardReviewed: (cardId: string, quality: Quality) => set((state) => (
+        applyCardReview(state, cardId, quality)
+      )),
 
       // Session Progress
-      sessionProgress: { xpEarned: 0, cardsReviewed: 0, cardsLearned: 0, startTime: null as unknown as number },
+      sessionProgress: createEmptySessionProgress(),
       startSession: () => set((s) => ({
         sessionProgress: { ...s.sessionProgress, startTime: Date.now() },
       })),
@@ -223,9 +230,7 @@ export const useAppStore = create<AppState>()(
           cardsLearned: isNew ? s.sessionProgress.cardsLearned + 1 : s.sessionProgress.cardsLearned,
         },
       })),
-      resetSessionProgress: () => set({
-        sessionProgress: { xpEarned: 0, cardsReviewed: 0, cardsLearned: 0, startTime: null as unknown as number },
-      }),
+      resetSessionProgress: () => set({ sessionProgress: createEmptySessionProgress() }),
 
       // Aggregate Progress Stats
       currentStreak: 0,
@@ -253,8 +258,9 @@ export const useAppStore = create<AppState>()(
         sessionProgressIndex: { ...s.sessionProgressIndex, [key]: index },
       })),
       clearSessionProgressIndex: (key) => set((s) => {
-        const { [key]: _, ...rest } = s.sessionProgressIndex;
-        return { sessionProgressIndex: rest };
+        const nextProgress = { ...s.sessionProgressIndex };
+        delete nextProgress[key];
+        return { sessionProgressIndex: nextProgress };
       }),
 
       // Navigation State
@@ -269,6 +275,12 @@ export const useAppStore = create<AppState>()(
       selectedBooks: [],
       setSelectedBooks: (books) => set((state) => ({
         selectedBooks: typeof books === 'function' ? books(state.selectedBooks) : books,
+      })),
+      selectedLessonParts: {},
+      setSelectedLessonParts: (parts) => set((state) => ({
+        selectedLessonParts: typeof parts === 'function'
+          ? parts(state.selectedLessonParts)
+          : parts,
       })),
 
       // Cloud Sync
@@ -296,7 +308,7 @@ export const useAppStore = create<AppState>()(
       setActiveReviewSessionCards: (cards) => set({ activeReviewSessionCards: cards }),
       searchQuery: '',
       setSearchQuery: (query) => set({ searchQuery: query }),
-      practiceHeader: { progress: 0, currentIndex: 0, totalCount: 0, showLightbulb: false },
+      practiceHeader: { progress: 0, currentIndex: 0, totalCount: 0, showLightbulb: false, partSegments: [] },
       setPracticeHeader: (headerState) => set((state) => ({
         practiceHeader: { ...state.practiceHeader, ...headerState },
       })),
@@ -316,13 +328,21 @@ export const useAppStore = create<AppState>()(
       deleteCustomFolder: (id) => set((s) => ({
         customFolders: s.customFolders.filter(f => f.id !== id),
       })),
+      localFlashcards: [],
+      addLocalFlashcard: (card) => set((s) => ({
+        localFlashcards: [...s.localFlashcards, card],
+      })),
+      deleteLocalFlashcard: (id) => set((s) => ({
+        localFlashcards: s.localFlashcards.filter(c => c.id !== id),
+      })),
 
       // Reset
       resetProgress: () => set({
-        srsData: {},
-        learnedCards: [],
-        sessionProgress: { xpEarned: 0, cardsReviewed: 0, cardsLearned: 0, startTime: null as unknown as number },
-        sessionProgressIndex: {},
+        ...createClearedReviewProgress(),
+        lastActivity: null,
+        isReviewMode: false,
+        activeReviewSessionCards: null,
+        swipeFeedback: null,
       }),
     }),
     {
@@ -344,8 +364,10 @@ export const useAppStore = create<AppState>()(
         activeTab: state.activeTab,
         selectedLessons: state.selectedLessons,
         selectedBooks: state.selectedBooks,
+        selectedLessonParts: state.selectedLessonParts,
         customFolders: state.customFolders,
         libraryActiveFolder: state.libraryActiveFolder,
+        localFlashcards: state.localFlashcards,
       }),
     }
   )

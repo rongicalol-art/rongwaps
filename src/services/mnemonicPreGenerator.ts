@@ -1,5 +1,5 @@
 import { debugLogger } from "../utils/debugLogger";
-import { hasCachedMnemonic, getCachedMnemonic } from "./mnemonicCache";
+import { hasCachedMnemonic } from "./mnemonicCache";
 import { getOrGenerateMnemonic } from "./mnemonicGenerator";
 import { supabase } from "./supabaseClient";
 

@@ -1,16 +1,21 @@
 import React, { useEffect } from 'react';
-import { PiCheckBold, PiXBold, PiPuzzlePieceFill, PiArrowCounterClockwiseBold } from 'react-icons/pi';
 import { motion, AnimatePresence } from 'motion/react';
 import { numberToToneMarks } from '../../utils/pinyin';
 import { useAppStore } from '../../store/useAppStore';
+import { AppIcon } from './AppIcon';
+import { IconActionButton } from './IconActionButton';
 
 export interface FeedbackBottomBarProps {
   status: 'idle' | 'correct' | 'wrong';
   correctAnswer?: string;
   pinyin?: string;
   onContinue: () => void;
-  onCheck: () => void;
-  isCheckDisabled: boolean;
+  onCheck?: () => void;
+  isCheckDisabled?: boolean;
+  showCheck?: boolean;
+  hideWhenAutoAdvance?: boolean;
+  showContinueOnWrong?: boolean;
+  keyboardShortcutDisabled?: boolean;
   onSkip?: () => void;
   onBreakdown?: () => void;
   onRetry?: () => void;
@@ -29,17 +34,26 @@ export function FeedbackBottomBar({
   pinyin,
   onContinue, 
   onCheck, 
-  isCheckDisabled,
+  isCheckDisabled = true,
+  showCheck = true,
+  hideWhenAutoAdvance = false,
+  showContinueOnWrong = true,
+  keyboardShortcutDisabled = false,
   onSkip,
   onBreakdown,
-  onRetry,
-  activeBook
+  onRetry
 }: FeedbackBottomBarProps) {
   
   const isChecked = status !== 'idle';
   const isCorrect = status === 'correct';
+  const showSkipAction = !isChecked && isCheckDisabled && Boolean(onSkip);
+  const showContinueAction = isChecked && (isCorrect || showContinueOnWrong);
+  const showCheckAction = !isChecked && !showSkipAction && showCheck && Boolean(onCheck);
+  const showRetryAction = isChecked && Boolean(onRetry);
   
-  const isInteractionActive = isChecked || !isCheckDisabled;
+  const shouldShowIdleBar = !isChecked && ((showCheck && !isCheckDisabled) || showSkipAction);
+  const shouldShowCheckedBar = isChecked && !hideWhenAutoAdvance;
+  const isInteractionActive = shouldShowCheckedBar || shouldShowIdleBar;
   const setIsInteractionActive = useAppStore(state => state.setIsInteractionActive);
 
   // Sync interaction state to hide mode dock when we are interacting
@@ -47,6 +61,45 @@ export function FeedbackBottomBar({
     setIsInteractionActive(isInteractionActive);
     return () => setIsInteractionActive(false);
   }, [isInteractionActive, setIsInteractionActive]);
+
+  useEffect(() => {
+    if (!isInteractionActive || keyboardShortcutDisabled) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (
+        event.key !== 'Enter' ||
+        event.repeat ||
+        event.isComposing ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.altKey
+      ) {
+        return;
+      }
+
+      const primaryAction =
+        (showContinueAction && onContinue) ||
+        (showCheckAction && !isCheckDisabled && onCheck) ||
+        (showSkipAction && onSkip);
+
+      if (!primaryAction) return;
+      event.preventDefault();
+      primaryAction();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [
+    isCheckDisabled,
+    isInteractionActive,
+    keyboardShortcutDisabled,
+    onCheck,
+    onContinue,
+    onSkip,
+    showCheckAction,
+    showContinueAction,
+    showSkipAction,
+  ]);
 
   return (
     <AnimatePresence>
@@ -56,101 +109,91 @@ export function FeedbackBottomBar({
           animate={{ y: 0 }}
           exit={{ y: '100%' }}
           transition={{ type: "spring", stiffness: 350, damping: 28, mass: 1 }}
-          className={`absolute bottom-0 left-0 right-0 z-40 transition-colors duration-300 border-t-2 pb-[env(safe-area-inset-bottom,0px)] shadow-[0_-4px_24px_rgba(0,0,0,0.06)] ${
-            !isChecked ? 'border-[#E5E5E5] bg-white' : 
-            (isCorrect ? 'border-transparent bg-[#D7FFB8]' : 'border-transparent bg-[#FFDFE0]')
+          className={`absolute bottom-0 left-0 right-0 z-40 border-t-2 pb-[env(safe-area-inset-bottom,0px)] shadow-[0_-4px_24px_rgba(0,0,0,0.06)] ${
+            !isChecked ? 'border-ui-border bg-ui-surface' :
+            (isCorrect ? 'border-transparent bg-feedback-success-surface' : 'border-transparent bg-feedback-danger-surface')
           }`}
         >
-          <div className="max-w-2xl mx-auto w-full px-4 pt-4 pb-6 md:pt-6 md:pb-10 flex flex-col gap-4 md:gap-5">
-            <AnimatePresence>
-              {isChecked && (
-                <motion.div 
-                  initial={{ opacity: 0, height: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, height: 'auto', scale: 1 }}
-                  exit={{ opacity: 0, height: 0, scale: 0.95 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                  className="flex flex-col w-full px-2 origin-bottom"
-                >
-                  <div className="flex items-center w-full pb-2">
-                    <div className={`flex items-center gap-3 text-[18px] sm:text-[22px] font-extrabold ${isCorrect ? 'text-[#58A700]' : 'text-[#EA2B2B]'}`}>
-                        <div className={`w-8 h-8 md:w-10 md:h-10 rounded-[12px] flex items-center justify-center shrink-0 ${isCorrect ? 'bg-[#58A700] text-white' : 'bg-[#EA2B2B] text-white'}`}>
-                          {isCorrect ? <PiCheckBold size={24} /> : <PiXBold size={24} />}
-                        </div>
-                        {isCorrect ? "Awesome!" : "Correct solution:"}
+          <div className="mx-auto flex w-full max-w-2xl flex-col gap-4 px-4 pb-6 pt-4 md:gap-5 md:pb-10 md:pt-6">
+            {isChecked && (
+              <motion.div
+                initial={{ opacity: 0, height: 0, scale: 0.95 }}
+                animate={{ opacity: 1, height: 'auto', scale: 1 }}
+                exit={{ opacity: 0, height: 0, scale: 0.95 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                className="flex w-full flex-col px-2 origin-bottom"
+              >
+                <div className="flex w-full items-center pb-2">
+                  <div className={`flex items-center gap-3 text-[18px] font-extrabold sm:text-[22px] ${isCorrect ? 'text-feedback-success-edge' : 'text-feedback-danger-edge'}`}>
+                    <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-[12px] text-ui-surface md:h-10 md:w-10 ${isCorrect ? 'bg-feedback-success-edge' : 'bg-feedback-danger-edge'}`}>
+                      <AppIcon name={isCorrect ? 'check' : 'error'} size={24} />
                     </div>
+                    {isCorrect ? 'Awesome!' : 'Correct solution:'}
                   </div>
-                  {!isCorrect && correctAnswer && (
-                    <div className="flex flex-col gap-1 mt-1 ml-1">
-                      <div className="text-[19px] text-[#EA2B2B] font-bold">
-                         {correctAnswer}
-                      </div>
-                      {pinyin && (
-                        <div className="text-[17px] text-[#EA2B2B] opacity-80 font-medium">
-                           {numberToToneMarks(pinyin)}
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </motion.div>
-              )}
-            </AnimatePresence>
+                </div>
+                {!isCorrect && correctAnswer && (
+                  <div className="ml-1 mt-1 flex flex-col gap-1 text-feedback-danger-edge">
+                    <div className="text-[19px] font-bold">{correctAnswer}</div>
+                    {pinyin && <div className="text-[17px] font-medium opacity-80">{numberToToneMarks(pinyin)}</div>}
+                  </div>
+                )}
+              </motion.div>
+            )}
 
-            <div className="flex items-center gap-3 w-full">
-              {!isChecked && isCheckDisabled && onSkip ? (
+            {(showSkipAction || showContinueAction || showCheckAction || showRetryAction) && (
+              <div className="flex w-full items-center gap-3">
+              {showSkipAction ? (
                 <button
                   disabled={false}
                   onClick={onSkip}
-                  className={`flex-1 py-4 rounded-[16px] font-extrabold text-[15px] md:text-[17px] uppercase tracking-widest transition-all outline-none bg-white text-[#AFB6BB] border-[3px] border-b-[6px] border-[#E5E5E5] hover:bg-[#F7F7F7] active:border-b-[3px] active:translate-y-[3px]`}
+                  className="flex-1 rounded-[16px] border-2 border-ui-border bg-ui-surface py-4 text-[15px] font-extrabold uppercase tracking-widest text-ui-muted-strong transition-all hover:bg-ui-surface-hover active:translate-y-[3px] md:text-[17px]"
                   aria-label="Skip question"
                 >
                   Skip
                 </button>
-              ) : (
+              ) : showContinueAction ? (
                 <button
-                  disabled={!isChecked && isCheckDisabled}
-                  onClick={isChecked ? onContinue : onCheck}
-                  className={`flex-1 py-4 rounded-[16px] font-extrabold text-[15px] md:text-[17px] uppercase tracking-widest transition-all outline-none active:border-b-0 ${
-                    !isChecked && isCheckDisabled 
-                      ? 'bg-[#E5E5E5] text-[#AFB6BB] cursor-not-allowed border-none translate-y-[4px]' 
-                      : isChecked 
-                        ? (isCorrect 
-                            ? 'bg-[#58CC02] text-white border-b-[4px] border-[#58A700] active:translate-y-[4px] hover:bg-[#46A302]' 
-                            : 'bg-[#FF4B4B] text-white border-b-[4px] border-[#EA2B2B] active:translate-y-[4px] hover:bg-[#FF2B2B]')
-                        : 'bg-[#58CC02] text-white border-b-[4px] border-[#58A700] active:translate-y-[4px] hover:bg-[#46A302]'
+                  onClick={onContinue}
+                  className={`flex-1 rounded-[16px] border-b-2 py-4 text-[15px] font-extrabold uppercase tracking-widest text-ui-surface transition-all active:translate-y-[4px] active:border-b-0 md:text-[17px] ${
+                    isCorrect
+                      ? 'border-feedback-success-edge bg-feedback-success hover:bg-feedback-success-hover'
+                      : 'border-feedback-danger-edge bg-feedback-danger hover:bg-feedback-danger-hover'
                   }`}
                 >
-                  {isChecked ? (isCorrect ? 'Continue' : 'Got it') : 'Check'}
+                  {isCorrect ? 'Continue' : 'Got it'}
                 </button>
-              )}
-
-              {isChecked && onRetry && (
+              ) : showCheckAction ? (
                 <button
+                  disabled={isCheckDisabled}
+                  onClick={onCheck}
+                  className={`flex-1 rounded-[16px] py-4 text-[15px] font-extrabold uppercase tracking-widest transition-all active:border-b-0 md:text-[17px] ${
+                    isCheckDisabled
+                      ? 'cursor-not-allowed bg-ui-border text-ui-muted'
+                      : 'border-b-2 border-feedback-success-edge bg-feedback-success text-ui-surface active:translate-y-[4px] hover:bg-feedback-success-hover'
+                  }`}
+                >
+                  Check
+                </button>
+              ) : null}
+
+              {showRetryAction && onRetry && (
+                <IconActionButton
                   onClick={onRetry}
-                  className={`flex items-center justify-center shrink-0 w-[56px] self-stretch rounded-[16px] transition-all outline-none border-[3px] border-b-[6px] active:border-b-[3px] active:translate-y-[3px] ${
-                    isCorrect 
-                      ? 'bg-[#D7FFB8] border-[#58A700]/30 text-[#58A700] hover:bg-[#58A700]/10 hover:border-[#58A700]' 
-                      : 'bg-[#FFDFE0] border-[#EA2B2B]/30 text-[#EA2B2B] hover:bg-[#EA2B2B]/10 hover:border-[#EA2B2B]'
-                  }`}
-                  aria-label="Retry"
-                >
-                  <PiArrowCounterClockwiseBold size={28} />
-                </button>
+                  label="Retry"
+                  icon={<AppIcon name="restart" size={28} />}
+                  className={`h-[56px] w-[56px] self-stretch rounded-[16px] border-2 border-b-[6px] active:translate-y-[3px] active:border-b-2 ${isCorrect ? 'border-feedback-success-edge/30 bg-feedback-success-surface text-feedback-success-edge hover:border-feedback-success-edge' : 'border-feedback-danger-edge/30 bg-feedback-danger-surface text-feedback-danger-edge hover:border-feedback-danger-edge'}`}
+                />
               )}
-
               {isChecked && onBreakdown && (
-                 <button
+                <IconActionButton
                   onClick={onBreakdown}
-                  className={`flex items-center justify-center shrink-0 w-[56px] self-stretch rounded-[16px] transition-all outline-none border-[3px] border-b-[6px] active:border-b-[3px] active:translate-y-[3px] ${
-                    isCorrect 
-                      ? 'bg-[#D7FFB8] border-[#58A700]/30 text-[#58A700] hover:bg-[#58A700]/10 hover:border-[#58A700]' 
-                      : 'bg-[#FFDFE0] border-[#EA2B2B]/30 text-[#EA2B2B] hover:bg-[#EA2B2B]/10 hover:border-[#EA2B2B]'
-                  }`}
-                  aria-label="Character Breakdown"
-                >
-                  <PiPuzzlePieceFill size={28} />
-                </button>
+                  label="Character breakdown"
+                  icon={<AppIcon name="breakdown" size={28} />}
+                  className={`h-[56px] w-[56px] self-stretch rounded-[16px] border-2 border-b-[6px] active:translate-y-[3px] active:border-b-2 ${isCorrect ? 'border-feedback-success-edge/30 bg-feedback-success-surface text-feedback-success-edge hover:border-feedback-success-edge' : 'border-feedback-danger-edge/30 bg-feedback-danger-surface text-feedback-danger-edge hover:border-feedback-danger-edge'}`}
+                />
               )}
-            </div>
+              </div>
+            )}
           </div>
         </motion.div>
       )}

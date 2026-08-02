@@ -1,36 +1,50 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { PiXBold, PiArrowLeftBold, PiGearFill } from 'react-icons/pi';
 import { cn } from '../../utils/cn';
-import { IconButton3D } from './IconButton3D';
+import { AppIcon } from './AppIcon';
+import { IconActionButton } from './IconActionButton';
+import { PracticePartProgressRail, StudyPartProgressRail } from './PartProgressRail';
+import type { CourseLessonPartProgress, PartSegment } from '../../types/models';
+import { visibleProgressWidth } from '../../utils/progress';
 
 export interface ScreenHeaderProps {
   title?: string;
+  eyebrow?: string;
+  centerContent?: React.ReactNode;
   progress?: number;
   currentIndex?: number;
   totalCount?: number;
+  partSegments?: PartSegment[];
+  studyParts?: CourseLessonPartProgress[];
+  onToggleStudyPart?: (partId: number) => void;
   onClose?: () => void;
   onBack?: () => void;
   rightAction?: React.ReactNode;
   accentBgClassName?: string;
   className?: string;
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'none';
-  compact?: boolean;
+  progressSize?: 'default' | 'compact';
 }
 
 export function ScreenHeader({ 
   title, 
+  eyebrow,
+  centerContent,
   progress, 
   currentIndex, 
   totalCount, 
+  partSegments = [],
+  studyParts = [],
+  onToggleStudyPart,
   onClose, 
   onBack, 
   rightAction,
   accentBgClassName = "bg-brand-primary",
   className = "",
   maxWidth = '2xl',
-  compact = false
+  progressSize = 'default',
 }: ScreenHeaderProps) {
+  const metrics = { controlSize: 'lg' as const, iconSize: 25, sideSpacerClassName: 'w-11' };
   const maxWidthClasses = {
     sm: 'max-w-sm',
     md: 'max-w-md',
@@ -40,66 +54,101 @@ export function ScreenHeader({
     none: 'max-w-none',
   };
 
-  const actionButtonClass = compact
-    ? "p-1.5 text-[#AFB6BB] hover:text-[#4B4B4B] hover:scale-105 active:scale-95 transition-all shrink-0 relative z-30"
-    : "p-2 text-[#AFB6BB] hover:text-[#4B4B4B] hover:scale-105 active:scale-95 transition-all shrink-0 relative z-30";
-
   return (
     <header className={cn(
-      "w-full bg-white border-b-[3px] border-[#E5E5E5] shadow-sm shrink-0 relative z-10 pointer-events-auto px-4 md:px-6 transition-all duration-200 ease-out",
-      compact ? "py-2" : "py-4",
+      "window-header relative z-10 w-full shrink-0 border-b-2 border-ui-border bg-ui-surface px-3 py-3 shadow-sm pointer-events-auto md:px-5",
       className
     )}>
       <div className={cn("w-full flex items-center justify-between mx-auto", maxWidthClasses[maxWidth])}>
         {onClose ? (
-          <button onClick={onClose} className={cn(actionButtonClass, "-ml-2")} aria-label="Close">
-            <PiXBold size={compact ? 24 : 28} />
-          </button>
+          <IconActionButton
+            onClick={onClose}
+            className="relative z-30 -ml-1"
+            label="Close"
+            size={metrics.controlSize}
+            icon={<AppIcon name="close" size={metrics.iconSize} />}
+          />
         ) : onBack ? (
-          <button onClick={onBack} className={cn(actionButtonClass, "-ml-2")} aria-label="Go back">
-             <PiArrowLeftBold size={compact ? 24 : 28} />
-          </button>
+          <IconActionButton
+            onClick={onBack}
+            className="relative z-30 -ml-1"
+            label="Go back"
+            size={metrics.controlSize}
+            icon={<AppIcon name="back" size={metrics.iconSize} />}
+          />
         ) : (
-          <div className={compact ? "w-9" : "w-10"}></div>
+          <div className={metrics.sideSpacerClassName} />
         )}
         
-        <div className="flex-1 mx-4 md:mx-6 flex items-center justify-center">
-          {progress !== undefined ? (
-            <div className={cn("w-full relative rounded-full bg-[#E5E5E5] transition-all duration-200", compact ? "h-2.5" : "h-4")}>
-              <motion.div 
-                className={`absolute left-0 top-0 bottom-0 ${accentBgClassName} rounded-full overflow-hidden`}
-                initial={{ width: 0 }}
-                animate={{ width: `${progress}%` }}
-                style={{ minWidth: progress > 0 ? '24px' : '0px' }}
-                transition={{ type: 'spring', bounce: 0, duration: 0.5 }}
-              >
-                  {progress > 0 && (
-                    <div className="absolute top-[3px] left-[6px] right-[6px] h-[4px] bg-white opacity-30 rounded-full" />
-                  )}
-              </motion.div>
+        <div className={cn("flex-1 mx-2 md:mx-4 flex items-center", eyebrow ? "justify-start" : "justify-center")}>
+          {centerContent !== undefined ? (
+            centerContent
+          ) : progress !== undefined ? (
+            <div className="w-full flex items-center justify-center">
+              {studyParts.length > 1 && onToggleStudyPart ? (
+                <StudyPartProgressRail
+                  parts={studyParts}
+                  onTogglePart={onToggleStudyPart}
+                  segments={partSegments}
+                  currentIndex={currentIndex ?? 0}
+                  density={progressSize === 'compact' ? 'compact' : 'default'}
+                  className="w-full"
+                />
+              ) : partSegments.length > 1 && currentIndex !== undefined && totalCount !== undefined ? (
+                <PracticePartProgressRail
+                  segments={partSegments}
+                  currentIndex={currentIndex}
+                  totalCount={totalCount}
+                  density={progressSize === 'compact' ? 'compact' : 'default'}
+                  className="w-full"
+                />
+              ) : (
+                <div className={cn(
+                  "relative h-5 w-full overflow-hidden rounded-full bg-ui-divider",
+                )}>
+                  <motion.div
+                    className={`absolute left-0 top-0 bottom-0 ${accentBgClassName} rounded-full overflow-hidden`}
+                    initial={{ width: 0 }}
+                    animate={{ width: visibleProgressWidth(progress) }}
+                    transition={{ type: 'spring', bounce: 0, duration: 0.5 }}
+                  >
+                    {progress > 0 && (
+                      <div className="absolute left-2 right-2 top-1 h-1.5 rounded-full bg-white/30" />
+                    )}
+                  </motion.div>
+                </div>
+              )}
             </div>
           ) : title ? (
-            <h1 className={cn(
-              "font-black text-[#4B4B4B] opacity-40 text-center uppercase tracking-widest w-full transition-all duration-200",
-              compact ? "text-[12px] sm:text-[13px]" : "text-[15px] sm:text-[17px]"
-            )}>
-              {title}
-            </h1>
+            eyebrow ? (
+              <div className="min-w-0 text-left">
+                <p className="truncate text-[9px] font-black uppercase tracking-[0.08em] text-brand-primary sm:text-[10px]">{eyebrow}</p>
+                <h1 className={cn(
+                  "truncate font-chinese text-base font-black text-ui-ink sm:text-lg",
+                )}>
+                  {title}
+                </h1>
+              </div>
+            ) : (
+              <h1 className={cn(
+                "w-full text-center text-[15px] font-black uppercase tracking-widest text-ui-muted sm:text-[17px]",
+              )}>
+                {title}
+              </h1>
+            )
           ) : null}
         </div>
 
-        <div className={cn("flex items-center gap-3 shrink-0 transition-all duration-200", compact ? "h-8" : "h-10")}>
-          {(currentIndex !== undefined && totalCount !== undefined) && (
-            <span className={cn("font-extrabold text-[#AFB6BB] tracking-widest tabular-nums mt-0.5 transition-all duration-200", compact ? "text-xs" : "text-sm")}>
+        <div className="flex h-10 shrink-0 items-center gap-2">
+          {(currentIndex !== undefined && totalCount !== undefined && totalCount > 0) && (
+            <span className="mt-0.5 text-sm font-extrabold tracking-widest text-ui-muted tabular-nums">
               {currentIndex + 1} / {totalCount}
             </span>
           )}
           {rightAction !== undefined ? (
             rightAction
           ) : (
-            <button className={cn(actionButtonClass, "-mr-2")}>
-              <PiGearFill size={compact ? 24 : 28} />
-            </button>
+            <span aria-hidden="true" className={metrics.sideSpacerClassName} />
           )}
         </div>
       </div>

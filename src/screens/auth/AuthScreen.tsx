@@ -1,5 +1,5 @@
 import React from 'react';
-import { PiSignInBold, PiUserFill } from 'react-icons/pi';
+import { PiCircleNotchBold, PiSignInBold, PiUserFill } from 'react-icons/pi';
 import { BottomDrawer, Soft3DButton, LottiePlayer } from '../../lib/widgets';
 import { useAuth } from '../../hooks/useAuth';
 import rainbowAnimation from '../../assets/animations/rainbow_twist.json';
@@ -27,9 +27,9 @@ export function AuthScreen({ isOpen, onClose }: AuthScreenProps) {
       setIsSigningIn(true);
       await loginWithGoogle();
       // Auth change listener in useAuth will update Zustand store
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Login failed", error);
-      setAuthError(error.message || 'Failed to login with Google.');
+      setAuthError(error instanceof Error ? error.message : 'Failed to login with Google.');
       setIsSigningIn(false);
     }
   };
@@ -39,7 +39,7 @@ export function AuthScreen({ isOpen, onClose }: AuthScreenProps) {
   };
 
   return (
-    <BottomDrawer isOpen={isOpen} onClose={onClose}>
+    <BottomDrawer isOpen={isOpen} onClose={onClose} workspaceBound={false}>
       <div className="flex flex-col items-center text-center pb-6">
         {/* Lottie Animation Logo */}
         <div className="w-32 h-32 mb-4">
@@ -71,10 +71,7 @@ export function AuthScreen({ isOpen, onClose }: AuthScreenProps) {
           >
             {isSigningIn ? (
               <>
-                <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                </svg>
+                <PiCircleNotchBold className="animate-spin" size={20} />
                 Signing In...
               </>
             ) : (
@@ -87,7 +84,7 @@ export function AuthScreen({ isOpen, onClose }: AuthScreenProps) {
 
           <Soft3DButton 
             variant="custom" 
-            className="w-full bg-white border-[#E5E5E5] text-[#4B4B4B] hover:bg-gray-50 uppercase tracking-widest font-extrabold py-4"
+            className="w-full bg-white border-[#E5E5E5] text-[#4B4B4B] hover:bg-[#F7F7F7] uppercase tracking-widest font-extrabold py-4"
             onClick={handleContinueAsGuest}
           >
             <PiUserFill size={20} className="text-[#AFB6BB]" />

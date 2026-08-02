@@ -1,7 +1,9 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 function getEnv(key: string): string | undefined {
-  return (import.meta as any).env?.[key] || (typeof process !== 'undefined' ? process.env?.[key] : undefined);
+  const viteValue = import.meta.env?.[key];
+  return (typeof viteValue === 'string' ? viteValue : undefined)
+    || (typeof process !== 'undefined' ? process.env?.[key] : undefined);
 }
 
 let _client: SupabaseClient | null = null;
@@ -42,11 +44,10 @@ function getClient(): SupabaseClient {
 // injected env vars in the browser.
 export const supabase: SupabaseClient = new Proxy({} as SupabaseClient, {
   get(_target, prop) {
-    return (getClient() as any)[prop];
+    return Reflect.get(getClient(), prop);
   },
   set(_target, prop, value) {
-    (getClient() as any)[prop] = value;
-    return true;
+    return Reflect.set(getClient(), prop, value);
   },
 });
 

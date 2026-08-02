@@ -187,5 +187,14 @@ export function findSmartExamplesForWord(FLASHCARDS_DATA: Flashcard[], searchWor
   });
 
   // Clean up private properties
-  return results.map(({ _sourceIndex, ...rest }) => rest);
+  return results.map((result) => ({
+    chinese: result.chinese,
+    pinyin: result.pinyin,
+    english: result.english,
+    sourceCardId: result.sourceCardId,
+    sourceFront: result.sourceFront,
+    sourceBookId: result.sourceBookId,
+    sourceLessonId: result.sourceLessonId,
+    rank: result.rank,
+  }));
 }

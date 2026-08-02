@@ -93,7 +93,7 @@ export const authService = {
    * Update user metadata in Supabase auth.
    * Used by useCloudSync to persist preferences to user_metadata for cross-device sync.
    */
-  updateUserMetadata: async (metadata: Record<string, any>): Promise<void> => {
+  updateUserMetadata: async (metadata: Record<string, unknown>): Promise<void> => {
     try {
       if (!isSupabaseConfigured()) return;
       const { error } = await supabase.auth.updateUser({ data: metadata });
