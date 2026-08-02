@@ -151,7 +151,7 @@ export function PracticePartProgressRail({
           <div
             key={`${segment.partId}-${segment.startIndex}`}
             style={{ flex: flexWeight }}
-            className="progress-rail-track relative h-3 w-full min-w-0 overflow-hidden rounded-full sm:h-3.5"
+            className="relative h-5 w-full min-w-0 overflow-hidden rounded-full bg-ui-divider"
             title={`${segment.label}: ${segment.cardCount} cards`}
           >
             <motion.div
@@ -161,7 +161,7 @@ export function PracticePartProgressRail({
               transition={PROGRESS_SPRING}
             >
               {progressPercent > 0 && (
-                <span className="pointer-events-none absolute left-2 right-2 top-1 h-1 rounded-full bg-white/30" />
+                <span className="pointer-events-none absolute left-2 right-2 top-1 h-1.5 rounded-full bg-white/30" />
               )}
             </motion.div>
           </div>
@@ -217,8 +217,10 @@ export function StudyPartProgressRail({
             title={`Part ${part.id} · ${cardCount} cards`}
             style={{ flex: flexWeight }}
             className={cn(
-              'progress-rail-track group relative h-4 w-full min-w-0 cursor-pointer select-none overflow-hidden rounded-full outline-none transition-[transform,opacity] duration-200 hover:scale-[1.02] focus-visible:ring-4 focus-visible:ring-brand-primary/25 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50',
-              !isSelected && 'opacity-70 hover:opacity-100',
+              'group relative h-4 w-full min-w-0 cursor-pointer select-none overflow-hidden rounded-full outline-none transition-[transform,opacity] duration-200 hover:scale-[1.02] focus-visible:ring-4 focus-visible:ring-brand-primary/25 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50',
+              isSelected
+                ? 'bg-ui-divider'
+                : 'progress-part-inactive opacity-70 hover:opacity-100',
             )}
           >
             {isSelected && (
