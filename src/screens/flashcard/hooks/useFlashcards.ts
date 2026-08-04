@@ -8,6 +8,10 @@ import { getCurriculumSessionKey } from '../../../utils/lessonPartSelection';
 import { retainCurrentCardIndex } from '../../../utils/sessionProgress';
 import type { Quality } from '../../../utils/srsEngine';
 
+// How many upcoming cards to pre-warm neural TTS for, so flip-triggered
+// playback is instant instead of waiting a server synthesis round-trip.
+const WARM_AHEAD_COUNT = 4;
+
 /**
  * Core hook for the flashcard review session.
  *
@@ -44,6 +48,16 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     if (loadedCards.length > 0) {
       audioService.preload(loadedCards.map(c => c.audio));
 
+      // Pre-warm neural TTS for the first few cards so the first flips play
+      // instantly rather than blocking on a server synthesis round-trip.
+      const initialWarm = loadedCards
+        .slice(0, WARM_AHEAD_COUNT)
+        .map(c => c.front.trim())
+        .filter(Boolean);
+      if (initialWarm.length > 0) {
+        audioService.preloadNeural(initialWarm).catch(() => {});
+      }
+
       // Bounds-check the loaded index (Bug 11) and prevent cloud sync override mid-session (Bug 5)
       if (!sessionStartedRef.current) {
         const saved = useAppStore.getState().sessionProgressIndex[sessionKey] || 0;
@@ -59,6 +73,21 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
   }, [loadedCards, sessionKey]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Warm the upcoming cards' neural TTS in the background as the user
+  // advances, so the next flips play instantly. Fire-and-forget;
+  // preloadNeural skips words already cached in browser/Supabase storage.
+  useEffect(() => {
+    if (cards.length === 0) return;
+    const start = currentIndex + 1;
+    const warm = cards
+      .slice(start, start + WARM_AHEAD_COUNT)
+      .map(c => c.front.trim())
+      .filter(Boolean);
+    if (warm.length > 0) {
+      audioService.preloadNeural(warm).catch(() => {});
+    }
+  }, [currentIndex, cards]);
 
   useEffect(() => {
     gradingCardIdRef.current = null;
