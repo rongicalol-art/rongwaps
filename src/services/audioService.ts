@@ -29,6 +29,7 @@ export class AudioService {
   private currentSource: AudioBufferSourceNode | null = null;
   private currentUtterance: SpeechSynthesisUtterance | null = null;
   private activePlaybackFinish: (() => void) | null = null;
+  private neuralCache: Cache | null = null;
 
   constructor() {
     // Only create browser audio primitives in a browser environment.
@@ -217,6 +218,156 @@ export class AudioService {
     });
   }
 
+  private ttsCacheRequest(text: string, voice: string | undefined): Request {
+    const voiceName = voice || 'zh-CN-XiaoxiaoNeural';
+    return new Request(`/api/tts-cache/${encodeURIComponent(text)}?voice=${voiceName}`, { method: 'GET' });
+  }
+
+  private async getNeuralCache(): Promise<Cache | null> {
+    if (this.neuralCache) return this.neuralCache;
+    try {
+      if (typeof caches !== 'undefined') {
+        this.neuralCache = await caches.open('rongwaps-tts-v1');
+      }
+    } catch {
+      this.neuralCache = null;
+    }
+    return this.neuralCache;
+  }
+
+  private playBlobAudio(blob: Blob, playbackRate: number, finish: () => void, fallback: () => void): void {
+    const objectUrl = URL.createObjectURL(blob);
+    const audio = new Audio(objectUrl);
+    audio.playbackRate = playbackRate > 0 ? playbackRate : 1;
+    audio.onended = () => {
+      URL.revokeObjectURL(objectUrl);
+      if (this.activePlaybackFinish === finish) {
+        this.activePlaybackFinish = null;
+      }
+      finish();
+    };
+    audio.onerror = () => {
+      URL.revokeObjectURL(objectUrl);
+      fallback();
+    };
+    audio.play().catch(fallback);
+  }
+
+  private playNeuralAudio(text: string, voice: string | undefined, playbackRate: number, finish: () => void): void {
+    const language = voice?.startsWith('zh-TW') ? 'zh-TW' : 'zh-CN';
+    const fallback = () => {
+      // Neural TTS unavailable — fall back to browser speech.
+      this.startSpeech(text, language, 0.86, finish, true);
+    };
+
+    const cacheRequest = this.ttsCacheRequest(text, voice);
+
+    // Play a cached neural MP3 if one exists (browser Cache API).
+    const playNeuralIfCached = async (): Promise<boolean> => {
+      if (typeof window === 'undefined') return false;
+      const cache = await this.getNeuralCache();
+      if (!cache) return false;
+      const cached = await cache.match(cacheRequest).catch(() => null);
+      if (!cached) return false;
+      const blob = await cached.blob();
+      this.playBlobAudio(blob, playbackRate, finish, fallback);
+      return true;
+    };
+
+    (async () => {
+      // 1. Browser Cache API — instant repeat playback, zero network.
+      if (await playNeuralIfCached()) return;
+
+      // 2. No cached neural audio yet: start the default (browser) speech
+      //    immediately so there's no dead air while the neural MP3
+      //    synthesizes, and warm the caches in the background. The next
+      //    playback of this text will be instant neural audio; we never
+      //    swap voices mid-word.
+      let finalized = false;
+      const speechFinish = () => {
+        if (finalized) return;
+        finalized = true;
+        finish();
+      };
+
+      this.startSpeech(text, language, 0.86, speechFinish, true);
+      void this.warmNeuralCache(text, voice, cacheRequest);
+    })();
+  }
+
+  /**
+   * Best-effort: synthesize the neural MP3 and store it in the browser
+   * Cache API and Supabase storage so the next playback is instant.
+   * Never blocks or interrupts the browser speech already playing.
+   */
+  private async warmNeuralCache(
+    text: string,
+    voice: string | undefined,
+    cacheRequest: Request,
+  ): Promise<void> {
+    try {
+      const cache = await this.getNeuralCache();
+      const response = await fetch('/api/tts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text, voice }),
+      });
+      if (!response.ok) throw new Error(`TTS failed: ${response.status}`);
+      const blob = await response.blob();
+      if (cache) {
+        cache
+          .put(cacheRequest, new Response(blob, { headers: { 'Content-Type': 'audio/mpeg' } }))
+          .catch(() => {});
+      }
+    } catch {
+      // Best-effort — keep the browser speech that is already playing.
+    }
+  }
+
+  public speakNeural(text: string, voice?: string): Promise<void> {
+    this.stop();
+    return new Promise((resolve) => {
+      this.playNeuralAudio(text, voice, 1, this.trackPlayback(resolve));
+    });
+  }
+
+  /**
+   * Fire-and-forget pre-warm: synthesizes texts ahead of playback and stores
+   * them in the browser Cache API so first tap is instant. Best-effort.
+   */
+  public async preloadNeural(texts: string[], voice?: string): Promise<void> {
+    if (!texts || texts.length === 0) return;
+    const cache = await this.getNeuralCache();
+    for (const text of texts) {
+      const clean = text?.trim();
+      if (!clean) continue;
+      const cacheRequest = this.ttsCacheRequest(clean, voice);
+      if (cache) {
+        try {
+          if (await cache.match(cacheRequest)) continue; // already cached
+        } catch {
+          // fall through and synth anyway
+        }
+      }
+      try {
+        const response = await fetch('/api/tts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: clean, voice }),
+        });
+        if (!response.ok) continue;
+        const blob = await response.blob();
+        if (cache) {
+          cache
+            .put(cacheRequest, new Response(blob, { headers: { 'Content-Type': 'audio/mpeg' } }))
+            .catch(() => {});
+        }
+      } catch {
+        // best-effort — never block card save/render
+      }
+    }
+  }
+
   public speakText(text: string, language = 'zh-CN', rate = 1.0): Promise<void> {
     this.stop();
     return new Promise((resolve) => {
@@ -272,7 +423,6 @@ export class AudioService {
   }
 
   public play(audioFileName?: string, playbackRate: number = 1.0, textFallback?: string): Promise<void> {
-    const isChineseText = (text: string): boolean => /[\u4e00-\u9fa5]/.test(text);
     const isProperAudioFile = (filename?: string): boolean => {
       if (!filename) return false;
       const lowercase = filename.toLowerCase();
@@ -289,7 +439,6 @@ export class AudioService {
     const textToSpeak = textFallback
       || (
         audioFileName
-        && isChineseText(audioFileName)
         && !isProperAudioFile(audioFileName)
           ? audioFileName
           : undefined
@@ -299,7 +448,7 @@ export class AudioService {
       const finish = this.trackPlayback(resolve);
       const startSpeechFallback = () => {
         if (textToSpeak) {
-          this.startSpeech(textToSpeak, 'zh-CN', playbackRate, finish, true);
+          this.playNeuralAudio(textToSpeak, 'zh-CN-XiaoxiaoNeural', playbackRate, finish);
         } else {
           finish();
         }
