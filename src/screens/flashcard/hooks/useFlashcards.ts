@@ -50,12 +50,14 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
 
       // Pre-warm neural TTS for the first few cards so the first flips play
       // instantly rather than blocking on a server synthesis round-trip.
+      // Fire per-card so the warm-ups run concurrently (~1 synth trip total
+      // instead of N sequential ones); preloadNeural skips cached words.
       const initialWarm = loadedCards
         .slice(0, WARM_AHEAD_COUNT)
         .map(c => c.front.trim())
         .filter(Boolean);
-      if (initialWarm.length > 0) {
-        audioService.preloadNeural(initialWarm).catch(() => {});
+      for (const text of initialWarm) {
+        audioService.preloadNeural([text]).catch(() => {});
       }
 
       // Bounds-check the loaded index (Bug 11) and prevent cloud sync override mid-session (Bug 5)
@@ -77,6 +79,8 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
   // Warm the upcoming cards' neural TTS in the background as the user
   // advances, so the next flips play instantly. Fire-and-forget;
   // preloadNeural skips words already cached in browser/Supabase storage.
+  // Per-card calls run concurrently so all warm-ups finish in ~1 synth
+  // round-trip rather than sequentially.
   useEffect(() => {
     if (cards.length === 0) return;
     const start = currentIndex + 1;
@@ -84,8 +88,8 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
       .slice(start, start + WARM_AHEAD_COUNT)
       .map(c => c.front.trim())
       .filter(Boolean);
-    if (warm.length > 0) {
-      audioService.preloadNeural(warm).catch(() => {});
+    for (const text of warm) {
+      audioService.preloadNeural([text]).catch(() => {});
     }
   }, [currentIndex, cards]);
 
