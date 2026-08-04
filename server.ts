@@ -3,6 +3,7 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
+import { MsEdgeTTS, OUTPUT_FORMAT } from "msedge-tts";
 import { pregeneratedWordMnemonics, pregeneratedCharMnemonics } from "./src/data/pregeneratedMnemonics.js";
 import { supabase } from "./src/services/supabaseClient.js";
 
@@ -202,6 +203,148 @@ app.get("/api/audio/*", async (req: express.Request, res: express.Response) => {
   } catch (err: unknown) {
     console.error("Audio proxy error:", err);
     res.status(500).json({ error: "Failed to fetch audio" });
+  }
+});
+
+// ─── Neural TTS endpoint (Microsoft Edge Read Aloud) ──────────────────
+// POST /api/tts { text, voice? }
+// Synthesizes natural neural TTS server-side, caches MP3 in Supabase Storage,
+// and streams audio/mpeg back. Fallback: GET /api/audio/:cacheKey serves cache.
+
+const TTS_AUDIO_BUCKET = "vocabulary-audio";
+const TTS_CACHE_PREFIX = "tts/";
+
+const TTS_VOICES: Record<string, { name: string; lang: string }> = {
+  "zh-CN-XiaoxiaoNeural": { name: "zh-CN-XiaoxiaoNeural", lang: "zh-CN" },
+  "zh-CN-YunxiNeural": { name: "zh-CN-YunxiNeural", lang: "zh-CN" },
+  "zh-TW-HsiaoChenNeural": { name: "zh-TW-HsiaoChenNeural", lang: "zh-TW" },
+  "zh-TW-YunJheNeural": { name: "zh-TW-YunJheNeural", lang: "zh-TW" },
+};
+
+function ttsCacheKey(text: string, voiceName: string): string {
+  return `${TTS_CACHE_PREFIX}${voiceName}/${Buffer.from(text).toString("hex")}.mp3`;
+}
+
+// Dedupe concurrent synthesis of the same cache key
+const ttsInFlight = new Map<string, Promise<Buffer>>();
+
+function sanitizeTtsText(text: string): string {
+  // Guard against length abuse; msedge-tts requires SSML-safe text.
+  return text.trim().slice(0, 500);
+}
+
+async function synthesizeNeural(text: string, voiceName: string): Promise<Buffer> {
+  const voice = TTS_VOICES[voiceName] || TTS_VOICES["zh-CN-XiaoxiaoNeural"]!;
+  const tts = new MsEdgeTTS();
+  await tts.setMetadata(voice.name, OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
+  const { audioStream } = await tts.toStream(text, { rate: 0.9 });
+  const chunks: Buffer[] = [];
+  for await (const chunk of audioStream) {
+    chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
+  }
+  return Buffer.concat(chunks);
+}
+
+async function getTtsAudio(text: string, voiceName: string): Promise<Buffer> {
+  const key = ttsCacheKey(text, voiceName);
+
+  // 1. Check cache
+  const { data, error } = await supabase.storage.from(TTS_AUDIO_BUCKET).download(key);
+  if (!error && data) {
+    return Buffer.from(await data.arrayBuffer());
+  }
+
+  // 2. Dedupe concurrent synthesis
+  const existing = ttsInFlight.get(key);
+  if (existing) return existing;
+
+  const promise = (async () => {
+    const audio = await synthesizeNeural(text, voiceName);
+    // Best-effort cache write; never block playback on failure.
+    // Plain insert (no upsert): the storage INSERT policy allows anon writes
+    // under tts/, while upsert (INSERT ... ON CONFLICT DO UPDATE) requires an
+    // UPDATE policy that anon lacks — so upserts 403 and the cache never lands.
+    await supabase.storage
+      .from(TTS_AUDIO_BUCKET)
+      .upload(key, audio, { contentType: "audio/mpeg" })
+      .catch((err: unknown) => console.warn("TTS cache upload failed:", err));
+    return audio;
+  })();
+
+  ttsInFlight.set(key, promise);
+  try {
+    return await promise;
+  } finally {
+    ttsInFlight.delete(key);
+  }
+}
+
+app.post("/api/tts", async (req: express.Request, res: express.Response) => {
+  try {
+    const { text, voice } = req.body as { text?: string; voice?: string };
+    const cleanText = sanitizeTtsText(text || "");
+    if (!cleanText) {
+      return res.status(400).json({ error: "Missing or empty 'text'" });
+    }
+
+    const voiceName = voice && TTS_VOICES[voice] ? voice : "zh-CN-XiaoxiaoNeural";
+    const audio = await getTtsAudio(cleanText, voiceName);
+
+    res.setHeader("Content-Type", "audio/mpeg");
+    res.setHeader("Content-Length", audio.length);
+    res.setHeader("Cache-Control", "public, max-age=86400");
+    res.send(audio);
+  } catch (err: unknown) {
+    console.error("Neural TTS error:", err);
+    res.status(502).json({ error: "Neural TTS unavailable right now." });
+  }
+});
+
+// GET /api/tts-cache/:text — serve cached TTS MP3 by text, or 404 (client synthesizes on miss)
+app.get("/api/tts-cache/:text", async (req: express.Request, res: express.Response) => {
+  try {
+    const text = decodeURIComponent(req.params.text || "").trim();
+    const voice = (req.query.voice as string) || "zh-CN-XiaoxiaoNeural";
+    if (!text || !TTS_VOICES[voice]) {
+      return res.status(400).json({ error: "Invalid text or voice" });
+    }
+    const key = ttsCacheKey(text, voice);
+    const { data, error } = await supabase.storage.from(TTS_AUDIO_BUCKET).download(key);
+    if (error || !data) {
+      return res.status(404).json({ error: "TTS audio not cached" });
+    }
+    const buffer = Buffer.from(await data.arrayBuffer());
+    res.setHeader("Content-Type", "audio/mpeg");
+    res.setHeader("Content-Length", buffer.length);
+    res.setHeader("Cache-Control", "public, max-age=86400");
+    res.send(buffer);
+  } catch (err: unknown) {
+    console.error("TTS cache read error:", err);
+    res.status(500).json({ error: "Failed to fetch TTS audio" });
+  }
+});
+
+// GET /api/tts/:voice/:hash.mp3 — direct cache read, same output as POST but cache-only
+app.get("/api/tts/:voice/*", async (req: express.Request, res: express.Response) => {
+  try {
+    const voice = req.params.voice;
+    const fileTail = req.params[0];
+    if (!fileTail) {
+      return res.status(400).json({ error: "Missing filename" });
+    }
+    const key = `${TTS_CACHE_PREFIX}${voice}/${fileTail}`;
+    const { data, error } = await supabase.storage.from(TTS_AUDIO_BUCKET).download(key);
+    if (error || !data) {
+      return res.status(404).json({ error: "TTS audio not found" });
+    }
+    const buffer = Buffer.from(await data.arrayBuffer());
+    res.setHeader("Content-Type", "audio/mpeg");
+    res.setHeader("Content-Length", buffer.length);
+    res.setHeader("Cache-Control", "public, max-age=86400");
+    res.send(buffer);
+  } catch (err: unknown) {
+    console.error("TTS cache read error:", err);
+    res.status(500).json({ error: "Failed to fetch TTS audio" });
   }
 });
 
