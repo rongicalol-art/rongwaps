@@ -116,6 +116,7 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
         accuracy={100}
         activeBook={activeBook}
         onContinue={onClose}
+        onResetAll={restartRound}
       />
     );
   }

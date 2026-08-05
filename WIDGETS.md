@@ -7,6 +7,34 @@ All widgets export from `src/lib/widgets/index.ts`:
 import { ActionButton, IconActionButton, SegmentedControl, MainHeader, ... } from '../lib/widgets';
 ```
 
+## StickyWorkspaceHeader
+Canonical top-level workspace sticky header — the **single source of truth** for the gradient-fade header used by Books home, Library, and Dictionary (AGENTS.md rule 32). Never re-implement this header inline; always reuse this widget so layout, size, font, and tokens stay consistent.
+
+**Structure (fixed, token-based — do not hardcode):**
+- Outer: `sticky top-0 z-40 bg-gradient-to-b from-ui-canvas via-ui-canvas/95 to-transparent backdrop-blur-[2px]`
+- Inner row: `h-14 md:h-16`, centered column, `px-16 md:px-4`
+- Title: `text-xl sm:text-2xl md:text-[26px] font-extrabold tracking-tight text-ui-ink`
+- Subtitle: `text-[11px] md:text-[12px] font-black uppercase tracking-widest` (default `text-ui-muted`; pass `subtitleClassName` for course accents)
+
+**Props:**
+- `title: string` (required, centered)
+- `subtitle?: string` — optional uppercase label under the title (e.g. book label)
+- `subtitleClassName?: string` — token classes for subtitle color (default `text-ui-muted`; use accent/course tokens)
+- `leftSlot?: ReactNode` — optional icon next to the title (e.g. folder icon)
+- `menuToggle?: { onClick: () => void; label?: string }` — optional mobile-only hamburger button overlaid left (same slot as `onBack`). Use for the mobile nav drawer toggle so it always centers with the title row; rendered `md:hidden`
+- `onBack?: () => void`, `backLabel?: string` — optional quiet back button overlaid left
+- `searchValue?: string`, `onSearchChange?: (v: string) => void`, `searchPlaceholder?`, `searchLabel?` — optional quiet expandable search icon overlaid right
+- `className?: string`
+
+**Usage:**
+```tsx
+<StickyWorkspaceHeader title="Library" menuToggle={{ onClick: openNav, label: 'Menu' }} searchValue={q} onSearchChange={setQ} />
+<StickyWorkspaceHeader title={book.title} subtitle={book.label} subtitleClassName={book.accent} />
+<StickyWorkspaceHeader title="Starred Words" onBack={goHome} leftSlot={folderIcon} searchValue={q} onSearchChange={setQ} />
+```
+
+**Note:** Top-level tab screens (Books/Library/Dictionary home) receive the mobile hamburger via `menuToggle` passed down from `LayoutShell`/`App.tsx`. Do NOT hardcode a separate floating hamburger in layouts — the header owns all left-slot controls so icon and title stay vertically aligned.
+
 ## ActionButton
 Canonical text action. Variants encode hierarchy with clean bottom-edge depth: `primary`/`danger` tactile, `secondary` restrained, `quiet` nearly flat.
 
@@ -126,7 +154,7 @@ Flat mode/selection track for mutually exclusive options. Selected option uses s
 - Standard HTML div attrs, incl `className`
 
 ## AppIcon
-Semantic gateway for functional icons. Maps stable concepts (`play`, `search`, `forward`, `settings`, `menu`, `books`, `profile`, `progress`, `analytics`, `check`, `lock`, etc.) to approved Phosphor icons.
+Semantic gateway for functional icons. Maps stable concepts (`play`, `search`, `forward`, `settings`, `menu`, `grammar`, `books`, `profile`, `progress`, `analytics`, `check`, `lock`, etc.) to approved Phosphor icons.
 
 **Props:**
 - `name: AppIconName`
@@ -282,11 +310,12 @@ Animated rounded progress bar with accent colors.
 - `className?: string`
 
 ## PartProgressRail
-Split lesson-part progress controls. `StudyPartProgressRail` renders unselected parts as quiet pale ghost capsules with no outline; selected parts use the stronger neutral track with a left-revealing blue fill. This keeps the progress hierarchy calm and browser-independent. `PracticePartProgressRail` keeps the solid rounded track and growing inner highlight of the continuous practice progress bar. `SelectablePartProgressRail` is available for larger selection cards.
+Split lesson-part progress controls. `StudyPartProgressRail` renders unselected parts as quiet pale ghost capsules with no outline; selected parts use the stronger neutral track with a spring-animated blue tint and progress fill. Tap a part to switch the session to that part; hold it to include/remove it from the session. On desktop its current/total counter moves beside the highest enabled part, so enabling Part 2 or Part 3 visibly carries the session endpoint forward. On mobile the counter sits directly below that same enabled part and glides between segment centers, keeping every segment readable without leaving the count visually detached. Hover and press motion stay restrained. `PracticePartProgressRail` keeps the solid rounded track and growing inner highlight of the continuous practice progress bar. `SelectablePartProgressRail` is available for larger selection cards.
 
 **Props:**
 - `parts: CourseLessonPartProgress[]`
 - `segments: PartSegment[]`
+- `onSelectPart?: (partId: number) => void`
 - `onTogglePart?: (partId: number) => void`
 - `currentIndex?: number`
 - `totalCount?: number`
@@ -318,11 +347,12 @@ Animated gradient background based on active book theme.
 Empty study state. Shows friendly message with book accent colors.
 
 ## ExpandableSearch
-Animated pill search. Small when empty/unfocused, expands on focus. Placeholder doubles as accessible label. Clear action is named 44px utility.
+Animated header search. Collapsed state is a bare semantic icon with a 44px hit target; focus expands it into a quiet pill. Placeholder doubles as the input label.
 
 **Props:**
 - `value`, `onChange`
 - `placeholder?`
+- `label?` names the open/clear icon actions
 - `isExpanded?`, `onExpandedChange?`
 - `className?`
 
@@ -420,7 +450,7 @@ Renders mixed English/Chinese teaching copy. Longest lesson-token match wins; Ch
 Legacy tactile icon control. New nav/header/audio/settings utilities use `IconActionButton`.
 
 ## LayoutShell
-Main app layout shell. Its full-viewport canvas extends behind a borderless floating navigation rail inset on all sides; desktop content receives a matching safety offset without clipping the background. The rail is permanent on desktop/wide and becomes an inset, closable drawer on mobile. The mobile Books route intentionally omits `MainHeader`; its course title owns the page header while a quiet floating menu control preserves navigation access.
+Main app layout shell. Its full-viewport canvas extends behind a borderless floating navigation rail inset on all sides; desktop content and workspace-bounded overlays follow the rail's animated live width. The desktop rail is always visible and non-hideable on Books home. Dictionary, Library, and Profile can hide it and leave only a bare semantic sidebar icon for restoration. On mobile it remains an inset, closable drawer. The mobile Books route intentionally omits `MainHeader`; its course title owns the page header while a quiet floating menu control preserves navigation access.
 
 ## LessonComplete
 Scroll-safe, reduced-motion-aware end-of-session summary. Shows available XP,
@@ -448,7 +478,7 @@ Full-screen loading with animated logo/progress.
 Wrapper for Lottie animations.
 
 ## MainHeader
-Compact mobile global header for top-level screens. Hidden on desktop.
+Compact borderless mobile header for top-level screens. Hidden on desktop. It keeps a literal page title between the menu control and at most one icon-only contextual action. Dictionary keeps its title; Library intentionally uses menu + bare expandable search because its folder panel already owns page identity.
 
 ## PlayfulNavIcon
 Flat SVG nav/feature illustration loader. Current Adventure Time assets temporary; replace with licensed/original art before launch.
@@ -458,7 +488,7 @@ Flat SVG nav/feature illustration loader. Current Adventure Time assets temporar
 - Standard image attrs, incl `className`
 
 ## PracticeHeader
-Expandable floating "Session Island" for practice/activity screens. It is centered, inset, rounded, bottom-edged, and capped-width on both mobile and desktop. The controls panel expands inside the same island from the quiet chevron and closes during Flow. Memory hooks are intentionally not exposed in the progress header.
+Floating "Session Island" for practice/activity screens. Its close, progress, and count stay centered with a `max-w-4xl` cap. The top-right chevron toggles a right-aligned `DropdownMenu` (240px) holding Shuffle / Flow / Restart / Study settings; entering Flow auto-closes the menu. Memory hooks are intentionally not exposed in the progress header.
 
 **Props:**
 - `maxWidth`
@@ -471,17 +501,16 @@ Expandable floating "Session Island" for practice/activity screens. It is center
 - `onRestartClick`
 - `settings`
 
-## PracticeControlPanel
-Compact toolbar inside `PracticeHeader`. Shuffle/Flow labels show state; Settings/Restart icon-only. Semantic colors. Shuffle reorders full round and returns card one. Restart confirms inline.
+## DropdownMenu
+Reusable dropdown/popover menu with menu semantics, keyboard navigation (Tab/Enter/Space/Escape/arrows), outside-click + Escape dismissal, and viewport-safe right alignment. White surface, `rounded-[22px]`, subtle 2px gray bottom edge for tactile depth — no outline, no blur shadow. Trigger via `renderTrigger` render prop (gets `aria-expanded`/`aria-haspopup`/`aria-controls`/`onClick`/`ref`).
 
 **Props:**
-- `isShuffled?: boolean`
-- `flowStatus?: 'idle' | 'playing' | 'paused' | 'finished'`
-- `onToggleShuffle?: () => void`
-- `onToggleFlow?: () => void`
-- `onOpenSettings: () => void`
-- `onRestart?: () => void`
+- `label`, `open`, `onOpenChange`
+- `renderTrigger`
+- `align?: 'start' | 'end'`, `gapClassName?` (default `mt-3`), `widthClassName?` (default `w-60`)
 - Standard HTML div attrs, incl `className`
+
+`DropdownMenuItem`: 52px menu row with icon + label; transparent default, light gray-blue hover, 2px press-down, pale-blue fill for `active` mode item.
 
 ## PracticeSettingsScreen
 Full-window practice preferences: Pace, Answers, Audio, Session tabs. Pace presets Comfortable/Balanced/Sprint + rhythm control + fine timing. Answers controls listening auto-check and auto-next. Quiz answers submit directly; auto-next hides the feedback overlay while advancing. Audio controls speed/timing. Session controls mistake recycling, character format, difficulty/reveals. Auto-next pauses while settings/mnemonics/breakdowns open.
@@ -562,15 +591,16 @@ Screen content wrapper with consistent padding, max-width, scroll behavior.
 Skeleton loader for activity content. It assumes the shared practice header is already mounted, mirrors each activity's current geometry, uses semantic tokens and reduced-motion-safe pulse animation, and avoids duplicate header chrome.
 
 ## SideNav
-Floating navigation rail for Books, Dictionary, Library, Profile, and Settings. The rail has no shadow or side outline and uses one 6px neutral bottom edge for restrained 3D separation. It retains the branded illustration family; the active row uses a quiet neutral surface, book-colored text, and a 4px book-colored bottom edge.
+Floating navigation rail for Books, Dictionary, Library, Profile, and Settings. The rail has no shadow or side outline and uses one 6px neutral bottom edge for restrained 3D separation. It retains the branded illustration family; the active row uses a quiet neutral surface, book-colored text, and a 4px book-colored bottom edge. A quiet semantic sidebar control hides the rail.
 
 **Props:**
 - `activeTab`, `activeActivity`
 - `onTabChange`, `onSettingsClick`
+- `onHide?`
 - `accentClass?`, `buttonEdgeClass?`
 
 ## SearchBar3D
-Large tactile search form with built-in submit. Used for dictionary homepage/prominent search.
+Reusable search form with built-in submit. Use `default` where a tactile outline is intentional and `flat` for quiet top-level workspaces such as Dictionary and Library.
 
 **Props:**
 - `initialValue?: string`
@@ -579,6 +609,7 @@ Large tactile search form with built-in submit. Used for dictionary homepage/pro
 - `placeholder?: string`
 - `submitLabel?: string`
 - `showSubmit?: boolean`
+- `variant?: 'default' | 'flat'`
 - `onSubmit: (value: string) => void`
 - Standard HTML form attrs, incl `className`
 

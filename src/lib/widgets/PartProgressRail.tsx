@@ -1,8 +1,9 @@
-import type { ButtonHTMLAttributes } from 'react';
-import { motion } from 'motion/react';
+import { Fragment, useId, type ButtonHTMLAttributes } from 'react';
+import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'motion/react';
 import type { CourseLessonPartProgress, PartSegment } from '../../types/models';
 import { cn } from '../../utils/cn';
 import { visibleProgressWidth } from '../../utils/progress';
+import { useLongPress } from '../../hooks/useLongPress';
 
 interface SelectablePartProgressRailProps {
   parts: CourseLessonPartProgress[];
@@ -21,9 +22,11 @@ interface PracticePartProgressRailProps {
 
 interface StudyPartProgressRailProps {
   parts: CourseLessonPartProgress[];
+  onSelectPart: (partId: number) => void;
   onTogglePart: (partId: number) => void;
   segments: PartSegment[];
   currentIndex: number;
+  totalCount: number;
   disabled?: boolean;
   density?: 'default' | 'compact';
   className?: string;
@@ -41,6 +44,18 @@ const PROGRESS_SPRING = {
   damping: 32,
   mass: 0.7,
 };
+
+const INTERACTION_SPRING = {
+  type: 'spring' as const,
+  stiffness: 420,
+  damping: 28,
+  mass: 0.55,
+};
+
+type RailMotionTransition =
+  | typeof INTERACTION_SPRING
+  | typeof PROGRESS_SPRING
+  | { duration: number };
 
 function PartButton({
   selected,
@@ -151,7 +166,7 @@ export function PracticePartProgressRail({
           <div
             key={`${segment.partId}-${segment.startIndex}`}
             style={{ flex: flexWeight }}
-            className="relative h-5 w-full min-w-0 overflow-hidden rounded-full bg-ui-divider"
+            className="relative h-5 w-full min-w-0 overflow-hidden rounded-full bg-ui-border"
             title={`${segment.label}: ${segment.cardCount} cards`}
           >
             <motion.div
@@ -171,14 +186,107 @@ export function PracticePartProgressRail({
   );
 }
 
+interface StudyPartButtonProps {
+  partId: number;
+  cardCount: number;
+  progressPercent: number;
+  flexWeight: number;
+  isSelected: boolean;
+  disabled: boolean;
+  reduceMotion: boolean;
+  interactionTransition: RailMotionTransition;
+  progressTransition: RailMotionTransition;
+  onSelectPart: (partId: number) => void;
+  onTogglePart: (partId: number) => void;
+}
+
+function StudyPartButton({
+  partId,
+  cardCount,
+  progressPercent,
+  flexWeight,
+  isSelected,
+  disabled,
+  reduceMotion,
+  interactionTransition,
+  progressTransition,
+  onSelectPart,
+  onTogglePart,
+}: StudyPartButtonProps) {
+  const pressHandlers = useLongPress<HTMLButtonElement>({
+    onTap: () => onSelectPart(partId),
+    onLongPress: () => onTogglePart(partId),
+    disabled,
+  });
+
+  return (
+    <motion.button
+      layout
+      type="button"
+      disabled={disabled}
+      {...pressHandlers}
+      aria-pressed={isSelected}
+      aria-label={`Part ${partId}, ${cardCount} cards${isSelected ? ', active' : ''}. Tap to switch; hold to include or remove.`}
+      title={`Part ${partId} · tap to switch · hold to include/remove`}
+      style={{ flex: flexWeight }}
+      whileHover={disabled || reduceMotion ? undefined : { y: -2, scale: 1.015 }}
+      whileTap={disabled || reduceMotion ? undefined : { y: 0, scale: 0.96 }}
+      transition={interactionTransition}
+      className={cn(
+        'group relative h-5 w-full min-w-0 cursor-pointer select-none overflow-hidden rounded-full outline-none transition-colors duration-300 focus-visible:ring-4 focus-visible:ring-brand-primary/25 disabled:cursor-not-allowed disabled:opacity-50',
+        isSelected
+          ? 'bg-ui-border'
+          : 'bg-ui-divider hover:bg-ui-border',
+      )}
+    >
+      <motion.span
+        aria-hidden="true"
+        className="absolute inset-0 origin-left rounded-full bg-brand-primary/15"
+        initial={false}
+        animate={{ opacity: isSelected ? 1 : 0, scaleX: isSelected ? 1 : 0.88 }}
+        transition={interactionTransition}
+      />
+      <AnimatePresence initial={false}>
+        <motion.span
+          key={isSelected ? 'included' : 'excluded'}
+          aria-hidden="true"
+          className="absolute inset-0 origin-center rounded-full bg-brand-primary/20"
+          initial={{ opacity: 0.42, scaleX: 0.78, scaleY: 0.72 }}
+          animate={{ opacity: 0, scaleX: 1, scaleY: 1 }}
+          exit={{ opacity: 0 }}
+          transition={reduceMotion ? { duration: 0 } : { duration: 0.34, ease: [0.32, 0.72, 0, 1] }}
+        />
+      </AnimatePresence>
+      <motion.span
+        aria-hidden="true"
+        className="absolute inset-y-0 left-0 overflow-hidden rounded-full bg-brand-primary"
+        initial={false}
+        animate={{
+          opacity: isSelected ? 1 : 0,
+          width: isSelected ? visibleProgressWidth(progressPercent) : '0%',
+        }}
+        transition={progressTransition}
+      >
+        {progressPercent > 0 && (
+          <span className="pointer-events-none absolute left-2 right-2 top-1 h-1 rounded-full bg-white/30" />
+        )}
+      </motion.span>
+    </motion.button>
+  );
+}
+
 export function StudyPartProgressRail({
   parts,
+  onSelectPart,
   onTogglePart,
   segments,
   currentIndex,
+  totalCount,
   disabled = false,
   className,
 }: StudyPartProgressRailProps) {
+  const railLayoutId = useId();
+  const reduceMotion = useReducedMotion();
   if (parts.length === 0) return null;
 
   const segmentsByPartId = new Map(segments.map((segment) => [segment.partId, segment]));
@@ -191,14 +299,36 @@ export function StudyPartProgressRail({
   });
 
   const totalAllCards = partsWithCounts.reduce((acc, p) => acc + p.cardCount, 0);
+  const lastSelectedIndex = partsWithCounts.reduce(
+    (latest, entry, index) => entry.part.isSelected ? index : latest,
+    0,
+  );
+  const selectedCenterWeight = partsWithCounts.reduce(
+    (weight, entry, index) => (
+      index < lastSelectedIndex
+        ? weight + entry.cardCount
+        : index === lastSelectedIndex
+          ? weight + entry.cardCount / 2
+          : weight
+    ),
+    0,
+  );
+  const mobileCountLeft = totalAllCards > 0
+    ? (selectedCenterWeight / totalAllCards) * 100
+    : ((lastSelectedIndex + 0.5) / partsWithCounts.length) * 100;
+  const interactionTransition = reduceMotion ? { duration: 0 } : INTERACTION_SPRING;
+  const progressTransition = reduceMotion ? { duration: 0 } : PROGRESS_SPRING;
 
   return (
-    <div
-      className={cn('flex w-full gap-2 sm:gap-2.5', className)}
-      role="group"
-      aria-label="Choose study parts"
-    >
-      {partsWithCounts.map(({ part, segment, cardCount, startIndex }) => {
+    <LayoutGroup id={railLayoutId}>
+      <motion.div
+        layout
+        transition={interactionTransition}
+        className={cn('relative flex w-full items-start gap-2 pb-5 sm:items-center sm:gap-2.5 sm:pb-0', className)}
+        role="group"
+        aria-label="Choose study parts"
+      >
+      {partsWithCounts.map(({ part, segment, cardCount, startIndex }, partIndex) => {
         const flexWeight = totalAllCards > 0 ? cardCount : 1;
         const isSelected = part.isSelected;
 
@@ -207,38 +337,49 @@ export function StudyPartProgressRail({
           : 0;
 
         return (
-          <button
-            key={part.id}
-            type="button"
-            disabled={disabled}
-            onClick={() => onTogglePart(part.id)}
-            aria-pressed={isSelected}
-            aria-label={`Part ${part.id}, ${cardCount} cards${isSelected ? ', active' : ''}`}
-            title={`Part ${part.id} · ${cardCount} cards`}
-            style={{ flex: flexWeight }}
-            className={cn(
-              'group relative h-5 w-full min-w-0 cursor-pointer select-none overflow-hidden rounded-full border-2 border-transparent outline-none transition-[transform,background-color] duration-200 hover:scale-[1.02] focus-visible:ring-4 focus-visible:ring-brand-primary/25 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50',
-              isSelected
-                ? 'bg-ui-divider'
-                : 'bg-ui-hover hover:bg-ui-divider/70',
-            )}
-          >
-            {isSelected && (
+          <Fragment key={part.id}>
+            <StudyPartButton
+              partId={part.id}
+              cardCount={cardCount}
+              progressPercent={progressPercent}
+              flexWeight={flexWeight}
+              isSelected={isSelected}
+              disabled={disabled}
+              reduceMotion={reduceMotion}
+              interactionTransition={interactionTransition}
+              progressTransition={progressTransition}
+              onSelectPart={onSelectPart}
+              onTogglePart={onTogglePart}
+            />
+
+            {partIndex === lastSelectedIndex && totalCount > 0 && (
               <motion.span
-                aria-hidden="true"
-                className="absolute inset-y-0 left-0 overflow-hidden rounded-full bg-brand-primary"
-                initial={false}
-                animate={{ width: visibleProgressWidth(progressPercent) }}
-                transition={PROGRESS_SPRING}
+                layout
+                layoutId="study-progress-count"
+                initial={{ opacity: 0, scale: 0.82 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={interactionTransition}
+                aria-live="polite"
+                className="hidden min-w-[54px] shrink-0 whitespace-nowrap text-center text-sm font-extrabold tabular-nums text-ui-muted sm:inline-flex sm:justify-center"
               >
-                {progressPercent > 0 && (
-                  <span className="pointer-events-none absolute left-2 right-2 top-1 h-1 rounded-full bg-white/30" />
-                )}
+                {Math.min(currentIndex + 1, totalCount)} / {totalCount}
               </motion.span>
             )}
-          </button>
+          </Fragment>
         );
       })}
-    </div>
+      {totalCount > 0 && (
+        <motion.span
+          initial={false}
+          animate={{ left: `calc(${mobileCountLeft}% - 27px)` }}
+          transition={interactionTransition}
+          aria-live="polite"
+          className="absolute top-7 w-[54px] whitespace-nowrap text-center text-[11px] font-extrabold tabular-nums text-ui-muted sm:hidden"
+        >
+          {Math.min(currentIndex + 1, totalCount)} / {totalCount}
+        </motion.span>
+      )}
+      </motion.div>
+    </LayoutGroup>
   );
 }

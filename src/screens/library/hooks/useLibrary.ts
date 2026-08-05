@@ -36,20 +36,36 @@ export function useLibrary() {
     setDictionaryWord, 
     libraryActiveFolder, 
     setLibraryActiveFolder, 
+    librarySearchQuery: searchQuery,
+    setLibrarySearchQuery: setSearchQuery,
     customFolders, 
     addCustomFolder,
     deleteCustomFolder,
     localFlashcards,
-    deleteLocalFlashcard
+    deleteLocalFlashcard,
+    setLibraryActiveView,
+    libraryActiveView: storeActiveView,
   } = useAppStore();
   
-  const [activeView, setActiveView] = useState<ViewState>('home');
+  const [activeView, setActiveViewLocal] = useState<ViewState>(storeActiveView);
+
+  // Sync local state when the store's view is reset externally (e.g. header back button)
+  useEffect(() => {
+    setActiveViewLocal(storeActiveView);
+  }, [storeActiveView]);
+
+  const setActiveView = (view: ViewState) => {
+    setActiveViewLocal(view);
+    setLibraryActiveView(view);
+  };
+
   const [deleteFolderTarget, setDeleteFolderTarget] = useState<{ id: string; name: string } | null>(null);
   const deletingFoldersRef = useRef<Set<string>>(new Set());
 
   const confirmDeleteFolder = async () => {
     if (!deleteFolderTarget) return;
     const folderId = deleteFolderTarget.id;
+    const folder = customFolders.find(f => f.id === folderId);
     setDeleteFolderTarget(null);
 
     deletingFoldersRef.current.add(folderId);
@@ -60,13 +76,16 @@ export function useLibrary() {
         await flashcardService.deleteFolder(currentUser.id, folderId);
       } catch (err) {
         console.error("Failed to delete folder in Supabase:", err);
+        // Rollback: the server delete failed, so restore the folder locally
+        // to keep UI and cloud state consistent.
+        if (folder) {
+          addCustomFolder(folder.name, folder.color, folder.id);
+        }
       } finally {
         deletingFoldersRef.current.delete(folderId);
       }
     }
   };
-  
-  const [searchQuery, setSearchQuery] = useState('');
   
   const [customFlashcards, setCustomFlashcards] = useState<UserFlashcard[]>([]);
   const [favoriteResults, setFavoriteResults] = useState<DBDictionaryEntry[]>([]);
@@ -239,6 +258,24 @@ export function useLibrary() {
   const activeCollection = allCollections.find(c => c.id === libraryActiveFolder) || allCollections[0];
   const items = libraryActiveFolder === 'starred' ? filteredStarred : filteredCustom;
 
+  const recentItems = useMemo(() => {
+    const custom = customFlashcards.map(c => ({
+      id: c.id,
+      hanzi: c.traditional || c.simplified,
+      pinyin: c.pinyin || '',
+      meaning: c.translation || '',
+      type: 'custom' as const,
+    }));
+    const starred = favoriteResults.map(f => ({
+      id: f.traditional,
+      hanzi: f.traditional || f.simplified,
+      pinyin: Array.isArray(f.pinyin) ? f.pinyin.join(' ') : f.pinyin || '',
+      meaning: f.definitions ? Object.values(f.definitions)[0] || '' : '',
+      type: 'starred' as const,
+    }));
+    return [...custom, ...starred].slice(0, 3);
+  }, [customFlashcards, favoriteResults]);
+
   return {
     favorites,
     toggleFavorite,
@@ -264,6 +301,7 @@ export function useLibrary() {
     confirmDelete,
     activeCollection,
     items,
+    recentItems,
     activeView,
     setActiveView
   };

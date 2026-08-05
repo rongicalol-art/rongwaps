@@ -21,3 +21,6 @@ scripts/mnemonics_backup*.json
 tmp/
 output/
 *.original.md
+
+# One-off debug keys (never commit)
+.batch_key_env

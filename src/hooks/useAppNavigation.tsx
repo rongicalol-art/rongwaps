@@ -1,5 +1,4 @@
 import { useCallback, useMemo } from 'react';
-import { PiGearBold, PiUserFill } from 'react-icons/pi';
 import { useAppStore } from '../store/useAppStore';
 import { useAuth } from './useAuth';
 import {
@@ -9,6 +8,7 @@ import {
 } from '../utils/lessonPartSelection';
 import type { ActivityType } from '../types/models';
 import type { User } from '@supabase/supabase-js';
+import { AppIcon, IconActionButton } from '../lib/widgets';
 
 export type TabType = 'path' | 'search' | 'library' | 'profile';
 export type { ActivityType } from '../types/models';
@@ -18,29 +18,26 @@ function ProfileAvatar({ user }: { user: User | null }) {
   const avatarUrl = typeof avatarValue === 'string' ? avatarValue : null;
   if (avatarUrl) {
     return (
-    <div className="rounded-full flex items-center justify-center shrink-0 transition-all duration-300 h-10 w-10 overflow-hidden bg-white border-b-2 border-ui-border active:border-b-0 active:translate-y-[2px] text-ui-ink">
+    <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-ui-surface text-ui-ink transition-opacity hover:opacity-80">
         <img src={avatarUrl} alt="Profile" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
       </div>
     );
   }
   return (
-    <div className="rounded-full flex items-center justify-center shrink-0 transition-all duration-300 h-10 w-10 bg-ui-canvas border-b-2 border-ui-border text-ui-muted hover:text-brand-primary">
-      <PiUserFill size={22} />
+    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-ui-surface text-ui-muted transition-colors hover:text-brand-primary">
+      <AppIcon name="profile" size={22} />
     </div>
   );
 }
 
 function SettingsButton() {
   return (
-    <button
-      type="button"
+    <IconActionButton
       onClick={() => useAppStore.getState().setIsSettingsOpen(true)}
-      className="w-11 h-11 flex items-center justify-center rounded-2xl bg-white border-b-4 border-ui-border text-ui-muted hover:text-ui-ink hover:border-brand-primary hover:bg-ui-canvas active:border-b-0 active:translate-y-1 transition-all cursor-pointer"
-      title="Settings"
-      aria-label="Open settings"
-    >
-      <PiGearBold size={22} />
-    </button>
+      label="Open settings"
+      size="lg"
+      icon={<AppIcon name="appSettings" size={22} />}
+    />
   );
 }
 
@@ -52,7 +49,13 @@ export function useAppNavigation() {
     activeBookId,
     selectedLessons: legacySelectedLessons, setSelectedLessons,
     selectedLessonParts, setSelectedLessonParts,
-    selectedBooks, setSelectedBooks
+    selectedBooks, setSelectedBooks,
+    libraryActiveView,
+    libraryActiveFolder,
+    customFolders,
+    setLibraryActiveView,
+    setLibraryActiveFolder,
+    setLibrarySearchQuery,
   } = useAppStore();
   const { currentUser } = useAuth();
 
@@ -76,6 +79,7 @@ export function useAppNavigation() {
   }, []);
 
   const handleSetActiveTab = useCallback((tab: TabType) => {
+    useAppStore.getState().setIsSearchOpen(false);
     _setActiveTab(tab);
   }, [_setActiveTab]);
 
@@ -89,11 +93,43 @@ export function useAppNavigation() {
   }, [clearReviewContext, handleSetActiveActivity, lastActivity]);
 
   const headerProps = useMemo(() => {
+    if (activeTab === 'library' && libraryActiveView === 'folder') {
+      // Resolve the folder title from well-known ids or custom folders
+      let folderTitle = 'Folder';
+      if (libraryActiveFolder === 'starred') folderTitle = 'Starred Words';
+      else if (libraryActiveFolder === 'custom') folderTitle = 'Custom Cards';
+      else {
+        const cf = customFolders.find(f => f.id === libraryActiveFolder);
+        if (cf) folderTitle = cf.name;
+      }
+
+      const handleBack = () => {
+        setLibrarySearchQuery('');
+        setLibraryActiveView('home');
+        setLibraryActiveFolder('all');
+      };
+
+      return {
+        title: folderTitle,
+        leftIcon: null,
+        extraLeftContent: (
+          <button
+            type="button"
+            onClick={handleBack}
+            className="-ml-2 flex min-h-11 min-w-11 items-center justify-center rounded-xl text-ui-muted transition-colors hover:bg-ui-canvas hover:text-ui-ink focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25"
+            aria-label="Back to Library"
+          >
+            <AppIcon name="back" size={22} />
+          </button>
+        ),
+      };
+    }
+
     switch (activeTab) {
       case 'search':
         return {
           title: 'Dictionary',
-          leftIcon: <ProfileAvatar user={currentUser} />,
+          leftIcon: null,
           rightContent: <span />,
         };
       case 'profile':
@@ -104,13 +140,9 @@ export function useAppNavigation() {
         };
       case 'library':
         return {
-          title: 'My Library',
-          leftIcon: <ProfileAvatar user={currentUser} />,
-          showPlayButton: true,
-          onPlayClick: () => {
-            clearReviewContext();
-            handleSetActiveActivity('flashcards-library');
-          },
+          title: 'Library',
+          leftIcon: null,
+          rightContent: <span />,
         };
       case 'path':
       default:
@@ -120,7 +152,7 @@ export function useAppNavigation() {
           rightContent: <span />,
         };
     }
-  }, [activeTab, clearReviewContext, currentUser, handleSetActiveActivity]);
+  }, [activeTab, currentUser, libraryActiveView, libraryActiveFolder, customFolders, setLibraryActiveView, setLibraryActiveFolder, setLibrarySearchQuery]);
 
   const withLegacySelections = useCallback(() => {
     if (Object.keys(selectedLessonParts).length > 0 || legacySelectedLessons.length === 0) {

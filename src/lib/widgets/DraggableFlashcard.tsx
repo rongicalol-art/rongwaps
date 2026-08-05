@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { numberToToneMarks } from '../../utils/pinyin';
 import type { Flashcard } from '../../data/flashcards';
 
@@ -7,6 +7,8 @@ export interface DraggableFlashcardProps {
   card: Flashcard;
   direction: number;
   isFlipped: boolean;
+  canRate?: boolean;
+  onReveal?: () => void;
   setIsFlipped: React.Dispatch<React.SetStateAction<boolean>>;
   setActiveBreakdown: (char: string, index?: number) => void;
   setActiveMemoryHook: (card: Flashcard) => void;
@@ -19,9 +21,9 @@ export interface DraggableFlashcardProps {
 const variants = {
   enter: (direction: number) => {
     return {
-      x: direction > 0 ? 800 : -800,
+      x: direction > 0 ? 64 : -64,
       opacity: 0,
-      scale: 0.9,
+      scale: 0.965,
     };
   },
   center: {
@@ -33,19 +35,22 @@ const variants = {
   exit: (direction: number) => {
     return {
       zIndex: 0,
-      x: direction < 0 ? 800 : -800,
+      x: direction < 0 ? 96 : -96,
       opacity: 0,
-      scale: 0.9,
+      scale: 0.975,
     };
   }
 };
 
 export const DraggableFlashcard = ({
   card, direction, isFlipped,
+  canRate = false,
+  onReveal,
   setActiveBreakdown, triggerSwipeRate, onCardTap,
   showPinyin = true, showTranslation = true,
 }: DraggableFlashcardProps) => {
   const isDraggingRef = React.useRef(false);
+  const reduceMotion = useReducedMotion();
 
   const frontLength = card?.front?.length || 1;
   const getFrontFontSize = (len: number) => {
@@ -73,9 +78,9 @@ export const DraggableFlashcard = ({
       animate="center"
       exit="exit"
       transition={{
-        x: { type: "spring", stiffness: 300, damping: 30 },
-        opacity: { duration: 0.2 },
-        scale: { duration: 0.2 }
+        x: reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 380, damping: 36, mass: 0.82 },
+        opacity: { duration: reduceMotion ? 0 : 0.18, ease: 'easeOut' },
+        scale: reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 38, mass: 0.76 },
       }}
       drag
       dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
@@ -88,7 +93,9 @@ export const DraggableFlashcard = ({
         // Small delay to allow click handler to detect drag vs tap
         setTimeout(() => { isDraggingRef.current = false; }, 50);
 
-        if (info.offset.x < -80) {
+        if (!canRate) {
+          onReveal?.();
+        } else if (info.offset.x < -80) {
           triggerSwipeRate(1);
         } else if (info.offset.x > 80) {
           triggerSwipeRate(3);
@@ -108,7 +115,7 @@ export const DraggableFlashcard = ({
     >
       <motion.div
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ type: 'tween', duration: 0.35, ease: 'easeInOut' }}
+        transition={{ duration: reduceMotion ? 0 : 0.42, ease: [0.32, 0.72, 0, 1] }}
         style={{ transformStyle: 'preserve-3d' }}
         className="w-full relative h-[420px] sm:h-[480px] max-h-[60vh] cursor-pointer"
       >
@@ -117,7 +124,7 @@ export const DraggableFlashcard = ({
           className="absolute inset-0 flex flex-col items-center justify-center rounded-[32px] border-b-4 border-ui-border bg-white p-8"
           style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
         >
-          <div className="flex-1 flex flex-col items-center justify-center w-full mt-8">
+          <div className="flex-1 flex flex-col items-center justify-center w-full mt-8 translate-y-4 sm:translate-y-5">
             <div className="flex flex-row items-center justify-center flex-wrap">
               {Array.from(card.front).map((char, i) => {
                 const isHanzi = /[\u4E00-\u9FFF\u3400-\u4DBF\u2E80-\u2FDF\u{20000}-\u{2A6DF}\u{2A700}-\u{2B73F}\u{2B740}-\u{2B81F}\u{2B820}-\u{2CEAF}]/u.test(char);
@@ -150,9 +157,7 @@ export const DraggableFlashcard = ({
               })}
             </div>
           </div>
-          <div className="mt-4 mb-2 h-12 w-full flex items-end justify-center pointer-events-none">
-            <p className="text-ui-muted text-[15px] font-bold">Tap to reveal the answer</p>
-          </div>
+          <div className="mt-4 mb-2 h-12 w-full pointer-events-none" aria-hidden="true" />
         </motion.div>
 
         {/* Back Side */}
@@ -195,7 +200,7 @@ export const DraggableFlashcard = ({
               </div>
               {showPinyin && (
                 <span className="text-[18px] sm:text-[20px] font-bold text-ui-ink tracking-wide relative after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-16 after:h-[2px] after:bg-ui-border after:rounded-full mt-2">
-                  {numberToToneMarks(card.pinyin)}
+                  {numberToToneMarks(card.pinyin ?? '')}
                 </span>
               )}
             </div>

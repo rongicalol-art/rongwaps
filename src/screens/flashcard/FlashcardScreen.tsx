@@ -67,6 +67,7 @@ export function FlashcardScreen({
   const showTranslation = usePracticePreferencesStore((state) => state.showTranslation);
 
   const feedbackTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const manualRevealAudioRef = useRef(false);
 
   const showFeedback = React.useCallback((level: number) => {
     if (feedbackTimeoutRef.current) clearTimeout(feedbackTimeoutRef.current);
@@ -98,7 +99,6 @@ export function FlashcardScreen({
 
   const {
     direction,
-    navKey,
     triggerSwipeRate,
     triggerKeyboardRate,
     triggerNav,
@@ -114,10 +114,15 @@ export function FlashcardScreen({
   });
 
   useEffect(() => {
-    if (autoPlayAudio && flowStatus === 'idle' && currentCard) {
-      audioService.play(currentCard.audio, pronunciationRate, currentCard.front);
-    }
-  }, [autoPlayAudio, currentCard, flowStatus, pronunciationRate]);
+    if (flowStatus !== 'idle' || !isFlipped || !currentCard) return;
+    if (!autoPlayAudio && !manualRevealAudioRef.current) return;
+    manualRevealAudioRef.current = false;
+    audioService.play(currentCard.audio, pronunciationRate, currentCard.front);
+  }, [autoPlayAudio, currentCard, flowStatus, isFlipped, pronunciationRate]);
+
+  useEffect(() => {
+    manualRevealAudioRef.current = false;
+  }, [currentCard?.id]);
 
   const restartSession = React.useCallback(() => {
     stopFlow();
@@ -186,22 +191,22 @@ export function FlashcardScreen({
         e.preventDefault();
         setIsFlipped((prev: boolean) => {
           const next = !prev;
-          if (next && card) audioService.play(card.audio, pronunciationRate, card.front);
+          if (next && card && !autoPlayAudio) manualRevealAudioRef.current = true;
           return next;
         });
       } else if (e.key === 'm' || e.key === 'M') {
         if (!card) return;
         if (!isFlipped) {
+          if (!autoPlayAudio) manualRevealAudioRef.current = true;
           setIsFlipped(true);
-          audioService.play(card.audio, pronunciationRate, card.front);
         } else {
           triggerKeyboardRate(3, 1);
         }
       } else if (e.key === 'n' || e.key === 'N') {
         if (!card) return;
         if (!isFlipped) {
+          if (!autoPlayAudio) manualRevealAudioRef.current = true;
           setIsFlipped(true);
-          audioService.play(card.audio, pronunciationRate, card.front);
         } else {
           triggerKeyboardRate(1, -1);
         }
@@ -210,9 +215,9 @@ export function FlashcardScreen({
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeBreakdown, activeMemoryHook, isFlipped, pauseFlow, pronunciationRate, triggerNav, triggerKeyboardRate, setIsFlipped]);
+  }, [activeBreakdown, activeMemoryHook, autoPlayAudio, isFlipped, pauseFlow, pronunciationRate, triggerNav, triggerKeyboardRate, setIsFlipped]);
 
-  if (isLoading) return <ScreenSkeleton type="flashcard" />;
+  if (isLoading && cards.length === 0) return <ScreenSkeleton type="flashcard" />;
 
   if (error) {
     return (
@@ -294,10 +299,8 @@ export function FlashcardScreen({
       return;
     }
 
+    if (!isFlipped && currentCard && !autoPlayAudio) manualRevealAudioRef.current = true;
     setIsFlipped(prev => !prev);
-    if (!isFlipped && currentCard) {
-      audioService.play(currentCard.audio, pronunciationRate, currentCard.front);
-    }
   };
 
   return (
@@ -326,15 +329,15 @@ export function FlashcardScreen({
           <div
             className="relative z-10 mx-auto flex h-[420px] max-h-[60vh] w-full max-w-[320px] flex-col items-center justify-center perspective-[2000px] pointer-events-auto sm:h-[480px] sm:max-w-[400px] md:max-w-[460px]"
           >
-            {/* navKey maps directly to the AnimatePresence slide effect.
-                Taps/keyboard bump navKey. Swiping leaves it alone so it stays mounted. */}
-            <AnimatePresence initial={false} custom={direction}>
+            <AnimatePresence mode="popLayout" custom={direction}>
               {currentCard && (
                 <DraggableFlashcard
-                  key={navKey}
+                  key={currentCard.id}
                   card={currentCard}
                   direction={direction}
                   isFlipped={isFlipped}
+                  canRate={isFlipped}
+                  onReveal={() => setIsFlipped(true)}
                   setIsFlipped={setIsFlipped}
                   setActiveBreakdown={setActiveBreakdown}
                   setActiveMemoryHook={setActiveMemoryHook}

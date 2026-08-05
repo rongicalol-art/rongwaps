@@ -1,23 +1,26 @@
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import type { ReactNode } from 'react';
 
 const SLIDE_VARIANTS = {
   initial: (direction: number) => ({
-    x: direction > 0 ? '100%' : '-30%',
-    opacity: direction > 0 ? 1 : 0.4,
-    zIndex: direction > 0 ? 10 : 0,
+    x: direction > 0 ? 28 : -28,
+    opacity: 0,
+    scale: 0.992,
+    zIndex: 10,
   }),
   animate: {
     x: 0,
     opacity: 1,
+    scale: 1,
     zIndex: 5,
-    transition: { type: 'spring' as const, stiffness: 400, damping: 40 },
+    transition: { type: 'spring' as const, stiffness: 380, damping: 38, mass: 0.82 },
   },
   exit: (direction: number) => ({
-    x: direction > 0 ? '-30%' : '100%',
-    opacity: direction > 0 ? 0.4 : 1,
-    zIndex: direction > 0 ? 0 : 10,
-    transition: { type: 'spring' as const, stiffness: 400, damping: 40 },
+    x: direction > 0 ? -22 : 22,
+    opacity: 0,
+    scale: 0.992,
+    zIndex: 0,
+    transition: { type: 'spring' as const, stiffness: 380, damping: 38, mass: 0.82 },
   }),
 };
 
@@ -40,16 +43,18 @@ export function AnimatedActivityScreen({
   direction,
   useSlide = true,
 }: AnimatedActivityScreenProps) {
+  const reduceMotion = useReducedMotion();
+
   return (
     <motion.div
       key={activityKey}
-      custom={useSlide ? direction : undefined}
-      variants={useSlide ? SLIDE_VARIANTS : FADE_VARIANTS}
+      custom={useSlide && !reduceMotion ? direction : undefined}
+      variants={useSlide && !reduceMotion ? SLIDE_VARIANTS : FADE_VARIANTS}
       initial="initial"
       animate="animate"
       exit="exit"
-      transition={useSlide ? undefined : { duration: 0.2 }}
-      className="absolute inset-0 h-full w-full"
+      transition={useSlide && !reduceMotion ? undefined : { duration: reduceMotion ? 0 : 0.2 }}
+      className="absolute inset-0 h-full w-full will-change-[transform,opacity]"
     >
       {children}
     </motion.div>

@@ -2,17 +2,87 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#f2f3f4" />
+
+    <!-- Primary Meta Tags -->
+    <title>RongWaps — Playful Chinese (TOCFL/HSK) Study Tool</title>
+    <meta name="title" content="RongWaps — Playful Chinese (TOCFL/HSK) Study Tool" />
+    <meta
+      name="description"
+      content="A playful, interactive Chinese learning app with spaced repetition (SRS), character breakdowns, AI mnemonics, flashcards, writing, listening, and quiz modes. Learn Mandarin the fun way."
+    />
+    <meta name="keywords" content="learn chinese, mandarin, HSK, TOCFL, flashcards, spaced repetition, chinese characters, pinyin, study tool" />
+    <meta name="author" content="RongWaps" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="RongWaps — Playful Chinese (TOCFL/HSK) Study Tool" />
+    <meta
+      property="og:description"
+      content="A playful, interactive Chinese learning app with spaced repetition (SRS), character breakdowns, AI mnemonics, flashcards, writing, listening, and quiz modes. Learn Mandarin the fun way."
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="RongWaps — Playful Chinese (TOCFL/HSK) Study Tool" />
+    <meta
+      name="twitter:description"
+      content="A playful, interactive Chinese learning app with spaced repetition (SRS), character breakdowns, AI mnemonics, flashcards, writing, listening, and quiz modes. Learn Mandarin the fun way."
+    />
+
+    <!--
+      NOTE: canonical / og:url / og:image / twitter:image are intentionally omitted until a
+      production domain exists. Social scrapers require absolute URLs; incorrect ones hurt
+      ranking more than their absence.
+    -->
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "RongWaps",
+        "url": "/",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "description": "A playful, interactive Chinese learning app with spaced repetition (SRS), character breakdowns, AI mnemonics, flashcards, writing, listening, and quiz modes.",
+        "inLanguage": ["en", "zh"],
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Spaced Repetition System",
+          "Character Breakdowns",
+          "AI Mnemonics",
+          "Flashcards",
+          "Writing Practice",
+          "Listening Practice",
+          "Quiz Mode"
+        ]
+      }
+    </script>
+
     <link rel="manifest" href="/manifest.json" />
-    <title>Ron's Flashcards</title>
+
+    <!-- Fonts: preconnect + non-blocking stylesheet (replaces render-blocking CSS @import) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Serif+TC:wght@400;500;600;700;900&display=swap"
+    />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
+    <link rel="apple-touch-icon" href="/icons/icon-180x180.png" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

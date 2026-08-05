@@ -10,10 +10,6 @@ export function useFlashcardSwipe(
 ) {
   // direction: 1 for next/right, -1 for prev/left
   const [direction, setDirection] = useState<number>(1);
-  // navKey only increments for tap/keyboard navigation, triggering AnimatePresence.
-  // Swipes don't increment this, so the card stays mounted and springs back naturally.
-  const [navKey, setNavKey] = useState<number>(0);
-
   // Refs to avoid stale closures
   const handleNextRef = useRef(handleNext);
   const handleNavigateRef = useRef(handleNavigate);
@@ -30,11 +26,12 @@ export function useFlashcardSwipe(
     setIsRatingPending(false);
   }, []);
 
-  /** Rate card and advance via swipe. Does NOT bump navKey, card springs back. */
+  /** Rate a card after its gesture has begun settling. */
   const triggerSwipeRate = useCallback((level: number) => {
     if (ratePendingRef.current) return;
     ratePendingRef.current = true;
     setIsRatingPending(true);
+    setDirection(level <= 2 ? 1 : -1);
     // Defer state update slightly so the drag gesture and snap-back can finish/begin cleanly
     swipeTimeoutRef.current = window.setTimeout(() => {
       handleNextRef.current(level);
@@ -47,26 +44,20 @@ export function useFlashcardSwipe(
     if (navPendingRef.current || ratePendingRef.current) return;
     navPendingRef.current = true;
     setDirection(dir);
-    setNavKey(prev => prev + 1);
+    handleNavigateRef.current(dir);
     window.requestAnimationFrame(() => {
-      handleNavigateRef.current(dir);
-      window.requestAnimationFrame(() => {
-        navPendingRef.current = false;
-      });
+      navPendingRef.current = false;
     });
   }, []);
 
-  /** Rate card via keyboard 'm' or 'n'. Bumps navKey so it slides out. */
+  /** Rate a card via keyboard with an explicit travel direction. */
   const triggerKeyboardRate = useCallback((level: number, animDir: number) => {
     if (ratePendingRef.current) return;
     ratePendingRef.current = true;
     setIsRatingPending(true);
     setDirection(animDir);
-    setNavKey(prev => prev + 1);
-    window.requestAnimationFrame(() => {
-      handleNextRef.current(level);
-      unlockTimeoutRef.current = window.setTimeout(unlockRating, 260);
-    });
+    handleNextRef.current(level);
+    unlockTimeoutRef.current = window.setTimeout(unlockRating, 260);
   }, [unlockRating]);
 
   useEffect(() => () => {
@@ -76,7 +67,6 @@ export function useFlashcardSwipe(
 
   return {
     direction,
-    navKey,
     isRatingPending,
     triggerSwipeRate,
     triggerKeyboardRate,

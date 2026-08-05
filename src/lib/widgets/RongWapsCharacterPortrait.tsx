@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+import React from 'react';
 import { cn } from '../../utils/cn';
 
 export type RongWapsCharacter =
@@ -37,11 +37,11 @@ const CHARACTER_CROPS: Record<RongWapsCharacter, CharacterCrop> = {
 };
 
 const SHEETS = {
-  main: new URL('../../assets/images/characters/rongwaps-main-cast-app.jpg', import.meta.url).href,
-  supporting: new URL('../../assets/images/characters/rongwaps-supporting-cast-app.jpg', import.meta.url).href,
+  main: new URL('../../assets/images/characters/rongwaps-main-cast-app.webp', import.meta.url).href,
+  supporting: new URL('../../assets/images/characters/rongwaps-supporting-cast-app.webp', import.meta.url).href,
 } as const;
 
-export interface RongWapsCharacterPortraitProps extends HTMLAttributes<HTMLDivElement> {
+export interface RongWapsCharacterPortraitProps extends React.HTMLAttributes<HTMLDivElement> {
   character: RongWapsCharacter;
   label: string;
 }
@@ -66,6 +66,8 @@ export function RongWapsCharacterPortrait({
         alt=""
         aria-hidden="true"
         draggable={false}
+        loading="lazy"
+        decoding="async"
         className="pointer-events-none absolute max-w-none select-none"
         style={{
           width: '306%',

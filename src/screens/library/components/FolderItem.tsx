@@ -4,6 +4,7 @@ import { cn } from '../../../utils/cn';
 interface FolderItemProps {
   id: string;
   title: string;
+  count?: number;
   className?: string;
   icon?: React.ReactNode;
   accentBg?: string;
@@ -74,7 +75,7 @@ export function FolderItem({
       if (onDeleteRequest) {
         onDeleteRequest();
       }
-    }, 700); // 700ms long press threshold
+    }, 700);
   };
 
   const endPress = () => {
@@ -124,11 +125,11 @@ export function FolderItem({
       onMouseDown={startPress}
       onMouseUp={endPress}
       className={cn(
-        'group flex shrink-0 cursor-pointer select-none flex-col items-center gap-3 pt-4 pb-2 outline-none',
+        'group flex shrink-0 cursor-pointer select-none flex-col items-center gap-2 rounded-[22px] px-2 py-3 outline-none transition-colors hover:bg-ui-surface focus-visible:ring-4 focus-visible:ring-brand-primary/20',
         className,
       )}
     >
-      <div className="relative aspect-[25/21] w-full max-w-[142px] transition-all duration-150 group-active:translate-y-1 group-active:scale-95 sm:max-w-[158px]">
+      <div className="relative aspect-[25/21] w-full max-w-[132px] transition-transform duration-200 group-hover:-translate-y-1 group-active:translate-y-0 group-active:scale-95 sm:max-w-[146px]">
         <FolderSvg
           colorFront={frontColor}
           colorBack={backColor}
@@ -136,7 +137,7 @@ export function FolderItem({
           isStarred={id === 'starred'}
         />
       </div>
-      <span className="mt-2 block w-full max-w-[150px] line-clamp-2 px-1 text-center text-[14px] font-black tracking-wide text-ui-ink-strong sm:max-w-[158px]">
+      <span className="block w-full max-w-[150px] line-clamp-2 px-1 text-center text-[14px] font-black text-ui-ink-strong sm:max-w-[158px]">
         {title}
       </span>
     </button>

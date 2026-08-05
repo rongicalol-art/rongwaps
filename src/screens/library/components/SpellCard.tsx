@@ -1,9 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { PiBookmarkSimpleFill, PiTrashBold } from 'react-icons/pi';
 import { DBDictionaryEntry } from '../../../types/database';
 import { UserFlashcard } from '../../../types/models';
-import { Card3D } from '../../../lib/widgets';
+import { AppIcon } from '../../../lib/widgets';
 
 interface SpellCardProps {
   item: DBDictionaryEntry | UserFlashcard;
@@ -44,48 +43,40 @@ export const SpellCard: React.FC<SpellCardProps> = ({ item, activeTab, onAction,
       onClick={onClick}
       className="cursor-pointer select-none group break-inside-avoid mb-3"
     >
-      <Card3D
-        edgeColor="border-ui-border"
-        depth="md"
-        className="relative overflow-hidden hover:border-[#1CB0F6] active:border-b-[2px] active:translate-y-[4px] transition-all duration-150 bg-white shadow-none"
-      >
-        {/* Floating Action Button */}
+      <article className="relative overflow-hidden rounded-[24px] bg-ui-surface transition-[transform,background-color] duration-200 hover:-translate-y-1 hover:bg-white active:translate-y-0">
         <button
           onClick={(e) => { e.stopPropagation(); onAction(e); }}
+          aria-label={isStarred ? `Remove ${traditional} from saved words` : `Delete ${traditional}`}
           className={`absolute top-2 right-2 w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all active:scale-90 z-10 ${
             isStarred
               ? 'text-[#FFB020] hover:bg-[#FFB020]/10'
               : 'text-ui-muted hover:bg-[#FF4B4B]/10 hover:text-[#FF4B4B]'
           }`}
         >
-          {isStarred ? <PiBookmarkSimpleFill size={18} /> : <PiTrashBold size={16} />}
+          <AppIcon name={isStarred ? 'bookmarkFilled' : 'trash'} size={isStarred ? 18 : 16} />
         </button>
 
-        {/* Content — naturally sized by its own content */}
         <div className="flex flex-col items-center px-4 pt-6 pb-4">
-          {/* Character */}
           <span
-            className="font-chinese font-bold text-ui-ink-strong leading-none mb-3 group-hover:text-[#1CB0F6] transition-colors"
+            className="mb-3 font-chinese font-bold leading-none text-ui-ink-strong transition-colors group-hover:text-brand-primary"
             style={{ fontSize: traditional.length > 2 ? '30px' : traditional.length > 1 ? '38px' : '48px' }}
           >
             {traditional}
           </span>
 
-          {/* Pinyin */}
           {pinyinStr && (
-            <span className="text-[11px] font-extrabold tracking-wider uppercase text-ui-muted text-center mb-1">
+            <span className="mb-1 text-center text-[11px] font-extrabold text-ui-muted">
               {pinyinStr}
             </span>
           )}
 
-          {/* Definition — no clamp, full text */}
           {definition && (
             <span className="text-[13px] font-semibold text-ui-muted-strong leading-snug text-center">
               {definition}
             </span>
           )}
         </div>
-      </Card3D>
+      </article>
     </motion.div>
   );
 };

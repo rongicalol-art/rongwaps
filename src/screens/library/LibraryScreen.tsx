@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
-import { PiPlusBold, PiBookmarkSimpleFill, PiSparkleFill, PiCaretLeftBold } from 'react-icons/pi';
+import { cn } from '../../utils/cn';
+import { ActionButton, AppIcon, StickyWorkspaceHeader, type StickyWorkspaceHeaderMenuToggle } from '../../lib/widgets';
 import { useLibrary } from './hooks/useLibrary';
 import { FolderModal } from './FolderModal';
 import { DeleteCardModal } from './DeleteCardModal';
@@ -7,60 +8,56 @@ import { DeleteFolderModal } from './DeleteFolderModal';
 import { LibrarySkeleton } from './components/LibrarySkeleton';
 import { SpellCard } from './components/SpellCard';
 import { LibraryHomeView } from './components/LibraryHomeView';
-import { SearchBar3D, Soft3DButton } from '../../lib/widgets';
-import { cn } from '../../utils/cn';
 import type { DBDictionaryEntry } from '../../types/database';
 import type { UserFlashcard } from '../../types/models';
 
 interface LibraryScreenProps {
   onAddCard?: () => void;
   onPlayFlashcards?: () => void;
+  /** Mobile hamburger shown overlaid left in the sticky header (Library home). */
+  menuToggle?: StickyWorkspaceHeaderMenuToggle;
 }
 
-// Clean Duo-style empty state
 function EmptyState({ onAddCard, isStarred }: { onAddCard?: () => void; isStarred: boolean }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-      className="flex flex-col items-center justify-center py-20 px-6"
+      className="flex flex-col items-center justify-center px-6 py-16"
     >
-      {/* Big friendly icon */}
-      <motion.div
-        animate={{ y: [0, -6, 0] }}
-        transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut' }}
-        className={`w-24 h-24 rounded-full flex items-center justify-center mb-6 ${
+      <div
+        className={`mb-5 flex h-20 w-20 items-center justify-center rounded-full ${
           isStarred ? 'bg-[#FFF3D0]' : 'bg-[#E5F7FF]'
         }`}
       >
         {isStarred ? (
-          <PiBookmarkSimpleFill size={48} className="text-[#FFB020]" />
+          <AppIcon name="bookmarkFilled" size={38} className="text-[#FFB020]" />
         ) : (
-          <PiSparkleFill size={48} className="text-[#1CB0F6]" />
+          <AppIcon name="sparkles" size={38} className="text-brand-primary" />
         )}
-      </motion.div>
+      </div>
 
-      <h3 className="font-black text-ui-ink-strong text-[20px] mb-2 text-center">
-        {isStarred ? 'No starred words yet!' : 'Nothing here yet!'}
+      <h3 className="mb-2 text-center text-[20px] font-black text-ui-ink-strong">
+        {isStarred ? 'No saved words' : 'No cards yet'}
       </h3>
-      <p className="text-[14px] font-bold text-ui-muted text-center leading-relaxed max-w-[260px] mb-6">
+      <p className="mb-6 max-w-[250px] text-center text-[14px] font-bold leading-relaxed text-ui-muted">
         {isStarred
-          ? 'Tap the star on words in the dictionary to save them here.'
-          : 'Create your first flashcard to start collecting!'}
+          ? 'Save words from Dictionary.'
+          : 'Create your first flashcard.'}
       </p>
 
       {!isStarred && onAddCard && (
-        <Soft3DButton variant="primary" onClick={onAddCard} className="w-auto px-8">
-          <PiPlusBold size={18} />
-          Create Card
-        </Soft3DButton>
+        <ActionButton variant="primary" onClick={onAddCard} className="w-auto px-7">
+          <AppIcon name="add" size={18} />
+          Add card
+        </ActionButton>
       )}
     </motion.div>
   );
 }
 
-export function LibraryScreen({ onAddCard, onPlayFlashcards }: LibraryScreenProps) {
+export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: LibraryScreenProps) {
   const {
     toggleFavorite,
     setDictionaryWord,
@@ -85,6 +82,7 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards }: LibraryScreenProp
     confirmDelete,
     activeCollection,
     items,
+    recentItems,
     activeView,
     setActiveView,
   } = useLibrary();
@@ -92,17 +90,31 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards }: LibraryScreenProp
   const isStarred = libraryActiveFolder === 'starred';
 
   return (
-    <div className="flex-1 flex flex-col w-full text-ui-ink h-full overflow-y-auto relative bg-ui-canvas">
+    <div className="flex-1 flex w-full flex-col text-ui-ink relative bg-ui-canvas">
+      <StickyWorkspaceHeader
+        title={activeView === 'folder' ? (activeCollection.title ?? 'Folder') : 'Library'}
+        align="left"
+        menuToggle={activeView === 'home' ? menuToggle : undefined}
+        leftSlot={activeView === 'folder' ? activeCollection.icon : undefined}
+        onBack={activeView === 'folder' ? () => { setSearchQuery(''); setActiveView('home'); } : undefined}
+        backLabel="Back to Library"
+        searchValue={searchQuery}
+        onSearchChange={setSearchQuery}
+        searchPlaceholder={activeView === 'folder' ? `Search ${activeCollection.title ?? 'Folder'}…` : 'Search folders…'}
+        searchLabel={activeView === 'folder' ? `search ${activeCollection.title ?? 'Folder'} folder` : 'search Library'}
+      />
+
       {activeView === 'home' && (
         <motion.div
           key="home-view"
-          className="mx-auto flex min-h-full w-full max-w-6xl flex-col px-4 pb-24 pt-5 md:px-8"
+          className="mx-auto flex min-h-full w-full max-w-6xl flex-col px-4 pb-24 pt-5 md:px-8 md:pt-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.15 }}
         >
           <LibraryHomeView
             collections={allCollections}
+            recentItems={recentItems}
             searchQuery={searchQuery}
             onSearchChange={setSearchQuery}
             onSelectCollection={(id) => {
@@ -112,11 +124,7 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards }: LibraryScreenProp
             }}
             onDeleteFolder={(id, name) => setDeleteFolderTarget({ id, name })}
             onCreateFolder={() => { setNewFolderName(''); setShowFolderModal(true); }}
-            onPracticeCollection={onPlayFlashcards ? (id) => {
-              setLibraryActiveFolder(id);
-              onPlayFlashcards();
-            } : undefined}
-            onAddCard={onAddCard}
+            onSelectWord={setDictionaryWord}
           />
         </motion.div>
       )}
@@ -124,41 +132,11 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards }: LibraryScreenProp
       {activeView === 'folder' && (
         <motion.div
           key="folder-view"
-          className="flex flex-col w-full min-h-full px-4 md:px-8 pt-6 pb-24 max-w-5xl mx-auto"
+          className="flex flex-col w-full min-h-full px-4 md:px-8 pt-5 pb-36 max-w-5xl mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.15 }}
         >
-          {/* Folder Header (Combined Back + Title) */}
-          <div className="flex items-center gap-3 mb-6 mt-2 w-full">
-            <button
-              onClick={() => { setSearchQuery(''); setActiveView('home'); }}
-              className="p-2 -ml-2 text-ui-muted hover:text-ui-ink transition-colors rounded-full hover:bg-ui-divider active:scale-95"
-            >
-              <PiCaretLeftBold size={24} />
-            </button>
-            <div className="text-ui-ink scale-110 ml-1">
-              {activeCollection.icon}
-            </div>
-            <h1 className="font-black text-[24px] sm:text-[28px] text-ui-ink-strong truncate pr-4">
-              {activeCollection.title}
-            </h1>
-          </div>
-
-          {/* ── Divider ── */}
-          <div className="w-full mb-6">
-            <div className="h-[3px] w-full bg-ui-border rounded-full" />
-          </div>
-
-          <SearchBar3D
-            value={searchQuery}
-            onValueChange={setSearchQuery}
-            onSubmit={setSearchQuery}
-            showSubmit={false}
-            placeholder={`Search ${activeCollection.title}...`}
-            className="mb-6"
-          />
-
           {/* ── CONTENT AREA ── */}
           {isLoadingFavs && isStarred ? (
             <LibrarySkeleton />
@@ -168,12 +146,10 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards }: LibraryScreenProp
             </div>
           ) : (
             <div className="w-full">
-              {/* Header row */}
-              <div className="flex items-center justify-between mb-4 px-1">
-                <h2 className="font-black text-[16px] text-ui-ink-strong">
-                  {items.length} {items.length === 1 ? 'card' : 'cards'}
-                </h2>
-              </div>
+              {/* Quiet count label */}
+              <p className="mb-4 px-1 text-[13px] font-bold text-ui-muted">
+                {items.length} {items.length === 1 ? 'card' : 'cards'}
+              </p>
 
               {/* Masonry layout — card height driven by content */}
               <div className="columns-2 gap-3">
@@ -189,12 +165,14 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards }: LibraryScreenProp
                       index={idx}
                       onAction={(e) => {
                         e.stopPropagation();
-                        if (isStarred) toggleFavorite(item.traditional);
+                        if (isStarred) toggleFavorite((item as DBDictionaryEntry).traditional);
                         else handleDeleteCustomCard((item as UserFlashcard).id);
                       }}
                       onClick={() => {
                         setDictionaryWord(
-                          isStarred ? item.traditional : (item.traditional || item.simplified)
+                          isStarred
+                            ? (item as DBDictionaryEntry).traditional
+                            : (item.traditional || item.simplified)
                         );
                       }}
                     />
@@ -208,13 +186,12 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards }: LibraryScreenProp
                       whileTap={{ scale: 0.95 }}
                       onClick={onAddCard}
                       className={cn(
-                        "cursor-pointer w-full flex flex-col justify-center items-center text-center select-none outline-none transition-colors duration-150",
-                        "min-h-[120px] rounded-[24px] border-2 border-b-[6px] bg-transparent border-dashed border-ui-border hover:border-[#1CB0F6] hover:bg-white text-ui-muted hover:text-[#1CB0F6]"
+                        "flex min-h-[120px] w-full cursor-pointer select-none flex-col items-center justify-center rounded-[24px] bg-ui-surface text-center text-ui-muted outline-none transition-[background-color,color] duration-150 hover:bg-white hover:text-brand-primary focus-visible:ring-4 focus-visible:ring-brand-primary/20"
                       )}
                     >
-                      <PiPlusBold size={24} className="mb-2" />
-                      <span className="block font-black text-[14px] uppercase tracking-wider">
-                        Add Card
+                      <AppIcon name="add" size={24} className="mb-2" />
+                      <span className="block text-[14px] font-black">
+                        Add card
                       </span>
                     </motion.button>
                   </div>
@@ -243,6 +220,31 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards }: LibraryScreenProp
         setDeleteFolderTarget={setDeleteFolderTarget}
         confirmDeleteFolder={confirmDeleteFolder}
       />
+
+      {activeView === 'folder' && onPlayFlashcards && (
+        <div className="workspace-window pointer-events-none fixed bottom-0 right-0 z-50 bg-gradient-to-t from-ui-canvas via-ui-canvas/95 to-transparent pb-[calc(1rem+env(safe-area-inset-bottom,0px))] pt-10">
+          <div className="mx-auto w-full max-w-2xl px-4 md:px-6">
+            <ActionButton
+              size="lg"
+              fullWidth
+              disabled={activeCollection.count === 0}
+              onClick={() => {
+                setSearchQuery('');
+                onPlayFlashcards();
+              }}
+              aria-label="Start flashcards"
+              className={cn(
+                "pointer-events-auto min-h-14 text-white border-b-[5px]",
+                activeCollection.accentBg,
+                activeCollection.accentBorder
+              )}
+            >
+              <AppIcon name="play" size={20} />
+              <span>Start</span>
+            </ActionButton>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

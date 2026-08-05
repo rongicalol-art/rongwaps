@@ -13,9 +13,9 @@ export const BEGINNER_DICTIONARY_TERMS: BeginnerDictionaryTerm[] = [
 ];
 
 export const FEATURED_DICTIONARY_TERMS: BeginnerDictionaryTerm[] = [
-  { traditional: '你好', pinyin: 'nǐ hǎo', meaning: 'Hello' },
-  { traditional: '再見', pinyin: 'zài jiàn', meaning: 'Goodbye' },
-  { traditional: '謝謝', pinyin: 'xiè xie', meaning: 'Thank you' },
+  { traditional: '好', pinyin: 'hǎo', meaning: 'Good' },
+  { traditional: '我', pinyin: 'wǒ', meaning: 'I; me' },
+  { traditional: '你', pinyin: 'nǐ', meaning: 'You' },
   { traditional: '一', pinyin: 'yī', meaning: 'One' },
   { traditional: '二', pinyin: 'èr', meaning: 'Two' },
   { traditional: '三', pinyin: 'sān', meaning: 'Three' },

@@ -24,17 +24,17 @@ export function DictionaryResults({
   onToggleFavorite,
 }: DictionaryResultsProps) {
   return (
-    <div className="flex w-full flex-col gap-3">
+    <div className="flex w-full flex-col">
       {isLoading && results.length === 0 && (
         <div
           role="status"
           aria-label="Searching dictionary"
-          className="flex w-full flex-col gap-3"
+          className="flex w-full flex-col gap-2"
         >
           {[1, 2, 3, 4].map((item) => (
             <div
               key={item}
-              className="flex w-full items-center gap-4 rounded-[24px] border-2 border-b-[6px] border-ui-border bg-white px-5 py-4"
+              className="flex w-full items-center gap-4 rounded-[20px] bg-ui-surface px-5 py-4"
             >
               <div className="flex flex-1 flex-col gap-3">
                 <div className="h-8 w-40 animate-pulse rounded-[12px] bg-ui-border/70" />
@@ -49,26 +49,26 @@ export function DictionaryResults({
       {error && (
         <div
           role="status"
-          className="rounded-[16px] border-2 border-feedback-danger-edge/20 bg-feedback-danger-surface px-4 py-3 text-center text-sm font-bold text-feedback-danger"
+          className="rounded-[18px] bg-feedback-danger-surface px-4 py-3 text-center text-sm font-bold text-feedback-danger"
         >
           {error}
         </div>
       )}
 
       {!error && !isLoading && results.length === 0 && (
-        <div className="rounded-[24px] border-2 border-b-[6px] border-ui-border bg-white px-6 py-12 text-center">
+        <div className="rounded-[24px] bg-ui-surface px-6 py-12 text-center">
           <p className="text-[18px] font-black text-ui-ink">No match for “{query}”</p>
           <p className="mt-2 text-[14px] font-bold text-ui-muted">
             {mode === 'courses'
-              ? 'Try another word or switch to the full dictionary.'
-              : 'Try Chinese characters, pinyin without tones, or English.'}
+              ? 'Try another word or the full dictionary.'
+              : 'Try characters, pinyin, or English.'}
           </p>
         </div>
       )}
 
-      {results.slice(0, 50).map((entry, index) => (
+      {results.slice(0, 50).map((entry) => (
         <DictionaryCard
-          key={`${mode}-${entry.id}-${entry.traditional}-${index}`}
+          key={`${mode}-${entry.id}-${entry.traditional}`}
           entry={entry}
           isFavorite={favorites.includes(entry.traditional)}
           onToggleFavorite={() => onToggleFavorite(entry.traditional)}

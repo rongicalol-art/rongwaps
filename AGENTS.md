@@ -39,7 +39,7 @@ Auto-injected each project session. Keep code structure + user preferences.
 
 7. **Top-Level Navigation & Headers:**
    - Top-level tab screens (`Books`, `Dictionary`, `Library`, `Profile`) headerless on desktop.
-   - Desktop/wide (`md`+) side nav permanent/open. Mobile may closable drawer.
+   - Desktop/wide (`md`+) side nav is always visible and non-hideable on the Books home screen. Dictionary, Library, and Profile may hide it; their hidden state uses a bare icon restore control, and workspace-bounded overlays follow the live nav width. Mobile remains a closable drawer.
    - Keep compact global `MainHeader` on mobile.
    - Desktop actions live in screen workspace, contextual actions, or floating tactile selection action.
    - `ScreenHeader`/`PracticeHeader` for overlays, drill-downs, active study sessions.
@@ -179,6 +179,7 @@ Auto-injected each project session. Keep code structure + user preferences.
     - At least one part must remain enabled for a selected lesson.
     - Curriculum practice loading and session keys must respect enabled parts.
     - Active practice progress may split into labeled part segments; shuffled sessions fall back to one continuous bar.
+    - On mobile, the active practice current/total count sits directly below the highest enabled part and animates between segment centers; desktop keeps it beside that part.
 
 25. **Typing Pinyin Quiz:**
     - Quiz entry exposes Multiple Choice and Type Pinyin as explicit modes.
@@ -208,3 +209,32 @@ Auto-injected each project session. Keep code structure + user preferences.
     - Neutral outlines use one consistent 2px width across headers, cards, docks, progress rails, inputs, selectors, and practice surfaces.
     - Neutral cards and utility containers stay flat; do not create depth with a thicker bottom border.
     - Thicker bottom edges are reserved for the single primary action, destructive confirmation, or direct-manipulation control whose tactile role is intentional.
+
+29. **Grammar Entry Placement:**
+    - Books home lesson tiles do not show grammar progress, grammar text, or grammar actions.
+    - Curriculum practice exposes Grammar as one icon-only utility button, separated on the left of the main bottom mode dock.
+    - The separate Grammar capsule matches one main-dock mode slot in width, plus the main dock's surface, radius, padding, border depth, icon weight, and interaction motion.
+    - The Grammar button opens the next incomplete grammar in the enabled lesson part(s) and is hidden for ambiguous multi-lesson, Library, and review sessions.
+
+30. **Practice Session Motion:**
+    - Practice workspaces open with a short iOS-style spring settle, not a full-screen hard pop or exaggerated bounce.
+    - Switching lesson parts keeps the current card visible while data refreshes, then cross-slides to the actual next card.
+    - Long-press part inclusion/removal visibly compresses and settles the rail; segment widths, fills, and the moving count animate into their new positions.
+    - Practice motion respects reduced-motion preferences.
+
+31. **Quiet Top-Level Workspaces:**
+    - Dictionary and Library establish hierarchy with typography, spacing, and tonal surfaces; sections and result rows do not use permanent neutral outlines or tactile bottom edges.
+    - Mobile top-level headers use menu + literal page title + at most one icon-only contextual action. Library follows this same pattern: menu + "Library" title + search icon in the sticky gradient header. Desktop page identity lives inside the workspace because the global header is hidden.
+    - Keep copy task-focused and short. Do not repeat a section's purpose in eyebrows, subtitles, badges, and empty-state prose.
+    - Dictionary prioritizes search, discovery, saved words, and results. Study analytics belong in Profile rather than the Dictionary home.
+    - Mobile Dictionary does not repeat its desktop hero search below the header. Library mobile search also lives in the header; folder practice starts from an explicit Start action inside the opened folder.
+    - Library folder tiles stay grouped in one calm surface panel so the collection reads as a unit; the panel may be borderless.
+    - Borderless does not mean focusless: keyboard focus keeps a clear semantic focus ring.
+
+32. **Mobile-First Sticky Workspaces:**
+    - RongWaps is mobile-first: every screen/design must be validated at mobile and desktop breakpoints before being considered done.
+    - Top-level workspace headers use the same gradient-fade sticky treatment at ALL breakpoints: `sticky top-0 z-40 bg-gradient-to-b from-ui-canvas via-ui-canvas/95 to-transparent backdrop-blur-[2px]`, with the header rendered inside the normal content flow.
+    - Each workspace has exactly ONE scroll container — the shell `main`. NEVER wrap a screen in its own `overflow-y-auto` / `h-full` scroll container, or `position: sticky` headers break (they scroll away instead of pinning).
+    - The Books home and Library home headers are the canonical pattern; copy that structure (outer `div.sticky` + inner `h-14 md:h-16` row) rather than inventing new header styles.
+    - On the Library home, the mobile hamburger is overlaid on the gradient header exactly like the Books home; drill-down views (folder) replace it with a back control inside the same header.
+    - Keep the sticky header gradient fade subtle: solid canvas at top fading to transparent, `backdrop-blur-[2px]` — not a heavy solid bar.

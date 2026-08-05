@@ -7,10 +7,14 @@ interface LibraryState {
   setDictionaryWord: (word: string | null) => void;
   libraryActiveFolder: string;
   setLibraryActiveFolder: (folderId: string) => void;
+  librarySearchQuery: string;
+  setLibrarySearchQuery: (query: string) => void;
   customFolders: { id: string; name: string; color: string }[];
   setCustomFolders: (folders: { id: string; name: string; color: string }[]) => void;
   addCustomFolder: (name: string, color: string, id?: string) => void;
   deleteCustomFolder: (id: string) => void;
+  libraryActiveView: 'home' | 'folder';
+  setLibraryActiveView: (view: 'home' | 'folder') => void;
 }
 
 export const useLibraryStore = create<LibraryState>()((set) => ({
@@ -24,6 +28,10 @@ export const useLibraryStore = create<LibraryState>()((set) => ({
   setDictionaryWord: (word) => set({ dictionaryWord: word }),
   libraryActiveFolder: 'all',
   setLibraryActiveFolder: (folderId) => set({ libraryActiveFolder: folderId }),
+  libraryActiveView: 'home',
+  setLibraryActiveView: (view) => set({ libraryActiveView: view }),
+  librarySearchQuery: '',
+  setLibrarySearchQuery: (query) => set({ librarySearchQuery: query }),
   customFolders: [],
   setCustomFolders: (folders) => set({ customFolders: folders }),
   addCustomFolder: (name, color, id) => set((s) => ({

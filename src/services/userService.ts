@@ -133,8 +133,8 @@ export const userService = {
     const promises: Promise<void>[] = [];
 
     if (progress.srsData) {
-      if (isUnload && typeof navigator !== 'undefined' && navigator.sendBeacon) {
-        // Best-effort beacon for unload — fire and forget
+      if (isUnload) {
+        // Best-effort save during unload — fire and forget
         promises.push(
           userService.syncCardProgress(userId, progress.srsData).catch(() => {})
         );
@@ -186,21 +186,54 @@ export const userService = {
 
   // Sync custom folders for a user
   syncCustomFolders: async (userId: string, folders: { id: string; name: string; color: string }[]): Promise<void> => {
-    if (folders.length === 0) return;
     try {
-      const folderRows = folders.map(f => ({
-        id: f.id,
-        user_id: userId,
-        name: f.name,
-        color: f.color,
-      }));
-      const { error } = await supabase
-        .from('user_folders')
-        .upsert(folderRows, { onConflict: 'id' });
+      // Upsert current folders so the server matches local state.
+      if (folders.length > 0) {
+        const folderRows = folders.map(f => ({
+          id: f.id,
+          user_id: userId,
+          name: f.name,
+          color: f.color,
+        }));
+        const { error } = await supabase
+          .from('user_folders')
+          .upsert(folderRows, { onConflict: 'id' });
 
-      if (error) {
-        console.error("Error upserting custom folders:", error);
-        throw error;
+        if (error) {
+          console.error("Error upserting custom folders:", error);
+          throw error;
+        }
+      }
+
+      // Reconcile deletions: remove server folders that no longer exist locally.
+      // This closes the gap where a previous explicit delete failed silently,
+      // leaving stale folders on the server that would otherwise resurrect.
+      const { data: remoteFolders, error: fetchError } = await supabase
+        .from('user_folders')
+        .select('id')
+        .eq('user_id', userId);
+
+      if (fetchError) {
+        console.error("Error fetching remote folders for reconciliation:", fetchError);
+        throw fetchError;
+      }
+
+      const localIds = new Set(folders.map(f => f.id));
+      const staleIds = (remoteFolders || [])
+        .map((row: { id: string }) => row.id)
+        .filter(id => !localIds.has(id));
+
+      if (staleIds.length > 0) {
+        const { error: deleteError } = await supabase
+          .from('user_folders')
+          .delete()
+          .in('id', staleIds)
+          .eq('user_id', userId);
+
+        if (deleteError) {
+          console.error("Error deleting stale folders:", deleteError);
+          throw deleteError;
+        }
       }
     } catch (e) {
       console.error("syncCustomFolders exception:", e);
