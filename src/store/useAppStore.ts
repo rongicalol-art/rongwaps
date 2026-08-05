@@ -146,6 +146,8 @@ export interface AppState {
   setActiveReviewSessionCards: (cards: string[] | null) => void;
   searchQuery: string;
   setSearchQuery: (query: string) => void;
+  librarySearchQuery: string;
+  setLibrarySearchQuery: (query: string) => void;
   practiceHeader: {
     progress: number;
     currentIndex: number;
@@ -160,6 +162,8 @@ export interface AppState {
   // Library State
   libraryActiveFolder: string;
   setLibraryActiveFolder: (folderId: string) => void;
+  libraryActiveView: 'home' | 'folder';
+  setLibraryActiveView: (view: 'home' | 'folder') => void;
   customFolders: { id: string; name: string; color: string }[];
   setCustomFolders: (folders: { id: string; name: string; color: string }[]) => void;
   addCustomFolder: (name: string, color: string, id?: string) => void;
@@ -308,6 +312,8 @@ export const useAppStore = create<AppState>()(
       setActiveReviewSessionCards: (cards) => set({ activeReviewSessionCards: cards }),
       searchQuery: '',
       setSearchQuery: (query) => set({ searchQuery: query }),
+      librarySearchQuery: '',
+      setLibrarySearchQuery: (query) => set({ librarySearchQuery: query }),
       practiceHeader: { progress: 0, currentIndex: 0, totalCount: 0, showLightbulb: false, partSegments: [] },
       setPracticeHeader: (headerState) => set((state) => ({
         practiceHeader: { ...state.practiceHeader, ...headerState },
@@ -320,6 +326,8 @@ export const useAppStore = create<AppState>()(
       // Library State
       libraryActiveFolder: 'all',
       setLibraryActiveFolder: (folderId) => set({ libraryActiveFolder: folderId }),
+      libraryActiveView: 'home' as 'home' | 'folder',
+      setLibraryActiveView: (view) => set({ libraryActiveView: view }),
       customFolders: [],
       setCustomFolders: (folders) => set({ customFolders: folders }),
       addCustomFolder: (name, color, id) => set((s) => ({

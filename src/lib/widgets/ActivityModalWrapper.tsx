@@ -28,11 +28,17 @@ export const ActivityModalWrapper: React.FC<ActivityModalWrapperProps> = ({ id, 
       aria-label={ariaLabel}
       tabIndex={-1}
       onKeyDown={modalFocusProps.onKeyDown}
-      initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: '100%' }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: '100%' }}
-      transition={{ duration: reduceMotion ? 0 : 0.35, ease: [0.32, 0.72, 0, 1] }}
-      className="absolute inset-0 z-[200] flex flex-col overflow-hidden bg-ui-practice-canvas overscroll-none pointer-events-auto"
+      initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 42, scale: 0.992 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 28, scale: 0.996 }}
+      transition={reduceMotion ? { duration: 0 } : {
+        type: 'spring',
+        stiffness: 360,
+        damping: 36,
+        mass: 0.86,
+        opacity: { duration: 0.2, ease: 'easeOut' },
+      }}
+      className="absolute inset-0 z-[200] flex origin-bottom flex-col overflow-hidden bg-ui-practice-canvas overscroll-none pointer-events-auto will-change-[transform,opacity]"
     >
       {children}
       <div id="activity-overlays-root" className="absolute inset-0 z-[300] pointer-events-none" />

@@ -3,7 +3,6 @@ import { cn } from '../../utils/cn';
 import { motion } from 'motion/react';
 import { useAppStore } from '../../store/useAppStore';
 import { useAuth } from '../../hooks/useAuth';
-import { Soft3DButton } from './Soft3DButton';
 import { AppIcon } from './AppIcon';
 import { SAMPLE_BOOKS } from '../../data/books';
 
@@ -50,8 +49,8 @@ export function MainHeader({
   );
 
   return (
-    <header className="window-header sticky top-0 z-[100] flex w-full flex-col border-b-2 border-ui-border bg-ui-surface">
-      <div className="relative z-10 mx-auto flex w-full max-w-5xl items-center justify-between px-3 py-2.5 sm:px-6 md:px-12">
+    <header className="sticky top-0 z-[100] flex min-h-16 w-full flex-col bg-ui-canvas/95 backdrop-blur-md">
+      <div className="relative z-10 mx-auto flex min-h-16 w-full max-w-5xl items-center justify-between px-4 py-2 sm:px-6 md:px-12">
         <motion.div layout transition={{ type: "spring", stiffness: 450, damping: 30 }} className="flex items-center gap-3 relative overflow-hidden">
           <div className="relative z-10 shrink-0">
              {extraLeftContent}
@@ -81,7 +80,7 @@ export function MainHeader({
             )}
             <div
               className={cn(
-                "font-extrabold text-[#4B4B4B] tracking-tight whitespace-nowrap shrink-0 transition-all duration-200",
+                "shrink-0 whitespace-nowrap font-extrabold tracking-tight text-ui-ink transition-all duration-200",
                 "text-[19px] md:text-xl"
               )}
             >
@@ -89,48 +88,24 @@ export function MainHeader({
             </div>
           </motion.div>
         </motion.div>
-        <motion.div layout transition={{ type: "spring", stiffness: 450, damping: 30 }} className="flex items-center gap-2 justify-end flex-1 max-w-full">
+        <motion.div layout transition={{ type: "spring", stiffness: 450, damping: 30 }} className="flex min-w-0 flex-1 items-center justify-end gap-2">
           {rightContent !== undefined ? (
             rightContent
           ) : (
-            <motion.div
-              initial={false}
-              animate={{
-                scale: showPlayButton ? 1 : 0.96,
-                opacity: showPlayButton ? 1 : 0.82,
-              }}
-              transition={{ 
-                type: "spring", 
-                stiffness: 500, 
-                damping: 25,
-                mass: 1
-              }}
-              className="flex items-center justify-center shrink-0"
-            >
-              <Soft3DButton
+            showPlayButton ? (
+              <button
                 type="button"
-                disabled={!showPlayButton}
-                onClick={showPlayButton ? onPlayClick : undefined}
-                aria-label={showPlayButton ? "Start practice" : "Practice not available"}
-                variant={showPlayButton ? "custom" : "locked"}
-                depth="sm"
+                onClick={onPlayClick}
+                aria-label="Start practice"
+                title="Start practice"
                 className={cn(
-                  "min-h-11 w-auto rounded-full px-3 py-2 text-[11px] shadow-sm transition-all duration-150 md:px-4 md:py-2.5 md:text-[12px]",
-                  showPlayButton
-                    ? `${activeBook.accentBg} ${activeBook.buttonEdge} text-white`
-                    : "bg-[#F7F7F7] text-[#AFB6BB] border-[#E5E5E5]"
+                  'flex h-11 w-11 shrink-0 items-center justify-center rounded-[15px] text-white outline-none transition-transform active:scale-95 focus-visible:ring-4 focus-visible:ring-brand-primary/25',
+                  activeBook.accentBg,
                 )}
               >
-                <div className={cn(
-                  "flex items-center gap-2 font-black tracking-wide uppercase transition-transform duration-300",
-                  "text-[12px] md:text-[13px]",
-                  !showPlayButton ? 'scale-95 opacity-80' : 'scale-100 group-active:scale-95'
-                )}>
-                  <AppIcon name="play" size={16} className="shrink-0" />
-                  <span>Practice</span>
-                </div>
-              </Soft3DButton>
-            </motion.div>
+                <AppIcon name="play" size={18} />
+              </button>
+            ) : <span />
           )}
 
           {extraRightContent}

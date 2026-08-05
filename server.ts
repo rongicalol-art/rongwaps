@@ -1,4 +1,5 @@
 import express from "express";
+import rateLimit from "express-rate-limit";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
@@ -42,6 +43,23 @@ function getErrorStatus(error: unknown): unknown {
 
 app.use(express.json());
 
+// ─── Rate limiting (abuse protection for paid/rate-limited APIs) ──────
+const apiLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  limit: 60,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Too many requests. Try again later." },
+});
+
+const paidApiLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  limit: 10, // Gemini generation + Edge TTS synthesis costs money per call
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Too many requests. Try again later." },
+});
+
 // Initialize Google Gen AI client with server-side API Key
 const apiKey = process.env.CUSTOM_GEMINI_KEY || process.env.GEMINI_API_KEY;
 const aiClient = apiKey ? new GoogleGenAI({
@@ -65,7 +83,7 @@ function getAIClient() {
 // Handles both characters and words.
 // Body: { char?, word?, pinyin?, definition?, components?, charactersInfo? }
 // Response: { mnemonic, usage }
-app.post("/api/generate-mnemonic", async (req: express.Request, res: express.Response) => {
+app.post("/api/generate-mnemonic", paidApiLimiter, async (req: express.Request, res: express.Response) => {
   try {
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
@@ -171,16 +189,21 @@ Example: Three drops of water flowing downward, so this character means **water*
   }
 });
 
-// ─── Audio proxy endpoint (bypasses CORS for Safari) ──────────────────
-// GET /api/audio/:filename — downloads from Supabase Storage and streams to client
-app.get("/api/audio/*", async (req: express.Request, res: express.Response) => {
-  try {
-    const fileName = req.params[0];
-    if (!fileName) {
-      return res.status(400).json({ error: "Missing filename" });
-    }
-
-    const { data, error } = await supabase.storage.from("vocabulary-audio").download(fileName);
+ // ─── Audio proxy endpoint (bypasses CORS for Safari) ──────────────────
+ // GET /api/audio/:filename — downloads from Supabase Storage and streams to client
+ app.get("/api/audio/*", apiLimiter, async (req: express.Request, res: express.Response) => {
+   try {
+     const fileName = req.params[0];
+     if (!fileName) {
+       return res.status(400).json({ error: "Missing filename" });
+     }
+ 
+     // Path traversal protection: only allow safe filename characters and forbid ../ segments.
+     if (fileName.includes("..") || fileName.includes("/") || fileName.includes("\\") || !/^[\w.-]+$/.test(fileName)) {
+       return res.status(400).json({ error: "Invalid filename" });
+     }
+ 
+     const { data, error } = await supabase.storage.from("vocabulary-audio").download(fileName);
     if (error || !data) {
       console.warn(`Audio proxy: file not found: ${fileName}`, error?.message);
       return res.status(404).json({ error: "Audio file not found" });
@@ -279,7 +302,7 @@ async function getTtsAudio(text: string, voiceName: string): Promise<Buffer> {
   }
 }
 
-app.post("/api/tts", async (req: express.Request, res: express.Response) => {
+app.post("/api/tts", paidApiLimiter, async (req: express.Request, res: express.Response) => {
   try {
     const { text, voice } = req.body as { text?: string; voice?: string };
     const cleanText = sanitizeTtsText(text || "");
@@ -301,7 +324,7 @@ app.post("/api/tts", async (req: express.Request, res: express.Response) => {
 });
 
 // GET /api/tts-cache/:text — serve cached TTS MP3 by text, or 404 (client synthesizes on miss)
-app.get("/api/tts-cache/:text", async (req: express.Request, res: express.Response) => {
+app.get("/api/tts-cache/:text", apiLimiter, async (req: express.Request, res: express.Response) => {
   try {
     const text = decodeURIComponent(req.params.text || "").trim();
     const voice = (req.query.voice as string) || "zh-CN-XiaoxiaoNeural";
@@ -325,7 +348,7 @@ app.get("/api/tts-cache/:text", async (req: express.Request, res: express.Respon
 });
 
 // GET /api/tts/:voice/:hash.mp3 — direct cache read, same output as POST but cache-only
-app.get("/api/tts/:voice/*", async (req: express.Request, res: express.Response) => {
+app.get("/api/tts/:voice/*", apiLimiter, async (req: express.Request, res: express.Response) => {
   try {
     const voice = req.params.voice;
     const fileTail = req.params[0];

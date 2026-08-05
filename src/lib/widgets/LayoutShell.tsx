@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { SideNav, type SideNavProps } from './SideNav';
 import { DynamicBackground } from './DynamicBackground';
 import { AppIcon } from './AppIcon';
 import { MainHeader, type MainHeaderProps } from './MainHeader';
-import { ExpandableSearch } from './ExpandableSearch';
-import { useAppStore } from '../../store/useAppStore';
 import { SAMPLE_BOOKS } from '../../data/books';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
@@ -37,12 +35,13 @@ export function LayoutShell({
   onSettingsClick,
   activityModals
 }: LayoutShellProps) {
-  const {
-    isSearchOpen,
-    setIsSearchOpen,
-    searchQuery,
-    setSearchQuery,
-  } = useAppStore();
+  useEffect(() => {
+    const root = document.documentElement;
+    root.style.setProperty('--workspace-desktop-nav-width', isNavOpen ? '288px' : '0px');
+    return () => {
+      root.style.removeProperty('--workspace-desktop-nav-width');
+    };
+  }, [isNavOpen]);
 
   return (
     <div className={`font-sans flex h-[100dvh] w-full relative overflow-hidden transition-colors duration-700 overscroll-none`}>
@@ -78,55 +77,35 @@ export function LayoutShell({
           </>
         )}
       </AnimatePresence>
-      
-      <div className="absolute inset-y-0 left-0 right-0 z-10 flex flex-col overflow-hidden md:left-[288px]">
-        {activeTab === 'path' ? (
-          <button
-            type="button"
-            onClick={() => setIsNavOpen(!isNavOpen)}
-            className="absolute left-3 top-[calc(0.5rem+env(safe-area-inset-top,0px))] z-[100] flex min-h-11 min-w-11 items-center justify-center rounded-xl text-ui-muted transition-colors hover:bg-ui-surface hover:text-ui-ink focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25 md:hidden"
-            aria-label="Toggle navigation"
-          >
-            <AppIcon name="menu" size={24} />
-          </button>
-        ) : (
-          <div className="shrink-0 z-50 md:hidden">
+
+      <div
+        className="absolute inset-y-0 right-0 z-10 flex flex-col overflow-hidden transition-[left] duration-300 ease-out"
+        style={{ left: 'var(--workspace-nav-width)' }}
+      >
+        {activeTab === 'profile' && (
+          <div className="shrink-0 z-50">
             <MainHeader
               activeBook={activeBook}
               {...headerProps}
               onLeftIconClick={onProfileClick}
               extraLeftContent={
-                <button
-                  type="button"
-                  onClick={() => setIsNavOpen(!isNavOpen)}
-                  className="-ml-2 flex min-h-11 min-w-11 items-center justify-center rounded-xl text-ui-muted transition-colors hover:bg-ui-canvas hover:text-ui-ink focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25"
-                  aria-label="Toggle navigation"
-                >
-                  <AppIcon name="menu" size={24} />
-                </button>
+                headerProps.extraLeftContent ?? (
+                  <button
+                    type="button"
+                    onClick={() => setIsNavOpen(!isNavOpen)}
+                    className="-ml-2 flex min-h-11 min-w-11 items-center justify-center rounded-xl text-ui-muted transition-colors hover:bg-ui-canvas hover:text-ui-ink focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25"
+                    aria-label="Toggle navigation"
+                  >
+                    <AppIcon name="menu" size={24} />
+                  </button>
+                )
               }
-              extraRightContent={
-                activeTab === 'search' ? (
-                  <motion.div className="flex items-center ml-2 justify-end flex-1 max-w-full">
-                    <ExpandableSearch
-                      value={searchQuery}
-                      onChange={setSearchQuery}
-                      placeholder="Search dictionary..."
-                      isExpanded={isSearchOpen}
-                      onExpandedChange={setIsSearchOpen}
-                    />
-                  </motion.div>
-                ) : null
-              }
+              extraRightContent={null}
             />
           </div>
         )}
 
-        <main 
-          className={`flex-1 w-full relative overflow-x-hidden overscroll-none flex flex-col ${
-            activeTab === 'search' ? 'overflow-hidden' : 'overflow-y-auto'
-          }`}
-        >
+        <main className="flex-1 w-full relative overflow-y-auto overflow-x-hidden overscroll-none flex flex-col">
           {children}
         </main>
 

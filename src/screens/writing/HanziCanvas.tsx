@@ -1,8 +1,11 @@
 import React, { useRef, useEffect, useCallback } from 'react';
-import HanziWriter from 'hanzi-writer';
+import type HanziWriterType from 'hanzi-writer';
 import { DESIGN_TOKENS } from '../../data/designTokens';
 import { loadHanziCharacterData } from '../../services/contentAssetService';
 import { resolveDesignTokenColor } from '../../utils/resolveDesignTokenColor';
+
+type HanziWriterModule = typeof HanziWriterType;
+type HanziWriterInstance = ReturnType<HanziWriterModule['create']>;
 
 export function HanziCanvas({ 
   char, 
@@ -24,38 +27,43 @@ export function HanziCanvas({
   bgAccent?: string;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const writerRef = useRef<ReturnType<typeof HanziWriter.create> | null>(null);
+  const writerRef = useRef<HanziWriterInstance | null>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
-    containerRef.current.innerHTML = '';
+    let canceled = false;
     const resolvedStrokeColor = resolveDesignTokenColor(accentHex, '#1CB0F6');
     const resolvedDangerColor = resolveDesignTokenColor(DESIGN_TOKENS.color.feedback.danger, '#FF4B4B');
     const resolvedOutlineColor = resolveDesignTokenColor(DESIGN_TOKENS.color.border, '#C3C8CC');
-    
-    // Fallback/dummy writer if not hanzi, though we filter it in parent usually.
-    const writer = HanziWriter.create(containerRef.current, char, {
-      renderer: 'svg',
-      width: size,
-      height: size,
-      padding: size * 0.08,
-      showCharacter: false,
-      showHintAfterMisses: 1,
-      showOutline: true,
-      strokeColor: resolvedStrokeColor,
-      highlightColor: resolvedDangerColor,
-      outlineColor: resolvedOutlineColor,
-      drawingWidth: Math.max(10, size * 0.08),
-      charDataLoader: (requestedChar, onLoad, onError) => {
-        loadHanziCharacterData(requestedChar).then(onLoad).catch(onError);
-      },
+
+    // Load hanzi-writer on first use so it is code-split out of the main bundle.
+    import('hanzi-writer').then(({ default: HanziWriter }) => {
+      if (canceled || !containerRef.current) return;
+      containerRef.current.innerHTML = '';
+      const writer = HanziWriter.create(containerRef.current, char, {
+        renderer: 'svg',
+        width: size,
+        height: size,
+        padding: size * 0.08,
+        showCharacter: false,
+        showHintAfterMisses: 1,
+        showOutline: true,
+        strokeColor: resolvedStrokeColor,
+        highlightColor: resolvedDangerColor,
+        outlineColor: resolvedOutlineColor,
+        drawingWidth: Math.max(10, size * 0.08),
+        charDataLoader: (requestedChar, onLoad, onError) => {
+          loadHanziCharacterData(requestedChar).then(onLoad).catch(onError);
+        },
+      });
+      writerRef.current = writer;
     });
-    writerRef.current = writer;
 
     return () => {
-      // Clean up
+      canceled = true;
       if (writerRef.current) {
         writerRef.current.cancelQuiz();
+        writerRef.current = null;
       }
     };
   }, [accentHex, char, size]);

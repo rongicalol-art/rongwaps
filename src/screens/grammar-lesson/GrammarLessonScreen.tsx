@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { motion } from 'motion/react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import { audioService } from '../../services/audioService';
 import { useAppStore } from '../../store/useAppStore';
 import { useGrammarLessonStore } from '../../store/useGrammarLessonStore';
@@ -27,7 +27,10 @@ export function GrammarLessonScreen({ part, onClose }: GrammarLessonScreenProps)
   const dialogRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLElement>(null);
   const completedPageIds = useGrammarLessonStore((state) => state.completedPageIds);
-  const firstIncompleteIndex = part.grammarPages.findIndex((grammarPage) => !completedPageIds.includes(grammarPage.id));
+  const firstIncompleteIndex = useMemo(
+    () => part.grammarPages.findIndex((grammarPage) => !completedPageIds.includes(grammarPage.id)),
+    [completedPageIds, part.grammarPages],
+  );
   const [currentGrammarIndex, setCurrentGrammarIndex] = useState(
     firstIncompleteIndex === -1 ? 0 : firstIncompleteIndex,
   );
@@ -102,9 +105,7 @@ export function GrammarLessonScreen({ part, onClose }: GrammarLessonScreenProps)
       grammarIndex: currentGrammarIndex,
       grammarCount: part.grammarPages.length,
       allGrammarComplete,
-      firstIncompleteIndex: part.grammarPages.findIndex(
-        (grammarPage) => !completedPageIds.includes(grammarPage.id),
-      ),
+      firstIncompleteIndex,
     });
     setCurrentGrammarIndex(next.grammarIndex);
     setActiveView(next.view);
@@ -161,51 +162,76 @@ export function GrammarLessonScreen({ part, onClose }: GrammarLessonScreenProps)
           activeView === 'exercise' && 'grammar-practice-workspace',
         )}
       >
-        {activeView === 'study' && (
-          <GrammarStudyPage
-            key={page.id}
-            page={page}
-            characterPreference={characterPreference}
-            showPinyin={showPinyin}
-            showTranslation={showTranslation}
-            onOpenWord={setDictionaryWord}
-          />
-        )}
-        {activeView === 'exercise' && (
-          <GrammarExercisePage
-            key={page.id}
-            page={page}
-            characterPreference={characterPreference}
-            onOpenWord={setDictionaryWord}
-            onComplete={completePage}
-            onContinue={continueAfterExercise}
-            continueLabel={hasNextGrammar
-              ? `Continue to Grammar ${part.grammarPages[currentGrammarIndex + 1].grammarNumber}`
-              : allGrammarComplete
-                ? 'Complete part'
-                : 'Review unfinished grammar'}
-            completionMessage={hasNextGrammar
-              ? 'This grammar is ready. Continue when you want to study the next point.'
-              : allGrammarComplete
-                ? 'All grammar practice in this part is complete.'
-                : 'Finish the remaining grammar practice before completing this part.'}
-          />
-        )}
-        {activeView === 'complete' && (
-          <GrammarCompletionPage
-            part={part}
-            onReview={() => {
-              setCurrentGrammarIndex(0);
-              setActiveView('study');
-            }}
-            onFinish={closeLesson}
-          />
-        )}
+        <AnimatePresence mode="wait" initial={false}>
+          {activeView === 'study' && (
+            <motion.div
+              key={`study-${page.id}`}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.16, ease: 'easeOut' }}
+            >
+              <GrammarStudyPage
+                page={page}
+                characterPreference={characterPreference}
+                showPinyin={showPinyin}
+                showTranslation={showTranslation}
+                onOpenWord={setDictionaryWord}
+              />
+            </motion.div>
+          )}
+          {activeView === 'exercise' && (
+            <motion.div
+              key={`exercise-${page.id}`}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.16, ease: 'easeOut' }}
+            >
+              <GrammarExercisePage
+                page={page}
+                characterPreference={characterPreference}
+                onOpenWord={setDictionaryWord}
+                onComplete={completePage}
+                onContinue={continueAfterExercise}
+                continueLabel={hasNextGrammar
+                  ? `Continue to Grammar ${part.grammarPages[currentGrammarIndex + 1].grammarNumber}`
+                  : allGrammarComplete
+                    ? 'Complete part'
+                    : 'Review unfinished grammar'}
+                completionMessage={hasNextGrammar
+                  ? 'This grammar is ready. Continue when you want to study the next point.'
+                  : allGrammarComplete
+                    ? 'All grammar practice in this part is complete.'
+                    : 'Finish the remaining grammar practice before completing this part.'}
+              />
+            </motion.div>
+          )}
+          {activeView === 'complete' && (
+            <motion.div
+              key="complete"
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
+            >
+              <GrammarCompletionPage
+                part={part}
+                onReview={() => {
+                  setCurrentGrammarIndex(0);
+                  setActiveView('study');
+                }}
+                onFinish={closeLesson}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </main>
 
       {(activeView === 'study' || activeView === 'exercise') && (
         <GrammarModeDock
           mode={activeView}
+          grammarNumber={page.grammarNumber}
           onSelectStudy={() => setActiveView(selectGrammarMode(currentGrammarIndex, 'study').view)}
           onSelectExercise={() => setActiveView(selectGrammarMode(currentGrammarIndex, 'exercise').view)}
         />

@@ -32,10 +32,8 @@ export function SideNav({
 
   return (
     <nav className="z-50 flex h-full w-[256px] shrink-0 flex-col bg-ui-surface px-4 pb-4 pt-7">
-      <div className="mb-7 flex justify-start px-2">
-        <div>
-          <BrandWordmark />
-        </div>
+      <div className="mb-7 flex items-center justify-between gap-2 px-2">
+        <BrandWordmark />
       </div>
       
       <div className="flex w-full flex-col gap-2">

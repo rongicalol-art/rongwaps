@@ -95,7 +95,6 @@ function LessonItemBase({
           </span>
         </span>
       </button>
-
     </motion.div>
   );
 }

@@ -1,21 +1,12 @@
 import type { BeginnerDictionaryTerm } from '../../../data/dictionaryHome';
 import type { DictionarySavedPreview } from '../../../types/models';
 import { DictionaryDailyCard } from './DictionaryDailyCard';
-import { DictionaryHero } from './DictionaryHero';
-import { DictionaryStudySnapshot } from './DictionaryStudySnapshot';
 import { SavedWordsPreview } from './SavedWordsPreview';
 
 interface DictionaryHomeProps {
   savedWords: DictionarySavedPreview[];
   isLoadingSavedWords: boolean;
   wordOfTheDay: BeginnerDictionaryTerm;
-  studySnapshot: {
-    savedWordCount: number;
-    learnedWordCount: number;
-    reviewedWordCount: number;
-    availableBookCount: number;
-  };
-  onSearch: (query: string) => void;
   onOpenWord: (word: string) => void;
   onViewSavedWords: () => void;
 }
@@ -24,19 +15,13 @@ export function DictionaryHome({
   savedWords,
   isLoadingSavedWords,
   wordOfTheDay,
-  studySnapshot,
-  onSearch,
   onOpenWord,
   onViewSavedWords,
 }: DictionaryHomeProps) {
   return (
-    <div className="flex w-full flex-col gap-5 pb-10 pt-1">
-      <DictionaryHero onSearch={onSearch} />
-      <div className="grid grid-cols-1 gap-5 md:min-h-[228px] md:grid-cols-[1.08fr_0.92fr] lg:min-h-[238px]">
-        <DictionaryStudySnapshot {...studySnapshot} />
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-5 px-4 pb-12 pt-5 md:gap-7 md:px-8 md:pt-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(280px,0.9fr)]">
         <DictionaryDailyCard word={wordOfTheDay} onOpenWord={onOpenWord} />
-      </div>
-      <div className="grid min-h-[150px] grid-cols-1 gap-4 sm:min-h-[170px]">
         <SavedWordsPreview
           items={savedWords}
           isLoading={isLoadingSavedWords}

@@ -4,7 +4,6 @@ import { useAppNavigation } from './hooks/useAppNavigation.tsx';
 import { useAudioUnlock } from './hooks/useAudioUnlock';
 import { useAppStore } from './store/useAppStore';
 import { SAMPLE_BOOKS } from './data/books';
-import { prefetchLocalDictionary } from './services/dictionaryService';
 import { getInteractiveGrammarPart } from './data/interactiveGrammarPages';
 
 import {
@@ -17,17 +16,17 @@ import {
   LoadingScreen
 } from './lib/widgets';
 
-import { CurriculumLibrary } from './screens/curriculum';
-import { ProfileScreen } from './screens/profile';
-import { SearchScreen } from './screens/search';
-import { LibraryScreen } from './screens/library';
-import { ActivityModals } from './screens/activities/ActivityModals';
-import { GrammarLessonScreen } from './screens/grammar-lesson';
 import { useCloudSync } from './hooks/useCloudSync';
 import { useAuth } from './hooks/useAuth';
-import { userService } from './services/userService';
-import { useGrammarLessonStore } from './store/useGrammarLessonStore';
-import { useReadingLessonStore } from './store/useReadingLessonStore';
+import { useResetProgress } from './hooks/useResetProgress';
+
+// Route-level code splitting: only the active screen's code is fetched (AGENTS.md perf).
+const CurriculumLibrary = React.lazy(() => import('./screens/curriculum').then((m) => ({ default: m.CurriculumLibrary })));
+const ProfileScreen = React.lazy(() => import('./screens/profile').then((m) => ({ default: m.ProfileScreen })));
+const SearchScreen = React.lazy(() => import('./screens/search').then((m) => ({ default: m.SearchScreen })));
+const LibraryScreen = React.lazy(() => import('./screens/library').then((m) => ({ default: m.LibraryScreen })));
+const ActivityModals = React.lazy(() => import('./screens/activities/ActivityModals').then((m) => ({ default: m.ActivityModals })));
+const GrammarLessonScreen = React.lazy(() => import('./screens/grammar-lesson').then((m) => ({ default: m.GrammarLessonScreen })));
 
 const DebugWindow = React.lazy(() => (
   import('./screens/debug/DebugWindow').then((module) => ({ default: module.DebugWindow }))
@@ -37,17 +36,19 @@ const isDesktopViewport = () => (
   typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches
 );
 
+const DESKTOP_NAV_PREFERENCE_KEY = 'rongwaps:desktop-nav-open';
+
+const getInitialNavOpen = () => {
+  if (!isDesktopViewport()) return false;
+  return window.localStorage.getItem(DESKTOP_NAV_PREFERENCE_KEY) !== 'false';
+};
+
 export default function App() {
   // Initialize global audio
   useAudioUnlock();
   
   // Sync user progress automatically
   useCloudSync();
-
-  // Prewarm the dictionary trie
-  useEffect(() => {
-    prefetchLocalDictionary();
-  }, []);
 
   const {
     activeBookId,
@@ -70,96 +71,48 @@ export default function App() {
     startPathPractice
   } = useAppNavigation();
 
-  const [isNavOpen, setIsNavOpen] = React.useState(() => isDesktopViewport());
+  const [isNavOpen, setIsNavOpen] = React.useState(() => (
+    activeTab === 'path' && isDesktopViewport() ? true : getInitialNavOpen()
+  ));
   const [showDebugWindow, setShowDebugWindow] = useState(false);
   const [activeGrammarPartId, setActiveGrammarPartId] = useState<string | null>(null);
   const activeGrammarPart = activeGrammarPartId
     ? getInteractiveGrammarPart(activeGrammarPartId)
     : undefined;
 
-  const handleResetProgress = React.useCallback(async () => {
-    const appState = useAppStore.getState();
-    const grammarState = useGrammarLessonStore.getState();
-    const readingState = useReadingLessonStore.getState();
-    const appSnapshot = {
-      srsData: appState.srsData,
-      learnedCards: appState.learnedCards,
-      sessionProgress: appState.sessionProgress,
-      currentStreak: appState.currentStreak,
-      longestStreak: appState.longestStreak,
-      totalXp: appState.totalXp,
-      totalCardsReviewed: appState.totalCardsReviewed,
-      totalCardsLearned: appState.totalCardsLearned,
-      lastStudyDate: appState.lastStudyDate,
-      sessionProgressIndex: appState.sessionProgressIndex,
-      lastActivity: appState.lastActivity,
-      isReviewMode: appState.isReviewMode,
-      activeReviewSessionCards: appState.activeReviewSessionCards,
-      swipeFeedback: appState.swipeFeedback,
-    };
-    const grammarSnapshot = {
-      startedPartIds: grammarState.startedPartIds,
-      completedPageIds: grammarState.completedPageIds,
-      completedPartIds: grammarState.completedPartIds,
-    };
-    const readingSnapshot = {
-      startedPartIds: readingState.startedPartIds,
-      completedPartIds: readingState.completedPartIds,
-      savedIntroductions: readingState.savedIntroductions,
-    };
-
-    if (currentUser && appState.syncStatus === 'syncing') {
-      await new Promise<void>((resolve, reject) => {
-        const timeout = window.setTimeout(() => {
-          unsubscribe();
-          reject(new Error('Cloud sync did not become idle before reset.'));
-        }, 10_000);
-        const unsubscribe = useAppStore.subscribe((state) => {
-          if (state.syncStatus === 'syncing') return;
-          window.clearTimeout(timeout);
-          unsubscribe();
-          resolve();
-        });
-      });
-    }
-
-    appState.resetProgress();
-    grammarState.resetProgress();
-    readingState.resetProgress();
-
-    try {
-      if (currentUser) await userService.resetLearningProgress();
-      setActiveActivity(null);
-      setActiveGrammarPartId(null);
-    } catch (error) {
-      useAppStore.setState(appSnapshot);
-      useGrammarLessonStore.setState(grammarSnapshot);
-      useReadingLessonStore.setState(readingSnapshot);
-      throw error;
-    }
-  }, [currentUser, setActiveActivity]);
+  const handleResetProgress = useResetProgress({
+    currentUser,
+    onActivityCleared: () => setActiveActivity(null),
+    onGrammarCleared: () => setActiveGrammarPartId(null),
+  });
 
   const setResponsiveNavOpen = React.useCallback((open: boolean) => {
-    setIsNavOpen(isDesktopViewport() ? true : open);
+    setIsNavOpen(open);
   }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
     const desktopQuery = window.matchMedia('(min-width: 768px)');
-    const syncNavToViewport = () => {
-      setIsNavOpen(desktopQuery.matches);
+    const syncNavToViewport = (event: MediaQueryListEvent) => {
+      setIsNavOpen(
+        event.matches
+          ? window.localStorage.getItem(DESKTOP_NAV_PREFERENCE_KEY) !== 'false'
+          : false,
+      );
     };
 
-    syncNavToViewport();
     desktopQuery.addEventListener('change', syncNavToViewport);
-    window.addEventListener('resize', syncNavToViewport);
 
     return () => {
       desktopQuery.removeEventListener('change', syncNavToViewport);
-      window.removeEventListener('resize', syncNavToViewport);
     };
   }, []);
+
+  useEffect(() => {
+    if (!isDesktopViewport()) return;
+    window.localStorage.setItem(DESKTOP_NAV_PREFERENCE_KEY, String(isNavOpen));
+  }, [activeTab, isNavOpen]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -209,17 +162,23 @@ export default function App() {
           if (!isDesktopViewport()) setIsNavOpen(false);
         }}
         activityModals={
-          <ActivityModals 
-            activeActivity={activeActivity}
-            setActiveActivity={setActiveActivity}
-            activeBookId={activeBook.id}
-            selectedLessons={selectedLessons}
-            isLibraryMode={activeTab === 'library'}
-            onNavigateToPractice={() => {
-              setActiveTab('path');
-              setActiveActivity(null);
-            }}
-          />
+          <React.Suspense fallback={null}>
+            <ActivityModals 
+              activeActivity={activeActivity}
+              setActiveActivity={setActiveActivity}
+              activeBookId={activeBook.id}
+              selectedLessons={selectedLessons}
+              isLibraryMode={activeTab === 'library'}
+              onNavigateToPractice={() => {
+                setActiveTab('path');
+                setActiveActivity(null);
+              }}
+              onOpenGrammarPart={(partId) => {
+                setActiveActivity(null);
+                setActiveGrammarPartId(partId);
+              }}
+            />
+          </React.Suspense>
         }
       >
         <AnimatePresence mode="wait">
@@ -233,13 +192,17 @@ export default function App() {
               className="flex w-full shrink-0 flex-col"
             >
               <ErrorBoundary>
-                <CurriculumLibrary
-                  activeBookId={activeBookId}
-                  onActiveBookChange={setActiveBookId}
-                  selectedLessons={selectedLessons}
-                  onToggleLesson={toggleLesson}
-                  onStartPractice={startPathPractice}
-                />
+                <React.Suspense fallback={<LoadingScreen message="Loading lessons…" />}>
+                  <CurriculumLibrary
+                    activeBookId={activeBookId}
+                    onActiveBookChange={setActiveBookId}
+                    selectedLessons={selectedLessons}
+                    onToggleLesson={toggleLesson}
+                    onStartPractice={startPathPractice}
+                    onProfileClick={() => setActiveTab('profile')}
+                    menuToggle={{ onClick: () => setIsNavOpen(!isNavOpen), label: 'Menu' }}
+                  />
+                </React.Suspense>
               </ErrorBoundary>
             </motion.div>
           )}
@@ -254,10 +217,13 @@ export default function App() {
               className="flex-1 flex flex-col w-full"
             >
               <ErrorBoundary>
-                <LibraryScreen
-                  onAddCard={() => setActiveActivity('create-card')}
-                  onPlayFlashcards={() => setActiveActivity('flashcards-library')}
-                />
+                <React.Suspense fallback={<LoadingScreen message="Loading library…" />}>
+                  <LibraryScreen
+                    onAddCard={() => setActiveActivity('create-card')}
+                    onPlayFlashcards={() => setActiveActivity('flashcards-library')}
+                    menuToggle={{ onClick: () => setIsNavOpen(!isNavOpen), label: 'Menu' }}
+                  />
+                </React.Suspense>
               </ErrorBoundary>
             </motion.div>
           )}
@@ -269,13 +235,13 @@ export default function App() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
-              className="flex-1 flex flex-col w-full h-full overflow-hidden"
+              className="flex-1 flex flex-col w-full"
             >
-              <div className="mx-auto flex h-full w-full max-w-[1240px] flex-1 flex-col gap-6 overflow-hidden px-4 pb-2 pt-3 md:px-8 md:pb-6">
-                <ErrorBoundary>
-                  <SearchScreen />
-                </ErrorBoundary>
-              </div>
+              <ErrorBoundary>
+                <React.Suspense fallback={<LoadingScreen message="Loading dictionary…" />}>
+                  <SearchScreen menuToggle={{ onClick: () => setIsNavOpen(!isNavOpen), label: 'Menu' }} />
+                </React.Suspense>
+              </ErrorBoundary>
             </motion.div>
           )}
 
@@ -289,14 +255,16 @@ export default function App() {
               className="flex-1 flex flex-col w-full"
             >
               <ErrorBoundary>
-                <ProfileScreen
-                  onStartReview={() => {
-                    const store = useAppStore.getState();
-                    store.setIsReviewMode(true);
-                    store.setActiveReviewSessionCards(null);
-                    setActiveActivity('flashcards-review');
-                  }}
-                />
+                <React.Suspense fallback={<LoadingScreen message="Loading profile…" />}>
+                  <ProfileScreen
+                    onStartReview={() => {
+                      const store = useAppStore.getState();
+                      store.setIsReviewMode(true);
+                      store.setActiveReviewSessionCards(null);
+                      setActiveActivity('flashcards-review');
+                    }}
+                  />
+                </React.Suspense>
               </ErrorBoundary>
             </motion.div>
           )}
@@ -305,11 +273,13 @@ export default function App() {
 
       <AnimatePresence>
         {activeGrammarPart && (
-          <GrammarLessonScreen
-            key={activeGrammarPart.id}
-            part={activeGrammarPart}
-            onClose={() => setActiveGrammarPartId(null)}
-          />
+          <React.Suspense fallback={<LoadingScreen message="Loading grammar lesson…" />}>
+            <GrammarLessonScreen
+              key={activeGrammarPart.id}
+              part={activeGrammarPart}
+              onClose={() => setActiveGrammarPartId(null)}
+            />
+          </React.Suspense>
         )}
       </AnimatePresence>
 

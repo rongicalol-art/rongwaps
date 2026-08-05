@@ -6,6 +6,7 @@ import { useAppStore } from '../../store/useAppStore';
 import { AddCardScreen } from '../add-card';
 import type { ActivityType, QuizMode } from '../../types/models';
 import { SAMPLE_BOOKS } from '../../data/books';
+import { getInteractiveGrammarPartsForLesson } from '../../data/interactiveGrammarPages';
 import { fetchVocabulary } from '../../services/vocabularyService';
 import type { CourseLessonPartProgress } from '../../types/models';
 import {
@@ -19,6 +20,7 @@ import {
 } from '../../store/usePracticePreferencesStore';
 import { PracticeModeDock, PRACTICE_ACTIVITIES } from './components/PracticeModeDock';
 import { AnimatedActivityScreen } from './components/AnimatedActivityScreen';
+import { useGrammarLessonStore } from '../../store/useGrammarLessonStore';
 
 const FlashcardScreen = lazy(() => (
   import('../flashcard').then((module) => ({ default: module.FlashcardScreen }))
@@ -40,6 +42,7 @@ interface ActivityModalsProps {
   selectedLessons: number[];
   isLibraryMode?: boolean;
   onNavigateToPractice?: () => void;
+  onOpenGrammarPart?: (partId: string) => void;
 }
 
 export function ActivityModals({
@@ -48,7 +51,8 @@ export function ActivityModals({
   activeBookId,
   selectedLessons,
   isLibraryMode = false,
-  onNavigateToPractice
+  onNavigateToPractice,
+  onOpenGrammarPart,
 }: ActivityModalsProps) {
   const activities = PRACTICE_ACTIVITIES;
 
@@ -89,6 +93,7 @@ export function ActivityModals({
   const setPracticePace = usePracticePreferencesStore(state => state.setPace);
   const applyPracticePreset = usePracticePreferencesStore(state => state.applyPreset);
   const isReviewMode = useAppStore(state => state.isReviewMode);
+  const completedGrammarPageIds = useGrammarLessonStore((state) => state.completedPageIds);
   const selectedLessonParts = useAppStore(state => state.selectedLessonParts);
   const setSelectedLessonParts = useAppStore(state => state.setSelectedLessonParts);
   const [studyLessonParts, setStudyLessonParts] = useState<CourseLessonPartProgress[]>([]);
@@ -110,6 +115,27 @@ export function ActivityModals({
       isSelected: selectedStudyPartIds.includes(part.id),
     }))
   ), [selectedStudyPartIds, studyLessonParts]);
+  const practiceGrammarPart = useMemo(() => {
+    if (!studyLessonId || isLibraryMode || isReviewMode || !onOpenGrammarPart) return undefined;
+
+    const lessonGrammarParts = getInteractiveGrammarPartsForLesson(activeBookId, studyLessonId);
+    const enabledGrammarParts = lessonGrammarParts.filter((part) => (
+      selectedStudyPartIds.includes(part.partId)
+    ));
+    const candidateParts = enabledGrammarParts.length > 0 ? enabledGrammarParts : lessonGrammarParts;
+
+    return candidateParts.find((part) => (
+      part.grammarPages.some((page) => !completedGrammarPageIds.includes(page.id))
+    )) ?? candidateParts[0];
+  }, [
+    activeBookId,
+    completedGrammarPageIds,
+    isLibraryMode,
+    isReviewMode,
+    onOpenGrammarPart,
+    selectedStudyPartIds,
+    studyLessonId,
+  ]);
   const activityLabel = activeActivity === 'create-card'
     ? 'Create a card'
     : `${activities.find((activity) => activity.id === resolvedActivity)?.label ?? 'Study'} practice`;
@@ -190,6 +216,24 @@ export function ActivityModals({
     visibleStudyParts,
   ]);
 
+  const selectStudyPart = useCallback((partId: number) => {
+    if (!studyLessonId || !studySelectionKey || visibleStudyParts.length === 0) return;
+
+    const availablePartIds = visibleStudyParts.map((part) => part.id);
+    const normalized = normalizePartSelection([partId], availablePartIds);
+    if (!normalized) return;
+
+    setSelectedLessonParts((current) => ({
+      ...current,
+      [studySelectionKey]: normalized,
+    }));
+  }, [
+    setSelectedLessonParts,
+    studyLessonId,
+    studySelectionKey,
+    visibleStudyParts,
+  ]);
+
   return (
     <>
       <AnimatePresence>
@@ -206,6 +250,7 @@ export function ActivityModals({
                     totalCount={practiceHeader.totalCount}
                     partSegments={practiceHeader.partSegments}
                     studyParts={visibleStudyParts}
+                    onSelectStudyPart={selectStudyPart}
                     onToggleStudyPart={toggleStudyPart}
                     accentBgClassName={activeBook.accentBg}
                     onSettingsClick={practiceHeaderActions.onSettingsClick}
@@ -214,6 +259,7 @@ export function ActivityModals({
                     onRestartClick={practiceHeaderActions.onRestartClick}
                     isShuffled={practiceHeaderActions.isShuffled}
                     flowStatus={practiceHeaderActions.flowStatus}
+                    showFlow={resolvedActivity === 'flashcards'}
                     settings={{
                       preferences: practicePreferences,
                       onPreferencesChange: updatePracticePreferences,
@@ -302,6 +348,9 @@ export function ActivityModals({
             feedback={swipeFeedback}
             value={resolvedActivity as (typeof PRACTICE_ACTIVITIES)[number]['id']}
             quizMode={quizMode}
+            onOpenGrammar={practiceGrammarPart && onOpenGrammarPart
+              ? () => onOpenGrammarPart(practiceGrammarPart.id)
+              : undefined}
             onSelectQuizMode={(mode) => {
               setQuizMode(mode);
               setActiveActivity('quiz');

@@ -16,13 +16,14 @@ export interface ScreenHeaderProps {
   totalCount?: number;
   partSegments?: PartSegment[];
   studyParts?: CourseLessonPartProgress[];
+  onSelectStudyPart?: (partId: number) => void;
   onToggleStudyPart?: (partId: number) => void;
   onClose?: () => void;
   onBack?: () => void;
   rightAction?: React.ReactNode;
   accentBgClassName?: string;
   className?: string;
-  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'none';
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '4xl' | 'none';
   progressSize?: 'default' | 'compact';
 }
 
@@ -35,6 +36,7 @@ export function ScreenHeader({
   totalCount, 
   partSegments = [],
   studyParts = [],
+  onSelectStudyPart,
   onToggleStudyPart,
   onClose, 
   onBack, 
@@ -51,8 +53,10 @@ export function ScreenHeader({
     lg: 'max-w-lg',
     xl: 'max-w-xl',
     '2xl': 'max-w-2xl',
+    '4xl': 'max-w-4xl',
     none: 'max-w-none',
   };
+  const usesStudyPartRail = studyParts.length > 1 && Boolean(onSelectStudyPart && onToggleStudyPart);
 
   return (
     <header className={cn(
@@ -85,12 +89,14 @@ export function ScreenHeader({
             centerContent
           ) : progress !== undefined ? (
             <div className="w-full flex items-center justify-center">
-              {studyParts.length > 1 && onToggleStudyPart ? (
+              {studyParts.length > 1 && onSelectStudyPart && onToggleStudyPart ? (
                 <StudyPartProgressRail
                   parts={studyParts}
+                  onSelectPart={onSelectStudyPart}
                   onTogglePart={onToggleStudyPart}
                   segments={partSegments}
                   currentIndex={currentIndex ?? 0}
+                  totalCount={totalCount ?? 0}
                   density={progressSize === 'compact' ? 'compact' : 'default'}
                   className="w-full"
                 />
@@ -104,7 +110,7 @@ export function ScreenHeader({
                 />
               ) : (
                 <div className={cn(
-                  "relative h-5 w-full overflow-hidden rounded-full bg-ui-divider",
+                  "relative h-5 w-full overflow-hidden rounded-full bg-ui-border",
                 )}>
                   <motion.div
                     className={`absolute bottom-0 left-0 top-0 min-w-0 overflow-hidden rounded-full ${accentBgClassName} will-change-[width]`}
@@ -140,8 +146,8 @@ export function ScreenHeader({
         </div>
 
         <div className="flex h-10 shrink-0 items-center gap-2">
-          {(currentIndex !== undefined && totalCount !== undefined && totalCount > 0) && (
-            <span className="mt-0.5 text-sm font-extrabold tracking-widest text-ui-muted tabular-nums">
+          {(currentIndex !== undefined && totalCount !== undefined && totalCount > 0 && !usesStudyPartRail) && (
+            <span className="mt-0.5 hidden text-sm font-extrabold tracking-widest text-ui-muted tabular-nums sm:inline">
               {currentIndex + 1} / {totalCount}
             </span>
           )}

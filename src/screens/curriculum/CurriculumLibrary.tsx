@@ -1,8 +1,8 @@
 import { memo, useCallback, useEffect, useMemo } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { ActionButton, AppIcon } from '../../lib/widgets';
+import { ActionButton, AppIcon, StickyWorkspaceHeader, type StickyWorkspaceHeaderMenuToggle } from '../../lib/widgets';
 import { useAppStore } from '../../store/useAppStore';
+import { useAuth } from '../../hooks/useAuth';
 import { reconcilePartSelectionsForBook } from '../../utils/lessonPartSelection';
 import { BookCarousel } from './BookCarousel';
 import { LessonItem } from './LessonItem';
@@ -15,6 +15,36 @@ interface CurriculumLibraryProps {
   selectedLessons?: number[];
   onToggleLesson?: (id: number, availablePartIds: number[]) => void;
   onStartPractice?: () => void;
+  /** Mobile hamburger shown overlaid left in the sticky header (Books home). */
+  menuToggle?: StickyWorkspaceHeaderMenuToggle;
+  /** Opens the Profile tab (rendered as the avatar in the header's right side). */
+  onProfileClick?: () => void;
+}
+
+function ProfileAvatarButton({ onClick }: { onClick: () => void }) {
+  const { currentUser } = useAuth();
+  const avatarValue = currentUser?.user_metadata?.avatar_url || currentUser?.user_metadata?.picture;
+  const avatarUrl = typeof avatarValue === 'string' ? avatarValue : null;
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label="Open profile"
+      className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-ui-surface text-ui-muted-strong transition-colors hover:text-brand-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25"
+    >
+      {avatarUrl ? (
+        <img
+          src={avatarUrl}
+          alt=""
+          referrerPolicy="no-referrer"
+          className="h-full w-full object-cover"
+        />
+      ) : (
+        <AppIcon name="profile" size={22} />
+      )}
+    </button>
+  );
 }
 
 export const CurriculumLibrary = memo(function CurriculumLibrary({
@@ -23,6 +53,8 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
   selectedLessons = [],
   onToggleLesson = () => {},
   onStartPractice,
+  menuToggle,
+  onProfileClick,
 }: CurriculumLibraryProps) {
   const { learnedCards, selectedLessonParts, setSelectedLessonParts } = useAppStore();
   const activeBook = useMemo(
@@ -76,29 +108,16 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
   ));
 
   return (
+    // No padding above the sticky header. Any gap above it makes the header
+    // scroll briefly before it pins at top:0, which reads as unintentional.
+    // The header sits flush against the scroll container top, like Library.
     <div className="relative w-full">
       <div className="flex w-full animate-in flex-col pb-24 duration-500 fade-in zoom-in-[0.98]">
-        <div className="sticky top-0 z-40 flex origin-top flex-col items-center bg-gradient-to-b from-ui-canvas via-ui-canvas/95 to-transparent pb-1 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] backdrop-blur-[2px] md:pb-2 md:pt-2">
-          <div className="relative z-20 flex h-14 w-full flex-col items-center justify-center px-16 text-center md:h-16 md:px-4">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeBook.id}
-                initial={{ opacity: 0, scale: 0.9, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: -10 }}
-                transition={{ duration: 0.2 }}
-                className="absolute flex flex-col items-center"
-              >
-                <h1 className="mb-0.5 text-xl font-extrabold tracking-tight text-ui-ink sm:text-2xl md:text-[26px]">
-                  {activeBook.title}
-                </h1>
-                <p className={`text-[11px] font-black uppercase tracking-widest md:text-[12px] ${activeBook.accent}`}>
-                  {activeBook.label}
-                </p>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
+        <StickyWorkspaceHeader
+          title={activeBook.title}
+          menuToggle={menuToggle}
+          rightContent={onProfileClick ? <ProfileAvatarButton onClick={onProfileClick} /> : undefined}
+        />
 
         <BookCarousel
           activeBookId={activeBookId}

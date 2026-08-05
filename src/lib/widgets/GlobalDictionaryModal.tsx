@@ -12,9 +12,10 @@ import { Flashcard } from '../../data/flashcards';
 import { CharacterBreakdownOverlay } from './CharacterBreakdownOverlay';
 import { AppIcon } from './AppIcon';
 import { IconActionButton } from './IconActionButton';
+import { audioService } from '../../services/audioService';
 
 export function GlobalDictionaryModal() {
-  const { dictionaryWord, setDictionaryWord, favorites, toggleFavorite, activeBookId } = useAppStore();
+  const { dictionaryWord, setDictionaryWord, favorites, toggleFavorite, activeBookId, characterPreference } = useAppStore();
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
   const [activeBreakdownIndex, setActiveBreakdownIndex] = useState<number>(0);
 
@@ -183,24 +184,39 @@ export function GlobalDictionaryModal() {
                   ))}
                 </div>
 
-                <div className="flex flex-wrap gap-2.5 items-center mt-1">
+                <div className="flex flex-wrap items-center gap-2.5 mt-1">
                   {(entries[0].pinyin || []).map((py, i) => (
                     <span key={i} className="text-[#1CB0F6] font-extrabold tracking-widest text-xl">
                       {numberToToneMarks(py)}
                     </span>
                   ))}
+                  <IconActionButton
+                    onClick={() => audioService.speakNeural(
+                      primaryChar,
+                      characterPreference === 'traditional' ? 'zh-TW-HsiaoChenNeural' : 'zh-CN-XiaoxiaoNeural',
+                    ).catch(() => {})}
+                    label={`Play pronunciation of ${primaryChar}`}
+                    size="md"
+                    variant="quiet"
+                    icon={<AppIcon name="audio" size={19} />}
+                  />
                 </div>
               </div>
               
               <div className="flex flex-col gap-3 items-end shrink-0 pt-2">
-              <IconActionButton
+                <button
+                  type="button"
                   onClick={() => toggleFavorite(primaryChar)}
-                  label={isFav ? `Remove ${primaryChar} from saved words` : `Save ${primaryChar}`}
-                  size="lg"
-                  variant="surface"
-                  className={isFav ? 'text-brand-secondary hover:text-brand-secondary' : undefined}
-                  icon={<AppIcon name={isFav ? 'bookmarkFilled' : 'bookmark'} size={25} />}
-                />
+                  aria-label={isFav ? `Remove ${primaryChar} from saved words` : `Save ${primaryChar}`}
+                  aria-pressed={isFav}
+                  className="rounded-full p-2 text-ui-muted outline-none transition-colors hover:text-brand-primary focus-visible:ring-4 focus-visible:ring-brand-primary/20"
+                >
+                  <AppIcon
+                    name={isFav ? 'bookmarkFilled' : 'bookmark'}
+                    size={25}
+                    className={isFav ? 'text-brand-secondary' : undefined}
+                  />
+                </button>
               </div>
             </div>
 

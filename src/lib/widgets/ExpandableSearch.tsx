@@ -6,6 +6,7 @@ interface ExpandableSearchProps {
   value: string;
   onChange: (val: string) => void;
   placeholder?: string;
+  label?: string;
   isExpanded?: boolean;
   className?: string;
   onExpandedChange?: (expanded: boolean) => void;
@@ -15,6 +16,7 @@ export function ExpandableSearch({
   value, 
   onChange, 
   placeholder = "Search...", 
+  label = "search",
   isExpanded = false,
   className = "",
   onExpandedChange
@@ -47,8 +49,8 @@ export function ExpandableSearch({
       <div
         className={`w-full min-w-[44px] relative flex items-center h-[44px] rounded-[16px] overflow-hidden ${
           isExpanded 
-            ? 'border-2 border-b-[5px] border-ui-border bg-ui-surface focus-within:ring-4 focus-within:ring-brand-primary/20'
-            : 'border-2 border-b-[5px] border-ui-border bg-ui-surface transition-colors hover:bg-ui-hover'
+            ? 'bg-ui-surface focus-within:bg-white focus-within:ring-4 focus-within:ring-brand-primary/20'
+            : 'bg-transparent transition-colors'
         }`}
       >
         {isExpanded ? (
@@ -62,7 +64,7 @@ export function ExpandableSearch({
 
             <input
               ref={inputRef}
-              type="search"
+              type="text"
               value={value}
               onChange={(e) => onChange(e.target.value)}
               placeholder={placeholder}
@@ -83,9 +85,9 @@ export function ExpandableSearch({
           <button
             type="button"
             onClick={() => handleSetExpanded(true)}
-            aria-label="Open dictionary search"
+            aria-label={`Open ${label}`}
             aria-expanded="false"
-            className="flex h-full w-full items-center justify-center text-ui-ink outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-brand-primary/25"
+            className="flex h-full w-full items-center justify-center rounded-[14px] text-ui-muted-strong outline-none transition-[transform,color] hover:text-ui-ink active:scale-90 focus-visible:ring-4 focus-visible:ring-brand-primary/25"
           >
             <AppIcon name="search" size={18} />
           </button>
@@ -103,7 +105,7 @@ export function ExpandableSearch({
                 onChange('');
                 inputRef.current?.focus();
               }}
-              aria-label="Clear dictionary search"
+              aria-label={`Clear ${label}`}
               className="absolute inset-y-0 right-0 flex w-11 items-center justify-center text-ui-muted outline-none hover:text-ui-ink focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-brand-primary/25"
             >
               <AppIcon name="close" size={16} />

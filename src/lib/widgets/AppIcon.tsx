@@ -17,6 +17,7 @@ import {
   PiExamFill,
   PiXCircleFill,
   PiFireFill,
+  PiFolderFill,
   PiGraduationCapFill,
   PiGaugeBold,
   PiHeadphonesBold,
@@ -26,6 +27,7 @@ import {
   PiListBold,
   PiLockKeyFill,
   PiMagnifyingGlassBold,
+  PiNotebookBold,
   PiPauseCircleFill,
   PiPencilSimpleBold,
   PiPlayFill,
@@ -37,6 +39,7 @@ import {
   PiCursorTextBold,
   PiSlidersHorizontalBold,
   PiShuffleBold,
+  PiSidebarSimpleBold,
   PiSpeakerHighFill,
   PiArrowCounterClockwiseBold,
   PiGearSixBold,
@@ -68,7 +71,9 @@ export type AppIconName =
   | 'exam'
   | 'error'
   | 'flame'
+  | 'folder'
   | 'forward'
+  | 'grammar'
   | 'lightbulb'
   | 'keyboard'
   | 'lock'
@@ -81,6 +86,7 @@ export type AppIconName =
   | 'profile'
   | 'practice'
   | 'search'
+  | 'sidebarToggle'
   | 'sparkles'
   | 'star'
   | 'settings'
@@ -117,7 +123,9 @@ const ICONS: Record<AppIconName, IconType> = {
   exam: PiExamFill,
   error: PiXCircleFill,
   flame: PiFireFill,
+  folder: PiFolderFill,
   forward: PiArrowRightBold,
+  grammar: PiNotebookBold,
   lightbulb: PiLightbulbBold,
   keyboard: PiKeyboardBold,
   lock: PiLockKeyFill,
@@ -130,6 +138,7 @@ const ICONS: Record<AppIconName, IconType> = {
   profile: PiUserBold,
   practice: PiPencilSimpleBold,
   search: PiMagnifyingGlassBold,
+  sidebarToggle: PiSidebarSimpleBold,
   sparkles: PiSparkleFill,
   star: PiStarFill,
   settings: PiSlidersHorizontalBold,

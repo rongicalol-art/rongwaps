@@ -1,9 +1,7 @@
 import type { ReactNode } from 'react';
-import { PiFolderFill } from 'react-icons/pi';
-import { GraphPaperPanel, SearchBar3D, Soft3DButton } from '../../../lib/widgets';
+import { AppIcon, ActionButton } from '../../../lib/widgets';
 import { FolderItem } from './FolderItem';
-import { LibraryContinueCard } from './LibraryContinueCard';
-import { LibraryStatsCard } from './LibraryStatsCard';
+import { LibraryRecentCardsCard, type RecentItem } from './LibraryRecentCardsCard';
 
 interface LibraryCollectionSummary {
   id: string;
@@ -16,64 +14,46 @@ interface LibraryCollectionSummary {
 
 interface LibraryHomeViewProps {
   collections: LibraryCollectionSummary[];
+  recentItems?: RecentItem[];
   searchQuery: string;
   onSearchChange: (value: string) => void;
   onSelectCollection: (id: string) => void;
   onDeleteFolder: (id: string, name: string) => void;
   onCreateFolder: () => void;
-  onPracticeCollection?: (id: string) => void;
-  onAddCard?: () => void;
+  onSelectWord?: (word: string) => void;
 }
 
 export function LibraryHomeView({
   collections,
+  recentItems = [],
   searchQuery,
   onSearchChange,
   onSelectCollection,
   onDeleteFolder,
   onCreateFolder,
-  onPracticeCollection,
-  onAddCard,
+  onSelectWord,
 }: LibraryHomeViewProps) {
   const normalizedSearch = searchQuery.trim().toLowerCase();
   const visibleCollections = normalizedSearch
     ? collections.filter((collection) => collection.title.toLowerCase().includes(normalizedSearch))
     : collections;
-  const savedCount = collections.find((collection) => collection.id === 'starred')?.count ?? 0;
-  const cardCount = collections
-    .filter((collection) => collection.id !== 'starred')
-    .reduce((total, collection) => total + collection.count, 0);
-  const featuredCollection = collections.reduce(
-    (best, collection) => (collection.count > best.count ? collection : best),
-    collections[0],
-  );
 
   return (
-    <>
-      <section className="mb-6">
-        <SearchBar3D
-          value={searchQuery}
-          onValueChange={onSearchChange}
-          onSubmit={onSearchChange}
-          showSubmit={false}
-          placeholder="Search folders and collections..."
-        />
-      </section>
-
-      <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,2fr)_minmax(280px,1fr)]">
-        <GraphPaperPanel className="min-h-[510px] p-4 sm:p-6">
-          <div className="mb-4 flex items-center justify-between gap-4 px-3 py-2.5">
+    <div className="flex flex-col gap-7">
+      <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(260px,0.72fr)]">
+        <section className="min-h-[420px] rounded-[28px] bg-ui-surface p-4 sm:p-6">
+          <div className="mb-5 flex items-center justify-between gap-4 px-1">
             <div className="flex items-center gap-2.5">
-              <PiFolderFill size={22} className="text-[#FFB020]" />
-              <h1 className="text-[14px] font-black uppercase tracking-wider text-ui-ink-strong">Folders</h1>
+              <AppIcon name="folder" size={20} className="text-[#FFB020]" />
+              <h2 className="text-[17px] font-black text-ui-ink-strong">Folders</h2>
             </div>
-            <span className="text-[11px] font-black uppercase tracking-wide text-ui-muted-strong">
-              {collections.length} collections
+            <span className="text-[12px] font-extrabold text-ui-muted">
+              {collections.length}
             </span>
           </div>
 
           {visibleCollections.length > 0 ? (
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3">
               {visibleCollections.map((collection) => (
                 <FolderItem
                   key={collection.id}
@@ -87,31 +67,28 @@ export function LibraryHomeView({
               )}
             </div>
           ) : (
-            <div className="flex min-h-[320px] flex-col items-center justify-center rounded-[20px] bg-white/80 px-6 text-center">
-              <PiFolderFill size={42} className="mb-3 text-ui-muted" />
-              <p className="text-[16px] font-black text-ui-ink">No folder matches that search.</p>
-              <Soft3DButton
-                variant="custom"
-                depth="sm"
+            <div className="flex min-h-[300px] flex-col items-center justify-center rounded-[24px] bg-ui-surface px-6 text-center">
+              <AppIcon name="folder" size={40} className="mb-3 text-ui-muted" />
+              <p className="text-[16px] font-black text-ui-ink">No matching folder</p>
+              <ActionButton
+                variant="secondary"
+                size="sm"
                 onClick={() => onSearchChange('')}
-                className="mt-3 w-auto rounded-[16px] border-[#BDEAFF] bg-[#E5F7FF] px-5 py-2.5 text-[12px] text-[#1CB0F6]"
+                className="mt-4"
               >
                 Clear search
-              </Soft3DButton>
+              </ActionButton>
             </div>
           )}
-        </GraphPaperPanel>
+        </section>
 
-        <aside className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
-          <LibraryStatsCard savedCount={savedCount} cardCount={cardCount} folderCount={collections.length} />
-          <LibraryContinueCard
-            title={featuredCollection.title}
-            itemCount={featuredCollection.count}
-            onPractice={onPracticeCollection ? () => onPracticeCollection(featuredCollection.id) : undefined}
-            onAddCard={onAddCard}
+        <aside className="lg:sticky lg:top-6">
+          <LibraryRecentCardsCard
+            items={recentItems}
+            onSelectWord={onSelectWord}
           />
         </aside>
       </div>
-    </>
+    </div>
   );
 }

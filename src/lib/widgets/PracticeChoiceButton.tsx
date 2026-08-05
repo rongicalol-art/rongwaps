@@ -13,7 +13,7 @@ interface PracticeChoiceButtonProps extends ButtonHTMLAttributes<HTMLButtonEleme
 }
 
 const stateClasses: Record<PracticeChoiceState, string> = {
-  idle: 'border-ui-border bg-white text-ui-ink hover:border-brand-primary/60 hover:bg-brand-primary/10',
+  idle: 'border-ui-border bg-white text-ui-ink hover:bg-ui-hover',
   selected: '',
   correct: 'translate-y-[4px] border-feedback-success-edge bg-feedback-success-surface text-feedback-success-edge',
   wrong: 'translate-y-[4px] border-feedback-danger-edge bg-feedback-danger-surface text-feedback-danger-edge',
@@ -55,10 +55,8 @@ export function PracticeChoiceButton({
     >
       <span
         className={cn(
-          'mr-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] border-b-2 text-sm font-bold',
-          hasEmphasizedNumber
-            ? 'border-current bg-white/20'
-            : 'border-ui-border text-ui-muted',
+          'mr-4 w-8 shrink-0 text-sm font-bold',
+          hasEmphasizedNumber ? 'text-current' : 'text-ui-muted',
         )}
       >
         {index + 1}

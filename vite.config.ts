@@ -17,6 +17,8 @@ export default defineConfig(() => {
         output: {
           manualChunks: {
             vendor: ['react', 'react-dom', 'motion', 'lucide-react'],
+            // Supabase client is heavy (~200 kB) and only needed for auth/sync paths.
+            supabase: ['@supabase/supabase-js'],
           }
         }
       }

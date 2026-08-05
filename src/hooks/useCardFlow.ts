@@ -29,7 +29,6 @@ export function useCardFlow({
   const onAdvanceRef = useRef(onAdvance);
   const onReplayRef = useRef(onReplay);
   const setIsFlippedRef = useRef(setIsFlipped);
-  const userGestureAudioRef = useRef<Promise<void> | null>(null);
 
   onAdvanceRef.current = onAdvance;
   onReplayRef.current = onReplay;
@@ -56,17 +55,11 @@ export function useCardFlow({
       onReplayRef.current();
       setIsFlippedRef.current(false);
     } else if (currentCard) {
-      // Starting the first pronunciation inside the button gesture is
-      // required by Safari's media policy. The effect below adopts it.
-      userGestureAudioRef.current = audioService.play(
-        currentCard.audio,
-        pronunciationRate,
-        currentCard.front,
-      );
+      // Unlock audio during the user gesture. Playback waits until reveal.
+      audioService.initialize();
     }
-    audioService.initialize();
     setFlowStatus('playing');
-  }, [currentCard, flowStatus, pronunciationRate]);
+  }, [currentCard, flowStatus]);
 
   useEffect(() => {
     if (flowStatus !== 'playing' || !currentCard) return;
@@ -80,19 +73,17 @@ export function useCardFlow({
       await wait(220);
       if (cancelled) return;
 
-      const userGestureAudio = userGestureAudioRef.current;
-      userGestureAudioRef.current = null;
+      setIsFlippedRef.current(true);
+      await wait(360);
+      if (cancelled) return;
+
       await Promise.race([
-        userGestureAudio || audioService.play(currentCard.audio, pronunciationRate, currentCard.front),
+        audioService.play(currentCard.audio, pronunciationRate, currentCard.front),
         wait(2800),
       ]);
       audioService.stop();
       if (cancelled) return;
       await wait(flowFrontDelayMs);
-      if (cancelled) return;
-
-      setIsFlippedRef.current(true);
-      await wait(360);
       if (cancelled) return;
 
       if (speakDefinition && currentCard.back) {
