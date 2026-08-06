@@ -290,7 +290,7 @@ export function StudyPartProgressRail({
   if (parts.length === 0) return null;
 
   const segmentsByPartId = new Map(segments.map((segment) => [segment.partId, segment]));
-  
+
   const partsWithCounts = parts.map((part) => {
     const segment = segmentsByPartId.get(part.id);
     const cardCount = segment?.cardCount ?? (part.wordCount > 0 ? part.wordCount : 10);
@@ -311,7 +311,7 @@ export function StudyPartProgressRail({
       <motion.div
         layout
         transition={interactionTransition}
-        className={cn('relative flex w-full items-start gap-2 pb-5 sm:items-center sm:gap-2.5 sm:pb-0', className)}
+        className={cn('relative flex w-full items-center gap-2 sm:gap-2.5', className)}
         role="group"
         aria-label="Choose study parts"
       >

@@ -127,7 +127,15 @@ export class AudioService {
               return audioBuffer;
             })();
             this.fetchPromises.set(fileName, promise);
-            await promise;
+            try {
+              await promise;
+            } finally {
+              // The decoded buffer is now in `buffers` (bounded cache). Drop the
+              // in-flight marker regardless of success/failure so a later eviction
+              // can re-fetch the file instead of being pinned forever by a stale
+              // promise that was only cleared on error.
+              this.fetchPromises.delete(fileName);
+            }
           }
         } else {
           if (!this.objectUrls.has(fileName) && !this.blobPromises.has(fileName)) {
@@ -138,7 +146,11 @@ export class AudioService {
                return objectUrl;
             })();
             this.blobPromises.set(fileName, promise);
-            await promise;
+            try {
+              await promise;
+            } finally {
+              this.blobPromises.delete(fileName);
+            }
           }
         }
       } catch (error) {

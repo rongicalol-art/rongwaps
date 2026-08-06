@@ -52,6 +52,12 @@ export interface AppState {
   // Auth
   currentUser: UserSnapshot | null;
   setCurrentUser: (user: UserSnapshot | null) => void;
+  // Persisted owner of the locally cached progress. Used by the sync layer to
+  // detect account switches that survive page reloads (e.g. OAuth redirects),
+  // so one user's cached SRS data is never merged into or uploaded to
+  // another user's account.
+  lastActiveUserId: string | null;
+  setLastActiveUserId: (userId: string | null) => void;
 
   // App Config
   activeBookId: number;
@@ -190,6 +196,8 @@ export const useAppStore = create<AppState>()(
       // Auth
       currentUser: null,
       setCurrentUser: (user) => set({ currentUser: user }),
+      lastActiveUserId: null,
+      setLastActiveUserId: (userId) => set({ lastActiveUserId: userId }),
 
       // App Config
       activeBookId: 1,
@@ -357,6 +365,7 @@ export const useAppStore = create<AppState>()(
       name: 'rongwaps-storage',
       storage: createJSONStorage(() => idbStorage),
       partialize: (state) => ({
+        lastActiveUserId: state.lastActiveUserId,
         activeBookId: state.activeBookId,
         characterPreference: state.characterPreference,
         favorites: state.favorites,
