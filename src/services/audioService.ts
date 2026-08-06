@@ -338,34 +338,42 @@ export class AudioService {
   public async preloadNeural(texts: string[], voice?: string): Promise<void> {
     if (!texts || texts.length === 0) return;
     const cache = await this.getNeuralCache();
-    for (const text of texts) {
-      const clean = text?.trim();
-      if (!clean) continue;
-      const cacheRequest = this.ttsCacheRequest(clean, voice);
-      if (cache) {
-        try {
-          if (await cache.match(cacheRequest)) continue; // already cached
-        } catch {
-          // fall through and synth anyway
-        }
-      }
-      try {
-        const response = await fetch('/api/tts', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ text: clean, voice }),
-        });
-        if (!response.ok) continue;
-        const blob = await response.blob();
+    // Cap concurrent preload fetches so a deck prewarm doesn't burst past the
+    // server paidApiLimiter (10/min). Workers pull from a shared queue.
+    const MAX_CONCURRENT_TTS_PRELOAD = 2;
+    const queue = texts.map((text) => text?.trim()).filter(Boolean);
+    const worker = async () => {
+      while (queue.length > 0) {
+        const clean = queue.shift()!;
+        const cacheRequest = this.ttsCacheRequest(clean, voice);
         if (cache) {
-          cache
-            .put(cacheRequest, new Response(blob, { headers: { 'Content-Type': 'audio/mpeg' } }))
-            .catch(() => {});
+          try {
+            if (await cache.match(cacheRequest)) continue;
+          } catch {
+            // fall through and synth anyway
+          }
         }
-      } catch {
-        // best-effort — never block card save/render
+        try {
+          const response = await fetch('/api/tts', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text: clean, voice }),
+          });
+          if (!response.ok) continue;
+          const blob = await response.blob();
+          if (cache) {
+            cache
+              .put(cacheRequest, new Response(blob, { headers: { 'Content-Type': 'audio/mpeg' } }))
+              .catch(() => {});
+          }
+        } catch {
+          // best-effort — never block card save/render
+        }
       }
-    }
+    };
+    await Promise.all(
+      Array.from({ length: Math.min(MAX_CONCURRENT_TTS_PRELOAD, queue.length) }, () => worker()),
+    );
   }
 
   public speakText(text: string, language = 'zh-CN', rate = 1.0): Promise<void> {

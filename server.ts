@@ -60,6 +60,10 @@ const paidApiLimiter = rateLimit({
   message: { error: "Too many requests. Try again later." },
 });
 
+// Dedupe concurrent mnemonic generation for the same content so two tabs
+// requesting the same char/word don't pay Gemini twice.
+const mnemonicInFlight = new Map<string, Promise<{ mnemonic: string; usage?: unknown }>>();
+
 // Initialize Google Gen AI client with server-side API Key
 const apiKey = process.env.CUSTOM_GEMINI_KEY || process.env.GEMINI_API_KEY;
 const aiClient = apiKey ? new GoogleGenAI({
@@ -168,17 +172,33 @@ Example: Three drops of water flowing downward, so this character means **water*
       }
     }
 
-    const response = await ai.models.generateContent({
-      model,
-      contents: prompt,
-      config: { systemInstruction, temperature: 0.2 }
-    });
+    // Dedupe concurrent generation for the same content (two tabs → one
+    // Gemini call). Keyed by content type + text to keep char/word distinct.
+    const generationKey = `${isWord ? 'word' : 'char'}:${text}`;
+    let inFlight = mnemonicInFlight.get(generationKey);
+    if (!inFlight) {
+      inFlight = (async () => {
+        const aiResponse = await ai.models.generateContent({
+          model,
+          contents: prompt,
+          config: { systemInstruction, temperature: 0.2 }
+        });
+        const usage = aiResponse.usageMetadata;
+        console.log(`[Token Usage] ${isWord ? 'Word' : 'Char'}: "${text}", Prompt: ${usage?.promptTokenCount}, Output: ${usage?.candidatesTokenCount}, Total: ${usage?.totalTokenCount}`);
+        return {
+          mnemonic: aiResponse.text?.trim() || "Could not generate a mnemonic at this time.",
+          usage,
+        };
+      })().finally(() => {
+        mnemonicInFlight.delete(generationKey);
+      });
+      mnemonicInFlight.set(generationKey, inFlight);
+    } else {
+      console.log(`Reusing in-flight mnemonic generation for: ${text}`);
+    }
 
-    const usage = response.usageMetadata;
-    console.log(`[Token Usage] ${isWord ? 'Word' : 'Char'}: "${text}", Prompt: ${usage?.promptTokenCount}, Output: ${usage?.candidatesTokenCount}, Total: ${usage?.totalTokenCount}`);
-
-    const resultText = response.text?.trim() || "Could not generate a mnemonic at this time.";
-    res.json({ mnemonic: resultText, usage });
+    const result = await inFlight;
+    res.json({ mnemonic: result.mnemonic, usage: result.usage });
   } catch (error: unknown) {
     console.error("Backend Error /api/generate-mnemonic:", error);
     const message = getErrorMessage(error);
