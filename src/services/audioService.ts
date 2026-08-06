@@ -19,6 +19,8 @@ export class AudioService {
   private audioContext: AudioContext | null = null;
   private buffers: Map<string, AudioBuffer> = new Map();
   private fetchPromises: Map<string, Promise<AudioBuffer>> = new Map();
+  // Bounded cache for decoded buffers/object URLs; evict oldest first.
+  private static readonly MAX_AUDIO_CACHE = 100;
   
   // Fallbacks for older browsers
   private objectUrls: Map<string, string> = new Map();
@@ -77,6 +79,25 @@ export class AudioService {
     this.isInitialized = true;
   }
 
+  private cacheBuffer(fileName: string, audioBuffer: AudioBuffer): void {
+    this.buffers.set(fileName, audioBuffer);
+    while (this.buffers.size > AudioService.MAX_AUDIO_CACHE) {
+      const oldest = this.buffers.keys().next().value;
+      if (oldest === undefined) break;
+      this.buffers.delete(oldest);
+    }
+  }
+
+  private cacheObjectUrl(fileName: string, objectUrl: string): void {
+    this.objectUrls.set(fileName, objectUrl);
+    while (this.objectUrls.size > AudioService.MAX_AUDIO_CACHE) {
+      const oldest = this.objectUrls.keys().next().value;
+      if (oldest === undefined) break;
+      URL.revokeObjectURL(this.objectUrls.get(oldest)!);
+      this.objectUrls.delete(oldest);
+    }
+  }
+
   async preload(audioFileNames: (string | undefined)[]) {
     if (typeof window === 'undefined') return;
 
@@ -102,7 +123,7 @@ export class AudioService {
               const blob = await fetchAudioBlob(fileName);
               const arrayBuffer = await blob.arrayBuffer();
               const audioBuffer = await this.audioContext!.decodeAudioData(arrayBuffer);
-              this.buffers.set(fileName, audioBuffer);
+              this.cacheBuffer(fileName, audioBuffer);
               return audioBuffer;
             })();
             this.fetchPromises.set(fileName, promise);
@@ -113,7 +134,7 @@ export class AudioService {
             const promise = (async () => {
                const blob = await fetchAudioBlob(fileName);
                const objectUrl = URL.createObjectURL(blob);
-               this.objectUrls.set(fileName, objectUrl);
+               this.cacheObjectUrl(fileName, objectUrl);
                return objectUrl;
             })();
             this.blobPromises.set(fileName, promise);
