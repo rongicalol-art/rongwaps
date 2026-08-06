@@ -3,6 +3,7 @@ import { Flashcard, FLASHCARDS_DATA } from '../data/flashcards';
 import { vocabularyCache } from '../utils/cache';
 import { extractSearchVariants } from '../utils/courseExamples';
 import { cleanVocabText } from '../utils/vocabCleaner';
+import { escapeRegExp } from '../utils/escapeRegExp';
 import { timeDataRequest } from '../utils/requestTiming';
 import { fetchVocabularyPack } from './vocabularyPackService';
 import { parseVocabularyId } from '../utils/vocabularyId';
@@ -248,9 +249,14 @@ function getSmartScore(card: Flashcard, rawQuery: string, lowerQuery: string, no
       if (front === rawQuery) score += 10000;
       if (joinedPinyin === normQuery && joinedPinyin.length > 0) score += 8000;
 
-      // Exact English meaning word match
-      const wordsRegex = new RegExp(`\\b${lowerQuery}\\b`, 'i');
-      if (wordsRegex.test(definitions)) {
+      // Exact English meaning word match. The query is escaped so regex
+      // metacharacters in the user's input (e.g. "(", "?", "[", "*") never
+      // throw a SyntaxError that turns the whole search into an empty result.
+      // \b is only meaningful for Latin text; Chinese/English mixed strings
+      // still match on literal substring boundaries via includes() below.
+      const escapedQuery = escapeRegExp(lowerQuery.trim());
+      const wordsRegex = escapedQuery ? new RegExp(`(?:^|[^A-Za-z])${escapedQuery}(?=$|[^A-Za-z])`, 'i') : null;
+      if (wordsRegex && wordsRegex.test(definitions)) {
          score += 4000;
          if (definitions.startsWith(lowerQuery)) score += 1000;
       }
