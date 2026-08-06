@@ -4,6 +4,7 @@ import { useAppStore } from '../store/useAppStore';
 import { userService } from '../services/userService';
 import { progressService } from '../services/progressService';
 import { authService } from '../services/authService';
+import type { SRSData } from '../utils/srsEngine';
 import {
   createCloudSyncFingerprint,
   createSingleFlightSaveCoordinator,
@@ -21,6 +22,12 @@ interface CloudSaveSnapshot {
   userId: string;
   userMetadata: Record<string, unknown>;
   store: AppStoreSnapshot;
+  /**
+   * Only the SRS cards that changed since the last acknowledged sync.
+   * Computed at snapshot time so writes scale with session churn, not
+   * with total lifetime card count.
+   */
+  deltaSrsData: Record<string, SRSData>;
 }
 
 interface SaveCoordinator {
@@ -59,6 +66,32 @@ function numberArray(value: unknown): number[] | null {
     : null;
 }
 
+function computeSrsDelta(
+  previous: Record<string, SRSData> | null,
+  current: Record<string, SRSData>,
+): Record<string, SRSData> {
+  // First sync for this user (never pulled/saved): send everything.
+  if (!previous) return current;
+
+  const delta: Record<string, SRSData> = {};
+  for (const [key, value] of Object.entries(current)) {
+    const prev = previous[key];
+    if (
+      !prev
+      || prev.efactor !== value.efactor
+      || prev.interval !== value.interval
+      || prev.repetition !== value.repetition
+      || prev.nextReviewDate !== value.nextReviewDate
+    ) {
+      delta[key] = value;
+    }
+  }
+  // Deletions are intentionally NOT tracked here: the only whole-table delete
+  // path is resetLearningProgress (RPC), and per-card deletion is not exposed
+  // in the UI. Stale rows, if ever created, are reconciled on the next full pull.
+  return delta;
+}
+
 function numberRecord(value: unknown): Record<string, number> | null {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
   const entries = Object.entries(value);
@@ -93,6 +126,10 @@ export function useCloudSync() {
 
   const hasFetchedForUserRef = useRef<string | null>(null);
   const activeUserIdRef = useRef<string | null>(null);
+  // Last SRS state known to be persisted on the server for the current user.
+  // Used to compute the per-save delta so writes scale with churn, not with
+  // total lifetime card count.
+  const lastSyncedSrsRef = useRef<Record<string, SRSData> | null>(null);
   const coordinatorRef = useRef<SaveCoordinator | null>(null);
   const performSaveRef = useRef<(snapshot: CloudSaveSnapshot) => Promise<void>>(async () => {});
   const syncTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -177,7 +214,19 @@ export function useCloudSync() {
               ? cloudData.learnedCards
               : Array.from(new Set([...localProgress.learnedCards, ...cloudData.learnedCards])),
           );
+          // After a pull, the server state is the source of truth for these
+          // cards, so future deltas are computed against the merged result.
+          lastSyncedSrsRef.current = {
+            ...localProgress.srsData,
+            ...cloudData.srsData,
+          };
         }
+      }
+
+      // Even when nothing was merged (no cloud data or cloud older than local),
+      // the pull itself establishes the baseline for the next delta.
+      if (isAccountSwitch) {
+        lastSyncedSrsRef.current = cloudData?.srsData ?? null;
       }
 
       const aggregateStats = await progressService.getAggregateStats(currentUser.id);
@@ -217,8 +266,14 @@ export function useCloudSync() {
   ]);
 
   const performSave = useCallback(async (snapshot: CloudSaveSnapshot) => {
-    const { store, userId, userMetadata } = snapshot;
-    await userService.syncCardProgress(userId, store.srsData);
+    const { store, userId, userMetadata, deltaSrsData } = snapshot;
+    await userService.syncCardProgress(userId, deltaSrsData);
+    // After a successful save, the delta is acknowledged: fold it into the
+    // baseline so the next save only ships cards that changed again.
+    lastSyncedSrsRef.current = {
+      ...(lastSyncedSrsRef.current ?? {}),
+      ...deltaSrsData,
+    };
     await userService.syncMetadata(userId, {
       learnedCards: store.learnedCards,
       lastActivity: store.lastActivity,
@@ -265,19 +320,9 @@ export function useCloudSync() {
       lastSyncedSessionRef.current = snapshotSession;
     }
 
-    const aggregateStats = await progressService.getAggregateStats(userId);
-    const latest = useAppStore.getState();
-    const reconciled = reconcileAggregateProgress(
-      aggregateStats,
-      {
-        totalXp: latest.totalXp,
-        totalCardsReviewed: latest.totalCardsReviewed,
-        totalCardsLearned: latest.totalCardsLearned,
-      },
-      lastSyncedSessionRef.current,
-      getProgressCounters(latest),
-    );
-    setProgressStats({ ...aggregateStats, ...reconciled });
+    // Skip the post-save aggregate-stats re-fetch: fetchFromCloud already
+    // fetched them, and local counters track the session deltas. Streak/
+    // lastStudyDate refresh on the next fetchFromCloud (tab visible/mount).
     setLastCloudUpdate(new Date().toISOString());
   }, [setLastCloudUpdate, setProgressStats]);
 
@@ -324,6 +369,7 @@ export function useCloudSync() {
             userId,
             userMetadata: (currentUser.user_metadata || {}) as Record<string, unknown>,
             store,
+            deltaSrsData: computeSrsDelta(lastSyncedSrsRef.current, store.srsData),
           },
         };
       },

@@ -107,7 +107,7 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
       {activeView === 'home' && (
         <motion.div
           key="home-view"
-          className="mx-auto flex min-h-full w-full max-w-6xl flex-col px-4 pb-24 pt-5 md:px-8 md:pt-6"
+          className="mx-auto flex min-h-full w-full max-w-6xl flex-col px-4 pb-24 pt-0 md:px-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.15 }}
@@ -132,7 +132,7 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
       {activeView === 'folder' && (
         <motion.div
           key="folder-view"
-          className="flex flex-col w-full min-h-full px-4 md:px-8 pt-5 pb-36 max-w-5xl mx-auto"
+          className="flex flex-col w-full min-h-full px-4 md:px-8 pt-0 pb-36 max-w-5xl mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.15 }}

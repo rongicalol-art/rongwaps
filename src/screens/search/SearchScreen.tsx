@@ -156,7 +156,7 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
         ) : (
           <motion.div
             key="dictionary-results"
-            className="mx-auto flex min-h-full w-full max-w-4xl flex-col gap-4 px-4 pb-8 pt-2 md:px-8"
+            className="mx-auto flex min-h-full w-full max-w-4xl flex-col gap-4 px-4 pb-8 pt-0 md:px-8"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}

@@ -26,10 +26,13 @@ export function PracticeHeader({
   flowStatus = 'idle',
   settings,
   showFlow = true,
+  currentIndex,
+  totalCount,
   ...props
 }: PracticeHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [showTransientCount, setShowTransientCount] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const setIsOverlayOpen = useAppStore((state) => state.setIsOverlayOpen);
@@ -44,6 +47,13 @@ export function PracticeHeader({
       if (isSettingsOpen) setIsOverlayOpen(false);
     };
   }, [isSettingsOpen, setIsOverlayOpen]);
+
+  useEffect(() => {
+    if (currentIndex === undefined || totalCount === undefined || totalCount <= 0) return;
+    setShowTransientCount(true);
+    const timer = setTimeout(() => setShowTransientCount(false), 1000);
+    return () => clearTimeout(timer);
+  }, [currentIndex, totalCount]);
 
   const openSettings = () => {
     setIsMenuOpen(false);
@@ -63,6 +73,8 @@ export function PracticeHeader({
       >
         <ScreenHeader
           {...props}
+          currentIndex={currentIndex}
+          totalCount={totalCount}
           maxWidth="4xl"
           progressSize="compact"
           className={cn('!h-auto !min-h-0 !border-0 !bg-transparent !px-4 !py-3 !shadow-none sm:!px-6 lg:!px-10')}
@@ -138,6 +150,19 @@ export function PracticeHeader({
             </div>
           }
         />
+
+        <motion.div
+          animate={{ opacity: showTransientCount ? 1 : 0 }}
+          transition={reduceMotion ? { duration: 0 } : { duration: 0.18, ease: 'easeOut' }}
+          aria-live="polite"
+          className="pointer-events-none select-none sm:hidden"
+        >
+          {currentIndex !== undefined && totalCount !== undefined && totalCount > 0 && (
+            <p className="mt-1 text-center text-xs font-extrabold tabular-nums text-ui-muted">
+              {Math.min(currentIndex + 1, totalCount)} / {totalCount}
+            </p>
+          )}
+        </motion.div>
       </div>
 
       <PracticeSettingsScreen isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} {...settings} />
