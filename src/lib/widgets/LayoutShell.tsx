@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { SideNav, type SideNavProps } from './SideNav';
 import { DynamicBackground } from './DynamicBackground';
