@@ -64,7 +64,10 @@ export const userService = {
     }
   },
 
-  // Save granular card progress to user_card_progress table
+  // Save granular card progress to user_card_progress table.
+  // Prefers the batch RPC (one round-trip, server fills user_id and
+  // last_updated from the JWT); falls back to direct upserts if the RPC
+  // is not deployed in the current environment.
   syncCardProgress: async (userId: string, srsData: Record<string, SRSData>) => {
     try {
       const rows = Object.entries(srsData).map(([card_id, data]) => ({
@@ -79,7 +82,29 @@ export const userService = {
 
       if (rows.length === 0) return;
 
-      // Upsert in batches of 100 to avoid payload limits
+      // RPC path, chunked to stay under PostgREST payload limits.
+      const rpcBatchSize = 500;
+      let rpcOk = true;
+      for (let i = 0; i < rows.length; i += rpcBatchSize) {
+        const batch = rows.slice(i, i + rpcBatchSize);
+        const { error: rpcError } = await supabase.rpc('upsert_card_progress', {
+          p_records: batch.map((row) => ({
+            card_id: row.card_id,
+            ease: row.ease,
+            interval: row.interval,
+            repetitions: row.repetitions,
+            next_review_date: row.next_review_date,
+          })),
+        });
+        if (rpcError) {
+          console.warn('upsert_card_progress RPC failed, falling back to batch upsert:', rpcError);
+          rpcOk = false;
+          break;
+        }
+      }
+      if (rpcOk) return;
+
+      // Fallback: direct upserts in batches of 100 to avoid payload limits.
       const batchSize = 100;
       for (let i = 0; i < rows.length; i += batchSize) {
         const batch = rows.slice(i, i + batchSize);

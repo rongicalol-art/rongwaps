@@ -4,7 +4,7 @@ import { useAppNavigation } from './hooks/useAppNavigation.tsx';
 import { useAudioUnlock } from './hooks/useAudioUnlock';
 import { useAppStore } from './store/useAppStore';
 import { SAMPLE_BOOKS } from './data/books';
-import { getInteractiveGrammarPart } from './data/interactiveGrammarPages';
+import type { InteractiveGrammarPart } from './types/models';
 
 import {
   GlobalDictionaryModal,
@@ -31,6 +31,13 @@ const GrammarLessonScreen = React.lazy(() => import('./screens/grammar-lesson').
 const DebugWindow = React.lazy(() => (
   import('./screens/debug/DebugWindow').then((module) => ({ default: module.DebugWindow }))
 ));
+
+// Lazy-load the interactive grammar data on demand. The data module re-exports
+// all lesson parts (~tens of KB); it must not ship in the main chunk.
+async function loadInteractiveGrammarPart(partId: string): Promise<InteractiveGrammarPart | undefined> {
+  const { getInteractiveGrammarPart } = await import('./data/interactiveGrammarPages');
+  return getInteractiveGrammarPart(partId);
+}
 
 const isDesktopViewport = () => (
   typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches
@@ -76,9 +83,25 @@ export default function App() {
   ));
   const [showDebugWindow, setShowDebugWindow] = useState(false);
   const [activeGrammarPartId, setActiveGrammarPartId] = useState<string | null>(null);
-  const activeGrammarPart = activeGrammarPartId
-    ? getInteractiveGrammarPart(activeGrammarPartId)
-    : undefined;
+  const [activeGrammarPart, setActiveGrammarPart] = useState<Awaited<
+    ReturnType<typeof loadInteractiveGrammarPart>
+  > | null>(null);
+
+  // Load the grammar part lazily — the interactive grammar data is large and
+  // must not ship in the main chunk. Only fetched when a part is actually opened.
+  useEffect(() => {
+    if (!activeGrammarPartId) {
+      setActiveGrammarPart(null);
+      return;
+    }
+    let cancelled = false;
+    void loadInteractiveGrammarPart(activeGrammarPartId).then((part) => {
+      if (!cancelled) setActiveGrammarPart(part);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [activeGrammarPartId]);
 
   const handleResetProgress = useResetProgress({
     currentUser,

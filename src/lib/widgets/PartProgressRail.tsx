@@ -286,7 +286,7 @@ export function StudyPartProgressRail({
   className,
 }: StudyPartProgressRailProps) {
   const railLayoutId = useId();
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useReducedMotion() === true;
   if (parts.length === 0) return null;
 
   const segmentsByPartId = new Map(segments.map((segment) => [segment.partId, segment]));
@@ -303,19 +303,6 @@ export function StudyPartProgressRail({
     (latest, entry, index) => entry.part.isSelected ? index : latest,
     0,
   );
-  const selectedCenterWeight = partsWithCounts.reduce(
-    (weight, entry, index) => (
-      index < lastSelectedIndex
-        ? weight + entry.cardCount
-        : index === lastSelectedIndex
-          ? weight + entry.cardCount / 2
-          : weight
-    ),
-    0,
-  );
-  const mobileCountLeft = totalAllCards > 0
-    ? (selectedCenterWeight / totalAllCards) * 100
-    : ((lastSelectedIndex + 0.5) / partsWithCounts.length) * 100;
   const interactionTransition = reduceMotion ? { duration: 0 } : INTERACTION_SPRING;
   const progressTransition = reduceMotion ? { duration: 0 } : PROGRESS_SPRING;
 
@@ -368,17 +355,6 @@ export function StudyPartProgressRail({
           </Fragment>
         );
       })}
-      {totalCount > 0 && (
-        <motion.span
-          initial={false}
-          animate={{ left: `calc(${mobileCountLeft}% - 27px)` }}
-          transition={interactionTransition}
-          aria-live="polite"
-          className="absolute top-7 w-[54px] whitespace-nowrap text-center text-[11px] font-extrabold tabular-nums text-ui-muted sm:hidden"
-        >
-          {Math.min(currentIndex + 1, totalCount)} / {totalCount}
-        </motion.span>
-      )}
       </motion.div>
     </LayoutGroup>
   );
