@@ -130,6 +130,9 @@ export function useCloudSync() {
   // Used to compute the per-save delta so writes scale with churn, not with
   // total lifetime card count.
   const lastSyncedSrsRef = useRef<Record<string, SRSData> | null>(null);
+  // Server watermark for incremental pulls: max user_card_progress.last_updated
+  // from the previous fetch. Null cursor → full pull.
+  const lastPulledCursorRef = useRef<{ userId: string; cursor: string | null } | null>(null);
   const coordinatorRef = useRef<SaveCoordinator | null>(null);
   const performSaveRef = useRef<(snapshot: CloudSaveSnapshot) => Promise<void>>(async () => {});
   const syncTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -149,7 +152,16 @@ export function useCloudSync() {
 
       const activeUser = await authService.getCurrentUser() || currentUser;
       const metadata = (activeUser.user_metadata || {}) as Record<string, unknown>;
-      const cloudData = await userService.getProgress(currentUser.id);
+      // Incremental pull: after the first full pull for this user, only fetch
+      // card rows updated at/after the previous pull's server watermark.
+      const lastCursor = lastPulledCursorRef.current
+        && lastPulledCursorRef.current.userId === currentUser.id
+        ? lastPulledCursorRef.current.cursor
+        : null;
+      const cloudData = await userService.getProgress(
+        currentUser.id,
+        lastCursor ? { since: lastCursor } : undefined,
+      );
       const isAccountSwitch = activeUserIdRef.current !== null && activeUserIdRef.current !== currentUser.id;
 
       if (cloudData) {
@@ -157,7 +169,11 @@ export function useCloudSync() {
         const localLastUpdate = useAppStore.getState().lastCloudUpdate;
         const localTime = localLastUpdate ? new Date(localLastUpdate).getTime() : 0;
 
-        if (isAccountSwitch || cloudTime > localTime) {
+        // Enter the merge when the pull returned any card rows too: card
+        // writes update user_card_progress.last_updated but NOT
+        // user_progress.updated_at, so the cloudTime gate alone would
+        // silently drop incremental card updates.
+        if (isAccountSwitch || cloudData.hasCardDelta || cloudTime > localTime) {
           const metadataFavorites = stringArray(metadata.favorites);
           const metadataLessons = numberArray(metadata.selectedLessons);
           const metadataBooks = numberArray(metadata.selectedBooks);
@@ -249,6 +265,14 @@ export function useCloudSync() {
       lastSyncedSessionRef.current = getProgressCounters(useAppStore.getState());
       hasFetchedForUserRef.current = currentUser.id;
       activeUserIdRef.current = currentUser.id;
+      // Advance the incremental-pull watermark to the max card last_updated
+      // the server reported, so the next fetch only pulls changes since now.
+      if (cloudData?.serverLastUpdated) {
+        lastPulledCursorRef.current = {
+          userId: currentUser.id,
+          cursor: cloudData.serverLastUpdated,
+        };
+      }
       setSyncStatus('success');
     } catch (error: unknown) {
       console.error('Failed to fetch from cloud:', error);
@@ -332,12 +356,15 @@ export function useCloudSync() {
     if (!currentUser) {
       coordinatorRef.current = null;
       hasFetchedForUserRef.current = null;
+      lastPulledCursorRef.current = null;
       return;
     }
 
     const userId = currentUser.id;
     const isAccountSwitch = activeUserIdRef.current !== null && activeUserIdRef.current !== userId;
     if (isAccountSwitch) {
+      // Fresh user: force a full pull by clearing the previous user's cursor.
+      lastPulledCursorRef.current = null;
       useAppStore.setState({
         srsData: {},
         learnedCards: [],

@@ -6,17 +6,37 @@ export interface UserProgressData {
   learnedCards: string[];
   lastActivity: string | null;
   lastUpdated?: string;
+  /**
+   * True when the card-progress query returned rows. Lets the caller merge
+   * even when the metadata row's updated_at is older — card updates don't
+   * touch user_progress.updated_at.
+   */
+  hasCardDelta?: boolean;
+  /**
+   * Max last_updated across returned card rows — a server-derived watermark
+   * for incremental pulls. Undefined when no rows were returned.
+   */
+  serverLastUpdated?: string;
 }
 
 export const userService = {
-  // Fetch user progress from Supabase (card-level rows)
-  getProgress: async (userId: string): Promise<UserProgressData | null> => {
+  // Fetch user progress from Supabase (card-level rows).
+  // Pass { since } to fetch only rows updated at/after that ISO timestamp
+  // (bounded incremental pull); omit for a full pull.
+  getProgress: async (
+    userId: string,
+    options?: { since?: string },
+  ): Promise<UserProgressData | null> => {
     try {
       // 1. Fetch from user_card_progress (granular table)
-      const { data: cardProgress, error: cardError } = await supabase
+      let query = supabase
         .from('user_card_progress')
-        .select('card_id, ease, interval, repetitions, next_review_date')
+        .select('card_id, ease, interval, repetitions, next_review_date, last_updated')
         .eq('user_id', userId);
+      if (options?.since) {
+        query = query.gte('last_updated', options.since);
+      }
+      const { data: cardProgress, error: cardError } = await query;
 
       if (cardError) {
         console.error("Error fetching card progress:", cardError);
@@ -37,8 +57,11 @@ export const userService = {
 
       // Convert card_progress rows back into SRSData map
       const srsData: Record<string, SRSData> = {};
+      let serverLastUpdatedMs = 0;
       if (cardProgress) {
         for (const row of cardProgress) {
+          const rowTs = row.last_updated ? new Date(row.last_updated).getTime() : 0;
+          if (rowTs > serverLastUpdatedMs) serverLastUpdatedMs = rowTs;
           const nextReviewMs = row.next_review_date
             ? new Date(row.next_review_date).getTime()
             : Date.now();
@@ -57,6 +80,10 @@ export const userService = {
         learnedCards: legacyRow?.learned_cards || [],
         lastActivity: legacyRow?.last_activity || null,
         lastUpdated: legacyRow?.updated_at || undefined,
+        hasCardDelta: Object.keys(srsData).length > 0,
+        serverLastUpdated: serverLastUpdatedMs > 0
+          ? new Date(serverLastUpdatedMs).toISOString()
+          : undefined,
       };
     } catch (e) {
       console.error("Fetch exception:", e);
