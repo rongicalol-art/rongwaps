@@ -2,15 +2,15 @@ import React, { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { Flashcard } from '../../data/flashcards';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { FeedbackBottomBar } from '../../lib/widgets/FeedbackBottomBar';
-import { CharacterBreakdownOverlay } from '../../lib/widgets/CharacterBreakdownOverlay';
-import { LessonComplete } from '../../lib/widgets/LessonComplete';
-import { MemoryHookOverlay } from '../flashcard/MemoryHookOverlay';
+import { FeedbackBottomBar, LessonComplete, BreakdownExpandPanel } from '../../features/practice';
+import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
+import { MemoryHookCharacter } from '../../features/character-memory-hooks';
 import { useQuizTyping } from './hooks/useQuiz';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
 import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
 import { buildPracticePartSegments } from '../../utils/practicePartSegments';
+import { isHanziChar } from '../../utils/hanzi';
 import { AppIcon } from '../../lib/widgets';
 import { numberToToneMarks } from '../../utils/pinyin';
 
@@ -27,10 +27,11 @@ interface QuizTypingCardProps {
   status: 'idle' | 'correct' | 'wrong';
   onInputChange: (val: string) => void;
   onSubmit: () => void;
+  onOpenBreakdown: (index: number) => void;
 }
 
 const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
-  currentCard, input, status, onInputChange, onSubmit
+  currentCard, input, status, onInputChange, onSubmit, onOpenBreakdown
 }) => {
   const frontLength = currentCard?.front?.length || 1;
   const getFrontFontSize = (len: number) => {
@@ -49,10 +50,23 @@ const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
       transition={{ duration: 0.14, ease: 'easeOut' }}
       className="flex w-full flex-col will-change-transform"
     >
-      <div className="flex w-full flex-col items-center justify-center pb-7 pt-8">
-         <h2 className={`${getFrontFontSize(frontLength)} w-full break-words px-4 text-center font-chinese leading-tight text-ui-ink`}>
-           {currentCard.front}
-         </h2>
+      <div className="flex w-full flex-wrap items-center justify-center gap-x-1 pb-7 pt-8 px-4">
+        {Array.from(currentCard.front).map((char, i) =>
+          isHanziChar(char) ? (
+            <MemoryHookCharacter
+              key={i}
+              char={char}
+              label={`Open character breakdown for ${char}`}
+              onOpen={() => onOpenBreakdown(i)}
+              glyphClassName={`${getFrontFontSize(frontLength)} leading-tight text-ui-ink text-center`}
+              className="px-1.5 py-1"
+            />
+          ) : (
+            <span key={i} className={`${getFrontFontSize(frontLength)} font-chinese leading-tight text-ui-ink`}>
+              {char}
+            </span>
+          ),
+        )}
       </div>
 
       <form
@@ -103,7 +117,8 @@ const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
 
 export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, activeBookId, sessionKey }) => {
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
-  const [activeMemoryHook, setActiveMemoryHook] = useState<Flashcard | null>(null);
+  const [breakdownIndex, setBreakdownIndex] = useState(0);
+  const [breakdownOpen, setBreakdownOpen] = useState(false);
   const {
     activeCards,
     currentIndex,
@@ -123,6 +138,12 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, activeBookId
   } = useQuizTyping(cards, sessionKey);
   const autoAdvanceCorrect = usePracticePreferencesStore((state) => state.autoAdvanceCorrect);
   const autoAdvance = status === 'correct' ? autoAdvanceCorrect : false;
+
+  // The inline breakdown panel is per-card; close it when the card changes.
+  React.useEffect(() => {
+    setBreakdownOpen(false);
+  }, [currentCard?.id]);
+
   const handleTypingSubmit = () => {
     if (status === 'wrong') {
       retryAnswer();
@@ -135,7 +156,7 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, activeBookId
     status,
     onAdvance: handleCheck,
     advanceWrong: false,
-    blocked: Boolean(activeBreakdown || activeMemoryHook),
+    blocked: Boolean(activeBreakdown),
   });
   const partSegments = useMemo(
     () => (isShuffled ? [] : buildPracticePartSegments(activeCards)),
@@ -144,9 +165,8 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, activeBookId
   usePracticeHeaderRegistration({
     currentIndex,
     totalCount: activeCards.length,
-    showLightbulb: !!currentCard,
+    showLightbulb: false,
     partSegments,
-    onLightbulbClick: currentCard ? () => setActiveMemoryHook(currentCard) : undefined,
     onShuffleClick: toggleShuffle,
     onRestartClick: resetAll,
     isShuffled,
@@ -159,7 +179,6 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, activeBookId
       <LessonComplete
         learnedCount={learnedCount}
         unlearnedCount={unlearnedCount}
-        activeBook={activeBook}
         onContinue={onEnd}
         onReviewUnlearned={unlearnedCount > 0 ? reviewUnlearned : undefined}
         onResetAll={resetAll}
@@ -185,6 +204,11 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, activeBookId
           status={status}
           onInputChange={handleInputChange}
           onSubmit={handleTypingSubmit}
+          onOpenBreakdown={(index) => {
+            setBreakdownIndex(index);
+            setBreakdownOpen(false);
+            setActiveBreakdown(currentCard.front);
+          }}
         />
       </div>
 
@@ -196,18 +220,26 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, activeBookId
         isCheckDisabled={!input.trim()}
         hideWhenAutoAdvance={autoAdvance && status !== 'idle'}
         showContinueOnWrong
-        keyboardShortcutDisabled={Boolean(activeBreakdown || activeMemoryHook)}
-        onBreakdown={() => setActiveBreakdown(currentCard.front)}
+        keyboardShortcutDisabled={Boolean(activeBreakdown)}
+        onBreakdown={() => setBreakdownOpen((open) => !open)}
+        breakdownOpen={breakdownOpen}
+        breakdownPanel={
+          <BreakdownExpandPanel
+            front={currentCard.front}
+            pinyin={currentCard.pinyin}
+            meaning={currentCard.back}
+          />
+        }
         activeBook={activeBook}
       />
 
-      <CharacterBreakdownOverlay activeBreakdown={activeBreakdown} onClose={() => setActiveBreakdown(null)} activeBook={activeBook} />
-
-      <MemoryHookOverlay 
-        activeMemoryHook={activeMemoryHook}
-        setActiveMemoryHook={setActiveMemoryHook}
+      <CharacterBreakdownOverlay
+        activeBreakdown={activeBreakdown}
+        initialCharIndex={breakdownIndex}
+        onClose={() => setActiveBreakdown(null)}
         activeBook={activeBook}
       />
+
     </div>
   );
 }

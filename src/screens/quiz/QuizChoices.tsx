@@ -2,16 +2,15 @@ import React, { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { Flashcard } from '../../data/flashcards';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { FeedbackBottomBar } from '../../lib/widgets/FeedbackBottomBar';
-import { CharacterBreakdownOverlay } from '../../lib/widgets/CharacterBreakdownOverlay';
-import { LessonComplete } from '../../lib/widgets/LessonComplete';
-import { MemoryHookOverlay } from '../flashcard/MemoryHookOverlay';
+import { FeedbackBottomBar, LessonComplete, PracticeChoiceButton, BreakdownExpandPanel, type PracticeChoiceState } from '../../features/practice';
+import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
+import { MemoryHookCharacter } from '../../features/character-memory-hooks';
 import { useQuizChoices } from './hooks/useQuiz';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
 import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
 import { buildPracticePartSegments } from '../../utils/practicePartSegments';
-import { PracticeChoiceButton, type PracticeChoiceState } from '../../lib/widgets';
+import { isHanziChar } from '../../utils/hanzi';
 import { useNumberKeySelection } from '../../hooks/useNumberKeySelection';
 
 interface QuizModeProps {
@@ -28,10 +27,11 @@ interface QuizChoicesCardProps {
   isChecked: boolean;
   handleSelect: (opt: string) => void;
   activeBook: (typeof SAMPLE_BOOKS)[number];
+  onOpenBreakdown: (index: number) => void;
 }
 
 const QuizChoicesCard: React.FC<QuizChoicesCardProps> = ({
-  currentCard, options, selectedOption, isChecked, handleSelect, activeBook
+  currentCard, options, selectedOption, isChecked, handleSelect, activeBook, onOpenBreakdown
 }) => {
   const frontLength = currentCard?.front?.length || 1;
   const getFrontFontSize = (len: number) => {
@@ -50,10 +50,23 @@ const QuizChoicesCard: React.FC<QuizChoicesCardProps> = ({
       transition={{ duration: 0.14, ease: 'easeOut' }}
       className="flex w-full flex-col will-change-transform"
     >
-      <div className="flex flex-col items-center justify-center py-4 mb-2 w-full">
-         <h2 className={`${getFrontFontSize(frontLength)} leading-tight font-chinese text-ui-ink text-center break-words w-full px-4`}>
-           {currentCard.front}
-         </h2>
+      <div className="flex w-full flex-wrap items-center justify-center gap-x-1 py-4 mb-2 px-4">
+        {Array.from(currentCard.front).map((char, i) =>
+          isHanziChar(char) ? (
+            <MemoryHookCharacter
+              key={i}
+              char={char}
+              label={`Open character breakdown for ${char}`}
+              onOpen={() => onOpenBreakdown(i)}
+              glyphClassName={`${getFrontFontSize(frontLength)} leading-tight text-ui-ink text-center`}
+              className="px-1.5 py-1"
+            />
+          ) : (
+            <span key={i} className={`${getFrontFontSize(frontLength)} font-chinese leading-tight text-ui-ink`}>
+              {char}
+            </span>
+          ),
+        )}
       </div>
 
       <div className="grid grid-cols-1 gap-3 w-full pb-[120px] px-2 sm:px-0">
@@ -93,7 +106,8 @@ const QuizChoicesCard: React.FC<QuizChoicesCardProps> = ({
 
 export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, activeBookId, sessionKey }) => {
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
-  const [activeMemoryHook, setActiveMemoryHook] = useState<Flashcard | null>(null);
+  const [breakdownIndex, setBreakdownIndex] = useState(0);
+  const [breakdownOpen, setBreakdownOpen] = useState(false);
   const {
     activeCards,
     currentIndex,
@@ -117,17 +131,22 @@ export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, activeBookI
   const autoAdvanceCorrect = usePracticePreferencesStore((state) => state.autoAdvanceCorrect);
   const autoAdvance = isCorrect ? autoAdvanceCorrect : false;
 
+  // The inline breakdown panel is per-card; close it when the card changes.
+  React.useEffect(() => {
+    setBreakdownOpen(false);
+  }, [currentCard?.id]);
+
   useNumberKeySelection({
     items: options,
     onSelect: (option) => handleSelect(option.back),
-    disabled: isChecked || Boolean(activeBreakdown || activeMemoryHook),
+    disabled: completed || isChecked || Boolean(activeBreakdown),
   });
 
   usePracticeAnswerAutomation({
     status: !isChecked ? 'idle' : isCorrect ? 'correct' : 'wrong',
     onAdvance: handleCheck,
     advanceWrong: false,
-    blocked: Boolean(activeBreakdown || activeMemoryHook),
+    blocked: Boolean(activeBreakdown),
   });
   const partSegments = useMemo(
     () => (isShuffled ? [] : buildPracticePartSegments(activeCards)),
@@ -137,9 +156,8 @@ export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, activeBookI
   usePracticeHeaderRegistration({
     currentIndex,
     totalCount: activeCards.length,
-    showLightbulb: !!currentCard,
+    showLightbulb: false,
     partSegments,
-    onLightbulbClick: currentCard ? () => setActiveMemoryHook(currentCard) : undefined,
     onShuffleClick: toggleShuffle,
     onRestartClick: resetAll,
     isShuffled,
@@ -153,7 +171,6 @@ export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, activeBookI
       <LessonComplete
         learnedCount={learnedCount}
         unlearnedCount={unlearnedCount}
-        activeBook={activeBook}
         onContinue={onEnd}
         onReviewUnlearned={unlearnedCount > 0 ? reviewUnlearned : undefined}
         onResetAll={resetAll}
@@ -180,6 +197,11 @@ export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, activeBookI
           isChecked={isChecked}
           handleSelect={handleSelect}
           activeBook={activeBook}
+          onOpenBreakdown={(index) => {
+            setBreakdownIndex(index);
+            setBreakdownOpen(false);
+            setActiveBreakdown(currentCard.front);
+          }}
         />
       </div>
 
@@ -192,18 +214,26 @@ export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, activeBookI
         isCheckDisabled={!selectedOption}
         hideWhenAutoAdvance={autoAdvance && isChecked}
         showContinueOnWrong
-        keyboardShortcutDisabled={Boolean(activeBreakdown || activeMemoryHook)}
-        onBreakdown={() => setActiveBreakdown(currentCard.front)}
+        keyboardShortcutDisabled={Boolean(activeBreakdown)}
+        onBreakdown={() => setBreakdownOpen((open) => !open)}
+        breakdownOpen={breakdownOpen}
+        breakdownPanel={
+          <BreakdownExpandPanel
+            front={currentCard.front}
+            pinyin={showPinyin ? currentCard.pinyin : undefined}
+            meaning={currentCard.back}
+          />
+        }
         activeBook={activeBook}
       />
 
-      <CharacterBreakdownOverlay activeBreakdown={activeBreakdown} onClose={() => setActiveBreakdown(null)} activeBook={activeBook} />
-
-      <MemoryHookOverlay 
-        activeMemoryHook={activeMemoryHook}
-        setActiveMemoryHook={setActiveMemoryHook}
+      <CharacterBreakdownOverlay
+        activeBreakdown={activeBreakdown}
+        initialCharIndex={breakdownIndex}
+        onClose={() => setActiveBreakdown(null)}
         activeBook={activeBook}
       />
+
     </div>
   );
 }

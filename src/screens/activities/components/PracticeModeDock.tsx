@@ -99,7 +99,7 @@ export function PracticeModeDock({
                   onClick={onOpenGrammar}
                   label="Open grammar"
                   variant="quiet"
-                  icon={<AppIcon name="grammar" size={25} />}
+                  icon={<AppIcon name="grammar" size={25} className="h-7 w-7 md:h-[25px] md:w-[25px]" />}
                   className="h-10 w-full rounded-[13px] text-ui-muted-strong hover:bg-ui-surface hover:text-ui-ink-strong"
                 />
               </motion.div>
@@ -176,7 +176,7 @@ export function PracticeModeDock({
                       return {
                         value: activity.id,
                         label: <span className="sr-only">{activity.label}</span>,
-                        icon: <AppIcon name={activity.icon} size={25} />,
+                        icon: <AppIcon name={activity.icon} size={25} className="h-7 w-7 md:h-[25px] md:w-[25px]" />,
                         title: activity.label,
                         buttonProps: isQuiz ? {
                             'aria-haspopup': 'menu' as const,

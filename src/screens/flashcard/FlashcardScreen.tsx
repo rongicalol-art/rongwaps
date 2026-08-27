@@ -1,19 +1,19 @@
 import React, { useMemo, useRef, useEffect } from 'react';
 import { AnimatePresence } from 'motion/react';
-import { ScreenSkeleton, EmptyReviewState, ScreenLayout } from '../../lib/widgets';
+import { ScreenSkeleton, ScreenLayout } from '../../lib/widgets';
+import { EmptyReviewState, LessonComplete } from '../../features/practice';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { LessonComplete } from '../../lib/widgets/LessonComplete';
-import { CharacterBreakdownOverlay } from '../../lib/widgets/CharacterBreakdownOverlay';
+import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
 import { useFlashcards } from './hooks/useFlashcards';
 import { useFlashcardSwipe } from './hooks/useFlashcardSwipe';
-import { DraggableFlashcard } from '../../lib/widgets/DraggableFlashcard';
+import { DraggableFlashcard } from './components/DraggableFlashcard';
 import { useAppStore } from '../../store/useAppStore';
-import { MemoryHookOverlay } from './MemoryHookOverlay';
 import { audioService } from '../../services/audioService';
 import { useCardFlow } from '../../hooks/useCardFlow';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
 import { buildPracticePartSegments } from '../../utils/practicePartSegments';
+import { useCurriculumExamples } from './hooks/useCurriculumExamples';
 
 interface FlashcardScreenProps {
   activeBookId: number;
@@ -46,8 +46,6 @@ export function FlashcardScreen({
     activeBreakdown,
     activeBreakdownIndex,
     setActiveBreakdown,
-    activeMemoryHook,
-    setActiveMemoryHook,
     handleNavigate,
     handleNext,
     resetAll,
@@ -65,6 +63,7 @@ export function FlashcardScreen({
   const autoPlayAudio = usePracticePreferencesStore((state) => state.autoPlayAudio);
   const showPinyin = usePracticePreferencesStore((state) => state.showPinyin);
   const showTranslation = usePracticePreferencesStore((state) => state.showTranslation);
+  const { examples: curriculumExamples, isLoading: areExamplesLoading } = useCurriculumExamples(currentCard, isFlipped);
 
   const feedbackTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const manualRevealAudioRef = useRef(false);
@@ -124,6 +123,20 @@ export function FlashcardScreen({
     manualRevealAudioRef.current = false;
   }, [currentCard?.id]);
 
+  // Pre-warm neural TTS for upcoming cards without recorded audio so the
+  // first play of each card is the neural voice, not browser speech.
+  useEffect(() => {
+    if (cards.length === 0 || currentIndex < 0) return;
+    const upcoming = cards.slice(currentIndex, currentIndex + 2);
+    const fronts = upcoming
+      .filter((card) => !audioService.isAudioFileName(card.audio))
+      .map((card) => card.front?.trim())
+      .filter((text): text is string => Boolean(text));
+    if (fronts.length > 0) {
+      audioService.preloadNeural(fronts, undefined, { limit: 2 }).catch(() => {});
+    }
+  }, [cards, currentIndex]);
+
   const restartSession = React.useCallback(() => {
     stopFlow();
     resetAll();
@@ -136,10 +149,10 @@ export function FlashcardScreen({
   usePracticeHeaderRegistration({
     currentIndex,
     totalCount: cards.length,
-    showLightbulb: !!currentCard,
+    showLightbulb: false,
     partSegments,
-    onLightbulbClick: currentCard ? () => setActiveMemoryHook(currentCard) : undefined,
-    onSettingsClick: pauseFlow,
+    // No onSettingsClick: opening study settings must not stop the flow —
+    // the flow keeps running behind the settings modal.
     onShuffleClick: toggleShuffle,
     onFlowClick: toggleFlow,
     onRestartClick: restartSession,
@@ -148,8 +161,8 @@ export function FlashcardScreen({
   });
 
   useEffect(() => {
-    if (activeBreakdown || activeMemoryHook) pauseFlow();
-  }, [activeBreakdown, activeMemoryHook, pauseFlow]);
+    if (activeBreakdown) pauseFlow();
+  }, [activeBreakdown, pauseFlow]);
 
   // Refs so the keyboard handler always reads the latest values without re-registering
   const currentIndexRef = useRef(currentIndex);
@@ -157,18 +170,29 @@ export function FlashcardScreen({
   const maxVisitedIndexRef = useRef(maxVisitedIndex);
   const currentCardRef = useRef(currentCard);
   const isReviewDeckRef = useRef(isReviewDeck);
+  const completedRef = useRef(completed);
 
   currentIndexRef.current = currentIndex;
   cardsLengthRef.current = cards.length;
   maxVisitedIndexRef.current = maxVisitedIndex;
   currentCardRef.current = currentCard;
   isReviewDeckRef.current = isReviewDeck;
+  completedRef.current = completed;
+
+  // The session summary replaces all practice interactions; cut any audio
+  // that is still ringing from the final card.
+  useEffect(() => {
+    if (!completed) return;
+    audioService.stop();
+  }, [completed]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (completedRef.current) return;
+      if (document.querySelector('[role="dialog"][aria-label^="Lesson "]')) return;
       if (document.activeElement instanceof HTMLInputElement || document.activeElement instanceof HTMLTextAreaElement) return;
-      if (activeBreakdown || activeMemoryHook) return;
-      if (e.repeat) return;
+      if (activeBreakdown) return;
+      if (e.repeat && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
 
       if (['ArrowLeft', 'ArrowRight', ' ', 'm', 'M', 'n', 'N'].includes(e.key)) pauseFlow();
 
@@ -215,7 +239,7 @@ export function FlashcardScreen({
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeBreakdown, activeMemoryHook, autoPlayAudio, isFlipped, pauseFlow, pronunciationRate, triggerNav, triggerKeyboardRate, setIsFlipped]);
+  }, [activeBreakdown, autoPlayAudio, isFlipped, pauseFlow, pronunciationRate, triggerNav, triggerKeyboardRate, setIsFlipped]);
 
   if (isLoading && cards.length === 0) return <ScreenSkeleton type="flashcard" />;
 
@@ -248,7 +272,6 @@ export function FlashcardScreen({
       <LessonComplete
         learnedCount={learnedCount}
         unlearnedCount={unlearnedCount}
-        activeBook={activeBook}
         onContinue={onClose}
         onReviewUnlearned={unlearnedCount > 0 ? reviewUnlearned : undefined}
         onResetAll={resetAll}
@@ -324,10 +347,10 @@ export function FlashcardScreen({
         className="absolute bottom-0 right-0 top-[72px] z-0 w-[22%] bg-transparent outline-none disabled:pointer-events-none"
       />
 
-      <ScreenLayout maxWidth="xl" className="relative flex h-full flex-col pb-[112px] pt-2 pointer-events-none md:pb-[120px]">
+      <ScreenLayout maxWidth="none" className="relative flex h-full max-w-[960px] flex-col pb-[112px] pt-2 pointer-events-none md:pb-[120px]">
         <div className="flex-1 flex flex-col justify-center pointer-events-none">
           <div
-            className="relative z-10 mx-auto flex h-[420px] max-h-[60vh] w-full max-w-[320px] flex-col items-center justify-center perspective-[2000px] pointer-events-auto sm:h-[480px] sm:max-w-[400px] md:max-w-[460px]"
+            className="relative z-10 mx-auto flex h-[clamp(420px,68vh,640px)] max-h-[calc(100dvh-180px)] w-full max-w-[900px] flex-col items-center justify-center perspective-[2000px] pointer-events-auto"
           >
             <AnimatePresence mode="popLayout" custom={direction}>
               {currentCard && (
@@ -336,14 +359,12 @@ export function FlashcardScreen({
                   card={currentCard}
                   direction={direction}
                   isFlipped={isFlipped}
-                  canRate={isFlipped}
-                  onReveal={() => setIsFlipped(true)}
-                  setIsFlipped={setIsFlipped}
                   setActiveBreakdown={setActiveBreakdown}
-                  setActiveMemoryHook={setActiveMemoryHook}
-                  triggerSwipeRate={isFlipped ? triggerSwipeRate : () => setIsFlipped(true)}
+                  triggerSwipeRate={triggerSwipeRate}
                   showPinyin={showPinyin}
                   showTranslation={showTranslation}
+                  examples={curriculumExamples}
+                  isExamplesLoading={areExamplesLoading}
                   onCardTap={handleCardTap}
                 />
               )}
@@ -360,11 +381,6 @@ export function FlashcardScreen({
         activeBook={activeBook}
       />
 
-      <MemoryHookOverlay
-        activeMemoryHook={activeMemoryHook}
-        setActiveMemoryHook={setActiveMemoryHook}
-        activeBook={activeBook}
-      />
     </div>
   );
 }

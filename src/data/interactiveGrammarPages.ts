@@ -18,6 +18,7 @@ import { LESSON_ELEVEN_PART_ONE, LESSON_ELEVEN_PART_TWO } from './grammar/lesson
 import { LESSON_TWELVE_PART_ONE, LESSON_TWELVE_PART_TWO } from './grammar/lessonTwelve';
 import { LESSON_THIRTEEN_PART_ONE, LESSON_THIRTEEN_PART_TWO } from './grammar/lessonThirteen';
 import { LESSON_FOURTEEN_PART_ONE, LESSON_FOURTEEN_PART_TWO } from './grammar/lessonFourteen';
+import { LESSON_SIXTEEN_PART_ONE } from './grammar/lessonSixteen';
 
 export {
   LESSON_ONE_GRAMMAR_FOUR,
@@ -34,27 +35,27 @@ export const LESSON_ONE_GRAMMAR_ONE: InteractiveGrammarPage = {
   lessonTitleEnglish: 'The New Classmate',
   grammarNumber: 1,
   titleTraditional: '叫、姓、是',
-  titleEnglish: 'Use 叫, 姓, and 是 to Identify Someone',
+  titleEnglish: 'Introduce Someone with 叫, 姓, and 是',
   learnerPromise: 'Introduce someone by name, surname, or identity.',
   printedPages: [38, 39],
   audioReference: '01-1-3',
-  explanation: 'Choose the clue you want to give: 叫 for a name, 姓 for a family name only, and 是 for an identity.',
+  explanation: '叫 comes before a name. 姓 comes before a family name only. 是 says who someone is.',
   focusTerms: ['叫', '姓', '是'],
   teachingGlossary: [
-    { id: 'g1-glossary-jiao', traditional: '叫', pinyin: 'jiào', meaning: 'to be called; introduces a given or full name' },
-    { id: 'g1-glossary-xing', traditional: '姓', pinyin: 'xìng', meaning: 'to have the surname; introduces a family name' },
-    { id: 'g1-glossary-shi', traditional: '是', pinyin: 'shì', meaning: 'to be; links someone to an identity or category' },
+    { id: 'g1-glossary-jiao', traditional: '叫', pinyin: 'jiào', meaning: 'is called; comes before a given or full name' },
+    { id: 'g1-glossary-xing', traditional: '姓', pinyin: 'xìng', meaning: 'has the surname; comes before a family name' },
+    { id: 'g1-glossary-shi', traditional: '是', pinyin: 'shì', meaning: 'is; says who someone is' },
     { id: 'g1-glossary-zhang', traditional: '張', simplified: '张', pinyin: 'Zhāng', meaning: 'Zhang; a family name' },
     { id: 'g1-glossary-zhang-xiaoming', traditional: '張小明', simplified: '张小明', pinyin: 'Zhāng Xiǎomíng', meaning: 'Zhang Xiaoming; a full name' },
   ],
   pattern: 'Person + identity verb + name or identity',
-  patternColumns: ['Person', 'Name or identity verb', 'Name or identity'],
-  patternColumnDetails: ['Who?', '叫 · 姓 · 是', 'What clue?'],
+  patternColumns: ['Person', '叫 · 姓 · 是', 'Name or identity'],
+  patternColumnDetails: ['Who?', 'the word you choose', 'What clue?'],
   patternAccentColumn: 1,
   discoveryLab: {
-    title: 'Change the verb, change the identity clue',
-    description: 'All three sentences introduce the same person, but each verb answers a different question.',
-    prompt: 'What do you want the listener to learn?',
+    title: 'Change the word, change the clue',
+    description: 'Each sentence introduces the same person. Each word answers a different question.',
+    prompt: 'What do you want to say about her?',
     choices: [
       {
         id: 'g1-called',
@@ -63,7 +64,7 @@ export const LESSON_ONE_GRAMMAR_ONE: InteractiveGrammarPage = {
         simplified: '她叫小林友美。',
         pinyin: 'Tā jiào Xiǎolín Yǒuměi.',
         english: 'Her name is Xiaolin Youmei.',
-        note: '叫 can introduce a given name or the complete name someone uses.',
+        note: '叫 comes before a given name or a full name.',
       },
       {
         id: 'g1-surname',
@@ -72,7 +73,7 @@ export const LESSON_ONE_GRAMMAR_ONE: InteractiveGrammarPage = {
         simplified: '她姓小林。',
         pinyin: 'Tā xìng Xiǎolín.',
         english: 'Her surname is Xiaolin.',
-        note: '姓 points only to the family-name part. Do not put the full name after it.',
+        note: '姓 only tells the family name. Do not put a full name after it.',
       },
       {
         id: 'g1-identity',
@@ -81,10 +82,10 @@ export const LESSON_ONE_GRAMMAR_ONE: InteractiveGrammarPage = {
         simplified: '她是新同学。',
         pinyin: 'Tā shì xīn tóngxué.',
         english: 'She is the new classmate.',
-        note: '是 links a person to an identity or category, not directly to a personal name.',
+        note: '是 says who she is. It does not come before a personal name.',
       },
     ],
-    takeaway: 'Ask yourself: name, family name, or identity? That choice tells you whether to use 叫、姓, or 是.',
+    takeaway: 'Ask yourself: name, family name, or who they are? The answer tells you which word to use: 叫, 姓, or 是.',
   },
   ruleContrast: {
     title: 'Family name only after 姓',
@@ -96,7 +97,7 @@ export const LESSON_ONE_GRAMMAR_ONE: InteractiveGrammarPage = {
         label: 'Full name after 姓',
         traditional: '她姓張小明。',
         simplified: '她姓张小明。',
-        explanation: '張小明 is the complete name, so 姓 is too narrow.',
+        explanation: '張小明 is a full name. Use 叫 for a full name.',
       },
       {
         id: 'g1-rule-called-full-name',
@@ -104,7 +105,7 @@ export const LESSON_ONE_GRAMMAR_ONE: InteractiveGrammarPage = {
         label: 'Full name',
         traditional: '她叫張小明。',
         simplified: '她叫张小明。',
-        explanation: '叫 introduces the complete name.',
+        explanation: '叫 comes before the full name.',
       },
       {
         id: 'g1-rule-surname',
@@ -112,7 +113,7 @@ export const LESSON_ONE_GRAMMAR_ONE: InteractiveGrammarPage = {
         label: 'Family name',
         traditional: '她姓張。',
         simplified: '她姓张。',
-        explanation: '姓 introduces only 張, the family name.',
+        explanation: '姓 comes before only 張, the family name.',
       },
     ],
   },
@@ -145,6 +146,65 @@ export const LESSON_ONE_GRAMMAR_ONE: InteractiveGrammarPage = {
       english: 'He is not Taiwanese.',
     },
   ],
+  confusion: {
+    title: "Don't mix these up",
+    items: [
+      {
+        id: 'g1-confusion-name-word',
+        question: 'Which word goes before a person’s NAME?',
+        answer: '叫. It tells people what someone is called. 是 cannot introduce a name.',
+        wrongTraditional: '她是小林友美。',
+        right: {
+          traditional: '她叫小林友美。',
+          simplified: '她叫小林友美。',
+          pinyin: 'Tā jiào Xiǎolín Yǒuměi.',
+          english: 'Her name is Xiaolin Youmei.',
+          words: [
+            { id: 'c1-she', traditional: '她', pinyin: 'tā', meaning: 'she' },
+            { id: 'c1-called', traditional: '叫', pinyin: 'jiào', meaning: 'to be called' },
+            { id: 'c1-xiaolin', traditional: '小林', pinyin: 'Xiǎolín', meaning: 'Xiaolin' },
+            { id: 'c1-youmei', traditional: '友美', pinyin: 'Yǒuměi', meaning: 'Youmei', suffix: '。' },
+          ],
+        },
+      },
+      {
+        id: 'g1-confusion-surname-only',
+        question: 'Does 姓 take the whole name or one part?',
+        answer: 'One part only — the family name. 姓 stops before the given name.',
+        wrongTraditional: '她姓小林友美。',
+        right: {
+          traditional: '她姓小林。',
+          simplified: '她姓小林。',
+          pinyin: 'Tā xìng Xiǎolín.',
+          english: 'Her surname is Xiaolin.',
+          words: [
+            { id: 'c2-she', traditional: '她', pinyin: 'tā', meaning: 'she' },
+            { id: 'c2-surname', traditional: '姓', pinyin: 'xìng', meaning: 'to have the surname' },
+            { id: 'c2-xiaolin', traditional: '小林', pinyin: 'Xiǎolín', meaning: 'Xiaolin', suffix: '。' },
+          ],
+        },
+      },
+      {
+        id: 'g1-confusion-shi-identity',
+        question: 'So what is 是 for?',
+        answer: 'It says who someone IS — a job, a group, a country. Never a name after it.',
+        wrongTraditional: '他是中明。',
+        right: {
+          traditional: '他不是臺灣人。',
+          simplified: '他不是台湾人。',
+          pinyin: 'Tā bú shì Táiwān rén.',
+          english: 'He is not Taiwanese.',
+          words: [
+            { id: 'c3-he', traditional: '他', pinyin: 'tā', meaning: 'he' },
+            { id: 'c3-not', traditional: '不', pinyin: 'bú', meaning: 'not' },
+            { id: 'c3-is', traditional: '是', pinyin: 'shì', meaning: 'is / am / are' },
+            { id: 'c3-taiwan', traditional: '臺灣', simplified: '台湾', pinyin: 'Táiwān', meaning: 'Taiwan' },
+            { id: 'c3-person', traditional: '人', pinyin: 'rén', meaning: 'person', suffix: '。' },
+          ],
+        },
+      },
+    ],
+  },
   examples: [
     {
       id: 'example-1',
@@ -215,7 +275,7 @@ export const LESSON_ONE_GRAMMAR_ONE: InteractiveGrammarPage = {
         traditional: '她不姓李，她姓小林，叫小林友美。',
         simplified: '她不姓李，她姓小林，叫小林友美。',
         pinyin: 'Tā bú xìng Lǐ, tā xìng Xiǎolín, jiào Xiǎolín Yǒuměi.',
-        english: 'Her surname is not Li. Her surname is Kobayashi, and her name is Kobayashi Youmei.',
+        english: 'Her surname is not Li. Her surname is Xiaolin, and her name is Xiaolin Youmei.',
         words: [
           { id: 'e3-she-a', traditional: '她', pinyin: 'tā', meaning: 'she' },
           { id: 'e3-not', traditional: '不', pinyin: 'bú', meaning: 'not' },
@@ -223,9 +283,9 @@ export const LESSON_ONE_GRAMMAR_ONE: InteractiveGrammarPage = {
           { id: 'e3-li', traditional: '李', pinyin: 'Lǐ', meaning: 'Li', suffix: '，' },
           { id: 'e3-she-b', traditional: '她', pinyin: 'tā', meaning: 'she' },
           { id: 'e3-surname-b', traditional: '姓', pinyin: 'xìng', meaning: 'to have the surname' },
-          { id: 'e3-xiaolin-a', traditional: '小林', pinyin: 'Xiǎolín', meaning: 'Kobayashi', suffix: '，' },
+          { id: 'e3-xiaolin-a', traditional: '小林', pinyin: 'Xiǎolín', meaning: 'Xiaolin', suffix: '，' },
           { id: 'e3-called', traditional: '叫', pinyin: 'jiào', meaning: 'to be called' },
-          { id: 'e3-xiaolin-b', traditional: '小林', pinyin: 'Xiǎolín', meaning: 'Kobayashi' },
+          { id: 'e3-xiaolin-b', traditional: '小林', pinyin: 'Xiǎolín', meaning: 'Xiaolin' },
           { id: 'e3-youmei', traditional: '友美', pinyin: 'Yǒuměi', meaning: 'Youmei', suffix: '。' },
         ],
       },
@@ -356,26 +416,27 @@ export const LESSON_ONE_GRAMMAR_TWO: InteractiveGrammarPage = {
   lessonTitleEnglish: 'The New Classmate',
   grammarNumber: 2,
   titleTraditional: '很／不',
-  titleEnglish: 'Describe a State with 很 or 不',
+  titleEnglish: 'Describe Someone with 很 or 不',
   learnerPromise: 'Say that someone is or is not busy, tired, pretty, or cute.',
   printedPages: [39],
   audioReference: '01-1-3',
-  explanation: '漂亮, 忙, and 累 already describe a state. Use 很 for a positive state or 不 for a negative one. Do not place 是 before the description.',
+  explanation: '漂亮, 忙, and 累 already carry the meaning "is." Use 很 to say it in a normal, positive way. Use 不 to say it is not true. Do not put 是 before these words.',
   focusTerms: ['很', '不', '是'],
   teachingGlossary: [
-    { id: 'g2-glossary-hen', traditional: '很', pinyin: 'hěn', meaning: 'links a subject to a positive state; often softer than English “very”' },
-    { id: 'g2-glossary-bu', traditional: '不', pinyin: 'bù', meaning: 'not; makes the following state negative' },
-    { id: 'g2-glossary-shi', traditional: '是', pinyin: 'shì', meaning: 'identity-linking “to be”; not used before this kind of state description' },
-    { id: 'g2-glossary-piaoliang', traditional: '漂亮', pinyin: 'piàoliang', meaning: 'pretty; describes a state or quality' },
-    { id: 'g2-glossary-mang', traditional: '忙', pinyin: 'máng', meaning: 'busy; describes a state' },
-    { id: 'g2-glossary-lei', traditional: '累', pinyin: 'lèi', meaning: 'tired; describes a state' },
-    { id: 'g2-glossary-keai', traditional: '可愛', simplified: '可爱', pinyin: "kě'ài", meaning: 'cute; lovely; describes a quality' },
+    { id: 'g2-glossary-hen', traditional: '很', pinyin: 'hěn', meaning: 'very; the usual link before a describing word, often softer than English "very"' },
+    { id: 'g2-glossary-bu', traditional: '不', pinyin: 'bù', meaning: 'not; says the next word is not true' },
+    { id: 'g2-glossary-shi', traditional: '是', pinyin: 'shì', meaning: 'is; do not use it before 漂亮, 忙, or 累' },
+    { id: 'g2-glossary-piaoliang', traditional: '漂亮', pinyin: 'piàoliang', meaning: 'pretty' },
+    { id: 'g2-glossary-mang', traditional: '忙', pinyin: 'máng', meaning: 'busy' },
+    { id: 'g2-glossary-lei', traditional: '累', pinyin: 'lèi', meaning: 'tired' },
+    { id: 'g2-glossary-keai', traditional: '可愛', simplified: '可爱', pinyin: "kě'ài", meaning: 'cute; lovely' },
   ],
   pattern: 'S + 很/不 + Vs',
-  patternColumns: ['S', '很／不', 'Vs'],
+  patternColumns: ['Who or what', '很／不', 'Describing word'],
+  patternColumnDetails: ['S', 'yes or no', 'Vs'],
   discoveryLab: {
-    title: 'Keep the description lane free of 是',
-    description: 'Tap the middle word and watch how the meaning changes. The describing word already does the job that English gives to “is.”',
+    title: 'Do not add 是',
+    description: 'Tap the middle word and watch the meaning change. In Chinese, the describing word already includes the "is."',
     prompt: 'How does the speaker see her?',
     choices: [
       {
@@ -385,7 +446,7 @@ export const LESSON_ONE_GRAMMAR_TWO: InteractiveGrammarPage = {
         simplified: '她很可爱。',
         pinyin: "Tā hěn kě'ài.",
         english: 'She is cute.',
-        note: '很 creates the normal positive description pattern. In everyday sentences, it may sound softer than a strong English “very.”',
+        note: '很 is the normal way to say the description. In everyday sentences it often sounds softer than English "very."',
       },
       {
         id: 'g2-negative',
@@ -394,7 +455,7 @@ export const LESSON_ONE_GRAMMAR_TWO: InteractiveGrammarPage = {
         simplified: '她不可爱。',
         pinyin: "Tā bù kě'ài.",
         english: 'She is not cute.',
-        note: '不 replaces 很 and sits directly before the state: 不 + 可愛.',
+        note: '不 takes the place of 很 and sits directly before the describing word: 不 + 可愛.',
       },
       {
         id: 'g2-repair',
@@ -403,21 +464,77 @@ export const LESSON_ONE_GRAMMAR_TWO: InteractiveGrammarPage = {
         simplified: '她是可爱。 → 她很可爱。',
         pinyin: "Tā shì kě'ài. → Tā hěn kě'ài.",
         english: 'Repair it: She is cute.',
-        note: 'For this beginner description pattern, remove 是. 是 links identities; 可愛 already describes her state.',
+        note: 'Remove 是. 是 is for saying who someone is. 可愛 already describes her.',
         isCorrection: true,
       },
     ],
-    takeaway: 'Identity uses 是; description uses 很／不 + state. That single split prevents the most common beginner mistake.',
+    takeaway: 'Say who someone is with 是. Describe them with 很 or 不. Do not mix the two.',
   },
   patternRows: [
     {
       id: 'g2-pattern-1',
       subject: [{ id: 'g2-p1-she', traditional: '她', pinyin: 'tā', meaning: 'she' }],
-      grammar: [{ id: 'g2-p1-very', traditional: '很', pinyin: 'hěn', meaning: 'very; linking adverb before a state verb' }],
+      grammar: [{ id: 'g2-p1-very', traditional: '很', pinyin: 'hěn', meaning: 'very; the usual link word' }],
       complement: [{ id: 'g2-p1-pretty', traditional: '漂亮', pinyin: 'piàoliang', meaning: 'pretty', suffix: '。' }],
       english: 'She is (very) pretty.',
     },
   ],
+  confusion: {
+    title: "Don't mix these up",
+    items: [
+      {
+        id: 'g2-confusion-shi-adjective',
+        question: 'English says "she IS pretty." Why is 她是漂亮 wrong?',
+        answer: 'Words like 漂亮 already carry the "is." 很 takes that middle spot; 是 does not.',
+        wrongTraditional: '她是漂亮。',
+        right: {
+          traditional: '她很漂亮。',
+          simplified: '她很漂亮。',
+          pinyin: 'Tā hěn piàoliang.',
+          english: 'She is pretty.',
+          words: [
+            { id: 'g2c1-she', traditional: '她', pinyin: 'tā', meaning: 'she' },
+            { id: 'g2c1-very', traditional: '很', pinyin: 'hěn', meaning: 'the usual link word' },
+            { id: 'g2c1-pretty', traditional: '漂亮', pinyin: 'piàoliang', meaning: 'pretty', suffix: '。' },
+          ],
+        },
+      },
+      {
+        id: 'g2-confusion-bare-adjective',
+        question: 'Why add 很 when it means "very"?',
+        answer: 'A describing word alone can sound unfinished, like you are comparing. 很 is the normal calm link.',
+        wrongTraditional: '她漂亮。',
+        right: {
+          traditional: '她很漂亮。',
+          simplified: '她很漂亮。',
+          pinyin: 'Tā hěn piàoliang.',
+          english: 'She is pretty.',
+          words: [
+            { id: 'g2c2-she', traditional: '她', pinyin: 'tā', meaning: 'she' },
+            { id: 'g2c2-very', traditional: '很', pinyin: 'hěn', meaning: 'the usual link word' },
+            { id: 'g2c2-pretty', traditional: '漂亮', pinyin: 'piàoliang', meaning: 'pretty', suffix: '。' },
+          ],
+        },
+      },
+      {
+        id: 'g2-confusion-bushi',
+        question: 'How do I say she is NOT busy?',
+        answer: 'Put 不 right before the describing word. 是 has no job here at all.',
+        wrongTraditional: '她不是忙。',
+        right: {
+          traditional: '她不忙。',
+          simplified: '她不忙。',
+          pinyin: 'Tā bù máng.',
+          english: 'She is not busy.',
+          words: [
+            { id: 'g2c3-she', traditional: '她', pinyin: 'tā', meaning: 'she' },
+            { id: 'g2c3-not', traditional: '不', pinyin: 'bù', meaning: 'not' },
+            { id: 'g2c3-busy', traditional: '忙', pinyin: 'máng', meaning: 'busy', suffix: '。' },
+          ],
+        },
+      },
+    ],
+  },
   examples: [
     {
       id: 'g2-example-1',
@@ -429,7 +546,7 @@ export const LESSON_ONE_GRAMMAR_TWO: InteractiveGrammarPage = {
         english: 'She is very cute.',
         words: [
           { id: 'g2-e1-she', traditional: '她', pinyin: 'tā', meaning: 'she' },
-          { id: 'g2-e1-very', traditional: '很', pinyin: 'hěn', meaning: 'very; linking adverb before a state verb' },
+          { id: 'g2-e1-very', traditional: '很', pinyin: 'hěn', meaning: 'very; the usual link word' },
           { id: 'g2-e1-cute', traditional: '可愛', simplified: '可爱', pinyin: "kě'ài", meaning: 'cute; lovely', suffix: '。' },
         ],
       },
@@ -444,7 +561,7 @@ export const LESSON_ONE_GRAMMAR_TWO: InteractiveGrammarPage = {
         words: [
           { id: 'g2-e2-wang', traditional: '王', pinyin: 'Wáng', meaning: 'surname Wang' },
           { id: 'g2-e2-mister', traditional: '先生', pinyin: 'xiānsheng', meaning: 'Mr.; gentleman' },
-          { id: 'g2-e2-very', traditional: '很', pinyin: 'hěn', meaning: 'very; linking adverb before a state verb' },
+          { id: 'g2-e2-very', traditional: '很', pinyin: 'hěn', meaning: 'very; the usual link word' },
           { id: 'g2-e2-busy', traditional: '忙', pinyin: 'máng', meaning: 'busy', suffix: '。' },
         ],
       },
@@ -463,7 +580,7 @@ export const LESSON_ONE_GRAMMAR_TWO: InteractiveGrammarPage = {
           { id: 'g2-e3-tired-a', traditional: '累', pinyin: 'lèi', meaning: 'tired', suffix: '，' },
           { id: 'g2-e3-wang', traditional: '王', pinyin: 'Wáng', meaning: 'surname Wang' },
           { id: 'g2-e3-mrs', traditional: '太太', pinyin: 'tàitai', meaning: 'Mrs.; wife' },
-          { id: 'g2-e3-very', traditional: '很', pinyin: 'hěn', meaning: 'very; linking adverb before a state verb' },
+          { id: 'g2-e3-very', traditional: '很', pinyin: 'hěn', meaning: 'very; the usual link word' },
           { id: 'g2-e3-tired-b', traditional: '累', pinyin: 'lèi', meaning: 'tired', suffix: '。' },
         ],
       },
@@ -474,9 +591,9 @@ export const LESSON_ONE_GRAMMAR_TWO: InteractiveGrammarPage = {
   exerciseInstruction: 'Tap 很 or 不, then place it in the blank.',
   exerciseNote: 'Adapted from the illustrated exercise on printed page 39.',
   exerciseCues: [
-    { id: 'g2-cue-1', label: '友美 · 漂亮', pinyin: 'Yǒuměi · piàoliang', detail: 'The printed picture presents Youmei as pretty.' },
-    { id: 'g2-cue-2', label: '他 · 忙', pinyin: 'tā · máng', detail: 'The printed picture shows a busy office worker.' },
-    { id: 'g2-cue-3', label: '王太太累；中明不累', pinyin: 'Wáng tàitai lèi; Zhōngmíng bú lèi', detail: 'The printed picture contrasts tired Mrs. Wang with Zhongming.' },
+    { id: 'g2-cue-1', label: '友美 · 漂亮', pinyin: 'Yǒuměi · piàoliang', detail: 'The picture shows Youmei as pretty.' },
+    { id: 'g2-cue-2', label: '他 · 忙', pinyin: 'tā · máng', detail: 'The picture shows a busy office worker.' },
+    { id: 'g2-cue-3', label: '王太太累；中明不累', pinyin: 'Wáng tàitai lèi; Zhōngmíng bú lèi', detail: 'The picture contrasts tired Mrs. Wang with Zhongming.' },
   ],
   questions: [
     {
@@ -484,7 +601,7 @@ export const LESSON_ONE_GRAMMAR_TWO: InteractiveGrammarPage = {
       number: 1,
       segments: [
         { type: 'text', traditional: '友美（Yǒuměi）' },
-        { type: 'blank', id: 'g2-q1-adverb', answer: '很', hint: 'The picture presents Youmei as pretty.' },
+        { type: 'blank', id: 'g2-q1-adverb', answer: '很', hint: 'The picture shows Youmei as pretty.' },
         { type: 'text', traditional: '漂亮。' },
       ],
       tiles: [
@@ -497,7 +614,7 @@ export const LESSON_ONE_GRAMMAR_TWO: InteractiveGrammarPage = {
       number: 2,
       segments: [
         { type: 'text', traditional: '他' },
-        { type: 'blank', id: 'g2-q2-adverb', answer: '很', hint: 'The office worker is surrounded by work.' },
+        { type: 'blank', id: 'g2-q2-adverb', answer: '很', hint: 'The office worker has a lot of work.' },
         { type: 'text', traditional: '忙（máng）。' },
       ],
       tiles: [
@@ -510,7 +627,7 @@ export const LESSON_ONE_GRAMMAR_TWO: InteractiveGrammarPage = {
       number: 3,
       segments: [
         { type: 'text', traditional: '她很累，中明（Zhōngmíng）' },
-        { type: 'blank', id: 'g2-q3-adverb', answer: '不', hint: 'The picture contrasts tired Mrs. Wang with Zhongming.' },
+        { type: 'blank', id: 'g2-q3-adverb', answer: '不', hint: 'Mrs. Wang is tired. Zhongming is not.' },
         { type: 'text', traditional: '累（lèi）。' },
       ],
       tiles: [
@@ -530,34 +647,34 @@ export const LESSON_ONE_GRAMMAR_THREE: InteractiveGrammarPage = {
   lessonTitleEnglish: 'The New Classmate',
   grammarNumber: 3,
   titleTraditional: '嗎',
-  titleEnglish: 'Turn a Statement into a 嗎 Question',
-  learnerPromise: 'Turn a statement into a natural yes-or-no question.',
+  titleEnglish: 'Ask a Yes/No Question with 嗎',
+  learnerPromise: 'Turn a sentence into a natural yes-or-no question.',
   printedPages: [40],
   audioReference: '01-1-3',
-  explanation: 'Keep the complete statement in its original order, then add 嗎 at the end. The listener can now answer yes or no; nothing inside the statement needs to move.',
+  explanation: 'Keep the whole sentence in its original order. Add 嗎 at the end. Now the listener answers yes or no. Nothing inside the sentence moves.',
   focusTerms: ['嗎', '吗'],
   teachingGlossary: [
-    { id: 'g3-glossary-ma', traditional: '嗎', simplified: '吗', pinyin: 'ma', meaning: 'yes/no question particle placed at the end of a statement' },
-    { id: 'g3-glossary-shi', traditional: '是', pinyin: 'shì', meaning: 'to be; links someone to an identity or category' },
-    { id: 'g3-glossary-hen', traditional: '很', pinyin: 'hěn', meaning: 'links a subject to a positive state' },
+    { id: 'g3-glossary-ma', traditional: '嗎', simplified: '吗', pinyin: 'ma', meaning: 'ending word that turns a sentence into a yes/no question' },
+    { id: 'g3-glossary-shi', traditional: '是', pinyin: 'shì', meaning: 'is; says who someone is' },
+    { id: 'g3-glossary-hen', traditional: '很', pinyin: 'hěn', meaning: 'very; the usual link word' },
   ],
   pattern: 'Statement + 嗎',
-  patternColumns: ['S', 'Predicate', '嗎'],
+  patternColumns: ['Who or what', 'Rest of the sentence', '嗎'],
+  patternColumnDetails: ['S', 'keep the order', 'question ending'],
   patternAccentColumn: 2,
-  patternMobileLayout: 'middle-wide',
   discoveryLab: {
-    title: 'One small ending flips the listener’s job',
-    description: 'The people, verb, and description stay exactly where they were. Only the ending changes.',
+    title: 'One small ending turns it into a question',
+    description: 'The sentence stays exactly the same. Only the ending changes.',
     prompt: 'Are you telling or checking?',
     choices: [
       {
         id: 'g3-tell',
-        label: 'Tell · statement',
+        label: 'Tell · sentence',
         traditional: '她很可愛。',
         simplified: '她很可爱。',
         pinyin: "Tā hěn kě'ài.",
         english: 'She is cute.',
-        note: 'A full stop tells the listener that you are giving information.',
+        note: 'The full stop means you are telling.',
       },
       {
         id: 'g3-check',
@@ -566,7 +683,7 @@ export const LESSON_ONE_GRAMMAR_THREE: InteractiveGrammarPage = {
         simplified: '她很可爱吗？',
         pinyin: "Tā hěn kě'ài ma?",
         english: 'Is she cute?',
-        note: 'Add 嗎 after the untouched statement. The word order does not flip as it does in English.',
+        note: 'Add 嗎 after the same sentence. In English the word order changes; in Chinese it does not.',
       },
       {
         id: 'g3-repair',
@@ -575,11 +692,11 @@ export const LESSON_ONE_GRAMMAR_THREE: InteractiveGrammarPage = {
         simplified: '吗她很可爱？ → 她很可爱吗？',
         pinyin: "Ma tā hěn kě'ài? → Tā hěn kě'ài ma?",
         english: 'Move 嗎 to the end.',
-        note: '嗎 never starts this question. Build the statement first, then place 嗎 at the finish line.',
+        note: '嗎 never comes first. Say the sentence first, then put 嗎 at the end.',
         isCorrection: true,
       },
     ],
-    takeaway: 'Statement first, 嗎 last. If the statement works by itself, the yes/no question is almost finished.',
+    takeaway: 'Sentence first, 嗎 last. If the sentence works on its own, your question is almost done.',
   },
   patternRows: [
     {
@@ -590,17 +707,77 @@ export const LESSON_ONE_GRAMMAR_THREE: InteractiveGrammarPage = {
         { id: 'g3-p1-taiwan', traditional: '臺灣', simplified: '台湾', pinyin: 'Táiwān', meaning: 'Taiwan' },
         { id: 'g3-p1-person', traditional: '人', pinyin: 'rén', meaning: 'person' },
       ],
-      complement: [{ id: 'g3-p1-ma', traditional: '嗎', simplified: '吗', pinyin: 'ma', meaning: 'yes/no question particle', suffix: '？' }],
+      complement: [{ id: 'g3-p1-ma', traditional: '嗎', simplified: '吗', pinyin: 'ma', meaning: 'yes/no question ending', suffix: '？' }],
       english: 'Is he Taiwanese?',
     },
     {
       id: 'g3-pattern-2',
       subject: [{ id: 'g3-p2-she', traditional: '她', pinyin: 'tā', meaning: 'she' }],
       grammar: [{ id: 'g3-p2-pretty', traditional: '漂亮', pinyin: 'piàoliang', meaning: 'pretty' }],
-      complement: [{ id: 'g3-p2-ma', traditional: '嗎', simplified: '吗', pinyin: 'ma', meaning: 'yes/no question particle', suffix: '？' }],
+      complement: [{ id: 'g3-p2-ma', traditional: '嗎', simplified: '吗', pinyin: 'ma', meaning: 'yes/no question ending', suffix: '？' }],
       english: 'Is she pretty?',
     },
   ],
+  confusion: {
+    title: "Don't mix these up",
+    items: [
+      {
+        id: 'g3-confusion-ma-position',
+        question: 'Where does 嗎 go — first like "Do you…?" or last?',
+        answer: 'Last. Say the whole sentence, then add 嗎. English flips the order; Chinese does not.',
+        wrongTraditional: '嗎他是日本人？',
+        right: {
+          traditional: '他是日本人嗎？',
+          simplified: '他是日本人吗？',
+          pinyin: 'Tā shì Rìběn rén ma?',
+          english: 'Is he Japanese?',
+          words: [
+            { id: 'g3c1-he', traditional: '他', pinyin: 'tā', meaning: 'he' },
+            { id: 'g3c1-is', traditional: '是', pinyin: 'shì', meaning: 'is / am / are' },
+            { id: 'g3c1-japan', traditional: '日本', pinyin: 'Rìběn', meaning: 'Japan' },
+            { id: 'g3c1-person', traditional: '人', pinyin: 'rén', meaning: 'person' },
+            { id: 'g3c1-ma', traditional: '嗎', simplified: '吗', pinyin: 'ma', meaning: 'yes/no question ending', suffix: '？' },
+          ],
+        },
+      },
+      {
+        id: 'g3-confusion-question-word-plus-ma',
+        question: 'Can I use 嗎 together with a question word like 誰?',
+        answer: 'No. A question word already does the asking. Adding 嗎 makes the sentence ask twice.',
+        wrongTraditional: '他是誰嗎？',
+        right: {
+          traditional: '他是誰？',
+          simplified: '他是谁？',
+          pinyin: 'Tā shì shéi?',
+          english: 'Who is he?',
+          words: [
+            { id: 'g3c2-he', traditional: '他', pinyin: 'tā', meaning: 'he' },
+            { id: 'g3c2-is', traditional: '是', pinyin: 'shì', meaning: 'is / am / are' },
+            { id: 'g3c2-who', traditional: '誰', simplified: '谁', pinyin: 'shéi', meaning: 'who', suffix: '？' },
+          ],
+        },
+      },
+      {
+        id: 'g3-confusion-ma-in-answer',
+        question: 'When I answer, do I keep 嗎?',
+        answer: 'No. Drop 嗎 and say the plain sentence. 嗎 is only for asking.',
+        wrongTraditional: '他不是日本人嗎。',
+        right: {
+          traditional: '他不是日本人。',
+          simplified: '他不是日本人。',
+          pinyin: 'Tā bú shì Rìběn rén.',
+          english: 'He is not Japanese.',
+          words: [
+            { id: 'g3c3-he', traditional: '他', pinyin: 'tā', meaning: 'he' },
+            { id: 'g3c3-not', traditional: '不', pinyin: 'bú', meaning: 'not' },
+            { id: 'g3c3-is', traditional: '是', pinyin: 'shì', meaning: 'is / am / are' },
+            { id: 'g3c3-japan', traditional: '日本', pinyin: 'Rìběn', meaning: 'Japan' },
+            { id: 'g3c3-person', traditional: '人', pinyin: 'rén', meaning: 'person', suffix: '。' },
+          ],
+        },
+      },
+    ],
+  },
   examples: [
     {
       id: 'g3-example-1',
@@ -615,7 +792,7 @@ export const LESSON_ONE_GRAMMAR_THREE: InteractiveGrammarPage = {
           { id: 'g3-e1-is-a', traditional: '是', pinyin: 'shì', meaning: 'is / am / are' },
           { id: 'g3-e1-japan-a', traditional: '日本', pinyin: 'Rìběn', meaning: 'Japan' },
           { id: 'g3-e1-person-a', traditional: '人', pinyin: 'rén', meaning: 'person' },
-          { id: 'g3-e1-ma', traditional: '嗎', simplified: '吗', pinyin: 'ma', meaning: 'yes/no question particle', suffix: '？' },
+          { id: 'g3-e1-ma', traditional: '嗎', simplified: '吗', pinyin: 'ma', meaning: 'yes/no question ending', suffix: '？' },
           { id: 'g3-e1-he-b', traditional: '他', pinyin: 'tā', meaning: 'he', prefix: 'B：' },
           { id: 'g3-e1-not', traditional: '不', pinyin: 'bú', meaning: 'not' },
           { id: 'g3-e1-is-b', traditional: '是', pinyin: 'shì', meaning: 'is / am / are' },
@@ -641,7 +818,7 @@ export const LESSON_ONE_GRAMMAR_THREE: InteractiveGrammarPage = {
           { id: 'g3-e2-mister', traditional: '先生', pinyin: 'xiānsheng', meaning: 'Mr.; gentleman' },
           { id: 'g3-e2-called', traditional: '叫', pinyin: 'jiào', meaning: 'to be called' },
           { id: 'g3-e2-jiale', traditional: '家樂', simplified: '家乐', pinyin: 'Jiālè', meaning: 'Jiale' },
-          { id: 'g3-e2-ma', traditional: '嗎', simplified: '吗', pinyin: 'ma', meaning: 'yes/no question particle', suffix: '？' },
+          { id: 'g3-e2-ma', traditional: '嗎', simplified: '吗', pinyin: 'ma', meaning: 'yes/no question ending', suffix: '？' },
         ],
       },
     },
@@ -656,7 +833,7 @@ export const LESSON_ONE_GRAMMAR_THREE: InteractiveGrammarPage = {
         words: [
           { id: 'g3-e3-he', traditional: '他', pinyin: 'tā', meaning: 'he' },
           { id: 'g3-e3-busy', traditional: '忙', pinyin: 'máng', meaning: 'busy' },
-          { id: 'g3-e3-ma', traditional: '嗎', simplified: '吗', pinyin: 'ma', meaning: 'yes/no question particle', suffix: '？' },
+          { id: 'g3-e3-ma', traditional: '嗎', simplified: '吗', pinyin: 'ma', meaning: 'yes/no question ending', suffix: '？' },
         ],
       },
     },
@@ -664,9 +841,9 @@ export const LESSON_ONE_GRAMMAR_THREE: InteractiveGrammarPage = {
   exerciseTitle: 'Complete the 嗎 questions',
   exercisePreview: 'Finish the three question-and-answer exchanges from page 40.',
   exerciseInstruction: 'Tap a tile, then place it in the matching blank.',
-  exerciseNote: 'Question 3 uses the heart illustration printed beside the exercise.',
+  exerciseNote: 'Question 3 uses the heart picture printed next to the exercise.',
   exerciseCues: [
-    { id: 'g3-cue-1', label: '她 · 可愛', pinyin: "tā · kě'ài", detail: 'The printed heart illustration presents her as cute.' },
+    { id: 'g3-cue-1', label: '她 · 可愛', pinyin: "tā · kě'ài", detail: 'The heart picture shows she is cute.' },
   ],
   questions: [
     {
@@ -674,7 +851,7 @@ export const LESSON_ONE_GRAMMAR_THREE: InteractiveGrammarPage = {
       number: 1,
       segments: [
         { type: 'text', traditional: 'A：中明（Zhōngmíng）姓王（Wáng）' },
-        { type: 'blank', id: 'g3-q1-particle', answer: '嗎', answerSimplified: '吗', hint: 'Add the yes/no question particle at the end.' },
+        { type: 'blank', id: 'g3-q1-particle', answer: '嗎', answerSimplified: '吗', hint: 'Add the yes/no question ending.' },
         { type: 'text', traditional: '？ B：他不姓王（Wáng），他姓李（Lǐ）。' },
       ],
       tiles: [
@@ -701,9 +878,9 @@ export const LESSON_ONE_GRAMMAR_THREE: InteractiveGrammarPage = {
       number: 3,
       segments: [
         { type: 'text', traditional: 'A：她可愛', simplified: 'A：她可爱' },
-        { type: 'blank', id: 'g3-q3-particle', answer: '嗎', answerSimplified: '吗', hint: 'Turn the statement into a yes/no question.' },
+        { type: 'blank', id: 'g3-q3-particle', answer: '嗎', answerSimplified: '吗', hint: 'Turn the sentence into a yes/no question.' },
         { type: 'text', traditional: '？ B：她' },
-        { type: 'blank', id: 'g3-q3-answer', answer: '很可愛', answerSimplified: '很可爱', hint: 'The heart illustration gives a positive description.' },
+        { type: 'blank', id: 'g3-q3-answer', answer: '很可愛', answerSimplified: '很可爱', hint: 'The hearts show a positive answer.' },
         { type: 'text', traditional: '。' },
       ],
       tiles: [
@@ -751,7 +928,7 @@ export const LESSON_ONE_PART_ONE: InteractiveGrammarPart = {
     },
   },
   completionTitle: 'Part 1 complete — you can introduce, describe, and ask.',
-  completionDescription: 'You practiced identity with 叫、姓、是, described states with 很、不, and formed yes/no questions with 嗎.',
+  completionDescription: 'You introduced people with 叫, 姓, and 是. You described them with 很 and 不. You asked yes/no questions with 嗎.',
   nextBookLabel: 'Next in the book · Page 41.',
 };
 
@@ -784,6 +961,7 @@ export const INTERACTIVE_GRAMMAR_PARTS = [
   LESSON_THIRTEEN_PART_TWO,
   LESSON_FOURTEEN_PART_ONE,
   LESSON_FOURTEEN_PART_TWO,
+  LESSON_SIXTEEN_PART_ONE,
 ];
 
 export function getInteractiveGrammarPart(partId: string) {

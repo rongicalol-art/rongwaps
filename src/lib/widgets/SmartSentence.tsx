@@ -1,11 +1,12 @@
 import { useEffect, useState, useMemo } from 'react';
 import { useAppStore } from '../../store/useAppStore';
-import { getDictionaryEntriesBatch, prefetchLocalDictionary, isValidChineseWordLocal } from '../../services/dictionaryService';
+import { getDictionaryEntriesBatch } from '../../services/dictionaryService';
 
 interface SmartSentenceProps {
   text: string;
   className?: string;
   bookAccent?: string;
+  highlightTerms?: string[];
 }
 
 interface SegmentData {
@@ -15,71 +16,89 @@ interface SegmentData {
   isWordLike?: boolean;
 }
 
-export function SmartSentence({ text, className = '' }: SmartSentenceProps) {
+interface HighlightRange {
+  start: number;
+  end: number;
+}
+
+function findHighlightRanges(text: string, highlightTerms: string[]): HighlightRange[] {
+  const terms = Array.from(new Set(highlightTerms.filter(Boolean)))
+    .sort((a, b) => b.length - a.length);
+  const ranges: HighlightRange[] = [];
+
+  terms.forEach((term) => {
+    let start = text.indexOf(term);
+    while (start >= 0) {
+      ranges.push({ start, end: start + term.length });
+      start = text.indexOf(term, start + term.length);
+    }
+  });
+
+  return ranges;
+}
+
+function renderHighlightedText(text: string, startIndex: number, ranges: HighlightRange[]) {
+  if (ranges.length === 0) return text;
+
+  const parts: Array<{ text: string; highlighted: boolean }> = [];
+  let index = 0;
+
+  while (index < text.length) {
+    const highlighted = ranges.some((range) => (
+      startIndex + index >= range.start && startIndex + index < range.end
+    ));
+    const previous = parts.at(-1);
+    if (previous && previous.highlighted === highlighted) {
+      previous.text += text[index];
+    } else {
+      parts.push({ text: text[index], highlighted });
+    }
+    index += 1;
+  }
+
+  return parts.map((part, partIndex) => part.highlighted ? (
+    <span key={partIndex} className="font-black text-brand-primary">
+      {part.text}
+    </span>
+  ) : part.text);
+}
+
+export function SmartSentence({
+  text,
+  className = '',
+  highlightTerms = [],
+}: SmartSentenceProps) {
   const { setDictionaryWord } = useAppStore();
   const [finalSegments, setFinalSegments] = useState<SegmentData[]>([]);
-
-  // Trigger prefetch of local dict trie early
-  useEffect(() => {
-    prefetchLocalDictionary();
-  }, []);
 
   useEffect(() => {
     let isMounted = true;
     
     async function validateAndSetSegments() {
       try {
-        // Wait for the local dictionary map to load before trying to validate, 
-        // to avoid huge concurrent network fetches for every sentence word on first load.
-        await prefetchLocalDictionary();
-        if (!isMounted) return;
-
         const segmenter = new Intl.Segmenter('zh-CN', { granularity: 'word' });
         const initialSegments = Array.from(segmenter.segment(text));
-        
-        let processed: SegmentData[] = [];
-        const wordsRequiringNetworkValidation: string[] = [];
-        
-        // Pass 1: Local synchronous validation
-        for (const seg of initialSegments) {
+
+        // Multi-character Chinese word-like segments are verified against the
+        // dictionary (static shard packs first, then Supabase). Single
+        // characters and non-Chinese tokens pass through untouched.
+        const wordsRequiringNetworkValidation = initialSegments
+          .filter((seg) => seg.isWordLike && /[\u4E00-\u9FFF]/.test(seg.segment) && Array.from(seg.segment).length > 1)
+          .map((seg) => seg.segment);
+
+        const validMap = wordsRequiringNetworkValidation.length > 0
+          ? await getDictionaryEntriesBatch(wordsRequiringNetworkValidation)
+          : new Map<string, never>();
+        if (!isMounted) return;
+
+        const processed = initialSegments.flatMap((seg) => {
           const isChineseWord = seg.isWordLike && /[\u4E00-\u9FFF]/.test(seg.segment);
-          if (isChineseWord && seg.segment.length > 1) {
-            const isLocalValid = isValidChineseWordLocal(seg.segment);
-            if (isLocalValid === false) {
-               // Definitely not in dictionary, branch it early
-               const chars = Array.from(seg.segment);
-               chars.forEach((char, i) => {
-                 processed.push({ segment: char, index: seg.index + i, input: text, isWordLike: true });
-               });
-            } else if (isLocalValid === true) {
-               // Definitely in dictionary
-               processed.push(seg);
-            } else {
-               // Local Dictionary hasn't loaded yet! Defer for network resolution
-               wordsRequiringNetworkValidation.push(seg.segment);
-               processed.push(seg); // Temporarily keep it intact until network responds
-            }
-          } else {
-            processed.push(seg);
+          if (isChineseWord && Array.from(seg.segment).length > 1 && !validMap.has(seg.segment)) {
+            const chars = Array.from(seg.segment);
+            return chars.map((char, i) => ({ segment: char, index: seg.index + i, input: text, isWordLike: true }));
           }
-        }
-        
-        // Pass 2: Handle any words that required network block (only happens if local isn't loaded)
-        if (wordsRequiringNetworkValidation.length > 0) {
-           const validMap = await getDictionaryEntriesBatch(wordsRequiringNetworkValidation);
-           if (!isMounted) return;
-           
-           // We re-loop over processed to split the unresolved ones
-           processed = processed.flatMap((seg) => {
-              if (wordsRequiringNetworkValidation.includes(seg.segment)) {
-                 if (!validMap.has(seg.segment)) {
-                   const chars = Array.from(seg.segment);
-                   return chars.map((char, i) => ({ segment: char, index: seg.index + i, input: text, isWordLike: true }));
-                 }
-              }
-              return [seg];
-           });
-        }
+          return [seg];
+        });
 
         if (!isMounted) return;
         setFinalSegments(processed);
@@ -107,6 +126,10 @@ export function SmartSentence({ text, className = '' }: SmartSentenceProps) {
   }, [text]);
 
   const displaySegments = finalSegments.length > 0 ? finalSegments : fallbackSegments;
+  const highlightRanges = useMemo(
+    () => findHighlightRanges(text, highlightTerms),
+    [highlightTerms, text],
+  );
 
   return (
     <span className={`inline-block ${className}`}>
@@ -118,17 +141,23 @@ export function SmartSentence({ text, className = '' }: SmartSentenceProps) {
           return (
             <button
               key={`${idx}-${seg.segment}`}
+              type="button"
+              aria-label={`Open ${seg.segment} in the dictionary`}
               onClick={(e) => {
                 e.stopPropagation();
                 setDictionaryWord(seg.segment);
               }}
-              className={`hover:bg-[#F2F2F2] active:bg-[#E5E5E5] transition-colors rounded-[8px] cursor-pointer outline-none align-baseline -mx-[2px] px-[2px] text-black hover:opacity-80 active:translate-y-[1px]`}
+              className="-mx-0.5 cursor-pointer rounded-[8px] px-0.5 align-baseline text-ui-ink outline-none transition-colors hover:bg-ui-surface-hover focus-visible:bg-ui-surface-hover focus-visible:ring-2 focus-visible:ring-brand-primary/35 active:translate-y-px active:bg-ui-divider"
             >
-              {seg.segment}
+              {renderHighlightedText(seg.segment, seg.index, highlightRanges)}
             </button>
           );
         }
-        return <span key={`${idx}-${seg.segment}`} className="align-baseline text-black">{seg.segment}</span>;
+        return (
+          <span key={`${idx}-${seg.segment}`} className="align-baseline text-ui-ink">
+            {renderHighlightedText(seg.segment, seg.index, highlightRanges)}
+          </span>
+        );
       })}
     </span>
   );

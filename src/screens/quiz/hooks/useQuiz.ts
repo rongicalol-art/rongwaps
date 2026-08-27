@@ -7,7 +7,7 @@ import { shuffleItems } from '../../../utils/sessionOrder';
 import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
 import { queueMissedItem } from '../../../utils/mistakeQueue';
 import { isPinyinAnswerAccepted } from '../../../utils/pinyinAnswer';
-import { retainCurrentCardIndex } from '../../../utils/sessionProgress';
+import { getSessionStartIndex, retainCurrentCardIndex } from '../../../utils/sessionProgress';
 import { buildMeaningChoices } from '../../../utils/meaningChoices';
 
 export function useQuizLoader(activeBookId: number, selectedLessons: number[], isLibraryDeck: boolean = false, isReviewDeck: boolean = false) {
@@ -25,13 +25,15 @@ export function useQuizLoader(activeBookId: number, selectedLessons: number[], i
 export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
   const { markCardReviewed, sessionProgressIndex, setSessionProgressIndex, clearSessionProgressIndex } = useAppStore();
   const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
-  const autoPlayAudio = usePracticePreferencesStore((state) => state.autoPlayAudio);
   const replayAudioAfterAnswer = usePracticePreferencesStore((state) => state.replayAudioAfterAnswer);
   const repeatMistakes = usePracticePreferencesStore((state) => state.repeatMistakes);
   
   const [activeCards, setActiveCards] = useState<Flashcard[]>(cards);
   const [isShuffled, setIsShuffled] = useState(false);
   const canonicalOrderRef = useRef<Flashcard[]>(cards);
+  const sessionKeyRef = useRef(sessionKey);
+  const sessionInitializedRef = useRef(false);
+  const pendingSessionCardIdRef = useRef<string | null>(null);
   const currentCardIdRef = useRef<string | null>(null);
   const gradingCardKeyRef = useRef<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(() => {
@@ -39,13 +41,45 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
   });
 
   useEffect(() => {
+    if (sessionKeyRef.current !== sessionKey) {
+      pendingSessionCardIdRef.current = currentCardIdRef.current;
+      sessionKeyRef.current = sessionKey;
+      sessionInitializedRef.current = false;
+      currentCardIdRef.current = null;
+      canonicalOrderRef.current = [];
+      setActiveCards([]);
+      setIsShuffled(false);
+      setCurrentIndex(0);
+      setCompleted(false);
+      setSelectedOption(null);
+      setIsChecked(false);
+      setSessionResults({});
+      gradingCardKeyRef.current = null;
+      return;
+    }
+
     setActiveCards(cards);
-    setCurrentIndex((previousIndex) => (
-      retainCurrentCardIndex(cards, currentCardIdRef.current, previousIndex)
-    ));
+    if (cards.length > 0) {
+      const cardIdToRetain = sessionInitializedRef.current
+        ? currentCardIdRef.current
+        : pendingSessionCardIdRef.current;
+      const retainCurrentCard = sessionInitializedRef.current || Boolean(
+        cardIdToRetain && cards.some((card) => card.id === cardIdToRetain),
+      );
+      const savedIndex = retainCurrentCard ? 0 : getSessionStartIndex(
+          useAppStore.getState().sessionProgressIndex,
+          sessionKey,
+          cards.length,
+        );
+      setCurrentIndex((previousIndex) => retainCurrentCard
+        ? retainCurrentCardIndex(cards, cardIdToRetain, previousIndex)
+        : savedIndex);
+      sessionInitializedRef.current = true;
+      pendingSessionCardIdRef.current = null;
+    }
     setIsShuffled(false);
     canonicalOrderRef.current = cards;
-  }, [cards]);
+  }, [cards, sessionKey]);
 
   useEffect(() => {
     if (activeCards.length > 0 && currentIndex >= activeCards.length) {
@@ -55,8 +89,9 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
 
   // Save progress
   useEffect(() => {
+    if (!sessionInitializedRef.current || activeCards.length === 0) return;
     setSessionProgressIndex(sessionKey, currentIndex);
-  }, [currentIndex, sessionKey, setSessionProgressIndex]);
+  }, [activeCards.length, currentIndex, sessionKey, setSessionProgressIndex]);
   
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isChecked, setIsChecked] = useState(false);
@@ -73,15 +108,12 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
   const currentCard = activeCards[currentIndex];
   if (currentCard) currentCardIdRef.current = currentCard.id;
 
+  // Stop audio only when the session completes or unmounts — never when
+  // advancing to the next card, so the correct-answer pronunciation keeps
+  // ringing through the card transition.
   useEffect(() => {
     return () => audioService.stop();
-  }, [completed, currentCard?.id]);
-
-  useEffect(() => {
-    if (autoPlayAudio && currentCard) {
-      audioService.play(currentCard.audio, pronunciationRate, currentCard.front);
-    }
-  }, [autoPlayAudio, currentCard, pronunciationRate]);
+  }, [completed]);
 
   const toggleShuffle = useCallback(() => {
     const nextShuffled = !isShuffled;
@@ -119,7 +151,7 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
     setSelectedOption(option);
     setIsChecked(true);
     const correct = option === currentCard.back;
-    if (replayAudioAfterAnswer) {
+    if (correct && replayAudioAfterAnswer) {
       audioService.play(currentCard.audio, pronunciationRate, currentCard.front);
     }
     markCardReviewed(currentCard.id, correct ? 4 : 2);
@@ -227,13 +259,15 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
 export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
   const { markCardReviewed, sessionProgressIndex, setSessionProgressIndex, clearSessionProgressIndex } = useAppStore();
   const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
-  const autoPlayAudio = usePracticePreferencesStore((state) => state.autoPlayAudio);
   const replayAudioAfterAnswer = usePracticePreferencesStore((state) => state.replayAudioAfterAnswer);
   const repeatMistakes = usePracticePreferencesStore((state) => state.repeatMistakes);
   
   const [activeCards, setActiveCards] = useState<Flashcard[]>(cards);
   const [isShuffled, setIsShuffled] = useState(false);
   const canonicalOrderRef = useRef<Flashcard[]>(cards);
+  const sessionKeyRef = useRef(sessionKey);
+  const sessionInitializedRef = useRef(false);
+  const pendingSessionCardIdRef = useRef<string | null>(null);
   const currentCardIdRef = useRef<string | null>(null);
   const gradingCardKeyRef = useRef<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(() => {
@@ -241,13 +275,45 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
   });
 
   useEffect(() => {
+    if (sessionKeyRef.current !== sessionKey) {
+      pendingSessionCardIdRef.current = currentCardIdRef.current;
+      sessionKeyRef.current = sessionKey;
+      sessionInitializedRef.current = false;
+      currentCardIdRef.current = null;
+      canonicalOrderRef.current = [];
+      setActiveCards([]);
+      setIsShuffled(false);
+      setCurrentIndex(0);
+      setCompleted(false);
+      setInput('');
+      setStatus('idle');
+      setSessionResults({});
+      gradingCardKeyRef.current = null;
+      return;
+    }
+
     setActiveCards(cards);
-    setCurrentIndex((previousIndex) => (
-      retainCurrentCardIndex(cards, currentCardIdRef.current, previousIndex)
-    ));
+    if (cards.length > 0) {
+      const cardIdToRetain = sessionInitializedRef.current
+        ? currentCardIdRef.current
+        : pendingSessionCardIdRef.current;
+      const retainCurrentCard = sessionInitializedRef.current || Boolean(
+        cardIdToRetain && cards.some((card) => card.id === cardIdToRetain),
+      );
+      const savedIndex = retainCurrentCard ? 0 : getSessionStartIndex(
+          useAppStore.getState().sessionProgressIndex,
+          sessionKey,
+          cards.length,
+        );
+      setCurrentIndex((previousIndex) => retainCurrentCard
+        ? retainCurrentCardIndex(cards, cardIdToRetain, previousIndex)
+        : savedIndex);
+      sessionInitializedRef.current = true;
+      pendingSessionCardIdRef.current = null;
+    }
     setIsShuffled(false);
     canonicalOrderRef.current = cards;
-  }, [cards]);
+  }, [cards, sessionKey]);
 
   useEffect(() => {
     if (activeCards.length > 0 && currentIndex >= activeCards.length) {
@@ -257,8 +323,9 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
 
   // Save progress
   useEffect(() => {
+    if (!sessionInitializedRef.current || activeCards.length === 0) return;
     setSessionProgressIndex(sessionKey, currentIndex);
-  }, [currentIndex, sessionKey, setSessionProgressIndex]);
+  }, [activeCards.length, currentIndex, sessionKey, setSessionProgressIndex]);
   
   const [input, setInput] = useState('');
   const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle');
@@ -276,15 +343,12 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
   const currentCard = activeCards[currentIndex];
   if (currentCard) currentCardIdRef.current = currentCard.id;
 
+  // Stop audio only when the session completes or unmounts — never when
+  // advancing to the next card, so the correct-answer pronunciation keeps
+  // ringing through the card transition.
   useEffect(() => {
     return () => audioService.stop();
-  }, [completed, currentCard?.id]);
-
-  useEffect(() => {
-    if (autoPlayAudio && currentCard) {
-      audioService.play(currentCard.audio, pronunciationRate, currentCard.front);
-    }
-  }, [autoPlayAudio, currentCard, pronunciationRate]);
+  }, [completed]);
 
   const toggleShuffle = useCallback(() => {
     const nextShuffled = !isShuffled;
@@ -323,11 +387,10 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
     if (gradingCardKeyRef.current === gradingCardKey) return;
     gradingCardKeyRef.current = gradingCardKey;
 
-    if (replayAudioAfterAnswer) {
+    const isCorrect = isPinyinAnswerAccepted(input, currentCard.pinyin);
+    if (isCorrect && replayAudioAfterAnswer) {
       audioService.play(currentCard.audio, pronunciationRate, currentCard.front);
     }
-    
-    const isCorrect = isPinyinAnswerAccepted(input, currentCard.pinyin);
 
     setStatus(isCorrect ? 'correct' : 'wrong');
     markCardReviewed(currentCard.id, isCorrect ? 4 : 2);

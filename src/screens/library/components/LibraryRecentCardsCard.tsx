@@ -28,6 +28,15 @@ export function LibraryRecentCardsCard({ items, onSelectWord }: LibraryRecentCar
           {items.map((item) => (
             <div
               key={item.id}
+              role="button"
+              tabIndex={0}
+              aria-label={`Open ${item.hanzi}`}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onSelectWord?.(item.hanzi);
+                }
+              }}
               onClick={() => onSelectWord?.(item.hanzi)}
               className="group flex cursor-pointer items-center justify-between gap-3 rounded-[12px] px-2 py-3 transition-colors hover:bg-white first:pt-2 last:pb-2"
             >

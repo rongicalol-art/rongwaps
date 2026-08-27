@@ -18,6 +18,8 @@ interface PracticePartProgressRailProps {
   totalCount: number;
   density?: 'default' | 'compact';
   className?: string;
+  ariaLabel?: string;
+  unitLabel?: string;
 }
 
 interface StudyPartProgressRailProps {
@@ -74,7 +76,7 @@ function PartButton({
       className={cn(
         'group relative min-h-[56px] min-w-[84px] flex-1 overflow-hidden rounded-[16px] border-2 px-3 py-2 text-left transition-all duration-150 font-sans',
         selected
-          ? 'border-brand-primary-edge bg-[#E8F7FF] text-ui-ink-strong shadow-[0_4px_14px_rgba(28,176,246,0.14)]'
+          ? 'border-brand-primary-edge bg-brand-primary-soft text-ui-ink-strong shadow-[0_4px_14px] shadow-brand-primary/15'
           : 'border-ui-border bg-ui-canvas text-ui-muted hover:bg-ui-surface-hover',
         'active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-55',
         className,
@@ -85,7 +87,7 @@ function PartButton({
         aria-hidden="true"
         className={cn(
           'absolute inset-y-0 left-0 transition-all duration-500',
-          selected ? 'bg-brand-primary/18' : 'bg-ui-border/40',
+          selected ? 'bg-brand-primary/18' : 'bg-brand-primary-track/40',
         )}
         style={{ width: `${progress}%` }}
       />
@@ -151,13 +153,15 @@ export function PracticePartProgressRail({
   currentIndex,
   totalCount,
   className,
+  ariaLabel = 'Practice progress by part',
+  unitLabel = 'cards',
 }: PracticePartProgressRailProps) {
   if (segments.length <= 1 || totalCount <= 0) return null;
 
   const totalAllCards = segments.reduce((acc, s) => acc + s.cardCount, 0);
 
   return (
-    <div className={cn('flex w-full gap-2 sm:gap-2.5', className)} aria-label="Practice progress by part">
+    <div className={cn('flex w-full gap-2 sm:gap-2.5', className)} aria-label={ariaLabel}>
       {segments.map((segment) => {
         const flexWeight = totalAllCards > 0 ? segment.cardCount : 1;
         const progressPercent = segmentFill(currentIndex, segment.startIndex, segment.cardCount);
@@ -166,8 +170,8 @@ export function PracticePartProgressRail({
           <div
             key={`${segment.partId}-${segment.startIndex}`}
             style={{ flex: flexWeight }}
-            className="relative h-5 w-full min-w-0 overflow-hidden rounded-full bg-ui-border"
-            title={`${segment.label}: ${segment.cardCount} cards`}
+            className="relative h-5 w-full min-w-0 overflow-hidden rounded-full bg-brand-primary-track"
+            title={`${segment.label}: ${segment.cardCount} ${unitLabel}`}
           >
             <motion.div
               className="relative h-full min-w-0 overflow-hidden rounded-full bg-brand-primary will-change-[width]"
@@ -235,8 +239,8 @@ function StudyPartButton({
       className={cn(
         'group relative h-5 w-full min-w-0 cursor-pointer select-none overflow-hidden rounded-full outline-none transition-colors duration-300 focus-visible:ring-4 focus-visible:ring-brand-primary/25 disabled:cursor-not-allowed disabled:opacity-50',
         isSelected
-          ? 'bg-ui-border'
-          : 'bg-ui-divider hover:bg-ui-border',
+          ? 'bg-brand-primary-track'
+          : 'bg-brand-primary-track hover:brightness-90',
       )}
     >
       <motion.span

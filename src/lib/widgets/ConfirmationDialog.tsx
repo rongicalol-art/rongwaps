@@ -44,7 +44,7 @@ export function ConfirmationDialog({
   });
 
   return (
-    <div className="workspace-window fixed inset-0 z-[300] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[700] flex items-center justify-center p-4">
       <motion.div
         aria-hidden="true"
         initial={{ opacity: 0 }}
@@ -70,7 +70,7 @@ export function ConfirmationDialog({
           aria-labelledby={titleId}
           aria-describedby={`${descriptionId}${errorMessage ? ` ${errorId}` : ''}`}
           tabIndex={-1}
-          className={cn('rounded-[24px] border-2 border-ui-border bg-ui-surface p-6 shadow-xl', className)}
+          className={cn('rounded-[24px] border-b-4 border-ui-border bg-ui-surface p-6 shadow-xl', className)}
         >
           <div className="mb-6 text-center">
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-[20px] bg-feedback-danger/10 text-feedback-danger">

@@ -1,459 +1,459 @@
 {
   "schemaVersion": 1,
-  "version": "66f164fd48d92054",
-  "generatedAt": "2026-07-14T17:37:24.234Z",
-  "sourceCount": 21038,
-  "packedItemCount": 32783,
+  "version": "38c4254e647da60b",
+  "generatedAt": "2026-08-27T13:40:29.903Z",
+  "sourceCount": 122330,
+  "packedItemCount": 197526,
   "shardCount": 64,
   "shardStrategy": "word-hash-modulo",
   "shards": [
     {
       "shard": 0,
-      "count": 593,
+      "count": 3402,
       "path": "/data/dictionary/shard-00.json",
-      "sha256": "88766a82ddbe76d4621764cb6ba4307426bf9148d6bdc85149326ebf4b2e17c9",
-      "bytes": 109275
+      "sha256": "403f611737196a8ce0dda01755cc45ce793fd6ec77da5fc445b549a05391cbf9",
+      "bytes": 634240
     },
     {
       "shard": 1,
-      "count": 528,
+      "count": 3102,
       "path": "/data/dictionary/shard-01.json",
-      "sha256": "bc2cabef1a381d84f80ea5927f899a51cefcae00c9d5d9de715743668b99f8c9",
-      "bytes": 97316
+      "sha256": "3b3221c458f93ff01c099c27fafdbd9693040ffad22019dc3cc4887b3defcaa3",
+      "bytes": 578464
     },
     {
       "shard": 2,
-      "count": 552,
+      "count": 3167,
       "path": "/data/dictionary/shard-02.json",
-      "sha256": "fecc02fba7eb8ea6795de9fcd02433362ec5cebe42c26584d00190b949f66707",
-      "bytes": 99032
+      "sha256": "ddf7e8c67735788aa8150e07180ef4fdde72960f62275e650c1540555f1890ad",
+      "bytes": 592242
     },
     {
       "shard": 3,
-      "count": 479,
+      "count": 2953,
       "path": "/data/dictionary/shard-03.json",
-      "sha256": "e5d97e5c11425ef3ef3d28945118180cc4d5881475de7659b7cbd59c2bf256c9",
-      "bytes": 84625
+      "sha256": "00e30e950855fc19590895885529214445a0a6ff79fc99533492d80794c42e0e",
+      "bytes": 548543
     },
     {
       "shard": 4,
-      "count": 477,
+      "count": 3058,
       "path": "/data/dictionary/shard-04.json",
-      "sha256": "1ecdd400bbcd21e7679ecd47e4ba3d2beb7538acf56fdc582a96731a78d4dfab",
-      "bytes": 85175
+      "sha256": "e0ea7adf95d25b3dc97dc5ad821e5d562862869a0d3b6848fdad9c1affab81f9",
+      "bytes": 564449
     },
     {
       "shard": 5,
-      "count": 511,
+      "count": 3103,
       "path": "/data/dictionary/shard-05.json",
-      "sha256": "cb6862b0ca33a63e9119bb00f360b312673a5a66c3d8cb86ad876e6da133709c",
-      "bytes": 91877
+      "sha256": "71a38bf1ee34cbc5bdcff0e58e5a0cffb6dfbd517d904de5df9d9c01829d5dd6",
+      "bytes": 580881
     },
     {
       "shard": 6,
-      "count": 529,
+      "count": 3016,
       "path": "/data/dictionary/shard-06.json",
-      "sha256": "428aad44902b6908c7ef4e7d5804a6814198ff53cb7b0abde6e43b89b48f3a58",
-      "bytes": 94698
+      "sha256": "1235c8c9ebc885ca4c02e4be0d7c5009f286d2a3961e4f23b023903368451fe2",
+      "bytes": 561928
     },
     {
       "shard": 7,
-      "count": 535,
+      "count": 3096,
       "path": "/data/dictionary/shard-07.json",
-      "sha256": "c6f37aac6277dc61c5c4b0c3763dbff9188aa9f22b3fc1c7e9dd6f2b2fc60d8e",
-      "bytes": 96743
+      "sha256": "c3974d1ee919b29c96bdc3dbba013c869a963a57b0d02612459db339523d34bd",
+      "bytes": 574894
     },
     {
       "shard": 8,
-      "count": 504,
+      "count": 3101,
       "path": "/data/dictionary/shard-08.json",
-      "sha256": "c8f815a369e7593f88a39d1c33fa62c10c1a688bc701242fa782ceced05d4927",
-      "bytes": 92379
+      "sha256": "869ecba4dc97c4809c23164b8b92d3f32dc492b6a13205135f9a120ae5d81ed8",
+      "bytes": 583706
     },
     {
       "shard": 9,
-      "count": 564,
+      "count": 3211,
       "path": "/data/dictionary/shard-09.json",
-      "sha256": "9f073842cade47ab80d9276fae8f8474a48c5032093a26709021e8d3b59ad92e",
-      "bytes": 102198
+      "sha256": "48adf6de427789f2acefe4c26ede4e18ec51393264cde857c2c5132870c5b5da",
+      "bytes": 600091
     },
     {
       "shard": 10,
-      "count": 538,
+      "count": 3093,
       "path": "/data/dictionary/shard-10.json",
-      "sha256": "86469f49c754fe9b3a898b35a9ab78f063d6fa757506194e00398862648184fd",
-      "bytes": 97138
+      "sha256": "b108a7b7530083a2980256ef1ab260edf5a5f8ba75dcfbcf06ef72d70034dc6a",
+      "bytes": 578411
     },
     {
       "shard": 11,
-      "count": 500,
+      "count": 3002,
       "path": "/data/dictionary/shard-11.json",
-      "sha256": "6233ecdab3ac08b65dc68c873e3e57335363f386583795ab1d60d8041e3c16a5",
-      "bytes": 90678
+      "sha256": "81a474266b0e5d3f9a01a9392b0ed02b739f68681736ecf34e8a7c765eea9f48",
+      "bytes": 560351
     },
     {
       "shard": 12,
-      "count": 504,
+      "count": 3121,
       "path": "/data/dictionary/shard-12.json",
-      "sha256": "e82d2c8d8c8e27cf6f77740f3a2706a416122d17888eb2054355815d8928f03f",
-      "bytes": 93746
+      "sha256": "683fe5b3a9fed051d0805099de98ad41129711b216df26c5735f1bedf0f207d9",
+      "bytes": 587297
     },
     {
       "shard": 13,
-      "count": 557,
+      "count": 3077,
       "path": "/data/dictionary/shard-13.json",
-      "sha256": "e32139e122e25518d1ba92511bea4ddfcbef8221a1a08fbc3e123110bb2a4a1c",
-      "bytes": 99964
+      "sha256": "432d7a9ddde6464e94d1e1d024b9ccc8ce15da3d7a5fe06f9a3920d378583bb4",
+      "bytes": 573114
     },
     {
       "shard": 14,
-      "count": 520,
+      "count": 3037,
       "path": "/data/dictionary/shard-14.json",
-      "sha256": "53815e48aaed361394a7fcb9891adb0aa28f1a07efc0ebd7d6cbce0e657bd7e4",
-      "bytes": 93899
+      "sha256": "795b9ed0c005164cd56000e7401aad643b00359e6c2eaf230dc122df30e9aaa2",
+      "bytes": 565881
     },
     {
       "shard": 15,
-      "count": 451,
+      "count": 2965,
       "path": "/data/dictionary/shard-15.json",
-      "sha256": "abde252a59388089c723585c97583e0060d4ee092f6d53b23c33d09017dd0134",
-      "bytes": 81866
+      "sha256": "c61ca84bdc9f7883462e191aace86eec08838ba72e715dee1c3d43b969e60565",
+      "bytes": 554647
     },
     {
       "shard": 16,
-      "count": 488,
+      "count": 3063,
       "path": "/data/dictionary/shard-16.json",
-      "sha256": "d7e4aaf889772ef2f559be1e682b23ffb2fc1f77b7bf216152378102b953d652",
-      "bytes": 87635
+      "sha256": "30566af3df6da5ab71464a92990cb8bccf5cf14f600fc7f48f367dfdf72116c9",
+      "bytes": 569686
     },
     {
       "shard": 17,
-      "count": 518,
+      "count": 3078,
       "path": "/data/dictionary/shard-17.json",
-      "sha256": "1aad29cadeee1690e2353bd54243dce546bd89e80b875e787f8d73d6f82f47b5",
-      "bytes": 93788
+      "sha256": "c302f38f0e7f8ee5f05f7f7115f49da07ac0acd25f2577a180023d5fc21bc2d4",
+      "bytes": 575471
     },
     {
       "shard": 18,
-      "count": 526,
+      "count": 3089,
       "path": "/data/dictionary/shard-18.json",
-      "sha256": "3b28a047f72e2b113ffe3413e13d63778524c96b2473f149da33f54a5a48b186",
-      "bytes": 95046
+      "sha256": "78f7918fae3a4697894dde4c71ad70eba7fac2ab22c55060bda9e247e291e67e",
+      "bytes": 575167
     },
     {
       "shard": 19,
-      "count": 527,
+      "count": 3127,
       "path": "/data/dictionary/shard-19.json",
-      "sha256": "9f1fc4b743cbccd46069a25051391391299257c044d138d0f3d726f4bf62d11b",
-      "bytes": 94383
+      "sha256": "b8fd27fcb673b010e769f7f366f2cb04a7b77d7478e43f7c2fbd78b008a87f02",
+      "bytes": 588634
     },
     {
       "shard": 20,
-      "count": 500,
+      "count": 3101,
       "path": "/data/dictionary/shard-20.json",
-      "sha256": "c8ead4c0db81d3c5519dffb9933ee4580956f51b266ed2f2061297913aeb1401",
-      "bytes": 89669
+      "sha256": "203e588e1f19275717ae3ef3346958eda118f3322375f07c1026e8100c3b6842",
+      "bytes": 573956
     },
     {
       "shard": 21,
-      "count": 554,
+      "count": 3152,
       "path": "/data/dictionary/shard-21.json",
-      "sha256": "cb808c57b6e315d07ebf337584ce0d98cfe8dfca6b834b6a562159dda8f9615b",
-      "bytes": 98861
+      "sha256": "b669685e3bd4210ef8b36796bd42b7d7602bac503c70f340f86330ddf60cc88c",
+      "bytes": 586156
     },
     {
       "shard": 22,
-      "count": 504,
+      "count": 3089,
       "path": "/data/dictionary/shard-22.json",
-      "sha256": "3744e0114c6cb1ca741c27ddd198ed4ea800554ce1f371a96348f0ecb144d39f",
-      "bytes": 88297
+      "sha256": "a1722f2d73ad850639e9bd3df34da35e2b09402ec57c2f2b5deba587e665a713",
+      "bytes": 566160
     },
     {
       "shard": 23,
-      "count": 524,
+      "count": 3080,
       "path": "/data/dictionary/shard-23.json",
-      "sha256": "13568fd3c096d1b7312a05353dd5dc341eed7f066c083ac8b1af11c7a37a3fe1",
-      "bytes": 95815
+      "sha256": "4f9654a7f95dffdc2c1c409502656aa748a520912cfed90b5cb0e9bda6945425",
+      "bytes": 574291
     },
     {
       "shard": 24,
-      "count": 478,
+      "count": 3031,
       "path": "/data/dictionary/shard-24.json",
-      "sha256": "246ead4518851a7332e41cfe2d865f88c0d04ce3cc9dd7cc05cf5e81b1ba06cd",
-      "bytes": 86641
+      "sha256": "e7a8d0ffc97e2dc661a52e6ca719028f44ab47f76fbe4e8a2c049aae435da213",
+      "bytes": 570050
     },
     {
       "shard": 25,
-      "count": 529,
+      "count": 3102,
       "path": "/data/dictionary/shard-25.json",
-      "sha256": "c7dd30aa0f4c87e6b33e15eb7a2ffd777f29ac055aab6ea0c3fe646433d610cf",
-      "bytes": 93863
+      "sha256": "f8209cd6f519ee22c47770a87339b826bb71c1818983cfd5852450c2e7e4da0d",
+      "bytes": 573802
     },
     {
       "shard": 26,
-      "count": 548,
+      "count": 3158,
       "path": "/data/dictionary/shard-26.json",
-      "sha256": "a4364c600ff75cce4fb125ceb447935cc6aa0b3d9a6984b647889469ccdb9eca",
-      "bytes": 98417
+      "sha256": "cba18e01487dfad9c7eaa6ffc3a75a51f5cb4d2cee5d3c48741e6cc0f535eca9",
+      "bytes": 585237
     },
     {
       "shard": 27,
-      "count": 523,
+      "count": 3096,
       "path": "/data/dictionary/shard-27.json",
-      "sha256": "f95fc7b56d51c3621f399e0c062e3d829f0c91142800225c133630ef7df4541a",
-      "bytes": 94529
+      "sha256": "948fb5ce5d62d88a6abd07544dc9176cbe1f6fbed660b63b781b41530062c161",
+      "bytes": 579435
     },
     {
       "shard": 28,
-      "count": 486,
+      "count": 3073,
       "path": "/data/dictionary/shard-28.json",
-      "sha256": "906db7ce98fcefd9de14848cce7e13407c2b5e5ab8be0710e0d4a4b4466befb9",
-      "bytes": 87639
+      "sha256": "8beeaeda7cb06b6e6954eab48ac29cfdc0035d15571c211a0f4f1ca13ab09e9f",
+      "bytes": 572281
     },
     {
       "shard": 29,
-      "count": 508,
+      "count": 3194,
       "path": "/data/dictionary/shard-29.json",
-      "sha256": "ec7a30a078f4a4f700bf21cc5b4454dd4daa51d6d6f6666463bc6a323b2e2e6f",
-      "bytes": 90662
+      "sha256": "1ec00db648235aa8347c20db089df863ba1b024ce69a8c2780434ab50236321a",
+      "bytes": 591163
     },
     {
       "shard": 30,
-      "count": 477,
+      "count": 3057,
       "path": "/data/dictionary/shard-30.json",
-      "sha256": "7cb0603919540a2f2e8f46875d0f95f7f4b9394d301d3c971b4e7967db3d400f",
-      "bytes": 88271
+      "sha256": "9270163ae6e5733e453068d1021be77be9c009839513681f29120d3dba5c6056",
+      "bytes": 573669
     },
     {
       "shard": 31,
-      "count": 541,
+      "count": 3176,
       "path": "/data/dictionary/shard-31.json",
-      "sha256": "6e292630875d02f3e0afc7f67bdfc97ac6226b571b8d3a1a55355a46ca666af2",
-      "bytes": 101545
+      "sha256": "52d111c73fa3dca212ae9acbb3bcf6b488b7cdedc4afad87f43fc424b0abe0a1",
+      "bytes": 591439
     },
     {
       "shard": 32,
-      "count": 605,
+      "count": 3467,
       "path": "/data/dictionary/shard-32.json",
-      "sha256": "41b4db9a6d746e6931f6c16e3891eb7d51055949ff6390be2c202d456bdbfa1e",
-      "bytes": 107699
+      "sha256": "5ed5ebcdf6014ae39907d4437bf371bf31f2c6348691a5fc4506cfdc4b10de10",
+      "bytes": 643976
     },
     {
       "shard": 33,
-      "count": 521,
+      "count": 3126,
       "path": "/data/dictionary/shard-33.json",
-      "sha256": "37c38b038c78913e6f27c854cc41fe5d42d7905779a3940ca238cfe0821dd390",
-      "bytes": 95020
+      "sha256": "46462f0ecc434c75bf92505a3216466a54bb46a1394fe81c0cf11b878967c127",
+      "bytes": 585038
     },
     {
       "shard": 34,
-      "count": 494,
+      "count": 3034,
       "path": "/data/dictionary/shard-34.json",
-      "sha256": "c1d4faafb49eb15b3abc96c77fd9f879d7751199227b83fb02557c5ea6d39433",
-      "bytes": 89267
+      "sha256": "b3e8eb3677407396bea95d5d7a1c5c4a237a91fa02debe4559642eaa21d6f01e",
+      "bytes": 565966
     },
     {
       "shard": 35,
-      "count": 473,
+      "count": 3092,
       "path": "/data/dictionary/shard-35.json",
-      "sha256": "bb3b40f0ff86ca4975d08f0bb5a355a5218c58b59c81a431c3d0213660fcd025",
-      "bytes": 84548
+      "sha256": "cde89cc2f41dc88b9c0ebe61ac143aac509559e5c5d2eae0265636c319edd136",
+      "bytes": 571198
     },
     {
       "shard": 36,
-      "count": 471,
+      "count": 2963,
       "path": "/data/dictionary/shard-36.json",
-      "sha256": "fba39995e21e461f666b1a5ff1bb06e8ad40a55c20624ae297312c11bc8b6694",
-      "bytes": 82086
+      "sha256": "690ea905652951090870a492395774ee7f2563d4e0711da3aadb19081389e031",
+      "bytes": 552878
     },
     {
       "shard": 37,
-      "count": 498,
+      "count": 2998,
       "path": "/data/dictionary/shard-37.json",
-      "sha256": "1f46d83f033ee7ac26cbcfbdcfcce7d7f28328eba1cb47ad9e55f4ecba9db298",
-      "bytes": 88869
+      "sha256": "98ca77a3b30035081175e87077e36d1a986c489f9d4a4b86a5c180de03d2cf76",
+      "bytes": 552319
     },
     {
       "shard": 38,
-      "count": 481,
+      "count": 3040,
       "path": "/data/dictionary/shard-38.json",
-      "sha256": "d689e373852f2d7ce05983502716f050df61e9f449e4ecd7685a3c245bce48fe",
-      "bytes": 86477
+      "sha256": "f38330497fdce470cbd3bef1cf87256c2537dfbb91caffd07f98f5342384652d",
+      "bytes": 570126
     },
     {
       "shard": 39,
-      "count": 533,
+      "count": 3070,
       "path": "/data/dictionary/shard-39.json",
-      "sha256": "58c9ee99f9f1ef0aa73ab07d5957c8ceb3d9034fb83504aee85c69c1c5a65726",
-      "bytes": 96145
+      "sha256": "9fd3decbf73f246235619edc997789bd55f05352a07ad430120801b187f15e6e",
+      "bytes": 572068
     },
     {
       "shard": 40,
-      "count": 475,
+      "count": 3019,
       "path": "/data/dictionary/shard-40.json",
-      "sha256": "c96b5d7883a55db884081437a1f2755975e94d34dea8820f7801f9b4886511b0",
-      "bytes": 84223
+      "sha256": "6b8153c8416939fca97427c94105b9d583ecbd3f4babaad6662f9e309ec10393",
+      "bytes": 560722
     },
     {
       "shard": 41,
-      "count": 488,
+      "count": 3178,
       "path": "/data/dictionary/shard-41.json",
-      "sha256": "e4f99d56b7fc6944ad6457589e1806e07d5a3d328d25fd8a4529965c615338d7",
-      "bytes": 87030
+      "sha256": "b745b9553911c732fee774ab886f653b76d29357379517037eb4ebe3cb5f1b8a",
+      "bytes": 590163
     },
     {
       "shard": 42,
-      "count": 522,
+      "count": 3170,
       "path": "/data/dictionary/shard-42.json",
-      "sha256": "8a059f751652b59fdbffcd888e0f8dd2443736c10d8546cdfda1aac97388ecdc",
-      "bytes": 93434
+      "sha256": "b682b91aa4093eb22d743147513be271496e79eac06dab70e9c13f45baf0d76d",
+      "bytes": 591852
     },
     {
       "shard": 43,
-      "count": 486,
+      "count": 3007,
       "path": "/data/dictionary/shard-43.json",
-      "sha256": "61c0ba4076be144cf68e76b80bf1721aa5ef87718ef6ccaf8563a2766be87a19",
-      "bytes": 88076
+      "sha256": "106fb3fd5c90075ff17d19b2cf0da5a472e2a2bc4d165c201257ada699655e0e",
+      "bytes": 560689
     },
     {
       "shard": 44,
-      "count": 515,
+      "count": 3073,
       "path": "/data/dictionary/shard-44.json",
-      "sha256": "f11b529defb7f5aa7fda6d0868442e1ca897c163060ac18311d8d6b56daefa19",
-      "bytes": 93513
+      "sha256": "ad9fff49730db432ab41dbb8641a03dff1e48d61941a9faa6242b8cf0aa9b2e2",
+      "bytes": 574363
     },
     {
       "shard": 45,
-      "count": 485,
+      "count": 3026,
       "path": "/data/dictionary/shard-45.json",
-      "sha256": "b53e05889c474c92f9c49563d7e0cf69abacd9329022d811bee5ed56ccc56873",
-      "bytes": 87668
+      "sha256": "a7a6cb6ce182972815542c10518f0c7bae62870aa162b83b9bdfae82de54d748",
+      "bytes": 563467
     },
     {
       "shard": 46,
-      "count": 511,
+      "count": 3016,
       "path": "/data/dictionary/shard-46.json",
-      "sha256": "ee349d629c3c374ddfccbc2d7397ec01c11074f46e959f47c92b96d0a3009ab9",
-      "bytes": 93760
+      "sha256": "1316b596981d6912bf0f4e9fe6f12b14281ff92cc4462095cff3f29fdbc99095",
+      "bytes": 562024
     },
     {
       "shard": 47,
-      "count": 539,
+      "count": 3109,
       "path": "/data/dictionary/shard-47.json",
-      "sha256": "a2c367808f65533c0e5813800c8e275e4bfb74f6b5108591c8f6f0c68b509fe8",
-      "bytes": 99383
+      "sha256": "440223a220888a1800b77b50f01c4f3730ec30b2c8a08523e3cf5944fc8a38d9",
+      "bytes": 579919
     },
     {
       "shard": 48,
-      "count": 486,
+      "count": 2981,
       "path": "/data/dictionary/shard-48.json",
-      "sha256": "ae54a4f1c8ab27cbd2e6d48bfe357f442ce6997ee7eda887989dbff5e6cd8960",
-      "bytes": 86636
+      "sha256": "348041917f3fed04e65738274e02464a9cf061e18606377866ae30d953543748",
+      "bytes": 555376
     },
     {
       "shard": 49,
-      "count": 514,
+      "count": 3110,
       "path": "/data/dictionary/shard-49.json",
-      "sha256": "ad7045b9d30284173f4d70b49f6ca261476e8daf3fa19e8611d52dacacdcaa24",
-      "bytes": 91423
+      "sha256": "a43d07a922f092f86bd19d299dadef2c40861b6b529048ebd550ce55536557e4",
+      "bytes": 581070
     },
     {
       "shard": 50,
-      "count": 512,
+      "count": 3108,
       "path": "/data/dictionary/shard-50.json",
-      "sha256": "8c2a9f5e3840f7d86ebd35f020110d23192de29b187907f8b31371a9ebb4f9d2",
-      "bytes": 93424
+      "sha256": "26b97b935ac9385681487e5d19ead2ebe9c4c121cafdd3ddf470302f9518ae1b",
+      "bytes": 580087
     },
     {
       "shard": 51,
-      "count": 533,
+      "count": 3099,
       "path": "/data/dictionary/shard-51.json",
-      "sha256": "26000bd24d32660b3eb9a8a214115195c0e397282de02447ddb23b7723a5e8f9",
-      "bytes": 95851
+      "sha256": "aa5545de6a49aaae3acc412ab88883e2d2ebad9736b1619ffcd3ad2ae7b557c6",
+      "bytes": 573000
     },
     {
       "shard": 52,
-      "count": 504,
+      "count": 3089,
       "path": "/data/dictionary/shard-52.json",
-      "sha256": "bf900b6b57a0f51a7ccd42682ef7dd7ac918441bd7fa3379b8a22e734c9f20c0",
-      "bytes": 93418
+      "sha256": "a6725e7921756dcb883fe338c2dd6fd1814acc2f09afe0fd10535246223f989f",
+      "bytes": 578723
     },
     {
       "shard": 53,
-      "count": 483,
+      "count": 2996,
       "path": "/data/dictionary/shard-53.json",
-      "sha256": "0b1a31e1c1bb1a1873703e3e7e5c3e8441be201b527182dd84ec017dbcf76d15",
-      "bytes": 86483
+      "sha256": "dd724f9c8a8e040454088f5980920aee4f1ff94d308555b5f1966f6e9c54cc48",
+      "bytes": 554813
     },
     {
       "shard": 54,
-      "count": 522,
+      "count": 3118,
       "path": "/data/dictionary/shard-54.json",
-      "sha256": "5658fbee4f8c66ca00cf7f2a60df4bec30587d30df0ea9effa8bef69f3601204",
-      "bytes": 93456
+      "sha256": "610265e06543f87736997f004ee150973f927601b7bd2a4ab075366f1b65ac5d",
+      "bytes": 575116
     },
     {
       "shard": 55,
-      "count": 524,
+      "count": 3025,
       "path": "/data/dictionary/shard-55.json",
-      "sha256": "d64e193b696c2aec437133513580bfa7b3372a41c2932f28f2ab7286ec9e60fb",
-      "bytes": 96183
+      "sha256": "d15e4916c3ae3ffd9e215602d4b2485aceae7c2f7c6f47a74d3de6ec48479010",
+      "bytes": 567413
     },
     {
       "shard": 56,
-      "count": 517,
+      "count": 3074,
       "path": "/data/dictionary/shard-56.json",
-      "sha256": "92b9920e2cd481a8b6bc01346e8174fa88f50fdfc0fd6a4ff7ea1c5876dec259",
-      "bytes": 92752
+      "sha256": "d7530d907f2d1a6f59df77a912eefb2864467326c29b55b84adc121304d8df19",
+      "bytes": 567488
     },
     {
       "shard": 57,
-      "count": 503,
+      "count": 3041,
       "path": "/data/dictionary/shard-57.json",
-      "sha256": "32c57085146e9cde83cc2bcde869d6cf1709ad6add342b826c3c804e0baaf886",
-      "bytes": 90532
+      "sha256": "56bb3c1cf23677ca1c75031bff97181ac0ef2fb269568ff6b44419653cd27bd3",
+      "bytes": 566892
     },
     {
       "shard": 58,
-      "count": 517,
+      "count": 3149,
       "path": "/data/dictionary/shard-58.json",
-      "sha256": "289f3371ac9a8977a2b87704d8ab1fc6672360596538e0dfdeda573a3728ba91",
-      "bytes": 92145
+      "sha256": "138031a0ea0528ddd4991c271d2f93c2b7225412b6013d20220ebc818a2a383d",
+      "bytes": 584962
     },
     {
       "shard": 59,
-      "count": 501,
+      "count": 2969,
       "path": "/data/dictionary/shard-59.json",
-      "sha256": "fa684ca8a278a1928126fc7619130aa95f86fae64225f21a46095f67688c8dff",
-      "bytes": 89143
+      "sha256": "18bd6bb66df119b769d7fb87f15577de7be64778f90f87eb183c1f07e0a33424",
+      "bytes": 553416
     },
     {
       "shard": 60,
-      "count": 470,
+      "count": 3001,
       "path": "/data/dictionary/shard-60.json",
-      "sha256": "d39503302580a75587de79291d875275cd904211ee2abce4826838961b35e56b",
-      "bytes": 85416
+      "sha256": "174df1c27d43322fa5e07cd8c29ee71438f499b59625e50a8ca6bb9ce3f84ad2",
+      "bytes": 560465
     },
     {
       "shard": 61,
-      "count": 512,
+      "count": 3049,
       "path": "/data/dictionary/shard-61.json",
-      "sha256": "7d035ddaf876cf306b1c94273bb65d615a4918499d5826c4008c7414db48ab31",
-      "bytes": 92465
+      "sha256": "17562df4570acd772a016630a4f863d5e5a7458c59772d9bbf850dd5ab192d2f",
+      "bytes": 567123
     },
     {
       "shard": 62,
-      "count": 507,
+      "count": 3001,
       "path": "/data/dictionary/shard-62.json",
-      "sha256": "58e70ecd84343b5522467a855269f123ac29f97728be510859b538fcde11811d",
-      "bytes": 92336
+      "sha256": "80d29e57019187c8a8906703cce784b4c3b2f6deb0804fb67f19ccb6973223af",
+      "bytes": 558388
     },
     {
       "shard": 63,
-      "count": 508,
+      "count": 3158,
       "path": "/data/dictionary/shard-63.json",
-      "sha256": "f9792acbbe841bcb169b4634bb7edae1b3d1b629a3c99d6aab9bafeba79452dd",
-      "bytes": 89256
+      "sha256": "f6b2fadd0f190167fbee718b32d080e0e2e212f822f58e426080e8c6c1152387",
+      "bytes": 585012
     }
   ]
 }

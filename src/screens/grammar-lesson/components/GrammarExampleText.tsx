@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LinkedTranslationText } from '../../../lib/widgets';
+import { LinkedTranslationText } from './LinkedTranslationText';
 import type { GrammarLessonText, GrammarWordToken } from '../../../types/models';
 import { GrammarText } from './GrammarText';
 import { InteractiveGrammarSentence } from './InteractiveGrammarSentence';

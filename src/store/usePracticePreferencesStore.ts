@@ -12,7 +12,6 @@ export interface PracticePreferences {
   betweenCardsMs: number;
   flowFrontDelayMs: number;
   flowBackDelayMs: number;
-  instantChoiceCheck: boolean;
   autoAdvanceCorrect: boolean;
   autoAdvanceWrong: boolean;
   repeatMistakes: MistakeRepeat;
@@ -34,9 +33,11 @@ const lerp = (slow: number, fast: number, pace: number) =>
 
 export function getPaceTimings(pace: number): PaceTimings {
   return {
-    correctDelayMs: lerp(1400, 250, pace),
+    // Snappy rhythm: the next card follows a correct answer almost immediately,
+    // with just a quick flash of the correct feedback (≈0.3s at balanced pace).
+    correctDelayMs: lerp(400, 100, pace),
     wrongDelayMs: lerp(4200, 1100, pace),
-    betweenCardsMs: lerp(800, 50, pace),
+    betweenCardsMs: lerp(200, 30, pace),
     flowFrontDelayMs: lerp(1600, 350, pace),
     flowBackDelayMs: lerp(2400, 650, pace),
   };
@@ -48,56 +49,30 @@ export function getPaceLabel(pace: number) {
   return 'Rapid';
 }
 
-const comfortablePace = 28;
-const balancedPace = 58;
-const sprintPace = 90;
+/**
+ * Presets are rhythm-only: they tune pace + timings and intentionally leave
+ * every other preference (answer behavior, audio, display, session) untouched.
+ */
+const PRESET_PACE: Record<Exclude<PracticePreset, 'custom'>, number> = {
+  comfortable: 28,
+  balanced: 58,
+  sprint: 90,
+};
 
-export const PRACTICE_PRESETS: Record<Exclude<PracticePreset, 'custom'>, PracticePreferences> = {
-  comfortable: {
-    preset: 'comfortable',
-    pace: comfortablePace,
-    ...getPaceTimings(comfortablePace),
-    instantChoiceCheck: false,
-    autoAdvanceCorrect: false,
-    autoAdvanceWrong: false,
-    repeatMistakes: 'end',
-    pronunciationRate: 0.9,
-    autoPlayAudio: true,
-    replayAudioAfterAnswer: true,
-    speakDefinition: true,
-    showPinyin: true,
-    showTranslation: true,
-  },
-  balanced: {
-    preset: 'balanced',
-    pace: balancedPace,
-    ...getPaceTimings(balancedPace),
-    instantChoiceCheck: true,
-    autoAdvanceCorrect: true,
-    autoAdvanceWrong: false,
-    repeatMistakes: 'soon',
-    pronunciationRate: 1,
-    autoPlayAudio: true,
-    replayAudioAfterAnswer: true,
-    speakDefinition: true,
-    showPinyin: true,
-    showTranslation: true,
-  },
-  sprint: {
-    preset: 'sprint',
-    pace: sprintPace,
-    ...getPaceTimings(sprintPace),
-    instantChoiceCheck: true,
-    autoAdvanceCorrect: true,
-    autoAdvanceWrong: true,
-    repeatMistakes: 'end',
-    pronunciationRate: 1.2,
-    autoPlayAudio: true,
-    replayAudioAfterAnswer: false,
-    speakDefinition: false,
-    showPinyin: false,
-    showTranslation: true,
-  },
+/** Balanced rhythm plus the product defaults; autoAdvanceCorrect is ON by default. */
+export const DEFAULT_PREFERENCES: PracticePreferences = {
+  preset: 'balanced',
+  pace: PRESET_PACE.balanced,
+  ...getPaceTimings(PRESET_PACE.balanced),
+  autoAdvanceCorrect: true,
+  autoAdvanceWrong: false,
+  repeatMistakes: 'soon',
+  pronunciationRate: 1,
+  autoPlayAudio: true,
+  replayAudioAfterAnswer: true,
+  speakDefinition: true,
+  showPinyin: true,
+  showTranslation: true,
 };
 
 interface PracticePreferencesState extends PracticePreferences {
@@ -115,7 +90,6 @@ const persistedKeys: Array<keyof PracticePreferences> = [
   'betweenCardsMs',
   'flowFrontDelayMs',
   'flowBackDelayMs',
-  'instantChoiceCheck',
   'autoAdvanceCorrect',
   'autoAdvanceWrong',
   'repeatMistakes',
@@ -130,23 +104,38 @@ const persistedKeys: Array<keyof PracticePreferences> = [
 export const usePracticePreferencesStore = create<PracticePreferencesState>()(
   persist(
     (set) => ({
-      ...PRACTICE_PRESETS.balanced,
+      ...DEFAULT_PREFERENCES,
       updatePreferences: (preferences) => set({ ...preferences, preset: preferences.preset ?? 'custom' }),
       setPace: (pace) => set({ pace, ...getPaceTimings(pace), preset: 'custom' }),
-      applyPreset: (preset) => set(PRACTICE_PRESETS[preset]),
-      resetPreferences: () => set(PRACTICE_PRESETS.balanced),
+      applyPreset: (preset) => {
+        const pace = PRESET_PACE[preset];
+        set({ preset, pace, ...getPaceTimings(pace) });
+      },
+      resetPreferences: () => set(DEFAULT_PREFERENCES),
     }),
     {
       name: 'rongwaps-practice-preferences',
-      version: 2,
+      version: 5,
       migrate: (persisted) => {
         const preferences = (
           typeof persisted === 'object' && persisted !== null ? { ...persisted } : {}
         ) as Partial<PracticePreferences> & { focusMode?: boolean };
         delete preferences.focusMode;
+        // v4: instant checking is always on — the preference is gone.
+        delete (preferences as { instantChoiceCheck?: boolean }).instantChoiceCheck;
+        // v3: presets became rhythm-only, so they never push auto-advance off again.
+        // A stored preset (not 'custom') with auto-advance off was forced by the old
+        // preset behavior, not a deliberate choice — restore the default.
+        if (preferences.autoAdvanceCorrect === false && preferences.preset && preferences.preset !== 'custom') {
+          preferences.autoAdvanceCorrect = true;
+        }
+        // v5: the rhythm got snappier — re-derive stored timings from the new
+        // faster ranges so existing sessions move on quickly after a correct answer.
+        const pace = typeof preferences.pace === 'number' ? preferences.pace : DEFAULT_PREFERENCES.pace;
         return {
-          ...PRACTICE_PRESETS.balanced,
+          ...DEFAULT_PREFERENCES,
           ...preferences,
+          ...getPaceTimings(pace),
         } as PracticePreferencesState;
       },
       partialize: (state) => Object.fromEntries(

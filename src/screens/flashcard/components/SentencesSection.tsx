@@ -9,6 +9,7 @@ interface SentencesSectionProps {
   isSentencesLoading: boolean;
   activeBook: CourseBook;
   setShowAllOverlay: (show: boolean) => void;
+  highlightTerms?: string[];
 }
 
 export function SentencesSection({
@@ -16,6 +17,7 @@ export function SentencesSection({
   isSentencesLoading,
   activeBook,
   setShowAllOverlay,
+  highlightTerms = [],
 }: SentencesSectionProps) {
   if (!isSentencesLoading && smartSentences.length === 0) return null;
 
@@ -57,7 +59,12 @@ export function SentencesSection({
             >
               <div className="flex flex-col gap-1.5 w-full">
                 <div className="flex flex-row items-start justify-between gap-4">
-                  <SmartSentence text={ex.chinese} className="text-[22px] sm:text-[24px] font-chinese leading-snug" bookAccent={activeBook.accent} />
+                  <SmartSentence
+                    text={ex.chinese}
+                    highlightTerms={highlightTerms}
+                    className="text-[22px] sm:text-[24px] font-chinese leading-snug"
+                    bookAccent={activeBook.accent}
+                  />
                   {(() => {
                     const bookInfo = SAMPLE_BOOKS.find(b => b.id === ex.sourceBookId);
                     const dotColorClass = bookInfo ? bookInfo.accentBg : activeBook.accentBg;

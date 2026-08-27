@@ -1,10 +1,11 @@
 import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { AnimatePresence } from 'motion/react';
-import { ActivityModalWrapper, PracticeHeader, ScreenSkeleton } from '../../lib/widgets';
+import { ActivityModalWrapper, ScreenSkeleton } from '../../lib/widgets';
+import { PracticeHeader } from '../../features/practice';
 import { useAppStore } from '../../store/useAppStore';
 import { AddCardScreen } from '../add-card';
-import type { ActivityType, QuizMode } from '../../types/models';
+import type { ActivityType } from '../../types/models';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { getInteractiveGrammarPartsForLesson } from '../../data/interactiveGrammarPages';
 import { fetchVocabulary } from '../../services/vocabularyService';
@@ -72,7 +73,8 @@ export function ActivityModals({
   const activeBook = SAMPLE_BOOKS.find(b => b.id === activeBookId) || SAMPLE_BOOKS[0];
 
   const [prevTask, setPrevTask] = useState<ActivityType>(null);
-  const [quizMode, setQuizMode] = useState<QuizMode | null>(null);
+  const activeQuizMode = useAppStore(state => state.activeQuizMode);
+  const setActiveQuizMode = useAppStore(state => state.setActiveQuizMode);
 
   useEffect(() => {
     if (activeActivity) {
@@ -90,8 +92,6 @@ export function ActivityModals({
   const setCharacterPreference = useAppStore(state => state.setCharacterPreference);
   const practicePreferences = usePracticePreferencesStore(useShallow(selectPracticePreferences));
   const updatePracticePreferences = usePracticePreferencesStore(state => state.updatePreferences);
-  const setPracticePace = usePracticePreferencesStore(state => state.setPace);
-  const applyPracticePreset = usePracticePreferencesStore(state => state.applyPreset);
   const isReviewMode = useAppStore(state => state.isReviewMode);
   const completedGrammarPageIds = useGrammarLessonStore((state) => state.completedPageIds);
   const selectedLessonParts = useAppStore(state => state.selectedLessonParts);
@@ -240,7 +240,7 @@ export function ActivityModals({
         {activeActivity && (
           <ActivityModalWrapper id="global-activity-modal" ariaLabel={activityLabel} onClose={handleClose}>
             {activeActivity !== 'create-card' && (
-               <div className="absolute top-0 left-0 right-0 z-[150]">
+               <div className={`absolute top-0 left-0 right-0 z-[150] ${isOverlayOpen ? 'invisible' : ''}`}>
                  <PracticeHeader
                     key={resolvedActivity}
                     maxWidth="none"
@@ -263,8 +263,6 @@ export function ActivityModals({
                     settings={{
                       preferences: practicePreferences,
                       onPreferencesChange: updatePracticePreferences,
-                      onPaceChange: setPracticePace,
-                      onApplyPreset: applyPracticePreset,
                       characterPreference,
                       onCharacterPreferenceChange: setCharacterPreference,
                     }}
@@ -310,7 +308,7 @@ export function ActivityModals({
                       selectedLessons={selectedLessons}
                       isReviewDeck={isReviewMode}
                       isLibraryDeck={isLibraryMode}
-                      mode={quizMode ?? 'choices'}
+                      mode={activeQuizMode ?? 'choices'}
                       onClose={handleClose}
                     />
                   </Suspense>
@@ -347,12 +345,12 @@ export function ActivityModals({
           <PracticeModeDock
             feedback={swipeFeedback}
             value={resolvedActivity as (typeof PRACTICE_ACTIVITIES)[number]['id']}
-            quizMode={quizMode}
+            quizMode={activeQuizMode}
             onOpenGrammar={practiceGrammarPart && onOpenGrammarPart
               ? () => onOpenGrammarPart(practiceGrammarPart.id)
               : undefined}
             onSelectQuizMode={(mode) => {
-              setQuizMode(mode);
+              setActiveQuizMode(mode);
               setActiveActivity('quiz');
             }}
             onChange={(nextActivity) => {

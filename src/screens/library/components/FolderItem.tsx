@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { cn } from '../../../utils/cn';
+import { DESIGN_TOKENS } from '../../../data/designTokens';
 
 interface FolderItemProps {
   id: string;
@@ -113,8 +114,8 @@ export function FolderItem({
     }
   };
 
-  const frontColor = isNewButton ? '#E8EDF2' : (accentBg?.match(/\[(.*?)\]/)?.[1] || '#1CB0F6');
-  const backColor = isNewButton ? '#D0D8E0' : (accentBorder?.match(/\[(.*?)\]/)?.[1] || '#1899D6');
+  const frontColor = isNewButton ? '#E8EDF2' : (accentBg?.match(/\[(.*?)\]/)?.[1] || DESIGN_TOKENS.color.brand.primary);
+  const backColor = isNewButton ? '#D0D8E0' : (accentBorder?.match(/\[(.*?)\]/)?.[1] || DESIGN_TOKENS.color.brand.primaryEdge);
 
   return (
     <button

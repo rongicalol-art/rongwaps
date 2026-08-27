@@ -1,10 +1,8 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { LessonComplete } from '../../lib/widgets/LessonComplete';
-import { FeedbackBottomBar } from '../../lib/widgets/FeedbackBottomBar';
-import { CharacterBreakdownOverlay } from '../../lib/widgets/CharacterBreakdownOverlay';
+import { FeedbackBottomBar, LessonComplete, BreakdownExpandPanel } from '../../features/practice';
+import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
 import { ActionButton, AppIcon, ScreenSkeleton, ScreenLayout } from '../../lib/widgets';
-import { MemoryHookOverlay } from '../flashcard/MemoryHookOverlay';
 import { useListening } from './hooks/useListening';
 import { AudioControls } from './AudioControls';
 import { ListeningOptions } from './ListeningOptions';
@@ -13,7 +11,6 @@ import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutoma
 import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
 import { buildPracticePartSegments } from '../../utils/practicePartSegments';
 import { useNumberKeySelection } from '../../hooks/useNumberKeySelection';
-import type { Flashcard } from '../../data/flashcards';
 
 interface ListeningScreenProps {
   activeBookId?: number;
@@ -25,7 +22,7 @@ interface ListeningScreenProps {
 
 export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibraryDeck = false, isReviewDeck = false, onClose }: ListeningScreenProps) {
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
-  const [activeMemoryHook, setActiveMemoryHook] = useState<Flashcard | null>(null);
+  const [breakdownOpen, setBreakdownOpen] = useState(false);
   const {
     screenState,
     currentIndex,
@@ -53,13 +50,18 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
     status: !isChecked ? 'idle' : isCorrect ? 'correct' : 'wrong',
     onAdvance: handleCheck,
     advanceWrong: false,
-    blocked: Boolean(activeBreakdown || activeMemoryHook),
+    blocked: Boolean(activeBreakdown),
   });
 
   const activeBook = SAMPLE_BOOKS.find(b => b.id === activeBookId) || SAMPLE_BOOKS[0];
   const showPinyin = usePracticePreferencesStore((state) => state.showPinyin);
   const autoAdvanceCorrect = usePracticePreferencesStore((state) => state.autoAdvanceCorrect);
   const autoAdvance = isCorrect ? autoAdvanceCorrect : false;
+
+  // The inline breakdown panel is per-card; close it when the card changes.
+  useEffect(() => {
+    setBreakdownOpen(false);
+  }, [currentCard?.id]);
   const partSegments = useMemo(
     () => (isShuffled ? [] : buildPracticePartSegments(playlist)),
     [isShuffled, playlist],
@@ -68,9 +70,8 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
   usePracticeHeaderRegistration({
     currentIndex,
     totalCount: playlist.length,
-    showLightbulb: !!currentCard,
+    showLightbulb: false,
     partSegments,
-    onLightbulbClick: currentCard ? () => setActiveMemoryHook(currentCard) : undefined,
     onShuffleClick: toggleShuffle,
     onRestartClick: resetAll,
     isShuffled,
@@ -79,7 +80,7 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
   useNumberKeySelection({
     items: options,
     onSelect: handleSelect,
-    disabled: isChecked || Boolean(activeBreakdown || activeMemoryHook),
+    disabled: screenState === 'complete' || isChecked || Boolean(activeBreakdown),
   });
 
   if (isLoading) {
@@ -91,7 +92,6 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
       <LessonComplete
         learnedCount={learnedCount}
         unlearnedCount={unlearnedCount}
-        activeBook={activeBook}
         onContinue={onClose}
         onReviewUnlearned={unlearnedCount > 0 ? reviewUnlearned : undefined}
         onResetAll={resetAll}
@@ -162,18 +162,21 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
         showCheck={false}
         hideWhenAutoAdvance={autoAdvance && isChecked}
         showContinueOnWrong
-        keyboardShortcutDisabled={Boolean(activeBreakdown || activeMemoryHook)}
-        onBreakdown={() => setActiveBreakdown(currentCard.front)}
+        keyboardShortcutDisabled={Boolean(activeBreakdown)}
+        onBreakdown={() => setBreakdownOpen((open) => !open)}
+        breakdownOpen={breakdownOpen}
+        breakdownPanel={
+          <BreakdownExpandPanel
+            front={currentCard.front}
+            pinyin={showPinyin ? currentCard.pinyin : undefined}
+            meaning={currentCard.back}
+          />
+        }
         activeBook={activeBook}
       />
 
       <CharacterBreakdownOverlay activeBreakdown={activeBreakdown} onClose={() => setActiveBreakdown(null)} activeBook={activeBook} />
 
-      <MemoryHookOverlay 
-        activeMemoryHook={activeMemoryHook}
-        setActiveMemoryHook={setActiveMemoryHook}
-        activeBook={activeBook}
-      />
     </div>
   );
 }

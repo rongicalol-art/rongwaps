@@ -15,6 +15,8 @@ export interface BottomDrawerProps {
   topAccessory?: React.ReactNode;
   ariaLabel?: string;
   workspaceBound?: boolean;
+  /** Override the portal container (defaults to #activity-overlays-root or body). */
+  portalTarget?: HTMLElement | null;
 }
 
 export function BottomDrawer({
@@ -26,6 +28,7 @@ export function BottomDrawer({
   topAccessory,
   ariaLabel,
   workspaceBound = true,
+  portalTarget,
 }: BottomDrawerProps) {
   const dragControls = useDragControls();
   const drawerRef = useRef<HTMLDivElement>(null);
@@ -39,7 +42,7 @@ export function BottomDrawer({
   // Resolve portal target once on mount — no need to re-run on every isOpen change
   const [portalNode] = useState<HTMLElement | null>(() => {
     if (typeof document !== 'undefined') {
-      return document.getElementById('activity-overlays-root') || document.body;
+      return portalTarget ?? (document.getElementById('activity-overlays-root') || document.body);
     }
     return null;
   });

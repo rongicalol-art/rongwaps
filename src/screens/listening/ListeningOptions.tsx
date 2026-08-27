@@ -1,4 +1,4 @@
-import { PracticeChoiceButton, type PracticeChoiceState } from '../../lib/widgets';
+import { PracticeChoiceButton, type PracticeChoiceState } from '../../features/practice';
 import type { Flashcard } from '../../data/flashcards';
 import { SAMPLE_BOOKS } from '../../data/books';
 

@@ -29,7 +29,7 @@ export function OpenResponseQuestionCard({
   );
 
   return (
-    <article className="rounded-[20px] border border-ui-border bg-ui-surface px-5 py-6 shadow-[0_3px_0_var(--color-ui-divider)] sm:px-8 sm:py-8">
+    <article className="border-b border-ui-divider bg-ui-surface px-2 py-5 last:border-b-0 sm:px-3 sm:py-7">
       <p className="mb-3 text-[11px] font-black text-brand-primary">Try {question.number}</p>
       <div className="flex flex-wrap items-center gap-x-2 gap-y-3 font-chinese text-base font-bold leading-[1.9] text-ui-ink-strong sm:text-lg">
         {question.segments.map((segment, index) => {
@@ -71,7 +71,7 @@ export function OpenResponseQuestionCard({
       </div>
 
       {hasChecked && (
-        <div className="mt-5 rounded-[15px] border-l-4 border-brand-primary bg-[#EAF7FE] px-4 py-3" role="status">
+        <div className="mt-5 rounded-[15px] border-l-4 border-brand-primary bg-brand-primary-soft px-4 py-3" role="status">
           <p className="text-sm font-black text-brand-primary">
             {wrongBlankIds.length > 0 ? 'Compare your answer with the model' : 'Your answer matches the model'}
           </p>

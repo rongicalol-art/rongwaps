@@ -55,7 +55,7 @@ This document outlines the strategy for migrating and integrating the two new da
 - Ensure strict TypeScript typing for the Supabase responses based on our recent database inspection.
 
 ## 2. Character Breakdown Refactor
-- **Target**: `src/lib/widgets/CharacterBreakdown.tsx`
+- **Target**: `src/features/character-breakdown/components/CharacterBreakdown.tsx`
 - **Current State**: Uses local static mock data (`SAMPLE_BREAKDOWNS`).
 - **Action**: 
   - Update the component to fetch data asynchronously via our new service.

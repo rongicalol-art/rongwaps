@@ -5,7 +5,7 @@ import {
   normalizePartSelection,
   reconcilePartSelectionsForBook,
 } from '../src/utils/lessonPartSelection';
-import { retainCurrentCardIndex } from '../src/utils/sessionProgress';
+import { getSessionStartIndex, retainCurrentCardIndex } from '../src/utils/sessionProgress';
 import { parseVocabularyId } from '../src/utils/vocabularyId';
 
 test('vocabulary IDs preserve book, lesson, and part identity', () => {
@@ -65,4 +65,10 @@ test('removing the current card keeps the nearest valid position', () => {
 
   assert.equal(retainCurrentCardIndex(nextCards, 'removed', 8), 1);
   assert.equal(retainCurrentCardIndex([], 'removed', 8), 0);
+});
+
+test('a new practice part starts at its own saved position instead of the previous part index', () => {
+  assert.equal(getSessionStartIndex({}, 'shared_deck_1_1:2', 12), 0);
+  assert.equal(getSessionStartIndex({ 'shared_deck_1_1:2': 4 }, 'shared_deck_1_1:2', 12), 4);
+  assert.equal(getSessionStartIndex({ 'shared_deck_1_1:2': 12 }, 'shared_deck_1_1:2', 12), 0);
 });

@@ -27,6 +27,7 @@ import type {
   PartSegment,
   PracticeHeaderActions,
   ActivityType,
+  QuizMode,
   SessionProgress,
   UserFlashcard,
 } from '../types/models';
@@ -118,6 +119,8 @@ export interface AppState {
   setActiveTab: (tab: 'path' | 'search' | 'library' | 'profile') => void;
   activeActivity: ActivityType;
   setActiveActivity: (activity: ActivityType) => void;
+  activeQuizMode: QuizMode | null;
+  setActiveQuizMode: (mode: QuizMode | null) => void;
   selectedLessons: number[];
   setSelectedLessons: (lessons: number[] | ((prev: number[]) => number[])) => void;
   selectedBooks: number[];
@@ -280,6 +283,8 @@ export const useAppStore = create<AppState>()(
       setActiveTab: (tab) => set({ activeTab: tab }),
       activeActivity: null,
       setActiveActivity: (activity) => set({ activeActivity: activity }),
+      activeQuizMode: null,
+      setActiveQuizMode: (mode) => set({ activeQuizMode: mode }),
       selectedLessons: [],
       setSelectedLessons: (lessons) => set((state) => ({
         selectedLessons: typeof lessons === 'function' ? lessons(state.selectedLessons) : lessons,
@@ -379,6 +384,9 @@ export const useAppStore = create<AppState>()(
         lastStudyDate: state.lastStudyDate,
         sessionProgressIndex: state.sessionProgressIndex,
         activeTab: state.activeTab,
+        activeActivity: state.activeActivity,
+        activeQuizMode: state.activeQuizMode,
+        isReviewMode: state.isReviewMode,
         selectedLessons: state.selectedLessons,
         selectedBooks: state.selectedBooks,
         selectedLessonParts: state.selectedLessonParts,

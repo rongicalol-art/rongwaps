@@ -5,11 +5,12 @@ import { extractSearchVariants } from '../utils/courseExamples';
 import { cleanVocabText } from '../utils/vocabCleaner';
 import { escapeRegExp } from '../utils/escapeRegExp';
 import { timeDataRequest } from '../utils/requestTiming';
-import { fetchVocabularyPack } from './vocabularyPackService';
+import { fetchVocabularyPack, fetchAllVocabularyPacks } from './vocabularyPackService';
 import { parseVocabularyId } from '../utils/vocabularyId';
 import type { DBVocabularyRow } from '../types/database';
+import { fetchCourseExampleCards } from './courseExamplePackService';
 
-const VOCABULARY_COLUMNS = 'id,traditional,simplified,meaning,pinyin,audio,examples';
+const VOCABULARY_COLUMNS = 'id,traditional,simplified,meaning,pinyin,pos,audio,examples';
 
 // Maps a cache key to its currently ongoing fetch promise (if any)
 const fetchPromises = new Map<string, Promise<Flashcard[]>>();
@@ -32,6 +33,7 @@ interface VocabularySourceRow extends Partial<Omit<DBVocabularyRow, 'examples'>>
   audio_url?: string;
   notes?: string;
   note?: string;
+  pos?: string;
 }
 
 function parseExamples(value: unknown): Flashcard['examples'] {
@@ -72,7 +74,12 @@ function mapVocabularyRows(items: readonly unknown[]): Flashcard[] {
       partId: location?.partId || item.part_id || item.partId || 1,
       front: cleanVocabText(item.traditional || item.simplified || item.character || item.hanzi || item.word || ''),
       back: (item.meaning || item.english || item.definition || '').trim(),
+      // Keep the raw authored forms: matching and highlighting need both
+      // scripts plus their / alternatives and （） optionals intact.
+      traditional: item.traditional?.trim() || undefined,
+      simplified: item.simplified?.trim() || undefined,
       pinyin: (item.pinyin || item.pronunciation || '').trim(),
+      pos: (item.pos || '').trim(),
       audio: item.audio || item.audio_url || '',
       notes: item.notes || item.note || '',
       examples: parseExamples(item.examples),
@@ -102,6 +109,19 @@ export async function fetchVocabulary(bookId?: number, lessonId?: number): Promi
       const packedRows = await fetchVocabularyPack(bookId);
       if (packedRows) {
         const packedData = prepareVocabulary(packedRows, lessonId);
+        vocabularyCache.set(cacheKey, packedData);
+        return packedData;
+      }
+    }
+
+    // Full-catalog requests (search, review decks) come from the static packs
+    // first. Falling through to the paginated Supabase pull below downloads
+    // the whole book_vocabulary table per session — the largest avoidable
+    // egress/latency cost at scale — so it stays a fallback only.
+    if (!bookId) {
+      const allPackedRows = await fetchAllVocabularyPacks();
+      if (allPackedRows) {
+        const packedData = prepareVocabulary(allPackedRows, lessonId);
         vocabularyCache.set(cacheKey, packedData);
         return packedData;
       }
@@ -199,6 +219,13 @@ export async function fetchVocabulary(bookId?: number, lessonId?: number): Promi
   fetchPromises.set(cacheKey, fetchPromise);
   return fetchPromise;
 }
+
+/**
+ * Fetches a book's vocabulary tagged with a Browse theme (requires the
+ * 'category' column from migration 20260817_vocabulary_categories.sql).
+ * Returns null when the column is missing so callers can fall back to the
+ * static curated taxonomy.
+ */
 
 function normalizePinyin(str: string) {
   if (!str) return '';
@@ -363,30 +390,53 @@ export async function searchVocabulary(queryStr: string): Promise<Flashcard[]> {
   return searchPromise;
 }
 
-export async function fetchExamplesForWord(searchWord: string): Promise<Flashcard[]> {
-  if (!searchWord || searchWord.trim() === '') return [];
-  
-  const cacheKey = `examples-${searchWord}`;
+export async function fetchExamplesForWord(searchWords: string | string[]): Promise<Flashcard[]> {
+  const words = Array.isArray(searchWords) ? searchWords : [searchWords];
+  const cleanWords = words.map((word) => word?.trim()).filter(Boolean);
+  if (cleanWords.length === 0) return [];
+
+  const cacheKey = `examples-${[...new Set(cleanWords)].sort().join('|')}`;
   if (vocabularyCache.has(cacheKey)) {
     return vocabularyCache.get<Flashcard[]>(cacheKey) || [];
   }
 
   try {
     const supabaseUrl = import.meta.env?.VITE_SUPABASE_URL || (typeof process !== 'undefined' ? process.env?.VITE_SUPABASE_URL : undefined);
-    const variants = extractSearchVariants(searchWord);
+    // Expand every script form (traditional + simplified + front) so a
+    // sentence in either script — or any / alternative or （） optional form —
+    // is found.
+    const variants = new Set<string>();
+    for (const word of cleanWords) {
+      for (const variant of extractSearchVariants(word)) variants.add(variant);
+    }
+    const variantList = Array.from(variants).sort((a, b) => b.length - a.length);
+    const searchTerms = variantList.length > 0 ? variantList : cleanWords;
+    const richExampleCards = await fetchCourseExampleCards(searchTerms);
+
+    const mergeExampleCards = (fallbackCards: Flashcard[]) => {
+      const merged = new Map<string, Flashcard>();
+      fallbackCards.forEach((card) => merged.set(card.id, card));
+      richExampleCards.forEach((card) => {
+        const fallback = merged.get(card.id);
+        merged.set(card.id, fallback ? { ...fallback, ...card, examples: card.examples } : card);
+      });
+      const result = [...merged.values()];
+      vocabularyCache.set(cacheKey, result);
+      return result;
+    };
     
     if (!supabaseUrl) {
       // Fallback to local data
-      const matching = FLASHCARDS_DATA.filter(c => c.examples?.some(e => e.chinese && (e.chinese.includes(searchWord) || variants.some(v => e.chinese.includes(v)))));
-      return matching;
+      const matching = FLASHCARDS_DATA.filter(c => c.examples?.some(e => e.chinese && searchTerms.some(v => e.chinese.includes(v))));
+      return mergeExampleCards(matching);
     }
 
     let query = supabase.from('book_vocabulary').select(VOCABULARY_COLUMNS);
-    if (variants.length > 0) {
-      const orString = variants.map(v => `examples.ilike.%${v}%`).join(',');
-      query = query.or(`examples.ilike.%${searchWord}%,${orString}`);
+    if (variantList.length > 0) {
+      const orString = variantList.map(v => `examples.ilike.%${v}%`).join(',');
+      query = query.or(orString);
     } else {
-      query = query.ilike('examples', `%${searchWord}%`);
+      query = query.ilike('examples', `%${cleanWords[0]}%`);
     }
 
     const { data, error } = await timeDataRequest(
@@ -396,15 +446,14 @@ export async function fetchExamplesForWord(searchWord: string): Promise<Flashcar
 
     if (error) {
       console.error('Error fetching examples:', error);
-      return [];
+      return mergeExampleCards([]);
     }
 
-    if (!data || data.length === 0) return [];
+    if (!data || data.length === 0) return mergeExampleCards([]);
 
     const mappedData = mapVocabularyRows(data);
 
-    vocabularyCache.set(cacheKey, mappedData);
-    return mappedData;
+    return mergeExampleCards(mappedData);
   } catch (err) {
     console.error('Exception fetching examples:', err);
     return [];

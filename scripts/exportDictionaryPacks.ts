@@ -43,14 +43,32 @@ function shardFilename(shard: number): string {
   return `shard-${String(shard).padStart(2, '0')}.json`;
 }
 
+// Enumerates every dictionary id directly from Supabase (paginated). The old
+// export used public/dictionary_trie.json as the id source; that 13 MB startup
+// trie was removed from the app.
 async function readCoreDictionaryIds(): Promise<number[]> {
-  const trie = JSON.parse(
-    await readFile(resolve(process.cwd(), 'public/dictionary_trie.json'), 'utf8'),
-  ) as unknown[][];
-  const ids = trie.map((row) => Number(row[0])).filter(Number.isInteger);
+  const supabase = createClient(
+    requireEnvironmentVariable('VITE_SUPABASE_URL'),
+    requireEnvironmentVariable('VITE_SUPABASE_ANON_KEY'),
+  );
 
-  if (ids.length !== trie.length) {
-    throw new Error('dictionary_trie.json contains invalid IDs');
+  const ids: number[] = [];
+  const PAGE_SIZE = 1000;
+  for (let offset = 0; ; offset += PAGE_SIZE) {
+    const { data, error } = await supabase
+      .from('dictionary')
+      .select('id')
+      .order('id', { ascending: true })
+      .range(offset, offset + PAGE_SIZE - 1);
+    if (error) throw new Error(`Dictionary id export failed: ${error.message}`);
+
+    const page = (data || []) as { id: number }[];
+    ids.push(...page.map((row) => row.id));
+    if (page.length < PAGE_SIZE) break;
+  }
+
+  if (ids.length === 0) {
+    throw new Error('dictionary table returned no ids');
   }
 
   return [...new Set(ids)];

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ContextualChineseText, GrammarFocusText } from '../../../lib/widgets';
+import { ContextualChineseText } from '../../../lib/widgets';
+import { GrammarFocusText } from './GrammarFocusText';
 import type { GrammarContrastItem, GrammarWordToken } from '../../../types/models';
 import { cn } from '../../../utils/cn';
 

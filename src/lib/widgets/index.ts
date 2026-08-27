@@ -1,71 +1,42 @@
-export * from './Soft3DButton';
+// Actions and selectors
 export * from './ActionButton';
-export * from './ConfirmationDialog';
-export * from './DisclosureLine';
 export * from './IconActionButton';
 export * from './SegmentedControl';
+
+// Icons, flags, and branded presentation
 export * from './AppIcon';
-export * from './AppSettingsDrawer';
-export * from './BrandWordmark';
-export * from './GlassCard';
-export * from './CustomProgressBar';
-export * from './IconButton3D';
-export * from './ScreenHeader';
-export * from './PracticeHeader';
-export * from './PracticeSettingsScreen';
-export * from './practice-settings/PracticeRange';
-export * from './practice-settings/PracticeSettingControls';
-export * from './ActivityModalWrapper';
-export * from './SideNav';
-export * from './DynamicBackground';
-export * from './MainHeader';
-export * from './Floating3DButton';
-export * from './CourseIcons';
-export * from './PlayfulNavIcon';
-export * from './GlobalDictionaryModal';
-export * from './BottomDrawer';
-export * from './LottiePlayer';
-export * from './LoadingScreen';
-export * from './EmptyReviewState';
-export * from './Skeleton';
-export * from './ScreenSkeleton';
-export * from './BreakdownSkeleton';
-export * from './Card3D';
-export * from './GraphPaperPanel';
-export * from './GrammarLabShell';
-export * from './ScreenLayout';
-export * from './ExpandableSearch';
-export * from './SearchBar3D';
-export * from './StickyWorkspaceHeader';
-export * from './DropdownMenu';
-export * from './SentenceSpine';
-export * from './GrammarDiscoveryLab';
-export * from './GrammarNumberLab';
-export * from './GrammarRouteLab';
-export * from './GrammarInteractiveSentence';
-export * from './GrammarLiveSceneLab';
-export * from './GrammarTimeRangeLab';
-export * from './GrammarTimelineLab';
-export * from './GrammarSequenceLab';
-export * from './GrammarAbilityLab';
-export * from './GrammarCompareLab';
-export * from './GrammarPairCompareLab';
-export * from './GrammarFocusText';
-export * from './GrammarSlotMap';
-export * from './GrammarRuleContrast';
-export * from './LinkedTranslationText';
-export * from './ContextualChineseText';
-export * from './CourseSwitcher';
 export * from './CountryFlag';
+export * from './PlayfulNavIcon';
 export * from './RongWapsCharacterPortrait';
-export * from './CircularProgress';
-export * from './LessonPartSelector';
-export * from './PartProgressRail';
-export * from './PracticeChoiceButton';
-export * from './LayoutShell';
-export * from './WorkspaceDetailShell';
-export * from './SmartSentence';
-export * from './ProgressDashboard';
-export * from './ProgressMetricCard';
-export * from './GardenVisualization';
+
+// Dialogs, drawers, menus, and accessibility boundaries
+export * from './ActivityModalWrapper';
+export * from './BottomDrawer';
+export * from './ConfirmationDialog';
+export * from './DisclosureLine';
+export * from './DropdownMenu';
 export * from './ErrorBoundary';
+export * from './WorkspaceDetailShell';
+
+// Progress, loading, and animation presentation
+export * from './CircularProgress';
+export * from './CustomProgressBar';
+export * from './LoadingScreen';
+export * from './LottiePlayer';
+export * from './PartProgressRail';
+export * from './ScreenSkeleton';
+export * from './Skeleton';
+
+// Generic headers and workspace shells
+export * from './DynamicBackground';
+export * from './ScreenHeader';
+export * from './ScreenLayout';
+export * from './SectionEyebrow';
+export * from './StickyWorkspaceHeader';
+
+// Shared teaching and metric presentation
+export * from './ContextualChineseText';
+export * from './ExpandableSearch';
+export * from './PosBadge';
+export * from './ProgressMetricCard';
+export * from './SmartSentence';

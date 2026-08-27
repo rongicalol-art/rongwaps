@@ -35,4 +35,84 @@ export default [
       'react-hooks/exhaustive-deps': 'error',
     },
   },
+  {
+    files: ['src/lib/widgets/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              regex: '(^|/)(screens|features)(/|$)',
+              message: 'Shared widgets must not import screen or feature modules.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ['src/services/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              regex: '(^|/)(lib/widgets|screens|features|app)(/|$)',
+              message: 'Services must not import UI modules.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ['src/features/character-breakdown/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              regex: '(^|/)features/(dictionary|practice)/',
+              message: 'Features must use another feature’s public index, not its internal folders.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ['src/features/dictionary/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              regex: '(^|/)features/(character-breakdown|practice)/',
+              message: 'Features must use another feature’s public index, not its internal folders.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ['src/features/practice/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              regex: '(^|/)features/(character-breakdown|dictionary)/',
+              message: 'Features must use another feature’s public index, not its internal folders.',
+            },
+          ],
+        },
+      ],
+    },
+  },
 ];

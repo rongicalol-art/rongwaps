@@ -5,6 +5,7 @@ interface UseModalFocusOptions {
   initialFocusRef?: RefObject<HTMLElement | null>;
   isActive: boolean;
   onEscape?: () => void;
+  restoreFocus?: boolean;
 }
 
 const FOCUSABLE_SELECTOR = [
@@ -21,7 +22,13 @@ function focusableElements(container: HTMLElement): HTMLElement[] {
     .filter((element) => element.getClientRects().length > 0 && element.getAttribute('aria-hidden') !== 'true');
 }
 
-export function useModalFocus({ containerRef, initialFocusRef, isActive, onEscape }: UseModalFocusOptions) {
+export function useModalFocus({
+  containerRef,
+  initialFocusRef,
+  isActive,
+  onEscape,
+  restoreFocus = true,
+}: UseModalFocusOptions) {
   const escapeRef = useRef(onEscape);
   escapeRef.current = onEscape;
 
@@ -64,9 +71,9 @@ export function useModalFocus({ containerRef, initialFocusRef, isActive, onEscap
     });
     return () => {
       window.cancelAnimationFrame(focusFrame);
-      previouslyFocused?.focus();
+      if (restoreFocus) previouslyFocused?.focus();
     };
-  }, [containerRef, initialFocusRef, isActive]);
+  }, [containerRef, initialFocusRef, isActive, restoreFocus]);
 
   return { onKeyDown: handleKeyDown };
 }

@@ -8,10 +8,15 @@ import type { SRSData } from '../utils/srsEngine';
 import {
   createCloudSyncFingerprint,
   createSingleFlightSaveCoordinator,
+  getNextAutoSaveDelay,
   getNextCloudSyncBackoff,
   getSessionProgressDelta,
   hasSessionProgressDelta,
+  isSameFolderList,
+  isSameStringArray,
+  mergePulledSrsData,
   reconcileAggregateProgress,
+  type SyncedFolderSnapshot,
   type SyncProgressCounters,
 } from '../utils/cloudSyncQueue';
 import { createEmptySessionProgress } from '../utils/reviewProgress';
@@ -144,6 +149,17 @@ export function useCloudSync() {
   const performSaveRef = useRef<(snapshot: CloudSaveSnapshot) => Promise<void>>(async () => {});
   const syncTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const saveBackoffMsRef = useRef(0);
+  // When the oldest still-unsaved store change happened. Null once a save
+  // acknowledges everything — drives the auto-save max-wait so continuous
+  // studying can never postpone persistence indefinitely.
+  const autoSaveDirtySinceRef = useRef<number | null>(null);
+  // Server-truth snapshots powering the "skip when unchanged" autosave trims.
+  // Null means never synced / must write. They are updated only after a
+  // confirmed write or an authoritative pull, so skipping never strands a
+  // change on the client.
+  const lastSyncedLearnedRef = useRef<string[] | null>(null);
+  const lastSyncedActivityRef = useRef<string | null>(null);
+  const lastSyncedFoldersRef = useRef<SyncedFolderSnapshot[] | null>(null);
   const lastSyncedSessionRef = useRef<SyncProgressCounters>({
     xpEarned: 0,
     cardsReviewed: 0,
@@ -208,6 +224,10 @@ export function useCloudSync() {
         currentUser.id,
         lastCursor ? { since: lastCursor } : undefined,
       );
+      // Snapshot captured BEFORE the network round-trip above: any card that
+      // differs from this at merge time was reviewed while the pull was in
+      // flight and must not be clobbered by stale server rows.
+      const srsAtPullStart = useAppStore.getState().srsData;
 
       if (cloudData) {
         const cloudTime = cloudData.lastUpdated ? new Date(cloudData.lastUpdated).getTime() : 0;
@@ -280,18 +300,28 @@ export function useCloudSync() {
           }
 
           const localProgress = useAppStore.getState();
-          setSrsDataAndLearnedCards(
-            isAccountSwitch ? cloudData.srsData : { ...localProgress.srsData, ...cloudData.srsData },
-            isAccountSwitch
-              ? cloudData.learnedCards
-              : Array.from(new Set([...localProgress.learnedCards, ...cloudData.learnedCards])),
-          );
-          // After a pull, the server state is the source of truth for these
-          // cards, so future deltas are computed against the merged result.
-          lastSyncedSrsRef.current = {
-            ...localProgress.srsData,
-            ...cloudData.srsData,
-          };
+          if (isAccountSwitch) {
+            setSrsDataAndLearnedCards(cloudData.srsData, cloudData.learnedCards);
+            // Fresh account: the server state is the whole truth.
+            lastSyncedSrsRef.current = cloudData.srsData;
+            lastSyncedLearnedRef.current = cloudData.learnedCards;
+            lastSyncedActivityRef.current = cloudData.lastActivity ?? null;
+          } else {
+            // Reviews made while the pull was in flight win locally AND stay
+            // dirty against the baseline, so the next save uploads them
+            // instead of being silently lost to stale server rows.
+            const { merged, baseline } = mergePulledSrsData({
+              priorBaseline: lastSyncedSrsRef.current,
+              atPullStart: srsAtPullStart,
+              current: localProgress.srsData,
+              cloud: cloudData.srsData,
+            });
+            setSrsDataAndLearnedCards(
+              merged,
+              Array.from(new Set([...localProgress.learnedCards, ...cloudData.learnedCards])),
+            );
+            lastSyncedSrsRef.current = baseline;
+          }
         }
       }
 
@@ -299,6 +329,8 @@ export function useCloudSync() {
       // the pull itself establishes the baseline for the next delta.
       if (isAccountSwitch) {
         lastSyncedSrsRef.current = cloudData?.srsData ?? null;
+        lastSyncedLearnedRef.current = cloudData?.learnedCards ?? null;
+        lastSyncedActivityRef.current = cloudData?.lastActivity ?? null;
       }
 
       const aggregateStats = await progressService.getAggregateStats(currentUser.id);
@@ -322,6 +354,8 @@ export function useCloudSync() {
       if (isAccountSwitch) {
         const folders = await userService.getCustomFolders(currentUser.id);
         setCustomFolders(folders);
+        // Just pulled from the server: this list is now the server truth.
+        lastSyncedFoldersRef.current = folders;
       }
 
       lastSyncedSessionRef.current = getProgressCounters(useAppStore.getState());
@@ -366,10 +400,20 @@ export function useCloudSync() {
       ...(lastSyncedSrsRef.current ?? {}),
       ...deltaSrsData,
     };
-    await userService.syncMetadata(userId, {
-      learnedCards: store.learnedCards,
-      lastActivity: store.lastActivity,
-    });
+    // Skip the learned-cards/activity rewrite when neither changed since the
+    // last acknowledged sync. The array grows over a learner's lifetime, so
+    // resending it on every save was the largest redundant write.
+    const metadataRowUnchanged =
+      isSameStringArray(lastSyncedLearnedRef.current, store.learnedCards)
+      && lastSyncedActivityRef.current === store.lastActivity;
+    if (!metadataRowUnchanged) {
+      await userService.syncMetadata(userId, {
+        learnedCards: store.learnedCards,
+        lastActivity: store.lastActivity,
+      });
+      lastSyncedLearnedRef.current = store.learnedCards;
+      lastSyncedActivityRef.current = store.lastActivity;
+    }
 
     const metadataChanged =
       JSON.stringify(userMetadata.favorites) !== JSON.stringify(store.favorites) ||
@@ -394,9 +438,13 @@ export function useCloudSync() {
       });
     }
 
-    // Always sync folders — including empty arrays, so deleting the last
-    // folder is persisted instead of resurrecting on the next pull.
-    await userService.syncCustomFolders(userId, store.customFolders);
+    // Same skip-when-unchanged rule for folders. Empty lists still sync on the
+    // first save (the ref starts null), so deleting the last folder is
+    // persisted instead of resurrecting on the next pull.
+    if (!isSameFolderList(lastSyncedFoldersRef.current, store.customFolders)) {
+      await userService.syncCustomFolders(userId, store.customFolders);
+      lastSyncedFoldersRef.current = [...store.customFolders];
+    }
 
     const savedSession = lastSyncedSessionRef.current;
     const snapshotSession = getProgressCounters(store);
@@ -425,6 +473,10 @@ export function useCloudSync() {
       coordinatorRef.current = null;
       hasFetchedForUserRef.current = null;
       lastPulledCursorRef.current = null;
+      autoSaveDirtySinceRef.current = null;
+      lastSyncedLearnedRef.current = null;
+      lastSyncedActivityRef.current = null;
+      lastSyncedFoldersRef.current = null;
       return;
     }
 
@@ -454,6 +506,7 @@ export function useCloudSync() {
     try {
       await coordinatorRef.current.request();
       saveBackoffMsRef.current = 0;
+      autoSaveDirtySinceRef.current = null;
       setSyncStatus('success');
     } catch (error: unknown) {
       saveBackoffMsRef.current = getNextCloudSyncBackoff(saveBackoffMsRef.current, error);
@@ -496,11 +549,22 @@ export function useCloudSync() {
     if (!currentUser || hasFetchedForUserRef.current !== currentUser.id) return;
     if (syncTimeoutRef.current) clearTimeout(syncTimeoutRef.current);
 
+    // Trailing debounce, with a max-wait floor: every store change below
+    // restarts the 10s window, so a learner answering cards back-to-back used
+    // to postpone saving forever. Once the oldest unsaved change is ~45s old,
+    // the save fires at that deadline instead (error backoff still respected).
+    const nowMs = Date.now();
+    if (autoSaveDirtySinceRef.current == null) autoSaveDirtySinceRef.current = nowMs;
+
     syncTimeoutRef.current = setTimeout(() => {
       void requestSave().catch((error: unknown) => {
         console.error('Auto-save failed:', error);
       });
-    }, 10_000 + saveBackoffMsRef.current);
+    }, getNextAutoSaveDelay({
+      dirtySinceMs: autoSaveDirtySinceRef.current,
+      nowMs,
+      backoffMs: saveBackoffMsRef.current,
+    }));
 
     return () => {
       if (syncTimeoutRef.current) clearTimeout(syncTimeoutRef.current);

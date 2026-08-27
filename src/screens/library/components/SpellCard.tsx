@@ -40,23 +40,32 @@ export const SpellCard: React.FC<SpellCardProps> = ({ item, activeTab, onAction,
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ delay: Math.min(index * 0.04, 0.2), duration: 0.2 }}
+      role="button"
+      tabIndex={0}
+      aria-label={`Open ${traditional}`}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick();
+        }
+      }}
       onClick={onClick}
-      className="cursor-pointer select-none group break-inside-avoid mb-3"
+      className="group h-full cursor-pointer select-none"
     >
-      <article className="relative overflow-hidden rounded-[24px] bg-ui-surface transition-[transform,background-color] duration-200 hover:-translate-y-1 hover:bg-white active:translate-y-0">
+      <article className="relative flex h-full flex-col overflow-hidden rounded-[24px] bg-ui-surface transition-[transform,background-color] duration-200 hover:-translate-y-1 hover:bg-white active:translate-y-0">
         <button
           onClick={(e) => { e.stopPropagation(); onAction(e); }}
           aria-label={isStarred ? `Remove ${traditional} from saved words` : `Delete ${traditional}`}
           className={`absolute top-2 right-2 w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all active:scale-90 z-10 ${
             isStarred
               ? 'text-[#FFB020] hover:bg-[#FFB020]/10'
-              : 'text-ui-muted hover:bg-[#FF4B4B]/10 hover:text-[#FF4B4B]'
+              : 'text-ui-muted hover:bg-feedback-danger/10 hover:text-feedback-danger'
           }`}
         >
           <AppIcon name={isStarred ? 'bookmarkFilled' : 'trash'} size={isStarred ? 18 : 16} />
         </button>
 
-        <div className="flex flex-col items-center px-4 pt-6 pb-4">
+        <div className="flex flex-1 flex-col items-center justify-center px-4 py-6">
           <span
             className="mb-3 font-chinese font-bold leading-none text-ui-ink-strong transition-colors group-hover:text-brand-primary"
             style={{ fontSize: traditional.length > 2 ? '30px' : traditional.length > 1 ? '38px' : '48px' }}

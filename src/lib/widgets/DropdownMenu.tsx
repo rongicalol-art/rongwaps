@@ -35,7 +35,7 @@ export interface DropdownMenuProps extends Omit<React.HTMLAttributes<HTMLDivElem
  * Escape dismissal, and viewport-safe right alignment.
  *
  * Surface style follows the RongWaps tactile card system: white, rounded,
- * subtle gray bottom edge for depth — no outline, no blur shadow.
+ * thick bottom edge for depth, no outline, no blur shadow.
  * A plain quick fade is used for open/close; reduced-motion users get none.
  */
 export function DropdownMenu({
@@ -44,8 +44,8 @@ export function DropdownMenu({
   open,
   onOpenChange,
   align = 'end',
-  gapClassName = 'mt-3',
-  widthClassName = 'w-60',
+  gapClassName = 'mt-2',
+  widthClassName = 'w-44',
   className,
   children,
   ...props
@@ -166,8 +166,8 @@ export function DropdownMenu({
             exit={{ opacity: 0 }}
             transition={reduceMotion ? { duration: 0 } : { duration: 0.15, ease: 'easeOut' }}
             className={cn(
-              'absolute top-full z-50 rounded-[22px] border-b-2 border-ui-divider bg-ui-surface shadow-sm',
-              'flex flex-col p-1.5',
+              'absolute top-full z-50 rounded-[17px] border-b-4 border-ui-border bg-ui-surface shadow-[0_8px_24px_rgba(0,0,0,0.12)]',
+              'flex flex-col p-0.5',
               gapClassName,
               widthClassName,
               align === 'end' ? 'right-0' : 'left-0',
@@ -210,17 +210,17 @@ export function DropdownMenuItem({
       role="menuitem"
       tabIndex={-1}
       className={cn(
-        'flex min-h-[52px] w-full cursor-pointer select-none items-center gap-3 rounded-[16px] px-3 text-left font-extrabold text-ui-ink outline-none transition-[background-color,color,transform] duration-100',
+        'flex min-h-9 w-full cursor-pointer select-none items-center gap-2.5 rounded-[12px] px-3 py-1.5 text-left text-xs font-extrabold text-ui-ink outline-none transition-[background-color,color,transform] duration-100',
         "focus-visible:ring-4 focus-visible:ring-brand-primary/25",
         active
-          ? 'bg-brand-primary/15 text-brand-primary'
+          ? 'bg-brand-primary/10 text-brand-primary'
           : 'hover:bg-ui-hover active:translate-y-[2px]',
         rowClassName,
         className,
       )}
       {...props}
     >
-      {icon && <span className={cn('shrink-0 text-[22px]', active && 'text-brand-primary', iconClassName)}>{icon}</span>}
+      {icon && <span className={cn('shrink-0 text-[19px]', active && 'text-brand-primary', iconClassName)}>{icon}</span>}
       <span className="min-w-0 flex-1 truncate">{children ?? label}</span>
     </button>
   );

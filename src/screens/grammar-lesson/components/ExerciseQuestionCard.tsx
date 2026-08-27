@@ -1,5 +1,5 @@
 import type { DragEvent } from 'react';
-import { ContextualChineseText, Soft3DButton } from '../../../lib/widgets';
+import { ActionButton, ContextualChineseText } from '../../../lib/widgets';
 import type {
   GrammarExerciseQuestion,
   GrammarExerciseTile,
@@ -59,11 +59,11 @@ export function ExerciseQuestionCard({
 
   return (
     <article className={cn(
-      'rounded-[20px] border border-ui-border bg-ui-surface px-5 py-6 shadow-[0_3px_0_var(--color-ui-divider)] sm:px-8 sm:py-8',
-      hasWrongAnswer && 'border-feedback-danger bg-[#FFF8F8]',
+      'border-b border-ui-divider bg-ui-surface px-2 py-5 last:border-b-0 sm:px-3 sm:py-7',
+      hasWrongAnswer && 'bg-feedback-danger-surface/35',
     )}>
       <p className="mb-3 text-[11px] font-black text-brand-primary">Try {question.number}</p>
-      <div className="flex flex-wrap items-center gap-x-1.5 gap-y-2.5 font-chinese text-base font-bold leading-[1.9] text-ui-ink-strong sm:text-lg">
+      <div className="flex flex-wrap items-center gap-x-1.5 gap-y-2.5 font-chinese text-base font-black leading-[1.9] text-ui-ink-strong sm:text-lg">
         {question.segments.map((segment, index) => {
           if (segment.type === 'text') {
             return (
@@ -109,8 +109,8 @@ export function ExerciseQuestionCard({
                   'inline-flex min-h-9 items-center justify-center rounded-[10px] border-2 border-dashed px-2 align-middle font-chinese text-base font-black transition-all sm:text-lg',
                   blankWidthClass,
                   !placedTile && !canReceiveSelected && 'border-ui-muted bg-ui-canvas text-ui-muted',
-                  !placedTile && canReceiveSelected && 'border-[#D89C00] bg-[#FFF7D6] text-[#A66A00] ring-4 ring-[#FFC800]/20',
-                  placedTile && !isCorrect && !isWrong && 'border-brand-primary bg-[#EAF7FE] text-brand-primary',
+                  !placedTile && canReceiveSelected && 'border-[#D89C00] bg-[#FFF7D6] text-[#A66A00] ring-4 ring-feedback-warning/20',
+                  placedTile && !isCorrect && !isWrong && 'border-brand-primary bg-brand-primary-soft text-brand-primary',
                   isCorrect && 'border-feedback-success bg-[#E8F9DC] text-[#3D8F00]',
                   isWrong && 'border-feedback-danger bg-[#FFF1F1] text-feedback-danger',
                 )}
@@ -127,11 +127,11 @@ export function ExerciseQuestionCard({
           const isSelected = selectedTileId === tile.id;
           const tileText = textFor(tile.traditional, tile.simplified);
           return (
-            <Soft3DButton
+            <ActionButton
               key={tile.id}
               type="button"
-              variant="custom"
-              depth="sm"
+              variant="secondary"
+              size="sm"
               draggable
               onDragStart={(event) => event.dataTransfer.setData('text/plain', tile.id)}
               data-grammar-tile-id={tile.id}
@@ -139,14 +139,14 @@ export function ExerciseQuestionCard({
               aria-pressed={isSelected}
               title={tile.meaning}
               className={cn(
-                'min-w-11 w-auto rounded-[10px] border-b-2 px-3 py-1.5 font-chinese text-base normal-case tracking-normal active:translate-y-[3px]',
+                'min-w-11 w-auto rounded-[10px] border-b-2 px-3 py-1.5 font-chinese font-black text-base normal-case tracking-normal active:translate-y-[3px]',
                 isSelected
-                  ? 'border-[#D89C00] bg-[#FFC800] text-ui-ink-strong'
-                  : 'border-brand-primary-edge bg-[#EAF7FE] text-ui-ink-strong',
+                  ? 'border-[#D89C00] bg-feedback-warning text-ui-ink-strong'
+                  : 'border-brand-primary-edge bg-brand-primary-soft text-ui-ink-strong',
               )}
             >
               {tileText}
-            </Soft3DButton>
+            </ActionButton>
           );
         }) : <span className="py-2 text-xs font-bold text-ui-muted">All tiles placed</span>}
       </div>

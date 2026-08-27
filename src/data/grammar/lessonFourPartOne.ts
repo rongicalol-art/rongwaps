@@ -41,6 +41,7 @@ const lexicon = [
   lexeme('這種鉛筆', 'zhè zhǒng qiānbǐ', 'this kind of pencil', '这种铅笔'),
   lexeme('書', 'shū', 'book', '书'),
   lexeme('筆', 'bǐ', 'pen', '笔'),
+  lexeme('大', 'dà', 'big'),
   lexeme('大的', 'dà de', 'the big one'),
   lexeme('小的', 'xiǎo de', 'the small one'),
   lexeme('禮物', 'lǐwù', 'gift', '礼物'),
@@ -62,7 +63,7 @@ const lexicon = [
   lexeme('多', 'duō', 'many; much'),
   lexeme('漂亮', 'piàoliang', 'beautiful'),
   lexeme('可愛', 'kě’ài', 'cute', '可爱'),
-  lexeme('便宜', 'piányí', 'inexpensive'),
+  lexeme('便宜', 'piányi', 'inexpensive'),
   lexeme('好吃', 'hǎochī', 'delicious'),
   lexeme('好喝', 'hǎohē', 'tastes good'),
   lexeme('好看', 'hǎokàn', 'good-looking'),
@@ -96,8 +97,8 @@ const lexicon = [
   lexeme('還是', 'háishì', 'or in a question', '还是'),
   lexeme('好不好', 'hǎo bù hǎo', 'how about it; okay or not'),
   lexeme('好嗎', 'hǎo ma', 'okay; shall we', '好吗'),
-  lexeme('嗎', 'ma', 'yes-or-no question particle', '吗'),
-  lexeme('啊', 'a', 'particle showing agreement'),
+  lexeme('嗎', 'ma', 'ending word that makes a yes-or-no question', '吗'),
+  lexeme('啊', 'a', 'ending word showing you agree'),
   lexeme('怎麼樣', 'zěnmeyàng', 'how is it; what do you think', '怎么样'),
 ];
 
@@ -115,20 +116,19 @@ export const LESSON_FOUR_GRAMMAR_ONE: InteractiveGrammarPage = {
   grammarNumber: 1,
   titleTraditional: '話題，主語 + 動作',
   titleEnglish: 'Move the Thing into the Spotlight',
-  learnerPromise: 'Emphasize the food, drink, gift, or object you are talking about.',
+  learnerPromise: 'You can put the food, drink, gift, or thing you are talking about first.',
   printedPages: [95, 96, 97],
   audioReference: '04-1-3',
   explanation:
-    'Chinese can move a known object to the front as the topic. Pause, then say what the subject does with it. 都 can collect several fronted things.',
+    'Chinese can move a known thing to the front of the sentence. Pause, then say what the person does with it or how they feel about it. With several things up front, 都 means "all of them".',
   focusTerms: ['話題', '话题', '主語', '主语', '動作', '动作', '都'],
   teachingGlossary: teachingGlossary('b1l04-g01', lexicon),
   pattern: 'Thing in focus, person + action',
   patternColumns: ['Thing in the spotlight', 'Person', 'Action or opinion'],
   patternAccentColumn: 0,
-  patternMobileLayout: 'leading-wide',
   discoveryLab: {
     title: 'Move the spotlight, keep the meaning',
-    description: 'The fronted thing tells the listener what this sentence is about before the comment arrives.',
+    description: 'The thing at the start tells the listener what this sentence is about. What follows is what you think or do about it.',
     prompt: 'What deserves the spotlight?',
     choices: [
       {
@@ -138,7 +138,7 @@ export const LESSON_FOUR_GRAMMAR_ONE: InteractiveGrammarPage = {
         simplified: '蛋糕，我喜欢。',
         pinyin: 'Dàngāo, wǒ xǐhuān.',
         english: 'Cake, I like.',
-        note: '蛋糕 becomes the topic. 我喜歡 is the comment about it.',
+        note: '蛋糕 is in the spotlight. 我喜歡 says what you think about it.',
       },
       {
         id: 'g1-two-things',
@@ -147,16 +147,16 @@ export const LESSON_FOUR_GRAMMAR_ONE: InteractiveGrammarPage = {
         simplified: '书、笔，我都有。',
         pinyin: 'Shū, bǐ, wǒ dōu yǒu.',
         english: 'Books and pens, I have both.',
-        note: 'Two topics come first, so 都 gathers both inside the comment.',
+        note: 'Two things come first, so 都 means "both".',
       },
       {
         id: 'g1-contrast',
-        label: 'Contrast two topics',
+        label: 'Contrast two things',
         traditional: '茶，我喜歡；咖啡，我不喜歡。',
         simplified: '茶，我喜欢；咖啡，我不喜欢。',
         pinyin: 'Chá, wǒ xǐhuān; kāfēi, wǒ bù xǐhuān.',
         english: 'Tea, I like; coffee, I do not.',
-        note: 'Fronting each drink makes the contrast easy to hear.',
+        note: 'Putting each drink at the start makes the contrast easy to hear.',
       },
       {
         id: 'g1-repair',
@@ -165,11 +165,11 @@ export const LESSON_FOUR_GRAMMAR_ONE: InteractiveGrammarPage = {
         simplified: '我蛋糕喜欢 → 蛋糕，我喜欢',
         pinyin: 'Wǒ dàngāo xǐhuān → dàngāo, wǒ xǐhuān',
         english: 'Cake, I like.',
-        note: 'If the object moves forward, place it before the subject and hear a small pause.',
+        note: 'If you move a thing to the start, put it before the person and hear a small pause.',
         isCorrection: true,
       },
     ],
-    takeaway: 'Spotlight the thing first, pause, then make your comment.',
+    takeaway: 'Put the thing first, pause, then say what you think or do.',
   },
   patternRows: [
     {
@@ -194,6 +194,35 @@ export const LESSON_FOUR_GRAMMAR_ONE: InteractiveGrammarPage = {
       english: 'The big and small ones, I want both.',
     },
   ],
+  confusion: {
+    title: "Don't mix these up",
+    items: [
+      {
+        id: 'g1-confusion-topic-pause',
+        question: 'When the thing goes first, do I need a pause?',
+        answer: 'Yes — say the thing, pause, then the person and their feeling. In writing, that pause is a comma.',
+        wrongTraditional: '這枝鉛筆我要。',
+        wrongSimplified: '这枝铅笔我要。',
+        right: grammarText('b1l04-g1-c1', '這枝鉛筆，我要。', '这枝铅笔，我要。', 'Zhè zhī qiānbǐ, wǒ yào.', 'This pencil, I want it.', lexicon),
+      },
+      {
+        id: 'g1-confusion-dou-one',
+        question: 'One thing up front — can I use 都?',
+        answer: 'No. 都 means "all", so it needs two or more things. With one thing, just say 我喜歡.',
+        wrongTraditional: '蛋糕，我都喜歡。',
+        wrongSimplified: '蛋糕，我都喜欢。',
+        right: grammarText('b1l04-g1-c2', '蛋糕，我喜歡。', '蛋糕，我喜欢。', 'Dàngāo, wǒ xǐhuān.', 'Cake, I like.', lexicon),
+      },
+      {
+        id: 'g1-confusion-dou-not',
+        question: 'I do not like coffee or tea. Where does 不 go?',
+        answer: 'After 都: 都不喜歡. 都 + 不 means you feel this way about none of them.',
+        wrongTraditional: '茶、咖啡不都喜歡。',
+        wrongSimplified: '茶、咖啡不都喜欢。',
+        right: grammarText('b1l04-g1-c3', '茶、咖啡都不喜歡。', '茶、咖啡都不喜欢。', 'Chá, kāfēi, dōu bù xǐhuān.', 'Tea and coffee, I do not like either.', lexicon),
+      },
+    ],
+  },
   examples: [
     {
       id: 'g1-example-1',
@@ -211,15 +240,15 @@ export const LESSON_FOUR_GRAMMAR_ONE: InteractiveGrammarPage = {
       text: grammarText('b1l04-g1-e3', 'A：你要哪個禮物？ B：大的、小的，我都要。', 'A：你要哪个礼物？ B：大的、小的，我都要。', 'A: Nǐ yào nǎ ge lǐwù? B: Dà de, xiǎo de, wǒ dōu yào.', 'A: Which gift do you want? B: The big and small ones, I want both.', lexicon),
     },
   ],
-  exerciseTitle: 'Put the object in the spotlight',
-  exercisePreview: 'Rewrite each answer with the object first.',
-  exerciseInstruction: 'Choose the fronted topic, then finish with the person and comment.',
+  exerciseTitle: 'Put the thing in the spotlight',
+  exercisePreview: 'Rewrite each answer with the thing first.',
+  exerciseInstruction: 'Choose the thing that goes first, then finish with the person and their opinion.',
   exerciseNote:
-    'The source prompts are open and print no answer key. App-authored models preserve their objects and required topic-first structure.',
+    'The printed exercise has no answer key. These model answers keep the thing first, as the exercise asks.',
   exerciseResponseMode: 'text',
   exerciseCues: [
     { id: 'g1-cue-pencil', label: 'Picture cue', pinyin: 'zhè zhǒng qiānbǐ', detail: 'The printed picture identifies this kind of pencil in question 2.' },
-    { id: 'g1-cue-gifts', label: 'Choice cue', pinyin: 'dà de · xiǎo de', detail: 'The source uses gift pictures to support plural fronted topics.' },
+    { id: 'g1-cue-gifts', label: 'Choice cue', pinyin: 'dà de · xiǎo de', detail: 'The printed exercise uses gift pictures to show several gifts at the start.' },
   ],
   questions: [
     {
@@ -227,7 +256,7 @@ export const LESSON_FOUR_GRAMMAR_ONE: InteractiveGrammarPage = {
       number: 1,
       segments: [
         { type: 'text', traditional: 'A：你喜歡紅色的衣服嗎？ B：', simplified: 'A：你喜欢红色的衣服吗？ B：' },
-        { type: 'blank', id: 'g1-q1-topic', answer: '紅色的衣服', answerSimplified: '红色的衣服', hint: 'Move the object to the front.' },
+        { type: 'blank', id: 'g1-q1-topic', answer: '紅色的衣服', answerSimplified: '红色的衣服', hint: 'Move the thing to the front.' },
         { type: 'text', traditional: '，' },
         { type: 'blank', id: 'g1-q1-comment', answer: '我喜歡', answerSimplified: '我喜欢', hint: 'Finish with person + opinion.' },
         { type: 'text', traditional: '。' },
@@ -238,8 +267,8 @@ export const LESSON_FOUR_GRAMMAR_ONE: InteractiveGrammarPage = {
         answerTile('g1-q1-i', '我', 'wǒ', 'I'),
         answerTile('g1-q1-wrong-object', '白色的衣服', 'báisè de yīfu', 'white clothes'),
       ],
-      correctFeedback: '紅色的衣服 is the topic; 我喜歡 comments on it.',
-      repairFeedback: 'Move the complete object before the pause: 紅色的衣服，我喜歡.',
+      correctFeedback: '紅色的衣服 comes first; 我喜歡 says what you think of it.',
+      repairFeedback: 'Move the full thing before the pause: 紅色的衣服，我喜歡.',
     },
     {
       id: 'g1-question-2',
@@ -257,8 +286,8 @@ export const LESSON_FOUR_GRAMMAR_ONE: InteractiveGrammarPage = {
         answerTile('g1-q2-that-pencil', '那種鉛筆', 'nà zhǒng qiānbǐ', 'that kind of pencil', '那种铅笔'),
         answerTile('g1-q2-no', '我不要買', 'wǒ bú yào mǎi', 'I do not want to buy it', '我不要买'),
       ],
-      correctFeedback: 'The source object leads: 這種鉛筆，我要買.',
-      repairFeedback: 'Keep the object first and the subject inside the comment.',
+      correctFeedback: 'The thing from the question comes first: 這種鉛筆，我要買.',
+      repairFeedback: 'Keep the thing first, and say who does what after it.',
     },
     {
       id: 'g1-question-3',
@@ -267,7 +296,7 @@ export const LESSON_FOUR_GRAMMAR_ONE: InteractiveGrammarPage = {
         { type: 'text', traditional: 'A：你喜歡吃什麼東西？ B：', simplified: 'A：你喜欢吃什么东西？ B：' },
         { type: 'blank', id: 'g1-q3-topics', answer: '蛋糕、牛肉麵', answerSimplified: '蛋糕、牛肉面', hint: 'Name two foods before the pause.' },
         { type: 'text', traditional: '，' },
-        { type: 'blank', id: 'g1-q3-comment', answer: '我都喜歡吃', answerSimplified: '我都喜欢吃', hint: 'Use 都 because both foods share the comment.' },
+        { type: 'blank', id: 'g1-q3-comment', answer: '我都喜歡吃', answerSimplified: '我都喜欢吃', hint: 'Use 都 because you like both.' },
         { type: 'text', traditional: '。' },
       ],
       tiles: [
@@ -276,7 +305,7 @@ export const LESSON_FOUR_GRAMMAR_ONE: InteractiveGrammarPage = {
         answerTile('g1-q3-drinks', '咖啡、茶', 'kāfēi, chá', 'coffee and tea'),
         answerTile('g1-q3-no-dou', '我喜歡吃', 'wǒ xǐhuān chī', 'I like eating'),
       ],
-      correctFeedback: 'Two foods become topics, so 都 gathers both in the comment.',
+      correctFeedback: 'Two foods come first, so 都 means "both".',
       repairFeedback: 'List both foods first. Add 都 before the shared action.',
     },
     {
@@ -284,7 +313,7 @@ export const LESSON_FOUR_GRAMMAR_ONE: InteractiveGrammarPage = {
       number: 4,
       segments: [
         { type: 'text', traditional: 'A：你喜歡什麼生日禮物？ B：', simplified: 'A：你喜欢什么生日礼物？ B：' },
-        { type: 'blank', id: 'g1-q4-topics', answer: '花、書、蛋糕', answerSimplified: '花、书、蛋糕', hint: 'List the gift topics first.' },
+        { type: 'blank', id: 'g1-q4-topics', answer: '花、書、蛋糕', answerSimplified: '花、书、蛋糕', hint: 'List the gifts first.' },
         { type: 'text', traditional: '，' },
         { type: 'blank', id: 'g1-q4-comment', answer: '我都喜歡', answerSimplified: '我都喜欢', hint: 'All three share one opinion.' },
         { type: 'text', traditional: '。' },
@@ -295,8 +324,8 @@ export const LESSON_FOUR_GRAMMAR_ONE: InteractiveGrammarPage = {
         answerTile('g1-q4-one-gift', '蛋糕', 'dàngāo', 'cake'),
         answerTile('g1-q4-no-dou', '我喜歡', 'wǒ xǐhuān', 'I like it', '我喜欢'),
       ],
-      correctFeedback: 'Three gift topics come first; 都 links all three to 喜歡.',
-      repairFeedback: 'When several topics share one opinion, use 都 in the comment.',
+      correctFeedback: 'Three gifts come first; 都 means "all three".',
+      repairFeedback: 'When you feel the same about several things, use 都.',
     },
   ],
 };
@@ -311,20 +340,19 @@ export const LESSON_FOUR_GRAMMAR_TWO: InteractiveGrammarPage = {
   grammarNumber: 2,
   titleTraditional: '第二個人／事物 + 也 + 相同情況',
   titleEnglish: 'Echo the Same Situation with 也',
-  learnerPromise: 'Add that another person or thing shares the same action or quality.',
+  learnerPromise: 'You can add that another person or thing does the same thing or feels the same way.',
   printedPages: [97, 98],
   audioReference: '04-1-3',
   explanation:
-    'First say one situation. In the next clause, put 也 before the repeated action or description. 也 means the new person or thing matches what was already said.',
+    'First say one situation. In the next part of the sentence, put 也 before the repeated action or description. 也 tells the listener that another person or thing matches what was already said.',
   focusTerms: ['也', '第二個', '第二个', '相同情況', '相同情况'],
   teachingGlossary: teachingGlossary('b1l04-g02', lexicon),
-  pattern: 'First situation, second subject + 也 + same result',
-  patternColumns: ['New matching subject', '也', 'Shared result'],
+  pattern: 'First situation, second person or thing + 也 + same result',
+  patternColumns: ['New matching person or thing', '也', 'Shared result'],
   patternAccentColumn: 1,
-  patternMobileLayout: 'leading-wide',
   discoveryLab: {
     title: 'Send an echo with 也',
-    description: 'The first clause creates a fact. 也 tells the listener the next person, thing, or action matches it.',
+    description: 'The first part of the sentence states a fact. 也 tells the listener that the next person, thing, or action matches it.',
     prompt: 'What kind of echo follows?',
     choices: [
       {
@@ -334,16 +362,16 @@ export const LESSON_FOUR_GRAMMAR_TWO: InteractiveGrammarPage = {
         simplified: '她很漂亮，也很可爱。',
         pinyin: 'Tā hěn piàoliang, yě hěn kě’ài.',
         english: 'She is beautiful and also cute.',
-        note: 'The subject stays the same; 也 adds another matching description.',
+        note: 'The same person stays; 也 adds another matching description.',
       },
       {
         id: 'g2-object',
-        label: 'Same person, another object',
+        label: 'Same person, another thing',
         traditional: '我買書，也買筆。',
         simplified: '我买书，也买笔。',
         pinyin: 'Wǒ mǎi shū, yě mǎi bǐ.',
         english: 'I buy books and also pens.',
-        note: '買 is repeated after 也 because the second object shares the action.',
+        note: '買 is repeated after 也 because the second thing shares the same action.',
       },
       {
         id: 'g2-person',
@@ -352,7 +380,7 @@ export const LESSON_FOUR_GRAMMAR_TWO: InteractiveGrammarPage = {
         simplified: '我买书，他也买书。',
         pinyin: 'Wǒ mǎi shū, tā yě mǎi shū.',
         english: 'I buy books; he buys books too.',
-        note: 'The new subject 他 comes before 也.',
+        note: 'The new person 他 comes before 也.',
       },
       {
         id: 'g2-repair',
@@ -361,11 +389,11 @@ export const LESSON_FOUR_GRAMMAR_TWO: InteractiveGrammarPage = {
         simplified: '也他买书 → 他也买书',
         pinyin: 'Yě tā mǎi shū → tā yě mǎi shū',
         english: 'He buys books too.',
-        note: 'Name the matching subject before 也.',
+        note: 'Name the matching person or thing before 也.',
         isCorrection: true,
       },
     ],
-    takeaway: 'New matching subject first, 也 second, shared result after it.',
+    takeaway: 'New person or thing first, 也 second, shared result after it.',
   },
   patternRows: [
     {
@@ -390,6 +418,35 @@ export const LESSON_FOUR_GRAMMAR_TWO: InteractiveGrammarPage = {
       english: 'He also buys books.',
     },
   ],
+  confusion: {
+    title: "Don't mix these up",
+    items: [
+      {
+        id: 'g2-confusion-ye-person',
+        question: 'Does 也 go before the person?',
+        answer: 'No. Name the matching person first, then 也, then the repeated action: 他也買書.',
+        wrongTraditional: '也他買書。',
+        wrongSimplified: '也他买书。',
+        right: grammarText('b1l04-g2-c1', '他也買書。', '他也买书。', 'Tā yě mǎi shū.', 'He buys books too.', lexicon),
+      },
+      {
+        id: 'g2-confusion-ye-repeat',
+        question: 'Another person does the same thing — do I say the action again?',
+        answer: 'Yes. Repeat the action word after 也. You cannot skip it.',
+        wrongTraditional: '我買書，他也書。',
+        wrongSimplified: '我买书，他也书。',
+        right: grammarText('b1l04-g2-c2', '我買書，他也買書。', '我买书，他也买书。', 'Wǒ mǎi shū, tā yě mǎi shū.', 'I buy books; he buys books too.', lexicon),
+      },
+      {
+        id: 'g2-confusion-ye-bu',
+        question: 'How do I say "I do not like it either"?',
+        answer: '也 comes before 不: 我也不喜歡. The order is 也 + 不 + action word.',
+        wrongTraditional: '我不也喜歡咖啡。',
+        wrongSimplified: '我不也喜欢咖啡。',
+        right: grammarText('b1l04-g2-c3', '我也不喜歡咖啡。', '我也不喜欢咖啡。', 'Wǒ yě bù xǐhuān kāfēi.', 'I do not like coffee either.', lexicon),
+      },
+    ],
+  },
   examples: [
     {
       id: 'g2-example-1',
@@ -404,12 +461,12 @@ export const LESSON_FOUR_GRAMMAR_TWO: InteractiveGrammarPage = {
     {
       id: 'g2-example-3',
       number: 3,
-      text: grammarText('b1l04-g2-e3', 'A：哪件衣服好看？ B：這件衣服很好看，那件衣服也很好看。', 'A：哪件衣服好看？ B：这件衣服很好看，那件衣服也很好看。', 'A: Nǎ jiàn yīfu hǎokàn? B: Zhè jiàn yīfu hěn hǎokàn, nà jiàn yīfu yě hěn hǎokàn.', 'A: Which clothes look good? B: This one looks good; that one also looks good.', lexicon),
+      text: grammarText('b1l04-g2-e3', 'A：哪件衣服好看？ B：這件衣服很好看，那件衣服也很好看。', 'A：哪件衣服好看？ B：这件衣服很好看，那件衣服也很好看。', 'A: Nǎ jiàn yīfu hǎokàn? B: Zhè jiàn yīfu hěn hǎokàn, nà jiàn yīfu yě hěn hǎokàn.', 'A: Which item of clothing looks nice? B: This one looks nice; that one does too.', lexicon),
     },
   ],
   exerciseTitle: 'Build the echo',
   exercisePreview: 'Complete each second situation with 也.',
-  exerciseInstruction: 'Say the new matching subject when needed, then put 也 before the repeated result.',
+  exerciseInstruction: 'Say the new person or thing when needed, then put 也 before the repeated result.',
   exerciseNote: 'The source prompts are open. These app models keep the required 也 structure and beginner vocabulary.',
   exerciseResponseMode: 'text',
   questions: [
@@ -423,7 +480,7 @@ export const LESSON_FOUR_GRAMMAR_TWO: InteractiveGrammarPage = {
       ],
       tiles: [
         answerTile('g2-q1-correct', '也想吃蛋糕', 'yě xiǎng chī dàngāo', 'also want to eat cake'),
-        answerTile('g2-q1-wrong-order', '想也吃蛋糕', 'xiǎng yě chī dàngāo', 'incorrect 也 placement'),
+        answerTile('g2-q1-wrong-order', '想也吃蛋糕', 'xiǎng yě chī dàngāo', 'wrong place for 也'),
         answerTile('g2-q1-dou', '都想吃蛋糕', 'dōu xiǎng chī dàngāo', 'all want to eat cake'),
       ],
       correctFeedback: '也 comes before the repeated action 想吃.',
@@ -439,11 +496,11 @@ export const LESSON_FOUR_GRAMMAR_TWO: InteractiveGrammarPage = {
       ],
       tiles: [
         answerTile('g2-q2-correct', '蛋糕也很好吃', 'dàngāo yě hěn hǎochī', 'cake is also delicious'),
-        answerTile('g2-q2-wrong-order', '也蛋糕很好吃', 'yě dàngāo hěn hǎochī', 'incorrect subject placement'),
+        answerTile('g2-q2-wrong-order', '也蛋糕很好吃', 'yě dàngāo hěn hǎochī', 'wrong place for 也'),
         answerTile('g2-q2-drink', '咖啡也很好喝', 'kāfēi yě hěn hǎohē', 'coffee also tastes good'),
       ],
-      correctFeedback: '蛋糕 is the new matching subject, so it comes before 也.',
-      repairFeedback: 'Build second subject + 也 + shared description.',
+      correctFeedback: '蛋糕 is the new matching thing, so it comes before 也.',
+      repairFeedback: 'Use second thing + 也 + shared description.',
     },
     {
       id: 'g2-question-3',
@@ -455,7 +512,7 @@ export const LESSON_FOUR_GRAMMAR_TWO: InteractiveGrammarPage = {
       ],
       tiles: [
         answerTile('g2-q3-correct', '中明也喜歡', 'Zhōngmíng yě xǐhuān', 'Zhongming also likes it', '中明也喜欢'),
-        answerTile('g2-q3-wrong-order', '也中明喜歡', 'yě Zhōngmíng xǐhuān', 'incorrect subject placement', '也中明喜欢'),
+        answerTile('g2-q3-wrong-order', '也中明喜歡', 'yě Zhōngmíng xǐhuān', 'wrong place for 也', '也中明喜欢'),
         answerTile('g2-q3-dou', '中明都喜歡', 'Zhōngmíng dōu xǐhuān', 'Zhongming likes all of it', '中明都喜欢'),
       ],
       correctFeedback: '中明 is the new matching person, so 中明 comes before 也.',
@@ -484,7 +541,6 @@ export const LESSON_FOUR_GRAMMAR_THREE: InteractiveGrammarPage = {
   pattern: '太 + description + 了',
   patternColumns: ['Strong reaction', 'Description', 'Close the reaction'],
   patternAccentColumn: 0,
-  patternMobileLayout: 'middle-wide',
   discoveryLab: {
     title: 'Turn up the reaction meter',
     description: '太…了 frames one description. Context tells you whether the reaction is delighted or uncomfortable.',
@@ -504,7 +560,7 @@ export const LESSON_FOUR_GRAMMAR_THREE: InteractiveGrammarPage = {
         traditional: '太大了！',
         pinyin: 'Tài dà le!',
         english: 'It is too big!',
-        note: 'With 大 in a fitting context, the size exceeds what works.',
+        note: 'With 大, it can mean "too big" — more than what fits.',
       },
       {
         id: 'g3-taste',
@@ -521,7 +577,7 @@ export const LESSON_FOUR_GRAMMAR_THREE: InteractiveGrammarPage = {
         simplified: '太热 → 太热了',
         pinyin: 'tài rè → tài rè le',
         english: 'It is too hot!',
-        note: 'In this grammar frame, 了 closes the strong reaction.',
+        note: 'In this pattern, 了 closes the strong reaction.',
         isCorrection: true,
       },
     ],
@@ -550,6 +606,34 @@ export const LESSON_FOUR_GRAMMAR_THREE: InteractiveGrammarPage = {
       english: 'It is so delicious!',
     },
   ],
+  confusion: {
+    title: "Don't mix these up",
+    items: [
+      {
+        id: 'g3-confusion-le',
+        question: 'Can I just say 太熱?',
+        answer: 'As a full reaction, no — close the frame with 了: 太熱了. 太 and 了 work as a pair.',
+        wrongTraditional: '今天太熱。',
+        wrongSimplified: '今天太热。',
+        right: grammarText('b1l04-g3-c1', '今天太熱了。', '今天太热了。', 'Jīntiān tài rè le.', 'It is too hot today.', lexicon),
+      },
+      {
+        id: 'g3-confusion-tai-place',
+        question: 'Where does 太 go?',
+        answer: 'Right before the describing word: 太累. The order is 太 + describing word + 了.',
+        wrongTraditional: '他累太了。',
+        right: grammarText('b1l04-g3-c2', '他太累了。', '他太累了。', 'Tā tài lèi le.', 'He is too tired.', lexicon),
+      },
+      {
+        id: 'g3-confusion-big',
+        question: 'The shirt is much too big. Is 太好了 okay?',
+        answer: 'No — 太好 sounds happy. Pick the describing word that fits: 太大了.',
+        wrongTraditional: '這件衣服太好了。',
+        wrongSimplified: '这件衣服太好了。',
+        right: grammarText('b1l04-g3-c3', '這件衣服太大了。', '这件衣服太大了。', 'Zhè jiàn yīfu tài dà le.', 'This item of clothing is too big.', lexicon),
+      },
+    ],
+  },
   examples: [
     {
       id: 'g3-example-1',
@@ -605,7 +689,7 @@ export const LESSON_FOUR_GRAMMAR_THREE: InteractiveGrammarPage = {
         answerTile('g3-q2-hungry', '他太餓了', 'tā tài è le', 'he is too hungry', '他太饿了'),
         answerTile('g3-q2-order', '他累太了', 'tā lèi tài le', 'incorrect 太 placement'),
       ],
-      correctFeedback: 'The subject comes first; 太…了 wraps the description 累.',
+      correctFeedback: 'The person comes first; 太…了 wraps the description 累.',
       repairFeedback: 'Build 他 + 太 + 累 + 了.',
     },
     {
@@ -666,6 +750,6 @@ export const LESSON_FOUR_PART_ONE: InteractiveGrammarPart = {
   dialogue,
   completionTitle: 'Part 1 complete — your reactions now sound conversational.',
   completionDescription:
-    'You spotlighted known objects, echoed matching situations with 也, and reacted strongly with 太…了.',
+    'You put known things in the spotlight, echoed matching situations with 也, and reacted strongly with 太…了.',
   nextBookLabel: 'Next in the book · Dialogue 2, page 100.',
 };

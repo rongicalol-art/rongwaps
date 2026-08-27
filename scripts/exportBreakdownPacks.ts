@@ -28,6 +28,19 @@ interface ManifestShard {
   bytes: number;
 }
 
+interface UsedAsPack {
+  schemaVersion: number;
+  version: string;
+  generatedAt: string;
+  componentCount: number;
+  entryCount: number;
+  entries: Record<string, string[]>;
+}
+
+// CJK ideographs (ext A, basic, radicals supplement, compat) that can appear
+// inside an IDS decomposition string (e.g. 忄 in "⿰忄兌").
+const COMPONENT_PATTERN = /[\u3400-\u4DBF\u4E00-\u9FFF\u2E80-\u2EFF\uF900-\uFAFF]/g;
+
 function requireEnvironmentVariable(name: string): string {
   const value = process.env[name];
   if (!value) throw new Error(`Missing required environment variable: ${name}`);
@@ -168,10 +181,70 @@ async function verifyPacks(sourceRows: DBCharacterBreakdown[]): Promise<void> {
   console.log(`Verified ${exportedCharacters.length} breakdowns across ${SHARD_COUNT} shards`);
 }
 
+async function writeUsedAsIndex(rows: DBCharacterBreakdown[]): Promise<void> {
+  // Inverted index: component -> characters whose decomposition contains it.
+  // Mirrors the old server-side `decomposition LIKE '%component%'` semantics
+  // so the breakdown view stops hitting the database for "used in" lists.
+  const usedAs = new Map<string, Set<string>>();
+
+  for (const row of rows) {
+    if (!row.decomposition) continue;
+    const components = new Set(row.decomposition.match(COMPONENT_PATTERN) || []);
+    for (const component of components) {
+      const list = usedAs.get(component) || new Set<string>();
+      list.add(row.character);
+      usedAs.set(component, list);
+    }
+  }
+
+  const entries: Record<string, string[]> = {};
+  for (const [component, characters] of usedAs) {
+    entries[component] = [...characters].sort();
+  }
+
+  const content = `${JSON.stringify({
+    schemaVersion: SCHEMA_VERSION,
+    version: hash(JSON.stringify(entries)).slice(0, 16),
+    generatedAt: new Date().toISOString(),
+    componentCount: Object.keys(entries).length,
+    entryCount: Object.values(entries).reduce((total, list) => total + list.length, 0),
+    entries,
+  })}\n`;
+
+  await writeFile(resolve(OUTPUT_DIRECTORY, 'used-as.json'), content, 'utf8');
+  console.log(`Wrote used-as index: ${Object.keys(entries).length} components, ${Object.values(entries).reduce((total, list) => total + list.length, 0)} entries`);
+}
+
+async function verifyUsedAsIndex(sourceRows: DBCharacterBreakdown[]): Promise<void> {
+  const usedAs = JSON.parse(
+    await readFile(resolve(OUTPUT_DIRECTORY, 'used-as.json'), 'utf8'),
+  ) as UsedAsPack;
+
+  const sourceCharacters = new Set(sourceRows.map((row) => row.character));
+  const entries = Object.values(usedAs.entries);
+
+  if (usedAs.schemaVersion !== SCHEMA_VERSION) {
+    throw new Error('used-as index has the wrong schema version');
+  }
+  if (entries.some((list) => list.some((character) => !sourceCharacters.has(character)))) {
+    throw new Error('used-as index references unknown characters');
+  }
+  if (usedAs.componentCount !== Object.keys(usedAs.entries).length) {
+    throw new Error('used-as index component count mismatch');
+  }
+  if (usedAs.entryCount !== entries.reduce((total, list) => total + list.length, 0)) {
+    throw new Error('used-as index entry count mismatch');
+  }
+
+  console.log(`Verified used-as index (${usedAs.componentCount} components)`);
+}
+
 async function main(): Promise<void> {
   const rows = await fetchAllBreakdowns();
   await writePacks(rows);
+  await writeUsedAsIndex(rows);
   await verifyPacks(rows);
+  await verifyUsedAsIndex(rows);
 }
 
 main().catch((error) => {

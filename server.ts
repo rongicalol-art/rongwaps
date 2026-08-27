@@ -2,44 +2,31 @@ import express from "express";
 import rateLimit from "express-rate-limit";
 import path from "path";
 import { createServer as createViteServer } from "vite";
-import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
 import { MsEdgeTTS, OUTPUT_FORMAT } from "msedge-tts";
-import { pregeneratedWordMnemonics, pregeneratedCharMnemonics } from "./src/data/pregeneratedMnemonics.js";
 import { supabase } from "./src/services/supabaseClient.js";
 
-// Load .env into process.env so server-side code can read GEMINI_API_KEY
+// Load local server configuration.
 dotenv.config();
+
+// ─── TTS provider configuration ─────────────────────────────────────
+// MiniMax Speech (https://platform.minimax.io) — high-quality Mandarin
+// TTS. Used when MINIMAX_API_KEY is set; otherwise the built-in
+// msedge-tts (Microsoft Edge Read Aloud) voices are used unchanged.
+const MINIMAX_API_KEY = process.env.MINIMAX_API_KEY || "";
+const MINIMAX_BASE_URL = (process.env.MINIMAX_BASE_URL || "https://api.minimax.io").replace(/\/+$/, "");
+const MINIMAX_TTS_MODEL = process.env.MINIMAX_TTS_MODEL || "speech-02-hd";
+
+// Client-facing voice names (TTS_VOICES) → MiniMax system voice IDs.
+// Only zh-CN voices are mapped: MiniMax has no Taiwanese (zh-TW) voices,
+// so zh-TW requests continue to use msedge-tts.
+const MINIMAX_VOICE_MAP: Record<string, string> = {
+  "zh-CN-XiaoxiaoNeural": "female-tianmei", // warm, clear female
+  "zh-CN-YunxiNeural": "male-qn-qingse",    // young, energetic male
+};
 
 const app = express();
 const PORT = 3000;
-
-interface MnemonicPart {
-  char: string;
-  definition?: string;
-}
-
-interface GenerateMnemonicBody {
-  char?: string;
-  word?: string;
-  definition?: string;
-  components?: MnemonicPart[];
-  charactersInfo?: MnemonicPart[];
-}
-
-function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  if (typeof error === 'object' && error !== null && 'message' in error) {
-    return typeof error.message === 'string' ? error.message : '';
-  }
-  return typeof error === 'string' ? error : '';
-}
-
-function getErrorStatus(error: unknown): unknown {
-  return typeof error === 'object' && error !== null && 'status' in error
-    ? error.status
-    : undefined;
-}
 
 app.use(express.json());
 
@@ -54,159 +41,10 @@ const apiLimiter = rateLimit({
 
 const paidApiLimiter = rateLimit({
   windowMs: 60 * 1000,
-  limit: 10, // Gemini generation + Edge TTS synthesis costs money per call
+  limit: 10, // Edge TTS synthesis is rate-limited separately.
   standardHeaders: true,
   legacyHeaders: false,
   message: { error: "Too many requests. Try again later." },
-});
-
-// Dedupe concurrent mnemonic generation for the same content so two tabs
-// requesting the same char/word don't pay Gemini twice.
-const mnemonicInFlight = new Map<string, Promise<{ mnemonic: string; usage?: unknown }>>();
-
-// Initialize Google Gen AI client with server-side API Key
-const apiKey = process.env.CUSTOM_GEMINI_KEY || process.env.GEMINI_API_KEY;
-const aiClient = apiKey ? new GoogleGenAI({
-  apiKey,
-  httpOptions: {
-    headers: {
-      'User-Agent': 'aistudio-build',
-    }
-  }
-}) : null;
-
-// Ensure we fail-safely or lazily report if API key is not present when requested
-function getAIClient() {
-  if (!aiClient) {
-    throw new Error("GEMINI_API_KEY environment variable is required server-side.");
-  }
-  return aiClient;
-}
-
-// ─── Single mnemonic generation endpoint ───────────────────────────────
-// Handles both characters and words.
-// Body: { char?, word?, pinyin?, definition?, components?, charactersInfo? }
-// Response: { mnemonic, usage }
-app.post("/api/generate-mnemonic", paidApiLimiter, async (req: express.Request, res: express.Response) => {
-  try {
-    const authHeader = req.headers.authorization;
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      return res.status(401).json({ error: "Missing or invalid authorization token." });
-    }
-    const token = authHeader.split(" ")[1];
-    const { data: { user }, error: authError } = await supabase.auth.getUser(token);
-    
-    if (authError || !user) {
-      return res.status(401).json({ error: "Unauthorized request." });
-    }
-
-    const { char, word, definition, components, charactersInfo } = req.body as GenerateMnemonicBody;
-
-    // Determine mode: word or character
-    const isWord = !!word;
-    const text = isWord ? word : char;
-
-    if (!text) {
-      return res.status(400).json({ error: "Missing 'char' or 'word' in request body" });
-    }
-
-    // Check local pregenerated map first (saves API quota)
-    if (isWord && pregeneratedWordMnemonics[text]) {
-      console.log(`Using pre-generated mnemonic for word: ${text}`);
-      return res.json({ mnemonic: pregeneratedWordMnemonics[text] });
-    }
-    if (!isWord && pregeneratedCharMnemonics[text]) {
-      console.log(`Using pre-generated mnemonic for char: ${text}`);
-      return res.json({ mnemonic: pregeneratedCharMnemonics[text] });
-    }
-
-    const ai = getAIClient();
-    const model = "gemini-2.5-flash-lite";
-
-    let prompt: string;
-    let systemInstruction: string;
-
-    if (isWord) {
-      // ── Word mnemonic ───────────────────────────────────────────────
-      let charactersDetails = "";
-      if (charactersInfo && charactersInfo.length > 0) {
-        charactersDetails = charactersInfo.map((c) => {
-          const shortDef = (c.definition || "unknown").split(/[;,/]/)[0].trim();
-          return `${c.char}/${shortDef}`;
-        }).join(", ");
-      }
-
-      const shortDef = definition ? definition.split(/[;,/]/)[0].trim() : "";
-      prompt = `${text} | ${shortDef} | ${charactersDetails}`;
-
-      systemInstruction = `Write a 1-sentence mnemonic for this Chinese word. Rules:
-1. Create a memory bridge connecting the Parts to explain the Meaning.
-2. You MUST bold every part's English meaning and write its Chinese character in parentheses: **meaning** (character). Bold EVERY part mentioned.
-3. End with: ", so together means **[Mean]** ([Word])."
-Example: A **mouth** (口) **begging** (乞) for food, so together means **to eat** (吃).`;
-    } else {
-      // ── Character mnemonic ──────────────────────────────────────────
-      let componentsInfo = "";
-      if (components && components.length > 0) {
-        componentsInfo = components.map((c) => {
-          const shortDef = (c.definition || "unknown").split(/[;,/]/)[0].trim();
-          return `${c.char}/${shortDef}`;
-        }).join(", ");
-      }
-
-      const shortDef = definition ? definition.split(/[;,/]/)[0].trim() : "";
-      prompt = `${text} | ${shortDef} | ${componentsInfo}`;
-
-      if (components && components.length > 1) {
-        systemInstruction = `Write a 1-sentence mnemonic for this Chinese character. Rules:
-1. Create a memory bridge connecting the Parts to explain the Meaning.
-2. You MUST bold every part's English meaning and write its Chinese character in parentheses: **meaning** (character). Bold EVERY part mentioned.
-3. End with: ", so this character means **[Mean]** ([Char])."
-Example: A **person** (亻) resting against a **tree** (木), so this character means **to rest** (休).`;
-      } else {
-        systemInstruction = `Write a 1-sentence origin/visual mnemonic for this Chinese character. Rules:
-1. Explain how the visual shape or origin relates to its meaning.
-2. Bold the core English meaning: **meaning**.
-3. End with: ", so this character means **[Mean]** ([Char])."
-Example: Three drops of water flowing downward, so this character means **water** (水).`;
-      }
-    }
-
-    // Dedupe concurrent generation for the same content (two tabs → one
-    // Gemini call). Keyed by content type + text to keep char/word distinct.
-    const generationKey = `${isWord ? 'word' : 'char'}:${text}`;
-    let inFlight = mnemonicInFlight.get(generationKey);
-    if (!inFlight) {
-      inFlight = (async () => {
-        const aiResponse = await ai.models.generateContent({
-          model,
-          contents: prompt,
-          config: { systemInstruction, temperature: 0.2 }
-        });
-        const usage = aiResponse.usageMetadata;
-        console.log(`[Token Usage] ${isWord ? 'Word' : 'Char'}: "${text}", Prompt: ${usage?.promptTokenCount}, Output: ${usage?.candidatesTokenCount}, Total: ${usage?.totalTokenCount}`);
-        return {
-          mnemonic: aiResponse.text?.trim() || "Could not generate a mnemonic at this time.",
-          usage,
-        };
-      })().finally(() => {
-        mnemonicInFlight.delete(generationKey);
-      });
-      mnemonicInFlight.set(generationKey, inFlight);
-    } else {
-      console.log(`Reusing in-flight mnemonic generation for: ${text}`);
-    }
-
-    const result = await inFlight;
-    res.json({ mnemonic: result.mnemonic, usage: result.usage });
-  } catch (error: unknown) {
-    console.error("Backend Error /api/generate-mnemonic:", error);
-    const message = getErrorMessage(error);
-    if (getErrorStatus(error) === "RESOURCE_EXHAUSTED" || message.includes("exceeded")) {
-      return res.status(200).json({ mnemonic: "Generating online failed (Quota Over). Consider contributing to the local pre-generated dictionary file!" });
-    }
-    res.status(500).json({ error: message || "Failed to generate mnemonic" });
-  }
 });
 
  // ─── Audio proxy endpoint (bypasses CORS for Safari) ──────────────────
@@ -276,7 +114,63 @@ function sanitizeTtsText(text: string): string {
   return text.trim().slice(0, 500);
 }
 
+async function synthesizeMiniMax(text: string, voiceName: string): Promise<Buffer> {
+  // POST /v1/t2a_v2 — synchronous synthesis, hex-encoded MP3 in the
+  // response body. See https://platform.minimax.io/docs/api-reference/speech-t2a-http
+  const voiceId = MINIMAX_VOICE_MAP[voiceName] || MINIMAX_VOICE_MAP["zh-CN-XiaoxiaoNeural"]!;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 30_000);
+  try {
+    const response = await fetch(`${MINIMAX_BASE_URL}/v1/t2a_v2`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${MINIMAX_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: MINIMAX_TTS_MODEL,
+        text,
+        stream: false,
+        language_boost: "auto",
+        output_format: "hex",
+        voice_setting: { voice_id: voiceId, speed: 1, vol: 1, pitch: 0 },
+        audio_setting: { sample_rate: 32000, bitrate: 128000, format: "mp3", channel: 1 },
+      }),
+      signal: controller.signal,
+    });
+    if (!response.ok) {
+      throw new Error(`MiniMax TTS HTTP ${response.status}`);
+    }
+    const payload = await response.json() as {
+      data?: { audio?: string; status?: number };
+      base_resp?: { status_code?: number; status_msg?: string };
+    };
+    if (payload.base_resp && payload.base_resp.status_code !== 0) {
+      throw new Error(`MiniMax TTS API error ${payload.base_resp.status_code}: ${payload.base_resp.status_msg}`);
+    }
+    const hexAudio = payload.data?.audio;
+    if (!hexAudio) {
+      throw new Error("MiniMax TTS returned no audio");
+    }
+    return Buffer.from(hexAudio, "hex");
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
 async function synthesizeNeural(text: string, voiceName: string): Promise<Buffer> {
+  // Preferred provider: MiniMax Speech for zh-CN voices when configured.
+  // Falls back to msedge-tts on any failure so playback never breaks.
+  if (MINIMAX_API_KEY && voiceName in MINIMAX_VOICE_MAP) {
+    try {
+      return await synthesizeMiniMax(text, voiceName);
+    } catch (error) {
+      console.warn(
+        `MiniMax TTS failed (${voiceName}); falling back to msedge-tts:`,
+        (error as Error).message,
+      );
+    }
+  }
   const voice = TTS_VOICES[voiceName] || TTS_VOICES["zh-CN-XiaoxiaoNeural"]!;
   const tts = new MsEdgeTTS();
   await tts.setMetadata(voice.name, OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
@@ -305,8 +199,9 @@ async function getTtsAudio(text: string, voiceName: string): Promise<Buffer> {
     const audio = await synthesizeNeural(text, voiceName);
     // Best-effort cache write; never block playback on failure.
     // Plain insert (no upsert): the storage INSERT policy allows anon writes
-    // under tts/, while upsert (INSERT ... ON CONFLICT DO UPDATE) requires an
-    // UPDATE policy that anon lacks — so upserts 403 and the cache never lands.
+    // under tts/. Note the anon UPDATE policy was removed in migration
+    // 20260816_security_hardening.sql, so upsert would 403 and the cache
+    // would never land — keep this as a plain INSERT.
     await supabase.storage
       .from(TTS_AUDIO_BUCKET)
       .upload(key, audio, { contentType: "audio/mpeg" })
@@ -322,7 +217,26 @@ async function getTtsAudio(text: string, voiceName: string): Promise<Buffer> {
   }
 }
 
+// Require a valid Supabase session on paid synthesis endpoints so anonymous
+// callers cannot burn the TTS provider budget (MiniMax/Edge). Guests keep
+// browser-speech fallback; only authenticated users get neural audio.
+async function requireAuth(req: express.Request, res: express.Response): Promise<boolean> {
+  const authHeader = req.headers.authorization;
+  const token = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
+  if (!token) {
+    res.status(401).json({ error: "Unauthorized" });
+    return false;
+  }
+  const { data: { user }, error } = await supabase.auth.getUser(token);
+  if (error || !user) {
+    res.status(401).json({ error: "Unauthorized" });
+    return false;
+  }
+  return true;
+}
+
 app.post("/api/tts", paidApiLimiter, async (req: express.Request, res: express.Response) => {
+  if (!(await requireAuth(req, res))) return;
   try {
     const { text, voice } = req.body as { text?: string; voice?: string };
     const cleanText = sanitizeTtsText(text || "");
@@ -403,7 +317,28 @@ async function bootstrap() {
   } else {
     console.log("Bootstrap: Serving static build files from dist/ directory...");
     const distPath = path.join(process.cwd(), "dist");
-    app.use(express.static(distPath));
+    // Cache policy (Cloudflare already applies brotli compression):
+    //  - /assets/* are content-hashed by Vite -> cache forever.
+    //  - Versioned content packs (/data), stroke data (/hanzi-data) and the
+    //    dictionary trie are large and change only on deploys -> cache an
+    //    hour at browsers/edge; IndexedDB keys carry the real versioning.
+    //  - Everything else (index.html, manifest) stays revalidate-every-time.
+    const distDataDir = path.join(distPath, "data");
+    const distHanziDir = path.join(distPath, "hanzi-data");
+    const assetsMarker = `${path.sep}assets${path.sep}`;
+    app.use(express.static(distPath, {
+      setHeaders(res: express.Response, filePath: string) {
+        if (filePath.includes(assetsMarker)) {
+          res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+        } else if (
+          filePath.startsWith(distDataDir)
+          || filePath.startsWith(distHanziDir)
+          || path.basename(filePath) === "dictionary_trie.json"
+        ) {
+          res.setHeader("Cache-Control", "public, max-age=3600");
+        }
+      },
+    }));
     app.get("*", (req: express.Request, res: express.Response) => {
       res.sendFile(path.join(distPath, "index.html"));
     });

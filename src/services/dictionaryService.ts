@@ -2,72 +2,19 @@ import { supabase } from './supabaseClient';
 import { DBDictionaryEntry, DBDictionaryRow } from '../types/database';
 import { dictionaryCache, dictionarySearchCache } from '../utils/cache';
 import { timeDataRequest } from '../utils/requestTiming';
+import { sanitizeDictionaryDefinitions } from '../utils/dictionaryDefinitions';
+import { fetchDictionaryRowsFromPacks } from './dictionaryPackService';
 
-const DICTIONARY_COLUMNS = 'traditional,simplified,pinyin_accented,pinyin_flat,definitions';
+const DICTIONARY_COLUMNS = 'traditional,simplified,pinyin_accented,pinyin_flat,definitions,frequency_score,curriculum_level';
 
-// Local Dictionary Trie Cache for O(1) synchronous word validation
-export type LocalDictionaryRow = readonly [
-  id: number,
-  traditional: string,
-  simplified: string,
-  pinyinFlat: string,
-  pinyinAccented: string,
-  definitions: unknown,
-];
+const remoteSearchPromises = new Map<string, Promise<unknown[]>>();
 
-let localDictionaryData: LocalDictionaryRow[] | null = null;
-let validWordsSet: Set<string> | null = null;
-let loadingDictionaryPromise: Promise<void> | null = null;
-
-export async function prefetchLocalDictionary(): Promise<void> {
-  if (localDictionaryData) return;
-  if (loadingDictionaryPromise) return loadingDictionaryPromise;
-
-  loadingDictionaryPromise = fetch('/dictionary_trie.json')
-    .then(async (res) => {
-      const contentType = res.headers.get("content-type");
-      if (contentType && contentType.includes("text/html")) {
-        throw new Error('Fallback returning HTML instead of JSON trie');
-      }
-      if (!res.ok) throw new Error('File not found');
-      return res.json();
-    })
-    .then((data: unknown) => {
-      localDictionaryData = Array.isArray(data)
-        ? data.filter((row): row is LocalDictionaryRow => (
-            Array.isArray(row)
-            && typeof row[0] === 'number'
-            && typeof row[1] === 'string'
-            && typeof row[2] === 'string'
-            && typeof row[3] === 'string'
-            && typeof row[4] === 'string'
-            && row.length >= 6
-          ))
-        : [];
-      validWordsSet = new Set();
-      // data format: [id, trad, simp, pinyin_flat, pinyin_acc, defs]
-      for (const row of localDictionaryData) {
-        if (row[1]) validWordsSet.add(row[1]);
-        if (row[2]) validWordsSet.add(row[2]);
-      }
-    })
-    .catch((err) => {
-      console.warn("Could not prefetch local dictionary:", err);
-    });
-
-  return loadingDictionaryPromise;
-}
-
-export function getLocalDictionaryData(): LocalDictionaryRow[] | null {
-  return localDictionaryData;
-}
-
-/**
- * Returns true if word exists in local JSON, false if definitely not, and null if data boundary hasn't loaded yet.
- */
-export function isValidChineseWordLocal(word: string): boolean | null {
-  if (!validWordsSet) return null;
-  return validWordsSet.has(word);
+export interface DictionaryContainingWord {
+  word: string;
+  traditional: string;
+  simplified: string;
+  pinyin: string;
+  definition: string;
 }
 
 /**
@@ -81,26 +28,92 @@ export async function executeRemoteSearch(queryNormalized: string): Promise<unkn
   if (dictionarySearchCache.has(queryNormalized)) {
     return dictionarySearchCache.get<unknown[]>(queryNormalized) || [];
   }
-  
-  try {
-    const { data, error } = await timeDataRequest(
-      'dictionary search',
-      () => supabase.rpc('search_dictionary', {
-        search_query: queryNormalized,
-        result_limit: 30
-      }),
-    );
-    if (error) throw error;
-    
-    if (data) {
-       dictionarySearchCache.set(queryNormalized, data);
-    }
-    
-    return data || [];
-  } catch (err) {
-    console.error('SuperSearch RPC Failed:', err);
-    throw err;
+
+  if (remoteSearchPromises.has(queryNormalized)) {
+    return remoteSearchPromises.get(queryNormalized)!;
   }
+
+  const request = (async () => {
+    try {
+      const { data, error } = await timeDataRequest(
+        'dictionary search',
+        () => supabase.rpc('search_dictionary', {
+          search_query: queryNormalized,
+          result_limit: 30
+        }),
+      );
+      if (error) throw error;
+
+      if (data) dictionarySearchCache.set(queryNormalized, data);
+      return data || [];
+    } catch (err) {
+      console.error('SuperSearch RPC Failed:', err);
+      throw err;
+    } finally {
+      remoteSearchPromises.delete(queryNormalized);
+    }
+  })();
+
+  remoteSearchPromises.set(queryNormalized, request);
+  return request;
+}
+
+function mapContainingWord(row: unknown, character: string): DictionaryContainingWord | null {
+  if (!row || typeof row !== 'object') return null;
+  const record = row as Record<string, unknown>;
+  const traditional = typeof record.traditional === 'string' ? record.traditional : '';
+  const simplified = typeof record.simplified === 'string' ? record.simplified : traditional;
+  const word = traditional.includes(character) ? traditional : simplified.includes(character) ? simplified : '';
+  if (!word || word === character || Array.from(word).length < 2) return null;
+
+  const pinyin = typeof record.pinyin_accented === 'string'
+    ? record.pinyin_accented
+    : typeof record.pinyin_flat === 'string'
+      ? record.pinyin_flat
+      : '';
+  const definition = sanitizeDictionaryDefinitions(record.definitions).definitions[0] || '';
+  return { word, traditional, simplified, pinyin, definition };
+}
+
+/**
+ * Returns a bounded set of dictionary words containing a character, using the
+ * server-side search (cached per query). The character breakdown view no longer
+ * keeps a full local dictionary copy in memory.
+ */
+export async function searchDictionaryWordsContaining(
+  character: string,
+  limit = 30,
+): Promise<DictionaryContainingWord[]> {
+  const query = character.trim();
+  if (Array.from(query).length !== 1) return [];
+
+  let rows: unknown[];
+  try {
+    rows = await executeRemoteSearch(query.toLowerCase());
+  } catch {
+    return [];
+  }
+
+  const matches = new Map<string, DictionaryContainingWord>();
+  for (const row of rows) {
+    const match = mapContainingWord(row, query);
+    if (match && !matches.has(match.word)) matches.set(match.word, match);
+  }
+
+  return [...matches.values()]
+    .sort((a, b) => Array.from(a.word).length - Array.from(b.word).length || a.word.localeCompare(b.word))
+    .slice(0, Math.max(0, limit));
+}
+
+function mapRowToEntry(row: DBDictionaryRow): DBDictionaryEntry {
+  return {
+    traditional: row.traditional,
+    simplified: row.simplified,
+    pinyin: [(row.pinyin_accented || row.pinyin_flat || '')],
+    definitions: row.definitions,
+    frequency_score: row.frequency_score,
+    curriculum_level: row.curriculum_level,
+  };
 }
 
 export async function getDictionaryEntries(word: string): Promise<DBDictionaryEntry[]> {
@@ -115,7 +128,16 @@ export async function getDictionaryEntries(word: string): Promise<DBDictionaryEn
   }
 
   try {
-    // 2. Query Supabase (search both simplified AND traditional columns)
+    // 2. Prefer the static shard packs (IndexedDB-cached, zero network)
+    const packed = await fetchDictionaryRowsFromPacks([trimmedWord]);
+    const packedRows = packed.get(trimmedWord);
+    if (packedRows && packedRows.length > 0) {
+      const results = packedRows.map(mapRowToEntry);
+      dictionaryCache.set(trimmedWord, results);
+      return results;
+    }
+
+    // 3. Fall back to Supabase (search both simplified AND traditional columns)
     const { data, error } = await timeDataRequest(
       'dictionary exact lookup',
       () => supabase
@@ -129,14 +151,9 @@ export async function getDictionaryEntries(word: string): Promise<DBDictionaryEn
       return [];
     }
 
-    // 3. Cache and return mapping to new schema
+    // 4. Cache and return
     const rows = (data || []) as DBDictionaryRow[];
-    const results = rows.map((row) => ({
-      traditional: row.traditional,
-      simplified: row.simplified,
-      pinyin: [(row.pinyin_accented || row.pinyin_flat || '')],
-      definitions: row.definitions
-    })) as DBDictionaryEntry[];
+    const results = rows.map(mapRowToEntry);
     dictionaryCache.set(trimmedWord, results);
     return results;
   } catch (err) {
@@ -167,58 +184,62 @@ export async function getDictionaryEntriesBatch(words: string[]): Promise<Map<st
 
   if (toFetch.length === 0) return result;
 
-  try {
-    // 2. Fetch missing words in batches of up to 50, concurrently
-    const chunkSize = 50;
-    const fetchPromises = [];
-    
-    for (let i = 0; i < toFetch.length; i += chunkSize) {
-      const chunk = toFetch.slice(i, i + chunkSize);
-      const formattedChunk = chunk.map(w => `"${w.replace(/"/g, '\\"')}"`).join(',');
-      fetchPromises.push(
-        timeDataRequest(
-          `dictionary batch (${chunk.length} words)`,
-          () => supabase
-            .from('dictionary')
-            .select(DICTIONARY_COLUMNS)
-            .or(`traditional.in.(${formattedChunk}),simplified.in.(${formattedChunk})`),
-        )
-          .then(({ data, error }) => {
-             if (error) {
-               console.error(`Supabase error fetching dictionary entries:`, error);
-               return null;
-             }
-             return { chunk, data };
-          })
-      );
+  // 2. Prefer the static shard packs for the missing words (bounded batch)
+  const packedRows = await fetchDictionaryRowsFromPacks(toFetch);
+  const dbWords: string[] = [];
+  for (const word of toFetch) {
+    const rows = packedRows.get(word);
+    if (rows && rows.length > 0) {
+      const entry = mapRowToEntry(rows[0]);
+      dictionaryCache.set(word, [entry]);
+      result.set(word, entry);
+    } else {
+      dbWords.push(word);
     }
+  }
+
+  // 3. Fetch remaining words from Supabase in batches of up to 50, concurrently
+  const chunkSize = 50;
+  const fetchPromises = [];
+  
+  for (let i = 0; i < dbWords.length; i += chunkSize) {
+    const chunk = dbWords.slice(i, i + chunkSize);
+    const formattedChunk = chunk.map(w => `"${w.replace(/"/g, '\\"')}"`).join(',');
+    fetchPromises.push(
+      timeDataRequest(
+        `dictionary batch (${chunk.length} words)`,
+        () => supabase
+          .from('dictionary')
+          .select(DICTIONARY_COLUMNS)
+          .or(`traditional.in.(${formattedChunk}),simplified.in.(${formattedChunk})`),
+      )
+        .then(({ data, error }) => {
+           if (error) {
+             console.error(`Supabase error fetching dictionary entries:`, error);
+             return null;
+           }
+           return { chunk, data };
+        })
+    );
+  }
+  
+  const resultsArray = await Promise.all(fetchPromises);
+  
+  for (const res of resultsArray) {
+    if (!res || !res.data) continue;
+    const { chunk, data } = res;
     
-    const resultsArray = await Promise.all(fetchPromises);
-    
-    for (const res of resultsArray) {
-      if (!res || !res.data) continue;
-      const { chunk, data } = res;
-      
-      if (data) {
-        // Cache them and map them
-        for (const word of chunk) {
-          const row = data.find(d => d.traditional === word || d.simplified === word);
-          if (row) {
-             const mappedEntry = {
-                traditional: row.traditional,
-                simplified: row.simplified,
-                pinyin: [(row.pinyin_accented || row.pinyin_flat || '')],
-                definitions: row.definitions
-             };
-            dictionaryCache.set(word, [mappedEntry as DBDictionaryEntry]);
-            result.set(word, mappedEntry as DBDictionaryEntry);
-          }
+    if (data) {
+      // Cache them and map them
+      for (const word of chunk) {
+        const row = data.find(d => d.traditional === word || d.simplified === word);
+        if (row) {
+          const mappedEntry = mapRowToEntry(row);
+          dictionaryCache.set(word, [mappedEntry]);
+          result.set(word, mappedEntry);
         }
       }
     }
-    return result;
-  } catch (err) {
-    console.error(`Unexpected error fetching dictionary entries in batch:`, err);
-    return result;
   }
+  return result;
 }

@@ -18,26 +18,25 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
   grammarNumber: 4,
   titleTraditional: '呢',
   titleEnglish: 'Use 呢 to Say “And You?”',
-  learnerPromise: 'Return an understood question without repeating the whole sentence.',
+  learnerPromise: 'Ask the same question back with 呢, without repeating the whole sentence.',
   printedPages: [44, 45],
   audioReference: '01-2-3',
   explanation:
-    'When the topic is clear, 呢 passes the same question to another person. Say the new person or thing plus 呢; the listener recovers the missing question from context.',
+    'When everyone already knows the question, 呢 passes it to another person. Say the new person or thing, then add 呢.',
   focusTerms: ['呢'],
   teachingGlossary: [
-    token('g4-glossary-ne', '呢', 'ne', 'return-question particle; “and you?” when the earlier question is understood'),
-    token('g4-glossary-ma', '嗎', 'ma', 'yes/no question particle that creates a new question', { simplified: '吗' }),
-    token('g4-glossary-ni', '你', 'nǐ', 'you; the new person receiving the understood question'),
+    token('g4-glossary-ne', '呢', 'ne', 'ending word that returns the question; “and you?”'),
+    token('g4-glossary-ma', '嗎', 'ma', 'yes/no question ending word; makes a new question', { simplified: '吗' }),
+    token('g4-glossary-ni', '你', 'nǐ', 'you; the person who receives the question'),
   ],
   pattern: 'Statement, + N + 呢',
   patternColumns: ['Statement', 'N', '呢'],
   patternAccentColumn: 2,
-  patternMobileLayout: 'leading-wide',
   discoveryLab: {
     title: '呢 works like a conversation echo',
     description:
-      'The short ending stays the same, but the understood question changes with the sentence immediately before it.',
-    prompt: 'What topic are the speakers sharing?',
+      'The short ending word stays the same. The question it repeats changes with what was just said.',
+    prompt: 'What are the speakers talking about?',
     choices: [
       {
         id: 'g4-discover-country',
@@ -46,7 +45,7 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
         simplified: '我是日本人，你呢？',
         pinyin: 'Wǒ shì Rìběn rén, nǐ ne?',
         english: 'I am Japanese. And you?',
-        note: 'The hidden question is “Which country are you from?” The country topic carries across to 你.',
+        note: 'The hidden question is “Which country are you from?” 呢 passes that question to 你.',
       },
       {
         id: 'g4-discover-name',
@@ -55,7 +54,7 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
         simplified: '我叫友美，你呢？',
         pinyin: 'Wǒ jiào Yǒuměi, nǐ ne?',
         english: 'My name is Youmei. And you?',
-        note: 'Now the hidden question is “What is your name?” 呢 borrows the name topic instead of repeating it.',
+        note: 'Now the hidden question is “What is your name?” 呢 keeps that question without repeating it.',
       },
       {
         id: 'g4-discover-like',
@@ -64,7 +63,7 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
         simplified: '我喜欢台湾，你呢？',
         pinyin: 'Wǒ xǐhuān Táiwān, nǐ ne?',
         english: 'I like Taiwan. How about you?',
-        note: 'The listener understands “Do you like Taiwan?” because 喜歡臺灣 is the active topic.',
+        note: 'The listener knows the question is “Do you like Taiwan?” because 喜歡臺灣 was just said.',
       },
       {
         id: 'g4-discover-repair',
@@ -73,11 +72,11 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
         simplified: '你呢？',
         pinyin: 'Nǐ ne?',
         english: 'And you?',
-        note: 'This can work only when the previous sentence makes the missing question obvious. Without context, 呢 has nothing to echo.',
+        note: 'This works only when the last sentence makes the question clear. Without that, 呢 has nothing to repeat.',
       },
     ],
     takeaway:
-      'Think of 呢 as conversational copy-and-paste: keep the active question, change the person, and avoid repeating everything.',
+      'Think of 呢 as a shortcut: keep the active question, change the person, and do not repeat the whole sentence.',
   },
   patternRows: [
     {
@@ -92,7 +91,7 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
       ],
       grammar: [token('g4-p1-you', '你', 'nǐ', 'you')],
       complement: [
-        token('g4-p1-ne', '呢', 'ne', 'return-question particle', {
+        token('g4-p1-ne', '呢', 'ne', 'ending word that returns the question', {
           suffix: '？',
         }),
       ],
@@ -107,7 +106,7 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
       ],
       grammar: [token('g4-p2-zhongming', '中明', 'Zhōngmíng', 'Zhongming')],
       complement: [
-        token('g4-p2-ne', '呢', 'ne', 'return-question particle', {
+        token('g4-p2-ne', '呢', 'ne', 'ending word that returns the question', {
           suffix: '？',
         }),
       ],
@@ -116,7 +115,7 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
   ],
   contrast: {
     title: '嗎 or 呢?',
-    description: 'Both appear at the end of questions, but they do different conversational jobs.',
+    description: 'Both sit at the end of questions, but they do different jobs.',
     items: [
       {
         id: 'g4-contrast-ma',
@@ -130,7 +129,7 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
       },
       {
         id: 'g4-contrast-ne',
-        label: 'Return the established question',
+        label: 'Ask the same question back',
         traditional: '我是日本人，你呢？',
         pinyin: 'Wǒ shì Rìběn rén, nǐ ne?',
         english: 'I am Japanese. How about you?',
@@ -140,7 +139,7 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
     ],
     microChecks: [
       {
-        prompt: 'The first speaker already said where they are from. Which particle returns that question?',
+        prompt: 'The first speaker already said their country. Which ending word asks it back?',
         traditional: 'A：我是美國人，你___？',
         simplified: 'A：我是美国人，你___？',
         options: [
@@ -148,10 +147,10 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
           { id: 'g4-check-1-ne', traditional: '呢' },
         ],
         answerId: 'g4-check-1-ne',
-        explanation: '呢 means “and you?” because the country question is already understood.',
+        explanation: '呢 means “and you?” because the country question was already asked.',
       },
       {
-        prompt: 'No nationality question has been asked yet. Which particle creates a new yes/no question?',
+        prompt: 'No country question has been asked yet. Which ending word makes a new yes/no question?',
         traditional: '你是日本人___？',
         simplified: '你是日本人___？',
         options: [
@@ -160,6 +159,84 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
         ],
         answerId: 'g4-check-2-ma',
         explanation: '嗎 turns the complete statement into a new yes/no question.',
+      },
+    ],
+  },
+  confusion: {
+    title: "Don't mix these up",
+    items: [
+      {
+        id: 'g4-confusion-ma-vs-ne-return',
+        question: 'Someone asks me first — do I add 嗎 to ask them back?',
+        answer: 'No — use 呢. It sends the same question back. 嗎 would start a brand-new question.',
+        wrongTraditional: '我是臺灣人，你嗎？',
+        wrongSimplified: '我是台湾人，你吗？',
+        right: {
+          traditional: '我是臺灣人，你呢？',
+          simplified: '我是台湾人，你呢？',
+          pinyin: 'Wǒ shì Táiwān rén, nǐ ne?',
+          english: 'I am Taiwanese. How about you?',
+          words: [
+            token('g4-cf1-wo', '我', 'wǒ', 'I'),
+            token('g4-cf1-shi', '是', 'shì', 'am'),
+            token('g4-cf1-taiwan', '臺灣', 'Táiwān', 'Taiwan', {
+              simplified: '台湾',
+            }),
+            token('g4-cf1-ren', '人', 'rén', 'person', { suffix: '，' }),
+            token('g4-cf1-ni', '你', 'nǐ', 'you'),
+            token('g4-cf1-ne', '呢', 'ne', 'how about; ending word that returns the question', {
+              suffix: '？',
+            }),
+          ],
+        },
+      },
+      {
+        id: 'g4-confusion-ne-new-question',
+        question: 'Can I end a brand-new question with 呢?',
+        answer: 'No. 呢 only repeats a question that was just asked. A new yes/no question ends with 嗎.',
+        wrongTraditional: '你喜歡臺灣呢？',
+        wrongSimplified: '你喜欢台湾呢？',
+        right: {
+          traditional: '你喜歡臺灣嗎？',
+          simplified: '你喜欢台湾吗？',
+          pinyin: 'Nǐ xǐhuān Táiwān ma?',
+          english: 'Do you like Taiwan?',
+          words: [
+            token('g4-cf2-ni', '你', 'nǐ', 'you'),
+            token('g4-cf2-xihuan', '喜歡', 'xǐhuān', 'to like', {
+              simplified: '喜欢',
+            }),
+            token('g4-cf2-taiwan', '臺灣', 'Táiwān', 'Taiwan', {
+              simplified: '台湾',
+            }),
+            token('g4-cf2-ma', '嗎', 'ma', 'yes/no question ending word', {
+              simplified: '吗',
+              suffix: '？',
+            }),
+          ],
+        },
+      },
+      {
+        id: 'g4-confusion-ne-carries-question',
+        question: 'My friend just said their name. Do I say the whole question again to ask them back?',
+        answer: 'No. 呢 already points back to the question just asked. Add 呢 after the person and stop.',
+        wrongTraditional: '你呢叫什麼名字？',
+        wrongSimplified: '你呢叫什么名字？',
+        right: {
+          traditional: '我叫友美，你呢？',
+          simplified: '我叫友美，你呢？',
+          pinyin: 'Wǒ jiào Yǒuměi, nǐ ne?',
+          english: 'My name is Youmei. How about you?',
+          words: [
+            token('g4-cf3-wo', '我', 'wǒ', 'I'),
+            token('g4-cf3-jiao', '叫', 'jiào', 'to be called'),
+            token('g4-cf3-youmei', '友美', 'Yǒuměi', 'Youmei', { suffix: '，' }),
+            token('g4-cf3-ni', '你', 'nǐ', 'you'),
+            token('g4-cf3-ne', '呢', 'ne', 'how about; ending word that returns the question', {
+              suffix: '？',
+            }),
+          ],
+        },
       },
     ],
   },
@@ -178,7 +255,7 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
           token('g4-e1-japan', '日本', 'Rìběn', 'Japan'),
           token('g4-e1-person-a', '人', 'rén', 'person', { suffix: '，' }),
           token('g4-e1-you', '你', 'nǐ', 'you'),
-          token('g4-e1-ne', '呢', 'ne', 'how about; return-question particle', {
+          token('g4-e1-ne', '呢', 'ne', 'how about; ending word that returns the question', {
             suffix: '？',
           }),
           token('g4-e1-i-b', '我', 'wǒ', 'I', { prefix: 'B：' }),
@@ -206,7 +283,7 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
           token('g4-e2-youmei', '友美', 'Yǒuměi', 'Youmei', { suffix: '，' }),
           token('g4-e2-li', '李', 'Lǐ', 'surname Li'),
           token('g4-e2-mister', '先生', 'xiānsheng', 'Mr.'),
-          token('g4-e2-ne', '呢', 'ne', 'how about; return-question particle', {
+          token('g4-e2-ne', '呢', 'ne', 'how about; ending word that returns the question', {
             suffix: '？',
           }),
           token('g4-e2-he', '他', 'tā', 'he', { prefix: 'B：' }),
@@ -230,11 +307,11 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
             prefix: 'A：',
           }),
           token('g4-e3-mrs', '太太', 'tàitai', 'Mrs.'),
-          token('g4-e3-very', '很', 'hěn', 'very; linking adverb'),
+          token('g4-e3-very', '很', 'hěn', 'very; strengthens the word after it'),
           token('g4-e3-tired-a', '累', 'lèi', 'tired', { suffix: '，' }),
           token('g4-e3-wang-b', '王', 'Wáng', 'surname Wang'),
           token('g4-e3-mister', '先生', 'xiānsheng', 'Mr.'),
-          token('g4-e3-ne', '呢', 'ne', 'how about; return-question particle', {
+          token('g4-e3-ne', '呢', 'ne', 'how about; ending word that returns the question', {
             suffix: '？',
           }),
           token('g4-e3-he', '他', 'tā', 'he', { prefix: 'B：' }),
@@ -255,7 +332,7 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
       label: '他 · 忙',
       pinyin: 'tā · máng',
       detail:
-        'The printed picture establishes that the office worker is busy; your own reply may be positive or negative.',
+        'The printed picture shows that the office worker is busy. Your own reply may be yes or no.',
     },
   ],
   questions: [
@@ -280,8 +357,8 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
         { id: 'g4-q1-you-ne', traditional: '你呢' },
         { id: 'g4-q1-you-ma', traditional: '你嗎', simplified: '你吗' },
       ],
-      correctFeedback: '呢 carries the understood question “Which country are you from?” over to the other speaker.',
-      repairFeedback: 'The country topic is already established, so return it with 你呢—not a new 嗎 question.',
+      correctFeedback: '呢 sends the question “Which country are you from?” to the other speaker.',
+      repairFeedback: 'The country question was already asked, so return it with 你呢 — not a new 嗎 question.',
     },
     {
       id: 'g4-question-2',
@@ -303,7 +380,7 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
         { id: 'g4-q2-called', traditional: '我叫姓王' },
       ],
       correctFeedback: 'Both surname replies are valid: 呢 asks you to answer the same surname question.',
-      repairFeedback: 'Answer the implied surname question with 我姓… .',
+      repairFeedback: 'Answer the hidden surname question with 我姓… .',
     },
     {
       id: 'g4-question-3',
@@ -314,7 +391,7 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
           type: 'blank',
           id: 'g4-q3-return',
           answer: '你呢',
-          hint: 'Ask how the other person compares.',
+          hint: 'Ask the other person the same question.',
         },
         { type: 'text', traditional: '？ B：' },
         {
@@ -322,7 +399,7 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
           id: 'g4-q3-reply',
           answer: '我很忙',
           acceptedAnswers: ['我不忙'],
-          hint: 'Choose either truthful state: busy or not busy.',
+          hint: 'Pick either answer: busy or not busy.',
         },
         { type: 'text', traditional: '。' },
       ],
@@ -332,8 +409,8 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
         { id: 'g4-q3-busy', traditional: '我很忙' },
         { id: 'g4-q3-not-busy', traditional: '我不忙' },
       ],
-      correctFeedback: 'You returned the same state question with 呢, then gave a complete personal answer.',
-      repairFeedback: 'First return the question to “you”; then answer about yourself with 我很忙 or 我不忙.',
+      correctFeedback: 'You sent the same question back with 呢, then answered for yourself.',
+      repairFeedback: 'First ask “you” the same question; then answer about yourself with 我很忙 or 我不忙.',
     },
   ],
 };
@@ -352,7 +429,7 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
   printedPages: [45],
   audioReference: '01-2-3',
   explanation:
-    'Build the idea from left to right: who → action or feeling → person or thing affected. This is Subject–Verb–Object.',
+    'Build the idea from left to right: who → action or feeling → person or thing affected. That order is the whole sentence pattern.',
   focusTerms: [
     'Left to Right',
     'Subject–Verb–Object',
@@ -364,15 +441,15 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
     '爱',
   ],
   teachingGlossary: [
-    token('g5-glossary-bu', '不', 'bù', 'not; placed directly before the action or feeling verb'),
-    token('g5-glossary-xihuan', '喜歡', 'xǐhuān', 'to like; the feeling verb in this sentence pattern', {
+    token('g5-glossary-bu', '不', 'bù', 'not; goes right before the action or feeling word'),
+    token('g5-glossary-xihuan', '喜歡', 'xǐhuān', 'to like; the feeling word in this sentence pattern', {
       simplified: '喜欢',
     }),
-    token('g5-glossary-ai', '愛', 'ài', 'to love; an action or feeling verb', {
+    token('g5-glossary-ai', '愛', 'ài', 'to love; an action or feeling word', {
       simplified: '爱',
     }),
-    token('g5-glossary-shi', '是', 'shì', 'identity-linking “to be”; do not insert it before an action verb'),
-    token('g5-glossary-wo', '我', 'wǒ', 'I; the subject doing or feeling the action'),
+    token('g5-glossary-shi', '是', 'shì', '“to be”; links someone to an identity. Do not put it before an action or feeling word'),
+    token('g5-glossary-wo', '我', 'wǒ', 'I; the person who does or feels the action'),
   ],
   pattern: 'S + (Neg)V + O',
   patternColumns: ['Who', 'Does / feels', 'Who or what'],
@@ -417,16 +494,16 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
         simplified: '我是喜欢台湾。 → 我喜欢台湾。',
         pinyin: 'Wǒ shì xǐhuān Táiwān. → Wǒ xǐhuān Táiwān.',
         english: 'Repair it: I like Taiwan.',
-        note: '喜歡 is already the feeling verb. Do not insert 是 before it in this beginner sentence pattern.',
+        note: '喜歡 is already the feeling word. Do not add 是 before it.',
         isCorrection: true,
       },
     ],
     takeaway:
-      'Build the meaning train in order: who → action or feeling → target. Put 不 directly before the action or feeling when the meaning is negative.',
+      'Build the meaning in order: who → action or feeling → target. Put 不 right before the action or feeling to make it negative.',
   },
   sentenceSpine: {
     title: 'Now switch the meaning without rebuilding the sentence',
-    description: 'Keep the three slots in place and attach 不 directly to the feeling verb.',
+    description: 'Keep the three slots in place and attach 不 directly to the feeling word.',
     subject: {
       role: 'S',
       label: 'Who',
@@ -456,7 +533,7 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
     },
     positiveEnglish: 'I like him.',
     negativeEnglish: "I don't like him.",
-    notes: ['不 stays directly before the verb: 不喜歡.', 'Action verbs such as 喜歡 and 愛 do not need 是.'],
+    notes: ['不 stays right before the feeling word: 不喜歡.', 'Doing or feeling words like 喜歡 and 愛 do not need 是.'],
   },
   patternRows: [
     {
@@ -472,11 +549,83 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
       english: "I (don't) like him.",
     },
   ],
+  confusion: {
+    title: "Don't mix these up",
+    items: [
+      {
+        id: 'g5-confusion-shi-action',
+        question: 'In English I say “I am liking Taiwan.” Do I need 是?',
+        answer: 'No. 喜歡 already carries the feeling — it never takes 是. Keep 是 for names and identities, like 我是日本人.',
+        wrongTraditional: '我是喜歡臺灣。',
+        wrongSimplified: '我是喜欢台湾。',
+        right: {
+          traditional: '我喜歡臺灣。',
+          simplified: '我喜欢台湾。',
+          pinyin: 'Wǒ xǐhuān Táiwān.',
+          english: 'I like Taiwan.',
+          words: [
+            token('g5-cf1-wo', '我', 'wǒ', 'I'),
+            token('g5-cf1-xihuan', '喜歡', 'xǐhuān', 'to like', {
+              simplified: '喜欢',
+            }),
+            token('g5-cf1-taiwan', '臺灣', 'Táiwān', 'Taiwan', {
+              simplified: '台湾',
+              suffix: '。',
+            }),
+          ],
+        },
+      },
+      {
+        id: 'g5-confusion-bu-placement',
+        question: 'Where does 不 go to say I do not like something?',
+        answer: 'Right before the feeling word: 不喜歡. Never after the feeling word or before the person or thing.',
+        wrongTraditional: '我喜歡不王小姐。',
+        wrongSimplified: '我喜欢不王小姐。',
+        right: {
+          traditional: '我不喜歡王小姐。',
+          simplified: '我不喜欢王小姐。',
+          pinyin: 'Wǒ bù xǐhuān Wáng xiǎojiě.',
+          english: 'I do not like Miss Wang.',
+          words: [
+            token('g5-cf2-wo', '我', 'wǒ', 'I'),
+            token('g5-cf2-bu', '不', 'bù', 'not'),
+            token('g5-cf2-xihuan', '喜歡', 'xǐhuān', 'to like', {
+              simplified: '喜欢',
+            }),
+            token('g5-cf2-wang', '王', 'Wáng', 'surname Wang'),
+            token('g5-cf2-xiaojie', '小姐', 'xiǎojiě', 'Miss', { suffix: '。' }),
+          ],
+        },
+      },
+      {
+        id: 'g5-confusion-object-order',
+        question: 'Can the person or thing come first, like “Dad and Mom I love”?',
+        answer: 'No. Build the sentence left to right: who → feeling → thing. The thing goes last.',
+        wrongTraditional: '爸爸、媽媽我愛。',
+        wrongSimplified: '爸爸、妈妈我爱。',
+        right: {
+          traditional: '我愛爸爸、媽媽。',
+          simplified: '我爱爸爸、妈妈。',
+          pinyin: 'Wǒ ài bàba, māma.',
+          english: 'I love Dad and Mom.',
+          words: [
+            token('g5-cf3-wo', '我', 'wǒ', 'I'),
+            token('g5-cf3-ai', '愛', 'ài', 'to love', { simplified: '爱' }),
+            token('g5-cf3-baba', '爸爸', 'bàba', 'dad', { suffix: '、' }),
+            token('g5-cf3-mama', '媽媽', 'māma', 'mom', {
+              simplified: '妈妈',
+              suffix: '。',
+            }),
+          ],
+        },
+      },
+    ],
+  },
   examples: [
     {
       id: 'g5-example-1',
       number: 1,
-      teachingNote: '我 continues after the comma.',
+      teachingNote: 'The second part does not repeat 我.',
       text: {
         traditional: '我喜歡李小姐，不喜歡王小姐。',
         simplified: '我喜欢李小姐，不喜欢王小姐。',
@@ -501,7 +650,7 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
     {
       id: 'g5-example-2',
       number: 2,
-      teachingNote: '什麼 fills the object slot.',
+      teachingNote: '什麼 stands in for the thing you like.',
       text: {
         traditional: '你喜歡什麼？',
         simplified: '你喜欢什么？',
@@ -522,7 +671,7 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
     {
       id: 'g5-example-3',
       number: 3,
-      teachingNote: 'One verb can have two objects.',
+      teachingNote: 'One action word can point to two people.',
       text: {
         traditional: '我愛爸爸、媽媽。',
         simplified: '我爱爸爸、妈妈。',
@@ -541,7 +690,7 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
     },
   ],
   exerciseTitle: 'Build meaning in order',
-  exercisePreview: 'Build the S–V–O pattern, then answer the book questions.',
+  exercisePreview: 'Build sentences in the right order, then answer the book questions.',
   exerciseInstruction:
     'Place compact tiles into the sentence slots. Personal questions may have more than one correct response.',
   exerciseNote: 'Questions 3–5 adapt the exercise on printed page 45.',
@@ -556,12 +705,12 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
       {
         traditional: '我是喜歡王小姐。',
         simplified: '我是喜欢王小姐。',
-        explanation: 'Do not insert 是 before an action or feeling verb.',
+        explanation: 'Do not put 是 before an action or feeling word.',
       },
       {
         traditional: '我喜歡不王小姐。',
         simplified: '我喜欢不王小姐。',
-        explanation: '不 belongs immediately before the verb, not the object.',
+        explanation: '不 belongs right before the action word, not before the person or thing.',
       },
     ],
   },
@@ -623,14 +772,14 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
           type: 'blank',
           id: 'g5-q2-negation',
           answer: '不',
-          hint: 'Place negation directly before the verb.',
+          hint: 'Put 不 right before the feeling word.',
         },
         {
           type: 'blank',
           id: 'g5-q2-verb',
           answer: '喜歡',
           answerSimplified: '喜欢',
-          hint: 'The feeling verb follows 不.',
+          hint: 'The feeling word comes after 不.',
         },
         {
           type: 'blank',
@@ -646,8 +795,8 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
         { id: 'g5-q2-like', traditional: '喜歡', simplified: '喜欢' },
         { id: 'g5-q2-subject-tile', traditional: '我' },
       ],
-      correctFeedback: '不 stays attached to 喜歡 in the verb slot: 我 + 不喜歡 + 王小姐.',
-      repairFeedback: 'Keep 不 immediately before 喜歡, after the subject and before the object.',
+      correctFeedback: '不 stays right before 喜歡: 我 + 不喜歡 + 王小姐.',
+      repairFeedback: 'Keep 不 right before 喜歡: after the person, before the person or thing.',
     },
     {
       id: 'g5-question-3',
@@ -666,7 +815,7 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
           answerSimplified: '我喜欢台湾',
           acceptedAnswers: ['我不喜歡臺灣'],
           acceptedAnswersSimplified: ['我不喜欢台湾'],
-          hint: 'Choose a complete S–V–O answer that matches your opinion.',
+          hint: 'Choose a full answer that matches your opinion.',
         },
         { type: 'text', traditional: '。' },
       ],
@@ -688,8 +837,8 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
         },
       ],
       correctFeedback:
-        'Your opinion can be positive or negative; both answers preserve the complete sentence structure.',
-      repairFeedback: 'Give a complete answer with subject 我, then 喜歡 or 不喜歡, then object 臺灣.',
+        'Your opinion can be yes or no; both answers are full sentences.',
+      repairFeedback: 'Give a full answer: 我, then 喜歡 or 不喜歡, then 臺灣.',
     },
     {
       id: 'g5-question-4',
@@ -707,7 +856,7 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
           answerSimplified: '我喜欢友美',
           acceptedAnswers: ['我喜歡中明', '我喜歡爸爸、媽媽'],
           acceptedAnswersSimplified: ['我喜欢中明', '我喜欢爸爸、妈妈'],
-          hint: 'Choose any complete S–V–O reply.',
+          hint: 'Choose any full answer.',
         },
         { type: 'text', traditional: '。' },
       ],
@@ -728,7 +877,7 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
           simplified: '我喜欢爸爸、妈妈',
         },
       ],
-      correctFeedback: '誰 asks for a person as the object; each choice gives a complete answer.',
+      correctFeedback: '誰 asks for a person; each choice gives a full answer.',
       repairFeedback: 'Answer 誰 with a person after 我喜歡.',
     },
     {
@@ -766,8 +915,8 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
           simplified: '王太太爱他',
         },
       ],
-      correctFeedback: 'The illustration supports the positive S–V–O answer: 他 + 愛 + 王太太.',
-      repairFeedback: 'Keep Mr. Wang as 他, use positive 愛, and place 王太太 as the object.',
+      correctFeedback: 'The illustration shows the positive answer: 他 + 愛 + 王太太.',
+      repairFeedback: 'Keep Mr. Wang as 他, use positive 愛, and put 王太太 after 愛.',
     },
   ],
 };
@@ -855,6 +1004,6 @@ export const LESSON_ONE_PART_TWO: InteractiveGrammarPart = {
   },
   completionTitle: 'Part 2 complete — you can return a question and share what you like.',
   completionDescription:
-    'You used 呢 to keep a conversation moving and built positive and negative subject–verb–object sentences with 喜歡 and 愛.',
+    'You used 呢 to ask the same question back, and built positive and negative sentences with 喜歡 and 愛.',
   nextBookLabel: 'Next in the book · Review the lesson patterns.',
 };

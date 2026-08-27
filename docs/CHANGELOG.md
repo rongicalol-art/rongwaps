@@ -4,6 +4,22 @@ All notable changes to the **RongWaps** project will be documented in this file.
 
 ---
 
+## [Unreleased]
+### Changed
+- Redesigned the Practice settings surface: the mode tabs live inside the header itself, and controls use the character-breakdown row language — white strips separated by bottom hairlines only, no boxes or outlines, with toggle switches and radio-style options (character set, mistake recycling).
+- Restructured Practice settings into 3 focused sections: Quiz mode, Flow mode, and General.
+- Quiz mode owns everything answer-related: auto-next (continue after correct/wrong) and replay after answering.
+- Flow mode owns speaking and pacing: Speak Chinese, Speak definition, a "Speak sentence" placeholder (coming soon), plus visible "Next speed" and "Next card speed" sliders.
+- General covers appearance, audio, and session: character set, pinyin/English reveals, playback speed, and mistake recycling.
+- "Continue after correct answers" is now the default, and presets no longer switch it off.
+- Quiz answers are always checked immediately on selection — removed the "Check answers as soon as I choose" toggle (instant checking is now fixed behavior).
+- Practice preferences store migration v4 drops the instant-check preference and restores the auto-next default for preset-held values.
+
+### Removed
+- Removed the separate Display, Audio, Session, Pace, and Answers tabs in favor of the 3-section layout.
+
+---
+
 ## [1.1.0] - 2026-07-10
 ### Added
 - Created `docs/ROADMAP.md` covering the 3-month feature roadmap.

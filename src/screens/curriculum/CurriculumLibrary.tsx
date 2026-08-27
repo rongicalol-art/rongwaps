@@ -1,4 +1,5 @@
-import { memo, useCallback, useEffect, useMemo } from 'react';
+import { memo, useCallback, useEffect, useMemo, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { ActionButton, AppIcon, StickyWorkspaceHeader, type StickyWorkspaceHeaderMenuToggle } from '../../lib/widgets';
 import { useAppStore } from '../../store/useAppStore';
@@ -93,6 +94,17 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     regularLessons.slice(midIndex),
   ];
   const selectedLessonCount = progress.lessons.filter((lesson) => lesson.isSelected).length;
+  const reduceMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(() => (
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
+  ));
+
+  useEffect(() => {
+    const mobileQuery = window.matchMedia('(max-width: 767px)');
+    const sync = (event: MediaQueryListEvent) => setIsMobile(event.matches);
+    mobileQuery.addEventListener('change', sync);
+    return () => mobileQuery.removeEventListener('change', sync);
+  }, []);
 
   const renderLessonList = (lessons: typeof regularLessons) => lessons.map((lesson, index) => (
       <LessonItem
@@ -165,23 +177,33 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
         </div>
       </div>
 
-      <div className="workspace-window pointer-events-none fixed bottom-0 right-0 z-50 bg-gradient-to-t from-ui-canvas via-ui-canvas/95 to-transparent pb-[calc(1rem+env(safe-area-inset-bottom,0px))] pt-10">
-        <div className="mx-auto w-full max-w-2xl px-4 md:px-6">
-          <ActionButton
-            size="lg"
-            fullWidth
-            disabled={isLoading || selectedLessonCount === 0 || !onStartPractice}
-            onClick={onStartPractice}
-            aria-label={selectedLessonCount > 0
-              ? `Start with ${selectedLessonCount} selected ${selectedLessonCount === 1 ? 'lesson' : 'lessons'}`
-              : 'Select a lesson before starting'}
-            className={`pointer-events-auto min-h-14 ${activeBook.accentBg} ${activeBook.buttonEdge}`}
+      <AnimatePresence>
+        {(selectedLessonCount > 0 || isMobile) && (
+          <motion.div
+            initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="workspace-window pointer-events-none fixed bottom-0 right-0 z-50 bg-gradient-to-t from-ui-canvas via-ui-canvas/95 to-transparent pb-[calc(1rem+env(safe-area-inset-bottom,0px))] pt-10"
           >
-            <AppIcon name="play" size={20} />
-            <span>Start</span>
-          </ActionButton>
-        </div>
-      </div>
+            <div className="mx-auto w-full max-w-2xl px-4 md:px-6">
+              <ActionButton
+                size="lg"
+                fullWidth
+                disabled={isLoading || selectedLessonCount === 0 || !onStartPractice}
+                onClick={onStartPractice}
+                aria-label={selectedLessonCount > 0
+                  ? `Start with ${selectedLessonCount} selected ${selectedLessonCount === 1 ? 'lesson' : 'lessons'}`
+                  : 'Select a lesson before starting'}
+                className={`pointer-events-auto min-h-14 ${activeBook.accentBg} ${activeBook.buttonEdge}`}
+              >
+                <AppIcon name="play" size={20} />
+                <span>Start</span>
+              </ActionButton>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 });

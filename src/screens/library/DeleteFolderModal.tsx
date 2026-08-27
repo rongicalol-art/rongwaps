@@ -1,6 +1,8 @@
-import { PiTrashBold } from 'react-icons/pi';
+import { useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'motion/react';
-import { Soft3DButton } from '../../lib/widgets';
+import { ActionButton, AppIcon } from '../../lib/widgets';
+import { useModalFocus } from '../../hooks/useModalFocus';
 
 interface DeleteFolderModalProps {
   deleteFolderTarget: { id: string; name: string } | null;
@@ -13,48 +15,66 @@ export function DeleteFolderModal({
   setDeleteFolderTarget,
   confirmDeleteFolder,
 }: DeleteFolderModalProps) {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const { onKeyDown } = useModalFocus({
+    containerRef: dialogRef,
+    isActive: !!deleteFolderTarget,
+    onEscape: () => setDeleteFolderTarget(null),
+  });
+
   if (!deleteFolderTarget) return null;
 
-  return (
-    <div className="workspace-window fixed inset-0 z-[300] flex items-center justify-center p-4">
+  return createPortal(
+    <div className="fixed inset-0 z-[700] flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={() => setDeleteFolderTarget(null)}
-        className="absolute inset-0 bg-[#000000]/40 backdrop-blur-sm"
+        className="absolute inset-0 bg-ui-ink-strong/40 backdrop-blur-sm"
       />
       <motion.div
+        ref={dialogRef}
         initial={{ scale: 0.9, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.9, opacity: 0, y: 20 }}
-        className="relative w-full max-w-sm bg-white rounded-[24px] border-[2px] border-[#E5E5E5] border-b-[6px] p-6 shadow-xl"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="delete-folder-title"
+        tabIndex={-1}
+        onKeyDown={onKeyDown}
+        className="relative w-full max-w-sm rounded-[24px] border-b-4 border-ui-border bg-ui-surface p-6 shadow-xl outline-none"
       >
         <div className="text-center mb-6">
-          <div className="w-16 h-16 bg-[#FFE5E5] rounded-[20px] flex items-center justify-center mx-auto mb-4">
-            <PiTrashBold size={32} className="text-[#FF4B4B]" />
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-[20px] bg-feedback-danger-surface">
+            <AppIcon name="trash" size={32} className="text-feedback-danger" />
           </div>
-          <h2 className="text-xl font-extrabold text-[#4B4B4B]">Delete Folder?</h2>
-          <p className="text-[#4B4B4B] font-extrabold text-base mt-2">"{deleteFolderTarget.name}"</p>
-          <p className="text-[#AFB6BB] text-sm mt-2 font-bold leading-relaxed">
-            This will remote this folder. Your flashcards inside will not be deleted but kept in custom cards.
+          <h2 id="delete-folder-title" className="text-xl font-extrabold text-ui-ink-strong">Delete Folder?</h2>
+          <p className="mt-2 text-base font-extrabold text-ui-ink">"{deleteFolderTarget.name}"</p>
+          <p className="mt-2 text-sm font-bold leading-relaxed text-ui-muted">
+            This will remove this folder. Your flashcards inside will not be deleted but kept in custom cards.
           </p>
         </div>
         <div className="flex gap-3">
-          <Soft3DButton
+          <ActionButton
+            variant="secondary"
+            size="md"
             onClick={() => setDeleteFolderTarget(null)}
-            className="flex-1 bg-white border-[#E5E5E5] text-[#AFB6BB] hover:bg-[#F7F7F7] py-3 text-[15px]"
+            className="min-w-0 flex-1 uppercase tracking-widest"
           >
-            CANCEL
-          </Soft3DButton>
-          <Soft3DButton
+            Cancel
+          </ActionButton>
+          <ActionButton
+            variant="danger"
+            size="md"
             onClick={confirmDeleteFolder}
-            className="flex-1 bg-[#FF4B4B] border-[#E03A3A] text-white py-3 text-[15px]"
+            className="min-w-0 flex-1 uppercase tracking-widest"
           >
-            DELETE
-          </Soft3DButton>
+            Delete
+          </ActionButton>
         </div>
       </motion.div>
-    </div>
+    </div>,
+    document.body,
   );
 }

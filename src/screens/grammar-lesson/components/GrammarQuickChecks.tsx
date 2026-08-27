@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ActionButton, AppIcon, ContextualChineseText, GrammarFocusText } from '../../../lib/widgets';
+import { ActionButton, AppIcon, ContextualChineseText } from '../../../lib/widgets';
+import { GrammarFocusText } from './GrammarFocusText';
 import type { GrammarMicroCheck, GrammarWordToken } from '../../../types/models';
 import { cn } from '../../../utils/cn';
 

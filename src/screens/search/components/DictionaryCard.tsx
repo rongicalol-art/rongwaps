@@ -53,6 +53,19 @@ export const DictionaryCard = memo(function DictionaryCard({
         <div className="mt-1 line-clamp-2 w-full break-words text-[15px] font-bold leading-snug text-ui-ink">
           {formatDefinitions(entry.definitions)}
         </div>
+        {entry.measure_words && entry.measure_words.length > 0 && (
+          <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
+            <span className="text-[10px] font-black uppercase tracking-wider text-ui-muted">CL</span>
+            {entry.measure_words.slice(0, 3).map((mw) => (
+              <span
+                key={mw}
+                className="rounded-md bg-ui-canvas px-1.5 py-0.5 font-chinese text-[12px] font-bold text-ui-muted-strong"
+              >
+                {mw}
+              </span>
+            ))}
+          </div>
+        )}
       </button>
 
       <button

@@ -1,14 +1,10 @@
-import { useState } from 'react';
-import {
-  ActionButton,
-  AppIcon,
-  GrammarFocusText,
-} from '../../../lib/widgets';
+import { ActionButton, AppIcon } from '../../../lib/widgets';
+import type { RefObject } from 'react';
 import type { InteractiveGrammarPage } from '../../../types/models';
 import { getGrammarTeachingTokens } from '../../../utils/grammarTeachingTokens';
-import { BookPageViewer } from './BookPageViewer';
+import { GrammarConfusionSection } from './GrammarConfusionSection';
 import { GrammarExamplesSection } from './GrammarExamplesSection';
-import { GrammarInteractiveHelp } from './GrammarInteractiveHelp';
+import { GrammarFocusText } from './GrammarFocusText';
 import { GrammarPatternSection } from './GrammarPatternSection';
 
 interface GrammarStudyPageProps {
@@ -17,6 +13,8 @@ interface GrammarStudyPageProps {
   showPinyin: boolean;
   showTranslation: boolean;
   onOpenWord: (word: string) => void;
+  onOpenBookPage: () => void;
+  bookPageButtonRef?: RefObject<HTMLButtonElement | null>;
   hideHeader?: boolean;
 }
 
@@ -26,40 +24,42 @@ export function GrammarStudyPage({
   showPinyin,
   showTranslation,
   onOpenWord,
+  onOpenBookPage,
+  bookPageButtonRef,
   hideHeader = false,
 }: GrammarStudyPageProps) {
-  const [isBookPageOpen, setIsBookPageOpen] = useState(false);
   const teachingTokens = getGrammarTeachingTokens(page);
 
   return (
-    <article className="mx-auto w-full max-w-5xl pb-8">
-      {!hideHeader && <header className="border-b border-ui-divider pb-5">
-        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
-          <div className="min-w-0">
-            <h1 className="text-[clamp(1.55rem,4.5vw,2.25rem)] font-black leading-[1.15] text-ui-ink-strong">
-              <GrammarFocusText
-                text={page.titleEnglish}
-                terms={page.focusTerms}
-                variant="title"
-                contextTokens={teachingTokens}
-                characterPreference={characterPreference}
-                onOpenWord={onOpenWord}
-              />
-            </h1>
-          </div>
-          <ActionButton
-            variant="quiet"
-            size="sm"
-            className="whitespace-nowrap"
-            onClick={() => setIsBookPageOpen(true)}
-          >
-            <AppIcon name="dictionary" size={16} />
-            {page.printedPages.length === 1
-              ? `View page ${page.printedPages[0]}`
-              : `View pages ${page.printedPages[0]}–${page.printedPages.at(-1)}`}
-          </ActionButton>
+    <article className="mx-auto w-full max-w-3xl">
+      {!hideHeader && <header className="pb-2">
+        <h1 className="max-w-none text-[clamp(1.75rem,4.5vw,2.35rem)] font-black leading-[1.12] text-ui-ink-strong">
+          <GrammarFocusText
+            text={page.titleEnglish}
+            terms={page.focusTerms}
+            variant="title"
+            contextTokens={teachingTokens}
+            characterPreference={characterPreference}
+            onOpenWord={onOpenWord}
+          />
+        </h1>
+        <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1">
+          {(page.bookPageAvailable ?? true) && (
+            <ActionButton
+              ref={bookPageButtonRef}
+              variant="quiet"
+              size="sm"
+              className="-ml-2 whitespace-nowrap"
+              onClick={onOpenBookPage}
+            >
+              <AppIcon name="dictionary" size={16} />
+              {page.printedPages.length === 1
+                ? `View book page ${page.printedPages[0]}`
+                : `View book pages ${page.printedPages[0]}–${page.printedPages.at(-1)}`}
+            </ActionButton>
+          )}
         </div>
-        <p className="mt-3 max-w-3xl text-[15px] font-bold leading-7 text-ui-ink sm:text-[17px] sm:leading-8">
+        <p className="mt-4 max-w-2xl text-[15px] font-bold leading-7 text-ui-ink sm:text-[17px] sm:leading-8">
           <GrammarFocusText
             text={page.explanation}
             terms={page.focusTerms}
@@ -76,7 +76,6 @@ export function GrammarStudyPage({
         showPinyin={showPinyin}
         showTranslation={showTranslation}
         onOpenWord={onOpenWord}
-        contextTokens={teachingTokens}
       />
       <GrammarExamplesSection
         page={page}
@@ -86,21 +85,13 @@ export function GrammarStudyPage({
         onOpenWord={onOpenWord}
         contextTokens={teachingTokens}
       />
-      <GrammarInteractiveHelp
-        page={page}
-        characterPreference={characterPreference}
-        showPinyin={showPinyin}
-        showTranslation={showTranslation}
-        contextTokens={teachingTokens}
-        onOpenWord={onOpenWord}
-      />
-      {isBookPageOpen && (
-        <BookPageViewer
-          bookId={page.bookId}
-          lessonId={page.lessonId}
-          grammarTitle={page.titleEnglish}
-          pages={page.printedPages}
-          onClose={() => setIsBookPageOpen(false)}
+      {page.confusion && (
+        <GrammarConfusionSection
+          confusion={page.confusion}
+          characterPreference={characterPreference}
+          showPinyin={showPinyin}
+          showTranslation={showTranslation}
+          onOpenWord={onOpenWord}
         />
       )}
     </article>

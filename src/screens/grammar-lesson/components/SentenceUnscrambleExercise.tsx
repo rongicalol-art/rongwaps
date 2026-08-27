@@ -1,6 +1,6 @@
 import type { DragEvent, KeyboardEvent } from 'react';
 import { useEffect } from 'react';
-import { ActionButton, AppIcon, GraphPaperPanel } from '../../../lib/widgets';
+import { ActionButton, AppIcon } from '../../../lib/widgets';
 import type { GrammarUnscrambleTile, InteractiveGrammarPage } from '../../../types/models';
 import { cn } from '../../../utils/cn';
 import { useSentenceUnscramble } from '../hooks/useSentenceUnscramble';
@@ -68,11 +68,8 @@ export function SentenceUnscrambleExercise({
         </span>
       </div>
 
-      <GraphPaperPanel
-        gridSize="roomy"
-        className="mx-auto max-w-4xl rounded-[24px] border-2 border-ui-border p-3 sm:p-6"
-      >
-        <article className="rounded-[20px] border border-ui-border bg-ui-surface px-4 py-5 shadow-[0_3px_0_var(--color-ui-divider)] sm:px-7 sm:py-7">
+      <div className="mx-auto max-w-4xl overflow-hidden rounded-[20px] border-2 border-ui-border bg-ui-surface p-3 sm:p-6">
+        <article className="bg-ui-surface px-1 py-2 sm:px-2 sm:py-1">
           <p className="text-sm font-black text-ui-ink-strong">{data.prompt}</p>
           <p className="mt-1 text-xs font-bold text-ui-muted-strong">Tap tiles to place them. Drag or use arrow keys to reorder.</p>
 
@@ -108,7 +105,7 @@ export function SentenceUnscrambleExercise({
                   onKeyDown={(event) => handleAnswerKey(event, tile.id, index)}
                   onClick={() => exercise.removeTile(tile.id)}
                   aria-label={`${textFor(tile)}. Position ${index + 1}. Click to remove; arrow keys reorder.`}
-                  className="min-w-11 px-3 font-chinese text-lg"
+                  className="min-w-11 px-3 font-chinese font-black text-lg"
                 >
                   {textFor(tile)}
                 </ActionButton>
@@ -140,7 +137,7 @@ export function SentenceUnscrambleExercise({
                 onDragStart={(event) => event.dataTransfer.setData('text/plain', tile.id)}
                 onClick={() => exercise.addTile(tile.id)}
                 title={tile.meaning}
-                className="min-w-11 px-3 font-chinese text-lg"
+                className="min-w-11 px-3 font-chinese font-black text-lg"
               >
                 {textFor(tile)}
               </ActionButton>
@@ -190,7 +187,7 @@ export function SentenceUnscrambleExercise({
           )}
         </div>
         {page.exerciseNote && <p className="mt-4 text-center text-[11px] font-bold text-ui-muted">{page.exerciseNote}</p>}
-      </GraphPaperPanel>
+      </div>
     </section>
   );
 }

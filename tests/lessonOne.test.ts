@@ -9,9 +9,9 @@ import {
   findCanonicalTile,
 } from '../src/utils/grammarExercise';
 import {
+  buildGrammarPartSegments,
   continueGrammarLesson,
   selectGrammar,
-  selectGrammarMode,
 } from '../src/utils/grammarLessonFlow';
 import {
   appendUniqueId,
@@ -46,27 +46,57 @@ test('Every Lesson 1 grammar exercise completes with its canonical authored answ
   });
 });
 
-test('Grammar navigation returns to Learn and completion waits for every grammar', () => {
-  assert.deepEqual(selectGrammar(2), { grammarIndex: 2, view: 'study' });
-  assert.deepEqual(selectGrammarMode(1, 'exercise'), { grammarIndex: 1, view: 'exercise' });
-  assert.deepEqual(continueGrammarLesson({
-    grammarIndex: 0,
+test('Grammar flow is a linear grammar -> next grammar path', () => {
+  const allPageIds = ['g1', 'g2', 'g3'];
+  const continueAfter = (
+    grammarIndex: number,
+    pageId: string,
+    completedPageIds: string[],
+  ) => continueGrammarLesson({
+    grammarIndex,
     grammarCount: 3,
-    allGrammarComplete: false,
-    firstIncompleteIndex: 1,
-  }), { grammarIndex: 1, view: 'study' });
+    pageId,
+    completedPageIds,
+    allPageIds,
+  });
+
+  assert.deepEqual(selectGrammar(2), { grammarIndex: 2 });
+  assert.deepEqual(continueAfter(0, 'g1', []), { grammarIndex: 1 });
+  assert.deepEqual(continueAfter(1, 'g2', ['g1']), { grammarIndex: 2 });
+  assert.deepEqual(continueAfter(2, 'g3', ['g1', 'g2', 'g3']), { grammarIndex: 2, isPartComplete: true });
+});
+
+test('Final grammar completes the part even when the completed set is stale during the click', () => {
+  const allPageIds = ['g1', 'g2', 'g3'];
+  const completedBeforeRender = ['g1', 'g2'];
   assert.deepEqual(continueGrammarLesson({
     grammarIndex: 2,
     grammarCount: 3,
-    allGrammarComplete: false,
-    firstIncompleteIndex: 0,
-  }), { grammarIndex: 0, view: 'study' });
+    pageId: 'g3',
+    completedPageIds: completedBeforeRender,
+    allPageIds,
+  }), { grammarIndex: 2, isPartComplete: true });
+});
+
+test('Continue advances to the first grammar not in the post-completion set', () => {
+  const allPageIds = ['g1', 'g2', 'g3'];
   assert.deepEqual(continueGrammarLesson({
     grammarIndex: 2,
     grammarCount: 3,
-    allGrammarComplete: true,
-    firstIncompleteIndex: -1,
-  }), { grammarIndex: 2, view: 'complete' });
+    pageId: 'g3',
+    completedPageIds: ['g1'],
+    allPageIds,
+  }), { grammarIndex: 1 });
+});
+
+test('Grammar part builds one progress segment per grammar point', () => {
+  const segments = buildGrammarPartSegments(LESSON_ONE_PART_ONE);
+  assert.equal(segments.length, LESSON_ONE_PART_ONE.grammarPages.length);
+  segments.forEach((segment, index) => {
+    assert.equal(segment.cardCount, 1);
+    assert.equal(segment.startIndex, index);
+    assert.equal(segment.partId, index + 1);
+  });
 });
 
 test('Persisted progress remains duplicate-safe and exposes path states', () => {
