@@ -1,3 +1,5 @@
+import type { SRSData } from './srsEngine';
+
 export interface SyncProgressCounters {
   xpEarned: number;
   cardsReviewed: number;
@@ -119,6 +121,40 @@ export function hasSessionProgressDelta(delta: SyncProgressCounters): boolean {
   return delta.xpEarned > 0 || delta.cardsReviewed > 0 || delta.cardsLearned > 0;
 }
 
+export interface SyncedFolderSnapshot {
+  id: string;
+  name: string;
+  color: string;
+}
+
+/** True when the array is element-wise identical (order matters). */
+export function isSameStringArray(
+  synced: string[] | null,
+  current: string[],
+): boolean {
+  if (!synced) return false;
+  if (synced.length !== current.length) return false;
+  return synced.every((value, index) => value === current[index]);
+}
+
+/** True when the folder list is identical (id + name + color, order matters). */
+export function isSameFolderList(
+  synced: SyncedFolderSnapshot[] | null,
+  current: SyncedFolderSnapshot[],
+): boolean {
+  if (!synced) return false;
+  if (synced.length !== current.length) return false;
+  return synced.every((folder, index) => {
+    const other = current[index];
+    return (
+      other !== undefined
+      && folder.id === other.id
+      && folder.name === other.name
+      && folder.color === other.color
+    );
+  });
+}
+
 export function reconcileAggregateProgress(
   cloud: AggregateProgressCounters,
   local: AggregateProgressCounters,
@@ -154,4 +190,111 @@ export function getNextCloudSyncBackoff(
 
   if (currentBackoffMs <= 0) return minimumBackoff;
   return Math.min(60_000, Math.max(minimumBackoff, currentBackoffMs * 2));
+}
+
+export const AUTO_SAVE_DEBOUNCE_MS = 10_000;
+export const AUTO_SAVE_MAX_WAIT_MS = 45_000;
+/** Floor so a burst of changes right at the deadline still coalesces a beat. */
+const AUTO_SAVE_MIN_DELAY_MS = 250;
+
+export interface AutoSaveDelayInput {
+  /** Timestamp of the oldest change not yet acknowledged by a save; null when clean. */
+  dirtySinceMs: number | null;
+  nowMs: number;
+  backoffMs?: number;
+}
+
+/**
+ * Delay for the next debounced auto-save. Normally the trailing debounce
+ * window (plus any error backoff), but continuous activity resets a plain
+ * debounce forever — a learner answering a card every few seconds would never
+ * persist until tab-hide, which mobile browsers can skip. Once the oldest
+ * unsaved change reaches max-wait age, fire at that deadline. Error backoff
+ * is always respected so a failing endpoint is never hammered early.
+ */
+export function getNextAutoSaveDelay(input: AutoSaveDelayInput): number {
+  const backoffMs = Math.max(0, input.backoffMs ?? 0);
+  if (input.dirtySinceMs == null) return AUTO_SAVE_DEBOUNCE_MS + backoffMs;
+
+  const unsavedForMs = Math.max(0, input.nowMs - input.dirtySinceMs);
+  const remainingUntilMaxWaitMs = Math.max(0, AUTO_SAVE_MAX_WAIT_MS - unsavedForMs);
+  const eagerDelayMs = Math.min(
+    AUTO_SAVE_DEBOUNCE_MS,
+    Math.max(AUTO_SAVE_MIN_DELAY_MS, remainingUntilMaxWaitMs),
+  );
+  // Error backoff always wins so a failing endpoint is never hammered early.
+  return Math.max(backoffMs, eagerDelayMs);
+}
+
+function sameSrsData(
+  a: SRSData | undefined,
+  b: SRSData | undefined,
+): boolean {
+  if (a === b) return true;
+  if (!a || !b) return false;
+  return (
+    a.efactor === b.efactor
+    && a.interval === b.interval
+    && a.repetition === b.repetition
+    && a.nextReviewDate === b.nextReviewDate
+  );
+}
+
+export interface PulledSrsMergeInput {
+  /**
+   * Last SRS state known to be persisted on the server (the delta baseline)
+   * before this pull. Null on the first-ever sync.
+   */
+  priorBaseline: Record<string, SRSData> | null;
+  /** Store snapshot captured when the pull request started. */
+  atPullStart: Record<string, SRSData>;
+  /** Store snapshot at merge time — may include reviews made during the pull. */
+  current: Record<string, SRSData>;
+  /** Rows returned by the pull (server truth for those cards). */
+  cloud: Record<string, SRSData>;
+}
+
+export interface PulledSrsMergeResult {
+  /** What the store should hold after merging the pull. */
+  merged: Record<string, SRSData>;
+  /** New server-truth baseline for computing the next upload delta. */
+  baseline: Record<string, SRSData>;
+}
+
+/**
+ * Merge an incremental cloud pull into the local SRS map without losing
+ * reviews made while the pull was in flight.
+ *
+ * The old merge (`{...local, ...cloud}`) let stale server rows overwrite
+ * locally newer reviews AND folded those stale values into the delta baseline,
+ * so the lost review was never re-uploaded either. Now:
+ * - merged: keys the user changed during the pull window keep their local value;
+ *   everything else follows the server.
+ * - baseline: prior known-synced state overlaid with pulled rows only — never
+ *   with unsent local values — so locally-changed keys stay "dirty" and the
+ *   next save uploads them.
+ */
+export function mergePulledSrsData(
+  input: PulledSrsMergeInput,
+): PulledSrsMergeResult {
+  const { priorBaseline, atPullStart, current, cloud } = input;
+
+  // Server truth: what we already knew was synced, plus everything just pulled.
+  const baseline: Record<string, SRSData> = { ...(priorBaseline ?? {}), ...cloud };
+
+  // Locally changed during the pull window (new reviews count as changes).
+  const locallyChangedKeys = new Set<string>();
+  for (const [key, value] of Object.entries(current)) {
+    if (!sameSrsData(atPullStart[key], value)) locallyChangedKeys.add(key);
+  }
+
+  // Start from local state (keeps brand-new local cards), overlay server rows,
+  // then restore locally-changed keys so stale cloud rows cannot clobber them.
+  const merged: Record<string, SRSData> = { ...current, ...cloud };
+  for (const key of locallyChangedKeys) {
+    const value = current[key];
+    if (value) merged[key] = value;
+  }
+
+  return { merged, baseline };
 }

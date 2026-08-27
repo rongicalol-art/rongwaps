@@ -1,5 +1,6 @@
 import { INTERACTIVE_GRAMMAR_PARTS } from '../data/interactiveGrammarPages';
-import { INTERACTIVE_READING_PARTS } from '../data/interactiveReadingLessonOnePartThree';
+import { ALL_READINGS, READING_LESSON_MAX, READING_LESSON_MIN } from '../data/readings';
+import type { ReadingRecord } from '../types/models';
 
 export interface LessonValidationIssue {
   location: string;
@@ -44,8 +45,11 @@ export function validateInteractiveLessons(): LessonValidationIssue[] {
       if (!page.titleTraditional.trim() || !page.titleEnglish.trim() || !page.learnerPromise.trim()) {
         issues.push({ location: pageLocation, message: 'Title and learner promise are required.' });
       }
-      if (page.printedPages.length === 0 || !page.audioReference.trim()) {
-        issues.push({ location: pageLocation, message: 'Printed page and audio references are required.' });
+      if ((page.bookPageAvailable ?? true) && page.printedPages.length === 0) {
+        issues.push({ location: pageLocation, message: 'Printed page references are required when a book page is available.' });
+      }
+      if (!page.audioReference.trim()) {
+        issues.push({ location: pageLocation, message: 'Audio reference is required.' });
       }
       if (page.examples.length === 0 || page.questions.length === 0) {
         issues.push({ location: pageLocation, message: 'Examples and practice questions are required.' });
@@ -93,6 +97,35 @@ export function validateInteractiveLessons(): LessonValidationIssue[] {
         }
       }
 
+      if (!page.confusion) {
+        issues.push({ location: pageLocation, message: 'A confusion block is required on every grammar page.' });
+      } else if (!page.confusion.title.trim() || page.confusion.items.length === 0) {
+        issues.push({ location: `${pageLocation} confusion`, message: 'A confusion block needs a title and at least one item.' });
+      }
+      if (page.confusion) {
+        if (page.confusion.items.length > 4 || page.confusion.items.length < 2) {
+          issues.push({ location: `${pageLocation} confusion`, message: 'A confusion block needs two to four items.' });
+        }
+        page.confusion.items.forEach((item) => {
+          registerId(item.id, `${pageLocation} confusion item`, pageIds, issues);
+          if (!item.question.trim() || !item.answer.trim()) {
+            issues.push({ location: `${pageLocation} confusion item ${item.id}`, message: 'Question and answer are required.' });
+          }
+          if (!item.wrongTraditional.trim()) {
+            issues.push({ location: `${pageLocation} confusion item ${item.id}`, message: 'The wrong form is required.' });
+          }
+          if (!item.right.traditional.trim() || !item.right.pinyin.trim() || !item.right.english.trim()) {
+            issues.push({ location: `${pageLocation} confusion item ${item.id}`, message: 'The right form needs traditional text, pinyin, and English.' });
+          }
+          if (item.right.words.length === 0) {
+            issues.push({ location: `${pageLocation} confusion item ${item.id}`, message: 'Dictionary word tokens are required for the right form.' });
+          }
+          item.right.words.forEach((word) => {
+            registerId(word.id, `${pageLocation} confusion word`, pageIds, issues);
+          });
+        });
+      }
+
       page.questions.forEach((question) => {
         registerId(question.id, `${pageLocation} question`, pageIds, issues);
         const availableAnswers = new Set(
@@ -135,32 +168,38 @@ export function validateInteractiveLessons(): LessonValidationIssue[] {
     }
   });
 
-  INTERACTIVE_READING_PARTS.forEach((part) => {
-    registerId(part.id, `reading part ${part.id}`, topLevelIds, issues);
-    const readingIds = new Map<string, string>();
-    part.chunks.forEach((chunk) => {
-      registerId(chunk.id, `${part.id} reading chunk`, readingIds, issues);
-      if (!chunk.traditional.trim() || !chunk.simplified.trim() || !chunk.pinyin.trim() || !chunk.english.trim()) {
-        issues.push({ location: `${part.id} chunk ${chunk.id}`, message: 'Complete bilingual reading text is required.' });
-      }
-    });
-    part.teachingGlossary?.forEach((token) => {
-      registerId(token.id, `${part.id} glossary`, readingIds, issues);
-    });
-    if (part.experience === 'timeline') {
-      if (!part.timeline?.length || !part.timelineChecks?.length) {
-        issues.push({ location: part.id, message: 'Timeline readings require events and comprehension checks.' });
-      }
-      part.timeline?.forEach((item) => registerId(item.id, `${part.id} timeline event`, readingIds, issues));
-      part.timelineChecks?.forEach((check) => {
-        registerId(check.id, `${part.id} timeline check`, readingIds, issues);
-        check.options.forEach((option) => registerId(option.id, `${part.id} timeline option`, readingIds, issues));
-        if (!check.options.some((option) => option.id === check.answerId)) {
-          issues.push({ location: `${part.id} check ${check.id}`, message: 'Answer ID must match an option.' });
-        }
-      });
+  // Readings: every in-scope lesson must have exactly two complete dialogues.
+  const readingsByLesson = new Map<number, ReadingRecord[]>();
+  ALL_READINGS.forEach((reading) => {
+    registerId(reading.id, `reading ${reading.id}`, topLevelIds, issues);
+    const lessonReadings = readingsByLesson.get(reading.lessonId) ?? [];
+    lessonReadings.push(reading);
+    readingsByLesson.set(reading.lessonId, lessonReadings);
+
+    if (reading.dialogueNumber !== 1 && reading.dialogueNumber !== 2) {
+      issues.push({ location: reading.id, message: 'Dialogue number must be 1 or 2.' });
     }
+    if (reading.paragraphs.length === 0) {
+      issues.push({ location: reading.id, message: 'A reading needs at least one paragraph.' });
+    }
+    reading.paragraphs.forEach((paragraph, index) => {
+      if (
+        !paragraph.speaker.trim()
+        || !paragraph.traditional.trim()
+        || !paragraph.simplified.trim()
+        || !paragraph.pinyin.trim()
+        || !paragraph.english.trim()
+      ) {
+        issues.push({ location: `${reading.id} paragraph ${index + 1}`, message: 'Speaker, traditional, simplified, pinyin, and English are required.' });
+      }
+    });
   });
+  for (let lessonId = READING_LESSON_MIN; lessonId <= READING_LESSON_MAX; lessonId += 1) {
+    const lessonReadings = readingsByLesson.get(lessonId) ?? [];
+    if (lessonReadings.length !== 2) {
+      issues.push({ location: `lesson ${lessonId}`, message: `Expected 2 readings; found ${lessonReadings.length}.` });
+    }
+  }
 
   return issues;
 }

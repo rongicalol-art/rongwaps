@@ -5,7 +5,7 @@ import { audioService } from '../../../services/audioService';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
 import { shuffleItems } from '../../../utils/sessionOrder';
 import { getCurriculumSessionKey } from '../../../utils/lessonPartSelection';
-import { retainCurrentCardIndex } from '../../../utils/sessionProgress';
+import { getSessionStartIndex, retainCurrentCardIndex } from '../../../utils/sessionProgress';
 import type { Quality } from '../../../utils/srsEngine';
 
 // How many upcoming cards to pre-warm neural TTS for, so flip-triggered
@@ -37,11 +37,32 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
   const [isShuffled, setIsShuffled] = useState(false);
   const canonicalOrderRef = useRef<Flashcard[]>([]);
   const sessionStartedRef = useRef(false);
+  const sessionKeyRef = useRef(sessionKey);
+  const pendingSessionCardIdRef = useRef<string | null>(null);
   const currentCardIdRef = useRef<string | null>(null);
   const gradingCardIdRef = useRef<string | null>(null);
   const gradedCardIdsRef = useRef<Set<string>>(new Set());
 
   useEffect(() => {
+    if (sessionKeyRef.current !== sessionKey) {
+      pendingSessionCardIdRef.current = currentCardIdRef.current;
+      sessionKeyRef.current = sessionKey;
+      sessionStartedRef.current = false;
+      currentCardIdRef.current = null;
+      canonicalOrderRef.current = [];
+      setCards([]);
+      setIsShuffled(false);
+      setCurrentIndex(0);
+      setMaxVisitedIndex(0);
+      setIsFlipped(false);
+      setCompleted(false);
+      setSessionResults({});
+      setActiveBreakdownState(null);
+      gradingCardIdRef.current = null;
+      gradedCardIdsRef.current.clear();
+      return;
+    }
+
     setCards(loadedCards);
     setIsShuffled(false);
     canonicalOrderRef.current = loadedCards;
@@ -62,9 +83,20 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
 
       // Bounds-check the loaded index (Bug 11) and prevent cloud sync override mid-session (Bug 5)
       if (!sessionStartedRef.current) {
-        const saved = useAppStore.getState().sessionProgressIndex[sessionKey] || 0;
-        const target = saved >= loadedCards.length ? 0 : saved;
+        const pendingCardId = pendingSessionCardIdRef.current;
+        const shouldRetainPendingCard = Boolean(
+          pendingCardId && loadedCards.some((card) => card.id === pendingCardId),
+        );
+        const target = shouldRetainPendingCard
+          ? retainCurrentCardIndex(loadedCards, pendingCardId, 0)
+          : getSessionStartIndex(
+            useAppStore.getState().sessionProgressIndex,
+            sessionKey,
+            loadedCards.length,
+          );
+        pendingSessionCardIdRef.current = null;
         setCurrentIndex(target);
+        setMaxVisitedIndex(target);
         sessionStartedRef.current = true;
       } else {
         setCurrentIndex((previousIndex) => (
@@ -142,7 +174,6 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
   const [sessionResults, setSessionResults] = useState<Record<string, number>>({});
   const [activeBreakdown, setActiveBreakdownState] = useState<string | null>(null);
   const [activeBreakdownIndex, setActiveBreakdownIndex] = useState<number>(0);
-  const [activeMemoryHook, setActiveMemoryHook] = useState<Flashcard | null>(null);
 
   const setActiveBreakdown = (text: string | null, index: number = 0) => {
     setActiveBreakdownState(text);
@@ -250,8 +281,6 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     activeBreakdown,
     activeBreakdownIndex,
     setActiveBreakdown,
-    activeMemoryHook,
-    setActiveMemoryHook,
     handleNavigate,
     handleNext,
     resetAll,

@@ -58,6 +58,7 @@ const exportedPages: number[] = [];
 
 try {
   for (const [lessonId, pages] of [...pagesByLesson.entries()].sort(([a], [b]) => a - b)) {
+    if (pages.size === 0) continue; // lesson has grammar but no digitized printed pages yet
     const pdfName = LESSON_PDFS[lessonId];
     if (!pdfName) throw new Error(`No source PDF configured for Lesson ${lessonId}`);
     const pdfPath = join(SOURCE_DIRECTORY, pdfName);

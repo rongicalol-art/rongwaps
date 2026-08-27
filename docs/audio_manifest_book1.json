@@ -1,0 +1,908 @@
+{
+  "bookId": 1,
+  "source": "official 時代華語 Book 1 cloud audio (淡江大學華語中心)",
+  "encoding": {
+    "codec": "mp3",
+    "bitrateKbps": 96,
+    "channels": 1
+  },
+  "count": 128,
+  "files": [
+    {
+      "file": "B1-01-1-1.mp3",
+      "bytes": 421101,
+      "sha256": "ba1ec1a22ed62f2e7c3951c82b2968e61347b23f66ac04b62b16890714900b59",
+      "durationSec": 35.02,
+      "trimmedIntroSec": 12.017271000000001
+    },
+    {
+      "file": "B1-01-1-2.mp3",
+      "bytes": 1590957,
+      "sha256": "f2696f408b997f20d88a19a490f765f6ce7c4f058fda4839ddfb2a5f0563b217",
+      "durationSec": 132.53,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-01-1-3.mp3",
+      "bytes": 1357389,
+      "sha256": "68fba26b31bf96255974c7e74ea4014970be1bc848a9d531b5e48be5fac1e437",
+      "durationSec": 113.06,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-01-2-1.mp3",
+      "bytes": 383373,
+      "sha256": "00cf1954ef224acd88b28510a2a9cd8489bdc584ef9ab6b2cda731e5d4289d64",
+      "durationSec": 31.9,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-01-2-2.mp3",
+      "bytes": 820557,
+      "sha256": "c6766631ad31f0b537dca6a263dbccc495dda7d17dcc2a04674803b9b5948313",
+      "durationSec": 68.31,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-01-2-3.mp3",
+      "bytes": 993069,
+      "sha256": "47474d4c3507fa550128109e91dce2a59fb019825748d0f40e484b2ab754e2ca",
+      "durationSec": 82.7,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-01-3-1.mp3",
+      "bytes": 399213,
+      "sha256": "5f8eda57720b7175b91bff7a306898ac623f917239b0030e168e58b695b07963",
+      "durationSec": 33.21,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-01-3-2.mp3",
+      "bytes": 1377261,
+      "sha256": "9015d615b65b151468c66987f280f8a869aeea0da63564c71c6d36c74c1a1f98",
+      "durationSec": 114.72,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-02-1-1.mp3",
+      "bytes": 460557,
+      "sha256": "a32c1c049730038a167f68c4caa72210941bc29f489a4f0bbd37844a2dfc6d50",
+      "durationSec": 38.32,
+      "trimmedIntroSec": 11.859146
+    },
+    {
+      "file": "B1-02-1-2.mp3",
+      "bytes": 2133261,
+      "sha256": "6acbca52473ae9bc3c088c40a2282eaf7baec6c1382ed16038a56149119e15f0",
+      "durationSec": 177.7,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-02-1-3.mp3",
+      "bytes": 1387917,
+      "sha256": "4e40de637aa385e5038718779d182aa858128f5b3c79f83457b5ca09173c8b06",
+      "durationSec": 115.61,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-02-2-1.mp3",
+      "bytes": 462861,
+      "sha256": "12f089c04f73559896bbcc9cdcc220a3ea8ed020564584612cea0648c1c10991",
+      "durationSec": 38.52,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-02-2-2.mp3",
+      "bytes": 1227501,
+      "sha256": "9e7373eb8a6b1aedcc11cf554379547e167e547f76bc0c4c1823042a997b9078",
+      "durationSec": 102.22,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-02-2-3.mp3",
+      "bytes": 1195533,
+      "sha256": "2e98bf65718049cf3c75aefd1493e2b3b2215c3c749e40ac66c7b1d4294a2304",
+      "durationSec": 99.58,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-02-3-1.mp3",
+      "bytes": 508941,
+      "sha256": "96a1dd5b9266962804cc65a2a67ce1a70031b145d16f1d52bf6893de1f2bf337",
+      "durationSec": 42.36,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-02-3-2.mp3",
+      "bytes": 1081485,
+      "sha256": "972e20d151d094e0ec6f56478c8d2f08a92f2b4c8d1c0a7d08fa180b3f2f68c0",
+      "durationSec": 90.07,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-03-1-1.mp3",
+      "bytes": 497133,
+      "sha256": "8fa07633bc1a655aeefdd2f65a9b35a8d7578a35bffe03b00845580408de715e",
+      "durationSec": 41.36,
+      "trimmedIntroSec": 12.161771
+    },
+    {
+      "file": "B1-03-1-2.mp3",
+      "bytes": 2114541,
+      "sha256": "ef39428a885e17bfa984cb2fef9e8cc87cce1c482d05411100f5619541c5e9d5",
+      "durationSec": 176.16,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-03-1-3.mp3",
+      "bytes": 1111437,
+      "sha256": "4e6963faccbc96e02b969babac153168d203e45ec695b2bd22fcb84617d065e4",
+      "durationSec": 92.57,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-03-2-1.mp3",
+      "bytes": 586125,
+      "sha256": "3758a6afd094d19c1f22a853a4020ac7a24db6a46995c95daa49b0472b149482",
+      "durationSec": 48.79,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-03-2-2.mp3",
+      "bytes": 2329101,
+      "sha256": "03f3c4f0de68111e60415dbbc9049cdecdf2b40a2ce4a29158f77d811032d5a4",
+      "durationSec": 194.04,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-03-2-3.mp3",
+      "bytes": 2340333,
+      "sha256": "b7fc128d5f2567d739870fbfd7420cf14713b315bbcce62a8b4907211cbdfe7e",
+      "durationSec": 194.98,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-03-3-1.mp3",
+      "bytes": 566541,
+      "sha256": "4e78db1f0813383fce1f130135ecd321c68f7e5afcc384bc9d1ef394ac313d13",
+      "durationSec": 47.16,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-03-3-2.mp3",
+      "bytes": 1046637,
+      "sha256": "a8e20e6d9aca3e878dbd528e8c5a35451bc2ff07ad610a9560ea08618e87e15f",
+      "durationSec": 87.17,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-04-1-1.mp3",
+      "bytes": 896877,
+      "sha256": "f6c1b26757bfedc5948f0e6de1f2466c4b72c7d1c9607005a940d37b79a76619",
+      "durationSec": 74.67,
+      "trimmedIntroSec": 12.261771000000001
+    },
+    {
+      "file": "B1-04-1-2.mp3",
+      "bytes": 2262861,
+      "sha256": "759318a4820b0b8a2b5a65e17594f4fec440317fea5595960d4d056fc2cc5036",
+      "durationSec": 188.51,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-04-1-3.mp3",
+      "bytes": 2079405,
+      "sha256": "d9fe66e0d1b18036062ea6bf1f5795b532e38339e3640d1f51c296c2b5d4e8a4",
+      "durationSec": 173.23,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-04-2-1.mp3",
+      "bytes": 557325,
+      "sha256": "4b08c53012a3946aea75d1db3cc82db2c6ff3c96f436c0ad5fec6ee3f9948436",
+      "durationSec": 46.39,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-04-2-2.mp3",
+      "bytes": 1885005,
+      "sha256": "a9081104c455b0bc0c431a19dba172f3f05cd55a8153315f151add232e9c8132",
+      "durationSec": 157.03,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-04-2-3.mp3",
+      "bytes": 1522989,
+      "sha256": "260224f802cd95a0e090ce538499a29ef6e0ccd101e29d1710186b63be50bb87",
+      "durationSec": 126.86,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-04-3-1.mp3",
+      "bytes": 540909,
+      "sha256": "a9d715014b6c6d6a7d367a40a1bbaf2e36c49ceb7f513d6de13f8bea654622e2",
+      "durationSec": 45.02,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-04-3-2.mp3",
+      "bytes": 1215693,
+      "sha256": "2b800e25577cc011c5efab45c1f9124ca03818b19746107659c817260da23780",
+      "durationSec": 101.23,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-05-1-1.mp3",
+      "bytes": 713421,
+      "sha256": "510f7023757d879cb8cd6888e4e7bd350131059173f502feff5246e433c0a480",
+      "durationSec": 59.4,
+      "trimmedIntroSec": 11.524708
+    },
+    {
+      "file": "B1-05-1-2.mp3",
+      "bytes": 1799181,
+      "sha256": "a281ab4e645a178f7c32ee8b434c2eb004f9c84b794c5d645a7592ef6cfff0b7",
+      "durationSec": 149.87,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-05-1-3.mp3",
+      "bytes": 1638765,
+      "sha256": "6d1383f2644be09a2b15a7cce6a7c3211669df535829403a082223de26186f08",
+      "durationSec": 136.51,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-05-2-1.mp3",
+      "bytes": 648909,
+      "sha256": "b5b71a69c21214f9ec2da03c0465298eb0adcd7ba5cc428537a149d3eda9bb80",
+      "durationSec": 54.02,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-05-2-2.mp3",
+      "bytes": 2704653,
+      "sha256": "04b90df4bbded8e6fd3d53b34187eef0190850bf9e6c336b1dd78c7ecf01f5aa",
+      "durationSec": 225.33,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-05-2-3.mp3",
+      "bytes": 1875501,
+      "sha256": "c13d5586a3bc5d99fe59ead6a4008484bf45d64443e445fefc06d28b64664ef5",
+      "durationSec": 156.23,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-05-3-1.mp3",
+      "bytes": 577485,
+      "sha256": "20ea4804a002230c1af978ff4b030419a64571adca71faa5700fa73a6faed943",
+      "durationSec": 48.07,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-05-3-2.mp3",
+      "bytes": 1242189,
+      "sha256": "09dc5dedb9efe2e1174485b731b8cc2c46ff56ceeb88684fecd9538371c5000a",
+      "durationSec": 103.45,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-06-1-1.mp3",
+      "bytes": 663597,
+      "sha256": "86765b498d91ad7352877fdbd5383ff0a3420217c81bab2aa15dcf1172eb4a8a",
+      "durationSec": 55.23,
+      "trimmedIntroSec": 11.509708
+    },
+    {
+      "file": "B1-06-1-2.mp3",
+      "bytes": 1902573,
+      "sha256": "75a44514ea7f217fdedb5066e209250ec4961d9621f1b2b1484ca3e638e9ab34",
+      "durationSec": 158.5,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-06-1-3.mp3",
+      "bytes": 2637549,
+      "sha256": "a40de999b9f2067875afdef61b6370d0dad6847f8314dcbb7d3d2f34b580e8cf",
+      "durationSec": 219.74,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-06-2-1.mp3",
+      "bytes": 603405,
+      "sha256": "f3d10d0fc70acab6aa8f811b402e0bb16d73d165d79ed760411dc15d952d5cda",
+      "durationSec": 50.23,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-06-2-2.mp3",
+      "bytes": 2616525,
+      "sha256": "7ecca313b26763dd9085614789c034ec2e65f0d719b808346941359302af4af0",
+      "durationSec": 217.98,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-06-2-3.mp3",
+      "bytes": 1787373,
+      "sha256": "0196d85e833224c904768dc71636059831d99c3b4117024fa80cbd5886ec63cc",
+      "durationSec": 148.9,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-06-3-1.mp3",
+      "bytes": 644589,
+      "sha256": "20fafdb315687a4bcdf14da6caf060b39b6a10757b3ab83f6c6b4ac6eda16a90",
+      "durationSec": 53.66,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-06-3-2.mp3",
+      "bytes": 1871757,
+      "sha256": "40268d1e5f6c7d49187aa82d2b1c3d2f27cf5e81cfa419d3fa6ba22b0f365b6b",
+      "durationSec": 155.93,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-07-1-1.mp3",
+      "bytes": 708525,
+      "sha256": "1a9c766df43507b38d9211a70571d422d2a8f2f0d99490fe584833108477171e",
+      "durationSec": 58.99,
+      "trimmedIntroSec": 11.236583000000001
+    },
+    {
+      "file": "B1-07-1-2.mp3",
+      "bytes": 2310093,
+      "sha256": "bde5de2067792e63c3ecb65f77466a60226a87288c2510b5d5c5019cfd82b1d8",
+      "durationSec": 192.45,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-07-1-3.mp3",
+      "bytes": 2314701,
+      "sha256": "ee28105015550438635090430d210324bf6995263bb51482ded6de562fe20abd",
+      "durationSec": 192.84,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-07-2-1.mp3",
+      "bytes": 642285,
+      "sha256": "26ab58f8a4dfa4556d273663139ece6fde044b8a7caa66efa851bc4c6d3f2905",
+      "durationSec": 53.47,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-07-2-2.mp3",
+      "bytes": 1474605,
+      "sha256": "c8b3d3319e500ac7e796c1399c4057e398c10676d47a6af7f35b61787084fdd1",
+      "durationSec": 122.83,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-07-2-3.mp3",
+      "bytes": 987885,
+      "sha256": "906f9845fe9697a6edc4cefd996cf120cb2417abde401ff9cabef4f8404b00bc",
+      "durationSec": 82.27,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-07-3-1.mp3",
+      "bytes": 669069,
+      "sha256": "56e0e7917b10efe115731acf81101663f8ec1dcbebc4d7c0bad32e6a5774df64",
+      "durationSec": 55.7,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-07-3-2.mp3",
+      "bytes": 1150317,
+      "sha256": "4780455d40ebb473dfc660e90e0fcd74e2b492acd6d055e7cbddfdabe782c3ec",
+      "durationSec": 95.81,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-08-1-1.mp3",
+      "bytes": 947565,
+      "sha256": "5d2acb249a61254ec3e5454772bb122e1a0751291d9b4bfed603736b9aa500e5",
+      "durationSec": 78.9,
+      "trimmedIntroSec": 11.244854
+    },
+    {
+      "file": "B1-08-1-2.mp3",
+      "bytes": 2162925,
+      "sha256": "0a374a3885204fcb8b698ae797d02b0a42e3a2d6eef964e180da9d5b61ed128d",
+      "durationSec": 180.19,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-08-1-3.mp3",
+      "bytes": 2035629,
+      "sha256": "19439399f6e1a669973bba075272a7ffd394330baf2f60e438b5c95cdaac17bc",
+      "durationSec": 169.58,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-08-2-1.mp3",
+      "bytes": 725229,
+      "sha256": "6ef2ddb5e9f4f8e185d9be6991902b611359ada260d695d3aa6c680c0f91bac4",
+      "durationSec": 60.38,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-08-2-2.mp3",
+      "bytes": 1921581,
+      "sha256": "3250b522b3d31c3895f726ed6ba5a025bd1a328b2102c87ee36b247b03ae081d",
+      "durationSec": 160.07,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-08-2-3.mp3",
+      "bytes": 1428525,
+      "sha256": "f0999f4ed91a0ab69ce1ce5bcd51237c7bc3d01e27eacd86a9e7bb2391babccc",
+      "durationSec": 118.99,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-08-3-1.mp3",
+      "bytes": 795501,
+      "sha256": "b3d5fd8fcc3aa580de5648479d367c45562203a99e1479b4dd29fc20ad534079",
+      "durationSec": 66.24,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-08-3-2.mp3",
+      "bytes": 801837,
+      "sha256": "b393946d38fd96c36ece477ae7f819df3c8c857908d24907b58f92763c8c7067",
+      "durationSec": 66.77,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-09-1-1.mp3",
+      "bytes": 727821,
+      "sha256": "03e580d29ec24b97436cb2d8b51aaed0816a2d87eaf3d5240f9ef922d9c11281",
+      "durationSec": 60.59,
+      "trimmedIntroSec": 11.649479000000001
+    },
+    {
+      "file": "B1-09-1-2.mp3",
+      "bytes": 1804941,
+      "sha256": "7b92dbb72ae42afe6437478b81298ba3b05fe74853320e045cb17e5f3d86f74d",
+      "durationSec": 150.36,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-09-1-3.mp3",
+      "bytes": 1580301,
+      "sha256": "59c8b426c295ab3406238be53e1459107bd8fb18ffa6a919fd95841f2df3c828",
+      "durationSec": 131.64,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-09-2-1.mp3",
+      "bytes": 651213,
+      "sha256": "4ba516f41dd390ba036c8f8199af0b92a35e285ed4c82ad4da33806c59147dbe",
+      "durationSec": 54.22,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-09-2-2.mp3",
+      "bytes": 1698957,
+      "sha256": "cf5406684b78806837a72ccc6717ca6e4bb02e527be49c88425bea4d3ef27e49",
+      "durationSec": 141.5,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-09-2-3.mp3",
+      "bytes": 1805229,
+      "sha256": "3732fb8292866f1e16b6f2c357ef5ab9ef89e677b942fca0a0617e85ca50a5b8",
+      "durationSec": 150.38,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-09-3-1.mp3",
+      "bytes": 841581,
+      "sha256": "d30e14d1ed297f52828dd2678c16626b01745e1d3212b4438a4e6bb0126294fd",
+      "durationSec": 70.08,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-09-3-2.mp3",
+      "bytes": 1745325,
+      "sha256": "dd2ff12ecc4f8f808011a6b2e3065fda0c1798be23e5e348a2dfddbe06f27dd4",
+      "durationSec": 145.39,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-10-1-1.mp3",
+      "bytes": 851661,
+      "sha256": "586e68583a4b05d1269c3efef667808244bbb297a14809ee883c77f65a560719",
+      "durationSec": 70.91,
+      "trimmedIntroSec": 11.843458
+    },
+    {
+      "file": "B1-10-1-2.mp3",
+      "bytes": 1743309,
+      "sha256": "3cb885349f503c4f80cbd701788c55a94c916b7fb675a4762989cc2aaffda2ec",
+      "durationSec": 145.22,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-10-1-3.mp3",
+      "bytes": 2867085,
+      "sha256": "1ddc37402b1865b0efd165f19dffa2c0b94a0b8035f3d01e18e5dafdccd7770c",
+      "durationSec": 238.87,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-10-2-1.mp3",
+      "bytes": 615501,
+      "sha256": "8c87c862696088a051b774c2f460b2268b654e923d889b2794777cf302c673f4",
+      "durationSec": 51.24,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-10-2-2.mp3",
+      "bytes": 1886157,
+      "sha256": "09e42a7b7a3900bb9b7f10dbe69c5da467e20d592d71dff0beac66519fb361b4",
+      "durationSec": 157.11,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-10-2-3.mp3",
+      "bytes": 1136781,
+      "sha256": "11ccf176154090f45897fd4e9d28c4106939be31950fde4aaba29e85cf28b40b",
+      "durationSec": 94.68,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-10-3-1.mp3",
+      "bytes": 767277,
+      "sha256": "8c1607ec3d5ce69fa923742aae6d15f12ff8b5b7dc231587adde57c59f7462fc",
+      "durationSec": 63.89,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-10-3-2.mp3",
+      "bytes": 999117,
+      "sha256": "ab2a931df2d8f9f43ddb420404f8eb4c7b0fc11858047dd9a95f2265c5f0cab8",
+      "durationSec": 83.19,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-11-1-1.mp3",
+      "bytes": 781965,
+      "sha256": "2b2d24c7449f543d43c18acc2eb90c80190c9b9473685bb358a1f8e636e2b01b",
+      "durationSec": 65.11,
+      "trimmedIntroSec": 10.110375000000001
+    },
+    {
+      "file": "B1-11-1-2.mp3",
+      "bytes": 2180493,
+      "sha256": "28b56bb7f0e664120c3f763b4f16d98ff63950f35d2970d0da7c5deec4f7c7ee",
+      "durationSec": 181.66,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-11-1-3.mp3",
+      "bytes": 3109005,
+      "sha256": "15d56cd58045abbab991c747174c5e16e7b5e77e3707ca455120c86b8111eebb",
+      "durationSec": 259.03,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-11-2-1.mp3",
+      "bytes": 738765,
+      "sha256": "22528785ae566a0aee0f304b5d84b1833eb362b35b20660240d368f4e5f4ddf5",
+      "durationSec": 61.51,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-11-2-2.mp3",
+      "bytes": 1709037,
+      "sha256": "c56f4cdaee0306a77536d637300766ea1231dda93f6f43f872e46f6400d67dfa",
+      "durationSec": 142.35,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-11-2-3.mp3",
+      "bytes": 2314413,
+      "sha256": "26f7951464b9befb9ad0db890657ca7fb82955c142e1e4f085ac3f4fa85454af",
+      "durationSec": 192.82,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-11-3-1.mp3",
+      "bytes": 871245,
+      "sha256": "eca9725ea467af553f7bebc24294358e70bb748b1c26fd6d40366072186fdf3e",
+      "durationSec": 72.55,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-11-3-2.mp3",
+      "bytes": 1729197,
+      "sha256": "f28d95fdfb723c30758bf17f637b1fa066783679ae06e9bd10f6bcd6a2f0679b",
+      "durationSec": 144.05,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-12-1-1.mp3",
+      "bytes": 857421,
+      "sha256": "c10839c6e39b61ae1511560e0436cc6c60373a9421479366573dbbbdfdbc4355",
+      "durationSec": 71.39,
+      "trimmedIntroSec": 11.337417
+    },
+    {
+      "file": "B1-12-1-2.mp3",
+      "bytes": 2353005,
+      "sha256": "3e67d221850d66dc24b2f4ebdb12626972b4f3f86f21087838ecbde042881dec",
+      "durationSec": 196.03,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-12-1-3.mp3",
+      "bytes": 2659725,
+      "sha256": "2734f271d1ce5f3b2657a986ed2f2a1ff54bf6d2dcd2ba9397360f878626a3f7",
+      "durationSec": 221.59,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-12-2-1.mp3",
+      "bytes": 939213,
+      "sha256": "eda980287499aa97cd61b5d2555c3afddb07957af057a1df1314689ca03d5f7d",
+      "durationSec": 78.22,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-12-2-2.mp3",
+      "bytes": 1633869,
+      "sha256": "618679fd3d8509a2f94baf638dc0dc7afda3915f763ddbeb0e1ceb8a4ec76553",
+      "durationSec": 136.1,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-12-2-3.mp3",
+      "bytes": 2219373,
+      "sha256": "8d5da15dae8699226c8eaa387500524d2ed64e40d2e5f37ec7e06de302a6399b",
+      "durationSec": 184.9,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-12-3-1.mp3",
+      "bytes": 736173,
+      "sha256": "0b446a29a81e20dfe18bc74a61d5f3b3e7ecbd08c95eb4c6aa29b23b8ef529b8",
+      "durationSec": 61.3,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-12-3-2.mp3",
+      "bytes": 1926765,
+      "sha256": "b0b594beeadc21a4486090151e7ceb814ba112ae8006dc9b40c40e8ba42c016c",
+      "durationSec": 160.51,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-13-1-1.mp3",
+      "bytes": 989901,
+      "sha256": "c766abfe16675b5b47062c0eda206b9a300265d8b51ff1942c4261cb4a803cf6",
+      "durationSec": 82.43,
+      "trimmedIntroSec": 11.408125
+    },
+    {
+      "file": "B1-13-1-2.mp3",
+      "bytes": 2004813,
+      "sha256": "086053cf106351dc1463052efeafac0bc9e92c37d8ca2171613986becb89d5cb",
+      "durationSec": 167.01,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-13-1-3.mp3",
+      "bytes": 1583757,
+      "sha256": "8869f13183c983f9a6110f5a801477f3cb269cf93048d250a5b90c0b7a47c4df",
+      "durationSec": 131.93,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-13-2-1.mp3",
+      "bytes": 997965,
+      "sha256": "f4f01b84240bff4c1fd05343574ef1e90cc47127082c0e51b3f5117edc9f81f6",
+      "durationSec": 83.11,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-13-2-2.mp3",
+      "bytes": 1487277,
+      "sha256": "bd0a0d6a836569c4638a1a0df46bb153001115745558f038751bab5cf45e2ca4",
+      "durationSec": 123.89,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-13-2-3.mp3",
+      "bytes": 2097549,
+      "sha256": "f30e8b096b0f8f217711f5905587dbf3173956e94c8c86efc34514b152269534",
+      "durationSec": 174.74,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-13-3-1.mp3",
+      "bytes": 887661,
+      "sha256": "34ac0bdf8e352ad4ab8fbda26825557a73760548c784a0c81c7a6bd7268abff6",
+      "durationSec": 73.92,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-13-3-2.mp3",
+      "bytes": 1961901,
+      "sha256": "fe4f50d28805a515ce9a9eb7277451b536e0be8bd65b1035eb28c35e33b3c75c",
+      "durationSec": 163.42,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-14-1-1.mp3",
+      "bytes": 1306701,
+      "sha256": "c507e9bfc3050e55fb5254276d49c65d4cfda5a62ed8f1de2a044ae036836fd3",
+      "durationSec": 108.84,
+      "trimmedIntroSec": 11.859667
+    },
+    {
+      "file": "B1-14-1-2.mp3",
+      "bytes": 2603853,
+      "sha256": "59fc4206e7a1d73ce7d25d80859b633312ad9a4c572f1f38b66d674c235ccd85",
+      "durationSec": 216.94,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-14-1-3.mp3",
+      "bytes": 2676429,
+      "sha256": "0699e4b45a5b82fb376ef18893df36c11181a53911a07297c0fdc5ef2d6e8c29",
+      "durationSec": 222.98,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-14-2-1.mp3",
+      "bytes": 1332621,
+      "sha256": "3977b8041ef25a68d4abaa8d30462111f7cb0ad2cc733e57b691c098af4efb0e",
+      "durationSec": 111,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-14-2-2.mp3",
+      "bytes": 2359629,
+      "sha256": "1d8e8791f8b918036eac9fd8b651e02c6a2a6aac9438a2476ee512bd9597fce7",
+      "durationSec": 196.58,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-14-2-3.mp3",
+      "bytes": 1206477,
+      "sha256": "851535a0ed4bab5e8809d5e915a0b389092703333859e42353648a1daf73a5fd",
+      "durationSec": 100.49,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-14-3-1.mp3",
+      "bytes": 953325,
+      "sha256": "00495cfd735a2e3ac99a1a639cd38756c264f0a1a2931cef0694c9faf75d0fc3",
+      "durationSec": 79.39,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-14-3-2.mp3",
+      "bytes": 953037,
+      "sha256": "c4aa721b0369c38d3b941a35d67f10a911257699ff0b64ea7b200b2d5a7fb69e",
+      "durationSec": 79.35,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-15-1-1.mp3",
+      "bytes": 1025037,
+      "sha256": "8c8f8c63be68d81cd95fc513ce4d9a084580cb04ef85a161398c493d7562f178",
+      "durationSec": 85.36,
+      "trimmedIntroSec": 11.284708
+    },
+    {
+      "file": "B1-15-1-2.mp3",
+      "bytes": 2293965,
+      "sha256": "e5541ba6c85f5b143fbfdb86d343dd45a511ab5d71a23321d1b31b942c69fbd5",
+      "durationSec": 191.11,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-15-1-3.mp3",
+      "bytes": 1524717,
+      "sha256": "b19091db201ce22acec937cbd4b41bc8bf7b5a4becb5efe6bb1b08d60c787d8b",
+      "durationSec": 127.01,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-15-2-1.mp3",
+      "bytes": 818541,
+      "sha256": "7bc7302c875806deb3dbdecd5a47159346577fd3de57c13508c2992cbd409ce3",
+      "durationSec": 68.16,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-15-2-2.mp3",
+      "bytes": 1109421,
+      "sha256": "fc568d057c96db8c2b355280554922405988e6ff67ea646a475ce7a8db8a62ff",
+      "durationSec": 92.39,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-15-2-3.mp3",
+      "bytes": 1412397,
+      "sha256": "5d1d6b86dceacfec43a5b20820d76ad5b7b42f2f2080d9d68962fa3b41949ac6",
+      "durationSec": 117.65,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-15-3-1.mp3",
+      "bytes": 1109133,
+      "sha256": "4b203ecd769448ec0a7fcd06c68375d4deb677d96b4ae253169bcdfd22981f03",
+      "durationSec": 92.38,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-15-3-2.mp3",
+      "bytes": 1721997,
+      "sha256": "a4c8497ea30e5037b4e75c84c2f04c45331f38e71adddabe93202aad07857873",
+      "durationSec": 143.43,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-16-1-1.mp3",
+      "bytes": 1256589,
+      "sha256": "7b4e01c0642a82709211de747d73f7d2ee3cfa3693178c5562ab95cee9defe08",
+      "durationSec": 104.65,
+      "trimmedIntroSec": 11.456458000000001
+    },
+    {
+      "file": "B1-16-1-2.mp3",
+      "bytes": 2452653,
+      "sha256": "4c834dacc3902a4fd6c15af890eb65925f81e6d499c859c96965f314248854ef",
+      "durationSec": 204.34,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-16-1-3.mp3",
+      "bytes": 2119437,
+      "sha256": "4b54ca73c4f9e38b906a1c455c77abfd99d7f6f1046666fd14e61518711a9cab",
+      "durationSec": 176.57,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-16-2-1.mp3",
+      "bytes": 954477,
+      "sha256": "4b0cf96213e10dc8064967e289c0e262a411e1cd3c08de33e1976a896460ce09",
+      "durationSec": 79.49,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-16-2-2.mp3",
+      "bytes": 1648269,
+      "sha256": "9124e7cba1d63dcdaf5d139e2984ce4e6085e1d7379588a7e1fd3e895247753d",
+      "durationSec": 137.3,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-16-2-3.mp3",
+      "bytes": 2414061,
+      "sha256": "399d2f1ef90d0fb6623402c011ffe9ea4ae9947c1c2b7303bf41ec16c2940e3a",
+      "durationSec": 201.1,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-16-3-1.mp3",
+      "bytes": 1148589,
+      "sha256": "a34850604e7b5b43017571c99c27c837ee68c121fc25b0023f5e430f9d79e59a",
+      "durationSec": 95.66,
+      "trimmedIntroSec": null
+    },
+    {
+      "file": "B1-16-3-2.mp3",
+      "bytes": 1384461,
+      "sha256": "3d509c978b82f0a61db06884d0231e65a6cb57faccd92e2dd7bdc43ed9311f7c",
+      "durationSec": 115.3,
+      "trimmedIntroSec": null
+    }
+  ]
+}

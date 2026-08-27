@@ -45,7 +45,7 @@ const sharedLexicon = [
   lexeme('筆', 'bǐ', 'pen', '笔'),
   lexeme('鉛筆', 'qiānbǐ', 'pencil', '铅笔'),
   lexeme('書', 'shū', 'book', '书'),
-  lexeme('中文書', 'Zhōngwén shū', 'Chinese-language book', '中文书'),
+  lexeme('中文書', 'Zhōngwén shū', 'book in Chinese', '中文书'),
   lexeme('衣服', 'yīfu', 'clothes'),
   lexeme('花', 'huā', 'flower; flowers'),
   lexeme('蛋糕', 'dàngāo', 'cake'),
@@ -61,18 +61,19 @@ const sharedLexicon = [
   lexeme('新', 'xīn', 'new'),
   lexeme('舊', 'jiù', 'old', '旧'),
   lexeme('好', 'hǎo', 'good'),
+  lexeme('好不好', 'hǎo bù hǎo', 'okay or not'),
   lexeme('好看', 'hǎokàn', 'good-looking'),
   lexeme('漂亮', 'piàoliang', 'beautiful'),
   lexeme('可愛', 'kě’ài', 'cute; lovely', '可爱'),
   lexeme('快樂', 'kuàilè', 'happy', '快乐'),
   lexeme('便宜', 'piányí', 'inexpensive'),
   lexeme('貴', 'guì', 'expensive', '贵'),
-  lexeme('的', 'de', 'links a description to a noun; can stand for a known noun'),
+  lexeme('的', 'de', 'connects a describing word to a thing; can stand for a known thing'),
   lexeme('都', 'dōu', 'both; all'),
-  lexeme('很', 'hěn', 'marks a positive description'),
+  lexeme('很', 'hěn', 'very'),
   lexeme('不', 'bù', 'not'),
   lexeme('不要', 'bú yào', 'do not want'),
-  lexeme('嗎', 'ma', 'yes-or-no question particle', '吗'),
+  lexeme('嗎', 'ma', 'ending word for a yes-or-no question', '吗'),
   lexeme('是', 'shì', 'is; am; are'),
   lexeme('有', 'yǒu', 'have'),
   lexeme('喜歡', 'xǐhuān', 'like', '喜欢'),
@@ -119,7 +120,7 @@ export const LESSON_THREE_GRAMMAR_THREE: InteractiveGrammarPage = {
   grammarNumber: 3,
   titleTraditional: '這／那／哪 + 數量 + 名詞',
   titleEnglish: 'Point to This, That, or Which Thing',
-  learnerPromise: 'Point out nearby and farther things, or ask which one someone means.',
+  learnerPromise: 'Point to things that are near or far, or ask which one someone means.',
   printedPages: [81, 82],
   audioReference: '03-2-3',
   explanation:
@@ -129,9 +130,8 @@ export const LESSON_THREE_GRAMMAR_THREE: InteractiveGrammarPage = {
   pattern: '這 / 那 / 哪 + number + measure word + noun',
   patternColumns: ['Point or ask', 'Quantity + measure word', 'Thing'],
   patternAccentColumn: 0,
-  patternMobileLayout: 'middle-wide',
   discoveryLab: {
-    title: 'Aim first, then name the item',
+    title: 'Pick the pointing word first',
     description: 'The first word shows distance or asks the listener to choose.',
     prompt: 'What job should the first word do?',
     choices: [
@@ -160,10 +160,10 @@ export const LESSON_THREE_GRAMMAR_THREE: InteractiveGrammarPage = {
         simplified: '哪十个人？',
         pinyin: 'nǎ shí ge rén?',
         english: 'which ten people?',
-        note: '哪 asks the listener to identify a choice.',
+        note: '哪 asks the listener to choose one.',
       },
     ],
-    takeaway: 'Choose 這, 那, or 哪 first; keep the full quantity phrase after it.',
+    takeaway: 'Choose 這, 那, or 哪 first, then the full number + measure word + noun.',
   },
   patternRows: [
     {
@@ -188,6 +188,56 @@ export const LESSON_THREE_GRAMMAR_THREE: InteractiveGrammarPage = {
       english: 'which ten people?',
     },
   ],
+  confusion: {
+    title: "Don't mix these up",
+    items: [
+      {
+        id: 'g3-confusion-zhe-vs-na',
+        question: 'This book is in my hand. Do I point with 這 or 那?',
+        answer: '這 — it is near you. 那 is for things farther away.',
+        wrongTraditional: '那本書很好看。',
+        wrongSimplified: '那本书很好看。',
+        right: grammarText(
+          'b1l03-g3-conf-1',
+          '這本書很好看。',
+          '这本书很好看。',
+          'Zhè běn shū hěn hǎokàn.',
+          'This book looks good.',
+          sharedLexicon,
+        ),
+      },
+      {
+        id: 'g3-confusion-na-in-answer',
+        question: 'I am choosing one thing to buy. Should my answer use 哪?',
+        answer: 'No. 哪 asks "which?" in the question. Your answer chooses with 這 or 那.',
+        wrongTraditional: '我想買哪種筆。',
+        wrongSimplified: '我想买哪种笔。',
+        right: grammarText(
+          'b1l03-g3-conf-2',
+          '我想買這種筆。',
+          '我想买这种笔。',
+          'Wǒ xiǎng mǎi zhè zhǒng bǐ.',
+          'I would like to buy this kind of pen.',
+          sharedLexicon,
+        ),
+      },
+      {
+        id: 'g3-confusion-point-first',
+        question: 'Which comes first — the pointing word or the number?',
+        answer: 'The pointing word first: 這 / 那 / 哪, then the number, measure word, and noun.',
+        wrongTraditional: '三件這衣服。',
+        wrongSimplified: '三件这衣服。',
+        right: grammarText(
+          'b1l03-g3-conf-3',
+          '這三件衣服很漂亮。',
+          '这三件衣服很漂亮。',
+          'Zhè sān jiàn yīfu hěn piàoliang.',
+          'These three clothes are beautiful.',
+          sharedLexicon,
+        ),
+      },
+    ],
+  },
   examples: [
     {
       id: 'g3-example-1',
@@ -227,10 +277,10 @@ export const LESSON_THREE_GRAMMAR_THREE: InteractiveGrammarPage = {
     },
   ],
   exerciseTitle: 'Point, count, describe',
-  exercisePreview: 'Answer each source picture prompt with a complete phrase.',
+  exercisePreview: 'Answer each picture question with a full phrase.',
   exerciseInstruction: 'Keep 這, 那, or 哪 before the quantity and noun.',
   exerciseNote:
-    'The source prints open picture prompts without an answer key. These app-authored models describe the printed objects.',
+    'The book prints picture questions with no answer key. These practice answers describe what the pictures show.',
   exerciseResponseMode: 'text',
   exerciseCues: [
     { id: 'g3-cue-shirts', label: 'Picture 1', pinyin: 'zhè sān jiàn yīfu', detail: 'Three shirts hang together.' },
@@ -252,7 +302,7 @@ export const LESSON_THREE_GRAMMAR_THREE: InteractiveGrammarPage = {
         answerTile('g3-q1-which', '哪三件衣服很漂亮', 'nǎ sān jiàn yīfu hěn piàoliang', 'which three clothes are beautiful'),
       ],
       correctFeedback: 'The question points with 這, so the answer keeps 這三件衣服.',
-      repairFeedback: 'Match the source question: it asks about 這三件衣服, not 那 or 哪.',
+      repairFeedback: 'Match the question: it asks about 這三件衣服, not 那 or 哪.',
     },
     {
       id: 'g3-question-2',
@@ -275,7 +325,7 @@ export const LESSON_THREE_GRAMMAR_THREE: InteractiveGrammarPage = {
       number: 3,
       segments: [
         { type: 'text', traditional: 'A：你想買哪種東西？ B：', simplified: 'A：你想买哪种东西？ B：' },
-        { type: 'blank', id: 'g3-q3-answer', answer: '我想買這種筆', answerSimplified: '我想买这种笔', hint: 'Choose one model item from the picture.' },
+        { type: 'blank', id: 'g3-q3-answer', answer: '我想買這種筆', answerSimplified: '我想买这种笔', hint: 'Pick one item from the picture.' },
         { type: 'text', traditional: '。' },
       ],
       tiles: [
@@ -307,13 +357,12 @@ export const LESSON_THREE_GRAMMAR_FOUR: InteractiveGrammarPage = {
   focusTerms: ['描述', '的', '名詞', '名词', '大的', '小的', '新的', '舊的', '旧的'],
   teachingGlossary: teachingGlossary('b1l03-g04', sharedLexicon),
   pattern: 'Description + 的 + noun, or description + 的',
-  patternColumns: ['Description', '的', 'Noun or understood noun'],
+  patternColumns: ['Describing word', '的', 'Thing (or nothing)'],
   patternAccentColumn: 1,
-  patternMobileLayout: 'balanced',
   discoveryLab: {
-    title: 'Use 的 as a noun hook',
-    description: 'The description can attach to a spoken noun or stand in for a noun everyone already knows.',
-    prompt: 'How much of the noun phrase does the listener need?',
+    title: 'Keep 的 when the thing is not named',
+    description: '的 can join a describing word to a thing, or stand in for a thing everyone already knows.',
+    prompt: 'Does the listener need the thing named again?',
     choices: [
       {
         id: 'g4-full',
@@ -340,7 +389,7 @@ export const LESSON_THREE_GRAMMAR_FOUR: InteractiveGrammarPage = {
         simplified: '他要买大的。',
         pinyin: 'Tā yào mǎi dà de.',
         english: 'He wants to buy the big one.',
-        note: '大的 keeps 的 because it replaces the known noun.',
+        note: '大的 keeps 的 because it stands for the thing already named.',
       },
       {
         id: 'g4-repair',
@@ -349,11 +398,11 @@ export const LESSON_THREE_GRAMMAR_FOUR: InteractiveGrammarPage = {
         simplified: '我要买大 → 我要买大的',
         pinyin: 'Wǒ yào mǎi dà → wǒ yào mǎi dà de',
         english: 'I want to buy the big one.',
-        note: 'When the noun disappears, 的 remains as the noun hook.',
+        note: 'When the thing is dropped, 的 stays.',
         isCorrection: true,
       },
     ],
-    takeaway: 'If the noun is omitted, 的 stays: 大的, 新的, 便宜的.',
+    takeaway: 'If the thing is not named, 的 stays: 大的, 新的, 便宜的.',
   },
   patternRows: [
     {
@@ -378,6 +427,56 @@ export const LESSON_THREE_GRAMMAR_FOUR: InteractiveGrammarPage = {
       english: 'the big one',
     },
   ],
+  confusion: {
+    title: "Don't mix these up",
+    items: [
+      {
+        id: 'g4-confusion-de-stays',
+        question: 'The thing is already clear. Can I drop 的 too?',
+        answer: 'No. When the noun goes, 的 must stay: 大的, 新的.',
+        wrongTraditional: '我要買大。',
+        wrongSimplified: '我要买大。',
+        right: grammarText(
+          'b1l03-g4-conf-1',
+          '我要買大的。',
+          '我要买大的。',
+          'Wǒ yào mǎi dà de.',
+          'I want to buy the big one.',
+          sharedLexicon,
+        ),
+      },
+      {
+        id: 'g4-confusion-de-before-noun',
+        question: 'Do I need 的 between 好看 and 蛋糕?',
+        answer: 'Yes. Longer describing words like 好看 or 可愛 take 的 before the noun.',
+        wrongTraditional: '我喜歡好看蛋糕。',
+        wrongSimplified: '我喜欢好看蛋糕。',
+        right: grammarText(
+          'b1l03-g4-conf-2',
+          '我喜歡好看的蛋糕。',
+          '我喜欢好看的蛋糕。',
+          'Wǒ xǐhuān hǎokàn de dàngāo.',
+          'I like the good-looking cake.',
+          sharedLexicon,
+        ),
+      },
+      {
+        id: 'g4-confusion-de-dropped',
+        question: 'Short words like 小 — do they also need 的?',
+        answer: 'No. One-syllable words like 小 or 新 drop 的: 小蛋糕, 新書.',
+        wrongTraditional: '我要買小的蛋糕。',
+        wrongSimplified: '我要买小的蛋糕。',
+        right: grammarText(
+          'b1l03-g4-conf-3',
+          '我要買小蛋糕。',
+          '我要买小蛋糕。',
+          'Wǒ yào mǎi xiǎo dàngāo.',
+          'I want to buy a small cake.',
+          sharedLexicon,
+        ),
+      },
+    ],
+  },
   examples: [
     {
       id: 'g4-example-1',
@@ -420,12 +519,12 @@ export const LESSON_THREE_GRAMMAR_FOUR: InteractiveGrammarPage = {
   exercisePreview: 'Answer with description + 的 when the noun is already known.',
   exerciseInstruction: 'The question already names the object. Keep 的 and omit the repeated noun.',
   exerciseNote:
-    'The source pictures supply each contrast. Model answers are app-authored because the book prints no answer key.',
+    'The pictures in the book show each choice. The book prints no answer key, so these practice answers are made for the app.',
   exerciseResponseMode: 'text',
   exerciseCues: [
     { id: 'g4-cue-gift', label: 'Picture 1', pinyin: 'dà de / xiǎo de', detail: 'A large gift and a small gift.' },
     { id: 'g4-cue-book', label: 'Picture 2', pinyin: 'xīn de / jiù de', detail: 'A new book and an old book.' },
-    { id: 'g4-cue-cake', label: 'Picture 3', pinyin: 'hǎokàn de', detail: 'A plain cake and a decorated cake; the prompt supplies 好看.' },
+    { id: 'g4-cue-cake', label: 'Picture 3', pinyin: 'hǎokàn de', detail: 'A plain cake and a decorated cake; the question gives the word 好看.' },
   ],
   questions: [
     {
@@ -465,7 +564,7 @@ export const LESSON_THREE_GRAMMAR_FOUR: InteractiveGrammarPage = {
       number: 3,
       segments: [
         { type: 'text', traditional: 'A：你喜歡哪個蛋糕？ B：', simplified: 'A：你喜欢哪个蛋糕？ B：' },
-        { type: 'blank', id: 'g4-q3-answer', answer: '我喜歡好看的', answerSimplified: '我喜欢好看的', hint: 'Use the prompt word 好看 and replace 蛋糕 with 的.' },
+        { type: 'blank', id: 'g4-q3-answer', answer: '我喜歡好看的', answerSimplified: '我喜欢好看的', hint: 'Use the word 好看 and replace 蛋糕 with 的.' },
         { type: 'text', traditional: '。' },
       ],
       tiles: [
@@ -499,7 +598,6 @@ export const LESSON_THREE_GRAMMAR_FIVE: InteractiveGrammarPage = {
   pattern: 'Group + 都 + action or description',
   patternColumns: ['Whole group', '都', 'Shared action or quality'],
   patternAccentColumn: 1,
-  patternMobileLayout: 'leading-wide',
   discoveryLab: {
     title: 'Gather the group before 都',
     description: '都 collects everyone or everything already named, then gives them one shared result.',
@@ -530,7 +628,7 @@ export const LESSON_THREE_GRAMMAR_FIVE: InteractiveGrammarPage = {
         simplified: '他们都不喜欢喝茶。',
         pinyin: 'Tāmen dōu bù xǐhuān hē chá.',
         english: 'None of them likes drinking tea.',
-        note: '都 comes before 不 + 喜歡 because the whole group shares the negative action.',
+        note: '都 comes before 不 because the whole group shares the same "not".',
       },
       {
         id: 'g5-repair',
@@ -568,6 +666,56 @@ export const LESSON_THREE_GRAMMAR_FIVE: InteractiveGrammarPage = {
       english: 'None of them likes drinking tea.',
     },
   ],
+  confusion: {
+    title: "Don't mix these up",
+    items: [
+      {
+        id: 'g5-confusion-position',
+        question: 'Where does 都 go in the sentence?',
+        answer: 'Right after the whole group, before the action or describing word. Never at the start.',
+        wrongTraditional: '都我們喜歡喝茶。',
+        wrongSimplified: '都我们喜欢喝茶。',
+        right: grammarText(
+          'b1l03-g5-conf-1',
+          '我們都喜歡喝茶。',
+          '我们都喜欢喝茶。',
+          'Wǒmen dōu xǐhuān hē chá.',
+          'All of us like drinking tea.',
+          sharedLexicon,
+        ),
+      },
+      {
+        id: 'g5-confusion-dou-bu',
+        question: 'How do I say "none of them likes tea" — 都不 or 不都?',
+        answer: 'Put 都 before 不: 都不 means "every one does not". 不都 means "not all" — a different meaning.',
+        wrongTraditional: '他們不都喜歡茶。',
+        wrongSimplified: '他们不都喜欢茶。',
+        right: grammarText(
+          'b1l03-g5-conf-2',
+          '他們都不喜歡茶。',
+          '他们都不喜欢茶。',
+          'Tāmen dōu bù xǐhuān chá.',
+          'None of them likes tea.',
+          sharedLexicon,
+        ),
+      },
+      {
+        id: 'g5-confusion-singular',
+        question: 'Can I use 都 with just one person, like "I all like this book"?',
+        answer: 'No. 都 needs two or more people or things. With one, drop 都.',
+        wrongTraditional: '我都喜歡這本書。',
+        wrongSimplified: '我都喜欢这本书。',
+        right: grammarText(
+          'b1l03-g5-conf-3',
+          '我喜歡這本書。',
+          '我喜欢这本书。',
+          'Wǒ xǐhuān zhè běn shū.',
+          'I like this book.',
+          sharedLexicon,
+        ),
+      },
+    ],
+  },
   examples: [
     {
       id: 'g5-example-1',
@@ -607,10 +755,10 @@ export const LESSON_THREE_GRAMMAR_FIVE: InteractiveGrammarPage = {
     },
   ],
   exerciseTitle: 'Put the group before 都',
-  exercisePreview: 'Rebuild the three printed sentences in meaning order.',
+  exercisePreview: 'Put the three sentences back in order.',
   exerciseInstruction: 'Start with the complete group. Place 都 immediately before the shared action or description.',
   exerciseNote:
-    'The source is a rearrangement exercise and prints no answer key. These orders follow the grammar rule and picture cue.',
+    'The book asks you to put words in order and prints no answer key. These answers follow the rule and the picture.',
   questions: [
     {
       id: 'g5-question-1',
@@ -651,7 +799,7 @@ export const LESSON_THREE_GRAMMAR_FIVE: InteractiveGrammarPage = {
       number: 3,
       segments: [
         { type: 'blank', id: 'g5-q3-group', answer: '他們', answerSimplified: '他们', hint: 'Name the group.' },
-        { type: 'blank', id: 'g5-q3-all', answer: '都', hint: 'All members share the negative action.' },
+        { type: 'blank', id: 'g5-q3-all', answer: '都', hint: 'Everyone shares the same "do not".' },
         { type: 'blank', id: 'g5-q3-action', answer: '不喜歡喝這種茶', answerSimplified: '不喜欢喝这种茶', hint: 'Keep 不 with the action after 都.' },
         { type: 'text', traditional: '。' },
       ],
@@ -660,7 +808,7 @@ export const LESSON_THREE_GRAMMAR_FIVE: InteractiveGrammarPage = {
         answerTile('g5-q3-all-tile', '都', 'dōu', 'all'),
         answerTile('g5-q3-dislike', '不喜歡喝這種茶', 'bù xǐhuān hē zhè zhǒng chá', 'do not like drinking this kind of tea', '不喜欢喝这种茶'),
       ],
-      correctFeedback: '都 comes before 不 because everyone shares the negative action.',
+      correctFeedback: '都 comes before 不 because everyone shares the same "not".',
       repairFeedback: 'Build 他們 + 都 + 不喜歡喝這種茶. Keep the group before 都.',
     },
   ],
@@ -732,6 +880,6 @@ export const LESSON_THREE_PART_TWO: InteractiveGrammarPart = {
   dialogue,
   completionTitle: 'Lesson 3 grammar complete — you can choose and compare gifts.',
   completionDescription:
-    'You pointed to specific things, described or replaced nouns with 的, and gave a whole group one shared result with 都.',
+    'You pointed to things, used 的 to describe or replace them, and gave a whole group one shared result with 都.',
   nextBookLabel: 'Next in the book · Review the lesson patterns.',
 };

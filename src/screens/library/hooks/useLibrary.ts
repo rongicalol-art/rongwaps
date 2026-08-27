@@ -97,7 +97,7 @@ export function useLibrary() {
 
   const allCollections = useMemo(() => {
     const dynFolders = customFolders.map(cf => {
-      let parsedColor = { accentBg: 'bg-[#1CB0F6]', accentBorder: 'border-[#1899D6]' };
+      let parsedColor = { accentBg: 'bg-brand-primary', accentBorder: 'border-brand-primary-edge' };
       try {
         parsedColor = JSON.parse(cf.color);
       } catch {
@@ -110,9 +110,9 @@ export function useLibrary() {
         label: 'Custom Folder',
         accentBg: parsedColor.accentBg,
         accentBorder: parsedColor.accentBorder,
-        accentColor: 'text-[#4B4B4B]',
+        accentColor: 'text-ui-ink',
         lightBg: 'bg-[#F7F7F7]',
-        icon: React.createElement(PiFolderFill, { size: 40, className: "text-[#1CB0F6]" }),
+        icon: React.createElement(PiFolderFill, { size: 40, className: "text-brand-primary" }),
         count
       };
     });
@@ -189,7 +189,7 @@ export function useLibrary() {
     const folderId = crypto.randomUUID();
     
     // We no longer use random colors. The UI handles the unified styling.
-    const folderColor = JSON.stringify({ accentBg: 'bg-[#1CB0F6]', accentBorder: 'border-[#1899D6]' });
+    const folderColor = JSON.stringify({ accentBg: 'bg-brand-primary', accentBorder: 'border-brand-primary-edge' });
 
     if (currentUser) {
       await flashcardService.createFolder(currentUser.id, {

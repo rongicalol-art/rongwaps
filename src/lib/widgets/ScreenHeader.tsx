@@ -25,6 +25,8 @@ export interface ScreenHeaderProps {
   className?: string;
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '4xl' | 'none';
   progressSize?: 'default' | 'compact';
+  progressAriaLabel?: string;
+  progressUnitLabel?: string;
 }
 
 export function ScreenHeader({ 
@@ -45,6 +47,8 @@ export function ScreenHeader({
   className = "",
   maxWidth = '2xl',
   progressSize = 'default',
+  progressAriaLabel,
+  progressUnitLabel,
 }: ScreenHeaderProps) {
   const metrics = { controlSize: 'lg' as const, iconSize: 25, sideSpacerClassName: 'w-11' };
   const maxWidthClasses = {
@@ -106,11 +110,13 @@ export function ScreenHeader({
                   currentIndex={currentIndex}
                   totalCount={totalCount}
                   density={progressSize === 'compact' ? 'compact' : 'default'}
+                  ariaLabel={progressAriaLabel}
+                  unitLabel={progressUnitLabel}
                   className="w-full"
                 />
               ) : (
                 <div className={cn(
-                  "relative h-5 w-full overflow-hidden rounded-full bg-ui-border",
+                  "relative h-5 w-full overflow-hidden rounded-full bg-brand-primary-track",
                 )}>
                   <motion.div
                     className={`absolute bottom-0 left-0 top-0 min-w-0 overflow-hidden rounded-full ${accentBgClassName} will-change-[width]`}

@@ -1,6 +1,6 @@
 import { useDeferredValue, useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { FEATURED_DICTIONARY_TERMS } from '../../data/dictionaryHome';
+import { DAILY_CHARACTERS } from '../../data/dictionaryHome';
 import { useDictionarySearch } from '../../hooks/useDictionarySearch';
 import { StickyWorkspaceHeader, type StickyWorkspaceHeaderMenuToggle } from '../../lib/widgets';
 import { searchVocabulary } from '../../services/vocabularyService';
@@ -61,10 +61,10 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
   const { items: savedWords, isLoading: isLoadingSavedWords } = useSavedDictionaryPreview(favorites);
   const selectedCourseBookId = activeBookId;
 
-  const wordOfTheDay = useMemo(() => {
+  const characterOfTheDay = useMemo(() => {
     const now = new Date();
     const dayNumber = Math.floor(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86_400_000);
-    return FEATURED_DICTIONARY_TERMS[dayNumber % FEATURED_DICTIONARY_TERMS.length];
+    return DAILY_CHARACTERS[dayNumber % DAILY_CHARACTERS.length];
   }, []);
 
   useEffect(() => {
@@ -148,7 +148,8 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
             <DictionaryHome
               savedWords={savedWords}
               isLoadingSavedWords={isLoadingSavedWords}
-              wordOfTheDay={wordOfTheDay}
+              characterOfTheDay={characterOfTheDay}
+              activeBookId={selectedCourseBookId || 0}
               onOpenWord={setDictionaryWord}
               onViewSavedWords={handleViewSavedWords}
             />

@@ -7,14 +7,17 @@ import { shuffleItems } from '../../../utils/sessionOrder';
 import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
 import { queueMissedItem } from '../../../utils/mistakeQueue';
 import { getCurriculumSessionKey } from '../../../utils/lessonPartSelection';
-import { retainCurrentCardIndex } from '../../../utils/sessionProgress';
+import { getSessionStartIndex, retainCurrentCardIndex } from '../../../utils/sessionProgress';
 import { buildMeaningChoices } from '../../../utils/meaningChoices';
+
+// How many upcoming cards (without recorded audio) get neural TTS pre-warmed
+// so their first play uses the good voice instead of browser speech.
+const NEURAL_PRELOAD_AHEAD = 2;
 
 export function useListening(activeBookId: number, selectedLessons: number[], isLibraryDeck: boolean = false, isReviewDeck: boolean = false) {
   const { markCardReviewed, sessionProgressIndex, setSessionProgressIndex, clearSessionProgressIndex, libraryActiveFolder, selectedLessonParts } = useAppStore();
   const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
   const autoPlayAudio = usePracticePreferencesStore((state) => state.autoPlayAudio);
-  const replayAudioAfterAnswer = usePracticePreferencesStore((state) => state.replayAudioAfterAnswer);
   const repeatMistakes = usePracticePreferencesStore((state) => state.repeatMistakes);
   const sessionKey = isReviewDeck ? `shared_deck_review_${activeBookId}` : isLibraryDeck ? `shared_deck_library_${libraryActiveFolder}` : getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
   
@@ -32,23 +35,62 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
   const [activeCards, setActiveCards] = useState<Flashcard[]>([]);
   const [isShuffled, setIsShuffled] = useState(false);
   const canonicalOrderRef = useRef<Flashcard[]>([]);
+  const sessionKeyRef = useRef(sessionKey);
+  const sessionInitializedRef = useRef(false);
+  const pendingSessionCardIdRef = useRef<string | null>(null);
   const currentCardIdRef = useRef<string | null>(null);
   const gradingCardKeyRef = useRef<string | null>(null);
   const isMountedRef = useRef(true);
   const playbackRequestRef = useRef(0);
 
   useEffect(() => {
+    if (sessionKeyRef.current !== sessionKey) {
+      pendingSessionCardIdRef.current = currentCardIdRef.current;
+      sessionKeyRef.current = sessionKey;
+      sessionInitializedRef.current = false;
+      currentCardIdRef.current = null;
+      canonicalOrderRef.current = [];
+      playbackRequestRef.current += 1;
+      audioService.stop();
+      setCards([]);
+      setActiveCards([]);
+      setCurrentIndex(0);
+      setIsShuffled(false);
+      setScreenState('playing');
+      setIsPlaying(false);
+      setSelectedOption(null);
+      setIsChecked(false);
+      setSessionResults({});
+      gradingCardKeyRef.current = null;
+      return;
+    }
+
     setCards(loadedCards);
     setActiveCards(loadedCards);
-    setCurrentIndex((previousIndex) => (
-      retainCurrentCardIndex(loadedCards, currentCardIdRef.current, previousIndex)
-    ));
+    if (loadedCards.length > 0) {
+      const cardIdToRetain = sessionInitializedRef.current
+        ? currentCardIdRef.current
+        : pendingSessionCardIdRef.current;
+      const retainCurrentCard = sessionInitializedRef.current || Boolean(
+        cardIdToRetain && loadedCards.some((card) => card.id === cardIdToRetain),
+      );
+      const savedIndex = retainCurrentCard ? 0 : getSessionStartIndex(
+          useAppStore.getState().sessionProgressIndex,
+          sessionKey,
+          loadedCards.length,
+        );
+      setCurrentIndex((previousIndex) => retainCurrentCard
+        ? retainCurrentCardIndex(loadedCards, cardIdToRetain, previousIndex)
+        : savedIndex);
+      sessionInitializedRef.current = true;
+      pendingSessionCardIdRef.current = null;
+    }
     setIsShuffled(false);
     canonicalOrderRef.current = loadedCards;
     if (loadedCards.length > 0) {
       audioService.preload(loadedCards.map(c => c.audio));
     }
-  }, [loadedCards]);
+  }, [loadedCards, sessionKey]);
   
   const [sessionResults, setSessionResults] = useState<Record<string, number>>({});
 
@@ -73,7 +115,7 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
       playbackRequestRef.current += 1;
       audioService.stop();
     };
-  }, [currentCard?.id, screenState]);
+  }, [screenState]);
 
   const toggleShuffle = useCallback(() => {
     const nextShuffled = !isShuffled;
@@ -114,10 +156,25 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
     return () => clearTimeout(t);
   }, [autoPlayAudio, currentIndex, playAudio, playlist.length, pronunciationRate, screenState]);
 
+  // Pre-warm neural TTS for upcoming cards without recorded audio so the
+  // first play of each card is the neural voice, not browser speech.
+  useEffect(() => {
+    if (playlist.length === 0) return;
+    const upcoming = playlist.slice(currentIndex, currentIndex + NEURAL_PRELOAD_AHEAD);
+    const fronts = upcoming
+      .filter((card) => !audioService.isAudioFileName(card.audio))
+      .map((card) => card.front?.trim())
+      .filter((text): text is string => Boolean(text));
+    if (fronts.length > 0) {
+      audioService.preloadNeural(fronts, undefined, { limit: NEURAL_PRELOAD_AHEAD }).catch(() => {});
+    }
+  }, [playlist, currentIndex]);
+
   // Save progress
   useEffect(() => {
+    if (!sessionInitializedRef.current || activeCards.length === 0) return;
     setSessionProgressIndex(sessionKey, currentIndex);
-  }, [currentIndex, sessionKey, setSessionProgressIndex]);
+  }, [activeCards.length, currentIndex, sessionKey, setSessionProgressIndex]);
 
   const isCorrect = selectedOption === currentCard?.back;
 
@@ -143,15 +200,12 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
     setSelectedOption(option);
     setIsChecked(true);
     const correct = option === currentCard.back;
-    if (replayAudioAfterAnswer) {
-      audioService.play(currentCard.audio, pronunciationRate, currentCard.front);
-    }
     markCardReviewed(currentCard.id, correct ? 4 : 2);
     setSessionResults(prev => ({ ...prev, [currentCard.id]: correct ? 4 : 2 }));
     if (!correct) {
       setActiveCards((items) => queueMissedItem(items, currentCard, currentIndex, repeatMistakes));
     }
-  }, [currentCard, currentIndex, markCardReviewed, pronunciationRate, repeatMistakes, replayAudioAfterAnswer]);
+  }, [currentCard, currentIndex, markCardReviewed, repeatMistakes]);
 
   const handleCheck = useCallback(() => {
     if (!selectedOption) return;

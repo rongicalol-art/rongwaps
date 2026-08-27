@@ -1,0 +1,921 @@
+{
+ "book": 1,
+ "textbook_dialogue_audio": {
+  "official_folder": "13dDs0muO0B0TCdS_qBiFkv-tx9esbjGW",
+  "dialogues_folder": "1gciBRMnoRbNKEmhPCRSjaiOl0DEbcgN7",
+  "stream_url_pattern": "https://drive.usercontent.google.com/download?id={FILE_ID}&export=download",
+  "naming": "B1-LL-P-T.mp3  (LL=lesson, P=part, T=track)",
+  "lessons": {
+   "01": {
+    "folder": "1OTrAUzAg-zgHognGtnB3dEPwdNrG_Xmn",
+    "tracks": [
+     {
+      "file": "B1-01-1-1.mp3",
+      "id": "17_lRbDp5E1uVdBzCszjIVNhLk4lwv-2G"
+     },
+     {
+      "file": "B1-01-1-2.mp3",
+      "id": "1IPAQx-F45N1X6W3rUCqEx5WcimcOFwAK"
+     },
+     {
+      "file": "B1-01-1-3.mp3",
+      "id": "1e1QcjFNugGzorAbIwQzPe6c9eJwFmLD6"
+     },
+     {
+      "file": "B1-01-2-1.mp3",
+      "id": "1X6cGIFVdShCzCBj49RNzQThUwzq2bcff"
+     },
+     {
+      "file": "B1-01-2-2.mp3",
+      "id": "1joLLYw7YHCFEsIM_IPU0vE6xdGw105go"
+     },
+     {
+      "file": "B1-01-2-3.mp3",
+      "id": "1NF1kDwpj_g5gYLPvLEyW3zXgqaMOtwpd"
+     },
+     {
+      "file": "B1-01-3-1.mp3",
+      "id": "10I89BXrIc-J8vVyN_x_KrXHCTaKvxkWq"
+     },
+     {
+      "file": "B1-01-3-2.mp3",
+      "id": "19Cu1_3kubLUD8Xk1RCBnO9UH187jBhcF"
+     }
+    ]
+   },
+   "02": {
+    "folder": "1qUAJIeK-DRNCAOPrCFjjnFryCvI7jwsi",
+    "tracks": [
+     {
+      "file": "B1-02-1-1.mp3",
+      "id": "1uHcPZ_Jxu5OwJ9ngj7hVJoAkMFs7oQ80"
+     },
+     {
+      "file": "B1-02-1-2.mp3",
+      "id": "1tbakvTlNbHqarJsunMN-18tI1m4fQjj1"
+     },
+     {
+      "file": "B1-02-1-3.mp3",
+      "id": "1NyyWxQn0AQWEcNpBq4udBHHaUanAiXe7"
+     },
+     {
+      "file": "B1-02-2-1.mp3",
+      "id": "1uLPyEKqXfCaeJshy8d8Pw9aji_jRB-pJ"
+     },
+     {
+      "file": "B1-02-2-2.mp3",
+      "id": "1VKjHaFOlIbzMPPBuqxBHorPOw7ZQcIst"
+     },
+     {
+      "file": "B1-02-2-3.mp3",
+      "id": "1_aP7pFDYn8AbfPCSb9dhdXa5bUlehY7p"
+     },
+     {
+      "file": "B1-02-3-1.mp3",
+      "id": "1VVYUIQJGf5uxhCMPGMpuV-qusJLOrnyX"
+     },
+     {
+      "file": "B1-02-3-2.mp3",
+      "id": "1uUPJTxDLFkNaqhf2MO6R9Ff1qhUKssF3"
+     }
+    ]
+   },
+   "03": {
+    "folder": "1C4icAR90Bf-QojdgaBjYDsJEcPisvGz_",
+    "tracks": [
+     {
+      "file": "B1-03-1-1.mp3",
+      "id": "16-dpK6okKwiIiXrsc-JMJ-pq4ouL6CLW"
+     },
+     {
+      "file": "B1-03-1-2.mp3",
+      "id": "1UVRp8YrpCqSu9WTeF_gIBwyu86_MT0R9"
+     },
+     {
+      "file": "B1-03-1-3.mp3",
+      "id": "1UT-YJEQcDcydfxoOOmYH9h2J599A5qAd"
+     },
+     {
+      "file": "B1-03-2-1.mp3",
+      "id": "1ECzSFjke3D0KJrdff3ZiTsQ40YV0mjMV"
+     },
+     {
+      "file": "B1-03-2-2.mp3",
+      "id": "1Csf4C0Gn2qnmei0s5s319hlxlAN_7iN2"
+     },
+     {
+      "file": "B1-03-2-3.mp3",
+      "id": "1h4C2GUF7qQ3iqb9a_PlNA1ikMkJZDpX4"
+     },
+     {
+      "file": "B1-03-3-1.mp3",
+      "id": "1Darejzwx-yKAiy3P_B7CpfMNc22prOmp"
+     },
+     {
+      "file": "B1-03-3-2.mp3",
+      "id": "1ae87-kRv9NkPJuXRa1xGyiEl1EKajG6z"
+     }
+    ]
+   },
+   "04": {
+    "folder": "1oI8sXw1CdhRVTmB1UWmEAslA4BuvHC6g",
+    "tracks": [
+     {
+      "file": "B1-04-1-1.mp3",
+      "id": "1oJX2nr6YNW_PnMAX7LCFivEHpwvRPEi1"
+     },
+     {
+      "file": "B1-04-1-2.mp3",
+      "id": "1Zq9lsztVEuYKAWPpN10xHdBZ1xVZexzs"
+     },
+     {
+      "file": "B1-04-1-3.mp3",
+      "id": "1Jz87oVTgGUWh5DSNAQKgUxxxBUw8w16l"
+     },
+     {
+      "file": "B1-04-2-1.mp3",
+      "id": "1L3yN8tM3fII3Be_A6bSQ2H0Mn0b_qxPH"
+     },
+     {
+      "file": "B1-04-2-2.mp3",
+      "id": "1-8oDd3IbKEt620a0Lyf2m4RuvkWxq_24"
+     },
+     {
+      "file": "B1-04-2-3.mp3",
+      "id": "1RYv2m3-Dbs4A9V_SRj4kBaf5k6N7bQ0t"
+     },
+     {
+      "file": "B1-04-3-1.mp3",
+      "id": "1uN0rY-eM8IbTaHPv3IY46nb-G89a2Ztv"
+     },
+     {
+      "file": "B1-04-3-2.mp3",
+      "id": "1zOvK5g4uztcnnUXFGidIqsZfsFmRSJ97"
+     }
+    ]
+   },
+   "05": {
+    "folder": "1_foC2yAEJvdN5XlGmOK3dKGHLoKWIFd6",
+    "tracks": [
+     {
+      "file": "B1-05-1-1.mp3",
+      "id": "1rncZRq4iMc7_pRZwgO2tS4-m46rBDcJ9"
+     },
+     {
+      "file": "B1-05-1-2.mp3",
+      "id": "1muXAOsGJZAKnAMASiDGpxttVCs1qExz1"
+     },
+     {
+      "file": "B1-05-1-3.mp3",
+      "id": "1mRtbBLrsKCmvFnhp422lRycyKFJzYRdU"
+     },
+     {
+      "file": "B1-05-2-1.mp3",
+      "id": "1ymqhQT4Fc7jgM8V6V9lhYBCm6JxqJTGz"
+     },
+     {
+      "file": "B1-05-2-2.mp3",
+      "id": "1u9Q98oHYfGagqdbZpspbxwXj6j8HWq-k"
+     },
+     {
+      "file": "B1-05-2-3.mp3",
+      "id": "1usBdWaGtsh1yz_zFTeOEoBkQ9KizI4uk"
+     },
+     {
+      "file": "B1-05-3-1.mp3",
+      "id": "19NQSBgW_hfqu2ZZMUdqwrihXlPIVSZzk"
+     },
+     {
+      "file": "B1-05-3-2.mp3",
+      "id": "1cknUvvtB8qjVUYKkEkrzqtA5VH-EuzRg"
+     }
+    ]
+   },
+   "06": {
+    "folder": "1yES5fyjUn981PbUscoIzQYbaKFpvBfNs",
+    "tracks": [
+     {
+      "file": "B1-06-1-1.mp3",
+      "id": "1GMNbUhhJbNUXiWrl4rvM7Obtxg9yPqVQ"
+     },
+     {
+      "file": "B1-06-1-2.mp3",
+      "id": "1-g4uyOWkba8HaYVx8_ydEXCKERgv7GpO"
+     },
+     {
+      "file": "B1-06-1-3.mp3",
+      "id": "1RRcRZaelJ97KelFi8bzOn_GQ2zVCSBVq"
+     },
+     {
+      "file": "B1-06-2-1.mp3",
+      "id": "14qevT1Tb9uuXBeRhBqImwmq3VLlNfGn6"
+     },
+     {
+      "file": "B1-06-2-2.mp3",
+      "id": "109sMLC0cNVcWU8XI28bUtAsPfcDJu-O_"
+     },
+     {
+      "file": "B1-06-2-3.mp3",
+      "id": "1x5pAkOGPNP1KkJ8SLuztnSO6SoeH6A7G"
+     },
+     {
+      "file": "B1-06-3-1.mp3",
+      "id": "1BFZ4273ZbV8kdym8NgGzekH5m2AsUlrf"
+     },
+     {
+      "file": "B1-06-3-2.mp3",
+      "id": "1cYwlOE1xLaB4-Z2EZqLd0muX7tJO9jqH"
+     }
+    ]
+   },
+   "07": {
+    "folder": "1f8XI-fzeX1cFmW4OeB7zs9MdSaszV8qK",
+    "tracks": [
+     {
+      "file": "B1-07-1-1.mp3",
+      "id": "1zIPbe7y5l5sWTvUG6m8Fal55bWGaxCra"
+     },
+     {
+      "file": "B1-07-1-2.mp3",
+      "id": "1DURSzQz_0cZpTMOkPQCIiTGVPdmL12-b"
+     },
+     {
+      "file": "B1-07-1-3.mp3",
+      "id": "1u9gW9dLwaaGqbcsDPxRxLHSbeslmSH_b"
+     },
+     {
+      "file": "B1-07-2-1.mp3",
+      "id": "1l0TNjXOQeVddkce0Ewt5I-_kvkrdrHcy"
+     },
+     {
+      "file": "B1-07-2-2.mp3",
+      "id": "1tmfCNXzzviVykr7oc3diLbN1EGApqZo4"
+     },
+     {
+      "file": "B1-07-2-3.mp3",
+      "id": "13D0kRIobX9woSUMMocqx6Noz4CDYqqhM"
+     },
+     {
+      "file": "B1-07-3-1.mp3",
+      "id": "1JfM45_dGtmw-Cgwn45l5OcHSXbYAF6iF"
+     },
+     {
+      "file": "B1-07-3-2.mp3",
+      "id": "1ZFjZKpA9AyZH5b1tTsEbIxj-6JR-hcmP"
+     }
+    ]
+   },
+   "08": {
+    "folder": "1ToEjwJPfqclDjuJ2-JkChAmUkU4mJkWn",
+    "tracks": [
+     {
+      "file": "B1-08-1-1.mp3",
+      "id": "1Yx4dw4_L6gbhuakYBtyhuDKGhq70dTrH"
+     },
+     {
+      "file": "B1-08-1-2.mp3",
+      "id": "1Pp0AJtWGdyO7tpyTVL3-TbZlhImhGQaH"
+     },
+     {
+      "file": "B1-08-1-3.mp3",
+      "id": "1C6Z_A4Z4FRjnoElHNSoEaX3K0xt6qqky"
+     },
+     {
+      "file": "B1-08-2-1.mp3",
+      "id": "1Bt3iNgXDyf_9tGooulThPzQlHsnqHmxT"
+     },
+     {
+      "file": "B1-08-2-2.mp3",
+      "id": "1gMcTsmvM1xW6AhoNU55YiyjZNMcnQeHL"
+     },
+     {
+      "file": "B1-08-2-3.mp3",
+      "id": "1O_1thJXl09DZT2LCwOSW8DfNjzUSlDFk"
+     },
+     {
+      "file": "B1-08-3-1.mp3",
+      "id": "1iyftgHJJK6Al-keVt-huhctIsgkcgJrg"
+     },
+     {
+      "file": "B1-08-3-2.mp3",
+      "id": "100REoS2FbokQrvlTWd6Wo7L6zOMXW_t0"
+     }
+    ]
+   },
+   "09": {
+    "folder": "1gdzmkg5JE9UF6Yit2AxbxJnrBKWtbmMy",
+    "tracks": [
+     {
+      "file": "B1-09-1-1.mp3",
+      "id": "1kZG1sW-iHrvxGJnmvA15oq7fy67G4bFb"
+     },
+     {
+      "file": "B1-09-1-2.mp3",
+      "id": "1K5_X9JfObRUEH9ym9Ti3Jm8junGpF0Qe"
+     },
+     {
+      "file": "B1-09-1-3.mp3",
+      "id": "1RgwjiUk_sqNfcnteftPDP8krUIN5Zgf_"
+     },
+     {
+      "file": "B1-09-2-1.mp3",
+      "id": "1_kHXN1nZ-eSHGYsLJ9XPjfsaGfeuSrIi"
+     },
+     {
+      "file": "B1-09-2-2.mp3",
+      "id": "1qbey5NWiVp7isS8-EVWwSPEza5aZDFA2"
+     },
+     {
+      "file": "B1-09-2-3.mp3",
+      "id": "1iJPwDHTo-wlLJug9W7YRm28HETJX7_Pb"
+     },
+     {
+      "file": "B1-09-3-1.mp3",
+      "id": "1Ik6HJjZfHbwriSrclL5VXp3XDOqhwiYh"
+     },
+     {
+      "file": "B1-09-3-2.mp3",
+      "id": "16u1GjgZ80BkTYdfWSft8fOIwLo4m3rDZ"
+     }
+    ]
+   },
+   "10": {
+    "folder": "1jmh7VUZDes0VO6TESczDCdHg-YHh20Ku",
+    "tracks": [
+     {
+      "file": "B1-10-1-1.mp3",
+      "id": "19swY9Bt-7oecnJ2CsJstyDpsccDPr-XT"
+     },
+     {
+      "file": "B1-10-1-2.mp3",
+      "id": "1sWn2oD34eVZqlFWqErXQBfBo2JzVkvWQ"
+     },
+     {
+      "file": "B1-10-1-3.mp3",
+      "id": "18Kp2v0wSK0n0lojgQgcUnLRA2sUeU9qe"
+     },
+     {
+      "file": "B1-10-2-1.mp3",
+      "id": "1SPHI5_c0AOgkesh7OX2kGJLxZsXWetX8"
+     },
+     {
+      "file": "B1-10-2-2.mp3",
+      "id": "1AHdQnJ-MzFkaCb521ltXgGheJy21wFXL"
+     },
+     {
+      "file": "B1-10-2-3.mp3",
+      "id": "1JVCYVhQDuT1c77GjX85h1DdlcOYYPfLo"
+     },
+     {
+      "file": "B1-10-3-1.mp3",
+      "id": "1uIhF4UCBe_o7zGPzfr5Pv6e7N_81VVtN"
+     },
+     {
+      "file": "B1-10-3-2.mp3",
+      "id": "1rK76HzWPsrBTbgYYRYkA9Z_VqttFtaMC"
+     }
+    ]
+   },
+   "11": {
+    "folder": "19jc6gOe0AP5SN2YaVO88zKpDK0R2UuYi",
+    "tracks": [
+     {
+      "file": "B1-11-1-1.mp3",
+      "id": "1No3s8xzPXFq3PZ4rNwNiSWOD_IFFg8Jm"
+     },
+     {
+      "file": "B1-11-1-2.mp3",
+      "id": "1y0I7H16Xa5U0grE8JDL1-jrnAJlTeppj"
+     },
+     {
+      "file": "B1-11-1-3.mp3",
+      "id": "149dMK6ZDkWRiueYyLpBuJUrkhJMS3c_T"
+     },
+     {
+      "file": "B1-11-2-1.mp3",
+      "id": "1GVv7re1LnqxKeXRLMHk9P6NrTG2s963E"
+     },
+     {
+      "file": "B1-11-2-2.mp3",
+      "id": "1M2uCRKTARCKHeKaGaacDDs1rUg53YEmO"
+     },
+     {
+      "file": "B1-11-2-3.mp3",
+      "id": "19DhtLs0Jbh_TuJ-JktZw8japH2i3MGE9"
+     },
+     {
+      "file": "B1-11-3-1.mp3",
+      "id": "1NJeyXTRY7cFl4vWRepUxCVhhY8aFLbdi"
+     },
+     {
+      "file": "B1-11-3-2.mp3",
+      "id": "1K7KIPRpRkeapB-IUmsz385igVlcLWSkJ"
+     }
+    ]
+   },
+   "12": {
+    "folder": "14F3SdhNNImbD3obn4mFggLeJWWbLk9PK",
+    "tracks": [
+     {
+      "file": "B1-12-1-1.mp3",
+      "id": "1BpiR5e4hJr1l2c-RSIvExdksYjhLk-a-"
+     },
+     {
+      "file": "B1-12-1-2.mp3",
+      "id": "16F7QjD7cB3MmeaPJPF4kiSSbIlPeDZI5"
+     },
+     {
+      "file": "B1-12-1-3.mp3",
+      "id": "19EpPvAnIeILvrq4dFXH7QBIRfc6Gh22l"
+     },
+     {
+      "file": "B1-12-2-1.mp3",
+      "id": "1KgeTiFMr6GG_7w28HgwGbm24Yy-vEVyb"
+     },
+     {
+      "file": "B1-12-2-2.mp3",
+      "id": "1AspLDuE_2l3vDvjI7JvGjOoh2kQKhF5U"
+     },
+     {
+      "file": "B1-12-2-3.mp3",
+      "id": "13ysES76IXa2aNg8-toWlhj7aoCLhZfYR"
+     },
+     {
+      "file": "B1-12-3-1.mp3",
+      "id": "1nJst9oaMOko-AecV8a-sSvyAo0pw1FU7"
+     },
+     {
+      "file": "B1-12-3-2.mp3",
+      "id": "1QGeF2168M7khEGrCGbc5MbBK6s1z_MpZ"
+     }
+    ]
+   },
+   "13": {
+    "folder": "1iV4-muH76FqcRh_-zWx2yM0IW8cvGc10",
+    "tracks": [
+     {
+      "file": "B1-13-1-1.mp3",
+      "id": "1w16aVaj9pcp6lDSUq3Y2azHVyL6PIVZ7"
+     },
+     {
+      "file": "B1-13-1-2.mp3",
+      "id": "14JKSE_YJc-31Tn7R580uEfIWwJ-lZ1y-"
+     },
+     {
+      "file": "B1-13-1-3.mp3",
+      "id": "1rF2_EZui6zXfrY7DXt91lfqjtYd6qstu"
+     },
+     {
+      "file": "B1-13-2-1.mp3",
+      "id": "1nDu-F087ggPvGEn7iETx_g_e1pYn4dqo"
+     },
+     {
+      "file": "B1-13-2-2.mp3",
+      "id": "1GXnE4XH9kapDa1ZSePnpUxn01hP6MZUz"
+     },
+     {
+      "file": "B1-13-2-3.mp3",
+      "id": "10ryec-OT2N4xQi_ZJiOQncXjs1eMUQLT"
+     },
+     {
+      "file": "B1-13-3-1.mp3",
+      "id": "16QDnl9JvgjCymDOdtrFl8MIGwM--THDJ"
+     },
+     {
+      "file": "B1-13-3-2.mp3",
+      "id": "1rPUldift3IrX135D6YdqT4in7ItKQiKo"
+     }
+    ]
+   },
+   "14": {
+    "folder": "19hiyTrlvIFCi-bFzTzdCSqHGKKavMGS1",
+    "tracks": [
+     {
+      "file": "B1-14-1-1.mp3",
+      "id": "1IBUd1OfZtMtIl8j0d_6mIvIpkLuHgVj8"
+     },
+     {
+      "file": "B1-14-1-2.mp3",
+      "id": "13Ma9Bvx2I1FkClBEbDxG22CO_t1GgTRK"
+     },
+     {
+      "file": "B1-14-1-3.mp3",
+      "id": "1v2SIGjr67_yqqdadippdXA187zsMJYT4"
+     },
+     {
+      "file": "B1-14-2-1.mp3",
+      "id": "1y_r461LBugw7q0GUu5hqcZtPYi3yl4rs"
+     },
+     {
+      "file": "B1-14-2-2.mp3",
+      "id": "1AgNUWNC5Db22ism76JYEoxcMODzdLBb5"
+     },
+     {
+      "file": "B1-14-2-3.mp3",
+      "id": "11Ee-8ZQO3934RJM-40K5tvMn_-Pro-Cu"
+     },
+     {
+      "file": "B1-14-3-1.mp3",
+      "id": "1L4021sJ25vssDOPiS3VK_vdh8nYfJUX4"
+     },
+     {
+      "file": "B1-14-3-2.mp3",
+      "id": "1JX8seVdBKzivvaaDNmEtZGkKudrIIg20"
+     }
+    ]
+   },
+   "15": {
+    "folder": "1L175gjHFcn7UmRthVUo_GfnO3x3AvFad",
+    "tracks": [
+     {
+      "file": "B1-15-1-1.mp3",
+      "id": "1FwKO8MQ3EHAfVn37EWAoMAjBz4N2THbF"
+     },
+     {
+      "file": "B1-15-1-2.mp3",
+      "id": "10aHRgs4UOlxi2UahPXAlzqvpADmXiv6B"
+     },
+     {
+      "file": "B1-15-1-3.mp3",
+      "id": "1dGOykKxaNScsdzB47sEyeJw6YJTXrnGd"
+     },
+     {
+      "file": "B1-15-2-1.mp3",
+      "id": "1xEeGvys7xglyXOy6qQAZIbH3l1Hfnroq"
+     },
+     {
+      "file": "B1-15-2-2.mp3",
+      "id": "1SQYpnVV4XOqkTeU8nX-fJcd5evwKeuG-"
+     },
+     {
+      "file": "B1-15-2-3.mp3",
+      "id": "1avJh7lGs0zMZGOB1IxlJDvd7hiLYMx_p"
+     },
+     {
+      "file": "B1-15-3-1.mp3",
+      "id": "1fnOWWIuSTOgf37uwSTy9bVn5FSfMhs5c"
+     },
+     {
+      "file": "B1-15-3-2.mp3",
+      "id": "1ttekW6xwJnFbpjnkre-1x4AsYdNoXk9T"
+     }
+    ]
+   },
+   "16": {
+    "folder": "180NoISHcrFpfzm_UgCRBPRDCdsxanwgq",
+    "tracks": [
+     {
+      "file": "B1-16-1-1.mp3",
+      "id": "1RABFMz0IGrpR-L3b7Lv6QbvrxOt0Fzan"
+     },
+     {
+      "file": "B1-16-1-2.mp3",
+      "id": "1MpJIhPqW1XKo1kg50WMFkmtPb4Jj8cfT"
+     },
+     {
+      "file": "B1-16-1-3.mp3",
+      "id": "1r5TRB1WNe3Uy1U72m4jMNASwwtWu-M0e"
+     },
+     {
+      "file": "B1-16-2-1.mp3",
+      "id": "1MslALJQadXvZVyunqKIXhmnF4cF_LLDG"
+     },
+     {
+      "file": "B1-16-2-2.mp3",
+      "id": "1xkQH3vhxpZlWtbOyu4Mq1VcwlkB3x2wQ"
+     },
+     {
+      "file": "B1-16-2-3.mp3",
+      "id": "1YgHI6G4-nMzp7PUkcUzuFXgyQlxwPR_F"
+     },
+     {
+      "file": "B1-16-3-1.mp3",
+      "id": "1w3rtM_3tIMgBU8uBPtK0n5FoRmpKOutA"
+     },
+     {
+      "file": "B1-16-3-2.mp3",
+      "id": "1oF39cTttpAxzwXyQ8EtLVfFhFVnF_1fX"
+     }
+    ]
+   }
+  }
+ },
+ "workbook_listening_audio": {
+  "official_folder": "1KJHqwiVHkp2tAF7_IejBSO6kAu2xJIG5",
+  "naming": "B1-LL-X.mp3  (X = A/B/C/D listening section)",
+  "lessons": {
+   "01": {
+    "folder": null,
+    "tracks": [
+     {
+      "file": "B1-01-A.mp3",
+      "id": "15wbIgdZFPRPIeqOOFmMLTQvwEKMcDW2x"
+     },
+     {
+      "file": "B1-01-B.mp3",
+      "id": "1svjAXenH7iRl4HYqw-qHE31tb-JVKDfq"
+     },
+     {
+      "file": "B1-01-C.mp3",
+      "id": "16c_kJjxgmLQrsf41xaVrx1BQeKflhuPO"
+     }
+    ]
+   },
+   "10": {
+    "folder": null,
+    "tracks": [
+     {
+      "file": "B1-10-A.mp3",
+      "id": "12m_2WmOznHkfWrBtDDELYFgbupebpKV2"
+     },
+     {
+      "file": "B1-10-B.mp3",
+      "id": "1I9_97v7kaTJAlitefWUdLtNTEVfc-O-5"
+     },
+     {
+      "file": "B1-10-C.mp3",
+      "id": "1z8TKI5DakVyrZIOnhYvRyMZEOU0sMkPm"
+     },
+     {
+      "file": "B1-10-D.mp3",
+      "id": "1VnQKa3amxkFRMv6S7v_jCEIIzVRF6t2Z"
+     }
+    ]
+   },
+   "11": {
+    "folder": null,
+    "tracks": [
+     {
+      "file": "B1-11-A.mp3",
+      "id": "1Z2T6sbyG2gPa0_jWyeQ8Y-utRYtOIoGE"
+     },
+     {
+      "file": "B1-11-B.mp3",
+      "id": "1DuL4EgAmTsecfwHarr4zON0G0SsKfveM"
+     },
+     {
+      "file": "B1-11-C.mp3",
+      "id": "1Dd90lGiPgY9rNZ6goFjwz_eNiQMJSdP4"
+     },
+     {
+      "file": "B1-11-D.mp3",
+      "id": "1gHzE5YzHrJLdPcLxoeVTSxk2LCAyt2KW"
+     }
+    ]
+   },
+   "12": {
+    "folder": null,
+    "tracks": [
+     {
+      "file": "B1-12-A.mp3",
+      "id": "1BbujOmQm5WQk3pg38kW9-oxYX3u7YBY7"
+     },
+     {
+      "file": "B1-12-B.mp3",
+      "id": "1_WVEZmvwqIBkrMPtMddp_5pmBmRSHY9v"
+     },
+     {
+      "file": "B1-12-C.mp3",
+      "id": "1mHOPFVWzRtIDux2fdAHwIG9g1LMeBtwg"
+     },
+     {
+      "file": "B1-12-D.mp3",
+      "id": "1EeRrGUmSH3bcrCW90J4T--kIocSq76T1"
+     }
+    ]
+   },
+   "13": {
+    "folder": null,
+    "tracks": [
+     {
+      "file": "B1-13-A.mp3",
+      "id": "1JECD3cyd2W65qDVQVlrHoZWWcP5XDWY9"
+     },
+     {
+      "file": "B1-13-B.mp3",
+      "id": "1MTv8fcZEm3nNmIpdi9lmX_avZMhiJnCh"
+     },
+     {
+      "file": "B1-13-C.mp3",
+      "id": "1oXrfkAMwTfGyGJClrxTvqdN2Y8FHckFq"
+     },
+     {
+      "file": "B1-13-D.mp3",
+      "id": "1umepL9iXW92mZ3npUFgPHNkDz6xuLJ7I"
+     }
+    ]
+   },
+   "14": {
+    "folder": null,
+    "tracks": [
+     {
+      "file": "B1-14-A.mp3",
+      "id": "1wAd84H7CyETpNgZ5VmYfXzn4FcJSiatu"
+     },
+     {
+      "file": "B1-14-B.mp3",
+      "id": "1DWwAPbC3D3HG4QqUkoZQmlbX6y3Pp4b5"
+     },
+     {
+      "file": "B1-14-C.mp3",
+      "id": "1d8zL-3obFwSTRH1IpG7oruANZhHro-b1"
+     },
+     {
+      "file": "B1-14-D.mp3",
+      "id": "1aOYyn0qrgABN2xdbVz612SbeE6ZgCcqy"
+     }
+    ]
+   },
+   "15": {
+    "folder": null,
+    "tracks": [
+     {
+      "file": "B1-15-A.mp3",
+      "id": "1FHMO_ANjTPgnJV5tOKDirtbNhw4YIhXv"
+     },
+     {
+      "file": "B1-15-B.mp3",
+      "id": "1_U23vz9Zpnu5kJ5ctoTitIXtV9IGGZ_V"
+     },
+     {
+      "file": "B1-15-C.mp3",
+      "id": "1MTR0oxbyYnKqbrSylILCNclvesZwzOC2"
+     },
+     {
+      "file": "B1-15-D.mp3",
+      "id": "1n2Dsql2zjTQTY8D1pdRdYW5ChnDIF_kT"
+     }
+    ]
+   },
+   "16": {
+    "folder": null,
+    "tracks": [
+     {
+      "file": "B1-16-A.mp3",
+      "id": "1FBup-l96lk5AfXJtTzwsQwJUHt30_zgl"
+     },
+     {
+      "file": "B1-16-B.mp3",
+      "id": "1XObES7gLdJKXYztng09_bKiclXmbb0KL"
+     },
+     {
+      "file": "B1-16-C.mp3",
+      "id": "1KvcxTrp3MwGN44FDStT8FMNO1gWGJJls"
+     },
+     {
+      "file": "B1-16-D.mp3",
+      "id": "1S3kNHgy5jac2-E6QIqwIGZnvDP6EOvyV"
+     }
+    ]
+   },
+   "02": {
+    "folder": null,
+    "tracks": [
+     {
+      "file": "B1-02-A.mp3",
+      "id": "1MTTDQ8hgq_dvmK-BZgJIvixsNEaF7alv"
+     },
+     {
+      "file": "B1-02-B.mp3",
+      "id": "1GyI3Hxhobf73SzUcJzQQ2cG-ZKEbyoX5"
+     },
+     {
+      "file": "B1-02-C.mp3",
+      "id": "1ThbPk-2mcMlPPimnDBQhKBVf8SF2Lkd9"
+     }
+    ]
+   },
+   "03": {
+    "folder": null,
+    "tracks": [
+     {
+      "file": "B1-03-A.mp3",
+      "id": "1g3BvMOsZP3i8ZRRkb98h9rwM4UOXi5c6"
+     },
+     {
+      "file": "B1-03-B.mp3",
+      "id": "1XAYR21N7uUzqOMPMdEuJq_d5410ah6ku"
+     },
+     {
+      "file": "B1-03-C.mp3",
+      "id": "1T-LzOXA3XMrIIa5ujtmf6LPeSLimYqDp"
+     }
+    ]
+   },
+   "04": {
+    "folder": null,
+    "tracks": [
+     {
+      "file": "B1-04-A.mp3",
+      "id": "1Y9-FmFOp1AsMdTHfGkubWirOZmsbVoaJ"
+     },
+     {
+      "file": "B1-04-B.mp3",
+      "id": "1dr2R6WNhuktYZ8fvFrC4fUI9Iw5QsnzM"
+     },
+     {
+      "file": "B1-04-C.mp3",
+      "id": "12rK_HemsJTww1zVgZQ2mz0CdgC4pI6wz"
+     }
+    ]
+   },
+   "05": {
+    "folder": null,
+    "tracks": [
+     {
+      "file": "B1-05-A.mp3",
+      "id": "1ETBWrDiLg8YI2lnT7MY0BzS94GO5W6MV"
+     },
+     {
+      "file": "B1-05-B.mp3",
+      "id": "1smzInRVUkfDbTRlug6U5CO61wYDc034p"
+     },
+     {
+      "file": "B1-05-C.mp3",
+      "id": "1O8i4IH0xT0IGIB3JW_uwplQTTxVHhp4W"
+     }
+    ]
+   },
+   "06": {
+    "folder": null,
+    "tracks": [
+     {
+      "file": "B1-06-A.mp3",
+      "id": "1YaoovhXfcGYTHu-aH4sWDHqRx4xA2IhJ"
+     },
+     {
+      "file": "B1-06-B.mp3",
+      "id": "16m3t5uj2cBNCCUHqwKsxejixCyRROAcJ"
+     },
+     {
+      "file": "B1-06-C.mp3",
+      "id": "1nUsnxb5iGCmPDiSWiAIBQe4Iix3y0tfG"
+     }
+    ]
+   },
+   "07": {
+    "folder": null,
+    "tracks": [
+     {
+      "file": "B1-07-A.mp3",
+      "id": "1NBM32hetSzF1WDBLs9tHOfd8PNLEdIWX"
+     },
+     {
+      "file": "B1-07-B.mp3",
+      "id": "1ZrmcOrj_syw1WDpefkj15U_xzWiYBeFc"
+     },
+     {
+      "file": "B1-07-C.mp3",
+      "id": "1cBVHmA90nFZ5E-ZRoyD317NzYc9NGoJN"
+     },
+     {
+      "file": "B1-07-D.mp3",
+      "id": "1xs6b17qpbggOWM7xHwPwvhGmyyjMQ4WU"
+     }
+    ]
+   },
+   "08": {
+    "folder": null,
+    "tracks": [
+     {
+      "file": "B1-08-A.mp3",
+      "id": "1elV1pV3KY1RoP5w6BHIemLjq56Vru6t5"
+     },
+     {
+      "file": "B1-08-B.mp3",
+      "id": "1D_YeQLCXg-lsOa5ms8HpOxXtIuiVq-Kc"
+     },
+     {
+      "file": "B1-08-C.mp3",
+      "id": "1q4to9B7qYbPwsBiiC1NjsjCkDE-CyMqd"
+     },
+     {
+      "file": "B1-08-D.mp3",
+      "id": "1i8csyiNxMObD2CHSDvrUk9gNCPX7Y9n1"
+     }
+    ]
+   },
+   "09": {
+    "folder": null,
+    "tracks": [
+     {
+      "file": "B1-09-A.mp3",
+      "id": "1BUgaNM4JmbXKjAYC3DgBt-jim2q5BGNI"
+     },
+     {
+      "file": "B1-09-B.mp3",
+      "id": "1izO39t9IXq1Q2hAd7BPCmS0NPPBwn01L"
+     },
+     {
+      "file": "B1-09-C.mp3",
+      "id": "12xwIoM_8yW4LI3mT6nKDjT2H1-FWvtL7"
+     },
+     {
+      "file": "B1-09-D.mp3",
+      "id": "1g0I2yiNhPvz65xO681tP3bpcP-PzWrZz"
+     }
+    ]
+   }
+  }
+ }
+}

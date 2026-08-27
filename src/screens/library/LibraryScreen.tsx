@@ -28,7 +28,7 @@ function EmptyState({ onAddCard, isStarred }: { onAddCard?: () => void; isStarre
     >
       <div
         className={`mb-5 flex h-20 w-20 items-center justify-center rounded-full ${
-          isStarred ? 'bg-[#FFF3D0]' : 'bg-[#E5F7FF]'
+          isStarred ? 'bg-[#FFF3D0]' : 'bg-brand-primary-soft'
         }`}
       >
         {isStarred ? (
@@ -88,6 +88,7 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
   } = useLibrary();
 
   const isStarred = libraryActiveFolder === 'starred';
+  const totalCount = activeCollection?.count ?? 0;
 
   return (
     <div className="flex-1 flex w-full flex-col text-ui-ink relative bg-ui-canvas">
@@ -96,6 +97,14 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
         align="left"
         menuToggle={activeView === 'home' ? menuToggle : undefined}
         leftSlot={activeView === 'folder' ? activeCollection.icon : undefined}
+        rightContent={activeView === 'folder' ? (
+          <span
+            className="whitespace-nowrap text-[11px] font-black uppercase tracking-widest text-ui-muted"
+            aria-label={`${totalCount} ${totalCount === 1 ? 'card' : 'cards'}`}
+          >
+            {totalCount} {totalCount === 1 ? 'card' : 'cards'}
+          </span>
+        ) : undefined}
         onBack={activeView === 'folder' ? () => { setSearchQuery(''); setActiveView('home'); } : undefined}
         backLabel="Back to Library"
         searchValue={searchQuery}
@@ -140,19 +149,43 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
           {/* ── CONTENT AREA ── */}
           {isLoadingFavs && isStarred ? (
             <LibrarySkeleton />
+          ) : items.length === 0 && searchQuery.trim() ? (
+            <div className="flex w-full flex-col items-center justify-center py-16">
+              <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-ui-surface">
+                <AppIcon name="search" size={30} className="text-ui-muted" />
+              </div>
+              <h3 className="mb-1 text-center text-[18px] font-black text-ui-ink-strong">
+                No matching cards
+              </h3>
+              <p className="mb-6 max-w-[280px] text-center text-[13px] font-bold leading-relaxed text-ui-muted">
+                Nothing in {activeCollection.title ?? 'this folder'} matches your search.
+              </p>
+              <ActionButton variant="secondary" size="sm" onClick={() => setSearchQuery('')}>
+                Clear search
+              </ActionButton>
+            </div>
           ) : items.length === 0 ? (
-            <div className="w-full h-full flex flex-col items-center justify-center py-10">
+            <div className="h-full w-full flex flex-col items-center justify-center py-10">
               <EmptyState onAddCard={onAddCard} isStarred={isStarred} />
             </div>
           ) : (
             <div className="w-full">
-              {/* Quiet count label */}
-              <p className="mb-4 px-1 text-[13px] font-bold text-ui-muted">
-                {items.length} {items.length === 1 ? 'card' : 'cards'}
-              </p>
+              {/* Clean responsive card grid — Add Card is a consistent tile, never drifting */}
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                {!isStarred && onAddCard && (
+                  <motion.button
+                    whileTap={{ scale: 0.96 }}
+                    onClick={onAddCard}
+                    aria-label="Add a card to this folder"
+                    className={cn(
+                      "flex h-full min-h-[140px] cursor-pointer select-none flex-col items-center justify-center rounded-[24px] border-2 border-dashed border-ui-border bg-ui-surface/60 text-center text-ui-muted outline-none transition-[border-color,background-color,color] duration-150 hover:border-brand-primary hover:bg-brand-primary/5 hover:text-brand-primary focus-visible:ring-4 focus-visible:ring-brand-primary/20"
+                    )}
+                  >
+                    <AppIcon name="add" size={26} className="mb-2" />
+                    <span className="block text-[14px] font-black">Add card</span>
+                  </motion.button>
+                )}
 
-              {/* Masonry layout — card height driven by content */}
-              <div className="columns-2 gap-3">
                 {items.map((item: DBDictionaryEntry | UserFlashcard, idx: number) => {
                   const key = isStarred
                     ? `star-${(item as DBDictionaryEntry).traditional}`
@@ -178,24 +211,6 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
                     />
                   );
                 })}
-
-                {/* Add Card Inline Button */}
-                {!isStarred && onAddCard && (
-                  <div className="break-inside-avoid mb-3">
-                    <motion.button
-                      whileTap={{ scale: 0.95 }}
-                      onClick={onAddCard}
-                      className={cn(
-                        "flex min-h-[120px] w-full cursor-pointer select-none flex-col items-center justify-center rounded-[24px] bg-ui-surface text-center text-ui-muted outline-none transition-[background-color,color] duration-150 hover:bg-white hover:text-brand-primary focus-visible:ring-4 focus-visible:ring-brand-primary/20"
-                      )}
-                    >
-                      <AppIcon name="add" size={24} className="mb-2" />
-                      <span className="block text-[14px] font-black">
-                        Add card
-                      </span>
-                    </motion.button>
-                  </div>
-                )}
               </div>
             </div>
           )}

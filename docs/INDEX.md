@@ -18,6 +18,7 @@ Use this file to find the right document. Do not read every Markdown file for on
 - `ROADMAP.md` — larger product direction and priorities.
 - `PROGRESS_AND_PLANS.md` — implementation progress and unfinished work.
 - `UI_CONSISTENCY_AUDIT.md` — current UI issues and polish priorities.
+- `WIDGET_ARCHITECTURE_REFACTOR_PLAN.md` — phased execution plan for separating shared UI, app shell, and feature-owned components.
 - `GRAMMAR_LESSON_TEMPLATE.md` — reusable grammar lesson behavior.
 - `GRAMMAR_PART_TWO_PLAN.md` — grammar part structure and source-reading model.
 - `LESSON_9_GRAMMAR_PLAN.md` — one feature plan: Lesson 9 grammar.
@@ -28,7 +29,9 @@ Use this file to find the right document. Do not read every Markdown file for on
 - `DATABASE_SCHEMA.md` — Supabase tables, relationships, and policies.
 - `API_SPEC.md` — Express API endpoints.
 - `SEARCH_SPEC.md` — dictionary search design.
-- `../WIDGETS.md` — shared widget catalog and usage.
+- `COURSE_EXAMPLES.md` — rich example-sentence packs, runtime filtering, and OCR import workflow.
+- `COURSE_EXAMPLE_COVERAGE.md` — current Book 1 per-lesson coverage and verified-source limitations.
+- `../WIDGETS.md` — public shared-widget catalog; its list mirrors `src/lib/widgets/index.ts`.
 
 ## History / Background
 
@@ -53,9 +56,11 @@ Use this file to find the right document. Do not read every Markdown file for on
 | Any grammar lesson | `GRAMMAR_LESSON_TEMPLATE.md`, relevant grammar plan, relevant book source |
 | Lesson 9 grammar | `LESSON_9_GRAMMAR_PLAN.md`, `GRAMMAR_LESSON_TEMPLATE.md`, Lesson 9 source |
 | New reusable widget | `../AGENTS.md`, `../WIDGETS.md`, relevant widget code |
+| Shared UI API cleanup | `../WIDGETS.md`, `../src/lib/widgets/index.ts`, relevant widget code |
 | UI redesign | `../AGENTS.md`, `UI_CONSISTENCY_AUDIT.md`, relevant screen/widgets |
 | Data/API change | `ARCHITECTURE.md`, `DATABASE_SCHEMA.md` or `API_SPEC.md` |
 | Dictionary search | `SEARCH_SPEC.md`, relevant services/hooks |
+| Flashcard examples | `COURSE_EXAMPLES.md`, relevant services/hooks |
 | Product planning | `ROADMAP.md`, `PROGRESS_AND_PLANS.md` |
 
 ## Documentation Rule

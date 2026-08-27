@@ -22,9 +22,18 @@ interface BreakdownPack {
   items: DBCharacterBreakdown[];
 }
 
+interface UsedAsPack {
+  schemaVersion: number;
+  version: string;
+  componentCount: number;
+  entryCount: number;
+  entries: Record<string, string[]>;
+}
+
 const shardCache = new Map<number, Map<string, DBCharacterBreakdown>>();
 const pendingShards = new Map<number, Promise<Map<string, DBCharacterBreakdown> | null>>();
 let manifestPromise: Promise<BreakdownManifest> | null = null;
+let usedAsPromise: Promise<Record<string, string[]> | null> | null = null;
 const MAX_STATIC_BATCH_CHARACTERS = 20;
 const MAX_STATIC_BATCH_SHARDS = 4;
 
@@ -150,4 +159,41 @@ export async function fetchBreakdownsFromPacks(
   }
 
   return results;
+}
+
+/**
+ * Loads the static component -> characters inverted index
+ * (`public/data/breakdowns/used-as.json`, version-keyed in IndexedDB like the
+ * shards). Returns null when packs are unavailable; callers fall back to the
+ * database `decomposition LIKE` query.
+ */
+export async function fetchUsedAsFromPacks(): Promise<Record<string, string[]> | null> {
+  if (usedAsPromise) return usedAsPromise;
+
+  usedAsPromise = (async () => {
+    try {
+      const manifest = await getManifest();
+      const persistentKey = `breakdowns:${manifest.version}:used-as`;
+      const pack = await fetchStaticJson<UsedAsPack>(
+        '/data/breakdowns/used-as.json',
+        'breakdown used-as index',
+        { persistentKey },
+      );
+      if (
+        pack.schemaVersion !== 1
+        || typeof pack.entries !== 'object'
+        || pack.entries === null
+      ) {
+        await removeStaticJsonCache(persistentKey);
+        return null;
+      }
+      return pack.entries;
+    } catch (error) {
+      usedAsPromise = null;
+      console.warn('Static used-as index unavailable; using Supabase.', error);
+      return null;
+    }
+  })();
+
+  return usedAsPromise;
 }

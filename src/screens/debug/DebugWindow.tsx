@@ -59,7 +59,7 @@ export const DebugWindow = () => {
       case 'Supabase': return 'bg-teal-100 text-teal-800 border-teal-300';
       case 'Auth': return 'bg-purple-100 text-purple-800 border-purple-300';
       case 'Cache': return 'bg-sky-100 text-sky-800 border-sky-300';
-      default: return 'bg-[#F7F7F7] text-[#4B4B4B] border-[#E5E5E5]';
+      default: return 'bg-[#F7F7F7] text-ui-ink border-[#E5E5E5]';
     }
   };
 
@@ -79,7 +79,7 @@ export const DebugWindow = () => {
     <div className="p-6 md:p-8 h-full flex flex-col font-sans bg-[#F7F7F7]">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
         <div>
-          <h1 className="text-2xl font-black text-[#4B4B4B]">Debug Control Panel</h1>
+          <h1 className="text-2xl font-black text-ui-ink">Debug Control Panel</h1>
           <p className="text-sm text-[#AFB6BB]">Monitor AI processes, cache statuses, database updates, and system integrity.</p>
         </div>
         
@@ -99,8 +99,8 @@ export const DebugWindow = () => {
           onClick={() => setActiveTab('logs')}
           className={`px-4 py-2 text-xs md:text-sm font-black uppercase tracking-wide rounded-xl border-b-2 active:border-b-0 active:translate-y-[4px] transition-all select-none ${
             activeTab === 'logs' 
-              ? 'bg-[#58CC02] border-[#46A302] text-white' 
-              : 'bg-white border-[#E5E5E5] text-[#4B4B4B] hover:bg-[#F7F7F7]'
+              ? 'bg-feedback-success border-[#46A302] text-white' 
+              : 'bg-white border-[#E5E5E5] text-ui-ink hover:bg-[#F7F7F7]'
           }`}
         >
           Active Log Stream & Errors
@@ -109,8 +109,8 @@ export const DebugWindow = () => {
           onClick={() => setActiveTab('mnemonics')}
           className={`px-4 py-2 text-xs md:text-sm font-black uppercase tracking-wide rounded-xl border-b-2 active:border-b-0 active:translate-y-[4px] transition-all select-none ${
             activeTab === 'mnemonics' 
-              ? 'bg-[#58CC02] border-[#46A302] text-white' 
-              : 'bg-white border-[#E5E5E5] text-[#4B4B4B] hover:bg-[#F7F7F7]'
+              ? 'bg-feedback-success border-[#46A302] text-white' 
+              : 'bg-white border-[#E5E5E5] text-ui-ink hover:bg-[#F7F7F7]'
           }`}
         >
           Mnemonic Firestore Cache ({mnemonics.length})
@@ -119,8 +119,8 @@ export const DebugWindow = () => {
           onClick={() => setActiveTab('icons')}
           className={`px-4 py-2 text-xs md:text-sm font-black uppercase tracking-wide rounded-xl border-b-2 active:border-b-0 active:translate-y-[4px] transition-all select-none ${
             activeTab === 'icons' 
-              ? 'bg-[#58CC02] border-[#46A302] text-white' 
-              : 'bg-white border-[#E5E5E5] text-[#4B4B4B] hover:bg-[#F7F7F7]'
+              ? 'bg-feedback-success border-[#46A302] text-white' 
+              : 'bg-white border-[#E5E5E5] text-ui-ink hover:bg-[#F7F7F7]'
           }`}
         >
           UI Icons List
@@ -131,7 +131,7 @@ export const DebugWindow = () => {
         {activeTab === 'logs' && (
           <div className="h-full flex flex-col gap-3 min-h-0">
             <div className="flex justify-between items-center bg-[#F1F2F4] p-3 rounded-xl border border-[#D5D5D5]">
-              <span className="text-xs font-bold text-[#4B4B4B]">
+              <span className="text-xs font-bold text-ui-ink">
                 REAL-TIME ACTIVITY FEED ({logs.length} events logged)
               </span>
               <button 
@@ -172,14 +172,14 @@ export const DebugWindow = () => {
                       {log.details && (
                         <button 
                           onClick={() => setExpandedLogId(expandedLogId === log.id ? null : log.id)}
-                          className="text-xs font-black text-[#58CC02] hover:underline"
+                          className="text-xs font-black text-feedback-success hover:underline"
                         >
                           {expandedLogId === log.id ? 'Hide Trace ▲' : 'Inspect Payload ▼'}
                         </button>
                       )}
                     </div>
 
-                    <p className={`text-[14px] font-bold ${log.level === 'error' ? 'text-rose-800' : log.level === 'warn' ? 'text-amber-800' : 'text-[#4B4B4B]'}`}>
+                    <p className={`text-[14px] font-bold ${log.level === 'error' ? 'text-rose-800' : log.level === 'warn' ? 'text-amber-800' : 'text-ui-ink'}`}>
                       {log.message}
                     </p>
 
@@ -203,13 +203,13 @@ export const DebugWindow = () => {
 
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white p-4 rounded-xl border-2 border-[#E5E5E5] gap-4">
               <div>
-                <h4 className="font-extrabold text-[#4B4B4B] text-sm">GLOBAL DATABASE CONTROLS</h4>
+                <h4 className="font-extrabold text-ui-ink text-sm">GLOBAL DATABASE CONTROLS</h4>
                 <p className="text-xs text-[#AFB6BB]">{mnemonics.length} items currently in the active Firestore database cache.</p>
               </div>
               {!showConfirmDelete ? (
                 <button
                   onClick={() => setShowConfirmDelete(true)}
-                  className="px-4 py-2 bg-[#FF4B4B] border-b-2 border-[#C82333] active:border-b-0 active:translate-y-[4px] text-white text-xs font-black uppercase rounded-xl transition-all hover:brightness-110 select-none"
+                  className="px-4 py-2 bg-feedback-danger border-b-2 border-[#C82333] active:border-b-0 active:translate-y-[4px] text-white text-xs font-black uppercase rounded-xl transition-all hover:brightness-110 select-none"
                 >
                   Clear All Mnemonics
                 </button>
@@ -217,13 +217,13 @@ export const DebugWindow = () => {
                 <div className="flex gap-2">
                   <button
                     onClick={clearAllMnemonicsFromDb}
-                    className="px-3 py-2 bg-[#58CC02] border-b-2 border-[#46A302] text-white text-xs font-black uppercase rounded-xl transition-all hover:brightness-110 select-none"
+                    className="px-3 py-2 bg-feedback-success border-b-2 border-[#46A302] text-white text-xs font-black uppercase rounded-xl transition-all hover:brightness-110 select-none"
                   >
                     Confirm Delete
                   </button>
                   <button
                     onClick={() => setShowConfirmDelete(false)}
-                    className="px-3 py-2 bg-white border-2 border-[#E5E5E5] border-b-2 active:border-b-[2px] active:translate-y-[2px] text-[#4B4B4B] text-xs font-black uppercase rounded-xl transition-all hover:bg-[#F7F7F7] select-none"
+                    className="px-3 py-2 bg-white border-2 border-[#E5E5E5] border-b-2 active:border-b-[2px] active:translate-y-[2px] text-ui-ink text-xs font-black uppercase rounded-xl transition-all hover:bg-[#F7F7F7] select-none"
                   >
                     Cancel
                   </button>
@@ -243,12 +243,12 @@ export const DebugWindow = () => {
               mnemonics.map((m) => (
                 <div key={m.character} className="border-2 border-[#E5E5E5] p-5 rounded-2xl flex flex-col bg-white shadow-sm hover:border-[#AFB6BB] transition-all">
                   <div className="flex justify-between items-center mb-2 pb-2 border-b border-[#F1F1F1]">
-                    <span className="font-extrabold text-[#4B4B4B] text-2xl">{m.character}</span>
+                    <span className="font-extrabold text-ui-ink text-2xl">{m.character}</span>
                     <span className="text-xs text-[#AFB6BB]">
                       {m.createdAt?.toDate ? m.createdAt.toDate().toLocaleString() : 'Cached Global Memory'}
                     </span>
                   </div>
-                  <p className="text-[#4B4B4B] font-bold whitespace-pre-wrap text-[15px] bg-[#F7F7F7] p-3 rounded-xl border border-[#E5E5E5] leading-relaxed">
+                  <p className="text-ui-ink font-bold whitespace-pre-wrap text-[15px] bg-[#F7F7F7] p-3 rounded-xl border border-[#E5E5E5] leading-relaxed">
                     {m.mnemonic}
                   </p>
                 </div>
@@ -266,7 +266,7 @@ export const DebugWindow = () => {
             <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4">
               {Object.entries(icons).map(([path, content]) => (
                 <div key={path} className="border-2 border-[#E5E5E5] p-4 rounded-2xl flex flex-col items-center bg-white shadow-sm">
-                  <div className="w-12 h-12 bg-[#F7F7F7] flex items-center justify-center mb-2 rounded-xl text-[#4B4B4B]">
+                  <div className="w-12 h-12 bg-[#F7F7F7] flex items-center justify-center mb-2 rounded-xl text-ui-ink">
                     <div dangerouslySetInnerHTML={{ __html: content as string }} />
                   </div>
                   <p className="text-[11px] font-black text-[#858585] text-center max-w-full overflow-hidden text-ellipsis whitespace-nowrap" title={path.split('/').pop()}>

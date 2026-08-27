@@ -13,8 +13,8 @@ export function HanziCanvas({
   onComplete,
   size = 280,
   showOutline = true,
-  accentHex = '#1CB0F6',
-  accentBorder = 'border-[#1CB0F6]',
+  accentHex = DESIGN_TOKENS.color.brand.primary,
+  accentBorder = 'border-brand-primary',
   bgAccent
 }: { 
   char: string; 

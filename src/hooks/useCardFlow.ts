@@ -111,16 +111,10 @@ export function useCardFlow({
     };
   }, [currentCard, currentIndex, flowBackDelayMs, flowFrontDelayMs, flowStatus, pronunciationRate, speakDefinition, totalCount]);
 
-  useEffect(() => {
-    const handleVisibility = () => {
-      if (document.hidden) pauseFlow();
-    };
-    document.addEventListener('visibilitychange', handleVisibility);
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibility);
-      audioService.stop();
-    };
-  }, [pauseFlow]);
+  // Note: the flow deliberately does NOT pause when the document is hidden
+  // (tab switch). Timers get throttled by the browser while hidden, so the
+  // flow keeps advancing in the background and never resets or replays the
+  // current card when the learner returns to the tab.
 
   return { flowStatus, pauseFlow, stopFlow, toggleFlow };
 }

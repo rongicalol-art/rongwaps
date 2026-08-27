@@ -33,6 +33,7 @@ import {
   PiPlayFill,
   PiPlayCircleFill,
   PiPlusBold,
+  PiMinusBold,
   PiSparkleFill,
   PiStarFill,
   PiTargetFill,
@@ -49,6 +50,23 @@ import {
   PiTrophyFill,
   PiUserBold,
   PiXBold,
+  PiHashBold,
+  PiHandWavingBold,
+  PiBowlFoodBold,
+  PiUsersThreeBold,
+  PiSwatchesBold,
+  PiPersonBold,
+  PiLightningBold,
+  PiMapPinBold,
+  PiTreeBold,
+  PiDogBold,
+  PiBackpackBold,
+  PiShoppingBagBold,
+  PiPaperPlaneBold,
+  PiTextAaBold,
+  PiHouseBold,
+  PiQuestionBold,
+  PiRulerBold,
 } from 'react-icons/pi';
 
 export type AppIconName =
@@ -79,12 +97,14 @@ export type AppIconName =
   | 'lock'
   | 'level'
   | 'menu'
+  | 'minus'
   | 'pause'
   | 'play'
   | 'pronounce'
   | 'progress'
   | 'profile'
   | 'practice'
+  | 'plus'
   | 'search'
   | 'sidebarToggle'
   | 'sparkles'
@@ -101,7 +121,24 @@ export type AppIconName =
   | 'trophy'
   | 'target'
   | 'typeText'
-  | 'next';
+  | 'next'
+  | 'numbers'
+  | 'greeting'
+  | 'food'
+  | 'family'
+  | 'colors'
+  | 'body'
+  | 'actions'
+  | 'places'
+  | 'nature'
+  | 'animals'
+  | 'school'
+  | 'shopping'
+  | 'travel'
+  | 'describe'
+  | 'home'
+  | 'questions'
+  | 'measure';
 
 const ICONS: Record<AppIconName, IconType> = {
   add: PiPlusBold,
@@ -131,12 +168,14 @@ const ICONS: Record<AppIconName, IconType> = {
   lock: PiLockKeyFill,
   level: PiGraduationCapFill,
   menu: PiListBold,
+  minus: PiMinusBold,
   pause: PiPauseCircleFill,
   play: PiPlayFill,
   pronounce: PiSpeakerHighFill,
   progress: PiChartDonutFill,
   profile: PiUserBold,
   practice: PiPencilSimpleBold,
+  plus: PiPlusBold,
   search: PiMagnifyingGlassBold,
   sidebarToggle: PiSidebarSimpleBold,
   sparkles: PiSparkleFill,
@@ -154,6 +193,23 @@ const ICONS: Record<AppIconName, IconType> = {
   target: PiTargetFill,
   typeText: PiCursorTextBold,
   next: PiCaretRightBold,
+  numbers: PiHashBold,
+  greeting: PiHandWavingBold,
+  food: PiBowlFoodBold,
+  family: PiUsersThreeBold,
+  colors: PiSwatchesBold,
+  body: PiPersonBold,
+  actions: PiLightningBold,
+  places: PiMapPinBold,
+  nature: PiTreeBold,
+  animals: PiDogBold,
+  school: PiBackpackBold,
+  shopping: PiShoppingBagBold,
+  travel: PiPaperPlaneBold,
+  describe: PiTextAaBold,
+  home: PiHouseBold,
+  questions: PiQuestionBold,
+  measure: PiRulerBold,
 };
 
 export interface AppIconProps extends Omit<IconBaseProps, 'children'> {

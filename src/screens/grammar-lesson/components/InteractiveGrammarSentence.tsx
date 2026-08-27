@@ -115,12 +115,12 @@ export function InteractiveGrammarSentence({
                 aria-describedby={isOpen ? tooltipId : undefined}
                 aria-label={`${text}: ${word.pinyin}, ${word.meaning}`}
                 className={cn(
-                  '-mx-0.5 rounded-[8px] px-0.5 font-chinese font-black leading-tight outline-none transition-colors hover:bg-[#EAF7FE] focus-visible:bg-[#EAF7FE] focus-visible:ring-2 focus-visible:ring-brand-primary/35 active:bg-[#D9F1FD]',
+                  '-mx-0.5 rounded-[8px] px-0.5 font-chinese font-black leading-tight outline-none transition-colors hover:bg-brand-primary-soft focus-visible:bg-brand-primary-soft focus-visible:ring-2 focus-visible:ring-brand-primary/35 active:bg-brand-primary-soft',
                   teachingTextSizeClass,
                   isFocus
                     ? 'bg-transparent text-brand-primary'
                     : tone === 'accent' ? 'text-brand-primary' : 'text-ui-ink-strong',
-                  isOpen && 'bg-[#EAF7FE]',
+                  isOpen && 'bg-brand-primary-soft',
                   isAligned && 'bg-brand-primary text-ui-surface hover:bg-brand-primary focus-visible:bg-brand-primary',
                 )}
               >
@@ -150,7 +150,7 @@ export function InteractiveGrammarSentence({
                   transition={{ duration: 0.12 }}
                   className="pointer-events-none absolute bottom-[calc(100%+9px)] left-1/2 z-40 w-max min-w-[112px] max-w-[180px] -translate-x-1/2 rounded-[12px] border-b-2 border-ui-border bg-ui-ink-strong px-3 py-2 text-center shadow-lg"
                 >
-                  <span className="block text-xs font-black text-[#69CCF9]">{word.pinyin}</span>
+                  <span className="block text-xs font-black text-brand-primary/70">{word.pinyin}</span>
                   <span className="mt-0.5 block text-xs font-bold leading-snug text-white">{word.meaning}</span>
                   <span className="absolute left-1/2 top-full h-0 w-0 -translate-x-1/2 border-x-[6px] border-t-[6px] border-x-transparent border-t-ui-ink-strong" />
                 </motion.span>

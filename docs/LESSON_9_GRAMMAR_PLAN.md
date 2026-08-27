@@ -554,7 +554,7 @@ Potential model additions:
 - capability category for `能`
 - comparison pair data
 
-Reuse before new widgets:
+Reuse before creating new grammar lesson components:
 
 - `GrammarLabShell`
 - `GrammarSlotMap`

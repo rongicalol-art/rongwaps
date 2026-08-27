@@ -1,4 +1,5 @@
-import { AppIcon, GrammarFocusText, IconActionButton } from '../../../lib/widgets';
+import { AppIcon, IconActionButton } from '../../../lib/widgets';
+import { GrammarFocusText } from './GrammarFocusText';
 import { audioService } from '../../../services/audioService';
 import type { GrammarWordToken, InteractiveGrammarPage } from '../../../types/models';
 import { getGrammarText } from './GrammarText';
@@ -31,18 +32,17 @@ export function GrammarExamplesSection({
   };
 
   return (
-    <section aria-labelledby="examples-heading" className="mt-8">
+    <section aria-labelledby="examples-heading" className="mt-10">
       <div className="mb-3 flex items-center justify-between gap-3">
         <h2 id="examples-heading" className="text-sm font-black uppercase tracking-[0.08em] text-ui-muted-strong">
           Examples
         </h2>
-        <span className="text-[10px] font-bold text-ui-muted">Audio {page.audioReference}</span>
       </div>
       <ol className="divide-y-2 divide-ui-divider border-y-2 border-ui-divider">
         {page.examples.map((example, index) => (
           <li
             key={example.id}
-            className="grid grid-cols-[32px_minmax(0,1fr)_40px] items-start gap-x-3 py-4 sm:grid-cols-[32px_minmax(0,1fr)_40px] sm:gap-x-4 sm:py-5"
+            className="grid grid-cols-[32px_minmax(0,1fr)_40px] items-start gap-x-3 py-5 sm:gap-x-4 sm:py-6"
           >
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-feedback-warning text-sm font-black text-ui-ink-strong shadow-[0_3px_0_var(--color-feedback-warning-edge)]">
               {example.number}

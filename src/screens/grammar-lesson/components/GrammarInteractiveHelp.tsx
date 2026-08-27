@@ -1,5 +1,9 @@
+import type { GrammarWordToken, InteractiveGrammarPage } from '../../../types/models';
+import { GrammarContrastSection } from './GrammarContrastSection';
+import { GrammarHelpDisclosure } from './GrammarHelpDisclosure';
+import { GrammarRuleContrast } from './GrammarRuleContrast';
+import { SentenceSpine } from './SentenceSpine';
 import {
-  DisclosureLine,
   GrammarAbilityLab,
   GrammarCompareLab,
   GrammarDiscoveryLab,
@@ -7,14 +11,10 @@ import {
   GrammarNumberLab,
   GrammarPairCompareLab,
   GrammarRouteLab,
-  GrammarRuleContrast,
   GrammarSequenceLab,
   GrammarTimeRangeLab,
   GrammarTimelineLab,
-  SentenceSpine,
-} from '../../../lib/widgets';
-import type { GrammarWordToken, InteractiveGrammarPage } from '../../../types/models';
-import { GrammarContrastSection } from './GrammarContrastSection';
+} from '../experiences';
 
 interface GrammarInteractiveHelpProps {
   page: InteractiveGrammarPage;
@@ -63,11 +63,7 @@ export function GrammarInteractiveHelp({
   };
 
   return (
-    <DisclosureLine
-      className="mt-8"
-      title="Interactive help"
-      description="Optional visual explanation"
-    >
+    <GrammarHelpDisclosure className="mt-8" title="Explore this pattern">
       {page.discoveryLab && !hasSpecializedLab && (
         <GrammarDiscoveryLab
           lab={page.discoveryLab}
@@ -101,6 +97,6 @@ export function GrammarInteractiveHelp({
           onOpenWord={onOpenWord}
         />
       )}
-    </DisclosureLine>
+    </GrammarHelpDisclosure>
   );
 }

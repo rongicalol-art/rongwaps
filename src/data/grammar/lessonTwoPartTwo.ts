@@ -23,7 +23,7 @@ const possessiveLexicon = [
   lexeme('台灣', 'Táiwān', 'Taiwan', '台湾'),
   lexeme('英國', 'Yīngguó', 'the United Kingdom', '英国'),
   lexeme('美國', 'Měiguó', 'the United States', '美国'),
-  lexeme('的', 'de', 'links an owner or description to a noun'),
+  lexeme('的', 'de', 'links an owner to a thing'),
   lexeme('孩子', 'háizi', 'child; children'),
   lexeme('生日', 'shēngrì', 'birthday'),
   lexeme('學校', 'xuéxiào', 'school', '学校'),
@@ -32,14 +32,14 @@ const possessiveLexicon = [
   lexeme('水果', 'shuǐguǒ', 'fruit'),
   lexeme('奶茶', 'nǎichá', 'milk tea'),
   lexeme('新', 'xīn', 'new'),
-  lexeme('可愛', 'kě’ài', 'cute; lovely', '可爱'),
-  lexeme('很', 'hěn', 'links a subject to a positive state'),
+  lexeme('可愛', "kě'ài", 'cute; lovely', '可爱'),
+  lexeme('很', 'hěn', 'very; used before a describing word'),
   lexeme('不喜歡', 'bù xǐhuān', 'do not like', '不喜欢'),
   lexeme('喝', 'hē', 'drink'),
   lexeme('喜歡', 'xǐhuān', 'like', '喜欢'),
   lexeme('明天', 'míngtiān', 'tomorrow'),
   lexeme('去', 'qù', 'go'),
-  lexeme('嗎', 'ma', 'yes-or-no question particle', '吗'),
+  lexeme('嗎', 'ma', 'ending word for a yes/no question', '吗'),
   lexeme('二月二十四號', 'èr yuè èrshísì hào', 'February 24', '二月二十四号'),
 ];
 
@@ -61,13 +61,12 @@ export const LESSON_TWO_GRAMMAR_FOUR: InteractiveGrammarPage = {
   printedPages: [60, 68],
   audioReference: '02-2-3',
   explanation:
-    'Put 的 between an owner and the thing connected to that owner. With close family and a pronoun, Chinese often drops 的, but objects such as phones keep it.',
+    'Put 的 between an owner and the thing that belongs to them. With close family, you can often drop 的: 我媽媽. But keep 的 with things like phones: 我的手機.',
   focusTerms: ['的', '名詞', '名词'],
   teachingGlossary: teachingGlossary('b1l02-g04', possessiveLexicon),
-  pattern: 'Owner or description + 的 + noun',
+  pattern: 'Owner or description + 的 + thing',
   patternColumns: ['Owner or description', '的', 'Thing'],
   patternAccentColumn: 1,
-  patternMobileLayout: 'leading-wide',
   discoveryLab: {
     title: 'Use 的 as a connection link',
     description: 'The word before 的 identifies who owns the thing or what kind of thing it is.',
@@ -75,12 +74,12 @@ export const LESSON_TWO_GRAMMAR_FOUR: InteractiveGrammarPage = {
     choices: [
       {
         id: 'g4-phone',
-        label: 'Object · keep 的',
+        label: 'Things · keep 的',
         traditional: '我的手機',
         simplified: '我的手机',
         pinyin: 'Wǒ de shǒujī',
         english: 'my cell phone',
-        note: 'Objects keep 的: 我的手機, not 我手機.',
+        note: 'Things keep 的: 我的手機, not 我手機.',
       },
       {
         id: 'g4-family',
@@ -89,11 +88,11 @@ export const LESSON_TWO_GRAMMAR_FOUR: InteractiveGrammarPage = {
         simplified: '我妈妈',
         pinyin: 'Wǒ māma',
         english: 'my mom',
-        note: 'With a pronoun and a close family relationship, 的 is often omitted.',
+        note: 'With close family, you can often drop 的.',
       },
       {
         id: 'g4-school',
-        label: 'Group · use plural pronoun',
+        label: 'Group · use 我們',
         traditional: '我們學校',
         simplified: '我们学校',
         pinyin: 'Wǒmen xuéxiào',
@@ -105,7 +104,7 @@ export const LESSON_TWO_GRAMMAR_FOUR: InteractiveGrammarPage = {
         label: 'Repair an unclear link',
         traditional: '老師媽媽 → 老師的媽媽',
         simplified: '老师妈妈 → 老师的妈妈',
-        pinyin: 'Lǎoshī māma → lǎoshī de māma',
+        pinyin: 'Lǎoshī māma → Lǎoshī de māma',
         english: 'the teacher’s mother',
         note: 'Without 的, this does not clearly express the intended ownership.',
         isCorrection: true,
@@ -133,9 +132,59 @@ export const LESSON_TWO_GRAMMAR_FOUR: InteractiveGrammarPage = {
       subject: [possessiveToken('g4-p3-taiwan', '台灣')],
       grammar: [possessiveToken('g4-p3-de', '的')],
       complement: [possessiveToken('g4-p3-school', '學校')],
-      english: 'a school in Taiwan / Taiwan’s school',
+      english: 'Taiwan’s school',
     },
   ],
+  confusion: {
+    title: "Don't mix these up",
+    items: [
+      {
+        id: 'g4-confusion-phone-keeps-de',
+        question: 'Can I drop 的 with a phone, like with family?',
+        answer: 'No — things keep 的: 我的手機. Only close family can drop it, like 我媽媽.',
+        wrongTraditional: '我手機很新。',
+        wrongSimplified: '我手机很新。',
+        right: grammarText(
+          'g4-confusion-1',
+          '我的手機很新。',
+          '我的手机很新。',
+          'Wǒ de shǒujī hěn xīn.',
+          'My cell phone is very new.',
+          possessiveLexicon,
+        ),
+      },
+      {
+        id: 'g4-confusion-shi-vs-de',
+        question: 'Why is 老師是媽媽 wrong for “the teacher’s mom”?',
+        answer: '是 links an identity, not an owner. Use 的 to connect the owner 老師 to 媽媽.',
+        wrongTraditional: '老師是媽媽。',
+        wrongSimplified: '老师是妈妈。',
+        right: grammarText(
+          'g4-confusion-2',
+          '老師的媽媽明天去美國。',
+          '老师的妈妈明天去美国。',
+          'Lǎoshī de māma míngtiān qù Měiguó.',
+          'The teacher’s mom is going to the United States tomorrow.',
+          possessiveLexicon,
+        ),
+      },
+      {
+        id: 'g4-confusion-our-school',
+        question: 'How do I say “my school”?',
+        answer: 'For the school you belong to, use 我們學校 — the group word, with no 的.',
+        wrongTraditional: '我的學校。',
+        wrongSimplified: '我的学校。',
+        right: grammarText(
+          'g4-confusion-3',
+          '我們學校。',
+          '我们学校。',
+          'Wǒmen xuéxiào.',
+          'Our school.',
+          possessiveLexicon,
+        ),
+      },
+    ],
+  },
   examples: [
     {
       id: 'g4-example-1',
@@ -156,7 +205,7 @@ export const LESSON_TWO_GRAMMAR_FOUR: InteractiveGrammarPage = {
         'g4-e2',
         '他的孩子可愛嗎？',
         '他的孩子可爱吗？',
-        'Tā de háizi kě’ài ma?',
+        "Tā de háizi kě'ài ma?",
         'Is his child cute?',
         possessiveLexicon,
       ),
@@ -178,7 +227,7 @@ export const LESSON_TWO_GRAMMAR_FOUR: InteractiveGrammarPage = {
   exerciseTitle: 'Complete the connection',
   exercisePreview: 'Place 的 or build an owner-and-thing phrase.',
   exerciseInstruction: 'Use 的 where the source sentence needs an explicit connection.',
-  exerciseNote: 'Question 3 is open-ended in the source. The app offers several grammatical models without claiming a textbook answer.',
+  exerciseNote: 'Question 3 is open in the book. Any correct owner + 的 + person works. These are example answers, not a textbook key.',
   questions: [
     {
       id: 'g4-question-1',
@@ -194,7 +243,7 @@ export const LESSON_TWO_GRAMMAR_FOUR: InteractiveGrammarPage = {
         { type: 'text', traditional: '生日是二月二十四號。', simplified: '生日是二月二十四号。' },
       ],
       tiles: [
-        answerTile('g4-q1-de-tile', '的', 'de', 'possessive connection particle'),
+        answerTile('g4-q1-de-tile', '的', 'de', 'connects an owner to a thing'),
         answerTile('g4-q1-shi', '是', 'shì', 'is; identity link'),
       ],
       correctFeedback: '媽媽的生日 means “Mom’s birthday.”',
@@ -215,10 +264,10 @@ export const LESSON_TWO_GRAMMAR_FOUR: InteractiveGrammarPage = {
       ],
       tiles: [
         answerTile('g4-q2-de-tile', '的', 'de', 'links Taiwan to fruit'),
-        answerTile('g4-q2-ma', '嗎', 'ma', 'yes-or-no question particle', '吗'),
+        answerTile('g4-q2-ma', '嗎', 'ma', 'ending word for a yes/no question', '吗'),
       ],
       correctFeedback: '台灣的水果 means “fruit from Taiwan.”',
-      repairFeedback: 'The final 嗎 already marks the question. Use 的 inside the noun phrase.',
+      repairFeedback: 'The final 嗎 already makes it a question. Use 的 between 台灣 and 水果.',
     },
     {
       id: 'g4-question-3',
@@ -250,7 +299,7 @@ export const LESSON_TWO_GRAMMAR_FOUR: InteractiveGrammarPage = {
         answerTile('g4-q3-friend', '朋友', 'péngyǒu', 'friend'),
         answerTile('g4-q3-mom', '媽媽', 'māma', 'mom', '妈妈'),
       ],
-      correctFeedback: 'The two noun slots can vary; 的 keeps their owner-to-person relationship clear.',
+      correctFeedback: 'The two empty spots can hold different people. 的 keeps the owner-to-person link clear.',
       repairFeedback: 'Build owner + 的 + person, then keep the source ending.',
     },
   ],
@@ -279,7 +328,7 @@ const auxiliaryLexicon = [
   lexeme('學校', 'xuéxiào', 'school', '学校'),
   lexeme('水', 'shuǐ', 'water'),
   lexeme('什麼', 'shénme', 'what', '什么'),
-  lexeme('嗎', 'ma', 'yes-or-no question particle', '吗'),
+  lexeme('嗎', 'ma', 'ending word for a yes/no question', '吗'),
   lexeme('想法', 'xiǎngfǎ', 'intention or feeling'),
   lexeme('動作', 'dòngzuò', 'action', '动作'),
 ];
@@ -302,16 +351,15 @@ export const LESSON_TWO_GRAMMAR_FIVE: InteractiveGrammarPage = {
   printedPages: [61],
   audioReference: '02-2-3',
   explanation:
-    'Words such as 要, 喜歡, and 愛 describe your intention or feeling about another action. Put that meaning before the action verb.',
+    'Words like 要, 喜歡, and 愛 show what you want or feel about doing something. Put that word before the action word.',
   focusTerms: ['要', '喜歡', '喜欢', '愛', '爱', '想法', '動作', '动作'],
   teachingGlossary: teachingGlossary('b1l02-g05', auxiliaryLexicon),
-  pattern: 'Subject + intention or feeling + action',
+  pattern: 'Who + intention or feeling + action',
   patternColumns: ['Who', 'Want, like, or love', 'Action'],
   patternAccentColumn: 1,
-  patternMobileLayout: 'middle-wide',
   discoveryLab: {
-    title: 'Stack the feeling before the action',
-    description: 'Keep the two verbs together: first the intention or feeling, then the real-world action.',
+    title: 'Put the feeling before the action',
+    description: 'Put the wanting or liking word first, then the action word.',
     prompt: 'What meaning comes before the action?',
     choices: [
       {
@@ -385,6 +433,56 @@ export const LESSON_TWO_GRAMMAR_FIVE: InteractiveGrammarPage = {
       english: 'Do you want to go to the teacher’s home?',
     },
   ],
+  confusion: {
+    title: "Don't mix these up",
+    items: [
+      {
+        id: 'g5-confusion-want-before-action',
+        question: 'Why is 要 before 吃?',
+        answer: '要 is the wanting word, and the wanting word goes before the action word: 要 + 吃, never 吃 + 要.',
+        wrongTraditional: '你吃要水果。',
+        wrongSimplified: '你吃要水果。',
+        right: grammarText(
+          'g5-confusion-1',
+          '你要吃水果。',
+          '你要吃水果。',
+          'Nǐ yào chī shuǐguǒ.',
+          'You want to eat fruit.',
+          auxiliaryLexicon,
+        ),
+      },
+      {
+        id: 'g5-confusion-ai-vs-xihuan',
+        question: 'Can I use 愛 for any liking?',
+        answer: 'No — 愛 means love, a very strong feeling. For a normal like, use 喜歡.',
+        wrongTraditional: '我愛喝奶茶。',
+        wrongSimplified: '我爱喝奶茶。',
+        right: grammarText(
+          'g5-confusion-2',
+          '我喜歡喝奶茶。',
+          '我喜欢喝奶茶。',
+          'Wǒ xǐhuān hē nǎichá.',
+          'I like drinking milk tea.',
+          auxiliaryLexicon,
+        ),
+      },
+      {
+        id: 'g5-confusion-negative-placement',
+        question: 'Where does 不 go with 愛喝?',
+        answer: '不 goes before the wanting word, not the action: 不愛喝, never 愛不喝.',
+        wrongTraditional: '我愛不喝奶茶。',
+        wrongSimplified: '我爱不喝奶茶。',
+        right: grammarText(
+          'g5-confusion-3',
+          '我不愛喝珍珠奶茶。',
+          '我不爱喝珍珠奶茶。',
+          'Wǒ bú ài hē zhēnzhū nǎichá.',
+          'I do not love drinking bubble milk tea.',
+          auxiliaryLexicon,
+        ),
+      },
+    ],
+  },
   examples: [
     {
       id: 'g5-example-1',
@@ -424,10 +522,10 @@ export const LESSON_TWO_GRAMMAR_FIVE: InteractiveGrammarPage = {
       ),
     },
   ],
-  exerciseTitle: 'Keep the verb stack together',
+  exerciseTitle: 'Keep 要, 喜歡, 愛 before the action',
   exercisePreview: 'Choose a complete personal response to each source question.',
   exerciseInstruction: 'Keep 要, 喜歡, or 愛 before the action it describes.',
-  exerciseNote: 'The source questions are personal. Positive and negative authored models are accepted where both are grammatical.',
+  exerciseNote: 'These questions are about you. A yes answer and a no answer are both correct.',
   exerciseResponseMode: 'text',
   questions: [
     {
@@ -523,11 +621,12 @@ const positiveNegativeLexicon = [
   lexeme('朋友', 'péngyǒu', 'friend'),
   lexeme('水果', 'shuǐguǒ', 'fruit'),
   lexeme('熱', 'rè', 'hot', '热'),
-  lexeme('很', 'hěn', 'links a subject to a positive state'),
+  lexeme('很', 'hěn', 'very; used before a describing word'),
   lexeme('家', 'jiā', 'home; house'),
-  lexeme('嗎', 'ma', 'yes-or-no question particle', '吗'),
+  lexeme('嗎', 'ma', 'ending word for a yes/no question', '吗'),
   lexeme('肯定', 'kěndìng', 'positive form'),
   lexeme('沒', 'méi', 'negative used with 有', '没'),
+  lexeme('不要', 'bú yào', 'do not want to'),
 ];
 
 const pnToken = (id: string, traditional: string, suffix?: string) => (
@@ -548,13 +647,12 @@ export const LESSON_TWO_GRAMMAR_SIX: InteractiveGrammarPage = {
   printedPages: [62],
   audioReference: '02-2-3',
   explanation:
-    'Repeat the key verb or state around 不: 忙不忙, 吃不吃, 要不要. With 有, use 有沒有. This pattern already makes a question, so do not add 嗎.',
+    'Repeat the key doing or describing word around 不: 忙不忙, 吃不吃, 要不要. With 有, use 有沒有. This pattern already makes a question, so do not add 嗎.',
   focusTerms: ['忙不忙', '吃不吃', '要不要', '有沒有', '有没有', '喜不喜歡', '喜不喜欢', '嗎', '吗'],
   teachingGlossary: teachingGlossary('b1l02-g06', positiveNegativeLexicon),
-  pattern: 'Subject + positive form + 不／沒 + positive form',
+  pattern: 'Who + positive form + 不／沒 + positive form',
   patternColumns: ['Who', 'Positive-negative pair', 'Rest of action'],
   patternAccentColumn: 1,
-  patternMobileLayout: 'middle-wide',
   discoveryLab: {
     title: 'Let the verb ask both possibilities',
     description: 'The repeated form presents a compact choice: yes or no.',
@@ -566,7 +664,7 @@ export const LESSON_TWO_GRAMMAR_SIX: InteractiveGrammarPage = {
         traditional: '你忙不忙？',
         pinyin: 'Nǐ máng bù máng?',
         english: 'Are you busy?',
-        note: 'Repeat the state 忙 around 不.',
+        note: 'Repeat the describing word 忙 around 不.',
       },
       {
         id: 'g6-action',
@@ -574,7 +672,7 @@ export const LESSON_TWO_GRAMMAR_SIX: InteractiveGrammarPage = {
         traditional: '你吃不吃？',
         pinyin: 'Nǐ chī bù chī?',
         english: 'Are you eating / Do you eat?',
-        note: 'Repeat the action verb 吃 around 不.',
+        note: 'Repeat the action word 吃 around 不.',
       },
       {
         id: 'g6-have',
@@ -626,13 +724,61 @@ export const LESSON_TWO_GRAMMAR_SIX: InteractiveGrammarPage = {
       subject: [pnToken('g6-p3-he', '他')],
       grammar: [
         pnToken('g6-p3-want-a', '要'),
-        pnToken('g6-p3-not', '不'),
-        pnToken('g6-p3-want-b', '要'),
+        pnToken('g6-p3-want-no', '不要'),
       ],
       complement: [pnToken('g6-p3-go', '去', '？')],
       english: 'Does he want to go?',
     },
   ],
+  confusion: {
+    title: "Don't mix these up",
+    items: [
+      {
+        id: 'g6-confusion-no-ma',
+        question: 'Why can’t I add 嗎 to 忙不忙?',
+        answer: 'The pair 忙不忙 already makes the question. Adding 嗎 gives it two question marks.',
+        wrongTraditional: '老師忙不忙嗎？',
+        wrongSimplified: '老师忙不忙吗？',
+        right: grammarText(
+          'g6-confusion-1',
+          '老師忙不忙？',
+          '老师忙不忙？',
+          'Lǎoshī máng bù máng?',
+          'Is the teacher busy?',
+          positiveNegativeLexicon,
+        ),
+      },
+      {
+        id: 'g6-confusion-you-mei-you',
+        question: 'Why is it 有沒有, not 有不有?',
+        answer: '有 takes 沒有 as its negative, so the pair repeats 有 and 沒有. Never pair 有 with 不.',
+        wrongTraditional: '他有不有朋友？',
+        wrongSimplified: '他有不有朋友？',
+        right: grammarText(
+          'g6-confusion-2',
+          '他有沒有台灣朋友？',
+          '他有没有台湾朋友？',
+          'Tā yǒu méi yǒu Táiwān péngyǒu?',
+          'Does he have a Taiwanese friend?',
+          positiveNegativeLexicon,
+        ),
+      },
+      {
+        id: 'g6-confusion-match-reply-word',
+        question: 'My friend said 我不要去他家. Why is 去不去 wrong?',
+        answer: 'The pair repeats the key word in the reply — 要. Ask 要不要, not 去不去.',
+        wrongTraditional: '你去不去他家？',
+        right: grammarText(
+          'g6-confusion-3',
+          '你要不要去他家？',
+          '你要不要去他家？',
+          'Nǐ yào bú yào qù tā jiā?',
+          'Do you want to go to his home?',
+          positiveNegativeLexicon,
+        ),
+      },
+    ],
+  },
   examples: [
     {
       id: 'g6-example-1',
@@ -673,9 +819,9 @@ export const LESSON_TWO_GRAMMAR_SIX: InteractiveGrammarPage = {
     },
   ],
   exerciseTitle: 'Build the positive-negative question',
-  exercisePreview: 'Complete the source questions with the matching repeated form.',
+  exercisePreview: 'Complete the questions with the matching repeated form.',
   exerciseInstruction: 'Choose the pair that matches the answer or picture cue. Do not add 嗎.',
-  exerciseNote: 'Question 1 uses the source hot-weather illustration and printed gloss 熱. Choices are app-authored structural models.',
+  exerciseNote: 'Question 1 uses the hot-weather picture in the book and the word 熱. These are example answers.',
   exerciseCues: [
     {
       id: 'g6-hot-cue',
@@ -700,11 +846,11 @@ export const LESSON_TWO_GRAMMAR_SIX: InteractiveGrammarPage = {
         { type: 'text', traditional: '？ B：台灣很熱。', simplified: '？ B：台湾很热。' },
       ],
       tiles: [
-        answerTile('g6-q1-hot', '熱不熱', 'rè bu rè', 'hot or not; is it hot?', '热不热'),
-        answerTile('g6-q1-busy', '忙不忙', 'máng bu máng', 'busy or not'),
+        answerTile('g6-q1-hot', '熱不熱', 'rè bú rè', 'hot or not; is it hot?', '热不热'),
+        answerTile('g6-q1-busy', '忙不忙', 'máng bù máng', 'busy or not'),
         answerTile('g6-q1-ma', '熱嗎', 'rè ma', 'Is it hot? Uses a different question pattern.', '热吗'),
       ],
-      correctFeedback: 'The reply 很熱 points to the state pair 熱不熱.',
+      correctFeedback: 'The answer 很熱 shows the question should use 熱不熱.',
       repairFeedback: 'Repeat 熱 around 不. Do not add 嗎 to this pattern.',
     },
     {
@@ -723,7 +869,7 @@ export const LESSON_TWO_GRAMMAR_SIX: InteractiveGrammarPage = {
       ],
       tiles: [
         answerTile('g6-q2-like', '喜不喜歡', 'xǐ bù xǐhuān', 'like or not; do you like', '喜不喜欢'),
-        answerTile('g6-q2-eat', '吃不吃', 'chī bu chī', 'eat or not'),
+        answerTile('g6-q2-eat', '吃不吃', 'chī bù chī', 'eat or not'),
         answerTile('g6-q2-ma', '喜歡嗎', 'xǐhuān ma', 'Do you like? Uses the 嗎 pattern.', '喜欢吗'),
       ],
       correctFeedback: 'The answer says 喜歡, so the source sentence needs the 喜不喜歡 pair.',
@@ -744,7 +890,7 @@ export const LESSON_TWO_GRAMMAR_SIX: InteractiveGrammarPage = {
       ],
       tiles: [
         answerTile('g6-q3-want', '要不要去他家', 'yào bú yào qù tā jiā', 'want to go to his home or not'),
-        answerTile('g6-q3-go', '去不去他家', 'qù bu qù tā jiā', 'go to his home or not'),
+        answerTile('g6-q3-go', '去不去他家', 'qù bú qù tā jiā', 'go to his home or not'),
         answerTile('g6-q3-ma', '要去他家嗎', 'yào qù tā jiā ma', 'Do you want to go to his home? Uses 嗎.', '要去他家吗'),
       ],
       correctFeedback: 'The reply begins 不要, so the matching question asks 要不要.',
@@ -842,7 +988,7 @@ export const LESSON_TWO_PART_TWO: InteractiveGrammarPart = {
     LESSON_TWO_GRAMMAR_SIX,
   ],
   dialogue: LESSON_TWO_DIALOGUE_TWO,
-  completionTitle: 'Part 2 complete - you can connect nouns, stack verbs, and ask either-or questions.',
+  completionTitle: 'Part 2 complete - you can link people and things, put wanting and liking first, and ask either-or questions.',
   completionDescription:
     'You used 的, placed wanting and liking before actions, and formed positive-negative questions without 嗎.',
   nextBookLabel: 'Next in the book · Review the lesson patterns.',

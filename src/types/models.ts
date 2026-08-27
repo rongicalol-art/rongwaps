@@ -140,6 +140,7 @@ export interface DictionaryListEntry {
   pinyin_accented: string;
   definitions: string | string[] | Record<string, unknown>;
   bookId?: number;
+  measure_words?: string[];
 }
 
 export interface DictionarySavedPreview {
@@ -185,6 +186,8 @@ export interface GrammarPatternRow {
   subject: GrammarWordToken[];
   grammar: GrammarWordToken[];
   complement: GrammarWordToken[];
+  /** Optional extended slot list for future patterns with more than three columns. */
+  columns?: GrammarWordToken[][];
   english: string;
 }
 
@@ -555,6 +558,24 @@ export interface GrammarLessonWorld {
   english: string;
 }
 
+export interface GrammarConfusionItem {
+  id: string;
+  /** The mix-up phrased as the question a learner would ask. */
+  question: string;
+  /** Short concrete answer in plain words. */
+  answer: string;
+  /** The form learners reach for by mistake; shown struck through. */
+  wrongTraditional: string;
+  wrongSimplified?: string;
+  /** What to say instead, fully tappable like an example. */
+  right: GrammarLessonText;
+}
+
+export interface GrammarConfusion {
+  title: string;
+  items: GrammarConfusionItem[];
+}
+
 export interface InteractiveGrammarPage {
   id: string;
   bookId: number;
@@ -567,6 +588,8 @@ export interface InteractiveGrammarPage {
   titleEnglish: string;
   learnerPromise: string;
   printedPages: number[];
+  /** When false, the grammar is authored but its printed source is not yet digitized, so the View-book-page action is hidden. */
+  bookPageAvailable?: boolean;
   audioReference: string;
   explanation: string;
   lessonWorld?: GrammarLessonWorld;
@@ -576,7 +599,6 @@ export interface InteractiveGrammarPage {
   patternColumns: string[];
   patternColumnDetails?: string[];
   patternAccentColumn?: number;
-  patternMobileLayout?: 'balanced' | 'leading-wide' | 'middle-wide';
   patternRows: GrammarPatternRow[];
   discoveryLab?: GrammarDiscoveryLab;
   numberLab?: GrammarNumberLab;
@@ -591,6 +613,7 @@ export interface InteractiveGrammarPage {
   pairCompareLab?: GrammarPairCompareLab;
   contrast?: GrammarContrast;
   ruleContrast?: GrammarRuleContrast;
+  confusion?: GrammarConfusion;
   examples: GrammarLessonExample[];
   profiles?: GrammarExerciseProfile[];
   exerciseCues?: GrammarExerciseCue[];
@@ -618,58 +641,65 @@ export interface InteractiveGrammarPart {
   nextBookLabel: string;
 }
 
-export interface ReadingLessonChunk {
-  id: string;
-  role: string;
+/** One line of a dialogue, exposed as a flowing paragraph in readings. */
+export interface ReadingParagraph {
+  speaker: string;
   traditional: string;
   simplified: string;
   pinyin: string;
   english: string;
 }
 
-export interface ReadingTimelineItem {
-  id: string;
-  time: string;
-  period: 'morning' | 'noon' | 'afternoon' | 'evening';
-  traditional: string;
-  simplified: string;
-  pinyin: string;
-  english: string;
-}
-
-export interface ReadingTimelineCheck {
-  id: string;
-  prompt: string;
-  options: ReadingLessonChoice[];
-  answerId: string;
-  explanation: string;
-}
-
-export interface ReadingLessonChoice {
-  id: string;
-  traditional: string;
-  simplified: string;
-  pinyin: string;
-  english: string;
-}
-
-export interface InteractiveReadingPart {
+/** A dialogue-as-reading, paragraph by paragraph. */
+export interface ReadingRecord {
   id: string;
   bookId: number;
   lessonId: number;
-  partId: number;
-  titleTraditional: string;
-  titleEnglish: string;
+  dialogueNumber: 1 | 2;
+  title: string;
+  setting: string;
   printedPages: number[];
   audioReference: string;
-  introduction: string;
-  chunks: ReadingLessonChunk[];
-  experience?: 'introduction' | 'timeline';
-  teachingGlossary?: GrammarWordToken[];
-  timeline?: ReadingTimelineItem[];
-  timelineChecks?: ReadingTimelineCheck[];
-  countries?: ReadingLessonChoice[];
-  likes?: ReadingLessonChoice[];
-  foods?: ReadingLessonChoice[];
-  drinks?: ReadingLessonChoice[];
+  paragraphs: ReadingParagraph[];
+}
+
+export interface CourseExampleRecord {
+  id: string;
+  sourceCardId: string;
+  sourceFront: string;
+  sourceMeaning: string;
+  bookId: number;
+  lessonId: number;
+  partId: number;
+  traditional: string;
+  simplified?: string;
+  pinyin: string;
+  english: string;
+  printedPage?: number;
+  sourceOcrId: string;
+  provenance: 'textbook-ocr' | 'authored';
+  confidence: 'high' | 'medium' | 'needs-review';
+}
+
+export interface CourseExamplePack {
+  schemaVersion: number;
+  bookId: number;
+  count: number;
+  records: CourseExampleRecord[];
+}
+
+export interface CourseExampleManifestBook {
+  bookId: number;
+  count: number;
+  path: string;
+  sha256: string;
+  bytes: number;
+}
+
+export interface CourseExampleManifest {
+  schemaVersion: number;
+  version: string;
+  generatedAt: string;
+  totalCount: number;
+  books: CourseExampleManifestBook[];
 }

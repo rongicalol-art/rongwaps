@@ -5,6 +5,7 @@ const jsonRequests = new Map<string, Promise<unknown>>();
 const hanziRequests = new Map<string, Promise<CharacterJson>>();
 
 const HANZI_DATA_SOURCES = [
+  '/hanzi-data',
   'https://cdn.jsdelivr.net/npm/hanzi-writer-data@2.0.1',
   'https://unpkg.com/hanzi-writer-data@2.0.1',
   'https://raw.githubusercontent.com/chanind/hanzi-writer-data/master/data',

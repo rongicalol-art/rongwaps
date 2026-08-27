@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'motion/react';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { AppIcon } from '../../lib/widgets/AppIcon';
+import { AppIcon } from '../../lib/widgets';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
 

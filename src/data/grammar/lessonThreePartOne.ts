@@ -30,7 +30,7 @@ const sharedLexicon = [
   lexeme('明天', 'míngtiān', 'tomorrow'),
   lexeme('生日', 'shēngrì', 'birthday'),
   lexeme('是', 'shì', 'is; am; are'),
-  lexeme('的', 'de', 'links a description or owner to a noun'),
+  lexeme('的', 'de', 'connects a describing word or owner to a thing'),
   lexeme('想', 'xiǎng', 'would like to; want to'),
   lexeme('要', 'yào', 'want to; intend to'),
   lexeme('送', 'sòng', 'give as a gift'),
@@ -42,10 +42,10 @@ const sharedLexicon = [
   lexeme('去', 'qù', 'go'),
   lexeme('好不好', 'hǎo bù hǎo', 'how about it; okay or not'),
   lexeme('好', 'hǎo', 'good; okay'),
-  lexeme('啊', 'a', 'particle showing agreement'),
+  lexeme('啊', 'a', 'ending word that shows agreement'),
   lexeme('什麼', 'shénme', 'what', '什么'),
   lexeme('誰', 'shéi', 'who', '谁'),
-  lexeme('呢', 'ne', 'what about; return question'),
+  lexeme('呢', 'ne', 'what about; asks the question back'),
   lexeme('幾', 'jǐ', 'how many; usually under ten', '几'),
   lexeme('一', 'yī', 'one'),
   lexeme('兩', 'liǎng', 'two before a measure word', '两'),
@@ -53,12 +53,12 @@ const sharedLexicon = [
   lexeme('四', 'sì', 'four'),
   lexeme('五', 'wǔ', 'five'),
   lexeme('個', 'ge', 'general measure word', '个'),
-  lexeme('本', 'běn', 'measure word for bound books'),
+  lexeme('本', 'běn', 'measure word for books'),
   lexeme('朵', 'duǒ', 'measure word for flowers'),
   lexeme('一些', 'yìxiē', 'some'),
   lexeme('禮物', 'lǐwù', 'gift', '礼物'),
-  lexeme('中文書', 'Zhōngwén shū', 'Chinese-language book', '中文书'),
-  lexeme('英文書', 'Yīngwén shū', 'English-language book', '英文书'),
+  lexeme('中文書', 'Zhōngwén shū', 'book in Chinese', '中文书'),
+  lexeme('英文書', 'Yīngwén shū', 'book in English', '英文书'),
   lexeme('書', 'shū', 'book', '书'),
   lexeme('花', 'huā', 'flower; flowers'),
   lexeme('大蛋糕', 'dà dàngāo', 'large cake'),
@@ -88,12 +88,11 @@ export const LESSON_THREE_GRAMMAR_ONE: InteractiveGrammarPage = {
   focusTerms: ['數字', '数字', '量詞', '量词', '名詞', '名词', '個', '个', '本', '朵', '兩', '两', '幾', '几'],
   teachingGlossary: teachingGlossary('b1l03-g01', sharedLexicon),
   pattern: 'Number or 幾 + measure word + noun',
-  patternColumns: ['How many', 'Counting word', 'Thing'],
+  patternColumns: ['How many', 'Measure word', 'Thing'],
   patternAccentColumn: 1,
-  patternMobileLayout: 'balanced',
   discoveryLab: {
-    title: 'Choose the bridge that matches the thing',
-    description: 'The measure word connects the number to its noun. The noun decides which bridge sounds natural.',
+    title: 'Pick the right measure word',
+    description: 'The measure word links the number to the thing. The thing you name chooses the measure word.',
     prompt: 'What are you counting?',
     choices: [
       {
@@ -103,7 +102,7 @@ export const LESSON_THREE_GRAMMAR_ONE: InteractiveGrammarPage = {
         simplified: '两本书',
         pinyin: 'liǎng běn shū',
         english: 'two books',
-        note: '本 counts bound items such as books.',
+        note: 'Use 本 for books and similar things.',
       },
       {
         id: 'g1-flowers',
@@ -134,7 +133,7 @@ export const LESSON_THREE_GRAMMAR_ONE: InteractiveGrammarPage = {
         isCorrection: true,
       },
     ],
-    takeaway: 'Think number, counting bridge, thing: 兩 + 本 + 書.',
+    takeaway: 'Put them in order: number + measure word + thing: 兩 + 本 + 書.',
   },
   patternRows: [
     {
@@ -159,6 +158,56 @@ export const LESSON_THREE_GRAMMAR_ONE: InteractiveGrammarPage = {
       english: 'how many flowers?',
     },
   ],
+  confusion: {
+    title: "Don't mix these up",
+    items: [
+      {
+        id: 'g1-confusion-missing-measure',
+        question: 'Do I need a word between the number and the thing?',
+        answer: 'Yes — a measure word. Number and thing never sit side by side.',
+        wrongTraditional: '我買三蛋糕。',
+        wrongSimplified: '我买三蛋糕。',
+        right: grammarText(
+          'b1l03-g1-conf-1',
+          '我買三個蛋糕。',
+          '我买三个蛋糕。',
+          'Wǒ mǎi sān ge dàngāo.',
+          'I buy three cakes.',
+          sharedLexicon,
+        ),
+      },
+      {
+        id: 'g1-confusion-er-vs-liang',
+        question: 'Why do I say 兩 for "two" here, not 二?',
+        answer: 'Before a measure word, two becomes 兩. 二 is only for plain counting, like 一二三.',
+        wrongTraditional: '我有二本書。',
+        wrongSimplified: '我有二本书。',
+        right: grammarText(
+          'b1l03-g1-conf-2',
+          '我有兩本書。',
+          '我有两本书。',
+          'Wǒ yǒu liǎng běn shū.',
+          'I have two books.',
+          sharedLexicon,
+        ),
+      },
+      {
+        id: 'g1-confusion-ge-vs-duo',
+        question: 'Can I count everything with 個?',
+        answer: 'No. 個 is the general one, but books take 本 and flowers take 朵.',
+        wrongTraditional: '她有三個花。',
+        wrongSimplified: '她有三个花。',
+        right: grammarText(
+          'b1l03-g1-conf-3',
+          '她有三朵花。',
+          '她有三朵花。',
+          'Tā yǒu sān duǒ huā.',
+          'She has three flowers.',
+          sharedLexicon,
+        ),
+      },
+    ],
+  },
   examples: [
     {
       id: 'g1-example-1',
@@ -198,17 +247,17 @@ export const LESSON_THREE_GRAMMAR_ONE: InteractiveGrammarPage = {
     },
   ],
   exerciseTitle: 'Build the quantity',
-  exercisePreview: 'Choose a complete number + measure word + noun phrase.',
+  exercisePreview: 'Choose a complete number + measure word + thing.',
   exerciseInstruction: 'Read what is being counted, then choose the matching measure word.',
   exerciseNote:
-    'The book gives open prompts without an answer key. These app-authored models preserve the printed picture and sentence cues.',
+    'The book gives open prompts with no answer key. These practice answers follow the picture and the sentence cues.',
   exerciseResponseMode: 'text',
   exerciseCues: [
     {
       id: 'g1-cue-flowers',
       label: 'Question 1 picture',
       pinyin: 'liǎng duǒ huā',
-      detail: 'The printed illustration shows a woman holding two flowers.',
+      detail: 'The book’s picture shows a woman holding two flowers.',
     },
   ],
   questions: [
@@ -300,10 +349,9 @@ export const LESSON_THREE_GRAMMAR_TWO: InteractiveGrammarPage = {
   pattern: 'Giver + 送 + receiver + gift',
   patternColumns: ['Giver + 送', 'Who receives it', 'What they receive'],
   patternAccentColumn: 1,
-  patternMobileLayout: 'leading-wide',
   discoveryLab: {
-    title: 'Pass the gift through two slots',
-    description: '送 opens two slots. First choose the person receiving something, then name the gift.',
+    title: 'Put the person first, then the gift',
+    description: '送 takes two things after it: first the person who gets the gift, then the gift itself.',
     prompt: 'What belongs immediately after 送?',
     choices: [
       {
@@ -322,7 +370,7 @@ export const LESSON_THREE_GRAMMAR_TWO: InteractiveGrammarPage = {
         simplified: '你要送谁蛋糕？',
         pinyin: 'Nǐ yào sòng shéi dàngāo?',
         english: 'Who will you give cake to?',
-        note: '誰 fills the receiver slot after 送.',
+        note: '誰 asks for the person who gets the gift.',
       },
       {
         id: 'g2-question-gift',
@@ -331,7 +379,7 @@ export const LESSON_THREE_GRAMMAR_TWO: InteractiveGrammarPage = {
         simplified: '你想送妈妈什么？',
         pinyin: 'Nǐ xiǎng sòng māma shénme?',
         english: 'What would you like to give Mom?',
-        note: '媽媽 already fills the receiver slot. 什麼 asks for the gift.',
+        note: '媽媽 names the person who gets the gift. 什麼 asks for the gift.',
       },
       {
         id: 'g2-repair',
@@ -369,6 +417,56 @@ export const LESSON_THREE_GRAMMAR_TWO: InteractiveGrammarPage = {
       english: 'Who will you give cake to?',
     },
   ],
+  confusion: {
+    title: "Don't mix these up",
+    items: [
+      {
+        id: 'g2-confusion-order',
+        question: 'Do I say the gift first or the person first after 送?',
+        answer: 'Person first, then the gift. There is no word for "to" in Chinese here.',
+        wrongTraditional: '我送一本書她。',
+        wrongSimplified: '我送一本书她。',
+        right: grammarText(
+          'b1l03-g2-conf-1',
+          '我送她一本書。',
+          '我送她一本书。',
+          'Wǒ sòng tā yì běn shū.',
+          'I give her a book.',
+          sharedLexicon,
+        ),
+      },
+      {
+        id: 'g2-confusion-shei-vs-shenme',
+        question: 'How do I ask WHO gets the gift — 誰 or 什麼?',
+        answer: '誰 asks for the person who receives it. 什麼 asks for the gift itself.',
+        wrongTraditional: '你想送什麼蛋糕？',
+        wrongSimplified: '你想送什么蛋糕？',
+        right: grammarText(
+          'b1l03-g2-conf-2',
+          '你想送誰蛋糕？',
+          '你想送谁蛋糕？',
+          'Nǐ xiǎng sòng shéi dàngāo?',
+          'Who will you give the cake to?',
+          sharedLexicon,
+        ),
+      },
+      {
+        id: 'g2-confusion-yao-vs-xiang',
+        question: '想 and 要 both mean "want". Do I need both?',
+        answer: 'No, just one. 想 is a soft "would like to"; 要 is a firmer "plan to".',
+        wrongTraditional: '我要想買一本書。',
+        wrongSimplified: '我要想买一本书。',
+        right: grammarText(
+          'b1l03-g2-conf-3',
+          '我要買一本書。',
+          '我要买一本书。',
+          'Wǒ yào mǎi yì běn shū.',
+          'I want to buy a book.',
+          sharedLexicon,
+        ),
+      },
+    ],
+  },
   examples: [
     {
       id: 'g2-example-1',
@@ -407,11 +505,11 @@ export const LESSON_THREE_GRAMMAR_TWO: InteractiveGrammarPage = {
       ),
     },
   ],
-  exerciseTitle: 'Route each gift correctly',
-  exercisePreview: 'Put giver, receiver, and gift in the source order.',
+  exerciseTitle: 'Order each gift sentence',
+  exercisePreview: 'Put the giver, receiver, and gift in the right order.',
   exerciseInstruction: 'Build each sentence from left to right. Keep the receiver directly after 送.',
   exerciseNote:
-    'The printed pictures establish who gives and receives each gift. The app keeps those roles in the prompts; the book prints no answer key.',
+    'The pictures in the book show who gives and who receives each gift. The app keeps those roles. The book prints no answer key.',
   exerciseResponseMode: 'text',
   exerciseCues: [
     { id: 'g2-cue-1', label: 'Scene 1', pinyin: 'bàba → tā → shū', detail: 'Dad gives a book to a boy.' },
@@ -566,7 +664,7 @@ const dialogue: GrammarDialogue = {
     prompt: '宜文想送友美什麼？',
     options: ['兩本中文書', '一個大蛋糕', '一些花'],
     answer: '兩本中文書',
-    hint: 'Look at Yiwen’s longer reply about what Youmei loves.',
+    hint: 'Check Yiwen’s reply about what Youmei loves.',
   },
 };
 

@@ -1,5 +1,6 @@
 import { SAMPLE_BOOKS } from '../../data/books';
-import { AppIcon, CourseIcon } from '../../lib/widgets';
+import { AppIcon } from '../../lib/widgets';
+import { CourseIcon } from './components/CourseIcons';
 import { useBookCarouselNavigation } from './hooks/useBookCarouselNavigation';
 
 interface BookCarouselProps {

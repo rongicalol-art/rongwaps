@@ -1,6 +1,8 @@
-import { PiXBold } from 'react-icons/pi';
+import { useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'motion/react';
-import { Soft3DButton } from '../../lib/widgets';
+import { ActionButton, AppIcon, IconActionButton } from '../../lib/widgets';
+import { useModalFocus } from '../../hooks/useModalFocus';
 
 interface FolderModalProps {
   showFolderModal: boolean;
@@ -19,53 +21,75 @@ export function FolderModal({
   isCreatingFolder,
   handleCreateFolder,
 }: FolderModalProps) {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const { onKeyDown } = useModalFocus({
+    containerRef: dialogRef,
+    initialFocusRef: inputRef,
+    isActive: showFolderModal,
+    onEscape: () => setShowFolderModal(false),
+  });
+
   if (!showFolderModal) return null;
 
-  return (
-    <div className="workspace-window fixed inset-0 z-[300] flex items-center justify-center p-4">
+  return createPortal(
+    <div className="fixed inset-0 z-[700] flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={() => setShowFolderModal(false)}
-        className="absolute inset-0 bg-[#000000]/40 backdrop-blur-sm"
+        className="absolute inset-0 bg-ui-ink-strong/40 backdrop-blur-sm"
       />
       <motion.div
+        ref={dialogRef}
         initial={{ scale: 0.9, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.9, opacity: 0, y: 20 }}
-        className="relative w-full max-w-sm bg-white rounded-[24px] border-[2px] border-[#E5E5E5] border-b-[6px] p-6 shadow-xl"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="new-folder-title"
+        tabIndex={-1}
+        onKeyDown={onKeyDown}
+        className="relative w-full max-w-sm rounded-[24px] border-b-4 border-ui-border bg-ui-surface p-6 shadow-xl outline-none"
       >
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl font-extrabold text-[#4B4B4B]">New Folder</h2>
-          <button
+          <h2 id="new-folder-title" className="text-xl font-extrabold text-ui-ink-strong">New Folder</h2>
+          <IconActionButton
+            icon={<AppIcon name="close" size={20} />}
+            label="Close new folder"
+            size="md"
             onClick={() => setShowFolderModal(false)}
-            className="w-10 h-10 rounded-[16px] bg-[#F7F7F7] text-[#AFB6BB] hover:bg-[#E5E5E5] hover:text-[#4B4B4B] flex items-center justify-center transition-colors"
-          >
-            <PiXBold size={20} />
-          </button>
+          />
         </div>
 
         <input
-          autoFocus
+          ref={inputRef}
           type="text"
+          aria-label="Folder name"
           placeholder="Folder name (e.g. Action Verbs)"
           value={newFolderName}
           onChange={(e) => setNewFolderName(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !isCreatingFolder) handleCreateFolder();
           }}
-          className="w-full bg-[#F7F7F7] border-[2px] border-[#E5E5E5] rounded-[16px] px-4 py-3 font-bold text-[#4B4B4B] placeholder:text-[#AFB6BB] focus:outline-none focus:border-[#1CB0F6] focus:bg-white transition-colors mb-6"
+          className="mb-6 w-full rounded-[16px] border-2 border-ui-border bg-ui-hover px-4 py-3 font-bold text-ui-ink outline-none placeholder:text-ui-muted focus:border-brand-primary focus:bg-ui-surface focus-visible:ring-4 focus-visible:ring-brand-primary/20 transition-colors"
         />
 
-        <Soft3DButton
+        <ActionButton
+          variant="primary"
+          size="md"
+          fullWidth
           onClick={handleCreateFolder}
-          disabled={!newFolderName.trim() || isCreatingFolder}
-          className="w-full bg-[#1CB0F6] border-[#1899D6] text-white py-3 text-[15px]"
+          disabled={!newFolderName.trim()}
+          loading={isCreatingFolder}
+          loadingLabel="Creating folder"
+          className="uppercase tracking-widest"
         >
-          {isCreatingFolder ? 'CREATING...' : 'CREATE FOLDER'}
-        </Soft3DButton>
+          Create folder
+        </ActionButton>
       </motion.div>
-    </div>
+    </div>,
+    document.body,
   );
 }

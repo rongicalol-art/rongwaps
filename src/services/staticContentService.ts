@@ -6,6 +6,11 @@ interface StaticJsonOptions {
   revalidate?: boolean;
 }
 
+export interface StaticJsonFetchMetadata<T> {
+  data: T;
+  source: 'persistent-cache' | 'network';
+}
+
 const CACHE_PREFIX = 'rongwaps-content:';
 const prunedVersions = new Set<string>();
 
@@ -17,16 +22,16 @@ function toCacheKey(key: string): string {
   return `${CACHE_PREFIX}${key}`;
 }
 
-export async function fetchStaticJson<T>(
+export async function fetchStaticJsonWithMetadata<T>(
   path: string,
   label: string,
   options: StaticJsonOptions = {},
-): Promise<T> {
+): Promise<StaticJsonFetchMetadata<T>> {
   const cacheKey = options.persistentKey ? toCacheKey(options.persistentKey) : null;
   if (cacheKey && canUsePersistentCache()) {
     try {
       const cached = await get<T>(cacheKey);
-      if (cached !== undefined) return cached;
+      if (cached !== undefined) return { data: cached, source: 'persistent-cache' };
     } catch {
       // A browser may block IndexedDB; network loading remains available.
     }
@@ -53,7 +58,15 @@ export async function fetchStaticJson<T>(
     }
   }
 
-  return data;
+  return { data, source: 'network' };
+}
+
+export async function fetchStaticJson<T>(
+  path: string,
+  label: string,
+  options: StaticJsonOptions = {},
+): Promise<T> {
+  return (await fetchStaticJsonWithMetadata<T>(path, label, options)).data;
 }
 
 export async function removeStaticJsonCache(key: string): Promise<void> {

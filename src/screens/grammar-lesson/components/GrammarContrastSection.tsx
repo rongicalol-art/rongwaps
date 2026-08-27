@@ -1,4 +1,4 @@
-import { GrammarFocusText } from '../../../lib/widgets';
+import { GrammarFocusText } from './GrammarFocusText';
 import type { GrammarContrast, GrammarWordToken } from '../../../types/models';
 import { GrammarParticleWorkshop } from './GrammarParticleWorkshop';
 import { GrammarQuickChecks } from './GrammarQuickChecks';

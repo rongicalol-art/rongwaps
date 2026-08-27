@@ -2,7 +2,7 @@ import { supabase } from './supabaseClient';
 import { DBCharacterBreakdown } from '../types/database';
 import { breakdownCache, AppCache } from '../utils/cache';
 import { timeDataRequest } from '../utils/requestTiming';
-import { fetchBreakdownsFromPacks } from './breakdownPackService';
+import { fetchBreakdownsFromPacks, fetchUsedAsFromPacks } from './breakdownPackService';
 
 const BREAKDOWN_COLUMNS = 'character,radical,pinyin,definition,decomposition,components_historical';
 
@@ -86,12 +86,26 @@ export async function getCharacterBreakdown(character: string): Promise<DBCharac
 export const usedAsCache = new AppCache(500);
 
 /**
- * Fetches multiple character breakdowns simultaneously.
- * Ideal for preparing a whole word or sentence at once.
+ * Fetches the characters that use a given component ("used in" lists).
+ * Resolves pack-first from the static inverted index (instant, offline,
+ * IndexedDB-cached); falls back to the database LIKE scan when packs are
+ * unavailable.
  */
 export async function getCharactersUsingComponent(component: string): Promise<string[]> {
   if (usedAsCache.has(component)) {
     return usedAsCache.get<string[]>(component) || [];
+  }
+
+  // Static inverted index (component -> characters) — zero network once cached.
+  try {
+    const index = await fetchUsedAsFromPacks();
+    if (index) {
+      const characters = index[component] || [];
+      usedAsCache.set(component, characters);
+      return characters;
+    }
+  } catch (err) {
+    console.warn('Used-as pack lookup failed; falling back to Supabase:', err);
   }
 
   try {

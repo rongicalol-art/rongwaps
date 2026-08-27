@@ -43,12 +43,21 @@ export const CollectionListItem: React.FC<CollectionListItemProps> = ({
   return (
     <div className="px-1 pb-3">
       <div
-        className={`w-full bg-white px-5 py-4 flex flex-row items-center gap-4 rounded-[24px] border-2 border-b-[6px] border-[#E5E5E5] active:border-b-2 active:translate-y-[3px] hover:border-[#1CB0F6] hover:bg-[#F7F7F7] transition-all cursor-pointer group outline-none text-left`}
+        role="button"
+        tabIndex={0}
+        aria-label={`Open ${traditional}`}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onClick();
+          }
+        }}
+        className={`w-full bg-white px-5 py-4 flex flex-row items-center gap-4 rounded-[24px] border-2 border-b-[6px] border-[#E5E5E5] active:border-b-2 active:translate-y-[3px] hover:border-brand-primary hover:bg-[#F7F7F7] transition-all cursor-pointer group outline-none text-left`}
         onClick={onClick}
       >
         <div className="flex-1 flex flex-col items-start min-w-0 overflow-hidden">
           <div className="flex items-center gap-3 w-full relative mb-1">
-            <span className="text-[28px] sm:text-[32px] leading-none font-chinese font-bold text-[#4B4B4B] shrink-0 pt-1 group-hover:text-[#1CB0F6] transition-colors">
+            <span className="text-[28px] sm:text-[32px] leading-none font-chinese font-bold text-ui-ink shrink-0 pt-1 group-hover:text-brand-primary transition-colors">
               {traditional}
             </span>
             <div className="flex flex-col justify-center min-w-0 flex-1">
@@ -59,19 +68,20 @@ export const CollectionListItem: React.FC<CollectionListItemProps> = ({
                </div>
             </div>
           </div>
-          <div className="text-[15px] font-bold text-[#4B4B4B] line-clamp-2 w-full mt-1 break-words leading-snug">
+          <div className="text-[15px] font-bold text-ui-ink line-clamp-2 w-full mt-1 break-words leading-snug">
             {definition}
           </div>
         </div>
 
         <button
+          aria-label={isStarred ? 'Remove from saved words' : 'Delete card'}
           onClick={(e) => {
             e.stopPropagation();
             onAction(e);
           }}
-          className={`p-3 rounded-[16px] transition-all z-20 shrink-0 border-[2px] border-transparent ${isStarred ? 'text-[#FFD900] hover:bg-[#FFD900]/10 hover:border-[#FFD900]/30' : 'text-[#AFB6BB] bg-[#F7F7F7] hover:bg-[#FFE5E5] hover:text-[#FF4B4B] hover:border-[#FF4B4B]/30'} active:scale-95`}
+          className={`p-3 rounded-[16px] transition-all z-20 shrink-0 border-[2px] border-transparent ${isStarred ? 'text-[#FFD900] hover:bg-[#FFD900]/10 hover:border-[#FFD900]/30' : 'text-[#AFB6BB] bg-[#F7F7F7] hover:bg-[#FFE5E5] hover:text-feedback-danger hover:border-feedback-danger/30'} active:scale-95`}
         >
-          {isStarred ? <PiBookmarkSimpleFill size={28} className="text-[#FF9600]" /> : <PiTrashBold size={24} />}
+          {isStarred ? <PiBookmarkSimpleFill size={28} className="text-brand-secondary" /> : <PiTrashBold size={24} />}
         </button>
       </div>
     </div>

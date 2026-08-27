@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { PiBookOpenFill, PiCheckCircleFill, PiUserFill, PiSignInBold, PiSignOutBold, PiFireFill, PiLightningFill } from 'react-icons/pi';
 import { useAppStore } from '../../store/useAppStore';
-import { Soft3DButton, GardenVisualization } from '../../lib/widgets';
+import { ActionButton } from '../../lib/widgets';
+import { GardenVisualization } from './components/GardenVisualization';
 import { useAuth } from '../../hooks/useAuth';
 import { AuthScreen } from '../auth';
 
@@ -70,7 +71,7 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
             </div>
             {/* Status indicator badge */}
             {currentUser && (
-               <div className="absolute bottom-1 right-1 w-8 h-8 bg-[#58CC02] border-2 border-white rounded-full z-20 flex items-center justify-center shadow-sm">
+               <div className="absolute bottom-1 right-1 w-8 h-8 bg-feedback-success border-2 border-white rounded-full z-20 flex items-center justify-center shadow-sm">
                   <PiCheckCircleFill className="text-white" size={16} />
                </div>
             )}
@@ -90,8 +91,8 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
            <div className="grid grid-cols-2 gap-3 md:gap-4 w-full">
               
               <div className="bg-white border-2 border-b-2 border-ui-border rounded-[24px] p-4 flex items-start gap-3 hover:bg-ui-canvas transition-all cursor-default overflow-hidden">
-                 <div className="w-10 h-10 shrink-0 rounded-full bg-[#FF9600]/10 flex items-center justify-center mt-1">
-                   <PiFireFill className="text-[#FF9600]" size={24} />
+                 <div className="w-10 h-10 shrink-0 rounded-full bg-brand-secondary/10 flex items-center justify-center mt-1">
+                   <PiFireFill className="text-brand-secondary" size={24} />
                  </div>
                  <div className="text-left flex flex-col justify-center min-w-0">
                    <h3 className="text-xl md:text-2xl font-extrabold text-ui-ink truncate">{displayStreak}</h3>
@@ -100,8 +101,8 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
               </div>
 
               <div className="bg-white border-2 border-b-2 border-ui-border rounded-[24px] p-4 flex items-start gap-3 hover:bg-ui-canvas transition-all cursor-default overflow-hidden">
-                 <div className="w-10 h-10 shrink-0 rounded-full bg-[#FFC800]/10 flex items-center justify-center mt-1">
-                   <PiLightningFill className="text-[#FFC800]" size={24} />
+                 <div className="w-10 h-10 shrink-0 rounded-full bg-feedback-warning/10 flex items-center justify-center mt-1">
+                   <PiLightningFill className="text-feedback-warning" size={24} />
                  </div>
                  <div className="text-left flex flex-col justify-center min-w-0">
                    <h3 className="text-xl md:text-2xl font-extrabold text-ui-ink truncate">{displayXp}</h3>
@@ -110,8 +111,8 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
               </div>
 
               <div className="bg-white border-2 border-b-2 border-ui-border rounded-[24px] p-4 flex items-start gap-3 hover:bg-ui-canvas transition-all cursor-default overflow-hidden">
-                 <div className="w-10 h-10 shrink-0 rounded-full bg-[#1CB0F6]/10 flex items-center justify-center mt-1">
-                   <PiBookOpenFill className="text-[#1CB0F6]" size={24} />
+                 <div className="w-10 h-10 shrink-0 rounded-full bg-brand-primary/10 flex items-center justify-center mt-1">
+                   <PiBookOpenFill className="text-brand-primary" size={24} />
                  </div>
                  <div className="text-left flex flex-col justify-center min-w-0">
                    <h3 className="text-xl md:text-2xl font-extrabold text-ui-ink truncate">{learnedCards.length}</h3>
@@ -120,8 +121,8 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
               </div>
 
               <div className="bg-white border-2 border-b-2 border-ui-border rounded-[24px] p-4 flex items-start gap-3 hover:bg-ui-canvas transition-all cursor-default overflow-hidden">
-                 <div className="w-10 h-10 shrink-0 rounded-full bg-[#58CC02]/10 flex items-center justify-center mt-1">
-                   <PiCheckCircleFill className="text-[#58CC02]" size={24} />
+                 <div className="w-10 h-10 shrink-0 rounded-full bg-feedback-success/10 flex items-center justify-center mt-1">
+                   <PiCheckCircleFill className="text-feedback-success" size={24} />
                  </div>
                  <div className="text-left flex flex-col justify-center min-w-0">
                    <h3 className="text-xl md:text-2xl font-extrabold text-ui-ink truncate">{totalCardsReviewed}</h3>
@@ -141,22 +142,25 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
         {/* Account Area */}
         <div className="w-full bg-white border-2 border-ui-border rounded-[24px] p-5 overflow-hidden">
           {currentUser ? (
-            <Soft3DButton
-              variant="custom"
-              depth="sm"
+            <ActionButton
+              variant="danger"
+              size="lg"
+              fullWidth
               onClick={handleLogout}
-              className="bg-white border-ui-border text-[#FF4B4B] hover:bg-[#FFF0F0]"
+              className="uppercase tracking-widest"
             >
               <PiSignOutBold size={20} /> Sign Out
-            </Soft3DButton>
+            </ActionButton>
           ) : (
-            <Soft3DButton
-              variant="custom"
+            <ActionButton
+              variant="primary"
+              size="lg"
+              fullWidth
               onClick={() => setIsAuthOpen(true)}
-              className="bg-[#1CB0F6] border-[#1899D6] text-white"
+              className="uppercase tracking-widest"
             >
               <PiSignInBold size={20} /> Sign In with Google
-            </Soft3DButton>
+            </ActionButton>
           )}
         </div>
 

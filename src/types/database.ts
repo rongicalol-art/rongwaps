@@ -1,12 +1,3 @@
-// Maps to `user_progress` table in Supabase (legacy — kept for backwards compat)
-export interface DBUserProgress {
-  user_id: string;
-  srs_data: Record<string, unknown>;
-  learned_cards: string[];
-  last_activity: string | null;
-  updated_at: string;
-}
-
 // Maps to `user_daily_progress` table in Supabase
 export interface DBDailyProgress {
   id: string;
@@ -39,9 +30,13 @@ export interface DBDictionaryRow {
   pinyin_accented: string | null;
   pinyin_flat: string | null;
   definitions: string[] | Record<string, string> | null;
+  frequency_score?: number | null;
+  curriculum_level?: number | null;
 }
 
 export interface DBVocabularyRow {
+  /** Part of speech tag (e.g. 'N', 'V', 'Vs', 'Adv'). */
+  pos?: string | null;
   id: string;
   traditional: string | null;
   simplified: string | null;
@@ -51,12 +46,14 @@ export interface DBVocabularyRow {
   examples: string | null;
 }
 
-// Maps to `global_dictionary` table in Supabase
+// Client-side dictionary entry shape (returned by dictionaryService)
 export interface DBDictionaryEntry {
   traditional: string;
   simplified: string;
   pinyin: string[] | null;
-  definitions: Record<string, string> | null;
+  definitions: string[] | Record<string, string> | null;
+  frequency_score?: number | null;
+  curriculum_level?: number | null;
 }
 
 // Maps to `mnemonics` table in Supabase

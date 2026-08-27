@@ -29,7 +29,7 @@ export function GrammarText({
 }: GrammarTextProps) {
   return (
     <div>
-      <p className="font-chinese text-base font-bold leading-relaxed text-ui-ink-strong sm:text-lg">
+      <p className="font-chinese text-base font-black leading-relaxed text-ui-ink-strong sm:text-lg">
         <ContextualChineseText
           text={getGrammarText(text, characterPreference)}
           tokens={contextTokens}

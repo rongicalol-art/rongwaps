@@ -43,11 +43,11 @@ export const userService = {
         throw cardError;
       }
 
-      // 2. Fetch legacy row for learned_cards, last_activity, updated_at
+      // 2. Fetch metadata (learned_cards, last_activity) from the profile row
       const { data: legacyRow, error: legacyError } = await supabase
-        .from('user_progress')
+        .from('user_profiles')
         .select('learned_cards, last_activity, updated_at')
-        .eq('user_id', userId)
+        .eq('id', userId)
         .single();
 
       if (legacyError && legacyError.code !== 'PGRST116') {
@@ -149,22 +149,22 @@ export const userService = {
     }
   },
 
-  // Save metadata (learned_cards, last_activity) to user_progress
+  // Save metadata (learned_cards, last_activity) to the user's profile row
   syncMetadata: async (
     userId: string,
     data: { learnedCards: string[]; lastActivity: string | null }
   ) => {
     try {
       const { error } = await supabase
-        .from('user_progress')
+        .from('user_profiles')
         .upsert(
           {
-            user_id: userId,
+            id: userId,
             learned_cards: data.learnedCards,
             last_activity: data.lastActivity,
             updated_at: new Date().toISOString(),
           },
-          { onConflict: 'user_id' }
+          { onConflict: 'id' }
         );
       if (error) {
         console.error("Error syncing metadata:", error);

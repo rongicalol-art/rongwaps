@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { LESSON_TWO_PART_ONE } from '../src/data/grammar/lessonTwoPartOne';
 import { LESSON_TWO_PART_TWO } from '../src/data/grammar/lessonTwoPartTwo';
-import { LESSON_TWO_PART_THREE_READING } from '../src/data/interactiveReadingLessonTwoPartThree';
+import { getReadingsForLesson } from '../src/data/readings';
 import {
   evaluateGrammarPlacements,
   findCanonicalTile,
@@ -55,22 +55,17 @@ test('Lesson 2 wrong placements cannot complete a grammar', () => {
   assert.equal(evaluateGrammarPlacements(page.questions, placements).complete, false);
 });
 
-test('Lesson 2 Reading preserves the eight printed timeline events', () => {
-  assert.deepEqual(
-    LESSON_TWO_PART_THREE_READING.timeline?.map((item) => [item.time, item.id]),
-    [
-      ['06:30', 'wake'],
-      ['07:00', 'school'],
-      ['08:40', 'class'],
-      ['12:00', 'lunch'],
-      ['13:00', 'library'],
-      ['16:00', 'cook'],
-      ['18:00', 'dinner'],
-      ['22:00', 'sleep'],
-    ],
-  );
-  assert.equal(LESSON_TWO_PART_THREE_READING.timelineChecks?.length, 3);
-  assert.deepEqual(LESSON_TWO_PART_THREE_READING.printedPages, [63, 64]);
+test('Lesson 2 derives two complete dialogue readings', () => {
+  const readings = getReadingsForLesson(1, 2);
+  assert.deepEqual(readings.map((reading) => reading.dialogueNumber), [1, 2]);
+  readings.forEach((reading) => {
+    assert.ok(reading.paragraphs.length > 0, `${reading.id} needs paragraphs`);
+    reading.paragraphs.forEach((paragraph) => {
+      assert.ok(paragraph.speaker.trim(), `${reading.id} needs a speaker`);
+      assert.ok(paragraph.traditional.trim() && paragraph.simplified.trim());
+      assert.ok(paragraph.pinyin.trim() && paragraph.english.trim());
+    });
+  });
 });
 
 test('All interactive lesson registries pass production content validation', () => {

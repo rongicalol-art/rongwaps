@@ -1,21 +1,16 @@
 import React from 'react';
 import { PiPencilFill } from 'react-icons/pi';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { FeedbackBottomBar } from '../../lib/widgets/FeedbackBottomBar';
-import { CharacterBreakdownOverlay } from '../../lib/widgets/CharacterBreakdownOverlay';
-import { LessonComplete } from '../../lib/widgets/LessonComplete';
-import { ScreenSkeleton, ScreenLayout } from '../../lib/widgets';
+import { FeedbackBottomBar, LessonComplete } from '../../features/practice';
+import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
+import { ActionButton, AppIcon, ScreenLayout, ScreenSkeleton } from '../../lib/widgets';
 import { motion, AnimatePresence } from 'motion/react';
-import { MemoryHookOverlay } from '../flashcard/MemoryHookOverlay';
 import { useWriting } from './hooks/useWriting';
 import { SingleChar } from './HanziCanvas';
 import { numberToToneMarks } from '../../utils/pinyin';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
 import { buildPracticePartSegments } from '../../utils/practicePartSegments';
-import { ActionButton } from '../../lib/widgets/ActionButton';
-import { AppIcon } from '../../lib/widgets/AppIcon';
-import type { Flashcard } from '../../data/flashcards';
 
 interface WritingScreenProps {
   activeBookId: number;
@@ -27,7 +22,6 @@ interface WritingScreenProps {
 
 export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDeck = false, isReviewDeck = false, onClose }: WritingScreenProps) {
   const [activeBreakdown, setActiveBreakdown] = React.useState<string | null>(null);
-  const [activeMemoryHook, setActiveMemoryHook] = React.useState<Flashcard | null>(null);
   const {
     screenState,
     playlist,
@@ -54,7 +48,7 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
   usePracticeAnswerAutomation({
     status: status === 'correct' ? 'correct' : 'idle',
     onAdvance: handleNext,
-    blocked: Boolean(activeBreakdown || activeMemoryHook),
+    blocked: Boolean(activeBreakdown),
   });
   const partSegments = React.useMemo(
     () => (isShuffled ? [] : buildPracticePartSegments(playlist)),
@@ -64,9 +58,8 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
   usePracticeHeaderRegistration({
     currentIndex,
     totalCount: playlist.length,
-    showLightbulb: !!currentCard,
+    showLightbulb: false,
     partSegments,
-    onLightbulbClick: currentCard ? () => setActiveMemoryHook(currentCard) : undefined,
     onShuffleClick: toggleShuffle,
     onRestartClick: restartRound,
     isShuffled,
@@ -81,7 +74,7 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
       <div className="absolute inset-0 w-full h-full bg-ui-canvas flex flex-col justify-center items-center overflow-hidden overscroll-none">
         <div className="px-6 py-12 flex flex-col items-center justify-center text-center">
           <div className="w-24 h-24 rounded-full bg-[#FFF0F0] flex items-center justify-center mb-6">
-            <PiPencilFill size={48} className="text-[#FF4B4B]" />
+            <PiPencilFill size={48} className="text-feedback-danger" />
           </div>
           <h2 className="text-2xl font-extrabold text-ui-ink tracking-normal">Something went wrong</h2>
           <p className="text-ui-muted text-[15px] font-bold mt-2 max-w-[280px]">
@@ -90,7 +83,7 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
           <div className="mt-8 flex gap-3">
             <button
               onClick={handleRetry}
-              className="px-8 py-4 rounded-[24px] font-black text-white text-lg tracking-wider border-b-[6px] active:border-b-0 active:translate-y-[6px] transition-all bg-[#1CB0F6] border-[#1899D6]"
+              className="px-8 py-4 rounded-[24px] font-black text-white text-lg tracking-wider border-b-[6px] active:border-b-0 active:translate-y-[6px] transition-all bg-brand-primary border-brand-primary-edge"
             >
               TRY AGAIN
             </button>
@@ -114,7 +107,6 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
       <LessonComplete
         score={15}
         accuracy={100}
-        activeBook={activeBook}
         onContinue={onClose}
         onResetAll={restartRound}
       />
@@ -201,7 +193,7 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
                               className={`h-2.5 rounded-full transition-all duration-500 ease-out ${
                                 isFinished ? `w-2.5 ${activeBook.accentBg}` : 
                                 isCurrent ? `w-6 ${activeBook.accentBg}` : 
-                                'w-2.5 bg-ui-border'
+                                'w-2.5 bg-brand-primary-track'
                               }`}
                             />
                           );
@@ -256,18 +248,13 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
         onCheck={() => {}}
         isCheckDisabled={status !== 'correct'}
         onRetry={handleRetry}
-        keyboardShortcutDisabled={Boolean(activeBreakdown || activeMemoryHook)}
+        keyboardShortcutDisabled={Boolean(activeBreakdown)}
         onBreakdown={() => setActiveBreakdown(currentCard.front)}
         activeBook={activeBook}
       />
 
       <CharacterBreakdownOverlay activeBreakdown={activeBreakdown} onClose={() => setActiveBreakdown(null)} activeBook={activeBook} />
 
-      <MemoryHookOverlay 
-        activeMemoryHook={activeMemoryHook}
-        setActiveMemoryHook={setActiveMemoryHook}
-        activeBook={activeBook}
-      />
     </div>
   );
 }

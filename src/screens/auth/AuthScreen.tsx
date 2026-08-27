@@ -1,6 +1,5 @@
 import React from 'react';
-import { PiCircleNotchBold, PiSignInBold, PiUserFill } from 'react-icons/pi';
-import { BottomDrawer, Soft3DButton, LottiePlayer } from '../../lib/widgets';
+import { ActionButton, AppIcon, BottomDrawer, LottiePlayer } from '../../lib/widgets';
 import { useAuth } from '../../hooks/useAuth';
 import rainbowAnimation from '../../assets/animations/rainbow_twist.json';
 
@@ -47,53 +46,49 @@ export function AuthScreen({ isOpen, onClose }: AuthScreenProps) {
         </div>
 
         {/* Title */}
-        <h2 className="text-2xl md:text-3xl font-black text-[#4B4B4B] tracking-tight mb-2">
+        <h2 className="mb-2 text-2xl font-black tracking-tight text-ui-ink-strong md:text-3xl">
           Tactile Chinese
         </h2>
-        <p className="text-[#AFB6BB] text-[14px] font-bold max-w-xs mb-6 leading-relaxed">
-          Sign in to sync your progress across devices and contribute mnemonics to the community.
+        <p className="mb-6 max-w-xs text-[14px] font-bold leading-relaxed text-ui-muted">
+          Sign in to sync your learning progress across devices.
         </p>
 
         {/* Auth Error Display */}
         {authError && (
-          <div className="w-full mb-4 p-4 bg-red-50 text-red-500 text-sm font-bold rounded-[16px] border border-red-200">
+          <div className="mb-4 w-full rounded-[16px] border border-feedback-danger/30 bg-feedback-danger-surface p-4 text-sm font-bold text-feedback-danger">
             {authError}
           </div>
         )}
 
         {/* Login actions */}
         <div className="w-full flex flex-col gap-3">
-          <Soft3DButton 
-            variant="custom" 
-            className="w-full bg-[#1CB0F6] border-[#1899D6] text-white hover:brightness-110 active:brightness-95 uppercase tracking-widest font-extrabold py-4"
+          <ActionButton
+            variant="primary"
+            size="lg"
+            fullWidth
             onClick={handleGoogleLogin}
-            disabled={isSigningIn || isLoading}
+            loading={isSigningIn || isLoading}
+            loadingLabel="Signing in"
+            className="uppercase tracking-widest"
           >
-            {isSigningIn ? (
-              <>
-                <PiCircleNotchBold className="animate-spin" size={20} />
-                Signing In...
-              </>
-            ) : (
-              <>
-                <PiSignInBold size={20} />
-                Sign In with Google
-              </>
-            )}
-          </Soft3DButton>
+            <AppIcon name="signIn" size={20} />
+            Sign In with Google
+          </ActionButton>
 
-          <Soft3DButton 
-            variant="custom" 
-            className="w-full bg-white border-[#E5E5E5] text-[#4B4B4B] hover:bg-[#F7F7F7] uppercase tracking-widest font-extrabold py-4"
+          <ActionButton
+            variant="secondary"
+            size="lg"
+            fullWidth
             onClick={handleContinueAsGuest}
+            className="uppercase tracking-widest"
           >
-            <PiUserFill size={20} className="text-[#AFB6BB]" />
+            <AppIcon name="profile" size={20} className="text-ui-muted-strong" />
             Browse as Guest
-          </Soft3DButton>
+          </ActionButton>
         </div>
 
         {/* Info footer */}
-        <div className="mt-6 text-xs font-bold text-[#AFB6BB] max-w-xs leading-relaxed">
+        <div className="mt-6 max-w-xs text-xs font-bold leading-relaxed text-ui-muted">
           By signing in, your progress will sync automatically across all devices.
         </div>
       </div>

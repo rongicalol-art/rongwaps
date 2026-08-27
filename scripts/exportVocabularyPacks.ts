@@ -9,7 +9,7 @@ dotenv.config({ path: resolve(process.cwd(), '.env') });
 const PAGE_SIZE = 1000;
 const SCHEMA_VERSION = 1;
 const OUTPUT_DIRECTORY = resolve(process.cwd(), 'public/data/vocabulary');
-const VOCABULARY_COLUMNS = 'id,traditional,simplified,meaning,pinyin,audio,examples';
+const VOCABULARY_COLUMNS = 'id,traditional,simplified,meaning,pinyin,pos,audio,examples';
 
 interface VocabularyRow {
   id: string;
@@ -17,6 +17,7 @@ interface VocabularyRow {
   simplified: string | null;
   meaning: string | null;
   pinyin: string | null;
+  pos: string | null;
   audio: string | null;
   examples: string | null;
 }

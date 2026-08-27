@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 import { useAppStore } from '../store/useAppStore';
 import { useGrammarLessonStore } from '../store/useGrammarLessonStore';
-import { useReadingLessonStore } from '../store/useReadingLessonStore';
 import { userService } from '../services/userService';
 
 interface UseResetProgressOptions {
@@ -11,7 +10,7 @@ interface UseResetProgressOptions {
 }
 
 /**
- * Resets all learning progress (app SRS, grammar store, reading store)
+ * Resets all learning progress (app SRS, grammar store)
  * and mirrors the reset to Supabase when signed in.
  *
  * If cloud sync is currently running, waits for it to become idle before
@@ -26,7 +25,6 @@ export function useResetProgress({
   return useCallback(async () => {
     const appState = useAppStore.getState();
     const grammarState = useGrammarLessonStore.getState();
-    const readingState = useReadingLessonStore.getState();
     const appSnapshot = {
       srsData: appState.srsData,
       learnedCards: appState.learnedCards,
@@ -48,11 +46,6 @@ export function useResetProgress({
       completedPageIds: grammarState.completedPageIds,
       completedPartIds: grammarState.completedPartIds,
     };
-    const readingSnapshot = {
-      startedPartIds: readingState.startedPartIds,
-      completedPartIds: readingState.completedPartIds,
-      savedIntroductions: readingState.savedIntroductions,
-    };
 
     if (currentUser && appState.syncStatus === 'syncing') {
       await new Promise<void>((resolve, reject) => {
@@ -71,7 +64,6 @@ export function useResetProgress({
 
     appState.resetProgress();
     grammarState.resetProgress();
-    readingState.resetProgress();
 
     try {
       if (currentUser) await userService.resetLearningProgress();
@@ -80,7 +72,6 @@ export function useResetProgress({
     } catch (error) {
       useAppStore.setState(appSnapshot);
       useGrammarLessonStore.setState(grammarSnapshot);
-      useReadingLessonStore.setState(readingSnapshot);
       throw error;
     }
   }, [currentUser, onActivityCleared, onGrammarCleared]);

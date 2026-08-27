@@ -1,9 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import {
-  getDictionaryEntriesBatch,
-  isValidChineseWordLocal,
-  prefetchLocalDictionary,
-} from '../services/dictionaryService';
+import { getDictionaryEntriesBatch } from '../services/dictionaryService';
 
 export interface SmartChineseSegment {
   segment: string;
@@ -31,21 +27,29 @@ export function useSmartChineseSegments(text: string) {
 
     const validateSegments = async () => {
       try {
-        await prefetchLocalDictionary();
+        const segments = segmentWithBrowser(text);
+
+        // Multi-character Chinese word-like segments are verified against the
+        // dictionary (static shard packs first, then Supabase). Single
+        // characters and non-Chinese tokens pass through untouched.
+        const wordsToVerify = segments
+          .filter((segment) => (
+            segment.isWordLike
+            && /[\u4E00-\u9FFF]/.test(segment.segment)
+            && Array.from(segment.segment).length > 1
+          ))
+          .map((segment) => segment.segment);
+
+        const validEntries = wordsToVerify.length > 0
+          ? await getDictionaryEntriesBatch(wordsToVerify)
+          : new Map<string, never>();
+
         if (!isMounted) return;
 
-        let processed: SmartChineseSegment[] = [];
-        const unresolvedWords: string[] = [];
-
-        for (const segment of segmentWithBrowser(text)) {
+        const processed: SmartChineseSegment[] = [];
+        for (const segment of segments) {
           const isChineseWord = segment.isWordLike && /[\u4E00-\u9FFF]/.test(segment.segment);
-          if (!isChineseWord || segment.segment.length === 1) {
-            processed.push(segment);
-            continue;
-          }
-
-          const isValidWord = isValidChineseWordLocal(segment.segment);
-          if (isValidWord === false) {
+          if (isChineseWord && Array.from(segment.segment).length > 1 && !validEntries.has(segment.segment)) {
             processed.push(...Array.from(segment.segment).map((character, index) => ({
               segment: character,
               index: segment.index + index,
@@ -53,25 +57,8 @@ export function useSmartChineseSegments(text: string) {
               isWordLike: true,
             })));
           } else {
-            if (isValidWord === null) unresolvedWords.push(segment.segment);
             processed.push(segment);
           }
-        }
-
-        if (unresolvedWords.length > 0) {
-          const validEntries = await getDictionaryEntriesBatch(unresolvedWords);
-          if (!isMounted) return;
-          processed = processed.flatMap((segment) => {
-            if (!unresolvedWords.includes(segment.segment) || validEntries.has(segment.segment)) {
-              return [segment];
-            }
-            return Array.from(segment.segment).map((character, index) => ({
-              segment: character,
-              index: segment.index + index,
-              input: text,
-              isWordLike: true,
-            }));
-          });
         }
 
         if (isMounted) setValidatedSegments(processed);
