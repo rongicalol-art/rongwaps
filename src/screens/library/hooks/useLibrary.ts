@@ -1,11 +1,18 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { PiStarFill, PiFolderFill } from 'react-icons/pi';
+import { AppIcon } from '../../../lib/widgets';
 import { useAuth } from '../../../hooks/useAuth';
 import { useAppStore } from '../../../store/useAppStore';
 import { flashcardService } from '../../../services/flashcardService';
+import { userService } from '../../../services/userService';
 import { getDictionaryEntriesBatch } from '../../../services/dictionaryService';
 import { DBDictionaryEntry } from '../../../types/database';
 import { UserFlashcard } from '../../../types/models';
+import {
+  STARRED_FOLDER_COLOR,
+  CUSTOM_CARDS_FOLDER_COLOR,
+  CUSTOM_FOLDER_OPTIONS,
+  resolveFolderColor,
+} from '../utils/folderColors';
 
 type ViewState = 'home' | 'folder';
 
@@ -14,17 +21,25 @@ const COLLECTIONS = [
     id: 'starred',
     title: 'Starred Words',
     label: 'Dictionary Favorites',
-    icon: React.createElement(PiStarFill, { size: 40, className: "text-[#FFB020]" }),
-    accentBg: 'bg-[#FFB020]',
-    accentBorder: 'border-[#CC8D1A]'
+    icon: React.createElement(AppIcon, { name: 'bookmarkFilled', size: 36, className: STARRED_FOLDER_COLOR.accent }),
+    accentBg: STARRED_FOLDER_COLOR.accentBg,
+    accentBorder: STARRED_FOLDER_COLOR.accentBorder,
+    accentColor: STARRED_FOLDER_COLOR.accent,
+    colorFront: STARRED_FOLDER_COLOR.front,
+    colorBack: STARRED_FOLDER_COLOR.back,
+    lightBg: STARRED_FOLDER_COLOR.lightBg,
   },
   {
     id: 'custom',
     title: 'Custom Cards',
     label: 'Smart Flashcards',
-    icon: React.createElement(PiFolderFill, { size: 40, className: "text-[#CE82FF]" }),
-    accentBg: 'bg-[#CE82FF]',
-    accentBorder: 'border-[#A568CC]'
+    icon: React.createElement(AppIcon, { name: 'folder', size: 36, className: CUSTOM_CARDS_FOLDER_COLOR.accent }),
+    accentBg: CUSTOM_CARDS_FOLDER_COLOR.accentBg,
+    accentBorder: CUSTOM_CARDS_FOLDER_COLOR.accentBorder,
+    accentColor: CUSTOM_CARDS_FOLDER_COLOR.accent,
+    colorFront: CUSTOM_CARDS_FOLDER_COLOR.front,
+    colorBack: CUSTOM_CARDS_FOLDER_COLOR.back,
+    lightBg: CUSTOM_CARDS_FOLDER_COLOR.lightBg,
   }
 ];
 
@@ -65,7 +80,6 @@ export function useLibrary() {
   const confirmDeleteFolder = async () => {
     if (!deleteFolderTarget) return;
     const folderId = deleteFolderTarget.id;
-    const folder = customFolders.find(f => f.id === folderId);
     setDeleteFolderTarget(null);
 
     deletingFoldersRef.current.add(folderId);
@@ -76,10 +90,14 @@ export function useLibrary() {
         await flashcardService.deleteFolder(currentUser.id, folderId);
       } catch (err) {
         console.error("Failed to delete folder in Supabase:", err);
-        // Rollback: the server delete failed, so restore the folder locally
-        // to keep UI and cloud state consistent.
-        if (folder) {
-          addCustomFolder(folder.name, folder.color, folder.id);
+        try {
+          const serverFolders = await userService.getCustomFolders(currentUser.id);
+          useAppStore.getState().setCustomFolders(serverFolders);
+          useAppStore.getState().setSyncError(
+            "Couldn't delete the folder — check your connection and try again.",
+          );
+        } catch (reconcileErr) {
+          console.error("Failed to reconcile folders after delete error:", reconcileErr);
         }
       } finally {
         deletingFoldersRef.current.delete(folderId);
@@ -93,26 +111,24 @@ export function useLibrary() {
 
   const [showFolderModal, setShowFolderModal] = useState(false);
   const [newFolderName, setNewFolderName] = useState('');
+  const [selectedFolderColorId, setSelectedFolderColorId] = useState<string>(CUSTOM_FOLDER_OPTIONS[0].id);
   const [isCreatingFolder, setIsCreatingFolder] = useState(false);
 
   const allCollections = useMemo(() => {
-    const dynFolders = customFolders.map(cf => {
-      let parsedColor = { accentBg: 'bg-brand-primary', accentBorder: 'border-brand-primary-edge' };
-      try {
-        parsedColor = JSON.parse(cf.color);
-      } catch {
-        // Fallback
-      }
+    const dynFolders = customFolders.map((cf, index) => {
+      const folderColor = resolveFolderColor(cf.color, index);
       const count = customFlashcards.filter(c => c.folderId === cf.id).length;
       return {
         id: cf.id,
         title: cf.name,
         label: 'Custom Folder',
-        accentBg: parsedColor.accentBg,
-        accentBorder: parsedColor.accentBorder,
-        accentColor: 'text-ui-ink',
-        lightBg: 'bg-[#F7F7F7]',
-        icon: React.createElement(PiFolderFill, { size: 40, className: "text-brand-primary" }),
+        accentBg: folderColor.accentBg,
+        accentBorder: folderColor.accentBorder,
+        accentColor: folderColor.accent,
+        colorFront: folderColor.front,
+        colorBack: folderColor.back,
+        lightBg: folderColor.lightBg,
+        icon: React.createElement(AppIcon, { name: 'folder', size: 36, className: folderColor.accent }),
         count
       };
     });
@@ -148,13 +164,6 @@ export function useLibrary() {
   }, [currentUser, localFlashcards]);
 
   useEffect(() => {
-    if (currentUser) {
-      const localFolders = useAppStore.getState().customFolders;
-      flashcardService.syncOfflineFolders(currentUser.id, localFolders);
-    }
-  }, [currentUser]);
-
-  useEffect(() => {
     let cancelled = false;
     async function fetchFavorites() {
       if (favorites.length === 0) {
@@ -188,8 +197,15 @@ export function useLibrary() {
     setIsCreatingFolder(true);
     const folderId = crypto.randomUUID();
     
-    // We no longer use random colors. The UI handles the unified styling.
-    const folderColor = JSON.stringify({ accentBg: 'bg-brand-primary', accentBorder: 'border-brand-primary-edge' });
+    const chosenColor = resolveFolderColor(selectedFolderColorId);
+    const folderColor = JSON.stringify({
+      colorId: chosenColor.id,
+      front: chosenColor.front,
+      back: chosenColor.back,
+      accentBg: chosenColor.accentBg,
+      accentBorder: chosenColor.accentBorder,
+      accent: chosenColor.accent,
+    });
 
     if (currentUser) {
       await flashcardService.createFolder(currentUser.id, {
@@ -255,7 +271,7 @@ export function useLibrary() {
     });
   }, [customFlashcards, searchQuery, libraryActiveFolder]);
 
-  const activeCollection = allCollections.find(c => c.id === libraryActiveFolder) || allCollections[0];
+  const activeCollection = (allCollections && allCollections.find(c => c.id === libraryActiveFolder)) || (allCollections && allCollections[0]) || COLLECTIONS[0];
   const items = libraryActiveFolder === 'starred' ? filteredStarred : filteredCustom;
 
   const recentItems = useMemo(() => {
@@ -293,6 +309,8 @@ export function useLibrary() {
     setShowFolderModal,
     newFolderName,
     setNewFolderName,
+    selectedFolderColorId,
+    setSelectedFolderColorId,
     isCreatingFolder,
     handleCreateFolder,
     deleteTargetId,

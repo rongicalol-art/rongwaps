@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react';
 import { cn } from '../../../utils/cn';
-import { DESIGN_TOKENS } from '../../../data/designTokens';
 
 interface FolderItemProps {
   id: string;
@@ -10,24 +9,28 @@ interface FolderItemProps {
   icon?: React.ReactNode;
   accentBg?: string;
   accentBorder?: string;
+  colorFront?: string;
+  colorBack?: string;
   isNewButton?: boolean;
   onSelect: () => void;
   onDeleteRequest?: () => void;
 }
 
-function FolderSvg({
+export function FolderSvg({
   colorFront,
   colorBack,
   hasPlus,
   isStarred,
+  className,
 }: {
   colorFront: string;
   colorBack: string;
   hasPlus?: boolean;
   isStarred?: boolean;
+  className?: string;
 }) {
   return (
-    <svg viewBox="0 0 100 84" className="h-full w-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 100 84" className={cn("h-full w-full", className)} fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M8 0 h 14 c 2 0 4 1 5 3 l 3 7 c 1.5 3.5 3.5 6 6 6 h 52 c 6.6 0 12 5.4 12 12 v 44 c 0 6.6 -5.4 12 -12 12 h -76 c -6.6 0 -12 -5.4 -12 -12 v -64 c 0 -4.4 3.6 -8 8 -8 z"
         fill={colorBack}
@@ -57,8 +60,11 @@ function FolderSvg({
 export function FolderItem({
   id,
   title,
+  count,
   accentBg,
   accentBorder,
+  colorFront,
+  colorBack,
   isNewButton = false,
   onSelect,
   onDeleteRequest,
@@ -114,8 +120,12 @@ export function FolderItem({
     }
   };
 
-  const frontColor = isNewButton ? '#E8EDF2' : (accentBg?.match(/\[(.*?)\]/)?.[1] || DESIGN_TOKENS.color.brand.primary);
-  const backColor = isNewButton ? '#D0D8E0' : (accentBorder?.match(/\[(.*?)\]/)?.[1] || DESIGN_TOKENS.color.brand.primaryEdge);
+  const frontColor = isNewButton
+    ? '#E8EDF2'
+    : (colorFront || accentBg?.match(/\[(.*?)\]/)?.[1] || '#1CB0F6');
+  const backColor = isNewButton
+    ? '#D0D8E0'
+    : (colorBack || accentBorder?.match(/\[(.*?)\]/)?.[1] || '#1899D6');
 
   return (
     <button
@@ -126,7 +136,7 @@ export function FolderItem({
       onMouseDown={startPress}
       onMouseUp={endPress}
       className={cn(
-        'group flex shrink-0 cursor-pointer select-none flex-col items-center gap-2 rounded-[22px] px-2 py-3 outline-none transition-colors hover:bg-ui-surface focus-visible:ring-4 focus-visible:ring-brand-primary/20',
+        'group flex shrink-0 cursor-pointer select-none flex-col items-center gap-2 rounded-control px-2 py-3 outline-none transition-colors hover:bg-ui-surface focus-ring',
         className,
       )}
     >
@@ -138,9 +148,17 @@ export function FolderItem({
           isStarred={id === 'starred'}
         />
       </div>
-      <span className="block w-full max-w-[150px] line-clamp-2 px-1 text-center text-[14px] font-black text-ui-ink-strong sm:max-w-[158px]">
-        {title}
-      </span>
+      <div className="flex flex-col items-center gap-0.5">
+        <span className="block w-full max-w-[150px] line-clamp-2 px-1 text-center text-[14px] font-black text-ui-ink-strong sm:max-w-[158px]">
+          {title}
+        </span>
+        {!isNewButton && count !== undefined && (
+          <span className="text-[12px] font-bold text-ui-muted">
+            {count} {count === 1 ? 'card' : 'cards'}
+          </span>
+        )}
+      </div>
     </button>
   );
 }
+
