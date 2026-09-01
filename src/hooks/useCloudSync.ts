@@ -15,6 +15,7 @@ import {
   isSameFolderList,
   isSameStringArray,
   mergePulledSrsData,
+  pruneAcknowledgedTombstones,
   reconcileAggregateProgress,
   type SyncedFolderSnapshot,
   type SyncProgressCounters,
@@ -124,6 +125,8 @@ export function useCloudSync() {
     setSrsDataAndLearnedCards,
     setProgressStats,
     setCustomFolders,
+    setDeletedFolderIds,
+    setFoldersSyncedUserId,
     setSyncStatus,
     setSyncError,
     setLastCloudUpdate,
@@ -176,6 +179,13 @@ export function useCloudSync() {
       const activeUser = await authService.getCurrentUser() || currentUser;
       const metadata = (activeUser.user_metadata || {}) as Record<string, unknown>;
 
+      // Folder state captured BEFORE the account-switch reset below: the
+      // pre-login local list, its sync owner, and the delete tombstones drive
+      // the guest -> account migration.
+      const prePullFolders = useAppStore.getState().customFolders;
+      const prePullFolderOwner = useAppStore.getState().foldersSyncedUserId;
+      const prePullTombstones = useAppStore.getState().deletedFolderIds;
+
       // Detect a switch to a different account. activeUserIdRef only survives
       // within this page, so also consult the persisted owner to catch
       // switches that happen across a reload (OAuth redirect flow).
@@ -192,6 +202,8 @@ export function useCloudSync() {
           learnedCards: [],
           favorites: [],
           customFolders: [],
+          deletedFolderIds: [],
+          foldersSyncedUserId: null,
           sessionProgress: createEmptySessionProgress(),
           sessionProgressIndex: {},
           selectedLessonParts: {},
@@ -347,15 +359,65 @@ export function useCloudSync() {
       );
       setProgressStats({ ...aggregateStats, ...reconciled });
 
-      // Folders follow the same rule as the other metadata: only replace the
-      // local list from the cloud when the cloud is newer (or on a switch), so
-      // a local add/delete inside the save window is never resurrected by a
-      // pull that races the debounced save.
-      if (isAccountSwitch) {
+      // Folders are pulled on EVERY fetch, not just account switches:
+      // folder writes never touch user_progress.updated_at, so the metadata
+      // freshness gate above cannot see them. The server list replaces the
+      // local one unless the local list has unsaved changes (a change inside
+      // the debounce window), which a racing pull must not clobber — the next
+      // save reconciles it instead. On a fresh boot the ref is null, so the
+      // server always wins and a stale persisted list (another tab, another
+      // device, or a reload) is corrected before any autosave can re-upload
+      // a deleted folder.
+      const localFolders = useAppStore.getState().customFolders;
+      const localFoldersDirty =
+        lastSyncedFoldersRef.current !== null
+        && !isSameFolderList(lastSyncedFoldersRef.current, localFolders);
+
+      if (isAccountSwitch || !localFoldersDirty) {
         const folders = await userService.getCustomFolders(currentUser.id);
+        // Pre-pull tombstones (guest deletions) — the account-switch reset
+        // above cleared the live list, but guest-deleted folders must still
+        // be excluded from the migration.
+        const tombstoneSet = new Set(prePullTombstones);
         setCustomFolders(folders);
-        // Just pulled from the server: this list is now the server truth.
         lastSyncedFoldersRef.current = folders;
+
+        // Guest -> account migration: an account that has never stored
+        // folders server-side adopts the pre-login local list — but only when
+        // that list was never synced to any account on this device, so a
+        // stale server-derived list can never be uploaded as if it were guest
+        // data. Tombstoned (deleted) guest folders are not migrated.
+        if (
+          isAccountSwitch
+          && folders.length === 0
+          && prePullFolders.length > 0
+          && prePullFolderOwner === null
+        ) {
+          const migrated = prePullFolders.filter(
+            (folder) => !tombstoneSet.has(folder.id),
+          );
+          if (migrated.length > 0) {
+            await userService.syncCustomFolders(currentUser.id, migrated, []);
+            setCustomFolders(migrated);
+            lastSyncedFoldersRef.current = migrated;
+          }
+        }
+
+        // Drop tombstones the server has acknowledged (the folder is gone
+        // remotely); keep the ones still present — their delete is pending
+        // and the next save retries it.
+        if (!isAccountSwitch) {
+          const serverFolderIds = folders.map((folder) => folder.id);
+          const remaining = pruneAcknowledgedTombstones(
+            useAppStore.getState().deletedFolderIds,
+            serverFolderIds,
+          );
+          setDeletedFolderIds(remaining);
+        }
+
+        // This device's folder list is now in sync with this account — the
+        // guest migration must not run again for it.
+        setFoldersSyncedUserId(currentUser.id);
       }
 
       lastSyncedSessionRef.current = getProgressCounters(useAppStore.getState());
@@ -378,6 +440,8 @@ export function useCloudSync() {
   }, [
     currentUser,
     setCustomFolders,
+    setDeletedFolderIds,
+    setFoldersSyncedUserId,
     setLastCloudUpdate,
     setProgressStats,
     setSrsDataAndLearnedCards,
@@ -440,10 +504,16 @@ export function useCloudSync() {
 
     // Same skip-when-unchanged rule for folders. Empty lists still sync on the
     // first save (the ref starts null), so deleting the last folder is
-    // persisted instead of resurrecting on the next pull.
+    // persisted instead of resurrecting on the next pull. Tombstones ride
+    // along so a deleted folder is never re-uploaded from a stale list.
     if (!isSameFolderList(lastSyncedFoldersRef.current, store.customFolders)) {
-      await userService.syncCustomFolders(userId, store.customFolders);
+      await userService.syncCustomFolders(
+        userId,
+        store.customFolders,
+        store.deletedFolderIds,
+      );
       lastSyncedFoldersRef.current = [...store.customFolders];
+      useAppStore.getState().setFoldersSyncedUserId(userId);
     }
 
     const savedSession = lastSyncedSessionRef.current;

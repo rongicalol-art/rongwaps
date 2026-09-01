@@ -259,28 +259,6 @@ class FlashcardService {
     }
   }
 
-  async syncOfflineFolders(userId: string, localFolders: UserFolder[]) {
-    try {
-      const { data, error } = await supabase
-        .from("user_folders")
-        .select("id")
-        .eq("user_id", userId);
-
-      if (!error && data) {
-        const remoteIds = new Set((data as Array<{ id: string }>).map((folder) => folder.id));
-        const offlineOnly = localFolders.filter(f => !remoteIds.has(f.id));
-
-        if (offlineOnly.length > 0) {
-          for (const lf of offlineOnly) {
-            await this.createFolder(userId, lf);
-          }
-        }
-      }
-    } catch (err) {
-      console.error("Failed to migrate offline folders:", err);
-    }
-  }
-
   subscribeToFolders(userId: string, onUpdate: FolderListener) {
     this.folderListeners.add(onUpdate);
 
