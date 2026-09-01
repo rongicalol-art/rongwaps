@@ -1,7 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { PiXBold, PiTextTBold } from 'react-icons/pi';
 import { useAddCard } from './hooks/useAddCard';
-import { AppIcon, IconActionButton, ScreenHeader } from '../../lib/widgets';
+import { ActionButton, AppIcon, IconActionButton, ScreenHeader } from '../../lib/widgets';
 
 interface AddCardScreenProps {
   onClose: () => void;
@@ -10,6 +9,7 @@ interface AddCardScreenProps {
 export function AddCardScreen({ onClose }: AddCardScreenProps) {
   const {
     folderName,
+    folderAccent,
     view,
     direction,
     cardData,
@@ -32,18 +32,18 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
     <div key="front" className={`flex-1 flex flex-col items-center justify-center px-4 w-full h-full pb-8 ${direction === 'none' ? '' : direction === 'fwd' ? 'anim-fwd' : 'anim-back'}`}>
       <div className="mb-4 text-center sm:text-left w-full max-w-[320px] sm:max-w-[400px] md:max-w-[460px]">
         <h2 className="text-2xl sm:text-3xl font-extrabold text-ui-ink tracking-tight">Type character</h2>
-        <p className="text-[#AFAFAF] font-bold mt-2 text-lg">Front face of your card</p>
+        <p className="text-ui-muted font-bold mt-2 text-lg">Front face of your card</p>
       </div>
 
       <div className="w-full max-w-[320px] sm:max-w-[400px] md:max-w-[460px] relative pointer-events-auto flex flex-col justify-center">
         <motion.div 
           onClick={() => frontInputRef.current?.focus()}
-          className={`w-full relative min-h-[380px] sm:min-h-[420px] bg-white rounded-[32px] border-2 cursor-text flex flex-col items-center justify-center p-6 sm:p-8 pb-8 transition-colors overflow-hidden
+          className={`w-full relative min-h-[380px] sm:min-h-[420px] bg-ui-surface rounded-feature border-b-[length:var(--depth-lg)] cursor-text flex flex-col items-center justify-center p-6 sm:p-8 pb-8 transition-colors overflow-hidden
             ${!cardData.front && !isFocused ? 'anim-float' : ''}
-            ${isFocused ? 'border-brand-primary shadow-[0_8px_24px] shadow-brand-primary/25 bg-brand-primary-soft -translate-y-2' : 'border-[#E5E5E5] hover:border-[#AFB6BB] hover:bg-[#F7F7F7]'}`}
+            ${isFocused ? 'border-brand-primary-edge bg-brand-primary-soft -translate-y-1' : 'border-ui-divider hover:bg-ui-hover'}`}
         >
-          <motion.div className={`absolute top-6 left-6 transition-colors ${isFocused ? 'text-brand-primary' : 'text-[#AFB6BB]'}`}>
-            <PiTextTBold size={28} />
+          <motion.div className={`absolute top-6 left-6 transition-colors ${isFocused ? 'text-brand-primary' : 'text-ui-muted'}`}>
+            <AppIcon name="typeText" size={26} />
           </motion.div>
 
           <motion.div className="flex-1 flex flex-col items-center justify-center w-full relative pt-4 pb-2">
@@ -56,13 +56,13 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
               onKeyDown={(e) => handleKeyDown(e, handleNext)}
-              className={`w-full text-center bg-transparent font-black font-chinese text-ui-ink outline-none placeholder:text-[#AFB6BB] transition-all duration-300 leading-tight ${
+              className={`w-full text-center bg-transparent font-black font-chinese text-ui-ink outline-none placeholder:text-ui-muted transition-all duration-300 leading-tight ${
                 cardData.front.length > 5 ? 'text-[40px] sm:text-[50px]' : 'text-[60px] sm:text-[80px]'}`}
               placeholder="好"
               maxLength={15}
               autoComplete="off"
             />
-            <motion.div className={`h-2 rounded-full mt-4 transition-all duration-300 ${isFocused ? 'bg-brand-primary w-32' : 'bg-[#E5E5E5] w-16'} ${cardData.front.length > 0 ? 'hidden' : 'opacity-100 scale-x-100'}`} />
+            <motion.div className={`h-2 rounded-full mt-4 transition-all duration-300 ${isFocused ? 'bg-brand-primary w-32' : 'bg-ui-divider w-16'} ${cardData.front.length > 0 ? 'hidden' : 'opacity-100 scale-x-100'}`} />
           </motion.div>
 
           <AnimatePresence>
@@ -75,9 +75,9 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
                 className="w-full flex gap-2 flex-col pt-4 mt-auto overflow-hidden shrink-0"
               >
                 <div className="w-full flex items-center gap-2 mb-2">
-                  <div className="h-[3px] flex-1 bg-[#E5E5E5] rounded-full"></div>
-                  <div className="text-[10px] sm:text-xs font-bold text-[#AFB6BB] uppercase tracking-wider text-center px-1">Suggestions</div>
-                  <div className="h-[3px] flex-1 bg-[#E5E5E5] rounded-full"></div>
+                  <div className="h-[3px] flex-1 bg-ui-divider rounded-full"></div>
+                  <div className="text-[10px] sm:text-xs font-bold text-ui-muted uppercase tracking-wider text-center px-1">Suggestions</div>
+                  <div className="h-[3px] flex-1 bg-ui-divider rounded-full"></div>
                 </div>
                 <div className="flex flex-col w-full gap-2 max-h-[160px] sm:max-h-[200px] overflow-y-auto hide-scrollbar pb-2 px-1">
                   {suggestions.slice(0, 15).map((s, i) => (
@@ -86,16 +86,16 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
                       whileHover={{ scale: 1.02, x: 2 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={(e) => { e.stopPropagation(); handleSelectSuggestion(s); }}
-                      className="w-full flex items-center text-left px-3 py-2 sm:px-4 sm:py-3 bg-[#F7F7F7] rounded-[16px] border-[2px] border-[#E5E5E5] border-b-2 hover:border-brand-primary hover:bg-brand-primary-soft transition-colors group shrink-0"
+                      className="w-full flex items-center text-left px-3 py-2 sm:px-4 sm:py-3 bg-ui-canvas rounded-control border-b-[length:var(--depth-sm)] border-ui-divider hover:border-brand-primary-edge hover:bg-brand-primary-soft transition-colors group shrink-0"
                     >
                       <span className="font-chinese text-[22px] sm:text-[28px] font-black text-ui-ink group-hover:text-brand-primary transition-colors shrink-0 w-12 sm:w-16 text-center">
                         {s.traditional || s.simplified}
                       </span>
                       <div className="flex flex-col ml-2 overflow-hidden flex-1 justify-center">
-                        <span className="text-[12px] sm:text-[14px] font-bold text-[#AFAFAF] group-hover:text-brand-primary leading-none mb-1 mt-1 transition-colors">
+                        <span className="text-[12px] sm:text-[14px] font-bold text-ui-muted group-hover:text-brand-primary leading-none mb-1 mt-1 transition-colors">
                           {s.pinyin_accented || s.simplified}
                         </span>
-                        <span className="text-[11px] sm:text-[13px] text-[#AFB6BB] truncate font-medium leading-none">
+                        <span className="text-[11px] sm:text-[13px] text-ui-muted truncate font-medium leading-none">
                           {s.definitions && Array.isArray(s.definitions) ? s.definitions[0] : ''}
                         </span>
                       </div>
@@ -114,16 +114,16 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
     <div key="back" className={`flex-1 flex flex-col items-center justify-center px-4 w-full h-full pb-8 ${direction === 'none' ? '' : direction === 'fwd' ? 'anim-fwd' : 'anim-back'}`}>
       <div className="mb-4 text-center sm:text-left w-full max-w-[320px] sm:max-w-[400px] md:max-w-[460px]">
         <h2 className="text-2xl sm:text-3xl font-extrabold text-ui-ink tracking-tight">Type meaning</h2>
-        <p className="text-[#AFAFAF] font-bold mt-2 text-lg">Back face of your card</p>
+        <p className="text-ui-muted font-bold mt-2 text-lg">Back face of your card</p>
       </div>
 
       <div className="w-full max-w-[320px] sm:max-w-[400px] md:max-w-[460px] relative pointer-events-auto flex flex-col justify-center">
         <motion.div 
           onClick={() => meaningInputRef.current?.focus()}
-          className={`w-full relative min-h-[380px] sm:min-h-[420px] bg-white rounded-[32px] border-2 cursor-text flex flex-col items-center justify-center p-6 sm:p-8 pb-8 transition-colors
-            ${isFocused ? 'border-brand-primary shadow-[0_8px_24px] shadow-brand-primary/25 bg-brand-primary-soft -translate-y-2' : 'border-[#E5E5E5] hover:border-[#AFB6BB] hover:bg-[#F7F7F7]'}`}
+          className={`w-full relative min-h-[380px] sm:min-h-[420px] bg-ui-surface rounded-feature border-b-[length:var(--depth-lg)] cursor-text flex flex-col items-center justify-center p-6 sm:p-8 pb-8 transition-colors
+            ${isFocused ? 'border-brand-primary-edge bg-brand-primary-soft -translate-y-1' : 'border-ui-divider hover:bg-ui-hover'}`}
         >
-          <motion.div className="absolute -top-5 left-6 flex items-center gap-2 text-[#AFB6BB] font-bold text-sm bg-white px-4 py-2 rounded-2xl border-2 border-[#E5E5E5] shadow-sm spring-transition hover:-translate-y-1">
+          <motion.div className="absolute -top-5 left-6 flex items-center gap-2 text-ui-muted font-bold text-sm bg-ui-surface px-4 py-2 rounded-control border-b-[length:var(--depth-sm)] border-ui-divider spring-transition hover:-translate-y-0.5">
             <span className="opacity-70 uppercase text-xs tracking-wider">Front</span>
             <span className="text-xl text-brand-primary font-chinese">{cardData.front}</span>
           </motion.div>
@@ -141,13 +141,13 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
               onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSave(); } }}
-              className={`w-full text-center bg-transparent font-black text-ui-ink outline-none placeholder:text-[#AFB6BB] resize-none overflow-hidden py-2 leading-snug ${
+              className={`w-full text-center bg-transparent font-black text-ui-ink outline-none placeholder:text-ui-muted resize-none overflow-hidden py-2 leading-snug ${
                 cardData.meaning.length > 30 ? 'text-[24px] sm:text-[32px]' : cardData.meaning.length > 15 ? 'text-[32px] sm:text-[44px]' : 'text-[40px] sm:text-[60px]'}`}
               placeholder="Meaning"
               autoComplete="off"
               rows={1}
             />
-            <motion.div className={`h-2 rounded-full mt-2 transition-all duration-300 ${isFocused ? 'bg-brand-primary w-48' : 'bg-[#E5E5E5] w-24'} ${cardData.meaning.length > 0 ? 'opacity-0 scale-x-0' : 'opacity-100 scale-x-100'}`} />
+            <motion.div className={`h-2 rounded-full mt-2 transition-all duration-300 ${isFocused ? 'bg-brand-primary w-48' : 'bg-ui-divider w-24'} ${cardData.meaning.length > 0 ? 'opacity-0 scale-x-0' : 'opacity-100 scale-x-100'}`} />
           </motion.div>
 
           <AnimatePresence>
@@ -160,9 +160,9 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
                 className="w-full flex gap-2 flex-col pt-4 overflow-hidden shrink-0 mt-auto"
               >
                 <div className="w-full flex items-center gap-2 mb-2">
-                  <div className="h-[3px] flex-1 bg-[#E5E5E5] rounded-full"></div>
-                  <div className="text-[10px] sm:text-xs font-bold text-[#AFB6BB] uppercase tracking-wider text-center px-1">Suggestions</div>
-                  <div className="h-[3px] flex-1 bg-[#E5E5E5] rounded-full"></div>
+                  <div className="h-[3px] flex-1 bg-ui-divider rounded-full"></div>
+                  <div className="text-[10px] sm:text-xs font-bold text-ui-muted uppercase tracking-wider text-center px-1">Suggestions</div>
+                  <div className="h-[3px] flex-1 bg-ui-divider rounded-full"></div>
                 </div>
                 <div className="flex flex-col gap-2 px-2 pb-4 pt-1 max-h-[140px] sm:max-h-[160px] overflow-y-auto hide-scrollbar w-full">
                   <AnimatePresence>
@@ -176,7 +176,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
                         whileHover={{ scale: 1.02, y: -2 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={(e) => { e.stopPropagation(); setCardData({...cardData, meaning}); }}
-                        className="w-full text-center px-4 py-3 bg-[#F7F7F7] border-[2px] border-[#E5E5E5] border-b-2 text-[#AFAFAF] hover:text-brand-primary hover:border-brand-primary hover:bg-brand-primary-soft font-bold rounded-[16px] text-xs sm:text-sm transition-colors leading-tight shrink-0 whitespace-normal text-balance"
+                        className="w-full text-center px-4 py-3 bg-ui-canvas border-b-[length:var(--depth-sm)] border-ui-divider text-ui-muted hover:text-brand-primary hover:border-brand-primary-edge hover:bg-brand-primary-soft font-bold rounded-control text-xs sm:text-sm transition-colors leading-tight shrink-0 whitespace-normal text-balance"
                       >
                         {meaning}
                       </motion.button>
@@ -199,10 +199,10 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
         maxWidth="none"
         centerContent={(
           <div className="flex w-full flex-col items-center gap-2">
-            <span className="font-bold text-[#AFB6BB] uppercase tracking-widest text-[10px] md:text-xs">
-              Adding to <span className="text-brand-primary">{folderName}</span>
+            <span className="font-bold text-ui-muted uppercase tracking-widest text-[10px] md:text-xs">
+              Adding to <span className={folderAccent}>{folderName}</span>
             </span>
-            <div className="w-full h-3 md:h-4 bg-[#E5E5E5] rounded-full overflow-hidden">
+            <div className="w-full h-3 md:h-4 bg-ui-divider rounded-full overflow-hidden">
               <div 
                 className="h-full bg-brand-primary rounded-full spring-transition relative"
                 style={{ width: view === 'front' ? '50%' : '100%' }}
@@ -231,31 +231,27 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
       <footer className="pointer-events-none relative z-20 shrink-0 bg-gradient-to-t from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent p-4 pt-8 md:p-6 md:pt-10">
           <div className="max-w-4xl mx-auto w-full">
             {saveError && (
-              <div className="mb-3 px-4 py-3 bg-[#FFF2F2] border-[2px] border-[#FFD6D6] rounded-[16px] text-[#E03A3A] font-bold text-sm text-center">
-                {saveError}
+              <div className="mb-3 px-4 py-3 bg-feedback-danger/10 border-b-[length:var(--depth-sm)] border-feedback-danger-edge/30 rounded-control text-feedback-danger-edge font-bold text-sm text-center flex items-center justify-center gap-2">
+                <span>{saveError}</span>
                 <button
                   onClick={() => setSaveError(null)}
-                  className="ml-2 text-[#E03A3A] hover:text-[#B02020] font-black"
+                  className="ml-2 text-feedback-danger hover:text-feedback-danger-edge font-black"
                   aria-label="Dismiss error"
                 >
-                  <PiXBold size={14} />
+                  <AppIcon name="close" size={14} />
                 </button>
               </div>
             )}
-            <button
+            <ActionButton
+              variant="primary"
+              size="lg"
+              fullWidth
               onClick={view === 'front' ? handleNext : handleSave}
               disabled={view === 'front' ? !cardData.front.trim() : !cardData.meaning.trim()}
-              className={`pointer-events-auto w-full py-4 rounded-[20px] font-black text-xl tracking-widest transition-all duration-150 flex items-center justify-center
-                ${(view === 'front' ? cardData.front.trim() : cardData.meaning.trim())
-                  ? 'bg-brand-primary text-white border-brand-primary-edge border-b-[6px] hover:bg-brand-primary-edge active:border-b-[0px] active:translate-y-[6px]' 
-                  : 'bg-[#F7F7F7] text-[#AFB6BB] border-[2px] border-[#E5E5E5] border-b-[6px] shadow-sm cursor-not-allowed'}`}
-              style={{
-                borderBottomWidth: '6px',
-                paddingBottom: '16px'
-              }}
+              className="pointer-events-auto uppercase tracking-widest text-lg"
             >
               {view === 'front' ? 'CONTINUE' : 'SAVE CARD'}
-            </button>
+            </ActionButton>
           </div>
       </footer>
     </div>

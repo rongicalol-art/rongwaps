@@ -3,12 +3,20 @@ import { createPortal } from 'react-dom';
 import { motion } from 'motion/react';
 import { ActionButton, AppIcon, IconActionButton } from '../../lib/widgets';
 import { useModalFocus } from '../../hooks/useModalFocus';
+import { cn } from '../../utils/cn';
+import { FolderSvg } from './components/FolderItem';
+import {
+  CUSTOM_FOLDER_OPTIONS,
+  resolveFolderColor,
+} from './utils/folderColors';
 
 interface FolderModalProps {
   showFolderModal: boolean;
   setShowFolderModal: (show: boolean) => void;
   newFolderName: string;
   setNewFolderName: (name: string) => void;
+  selectedColorId: string;
+  setSelectedColorId: (id: string) => void;
   isCreatingFolder: boolean;
   handleCreateFolder: () => void;
 }
@@ -18,6 +26,8 @@ export function FolderModal({
   setShowFolderModal,
   newFolderName,
   setNewFolderName,
+  selectedColorId,
+  setSelectedColorId,
   isCreatingFolder,
   handleCreateFolder,
 }: FolderModalProps) {
@@ -31,6 +41,8 @@ export function FolderModal({
   });
 
   if (!showFolderModal) return null;
+
+  const currentColor = resolveFolderColor(selectedColorId);
 
   return createPortal(
     <div className="fixed inset-0 z-[700] flex items-center justify-center p-4">
@@ -51,9 +63,9 @@ export function FolderModal({
         aria-labelledby="new-folder-title"
         tabIndex={-1}
         onKeyDown={onKeyDown}
-        className="relative w-full max-w-sm rounded-[24px] border-b-4 border-ui-border bg-ui-surface p-6 shadow-xl outline-none"
+        className="relative w-full max-w-sm rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface p-6 shadow-ambient-lg outline-none"
       >
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex justify-between items-center mb-4">
           <h2 id="new-folder-title" className="text-xl font-extrabold text-ui-ink-strong">New Folder</h2>
           <IconActionButton
             icon={<AppIcon name="close" size={20} />}
@@ -61,6 +73,19 @@ export function FolderModal({
             size="md"
             onClick={() => setShowFolderModal(false)}
           />
+        </div>
+
+        {/* Live Folder Preview */}
+        <div className="mb-4 flex flex-col items-center justify-center">
+          <div className="relative aspect-[25/21] w-24 drop-shadow-sm transition-transform duration-200 hover:scale-105">
+            <FolderSvg
+              colorFront={currentColor.front}
+              colorBack={currentColor.back}
+            />
+          </div>
+          <span className="mt-1.5 text-xs font-black uppercase tracking-wider text-ui-muted">
+            {currentColor.name}
+          </span>
         </div>
 
         <input
@@ -71,10 +96,49 @@ export function FolderModal({
           value={newFolderName}
           onChange={(e) => setNewFolderName(e.target.value)}
           onKeyDown={(e) => {
-            if (e.key === 'Enter' && !isCreatingFolder) handleCreateFolder();
+            if (e.key === 'Enter' && !isCreatingFolder && newFolderName.trim()) handleCreateFolder();
           }}
-          className="mb-6 w-full rounded-[16px] border-2 border-ui-border bg-ui-hover px-4 py-3 font-bold text-ui-ink outline-none placeholder:text-ui-muted focus:border-brand-primary focus:bg-ui-surface focus-visible:ring-4 focus-visible:ring-brand-primary/20 transition-colors"
+          className="mb-4 w-full rounded-control border-b-[length:var(--depth-sm)] border-ui-divider bg-ui-hover px-4 py-3 font-bold text-ui-ink outline-none placeholder:text-ui-muted focus:border-brand-primary focus:bg-ui-surface focus-ring transition-colors"
         />
+
+        {/* Color Palette Selector */}
+        <div className="mb-6">
+          <label className="mb-2 block text-xs font-black uppercase tracking-wider text-ui-muted-strong">
+            Folder Color
+          </label>
+          <div
+            role="radiogroup"
+            aria-label="Select folder color"
+            className="grid grid-cols-4 gap-2 sm:grid-cols-8"
+          >
+            {CUSTOM_FOLDER_OPTIONS.map((color) => {
+              const isSelected = color.id === currentColor.id;
+              return (
+                <button
+                  key={color.id}
+                  type="button"
+                  role="radio"
+                  aria-checked={isSelected}
+                  aria-label={color.name}
+                  onClick={() => setSelectedColorId(color.id)}
+                  style={{
+                    backgroundColor: color.front,
+                    borderColor: color.back,
+                  }}
+                  className={cn(
+                    'relative flex h-8 w-full items-center justify-center rounded-control border-b-[length:var(--depth-sm)] transition-all outline-none focus-ring',
+                    'active:translate-y-[length:var(--depth-sm)] active:border-b-0',
+                    isSelected && 'ring-2 ring-ui-ink-strong ring-offset-2 scale-105'
+                  )}
+                >
+                  {isSelected && (
+                    <AppIcon name="check" size={14} className="text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)]" />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
         <ActionButton
           variant="primary"

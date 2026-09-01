@@ -8,12 +8,20 @@ import { useDictionarySearch, SearchResult } from '../../../hooks/useDictionaryS
 type ViewState = 'front' | 'back';
 type Direction = 'fwd' | 'back' | 'none';
 
+import { resolveFolderColor } from '../../library/utils/folderColors';
+
 export function useAddCard(onClose: () => void) {
   const { currentUser } = useAuth();
   const { customFolders, libraryActiveFolder, addLocalFlashcard } = useAppStore();
   
   const folderId = libraryActiveFolder;
-  const folderName = folderId === 'starred' ? 'Starred' : customFolders.find(f => f.id === folderId)?.name || 'Library';
+  const targetFolder = customFolders.find(f => f.id === folderId);
+  const folderName = folderId === 'starred' ? 'Starred' : targetFolder?.name || 'Library';
+  const folderAccent = folderId === 'starred'
+    ? 'text-feedback-warning-edge'
+    : targetFolder
+    ? resolveFolderColor(targetFolder.color).accent
+    : 'text-brand-primary';
   
   // App State
   const [view, setView] = useState<ViewState>('front');
@@ -150,6 +158,7 @@ export function useAddCard(onClose: () => void) {
 
   return {
     folderName,
+    folderAccent,
     view,
     setView,
     direction,
