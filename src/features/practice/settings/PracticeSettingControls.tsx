@@ -26,10 +26,10 @@ export function SettingsSection({
   );
 }
 
-/** Shared surface card that frames one section's control rows with a hairline-divided list. */
+/** Shared surface card that frames one section's control rows without heavy outlines, using tactile bottom border like breakdowns. */
 function SettingsControlCard({ className, children }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={cn('overflow-hidden rounded-[24px] border-2 border-ui-border bg-ui-surface', className)}>
+    <div className={cn('overflow-hidden rounded-feature bg-ui-surface shadow-[0_3px_0_var(--color-ui-divider)]', className)}>
       {children}
     </div>
   );
@@ -41,7 +41,7 @@ export function SettingsControlList({ className, children }: React.HTMLAttribute
 }
 
 /** Base row: transparent on the surface card, kept apart by an inset bottom hairline. */
-const rowClassName = 'w-full border-b border-ui-divider last:border-b-0';
+const rowClassName = 'w-full border-b border-ui-divider/70 last:border-b-0';
 
 export interface SettingsToggleRowProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   checked: boolean;
@@ -68,8 +68,19 @@ export function SettingsToggleRow({ checked, label, description, disabled, class
         <span className="block font-extrabold text-ui-ink">{label}</span>
         {description && <span className="mt-0.5 block text-xs font-bold leading-snug text-ui-muted">{description}</span>}
       </span>
-      <span aria-hidden="true" className={cn('relative h-7 w-12 shrink-0 rounded-full transition-colors', checked ? 'bg-brand-primary' : 'bg-ui-border')}>
-        <span className={cn('absolute left-1 top-1 h-5 w-5 rounded-full bg-white shadow-sm transition-transform', checked && 'translate-x-5')} />
+      <span
+        aria-hidden="true"
+        className={cn(
+          'relative h-7 w-12 shrink-0 rounded-full transition-colors',
+          checked ? 'bg-brand-primary' : 'bg-ui-hover',
+        )}
+      >
+        <span
+          className={cn(
+            'absolute left-1 top-1 h-5 w-5 rounded-full bg-white shadow-sm transition-transform',
+            checked && 'translate-x-5',
+          )}
+        />
       </span>
     </button>
   );
@@ -101,8 +112,10 @@ export function SettingsRadioRow({ checked, label, detail, className, ...props }
       <span
         aria-hidden="true"
         className={cn(
-          'flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 transition-colors',
-          checked ? 'border-brand-primary bg-brand-primary text-white' : 'border-ui-border bg-ui-surface text-transparent',
+          'flex h-6 w-6 shrink-0 items-center justify-center rounded-full transition-colors',
+          checked
+            ? 'bg-brand-primary text-white shadow-[0_2px_0_var(--color-brand-primary-edge)]'
+            : 'bg-ui-canvas text-transparent',
         )}
       >
         <AppIcon name="check" size={13} />

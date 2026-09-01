@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { PiMinusBold, PiPlusBold, PiSquaresFourFill } from 'react-icons/pi';
+import { AppIcon } from '../../../../lib/widgets';
 import { motion, AnimatePresence } from 'motion/react';
 import { useAppStore } from '../../../../store/useAppStore';
 import { SAMPLE_BOOKS } from '../../../../data/books';
@@ -92,13 +92,13 @@ export function CharNodeItem({
             }
           } 
         }}
-        className={`flex items-center justify-between z-10 relative bg-white
-          ${isUnknown ? 'opacity-50' : 'cursor-pointer hover:bg-[#F7F7F7] active:bg-[#F2F2F2] transition-colors'}
+        className={`flex items-center justify-between z-10 relative bg-ui-surface
+          ${isUnknown ? 'opacity-50' : 'cursor-pointer hover:bg-ui-hover active:bg-ui-canvas transition-colors'}
           ${isRoot ? 'p-4 sm:p-5' : 'p-3 sm:p-4'}`}
       >
         <div className="flex items-center gap-3 sm:gap-4 min-w-0 pr-4">
-          <div className={`flex items-center justify-center font-chinese border shrink-0 transition-transform font-black bg-[#F7F7F7] border-[#E5E5E5] text-ui-ink
-            ${isRoot ? 'text-[28px] sm:text-[32px] w-[56px] h-[56px] rounded-[16px] border-[2px]' : 'text-[22px] sm:text-[24px] w-[46px] h-[46px] rounded-[14px] border-[2px]'}`}>
+          <div className={`flex items-center justify-center font-chinese shrink-0 transition-transform font-black bg-ui-canvas text-ui-ink border-b-[length:var(--depth-sm)] border-ui-divider
+            ${isRoot ? 'text-[28px] sm:text-[32px] w-[56px] h-[56px] rounded-control' : 'text-[22px] sm:text-[24px] w-[46px] h-[46px] rounded-compact'}`}>
             {char}
           </div>
 
@@ -110,7 +110,7 @@ export function CharNodeItem({
                     const bookInfo = SAMPLE_BOOKS.find(b => b.id === badgeInfo.bookId);
                     const dotBg = bookInfo ? bookInfo.accentBg : activeBook.accentBg;
                     return (
-                      <span className="shrink-0 flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-[#AFB6BB] tracking-widest uppercase opacity-80 select-none">
+                      <span className="shrink-0 flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-ui-muted tracking-widest uppercase opacity-80 select-none">
                         <span>B{badgeInfo.bookId} · L{badgeInfo.lessonId}</span>
                         <span className={`w-1.5 h-1.5 rounded-full ${dotBg} shrink-0`} />
                       </span>
@@ -119,20 +119,20 @@ export function CharNodeItem({
                 </div>
               ) : (
                 <div className="flex items-center gap-2 mb-1 flex-wrap">
-                  <span className="text-[13px] sm:text-[14px] font-black text-[#AFB6BB] tracking-widest leading-none">???</span>
+                  <span className="text-[13px] sm:text-[14px] font-black text-ui-muted tracking-widest leading-none">???</span>
                   {badgeInfo && (() => {
                     const bookInfo = SAMPLE_BOOKS.find(b => b.id === badgeInfo.bookId);
                     const dotBg = bookInfo ? bookInfo.accentBg : activeBook.accentBg;
                     return (
-                      <span className="shrink-0 flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-[#AFB6BB] tracking-widest uppercase opacity-80 select-none">
+                      <span className="shrink-0 flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-ui-muted tracking-widest uppercase opacity-80 select-none">
                         <span>B{badgeInfo.bookId} · L{badgeInfo.lessonId}</span>
                         <span className={`w-1.5 h-1.5 rounded-full ${dotBg} shrink-0`} />
                       </span>
                     );
                   })()}
                 </div>
-             )}
-             {def && <div className="text-[11px] sm:text-[12px] font-bold text-[#AFB6BB] uppercase truncate w-[130px] xs:w-[150px] sm:w-[180px] leading-tight">{def}</div>}
+              )}
+              {def && <div className="text-[11px] sm:text-[12px] font-bold text-ui-muted uppercase truncate w-[130px] xs:w-[150px] sm:w-[180px] leading-tight">{def}</div>}
           </div>
         </div>
 
@@ -141,13 +141,13 @@ export function CharNodeItem({
             aria-label={isExpanded ? 'Collapse components' : 'Expand components'}
             aria-expanded={isExpanded}
             onClick={(e) => { e.stopPropagation(); setIsExpanded(!isExpanded); }}
-            className={`w-8 h-8 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center rounded-full font-black transition-all ${
+            className={`w-8 h-8 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center rounded-full font-black transition-all focus-ring ${
                isExpanded 
-                 ? 'bg-[#E5E5E5] text-ui-ink' 
-                 : `bg-[#F7F7F7] ${accentTextClass} hover:brightness-95 active:scale-95`
+                 ? 'bg-ui-divider text-ui-ink' 
+                 : `bg-ui-canvas ${accentTextClass} hover:brightness-95 active:scale-95`
             }`}
           >
-             {isExpanded ? <PiMinusBold size={20} /> : <PiPlusBold size={20} />}
+             <AppIcon name={isExpanded ? 'minus' : 'plus'} size={20} />
           </button>
         )}
       </div>
@@ -161,20 +161,20 @@ export function CharNodeItem({
             transition={{ duration: 0.25, ease: 'easeInOut' }}
             className="flex flex-col w-full origin-top relative overflow-hidden"
           >
-             <div className="w-full h-[2px] bg-[#E5E5E5]" />
+             <div className="w-full h-[2px] bg-ui-divider" />
              
-             <div className="w-full bg-[#FAFAFA] p-3 sm:p-4 flex flex-col gap-3">
+             <div className="w-full bg-ui-canvas p-3 sm:p-4 flex flex-col gap-3">
                 {ids && (
                   <div className="flex items-center gap-1.5 px-1">
-                    <PiSquaresFourFill size={14} className="text-[#AFB6BB]" />
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#8A959E]">{ids} {structureName}</span>
+                    <AppIcon name="grid" size={14} className="text-ui-muted" />
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-ui-muted">{ids} {structureName}</span>
                   </div>
                 )}
                 
-                <div className="flex flex-col w-full bg-white border-2 border-[#E5E5E5] rounded-[16px] sm:rounded-[20px] overflow-hidden">
+                <div className="flex flex-col w-full bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider rounded-control overflow-hidden">
                   {subChars.map((c, i) => (
                     <div key={`${c}-${i}`} className="relative flex flex-col">
-                      {i > 0 && <div className="w-full h-[2px] bg-[#E5E5E5]" />}
+                      {i > 0 && <div className="w-full h-[2px] bg-ui-divider" />}
                       <CharNodeItem 
                         char={c}
                         isRoot={false}

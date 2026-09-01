@@ -50,15 +50,15 @@ export const SpellCard: React.FC<SpellCardProps> = ({ item, activeTab, onAction,
         }
       }}
       onClick={onClick}
-      className="group h-full cursor-pointer select-none"
+      className="group h-full cursor-pointer select-none outline-none focus-ring rounded-feature"
     >
-      <article className="relative flex h-full flex-col overflow-hidden rounded-[24px] bg-ui-surface transition-[transform,background-color] duration-200 hover:-translate-y-1 hover:bg-white active:translate-y-0">
+      <article className="relative flex h-full flex-col overflow-hidden rounded-feature bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider transition-[transform,background-color,border-color] duration-200 hover:bg-ui-hover active:translate-y-[length:var(--depth-md)] active:border-b-0">
         <button
           onClick={(e) => { e.stopPropagation(); onAction(e); }}
           aria-label={isStarred ? `Remove ${traditional} from saved words` : `Delete ${traditional}`}
           className={`absolute top-2 right-2 w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all active:scale-90 z-10 ${
             isStarred
-              ? 'text-[#FFB020] hover:bg-[#FFB020]/10'
+              ? 'text-feedback-warning-edge hover:bg-feedback-warning/10'
               : 'text-ui-muted hover:bg-feedback-danger/10 hover:text-feedback-danger'
           }`}
         >

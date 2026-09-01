@@ -18,7 +18,17 @@ interface LibraryScreenProps {
   menuToggle?: StickyWorkspaceHeaderMenuToggle;
 }
 
-function EmptyState({ onAddCard, isStarred }: { onAddCard?: () => void; isStarred: boolean }) {
+function EmptyState({
+  onAddCard,
+  isStarred,
+  accentColor,
+  lightBg,
+}: {
+  onAddCard?: () => void;
+  isStarred: boolean;
+  accentColor?: string;
+  lightBg?: string;
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -27,14 +37,15 @@ function EmptyState({ onAddCard, isStarred }: { onAddCard?: () => void; isStarre
       className="flex flex-col items-center justify-center px-6 py-16"
     >
       <div
-        className={`mb-5 flex h-20 w-20 items-center justify-center rounded-full ${
-          isStarred ? 'bg-[#FFF3D0]' : 'bg-brand-primary-soft'
-        }`}
+        className={cn(
+          'mb-5 flex h-20 w-20 items-center justify-center rounded-full',
+          lightBg || (isStarred ? 'bg-feedback-warning/15' : 'bg-brand-primary-soft')
+        )}
       >
         {isStarred ? (
-          <AppIcon name="bookmarkFilled" size={38} className="text-[#FFB020]" />
+          <AppIcon name="bookmarkFilled" size={38} className="text-feedback-warning-edge" />
         ) : (
-          <AppIcon name="sparkles" size={38} className="text-brand-primary" />
+          <AppIcon name="sparkles" size={38} className={accentColor || 'text-brand-primary'} />
         )}
       </div>
 
@@ -74,6 +85,8 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
     setShowFolderModal,
     newFolderName,
     setNewFolderName,
+    selectedFolderColorId,
+    setSelectedFolderColorId,
     isCreatingFolder,
     handleCreateFolder,
     deleteTargetId,
@@ -166,7 +179,12 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
             </div>
           ) : items.length === 0 ? (
             <div className="h-full w-full flex flex-col items-center justify-center py-10">
-              <EmptyState onAddCard={onAddCard} isStarred={isStarred} />
+              <EmptyState
+                onAddCard={onAddCard}
+                isStarred={isStarred}
+                accentColor={activeCollection?.accentColor}
+                lightBg={activeCollection?.lightBg}
+              />
             </div>
           ) : (
             <div className="w-full">
@@ -178,7 +196,7 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
                     onClick={onAddCard}
                     aria-label="Add a card to this folder"
                     className={cn(
-                      "flex h-full min-h-[140px] cursor-pointer select-none flex-col items-center justify-center rounded-[24px] border-2 border-dashed border-ui-border bg-ui-surface/60 text-center text-ui-muted outline-none transition-[border-color,background-color,color] duration-150 hover:border-brand-primary hover:bg-brand-primary/5 hover:text-brand-primary focus-visible:ring-4 focus-visible:ring-brand-primary/20"
+                      "flex h-full min-h-[140px] cursor-pointer select-none flex-col items-center justify-center rounded-feature border-2 border-dashed border-ui-divider bg-ui-surface/60 text-center text-ui-muted outline-none transition-[border-color,background-color,color] duration-150 hover:border-brand-primary hover:bg-brand-primary/5 hover:text-brand-primary focus-ring"
                     )}
                   >
                     <AppIcon name="add" size={26} className="mb-2" />
@@ -222,6 +240,8 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
         setShowFolderModal={setShowFolderModal}
         newFolderName={newFolderName}
         setNewFolderName={setNewFolderName}
+        selectedColorId={selectedFolderColorId}
+        setSelectedColorId={setSelectedFolderColorId}
         isCreatingFolder={isCreatingFolder}
         handleCreateFolder={handleCreateFolder}
       />
@@ -249,7 +269,7 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
               }}
               aria-label="Start flashcards"
               className={cn(
-                "pointer-events-auto min-h-14 text-white border-b-[5px]",
+                "pointer-events-auto min-h-14 text-white border-b-[length:var(--depth-lg)]",
                 activeCollection.accentBg,
                 activeCollection.accentBorder
               )}

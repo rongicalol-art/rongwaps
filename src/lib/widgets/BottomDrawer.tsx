@@ -86,7 +86,7 @@ export function BottomDrawer({
               }
             }}
             className={cn(
-              "absolute bottom-0 left-0 right-0 bg-white rounded-t-[32px] sm:max-w-lg md:max-w-xl sm:mx-auto shadow-[0_-10px_40px_rgba(0,0,0,0.1)] flex flex-col max-h-[85vh] pointer-events-auto",
+              "absolute bottom-0 left-0 right-0 bg-ui-surface rounded-t-modal sm:max-w-lg md:max-w-xl sm:mx-auto shadow-ambient-lg flex flex-col max-h-[85vh] pointer-events-auto",
               className
             )}
           >
@@ -105,7 +105,7 @@ export function BottomDrawer({
               onPointerDown={(e) => dragControls.start(e)}
               style={{ touchAction: 'none' }}
             >
-              <div className="w-12 h-1.5 bg-[#E5E5E5] rounded-full" />
+              <div className="w-12 h-1.5 bg-ui-divider rounded-full" />
             </div>
 
             {/* Header (Optional) */}

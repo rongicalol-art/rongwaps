@@ -40,15 +40,34 @@
   --color-feedback-danger-edge: #ea2b2b;
   --color-feedback-danger-hover: #ff2b2b;
 
+  --radius-xs: 8px;
+  --radius-sm: 12px;
   --radius-compact: 14px;
-  --radius-control: 20px;
+  --radius-control: 16px;
   --radius-feature: 24px;
+  --radius-modal: 32px;
+
+  --depth-sm: 2px;
+  --depth-md: 4px;
+  --depth-lg: 5px;
+  --depth-xl: 6px;
+
+  --shadow-tactile-sm: 0 2px 0;
+  --shadow-tactile-md: 0 4px 0;
+  --shadow-tactile-lg: 0 5px 0;
+  --shadow-ambient-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-ambient-md: 0 8px 24px rgba(0, 0, 0, 0.10);
+  --shadow-ambient-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+
+  --ring-focus: 4px;
+  --ring-focus-color: var(--color-brand-primary) / 0.25;
+
+  --transition-fast: 100ms;
+  --transition-normal: 200ms;
+  --transition-spring: 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 :root {
-  --depth-compact: 4px;
-  --depth-control: 6px;
-  --depth-card: 4px;
   --size-window-header: 71px;
   --workspace-desktop-nav-width: 288px;
   --workspace-nav-width: 0px;
@@ -170,6 +189,15 @@ body {
     scrollbar-width: none; /* Firefox */
   }
 
+  /* Standard focus ring for buttons, cards, controls */
+  .focus-ring {
+    @apply outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25;
+  }
+  
+  /* Compact focus ring for inline tokens, small interactive text */
+  .focus-ring-inline {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/30;
+  }
 }
 
 /* Card Maker Animations */

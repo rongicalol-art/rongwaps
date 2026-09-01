@@ -13,11 +13,11 @@ interface PracticeChoiceButtonProps extends ButtonHTMLAttributes<HTMLButtonEleme
 }
 
 const stateClasses: Record<PracticeChoiceState, string> = {
-  idle: 'border-ui-border bg-white text-ui-ink hover:bg-ui-hover',
+  idle: 'border-ui-border bg-ui-surface text-ui-ink hover:bg-ui-hover',
   selected: '',
-  correct: 'translate-y-[4px] border-feedback-success-edge bg-feedback-success-surface text-feedback-success-edge',
-  wrong: 'translate-y-[4px] border-feedback-danger-edge bg-feedback-danger-surface text-feedback-danger-edge',
-  muted: 'translate-y-[4px] border-ui-border bg-white text-ui-muted opacity-80',
+  correct: 'translate-y-[length:var(--depth-md)] border-feedback-success-edge bg-feedback-success-surface text-feedback-success-edge',
+  wrong: 'translate-y-[length:var(--depth-md)] border-feedback-danger-edge bg-feedback-danger-surface text-feedback-danger-edge',
+  muted: 'translate-y-[length:var(--depth-md)] border-ui-border bg-ui-surface text-ui-muted opacity-80',
 };
 
 export function PracticeChoiceButton({
@@ -40,11 +40,11 @@ export function PracticeChoiceButton({
     <button
       type="button"
       className={cn(
-        'relative flex w-full select-none items-center rounded-[16px] border-b-4 px-6 py-4 outline-none',
-        'transition-[transform,background-color,border-color,color] duration-150',
+        'relative flex w-full select-none items-center rounded-control border-b-[length:var(--depth-md)] px-6 py-4 outline-none',
+        'transition-[transform,background-color,border-color,color] duration-150 focus-ring',
         stateClasses[state],
         state === 'selected' && selectedClassName,
-        isRaised && 'active:translate-y-1 active:border-b-0',
+        isRaised && 'active:translate-y-[length:var(--depth-md)] active:border-b-0',
         className,
       )}
       style={{

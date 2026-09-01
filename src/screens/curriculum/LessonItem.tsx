@@ -27,20 +27,20 @@ function LessonItemBase({
   const isLocked = lesson.state === 'locked';
   const landscapeSrc = LESSON_LANDSCAPE_ART[lesson.id];
   const englishTitle = getEnglishLessonTitle(lesson.title);
-  let containerClasses = 'mb-3 rounded-[24px] border-b-4 border-ui-border bg-ui-surface hover:bg-ui-surface-hover';
+  let containerClasses = 'mb-3 rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface hover:bg-ui-hover';
   let innerDivider = null;
 
   if (isSelected) {
     if (!isPrevSelected && !isNextSelected) {
-      containerClasses = 'mb-3 rounded-[24px] border-2 border-b-[6px] border-ui-border bg-ui-surface';
+      containerClasses = 'mb-3 rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface';
     } else if (!isPrevSelected && isNextSelected) {
-      containerClasses = 'mb-0 rounded-t-[24px] border-x-2 border-t-2 border-ui-border bg-ui-surface';
+      containerClasses = 'mb-0 rounded-t-feature border-ui-border bg-ui-surface';
       innerDivider = <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-ui-divider" />;
     } else if (isPrevSelected && isNextSelected) {
-      containerClasses = 'mb-0 border-x-2 border-ui-border bg-ui-surface';
+      containerClasses = 'mb-0 border-ui-border bg-ui-surface';
       innerDivider = <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-ui-divider" />;
     } else {
-      containerClasses = 'mb-3 rounded-b-[24px] border-x-2 border-b-[6px] border-ui-border bg-ui-surface';
+      containerClasses = 'mb-3 rounded-b-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface';
     }
   }
 
@@ -61,7 +61,7 @@ function LessonItemBase({
         disabled={isLocked}
         onClick={() => onToggle(lesson.id)}
         aria-pressed={isSelected}
-        className="group flex min-w-0 flex-1 items-center gap-4 self-stretch rounded-[inherit] p-4 text-left outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-brand-primary/25 disabled:cursor-not-allowed"
+        className="group flex min-w-0 flex-1 items-center gap-4 self-stretch rounded-[inherit] p-4 text-left outline-none focus-ring disabled:cursor-not-allowed"
       >
         <span className="relative flex h-14 w-14 shrink-0 items-center justify-center">
           <img
@@ -76,7 +76,7 @@ function LessonItemBase({
             }`}
           />
           {isLocked && (
-            <span className="absolute grid h-7 w-7 place-items-center rounded-full bg-ui-surface text-ui-muted shadow-sm">
+            <span className="absolute grid h-7 w-7 place-items-center rounded-full bg-ui-surface text-ui-muted border-b-[length:var(--depth-sm)] border-ui-divider">
               <AppIcon name="lock" size={16} />
             </span>
           )}

@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { PiBookOpenFill, PiCheckCircleFill, PiUserFill, PiSignInBold, PiSignOutBold, PiFireFill, PiLightningFill } from 'react-icons/pi';
 import { useAppStore } from '../../store/useAppStore';
-import { ActionButton } from '../../lib/widgets';
+import { ActionButton, AppIcon } from '../../lib/widgets';
 import { GardenVisualization } from './components/GardenVisualization';
 import { useAuth } from '../../hooks/useAuth';
 import { AuthScreen } from '../auth';
@@ -44,7 +43,7 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
         <div className="w-48 h-8 rounded-full bg-ui-border/60 animate-pulse mb-3" />
         <div className="w-full max-w-2xl grid grid-cols-2 gap-4 my-8">
           {[1, 2, 3, 4].map(i => (
-            <div key={i} className="bg-white border-2 border-b-2 border-ui-border rounded-[24px] h-24 animate-pulse" />
+            <div key={i} className="bg-ui-surface rounded-feature border-b-[length:var(--depth-md)] border-ui-divider h-24 animate-pulse" />
           ))}
         </div>
       </div>
@@ -62,17 +61,17 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
         <div className="flex flex-col items-center relative w-full mb-10 pt-4">
 
           <div className="relative mb-4">
-            <div className="w-28 h-28 md:w-32 md:h-32 rounded-full border-2 border-white shadow-[0_0_0_3px_var(--color-ui-border)] flex items-center justify-center overflow-hidden bg-ui-canvas z-10">
+            <div className="w-28 h-28 md:w-32 md:h-32 rounded-full border-2 border-ui-surface shadow-[0_0_0_3px_var(--color-ui-divider)] flex items-center justify-center overflow-hidden bg-ui-canvas z-10">
               {avatarUrl ? (
                  <img src={avatarUrl} alt="Avatar" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
               ) : (
-                 <PiUserFill size={64} className="text-ui-muted mt-4" />
+                 <AppIcon name="profile" size={54} className="text-ui-muted mt-2" />
               )}
             </div>
             {/* Status indicator badge */}
             {currentUser && (
-               <div className="absolute bottom-1 right-1 w-8 h-8 bg-feedback-success border-2 border-white rounded-full z-20 flex items-center justify-center shadow-sm">
-                  <PiCheckCircleFill className="text-white" size={16} />
+               <div className="absolute bottom-1 right-1 w-8 h-8 bg-feedback-success border-2 border-ui-surface rounded-full z-20 flex items-center justify-center">
+                  <AppIcon name="check" className="text-white" size={16} />
                </div>
             )}
           </div>
@@ -90,9 +89,9 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
            <h3 className="text-xl font-extrabold text-ui-ink text-left mb-4 px-1">Statistics</h3>
            <div className="grid grid-cols-2 gap-3 md:gap-4 w-full">
               
-              <div className="bg-white border-2 border-b-2 border-ui-border rounded-[24px] p-4 flex items-start gap-3 hover:bg-ui-canvas transition-all cursor-default overflow-hidden">
+              <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default overflow-hidden">
                  <div className="w-10 h-10 shrink-0 rounded-full bg-brand-secondary/10 flex items-center justify-center mt-1">
-                   <PiFireFill className="text-brand-secondary" size={24} />
+                   <AppIcon name="flame" className="text-brand-secondary" size={24} />
                  </div>
                  <div className="text-left flex flex-col justify-center min-w-0">
                    <h3 className="text-xl md:text-2xl font-extrabold text-ui-ink truncate">{displayStreak}</h3>
@@ -100,9 +99,9 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
                  </div>
               </div>
 
-              <div className="bg-white border-2 border-b-2 border-ui-border rounded-[24px] p-4 flex items-start gap-3 hover:bg-ui-canvas transition-all cursor-default overflow-hidden">
+              <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default overflow-hidden">
                  <div className="w-10 h-10 shrink-0 rounded-full bg-feedback-warning/10 flex items-center justify-center mt-1">
-                   <PiLightningFill className="text-feedback-warning" size={24} />
+                   <AppIcon name="actions" className="text-feedback-warning" size={24} />
                  </div>
                  <div className="text-left flex flex-col justify-center min-w-0">
                    <h3 className="text-xl md:text-2xl font-extrabold text-ui-ink truncate">{displayXp}</h3>
@@ -110,9 +109,9 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
                  </div>
               </div>
 
-              <div className="bg-white border-2 border-b-2 border-ui-border rounded-[24px] p-4 flex items-start gap-3 hover:bg-ui-canvas transition-all cursor-default overflow-hidden">
+              <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default overflow-hidden">
                  <div className="w-10 h-10 shrink-0 rounded-full bg-brand-primary/10 flex items-center justify-center mt-1">
-                   <PiBookOpenFill className="text-brand-primary" size={24} />
+                   <AppIcon name="book" className="text-brand-primary" size={24} />
                  </div>
                  <div className="text-left flex flex-col justify-center min-w-0">
                    <h3 className="text-xl md:text-2xl font-extrabold text-ui-ink truncate">{learnedCards.length}</h3>
@@ -120,9 +119,9 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
                  </div>
               </div>
 
-              <div className="bg-white border-2 border-b-2 border-ui-border rounded-[24px] p-4 flex items-start gap-3 hover:bg-ui-canvas transition-all cursor-default overflow-hidden">
+              <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default overflow-hidden">
                  <div className="w-10 h-10 shrink-0 rounded-full bg-feedback-success/10 flex items-center justify-center mt-1">
-                   <PiCheckCircleFill className="text-feedback-success" size={24} />
+                   <AppIcon name="check" className="text-feedback-success" size={24} />
                  </div>
                  <div className="text-left flex flex-col justify-center min-w-0">
                    <h3 className="text-xl md:text-2xl font-extrabold text-ui-ink truncate">{totalCardsReviewed}</h3>
@@ -140,7 +139,7 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
 
 
         {/* Account Area */}
-        <div className="w-full bg-white border-2 border-ui-border rounded-[24px] p-5 overflow-hidden">
+        <div className="w-full bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider rounded-feature p-5 overflow-hidden">
           {currentUser ? (
             <ActionButton
               variant="danger"
@@ -149,7 +148,7 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
               onClick={handleLogout}
               className="uppercase tracking-widest"
             >
-              <PiSignOutBold size={20} /> Sign Out
+              <AppIcon name="signOut" size={20} /> Sign Out
             </ActionButton>
           ) : (
             <ActionButton
@@ -159,7 +158,7 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
               onClick={() => setIsAuthOpen(true)}
               className="uppercase tracking-widest"
             >
-              <PiSignInBold size={20} /> Sign In with Google
+              <AppIcon name="signIn" size={20} /> Sign In with Google
             </ActionButton>
           )}
         </div>

@@ -32,7 +32,7 @@ function ProfileAvatarButton({ onClick }: { onClick: () => void }) {
       type="button"
       onClick={onClick}
       aria-label="Open profile"
-      className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-ui-surface text-ui-muted-strong transition-colors hover:text-brand-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25"
+      className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-ui-surface text-ui-muted-strong transition-colors hover:text-brand-primary focus-ring"
     >
       {avatarUrl ? (
         <img
@@ -138,7 +138,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
 
         <div className="mx-auto flex w-full max-w-5xl flex-col items-center px-6 pb-12 md:px-12">
           {error && (
-            <p role="alert" className="mb-5 w-full rounded-[16px] border-b-4 border-feedback-danger-edge bg-feedback-danger-surface px-4 py-3 text-sm font-bold text-feedback-danger">
+            <p role="alert" className="mb-5 w-full rounded-control border-b-[length:var(--depth-md)] border-feedback-danger-edge bg-feedback-danger-surface px-4 py-3 text-sm font-bold text-feedback-danger">
               {error}
             </p>
           )}
@@ -146,7 +146,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
           {isLoading && progress.lessons.length === 0 ? (
             <div aria-label="Loading lessons" className="grid w-full grid-cols-1 gap-3 lg:grid-cols-2 lg:gap-x-6">
               {Array.from({ length: 8 }, (_, index) => (
-                <div key={index} className="h-20 animate-pulse rounded-[24px] border-b-4 border-ui-border bg-ui-surface" />
+                <div key={index} className="h-20 animate-pulse rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface" />
               ))}
             </div>
           ) : (

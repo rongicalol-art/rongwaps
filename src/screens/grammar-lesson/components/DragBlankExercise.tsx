@@ -124,7 +124,7 @@ export function DragBlankExercise({
             />
           )}
           {exercise.status === 'needs-repair' && (
-            <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-[18px] border-2 border-feedback-danger bg-[#FFF1F1] p-4" role="status">
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-feature border-b-[length:var(--depth-md)] border-feedback-danger-edge bg-feedback-danger-surface p-4" role="status">
               <div>
                 <p className="flex items-center gap-2 font-black text-feedback-danger">
                   <AppIcon name="restart" size={18} /> A few answers need another look.

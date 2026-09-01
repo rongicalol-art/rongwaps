@@ -19,14 +19,14 @@ export function AudioControls({ isPlaying, playAudio, activeBook }: AudioControl
         type="button"
         onClick={() => playAudio(1.0)}
         aria-label={isPlaying ? 'Replay pronunciation' : 'Play pronunciation'}
-        className={`relative flex h-[130px] w-[130px] items-center justify-center rounded-[36px] border-b-[8px] ${activeBook.buttonEdge} ${activeBook.accentBg} text-white outline-none transition-[transform,border-width,filter] focus-visible:ring-4 focus-visible:ring-brand-primary/25 ${isPlaying ? 'translate-y-2 border-b-0' : 'hover:brightness-105 active:translate-y-2 active:border-b-0'}`}
+        className={`relative flex h-[130px] w-[130px] items-center justify-center rounded-feature border-b-[length:var(--depth-xl)] ${activeBook.buttonEdge} ${activeBook.accentBg} text-white outline-none transition-[transform,border-width,filter] focus-ring ${isPlaying ? 'translate-y-[length:var(--depth-xl)] border-b-0' : 'hover:brightness-105 active:translate-y-[length:var(--depth-xl)] active:border-b-0'}`}
       >
         <AppIcon name="pronounce" size={72} />
         
         {isPlaying && !prefersReducedMotion && (
           <motion.div
             aria-hidden="true"
-            className={`absolute inset-0 -z-10 rounded-[36px] ${activeBook.accentBg}`}
+            className={`absolute inset-0 -z-10 rounded-feature ${activeBook.accentBg}`}
             animate={{ scale: [1, 1.25, 1.4], opacity: [0.6, 0.2, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: 'easeOut' }}
           />
@@ -38,7 +38,7 @@ export function AudioControls({ isPlaying, playAudio, activeBook }: AudioControl
         onClick={() => playAudio(0.4)}
         disabled={isPlaying}
         aria-label="Play pronunciation slowly"
-        className={`flex h-[72px] w-[72px] items-center justify-center rounded-[24px] border-b-[6px] ${activeBook.buttonEdge} ${activeBook.accentBg} text-white outline-none transition-[transform,border-width,filter] hover:brightness-105 focus-visible:ring-4 focus-visible:ring-brand-primary/25 active:translate-y-1.5 active:border-b-0 disabled:translate-y-1.5 disabled:border-b-0 disabled:bg-ui-divider disabled:text-ui-muted`}
+        className={`flex h-[72px] w-[72px] items-center justify-center rounded-control border-b-[length:var(--depth-lg)] ${activeBook.buttonEdge} ${activeBook.accentBg} text-white outline-none transition-[transform,border-width,filter] hover:brightness-105 focus-ring active:translate-y-[length:var(--depth-lg)] active:border-b-0 disabled:translate-y-[length:var(--depth-lg)] disabled:border-b-0 disabled:bg-ui-divider disabled:text-ui-muted`}
       >
         <AppIcon name="slowAudio" size={36} />
       </button>

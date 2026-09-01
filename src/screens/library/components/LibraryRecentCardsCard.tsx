@@ -17,9 +17,9 @@ export function LibraryRecentCardsCard({ items, onSelectWord }: LibraryRecentCar
   const hasItems = items.length > 0;
 
   return (
-    <section className="rounded-[26px] bg-ui-surface p-5 sm:p-6">
+    <section className="rounded-feature bg-ui-surface p-5 sm:p-6 border-b-[length:var(--depth-md)] border-ui-divider">
       <div className="mb-4 flex items-center gap-2.5">
-        <AppIcon name="clock" size={19} className="text-[#CE82FF]" />
+        <AppIcon name="clock" size={19} className="text-brand-primary" />
         <h2 className="text-[16px] font-black text-ui-ink-strong">Recent</h2>
       </div>
 
@@ -38,7 +38,7 @@ export function LibraryRecentCardsCard({ items, onSelectWord }: LibraryRecentCar
                 }
               }}
               onClick={() => onSelectWord?.(item.hanzi)}
-              className="group flex cursor-pointer items-center justify-between gap-3 rounded-[12px] px-2 py-3 transition-colors hover:bg-white first:pt-2 last:pb-2"
+              className="group flex cursor-pointer items-center justify-between gap-3 rounded-sm px-2 py-3 transition-colors hover:bg-ui-hover focus-ring first:pt-2 last:pb-2"
             >
               <div className="flex items-baseline gap-2.5 min-w-0">
                 <span className="font-chinese text-[20px] font-black text-ui-ink-strong group-hover:text-brand-primary transition-colors">
@@ -52,7 +52,7 @@ export function LibraryRecentCardsCard({ items, onSelectWord }: LibraryRecentCar
               <span className="shrink-0">
                 <span
                   className={`block size-2.5 rounded-full ${
-                    item.type === 'starred' ? 'bg-[#FFB020]' : 'bg-[#CE82FF]'
+                    item.type === 'starred' ? 'bg-feedback-warning-edge' : 'bg-brand-primary'
                   }`}
                 />
               </span>

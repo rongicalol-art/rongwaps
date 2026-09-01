@@ -1,5 +1,6 @@
 import React from 'react';
-import { PiBookmarkSimpleFill, PiTrashBold } from 'react-icons/pi';
+import { AppIcon } from '../../lib/widgets';
+import { cn } from '../../utils/cn';
 import { DBDictionaryEntry } from '../../types/database';
 import { UserFlashcard } from '../../types/models';
 
@@ -52,7 +53,9 @@ export const CollectionListItem: React.FC<CollectionListItemProps> = ({
             onClick();
           }
         }}
-        className={`w-full bg-white px-5 py-4 flex flex-row items-center gap-4 rounded-[24px] border-2 border-b-[6px] border-[#E5E5E5] active:border-b-2 active:translate-y-[3px] hover:border-brand-primary hover:bg-[#F7F7F7] transition-all cursor-pointer group outline-none text-left`}
+        className={cn(
+          'w-full bg-ui-surface px-5 py-4 flex flex-row items-center gap-4 rounded-feature border-b-[length:var(--depth-md)] border-ui-divider active:border-b-0 active:translate-y-[length:var(--depth-md)] hover:bg-ui-hover transition-[background-color,border-color,transform] cursor-pointer group outline-none focus-ring text-left'
+        )}
         onClick={onClick}
       >
         <div className="flex-1 flex flex-col items-start min-w-0 overflow-hidden">
@@ -62,7 +65,7 @@ export const CollectionListItem: React.FC<CollectionListItemProps> = ({
             </span>
             <div className="flex flex-col justify-center min-w-0 flex-1">
                <div className="flex items-center gap-2">
-                  <span className="text-[13px] sm:text-[14px] font-extrabold text-[#AFB6BB] tracking-widest line-clamp-1 truncate flex-1 uppercase">
+                  <span className="text-[13px] sm:text-[14px] font-extrabold text-ui-muted tracking-widest line-clamp-1 truncate flex-1 uppercase">
                     {pinyinStr || ''}
                   </span>
                </div>
@@ -79,9 +82,14 @@ export const CollectionListItem: React.FC<CollectionListItemProps> = ({
             e.stopPropagation();
             onAction(e);
           }}
-          className={`p-3 rounded-[16px] transition-all z-20 shrink-0 border-[2px] border-transparent ${isStarred ? 'text-[#FFD900] hover:bg-[#FFD900]/10 hover:border-[#FFD900]/30' : 'text-[#AFB6BB] bg-[#F7F7F7] hover:bg-[#FFE5E5] hover:text-feedback-danger hover:border-feedback-danger/30'} active:scale-95`}
+          className={cn(
+            'p-2.5 rounded-control transition-all z-20 shrink-0 border-b-[length:var(--depth-sm)] active:translate-y-px active:border-b-0 focus-ring',
+            isStarred 
+              ? 'border-feedback-warning-edge/30 text-feedback-warning-edge bg-feedback-warning/10 hover:bg-feedback-warning/20' 
+              : 'border-transparent text-ui-muted hover:text-feedback-danger hover:bg-feedback-danger/10'
+          )}
         >
-          {isStarred ? <PiBookmarkSimpleFill size={28} className="text-brand-secondary" /> : <PiTrashBold size={24} />}
+          <AppIcon name={isStarred ? 'bookmarkFilled' : 'trash'} size={22} />
         </button>
       </div>
     </div>

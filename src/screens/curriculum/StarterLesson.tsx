@@ -20,11 +20,11 @@ export function StarterLesson({ starterLesson, activeBook, isSelected, onToggleL
         type="button"
         onClick={() => onToggleLesson(starterLesson.id)}
         aria-pressed={isSelected}
-        style={isSelected ? { borderColor: activeBook.edgeHex } : undefined}
-        className={`group flex w-full cursor-pointer items-center justify-between rounded-[24px] bg-ui-surface p-4 text-left outline-none transition-colors duration-300 focus-visible:ring-4 focus-visible:ring-brand-primary/25 ${
+        style={isSelected ? { borderBottomColor: activeBook.edgeHex } : undefined}
+        className={`group flex w-full cursor-pointer items-center justify-between rounded-feature bg-ui-surface p-4 text-left outline-none transition-all duration-200 focus-ring ${
           isSelected
-            ? 'border-2 border-b-[6px] border-ui-border'
-            : 'border-b-4 border-ui-border hover:bg-ui-surface-hover'
+            ? 'border-b-[length:var(--depth-lg)]'
+            : 'border-b-[length:var(--depth-md)] border-ui-divider hover:bg-ui-hover'
         }`}
       >
         <div className="flex items-center gap-4">

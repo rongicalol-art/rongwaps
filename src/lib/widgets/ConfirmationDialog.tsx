@@ -68,18 +68,17 @@ export function ConfirmationDialog({
           role="alertdialog"
           aria-modal="true"
           aria-labelledby={titleId}
-          aria-describedby={`${descriptionId}${errorMessage ? ` ${errorId}` : ''}`}
           tabIndex={-1}
-          className={cn('rounded-[24px] border-b-4 border-ui-border bg-ui-surface p-6 shadow-xl', className)}
+          className={cn('rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface p-6 shadow-ambient-lg', className)}
         >
           <div className="mb-6 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-[20px] bg-feedback-danger/10 text-feedback-danger">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-control bg-feedback-danger/10 text-feedback-danger">
             {icon}
           </div>
           <h2 id={titleId} className="text-xl font-extrabold text-ui-ink">{title}</h2>
           <div id={descriptionId} className="mt-2 text-sm font-bold leading-relaxed text-ui-muted">{description}</div>
           {errorMessage && (
-            <p id={errorId} role="alert" className="mt-3 rounded-[14px] bg-feedback-danger/10 px-3 py-2 text-sm font-bold text-feedback-danger-edge">
+            <p id={errorId} role="alert" className="mt-3 rounded-compact bg-feedback-danger/10 px-3 py-2 text-sm font-bold text-feedback-danger-edge">
               {errorMessage}
             </p>
           )}

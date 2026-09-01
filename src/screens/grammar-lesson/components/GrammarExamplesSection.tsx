@@ -37,17 +37,21 @@ export function GrammarExamplesSection({
         <h2 id="examples-heading" className="text-sm font-black uppercase tracking-[0.08em] text-ui-muted-strong">
           Examples
         </h2>
+        <span className="text-xs font-bold text-ui-muted">
+          {page.examples.length} {page.examples.length === 1 ? 'sentence' : 'sentences'}
+        </span>
       </div>
-      <ol className="divide-y-2 divide-ui-divider border-y-2 border-ui-divider">
+      <div className="space-y-3">
         {page.examples.map((example, index) => (
-          <li
+          <div
             key={example.id}
-            className="grid grid-cols-[32px_minmax(0,1fr)_40px] items-start gap-x-3 py-5 sm:gap-x-4 sm:py-6"
+            className="flex items-start gap-3.5 rounded-feature bg-ui-surface p-4 border-b-[length:var(--depth-md)] border-ui-divider sm:gap-4 sm:p-5"
           >
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-feedback-warning text-sm font-black text-ui-ink-strong shadow-[0_3px_0_var(--color-feedback-warning-edge)]">
+            <span className="flex h-7 w-7 sm:h-8 sm:w-8 shrink-0 select-none items-center justify-center rounded-full bg-feedback-warning text-xs sm:text-sm font-black text-ui-ink-strong border-b-[length:var(--depth-sm)] border-feedback-warning-edge mt-0.5">
               {example.number}
             </span>
-            <div className="min-w-0 pt-0.5">
+
+            <div className="flex-1 min-w-0">
               {example.teachingNote && (
                 <p className="mb-2 text-xs font-bold leading-snug text-ui-muted-strong">
                   <span className="font-black text-brand-primary">Focus · </span>
@@ -60,6 +64,7 @@ export function GrammarExamplesSection({
                   />
                 </p>
               )}
+
               <GrammarExampleText
                 text={example.text}
                 characterPreference={characterPreference}
@@ -70,17 +75,18 @@ export function GrammarExamplesSection({
                 onOpenWord={onOpenWord}
               />
             </div>
+
             <IconActionButton
               onClick={() => speakExample(index)}
               size="sm"
               variant="quiet"
               icon={<AppIcon name="audio" size={16} />}
               label={`Play example ${example.number}`}
-              className="text-ui-muted hover:text-brand-primary"
+              className="shrink-0 text-ui-muted hover:text-brand-primary -mt-1 -mr-1"
             />
-          </li>
+          </div>
         ))}
-      </ol>
+      </div>
     </section>
   );
 }

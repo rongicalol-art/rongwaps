@@ -15,10 +15,10 @@ export function SavedWordsPreview({
   onViewAll,
 }: SavedWordsPreviewProps) {
   return (
-    <section className="h-full rounded-[28px] bg-ui-surface p-5 sm:p-6">
+    <section className="h-full rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface p-5 sm:p-6">
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2 text-ui-ink-strong">
-          <AppIcon name="bookmark" className="text-[#FFB020]" size={20} />
+          <AppIcon name="bookmark" className="text-feedback-warning-edge" size={20} />
           <h2 className="text-[16px] font-black">Saved</h2>
         </div>
         {items.length > 0 && (
@@ -40,7 +40,7 @@ export function SavedWordsPreview({
               key={item.word}
               type="button"
               onClick={() => onOpenWord(item.word)}
-              className="min-w-0 rounded-[18px] bg-ui-canvas px-2 py-3 text-center text-ui-ink-strong outline-none transition-[transform,background-color] hover:-translate-y-0.5 hover:bg-white focus-visible:ring-4 focus-visible:ring-brand-primary/20 active:translate-y-0"
+              className="min-w-0 rounded-control border-b-[length:var(--depth-sm)] border-ui-divider bg-ui-canvas px-2 py-3 text-center text-ui-ink-strong outline-none transition-[background-color,border-color,transform] hover:bg-ui-hover focus-ring active:border-b-0 active:translate-y-[length:var(--depth-sm)]"
             >
               <span className="block font-chinese text-[28px] font-bold leading-none">{item.traditional}</span>
               <span className="mt-1 w-full truncate text-[11px] font-black text-ui-ink">
@@ -53,7 +53,7 @@ export function SavedWordsPreview({
           ))}
         </div>
       ) : (
-        <div className="mt-4 flex min-h-[126px] flex-1 items-center justify-center rounded-[20px] bg-ui-canvas px-4 text-center">
+        <div className="mt-4 flex min-h-[126px] flex-1 items-center justify-center rounded-control bg-ui-canvas px-4 text-center">
           <p className="text-[13px] font-bold text-ui-muted">
             {isLoading ? 'Loading…' : 'Saved words appear here.'}
           </p>

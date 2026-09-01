@@ -25,7 +25,7 @@ export function CharacterDailyCard({ word, onOpenWord }: CharacterDailyCardProps
   return (
     <button
       type="button"
-      className="group flex h-full min-h-[220px] w-full cursor-pointer items-stretch overflow-hidden rounded-[28px] bg-ui-surface text-left transition-[transform,background-color] duration-200 hover:-translate-y-1 hover:bg-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25 active:translate-y-0"
+      className="group flex h-full min-h-[220px] w-full cursor-pointer items-stretch overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface text-left transition-[background-color,transform,border-color] duration-200 hover:bg-ui-hover focus-ring active:translate-y-[length:var(--depth-md)] active:border-b-0"
       onClick={openWord}
       aria-label={`Open character of the day: ${word.traditional}`}
     >
@@ -34,7 +34,7 @@ export function CharacterDailyCard({ word, onOpenWord }: CharacterDailyCardProps
           aria-hidden="true"
           className="absolute -right-8 -top-10 h-28 w-28 rounded-full border-[18px] border-white/20"
         />
-        <span className="relative w-fit rounded-[10px] bg-white/85 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-brand-primary-deep">
+        <span className="relative w-fit rounded-sm bg-white/85 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-brand-primary-deep">
           Today
         </span>
         <span className="relative font-chinese text-[58px] font-bold leading-none text-white sm:text-[88px]">

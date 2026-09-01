@@ -7,7 +7,7 @@ export function LibrarySkeleton() {
         {Array.from({ length: 8 }).map((_, i) => (
           <div
             key={`skeleton-card-${i}`}
-            className="flex h-[150px] flex-col items-center justify-center gap-2.5 rounded-[24px] bg-ui-surface px-4"
+            className="flex h-[150px] flex-col items-center justify-center gap-2.5 rounded-feature bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider px-4"
           >
             <div className="h-10 w-14 rounded-md bg-ui-hover animate-pulse" />
             <div className="h-3 w-16 rounded-md bg-ui-hover animate-pulse" />
