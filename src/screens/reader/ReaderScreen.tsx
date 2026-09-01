@@ -13,6 +13,12 @@ import { useAppStore } from '../../store/useAppStore';
 import type { ReadingRecord } from '../../types/models';
 import { cn } from '../../utils/cn';
 import { officialAudioFileName } from '../../utils/officialAudio';
+import { DIALOGUE_ALIGNMENTS } from '../../data/dialogueAlignment';
+import {
+  alignmentDuration,
+  lineIndexForTime,
+  wordRangeForTime,
+} from '../../utils/dialogueSync';
 import { ReadingProse } from './ReadingProse';
 
 interface ReaderScreenProps {
@@ -44,6 +50,9 @@ export function ReaderScreen({ readings, index, onNavigate, onClose }: ReaderScr
   const [showMeaning, setShowMeaning] = useState(false);
   const [aidsOpen, setAidsOpen] = useState(false);
   const [audioMode, setAudioMode] = useState<'book' | 'tts'>('book');
+  // Karaoke playback: whole-dialogue or single-line range, live position.
+  const [playback, setPlayback] = useState<{ playing: boolean; time: number }>({ playing: false, time: 0 });
+  const playbackTokenRef = useRef(0);
 
   const characterPreference = useAppStore((state) => state.characterPreference);
   const setCharacterPreference = useAppStore((state) => state.setCharacterPreference);
@@ -57,6 +66,11 @@ export function ReaderScreen({ readings, index, onNavigate, onClose }: ReaderScr
     () => officialAudioFileName(reading.bookId, reading.audioReference),
     [reading],
   );
+
+  // Whisper alignment of the official track to the dialogue lines (null →
+  // no karaoke for this reading; falls back to whole-track playback).
+  const alignment = DIALOGUE_ALIGNMENTS[reading.id] ?? null;
+  const canKaraoke = Boolean(alignment && bookAudioFileName);
 
   const readingsByLesson = useMemo(() => {
     const grouped = new Map<number, ReadingRecord[]>();
@@ -78,8 +92,54 @@ export function ReaderScreen({ readings, index, onNavigate, onClose }: ReaderScr
   // A fresh page every time the reading changes.
   useEffect(() => {
     setActiveParagraphIndex(null);
+    setPlayback({ playing: false, time: 0 });
+    playbackTokenRef.current += 1;
     mainRef.current?.scrollTo({ top: 0 });
   }, [reading.id]);
+
+  // Karaoke highlight: current line and word from the live playback time.
+  const activeLineIndex = useMemo(() => (
+    playback.playing && alignment ? lineIndexForTime(alignment, playback.time) : null
+  ), [alignment, playback.playing, playback.time]);
+  const activeWordRange = useMemo(() => {
+    if (!playback.playing || !alignment || activeLineIndex === null) return null;
+    const renderedText = characterPreference === 'simplified'
+      ? reading.paragraphs[activeLineIndex]?.simplified ?? ''
+      : reading.paragraphs[activeLineIndex]?.traditional ?? '';
+    return wordRangeForTime(alignment, activeLineIndex, playback.time, renderedText);
+  }, [alignment, activeLineIndex, characterPreference, playback.playing, playback.time, reading.paragraphs]);
+
+  const playRange = (startSec: number, endSec: number) => {
+    if (!bookAudioFileName) return;
+    const token = playbackTokenRef.current + 1;
+    playbackTokenRef.current = token;
+    setPlayback({ playing: true, time: startSec });
+    void audioService.playRange(bookAudioFileName, startSec, endSec, {
+      onTime: (time) => {
+        if (playbackTokenRef.current === token) {
+          setPlayback({ playing: true, time });
+        }
+      },
+    }).then(() => {
+      if (playbackTokenRef.current === token) {
+        setPlayback({ playing: false, time: 0 });
+      }
+    });
+  };
+
+  const toggleKaraoke = () => {
+    if (playback.playing) {
+      playbackTokenRef.current += 1;
+      audioService.stop();
+      setPlayback({ playing: false, time: 0 });
+      return;
+    }
+    if (alignment) {
+      playRange(0, alignmentDuration(alignment));
+    } else if (bookAudioFileName) {
+      void audioService.play(bookAudioFileName, 1, fullText);
+    }
+  };
 
   // Warm the official dialogue track ahead of the first Listen so playback
   // is instant; missing files simply skip (playback falls back to TTS).
@@ -131,6 +191,13 @@ export function ReaderScreen({ readings, index, onNavigate, onClose }: ReaderScr
 
   const toggleParagraph = (paragraphIndex: number) => {
     setActiveParagraphIndex((current) => current === paragraphIndex ? null : paragraphIndex);
+    // Tap a line to hear just that line (official audio) when aligned.
+    if (alignment && bookAudioFileName) {
+      const line = alignment.lines[paragraphIndex];
+      if (line) {
+        playRange(line.start, line.end);
+      }
+    }
   };
 
   const handleListen = () => {
@@ -233,6 +300,38 @@ export function ReaderScreen({ readings, index, onNavigate, onClose }: ReaderScr
         )}
       />
 
+      {/* Karaoke playback bar: whole-dialogue play/pause with live progress. */}
+      {canKaraoke && alignment && (
+        <div className="relative z-20 border-b border-ui-divider bg-ui-surface/90 px-4 py-2 backdrop-blur-[2px]">
+          <div className="mx-auto flex w-full max-w-[44rem] items-center gap-3">
+            <IconActionButton
+              onClick={toggleKaraoke}
+              label={playback.playing ? 'Pause dialogue' : 'Play dialogue'}
+              variant="quiet"
+              icon={<AppIcon name={playback.playing ? 'pause' : 'play'} size={20} />}
+            />
+            <div
+              role="progressbar"
+              aria-label="Dialogue progress"
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={Math.round((playback.time / alignmentDuration(alignment)) * 100)}
+              className="relative h-2 flex-1 overflow-hidden rounded-full bg-ui-hover"
+            >
+              <div
+                className="h-full rounded-full bg-brand-primary transition-[width] duration-150 ease-linear"
+                style={{
+                  width: `${Math.min(100, (playback.time / alignmentDuration(alignment)) * 100)}%`,
+                }}
+              />
+            </div>
+            <span className="w-12 text-right text-[11px] font-black tabular-nums text-ui-muted">
+              {Math.round(playback.time)}s
+            </span>
+          </div>
+        </div>
+      )}
+
       <main
         ref={mainRef}
         className="relative z-10 min-h-0 flex-1 overflow-y-auto overscroll-contain"
@@ -309,6 +408,8 @@ export function ReaderScreen({ readings, index, onNavigate, onClose }: ReaderScr
               showPinyin={showPinyin}
               activeParagraphIndex={activeParagraphIndex}
               onToggleParagraph={toggleParagraph}
+              playingLineIndex={activeLineIndex}
+              activeWordRange={activeWordRange}
             />
 
             {activeParagraph ? (
