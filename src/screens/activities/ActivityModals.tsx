@@ -22,6 +22,7 @@ import {
 import { PracticeModeDock, PRACTICE_ACTIVITIES } from './components/PracticeModeDock';
 import { AnimatedActivityScreen } from './components/AnimatedActivityScreen';
 import { useGrammarLessonStore } from '../../store/useGrammarLessonStore';
+import type { FlashcardViewMode } from '../flashcard';
 
 const FlashcardScreen = lazy(() => (
   import('../flashcard').then((module) => ({ default: module.FlashcardScreen }))
@@ -75,6 +76,13 @@ export function ActivityModals({
   const [prevTask, setPrevTask] = useState<ActivityType>(null);
   const activeQuizMode = useAppStore(state => state.activeQuizMode);
   const setActiveQuizMode = useAppStore(state => state.setActiveQuizMode);
+
+  // Cards vs List view for the flashcards deck. Resets to Cards on close so
+  // the next session opens in the default study view.
+  const [flashcardMode, setFlashcardMode] = useState<FlashcardViewMode>('cards');
+  useEffect(() => {
+    if (!activeActivity) setFlashcardMode('cards');
+  }, [activeActivity]);
 
   useEffect(() => {
     if (activeActivity) {
@@ -259,7 +267,7 @@ export function ActivityModals({
                     onRestartClick={practiceHeaderActions.onRestartClick}
                     isShuffled={practiceHeaderActions.isShuffled}
                     flowStatus={practiceHeaderActions.flowStatus}
-                    showFlow={resolvedActivity === 'flashcards'}
+                    showFlow={resolvedActivity === 'flashcards' && flashcardMode === 'cards'}
                     settings={{
                       preferences: practicePreferences,
                       onPreferencesChange: updatePracticePreferences,
@@ -279,6 +287,7 @@ export function ActivityModals({
                       selectedLessons={selectedLessons}
                       isReviewDeck={isReviewMode || activeActivity === 'flashcards-review'}
                       isLibraryDeck={activeActivity === 'flashcards-library' || isLibraryMode}
+                      mode={flashcardMode}
                       onClose={handleClose}
                       onNavigateToPractice={onNavigateToPractice}
                     />
@@ -346,6 +355,17 @@ export function ActivityModals({
             feedback={swipeFeedback}
             value={resolvedActivity as (typeof PRACTICE_ACTIVITIES)[number]['id']}
             quizMode={activeQuizMode}
+            flashcardMode={flashcardMode}
+            onSelectFlashcardMode={(mode) => {
+              if (isLibraryMode) {
+                setActiveActivity('flashcards-library');
+              } else if (isReviewMode) {
+                setActiveActivity('flashcards-review');
+              } else {
+                setActiveActivity('flashcards');
+              }
+              setFlashcardMode(mode);
+            }}
             onOpenGrammar={practiceGrammarPart && onOpenGrammarPart
               ? () => onOpenGrammarPart(practiceGrammarPart.id)
               : undefined}

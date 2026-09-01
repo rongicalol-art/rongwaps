@@ -7,6 +7,7 @@ import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
 import { useFlashcards } from './hooks/useFlashcards';
 import { useFlashcardSwipe } from './hooks/useFlashcardSwipe';
 import { DraggableFlashcard } from './components/DraggableFlashcard';
+import { FlashcardList } from './components/FlashcardList';
 import { useAppStore } from '../../store/useAppStore';
 import { audioService } from '../../services/audioService';
 import { useCardFlow } from '../../hooks/useCardFlow';
@@ -14,12 +15,16 @@ import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegi
 import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
 import { buildPracticePartSegments } from '../../utils/practicePartSegments';
 import { useCurriculumExamples } from './hooks/useCurriculumExamples';
+import { useDeckExclusionActions } from '../../hooks/useDeckExclusionActions';
+
+export type FlashcardViewMode = 'cards' | 'list';
 
 interface FlashcardScreenProps {
   activeBookId: number;
   selectedLessons?: number[];
   isReviewDeck?: boolean;
   isLibraryDeck?: boolean;
+  mode?: FlashcardViewMode;
   onClose?: () => void;
   onNavigateToPractice?: () => void;
 }
@@ -29,6 +34,7 @@ export function FlashcardScreen({
   selectedLessons = [],
   isReviewDeck = false,
   isLibraryDeck = false,
+  mode = 'cards',
   onClose
 }: FlashcardScreenProps) {
   const activeBook = useMemo(() =>
@@ -37,6 +43,7 @@ export function FlashcardScreen({
 
   const {
     cards,
+    deckCards,
     currentCard,
     currentIndex,
     maxVisitedIndex,
@@ -54,9 +61,13 @@ export function FlashcardScreen({
     learnedCount,
     isShuffled,
     toggleShuffle,
+    deckExclusionKey,
+    excludedIds,
     isLoading,
     error
   } = useFlashcards(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
+
+  const { toggleCard } = useDeckExclusionActions(deckExclusionKey);
 
   const { setIsInteractionActive, setSwipeFeedback } = useAppStore();
   const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
@@ -146,9 +157,19 @@ export function FlashcardScreen({
     [cards, isShuffled],
   );
 
+  // Header semantics: cards mode reports live session position (1 / N);
+  // list mode reports curation as included / total (20 / 20 → 19 / 20 when a
+  // word is excluded), so the progress bar reads "how much of the deck is on".
+  const headerCurrentIndex = mode === 'list'
+    ? Math.max(cards.length - 1, -1)
+    : currentIndex;
+  const headerTotalCount = mode === 'list'
+    ? deckCards.length
+    : cards.length;
+
   usePracticeHeaderRegistration({
-    currentIndex,
-    totalCount: cards.length,
+    currentIndex: headerCurrentIndex,
+    totalCount: headerTotalCount,
     showLightbulb: false,
     partSegments,
     // No onSettingsClick: opening study settings must not stop the flow —
@@ -164,6 +185,12 @@ export function FlashcardScreen({
     if (activeBreakdown) pauseFlow();
   }, [activeBreakdown, pauseFlow]);
 
+  // Flow (auto-advance) only makes sense in cards mode — entering the list
+  // stops it so it can never advance a card while the user is curating.
+  useEffect(() => {
+    if (mode === 'list') pauseFlow();
+  }, [mode, pauseFlow]);
+
   // Refs so the keyboard handler always reads the latest values without re-registering
   const currentIndexRef = useRef(currentIndex);
   const cardsLengthRef = useRef(cards.length);
@@ -171,6 +198,7 @@ export function FlashcardScreen({
   const currentCardRef = useRef(currentCard);
   const isReviewDeckRef = useRef(isReviewDeck);
   const completedRef = useRef(completed);
+  const modeRef = useRef(mode);
 
   currentIndexRef.current = currentIndex;
   cardsLengthRef.current = cards.length;
@@ -178,6 +206,7 @@ export function FlashcardScreen({
   currentCardRef.current = currentCard;
   isReviewDeckRef.current = isReviewDeck;
   completedRef.current = completed;
+  modeRef.current = mode;
 
   // The session summary replaces all practice interactions; cut any audio
   // that is still ringing from the final card.
@@ -188,7 +217,7 @@ export function FlashcardScreen({
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (completedRef.current) return;
+      if (completedRef.current || modeRef.current === 'list') return;
       if (document.querySelector('[role="dialog"][aria-label^="Lesson "]')) return;
       if (document.activeElement instanceof HTMLInputElement || document.activeElement instanceof HTMLTextAreaElement) return;
       if (activeBreakdown) return;
@@ -255,7 +284,7 @@ export function FlashcardScreen({
     );
   }
 
-  if (!error && cards.length === 0 && !completed) {
+  if (!error && cards.length === 0 && !completed && mode === 'cards') {
     return (
       <EmptyReviewState
         onClose={onClose}
@@ -279,7 +308,7 @@ export function FlashcardScreen({
     );
   }
 
-  if (!currentCard && !isLoading) {
+  if (!currentCard && !isLoading && mode === 'cards') {
     if (isReviewDeck) {
       return (
         <EmptyReviewState
@@ -307,6 +336,18 @@ export function FlashcardScreen({
   const canNavigateNext = (
     (!isReviewDeck || currentIndex < maxVisitedIndex) && currentIndex < cards.length
   );
+
+  if (mode === 'list') {
+    return (
+      <FlashcardList
+        cards={deckCards}
+        excludedIds={excludedIds}
+        onToggleCard={toggleCard}
+        accentColor={activeBook.accent}
+        edgeHex={activeBook.edgeHex}
+      />
+    );
+  }
 
   const handleCardTap = (event: React.MouseEvent) => {
     const bounds = event.currentTarget.getBoundingClientRect();

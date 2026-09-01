@@ -114,6 +114,20 @@ export interface AppState {
   setSessionProgressIndex: (key: string, index: number) => void;
   clearSessionProgressIndex: (key: string) => void;
 
+  // Deck Exclusions
+  /**
+   * Per-deck include/exclude curation: deck key → ids the user removed from
+   * the deck. Persisted so a curated vocabulary list survives reloads; an
+   * absent/empty entry means "include everything".
+   */
+  deckExclusions: Record<string, string[]>;
+  /** Replace the whole exclusion list for a deck key (empty writes delete the key). */
+  setDeckExclusions: (key: string, excludedIds: string[]) => void;
+  /** Toggle one card in a deck's exclusion list. */
+  toggleCardExclusion: (key: string, cardId: string) => void;
+  /** Restore a deck to "include everything". */
+  clearDeckExclusions: (key: string) => void;
+
   // Navigation State
   activeTab: 'path' | 'search' | 'library' | 'profile';
   setActiveTab: (tab: 'path' | 'search' | 'library' | 'profile') => void;
@@ -177,6 +191,21 @@ export interface AppState {
   setCustomFolders: (folders: { id: string; name: string; color: string }[]) => void;
   addCustomFolder: (name: string, color: string, id?: string) => void;
   deleteCustomFolder: (id: string) => void;
+  /**
+   * Sticky delete tombstones: ids of folders the user deleted. Persisted so
+   * a stale local folder list (another tab/device, or a reload between the
+   * delete and the debounced save) can never resurrect the row via upsert.
+   */
+  deletedFolderIds: string[];
+  setDeletedFolderIds: (ids: string[]) => void;
+  /**
+   * Id of the user the current folder list was last synced to/pulled from on
+   * this device. Null until folders have ever been synced for an account —
+   * the guest -> account migration only runs for lists that were never
+   * synced, so a stale server-derived list is never uploaded as guest data.
+   */
+  foldersSyncedUserId: string | null;
+  setFoldersSyncedUserId: (userId: string | null) => void;
   localFlashcards: UserFlashcard[];
   addLocalFlashcard: (card: UserFlashcard) => void;
   deleteLocalFlashcard: (id: string) => void;
@@ -278,6 +307,37 @@ export const useAppStore = create<AppState>()(
         return { sessionProgressIndex: nextProgress };
       }),
 
+      // Deck Exclusions
+      deckExclusions: {},
+      setDeckExclusions: (key, excludedIds) => set((s) => {
+        const next = { ...s.deckExclusions };
+        if (excludedIds.length === 0) {
+          delete next[key];
+        } else {
+          next[key] = Array.from(new Set(excludedIds));
+        }
+        return { deckExclusions: next };
+      }),
+      toggleCardExclusion: (key, cardId) => set((s) => {
+        const current = s.deckExclusions[key] ?? [];
+        const nextList = current.includes(cardId)
+          ? current.filter((id) => id !== cardId)
+          : [...current, cardId];
+        const next = { ...s.deckExclusions };
+        if (nextList.length === 0) {
+          delete next[key];
+        } else {
+          next[key] = nextList;
+        }
+        return { deckExclusions: next };
+      }),
+      clearDeckExclusions: (key) => set((s) => {
+        if (!(key in s.deckExclusions)) return {};
+        const next = { ...s.deckExclusions };
+        delete next[key];
+        return { deckExclusions: next };
+      }),
+
       // Navigation State
       activeTab: 'path',
       setActiveTab: (tab) => set({ activeTab: tab }),
@@ -348,7 +408,15 @@ export const useAppStore = create<AppState>()(
       })),
       deleteCustomFolder: (id) => set((s) => ({
         customFolders: s.customFolders.filter(f => f.id !== id),
+        // Tombstone the deletion so no stale local list can re-upload it.
+        deletedFolderIds: s.deletedFolderIds.includes(id)
+          ? s.deletedFolderIds
+          : [...s.deletedFolderIds, id],
       })),
+      deletedFolderIds: [],
+      setDeletedFolderIds: (ids) => set({ deletedFolderIds: ids }),
+      foldersSyncedUserId: null,
+      setFoldersSyncedUserId: (userId) => set({ foldersSyncedUserId: userId }),
       localFlashcards: [],
       addLocalFlashcard: (card) => set((s) => ({
         localFlashcards: [...s.localFlashcards, card],
@@ -383,6 +451,7 @@ export const useAppStore = create<AppState>()(
         totalCardsLearned: state.totalCardsLearned,
         lastStudyDate: state.lastStudyDate,
         sessionProgressIndex: state.sessionProgressIndex,
+        deckExclusions: state.deckExclusions,
         activeTab: state.activeTab,
         activeActivity: state.activeActivity,
         activeQuizMode: state.activeQuizMode,
@@ -391,6 +460,8 @@ export const useAppStore = create<AppState>()(
         selectedBooks: state.selectedBooks,
         selectedLessonParts: state.selectedLessonParts,
         customFolders: state.customFolders,
+        deletedFolderIds: state.deletedFolderIds,
+        foldersSyncedUserId: state.foldersSyncedUserId,
         libraryActiveFolder: state.libraryActiveFolder,
         localFlashcards: state.localFlashcards,
       }),
