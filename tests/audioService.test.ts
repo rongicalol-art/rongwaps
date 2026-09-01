@@ -14,6 +14,7 @@ class FakeAudio {
   currentTime = 0;
   onended: (() => void) | null = null;
   onerror: (() => void) | null = null;
+  ontimeupdate: ((event: Event) => void) | null = null;
   pauseCount = 0;
 
   constructor() {
@@ -156,4 +157,40 @@ test('English definitions never fall back to a Chinese voice', async () => {
   assert.equal(speechState.spoken.at(-1)?.voice?.lang, 'en-US');
   service.stop();
   await playback;
+});
+
+test('playRange seeks to the start and stops at the range end', async () => {
+  const service = new AudioService();
+  const audio = FakeAudio.instances.at(-1)!;
+  const times: number[] = [];
+  const playback = service.playRange('first.mp3', 2.5, 5.0, { onTime: (t) => times.push(t) });
+
+  const started = Date.now();
+  while (!audio.src.startsWith('blob:') && Date.now() - started < 2000) {
+    await new Promise((resolve) => setTimeout(resolve, 10));
+  }
+  assert.ok(audio.src.startsWith('blob:'), `expected blob: src, got '${audio.src}'`);
+  assert.equal(audio.currentTime, 2.5);
+
+  // Simulate playback progress and crossing the range end.
+  audio.currentTime = 3.7;
+  audio.ontimeupdate?.({} as Event);
+  assert.ok(times.includes(3.7));
+  audio.currentTime = 5.2;
+  audio.ontimeupdate?.({} as Event);
+  await playback;
+  assert.ok(audio.pauseCount >= 1, 'audio should be paused at range end');
+});
+
+test('playRange resolves when stopped mid-range', async () => {
+  const service = new AudioService();
+  const audio = FakeAudio.instances.at(-1)!;
+  const playback = service.playRange('first.mp3', 0, 10);
+
+  const started = Date.now();
+  while (!audio.src.startsWith('blob:') && Date.now() - started < 2000) {
+    await new Promise((resolve) => setTimeout(resolve, 10));
+  }
+  service.stop();
+  await playback; // must settle, not hang
 });

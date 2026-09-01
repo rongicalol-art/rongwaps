@@ -26,3 +26,6 @@ output/
 scripts/.config.json
 scripts/mnemonics_backup*.json
 tmp/
+
+# Python tooling
+__pycache__/
