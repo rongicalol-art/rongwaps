@@ -32,7 +32,7 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
   const { markCardReviewed, sessionProgressIndex, setSessionProgressIndex, clearSessionProgressIndex, libraryActiveFolder, selectedLessonParts } = useAppStore();
   const sessionKey = isReviewDeck ? `shared_deck_review_${activeBookId}` : isLibraryDeck ? `shared_deck_library_${libraryActiveFolder}` : getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
 
-  const { cards: loadedCards, isLoading, error } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
+  const { cards: loadedCards, deckCards: fullDeckCards, isLoading, error, deckExclusionKey, excludedIds } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
   const [cards, setCards] = useState<Flashcard[]>([]);
   const [isShuffled, setIsShuffled] = useState(false);
   const canonicalOrderRef = useRef<Flashcard[]>([]);
@@ -272,6 +272,7 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
 
   return {
     cards,
+    deckCards: fullDeckCards,
     currentCard,
     currentIndex,
     maxVisitedIndex,
@@ -289,6 +290,8 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     learnedCount,
     isShuffled,
     toggleShuffle,
+    deckExclusionKey,
+    excludedIds,
     isLoading,
     error
   };

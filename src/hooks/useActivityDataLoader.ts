@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Flashcard } from '../data/flashcards';
 import { fetchVocabulary } from '../services/vocabularyService';
 import { getDictionaryEntriesBatch } from '../services/dictionaryService';
@@ -9,10 +9,25 @@ import {
   getCurriculumSelectionFingerprint,
   isCardInPartSelection,
 } from '../utils/lessonPartSelection';
+import {
+  filterDeckByExclusions,
+  getDeckExclusionKey,
+  pruneExcludedIds,
+} from '../utils/deckExclusions';
 
-
+/**
+ * Shared deck loader for every practice activity (flashcards, quiz,
+ * listening, writing, review, library decks).
+ *
+ * Cards are fetched once per selection and then the user's include/exclude
+ * curation (`deckExclusions`, keyed per deck) is applied as a derived filter
+ * so all activities agree on the same deck. Stale exclusion ids (deleted
+ * cards, removed vocabulary) are pruned only when their deck is loaded.
+ */
 export function useActivityDataLoader(activeBookId: number, selectedLessons: number[], isReviewDeck: boolean = false, isLibraryDeck: boolean = false) {
   const { libraryActiveFolder, selectedLessonParts } = useAppStore();
+  const deckExclusions = useAppStore((state) => state.deckExclusions);
+  const setDeckExclusions = useAppStore((state) => state.setDeckExclusions);
   const [cards, setCards] = useState<Flashcard[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -26,11 +41,61 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
     [activeBookId, selectedLessonParts, selectedLessons],
   );
 
+  const deckExclusionKey = useMemo(
+    () => getDeckExclusionKey({
+      activeBookId,
+      selectedLessons,
+      selectedLessonParts,
+      libraryActiveFolder,
+      isReviewDeck,
+      isLibraryDeck,
+    }),
+    [
+      activeBookId,
+      isLibraryDeck,
+      isReviewDeck,
+      libraryActiveFolder,
+      selectedLessonParts,
+      selectedLessons,
+    ],
+  );
+
+  const excludedIds = useMemo(
+    () => new Set(deckExclusions[deckExclusionKey] ?? []),
+    [deckExclusionKey, deckExclusions],
+  );
+  // `cards` is the study deck (exclusions applied); `deckCards` is the full
+  // selection so the list view can show excluded rows in place.
+  const visibleCards = useMemo(
+    () => filterDeckByExclusions(cards, excludedIds),
+    [cards, excludedIds],
+  );
+
+  // For pruning we must know which card ids really existed in this deck.
+  // Review is the special case: its exclusion list is global and must survive
+  // cards that are simply not due today, so it prunes against ALL fetched
+  // vocabulary ids (the pre-due-set fetch), never against the due set.
+  const knownIdsRef = useRef<{ key: string; ids: Set<string> } | null>(null);
+
+  useEffect(() => {
+    const record = deckExclusions[deckExclusionKey];
+    if (!record || record.length === 0) return;
+    const known = knownIdsRef.current;
+    if (!known || known.key !== deckExclusionKey) return;
+    const pruned = pruneExcludedIds(record, known.ids);
+    if (pruned.length !== record.length) {
+      setDeckExclusions(deckExclusionKey, pruned);
+    }
+  }, [cards, deckExclusionKey, deckExclusions, setDeckExclusions]);
+
   // ── Main data loader ─────────────────────────────────────────────────
   // Loads cards from three possible sources:
   //   1. Library deck (starred words or custom folders from Supabase)
   //   2. Review deck (SRS-filtered due cards from all books)
   //   3. Normal curriculum (book/lesson vocabulary, with optional lesson filter)
+  //
+  // The fetch depends only on the *selection* — exclusions are layered in as
+  // a derived filter so toggling them never refetches the network.
   useEffect(() => {
     let unsubscribe: (() => void) | null = null;
     let isMounted = true;
@@ -44,6 +109,7 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
         if (libraryActiveFolder === 'starred') {
           if (favorites.length === 0) {
             if (isMounted) {
+              knownIdsRef.current = null;
               setCards([]);
               setIsLoading(false);
             }
@@ -52,9 +118,11 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
           try {
             const batchResults = await getDictionaryEntriesBatch(favorites);
             const results: Flashcard[] = [];
+            const knownIds = new Set<string>();
             for (const word of favorites) {
               if (batchResults.has(word)) {
                 const entry = batchResults.get(word)!;
+                knownIds.add(`star-${entry.traditional}`);
                 results.push({
                   id: `star-${entry.traditional}`,
                   bookId: 0,
@@ -68,6 +136,7 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
               }
             }
             if (isMounted) {
+              knownIdsRef.current = { key: deckExclusionKey, ids: knownIds };
               setCards(results);
               setIsLoading(false);
             }
@@ -105,8 +174,14 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
                 audio: '',
                 notes: c.notes || ''
               }));
-              setCards(results);
-              setIsLoading(false);
+              if (isMounted) {
+                knownIdsRef.current = {
+                  key: deckExclusionKey,
+                  ids: new Set(results.map(c => c.id)),
+                };
+                setCards(results);
+                setIsLoading(false);
+              }
             });
 
             if (!isMounted) {
@@ -116,6 +191,7 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
             }
           } else {
             if (isMounted) {
+              knownIdsRef.current = null;
               setCards([]);
               setIsLoading(false);
             }
@@ -128,6 +204,7 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
       try {
         const data = await fetchVocabulary(isReviewDeck ? undefined : activeBookId); 
         let filtered = data;
+        let knownIds = new Set(data.map(c => c.id));
         
         // Review deck: only show cards that are due for SRS review
         if (isReviewDeck) {
@@ -150,10 +227,12 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
               parsedLessons.includes(card.lessonId)
               && isCardInPartSelection(card, selectedLessonParts)
             ));
+            knownIds = new Set(filtered.map(c => c.id));
           }
         }
         
         if (isMounted) {
+          knownIdsRef.current = { key: deckExclusionKey, ids: knownIds };
           setCards(filtered);
         }
       } catch (err) {
@@ -174,7 +253,7 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
       isMounted = false;
       if (unsubscribe && typeof unsubscribe === 'function') unsubscribe();
     };
-  }, [activeBookId, stableSelectedLessonsKey, stablePartSelectionKey, isReviewDeck, isLibraryDeck, libraryActiveFolder, currentUser, selectedLessonParts]);
+  }, [activeBookId, stableSelectedLessonsKey, stablePartSelectionKey, isReviewDeck, isLibraryDeck, libraryActiveFolder, currentUser, selectedLessonParts, deckExclusionKey]);
 
-  return { cards, isLoading, error };
+  return { cards: visibleCards, deckCards: cards, isLoading, error, deckExclusionKey, excludedIds };
 }
