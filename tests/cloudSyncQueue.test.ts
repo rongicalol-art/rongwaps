@@ -8,6 +8,8 @@ import {
   isSameFolderList,
   isSameStringArray,
   mergePulledSrsData,
+  planFolderSync,
+  pruneAcknowledgedTombstones,
   reconcileAggregateProgress,
 } from '../src/utils/cloudSyncQueue';
 import type { SRSData } from '../src/utils/srsEngine';
@@ -257,4 +259,40 @@ test('unchanged-skip checks never skip after a null baseline or a real change', 
     false,
   );
   assert.equal(isSameFolderList([], [folder]), false);
+});
+
+test('folder sync plan never upserts tombstoned folders and deletes them remotely', () => {
+  const local = [
+    { id: 'f1', name: 'Verbs', color: '#fff' },
+    { id: 'f2', name: 'Food', color: '#000' },
+  ];
+  // f1 was deleted locally (tombstoned) but a stale remote row still exists;
+  // f3 exists only on the server (deleted from the local list).
+  const plan = planFolderSync(local, ['f1'], ['f1', 'f3']);
+
+  assert.deepEqual(plan.toUpsert, [local[1]]);
+  assert.deepEqual(plan.toDelete, ['f1', 'f3']);
+});
+
+test('folder sync plan keeps remote ids that still exist locally', () => {
+  const local = [{ id: 'f1', name: 'Verbs', color: '#fff' }];
+  const plan = planFolderSync(local, [], ['f1']);
+
+  assert.deepEqual(plan.toDelete, []);
+  assert.deepEqual(plan.toUpsert, local);
+});
+
+test('folder sync plan uploads new local folders and is empty for a clean sync', () => {
+  const local = [{ id: 'f1', name: 'Verbs', color: '#fff' }];
+  assert.deepEqual(planFolderSync(local, [], []).toUpsert, local);
+
+  const clean = planFolderSync(local, [], ['f1']);
+  assert.deepEqual(clean.toUpsert, local);
+  assert.deepEqual(clean.toDelete, []);
+});
+
+test('tombstone pruning keeps only ids still present on the server', () => {
+  assert.deepEqual(pruneAcknowledgedTombstones(['f1', 'f2', 'f3'], ['f1']), ['f1']);
+  assert.deepEqual(pruneAcknowledgedTombstones(['f1'], []), []);
+  assert.deepEqual(pruneAcknowledgedTombstones([], ['f1']), []);
 });

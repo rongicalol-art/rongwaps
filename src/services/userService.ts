@@ -1,5 +1,6 @@
 import { supabase } from './supabaseClient';
 import { SRSData } from '../utils/srsEngine';
+import { planFolderSync } from '../utils/cloudSyncQueue';
 
 export interface UserProgressData {
   srsData: Record<string, SRSData>;
@@ -236,12 +237,35 @@ export const userService = {
     }
   },
 
-  // Sync custom folders for a user
-  syncCustomFolders: async (userId: string, folders: { id: string; name: string; color: string }[]): Promise<void> => {
+  // Sync custom folders for a user. `tombstoneIds` are sticky deletes: a
+  // tombstoned folder is never upserted and its server row is deleted, so a
+  // stale local list (another tab/device, or a reload between the delete and
+  // the debounced save) can never resurrect a deleted folder.
+  syncCustomFolders: async (
+    userId: string,
+    folders: { id: string; name: string; color: string }[],
+    tombstoneIds: string[] = [],
+  ): Promise<void> => {
     try {
-      // Upsert current folders so the server matches local state.
-      if (folders.length > 0) {
-        const folderRows = folders.map(f => ({
+      // Fetch remote ids first so the plan can split upserts from deletions.
+      const { data: remoteFolders, error: fetchError } = await supabase
+        .from('user_folders')
+        .select('id')
+        .eq('user_id', userId);
+
+      if (fetchError) {
+        console.error("Error fetching remote folders for reconciliation:", fetchError);
+        throw fetchError;
+      }
+
+      const plan = planFolderSync(
+        folders,
+        tombstoneIds,
+        (remoteFolders || []).map((row: { id: string }) => row.id),
+      );
+
+      if (plan.toUpsert.length > 0) {
+        const folderRows = plan.toUpsert.map(f => ({
           id: f.id,
           user_id: userId,
           name: f.name,
@@ -257,29 +281,11 @@ export const userService = {
         }
       }
 
-      // Reconcile deletions: remove server folders that no longer exist locally.
-      // This closes the gap where a previous explicit delete failed silently,
-      // leaving stale folders on the server that would otherwise resurrect.
-      const { data: remoteFolders, error: fetchError } = await supabase
-        .from('user_folders')
-        .select('id')
-        .eq('user_id', userId);
-
-      if (fetchError) {
-        console.error("Error fetching remote folders for reconciliation:", fetchError);
-        throw fetchError;
-      }
-
-      const localIds = new Set(folders.map(f => f.id));
-      const staleIds = (remoteFolders || [])
-        .map((row: { id: string }) => row.id)
-        .filter(id => !localIds.has(id));
-
-      if (staleIds.length > 0) {
+      if (plan.toDelete.length > 0) {
         const { error: deleteError } = await supabase
           .from('user_folders')
           .delete()
-          .in('id', staleIds)
+          .in('id', plan.toDelete)
           .eq('user_id', userId);
 
         if (deleteError) {

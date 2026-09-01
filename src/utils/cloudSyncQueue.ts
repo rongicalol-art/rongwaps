@@ -155,6 +155,51 @@ export function isSameFolderList(
   });
 }
 
+export interface FolderSyncPlan {
+  /** Local folders to upsert — never a tombstoned (deleted) folder. */
+  toUpsert: SyncedFolderSnapshot[];
+  /** Remote ids to delete: deleted locally, or explicitly tombstoned. */
+  toDelete: string[];
+}
+
+/**
+ * Plan a folder set-sync from the local list, the sticky delete tombstones,
+ * and the server's current ids.
+ *
+ * Tombstones make deletes durable: a folder the user deleted stays deleted
+ * even when a stale local copy (persisted IndexedDB state on another tab or
+ * device, or a reload between the delete and the debounced save) still lists
+ * it — the upsert must never re-create a tombstoned row, and the server row
+ * keeps getting deleted until it is gone.
+ */
+export function planFolderSync(
+  localFolders: SyncedFolderSnapshot[],
+  tombstoneIds: string[],
+  remoteIds: string[],
+): FolderSyncPlan {
+  const tombstones = new Set(tombstoneIds);
+  const localIds = new Set(localFolders.map((folder) => folder.id));
+  return {
+    toUpsert: localFolders.filter((folder) => !tombstones.has(folder.id)),
+    toDelete: remoteIds.filter(
+      (id) => !localIds.has(id) || tombstones.has(id),
+    ),
+  };
+}
+
+/**
+ * Drop tombstones the server has acknowledged (the folder id no longer
+ * exists remotely). Ids still present on the server are kept — their delete
+ * is still pending and must be retried.
+ */
+export function pruneAcknowledgedTombstones(
+  tombstoneIds: string[],
+  serverFolderIds: string[],
+): string[] {
+  const serverIds = new Set(serverFolderIds);
+  return tombstoneIds.filter((id) => serverIds.has(id));
+}
+
 export function reconcileAggregateProgress(
   cloud: AggregateProgressCounters,
   local: AggregateProgressCounters,
