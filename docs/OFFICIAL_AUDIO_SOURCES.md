@@ -79,27 +79,38 @@ dialogue 2 = `LL-2-1`, grammar pages = `LL-P-3`.
   Supabase bucket under their official names (`B1-01-1-1.mp3`), so the client
   durable-cache → public URL → `/api/audio` proxy chain serves them with zero
   server changes.
-- **對話一 tracks (`B1-LL-1-1.mp3`) are intro-trimmed**: every dialogue-1
-  track opens with ~11s of jingle/announcement before the dialogue proper
-  (verified by silence analysis across lessons; dialogue-2, vocabulary, and
-  grammar tracks start immediately). The pipeline detects the first long
-  silence and cuts there (keeping ~0.8s of natural pause), so Listen starts
-  at the dialogue. Trim points are recorded in
-  `docs/audio_manifest_book1.json` (`trimmedIntroSec`).
-- `src/utils/officialAudio.ts` resolves `audioReference` → file name
-  (`OFFICIAL_BOOK_AUDIO_ENABLED` master switch; Book 1 only — Books 2–4
-  resolve to null and automatically fall back to TTS).
-- `ReaderScreen` Listen plays the official dialogue track by default with a
-  Book audio / Text-to-speech toggle in Reading aids; missing or failed
-  files degrade to neural TTS (the existing `play(file, rate, textFallback)`
-  path). The track is preloaded when the reading opens.
+- **對話一 tracks (`B1-LL-1-1.mp3`) are intro-trimmed at the true dialogue
+  start.** Every dialogue-1 track opens with ~11s of music followed by a
+  SPOKEN lesson title (e.g. 「第一課 新同學 對話一」, ~13–19s) before the
+  dialogue. `scripts/align_dialogue_audio.py` finds where line 1 actually
+  starts (Whisper + pinyin matching) and re-cuts the file there (keeping
+  ~0.8s of pause). Trim points are in `docs/audio_manifest_book1.json`
+  (`trimmedIntroSec`) and in the alignment data (`trimSec`).
+- **Karaoke alignment**: `scripts/align_dialogue_audio.py` runs
+  whisper.cpp `large-v3-turbo` over all 28 readings (L1–14 × 2 dialogues)
+  with token timestamps, then matches every authored line to the transcript
+  by tone-free pinyin (robust to homophones like 疑問/宜文, script
+  differences, stage directions, dropped 兒, and digit readings like
+  101→一百零一). Output: `src/data/dialogueAlignment.ts` — per-line and
+  per-word time ranges + per-word character offsets (pinyin-mapped) for
+  karaoke highlighting. 225/227 lines aligned; the 2 unmatched lines are
+  verified audio/data divergences (the recording omits or alters them) and
+  fall back to TTS.
+- **Reader karaoke UI**: playback bar (play/pause + live progress), current
+  line highlight, per-word highlight, and tap-a-line to hear just that line
+  (`audioService.playRange`). Missing or failed alignments degrade to
+  whole-track playback / TTS.
 - Scripts:
   - `scripts/downloadOfficialAudio.mjs` — download from Drive + ffmpeg
-    re-encode + verify + manifest (`docs/audio_manifest_book1.json`).
+    re-encode (no trim; alignment owns trimming).
+  - `scripts/align_dialogue_audio.py` — Whisper alignment + intro re-trim +
+    manifest update (venv: `output/venv`, model cache:
+    `output/whisper-models`).
   - `scripts/uploadOfficialAudio.mjs` — upload `output/official-audio/book1/`
     to `vocabulary-audio` (needs `SUPABASE_SERVICE_ROLE_KEY` in env).
-- Sentence-level audio is **not** part of this phase: whole-dialogue playback
-  uses the official track, per-sentence stays TTS.
+- The audio Cache API is versioned (`rongwaps-audio-v3` in
+  `src/services/audioService.ts`): bump it whenever hosted audio changes so
+  browsers re-fetch instead of playing stale files.
 
 ## Sentence-level audio: does not exist officially
 

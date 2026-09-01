@@ -142,12 +142,16 @@ export class AudioService {
    * Durable audio-file cache (Cache API, persisted across sessions).
    * Keyed by the canonical proxy request so playback works regardless of
    * which source URL was used to fetch the blob.
+   * The name embeds a version: bump it whenever hosted audio files change
+   * (e.g. re-uploads, intro trims) so browsers that cached the old files
+   * re-fetch instead of playing stale audio forever. v3 = dialogue tracks
+   * re-trimmed at the true dialogue start (spoken-title intro removed).
    */
   private async getAudioFileCache(): Promise<Cache | null> {
     if (this.audioFileCache) return this.audioFileCache;
     try {
       if (typeof caches !== 'undefined') {
-        this.audioFileCache = await caches.open('rongwaps-audio-v1');
+        this.audioFileCache = await caches.open('rongwaps-audio-v3');
       }
     } catch {
       this.audioFileCache = null;
@@ -753,6 +757,7 @@ export class AudioService {
     if (this.globalAudio) {
       this.globalAudio.onended = null;
       this.globalAudio.onerror = null;
+      this.globalAudio.ontimeupdate = null;
       try {
         this.globalAudio.pause();
         this.globalAudio.currentTime = 0;
@@ -926,6 +931,76 @@ export class AudioService {
             .then(startHtmlPlayback)
             .catch(handleAudioFailure);
         }
+      }
+    });
+  }
+
+  /**
+   * Play a time range of an audio file (e.g. one dialogue line inside the
+   * full track) and report progress via `onTime`. Used for karaoke-style
+   * playback where the UI highlights the current line/word. Plays through
+   * the shared HTMLAudioElement so `stop()` cuts it off like any playback.
+   */
+  public playRange(
+    audioFileName: string,
+    startSec: number,
+    endSec: number,
+    options?: { rate?: number; onTime?: (time: number) => void },
+  ): Promise<void> {
+    this.stop();
+
+    const start = Math.max(0, startSec);
+    const end = Math.max(start + 0.05, endSec);
+    const rate = options?.rate && options.rate > 0 ? options.rate : 1;
+    const onTime = options?.onTime;
+
+    return new Promise((resolve) => {
+      const finish = this.trackPlayback(resolve);
+
+      const startHtmlPlayback = (src: string) => {
+        const audio = this.globalAudio;
+        if (!audio) {
+          finish();
+          return;
+        }
+        let settled = false;
+        const settle = () => {
+          if (settled) return;
+          settled = true;
+          audio.ontimeupdate = null;
+          audio.onended = null;
+          audio.onerror = null;
+          finish();
+        };
+
+        audio.src = src;
+        audio.playbackRate = rate;
+        audio.currentTime = start;
+        audio.onerror = () => settle();
+        audio.onended = () => settle();
+        audio.ontimeupdate = () => {
+          onTime?.(audio.currentTime);
+          if (audio.currentTime >= end) {
+            audio.pause();
+            settle();
+          }
+        };
+        const playPromise = audio.play();
+        playPromise?.catch(() => settle());
+        // Seeking before metadata is loaded can be ignored; re-apply once
+        // playback actually starts so ranges always begin at `start`.
+        playPromise?.then(() => {
+          if (!settled) audio.currentTime = start;
+        }).catch(() => {});
+      };
+
+      const existingUrl = this.objectUrls.get(audioFileName);
+      if (existingUrl) {
+        startHtmlPlayback(existingUrl);
+      } else {
+        this.getAudioObjectUrl(audioFileName)
+          .then(startHtmlPlayback)
+          .catch(() => finish());
       }
     });
   }

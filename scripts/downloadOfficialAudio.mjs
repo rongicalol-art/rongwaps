@@ -55,40 +55,6 @@ async function reencode(src, dest) {
   ], { stdio: 'ignore' });
 }
 
-/**
- * Find the end of the intro on 對話一 (dialogue 1) tracks: every such track
- * opens with ~11s of continuous jingle/announcement before the first long
- * silence, then the dialogue proper. Returns the trim point in seconds
- * (intro end + a short natural pause), or null when no intro is detected.
- */
-async function detectIntroTrimSec(file) {
-  const { stderr } = await execFileAsync('ffmpeg', [
-    '-i', file, '-af', 'silencedetect=noise=-35dB:d=0.8', '-f', 'null', '-',
-  ], { maxBuffer: 4 * 1024 * 1024 });
-  const starts = [...stderr.matchAll(/silence_start: ([\d.]+)/g)].map((m) => Number.parseFloat(m[1]));
-  const ends = [...stderr.matchAll(/silence_end: ([\d.]+)/g)].map((m) => Number.parseFloat(m[1]));
-  for (let i = 0; i < starts.length; i += 1) {
-    // Ignore the short lead-in; look for the first long gap after ~2s.
-    if (starts[i] < 2) continue;
-    const end = ends[i] ?? starts[i] + 0.8;
-    if (end - starts[i] >= 0.8) {
-      return starts[i] + 0.8; // keep ~0.8s of pause before the dialogue
-    }
-  }
-  return null;
-}
-
-/** Re-encode `src` into `dest`, cutting everything before `trimSec`. */
-async function reencodeTrimmed(src, dest, trimSec) {
-  await execFileAsync('ffmpeg', [
-    '-y', '-i', src,
-    '-ss', String(trimSec),
-    '-ac', '1', '-b:a', '96k',
-    '-map_metadata', '-1',
-    dest,
-  ], { stdio: 'ignore' });
-}
-
 async function probeDuration(file) {
   const { stdout } = await execFileAsync('ffprobe', [
     '-v', 'quiet', '-show_entries', 'format=duration', '-of', 'csv=p=0', file,
@@ -127,18 +93,9 @@ async function worker() {
     try {
       await downloadFile(track.id, tmp);
       await reencode(tmp, dest);
-      // 對話一 tracks carry a ~11s jingle intro before the dialogue; trim it
-      // so Listen starts at the dialogue. All other tracks pass through.
-      const isDialogueOne = /^B1-\d{2}-1-1\.mp3$/.test(file);
-      let trimmedIntroSec = null;
-      if (isDialogueOne) {
-        trimmedIntroSec = await detectIntroTrimSec(dest);
-        if (trimmedIntroSec !== null && trimmedIntroSec > 0) {
-          await reencodeTrimmed(tmp, dest, trimmedIntroSec);
-        } else {
-          trimmedIntroSec = null; // detection failed — keep the track intact
-        }
-      }
+      // NOTE: dialogue-1 tracks open with music + a spoken lesson title
+      // (~13-19s). Trimming happens in scripts/align_dialogue_audio.py,
+      // which aligns the dialogue and cuts exactly at the dialogue start.
       const duration = await probeDuration(dest);
       if (!Number.isFinite(duration) || duration < MIN_DURATION_SEC) {
         throw new Error(`suspicious duration ${duration}s`);
@@ -149,9 +106,8 @@ async function worker() {
         bytes: size,
         sha256: await sha256(dest),
         durationSec: Number(duration.toFixed(2)),
-        trimmedIntroSec,
       });
-      console.log(`ok  ${file}  ${size} bytes  ${duration.toFixed(1)}s${trimmedIntroSec !== null ? `  (intro trimmed at ${trimmedIntroSec.toFixed(1)}s)` : ''}`);
+      console.log(`ok  ${file}  ${size} bytes  ${duration.toFixed(1)}s`);
     } catch (error) {
       failures.push({ file, error: String(error) });
       console.error(`FAIL ${file}: ${error}`);
