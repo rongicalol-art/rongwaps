@@ -29,7 +29,7 @@ export function GrammarLiveSceneLab({
         <p className="shrink-0 text-sm font-black text-ui-ink">{lab.prompt}</p>
         <SegmentedControl value={selected.id} onChange={setSelectedId} ariaLabel={lab.prompt} options={lab.choices.map(({ id, label }) => ({ value: id, label }))} className="w-full sm:max-w-3xl" />
       </div>
-      <div className="mt-5 overflow-hidden rounded-[22px] border border-ui-border bg-ui-surface shadow-[0_3px_0_var(--color-ui-border)]">
+      <div className="mt-5 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface">
         <div className="grid gap-3 p-5 sm:grid-cols-[0.8fr_1.2fr_0.8fr] sm:items-stretch sm:p-7">
           <div className="flex min-h-24 flex-col justify-center rounded-[16px] bg-ui-canvas px-4 py-3 text-center">
             <span className="text-[10px] font-black uppercase text-ui-muted">Who</span>

@@ -33,8 +33,8 @@ export function CourseProgressSummary({
         value={progress.learnedWords}
         detail="Words"
         icon="cards"
-        accentClassName="text-[#8E5BD9]"
-        iconBackgroundClassName="bg-[#F0E7FF]"
+        accentClassName="text-brand-secondary"
+        iconBackgroundClassName="bg-brand-secondary/10"
         className="min-h-[96px] lg:min-h-[clamp(72px,10dvh,96px)] lg:p-[clamp(0.6rem,1.4dvh,1rem)]"
       />
       <ProgressMetricCard
@@ -42,8 +42,8 @@ export function CourseProgressSummary({
         value={currentStreak}
         detail="Days in a row"
         icon="flame"
-        accentClassName="text-[#FF7A1A]"
-        iconBackgroundClassName="bg-[#FFF0E2]"
+        accentClassName="text-feedback-warning-edge"
+        iconBackgroundClassName="bg-feedback-warning/15"
         className="min-h-[96px] lg:min-h-[clamp(72px,10dvh,96px)] lg:p-[clamp(0.6rem,1.4dvh,1rem)]"
       />
       <ProgressMetricCard
@@ -52,7 +52,7 @@ export function CourseProgressSummary({
         detail="This session"
         icon="clock"
         accentClassName="text-feedback-success"
-        iconBackgroundClassName="bg-[#E8F9DC]"
+        iconBackgroundClassName="bg-feedback-success/15"
         className="min-h-[96px] lg:min-h-[clamp(72px,10dvh,96px)] lg:p-[clamp(0.6rem,1.4dvh,1rem)]"
       />
     </section>

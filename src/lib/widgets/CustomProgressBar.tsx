@@ -28,7 +28,7 @@ export function CustomProgressBar({
         </div>
       </div>
       {showText && (
-        <span className="font-bold text-xs text-[#AFB6BB] w-8 text-right">
+        <span className="font-bold text-xs text-ui-muted w-8 text-right">
           {clampedProgress}%
         </span>
       )}

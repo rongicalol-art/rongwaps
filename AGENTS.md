@@ -23,9 +23,10 @@ Auto-injected each project session. Keep these core rules concise; read the link
 - Reuse existing widgets before creating new buttons, cards, inputs, or modals. Promote a component to `src/lib/widgets/` only when it is prop-driven, presentation-first, and clearly shared (or is an app-wide primitive such as `AppIcon`, a button, header, or dialog). Feature components may own feature hooks/services; shared widgets should not own app fetching or global feature state. Document only stable public widgets in `WIDGETS.md`, with props and one usage example.
 - Use `ActionButton`, `IconActionButton`, and `SegmentedControl` for shared action patterns. Keep utility actions quiet; use one dominant primary action per surface.
 - Functional icons go through semantic `AppIcon` using the approved Phosphor family. Do not introduce competing icon families or platform flag emoji; use `CountryFlag`.
-- Use semantic tokens, never hardcoded neutral colors: `ui-border`, `ui-divider`, `ui-muted`, `ui-ink`, `ui-canvas`, `ui-surface`, `brand-*`, and `feedback-*`. Shared values belong in `src/data/designTokens.ts` and `src/index.css`.
+- Use semantic tokens, never hardcoded neutral colors: `ui-border`, `ui-divider`, `ui-muted`, `ui-ink`, `ui-canvas`, `ui-surface`, `brand-*`, and `feedback-*`. Do not use hardcoded hex values (`#FFF`, `#E5E5E5`) or arbitrary pixel values (`rounded-[14px]`). See `docs/DESIGN_TOKENS.md` for the full scale.
+- Use the standard `.focus-ring` (or `.focus-ring-inline`) class instead of manual ring utilities.
 - Use `font-sans` for UI copy and `font-chinese` for Chinese glyphs. Never hardcode font families; keep normal letter spacing except short uppercase labels.
-- Do not put tactile buttons inside tactile containers or use card depth on plain page sections. Preserve focus rings, accessibility labels, reduced motion, loading/empty/error states, and long-text behavior.
+- Do not put tactile buttons inside tactile containers or use card depth on plain page sections. Use the borderless bottom-edge tactile pattern (`border-b-[length:var(--depth-sm)] active:border-b-0 active:translate-y-[length:var(--depth-sm)]`) for interactive surfaces. Preserve accessibility labels, reduced motion, loading/empty/error states, and long-text behavior.
 
 ## Layout and responsive behavior
 

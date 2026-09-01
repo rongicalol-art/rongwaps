@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
-import { PiPlantFill, PiLeafFill, PiFlowerFill, PiDropFill } from 'react-icons/pi';
 import { useAppStore } from '../../../store/useAppStore';
-import { ActionButton } from '../../../lib/widgets';
+import { ActionButton, AppIcon } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 import { SAMPLE_BOOKS } from '../../../data/books';
 
@@ -37,7 +36,7 @@ export function GardenVisualization({ onWaterGarden }: { onWaterGarden: () => vo
   const cardsToReview = gardenStats.withered;
 
   return (
-    <div className="w-full bg-white rounded-[24px] border-2 border-b-[6px] border-[#E5E5E5] p-6 flex flex-col gap-6 relative overflow-hidden">
+    <div className="w-full bg-ui-surface rounded-feature border-b-[length:var(--depth-md)] border-ui-divider p-6 flex flex-col gap-6 relative overflow-hidden">
       {/* Decorative background element using active book theme color */}
       <div 
         className="absolute -right-10 -bottom-10 w-40 h-40 rounded-full blur-2xl pointer-events-none opacity-20"
@@ -48,51 +47,51 @@ export function GardenVisualization({ onWaterGarden }: { onWaterGarden: () => vo
         <h2 className="text-xl font-black text-ui-ink flex items-center gap-2">
           Your Vocabulary Garden
         </h2>
-        <p className="text-[#AFB6BB] text-sm font-bold">
+        <p className="text-ui-muted text-sm font-bold">
           {gardenStats.total} total words planted
         </p>
       </div>
 
       <div className="grid grid-cols-4 gap-3 z-10">
         {/* Seeds */}
-        <div className="flex flex-col items-center justify-center p-3 bg-gray-50 border-[2px] border-gray-200 rounded-2xl">
-          <PiLeafFill className="text-2xl text-gray-400 mb-1 animate-pulse" />
-          <span className="text-lg font-black text-gray-700">{gardenStats.seeds}</span>
-          <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider text-center leading-tight">Seeds</span>
+        <div className="flex flex-col items-center justify-center p-3 bg-ui-canvas border-b-[length:var(--depth-sm)] border-ui-divider rounded-control">
+          <AppIcon name="leaf" size={24} className="text-ui-muted mb-1 animate-pulse" />
+          <span className="text-lg font-black text-ui-ink">{gardenStats.seeds}</span>
+          <span className="text-[10px] font-bold text-ui-muted uppercase tracking-wider text-center leading-tight">Seeds</span>
         </div>
         
         {/* Sprouts */}
-        <div className="flex flex-col items-center justify-center p-3 bg-emerald-50 border-[2px] border-emerald-200 rounded-2xl">
-          <PiPlantFill className="text-2xl text-emerald-500 mb-1" />
-          <span className="text-lg font-black text-emerald-700">{gardenStats.sprouts}</span>
-          <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider text-center leading-tight">Sprouts</span>
+        <div className="flex flex-col items-center justify-center p-3 bg-feedback-success/10 border-b-[length:var(--depth-sm)] border-feedback-success-edge/30 rounded-control">
+          <AppIcon name="plant" size={24} className="text-feedback-success mb-1" />
+          <span className="text-lg font-black text-ui-ink">{gardenStats.sprouts}</span>
+          <span className="text-[10px] font-bold text-feedback-success uppercase tracking-wider text-center leading-tight">Sprouts</span>
         </div>
 
         {/* Flowers */}
-        <div className="flex flex-col items-center justify-center p-3 bg-rose-50 border-[2px] border-rose-200 rounded-2xl">
-          <PiFlowerFill className="text-2xl text-rose-500 mb-1" />
-          <span className="text-lg font-black text-rose-700">{gardenStats.flowers}</span>
-          <span className="text-[10px] font-bold text-rose-400 uppercase tracking-wider text-center leading-tight">Flowers</span>
+        <div className="flex flex-col items-center justify-center p-3 bg-feedback-danger/10 border-b-[length:var(--depth-sm)] border-feedback-danger-edge/30 rounded-control">
+          <AppIcon name="flower" size={24} className="text-feedback-danger mb-1" />
+          <span className="text-lg font-black text-ui-ink">{gardenStats.flowers}</span>
+          <span className="text-[10px] font-bold text-feedback-danger uppercase tracking-wider text-center leading-tight">Flowers</span>
         </div>
 
         {/* Withered (Needs Review / Thirsty) */}
         <div className={cn(
-          "flex flex-col items-center justify-center p-3 rounded-2xl border-[2px]",
+          "flex flex-col items-center justify-center p-3 rounded-control border-b-[length:var(--depth-sm)]",
           cardsToReview > 0 
-            ? "bg-amber-50 border-amber-300" 
-            : "bg-gray-50 border-gray-200"
+            ? "bg-feedback-warning/10 border-feedback-warning-edge/30" 
+            : "bg-ui-canvas border-ui-divider"
         )}>
-          <PiDropFill className={cn(
-            "text-2xl mb-1",
-            cardsToReview > 0 ? "text-amber-500 animate-bounce" : "text-gray-400"
+          <AppIcon name="drop" size={24} className={cn(
+            "mb-1",
+            cardsToReview > 0 ? "text-feedback-warning-edge animate-bounce" : "text-ui-muted"
           )} />
           <span className={cn(
             "text-lg font-black",
-            cardsToReview > 0 ? "text-amber-700" : "text-gray-700"
+            cardsToReview > 0 ? "text-feedback-warning-edge" : "text-ui-ink"
           )}>{gardenStats.withered}</span>
           <span className={cn(
             "text-[10px] font-bold uppercase tracking-wider text-center leading-tight",
-            cardsToReview > 0 ? "text-amber-500" : "text-gray-400"
+            cardsToReview > 0 ? "text-feedback-warning-edge" : "text-ui-muted"
           )}>Thirsty</span>
         </div>
       </div>
@@ -110,7 +109,7 @@ export function GardenVisualization({ onWaterGarden }: { onWaterGarden: () => vo
               activeBook.buttonEdge
             )}
           >
-            <PiDropFill className="text-xl" />
+            <AppIcon name="drop" size={18} />
             Water Garden ({cardsToReview})
           </ActionButton>
         ) : (

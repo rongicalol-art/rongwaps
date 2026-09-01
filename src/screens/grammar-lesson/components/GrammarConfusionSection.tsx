@@ -33,86 +33,118 @@ export function GrammarConfusionSection({
 
   return (
     <section aria-label={confusion.title} className="mt-10">
-      <button
-        type="button"
-        onClick={() => setIsOpen((open) => !open)}
-        aria-expanded={isOpen}
-        aria-controls={contentId}
-        className="inline-flex items-center gap-2 rounded-lg px-2 py-1 text-left outline-none transition-colors duration-150 hover:bg-ui-surface-hover focus-visible:ring-2 focus-visible:ring-brand-primary/60"
-      >
-        <AppIcon name="lightbulb" size={17} className="text-feedback-warning-edge" />
-        <span className="text-sm font-black uppercase tracking-[0.08em] text-ui-muted-strong">
-          {confusion.title}
-        </span>
-        <AppIcon
-          name="expand"
-          size={15}
-          className={cn('shrink-0 text-ui-muted transition-transform duration-200', isOpen && 'rotate-180')}
-        />
-      </button>
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            id={contentId}
-            initial={{ opacity: 0, height: reduceMotion ? 'auto' : 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: reduceMotion ? 'auto' : 0 }}
-            transition={{ duration: reduceMotion ? 0.12 : 0.24, ease: 'easeOut' }}
-            className="overflow-hidden"
-          >
-            <ol className="divide-y-2 divide-ui-divider">
-              {confusion.items.map((item) => {
-                const wrongText = characterPreference === 'simplified'
-                  ? (item.wrongSimplified ?? item.wrongTraditional)
-                  : item.wrongTraditional;
-                const pinyinLine = showPinyin && item.right.pinyin ? item.right.pinyin : null;
-                const englishLine = showTranslation && item.right.english ? item.right.english : null;
+      <div className="overflow-hidden rounded-feature bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider">
+        <button
+          type="button"
+          onClick={() => setIsOpen((open) => !open)}
+          aria-expanded={isOpen}
+          aria-controls={contentId}
+          className="flex w-full items-center justify-between gap-3 p-4 text-left outline-none transition-colors duration-150 hover:bg-ui-surface-hover focus-ring sm:p-5"
+        >
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-feedback-warning/15 text-feedback-warning-edge">
+              <AppIcon name="lightbulb" size={17} />
+            </span>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-black uppercase tracking-[0.08em] text-ui-ink-strong">
+                  {confusion.title}
+                </span>
+                <span className="rounded-full bg-ui-hover px-2 py-0.5 text-[11px] font-black text-ui-muted-strong">
+                  {confusion.items.length} {confusion.items.length === 1 ? 'tip' : 'traps'}
+                </span>
+              </div>
+              <p className="text-xs font-bold text-ui-muted">
+                {isOpen ? 'Tap to collapse' : 'Common beginner mistakes to avoid'}
+              </p>
+            </div>
+          </div>
+          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-ui-hover text-ui-muted transition-colors">
+            <AppIcon
+              name="expand"
+              size={15}
+              className={cn('shrink-0 transition-transform duration-200', isOpen && 'rotate-180')}
+            />
+          </span>
+        </button>
 
-                return (
-                  <li key={item.id} className="py-4 first:pt-3 last:pb-2">
-                    <p className="text-[15px] font-extrabold leading-snug text-ui-ink-strong sm:text-base">
-                      {item.question}
-                    </p>
-                    <p className="mt-1 max-w-2xl text-sm font-normal leading-6 text-ui-ink sm:text-[15px]">
-                      {item.answer}
-                    </p>
-                    <div className="mt-2.5 space-y-1">
-                      <span className="sr-only">Wrong:</span>
-                      <div className="flex items-center gap-x-2">
-                        <AppIcon name="close" size={13} className="shrink-0 translate-y-px text-feedback-danger" />
-                        <span className="min-w-0 font-chinese font-black text-sm leading-tight line-through decoration-feedback-danger/60 decoration-2 text-ui-muted sm:text-base">
-                          {wrongText}
-                        </span>
-                      </div>
-                      <span className="sr-only">A better way to say it:</span>
-                      <div className="flex items-start gap-x-2">
-                        <AppIcon name="check" size={14} className="mt-[3px] shrink-0 text-feedback-success-edge" />
-                        <div className="min-w-0">
-                          <InteractiveGrammarSentence
-                            words={item.right.words}
-                            characterPreference={characterPreference}
-                            showPinyin={false}
-                            size="sm"
-                            tone="accent"
-                            onOpenWord={onOpenWord}
-                          />
-                          {(pinyinLine || englishLine) && (
-                            <p className="mt-0.5 text-xs font-bold leading-relaxed text-ui-muted-strong sm:text-[13px]">
-                              {pinyinLine}
-                              {pinyinLine && englishLine ? ' · ' : ''}
-                              {englishLine}
-                            </p>
-                          )}
+        <AnimatePresence initial={false}>
+          {isOpen && (
+            <motion.div
+              id={contentId}
+              initial={{ opacity: 0, height: reduceMotion ? 'auto' : 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: reduceMotion ? 'auto' : 0 }}
+              transition={{ duration: reduceMotion ? 0.12 : 0.24, ease: 'easeOut' }}
+              className="overflow-hidden border-t border-ui-divider bg-ui-canvas/30 px-4 pb-4 pt-2 sm:px-5 sm:pb-5"
+            >
+              <ol className="divide-y divide-ui-divider">
+                {confusion.items.map((item) => {
+                  const wrongText = characterPreference === 'simplified'
+                    ? (item.wrongSimplified ?? item.wrongTraditional)
+                    : item.wrongTraditional;
+                  const pinyinLine = showPinyin && item.right.pinyin ? item.right.pinyin : null;
+                  const englishLine = showTranslation && item.right.english ? item.right.english : null;
+
+                  return (
+                    <li key={item.id} className="py-4 first:pt-2 last:pb-1">
+                      <p className="text-[15px] font-extrabold leading-snug text-ui-ink-strong sm:text-base">
+                        {item.question}
+                      </p>
+                      <p className="mt-1 max-w-2xl text-sm font-normal leading-6 text-ui-ink sm:text-[15px]">
+                        {item.answer}
+                      </p>
+                      <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
+                        {/* Wrong form */}
+                        <div className="flex items-start gap-2 rounded-xl bg-feedback-danger/8 p-3">
+                          <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-feedback-danger/15 text-feedback-danger">
+                            <AppIcon name="close" size={12} />
+                          </span>
+                          <div className="min-w-0">
+                            <span className="block text-[10px] font-black uppercase tracking-wider text-feedback-danger">
+                              Avoid
+                            </span>
+                            <span className="font-chinese font-black text-sm leading-tight line-through decoration-feedback-danger/60 decoration-2 text-ui-muted sm:text-base">
+                              {wrongText}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Right form */}
+                        <div className="flex items-start gap-2 rounded-xl bg-feedback-success/8 p-3">
+                          <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-feedback-success/15 text-feedback-success-edge">
+                            <AppIcon name="check" size={12} />
+                          </span>
+                          <div className="min-w-0">
+                            <span className="block text-[10px] font-black uppercase tracking-wider text-feedback-success-edge">
+                              Say instead
+                            </span>
+                            <InteractiveGrammarSentence
+                              words={item.right.words}
+                              characterPreference={characterPreference}
+                              showPinyin={false}
+                              size="sm"
+                              tone="accent"
+                              onOpenWord={onOpenWord}
+                            />
+                            {(pinyinLine || englishLine) && (
+                              <p className="mt-1 text-xs font-bold leading-relaxed text-ui-muted-strong">
+                                {pinyinLine}
+                                {pinyinLine && englishLine ? ' · ' : ''}
+                                {englishLine}
+                              </p>
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </li>
-                );
-              })}
-            </ol>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                    </li>
+                  );
+                })}
+              </ol>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </section>
   );
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import { PiPencilFill } from 'react-icons/pi';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { FeedbackBottomBar, LessonComplete } from '../../features/practice';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
@@ -73,27 +72,31 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
     return (
       <div className="absolute inset-0 w-full h-full bg-ui-canvas flex flex-col justify-center items-center overflow-hidden overscroll-none">
         <div className="px-6 py-12 flex flex-col items-center justify-center text-center">
-          <div className="w-24 h-24 rounded-full bg-[#FFF0F0] flex items-center justify-center mb-6">
-            <PiPencilFill size={48} className="text-feedback-danger" />
+          <div className="w-24 h-24 rounded-full bg-feedback-danger-surface flex items-center justify-center mb-6">
+            <AppIcon name="pencil" size={48} className="text-feedback-danger" />
           </div>
           <h2 className="text-2xl font-extrabold text-ui-ink tracking-normal">Something went wrong</h2>
           <p className="text-ui-muted text-[15px] font-bold mt-2 max-w-[280px]">
             We couldn't load the writing data. Please try again.
           </p>
           <div className="mt-8 flex gap-3">
-            <button
+            <ActionButton
+              variant="primary"
+              size="lg"
               onClick={handleRetry}
-              className="px-8 py-4 rounded-[24px] font-black text-white text-lg tracking-wider border-b-[6px] active:border-b-0 active:translate-y-[6px] transition-all bg-brand-primary border-brand-primary-edge"
+              className="uppercase tracking-wider"
             >
               TRY AGAIN
-            </button>
+            </ActionButton>
             {onClose && (
-              <button
+              <ActionButton
+                variant="secondary"
+                size="lg"
                 onClick={onClose}
-                className="rounded-[24px] border-2 border-ui-border px-6 py-4 text-lg font-black tracking-wider text-ui-muted transition-all hover:bg-ui-canvas active:scale-[0.99]"
+                className="uppercase tracking-wider"
               >
                 GO BACK
-              </button>
+              </ActionButton>
             )}
           </div>
         </div>
@@ -118,8 +121,8 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
     return (
       <div className="absolute inset-0 w-full h-full bg-ui-canvas flex flex-col justify-center items-center overflow-hidden overscroll-none">
         <div className="px-6 py-12 flex flex-col items-center justify-center text-center">
-          <div className="w-24 h-24 rounded-full bg-white shadow-[0_10px_20px_rgba(0,0,0,0.05)] border border-ui-border flex items-center justify-center mb-6">
-            <PiPencilFill size={48} className={activeBook.accent} />
+          <div className="w-24 h-24 rounded-full bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider flex items-center justify-center mb-6">
+            <AppIcon name="pencil" size={44} className={activeBook.accent} />
           </div>
           <h2 className="text-2xl font-extrabold text-ui-ink tracking-normal">No characters to write yet</h2>
           <p className="text-ui-muted text-[15px] font-bold mt-2 max-w-[280px]">
@@ -127,12 +130,14 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
           </p>
           {onClose && (
             <div className="mt-8">
-              <button
+              <ActionButton
+                variant="primary"
+                size="lg"
                 onClick={onClose}
-                className={`px-8 py-4 rounded-[24px] font-black text-white text-lg tracking-wider border-b-[6px] active:border-b-0 active:translate-y-[6px] transition-all ${activeBook.accentBg} ${activeBook.buttonEdge || 'border-b-[rgba(0,0,0,0.15)]'}`}
+                className={activeBook.accentBg}
               >
                 GO BACK
-              </button>
+              </ActionButton>
             </div>
           )}
         </div>

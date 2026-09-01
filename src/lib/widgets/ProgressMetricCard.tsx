@@ -26,7 +26,7 @@ export function ProgressMetricCard({
   return (
     <div
       className={cn(
-        'flex min-w-0 items-center gap-3 rounded-[20px] border border-ui-divider bg-ui-surface p-4 shadow-[0_5px_16px_rgba(47,50,55,0.05)]',
+        'flex min-w-0 items-center gap-3 rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface p-4',
         className,
       )}
       {...props}
@@ -34,7 +34,7 @@ export function ProgressMetricCard({
       {leadingContent ?? (
         <div
           className={cn(
-            'flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px]',
+            'flex h-11 w-11 shrink-0 items-center justify-center rounded-compact',
             iconBackgroundClassName,
             accentClassName,
           )}

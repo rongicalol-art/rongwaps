@@ -96,12 +96,12 @@ const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
               onSubmit();
             }}
             disabled={status !== 'idle'}
-            className={`w-full rounded-[20px] border-2 bg-ui-surface py-5 pl-14 pr-5 text-left text-[21px] font-extrabold text-ui-ink outline-none transition-[border-color,box-shadow,background-color] placeholder:text-ui-muted focus:ring-4 disabled:bg-ui-hover ${
+            className={`w-full rounded-control border-b-[length:var(--depth-md)] bg-ui-surface py-5 pl-14 pr-5 text-left text-[21px] font-extrabold text-ui-ink outline-none transition-[border-color,background-color] placeholder:text-ui-muted focus-ring disabled:bg-ui-hover ${
               status === 'correct'
-                ? 'border-feedback-success focus:border-feedback-success focus:ring-feedback-success/15'
+                ? 'border-feedback-success'
                 : status === 'wrong'
-                  ? 'border-feedback-danger focus:border-feedback-danger focus:ring-feedback-danger/15'
-                  : 'border-ui-border focus:border-brand-primary focus:ring-brand-primary/15'
+                  ? 'border-feedback-danger'
+                  : 'border-ui-border focus:border-brand-primary'
             }`}
             placeholder="Type the pronunciation"
             autoCapitalize="none"

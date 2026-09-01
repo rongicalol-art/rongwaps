@@ -7,29 +7,29 @@ import {
   PiBookmarkSimpleFill,
   PiBookOpenTextBold,
   PiBooksBold,
-  PiCardsThreeBold,
+  PiCardsFill,
   PiPuzzlePieceFill,
   PiCaretDownBold,
   PiCaretRightBold,
   PiChartDonutFill,
   PiCheckCircleFill,
   PiClockFill,
-  PiExamFill,
   PiXCircleFill,
   PiFireFill,
   PiFolderFill,
   PiGraduationCapFill,
   PiGaugeBold,
-  PiHeadphonesBold,
+  PiHeadphonesFill,
   PiKeyboardBold,
   PiLightbulbBold,
   PiListChecksBold,
   PiListBold,
   PiLockKeyFill,
   PiMagnifyingGlassBold,
-  PiNotebookBold,
+  PiBookBookmarkFill,
   PiPauseCircleFill,
-  PiPencilSimpleBold,
+  PiPaintBrushFill,
+  PiLightningFill,
   PiPlayFill,
   PiPlayCircleFill,
   PiPlusBold,
@@ -67,6 +67,13 @@ import {
   PiHouseBold,
   PiQuestionBold,
   PiRulerBold,
+  PiLeafFill,
+  PiPlantFill,
+  PiFlowerFill,
+  PiDropFill,
+  PiPencilFill,
+  PiSquaresFourFill,
+  PiBookOpenFill,
 } from 'react-icons/pi';
 
 export type AppIconName =
@@ -138,31 +145,40 @@ export type AppIconName =
   | 'describe'
   | 'home'
   | 'questions'
-  | 'measure';
+  | 'measure'
+  | 'leaf'
+  | 'plant'
+  | 'flower'
+  | 'drop'
+  | 'pencil'
+  | 'grid'
+  | 'quiz'
+  | 'writing'
+  | 'book';
 
 const ICONS: Record<AppIconName, IconType> = {
   add: PiPlusBold,
   analytics: PiChartBarFill,
   appSettings: PiGearSixBold,
-  audio: PiHeadphonesBold,
+  audio: PiHeadphonesFill,
   back: PiArrowLeftBold,
   bookmark: PiBookmarkSimpleBold,
   bookmarkFilled: PiBookmarkSimpleFill,
   books: PiBooksBold,
   breakdown: PiPuzzlePieceFill,
-  cards: PiCardsThreeBold,
+  cards: PiCardsFill,
   check: PiCheckCircleFill,
   clock: PiClockFill,
   close: PiXBold,
   choices: PiListChecksBold,
   dictionary: PiBookOpenTextBold,
   expand: PiCaretDownBold,
-  exam: PiExamFill,
+  exam: PiLightningFill,
   error: PiXCircleFill,
   flame: PiFireFill,
   folder: PiFolderFill,
   forward: PiArrowRightBold,
-  grammar: PiNotebookBold,
+  grammar: PiBookBookmarkFill,
   lightbulb: PiLightbulbBold,
   keyboard: PiKeyboardBold,
   lock: PiLockKeyFill,
@@ -174,8 +190,10 @@ const ICONS: Record<AppIconName, IconType> = {
   pronounce: PiSpeakerHighFill,
   progress: PiChartDonutFill,
   profile: PiUserBold,
-  practice: PiPencilSimpleBold,
+  practice: PiPaintBrushFill,
   plus: PiPlusBold,
+  quiz: PiLightningFill,
+  writing: PiPaintBrushFill,
   search: PiMagnifyingGlassBold,
   sidebarToggle: PiSidebarSimpleBold,
   sparkles: PiSparkleFill,
@@ -210,6 +228,13 @@ const ICONS: Record<AppIconName, IconType> = {
   home: PiHouseBold,
   questions: PiQuestionBold,
   measure: PiRulerBold,
+  leaf: PiLeafFill,
+  plant: PiPlantFill,
+  flower: PiFlowerFill,
+  drop: PiDropFill,
+  pencil: PiPencilFill,
+  grid: PiSquaresFourFill,
+  book: PiBookOpenFill,
 };
 
 export interface AppIconProps extends Omit<IconBaseProps, 'children'> {

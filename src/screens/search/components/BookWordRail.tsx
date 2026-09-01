@@ -27,7 +27,7 @@ function WordRow({ card, onOpenWord }: { card: Flashcard; onOpenWord: (word: str
       type="button"
       onClick={() => onOpenWord(card.front)}
       aria-label={`Open ${card.front}`}
-      className="group flex w-full items-center gap-3 py-3.5 text-left outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-brand-primary/15 sm:gap-4"
+      className="group flex w-full items-center gap-3 py-3.5 text-left outline-none focus-ring rounded-sm sm:gap-4"
     >
       <span className="shrink-0 font-chinese text-[26px] font-bold leading-none text-ui-ink transition-colors group-hover:text-brand-primary sm:text-[30px]">
         {card.front}
@@ -58,17 +58,17 @@ export function BookWordRail({ bookId, onOpenWord }: BookWordRailProps) {
   const [shownWords, setShownWords] = useState<Flashcard[]>([]);
 
   // Re-deal whenever new vocabulary arrives or the learner asks for a fresh set.
+  const reshuffle = useCallback(() => setDeal((value) => value + 1), []);
+
   useEffect(() => {
     setShownWords(dealRandomWords(cards, ROW_COUNT));
   }, [cards, deal]);
-
-  const reshuffle = useCallback(() => setDeal((value) => value + 1), []);
 
   // Nothing useful to show when the book has no vocabulary at all.
   if (!isLoading && !error && cards.length === 0) return null;
 
   return (
-    <section aria-label="From your book" className="rounded-[28px] bg-ui-surface p-5 sm:p-6">
+    <section aria-label="From your book" className="rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface p-5 sm:p-6">
       <div className="flex items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-2 text-ui-ink-strong">
           <h2 className="text-[16px] font-black">From your book</h2>
@@ -91,7 +91,7 @@ export function BookWordRail({ bookId, onOpenWord }: BookWordRailProps) {
       </div>
 
       {error ? (
-        <div className="mt-4 flex flex-col items-center gap-3 rounded-[20px] bg-ui-canvas px-4 py-8 text-center">
+        <div className="mt-4 flex flex-col items-center gap-3 rounded-control bg-ui-canvas px-4 py-8 text-center">
           <AppIcon name="error" size={24} className="text-feedback-danger" />
           <p className="max-w-sm text-[13px] font-bold text-ui-muted">{error}</p>
           <IconActionButton

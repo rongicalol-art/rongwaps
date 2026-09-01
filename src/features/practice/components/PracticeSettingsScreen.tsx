@@ -160,7 +160,7 @@ function SettingsTabButton({ tab, selected, onSelect }: { tab: (typeof TABS)[num
       onClick={() => onSelect(tab.id)}
       className={cn(
         'flex items-center justify-center gap-1.5 rounded-[13px] px-2 py-2 text-[13px] font-extrabold transition-colors outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25',
-        selected ? 'bg-brand-primary text-white shadow-sm' : 'text-ui-muted-strong hover:bg-ui-surface hover:text-ui-ink-strong',
+        selected ? 'bg-brand-primary text-white shadow-[0_2px_0_var(--color-brand-primary-edge)]' : 'text-ui-muted-strong hover:bg-ui-surface hover:text-ui-ink-strong',
       )}
     >
       <AppIcon name={tab.icon} size={17} className="hidden shrink-0 sm:block" />

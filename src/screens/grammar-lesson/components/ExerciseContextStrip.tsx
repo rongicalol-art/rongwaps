@@ -21,11 +21,11 @@ export function ExerciseContextStrip({ cues }: ExerciseContextStripProps) {
         <article
           key={cue.id}
           className={cn(
-            'rounded-[16px] border border-feedback-warning/35 bg-[#FFF9E8] px-4 py-3',
+            'rounded-control border-b-[length:var(--depth-sm)] border-feedback-warning-edge/35 bg-feedback-warning/10 px-4 py-3',
             useMobileRail && 'snap-start',
           )}
         >
-          <p className="text-[10px] font-black uppercase tracking-[0.08em] text-[#A66A00]">Book cue {index + 1}</p>
+          <p className="text-[10px] font-black uppercase tracking-[0.08em] text-feedback-warning-edge">Book cue {index + 1}</p>
           <p className="mt-1 font-chinese text-lg font-black text-ui-ink-strong">{cue.label}</p>
           {cue.pinyin && <p className="text-xs font-bold text-brand-primary">{cue.pinyin}</p>}
           <p className="mt-1 text-xs font-bold leading-snug text-ui-muted-strong">{cue.detail}</p>

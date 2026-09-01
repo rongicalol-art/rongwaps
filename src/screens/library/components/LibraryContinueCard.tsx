@@ -1,5 +1,4 @@
-import { PiCardsThreeFill, PiPlayFill } from 'react-icons/pi';
-import { ActionButton } from '../../../lib/widgets';
+import { ActionButton, AppIcon } from '../../../lib/widgets';
 
 interface LibraryContinueCardProps {
   title: string;
@@ -17,15 +16,15 @@ export function LibraryContinueCard({
   const hasItems = itemCount > 0;
 
   return (
-    <div className="rounded-[24px] border-0 border-b-4 border-b-ui-border bg-ui-surface p-5 sm:p-6">
+    <div className="rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface p-5 sm:p-6">
       <div className="mb-4 flex items-center gap-2.5">
-        <PiCardsThreeFill size={20} className="text-purple-500" />
+        <AppIcon name="flashcard" size={20} className="text-brand-secondary" />
         <h2 className="text-[14px] font-black uppercase tracking-wider text-ui-ink-strong">
           Continue studying
         </h2>
       </div>
 
-      <div className="mb-5 rounded-[18px] bg-ui-canvas/70 p-4">
+      <div className="mb-5 rounded-control bg-ui-canvas p-4">
         <p className="truncate text-[16px] font-black text-ui-ink-strong">
           {hasItems ? title : 'Your first collection'}
         </p>
@@ -38,7 +37,7 @@ export function LibraryContinueCard({
 
       {hasItems && onPractice ? (
         <ActionButton size="md" fullWidth onClick={onPractice}>
-          <PiPlayFill size={16} />
+          <AppIcon name="play" size={16} />
           Practice collection
         </ActionButton>
       ) : (

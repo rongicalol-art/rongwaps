@@ -30,7 +30,7 @@ export function AllExamplesSubOverlay({
           maxWidthClassName="max-w-[900px]"
           contentInnerClassName="pb-32"
         >
-              <div className="flex flex-col overflow-hidden rounded-[24px] bg-ui-surface shadow-sm">
+              <div className="flex flex-col overflow-hidden rounded-feature bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider">
                 {smartSentences.map((ex, idx) => (
                   <div 
                     key={idx}

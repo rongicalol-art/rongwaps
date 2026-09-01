@@ -70,7 +70,7 @@ export function SentenceSpine({
       className={className}
       {...props}
     >
-      <div className="overflow-hidden rounded-[22px] border border-ui-border bg-ui-surface shadow-[0_3px_0_var(--color-ui-border)]">
+      <div className="overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface">
         <div className="grid grid-cols-[minmax(0,0.8fr)_minmax(0,1.35fr)_minmax(0,1fr)] items-stretch text-center">
           {slots.map((slot, index) => (
             <div key={slot.role} className="relative min-w-0 border-l border-ui-divider px-2 py-5 first:border-l-0 sm:px-4 sm:py-6">

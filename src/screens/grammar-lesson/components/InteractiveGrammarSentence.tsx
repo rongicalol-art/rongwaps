@@ -148,7 +148,7 @@ export function InteractiveGrammarSentence({
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 4, scale: 0.97 }}
                   transition={{ duration: 0.12 }}
-                  className="pointer-events-none absolute bottom-[calc(100%+9px)] left-1/2 z-40 w-max min-w-[112px] max-w-[180px] -translate-x-1/2 rounded-[12px] border-b-2 border-ui-border bg-ui-ink-strong px-3 py-2 text-center shadow-lg"
+                  className="pointer-events-none absolute bottom-[calc(100%+9px)] left-1/2 z-40 w-max min-w-[112px] max-w-[180px] -translate-x-1/2 rounded-control border-b-[length:var(--depth-sm)] border-ui-divider bg-ui-ink-strong px-3 py-2 text-center shadow-ambient-md"
                 >
                   <span className="block text-xs font-black text-brand-primary/70">{word.pinyin}</span>
                   <span className="mt-0.5 block text-xs font-bold leading-snug text-white">{word.meaning}</span>

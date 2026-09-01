@@ -6,15 +6,15 @@
 import { ActionButton, AppIcon, ScreenHeader } from '../lib/widgets';
 ```
 
-Shared widgets accept data and callbacks through props. They do not fetch remote data or own feature stores. Use semantic `ui-*`, `brand-*`, and `feedback-*` tokens; preserve focus, keyboard, reduced-motion, loading, empty, error, and long-text behavior.
+Shared widgets accept data and callbacks through props. They do not fetch remote data or own feature stores. Use semantic `ui-*`, `brand-*`, and `feedback-*` tokens as well as token radii and ambient shadow tokens. Do not use hardcoded hex values (`#FFF`, `#E5E5E5`) or manual `ring-*` stackings. See `docs/DESIGN_TOKENS.md` for the full scale. Preserve focus rings via `.focus-ring`, keyboard navigation, reduced-motion, loading, empty, error, and long-text behavior.
 
 ## Actions and selectors
 
-- **ActionButton** — text action with `primary`, `secondary`, `quiet`, or `danger` hierarchy; supports `sm`/`md`/`lg`, `fullWidth`, and loading. Use one dominant action per surface.
+- **ActionButton** — text action with `primary`, `secondary`, `quiet`, `danger`, `success`, or `warning` hierarchy; supports `sm`/`md`/`lg`, `fullWidth`, and loading. Use one dominant action per surface.
   ```tsx
   <ActionButton variant="primary" onClick={onContinue}>Continue</ActionButton>
   ```
-- **IconActionButton** — quiet icon utility for close, back, next, audio, and settings. `icon` and a descriptive `label` are required; the label supplies the accessible name and tooltip.
+- **IconActionButton** — quiet, surface, danger, or warning icon utility for close, back, next, audio, settings, and highlighted action triggers. `icon` and a descriptive `label` are required; the label supplies the accessible name and tooltip.
   ```tsx
   <IconActionButton icon={<AppIcon name="close" />} label="Close" onClick={onClose} />
   ```

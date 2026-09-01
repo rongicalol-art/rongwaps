@@ -96,9 +96,9 @@ export function HanziCanvas({
   }, [status, onComplete]);
 
   return (
-    <div className="relative mx-auto rounded-[32px] md:rounded-[40px] shadow-sm transform-none" style={{ width: size, height: size }}>
+    <div className="relative mx-auto rounded-modal transform-none" style={{ width: size, height: size }}>
       <div 
-        className={`absolute inset-0 overflow-hidden rounded-[32px] border-2 bg-ui-canvas transition-all duration-300 md:rounded-[40px] ${status === 'completed' ? `${accentBorder} ${bgAccent}` : (status === 'quizzing' ? `${accentBorder} bg-white shadow-xl` : 'border-ui-border opacity-70')}`}
+        className={`absolute inset-0 overflow-hidden rounded-modal border-2 bg-ui-canvas transition-all duration-300 ${status === 'completed' ? `${accentBorder} ${bgAccent}` : (status === 'quizzing' ? `${accentBorder} bg-ui-surface` : 'border-ui-border opacity-70')}`}
       >
         {/* Background Grid Lines (Tiánzìgé format) */}
         <div className="absolute inset-x-0 inset-y-0 pointer-events-none flex items-center justify-center opacity-30">

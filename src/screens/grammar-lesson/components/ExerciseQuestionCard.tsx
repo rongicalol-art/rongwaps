@@ -109,10 +109,10 @@ export function ExerciseQuestionCard({
                   'inline-flex min-h-9 items-center justify-center rounded-[10px] border-2 border-dashed px-2 align-middle font-chinese text-base font-black transition-all sm:text-lg',
                   blankWidthClass,
                   !placedTile && !canReceiveSelected && 'border-ui-muted bg-ui-canvas text-ui-muted',
-                  !placedTile && canReceiveSelected && 'border-[#D89C00] bg-[#FFF7D6] text-[#A66A00] ring-4 ring-feedback-warning/20',
+                  !placedTile && canReceiveSelected && 'border-feedback-warning-edge bg-feedback-warning/15 text-feedback-warning-edge focus-ring',
                   placedTile && !isCorrect && !isWrong && 'border-brand-primary bg-brand-primary-soft text-brand-primary',
-                  isCorrect && 'border-feedback-success bg-[#E8F9DC] text-[#3D8F00]',
-                  isWrong && 'border-feedback-danger bg-[#FFF1F1] text-feedback-danger',
+                  isCorrect && 'border-feedback-success-edge bg-feedback-success-surface text-feedback-success-edge',
+                  isWrong && 'border-feedback-danger-edge bg-feedback-danger-surface text-feedback-danger-edge',
                 )}
               >
                 {placedTile ? placedText : '＿'}
@@ -139,9 +139,9 @@ export function ExerciseQuestionCard({
               aria-pressed={isSelected}
               title={tile.meaning}
               className={cn(
-                'min-w-11 w-auto rounded-[10px] border-b-2 px-3 py-1.5 font-chinese font-black text-base normal-case tracking-normal active:translate-y-[3px]',
+                'min-w-11 w-auto rounded-sm border-b-[length:var(--depth-sm)] px-3 py-1.5 font-chinese font-black text-base normal-case tracking-normal active:translate-y-[length:var(--depth-sm)] active:border-b-0',
                 isSelected
-                  ? 'border-[#D89C00] bg-feedback-warning text-ui-ink-strong'
+                  ? 'border-feedback-warning-edge bg-feedback-warning text-ui-ink-strong'
                   : 'border-brand-primary-edge bg-brand-primary-soft text-ui-ink-strong',
               )}
             >
@@ -152,7 +152,7 @@ export function ExerciseQuestionCard({
       </div>
 
       {wrongHint?.type === 'blank' && (
-        <div className="mt-4 rounded-[14px] border-l-4 border-feedback-danger bg-[#FFF1F1] px-4 py-3" role="status">
+        <div className="mt-4 rounded-control border-l-4 border-feedback-danger bg-feedback-danger-surface px-4 py-3" role="status">
           <p className="text-sm font-black text-feedback-danger">Why this answer does not work</p>
           {wrongTile && (
             <p className="mt-1 text-sm font-bold leading-6 text-ui-ink">
@@ -169,7 +169,7 @@ export function ExerciseQuestionCard({
         </div>
       )}
       {isQuestionCorrect && question.correctFeedback && (
-        <p className="mt-4 rounded-[12px] bg-[#F0FAE8] px-4 py-3 text-sm font-bold leading-6 text-feedback-success" role="status">
+        <p className="mt-4 rounded-control bg-feedback-success-surface px-4 py-3 text-sm font-bold leading-6 text-feedback-success" role="status">
           {question.correctFeedback}
         </p>
       )}

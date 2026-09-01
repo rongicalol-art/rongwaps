@@ -2,7 +2,7 @@ import React, { useEffect, type ReactNode } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { numberToToneMarks } from '../../../utils/pinyin';
 import { useAppStore } from '../../../store/useAppStore';
-import { AppIcon, IconActionButton } from '../../../lib/widgets';
+import { ActionButton, AppIcon, IconActionButton } from '../../../lib/widgets';
 
 export interface FeedbackBottomBarProps {
   status: 'idle' | 'correct' | 'wrong';
@@ -131,7 +131,7 @@ export function FeedbackBottomBar({
               >
                 <div className="flex w-full items-center pb-2">
                   <div className={`flex items-center gap-3 text-[18px] font-extrabold sm:text-[22px] ${isCorrect ? 'text-feedback-success-edge' : 'text-feedback-danger-edge'}`}>
-                    <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-[12px] text-ui-surface md:h-10 md:w-10 ${isCorrect ? 'bg-feedback-success-edge' : 'bg-feedback-danger-edge'}`}>
+                    <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-sm text-ui-surface md:h-10 md:w-10 ${isCorrect ? 'bg-feedback-success-edge' : 'bg-feedback-danger-edge'}`}>
                       <AppIcon name={isCorrect ? 'check' : 'error'} size={24} />
                     </div>
                     {isCorrect ? 'Awesome!' : 'Correct solution:'}
@@ -163,37 +163,37 @@ export function FeedbackBottomBar({
             {(showSkipAction || showContinueAction || showCheckAction || showRetryAction) && (
               <div className="flex w-full items-center gap-3">
               {showSkipAction ? (
-                <button
-                  disabled={false}
+                <ActionButton
                   onClick={onSkip}
-                  className="flex-1 rounded-[16px] border-2 border-ui-border bg-ui-surface py-4 text-[15px] font-extrabold uppercase tracking-widest text-ui-muted-strong transition-all hover:bg-ui-surface-hover active:translate-y-[3px] md:text-[17px]"
+                  variant="secondary"
+                  size="lg"
+                  fullWidth
+                  className="uppercase tracking-widest text-[15px] md:text-[17px]"
                   aria-label="Skip question"
                 >
                   Skip
-                </button>
+                </ActionButton>
               ) : showContinueAction ? (
-                <button
+                <ActionButton
                   onClick={onContinue}
-                  className={`flex-1 rounded-[16px] border-b-2 py-4 text-[15px] font-extrabold uppercase tracking-widest text-ui-surface transition-all active:translate-y-[4px] active:border-b-0 md:text-[17px] ${
-                    isCorrect
-                      ? 'border-feedback-success-edge bg-feedback-success hover:bg-feedback-success-hover'
-                      : 'border-feedback-danger-edge bg-feedback-danger hover:bg-feedback-danger-hover'
-                  }`}
+                  variant={isCorrect ? 'success' : 'danger'}
+                  size="lg"
+                  fullWidth
+                  className="uppercase tracking-widest text-[15px] md:text-[17px]"
                 >
                   {isCorrect ? 'Continue' : 'Got it'}
-                </button>
+                </ActionButton>
               ) : showCheckAction ? (
-                <button
+                <ActionButton
                   disabled={isCheckDisabled}
                   onClick={onCheck}
-                  className={`flex-1 rounded-[16px] py-4 text-[15px] font-extrabold uppercase tracking-widest transition-all active:border-b-0 md:text-[17px] ${
-                    isCheckDisabled
-                      ? 'cursor-not-allowed bg-ui-border text-ui-muted'
-                      : 'border-b-2 border-feedback-success-edge bg-feedback-success text-ui-surface active:translate-y-[4px] hover:bg-feedback-success-hover'
-                  }`}
+                  variant="success"
+                  size="lg"
+                  fullWidth
+                  className="uppercase tracking-widest text-[15px] md:text-[17px]"
                 >
                   Check
-                </button>
+                </ActionButton>
               ) : null}
 
               {showRetryAction && onRetry && (
@@ -201,7 +201,7 @@ export function FeedbackBottomBar({
                   onClick={onRetry}
                   label="Retry"
                   icon={<AppIcon name="restart" size={28} />}
-                  className={`h-[56px] w-[56px] self-stretch rounded-[16px] border-2 border-b-[6px] active:translate-y-[3px] active:border-b-2 ${isCorrect ? 'border-feedback-success-edge/30 bg-feedback-success-surface text-feedback-success-edge hover:border-feedback-success-edge' : 'border-feedback-danger-edge/30 bg-feedback-danger-surface text-feedback-danger-edge hover:border-feedback-danger-edge'}`}
+                  className={`h-[56px] w-[56px] self-stretch rounded-control border-b-[length:var(--depth-md)] active:translate-y-[length:var(--depth-md)] active:border-b-0 ${isCorrect ? 'border-feedback-success-edge/40 bg-feedback-success-surface text-feedback-success-edge hover:border-feedback-success-edge' : 'border-feedback-danger-edge/40 bg-feedback-danger-surface text-feedback-danger-edge hover:border-feedback-danger-edge'}`}
                 />
               )}
               {isChecked && onBreakdown && (
@@ -209,7 +209,7 @@ export function FeedbackBottomBar({
                   onClick={onBreakdown}
                   label={breakdownOpen ? 'Hide character breakdown' : 'Character breakdown'}
                   icon={<AppIcon name={breakdownOpen ? 'close' : 'breakdown'} size={28} />}
-                  className={`h-[56px] w-[56px] self-stretch rounded-[16px] border-2 border-b-[6px] active:translate-y-[3px] active:border-b-2 ${isCorrect ? 'border-feedback-success-edge/30 bg-feedback-success-surface text-feedback-success-edge hover:border-feedback-success-edge' : 'border-feedback-danger-edge/30 bg-feedback-danger-surface text-feedback-danger-edge hover:border-feedback-danger-edge'}`}
+                  className={`h-[56px] w-[56px] self-stretch rounded-control border-b-[length:var(--depth-md)] active:translate-y-[length:var(--depth-md)] active:border-b-0 ${isCorrect ? 'border-feedback-success-edge/40 bg-feedback-success-surface text-feedback-success-edge hover:border-feedback-success-edge' : 'border-feedback-danger-edge/40 bg-feedback-danger-surface text-feedback-danger-edge hover:border-feedback-danger-edge'}`}
                 />
               )}
               </div>

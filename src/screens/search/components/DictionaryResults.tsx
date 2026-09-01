@@ -34,13 +34,13 @@ export function DictionaryResults({
           {[1, 2, 3, 4].map((item) => (
             <div
               key={item}
-              className="flex w-full items-center gap-4 rounded-[20px] bg-ui-surface px-5 py-4"
+              className="flex w-full items-center gap-4 rounded-feature border-b-[length:var(--depth-sm)] border-ui-divider bg-ui-surface px-5 py-4"
             >
               <div className="flex flex-1 flex-col gap-3">
-                <div className="h-8 w-40 animate-pulse rounded-[12px] bg-ui-border/70" />
+                <div className="h-8 w-40 animate-pulse rounded-sm bg-ui-border/70" />
                 <div className="h-4 w-3/4 animate-pulse rounded-full bg-ui-border/60" />
               </div>
-              <div className="h-12 w-12 animate-pulse rounded-[16px] bg-ui-border/60" />
+              <div className="h-12 w-12 animate-pulse rounded-control bg-ui-border/60" />
             </div>
           ))}
         </div>
@@ -49,14 +49,14 @@ export function DictionaryResults({
       {error && (
         <div
           role="status"
-          className="rounded-[18px] bg-feedback-danger-surface px-4 py-3 text-center text-sm font-bold text-feedback-danger"
+          className="rounded-control border-b-[length:var(--depth-sm)] border-feedback-danger-edge/30 bg-feedback-danger-surface px-4 py-3 text-center text-sm font-bold text-feedback-danger"
         >
           {error}
         </div>
       )}
 
       {!error && !isLoading && results.length === 0 && (
-        <div className="rounded-[24px] bg-ui-surface px-6 py-12 text-center">
+        <div className="rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface px-6 py-12 text-center">
           <p className="text-[18px] font-black text-ui-ink">No match for “{query}”</p>
           <p className="mt-2 text-[14px] font-bold text-ui-muted">
             {mode === 'courses'

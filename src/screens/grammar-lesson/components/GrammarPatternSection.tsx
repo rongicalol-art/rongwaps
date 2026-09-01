@@ -46,35 +46,52 @@ export function GrammarPatternSection({
   if (page.patternRows.length === 0) return null;
 
   return (
-    <section aria-labelledby="grammar-pattern-heading" className="mt-8">
-      <h2 id="grammar-pattern-heading" className="sr-only">Sentence pattern</h2>
+    <section aria-labelledby="grammar-pattern-heading" className="mt-10">
+      <div className="mb-3 flex items-center justify-between gap-3">
+        <h2 id="grammar-pattern-heading" className="text-sm font-black uppercase tracking-[0.08em] text-ui-muted-strong">
+          Sentence Pattern
+        </h2>
+      </div>
 
-      <div className="mt-3 overflow-hidden rounded-[20px] border border-ui-divider bg-ui-canvas/45 shadow-sm">
+      <div className="overflow-hidden rounded-feature bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider">
         {/* The table surface always contains horizontal overflow by scrolling;
             it is never clipped by the card. */}
         <div className="overflow-x-auto">
           <div
-            className={cn('mx-auto grid w-full max-w-[45rem] items-stretch', layout.isScrollable && 'min-w-[480px]')}
+            className={cn('grid w-full items-stretch', layout.isScrollable && 'min-w-[480px]')}
             style={{ gridTemplateColumns: layout.gridTemplateColumns }}
           >
-            {layout.sourceColumns.map((sourceIndex, colIndex) => (
-              <div
-                key={`legend-${sourceIndex}`}
-                className={cn(
-                  'flex min-h-[56px] min-w-0 flex-col items-center justify-center border-b border-ui-divider bg-brand-primary/10 px-2 py-2 text-center sm:min-h-[60px] sm:px-4 sm:py-2.5',
-                  colIndex > 0 && 'border-l border-ui-divider',
-                )}
-              >
-                <span className="block whitespace-nowrap text-[11px] font-black leading-tight text-ui-ink-strong sm:text-xs">
-                  {page.patternColumns[sourceIndex] ?? ''}
-                </span>
-                {page.patternColumnDetails?.[sourceIndex] && (
-                  <span className="mt-1 block whitespace-nowrap text-[10px] font-bold leading-tight text-brand-primary-deep/80">
-                    {page.patternColumnDetails[sourceIndex]}
+            {layout.sourceColumns.map((sourceIndex, colIndex) => {
+              const title = page.patternColumns[sourceIndex] ?? '';
+              const detail = page.patternColumnDetails?.[sourceIndex];
+              const hasCjk = /[\u4E00-\u9FFF]/.test(title);
+
+              return (
+                <div
+                  key={`legend-${sourceIndex}`}
+                  className={cn(
+                    'flex min-h-[56px] min-w-0 flex-col items-center justify-center border-b border-ui-divider bg-brand-primary/[0.08] px-3 py-2.5 text-center sm:min-h-[64px] sm:px-4 sm:py-3',
+                    colIndex > 0 && 'border-l border-ui-divider',
+                  )}
+                >
+                  <span
+                    className={cn(
+                      'block whitespace-nowrap leading-tight text-ui-ink-strong',
+                      hasCjk
+                        ? 'font-chinese text-base sm:text-lg font-black'
+                        : 'text-[11px] sm:text-xs font-black uppercase tracking-wider',
+                    )}
+                  >
+                    {title}
                   </span>
-                )}
-              </div>
-            ))}
+                  {detail && (
+                    <span className="mt-1 block whitespace-nowrap text-[10px] sm:text-[11px] font-bold leading-tight text-brand-primary">
+                      {detail}
+                    </span>
+                  )}
+                </div>
+              );
+            })}
 
             {page.patternRows.map((row, rowIndex) => {
               const groups = getPatternRowGroups(row);
@@ -94,7 +111,7 @@ export function GrammarPatternSection({
                         )}
                       >
                         {isEmpty ? (
-                          <span className="sr-only">Empty sentence slot</span>
+                          <span className="text-xs font-bold text-ui-muted/40 select-none" aria-hidden="true">—</span>
                         ) : (
                           <InteractiveGrammarSentence
                             words={[...group]}
@@ -113,11 +130,11 @@ export function GrammarPatternSection({
 
                   {showTranslation && (
                     <div
-                      className="border-t border-ui-divider bg-ui-canvas/70 px-4 py-3 sm:px-5 sm:py-3.5"
+                      className="border-t border-ui-divider/70 bg-ui-hover/35 px-4 py-2.5 sm:px-6 sm:py-3"
                       style={{ gridColumn: '1 / -1' }}
                     >
                       <p className="sr-only">Meaning</p>
-                      <p className="text-center text-[14px] font-bold leading-6 text-ui-ink sm:text-[15px]">
+                      <p className="text-center text-[13px] sm:text-[14px] font-extrabold leading-relaxed text-ui-muted-strong">
                         {row.english}
                       </p>
                     </div>

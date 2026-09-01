@@ -93,7 +93,7 @@ export function GrammarRouteLab({
         />
       </div>
 
-      <div className="mt-5 overflow-hidden rounded-[22px] border border-ui-border bg-ui-surface shadow-[0_3px_0_var(--color-ui-border)]">
+      <div className="mt-5 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface">
         <div className="grid grid-cols-2 px-3 py-4 sm:grid-flow-col sm:auto-cols-fr sm:grid-cols-none sm:px-6 sm:py-6">
           {stops.map(({ label, token }, index) => (
             <div key={`${selected.id}-${label}`} className="relative min-w-0 px-2 py-3 text-center sm:px-3">

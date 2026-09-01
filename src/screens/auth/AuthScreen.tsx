@@ -55,7 +55,7 @@ export function AuthScreen({ isOpen, onClose }: AuthScreenProps) {
 
         {/* Auth Error Display */}
         {authError && (
-          <div className="mb-4 w-full rounded-[16px] border border-feedback-danger/30 bg-feedback-danger-surface p-4 text-sm font-bold text-feedback-danger">
+          <div className="mb-4 w-full rounded-control border-b-[length:var(--depth-sm)] border-feedback-danger-edge/30 bg-feedback-danger-surface p-4 text-sm font-bold text-feedback-danger">
             {authError}
           </div>
         )}

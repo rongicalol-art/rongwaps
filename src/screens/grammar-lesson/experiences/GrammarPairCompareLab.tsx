@@ -53,7 +53,7 @@ export function GrammarPairCompareLab({
         />
       </div>
 
-      <div className="mt-5 overflow-hidden rounded-[22px] border border-ui-border bg-ui-surface shadow-[0_3px_0_var(--color-ui-border)]">
+      <div className="mt-5 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface">
         <div className="grid gap-3 p-5 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:items-center sm:p-7">
           {[
             { label: selected.leftLabel, value: selected.leftValue, tone: 'bg-brand-primary' },

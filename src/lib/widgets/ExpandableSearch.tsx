@@ -47,9 +47,9 @@ export function ExpandableSearch({
       } ${className}`}
     >
       <div
-        className={`w-full min-w-[44px] relative flex items-center h-[44px] rounded-[16px] overflow-hidden ${
+        className={`w-full min-w-[44px] relative flex items-center h-[44px] rounded-control overflow-hidden ${
           isExpanded 
-            ? 'bg-ui-surface focus-within:bg-white focus-within:ring-4 focus-within:ring-brand-primary/20'
+            ? 'bg-ui-surface focus-within:bg-ui-surface focus-within:ring-4 focus-within:ring-brand-primary/20'
             : 'bg-transparent transition-colors'
         }`}
       >
@@ -87,7 +87,7 @@ export function ExpandableSearch({
             onClick={() => handleSetExpanded(true)}
             aria-label={`Open ${label}`}
             aria-expanded="false"
-            className="flex h-full w-full items-center justify-center rounded-[14px] text-ui-muted-strong outline-none transition-[transform,color] hover:text-ui-ink active:scale-90 focus-visible:ring-4 focus-visible:ring-brand-primary/25"
+            className="flex h-full w-full items-center justify-center rounded-compact text-ui-muted-strong outline-none transition-[transform,color] hover:text-ui-ink active:scale-90 focus-ring"
           >
             <AppIcon name="search" size={18} />
           </button>
@@ -106,7 +106,7 @@ export function ExpandableSearch({
                 inputRef.current?.focus();
               }}
               aria-label={`Clear ${label}`}
-              className="absolute inset-y-0 right-0 flex w-11 items-center justify-center text-ui-muted outline-none hover:text-ui-ink focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-brand-primary/25"
+              className="absolute inset-y-0 right-0 flex w-11 items-center justify-center text-ui-muted outline-none hover:text-ui-ink focus-ring"
             >
               <AppIcon name="close" size={16} />
             </motion.button>

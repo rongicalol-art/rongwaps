@@ -148,12 +148,12 @@ export function SentenceUnscrambleExercise({
           </div>
 
           {exercise.status === 'needs-repair' && (
-            <p className="mt-4 rounded-[14px] border-l-4 border-feedback-danger bg-[#FFF1F1] px-4 py-3 text-sm font-bold leading-6 text-feedback-danger" role="status">
+            <p className="mt-4 rounded-control border-l-4 border-feedback-danger bg-feedback-danger-surface px-4 py-3 text-sm font-bold leading-6 text-feedback-danger" role="status">
               {data.repairFeedback}
             </p>
           )}
           {exercise.status === 'complete' && (
-            <p className="mt-4 rounded-[14px] bg-[#F0FAE8] px-4 py-3 text-sm font-bold leading-6 text-feedback-success" role="status">
+            <p className="mt-4 rounded-control bg-feedback-success-surface px-4 py-3 text-sm font-bold leading-6 text-feedback-success" role="status">
               {data.correctFeedback}
             </p>
           )}
@@ -161,7 +161,7 @@ export function SentenceUnscrambleExercise({
 
         <div className="mt-6">
           {exercise.status === 'complete' ? (
-            <div className="flex flex-col gap-4 rounded-[20px] border-2 border-feedback-success bg-ui-surface p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
+            <div className="flex flex-col gap-4 rounded-feature border-b-[length:var(--depth-md)] border-feedback-success bg-ui-surface p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
               <div>
                 <p className="flex items-center gap-2 font-black text-feedback-success">
                   <AppIcon name="check" size={21} /> Exercise complete

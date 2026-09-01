@@ -72,7 +72,7 @@ export function MainHeader({
                   type="button"
                   onClick={onLeftIconClick}
                   aria-label="Open profile"
-                  className="flex min-h-11 min-w-11 items-center justify-center rounded-full transition-all hover:opacity-80 active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25"
+                  className="flex min-h-11 min-w-11 items-center justify-center rounded-full transition-all hover:opacity-80 active:scale-95 outline-none focus-ring"
                 >
                   {resolvedLeftIcon}
                 </button>
@@ -99,7 +99,7 @@ export function MainHeader({
                 aria-label="Start practice"
                 title="Start practice"
                 className={cn(
-                  'flex h-11 w-11 shrink-0 items-center justify-center rounded-[15px] text-white outline-none transition-transform active:scale-95 focus-visible:ring-4 focus-visible:ring-brand-primary/25',
+                  'flex h-11 w-11 shrink-0 items-center justify-center rounded-control text-white outline-none transition-transform active:scale-95 focus-ring',
                   activeBook.accentBg,
                 )}
               >

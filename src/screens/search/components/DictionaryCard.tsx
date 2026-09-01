@@ -26,12 +26,12 @@ export const DictionaryCard = memo(function DictionaryCard({
 
   return (
     <article
-      className="group flex w-full flex-row items-center gap-3 border-b-2 border-ui-divider px-2 py-4 transition-[background-color,padding] hover:bg-ui-surface focus-within:rounded-[18px] focus-within:bg-ui-surface focus-within:ring-4 focus-within:ring-brand-primary/15 sm:gap-4 sm:px-4"
+      className="group flex w-full flex-row items-center gap-3 border-b-2 border-ui-divider px-2 py-4 transition-[background-color,padding] hover:bg-ui-surface focus-within:rounded-control focus-within:bg-ui-surface sm:gap-4 sm:px-4"
     >
       <button
         type="button"
         onClick={onClick}
-        className="flex min-h-14 min-w-0 flex-1 flex-col items-start overflow-hidden rounded-[16px] text-left outline-none"
+        className="flex min-h-14 min-w-0 flex-1 flex-col items-start overflow-hidden rounded-control text-left outline-none focus-ring"
         aria-label={`Open ${entry.traditional}: ${formatDefinitions(entry.definitions)}`}
       >
         <div className="relative mb-1 flex w-full items-center gap-3">
@@ -73,7 +73,7 @@ export const DictionaryCard = memo(function DictionaryCard({
         onClick={onToggleFavorite}
         aria-label={isFavorite ? `Remove ${entry.traditional} from saved words` : `Save ${entry.traditional}`}
         aria-pressed={isFavorite}
-        className="shrink-0 rounded-full p-2 text-ui-muted outline-none transition-colors hover:text-brand-primary focus-visible:ring-4 focus-visible:ring-brand-primary/20"
+        className="shrink-0 rounded-full p-2 text-ui-muted outline-none transition-colors hover:text-brand-primary focus-ring"
       >
         <AppIcon
           name={isFavorite ? 'bookmarkFilled' : 'bookmark'}

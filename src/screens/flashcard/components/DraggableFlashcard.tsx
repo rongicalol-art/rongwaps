@@ -225,7 +225,7 @@ export const DraggableFlashcard = ({
       >
         {/* Front Side */}
         <motion.div
-          className="absolute inset-0 flex items-center justify-center rounded-[32px] border-b-4 border-ui-border bg-white p-8"
+          className="absolute inset-0 flex items-center justify-center rounded-feature border-b-[length:var(--depth-lg)] border-ui-divider bg-ui-surface p-8"
           style={{ opacity: frontOpacity, visibility: frontVisibility }}
         >
           <div className="flex max-w-full flex-row flex-wrap items-center justify-center">
@@ -252,7 +252,7 @@ export const DraggableFlashcard = ({
                     setActiveBreakdown(card.front, hanziIndex);
                   }}
                   glyphClassName={`${getFrontFontSize(frontLength)} block leading-[1.1] text-ui-ink tracking-normal text-center`}
-                  className="flex flex-col items-center justify-center rounded-[24px] px-1 sm:px-2 py-4 sm:py-6"
+                  className="flex flex-col items-center justify-center rounded-feature px-1 sm:px-2 py-4 sm:py-6"
                 />
               );
             })}
@@ -262,7 +262,7 @@ export const DraggableFlashcard = ({
         {/* Back Side — pre-rotated 180° so it reads normally once the card
             has flipped; the midpoint crossfade swaps which face is visible. */}
         <motion.div
-          className="absolute inset-0 flex flex-col rounded-[32px] border-b-4 border-ui-border bg-white p-6 pb-10 sm:p-8 sm:pb-10"
+          className="absolute inset-0 flex flex-col rounded-feature border-b-[length:var(--depth-lg)] border-ui-divider bg-ui-surface p-6 pb-10 sm:p-8 sm:pb-10"
           style={{ opacity: backOpacity, rotateY: 180, visibility: backVisibility }}
         >
           <div
@@ -270,9 +270,9 @@ export const DraggableFlashcard = ({
             tabIndex={0}
             aria-label="Flashcard answer and example sentences"
             onScroll={handleBackScroll}
-            className="flex min-h-0 flex-1 flex-col items-center overflow-y-auto overscroll-contain pt-2 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25 sm:pt-3"
+            className="flex min-h-0 flex-1 flex-col items-center overflow-y-auto overscroll-contain pt-2 focus-ring sm:pt-3"
           >
-            <div className="flex min-h-full w-full shrink-0 flex-col items-center justify-center rounded-[24px] bg-transparent px-8 py-3">
+            <div className="flex min-h-full w-full shrink-0 flex-col items-center justify-center rounded-feature bg-transparent px-8 py-3">
               <div className="flex flex-row items-center justify-center flex-wrap mb-3">
                 {Array.from(card.front).map((char, i) => {
                   const isHanzi = isHanziChar(char);
@@ -297,7 +297,7 @@ export const DraggableFlashcard = ({
                         setActiveBreakdown(card.front, hanziIndex);
                       }}
                       glyphClassName={`${getBackFrontFontSize(frontLength)} block leading-none text-ui-ink tracking-normal text-center`}
-                      className="rounded-[16px] px-1 py-1"
+                      className="rounded-control px-1 py-1"
                     />
                   );
                 })}

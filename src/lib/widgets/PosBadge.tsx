@@ -205,7 +205,7 @@ export function PosBadge({ pos, className = '' }: PosBadgeProps) {
             className={cn('relative w-[min(240px,78vw)]')}
           >
             <div className={cn(
-              'block rounded-[14px] border bg-white px-3.5 py-3 text-left',
+              'block rounded-compact border bg-ui-surface px-3.5 py-3 text-left',
               TOOLTIP_TONES[category],
             )}>
               <span className="flex items-center gap-1.5">

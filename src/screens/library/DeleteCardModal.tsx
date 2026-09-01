@@ -43,10 +43,10 @@ export function DeleteCardModal({
         aria-labelledby="delete-flashcard-title"
         tabIndex={-1}
         onKeyDown={onKeyDown}
-        className="relative w-full max-w-sm rounded-[24px] border-b-4 border-ui-border bg-ui-surface p-6 shadow-xl outline-none"
+        className="relative w-full max-w-sm rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface p-6 shadow-ambient-lg outline-none"
       >
         <div className="text-center mb-6">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-[20px] bg-feedback-danger-surface">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-control bg-feedback-danger-surface">
             <AppIcon name="trash" size={32} className="text-feedback-danger" />
           </div>
           <h2 id="delete-flashcard-title" className="text-xl font-extrabold text-ui-ink-strong">Delete Flashcard?</h2>

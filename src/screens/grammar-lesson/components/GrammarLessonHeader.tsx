@@ -75,15 +75,15 @@ export function GrammarLessonHeader({
                 className={isAidsOpen ? 'text-brand-primary hover:text-brand-primary' : undefined}
                 icon={(
                   <motion.span
-                    animate={{ rotate: isAidsOpen ? 180 : 0 }}
-                    transition={reduceMotion ? { duration: 0 } : { duration: 0.15, ease: 'easeOut' }}
+                    animate={{ rotate: isAidsOpen ? 90 : 0 }}
+                    transition={reduceMotion ? { duration: 0 } : { duration: 0.2, ease: 'easeOut' }}
                   >
-                    <AppIcon name="expand" size={20} />
+                    <AppIcon name="settings" size={20} />
                   </motion.span>
                 )}
-                label="Reading aids"
-                title="Reading aids"
-                aria-haspopup="menu"
+                label="Lesson settings"
+                title="Lesson settings"
+                aria-haspopup="dialog"
                 aria-expanded={isAidsOpen}
               />
               <AnimatePresence>
@@ -93,7 +93,7 @@ export function GrammarLessonHeader({
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 4, scale: 0.98 }}
                     transition={{ duration: 0.16, ease: [0.32, 0.72, 0, 1] }}
-                    className="absolute right-0 top-full z-30 mt-2 w-44 rounded-[17px] border-b-4 border-ui-border bg-ui-surface p-0.5 shadow-[0_8px_24px_rgba(0,0,0,0.12)]"
+                    className="absolute right-0 top-full z-50 mt-2 w-72 rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface p-4 shadow-ambient-lg sm:w-80"
                   >
                     <GrammarReadingAids
                       characterPreference={characterPreference}
