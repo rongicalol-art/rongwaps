@@ -23,27 +23,29 @@ function dealRandomWords(cards: Flashcard[], count: number): Flashcard[] {
 
 function WordRow({ card, onOpenWord }: { card: Flashcard; onOpenWord: (word: string) => void }) {
   return (
-    <button
-      type="button"
-      onClick={() => onOpenWord(card.front)}
-      aria-label={`Open ${card.front}`}
-      className="group flex w-full items-center gap-3 py-3.5 text-left outline-none focus-ring rounded-sm sm:gap-4"
-    >
-      <span className="shrink-0 font-chinese text-[26px] font-bold leading-none text-ui-ink transition-colors group-hover:text-brand-primary sm:text-[30px]">
-        {card.front}
-      </span>
-      <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-        <span className="flex items-center gap-2">
-          <span className="truncate text-[13px] font-extrabold text-ui-muted sm:text-[14px]">
-            {card.pinyin || '\u00A0'}
+    <div className="group flex w-full items-center gap-3 py-3.5 text-left outline-none sm:gap-4">
+      <button
+        type="button"
+        onClick={() => onOpenWord(card.front)}
+        aria-label={`Open ${card.front}`}
+        className="flex min-w-0 flex-1 items-center gap-3 text-left outline-none focus-ring rounded-sm sm:gap-4"
+      >
+        <span className="shrink-0 font-chinese text-[26px] font-bold leading-none text-ui-ink transition-colors group-hover:text-brand-primary sm:text-[30px]">
+          {card.front}
+        </span>
+        <span className="flex min-w-0 flex-1 flex-col gap-0.5">
+          <span className="flex items-center gap-2">
+            <span className="truncate text-[13px] font-extrabold text-ui-muted sm:text-[14px]">
+              {card.pinyin || '\u00A0'}
+            </span>
+            <PosBadge pos={card.pos} />
           </span>
-          <PosBadge pos={card.pos} />
+          <span className="line-clamp-1 text-[14px] font-bold leading-snug text-ui-ink sm:text-[15px]">
+            {card.back || '\u00A0'}
+          </span>
         </span>
-        <span className="line-clamp-1 text-[14px] font-bold leading-snug text-ui-ink sm:text-[15px]">
-          {card.back || '\u00A0'}
-        </span>
-      </span>
-    </button>
+      </button>
+    </div>
   );
 }
 
@@ -68,7 +70,7 @@ export function BookWordRail({ bookId, onOpenWord }: BookWordRailProps) {
   if (!isLoading && !error && cards.length === 0) return null;
 
   return (
-    <section aria-label="From your book" className="rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface p-5 sm:p-6">
+    <section aria-label="From your book" className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-5 sm:p-6">
       <div className="flex items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-2 text-ui-ink-strong">
           <h2 className="text-[16px] font-black">From your book</h2>
@@ -104,7 +106,7 @@ export function BookWordRail({ bookId, onOpenWord }: BookWordRailProps) {
           />
         </div>
       ) : (
-        <div className="mt-2 flex flex-col [&>*+*]:border-t [&>*+*]:border-ui-divider">
+        <div className="mt-2 flex flex-col [&>*+*]:border-t-2 [&>*+*]:border-ui-divider">
           {isLoading
             ? Array.from({ length: ROW_COUNT }, (_, index) => (
                 <div key={index} className="flex w-full items-center gap-3 py-3.5 sm:gap-4">

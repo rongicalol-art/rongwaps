@@ -96,7 +96,7 @@ export function GrammarDiscoveryLab({
         />
       </div>
 
-      <div className="mt-5 rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface px-5 py-6 sm:px-7 sm:py-7">
+      <div className="mt-5 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface px-5 py-6 sm:px-7 sm:py-7">
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
             <p className="font-chinese text-[27px] font-black leading-relaxed text-ui-ink-strong sm:text-[34px]">

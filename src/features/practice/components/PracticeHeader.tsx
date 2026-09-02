@@ -72,7 +72,7 @@ export function PracticeHeader({
     <>
       <div
         ref={containerRef}
-        className="relative w-full bg-transparent pt-[env(safe-area-inset-top,0px)]"
+        className="relative w-full bg-gradient-to-b from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent pb-3 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] backdrop-blur-[2px]"
       >
         <ScreenHeader
           {...props}
@@ -80,7 +80,7 @@ export function PracticeHeader({
           totalCount={totalCount}
           maxWidth="4xl"
           progressSize="compact"
-          className={cn('!h-auto !min-h-0 !border-0 !bg-transparent !px-4 !py-3 !shadow-none sm:!px-6 lg:!px-10')}
+          className={cn('!h-auto !min-h-0 !border-0 !bg-transparent !px-4 !py-1 !shadow-none sm:!px-6 lg:!px-10')}
           rightAction={
             <div className="flex h-10 shrink-0 items-center gap-2 pointer-events-auto">
               {hasSessionControls && (

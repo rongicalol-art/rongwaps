@@ -27,7 +27,7 @@ function LessonItemBase({
   const isLocked = lesson.state === 'locked';
   const landscapeSrc = LESSON_LANDSCAPE_ART[lesson.id];
   const englishTitle = getEnglishLessonTitle(lesson.title);
-  let containerClasses = 'mb-3 rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface hover:bg-ui-hover';
+  let containerClasses = 'mb-3 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface hover:bg-ui-hover';
   let innerDivider = null;
 
   if (isSelected) {
@@ -76,7 +76,7 @@ function LessonItemBase({
             }`}
           />
           {isLocked && (
-            <span className="absolute grid h-7 w-7 place-items-center rounded-full bg-ui-surface text-ui-muted border-b-[length:var(--depth-sm)] border-ui-divider">
+            <span className="absolute grid h-7 w-7 place-items-center rounded-full bg-ui-surface text-ui-muted border-b-[length:var(--depth-sm)] border-ui-border">
               <AppIcon name="lock" size={16} />
             </span>
           )}

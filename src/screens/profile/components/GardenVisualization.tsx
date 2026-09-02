@@ -36,7 +36,7 @@ export function GardenVisualization({ onWaterGarden }: { onWaterGarden: () => vo
   const cardsToReview = gardenStats.withered;
 
   return (
-    <div className="w-full bg-ui-surface rounded-feature border-b-[length:var(--depth-md)] border-ui-divider p-6 flex flex-col gap-6 relative overflow-hidden">
+    <div className="w-full bg-ui-surface rounded-feature border-b-[length:var(--depth-md)] border-ui-border p-6 flex flex-col gap-6 relative overflow-hidden">
       {/* Decorative background element using active book theme color */}
       <div 
         className="absolute -right-10 -bottom-10 w-40 h-40 rounded-full blur-2xl pointer-events-none opacity-20"
@@ -54,7 +54,7 @@ export function GardenVisualization({ onWaterGarden }: { onWaterGarden: () => vo
 
       <div className="grid grid-cols-4 gap-3 z-10">
         {/* Seeds */}
-        <div className="flex flex-col items-center justify-center p-3 bg-ui-canvas border-b-[length:var(--depth-sm)] border-ui-divider rounded-control">
+        <div className="flex flex-col items-center justify-center p-3 bg-ui-canvas border-b-[length:var(--depth-sm)] border-ui-border rounded-control">
           <AppIcon name="leaf" size={24} className="text-ui-muted mb-1 animate-pulse" />
           <span className="text-lg font-black text-ui-ink">{gardenStats.seeds}</span>
           <span className="text-[10px] font-bold text-ui-muted uppercase tracking-wider text-center leading-tight">Seeds</span>

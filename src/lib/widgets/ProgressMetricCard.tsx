@@ -26,7 +26,7 @@ export function ProgressMetricCard({
   return (
     <div
       className={cn(
-        'flex min-w-0 items-center gap-3 rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface p-4',
+        'flex min-w-0 items-center gap-3 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4',
         className,
       )}
       {...props}

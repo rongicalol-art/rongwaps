@@ -217,16 +217,16 @@ export function WordDetailView({
       style={{ zIndex: 300 + depth }}
       className={`absolute inset-0 flex h-full flex-col bg-ui-practice-canvas font-sans pointer-events-auto ${workspaceOffset ? 'workspace-window w-auto' : 'w-full'}`}
     >
-      <ScreenHeader
-        onClose={onClose}
-        centerContent={
-          <h1 className="w-full text-center text-sm font-black text-ui-ink-strong sm:text-base">Dictionary</h1>
-        }
-        maxWidth="none"
-        className="sticky top-0 z-40 w-full max-w-full shrink-0 border-0 bg-gradient-to-b from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent px-4 shadow-none backdrop-blur-[2px] sm:px-6 lg:px-10"
-      />
-
       <div className="custom-scrollbar relative z-10 flex-1 overflow-y-auto bg-transparent">
+        <ScreenHeader
+          onClose={onClose}
+          centerContent={
+            <h1 className="w-full text-center text-sm font-black text-ui-ink-strong sm:text-base">Dictionary</h1>
+          }
+          maxWidth="none"
+          className="sticky top-0 z-40 w-full max-w-full shrink-0 border-0 bg-gradient-to-b from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent px-4 pb-2 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] shadow-none backdrop-blur-[2px] sm:px-6 lg:px-10"
+        />
+
         <div className="relative mx-auto flex min-h-full w-full max-w-[1180px] flex-col gap-6 px-4 py-4 pb-12 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
           {loading ? (
             <WordDetailSkeleton />

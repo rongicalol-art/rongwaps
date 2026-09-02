@@ -50,6 +50,13 @@ test('lineIndexForTime maps time to the speaking line', () => {
   assert.equal(lineIndexForTime(alignment, 99), 1); // past end clamps to last
 });
 
+test('lineIndexForTime keeps the previous line active during pauses', () => {
+  // 3.2–3.5 is a pause between lines; the just-spoken line stays active so
+  // the next bubble isn't flagged as playing before its audio starts.
+  assert.equal(lineIndexForTime(alignment, 3.3), 0);
+  assert.equal(lineIndexForTime(alignment, 3.49), 0);
+});
+
 test('wordRangeForTime returns the char range of the spoken word', () => {
   const rendered = '宜文，她是誰？';
   assert.deepEqual(wordRangeForTime(alignment, 0, 1.5, rendered), { start: 0, end: 2 });

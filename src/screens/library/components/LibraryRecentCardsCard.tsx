@@ -17,7 +17,7 @@ export function LibraryRecentCardsCard({ items, onSelectWord }: LibraryRecentCar
   const hasItems = items.length > 0;
 
   return (
-    <section className="rounded-feature bg-ui-surface p-5 sm:p-6 border-b-[length:var(--depth-md)] border-ui-divider">
+    <section className="rounded-feature bg-ui-surface p-5 sm:p-6 border-b-[length:var(--depth-md)] border-ui-border">
       <div className="mb-4 flex items-center gap-2.5">
         <AppIcon name="clock" size={19} className="text-brand-primary" />
         <h2 className="text-[16px] font-black text-ui-ink-strong">Recent</h2>

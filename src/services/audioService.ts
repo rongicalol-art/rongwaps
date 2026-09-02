@@ -50,6 +50,9 @@ export class AudioService {
   
   private isInitialized = false;
   private currentSource: AudioBufferSourceNode | null = null;
+  // Handle for the rAF progress loop of an active playRange() so stop() can
+  // cut it off; otherwise the loop would keep reporting stale times.
+  private rangeRafHandle: number | null = null;
   private currentUtterance: SpeechSynthesisUtterance | null = null;
   // Browser voices, loaded lazily: Chrome/Firefox return an empty list from
   // getVoices() until `voiceschanged` fires, so the naive synchronous lookup
@@ -146,12 +149,16 @@ export class AudioService {
    * (e.g. re-uploads, intro trims) so browsers that cached the old files
    * re-fetch instead of playing stale audio forever. v3 = dialogue tracks
    * re-trimmed at the true dialogue start (spoken-title intro removed).
+   * v4 = dialogue tracks re-trimmed to remove the spoken lesson-title
+   * announcement (對話一/對話二) entirely, including dialogue-2 tracks.
+   * v5 = same, plus the pause after the announcement is cut at line 1's
+   * real speech onset (whisper folds the pause into the title segment).
    */
   private async getAudioFileCache(): Promise<Cache | null> {
     if (this.audioFileCache) return this.audioFileCache;
     try {
       if (typeof caches !== 'undefined') {
-        this.audioFileCache = await caches.open('rongwaps-audio-v3');
+        this.audioFileCache = await caches.open('rongwaps-audio-v5');
       }
     } catch {
       this.audioFileCache = null;
@@ -278,6 +285,12 @@ export class AudioService {
               this.fetchPromises.delete(fileName);
             }
           }
+          // The reading karaoke path (playRange) plays through the shared
+          // HTMLAudioElement, which needs an OBJECT URL, not a decoded
+          // buffer. Warm it too (the blob is already in the durable cache)
+          // so the first tap starts instantly instead of paying a network
+          // fetch while the user stares at silence.
+          await this.getAudioObjectUrl(fileName).catch(() => {});
         } else {
           if (!this.objectUrls.has(fileName) && !this.blobPromises.has(fileName)) {
             const promise = this.getAudioObjectUrl(fileName);
@@ -737,7 +750,21 @@ export class AudioService {
     });
   }
 
+  private cancelRangeRaf(): void {
+    if (this.rangeRafHandle !== null) {
+      try {
+        if (typeof cancelAnimationFrame !== 'undefined') {
+          cancelAnimationFrame(this.rangeRafHandle);
+        }
+      } catch {
+        // Best-effort — the loop is also guarded by `settled`.
+      }
+      this.rangeRafHandle = null;
+    }
+  }
+
   public stop(): void {
+    this.cancelRangeRaf();
     const source = this.currentSource;
     this.currentSource = null;
     if (source) {
@@ -970,27 +997,97 @@ export class AudioService {
           audio.ontimeupdate = null;
           audio.onended = null;
           audio.onerror = null;
+          this.cancelRangeRaf();
           finish();
         };
 
-        audio.src = src;
+        if (audio.src !== src) {
+          audio.src = src;
+          // Seek as soon as the source's metadata is known — playback cannot
+          // start before that, so the range always begins at `start` with no
+          // audible blip of the file's opening seconds.
+          if (typeof audio.addEventListener === 'function' && audio.readyState < 1) {
+            audio.addEventListener('loadedmetadata', () => {
+              try {
+                audio.currentTime = start;
+              } catch {
+                // Re-applied again in playPromise.then as a fallback.
+              }
+              audio.playbackRate = rate;
+            }, { once: true });
+          }
+        }
+        audio.defaultPlaybackRate = rate;
         audio.playbackRate = rate;
-        audio.currentTime = start;
+        try {
+          audio.currentTime = start;
+        } catch {
+          // If metadata not yet loaded, currentTime is reapplied in playPromise.then
+        }
         audio.onerror = () => settle();
         audio.onended = () => settle();
+
+        // Progress is reported from a requestAnimationFrame loop (when
+        // available) so karaoke highlighting tracks the audio instead of
+        // stepping at the browser's ~4 Hz `timeupdate` cadence — which made
+        // highlights start late, linger, and skip short phrases entirely.
+        const raf = typeof window !== 'undefined' && typeof window.requestAnimationFrame === 'function'
+          ? window.requestAnimationFrame.bind(window)
+          : null;
+
         audio.ontimeupdate = () => {
-          onTime?.(audio.currentTime);
+          // Range-end stop stays on `timeupdate` so it also fires when rAF
+          // is throttled (background tabs). Without rAF (e.g. tests), it is
+          // also the only progress-reporting source.
+          if (!raf) {
+            onTime?.(audio.currentTime);
+          }
           if (audio.currentTime >= end) {
             audio.pause();
             settle();
           }
         };
+
         const playPromise = audio.play();
-        playPromise?.catch(() => settle());
+        playPromise?.catch((err) => {
+          if (err?.name !== 'AbortError') {
+            settle();
+          }
+        });
         // Seeking before metadata is loaded can be ignored; re-apply once
         // playback actually starts so ranges always begin at `start`.
         playPromise?.then(() => {
-          if (!settled) audio.currentTime = start;
+          if (!settled) {
+            audio.currentTime = start;
+            audio.playbackRate = rate;
+            if (raf) {
+              const tick = () => {
+                if (settled) return;
+                this.rangeRafHandle = null;
+                const time = audio.currentTime;
+                if (time < start - 0.05) {
+                  // The seek hasn't landed yet; re-apply it and hold the
+                  // stale position back from the UI so the highlight doesn't
+                  // flash off right after tapping a phrase.
+                  try {
+                    audio.currentTime = start;
+                  } catch {
+                    // Ignored until metadata is available.
+                  }
+                  this.rangeRafHandle = raf(tick);
+                  return;
+                }
+                onTime?.(time);
+                if (time >= end) {
+                  audio.pause();
+                  settle();
+                  return;
+                }
+                this.rangeRafHandle = raf(tick);
+              };
+              this.rangeRafHandle = raf(tick);
+            }
+          }
         }).catch(() => {});
       };
 
@@ -1003,6 +1100,18 @@ export class AudioService {
           .catch(() => finish());
       }
     });
+  }
+
+  public setPlaybackRate(rate: number): void {
+    const validRate = rate > 0 ? rate : 1;
+    if (this.globalAudio) {
+      this.globalAudio.defaultPlaybackRate = validRate;
+      this.globalAudio.playbackRate = validRate;
+    }
+    if (this.activeBlobAudio) {
+      this.activeBlobAudio.defaultPlaybackRate = validRate;
+      this.activeBlobAudio.playbackRate = validRate;
+    }
   }
 }
 

@@ -29,7 +29,7 @@ export function GrammarTimeRangeLab({
         <p className="shrink-0 text-sm font-black text-ui-ink">{lab.prompt}</p>
         <SegmentedControl value={selected.id} onChange={setSelectedId} ariaLabel={lab.prompt} options={lab.choices.map(({ id, label }) => ({ value: id, label }))} className="w-full sm:max-w-3xl" />
       </div>
-      <div className="mt-5 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface">
+      <div className="mt-5 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
         <div className="px-5 py-7 sm:px-9 sm:py-9">
           <div className="grid grid-cols-[auto_minmax(80px,1fr)_auto] items-center gap-3">
             <div className="text-center">

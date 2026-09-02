@@ -45,7 +45,7 @@ export function GrammarExamplesSection({
         {page.examples.map((example, index) => (
           <div
             key={example.id}
-            className="flex items-start gap-3.5 rounded-feature bg-ui-surface p-4 border-b-[length:var(--depth-md)] border-ui-divider sm:gap-4 sm:p-5"
+            className="flex items-start gap-3.5 rounded-feature bg-ui-surface p-4 border-b-[length:var(--depth-md)] border-ui-border sm:gap-4 sm:p-5"
           >
             <span className="flex h-7 w-7 sm:h-8 sm:w-8 shrink-0 select-none items-center justify-center rounded-full bg-feedback-warning text-xs sm:text-sm font-black text-ui-ink-strong border-b-[length:var(--depth-sm)] border-feedback-warning-edge mt-0.5">
               {example.number}

@@ -69,7 +69,7 @@ export function FlashcardScreen({
 
   const { toggleCard } = useDeckExclusionActions(deckExclusionKey);
 
-  const { setIsInteractionActive, setSwipeFeedback } = useAppStore();
+  const { setSwipeFeedback } = useAppStore();
   const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
   const autoPlayAudio = usePracticePreferencesStore((state) => state.autoPlayAudio);
   const showPinyin = usePracticePreferencesStore((state) => state.showPinyin);
@@ -82,7 +82,6 @@ export function FlashcardScreen({
   const showFeedback = React.useCallback((level: number) => {
     if (feedbackTimeoutRef.current) clearTimeout(feedbackTimeoutRef.current);
     
-    setIsInteractionActive(true);
     setSwipeFeedback({
       text: level === 3 || level === 4 ? 'Learned' : 'Review',
       type: level === 3 || level === 4 ? 'learned' : 'review'
@@ -90,9 +89,8 @@ export function FlashcardScreen({
 
     feedbackTimeoutRef.current = setTimeout(() => {
       setSwipeFeedback(null);
-      setIsInteractionActive(false);
     }, 450);
-  }, [setIsInteractionActive, setSwipeFeedback]);
+  }, [setSwipeFeedback]);
 
   const wrappedHandleNext = React.useCallback((level: number) => {
     showFeedback(level);
@@ -102,7 +100,6 @@ export function FlashcardScreen({
   useEffect(() => {
     return () => {
       if (feedbackTimeoutRef.current) clearTimeout(feedbackTimeoutRef.current);
-      useAppStore.getState().setIsInteractionActive(false);
       useAppStore.getState().setSwipeFeedback(null);
     };
   }, []);

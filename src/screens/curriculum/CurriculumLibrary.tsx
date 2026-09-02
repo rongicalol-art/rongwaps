@@ -146,7 +146,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
           {isLoading && progress.lessons.length === 0 ? (
             <div aria-label="Loading lessons" className="grid w-full grid-cols-1 gap-3 lg:grid-cols-2 lg:gap-x-6">
               {Array.from({ length: 8 }, (_, index) => (
-                <div key={index} className="h-20 animate-pulse rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface" />
+                <div key={index} className="h-20 animate-pulse rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface" />
               ))}
             </div>
           ) : (

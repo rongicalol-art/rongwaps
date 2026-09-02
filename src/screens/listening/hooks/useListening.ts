@@ -15,7 +15,12 @@ import { buildMeaningChoices } from '../../../utils/meaningChoices';
 const NEURAL_PRELOAD_AHEAD = 2;
 
 export function useListening(activeBookId: number, selectedLessons: number[], isLibraryDeck: boolean = false, isReviewDeck: boolean = false) {
-  const { markCardReviewed, sessionProgressIndex, setSessionProgressIndex, clearSessionProgressIndex, libraryActiveFolder, selectedLessonParts } = useAppStore();
+  const markCardReviewed = useAppStore((state) => state.markCardReviewed);
+  const sessionProgressIndex = useAppStore((state) => state.sessionProgressIndex);
+  const setSessionProgressIndex = useAppStore((state) => state.setSessionProgressIndex);
+  const clearSessionProgressIndex = useAppStore((state) => state.clearSessionProgressIndex);
+  const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
+  const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
   const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
   const autoPlayAudio = usePracticePreferencesStore((state) => state.autoPlayAudio);
   const repeatMistakes = usePracticePreferencesStore((state) => state.repeatMistakes);
@@ -40,6 +45,7 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
   const pendingSessionCardIdRef = useRef<string | null>(null);
   const currentCardIdRef = useRef<string | null>(null);
   const gradingCardKeyRef = useRef<string | null>(null);
+  const currentCardChoicesRef = useRef<{ cardId: string; options: string[] } | null>(null);
   const isMountedRef = useRef(true);
   const playbackRequestRef = useRef(0);
 
@@ -50,6 +56,7 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
       sessionInitializedRef.current = false;
       currentCardIdRef.current = null;
       canonicalOrderRef.current = [];
+      currentCardChoicesRef.current = null;
       playbackRequestRef.current += 1;
       audioService.stop();
       setCards([]);
@@ -62,6 +69,14 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
       setIsChecked(false);
       setSessionResults({});
       gradingCardKeyRef.current = null;
+      return;
+    }
+
+    const isSameDeck = sessionInitializedRef.current
+      && loadedCards.length === canonicalOrderRef.current.length
+      && loadedCards.every((c, idx) => c.id === canonicalOrderRef.current[idx]?.id);
+
+    if (isSameDeck) {
       return;
     }
 
@@ -119,6 +134,7 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
 
   const toggleShuffle = useCallback(() => {
     const nextShuffled = !isShuffled;
+    currentCardChoicesRef.current = null;
     setActiveCards(nextShuffled ? shuffleItems(canonicalOrderRef.current) : [...canonicalOrderRef.current]);
     setCurrentIndex(0);
     setScreenState('playing');
@@ -129,11 +145,17 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
   }, [isShuffled]);
 
   // Generate distinct, shuffled meanings.
+  // Pinned per card ID so background updates / tab switches never refresh choices mid-card.
   const options = useMemo(() => {
     if (!currentCard || cards.length === 0) return [];
+    if (currentCardChoicesRef.current && currentCardChoicesRef.current.cardId === currentCard.id) {
+      return currentCardChoicesRef.current.options;
+    }
 
     const choices = buildMeaningChoices(currentCard, shuffleItems(cards));
-    return shuffleItems(choices).map((choice) => choice.back);
+    const result = shuffleItems(choices).map((choice) => choice.back);
+    currentCardChoicesRef.current = { cardId: currentCard.id, options: result };
+    return result;
   }, [currentCard, cards]);
 
   const playAudio = useCallback(async (rate: number = pronunciationRate) => {
@@ -225,6 +247,7 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
   }, [isChecked, isCorrect]);
 
   const resetAll = () => {
+    currentCardChoicesRef.current = null;
     setActiveCards(cards);
     canonicalOrderRef.current = cards;
     setIsShuffled(false);
@@ -237,6 +260,7 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
   };
 
   const reviewUnlearned = () => {
+    currentCardChoicesRef.current = null;
     const unlearnedIds = Object.entries(sessionResults)
       .filter(([, q]) => q === 1 || q === 2)
       .map(([id]) => id);

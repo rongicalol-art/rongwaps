@@ -97,7 +97,7 @@ export function CharNodeItem({
           ${isRoot ? 'p-4 sm:p-5' : 'p-3 sm:p-4'}`}
       >
         <div className="flex items-center gap-3 sm:gap-4 min-w-0 pr-4">
-          <div className={`flex items-center justify-center font-chinese shrink-0 transition-transform font-black bg-ui-canvas text-ui-ink border-b-[length:var(--depth-sm)] border-ui-divider
+          <div className={`flex items-center justify-center font-chinese shrink-0 transition-transform font-black bg-ui-canvas text-ui-ink border-b-[length:var(--depth-sm)] border-ui-border
             ${isRoot ? 'text-[28px] sm:text-[32px] w-[56px] h-[56px] rounded-control' : 'text-[22px] sm:text-[24px] w-[46px] h-[46px] rounded-compact'}`}>
             {char}
           </div>
@@ -171,7 +171,7 @@ export function CharNodeItem({
                   </div>
                 )}
                 
-                <div className="flex flex-col w-full bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider rounded-control overflow-hidden">
+                <div className="flex flex-col w-full bg-ui-surface border-b-[length:var(--depth-md)] border-ui-border rounded-control overflow-hidden">
                   {subChars.map((c, i) => (
                     <div key={`${c}-${i}`} className="relative flex flex-col">
                       {i > 0 && <div className="w-full h-[2px] bg-ui-divider" />}

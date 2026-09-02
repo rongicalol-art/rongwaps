@@ -30,7 +30,9 @@ export const ALL_READINGS: ReadingRecord[] = INTERACTIVE_GRAMMAR_PARTS
     paragraphs: part.dialogue.lines.map((line) => ({
       speaker: line.speaker,
       traditional: line.text.traditional,
-      simplified: line.text.simplified ?? line.text.traditional,
+      // Simplified Chinese has no 妳 (the course's female "you"): the 1:1
+      // character mapping keeps pinyin and alignment offsets intact.
+      simplified: (line.text.simplified ?? line.text.traditional).replace(/妳/g, '你'),
       pinyin: line.text.pinyin ?? '',
       english: line.text.english ?? '',
     })),

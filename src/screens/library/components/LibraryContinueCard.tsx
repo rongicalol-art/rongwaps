@@ -16,7 +16,7 @@ export function LibraryContinueCard({
   const hasItems = itemCount > 0;
 
   return (
-    <div className="rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface p-5 sm:p-6">
+    <div className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-5 sm:p-6">
       <div className="mb-4 flex items-center gap-2.5">
         <AppIcon name="flashcard" size={20} className="text-brand-secondary" />
         <h2 className="text-[14px] font-black uppercase tracking-wider text-ui-ink-strong">

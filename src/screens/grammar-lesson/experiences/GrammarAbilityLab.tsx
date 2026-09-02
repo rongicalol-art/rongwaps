@@ -37,7 +37,7 @@ export function GrammarAbilityLab({
         <p className="shrink-0 text-sm font-black text-ui-ink">{lab.prompt}</p>
         <SegmentedControl value={selected.id} onChange={setSelectedId} ariaLabel={lab.prompt} options={lab.choices.map(({ id, label }) => ({ value: id, label }))} className="w-full sm:max-w-3xl" />
       </div>
-      <div className="mt-5 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface">
+      <div className="mt-5 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
         <div className="grid gap-4 p-5 sm:grid-cols-[0.7fr_1.3fr] sm:items-stretch sm:p-7">
           <div className="rounded-control bg-ui-canvas p-5">
             <span className="text-[10px] font-black uppercase text-ui-muted">Real-world factor</span>

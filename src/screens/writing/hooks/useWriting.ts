@@ -81,6 +81,14 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
       return;
     }
 
+    const isSameDeck = sessionInitializedRef.current
+      && loadedCards.length === canonicalOrderRef.current.length
+      && loadedCards.every((c, idx) => c.id === canonicalOrderRef.current[idx]?.id);
+
+    if (isSameDeck) {
+      return;
+    }
+
     setCards(loadedCards);
     if (loadedCards.length > 0) {
       const cardIdToRetain = sessionInitializedRef.current

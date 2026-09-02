@@ -79,7 +79,7 @@ export const LibraryStatsCard = memo(function LibraryStatsCard({
   return (
     <section
       aria-label="Library Overview"
-      className="rounded-feature bg-ui-surface p-5 sm:p-6 border-b-[length:var(--depth-md)] border-ui-divider"
+      className="rounded-feature bg-ui-surface p-5 sm:p-6 border-b-[length:var(--depth-md)] border-ui-border"
     >
       <div className="mb-4 flex items-center gap-2.5">
         <AppIcon name="analytics" size={19} className="text-emerald-500" />

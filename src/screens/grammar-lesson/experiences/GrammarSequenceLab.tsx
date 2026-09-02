@@ -29,7 +29,7 @@ export function GrammarSequenceLab({
         <p className="shrink-0 text-sm font-black text-ui-ink">{lab.prompt}</p>
         <SegmentedControl value={selected.id} onChange={setSelectedId} ariaLabel={lab.prompt} options={lab.choices.map(({ id, label }) => ({ value: id, label }))} className="w-full sm:max-w-3xl" />
       </div>
-      <div className="mt-5 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface">
+      <div className="mt-5 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
         <div className="grid gap-4 p-5 sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:p-7">
           <div className="rounded-[18px] border-2 border-brand-primary bg-brand-primary/5 p-5">
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-primary text-sm font-black text-white">1</span>

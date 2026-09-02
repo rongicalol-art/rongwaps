@@ -166,7 +166,7 @@ export function DropdownMenu({
             exit={{ opacity: 0 }}
             transition={reduceMotion ? { duration: 0 } : { duration: 0.15, ease: 'easeOut' }}
             className={cn(
-              'absolute top-full z-50 rounded-control border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface shadow-ambient-md',
+              'absolute top-full z-50 rounded-control border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface',
               'flex flex-col p-0.5',
               gapClassName,
               widthClassName,

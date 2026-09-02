@@ -15,31 +15,20 @@ export type RongWapsCharacter =
   | 'apartmentAgent'
   | 'neighbor';
 
-interface CharacterCrop {
-  sheet: 'main' | 'supporting';
-  column: 0 | 1 | 2;
-  row: 0 | 1;
-}
-
-const CHARACTER_CROPS: Record<RongWapsCharacter, CharacterCrop> = {
-  youmei: { sheet: 'main', column: 0, row: 0 },
-  zhongming: { sheet: 'main', column: 1, row: 0 },
-  yiwen: { sheet: 'main', column: 2, row: 0 },
-  guoan: { sheet: 'main', column: 0, row: 1 },
-  yuanzhen: { sheet: 'main', column: 1, row: 1 },
-  jiale: { sheet: 'main', column: 2, row: 1 },
-  teacher: { sheet: 'supporting', column: 0, row: 0 },
-  parent: { sheet: 'supporting', column: 1, row: 0 },
-  doctor: { sheet: 'supporting', column: 2, row: 0 },
-  cafeWorker: { sheet: 'supporting', column: 0, row: 1 },
-  apartmentAgent: { sheet: 'supporting', column: 1, row: 1 },
-  neighbor: { sheet: 'supporting', column: 2, row: 1 },
+const PORTRAITS: Record<RongWapsCharacter, string> = {
+  youmei: new URL('../../assets/images/characters/portraits/youmei.webp', import.meta.url).href,
+  zhongming: new URL('../../assets/images/characters/portraits/zhongming.webp', import.meta.url).href,
+  yiwen: new URL('../../assets/images/characters/portraits/yiwen.webp', import.meta.url).href,
+  guoan: new URL('../../assets/images/characters/portraits/guoan.webp', import.meta.url).href,
+  yuanzhen: new URL('../../assets/images/characters/portraits/yuanzhen.webp', import.meta.url).href,
+  jiale: new URL('../../assets/images/characters/portraits/jiale.webp', import.meta.url).href,
+  teacher: new URL('../../assets/images/characters/portraits/teacher.webp', import.meta.url).href,
+  parent: new URL('../../assets/images/characters/portraits/parent.webp', import.meta.url).href,
+  doctor: new URL('../../assets/images/characters/portraits/doctor.webp', import.meta.url).href,
+  cafeWorker: new URL('../../assets/images/characters/portraits/cafeWorker.webp', import.meta.url).href,
+  apartmentAgent: new URL('../../assets/images/characters/portraits/apartmentAgent.webp', import.meta.url).href,
+  neighbor: new URL('../../assets/images/characters/portraits/neighbor.webp', import.meta.url).href,
 };
-
-const SHEETS = {
-  main: new URL('../../assets/images/characters/rongwaps-main-cast-app.webp', import.meta.url).href,
-  supporting: new URL('../../assets/images/characters/rongwaps-supporting-cast-app.webp', import.meta.url).href,
-} as const;
 
 export interface RongWapsCharacterPortraitProps extends React.HTMLAttributes<HTMLDivElement> {
   character: RongWapsCharacter;
@@ -52,28 +41,22 @@ export function RongWapsCharacterPortrait({
   className,
   ...props
 }: RongWapsCharacterPortraitProps) {
-  const crop = CHARACTER_CROPS[character];
+  const portraitUrl = PORTRAITS[character];
 
   return (
     <div
       role="img"
       aria-label={label}
-      className={cn('relative aspect-square overflow-hidden bg-ui-surface', className)}
+      className={cn('relative aspect-square overflow-hidden bg-transparent', className)}
       {...props}
     >
       <img
-        src={SHEETS[crop.sheet]}
-        alt=""
-        aria-hidden="true"
+        src={portraitUrl}
+        alt={label}
         draggable={false}
         loading="lazy"
         decoding="async"
-        className="pointer-events-none absolute max-w-none select-none"
-        style={{
-          width: '306%',
-          left: `${-(crop.column * 102 + 1)}%`,
-          top: `${-(crop.row * 102 + 1)}%`,
-        }}
+        className="h-full w-full object-cover select-none pointer-events-none scale-[1.24] translate-y-[6%]"
       />
     </div>
   );

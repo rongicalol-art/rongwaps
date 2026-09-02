@@ -1,25 +1,13 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { motion } from 'motion/react';
-import {
-  AppIcon,
-  DropdownMenu,
-  DropdownMenuItem,
-  IconActionButton,
-  ScreenHeader,
-} from '../../lib/widgets';
-import { SAMPLE_LESSONS } from '../../data/books';
-import { audioService } from '../../services/audioService';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useAppStore } from '../../store/useAppStore';
 import type { ReadingRecord } from '../../types/models';
-import { cn } from '../../utils/cn';
-import { officialAudioFileName } from '../../utils/officialAudio';
 import { DIALOGUE_ALIGNMENTS } from '../../data/dialogueAlignment';
-import {
-  alignmentDuration,
-  lineIndexForTime,
-  wordRangeForTime,
-} from '../../utils/dialogueSync';
-import { ReadingProse } from './ReadingProse';
+import { officialAudioFileName } from '../../utils/officialAudio';
+import { useReaderAudio } from './hooks/useReaderAudio';
+import { ReaderHeader } from './components/ReaderHeader';
+import { ReadingCanvas } from './components/ReadingCanvas';
+import { ReadingBottomDock } from './components/ReadingBottomDock';
 
 interface ReaderScreenProps {
   readings: ReadingRecord[];
@@ -28,417 +16,345 @@ interface ReaderScreenProps {
   onClose: () => void;
 }
 
-interface LessonTitle {
-  english: string;
-  chinese: string;
-}
-
-const LESSON_TITLES = new Map<number, LessonTitle>(
-  SAMPLE_LESSONS
-    .filter((lesson) => lesson.title.includes(' · '))
-    .map((lesson) => [lesson.id, {
-      english: lesson.title.split(' · ')[0],
-      chinese: lesson.title.split(' · ').slice(1).join(' · '),
-    }]),
-);
-
 export function ReaderScreen({ readings, index, onNavigate, onClose }: ReaderScreenProps) {
-  const dialogRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLElement>(null);
-  const [activeParagraphIndex, setActiveParagraphIndex] = useState<number | null>(null);
+  const lastScrollY = useRef(0);
+
+  const [isDockVisible, setIsDockVisible] = useState(true);
   const [showPinyin, setShowPinyin] = useState(false);
   const [showMeaning, setShowMeaning] = useState(false);
-  const [aidsOpen, setAidsOpen] = useState(false);
+  const [textSize, setTextSize] = useState<'normal' | 'large'>('normal');
   const [audioMode, setAudioMode] = useState<'book' | 'tts'>('book');
-  // Karaoke playback: whole-dialogue or single-line range, live position.
-  const [playback, setPlayback] = useState<{ playing: boolean; time: number }>({ playing: false, time: 0 });
-  const playbackTokenRef = useRef(0);
+  const [navToast, setNavToast] = useState<{
+    lessonId: number;
+    partId: number;
+    title: string;
+  } | null>(null);
+  const toastTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const showNavToast = useCallback((targetReading: ReadingRecord) => {
+    if (toastTimeoutRef.current) {
+      clearTimeout(toastTimeoutRef.current);
+    }
+    setNavToast({
+      lessonId: targetReading.lessonId,
+      partId: targetReading.dialogueNumber,
+      title: targetReading.title,
+    });
+    toastTimeoutRef.current = setTimeout(() => {
+      setNavToast(null);
+    }, 1800);
+  }, []);
+
+  const prevIndexRef = useRef(index);
+  useEffect(() => {
+    if (prevIndexRef.current !== index) {
+      prevIndexRef.current = index;
+      const targetReading = readings[index];
+      if (targetReading) {
+        showNavToast(targetReading);
+      }
+    }
+  }, [index, readings, showNavToast]);
+
+  useEffect(() => {
+    return () => {
+      if (toastTimeoutRef.current) {
+        clearTimeout(toastTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const characterPreference = useAppStore((state) => state.characterPreference);
   const setCharacterPreference = useAppStore((state) => state.setCharacterPreference);
 
-  const reading = readings[index];
-  const lessonTitle = LESSON_TITLES.get(reading.lessonId);
-  const activeParagraph = reading.paragraphs[activeParagraphIndex ?? -1] ?? null;
+  const reading = readings[index] ?? readings[0];
 
-  // Official 時代華語 dialogue track for this reading (null → TTS only).
+  // Dialogue alignment for karaoke sync
+  const alignment = DIALOGUE_ALIGNMENTS[reading?.id ?? ''] ?? null;
   const bookAudioFileName = useMemo(
-    () => officialAudioFileName(reading.bookId, reading.audioReference),
+    () => (reading ? officialAudioFileName(reading.bookId, reading.audioReference) : null),
     [reading],
   );
 
-  // Whisper alignment of the official track to the dialogue lines (null →
-  // no karaoke for this reading; falls back to whole-track playback).
-  const alignment = DIALOGUE_ALIGNMENTS[reading.id] ?? null;
-  const canKaraoke = Boolean(alignment && bookAudioFileName);
+  // Audio Hook
+  const {
+    playing,
+    currentTime,
+    totalDuration,
+    playbackSpeed,
+    isLooping,
+    canKaraoke,
+    activeLineIndex,
+    togglePlay,
+    playLine,
+    playFromTime,
+    stop,
+    seekTo,
+    scrubTo,
+    prevSentence,
+    nextSentence,
+    cycleSpeed,
+    toggleLoop,
+  } = useReaderAudio({
+    reading,
+    alignment,
+    characterPreference,
+    audioMode,
+  });
 
-  const readingsByLesson = useMemo(() => {
-    const grouped = new Map<number, ReadingRecord[]>();
-    readings.forEach((candidate) => {
-      const lessonReadings = grouped.get(candidate.lessonId) ?? [];
-      lessonReadings.push(candidate);
-      grouped.set(candidate.lessonId, lessonReadings);
-    });
-    return Array.from(grouped.entries());
-  }, [readings]);
-
-  const fullText = useMemo(
-    () => reading.paragraphs
-      .map((paragraph) => characterPreference === 'simplified' ? paragraph.simplified : paragraph.traditional)
-      .join(''),
-    [characterPreference, reading],
-  );
-
-  // A fresh page every time the reading changes.
+  // Always show dock when audio starts playing
   useEffect(() => {
-    setActiveParagraphIndex(null);
-    setPlayback({ playing: false, time: 0 });
-    playbackTokenRef.current += 1;
-    mainRef.current?.scrollTo({ top: 0 });
-  }, [reading.id]);
+    if (playing) {
+      setIsDockVisible(true);
+    }
+  }, [playing]);
 
-  // Karaoke highlight: current line and word from the live playback time.
-  const activeLineIndex = useMemo(() => (
-    playback.playing && alignment ? lineIndexForTime(alignment, playback.time) : null
-  ), [alignment, playback.playing, playback.time]);
-  const activeWordRange = useMemo(() => {
-    if (!playback.playing || !alignment || activeLineIndex === null) return null;
-    const renderedText = characterPreference === 'simplified'
-      ? reading.paragraphs[activeLineIndex]?.simplified ?? ''
-      : reading.paragraphs[activeLineIndex]?.traditional ?? '';
-    return wordRangeForTime(alignment, activeLineIndex, playback.time, renderedText);
-  }, [alignment, activeLineIndex, characterPreference, playback.playing, playback.time, reading.paragraphs]);
+  const isHoveringBottomRef = useRef(false);
+  const wasHoverRevealedRef = useRef(false);
+  const hoverLeaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const playRange = (startSec: number, endSec: number) => {
-    if (!bookAudioFileName) return;
-    const token = playbackTokenRef.current + 1;
-    playbackTokenRef.current = token;
-    setPlayback({ playing: true, time: startSec });
-    void audioService.playRange(bookAudioFileName, startSec, endSec, {
-      onTime: (time) => {
-        if (playbackTokenRef.current === token) {
-          setPlayback({ playing: true, time });
-        }
-      },
-    }).then(() => {
-      if (playbackTokenRef.current === token) {
-        setPlayback({ playing: false, time: 0 });
+  const handleBottomHoverEnter = useCallback(() => {
+    if (hoverLeaveTimerRef.current) {
+      clearTimeout(hoverLeaveTimerRef.current);
+      hoverLeaveTimerRef.current = null;
+    }
+    isHoveringBottomRef.current = true;
+    setIsDockVisible((currentVisible) => {
+      if (!currentVisible) {
+        wasHoverRevealedRef.current = true;
       }
+      return true;
     });
-  };
-
-  const toggleKaraoke = () => {
-    if (playback.playing) {
-      playbackTokenRef.current += 1;
-      audioService.stop();
-      setPlayback({ playing: false, time: 0 });
-      return;
-    }
-    if (alignment) {
-      playRange(0, alignmentDuration(alignment));
-    } else if (bookAudioFileName) {
-      void audioService.play(bookAudioFileName, 1, fullText);
-    }
-  };
-
-  // Warm the official dialogue track ahead of the first Listen so playback
-  // is instant; missing files simply skip (playback falls back to TTS).
-  useEffect(() => {
-    if (bookAudioFileName) {
-      void audioService.preload([bookAudioFileName]);
-    }
-  }, [bookAudioFileName]);
-
-  // Freeze the workspace behind the reader and manage focus (mirrors the lesson modals).
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    const root = document.getElementById('root');
-    const siblings = root
-      ? Array.from(root.children).filter((element) => element !== dialog) as HTMLElement[]
-      : [];
-    const targets = siblings.map((element) => (
-      (element.querySelector('[data-workspace-content]') as HTMLElement | null) ?? element
-    ));
-    const previousStates = targets.map((target) => ({
-      target,
-      inert: target.hasAttribute('inert'),
-      ariaHidden: target.getAttribute('aria-hidden'),
-    }));
-    targets.forEach((target) => {
-      target.setAttribute('inert', '');
-      target.setAttribute('aria-hidden', 'true');
-    });
-    dialog?.focus();
-
-    return () => {
-      audioService.stop();
-      previousStates.forEach(({ target, inert, ariaHidden }) => {
-        if (!inert) target.removeAttribute('inert');
-        if (ariaHidden === null) target.removeAttribute('aria-hidden');
-        else target.setAttribute('aria-hidden', ariaHidden);
-      });
-    };
   }, []);
 
-  useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key !== 'Escape' || aidsOpen) return;
-      onClose();
-    };
-    window.addEventListener('keydown', handleEscape);
-    return () => window.removeEventListener('keydown', handleEscape);
-  }, [aidsOpen, onClose]);
-
-  const toggleParagraph = (paragraphIndex: number) => {
-    setActiveParagraphIndex((current) => current === paragraphIndex ? null : paragraphIndex);
-    // Tap a line to hear just that line (official audio) when aligned.
-    if (alignment && bookAudioFileName) {
-      const line = alignment.lines[paragraphIndex];
-      if (line) {
-        playRange(line.start, line.end);
+  const handleBottomHoverLeave = useCallback(() => {
+    isHoveringBottomRef.current = false;
+    if (hoverLeaveTimerRef.current) {
+      clearTimeout(hoverLeaveTimerRef.current);
+    }
+    hoverLeaveTimerRef.current = setTimeout(() => {
+      if (wasHoverRevealedRef.current) {
+        wasHoverRevealedRef.current = false;
+        setIsDockVisible(false);
       }
-    }
-  };
+    }, 80);
+  }, []);
 
-  const handleListen = () => {
-    const locale = characterPreference === 'simplified' ? 'zh-CN' : 'zh-TW';
-    if (audioMode === 'book' && bookAudioFileName) {
-      // Official book track; neural TTS of the full text is the automatic
-      // fallback if the file is missing or fails to load.
-      void audioService.play(bookAudioFileName, 1, fullText);
-      return;
-    }
-    void audioService.speakText(fullText, locale, 0.84);
-  };
+  // Scroll listener for dynamic native-app hide/reveal of bottom dock
+  useEffect(() => {
+    const main = mainRef.current;
+    if (!main) return;
 
-  const closeAids = () => setAidsOpen(false);
+    const handleScroll = () => {
+      // Don't auto-hide dock if user is currently hovering at the bottom
+      if (isHoveringBottomRef.current) return;
+
+      const currentScrollY = main.scrollTop;
+      const delta = currentScrollY - lastScrollY.current;
+
+      // Scroll threshold to avoid jitter
+      if (Math.abs(delta) > 8) {
+        if (delta > 0 && currentScrollY > 40) {
+          // Scrolling down -> hide dock
+          wasHoverRevealedRef.current = false;
+          setIsDockVisible(false);
+        } else if (delta < 0) {
+          // Scrolling up -> reveal dock smoothly
+          wasHoverRevealedRef.current = false;
+          setIsDockVisible(true);
+        }
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    main.addEventListener('scroll', handleScroll, { passive: true });
+    return () => main.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Scroll to top when reading changes
+  useEffect(() => {
+    mainRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsDockVisible(true);
+  }, [reading?.id]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (target?.tagName === 'INPUT' || target?.tagName === 'TEXTAREA' || target?.isContentEditable) {
+        return;
+      }
+
+      if (event.key === 'Escape') {
+        onClose();
+      } else if (event.key === ' ') {
+        event.preventDefault();
+        setIsDockVisible(true);
+        togglePlay();
+      } else if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        if (event.altKey || event.metaKey) {
+          setIsDockVisible(true);
+          prevSentence();
+        } else {
+          // Debug keymap: jump to previous dialogue across lessons
+          const nextIndex = index > 0 ? index - 1 : readings.length - 1;
+          const targetReading = readings[nextIndex];
+          if (targetReading) {
+            showNavToast(targetReading);
+            onNavigate(nextIndex);
+          }
+        }
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        if (event.altKey || event.metaKey) {
+          setIsDockVisible(true);
+          nextSentence();
+        } else {
+          // Debug keymap: jump to next dialogue across lessons
+          const nextIndex = index < readings.length - 1 ? index + 1 : 0;
+          const targetReading = readings[nextIndex];
+          if (targetReading) {
+            showNavToast(targetReading);
+            onNavigate(nextIndex);
+          }
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose, togglePlay, prevSentence, nextSentence, onNavigate, index, readings, showNavToast]);
+
+  // Stop audio when unmounting
+  useEffect(() => {
+    return () => {
+      stop();
+    };
+  }, [stop]);
+
+  if (!reading) return null;
 
   return (
     <motion.div
-      ref={dialogRef}
       tabIndex={-1}
       initial={{ opacity: 0, y: '100%' }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: '100%' }}
-      transition={{ duration: 0.32, ease: [0.32, 0.72, 0, 1] }}
-      className="workspace-window fixed inset-0 z-[500] flex flex-col overflow-hidden bg-ui-surface outline-none"
+      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed top-0 bottom-0 right-0 z-[500] flex flex-col overflow-hidden bg-ui-practice-canvas outline-none transition-[left] duration-300 ease-out"
+      style={{ left: 'var(--workspace-nav-width, 0px)' }}
       role="dialog"
       aria-modal="true"
-      aria-label={`Reading: ${lessonTitle?.english ?? `Lesson ${reading.lessonId}`}`}
+      aria-label={`Reading: Lesson ${reading.lessonId} ${reading.title}`}
+      onPointerMove={(e) => {
+        // Approaching the bottom of the screen (within 75px) reveals the dock
+        if (e.clientY >= window.innerHeight - 75) {
+          handleBottomHoverEnter();
+        } else if (wasHoverRevealedRef.current && e.clientY < window.innerHeight - 90) {
+          handleBottomHoverLeave();
+        }
+      }}
     >
-      <ScreenHeader
-        onClose={onClose}
-        maxWidth="none"
-        className="z-30 border-b-0 bg-transparent shadow-none"
-        rightAction={(
-          <DropdownMenu
-            label="Reading aids"
-            open={aidsOpen}
-            onOpenChange={setAidsOpen}
-            align="end"
-            widthClassName="w-56"
-            renderTrigger={(props) => (
-              <IconActionButton
-                {...props}
-                size="lg"
-                variant="surface"
-                icon={<AppIcon name="controls" size={22} />}
-                label="Reading aids"
-              />
-            )}
-          >
-            <DropdownMenuItem
-              active={characterPreference === 'traditional'}
-              onClick={() => { setCharacterPreference('traditional'); closeAids(); }}
-            >
-              繁體 · Traditional
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              active={characterPreference === 'simplified'}
-              onClick={() => { setCharacterPreference('simplified'); closeAids(); }}
-            >
-              简体 · Simplified
-            </DropdownMenuItem>
-            <div className="my-1 h-px bg-ui-divider" aria-hidden="true" />
-            <DropdownMenuItem
-              active={showPinyin}
-              onClick={() => { setShowPinyin((value) => !value); closeAids(); }}
-            >
-              Pinyin
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              active={showMeaning}
-              onClick={() => { setShowMeaning((value) => !value); closeAids(); }}
-            >
-              Meaning
-            </DropdownMenuItem>
-            <div className="my-1 h-px bg-ui-divider" aria-hidden="true" />
-            {bookAudioFileName && (
-              <>
-                <DropdownMenuItem
-                  active={audioMode === 'book'}
-                  onClick={() => { setAudioMode('book'); closeAids(); }}
-                >
-                  Book audio
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  active={audioMode === 'tts'}
-                  onClick={() => { setAudioMode('tts'); closeAids(); }}
-                >
-                  Text-to-speech
-                </DropdownMenuItem>
-                <div className="my-1 h-px bg-ui-divider" aria-hidden="true" />
-              </>
-            )}
-            <DropdownMenuItem
-              icon={<AppIcon name="audio" size={19} />}
-              onClick={handleListen}
-            >
-              Listen
-            </DropdownMenuItem>
-          </DropdownMenu>
-        )}
-      />
-
-      {/* Karaoke playback bar: whole-dialogue play/pause with live progress. */}
-      {canKaraoke && alignment && (
-        <div className="relative z-20 border-b border-ui-divider bg-ui-surface/90 px-4 py-2 backdrop-blur-[2px]">
-          <div className="mx-auto flex w-full max-w-[44rem] items-center gap-3">
-            <IconActionButton
-              onClick={toggleKaraoke}
-              label={playback.playing ? 'Pause dialogue' : 'Play dialogue'}
-              variant="quiet"
-              icon={<AppIcon name={playback.playing ? 'pause' : 'play'} size={20} />}
-            />
-            <div
-              role="progressbar"
-              aria-label="Dialogue progress"
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-valuenow={Math.round((playback.time / alignmentDuration(alignment)) * 100)}
-              className="relative h-2 flex-1 overflow-hidden rounded-full bg-ui-hover"
-            >
-              <div
-                className="h-full rounded-full bg-brand-primary transition-[width] duration-150 ease-linear"
-                style={{
-                  width: `${Math.min(100, (playback.time / alignmentDuration(alignment)) * 100)}%`,
-                }}
-              />
-            </div>
-            <span className="w-12 text-right text-[11px] font-black tabular-nums text-ui-muted">
-              {Math.round(playback.time)}s
-            </span>
-          </div>
-        </div>
-      )}
-
+      {/* Main Single-Dialogue Reading Canvas */}
       <main
         ref={mainRef}
+        onClick={() => setIsDockVisible(true)}
         className="relative z-10 min-h-0 flex-1 overflow-y-auto overscroll-contain"
       >
-        <article className="mx-auto w-full max-w-[44rem] px-5 pb-16 pt-8 sm:px-8 sm:pt-12">
-          {/* Book title */}
-          <header>
-            <p className="text-[11px] font-black uppercase tracking-[0.16em] text-brand-primary">
-              Lesson {reading.lessonId} · {reading.title}
-            </p>
-            <h1 className="mt-2 font-chinese text-[34px] font-black leading-tight text-ui-ink-strong sm:text-[40px]">
-              {lessonTitle?.chinese ?? reading.title}
-            </h1>
-            <p className="mt-1.5 text-sm font-bold text-ui-muted sm:text-base">
-              {lessonTitle?.english ?? ''}{lessonTitle ? ' · ' : ''}{reading.setting}
-            </p>
-          </header>
-
-          {/* Index of readings, grouped by lesson */}
-          <nav aria-label="Readings" className="mt-9 border-y-2 border-ui-divider py-1.5">
-            {readingsByLesson.map(([lessonId, lessonReadings]) => {
-              const groupTitle = LESSON_TITLES.get(lessonId);
-              return (
-                <section key={lessonId}>
-                  <h2 className="px-3 pb-1 pt-3 text-[10px] font-black uppercase tracking-[0.14em] text-ui-muted">
-                    Lesson {lessonId}{groupTitle ? ` · ${groupTitle.english}` : ''}
-                  </h2>
-                  <ul className="divide-y divide-ui-divider">
-                    {lessonReadings.map((candidate) => {
-                      const candidateIndex = readings.findIndex((item) => item.id === candidate.id);
-                      const isCurrent = candidateIndex === index;
-                      return (
-                        <li key={candidate.id}>
-                          <button
-                            type="button"
-                            onClick={() => onNavigate(candidateIndex)}
-                            aria-current={isCurrent ? 'page' : undefined}
-                            className={cn(
-                              'flex w-full items-baseline gap-3 rounded-[12px] px-3 py-2.5 text-left outline-none transition-colors focus-visible:ring-4 focus-visible:ring-brand-primary/25',
-                              isCurrent
-                                ? 'bg-brand-primary-soft'
-                                : 'hover:bg-ui-hover active:bg-ui-hover/70',
-                            )}
-                          >
-                            <span className="w-5 shrink-0 text-right text-xs font-black tabular-nums text-ui-muted">
-                              {candidate.dialogueNumber}
-                            </span>
-                            <span className="min-w-0 flex-1">
-                              <span className={cn(
-                                'block font-chinese text-lg font-bold leading-snug',
-                                isCurrent ? 'text-brand-primary' : 'text-ui-ink-strong',
-                              )}>
-                                {candidate.title}
-                              </span>
-                              <span className="block truncate text-xs font-bold text-ui-muted">
-                                {candidate.setting}
-                              </span>
-                            </span>
-                          </button>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </section>
-              );
-            })}
-          </nav>
-
-          {/* Prose */}
-          <div className="mt-10">
-            <ReadingProse
-              reading={reading}
-              characterPreference={characterPreference}
-              showPinyin={showPinyin}
-              activeParagraphIndex={activeParagraphIndex}
-              onToggleParagraph={toggleParagraph}
-              playingLineIndex={activeLineIndex}
-              activeWordRange={activeWordRange}
-            />
-
-            {activeParagraph ? (
-              <aside aria-live="polite" className="mt-8 border-l-[3px] border-brand-primary pl-4 sm:pl-5">
-                <p className="font-chinese text-[19px] font-bold leading-relaxed text-ui-ink-strong">
-                  {characterPreference === 'simplified' ? activeParagraph.simplified : activeParagraph.traditional}
-                </p>
-                <p className="mt-0.5 text-sm font-extrabold text-brand-primary">{activeParagraph.pinyin}</p>
-                <p className="mt-1 text-[15px] font-bold leading-relaxed text-ui-muted">{activeParagraph.english}</p>
-              </aside>
-            ) : (
-              <p className="mt-8 text-xs font-bold text-ui-muted">
-                Tap any line to see its pinyin and meaning.
-              </p>
-            )}
-
-            {showMeaning && (
-              <section className="mt-9 border-t-2 border-ui-divider pt-4">
-                <h2 className="text-[10px] font-black uppercase tracking-[0.16em] text-ui-muted">
-                  Translation
-                </h2>
-                <p className="mt-2 text-[15px] font-bold leading-relaxed text-ui-muted">
-                  {reading.paragraphs.map((paragraph) => paragraph.english).join(' ')}
-                </p>
-              </section>
-            )}
-          </div>
-        </article>
+        <ReaderHeader
+          reading={reading}
+          characterPreference={characterPreference}
+          onCharacterPreferenceChange={setCharacterPreference}
+          audioMode={audioMode}
+          onAudioModeChange={setAudioMode}
+          hasOfficialAudio={Boolean(bookAudioFileName)}
+          textSize={textSize}
+          onTextSizeChange={setTextSize}
+          showPinyin={showPinyin}
+          onTogglePinyin={() => setShowPinyin((v) => !v)}
+          showMeaning={showMeaning}
+          onToggleMeaning={() => setShowMeaning((v) => !v)}
+          onClose={onClose}
+        />
+        <ReadingCanvas
+          reading={reading}
+          alignment={alignment}
+          characterPreference={characterPreference}
+          showPinyin={showPinyin}
+          showMeaning={showMeaning}
+          textSize={textSize}
+          activeLineIndex={activeLineIndex}
+          currentTime={currentTime}
+          onPlayLine={(idx) => {
+            setIsDockVisible(true);
+            playLine(idx);
+          }}
+          onPlayFromTime={(startSec, endSec) => {
+            setIsDockVisible(true);
+            playFromTime(startSec, endSec);
+          }}
+        />
       </main>
+
+      {/* Invisible bottom hover hotspot: hovering near the bottom reveals playback dock */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-auto absolute inset-x-0 bottom-0 z-30 h-20"
+        onMouseEnter={handleBottomHoverEnter}
+        onMouseLeave={handleBottomHoverLeave}
+      />
+
+      {/* Du Chinese-style Floating Bottom Playback Dock (moves together with its top gradient mask) */}
+      <ReadingBottomDock
+        isVisible={isDockVisible}
+        playing={playing}
+        currentTime={currentTime}
+        totalDuration={totalDuration}
+        playbackSpeed={playbackSpeed}
+        isLooping={isLooping}
+        canKaraoke={canKaraoke}
+        showPinyin={showPinyin}
+        showMeaning={showMeaning}
+        onTogglePlay={togglePlay}
+        onPrevSentence={prevSentence}
+        onNextSentence={nextSentence}
+        onSeek={seekTo}
+        onScrub={scrubTo}
+        onCycleSpeed={cycleSpeed}
+        onToggleLoop={toggleLoop}
+        onTogglePinyin={() => setShowPinyin((v) => !v)}
+        onToggleMeaning={() => setShowMeaning((v) => !v)}
+        onMouseEnter={handleBottomHoverEnter}
+        onMouseLeave={handleBottomHoverLeave}
+      />
+
+      {/* Dialogue Navigation HUD / Popup */}
+      <AnimatePresence>
+        {navToast && (
+          <motion.aside
+            initial={{ opacity: 0, y: -24, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -16, scale: 0.95 }}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            className="pointer-events-none absolute top-4 inset-x-0 z-[600] flex justify-center px-4"
+            aria-live="polite"
+          >
+            <div className="flex items-center gap-3 rounded-full border border-ui-border bg-ui-surface/95 px-5 py-2.5 backdrop-blur-md">
+              <span className="flex h-2.5 w-2.5 shrink-0 rounded-full bg-brand-primary animate-pulse" />
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-black text-ui-ink-strong">
+                <span className="font-chinese text-brand-primary">第 {navToast.lessonId} 課</span>
+                <span className="text-ui-muted-strong">·</span>
+                <span>Part {navToast.partId}</span>
+                <span className="text-ui-muted-strong">·</span>
+                <span className="font-chinese text-ui-ink">{navToast.title}</span>
+              </div>
+            </div>
+          </motion.aside>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }

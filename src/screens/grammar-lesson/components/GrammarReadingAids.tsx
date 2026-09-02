@@ -69,7 +69,7 @@ export function GrammarReadingAids({
             >
               <span
                 className={cn(
-                  'pointer-events-none inline-block h-5 w-5 rounded-full bg-ui-surface border-b-[length:var(--depth-sm)] border-ui-divider ring-0 transition duration-200 ease-in-out',
+                  'pointer-events-none inline-block h-5 w-5 rounded-full bg-ui-surface border-b-[length:var(--depth-sm)] border-ui-border ring-0 transition duration-200 ease-in-out',
                   showPinyin ? 'translate-x-5' : 'translate-x-0',
                 )}
               />
@@ -97,7 +97,7 @@ export function GrammarReadingAids({
             >
               <span
                 className={cn(
-                  'pointer-events-none inline-block h-5 w-5 rounded-full bg-ui-surface border-b-[length:var(--depth-sm)] border-ui-divider ring-0 transition duration-200 ease-in-out',
+                  'pointer-events-none inline-block h-5 w-5 rounded-full bg-ui-surface border-b-[length:var(--depth-sm)] border-ui-border ring-0 transition duration-200 ease-in-out',
                   showTranslation ? 'translate-x-5' : 'translate-x-0',
                 )}
               />

@@ -54,7 +54,7 @@ export const CollectionListItem: React.FC<CollectionListItemProps> = ({
           }
         }}
         className={cn(
-          'w-full bg-ui-surface px-5 py-4 flex flex-row items-center gap-4 rounded-feature border-b-[length:var(--depth-md)] border-ui-divider active:border-b-0 active:translate-y-[length:var(--depth-md)] hover:bg-ui-hover transition-[background-color,border-color,transform] cursor-pointer group outline-none focus-ring text-left'
+          'w-full bg-ui-surface px-5 py-4 flex flex-row items-center gap-4 rounded-feature border-b-[length:var(--depth-md)] border-ui-border active:border-b-0 active:translate-y-[length:var(--depth-md)] hover:bg-ui-hover transition-[background-color,border-color,transform] cursor-pointer group outline-none focus-ring text-left'
         )}
         onClick={onClick}
       >

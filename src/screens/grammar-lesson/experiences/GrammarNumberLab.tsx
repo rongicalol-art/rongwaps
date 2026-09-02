@@ -72,7 +72,7 @@ export function GrammarNumberLab({
         />
       </div>
 
-      <div className="mt-5 rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface p-5 sm:p-7">
+      <div className="mt-5 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-5 sm:p-7">
         <div className="grid gap-6 sm:grid-cols-[minmax(0,1fr)_minmax(250px,0.8fr)] sm:items-center">
           <div className="min-w-0">
             <div className="flex items-start justify-between gap-3">

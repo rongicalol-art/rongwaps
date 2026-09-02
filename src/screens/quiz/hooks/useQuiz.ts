@@ -23,7 +23,10 @@ export function useQuizLoader(activeBookId: number, selectedLessons: number[], i
  *   Second click → advance to the next card (or complete the session)
  */
 export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
-  const { markCardReviewed, sessionProgressIndex, setSessionProgressIndex, clearSessionProgressIndex } = useAppStore();
+  const markCardReviewed = useAppStore((state) => state.markCardReviewed);
+  const sessionProgressIndex = useAppStore((state) => state.sessionProgressIndex);
+  const setSessionProgressIndex = useAppStore((state) => state.setSessionProgressIndex);
+  const clearSessionProgressIndex = useAppStore((state) => state.clearSessionProgressIndex);
   const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
   const replayAudioAfterAnswer = usePracticePreferencesStore((state) => state.replayAudioAfterAnswer);
   const repeatMistakes = usePracticePreferencesStore((state) => state.repeatMistakes);
@@ -36,6 +39,7 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
   const pendingSessionCardIdRef = useRef<string | null>(null);
   const currentCardIdRef = useRef<string | null>(null);
   const gradingCardKeyRef = useRef<string | null>(null);
+  const currentCardChoicesRef = useRef<{ cardId: string; options: Flashcard[] } | null>(null);
   const [currentIndex, setCurrentIndex] = useState(() => {
     return sessionProgressIndex[sessionKey] || 0;
   });
@@ -47,6 +51,7 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
       sessionInitializedRef.current = false;
       currentCardIdRef.current = null;
       canonicalOrderRef.current = [];
+      currentCardChoicesRef.current = null;
       setActiveCards([]);
       setIsShuffled(false);
       setCurrentIndex(0);
@@ -55,6 +60,14 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
       setIsChecked(false);
       setSessionResults({});
       gradingCardKeyRef.current = null;
+      return;
+    }
+
+    const isSameDeck = sessionInitializedRef.current
+      && cards.length === canonicalOrderRef.current.length
+      && cards.every((c, idx) => c.id === canonicalOrderRef.current[idx]?.id);
+
+    if (isSameDeck) {
       return;
     }
 
@@ -117,6 +130,7 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
 
   const toggleShuffle = useCallback(() => {
     const nextShuffled = !isShuffled;
+    currentCardChoicesRef.current = null;
     setActiveCards(nextShuffled ? shuffleItems(canonicalOrderRef.current) : [...canonicalOrderRef.current]);
     setCurrentIndex(0);
     setCompleted(false);
@@ -129,9 +143,15 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
   // Derive choices during the same render as the next card. Keeping these in an
   // effect briefly paired a new prompt with the previous prompt's answers,
   // producing a visible second render during every card transition.
+  // Pinned per card ID so background updates / tab switches never refresh choices mid-card.
   const options = useMemo(() => {
     if (!currentCard) return [];
-    return shuffleItems(buildMeaningChoices(currentCard, shuffleItems(cards)));
+    if (currentCardChoicesRef.current && currentCardChoicesRef.current.cardId === currentCard.id) {
+      return currentCardChoicesRef.current.options;
+    }
+    const choices = shuffleItems(buildMeaningChoices(currentCard, shuffleItems(cards)));
+    currentCardChoicesRef.current = { cardId: currentCard.id, options: choices };
+    return choices;
   }, [cards, currentCard]);
 
   useEffect(() => {
@@ -187,6 +207,7 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
   }, [isChecked, isCorrect]);
 
   const resetAll = () => {
+    currentCardChoicesRef.current = null;
     setActiveCards(cards);
     canonicalOrderRef.current = cards;
     setIsShuffled(false);
@@ -199,6 +220,7 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
   };
 
   const reviewUnlearned = () => {
+    currentCardChoicesRef.current = null;
     const unlearnedIds = Object.entries(sessionResults)
       .filter(([, q]) => q === 1 || q === 2)
       .map(([id]) => id);
@@ -257,7 +279,10 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
  *   Second click → advance to the next card (or complete the session)
  */
 export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
-  const { markCardReviewed, sessionProgressIndex, setSessionProgressIndex, clearSessionProgressIndex } = useAppStore();
+  const markCardReviewed = useAppStore((state) => state.markCardReviewed);
+  const sessionProgressIndex = useAppStore((state) => state.sessionProgressIndex);
+  const setSessionProgressIndex = useAppStore((state) => state.setSessionProgressIndex);
+  const clearSessionProgressIndex = useAppStore((state) => state.clearSessionProgressIndex);
   const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
   const replayAudioAfterAnswer = usePracticePreferencesStore((state) => state.replayAudioAfterAnswer);
   const repeatMistakes = usePracticePreferencesStore((state) => state.repeatMistakes);
@@ -289,6 +314,14 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
       setStatus('idle');
       setSessionResults({});
       gradingCardKeyRef.current = null;
+      return;
+    }
+
+    const isSameDeck = sessionInitializedRef.current
+      && cards.length === canonicalOrderRef.current.length
+      && cards.every((c, idx) => c.id === canonicalOrderRef.current[idx]?.id);
+
+    if (isSameDeck) {
       return;
     }
 
