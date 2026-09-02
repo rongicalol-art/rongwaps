@@ -52,7 +52,7 @@ export const SpellCard: React.FC<SpellCardProps> = ({ item, activeTab, onAction,
       onClick={onClick}
       className="group h-full cursor-pointer select-none outline-none focus-ring rounded-feature"
     >
-      <article className="relative flex h-full flex-col overflow-hidden rounded-feature bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider transition-[transform,background-color,border-color] duration-200 hover:bg-ui-hover active:translate-y-[length:var(--depth-md)] active:border-b-0">
+      <article className="relative flex h-full flex-col overflow-hidden rounded-feature bg-ui-surface border-b-[length:var(--depth-md)] border-ui-border transition-[transform,background-color,border-color] duration-200 hover:bg-ui-hover active:translate-y-[length:var(--depth-md)] active:border-b-0">
         <button
           onClick={(e) => { e.stopPropagation(); onAction(e); }}
           aria-label={isStarred ? `Remove ${traditional} from saved words` : `Delete ${traditional}`}

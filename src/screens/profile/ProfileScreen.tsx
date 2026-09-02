@@ -43,7 +43,7 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
         <div className="w-48 h-8 rounded-full bg-ui-border/60 animate-pulse mb-3" />
         <div className="w-full max-w-2xl grid grid-cols-2 gap-4 my-8">
           {[1, 2, 3, 4].map(i => (
-            <div key={i} className="bg-ui-surface rounded-feature border-b-[length:var(--depth-md)] border-ui-divider h-24 animate-pulse" />
+            <div key={i} className="bg-ui-surface rounded-feature border-b-[length:var(--depth-md)] border-ui-border h-24 animate-pulse" />
           ))}
         </div>
       </div>
@@ -89,7 +89,7 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
            <h3 className="text-xl font-extrabold text-ui-ink text-left mb-4 px-1">Statistics</h3>
            <div className="grid grid-cols-2 gap-3 md:gap-4 w-full">
               
-              <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default overflow-hidden">
+              <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-border rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default overflow-hidden">
                  <div className="w-10 h-10 shrink-0 rounded-full bg-brand-secondary/10 flex items-center justify-center mt-1">
                    <AppIcon name="flame" className="text-brand-secondary" size={24} />
                  </div>
@@ -99,7 +99,7 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
                  </div>
               </div>
 
-              <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default overflow-hidden">
+              <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-border rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default overflow-hidden">
                  <div className="w-10 h-10 shrink-0 rounded-full bg-feedback-warning/10 flex items-center justify-center mt-1">
                    <AppIcon name="actions" className="text-feedback-warning" size={24} />
                  </div>
@@ -109,7 +109,7 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
                  </div>
               </div>
 
-              <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default overflow-hidden">
+              <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-border rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default overflow-hidden">
                  <div className="w-10 h-10 shrink-0 rounded-full bg-brand-primary/10 flex items-center justify-center mt-1">
                    <AppIcon name="book" className="text-brand-primary" size={24} />
                  </div>
@@ -119,7 +119,7 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
                  </div>
               </div>
 
-              <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default overflow-hidden">
+              <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-border rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default overflow-hidden">
                  <div className="w-10 h-10 shrink-0 rounded-full bg-feedback-success/10 flex items-center justify-center mt-1">
                    <AppIcon name="check" className="text-feedback-success" size={24} />
                  </div>
@@ -139,7 +139,7 @@ export function ProfileScreen({ onStartReview }: ProfileScreenProps) {
 
 
         {/* Account Area */}
-        <div className="w-full bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider rounded-feature p-5 overflow-hidden">
+        <div className="w-full bg-ui-surface border-b-[length:var(--depth-md)] border-ui-border rounded-feature p-5 overflow-hidden">
           {currentUser ? (
             <ActionButton
               variant="danger"

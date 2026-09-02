@@ -194,29 +194,29 @@ export function GrammarLessonScreen({ part, onClose }: GrammarLessonScreenProps)
       aria-modal="true"
       aria-label={`Lesson ${part.lessonId}, Part ${part.partId}: ${part.title}`}
     >
-      <GrammarLessonHeader
-        characterPreference={characterPreference}
-        showPinyin={showPinyin}
-        showTranslation={showTranslation}
-        onClose={closeLesson}
-        onTogglePinyin={() => updatePreferences({ showPinyin: !showPinyin })}
-        onToggleTranslation={() => updatePreferences({ showTranslation: !showTranslation })}
-        onCharacterPreferenceChange={setCharacterPreference}
-        currentStepIndex={currentStepIndex}
-        totalSteps={totalSteps}
-        progress={((currentStepIndex + 1) / totalSteps) * 100}
-        showReadingAids
-      />
-
       <main
         ref={mainRef}
         tabIndex={-1}
         className={cn(
-          'relative z-10 min-h-0 flex-1 overflow-y-auto overscroll-none px-4 pb-32 pt-5 outline-none sm:px-8 sm:pb-32 sm:pt-8',
+          'relative z-10 min-h-0 flex-1 overflow-y-auto overscroll-none outline-none',
           'grammar-learn-workspace',
         )}
       >
-        <div className="mx-auto w-full max-w-4xl">
+        <GrammarLessonHeader
+          characterPreference={characterPreference}
+          showPinyin={showPinyin}
+          showTranslation={showTranslation}
+          onClose={closeLesson}
+          onTogglePinyin={() => updatePreferences({ showPinyin: !showPinyin })}
+          onToggleTranslation={() => updatePreferences({ showTranslation: !showTranslation })}
+          onCharacterPreferenceChange={setCharacterPreference}
+          currentStepIndex={currentStepIndex}
+          totalSteps={totalSteps}
+          progress={((currentStepIndex + 1) / totalSteps) * 100}
+          showReadingAids
+        />
+
+        <div className="mx-auto w-full max-w-4xl px-4 pb-32 pt-2 sm:px-8 sm:pb-32 sm:pt-4">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={`study-${page.id}`}

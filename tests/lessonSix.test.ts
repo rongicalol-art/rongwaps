@@ -84,7 +84,7 @@ test('Lesson 6 source dialogue and audio metadata remain attached', () => {
   ]);
   assert.equal(
     LESSON_SIX_PART_TWO.dialogue.lines[0].text.traditional,
-    '聽說這部電影很有趣，我們晚一起去看，好不好？',
+    '聽說這部電影很有趣，我們晚上一起去看，好不好？',
   );
 });
 

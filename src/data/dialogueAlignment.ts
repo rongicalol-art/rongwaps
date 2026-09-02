@@ -14,27 +14,27 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-01-1-1.mp3",
   "lessonId": 1,
   "dialogueNumber": 1,
-  "trimSec": 18.2,
+  "trimSec": 21.5,
   "lines": [
    {
     "index": 0,
     "speaker": "中明",
     "text": "宜文，她是誰？",
-    "start": 0.8,
-    "end": 6.2,
+    "start": 0,
+    "end": 2.9,
     "words": [
      {
       "w": "疑问",
-      "start": 0.8,
-      "end": 3.98,
+      "start": 0,
+      "end": 0.68,
       "charStart": 0,
       "charEnd": 2
      },
      {
       "w": "他是谁?",
-      "start": 3.98,
-      "end": 6.2,
-      "charStart": 2,
+      "start": 0.68,
+      "end": 2.9,
+      "charStart": 3,
       "charEnd": 6
      }
     ]
@@ -43,28 +43,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "宜文",
     "text": "她是新同學，叫友美。她很可愛。",
-    "start": 7.32,
-    "end": 14.58,
+    "start": 4.02,
+    "end": 11.28,
     "words": [
      {
       "w": "他是新同学",
-      "start": 7.32,
-      "end": 9.24,
+      "start": 4.02,
+      "end": 5.94,
       "charStart": 0,
       "charEnd": 5
      },
      {
       "w": "叫尤美",
-      "start": 9.24,
-      "end": 11.64,
-      "charStart": 5,
+      "start": 5.94,
+      "end": 8.34,
+      "charStart": 6,
       "charEnd": 9
      },
      {
       "w": "他很可爱",
-      "start": 11.64,
-      "end": 14.58,
-      "charStart": 9,
+      "start": 8.34,
+      "end": 11.28,
+      "charStart": 10,
       "charEnd": 14
      }
     ]
@@ -73,21 +73,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "中明",
     "text": "她是哪國人？妳知道嗎？",
-    "start": 14.58,
-    "end": 19.58,
+    "start": 11.28,
+    "end": 16.28,
     "words": [
      {
       "w": "他是哪国人?",
-      "start": 14.58,
-      "end": 17.34,
+      "start": 11.28,
+      "end": 14.04,
       "charStart": 0,
       "charEnd": 5
      },
      {
       "w": "你知道吗?",
-      "start": 18.46,
-      "end": 19.58,
-      "charStart": 5,
+      "start": 15.16,
+      "end": 16.28,
+      "charStart": 6,
       "charEnd": 10
      }
     ]
@@ -96,21 +96,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "宜文",
     "text": "我知道，她是日本人。",
-    "start": 20.62,
-    "end": 25.08,
+    "start": 17.32,
+    "end": 21.78,
     "words": [
      {
       "w": "我知道",
-      "start": 20.62,
-      "end": 21.5,
+      "start": 17.32,
+      "end": 18.2,
       "charStart": 0,
       "charEnd": 3
      },
      {
       "w": "他是日本人",
-      "start": 21.5,
-      "end": 25.08,
-      "charStart": 3,
+      "start": 18.2,
+      "end": 21.78,
+      "charStart": 4,
       "charEnd": 9
      }
     ]
@@ -119,13 +119,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "中明",
     "text": "她很漂亮。",
-    "start": 25.08,
-    "end": 27.42,
+    "start": 21.78,
+    "end": 24.12,
     "words": [
      {
       "w": "他很漂亮",
-      "start": 25.08,
-      "end": 27.42,
+      "start": 21.78,
+      "end": 24.12,
       "charStart": 0,
       "charEnd": 4
      }
@@ -137,27 +137,20 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-01-2-1.mp3",
   "lessonId": 1,
   "dialogueNumber": 2,
-  "trimSec": 0.0,
+  "trimSec": 3.38,
   "lines": [
    {
     "index": 0,
     "speaker": "中明",
     "text": "妳好！我是李中明，請問妳叫什麼名字？",
-    "start": 1.68,
-    "end": 10.34,
+    "start": 0,
+    "end": 6.96,
     "words": [
      {
-      "w": "你好,我是李忠明",
-      "start": 1.68,
-      "end": 6.78,
-      "charStart": null,
-      "charEnd": null
-     },
-     {
-      "w": "请问你叫什么名字?",
-      "start": 6.78,
-      "end": 10.34,
-      "charStart": 8,
+      "w": "妳好！我是李中明，請問妳叫什麼名字？",
+      "start": 0,
+      "end": 6.96,
+      "charStart": 0,
       "charEnd": 17
      }
     ]
@@ -166,13 +159,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "友美",
     "text": "我姓小林，叫友美。",
-    "start": 11.52,
-    "end": 15.16,
+    "start": 8.14,
+    "end": 11.78,
     "words": [
      {
       "w": "我姓小林,叫尤美",
-      "start": 11.52,
-      "end": 15.16,
+      "start": 8.14,
+      "end": 11.78,
       "charStart": 0,
       "charEnd": 8
      }
@@ -182,13 +175,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "中明",
     "text": "請問妳是哪國人？",
-    "start": 15.16,
-    "end": 18.66,
+    "start": 11.78,
+    "end": 15.28,
     "words": [
      {
       "w": "请问你是哪国人?",
-      "start": 15.16,
-      "end": 18.66,
+      "start": 11.78,
+      "end": 15.28,
       "charStart": 0,
       "charEnd": 7
      }
@@ -198,13 +191,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "友美",
     "text": "我是日本人，你呢？",
-    "start": 19.86,
-    "end": 23.5,
+    "start": 16.48,
+    "end": 20.12,
     "words": [
      {
       "w": "我是日本人,你呢?",
-      "start": 19.86,
-      "end": 23.5,
+      "start": 16.48,
+      "end": 20.12,
       "charStart": 0,
       "charEnd": 8
      }
@@ -214,13 +207,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "中明",
     "text": "我是印尼人。妳喜歡台灣嗎？",
-    "start": 23.72,
-    "end": 28.1,
+    "start": 20.34,
+    "end": 24.72,
     "words": [
      {
       "w": "我是印尼人,你喜欢台湾吗?",
-      "start": 23.72,
-      "end": 28.1,
+      "start": 20.34,
+      "end": 24.72,
       "charStart": 0,
       "charEnd": 12
      }
@@ -230,13 +223,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "友美",
     "text": "我喜歡台灣。",
-    "start": 28.7,
-    "end": 31.06,
+    "start": 25.32,
+    "end": 27.68,
     "words": [
      {
       "w": "我喜欢台湾",
-      "start": 28.7,
-      "end": 31.06,
+      "start": 25.32,
+      "end": 27.68,
       "charStart": 0,
       "charEnd": 5
      }
@@ -248,27 +241,27 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-02-1-1.mp3",
   "lessonId": 2,
   "dialogueNumber": 1,
-  "trimSec": 18.68,
+  "trimSec": 22.03,
   "lines": [
    {
     "index": 0,
     "speaker": "媽媽",
     "text": "今天是星期一，你不去學校嗎？",
-    "start": 0.8,
-    "end": 8.4,
+    "start": 0,
+    "end": 5.05,
     "words": [
      {
       "w": "今天是星期一",
-      "start": 0.8,
-      "end": 5.36,
+      "start": 0,
+      "end": 2.01,
       "charStart": 0,
       "charEnd": 6
      },
      {
       "w": "你不去学校吗?",
-      "start": 5.36,
-      "end": 8.4,
-      "charStart": 6,
+      "start": 2.01,
+      "end": 5.05,
+      "charStart": 7,
       "charEnd": 13
      }
     ]
@@ -277,21 +270,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "中明",
     "text": "我早上沒有課，九點去圖書館。",
-    "start": 8.92,
-    "end": 14.3,
+    "start": 5.57,
+    "end": 10.95,
     "words": [
      {
       "w": "我早上没有课",
-      "start": 8.92,
-      "end": 11.24,
+      "start": 5.57,
+      "end": 7.89,
       "charStart": 0,
       "charEnd": 6
      },
      {
       "w": "九点去图书馆",
-      "start": 11.24,
-      "end": 14.3,
-      "charStart": 6,
+      "start": 7.89,
+      "end": 10.95,
+      "charStart": 7,
       "charEnd": 13
      }
     ]
@@ -300,21 +293,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "媽媽",
     "text": "中午呢？你中午回家嗎？",
-    "start": 14.3,
-    "end": 19.04,
+    "start": 10.95,
+    "end": 15.69,
     "words": [
      {
       "w": "中午呢?",
-      "start": 14.3,
-      "end": 16.22,
+      "start": 10.95,
+      "end": 12.87,
       "charStart": 0,
       "charEnd": 3
      },
      {
       "w": "你中午回家吗?",
-      "start": 17.38,
-      "end": 19.04,
-      "charStart": 3,
+      "start": 14.03,
+      "end": 15.69,
+      "charStart": 4,
       "charEnd": 10
      }
     ]
@@ -323,21 +316,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "中明",
     "text": "我下午有課，中午不回家。",
-    "start": 20.14,
-    "end": 24.1,
+    "start": 16.79,
+    "end": 20.75,
     "words": [
      {
       "w": "我下午有课",
-      "start": 20.14,
-      "end": 21.46,
+      "start": 16.79,
+      "end": 18.11,
       "charStart": 0,
       "charEnd": 5
      },
      {
       "w": "中午不回家",
-      "start": 21.46,
-      "end": 24.1,
-      "charStart": 5,
+      "start": 18.11,
+      "end": 20.75,
+      "charStart": 6,
       "charEnd": 11
      }
     ]
@@ -346,13 +339,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "媽媽",
     "text": "你幾點下課？",
-    "start": 24.1,
-    "end": 26.68,
+    "start": 20.75,
+    "end": 23.33,
     "words": [
      {
       "w": "你几点下课?",
-      "start": 24.1,
-      "end": 26.68,
+      "start": 20.75,
+      "end": 23.33,
       "charStart": 0,
       "charEnd": 5
      }
@@ -362,13 +355,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "中明",
     "text": "我四點四十分下課。",
-    "start": 27.82,
-    "end": 30.38,
+    "start": 24.47,
+    "end": 27.03,
     "words": [
      {
       "w": "我四点四十分下课",
-      "start": 27.82,
-      "end": 30.38,
+      "start": 24.47,
+      "end": 27.03,
       "charStart": 0,
       "charEnd": 8
      }
@@ -380,34 +373,34 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-02-2-1.mp3",
   "lessonId": 2,
   "dialogueNumber": 2,
-  "trimSec": 0.0,
+  "trimSec": 3.59,
   "lines": [
    {
     "index": 0,
     "speaker": "宜文",
     "text": "今天是星期五，明天是週末，你們要不要來我家？",
-    "start": 1.84,
-    "end": 12.42,
+    "start": 0,
+    "end": 8.83,
     "words": [
      {
       "w": "今天是星期五",
-      "start": 1.84,
-      "end": 5.96,
+      "start": 0,
+      "end": 2.37,
       "charStart": 0,
       "charEnd": 6
      },
      {
       "w": "明天是周末",
-      "start": 5.96,
-      "end": 8.8,
-      "charStart": 6,
+      "start": 2.37,
+      "end": 5.21,
+      "charStart": 7,
       "charEnd": 12
      },
      {
       "w": "你们要不要来我家?",
-      "start": 8.8,
-      "end": 12.42,
-      "charStart": 12,
+      "start": 5.21,
+      "end": 8.83,
+      "charStart": 13,
       "charEnd": 21
      }
     ]
@@ -416,21 +409,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "中明",
     "text": "明天是九月二十三號……啊！是妳的生日！",
-    "start": 13.58,
-    "end": 20.22,
+    "start": 9.99,
+    "end": 16.63,
     "words": [
      {
       "w": "明天是九月二十三号",
-      "start": 13.58,
-      "end": 16.4,
+      "start": 9.99,
+      "end": 12.81,
       "charStart": 0,
       "charEnd": 9
      },
      {
       "w": "啊,是你的生日",
-      "start": 16.4,
-      "end": 20.22,
-      "charStart": 9,
+      "start": 12.81,
+      "end": 16.63,
+      "charStart": 11,
       "charEnd": 18
      }
     ]
@@ -439,13 +432,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "友美",
     "text": "宜文，生日快樂！",
-    "start": 20.22,
-    "end": 23.74,
+    "start": 16.63,
+    "end": 20.15,
     "words": [
      {
       "w": "宜文,生日快乐!",
-      "start": 20.22,
-      "end": 23.74,
+      "start": 16.63,
+      "end": 20.15,
       "charStart": 0,
       "charEnd": 7
      }
@@ -455,28 +448,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "宜文",
     "text": "謝謝！明天晚上六點來我家，好不好？",
-    "start": 24.98,
-    "end": 31.3,
+    "start": 21.39,
+    "end": 27.71,
     "words": [
      {
       "w": "谢谢",
-      "start": 24.98,
-      "end": 25.36,
+      "start": 21.39,
+      "end": 21.77,
       "charStart": 0,
       "charEnd": 2
      },
      {
       "w": "明天晚上六点来我家",
-      "start": 25.36,
-      "end": 29.72,
-      "charStart": 2,
+      "start": 21.77,
+      "end": 26.13,
+      "charStart": 3,
       "charEnd": 12
      },
      {
       "w": "好不好?",
-      "start": 30.0,
-      "end": 31.3,
-      "charStart": 12,
+      "start": 26.41,
+      "end": 27.71,
+      "charStart": 13,
       "charEnd": 16
      }
     ]
@@ -485,13 +478,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "中明",
     "text": "沒問題。",
-    "start": 33.06,
-    "end": 33.94,
+    "start": 29.47,
+    "end": 30.35,
     "words": [
      {
       "w": "没问题",
-      "start": 33.06,
-      "end": 33.94,
+      "start": 29.47,
+      "end": 30.35,
       "charStart": 0,
       "charEnd": 3
      }
@@ -501,21 +494,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "友美",
     "text": "好，明天見。",
-    "start": 33.94,
-    "end": 37.86,
+    "start": 30.35,
+    "end": 34.27,
     "words": [
      {
       "w": "好",
-      "start": 33.94,
-      "end": 35.72,
+      "start": 30.35,
+      "end": 32.13,
       "charStart": 0,
       "charEnd": 1
      },
      {
       "w": "明天见",
-      "start": 35.72,
-      "end": 37.86,
-      "charStart": 1,
+      "start": 32.13,
+      "end": 34.27,
+      "charStart": 2,
       "charEnd": 5
      }
     ]
@@ -526,27 +519,27 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-03-1-1.mp3",
   "lessonId": 3,
   "dialogueNumber": 1,
-  "trimSec": 18.72,
+  "trimSec": 22.02,
   "lines": [
    {
     "index": 0,
     "speaker": "宜文",
     "text": "明天是友美的生日，我想送她一個禮物。",
-    "start": 0.8,
-    "end": 9.22,
+    "start": 0,
+    "end": 5.92,
     "words": [
      {
       "w": "明天是有美的生日",
-      "start": 0.8,
-      "end": 5.76,
+      "start": 0,
+      "end": 2.46,
       "charStart": 0,
       "charEnd": 8
      },
      {
       "w": "我想送他一个礼物",
-      "start": 5.76,
-      "end": 9.22,
-      "charStart": 8,
+      "start": 2.46,
+      "end": 5.92,
+      "charStart": 9,
       "charEnd": 17
      }
     ]
@@ -555,13 +548,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "中明",
     "text": "妳想送她什麼？",
-    "start": 9.96,
-    "end": 11.92,
+    "start": 6.66,
+    "end": 8.62,
     "words": [
      {
       "w": "你想送他什么",
-      "start": 9.96,
-      "end": 11.92,
+      "start": 6.66,
+      "end": 8.62,
       "charStart": 0,
       "charEnd": 6
      }
@@ -571,28 +564,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "宜文",
     "text": "友美愛看書，我想送她兩本中文書，你呢？",
-    "start": 11.92,
-    "end": 20.92,
+    "start": 8.62,
+    "end": 17.62,
     "words": [
      {
       "w": "有美爱看书",
-      "start": 11.92,
-      "end": 14.86,
+      "start": 8.62,
+      "end": 11.56,
       "charStart": 0,
       "charEnd": 5
      },
      {
       "w": "我想送他两本中文书",
-      "start": 14.86,
-      "end": 19.22,
-      "charStart": 5,
+      "start": 11.56,
+      "end": 15.92,
+      "charStart": 6,
       "charEnd": 15
      },
      {
       "w": "你呢",
-      "start": 19.22,
-      "end": 20.92,
-      "charStart": 15,
+      "start": 15.92,
+      "end": 17.62,
+      "charStart": 16,
       "charEnd": 18
      }
     ]
@@ -601,13 +594,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "中明",
     "text": "我想買一些花和一個大蛋糕。",
-    "start": 20.92,
-    "end": 26.12,
+    "start": 17.62,
+    "end": 22.82,
     "words": [
      {
       "w": "我想买一些花和一个大蛋糕",
-      "start": 20.92,
-      "end": 26.12,
+      "start": 17.62,
+      "end": 22.82,
       "charStart": 0,
       "charEnd": 12
      }
@@ -617,21 +610,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "宜文",
     "text": "我們一起去買，好不好？",
-    "start": 26.12,
-    "end": 30.4,
+    "start": 22.82,
+    "end": 27.1,
     "words": [
      {
       "w": "我们一起去买",
-      "start": 26.12,
-      "end": 28.72,
+      "start": 22.82,
+      "end": 25.42,
       "charStart": 0,
       "charEnd": 6
      },
      {
       "w": "好不好",
-      "start": 28.72,
-      "end": 30.4,
-      "charStart": 6,
+      "start": 25.42,
+      "end": 27.1,
+      "charStart": 7,
       "charEnd": 10
      }
     ]
@@ -640,13 +633,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "中明",
     "text": "好啊！",
-    "start": 30.4,
-    "end": 32.78,
+    "start": 27.1,
+    "end": 29.48,
     "words": [
      {
       "w": "好啊",
-      "start": 30.4,
-      "end": 32.78,
+      "start": 27.1,
+      "end": 29.48,
       "charStart": 0,
       "charEnd": 2
      }
@@ -658,19 +651,19 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-03-2-1.mp3",
   "lessonId": 3,
   "dialogueNumber": 2,
-  "trimSec": 0.0,
+  "trimSec": 3.1,
   "lines": [
    {
     "index": 0,
     "speaker": "宜文",
     "text": "這種小鉛筆怎麼樣？",
-    "start": 1.6,
-    "end": 5.7,
+    "start": 0,
+    "end": 2.6,
     "words": [
      {
       "w": "这种小铅笔怎么样?",
-      "start": 1.6,
-      "end": 5.7,
+      "start": 0,
+      "end": 2.6,
       "charStart": 0,
       "charEnd": 8
      }
@@ -680,13 +673,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "中明",
     "text": "很可愛，友美喜歡可愛的東西。",
-    "start": 7.2,
-    "end": 11.84,
+    "start": 4.1,
+    "end": 8.74,
     "words": [
      {
       "w": "很可爱,有美喜欢可爱的东西。",
-      "start": 7.2,
-      "end": 11.84,
+      "start": 4.1,
+      "end": 8.74,
       "charStart": 0,
       "charEnd": 13
      }
@@ -696,21 +689,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "宜文",
     "text": "我們買兩枝，好不好？兩枝五十塊錢。",
-    "start": 12.98,
-    "end": 20.28,
+    "start": 9.88,
+    "end": 17.18,
     "words": [
      {
       "w": "我们买两只,好不好?",
-      "start": 12.98,
-      "end": 16.06,
+      "start": 9.88,
+      "end": 12.96,
       "charStart": 0,
       "charEnd": 9
      },
      {
       "w": "两只五十块钱。",
-      "start": 17.74,
-      "end": 20.28,
-      "charStart": 9,
+      "start": 14.64,
+      "end": 17.18,
+      "charStart": 10,
       "charEnd": 16
      }
     ]
@@ -719,21 +712,14 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "中明",
     "text": "五十塊錢很便宜！妳看，哪個顏色漂亮？",
-    "start": 21.42,
-    "end": 28.38,
+    "start": 18.32,
+    "end": 25.28,
     "words": [
      {
-      "w": "五十块钱很便宜。",
-      "start": 21.42,
-      "end": 23.94,
-      "charStart": null,
-      "charEnd": null
-     },
-     {
-      "w": "你看,哪个颜色漂亮?",
-      "start": 25.16,
-      "end": 28.38,
-      "charStart": 7,
+      "w": "五十塊錢很便宜！妳看，哪個顏色漂亮？",
+      "start": 18.32,
+      "end": 25.28,
+      "charStart": 0,
       "charEnd": 17
      }
     ]
@@ -742,13 +728,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "宜文",
     "text": "紅色、白色都好看。",
-    "start": 29.12,
-    "end": 33.58,
+    "start": 26.02,
+    "end": 30.48,
     "words": [
      {
       "w": "红色、白色都好看。",
-      "start": 29.12,
-      "end": 33.58,
+      "start": 26.02,
+      "end": 30.48,
       "charStart": 0,
       "charEnd": 8
      }
@@ -758,21 +744,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "中明",
     "text": "我想友美喜歡白色，她常常穿白色的衣服。",
-    "start": 34.74,
-    "end": 42.46,
+    "start": 31.64,
+    "end": 39.36,
     "words": [
      {
       "w": "我想,有美喜欢白色。",
-      "start": 34.74,
-      "end": 38.12,
+      "start": 31.64,
+      "end": 35.02,
       "charStart": 0,
       "charEnd": 8
      },
      {
       "w": "她常常穿白色的衣服。",
-      "start": 39.34,
-      "end": 42.46,
-      "charStart": 8,
+      "start": 36.24,
+      "end": 39.36,
+      "charStart": 9,
       "charEnd": 18
      }
     ]
@@ -781,13 +767,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "宜文",
     "text": "好，我們買白的。",
-    "start": 43.62,
-    "end": 46.64,
+    "start": 40.52,
+    "end": 43.54,
     "words": [
      {
       "w": "好,我们买白的。",
-      "start": 43.62,
-      "end": 46.64,
+      "start": 40.52,
+      "end": 43.54,
       "charStart": 0,
       "charEnd": 7
      }
@@ -799,34 +785,34 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-04-1-1.mp3",
   "lessonId": 4,
   "dialogueNumber": 1,
-  "trimSec": 21.02,
+  "trimSec": 24.37,
   "lines": [
    {
     "index": 0,
     "speaker": "中明",
     "text": "天氣好熱，我們去喝飲料，好不好？",
-    "start": 0.8,
-    "end": 10.0,
+    "start": 0,
+    "end": 6.65,
     "words": [
      {
       "w": "天气好热",
-      "start": 0.8,
-      "end": 4.9,
+      "start": 0,
+      "end": 1.55,
       "charStart": 0,
       "charEnd": 4
      },
      {
       "w": "我们去喝饮料",
-      "start": 4.9,
-      "end": 8.08,
-      "charStart": 4,
+      "start": 1.55,
+      "end": 4.73,
+      "charStart": 5,
       "charEnd": 11
      },
      {
       "w": "好不好",
-      "start": 8.08,
-      "end": 10.0,
-      "charStart": 11,
+      "start": 4.73,
+      "end": 6.65,
+      "charStart": 12,
       "charEnd": 15
      }
     ]
@@ -835,28 +821,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "友美",
     "text": "好啊！你想喝什麼？咖啡還是茶？",
-    "start": 10.0,
-    "end": 18.68,
+    "start": 6.65,
+    "end": 15.33,
     "words": [
      {
       "w": "好啊",
-      "start": 10.0,
-      "end": 12.28,
+      "start": 6.65,
+      "end": 8.93,
       "charStart": 0,
       "charEnd": 2
      },
      {
       "w": "你想喝什么",
-      "start": 12.28,
-      "end": 15.22,
-      "charStart": 2,
+      "start": 8.93,
+      "end": 11.87,
+      "charStart": 3,
       "charEnd": 8
      },
      {
       "w": "咖啡还是茶",
-      "start": 15.22,
-      "end": 18.68,
-      "charStart": 8,
+      "start": 11.87,
+      "end": 15.33,
+      "charStart": 9,
       "charEnd": 14
      }
     ]
@@ -865,35 +851,35 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "中明",
     "text": "咖啡、茶，我都喜歡。我也很餓，想吃一點兒東西。",
-    "start": 18.68,
-    "end": 29.9,
+    "start": 15.33,
+    "end": 26.55,
     "words": [
      {
       "w": "咖啡、茶",
-      "start": 18.68,
-      "end": 21.42,
+      "start": 15.33,
+      "end": 18.07,
       "charStart": 0,
       "charEnd": 4
      },
      {
       "w": "我都喜欢",
-      "start": 21.42,
-      "end": 23.94,
-      "charStart": 4,
+      "start": 18.07,
+      "end": 20.59,
+      "charStart": 5,
       "charEnd": 9
      },
      {
       "w": "我也很饿",
-      "start": 23.94,
-      "end": 26.56,
-      "charStart": 9,
+      "start": 20.59,
+      "end": 23.21,
+      "charStart": 10,
       "charEnd": 14
      },
      {
       "w": "想吃一点东西",
-      "start": 26.56,
-      "end": 29.9,
-      "charStart": 14,
+      "start": 23.21,
+      "end": 26.55,
+      "charStart": 15,
       "charEnd": 22
      }
     ]
@@ -902,50 +888,15 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "友美",
     "text": "這家餐廳人太多，我們去那家餐廳，好嗎？他們的牛肉麵很好吃，也很便宜。",
-    "start": 29.9,
-    "end": 44.9,
+    "start": 26.55,
+    "end": 41.55,
     "words": [
      {
-      "w": "这家餐厅人太多",
-      "start": 29.9,
-      "end": 33.64,
+      "w": "這家餐廳人太多，我們去那家餐廳，好嗎？他們的牛肉麵很好吃，也很便宜。",
+      "start": 26.55,
+      "end": 41.55,
       "charStart": 0,
-      "charEnd": 7
-     },
-     {
-      "w": "我们去那家餐厅",
-      "start": 33.64,
-      "end": 37.02,
-      "charStart": 7,
-      "charEnd": 15
-     },
-     {
-      "w": "好吗",
-      "start": 37.02,
-      "end": 38.04,
-      "charStart": 15,
-      "charEnd": 18
-     },
-     {
-      "w": "他们的牛肉面",
-      "start": 38.04,
-      "end": 41.1,
-      "charStart": 18,
-      "charEnd": 25
-     },
-     {
-      "w": "很好吃",
-      "start": 41.1,
-      "end": 42.34,
-      "charStart": 25,
-      "charEnd": 28
-     },
-     {
-      "w": "也很便宜",
-      "start": 42.34,
-      "end": 44.9,
-      "charStart": null,
-      "charEnd": null
+      "charEnd": 33
      }
     ]
    },
@@ -953,28 +904,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "中明",
     "text": "太好了！我最愛吃牛肉麵。他們也賣飲料嗎？",
-    "start": 44.9,
-    "end": 53.9,
+    "start": 41.55,
+    "end": 50.55,
     "words": [
      {
       "w": "太好了",
-      "start": 44.9,
-      "end": 46.9,
+      "start": 41.55,
+      "end": 43.55,
       "charStart": 0,
       "charEnd": 3
      },
      {
       "w": "我最爱吃牛肉面",
-      "start": 46.9,
-      "end": 50.5,
-      "charStart": 3,
+      "start": 43.55,
+      "end": 47.15,
+      "charStart": 4,
       "charEnd": 11
      },
      {
       "w": "他们也卖饮料吗",
-      "start": 50.5,
-      "end": 53.9,
-      "charStart": 11,
+      "start": 47.15,
+      "end": 50.55,
+      "charStart": 12,
       "charEnd": 19
      }
     ]
@@ -983,13 +934,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "友美",
     "text": "他們賣很多種飲料。",
-    "start": 53.9,
-    "end": 57.66,
+    "start": 50.55,
+    "end": 54.31,
     "words": [
      {
       "w": "他们卖很多种饮料",
-      "start": 53.9,
-      "end": 57.66,
+      "start": 50.55,
+      "end": 54.31,
       "charStart": 0,
       "charEnd": 8
      }
@@ -999,21 +950,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "中明",
     "text": "我們現在去，好嗎？",
-    "start": 57.66,
-    "end": 62.22,
+    "start": 54.31,
+    "end": 58.87,
     "words": [
      {
       "w": "我们现在去",
-      "start": 57.66,
-      "end": 60.46,
+      "start": 54.31,
+      "end": 57.11,
       "charStart": 0,
       "charEnd": 5
      },
      {
       "w": "好吗",
-      "start": 60.46,
-      "end": 62.22,
-      "charStart": 5,
+      "start": 57.11,
+      "end": 58.87,
+      "charStart": 6,
       "charEnd": 8
      }
     ]
@@ -1022,13 +973,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 7,
     "speaker": "友美",
     "text": "好。",
-    "start": 62.22,
-    "end": 63.96,
+    "start": 58.87,
+    "end": 60.61,
     "words": [
      {
       "w": "好",
-      "start": 62.22,
-      "end": 63.96,
+      "start": 58.87,
+      "end": 60.61,
       "charStart": 0,
       "charEnd": 1
      }
@@ -1040,19 +991,19 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-04-2-1.mp3",
   "lessonId": 4,
   "dialogueNumber": 2,
-  "trimSec": 0.0,
+  "trimSec": 3.24,
   "lines": [
    {
     "index": 0,
     "speaker": "中明",
     "text": "小姐，我們要點兩碗牛肉麵和兩杯茶。",
-    "start": 1.54,
-    "end": 9.78,
+    "start": 0,
+    "end": 6.54,
     "words": [
      {
       "w": "小姐,我们要点两碗牛肉面和两杯茶。",
-      "start": 1.54,
-      "end": 9.78,
+      "start": 0,
+      "end": 6.54,
       "charStart": 0,
       "charEnd": 16
      }
@@ -1062,13 +1013,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "女店員",
     "text": "請問兩位要紅茶還是綠茶？",
-    "start": 10.98,
-    "end": 15.68,
+    "start": 7.74,
+    "end": 12.44,
     "words": [
      {
       "w": "请问两位要红茶还是绿茶?",
-      "start": 10.98,
-      "end": 15.68,
+      "start": 7.74,
+      "end": 12.44,
       "charStart": 0,
       "charEnd": 11
      }
@@ -1078,13 +1029,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "友美",
     "text": "我要紅茶。",
-    "start": 17.4,
-    "end": 18.96,
+    "start": 14.16,
+    "end": 15.72,
     "words": [
      {
       "w": "我要红茶。",
-      "start": 17.4,
-      "end": 18.96,
+      "start": 14.16,
+      "end": 15.72,
       "charStart": 0,
       "charEnd": 4
      }
@@ -1094,21 +1045,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "中明",
     "text": "請給我們一杯紅茶、一杯綠茶。請問一共多少錢？",
-    "start": 20.26,
-    "end": 29.74,
+    "start": 17.02,
+    "end": 26.5,
     "words": [
      {
       "w": "请给我们一杯红茶,一杯绿茶。",
-      "start": 20.26,
-      "end": 26.0,
+      "start": 17.02,
+      "end": 22.76,
       "charStart": 0,
       "charEnd": 13
      },
      {
       "w": "请问一共多少钱?",
-      "start": 26.28,
-      "end": 29.74,
-      "charStart": 13,
+      "start": 23.04,
+      "end": 26.5,
+      "charStart": 14,
       "charEnd": 21
      }
     ]
@@ -1117,15 +1068,15 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "女店員",
     "text": "一共兩百一十五塊錢。",
-    "start": 31.0,
-    "end": 40.08,
+    "start": 27.76,
+    "end": 31.1,
     "words": [
      {
-      "w": "一共两百一十五块钱,找您七百八十五块钱,谢谢。",
-      "start": 31.0,
-      "end": 40.08,
-      "charStart": null,
-      "charEnd": null
+      "w": "一共兩百一十五塊錢。",
+      "start": 27.76,
+      "end": 31.1,
+      "charStart": 0,
+      "charEnd": 10
      }
     ]
    },
@@ -1133,24 +1084,38 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "女店員",
     "text": "找您七百八十五塊錢，謝謝。",
-    "start": 0,
-    "end": 0,
-    "words": [],
-    "unmatched": true
+    "start": 31.1,
+    "end": 36.84,
+    "words": [
+     {
+      "w": "找您785块钱",
+      "start": 31.1,
+      "end": 35.56,
+      "charStart": 0,
+      "charEnd": 9
+     },
+     {
+      "w": "谢谢",
+      "start": 35.56,
+      "end": 36.84,
+      "charStart": 10,
+      "charEnd": 12
+     }
+    ]
    },
    {
     "index": 6,
     "speaker": "中明",
     "text": "一共兩百多塊錢，好便宜！",
-    "start": 41.48,
-    "end": 45.78,
+    "start": 38.24,
+    "end": 42.54,
     "words": [
      {
-      "w": "一共两百多块钱,好便宜。",
-      "start": 41.48,
-      "end": 45.78,
-      "charStart": null,
-      "charEnd": null
+      "w": "一共兩百多塊錢，好便宜！",
+      "start": 38.24,
+      "end": 42.54,
+      "charStart": 0,
+      "charEnd": 11
      }
     ]
    }
@@ -1160,19 +1125,19 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-05-1-1.mp3",
   "lessonId": 5,
   "dialogueNumber": 1,
-  "trimSec": 18.94,
+  "trimSec": 22.34,
   "lines": [
    {
     "index": 0,
     "speaker": "中明",
     "text": "友美，妳這個週末要做什麼？",
-    "start": 0.8,
-    "end": 7.5,
+    "start": 0,
+    "end": 4.1,
     "words": [
      {
       "w": "尤美,你这个周末要做什么?",
-      "start": 0.8,
-      "end": 7.5,
+      "start": 0,
+      "end": 4.1,
       "charStart": 0,
       "charEnd": 12
      }
@@ -1182,15 +1147,15 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "友美",
     "text": "我要在家看書、聽音樂。",
-    "start": 8.28,
-    "end": 12.02,
+    "start": 4.88,
+    "end": 8.62,
     "words": [
      {
-      "w": "我要在家看书,听音乐。",
-      "start": 8.28,
-      "end": 12.02,
-      "charStart": null,
-      "charEnd": null
+      "w": "我要在家看書、聽音樂。",
+      "start": 4.88,
+      "end": 8.62,
+      "charStart": 0,
+      "charEnd": 11
      }
     ]
    },
@@ -1198,21 +1163,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "中明",
     "text": "妳星期六下午有空嗎？我們一起去喝下午茶，怎麼樣？",
-    "start": 13.32,
-    "end": 20.54,
+    "start": 9.92,
+    "end": 17.14,
     "words": [
      {
       "w": "你星期六下午有空吗?",
-      "start": 13.32,
-      "end": 16.24,
+      "start": 9.92,
+      "end": 12.84,
       "charStart": 0,
       "charEnd": 9
      },
      {
       "w": "我们一起去喝下午茶,怎么样?",
-      "start": 16.94,
-      "end": 20.54,
-      "charStart": 9,
+      "start": 13.54,
+      "end": 17.14,
+      "charStart": 10,
       "charEnd": 23
      }
     ]
@@ -1221,13 +1186,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "友美",
     "text": "好啊！你想去哪裡？",
-    "start": 21.92,
-    "end": 25.32,
+    "start": 18.52,
+    "end": 21.92,
     "words": [
      {
       "w": "好啊,你想去哪里?",
-      "start": 21.92,
-      "end": 25.32,
+      "start": 18.52,
+      "end": 21.92,
       "charStart": 0,
       "charEnd": 8
      }
@@ -1237,21 +1202,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "中明",
     "text": "我知道一家很不錯的咖啡廳，那裡的冰淇淋很好吃。",
-    "start": 26.98,
-    "end": 35.04,
+    "start": 23.58,
+    "end": 31.64,
     "words": [
      {
       "w": "我知道一家很不错的咖啡厅。",
-      "start": 26.98,
-      "end": 30.98,
+      "start": 23.58,
+      "end": 27.58,
       "charStart": 0,
       "charEnd": 12
      },
      {
       "w": "那里的冰淇淋很好吃。",
-      "start": 32.22,
-      "end": 35.04,
-      "charStart": 12,
+      "start": 28.82,
+      "end": 31.64,
+      "charStart": 13,
       "charEnd": 22
      }
     ]
@@ -1260,13 +1225,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "友美",
     "text": "他們有巧克力冰淇淋嗎？",
-    "start": 35.84,
-    "end": 39.3,
+    "start": 32.44,
+    "end": 35.9,
     "words": [
      {
       "w": "他们有巧克力冰淇淋吗?",
-      "start": 35.84,
-      "end": 39.3,
+      "start": 32.44,
+      "end": 35.9,
       "charStart": 0,
       "charEnd": 10
      }
@@ -1276,13 +1241,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "中明",
     "text": "有啊！他們有很多種冰淇淋。",
-    "start": 40.42,
-    "end": 44.54,
+    "start": 37.02,
+    "end": 41.14,
     "words": [
      {
       "w": "有啊,他们有很多种冰淇淋。",
-      "start": 40.42,
-      "end": 44.54,
+      "start": 37.02,
+      "end": 41.14,
       "charStart": 0,
       "charEnd": 12
      }
@@ -1292,13 +1257,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 7,
     "speaker": "友美",
     "text": "我們這個星期六下午兩點半去吧。",
-    "start": 45.78,
-    "end": 49.6,
+    "start": 42.38,
+    "end": 46.2,
     "words": [
      {
       "w": "我们这个星期六下午两点半去吧。",
-      "start": 45.78,
-      "end": 49.6,
+      "start": 42.38,
+      "end": 46.2,
       "charStart": 0,
       "charEnd": 14
      }
@@ -1308,13 +1273,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 8,
     "speaker": "中明",
     "text": "好。",
-    "start": 50.76,
-    "end": 51.28,
+    "start": 47.36,
+    "end": 47.88,
     "words": [
      {
       "w": "好。",
-      "start": 50.76,
-      "end": 51.28,
+      "start": 47.36,
+      "end": 47.88,
       "charStart": 0,
       "charEnd": 1
      }
@@ -1326,27 +1291,27 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-05-2-1.mp3",
   "lessonId": 5,
   "dialogueNumber": 2,
-  "trimSec": 0.0,
+  "trimSec": 3.35,
   "lines": [
    {
     "index": 0,
     "speaker": "中明",
     "text": "媽，我跟友美要去喝下午茶，可是我的錢包不在房間裡。",
-    "start": 1.8,
-    "end": 13.4,
+    "start": 0,
+    "end": 10.05,
     "words": [
      {
       "w": "妈,我跟尤美要去喝下午茶",
-      "start": 1.8,
-      "end": 8.18,
+      "start": 0,
+      "end": 4.83,
       "charStart": 0,
       "charEnd": 12
      },
      {
       "w": "可是,我的钱包不在房间里",
-      "start": 8.18,
-      "end": 13.4,
-      "charStart": 12,
+      "start": 4.83,
+      "end": 10.05,
+      "charStart": 13,
       "charEnd": 24
      }
     ]
@@ -1355,21 +1320,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "媽媽",
     "text": "客廳的桌子上有一個錢包，是不是你的？",
-    "start": 13.4,
-    "end": 18.78,
+    "start": 10.05,
+    "end": 15.43,
     "words": [
      {
       "w": "客厅的桌子上有一个钱包",
-      "start": 13.4,
-      "end": 17.24,
+      "start": 10.05,
+      "end": 13.89,
       "charStart": 0,
       "charEnd": 11
      },
      {
       "w": "是不是你的",
-      "start": 17.24,
-      "end": 18.78,
-      "charStart": 11,
+      "start": 13.89,
+      "end": 15.43,
+      "charStart": 12,
       "charEnd": 17
      }
     ]
@@ -1378,28 +1343,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "中明",
     "text": "那不是我的，是哥哥的。我的錢包不在客廳裡。",
-    "start": 18.78,
-    "end": 27.78,
+    "start": 15.43,
+    "end": 24.43,
     "words": [
      {
       "w": "那不是我的",
-      "start": 18.78,
-      "end": 21.28,
+      "start": 15.43,
+      "end": 17.93,
       "charStart": 0,
       "charEnd": 5
      },
      {
       "w": "是哥哥的",
-      "start": 21.28,
-      "end": 23.64,
-      "charStart": 5,
+      "start": 17.93,
+      "end": 20.29,
+      "charStart": 6,
       "charEnd": 10
      },
      {
       "w": "我的钱包不在客厅里",
-      "start": 23.64,
-      "end": 27.78,
-      "charStart": 10,
+      "start": 20.29,
+      "end": 24.43,
+      "charStart": 11,
       "charEnd": 20
      }
     ]
@@ -1408,13 +1373,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "媽媽",
     "text": "沙發下面呢？",
-    "start": 28.38,
-    "end": 30.36,
+    "start": 25.03,
+    "end": 27.01,
     "words": [
      {
       "w": "沙发下面呢?",
-      "start": 28.38,
-      "end": 30.36,
+      "start": 25.03,
+      "end": 27.01,
       "charStart": 0,
       "charEnd": 5
      }
@@ -1424,21 +1389,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "中明",
     "text": "沙發上面、下面跟旁邊都沒有。媽，妳幫我找，好嗎？",
-    "start": 31.56,
-    "end": 39.94,
+    "start": 28.21,
+    "end": 36.59,
     "words": [
      {
       "w": "沙发上面、下面跟旁边都没有",
-      "start": 31.56,
-      "end": 35.94,
+      "start": 28.21,
+      "end": 32.59,
       "charStart": 0,
       "charEnd": 13
      },
      {
       "w": "妈,你帮我找,好吗?",
-      "start": 35.94,
-      "end": 39.94,
-      "charStart": 13,
+      "start": 32.59,
+      "end": 36.59,
+      "charStart": 14,
       "charEnd": 23
      }
     ]
@@ -1447,21 +1412,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "媽媽",
     "text": "我很忙，現在要去廚房做飯，你再去房間找吧。",
-    "start": 41.0,
-    "end": 47.62,
+    "start": 37.65,
+    "end": 44.27,
     "words": [
      {
       "w": "我很忙,现在要去厨房做饭",
-      "start": 41.0,
-      "end": 44.76,
+      "start": 37.65,
+      "end": 41.41,
       "charStart": 0,
       "charEnd": 12
      },
      {
       "w": "你再去房间找吧",
-      "start": 44.76,
-      "end": 47.62,
-      "charStart": 12,
+      "start": 41.41,
+      "end": 44.27,
+      "charStart": 13,
       "charEnd": 20
      }
     ]
@@ -1470,13 +1435,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "中明",
     "text": "啊！在這裡！錢包在我的書下面。",
-    "start": 47.62,
-    "end": 53.2,
+    "start": 44.27,
+    "end": 49.85,
     "words": [
      {
       "w": "啊,在这里,钱包在我的书下面",
-      "start": 47.62,
-      "end": 53.2,
+      "start": 44.27,
+      "end": 49.85,
       "charStart": 0,
       "charEnd": 14
      }
@@ -1488,41 +1453,41 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-06-1-1.mp3",
   "lessonId": 6,
   "dialogueNumber": 1,
-  "trimSec": 18.74,
+  "trimSec": 22.14,
   "lines": [
    {
     "index": 0,
     "speaker": "國安",
     "text": "今天天氣不錯，海邊的風景也很漂亮，我想去游泳，妳們想去嗎？",
-    "start": 0.8,
-    "end": 13.92,
+    "start": 0,
+    "end": 10.52,
     "words": [
      {
       "w": "今天天气不错",
-      "start": 0.8,
-      "end": 5.46,
+      "start": 0,
+      "end": 2.06,
       "charStart": 0,
       "charEnd": 6
      },
      {
       "w": "海边的风景也很漂亮",
-      "start": 5.46,
-      "end": 9.14,
-      "charStart": 6,
+      "start": 2.06,
+      "end": 5.74,
+      "charStart": 7,
       "charEnd": 16
      },
      {
       "w": "我想去游泳",
-      "start": 9.64,
-      "end": 11.44,
-      "charStart": 16,
+      "start": 6.24,
+      "end": 8.04,
+      "charStart": 17,
       "charEnd": 22
      },
      {
       "w": "你们想去吗",
-      "start": 11.44,
-      "end": 13.92,
-      "charStart": 22,
+      "start": 8.04,
+      "end": 10.52,
+      "charStart": 23,
       "charEnd": 28
      }
     ]
@@ -1531,28 +1496,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "友美",
     "text": "我不會游泳。宜文，妳會游泳嗎？",
-    "start": 13.92,
-    "end": 20.36,
+    "start": 10.52,
+    "end": 16.96,
     "words": [
      {
       "w": "我不会游泳",
-      "start": 13.92,
-      "end": 16.64,
+      "start": 10.52,
+      "end": 13.24,
       "charStart": 0,
       "charEnd": 5
      },
      {
       "w": "宜文",
-      "start": 16.64,
-      "end": 17.94,
-      "charStart": 5,
+      "start": 13.24,
+      "end": 14.54,
+      "charStart": 6,
       "charEnd": 8
      },
      {
       "w": "你会游泳吗",
-      "start": 17.94,
-      "end": 20.36,
-      "charStart": 8,
+      "start": 14.54,
+      "end": 16.96,
+      "charStart": 9,
       "charEnd": 14
      }
     ]
@@ -1561,21 +1526,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "宜文",
     "text": "我會游泳，可是游得不太好。",
-    "start": 20.36,
-    "end": 25.82,
+    "start": 16.96,
+    "end": 22.42,
     "words": [
      {
       "w": "我会游泳",
-      "start": 20.36,
-      "end": 22.6,
+      "start": 16.96,
+      "end": 19.2,
       "charStart": 0,
       "charEnd": 4
      },
      {
       "w": "可是游得不太好",
-      "start": 22.6,
-      "end": 25.82,
-      "charStart": 4,
+      "start": 19.2,
+      "end": 22.42,
+      "charStart": 5,
       "charEnd": 12
      }
     ]
@@ -1584,21 +1549,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "國安",
     "text": "我們去跑步，怎麼樣？",
-    "start": 25.82,
-    "end": 29.34,
+    "start": 22.42,
+    "end": 25.94,
     "words": [
      {
       "w": "我们去跑步",
-      "start": 25.82,
-      "end": 28.34,
+      "start": 22.42,
+      "end": 24.94,
       "charStart": 0,
       "charEnd": 5
      },
      {
       "w": "怎么样",
-      "start": 28.34,
-      "end": 29.34,
-      "charStart": 5,
+      "start": 24.94,
+      "end": 25.94,
+      "charStart": 6,
       "charEnd": 9
      }
     ]
@@ -1607,21 +1572,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "友美",
     "text": "我不喜歡跑步，我跑步跑得很慢。",
-    "start": 29.34,
-    "end": 35.9,
+    "start": 25.94,
+    "end": 32.5,
     "words": [
      {
       "w": "我不喜欢跑步",
-      "start": 29.34,
-      "end": 32.62,
+      "start": 25.94,
+      "end": 29.22,
       "charStart": 0,
       "charEnd": 6
      },
      {
       "w": "我跑步跑得很慢",
-      "start": 32.62,
-      "end": 35.9,
-      "charStart": 6,
+      "start": 29.22,
+      "end": 32.5,
+      "charStart": 7,
       "charEnd": 14
      }
     ]
@@ -1630,35 +1595,14 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "宜文",
     "text": "打網球怎麼樣？中明說妳的網球打得很好，我們一起去打吧。",
-    "start": 35.9,
-    "end": 45.62,
+    "start": 32.5,
+    "end": 42.22,
     "words": [
      {
-      "w": "打网球怎么样",
-      "start": 35.9,
-      "end": 38.02,
+      "w": "打網球怎麼樣？中明說妳的網球打得很好，我們一起去打吧。",
+      "start": 32.5,
+      "end": 42.22,
       "charStart": 0,
-      "charEnd": 6
-     },
-     {
-      "w": "中明说",
-      "start": 38.02,
-      "end": 40.3,
-      "charStart": null,
-      "charEnd": null
-     },
-     {
-      "w": "你的网球打得很好",
-      "start": 40.3,
-      "end": 42.9,
-      "charStart": 10,
-      "charEnd": 18
-     },
-     {
-      "w": "我们一起去打吧",
-      "start": 42.9,
-      "end": 45.62,
-      "charStart": 18,
       "charEnd": 26
      }
     ]
@@ -1667,13 +1611,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "友美",
     "text": "好啊。",
-    "start": 45.62,
-    "end": 47.32,
+    "start": 42.22,
+    "end": 43.92,
     "words": [
      {
       "w": "好啊",
-      "start": 45.62,
-      "end": 47.32,
+      "start": 42.22,
+      "end": 43.92,
       "charStart": 0,
       "charEnd": 2
      }
@@ -1685,28 +1629,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-06-2-1.mp3",
   "lessonId": 6,
   "dialogueNumber": 2,
-  "trimSec": 0.0,
+  "trimSec": 2.9,
   "lines": [
    {
     "index": 0,
     "speaker": "國安",
-    "text": "聽說這部電影很有趣，我們晚一起去看，好不好？",
-    "start": 1.3,
-    "end": 10.2,
+    "text": "聽說這部電影很有趣，我們晚上一起去看，好不好？",
+    "start": 0,
+    "end": 7.3,
     "words": [
      {
       "w": "听说这部电影很有趣。",
-      "start": 1.3,
-      "end": 6.06,
+      "start": 0,
+      "end": 3.16,
       "charStart": 0,
       "charEnd": 9
      },
      {
       "w": "我们晚上一起去看,好不好?",
-      "start": 7.28,
-      "end": 10.2,
-      "charStart": null,
-      "charEnd": null
+      "start": 4.38,
+      "end": 7.3,
+      "charStart": 10,
+      "charEnd": 22
      }
     ]
    },
@@ -1714,21 +1658,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "中明",
     "text": "我覺得有一點兒累，我想回家休息。",
-    "start": 12.18,
-    "end": 17.6,
+    "start": 9.28,
+    "end": 14.7,
     "words": [
      {
       "w": "我觉得有一点儿累。",
-      "start": 12.18,
-      "end": 14.48,
+      "start": 9.28,
+      "end": 11.58,
       "charStart": 0,
       "charEnd": 8
      },
      {
       "w": "我想回家休息。",
-      "start": 15.7,
-      "end": 17.6,
-      "charStart": 8,
+      "start": 12.8,
+      "end": 14.7,
+      "charStart": 9,
       "charEnd": 15
      }
     ]
@@ -1737,28 +1681,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "國安",
     "text": "你不要常常在家上網、看電腦、玩手機，應該去運動。明天我有空，我們可以一起去騎腳踏車。",
-    "start": 19.28,
-    "end": 34.06,
+    "start": 16.38,
+    "end": 31.16,
     "words": [
      {
       "w": "你不要常常在家上网、看电脑、玩手机,应该去运动。",
-      "start": 19.28,
-      "end": 26.66,
+      "start": 16.38,
+      "end": 23.76,
       "charStart": 0,
       "charEnd": 23
      },
      {
       "w": "明天我有空。",
-      "start": 27.42,
-      "end": 29.62,
-      "charStart": 23,
+      "start": 24.52,
+      "end": 26.72,
+      "charStart": 24,
       "charEnd": 29
      },
      {
       "w": "我们可以一起去骑脚踏车。",
-      "start": 30.82,
-      "end": 34.06,
-      "charStart": 29,
+      "start": 27.92,
+      "end": 31.16,
+      "charStart": 30,
       "charEnd": 41
      }
     ]
@@ -1767,15 +1711,15 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "中明",
     "text": "可是我只想聽音樂、睡覺。",
-    "start": 35.78,
-    "end": 39.84,
+    "start": 32.88,
+    "end": 36.94,
     "words": [
      {
-      "w": "可是我只想听音乐、睡觉。",
-      "start": 35.78,
-      "end": 39.84,
-      "charStart": null,
-      "charEnd": null
+      "w": "可是我只想聽音樂、睡覺。",
+      "start": 32.88,
+      "end": 36.94,
+      "charStart": 0,
+      "charEnd": 12
      }
     ]
    },
@@ -1783,13 +1727,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "國安",
     "text": "後天去呢？",
-    "start": 41.54,
-    "end": 42.74,
+    "start": 38.64,
+    "end": 39.84,
     "words": [
      {
       "w": "后天去呢?",
-      "start": 41.54,
-      "end": 42.74,
+      "start": 38.64,
+      "end": 39.84,
       "charStart": 0,
       "charEnd": 4
      }
@@ -1799,13 +1743,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "中明",
     "text": "這兩天天氣有點兒冷，我們週末去，好嗎？",
-    "start": 43.5,
-    "end": 49.96,
+    "start": 40.6,
+    "end": 47.06,
     "words": [
      {
       "w": "这两天天气有点儿冷,我们周末去,好吗?",
-      "start": 43.5,
-      "end": 49.96,
+      "start": 40.6,
+      "end": 47.06,
       "charStart": 0,
       "charEnd": 18
      }
@@ -1817,27 +1761,27 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-07-1-1.mp3",
   "lessonId": 7,
   "dialogueNumber": 1,
-  "trimSec": 17.84,
+  "trimSec": 21.24,
   "lines": [
    {
     "index": 0,
     "speaker": "友美",
     "text": "元真，我們明天幾點去找妳的韓國朋友？",
-    "start": 0.8,
-    "end": 8.74,
+    "start": 0,
+    "end": 5.34,
     "words": [
      {
       "w": "袁真",
-      "start": 0.8,
-      "end": 4.06,
+      "start": 0,
+      "end": 0.66,
       "charStart": 0,
       "charEnd": 2
      },
      {
       "w": "我们明天几点去找你的韩国朋友?",
-      "start": 4.06,
-      "end": 8.74,
-      "charStart": 2,
+      "start": 0.66,
+      "end": 5.34,
+      "charStart": 3,
       "charEnd": 17
      }
     ]
@@ -1846,28 +1790,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "元真",
     "text": "我們下午四點要到天美飯店，她在那裡等我們。",
-    "start": 9.88,
-    "end": 17.38,
+    "start": 6.48,
+    "end": 13.98,
     "words": [
      {
       "w": "我们下午四点",
-      "start": 9.88,
-      "end": 12.06,
+      "start": 6.48,
+      "end": 8.66,
       "charStart": 0,
       "charEnd": 6
      },
      {
       "w": "要到天美饭店",
-      "start": 12.06,
-      "end": 14.6,
+      "start": 8.66,
+      "end": 11.2,
       "charStart": 6,
       "charEnd": 12
      },
      {
       "w": "他在那里等我们",
-      "start": 14.6,
-      "end": 17.38,
-      "charStart": 12,
+      "start": 11.2,
+      "end": 13.98,
+      "charStart": 13,
       "charEnd": 20
      }
     ]
@@ -1876,21 +1820,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "友美",
     "text": "我們要怎麼去？坐捷運還是坐公車？",
-    "start": 17.38,
-    "end": 23.96,
+    "start": 13.98,
+    "end": 20.56,
     "words": [
      {
       "w": "我们要怎么去?",
-      "start": 17.38,
-      "end": 20.3,
+      "start": 13.98,
+      "end": 16.9,
       "charStart": 0,
       "charEnd": 6
      },
      {
       "w": "坐捷运还是坐公车?",
-      "start": 21.18,
-      "end": 23.96,
-      "charStart": 6,
+      "start": 17.78,
+      "end": 20.56,
+      "charStart": 7,
       "charEnd": 15
      }
     ]
@@ -1899,21 +1843,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "元真",
     "text": "聽說那家飯店不遠，我想我們可以從學校走路去。",
-    "start": 25.26,
-    "end": 32.16,
+    "start": 21.86,
+    "end": 28.76,
     "words": [
      {
       "w": "听说那家饭店不远",
-      "start": 25.26,
-      "end": 27.56,
+      "start": 21.86,
+      "end": 24.16,
       "charStart": 0,
       "charEnd": 8
      },
      {
       "w": "我想我们可以从学校走路去",
-      "start": 27.56,
-      "end": 32.16,
-      "charStart": 8,
+      "start": 24.16,
+      "end": 28.76,
+      "charStart": 9,
       "charEnd": 21
      }
     ]
@@ -1922,21 +1866,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "友美",
     "text": "可是我不知道怎麼走，妳知道嗎？",
-    "start": 32.16,
-    "end": 38.12,
+    "start": 28.76,
+    "end": 34.72,
     "words": [
      {
       "w": "可是我不知道怎么走",
-      "start": 32.16,
-      "end": 36.22,
+      "start": 28.76,
+      "end": 32.82,
       "charStart": 0,
       "charEnd": 9
      },
      {
       "w": "你知道吗?",
-      "start": 36.22,
-      "end": 38.12,
-      "charStart": 9,
+      "start": 32.82,
+      "end": 34.72,
+      "charStart": 10,
       "charEnd": 14
      }
     ]
@@ -1945,21 +1889,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "元真",
     "text": "我也不知道。我們可以先上網看地圖。",
-    "start": 39.32,
-    "end": 44.5,
+    "start": 35.92,
+    "end": 41.1,
     "words": [
      {
       "w": "我也不知道",
-      "start": 39.32,
-      "end": 40.42,
+      "start": 35.92,
+      "end": 37.02,
       "charStart": 0,
       "charEnd": 5
      },
      {
       "w": "我们可以先上网看地图",
-      "start": 41.96,
-      "end": 44.5,
-      "charStart": 5,
+      "start": 38.56,
+      "end": 41.1,
+      "charStart": 6,
       "charEnd": 16
      }
     ]
@@ -1968,28 +1912,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "友美",
     "text": "啊！上課了！我們先上課吧。",
-    "start": 44.5,
-    "end": 49.82,
+    "start": 41.1,
+    "end": 46.42,
     "words": [
      {
       "w": "啊",
-      "start": 44.5,
-      "end": 46.04,
+      "start": 41.1,
+      "end": 42.64,
       "charStart": 0,
       "charEnd": 1
      },
      {
       "w": "上课了",
-      "start": 46.04,
-      "end": 47.42,
-      "charStart": 1,
+      "start": 42.64,
+      "end": 44.02,
+      "charStart": 2,
       "charEnd": 5
      },
      {
       "w": "我们先上课吧",
-      "start": 47.42,
-      "end": 49.82,
-      "charStart": 5,
+      "start": 44.02,
+      "end": 46.42,
+      "charStart": 6,
       "charEnd": 12
      }
     ]
@@ -1998,13 +1942,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 7,
     "speaker": "元真",
     "text": "好。",
-    "start": 49.82,
-    "end": 51.42,
+    "start": 46.42,
+    "end": 48.02,
     "words": [
      {
       "w": "好",
-      "start": 49.82,
-      "end": 51.42,
+      "start": 46.42,
+      "end": 48.02,
       "charStart": 0,
       "charEnd": 1
      }
@@ -2016,19 +1960,19 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-07-2-1.mp3",
   "lessonId": 7,
   "dialogueNumber": 2,
-  "trimSec": 0.0,
+  "trimSec": 2.8,
   "lines": [
    {
     "index": 0,
     "speaker": "元真",
     "text": "友美，妳看，天美飯店在大學路。我現在知道怎麼走了。",
-    "start": 1.2,
-    "end": 10.74,
+    "start": 0,
+    "end": 7.94,
     "words": [
      {
       "w": "油美,你看,天美饭店在大学路,我现在知道怎么走了。",
-      "start": 1.2,
-      "end": 10.74,
+      "start": 0,
+      "end": 7.94,
       "charStart": 0,
       "charEnd": 24
      }
@@ -2038,14 +1982,14 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "友美",
     "text": "（看地圖）啊！天美飯店在這裡！我知道這個地方，附近有郵局跟超級市場。",
-    "start": 12.5,
-    "end": 23.26,
+    "start": 9.7,
+    "end": 20.46,
     "words": [
      {
       "w": "啊,天美饭店在这里,我知道这个地方,附近有邮局跟超级市场。",
-      "start": 12.5,
-      "end": 23.26,
-      "charStart": 4,
+      "start": 9.7,
+      "end": 20.46,
+      "charStart": 5,
       "charEnd": 33
      }
     ]
@@ -2054,13 +1998,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "元真",
     "text": "我想走路去一定沒問題。",
-    "start": 24.6,
-    "end": 27.82,
+    "start": 21.8,
+    "end": 25.02,
     "words": [
      {
       "w": "我想走路去一定没问题。",
-      "start": 24.6,
-      "end": 27.82,
+      "start": 21.8,
+      "end": 25.02,
       "charStart": 0,
       "charEnd": 10
      }
@@ -2070,13 +2014,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "友美",
     "text": "可是我覺得那裡有點兒遠，走路去太累了。",
-    "start": 29.62,
-    "end": 36.08,
+    "start": 26.82,
+    "end": 33.28,
     "words": [
      {
       "w": "可是,我觉得那里有点远,走路去太累了。",
-      "start": 29.62,
-      "end": 36.08,
+      "start": 26.82,
+      "end": 33.28,
       "charStart": 0,
       "charEnd": 18
      }
@@ -2086,13 +2030,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "元真",
     "text": "妳想怎麼去？",
-    "start": 37.7,
-    "end": 38.94,
+    "start": 34.9,
+    "end": 36.14,
     "words": [
      {
       "w": "你想怎么去?",
-      "start": 37.7,
-      "end": 38.94,
+      "start": 34.9,
+      "end": 36.14,
       "charStart": 0,
       "charEnd": 5
      }
@@ -2102,13 +2046,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "友美",
     "text": "坐捷運又方便又舒服，我們可以坐捷運。",
-    "start": 40.6,
-    "end": 47.14,
+    "start": 37.8,
+    "end": 44.34,
     "words": [
      {
       "w": "坐捷运,又方便,又舒服,我们可以坐捷运。",
-      "start": 40.6,
-      "end": 47.14,
+      "start": 37.8,
+      "end": 44.34,
       "charStart": 0,
       "charEnd": 17
      }
@@ -2118,13 +2062,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "元真",
     "text": "好，我們明天坐捷運去吧。",
-    "start": 48.82,
-    "end": 52.3,
+    "start": 46.02,
+    "end": 49.5,
     "words": [
      {
       "w": "好,我们明天坐捷运去吧。",
-      "start": 48.82,
-      "end": 52.3,
+      "start": 46.02,
+      "end": 49.5,
       "charStart": 0,
       "charEnd": 11
      }
@@ -2136,34 +2080,34 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-08-1-1.mp3",
   "lessonId": 8,
   "dialogueNumber": 1,
-  "trimSec": 18.46,
+  "trimSec": 21.76,
   "lines": [
    {
     "index": 0,
     "speaker": "宜文",
     "text": "元真，妳的這條裙子真好看，我很喜歡。",
-    "start": 0.8,
-    "end": 8.84,
+    "start": 0,
+    "end": 5.54,
     "words": [
      {
       "w": "袁真",
-      "start": 0.8,
-      "end": 3.82,
+      "start": 0,
+      "end": 0.52,
       "charStart": 0,
       "charEnd": 2
      },
      {
       "w": "你的这条裙子真好看",
-      "start": 3.82,
-      "end": 7.06,
-      "charStart": 2,
+      "start": 0.52,
+      "end": 3.76,
+      "charStart": 3,
       "charEnd": 12
      },
      {
       "w": "我很喜欢",
-      "start": 7.06,
-      "end": 8.84,
-      "charStart": 12,
+      "start": 3.76,
+      "end": 5.54,
+      "charStart": 13,
       "charEnd": 17
      }
     ]
@@ -2172,21 +2116,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "元真",
     "text": "謝謝，這是我去年的生日禮物。",
-    "start": 8.84,
-    "end": 13.96,
+    "start": 5.54,
+    "end": 10.66,
     "words": [
      {
       "w": "谢谢",
-      "start": 8.84,
-      "end": 10.54,
+      "start": 5.54,
+      "end": 7.24,
       "charStart": 0,
       "charEnd": 2
      },
      {
       "w": "这是我去年的生日礼物",
-      "start": 10.54,
-      "end": 13.96,
-      "charStart": 2,
+      "start": 7.24,
+      "end": 10.66,
+      "charStart": 3,
       "charEnd": 13
      }
     ]
@@ -2195,21 +2139,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "宜文",
     "text": "聽說這個牌子的東西很貴，可是很多人喜歡。",
-    "start": 13.96,
-    "end": 21.18,
+    "start": 10.66,
+    "end": 17.88,
     "words": [
      {
       "w": "听说这个牌子的东西很贵",
-      "start": 13.96,
-      "end": 18.04,
+      "start": 10.66,
+      "end": 14.74,
       "charStart": 0,
       "charEnd": 11
      },
      {
       "w": "可是很多人喜欢",
-      "start": 18.04,
-      "end": 21.18,
-      "charStart": 11,
+      "start": 14.74,
+      "end": 17.88,
+      "charStart": 12,
       "charEnd": 19
      }
     ]
@@ -2218,56 +2162,56 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "元真",
     "text": "是啊，因為這個牌子很有名，衣服、褲子和裙子也都很好看，所以很多人買。",
-    "start": 21.18,
-    "end": 36.82,
+    "start": 17.88,
+    "end": 33.52,
     "words": [
      {
       "w": "是啊",
-      "start": 21.18,
-      "end": 22.76,
+      "start": 17.88,
+      "end": 19.46,
       "charStart": 0,
       "charEnd": 2
      },
      {
       "w": "因为这个牌子很有名",
-      "start": 22.76,
-      "end": 26.26,
-      "charStart": 2,
+      "start": 19.46,
+      "end": 22.96,
+      "charStart": 3,
       "charEnd": 12
      },
      {
       "w": "衣服",
-      "start": 26.26,
-      "end": 28.04,
-      "charStart": 12,
+      "start": 22.96,
+      "end": 24.74,
+      "charStart": 13,
       "charEnd": 15
      },
      {
       "w": "裤子",
-      "start": 28.04,
-      "end": 29.54,
-      "charStart": 15,
+      "start": 24.74,
+      "end": 26.24,
+      "charStart": 16,
       "charEnd": 18
      },
      {
       "w": "和裙子",
-      "start": 29.54,
-      "end": 31.26,
+      "start": 26.24,
+      "end": 27.96,
       "charStart": 18,
       "charEnd": 21
      },
      {
       "w": "也都很好看",
-      "start": 31.26,
-      "end": 33.44,
+      "start": 27.96,
+      "end": 30.14,
       "charStart": 21,
       "charEnd": 26
      },
      {
       "w": "所以很多人买",
-      "start": 33.44,
-      "end": 36.82,
-      "charStart": 26,
+      "start": 30.14,
+      "end": 33.52,
+      "charStart": 27,
       "charEnd": 33
      }
     ]
@@ -2276,20 +2220,20 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "宜文",
     "text": "妳知道去哪裡買這個牌子的衣服嗎？",
-    "start": 36.82,
-    "end": 41.42,
+    "start": 33.52,
+    "end": 38.12,
     "words": [
      {
       "w": "你知道去哪里买",
-      "start": 36.82,
-      "end": 39.54,
+      "start": 33.52,
+      "end": 36.24,
       "charStart": 0,
       "charEnd": 7
      },
      {
       "w": "这个牌子的衣服吗",
-      "start": 39.54,
-      "end": 41.42,
+      "start": 36.24,
+      "end": 38.12,
       "charStart": 7,
       "charEnd": 15
      }
@@ -2299,28 +2243,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "元真",
     "text": "知道，百貨公司都有，不難找。",
-    "start": 41.42,
-    "end": 47.26,
+    "start": 38.12,
+    "end": 43.96,
     "words": [
      {
       "w": "知道",
-      "start": 41.42,
-      "end": 42.96,
+      "start": 38.12,
+      "end": 39.66,
       "charStart": 0,
       "charEnd": 2
      },
      {
       "w": "百货公司都有",
-      "start": 42.96,
-      "end": 45.54,
-      "charStart": 2,
+      "start": 39.66,
+      "end": 42.24,
+      "charStart": 3,
       "charEnd": 9
      },
      {
       "w": "不难找",
-      "start": 45.54,
-      "end": 47.26,
-      "charStart": 9,
+      "start": 42.24,
+      "end": 43.96,
+      "charStart": 10,
       "charEnd": 13
      }
     ]
@@ -2329,28 +2273,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "宜文",
     "text": "我很想去看，可是我最近胖了五公斤，我怕衣服不好買。",
-    "start": 47.26,
-    "end": 56.04,
+    "start": 43.96,
+    "end": 52.74,
     "words": [
      {
       "w": "我很想去看",
-      "start": 47.26,
-      "end": 49.84,
+      "start": 43.96,
+      "end": 46.54,
       "charStart": 0,
       "charEnd": 5
      },
      {
       "w": "可是我最近胖了五公斤",
-      "start": 49.84,
-      "end": 53.34,
-      "charStart": 5,
+      "start": 46.54,
+      "end": 50.04,
+      "charStart": 6,
       "charEnd": 16
      },
      {
       "w": "我怕衣服不好买",
-      "start": 53.34,
-      "end": 56.04,
-      "charStart": 16,
+      "start": 50.04,
+      "end": 52.74,
+      "charStart": 17,
       "charEnd": 24
      }
     ]
@@ -2359,41 +2303,41 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 7,
     "speaker": "元真",
     "text": "妳胖了嗎？我不覺得啊，我跟妳一起去看。我也想去買今年夏天的新衣服。",
-    "start": 56.04,
-    "end": 67.0,
+    "start": 52.74,
+    "end": 63.7,
     "words": [
      {
       "w": "你胖了吗",
-      "start": 56.04,
-      "end": 58.42,
+      "start": 52.74,
+      "end": 55.12,
       "charStart": 0,
       "charEnd": 4
      },
      {
       "w": "我不觉得啊",
-      "start": 58.42,
-      "end": 60.3,
-      "charStart": 4,
+      "start": 55.12,
+      "end": 57.0,
+      "charStart": 5,
       "charEnd": 10
      },
      {
       "w": "我跟你一起去看",
-      "start": 60.3,
-      "end": 62.88,
-      "charStart": 10,
+      "start": 57.0,
+      "end": 59.58,
+      "charStart": 11,
       "charEnd": 18
      },
      {
       "w": "我也想去买",
-      "start": 62.88,
-      "end": 64.92,
-      "charStart": 18,
+      "start": 59.58,
+      "end": 61.62,
+      "charStart": 19,
       "charEnd": 24
      },
      {
       "w": "今年夏天的新衣服",
-      "start": 64.92,
-      "end": 67.0,
+      "start": 61.62,
+      "end": 63.7,
       "charStart": 24,
       "charEnd": 32
      }
@@ -2403,21 +2347,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 8,
     "speaker": "宜文",
     "text": "好，我們找時間一起去。",
-    "start": 67.0,
-    "end": 71.22,
+    "start": 63.7,
+    "end": 67.92,
     "words": [
      {
       "w": "好",
-      "start": 67.0,
-      "end": 68.56,
+      "start": 63.7,
+      "end": 65.26,
       "charStart": 0,
       "charEnd": 1
      },
      {
       "w": "我们找时间一起去",
-      "start": 68.56,
-      "end": 71.22,
-      "charStart": 1,
+      "start": 65.26,
+      "end": 67.92,
+      "charStart": 2,
       "charEnd": 10
      }
     ]
@@ -2428,19 +2372,19 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-08-2-1.mp3",
   "lessonId": 8,
   "dialogueNumber": 2,
-  "trimSec": 0.0,
+  "trimSec": 2.58,
   "lines": [
    {
     "index": 0,
     "speaker": "宜文",
     "text": "妳看，這條黃色的褲子不錯吧？",
-    "start": 1.18,
-    "end": 6.14,
+    "start": 0,
+    "end": 3.56,
     "words": [
      {
       "w": "你看,这条黄色的裤子不错吧?",
-      "start": 1.18,
-      "end": 6.14,
+      "start": 0,
+      "end": 3.56,
       "charStart": 0,
       "charEnd": 13
      }
@@ -2450,28 +2394,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "元真",
     "text": "很好看。這條藍的也很漂亮，藍色是今年很流行的顏色。",
-    "start": 7.66,
-    "end": 16.12,
+    "start": 5.08,
+    "end": 13.54,
     "words": [
      {
       "w": "很好看!",
-      "start": 7.66,
-      "end": 8.68,
+      "start": 5.08,
+      "end": 6.1,
       "charStart": 0,
       "charEnd": 3
      },
      {
       "w": "这条蓝的也很漂亮",
-      "start": 9.6,
-      "end": 11.82,
-      "charStart": 3,
+      "start": 7.02,
+      "end": 9.24,
+      "charStart": 4,
       "charEnd": 12
      },
      {
       "w": "蓝色是今年很流行的颜色",
-      "start": 11.82,
-      "end": 16.12,
-      "charStart": 12,
+      "start": 9.24,
+      "end": 13.54,
+      "charStart": 13,
       "charEnd": 24
      }
     ]
@@ -2480,13 +2424,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "宜文",
     "text": "這兩條我都去穿穿看。",
-    "start": 16.12,
-    "end": 20.2,
+    "start": 13.54,
+    "end": 17.62,
     "words": [
      {
       "w": "这两条我都去穿穿看",
-      "start": 16.12,
-      "end": 20.2,
+      "start": 13.54,
+      "end": 17.62,
       "charStart": 0,
       "charEnd": 9
      }
@@ -2496,13 +2440,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "元真",
     "text": "妳覺得怎麼樣？",
-    "start": 20.2,
-    "end": 23.02,
+    "start": 17.62,
+    "end": 20.44,
     "words": [
      {
       "w": "你觉得怎么样?",
-      "start": 20.2,
-      "end": 23.02,
+      "start": 17.62,
+      "end": 20.44,
       "charStart": 0,
       "charEnd": 6
      }
@@ -2512,13 +2456,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "宜文",
     "text": "都太短，也太小了。",
-    "start": 24.76,
-    "end": 27.66,
+    "start": 22.18,
+    "end": 25.08,
     "words": [
      {
       "w": "都太短,也太小了",
-      "start": 24.76,
-      "end": 27.66,
+      "start": 22.18,
+      "end": 25.08,
       "charStart": 0,
       "charEnd": 8
      }
@@ -2528,21 +2472,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "元真",
     "text": "沒關係，我們可以下個週末再來看。對了，妳要買鞋子吧？",
-    "start": 28.66,
-    "end": 37.84,
+    "start": 26.08,
+    "end": 35.26,
     "words": [
      {
       "w": "没关系,我们可以下个周末再来看",
-      "start": 28.66,
-      "end": 33.72,
+      "start": 26.08,
+      "end": 31.14,
       "charStart": 0,
       "charEnd": 15
      },
      {
       "w": "对了,你要买鞋子吧?",
-      "start": 33.72,
-      "end": 37.84,
-      "charStart": 15,
+      "start": 31.14,
+      "end": 35.26,
+      "charStart": 16,
       "charEnd": 25
      }
     ]
@@ -2551,13 +2495,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "宜文",
     "text": "是啊，我想買一雙黑色的。",
-    "start": 39.32,
-    "end": 43.66,
+    "start": 36.74,
+    "end": 41.08,
     "words": [
      {
       "w": "是啊,我想买一双黑色的",
-      "start": 39.32,
-      "end": 43.66,
+      "start": 36.74,
+      "end": 41.08,
       "charStart": 0,
       "charEnd": 11
      }
@@ -2567,21 +2511,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 7,
     "speaker": "元真",
     "text": "鞋子都在一樓，我們到樓下去吧！九點了，百貨公司快要關了。",
-    "start": 43.66,
-    "end": 54.52,
+    "start": 41.08,
+    "end": 51.94,
     "words": [
      {
       "w": "鞋子都在一楼,我们到楼下去吧",
-      "start": 43.66,
-      "end": 49.34,
+      "start": 41.08,
+      "end": 46.76,
       "charStart": 0,
       "charEnd": 14
      },
      {
       "w": "九点了,百货公司快要关了",
-      "start": 49.34,
-      "end": 54.52,
-      "charStart": 14,
+      "start": 46.76,
+      "end": 51.94,
+      "charStart": 15,
       "charEnd": 27
      }
     ]
@@ -2590,21 +2534,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 8,
     "speaker": "宜文",
     "text": "電梯在那裡！我們現在去買。",
-    "start": 54.52,
-    "end": 59.92,
+    "start": 51.94,
+    "end": 57.34,
     "words": [
      {
       "w": "电梯在那里",
-      "start": 54.52,
-      "end": 57.32,
+      "start": 51.94,
+      "end": 54.74,
       "charStart": 0,
       "charEnd": 5
      },
      {
       "w": "我们现在去买",
-      "start": 57.32,
-      "end": 59.92,
-      "charStart": 5,
+      "start": 54.74,
+      "end": 57.34,
+      "charStart": 6,
       "charEnd": 12
      }
     ]
@@ -2615,27 +2559,27 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-09-1-1.mp3",
   "lessonId": 9,
   "dialogueNumber": 1,
-  "trimSec": 17.54,
+  "trimSec": 20.84,
   "lines": [
    {
     "index": 0,
     "speaker": "國安",
     "text": "友美，這幾個句子的意思我不太懂，妳可以教我嗎？",
-    "start": 0.8,
-    "end": 10.1,
+    "start": 0,
+    "end": 6.8,
     "words": [
      {
       "w": "尤美,这几个句子的意思我不太懂",
-      "start": 0.8,
-      "end": 7.74,
+      "start": 0,
+      "end": 4.44,
       "charStart": 0,
       "charEnd": 15
      },
      {
       "w": "你可以教我吗?",
-      "start": 7.74,
-      "end": 10.1,
-      "charStart": 15,
+      "start": 4.44,
+      "end": 6.8,
+      "charStart": 16,
       "charEnd": 22
      }
     ]
@@ -2644,13 +2588,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "友美",
     "text": "我覺得有點兒難，我也不太懂。",
-    "start": 11.04,
-    "end": 15.0,
+    "start": 7.74,
+    "end": 11.7,
     "words": [
      {
       "w": "我觉得有点难,我也不太懂",
-      "start": 11.04,
-      "end": 15.0,
+      "start": 7.74,
+      "end": 11.7,
       "charStart": 0,
       "charEnd": 13
      }
@@ -2660,31 +2604,31 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "國安",
     "text": "這課真的不好學。",
-    "start": 0,
-    "end": 0,
-    "words": [],
-    "unmatched": true
+    "start": 11.72,
+    "end": 15.92,
+    "words": [
+     {
+      "w": "這課真的不好學。",
+      "start": 11.72,
+      "end": 15.92,
+      "charStart": 0,
+      "charEnd": 8
+     }
+    ]
    },
    {
     "index": 3,
     "speaker": "友美",
     "text": "我們可以去問家樂，他非常聰明，我想他懂。",
-    "start": 19.24,
-    "end": 27.16,
+    "start": 15.94,
+    "end": 23.86,
     "words": [
      {
-      "w": "我们可以去问迦勒",
-      "start": 19.24,
-      "end": 22.4,
-      "charStart": null,
-      "charEnd": null
-     },
-     {
-      "w": "他非常聪明,我想他懂",
-      "start": 22.4,
-      "end": 27.16,
-      "charStart": 8,
-      "charEnd": 19
+      "w": "我們可以去問家樂，他非常聰明，我想他懂。",
+      "start": 15.94,
+      "end": 23.86,
+      "charStart": 0,
+      "charEnd": 20
      }
     ]
    },
@@ -2692,13 +2636,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "國安",
     "text": "那麼我們現在去找他。",
-    "start": 27.16,
-    "end": 30.96,
+    "start": 23.86,
+    "end": 27.66,
     "words": [
      {
       "w": "那么我们现在去找他",
-      "start": 27.16,
-      "end": 30.96,
+      "start": 23.86,
+      "end": 27.66,
       "charStart": 0,
       "charEnd": 9
      }
@@ -2708,21 +2652,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "友美",
     "text": "現在他在上書法課，我們四點去吧。",
-    "start": 30.96,
-    "end": 37.16,
+    "start": 27.66,
+    "end": 33.86,
     "words": [
      {
       "w": "现在他在上书法课",
-      "start": 30.96,
-      "end": 34.58,
+      "start": 27.66,
+      "end": 31.28,
       "charStart": 0,
       "charEnd": 8
      },
      {
       "w": "我们四点去吧",
-      "start": 34.58,
-      "end": 37.16,
-      "charStart": 8,
+      "start": 31.28,
+      "end": 33.86,
+      "charStart": 9,
       "charEnd": 15
      }
     ]
@@ -2731,28 +2675,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "國安",
     "text": "可是從四點到五點半我要上英文課，六點去，怎麼樣？",
-    "start": 38.0,
-    "end": 45.08,
+    "start": 34.7,
+    "end": 41.78,
     "words": [
      {
       "w": "可是从四点到五点半",
-      "start": 38.0,
-      "end": 40.94,
+      "start": 34.7,
+      "end": 37.64,
       "charStart": 0,
       "charEnd": 9
      },
      {
       "w": "我要上英文课",
-      "start": 40.94,
-      "end": 42.82,
+      "start": 37.64,
+      "end": 39.52,
       "charStart": 9,
       "charEnd": 15
      },
      {
       "w": "六点去怎么样?",
-      "start": 42.82,
-      "end": 45.08,
-      "charStart": 15,
+      "start": 39.52,
+      "end": 41.78,
+      "charStart": 16,
       "charEnd": 23
      }
     ]
@@ -2761,28 +2705,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 7,
     "speaker": "友美",
     "text": "好。我先回宿舍做功課，再跟你一起去找他。",
-    "start": 46.54,
-    "end": 53.14,
+    "start": 43.24,
+    "end": 49.84,
     "words": [
      {
       "w": "好",
-      "start": 46.54,
-      "end": 47.1,
+      "start": 43.24,
+      "end": 43.8,
       "charStart": 0,
       "charEnd": 1
      },
      {
       "w": "我先回宿舍做功课",
-      "start": 47.1,
-      "end": 50.26,
-      "charStart": 1,
+      "start": 43.8,
+      "end": 46.96,
+      "charStart": 2,
       "charEnd": 10
      },
      {
       "w": "再跟你一起去找他",
-      "start": 50.26,
-      "end": 53.14,
-      "charStart": 10,
+      "start": 46.96,
+      "end": 49.84,
+      "charStart": 11,
       "charEnd": 19
      }
     ]
@@ -2793,33 +2737,33 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-09-2-1.mp3",
   "lessonId": 9,
   "dialogueNumber": 2,
-  "trimSec": 0.0,
+  "trimSec": 3.05,
   "lines": [
    {
     "index": 0,
     "speaker": "中明",
     "text": "期中考快要到了，老師說我們可以去圖書館對面的大教室看書。",
-    "start": 1.6,
-    "end": 12.24,
+    "start": 0,
+    "end": 9.19,
     "words": [
      {
       "w": "其中考快要到了",
-      "start": 1.6,
-      "end": 5.06,
+      "start": 0,
+      "end": 2.01,
       "charStart": 0,
       "charEnd": 7
      },
      {
       "w": "老师说",
-      "start": 5.06,
-      "end": 6.86,
-      "charStart": 7,
+      "start": 2.01,
+      "end": 3.81,
+      "charStart": 8,
       "charEnd": 11
      },
      {
       "w": "我们可以去图书馆对面的大教室看书",
-      "start": 6.86,
-      "end": 12.24,
+      "start": 3.81,
+      "end": 9.19,
       "charStart": 11,
       "charEnd": 27
      }
@@ -2829,28 +2773,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "家樂",
     "text": "太好了！在那裡看書很舒服。我們每天都能用那間教室嗎？",
-    "start": 12.24,
-    "end": 21.32,
+    "start": 9.19,
+    "end": 18.27,
     "words": [
      {
       "w": "太好了",
-      "start": 12.24,
-      "end": 14.32,
+      "start": 9.19,
+      "end": 11.27,
       "charStart": 0,
       "charEnd": 3
      },
      {
       "w": "在那里看书很舒服",
-      "start": 14.32,
-      "end": 17.52,
-      "charStart": 3,
+      "start": 11.27,
+      "end": 14.47,
+      "charStart": 4,
       "charEnd": 12
      },
      {
       "w": "我们每天都能用那间教室吗?",
-      "start": 17.52,
-      "end": 21.32,
-      "charStart": 12,
+      "start": 14.47,
+      "end": 18.27,
+      "charStart": 13,
       "charEnd": 25
      }
     ]
@@ -2859,13 +2803,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "中明",
     "text": "我們班只能禮拜一跟禮拜二下午用。",
-    "start": 22.76,
-    "end": 26.98,
+    "start": 19.71,
+    "end": 23.93,
     "words": [
      {
       "w": "我们班只能礼拜一跟礼拜二下午用",
-      "start": 22.76,
-      "end": 26.98,
+      "start": 19.71,
+      "end": 23.93,
       "charStart": 0,
       "charEnd": 15
      }
@@ -2875,13 +2819,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "家樂",
     "text": "可是這些時間我都有語言交換，不能去。",
-    "start": 28.24,
-    "end": 33.5,
+    "start": 25.19,
+    "end": 30.45,
     "words": [
      {
       "w": "可是这些时间我都有语言交换不能去",
-      "start": 28.24,
-      "end": 33.5,
+      "start": 25.19,
+      "end": 30.45,
       "charStart": 0,
       "charEnd": 17
      }
@@ -2891,13 +2835,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "中明",
     "text": "別的時間可以嗎？",
-    "start": 33.5,
-    "end": 36.8,
+    "start": 30.45,
+    "end": 33.75,
     "words": [
      {
       "w": "别的时间可以吗?",
-      "start": 33.5,
-      "end": 36.8,
+      "start": 30.45,
+      "end": 33.75,
       "charStart": 0,
       "charEnd": 7
      }
@@ -2907,21 +2851,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "家樂",
     "text": "我朋友最近比較忙，別的時間他沒有空。",
-    "start": 38.24,
-    "end": 43.38,
+    "start": 35.19,
+    "end": 40.33,
     "words": [
      {
       "w": "我朋友最近比较忙",
-      "start": 38.24,
-      "end": 40.26,
+      "start": 35.19,
+      "end": 37.21,
       "charStart": 0,
       "charEnd": 8
      },
      {
       "w": "别的时间他没有空",
-      "start": 40.26,
-      "end": 43.38,
-      "charStart": 8,
+      "start": 37.21,
+      "end": 40.33,
+      "charStart": 9,
       "charEnd": 17
      }
     ]
@@ -2930,21 +2874,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "中明",
     "text": "我們去問老師，也許他可以幫你。",
-    "start": 43.38,
-    "end": 49.32,
+    "start": 40.33,
+    "end": 46.27,
     "words": [
      {
       "w": "我们去问老师",
-      "start": 43.38,
-      "end": 46.42,
+      "start": 40.33,
+      "end": 43.37,
       "charStart": 0,
       "charEnd": 6
      },
      {
       "w": "也许他可以帮你",
-      "start": 46.42,
-      "end": 49.32,
-      "charStart": 6,
+      "start": 43.37,
+      "end": 46.27,
+      "charStart": 7,
       "charEnd": 14
      }
     ]
@@ -2953,13 +2897,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 7,
     "speaker": "家樂",
     "text": "好，希望老師可以幫我。",
-    "start": 49.32,
-    "end": 53.98,
+    "start": 46.27,
+    "end": 50.93,
     "words": [
      {
       "w": "好,希望老师可以帮我",
-      "start": 49.32,
-      "end": 53.98,
+      "start": 46.27,
+      "end": 50.93,
       "charStart": 0,
       "charEnd": 10
      }
@@ -2971,27 +2915,27 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-10-1-1.mp3",
   "lessonId": 10,
   "dialogueNumber": 1,
-  "trimSec": 18.96,
+  "trimSec": 22.31,
   "lines": [
    {
     "index": 0,
     "speaker": "元真",
     "text": "老師，國安今天要請假。他發燒了，不能來上課。",
-    "start": 0.8,
-    "end": 10.28,
+    "start": 0,
+    "end": 6.93,
     "words": [
      {
       "w": "老师,国安今天要请假",
-      "start": 0.8,
-      "end": 6.54,
+      "start": 0,
+      "end": 3.19,
       "charStart": 0,
       "charEnd": 10
      },
      {
       "w": "他发烧了,不能来上课",
-      "start": 6.54,
-      "end": 10.28,
-      "charStart": 10,
+      "start": 3.19,
+      "end": 6.93,
+      "charStart": 11,
       "charEnd": 21
      }
     ]
@@ -3000,13 +2944,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "老師",
     "text": "他發燒了？那他應該去看醫生。",
-    "start": 10.28,
-    "end": 15.86,
+    "start": 6.93,
+    "end": 12.51,
     "words": [
      {
       "w": "他发烧了,那他应该去看医生",
-      "start": 10.28,
-      "end": 15.86,
+      "start": 6.93,
+      "end": 12.51,
       "charStart": 0,
       "charEnd": 13
      }
@@ -3016,21 +2960,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "元真",
     "text": "國安跟我說，他今天要去看醫生，他家附近有一家不錯的醫院。",
-    "start": 15.86,
-    "end": 26.04,
+    "start": 12.51,
+    "end": 22.69,
     "words": [
      {
       "w": "国安跟我说,他今天要去看医生",
-      "start": 15.86,
-      "end": 21.54,
+      "start": 12.51,
+      "end": 18.19,
       "charStart": 0,
       "charEnd": 14
      },
      {
       "w": "他家附近有一家不错的医院",
-      "start": 21.54,
-      "end": 26.04,
-      "charStart": 14,
+      "start": 18.19,
+      "end": 22.69,
+      "charStart": 15,
       "charEnd": 27
      }
     ]
@@ -3039,21 +2983,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "老師",
     "text": "最近很多人感冒，你們要戴口罩，也要常常洗手。",
-    "start": 26.04,
-    "end": 33.28,
+    "start": 22.69,
+    "end": 29.93,
     "words": [
      {
       "w": "最近很多人感冒",
-      "start": 26.04,
-      "end": 29.2,
+      "start": 22.69,
+      "end": 25.85,
       "charStart": 0,
       "charEnd": 7
      },
      {
       "w": "你们要戴口罩,也要常常洗手",
-      "start": 29.2,
-      "end": 33.28,
-      "charStart": 7,
+      "start": 25.85,
+      "end": 29.93,
+      "charStart": 8,
       "charEnd": 21
      }
     ]
@@ -3062,13 +3006,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "元真",
     "text": "老師，我很健康，不常生病。",
-    "start": 33.28,
-    "end": 38.7,
+    "start": 29.93,
+    "end": 35.35,
     "words": [
      {
       "w": "老师,我很健康,不常生病",
-      "start": 33.28,
-      "end": 38.7,
+      "start": 29.93,
+      "end": 35.35,
       "charStart": 0,
       "charEnd": 12
      }
@@ -3078,13 +3022,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "老師",
     "text": "平常不生病的人也要注意。",
-    "start": 39.52,
-    "end": 42.82,
+    "start": 36.17,
+    "end": 39.47,
     "words": [
      {
       "w": "平常不生病的人也要注意",
-      "start": 39.52,
-      "end": 42.82,
+      "start": 36.17,
+      "end": 39.47,
       "charStart": 0,
       "charEnd": 11
      }
@@ -3094,13 +3038,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "元真",
     "text": "對，我應該多注意身體健康。",
-    "start": 42.82,
-    "end": 48.32,
+    "start": 39.47,
+    "end": 44.97,
     "words": [
      {
       "w": "对,我应该多注意身体健康",
-      "start": 42.82,
-      "end": 48.32,
+      "start": 39.47,
+      "end": 44.97,
       "charStart": 0,
       "charEnd": 12
      }
@@ -3110,21 +3054,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 7,
     "speaker": "老師",
     "text": "妳可以帶一些水果去看國安，跟他說應該多喝水，也要多休息。",
-    "start": 48.32,
-    "end": 57.6,
+    "start": 44.97,
+    "end": 54.25,
     "words": [
      {
       "w": "你可以带一些水果去看国安",
-      "start": 48.32,
-      "end": 52.84,
+      "start": 44.97,
+      "end": 49.49,
       "charStart": 0,
       "charEnd": 12
      },
      {
       "w": "跟他说,应该多喝水,也要多休息",
-      "start": 52.84,
-      "end": 57.6,
-      "charStart": 12,
+      "start": 49.49,
+      "end": 54.25,
+      "charStart": 13,
       "charEnd": 27
      }
     ]
@@ -3133,13 +3077,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 8,
     "speaker": "元真",
     "text": "好，我明天帶一些蘋果去看他。",
-    "start": 57.6,
-    "end": 63.26,
+    "start": 54.25,
+    "end": 59.91,
     "words": [
      {
       "w": "好,我明天带一些苹果去看他",
-      "start": 57.6,
-      "end": 63.26,
+      "start": 54.25,
+      "end": 59.91,
       "charStart": 0,
       "charEnd": 13
      }
@@ -3151,19 +3095,19 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-10-2-1.mp3",
   "lessonId": 10,
   "dialogueNumber": 2,
-  "trimSec": 0.0,
+  "trimSec": 2.9,
   "lines": [
    {
     "index": 0,
     "speaker": "醫生",
     "text": "你覺得哪裡不舒服？",
-    "start": 1.6,
-    "end": 4.92,
+    "start": 0,
+    "end": 2.02,
     "words": [
      {
       "w": "你觉得哪里不舒服?",
-      "start": 1.6,
-      "end": 4.92,
+      "start": 0,
+      "end": 2.02,
       "charStart": 0,
       "charEnd": 8
      }
@@ -3173,13 +3117,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "國安",
     "text": "我咳嗽、頭痛，鼻子也不舒服。",
-    "start": 6.38,
-    "end": 10.34,
+    "start": 3.48,
+    "end": 7.44,
     "words": [
      {
       "w": "我咳嗽、头痛、鼻子也不舒服。",
-      "start": 6.38,
-      "end": 10.34,
+      "start": 3.48,
+      "end": 7.44,
       "charStart": 0,
       "charEnd": 13
      }
@@ -3189,13 +3133,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "醫生",
     "text": "最近天氣冷了，很多人感冒了。",
-    "start": 11.76,
-    "end": 14.96,
+    "start": 8.86,
+    "end": 12.06,
     "words": [
      {
       "w": "最近天气冷了,很多人感冒了。",
-      "start": 11.76,
-      "end": 14.96,
+      "start": 8.86,
+      "end": 12.06,
       "charStart": 0,
       "charEnd": 13
      }
@@ -3205,13 +3149,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "國安",
     "text": "對啊！聽說我們學校感冒、發燒的學生很多。",
-    "start": 16.44,
-    "end": 21.64,
+    "start": 13.54,
+    "end": 18.74,
     "words": [
      {
       "w": "对啊,听说我们学校感冒发烧的学生很多。",
-      "start": 16.44,
-      "end": 21.64,
+      "start": 13.54,
+      "end": 18.74,
       "charStart": 0,
       "charEnd": 19
      }
@@ -3221,13 +3165,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "醫生",
     "text": "最近也有很多人肚子痛。",
-    "start": 22.9,
-    "end": 25.74,
+    "start": 20.0,
+    "end": 22.84,
     "words": [
      {
       "w": "最近也有很多人肚子痛。",
-      "start": 22.9,
-      "end": 25.74,
+      "start": 20.0,
+      "end": 22.84,
       "charStart": 0,
       "charEnd": 10
      }
@@ -3237,15 +3181,15 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "國安",
     "text": "是因為吃的東西不乾淨嗎？",
-    "start": 26.82,
-    "end": 30.32,
+    "start": 23.92,
+    "end": 27.42,
     "words": [
      {
-      "w": "是因为吃的东西不干净吗?",
-      "start": 26.82,
-      "end": 30.32,
-      "charStart": null,
-      "charEnd": null
+      "w": "是因為吃的東西不乾淨嗎？",
+      "start": 23.92,
+      "end": 27.42,
+      "charStart": 0,
+      "charEnd": 11
      }
     ]
    },
@@ -3253,13 +3197,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "醫生",
     "text": "不是，這也是因為感冒。",
-    "start": 31.5,
-    "end": 34.44,
+    "start": 28.6,
+    "end": 31.54,
     "words": [
      {
       "w": "不是,这也是因为感冒。",
-      "start": 31.5,
-      "end": 34.44,
+      "start": 28.6,
+      "end": 31.54,
       "charStart": 0,
       "charEnd": 10
      }
@@ -3269,13 +3213,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 7,
     "speaker": "國安",
     "text": "請問我需要吃藥嗎？",
-    "start": 36.02,
-    "end": 38.4,
+    "start": 33.12,
+    "end": 35.5,
     "words": [
      {
       "w": "请问我需要吃药吗?",
-      "start": 36.02,
-      "end": 38.4,
+      "start": 33.12,
+      "end": 35.5,
       "charStart": 0,
       "charEnd": 8
      }
@@ -3285,13 +3229,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 8,
     "speaker": "醫生",
     "text": "我會給你三天的藥。你要記得多喝一點兒水，要是發燒了，就吃紅色的藥。",
-    "start": 39.88,
-    "end": 47.44,
+    "start": 36.98,
+    "end": 44.54,
     "words": [
      {
       "w": "我会给你三天的药,你要记得多喝一点水,要是发烧了就吃红色的药。",
-      "start": 39.88,
-      "end": 47.44,
+      "start": 36.98,
+      "end": 44.54,
       "charStart": 0,
       "charEnd": 32
      }
@@ -3301,13 +3245,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 9,
     "speaker": "國安",
     "text": "好，謝謝醫生。",
-    "start": 48.8,
-    "end": 50.56,
+    "start": 45.9,
+    "end": 47.66,
     "words": [
      {
       "w": "好,谢谢医生。",
-      "start": 48.8,
-      "end": 50.56,
+      "start": 45.9,
+      "end": 47.66,
       "charStart": 0,
       "charEnd": 6
      }
@@ -3319,19 +3263,19 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-11-1-1.mp3",
   "lessonId": 11,
   "dialogueNumber": 1,
-  "trimSec": 16.72,
+  "trimSec": 20.02,
   "lines": [
    {
     "index": 0,
     "speaker": "宜文",
     "text": "友美，今天的功課妳寫了嗎？",
-    "start": 0.8,
-    "end": 7.18,
+    "start": 0,
+    "end": 3.88,
     "words": [
      {
       "w": "尤美,今天的功课你写了吗?",
-      "start": 0.8,
-      "end": 7.18,
+      "start": 0,
+      "end": 3.88,
       "charStart": 0,
       "charEnd": 12
      }
@@ -3341,13 +3285,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "友美",
     "text": "我已經寫了，我現在在寫卡片。",
-    "start": 8.3,
-    "end": 12.16,
+    "start": 5.0,
+    "end": 8.86,
     "words": [
      {
       "w": "我已经写了,我现在在写卡片。",
-      "start": 8.3,
-      "end": 12.16,
+      "start": 5.0,
+      "end": 8.86,
       "charStart": 0,
       "charEnd": 13
      }
@@ -3357,13 +3301,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "宜文",
     "text": "給誰的卡片？",
-    "start": 13.28,
-    "end": 14.76,
+    "start": 9.98,
+    "end": 11.46,
     "words": [
      {
       "w": "给谁的卡片?",
-      "start": 13.28,
-      "end": 14.76,
+      "start": 9.98,
+      "end": 11.46,
       "charStart": 0,
       "charEnd": 5
      }
@@ -3373,21 +3317,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "友美",
     "text": "一個新朋友。妳看，這是他送我的卡片。",
-    "start": 15.96,
-    "end": 21.42,
+    "start": 12.66,
+    "end": 18.12,
     "words": [
      {
       "w": "一个新朋友。",
-      "start": 15.96,
-      "end": 17.12,
+      "start": 12.66,
+      "end": 13.82,
       "charStart": 0,
       "charEnd": 5
      },
      {
       "w": "你看,这是他送我的卡片。",
-      "start": 18.16,
-      "end": 21.42,
-      "charStart": 5,
+      "start": 14.86,
+      "end": 18.12,
+      "charStart": 6,
       "charEnd": 17
      }
     ]
@@ -3396,21 +3340,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "宜文",
     "text": "他寫的字真好看。你們是怎麼認識的？",
-    "start": 22.62,
-    "end": 27.5,
+    "start": 19.32,
+    "end": 24.2,
     "words": [
      {
       "w": "他写的字真好看。",
-      "start": 22.62,
-      "end": 24.66,
+      "start": 19.32,
+      "end": 21.36,
       "charStart": 0,
       "charEnd": 7
      },
      {
       "w": "你们是怎么认识的?",
-      "start": 25.48,
-      "end": 27.5,
-      "charStart": 7,
+      "start": 22.18,
+      "end": 24.2,
+      "charStart": 8,
       "charEnd": 16
      }
     ]
@@ -3419,35 +3363,35 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "友美",
     "text": "我們是上網認識的，我看到他寫的文章，然後留言問了他一個問題，他回答得很有趣。",
-    "start": 28.56,
-    "end": 39.66,
+    "start": 25.26,
+    "end": 36.36,
     "words": [
      {
       "w": "我们是上网认识的。",
-      "start": 28.56,
-      "end": 30.82,
+      "start": 25.26,
+      "end": 27.52,
       "charStart": 0,
       "charEnd": 8
      },
      {
       "w": "我看到他写的文章,",
-      "start": 31.54,
-      "end": 33.42,
-      "charStart": 8,
+      "start": 28.24,
+      "end": 30.12,
+      "charStart": 9,
       "charEnd": 17
      },
      {
       "w": "然后留言问了他一个问题。",
-      "start": 34.2,
-      "end": 37.04,
-      "charStart": 17,
+      "start": 30.9,
+      "end": 33.74,
+      "charStart": 18,
       "charEnd": 29
      },
      {
       "w": "他回答得很有趣。",
-      "start": 37.92,
-      "end": 39.66,
-      "charStart": 29,
+      "start": 34.62,
+      "end": 36.36,
+      "charStart": 30,
       "charEnd": 37
      }
     ]
@@ -3456,13 +3400,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "宜文",
     "text": "你們常上網聊天嗎？",
-    "start": 40.54,
-    "end": 43.02,
+    "start": 37.24,
+    "end": 39.72,
     "words": [
      {
       "w": "你们常上网聊天吗?",
-      "start": 40.54,
-      "end": 43.02,
+      "start": 37.24,
+      "end": 39.72,
       "charStart": 0,
       "charEnd": 8
      }
@@ -3472,21 +3416,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 7,
     "speaker": "友美",
     "text": "對啊，差不多每個晚上都聊。昨天他說他想跟我見面。",
-    "start": 43.28,
-    "end": 51.08,
+    "start": 39.98,
+    "end": 47.78,
     "words": [
      {
       "w": "对啊,差不多每个晚上都聊。",
-      "start": 43.28,
-      "end": 47.36,
+      "start": 39.98,
+      "end": 44.06,
       "charStart": 0,
       "charEnd": 12
      },
      {
       "w": "昨天他说他想跟我见面。",
-      "start": 48.2,
-      "end": 51.08,
-      "charStart": 12,
+      "start": 44.9,
+      "end": 47.78,
+      "charStart": 13,
       "charEnd": 23
      }
     ]
@@ -3495,21 +3439,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 8,
     "speaker": "宜文",
     "text": "妳呢？妳要跟他見面嗎？",
-    "start": 52.34,
-    "end": 55.34,
+    "start": 49.04,
+    "end": 52.04,
     "words": [
      {
       "w": "你呢?",
-      "start": 52.34,
-      "end": 52.9,
+      "start": 49.04,
+      "end": 49.6,
       "charStart": 0,
       "charEnd": 2
      },
      {
       "w": "你要跟他见面吗?",
-      "start": 53.58,
-      "end": 55.34,
-      "charStart": 2,
+      "start": 50.28,
+      "end": 52.04,
+      "charStart": 3,
       "charEnd": 10
      }
     ]
@@ -3518,13 +3462,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 9,
     "speaker": "友美",
     "text": "我還沒決定。",
-    "start": 56.4,
-    "end": 57.94,
+    "start": 53.1,
+    "end": 54.64,
     "words": [
      {
       "w": "我还没决定。",
-      "start": 56.4,
-      "end": 57.94,
+      "start": 53.1,
+      "end": 54.64,
       "charStart": 0,
       "charEnd": 5
      }
@@ -3536,19 +3480,19 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-11-2-1.mp3",
   "lessonId": 11,
   "dialogueNumber": 2,
-  "trimSec": 0.0,
+  "trimSec": 1.35,
   "lines": [
    {
     "index": 0,
     "speaker": "宜文",
     "text": "妳跟那位新朋友見面了沒有？",
-    "start": 1.4,
-    "end": 5.92,
+    "start": 0.05,
+    "end": 4.57,
     "words": [
      {
       "w": "你跟那位新朋友见面了没有?",
-      "start": 1.4,
-      "end": 5.92,
+      "start": 0.05,
+      "end": 4.57,
       "charStart": 0,
       "charEnd": 12
      }
@@ -3558,13 +3502,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "友美",
     "text": "我還沒決定要不要跟他見面。",
-    "start": 7.58,
-    "end": 11.14,
+    "start": 6.23,
+    "end": 9.79,
     "words": [
      {
       "w": "我还没决定要不要跟他见面。",
-      "start": 7.58,
-      "end": 11.14,
+      "start": 6.23,
+      "end": 9.79,
       "charStart": 0,
       "charEnd": 12
      }
@@ -3574,13 +3518,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "宜文",
     "text": "妳擔心什麼？",
-    "start": 12.7,
-    "end": 14.04,
+    "start": 11.35,
+    "end": 12.69,
     "words": [
      {
       "w": "你担心什么?",
-      "start": 12.7,
-      "end": 14.04,
+      "start": 11.35,
+      "end": 12.69,
       "charStart": 0,
       "charEnd": 5
      }
@@ -3590,28 +3534,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "友美",
     "text": "我有點兒緊張，我以前沒有這種經驗，所以覺得這樣有點兒奇怪。",
-    "start": 15.54,
-    "end": 23.84,
+    "start": 14.19,
+    "end": 22.49,
     "words": [
      {
       "w": "我有点儿紧张,",
-      "start": 15.54,
-      "end": 17.16,
+      "start": 14.19,
+      "end": 15.81,
       "charStart": 0,
       "charEnd": 6
      },
      {
       "w": "我以前没有这种经验,",
-      "start": 18.02,
-      "end": 20.16,
-      "charStart": 6,
+      "start": 16.67,
+      "end": 18.81,
+      "charStart": 7,
       "charEnd": 16
      },
      {
       "w": "所以觉得这样有点儿奇怪。",
-      "start": 21.06,
-      "end": 23.84,
-      "charStart": 16,
+      "start": 19.71,
+      "end": 22.49,
+      "charStart": 17,
       "charEnd": 28
      }
     ]
@@ -3620,28 +3564,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "宜文",
     "text": "妳不要緊張，我有辦法，我跟妳一起去。",
-    "start": 24.94,
-    "end": 31.38,
+    "start": 23.59,
+    "end": 30.03,
     "words": [
      {
       "w": "你不要紧张,",
-      "start": 24.94,
-      "end": 26.86,
+      "start": 23.59,
+      "end": 25.51,
       "charStart": 0,
       "charEnd": 5
      },
      {
       "w": "我有办法,",
-      "start": 27.54,
-      "end": 28.86,
-      "charStart": 5,
+      "start": 26.19,
+      "end": 27.51,
+      "charStart": 6,
       "charEnd": 10
      },
      {
       "w": "我跟你一起去。",
-      "start": 29.72,
-      "end": 31.38,
-      "charStart": 10,
+      "start": 28.37,
+      "end": 30.03,
+      "charStart": 11,
       "charEnd": 17
      }
     ]
@@ -3650,21 +3594,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "友美",
     "text": "太好了，謝謝妳幫我的忙。",
-    "start": 32.98,
-    "end": 36.44,
+    "start": 31.63,
+    "end": 35.09,
     "words": [
      {
       "w": "太好了,",
-      "start": 32.98,
-      "end": 33.7,
+      "start": 31.63,
+      "end": 32.35,
       "charStart": 0,
       "charEnd": 3
      },
      {
       "w": "谢谢你帮我的忙。",
-      "start": 34.76,
-      "end": 36.44,
-      "charStart": 3,
+      "start": 33.41,
+      "end": 35.09,
+      "charStart": 4,
       "charEnd": 11
      }
     ]
@@ -3673,21 +3617,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "宜文",
     "text": "不客氣。妳打算什麼時候跟他見面？",
-    "start": 37.96,
-    "end": 42.76,
+    "start": 36.61,
+    "end": 41.41,
     "words": [
      {
       "w": "不客气,",
-      "start": 37.96,
-      "end": 38.88,
+      "start": 36.61,
+      "end": 37.53,
       "charStart": 0,
       "charEnd": 3
      },
      {
       "w": "你打算什么时候跟他见面?",
-      "start": 39.78,
-      "end": 42.76,
-      "charStart": 3,
+      "start": 38.43,
+      "end": 41.41,
+      "charStart": 4,
       "charEnd": 15
      }
     ]
@@ -3696,28 +3640,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 7,
     "speaker": "友美",
     "text": "可能這個週末吧。如果妳有空，我再跟他約時間。",
-    "start": 44.26,
-    "end": 50.42,
+    "start": 42.91,
+    "end": 49.07,
     "words": [
      {
       "w": "可能这个周末吧,",
-      "start": 44.26,
-      "end": 46.3,
+      "start": 42.91,
+      "end": 44.95,
       "charStart": 0,
       "charEnd": 7
      },
      {
       "w": "如果你有空,",
-      "start": 47.16,
-      "end": 48.34,
-      "charStart": 7,
+      "start": 45.81,
+      "end": 46.99,
+      "charStart": 8,
       "charEnd": 13
      },
      {
       "w": "我再跟他约时间。",
-      "start": 48.86,
-      "end": 50.42,
-      "charStart": 13,
+      "start": 47.51,
+      "end": 49.07,
+      "charStart": 14,
       "charEnd": 21
      }
     ]
@@ -3726,35 +3670,35 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 8,
     "speaker": "宜文",
     "text": "有空啊，但是我明天不會來學校，等妳決定了，再給我打電話吧。",
-    "start": 52.08,
-    "end": 61.1,
+    "start": 50.73,
+    "end": 59.75,
     "words": [
      {
       "w": "有空啊,",
-      "start": 52.08,
-      "end": 53.08,
+      "start": 50.73,
+      "end": 51.73,
       "charStart": 0,
       "charEnd": 3
      },
      {
       "w": "但是我明天不会来学校,",
-      "start": 53.92,
-      "end": 56.76,
-      "charStart": 3,
+      "start": 52.57,
+      "end": 55.41,
+      "charStart": 4,
       "charEnd": 14
      },
      {
       "w": "等你决定了,",
-      "start": 57.66,
-      "end": 58.9,
-      "charStart": 14,
+      "start": 56.31,
+      "end": 57.55,
+      "charStart": 15,
       "charEnd": 20
      },
      {
       "w": "再给我打电话吧",
-      "start": 59.44,
-      "end": 61.1,
-      "charStart": 20,
+      "start": 58.09,
+      "end": 59.75,
+      "charStart": 21,
       "charEnd": 28
      }
     ]
@@ -3765,19 +3709,19 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-12-1-1.mp3",
   "lessonId": 12,
   "dialogueNumber": 1,
-  "trimSec": 17.84,
+  "trimSec": 21.19,
   "lines": [
    {
     "index": 0,
     "speaker": "中明",
     "text": "你昨天怎麼沒來上課？",
-    "start": 0.8,
-    "end": 5.94,
+    "start": 0,
+    "end": 2.59,
     "words": [
      {
       "w": "你昨天怎么没来上课?",
-      "start": 0.8,
-      "end": 5.94,
+      "start": 0,
+      "end": 2.59,
       "charStart": 0,
       "charEnd": 9
      }
@@ -3787,21 +3731,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "國安",
     "text": "我去參加畫畫比賽。你們上課上了什麼？",
-    "start": 6.94,
-    "end": 12.14,
+    "start": 3.59,
+    "end": 8.79,
     "words": [
      {
       "w": "我去参加画画比赛",
-      "start": 6.94,
-      "end": 9.6,
+      "start": 3.59,
+      "end": 6.25,
       "charStart": 0,
       "charEnd": 8
      },
      {
       "w": "你们上课上了什么?",
-      "start": 9.6,
-      "end": 12.14,
-      "charStart": 8,
+      "start": 6.25,
+      "end": 8.79,
+      "charStart": 9,
       "charEnd": 17
      }
     ]
@@ -3810,21 +3754,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "中明",
     "text": "老師問我們想做什麼工作，大家都說得很高興。",
-    "start": 12.16,
-    "end": 19.7,
+    "start": 8.81,
+    "end": 16.35,
     "words": [
      {
       "w": "老师问我们想做什么工作",
-      "start": 12.16,
-      "end": 16.84,
+      "start": 8.81,
+      "end": 13.49,
       "charStart": 0,
       "charEnd": 11
      },
      {
       "w": "大家都说得很高兴",
-      "start": 16.84,
-      "end": 19.7,
-      "charStart": 11,
+      "start": 13.49,
+      "end": 16.35,
+      "charStart": 12,
       "charEnd": 20
      }
     ]
@@ -3833,21 +3777,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "國安",
     "text": "我知道友美想當護理師。別的同學呢？",
-    "start": 19.7,
-    "end": 25.64,
+    "start": 16.35,
+    "end": 22.29,
     "words": [
      {
       "w": "我知道尤美想当护理师",
-      "start": 19.7,
-      "end": 23.74,
+      "start": 16.35,
+      "end": 20.39,
       "charStart": 0,
       "charEnd": 10
      },
      {
       "w": "别的同学呢?",
-      "start": 23.74,
-      "end": 25.64,
-      "charStart": 10,
+      "start": 20.39,
+      "end": 22.29,
+      "charStart": 11,
       "charEnd": 16
      }
     ]
@@ -3856,29 +3800,15 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "中明",
     "text": "宜文希望可以用中文和英文工作，所以她以後想當記者，元真想在銀行工作。",
-    "start": 26.36,
-    "end": 36.3,
+    "start": 23.01,
+    "end": 32.95,
     "words": [
      {
-      "w": "宜文希望可以用中文和英文工作",
-      "start": 26.36,
-      "end": 30.1,
+      "w": "宜文希望可以用中文和英文工作，所以她以後想當記者，元真想在銀行工作。",
+      "start": 23.01,
+      "end": 32.95,
       "charStart": 0,
-      "charEnd": 14
-     },
-     {
-      "w": "所以他以后想当记者",
-      "start": 30.1,
-      "end": 33.3,
-      "charStart": 14,
-      "charEnd": 24
-     },
-     {
-      "w": "袁真想在银行工作",
-      "start": 33.3,
-      "end": 36.3,
-      "charStart": null,
-      "charEnd": null
+      "charEnd": 33
      }
     ]
    },
@@ -3886,13 +3816,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "國安",
     "text": "那你畢業以後想做什麼？",
-    "start": 36.3,
-    "end": 40.34,
+    "start": 32.95,
+    "end": 36.99,
     "words": [
      {
       "w": "那你毕业以后想做什么?",
-      "start": 36.3,
-      "end": 40.34,
+      "start": 32.95,
+      "end": 36.99,
       "charStart": 0,
       "charEnd": 10
      }
@@ -3902,35 +3832,35 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "中明",
     "text": "我以前想當大公司的老闆，可是老闆要做的事情太多，現在覺得當醫生比較好。那你想做什麼？",
-    "start": 41.34,
-    "end": 54.72,
+    "start": 37.99,
+    "end": 51.37,
     "words": [
      {
       "w": "我以前想当大公司的老板",
-      "start": 41.34,
-      "end": 44.94,
+      "start": 37.99,
+      "end": 41.59,
       "charStart": 0,
       "charEnd": 11
      },
      {
       "w": "可是老板要做的事情太多",
-      "start": 44.94,
-      "end": 48.92,
-      "charStart": 11,
+      "start": 41.59,
+      "end": 45.57,
+      "charStart": 12,
       "charEnd": 23
      },
      {
       "w": "现在觉得当医生比较好",
-      "start": 48.92,
-      "end": 52.62,
-      "charStart": 23,
+      "start": 45.57,
+      "end": 49.27,
+      "charStart": 24,
       "charEnd": 34
      },
      {
       "w": "那你想做什么?",
-      "start": 52.62,
-      "end": 54.72,
-      "charStart": 34,
+      "start": 49.27,
+      "end": 51.37,
+      "charStart": 35,
       "charEnd": 41
      }
     ]
@@ -3939,28 +3869,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 7,
     "speaker": "國安",
     "text": "當醫生很不錯，但是太忙了，我只想每天可以準時上班、下班。",
-    "start": 56.16,
-    "end": 64.2,
+    "start": 52.81,
+    "end": 60.85,
     "words": [
      {
       "w": "当医生很不错",
-      "start": 56.16,
-      "end": 57.66,
+      "start": 52.81,
+      "end": 54.31,
       "charStart": 0,
       "charEnd": 6
      },
      {
       "w": "但是太忙了",
-      "start": 57.66,
-      "end": 59.56,
-      "charStart": 6,
+      "start": 54.31,
+      "end": 56.21,
+      "charStart": 7,
       "charEnd": 12
      },
      {
       "w": "我只想每天可以准时上班下班",
-      "start": 59.56,
-      "end": 64.2,
-      "charStart": 12,
+      "start": 56.21,
+      "end": 60.85,
+      "charStart": 13,
       "charEnd": 27
      }
     ]
@@ -3971,19 +3901,19 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-12-2-1.mp3",
   "lessonId": 12,
   "dialogueNumber": 2,
-  "trimSec": 0.0,
+  "trimSec": 3.12,
   "lines": [
    {
     "index": 0,
     "speaker": "中明",
     "text": "國安，你每天下課以後都要去麵包店工作，辛苦嗎？",
-    "start": 1.72,
-    "end": 9.82,
+    "start": 0,
+    "end": 6.7,
     "words": [
      {
       "w": "国安,你每天下课以后都要去面包店工作,辛苦吗?",
-      "start": 1.72,
-      "end": 9.82,
+      "start": 0,
+      "end": 6.7,
       "charStart": 0,
       "charEnd": 22
      }
@@ -3993,13 +3923,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "國安",
     "text": "不辛苦。我很喜歡這個工作，因為可以學怎麼做麵包，而且同事也都對我很好。",
-    "start": 11.36,
-    "end": 22.02,
+    "start": 8.24,
+    "end": 18.9,
     "words": [
      {
       "w": "不辛苦,我很喜欢这个工作,因为可以学怎么做面包,而且同事也都对我很好。",
-      "start": 11.36,
-      "end": 22.02,
+      "start": 8.24,
+      "end": 18.9,
       "charStart": 0,
       "charEnd": 34
      }
@@ -4009,13 +3939,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "中明",
     "text": "這樣你在學校的成績，不會有問題嗎？",
-    "start": 23.76,
-    "end": 28.12,
+    "start": 20.64,
+    "end": 25.0,
     "words": [
      {
       "w": "这样你在学校的成绩不会有问题吗?",
-      "start": 23.76,
-      "end": 28.12,
+      "start": 20.64,
+      "end": 25.0,
       "charStart": 0,
       "charEnd": 16
      }
@@ -4025,15 +3955,15 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "國安",
     "text": "不會啊！我都先做功課，再去工作。",
-    "start": 29.3,
-    "end": 33.7,
+    "start": 26.18,
+    "end": 30.58,
     "words": [
      {
-      "w": "不会呀,我都先做功课,再去工作。",
-      "start": 29.3,
-      "end": 33.7,
-      "charStart": null,
-      "charEnd": null
+      "w": "不會啊！我都先做功課，再去工作。",
+      "start": 26.18,
+      "end": 30.58,
+      "charStart": 0,
+      "charEnd": 16
      }
     ]
    },
@@ -4041,13 +3971,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "中明",
     "text": "我以前在餐廳上過班，因為太累了，常常睡得不夠。",
-    "start": 34.86,
-    "end": 41.54,
+    "start": 31.74,
+    "end": 38.42,
     "words": [
      {
       "w": "我以前在餐厅上过班,因为太累了,常常睡得不够。",
-      "start": 34.86,
-      "end": 41.54,
+      "start": 31.74,
+      "end": 38.42,
       "charStart": 0,
       "charEnd": 22
      }
@@ -4057,13 +3987,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "國安",
     "text": "這樣真的很辛苦。",
-    "start": 43.02,
-    "end": 44.82,
+    "start": 39.9,
+    "end": 41.7,
     "words": [
      {
       "w": "这样真的很辛苦。",
-      "start": 43.02,
-      "end": 44.82,
+      "start": 39.9,
+      "end": 41.7,
       "charStart": 0,
       "charEnd": 7
      }
@@ -4073,13 +4003,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "中明",
     "text": "有時候早上起得太晚，上課遲到了，而且沒時間準備考試，所以就不做了。",
-    "start": 46.48,
-    "end": 55.66,
+    "start": 43.36,
+    "end": 53.04,
     "words": [
      {
       "w": "有时候早上起得太晚,上课迟到了,而且没时间准备考试,所以就不做了。",
-      "start": 46.48,
-      "end": 56.16,
+      "start": 43.36,
+      "end": 53.04,
       "charStart": 0,
       "charEnd": 32
      }
@@ -4089,13 +4019,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 7,
     "speaker": "國安",
     "text": "我下午四點到六點上班，工作時間不長，所以沒問題。",
-    "start": 55.66,
-    "end": 65.16,
+    "start": 54.5,
+    "end": 60.72,
     "words": [
      {
       "w": "我下午四点到六点上班,工作时间不长,所以没问题。",
-      "start": 55.66,
-      "end": 65.66,
+      "start": 54.5,
+      "end": 60.72,
       "charStart": 0,
       "charEnd": 23
      }
@@ -4105,13 +4035,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 8,
     "speaker": "中明",
     "text": "兩個小時也可以嗎？那你們麵包店還需要人嗎？",
-    "start": 65.16,
-    "end": 70.98,
+    "start": 62.04,
+    "end": 67.86,
     "words": [
      {
       "w": "两个小时也可以吗?那你们面包店还需要人吗?",
-      "start": 65.16,
-      "end": 70.98,
+      "start": 62.04,
+      "end": 67.86,
       "charStart": 0,
       "charEnd": 20
      }
@@ -4121,13 +4051,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 9,
     "speaker": "國安",
     "text": "不知道。我明天看到老闆的時候，幫你問他。",
-    "start": 72.44,
-    "end": 77.62,
+    "start": 69.32,
+    "end": 74.5,
     "words": [
      {
       "w": "不知道,我明天看到老板的时候,帮你问他。",
-      "start": 72.44,
-      "end": 77.62,
+      "start": 69.32,
+      "end": 74.5,
       "charStart": 0,
       "charEnd": 19
      }
@@ -4139,34 +4069,20 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-13-1-1.mp3",
   "lessonId": 13,
   "dialogueNumber": 1,
-  "trimSec": 17.62,
+  "trimSec": 20.92,
   "lines": [
    {
     "index": 0,
     "speaker": "國安",
     "text": "喂，中明，半個小時以前我寄了一封電子郵件給你，你看到了嗎？",
-    "start": 0.8,
-    "end": 12.48,
+    "start": 0,
+    "end": 9.18,
     "words": [
      {
-      "w": "喂,钟明,半个小时以前",
-      "start": 0.8,
-      "end": 7.18,
-      "charStart": null,
-      "charEnd": null
-     },
-     {
-      "w": "我寄了一封电子邮件给你",
-      "start": 7.18,
-      "end": 10.62,
-      "charStart": 11,
-      "charEnd": 22
-     },
-     {
-      "w": "你看到了吗?",
-      "start": 10.62,
-      "end": 12.48,
-      "charStart": 22,
+      "w": "喂，中明，半個小時以前我寄了一封電子郵件給你，你看到了嗎？",
+      "start": 0,
+      "end": 9.18,
+      "charStart": 0,
       "charEnd": 28
      }
     ]
@@ -4175,29 +4091,15 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "中明",
     "text": "剛剛我的手機網路有點兒問題，不能看電子郵件，你寄的是什麼？",
-    "start": 13.88,
-    "end": 22.54,
+    "start": 10.58,
+    "end": 19.24,
     "words": [
      {
-      "w": "刚刚我的手机网络有点问题",
-      "start": 13.88,
-      "end": 17.58,
-      "charStart": null,
-      "charEnd": null
-     },
-     {
-      "w": "不能看电子邮件",
-      "start": 17.58,
-      "end": 20.32,
-      "charStart": 13,
-      "charEnd": 21
-     },
-     {
-      "w": "你记得是什么?",
-      "start": 20.32,
-      "end": 22.54,
-      "charStart": 21,
-      "charEnd": 28
+      "w": "剛剛我的手機網路有點兒問題，不能看電子郵件，你寄的是什麼？",
+      "start": 10.58,
+      "end": 19.24,
+      "charStart": 0,
+      "charEnd": 29
      }
     ]
    },
@@ -4205,28 +4107,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "國安",
     "text": "博物館的網址。下禮拜六老師要帶我們去參觀，你可以先看看。",
-    "start": 24.02,
-    "end": 32.7,
+    "start": 20.72,
+    "end": 29.4,
     "words": [
      {
       "w": "博物馆的网址",
-      "start": 24.02,
-      "end": 25.78,
+      "start": 20.72,
+      "end": 22.48,
       "charStart": 0,
       "charEnd": 6
      },
      {
       "w": "下礼拜六,老师要带我们去参观",
-      "start": 25.78,
-      "end": 30.56,
-      "charStart": 6,
+      "start": 22.48,
+      "end": 27.26,
+      "charStart": 7,
       "charEnd": 20
      },
      {
       "w": "你可以先看看",
-      "start": 30.56,
-      "end": 32.7,
-      "charStart": 20,
+      "start": 27.26,
+      "end": 29.4,
+      "charStart": 21,
       "charEnd": 27
      }
     ]
@@ -4235,21 +4137,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "中明",
     "text": "好。（看看手機）現在沒問題了，我看到了。",
-    "start": 32.7,
-    "end": 38.86,
+    "start": 29.4,
+    "end": 35.56,
     "words": [
      {
       "w": "好,现在没问题了",
-      "start": 32.7,
-      "end": 37.16,
-      "charStart": null,
-      "charEnd": null
+      "start": 29.4,
+      "end": 33.86,
+      "charStart": 0,
+      "charEnd": 14
      },
      {
       "w": "我看到了",
-      "start": 37.16,
-      "end": 38.86,
-      "charStart": 14,
+      "start": 33.86,
+      "end": 35.56,
+      "charStart": 15,
       "charEnd": 19
      }
     ]
@@ -4258,35 +4160,35 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "國安",
     "text": "網站上有地址，那個地方在我家附近，從我家出去，往右轉，差不多五分鐘就到了。",
-    "start": 38.86,
-    "end": 51.56,
+    "start": 35.56,
+    "end": 48.26,
     "words": [
      {
       "w": "网站上有地址",
-      "start": 38.86,
-      "end": 42.04,
+      "start": 35.56,
+      "end": 38.74,
       "charStart": 0,
       "charEnd": 6
      },
      {
       "w": "那个地方在我家附近",
-      "start": 42.04,
-      "end": 45.32,
-      "charStart": 6,
+      "start": 38.74,
+      "end": 42.02,
+      "charStart": 7,
       "charEnd": 16
      },
      {
       "w": "从我家出去往右转",
-      "start": 45.32,
-      "end": 48.6,
-      "charStart": 16,
+      "start": 42.02,
+      "end": 45.3,
+      "charStart": 17,
       "charEnd": 26
      },
      {
       "w": "差不多五分钟就到了",
-      "start": 48.6,
-      "end": 51.56,
-      "charStart": 26,
+      "start": 45.3,
+      "end": 48.26,
+      "charStart": 27,
       "charEnd": 36
      }
     ]
@@ -4295,13 +4197,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "中明",
     "text": "我們應該幾點到？",
-    "start": 51.56,
-    "end": 55.24,
+    "start": 48.26,
+    "end": 51.94,
     "words": [
      {
       "w": "我们应该几点到",
-      "start": 51.56,
-      "end": 55.24,
+      "start": 48.26,
+      "end": 51.94,
       "charStart": 0,
       "charEnd": 7
      }
@@ -4311,21 +4213,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "國安",
     "text": "早上九點在博物館門口見，要記得準時到。",
-    "start": 55.24,
-    "end": 62.26,
+    "start": 51.94,
+    "end": 58.96,
     "words": [
      {
       "w": "早上九点在博物馆门口见",
-      "start": 55.24,
-      "end": 59.9,
+      "start": 51.94,
+      "end": 56.6,
       "charStart": 0,
       "charEnd": 11
      },
      {
       "w": "要记得准时到",
-      "start": 59.9,
-      "end": 62.26,
-      "charStart": 11,
+      "start": 56.6,
+      "end": 58.96,
+      "charStart": 12,
       "charEnd": 18
      }
     ]
@@ -4334,41 +4236,41 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 7,
     "speaker": "中明",
     "text": "我們上個星期六去運動的時候，我到得太晚，真不好意思。下個星期我一定會準時。",
-    "start": 62.26,
-    "end": 74.98,
+    "start": 58.96,
+    "end": 71.68,
     "words": [
      {
       "w": "我们上个星期六去运动的时候",
-      "start": 62.26,
-      "end": 67.16,
+      "start": 58.96,
+      "end": 63.86,
       "charStart": 0,
       "charEnd": 13
      },
      {
       "w": "我到得太晚",
-      "start": 67.16,
-      "end": 69.3,
-      "charStart": 13,
+      "start": 63.86,
+      "end": 66.0,
+      "charStart": 14,
       "charEnd": 19
      },
      {
       "w": "真不好意思",
-      "start": 69.3,
-      "end": 71.02,
-      "charStart": 19,
+      "start": 66.0,
+      "end": 67.72,
+      "charStart": 20,
       "charEnd": 25
      },
      {
       "w": "下个星期",
-      "start": 71.02,
-      "end": 72.94,
-      "charStart": 25,
+      "start": 67.72,
+      "end": 69.64,
+      "charStart": 26,
       "charEnd": 30
      },
      {
       "w": "我一定会准时",
-      "start": 72.94,
-      "end": 74.98,
+      "start": 69.64,
+      "end": 71.68,
       "charStart": 30,
       "charEnd": 36
      }
@@ -4380,27 +4282,27 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-13-2-1.mp3",
   "lessonId": 13,
   "dialogueNumber": 2,
-  "trimSec": 0.0,
+  "trimSec": 2.44,
   "lines": [
    {
     "index": 0,
     "speaker": "老師",
     "text": "博物館五分鐘以後就要開門了，大家都到了吧？",
-    "start": 1.14,
-    "end": 7.68,
+    "start": 0,
+    "end": 5.24,
     "words": [
      {
       "w": "博物馆五分钟以后就要开门了",
-      "start": 1.14,
-      "end": 5.48,
+      "start": 0,
+      "end": 3.04,
       "charStart": 0,
       "charEnd": 13
      },
      {
       "w": "大家都到了吧",
-      "start": 5.48,
-      "end": 7.68,
-      "charStart": 13,
+      "start": 3.04,
+      "end": 5.24,
+      "charStart": 14,
       "charEnd": 20
      }
     ]
@@ -4409,15 +4311,15 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "國安",
     "text": "中明說他快要到了。",
-    "start": 7.68,
-    "end": 11.2,
+    "start": 5.24,
+    "end": 8.76,
     "words": [
      {
-      "w": "周明说他快要到了",
-      "start": 7.68,
-      "end": 11.2,
-      "charStart": null,
-      "charEnd": null
+      "w": "中明說他快要到了。",
+      "start": 5.24,
+      "end": 8.76,
+      "charStart": 0,
+      "charEnd": 8
      }
     ]
    },
@@ -4425,13 +4327,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "家樂",
     "text": "老師，我們要不要先去排隊買票？",
-    "start": 11.2,
-    "end": 16.22,
+    "start": 8.76,
+    "end": 13.78,
     "words": [
      {
       "w": "老师,我们要不要先去排队买票?",
-      "start": 11.2,
-      "end": 16.22,
+      "start": 8.76,
+      "end": 13.78,
       "charStart": 0,
       "charEnd": 14
      }
@@ -4441,21 +4343,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "老師",
     "text": "差不多需要排十分鐘的隊，那好吧，我們先去排隊。",
-    "start": 17.74,
-    "end": 23.34,
+    "start": 15.3,
+    "end": 20.9,
     "words": [
      {
       "w": "差不多需要排十分钟的队",
-      "start": 17.74,
-      "end": 20.08,
+      "start": 15.3,
+      "end": 17.64,
       "charStart": 0,
       "charEnd": 11
      },
      {
       "w": "那好吧,我们先去排队",
-      "start": 20.08,
-      "end": 23.34,
-      "charStart": 11,
+      "start": 17.64,
+      "end": 20.9,
+      "charStart": 12,
       "charEnd": 22
      }
     ]
@@ -4464,35 +4366,35 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "老師",
     "text": "今天我們打算參觀三個小時，會有人給我們介紹。進去以後，記得要安靜，不可以說話說得太大聲。",
-    "start": 23.34,
-    "end": 36.96,
+    "start": 20.9,
+    "end": 34.52,
     "words": [
      {
       "w": "今天我们打算参观三个小时",
-      "start": 23.34,
-      "end": 28.4,
+      "start": 20.9,
+      "end": 25.96,
       "charStart": 0,
       "charEnd": 12
      },
      {
       "w": "会有人给我们介绍",
-      "start": 28.4,
-      "end": 31.12,
-      "charStart": 12,
+      "start": 25.96,
+      "end": 28.68,
+      "charStart": 13,
       "charEnd": 21
      },
      {
       "w": "进去以后记得要安静",
-      "start": 31.12,
-      "end": 34.04,
-      "charStart": 21,
+      "start": 28.68,
+      "end": 31.6,
+      "charStart": 22,
       "charEnd": 32
      },
      {
       "w": "不可以说话说得太大声",
-      "start": 34.04,
-      "end": 36.96,
-      "charStart": 32,
+      "start": 31.6,
+      "end": 34.52,
+      "charStart": 33,
       "charEnd": 43
      }
     ]
@@ -4501,28 +4403,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "家樂",
     "text": "老師，我剛剛先用手機上網看了很多有趣的圖片，真想馬上就看到博物館裡的東西。",
-    "start": 36.96,
-    "end": 48.14,
+    "start": 34.52,
+    "end": 45.7,
     "words": [
      {
       "w": "老师,我刚刚先用手机上网",
-      "start": 36.96,
-      "end": 41.7,
+      "start": 34.52,
+      "end": 39.26,
       "charStart": 0,
       "charEnd": 12
      },
      {
       "w": "看了很多有趣的图片",
-      "start": 41.7,
-      "end": 43.98,
+      "start": 39.26,
+      "end": 41.54,
       "charStart": 12,
       "charEnd": 21
      },
      {
       "w": "真想马上就看到博物馆里的东西",
-      "start": 43.98,
-      "end": 48.14,
-      "charStart": 21,
+      "start": 41.54,
+      "end": 45.7,
+      "charStart": 22,
       "charEnd": 36
      }
     ]
@@ -4531,21 +4433,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "老師",
     "text": "我知道你非常喜歡歷史，我想你今天一定會很開心。",
-    "start": 48.14,
-    "end": 56.06,
+    "start": 45.7,
+    "end": 53.62,
     "words": [
      {
       "w": "我知道你非常喜欢历史",
-      "start": 48.14,
-      "end": 52.12,
+      "start": 45.7,
+      "end": 49.68,
       "charStart": 0,
       "charEnd": 10
      },
      {
       "w": "我想你今天一定会很开心",
-      "start": 52.12,
-      "end": 56.06,
-      "charStart": 10,
+      "start": 49.68,
+      "end": 53.62,
+      "charStart": 11,
       "charEnd": 22
      }
     ]
@@ -4554,21 +4456,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 7,
     "speaker": "家樂",
     "text": "我也在網路上找了很多文章，那些介紹和故事都非常有趣。",
-    "start": 56.06,
-    "end": 64.62,
+    "start": 53.62,
+    "end": 62.18,
     "words": [
      {
       "w": "我也在网路上找了很多文章",
-      "start": 56.06,
-      "end": 60.7,
+      "start": 53.62,
+      "end": 58.26,
       "charStart": 0,
       "charEnd": 12
      },
      {
       "w": "那些介绍和故事都非常有趣",
-      "start": 60.7,
-      "end": 64.62,
-      "charStart": 12,
+      "start": 58.26,
+      "end": 62.18,
+      "charStart": 13,
       "charEnd": 25
      }
     ]
@@ -4577,20 +4479,20 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 8,
     "speaker": "老師",
     "text": "那如果大家有問題就可以問你了。",
-    "start": 64.62,
-    "end": 70.0,
+    "start": 62.18,
+    "end": 67.56,
     "words": [
      {
       "w": "那如果大家有问题",
-      "start": 64.62,
-      "end": 68.32,
+      "start": 62.18,
+      "end": 65.88,
       "charStart": 0,
       "charEnd": 8
      },
      {
       "w": "就可以问你了",
-      "start": 68.32,
-      "end": 70.0,
+      "start": 65.88,
+      "end": 67.56,
       "charStart": 8,
       "charEnd": 14
      }
@@ -4600,21 +4502,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 9,
     "speaker": "家樂",
     "text": "要是我知道，一定會告訴大家！",
-    "start": 70.0,
-    "end": 75.04,
+    "start": 67.56,
+    "end": 72.6,
     "words": [
      {
       "w": "要是我知道",
-      "start": 70.0,
-      "end": 72.66,
+      "start": 67.56,
+      "end": 70.22,
       "charStart": 0,
       "charEnd": 5
      },
      {
       "w": "一定会告诉大家",
-      "start": 72.66,
-      "end": 75.04,
-      "charStart": 5,
+      "start": 70.22,
+      "end": 72.6,
+      "charStart": 6,
       "charEnd": 13
      }
     ]
@@ -4623,15 +4525,15 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 10,
     "speaker": "國安",
     "text": "（往前看）中明來了！",
-    "start": 75.04,
-    "end": 77.3,
+    "start": 72.6,
+    "end": 74.86,
     "words": [
      {
-      "w": "周明来了",
-      "start": 75.04,
-      "end": 77.3,
-      "charStart": null,
-      "charEnd": null
+      "w": "（往前看）中明來了！",
+      "start": 72.6,
+      "end": 74.86,
+      "charStart": 0,
+      "charEnd": 9
      }
     ]
    },
@@ -4639,13 +4541,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 11,
     "speaker": "老師",
     "text": "好，我們進去參觀吧。",
-    "start": 77.3,
-    "end": 81.42,
+    "start": 74.86,
+    "end": 78.98,
     "words": [
      {
       "w": "好,我们进去参观吧",
-      "start": 77.3,
-      "end": 81.42,
+      "start": 74.86,
+      "end": 78.98,
       "charStart": 0,
       "charEnd": 9
      }
@@ -4657,28 +4559,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-14-1-1.mp3",
   "lessonId": 14,
   "dialogueNumber": 1,
-  "trimSec": 17.72,
+  "trimSec": 21.12,
   "lines": [
    {
     "index": 0,
     "speaker": "老師",
     "text": "家樂，你在台灣住了多久了？參加過台灣的新年活動嗎？",
-    "start": 0.8,
-    "end": 10.64,
+    "start": 0,
+    "end": 7.24,
     "words": [
      {
-      "w": "迦勒,你在台湾住了多久了?",
-      "start": 0.8,
-      "end": 6.88,
-      "charStart": null,
-      "charEnd": null
-     },
-     {
-      "w": "参加过台湾的新年活动吗?",
-      "start": 7.84,
-      "end": 10.64,
-      "charStart": 12,
-      "charEnd": 24
+      "w": "家樂，你在台灣住了多久了？參加過台灣的新年活動嗎？",
+      "start": 0,
+      "end": 7.24,
+      "charStart": 0,
+      "charEnd": 25
      }
     ]
    },
@@ -4686,34 +4581,34 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "家樂",
     "text": "我在台灣住了半年了，這是我第一次在台灣過新年。台灣人在一年的最後一天有什麼特別的活動？",
-    "start": 11.76,
-    "end": 24.5,
+    "start": 8.36,
+    "end": 21.1,
     "words": [
      {
       "w": "我在台湾住了半年了",
-      "start": 11.76,
-      "end": 14.52,
+      "start": 8.36,
+      "end": 11.12,
       "charStart": 0,
       "charEnd": 9
      },
      {
       "w": "这是我第一次在台湾过新年",
-      "start": 14.52,
-      "end": 18.54,
-      "charStart": 9,
+      "start": 11.12,
+      "end": 15.14,
+      "charStart": 10,
       "charEnd": 22
      },
      {
       "w": "台湾人在一年的最后一天",
-      "start": 18.54,
-      "end": 22.22,
-      "charStart": 22,
+      "start": 15.14,
+      "end": 18.82,
+      "charStart": 23,
       "charEnd": 34
      },
      {
       "w": "有什么特别的活动?",
-      "start": 22.22,
-      "end": 24.5,
+      "start": 18.82,
+      "end": 21.1,
       "charStart": 34,
       "charEnd": 42
      }
@@ -4723,43 +4618,15 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "老師",
     "text": "十二月三十一號的晚上，很多城市都有跨年晚會，我最喜歡的是台北101的演唱會，有很多表演，又熱鬧又好看。",
-    "start": 26.04,
-    "end": 42.48,
+    "start": 22.64,
+    "end": 39.08,
     "words": [
      {
-      "w": "十二月三十一号的晚上",
-      "start": 26.04,
-      "end": 28.32,
+      "w": "十二月三十一號的晚上，很多城市都有跨年晚會，我最喜歡的是台北101的演唱會，有很多表演，又熱鬧又好看。",
+      "start": 22.64,
+      "end": 39.08,
       "charStart": 0,
-      "charEnd": 10
-     },
-     {
-      "w": "很多城市都有跨年晚会",
-      "start": 28.32,
-      "end": 32.2,
-      "charStart": 10,
-      "charEnd": 21
-     },
-     {
-      "w": "我最喜欢的是台北101的演唱会",
-      "start": 32.2,
-      "end": 37.66,
-      "charStart": null,
-      "charEnd": null
-     },
-     {
-      "w": "有很多表演",
-      "start": 37.66,
-      "end": 39.72,
-      "charStart": 37,
-      "charEnd": 43
-     },
-     {
-      "w": "又热闹又好看",
-      "start": 39.72,
-      "end": 42.48,
-      "charStart": 43,
-      "charEnd": 50
+      "charEnd": 51
      }
     ]
    },
@@ -4767,21 +4634,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "家樂",
     "text": "跟朋友一起去一定會很有意思，大家要不要一起去？",
-    "start": 42.48,
-    "end": 50.18,
+    "start": 39.08,
+    "end": 46.78,
     "words": [
      {
       "w": "跟朋友一起去一定会很有意思",
-      "start": 42.48,
-      "end": 47.38,
+      "start": 39.08,
+      "end": 43.98,
       "charStart": 0,
       "charEnd": 13
      },
      {
       "w": "大家要不要一起去?",
-      "start": 47.38,
-      "end": 50.18,
-      "charStart": 13,
+      "start": 43.98,
+      "end": 46.78,
+      "charStart": 14,
       "charEnd": 22
      }
     ]
@@ -4790,49 +4657,49 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "老師",
     "text": "如果大家要去跨年，要多帶一件衣服。去年我在那裡站了一晚，因為時間太久，天氣也太冷，回家以後就感冒了。",
-    "start": 52.04,
-    "end": 67.7,
+    "start": 48.64,
+    "end": 64.3,
     "words": [
      {
       "w": "如果大家要去跨年",
-      "start": 52.04,
-      "end": 53.96,
+      "start": 48.64,
+      "end": 50.56,
       "charStart": 0,
       "charEnd": 8
      },
      {
       "w": "要多戴一件衣服",
-      "start": 53.96,
-      "end": 56.38,
-      "charStart": 8,
+      "start": 50.56,
+      "end": 52.98,
+      "charStart": 9,
       "charEnd": 16
      },
      {
       "w": "去年我在那里站了一晚",
-      "start": 56.38,
-      "end": 59.9,
-      "charStart": 16,
+      "start": 52.98,
+      "end": 56.5,
+      "charStart": 17,
       "charEnd": 27
      },
      {
       "w": "因为时间太久",
-      "start": 59.9,
-      "end": 62.38,
-      "charStart": 27,
+      "start": 56.5,
+      "end": 58.98,
+      "charStart": 28,
       "charEnd": 34
      },
      {
       "w": "天气也太冷",
-      "start": 62.38,
-      "end": 64.24,
-      "charStart": 34,
+      "start": 58.98,
+      "end": 60.84,
+      "charStart": 35,
       "charEnd": 40
      },
      {
       "w": "回家以后就感冒了",
-      "start": 64.24,
-      "end": 67.7,
-      "charStart": 40,
+      "start": 60.84,
+      "end": 64.3,
+      "charStart": 41,
       "charEnd": 49
      }
     ]
@@ -4841,22 +4708,29 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "宜文",
     "text": "我家在台北101大樓附近，大家可以先來我家，我們一起吃晚飯，再去看演唱會。",
-    "start": 67.7,
-    "end": 73.82,
+    "start": 64.3,
+    "end": 77.07,
     "words": [
      {
-      "w": "我家在台北101大楼附近",
-      "start": 67.7,
-      "end": 72.32,
-      "charStart": null,
-      "charEnd": null
+      "w": "我家在台北101大樓附近，大家可以先來我家，我們一起吃晚飯，再去看演唱會。",
+      "start": 64.3,
+      "end": 70.42,
+      "charStart": 0,
+      "charEnd": 21
      },
      {
-      "w": "大家可以先来",
-      "start": 72.32,
-      "end": 73.82,
-      "charStart": 12,
-      "charEnd": 19
+      "w": "我们一起吃晚饭",
+      "start": 72.17,
+      "end": 74.83,
+      "charStart": 22,
+      "charEnd": 29
+     },
+     {
+      "w": "再去看演唱会",
+      "start": 74.83,
+      "end": 77.07,
+      "charStart": 30,
+      "charEnd": 36
      }
     ]
    },
@@ -4864,21 +4738,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "國安",
     "text": "太好了！我們可以每個人都準備一些好吃的東西。",
-    "start": 80.58,
-    "end": 87.5,
+    "start": 77.18,
+    "end": 84.1,
     "words": [
      {
       "w": "太好了",
-      "start": 80.58,
-      "end": 82.62,
+      "start": 77.18,
+      "end": 79.22,
       "charStart": 0,
       "charEnd": 3
      },
      {
       "w": "我们可以每个人都准备一些好吃的东西",
-      "start": 82.62,
-      "end": 87.5,
-      "charStart": 3,
+      "start": 79.22,
+      "end": 84.1,
+      "charStart": 4,
       "charEnd": 21
      }
     ]
@@ -4887,28 +4761,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 7,
     "speaker": "宜文",
     "text": "老師，請您也跟大家一起來我家，好嗎？",
-    "start": 87.5,
-    "end": 94.16,
+    "start": 84.1,
+    "end": 90.76,
     "words": [
      {
       "w": "老师",
-      "start": 87.5,
-      "end": 89.62,
+      "start": 84.1,
+      "end": 86.22,
       "charStart": 0,
       "charEnd": 2
      },
      {
       "w": "请您也跟大家一起来我家",
-      "start": 89.62,
-      "end": 93.1,
-      "charStart": 2,
+      "start": 86.22,
+      "end": 89.7,
+      "charStart": 3,
       "charEnd": 14
      },
      {
       "w": "好吗?",
-      "start": 93.1,
-      "end": 94.16,
-      "charStart": 14,
+      "start": 89.7,
+      "end": 90.76,
+      "charStart": 15,
       "charEnd": 17
      }
     ]
@@ -4917,28 +4791,28 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 8,
     "speaker": "老師",
     "text": "好啊！那我也準備一些飲料。大家一起跨年吧！",
-    "start": 95.66,
-    "end": 101.88,
+    "start": 92.26,
+    "end": 98.48,
     "words": [
      {
       "w": "好啊",
-      "start": 95.66,
-      "end": 96.48,
+      "start": 92.26,
+      "end": 93.08,
       "charStart": 0,
       "charEnd": 2
      },
      {
       "w": "那我也准备一些饮料",
-      "start": 96.48,
-      "end": 99.46,
-      "charStart": 2,
+      "start": 93.08,
+      "end": 96.06,
+      "charStart": 3,
       "charEnd": 12
      },
      {
       "w": "大家一起跨年吧",
-      "start": 99.46,
-      "end": 101.88,
-      "charStart": 12,
+      "start": 96.06,
+      "end": 98.48,
+      "charStart": 13,
       "charEnd": 20
      }
     ]
@@ -4949,19 +4823,19 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
   "audioFile": "B1-14-2-1.mp3",
   "lessonId": 14,
   "dialogueNumber": 2,
-  "trimSec": 0.0,
+  "trimSec": 2.52,
   "lines": [
    {
     "index": 0,
     "speaker": "宜文",
     "text": "歡迎大家，請進！",
-    "start": 1.22,
-    "end": 4.94,
+    "start": 0,
+    "end": 2.42,
     "words": [
      {
       "w": "欢迎大家,请进。",
-      "start": 1.22,
-      "end": 4.94,
+      "start": 0,
+      "end": 2.42,
       "charStart": 0,
       "charEnd": 7
      }
@@ -4971,13 +4845,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 1,
     "speaker": "家樂",
     "text": "謝謝！妳家前面的公園有很多花跟樹，環境真好！",
-    "start": 6.42,
-    "end": 13.14,
+    "start": 3.9,
+    "end": 10.62,
     "words": [
      {
       "w": "谢谢,你家前面的公园有很多花跟树,环境真好。",
-      "start": 6.42,
-      "end": 13.14,
+      "start": 3.9,
+      "end": 10.62,
       "charStart": 0,
       "charEnd": 21
      }
@@ -4987,13 +4861,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 2,
     "speaker": "國安",
     "text": "我跟友美買了幾瓶酒，也帶了大家都喜歡的餃子、包子和牛肉湯。",
-    "start": 14.58,
-    "end": 22.4,
+    "start": 12.06,
+    "end": 19.88,
     "words": [
      {
       "w": "我跟尤美买了几瓶酒,也带了大家都喜欢的饺子、包子和牛肉汤。",
-      "start": 14.58,
-      "end": 22.4,
+      "start": 12.06,
+      "end": 19.88,
       "charStart": 0,
       "charEnd": 28
      }
@@ -5003,13 +4877,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 3,
     "speaker": "宜文",
     "text": "這麼多東西很重吧？",
-    "start": 23.88,
-    "end": 26.16,
+    "start": 21.36,
+    "end": 23.64,
     "words": [
      {
       "w": "这么多东西很重吧?",
-      "start": 23.88,
-      "end": 26.16,
+      "start": 21.36,
+      "end": 23.64,
       "charStart": 0,
       "charEnd": 8
      }
@@ -5019,13 +4893,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 4,
     "speaker": "國安",
     "text": "不重，我很高興能幫大家準備。",
-    "start": 27.16,
-    "end": 31.54,
+    "start": 24.64,
+    "end": 29.02,
     "words": [
      {
       "w": "不重,我很高兴能帮大家准备。",
-      "start": 27.16,
-      "end": 31.54,
+      "start": 24.64,
+      "end": 29.02,
       "charStart": 0,
       "charEnd": 13
      }
@@ -5035,13 +4909,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 5,
     "speaker": "老師",
     "text": "我買了珍珠奶茶，希望大家會喜歡。",
-    "start": 32.58,
-    "end": 37.54,
+    "start": 30.06,
+    "end": 35.02,
     "words": [
      {
       "w": "我买了珍珠奶茶,希望大家会喜欢。",
-      "start": 32.58,
-      "end": 37.54,
+      "start": 30.06,
+      "end": 35.02,
       "charStart": 0,
       "charEnd": 15
      }
@@ -5051,13 +4925,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 6,
     "speaker": "宜文",
     "text": "大家準備了這麼多東西。老師，請您先拿吧！",
-    "start": 38.78,
-    "end": 44.52,
+    "start": 36.26,
+    "end": 42.0,
     "words": [
      {
       "w": "大家准备了这么多东西,老师,请您先拿吧。",
-      "start": 38.78,
-      "end": 44.52,
+      "start": 36.26,
+      "end": 42.0,
       "charStart": 0,
       "charEnd": 19
      }
@@ -5067,13 +4941,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 7,
     "speaker": "家樂",
     "text": "老師，跨年的時候，如果不想去看演唱會，還有別的活動嗎？",
-    "start": 45.86,
-    "end": 53.28,
+    "start": 43.34,
+    "end": 50.76,
     "words": [
      {
       "w": "老师,跨年的时候如果不想去看演唱会,还有别的活动吗?",
-      "start": 45.86,
-      "end": 53.28,
+      "start": 43.34,
+      "end": 50.76,
       "charStart": 0,
       "charEnd": 26
      }
@@ -5083,21 +4957,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 8,
     "speaker": "老師",
     "text": "有啊！我小的時候在山上住了七、八年，每一年的第一天，我都跟家人一起看日出。",
-    "start": 54.32,
-    "end": 65.84,
+    "start": 51.8,
+    "end": 63.32,
     "words": [
      {
       "w": "有啊,我小的时候在山上住了七八年。",
-      "start": 54.32,
-      "end": 59.7,
+      "start": 51.8,
+      "end": 57.18,
       "charStart": 0,
       "charEnd": 17
      },
      {
       "w": "每一年的第一天,我都跟家人一起看日出。",
-      "start": 61.04,
-      "end": 65.84,
-      "charStart": 17,
+      "start": 58.52,
+      "end": 63.32,
+      "charStart": 18,
       "charEnd": 36
      }
     ]
@@ -5106,15 +4980,15 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 9,
     "speaker": "家樂",
     "text": "跨年的時候，英國的教堂有很多活動，也有人去聽音樂會。",
-    "start": 67.34,
-    "end": 74.62,
+    "start": 64.82,
+    "end": 72.1,
     "words": [
      {
-      "w": "跨年的时候,英国的教堂有很多活动,也有人去听音乐会。",
-      "start": 67.34,
-      "end": 74.62,
-      "charStart": null,
-      "charEnd": null
+      "w": "跨年的時候，英國的教堂有很多活動，也有人去聽音樂會。",
+      "start": 64.82,
+      "end": 72.1,
+      "charStart": 0,
+      "charEnd": 26
      }
     ]
    },
@@ -5122,22 +4996,15 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 10,
     "speaker": "友美",
     "text": "在日本，跨年的時候，很多人在家跟家人一起看電視。但是我喜歡和朋友一起跨年，比在家看電視有趣。",
-    "start": 75.74,
-    "end": 89.22,
+    "start": 73.22,
+    "end": 86.7,
     "words": [
      {
-      "w": "在日本,跨年的时候很多人在家跟家人一起看电视。",
-      "start": 75.74,
-      "end": 82.3,
+      "w": "在日本，跨年的時候，很多人在家跟家人一起看電視。但是我喜歡和朋友一起跨年，比在家看電視有趣。",
+      "start": 73.22,
+      "end": 86.7,
       "charStart": 0,
-      "charEnd": 23
-     },
-     {
-      "w": "但是,我喜欢跟朋友一起跨年,比在家看电视有趣。",
-      "start": 82.96,
-      "end": 89.22,
-      "charStart": null,
-      "charEnd": null
+      "charEnd": 46
      }
     ]
    },
@@ -5145,13 +5012,13 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 11,
     "speaker": "國安",
     "text": "我也喜歡跟朋友一起跨年，而且今年比以前有意思多了，因為在台灣跟你們一起玩，覺得很特別。",
-    "start": 90.22,
-    "end": 102.64,
+    "start": 87.7,
+    "end": 100.12,
     "words": [
      {
       "w": "我也喜欢跟朋友一起跨年,而且今年比以前有意思多了,因为在台湾跟你们一起玩,觉得很特别。",
-      "start": 90.22,
-      "end": 102.64,
+      "start": 87.7,
+      "end": 100.12,
       "charStart": 0,
       "charEnd": 42
      }
@@ -5161,21 +5028,21 @@ export const DIALOGUE_ALIGNMENTS: Record<string, DialogueAlignment> = {
     "index": 12,
     "speaker": "宜文",
     "text": "我同意，我也覺得今年很有意思。",
-    "start": 103.64,
-    "end": 108.62,
+    "start": 101.12,
+    "end": 106.1,
     "words": [
      {
       "w": "我同意。",
-      "start": 103.64,
-      "end": 105.1,
+      "start": 101.12,
+      "end": 102.58,
       "charStart": 0,
       "charEnd": 3
      },
      {
       "w": "我也觉得今年很有意思。",
-      "start": 105.82,
-      "end": 108.62,
-      "charStart": 3,
+      "start": 103.3,
+      "end": 106.1,
+      "charStart": 4,
       "charEnd": 14
      }
     ]

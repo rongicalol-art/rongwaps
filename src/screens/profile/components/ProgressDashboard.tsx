@@ -71,7 +71,7 @@ export function ProgressDashboard({ compact = false }: ProgressDashboardProps) {
       {/* Stats Grid */}
       <div className="grid grid-cols-2 gap-3 w-full">
         {/* Streak */}
-        <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default">
+        <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-border rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default">
           <div className="w-10 h-10 shrink-0 rounded-full bg-brand-secondary/10 flex items-center justify-center mt-1">
             <AppIcon name="flame" className="text-brand-secondary" size={24} />
           </div>
@@ -82,7 +82,7 @@ export function ProgressDashboard({ compact = false }: ProgressDashboardProps) {
         </div>
 
         {/* Total XP */}
-        <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default">
+        <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-border rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default">
           <div className="w-10 h-10 shrink-0 rounded-full bg-feedback-warning/10 flex items-center justify-center mt-1">
             <AppIcon name="actions" className="text-feedback-warning" size={24} />
           </div>
@@ -93,7 +93,7 @@ export function ProgressDashboard({ compact = false }: ProgressDashboardProps) {
         </div>
 
         {/* Words Learned */}
-        <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default">
+        <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-border rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default">
           <div className="w-10 h-10 shrink-0 rounded-full bg-brand-primary/10 flex items-center justify-center mt-1">
             <AppIcon name="book" className="text-brand-primary" size={24} />
           </div>
@@ -104,7 +104,7 @@ export function ProgressDashboard({ compact = false }: ProgressDashboardProps) {
         </div>
 
         {/* Total Reviews */}
-        <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default">
+        <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-border rounded-feature p-4 flex items-start gap-3 hover:bg-ui-hover transition-[background-color,border-color] cursor-default">
           <div className="w-10 h-10 shrink-0 rounded-full bg-feedback-success/10 flex items-center justify-center mt-1">
             <AppIcon name="check" className="text-feedback-success" size={24} />
           </div>

@@ -53,7 +53,7 @@ export function GrammarPatternSection({
         </h2>
       </div>
 
-      <div className="overflow-hidden rounded-feature bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider">
+      <div className="overflow-hidden rounded-feature bg-ui-surface border-b-[length:var(--depth-md)] border-ui-border">
         {/* The table surface always contains horizontal overflow by scrolling;
             it is never clipped by the card. */}
         <div className="overflow-x-auto">

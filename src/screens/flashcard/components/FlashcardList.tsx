@@ -35,7 +35,7 @@ const ROW_TRANSITION = {
 
 function chainClasses(shape: RowShape, included: boolean): string {
   if (!included) {
-    return 'mb-3 rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface';
+    return 'mb-3 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface';
   }
   switch (shape) {
     case 'single':

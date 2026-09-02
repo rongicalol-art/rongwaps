@@ -62,7 +62,7 @@ export function LayoutShell({
               animate={{ width: "auto", opacity: 1 }}
               exit={{ width: 0, opacity: 0 }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-              className="absolute inset-y-3 left-3 z-[600] flex shrink-0 overflow-hidden rounded-[28px] border-b-[6px] border-ui-divider bg-ui-surface md:inset-y-4 md:left-4"
+              className="absolute inset-y-3 left-3 z-[600] flex shrink-0 overflow-hidden rounded-[28px] border-b-[6px] border-ui-border bg-ui-surface md:inset-y-4 md:left-4"
             >
               <SideNav 
                 activeTab={activeTab}

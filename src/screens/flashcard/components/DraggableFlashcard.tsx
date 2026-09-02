@@ -225,7 +225,7 @@ export const DraggableFlashcard = ({
       >
         {/* Front Side */}
         <motion.div
-          className="absolute inset-0 flex items-center justify-center rounded-feature border-b-[length:var(--depth-lg)] border-ui-divider bg-ui-surface p-8"
+          className="absolute inset-0 flex items-center justify-center rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface p-8"
           style={{ opacity: frontOpacity, visibility: frontVisibility }}
         >
           <div className="flex max-w-full flex-row flex-wrap items-center justify-center">
@@ -262,7 +262,7 @@ export const DraggableFlashcard = ({
         {/* Back Side — pre-rotated 180° so it reads normally once the card
             has flipped; the midpoint crossfade swaps which face is visible. */}
         <motion.div
-          className="absolute inset-0 flex flex-col rounded-feature border-b-[length:var(--depth-lg)] border-ui-divider bg-ui-surface p-6 pb-10 sm:p-8 sm:pb-10"
+          className="absolute inset-0 flex flex-col rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface p-6 pb-10 sm:p-8 sm:pb-10"
           style={{ opacity: backOpacity, rotateY: 180, visibility: backVisibility }}
         >
           <div

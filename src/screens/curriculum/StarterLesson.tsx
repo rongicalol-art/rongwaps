@@ -24,7 +24,7 @@ export function StarterLesson({ starterLesson, activeBook, isSelected, onToggleL
         className={`group flex w-full cursor-pointer items-center justify-between rounded-feature bg-ui-surface p-4 text-left outline-none transition-all duration-200 focus-ring ${
           isSelected
             ? 'border-b-[length:var(--depth-lg)]'
-            : 'border-b-[length:var(--depth-md)] border-ui-divider hover:bg-ui-hover'
+            : 'border-b-[length:var(--depth-md)] border-ui-border hover:bg-ui-hover'
         }`}
       >
         <div className="flex items-center gap-4">

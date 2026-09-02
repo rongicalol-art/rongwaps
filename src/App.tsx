@@ -19,6 +19,7 @@ import { useCloudSync } from './hooks/useCloudSync';
 import { useAuth } from './hooks/useAuth';
 import { useResetProgress } from './hooks/useResetProgress';
 import { useBookTheme } from './hooks/useBookTheme';
+import { resolveActiveReadingIndex } from './utils/readingContext';
 
 // Route-level code splitting: only the active screen's code is fetched (AGENTS.md perf).
 const CurriculumLibrary = React.lazy(() => import('./screens/curriculum').then((m) => ({ default: m.CurriculumLibrary })));
@@ -103,9 +104,16 @@ export default function App() {
       setActiveReadingIndex(null);
       return;
     }
+    const store = useAppStore.getState();
+    const targetIdx = resolveActiveReadingIndex({
+      bookId,
+      selectedLessons: store.selectedLessons.length > 0 ? store.selectedLessons : selectedLessons,
+      selectedLessonParts: store.selectedLessonParts,
+      readings: loaded,
+    });
     setReadings(loaded);
-    setActiveReadingIndex(0);
-  }, []);
+    setActiveReadingIndex(targetIdx);
+  }, [selectedLessons]);
 
   const closeReader = React.useCallback(() => {
     setActiveReadingIndex(null);
@@ -261,6 +269,9 @@ export default function App() {
               onOpenGrammarPart={(partId) => {
                 setActiveGrammarPartId(partId);
               }}
+              onOpenReading={() => {
+                void openReader(activeBook.id);
+              }}
             />
           </React.Suspense>
         }
@@ -371,7 +382,7 @@ export default function App() {
         {activeReadingIndex !== null && readings[activeReadingIndex] && (
           <React.Suspense fallback={<LoadingScreen message="Loading reading…" />}>
             <ReaderScreen
-              key={readings[activeReadingIndex].id}
+              key="reader-screen"
               readings={readings}
               index={activeReadingIndex}
               onNavigate={navigateReader}

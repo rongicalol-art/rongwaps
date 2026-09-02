@@ -25,11 +25,11 @@ export function CharacterDailyCard({ word, onOpenWord }: CharacterDailyCardProps
   return (
     <button
       type="button"
-      className="group flex h-full min-h-[220px] w-full cursor-pointer items-stretch overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface text-left transition-[background-color,transform,border-color] duration-200 hover:bg-ui-hover focus-ring active:translate-y-[length:var(--depth-md)] active:border-b-0"
+      className="group flex h-full min-h-[220px] w-full cursor-pointer items-stretch overflow-hidden rounded-feature bg-ui-surface text-left transition-[background-color,transform] duration-200 hover:bg-ui-hover focus-ring active:translate-y-[length:var(--depth-md)]"
       onClick={openWord}
       aria-label={`Open character of the day: ${word.traditional}`}
     >
-      <div className="relative flex w-[34%] shrink-0 flex-col justify-between bg-brand-primary px-4 py-4 sm:w-[30%] sm:px-6 sm:py-5">
+      <div className="relative flex w-[34%] shrink-0 flex-col justify-between border-b-[length:var(--depth-md)] border-brand-primary-edge bg-brand-primary px-4 py-4 sm:w-[30%] sm:px-6 sm:py-5 group-active:border-b-0">
         <div
           aria-hidden="true"
           className="absolute -right-8 -top-10 h-28 w-28 rounded-full border-[18px] border-white/20"
@@ -42,7 +42,7 @@ export function CharacterDailyCard({ word, onOpenWord }: CharacterDailyCardProps
         </span>
       </div>
 
-      <div className="flex min-w-0 flex-1 flex-col justify-between px-5 py-4 sm:px-7 sm:py-5">
+      <div className="flex min-w-0 flex-1 flex-col justify-between border-b-[length:var(--depth-md)] border-ui-border px-5 py-4 sm:px-7 sm:py-5 group-active:border-b-0">
         <div className="flex items-center justify-between gap-2">
           <span className="truncate text-[10px] font-black uppercase tracking-wider text-brand-primary-deep">
             Character of the day

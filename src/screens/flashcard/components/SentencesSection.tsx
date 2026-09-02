@@ -37,7 +37,7 @@ export function SentencesSection({
         )}
       </div>
       
-      <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider rounded-feature flex flex-col overflow-hidden">
+      <div className="bg-ui-surface border-b-[length:var(--depth-md)] border-ui-border rounded-feature flex flex-col overflow-hidden">
         {isSentencesLoading ? (
           <>
             <div className="p-5 sm:p-6 border-b-2 border-ui-divider">

@@ -140,6 +140,9 @@ export interface DictionaryListEntry {
   pinyin_accented: string;
   definitions: string | string[] | Record<string, unknown>;
   bookId?: number;
+  lessonId?: number;
+  pos?: string;
+  audio?: string;
   measure_words?: string[];
 }
 

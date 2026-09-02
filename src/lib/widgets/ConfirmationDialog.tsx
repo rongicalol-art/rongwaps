@@ -69,7 +69,7 @@ export function ConfirmationDialog({
           aria-modal="true"
           aria-labelledby={titleId}
           tabIndex={-1}
-          className={cn('rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface p-6 shadow-ambient-lg', className)}
+          className={cn('rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-6 shadow-ambient-lg', className)}
         >
           <div className="mb-6 text-center">
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-control bg-feedback-danger/10 text-feedback-danger">

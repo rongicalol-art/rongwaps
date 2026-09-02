@@ -18,6 +18,7 @@ interface PracticeModeDockProps {
   feedback: { text: string; type: 'learned' | 'review' } | null;
   onChange: (activity: PracticeActivityId) => void;
   onOpenGrammar?: () => void;
+  onOpenReading?: () => void;
   onSelectQuizMode: (mode: QuizMode) => void;
   onSelectFlashcardMode?: (mode: FlashcardViewMode) => void;
   flashcardMode?: FlashcardViewMode;
@@ -39,7 +40,8 @@ const FLASHCARD_MODES = [
 function DockSubMenu<T extends string>({
   open,
   onClose,
-  anchorOffset,
+  modeKey,
+  containerRef,
   options,
   selectedValue,
   onSelect,
@@ -47,12 +49,48 @@ function DockSubMenu<T extends string>({
 }: {
   open: boolean;
   onClose: () => void;
-  anchorOffset: string;
+  modeKey: string;
+  containerRef: React.RefObject<HTMLDivElement | null>;
   options: ReadonlyArray<{ value: T; label: string; icon: Parameters<typeof AppIcon>[0]['name'] }>;
   selectedValue?: T | null;
   onSelect: (value: T) => void;
   label: string;
 }) {
+  const [menuLeft, setMenuLeft] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const updatePosition = () => {
+      if (!containerRef.current) return;
+      const targetButton = containerRef.current.querySelector<HTMLElement>(`[data-mode="${modeKey}"]`);
+      if (!targetButton) return;
+
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const buttonRect = targetButton.getBoundingClientRect();
+      const halfWidth = 80; // 160px / 2
+
+      // Exact center of the button relative to the container
+      const buttonCenterInContainer = (buttonRect.left + buttonRect.width / 2) - containerRect.left;
+      const idealLeft = buttonCenterInContainer - halfWidth;
+
+      // Screen clamping bounds: keep at least 16px from screen edges
+      const minScreenX = 16;
+      const maxScreenX = window.innerWidth - 16;
+      const minLeft = minScreenX - containerRect.left;
+      const maxLeft = (maxScreenX - 160) - containerRect.left;
+
+      // On wide screens where there is space, idealLeft is used directly.
+      // On narrow screens where idealLeft would clip off-screen, it clamps safely.
+      const clampedLeft = Math.max(minLeft, Math.min(idealLeft, maxLeft));
+      setMenuLeft(clampedLeft);
+    };
+
+    updatePosition();
+    window.addEventListener('resize', updatePosition);
+    return () => window.removeEventListener('resize', updatePosition);
+  }, [open, modeKey, containerRef]);
+
   return (
     <AnimatePresence>
       {open && (
@@ -61,12 +99,15 @@ function DockSubMenu<T extends string>({
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 4, scale: 0.98 }}
           transition={{ duration: 0.18, ease: [0.32, 0.72, 0, 1] }}
-          className={cn('absolute bottom-full w-[160px] -translate-x-1/2 pb-2', anchorOffset)}
+          className="absolute bottom-full w-[160px] pb-2 z-50 pointer-events-auto"
+          style={{
+            left: menuLeft !== null ? `${menuLeft}px` : modeKey === 'flashcards' ? '0px' : '25%',
+          }}
         >
           <div
             role="menu"
             aria-label={label}
-            className="rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface p-1.5 shadow-ambient-md"
+            className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-1.5"
           >
             {options.map((mode) => (
               <ActionButton
@@ -76,8 +117,10 @@ function DockSubMenu<T extends string>({
                 size="sm"
                 fullWidth
                 className={cn(
-                  'justify-start gap-2.5 px-3 py-2 text-left text-ui-ink-strong',
-                  selectedValue === mode.value && 'bg-brand-primary/10 text-brand-primary hover:text-brand-primary',
+                  'justify-start gap-2.5 px-3 py-2 text-left',
+                  selectedValue === mode.value
+                    ? 'text-brand-primary hover:text-brand-primary'
+                    : 'text-ui-ink-strong',
                 )}
                 onClick={() => {
                   onSelect(mode.value);
@@ -99,6 +142,7 @@ export function PracticeModeDock({
   feedback,
   onChange,
   onOpenGrammar,
+  onOpenReading,
   onSelectQuizMode,
   onSelectFlashcardMode,
   flashcardMode = 'cards',
@@ -107,22 +151,51 @@ export function PracticeModeDock({
 }: PracticeModeDockProps) {
   const [isQuizMenuOpen, setIsQuizMenuOpen] = useState(false);
   const [isFlashcardsMenuOpen, setIsFlashcardsMenuOpen] = useState(false);
+  const [isStudyMenuOpen, setIsStudyMenuOpen] = useState(false);
   const dockRef = useRef<HTMLDivElement>(null);
+  const modesContainerRef = useRef<HTMLDivElement>(null);
+  const grammarButtonRef = useRef<HTMLDivElement>(null);
+  const [studyMenuLeft, setStudyMenuLeft] = useState<number | null>(null);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    if (!isQuizMenuOpen && !isFlashcardsMenuOpen) return;
+    if (!isStudyMenuOpen) return;
+
+    const updateStudyPosition = () => {
+      if (!grammarButtonRef.current) return;
+      const buttonRect = grammarButtonRef.current.getBoundingClientRect();
+      const halfWidth = 80; // 160px / 2
+      const idealLeft = buttonRect.width / 2 - halfWidth;
+
+      const minScreenX = 16;
+      const maxScreenX = window.innerWidth - 16;
+      const minLeft = minScreenX - buttonRect.left;
+      const maxLeft = (maxScreenX - 160) - buttonRect.left;
+
+      const clampedLeft = Math.max(minLeft, Math.min(idealLeft, maxLeft));
+      setStudyMenuLeft(clampedLeft);
+    };
+
+    updateStudyPosition();
+    window.addEventListener('resize', updateStudyPosition);
+    return () => window.removeEventListener('resize', updateStudyPosition);
+  }, [isStudyMenuOpen]);
+
+  useEffect(() => {
+    if (!isQuizMenuOpen && !isFlashcardsMenuOpen && !isStudyMenuOpen) return;
 
     const handlePointerDown = (event: PointerEvent) => {
       if (!dockRef.current?.contains(event.target as Node)) {
         setIsQuizMenuOpen(false);
         setIsFlashcardsMenuOpen(false);
+        setIsStudyMenuOpen(false);
       }
     };
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setIsQuizMenuOpen(false);
         setIsFlashcardsMenuOpen(false);
+        setIsStudyMenuOpen(false);
       }
     };
 
@@ -132,15 +205,27 @@ export function PracticeModeDock({
       document.removeEventListener('pointerdown', handlePointerDown);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isQuizMenuOpen, isFlashcardsMenuOpen]);
+  }, [isQuizMenuOpen, isFlashcardsMenuOpen, isStudyMenuOpen]);
 
   // Only one sub-menu open at a time
   useEffect(() => {
-    if (isQuizMenuOpen) setIsFlashcardsMenuOpen(false);
+    if (isQuizMenuOpen) {
+      setIsFlashcardsMenuOpen(false);
+      setIsStudyMenuOpen(false);
+    }
   }, [isQuizMenuOpen]);
   useEffect(() => {
-    if (isFlashcardsMenuOpen) setIsQuizMenuOpen(false);
+    if (isFlashcardsMenuOpen) {
+      setIsQuizMenuOpen(false);
+      setIsStudyMenuOpen(false);
+    }
   }, [isFlashcardsMenuOpen]);
+  useEffect(() => {
+    if (isStudyMenuOpen) {
+      setIsQuizMenuOpen(false);
+      setIsFlashcardsMenuOpen(false);
+    }
+  }, [isStudyMenuOpen]);
 
   const selectQuizMode = (mode: QuizMode) => {
     onSelectQuizMode(mode);
@@ -166,40 +251,112 @@ export function PracticeModeDock({
       >
         <div
           ref={dockRef}
-          className="pointer-events-auto relative flex w-full max-w-[381px] items-center justify-center gap-3"
+          className="pointer-events-auto relative flex w-full max-w-[368px] items-center justify-center gap-2 sm:gap-3"
           onBlur={(event) => {
             if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
               setIsQuizMenuOpen(false);
               setIsFlashcardsMenuOpen(false);
+              setIsStudyMenuOpen(false);
             }
           }}
         >
           <AnimatePresence initial={false}>
-            {onOpenGrammar && !feedback && (
+            {(onOpenGrammar || onOpenReading) && !feedback && (
               <motion.div
+                ref={grammarButtonRef}
                 key="grammar-entry"
                 initial={{ opacity: 0, scale: 0.92, x: 8 }}
                 animate={{ opacity: 1, scale: 1, x: 0 }}
                 exit={{ opacity: 0, scale: 0.92, x: 8 }}
                 transition={{ duration: 0.16, ease: [0.32, 0.72, 0, 1] }}
-                className="shrink-0"
+                className="relative shrink-0"
               >
+                {/* Popover centered above the button on wide screens, clamped on mobile */}
+                <AnimatePresence>
+                  {isStudyMenuOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 6, scale: 0.98 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 4, scale: 0.98 }}
+                      transition={{ duration: 0.18, ease: [0.32, 0.72, 0, 1] }}
+                      className="absolute bottom-full pb-2 w-[160px] z-50 pointer-events-auto"
+                      style={{
+                        left: studyMenuLeft !== null ? `${studyMenuLeft}px` : 'calc(50% - 80px)',
+                      }}
+                    >
+                      <div
+                        role="menu"
+                        aria-label="Choose Grammar or Reading"
+                        className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-1.5"
+                      >
+                        {onOpenGrammar && (
+                          <ActionButton
+                            role="menuitem"
+                            variant="quiet"
+                            size="sm"
+                            fullWidth
+                            className="justify-start gap-2.5 px-3 py-2 text-left text-ui-ink-strong hover:text-feedback-warning-edge"
+                            onClick={() => {
+                              setIsStudyMenuOpen(false);
+                              onOpenGrammar();
+                            }}
+                          >
+                            <AppIcon name="grammar" size={19} className="text-feedback-warning-edge shrink-0" />
+                            <span>Grammar</span>
+                          </ActionButton>
+                        )}
+                        {onOpenReading && (
+                          <ActionButton
+                            role="menuitem"
+                            variant="quiet"
+                            size="sm"
+                            fullWidth
+                            className="justify-start gap-2.5 px-3 py-2 text-left text-ui-ink-strong hover:text-brand-primary"
+                            onClick={() => {
+                              setIsStudyMenuOpen(false);
+                              onOpenReading();
+                            }}
+                          >
+                            <AppIcon name="book" size={19} className="text-brand-primary shrink-0" />
+                            <span>Reading</span>
+                          </ActionButton>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
                 <IconActionButton
-                  onClick={onOpenGrammar}
-                  label="Open grammar lesson"
+                  onClick={() => {
+                    if (onOpenGrammar && onOpenReading) {
+                      setIsStudyMenuOpen((prev) => !prev);
+                    } else if (onOpenGrammar) {
+                      onOpenGrammar();
+                    } else if (onOpenReading) {
+                      onOpenReading();
+                    }
+                  }}
+                  label="Study materials (grammar and reading)"
                   variant="warning"
                   icon={<AppIcon name="grammar" size={26} className="h-6 w-6 md:h-[26px] md:w-[26px]" />}
-                  className="h-14 w-14 rounded-feature md:w-[56px]"
+                  className={cn(
+                    "h-14 w-14 rounded-feature md:w-[56px]",
+                    isStudyMenuOpen && "ring-2 ring-brand-primary/40",
+                  )}
                 />
               </motion.div>
             )}
           </AnimatePresence>
 
-          <div className="relative flex min-w-0 w-full max-w-[300px] items-center justify-center">
+          <div
+            ref={modesContainerRef}
+            className="relative flex h-14 min-w-0 flex-1 w-full max-w-[300px] items-center justify-center"
+          >
             <DockSubMenu<QuizMode>
               open={isQuizMenuOpen && !feedback}
               onClose={() => setIsQuizMenuOpen(false)}
-              anchorOffset="left-[37.5%]"
+              modeKey="quiz"
+              containerRef={modesContainerRef}
               label="Choose quiz mode"
               options={QUIZ_MODES}
               selectedValue={quizMode}
@@ -208,7 +365,8 @@ export function PracticeModeDock({
             <DockSubMenu<FlashcardViewMode>
               open={isFlashcardsMenuOpen && !feedback}
               onClose={() => setIsFlashcardsMenuOpen(false)}
-              anchorOffset="left-[12.5%]"
+              modeKey="flashcards"
+              containerRef={modesContainerRef}
               label="Choose flashcards view"
               options={FLASHCARD_MODES}
               selectedValue={flashcardMode}
@@ -223,7 +381,7 @@ export function PracticeModeDock({
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                   role="status"
-                  className="flex h-14 w-full items-center justify-center gap-2.5 rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface px-4"
+                  className="flex h-14 w-full items-center justify-center gap-2.5 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface px-4"
                 >
                   <span className={`h-2 w-2 shrink-0 rounded-full ${feedback.type === 'learned' ? 'bg-feedback-success' : 'bg-feedback-danger'}`} />
                   <span className={`text-[15px] font-extrabold uppercase tracking-widest ${feedback.type === 'learned' ? 'text-feedback-success-edge' : 'text-feedback-danger-edge'}`}>
@@ -237,13 +395,13 @@ export function PracticeModeDock({
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                  className="flex w-full items-center justify-center"
+                  className="flex h-14 w-full items-center justify-center"
                 >
                   <SegmentedControl<PracticeActivityId>
                     value={value}
                     ariaLabel="Practice mode"
                     layoutId="practice-modes-dock-pill"
-                    className="w-full h-14 rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface pt-2 pb-1 px-2.5"
+                    className="w-full h-14 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-1 px-2.5"
                     options={PRACTICE_ACTIVITIES.map((activity) => {
                       const isQuiz = activity.id === 'quiz';
                       const isFlashcards = activity.id === 'flashcards';
@@ -260,10 +418,12 @@ export function PracticeModeDock({
                         ),
                         title: activity.label,
                         buttonProps: isQuiz ? {
+                            'data-mode': 'quiz',
                             'aria-haspopup': 'menu' as const,
                             'aria-expanded': isQuizMenuOpen,
                             className: isQuizMenuOpen ? 'ring-2 ring-white/40' : undefined,
                         } : isFlashcards ? {
+                            'data-mode': 'flashcards',
                             'aria-haspopup': 'menu' as const,
                             'aria-expanded': isFlashcardsMenuOpen,
                             className: isFlashcardsMenuOpen ? 'ring-2 ring-white/40' : undefined,

@@ -45,6 +45,7 @@ interface ActivityModalsProps {
   isLibraryMode?: boolean;
   onNavigateToPractice?: () => void;
   onOpenGrammarPart?: (partId: string) => void;
+  onOpenReading?: () => void;
 }
 
 export function ActivityModals({
@@ -55,6 +56,7 @@ export function ActivityModals({
   isLibraryMode = false,
   onNavigateToPractice,
   onOpenGrammarPart,
+  onOpenReading,
 }: ActivityModalsProps) {
   const activities = PRACTICE_ACTIVITIES;
 
@@ -68,7 +70,7 @@ export function ActivityModals({
     resolvedActivity &&
     validModes.some((mode) => mode === resolvedActivity) &&
     !isOverlayOpen &&
-    (!isInteractionActive || swipeFeedback),
+    !isInteractionActive,
   );
 
   const activeBook = SAMPLE_BOOKS.find(b => b.id === activeBookId) || SAMPLE_BOOKS[0];
@@ -369,6 +371,7 @@ export function ActivityModals({
             onOpenGrammar={practiceGrammarPart && onOpenGrammarPart
               ? () => onOpenGrammarPart(practiceGrammarPart.id)
               : undefined}
+            onOpenReading={onOpenReading}
             onSelectQuizMode={(mode) => {
               setActiveQuizMode(mode);
               setActiveActivity('quiz');

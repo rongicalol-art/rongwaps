@@ -55,7 +55,7 @@ export function GrammarLessonHeader({
   }, [isAidsOpen]);
 
   return (
-    <div className="relative z-20 w-full bg-transparent pt-[env(safe-area-inset-top,0px)]">
+    <div className="sticky top-0 z-30 flex w-full origin-top flex-col items-center bg-gradient-to-b from-ui-canvas via-ui-canvas/95 to-transparent pb-2 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] backdrop-blur-[2px]">
       <ScreenHeader
         onClose={onClose}
         currentIndex={currentStepIndex}
@@ -65,7 +65,7 @@ export function GrammarLessonHeader({
         progressSize="compact"
         progressAriaLabel="Grammar lesson progress"
         progressUnitLabel="steps"
-        className="!h-auto !min-h-0 !border-0 !bg-transparent !px-4 !py-3 !shadow-none sm:!px-6 lg:!px-10"
+        className="!h-auto !min-h-0 !border-0 !bg-transparent !px-4 !py-1 !shadow-none sm:!px-6 lg:!px-10"
         rightAction={
           showReadingAids ? (
             <div ref={aidsRef} className="relative">
@@ -93,7 +93,7 @@ export function GrammarLessonHeader({
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 4, scale: 0.98 }}
                     transition={{ duration: 0.16, ease: [0.32, 0.72, 0, 1] }}
-                    className="absolute right-0 top-full z-50 mt-2 w-72 rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface p-4 shadow-ambient-lg sm:w-80"
+                    className="absolute right-0 top-full z-50 mt-2 w-72 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:w-80"
                   >
                     <GrammarReadingAids
                       characterPreference={characterPreference}

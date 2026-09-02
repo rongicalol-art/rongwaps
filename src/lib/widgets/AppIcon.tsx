@@ -27,7 +27,7 @@ import {
   PiLockKeyFill,
   PiMagnifyingGlassBold,
   PiBookBookmarkFill,
-  PiPauseCircleFill,
+  PiPauseFill,
   PiPaintBrushFill,
   PiLightningFill,
   PiPlayFill,
@@ -92,9 +92,11 @@ export type AppIconName =
   | 'close'
   | 'choices'
   | 'dictionary'
+  | 'dropdown'
   | 'expand'
   | 'exam'
   | 'error'
+  | 'flashcard'
   | 'flame'
   | 'folder'
   | 'forward'
@@ -172,9 +174,11 @@ const ICONS: Record<AppIconName, IconType> = {
   close: PiXBold,
   choices: PiListChecksBold,
   dictionary: PiBookOpenTextBold,
+  dropdown: PiCaretDownBold,
   expand: PiCaretDownBold,
   exam: PiLightningFill,
   error: PiXCircleFill,
+  flashcard: PiCardsFill,
   flame: PiFireFill,
   folder: PiFolderFill,
   forward: PiArrowRightBold,
@@ -185,7 +189,7 @@ const ICONS: Record<AppIconName, IconType> = {
   level: PiGraduationCapFill,
   menu: PiListBold,
   minus: PiMinusBold,
-  pause: PiPauseCircleFill,
+  pause: PiPauseFill,
   play: PiPlayFill,
   pronounce: PiSpeakerHighFill,
   progress: PiChartDonutFill,
@@ -237,11 +241,11 @@ const ICONS: Record<AppIconName, IconType> = {
   book: PiBookOpenFill,
 };
 
-export interface AppIconProps extends Omit<IconBaseProps, 'children'> {
+export interface AppIconProps extends IconBaseProps {
   name: AppIconName;
 }
 
-export function AppIcon({ name, 'aria-hidden': ariaHidden = true, ...props }: AppIconProps) {
-  const Icon = ICONS[name];
-  return <Icon aria-hidden={ariaHidden} {...props} />;
+export function AppIcon({ name, ...props }: AppIconProps) {
+  const IconComponent = ICONS[name] ?? PiBookOpenFill;
+  return <IconComponent {...props} />;
 }

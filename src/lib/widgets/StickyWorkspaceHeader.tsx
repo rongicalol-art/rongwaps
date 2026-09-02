@@ -80,25 +80,27 @@ export function StickyWorkspaceHeader({
         }`}
       >
         {menuToggle && (
-          <IconActionButton
-            onClick={menuToggle.onClick}
-            variant="quiet"
-            size="lg"
-            label={menuToggle.label ?? 'Menu'}
-            icon={<AppIcon name="menu" size={22} />}
-            className="absolute left-3 top-1/2 -translate-y-1/2"
-          />
+          <div className="absolute left-3 top-1/2 z-20 flex -translate-y-1/2 items-center">
+            <IconActionButton
+              onClick={menuToggle.onClick}
+              variant="quiet"
+              size="lg"
+              label={menuToggle.label ?? 'Menu'}
+              icon={<AppIcon name="menu" size={22} />}
+            />
+          </div>
         )}
 
         {onBack && (
-          <IconActionButton
-            onClick={onBack}
-            variant="quiet"
-            size="lg"
-            label={backLabel}
-            icon={<AppIcon name="back" size={22} />}
-            className="absolute left-3 top-1/2 -translate-y-1/2"
-          />
+          <div className="absolute left-3 top-1/2 z-20 flex -translate-y-1/2 items-center">
+            <IconActionButton
+              onClick={onBack}
+              variant="quiet"
+              size="lg"
+              label={backLabel}
+              icon={<AppIcon name="back" size={22} />}
+            />
+          </div>
         )}
 
         <div

@@ -1,22 +1,25 @@
 #!/usr/bin/env python3
 """Align 時代華語 dialogue audio to authored lines (pinyin matching), and
-re-trim dialogue-1 tracks at the true dialogue start.
+re-trim every track at the end of its spoken lesson-title intro.
 
-Background: each 對話一 track opens with music (~0-11s), a pause, and a SPOKEN
-lesson title (e.g. 第一課 新同學 對話一, ~13-19s) before the dialogue. The
-plain silence-trim in the download pipeline removes the music but leaves the
-spoken title. This script finds where line 1 actually starts (by matching the
-known line texts against the Whisper transcript in tone-free pinyin, which is
-robust to homophone ASR errors like 疑問/宜文), re-trims the audio there, and
-emits per-line + per-word alignments relative to the trimmed file.
+Background: each track opens with a SPOKEN lesson title (e.g. 第一課 新同學
+對話一 / 對話二) right before the dialogue (dialogue-1 tracks also have music
+before the title). The plain silence-trim in the download pipeline removes
+the music but leaves the spoken title. This script matches the known line
+texts against the Whisper transcript in tone-free pinyin (robust to
+homophone ASR errors like 疑問/宜文), finds the title's last segment, trims
+the audio right after it (never clipping line 1), and emits per-line +
+per-word alignments relative to the trimmed file.
 
-Usage: output/venv/bin/python scripts/align_dialogue_audio.py
+Usage: output/venv/bin/python scripts/align_dialogue_audio.py [READING_ID ...]
 Writes: src/data/dialogueAlignment.ts (alignment data),
-        output/official-audio/book1/B1-LL-1-1.mp3 (re-trimmed dialogue-1),
+        output/official-audio/book1/*.mp3 (re-trimmed tracks),
         docs/audio_manifest_book1.json (updated sizes/hashes).
 """
 import json
+import math
 import re
+import struct
 import subprocess
 import sys
 import tempfile
@@ -35,7 +38,7 @@ AUDIO_DIR = ROOT / 'output' / 'official-audio' / 'book1'
 MODELS_DIR = ROOT / 'output' / 'whisper-models'
 OUT_FILE = ROOT / 'src' / 'data' / 'dialogueAlignment.ts'
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36'
-KEEP_PAUSE_BEFORE_DIALOGUE = 0.8  # seconds of leading silence to keep
+TRIM_TITLE_MARGIN = 0.05  # cut the spoken intro up to 0.05s before its end
 
 # pypinyin resolves some characters differently depending on script/phrase
 # context (谁 -> shei vs 誰 -> shui). Normalize both sides to one canonical
@@ -115,7 +118,46 @@ def build_transcript(segments):
                 units.append((text, seg.t0 / 100.0, seg.t1 / 100.0))
     return units
 
-def match_lines(lines, units, track_duration, search_window=120):
+def fuzzy_span(needle, stream, start_idx, end_idx):
+    """Best needle->stream alignment inside stream[start_idx:end_idx], allowing
+    skips on either side (whisper insertions AND paraphrases/omissions like
+    这些句子 vs 這課). Returns (covered, first, last) — matched needle
+    syllables and the first/last matched stream indices — or None when the
+    coverage bar (>= 50% of the needle) is not met."""
+    seg = stream[start_idx:end_idx]
+    m, n = len(needle), len(seg)
+    if m == 0 or n == 0 or m * n > 2_000_000:
+        return None
+    table = [[0] * (n + 1) for _ in range(m + 1)]
+    for i in range(1, m + 1):
+        row, prev = table[i], table[i - 1]
+        ni = needle[i - 1]
+        for j in range(1, n + 1):
+            if ni == seg[j - 1]:
+                row[j] = prev[j - 1] + 1
+            else:
+                row[j] = prev[j] if prev[j] >= row[j - 1] else row[j - 1]
+    covered = table[m][n]
+    if covered < max(3, int(len(needle) * 0.5)):
+        return None
+    i, j = m, n
+    last = None
+    first = None
+    while i > 0 and j > 0:
+        if needle[i - 1] == seg[j - 1] and table[i][j] == table[i - 1][j - 1] + 1:
+            pos = start_idx + j - 1
+            if last is None:
+                last = pos
+            first = pos
+            i -= 1
+            j -= 1
+        elif table[i - 1][j] >= table[i][j - 1]:
+            i -= 1
+        else:
+            j -= 1
+    return (covered, first, last)
+
+def match_lines(lines, units, track_duration, search_window=120, fuzzy=False):
     """Match each line to the transcript by tone-free pinyin.
 
     Each line is matched in two phases: first locate an anchor (the first few
@@ -167,6 +209,95 @@ def match_lines(lines, units, track_duration, search_window=120):
                 break
         return n  # syllables consumed
 
+    def char_pinyins_for(text):
+        """Per-char pinyin with stage directions （…） treated as unspoken
+        (empty), mirroring how pinyinize() strips them from the needle, so
+        word offsets map onto the actually-spoken characters."""
+        out = []
+        depth = 0
+        for c in text:
+            if c in '（(':
+                depth += 1
+                out.append('')
+            elif c in '）)':
+                depth = max(0, depth - 1)
+                out.append('')
+            else:
+                out.append('' if depth > 0 else pinyinize(c))
+        return out
+
+    def line_entry(line, i0, i1, start, end):
+        """Build an aligned-line entry. Per-word character offsets come from
+        matching each whisper unit's pinyin against the line's per-character
+        pinyin stream (robust to whisper homophone/script differences like
+        疑問 vs 宜文). When any unit cannot be mapped (e.g. a paraphrased
+        ASR of the line), fall back to one whole-line word with the char
+        range of the matched audio so the spoken portion still highlights."""
+        words = []
+        char_pinyins = char_pinyins_for(line['traditional'])
+        char_stream = ''.join(char_pinyins)
+        map_cursor = 0
+        for k in range(i0, i1 + 1):
+            word_pinyin = pinyinize(units[k][0])
+            char_start = None
+            char_end = None
+            if word_pinyin and char_stream:
+                found = char_stream.find(word_pinyin, map_cursor)
+                if found != -1:
+                    # count chars whose pinyin spans cover the match
+                    acc = 0
+                    for ci, cp in enumerate(char_pinyins):
+                        if not cp:
+                            continue
+                        if acc == found:
+                            char_start = ci
+                            break
+                        acc += len(cp)
+                    if char_start is not None:
+                        end_acc = found + len(word_pinyin)
+                        acc = 0
+                        for ci, cp in enumerate(char_pinyins):
+                            if not cp:
+                                continue
+                            acc += len(cp)
+                            if acc >= end_acc:
+                                char_end = ci + 1
+                                break
+                        if char_end is None:
+                            char_end = len(char_pinyins)
+                    map_cursor = found + len(word_pinyin)
+            words.append({
+                'w': units[k][0], 'start': punits[k][1], 'end': punits[k][2],
+                'charStart': char_start, 'charEnd': char_end,
+            })
+        if not words or any(w['charStart'] is None for w in words):
+            # Fall back to a single word spanning the matched audio, mapped
+            # to the line chars covered by that span's pinyin. Never claim
+            # the whole line for a partial match: the uncovered tail must
+            # stay detectable so the tail-recovery pass can extend it.
+            match_len = (starts[i1] + len(punits[i1][0])) - starts[i0]
+            acc = 0
+            f_end = len(char_pinyins)
+            for ci, cp in enumerate(char_pinyins):
+                if not cp:
+                    continue
+                acc += len(cp)
+                if acc >= match_len:
+                    f_end = ci + 1
+                    break
+            words = [{
+                'w': line['traditional'], 'start': start, 'end': end,
+                'charStart': 0, 'charEnd': f_end, 'fallback': True,
+            }]
+        return {
+            'index': line['index'],
+            'speaker': line['speaker'],
+            'text': line['traditional'],
+            'start': round(start, 2),
+            'end': round(end, 2),
+            'words': words,
+        }
+
     result = []
     char_cursor = 0
     for line in lines:
@@ -188,61 +319,30 @@ def match_lines(lines, units, track_duration, search_window=120):
                 break
             pos = anchor + 1
         if best is None:
-            result.append(unmatched(line))
-            continue
-        anchor, consumed = best
-        end_char = anchor + consumed
+            if not fuzzy:
+                # Pass 1 stays strictly anchored: a fuzzy alignment over the
+                # whole track can false-match similar-sounding text elsewhere
+                # (e.g. 去找他 inside a later line). Windowed pass 2 / tail
+                # clips are tightly bounded, so they may use the fallback.
+                result.append(unmatched(line))
+                continue
+            # Strict anchor failed (paraphrase, dropped syllable, merged
+            # segment): fall back to a fuzzy alignment over the window.
+            fuzz = fuzzy_span(needle, stream, char_cursor, search_end)
+            if fuzz is None:
+                result.append(unmatched(line))
+                continue
+            anchor = fuzz[1]
+            end_char = fuzz[2] + 1  # fuzzy span is inclusive; anchor path exclusive
+        else:
+            anchor, consumed = best
+            end_char = anchor + consumed
 
         i0 = unit_index(anchor)
         i1 = unit_index(min(end_char - 1, total - 1))
         start = punits[i0][1]
         end = punits[i1][2]
-        words = []
-        # Per-word character offsets in the line text, computed by matching
-        # each word's pinyin against the line's per-character pinyin stream
-        # (robust to whisper homophone/script differences like 疑問 vs 宜文).
-        char_pinyins = [pinyinize(c) for c in line['traditional']]
-        char_stream = ''.join(char_pinyins)
-        char_cursor = 0
-        for k in range(i0, i1 + 1):
-            word_pinyin = pinyinize(units[k][0])
-            char_start = None
-            char_end = None
-            if word_pinyin and char_stream:
-                found = char_stream.find(word_pinyin, char_cursor)
-                if found != -1:
-                    # count chars whose pinyin spans cover the match
-                    acc = 0
-                    for ci, cp in enumerate(char_pinyins):
-                        if acc == found:
-                            char_start = ci
-                            break
-                        acc += len(cp)
-                    if char_start is not None:
-                        end_acc = found + len(word_pinyin)
-                        acc = 0
-                        for ci, cp in enumerate(char_pinyins):
-                            acc += len(cp)
-                            if acc >= end_acc:
-                                char_end = ci + 1
-                                break
-                        if char_end is None:
-                            char_end = len(char_pinyins)
-                    char_cursor = found + len(word_pinyin)
-            words.append({
-                'w': units[k][0], 'start': punits[k][1], 'end': punits[k][2],
-                'charStart': char_start, 'charEnd': char_end,
-            })
-        if not words:
-            words = [{'w': line['traditional'], 'start': start, 'end': end}]
-        result.append({
-            'index': line['index'],
-            'speaker': line['speaker'],
-            'text': line['traditional'],
-            'start': round(start, 2),
-            'end': round(end, 2),
-            'words': words,
-        })
+        result.append(line_entry(line, i0, i1, start, end))
         # Advance to the end of the last unit overlapping the matched span.
         char_cursor = starts[i1] + len(punits[i1][0])
     return result
@@ -271,6 +371,10 @@ def postprocess_lines(aligned, track_duration):
             continue
         line['end'] = round(end, 2)
         line['words'] = [w for w in line['words'] if w['start'] < line['end'] and w['end'] > line['start']]
+        for w in line['words']:
+            # Words merged from a wider whisper segment can overhang the
+            # clamped line end; trim so highlights stop at the boundary.
+            w['end'] = min(w['end'], line['end'])
     return aligned
 
 def shift_alignment(aligned, offset):
@@ -304,6 +408,33 @@ def shift_alignment(aligned, offset):
             'words': words,
         })
     return out
+
+def sustained_speech_onset(audio_path, start_sec, end_sec, threshold_db=-40.0, frame_ms=50):
+    """First frame of sustained speech inside [start_sec, end_sec] — energy
+    above the threshold AND at least half of the following 0.3s above it too,
+    so brief clicks/decay tails before a long pause are ignored. Returns the
+    onset in seconds, or None."""
+    raw = subprocess.run(
+        ['ffmpeg', '-v', 'quiet', '-ss', str(start_sec), '-to', str(end_sec),
+         '-i', str(audio_path), '-ac', '1', '-ar', '8000', '-f', 's16le', '-'],
+        capture_output=True).stdout
+    if not raw:
+        return None
+    samples = struct.unpack(f'<{len(raw) // 2}h', raw)
+    rate = 8000
+    frame = int(rate * frame_ms / 1000)
+    dbs = []
+    for i in range(0, len(samples) - frame + 1, frame):
+        chunk = samples[i:i + frame]
+        rms = math.sqrt(sum(s * s for s in chunk) / len(chunk))
+        dbs.append(20 * math.log10(rms / 32768) if rms > 0 else -99.0)
+    lookahead = max(2, int(300 / frame_ms))
+    for idx, db in enumerate(dbs):
+        if db > threshold_db:
+            window = dbs[idx:idx + lookahead]
+            if len(window) >= 2 and sum(1 for d in window if d > threshold_db) >= max(1, len(window) // 2):
+                return start_sec + idx * frame_ms / 1000.0
+    return None
 
 def trim_audio(src, dest, trim_sec):
     subprocess.run(['ffmpeg', '-y', '-i', str(src), '-ss', str(trim_sec),
@@ -350,14 +481,32 @@ def main():
             aligned = match_lines(lines, units, track_duration)
 
             aligned = postprocess_lines(aligned, track_duration)
-            # suspect pass on the CLEAN trimmed audio: whisper's output is
-            # contaminated by the intro music on untrimmed files.
-            is_dialogue_one = bool(re.match(r'^B1-\d{2}-1-1\.mp3$', audio_file))
+            # Cut the spoken lesson-title intro (e.g. 第一課 新同學 對話一 /
+            # 對話二). Whisper segments the title separately and its last
+            # segment ends essentially AT line 1's start, so the trim point
+            # is that segment's end minus a tiny margin — never clipping
+            # line 1's first syllable. Applies to dialogue-1 (music + title)
+            # and dialogue-2 (title) alike.
             trim_sec = 0.0
-            if is_dialogue_one and aligned:
-                trim_sec = max(0.0, aligned[0]['start'] - KEEP_PAUSE_BEFORE_DIALOGUE)
+            if aligned and not aligned[0].get('unmatched'):
+                line1_start = aligned[0]['start']
+                anchor_i = next(
+                    (i for i, (_, s, e) in enumerate(units)
+                     if s <= line1_start < e),
+                    None,
+                )
+                title_end = units[anchor_i - 1][2] if (anchor_i and anchor_i > 0) else line1_start
+                trim_sec = max(0.0, min(title_end - TRIM_TITLE_MARGIN, line1_start - 0.05))
+                # Whisper folds the pause after the title into the title's
+                # segment end, so the trim point above can still leave a long
+                # gap of silence before line 1's real speech (measured up to
+                # 2.5s). Detect the first sustained speech frame after the
+                # candidate trim and cut the pause too.
+                onset = sustained_speech_onset(original, trim_sec, trim_sec + 5.0)
+                if onset is not None:
+                    trim_sec = max(trim_sec, onset - 0.05)
             if trim_sec < 0.5:
-                trim_sec = 0.0  # nothing meaningful to cut (e.g. dialogue-2)
+                trim_sec = 0.0  # nothing meaningful to cut
 
             trim_source = original
             if trim_sec > 0:
@@ -409,25 +558,121 @@ def main():
                         next_start = min(next_start, a['start'])
                         break
                 margin = 0.5
+                clip_start = max(0, prev_end - margin)
+                if aligned[i].get('unmatched'):
+                    # Unmatched speech can sit INSIDE the previous line's span
+                    # (whisper merged two lines into one segment, e.g. the
+                    # clerk's 一共兩百一十五塊錢+找您七百八十五塊錢): widen the
+                    # window back to the previous matched line's start so the
+                    # needle can be found mid-window.
+                    for a in reversed(aligned[:i]):
+                        if not a.get('unmatched'):
+                            clip_start = max(0, a['start'] - margin)
+                            break
+                # Pass-1 times are untrimmed-relative but the clip is cut
+                # from the trimmed source: convert both bounds.
+                clip_start = max(0, clip_start - trim_sec)
+                clip_end = min(track_duration - trim_sec,
+                               next_start + margin - trim_sec)
+                if clip_start >= clip_end:
+                    continue
                 clip = tmp / f'clip_{audio_file}_{i}.mp3'
                 subprocess.run(['ffmpeg', '-y', '-v', 'quiet',
-                                '-ss', str(max(0, prev_end - margin)),
-                                '-to', str(min(track_duration, next_start + margin)),
+                                '-ss', str(clip_start),
+                                '-to', str(clip_end),
                                 '-i', str(trim_source), '-ac', '1', str(clip)],
                                check=True)
                 units2 = build_transcript(transcribe(None, audio=clip))
                 result = match_lines(
-                    [lines[i]], units2, track_duration, search_window=10000)[0]
+                    [lines[i]], units2, track_duration,
+                    search_window=10000, fuzzy=True)[0]
                 if not result.get('unmatched'):
                     # shift clip-relative times to track-relative, then back
                     # to untrimmed-relative so the final shift works
-                    offset = max(0, prev_end - margin)
+                    offset = clip_start
                     result['start'] += offset
                     result['end'] += offset
                     for w in result['words']:
                         w['start'] += offset
                         w['end'] += offset
                     aligned[i] = shift_alignment([result], -trim_sec)[0]
+            aligned = postprocess_lines(aligned, track_duration)
+
+            # Tail recovery: a matched line may leave real text uncovered when
+            # whisper split its speech into the line's span plus a tail it
+            # never transcribed (or merged away). When the line has room
+            # before the next line, re-transcribe the tail window and append
+            # the uncovered text's match to the line.
+            for idx, a in enumerate(aligned):
+                if a.get('unmatched') or not a['words']:
+                    continue
+                last_word = a['words'][-1]
+                if not isinstance(last_word.get('charEnd'), int):
+                    continue
+                covered = last_word['charEnd']
+                if covered >= len(a['text']):
+                    continue
+                tail_text = a['text'][covered:]
+                if re.fullmatch(
+                        r'[，。？！、：；“”‘’（）《》〈〉…—\s,.?!:;"\'()\-]+', tail_text):
+                    continue
+                next_start = track_duration
+                for later in aligned[idx + 1:]:
+                    if not later.get('unmatched'):
+                        next_start = later['start']
+                        break
+                margin = 0.5
+                # `aligned` is still untrimmed-relative here; the clip is cut
+                # from the trimmed source, so convert both bounds. Search
+                # starts where the covered chars end: at the last word's end
+                # normally, or interpolated inside a whole-line fallback word
+                # (whisper merged the missing tail into its span).
+                if last_word.get('fallback'):
+                    frac = (last_word['charEnd'] / len(a['text'])) if len(a['text']) > 0 else 0
+                    tail_est = last_word['start'] + frac * (last_word['end'] - last_word['start'])
+                else:
+                    tail_est = last_word['end']
+                last_word_end = tail_est - trim_sec
+                clip_start = max(0, last_word_end - margin)
+                clip_end = min(track_duration - trim_sec,
+                               next_start + margin - trim_sec)
+                if clip_start >= clip_end:
+                    continue
+                clip = tmp / f'tail_{audio_file}_{idx}.mp3'
+                subprocess.run(['ffmpeg', '-y', '-v', 'quiet',
+                                '-ss', str(clip_start),
+                                '-to', str(clip_end),
+                                '-i', str(trim_source), '-ac', '1', str(clip)],
+                               check=True)
+                units3 = build_transcript(transcribe(None, audio=clip))
+                # Only units at/after the last word's end belong to the tail;
+                # anything earlier is the already-covered speech.
+                units3 = [u for u in units3
+                          if u[1] >= last_word_end - clip_start - 0.1]
+                if not units3:
+                    continue
+                result = match_lines(
+                    [{'index': a['index'], 'speaker': a['speaker'],
+                      'traditional': tail_text}],
+                    units3, track_duration, search_window=10000, fuzzy=True)[0]
+                if result.get('unmatched'):
+                    continue
+                # Clip times are trimmed-relative; add the clip offset, then
+                # convert to untrimmed-relative like pass 2 so the final
+                # shift works. Char offsets are tail-relative; map them back
+                # into the full line text via `covered`.
+                offset = clip_start
+                for w in result['words']:
+                    w['start'] += offset
+                    w['end'] += offset
+                    if isinstance(w.get('charStart'), int):
+                        w['charStart'] += covered
+                        w['charEnd'] += covered
+                result['end'] += offset
+                if trim_sec > 0:
+                    result = shift_alignment([result], -trim_sec)[0]
+                a['words'].extend(result['words'])
+                a['end'] = round(result['end'], 2)
             aligned = postprocess_lines(aligned, track_duration)
 
             shifted = shift_alignment(aligned, trim_sec)

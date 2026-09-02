@@ -37,7 +37,7 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
   ```tsx
   <PlayfulNavIcon name="library" className="h-10 w-10" />
   ```
-- **RongWapsCharacterPortrait** — consistent crop renderer for RongWaps character reference sheets. Requires a character and accessible `label`.
+- **RongWapsCharacterPortrait** — 1:1 bust portrait renderer for RongWaps character avatars. Requires a character and accessible `label`.
   ```tsx
   <RongWapsCharacterPortrait character={character} label="Teacher" />
   ```

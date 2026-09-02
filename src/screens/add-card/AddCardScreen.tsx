@@ -40,7 +40,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
           onClick={() => frontInputRef.current?.focus()}
           className={`w-full relative min-h-[380px] sm:min-h-[420px] bg-ui-surface rounded-feature border-b-[length:var(--depth-lg)] cursor-text flex flex-col items-center justify-center p-6 sm:p-8 pb-8 transition-colors overflow-hidden
             ${!cardData.front && !isFocused ? 'anim-float' : ''}
-            ${isFocused ? 'border-brand-primary-edge bg-brand-primary-soft -translate-y-1' : 'border-ui-divider hover:bg-ui-hover'}`}
+            ${isFocused ? 'border-brand-primary-edge bg-brand-primary-soft -translate-y-1' : 'border-ui-border hover:bg-ui-hover'}`}
         >
           <motion.div className={`absolute top-6 left-6 transition-colors ${isFocused ? 'text-brand-primary' : 'text-ui-muted'}`}>
             <AppIcon name="typeText" size={26} />
@@ -86,7 +86,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
                       whileHover={{ scale: 1.02, x: 2 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={(e) => { e.stopPropagation(); handleSelectSuggestion(s); }}
-                      className="w-full flex items-center text-left px-3 py-2 sm:px-4 sm:py-3 bg-ui-canvas rounded-control border-b-[length:var(--depth-sm)] border-ui-divider hover:border-brand-primary-edge hover:bg-brand-primary-soft transition-colors group shrink-0"
+                      className="w-full flex items-center text-left px-3 py-2 sm:px-4 sm:py-3 bg-ui-canvas rounded-control border-b-[length:var(--depth-sm)] border-ui-border hover:border-brand-primary-edge hover:bg-brand-primary-soft transition-colors group shrink-0"
                     >
                       <span className="font-chinese text-[22px] sm:text-[28px] font-black text-ui-ink group-hover:text-brand-primary transition-colors shrink-0 w-12 sm:w-16 text-center">
                         {s.traditional || s.simplified}
@@ -121,9 +121,9 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
         <motion.div 
           onClick={() => meaningInputRef.current?.focus()}
           className={`w-full relative min-h-[380px] sm:min-h-[420px] bg-ui-surface rounded-feature border-b-[length:var(--depth-lg)] cursor-text flex flex-col items-center justify-center p-6 sm:p-8 pb-8 transition-colors
-            ${isFocused ? 'border-brand-primary-edge bg-brand-primary-soft -translate-y-1' : 'border-ui-divider hover:bg-ui-hover'}`}
+            ${isFocused ? 'border-brand-primary-edge bg-brand-primary-soft -translate-y-1' : 'border-ui-border hover:bg-ui-hover'}`}
         >
-          <motion.div className="absolute -top-5 left-6 flex items-center gap-2 text-ui-muted font-bold text-sm bg-ui-surface px-4 py-2 rounded-control border-b-[length:var(--depth-sm)] border-ui-divider spring-transition hover:-translate-y-0.5">
+          <motion.div className="absolute -top-5 left-6 flex items-center gap-2 text-ui-muted font-bold text-sm bg-ui-surface px-4 py-2 rounded-control border-b-[length:var(--depth-sm)] border-ui-border spring-transition hover:-translate-y-0.5">
             <span className="opacity-70 uppercase text-xs tracking-wider">Front</span>
             <span className="text-xl text-brand-primary font-chinese">{cardData.front}</span>
           </motion.div>
@@ -176,7 +176,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
                         whileHover={{ scale: 1.02, y: -2 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={(e) => { e.stopPropagation(); setCardData({...cardData, meaning}); }}
-                        className="w-full text-center px-4 py-3 bg-ui-canvas border-b-[length:var(--depth-sm)] border-ui-divider text-ui-muted hover:text-brand-primary hover:border-brand-primary-edge hover:bg-brand-primary-soft font-bold rounded-control text-xs sm:text-sm transition-colors leading-tight shrink-0 whitespace-normal text-balance"
+                        className="w-full text-center px-4 py-3 bg-ui-canvas border-b-[length:var(--depth-sm)] border-ui-border text-ui-muted hover:text-brand-primary hover:border-brand-primary-edge hover:bg-brand-primary-soft font-bold rounded-control text-xs sm:text-sm transition-colors leading-tight shrink-0 whitespace-normal text-balance"
                       >
                         {meaning}
                       </motion.button>
@@ -219,7 +219,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
             icon={<AppIcon name="settings" size={25} />}
           />
         )}
-        className="relative z-20 border-b-0 bg-transparent shadow-none"
+        className="sticky top-0 z-20 w-full shrink-0 border-b-0 bg-gradient-to-b from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent pb-2 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] backdrop-blur-[2px] shadow-none"
       />
 
       {/* MAIN CONTENT AREA */}

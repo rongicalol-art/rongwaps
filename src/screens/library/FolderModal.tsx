@@ -63,7 +63,7 @@ export function FolderModal({
         aria-labelledby="new-folder-title"
         tabIndex={-1}
         onKeyDown={onKeyDown}
-        className="relative w-full max-w-sm rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface p-6 shadow-ambient-lg outline-none"
+        className="relative w-full max-w-sm rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-6 shadow-ambient-lg outline-none"
       >
         <div className="flex justify-between items-center mb-4">
           <h2 id="new-folder-title" className="text-xl font-extrabold text-ui-ink-strong">New Folder</h2>
@@ -98,7 +98,7 @@ export function FolderModal({
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !isCreatingFolder && newFolderName.trim()) handleCreateFolder();
           }}
-          className="mb-4 w-full rounded-control border-b-[length:var(--depth-sm)] border-ui-divider bg-ui-hover px-4 py-3 font-bold text-ui-ink outline-none placeholder:text-ui-muted focus:border-brand-primary focus:bg-ui-surface focus-ring transition-colors"
+          className="mb-4 w-full rounded-control border-b-[length:var(--depth-sm)] border-ui-border bg-ui-hover px-4 py-3 font-bold text-ui-ink outline-none placeholder:text-ui-muted focus:border-brand-primary focus:bg-ui-surface focus-ring transition-colors"
         />
 
         {/* Color Palette Selector */}

@@ -63,6 +63,14 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
       return;
     }
 
+    const isSameDeck = sessionStartedRef.current
+      && loadedCards.length === canonicalOrderRef.current.length
+      && loadedCards.every((c, idx) => c.id === canonicalOrderRef.current[idx]?.id);
+
+    if (isSameDeck) {
+      return;
+    }
+
     setCards(loadedCards);
     setIsShuffled(false);
     canonicalOrderRef.current = loadedCards;

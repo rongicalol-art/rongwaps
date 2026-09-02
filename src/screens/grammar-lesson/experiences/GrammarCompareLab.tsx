@@ -29,7 +29,7 @@ export function GrammarCompareLab({
         <p className="shrink-0 text-sm font-black text-ui-ink">{lab.prompt}</p>
         <SegmentedControl value={selected.id} onChange={setSelectedId} ariaLabel={lab.prompt} options={lab.choices.map(({ id, label }) => ({ value: id, label }))} className="w-full sm:max-w-3xl" />
       </div>
-      <div className="mt-5 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface">
+      <div className="mt-5 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
         <div className="grid gap-5 p-5 sm:grid-cols-2 sm:p-7">
           {[
             { label: selected.leftLabel, value: selected.leftValue, accent: false },

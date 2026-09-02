@@ -385,7 +385,7 @@ const dialogue: GrammarDialogue = {
   audioReference: '06-2-1',
   grammarFocus: ['有一點兒', '可以'],
   lines: [
-    { id: 'b1l06-d2-l1', speaker: '國安', text: grammarText('b1l06-d2-l1', '聽說這部電影很有趣，我們晚一起去看，好不好？', '听说这部电影很有趣，我们晚上一起去看，好不好？', 'Tīngshuō zhè bù diànyǐng hěn yǒuqù. Wǒmen wǎnshang yìqǐ qù kàn, hǎo bù hǎo?', 'I heard that this movie is very interesting. How about we go to see it tonight?', lexicon) },
+    { id: 'b1l06-d2-l1', speaker: '國安', text: grammarText('b1l06-d2-l1', '聽說這部電影很有趣，我們晚上一起去看，好不好？', '听说这部电影很有趣，我们晚上一起去看，好不好？', 'Tīngshuō zhè bù diànyǐng hěn yǒuqù. Wǒmen wǎnshang yìqǐ qù kàn, hǎo bù hǎo?', 'I heard that this movie is very interesting. How about we go to see it tonight?', lexicon) },
     { id: 'b1l06-d2-l2', speaker: '中明', text: grammarText('b1l06-d2-l2', '我覺得有一點兒累，我想回家休息。', '我觉得有一点儿累，我想回家休息。', 'Wǒ juéde yǒu yìdiǎnr lèi, wǒ xiǎng huí jiā xiūxí.', 'I am feeling a bit tired, I want to go home for a rest.', lexicon) },
     { id: 'b1l06-d2-l3', speaker: '國安', text: grammarText('b1l06-d2-l3', '你不要常常在家上網、看電腦、玩手機，應該去運動。明天我有空，我們可以一起去騎腳踏車。', '你不要常常在家上网、看电脑、玩手机，应该去运动。明天我有空，我们可以一起去骑脚踏车。', 'Nǐ búyào chángcháng zài jiā shàngwǎng, kàn diànnǎo, wán shǒujī, yīnggāi qù yùndòng. Míngtiān wǒ yǒukòng, wǒmen kěyǐ yìqǐ qù qí jiǎotàchē.', 'Don’t surf the internet, use the computer or play on the cell phone at home often. You should go exercise. I am available tomorrow. We can go ride bikes together.', lexicon) },
     { id: 'b1l06-d2-l4', speaker: '中明', text: grammarText('b1l06-d2-l4', '可是我只想聽音樂、睡覺。', '可是我只想听音乐、睡觉。', 'Kěshì wǒ zhǐ xiǎng tīng yīnyuè, shuìjiào.', 'But I only want to listen to music and sleep.', lexicon) },

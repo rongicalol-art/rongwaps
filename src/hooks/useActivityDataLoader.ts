@@ -11,9 +11,14 @@ import {
 } from '../utils/lessonPartSelection';
 import {
   filterDeckByExclusions,
-  getDeckExclusionKey,
   pruneExcludedIds,
 } from '../utils/deckExclusions';
+
+function isSameCards(a: Flashcard[], b: Flashcard[]): boolean {
+  if (a === b) return true;
+  if (a.length !== b.length) return false;
+  return a.every((card, idx) => card.id === b[idx].id);
+}
 
 /**
  * Shared deck loader for every practice activity (flashcards, quiz,
@@ -25,13 +30,15 @@ import {
  * cards, removed vocabulary) are pruned only when their deck is loaded.
  */
 export function useActivityDataLoader(activeBookId: number, selectedLessons: number[], isReviewDeck: boolean = false, isLibraryDeck: boolean = false) {
-  const { libraryActiveFolder, selectedLessonParts } = useAppStore();
+  const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
+  const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
   const deckExclusions = useAppStore((state) => state.deckExclusions);
   const setDeckExclusions = useAppStore((state) => state.setDeckExclusions);
   const [cards, setCards] = useState<Flashcard[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { currentUser } = useAuth();
+  const currentUserId = currentUser?.id ?? null;
 
   const stableSelectedLessonsKey = useMemo(() => {
     return (selectedLessons || []).join(',');
@@ -41,24 +48,17 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
     [activeBookId, selectedLessonParts, selectedLessons],
   );
 
-  const deckExclusionKey = useMemo(
-    () => getDeckExclusionKey({
-      activeBookId,
-      selectedLessons,
-      selectedLessonParts,
-      libraryActiveFolder,
-      isReviewDeck,
-      isLibraryDeck,
-    }),
-    [
-      activeBookId,
-      isLibraryDeck,
-      isReviewDeck,
-      libraryActiveFolder,
-      selectedLessonParts,
-      selectedLessons,
-    ],
-  );
+  const deckExclusionKey = useMemo(() => {
+    if (isReviewDeck) return 'shared_deck_review';
+    if (isLibraryDeck) return `shared_deck_library_${libraryActiveFolder}`;
+    return `shared_deck_${activeBookId}_${stablePartSelectionKey}`;
+  }, [
+    activeBookId,
+    isLibraryDeck,
+    isReviewDeck,
+    libraryActiveFolder,
+    stablePartSelectionKey,
+  ]);
 
   const excludedIds = useMemo(
     () => new Set(deckExclusions[deckExclusionKey] ?? []),
@@ -137,7 +137,7 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
             }
             if (isMounted) {
               knownIdsRef.current = { key: deckExclusionKey, ids: knownIds };
-              setCards(results);
+              setCards((prev) => (isSameCards(prev, results) ? prev : results));
               setIsLoading(false);
             }
           } catch (err) {
@@ -151,8 +151,8 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
         } else {
           // ── Library deck: custom folders (Supabase real-time) ────────
           // Subscribe to real-time flashcard service for custom folders
-          if (currentUser) {
-            const sub = flashcardService.subscribeToUserFlashcards(currentUser.id, (customCards) => {
+          if (currentUserId) {
+            const sub = flashcardService.subscribeToUserFlashcards(currentUserId, (customCards) => {
               if (!isMounted) {
                 sub();
                 return;
@@ -179,7 +179,7 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
                   key: deckExclusionKey,
                   ids: new Set(results.map(c => c.id)),
                 };
-                setCards(results);
+                setCards((prev) => (isSameCards(prev, results) ? prev : results));
                 setIsLoading(false);
               }
             });
@@ -223,9 +223,10 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
           const parsedLessons = stableSelectedLessonsKey ? stableSelectedLessonsKey.split(',').map(Number) : [];
           if (parsedLessons.length > 0) {
             // Normal mode: filter by the selected lessons and their selected parts.
+            const currentLessonParts = useAppStore.getState().selectedLessonParts;
             filtered = filtered.filter((card) => (
               parsedLessons.includes(card.lessonId)
-              && isCardInPartSelection(card, selectedLessonParts)
+              && isCardInPartSelection(card, currentLessonParts)
             ));
             knownIds = new Set(filtered.map(c => c.id));
           }
@@ -233,7 +234,7 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
         
         if (isMounted) {
           knownIdsRef.current = { key: deckExclusionKey, ids: knownIds };
-          setCards(filtered);
+          setCards((prev) => (isSameCards(prev, filtered) ? prev : filtered));
         }
       } catch (err) {
         console.error("useActivityDataLoader failed:", err);
@@ -253,7 +254,16 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
       isMounted = false;
       if (unsubscribe && typeof unsubscribe === 'function') unsubscribe();
     };
-  }, [activeBookId, stableSelectedLessonsKey, stablePartSelectionKey, isReviewDeck, isLibraryDeck, libraryActiveFolder, currentUser, selectedLessonParts, deckExclusionKey]);
+  }, [
+    activeBookId,
+    stableSelectedLessonsKey,
+    stablePartSelectionKey,
+    isReviewDeck,
+    isLibraryDeck,
+    libraryActiveFolder,
+    currentUserId,
+    deckExclusionKey,
+  ]);
 
   return { cards: visibleCards, deckCards: cards, isLoading, error, deckExclusionKey, excludedIds };
 }

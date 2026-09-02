@@ -61,20 +61,19 @@ export function WorkspaceDetailShell({
         className,
       )}
     >
-      <ScreenHeader
-        onClose={onClose}
-        onBack={onBack}
-        title={title}
-        centerContent={centerContent}
-        rightAction={rightAction}
-        maxWidth="none"
-        className={cn(
-          'z-20 w-full max-w-full shrink-0 border-b-0 bg-transparent px-4 shadow-none sm:px-6 lg:px-10',
-          headerClassName,
-        )}
-      />
-
       <main className={cn('custom-scrollbar relative z-10 min-h-0 flex-1 overflow-y-auto bg-transparent', contentClassName)}>
+        <ScreenHeader
+          onClose={onClose}
+          onBack={onBack}
+          title={title}
+          centerContent={centerContent}
+          rightAction={rightAction}
+          maxWidth="none"
+          className={cn(
+            'sticky top-0 z-20 w-full max-w-full shrink-0 border-b-0 bg-gradient-to-b from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent pb-2 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] backdrop-blur-[2px] px-4 shadow-none sm:px-6 lg:px-10',
+            headerClassName,
+          )}
+        />
         <motion.div
           initial={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}

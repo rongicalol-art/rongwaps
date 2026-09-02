@@ -16,7 +16,11 @@ function validLines(alignment: DialogueAlignment) {
   return alignment.lines.filter((line) => !line.unmatched && line.end > line.start);
 }
 
-/** Index of the alignment line containing `time`, or null outside all lines. */
+/**
+ * Index of the alignment line containing `time`, or null outside all lines.
+ * During pauses between lines the previously spoken line stays active, so
+ * the UI doesn't flag the *next* bubble as playing before its audio starts.
+ */
 export function lineIndexForTime(
   alignment: DialogueAlignment,
   time: number,
@@ -24,10 +28,13 @@ export function lineIndexForTime(
   const lines = validLines(alignment);
   if (lines.length === 0) return null;
   if (time < lines[0].start) return null;
+  let current: { index: number } | null = null;
   for (let i = 0; i < lines.length; i += 1) {
-    if (time <= lines[i].end) return lines[i].index;
+    if (time < lines[i].start) break; // gap: keep the previous line
+    current = lines[i];
+    if (time < lines[i].end) return lines[i].index;
   }
-  return lines[lines.length - 1].index;
+  return current?.index ?? null; // past the last line end: clamp to last
 }
 
 /**

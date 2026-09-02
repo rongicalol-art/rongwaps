@@ -121,7 +121,7 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
     return (
       <div className="absolute inset-0 w-full h-full bg-ui-canvas flex flex-col justify-center items-center overflow-hidden overscroll-none">
         <div className="px-6 py-12 flex flex-col items-center justify-center text-center">
-          <div className="w-24 h-24 rounded-full bg-ui-surface border-b-[length:var(--depth-md)] border-ui-divider flex items-center justify-center mb-6">
+          <div className="w-24 h-24 rounded-full bg-ui-surface border-b-[length:var(--depth-md)] border-ui-border flex items-center justify-center mb-6">
             <AppIcon name="pencil" size={44} className={activeBook.accent} />
           </div>
           <h2 className="text-2xl font-extrabold text-ui-ink tracking-normal">No characters to write yet</h2>

@@ -42,7 +42,7 @@ export function LibraryHomeView({
   return (
     <div className="flex flex-col gap-7">
       <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(260px,0.78fr)]">
-        <section className="min-h-[300px] rounded-feature bg-ui-surface p-4 sm:p-6 border-b-[length:var(--depth-md)] border-ui-divider">
+        <section className="min-h-[300px] rounded-feature bg-ui-surface p-4 sm:p-6 border-b-[length:var(--depth-md)] border-ui-border">
           <div className="mb-5 flex items-center justify-between gap-4 px-1">
               <div className="flex items-center gap-2.5">
                 <AppIcon name="folder" size={20} className="text-feedback-warning-edge" />

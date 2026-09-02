@@ -54,7 +54,7 @@ export function GrammarTimelineLab({
         />
       </div>
 
-      <div className="mt-5 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface">
+      <div className="mt-5 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
         <div className="px-5 py-7 sm:px-9 sm:py-9">
           <div className="flex items-end justify-between gap-4">
             <div>

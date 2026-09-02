@@ -1,7 +1,8 @@
 import { memo } from 'react';
 import { SAMPLE_BOOKS } from '../../../data/books';
-import { AppIcon } from '../../../lib/widgets';
+import { AppIcon, PosBadge } from '../../../lib/widgets';
 import type { DictionaryListEntry } from '../../../types/models';
+import { cn } from '../../../utils/cn';
 
 interface DictionaryCardProps {
   entry: DictionaryListEntry;
@@ -25,62 +26,54 @@ export const DictionaryCard = memo(function DictionaryCard({
   const book = entry.bookId ? SAMPLE_BOOKS.find((item) => item.id === entry.bookId) : null;
 
   return (
-    <article
-      className="group flex w-full flex-row items-center gap-3 border-b-2 border-ui-divider px-2 py-4 transition-[background-color,padding] hover:bg-ui-surface focus-within:rounded-control focus-within:bg-ui-surface sm:gap-4 sm:px-4"
-    >
+    <div className="group flex w-full items-center gap-3 py-3.5 text-left outline-none sm:gap-4">
       <button
         type="button"
         onClick={onClick}
-        className="flex min-h-14 min-w-0 flex-1 flex-col items-start overflow-hidden rounded-control text-left outline-none focus-ring"
         aria-label={`Open ${entry.traditional}: ${formatDefinitions(entry.definitions)}`}
+        className="flex min-w-0 flex-1 items-center gap-3 text-left outline-none focus-ring rounded-sm sm:gap-4"
       >
-        <div className="relative mb-1 flex w-full items-center gap-3">
-          <span className="shrink-0 pt-1 font-chinese text-[28px] font-bold leading-none text-ui-ink transition-colors group-hover:text-brand-primary sm:text-[32px]">
-            {entry.traditional}
-          </span>
-          <div className="flex min-w-0 flex-1 items-center gap-2">
-            <span className="min-w-0 flex-1 truncate text-[13px] font-extrabold text-ui-muted sm:text-[14px]">
-              {entry.pinyin_accented}
+        <span className="shrink-0 font-chinese text-[26px] font-bold leading-none text-ui-ink transition-colors group-hover:text-brand-primary sm:text-[30px]">
+          {entry.traditional}
+        </span>
+        <span className="flex min-w-0 flex-1 flex-col gap-0.5">
+          <span className="flex items-center gap-2">
+            <span className="truncate text-[13px] font-extrabold text-ui-muted sm:text-[14px]">
+              {entry.pinyin_accented || '\u00A0'}
             </span>
+            {entry.pos && <PosBadge pos={entry.pos} />}
             {book && (
-              <span className="flex shrink-0 items-center gap-1.5 rounded-lg bg-ui-canvas px-2 py-1 text-[11px] font-bold text-ui-muted">
-                {book.label}
-                <span className={`h-2 w-2 shrink-0 rounded-full ${book.accentBg}`} />
+              <span className="flex shrink-0 items-center gap-1.5 rounded-lg bg-ui-canvas px-2 py-0.5 text-[11px] font-bold text-ui-muted">
+                {book.label}{entry.lessonId ? ` · L${entry.lessonId}` : ''}
+                <span className={cn('h-1.5 w-1.5 shrink-0 rounded-full', book.accentBg)} />
               </span>
             )}
-          </div>
-        </div>
-        <div className="mt-1 line-clamp-2 w-full break-words text-[15px] font-bold leading-snug text-ui-ink">
-          {formatDefinitions(entry.definitions)}
-        </div>
-        {entry.measure_words && entry.measure_words.length > 0 && (
-          <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
-            <span className="text-[10px] font-black uppercase tracking-wider text-ui-muted">CL</span>
-            {entry.measure_words.slice(0, 3).map((mw) => (
-              <span
-                key={mw}
-                className="rounded-md bg-ui-canvas px-1.5 py-0.5 font-chinese text-[12px] font-bold text-ui-muted-strong"
-              >
-                {mw}
-              </span>
-            ))}
-          </div>
-        )}
+          </span>
+          <span className="line-clamp-1 text-[14px] font-bold leading-snug text-ui-ink sm:text-[15px]">
+            {formatDefinitions(entry.definitions) || '\u00A0'}
+          </span>
+        </span>
       </button>
 
       <button
         type="button"
-        onClick={onToggleFavorite}
+        onClick={(e) => {
+          e.stopPropagation();
+          onToggleFavorite();
+        }}
         aria-label={isFavorite ? `Remove ${entry.traditional} from saved words` : `Save ${entry.traditional}`}
         aria-pressed={isFavorite}
-        className="shrink-0 rounded-full p-2 text-ui-muted outline-none transition-colors hover:text-brand-primary focus-ring"
+        className={cn(
+          'shrink-0 p-2 rounded-control text-ui-muted outline-none transition-colors hover:text-brand-secondary focus-ring',
+          isFavorite && 'text-brand-secondary',
+        )}
       >
         <AppIcon
           name={isFavorite ? 'bookmarkFilled' : 'bookmark'}
-          size={23}
+          size={22}
           className={isFavorite ? 'text-brand-secondary' : undefined}
         />
       </button>
-    </article>
+    </div>
   );
 });

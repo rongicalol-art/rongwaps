@@ -23,17 +23,6 @@ const TAG_TONES: Record<PosCategory, string> = {
   other: 'bg-ui-canvas',
 };
 
-const DOT_TONES: Record<PosCategory, string> = {
-  noun: 'bg-brand-primary',
-  verb: 'bg-brand-secondary',
-  stative: 'bg-feedback-success',
-  measure: 'bg-feedback-warning',
-  adverb: 'bg-ui-muted',
-  function: 'bg-ui-muted',
-  phrase: 'bg-ui-muted',
-  other: 'bg-ui-muted',
-};
-
 const TOOLTIP_TONES: Record<PosCategory, string> = {
   noun: 'border-brand-primary-edge shadow-[0_3px_0_var(--color-brand-primary-edge)]',
   verb: 'border-brand-secondary-edge shadow-[0_3px_0_var(--color-brand-secondary-edge)]',
@@ -171,14 +160,13 @@ export function PosBadge({ pos, className = '' }: PosBadgeProps) {
         }}
         onPointerLeave={disarm}
         className={cn(
-          'inline-flex shrink-0 select-none cursor-help items-center gap-1 rounded-[6px] px-1.5 py-[3px]',
+          'inline-flex shrink-0 select-none cursor-help items-center rounded-[6px] px-1.5 py-[3px]',
           'text-[10px] font-black uppercase leading-none tracking-wide text-ui-ink-strong',
           'transition-colors',
           TAG_TONES[category],
           className,
         )}
       >
-        <span className={cn('h-[5px] w-[5px] rounded-full', DOT_TONES[category])} />
         {label}
       </span>
 
@@ -209,7 +197,6 @@ export function PosBadge({ pos, className = '' }: PosBadgeProps) {
               TOOLTIP_TONES[category],
             )}>
               <span className="flex items-center gap-1.5">
-                <span className={cn('h-2 w-2 shrink-0 rounded-full', DOT_TONES[category])} />
                 <span className="text-[11px] font-black uppercase tracking-widest text-ui-ink-strong">
                   {label}
                 </span>

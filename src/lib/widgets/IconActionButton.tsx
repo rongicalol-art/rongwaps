@@ -18,9 +18,9 @@ const sizeClasses = {
 
 const variantClasses: Record<IconActionButtonVariant, string> = {
   quiet: 'border-b-[length:var(--depth-sm)] border-transparent bg-transparent text-ui-muted-strong hover:bg-ui-hover hover:text-ui-ink-strong active:bg-ui-divider active:translate-y-px active:border-b-0',
-  surface: 'border-b-[length:var(--depth-md)] border-ui-divider bg-ui-surface text-ui-ink hover:bg-ui-hover active:translate-y-[length:var(--depth-md)] active:border-b-0',
+  surface: 'border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface text-ui-ink hover:bg-ui-hover active:translate-y-[length:var(--depth-md)] active:border-b-2',
   danger: 'border-b-[length:var(--depth-sm)] border-transparent bg-transparent text-feedback-danger hover:bg-feedback-danger/10 active:bg-feedback-danger/15 active:translate-y-px active:border-b-0',
-  warning: 'border-b-[length:var(--depth-md)] border-feedback-warning-edge bg-ui-surface text-feedback-warning-edge hover:bg-feedback-warning/10 active:translate-y-[length:var(--depth-md)] active:border-b-0',
+  warning: 'border-2 border-feedback-warning-edge border-b-[length:var(--depth-md)] bg-ui-surface text-feedback-warning-edge hover:bg-feedback-warning/10 active:translate-y-[length:var(--depth-md)] active:border-b-2 shadow-ambient-sm',
 };
 
 export const IconActionButton = forwardRef<HTMLButtonElement, IconActionButtonProps>(function IconActionButton({

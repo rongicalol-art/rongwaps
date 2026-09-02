@@ -28,6 +28,7 @@ const COLLECTIONS = [
     colorFront: STARRED_FOLDER_COLOR.front,
     colorBack: STARRED_FOLDER_COLOR.back,
     lightBg: STARRED_FOLDER_COLOR.lightBg,
+    count: 0,
   },
   {
     id: 'custom',
@@ -40,6 +41,7 @@ const COLLECTIONS = [
     colorFront: CUSTOM_CARDS_FOLDER_COLOR.front,
     colorBack: CUSTOM_CARDS_FOLDER_COLOR.back,
     lightBg: CUSTOM_CARDS_FOLDER_COLOR.lightBg,
+    count: 0,
   }
 ];
 
