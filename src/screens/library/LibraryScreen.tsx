@@ -104,7 +104,9 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
   const totalCount = activeCollection?.count ?? 0;
 
   return (
-    <div className="flex-1 flex w-full flex-col text-ui-ink relative bg-ui-canvas">
+    // No page background here: the layout shell owns the unified canvas, so
+    // this route container stays transparent at every breakpoint.
+    <div className="flex-1 flex w-full flex-col text-ui-ink relative">
       <StickyWorkspaceHeader
         title={activeView === 'folder' ? (activeCollection.title ?? 'Folder') : 'Library'}
         align="left"

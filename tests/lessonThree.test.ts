@@ -15,8 +15,10 @@ test('Lesson 3 has five ordered grammar points grouped by its two dialogues', ()
   assert.deepEqual(lessonThreeParts.map((part) => part.partId), [1, 2]);
   assert.deepEqual(lessonThreeParts.map((part) => part.grammarPages.length), [2, 3]);
   assert.deepEqual(lessonThreePages.map((page) => page.grammarNumber), [1, 2, 3, 4, 5]);
-  assert.equal(lessonThreePages.reduce((count, page) => count + page.questions.length, 0), 15);
-  assert.ok(lessonThreePages.every((page) => page.examples.length === 3));
+  assert.equal(lessonThreePages.reduce((count, page) => count + page.questions.length, 0), 21);
+  assert.ok(lessonThreePages.every((page) => page.examples.length >= 3));
+  assert.equal(lessonThreePages[3].examples.length, 9);
+  assert.equal(lessonThreePages[3].questions.length, 9);
   assert.ok(lessonThreePages.every((page) => page.discoveryLab));
 });
 

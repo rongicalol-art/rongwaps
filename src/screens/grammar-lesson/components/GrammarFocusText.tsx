@@ -13,9 +13,9 @@ export interface GrammarFocusTextProps extends Omit<HTMLAttributes<HTMLSpanEleme
 }
 
 const variantClasses = {
-  title: 'bg-transparent px-0 font-black text-brand-primary',
-  body: 'bg-transparent px-0 font-black text-brand-primary',
-  sentence: 'bg-transparent px-0 font-black text-brand-primary',
+  title: 'font-chinese font-black text-brand-primary',
+  body: 'font-chinese font-black text-brand-primary',
+  sentence: 'font-chinese font-black text-brand-primary',
 } as const;
 
 const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');

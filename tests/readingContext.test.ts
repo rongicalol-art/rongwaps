@@ -72,7 +72,7 @@ test('resolves Part 2 to Dialogue 2 of selected lesson', () => {
   assert.equal(mockReadings[index].id, 'B1L01-R02');
 });
 
-test('resolves Part 3 to Dialogue 1 gracefully (Book 1 Part 3 has no dialogues)', () => {
+test('resolves Part 3 to Dialogue 1 gracefully when Part 3 dialogue is absent', () => {
   const index = resolveActiveReadingIndex({
     bookId: 1,
     selectedLessons: [1],
@@ -81,6 +81,31 @@ test('resolves Part 3 to Dialogue 1 gracefully (Book 1 Part 3 has no dialogues)'
   });
   assert.equal(index, 0);
   assert.equal(mockReadings[index].id, 'B1L01-R01');
+});
+
+test('resolves Part 3 to Dialogue 3 when present', () => {
+  const readingsWithPart3: ReadingRecord[] = [
+    ...mockReadings,
+    {
+      id: 'B1L01-R03',
+      bookId: 1,
+      lessonId: 1,
+      dialogueNumber: 3,
+      title: '短文',
+      setting: '教室',
+      printedPages: [47, 48],
+      audioReference: '1-3',
+      paragraphs: [],
+    },
+  ];
+  const index = resolveActiveReadingIndex({
+    bookId: 1,
+    selectedLessons: [1],
+    selectedLessonParts: { '1:1': [3] },
+    readings: readingsWithPart3,
+  });
+  assert.equal(index, 4);
+  assert.equal(readingsWithPart3[index].id, 'B1L01-R03');
 });
 
 test('resolves Lesson 2 Part 2 correctly', () => {

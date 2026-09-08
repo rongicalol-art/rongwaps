@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type { DialogueAlignment } from '../../../data/dialogueAlignment';
-import type { ReadingRecord } from '../../../types/models';
+import type { DialogueAlignment, ReadingRecord } from '../../../types/models';
 import { audioService } from '../../../services/audioService';
+import { useAppStore } from '../../../store/useAppStore';
 import {
   alignmentDuration,
   lineIndexForTime,
@@ -101,17 +101,28 @@ export function useReaderAudio({
           playRange(startSec, endSec);
         } else {
           setPlaying(false);
-          setCurrentTime(0);
+          if (totalDuration > 0 && endSec >= totalDuration - 0.25) {
+            setCurrentTime(0);
+          } else {
+            setCurrentTime(endSec);
+          }
         }
       }
     });
-  }, [bookAudioFileName]);
+  }, [bookAudioFileName, totalDuration]);
 
   const stop = useCallback(() => {
     playbackTokenRef.current += 1;
     audioService.stop();
     setPlaying(false);
   }, []);
+
+  const dictionaryWord = useAppStore((state) => state.dictionaryWord);
+  useEffect(() => {
+    if (dictionaryWord && playing) {
+      stop();
+    }
+  }, [dictionaryWord, playing, stop]);
 
   const togglePlay = useCallback(() => {
     if (playing) {
@@ -159,8 +170,10 @@ export function useReaderAudio({
       return;
     }
 
-    playRange(line!.start, line!.end);
-  }, [alignment, bookAudioFileName, characterPreference, playbackSpeed, playRange, reading.paragraphs]);
+    // Play from this line through the rest of the reading — audio must keep
+    // flowing past the line boundary instead of stopping at it.
+    playRange(line!.start, totalDuration);
+  }, [alignment, bookAudioFileName, characterPreference, playbackSpeed, playRange, totalDuration, reading.paragraphs]);
 
   const seekTo = useCallback((timeSec: number) => {
     const clamped = Math.max(0, Math.min(timeSec, totalDuration));
@@ -218,6 +231,7 @@ export function useReaderAudio({
     activeLineIndex,
     togglePlay,
     playLine,
+    playRange,
     playFromTime,
     stop,
     seekTo,

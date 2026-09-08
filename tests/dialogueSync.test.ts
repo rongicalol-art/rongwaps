@@ -3,10 +3,13 @@ import test from 'node:test';
 
 import {
   alignmentDuration,
+  charRangeForTime,
   lineIndexForTime,
   wordRangeForTime,
+  splitChunksIntoSentences,
 } from '../src/utils/dialogueSync';
-import type { DialogueAlignment } from '../src/data/dialogueAlignment';
+import { getWordChunks } from '../src/utils/rubyPinyin';
+import type { DialogueAlignment } from '../src/types/models';
 
 const alignment: DialogueAlignment = {
   audioFile: 'B1-01-1-1.mp3',
@@ -92,6 +95,61 @@ test('wordRangeForTime locates words sequentially in longer lines', () => {
   assert.deepEqual(wordRangeForTime(alignment, 1, 7.5, rendered), { start: 10, end: 14 });
 });
 
+test('charRangeForTime returns the char range of the spoken syllable', () => {
+  const charAlignment: DialogueAlignment = {
+    ...alignment,
+    lines: [{
+      ...alignment.lines[0],
+      words: [],
+      chars: [
+        { charStart: 0, charEnd: 1, start: 0.10, end: 0.34 },
+        { charStart: 1, charEnd: 2, start: 0.34, end: 1.80 },
+        { charStart: 3, charEnd: 4, start: 1.80, end: 2.18 },
+      ],
+    }],
+  };
+  const rendered = '宜文，她是誰？';
+  assert.deepEqual(charRangeForTime(charAlignment, 0, 0.2, rendered), { start: 0, end: 1 });
+  assert.deepEqual(charRangeForTime(charAlignment, 0, 1.0, rendered), { start: 1, end: 2 });
+  assert.deepEqual(charRangeForTime(charAlignment, 0, 2.0, rendered), { start: 3, end: 4 });
+  assert.equal(charRangeForTime(charAlignment, 0, 2.5, rendered), null); // past last char
+  assert.equal(charRangeForTime(charAlignment, 0, 2.0, 'short'), null); // length mismatch
+});
+
 test('alignmentDuration is the end of the last line', () => {
   assert.equal(alignmentDuration(alignment), 8.1);
 });
+
+test('splitChunksIntoSentences splits dialogue lines into bite-sized clause-level units at punctuation boundaries', () => {
+  const line = alignment.lines[1];
+  const pinyin = 'Tā shì xīn tóngxué, jiào Yǒuměi. Tā hěn kěài.';
+  const chunks = getWordChunks(line.text, pinyin, line);
+  const clauses = splitChunksIntoSentences(chunks, line.index, line.start, line.end);
+
+  assert.equal(clauses.length, 3);
+  assert.equal(clauses[0].text, '她是新同學，');
+  assert.equal(clauses[1].text, '叫友美。');
+  assert.equal(clauses[2].text, '她很可愛。');
+  assert.equal(clauses[0].id, '1-0');
+  assert.equal(clauses[1].id, '1-1');
+  assert.equal(clauses[2].id, '1-2');
+  assert.equal(clauses[0].start, 3.5);
+  assert.ok(clauses[0].end! <= clauses[1].start!);
+  assert.ok(clauses[1].end! <= clauses[2].start!);
+  assert.equal(clauses[2].end, 8.1);
+});
+
+test('splitChunksIntoSentences splits vocatives and introductory phrases at commas', () => {
+  const line = alignment.lines[0];
+  const pinyin = 'Yíwén, tā shì shéi?';
+  const chunks = getWordChunks(line.text, pinyin, line);
+  const clauses = splitChunksIntoSentences(chunks, line.index, line.start, line.end);
+
+  assert.equal(clauses.length, 2);
+  assert.equal(clauses[0].text, '宜文，');
+  assert.equal(clauses[1].text, '她是誰？');
+  assert.equal(clauses[0].start, 1.04);
+  assert.ok(clauses[0].end! <= clauses[1].start!);
+  assert.equal(clauses[1].end, 3.2);
+});
+

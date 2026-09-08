@@ -1,15 +1,8 @@
 import type { SRSData } from './srsEngine';
 
 export interface SyncProgressCounters {
-  xpEarned: number;
   cardsReviewed: number;
   cardsLearned: number;
-}
-
-export interface AggregateProgressCounters {
-  totalXp: number;
-  totalCardsReviewed: number;
-  totalCardsLearned: number;
 }
 
 export interface CloudSyncFingerprintState {
@@ -55,7 +48,6 @@ export function createCloudSyncFingerprint(
     state.selectedBooks,
     state.customFolders,
     [
-      state.sessionProgress.xpEarned,
       state.sessionProgress.cardsReviewed,
       state.sessionProgress.cardsLearned,
     ],
@@ -111,14 +103,13 @@ export function getSessionProgressDelta(
   };
 
   return {
-    xpEarned: delta(current.xpEarned, lastSynced.xpEarned),
     cardsReviewed: delta(current.cardsReviewed, lastSynced.cardsReviewed),
     cardsLearned: delta(current.cardsLearned, lastSynced.cardsLearned),
   };
 }
 
 export function hasSessionProgressDelta(delta: SyncProgressCounters): boolean {
-  return delta.xpEarned > 0 || delta.cardsReviewed > 0 || delta.cardsLearned > 0;
+  return delta.cardsReviewed > 0 || delta.cardsLearned > 0;
 }
 
 export interface SyncedFolderSnapshot {
@@ -198,27 +189,6 @@ export function pruneAcknowledgedTombstones(
 ): string[] {
   const serverIds = new Set(serverFolderIds);
   return tombstoneIds.filter((id) => serverIds.has(id));
-}
-
-export function reconcileAggregateProgress(
-  cloud: AggregateProgressCounters,
-  local: AggregateProgressCounters,
-  savedSession: SyncProgressCounters,
-  currentSession: SyncProgressCounters,
-): AggregateProgressCounters {
-  const pending = getSessionProgressDelta(currentSession, savedSession);
-
-  return {
-    totalXp: Math.max(local.totalXp, cloud.totalXp + pending.xpEarned),
-    totalCardsReviewed: Math.max(
-      local.totalCardsReviewed,
-      cloud.totalCardsReviewed + pending.cardsReviewed,
-    ),
-    totalCardsLearned: Math.max(
-      local.totalCardsLearned,
-      cloud.totalCardsLearned + pending.cardsLearned,
-    ),
-  };
 }
 
 export function getNextCloudSyncBackoff(

@@ -42,7 +42,7 @@ export function BottomDrawer({
   // Resolve portal target once on mount — no need to re-run on every isOpen change
   const [portalNode] = useState<HTMLElement | null>(() => {
     if (typeof document !== 'undefined') {
-      return portalTarget ?? (document.getElementById('activity-overlays-root') || document.body);
+      return portalTarget ?? document.body;
     }
     return null;
   });

@@ -12,13 +12,6 @@ const PINYIN_WEIGHT = 0.45;
 const MIN_WEIGHT = 1;
 const MAX_WEIGHT = 5;
 
-/**
- * When the heaviest column is at least this many times heavier than the
- * lightest, that column becomes the single flexible track and the other
- * columns size themselves to their content. Near-equal sections instead use
- * one `1fr` track per column so leftover space spreads evenly.
- */
-const FLEX_RATIO_THRESHOLD = 1.5;
 
 function isCjk(char: string): boolean {
   return /[\u3000-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]/.test(char);
@@ -123,7 +116,7 @@ function clampShares(rawWeights: number[]): number[] {
 
   const count = rawWeights.length;
   const minShare = count === 2 ? 0.35 : count === 3 ? 0.2 : count === 4 ? 0.16 : 0.12;
-  const maxShare = count === 2 ? 0.65 : count === 3 ? 0.56 : count === 4 ? 0.4 : 0.32;
+  const maxShare = count === 2 ? 0.65 : count === 3 ? 0.60 : count === 4 ? 0.52 : 0.40;
   const rawTotal = rawWeights.reduce((total, weight) => total + weight, 0);
   const normalized = rawWeights.map((weight) => weight / rawTotal);
   const shares = Array<number>(count).fill(0);
@@ -157,6 +150,12 @@ function clampShares(rawWeights: number[]): number[] {
     }
   }
 
+  // Ensure total sum is strictly 1.0
+  const sum = shares.reduce((total, share) => total + share, 0);
+  if (sum > 0 && Math.abs(sum - 1) > 0.0001) {
+    return shares.map((share) => Math.round((share / sum) * 1000) / 1000);
+  }
+
   return shares.map((share) => Math.round(share * 1000) / 1000);
 }
 
@@ -172,7 +171,15 @@ function getSectionColumnScore(
     : Math.max(...columnGroups.map((group) => group.length > 0
       ? groupScore(group, characterPreference, showPinyin)
       : 0));
-  const headerScore = (textScore(label) * 0.35) + (detail ? textScore(detail) * 0.15 : 0);
+  // English headers wrap across lines; score by segments/words rather than total length
+  // so compound English titles (e.g. "What is there / Second Action") do not artificially
+  // dominate over the Chinese text weights.
+  const words = label.split(/[\s/]+/).filter(Boolean);
+  const longestLabelWord = words.length > 0
+    ? Math.max(...words.map((w) => textScore(w)))
+    : 0;
+  const headerScore = Math.min(longestLabelWord * 0.8, textScore(label) * 0.25)
+    + (detail ? Math.min(textScore(detail) * 0.15, 1) : 0);
   return Math.min(MAX_WEIGHT, Math.max(MIN_WEIGHT, contentScore, headerScore));
 }
 
@@ -184,10 +191,9 @@ export function getPatternRowGroups(row: GrammarPatternRow): GrammarWordToken[][
  * Builds one adaptive template for the legend and every row in a pattern
  * section. Column weights come from the longest visible content in each
  * source column (Chinese text, attached punctuation, pinyin, and the slot
- * heading). When one column clearly outweighs the rest it becomes the single
- * flexible `1fr` track and its neighbors size to their content, so a one
- * character slot never stretches; otherwise every column shares one `1fr`
- * track and leftover space spreads evenly.
+ * heading). Proportional shares are used across all viewports to guarantee
+ * balanced column distribution without starving narrow columns or blowing
+ * out wide ones.
  */
 export function getPatternSectionLayout({
   patternColumns,
@@ -195,7 +201,6 @@ export function getPatternSectionLayout({
   patternRows,
   characterPreference,
   showPinyin,
-  sideColumnSizing = 'min-content',
 }: PatternSectionLayoutOptions): PatternSectionLayout {
   const sourceColumnCount = Math.max(
     patternColumns.length,
@@ -214,28 +219,15 @@ export function getPatternSectionLayout({
     characterPreference,
     showPinyin,
   ));
-  const maxWeight = Math.max(...weights);
-  const minWeight = Math.min(...weights);
-  const useFlex = weights.length > 1 && minWeight > 0 && maxWeight / minWeight >= FLEX_RATIO_THRESHOLD;
   const shares = clampShares(weights);
-  const isProportional = sideColumnSizing === 'proportional';
-  const flexColumnIndex = isProportional
-    ? null
-    : useFlex
-      ? weights.indexOf(maxWeight)
-      : null;
-  const gridTemplateColumns = isProportional
-    ? shares.map((share) => `minmax(auto, ${share}fr)`).join(' ')
-    : safeSourceColumns
-      .map((_, index) => (flexColumnIndex === index ? '1fr' : useFlex ? 'min-content' : '1fr'))
-      .join(' ');
+  const gridTemplateColumns = shares.map((share) => `minmax(0, ${share}fr)`).join(' ');
 
   return {
     sourceColumns: safeSourceColumns,
     weights,
     shares,
     gridTemplateColumns,
-    flexColumnIndex,
-    isScrollable: safeSourceColumns.length >= 5,
+    flexColumnIndex: null,
+    isScrollable: safeSourceColumns.length >= 3,
   };
 }

@@ -5,7 +5,7 @@ import { audioService } from '../../../services/audioService';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
 import { shuffleItems } from '../../../utils/sessionOrder';
 import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
-import { getCurriculumSessionKey } from '../../../utils/lessonPartSelection';
+import { getCurriculumSessionKey, SHARED_REVIEW_SESSION_KEY } from '../../../utils/lessonPartSelection';
 import { getSessionStartIndex, retainCurrentCardIndex } from '../../../utils/sessionProgress';
 
 // How many upcoming cards (without recorded audio) get neural TTS pre-warmed
@@ -37,7 +37,7 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
   } = useAppStore();
   const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
   const autoPlayAudio = usePracticePreferencesStore((state) => state.autoPlayAudio);
-  const sessionKey = isReviewDeck ? `shared_deck_review_${activeBookId}` : isLibraryDeck ? `shared_deck_library_${libraryActiveFolder}` : getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
+  const sessionKey = isReviewDeck ? SHARED_REVIEW_SESSION_KEY : isLibraryDeck ? `shared_deck_library_${libraryActiveFolder}` : getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
 
   const [screenState, setScreenState] = useState<'playing' | 'complete'>('playing');
   const [currentIndex, setCurrentIndex] = useState(() => {
@@ -197,15 +197,17 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
 
   const handlePrev = useCallback(() => {
     if (currentIndex > 0) {
+      clearCharCompletionTimer();
       setCurrentIndex(c => c - 1);
       setActiveCharIndex(0);
       setCompletedChars(new Set());
       setStatus('idle');
       setResetCounter(0);
     }
-  }, [currentIndex]);
+  }, [clearCharCompletionTimer, currentIndex]);
 
   const handleNext = useCallback(() => {
+    clearCharCompletionTimer();
     if (currentIndex < playlist.length - 1) {
       setCurrentIndex(c => c + 1);
       setActiveCharIndex(0);
@@ -216,7 +218,7 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
       clearSessionProgressIndex(sessionKey);
       setScreenState('complete');
     }
-  }, [currentIndex, playlist.length, sessionKey, clearSessionProgressIndex]);
+  }, [clearCharCompletionTimer, currentIndex, playlist.length, sessionKey, clearSessionProgressIndex]);
 
   // When the last character is completed, auto-advance after a short delay
   // so the user sees the "correct" feedback before moving on.
@@ -259,6 +261,59 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
     setResetCounter(c => c + 1);
   }, [clearCharCompletionTimer]);
 
+  const restartCurrentChar = useCallback(() => {
+    clearCharCompletionTimer();
+    setCompletedChars(prev => {
+      const next = new Set(prev);
+      next.delete(activeCharIndex);
+      return next;
+    });
+    setStatus('idle');
+    setResetCounter(c => c + 1);
+  }, [activeCharIndex, clearCharCompletionTimer]);
+
+  const handlePrevChar = useCallback(() => {
+    if (activeCharIndex <= 0) return;
+    clearCharCompletionTimer();
+    const prevIndex = activeCharIndex - 1;
+    setCompletedChars(prev => {
+      const next = new Set(prev);
+      next.delete(prevIndex);
+      next.delete(activeCharIndex);
+      return next;
+    });
+    setActiveCharIndex(prevIndex);
+    setStatus('idle');
+    setResetCounter(c => c + 1);
+  }, [activeCharIndex, clearCharCompletionTimer]);
+
+  const jumpToChar = useCallback((targetIndex: number) => {
+    if (targetIndex >= activeCharIndex || targetIndex < 0) return;
+    clearCharCompletionTimer();
+    setCompletedChars(prev => {
+      const next = new Set(prev);
+      for (let i = targetIndex; i <= activeCharIndex; i++) {
+        next.delete(i);
+      }
+      return next;
+    });
+    setActiveCharIndex(targetIndex);
+    setStatus('idle');
+    setResetCounter(c => c + 1);
+  }, [activeCharIndex, clearCharCompletionTimer]);
+
+  const [animateStrokesSignal, setAnimateStrokesSignal] = useState(0);
+  const [isAnimatingStrokes, setIsAnimatingStrokes] = useState(false);
+
+  const triggerAnimateStrokes = useCallback(() => {
+    if (isAnimatingStrokes) return;
+    setAnimateStrokesSignal(c => c + 1);
+  }, [isAnimatingStrokes]);
+
+  const toggleOutline = useCallback(() => {
+    setShowOutline(prev => !prev);
+  }, []);
+
   const restartRound = useCallback(() => {
     clearCharCompletionTimer();
     setCards(loadedCards);
@@ -284,6 +339,7 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
     canvasSize,
     showOutline,
     setShowOutline,
+    toggleOutline,
     resetCounter,
     setResetCounter,
     handlePrev,
@@ -292,6 +348,13 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
     isLoading,
     loadError,
     handleRetry,
+    restartCurrentChar,
+    handlePrevChar,
+    jumpToChar,
+    animateStrokesSignal,
+    isAnimatingStrokes,
+    setIsAnimatingStrokes,
+    triggerAnimateStrokes,
     restartRound,
     isShuffled,
     toggleShuffle,

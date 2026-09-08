@@ -131,7 +131,7 @@ export function ContextualChineseText({
               : `Open ${token.text} in the dictionary`}
             className={cn(
               '-mx-0.5 rounded-[7px] px-0.5 font-chinese text-inherit outline-none transition-colors hover:bg-brand-primary-soft focus-visible:bg-brand-primary-soft focus-visible:ring-2 focus-visible:ring-brand-primary/35 active:bg-brand-primary-soft',
-              token.focused && 'text-brand-primary',
+              token.focused && 'font-chinese font-black text-brand-primary',
             )}
           >
             {token.text}
@@ -148,7 +148,12 @@ export function ContextualChineseText({
           )}
         </span>
       ) : (
-        <span key={token.key} className={token.focused ? 'font-black text-brand-primary' : undefined}>{token.text}</span>
+        <span
+          key={token.key}
+          className={token.focused ? 'font-chinese font-black text-brand-primary' : undefined}
+        >
+          {token.text}
+        </span>
       ))}
     </span>
   );

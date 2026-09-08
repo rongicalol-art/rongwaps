@@ -176,8 +176,8 @@ export function validateInteractiveLessons(): LessonValidationIssue[] {
     lessonReadings.push(reading);
     readingsByLesson.set(reading.lessonId, lessonReadings);
 
-    if (reading.dialogueNumber !== 1 && reading.dialogueNumber !== 2) {
-      issues.push({ location: reading.id, message: 'Dialogue number must be 1 or 2.' });
+    if (reading.dialogueNumber < 1 || reading.dialogueNumber > 3) {
+      issues.push({ location: reading.id, message: 'Dialogue number must be 1, 2, or 3.' });
     }
     if (reading.paragraphs.length === 0) {
       issues.push({ location: reading.id, message: 'A reading needs at least one paragraph.' });
@@ -196,8 +196,8 @@ export function validateInteractiveLessons(): LessonValidationIssue[] {
   });
   for (let lessonId = READING_LESSON_MIN; lessonId <= READING_LESSON_MAX; lessonId += 1) {
     const lessonReadings = readingsByLesson.get(lessonId) ?? [];
-    if (lessonReadings.length !== 2) {
-      issues.push({ location: `lesson ${lessonId}`, message: `Expected 2 readings; found ${lessonReadings.length}.` });
+    if (lessonReadings.length < 2 || lessonReadings.length > 3) {
+      issues.push({ location: `lesson ${lessonId}`, message: `Expected 2 or 3 readings; found ${lessonReadings.length}.` });
     }
   }
 

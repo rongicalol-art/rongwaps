@@ -16,7 +16,7 @@ export function LinkedTranslationText({
   ...props
 }: LinkedTranslationTextProps) {
   return (
-    <p className={cn('text-sm font-bold leading-relaxed text-ui-muted-strong', className)} {...props}>
+    <p className={cn('text-sm font-medium leading-relaxed text-ui-muted-strong', className)} {...props}>
       {segments.map((segment) => {
         if (!segment.alignmentId) return <span key={segment.id}>{segment.text}</span>;
         const isActive = activeAlignmentId === segment.alignmentId;
@@ -31,7 +31,7 @@ export function LinkedTranslationText({
             onBlur={() => onActiveAlignmentChange(null)}
             onClick={() => onActiveAlignmentChange(segment.alignmentId ?? null)}
             className={cn(
-              'rounded-[6px] px-0.5 text-left font-bold outline-none transition-colors',
+              'rounded-[6px] px-0.5 text-left font-medium outline-none transition-colors',
               isActive
                 ? 'bg-brand-primary text-ui-surface'
                 : 'hover:bg-brand-primary/10 hover:text-ui-ink-strong focus-visible:bg-brand-primary/10 focus-visible:ring-2 focus-visible:ring-brand-primary/30',

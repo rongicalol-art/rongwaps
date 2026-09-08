@@ -1,0 +1,4889 @@
+{
+  "LESSON_THREE_GRAMMAR_ONE": {
+    "id": "B1L03-G01-P73",
+    "bookId": 1,
+    "lessonId": 3,
+    "partId": 1,
+    "lessonTitle": "買生日禮物",
+    "lessonTitleEnglish": "Buying Birthday Gifts",
+    "grammarNumber": 1,
+    "titleTraditional": "數字 + 量詞 + 名詞",
+    "titleEnglish": "Count Things with Measure Words",
+    "learnerPromise": "Ask for and say how many people, books, flowers, or gifts there are.",
+    "printedPages": [
+      73,
+      74
+    ],
+    "audioReference": "03-1-3",
+    "explanation": "Chinese needs a measure word between a number and noun: 個 for general nouns, 本 for books, and 朵 for flowers. Before a measure word, say 兩 for “two,” not 二.",
+    "focusTerms": [
+      "數字",
+      "数字",
+      "量詞",
+      "量词",
+      "名詞",
+      "名词",
+      "個",
+      "个",
+      "本",
+      "朵",
+      "兩",
+      "两",
+      "幾",
+      "几"
+    ],
+    "teachingGlossary": [
+      {
+        "id": "b1l03-g01-glossary-1",
+        "traditional": "我",
+        "pinyin": "wǒ",
+        "meaning": "I; me"
+      },
+      {
+        "id": "b1l03-g01-glossary-2",
+        "traditional": "我們",
+        "simplified": "我们",
+        "pinyin": "wǒmen",
+        "meaning": "we; us"
+      },
+      {
+        "id": "b1l03-g01-glossary-3",
+        "traditional": "你們",
+        "simplified": "你们",
+        "pinyin": "nǐmen",
+        "meaning": "you all"
+      },
+      {
+        "id": "b1l03-g01-glossary-4",
+        "traditional": "你",
+        "pinyin": "nǐ",
+        "meaning": "you"
+      },
+      {
+        "id": "b1l03-g01-glossary-5",
+        "traditional": "妳",
+        "pinyin": "nǐ",
+        "meaning": "you"
+      },
+      {
+        "id": "b1l03-g01-glossary-6",
+        "traditional": "她",
+        "pinyin": "tā",
+        "meaning": "she; her"
+      },
+      {
+        "id": "b1l03-g01-glossary-7",
+        "traditional": "他",
+        "pinyin": "tā",
+        "meaning": "he; him"
+      },
+      {
+        "id": "b1l03-g01-glossary-8",
+        "traditional": "爸爸",
+        "pinyin": "bàba",
+        "meaning": "dad"
+      },
+      {
+        "id": "b1l03-g01-glossary-9",
+        "traditional": "媽媽",
+        "simplified": "妈妈",
+        "pinyin": "māma",
+        "meaning": "mom"
+      },
+      {
+        "id": "b1l03-g01-glossary-10",
+        "traditional": "老師",
+        "simplified": "老师",
+        "pinyin": "lǎoshī",
+        "meaning": "teacher"
+      },
+      {
+        "id": "b1l03-g01-glossary-11",
+        "traditional": "英國同學",
+        "simplified": "英国同学",
+        "pinyin": "Yīngguó tóngxué",
+        "meaning": "British classmate"
+      },
+      {
+        "id": "b1l03-g01-glossary-12",
+        "traditional": "台灣朋友",
+        "simplified": "台湾朋友",
+        "pinyin": "Táiwān péngyǒu",
+        "meaning": "Taiwanese friend"
+      },
+      {
+        "id": "b1l03-g01-glossary-13",
+        "traditional": "新同學",
+        "simplified": "新同学",
+        "pinyin": "xīn tóngxué",
+        "meaning": "new classmate"
+      },
+      {
+        "id": "b1l03-g01-glossary-14",
+        "traditional": "友美",
+        "pinyin": "Yǒuměi",
+        "meaning": "Youmei"
+      },
+      {
+        "id": "b1l03-g01-glossary-15",
+        "traditional": "中明",
+        "pinyin": "Zhōngmíng",
+        "meaning": "Zhongming"
+      },
+      {
+        "id": "b1l03-g01-glossary-16",
+        "traditional": "明天",
+        "pinyin": "míngtiān",
+        "meaning": "tomorrow"
+      },
+      {
+        "id": "b1l03-g01-glossary-17",
+        "traditional": "生日",
+        "pinyin": "shēngrì",
+        "meaning": "birthday"
+      },
+      {
+        "id": "b1l03-g01-glossary-18",
+        "traditional": "是",
+        "pinyin": "shì",
+        "meaning": "is; am; are"
+      },
+      {
+        "id": "b1l03-g01-glossary-19",
+        "traditional": "的",
+        "pinyin": "de",
+        "meaning": "connects a describing word or owner to a thing"
+      },
+      {
+        "id": "b1l03-g01-glossary-20",
+        "traditional": "想",
+        "pinyin": "xiǎng",
+        "meaning": "would like to; want to"
+      },
+      {
+        "id": "b1l03-g01-glossary-21",
+        "traditional": "要",
+        "pinyin": "yào",
+        "meaning": "want to; intend to"
+      },
+      {
+        "id": "b1l03-g01-glossary-22",
+        "traditional": "送",
+        "pinyin": "sòng",
+        "meaning": "give as a gift"
+      },
+      {
+        "id": "b1l03-g01-glossary-23",
+        "traditional": "買",
+        "simplified": "买",
+        "pinyin": "mǎi",
+        "meaning": "buy"
+      },
+      {
+        "id": "b1l03-g01-glossary-24",
+        "traditional": "有",
+        "pinyin": "yǒu",
+        "meaning": "have"
+      },
+      {
+        "id": "b1l03-g01-glossary-25",
+        "traditional": "愛",
+        "simplified": "爱",
+        "pinyin": "ài",
+        "meaning": "love to"
+      },
+      {
+        "id": "b1l03-g01-glossary-26",
+        "traditional": "看書",
+        "simplified": "看书",
+        "pinyin": "kànshū",
+        "meaning": "read books"
+      },
+      {
+        "id": "b1l03-g01-glossary-27",
+        "traditional": "一起",
+        "pinyin": "yìqǐ",
+        "meaning": "together"
+      },
+      {
+        "id": "b1l03-g01-glossary-28",
+        "traditional": "去",
+        "pinyin": "qù",
+        "meaning": "go"
+      },
+      {
+        "id": "b1l03-g01-glossary-29",
+        "traditional": "好不好",
+        "pinyin": "hǎo bù hǎo",
+        "meaning": "how about it; okay or not"
+      },
+      {
+        "id": "b1l03-g01-glossary-30",
+        "traditional": "好",
+        "pinyin": "hǎo",
+        "meaning": "good; okay"
+      },
+      {
+        "id": "b1l03-g01-glossary-31",
+        "traditional": "啊",
+        "pinyin": "a",
+        "meaning": "ending word that shows agreement"
+      },
+      {
+        "id": "b1l03-g01-glossary-32",
+        "traditional": "什麼",
+        "simplified": "什么",
+        "pinyin": "shénme",
+        "meaning": "what"
+      },
+      {
+        "id": "b1l03-g01-glossary-33",
+        "traditional": "誰",
+        "simplified": "谁",
+        "pinyin": "shéi",
+        "meaning": "who"
+      },
+      {
+        "id": "b1l03-g01-glossary-34",
+        "traditional": "呢",
+        "pinyin": "ne",
+        "meaning": "what about; asks the question back"
+      },
+      {
+        "id": "b1l03-g01-glossary-35",
+        "traditional": "幾",
+        "simplified": "几",
+        "pinyin": "jǐ",
+        "meaning": "how many; usually under ten"
+      },
+      {
+        "id": "b1l03-g01-glossary-36",
+        "traditional": "一",
+        "pinyin": "yī",
+        "meaning": "one"
+      },
+      {
+        "id": "b1l03-g01-glossary-37",
+        "traditional": "兩",
+        "simplified": "两",
+        "pinyin": "liǎng",
+        "meaning": "two before a measure word"
+      },
+      {
+        "id": "b1l03-g01-glossary-38",
+        "traditional": "三",
+        "pinyin": "sān",
+        "meaning": "three"
+      },
+      {
+        "id": "b1l03-g01-glossary-39",
+        "traditional": "四",
+        "pinyin": "sì",
+        "meaning": "four"
+      },
+      {
+        "id": "b1l03-g01-glossary-40",
+        "traditional": "五",
+        "pinyin": "wǔ",
+        "meaning": "five"
+      },
+      {
+        "id": "b1l03-g01-glossary-41",
+        "traditional": "個",
+        "simplified": "个",
+        "pinyin": "ge",
+        "meaning": "general measure word"
+      },
+      {
+        "id": "b1l03-g01-glossary-42",
+        "traditional": "本",
+        "pinyin": "běn",
+        "meaning": "measure word for books"
+      },
+      {
+        "id": "b1l03-g01-glossary-43",
+        "traditional": "朵",
+        "pinyin": "duǒ",
+        "meaning": "measure word for flowers"
+      },
+      {
+        "id": "b1l03-g01-glossary-44",
+        "traditional": "一些",
+        "pinyin": "yìxiē",
+        "meaning": "some"
+      },
+      {
+        "id": "b1l03-g01-glossary-45",
+        "traditional": "禮物",
+        "simplified": "礼物",
+        "pinyin": "lǐwù",
+        "meaning": "gift"
+      },
+      {
+        "id": "b1l03-g01-glossary-46",
+        "traditional": "中文書",
+        "simplified": "中文书",
+        "pinyin": "Zhōngwén shū",
+        "meaning": "book in Chinese"
+      },
+      {
+        "id": "b1l03-g01-glossary-47",
+        "traditional": "英文書",
+        "simplified": "英文书",
+        "pinyin": "Yīngwén shū",
+        "meaning": "book in English"
+      },
+      {
+        "id": "b1l03-g01-glossary-48",
+        "traditional": "書",
+        "simplified": "书",
+        "pinyin": "shū",
+        "meaning": "book"
+      },
+      {
+        "id": "b1l03-g01-glossary-49",
+        "traditional": "花",
+        "pinyin": "huā",
+        "meaning": "flower; flowers"
+      },
+      {
+        "id": "b1l03-g01-glossary-50",
+        "traditional": "大蛋糕",
+        "pinyin": "dà dàngāo",
+        "meaning": "large cake"
+      },
+      {
+        "id": "b1l03-g01-glossary-51",
+        "traditional": "蛋糕",
+        "pinyin": "dàngāo",
+        "meaning": "cake"
+      },
+      {
+        "id": "b1l03-g01-glossary-52",
+        "traditional": "和",
+        "pinyin": "hé",
+        "meaning": "and"
+      }
+    ],
+    "pattern": "Number or 幾 + measure word + noun",
+    "patternColumns": [
+      "How many",
+      "Measure word",
+      "Thing"
+    ],
+    "patternAccentColumn": 1,
+    "discoveryLab": {
+      "title": "Pick the right measure word",
+      "description": "The measure word links the number to the thing. The thing you name chooses the measure word.",
+      "prompt": "What are you counting?",
+      "choices": [
+        {
+          "id": "g1-books",
+          "label": "Books · 本",
+          "traditional": "兩本書",
+          "simplified": "两本书",
+          "pinyin": "liǎng běn shū",
+          "english": "two books",
+          "note": "Use 本 for books and similar things."
+        },
+        {
+          "id": "g1-flowers",
+          "label": "Flowers · 朵",
+          "traditional": "幾朵花？",
+          "simplified": "几朵花？",
+          "pinyin": "jǐ duǒ huā?",
+          "english": "how many flowers?",
+          "note": "朵 counts flowers. 幾 still needs a measure word."
+        },
+        {
+          "id": "g1-general",
+          "label": "General · 個",
+          "traditional": "一個蛋糕",
+          "simplified": "一个蛋糕",
+          "pinyin": "yí ge dàngāo",
+          "english": "one cake",
+          "note": "個 is the useful general measure word in this lesson."
+        },
+        {
+          "id": "g1-repair",
+          "label": "Repair “two”",
+          "traditional": "二本書 → 兩本書",
+          "simplified": "二本书 → 两本书",
+          "pinyin": "èr běn shū → liǎng běn shū",
+          "english": "two books",
+          "note": "Use 兩 before a measure word when counting two things.",
+          "isCorrection": true
+        }
+      ],
+      "takeaway": "Put them in order: number + measure word + thing: 兩 + 本 + 書."
+    },
+    "patternRows": [
+      {
+        "id": "g1-pattern-1",
+        "subject": [
+          {
+            "id": "g1-p1-one",
+            "traditional": "一",
+            "pinyin": "yī",
+            "meaning": "one"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g1-p1-ge",
+            "traditional": "個",
+            "simplified": "个",
+            "pinyin": "ge",
+            "meaning": "general measure word"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g1-p1-cake",
+            "traditional": "蛋糕",
+            "pinyin": "dàngāo",
+            "meaning": "cake"
+          }
+        ],
+        "english": "a cake"
+      },
+      {
+        "id": "g1-pattern-2",
+        "subject": [
+          {
+            "id": "g1-p2-two",
+            "traditional": "兩",
+            "simplified": "两",
+            "pinyin": "liǎng",
+            "meaning": "two before a measure word"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g1-p2-ben",
+            "traditional": "本",
+            "pinyin": "běn",
+            "meaning": "measure word for books"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g1-p2-book",
+            "traditional": "書",
+            "simplified": "书",
+            "pinyin": "shū",
+            "meaning": "book"
+          }
+        ],
+        "english": "two books"
+      },
+      {
+        "id": "g1-pattern-3",
+        "subject": [
+          {
+            "id": "g1-p3-how-many",
+            "traditional": "幾",
+            "simplified": "几",
+            "pinyin": "jǐ",
+            "meaning": "how many; usually under ten"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g1-p3-duo",
+            "traditional": "朵",
+            "pinyin": "duǒ",
+            "meaning": "measure word for flowers"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g1-p3-flower",
+            "traditional": "花",
+            "pinyin": "huā",
+            "meaning": "flower; flowers",
+            "suffix": "？"
+          }
+        ],
+        "english": "how many flowers?"
+      }
+    ],
+    "confusion": {
+      "title": "Don't mix these up",
+      "items": [
+        {
+          "id": "g1-confusion-missing-measure",
+          "question": "Do I need a word between the number and the thing?",
+          "answer": "Yes — a measure word. Number and thing never sit side by side.",
+          "wrongTraditional": "我買三蛋糕。",
+          "wrongSimplified": "我买三蛋糕。",
+          "right": {
+            "traditional": "我買三個蛋糕。",
+            "simplified": "我买三个蛋糕。",
+            "pinyin": "Wǒ mǎi sān ge dàngāo.",
+            "english": "I buy three cakes.",
+            "words": [
+              {
+                "id": "b1l03-g1-conf-1-word-1",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
+              },
+              {
+                "id": "b1l03-g1-conf-1-word-2",
+                "traditional": "買",
+                "simplified": "买",
+                "pinyin": "mǎi",
+                "meaning": "buy"
+              },
+              {
+                "id": "b1l03-g1-conf-1-word-3",
+                "traditional": "三",
+                "pinyin": "sān",
+                "meaning": "three"
+              },
+              {
+                "id": "b1l03-g1-conf-1-word-4",
+                "traditional": "個",
+                "simplified": "个",
+                "pinyin": "ge",
+                "meaning": "general measure word"
+              },
+              {
+                "id": "b1l03-g1-conf-1-word-5",
+                "traditional": "蛋糕",
+                "pinyin": "dàngāo",
+                "meaning": "cake",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "g1-confusion-er-vs-liang",
+          "question": "Why do I say 兩 for \"two\" here, not 二?",
+          "answer": "Before a measure word, two becomes 兩. 二 is only for plain counting, like 一二三.",
+          "wrongTraditional": "我有二本書。",
+          "wrongSimplified": "我有二本书。",
+          "right": {
+            "traditional": "我有兩本書。",
+            "simplified": "我有两本书。",
+            "pinyin": "Wǒ yǒu liǎng běn shū.",
+            "english": "I have two books.",
+            "words": [
+              {
+                "id": "b1l03-g1-conf-2-word-1",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
+              },
+              {
+                "id": "b1l03-g1-conf-2-word-2",
+                "traditional": "有",
+                "pinyin": "yǒu",
+                "meaning": "have"
+              },
+              {
+                "id": "b1l03-g1-conf-2-word-3",
+                "traditional": "兩",
+                "simplified": "两",
+                "pinyin": "liǎng",
+                "meaning": "two before a measure word"
+              },
+              {
+                "id": "b1l03-g1-conf-2-word-4",
+                "traditional": "本",
+                "pinyin": "běn",
+                "meaning": "measure word for books"
+              },
+              {
+                "id": "b1l03-g1-conf-2-word-5",
+                "traditional": "書",
+                "simplified": "书",
+                "pinyin": "shū",
+                "meaning": "book",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "g1-confusion-ge-vs-duo",
+          "question": "Can I count everything with 個?",
+          "answer": "No. 個 is the general one, but books take 本 and flowers take 朵.",
+          "wrongTraditional": "她有三個花。",
+          "wrongSimplified": "她有三个花。",
+          "right": {
+            "traditional": "她有三朵花。",
+            "simplified": "她有三朵花。",
+            "pinyin": "Tā yǒu sān duǒ huā.",
+            "english": "She has three flowers.",
+            "words": [
+              {
+                "id": "b1l03-g1-conf-3-word-1",
+                "traditional": "她",
+                "pinyin": "tā",
+                "meaning": "she; her"
+              },
+              {
+                "id": "b1l03-g1-conf-3-word-2",
+                "traditional": "有",
+                "pinyin": "yǒu",
+                "meaning": "have"
+              },
+              {
+                "id": "b1l03-g1-conf-3-word-3",
+                "traditional": "三",
+                "pinyin": "sān",
+                "meaning": "three"
+              },
+              {
+                "id": "b1l03-g1-conf-3-word-4",
+                "traditional": "朵",
+                "pinyin": "duǒ",
+                "meaning": "measure word for flowers"
+              },
+              {
+                "id": "b1l03-g1-conf-3-word-5",
+                "traditional": "花",
+                "pinyin": "huā",
+                "meaning": "flower; flowers",
+                "suffix": "。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "examples": [
+      {
+        "id": "g1-example-1",
+        "number": 1,
+        "text": {
+          "traditional": "A：你有幾個台灣朋友？ B：我有三個台灣朋友。",
+          "simplified": "A：你有几个台湾朋友？ B：我有三个台湾朋友。",
+          "pinyin": "A: Nǐ yǒu jǐ ge Táiwān péngyǒu? B: Wǒ yǒu sān ge Táiwān péngyǒu.",
+          "english": "A: How many Taiwanese friends do you have? B: I have three Taiwanese friends.",
+          "words": [
+            {
+              "id": "b1l03-g1-e1-word-1",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l03-g1-e1-word-2",
+              "traditional": "有",
+              "pinyin": "yǒu",
+              "meaning": "have"
+            },
+            {
+              "id": "b1l03-g1-e1-word-3",
+              "traditional": "幾",
+              "simplified": "几",
+              "pinyin": "jǐ",
+              "meaning": "how many; usually under ten"
+            },
+            {
+              "id": "b1l03-g1-e1-word-4",
+              "traditional": "個",
+              "simplified": "个",
+              "pinyin": "ge",
+              "meaning": "general measure word"
+            },
+            {
+              "id": "b1l03-g1-e1-word-5",
+              "traditional": "台灣朋友",
+              "simplified": "台湾朋友",
+              "pinyin": "Táiwān péngyǒu",
+              "meaning": "Taiwanese friend"
+            },
+            {
+              "id": "b1l03-g1-e1-word-6",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me",
+              "prefix": "？ B："
+            },
+            {
+              "id": "b1l03-g1-e1-word-7",
+              "traditional": "有",
+              "pinyin": "yǒu",
+              "meaning": "have"
+            },
+            {
+              "id": "b1l03-g1-e1-word-8",
+              "traditional": "三",
+              "pinyin": "sān",
+              "meaning": "three"
+            },
+            {
+              "id": "b1l03-g1-e1-word-9",
+              "traditional": "個",
+              "simplified": "个",
+              "pinyin": "ge",
+              "meaning": "general measure word"
+            },
+            {
+              "id": "b1l03-g1-e1-word-10",
+              "traditional": "台灣朋友",
+              "simplified": "台湾朋友",
+              "pinyin": "Táiwān péngyǒu",
+              "meaning": "Taiwanese friend",
+              "suffix": "。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g1-example-2",
+        "number": 2,
+        "text": {
+          "traditional": "A：你有幾本中文書？ B：我有五本中文書。",
+          "simplified": "A：你有几本中文书？ B：我有五本中文书。",
+          "pinyin": "A: Nǐ yǒu jǐ běn Zhōngwén shū? B: Wǒ yǒu wǔ běn Zhōngwén shū.",
+          "english": "A: How many Chinese books do you have? B: I have five Chinese books.",
+          "words": [
+            {
+              "id": "b1l03-g1-e2-word-1",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l03-g1-e2-word-2",
+              "traditional": "有",
+              "pinyin": "yǒu",
+              "meaning": "have"
+            },
+            {
+              "id": "b1l03-g1-e2-word-3",
+              "traditional": "幾",
+              "simplified": "几",
+              "pinyin": "jǐ",
+              "meaning": "how many; usually under ten"
+            },
+            {
+              "id": "b1l03-g1-e2-word-4",
+              "traditional": "本",
+              "pinyin": "běn",
+              "meaning": "measure word for books"
+            },
+            {
+              "id": "b1l03-g1-e2-word-5",
+              "traditional": "中文書",
+              "simplified": "中文书",
+              "pinyin": "Zhōngwén shū",
+              "meaning": "book in Chinese"
+            },
+            {
+              "id": "b1l03-g1-e2-word-6",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me",
+              "prefix": "？ B："
+            },
+            {
+              "id": "b1l03-g1-e2-word-7",
+              "traditional": "有",
+              "pinyin": "yǒu",
+              "meaning": "have"
+            },
+            {
+              "id": "b1l03-g1-e2-word-8",
+              "traditional": "五",
+              "pinyin": "wǔ",
+              "meaning": "five"
+            },
+            {
+              "id": "b1l03-g1-e2-word-9",
+              "traditional": "本",
+              "pinyin": "běn",
+              "meaning": "measure word for books"
+            },
+            {
+              "id": "b1l03-g1-e2-word-10",
+              "traditional": "中文書",
+              "simplified": "中文书",
+              "pinyin": "Zhōngwén shū",
+              "meaning": "book in Chinese",
+              "suffix": "。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g1-example-3",
+        "number": 3,
+        "text": {
+          "traditional": "A：你們有幾個新同學？ B：我們有兩個新同學。",
+          "simplified": "A：你们有几个新同学？ B：我们有两个新同学。",
+          "pinyin": "A: Nǐmen yǒu jǐ ge xīn tóngxué? B: Wǒmen yǒu liǎng ge xīn tóngxué.",
+          "english": "A: How many new classmates do you have? B: We have two new classmates.",
+          "words": [
+            {
+              "id": "b1l03-g1-e3-word-1",
+              "traditional": "你們",
+              "simplified": "你们",
+              "pinyin": "nǐmen",
+              "meaning": "you all",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l03-g1-e3-word-2",
+              "traditional": "有",
+              "pinyin": "yǒu",
+              "meaning": "have"
+            },
+            {
+              "id": "b1l03-g1-e3-word-3",
+              "traditional": "幾",
+              "simplified": "几",
+              "pinyin": "jǐ",
+              "meaning": "how many; usually under ten"
+            },
+            {
+              "id": "b1l03-g1-e3-word-4",
+              "traditional": "個",
+              "simplified": "个",
+              "pinyin": "ge",
+              "meaning": "general measure word"
+            },
+            {
+              "id": "b1l03-g1-e3-word-5",
+              "traditional": "新同學",
+              "simplified": "新同学",
+              "pinyin": "xīn tóngxué",
+              "meaning": "new classmate"
+            },
+            {
+              "id": "b1l03-g1-e3-word-6",
+              "traditional": "我們",
+              "simplified": "我们",
+              "pinyin": "wǒmen",
+              "meaning": "we; us",
+              "prefix": "？ B："
+            },
+            {
+              "id": "b1l03-g1-e3-word-7",
+              "traditional": "有",
+              "pinyin": "yǒu",
+              "meaning": "have"
+            },
+            {
+              "id": "b1l03-g1-e3-word-8",
+              "traditional": "兩",
+              "simplified": "两",
+              "pinyin": "liǎng",
+              "meaning": "two before a measure word"
+            },
+            {
+              "id": "b1l03-g1-e3-word-9",
+              "traditional": "個",
+              "simplified": "个",
+              "pinyin": "ge",
+              "meaning": "general measure word"
+            },
+            {
+              "id": "b1l03-g1-e3-word-10",
+              "traditional": "新同學",
+              "simplified": "新同学",
+              "pinyin": "xīn tóngxué",
+              "meaning": "new classmate",
+              "suffix": "。"
+            }
+          ]
+        }
+      }
+    ],
+    "exerciseTitle": "Build the quantity",
+    "exercisePreview": "Choose a complete number + measure word + thing.",
+    "exerciseInstruction": "Read what is being counted, then choose the matching measure word.",
+    "exerciseNote": "The book gives open prompts with no answer key. These practice answers follow the picture and the sentence cues.",
+    "exerciseResponseMode": "text",
+    "exerciseCues": [
+      {
+        "id": "g1-cue-flowers",
+        "label": "Question 1 picture",
+        "pinyin": "liǎng duǒ huā",
+        "detail": "The book’s picture shows a woman holding two flowers."
+      }
+    ],
+    "questions": [
+      {
+        "id": "g1-question-1",
+        "number": 1,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：她有幾朵花？ B：",
+            "simplified": "A：她有几朵花？ B："
+          },
+          {
+            "type": "blank",
+            "id": "g1-q1-answer",
+            "answer": "她有兩朵花",
+            "answerSimplified": "她有两朵花",
+            "hint": "The picture shows two flowers. Use 兩 + 朵 + 花."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g1-q1-correct",
+            "traditional": "她有兩朵花",
+            "simplified": "她有两朵花",
+            "pinyin": "tā yǒu liǎng duǒ huā",
+            "meaning": "she has two flowers"
+          },
+          {
+            "id": "g1-q1-ben",
+            "traditional": "她有兩本花",
+            "simplified": "她有两本花",
+            "pinyin": "tā yǒu liǎng běn huā",
+            "meaning": "wrong measure word for flowers"
+          },
+          {
+            "id": "g1-q1-er",
+            "traditional": "她有二朵花",
+            "pinyin": "tā yǒu èr duǒ huā",
+            "meaning": "wrong form of two before a measure word"
+          }
+        ],
+        "correctFeedback": "兩 gives the quantity, and 朵 is the measure word for flowers.",
+        "repairFeedback": "Flowers use 朵. For “two” before a measure word, choose 兩."
+      },
+      {
+        "id": "g1-question-2",
+        "number": 2,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：你要買幾本書？ B：",
+            "simplified": "A：你要买几本书？ B："
+          },
+          {
+            "type": "blank",
+            "id": "g1-q2-answer",
+            "answer": "我要買三本書",
+            "answerSimplified": "我要买三本书",
+            "hint": "Books use 本."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g1-q2-correct",
+            "traditional": "我要買三本書",
+            "simplified": "我要买三本书",
+            "pinyin": "wǒ yào mǎi sān běn shū",
+            "meaning": "I want to buy three books"
+          },
+          {
+            "id": "g1-q2-ge",
+            "traditional": "我要買三個書",
+            "simplified": "我要买三个书",
+            "pinyin": "wǒ yào mǎi sān ge shū",
+            "meaning": "wrong measure word for books"
+          },
+          {
+            "id": "g1-q2-no-measure",
+            "traditional": "我要買三書",
+            "simplified": "我要买三书",
+            "pinyin": "wǒ yào mǎi sān shū",
+            "meaning": "missing measure word"
+          }
+        ],
+        "correctFeedback": "本 sits between 三 and 書 because it counts books.",
+        "repairFeedback": "Keep the three-part quantity together: 三 + 本 + 書."
+      },
+      {
+        "id": "g1-question-3",
+        "number": 3,
+        "segments": [
+          {
+            "type": "blank",
+            "id": "g1-q3-answer",
+            "answer": "你有幾本英文書",
+            "answerSimplified": "你有几本英文书",
+            "hint": "The reply gives four English books. Ask how many."
+          },
+          {
+            "type": "text",
+            "traditional": "？ B：我有四本英文書。",
+            "simplified": "？ B：我有四本英文书。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g1-q3-correct",
+            "traditional": "你有幾本英文書",
+            "simplified": "你有几本英文书",
+            "pinyin": "nǐ yǒu jǐ běn Yīngwén shū",
+            "meaning": "how many English books do you have"
+          },
+          {
+            "id": "g1-q3-what",
+            "traditional": "你有什麼英文書",
+            "simplified": "你有什么英文书",
+            "pinyin": "nǐ yǒu shénme Yīngwén shū",
+            "meaning": "what English books do you have"
+          },
+          {
+            "id": "g1-q3-how-many-ge",
+            "traditional": "你有幾個英文書",
+            "simplified": "你有几个英文书",
+            "pinyin": "nǐ yǒu jǐ ge Yīngwén shū",
+            "meaning": "wrong measure word for books"
+          }
+        ],
+        "correctFeedback": "The answer 四本英文書 matches the question 幾本英文書.",
+        "repairFeedback": "Ask for a quantity with 幾 and use 本 because the noun is 書."
+      }
+    ]
+  },
+  "LESSON_THREE_GRAMMAR_TWO": {
+    "id": "B1L03-G02-P74",
+    "bookId": 1,
+    "lessonId": 3,
+    "partId": 1,
+    "lessonTitle": "買生日禮物",
+    "lessonTitleEnglish": "Buying Birthday Gifts",
+    "grammarNumber": 2,
+    "titleTraditional": "送 + 人 + 禮物",
+    "titleEnglish": "Say Who Receives the Gift",
+    "learnerPromise": "Say who gives what gift to whom.",
+    "printedPages": [
+      74,
+      75
+    ],
+    "audioReference": "03-1-3",
+    "explanation": "After 送, say the receiver first and the gift second: 送 + person + gift. Unlike English, Chinese adds no “to” before the receiver.",
+    "focusTerms": [
+      "送",
+      "人",
+      "禮物",
+      "礼物",
+      "誰",
+      "谁",
+      "什麼",
+      "什么"
+    ],
+    "teachingGlossary": [
+      {
+        "id": "b1l03-g02-glossary-1",
+        "traditional": "我",
+        "pinyin": "wǒ",
+        "meaning": "I; me"
+      },
+      {
+        "id": "b1l03-g02-glossary-2",
+        "traditional": "我們",
+        "simplified": "我们",
+        "pinyin": "wǒmen",
+        "meaning": "we; us"
+      },
+      {
+        "id": "b1l03-g02-glossary-3",
+        "traditional": "你們",
+        "simplified": "你们",
+        "pinyin": "nǐmen",
+        "meaning": "you all"
+      },
+      {
+        "id": "b1l03-g02-glossary-4",
+        "traditional": "你",
+        "pinyin": "nǐ",
+        "meaning": "you"
+      },
+      {
+        "id": "b1l03-g02-glossary-5",
+        "traditional": "妳",
+        "pinyin": "nǐ",
+        "meaning": "you"
+      },
+      {
+        "id": "b1l03-g02-glossary-6",
+        "traditional": "她",
+        "pinyin": "tā",
+        "meaning": "she; her"
+      },
+      {
+        "id": "b1l03-g02-glossary-7",
+        "traditional": "他",
+        "pinyin": "tā",
+        "meaning": "he; him"
+      },
+      {
+        "id": "b1l03-g02-glossary-8",
+        "traditional": "爸爸",
+        "pinyin": "bàba",
+        "meaning": "dad"
+      },
+      {
+        "id": "b1l03-g02-glossary-9",
+        "traditional": "媽媽",
+        "simplified": "妈妈",
+        "pinyin": "māma",
+        "meaning": "mom"
+      },
+      {
+        "id": "b1l03-g02-glossary-10",
+        "traditional": "老師",
+        "simplified": "老师",
+        "pinyin": "lǎoshī",
+        "meaning": "teacher"
+      },
+      {
+        "id": "b1l03-g02-glossary-11",
+        "traditional": "英國同學",
+        "simplified": "英国同学",
+        "pinyin": "Yīngguó tóngxué",
+        "meaning": "British classmate"
+      },
+      {
+        "id": "b1l03-g02-glossary-12",
+        "traditional": "台灣朋友",
+        "simplified": "台湾朋友",
+        "pinyin": "Táiwān péngyǒu",
+        "meaning": "Taiwanese friend"
+      },
+      {
+        "id": "b1l03-g02-glossary-13",
+        "traditional": "新同學",
+        "simplified": "新同学",
+        "pinyin": "xīn tóngxué",
+        "meaning": "new classmate"
+      },
+      {
+        "id": "b1l03-g02-glossary-14",
+        "traditional": "友美",
+        "pinyin": "Yǒuměi",
+        "meaning": "Youmei"
+      },
+      {
+        "id": "b1l03-g02-glossary-15",
+        "traditional": "中明",
+        "pinyin": "Zhōngmíng",
+        "meaning": "Zhongming"
+      },
+      {
+        "id": "b1l03-g02-glossary-16",
+        "traditional": "明天",
+        "pinyin": "míngtiān",
+        "meaning": "tomorrow"
+      },
+      {
+        "id": "b1l03-g02-glossary-17",
+        "traditional": "生日",
+        "pinyin": "shēngrì",
+        "meaning": "birthday"
+      },
+      {
+        "id": "b1l03-g02-glossary-18",
+        "traditional": "是",
+        "pinyin": "shì",
+        "meaning": "is; am; are"
+      },
+      {
+        "id": "b1l03-g02-glossary-19",
+        "traditional": "的",
+        "pinyin": "de",
+        "meaning": "connects a describing word or owner to a thing"
+      },
+      {
+        "id": "b1l03-g02-glossary-20",
+        "traditional": "想",
+        "pinyin": "xiǎng",
+        "meaning": "would like to; want to"
+      },
+      {
+        "id": "b1l03-g02-glossary-21",
+        "traditional": "要",
+        "pinyin": "yào",
+        "meaning": "want to; intend to"
+      },
+      {
+        "id": "b1l03-g02-glossary-22",
+        "traditional": "送",
+        "pinyin": "sòng",
+        "meaning": "give as a gift"
+      },
+      {
+        "id": "b1l03-g02-glossary-23",
+        "traditional": "買",
+        "simplified": "买",
+        "pinyin": "mǎi",
+        "meaning": "buy"
+      },
+      {
+        "id": "b1l03-g02-glossary-24",
+        "traditional": "有",
+        "pinyin": "yǒu",
+        "meaning": "have"
+      },
+      {
+        "id": "b1l03-g02-glossary-25",
+        "traditional": "愛",
+        "simplified": "爱",
+        "pinyin": "ài",
+        "meaning": "love to"
+      },
+      {
+        "id": "b1l03-g02-glossary-26",
+        "traditional": "看書",
+        "simplified": "看书",
+        "pinyin": "kànshū",
+        "meaning": "read books"
+      },
+      {
+        "id": "b1l03-g02-glossary-27",
+        "traditional": "一起",
+        "pinyin": "yìqǐ",
+        "meaning": "together"
+      },
+      {
+        "id": "b1l03-g02-glossary-28",
+        "traditional": "去",
+        "pinyin": "qù",
+        "meaning": "go"
+      },
+      {
+        "id": "b1l03-g02-glossary-29",
+        "traditional": "好不好",
+        "pinyin": "hǎo bù hǎo",
+        "meaning": "how about it; okay or not"
+      },
+      {
+        "id": "b1l03-g02-glossary-30",
+        "traditional": "好",
+        "pinyin": "hǎo",
+        "meaning": "good; okay"
+      },
+      {
+        "id": "b1l03-g02-glossary-31",
+        "traditional": "啊",
+        "pinyin": "a",
+        "meaning": "ending word that shows agreement"
+      },
+      {
+        "id": "b1l03-g02-glossary-32",
+        "traditional": "什麼",
+        "simplified": "什么",
+        "pinyin": "shénme",
+        "meaning": "what"
+      },
+      {
+        "id": "b1l03-g02-glossary-33",
+        "traditional": "誰",
+        "simplified": "谁",
+        "pinyin": "shéi",
+        "meaning": "who"
+      },
+      {
+        "id": "b1l03-g02-glossary-34",
+        "traditional": "呢",
+        "pinyin": "ne",
+        "meaning": "what about; asks the question back"
+      },
+      {
+        "id": "b1l03-g02-glossary-35",
+        "traditional": "幾",
+        "simplified": "几",
+        "pinyin": "jǐ",
+        "meaning": "how many; usually under ten"
+      },
+      {
+        "id": "b1l03-g02-glossary-36",
+        "traditional": "一",
+        "pinyin": "yī",
+        "meaning": "one"
+      },
+      {
+        "id": "b1l03-g02-glossary-37",
+        "traditional": "兩",
+        "simplified": "两",
+        "pinyin": "liǎng",
+        "meaning": "two before a measure word"
+      },
+      {
+        "id": "b1l03-g02-glossary-38",
+        "traditional": "三",
+        "pinyin": "sān",
+        "meaning": "three"
+      },
+      {
+        "id": "b1l03-g02-glossary-39",
+        "traditional": "四",
+        "pinyin": "sì",
+        "meaning": "four"
+      },
+      {
+        "id": "b1l03-g02-glossary-40",
+        "traditional": "五",
+        "pinyin": "wǔ",
+        "meaning": "five"
+      },
+      {
+        "id": "b1l03-g02-glossary-41",
+        "traditional": "個",
+        "simplified": "个",
+        "pinyin": "ge",
+        "meaning": "general measure word"
+      },
+      {
+        "id": "b1l03-g02-glossary-42",
+        "traditional": "本",
+        "pinyin": "běn",
+        "meaning": "measure word for books"
+      },
+      {
+        "id": "b1l03-g02-glossary-43",
+        "traditional": "朵",
+        "pinyin": "duǒ",
+        "meaning": "measure word for flowers"
+      },
+      {
+        "id": "b1l03-g02-glossary-44",
+        "traditional": "一些",
+        "pinyin": "yìxiē",
+        "meaning": "some"
+      },
+      {
+        "id": "b1l03-g02-glossary-45",
+        "traditional": "禮物",
+        "simplified": "礼物",
+        "pinyin": "lǐwù",
+        "meaning": "gift"
+      },
+      {
+        "id": "b1l03-g02-glossary-46",
+        "traditional": "中文書",
+        "simplified": "中文书",
+        "pinyin": "Zhōngwén shū",
+        "meaning": "book in Chinese"
+      },
+      {
+        "id": "b1l03-g02-glossary-47",
+        "traditional": "英文書",
+        "simplified": "英文书",
+        "pinyin": "Yīngwén shū",
+        "meaning": "book in English"
+      },
+      {
+        "id": "b1l03-g02-glossary-48",
+        "traditional": "書",
+        "simplified": "书",
+        "pinyin": "shū",
+        "meaning": "book"
+      },
+      {
+        "id": "b1l03-g02-glossary-49",
+        "traditional": "花",
+        "pinyin": "huā",
+        "meaning": "flower; flowers"
+      },
+      {
+        "id": "b1l03-g02-glossary-50",
+        "traditional": "大蛋糕",
+        "pinyin": "dà dàngāo",
+        "meaning": "large cake"
+      },
+      {
+        "id": "b1l03-g02-glossary-51",
+        "traditional": "蛋糕",
+        "pinyin": "dàngāo",
+        "meaning": "cake"
+      },
+      {
+        "id": "b1l03-g02-glossary-52",
+        "traditional": "和",
+        "pinyin": "hé",
+        "meaning": "and"
+      }
+    ],
+    "pattern": "Giver + 送 + receiver + gift",
+    "patternColumns": [
+      "Giver + 送",
+      "Who receives it",
+      "What they receive"
+    ],
+    "patternAccentColumn": 1,
+    "discoveryLab": {
+      "title": "Put the person first, then the gift",
+      "description": "送 takes two things after it: first the person who gets the gift, then the gift itself.",
+      "prompt": "What belongs immediately after 送?",
+      "choices": [
+        {
+          "id": "g2-mom",
+          "label": "Person then gift",
+          "traditional": "媽媽送我一個禮物。",
+          "simplified": "妈妈送我一个礼物。",
+          "pinyin": "Māma sòng wǒ yí ge lǐwù.",
+          "english": "Mom gave me a gift.",
+          "note": "我 is the receiver. 一個禮物 is the gift."
+        },
+        {
+          "id": "g2-question-person",
+          "label": "Ask for the person",
+          "traditional": "你要送誰蛋糕？",
+          "simplified": "你要送谁蛋糕？",
+          "pinyin": "Nǐ yào sòng shéi dàngāo?",
+          "english": "Who will you give cake to?",
+          "note": "誰 asks for the person who gets the gift."
+        },
+        {
+          "id": "g2-question-gift",
+          "label": "Ask for the gift",
+          "traditional": "你想送媽媽什麼？",
+          "simplified": "你想送妈妈什么？",
+          "pinyin": "Nǐ xiǎng sòng māma shénme?",
+          "english": "What would you like to give Mom?",
+          "note": "媽媽 names the person who gets the gift. 什麼 asks for the gift."
+        },
+        {
+          "id": "g2-repair",
+          "label": "Repair the order",
+          "traditional": "我送一本書她 → 我送她一本書",
+          "simplified": "我送一本书她 → 我送她一本书",
+          "pinyin": "Wǒ sòng yì běn shū tā → wǒ sòng tā yì běn shū",
+          "english": "I give her a book.",
+          "note": "Keep the receiver before the gift.",
+          "isCorrection": true
+        }
+      ],
+      "takeaway": "After 送, answer “who?” before “what?”"
+    },
+    "patternRows": [
+      {
+        "id": "g2-pattern-1",
+        "subject": [
+          {
+            "id": "g2-p1-mom",
+            "traditional": "媽媽",
+            "simplified": "妈妈",
+            "pinyin": "māma",
+            "meaning": "mom"
+          },
+          {
+            "id": "g2-p1-give",
+            "traditional": "送",
+            "pinyin": "sòng",
+            "meaning": "give as a gift"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g2-p1-me",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g2-p1-one",
+            "traditional": "一",
+            "pinyin": "yī",
+            "meaning": "one"
+          },
+          {
+            "id": "g2-p1-ge",
+            "traditional": "個",
+            "simplified": "个",
+            "pinyin": "ge",
+            "meaning": "general measure word"
+          },
+          {
+            "id": "g2-p1-gift",
+            "traditional": "禮物",
+            "simplified": "礼物",
+            "pinyin": "lǐwù",
+            "meaning": "gift"
+          }
+        ],
+        "english": "Mom gave me a gift."
+      },
+      {
+        "id": "g2-pattern-2",
+        "subject": [
+          {
+            "id": "g2-p2-i",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
+          },
+          {
+            "id": "g2-p2-want",
+            "traditional": "想",
+            "pinyin": "xiǎng",
+            "meaning": "would like to; want to"
+          },
+          {
+            "id": "g2-p2-give",
+            "traditional": "送",
+            "pinyin": "sòng",
+            "meaning": "give as a gift"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g2-p2-her",
+            "traditional": "她",
+            "pinyin": "tā",
+            "meaning": "she; her"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g2-p2-flower",
+            "traditional": "花",
+            "pinyin": "huā",
+            "meaning": "flower; flowers"
+          }
+        ],
+        "english": "I would like to give her flowers."
+      },
+      {
+        "id": "g2-pattern-3",
+        "subject": [
+          {
+            "id": "g2-p3-you",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          },
+          {
+            "id": "g2-p3-want",
+            "traditional": "要",
+            "pinyin": "yào",
+            "meaning": "want to; intend to"
+          },
+          {
+            "id": "g2-p3-give",
+            "traditional": "送",
+            "pinyin": "sòng",
+            "meaning": "give as a gift"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g2-p3-who",
+            "traditional": "誰",
+            "simplified": "谁",
+            "pinyin": "shéi",
+            "meaning": "who"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g2-p3-cake",
+            "traditional": "蛋糕",
+            "pinyin": "dàngāo",
+            "meaning": "cake",
+            "suffix": "？"
+          }
+        ],
+        "english": "Who will you give cake to?"
+      }
+    ],
+    "confusion": {
+      "title": "Don't mix these up",
+      "items": [
+        {
+          "id": "g2-confusion-order",
+          "question": "Do I say the gift first or the person first after 送?",
+          "answer": "Person first, then the gift. There is no word for \"to\" in Chinese here.",
+          "wrongTraditional": "我送一本書她。",
+          "wrongSimplified": "我送一本书她。",
+          "right": {
+            "traditional": "我送她一本書。",
+            "simplified": "我送她一本书。",
+            "pinyin": "Wǒ sòng tā yì běn shū.",
+            "english": "I give her a book.",
+            "words": [
+              {
+                "id": "b1l03-g2-conf-1-word-1",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
+              },
+              {
+                "id": "b1l03-g2-conf-1-word-2",
+                "traditional": "送",
+                "pinyin": "sòng",
+                "meaning": "give as a gift"
+              },
+              {
+                "id": "b1l03-g2-conf-1-word-3",
+                "traditional": "她",
+                "pinyin": "tā",
+                "meaning": "she; her"
+              },
+              {
+                "id": "b1l03-g2-conf-1-word-4",
+                "traditional": "一",
+                "pinyin": "yī",
+                "meaning": "one"
+              },
+              {
+                "id": "b1l03-g2-conf-1-word-5",
+                "traditional": "本",
+                "pinyin": "běn",
+                "meaning": "measure word for books"
+              },
+              {
+                "id": "b1l03-g2-conf-1-word-6",
+                "traditional": "書",
+                "simplified": "书",
+                "pinyin": "shū",
+                "meaning": "book",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "g2-confusion-shei-vs-shenme",
+          "question": "How do I ask WHO gets the gift — 誰 or 什麼?",
+          "answer": "誰 asks for the person who receives it. 什麼 asks for the gift itself.",
+          "wrongTraditional": "你想送什麼蛋糕？",
+          "wrongSimplified": "你想送什么蛋糕？",
+          "right": {
+            "traditional": "你想送誰蛋糕？",
+            "simplified": "你想送谁蛋糕？",
+            "pinyin": "Nǐ xiǎng sòng shéi dàngāo?",
+            "english": "Who will you give the cake to?",
+            "words": [
+              {
+                "id": "b1l03-g2-conf-2-word-1",
+                "traditional": "你",
+                "pinyin": "nǐ",
+                "meaning": "you"
+              },
+              {
+                "id": "b1l03-g2-conf-2-word-2",
+                "traditional": "想",
+                "pinyin": "xiǎng",
+                "meaning": "would like to; want to"
+              },
+              {
+                "id": "b1l03-g2-conf-2-word-3",
+                "traditional": "送",
+                "pinyin": "sòng",
+                "meaning": "give as a gift"
+              },
+              {
+                "id": "b1l03-g2-conf-2-word-4",
+                "traditional": "誰",
+                "simplified": "谁",
+                "pinyin": "shéi",
+                "meaning": "who"
+              },
+              {
+                "id": "b1l03-g2-conf-2-word-5",
+                "traditional": "蛋糕",
+                "pinyin": "dàngāo",
+                "meaning": "cake",
+                "suffix": "？"
+              }
+            ]
+          }
+        },
+        {
+          "id": "g2-confusion-yao-vs-xiang",
+          "question": "想 and 要 both mean \"want\". Do I need both?",
+          "answer": "No, just one. 想 is a soft \"would like to\"; 要 is a firmer \"plan to\".",
+          "wrongTraditional": "我要想買一本書。",
+          "wrongSimplified": "我要想买一本书。",
+          "right": {
+            "traditional": "我要買一本書。",
+            "simplified": "我要买一本书。",
+            "pinyin": "Wǒ yào mǎi yì běn shū.",
+            "english": "I want to buy a book.",
+            "words": [
+              {
+                "id": "b1l03-g2-conf-3-word-1",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
+              },
+              {
+                "id": "b1l03-g2-conf-3-word-2",
+                "traditional": "要",
+                "pinyin": "yào",
+                "meaning": "want to; intend to"
+              },
+              {
+                "id": "b1l03-g2-conf-3-word-3",
+                "traditional": "買",
+                "simplified": "买",
+                "pinyin": "mǎi",
+                "meaning": "buy"
+              },
+              {
+                "id": "b1l03-g2-conf-3-word-4",
+                "traditional": "一",
+                "pinyin": "yī",
+                "meaning": "one"
+              },
+              {
+                "id": "b1l03-g2-conf-3-word-5",
+                "traditional": "本",
+                "pinyin": "běn",
+                "meaning": "measure word for books"
+              },
+              {
+                "id": "b1l03-g2-conf-3-word-6",
+                "traditional": "書",
+                "simplified": "书",
+                "pinyin": "shū",
+                "meaning": "book",
+                "suffix": "。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "examples": [
+      {
+        "id": "g2-example-1",
+        "number": 1,
+        "text": {
+          "traditional": "A：你想送媽媽什麼？ B：我想送她花。",
+          "simplified": "A：你想送妈妈什么？ B：我想送她花。",
+          "pinyin": "A: Nǐ xiǎng sòng māma shénme? B: Wǒ xiǎng sòng tā huā.",
+          "english": "A: What would you like to give Mom? B: I would like to give her flowers.",
+          "words": [
+            {
+              "id": "b1l03-g2-e1-word-1",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l03-g2-e1-word-2",
+              "traditional": "想",
+              "pinyin": "xiǎng",
+              "meaning": "would like to; want to"
+            },
+            {
+              "id": "b1l03-g2-e1-word-3",
+              "traditional": "送",
+              "pinyin": "sòng",
+              "meaning": "give as a gift"
+            },
+            {
+              "id": "b1l03-g2-e1-word-4",
+              "traditional": "媽媽",
+              "simplified": "妈妈",
+              "pinyin": "māma",
+              "meaning": "mom"
+            },
+            {
+              "id": "b1l03-g2-e1-word-5",
+              "traditional": "什麼",
+              "simplified": "什么",
+              "pinyin": "shénme",
+              "meaning": "what"
+            },
+            {
+              "id": "b1l03-g2-e1-word-6",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me",
+              "prefix": "？ B："
+            },
+            {
+              "id": "b1l03-g2-e1-word-7",
+              "traditional": "想",
+              "pinyin": "xiǎng",
+              "meaning": "would like to; want to"
+            },
+            {
+              "id": "b1l03-g2-e1-word-8",
+              "traditional": "送",
+              "pinyin": "sòng",
+              "meaning": "give as a gift"
+            },
+            {
+              "id": "b1l03-g2-e1-word-9",
+              "traditional": "她",
+              "pinyin": "tā",
+              "meaning": "she; her"
+            },
+            {
+              "id": "b1l03-g2-e1-word-10",
+              "traditional": "花",
+              "pinyin": "huā",
+              "meaning": "flower; flowers",
+              "suffix": "。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g2-example-2",
+        "number": 2,
+        "text": {
+          "traditional": "A：你要送誰蛋糕？ B：我要送老師蛋糕。",
+          "simplified": "A：你要送谁蛋糕？ B：我要送老师蛋糕。",
+          "pinyin": "A: Nǐ yào sòng shéi dàngāo? B: Wǒ yào sòng lǎoshī dàngāo.",
+          "english": "A: Who will you give cake to? B: I will give the teacher cake.",
+          "words": [
+            {
+              "id": "b1l03-g2-e2-word-1",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l03-g2-e2-word-2",
+              "traditional": "要",
+              "pinyin": "yào",
+              "meaning": "want to; intend to"
+            },
+            {
+              "id": "b1l03-g2-e2-word-3",
+              "traditional": "送",
+              "pinyin": "sòng",
+              "meaning": "give as a gift"
+            },
+            {
+              "id": "b1l03-g2-e2-word-4",
+              "traditional": "誰",
+              "simplified": "谁",
+              "pinyin": "shéi",
+              "meaning": "who"
+            },
+            {
+              "id": "b1l03-g2-e2-word-5",
+              "traditional": "蛋糕",
+              "pinyin": "dàngāo",
+              "meaning": "cake"
+            },
+            {
+              "id": "b1l03-g2-e2-word-6",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me",
+              "prefix": "？ B："
+            },
+            {
+              "id": "b1l03-g2-e2-word-7",
+              "traditional": "要",
+              "pinyin": "yào",
+              "meaning": "want to; intend to"
+            },
+            {
+              "id": "b1l03-g2-e2-word-8",
+              "traditional": "送",
+              "pinyin": "sòng",
+              "meaning": "give as a gift"
+            },
+            {
+              "id": "b1l03-g2-e2-word-9",
+              "traditional": "老師",
+              "simplified": "老师",
+              "pinyin": "lǎoshī",
+              "meaning": "teacher"
+            },
+            {
+              "id": "b1l03-g2-e2-word-10",
+              "traditional": "蛋糕",
+              "pinyin": "dàngāo",
+              "meaning": "cake",
+              "suffix": "。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g2-example-3",
+        "number": 3,
+        "text": {
+          "traditional": "A：你想送他什麼禮物？ B：我想送他一本中文書。",
+          "simplified": "A：你想送他什么礼物？ B：我想送他一本中文书。",
+          "pinyin": "A: Nǐ xiǎng sòng tā shénme lǐwù? B: Wǒ xiǎng sòng tā yì běn Zhōngwén shū.",
+          "english": "A: What gift would you like to give him? B: I would like to give him a Chinese book.",
+          "words": [
+            {
+              "id": "b1l03-g2-e3-word-1",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l03-g2-e3-word-2",
+              "traditional": "想",
+              "pinyin": "xiǎng",
+              "meaning": "would like to; want to"
+            },
+            {
+              "id": "b1l03-g2-e3-word-3",
+              "traditional": "送",
+              "pinyin": "sòng",
+              "meaning": "give as a gift"
+            },
+            {
+              "id": "b1l03-g2-e3-word-4",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he; him"
+            },
+            {
+              "id": "b1l03-g2-e3-word-5",
+              "traditional": "什麼",
+              "simplified": "什么",
+              "pinyin": "shénme",
+              "meaning": "what"
+            },
+            {
+              "id": "b1l03-g2-e3-word-6",
+              "traditional": "禮物",
+              "simplified": "礼物",
+              "pinyin": "lǐwù",
+              "meaning": "gift"
+            },
+            {
+              "id": "b1l03-g2-e3-word-7",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me",
+              "prefix": "？ B："
+            },
+            {
+              "id": "b1l03-g2-e3-word-8",
+              "traditional": "想",
+              "pinyin": "xiǎng",
+              "meaning": "would like to; want to"
+            },
+            {
+              "id": "b1l03-g2-e3-word-9",
+              "traditional": "送",
+              "pinyin": "sòng",
+              "meaning": "give as a gift"
+            },
+            {
+              "id": "b1l03-g2-e3-word-10",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he; him"
+            },
+            {
+              "id": "b1l03-g2-e3-word-11",
+              "traditional": "一",
+              "pinyin": "yī",
+              "meaning": "one"
+            },
+            {
+              "id": "b1l03-g2-e3-word-12",
+              "traditional": "本",
+              "pinyin": "běn",
+              "meaning": "measure word for books"
+            },
+            {
+              "id": "b1l03-g2-e3-word-13",
+              "traditional": "中文書",
+              "simplified": "中文书",
+              "pinyin": "Zhōngwén shū",
+              "meaning": "book in Chinese",
+              "suffix": "。"
+            }
+          ]
+        }
+      }
+    ],
+    "exerciseTitle": "Order each gift sentence",
+    "exercisePreview": "Put the giver, receiver, and gift in the right order.",
+    "exerciseInstruction": "Build each sentence from left to right. Keep the receiver directly after 送.",
+    "exerciseNote": "The pictures in the book show who gives and who receives each gift. The app keeps those roles. The book prints no answer key.",
+    "exerciseResponseMode": "text",
+    "exerciseCues": [
+      {
+        "id": "g2-cue-1",
+        "label": "Scene 1",
+        "pinyin": "bàba → tā → shū",
+        "detail": "Dad gives a book to a boy."
+      },
+      {
+        "id": "g2-cue-2",
+        "label": "Scene 2",
+        "pinyin": "wǒ → tā → dàngāo",
+        "detail": "I plan to give a large cake to her."
+      },
+      {
+        "id": "g2-cue-3",
+        "label": "Scene 3",
+        "pinyin": "wǒ → Yīngguó tóngxué → shū",
+        "detail": "I give a Chinese book to a British classmate."
+      }
+    ],
+    "questions": [
+      {
+        "id": "g2-question-1",
+        "number": 1,
+        "segments": [
+          {
+            "type": "blank",
+            "id": "g2-q1-giver",
+            "answer": "爸爸",
+            "hint": "Who gives the gift?"
+          },
+          {
+            "type": "blank",
+            "id": "g2-q1-verb",
+            "answer": "送",
+            "hint": "Use the gift-giving verb."
+          },
+          {
+            "type": "blank",
+            "id": "g2-q1-receiver",
+            "answer": "他",
+            "hint": "The person comes before the gift."
+          },
+          {
+            "type": "blank",
+            "id": "g2-q1-gift",
+            "answer": "一本書",
+            "answerSimplified": "一本书",
+            "hint": "Finish with the gift."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g2-q1-dad",
+            "traditional": "爸爸",
+            "pinyin": "bàba",
+            "meaning": "dad"
+          },
+          {
+            "id": "g2-q1-give",
+            "traditional": "送",
+            "pinyin": "sòng",
+            "meaning": "give as a gift"
+          },
+          {
+            "id": "g2-q1-him",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "him"
+          },
+          {
+            "id": "g2-q1-book",
+            "traditional": "一本書",
+            "simplified": "一本书",
+            "pinyin": "yì běn shū",
+            "meaning": "one book"
+          }
+        ],
+        "correctFeedback": "爸爸 is the giver, 他 is the receiver, and 一本書 is the gift.",
+        "repairFeedback": "Use giver + 送 + person + gift. The picture makes 他 the receiver."
+      },
+      {
+        "id": "g2-question-2",
+        "number": 2,
+        "segments": [
+          {
+            "type": "blank",
+            "id": "g2-q2-giver",
+            "answer": "我",
+            "hint": "Start with the giver."
+          },
+          {
+            "type": "blank",
+            "id": "g2-q2-want",
+            "answer": "想",
+            "hint": "Add “would like to.”"
+          },
+          {
+            "type": "blank",
+            "id": "g2-q2-give",
+            "answer": "送",
+            "hint": "Now add the giving verb."
+          },
+          {
+            "type": "blank",
+            "id": "g2-q2-receiver",
+            "answer": "她",
+            "hint": "Who receives the cake?"
+          },
+          {
+            "type": "blank",
+            "id": "g2-q2-gift",
+            "answer": "一個大蛋糕",
+            "answerSimplified": "一个大蛋糕",
+            "hint": "Put the gift last."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g2-q2-i",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I"
+          },
+          {
+            "id": "g2-q2-would-like",
+            "traditional": "想",
+            "pinyin": "xiǎng",
+            "meaning": "would like to"
+          },
+          {
+            "id": "g2-q2-give-tile",
+            "traditional": "送",
+            "pinyin": "sòng",
+            "meaning": "give as a gift"
+          },
+          {
+            "id": "g2-q2-her",
+            "traditional": "她",
+            "pinyin": "tā",
+            "meaning": "her"
+          },
+          {
+            "id": "g2-q2-cake",
+            "traditional": "一個大蛋糕",
+            "simplified": "一个大蛋糕",
+            "pinyin": "yí ge dà dàngāo",
+            "meaning": "a large cake"
+          }
+        ],
+        "correctFeedback": "想 comes before 送, then the receiver 她 comes before the cake.",
+        "repairFeedback": "Build: 我 + 想 + 送 + 她 + 一個大蛋糕."
+      },
+      {
+        "id": "g2-question-3",
+        "number": 3,
+        "segments": [
+          {
+            "type": "blank",
+            "id": "g2-q3-giver",
+            "answer": "我",
+            "hint": "Who gives the gift?"
+          },
+          {
+            "type": "blank",
+            "id": "g2-q3-give",
+            "answer": "送",
+            "hint": "Use 送."
+          },
+          {
+            "type": "blank",
+            "id": "g2-q3-receiver",
+            "answer": "英國同學",
+            "answerSimplified": "英国同学",
+            "hint": "Who receives it?"
+          },
+          {
+            "type": "blank",
+            "id": "g2-q3-gift",
+            "answer": "一本中文書",
+            "answerSimplified": "一本中文书",
+            "hint": "What do they receive?"
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g2-q3-i",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I"
+          },
+          {
+            "id": "g2-q3-give-tile",
+            "traditional": "送",
+            "pinyin": "sòng",
+            "meaning": "give as a gift"
+          },
+          {
+            "id": "g2-q3-classmate",
+            "traditional": "英國同學",
+            "simplified": "英国同学",
+            "pinyin": "Yīngguó tóngxué",
+            "meaning": "British classmate"
+          },
+          {
+            "id": "g2-q3-book",
+            "traditional": "一本中文書",
+            "simplified": "一本中文书",
+            "pinyin": "yì běn Zhōngwén shū",
+            "meaning": "one Chinese book"
+          }
+        ],
+        "correctFeedback": "英國同學 is the receiver, so it stays between 送 and the gift.",
+        "repairFeedback": "Do not place the book before the person. After 送: receiver first, gift second."
+      }
+    ]
+  },
+  "LESSON_THREE_PART_ONE": {
+    "id": "B1L03-P01-D01",
+    "bookId": 1,
+    "lessonId": 3,
+    "partId": 1,
+    "title": "Grammar 1–2 · Pages 73–75",
+    "grammarPages": [
+      {
+        "id": "B1L03-G01-P73",
+        "bookId": 1,
+        "lessonId": 3,
+        "partId": 1,
+        "lessonTitle": "買生日禮物",
+        "lessonTitleEnglish": "Buying Birthday Gifts",
+        "grammarNumber": 1,
+        "titleTraditional": "數字 + 量詞 + 名詞",
+        "titleEnglish": "Count Things with Measure Words",
+        "learnerPromise": "Ask for and say how many people, books, flowers, or gifts there are.",
+        "printedPages": [
+          73,
+          74
+        ],
+        "audioReference": "03-1-3",
+        "explanation": "Chinese needs a measure word between a number and noun: 個 for general nouns, 本 for books, and 朵 for flowers. Before a measure word, say 兩 for “two,” not 二.",
+        "focusTerms": [
+          "數字",
+          "数字",
+          "量詞",
+          "量词",
+          "名詞",
+          "名词",
+          "個",
+          "个",
+          "本",
+          "朵",
+          "兩",
+          "两",
+          "幾",
+          "几"
+        ],
+        "teachingGlossary": [
+          {
+            "id": "b1l03-g01-glossary-1",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
+          },
+          {
+            "id": "b1l03-g01-glossary-2",
+            "traditional": "我們",
+            "simplified": "我们",
+            "pinyin": "wǒmen",
+            "meaning": "we; us"
+          },
+          {
+            "id": "b1l03-g01-glossary-3",
+            "traditional": "你們",
+            "simplified": "你们",
+            "pinyin": "nǐmen",
+            "meaning": "you all"
+          },
+          {
+            "id": "b1l03-g01-glossary-4",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          },
+          {
+            "id": "b1l03-g01-glossary-5",
+            "traditional": "妳",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          },
+          {
+            "id": "b1l03-g01-glossary-6",
+            "traditional": "她",
+            "pinyin": "tā",
+            "meaning": "she; her"
+          },
+          {
+            "id": "b1l03-g01-glossary-7",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "he; him"
+          },
+          {
+            "id": "b1l03-g01-glossary-8",
+            "traditional": "爸爸",
+            "pinyin": "bàba",
+            "meaning": "dad"
+          },
+          {
+            "id": "b1l03-g01-glossary-9",
+            "traditional": "媽媽",
+            "simplified": "妈妈",
+            "pinyin": "māma",
+            "meaning": "mom"
+          },
+          {
+            "id": "b1l03-g01-glossary-10",
+            "traditional": "老師",
+            "simplified": "老师",
+            "pinyin": "lǎoshī",
+            "meaning": "teacher"
+          },
+          {
+            "id": "b1l03-g01-glossary-11",
+            "traditional": "英國同學",
+            "simplified": "英国同学",
+            "pinyin": "Yīngguó tóngxué",
+            "meaning": "British classmate"
+          },
+          {
+            "id": "b1l03-g01-glossary-12",
+            "traditional": "台灣朋友",
+            "simplified": "台湾朋友",
+            "pinyin": "Táiwān péngyǒu",
+            "meaning": "Taiwanese friend"
+          },
+          {
+            "id": "b1l03-g01-glossary-13",
+            "traditional": "新同學",
+            "simplified": "新同学",
+            "pinyin": "xīn tóngxué",
+            "meaning": "new classmate"
+          },
+          {
+            "id": "b1l03-g01-glossary-14",
+            "traditional": "友美",
+            "pinyin": "Yǒuměi",
+            "meaning": "Youmei"
+          },
+          {
+            "id": "b1l03-g01-glossary-15",
+            "traditional": "中明",
+            "pinyin": "Zhōngmíng",
+            "meaning": "Zhongming"
+          },
+          {
+            "id": "b1l03-g01-glossary-16",
+            "traditional": "明天",
+            "pinyin": "míngtiān",
+            "meaning": "tomorrow"
+          },
+          {
+            "id": "b1l03-g01-glossary-17",
+            "traditional": "生日",
+            "pinyin": "shēngrì",
+            "meaning": "birthday"
+          },
+          {
+            "id": "b1l03-g01-glossary-18",
+            "traditional": "是",
+            "pinyin": "shì",
+            "meaning": "is; am; are"
+          },
+          {
+            "id": "b1l03-g01-glossary-19",
+            "traditional": "的",
+            "pinyin": "de",
+            "meaning": "connects a describing word or owner to a thing"
+          },
+          {
+            "id": "b1l03-g01-glossary-20",
+            "traditional": "想",
+            "pinyin": "xiǎng",
+            "meaning": "would like to; want to"
+          },
+          {
+            "id": "b1l03-g01-glossary-21",
+            "traditional": "要",
+            "pinyin": "yào",
+            "meaning": "want to; intend to"
+          },
+          {
+            "id": "b1l03-g01-glossary-22",
+            "traditional": "送",
+            "pinyin": "sòng",
+            "meaning": "give as a gift"
+          },
+          {
+            "id": "b1l03-g01-glossary-23",
+            "traditional": "買",
+            "simplified": "买",
+            "pinyin": "mǎi",
+            "meaning": "buy"
+          },
+          {
+            "id": "b1l03-g01-glossary-24",
+            "traditional": "有",
+            "pinyin": "yǒu",
+            "meaning": "have"
+          },
+          {
+            "id": "b1l03-g01-glossary-25",
+            "traditional": "愛",
+            "simplified": "爱",
+            "pinyin": "ài",
+            "meaning": "love to"
+          },
+          {
+            "id": "b1l03-g01-glossary-26",
+            "traditional": "看書",
+            "simplified": "看书",
+            "pinyin": "kànshū",
+            "meaning": "read books"
+          },
+          {
+            "id": "b1l03-g01-glossary-27",
+            "traditional": "一起",
+            "pinyin": "yìqǐ",
+            "meaning": "together"
+          },
+          {
+            "id": "b1l03-g01-glossary-28",
+            "traditional": "去",
+            "pinyin": "qù",
+            "meaning": "go"
+          },
+          {
+            "id": "b1l03-g01-glossary-29",
+            "traditional": "好不好",
+            "pinyin": "hǎo bù hǎo",
+            "meaning": "how about it; okay or not"
+          },
+          {
+            "id": "b1l03-g01-glossary-30",
+            "traditional": "好",
+            "pinyin": "hǎo",
+            "meaning": "good; okay"
+          },
+          {
+            "id": "b1l03-g01-glossary-31",
+            "traditional": "啊",
+            "pinyin": "a",
+            "meaning": "ending word that shows agreement"
+          },
+          {
+            "id": "b1l03-g01-glossary-32",
+            "traditional": "什麼",
+            "simplified": "什么",
+            "pinyin": "shénme",
+            "meaning": "what"
+          },
+          {
+            "id": "b1l03-g01-glossary-33",
+            "traditional": "誰",
+            "simplified": "谁",
+            "pinyin": "shéi",
+            "meaning": "who"
+          },
+          {
+            "id": "b1l03-g01-glossary-34",
+            "traditional": "呢",
+            "pinyin": "ne",
+            "meaning": "what about; asks the question back"
+          },
+          {
+            "id": "b1l03-g01-glossary-35",
+            "traditional": "幾",
+            "simplified": "几",
+            "pinyin": "jǐ",
+            "meaning": "how many; usually under ten"
+          },
+          {
+            "id": "b1l03-g01-glossary-36",
+            "traditional": "一",
+            "pinyin": "yī",
+            "meaning": "one"
+          },
+          {
+            "id": "b1l03-g01-glossary-37",
+            "traditional": "兩",
+            "simplified": "两",
+            "pinyin": "liǎng",
+            "meaning": "two before a measure word"
+          },
+          {
+            "id": "b1l03-g01-glossary-38",
+            "traditional": "三",
+            "pinyin": "sān",
+            "meaning": "three"
+          },
+          {
+            "id": "b1l03-g01-glossary-39",
+            "traditional": "四",
+            "pinyin": "sì",
+            "meaning": "four"
+          },
+          {
+            "id": "b1l03-g01-glossary-40",
+            "traditional": "五",
+            "pinyin": "wǔ",
+            "meaning": "five"
+          },
+          {
+            "id": "b1l03-g01-glossary-41",
+            "traditional": "個",
+            "simplified": "个",
+            "pinyin": "ge",
+            "meaning": "general measure word"
+          },
+          {
+            "id": "b1l03-g01-glossary-42",
+            "traditional": "本",
+            "pinyin": "běn",
+            "meaning": "measure word for books"
+          },
+          {
+            "id": "b1l03-g01-glossary-43",
+            "traditional": "朵",
+            "pinyin": "duǒ",
+            "meaning": "measure word for flowers"
+          },
+          {
+            "id": "b1l03-g01-glossary-44",
+            "traditional": "一些",
+            "pinyin": "yìxiē",
+            "meaning": "some"
+          },
+          {
+            "id": "b1l03-g01-glossary-45",
+            "traditional": "禮物",
+            "simplified": "礼物",
+            "pinyin": "lǐwù",
+            "meaning": "gift"
+          },
+          {
+            "id": "b1l03-g01-glossary-46",
+            "traditional": "中文書",
+            "simplified": "中文书",
+            "pinyin": "Zhōngwén shū",
+            "meaning": "book in Chinese"
+          },
+          {
+            "id": "b1l03-g01-glossary-47",
+            "traditional": "英文書",
+            "simplified": "英文书",
+            "pinyin": "Yīngwén shū",
+            "meaning": "book in English"
+          },
+          {
+            "id": "b1l03-g01-glossary-48",
+            "traditional": "書",
+            "simplified": "书",
+            "pinyin": "shū",
+            "meaning": "book"
+          },
+          {
+            "id": "b1l03-g01-glossary-49",
+            "traditional": "花",
+            "pinyin": "huā",
+            "meaning": "flower; flowers"
+          },
+          {
+            "id": "b1l03-g01-glossary-50",
+            "traditional": "大蛋糕",
+            "pinyin": "dà dàngāo",
+            "meaning": "large cake"
+          },
+          {
+            "id": "b1l03-g01-glossary-51",
+            "traditional": "蛋糕",
+            "pinyin": "dàngāo",
+            "meaning": "cake"
+          },
+          {
+            "id": "b1l03-g01-glossary-52",
+            "traditional": "和",
+            "pinyin": "hé",
+            "meaning": "and"
+          }
+        ],
+        "pattern": "Number or 幾 + measure word + noun",
+        "patternColumns": [
+          "How many",
+          "Measure word",
+          "Thing"
+        ],
+        "patternAccentColumn": 1,
+        "discoveryLab": {
+          "title": "Pick the right measure word",
+          "description": "The measure word links the number to the thing. The thing you name chooses the measure word.",
+          "prompt": "What are you counting?",
+          "choices": [
+            {
+              "id": "g1-books",
+              "label": "Books · 本",
+              "traditional": "兩本書",
+              "simplified": "两本书",
+              "pinyin": "liǎng běn shū",
+              "english": "two books",
+              "note": "Use 本 for books and similar things."
+            },
+            {
+              "id": "g1-flowers",
+              "label": "Flowers · 朵",
+              "traditional": "幾朵花？",
+              "simplified": "几朵花？",
+              "pinyin": "jǐ duǒ huā?",
+              "english": "how many flowers?",
+              "note": "朵 counts flowers. 幾 still needs a measure word."
+            },
+            {
+              "id": "g1-general",
+              "label": "General · 個",
+              "traditional": "一個蛋糕",
+              "simplified": "一个蛋糕",
+              "pinyin": "yí ge dàngāo",
+              "english": "one cake",
+              "note": "個 is the useful general measure word in this lesson."
+            },
+            {
+              "id": "g1-repair",
+              "label": "Repair “two”",
+              "traditional": "二本書 → 兩本書",
+              "simplified": "二本书 → 两本书",
+              "pinyin": "èr běn shū → liǎng běn shū",
+              "english": "two books",
+              "note": "Use 兩 before a measure word when counting two things.",
+              "isCorrection": true
+            }
+          ],
+          "takeaway": "Put them in order: number + measure word + thing: 兩 + 本 + 書."
+        },
+        "patternRows": [
+          {
+            "id": "g1-pattern-1",
+            "subject": [
+              {
+                "id": "g1-p1-one",
+                "traditional": "一",
+                "pinyin": "yī",
+                "meaning": "one"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g1-p1-ge",
+                "traditional": "個",
+                "simplified": "个",
+                "pinyin": "ge",
+                "meaning": "general measure word"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g1-p1-cake",
+                "traditional": "蛋糕",
+                "pinyin": "dàngāo",
+                "meaning": "cake"
+              }
+            ],
+            "english": "a cake"
+          },
+          {
+            "id": "g1-pattern-2",
+            "subject": [
+              {
+                "id": "g1-p2-two",
+                "traditional": "兩",
+                "simplified": "两",
+                "pinyin": "liǎng",
+                "meaning": "two before a measure word"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g1-p2-ben",
+                "traditional": "本",
+                "pinyin": "běn",
+                "meaning": "measure word for books"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g1-p2-book",
+                "traditional": "書",
+                "simplified": "书",
+                "pinyin": "shū",
+                "meaning": "book"
+              }
+            ],
+            "english": "two books"
+          },
+          {
+            "id": "g1-pattern-3",
+            "subject": [
+              {
+                "id": "g1-p3-how-many",
+                "traditional": "幾",
+                "simplified": "几",
+                "pinyin": "jǐ",
+                "meaning": "how many; usually under ten"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g1-p3-duo",
+                "traditional": "朵",
+                "pinyin": "duǒ",
+                "meaning": "measure word for flowers"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g1-p3-flower",
+                "traditional": "花",
+                "pinyin": "huā",
+                "meaning": "flower; flowers",
+                "suffix": "？"
+              }
+            ],
+            "english": "how many flowers?"
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "g1-confusion-missing-measure",
+              "question": "Do I need a word between the number and the thing?",
+              "answer": "Yes — a measure word. Number and thing never sit side by side.",
+              "wrongTraditional": "我買三蛋糕。",
+              "wrongSimplified": "我买三蛋糕。",
+              "right": {
+                "traditional": "我買三個蛋糕。",
+                "simplified": "我买三个蛋糕。",
+                "pinyin": "Wǒ mǎi sān ge dàngāo.",
+                "english": "I buy three cakes.",
+                "words": [
+                  {
+                    "id": "b1l03-g1-conf-1-word-1",
+                    "traditional": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I; me"
+                  },
+                  {
+                    "id": "b1l03-g1-conf-1-word-2",
+                    "traditional": "買",
+                    "simplified": "买",
+                    "pinyin": "mǎi",
+                    "meaning": "buy"
+                  },
+                  {
+                    "id": "b1l03-g1-conf-1-word-3",
+                    "traditional": "三",
+                    "pinyin": "sān",
+                    "meaning": "three"
+                  },
+                  {
+                    "id": "b1l03-g1-conf-1-word-4",
+                    "traditional": "個",
+                    "simplified": "个",
+                    "pinyin": "ge",
+                    "meaning": "general measure word"
+                  },
+                  {
+                    "id": "b1l03-g1-conf-1-word-5",
+                    "traditional": "蛋糕",
+                    "pinyin": "dàngāo",
+                    "meaning": "cake",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "g1-confusion-er-vs-liang",
+              "question": "Why do I say 兩 for \"two\" here, not 二?",
+              "answer": "Before a measure word, two becomes 兩. 二 is only for plain counting, like 一二三.",
+              "wrongTraditional": "我有二本書。",
+              "wrongSimplified": "我有二本书。",
+              "right": {
+                "traditional": "我有兩本書。",
+                "simplified": "我有两本书。",
+                "pinyin": "Wǒ yǒu liǎng běn shū.",
+                "english": "I have two books.",
+                "words": [
+                  {
+                    "id": "b1l03-g1-conf-2-word-1",
+                    "traditional": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I; me"
+                  },
+                  {
+                    "id": "b1l03-g1-conf-2-word-2",
+                    "traditional": "有",
+                    "pinyin": "yǒu",
+                    "meaning": "have"
+                  },
+                  {
+                    "id": "b1l03-g1-conf-2-word-3",
+                    "traditional": "兩",
+                    "simplified": "两",
+                    "pinyin": "liǎng",
+                    "meaning": "two before a measure word"
+                  },
+                  {
+                    "id": "b1l03-g1-conf-2-word-4",
+                    "traditional": "本",
+                    "pinyin": "běn",
+                    "meaning": "measure word for books"
+                  },
+                  {
+                    "id": "b1l03-g1-conf-2-word-5",
+                    "traditional": "書",
+                    "simplified": "书",
+                    "pinyin": "shū",
+                    "meaning": "book",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "g1-confusion-ge-vs-duo",
+              "question": "Can I count everything with 個?",
+              "answer": "No. 個 is the general one, but books take 本 and flowers take 朵.",
+              "wrongTraditional": "她有三個花。",
+              "wrongSimplified": "她有三个花。",
+              "right": {
+                "traditional": "她有三朵花。",
+                "simplified": "她有三朵花。",
+                "pinyin": "Tā yǒu sān duǒ huā.",
+                "english": "She has three flowers.",
+                "words": [
+                  {
+                    "id": "b1l03-g1-conf-3-word-1",
+                    "traditional": "她",
+                    "pinyin": "tā",
+                    "meaning": "she; her"
+                  },
+                  {
+                    "id": "b1l03-g1-conf-3-word-2",
+                    "traditional": "有",
+                    "pinyin": "yǒu",
+                    "meaning": "have"
+                  },
+                  {
+                    "id": "b1l03-g1-conf-3-word-3",
+                    "traditional": "三",
+                    "pinyin": "sān",
+                    "meaning": "three"
+                  },
+                  {
+                    "id": "b1l03-g1-conf-3-word-4",
+                    "traditional": "朵",
+                    "pinyin": "duǒ",
+                    "meaning": "measure word for flowers"
+                  },
+                  {
+                    "id": "b1l03-g1-conf-3-word-5",
+                    "traditional": "花",
+                    "pinyin": "huā",
+                    "meaning": "flower; flowers",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "examples": [
+          {
+            "id": "g1-example-1",
+            "number": 1,
+            "text": {
+              "traditional": "A：你有幾個台灣朋友？ B：我有三個台灣朋友。",
+              "simplified": "A：你有几个台湾朋友？ B：我有三个台湾朋友。",
+              "pinyin": "A: Nǐ yǒu jǐ ge Táiwān péngyǒu? B: Wǒ yǒu sān ge Táiwān péngyǒu.",
+              "english": "A: How many Taiwanese friends do you have? B: I have three Taiwanese friends.",
+              "words": [
+                {
+                  "id": "b1l03-g1-e1-word-1",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l03-g1-e1-word-2",
+                  "traditional": "有",
+                  "pinyin": "yǒu",
+                  "meaning": "have"
+                },
+                {
+                  "id": "b1l03-g1-e1-word-3",
+                  "traditional": "幾",
+                  "simplified": "几",
+                  "pinyin": "jǐ",
+                  "meaning": "how many; usually under ten"
+                },
+                {
+                  "id": "b1l03-g1-e1-word-4",
+                  "traditional": "個",
+                  "simplified": "个",
+                  "pinyin": "ge",
+                  "meaning": "general measure word"
+                },
+                {
+                  "id": "b1l03-g1-e1-word-5",
+                  "traditional": "台灣朋友",
+                  "simplified": "台湾朋友",
+                  "pinyin": "Táiwān péngyǒu",
+                  "meaning": "Taiwanese friend"
+                },
+                {
+                  "id": "b1l03-g1-e1-word-6",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me",
+                  "prefix": "？ B："
+                },
+                {
+                  "id": "b1l03-g1-e1-word-7",
+                  "traditional": "有",
+                  "pinyin": "yǒu",
+                  "meaning": "have"
+                },
+                {
+                  "id": "b1l03-g1-e1-word-8",
+                  "traditional": "三",
+                  "pinyin": "sān",
+                  "meaning": "three"
+                },
+                {
+                  "id": "b1l03-g1-e1-word-9",
+                  "traditional": "個",
+                  "simplified": "个",
+                  "pinyin": "ge",
+                  "meaning": "general measure word"
+                },
+                {
+                  "id": "b1l03-g1-e1-word-10",
+                  "traditional": "台灣朋友",
+                  "simplified": "台湾朋友",
+                  "pinyin": "Táiwān péngyǒu",
+                  "meaning": "Taiwanese friend",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g1-example-2",
+            "number": 2,
+            "text": {
+              "traditional": "A：你有幾本中文書？ B：我有五本中文書。",
+              "simplified": "A：你有几本中文书？ B：我有五本中文书。",
+              "pinyin": "A: Nǐ yǒu jǐ běn Zhōngwén shū? B: Wǒ yǒu wǔ běn Zhōngwén shū.",
+              "english": "A: How many Chinese books do you have? B: I have five Chinese books.",
+              "words": [
+                {
+                  "id": "b1l03-g1-e2-word-1",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l03-g1-e2-word-2",
+                  "traditional": "有",
+                  "pinyin": "yǒu",
+                  "meaning": "have"
+                },
+                {
+                  "id": "b1l03-g1-e2-word-3",
+                  "traditional": "幾",
+                  "simplified": "几",
+                  "pinyin": "jǐ",
+                  "meaning": "how many; usually under ten"
+                },
+                {
+                  "id": "b1l03-g1-e2-word-4",
+                  "traditional": "本",
+                  "pinyin": "běn",
+                  "meaning": "measure word for books"
+                },
+                {
+                  "id": "b1l03-g1-e2-word-5",
+                  "traditional": "中文書",
+                  "simplified": "中文书",
+                  "pinyin": "Zhōngwén shū",
+                  "meaning": "book in Chinese"
+                },
+                {
+                  "id": "b1l03-g1-e2-word-6",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me",
+                  "prefix": "？ B："
+                },
+                {
+                  "id": "b1l03-g1-e2-word-7",
+                  "traditional": "有",
+                  "pinyin": "yǒu",
+                  "meaning": "have"
+                },
+                {
+                  "id": "b1l03-g1-e2-word-8",
+                  "traditional": "五",
+                  "pinyin": "wǔ",
+                  "meaning": "five"
+                },
+                {
+                  "id": "b1l03-g1-e2-word-9",
+                  "traditional": "本",
+                  "pinyin": "běn",
+                  "meaning": "measure word for books"
+                },
+                {
+                  "id": "b1l03-g1-e2-word-10",
+                  "traditional": "中文書",
+                  "simplified": "中文书",
+                  "pinyin": "Zhōngwén shū",
+                  "meaning": "book in Chinese",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g1-example-3",
+            "number": 3,
+            "text": {
+              "traditional": "A：你們有幾個新同學？ B：我們有兩個新同學。",
+              "simplified": "A：你们有几个新同学？ B：我们有两个新同学。",
+              "pinyin": "A: Nǐmen yǒu jǐ ge xīn tóngxué? B: Wǒmen yǒu liǎng ge xīn tóngxué.",
+              "english": "A: How many new classmates do you have? B: We have two new classmates.",
+              "words": [
+                {
+                  "id": "b1l03-g1-e3-word-1",
+                  "traditional": "你們",
+                  "simplified": "你们",
+                  "pinyin": "nǐmen",
+                  "meaning": "you all",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l03-g1-e3-word-2",
+                  "traditional": "有",
+                  "pinyin": "yǒu",
+                  "meaning": "have"
+                },
+                {
+                  "id": "b1l03-g1-e3-word-3",
+                  "traditional": "幾",
+                  "simplified": "几",
+                  "pinyin": "jǐ",
+                  "meaning": "how many; usually under ten"
+                },
+                {
+                  "id": "b1l03-g1-e3-word-4",
+                  "traditional": "個",
+                  "simplified": "个",
+                  "pinyin": "ge",
+                  "meaning": "general measure word"
+                },
+                {
+                  "id": "b1l03-g1-e3-word-5",
+                  "traditional": "新同學",
+                  "simplified": "新同学",
+                  "pinyin": "xīn tóngxué",
+                  "meaning": "new classmate"
+                },
+                {
+                  "id": "b1l03-g1-e3-word-6",
+                  "traditional": "我們",
+                  "simplified": "我们",
+                  "pinyin": "wǒmen",
+                  "meaning": "we; us",
+                  "prefix": "？ B："
+                },
+                {
+                  "id": "b1l03-g1-e3-word-7",
+                  "traditional": "有",
+                  "pinyin": "yǒu",
+                  "meaning": "have"
+                },
+                {
+                  "id": "b1l03-g1-e3-word-8",
+                  "traditional": "兩",
+                  "simplified": "两",
+                  "pinyin": "liǎng",
+                  "meaning": "two before a measure word"
+                },
+                {
+                  "id": "b1l03-g1-e3-word-9",
+                  "traditional": "個",
+                  "simplified": "个",
+                  "pinyin": "ge",
+                  "meaning": "general measure word"
+                },
+                {
+                  "id": "b1l03-g1-e3-word-10",
+                  "traditional": "新同學",
+                  "simplified": "新同学",
+                  "pinyin": "xīn tóngxué",
+                  "meaning": "new classmate",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Build the quantity",
+        "exercisePreview": "Choose a complete number + measure word + thing.",
+        "exerciseInstruction": "Read what is being counted, then choose the matching measure word.",
+        "exerciseNote": "The book gives open prompts with no answer key. These practice answers follow the picture and the sentence cues.",
+        "exerciseResponseMode": "text",
+        "exerciseCues": [
+          {
+            "id": "g1-cue-flowers",
+            "label": "Question 1 picture",
+            "pinyin": "liǎng duǒ huā",
+            "detail": "The book’s picture shows a woman holding two flowers."
+          }
+        ],
+        "questions": [
+          {
+            "id": "g1-question-1",
+            "number": 1,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：她有幾朵花？ B：",
+                "simplified": "A：她有几朵花？ B："
+              },
+              {
+                "type": "blank",
+                "id": "g1-q1-answer",
+                "answer": "她有兩朵花",
+                "answerSimplified": "她有两朵花",
+                "hint": "The picture shows two flowers. Use 兩 + 朵 + 花."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g1-q1-correct",
+                "traditional": "她有兩朵花",
+                "simplified": "她有两朵花",
+                "pinyin": "tā yǒu liǎng duǒ huā",
+                "meaning": "she has two flowers"
+              },
+              {
+                "id": "g1-q1-ben",
+                "traditional": "她有兩本花",
+                "simplified": "她有两本花",
+                "pinyin": "tā yǒu liǎng běn huā",
+                "meaning": "wrong measure word for flowers"
+              },
+              {
+                "id": "g1-q1-er",
+                "traditional": "她有二朵花",
+                "pinyin": "tā yǒu èr duǒ huā",
+                "meaning": "wrong form of two before a measure word"
+              }
+            ],
+            "correctFeedback": "兩 gives the quantity, and 朵 is the measure word for flowers.",
+            "repairFeedback": "Flowers use 朵. For “two” before a measure word, choose 兩."
+          },
+          {
+            "id": "g1-question-2",
+            "number": 2,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：你要買幾本書？ B：",
+                "simplified": "A：你要买几本书？ B："
+              },
+              {
+                "type": "blank",
+                "id": "g1-q2-answer",
+                "answer": "我要買三本書",
+                "answerSimplified": "我要买三本书",
+                "hint": "Books use 本."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g1-q2-correct",
+                "traditional": "我要買三本書",
+                "simplified": "我要买三本书",
+                "pinyin": "wǒ yào mǎi sān běn shū",
+                "meaning": "I want to buy three books"
+              },
+              {
+                "id": "g1-q2-ge",
+                "traditional": "我要買三個書",
+                "simplified": "我要买三个书",
+                "pinyin": "wǒ yào mǎi sān ge shū",
+                "meaning": "wrong measure word for books"
+              },
+              {
+                "id": "g1-q2-no-measure",
+                "traditional": "我要買三書",
+                "simplified": "我要买三书",
+                "pinyin": "wǒ yào mǎi sān shū",
+                "meaning": "missing measure word"
+              }
+            ],
+            "correctFeedback": "本 sits between 三 and 書 because it counts books.",
+            "repairFeedback": "Keep the three-part quantity together: 三 + 本 + 書."
+          },
+          {
+            "id": "g1-question-3",
+            "number": 3,
+            "segments": [
+              {
+                "type": "blank",
+                "id": "g1-q3-answer",
+                "answer": "你有幾本英文書",
+                "answerSimplified": "你有几本英文书",
+                "hint": "The reply gives four English books. Ask how many."
+              },
+              {
+                "type": "text",
+                "traditional": "？ B：我有四本英文書。",
+                "simplified": "？ B：我有四本英文书。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g1-q3-correct",
+                "traditional": "你有幾本英文書",
+                "simplified": "你有几本英文书",
+                "pinyin": "nǐ yǒu jǐ běn Yīngwén shū",
+                "meaning": "how many English books do you have"
+              },
+              {
+                "id": "g1-q3-what",
+                "traditional": "你有什麼英文書",
+                "simplified": "你有什么英文书",
+                "pinyin": "nǐ yǒu shénme Yīngwén shū",
+                "meaning": "what English books do you have"
+              },
+              {
+                "id": "g1-q3-how-many-ge",
+                "traditional": "你有幾個英文書",
+                "simplified": "你有几个英文书",
+                "pinyin": "nǐ yǒu jǐ ge Yīngwén shū",
+                "meaning": "wrong measure word for books"
+              }
+            ],
+            "correctFeedback": "The answer 四本英文書 matches the question 幾本英文書.",
+            "repairFeedback": "Ask for a quantity with 幾 and use 本 because the noun is 書."
+          }
+        ]
+      },
+      {
+        "id": "B1L03-G02-P74",
+        "bookId": 1,
+        "lessonId": 3,
+        "partId": 1,
+        "lessonTitle": "買生日禮物",
+        "lessonTitleEnglish": "Buying Birthday Gifts",
+        "grammarNumber": 2,
+        "titleTraditional": "送 + 人 + 禮物",
+        "titleEnglish": "Say Who Receives the Gift",
+        "learnerPromise": "Say who gives what gift to whom.",
+        "printedPages": [
+          74,
+          75
+        ],
+        "audioReference": "03-1-3",
+        "explanation": "After 送, say the receiver first and the gift second: 送 + person + gift. Unlike English, Chinese adds no “to” before the receiver.",
+        "focusTerms": [
+          "送",
+          "人",
+          "禮物",
+          "礼物",
+          "誰",
+          "谁",
+          "什麼",
+          "什么"
+        ],
+        "teachingGlossary": [
+          {
+            "id": "b1l03-g02-glossary-1",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
+          },
+          {
+            "id": "b1l03-g02-glossary-2",
+            "traditional": "我們",
+            "simplified": "我们",
+            "pinyin": "wǒmen",
+            "meaning": "we; us"
+          },
+          {
+            "id": "b1l03-g02-glossary-3",
+            "traditional": "你們",
+            "simplified": "你们",
+            "pinyin": "nǐmen",
+            "meaning": "you all"
+          },
+          {
+            "id": "b1l03-g02-glossary-4",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          },
+          {
+            "id": "b1l03-g02-glossary-5",
+            "traditional": "妳",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          },
+          {
+            "id": "b1l03-g02-glossary-6",
+            "traditional": "她",
+            "pinyin": "tā",
+            "meaning": "she; her"
+          },
+          {
+            "id": "b1l03-g02-glossary-7",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "he; him"
+          },
+          {
+            "id": "b1l03-g02-glossary-8",
+            "traditional": "爸爸",
+            "pinyin": "bàba",
+            "meaning": "dad"
+          },
+          {
+            "id": "b1l03-g02-glossary-9",
+            "traditional": "媽媽",
+            "simplified": "妈妈",
+            "pinyin": "māma",
+            "meaning": "mom"
+          },
+          {
+            "id": "b1l03-g02-glossary-10",
+            "traditional": "老師",
+            "simplified": "老师",
+            "pinyin": "lǎoshī",
+            "meaning": "teacher"
+          },
+          {
+            "id": "b1l03-g02-glossary-11",
+            "traditional": "英國同學",
+            "simplified": "英国同学",
+            "pinyin": "Yīngguó tóngxué",
+            "meaning": "British classmate"
+          },
+          {
+            "id": "b1l03-g02-glossary-12",
+            "traditional": "台灣朋友",
+            "simplified": "台湾朋友",
+            "pinyin": "Táiwān péngyǒu",
+            "meaning": "Taiwanese friend"
+          },
+          {
+            "id": "b1l03-g02-glossary-13",
+            "traditional": "新同學",
+            "simplified": "新同学",
+            "pinyin": "xīn tóngxué",
+            "meaning": "new classmate"
+          },
+          {
+            "id": "b1l03-g02-glossary-14",
+            "traditional": "友美",
+            "pinyin": "Yǒuměi",
+            "meaning": "Youmei"
+          },
+          {
+            "id": "b1l03-g02-glossary-15",
+            "traditional": "中明",
+            "pinyin": "Zhōngmíng",
+            "meaning": "Zhongming"
+          },
+          {
+            "id": "b1l03-g02-glossary-16",
+            "traditional": "明天",
+            "pinyin": "míngtiān",
+            "meaning": "tomorrow"
+          },
+          {
+            "id": "b1l03-g02-glossary-17",
+            "traditional": "生日",
+            "pinyin": "shēngrì",
+            "meaning": "birthday"
+          },
+          {
+            "id": "b1l03-g02-glossary-18",
+            "traditional": "是",
+            "pinyin": "shì",
+            "meaning": "is; am; are"
+          },
+          {
+            "id": "b1l03-g02-glossary-19",
+            "traditional": "的",
+            "pinyin": "de",
+            "meaning": "connects a describing word or owner to a thing"
+          },
+          {
+            "id": "b1l03-g02-glossary-20",
+            "traditional": "想",
+            "pinyin": "xiǎng",
+            "meaning": "would like to; want to"
+          },
+          {
+            "id": "b1l03-g02-glossary-21",
+            "traditional": "要",
+            "pinyin": "yào",
+            "meaning": "want to; intend to"
+          },
+          {
+            "id": "b1l03-g02-glossary-22",
+            "traditional": "送",
+            "pinyin": "sòng",
+            "meaning": "give as a gift"
+          },
+          {
+            "id": "b1l03-g02-glossary-23",
+            "traditional": "買",
+            "simplified": "买",
+            "pinyin": "mǎi",
+            "meaning": "buy"
+          },
+          {
+            "id": "b1l03-g02-glossary-24",
+            "traditional": "有",
+            "pinyin": "yǒu",
+            "meaning": "have"
+          },
+          {
+            "id": "b1l03-g02-glossary-25",
+            "traditional": "愛",
+            "simplified": "爱",
+            "pinyin": "ài",
+            "meaning": "love to"
+          },
+          {
+            "id": "b1l03-g02-glossary-26",
+            "traditional": "看書",
+            "simplified": "看书",
+            "pinyin": "kànshū",
+            "meaning": "read books"
+          },
+          {
+            "id": "b1l03-g02-glossary-27",
+            "traditional": "一起",
+            "pinyin": "yìqǐ",
+            "meaning": "together"
+          },
+          {
+            "id": "b1l03-g02-glossary-28",
+            "traditional": "去",
+            "pinyin": "qù",
+            "meaning": "go"
+          },
+          {
+            "id": "b1l03-g02-glossary-29",
+            "traditional": "好不好",
+            "pinyin": "hǎo bù hǎo",
+            "meaning": "how about it; okay or not"
+          },
+          {
+            "id": "b1l03-g02-glossary-30",
+            "traditional": "好",
+            "pinyin": "hǎo",
+            "meaning": "good; okay"
+          },
+          {
+            "id": "b1l03-g02-glossary-31",
+            "traditional": "啊",
+            "pinyin": "a",
+            "meaning": "ending word that shows agreement"
+          },
+          {
+            "id": "b1l03-g02-glossary-32",
+            "traditional": "什麼",
+            "simplified": "什么",
+            "pinyin": "shénme",
+            "meaning": "what"
+          },
+          {
+            "id": "b1l03-g02-glossary-33",
+            "traditional": "誰",
+            "simplified": "谁",
+            "pinyin": "shéi",
+            "meaning": "who"
+          },
+          {
+            "id": "b1l03-g02-glossary-34",
+            "traditional": "呢",
+            "pinyin": "ne",
+            "meaning": "what about; asks the question back"
+          },
+          {
+            "id": "b1l03-g02-glossary-35",
+            "traditional": "幾",
+            "simplified": "几",
+            "pinyin": "jǐ",
+            "meaning": "how many; usually under ten"
+          },
+          {
+            "id": "b1l03-g02-glossary-36",
+            "traditional": "一",
+            "pinyin": "yī",
+            "meaning": "one"
+          },
+          {
+            "id": "b1l03-g02-glossary-37",
+            "traditional": "兩",
+            "simplified": "两",
+            "pinyin": "liǎng",
+            "meaning": "two before a measure word"
+          },
+          {
+            "id": "b1l03-g02-glossary-38",
+            "traditional": "三",
+            "pinyin": "sān",
+            "meaning": "three"
+          },
+          {
+            "id": "b1l03-g02-glossary-39",
+            "traditional": "四",
+            "pinyin": "sì",
+            "meaning": "four"
+          },
+          {
+            "id": "b1l03-g02-glossary-40",
+            "traditional": "五",
+            "pinyin": "wǔ",
+            "meaning": "five"
+          },
+          {
+            "id": "b1l03-g02-glossary-41",
+            "traditional": "個",
+            "simplified": "个",
+            "pinyin": "ge",
+            "meaning": "general measure word"
+          },
+          {
+            "id": "b1l03-g02-glossary-42",
+            "traditional": "本",
+            "pinyin": "běn",
+            "meaning": "measure word for books"
+          },
+          {
+            "id": "b1l03-g02-glossary-43",
+            "traditional": "朵",
+            "pinyin": "duǒ",
+            "meaning": "measure word for flowers"
+          },
+          {
+            "id": "b1l03-g02-glossary-44",
+            "traditional": "一些",
+            "pinyin": "yìxiē",
+            "meaning": "some"
+          },
+          {
+            "id": "b1l03-g02-glossary-45",
+            "traditional": "禮物",
+            "simplified": "礼物",
+            "pinyin": "lǐwù",
+            "meaning": "gift"
+          },
+          {
+            "id": "b1l03-g02-glossary-46",
+            "traditional": "中文書",
+            "simplified": "中文书",
+            "pinyin": "Zhōngwén shū",
+            "meaning": "book in Chinese"
+          },
+          {
+            "id": "b1l03-g02-glossary-47",
+            "traditional": "英文書",
+            "simplified": "英文书",
+            "pinyin": "Yīngwén shū",
+            "meaning": "book in English"
+          },
+          {
+            "id": "b1l03-g02-glossary-48",
+            "traditional": "書",
+            "simplified": "书",
+            "pinyin": "shū",
+            "meaning": "book"
+          },
+          {
+            "id": "b1l03-g02-glossary-49",
+            "traditional": "花",
+            "pinyin": "huā",
+            "meaning": "flower; flowers"
+          },
+          {
+            "id": "b1l03-g02-glossary-50",
+            "traditional": "大蛋糕",
+            "pinyin": "dà dàngāo",
+            "meaning": "large cake"
+          },
+          {
+            "id": "b1l03-g02-glossary-51",
+            "traditional": "蛋糕",
+            "pinyin": "dàngāo",
+            "meaning": "cake"
+          },
+          {
+            "id": "b1l03-g02-glossary-52",
+            "traditional": "和",
+            "pinyin": "hé",
+            "meaning": "and"
+          }
+        ],
+        "pattern": "Giver + 送 + receiver + gift",
+        "patternColumns": [
+          "Giver + 送",
+          "Who receives it",
+          "What they receive"
+        ],
+        "patternAccentColumn": 1,
+        "discoveryLab": {
+          "title": "Put the person first, then the gift",
+          "description": "送 takes two things after it: first the person who gets the gift, then the gift itself.",
+          "prompt": "What belongs immediately after 送?",
+          "choices": [
+            {
+              "id": "g2-mom",
+              "label": "Person then gift",
+              "traditional": "媽媽送我一個禮物。",
+              "simplified": "妈妈送我一个礼物。",
+              "pinyin": "Māma sòng wǒ yí ge lǐwù.",
+              "english": "Mom gave me a gift.",
+              "note": "我 is the receiver. 一個禮物 is the gift."
+            },
+            {
+              "id": "g2-question-person",
+              "label": "Ask for the person",
+              "traditional": "你要送誰蛋糕？",
+              "simplified": "你要送谁蛋糕？",
+              "pinyin": "Nǐ yào sòng shéi dàngāo?",
+              "english": "Who will you give cake to?",
+              "note": "誰 asks for the person who gets the gift."
+            },
+            {
+              "id": "g2-question-gift",
+              "label": "Ask for the gift",
+              "traditional": "你想送媽媽什麼？",
+              "simplified": "你想送妈妈什么？",
+              "pinyin": "Nǐ xiǎng sòng māma shénme?",
+              "english": "What would you like to give Mom?",
+              "note": "媽媽 names the person who gets the gift. 什麼 asks for the gift."
+            },
+            {
+              "id": "g2-repair",
+              "label": "Repair the order",
+              "traditional": "我送一本書她 → 我送她一本書",
+              "simplified": "我送一本书她 → 我送她一本书",
+              "pinyin": "Wǒ sòng yì běn shū tā → wǒ sòng tā yì běn shū",
+              "english": "I give her a book.",
+              "note": "Keep the receiver before the gift.",
+              "isCorrection": true
+            }
+          ],
+          "takeaway": "After 送, answer “who?” before “what?”"
+        },
+        "patternRows": [
+          {
+            "id": "g2-pattern-1",
+            "subject": [
+              {
+                "id": "g2-p1-mom",
+                "traditional": "媽媽",
+                "simplified": "妈妈",
+                "pinyin": "māma",
+                "meaning": "mom"
+              },
+              {
+                "id": "g2-p1-give",
+                "traditional": "送",
+                "pinyin": "sòng",
+                "meaning": "give as a gift"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g2-p1-me",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g2-p1-one",
+                "traditional": "一",
+                "pinyin": "yī",
+                "meaning": "one"
+              },
+              {
+                "id": "g2-p1-ge",
+                "traditional": "個",
+                "simplified": "个",
+                "pinyin": "ge",
+                "meaning": "general measure word"
+              },
+              {
+                "id": "g2-p1-gift",
+                "traditional": "禮物",
+                "simplified": "礼物",
+                "pinyin": "lǐwù",
+                "meaning": "gift"
+              }
+            ],
+            "english": "Mom gave me a gift."
+          },
+          {
+            "id": "g2-pattern-2",
+            "subject": [
+              {
+                "id": "g2-p2-i",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
+              },
+              {
+                "id": "g2-p2-want",
+                "traditional": "想",
+                "pinyin": "xiǎng",
+                "meaning": "would like to; want to"
+              },
+              {
+                "id": "g2-p2-give",
+                "traditional": "送",
+                "pinyin": "sòng",
+                "meaning": "give as a gift"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g2-p2-her",
+                "traditional": "她",
+                "pinyin": "tā",
+                "meaning": "she; her"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g2-p2-flower",
+                "traditional": "花",
+                "pinyin": "huā",
+                "meaning": "flower; flowers"
+              }
+            ],
+            "english": "I would like to give her flowers."
+          },
+          {
+            "id": "g2-pattern-3",
+            "subject": [
+              {
+                "id": "g2-p3-you",
+                "traditional": "你",
+                "pinyin": "nǐ",
+                "meaning": "you"
+              },
+              {
+                "id": "g2-p3-want",
+                "traditional": "要",
+                "pinyin": "yào",
+                "meaning": "want to; intend to"
+              },
+              {
+                "id": "g2-p3-give",
+                "traditional": "送",
+                "pinyin": "sòng",
+                "meaning": "give as a gift"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g2-p3-who",
+                "traditional": "誰",
+                "simplified": "谁",
+                "pinyin": "shéi",
+                "meaning": "who"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g2-p3-cake",
+                "traditional": "蛋糕",
+                "pinyin": "dàngāo",
+                "meaning": "cake",
+                "suffix": "？"
+              }
+            ],
+            "english": "Who will you give cake to?"
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "g2-confusion-order",
+              "question": "Do I say the gift first or the person first after 送?",
+              "answer": "Person first, then the gift. There is no word for \"to\" in Chinese here.",
+              "wrongTraditional": "我送一本書她。",
+              "wrongSimplified": "我送一本书她。",
+              "right": {
+                "traditional": "我送她一本書。",
+                "simplified": "我送她一本书。",
+                "pinyin": "Wǒ sòng tā yì běn shū.",
+                "english": "I give her a book.",
+                "words": [
+                  {
+                    "id": "b1l03-g2-conf-1-word-1",
+                    "traditional": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I; me"
+                  },
+                  {
+                    "id": "b1l03-g2-conf-1-word-2",
+                    "traditional": "送",
+                    "pinyin": "sòng",
+                    "meaning": "give as a gift"
+                  },
+                  {
+                    "id": "b1l03-g2-conf-1-word-3",
+                    "traditional": "她",
+                    "pinyin": "tā",
+                    "meaning": "she; her"
+                  },
+                  {
+                    "id": "b1l03-g2-conf-1-word-4",
+                    "traditional": "一",
+                    "pinyin": "yī",
+                    "meaning": "one"
+                  },
+                  {
+                    "id": "b1l03-g2-conf-1-word-5",
+                    "traditional": "本",
+                    "pinyin": "běn",
+                    "meaning": "measure word for books"
+                  },
+                  {
+                    "id": "b1l03-g2-conf-1-word-6",
+                    "traditional": "書",
+                    "simplified": "书",
+                    "pinyin": "shū",
+                    "meaning": "book",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "g2-confusion-shei-vs-shenme",
+              "question": "How do I ask WHO gets the gift — 誰 or 什麼?",
+              "answer": "誰 asks for the person who receives it. 什麼 asks for the gift itself.",
+              "wrongTraditional": "你想送什麼蛋糕？",
+              "wrongSimplified": "你想送什么蛋糕？",
+              "right": {
+                "traditional": "你想送誰蛋糕？",
+                "simplified": "你想送谁蛋糕？",
+                "pinyin": "Nǐ xiǎng sòng shéi dàngāo?",
+                "english": "Who will you give the cake to?",
+                "words": [
+                  {
+                    "id": "b1l03-g2-conf-2-word-1",
+                    "traditional": "你",
+                    "pinyin": "nǐ",
+                    "meaning": "you"
+                  },
+                  {
+                    "id": "b1l03-g2-conf-2-word-2",
+                    "traditional": "想",
+                    "pinyin": "xiǎng",
+                    "meaning": "would like to; want to"
+                  },
+                  {
+                    "id": "b1l03-g2-conf-2-word-3",
+                    "traditional": "送",
+                    "pinyin": "sòng",
+                    "meaning": "give as a gift"
+                  },
+                  {
+                    "id": "b1l03-g2-conf-2-word-4",
+                    "traditional": "誰",
+                    "simplified": "谁",
+                    "pinyin": "shéi",
+                    "meaning": "who"
+                  },
+                  {
+                    "id": "b1l03-g2-conf-2-word-5",
+                    "traditional": "蛋糕",
+                    "pinyin": "dàngāo",
+                    "meaning": "cake",
+                    "suffix": "？"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "g2-confusion-yao-vs-xiang",
+              "question": "想 and 要 both mean \"want\". Do I need both?",
+              "answer": "No, just one. 想 is a soft \"would like to\"; 要 is a firmer \"plan to\".",
+              "wrongTraditional": "我要想買一本書。",
+              "wrongSimplified": "我要想买一本书。",
+              "right": {
+                "traditional": "我要買一本書。",
+                "simplified": "我要买一本书。",
+                "pinyin": "Wǒ yào mǎi yì běn shū.",
+                "english": "I want to buy a book.",
+                "words": [
+                  {
+                    "id": "b1l03-g2-conf-3-word-1",
+                    "traditional": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I; me"
+                  },
+                  {
+                    "id": "b1l03-g2-conf-3-word-2",
+                    "traditional": "要",
+                    "pinyin": "yào",
+                    "meaning": "want to; intend to"
+                  },
+                  {
+                    "id": "b1l03-g2-conf-3-word-3",
+                    "traditional": "買",
+                    "simplified": "买",
+                    "pinyin": "mǎi",
+                    "meaning": "buy"
+                  },
+                  {
+                    "id": "b1l03-g2-conf-3-word-4",
+                    "traditional": "一",
+                    "pinyin": "yī",
+                    "meaning": "one"
+                  },
+                  {
+                    "id": "b1l03-g2-conf-3-word-5",
+                    "traditional": "本",
+                    "pinyin": "běn",
+                    "meaning": "measure word for books"
+                  },
+                  {
+                    "id": "b1l03-g2-conf-3-word-6",
+                    "traditional": "書",
+                    "simplified": "书",
+                    "pinyin": "shū",
+                    "meaning": "book",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "examples": [
+          {
+            "id": "g2-example-1",
+            "number": 1,
+            "text": {
+              "traditional": "A：你想送媽媽什麼？ B：我想送她花。",
+              "simplified": "A：你想送妈妈什么？ B：我想送她花。",
+              "pinyin": "A: Nǐ xiǎng sòng māma shénme? B: Wǒ xiǎng sòng tā huā.",
+              "english": "A: What would you like to give Mom? B: I would like to give her flowers.",
+              "words": [
+                {
+                  "id": "b1l03-g2-e1-word-1",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l03-g2-e1-word-2",
+                  "traditional": "想",
+                  "pinyin": "xiǎng",
+                  "meaning": "would like to; want to"
+                },
+                {
+                  "id": "b1l03-g2-e1-word-3",
+                  "traditional": "送",
+                  "pinyin": "sòng",
+                  "meaning": "give as a gift"
+                },
+                {
+                  "id": "b1l03-g2-e1-word-4",
+                  "traditional": "媽媽",
+                  "simplified": "妈妈",
+                  "pinyin": "māma",
+                  "meaning": "mom"
+                },
+                {
+                  "id": "b1l03-g2-e1-word-5",
+                  "traditional": "什麼",
+                  "simplified": "什么",
+                  "pinyin": "shénme",
+                  "meaning": "what"
+                },
+                {
+                  "id": "b1l03-g2-e1-word-6",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me",
+                  "prefix": "？ B："
+                },
+                {
+                  "id": "b1l03-g2-e1-word-7",
+                  "traditional": "想",
+                  "pinyin": "xiǎng",
+                  "meaning": "would like to; want to"
+                },
+                {
+                  "id": "b1l03-g2-e1-word-8",
+                  "traditional": "送",
+                  "pinyin": "sòng",
+                  "meaning": "give as a gift"
+                },
+                {
+                  "id": "b1l03-g2-e1-word-9",
+                  "traditional": "她",
+                  "pinyin": "tā",
+                  "meaning": "she; her"
+                },
+                {
+                  "id": "b1l03-g2-e1-word-10",
+                  "traditional": "花",
+                  "pinyin": "huā",
+                  "meaning": "flower; flowers",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g2-example-2",
+            "number": 2,
+            "text": {
+              "traditional": "A：你要送誰蛋糕？ B：我要送老師蛋糕。",
+              "simplified": "A：你要送谁蛋糕？ B：我要送老师蛋糕。",
+              "pinyin": "A: Nǐ yào sòng shéi dàngāo? B: Wǒ yào sòng lǎoshī dàngāo.",
+              "english": "A: Who will you give cake to? B: I will give the teacher cake.",
+              "words": [
+                {
+                  "id": "b1l03-g2-e2-word-1",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l03-g2-e2-word-2",
+                  "traditional": "要",
+                  "pinyin": "yào",
+                  "meaning": "want to; intend to"
+                },
+                {
+                  "id": "b1l03-g2-e2-word-3",
+                  "traditional": "送",
+                  "pinyin": "sòng",
+                  "meaning": "give as a gift"
+                },
+                {
+                  "id": "b1l03-g2-e2-word-4",
+                  "traditional": "誰",
+                  "simplified": "谁",
+                  "pinyin": "shéi",
+                  "meaning": "who"
+                },
+                {
+                  "id": "b1l03-g2-e2-word-5",
+                  "traditional": "蛋糕",
+                  "pinyin": "dàngāo",
+                  "meaning": "cake"
+                },
+                {
+                  "id": "b1l03-g2-e2-word-6",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me",
+                  "prefix": "？ B："
+                },
+                {
+                  "id": "b1l03-g2-e2-word-7",
+                  "traditional": "要",
+                  "pinyin": "yào",
+                  "meaning": "want to; intend to"
+                },
+                {
+                  "id": "b1l03-g2-e2-word-8",
+                  "traditional": "送",
+                  "pinyin": "sòng",
+                  "meaning": "give as a gift"
+                },
+                {
+                  "id": "b1l03-g2-e2-word-9",
+                  "traditional": "老師",
+                  "simplified": "老师",
+                  "pinyin": "lǎoshī",
+                  "meaning": "teacher"
+                },
+                {
+                  "id": "b1l03-g2-e2-word-10",
+                  "traditional": "蛋糕",
+                  "pinyin": "dàngāo",
+                  "meaning": "cake",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g2-example-3",
+            "number": 3,
+            "text": {
+              "traditional": "A：你想送他什麼禮物？ B：我想送他一本中文書。",
+              "simplified": "A：你想送他什么礼物？ B：我想送他一本中文书。",
+              "pinyin": "A: Nǐ xiǎng sòng tā shénme lǐwù? B: Wǒ xiǎng sòng tā yì běn Zhōngwén shū.",
+              "english": "A: What gift would you like to give him? B: I would like to give him a Chinese book.",
+              "words": [
+                {
+                  "id": "b1l03-g2-e3-word-1",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l03-g2-e3-word-2",
+                  "traditional": "想",
+                  "pinyin": "xiǎng",
+                  "meaning": "would like to; want to"
+                },
+                {
+                  "id": "b1l03-g2-e3-word-3",
+                  "traditional": "送",
+                  "pinyin": "sòng",
+                  "meaning": "give as a gift"
+                },
+                {
+                  "id": "b1l03-g2-e3-word-4",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he; him"
+                },
+                {
+                  "id": "b1l03-g2-e3-word-5",
+                  "traditional": "什麼",
+                  "simplified": "什么",
+                  "pinyin": "shénme",
+                  "meaning": "what"
+                },
+                {
+                  "id": "b1l03-g2-e3-word-6",
+                  "traditional": "禮物",
+                  "simplified": "礼物",
+                  "pinyin": "lǐwù",
+                  "meaning": "gift"
+                },
+                {
+                  "id": "b1l03-g2-e3-word-7",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me",
+                  "prefix": "？ B："
+                },
+                {
+                  "id": "b1l03-g2-e3-word-8",
+                  "traditional": "想",
+                  "pinyin": "xiǎng",
+                  "meaning": "would like to; want to"
+                },
+                {
+                  "id": "b1l03-g2-e3-word-9",
+                  "traditional": "送",
+                  "pinyin": "sòng",
+                  "meaning": "give as a gift"
+                },
+                {
+                  "id": "b1l03-g2-e3-word-10",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he; him"
+                },
+                {
+                  "id": "b1l03-g2-e3-word-11",
+                  "traditional": "一",
+                  "pinyin": "yī",
+                  "meaning": "one"
+                },
+                {
+                  "id": "b1l03-g2-e3-word-12",
+                  "traditional": "本",
+                  "pinyin": "běn",
+                  "meaning": "measure word for books"
+                },
+                {
+                  "id": "b1l03-g2-e3-word-13",
+                  "traditional": "中文書",
+                  "simplified": "中文书",
+                  "pinyin": "Zhōngwén shū",
+                  "meaning": "book in Chinese",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Order each gift sentence",
+        "exercisePreview": "Put the giver, receiver, and gift in the right order.",
+        "exerciseInstruction": "Build each sentence from left to right. Keep the receiver directly after 送.",
+        "exerciseNote": "The pictures in the book show who gives and who receives each gift. The app keeps those roles. The book prints no answer key.",
+        "exerciseResponseMode": "text",
+        "exerciseCues": [
+          {
+            "id": "g2-cue-1",
+            "label": "Scene 1",
+            "pinyin": "bàba → tā → shū",
+            "detail": "Dad gives a book to a boy."
+          },
+          {
+            "id": "g2-cue-2",
+            "label": "Scene 2",
+            "pinyin": "wǒ → tā → dàngāo",
+            "detail": "I plan to give a large cake to her."
+          },
+          {
+            "id": "g2-cue-3",
+            "label": "Scene 3",
+            "pinyin": "wǒ → Yīngguó tóngxué → shū",
+            "detail": "I give a Chinese book to a British classmate."
+          }
+        ],
+        "questions": [
+          {
+            "id": "g2-question-1",
+            "number": 1,
+            "segments": [
+              {
+                "type": "blank",
+                "id": "g2-q1-giver",
+                "answer": "爸爸",
+                "hint": "Who gives the gift?"
+              },
+              {
+                "type": "blank",
+                "id": "g2-q1-verb",
+                "answer": "送",
+                "hint": "Use the gift-giving verb."
+              },
+              {
+                "type": "blank",
+                "id": "g2-q1-receiver",
+                "answer": "他",
+                "hint": "The person comes before the gift."
+              },
+              {
+                "type": "blank",
+                "id": "g2-q1-gift",
+                "answer": "一本書",
+                "answerSimplified": "一本书",
+                "hint": "Finish with the gift."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g2-q1-dad",
+                "traditional": "爸爸",
+                "pinyin": "bàba",
+                "meaning": "dad"
+              },
+              {
+                "id": "g2-q1-give",
+                "traditional": "送",
+                "pinyin": "sòng",
+                "meaning": "give as a gift"
+              },
+              {
+                "id": "g2-q1-him",
+                "traditional": "他",
+                "pinyin": "tā",
+                "meaning": "him"
+              },
+              {
+                "id": "g2-q1-book",
+                "traditional": "一本書",
+                "simplified": "一本书",
+                "pinyin": "yì běn shū",
+                "meaning": "one book"
+              }
+            ],
+            "correctFeedback": "爸爸 is the giver, 他 is the receiver, and 一本書 is the gift.",
+            "repairFeedback": "Use giver + 送 + person + gift. The picture makes 他 the receiver."
+          },
+          {
+            "id": "g2-question-2",
+            "number": 2,
+            "segments": [
+              {
+                "type": "blank",
+                "id": "g2-q2-giver",
+                "answer": "我",
+                "hint": "Start with the giver."
+              },
+              {
+                "type": "blank",
+                "id": "g2-q2-want",
+                "answer": "想",
+                "hint": "Add “would like to.”"
+              },
+              {
+                "type": "blank",
+                "id": "g2-q2-give",
+                "answer": "送",
+                "hint": "Now add the giving verb."
+              },
+              {
+                "type": "blank",
+                "id": "g2-q2-receiver",
+                "answer": "她",
+                "hint": "Who receives the cake?"
+              },
+              {
+                "type": "blank",
+                "id": "g2-q2-gift",
+                "answer": "一個大蛋糕",
+                "answerSimplified": "一个大蛋糕",
+                "hint": "Put the gift last."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g2-q2-i",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I"
+              },
+              {
+                "id": "g2-q2-would-like",
+                "traditional": "想",
+                "pinyin": "xiǎng",
+                "meaning": "would like to"
+              },
+              {
+                "id": "g2-q2-give-tile",
+                "traditional": "送",
+                "pinyin": "sòng",
+                "meaning": "give as a gift"
+              },
+              {
+                "id": "g2-q2-her",
+                "traditional": "她",
+                "pinyin": "tā",
+                "meaning": "her"
+              },
+              {
+                "id": "g2-q2-cake",
+                "traditional": "一個大蛋糕",
+                "simplified": "一个大蛋糕",
+                "pinyin": "yí ge dà dàngāo",
+                "meaning": "a large cake"
+              }
+            ],
+            "correctFeedback": "想 comes before 送, then the receiver 她 comes before the cake.",
+            "repairFeedback": "Build: 我 + 想 + 送 + 她 + 一個大蛋糕."
+          },
+          {
+            "id": "g2-question-3",
+            "number": 3,
+            "segments": [
+              {
+                "type": "blank",
+                "id": "g2-q3-giver",
+                "answer": "我",
+                "hint": "Who gives the gift?"
+              },
+              {
+                "type": "blank",
+                "id": "g2-q3-give",
+                "answer": "送",
+                "hint": "Use 送."
+              },
+              {
+                "type": "blank",
+                "id": "g2-q3-receiver",
+                "answer": "英國同學",
+                "answerSimplified": "英国同学",
+                "hint": "Who receives it?"
+              },
+              {
+                "type": "blank",
+                "id": "g2-q3-gift",
+                "answer": "一本中文書",
+                "answerSimplified": "一本中文书",
+                "hint": "What do they receive?"
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g2-q3-i",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I"
+              },
+              {
+                "id": "g2-q3-give-tile",
+                "traditional": "送",
+                "pinyin": "sòng",
+                "meaning": "give as a gift"
+              },
+              {
+                "id": "g2-q3-classmate",
+                "traditional": "英國同學",
+                "simplified": "英国同学",
+                "pinyin": "Yīngguó tóngxué",
+                "meaning": "British classmate"
+              },
+              {
+                "id": "g2-q3-book",
+                "traditional": "一本中文書",
+                "simplified": "一本中文书",
+                "pinyin": "yì běn Zhōngwén shū",
+                "meaning": "one Chinese book"
+              }
+            ],
+            "correctFeedback": "英國同學 is the receiver, so it stays between 送 and the gift.",
+            "repairFeedback": "Do not place the book before the person. After 送: receiver first, gift second."
+          }
+        ]
+      }
+    ],
+    "dialogue": {
+      "id": "B1L03-D01",
+      "title": "對話一 · Dialogue 1",
+      "setting": "在學校 · At school",
+      "printedPages": [
+        69,
+        70
+      ],
+      "audioReference": "03-1-1",
+      "grammarFocus": [
+        "個",
+        "本",
+        "朵",
+        "兩",
+        "幾",
+        "送"
+      ],
+      "lines": [
+        {
+          "id": "b1l03-d1-l1",
+          "speaker": "宜文",
+          "text": {
+            "traditional": "明天是友美的生日，我想送她一個禮物。",
+            "simplified": "明天是友美的生日，我想送她一个礼物。",
+            "pinyin": "Míngtiān shì Yǒuměi de shēngrì, wǒ xiǎng sòng tā yí ge lǐwù.",
+            "english": "It is Youmei’s birthday tomorrow; I would like to give her a gift.",
+            "words": [
+              {
+                "id": "b1l03-d1-l1-word-1",
+                "traditional": "明天",
+                "pinyin": "míngtiān",
+                "meaning": "tomorrow"
+              },
+              {
+                "id": "b1l03-d1-l1-word-2",
+                "traditional": "是",
+                "pinyin": "shì",
+                "meaning": "is; am; are"
+              },
+              {
+                "id": "b1l03-d1-l1-word-3",
+                "traditional": "友美",
+                "pinyin": "Yǒuměi",
+                "meaning": "Youmei"
+              },
+              {
+                "id": "b1l03-d1-l1-word-4",
+                "traditional": "的",
+                "pinyin": "de",
+                "meaning": "connects a describing word or owner to a thing"
+              },
+              {
+                "id": "b1l03-d1-l1-word-5",
+                "traditional": "生日",
+                "pinyin": "shēngrì",
+                "meaning": "birthday"
+              },
+              {
+                "id": "b1l03-d1-l1-word-6",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me",
+                "prefix": "，"
+              },
+              {
+                "id": "b1l03-d1-l1-word-7",
+                "traditional": "想",
+                "pinyin": "xiǎng",
+                "meaning": "would like to; want to"
+              },
+              {
+                "id": "b1l03-d1-l1-word-8",
+                "traditional": "送",
+                "pinyin": "sòng",
+                "meaning": "give as a gift"
+              },
+              {
+                "id": "b1l03-d1-l1-word-9",
+                "traditional": "她",
+                "pinyin": "tā",
+                "meaning": "she; her"
+              },
+              {
+                "id": "b1l03-d1-l1-word-10",
+                "traditional": "一",
+                "pinyin": "yī",
+                "meaning": "one"
+              },
+              {
+                "id": "b1l03-d1-l1-word-11",
+                "traditional": "個",
+                "simplified": "个",
+                "pinyin": "ge",
+                "meaning": "general measure word"
+              },
+              {
+                "id": "b1l03-d1-l1-word-12",
+                "traditional": "禮物",
+                "simplified": "礼物",
+                "pinyin": "lǐwù",
+                "meaning": "gift",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "b1l03-d1-l2",
+          "speaker": "中明",
+          "text": {
+            "traditional": "妳想送她什麼？",
+            "simplified": "妳想送她什么？",
+            "pinyin": "Nǐ xiǎng sòng tā shénme?",
+            "english": "What would you like to give her?",
+            "words": [
+              {
+                "id": "b1l03-d1-l2-word-1",
+                "traditional": "妳",
+                "pinyin": "nǐ",
+                "meaning": "you"
+              },
+              {
+                "id": "b1l03-d1-l2-word-2",
+                "traditional": "想",
+                "pinyin": "xiǎng",
+                "meaning": "would like to; want to"
+              },
+              {
+                "id": "b1l03-d1-l2-word-3",
+                "traditional": "送",
+                "pinyin": "sòng",
+                "meaning": "give as a gift"
+              },
+              {
+                "id": "b1l03-d1-l2-word-4",
+                "traditional": "她",
+                "pinyin": "tā",
+                "meaning": "she; her"
+              },
+              {
+                "id": "b1l03-d1-l2-word-5",
+                "traditional": "什麼",
+                "simplified": "什么",
+                "pinyin": "shénme",
+                "meaning": "what",
+                "suffix": "？"
+              }
+            ]
+          }
+        },
+        {
+          "id": "b1l03-d1-l3",
+          "speaker": "宜文",
+          "text": {
+            "traditional": "友美愛看書，我想送她兩本中文書，你呢？",
+            "simplified": "友美爱看书，我想送她两本中文书，你呢？",
+            "pinyin": "Yǒuměi ài kànshū, wǒ xiǎng sòng tā liǎng běn Zhōngwén shū, nǐ ne?",
+            "english": "Youmei loves reading. I would like to give her two Chinese books. How about you?",
+            "words": [
+              {
+                "id": "b1l03-d1-l3-word-1",
+                "traditional": "友美",
+                "pinyin": "Yǒuměi",
+                "meaning": "Youmei"
+              },
+              {
+                "id": "b1l03-d1-l3-word-2",
+                "traditional": "愛",
+                "simplified": "爱",
+                "pinyin": "ài",
+                "meaning": "love to"
+              },
+              {
+                "id": "b1l03-d1-l3-word-3",
+                "traditional": "看書",
+                "simplified": "看书",
+                "pinyin": "kànshū",
+                "meaning": "read books"
+              },
+              {
+                "id": "b1l03-d1-l3-word-4",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me",
+                "prefix": "，"
+              },
+              {
+                "id": "b1l03-d1-l3-word-5",
+                "traditional": "想",
+                "pinyin": "xiǎng",
+                "meaning": "would like to; want to"
+              },
+              {
+                "id": "b1l03-d1-l3-word-6",
+                "traditional": "送",
+                "pinyin": "sòng",
+                "meaning": "give as a gift"
+              },
+              {
+                "id": "b1l03-d1-l3-word-7",
+                "traditional": "她",
+                "pinyin": "tā",
+                "meaning": "she; her"
+              },
+              {
+                "id": "b1l03-d1-l3-word-8",
+                "traditional": "兩",
+                "simplified": "两",
+                "pinyin": "liǎng",
+                "meaning": "two before a measure word"
+              },
+              {
+                "id": "b1l03-d1-l3-word-9",
+                "traditional": "本",
+                "pinyin": "běn",
+                "meaning": "measure word for books"
+              },
+              {
+                "id": "b1l03-d1-l3-word-10",
+                "traditional": "中文書",
+                "simplified": "中文书",
+                "pinyin": "Zhōngwén shū",
+                "meaning": "book in Chinese"
+              },
+              {
+                "id": "b1l03-d1-l3-word-11",
+                "traditional": "你",
+                "pinyin": "nǐ",
+                "meaning": "you",
+                "prefix": "，"
+              },
+              {
+                "id": "b1l03-d1-l3-word-12",
+                "traditional": "呢",
+                "pinyin": "ne",
+                "meaning": "what about; asks the question back",
+                "suffix": "？"
+              }
+            ]
+          }
+        },
+        {
+          "id": "b1l03-d1-l4",
+          "speaker": "中明",
+          "text": {
+            "traditional": "我想買一些花和一個大蛋糕。",
+            "simplified": "我想买一些花和一个大蛋糕。",
+            "pinyin": "Wǒ xiǎng mǎi yìxiē huā hé yí ge dà dàngāo.",
+            "english": "I would like to buy some flowers and a big cake.",
+            "words": [
+              {
+                "id": "b1l03-d1-l4-word-1",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
+              },
+              {
+                "id": "b1l03-d1-l4-word-2",
+                "traditional": "想",
+                "pinyin": "xiǎng",
+                "meaning": "would like to; want to"
+              },
+              {
+                "id": "b1l03-d1-l4-word-3",
+                "traditional": "買",
+                "simplified": "买",
+                "pinyin": "mǎi",
+                "meaning": "buy"
+              },
+              {
+                "id": "b1l03-d1-l4-word-4",
+                "traditional": "一些",
+                "pinyin": "yìxiē",
+                "meaning": "some"
+              },
+              {
+                "id": "b1l03-d1-l4-word-5",
+                "traditional": "花",
+                "pinyin": "huā",
+                "meaning": "flower; flowers"
+              },
+              {
+                "id": "b1l03-d1-l4-word-6",
+                "traditional": "和",
+                "pinyin": "hé",
+                "meaning": "and"
+              },
+              {
+                "id": "b1l03-d1-l4-word-7",
+                "traditional": "一",
+                "pinyin": "yī",
+                "meaning": "one"
+              },
+              {
+                "id": "b1l03-d1-l4-word-8",
+                "traditional": "個",
+                "simplified": "个",
+                "pinyin": "ge",
+                "meaning": "general measure word"
+              },
+              {
+                "id": "b1l03-d1-l4-word-9",
+                "traditional": "大蛋糕",
+                "pinyin": "dà dàngāo",
+                "meaning": "large cake",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "b1l03-d1-l5",
+          "speaker": "宜文",
+          "text": {
+            "traditional": "我們一起去買，好不好？",
+            "simplified": "我们一起去买，好不好？",
+            "pinyin": "Wǒmen yìqǐ qù mǎi, hǎo bù hǎo?",
+            "english": "How about we go buy them together?",
+            "words": [
+              {
+                "id": "b1l03-d1-l5-word-1",
+                "traditional": "我們",
+                "simplified": "我们",
+                "pinyin": "wǒmen",
+                "meaning": "we; us"
+              },
+              {
+                "id": "b1l03-d1-l5-word-2",
+                "traditional": "一起",
+                "pinyin": "yìqǐ",
+                "meaning": "together"
+              },
+              {
+                "id": "b1l03-d1-l5-word-3",
+                "traditional": "去",
+                "pinyin": "qù",
+                "meaning": "go"
+              },
+              {
+                "id": "b1l03-d1-l5-word-4",
+                "traditional": "買",
+                "simplified": "买",
+                "pinyin": "mǎi",
+                "meaning": "buy"
+              },
+              {
+                "id": "b1l03-d1-l5-word-5",
+                "traditional": "好不好",
+                "pinyin": "hǎo bù hǎo",
+                "meaning": "how about it; okay or not",
+                "prefix": "，",
+                "suffix": "？"
+              }
+            ]
+          }
+        },
+        {
+          "id": "b1l03-d1-l6",
+          "speaker": "中明",
+          "text": {
+            "traditional": "好啊！",
+            "simplified": "好啊！",
+            "pinyin": "Hǎo a!",
+            "english": "Okay!",
+            "words": [
+              {
+                "id": "b1l03-d1-l6-word-1",
+                "traditional": "好",
+                "pinyin": "hǎo",
+                "meaning": "good; okay"
+              },
+              {
+                "id": "b1l03-d1-l6-word-2",
+                "traditional": "啊",
+                "pinyin": "a",
+                "meaning": "ending word that shows agreement",
+                "suffix": "！"
+              }
+            ]
+          }
+        }
+      ],
+      "comprehension": {
+        "prompt": "宜文想送友美什麼？",
+        "options": [
+          "兩本中文書",
+          "一個大蛋糕",
+          "一些花"
+        ],
+        "answer": "兩本中文書",
+        "hint": "Check Yiwen’s reply about what Youmei loves."
+      }
+    },
+    "completionTitle": "Part 1 complete — quantities and gifts make sense.",
+    "completionDescription": "You counted things with measure words and kept the receiver before the gift after 送.",
+    "nextBookLabel": "Next in the book · Dialogue 2, page 76."
+  }
+}

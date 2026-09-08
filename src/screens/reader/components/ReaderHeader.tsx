@@ -6,39 +6,92 @@ import {
   ScreenHeader,
   SegmentedControl,
 } from '../../../lib/widgets';
-import { SAMPLE_LESSONS } from '../../../data/books';
-import type { ReadingRecord } from '../../../types/models';
+import type { ReaderTextSize, ReadingRecord } from '../../../types/models';
 import { cn } from '../../../utils/cn';
 
 interface ReaderHeaderProps {
   reading: ReadingRecord;
-  characterPreference: 'traditional' | 'simplified';
-  onCharacterPreferenceChange: (pref: 'traditional' | 'simplified') => void;
-  audioMode: 'book' | 'tts';
-  onAudioModeChange: (mode: 'book' | 'tts') => void;
-  hasOfficialAudio: boolean;
-  textSize: 'normal' | 'large';
-  onTextSizeChange: (size: 'normal' | 'large') => void;
+  textSize: ReaderTextSize;
+  onTextSizeChange: (size: ReaderTextSize) => void;
   showPinyin: boolean;
   onTogglePinyin: () => void;
   showMeaning: boolean;
   onToggleMeaning: () => void;
+  showHoverDefinitions?: boolean;
+  onToggleHoverDefinitions?: () => void;
   onClose: () => void;
+}
+
+export function getLessonTitles(lessonTitle?: string, fallbackTitle?: string): {
+  chineseTitle: string;
+  englishTitle: string;
+} {
+  const parts = lessonTitle?.split(' · ') ?? [];
+  if (parts.length >= 2) {
+    return {
+      chineseTitle: parts[1].trim(),
+      englishTitle: parts[0].trim(),
+    };
+  }
+  return {
+    chineseTitle: lessonTitle || fallbackTitle || '',
+    englishTitle: '',
+  };
+}
+
+export function getReaderHeaderTitles(reading: ReadingRecord, lessonTitle?: string): {
+  chineseTitle: string;
+  englishTitle: string;
+} {
+  const parts = reading.title.split(' · ').map((s) => s.trim());
+
+  // 3-part title (e.g. "短文 · 自我介紹 · Self-Introduction" or "對話一 · 在機場 · At the Airport")
+  if (parts.length >= 3) {
+    return {
+      chineseTitle: parts[1],
+      englishTitle: parts[2],
+    };
+  }
+
+  // 2-part title that is not a generic dialogue tag (e.g. "有趣的十二生肖 · The Interesting Zodiac")
+  if (parts.length === 2) {
+    const isGenericTag =
+      /^(對話[一二三四五]|Dialogue\s*\d|短文|Reading)/i.test(parts[0]) ||
+      /^(Dialogue\s*\d|Reading)/i.test(parts[1]);
+    if (!isGenericTag) {
+      return {
+        chineseTitle: parts[0],
+        englishTitle: parts[1],
+      };
+    }
+    // If parts[0] is generic prefix (e.g. "短文 · 自我介紹"), treat parts[1] as chinese title
+    if (/^(短文|Reading)/i.test(parts[0])) {
+      const lessonParts = lessonTitle?.split(' · ') ?? [];
+      return {
+        chineseTitle: parts[1],
+        englishTitle: lessonParts[0] ?? '',
+      };
+    }
+  }
+
+  // Fallback to lesson title (e.g. "The New Classmate · 新同學")
+  const lessonParts = lessonTitle?.split(' · ') ?? [];
+  return {
+    chineseTitle: lessonParts[1] ?? reading.title,
+    englishTitle: lessonParts[0] ?? '',
+  };
 }
 
 export function ReaderHeader({
   reading,
-  characterPreference,
-  onCharacterPreferenceChange,
-  audioMode,
-  onAudioModeChange,
-  hasOfficialAudio,
   textSize,
   onTextSizeChange,
   showPinyin,
   onTogglePinyin,
   showMeaning,
   onToggleMeaning,
+  showHoverDefinitions = true,
+  onToggleHoverDefinitions,
   onClose,
 }: ReaderHeaderProps) {
   const [isAidsOpen, setIsAidsOpen] = useState(false);
@@ -61,40 +114,40 @@ export function ReaderHeader({
     };
   }, [isAidsOpen]);
 
-  const lessonInfo = SAMPLE_LESSONS.find((l) => l.id === reading.lessonId);
-  const parts = lessonInfo?.title.split(' · ') ?? [];
-  const englishTitle = parts[0] ?? reading.title;
-  const chineseTitle = parts[1] ?? reading.title;
+  // For narrative view (Dialogue 3), distinguish narrative reading from dialogue
+  const isNarrative = reading.dialogueNumber === 3 || reading.title.includes('短文');
 
   return (
-    <div className="sticky top-0 z-30 flex w-full origin-top flex-col items-center bg-gradient-to-b from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent pb-2 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] backdrop-blur-[2px]">
+    <div
+      className={cn(
+        "sticky top-0 z-30 flex w-full origin-top flex-col items-center pb-2 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] backdrop-blur-[2px] transition-all duration-300 ease-out bg-gradient-to-b from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent"
+      )}
+    >
       <ScreenHeader
         onClose={onClose}
         maxWidth="4xl"
         className="!h-auto !min-h-0 !border-0 !bg-transparent !px-4 !py-1 !shadow-none sm:!px-8"
         centerContent={
           <div className="min-w-0 text-center">
-            <h1 className="truncate font-chinese text-base sm:text-lg font-black text-ui-ink-strong">
-              {chineseTitle}
+            <h1 className="truncate text-xs sm:text-sm font-black uppercase tracking-wider text-ui-ink-strong">
+              <span className="text-brand-primary">Lesson {reading.lessonId}</span>
+              <span className="mx-1.5 text-ui-muted-strong">·</span>
+              <span>{isNarrative ? 'Reading' : `Dialogue ${reading.dialogueNumber}`}</span>
             </h1>
-            <p className="truncate text-xs font-bold text-ui-muted">
-              {englishTitle}
-            </p>
           </div>
         }
         rightAction={
           <div ref={aidsRef} className="relative">
             <IconActionButton
-              size="lg"
-              variant="quiet"
+              size="md"
               onClick={() => setIsAidsOpen((open) => !open)}
               className={isAidsOpen ? 'text-brand-primary hover:text-brand-primary' : undefined}
               icon={
                 <motion.span
-                  animate={{ rotate: isAidsOpen ? 180 : 0 }}
+                  animate={{ rotate: isAidsOpen ? 90 : 0 }}
                   transition={reduceMotion ? { duration: 0 } : { duration: 0.2, ease: 'easeOut' }}
                 >
-                  <AppIcon name="dropdown" size={24} />
+                  <AppIcon name="settings" size={20} />
                 </motion.span>
               }
               label="Reading settings"
@@ -110,135 +163,124 @@ export function ReaderHeader({
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 4, scale: 0.98 }}
                   transition={{ duration: 0.16, ease: [0.32, 0.72, 0, 1] }}
-                  className="absolute right-0 top-full z-50 mt-2 w-72 rounded-feature border-0 border-b-[length:var(--depth-md)] border-b-ui-border bg-ui-surface p-4 sm:w-80 text-left space-y-4"
+                  className="absolute right-0 top-full z-50 mt-2 w-64 sm:w-72 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-2.5 shadow-ambient-lg text-left space-y-3"
                 >
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <AppIcon name="dropdown" size={16} className="text-brand-primary" />
-                      <h3 className="text-sm font-black text-ui-ink-strong">Display Settings</h3>
-                    </div>
-                    <p className="mt-0.5 text-xs font-bold text-ui-muted">Customize reading experience</p>
-                  </div>
-
-                  {/* Character Script */}
+                  {/* Font Size */}
                   <div className="space-y-1.5">
-                    <span className="block text-[11px] font-black uppercase tracking-wider text-ui-muted-strong">
-                      Character Script
-                    </span>
-                    <SegmentedControl
-                      value={characterPreference}
-                      onChange={onCharacterPreferenceChange}
-                      ariaLabel="Character script format"
-                      options={[
-                        { value: 'traditional', label: <span>Traditional (繁體)</span> },
-                        { value: 'simplified', label: <span>Simplified (简体)</span> },
-                      ]}
-                    />
-                  </div>
-
-                  {/* Text Size */}
-                  <div className="space-y-1.5">
-                    <span className="block text-[11px] font-black uppercase tracking-wider text-ui-muted-strong">
+                    <span className="block px-1 text-xs font-black uppercase tracking-wider text-ui-muted-strong">
                       Font Size
                     </span>
-                    <SegmentedControl
+                    <SegmentedControl<ReaderTextSize>
                       value={textSize}
                       onChange={onTextSizeChange}
                       ariaLabel="Font size preference"
                       options={[
                         { value: 'normal', label: <span>Standard</span> },
                         { value: 'large', label: <span>Large</span> },
+                        { value: 'extra-large', label: <span>Huge</span> },
                       ]}
                     />
                   </div>
 
-                  {/* Audio Source (if official audio available) */}
-                  {hasOfficialAudio && (
-                    <div className="space-y-1.5">
-                      <span className="block text-[11px] font-black uppercase tracking-wider text-ui-muted-strong">
-                        Audio Source
-                      </span>
-                      <SegmentedControl
-                        value={audioMode}
-                        onChange={onAudioModeChange}
-                        ariaLabel="Audio source mode"
-                        options={[
-                          { value: 'book', label: <span>Book Track</span> },
-                          { value: 'tts', label: <span>Neural TTS</span> },
-                        ]}
-                      />
-                    </div>
-                  )}
+                  <div className="h-px bg-ui-divider" />
 
                   {/* Reading Aids Toggles */}
-                  <div className="space-y-2">
-                    <span className="block text-[11px] font-black uppercase tracking-wider text-ui-muted-strong">
-                      Reading Aids
-                    </span>
-                    <div className="overflow-hidden rounded-control bg-ui-hover/60 divide-y divide-ui-divider/70">
-                      {/* Pinyin Toggle */}
-                      <button
-                        type="button"
-                        role="switch"
-                        aria-checked={showPinyin}
-                        onClick={onTogglePinyin}
-                        className="flex w-full items-center justify-between gap-3 p-3 text-left transition-colors outline-none hover:bg-ui-surface focus-visible:bg-ui-surface"
+                  <div role="menu" aria-label="Reading aids" className="flex flex-col gap-1.5">
+                    <button
+                      type="button"
+                      role="switch"
+                      aria-checked={showMeaning}
+                      onClick={onToggleMeaning}
+                      className={cn(
+                        'flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold transition-colors outline-none focus-ring',
+                        showMeaning
+                          ? 'bg-brand-primary/10 text-brand-primary'
+                          : 'text-ui-ink-strong hover:bg-ui-hover'
+                      )}
+                    >
+                      <span>Translation</span>
+                      <span
+                        aria-hidden="true"
+                        className={cn(
+                          'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out',
+                          showMeaning ? 'bg-brand-primary' : 'bg-ui-divider'
+                        )}
                       >
-                        <div className="min-w-0">
-                          <span className="block text-xs font-black text-ui-ink-strong">Pinyin Annotations</span>
-                          <span className="block text-[11px] font-bold text-ui-muted">Pronunciation above characters</span>
-                        </div>
                         <span
-                          aria-hidden="true"
                           className={cn(
-                            'relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out',
-                            showPinyin ? 'bg-brand-primary' : 'bg-ui-hover',
+                            'pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-0 border-b-px border-b-ui-border ring-0 transition duration-200 ease-in-out translate-y-0.5',
+                            showMeaning ? 'translate-x-[18px]' : 'translate-x-0.5'
                           )}
-                        >
-                          <span
-                            className={cn(
-                              'pointer-events-none inline-block h-5 w-5 rounded-full bg-ui-surface border-0 border-b-[length:var(--depth-sm)] border-b-ui-border ring-0 transition duration-200 ease-in-out',
-                              showPinyin ? 'translate-x-5' : 'translate-x-0',
-                            )}
-                          />
-                        </span>
-                      </button>
+                        />
+                      </span>
+                    </button>
 
-                      {/* Translation Toggle */}
-                      <button
-                        type="button"
-                        role="switch"
-                        aria-checked={showMeaning}
-                        onClick={onToggleMeaning}
-                        className="flex w-full items-center justify-between gap-3 p-3 text-left transition-colors outline-none hover:bg-ui-surface focus-visible:bg-ui-surface"
+                    <button
+                      type="button"
+                      role="switch"
+                      aria-checked={showPinyin}
+                      onClick={onTogglePinyin}
+                      className={cn(
+                        'flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold transition-colors outline-none focus-ring',
+                        showPinyin
+                          ? 'bg-brand-primary/10 text-brand-primary'
+                          : 'text-ui-ink-strong hover:bg-ui-hover'
+                      )}
+                    >
+                      <span>Pinyin</span>
+                      <span
+                        aria-hidden="true"
+                        className={cn(
+                          'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out',
+                          showPinyin ? 'bg-brand-primary' : 'bg-ui-divider'
+                        )}
                       >
-                        <div className="min-w-0">
-                          <span className="block text-xs font-black text-ui-ink-strong">English Translation</span>
-                          <span className="block text-[11px] font-bold text-ui-muted">Sentence-by-sentence meaning</span>
-                        </div>
                         <span
-                          aria-hidden="true"
                           className={cn(
-                            'relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out',
-                            showMeaning ? 'bg-brand-primary' : 'bg-ui-hover',
+                            'pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-0 border-b-px border-b-ui-border ring-0 transition duration-200 ease-in-out translate-y-0.5',
+                            showPinyin ? 'translate-x-[18px]' : 'translate-x-0.5'
                           )}
-                        >
-                          <span
-                            className={cn(
-                              'pointer-events-none inline-block h-5 w-5 rounded-full bg-ui-surface border-0 border-b-[length:var(--depth-sm)] border-b-ui-border ring-0 transition duration-200 ease-in-out',
-                              showMeaning ? 'translate-x-5' : 'translate-x-0',
-                            )}
-                          />
-                        </span>
-                      </button>
-                    </div>
+                        />
+                      </span>
+                    </button>
+
+                    {onToggleHoverDefinitions && (
+                    <button
+                      type="button"
+                      role="switch"
+                      aria-checked={showHoverDefinitions}
+                      onClick={onToggleHoverDefinitions}
+                      className={cn(
+                        'flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold transition-colors outline-none focus-ring',
+                        showHoverDefinitions
+                          ? 'bg-brand-primary/10 text-brand-primary'
+                          : 'text-ui-ink-strong hover:bg-ui-hover'
+                      )}
+                    >
+                      <span>Hover Definitions</span>
+                      <span
+                        aria-hidden="true"
+                        className={cn(
+                          'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out',
+                          showHoverDefinitions ? 'bg-brand-primary' : 'bg-ui-divider'
+                        )}
+                      >
+                        <span
+                          className={cn(
+                            'pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-0 border-b-px border-b-ui-border ring-0 transition duration-200 ease-in-out translate-y-0.5',
+                            showHoverDefinitions ? 'translate-x-[18px]' : 'translate-x-0.5'
+                          )}
+                        />
+                      </span>
+                    </button>
+                  )}
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
         }
-      />
-    </div>
-  );
+    />
+  </div>
+);
 }

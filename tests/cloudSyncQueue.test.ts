@@ -10,7 +10,6 @@ import {
   mergePulledSrsData,
   planFolderSync,
   pruneAcknowledgedTombstones,
-  reconcileAggregateProgress,
 } from '../src/utils/cloudSyncQueue';
 import type { SRSData } from '../src/utils/srsEngine';
 
@@ -87,33 +86,21 @@ test('failed writes reject and remain eligible for retry', async () => {
   assert.equal(attempts, 2);
 });
 
-test('session deltas include XP, reviews, and learned cards exactly once', () => {
+test('session deltas include reviews and learned cards exactly once', () => {
   assert.deepEqual(
     getSessionProgressDelta(
-      { xpEarned: 25, cardsReviewed: 4, cardsLearned: 2 },
-      { xpEarned: 10, cardsReviewed: 1, cardsLearned: 1 },
+      { cardsReviewed: 4, cardsLearned: 2 },
+      { cardsReviewed: 1, cardsLearned: 1 },
     ),
-    { xpEarned: 15, cardsReviewed: 3, cardsLearned: 1 },
+    { cardsReviewed: 3, cardsLearned: 1 },
   );
 
   assert.deepEqual(
     getSessionProgressDelta(
-      { xpEarned: 5, cardsReviewed: 1, cardsLearned: 1 },
-      { xpEarned: 25, cardsReviewed: 4, cardsLearned: 2 },
+      { cardsReviewed: 1, cardsLearned: 1 },
+      { cardsReviewed: 4, cardsLearned: 2 },
     ),
-    { xpEarned: 5, cardsReviewed: 1, cardsLearned: 1 },
-  );
-});
-
-test('aggregate reconciliation adds only activity after the saved snapshot', () => {
-  assert.deepEqual(
-    reconcileAggregateProgress(
-      { totalXp: 125, totalCardsReviewed: 14, totalCardsLearned: 7 },
-      { totalXp: 130, totalCardsReviewed: 15, totalCardsLearned: 7 },
-      { xpEarned: 25, cardsReviewed: 4, cardsLearned: 2 },
-      { xpEarned: 30, cardsReviewed: 5, cardsLearned: 2 },
-    ),
-    { totalXp: 130, totalCardsReviewed: 15, totalCardsLearned: 7 },
+    { cardsReviewed: 1, cardsLearned: 1 },
   );
 });
 

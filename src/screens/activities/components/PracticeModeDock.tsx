@@ -68,7 +68,8 @@ function DockSubMenu<T extends string>({
 
       const containerRect = containerRef.current.getBoundingClientRect();
       const buttonRect = targetButton.getBoundingClientRect();
-      const halfWidth = 80; // 160px / 2
+      const menuWidth = 240;
+      const halfWidth = menuWidth / 2; // 120px
 
       // Exact center of the button relative to the container
       const buttonCenterInContainer = (buttonRect.left + buttonRect.width / 2) - containerRect.left;
@@ -78,7 +79,7 @@ function DockSubMenu<T extends string>({
       const minScreenX = 16;
       const maxScreenX = window.innerWidth - 16;
       const minLeft = minScreenX - containerRect.left;
-      const maxLeft = (maxScreenX - 160) - containerRect.left;
+      const maxLeft = (maxScreenX - menuWidth) - containerRect.left;
 
       // On wide screens where there is space, idealLeft is used directly.
       // On narrow screens where idealLeft would clip off-screen, it clamps safely.
@@ -99,25 +100,25 @@ function DockSubMenu<T extends string>({
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 4, scale: 0.98 }}
           transition={{ duration: 0.18, ease: [0.32, 0.72, 0, 1] }}
-          className="absolute bottom-full w-[160px] pb-2 z-50 pointer-events-auto"
+          className="absolute bottom-full w-60 sm:w-64 pb-3 z-50 pointer-events-auto"
           style={{
-            left: menuLeft !== null ? `${menuLeft}px` : modeKey === 'flashcards' ? '0px' : '25%',
+            left: menuLeft !== null ? `${menuLeft}px` : 'calc(50% - 120px)',
           }}
         >
           <div
             role="menu"
             aria-label={label}
-            className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-1.5"
+            className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-2 shadow-ambient-lg flex flex-col gap-1.5"
           >
             {options.map((mode) => (
               <ActionButton
                 key={mode.value}
                 role="menuitem"
                 variant="quiet"
-                size="sm"
+                size="md"
                 fullWidth
                 className={cn(
-                  'justify-start gap-2.5 px-3 py-2 text-left',
+                  'justify-start gap-3 px-4 py-2.5 text-left text-sm sm:text-base font-extrabold',
                   selectedValue === mode.value
                     ? 'text-brand-primary hover:text-brand-primary'
                     : 'text-ui-ink-strong',
@@ -127,7 +128,7 @@ function DockSubMenu<T extends string>({
                   onClose();
                 }}
               >
-                <AppIcon name={mode.icon} size={19} />
+                <AppIcon name={mode.icon} size={22} />
                 {mode.label}
               </ActionButton>
             ))}
@@ -164,13 +165,14 @@ export function PracticeModeDock({
     const updateStudyPosition = () => {
       if (!grammarButtonRef.current) return;
       const buttonRect = grammarButtonRef.current.getBoundingClientRect();
-      const halfWidth = 80; // 160px / 2
+      const menuWidth = 240;
+      const halfWidth = menuWidth / 2; // 120px
       const idealLeft = buttonRect.width / 2 - halfWidth;
 
       const minScreenX = 16;
       const maxScreenX = window.innerWidth - 16;
       const minLeft = minScreenX - buttonRect.left;
-      const maxLeft = (maxScreenX - 160) - buttonRect.left;
+      const maxLeft = (maxScreenX - menuWidth) - buttonRect.left;
 
       const clampedLeft = Math.max(minLeft, Math.min(idealLeft, maxLeft));
       setStudyMenuLeft(clampedLeft);
@@ -261,7 +263,7 @@ export function PracticeModeDock({
           }}
         >
           <AnimatePresence initial={false}>
-            {(onOpenGrammar || onOpenReading) && !feedback && (
+            {(onOpenGrammar || onOpenReading) && (
               <motion.div
                 ref={grammarButtonRef}
                 key="grammar-entry"
@@ -273,35 +275,35 @@ export function PracticeModeDock({
               >
                 {/* Popover centered above the button on wide screens, clamped on mobile */}
                 <AnimatePresence>
-                  {isStudyMenuOpen && (
+                  {isStudyMenuOpen && !feedback && (
                     <motion.div
                       initial={{ opacity: 0, y: 6, scale: 0.98 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 4, scale: 0.98 }}
                       transition={{ duration: 0.18, ease: [0.32, 0.72, 0, 1] }}
-                      className="absolute bottom-full pb-2 w-[160px] z-50 pointer-events-auto"
+                      className="absolute bottom-full pb-3 w-60 sm:w-64 z-50 pointer-events-auto"
                       style={{
-                        left: studyMenuLeft !== null ? `${studyMenuLeft}px` : 'calc(50% - 80px)',
+                        left: studyMenuLeft !== null ? `${studyMenuLeft}px` : 'calc(50% - 120px)',
                       }}
                     >
                       <div
                         role="menu"
                         aria-label="Choose Grammar or Reading"
-                        className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-1.5"
+                        className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-2 shadow-ambient-lg flex flex-col gap-1.5"
                       >
                         {onOpenGrammar && (
                           <ActionButton
                             role="menuitem"
                             variant="quiet"
-                            size="sm"
+                            size="md"
                             fullWidth
-                            className="justify-start gap-2.5 px-3 py-2 text-left text-ui-ink-strong hover:text-feedback-warning-edge"
+                            className="justify-start gap-3 px-4 py-2.5 text-left text-sm sm:text-base font-extrabold text-ui-ink-strong hover:text-feedback-warning-edge"
                             onClick={() => {
                               setIsStudyMenuOpen(false);
                               onOpenGrammar();
                             }}
                           >
-                            <AppIcon name="grammar" size={19} className="text-feedback-warning-edge shrink-0" />
+                            <AppIcon name="grammar" size={22} className="text-feedback-warning-edge shrink-0" />
                             <span>Grammar</span>
                           </ActionButton>
                         )}
@@ -309,15 +311,15 @@ export function PracticeModeDock({
                           <ActionButton
                             role="menuitem"
                             variant="quiet"
-                            size="sm"
+                            size="md"
                             fullWidth
-                            className="justify-start gap-2.5 px-3 py-2 text-left text-ui-ink-strong hover:text-brand-primary"
+                            className="justify-start gap-3 px-4 py-2.5 text-left text-sm sm:text-base font-extrabold text-ui-ink-strong hover:text-brand-primary"
                             onClick={() => {
                               setIsStudyMenuOpen(false);
                               onOpenReading();
                             }}
                           >
-                            <AppIcon name="book" size={19} className="text-brand-primary shrink-0" />
+                            <AppIcon name="book" size={22} className="text-brand-primary shrink-0" />
                             <span>Reading</span>
                           </ActionButton>
                         )}

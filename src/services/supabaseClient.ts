@@ -40,7 +40,7 @@ function getClient(): SupabaseClient {
 }
 
 // Proxy-based export: defers actual client creation to first use,
-// which is after dotenv.config() has run in server.ts or Vite has
+// which is after dotenv.config() has run in server/index.ts or Vite has
 // injected env vars in the browser.
 export const supabase: SupabaseClient = new Proxy({} as SupabaseClient, {
   get(_target, prop) {

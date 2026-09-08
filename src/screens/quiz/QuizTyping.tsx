@@ -17,6 +17,8 @@ import { numberToToneMarks } from '../../utils/pinyin';
 interface QuizModeProps {
   cards: Flashcard[];
   onEnd: () => void;
+  onContinue?: () => void;
+  continueLabel?: string;
   activeBookId: number;
   sessionKey: string;
 }
@@ -115,7 +117,7 @@ const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
   );
 };
 
-export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, activeBookId, sessionKey }) => {
+export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue, continueLabel, activeBookId, sessionKey }) => {
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
   const [breakdownIndex, setBreakdownIndex] = useState(0);
   const [breakdownOpen, setBreakdownOpen] = useState(false);
@@ -179,7 +181,8 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, activeBookId
       <LessonComplete
         learnedCount={learnedCount}
         unlearnedCount={unlearnedCount}
-        onContinue={onEnd}
+        onContinue={onContinue ?? onEnd}
+        continueLabel={onContinue ? continueLabel : undefined}
         onReviewUnlearned={unlearnedCount > 0 ? reviewUnlearned : undefined}
         onResetAll={resetAll}
       />

@@ -29,6 +29,14 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
   ```tsx
   <AppIcon name="search" size={18} />
   ```
+- **BrandWordmark** — app wordmark lockup: the yellow 文 brand tile plus owner/subject wordmark text. Used by the shell side navigation and the full-screen sign-in window. Optionally override the display `name`.
+  ```tsx
+  <BrandWordmark />
+  ```
+- **CloudPuff** — flat white puff-cloud silhouette for sky-themed decorative scenes (sign-in window, profile hero canopy). Purely decorative: render inside an `aria-hidden` container and vary depth/size via wrapper `opacity-*`/`scale-*` classes; `className` can narrow the width (e.g. `w-44`).
+  ```tsx
+  <CloudPuff className="w-44" />
+  ```
 - **CountryFlag** — consistent rectangular vector flag. Use `code` (`GB`, `ID`, `JP`, or `US`) instead of platform emoji.
   ```tsx
   <CountryFlag code="JP" alt="Japan" />
@@ -91,9 +99,9 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
   ```tsx
   <PracticePartProgressRail segments={segments} currentIndex={index} totalCount={total} />
   ```
-- **LoadingScreen** — full-screen loading state with animated logo and progress.
+- **LoadingScreen** — loading state with animated logo. `fullScreen` spans the viewport; `tone` ('canvas' default | 'practice') must match the tone of the surface it preloads — e.g. `tone="practice"` when lazy-loading practice-toned content — so the loaded surface never flips color. `inline` renders as a transparent in-flow block for loading INSIDE an already-painted window (grammar lesson / Reader content streaming). Never paint a third surface.
   ```tsx
-  <LoadingScreen />
+  <LoadingScreen message="Loading reading…" inline />
   ```
 - **LottiePlayer** — controlled Lottie animation wrapper for existing branded motion assets; do not use it for UI controls.
   ```tsx
@@ -110,10 +118,23 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
 
 ## Headers and workspace shells
 
-- **DynamicBackground** — animated canvas background for the app shell; use `variant="practice"` for activity workspaces.
-  ```tsx
-  <DynamicBackground variant="practice" />
-  ```
+> **Canvas ownership:** the shell (`LayoutShell`) paints the workspace viewport
+> background (`bg-ui-canvas`, or `bg-ui-practice-canvas` during practice
+> activities and column-only practice overlays via `practiceCanvasOpen`).
+> The side navigation is a floating surface bar (rounded `[28px]`
+> `bg-ui-surface` silhouette + tactile bottom block border; active item is a
+> soft `bg-ui-canvas` chip, inactive items transparent with `hover:bg-ui-hover`).
+> Full-viewport overlay windows (Reader = practice tone, Grammar = canvas tone)
+> paint their canvas across the whole viewport including the sidebar lane and
+> pad content by `var(--workspace-nav-width)` (see `GrammarLessonScreen`).
+> Overlay windows confined to the workspace column (dictionary detail) must
+> flag `practiceCanvasOpen` so the shell matches their tone. Loading, empty,
+> and error surfaces inherit the tone of the window they live in
+> (`LoadingScreen` `tone` prop) and never paint their own page-level fill.
+> Route containers, workspace columns, and headers in normal flow stay
+> transparent; only full-screen windows and the shared sticky gradient fades
+> reference canvas tokens.
+
 - **ScreenHeader** — canonical study/window header with title, progress, close/back, and composed center/right content. Segmented progress rails accept optional `progressAriaLabel` and `progressUnitLabel` through `PracticePartProgressRail` when a screen needs domain-specific accessibility copy.
   ```tsx
   <ScreenHeader title="Practice" progress={progress} onClose={onClose} />

@@ -7,13 +7,13 @@ import {
   adaptCjkviText,
   adaptCns11643Bulk,
   adaptMakeMeAHanziRecords,
-} from '../src/features/character-decomposition';
+} from '../scripts/character-decomposition/sources';
 import {
   buildDecompositionStagingPlan,
   canonicalJson,
   sha256,
   type StagingBuildInput,
-} from '../src/features/character-decomposition/staging';
+} from '../scripts/character-decomposition/staging';
 import { writeDecompositionStagingPlan } from '../scripts/lib/decompositionStagingSupabase';
 
 function buildFixtureInput(): StagingBuildInput {

@@ -7,8 +7,8 @@ import {
   getPosCategory,
   getPosChineseTerm,
   getPosExplanation,
+  type ScriptPreference,
 } from '../../utils/posLabels';
-import { useAppStore } from '../../store/useAppStore';
 import { cn } from '../../utils/cn';
 
 /** Soft tint per word-class family; neutral for helpers. */
@@ -53,6 +53,7 @@ interface PosBadgeProps {
   /** Raw part-of-speech tag from the vocabulary source (e.g. 'N', 'Vs', 'V-sep'). */
   pos?: string | null;
   className?: string;
+  characterPreference?: ScriptPreference;
 }
 
 interface Anchor {
@@ -74,10 +75,9 @@ interface TooltipPlacement {
  * ("N" → "NOUN"). Hovering it opens a learner-friendly explainer with the
  * Chinese term. Renders nothing when the card has no tag.
  */
-export function PosBadge({ pos, className = '' }: PosBadgeProps) {
+export function PosBadge({ pos, className = '', characterPreference = 'traditional' }: PosBadgeProps) {
   const label = formatPosLabel(pos);
   const reduceMotion = useReducedMotion();
-  const characterPreference = useAppStore((state) => state.characterPreference);
   const tagRef = useRef<HTMLSpanElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const openTimerRef = useRef<number | null>(null);

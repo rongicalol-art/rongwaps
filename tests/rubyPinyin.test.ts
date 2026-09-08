@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { alignRubyPinyin, getPhraseChunks, splitPinyinWordToSyllables } from '../src/utils/rubyPinyin.js';
+import { alignRubyPinyin, getPhraseChunks, getWordChunks, splitPinyinWordToSyllables } from '../src/utils/rubyPinyin.js';
 
 test('splitPinyinWordToSyllables splits compound words', () => {
   assert.deepEqual(splitPinyinWordToSyllables('piàoliàng'), ['piào', 'liàng']);
@@ -178,5 +178,124 @@ test('alignRubyPinyin handles numbers and compound words in Taipei 101 sentence'
 
   const kan = items.find(x => x.char === '看');
   assert.equal(kan?.pinyin, 'kàn');
+});
+
+test('getWordChunks segments a line into individual words and distinct punctuation', () => {
+  const line = {
+    text: '她是新同學，叫友美。她很可愛。',
+    words: [
+      { w: '他是新同学', start: 4.02, end: 5.94, charStart: 0, charEnd: 5 },
+      { w: '叫友美', start: 5.94, end: 8.34, charStart: 6, charEnd: 9 },
+      { w: '她很可爱', start: 8.34, end: 11.28, charStart: 10, charEnd: 14 },
+    ],
+  };
+  const chunks = getWordChunks(line.text, 'Tā shì xīn tóngxué, jiào Yǒuměi. Tā hěn kěài.', line);
+
+  assert.deepEqual(
+    chunks.map((c) => c.text),
+    ['她', '是', '新', '同學', '，', '叫', '友美', '。', '她', '很', '可愛', '。'],
+  );
+
+  const spoken = chunks.filter((c) => !c.isPunctuation);
+  assert.equal(spoken.length, 9);
+  // Each spoken word has its own timestamp slice
+  for (const word of spoken) {
+    assert.ok(typeof word.start === 'number' && typeof word.end === 'number');
+    assert.ok(word.end > word.start);
+  }
+  // Punctuation is separate and not marked as words
+  const puncts = chunks.filter((c) => c.isPunctuation);
+  assert.equal(puncts.length, 3);
+  assert.deepEqual(puncts.map((p) => p.text), ['，', '。', '。']);
+});
+
+test('getWordChunks assigns word timing from character-level onsets (chars)', () => {
+  const chars = [
+    { charStart: 0, charEnd: 1, start: 0.10, end: 0.40 },
+    { charStart: 1, charEnd: 2, start: 0.40, end: 0.70 },
+    { charStart: 2, charEnd: 3, start: 0.70, end: 1.00 },
+    { charStart: 3, charEnd: 4, start: 1.00, end: 1.30 },
+    { charStart: 4, charEnd: 5, start: 1.30, end: 1.70 },
+    { charStart: 6, charEnd: 7, start: 1.70, end: 2.00 },
+    { charStart: 7, charEnd: 8, start: 2.00, end: 2.30 },
+    { charStart: 8, charEnd: 9, start: 2.30, end: 2.70 },
+    { charStart: 10, charEnd: 11, start: 2.70, end: 3.00 },
+    { charStart: 11, charEnd: 12, start: 3.00, end: 3.30 },
+    { charStart: 12, charEnd: 13, start: 3.30, end: 3.60 },
+    { charStart: 13, charEnd: 14, start: 3.60, end: 4.00 },
+  ];
+  const chunks = getWordChunks(
+    '她是新同學，叫友美。她很可愛。',
+    'Tā shì xīn tóngxué, jiào Yǒuměi. Tā hěn kěài.',
+    { chars },
+  );
+
+  assert.equal(chunks[0].text, '她');
+  assert.equal(chunks[0].start, 0.10);
+  assert.equal(chunks[0].end, 0.40);
+  assert.equal(chunks[3].text, '同學');
+  assert.equal(chunks[3].start, 1.00);
+  assert.equal(chunks[3].end, 1.70);
+  assert.equal(chunks[10].text, '可愛');
+  assert.equal(chunks[10].start, 3.30);
+  assert.equal(chunks[10].end, 4.00);
+});
+
+test('getWordChunks handles Dialogue 3 narrative lines without grouped clause lumps', () => {
+  const line = {
+    text: '我是日本人。',
+    start: 13.56,
+    end: 16.56,
+    words: [
+      { w: '我是日本人', start: 13.56, end: 16.56, charStart: 0, charEnd: 5 },
+    ],
+  };
+  const chunks = getWordChunks(line.text, 'Wǒ shì Rìběn rén.', line);
+  assert.deepEqual(
+    chunks.map((c) => c.text),
+    ['我', '是', '日本', '人', '。'],
+  );
+  assert.equal(chunks[0].text, '我');
+  assert.equal(chunks[2].text, '日本');
+  assert.equal(chunks[3].text, '人');
+  assert.equal(chunks[4].isPunctuation, true);
+});
+
+test('getWordChunks preserves compound words with syllable-dividing apostrophes (e.g. 早安, 可愛, 國安, 十二)', () => {
+  // Test case 1: Dialogue 3 "大家早安！" (B1L01-3-14 zǎo'ān)
+  const zaoanChunks = getWordChunks('大家早安！', "Dàjiā zǎo'ān!");
+  assert.deepEqual(
+    zaoanChunks.map((c) => c.text),
+    ['大家', '早安', '！'],
+  );
+  assert.equal(zaoanChunks[1].text, '早安');
+  assert.equal(zaoanChunks[1].isPunctuation, false);
+  assert.equal(zaoanChunks[1].rubyItems.length, 2);
+  assert.equal(zaoanChunks[1].rubyItems[0].pinyin, 'zǎo');
+  assert.equal(zaoanChunks[1].rubyItems[1].pinyin, 'ān');
+
+  // Test case 2: "新同學很可愛。" (B1L01-1-08 kě'ài)
+  const keaiChunks = getWordChunks('新同學很可愛。', "Xīn tóngxué hěn kě'ài.");
+  assert.deepEqual(
+    keaiChunks.map((c) => c.text),
+    ['新', '同學', '很', '可愛', '。'],
+  );
+  assert.equal(keaiChunks[3].text, '可愛');
+
+  // Test case 3: "國安也在。" (Guó'ān)
+  const guoanChunks = getWordChunks('國安也在。', "Guó'ān yě zài.");
+  assert.deepEqual(
+    guoanChunks.map((c) => c.text),
+    ['國安', '也', '在', '。'],
+  );
+  assert.equal(guoanChunks[0].text, '國安');
+
+  // Test case 4: "現在十二點。" (shí'èr)
+  const shierChunks = getWordChunks('現在十二點。', "Xiànzài shí'èr diǎn.");
+  assert.deepEqual(
+    shierChunks.map((c) => c.text),
+    ['現在', '十二', '點', '。'],
+  );
+  assert.equal(shierChunks[1].text, '十二');
 });
 

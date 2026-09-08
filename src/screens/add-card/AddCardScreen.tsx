@@ -192,7 +192,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
   );
 
   return (
-    <div className="relative flex h-full w-full flex-col overflow-hidden bg-ui-practice-canvas font-sans selection:bg-brand-primary selection:text-white overscroll-none">
+    <div className="relative flex h-full w-full flex-col overflow-hidden font-sans selection:bg-brand-primary selection:text-white overscroll-none">
       <ScreenHeader
         onBack={view === 'back' ? handleBack : undefined}
         onClose={view === 'front' ? onClose : undefined}

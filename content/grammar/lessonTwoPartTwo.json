@@ -1,0 +1,4920 @@
+{
+  "LESSON_TWO_DIALOGUE_TWO": {
+    "id": "B1L02-D02",
+    "title": "對話二 · Dialogue 2",
+    "setting": "星期五下課以後 · After class, Friday",
+    "printedPages": [
+      57,
+      58
+    ],
+    "audioReference": "02-2-1",
+    "grammarFocus": [
+      "的",
+      "要",
+      "喜歡",
+      "愛",
+      "要不要",
+      "好不好"
+    ],
+    "lines": [
+      {
+        "id": "b1l02-d2-l1",
+        "speaker": "宜文",
+        "text": {
+          "traditional": "今天是星期五，明天是週末，你們要不要來我家？",
+          "simplified": "今天是星期五，明天是周末，你们要不要来我家？",
+          "pinyin": "Jīntiān shì xīngqí wǔ, míngtiān shì zhōumò, nǐmen yào bú yào lái wǒ jiā?",
+          "english": "Today is Friday and it is the weekend tomorrow. Do you want to come to my place?"
+        }
+      },
+      {
+        "id": "b1l02-d2-l2",
+        "speaker": "中明",
+        "text": {
+          "traditional": "明天是九月二十三號……啊！是妳的生日！",
+          "simplified": "明天是九月二十三号……啊！是妳的生日！",
+          "pinyin": "Míngtiān shì jiǔ yuè èrshísān hào... Ā! Shì nǐ de shēngrì!",
+          "english": "It is September 23rd tomorrow... Ah! It is your birthday!"
+        }
+      },
+      {
+        "id": "b1l02-d2-l3",
+        "speaker": "友美",
+        "text": {
+          "traditional": "宜文，生日快樂！",
+          "simplified": "宜文，生日快乐！",
+          "pinyin": "Yíwén, shēngrì kuàilè!",
+          "english": "Happy birthday, Yiwen!"
+        }
+      },
+      {
+        "id": "b1l02-d2-l4",
+        "speaker": "宜文",
+        "text": {
+          "traditional": "謝謝！明天晚上六點來我家，好不好？",
+          "simplified": "谢谢！明天晚上六点来我家，好不好？",
+          "pinyin": "Xièxie! Míngtiān wǎnshang liù diǎn lái wǒ jiā, hǎo bù hǎo?",
+          "english": "Thanks! How about coming to my place at 6 p.m. tomorrow?"
+        }
+      },
+      {
+        "id": "b1l02-d2-l5",
+        "speaker": "中明",
+        "text": {
+          "traditional": "沒問題。",
+          "simplified": "没问题。",
+          "pinyin": "Méi wèntí.",
+          "english": "No problem."
+        }
+      },
+      {
+        "id": "b1l02-d2-l6",
+        "speaker": "友美",
+        "text": {
+          "traditional": "好，明天見。",
+          "simplified": "好，明天见。",
+          "pinyin": "Hǎo, míngtiān jiàn.",
+          "english": "Okay, see you tomorrow."
+        }
+      }
+    ],
+    "comprehension": {
+      "prompt": "宜文請大家幾點來她家？",
+      "options": [
+        "晚上六點",
+        "早上六點",
+        "下午四點"
+      ],
+      "answer": "晚上六點",
+      "hint": "Read Yiwen’s invitation."
+    }
+  },
+  "LESSON_TWO_GRAMMAR_FIVE": {
+    "id": "B1L02-G05-P61",
+    "bookId": 1,
+    "lessonId": 2,
+    "partId": 2,
+    "lessonTitle": "你幾點去學校？",
+    "lessonTitleEnglish": "What Time Do You Go to School?",
+    "grammarNumber": 5,
+    "titleTraditional": "主語 + 想法 + 動作",
+    "titleEnglish": "Put Wanting or Liking Before the Action",
+    "learnerPromise": "Say what you want, like, or love to eat, drink, visit, or do.",
+    "printedPages": [
+      61
+    ],
+    "audioReference": "02-2-3",
+    "explanation": "Words like 要, 喜歡, and 愛 show what you want or feel about doing something. Put that word before the action word.",
+    "focusTerms": [
+      "要",
+      "喜歡",
+      "喜欢",
+      "愛",
+      "爱",
+      "想法",
+      "動作",
+      "动作"
+    ],
+    "teachingGlossary": [
+      {
+        "id": "b1l02-g05-glossary-1",
+        "traditional": "我",
+        "pinyin": "wǒ",
+        "meaning": "I; me"
+      },
+      {
+        "id": "b1l02-g05-glossary-2",
+        "traditional": "你",
+        "pinyin": "nǐ",
+        "meaning": "you"
+      },
+      {
+        "id": "b1l02-g05-glossary-3",
+        "traditional": "媽媽",
+        "simplified": "妈妈",
+        "pinyin": "māma",
+        "meaning": "mom"
+      },
+      {
+        "id": "b1l02-g05-glossary-4",
+        "traditional": "要",
+        "pinyin": "yào",
+        "meaning": "want to; intend to"
+      },
+      {
+        "id": "b1l02-g05-glossary-5",
+        "traditional": "不要",
+        "pinyin": "bú yào",
+        "meaning": "do not want to"
+      },
+      {
+        "id": "b1l02-g05-glossary-6",
+        "traditional": "喜歡",
+        "simplified": "喜欢",
+        "pinyin": "xǐhuān",
+        "meaning": "like"
+      },
+      {
+        "id": "b1l02-g05-glossary-7",
+        "traditional": "不喜歡",
+        "simplified": "不喜欢",
+        "pinyin": "bù xǐhuān",
+        "meaning": "do not like"
+      },
+      {
+        "id": "b1l02-g05-glossary-8",
+        "traditional": "愛",
+        "simplified": "爱",
+        "pinyin": "ài",
+        "meaning": "love"
+      },
+      {
+        "id": "b1l02-g05-glossary-9",
+        "traditional": "不愛",
+        "simplified": "不爱",
+        "pinyin": "bú ài",
+        "meaning": "do not love"
+      },
+      {
+        "id": "b1l02-g05-glossary-10",
+        "traditional": "喝",
+        "pinyin": "hē",
+        "meaning": "drink"
+      },
+      {
+        "id": "b1l02-g05-glossary-11",
+        "traditional": "吃",
+        "pinyin": "chī",
+        "meaning": "eat"
+      },
+      {
+        "id": "b1l02-g05-glossary-12",
+        "traditional": "去",
+        "pinyin": "qù",
+        "meaning": "go"
+      },
+      {
+        "id": "b1l02-g05-glossary-13",
+        "traditional": "來",
+        "simplified": "来",
+        "pinyin": "lái",
+        "meaning": "come"
+      },
+      {
+        "id": "b1l02-g05-glossary-14",
+        "traditional": "茶",
+        "pinyin": "chá",
+        "meaning": "tea"
+      },
+      {
+        "id": "b1l02-g05-glossary-15",
+        "traditional": "奶茶",
+        "pinyin": "nǎichá",
+        "meaning": "milk tea"
+      },
+      {
+        "id": "b1l02-g05-glossary-16",
+        "traditional": "珍珠奶茶",
+        "pinyin": "zhēnzhū nǎichá",
+        "meaning": "bubble milk tea"
+      },
+      {
+        "id": "b1l02-g05-glossary-17",
+        "traditional": "水果",
+        "pinyin": "shuǐguǒ",
+        "meaning": "fruit"
+      },
+      {
+        "id": "b1l02-g05-glossary-18",
+        "traditional": "老師",
+        "simplified": "老师",
+        "pinyin": "lǎoshī",
+        "meaning": "teacher"
+      },
+      {
+        "id": "b1l02-g05-glossary-19",
+        "traditional": "家",
+        "pinyin": "jiā",
+        "meaning": "home; house"
+      },
+      {
+        "id": "b1l02-g05-glossary-20",
+        "traditional": "學校",
+        "simplified": "学校",
+        "pinyin": "xuéxiào",
+        "meaning": "school"
+      },
+      {
+        "id": "b1l02-g05-glossary-21",
+        "traditional": "水",
+        "pinyin": "shuǐ",
+        "meaning": "water"
+      },
+      {
+        "id": "b1l02-g05-glossary-22",
+        "traditional": "什麼",
+        "simplified": "什么",
+        "pinyin": "shénme",
+        "meaning": "what"
+      },
+      {
+        "id": "b1l02-g05-glossary-23",
+        "traditional": "嗎",
+        "simplified": "吗",
+        "pinyin": "ma",
+        "meaning": "ending word for a yes/no question"
+      },
+      {
+        "id": "b1l02-g05-glossary-24",
+        "traditional": "想法",
+        "pinyin": "xiǎngfǎ",
+        "meaning": "intention or feeling"
+      },
+      {
+        "id": "b1l02-g05-glossary-25",
+        "traditional": "動作",
+        "simplified": "动作",
+        "pinyin": "dòngzuò",
+        "meaning": "action"
+      }
+    ],
+    "pattern": "Who + intention or feeling + action",
+    "patternColumns": [
+      "Who",
+      "Want, like, or love",
+      "Action"
+    ],
+    "patternAccentColumn": 1,
+    "discoveryLab": {
+      "title": "Put the feeling before the action",
+      "description": "Put the wanting or liking word first, then the action word.",
+      "prompt": "What meaning comes before the action?",
+      "choices": [
+        {
+          "id": "g5-want",
+          "label": "Want · 要 + 喝",
+          "traditional": "我要喝茶。",
+          "pinyin": "Wǒ yào hē chá.",
+          "english": "I want to drink tea.",
+          "note": "要 tells your intention. 喝 names the action."
+        },
+        {
+          "id": "g5-like",
+          "label": "Like · 喜歡 + 喝",
+          "traditional": "媽媽喜歡喝奶茶。",
+          "simplified": "妈妈喜欢喝奶茶。",
+          "pinyin": "Māma xǐhuān hē nǎichá.",
+          "english": "Mom likes drinking milk tea.",
+          "note": "喜歡 comes before the action 喝."
+        },
+        {
+          "id": "g5-love",
+          "label": "Love · 愛 + 吃",
+          "traditional": "我愛吃水果。",
+          "simplified": "我爱吃水果。",
+          "pinyin": "Wǒ ài chī shuǐguǒ.",
+          "english": "I love eating fruit.",
+          "note": "愛 adds the feeling; 吃 still names the action."
+        },
+        {
+          "id": "g5-repair",
+          "label": "Repair the stack",
+          "traditional": "我喝要茶。 → 我要喝茶。",
+          "pinyin": "Wǒ hē yào chá. → Wǒ yào hē chá.",
+          "english": "Repair it: I want to drink tea.",
+          "note": "Move 要 before the action 喝.",
+          "isCorrection": true
+        }
+      ],
+      "takeaway": "Intention or feeling first, action second."
+    },
+    "patternRows": [
+      {
+        "id": "g5-pattern-1",
+        "subject": [
+          {
+            "id": "g5-p1-i",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g5-p1-want",
+            "traditional": "要",
+            "pinyin": "yào",
+            "meaning": "want to; intend to"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g5-p1-drink",
+            "traditional": "喝",
+            "pinyin": "hē",
+            "meaning": "drink"
+          },
+          {
+            "id": "g5-p1-tea",
+            "traditional": "茶",
+            "pinyin": "chá",
+            "meaning": "tea",
+            "suffix": "。"
+          }
+        ],
+        "english": "I want to drink tea."
+      },
+      {
+        "id": "g5-pattern-2",
+        "subject": [
+          {
+            "id": "g5-p2-mom",
+            "traditional": "媽媽",
+            "simplified": "妈妈",
+            "pinyin": "māma",
+            "meaning": "mom"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g5-p2-like",
+            "traditional": "喜歡",
+            "simplified": "喜欢",
+            "pinyin": "xǐhuān",
+            "meaning": "like"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g5-p2-drink",
+            "traditional": "喝",
+            "pinyin": "hē",
+            "meaning": "drink"
+          },
+          {
+            "id": "g5-p2-milk-tea",
+            "traditional": "奶茶",
+            "pinyin": "nǎichá",
+            "meaning": "milk tea",
+            "suffix": "。"
+          }
+        ],
+        "english": "Mom likes drinking milk tea."
+      },
+      {
+        "id": "g5-pattern-3",
+        "subject": [
+          {
+            "id": "g5-p3-you",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g5-p3-want",
+            "traditional": "要",
+            "pinyin": "yào",
+            "meaning": "want to; intend to"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g5-p3-go",
+            "traditional": "去",
+            "pinyin": "qù",
+            "meaning": "go"
+          },
+          {
+            "id": "g5-p3-teacher",
+            "traditional": "老師",
+            "simplified": "老师",
+            "pinyin": "lǎoshī",
+            "meaning": "teacher"
+          },
+          {
+            "id": "g5-p3-home",
+            "traditional": "家",
+            "pinyin": "jiā",
+            "meaning": "home; house",
+            "suffix": "嗎？"
+          }
+        ],
+        "english": "Do you want to go to the teacher’s home?"
+      }
+    ],
+    "confusion": {
+      "title": "Don't mix these up",
+      "items": [
+        {
+          "id": "g5-confusion-want-before-action",
+          "question": "Why is 要 before 吃?",
+          "answer": "要 is the wanting word, and the wanting word goes before the action word: 要 + 吃, never 吃 + 要.",
+          "wrongTraditional": "你吃要水果。",
+          "wrongSimplified": "你吃要水果。",
+          "right": {
+            "traditional": "你要吃水果。",
+            "simplified": "你要吃水果。",
+            "pinyin": "Nǐ yào chī shuǐguǒ.",
+            "english": "You want to eat fruit.",
+            "words": [
+              {
+                "id": "g5-confusion-1-word-1",
+                "traditional": "你",
+                "pinyin": "nǐ",
+                "meaning": "you"
+              },
+              {
+                "id": "g5-confusion-1-word-2",
+                "traditional": "要",
+                "pinyin": "yào",
+                "meaning": "want to; intend to"
+              },
+              {
+                "id": "g5-confusion-1-word-3",
+                "traditional": "吃",
+                "pinyin": "chī",
+                "meaning": "eat"
+              },
+              {
+                "id": "g5-confusion-1-word-4",
+                "traditional": "水果",
+                "pinyin": "shuǐguǒ",
+                "meaning": "fruit",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "g5-confusion-ai-vs-xihuan",
+          "question": "Can I use 愛 for any liking?",
+          "answer": "No — 愛 means love, a very strong feeling. For a normal like, use 喜歡.",
+          "wrongTraditional": "我愛喝奶茶。",
+          "wrongSimplified": "我爱喝奶茶。",
+          "right": {
+            "traditional": "我喜歡喝奶茶。",
+            "simplified": "我喜欢喝奶茶。",
+            "pinyin": "Wǒ xǐhuān hē nǎichá.",
+            "english": "I like drinking milk tea.",
+            "words": [
+              {
+                "id": "g5-confusion-2-word-1",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
+              },
+              {
+                "id": "g5-confusion-2-word-2",
+                "traditional": "喜歡",
+                "simplified": "喜欢",
+                "pinyin": "xǐhuān",
+                "meaning": "like"
+              },
+              {
+                "id": "g5-confusion-2-word-3",
+                "traditional": "喝",
+                "pinyin": "hē",
+                "meaning": "drink"
+              },
+              {
+                "id": "g5-confusion-2-word-4",
+                "traditional": "奶茶",
+                "pinyin": "nǎichá",
+                "meaning": "milk tea",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "g5-confusion-negative-placement",
+          "question": "Where does 不 go with 愛喝?",
+          "answer": "不 goes before the wanting word, not the action: 不愛喝, never 愛不喝.",
+          "wrongTraditional": "我愛不喝奶茶。",
+          "wrongSimplified": "我爱不喝奶茶。",
+          "right": {
+            "traditional": "我不愛喝珍珠奶茶。",
+            "simplified": "我不爱喝珍珠奶茶。",
+            "pinyin": "Wǒ bú ài hē zhēnzhū nǎichá.",
+            "english": "I do not love drinking bubble milk tea.",
+            "words": [
+              {
+                "id": "g5-confusion-3-word-1",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
+              },
+              {
+                "id": "g5-confusion-3-word-2",
+                "traditional": "不愛",
+                "simplified": "不爱",
+                "pinyin": "bú ài",
+                "meaning": "do not love"
+              },
+              {
+                "id": "g5-confusion-3-word-3",
+                "traditional": "喝",
+                "pinyin": "hē",
+                "meaning": "drink"
+              },
+              {
+                "id": "g5-confusion-3-word-4",
+                "traditional": "珍珠奶茶",
+                "pinyin": "zhēnzhū nǎichá",
+                "meaning": "bubble milk tea",
+                "suffix": "。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "examples": [
+      {
+        "id": "g5-example-1",
+        "number": 1,
+        "text": {
+          "traditional": "媽媽喜歡喝奶茶。",
+          "simplified": "妈妈喜欢喝奶茶。",
+          "pinyin": "Māma xǐhuān hē nǎichá.",
+          "english": "Mom likes drinking milk tea.",
+          "words": [
+            {
+              "id": "g5-e1-word-1",
+              "traditional": "媽媽",
+              "simplified": "妈妈",
+              "pinyin": "māma",
+              "meaning": "mom"
+            },
+            {
+              "id": "g5-e1-word-2",
+              "traditional": "喜歡",
+              "simplified": "喜欢",
+              "pinyin": "xǐhuān",
+              "meaning": "like"
+            },
+            {
+              "id": "g5-e1-word-3",
+              "traditional": "喝",
+              "pinyin": "hē",
+              "meaning": "drink"
+            },
+            {
+              "id": "g5-e1-word-4",
+              "traditional": "奶茶",
+              "pinyin": "nǎichá",
+              "meaning": "milk tea",
+              "suffix": "。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g5-example-2",
+        "number": 2,
+        "text": {
+          "traditional": "你要去老師家嗎？",
+          "simplified": "你要去老师家吗？",
+          "pinyin": "Nǐ yào qù lǎoshī jiā ma?",
+          "english": "Do you want to go to the teacher’s home?",
+          "words": [
+            {
+              "id": "g5-e2-word-1",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you"
+            },
+            {
+              "id": "g5-e2-word-2",
+              "traditional": "要",
+              "pinyin": "yào",
+              "meaning": "want to; intend to"
+            },
+            {
+              "id": "g5-e2-word-3",
+              "traditional": "去",
+              "pinyin": "qù",
+              "meaning": "go"
+            },
+            {
+              "id": "g5-e2-word-4",
+              "traditional": "老師",
+              "simplified": "老师",
+              "pinyin": "lǎoshī",
+              "meaning": "teacher"
+            },
+            {
+              "id": "g5-e2-word-5",
+              "traditional": "家",
+              "pinyin": "jiā",
+              "meaning": "home; house"
+            },
+            {
+              "id": "g5-e2-word-6",
+              "traditional": "嗎",
+              "simplified": "吗",
+              "pinyin": "ma",
+              "meaning": "ending word for a yes/no question",
+              "suffix": "？"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g5-example-3",
+        "number": 3,
+        "teachingNote": "不 stays with 愛; the following action still comes second.",
+        "text": {
+          "traditional": "我愛吃水果，不愛喝珍珠奶茶。",
+          "simplified": "我爱吃水果，不爱喝珍珠奶茶。",
+          "pinyin": "Wǒ ài chī shuǐguǒ, bú ài hē zhēnzhū nǎichá.",
+          "english": "I love eating fruit and do not love drinking bubble milk tea.",
+          "words": [
+            {
+              "id": "g5-e3-word-1",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me"
+            },
+            {
+              "id": "g5-e3-word-2",
+              "traditional": "愛",
+              "simplified": "爱",
+              "pinyin": "ài",
+              "meaning": "love"
+            },
+            {
+              "id": "g5-e3-word-3",
+              "traditional": "吃",
+              "pinyin": "chī",
+              "meaning": "eat"
+            },
+            {
+              "id": "g5-e3-word-4",
+              "traditional": "水果",
+              "pinyin": "shuǐguǒ",
+              "meaning": "fruit"
+            },
+            {
+              "id": "g5-e3-word-5",
+              "traditional": "不愛",
+              "simplified": "不爱",
+              "pinyin": "bú ài",
+              "meaning": "do not love",
+              "prefix": "，"
+            },
+            {
+              "id": "g5-e3-word-6",
+              "traditional": "喝",
+              "pinyin": "hē",
+              "meaning": "drink"
+            },
+            {
+              "id": "g5-e3-word-7",
+              "traditional": "珍珠奶茶",
+              "pinyin": "zhēnzhū nǎichá",
+              "meaning": "bubble milk tea",
+              "suffix": "。"
+            }
+          ]
+        }
+      }
+    ],
+    "exerciseTitle": "Keep 要, 喜歡, 愛 before the action",
+    "exercisePreview": "Choose a complete personal response to each source question.",
+    "exerciseInstruction": "Keep 要, 喜歡, or 愛 before the action it describes.",
+    "exerciseNote": "These questions are about you. A yes answer and a no answer are both correct.",
+    "exerciseResponseMode": "text",
+    "questions": [
+      {
+        "id": "g5-question-1",
+        "number": 1,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：你要吃水果嗎？ B：",
+            "simplified": "A：你要吃水果吗？ B："
+          },
+          {
+            "type": "blank",
+            "id": "g5-q1-answer",
+            "answer": "我要吃水果",
+            "acceptedAnswers": [
+              "我不要吃水果"
+            ],
+            "hint": "Keep 要 or 不要 before 吃."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g5-q1-yes",
+            "traditional": "我要吃水果",
+            "pinyin": "wǒ yào chī shuǐguǒ",
+            "meaning": "I want to eat fruit."
+          },
+          {
+            "id": "g5-q1-no",
+            "traditional": "我不要吃水果",
+            "pinyin": "wǒ bú yào chī shuǐguǒ",
+            "meaning": "I do not want to eat fruit."
+          },
+          {
+            "id": "g5-q1-wrong",
+            "traditional": "我吃要水果",
+            "pinyin": "wǒ chī yào shuǐguǒ",
+            "meaning": "Incorrect order: 要 follows 吃."
+          }
+        ],
+        "correctFeedback": "Both personal answers keep 要 or 不要 before the action 吃.",
+        "repairFeedback": "Put 要 or 不要 before 吃."
+      },
+      {
+        "id": "g5-question-2",
+        "number": 2,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：你喜歡來學校嗎？ B：",
+            "simplified": "A：你喜欢来学校吗？ B："
+          },
+          {
+            "type": "blank",
+            "id": "g5-q2-answer",
+            "answer": "我喜歡來學校",
+            "answerSimplified": "我喜欢来学校",
+            "acceptedAnswers": [
+              "我不喜歡來學校"
+            ],
+            "acceptedAnswersSimplified": [
+              "我不喜欢来学校"
+            ],
+            "hint": "Keep 喜歡 or 不喜歡 before 來."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g5-q2-yes",
+            "traditional": "我喜歡來學校",
+            "simplified": "我喜欢来学校",
+            "pinyin": "wǒ xǐhuān lái xuéxiào",
+            "meaning": "I like coming to school."
+          },
+          {
+            "id": "g5-q2-no",
+            "traditional": "我不喜歡來學校",
+            "simplified": "我不喜欢来学校",
+            "pinyin": "wǒ bù xǐhuān lái xuéxiào",
+            "meaning": "I do not like coming to school."
+          },
+          {
+            "id": "g5-q2-wrong",
+            "traditional": "我來喜歡學校",
+            "simplified": "我来喜欢学校",
+            "pinyin": "wǒ lái xǐhuān xuéxiào",
+            "meaning": "Incorrect order: 喜歡 follows 來."
+          }
+        ],
+        "correctFeedback": "The feeling 喜歡 comes before the action 來.",
+        "repairFeedback": "Keep 喜歡 + 來 together in that order."
+      },
+      {
+        "id": "g5-question-3",
+        "number": 3,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：你愛喝什麼？ B：",
+            "simplified": "A：你爱喝什么？ B："
+          },
+          {
+            "type": "blank",
+            "id": "g5-q3-answer",
+            "answer": "我愛喝茶",
+            "answerSimplified": "我爱喝茶",
+            "acceptedAnswers": [
+              "我愛喝水"
+            ],
+            "acceptedAnswersSimplified": [
+              "我爱喝水"
+            ],
+            "hint": "Use 我 + 愛 + 喝 + a drink."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g5-q3-tea",
+            "traditional": "我愛喝茶",
+            "simplified": "我爱喝茶",
+            "pinyin": "wǒ ài hē chá",
+            "meaning": "I love drinking tea."
+          },
+          {
+            "id": "g5-q3-water",
+            "traditional": "我愛喝水",
+            "simplified": "我爱喝水",
+            "pinyin": "wǒ ài hē shuǐ",
+            "meaning": "I love drinking water."
+          },
+          {
+            "id": "g5-q3-wrong",
+            "traditional": "我喝愛茶",
+            "simplified": "我喝爱茶",
+            "pinyin": "wǒ hē ài chá",
+            "meaning": "Incorrect order: 愛 follows 喝."
+          }
+        ],
+        "correctFeedback": "愛 gives the feeling before the action 喝.",
+        "repairFeedback": "Use 愛 + 喝, then name the drink."
+      }
+    ]
+  },
+  "LESSON_TWO_GRAMMAR_FOUR": {
+    "id": "B1L02-G04-P60",
+    "bookId": 1,
+    "lessonId": 2,
+    "partId": 2,
+    "lessonTitle": "你幾點去學校？",
+    "lessonTitleEnglish": "What Time Do You Go to School?",
+    "grammarNumber": 4,
+    "titleTraditional": "名詞 + 的 + 名詞",
+    "titleEnglish": "Connect an Owner to a Thing with 的",
+    "learnerPromise": "Say whose birthday, phone, child, friend, school, or other thing you mean.",
+    "printedPages": [
+      60
+    ],
+    "audioReference": "02-2-3",
+    "explanation": "Put 的 between an owner and the thing that belongs to them. With close family, you can often drop 的: 我媽媽. But keep 的 with things like phones: 我的手機.",
+    "focusTerms": [
+      "的",
+      "名詞",
+      "名词"
+    ],
+    "teachingGlossary": [
+      {
+        "id": "b1l02-g04-glossary-1",
+        "traditional": "我",
+        "pinyin": "wǒ",
+        "meaning": "I; me"
+      },
+      {
+        "id": "b1l02-g04-glossary-2",
+        "traditional": "我們",
+        "simplified": "我们",
+        "pinyin": "wǒmen",
+        "meaning": "we; our when used before a group"
+      },
+      {
+        "id": "b1l02-g04-glossary-3",
+        "traditional": "你",
+        "pinyin": "nǐ",
+        "meaning": "you"
+      },
+      {
+        "id": "b1l02-g04-glossary-4",
+        "traditional": "他",
+        "pinyin": "tā",
+        "meaning": "he; him"
+      },
+      {
+        "id": "b1l02-g04-glossary-5",
+        "traditional": "媽媽",
+        "simplified": "妈妈",
+        "pinyin": "māma",
+        "meaning": "mom"
+      },
+      {
+        "id": "b1l02-g04-glossary-6",
+        "traditional": "老師",
+        "simplified": "老师",
+        "pinyin": "lǎoshī",
+        "meaning": "teacher"
+      },
+      {
+        "id": "b1l02-g04-glossary-7",
+        "traditional": "宜文",
+        "pinyin": "Yíwén",
+        "meaning": "Yiwen"
+      },
+      {
+        "id": "b1l02-g04-glossary-8",
+        "traditional": "中明",
+        "pinyin": "Zhōngmíng",
+        "meaning": "Zhongming"
+      },
+      {
+        "id": "b1l02-g04-glossary-9",
+        "traditional": "台灣",
+        "simplified": "台湾",
+        "pinyin": "Táiwān",
+        "meaning": "Taiwan"
+      },
+      {
+        "id": "b1l02-g04-glossary-10",
+        "traditional": "英國",
+        "simplified": "英国",
+        "pinyin": "Yīngguó",
+        "meaning": "the United Kingdom"
+      },
+      {
+        "id": "b1l02-g04-glossary-11",
+        "traditional": "美國",
+        "simplified": "美国",
+        "pinyin": "Měiguó",
+        "meaning": "the United States"
+      },
+      {
+        "id": "b1l02-g04-glossary-12",
+        "traditional": "的",
+        "pinyin": "de",
+        "meaning": "links an owner to a thing"
+      },
+      {
+        "id": "b1l02-g04-glossary-13",
+        "traditional": "孩子",
+        "pinyin": "háizi",
+        "meaning": "child; children"
+      },
+      {
+        "id": "b1l02-g04-glossary-14",
+        "traditional": "生日",
+        "pinyin": "shēngrì",
+        "meaning": "birthday"
+      },
+      {
+        "id": "b1l02-g04-glossary-15",
+        "traditional": "學校",
+        "simplified": "学校",
+        "pinyin": "xuéxiào",
+        "meaning": "school"
+      },
+      {
+        "id": "b1l02-g04-glossary-16",
+        "traditional": "手機",
+        "simplified": "手机",
+        "pinyin": "shǒujī",
+        "meaning": "cell phone"
+      },
+      {
+        "id": "b1l02-g04-glossary-17",
+        "traditional": "朋友",
+        "pinyin": "péngyǒu",
+        "meaning": "friend"
+      },
+      {
+        "id": "b1l02-g04-glossary-18",
+        "traditional": "水果",
+        "pinyin": "shuǐguǒ",
+        "meaning": "fruit"
+      },
+      {
+        "id": "b1l02-g04-glossary-19",
+        "traditional": "奶茶",
+        "pinyin": "nǎichá",
+        "meaning": "milk tea"
+      },
+      {
+        "id": "b1l02-g04-glossary-20",
+        "traditional": "新",
+        "pinyin": "xīn",
+        "meaning": "new"
+      },
+      {
+        "id": "b1l02-g04-glossary-21",
+        "traditional": "可愛",
+        "simplified": "可爱",
+        "pinyin": "kě'ài",
+        "meaning": "cute; lovely"
+      },
+      {
+        "id": "b1l02-g04-glossary-22",
+        "traditional": "很",
+        "pinyin": "hěn",
+        "meaning": "very; used before a describing word"
+      },
+      {
+        "id": "b1l02-g04-glossary-23",
+        "traditional": "不喜歡",
+        "simplified": "不喜欢",
+        "pinyin": "bù xǐhuān",
+        "meaning": "do not like"
+      },
+      {
+        "id": "b1l02-g04-glossary-24",
+        "traditional": "喝",
+        "pinyin": "hē",
+        "meaning": "drink"
+      },
+      {
+        "id": "b1l02-g04-glossary-25",
+        "traditional": "喜歡",
+        "simplified": "喜欢",
+        "pinyin": "xǐhuān",
+        "meaning": "like"
+      },
+      {
+        "id": "b1l02-g04-glossary-26",
+        "traditional": "明天",
+        "pinyin": "míngtiān",
+        "meaning": "tomorrow"
+      },
+      {
+        "id": "b1l02-g04-glossary-27",
+        "traditional": "去",
+        "pinyin": "qù",
+        "meaning": "go"
+      },
+      {
+        "id": "b1l02-g04-glossary-28",
+        "traditional": "嗎",
+        "simplified": "吗",
+        "pinyin": "ma",
+        "meaning": "ending word for a yes/no question"
+      },
+      {
+        "id": "b1l02-g04-glossary-29",
+        "traditional": "二月二十四號",
+        "simplified": "二月二十四号",
+        "pinyin": "èr yuè èrshísì hào",
+        "meaning": "February 24"
+      }
+    ],
+    "pattern": "Owner or description + 的 + thing",
+    "patternColumns": [
+      "Owner or description",
+      "的",
+      "Thing"
+    ],
+    "patternAccentColumn": 1,
+    "discoveryLab": {
+      "title": "Use 的 as a connection link",
+      "description": "The word before 的 identifies who owns the thing or what kind of thing it is.",
+      "prompt": "What connection do you want to make?",
+      "choices": [
+        {
+          "id": "g4-phone",
+          "label": "Things · keep 的",
+          "traditional": "我的手機",
+          "simplified": "我的手机",
+          "pinyin": "Wǒ de shǒujī",
+          "english": "my cell phone",
+          "note": "Things keep 的: 我的手機, not 我手機."
+        },
+        {
+          "id": "g4-family",
+          "label": "Close family · may drop 的",
+          "traditional": "我媽媽",
+          "simplified": "我妈妈",
+          "pinyin": "Wǒ māma",
+          "english": "my mom",
+          "note": "With close family, you can often drop 的."
+        },
+        {
+          "id": "g4-school",
+          "label": "Group · use 我們",
+          "traditional": "我們學校",
+          "simplified": "我们学校",
+          "pinyin": "Wǒmen xuéxiào",
+          "english": "our school / my school",
+          "note": "The source note uses 我們學校 for the school a person belongs to."
+        },
+        {
+          "id": "g4-repair",
+          "label": "Repair an unclear link",
+          "traditional": "老師媽媽 → 老師的媽媽",
+          "simplified": "老师妈妈 → 老师的妈妈",
+          "pinyin": "Lǎoshī māma → Lǎoshī de māma",
+          "english": "the teacher’s mother",
+          "note": "Without 的, this does not clearly express the intended ownership.",
+          "isCorrection": true
+        }
+      ],
+      "takeaway": "Use 的 to make the owner-to-thing connection explicit."
+    },
+    "patternRows": [
+      {
+        "id": "g4-pattern-1",
+        "subject": [
+          {
+            "id": "g4-p1-i",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g4-p1-de",
+            "traditional": "的",
+            "pinyin": "de",
+            "meaning": "links an owner to a thing"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g4-p1-child",
+            "traditional": "孩子",
+            "pinyin": "háizi",
+            "meaning": "child; children"
+          }
+        ],
+        "english": "my child / children"
+      },
+      {
+        "id": "g4-pattern-2",
+        "subject": [
+          {
+            "id": "g4-p2-yiwen",
+            "traditional": "宜文",
+            "pinyin": "Yíwén",
+            "meaning": "Yiwen"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g4-p2-de",
+            "traditional": "的",
+            "pinyin": "de",
+            "meaning": "links an owner to a thing"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g4-p2-birthday",
+            "traditional": "生日",
+            "pinyin": "shēngrì",
+            "meaning": "birthday"
+          }
+        ],
+        "english": "Yiwen’s birthday"
+      },
+      {
+        "id": "g4-pattern-3",
+        "subject": [
+          {
+            "id": "g4-p3-taiwan",
+            "traditional": "台灣",
+            "simplified": "台湾",
+            "pinyin": "Táiwān",
+            "meaning": "Taiwan"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g4-p3-de",
+            "traditional": "的",
+            "pinyin": "de",
+            "meaning": "links an owner to a thing"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g4-p3-school",
+            "traditional": "學校",
+            "simplified": "学校",
+            "pinyin": "xuéxiào",
+            "meaning": "school"
+          }
+        ],
+        "english": "Taiwan’s school"
+      }
+    ],
+    "confusion": {
+      "title": "Don't mix these up",
+      "items": [
+        {
+          "id": "g4-confusion-phone-keeps-de",
+          "question": "Can I drop 的 with a phone, like with family?",
+          "answer": "No — things keep 的: 我的手機. Only close family can drop it, like 我媽媽.",
+          "wrongTraditional": "我手機很新。",
+          "wrongSimplified": "我手机很新。",
+          "right": {
+            "traditional": "我的手機很新。",
+            "simplified": "我的手机很新。",
+            "pinyin": "Wǒ de shǒujī hěn xīn.",
+            "english": "My cell phone is very new.",
+            "words": [
+              {
+                "id": "g4-confusion-1-word-1",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
+              },
+              {
+                "id": "g4-confusion-1-word-2",
+                "traditional": "的",
+                "pinyin": "de",
+                "meaning": "links an owner to a thing"
+              },
+              {
+                "id": "g4-confusion-1-word-3",
+                "traditional": "手機",
+                "simplified": "手机",
+                "pinyin": "shǒujī",
+                "meaning": "cell phone"
+              },
+              {
+                "id": "g4-confusion-1-word-4",
+                "traditional": "很",
+                "pinyin": "hěn",
+                "meaning": "very; used before a describing word"
+              },
+              {
+                "id": "g4-confusion-1-word-5",
+                "traditional": "新",
+                "pinyin": "xīn",
+                "meaning": "new",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "g4-confusion-shi-vs-de",
+          "question": "Why is 老師是媽媽 wrong for “the teacher’s mom”?",
+          "answer": "是 links an identity, not an owner. Use 的 to connect the owner 老師 to 媽媽.",
+          "wrongTraditional": "老師是媽媽。",
+          "wrongSimplified": "老师是妈妈。",
+          "right": {
+            "traditional": "老師的媽媽明天去美國。",
+            "simplified": "老师的妈妈明天去美国。",
+            "pinyin": "Lǎoshī de māma míngtiān qù Měiguó.",
+            "english": "The teacher’s mom is going to the United States tomorrow.",
+            "words": [
+              {
+                "id": "g4-confusion-2-word-1",
+                "traditional": "老師",
+                "simplified": "老师",
+                "pinyin": "lǎoshī",
+                "meaning": "teacher"
+              },
+              {
+                "id": "g4-confusion-2-word-2",
+                "traditional": "的",
+                "pinyin": "de",
+                "meaning": "links an owner to a thing"
+              },
+              {
+                "id": "g4-confusion-2-word-3",
+                "traditional": "媽媽",
+                "simplified": "妈妈",
+                "pinyin": "māma",
+                "meaning": "mom"
+              },
+              {
+                "id": "g4-confusion-2-word-4",
+                "traditional": "明天",
+                "pinyin": "míngtiān",
+                "meaning": "tomorrow"
+              },
+              {
+                "id": "g4-confusion-2-word-5",
+                "traditional": "去",
+                "pinyin": "qù",
+                "meaning": "go"
+              },
+              {
+                "id": "g4-confusion-2-word-6",
+                "traditional": "美國",
+                "simplified": "美国",
+                "pinyin": "Měiguó",
+                "meaning": "the United States",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "g4-confusion-our-school",
+          "question": "How do I say “my school”?",
+          "answer": "For the school you belong to, use 我們學校 — the group word, with no 的.",
+          "wrongTraditional": "我的學校。",
+          "wrongSimplified": "我的学校。",
+          "right": {
+            "traditional": "我們學校。",
+            "simplified": "我们学校。",
+            "pinyin": "Wǒmen xuéxiào.",
+            "english": "Our school.",
+            "words": [
+              {
+                "id": "g4-confusion-3-word-1",
+                "traditional": "我們",
+                "simplified": "我们",
+                "pinyin": "wǒmen",
+                "meaning": "we; our when used before a group"
+              },
+              {
+                "id": "g4-confusion-3-word-2",
+                "traditional": "學校",
+                "simplified": "学校",
+                "pinyin": "xuéxiào",
+                "meaning": "school",
+                "suffix": "。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "examples": [
+      {
+        "id": "g4-example-1",
+        "number": 1,
+        "text": {
+          "traditional": "你的手機很新。",
+          "simplified": "你的手机很新。",
+          "pinyin": "Nǐ de shǒujī hěn xīn.",
+          "english": "Your cell phone is very new.",
+          "words": [
+            {
+              "id": "g4-e1-word-1",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you"
+            },
+            {
+              "id": "g4-e1-word-2",
+              "traditional": "的",
+              "pinyin": "de",
+              "meaning": "links an owner to a thing"
+            },
+            {
+              "id": "g4-e1-word-3",
+              "traditional": "手機",
+              "simplified": "手机",
+              "pinyin": "shǒujī",
+              "meaning": "cell phone"
+            },
+            {
+              "id": "g4-e1-word-4",
+              "traditional": "很",
+              "pinyin": "hěn",
+              "meaning": "very; used before a describing word"
+            },
+            {
+              "id": "g4-e1-word-5",
+              "traditional": "新",
+              "pinyin": "xīn",
+              "meaning": "new",
+              "suffix": "。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g4-example-2",
+        "number": 2,
+        "text": {
+          "traditional": "他的孩子可愛嗎？",
+          "simplified": "他的孩子可爱吗？",
+          "pinyin": "Tā de háizi kě'ài ma?",
+          "english": "Is his child cute?",
+          "words": [
+            {
+              "id": "g4-e2-word-1",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he; him"
+            },
+            {
+              "id": "g4-e2-word-2",
+              "traditional": "的",
+              "pinyin": "de",
+              "meaning": "links an owner to a thing"
+            },
+            {
+              "id": "g4-e2-word-3",
+              "traditional": "孩子",
+              "pinyin": "háizi",
+              "meaning": "child; children"
+            },
+            {
+              "id": "g4-e2-word-4",
+              "traditional": "可愛",
+              "simplified": "可爱",
+              "pinyin": "kě'ài",
+              "meaning": "cute; lovely"
+            },
+            {
+              "id": "g4-e2-word-5",
+              "traditional": "嗎",
+              "simplified": "吗",
+              "pinyin": "ma",
+              "meaning": "ending word for a yes/no question",
+              "suffix": "？"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g4-example-3",
+        "number": 3,
+        "teachingNote": "英國 describes 朋友 inside the larger phrase 我的英國朋友.",
+        "text": {
+          "traditional": "我的英國朋友不喜歡喝奶茶。",
+          "simplified": "我的英国朋友不喜欢喝奶茶。",
+          "pinyin": "Wǒ de Yīngguó péngyǒu bù xǐhuān hē nǎichá.",
+          "english": "My British friend does not like drinking milk tea.",
+          "words": [
+            {
+              "id": "g4-e3-word-1",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me"
+            },
+            {
+              "id": "g4-e3-word-2",
+              "traditional": "的",
+              "pinyin": "de",
+              "meaning": "links an owner to a thing"
+            },
+            {
+              "id": "g4-e3-word-3",
+              "traditional": "英國",
+              "simplified": "英国",
+              "pinyin": "Yīngguó",
+              "meaning": "the United Kingdom"
+            },
+            {
+              "id": "g4-e3-word-4",
+              "traditional": "朋友",
+              "pinyin": "péngyǒu",
+              "meaning": "friend"
+            },
+            {
+              "id": "g4-e3-word-5",
+              "traditional": "不喜歡",
+              "simplified": "不喜欢",
+              "pinyin": "bù xǐhuān",
+              "meaning": "do not like"
+            },
+            {
+              "id": "g4-e3-word-6",
+              "traditional": "喝",
+              "pinyin": "hē",
+              "meaning": "drink"
+            },
+            {
+              "id": "g4-e3-word-7",
+              "traditional": "奶茶",
+              "pinyin": "nǎichá",
+              "meaning": "milk tea",
+              "suffix": "。"
+            }
+          ]
+        }
+      }
+    ],
+    "exerciseTitle": "Complete the connection",
+    "exercisePreview": "Place 的 or build an owner-and-thing phrase.",
+    "exerciseInstruction": "Use 的 where the source sentence needs an explicit connection.",
+    "exerciseNote": "Question 3 is open in the book. Any correct owner + 的 + person works. These are example answers, not a textbook key.",
+    "questions": [
+      {
+        "id": "g4-question-1",
+        "number": 1,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "媽媽",
+            "simplified": "妈妈"
+          },
+          {
+            "type": "blank",
+            "id": "g4-q1-de",
+            "answer": "的",
+            "hint": "Link 媽媽 to 生日."
+          },
+          {
+            "type": "text",
+            "traditional": "生日是二月二十四號。",
+            "simplified": "生日是二月二十四号。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g4-q1-de-tile",
+            "traditional": "的",
+            "pinyin": "de",
+            "meaning": "connects an owner to a thing"
+          },
+          {
+            "id": "g4-q1-shi",
+            "traditional": "是",
+            "pinyin": "shì",
+            "meaning": "is; identity link"
+          }
+        ],
+        "correctFeedback": "媽媽的生日 means “Mom’s birthday.”",
+        "repairFeedback": "Use 的 between the owner 媽媽 and the thing 生日."
+      },
+      {
+        "id": "g4-question-2",
+        "number": 2,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "你喜歡台灣",
+            "simplified": "你喜欢台湾"
+          },
+          {
+            "type": "blank",
+            "id": "g4-q2-de",
+            "answer": "的",
+            "hint": "Link 台灣 to 水果."
+          },
+          {
+            "type": "text",
+            "traditional": "水果嗎？",
+            "simplified": "水果吗？"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g4-q2-de-tile",
+            "traditional": "的",
+            "pinyin": "de",
+            "meaning": "links Taiwan to fruit"
+          },
+          {
+            "id": "g4-q2-ma",
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma",
+            "meaning": "ending word for a yes/no question"
+          }
+        ],
+        "correctFeedback": "台灣的水果 means “fruit from Taiwan.”",
+        "repairFeedback": "The final 嗎 already makes it a question. Use 的 between 台灣 and 水果."
+      },
+      {
+        "id": "g4-question-3",
+        "responseMode": "text",
+        "number": 3,
+        "sectionLabel": "Open source sentence · build one model",
+        "segments": [
+          {
+            "type": "blank",
+            "id": "g4-q3-owner",
+            "answer": "宜文",
+            "acceptedAnswers": [
+              "中明"
+            ],
+            "hint": "Choose a person as the owner."
+          },
+          {
+            "type": "text",
+            "traditional": "的"
+          },
+          {
+            "type": "blank",
+            "id": "g4-q3-person",
+            "answer": "朋友",
+            "acceptedAnswers": [
+              "媽媽"
+            ],
+            "acceptedAnswersSimplified": [
+              "妈妈"
+            ],
+            "hint": "Choose the person connected to that owner."
+          },
+          {
+            "type": "text",
+            "traditional": "明天去美國。",
+            "simplified": "明天去美国。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g4-q3-yiwen",
+            "traditional": "宜文",
+            "pinyin": "Yíwén",
+            "meaning": "Yiwen"
+          },
+          {
+            "id": "g4-q3-zhongming",
+            "traditional": "中明",
+            "pinyin": "Zhōngmíng",
+            "meaning": "Zhongming"
+          },
+          {
+            "id": "g4-q3-friend",
+            "traditional": "朋友",
+            "pinyin": "péngyǒu",
+            "meaning": "friend"
+          },
+          {
+            "id": "g4-q3-mom",
+            "traditional": "媽媽",
+            "simplified": "妈妈",
+            "pinyin": "māma",
+            "meaning": "mom"
+          }
+        ],
+        "correctFeedback": "The two empty spots can hold different people. 的 keeps the owner-to-person link clear.",
+        "repairFeedback": "Build owner + 的 + person, then keep the source ending."
+      }
+    ]
+  },
+  "LESSON_TWO_GRAMMAR_SIX": {
+    "id": "B1L02-G06-P62",
+    "bookId": 1,
+    "lessonId": 2,
+    "partId": 2,
+    "lessonTitle": "你幾點去學校？",
+    "lessonTitleEnglish": "What Time Do You Go to School?",
+    "grammarNumber": 6,
+    "titleTraditional": "肯定 + 不／沒 + 肯定",
+    "titleEnglish": "Ask by Pairing Positive and Negative Forms",
+    "learnerPromise": "Ask natural choice questions such as “busy or not?” and “want to go or not?”",
+    "printedPages": [
+      62
+    ],
+    "audioReference": "02-2-3",
+    "explanation": "Repeat the key doing or describing word around 不: 忙不忙, 吃不吃, 要不要. With 有, use 有沒有. This pattern already makes a question, so do not add 嗎.",
+    "focusTerms": [
+      "忙不忙",
+      "吃不吃",
+      "要不要",
+      "有沒有",
+      "有没有",
+      "喜不喜歡",
+      "喜不喜欢",
+      "嗎",
+      "吗"
+    ],
+    "teachingGlossary": [
+      {
+        "id": "b1l02-g06-glossary-1",
+        "traditional": "你",
+        "pinyin": "nǐ",
+        "meaning": "you"
+      },
+      {
+        "id": "b1l02-g06-glossary-2",
+        "traditional": "他",
+        "pinyin": "tā",
+        "meaning": "he; him"
+      },
+      {
+        "id": "b1l02-g06-glossary-3",
+        "traditional": "老師",
+        "simplified": "老师",
+        "pinyin": "lǎoshī",
+        "meaning": "teacher"
+      },
+      {
+        "id": "b1l02-g06-glossary-4",
+        "traditional": "台灣",
+        "simplified": "台湾",
+        "pinyin": "Táiwān",
+        "meaning": "Taiwan"
+      },
+      {
+        "id": "b1l02-g06-glossary-5",
+        "traditional": "忙",
+        "pinyin": "máng",
+        "meaning": "busy"
+      },
+      {
+        "id": "b1l02-g06-glossary-6",
+        "traditional": "不",
+        "pinyin": "bù",
+        "meaning": "not"
+      },
+      {
+        "id": "b1l02-g06-glossary-7",
+        "traditional": "吃",
+        "pinyin": "chī",
+        "meaning": "eat"
+      },
+      {
+        "id": "b1l02-g06-glossary-8",
+        "traditional": "要",
+        "pinyin": "yào",
+        "meaning": "want to; intend to"
+      },
+      {
+        "id": "b1l02-g06-glossary-9",
+        "traditional": "去",
+        "pinyin": "qù",
+        "meaning": "go"
+      },
+      {
+        "id": "b1l02-g06-glossary-10",
+        "traditional": "有",
+        "pinyin": "yǒu",
+        "meaning": "have"
+      },
+      {
+        "id": "b1l02-g06-glossary-11",
+        "traditional": "沒有",
+        "simplified": "没有",
+        "pinyin": "méi yǒu",
+        "meaning": "do not have; there is not"
+      },
+      {
+        "id": "b1l02-g06-glossary-12",
+        "traditional": "喜歡",
+        "simplified": "喜欢",
+        "pinyin": "xǐhuān",
+        "meaning": "like"
+      },
+      {
+        "id": "b1l02-g06-glossary-13",
+        "traditional": "喜",
+        "pinyin": "xǐ",
+        "meaning": "the first syllable of 喜歡 in the source contraction"
+      },
+      {
+        "id": "b1l02-g06-glossary-14",
+        "traditional": "歡",
+        "simplified": "欢",
+        "pinyin": "huān",
+        "meaning": "the second syllable of 喜歡"
+      },
+      {
+        "id": "b1l02-g06-glossary-15",
+        "traditional": "喝",
+        "pinyin": "hē",
+        "meaning": "drink"
+      },
+      {
+        "id": "b1l02-g06-glossary-16",
+        "traditional": "茶",
+        "pinyin": "chá",
+        "meaning": "tea"
+      },
+      {
+        "id": "b1l02-g06-glossary-17",
+        "traditional": "朋友",
+        "pinyin": "péngyǒu",
+        "meaning": "friend"
+      },
+      {
+        "id": "b1l02-g06-glossary-18",
+        "traditional": "水果",
+        "pinyin": "shuǐguǒ",
+        "meaning": "fruit"
+      },
+      {
+        "id": "b1l02-g06-glossary-19",
+        "traditional": "熱",
+        "simplified": "热",
+        "pinyin": "rè",
+        "meaning": "hot"
+      },
+      {
+        "id": "b1l02-g06-glossary-20",
+        "traditional": "很",
+        "pinyin": "hěn",
+        "meaning": "very; used before a describing word"
+      },
+      {
+        "id": "b1l02-g06-glossary-21",
+        "traditional": "家",
+        "pinyin": "jiā",
+        "meaning": "home; house"
+      },
+      {
+        "id": "b1l02-g06-glossary-22",
+        "traditional": "嗎",
+        "simplified": "吗",
+        "pinyin": "ma",
+        "meaning": "ending word for a yes/no question"
+      },
+      {
+        "id": "b1l02-g06-glossary-23",
+        "traditional": "肯定",
+        "pinyin": "kěndìng",
+        "meaning": "positive form"
+      },
+      {
+        "id": "b1l02-g06-glossary-24",
+        "traditional": "沒",
+        "simplified": "没",
+        "pinyin": "méi",
+        "meaning": "negative used with 有"
+      },
+      {
+        "id": "b1l02-g06-glossary-25",
+        "traditional": "不要",
+        "pinyin": "bú yào",
+        "meaning": "do not want to"
+      }
+    ],
+    "pattern": "Who + positive form + 不／沒 + positive form",
+    "patternColumns": [
+      "Who",
+      "Positive-negative pair",
+      "Rest of action"
+    ],
+    "patternAccentColumn": 1,
+    "discoveryLab": {
+      "title": "Let the verb ask both possibilities",
+      "description": "The repeated form presents a compact choice: yes or no.",
+      "prompt": "Which positive-negative family do you need?",
+      "choices": [
+        {
+          "id": "g6-state",
+          "label": "State · 忙不忙",
+          "traditional": "你忙不忙？",
+          "pinyin": "Nǐ máng bù máng?",
+          "english": "Are you busy?",
+          "note": "Repeat the describing word 忙 around 不."
+        },
+        {
+          "id": "g6-action",
+          "label": "Action · 吃不吃",
+          "traditional": "你吃不吃？",
+          "pinyin": "Nǐ chī bù chī?",
+          "english": "Are you eating / Do you eat?",
+          "note": "Repeat the action word 吃 around 不."
+        },
+        {
+          "id": "g6-have",
+          "label": "Have · 有沒有",
+          "traditional": "他有沒有台灣朋友？",
+          "simplified": "他有没有台湾朋友？",
+          "pinyin": "Tā yǒu méi yǒu Táiwān péngyǒu?",
+          "english": "Does he have a Taiwanese friend?",
+          "note": "有 uses its own negative 沒有, giving 有沒有."
+        },
+        {
+          "id": "g6-repair",
+          "label": "Do not add 嗎",
+          "traditional": "你忙不忙嗎？ → 你忙不忙？",
+          "simplified": "你忙不忙吗？ → 你忙不忙？",
+          "pinyin": "Nǐ máng bù máng ma? → Nǐ máng bù máng?",
+          "english": "Repair it: Are you busy?",
+          "note": "The positive-negative pair already marks the sentence as a question.",
+          "isCorrection": true
+        }
+      ],
+      "takeaway": "Repeat the key form around its negative, and leave 嗎 out."
+    },
+    "patternRows": [
+      {
+        "id": "g6-pattern-1",
+        "subject": [
+          {
+            "id": "g6-p1-you",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g6-p1-busy-a",
+            "traditional": "忙",
+            "pinyin": "máng",
+            "meaning": "busy"
+          },
+          {
+            "id": "g6-p1-not",
+            "traditional": "不",
+            "pinyin": "bù",
+            "meaning": "not"
+          },
+          {
+            "id": "g6-p1-busy-b",
+            "traditional": "忙",
+            "pinyin": "máng",
+            "meaning": "busy",
+            "suffix": "？"
+          }
+        ],
+        "complement": [],
+        "english": "Are you busy?"
+      },
+      {
+        "id": "g6-pattern-2",
+        "subject": [
+          {
+            "id": "g6-p2-you",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g6-p2-eat-a",
+            "traditional": "吃",
+            "pinyin": "chī",
+            "meaning": "eat"
+          },
+          {
+            "id": "g6-p2-not",
+            "traditional": "不",
+            "pinyin": "bù",
+            "meaning": "not"
+          },
+          {
+            "id": "g6-p2-eat-b",
+            "traditional": "吃",
+            "pinyin": "chī",
+            "meaning": "eat",
+            "suffix": "？"
+          }
+        ],
+        "complement": [],
+        "english": "Do you eat / Are you eating?"
+      },
+      {
+        "id": "g6-pattern-3",
+        "subject": [
+          {
+            "id": "g6-p3-he",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "he; him"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g6-p3-want-a",
+            "traditional": "要",
+            "pinyin": "yào",
+            "meaning": "want to; intend to"
+          },
+          {
+            "id": "g6-p3-want-no",
+            "traditional": "不要",
+            "pinyin": "bú yào",
+            "meaning": "do not want to"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g6-p3-go",
+            "traditional": "去",
+            "pinyin": "qù",
+            "meaning": "go",
+            "suffix": "？"
+          }
+        ],
+        "english": "Does he want to go?"
+      }
+    ],
+    "confusion": {
+      "title": "Don't mix these up",
+      "items": [
+        {
+          "id": "g6-confusion-no-ma",
+          "question": "Why can’t I add 嗎 to 忙不忙?",
+          "answer": "The pair 忙不忙 already makes the question. Adding 嗎 gives it two question marks.",
+          "wrongTraditional": "老師忙不忙嗎？",
+          "wrongSimplified": "老师忙不忙吗？",
+          "right": {
+            "traditional": "老師忙不忙？",
+            "simplified": "老师忙不忙？",
+            "pinyin": "Lǎoshī máng bù máng?",
+            "english": "Is the teacher busy?",
+            "words": [
+              {
+                "id": "g6-confusion-1-word-1",
+                "traditional": "老師",
+                "simplified": "老师",
+                "pinyin": "lǎoshī",
+                "meaning": "teacher"
+              },
+              {
+                "id": "g6-confusion-1-word-2",
+                "traditional": "忙",
+                "pinyin": "máng",
+                "meaning": "busy"
+              },
+              {
+                "id": "g6-confusion-1-word-3",
+                "traditional": "不",
+                "pinyin": "bù",
+                "meaning": "not"
+              },
+              {
+                "id": "g6-confusion-1-word-4",
+                "traditional": "忙",
+                "pinyin": "máng",
+                "meaning": "busy",
+                "suffix": "？"
+              }
+            ]
+          }
+        },
+        {
+          "id": "g6-confusion-you-mei-you",
+          "question": "Why is it 有沒有, not 有不有?",
+          "answer": "有 takes 沒有 as its negative, so the pair repeats 有 and 沒有. Never pair 有 with 不.",
+          "wrongTraditional": "他有不有朋友？",
+          "wrongSimplified": "他有不有朋友？",
+          "right": {
+            "traditional": "他有沒有台灣朋友？",
+            "simplified": "他有没有台湾朋友？",
+            "pinyin": "Tā yǒu méi yǒu Táiwān péngyǒu?",
+            "english": "Does he have a Taiwanese friend?",
+            "words": [
+              {
+                "id": "g6-confusion-2-word-1",
+                "traditional": "他",
+                "pinyin": "tā",
+                "meaning": "he; him"
+              },
+              {
+                "id": "g6-confusion-2-word-2",
+                "traditional": "有",
+                "pinyin": "yǒu",
+                "meaning": "have"
+              },
+              {
+                "id": "g6-confusion-2-word-3",
+                "traditional": "沒有",
+                "simplified": "没有",
+                "pinyin": "méi yǒu",
+                "meaning": "do not have; there is not"
+              },
+              {
+                "id": "g6-confusion-2-word-4",
+                "traditional": "台灣",
+                "simplified": "台湾",
+                "pinyin": "Táiwān",
+                "meaning": "Taiwan"
+              },
+              {
+                "id": "g6-confusion-2-word-5",
+                "traditional": "朋友",
+                "pinyin": "péngyǒu",
+                "meaning": "friend",
+                "suffix": "？"
+              }
+            ]
+          }
+        },
+        {
+          "id": "g6-confusion-match-reply-word",
+          "question": "My friend said 我不要去他家. Why is 去不去 wrong?",
+          "answer": "The pair repeats the key word in the reply — 要. Ask 要不要, not 去不去.",
+          "wrongTraditional": "你去不去他家？",
+          "right": {
+            "traditional": "你要不要去他家？",
+            "simplified": "你要不要去他家？",
+            "pinyin": "Nǐ yào bú yào qù tā jiā?",
+            "english": "Do you want to go to his home?",
+            "words": [
+              {
+                "id": "g6-confusion-3-word-1",
+                "traditional": "你",
+                "pinyin": "nǐ",
+                "meaning": "you"
+              },
+              {
+                "id": "g6-confusion-3-word-2",
+                "traditional": "要",
+                "pinyin": "yào",
+                "meaning": "want to; intend to"
+              },
+              {
+                "id": "g6-confusion-3-word-3",
+                "traditional": "不要",
+                "pinyin": "bú yào",
+                "meaning": "do not want to"
+              },
+              {
+                "id": "g6-confusion-3-word-4",
+                "traditional": "去",
+                "pinyin": "qù",
+                "meaning": "go"
+              },
+              {
+                "id": "g6-confusion-3-word-5",
+                "traditional": "他",
+                "pinyin": "tā",
+                "meaning": "he; him"
+              },
+              {
+                "id": "g6-confusion-3-word-6",
+                "traditional": "家",
+                "pinyin": "jiā",
+                "meaning": "home; house",
+                "suffix": "？"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "examples": [
+      {
+        "id": "g6-example-1",
+        "number": 1,
+        "text": {
+          "traditional": "老師忙不忙？",
+          "simplified": "老师忙不忙？",
+          "pinyin": "Lǎoshī máng bù máng?",
+          "english": "Is the teacher busy?",
+          "words": [
+            {
+              "id": "g6-e1-word-1",
+              "traditional": "老師",
+              "simplified": "老师",
+              "pinyin": "lǎoshī",
+              "meaning": "teacher"
+            },
+            {
+              "id": "g6-e1-word-2",
+              "traditional": "忙",
+              "pinyin": "máng",
+              "meaning": "busy"
+            },
+            {
+              "id": "g6-e1-word-3",
+              "traditional": "不",
+              "pinyin": "bù",
+              "meaning": "not"
+            },
+            {
+              "id": "g6-e1-word-4",
+              "traditional": "忙",
+              "pinyin": "máng",
+              "meaning": "busy",
+              "suffix": "？"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g6-example-2",
+        "number": 2,
+        "teachingNote": "有 uses 沒有, not 不有.",
+        "text": {
+          "traditional": "他有沒有台灣朋友？",
+          "simplified": "他有没有台湾朋友？",
+          "pinyin": "Tā yǒu méi yǒu Táiwān péngyǒu?",
+          "english": "Does he have a Taiwanese friend?",
+          "words": [
+            {
+              "id": "g6-e2-word-1",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he; him"
+            },
+            {
+              "id": "g6-e2-word-2",
+              "traditional": "有",
+              "pinyin": "yǒu",
+              "meaning": "have"
+            },
+            {
+              "id": "g6-e2-word-3",
+              "traditional": "沒有",
+              "simplified": "没有",
+              "pinyin": "méi yǒu",
+              "meaning": "do not have; there is not"
+            },
+            {
+              "id": "g6-e2-word-4",
+              "traditional": "台灣",
+              "simplified": "台湾",
+              "pinyin": "Táiwān",
+              "meaning": "Taiwan"
+            },
+            {
+              "id": "g6-e2-word-5",
+              "traditional": "朋友",
+              "pinyin": "péngyǒu",
+              "meaning": "friend",
+              "suffix": "？"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g6-example-3",
+        "number": 3,
+        "text": {
+          "traditional": "你喜（歡）不喜歡喝茶？",
+          "simplified": "你喜（欢）不喜欢喝茶？",
+          "pinyin": "Nǐ xǐ(huān) bù xǐhuān hē chá?",
+          "english": "Do you like drinking tea?",
+          "words": [
+            {
+              "id": "g6-e3-word-1",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you"
+            },
+            {
+              "id": "g6-e3-word-2",
+              "traditional": "喜",
+              "pinyin": "xǐ",
+              "meaning": "the first syllable of 喜歡 in the source contraction"
+            },
+            {
+              "id": "g6-e3-word-3",
+              "traditional": "歡",
+              "simplified": "欢",
+              "pinyin": "huān",
+              "meaning": "the second syllable of 喜歡",
+              "prefix": "（"
+            },
+            {
+              "id": "g6-e3-word-4",
+              "traditional": "不",
+              "pinyin": "bù",
+              "meaning": "not",
+              "prefix": "）"
+            },
+            {
+              "id": "g6-e3-word-5",
+              "traditional": "喜歡",
+              "simplified": "喜欢",
+              "pinyin": "xǐhuān",
+              "meaning": "like"
+            },
+            {
+              "id": "g6-e3-word-6",
+              "traditional": "喝",
+              "pinyin": "hē",
+              "meaning": "drink"
+            },
+            {
+              "id": "g6-e3-word-7",
+              "traditional": "茶",
+              "pinyin": "chá",
+              "meaning": "tea",
+              "suffix": "？"
+            }
+          ]
+        }
+      }
+    ],
+    "exerciseTitle": "Build the positive-negative question",
+    "exercisePreview": "Complete the questions with the matching repeated form.",
+    "exerciseInstruction": "Choose the pair that matches the answer or picture cue. Do not add 嗎.",
+    "exerciseNote": "Question 1 uses the hot-weather picture in the book and the word 熱. These are example answers.",
+    "exerciseCues": [
+      {
+        "id": "g6-hot-cue",
+        "label": "台灣 · 熱",
+        "pinyin": "Táiwān · rè",
+        "detail": "The source illustration shows hot weather, and the printed reply says 台灣很熱."
+      }
+    ],
+    "questions": [
+      {
+        "id": "g6-question-1",
+        "number": 1,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：台灣",
+            "simplified": "A：台湾"
+          },
+          {
+            "type": "blank",
+            "id": "g6-q1-pair",
+            "answer": "熱不熱",
+            "answerSimplified": "热不热",
+            "hint": "Repeat 熱 around 不."
+          },
+          {
+            "type": "text",
+            "traditional": "？ B：台灣很熱。",
+            "simplified": "？ B：台湾很热。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g6-q1-hot",
+            "traditional": "熱不熱",
+            "simplified": "热不热",
+            "pinyin": "rè bú rè",
+            "meaning": "hot or not; is it hot?"
+          },
+          {
+            "id": "g6-q1-busy",
+            "traditional": "忙不忙",
+            "pinyin": "máng bù máng",
+            "meaning": "busy or not"
+          },
+          {
+            "id": "g6-q1-ma",
+            "traditional": "熱嗎",
+            "simplified": "热吗",
+            "pinyin": "rè ma",
+            "meaning": "Is it hot? Uses a different question pattern."
+          }
+        ],
+        "correctFeedback": "The answer 很熱 shows the question should use 熱不熱.",
+        "repairFeedback": "Repeat 熱 around 不. Do not add 嗎 to this pattern."
+      },
+      {
+        "id": "g6-question-2",
+        "number": 2,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：你"
+          },
+          {
+            "type": "blank",
+            "id": "g6-q2-pair",
+            "answer": "喜不喜歡",
+            "answerSimplified": "喜不喜欢",
+            "hint": "Use the shortened positive-negative form of 喜歡."
+          },
+          {
+            "type": "text",
+            "traditional": "吃水果？ B：我很喜歡吃。",
+            "simplified": "吃水果？ B：我很喜欢吃。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g6-q2-like",
+            "traditional": "喜不喜歡",
+            "simplified": "喜不喜欢",
+            "pinyin": "xǐ bù xǐhuān",
+            "meaning": "like or not; do you like"
+          },
+          {
+            "id": "g6-q2-eat",
+            "traditional": "吃不吃",
+            "pinyin": "chī bù chī",
+            "meaning": "eat or not"
+          },
+          {
+            "id": "g6-q2-ma",
+            "traditional": "喜歡嗎",
+            "simplified": "喜欢吗",
+            "pinyin": "xǐhuān ma",
+            "meaning": "Do you like? Uses the 嗎 pattern."
+          }
+        ],
+        "correctFeedback": "The answer says 喜歡, so the source sentence needs the 喜不喜歡 pair.",
+        "repairFeedback": "Match the reply’s key verb: 喜歡."
+      },
+      {
+        "id": "g6-question-3",
+        "number": 3,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：你"
+          },
+          {
+            "type": "blank",
+            "id": "g6-q3-pair",
+            "answer": "要不要去他家",
+            "hint": "Ask whether the listener wants to go to his home."
+          },
+          {
+            "type": "text",
+            "traditional": "？ B：我不要去他家。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g6-q3-want",
+            "traditional": "要不要去他家",
+            "pinyin": "yào bú yào qù tā jiā",
+            "meaning": "want to go to his home or not"
+          },
+          {
+            "id": "g6-q3-go",
+            "traditional": "去不去他家",
+            "pinyin": "qù bú qù tā jiā",
+            "meaning": "go to his home or not"
+          },
+          {
+            "id": "g6-q3-ma",
+            "traditional": "要去他家嗎",
+            "simplified": "要去他家吗",
+            "pinyin": "yào qù tā jiā ma",
+            "meaning": "Do you want to go to his home? Uses 嗎."
+          }
+        ],
+        "correctFeedback": "The reply begins 不要, so the matching question asks 要不要.",
+        "repairFeedback": "Match the key form in the reply: 要／不要."
+      }
+    ]
+  },
+  "LESSON_TWO_PART_TWO": {
+    "id": "B1L02-P02-D02",
+    "bookId": 1,
+    "lessonId": 2,
+    "partId": 2,
+    "title": "Grammar 4–6 · Pages 60–62",
+    "grammarPages": [
+      {
+        "id": "B1L02-G04-P60",
+        "bookId": 1,
+        "lessonId": 2,
+        "partId": 2,
+        "lessonTitle": "你幾點去學校？",
+        "lessonTitleEnglish": "What Time Do You Go to School?",
+        "grammarNumber": 4,
+        "titleTraditional": "名詞 + 的 + 名詞",
+        "titleEnglish": "Connect an Owner to a Thing with 的",
+        "learnerPromise": "Say whose birthday, phone, child, friend, school, or other thing you mean.",
+        "printedPages": [
+          60
+        ],
+        "audioReference": "02-2-3",
+        "explanation": "Put 的 between an owner and the thing that belongs to them. With close family, you can often drop 的: 我媽媽. But keep 的 with things like phones: 我的手機.",
+        "focusTerms": [
+          "的",
+          "名詞",
+          "名词"
+        ],
+        "teachingGlossary": [
+          {
+            "id": "b1l02-g04-glossary-1",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
+          },
+          {
+            "id": "b1l02-g04-glossary-2",
+            "traditional": "我們",
+            "simplified": "我们",
+            "pinyin": "wǒmen",
+            "meaning": "we; our when used before a group"
+          },
+          {
+            "id": "b1l02-g04-glossary-3",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          },
+          {
+            "id": "b1l02-g04-glossary-4",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "he; him"
+          },
+          {
+            "id": "b1l02-g04-glossary-5",
+            "traditional": "媽媽",
+            "simplified": "妈妈",
+            "pinyin": "māma",
+            "meaning": "mom"
+          },
+          {
+            "id": "b1l02-g04-glossary-6",
+            "traditional": "老師",
+            "simplified": "老师",
+            "pinyin": "lǎoshī",
+            "meaning": "teacher"
+          },
+          {
+            "id": "b1l02-g04-glossary-7",
+            "traditional": "宜文",
+            "pinyin": "Yíwén",
+            "meaning": "Yiwen"
+          },
+          {
+            "id": "b1l02-g04-glossary-8",
+            "traditional": "中明",
+            "pinyin": "Zhōngmíng",
+            "meaning": "Zhongming"
+          },
+          {
+            "id": "b1l02-g04-glossary-9",
+            "traditional": "台灣",
+            "simplified": "台湾",
+            "pinyin": "Táiwān",
+            "meaning": "Taiwan"
+          },
+          {
+            "id": "b1l02-g04-glossary-10",
+            "traditional": "英國",
+            "simplified": "英国",
+            "pinyin": "Yīngguó",
+            "meaning": "the United Kingdom"
+          },
+          {
+            "id": "b1l02-g04-glossary-11",
+            "traditional": "美國",
+            "simplified": "美国",
+            "pinyin": "Měiguó",
+            "meaning": "the United States"
+          },
+          {
+            "id": "b1l02-g04-glossary-12",
+            "traditional": "的",
+            "pinyin": "de",
+            "meaning": "links an owner to a thing"
+          },
+          {
+            "id": "b1l02-g04-glossary-13",
+            "traditional": "孩子",
+            "pinyin": "háizi",
+            "meaning": "child; children"
+          },
+          {
+            "id": "b1l02-g04-glossary-14",
+            "traditional": "生日",
+            "pinyin": "shēngrì",
+            "meaning": "birthday"
+          },
+          {
+            "id": "b1l02-g04-glossary-15",
+            "traditional": "學校",
+            "simplified": "学校",
+            "pinyin": "xuéxiào",
+            "meaning": "school"
+          },
+          {
+            "id": "b1l02-g04-glossary-16",
+            "traditional": "手機",
+            "simplified": "手机",
+            "pinyin": "shǒujī",
+            "meaning": "cell phone"
+          },
+          {
+            "id": "b1l02-g04-glossary-17",
+            "traditional": "朋友",
+            "pinyin": "péngyǒu",
+            "meaning": "friend"
+          },
+          {
+            "id": "b1l02-g04-glossary-18",
+            "traditional": "水果",
+            "pinyin": "shuǐguǒ",
+            "meaning": "fruit"
+          },
+          {
+            "id": "b1l02-g04-glossary-19",
+            "traditional": "奶茶",
+            "pinyin": "nǎichá",
+            "meaning": "milk tea"
+          },
+          {
+            "id": "b1l02-g04-glossary-20",
+            "traditional": "新",
+            "pinyin": "xīn",
+            "meaning": "new"
+          },
+          {
+            "id": "b1l02-g04-glossary-21",
+            "traditional": "可愛",
+            "simplified": "可爱",
+            "pinyin": "kě'ài",
+            "meaning": "cute; lovely"
+          },
+          {
+            "id": "b1l02-g04-glossary-22",
+            "traditional": "很",
+            "pinyin": "hěn",
+            "meaning": "very; used before a describing word"
+          },
+          {
+            "id": "b1l02-g04-glossary-23",
+            "traditional": "不喜歡",
+            "simplified": "不喜欢",
+            "pinyin": "bù xǐhuān",
+            "meaning": "do not like"
+          },
+          {
+            "id": "b1l02-g04-glossary-24",
+            "traditional": "喝",
+            "pinyin": "hē",
+            "meaning": "drink"
+          },
+          {
+            "id": "b1l02-g04-glossary-25",
+            "traditional": "喜歡",
+            "simplified": "喜欢",
+            "pinyin": "xǐhuān",
+            "meaning": "like"
+          },
+          {
+            "id": "b1l02-g04-glossary-26",
+            "traditional": "明天",
+            "pinyin": "míngtiān",
+            "meaning": "tomorrow"
+          },
+          {
+            "id": "b1l02-g04-glossary-27",
+            "traditional": "去",
+            "pinyin": "qù",
+            "meaning": "go"
+          },
+          {
+            "id": "b1l02-g04-glossary-28",
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma",
+            "meaning": "ending word for a yes/no question"
+          },
+          {
+            "id": "b1l02-g04-glossary-29",
+            "traditional": "二月二十四號",
+            "simplified": "二月二十四号",
+            "pinyin": "èr yuè èrshísì hào",
+            "meaning": "February 24"
+          }
+        ],
+        "pattern": "Owner or description + 的 + thing",
+        "patternColumns": [
+          "Owner or description",
+          "的",
+          "Thing"
+        ],
+        "patternAccentColumn": 1,
+        "discoveryLab": {
+          "title": "Use 的 as a connection link",
+          "description": "The word before 的 identifies who owns the thing or what kind of thing it is.",
+          "prompt": "What connection do you want to make?",
+          "choices": [
+            {
+              "id": "g4-phone",
+              "label": "Things · keep 的",
+              "traditional": "我的手機",
+              "simplified": "我的手机",
+              "pinyin": "Wǒ de shǒujī",
+              "english": "my cell phone",
+              "note": "Things keep 的: 我的手機, not 我手機."
+            },
+            {
+              "id": "g4-family",
+              "label": "Close family · may drop 的",
+              "traditional": "我媽媽",
+              "simplified": "我妈妈",
+              "pinyin": "Wǒ māma",
+              "english": "my mom",
+              "note": "With close family, you can often drop 的."
+            },
+            {
+              "id": "g4-school",
+              "label": "Group · use 我們",
+              "traditional": "我們學校",
+              "simplified": "我们学校",
+              "pinyin": "Wǒmen xuéxiào",
+              "english": "our school / my school",
+              "note": "The source note uses 我們學校 for the school a person belongs to."
+            },
+            {
+              "id": "g4-repair",
+              "label": "Repair an unclear link",
+              "traditional": "老師媽媽 → 老師的媽媽",
+              "simplified": "老师妈妈 → 老师的妈妈",
+              "pinyin": "Lǎoshī māma → Lǎoshī de māma",
+              "english": "the teacher’s mother",
+              "note": "Without 的, this does not clearly express the intended ownership.",
+              "isCorrection": true
+            }
+          ],
+          "takeaway": "Use 的 to make the owner-to-thing connection explicit."
+        },
+        "patternRows": [
+          {
+            "id": "g4-pattern-1",
+            "subject": [
+              {
+                "id": "g4-p1-i",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g4-p1-de",
+                "traditional": "的",
+                "pinyin": "de",
+                "meaning": "links an owner to a thing"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g4-p1-child",
+                "traditional": "孩子",
+                "pinyin": "háizi",
+                "meaning": "child; children"
+              }
+            ],
+            "english": "my child / children"
+          },
+          {
+            "id": "g4-pattern-2",
+            "subject": [
+              {
+                "id": "g4-p2-yiwen",
+                "traditional": "宜文",
+                "pinyin": "Yíwén",
+                "meaning": "Yiwen"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g4-p2-de",
+                "traditional": "的",
+                "pinyin": "de",
+                "meaning": "links an owner to a thing"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g4-p2-birthday",
+                "traditional": "生日",
+                "pinyin": "shēngrì",
+                "meaning": "birthday"
+              }
+            ],
+            "english": "Yiwen’s birthday"
+          },
+          {
+            "id": "g4-pattern-3",
+            "subject": [
+              {
+                "id": "g4-p3-taiwan",
+                "traditional": "台灣",
+                "simplified": "台湾",
+                "pinyin": "Táiwān",
+                "meaning": "Taiwan"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g4-p3-de",
+                "traditional": "的",
+                "pinyin": "de",
+                "meaning": "links an owner to a thing"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g4-p3-school",
+                "traditional": "學校",
+                "simplified": "学校",
+                "pinyin": "xuéxiào",
+                "meaning": "school"
+              }
+            ],
+            "english": "Taiwan’s school"
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "g4-confusion-phone-keeps-de",
+              "question": "Can I drop 的 with a phone, like with family?",
+              "answer": "No — things keep 的: 我的手機. Only close family can drop it, like 我媽媽.",
+              "wrongTraditional": "我手機很新。",
+              "wrongSimplified": "我手机很新。",
+              "right": {
+                "traditional": "我的手機很新。",
+                "simplified": "我的手机很新。",
+                "pinyin": "Wǒ de shǒujī hěn xīn.",
+                "english": "My cell phone is very new.",
+                "words": [
+                  {
+                    "id": "g4-confusion-1-word-1",
+                    "traditional": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I; me"
+                  },
+                  {
+                    "id": "g4-confusion-1-word-2",
+                    "traditional": "的",
+                    "pinyin": "de",
+                    "meaning": "links an owner to a thing"
+                  },
+                  {
+                    "id": "g4-confusion-1-word-3",
+                    "traditional": "手機",
+                    "simplified": "手机",
+                    "pinyin": "shǒujī",
+                    "meaning": "cell phone"
+                  },
+                  {
+                    "id": "g4-confusion-1-word-4",
+                    "traditional": "很",
+                    "pinyin": "hěn",
+                    "meaning": "very; used before a describing word"
+                  },
+                  {
+                    "id": "g4-confusion-1-word-5",
+                    "traditional": "新",
+                    "pinyin": "xīn",
+                    "meaning": "new",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "g4-confusion-shi-vs-de",
+              "question": "Why is 老師是媽媽 wrong for “the teacher’s mom”?",
+              "answer": "是 links an identity, not an owner. Use 的 to connect the owner 老師 to 媽媽.",
+              "wrongTraditional": "老師是媽媽。",
+              "wrongSimplified": "老师是妈妈。",
+              "right": {
+                "traditional": "老師的媽媽明天去美國。",
+                "simplified": "老师的妈妈明天去美国。",
+                "pinyin": "Lǎoshī de māma míngtiān qù Měiguó.",
+                "english": "The teacher’s mom is going to the United States tomorrow.",
+                "words": [
+                  {
+                    "id": "g4-confusion-2-word-1",
+                    "traditional": "老師",
+                    "simplified": "老师",
+                    "pinyin": "lǎoshī",
+                    "meaning": "teacher"
+                  },
+                  {
+                    "id": "g4-confusion-2-word-2",
+                    "traditional": "的",
+                    "pinyin": "de",
+                    "meaning": "links an owner to a thing"
+                  },
+                  {
+                    "id": "g4-confusion-2-word-3",
+                    "traditional": "媽媽",
+                    "simplified": "妈妈",
+                    "pinyin": "māma",
+                    "meaning": "mom"
+                  },
+                  {
+                    "id": "g4-confusion-2-word-4",
+                    "traditional": "明天",
+                    "pinyin": "míngtiān",
+                    "meaning": "tomorrow"
+                  },
+                  {
+                    "id": "g4-confusion-2-word-5",
+                    "traditional": "去",
+                    "pinyin": "qù",
+                    "meaning": "go"
+                  },
+                  {
+                    "id": "g4-confusion-2-word-6",
+                    "traditional": "美國",
+                    "simplified": "美国",
+                    "pinyin": "Měiguó",
+                    "meaning": "the United States",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "g4-confusion-our-school",
+              "question": "How do I say “my school”?",
+              "answer": "For the school you belong to, use 我們學校 — the group word, with no 的.",
+              "wrongTraditional": "我的學校。",
+              "wrongSimplified": "我的学校。",
+              "right": {
+                "traditional": "我們學校。",
+                "simplified": "我们学校。",
+                "pinyin": "Wǒmen xuéxiào.",
+                "english": "Our school.",
+                "words": [
+                  {
+                    "id": "g4-confusion-3-word-1",
+                    "traditional": "我們",
+                    "simplified": "我们",
+                    "pinyin": "wǒmen",
+                    "meaning": "we; our when used before a group"
+                  },
+                  {
+                    "id": "g4-confusion-3-word-2",
+                    "traditional": "學校",
+                    "simplified": "学校",
+                    "pinyin": "xuéxiào",
+                    "meaning": "school",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "examples": [
+          {
+            "id": "g4-example-1",
+            "number": 1,
+            "text": {
+              "traditional": "你的手機很新。",
+              "simplified": "你的手机很新。",
+              "pinyin": "Nǐ de shǒujī hěn xīn.",
+              "english": "Your cell phone is very new.",
+              "words": [
+                {
+                  "id": "g4-e1-word-1",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you"
+                },
+                {
+                  "id": "g4-e1-word-2",
+                  "traditional": "的",
+                  "pinyin": "de",
+                  "meaning": "links an owner to a thing"
+                },
+                {
+                  "id": "g4-e1-word-3",
+                  "traditional": "手機",
+                  "simplified": "手机",
+                  "pinyin": "shǒujī",
+                  "meaning": "cell phone"
+                },
+                {
+                  "id": "g4-e1-word-4",
+                  "traditional": "很",
+                  "pinyin": "hěn",
+                  "meaning": "very; used before a describing word"
+                },
+                {
+                  "id": "g4-e1-word-5",
+                  "traditional": "新",
+                  "pinyin": "xīn",
+                  "meaning": "new",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g4-example-2",
+            "number": 2,
+            "text": {
+              "traditional": "他的孩子可愛嗎？",
+              "simplified": "他的孩子可爱吗？",
+              "pinyin": "Tā de háizi kě'ài ma?",
+              "english": "Is his child cute?",
+              "words": [
+                {
+                  "id": "g4-e2-word-1",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he; him"
+                },
+                {
+                  "id": "g4-e2-word-2",
+                  "traditional": "的",
+                  "pinyin": "de",
+                  "meaning": "links an owner to a thing"
+                },
+                {
+                  "id": "g4-e2-word-3",
+                  "traditional": "孩子",
+                  "pinyin": "háizi",
+                  "meaning": "child; children"
+                },
+                {
+                  "id": "g4-e2-word-4",
+                  "traditional": "可愛",
+                  "simplified": "可爱",
+                  "pinyin": "kě'ài",
+                  "meaning": "cute; lovely"
+                },
+                {
+                  "id": "g4-e2-word-5",
+                  "traditional": "嗎",
+                  "simplified": "吗",
+                  "pinyin": "ma",
+                  "meaning": "ending word for a yes/no question",
+                  "suffix": "？"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g4-example-3",
+            "number": 3,
+            "teachingNote": "英國 describes 朋友 inside the larger phrase 我的英國朋友.",
+            "text": {
+              "traditional": "我的英國朋友不喜歡喝奶茶。",
+              "simplified": "我的英国朋友不喜欢喝奶茶。",
+              "pinyin": "Wǒ de Yīngguó péngyǒu bù xǐhuān hē nǎichá.",
+              "english": "My British friend does not like drinking milk tea.",
+              "words": [
+                {
+                  "id": "g4-e3-word-1",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                },
+                {
+                  "id": "g4-e3-word-2",
+                  "traditional": "的",
+                  "pinyin": "de",
+                  "meaning": "links an owner to a thing"
+                },
+                {
+                  "id": "g4-e3-word-3",
+                  "traditional": "英國",
+                  "simplified": "英国",
+                  "pinyin": "Yīngguó",
+                  "meaning": "the United Kingdom"
+                },
+                {
+                  "id": "g4-e3-word-4",
+                  "traditional": "朋友",
+                  "pinyin": "péngyǒu",
+                  "meaning": "friend"
+                },
+                {
+                  "id": "g4-e3-word-5",
+                  "traditional": "不喜歡",
+                  "simplified": "不喜欢",
+                  "pinyin": "bù xǐhuān",
+                  "meaning": "do not like"
+                },
+                {
+                  "id": "g4-e3-word-6",
+                  "traditional": "喝",
+                  "pinyin": "hē",
+                  "meaning": "drink"
+                },
+                {
+                  "id": "g4-e3-word-7",
+                  "traditional": "奶茶",
+                  "pinyin": "nǎichá",
+                  "meaning": "milk tea",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Complete the connection",
+        "exercisePreview": "Place 的 or build an owner-and-thing phrase.",
+        "exerciseInstruction": "Use 的 where the source sentence needs an explicit connection.",
+        "exerciseNote": "Question 3 is open in the book. Any correct owner + 的 + person works. These are example answers, not a textbook key.",
+        "questions": [
+          {
+            "id": "g4-question-1",
+            "number": 1,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "媽媽",
+                "simplified": "妈妈"
+              },
+              {
+                "type": "blank",
+                "id": "g4-q1-de",
+                "answer": "的",
+                "hint": "Link 媽媽 to 生日."
+              },
+              {
+                "type": "text",
+                "traditional": "生日是二月二十四號。",
+                "simplified": "生日是二月二十四号。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g4-q1-de-tile",
+                "traditional": "的",
+                "pinyin": "de",
+                "meaning": "connects an owner to a thing"
+              },
+              {
+                "id": "g4-q1-shi",
+                "traditional": "是",
+                "pinyin": "shì",
+                "meaning": "is; identity link"
+              }
+            ],
+            "correctFeedback": "媽媽的生日 means “Mom’s birthday.”",
+            "repairFeedback": "Use 的 between the owner 媽媽 and the thing 生日."
+          },
+          {
+            "id": "g4-question-2",
+            "number": 2,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你喜歡台灣",
+                "simplified": "你喜欢台湾"
+              },
+              {
+                "type": "blank",
+                "id": "g4-q2-de",
+                "answer": "的",
+                "hint": "Link 台灣 to 水果."
+              },
+              {
+                "type": "text",
+                "traditional": "水果嗎？",
+                "simplified": "水果吗？"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g4-q2-de-tile",
+                "traditional": "的",
+                "pinyin": "de",
+                "meaning": "links Taiwan to fruit"
+              },
+              {
+                "id": "g4-q2-ma",
+                "traditional": "嗎",
+                "simplified": "吗",
+                "pinyin": "ma",
+                "meaning": "ending word for a yes/no question"
+              }
+            ],
+            "correctFeedback": "台灣的水果 means “fruit from Taiwan.”",
+            "repairFeedback": "The final 嗎 already makes it a question. Use 的 between 台灣 and 水果."
+          },
+          {
+            "id": "g4-question-3",
+            "responseMode": "text",
+            "number": 3,
+            "sectionLabel": "Open source sentence · build one model",
+            "segments": [
+              {
+                "type": "blank",
+                "id": "g4-q3-owner",
+                "answer": "宜文",
+                "acceptedAnswers": [
+                  "中明"
+                ],
+                "hint": "Choose a person as the owner."
+              },
+              {
+                "type": "text",
+                "traditional": "的"
+              },
+              {
+                "type": "blank",
+                "id": "g4-q3-person",
+                "answer": "朋友",
+                "acceptedAnswers": [
+                  "媽媽"
+                ],
+                "acceptedAnswersSimplified": [
+                  "妈妈"
+                ],
+                "hint": "Choose the person connected to that owner."
+              },
+              {
+                "type": "text",
+                "traditional": "明天去美國。",
+                "simplified": "明天去美国。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g4-q3-yiwen",
+                "traditional": "宜文",
+                "pinyin": "Yíwén",
+                "meaning": "Yiwen"
+              },
+              {
+                "id": "g4-q3-zhongming",
+                "traditional": "中明",
+                "pinyin": "Zhōngmíng",
+                "meaning": "Zhongming"
+              },
+              {
+                "id": "g4-q3-friend",
+                "traditional": "朋友",
+                "pinyin": "péngyǒu",
+                "meaning": "friend"
+              },
+              {
+                "id": "g4-q3-mom",
+                "traditional": "媽媽",
+                "simplified": "妈妈",
+                "pinyin": "māma",
+                "meaning": "mom"
+              }
+            ],
+            "correctFeedback": "The two empty spots can hold different people. 的 keeps the owner-to-person link clear.",
+            "repairFeedback": "Build owner + 的 + person, then keep the source ending."
+          }
+        ]
+      },
+      {
+        "id": "B1L02-G05-P61",
+        "bookId": 1,
+        "lessonId": 2,
+        "partId": 2,
+        "lessonTitle": "你幾點去學校？",
+        "lessonTitleEnglish": "What Time Do You Go to School?",
+        "grammarNumber": 5,
+        "titleTraditional": "主語 + 想法 + 動作",
+        "titleEnglish": "Put Wanting or Liking Before the Action",
+        "learnerPromise": "Say what you want, like, or love to eat, drink, visit, or do.",
+        "printedPages": [
+          61
+        ],
+        "audioReference": "02-2-3",
+        "explanation": "Words like 要, 喜歡, and 愛 show what you want or feel about doing something. Put that word before the action word.",
+        "focusTerms": [
+          "要",
+          "喜歡",
+          "喜欢",
+          "愛",
+          "爱",
+          "想法",
+          "動作",
+          "动作"
+        ],
+        "teachingGlossary": [
+          {
+            "id": "b1l02-g05-glossary-1",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
+          },
+          {
+            "id": "b1l02-g05-glossary-2",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          },
+          {
+            "id": "b1l02-g05-glossary-3",
+            "traditional": "媽媽",
+            "simplified": "妈妈",
+            "pinyin": "māma",
+            "meaning": "mom"
+          },
+          {
+            "id": "b1l02-g05-glossary-4",
+            "traditional": "要",
+            "pinyin": "yào",
+            "meaning": "want to; intend to"
+          },
+          {
+            "id": "b1l02-g05-glossary-5",
+            "traditional": "不要",
+            "pinyin": "bú yào",
+            "meaning": "do not want to"
+          },
+          {
+            "id": "b1l02-g05-glossary-6",
+            "traditional": "喜歡",
+            "simplified": "喜欢",
+            "pinyin": "xǐhuān",
+            "meaning": "like"
+          },
+          {
+            "id": "b1l02-g05-glossary-7",
+            "traditional": "不喜歡",
+            "simplified": "不喜欢",
+            "pinyin": "bù xǐhuān",
+            "meaning": "do not like"
+          },
+          {
+            "id": "b1l02-g05-glossary-8",
+            "traditional": "愛",
+            "simplified": "爱",
+            "pinyin": "ài",
+            "meaning": "love"
+          },
+          {
+            "id": "b1l02-g05-glossary-9",
+            "traditional": "不愛",
+            "simplified": "不爱",
+            "pinyin": "bú ài",
+            "meaning": "do not love"
+          },
+          {
+            "id": "b1l02-g05-glossary-10",
+            "traditional": "喝",
+            "pinyin": "hē",
+            "meaning": "drink"
+          },
+          {
+            "id": "b1l02-g05-glossary-11",
+            "traditional": "吃",
+            "pinyin": "chī",
+            "meaning": "eat"
+          },
+          {
+            "id": "b1l02-g05-glossary-12",
+            "traditional": "去",
+            "pinyin": "qù",
+            "meaning": "go"
+          },
+          {
+            "id": "b1l02-g05-glossary-13",
+            "traditional": "來",
+            "simplified": "来",
+            "pinyin": "lái",
+            "meaning": "come"
+          },
+          {
+            "id": "b1l02-g05-glossary-14",
+            "traditional": "茶",
+            "pinyin": "chá",
+            "meaning": "tea"
+          },
+          {
+            "id": "b1l02-g05-glossary-15",
+            "traditional": "奶茶",
+            "pinyin": "nǎichá",
+            "meaning": "milk tea"
+          },
+          {
+            "id": "b1l02-g05-glossary-16",
+            "traditional": "珍珠奶茶",
+            "pinyin": "zhēnzhū nǎichá",
+            "meaning": "bubble milk tea"
+          },
+          {
+            "id": "b1l02-g05-glossary-17",
+            "traditional": "水果",
+            "pinyin": "shuǐguǒ",
+            "meaning": "fruit"
+          },
+          {
+            "id": "b1l02-g05-glossary-18",
+            "traditional": "老師",
+            "simplified": "老师",
+            "pinyin": "lǎoshī",
+            "meaning": "teacher"
+          },
+          {
+            "id": "b1l02-g05-glossary-19",
+            "traditional": "家",
+            "pinyin": "jiā",
+            "meaning": "home; house"
+          },
+          {
+            "id": "b1l02-g05-glossary-20",
+            "traditional": "學校",
+            "simplified": "学校",
+            "pinyin": "xuéxiào",
+            "meaning": "school"
+          },
+          {
+            "id": "b1l02-g05-glossary-21",
+            "traditional": "水",
+            "pinyin": "shuǐ",
+            "meaning": "water"
+          },
+          {
+            "id": "b1l02-g05-glossary-22",
+            "traditional": "什麼",
+            "simplified": "什么",
+            "pinyin": "shénme",
+            "meaning": "what"
+          },
+          {
+            "id": "b1l02-g05-glossary-23",
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma",
+            "meaning": "ending word for a yes/no question"
+          },
+          {
+            "id": "b1l02-g05-glossary-24",
+            "traditional": "想法",
+            "pinyin": "xiǎngfǎ",
+            "meaning": "intention or feeling"
+          },
+          {
+            "id": "b1l02-g05-glossary-25",
+            "traditional": "動作",
+            "simplified": "动作",
+            "pinyin": "dòngzuò",
+            "meaning": "action"
+          }
+        ],
+        "pattern": "Who + intention or feeling + action",
+        "patternColumns": [
+          "Who",
+          "Want, like, or love",
+          "Action"
+        ],
+        "patternAccentColumn": 1,
+        "discoveryLab": {
+          "title": "Put the feeling before the action",
+          "description": "Put the wanting or liking word first, then the action word.",
+          "prompt": "What meaning comes before the action?",
+          "choices": [
+            {
+              "id": "g5-want",
+              "label": "Want · 要 + 喝",
+              "traditional": "我要喝茶。",
+              "pinyin": "Wǒ yào hē chá.",
+              "english": "I want to drink tea.",
+              "note": "要 tells your intention. 喝 names the action."
+            },
+            {
+              "id": "g5-like",
+              "label": "Like · 喜歡 + 喝",
+              "traditional": "媽媽喜歡喝奶茶。",
+              "simplified": "妈妈喜欢喝奶茶。",
+              "pinyin": "Māma xǐhuān hē nǎichá.",
+              "english": "Mom likes drinking milk tea.",
+              "note": "喜歡 comes before the action 喝."
+            },
+            {
+              "id": "g5-love",
+              "label": "Love · 愛 + 吃",
+              "traditional": "我愛吃水果。",
+              "simplified": "我爱吃水果。",
+              "pinyin": "Wǒ ài chī shuǐguǒ.",
+              "english": "I love eating fruit.",
+              "note": "愛 adds the feeling; 吃 still names the action."
+            },
+            {
+              "id": "g5-repair",
+              "label": "Repair the stack",
+              "traditional": "我喝要茶。 → 我要喝茶。",
+              "pinyin": "Wǒ hē yào chá. → Wǒ yào hē chá.",
+              "english": "Repair it: I want to drink tea.",
+              "note": "Move 要 before the action 喝.",
+              "isCorrection": true
+            }
+          ],
+          "takeaway": "Intention or feeling first, action second."
+        },
+        "patternRows": [
+          {
+            "id": "g5-pattern-1",
+            "subject": [
+              {
+                "id": "g5-p1-i",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g5-p1-want",
+                "traditional": "要",
+                "pinyin": "yào",
+                "meaning": "want to; intend to"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g5-p1-drink",
+                "traditional": "喝",
+                "pinyin": "hē",
+                "meaning": "drink"
+              },
+              {
+                "id": "g5-p1-tea",
+                "traditional": "茶",
+                "pinyin": "chá",
+                "meaning": "tea",
+                "suffix": "。"
+              }
+            ],
+            "english": "I want to drink tea."
+          },
+          {
+            "id": "g5-pattern-2",
+            "subject": [
+              {
+                "id": "g5-p2-mom",
+                "traditional": "媽媽",
+                "simplified": "妈妈",
+                "pinyin": "māma",
+                "meaning": "mom"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g5-p2-like",
+                "traditional": "喜歡",
+                "simplified": "喜欢",
+                "pinyin": "xǐhuān",
+                "meaning": "like"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g5-p2-drink",
+                "traditional": "喝",
+                "pinyin": "hē",
+                "meaning": "drink"
+              },
+              {
+                "id": "g5-p2-milk-tea",
+                "traditional": "奶茶",
+                "pinyin": "nǎichá",
+                "meaning": "milk tea",
+                "suffix": "。"
+              }
+            ],
+            "english": "Mom likes drinking milk tea."
+          },
+          {
+            "id": "g5-pattern-3",
+            "subject": [
+              {
+                "id": "g5-p3-you",
+                "traditional": "你",
+                "pinyin": "nǐ",
+                "meaning": "you"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g5-p3-want",
+                "traditional": "要",
+                "pinyin": "yào",
+                "meaning": "want to; intend to"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g5-p3-go",
+                "traditional": "去",
+                "pinyin": "qù",
+                "meaning": "go"
+              },
+              {
+                "id": "g5-p3-teacher",
+                "traditional": "老師",
+                "simplified": "老师",
+                "pinyin": "lǎoshī",
+                "meaning": "teacher"
+              },
+              {
+                "id": "g5-p3-home",
+                "traditional": "家",
+                "pinyin": "jiā",
+                "meaning": "home; house",
+                "suffix": "嗎？"
+              }
+            ],
+            "english": "Do you want to go to the teacher’s home?"
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "g5-confusion-want-before-action",
+              "question": "Why is 要 before 吃?",
+              "answer": "要 is the wanting word, and the wanting word goes before the action word: 要 + 吃, never 吃 + 要.",
+              "wrongTraditional": "你吃要水果。",
+              "wrongSimplified": "你吃要水果。",
+              "right": {
+                "traditional": "你要吃水果。",
+                "simplified": "你要吃水果。",
+                "pinyin": "Nǐ yào chī shuǐguǒ.",
+                "english": "You want to eat fruit.",
+                "words": [
+                  {
+                    "id": "g5-confusion-1-word-1",
+                    "traditional": "你",
+                    "pinyin": "nǐ",
+                    "meaning": "you"
+                  },
+                  {
+                    "id": "g5-confusion-1-word-2",
+                    "traditional": "要",
+                    "pinyin": "yào",
+                    "meaning": "want to; intend to"
+                  },
+                  {
+                    "id": "g5-confusion-1-word-3",
+                    "traditional": "吃",
+                    "pinyin": "chī",
+                    "meaning": "eat"
+                  },
+                  {
+                    "id": "g5-confusion-1-word-4",
+                    "traditional": "水果",
+                    "pinyin": "shuǐguǒ",
+                    "meaning": "fruit",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "g5-confusion-ai-vs-xihuan",
+              "question": "Can I use 愛 for any liking?",
+              "answer": "No — 愛 means love, a very strong feeling. For a normal like, use 喜歡.",
+              "wrongTraditional": "我愛喝奶茶。",
+              "wrongSimplified": "我爱喝奶茶。",
+              "right": {
+                "traditional": "我喜歡喝奶茶。",
+                "simplified": "我喜欢喝奶茶。",
+                "pinyin": "Wǒ xǐhuān hē nǎichá.",
+                "english": "I like drinking milk tea.",
+                "words": [
+                  {
+                    "id": "g5-confusion-2-word-1",
+                    "traditional": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I; me"
+                  },
+                  {
+                    "id": "g5-confusion-2-word-2",
+                    "traditional": "喜歡",
+                    "simplified": "喜欢",
+                    "pinyin": "xǐhuān",
+                    "meaning": "like"
+                  },
+                  {
+                    "id": "g5-confusion-2-word-3",
+                    "traditional": "喝",
+                    "pinyin": "hē",
+                    "meaning": "drink"
+                  },
+                  {
+                    "id": "g5-confusion-2-word-4",
+                    "traditional": "奶茶",
+                    "pinyin": "nǎichá",
+                    "meaning": "milk tea",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "g5-confusion-negative-placement",
+              "question": "Where does 不 go with 愛喝?",
+              "answer": "不 goes before the wanting word, not the action: 不愛喝, never 愛不喝.",
+              "wrongTraditional": "我愛不喝奶茶。",
+              "wrongSimplified": "我爱不喝奶茶。",
+              "right": {
+                "traditional": "我不愛喝珍珠奶茶。",
+                "simplified": "我不爱喝珍珠奶茶。",
+                "pinyin": "Wǒ bú ài hē zhēnzhū nǎichá.",
+                "english": "I do not love drinking bubble milk tea.",
+                "words": [
+                  {
+                    "id": "g5-confusion-3-word-1",
+                    "traditional": "我",
+                    "pinyin": "wǒ",
+                    "meaning": "I; me"
+                  },
+                  {
+                    "id": "g5-confusion-3-word-2",
+                    "traditional": "不愛",
+                    "simplified": "不爱",
+                    "pinyin": "bú ài",
+                    "meaning": "do not love"
+                  },
+                  {
+                    "id": "g5-confusion-3-word-3",
+                    "traditional": "喝",
+                    "pinyin": "hē",
+                    "meaning": "drink"
+                  },
+                  {
+                    "id": "g5-confusion-3-word-4",
+                    "traditional": "珍珠奶茶",
+                    "pinyin": "zhēnzhū nǎichá",
+                    "meaning": "bubble milk tea",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "examples": [
+          {
+            "id": "g5-example-1",
+            "number": 1,
+            "text": {
+              "traditional": "媽媽喜歡喝奶茶。",
+              "simplified": "妈妈喜欢喝奶茶。",
+              "pinyin": "Māma xǐhuān hē nǎichá.",
+              "english": "Mom likes drinking milk tea.",
+              "words": [
+                {
+                  "id": "g5-e1-word-1",
+                  "traditional": "媽媽",
+                  "simplified": "妈妈",
+                  "pinyin": "māma",
+                  "meaning": "mom"
+                },
+                {
+                  "id": "g5-e1-word-2",
+                  "traditional": "喜歡",
+                  "simplified": "喜欢",
+                  "pinyin": "xǐhuān",
+                  "meaning": "like"
+                },
+                {
+                  "id": "g5-e1-word-3",
+                  "traditional": "喝",
+                  "pinyin": "hē",
+                  "meaning": "drink"
+                },
+                {
+                  "id": "g5-e1-word-4",
+                  "traditional": "奶茶",
+                  "pinyin": "nǎichá",
+                  "meaning": "milk tea",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g5-example-2",
+            "number": 2,
+            "text": {
+              "traditional": "你要去老師家嗎？",
+              "simplified": "你要去老师家吗？",
+              "pinyin": "Nǐ yào qù lǎoshī jiā ma?",
+              "english": "Do you want to go to the teacher’s home?",
+              "words": [
+                {
+                  "id": "g5-e2-word-1",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you"
+                },
+                {
+                  "id": "g5-e2-word-2",
+                  "traditional": "要",
+                  "pinyin": "yào",
+                  "meaning": "want to; intend to"
+                },
+                {
+                  "id": "g5-e2-word-3",
+                  "traditional": "去",
+                  "pinyin": "qù",
+                  "meaning": "go"
+                },
+                {
+                  "id": "g5-e2-word-4",
+                  "traditional": "老師",
+                  "simplified": "老师",
+                  "pinyin": "lǎoshī",
+                  "meaning": "teacher"
+                },
+                {
+                  "id": "g5-e2-word-5",
+                  "traditional": "家",
+                  "pinyin": "jiā",
+                  "meaning": "home; house"
+                },
+                {
+                  "id": "g5-e2-word-6",
+                  "traditional": "嗎",
+                  "simplified": "吗",
+                  "pinyin": "ma",
+                  "meaning": "ending word for a yes/no question",
+                  "suffix": "？"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g5-example-3",
+            "number": 3,
+            "teachingNote": "不 stays with 愛; the following action still comes second.",
+            "text": {
+              "traditional": "我愛吃水果，不愛喝珍珠奶茶。",
+              "simplified": "我爱吃水果，不爱喝珍珠奶茶。",
+              "pinyin": "Wǒ ài chī shuǐguǒ, bú ài hē zhēnzhū nǎichá.",
+              "english": "I love eating fruit and do not love drinking bubble milk tea.",
+              "words": [
+                {
+                  "id": "g5-e3-word-1",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                },
+                {
+                  "id": "g5-e3-word-2",
+                  "traditional": "愛",
+                  "simplified": "爱",
+                  "pinyin": "ài",
+                  "meaning": "love"
+                },
+                {
+                  "id": "g5-e3-word-3",
+                  "traditional": "吃",
+                  "pinyin": "chī",
+                  "meaning": "eat"
+                },
+                {
+                  "id": "g5-e3-word-4",
+                  "traditional": "水果",
+                  "pinyin": "shuǐguǒ",
+                  "meaning": "fruit"
+                },
+                {
+                  "id": "g5-e3-word-5",
+                  "traditional": "不愛",
+                  "simplified": "不爱",
+                  "pinyin": "bú ài",
+                  "meaning": "do not love",
+                  "prefix": "，"
+                },
+                {
+                  "id": "g5-e3-word-6",
+                  "traditional": "喝",
+                  "pinyin": "hē",
+                  "meaning": "drink"
+                },
+                {
+                  "id": "g5-e3-word-7",
+                  "traditional": "珍珠奶茶",
+                  "pinyin": "zhēnzhū nǎichá",
+                  "meaning": "bubble milk tea",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Keep 要, 喜歡, 愛 before the action",
+        "exercisePreview": "Choose a complete personal response to each source question.",
+        "exerciseInstruction": "Keep 要, 喜歡, or 愛 before the action it describes.",
+        "exerciseNote": "These questions are about you. A yes answer and a no answer are both correct.",
+        "exerciseResponseMode": "text",
+        "questions": [
+          {
+            "id": "g5-question-1",
+            "number": 1,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：你要吃水果嗎？ B：",
+                "simplified": "A：你要吃水果吗？ B："
+              },
+              {
+                "type": "blank",
+                "id": "g5-q1-answer",
+                "answer": "我要吃水果",
+                "acceptedAnswers": [
+                  "我不要吃水果"
+                ],
+                "hint": "Keep 要 or 不要 before 吃."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g5-q1-yes",
+                "traditional": "我要吃水果",
+                "pinyin": "wǒ yào chī shuǐguǒ",
+                "meaning": "I want to eat fruit."
+              },
+              {
+                "id": "g5-q1-no",
+                "traditional": "我不要吃水果",
+                "pinyin": "wǒ bú yào chī shuǐguǒ",
+                "meaning": "I do not want to eat fruit."
+              },
+              {
+                "id": "g5-q1-wrong",
+                "traditional": "我吃要水果",
+                "pinyin": "wǒ chī yào shuǐguǒ",
+                "meaning": "Incorrect order: 要 follows 吃."
+              }
+            ],
+            "correctFeedback": "Both personal answers keep 要 or 不要 before the action 吃.",
+            "repairFeedback": "Put 要 or 不要 before 吃."
+          },
+          {
+            "id": "g5-question-2",
+            "number": 2,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：你喜歡來學校嗎？ B：",
+                "simplified": "A：你喜欢来学校吗？ B："
+              },
+              {
+                "type": "blank",
+                "id": "g5-q2-answer",
+                "answer": "我喜歡來學校",
+                "answerSimplified": "我喜欢来学校",
+                "acceptedAnswers": [
+                  "我不喜歡來學校"
+                ],
+                "acceptedAnswersSimplified": [
+                  "我不喜欢来学校"
+                ],
+                "hint": "Keep 喜歡 or 不喜歡 before 來."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g5-q2-yes",
+                "traditional": "我喜歡來學校",
+                "simplified": "我喜欢来学校",
+                "pinyin": "wǒ xǐhuān lái xuéxiào",
+                "meaning": "I like coming to school."
+              },
+              {
+                "id": "g5-q2-no",
+                "traditional": "我不喜歡來學校",
+                "simplified": "我不喜欢来学校",
+                "pinyin": "wǒ bù xǐhuān lái xuéxiào",
+                "meaning": "I do not like coming to school."
+              },
+              {
+                "id": "g5-q2-wrong",
+                "traditional": "我來喜歡學校",
+                "simplified": "我来喜欢学校",
+                "pinyin": "wǒ lái xǐhuān xuéxiào",
+                "meaning": "Incorrect order: 喜歡 follows 來."
+              }
+            ],
+            "correctFeedback": "The feeling 喜歡 comes before the action 來.",
+            "repairFeedback": "Keep 喜歡 + 來 together in that order."
+          },
+          {
+            "id": "g5-question-3",
+            "number": 3,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：你愛喝什麼？ B：",
+                "simplified": "A：你爱喝什么？ B："
+              },
+              {
+                "type": "blank",
+                "id": "g5-q3-answer",
+                "answer": "我愛喝茶",
+                "answerSimplified": "我爱喝茶",
+                "acceptedAnswers": [
+                  "我愛喝水"
+                ],
+                "acceptedAnswersSimplified": [
+                  "我爱喝水"
+                ],
+                "hint": "Use 我 + 愛 + 喝 + a drink."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g5-q3-tea",
+                "traditional": "我愛喝茶",
+                "simplified": "我爱喝茶",
+                "pinyin": "wǒ ài hē chá",
+                "meaning": "I love drinking tea."
+              },
+              {
+                "id": "g5-q3-water",
+                "traditional": "我愛喝水",
+                "simplified": "我爱喝水",
+                "pinyin": "wǒ ài hē shuǐ",
+                "meaning": "I love drinking water."
+              },
+              {
+                "id": "g5-q3-wrong",
+                "traditional": "我喝愛茶",
+                "simplified": "我喝爱茶",
+                "pinyin": "wǒ hē ài chá",
+                "meaning": "Incorrect order: 愛 follows 喝."
+              }
+            ],
+            "correctFeedback": "愛 gives the feeling before the action 喝.",
+            "repairFeedback": "Use 愛 + 喝, then name the drink."
+          }
+        ]
+      },
+      {
+        "id": "B1L02-G06-P62",
+        "bookId": 1,
+        "lessonId": 2,
+        "partId": 2,
+        "lessonTitle": "你幾點去學校？",
+        "lessonTitleEnglish": "What Time Do You Go to School?",
+        "grammarNumber": 6,
+        "titleTraditional": "肯定 + 不／沒 + 肯定",
+        "titleEnglish": "Ask by Pairing Positive and Negative Forms",
+        "learnerPromise": "Ask natural choice questions such as “busy or not?” and “want to go or not?”",
+        "printedPages": [
+          62
+        ],
+        "audioReference": "02-2-3",
+        "explanation": "Repeat the key doing or describing word around 不: 忙不忙, 吃不吃, 要不要. With 有, use 有沒有. This pattern already makes a question, so do not add 嗎.",
+        "focusTerms": [
+          "忙不忙",
+          "吃不吃",
+          "要不要",
+          "有沒有",
+          "有没有",
+          "喜不喜歡",
+          "喜不喜欢",
+          "嗎",
+          "吗"
+        ],
+        "teachingGlossary": [
+          {
+            "id": "b1l02-g06-glossary-1",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          },
+          {
+            "id": "b1l02-g06-glossary-2",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "he; him"
+          },
+          {
+            "id": "b1l02-g06-glossary-3",
+            "traditional": "老師",
+            "simplified": "老师",
+            "pinyin": "lǎoshī",
+            "meaning": "teacher"
+          },
+          {
+            "id": "b1l02-g06-glossary-4",
+            "traditional": "台灣",
+            "simplified": "台湾",
+            "pinyin": "Táiwān",
+            "meaning": "Taiwan"
+          },
+          {
+            "id": "b1l02-g06-glossary-5",
+            "traditional": "忙",
+            "pinyin": "máng",
+            "meaning": "busy"
+          },
+          {
+            "id": "b1l02-g06-glossary-6",
+            "traditional": "不",
+            "pinyin": "bù",
+            "meaning": "not"
+          },
+          {
+            "id": "b1l02-g06-glossary-7",
+            "traditional": "吃",
+            "pinyin": "chī",
+            "meaning": "eat"
+          },
+          {
+            "id": "b1l02-g06-glossary-8",
+            "traditional": "要",
+            "pinyin": "yào",
+            "meaning": "want to; intend to"
+          },
+          {
+            "id": "b1l02-g06-glossary-9",
+            "traditional": "去",
+            "pinyin": "qù",
+            "meaning": "go"
+          },
+          {
+            "id": "b1l02-g06-glossary-10",
+            "traditional": "有",
+            "pinyin": "yǒu",
+            "meaning": "have"
+          },
+          {
+            "id": "b1l02-g06-glossary-11",
+            "traditional": "沒有",
+            "simplified": "没有",
+            "pinyin": "méi yǒu",
+            "meaning": "do not have; there is not"
+          },
+          {
+            "id": "b1l02-g06-glossary-12",
+            "traditional": "喜歡",
+            "simplified": "喜欢",
+            "pinyin": "xǐhuān",
+            "meaning": "like"
+          },
+          {
+            "id": "b1l02-g06-glossary-13",
+            "traditional": "喜",
+            "pinyin": "xǐ",
+            "meaning": "the first syllable of 喜歡 in the source contraction"
+          },
+          {
+            "id": "b1l02-g06-glossary-14",
+            "traditional": "歡",
+            "simplified": "欢",
+            "pinyin": "huān",
+            "meaning": "the second syllable of 喜歡"
+          },
+          {
+            "id": "b1l02-g06-glossary-15",
+            "traditional": "喝",
+            "pinyin": "hē",
+            "meaning": "drink"
+          },
+          {
+            "id": "b1l02-g06-glossary-16",
+            "traditional": "茶",
+            "pinyin": "chá",
+            "meaning": "tea"
+          },
+          {
+            "id": "b1l02-g06-glossary-17",
+            "traditional": "朋友",
+            "pinyin": "péngyǒu",
+            "meaning": "friend"
+          },
+          {
+            "id": "b1l02-g06-glossary-18",
+            "traditional": "水果",
+            "pinyin": "shuǐguǒ",
+            "meaning": "fruit"
+          },
+          {
+            "id": "b1l02-g06-glossary-19",
+            "traditional": "熱",
+            "simplified": "热",
+            "pinyin": "rè",
+            "meaning": "hot"
+          },
+          {
+            "id": "b1l02-g06-glossary-20",
+            "traditional": "很",
+            "pinyin": "hěn",
+            "meaning": "very; used before a describing word"
+          },
+          {
+            "id": "b1l02-g06-glossary-21",
+            "traditional": "家",
+            "pinyin": "jiā",
+            "meaning": "home; house"
+          },
+          {
+            "id": "b1l02-g06-glossary-22",
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma",
+            "meaning": "ending word for a yes/no question"
+          },
+          {
+            "id": "b1l02-g06-glossary-23",
+            "traditional": "肯定",
+            "pinyin": "kěndìng",
+            "meaning": "positive form"
+          },
+          {
+            "id": "b1l02-g06-glossary-24",
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi",
+            "meaning": "negative used with 有"
+          },
+          {
+            "id": "b1l02-g06-glossary-25",
+            "traditional": "不要",
+            "pinyin": "bú yào",
+            "meaning": "do not want to"
+          }
+        ],
+        "pattern": "Who + positive form + 不／沒 + positive form",
+        "patternColumns": [
+          "Who",
+          "Positive-negative pair",
+          "Rest of action"
+        ],
+        "patternAccentColumn": 1,
+        "discoveryLab": {
+          "title": "Let the verb ask both possibilities",
+          "description": "The repeated form presents a compact choice: yes or no.",
+          "prompt": "Which positive-negative family do you need?",
+          "choices": [
+            {
+              "id": "g6-state",
+              "label": "State · 忙不忙",
+              "traditional": "你忙不忙？",
+              "pinyin": "Nǐ máng bù máng?",
+              "english": "Are you busy?",
+              "note": "Repeat the describing word 忙 around 不."
+            },
+            {
+              "id": "g6-action",
+              "label": "Action · 吃不吃",
+              "traditional": "你吃不吃？",
+              "pinyin": "Nǐ chī bù chī?",
+              "english": "Are you eating / Do you eat?",
+              "note": "Repeat the action word 吃 around 不."
+            },
+            {
+              "id": "g6-have",
+              "label": "Have · 有沒有",
+              "traditional": "他有沒有台灣朋友？",
+              "simplified": "他有没有台湾朋友？",
+              "pinyin": "Tā yǒu méi yǒu Táiwān péngyǒu?",
+              "english": "Does he have a Taiwanese friend?",
+              "note": "有 uses its own negative 沒有, giving 有沒有."
+            },
+            {
+              "id": "g6-repair",
+              "label": "Do not add 嗎",
+              "traditional": "你忙不忙嗎？ → 你忙不忙？",
+              "simplified": "你忙不忙吗？ → 你忙不忙？",
+              "pinyin": "Nǐ máng bù máng ma? → Nǐ máng bù máng?",
+              "english": "Repair it: Are you busy?",
+              "note": "The positive-negative pair already marks the sentence as a question.",
+              "isCorrection": true
+            }
+          ],
+          "takeaway": "Repeat the key form around its negative, and leave 嗎 out."
+        },
+        "patternRows": [
+          {
+            "id": "g6-pattern-1",
+            "subject": [
+              {
+                "id": "g6-p1-you",
+                "traditional": "你",
+                "pinyin": "nǐ",
+                "meaning": "you"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g6-p1-busy-a",
+                "traditional": "忙",
+                "pinyin": "máng",
+                "meaning": "busy"
+              },
+              {
+                "id": "g6-p1-not",
+                "traditional": "不",
+                "pinyin": "bù",
+                "meaning": "not"
+              },
+              {
+                "id": "g6-p1-busy-b",
+                "traditional": "忙",
+                "pinyin": "máng",
+                "meaning": "busy",
+                "suffix": "？"
+              }
+            ],
+            "complement": [],
+            "english": "Are you busy?"
+          },
+          {
+            "id": "g6-pattern-2",
+            "subject": [
+              {
+                "id": "g6-p2-you",
+                "traditional": "你",
+                "pinyin": "nǐ",
+                "meaning": "you"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g6-p2-eat-a",
+                "traditional": "吃",
+                "pinyin": "chī",
+                "meaning": "eat"
+              },
+              {
+                "id": "g6-p2-not",
+                "traditional": "不",
+                "pinyin": "bù",
+                "meaning": "not"
+              },
+              {
+                "id": "g6-p2-eat-b",
+                "traditional": "吃",
+                "pinyin": "chī",
+                "meaning": "eat",
+                "suffix": "？"
+              }
+            ],
+            "complement": [],
+            "english": "Do you eat / Are you eating?"
+          },
+          {
+            "id": "g6-pattern-3",
+            "subject": [
+              {
+                "id": "g6-p3-he",
+                "traditional": "他",
+                "pinyin": "tā",
+                "meaning": "he; him"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g6-p3-want-a",
+                "traditional": "要",
+                "pinyin": "yào",
+                "meaning": "want to; intend to"
+              },
+              {
+                "id": "g6-p3-want-no",
+                "traditional": "不要",
+                "pinyin": "bú yào",
+                "meaning": "do not want to"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g6-p3-go",
+                "traditional": "去",
+                "pinyin": "qù",
+                "meaning": "go",
+                "suffix": "？"
+              }
+            ],
+            "english": "Does he want to go?"
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "g6-confusion-no-ma",
+              "question": "Why can’t I add 嗎 to 忙不忙?",
+              "answer": "The pair 忙不忙 already makes the question. Adding 嗎 gives it two question marks.",
+              "wrongTraditional": "老師忙不忙嗎？",
+              "wrongSimplified": "老师忙不忙吗？",
+              "right": {
+                "traditional": "老師忙不忙？",
+                "simplified": "老师忙不忙？",
+                "pinyin": "Lǎoshī máng bù máng?",
+                "english": "Is the teacher busy?",
+                "words": [
+                  {
+                    "id": "g6-confusion-1-word-1",
+                    "traditional": "老師",
+                    "simplified": "老师",
+                    "pinyin": "lǎoshī",
+                    "meaning": "teacher"
+                  },
+                  {
+                    "id": "g6-confusion-1-word-2",
+                    "traditional": "忙",
+                    "pinyin": "máng",
+                    "meaning": "busy"
+                  },
+                  {
+                    "id": "g6-confusion-1-word-3",
+                    "traditional": "不",
+                    "pinyin": "bù",
+                    "meaning": "not"
+                  },
+                  {
+                    "id": "g6-confusion-1-word-4",
+                    "traditional": "忙",
+                    "pinyin": "máng",
+                    "meaning": "busy",
+                    "suffix": "？"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "g6-confusion-you-mei-you",
+              "question": "Why is it 有沒有, not 有不有?",
+              "answer": "有 takes 沒有 as its negative, so the pair repeats 有 and 沒有. Never pair 有 with 不.",
+              "wrongTraditional": "他有不有朋友？",
+              "wrongSimplified": "他有不有朋友？",
+              "right": {
+                "traditional": "他有沒有台灣朋友？",
+                "simplified": "他有没有台湾朋友？",
+                "pinyin": "Tā yǒu méi yǒu Táiwān péngyǒu?",
+                "english": "Does he have a Taiwanese friend?",
+                "words": [
+                  {
+                    "id": "g6-confusion-2-word-1",
+                    "traditional": "他",
+                    "pinyin": "tā",
+                    "meaning": "he; him"
+                  },
+                  {
+                    "id": "g6-confusion-2-word-2",
+                    "traditional": "有",
+                    "pinyin": "yǒu",
+                    "meaning": "have"
+                  },
+                  {
+                    "id": "g6-confusion-2-word-3",
+                    "traditional": "沒有",
+                    "simplified": "没有",
+                    "pinyin": "méi yǒu",
+                    "meaning": "do not have; there is not"
+                  },
+                  {
+                    "id": "g6-confusion-2-word-4",
+                    "traditional": "台灣",
+                    "simplified": "台湾",
+                    "pinyin": "Táiwān",
+                    "meaning": "Taiwan"
+                  },
+                  {
+                    "id": "g6-confusion-2-word-5",
+                    "traditional": "朋友",
+                    "pinyin": "péngyǒu",
+                    "meaning": "friend",
+                    "suffix": "？"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "g6-confusion-match-reply-word",
+              "question": "My friend said 我不要去他家. Why is 去不去 wrong?",
+              "answer": "The pair repeats the key word in the reply — 要. Ask 要不要, not 去不去.",
+              "wrongTraditional": "你去不去他家？",
+              "right": {
+                "traditional": "你要不要去他家？",
+                "simplified": "你要不要去他家？",
+                "pinyin": "Nǐ yào bú yào qù tā jiā?",
+                "english": "Do you want to go to his home?",
+                "words": [
+                  {
+                    "id": "g6-confusion-3-word-1",
+                    "traditional": "你",
+                    "pinyin": "nǐ",
+                    "meaning": "you"
+                  },
+                  {
+                    "id": "g6-confusion-3-word-2",
+                    "traditional": "要",
+                    "pinyin": "yào",
+                    "meaning": "want to; intend to"
+                  },
+                  {
+                    "id": "g6-confusion-3-word-3",
+                    "traditional": "不要",
+                    "pinyin": "bú yào",
+                    "meaning": "do not want to"
+                  },
+                  {
+                    "id": "g6-confusion-3-word-4",
+                    "traditional": "去",
+                    "pinyin": "qù",
+                    "meaning": "go"
+                  },
+                  {
+                    "id": "g6-confusion-3-word-5",
+                    "traditional": "他",
+                    "pinyin": "tā",
+                    "meaning": "he; him"
+                  },
+                  {
+                    "id": "g6-confusion-3-word-6",
+                    "traditional": "家",
+                    "pinyin": "jiā",
+                    "meaning": "home; house",
+                    "suffix": "？"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "examples": [
+          {
+            "id": "g6-example-1",
+            "number": 1,
+            "text": {
+              "traditional": "老師忙不忙？",
+              "simplified": "老师忙不忙？",
+              "pinyin": "Lǎoshī máng bù máng?",
+              "english": "Is the teacher busy?",
+              "words": [
+                {
+                  "id": "g6-e1-word-1",
+                  "traditional": "老師",
+                  "simplified": "老师",
+                  "pinyin": "lǎoshī",
+                  "meaning": "teacher"
+                },
+                {
+                  "id": "g6-e1-word-2",
+                  "traditional": "忙",
+                  "pinyin": "máng",
+                  "meaning": "busy"
+                },
+                {
+                  "id": "g6-e1-word-3",
+                  "traditional": "不",
+                  "pinyin": "bù",
+                  "meaning": "not"
+                },
+                {
+                  "id": "g6-e1-word-4",
+                  "traditional": "忙",
+                  "pinyin": "máng",
+                  "meaning": "busy",
+                  "suffix": "？"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g6-example-2",
+            "number": 2,
+            "teachingNote": "有 uses 沒有, not 不有.",
+            "text": {
+              "traditional": "他有沒有台灣朋友？",
+              "simplified": "他有没有台湾朋友？",
+              "pinyin": "Tā yǒu méi yǒu Táiwān péngyǒu?",
+              "english": "Does he have a Taiwanese friend?",
+              "words": [
+                {
+                  "id": "g6-e2-word-1",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he; him"
+                },
+                {
+                  "id": "g6-e2-word-2",
+                  "traditional": "有",
+                  "pinyin": "yǒu",
+                  "meaning": "have"
+                },
+                {
+                  "id": "g6-e2-word-3",
+                  "traditional": "沒有",
+                  "simplified": "没有",
+                  "pinyin": "méi yǒu",
+                  "meaning": "do not have; there is not"
+                },
+                {
+                  "id": "g6-e2-word-4",
+                  "traditional": "台灣",
+                  "simplified": "台湾",
+                  "pinyin": "Táiwān",
+                  "meaning": "Taiwan"
+                },
+                {
+                  "id": "g6-e2-word-5",
+                  "traditional": "朋友",
+                  "pinyin": "péngyǒu",
+                  "meaning": "friend",
+                  "suffix": "？"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g6-example-3",
+            "number": 3,
+            "text": {
+              "traditional": "你喜（歡）不喜歡喝茶？",
+              "simplified": "你喜（欢）不喜欢喝茶？",
+              "pinyin": "Nǐ xǐ(huān) bù xǐhuān hē chá?",
+              "english": "Do you like drinking tea?",
+              "words": [
+                {
+                  "id": "g6-e3-word-1",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you"
+                },
+                {
+                  "id": "g6-e3-word-2",
+                  "traditional": "喜",
+                  "pinyin": "xǐ",
+                  "meaning": "the first syllable of 喜歡 in the source contraction"
+                },
+                {
+                  "id": "g6-e3-word-3",
+                  "traditional": "歡",
+                  "simplified": "欢",
+                  "pinyin": "huān",
+                  "meaning": "the second syllable of 喜歡",
+                  "prefix": "（"
+                },
+                {
+                  "id": "g6-e3-word-4",
+                  "traditional": "不",
+                  "pinyin": "bù",
+                  "meaning": "not",
+                  "prefix": "）"
+                },
+                {
+                  "id": "g6-e3-word-5",
+                  "traditional": "喜歡",
+                  "simplified": "喜欢",
+                  "pinyin": "xǐhuān",
+                  "meaning": "like"
+                },
+                {
+                  "id": "g6-e3-word-6",
+                  "traditional": "喝",
+                  "pinyin": "hē",
+                  "meaning": "drink"
+                },
+                {
+                  "id": "g6-e3-word-7",
+                  "traditional": "茶",
+                  "pinyin": "chá",
+                  "meaning": "tea",
+                  "suffix": "？"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Build the positive-negative question",
+        "exercisePreview": "Complete the questions with the matching repeated form.",
+        "exerciseInstruction": "Choose the pair that matches the answer or picture cue. Do not add 嗎.",
+        "exerciseNote": "Question 1 uses the hot-weather picture in the book and the word 熱. These are example answers.",
+        "exerciseCues": [
+          {
+            "id": "g6-hot-cue",
+            "label": "台灣 · 熱",
+            "pinyin": "Táiwān · rè",
+            "detail": "The source illustration shows hot weather, and the printed reply says 台灣很熱."
+          }
+        ],
+        "questions": [
+          {
+            "id": "g6-question-1",
+            "number": 1,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：台灣",
+                "simplified": "A：台湾"
+              },
+              {
+                "type": "blank",
+                "id": "g6-q1-pair",
+                "answer": "熱不熱",
+                "answerSimplified": "热不热",
+                "hint": "Repeat 熱 around 不."
+              },
+              {
+                "type": "text",
+                "traditional": "？ B：台灣很熱。",
+                "simplified": "？ B：台湾很热。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g6-q1-hot",
+                "traditional": "熱不熱",
+                "simplified": "热不热",
+                "pinyin": "rè bú rè",
+                "meaning": "hot or not; is it hot?"
+              },
+              {
+                "id": "g6-q1-busy",
+                "traditional": "忙不忙",
+                "pinyin": "máng bù máng",
+                "meaning": "busy or not"
+              },
+              {
+                "id": "g6-q1-ma",
+                "traditional": "熱嗎",
+                "simplified": "热吗",
+                "pinyin": "rè ma",
+                "meaning": "Is it hot? Uses a different question pattern."
+              }
+            ],
+            "correctFeedback": "The answer 很熱 shows the question should use 熱不熱.",
+            "repairFeedback": "Repeat 熱 around 不. Do not add 嗎 to this pattern."
+          },
+          {
+            "id": "g6-question-2",
+            "number": 2,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：你"
+              },
+              {
+                "type": "blank",
+                "id": "g6-q2-pair",
+                "answer": "喜不喜歡",
+                "answerSimplified": "喜不喜欢",
+                "hint": "Use the shortened positive-negative form of 喜歡."
+              },
+              {
+                "type": "text",
+                "traditional": "吃水果？ B：我很喜歡吃。",
+                "simplified": "吃水果？ B：我很喜欢吃。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g6-q2-like",
+                "traditional": "喜不喜歡",
+                "simplified": "喜不喜欢",
+                "pinyin": "xǐ bù xǐhuān",
+                "meaning": "like or not; do you like"
+              },
+              {
+                "id": "g6-q2-eat",
+                "traditional": "吃不吃",
+                "pinyin": "chī bù chī",
+                "meaning": "eat or not"
+              },
+              {
+                "id": "g6-q2-ma",
+                "traditional": "喜歡嗎",
+                "simplified": "喜欢吗",
+                "pinyin": "xǐhuān ma",
+                "meaning": "Do you like? Uses the 嗎 pattern."
+              }
+            ],
+            "correctFeedback": "The answer says 喜歡, so the source sentence needs the 喜不喜歡 pair.",
+            "repairFeedback": "Match the reply’s key verb: 喜歡."
+          },
+          {
+            "id": "g6-question-3",
+            "number": 3,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：你"
+              },
+              {
+                "type": "blank",
+                "id": "g6-q3-pair",
+                "answer": "要不要去他家",
+                "hint": "Ask whether the listener wants to go to his home."
+              },
+              {
+                "type": "text",
+                "traditional": "？ B：我不要去他家。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g6-q3-want",
+                "traditional": "要不要去他家",
+                "pinyin": "yào bú yào qù tā jiā",
+                "meaning": "want to go to his home or not"
+              },
+              {
+                "id": "g6-q3-go",
+                "traditional": "去不去他家",
+                "pinyin": "qù bú qù tā jiā",
+                "meaning": "go to his home or not"
+              },
+              {
+                "id": "g6-q3-ma",
+                "traditional": "要去他家嗎",
+                "simplified": "要去他家吗",
+                "pinyin": "yào qù tā jiā ma",
+                "meaning": "Do you want to go to his home? Uses 嗎."
+              }
+            ],
+            "correctFeedback": "The reply begins 不要, so the matching question asks 要不要.",
+            "repairFeedback": "Match the key form in the reply: 要／不要."
+          }
+        ]
+      }
+    ],
+    "dialogue": {
+      "id": "B1L02-D02",
+      "title": "對話二 · Dialogue 2",
+      "setting": "星期五下課以後 · After class, Friday",
+      "printedPages": [
+        57,
+        58
+      ],
+      "audioReference": "02-2-1",
+      "grammarFocus": [
+        "的",
+        "要",
+        "喜歡",
+        "愛",
+        "要不要",
+        "好不好"
+      ],
+      "lines": [
+        {
+          "id": "b1l02-d2-l1",
+          "speaker": "宜文",
+          "text": {
+            "traditional": "今天是星期五，明天是週末，你們要不要來我家？",
+            "simplified": "今天是星期五，明天是周末，你们要不要来我家？",
+            "pinyin": "Jīntiān shì xīngqí wǔ, míngtiān shì zhōumò, nǐmen yào bú yào lái wǒ jiā?",
+            "english": "Today is Friday and it is the weekend tomorrow. Do you want to come to my place?"
+          }
+        },
+        {
+          "id": "b1l02-d2-l2",
+          "speaker": "中明",
+          "text": {
+            "traditional": "明天是九月二十三號……啊！是妳的生日！",
+            "simplified": "明天是九月二十三号……啊！是妳的生日！",
+            "pinyin": "Míngtiān shì jiǔ yuè èrshísān hào... Ā! Shì nǐ de shēngrì!",
+            "english": "It is September 23rd tomorrow... Ah! It is your birthday!"
+          }
+        },
+        {
+          "id": "b1l02-d2-l3",
+          "speaker": "友美",
+          "text": {
+            "traditional": "宜文，生日快樂！",
+            "simplified": "宜文，生日快乐！",
+            "pinyin": "Yíwén, shēngrì kuàilè!",
+            "english": "Happy birthday, Yiwen!"
+          }
+        },
+        {
+          "id": "b1l02-d2-l4",
+          "speaker": "宜文",
+          "text": {
+            "traditional": "謝謝！明天晚上六點來我家，好不好？",
+            "simplified": "谢谢！明天晚上六点来我家，好不好？",
+            "pinyin": "Xièxie! Míngtiān wǎnshang liù diǎn lái wǒ jiā, hǎo bù hǎo?",
+            "english": "Thanks! How about coming to my place at 6 p.m. tomorrow?"
+          }
+        },
+        {
+          "id": "b1l02-d2-l5",
+          "speaker": "中明",
+          "text": {
+            "traditional": "沒問題。",
+            "simplified": "没问题。",
+            "pinyin": "Méi wèntí.",
+            "english": "No problem."
+          }
+        },
+        {
+          "id": "b1l02-d2-l6",
+          "speaker": "友美",
+          "text": {
+            "traditional": "好，明天見。",
+            "simplified": "好，明天见。",
+            "pinyin": "Hǎo, míngtiān jiàn.",
+            "english": "Okay, see you tomorrow."
+          }
+        }
+      ],
+      "comprehension": {
+        "prompt": "宜文請大家幾點來她家？",
+        "options": [
+          "晚上六點",
+          "早上六點",
+          "下午四點"
+        ],
+        "answer": "晚上六點",
+        "hint": "Read Yiwen’s invitation."
+      }
+    },
+    "completionTitle": "Part 2 complete - you can link people and things, put wanting and liking first, and ask either-or questions.",
+    "completionDescription": "You used 的, placed wanting and liking before actions, and formed positive-negative questions without 嗎.",
+    "nextBookLabel": "Next in the book · Review the lesson patterns."
+  }
+}

@@ -1,12 +1,12 @@
 import { useEffect, useState, useMemo } from 'react';
-import { useAppStore } from '../../store/useAppStore';
-import { getDictionaryEntriesBatch } from '../../services/dictionaryService';
 
-interface SmartSentenceProps {
+export interface SmartSentenceProps {
   text: string;
   className?: string;
   bookAccent?: string;
   highlightTerms?: string[];
+  onWordClick?: (word: string) => void;
+  validateWords?: (words: string[]) => Promise<Map<string, unknown> | Set<string>>;
 }
 
 interface SegmentData {
@@ -67,8 +67,9 @@ export function SmartSentence({
   text,
   className = '',
   highlightTerms = [],
+  onWordClick,
+  validateWords,
 }: SmartSentenceProps) {
-  const { setDictionaryWord } = useAppStore();
   const [finalSegments, setFinalSegments] = useState<SegmentData[]>([]);
 
   useEffect(() => {
@@ -77,23 +78,31 @@ export function SmartSentence({
     async function validateAndSetSegments() {
       try {
         const segmenter = new Intl.Segmenter('zh-CN', { granularity: 'word' });
-        const initialSegments = Array.from(segmenter.segment(text));
+        const initialSegments = Array.from(segmenter.segment(text)) as SegmentData[];
 
-        // Multi-character Chinese word-like segments are verified against the
-        // dictionary (static shard packs first, then Supabase). Single
-        // characters and non-Chinese tokens pass through untouched.
+        if (!validateWords) {
+          if (isMounted) setFinalSegments(initialSegments);
+          return;
+        }
+
         const wordsRequiringNetworkValidation = initialSegments
           .filter((seg) => seg.isWordLike && /[\u4E00-\u9FFF]/.test(seg.segment) && Array.from(seg.segment).length > 1)
           .map((seg) => seg.segment);
 
-        const validMap = wordsRequiringNetworkValidation.length > 0
-          ? await getDictionaryEntriesBatch(wordsRequiringNetworkValidation)
-          : new Map<string, never>();
+        const validResult = wordsRequiringNetworkValidation.length > 0
+          ? await validateWords(wordsRequiringNetworkValidation)
+          : null;
         if (!isMounted) return;
+
+        const validSet = validResult instanceof Set
+          ? validResult
+          : validResult instanceof Map
+            ? new Set(validResult.keys())
+            : new Set<string>();
 
         const processed = initialSegments.flatMap((seg) => {
           const isChineseWord = seg.isWordLike && /[\u4E00-\u9FFF]/.test(seg.segment);
-          if (isChineseWord && Array.from(seg.segment).length > 1 && !validMap.has(seg.segment)) {
+          if (isChineseWord && Array.from(seg.segment).length > 1 && !validSet.has(seg.segment)) {
             const chars = Array.from(seg.segment);
             return chars.map((char, i) => ({ segment: char, index: seg.index + i, input: text, isWordLike: true }));
           }
@@ -113,7 +122,7 @@ export function SmartSentence({
     return () => {
       isMounted = false;
     };
-  }, [text]);
+  }, [text, validateWords]);
 
   // Provide an immediate fallback while async validation is happening
   const fallbackSegments = useMemo(() => {
@@ -145,7 +154,13 @@ export function SmartSentence({
               aria-label={`Open ${seg.segment} in the dictionary`}
               onClick={(e) => {
                 e.stopPropagation();
-                setDictionaryWord(seg.segment);
+                if (onWordClick) {
+                  onWordClick(seg.segment);
+                } else if (typeof window !== 'undefined') {
+                  window.dispatchEvent(
+                    new CustomEvent('app:select-dictionary-word', { detail: { word: seg.segment } }),
+                  );
+                }
               }}
               className="-mx-0.5 cursor-pointer rounded-[8px] px-0.5 align-baseline text-ui-ink outline-none transition-colors hover:bg-ui-surface-hover focus-visible:bg-ui-surface-hover focus-visible:ring-2 focus-visible:ring-brand-primary/35 active:translate-y-px active:bg-ui-divider"
             >

@@ -1,6 +1,5 @@
-import { Fragment } from 'react';
-import { useMediaQuery } from '../../../hooks/useMediaQuery';
-import type { InteractiveGrammarPage } from '../../../types/models';
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
+import type { GrammarPatternRow, InteractiveGrammarPage } from '../../../types/models';
 import { getPatternRowGroups, getPatternSectionLayout } from '../../../utils/grammarPatternLayout';
 import { cn } from '../../../utils/cn';
 import { InteractiveGrammarSentence } from './InteractiveGrammarSentence';
@@ -11,18 +10,21 @@ interface GrammarPatternSectionProps {
   showPinyin: boolean;
   showTranslation: boolean;
   onOpenWord: (word: string) => void;
+  patternColumns?: string[];
+  patternColumnDetails?: string[];
+  patternRows?: GrammarPatternRow[];
+  hideHeader?: boolean;
+  title?: string;
 }
 
 /**
  * One quiet table surface: a compact slot header and every example row live
  * in a single shared grid so vertical dividers stay aligned while each column
- * sizes to its content. Header labels and compact details are `nowrap`, so
- * the columns open up just enough for the headings to keep a single line
- * instead of wrapping in narrow slot columns; example rows stay clean
- * (chunks and pinyin only, no labels mixed in). Narrow viewports give the
- * leftover space to a single flexible track; wide viewports spread tracks by
- * content weight (content-based minimums), so the table always fills its card
- * without a column ballooning past its content.
+ * sizes proportionally based on content weight. Header labels and details wrap
+ * naturally on narrow viewports to avoid starving neighbor columns; example rows
+ * stay clean (chunks and pinyin only, no labels mixed in). Responsive minimums
+ * and scroll edge fades ensure smooth horizontal navigation on narrow devices
+ * without clipping glyphs.
  */
 export function GrammarPatternSection({
   page,
@@ -30,62 +32,115 @@ export function GrammarPatternSection({
   showPinyin,
   showTranslation,
   onOpenWord,
+  patternColumns,
+  patternColumnDetails,
+  patternRows,
+  hideHeader = false,
+  title = 'Sentence Pattern',
 }: GrammarPatternSectionProps) {
-  const isDesktop = useMediaQuery('(min-width: 768px)');
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const activeColumns = patternColumns ?? page.patternColumns;
+  const activeDetails = patternColumnDetails ?? page.patternColumnDetails;
+  const activeRows = patternRows ?? page.patternRows;
+
   const layout = getPatternSectionLayout({
-    patternColumns: page.patternColumns,
-    patternColumnDetails: page.patternColumnDetails,
-    patternRows: page.patternRows,
+    patternColumns: activeColumns,
+    patternColumnDetails: activeDetails,
+    patternRows: activeRows,
     characterPreference,
     showPinyin,
-    // Narrow viewports let one flexible track absorb leftover space so short
-    // slots hug their content; wide viewports spread the table proportionally
-    // so no single column balloons past its content.
-    sideColumnSizing: isDesktop ? 'proportional' : 'min-content',
+    sideColumnSizing: 'proportional',
   });
-  if (page.patternRows.length === 0) return null;
+
+  const updateScrollIndicators = useCallback(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    const maxScroll = scrollWidth - clientWidth;
+    setCanScrollLeft(scrollLeft > 4);
+    setCanScrollRight(maxScroll - scrollLeft > 4);
+  }, []);
+
+  useEffect(() => {
+    updateScrollIndicators();
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    const resizeObserver = new ResizeObserver(updateScrollIndicators);
+    resizeObserver.observe(el);
+    return () => resizeObserver.disconnect();
+  }, [updateScrollIndicators, page.id, activeRows, activeColumns]);
+
+  if (activeRows.length === 0) return null;
+
+  const headingId = `grammar-pattern-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
 
   return (
-    <section aria-labelledby="grammar-pattern-heading" className="mt-10">
-      <div className="mb-3 flex items-center justify-between gap-3">
-        <h2 id="grammar-pattern-heading" className="text-sm font-black uppercase tracking-[0.08em] text-ui-muted-strong">
-          Sentence Pattern
-        </h2>
-      </div>
+    <section aria-labelledby={headingId} className={cn(!hideHeader && 'mt-10')}>
+      {!hideHeader && (
+        <div className="mb-3 flex items-center justify-between gap-3">
+          <h2 id={headingId} className="text-xs font-black uppercase tracking-[0.08em] text-ui-muted-strong">
+            {title}
+          </h2>
+        </div>
+      )}
 
-      <div className="overflow-hidden rounded-feature bg-ui-surface border-b-[length:var(--depth-md)] border-ui-border">
+      <div
+        className={cn(
+          'relative overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface',
+        )}
+      >
+        {/* Left scroll fade indicator */}
+        <div
+          aria-hidden="true"
+          className={cn(
+            'pointer-events-none absolute inset-y-0 left-0 z-10 w-6 bg-gradient-to-r from-ui-surface to-transparent transition-opacity duration-200',
+            canScrollLeft ? 'opacity-100' : 'opacity-0',
+          )}
+        />
+
+        {/* Right scroll fade indicator */}
+        <div
+          aria-hidden="true"
+          className={cn(
+            'pointer-events-none absolute inset-y-0 right-0 z-10 w-6 bg-gradient-to-l from-ui-surface to-transparent transition-opacity duration-200',
+            canScrollRight ? 'opacity-100' : 'opacity-0',
+          )}
+        />
+
         {/* The table surface always contains horizontal overflow by scrolling;
             it is never clipped by the card. */}
-        <div className="overflow-x-auto">
+        <div
+          ref={scrollContainerRef}
+          onScroll={updateScrollIndicators}
+          className="overflow-x-auto scrollbar-none"
+        >
           <div
-            className={cn('grid w-full items-stretch', layout.isScrollable && 'min-w-[480px]')}
+            className={cn(
+              'grid w-full items-stretch',
+              layout.isScrollable && (layout.sourceColumns.length >= 3 ? 'min-w-[340px]' : 'min-w-[260px]'),
+            )}
             style={{ gridTemplateColumns: layout.gridTemplateColumns }}
           >
             {layout.sourceColumns.map((sourceIndex, colIndex) => {
-              const title = page.patternColumns[sourceIndex] ?? '';
-              const detail = page.patternColumnDetails?.[sourceIndex];
-              const hasCjk = /[\u4E00-\u9FFF]/.test(title);
+              const columnTitle = activeColumns[sourceIndex] ?? '';
+              const detail = activeDetails?.[sourceIndex];
 
               return (
                 <div
                   key={`legend-${sourceIndex}`}
                   className={cn(
-                    'flex min-h-[56px] min-w-0 flex-col items-center justify-center border-b border-ui-divider bg-brand-primary/[0.08] px-3 py-2.5 text-center sm:min-h-[64px] sm:px-4 sm:py-3',
+                    'flex min-h-[56px] min-w-0 flex-col items-center justify-center border-b border-ui-divider bg-brand-primary/[0.06] px-2.5 py-2.5 text-center sm:min-h-[64px] sm:px-4 sm:py-3',
                     colIndex > 0 && 'border-l border-ui-divider',
                   )}
                 >
-                  <span
-                    className={cn(
-                      'block whitespace-nowrap leading-tight text-ui-ink-strong',
-                      hasCjk
-                        ? 'font-chinese text-base sm:text-lg font-black'
-                        : 'text-[11px] sm:text-xs font-black uppercase tracking-wider',
-                    )}
-                  >
-                    {title}
+                  <span className="block text-center text-[11px] font-black uppercase tracking-wider leading-tight text-ui-ink-strong break-words sm:text-xs">
+                    {columnTitle}
                   </span>
                   {detail && (
-                    <span className="mt-1 block whitespace-nowrap text-[10px] sm:text-[11px] font-bold leading-tight text-brand-primary">
+                    <span className="mt-1 block text-center text-[10px] font-bold leading-tight text-brand-primary break-words sm:text-[11px]">
                       {detail}
                     </span>
                   )}
@@ -93,7 +148,7 @@ export function GrammarPatternSection({
               );
             })}
 
-            {page.patternRows.map((row, rowIndex) => {
+            {activeRows.map((row, rowIndex) => {
               const groups = getPatternRowGroups(row);
               return (
                 <Fragment key={row.id}>
@@ -105,7 +160,7 @@ export function GrammarPatternSection({
                         key={`${row.id}-group-${sourceIndex}`}
                         aria-label={isEmpty ? 'Empty sentence slot' : undefined}
                         className={cn(
-                          'flex min-h-[76px] min-w-0 items-center justify-center bg-ui-surface px-2 py-4 sm:min-h-[88px] sm:px-5 sm:py-5',
+                          'flex min-h-[76px] min-w-0 items-center justify-center bg-ui-surface px-2 py-3.5 sm:min-h-[88px] sm:px-5 sm:py-5',
                           colIndex > 0 && 'border-l border-ui-divider',
                           rowIndex > 0 && 'border-t border-ui-divider',
                         )}
@@ -120,7 +175,7 @@ export function GrammarPatternSection({
                             align="center"
                             tone="default"
                             size="lg"
-                            className="gap-x-1 gap-y-2"
+                            className="gap-x-0.5 gap-y-2"
                             onOpenWord={onOpenWord}
                           />
                         )}
@@ -134,7 +189,7 @@ export function GrammarPatternSection({
                       style={{ gridColumn: '1 / -1' }}
                     >
                       <p className="sr-only">Meaning</p>
-                      <p className="text-center text-[13px] sm:text-[14px] font-extrabold leading-relaxed text-ui-muted-strong">
+                      <p className="text-center text-[13px] sm:text-[14px] font-black leading-relaxed text-ui-ink">
                         {row.english}
                       </p>
                     </div>

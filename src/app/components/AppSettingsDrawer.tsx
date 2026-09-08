@@ -88,7 +88,7 @@ export function AppSettingsDrawer({
       {isConfirmResetOpen && (
         <ConfirmationDialog
           title="Reset all learning progress?"
-          description="This permanently deletes vocabulary reviews, SRS intervals, lesson progress, streaks, XP, and daily history. Your saved words and custom cards stay intact."
+          description="This permanently deletes vocabulary reviews, SRS intervals, lesson progress, and daily history. Your saved words and custom cards stay intact."
           confirmLabel="Reset everything"
           onConfirm={handleResetProgress}
           onCancel={() => {

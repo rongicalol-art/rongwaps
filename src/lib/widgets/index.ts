@@ -5,9 +5,12 @@ export * from './SegmentedControl';
 
 // Icons, flags, and branded presentation
 export * from './AppIcon';
+export * from './BrandWordmark';
+export * from './CloudPuff';
 export * from './CountryFlag';
 export * from './PlayfulNavIcon';
 export * from './RongWapsCharacterPortrait';
+export * from './VideoBackground';
 
 // Dialogs, drawers, menus, and accessibility boundaries
 export * from './ActivityModalWrapper';
@@ -28,7 +31,6 @@ export * from './ScreenSkeleton';
 export * from './Skeleton';
 
 // Generic headers and workspace shells
-export * from './DynamicBackground';
 export * from './ScreenHeader';
 export * from './ScreenLayout';
 export * from './SectionEyebrow';

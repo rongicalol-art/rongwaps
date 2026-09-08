@@ -425,9 +425,14 @@ export async function fetchExamplesForWord(searchWords: string | string[]): Prom
       return result;
     };
     
+    const getLocalMatchingCards = async () => {
+      const allVocab = await fetchVocabulary();
+      return allVocab.filter(c => c.examples?.some(e => e.chinese && searchTerms.some(v => e.chinese.includes(v))));
+    };
+
     if (!supabaseUrl) {
-      // Fallback to local data
-      const matching = FLASHCARDS_DATA.filter(c => c.examples?.some(e => e.chinese && searchTerms.some(v => e.chinese.includes(v))));
+      // Fallback to pack-first local data
+      const matching = await getLocalMatchingCards();
       return mergeExampleCards(matching);
     }
 
@@ -446,10 +451,14 @@ export async function fetchExamplesForWord(searchWords: string | string[]): Prom
 
     if (error) {
       console.error('Error fetching examples:', error);
-      return mergeExampleCards([]);
+      const fallback = await getLocalMatchingCards();
+      return mergeExampleCards(fallback);
     }
 
-    if (!data || data.length === 0) return mergeExampleCards([]);
+    if (!data || data.length === 0) {
+      const fallback = await getLocalMatchingCards();
+      return mergeExampleCards(fallback);
+    }
 
     const mappedData = mapVocabularyRows(data);
 

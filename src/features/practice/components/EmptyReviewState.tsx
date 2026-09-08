@@ -10,7 +10,9 @@ interface EmptyReviewStateProps {
 
 export function EmptyReviewState({ onClose, accentBg, buttonEdge, title = "You're all caught up!", message = "No cards are due for review right now." }: EmptyReviewStateProps) {
   return (
-    <div className="absolute inset-0 w-full h-full bg-ui-canvas flex flex-col justify-center items-center overflow-hidden overscroll-none">
+    // No canvas fill here: this always renders inside the practice modal
+    // wrapper, which already paints bg-ui-practice-canvas behind it.
+    <div className="absolute inset-0 w-full h-full flex flex-col justify-center items-center overflow-hidden overscroll-none">
       <div className="px-6 py-12 flex flex-col items-center justify-center text-center animate-in zoom-in-95 duration-500">
         <div className="w-24 h-24 rounded-full bg-ui-surface shadow-ambient-md border border-ui-border flex items-center justify-center mb-6 text-brand-secondary">
           <AppIcon name="sparkles" size={44} />

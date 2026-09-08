@@ -710,9 +710,10 @@
     },
     {
       "file": "B1-15-1-1.mp3",
-      "bytes": 1160397,
-      "sha256": "c0c72466d183e4598f418c7016b6ffb86dcd86e118e6a5f271cad7f7d6199499",
-      "durationSec": 96.65
+      "bytes": 914157,
+      "sha256": "2a5a6923af5ea3262558c8909345c703e3abe266bdaf6c00141816f7e5262379",
+      "durationSec": 76.13,
+      "trimmedIntroSec": 20.52
     },
     {
       "file": "B1-15-1-2.mp3",
@@ -728,9 +729,10 @@
     },
     {
       "file": "B1-15-2-1.mp3",
-      "bytes": 818541,
-      "sha256": "7bc7302c875806deb3dbdecd5a47159346577fd3de57c13508c2992cbd409ce3",
-      "durationSec": 68.16
+      "bytes": 774189,
+      "sha256": "b5ebc3ba0a4643757d678f4c15c80bb208da3e5ee4f51d2161e2c02c5e8ab6ed",
+      "durationSec": 64.45,
+      "trimmedIntroSec": 3.71
     },
     {
       "file": "B1-15-2-2.mp3",
@@ -758,9 +760,10 @@
     },
     {
       "file": "B1-16-1-1.mp3",
-      "bytes": 1393965,
-      "sha256": "c0fe58001fa9feff7b43debf46b883bf6135f53cab41b3c977cf2470e756ec25",
-      "durationSec": 116.1
+      "bytes": 1138221,
+      "sha256": "fddc2f2fc31c0206560938d30743eee0c89afb971bc6831d10b91abecaaca489",
+      "durationSec": 94.79,
+      "trimmedIntroSec": 21.31
     },
     {
       "file": "B1-16-1-2.mp3",
@@ -776,9 +779,10 @@
     },
     {
       "file": "B1-16-2-1.mp3",
-      "bytes": 954477,
-      "sha256": "4b0cf96213e10dc8064967e289c0e262a411e1cd3c08de33e1976a896460ce09",
-      "durationSec": 79.49
+      "bytes": 919341,
+      "sha256": "d5441d0a0fa7dea3c82a85f89c7c4e311689062526a846e4795346b3e3720eba",
+      "durationSec": 76.55,
+      "trimmedIntroSec": 2.94
     },
     {
       "file": "B1-16-2-2.mp3",
@@ -794,9 +798,10 @@
     },
     {
       "file": "B1-16-3-1.mp3",
-      "bytes": 1148589,
-      "sha256": "a34850604e7b5b43017571c99c27c837ee68c121fc25b0023f5e430f9d79e59a",
-      "durationSec": 95.66
+      "bytes": 1084077,
+      "sha256": "800c80905774035f2b4fb2c3a0335da114483ba90a4ad53ab537c41626fd9b79",
+      "durationSec": 90.27,
+      "trimmedIntroSec": 5.39
     },
     {
       "file": "B1-16-3-2.mp3",

@@ -1,0 +1,6599 @@
+{
+  "LESSON_FIFTEEN_GRAMMAR_ONE": {
+    "bookId": 1,
+    "lessonId": 15,
+    "lessonTitle": "十二生肖",
+    "lessonTitleEnglish": "The Chinese Animal Zodiac",
+    "id": "B1L15-G01",
+    "partId": 1,
+    "grammarNumber": 1,
+    "titleTraditional": "A 跟 B (不)一樣 (+ Vs)",
+    "titleEnglish": "Compare Things with 跟…(不)一樣",
+    "learnerPromise": "Say whether two things, customs, or ideas are the same or different.",
+    "printedPages": [
+      347,
+      348
+    ],
+    "audioReference": "15-1-1",
+    "bookPageAvailable": true,
+    "explanation": "Use 跟 between two things to compare them with 一樣 (the same) or 不一樣 (different). You can also add an adjective or descriptive verb at the end.",
+    "focusTerms": [
+      "跟",
+      "一樣",
+      "不一樣"
+    ],
+    "teachingGlossary": [
+      {
+        "id": "b1l15-g01-glossary-1",
+        "traditional": "生肖",
+        "pinyin": "shēngxiào",
+        "meaning": "Chinese zodiac animal"
+      },
+      {
+        "id": "b1l15-g01-glossary-2",
+        "traditional": "一樣",
+        "simplified": "一样",
+        "pinyin": "yíyàng",
+        "meaning": "the same; identical"
+      },
+      {
+        "id": "b1l15-g01-glossary-3",
+        "traditional": "不一樣",
+        "simplified": "不一样",
+        "pinyin": "bù yíyàng",
+        "meaning": "different; not the same"
+      },
+      {
+        "id": "b1l15-g01-glossary-4",
+        "traditional": "中國",
+        "simplified": "中国",
+        "pinyin": "Zhōngguó",
+        "meaning": "China"
+      },
+      {
+        "id": "b1l15-g01-glossary-5",
+        "traditional": "越南",
+        "pinyin": "Yuènán",
+        "meaning": "Vietnam"
+      },
+      {
+        "id": "b1l15-g01-glossary-6",
+        "traditional": "羊",
+        "pinyin": "yáng",
+        "meaning": "sheep; goat"
+      },
+      {
+        "id": "b1l15-g01-glossary-7",
+        "traditional": "馬",
+        "simplified": "马",
+        "pinyin": "mǎ",
+        "meaning": "horse"
+      },
+      {
+        "id": "b1l15-g01-glossary-8",
+        "traditional": "兔子",
+        "pinyin": "tùzi",
+        "meaning": "rabbit"
+      },
+      {
+        "id": "b1l15-g01-glossary-9",
+        "traditional": "龍",
+        "simplified": "龙",
+        "pinyin": "lóng",
+        "meaning": "dragon"
+      },
+      {
+        "id": "b1l15-g01-glossary-10",
+        "traditional": "貓",
+        "simplified": "猫",
+        "pinyin": "māo",
+        "meaning": "cat"
+      },
+      {
+        "id": "b1l15-g01-glossary-11",
+        "traditional": "我",
+        "pinyin": "wǒ",
+        "meaning": "I; me"
+      },
+      {
+        "id": "b1l15-g01-glossary-12",
+        "traditional": "你",
+        "pinyin": "nǐ",
+        "meaning": "you"
+      },
+      {
+        "id": "b1l15-g01-glossary-13",
+        "traditional": "他",
+        "pinyin": "tā",
+        "meaning": "he; him"
+      },
+      {
+        "id": "b1l15-g01-glossary-14",
+        "traditional": "她",
+        "pinyin": "tā",
+        "meaning": "she; her"
+      },
+      {
+        "id": "b1l15-g01-glossary-15",
+        "traditional": "我們",
+        "simplified": "我们",
+        "pinyin": "wǒmen",
+        "meaning": "we; us"
+      },
+      {
+        "id": "b1l15-g01-glossary-16",
+        "traditional": "老師",
+        "simplified": "老师",
+        "pinyin": "lǎoshī",
+        "meaning": "teacher"
+      },
+      {
+        "id": "b1l15-g01-glossary-17",
+        "traditional": "朋友",
+        "pinyin": "péngyǒu",
+        "meaning": "friend"
+      },
+      {
+        "id": "b1l15-g01-glossary-18",
+        "traditional": "家人",
+        "pinyin": "jiārén",
+        "meaning": "family"
+      },
+      {
+        "id": "b1l15-g01-glossary-19",
+        "traditional": "人",
+        "pinyin": "rén",
+        "meaning": "person; people"
+      },
+      {
+        "id": "b1l15-g01-glossary-20",
+        "traditional": "很",
+        "pinyin": "hěn",
+        "meaning": "very"
+      },
+      {
+        "id": "b1l15-g01-glossary-21",
+        "traditional": "不",
+        "pinyin": "bù",
+        "meaning": "not"
+      },
+      {
+        "id": "b1l15-g01-glossary-22",
+        "traditional": "都",
+        "pinyin": "dōu",
+        "meaning": "all"
+      },
+      {
+        "id": "b1l15-g01-glossary-23",
+        "traditional": "也",
+        "pinyin": "yě",
+        "meaning": "also; too"
+      },
+      {
+        "id": "b1l15-g01-glossary-24",
+        "traditional": "有",
+        "pinyin": "yǒu",
+        "meaning": "have; there is"
+      },
+      {
+        "id": "b1l15-g01-glossary-25",
+        "traditional": "沒有",
+        "pinyin": "méiyǒu",
+        "meaning": "do not have; not have"
+      },
+      {
+        "id": "b1l15-g01-glossary-26",
+        "traditional": "是",
+        "pinyin": "shì",
+        "meaning": "is; are"
+      },
+      {
+        "id": "b1l15-g01-glossary-27",
+        "traditional": "了",
+        "pinyin": "le",
+        "meaning": "ending word: something is done or has changed"
+      },
+      {
+        "id": "b1l15-g01-glossary-28",
+        "traditional": "的",
+        "pinyin": "de",
+        "meaning": "link word that connects a describing word to a thing"
+      },
+      {
+        "id": "b1l15-g01-glossary-29",
+        "traditional": "就",
+        "pinyin": "jiù",
+        "meaning": "then; right away"
+      },
+      {
+        "id": "b1l15-g01-glossary-30",
+        "traditional": "去",
+        "pinyin": "qù",
+        "meaning": "go"
+      },
+      {
+        "id": "b1l15-g01-glossary-31",
+        "traditional": "來",
+        "simplified": "来",
+        "pinyin": "lái",
+        "meaning": "come"
+      },
+      {
+        "id": "b1l15-g01-glossary-32",
+        "traditional": "想",
+        "pinyin": "xiǎng",
+        "meaning": "want; think"
+      },
+      {
+        "id": "b1l15-g01-glossary-33",
+        "traditional": "看",
+        "pinyin": "kàn",
+        "meaning": "watch; look"
+      },
+      {
+        "id": "b1l15-g01-glossary-34",
+        "traditional": "買",
+        "simplified": "买",
+        "pinyin": "mǎi",
+        "meaning": "buy"
+      },
+      {
+        "id": "b1l15-g01-glossary-35",
+        "traditional": "說",
+        "simplified": "说",
+        "pinyin": "shuō",
+        "meaning": "speak; say"
+      },
+      {
+        "id": "b1l15-g01-glossary-36",
+        "traditional": "跟",
+        "pinyin": "gēn",
+        "meaning": "with; and"
+      },
+      {
+        "id": "b1l15-g01-glossary-37",
+        "traditional": "送",
+        "pinyin": "sòng",
+        "meaning": "give as a gift; send"
+      },
+      {
+        "id": "b1l15-g01-glossary-38",
+        "traditional": "練習",
+        "simplified": "练习",
+        "pinyin": "liànxí",
+        "meaning": "practice"
+      },
+      {
+        "id": "b1l15-g01-glossary-39",
+        "traditional": "中文",
+        "pinyin": "Zhōngwén",
+        "meaning": "Chinese"
+      },
+      {
+        "id": "b1l15-g01-glossary-40",
+        "traditional": "電影",
+        "simplified": "电影",
+        "pinyin": "diànyǐng",
+        "meaning": "movie; film"
+      },
+      {
+        "id": "b1l15-g01-glossary-41",
+        "traditional": "車",
+        "pinyin": "chē",
+        "meaning": "car; vehicle"
+      },
+      {
+        "id": "b1l15-g01-glossary-42",
+        "traditional": "下雪",
+        "pinyin": "xià xuě",
+        "meaning": "to snow"
+      },
+      {
+        "id": "b1l15-g01-glossary-43",
+        "traditional": "下雨",
+        "pinyin": "xià yǔ",
+        "meaning": "to rain"
+      },
+      {
+        "id": "b1l15-g01-glossary-44",
+        "traditional": "放假",
+        "pinyin": "fàng jià",
+        "meaning": "to have a holiday or vacation"
+      },
+      {
+        "id": "b1l15-g01-glossary-45",
+        "traditional": "下課",
+        "simplified": "下课",
+        "pinyin": "xià kè",
+        "meaning": "to finish class"
+      },
+      {
+        "id": "b1l15-g01-glossary-46",
+        "traditional": "旅行",
+        "pinyin": "lǚxíng",
+        "meaning": "to travel"
+      },
+      {
+        "id": "b1l15-g01-glossary-47",
+        "traditional": "火車站",
+        "pinyin": "huǒchē zhàn",
+        "meaning": "train station"
+      },
+      {
+        "id": "b1l15-g01-glossary-48",
+        "traditional": "百貨公司",
+        "simplified": "百货公司",
+        "pinyin": "bǎihuò gōngsī",
+        "meaning": "department store"
+      },
+      {
+        "id": "b1l15-g01-glossary-49",
+        "traditional": "學校",
+        "simplified": "学校",
+        "pinyin": "xuéxiào",
+        "meaning": "school"
+      },
+      {
+        "id": "b1l15-g01-glossary-50",
+        "traditional": "醫院",
+        "simplified": "医院",
+        "pinyin": "yīyuàn",
+        "meaning": "hospital"
+      },
+      {
+        "id": "b1l15-g01-glossary-51",
+        "traditional": "公園",
+        "simplified": "公园",
+        "pinyin": "gōngyuán",
+        "meaning": "park"
+      },
+      {
+        "id": "b1l15-g01-glossary-52",
+        "traditional": "家",
+        "pinyin": "jiā",
+        "meaning": "home; family"
+      },
+      {
+        "id": "b1l15-g01-glossary-53",
+        "traditional": "台北",
+        "pinyin": "Táiběi",
+        "meaning": "Taipei"
+      },
+      {
+        "id": "b1l15-g01-glossary-54",
+        "traditional": "台灣",
+        "simplified": "台湾",
+        "pinyin": "Táiwān",
+        "meaning": "Taiwan"
+      },
+      {
+        "id": "b1l15-g01-glossary-55",
+        "traditional": "離",
+        "pinyin": "lí",
+        "meaning": "away from; from (a place)"
+      },
+      {
+        "id": "b1l15-g01-glossary-56",
+        "traditional": "近",
+        "pinyin": "jìn",
+        "meaning": "close; near"
+      },
+      {
+        "id": "b1l15-g01-glossary-57",
+        "traditional": "遠",
+        "simplified": "远",
+        "pinyin": "yuǎn",
+        "meaning": "far"
+      },
+      {
+        "id": "b1l15-g01-glossary-58",
+        "traditional": "比",
+        "pinyin": "bǐ",
+        "meaning": "compared with"
+      },
+      {
+        "id": "b1l15-g01-glossary-59",
+        "traditional": "更",
+        "pinyin": "gèng",
+        "meaning": "even more"
+      },
+      {
+        "id": "b1l15-g01-glossary-60",
+        "traditional": "冷",
+        "pinyin": "lěng",
+        "meaning": "cold"
+      },
+      {
+        "id": "b1l15-g01-glossary-61",
+        "traditional": "熱",
+        "simplified": "热",
+        "pinyin": "rè",
+        "meaning": "hot"
+      },
+      {
+        "id": "b1l15-g01-glossary-62",
+        "traditional": "重要",
+        "pinyin": "zhòngyào",
+        "meaning": "important"
+      },
+      {
+        "id": "b1l15-g01-glossary-63",
+        "traditional": "聰明",
+        "simplified": "聪明",
+        "pinyin": "cōngming",
+        "meaning": "smart"
+      },
+      {
+        "id": "b1l15-g01-glossary-64",
+        "traditional": "好看",
+        "pinyin": "hǎokàn",
+        "meaning": "nice-looking"
+      },
+      {
+        "id": "b1l15-g01-glossary-65",
+        "traditional": "大",
+        "pinyin": "dà",
+        "meaning": "big"
+      },
+      {
+        "id": "b1l15-g01-glossary-66",
+        "traditional": "小",
+        "pinyin": "xiǎo",
+        "meaning": "small"
+      },
+      {
+        "id": "b1l15-g01-glossary-67",
+        "traditional": "今天",
+        "pinyin": "jīntiān",
+        "meaning": "today"
+      },
+      {
+        "id": "b1l15-g01-glossary-68",
+        "traditional": "昨天",
+        "pinyin": "zuótiān",
+        "meaning": "yesterday"
+      },
+      {
+        "id": "b1l15-g01-glossary-69",
+        "traditional": "明天",
+        "pinyin": "míngtiān",
+        "meaning": "tomorrow"
+      },
+      {
+        "id": "b1l15-g01-glossary-70",
+        "traditional": "現在",
+        "simplified": "现在",
+        "pinyin": "xiànzài",
+        "meaning": "now"
+      },
+      {
+        "id": "b1l15-g01-glossary-71",
+        "traditional": "上個月",
+        "pinyin": "shàng ge yuè",
+        "meaning": "last month"
+      },
+      {
+        "id": "b1l15-g01-glossary-72",
+        "traditional": "本來",
+        "pinyin": "běnlái",
+        "meaning": "originally; at first"
+      },
+      {
+        "id": "b1l15-g01-glossary-73",
+        "traditional": "原來",
+        "simplified": "原来",
+        "pinyin": "yuánlái",
+        "meaning": "originally; as it turns out"
+      },
+      {
+        "id": "b1l15-g01-glossary-74",
+        "traditional": "後來",
+        "simplified": "后来",
+        "pinyin": "hòulái",
+        "meaning": "later; afterwards"
+      },
+      {
+        "id": "b1l15-g01-glossary-75",
+        "traditional": "三隻狗",
+        "simplified": "三只狗",
+        "pinyin": "sān zhī gǒu",
+        "meaning": "three dogs"
+      },
+      {
+        "id": "b1l15-g01-glossary-76",
+        "traditional": "夜市",
+        "pinyin": "yèshì",
+        "meaning": "night market"
+      },
+      {
+        "id": "b1l15-g01-glossary-77",
+        "traditional": "食物",
+        "pinyin": "shíwù",
+        "meaning": "food"
+      },
+      {
+        "id": "b1l15-g01-glossary-78",
+        "traditional": "遊戲",
+        "simplified": "游戏",
+        "pinyin": "yóuxì",
+        "meaning": "game"
+      },
+      {
+        "id": "b1l15-g01-glossary-79",
+        "traditional": "風景",
+        "simplified": "风景",
+        "pinyin": "fēngjǐng",
+        "meaning": "scenery"
+      },
+      {
+        "id": "b1l15-g01-glossary-80",
+        "traditional": "小籠包",
+        "simplified": "小笼包",
+        "pinyin": "xiǎolóngbāo",
+        "meaning": "xiaolongbao (soup dumplings)"
+      },
+      {
+        "id": "b1l15-g01-glossary-81",
+        "traditional": "牛肉麵",
+        "simplified": "牛肉面",
+        "pinyin": "niúròu miàn",
+        "meaning": "beef noodles"
+      },
+      {
+        "id": "b1l15-g01-glossary-82",
+        "traditional": "珍珠奶茶",
+        "pinyin": "zhēnzhū nǎichá",
+        "meaning": "pearl milk tea"
+      }
+    ],
+    "pattern": "Thing A + 跟 + Thing B + (不)一樣 (+ Describing Word)",
+    "patternColumns": [
+      "Thing A",
+      "跟 + Thing B",
+      "一樣 / 不一樣"
+    ],
+    "patternColumnDetails": [
+      "Item A",
+      "with Item B",
+      "the same or different"
+    ],
+    "patternAccentColumn": 1,
+    "patternRows": [
+      {
+        "id": "l15g1-p1",
+        "subject": [
+          {
+            "id": "l15g1-p1-s1",
+            "traditional": "越南的生肖",
+            "pinyin": "Yuènán de shēngxiào",
+            "meaning": "Vietnam's zodiac"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l15g1-p1-g1",
+            "traditional": "跟",
+            "pinyin": "gēn",
+            "meaning": "with; and"
+          },
+          {
+            "id": "l15g1-p1-g2",
+            "traditional": "中國的",
+            "simplified": "中国的",
+            "pinyin": "Zhōngguó de",
+            "meaning": "China's"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l15g1-p1-c1",
+            "traditional": "不一樣",
+            "simplified": "不一样",
+            "pinyin": "bù yíyàng",
+            "meaning": "different",
+            "suffix": "。"
+          }
+        ],
+        "english": "Vietnam's zodiac is not the same as China's."
+      },
+      {
+        "id": "l15g1-p2",
+        "subject": [
+          {
+            "id": "l15g1-p2-s1",
+            "traditional": "我的想法",
+            "pinyin": "wǒ de xiǎngfǎ",
+            "meaning": "my idea / thought"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l15g1-p2-g1",
+            "traditional": "跟",
+            "pinyin": "gēn",
+            "meaning": "with; and"
+          },
+          {
+            "id": "l15g1-p2-g2",
+            "traditional": "他的想法",
+            "pinyin": "tā de xiǎngfǎ",
+            "meaning": "his thought"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l15g1-p2-c1",
+            "traditional": "一樣",
+            "simplified": "一样",
+            "pinyin": "yíyàng",
+            "meaning": "the same",
+            "suffix": "。"
+          }
+        ],
+        "english": "My thought is the same as his."
+      },
+      {
+        "id": "l15g1-p3",
+        "subject": [
+          {
+            "id": "l15g1-p3-s1",
+            "traditional": "這本書",
+            "simplified": "这本书",
+            "pinyin": "zhè běn shū",
+            "meaning": "this book"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l15g1-p3-g1",
+            "traditional": "跟",
+            "pinyin": "gēn",
+            "meaning": "with; and"
+          },
+          {
+            "id": "l15g1-p3-g2",
+            "traditional": "那本書",
+            "simplified": "那本书",
+            "pinyin": "nà běn shū",
+            "meaning": "that book"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l15g1-p3-c1",
+            "traditional": "一樣",
+            "simplified": "一样",
+            "pinyin": "yíyàng",
+            "meaning": "the same"
+          },
+          {
+            "id": "l15g1-p3-c2",
+            "traditional": "有意思",
+            "pinyin": "yǒuyìsi",
+            "meaning": "interesting",
+            "suffix": "。"
+          }
+        ],
+        "english": "This book is just as interesting as that book."
+      }
+    ],
+    "confusion": {
+      "title": "Don't mix these up",
+      "items": [
+        {
+          "id": "l15g1-confusion-no-gen",
+          "question": "Can I compare two things with 一樣 without 跟?",
+          "answer": "No. When you mention the second item, use 跟 before it.",
+          "wrongTraditional": "越南的生肖中國的不一樣。",
+          "wrongSimplified": "越南的生肖中国的不一样。",
+          "right": {
+            "traditional": "越南的生肖跟中國的不一樣。",
+            "simplified": "越南的生肖跟中国的不一样。",
+            "pinyin": "Yuènán de shēngxiào gēn Zhōngguó de bù yíyàng.",
+            "english": "Vietnam's zodiac is not the same as China's.",
+            "words": [
+              {
+                "id": "l15g1-c1-w1",
+                "traditional": "越南的生肖",
+                "pinyin": "Yuènán de shēngxiào",
+                "meaning": "Vietnam's zodiac"
+              },
+              {
+                "id": "l15g1-c1-w2",
+                "traditional": "跟",
+                "pinyin": "gēn",
+                "meaning": "with; and"
+              },
+              {
+                "id": "l15g1-c1-w3",
+                "traditional": "中國的",
+                "simplified": "中国的",
+                "pinyin": "Zhōngguó de",
+                "meaning": "China's"
+              },
+              {
+                "id": "l15g1-c1-w4",
+                "traditional": "不一樣",
+                "simplified": "不一样",
+                "pinyin": "bù yíyàng",
+                "meaning": "different",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "l15g1-confusion-bu-order",
+          "question": "Does 不 go before 跟 or before 一樣?",
+          "answer": "The negation 不 goes right in front of 一樣 (不一樣).",
+          "wrongTraditional": "越南的生肖不跟中國的一樣。",
+          "wrongSimplified": "越南的生肖不跟中国的一样。",
+          "right": {
+            "traditional": "越南的生肖跟中國的不一樣。",
+            "simplified": "越南的生肖跟中国的不一样。",
+            "pinyin": "Yuènán de shēngxiào gēn Zhōngguó de bù yíyàng.",
+            "english": "Vietnam's zodiac is not the same as China's.",
+            "words": [
+              {
+                "id": "l15g1-c2-w1",
+                "traditional": "越南的生肖",
+                "pinyin": "Yuènán de shēngxiào",
+                "meaning": "Vietnam's zodiac"
+              },
+              {
+                "id": "l15g1-c2-w2",
+                "traditional": "跟",
+                "pinyin": "gēn",
+                "meaning": "with; and"
+              },
+              {
+                "id": "l15g1-c3-w3",
+                "traditional": "中國的",
+                "simplified": "中国的",
+                "pinyin": "Zhōngguó de",
+                "meaning": "China's"
+              },
+              {
+                "id": "l15g1-c4-w4",
+                "traditional": "不一樣",
+                "simplified": "不一样",
+                "pinyin": "bù yíyàng",
+                "meaning": "different",
+                "suffix": "。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "examples": [
+      {
+        "id": "l15g1-e1",
+        "number": 1,
+        "teachingNote": "跟 links the two things being compared.",
+        "text": {
+          "traditional": "越南的生肖跟中國的有點不一樣。",
+          "simplified": "越南的生肖跟中国的有点不一样。",
+          "pinyin": "Yuènán de shēngxiào gēn Zhōngguó de yǒudiǎn bù yíyàng.",
+          "english": "Vietnam's zodiac is a bit different from China's.",
+          "words": [
+            {
+              "id": "l15g1-e1-w1",
+              "traditional": "越南的生肖",
+              "pinyin": "Yuènán de shēngxiào",
+              "meaning": "Vietnam's zodiac"
+            },
+            {
+              "id": "l15g1-e1-w2",
+              "traditional": "跟",
+              "pinyin": "gēn",
+              "meaning": "with; and"
+            },
+            {
+              "id": "l15g1-e1-w3",
+              "traditional": "中國的",
+              "simplified": "中国的",
+              "pinyin": "Zhōngguó de",
+              "meaning": "China's"
+            },
+            {
+              "id": "l15g1-e1-w4",
+              "traditional": "有點",
+              "simplified": "有点",
+              "pinyin": "yǒudiǎn",
+              "meaning": "a bit"
+            },
+            {
+              "id": "l15g1-e1-w5",
+              "traditional": "不一樣",
+              "simplified": "不一样",
+              "pinyin": "bù yíyàng",
+              "meaning": "different",
+              "suffix": "。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "l15g1-e2",
+        "number": 2,
+        "teachingNote": "Use 一樣 when two things share the exact same quality.",
+        "text": {
+          "traditional": "他的想法跟我不一樣。",
+          "simplified": "他的想法跟我不一样。",
+          "pinyin": "tā de xiǎngfǎ gēn wǒ bù yíyàng.",
+          "english": "His idea is different from mine.",
+          "words": [
+            {
+              "id": "l15g1-e2-w1",
+              "traditional": "他的想法",
+              "pinyin": "tā de xiǎngfǎ",
+              "meaning": "his idea"
+            },
+            {
+              "id": "l15g1-e2-w2",
+              "traditional": "跟",
+              "pinyin": "gēn",
+              "meaning": "with; and"
+            },
+            {
+              "id": "l15g1-e2-w3",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "me"
+            },
+            {
+              "id": "l15g1-e2-w4",
+              "traditional": "不一樣",
+              "simplified": "不一样",
+              "pinyin": "bù yíyàng",
+              "meaning": "different",
+              "suffix": "。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "l15g1-e3",
+        "number": 3,
+        "teachingNote": "Add a descriptive verb like 有意思 to say they are equally interesting.",
+        "text": {
+          "traditional": "這本書跟那本書一樣有意思。",
+          "simplified": "这本书跟那本书一样有意思。",
+          "pinyin": "zhè běn shū gēn nà běn shū yíyàng yǒuyìsi.",
+          "english": "This book is just as interesting as that book.",
+          "words": [
+            {
+              "id": "l15g1-e3-w1",
+              "traditional": "這本書",
+              "simplified": "这本书",
+              "pinyin": "zhè běn shū",
+              "meaning": "this book"
+            },
+            {
+              "id": "l15g1-e3-w2",
+              "traditional": "跟",
+              "pinyin": "gēn",
+              "meaning": "with; and"
+            },
+            {
+              "id": "l15g1-e3-w3",
+              "traditional": "那本書",
+              "simplified": "那本书",
+              "pinyin": "nà běn shū",
+              "meaning": "that book"
+            },
+            {
+              "id": "l15g1-e3-w4",
+              "traditional": "一樣",
+              "simplified": "一样",
+              "pinyin": "yíyàng",
+              "meaning": "the same"
+            },
+            {
+              "id": "l15g1-e3-w5",
+              "traditional": "有意思",
+              "pinyin": "yǒuyìsi",
+              "meaning": "interesting",
+              "suffix": "。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "l15g1-e4",
+        "number": 4,
+        "teachingNote": "Ask if two things are the same using 嗎.",
+        "text": {
+          "traditional": "日本的生肖跟台灣的一樣嗎？",
+          "simplified": "日本的生肖跟台湾的一样吗？",
+          "pinyin": "Rìběn de shēngxiào gēn Táiwān de yíyàng ma?",
+          "english": "Is Japan's zodiac the same as Taiwan's?",
+          "words": [
+            {
+              "id": "l15g1-e4-w1",
+              "traditional": "日本的生肖",
+              "pinyin": "Rìběn de shēngxiào",
+              "meaning": "Japan's zodiac"
+            },
+            {
+              "id": "l15g1-e4-w2",
+              "traditional": "跟",
+              "pinyin": "gēn",
+              "meaning": "with; and"
+            },
+            {
+              "id": "l15g1-e4-w3",
+              "traditional": "台灣的",
+              "simplified": "台湾的",
+              "pinyin": "Táiwān de",
+              "meaning": "Taiwan's"
+            },
+            {
+              "id": "l15g1-e4-w4",
+              "traditional": "一樣",
+              "simplified": "一样",
+              "pinyin": "yíyàng",
+              "meaning": "the same"
+            },
+            {
+              "id": "l15g1-e4-w5",
+              "traditional": "嗎",
+              "simplified": "吗",
+              "pinyin": "ma",
+              "meaning": "question ending word",
+              "suffix": "？"
+            }
+          ]
+        }
+      }
+    ],
+    "exerciseTitle": "Compare with (不)一樣",
+    "exercisePreview": "State if things are the same or different",
+    "exerciseInstruction": "Choose the correct word to compare the items.",
+    "questions": [
+      {
+        "id": "l15g1-q1",
+        "number": 1,
+        "sectionLabel": "Compare",
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "越南的生肖"
+          },
+          {
+            "type": "blank",
+            "id": "l15g1-q1-blank",
+            "answer": "跟",
+            "hint": "Use 跟 to introduce the second item."
+          },
+          {
+            "type": "text",
+            "traditional": "中國的不一樣。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "l15g1-q1-t1",
+            "traditional": "跟",
+            "pinyin": "gēn",
+            "meaning": "with; and"
+          },
+          {
+            "id": "l15g1-q1-t2",
+            "traditional": "比",
+            "pinyin": "bǐ",
+            "meaning": "compared with"
+          }
+        ],
+        "correctFeedback": "You compared the two zodiacs with 跟.",
+        "repairFeedback": "Use 跟 between the two items."
+      },
+      {
+        "id": "l15g1-q2",
+        "number": 2,
+        "sectionLabel": "Difference",
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "他的想法跟我"
+          },
+          {
+            "type": "blank",
+            "id": "l15g1-q2-blank",
+            "answer": "不一樣",
+            "answerSimplified": "不一样",
+            "hint": "Say that they are not the same."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "l15g1-q2-t1",
+            "traditional": "不一樣",
+            "simplified": "不一样",
+            "pinyin": "bù yíyàng",
+            "meaning": "not the same"
+          },
+          {
+            "id": "l15g1-q2-t2",
+            "traditional": "一樣",
+            "simplified": "一样",
+            "pinyin": "yíyàng",
+            "meaning": "the same"
+          }
+        ],
+        "correctFeedback": "His idea is different from mine.",
+        "repairFeedback": "Choose 不一樣 for different ideas."
+      },
+      {
+        "id": "l15g1-q3",
+        "number": 3,
+        "sectionLabel": "Equivalence",
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "這本書跟那本書"
+          },
+          {
+            "type": "blank",
+            "id": "l15g1-q3-blank",
+            "answer": "一樣",
+            "answerSimplified": "一样",
+            "hint": "Say that both are equally interesting."
+          },
+          {
+            "type": "text",
+            "traditional": "有意思。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "l15g1-q3-t1",
+            "traditional": "一樣",
+            "simplified": "一样",
+            "pinyin": "yíyàng",
+            "meaning": "equally / the same"
+          },
+          {
+            "id": "l15g1-q3-t2",
+            "traditional": "更",
+            "pinyin": "gèng",
+            "meaning": "even more"
+          }
+        ],
+        "correctFeedback": "Both books are equally interesting.",
+        "repairFeedback": "Use 一樣 before the adjective."
+      }
+    ]
+  },
+  "LESSON_FIFTEEN_GRAMMAR_TWO": {
+    "bookId": 1,
+    "lessonId": 15,
+    "lessonTitle": "十二生肖",
+    "lessonTitleEnglish": "The Chinese Animal Zodiac",
+    "id": "B1L15-G02",
+    "partId": 2,
+    "grammarNumber": 2,
+    "titleTraditional": "S + V1 + 著 + (O1) + V2 + O2 (狀態持續)",
+    "titleEnglish": "Describe an Ongoing State with 著",
+    "learnerPromise": "Describe an ongoing posture, holding state, or background action.",
+    "printedPages": [
+      354
+    ],
+    "audioReference": "15-2-1",
+    "bookPageAvailable": true,
+    "explanation": "The particle 著 attaches to a verb (like 拿著, 放著, 坐著) to show that the physical position or state continues, often as the background while another action happens.",
+    "focusTerms": [
+      "著"
+    ],
+    "teachingGlossary": [
+      {
+        "id": "b1l15-g02-glossary-1",
+        "traditional": "著",
+        "pinyin": "zhe",
+        "meaning": "ongoing state particle"
+      },
+      {
+        "id": "b1l15-g02-glossary-2",
+        "traditional": "拿著",
+        "pinyin": "názhe",
+        "meaning": "holding in hand"
+      },
+      {
+        "id": "b1l15-g02-glossary-3",
+        "traditional": "放著",
+        "pinyin": "fàngzhe",
+        "meaning": "placed / sitting on"
+      },
+      {
+        "id": "b1l15-g02-glossary-4",
+        "traditional": "帶著",
+        "simplified": "带着",
+        "pinyin": "dàizhe",
+        "meaning": "bringing / carrying with"
+      },
+      {
+        "id": "b1l15-g02-glossary-5",
+        "traditional": "燈籠",
+        "simplified": "灯笼",
+        "pinyin": "dēnglóng",
+        "meaning": "lantern"
+      },
+      {
+        "id": "b1l15-g02-glossary-6",
+        "traditional": "桌子",
+        "pinyin": "zhuōzi",
+        "meaning": "table; desk"
+      },
+      {
+        "id": "b1l15-g02-glossary-7",
+        "traditional": "手",
+        "pinyin": "shǒu",
+        "meaning": "hand"
+      },
+      {
+        "id": "b1l15-g02-glossary-8",
+        "traditional": "黑板",
+        "pinyin": "hēibǎn",
+        "meaning": "blackboard"
+      },
+      {
+        "id": "b1l15-g02-glossary-9",
+        "traditional": "小孩",
+        "pinyin": "xiǎohái",
+        "meaning": "child; children"
+      },
+      {
+        "id": "b1l15-g02-glossary-10",
+        "traditional": "我",
+        "pinyin": "wǒ",
+        "meaning": "I; me"
+      },
+      {
+        "id": "b1l15-g02-glossary-11",
+        "traditional": "你",
+        "pinyin": "nǐ",
+        "meaning": "you"
+      },
+      {
+        "id": "b1l15-g02-glossary-12",
+        "traditional": "他",
+        "pinyin": "tā",
+        "meaning": "he; him"
+      },
+      {
+        "id": "b1l15-g02-glossary-13",
+        "traditional": "她",
+        "pinyin": "tā",
+        "meaning": "she; her"
+      },
+      {
+        "id": "b1l15-g02-glossary-14",
+        "traditional": "我們",
+        "simplified": "我们",
+        "pinyin": "wǒmen",
+        "meaning": "we; us"
+      },
+      {
+        "id": "b1l15-g02-glossary-15",
+        "traditional": "老師",
+        "simplified": "老师",
+        "pinyin": "lǎoshī",
+        "meaning": "teacher"
+      },
+      {
+        "id": "b1l15-g02-glossary-16",
+        "traditional": "朋友",
+        "pinyin": "péngyǒu",
+        "meaning": "friend"
+      },
+      {
+        "id": "b1l15-g02-glossary-17",
+        "traditional": "家人",
+        "pinyin": "jiārén",
+        "meaning": "family"
+      },
+      {
+        "id": "b1l15-g02-glossary-18",
+        "traditional": "人",
+        "pinyin": "rén",
+        "meaning": "person; people"
+      },
+      {
+        "id": "b1l15-g02-glossary-19",
+        "traditional": "很",
+        "pinyin": "hěn",
+        "meaning": "very"
+      },
+      {
+        "id": "b1l15-g02-glossary-20",
+        "traditional": "不",
+        "pinyin": "bù",
+        "meaning": "not"
+      },
+      {
+        "id": "b1l15-g02-glossary-21",
+        "traditional": "都",
+        "pinyin": "dōu",
+        "meaning": "all"
+      },
+      {
+        "id": "b1l15-g02-glossary-22",
+        "traditional": "也",
+        "pinyin": "yě",
+        "meaning": "also; too"
+      },
+      {
+        "id": "b1l15-g02-glossary-23",
+        "traditional": "有",
+        "pinyin": "yǒu",
+        "meaning": "have; there is"
+      },
+      {
+        "id": "b1l15-g02-glossary-24",
+        "traditional": "沒有",
+        "pinyin": "méiyǒu",
+        "meaning": "do not have; not have"
+      },
+      {
+        "id": "b1l15-g02-glossary-25",
+        "traditional": "是",
+        "pinyin": "shì",
+        "meaning": "is; are"
+      },
+      {
+        "id": "b1l15-g02-glossary-26",
+        "traditional": "了",
+        "pinyin": "le",
+        "meaning": "ending word: something is done or has changed"
+      },
+      {
+        "id": "b1l15-g02-glossary-27",
+        "traditional": "的",
+        "pinyin": "de",
+        "meaning": "link word that connects a describing word to a thing"
+      },
+      {
+        "id": "b1l15-g02-glossary-28",
+        "traditional": "就",
+        "pinyin": "jiù",
+        "meaning": "then; right away"
+      },
+      {
+        "id": "b1l15-g02-glossary-29",
+        "traditional": "去",
+        "pinyin": "qù",
+        "meaning": "go"
+      },
+      {
+        "id": "b1l15-g02-glossary-30",
+        "traditional": "來",
+        "simplified": "来",
+        "pinyin": "lái",
+        "meaning": "come"
+      },
+      {
+        "id": "b1l15-g02-glossary-31",
+        "traditional": "想",
+        "pinyin": "xiǎng",
+        "meaning": "want; think"
+      },
+      {
+        "id": "b1l15-g02-glossary-32",
+        "traditional": "看",
+        "pinyin": "kàn",
+        "meaning": "watch; look"
+      },
+      {
+        "id": "b1l15-g02-glossary-33",
+        "traditional": "買",
+        "simplified": "买",
+        "pinyin": "mǎi",
+        "meaning": "buy"
+      },
+      {
+        "id": "b1l15-g02-glossary-34",
+        "traditional": "說",
+        "simplified": "说",
+        "pinyin": "shuō",
+        "meaning": "speak; say"
+      },
+      {
+        "id": "b1l15-g02-glossary-35",
+        "traditional": "跟",
+        "pinyin": "gēn",
+        "meaning": "with; and"
+      },
+      {
+        "id": "b1l15-g02-glossary-36",
+        "traditional": "送",
+        "pinyin": "sòng",
+        "meaning": "give as a gift; send"
+      },
+      {
+        "id": "b1l15-g02-glossary-37",
+        "traditional": "練習",
+        "simplified": "练习",
+        "pinyin": "liànxí",
+        "meaning": "practice"
+      },
+      {
+        "id": "b1l15-g02-glossary-38",
+        "traditional": "中文",
+        "pinyin": "Zhōngwén",
+        "meaning": "Chinese"
+      },
+      {
+        "id": "b1l15-g02-glossary-39",
+        "traditional": "電影",
+        "simplified": "电影",
+        "pinyin": "diànyǐng",
+        "meaning": "movie; film"
+      },
+      {
+        "id": "b1l15-g02-glossary-40",
+        "traditional": "車",
+        "pinyin": "chē",
+        "meaning": "car; vehicle"
+      },
+      {
+        "id": "b1l15-g02-glossary-41",
+        "traditional": "下雪",
+        "pinyin": "xià xuě",
+        "meaning": "to snow"
+      },
+      {
+        "id": "b1l15-g02-glossary-42",
+        "traditional": "下雨",
+        "pinyin": "xià yǔ",
+        "meaning": "to rain"
+      },
+      {
+        "id": "b1l15-g02-glossary-43",
+        "traditional": "放假",
+        "pinyin": "fàng jià",
+        "meaning": "to have a holiday or vacation"
+      },
+      {
+        "id": "b1l15-g02-glossary-44",
+        "traditional": "下課",
+        "simplified": "下课",
+        "pinyin": "xià kè",
+        "meaning": "to finish class"
+      },
+      {
+        "id": "b1l15-g02-glossary-45",
+        "traditional": "旅行",
+        "pinyin": "lǚxíng",
+        "meaning": "to travel"
+      },
+      {
+        "id": "b1l15-g02-glossary-46",
+        "traditional": "火車站",
+        "pinyin": "huǒchē zhàn",
+        "meaning": "train station"
+      },
+      {
+        "id": "b1l15-g02-glossary-47",
+        "traditional": "百貨公司",
+        "simplified": "百货公司",
+        "pinyin": "bǎihuò gōngsī",
+        "meaning": "department store"
+      },
+      {
+        "id": "b1l15-g02-glossary-48",
+        "traditional": "學校",
+        "simplified": "学校",
+        "pinyin": "xuéxiào",
+        "meaning": "school"
+      },
+      {
+        "id": "b1l15-g02-glossary-49",
+        "traditional": "醫院",
+        "simplified": "医院",
+        "pinyin": "yīyuàn",
+        "meaning": "hospital"
+      },
+      {
+        "id": "b1l15-g02-glossary-50",
+        "traditional": "公園",
+        "simplified": "公园",
+        "pinyin": "gōngyuán",
+        "meaning": "park"
+      },
+      {
+        "id": "b1l15-g02-glossary-51",
+        "traditional": "家",
+        "pinyin": "jiā",
+        "meaning": "home; family"
+      },
+      {
+        "id": "b1l15-g02-glossary-52",
+        "traditional": "台北",
+        "pinyin": "Táiběi",
+        "meaning": "Taipei"
+      },
+      {
+        "id": "b1l15-g02-glossary-53",
+        "traditional": "台灣",
+        "simplified": "台湾",
+        "pinyin": "Táiwān",
+        "meaning": "Taiwan"
+      },
+      {
+        "id": "b1l15-g02-glossary-54",
+        "traditional": "離",
+        "pinyin": "lí",
+        "meaning": "away from; from (a place)"
+      },
+      {
+        "id": "b1l15-g02-glossary-55",
+        "traditional": "近",
+        "pinyin": "jìn",
+        "meaning": "close; near"
+      },
+      {
+        "id": "b1l15-g02-glossary-56",
+        "traditional": "遠",
+        "simplified": "远",
+        "pinyin": "yuǎn",
+        "meaning": "far"
+      },
+      {
+        "id": "b1l15-g02-glossary-57",
+        "traditional": "比",
+        "pinyin": "bǐ",
+        "meaning": "compared with"
+      },
+      {
+        "id": "b1l15-g02-glossary-58",
+        "traditional": "更",
+        "pinyin": "gèng",
+        "meaning": "even more"
+      },
+      {
+        "id": "b1l15-g02-glossary-59",
+        "traditional": "冷",
+        "pinyin": "lěng",
+        "meaning": "cold"
+      },
+      {
+        "id": "b1l15-g02-glossary-60",
+        "traditional": "熱",
+        "simplified": "热",
+        "pinyin": "rè",
+        "meaning": "hot"
+      },
+      {
+        "id": "b1l15-g02-glossary-61",
+        "traditional": "重要",
+        "pinyin": "zhòngyào",
+        "meaning": "important"
+      },
+      {
+        "id": "b1l15-g02-glossary-62",
+        "traditional": "聰明",
+        "simplified": "聪明",
+        "pinyin": "cōngming",
+        "meaning": "smart"
+      },
+      {
+        "id": "b1l15-g02-glossary-63",
+        "traditional": "好看",
+        "pinyin": "hǎokàn",
+        "meaning": "nice-looking"
+      },
+      {
+        "id": "b1l15-g02-glossary-64",
+        "traditional": "大",
+        "pinyin": "dà",
+        "meaning": "big"
+      },
+      {
+        "id": "b1l15-g02-glossary-65",
+        "traditional": "小",
+        "pinyin": "xiǎo",
+        "meaning": "small"
+      },
+      {
+        "id": "b1l15-g02-glossary-66",
+        "traditional": "今天",
+        "pinyin": "jīntiān",
+        "meaning": "today"
+      },
+      {
+        "id": "b1l15-g02-glossary-67",
+        "traditional": "昨天",
+        "pinyin": "zuótiān",
+        "meaning": "yesterday"
+      },
+      {
+        "id": "b1l15-g02-glossary-68",
+        "traditional": "明天",
+        "pinyin": "míngtiān",
+        "meaning": "tomorrow"
+      },
+      {
+        "id": "b1l15-g02-glossary-69",
+        "traditional": "現在",
+        "simplified": "现在",
+        "pinyin": "xiànzài",
+        "meaning": "now"
+      },
+      {
+        "id": "b1l15-g02-glossary-70",
+        "traditional": "上個月",
+        "pinyin": "shàng ge yuè",
+        "meaning": "last month"
+      },
+      {
+        "id": "b1l15-g02-glossary-71",
+        "traditional": "本來",
+        "pinyin": "běnlái",
+        "meaning": "originally; at first"
+      },
+      {
+        "id": "b1l15-g02-glossary-72",
+        "traditional": "原來",
+        "simplified": "原来",
+        "pinyin": "yuánlái",
+        "meaning": "originally; as it turns out"
+      },
+      {
+        "id": "b1l15-g02-glossary-73",
+        "traditional": "後來",
+        "simplified": "后来",
+        "pinyin": "hòulái",
+        "meaning": "later; afterwards"
+      },
+      {
+        "id": "b1l15-g02-glossary-74",
+        "traditional": "三隻狗",
+        "simplified": "三只狗",
+        "pinyin": "sān zhī gǒu",
+        "meaning": "three dogs"
+      },
+      {
+        "id": "b1l15-g02-glossary-75",
+        "traditional": "夜市",
+        "pinyin": "yèshì",
+        "meaning": "night market"
+      },
+      {
+        "id": "b1l15-g02-glossary-76",
+        "traditional": "食物",
+        "pinyin": "shíwù",
+        "meaning": "food"
+      },
+      {
+        "id": "b1l15-g02-glossary-77",
+        "traditional": "遊戲",
+        "simplified": "游戏",
+        "pinyin": "yóuxì",
+        "meaning": "game"
+      },
+      {
+        "id": "b1l15-g02-glossary-78",
+        "traditional": "風景",
+        "simplified": "风景",
+        "pinyin": "fēngjǐng",
+        "meaning": "scenery"
+      },
+      {
+        "id": "b1l15-g02-glossary-79",
+        "traditional": "小籠包",
+        "simplified": "小笼包",
+        "pinyin": "xiǎolóngbāo",
+        "meaning": "xiaolongbao (soup dumplings)"
+      },
+      {
+        "id": "b1l15-g02-glossary-80",
+        "traditional": "牛肉麵",
+        "simplified": "牛肉面",
+        "pinyin": "niúròu miàn",
+        "meaning": "beef noodles"
+      },
+      {
+        "id": "b1l15-g02-glossary-81",
+        "traditional": "珍珠奶茶",
+        "pinyin": "zhēnzhū nǎichá",
+        "meaning": "pearl milk tea"
+      }
+    ],
+    "pattern": "Subject / Place + Verb + 著 + Object (+ Next Action)",
+    "patternColumns": [
+      "Who / Where",
+      "Verb + 著",
+      "What is there / Second Action"
+    ],
+    "patternColumnDetails": [
+      "Subject or Location",
+      "State verb + 著",
+      "Object or continuing action"
+    ],
+    "patternAccentColumn": 1,
+    "patternRows": [
+      {
+        "id": "l15g2-p1",
+        "subject": [
+          {
+            "id": "l15g2-p1-s1",
+            "traditional": "你手裡",
+            "simplified": "你手里",
+            "pinyin": "nǐ shǒu lǐ",
+            "meaning": "in your hand"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l15g2-p1-g1",
+            "traditional": "拿著",
+            "pinyin": "názhe",
+            "meaning": "holding"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l15g2-p1-c1",
+            "traditional": "什麼",
+            "simplified": "什么",
+            "pinyin": "shénme",
+            "meaning": "what",
+            "suffix": "？"
+          }
+        ],
+        "english": "What are you holding in your hand?"
+      },
+      {
+        "id": "l15g2-p2",
+        "subject": [
+          {
+            "id": "l15g2-p2-s1",
+            "traditional": "桌上",
+            "pinyin": "zhuō shàng",
+            "meaning": "on the table"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l15g2-p2-g1",
+            "traditional": "放著",
+            "pinyin": "fàngzhe",
+            "meaning": "placed / sitting"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l15g2-p2-c1",
+            "traditional": "幾隻",
+            "simplified": "几只",
+            "pinyin": "jǐ zhī",
+            "meaning": "a few (animals)"
+          },
+          {
+            "id": "l15g2-p2-c2",
+            "traditional": "動物",
+            "simplified": "动物",
+            "pinyin": "dòngwù",
+            "meaning": "animals",
+            "suffix": "。"
+          }
+        ],
+        "english": "A few animal figures are placed on the table."
+      },
+      {
+        "id": "l15g2-p3",
+        "subject": [
+          {
+            "id": "l15g2-p3-s1",
+            "traditional": "很多大人",
+            "pinyin": "hěn duō dàrén",
+            "meaning": "many adults"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l15g2-p3-g1",
+            "traditional": "帶著",
+            "simplified": "带着",
+            "pinyin": "dàizhe",
+            "meaning": "bringing"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l15g2-p3-c1",
+            "traditional": "小孩",
+            "pinyin": "xiǎohái",
+            "meaning": "kids"
+          },
+          {
+            "id": "l15g2-p3-c2",
+            "traditional": "去看燈會",
+            "simplified": "去看灯会",
+            "pinyin": "qù kàn dēnghuì",
+            "meaning": "go see the lanterns",
+            "suffix": "。"
+          }
+        ],
+        "english": "Many adults brought children to see the lantern show."
+      }
+    ],
+    "confusion": {
+      "title": "Don't mix these up",
+      "items": [
+        {
+          "id": "l15g2-confusion-zhe-vs-zai",
+          "question": "What is the difference between 正在 and 著?",
+          "answer": "正在 describes an ongoing dynamic action (e.g. 正在吃). 著 describes a static continuous state or posture (e.g. 拿著, 放著, 坐著).",
+          "wrongTraditional": "他在手裡正在拿燈籠。",
+          "wrongSimplified": "他在手里正在拿灯笼。",
+          "right": {
+            "traditional": "他手裡拿著燈籠。",
+            "simplified": "他手里拿着灯笼。",
+            "pinyin": "tā shǒu lǐ názhe dēnglóng.",
+            "english": "He is holding a lantern in his hand.",
+            "words": [
+              {
+                "id": "l15g2-c1-w1",
+                "traditional": "他手裡",
+                "simplified": "他手里",
+                "pinyin": "tā shǒu lǐ",
+                "meaning": "in his hand"
+              },
+              {
+                "id": "l15g2-c1-w2",
+                "traditional": "拿著",
+                "pinyin": "názhe",
+                "meaning": "holding"
+              },
+              {
+                "id": "l15g2-c1-w3",
+                "traditional": "燈籠",
+                "simplified": "灯笼",
+                "pinyin": "dēnglóng",
+                "meaning": "lantern",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "l15g2-confusion-position",
+          "question": "Where does 著 attach in the sentence?",
+          "answer": "著 attaches directly right after the verb that describes the posture or state (拿著, 放著).",
+          "wrongTraditional": "他拿燈籠著。",
+          "wrongSimplified": "他拿灯笼着。",
+          "right": {
+            "traditional": "他手裡拿著燈籠。",
+            "simplified": "他手里拿着灯笼。",
+            "pinyin": "tā shǒu lǐ názhe dēnglóng.",
+            "english": "He is holding a lantern in his hand.",
+            "words": [
+              {
+                "id": "l15g2-c2-w1",
+                "traditional": "他手裡",
+                "simplified": "他手里",
+                "pinyin": "tā shǒu lǐ",
+                "meaning": "in his hand"
+              },
+              {
+                "id": "l15g2-c2-w2",
+                "traditional": "拿著",
+                "pinyin": "názhe",
+                "meaning": "holding"
+              },
+              {
+                "id": "l15g2-c2-w3",
+                "traditional": "燈籠",
+                "simplified": "灯笼",
+                "pinyin": "dēnglóng",
+                "meaning": "lantern",
+                "suffix": "。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "examples": [
+      {
+        "id": "l15g2-e1",
+        "number": 1,
+        "teachingNote": "拿著 describes holding something continuously.",
+        "text": {
+          "traditional": "中明，你手裡拿著什麼？",
+          "simplified": "中明，你手里拿着什么？",
+          "pinyin": "Zhōngmíng, nǐ shǒu lǐ názhe shénme?",
+          "english": "Zhongming, what are you holding in your hand?",
+          "words": [
+            {
+              "id": "l15g2-e1-w1",
+              "traditional": "中明",
+              "pinyin": "Zhōngmíng",
+              "meaning": "Zhongming"
+            },
+            {
+              "id": "l15g2-e1-w2",
+              "traditional": "你手裡",
+              "simplified": "你手里",
+              "pinyin": "nǐ shǒu lǐ",
+              "meaning": "in your hand"
+            },
+            {
+              "id": "l15g2-e1-w3",
+              "traditional": "拿著",
+              "pinyin": "názhe",
+              "meaning": "holding"
+            },
+            {
+              "id": "l15g2-e1-w4",
+              "traditional": "什麼",
+              "simplified": "什么",
+              "pinyin": "shénme",
+              "meaning": "what",
+              "suffix": "？"
+            }
+          ]
+        }
+      },
+      {
+        "id": "l15g2-e2",
+        "number": 2,
+        "teachingNote": "放著 describes an object resting in a position.",
+        "text": {
+          "traditional": "桌上放著幾隻用紙做的動物。",
+          "simplified": "桌上放着几只用纸做的动物。",
+          "pinyin": "zhuō shàng fàngzhe jǐ zhī yòng zhǐ zuò de dòngwù.",
+          "english": "Several animals made of paper were sitting on the table.",
+          "words": [
+            {
+              "id": "l15g2-e2-w1",
+              "traditional": "桌上",
+              "pinyin": "zhuō shàng",
+              "meaning": "on the table"
+            },
+            {
+              "id": "l15g2-e2-w2",
+              "traditional": "放著",
+              "pinyin": "fàngzhe",
+              "meaning": "placed / sitting"
+            },
+            {
+              "id": "l15g2-e2-w3",
+              "traditional": "幾隻",
+              "simplified": "几只",
+              "pinyin": "jǐ zhī",
+              "meaning": "a few"
+            },
+            {
+              "id": "l15g2-e2-w4",
+              "traditional": "用紙做的",
+              "simplified": "用纸做的",
+              "pinyin": "yòng zhǐ zuò de",
+              "meaning": "made of paper"
+            },
+            {
+              "id": "l15g2-e2-w5",
+              "traditional": "動物",
+              "simplified": "动物",
+              "pinyin": "dòngwù",
+              "meaning": "animals",
+              "suffix": "。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "l15g2-e3",
+        "number": 3,
+        "teachingNote": "帶著 describes bringing or accompanying someone.",
+        "text": {
+          "traditional": "很多大人帶著小孩去看燈會。",
+          "simplified": "很多大人带着小孩去看灯会。",
+          "pinyin": "hěn duō dàrén dàizhe xiǎohái qù kàn dēnghuì.",
+          "english": "Many adults brought children along to see the lantern festival.",
+          "words": [
+            {
+              "id": "l15g2-e3-w1",
+              "traditional": "很多大人",
+              "pinyin": "hěn duō dàrén",
+              "meaning": "many adults"
+            },
+            {
+              "id": "l15g2-e3-w2",
+              "traditional": "帶著",
+              "simplified": "带着",
+              "pinyin": "dàizhe",
+              "meaning": "bringing"
+            },
+            {
+              "id": "l15g2-e3-w3",
+              "traditional": "小孩",
+              "pinyin": "xiǎohái",
+              "meaning": "kids"
+            },
+            {
+              "id": "l15g2-e3-w4",
+              "traditional": "去看燈會",
+              "simplified": "去看灯会",
+              "pinyin": "qù kàn dēnghuì",
+              "meaning": "go see the lantern festival",
+              "suffix": "。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "l15g2-e4",
+        "number": 4,
+        "teachingNote": "門上開著 / 牆上貼著 shows an ongoing display on a surface.",
+        "text": {
+          "traditional": "黑板上貼著很多張動物的圖片。",
+          "simplified": "黑板上贴着很多张动物的图片。",
+          "pinyin": "hēibǎn shàng tiēzhe hěn duō zhāng dòngwù de túpiàn.",
+          "english": "Many pictures of animals were posted on the blackboard.",
+          "words": [
+            {
+              "id": "l15g2-e4-w1",
+              "traditional": "黑板上",
+              "pinyin": "hēibǎn shàng",
+              "meaning": "on the blackboard"
+            },
+            {
+              "id": "l15g2-e4-w2",
+              "traditional": "貼著",
+              "simplified": "贴着",
+              "pinyin": "tiēzhe",
+              "meaning": "posted / stuck"
+            },
+            {
+              "id": "l15g2-e4-w3",
+              "traditional": "很多張",
+              "simplified": "很多张",
+              "pinyin": "hěn duō zhāng",
+              "meaning": "many sheets"
+            },
+            {
+              "id": "l15g2-e4-w4",
+              "traditional": "動物的圖片",
+              "simplified": "动物的图片",
+              "pinyin": "dòngwù de túpiàn",
+              "meaning": "animal pictures",
+              "suffix": "。"
+            }
+          ]
+        }
+      }
+    ],
+    "exerciseTitle": "Describe a state with 著",
+    "exercisePreview": "Show what continues in a position",
+    "exerciseInstruction": "Pick the verb form with 著 to describe the state.",
+    "questions": [
+      {
+        "id": "l15g2-q1",
+        "number": 1,
+        "sectionLabel": "Holding",
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "你手裡"
+          },
+          {
+            "type": "blank",
+            "id": "l15g2-q1-blank",
+            "answer": "拿著",
+            "answerSimplified": "拿着",
+            "hint": "Describe what is held in the hand."
+          },
+          {
+            "type": "text",
+            "traditional": "什麼？"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "l15g2-q1-t1",
+            "traditional": "拿著",
+            "simplified": "拿着",
+            "pinyin": "názhe",
+            "meaning": "holding"
+          },
+          {
+            "id": "l15g2-q1-t2",
+            "traditional": "放了",
+            "pinyin": "fàng le",
+            "meaning": "placed"
+          }
+        ],
+        "correctFeedback": "Holding something in the hand.",
+        "repairFeedback": "Use 拿著 for holding."
+      },
+      {
+        "id": "l15g2-q2",
+        "number": 2,
+        "sectionLabel": "Placement",
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "桌上"
+          },
+          {
+            "type": "blank",
+            "id": "l15g2-q2-blank",
+            "answer": "放著",
+            "answerSimplified": "放着",
+            "hint": "Describe items placed on the desk."
+          },
+          {
+            "type": "text",
+            "traditional": "幾隻動物。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "l15g2-q2-t1",
+            "traditional": "放著",
+            "simplified": "放着",
+            "pinyin": "fàngzhe",
+            "meaning": "placed / sitting"
+          },
+          {
+            "id": "l15g2-q2-t2",
+            "traditional": "去著",
+            "pinyin": "qùzhe",
+            "meaning": "going"
+          }
+        ],
+        "correctFeedback": "The items are resting on the desk.",
+        "repairFeedback": "Use 放著 for placed items."
+      },
+      {
+        "id": "l15g2-q3",
+        "number": 3,
+        "sectionLabel": "Accompanying",
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "很多大人"
+          },
+          {
+            "type": "blank",
+            "id": "l15g2-q3-blank",
+            "answer": "帶著",
+            "answerSimplified": "带着",
+            "hint": "Describe bringing children along."
+          },
+          {
+            "type": "text",
+            "traditional": "小孩去看燈會。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "l15g2-q3-t1",
+            "traditional": "帶著",
+            "simplified": "带着",
+            "pinyin": "dàizhe",
+            "meaning": "bringing"
+          },
+          {
+            "id": "l15g2-q3-t2",
+            "traditional": "跟著",
+            "simplified": "跟着",
+            "pinyin": "gēnzhe",
+            "meaning": "following"
+          }
+        ],
+        "correctFeedback": "Adults bringing children along.",
+        "repairFeedback": "Use 帶著 for bringing someone."
+      }
+    ]
+  },
+  "LESSON_FIFTEEN_GRAMMAR_THREE": {
+    "bookId": 1,
+    "lessonId": 15,
+    "lessonTitle": "十二生肖",
+    "lessonTitleEnglish": "The Chinese Animal Zodiac",
+    "id": "B1L15-G03",
+    "partId": 3,
+    "grammarNumber": 3,
+    "titleTraditional": "S + 一 + V1 + 就 + V2 (一……就……)",
+    "titleEnglish": "Express Immediate Sequence with 一……就……",
+    "learnerPromise": "Say that as soon as one action happened, another followed immediately.",
+    "printedPages": [
+      349
+    ],
+    "audioReference": "15-3-1",
+    "bookPageAvailable": true,
+    "explanation": "Put 一 before the first action and 就 before the second action to express 'as soon as... then...'. It emphasizes how quickly and immediately the second event occurs.",
+    "focusTerms": [
+      "一",
+      "就"
+    ],
+    "teachingGlossary": [
+      {
+        "id": "b1l15-g03-glossary-1",
+        "traditional": "一……就……",
+        "pinyin": "yī... jiù...",
+        "meaning": "as soon as... then..."
+      },
+      {
+        "id": "b1l15-g03-glossary-2",
+        "traditional": "查",
+        "pinyin": "chá",
+        "meaning": "check; look up"
+      },
+      {
+        "id": "b1l15-g03-glossary-3",
+        "traditional": "進",
+        "simplified": "进",
+        "pinyin": "jìn",
+        "meaning": "enter"
+      },
+      {
+        "id": "b1l15-g03-glossary-4",
+        "traditional": "教室",
+        "pinyin": "jiàoshì",
+        "meaning": "classroom"
+      },
+      {
+        "id": "b1l15-g03-glossary-5",
+        "traditional": "下班",
+        "pinyin": "xiàbān",
+        "meaning": "get off work"
+      },
+      {
+        "id": "b1l15-g03-glossary-6",
+        "traditional": "看到",
+        "pinyin": "kàndào",
+        "meaning": "see; catch sight of"
+      },
+      {
+        "id": "b1l15-g03-glossary-7",
+        "traditional": "知道",
+        "pinyin": "zhīdào",
+        "meaning": "know"
+      },
+      {
+        "id": "b1l15-g03-glossary-8",
+        "traditional": "我",
+        "pinyin": "wǒ",
+        "meaning": "I; me"
+      },
+      {
+        "id": "b1l15-g03-glossary-9",
+        "traditional": "你",
+        "pinyin": "nǐ",
+        "meaning": "you"
+      },
+      {
+        "id": "b1l15-g03-glossary-10",
+        "traditional": "他",
+        "pinyin": "tā",
+        "meaning": "he; him"
+      },
+      {
+        "id": "b1l15-g03-glossary-11",
+        "traditional": "她",
+        "pinyin": "tā",
+        "meaning": "she; her"
+      },
+      {
+        "id": "b1l15-g03-glossary-12",
+        "traditional": "我們",
+        "simplified": "我们",
+        "pinyin": "wǒmen",
+        "meaning": "we; us"
+      },
+      {
+        "id": "b1l15-g03-glossary-13",
+        "traditional": "老師",
+        "simplified": "老师",
+        "pinyin": "lǎoshī",
+        "meaning": "teacher"
+      },
+      {
+        "id": "b1l15-g03-glossary-14",
+        "traditional": "朋友",
+        "pinyin": "péngyǒu",
+        "meaning": "friend"
+      },
+      {
+        "id": "b1l15-g03-glossary-15",
+        "traditional": "家人",
+        "pinyin": "jiārén",
+        "meaning": "family"
+      },
+      {
+        "id": "b1l15-g03-glossary-16",
+        "traditional": "人",
+        "pinyin": "rén",
+        "meaning": "person; people"
+      },
+      {
+        "id": "b1l15-g03-glossary-17",
+        "traditional": "很",
+        "pinyin": "hěn",
+        "meaning": "very"
+      },
+      {
+        "id": "b1l15-g03-glossary-18",
+        "traditional": "不",
+        "pinyin": "bù",
+        "meaning": "not"
+      },
+      {
+        "id": "b1l15-g03-glossary-19",
+        "traditional": "都",
+        "pinyin": "dōu",
+        "meaning": "all"
+      },
+      {
+        "id": "b1l15-g03-glossary-20",
+        "traditional": "也",
+        "pinyin": "yě",
+        "meaning": "also; too"
+      },
+      {
+        "id": "b1l15-g03-glossary-21",
+        "traditional": "有",
+        "pinyin": "yǒu",
+        "meaning": "have; there is"
+      },
+      {
+        "id": "b1l15-g03-glossary-22",
+        "traditional": "沒有",
+        "pinyin": "méiyǒu",
+        "meaning": "do not have; not have"
+      },
+      {
+        "id": "b1l15-g03-glossary-23",
+        "traditional": "是",
+        "pinyin": "shì",
+        "meaning": "is; are"
+      },
+      {
+        "id": "b1l15-g03-glossary-24",
+        "traditional": "了",
+        "pinyin": "le",
+        "meaning": "ending word: something is done or has changed"
+      },
+      {
+        "id": "b1l15-g03-glossary-25",
+        "traditional": "的",
+        "pinyin": "de",
+        "meaning": "link word that connects a describing word to a thing"
+      },
+      {
+        "id": "b1l15-g03-glossary-26",
+        "traditional": "就",
+        "pinyin": "jiù",
+        "meaning": "then; right away"
+      },
+      {
+        "id": "b1l15-g03-glossary-27",
+        "traditional": "去",
+        "pinyin": "qù",
+        "meaning": "go"
+      },
+      {
+        "id": "b1l15-g03-glossary-28",
+        "traditional": "來",
+        "simplified": "来",
+        "pinyin": "lái",
+        "meaning": "come"
+      },
+      {
+        "id": "b1l15-g03-glossary-29",
+        "traditional": "想",
+        "pinyin": "xiǎng",
+        "meaning": "want; think"
+      },
+      {
+        "id": "b1l15-g03-glossary-30",
+        "traditional": "看",
+        "pinyin": "kàn",
+        "meaning": "watch; look"
+      },
+      {
+        "id": "b1l15-g03-glossary-31",
+        "traditional": "買",
+        "simplified": "买",
+        "pinyin": "mǎi",
+        "meaning": "buy"
+      },
+      {
+        "id": "b1l15-g03-glossary-32",
+        "traditional": "說",
+        "simplified": "说",
+        "pinyin": "shuō",
+        "meaning": "speak; say"
+      },
+      {
+        "id": "b1l15-g03-glossary-33",
+        "traditional": "跟",
+        "pinyin": "gēn",
+        "meaning": "with; and"
+      },
+      {
+        "id": "b1l15-g03-glossary-34",
+        "traditional": "送",
+        "pinyin": "sòng",
+        "meaning": "give as a gift; send"
+      },
+      {
+        "id": "b1l15-g03-glossary-35",
+        "traditional": "練習",
+        "simplified": "练习",
+        "pinyin": "liànxí",
+        "meaning": "practice"
+      },
+      {
+        "id": "b1l15-g03-glossary-36",
+        "traditional": "中文",
+        "pinyin": "Zhōngwén",
+        "meaning": "Chinese"
+      },
+      {
+        "id": "b1l15-g03-glossary-37",
+        "traditional": "電影",
+        "simplified": "电影",
+        "pinyin": "diànyǐng",
+        "meaning": "movie; film"
+      },
+      {
+        "id": "b1l15-g03-glossary-38",
+        "traditional": "車",
+        "pinyin": "chē",
+        "meaning": "car; vehicle"
+      },
+      {
+        "id": "b1l15-g03-glossary-39",
+        "traditional": "下雪",
+        "pinyin": "xià xuě",
+        "meaning": "to snow"
+      },
+      {
+        "id": "b1l15-g03-glossary-40",
+        "traditional": "下雨",
+        "pinyin": "xià yǔ",
+        "meaning": "to rain"
+      },
+      {
+        "id": "b1l15-g03-glossary-41",
+        "traditional": "放假",
+        "pinyin": "fàng jià",
+        "meaning": "to have a holiday or vacation"
+      },
+      {
+        "id": "b1l15-g03-glossary-42",
+        "traditional": "下課",
+        "simplified": "下课",
+        "pinyin": "xià kè",
+        "meaning": "to finish class"
+      },
+      {
+        "id": "b1l15-g03-glossary-43",
+        "traditional": "旅行",
+        "pinyin": "lǚxíng",
+        "meaning": "to travel"
+      },
+      {
+        "id": "b1l15-g03-glossary-44",
+        "traditional": "火車站",
+        "pinyin": "huǒchē zhàn",
+        "meaning": "train station"
+      },
+      {
+        "id": "b1l15-g03-glossary-45",
+        "traditional": "百貨公司",
+        "simplified": "百货公司",
+        "pinyin": "bǎihuò gōngsī",
+        "meaning": "department store"
+      },
+      {
+        "id": "b1l15-g03-glossary-46",
+        "traditional": "學校",
+        "simplified": "学校",
+        "pinyin": "xuéxiào",
+        "meaning": "school"
+      },
+      {
+        "id": "b1l15-g03-glossary-47",
+        "traditional": "醫院",
+        "simplified": "医院",
+        "pinyin": "yīyuàn",
+        "meaning": "hospital"
+      },
+      {
+        "id": "b1l15-g03-glossary-48",
+        "traditional": "公園",
+        "simplified": "公园",
+        "pinyin": "gōngyuán",
+        "meaning": "park"
+      },
+      {
+        "id": "b1l15-g03-glossary-49",
+        "traditional": "家",
+        "pinyin": "jiā",
+        "meaning": "home; family"
+      },
+      {
+        "id": "b1l15-g03-glossary-50",
+        "traditional": "台北",
+        "pinyin": "Táiběi",
+        "meaning": "Taipei"
+      },
+      {
+        "id": "b1l15-g03-glossary-51",
+        "traditional": "台灣",
+        "simplified": "台湾",
+        "pinyin": "Táiwān",
+        "meaning": "Taiwan"
+      },
+      {
+        "id": "b1l15-g03-glossary-52",
+        "traditional": "離",
+        "pinyin": "lí",
+        "meaning": "away from; from (a place)"
+      },
+      {
+        "id": "b1l15-g03-glossary-53",
+        "traditional": "近",
+        "pinyin": "jìn",
+        "meaning": "close; near"
+      },
+      {
+        "id": "b1l15-g03-glossary-54",
+        "traditional": "遠",
+        "simplified": "远",
+        "pinyin": "yuǎn",
+        "meaning": "far"
+      },
+      {
+        "id": "b1l15-g03-glossary-55",
+        "traditional": "比",
+        "pinyin": "bǐ",
+        "meaning": "compared with"
+      },
+      {
+        "id": "b1l15-g03-glossary-56",
+        "traditional": "更",
+        "pinyin": "gèng",
+        "meaning": "even more"
+      },
+      {
+        "id": "b1l15-g03-glossary-57",
+        "traditional": "冷",
+        "pinyin": "lěng",
+        "meaning": "cold"
+      },
+      {
+        "id": "b1l15-g03-glossary-58",
+        "traditional": "熱",
+        "simplified": "热",
+        "pinyin": "rè",
+        "meaning": "hot"
+      },
+      {
+        "id": "b1l15-g03-glossary-59",
+        "traditional": "重要",
+        "pinyin": "zhòngyào",
+        "meaning": "important"
+      },
+      {
+        "id": "b1l15-g03-glossary-60",
+        "traditional": "聰明",
+        "simplified": "聪明",
+        "pinyin": "cōngming",
+        "meaning": "smart"
+      },
+      {
+        "id": "b1l15-g03-glossary-61",
+        "traditional": "好看",
+        "pinyin": "hǎokàn",
+        "meaning": "nice-looking"
+      },
+      {
+        "id": "b1l15-g03-glossary-62",
+        "traditional": "大",
+        "pinyin": "dà",
+        "meaning": "big"
+      },
+      {
+        "id": "b1l15-g03-glossary-63",
+        "traditional": "小",
+        "pinyin": "xiǎo",
+        "meaning": "small"
+      },
+      {
+        "id": "b1l15-g03-glossary-64",
+        "traditional": "今天",
+        "pinyin": "jīntiān",
+        "meaning": "today"
+      },
+      {
+        "id": "b1l15-g03-glossary-65",
+        "traditional": "昨天",
+        "pinyin": "zuótiān",
+        "meaning": "yesterday"
+      },
+      {
+        "id": "b1l15-g03-glossary-66",
+        "traditional": "明天",
+        "pinyin": "míngtiān",
+        "meaning": "tomorrow"
+      },
+      {
+        "id": "b1l15-g03-glossary-67",
+        "traditional": "現在",
+        "simplified": "现在",
+        "pinyin": "xiànzài",
+        "meaning": "now"
+      },
+      {
+        "id": "b1l15-g03-glossary-68",
+        "traditional": "上個月",
+        "pinyin": "shàng ge yuè",
+        "meaning": "last month"
+      },
+      {
+        "id": "b1l15-g03-glossary-69",
+        "traditional": "本來",
+        "pinyin": "běnlái",
+        "meaning": "originally; at first"
+      },
+      {
+        "id": "b1l15-g03-glossary-70",
+        "traditional": "原來",
+        "simplified": "原来",
+        "pinyin": "yuánlái",
+        "meaning": "originally; as it turns out"
+      },
+      {
+        "id": "b1l15-g03-glossary-71",
+        "traditional": "後來",
+        "simplified": "后来",
+        "pinyin": "hòulái",
+        "meaning": "later; afterwards"
+      },
+      {
+        "id": "b1l15-g03-glossary-72",
+        "traditional": "三隻狗",
+        "simplified": "三只狗",
+        "pinyin": "sān zhī gǒu",
+        "meaning": "three dogs"
+      },
+      {
+        "id": "b1l15-g03-glossary-73",
+        "traditional": "夜市",
+        "pinyin": "yèshì",
+        "meaning": "night market"
+      },
+      {
+        "id": "b1l15-g03-glossary-74",
+        "traditional": "食物",
+        "pinyin": "shíwù",
+        "meaning": "food"
+      },
+      {
+        "id": "b1l15-g03-glossary-75",
+        "traditional": "遊戲",
+        "simplified": "游戏",
+        "pinyin": "yóuxì",
+        "meaning": "game"
+      },
+      {
+        "id": "b1l15-g03-glossary-76",
+        "traditional": "風景",
+        "simplified": "风景",
+        "pinyin": "fēngjǐng",
+        "meaning": "scenery"
+      },
+      {
+        "id": "b1l15-g03-glossary-77",
+        "traditional": "小籠包",
+        "simplified": "小笼包",
+        "pinyin": "xiǎolóngbāo",
+        "meaning": "xiaolongbao (soup dumplings)"
+      },
+      {
+        "id": "b1l15-g03-glossary-78",
+        "traditional": "牛肉麵",
+        "simplified": "牛肉面",
+        "pinyin": "niúròu miàn",
+        "meaning": "beef noodles"
+      },
+      {
+        "id": "b1l15-g03-glossary-79",
+        "traditional": "珍珠奶茶",
+        "pinyin": "zhēnzhū nǎichá",
+        "meaning": "pearl milk tea"
+      }
+    ],
+    "pattern": "Subject + 一 + Verb 1 + 就 + Verb 2",
+    "patternColumns": [
+      "Subject",
+      "一 + First Action",
+      "就 + Immediate Result"
+    ],
+    "patternColumnDetails": [
+      "Who",
+      "as soon as V1",
+      "immediately V2"
+    ],
+    "patternAccentColumn": 1,
+    "patternRows": [
+      {
+        "id": "l15g3-p1",
+        "subject": [
+          {
+            "id": "l15g3-p1-s1",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l15g3-p1-g1",
+            "traditional": "上網一查",
+            "simplified": "上网一查",
+            "pinyin": "shàngwǎng yì chá",
+            "meaning": "check online once"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l15g3-p1-c1",
+            "traditional": "就知道了",
+            "pinyin": "jiù zhīdào le",
+            "meaning": "will know immediately",
+            "suffix": "。"
+          }
+        ],
+        "english": "As soon as you search online, you will know."
+      },
+      {
+        "id": "l15g3-p2",
+        "subject": [
+          {
+            "id": "l15g3-p2-s1",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l15g3-p2-g1",
+            "traditional": "一下班",
+            "pinyin": "yí xiàbān",
+            "meaning": "as soon as get off work"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l15g3-p2-c1",
+            "traditional": "就去看燈會",
+            "simplified": "就去看灯会",
+            "pinyin": "jiù qù kàn dēnghuì",
+            "meaning": "will go see lanterns",
+            "suffix": "。"
+          }
+        ],
+        "english": "As soon as I get off work, I will go see the lantern show."
+      },
+      {
+        "id": "l15g3-p3",
+        "subject": [
+          {
+            "id": "l15g3-p3-s1",
+            "traditional": "我今天",
+            "pinyin": "wǒ jīntiān",
+            "meaning": "I today"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l15g3-p3-g1",
+            "traditional": "一進教室",
+            "simplified": "一进教室",
+            "pinyin": "yí jìn jiàoshì",
+            "meaning": "as soon as entered classroom"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l15g3-p3-c1",
+            "traditional": "就看到動物",
+            "simplified": "就看到动物",
+            "pinyin": "jiù kàndào dòngwù",
+            "meaning": "immediately saw animals",
+            "suffix": "。"
+          }
+        ],
+        "english": "As soon as I entered the classroom today, I saw the animals."
+      }
+    ],
+    "confusion": {
+      "title": "Don't mix these up",
+      "items": [
+        {
+          "id": "l15g3-confusion-both-markers",
+          "question": "Can I omit 一 or 就?",
+          "answer": "No. The two markers work as a pair: 一 marks the trigger, and 就 marks the immediate action that follows.",
+          "wrongTraditional": "你上網查就知道了。",
+          "wrongSimplified": "你上网查就知道了。",
+          "right": {
+            "traditional": "上網一查就知道了。",
+            "simplified": "上网一查就知道了。",
+            "pinyin": "shàngwǎng yì chá jiù zhīdào le.",
+            "english": "As soon as you look it up online, you will know.",
+            "words": [
+              {
+                "id": "l15g3-c1-w1",
+                "traditional": "上網",
+                "simplified": "上网",
+                "pinyin": "shàngwǎng",
+                "meaning": "go online"
+              },
+              {
+                "id": "l15g3-c1-w2",
+                "traditional": "一查",
+                "pinyin": "yì chá",
+                "meaning": "once check"
+              },
+              {
+                "id": "l15g3-c1-w3",
+                "traditional": "就",
+                "pinyin": "jiù",
+                "meaning": "then"
+              },
+              {
+                "id": "l15g3-c1-w4",
+                "traditional": "知道了",
+                "pinyin": "zhīdào le",
+                "meaning": "know",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "l15g3-confusion-order",
+          "question": "Which action does 一 go with?",
+          "answer": "一 always attaches before the first action, and 就 goes before the second action.",
+          "wrongTraditional": "你就上網一查知道了。",
+          "wrongSimplified": "你就上网一查知道了。",
+          "right": {
+            "traditional": "上網一查就知道了。",
+            "simplified": "上网一查就知道了。",
+            "pinyin": "shàngwǎng yì chá jiù zhīdào le.",
+            "english": "As soon as you look it up online, you will know.",
+            "words": [
+              {
+                "id": "l15g3-c2-w1",
+                "traditional": "上網",
+                "simplified": "上网",
+                "pinyin": "shàngwǎng",
+                "meaning": "go online"
+              },
+              {
+                "id": "l15g3-c2-w2",
+                "traditional": "一查",
+                "pinyin": "yì chá",
+                "meaning": "once check"
+              },
+              {
+                "id": "l15g3-c2-w3",
+                "traditional": "就",
+                "pinyin": "jiù",
+                "meaning": "then"
+              },
+              {
+                "id": "l15g3-c2-w4",
+                "traditional": "知道了",
+                "pinyin": "zhīdào le",
+                "meaning": "know",
+                "suffix": "。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "examples": [
+      {
+        "id": "l15g3-e1",
+        "number": 1,
+        "teachingNote": "一查就知道了 shows how effortless and immediate the answer is.",
+        "text": {
+          "traditional": "很簡單，上網一查就知道了。",
+          "simplified": "很简单，上网一查就知道了。",
+          "pinyin": "hěn jiǎndān, shàngwǎng yì chá jiù zhīdào le.",
+          "english": "It's very simple: as soon as you search online, you will know.",
+          "words": [
+            {
+              "id": "l15g3-e1-w1",
+              "traditional": "很簡單",
+              "simplified": "很简单",
+              "pinyin": "hěn jiǎndān",
+              "meaning": "very simple"
+            },
+            {
+              "id": "l15g3-e1-w2",
+              "traditional": "上網",
+              "simplified": "上网",
+              "pinyin": "shàngwǎng",
+              "meaning": "go online"
+            },
+            {
+              "id": "l15g3-e1-w3",
+              "traditional": "一查",
+              "pinyin": "yì chá",
+              "meaning": "as soon as search"
+            },
+            {
+              "id": "l15g3-e1-w4",
+              "traditional": "就",
+              "pinyin": "jiù",
+              "meaning": "then"
+            },
+            {
+              "id": "l15g3-e1-w5",
+              "traditional": "知道了",
+              "pinyin": "zhīdào le",
+              "meaning": "know",
+              "suffix": "。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "l15g3-e2",
+        "number": 2,
+        "teachingNote": "一下班就去看 shows immediate intention right after finishing work.",
+        "text": {
+          "traditional": "我打算一下班就去看燈會。",
+          "simplified": "我打算一下班就去看灯会。",
+          "pinyin": "wǒ dǎsuàn yí xiàbān jiù qù kàn dēnghuì.",
+          "english": "I plan to go see the lantern show right after getting off work.",
+          "words": [
+            {
+              "id": "l15g3-e2-w1",
+              "traditional": "我打算",
+              "pinyin": "wǒ dǎsuàn",
+              "meaning": "I plan"
+            },
+            {
+              "id": "l15g3-e2-w2",
+              "traditional": "一下班",
+              "pinyin": "yí xiàbān",
+              "meaning": "as soon as get off work"
+            },
+            {
+              "id": "l15g3-e2-w3",
+              "traditional": "就",
+              "pinyin": "jiù",
+              "meaning": "then"
+            },
+            {
+              "id": "l15g3-e2-w4",
+              "traditional": "去看燈會",
+              "simplified": "去看灯会",
+              "pinyin": "qù kàn dēnghuì",
+              "meaning": "go see the lantern show",
+              "suffix": "。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "l15g3-e3",
+        "number": 3,
+        "teachingNote": "一進教室就看到 tells the narrative of an immediate discovery upon entering.",
+        "text": {
+          "traditional": "今天一進教室，就看到桌上放著幾隻動物。",
+          "simplified": "今天一进教室，就看到桌上放着几只动物。",
+          "pinyin": "jīntiān yí jìn jiàoshì, jiù kàndào zhuō shàng fàngzhe jǐ zhī dòngwù.",
+          "english": "As soon as I entered the classroom today, I saw several animals placed on the table.",
+          "words": [
+            {
+              "id": "l15g3-e3-w1",
+              "traditional": "今天",
+              "pinyin": "jīntiān",
+              "meaning": "today"
+            },
+            {
+              "id": "l15g3-e3-w2",
+              "traditional": "一進教室",
+              "simplified": "一进教室",
+              "pinyin": "yí jìn jiàoshì",
+              "meaning": "as soon as entered classroom"
+            },
+            {
+              "id": "l15g3-e3-w3",
+              "traditional": "就看到",
+              "pinyin": "jiù kàndào",
+              "meaning": "immediately saw"
+            },
+            {
+              "id": "l15g3-e3-w4",
+              "traditional": "桌上放著",
+              "simplified": "桌上放着",
+              "pinyin": "zhuō shàng fàngzhe",
+              "meaning": "placed on table"
+            },
+            {
+              "id": "l15g3-e3-w5",
+              "traditional": "幾隻動物",
+              "simplified": "几只动物",
+              "pinyin": "jǐ zhī dòngwù",
+              "meaning": "a few animals",
+              "suffix": "。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "l15g3-e4",
+        "number": 4,
+        "teachingNote": "一到就打電話 shows sequence of arrival and contacting someone.",
+        "text": {
+          "traditional": "他一到家，就給我打電話了。",
+          "simplified": "他一到家，就给我打电话了。",
+          "pinyin": "tā yí dào jiā, jiù gěi wǒ dǎ diànhuà le.",
+          "english": "As soon as he arrived home, he called me.",
+          "words": [
+            {
+              "id": "l15g3-e4-w1",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he"
+            },
+            {
+              "id": "l15g3-e4-w2",
+              "traditional": "一到家",
+              "pinyin": "yí dào jiā",
+              "meaning": "as soon as arrived home"
+            },
+            {
+              "id": "l15g3-e4-w3",
+              "traditional": "就",
+              "pinyin": "jiù",
+              "meaning": "then"
+            },
+            {
+              "id": "l15g3-e4-w4",
+              "traditional": "給我打電話了",
+              "simplified": "给我打电话了",
+              "pinyin": "gěi wǒ dǎ diànhuà le",
+              "meaning": "called me",
+              "suffix": "。"
+            }
+          ]
+        }
+      }
+    ],
+    "exerciseTitle": "Sequence with 一……就……",
+    "exercisePreview": "Express immediate successive actions",
+    "exerciseInstruction": "Choose 一 or 就 to link the two actions.",
+    "questions": [
+      {
+        "id": "l15g3-q1",
+        "number": 1,
+        "sectionLabel": "Trigger",
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "很簡單，上網"
+          },
+          {
+            "type": "blank",
+            "id": "l15g3-q1-blank",
+            "answer": "一查",
+            "hint": "Use 一 before the first quick action."
+          },
+          {
+            "type": "text",
+            "traditional": "就知道了。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "l15g3-q1-t1",
+            "traditional": "一查",
+            "pinyin": "yì chá",
+            "meaning": "as soon as check"
+          },
+          {
+            "id": "l15g3-q1-t2",
+            "traditional": "再查",
+            "pinyin": "zài chá",
+            "meaning": "check again"
+          }
+        ],
+        "correctFeedback": "As soon as you search, you know.",
+        "repairFeedback": "Use 一 before the action."
+      },
+      {
+        "id": "l15g3-q2",
+        "number": 2,
+        "sectionLabel": "Follow-up",
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "我打算一下班，"
+          },
+          {
+            "type": "blank",
+            "id": "l15g3-q2-blank",
+            "answer": "就",
+            "hint": "Use 就 before the immediate next action."
+          },
+          {
+            "type": "text",
+            "traditional": "去看燈會。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "l15g3-q2-t1",
+            "traditional": "就",
+            "pinyin": "jiù",
+            "meaning": "then / immediately"
+          },
+          {
+            "id": "l15g3-q2-t2",
+            "traditional": "也",
+            "pinyin": "yě",
+            "meaning": "also"
+          }
+        ],
+        "correctFeedback": "Going right after work.",
+        "repairFeedback": "Use 就 before the next action."
+      },
+      {
+        "id": "l15g3-q3",
+        "number": 3,
+        "sectionLabel": "Entrance",
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "今天"
+          },
+          {
+            "type": "blank",
+            "id": "l15g3-q3-blank",
+            "answer": "一進",
+            "answerSimplified": "一进",
+            "hint": "As soon as entering the classroom."
+          },
+          {
+            "type": "text",
+            "traditional": "教室，就看到桌上放著動物。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "l15g3-q3-t1",
+            "traditional": "一進",
+            "simplified": "一进",
+            "pinyin": "yí jìn",
+            "meaning": "as soon as entered"
+          },
+          {
+            "id": "l15g3-q3-t2",
+            "traditional": "走進",
+            "simplified": "走进",
+            "pinyin": "zǒujìn",
+            "meaning": "walk into"
+          }
+        ],
+        "correctFeedback": "Immediately upon entering.",
+        "repairFeedback": "Pair 一 with the entering verb."
+      }
+    ]
+  },
+  "LESSON_FIFTEEN_PART_ONE": {
+    "id": "B1L15-P01-R01",
+    "bookId": 1,
+    "lessonId": 15,
+    "partId": 1,
+    "title": "Grammar 1 · Compare with 跟…(不)一樣",
+    "grammarPages": [
+      {
+        "bookId": 1,
+        "lessonId": 15,
+        "lessonTitle": "十二生肖",
+        "lessonTitleEnglish": "The Chinese Animal Zodiac",
+        "id": "B1L15-G01",
+        "partId": 1,
+        "grammarNumber": 1,
+        "titleTraditional": "A 跟 B (不)一樣 (+ Vs)",
+        "titleEnglish": "Compare Things with 跟…(不)一樣",
+        "learnerPromise": "Say whether two things, customs, or ideas are the same or different.",
+        "printedPages": [
+          347,
+          348
+        ],
+        "audioReference": "15-1-1",
+        "bookPageAvailable": true,
+        "explanation": "Use 跟 between two things to compare them with 一樣 (the same) or 不一樣 (different). You can also add an adjective or descriptive verb at the end.",
+        "focusTerms": [
+          "跟",
+          "一樣",
+          "不一樣"
+        ],
+        "teachingGlossary": [
+          {
+            "id": "b1l15-g01-glossary-1",
+            "traditional": "生肖",
+            "pinyin": "shēngxiào",
+            "meaning": "Chinese zodiac animal"
+          },
+          {
+            "id": "b1l15-g01-glossary-2",
+            "traditional": "一樣",
+            "simplified": "一样",
+            "pinyin": "yíyàng",
+            "meaning": "the same; identical"
+          },
+          {
+            "id": "b1l15-g01-glossary-3",
+            "traditional": "不一樣",
+            "simplified": "不一样",
+            "pinyin": "bù yíyàng",
+            "meaning": "different; not the same"
+          },
+          {
+            "id": "b1l15-g01-glossary-4",
+            "traditional": "中國",
+            "simplified": "中国",
+            "pinyin": "Zhōngguó",
+            "meaning": "China"
+          },
+          {
+            "id": "b1l15-g01-glossary-5",
+            "traditional": "越南",
+            "pinyin": "Yuènán",
+            "meaning": "Vietnam"
+          },
+          {
+            "id": "b1l15-g01-glossary-6",
+            "traditional": "羊",
+            "pinyin": "yáng",
+            "meaning": "sheep; goat"
+          },
+          {
+            "id": "b1l15-g01-glossary-7",
+            "traditional": "馬",
+            "simplified": "马",
+            "pinyin": "mǎ",
+            "meaning": "horse"
+          },
+          {
+            "id": "b1l15-g01-glossary-8",
+            "traditional": "兔子",
+            "pinyin": "tùzi",
+            "meaning": "rabbit"
+          },
+          {
+            "id": "b1l15-g01-glossary-9",
+            "traditional": "龍",
+            "simplified": "龙",
+            "pinyin": "lóng",
+            "meaning": "dragon"
+          },
+          {
+            "id": "b1l15-g01-glossary-10",
+            "traditional": "貓",
+            "simplified": "猫",
+            "pinyin": "māo",
+            "meaning": "cat"
+          },
+          {
+            "id": "b1l15-g01-glossary-11",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
+          },
+          {
+            "id": "b1l15-g01-glossary-12",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          },
+          {
+            "id": "b1l15-g01-glossary-13",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "he; him"
+          },
+          {
+            "id": "b1l15-g01-glossary-14",
+            "traditional": "她",
+            "pinyin": "tā",
+            "meaning": "she; her"
+          },
+          {
+            "id": "b1l15-g01-glossary-15",
+            "traditional": "我們",
+            "simplified": "我们",
+            "pinyin": "wǒmen",
+            "meaning": "we; us"
+          },
+          {
+            "id": "b1l15-g01-glossary-16",
+            "traditional": "老師",
+            "simplified": "老师",
+            "pinyin": "lǎoshī",
+            "meaning": "teacher"
+          },
+          {
+            "id": "b1l15-g01-glossary-17",
+            "traditional": "朋友",
+            "pinyin": "péngyǒu",
+            "meaning": "friend"
+          },
+          {
+            "id": "b1l15-g01-glossary-18",
+            "traditional": "家人",
+            "pinyin": "jiārén",
+            "meaning": "family"
+          },
+          {
+            "id": "b1l15-g01-glossary-19",
+            "traditional": "人",
+            "pinyin": "rén",
+            "meaning": "person; people"
+          },
+          {
+            "id": "b1l15-g01-glossary-20",
+            "traditional": "很",
+            "pinyin": "hěn",
+            "meaning": "very"
+          },
+          {
+            "id": "b1l15-g01-glossary-21",
+            "traditional": "不",
+            "pinyin": "bù",
+            "meaning": "not"
+          },
+          {
+            "id": "b1l15-g01-glossary-22",
+            "traditional": "都",
+            "pinyin": "dōu",
+            "meaning": "all"
+          },
+          {
+            "id": "b1l15-g01-glossary-23",
+            "traditional": "也",
+            "pinyin": "yě",
+            "meaning": "also; too"
+          },
+          {
+            "id": "b1l15-g01-glossary-24",
+            "traditional": "有",
+            "pinyin": "yǒu",
+            "meaning": "have; there is"
+          },
+          {
+            "id": "b1l15-g01-glossary-25",
+            "traditional": "沒有",
+            "pinyin": "méiyǒu",
+            "meaning": "do not have; not have"
+          },
+          {
+            "id": "b1l15-g01-glossary-26",
+            "traditional": "是",
+            "pinyin": "shì",
+            "meaning": "is; are"
+          },
+          {
+            "id": "b1l15-g01-glossary-27",
+            "traditional": "了",
+            "pinyin": "le",
+            "meaning": "ending word: something is done or has changed"
+          },
+          {
+            "id": "b1l15-g01-glossary-28",
+            "traditional": "的",
+            "pinyin": "de",
+            "meaning": "link word that connects a describing word to a thing"
+          },
+          {
+            "id": "b1l15-g01-glossary-29",
+            "traditional": "就",
+            "pinyin": "jiù",
+            "meaning": "then; right away"
+          },
+          {
+            "id": "b1l15-g01-glossary-30",
+            "traditional": "去",
+            "pinyin": "qù",
+            "meaning": "go"
+          },
+          {
+            "id": "b1l15-g01-glossary-31",
+            "traditional": "來",
+            "simplified": "来",
+            "pinyin": "lái",
+            "meaning": "come"
+          },
+          {
+            "id": "b1l15-g01-glossary-32",
+            "traditional": "想",
+            "pinyin": "xiǎng",
+            "meaning": "want; think"
+          },
+          {
+            "id": "b1l15-g01-glossary-33",
+            "traditional": "看",
+            "pinyin": "kàn",
+            "meaning": "watch; look"
+          },
+          {
+            "id": "b1l15-g01-glossary-34",
+            "traditional": "買",
+            "simplified": "买",
+            "pinyin": "mǎi",
+            "meaning": "buy"
+          },
+          {
+            "id": "b1l15-g01-glossary-35",
+            "traditional": "說",
+            "simplified": "说",
+            "pinyin": "shuō",
+            "meaning": "speak; say"
+          },
+          {
+            "id": "b1l15-g01-glossary-36",
+            "traditional": "跟",
+            "pinyin": "gēn",
+            "meaning": "with; and"
+          },
+          {
+            "id": "b1l15-g01-glossary-37",
+            "traditional": "送",
+            "pinyin": "sòng",
+            "meaning": "give as a gift; send"
+          },
+          {
+            "id": "b1l15-g01-glossary-38",
+            "traditional": "練習",
+            "simplified": "练习",
+            "pinyin": "liànxí",
+            "meaning": "practice"
+          },
+          {
+            "id": "b1l15-g01-glossary-39",
+            "traditional": "中文",
+            "pinyin": "Zhōngwén",
+            "meaning": "Chinese"
+          },
+          {
+            "id": "b1l15-g01-glossary-40",
+            "traditional": "電影",
+            "simplified": "电影",
+            "pinyin": "diànyǐng",
+            "meaning": "movie; film"
+          },
+          {
+            "id": "b1l15-g01-glossary-41",
+            "traditional": "車",
+            "pinyin": "chē",
+            "meaning": "car; vehicle"
+          },
+          {
+            "id": "b1l15-g01-glossary-42",
+            "traditional": "下雪",
+            "pinyin": "xià xuě",
+            "meaning": "to snow"
+          },
+          {
+            "id": "b1l15-g01-glossary-43",
+            "traditional": "下雨",
+            "pinyin": "xià yǔ",
+            "meaning": "to rain"
+          },
+          {
+            "id": "b1l15-g01-glossary-44",
+            "traditional": "放假",
+            "pinyin": "fàng jià",
+            "meaning": "to have a holiday or vacation"
+          },
+          {
+            "id": "b1l15-g01-glossary-45",
+            "traditional": "下課",
+            "simplified": "下课",
+            "pinyin": "xià kè",
+            "meaning": "to finish class"
+          },
+          {
+            "id": "b1l15-g01-glossary-46",
+            "traditional": "旅行",
+            "pinyin": "lǚxíng",
+            "meaning": "to travel"
+          },
+          {
+            "id": "b1l15-g01-glossary-47",
+            "traditional": "火車站",
+            "pinyin": "huǒchē zhàn",
+            "meaning": "train station"
+          },
+          {
+            "id": "b1l15-g01-glossary-48",
+            "traditional": "百貨公司",
+            "simplified": "百货公司",
+            "pinyin": "bǎihuò gōngsī",
+            "meaning": "department store"
+          },
+          {
+            "id": "b1l15-g01-glossary-49",
+            "traditional": "學校",
+            "simplified": "学校",
+            "pinyin": "xuéxiào",
+            "meaning": "school"
+          },
+          {
+            "id": "b1l15-g01-glossary-50",
+            "traditional": "醫院",
+            "simplified": "医院",
+            "pinyin": "yīyuàn",
+            "meaning": "hospital"
+          },
+          {
+            "id": "b1l15-g01-glossary-51",
+            "traditional": "公園",
+            "simplified": "公园",
+            "pinyin": "gōngyuán",
+            "meaning": "park"
+          },
+          {
+            "id": "b1l15-g01-glossary-52",
+            "traditional": "家",
+            "pinyin": "jiā",
+            "meaning": "home; family"
+          },
+          {
+            "id": "b1l15-g01-glossary-53",
+            "traditional": "台北",
+            "pinyin": "Táiběi",
+            "meaning": "Taipei"
+          },
+          {
+            "id": "b1l15-g01-glossary-54",
+            "traditional": "台灣",
+            "simplified": "台湾",
+            "pinyin": "Táiwān",
+            "meaning": "Taiwan"
+          },
+          {
+            "id": "b1l15-g01-glossary-55",
+            "traditional": "離",
+            "pinyin": "lí",
+            "meaning": "away from; from (a place)"
+          },
+          {
+            "id": "b1l15-g01-glossary-56",
+            "traditional": "近",
+            "pinyin": "jìn",
+            "meaning": "close; near"
+          },
+          {
+            "id": "b1l15-g01-glossary-57",
+            "traditional": "遠",
+            "simplified": "远",
+            "pinyin": "yuǎn",
+            "meaning": "far"
+          },
+          {
+            "id": "b1l15-g01-glossary-58",
+            "traditional": "比",
+            "pinyin": "bǐ",
+            "meaning": "compared with"
+          },
+          {
+            "id": "b1l15-g01-glossary-59",
+            "traditional": "更",
+            "pinyin": "gèng",
+            "meaning": "even more"
+          },
+          {
+            "id": "b1l15-g01-glossary-60",
+            "traditional": "冷",
+            "pinyin": "lěng",
+            "meaning": "cold"
+          },
+          {
+            "id": "b1l15-g01-glossary-61",
+            "traditional": "熱",
+            "simplified": "热",
+            "pinyin": "rè",
+            "meaning": "hot"
+          },
+          {
+            "id": "b1l15-g01-glossary-62",
+            "traditional": "重要",
+            "pinyin": "zhòngyào",
+            "meaning": "important"
+          },
+          {
+            "id": "b1l15-g01-glossary-63",
+            "traditional": "聰明",
+            "simplified": "聪明",
+            "pinyin": "cōngming",
+            "meaning": "smart"
+          },
+          {
+            "id": "b1l15-g01-glossary-64",
+            "traditional": "好看",
+            "pinyin": "hǎokàn",
+            "meaning": "nice-looking"
+          },
+          {
+            "id": "b1l15-g01-glossary-65",
+            "traditional": "大",
+            "pinyin": "dà",
+            "meaning": "big"
+          },
+          {
+            "id": "b1l15-g01-glossary-66",
+            "traditional": "小",
+            "pinyin": "xiǎo",
+            "meaning": "small"
+          },
+          {
+            "id": "b1l15-g01-glossary-67",
+            "traditional": "今天",
+            "pinyin": "jīntiān",
+            "meaning": "today"
+          },
+          {
+            "id": "b1l15-g01-glossary-68",
+            "traditional": "昨天",
+            "pinyin": "zuótiān",
+            "meaning": "yesterday"
+          },
+          {
+            "id": "b1l15-g01-glossary-69",
+            "traditional": "明天",
+            "pinyin": "míngtiān",
+            "meaning": "tomorrow"
+          },
+          {
+            "id": "b1l15-g01-glossary-70",
+            "traditional": "現在",
+            "simplified": "现在",
+            "pinyin": "xiànzài",
+            "meaning": "now"
+          },
+          {
+            "id": "b1l15-g01-glossary-71",
+            "traditional": "上個月",
+            "pinyin": "shàng ge yuè",
+            "meaning": "last month"
+          },
+          {
+            "id": "b1l15-g01-glossary-72",
+            "traditional": "本來",
+            "pinyin": "běnlái",
+            "meaning": "originally; at first"
+          },
+          {
+            "id": "b1l15-g01-glossary-73",
+            "traditional": "原來",
+            "simplified": "原来",
+            "pinyin": "yuánlái",
+            "meaning": "originally; as it turns out"
+          },
+          {
+            "id": "b1l15-g01-glossary-74",
+            "traditional": "後來",
+            "simplified": "后来",
+            "pinyin": "hòulái",
+            "meaning": "later; afterwards"
+          },
+          {
+            "id": "b1l15-g01-glossary-75",
+            "traditional": "三隻狗",
+            "simplified": "三只狗",
+            "pinyin": "sān zhī gǒu",
+            "meaning": "three dogs"
+          },
+          {
+            "id": "b1l15-g01-glossary-76",
+            "traditional": "夜市",
+            "pinyin": "yèshì",
+            "meaning": "night market"
+          },
+          {
+            "id": "b1l15-g01-glossary-77",
+            "traditional": "食物",
+            "pinyin": "shíwù",
+            "meaning": "food"
+          },
+          {
+            "id": "b1l15-g01-glossary-78",
+            "traditional": "遊戲",
+            "simplified": "游戏",
+            "pinyin": "yóuxì",
+            "meaning": "game"
+          },
+          {
+            "id": "b1l15-g01-glossary-79",
+            "traditional": "風景",
+            "simplified": "风景",
+            "pinyin": "fēngjǐng",
+            "meaning": "scenery"
+          },
+          {
+            "id": "b1l15-g01-glossary-80",
+            "traditional": "小籠包",
+            "simplified": "小笼包",
+            "pinyin": "xiǎolóngbāo",
+            "meaning": "xiaolongbao (soup dumplings)"
+          },
+          {
+            "id": "b1l15-g01-glossary-81",
+            "traditional": "牛肉麵",
+            "simplified": "牛肉面",
+            "pinyin": "niúròu miàn",
+            "meaning": "beef noodles"
+          },
+          {
+            "id": "b1l15-g01-glossary-82",
+            "traditional": "珍珠奶茶",
+            "pinyin": "zhēnzhū nǎichá",
+            "meaning": "pearl milk tea"
+          }
+        ],
+        "pattern": "Thing A + 跟 + Thing B + (不)一樣 (+ Describing Word)",
+        "patternColumns": [
+          "Thing A",
+          "跟 + Thing B",
+          "一樣 / 不一樣"
+        ],
+        "patternColumnDetails": [
+          "Item A",
+          "with Item B",
+          "the same or different"
+        ],
+        "patternAccentColumn": 1,
+        "patternRows": [
+          {
+            "id": "l15g1-p1",
+            "subject": [
+              {
+                "id": "l15g1-p1-s1",
+                "traditional": "越南的生肖",
+                "pinyin": "Yuènán de shēngxiào",
+                "meaning": "Vietnam's zodiac"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l15g1-p1-g1",
+                "traditional": "跟",
+                "pinyin": "gēn",
+                "meaning": "with; and"
+              },
+              {
+                "id": "l15g1-p1-g2",
+                "traditional": "中國的",
+                "simplified": "中国的",
+                "pinyin": "Zhōngguó de",
+                "meaning": "China's"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l15g1-p1-c1",
+                "traditional": "不一樣",
+                "simplified": "不一样",
+                "pinyin": "bù yíyàng",
+                "meaning": "different",
+                "suffix": "。"
+              }
+            ],
+            "english": "Vietnam's zodiac is not the same as China's."
+          },
+          {
+            "id": "l15g1-p2",
+            "subject": [
+              {
+                "id": "l15g1-p2-s1",
+                "traditional": "我的想法",
+                "pinyin": "wǒ de xiǎngfǎ",
+                "meaning": "my idea / thought"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l15g1-p2-g1",
+                "traditional": "跟",
+                "pinyin": "gēn",
+                "meaning": "with; and"
+              },
+              {
+                "id": "l15g1-p2-g2",
+                "traditional": "他的想法",
+                "pinyin": "tā de xiǎngfǎ",
+                "meaning": "his thought"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l15g1-p2-c1",
+                "traditional": "一樣",
+                "simplified": "一样",
+                "pinyin": "yíyàng",
+                "meaning": "the same",
+                "suffix": "。"
+              }
+            ],
+            "english": "My thought is the same as his."
+          },
+          {
+            "id": "l15g1-p3",
+            "subject": [
+              {
+                "id": "l15g1-p3-s1",
+                "traditional": "這本書",
+                "simplified": "这本书",
+                "pinyin": "zhè běn shū",
+                "meaning": "this book"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l15g1-p3-g1",
+                "traditional": "跟",
+                "pinyin": "gēn",
+                "meaning": "with; and"
+              },
+              {
+                "id": "l15g1-p3-g2",
+                "traditional": "那本書",
+                "simplified": "那本书",
+                "pinyin": "nà běn shū",
+                "meaning": "that book"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l15g1-p3-c1",
+                "traditional": "一樣",
+                "simplified": "一样",
+                "pinyin": "yíyàng",
+                "meaning": "the same"
+              },
+              {
+                "id": "l15g1-p3-c2",
+                "traditional": "有意思",
+                "pinyin": "yǒuyìsi",
+                "meaning": "interesting",
+                "suffix": "。"
+              }
+            ],
+            "english": "This book is just as interesting as that book."
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "l15g1-confusion-no-gen",
+              "question": "Can I compare two things with 一樣 without 跟?",
+              "answer": "No. When you mention the second item, use 跟 before it.",
+              "wrongTraditional": "越南的生肖中國的不一樣。",
+              "wrongSimplified": "越南的生肖中国的不一样。",
+              "right": {
+                "traditional": "越南的生肖跟中國的不一樣。",
+                "simplified": "越南的生肖跟中国的不一样。",
+                "pinyin": "Yuènán de shēngxiào gēn Zhōngguó de bù yíyàng.",
+                "english": "Vietnam's zodiac is not the same as China's.",
+                "words": [
+                  {
+                    "id": "l15g1-c1-w1",
+                    "traditional": "越南的生肖",
+                    "pinyin": "Yuènán de shēngxiào",
+                    "meaning": "Vietnam's zodiac"
+                  },
+                  {
+                    "id": "l15g1-c1-w2",
+                    "traditional": "跟",
+                    "pinyin": "gēn",
+                    "meaning": "with; and"
+                  },
+                  {
+                    "id": "l15g1-c1-w3",
+                    "traditional": "中國的",
+                    "simplified": "中国的",
+                    "pinyin": "Zhōngguó de",
+                    "meaning": "China's"
+                  },
+                  {
+                    "id": "l15g1-c1-w4",
+                    "traditional": "不一樣",
+                    "simplified": "不一样",
+                    "pinyin": "bù yíyàng",
+                    "meaning": "different",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l15g1-confusion-bu-order",
+              "question": "Does 不 go before 跟 or before 一樣?",
+              "answer": "The negation 不 goes right in front of 一樣 (不一樣).",
+              "wrongTraditional": "越南的生肖不跟中國的一樣。",
+              "wrongSimplified": "越南的生肖不跟中国的一样。",
+              "right": {
+                "traditional": "越南的生肖跟中國的不一樣。",
+                "simplified": "越南的生肖跟中国的不一样。",
+                "pinyin": "Yuènán de shēngxiào gēn Zhōngguó de bù yíyàng.",
+                "english": "Vietnam's zodiac is not the same as China's.",
+                "words": [
+                  {
+                    "id": "l15g1-c2-w1",
+                    "traditional": "越南的生肖",
+                    "pinyin": "Yuènán de shēngxiào",
+                    "meaning": "Vietnam's zodiac"
+                  },
+                  {
+                    "id": "l15g1-c2-w2",
+                    "traditional": "跟",
+                    "pinyin": "gēn",
+                    "meaning": "with; and"
+                  },
+                  {
+                    "id": "l15g1-c3-w3",
+                    "traditional": "中國的",
+                    "simplified": "中国的",
+                    "pinyin": "Zhōngguó de",
+                    "meaning": "China's"
+                  },
+                  {
+                    "id": "l15g1-c4-w4",
+                    "traditional": "不一樣",
+                    "simplified": "不一样",
+                    "pinyin": "bù yíyàng",
+                    "meaning": "different",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "examples": [
+          {
+            "id": "l15g1-e1",
+            "number": 1,
+            "teachingNote": "跟 links the two things being compared.",
+            "text": {
+              "traditional": "越南的生肖跟中國的有點不一樣。",
+              "simplified": "越南的生肖跟中国的有点不一样。",
+              "pinyin": "Yuènán de shēngxiào gēn Zhōngguó de yǒudiǎn bù yíyàng.",
+              "english": "Vietnam's zodiac is a bit different from China's.",
+              "words": [
+                {
+                  "id": "l15g1-e1-w1",
+                  "traditional": "越南的生肖",
+                  "pinyin": "Yuènán de shēngxiào",
+                  "meaning": "Vietnam's zodiac"
+                },
+                {
+                  "id": "l15g1-e1-w2",
+                  "traditional": "跟",
+                  "pinyin": "gēn",
+                  "meaning": "with; and"
+                },
+                {
+                  "id": "l15g1-e1-w3",
+                  "traditional": "中國的",
+                  "simplified": "中国的",
+                  "pinyin": "Zhōngguó de",
+                  "meaning": "China's"
+                },
+                {
+                  "id": "l15g1-e1-w4",
+                  "traditional": "有點",
+                  "simplified": "有点",
+                  "pinyin": "yǒudiǎn",
+                  "meaning": "a bit"
+                },
+                {
+                  "id": "l15g1-e1-w5",
+                  "traditional": "不一樣",
+                  "simplified": "不一样",
+                  "pinyin": "bù yíyàng",
+                  "meaning": "different",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "l15g1-e2",
+            "number": 2,
+            "teachingNote": "Use 一樣 when two things share the exact same quality.",
+            "text": {
+              "traditional": "他的想法跟我不一樣。",
+              "simplified": "他的想法跟我不一样。",
+              "pinyin": "tā de xiǎngfǎ gēn wǒ bù yíyàng.",
+              "english": "His idea is different from mine.",
+              "words": [
+                {
+                  "id": "l15g1-e2-w1",
+                  "traditional": "他的想法",
+                  "pinyin": "tā de xiǎngfǎ",
+                  "meaning": "his idea"
+                },
+                {
+                  "id": "l15g1-e2-w2",
+                  "traditional": "跟",
+                  "pinyin": "gēn",
+                  "meaning": "with; and"
+                },
+                {
+                  "id": "l15g1-e2-w3",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "me"
+                },
+                {
+                  "id": "l15g1-e2-w4",
+                  "traditional": "不一樣",
+                  "simplified": "不一样",
+                  "pinyin": "bù yíyàng",
+                  "meaning": "different",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "l15g1-e3",
+            "number": 3,
+            "teachingNote": "Add a descriptive verb like 有意思 to say they are equally interesting.",
+            "text": {
+              "traditional": "這本書跟那本書一樣有意思。",
+              "simplified": "这本书跟那本书一样有意思。",
+              "pinyin": "zhè běn shū gēn nà běn shū yíyàng yǒuyìsi.",
+              "english": "This book is just as interesting as that book.",
+              "words": [
+                {
+                  "id": "l15g1-e3-w1",
+                  "traditional": "這本書",
+                  "simplified": "这本书",
+                  "pinyin": "zhè běn shū",
+                  "meaning": "this book"
+                },
+                {
+                  "id": "l15g1-e3-w2",
+                  "traditional": "跟",
+                  "pinyin": "gēn",
+                  "meaning": "with; and"
+                },
+                {
+                  "id": "l15g1-e3-w3",
+                  "traditional": "那本書",
+                  "simplified": "那本书",
+                  "pinyin": "nà běn shū",
+                  "meaning": "that book"
+                },
+                {
+                  "id": "l15g1-e3-w4",
+                  "traditional": "一樣",
+                  "simplified": "一样",
+                  "pinyin": "yíyàng",
+                  "meaning": "the same"
+                },
+                {
+                  "id": "l15g1-e3-w5",
+                  "traditional": "有意思",
+                  "pinyin": "yǒuyìsi",
+                  "meaning": "interesting",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "l15g1-e4",
+            "number": 4,
+            "teachingNote": "Ask if two things are the same using 嗎.",
+            "text": {
+              "traditional": "日本的生肖跟台灣的一樣嗎？",
+              "simplified": "日本的生肖跟台湾的一样吗？",
+              "pinyin": "Rìběn de shēngxiào gēn Táiwān de yíyàng ma?",
+              "english": "Is Japan's zodiac the same as Taiwan's?",
+              "words": [
+                {
+                  "id": "l15g1-e4-w1",
+                  "traditional": "日本的生肖",
+                  "pinyin": "Rìběn de shēngxiào",
+                  "meaning": "Japan's zodiac"
+                },
+                {
+                  "id": "l15g1-e4-w2",
+                  "traditional": "跟",
+                  "pinyin": "gēn",
+                  "meaning": "with; and"
+                },
+                {
+                  "id": "l15g1-e4-w3",
+                  "traditional": "台灣的",
+                  "simplified": "台湾的",
+                  "pinyin": "Táiwān de",
+                  "meaning": "Taiwan's"
+                },
+                {
+                  "id": "l15g1-e4-w4",
+                  "traditional": "一樣",
+                  "simplified": "一样",
+                  "pinyin": "yíyàng",
+                  "meaning": "the same"
+                },
+                {
+                  "id": "l15g1-e4-w5",
+                  "traditional": "嗎",
+                  "simplified": "吗",
+                  "pinyin": "ma",
+                  "meaning": "question ending word",
+                  "suffix": "？"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Compare with (不)一樣",
+        "exercisePreview": "State if things are the same or different",
+        "exerciseInstruction": "Choose the correct word to compare the items.",
+        "questions": [
+          {
+            "id": "l15g1-q1",
+            "number": 1,
+            "sectionLabel": "Compare",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "越南的生肖"
+              },
+              {
+                "type": "blank",
+                "id": "l15g1-q1-blank",
+                "answer": "跟",
+                "hint": "Use 跟 to introduce the second item."
+              },
+              {
+                "type": "text",
+                "traditional": "中國的不一樣。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "l15g1-q1-t1",
+                "traditional": "跟",
+                "pinyin": "gēn",
+                "meaning": "with; and"
+              },
+              {
+                "id": "l15g1-q1-t2",
+                "traditional": "比",
+                "pinyin": "bǐ",
+                "meaning": "compared with"
+              }
+            ],
+            "correctFeedback": "You compared the two zodiacs with 跟.",
+            "repairFeedback": "Use 跟 between the two items."
+          },
+          {
+            "id": "l15g1-q2",
+            "number": 2,
+            "sectionLabel": "Difference",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "他的想法跟我"
+              },
+              {
+                "type": "blank",
+                "id": "l15g1-q2-blank",
+                "answer": "不一樣",
+                "answerSimplified": "不一样",
+                "hint": "Say that they are not the same."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "l15g1-q2-t1",
+                "traditional": "不一樣",
+                "simplified": "不一样",
+                "pinyin": "bù yíyàng",
+                "meaning": "not the same"
+              },
+              {
+                "id": "l15g1-q2-t2",
+                "traditional": "一樣",
+                "simplified": "一样",
+                "pinyin": "yíyàng",
+                "meaning": "the same"
+              }
+            ],
+            "correctFeedback": "His idea is different from mine.",
+            "repairFeedback": "Choose 不一樣 for different ideas."
+          },
+          {
+            "id": "l15g1-q3",
+            "number": 3,
+            "sectionLabel": "Equivalence",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "這本書跟那本書"
+              },
+              {
+                "type": "blank",
+                "id": "l15g1-q3-blank",
+                "answer": "一樣",
+                "answerSimplified": "一样",
+                "hint": "Say that both are equally interesting."
+              },
+              {
+                "type": "text",
+                "traditional": "有意思。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "l15g1-q3-t1",
+                "traditional": "一樣",
+                "simplified": "一样",
+                "pinyin": "yíyàng",
+                "meaning": "equally / the same"
+              },
+              {
+                "id": "l15g1-q3-t2",
+                "traditional": "更",
+                "pinyin": "gèng",
+                "meaning": "even more"
+              }
+            ],
+            "correctFeedback": "Both books are equally interesting.",
+            "repairFeedback": "Use 一樣 before the adjective."
+          }
+        ]
+      }
+    ],
+    "dialogue": {
+      "id": "B1L15-D01",
+      "title": "十二生肖 · The Chinese Animal Zodiac",
+      "setting": "對話一 · Dialogue 1",
+      "printedPages": [
+        343,
+        344
+      ],
+      "audioReference": "15-1-1",
+      "grammarFocus": [
+        "跟",
+        "一樣",
+        "不一樣"
+      ],
+      "lines": [
+        {
+          "id": "B1L15-R01-L01",
+          "speaker": "家樂",
+          "text": {
+            "traditional": "我們下個星期要學第十五課，我剛才先看了一點，書上有很多種動物，我覺得很有意思。",
+            "simplified": "我們下個星期要學第十五課，我剛才先看了一點，書上有很多種動物，我覺得很有意思。",
+            "pinyin": "Wǒmen xià ge xīngqí yào xué dì shíwǔ kè, wǒ gāngcái xiān kàn le yìdiǎn, shū shàng yǒu hěn duō zhǒng dòngwù, wǒ juéde hěn yǒuyìsi.",
+            "english": "We are going to study Lesson 15 next week. I just glanced at it earlier. There are many kinds of animals in the book, which I think is very interesting.",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R01-L02",
+          "speaker": "友美",
+          "text": {
+            "traditional": "有哪些動物？",
+            "simplified": "有哪些動物？",
+            "pinyin": "Yǒu nǎxiē dòngwù?",
+            "english": "What animals are there?",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R01-L03",
+          "speaker": "家樂",
+          "text": {
+            "traditional": "我記得有羊、馬、兔子，最特別的是龍。你看看！",
+            "simplified": "我記得有羊、馬、兔子，最特別的是龍。你看看！",
+            "pinyin": "Wǒ jìdé yǒu yáng, mǎ, tùzi, zuì tèbié de shì lóng. Nǐ kànkan!",
+            "english": "I remember there are goats, horses, rabbits, and the most special one is the dragon. Take a look!",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R01-L04",
+          "speaker": "友美",
+          "text": {
+            "traditional": "原來是十二生肖，真的很有意思。",
+            "simplified": "原來是十二生肖，真的很有意思。",
+            "pinyin": "Yuánlái shì shí'èr shēngxiào, zhēn de hěn yǒuyìsi.",
+            "english": "Oh, so it’s the Chinese zodiac! That’s really fascinating.",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R01-L05",
+          "speaker": "家樂",
+          "text": {
+            "traditional": "什麼是十二生肖？",
+            "simplified": "什麼是十二生肖？",
+            "pinyin": "Shénme shì shí'èr shēngxiào?",
+            "english": "What is the Chinese zodiac?",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R01-L06",
+          "speaker": "友美",
+          "text": {
+            "traditional": "華人用不一樣的動物代表每一年，一共有十二種動物。",
+            "simplified": "華人用不一樣的動物代表每一年，一共有十二種動物。",
+            "pinyin": "Huárén yòng bù yíyàng de dòngwù dàibiǎo měi yì nián, yígòng yǒu shí'èr zhǒng dòngwù.",
+            "english": "Chinese people use different animals to represent each year. There are twelve animals in total.",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R01-L07",
+          "speaker": "元真",
+          "text": {
+            "traditional": "越南也有十二生肖，可是我們沒有兔年，有貓年。我是貓年出生的，屬貓。",
+            "simplified": "越南也有十二生肖，可是我們沒有兔年，有貓年。我是貓年出生的，屬貓。",
+            "pinyin": "Yuènán yě yǒu shí'èr shēngxiào, kěshì wǒmen méiyǒu tùnián, yǒu māonián. Wǒ shì māonián chūshēng de, shǔ māo.",
+            "english": "Vietnam also has the twelve zodiac animals, but we don't have the Year of the Rabbit; we have the Year of the Cat. I was born in the Year of the Cat, so my zodiac sign is the cat.",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R01-L08",
+          "speaker": "家樂",
+          "text": {
+            "traditional": "真的？好有趣！原來越南的生肖跟中國的有點不一樣。我好想知道我屬什麼。",
+            "simplified": "真的？好有趣！原來越南的生肖跟中國的有點不一樣。我好想知道我屬什麼。",
+            "pinyin": "Zhēn de? Hǎo yǒuqù! Yuánlái Yuènán de shēngxiào gēn Zhōngguó de yǒudiǎn bù yíyàng. Wǒ hǎo xiǎng zhīdào wǒ shǔ shénme.",
+            "english": "Really? How interesting! It turns out Vietnam's zodiac is a bit different from China's. I really want to know what sign I am.",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R01-L09",
+          "speaker": "友美",
+          "text": {
+            "traditional": "很簡單，上網一查就知道了。",
+            "simplified": "很簡單，上網一查就知道了。",
+            "pinyin": "Hěn jiǎndān, shàngwǎng yì chá jiù zhīdào le.",
+            "english": "It's very simple. Just look it up online and you'll know immediately.",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R01-L10",
+          "speaker": "家樂",
+          "text": {
+            "traditional": "好，我上網查查看。",
+            "simplified": "好，我上網查查看。",
+            "pinyin": "Hǎo, wǒ shàngwǎng cháchá kàn.",
+            "english": "Okay, I'll search for it online.",
+            "words": []
+          }
+        }
+      ],
+      "comprehension": {
+        "prompt": "越南的生肖有什麼特別的地方？",
+        "options": [
+          "有貓年，沒有兔年",
+          "有龍年，沒有馬年",
+          "有狗年，沒有豬年",
+          "沒有生肖"
+        ],
+        "answer": "有貓年，沒有兔年",
+        "hint": "Listen to Yuanzhen talk about Vietnam's zodiac."
+      }
+    },
+    "completionTitle": "Part 1 complete — you can compare things and zodiacs.",
+    "completionDescription": "You compared cultural customs and items using 跟…一樣 and 跟…不一樣.",
+    "nextBookLabel": "Next · Part 2 (Dialogue 2)."
+  },
+  "LESSON_FIFTEEN_PART_TWO": {
+    "id": "B1L15-P02-R02",
+    "bookId": 1,
+    "lessonId": 15,
+    "partId": 2,
+    "title": "Grammar 2 · Describe Ongoing States with 著",
+    "grammarPages": [
+      {
+        "bookId": 1,
+        "lessonId": 15,
+        "lessonTitle": "十二生肖",
+        "lessonTitleEnglish": "The Chinese Animal Zodiac",
+        "id": "B1L15-G02",
+        "partId": 2,
+        "grammarNumber": 2,
+        "titleTraditional": "S + V1 + 著 + (O1) + V2 + O2 (狀態持續)",
+        "titleEnglish": "Describe an Ongoing State with 著",
+        "learnerPromise": "Describe an ongoing posture, holding state, or background action.",
+        "printedPages": [
+          354
+        ],
+        "audioReference": "15-2-1",
+        "bookPageAvailable": true,
+        "explanation": "The particle 著 attaches to a verb (like 拿著, 放著, 坐著) to show that the physical position or state continues, often as the background while another action happens.",
+        "focusTerms": [
+          "著"
+        ],
+        "teachingGlossary": [
+          {
+            "id": "b1l15-g02-glossary-1",
+            "traditional": "著",
+            "pinyin": "zhe",
+            "meaning": "ongoing state particle"
+          },
+          {
+            "id": "b1l15-g02-glossary-2",
+            "traditional": "拿著",
+            "pinyin": "názhe",
+            "meaning": "holding in hand"
+          },
+          {
+            "id": "b1l15-g02-glossary-3",
+            "traditional": "放著",
+            "pinyin": "fàngzhe",
+            "meaning": "placed / sitting on"
+          },
+          {
+            "id": "b1l15-g02-glossary-4",
+            "traditional": "帶著",
+            "simplified": "带着",
+            "pinyin": "dàizhe",
+            "meaning": "bringing / carrying with"
+          },
+          {
+            "id": "b1l15-g02-glossary-5",
+            "traditional": "燈籠",
+            "simplified": "灯笼",
+            "pinyin": "dēnglóng",
+            "meaning": "lantern"
+          },
+          {
+            "id": "b1l15-g02-glossary-6",
+            "traditional": "桌子",
+            "pinyin": "zhuōzi",
+            "meaning": "table; desk"
+          },
+          {
+            "id": "b1l15-g02-glossary-7",
+            "traditional": "手",
+            "pinyin": "shǒu",
+            "meaning": "hand"
+          },
+          {
+            "id": "b1l15-g02-glossary-8",
+            "traditional": "黑板",
+            "pinyin": "hēibǎn",
+            "meaning": "blackboard"
+          },
+          {
+            "id": "b1l15-g02-glossary-9",
+            "traditional": "小孩",
+            "pinyin": "xiǎohái",
+            "meaning": "child; children"
+          },
+          {
+            "id": "b1l15-g02-glossary-10",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
+          },
+          {
+            "id": "b1l15-g02-glossary-11",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          },
+          {
+            "id": "b1l15-g02-glossary-12",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "he; him"
+          },
+          {
+            "id": "b1l15-g02-glossary-13",
+            "traditional": "她",
+            "pinyin": "tā",
+            "meaning": "she; her"
+          },
+          {
+            "id": "b1l15-g02-glossary-14",
+            "traditional": "我們",
+            "simplified": "我们",
+            "pinyin": "wǒmen",
+            "meaning": "we; us"
+          },
+          {
+            "id": "b1l15-g02-glossary-15",
+            "traditional": "老師",
+            "simplified": "老师",
+            "pinyin": "lǎoshī",
+            "meaning": "teacher"
+          },
+          {
+            "id": "b1l15-g02-glossary-16",
+            "traditional": "朋友",
+            "pinyin": "péngyǒu",
+            "meaning": "friend"
+          },
+          {
+            "id": "b1l15-g02-glossary-17",
+            "traditional": "家人",
+            "pinyin": "jiārén",
+            "meaning": "family"
+          },
+          {
+            "id": "b1l15-g02-glossary-18",
+            "traditional": "人",
+            "pinyin": "rén",
+            "meaning": "person; people"
+          },
+          {
+            "id": "b1l15-g02-glossary-19",
+            "traditional": "很",
+            "pinyin": "hěn",
+            "meaning": "very"
+          },
+          {
+            "id": "b1l15-g02-glossary-20",
+            "traditional": "不",
+            "pinyin": "bù",
+            "meaning": "not"
+          },
+          {
+            "id": "b1l15-g02-glossary-21",
+            "traditional": "都",
+            "pinyin": "dōu",
+            "meaning": "all"
+          },
+          {
+            "id": "b1l15-g02-glossary-22",
+            "traditional": "也",
+            "pinyin": "yě",
+            "meaning": "also; too"
+          },
+          {
+            "id": "b1l15-g02-glossary-23",
+            "traditional": "有",
+            "pinyin": "yǒu",
+            "meaning": "have; there is"
+          },
+          {
+            "id": "b1l15-g02-glossary-24",
+            "traditional": "沒有",
+            "pinyin": "méiyǒu",
+            "meaning": "do not have; not have"
+          },
+          {
+            "id": "b1l15-g02-glossary-25",
+            "traditional": "是",
+            "pinyin": "shì",
+            "meaning": "is; are"
+          },
+          {
+            "id": "b1l15-g02-glossary-26",
+            "traditional": "了",
+            "pinyin": "le",
+            "meaning": "ending word: something is done or has changed"
+          },
+          {
+            "id": "b1l15-g02-glossary-27",
+            "traditional": "的",
+            "pinyin": "de",
+            "meaning": "link word that connects a describing word to a thing"
+          },
+          {
+            "id": "b1l15-g02-glossary-28",
+            "traditional": "就",
+            "pinyin": "jiù",
+            "meaning": "then; right away"
+          },
+          {
+            "id": "b1l15-g02-glossary-29",
+            "traditional": "去",
+            "pinyin": "qù",
+            "meaning": "go"
+          },
+          {
+            "id": "b1l15-g02-glossary-30",
+            "traditional": "來",
+            "simplified": "来",
+            "pinyin": "lái",
+            "meaning": "come"
+          },
+          {
+            "id": "b1l15-g02-glossary-31",
+            "traditional": "想",
+            "pinyin": "xiǎng",
+            "meaning": "want; think"
+          },
+          {
+            "id": "b1l15-g02-glossary-32",
+            "traditional": "看",
+            "pinyin": "kàn",
+            "meaning": "watch; look"
+          },
+          {
+            "id": "b1l15-g02-glossary-33",
+            "traditional": "買",
+            "simplified": "买",
+            "pinyin": "mǎi",
+            "meaning": "buy"
+          },
+          {
+            "id": "b1l15-g02-glossary-34",
+            "traditional": "說",
+            "simplified": "说",
+            "pinyin": "shuō",
+            "meaning": "speak; say"
+          },
+          {
+            "id": "b1l15-g02-glossary-35",
+            "traditional": "跟",
+            "pinyin": "gēn",
+            "meaning": "with; and"
+          },
+          {
+            "id": "b1l15-g02-glossary-36",
+            "traditional": "送",
+            "pinyin": "sòng",
+            "meaning": "give as a gift; send"
+          },
+          {
+            "id": "b1l15-g02-glossary-37",
+            "traditional": "練習",
+            "simplified": "练习",
+            "pinyin": "liànxí",
+            "meaning": "practice"
+          },
+          {
+            "id": "b1l15-g02-glossary-38",
+            "traditional": "中文",
+            "pinyin": "Zhōngwén",
+            "meaning": "Chinese"
+          },
+          {
+            "id": "b1l15-g02-glossary-39",
+            "traditional": "電影",
+            "simplified": "电影",
+            "pinyin": "diànyǐng",
+            "meaning": "movie; film"
+          },
+          {
+            "id": "b1l15-g02-glossary-40",
+            "traditional": "車",
+            "pinyin": "chē",
+            "meaning": "car; vehicle"
+          },
+          {
+            "id": "b1l15-g02-glossary-41",
+            "traditional": "下雪",
+            "pinyin": "xià xuě",
+            "meaning": "to snow"
+          },
+          {
+            "id": "b1l15-g02-glossary-42",
+            "traditional": "下雨",
+            "pinyin": "xià yǔ",
+            "meaning": "to rain"
+          },
+          {
+            "id": "b1l15-g02-glossary-43",
+            "traditional": "放假",
+            "pinyin": "fàng jià",
+            "meaning": "to have a holiday or vacation"
+          },
+          {
+            "id": "b1l15-g02-glossary-44",
+            "traditional": "下課",
+            "simplified": "下课",
+            "pinyin": "xià kè",
+            "meaning": "to finish class"
+          },
+          {
+            "id": "b1l15-g02-glossary-45",
+            "traditional": "旅行",
+            "pinyin": "lǚxíng",
+            "meaning": "to travel"
+          },
+          {
+            "id": "b1l15-g02-glossary-46",
+            "traditional": "火車站",
+            "pinyin": "huǒchē zhàn",
+            "meaning": "train station"
+          },
+          {
+            "id": "b1l15-g02-glossary-47",
+            "traditional": "百貨公司",
+            "simplified": "百货公司",
+            "pinyin": "bǎihuò gōngsī",
+            "meaning": "department store"
+          },
+          {
+            "id": "b1l15-g02-glossary-48",
+            "traditional": "學校",
+            "simplified": "学校",
+            "pinyin": "xuéxiào",
+            "meaning": "school"
+          },
+          {
+            "id": "b1l15-g02-glossary-49",
+            "traditional": "醫院",
+            "simplified": "医院",
+            "pinyin": "yīyuàn",
+            "meaning": "hospital"
+          },
+          {
+            "id": "b1l15-g02-glossary-50",
+            "traditional": "公園",
+            "simplified": "公园",
+            "pinyin": "gōngyuán",
+            "meaning": "park"
+          },
+          {
+            "id": "b1l15-g02-glossary-51",
+            "traditional": "家",
+            "pinyin": "jiā",
+            "meaning": "home; family"
+          },
+          {
+            "id": "b1l15-g02-glossary-52",
+            "traditional": "台北",
+            "pinyin": "Táiběi",
+            "meaning": "Taipei"
+          },
+          {
+            "id": "b1l15-g02-glossary-53",
+            "traditional": "台灣",
+            "simplified": "台湾",
+            "pinyin": "Táiwān",
+            "meaning": "Taiwan"
+          },
+          {
+            "id": "b1l15-g02-glossary-54",
+            "traditional": "離",
+            "pinyin": "lí",
+            "meaning": "away from; from (a place)"
+          },
+          {
+            "id": "b1l15-g02-glossary-55",
+            "traditional": "近",
+            "pinyin": "jìn",
+            "meaning": "close; near"
+          },
+          {
+            "id": "b1l15-g02-glossary-56",
+            "traditional": "遠",
+            "simplified": "远",
+            "pinyin": "yuǎn",
+            "meaning": "far"
+          },
+          {
+            "id": "b1l15-g02-glossary-57",
+            "traditional": "比",
+            "pinyin": "bǐ",
+            "meaning": "compared with"
+          },
+          {
+            "id": "b1l15-g02-glossary-58",
+            "traditional": "更",
+            "pinyin": "gèng",
+            "meaning": "even more"
+          },
+          {
+            "id": "b1l15-g02-glossary-59",
+            "traditional": "冷",
+            "pinyin": "lěng",
+            "meaning": "cold"
+          },
+          {
+            "id": "b1l15-g02-glossary-60",
+            "traditional": "熱",
+            "simplified": "热",
+            "pinyin": "rè",
+            "meaning": "hot"
+          },
+          {
+            "id": "b1l15-g02-glossary-61",
+            "traditional": "重要",
+            "pinyin": "zhòngyào",
+            "meaning": "important"
+          },
+          {
+            "id": "b1l15-g02-glossary-62",
+            "traditional": "聰明",
+            "simplified": "聪明",
+            "pinyin": "cōngming",
+            "meaning": "smart"
+          },
+          {
+            "id": "b1l15-g02-glossary-63",
+            "traditional": "好看",
+            "pinyin": "hǎokàn",
+            "meaning": "nice-looking"
+          },
+          {
+            "id": "b1l15-g02-glossary-64",
+            "traditional": "大",
+            "pinyin": "dà",
+            "meaning": "big"
+          },
+          {
+            "id": "b1l15-g02-glossary-65",
+            "traditional": "小",
+            "pinyin": "xiǎo",
+            "meaning": "small"
+          },
+          {
+            "id": "b1l15-g02-glossary-66",
+            "traditional": "今天",
+            "pinyin": "jīntiān",
+            "meaning": "today"
+          },
+          {
+            "id": "b1l15-g02-glossary-67",
+            "traditional": "昨天",
+            "pinyin": "zuótiān",
+            "meaning": "yesterday"
+          },
+          {
+            "id": "b1l15-g02-glossary-68",
+            "traditional": "明天",
+            "pinyin": "míngtiān",
+            "meaning": "tomorrow"
+          },
+          {
+            "id": "b1l15-g02-glossary-69",
+            "traditional": "現在",
+            "simplified": "现在",
+            "pinyin": "xiànzài",
+            "meaning": "now"
+          },
+          {
+            "id": "b1l15-g02-glossary-70",
+            "traditional": "上個月",
+            "pinyin": "shàng ge yuè",
+            "meaning": "last month"
+          },
+          {
+            "id": "b1l15-g02-glossary-71",
+            "traditional": "本來",
+            "pinyin": "běnlái",
+            "meaning": "originally; at first"
+          },
+          {
+            "id": "b1l15-g02-glossary-72",
+            "traditional": "原來",
+            "simplified": "原来",
+            "pinyin": "yuánlái",
+            "meaning": "originally; as it turns out"
+          },
+          {
+            "id": "b1l15-g02-glossary-73",
+            "traditional": "後來",
+            "simplified": "后来",
+            "pinyin": "hòulái",
+            "meaning": "later; afterwards"
+          },
+          {
+            "id": "b1l15-g02-glossary-74",
+            "traditional": "三隻狗",
+            "simplified": "三只狗",
+            "pinyin": "sān zhī gǒu",
+            "meaning": "three dogs"
+          },
+          {
+            "id": "b1l15-g02-glossary-75",
+            "traditional": "夜市",
+            "pinyin": "yèshì",
+            "meaning": "night market"
+          },
+          {
+            "id": "b1l15-g02-glossary-76",
+            "traditional": "食物",
+            "pinyin": "shíwù",
+            "meaning": "food"
+          },
+          {
+            "id": "b1l15-g02-glossary-77",
+            "traditional": "遊戲",
+            "simplified": "游戏",
+            "pinyin": "yóuxì",
+            "meaning": "game"
+          },
+          {
+            "id": "b1l15-g02-glossary-78",
+            "traditional": "風景",
+            "simplified": "风景",
+            "pinyin": "fēngjǐng",
+            "meaning": "scenery"
+          },
+          {
+            "id": "b1l15-g02-glossary-79",
+            "traditional": "小籠包",
+            "simplified": "小笼包",
+            "pinyin": "xiǎolóngbāo",
+            "meaning": "xiaolongbao (soup dumplings)"
+          },
+          {
+            "id": "b1l15-g02-glossary-80",
+            "traditional": "牛肉麵",
+            "simplified": "牛肉面",
+            "pinyin": "niúròu miàn",
+            "meaning": "beef noodles"
+          },
+          {
+            "id": "b1l15-g02-glossary-81",
+            "traditional": "珍珠奶茶",
+            "pinyin": "zhēnzhū nǎichá",
+            "meaning": "pearl milk tea"
+          }
+        ],
+        "pattern": "Subject / Place + Verb + 著 + Object (+ Next Action)",
+        "patternColumns": [
+          "Who / Where",
+          "Verb + 著",
+          "What is there / Second Action"
+        ],
+        "patternColumnDetails": [
+          "Subject or Location",
+          "State verb + 著",
+          "Object or continuing action"
+        ],
+        "patternAccentColumn": 1,
+        "patternRows": [
+          {
+            "id": "l15g2-p1",
+            "subject": [
+              {
+                "id": "l15g2-p1-s1",
+                "traditional": "你手裡",
+                "simplified": "你手里",
+                "pinyin": "nǐ shǒu lǐ",
+                "meaning": "in your hand"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l15g2-p1-g1",
+                "traditional": "拿著",
+                "pinyin": "názhe",
+                "meaning": "holding"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l15g2-p1-c1",
+                "traditional": "什麼",
+                "simplified": "什么",
+                "pinyin": "shénme",
+                "meaning": "what",
+                "suffix": "？"
+              }
+            ],
+            "english": "What are you holding in your hand?"
+          },
+          {
+            "id": "l15g2-p2",
+            "subject": [
+              {
+                "id": "l15g2-p2-s1",
+                "traditional": "桌上",
+                "pinyin": "zhuō shàng",
+                "meaning": "on the table"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l15g2-p2-g1",
+                "traditional": "放著",
+                "pinyin": "fàngzhe",
+                "meaning": "placed / sitting"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l15g2-p2-c1",
+                "traditional": "幾隻",
+                "simplified": "几只",
+                "pinyin": "jǐ zhī",
+                "meaning": "a few (animals)"
+              },
+              {
+                "id": "l15g2-p2-c2",
+                "traditional": "動物",
+                "simplified": "动物",
+                "pinyin": "dòngwù",
+                "meaning": "animals",
+                "suffix": "。"
+              }
+            ],
+            "english": "A few animal figures are placed on the table."
+          },
+          {
+            "id": "l15g2-p3",
+            "subject": [
+              {
+                "id": "l15g2-p3-s1",
+                "traditional": "很多大人",
+                "pinyin": "hěn duō dàrén",
+                "meaning": "many adults"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l15g2-p3-g1",
+                "traditional": "帶著",
+                "simplified": "带着",
+                "pinyin": "dàizhe",
+                "meaning": "bringing"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l15g2-p3-c1",
+                "traditional": "小孩",
+                "pinyin": "xiǎohái",
+                "meaning": "kids"
+              },
+              {
+                "id": "l15g2-p3-c2",
+                "traditional": "去看燈會",
+                "simplified": "去看灯会",
+                "pinyin": "qù kàn dēnghuì",
+                "meaning": "go see the lanterns",
+                "suffix": "。"
+              }
+            ],
+            "english": "Many adults brought children to see the lantern show."
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "l15g2-confusion-zhe-vs-zai",
+              "question": "What is the difference between 正在 and 著?",
+              "answer": "正在 describes an ongoing dynamic action (e.g. 正在吃). 著 describes a static continuous state or posture (e.g. 拿著, 放著, 坐著).",
+              "wrongTraditional": "他在手裡正在拿燈籠。",
+              "wrongSimplified": "他在手里正在拿灯笼。",
+              "right": {
+                "traditional": "他手裡拿著燈籠。",
+                "simplified": "他手里拿着灯笼。",
+                "pinyin": "tā shǒu lǐ názhe dēnglóng.",
+                "english": "He is holding a lantern in his hand.",
+                "words": [
+                  {
+                    "id": "l15g2-c1-w1",
+                    "traditional": "他手裡",
+                    "simplified": "他手里",
+                    "pinyin": "tā shǒu lǐ",
+                    "meaning": "in his hand"
+                  },
+                  {
+                    "id": "l15g2-c1-w2",
+                    "traditional": "拿著",
+                    "pinyin": "názhe",
+                    "meaning": "holding"
+                  },
+                  {
+                    "id": "l15g2-c1-w3",
+                    "traditional": "燈籠",
+                    "simplified": "灯笼",
+                    "pinyin": "dēnglóng",
+                    "meaning": "lantern",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l15g2-confusion-position",
+              "question": "Where does 著 attach in the sentence?",
+              "answer": "著 attaches directly right after the verb that describes the posture or state (拿著, 放著).",
+              "wrongTraditional": "他拿燈籠著。",
+              "wrongSimplified": "他拿灯笼着。",
+              "right": {
+                "traditional": "他手裡拿著燈籠。",
+                "simplified": "他手里拿着灯笼。",
+                "pinyin": "tā shǒu lǐ názhe dēnglóng.",
+                "english": "He is holding a lantern in his hand.",
+                "words": [
+                  {
+                    "id": "l15g2-c2-w1",
+                    "traditional": "他手裡",
+                    "simplified": "他手里",
+                    "pinyin": "tā shǒu lǐ",
+                    "meaning": "in his hand"
+                  },
+                  {
+                    "id": "l15g2-c2-w2",
+                    "traditional": "拿著",
+                    "pinyin": "názhe",
+                    "meaning": "holding"
+                  },
+                  {
+                    "id": "l15g2-c2-w3",
+                    "traditional": "燈籠",
+                    "simplified": "灯笼",
+                    "pinyin": "dēnglóng",
+                    "meaning": "lantern",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "examples": [
+          {
+            "id": "l15g2-e1",
+            "number": 1,
+            "teachingNote": "拿著 describes holding something continuously.",
+            "text": {
+              "traditional": "中明，你手裡拿著什麼？",
+              "simplified": "中明，你手里拿着什么？",
+              "pinyin": "Zhōngmíng, nǐ shǒu lǐ názhe shénme?",
+              "english": "Zhongming, what are you holding in your hand?",
+              "words": [
+                {
+                  "id": "l15g2-e1-w1",
+                  "traditional": "中明",
+                  "pinyin": "Zhōngmíng",
+                  "meaning": "Zhongming"
+                },
+                {
+                  "id": "l15g2-e1-w2",
+                  "traditional": "你手裡",
+                  "simplified": "你手里",
+                  "pinyin": "nǐ shǒu lǐ",
+                  "meaning": "in your hand"
+                },
+                {
+                  "id": "l15g2-e1-w3",
+                  "traditional": "拿著",
+                  "pinyin": "názhe",
+                  "meaning": "holding"
+                },
+                {
+                  "id": "l15g2-e1-w4",
+                  "traditional": "什麼",
+                  "simplified": "什么",
+                  "pinyin": "shénme",
+                  "meaning": "what",
+                  "suffix": "？"
+                }
+              ]
+            }
+          },
+          {
+            "id": "l15g2-e2",
+            "number": 2,
+            "teachingNote": "放著 describes an object resting in a position.",
+            "text": {
+              "traditional": "桌上放著幾隻用紙做的動物。",
+              "simplified": "桌上放着几只用纸做的动物。",
+              "pinyin": "zhuō shàng fàngzhe jǐ zhī yòng zhǐ zuò de dòngwù.",
+              "english": "Several animals made of paper were sitting on the table.",
+              "words": [
+                {
+                  "id": "l15g2-e2-w1",
+                  "traditional": "桌上",
+                  "pinyin": "zhuō shàng",
+                  "meaning": "on the table"
+                },
+                {
+                  "id": "l15g2-e2-w2",
+                  "traditional": "放著",
+                  "pinyin": "fàngzhe",
+                  "meaning": "placed / sitting"
+                },
+                {
+                  "id": "l15g2-e2-w3",
+                  "traditional": "幾隻",
+                  "simplified": "几只",
+                  "pinyin": "jǐ zhī",
+                  "meaning": "a few"
+                },
+                {
+                  "id": "l15g2-e2-w4",
+                  "traditional": "用紙做的",
+                  "simplified": "用纸做的",
+                  "pinyin": "yòng zhǐ zuò de",
+                  "meaning": "made of paper"
+                },
+                {
+                  "id": "l15g2-e2-w5",
+                  "traditional": "動物",
+                  "simplified": "动物",
+                  "pinyin": "dòngwù",
+                  "meaning": "animals",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "l15g2-e3",
+            "number": 3,
+            "teachingNote": "帶著 describes bringing or accompanying someone.",
+            "text": {
+              "traditional": "很多大人帶著小孩去看燈會。",
+              "simplified": "很多大人带着小孩去看灯会。",
+              "pinyin": "hěn duō dàrén dàizhe xiǎohái qù kàn dēnghuì.",
+              "english": "Many adults brought children along to see the lantern festival.",
+              "words": [
+                {
+                  "id": "l15g2-e3-w1",
+                  "traditional": "很多大人",
+                  "pinyin": "hěn duō dàrén",
+                  "meaning": "many adults"
+                },
+                {
+                  "id": "l15g2-e3-w2",
+                  "traditional": "帶著",
+                  "simplified": "带着",
+                  "pinyin": "dàizhe",
+                  "meaning": "bringing"
+                },
+                {
+                  "id": "l15g2-e3-w3",
+                  "traditional": "小孩",
+                  "pinyin": "xiǎohái",
+                  "meaning": "kids"
+                },
+                {
+                  "id": "l15g2-e3-w4",
+                  "traditional": "去看燈會",
+                  "simplified": "去看灯会",
+                  "pinyin": "qù kàn dēnghuì",
+                  "meaning": "go see the lantern festival",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "l15g2-e4",
+            "number": 4,
+            "teachingNote": "門上開著 / 牆上貼著 shows an ongoing display on a surface.",
+            "text": {
+              "traditional": "黑板上貼著很多張動物的圖片。",
+              "simplified": "黑板上贴着很多张动物的图片。",
+              "pinyin": "hēibǎn shàng tiēzhe hěn duō zhāng dòngwù de túpiàn.",
+              "english": "Many pictures of animals were posted on the blackboard.",
+              "words": [
+                {
+                  "id": "l15g2-e4-w1",
+                  "traditional": "黑板上",
+                  "pinyin": "hēibǎn shàng",
+                  "meaning": "on the blackboard"
+                },
+                {
+                  "id": "l15g2-e4-w2",
+                  "traditional": "貼著",
+                  "simplified": "贴着",
+                  "pinyin": "tiēzhe",
+                  "meaning": "posted / stuck"
+                },
+                {
+                  "id": "l15g2-e4-w3",
+                  "traditional": "很多張",
+                  "simplified": "很多张",
+                  "pinyin": "hěn duō zhāng",
+                  "meaning": "many sheets"
+                },
+                {
+                  "id": "l15g2-e4-w4",
+                  "traditional": "動物的圖片",
+                  "simplified": "动物的图片",
+                  "pinyin": "dòngwù de túpiàn",
+                  "meaning": "animal pictures",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Describe a state with 著",
+        "exercisePreview": "Show what continues in a position",
+        "exerciseInstruction": "Pick the verb form with 著 to describe the state.",
+        "questions": [
+          {
+            "id": "l15g2-q1",
+            "number": 1,
+            "sectionLabel": "Holding",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你手裡"
+              },
+              {
+                "type": "blank",
+                "id": "l15g2-q1-blank",
+                "answer": "拿著",
+                "answerSimplified": "拿着",
+                "hint": "Describe what is held in the hand."
+              },
+              {
+                "type": "text",
+                "traditional": "什麼？"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "l15g2-q1-t1",
+                "traditional": "拿著",
+                "simplified": "拿着",
+                "pinyin": "názhe",
+                "meaning": "holding"
+              },
+              {
+                "id": "l15g2-q1-t2",
+                "traditional": "放了",
+                "pinyin": "fàng le",
+                "meaning": "placed"
+              }
+            ],
+            "correctFeedback": "Holding something in the hand.",
+            "repairFeedback": "Use 拿著 for holding."
+          },
+          {
+            "id": "l15g2-q2",
+            "number": 2,
+            "sectionLabel": "Placement",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "桌上"
+              },
+              {
+                "type": "blank",
+                "id": "l15g2-q2-blank",
+                "answer": "放著",
+                "answerSimplified": "放着",
+                "hint": "Describe items placed on the desk."
+              },
+              {
+                "type": "text",
+                "traditional": "幾隻動物。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "l15g2-q2-t1",
+                "traditional": "放著",
+                "simplified": "放着",
+                "pinyin": "fàngzhe",
+                "meaning": "placed / sitting"
+              },
+              {
+                "id": "l15g2-q2-t2",
+                "traditional": "去著",
+                "pinyin": "qùzhe",
+                "meaning": "going"
+              }
+            ],
+            "correctFeedback": "The items are resting on the desk.",
+            "repairFeedback": "Use 放著 for placed items."
+          },
+          {
+            "id": "l15g2-q3",
+            "number": 3,
+            "sectionLabel": "Accompanying",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "很多大人"
+              },
+              {
+                "type": "blank",
+                "id": "l15g2-q3-blank",
+                "answer": "帶著",
+                "answerSimplified": "带着",
+                "hint": "Describe bringing children along."
+              },
+              {
+                "type": "text",
+                "traditional": "小孩去看燈會。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "l15g2-q3-t1",
+                "traditional": "帶著",
+                "simplified": "带着",
+                "pinyin": "dàizhe",
+                "meaning": "bringing"
+              },
+              {
+                "id": "l15g2-q3-t2",
+                "traditional": "跟著",
+                "simplified": "跟着",
+                "pinyin": "gēnzhe",
+                "meaning": "following"
+              }
+            ],
+            "correctFeedback": "Adults bringing children along.",
+            "repairFeedback": "Use 帶著 for bringing someone."
+          }
+        ]
+      }
+    ],
+    "dialogue": {
+      "id": "B1L15-D02",
+      "title": "十二生肖 · The Chinese Animal Zodiac",
+      "setting": "對話二 · Dialogue 2",
+      "printedPages": [
+        351,
+        352
+      ],
+      "audioReference": "15-2-1",
+      "grammarFocus": [
+        "著",
+        "拿著",
+        "帶著"
+      ],
+      "lines": [
+        {
+          "id": "B1L15-R02-L01",
+          "speaker": "宜文",
+          "text": {
+            "traditional": "中明，你手裡拿著什麼？",
+            "simplified": "中明，你手裡拿著什麼？",
+            "pinyin": "Zhōngmíng, nǐ shǒulǐ názhe shénme?",
+            "english": "Zhongming, what are you holding in your hand?",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R02-L02",
+          "speaker": "中明",
+          "text": {
+            "traditional": "這是燈籠。",
+            "simplified": "這是燈籠。",
+            "pinyin": "Zhè shì dēnglóng.",
+            "english": "This is a lantern.",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R02-L03",
+          "speaker": "宜文",
+          "text": {
+            "traditional": "燈籠上的小老虎好可愛。",
+            "simplified": "燈籠上的小老虎好可愛。",
+            "pinyin": "Dēnglóng shàng de xiǎo lǎohǔ hǎo kě'ài.",
+            "english": "The little tiger on the lantern is so cute.",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R02-L04",
+          "speaker": "中明",
+          "text": {
+            "traditional": "這是我朋友做的，因為他屬虎。你知道十二生肖嗎？",
+            "simplified": "這是我朋友做的，因為他屬虎。你知道十二生肖嗎？",
+            "pinyin": "Zhè shì wǒ péngyǒu zuò de, yīnwèi tā shǔ hǔ. Nǐ zhīdào shí'èr shēngxiào ma?",
+            "english": "A friend of mine made it because he was born in the year of the tiger. Do you know about the twelve zodiac animals?",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R02-L05",
+          "speaker": "宜文",
+          "text": {
+            "traditional": "知道，友美跟我講過。",
+            "simplified": "知道，友美跟我講過。",
+            "pinyin": "Zhīdào, Yǒuměi gēn wǒ jiǎng guò.",
+            "english": "Yes, Youmei mentioned it to me.",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R02-L06",
+          "speaker": "中明",
+          "text": {
+            "traditional": "這個星期六是元宵節，你跟友美會去看燈會嗎？",
+            "simplified": "這個星期六是元宵節，你跟友美會去看燈會嗎？",
+            "pinyin": "Zhège xīngqíliù shì Yuánxiāojié, nǐ gēn Yǒuměi huì qù kàn dēnghuì ma?",
+            "english": "This Saturday is the Lantern Festival. Are you and Youmei going to see the lantern show?",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R02-L07",
+          "speaker": "宜文",
+          "text": {
+            "traditional": "友美說她想去，我還沒決定去不去。燈會好玩嗎？",
+            "simplified": "友美說她想去，我還沒決定去不去。燈會好玩嗎？",
+            "pinyin": "Yǒuměi shuō tā xiǎng qù, wǒ hái méi juédìng qù bú qù. Dēnghuì hǎowán ma?",
+            "english": "Youmei said she wants to go, but I haven't decided yet. Is the lantern festival fun?",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R02-L08",
+          "speaker": "中明",
+          "text": {
+            "traditional": "我去年去看了，很多大人帶著小孩去看燈會，非常熱鬧。我照了很多相片。",
+            "simplified": "我去年去看了，很多大人帶著小孩去看燈會，非常熱鬧。我照了很多相片。",
+            "pinyin": "Wǒ qùnián qù kàn le, hěn duō dàrén dàizhe xiǎohái qù kàn dēnghuì, fēicháng rènào. Wǒ zhào le hěn duō xiàngpiàn.",
+            "english": "I went last year. Many adults brought their kids to see the lantern show; it was very lively. I took a lot of pictures.",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R02-L09",
+          "speaker": "宜文",
+          "text": {
+            "traditional": "那我這個週末一定要去看看。",
+            "simplified": "那我這個週末一定要去看看。",
+            "pinyin": "Nà wǒ zhège zhōumò yídìng yào qù kànkan.",
+            "english": "Then I must definitely go see it this weekend.",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R02-L10",
+          "speaker": "中明",
+          "text": {
+            "traditional": "我週末還要工作，打算一下班就去看燈會。我們可以約友美一起去。",
+            "simplified": "我週末還要工作，打算一下班就去看燈會。我們可以約友美一起去。",
+            "pinyin": "Wǒ zhōumò hái yào gōngzuò, dǎsuàn yí xiàbān jiù qù kàn dēnghuì. Wǒmen kěyǐ yuē Yǒuměi yìqǐ qù.",
+            "english": "I have to work this weekend, but I plan to go see the lantern show right after getting off work. We can invite Youmei to join us.",
+            "words": []
+          }
+        }
+      ],
+      "comprehension": {
+        "prompt": "中明手裡拿著什麼？",
+        "options": [
+          "燈籠",
+          "課本",
+          "地圖",
+          "相片"
+        ],
+        "answer": "燈籠",
+        "hint": "Yiwen asks Zhongming what is in his hand."
+      }
+    },
+    "completionTitle": "Part 2 complete — you can describe postures and continuous states.",
+    "completionDescription": "You described continuous states and accompanying actions with 著 (拿著, 帶著, 放著).",
+    "nextBookLabel": "Next · Part 3 (Short Reading)."
+  },
+  "LESSON_FIFTEEN_PART_THREE": {
+    "id": "B1L15-P03-R03",
+    "bookId": 1,
+    "lessonId": 15,
+    "partId": 3,
+    "title": "Grammar 3 · Immediate Sequence with 一……就……",
+    "grammarPages": [
+      {
+        "bookId": 1,
+        "lessonId": 15,
+        "lessonTitle": "十二生肖",
+        "lessonTitleEnglish": "The Chinese Animal Zodiac",
+        "id": "B1L15-G03",
+        "partId": 3,
+        "grammarNumber": 3,
+        "titleTraditional": "S + 一 + V1 + 就 + V2 (一……就……)",
+        "titleEnglish": "Express Immediate Sequence with 一……就……",
+        "learnerPromise": "Say that as soon as one action happened, another followed immediately.",
+        "printedPages": [
+          349
+        ],
+        "audioReference": "15-3-1",
+        "bookPageAvailable": true,
+        "explanation": "Put 一 before the first action and 就 before the second action to express 'as soon as... then...'. It emphasizes how quickly and immediately the second event occurs.",
+        "focusTerms": [
+          "一",
+          "就"
+        ],
+        "teachingGlossary": [
+          {
+            "id": "b1l15-g03-glossary-1",
+            "traditional": "一……就……",
+            "pinyin": "yī... jiù...",
+            "meaning": "as soon as... then..."
+          },
+          {
+            "id": "b1l15-g03-glossary-2",
+            "traditional": "查",
+            "pinyin": "chá",
+            "meaning": "check; look up"
+          },
+          {
+            "id": "b1l15-g03-glossary-3",
+            "traditional": "進",
+            "simplified": "进",
+            "pinyin": "jìn",
+            "meaning": "enter"
+          },
+          {
+            "id": "b1l15-g03-glossary-4",
+            "traditional": "教室",
+            "pinyin": "jiàoshì",
+            "meaning": "classroom"
+          },
+          {
+            "id": "b1l15-g03-glossary-5",
+            "traditional": "下班",
+            "pinyin": "xiàbān",
+            "meaning": "get off work"
+          },
+          {
+            "id": "b1l15-g03-glossary-6",
+            "traditional": "看到",
+            "pinyin": "kàndào",
+            "meaning": "see; catch sight of"
+          },
+          {
+            "id": "b1l15-g03-glossary-7",
+            "traditional": "知道",
+            "pinyin": "zhīdào",
+            "meaning": "know"
+          },
+          {
+            "id": "b1l15-g03-glossary-8",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
+          },
+          {
+            "id": "b1l15-g03-glossary-9",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          },
+          {
+            "id": "b1l15-g03-glossary-10",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "he; him"
+          },
+          {
+            "id": "b1l15-g03-glossary-11",
+            "traditional": "她",
+            "pinyin": "tā",
+            "meaning": "she; her"
+          },
+          {
+            "id": "b1l15-g03-glossary-12",
+            "traditional": "我們",
+            "simplified": "我们",
+            "pinyin": "wǒmen",
+            "meaning": "we; us"
+          },
+          {
+            "id": "b1l15-g03-glossary-13",
+            "traditional": "老師",
+            "simplified": "老师",
+            "pinyin": "lǎoshī",
+            "meaning": "teacher"
+          },
+          {
+            "id": "b1l15-g03-glossary-14",
+            "traditional": "朋友",
+            "pinyin": "péngyǒu",
+            "meaning": "friend"
+          },
+          {
+            "id": "b1l15-g03-glossary-15",
+            "traditional": "家人",
+            "pinyin": "jiārén",
+            "meaning": "family"
+          },
+          {
+            "id": "b1l15-g03-glossary-16",
+            "traditional": "人",
+            "pinyin": "rén",
+            "meaning": "person; people"
+          },
+          {
+            "id": "b1l15-g03-glossary-17",
+            "traditional": "很",
+            "pinyin": "hěn",
+            "meaning": "very"
+          },
+          {
+            "id": "b1l15-g03-glossary-18",
+            "traditional": "不",
+            "pinyin": "bù",
+            "meaning": "not"
+          },
+          {
+            "id": "b1l15-g03-glossary-19",
+            "traditional": "都",
+            "pinyin": "dōu",
+            "meaning": "all"
+          },
+          {
+            "id": "b1l15-g03-glossary-20",
+            "traditional": "也",
+            "pinyin": "yě",
+            "meaning": "also; too"
+          },
+          {
+            "id": "b1l15-g03-glossary-21",
+            "traditional": "有",
+            "pinyin": "yǒu",
+            "meaning": "have; there is"
+          },
+          {
+            "id": "b1l15-g03-glossary-22",
+            "traditional": "沒有",
+            "pinyin": "méiyǒu",
+            "meaning": "do not have; not have"
+          },
+          {
+            "id": "b1l15-g03-glossary-23",
+            "traditional": "是",
+            "pinyin": "shì",
+            "meaning": "is; are"
+          },
+          {
+            "id": "b1l15-g03-glossary-24",
+            "traditional": "了",
+            "pinyin": "le",
+            "meaning": "ending word: something is done or has changed"
+          },
+          {
+            "id": "b1l15-g03-glossary-25",
+            "traditional": "的",
+            "pinyin": "de",
+            "meaning": "link word that connects a describing word to a thing"
+          },
+          {
+            "id": "b1l15-g03-glossary-26",
+            "traditional": "就",
+            "pinyin": "jiù",
+            "meaning": "then; right away"
+          },
+          {
+            "id": "b1l15-g03-glossary-27",
+            "traditional": "去",
+            "pinyin": "qù",
+            "meaning": "go"
+          },
+          {
+            "id": "b1l15-g03-glossary-28",
+            "traditional": "來",
+            "simplified": "来",
+            "pinyin": "lái",
+            "meaning": "come"
+          },
+          {
+            "id": "b1l15-g03-glossary-29",
+            "traditional": "想",
+            "pinyin": "xiǎng",
+            "meaning": "want; think"
+          },
+          {
+            "id": "b1l15-g03-glossary-30",
+            "traditional": "看",
+            "pinyin": "kàn",
+            "meaning": "watch; look"
+          },
+          {
+            "id": "b1l15-g03-glossary-31",
+            "traditional": "買",
+            "simplified": "买",
+            "pinyin": "mǎi",
+            "meaning": "buy"
+          },
+          {
+            "id": "b1l15-g03-glossary-32",
+            "traditional": "說",
+            "simplified": "说",
+            "pinyin": "shuō",
+            "meaning": "speak; say"
+          },
+          {
+            "id": "b1l15-g03-glossary-33",
+            "traditional": "跟",
+            "pinyin": "gēn",
+            "meaning": "with; and"
+          },
+          {
+            "id": "b1l15-g03-glossary-34",
+            "traditional": "送",
+            "pinyin": "sòng",
+            "meaning": "give as a gift; send"
+          },
+          {
+            "id": "b1l15-g03-glossary-35",
+            "traditional": "練習",
+            "simplified": "练习",
+            "pinyin": "liànxí",
+            "meaning": "practice"
+          },
+          {
+            "id": "b1l15-g03-glossary-36",
+            "traditional": "中文",
+            "pinyin": "Zhōngwén",
+            "meaning": "Chinese"
+          },
+          {
+            "id": "b1l15-g03-glossary-37",
+            "traditional": "電影",
+            "simplified": "电影",
+            "pinyin": "diànyǐng",
+            "meaning": "movie; film"
+          },
+          {
+            "id": "b1l15-g03-glossary-38",
+            "traditional": "車",
+            "pinyin": "chē",
+            "meaning": "car; vehicle"
+          },
+          {
+            "id": "b1l15-g03-glossary-39",
+            "traditional": "下雪",
+            "pinyin": "xià xuě",
+            "meaning": "to snow"
+          },
+          {
+            "id": "b1l15-g03-glossary-40",
+            "traditional": "下雨",
+            "pinyin": "xià yǔ",
+            "meaning": "to rain"
+          },
+          {
+            "id": "b1l15-g03-glossary-41",
+            "traditional": "放假",
+            "pinyin": "fàng jià",
+            "meaning": "to have a holiday or vacation"
+          },
+          {
+            "id": "b1l15-g03-glossary-42",
+            "traditional": "下課",
+            "simplified": "下课",
+            "pinyin": "xià kè",
+            "meaning": "to finish class"
+          },
+          {
+            "id": "b1l15-g03-glossary-43",
+            "traditional": "旅行",
+            "pinyin": "lǚxíng",
+            "meaning": "to travel"
+          },
+          {
+            "id": "b1l15-g03-glossary-44",
+            "traditional": "火車站",
+            "pinyin": "huǒchē zhàn",
+            "meaning": "train station"
+          },
+          {
+            "id": "b1l15-g03-glossary-45",
+            "traditional": "百貨公司",
+            "simplified": "百货公司",
+            "pinyin": "bǎihuò gōngsī",
+            "meaning": "department store"
+          },
+          {
+            "id": "b1l15-g03-glossary-46",
+            "traditional": "學校",
+            "simplified": "学校",
+            "pinyin": "xuéxiào",
+            "meaning": "school"
+          },
+          {
+            "id": "b1l15-g03-glossary-47",
+            "traditional": "醫院",
+            "simplified": "医院",
+            "pinyin": "yīyuàn",
+            "meaning": "hospital"
+          },
+          {
+            "id": "b1l15-g03-glossary-48",
+            "traditional": "公園",
+            "simplified": "公园",
+            "pinyin": "gōngyuán",
+            "meaning": "park"
+          },
+          {
+            "id": "b1l15-g03-glossary-49",
+            "traditional": "家",
+            "pinyin": "jiā",
+            "meaning": "home; family"
+          },
+          {
+            "id": "b1l15-g03-glossary-50",
+            "traditional": "台北",
+            "pinyin": "Táiběi",
+            "meaning": "Taipei"
+          },
+          {
+            "id": "b1l15-g03-glossary-51",
+            "traditional": "台灣",
+            "simplified": "台湾",
+            "pinyin": "Táiwān",
+            "meaning": "Taiwan"
+          },
+          {
+            "id": "b1l15-g03-glossary-52",
+            "traditional": "離",
+            "pinyin": "lí",
+            "meaning": "away from; from (a place)"
+          },
+          {
+            "id": "b1l15-g03-glossary-53",
+            "traditional": "近",
+            "pinyin": "jìn",
+            "meaning": "close; near"
+          },
+          {
+            "id": "b1l15-g03-glossary-54",
+            "traditional": "遠",
+            "simplified": "远",
+            "pinyin": "yuǎn",
+            "meaning": "far"
+          },
+          {
+            "id": "b1l15-g03-glossary-55",
+            "traditional": "比",
+            "pinyin": "bǐ",
+            "meaning": "compared with"
+          },
+          {
+            "id": "b1l15-g03-glossary-56",
+            "traditional": "更",
+            "pinyin": "gèng",
+            "meaning": "even more"
+          },
+          {
+            "id": "b1l15-g03-glossary-57",
+            "traditional": "冷",
+            "pinyin": "lěng",
+            "meaning": "cold"
+          },
+          {
+            "id": "b1l15-g03-glossary-58",
+            "traditional": "熱",
+            "simplified": "热",
+            "pinyin": "rè",
+            "meaning": "hot"
+          },
+          {
+            "id": "b1l15-g03-glossary-59",
+            "traditional": "重要",
+            "pinyin": "zhòngyào",
+            "meaning": "important"
+          },
+          {
+            "id": "b1l15-g03-glossary-60",
+            "traditional": "聰明",
+            "simplified": "聪明",
+            "pinyin": "cōngming",
+            "meaning": "smart"
+          },
+          {
+            "id": "b1l15-g03-glossary-61",
+            "traditional": "好看",
+            "pinyin": "hǎokàn",
+            "meaning": "nice-looking"
+          },
+          {
+            "id": "b1l15-g03-glossary-62",
+            "traditional": "大",
+            "pinyin": "dà",
+            "meaning": "big"
+          },
+          {
+            "id": "b1l15-g03-glossary-63",
+            "traditional": "小",
+            "pinyin": "xiǎo",
+            "meaning": "small"
+          },
+          {
+            "id": "b1l15-g03-glossary-64",
+            "traditional": "今天",
+            "pinyin": "jīntiān",
+            "meaning": "today"
+          },
+          {
+            "id": "b1l15-g03-glossary-65",
+            "traditional": "昨天",
+            "pinyin": "zuótiān",
+            "meaning": "yesterday"
+          },
+          {
+            "id": "b1l15-g03-glossary-66",
+            "traditional": "明天",
+            "pinyin": "míngtiān",
+            "meaning": "tomorrow"
+          },
+          {
+            "id": "b1l15-g03-glossary-67",
+            "traditional": "現在",
+            "simplified": "现在",
+            "pinyin": "xiànzài",
+            "meaning": "now"
+          },
+          {
+            "id": "b1l15-g03-glossary-68",
+            "traditional": "上個月",
+            "pinyin": "shàng ge yuè",
+            "meaning": "last month"
+          },
+          {
+            "id": "b1l15-g03-glossary-69",
+            "traditional": "本來",
+            "pinyin": "běnlái",
+            "meaning": "originally; at first"
+          },
+          {
+            "id": "b1l15-g03-glossary-70",
+            "traditional": "原來",
+            "simplified": "原来",
+            "pinyin": "yuánlái",
+            "meaning": "originally; as it turns out"
+          },
+          {
+            "id": "b1l15-g03-glossary-71",
+            "traditional": "後來",
+            "simplified": "后来",
+            "pinyin": "hòulái",
+            "meaning": "later; afterwards"
+          },
+          {
+            "id": "b1l15-g03-glossary-72",
+            "traditional": "三隻狗",
+            "simplified": "三只狗",
+            "pinyin": "sān zhī gǒu",
+            "meaning": "three dogs"
+          },
+          {
+            "id": "b1l15-g03-glossary-73",
+            "traditional": "夜市",
+            "pinyin": "yèshì",
+            "meaning": "night market"
+          },
+          {
+            "id": "b1l15-g03-glossary-74",
+            "traditional": "食物",
+            "pinyin": "shíwù",
+            "meaning": "food"
+          },
+          {
+            "id": "b1l15-g03-glossary-75",
+            "traditional": "遊戲",
+            "simplified": "游戏",
+            "pinyin": "yóuxì",
+            "meaning": "game"
+          },
+          {
+            "id": "b1l15-g03-glossary-76",
+            "traditional": "風景",
+            "simplified": "风景",
+            "pinyin": "fēngjǐng",
+            "meaning": "scenery"
+          },
+          {
+            "id": "b1l15-g03-glossary-77",
+            "traditional": "小籠包",
+            "simplified": "小笼包",
+            "pinyin": "xiǎolóngbāo",
+            "meaning": "xiaolongbao (soup dumplings)"
+          },
+          {
+            "id": "b1l15-g03-glossary-78",
+            "traditional": "牛肉麵",
+            "simplified": "牛肉面",
+            "pinyin": "niúròu miàn",
+            "meaning": "beef noodles"
+          },
+          {
+            "id": "b1l15-g03-glossary-79",
+            "traditional": "珍珠奶茶",
+            "pinyin": "zhēnzhū nǎichá",
+            "meaning": "pearl milk tea"
+          }
+        ],
+        "pattern": "Subject + 一 + Verb 1 + 就 + Verb 2",
+        "patternColumns": [
+          "Subject",
+          "一 + First Action",
+          "就 + Immediate Result"
+        ],
+        "patternColumnDetails": [
+          "Who",
+          "as soon as V1",
+          "immediately V2"
+        ],
+        "patternAccentColumn": 1,
+        "patternRows": [
+          {
+            "id": "l15g3-p1",
+            "subject": [
+              {
+                "id": "l15g3-p1-s1",
+                "traditional": "你",
+                "pinyin": "nǐ",
+                "meaning": "you"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l15g3-p1-g1",
+                "traditional": "上網一查",
+                "simplified": "上网一查",
+                "pinyin": "shàngwǎng yì chá",
+                "meaning": "check online once"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l15g3-p1-c1",
+                "traditional": "就知道了",
+                "pinyin": "jiù zhīdào le",
+                "meaning": "will know immediately",
+                "suffix": "。"
+              }
+            ],
+            "english": "As soon as you search online, you will know."
+          },
+          {
+            "id": "l15g3-p2",
+            "subject": [
+              {
+                "id": "l15g3-p2-s1",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l15g3-p2-g1",
+                "traditional": "一下班",
+                "pinyin": "yí xiàbān",
+                "meaning": "as soon as get off work"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l15g3-p2-c1",
+                "traditional": "就去看燈會",
+                "simplified": "就去看灯会",
+                "pinyin": "jiù qù kàn dēnghuì",
+                "meaning": "will go see lanterns",
+                "suffix": "。"
+              }
+            ],
+            "english": "As soon as I get off work, I will go see the lantern show."
+          },
+          {
+            "id": "l15g3-p3",
+            "subject": [
+              {
+                "id": "l15g3-p3-s1",
+                "traditional": "我今天",
+                "pinyin": "wǒ jīntiān",
+                "meaning": "I today"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l15g3-p3-g1",
+                "traditional": "一進教室",
+                "simplified": "一进教室",
+                "pinyin": "yí jìn jiàoshì",
+                "meaning": "as soon as entered classroom"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l15g3-p3-c1",
+                "traditional": "就看到動物",
+                "simplified": "就看到动物",
+                "pinyin": "jiù kàndào dòngwù",
+                "meaning": "immediately saw animals",
+                "suffix": "。"
+              }
+            ],
+            "english": "As soon as I entered the classroom today, I saw the animals."
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "l15g3-confusion-both-markers",
+              "question": "Can I omit 一 or 就?",
+              "answer": "No. The two markers work as a pair: 一 marks the trigger, and 就 marks the immediate action that follows.",
+              "wrongTraditional": "你上網查就知道了。",
+              "wrongSimplified": "你上网查就知道了。",
+              "right": {
+                "traditional": "上網一查就知道了。",
+                "simplified": "上网一查就知道了。",
+                "pinyin": "shàngwǎng yì chá jiù zhīdào le.",
+                "english": "As soon as you look it up online, you will know.",
+                "words": [
+                  {
+                    "id": "l15g3-c1-w1",
+                    "traditional": "上網",
+                    "simplified": "上网",
+                    "pinyin": "shàngwǎng",
+                    "meaning": "go online"
+                  },
+                  {
+                    "id": "l15g3-c1-w2",
+                    "traditional": "一查",
+                    "pinyin": "yì chá",
+                    "meaning": "once check"
+                  },
+                  {
+                    "id": "l15g3-c1-w3",
+                    "traditional": "就",
+                    "pinyin": "jiù",
+                    "meaning": "then"
+                  },
+                  {
+                    "id": "l15g3-c1-w4",
+                    "traditional": "知道了",
+                    "pinyin": "zhīdào le",
+                    "meaning": "know",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "l15g3-confusion-order",
+              "question": "Which action does 一 go with?",
+              "answer": "一 always attaches before the first action, and 就 goes before the second action.",
+              "wrongTraditional": "你就上網一查知道了。",
+              "wrongSimplified": "你就上网一查知道了。",
+              "right": {
+                "traditional": "上網一查就知道了。",
+                "simplified": "上网一查就知道了。",
+                "pinyin": "shàngwǎng yì chá jiù zhīdào le.",
+                "english": "As soon as you look it up online, you will know.",
+                "words": [
+                  {
+                    "id": "l15g3-c2-w1",
+                    "traditional": "上網",
+                    "simplified": "上网",
+                    "pinyin": "shàngwǎng",
+                    "meaning": "go online"
+                  },
+                  {
+                    "id": "l15g3-c2-w2",
+                    "traditional": "一查",
+                    "pinyin": "yì chá",
+                    "meaning": "once check"
+                  },
+                  {
+                    "id": "l15g3-c2-w3",
+                    "traditional": "就",
+                    "pinyin": "jiù",
+                    "meaning": "then"
+                  },
+                  {
+                    "id": "l15g3-c2-w4",
+                    "traditional": "知道了",
+                    "pinyin": "zhīdào le",
+                    "meaning": "know",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "examples": [
+          {
+            "id": "l15g3-e1",
+            "number": 1,
+            "teachingNote": "一查就知道了 shows how effortless and immediate the answer is.",
+            "text": {
+              "traditional": "很簡單，上網一查就知道了。",
+              "simplified": "很简单，上网一查就知道了。",
+              "pinyin": "hěn jiǎndān, shàngwǎng yì chá jiù zhīdào le.",
+              "english": "It's very simple: as soon as you search online, you will know.",
+              "words": [
+                {
+                  "id": "l15g3-e1-w1",
+                  "traditional": "很簡單",
+                  "simplified": "很简单",
+                  "pinyin": "hěn jiǎndān",
+                  "meaning": "very simple"
+                },
+                {
+                  "id": "l15g3-e1-w2",
+                  "traditional": "上網",
+                  "simplified": "上网",
+                  "pinyin": "shàngwǎng",
+                  "meaning": "go online"
+                },
+                {
+                  "id": "l15g3-e1-w3",
+                  "traditional": "一查",
+                  "pinyin": "yì chá",
+                  "meaning": "as soon as search"
+                },
+                {
+                  "id": "l15g3-e1-w4",
+                  "traditional": "就",
+                  "pinyin": "jiù",
+                  "meaning": "then"
+                },
+                {
+                  "id": "l15g3-e1-w5",
+                  "traditional": "知道了",
+                  "pinyin": "zhīdào le",
+                  "meaning": "know",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "l15g3-e2",
+            "number": 2,
+            "teachingNote": "一下班就去看 shows immediate intention right after finishing work.",
+            "text": {
+              "traditional": "我打算一下班就去看燈會。",
+              "simplified": "我打算一下班就去看灯会。",
+              "pinyin": "wǒ dǎsuàn yí xiàbān jiù qù kàn dēnghuì.",
+              "english": "I plan to go see the lantern show right after getting off work.",
+              "words": [
+                {
+                  "id": "l15g3-e2-w1",
+                  "traditional": "我打算",
+                  "pinyin": "wǒ dǎsuàn",
+                  "meaning": "I plan"
+                },
+                {
+                  "id": "l15g3-e2-w2",
+                  "traditional": "一下班",
+                  "pinyin": "yí xiàbān",
+                  "meaning": "as soon as get off work"
+                },
+                {
+                  "id": "l15g3-e2-w3",
+                  "traditional": "就",
+                  "pinyin": "jiù",
+                  "meaning": "then"
+                },
+                {
+                  "id": "l15g3-e2-w4",
+                  "traditional": "去看燈會",
+                  "simplified": "去看灯会",
+                  "pinyin": "qù kàn dēnghuì",
+                  "meaning": "go see the lantern show",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "l15g3-e3",
+            "number": 3,
+            "teachingNote": "一進教室就看到 tells the narrative of an immediate discovery upon entering.",
+            "text": {
+              "traditional": "今天一進教室，就看到桌上放著幾隻動物。",
+              "simplified": "今天一进教室，就看到桌上放着几只动物。",
+              "pinyin": "jīntiān yí jìn jiàoshì, jiù kàndào zhuō shàng fàngzhe jǐ zhī dòngwù.",
+              "english": "As soon as I entered the classroom today, I saw several animals placed on the table.",
+              "words": [
+                {
+                  "id": "l15g3-e3-w1",
+                  "traditional": "今天",
+                  "pinyin": "jīntiān",
+                  "meaning": "today"
+                },
+                {
+                  "id": "l15g3-e3-w2",
+                  "traditional": "一進教室",
+                  "simplified": "一进教室",
+                  "pinyin": "yí jìn jiàoshì",
+                  "meaning": "as soon as entered classroom"
+                },
+                {
+                  "id": "l15g3-e3-w3",
+                  "traditional": "就看到",
+                  "pinyin": "jiù kàndào",
+                  "meaning": "immediately saw"
+                },
+                {
+                  "id": "l15g3-e3-w4",
+                  "traditional": "桌上放著",
+                  "simplified": "桌上放着",
+                  "pinyin": "zhuō shàng fàngzhe",
+                  "meaning": "placed on table"
+                },
+                {
+                  "id": "l15g3-e3-w5",
+                  "traditional": "幾隻動物",
+                  "simplified": "几只动物",
+                  "pinyin": "jǐ zhī dòngwù",
+                  "meaning": "a few animals",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "l15g3-e4",
+            "number": 4,
+            "teachingNote": "一到就打電話 shows sequence of arrival and contacting someone.",
+            "text": {
+              "traditional": "他一到家，就給我打電話了。",
+              "simplified": "他一到家，就给我打电话了。",
+              "pinyin": "tā yí dào jiā, jiù gěi wǒ dǎ diànhuà le.",
+              "english": "As soon as he arrived home, he called me.",
+              "words": [
+                {
+                  "id": "l15g3-e4-w1",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                },
+                {
+                  "id": "l15g3-e4-w2",
+                  "traditional": "一到家",
+                  "pinyin": "yí dào jiā",
+                  "meaning": "as soon as arrived home"
+                },
+                {
+                  "id": "l15g3-e4-w3",
+                  "traditional": "就",
+                  "pinyin": "jiù",
+                  "meaning": "then"
+                },
+                {
+                  "id": "l15g3-e4-w4",
+                  "traditional": "給我打電話了",
+                  "simplified": "给我打电话了",
+                  "pinyin": "gěi wǒ dǎ diànhuà le",
+                  "meaning": "called me",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Sequence with 一……就……",
+        "exercisePreview": "Express immediate successive actions",
+        "exerciseInstruction": "Choose 一 or 就 to link the two actions.",
+        "questions": [
+          {
+            "id": "l15g3-q1",
+            "number": 1,
+            "sectionLabel": "Trigger",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "很簡單，上網"
+              },
+              {
+                "type": "blank",
+                "id": "l15g3-q1-blank",
+                "answer": "一查",
+                "hint": "Use 一 before the first quick action."
+              },
+              {
+                "type": "text",
+                "traditional": "就知道了。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "l15g3-q1-t1",
+                "traditional": "一查",
+                "pinyin": "yì chá",
+                "meaning": "as soon as check"
+              },
+              {
+                "id": "l15g3-q1-t2",
+                "traditional": "再查",
+                "pinyin": "zài chá",
+                "meaning": "check again"
+              }
+            ],
+            "correctFeedback": "As soon as you search, you know.",
+            "repairFeedback": "Use 一 before the action."
+          },
+          {
+            "id": "l15g3-q2",
+            "number": 2,
+            "sectionLabel": "Follow-up",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我打算一下班，"
+              },
+              {
+                "type": "blank",
+                "id": "l15g3-q2-blank",
+                "answer": "就",
+                "hint": "Use 就 before the immediate next action."
+              },
+              {
+                "type": "text",
+                "traditional": "去看燈會。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "l15g3-q2-t1",
+                "traditional": "就",
+                "pinyin": "jiù",
+                "meaning": "then / immediately"
+              },
+              {
+                "id": "l15g3-q2-t2",
+                "traditional": "也",
+                "pinyin": "yě",
+                "meaning": "also"
+              }
+            ],
+            "correctFeedback": "Going right after work.",
+            "repairFeedback": "Use 就 before the next action."
+          },
+          {
+            "id": "l15g3-q3",
+            "number": 3,
+            "sectionLabel": "Entrance",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "今天"
+              },
+              {
+                "type": "blank",
+                "id": "l15g3-q3-blank",
+                "answer": "一進",
+                "answerSimplified": "一进",
+                "hint": "As soon as entering the classroom."
+              },
+              {
+                "type": "text",
+                "traditional": "教室，就看到桌上放著動物。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "l15g3-q3-t1",
+                "traditional": "一進",
+                "simplified": "一进",
+                "pinyin": "yí jìn",
+                "meaning": "as soon as entered"
+              },
+              {
+                "id": "l15g3-q3-t2",
+                "traditional": "走進",
+                "simplified": "走进",
+                "pinyin": "zǒujìn",
+                "meaning": "walk into"
+              }
+            ],
+            "correctFeedback": "Immediately upon entering.",
+            "repairFeedback": "Pair 一 with the entering verb."
+          }
+        ]
+      }
+    ],
+    "dialogue": {
+      "id": "B1L15-D03",
+      "title": "有趣的十二生肖 · The Interesting Zodiac",
+      "setting": "短文 · Reading",
+      "printedPages": [
+        349
+      ],
+      "audioReference": "15-3-1",
+      "grammarFocus": [
+        "一……就……",
+        "放著"
+      ],
+      "lines": [
+        {
+          "id": "B1L15-R03-L01",
+          "speaker": "narrator",
+          "text": {
+            "traditional": "今天一進教室，就看到桌上放著幾隻用紙做的動物，黑板上也有很多張動物的圖片，我覺得很有趣。",
+            "simplified": "今天一進教室，就看到桌上放著幾隻用紙做的動物，黑板上也有很多張動物的圖片，我覺得很有趣。",
+            "pinyin": "Jīntiān yí jìn jiàoshì, jiù kàndào zhuō shàng fàngzhe jǐ zhī yòng zhǐ zuò de dòngwù, hēibǎn shàng yě yǒu hěn duō zhāng dòngwù de túpiàn, wǒ juéde hěn yǒuqù.",
+            "english": "As soon as I walked into the classroom today, I saw several paper animals placed on the table, and there were also many pictures of animals on the blackboard. I found it very interesting.",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R03-L02",
+          "speaker": "narrator",
+          "text": {
+            "traditional": "老師告訴我們，很久以前，有十二種動物一起參加了一個過河比賽，看誰游得最快。",
+            "simplified": "老師告訴我們，很久以前，有十二種動物一起參加了一個過河比賽，看誰游得最快。",
+            "pinyin": "Lǎoshī gàosu wǒmen, hěn jiǔ yǐqián, yǒu shí'èr zhǒng dòngwù yìqǐ cānjiā le yí ge guòhé bǐsài, kàn shéi yóu de zuì kuài.",
+            "english": "The teacher told us that a long time ago, twelve animals entered a river-crossing race together to see who could swim the fastest.",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R03-L03",
+          "speaker": "narrator",
+          "text": {
+            "traditional": "開始比賽以後，每隻動物都游得很快很辛苦。老鼠先過了河，第二個到的是牛，最後到的是豬。老鼠贏了，排第一，其他動物排後面。",
+            "simplified": "開始比賽以後，每隻動物都游得很快很辛苦。老鼠先過了河，第二個到的是牛，最後到的是豬。老鼠贏了，排第一，其他動物排後面。",
+            "pinyin": "Kāishǐ bǐsài yǐhòu, měi zhī dòngwù dōu yóu de hěn kuài hěn xīnkǔ. Lǎoshǔ xiān guò le hé, dì èr ge dào de shì niú, zuìhòu dào de shì zhū. Lǎoshǔ yíng le, pái dì yī, qítā dòngwù pái hòumiàn.",
+            "english": "After the race began, each animal swam hard and fast. The rat crossed the river first, the ox arrived second, and the pig arrived last. The rat won, ranking first, and the other animals lined up behind.",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R03-L04",
+          "speaker": "narrator",
+          "text": {
+            "traditional": "這次比賽以後，華人就用鼠、牛、虎、兔、龍、蛇、馬、羊、猴、雞、狗和豬代表每一年，而且叫這十二種動物「十二生肖」。",
+            "simplified": "這次比賽以後，華人就用鼠、牛、虎、兔、龍、蛇、馬、羊、猴、雞、狗和豬代表每一年，而且叫這十二種動物「十二生肖」。",
+            "pinyin": "Zhè cì bǐsài yǐhòu, Huárén jiù yòng shǔ, niú, hǔ, tù, lóng, shé, mǎ, yáng, hóu, jī, gǒu hé zhū dàibiǎo měi yì nián, érqiě jiào zhè shí'èr zhǒng dòngwù \"shí'èr shēngxiào\".",
+            "english": "After this race, Chinese people used the rat, ox, tiger, rabbit, dragon, snake, horse, goat, monkey, rooster, dog, and pig to represent each year, calling these twelve animals the \"Twelve Zodiac Animals\".",
+            "words": []
+          }
+        },
+        {
+          "id": "B1L15-R03-L05",
+          "speaker": "narrator",
+          "text": {
+            "traditional": "華人聊天的時候，會問別人「你屬什麼？」。每年到了元宵節，代表那年的動物燈籠，也會最受歡迎。",
+            "simplified": "華人聊天的時候，會問別人「你屬什麼？」。每年到了元宵節，代表那年的動物燈籠，也會最受歡迎。",
+            "pinyin": "Huárén liáotiān de shíhou, huì wèn biérén \"nǐ shǔ shénme?\". Měi nián dào le Yuánxiāojié, dàibiǎo nà nián de dòngwù dēnglóng, yě huì zuì shòu huānyíng.",
+            "english": "When chatting, Chinese people often ask others, \"What is your zodiac sign?\". Every year during the Lantern Festival, the lantern representing the animal of that year is also the most popular.",
+            "words": []
+          }
+        }
+      ],
+      "comprehension": {
+        "prompt": "在動物比賽過河的時候，誰游得最快？",
+        "options": [
+          "老鼠",
+          "牛",
+          "豬",
+          "龍"
+        ],
+        "answer": "老鼠",
+        "hint": "The reading states which animal crossed first."
+      }
+    },
+    "completionTitle": "Lesson 15 complete — you can tell the story of the twelve animals.",
+    "completionDescription": "You connected swift actions and immediate results with 一……就…….",
+    "nextBookLabel": "Next · Lesson 16."
+  }
+}

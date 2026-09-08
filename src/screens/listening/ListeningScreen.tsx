@@ -18,9 +18,11 @@ interface ListeningScreenProps {
   isLibraryDeck?: boolean;
   isReviewDeck?: boolean;
   onClose?: () => void;
+  onContinue?: () => void;
+  continueLabel?: string;
 }
 
-export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibraryDeck = false, isReviewDeck = false, onClose }: ListeningScreenProps) {
+export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibraryDeck = false, isReviewDeck = false, onClose, onContinue, continueLabel }: ListeningScreenProps) {
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
   const [breakdownOpen, setBreakdownOpen] = useState(false);
   const {
@@ -92,7 +94,8 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
       <LessonComplete
         learnedCount={learnedCount}
         unlearnedCount={unlearnedCount}
-        onContinue={onClose}
+        onContinue={onContinue ?? onClose}
+        continueLabel={onContinue ? continueLabel : undefined}
         onReviewUnlearned={unlearnedCount > 0 ? reviewUnlearned : undefined}
         onResetAll={resetAll}
       />

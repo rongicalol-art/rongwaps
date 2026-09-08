@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { audioService } from '../../services/audioService';
 import { useAppStore } from '../../store/useAppStore';
@@ -9,15 +10,38 @@ import {
   continueGrammarLesson,
 } from '../../utils/grammarLessonFlow';
 import { cn } from '../../utils/cn';
-import { ActionButton, AppIcon } from '../../lib/widgets';
+import { ActionButton, AppIcon, LoadingScreen } from '../../lib/widgets';
 import { GrammarLessonHeader } from './components/GrammarLessonHeader';
-import { GrammarNextUpTeaser } from './components/GrammarNextUpTeaser';
-import { GrammarStudyPage } from './components/GrammarStudyPage';
-import { BookPageViewer } from './components/BookPageViewer';
+
+// Window shell (this module) stays eager so the lesson opens instantly with
+// its canvas + header; the heavy study page and book viewer stream in under a
+// spinner. Never static-import them here or they join the main bundle.
+const GrammarStudyPage = lazy(() =>
+  import('./components/GrammarStudyPage').then((m) => ({ default: m.GrammarStudyPage })),
+);
+const BookPageViewer = lazy(() =>
+  import('./components/BookPageViewer').then((m) => ({ default: m.BookPageViewer })),
+);
 
 interface GrammarLessonScreenProps {
   part: InteractiveGrammarPart;
   onClose: () => void;
+}
+
+/** Mounts only once the lazy study page chunk has resolved; the shell uses it
+ *  to hide the end-of-page footer (and its scroll probe) while the page
+ *  content is still loading. */
+function GrammarContentMount({
+  onMounted,
+  children,
+}: {
+  onMounted: () => void;
+  children: ReactNode;
+}) {
+  useEffect(() => {
+    onMounted();
+  }, [onMounted]);
+  return <>{children}</>;
 }
 
 export function GrammarLessonScreen({ part, onClose }: GrammarLessonScreenProps) {
@@ -29,11 +53,24 @@ export function GrammarLessonScreen({ part, onClose }: GrammarLessonScreenProps)
     () => part.grammarPages.findIndex((grammarPage) => !completedPageIds.includes(grammarPage.id)),
     [completedPageIds, part.grammarPages],
   );
-  const [currentGrammarIndex, setCurrentGrammarIndex] = useState(
-    firstIncompleteIndex === -1 ? 0 : firstIncompleteIndex,
-  );
+  const [currentGrammarIndex, setCurrentGrammarIndex] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const param = new URLSearchParams(window.location.search).get('grammarIndex');
+      if (param !== null) {
+        const parsed = parseInt(param, 10);
+        if (!Number.isNaN(parsed) && parsed >= 0 && parsed < part.grammarPages.length) {
+          return parsed;
+        }
+      }
+    }
+    return firstIncompleteIndex === -1 ? 0 : firstIncompleteIndex;
+  });
   const [isBookOpen, setIsBookOpen] = useState(false);
   const [isAtEnd, setIsAtEnd] = useState(false);
+  // False until the lazy study-page chunk has mounted at least once, so the
+  // Continue footer never floats over the loading state.
+  const [contentReady, setContentReady] = useState(false);
+  const markContentReady = useCallback(() => setContentReady(true), []);
   const reduceMotion = useReducedMotion();
   const page = part.grammarPages[currentGrammarIndex];
   const characterPreference = useAppStore((state) => state.characterPreference);
@@ -46,9 +83,6 @@ export function GrammarLessonScreen({ part, onClose }: GrammarLessonScreenProps)
   const markPartStarted = useGrammarLessonStore((state) => state.markPartStarted);
   const markPartComplete = useGrammarLessonStore((state) => state.markPartComplete);
   const previousPage = currentGrammarIndex > 0 ? part.grammarPages[currentGrammarIndex - 1] : null;
-  const nextPage = currentGrammarIndex < part.grammarPages.length - 1
-    ? part.grammarPages[currentGrammarIndex + 1]
-    : null;
   const closeBookViewer = useCallback(() => {
     setIsBookOpen(false);
     window.requestAnimationFrame(() => bookPageButtonRef.current?.focus());
@@ -128,6 +162,7 @@ export function GrammarLessonScreen({ part, onClose }: GrammarLessonScreenProps)
   }, [onClose]);
 
   const continueAfterStudy = useCallback(() => {
+    if (!contentReady) return; // ignore keyboard advance until page content mounted
     const next = continueGrammarLesson({
       grammarIndex: currentGrammarIndex,
       grammarCount: part.grammarPages.length,
@@ -142,7 +177,7 @@ export function GrammarLessonScreen({ part, onClose }: GrammarLessonScreenProps)
       return;
     }
     setCurrentGrammarIndex(next.grammarIndex);
-  }, [closeLesson, completedPageIds, currentGrammarIndex, markPageComplete, markPartComplete, page, part]);
+  }, [closeLesson, completedPageIds, contentReady, currentGrammarIndex, markPageComplete, markPartComplete, page, part]);
 
   const goBackToPreviousGrammar = useCallback(() => {
     if (!previousPage) return;
@@ -216,32 +251,35 @@ export function GrammarLessonScreen({ part, onClose }: GrammarLessonScreenProps)
           showReadingAids
         />
 
-        <div className="mx-auto w-full max-w-4xl px-4 pb-32 pt-2 sm:px-8 sm:pb-32 sm:pt-4">
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={`study-${page.id}`}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.16, ease: 'easeOut' }}
-          >
-            <GrammarStudyPage
-              page={page}
-              characterPreference={characterPreference}
-              showPinyin={showPinyin}
-              showTranslation={showTranslation}
-              onOpenWord={setDictionaryWord}
-              onOpenBookPage={() => setIsBookOpen(true)}
-              bookPageButtonRef={bookPageButtonRef}
-            />
-          </motion.div>
-        </AnimatePresence>
-
-        </div>
+        <Suspense fallback={<LoadingScreen message="Loading grammar…" inline />}>
+          <GrammarContentMount onMounted={markContentReady}>
+            <div className="mx-auto w-full max-w-4xl px-4 pb-32 pt-2 sm:px-8 sm:pb-32 sm:pt-4">
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={`study-${page.id}`}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.16, ease: 'easeOut' }}
+                >
+                  <GrammarStudyPage
+                    page={page}
+                    characterPreference={characterPreference}
+                    showPinyin={showPinyin}
+                    showTranslation={showTranslation}
+                    onOpenWord={setDictionaryWord}
+                    onOpenBookPage={() => setIsBookOpen(true)}
+                    bookPageButtonRef={bookPageButtonRef}
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </GrammarContentMount>
+        </Suspense>
       </main>
 
       <AnimatePresence>
-        {isAtEnd && (
+        {isAtEnd && contentReady && (
           <motion.footer
             aria-label="Grammar navigation"
             initial={{ opacity: 0, y: reduceMotion ? 0 : '100%' }}
@@ -252,34 +290,29 @@ export function GrammarLessonScreen({ part, onClose }: GrammarLessonScreenProps)
             style={{ left: 'var(--workspace-nav-width)' }}
           >
             <div className="bg-gradient-to-t from-ui-canvas via-ui-canvas/95 to-transparent px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-10 sm:px-8 sm:pt-14">
-              <div className="mx-auto flex w-full max-w-4xl flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
-                {nextPage ? (
-                  <GrammarNextUpTeaser nextPage={nextPage} />
-                ) : (
-                  <div aria-hidden="true" className="hidden min-w-0 flex-1 sm:block" />
-                )}
-                <div className="flex w-full items-center gap-3 sm:contents">
-                  {previousPage && (
-                    <ActionButton
-                      variant="quiet"
-                      size="md"
-                      onClick={goBackToPreviousGrammar}
-                      className="shrink-0 px-2 text-ui-muted-strong sm:order-first"
-                    >
-                      <AppIcon name="back" size={16} />
-                      Back
-                    </ActionButton>
-                  )}
+              <div className="mx-auto flex w-full max-w-4xl items-center justify-between gap-3">
+                {previousPage ? (
                   <ActionButton
-                    variant="primary"
-                    size="lg"
-                    onClick={continueAfterStudy}
-                    aria-label="Continue"
-                    className="min-w-0 flex-1 sm:min-w-[9rem] sm:flex-none"
+                    variant="quiet"
+                    size="md"
+                    onClick={goBackToPreviousGrammar}
+                    className="shrink-0 px-2 text-ui-muted-strong"
                   >
-                    Continue
+                    <AppIcon name="back" size={16} />
+                    Back
                   </ActionButton>
-                </div>
+                ) : (
+                  <div aria-hidden="true" className="hidden sm:block" />
+                )}
+                <ActionButton
+                  variant="primary"
+                  size="lg"
+                  onClick={continueAfterStudy}
+                  aria-label="Continue"
+                  className="min-w-0 flex-1 sm:min-w-[9rem] sm:flex-none sm:ml-auto"
+                >
+                  Continue
+                </ActionButton>
               </div>
             </div>
           </motion.footer>
@@ -287,13 +320,28 @@ export function GrammarLessonScreen({ part, onClose }: GrammarLessonScreenProps)
       </AnimatePresence>
 
       {isBookOpen && (
-        <BookPageViewer
-          bookId={page.bookId}
-          lessonId={page.lessonId}
-          grammarTitle={page.titleEnglish}
-          pages={page.printedPages}
-          onClose={closeBookViewer}
-        />
+        <Suspense
+          fallback={
+            <div
+              role="status"
+              aria-label="Loading book"
+              className="fixed inset-0 z-[600] flex flex-col items-center justify-center gap-5 bg-ui-ink-strong"
+            >
+              <span className="h-11 w-11 animate-spin rounded-full border-4 border-ui-surface/25 border-t-ui-surface" />
+              <span className="text-xs font-black uppercase tracking-widest text-ui-surface/70">
+                Loading book…
+              </span>
+            </div>
+          }
+        >
+          <BookPageViewer
+            bookId={page.bookId}
+            lessonId={page.lessonId}
+            grammarTitle={page.titleEnglish}
+            pages={page.printedPages}
+            onClose={closeBookViewer}
+          />
+        </Suspense>
       )}
     </motion.div>
   );

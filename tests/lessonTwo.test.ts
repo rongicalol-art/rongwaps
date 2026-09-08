@@ -55,9 +55,9 @@ test('Lesson 2 wrong placements cannot complete a grammar', () => {
   assert.equal(evaluateGrammarPlacements(page.questions, placements).complete, false);
 });
 
-test('Lesson 2 derives two complete dialogue readings', () => {
+test('Lesson 2 derives complete dialogue and short reading records', () => {
   const readings = getReadingsForLesson(1, 2);
-  assert.deepEqual(readings.map((reading) => reading.dialogueNumber), [1, 2]);
+  assert.deepEqual(readings.map((reading) => reading.dialogueNumber), [1, 2, 3]);
   readings.forEach((reading) => {
     assert.ok(reading.paragraphs.length > 0, `${reading.id} needs paragraphs`);
     reading.paragraphs.forEach((paragraph) => {

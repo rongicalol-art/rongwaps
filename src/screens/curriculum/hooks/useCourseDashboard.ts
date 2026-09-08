@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { SAMPLE_LESSONS } from '../../../data/books';
 import type { Flashcard } from '../../../data/flashcards';
-import { getInteractiveGrammarPartsForLesson } from '../../../data/interactiveGrammarPages';
+import { getInteractiveGrammarManifestForLesson } from '../../../data/interactiveGrammarManifest';
 import { fetchVocabulary } from '../../../services/vocabularyService';
 import { useGrammarLessonStore } from '../../../store/useGrammarLessonStore';
 import type { CourseDashboardProgress, LessonPartSelectionMap } from '../../../types/models';
@@ -90,7 +90,7 @@ export function useCourseDashboard({
         const learnedCount = lessonCards.filter(
           (card) => learnedSet.has(card.id.toLowerCase()),
         ).length;
-        const grammarParts = getInteractiveGrammarPartsForLesson(activeBookId, lesson.id);
+        const grammarParts = getInteractiveGrammarManifestForLesson(activeBookId, lesson.id);
         const requiredPathCount = grammarParts.length;
         const completedPathCount = grammarParts.filter(
           (part) => completedGrammarPartIds.includes(part.id),

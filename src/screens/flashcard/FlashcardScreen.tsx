@@ -26,6 +26,8 @@ interface FlashcardScreenProps {
   isLibraryDeck?: boolean;
   mode?: FlashcardViewMode;
   onClose?: () => void;
+  onContinue?: () => void;
+  continueLabel?: string;
   onNavigateToPractice?: () => void;
 }
 
@@ -35,7 +37,9 @@ export function FlashcardScreen({
   isReviewDeck = false,
   isLibraryDeck = false,
   mode = 'cards',
-  onClose
+  onClose,
+  onContinue,
+  continueLabel,
 }: FlashcardScreenProps) {
   const activeBook = useMemo(() =>
     SAMPLE_BOOKS.find(b => b.id === activeBookId) || SAMPLE_BOOKS[0]
@@ -298,7 +302,8 @@ export function FlashcardScreen({
       <LessonComplete
         learnedCount={learnedCount}
         unlearnedCount={unlearnedCount}
-        onContinue={onClose}
+        onContinue={onContinue ?? onClose}
+        continueLabel={onContinue ? continueLabel : undefined}
         onReviewUnlearned={unlearnedCount > 0 ? reviewUnlearned : undefined}
         onResetAll={resetAll}
       />
@@ -346,20 +351,7 @@ export function FlashcardScreen({
     );
   }
 
-  const handleCardTap = (event: React.MouseEvent) => {
-    const bounds = event.currentTarget.getBoundingClientRect();
-    const horizontalPosition = (event.clientX - bounds.left) / bounds.width;
-
-    if (horizontalPosition <= 0.3) {
-      if (canNavigatePrevious) triggerNav(-1);
-      return;
-    }
-
-    if (horizontalPosition >= 0.7) {
-      if (canNavigateNext) triggerNav(1);
-      return;
-    }
-
+  const handleCardTap = () => {
     if (!isFlipped && currentCard && !autoPlayAudio) manualRevealAudioRef.current = true;
     setIsFlipped(prev => !prev);
   };
@@ -375,20 +367,20 @@ export function FlashcardScreen({
         aria-label="Previous flashcard"
         disabled={!canNavigatePrevious}
         onClick={() => triggerNav(-1)}
-        className="absolute bottom-0 left-0 top-[72px] z-0 w-[22%] bg-transparent outline-none disabled:pointer-events-none"
+        className="absolute bottom-0 left-0 top-[72px] z-0 w-1/2 bg-transparent outline-none disabled:pointer-events-none"
       />
       <button
         type="button"
         aria-label="Next flashcard"
         disabled={!canNavigateNext}
         onClick={() => triggerNav(1)}
-        className="absolute bottom-0 right-0 top-[72px] z-0 w-[22%] bg-transparent outline-none disabled:pointer-events-none"
+        className="absolute bottom-0 right-0 top-[72px] z-0 w-1/2 bg-transparent outline-none disabled:pointer-events-none"
       />
 
       <ScreenLayout maxWidth="none" className="relative flex h-full max-w-[960px] flex-col pb-[112px] pt-2 pointer-events-none md:pb-[120px]">
         <div className="flex-1 flex flex-col justify-center pointer-events-none">
           <div
-            className="relative z-10 mx-auto flex h-[clamp(420px,68vh,640px)] max-h-[calc(100dvh-180px)] w-full max-w-[900px] flex-col items-center justify-center perspective-[2000px] pointer-events-auto"
+            className="relative z-10 mx-auto flex h-[clamp(420px,68vh,640px)] max-h-[calc(100dvh-180px)] w-full max-w-[900px] flex-col items-center justify-center perspective-[2000px] pointer-events-none"
           >
             <AnimatePresence mode="popLayout" custom={direction}>
               {currentCard && (

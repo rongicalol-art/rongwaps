@@ -16,7 +16,6 @@ import {
   isSameStringArray,
   mergePulledSrsData,
   pruneAcknowledgedTombstones,
-  reconcileAggregateProgress,
   type SyncedFolderSnapshot,
   type SyncProgressCounters,
 } from '../utils/cloudSyncQueue';
@@ -42,7 +41,6 @@ interface SaveCoordinator {
 
 function getProgressCounters(store: AppStoreSnapshot): SyncProgressCounters {
   return {
-    xpEarned: store.sessionProgress.xpEarned,
     cardsReviewed: store.sessionProgress.cardsReviewed,
     cardsLearned: store.sessionProgress.cardsLearned,
   };
@@ -123,7 +121,6 @@ export function useCloudSync() {
     sessionProgress,
     lastActivity,
     setSrsDataAndLearnedCards,
-    setProgressStats,
     setCustomFolders,
     setDeletedFolderIds,
     setFoldersSyncedUserId,
@@ -164,7 +161,6 @@ export function useCloudSync() {
   const lastSyncedActivityRef = useRef<string | null>(null);
   const lastSyncedFoldersRef = useRef<SyncedFolderSnapshot[] | null>(null);
   const lastSyncedSessionRef = useRef<SyncProgressCounters>({
-    xpEarned: 0,
     cardsReviewed: 0,
     cardsLearned: 0,
   });
@@ -211,12 +207,6 @@ export function useCloudSync() {
           selectedBooks: [],
           activeActivity: null,
           lastActivity: null,
-          currentStreak: 0,
-          longestStreak: 0,
-          totalXp: 0,
-          totalCardsReviewed: 0,
-          totalCardsLearned: 0,
-          lastStudyDate: null,
           lastCloudUpdate: null,
         });
       }
@@ -345,20 +335,6 @@ export function useCloudSync() {
         lastSyncedActivityRef.current = cloudData?.lastActivity ?? null;
       }
 
-      const aggregateStats = await progressService.getAggregateStats(currentUser.id);
-      const latest = useAppStore.getState();
-      const reconciled = reconcileAggregateProgress(
-        aggregateStats,
-        {
-          totalXp: latest.totalXp,
-          totalCardsReviewed: latest.totalCardsReviewed,
-          totalCardsLearned: latest.totalCardsLearned,
-        },
-        lastSyncedSessionRef.current,
-        getProgressCounters(latest),
-      );
-      setProgressStats({ ...aggregateStats, ...reconciled });
-
       // Folders are pulled on EVERY fetch, not just account switches:
       // folder writes never touch user_progress.updated_at, so the metadata
       // freshness gate above cannot see them. The server list replaces the
@@ -443,7 +419,6 @@ export function useCloudSync() {
     setDeletedFolderIds,
     setFoldersSyncedUserId,
     setLastCloudUpdate,
-    setProgressStats,
     setSrsDataAndLearnedCards,
     setSyncError,
     setSyncStatus,
@@ -521,7 +496,6 @@ export function useCloudSync() {
     const dailyDelta = getSessionProgressDelta(snapshotSession, savedSession);
     if (hasSessionProgressDelta(dailyDelta)) {
       await progressService.upsertDailyProgress(userId, {
-        xpEarned: dailyDelta.xpEarned,
         cardsReviewed: dailyDelta.cardsReviewed,
         cardsLearned: dailyDelta.cardsLearned,
         activityType: getDailyActivity(store.lastActivity),
@@ -530,9 +504,8 @@ export function useCloudSync() {
       lastSyncedSessionRef.current = snapshotSession;
     }
 
-    // Skip the post-save aggregate-stats re-fetch: fetchFromCloud already
-    // fetched them, and local counters track the session deltas. Streak/
-    // lastStudyDate refresh on the next fetchFromCloud (tab visible/mount).
+    // Local counters already track the session deltas; no aggregate re-fetch
+    // is needed after a save.
     setLastCloudUpdate(new Date().toISOString());
   }, [setLastCloudUpdate]);
 

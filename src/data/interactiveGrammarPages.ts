@@ -18,7 +18,12 @@ import { LESSON_ELEVEN_PART_ONE, LESSON_ELEVEN_PART_TWO } from './grammar/lesson
 import { LESSON_TWELVE_PART_ONE, LESSON_TWELVE_PART_TWO } from './grammar/lessonTwelve';
 import { LESSON_THIRTEEN_PART_ONE, LESSON_THIRTEEN_PART_TWO } from './grammar/lessonThirteen';
 import { LESSON_FOURTEEN_PART_ONE, LESSON_FOURTEEN_PART_TWO } from './grammar/lessonFourteen';
-import { LESSON_SIXTEEN_PART_ONE } from './grammar/lessonSixteen';
+import {
+  LESSON_FIFTEEN_PART_ONE,
+  LESSON_FIFTEEN_PART_TWO,
+  LESSON_FIFTEEN_PART_THREE,
+} from './grammar/lessonFifteen';
+import { LESSON_SIXTEEN_PART_ONE, LESSON_SIXTEEN_PART_TWO } from './grammar/lessonSixteen';
 
 export {
   LESSON_ONE_GRAMMAR_FOUR,
@@ -961,7 +966,11 @@ export const INTERACTIVE_GRAMMAR_PARTS = [
   LESSON_THIRTEEN_PART_TWO,
   LESSON_FOURTEEN_PART_ONE,
   LESSON_FOURTEEN_PART_TWO,
+  LESSON_FIFTEEN_PART_ONE,
+  LESSON_FIFTEEN_PART_TWO,
+  LESSON_FIFTEEN_PART_THREE,
   LESSON_SIXTEEN_PART_ONE,
+  LESSON_SIXTEEN_PART_TWO,
 ];
 
 export function getInteractiveGrammarPart(partId: string) {

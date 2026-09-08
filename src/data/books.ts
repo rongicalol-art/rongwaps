@@ -157,6 +157,6 @@ export const SAMPLE_LESSONS = [
   { id: 12, label: 'Lesson 12', title: 'What Job Do You Want to Do? · 你想做什麼工作？', status: 'available' },
   { id: 13, label: 'Lesson 13', title: 'Get on the Internet with a Cell Phone · 用手機上網', status: 'available' },
   { id: 14, label: 'Lesson 14', title: 'New Year’s Eve Celebration · 跨年活動', status: 'available' },
-  { id: 15, label: 'Lesson 15', title: 'Final Review', status: 'available' },
-  { id: 16, label: 'Lesson 16', title: 'Comprehensive Practice', status: 'available' },
+  { id: 15, label: 'Lesson 15', title: 'The Chinese Animal Zodiac · 十二生肖', status: 'available' },
+  { id: 16, label: 'Lesson 16', title: 'Traveling in Taiwan · 在台灣旅行', status: 'available' },
 ];

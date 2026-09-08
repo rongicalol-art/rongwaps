@@ -1,6 +1,5 @@
 import React, { lazy, Suspense, useState, useEffect } from 'react';
 import type { LottieComponentProps } from 'lottie-react';
-import { loadJsonAsset } from '../../services/contentAssetService';
 
 const Lottie = lazy(() => import('lottie-react'));
 
@@ -42,13 +41,17 @@ export const LottiePlayer: React.FC<LottiePlayerProps> = ({
       let isCurrent = true;
       setLoading(true);
       setError(false);
-      loadJsonAsset<LottieComponentProps['animationData']>(src)
-        .then(json => {
+      fetch(src)
+        .then((res) => {
+          if (!res.ok) throw new Error(`Asset request failed (${res.status})`);
+          return res.json() as Promise<LottieComponentProps['animationData']>;
+        })
+        .then((json) => {
           if (!isCurrent) return;
           setData(json);
           setLoading(false);
         })
-        .catch(err => {
+        .catch((err) => {
           if (!isCurrent) return;
           console.error("Failed to load Lottie source:", err);
           setError(true);

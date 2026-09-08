@@ -1,0 +1,6413 @@
+{
+  "LESSON_FIVE_GRAMMAR_FIVE": {
+    "id": "B1L05-G05-P126",
+    "bookId": 1,
+    "lessonId": 5,
+    "partId": 2,
+    "lessonTitle": "我的錢包在哪裡？",
+    "lessonTitleEnglish": "Where Is My Wallet?",
+    "grammarNumber": 5,
+    "titleTraditional": "地方 + 有／沒有 + 東西",
+    "titleEnglish": "Say What Is in a Place",
+    "learnerPromise": "Say what is in a place—and what is not there.",
+    "printedPages": [
+      126
+    ],
+    "audioReference": "05-2-3",
+    "explanation": "Say the place first, then 有, then the thing that is there. Use 沒有—not 不有—to say something is not there.",
+    "focusTerms": [
+      "地方",
+      "有",
+      "沒有",
+      "没有",
+      "東西",
+      "东西"
+    ],
+    "teachingGlossary": [
+      {
+        "id": "b1l05-g05-glossary-1",
+        "traditional": "我",
+        "pinyin": "wǒ",
+        "meaning": "I; me"
+      },
+      {
+        "id": "b1l05-g05-glossary-2",
+        "traditional": "我們",
+        "simplified": "我们",
+        "pinyin": "wǒmen",
+        "meaning": "we; us"
+      },
+      {
+        "id": "b1l05-g05-glossary-3",
+        "traditional": "你們",
+        "simplified": "你们",
+        "pinyin": "nǐmen",
+        "meaning": "you all"
+      },
+      {
+        "id": "b1l05-g05-glossary-4",
+        "traditional": "你",
+        "pinyin": "nǐ",
+        "meaning": "you"
+      },
+      {
+        "id": "b1l05-g05-glossary-5",
+        "traditional": "妳",
+        "pinyin": "nǐ",
+        "meaning": "you"
+      },
+      {
+        "id": "b1l05-g05-glossary-6",
+        "traditional": "他",
+        "pinyin": "tā",
+        "meaning": "he; him"
+      },
+      {
+        "id": "b1l05-g05-glossary-7",
+        "traditional": "他們",
+        "simplified": "他们",
+        "pinyin": "tāmen",
+        "meaning": "they; them"
+      },
+      {
+        "id": "b1l05-g05-glossary-8",
+        "traditional": "她",
+        "pinyin": "tā",
+        "meaning": "she; her"
+      },
+      {
+        "id": "b1l05-g05-glossary-9",
+        "traditional": "媽媽",
+        "simplified": "妈妈",
+        "pinyin": "māma",
+        "meaning": "mom"
+      },
+      {
+        "id": "b1l05-g05-glossary-10",
+        "traditional": "媽",
+        "simplified": "妈",
+        "pinyin": "mā",
+        "meaning": "mom"
+      },
+      {
+        "id": "b1l05-g05-glossary-11",
+        "traditional": "哥哥",
+        "pinyin": "gēge",
+        "meaning": "older brother"
+      },
+      {
+        "id": "b1l05-g05-glossary-12",
+        "traditional": "弟弟",
+        "pinyin": "dìdi",
+        "meaning": "younger brother"
+      },
+      {
+        "id": "b1l05-g05-glossary-13",
+        "traditional": "中明",
+        "pinyin": "Zhōngmíng",
+        "meaning": "Zhongming"
+      },
+      {
+        "id": "b1l05-g05-glossary-14",
+        "traditional": "小明",
+        "pinyin": "Xiǎomíng",
+        "meaning": "Xiaoming"
+      },
+      {
+        "id": "b1l05-g05-glossary-15",
+        "traditional": "友美",
+        "pinyin": "Yǒuměi",
+        "meaning": "Youmei"
+      },
+      {
+        "id": "b1l05-g05-glossary-16",
+        "traditional": "孩子",
+        "pinyin": "háizi",
+        "meaning": "child"
+      },
+      {
+        "id": "b1l05-g05-glossary-17",
+        "traditional": "錢包",
+        "simplified": "钱包",
+        "pinyin": "qiánbāo",
+        "meaning": "wallet"
+      },
+      {
+        "id": "b1l05-g05-glossary-18",
+        "traditional": "書",
+        "simplified": "书",
+        "pinyin": "shū",
+        "meaning": "book"
+      },
+      {
+        "id": "b1l05-g05-glossary-19",
+        "traditional": "筆",
+        "simplified": "笔",
+        "pinyin": "bǐ",
+        "meaning": "pen"
+      },
+      {
+        "id": "b1l05-g05-glossary-20",
+        "traditional": "東西",
+        "simplified": "东西",
+        "pinyin": "dōngxi",
+        "meaning": "thing; things"
+      },
+      {
+        "id": "b1l05-g05-glossary-21",
+        "traditional": "桌子",
+        "pinyin": "zhuōzi",
+        "meaning": "table"
+      },
+      {
+        "id": "b1l05-g05-glossary-22",
+        "traditional": "椅子",
+        "pinyin": "yǐzi",
+        "meaning": "chair"
+      },
+      {
+        "id": "b1l05-g05-glossary-23",
+        "traditional": "沙發",
+        "simplified": "沙发",
+        "pinyin": "shāfā",
+        "meaning": "sofa"
+      },
+      {
+        "id": "b1l05-g05-glossary-24",
+        "traditional": "房間",
+        "simplified": "房间",
+        "pinyin": "fángjiān",
+        "meaning": "room"
+      },
+      {
+        "id": "b1l05-g05-glossary-25",
+        "traditional": "客廳",
+        "simplified": "客厅",
+        "pinyin": "kètīng",
+        "meaning": "living room"
+      },
+      {
+        "id": "b1l05-g05-glossary-26",
+        "traditional": "廚房",
+        "simplified": "厨房",
+        "pinyin": "chúfáng",
+        "meaning": "kitchen"
+      },
+      {
+        "id": "b1l05-g05-glossary-27",
+        "traditional": "圖書館",
+        "simplified": "图书馆",
+        "pinyin": "túshūguǎn",
+        "meaning": "library"
+      },
+      {
+        "id": "b1l05-g05-glossary-28",
+        "traditional": "學校",
+        "simplified": "学校",
+        "pinyin": "xuéxiào",
+        "meaning": "school"
+      },
+      {
+        "id": "b1l05-g05-glossary-29",
+        "traditional": "餐廳",
+        "simplified": "餐厅",
+        "pinyin": "cāntīng",
+        "meaning": "restaurant"
+      },
+      {
+        "id": "b1l05-g05-glossary-30",
+        "traditional": "咖啡廳",
+        "simplified": "咖啡厅",
+        "pinyin": "kāfēitīng",
+        "meaning": "café"
+      },
+      {
+        "id": "b1l05-g05-glossary-31",
+        "traditional": "飲料店",
+        "simplified": "饮料店",
+        "pinyin": "yǐnliào diàn",
+        "meaning": "drink shop"
+      },
+      {
+        "id": "b1l05-g05-glossary-32",
+        "traditional": "台灣",
+        "simplified": "台湾",
+        "pinyin": "Táiwān",
+        "meaning": "Taiwan"
+      },
+      {
+        "id": "b1l05-g05-glossary-33",
+        "traditional": "家",
+        "pinyin": "jiā",
+        "meaning": "home"
+      },
+      {
+        "id": "b1l05-g05-glossary-34",
+        "traditional": "裡面",
+        "simplified": "里面",
+        "pinyin": "lǐmiàn",
+        "meaning": "inside"
+      },
+      {
+        "id": "b1l05-g05-glossary-35",
+        "traditional": "裡",
+        "simplified": "里",
+        "pinyin": "lǐ",
+        "meaning": "inside; in"
+      },
+      {
+        "id": "b1l05-g05-glossary-36",
+        "traditional": "外面",
+        "pinyin": "wàimiàn",
+        "meaning": "outside"
+      },
+      {
+        "id": "b1l05-g05-glossary-37",
+        "traditional": "上面",
+        "pinyin": "shàngmiàn",
+        "meaning": "on; above"
+      },
+      {
+        "id": "b1l05-g05-glossary-38",
+        "traditional": "上",
+        "pinyin": "shàng",
+        "meaning": "on; above"
+      },
+      {
+        "id": "b1l05-g05-glossary-39",
+        "traditional": "下面",
+        "pinyin": "xiàmiàn",
+        "meaning": "under; below"
+      },
+      {
+        "id": "b1l05-g05-glossary-40",
+        "traditional": "旁邊",
+        "simplified": "旁边",
+        "pinyin": "pángbiān",
+        "meaning": "beside; next to"
+      },
+      {
+        "id": "b1l05-g05-glossary-41",
+        "traditional": "前面",
+        "pinyin": "qiánmiàn",
+        "meaning": "in front"
+      },
+      {
+        "id": "b1l05-g05-glossary-42",
+        "traditional": "後面",
+        "simplified": "后面",
+        "pinyin": "hòumiàn",
+        "meaning": "behind"
+      },
+      {
+        "id": "b1l05-g05-glossary-43",
+        "traditional": "在",
+        "pinyin": "zài",
+        "meaning": "be located; at"
+      },
+      {
+        "id": "b1l05-g05-glossary-44",
+        "traditional": "不在",
+        "pinyin": "bú zài",
+        "meaning": "is not located at"
+      },
+      {
+        "id": "b1l05-g05-glossary-45",
+        "traditional": "有",
+        "pinyin": "yǒu",
+        "meaning": "there is; there are"
+      },
+      {
+        "id": "b1l05-g05-glossary-46",
+        "traditional": "沒有",
+        "simplified": "没有",
+        "pinyin": "méiyǒu",
+        "meaning": "there is not; there are not"
+      },
+      {
+        "id": "b1l05-g05-glossary-47",
+        "traditional": "都沒有",
+        "simplified": "都没有",
+        "pinyin": "dōu méiyǒu",
+        "meaning": "none of them have; nowhere has"
+      },
+      {
+        "id": "b1l05-g05-glossary-48",
+        "traditional": "是",
+        "pinyin": "shì",
+        "meaning": "is; am; are"
+      },
+      {
+        "id": "b1l05-g05-glossary-49",
+        "traditional": "不是",
+        "pinyin": "bú shì",
+        "meaning": "is not"
+      },
+      {
+        "id": "b1l05-g05-glossary-50",
+        "traditional": "不知道",
+        "pinyin": "bù zhīdào",
+        "meaning": "do not know"
+      },
+      {
+        "id": "b1l05-g05-glossary-51",
+        "traditional": "要",
+        "pinyin": "yào",
+        "meaning": "will; want to"
+      },
+      {
+        "id": "b1l05-g05-glossary-52",
+        "traditional": "去",
+        "pinyin": "qù",
+        "meaning": "go"
+      },
+      {
+        "id": "b1l05-g05-glossary-53",
+        "traditional": "喝下午茶",
+        "pinyin": "hē xiàwǔ chá",
+        "meaning": "have afternoon tea"
+      },
+      {
+        "id": "b1l05-g05-glossary-54",
+        "traditional": "找",
+        "pinyin": "zhǎo",
+        "meaning": "look for"
+      },
+      {
+        "id": "b1l05-g05-glossary-55",
+        "traditional": "幫",
+        "simplified": "帮",
+        "pinyin": "bāng",
+        "meaning": "help"
+      },
+      {
+        "id": "b1l05-g05-glossary-56",
+        "traditional": "再去",
+        "pinyin": "zài qù",
+        "meaning": "go again"
+      },
+      {
+        "id": "b1l05-g05-glossary-57",
+        "traditional": "做飯",
+        "simplified": "做饭",
+        "pinyin": "zuòfàn",
+        "meaning": "cook"
+      },
+      {
+        "id": "b1l05-g05-glossary-58",
+        "traditional": "看",
+        "pinyin": "kàn",
+        "meaning": "look; watch"
+      },
+      {
+        "id": "b1l05-g05-glossary-59",
+        "traditional": "看書",
+        "simplified": "看书",
+        "pinyin": "kànshū",
+        "meaning": "read"
+      },
+      {
+        "id": "b1l05-g05-glossary-60",
+        "traditional": "睡覺",
+        "simplified": "睡觉",
+        "pinyin": "shuìjiào",
+        "meaning": "sleep"
+      },
+      {
+        "id": "b1l05-g05-glossary-61",
+        "traditional": "玩",
+        "pinyin": "wán",
+        "meaning": "play; hang out"
+      },
+      {
+        "id": "b1l05-g05-glossary-62",
+        "traditional": "喜歡",
+        "simplified": "喜欢",
+        "pinyin": "xǐhuān",
+        "meaning": "like"
+      },
+      {
+        "id": "b1l05-g05-glossary-63",
+        "traditional": "很忙",
+        "pinyin": "hěn máng",
+        "meaning": "very busy"
+      },
+      {
+        "id": "b1l05-g05-glossary-64",
+        "traditional": "現在",
+        "simplified": "现在",
+        "pinyin": "xiànzài",
+        "meaning": "now"
+      },
+      {
+        "id": "b1l05-g05-glossary-65",
+        "traditional": "這裡",
+        "simplified": "这里",
+        "pinyin": "zhèlǐ",
+        "meaning": "here"
+      },
+      {
+        "id": "b1l05-g05-glossary-66",
+        "traditional": "哪裡",
+        "simplified": "哪里",
+        "pinyin": "nǎlǐ",
+        "meaning": "where"
+      },
+      {
+        "id": "b1l05-g05-glossary-67",
+        "traditional": "什麼",
+        "simplified": "什么",
+        "pinyin": "shénme",
+        "meaning": "what"
+      },
+      {
+        "id": "b1l05-g05-glossary-68",
+        "traditional": "多少",
+        "pinyin": "duōshao",
+        "meaning": "how many; how much"
+      },
+      {
+        "id": "b1l05-g05-glossary-69",
+        "traditional": "嗎",
+        "simplified": "吗",
+        "pinyin": "ma",
+        "meaning": "ending word for a yes/no question"
+      },
+      {
+        "id": "b1l05-g05-glossary-70",
+        "traditional": "呢",
+        "pinyin": "ne",
+        "meaning": "what about; and"
+      },
+      {
+        "id": "b1l05-g05-glossary-71",
+        "traditional": "吧",
+        "pinyin": "ba",
+        "meaning": "softens a suggestion"
+      },
+      {
+        "id": "b1l05-g05-glossary-72",
+        "traditional": "啊",
+        "pinyin": "a",
+        "meaning": "ending word that adds feeling"
+      },
+      {
+        "id": "b1l05-g05-glossary-73",
+        "traditional": "好嗎",
+        "simplified": "好吗",
+        "pinyin": "hǎo ma",
+        "meaning": "okay; could you"
+      },
+      {
+        "id": "b1l05-g05-glossary-74",
+        "traditional": "跟",
+        "pinyin": "gēn",
+        "meaning": "and; with"
+      },
+      {
+        "id": "b1l05-g05-glossary-75",
+        "traditional": "可是",
+        "pinyin": "kěshì",
+        "meaning": "but"
+      },
+      {
+        "id": "b1l05-g05-glossary-76",
+        "traditional": "的",
+        "pinyin": "de",
+        "meaning": "possessive or descriptive linker"
+      },
+      {
+        "id": "b1l05-g05-glossary-77",
+        "traditional": "我的",
+        "pinyin": "wǒ de",
+        "meaning": "mine; my"
+      },
+      {
+        "id": "b1l05-g05-glossary-78",
+        "traditional": "你的",
+        "pinyin": "nǐ de",
+        "meaning": "yours; your"
+      },
+      {
+        "id": "b1l05-g05-glossary-79",
+        "traditional": "哥哥的",
+        "pinyin": "gēge de",
+        "meaning": "older brother’s"
+      },
+      {
+        "id": "b1l05-g05-glossary-80",
+        "traditional": "那",
+        "pinyin": "nà",
+        "meaning": "that"
+      },
+      {
+        "id": "b1l05-g05-glossary-81",
+        "traditional": "那個",
+        "simplified": "那个",
+        "pinyin": "nà ge",
+        "meaning": "that"
+      },
+      {
+        "id": "b1l05-g05-glossary-82",
+        "traditional": "那家",
+        "pinyin": "nà jiā",
+        "meaning": "that business"
+      },
+      {
+        "id": "b1l05-g05-glossary-83",
+        "traditional": "一個錢包",
+        "simplified": "一个钱包",
+        "pinyin": "yí ge qiánbāo",
+        "meaning": "one wallet"
+      },
+      {
+        "id": "b1l05-g05-glossary-84",
+        "traditional": "一張桌子",
+        "simplified": "一张桌子",
+        "pinyin": "yì zhāng zhuōzi",
+        "meaning": "one table"
+      },
+      {
+        "id": "b1l05-g05-glossary-85",
+        "traditional": "兩張椅子",
+        "simplified": "两张椅子",
+        "pinyin": "liǎng zhāng yǐzi",
+        "meaning": "two chairs"
+      },
+      {
+        "id": "b1l05-g05-glossary-86",
+        "traditional": "一家很大的餐廳",
+        "simplified": "一家很大的餐厅",
+        "pinyin": "yì jiā hěn dà de cāntīng",
+        "meaning": "one large restaurant"
+      },
+      {
+        "id": "b1l05-g05-glossary-87",
+        "traditional": "很多",
+        "pinyin": "hěn duō",
+        "meaning": "many; a lot"
+      },
+      {
+        "id": "b1l05-g05-glossary-88",
+        "traditional": "很多好吃的東西",
+        "simplified": "很多好吃的东西",
+        "pinyin": "hěn duō hǎochī de dōngxi",
+        "meaning": "lots of delicious food"
+      },
+      {
+        "id": "b1l05-g05-glossary-89",
+        "traditional": "好吃",
+        "pinyin": "hǎochī",
+        "meaning": "delicious"
+      },
+      {
+        "id": "b1l05-g05-glossary-90",
+        "traditional": "學生",
+        "simplified": "学生",
+        "pinyin": "xuésheng",
+        "meaning": "student; students"
+      },
+      {
+        "id": "b1l05-g05-glossary-91",
+        "traditional": "一千個學生",
+        "simplified": "一千个学生",
+        "pinyin": "yìqiān ge xuésheng",
+        "meaning": "one thousand students"
+      },
+      {
+        "id": "b1l05-g05-glossary-92",
+        "traditional": "一本書",
+        "simplified": "一本书",
+        "pinyin": "yì běn shū",
+        "meaning": "one book"
+      },
+      {
+        "id": "b1l05-g05-glossary-93",
+        "traditional": "咖啡",
+        "pinyin": "kāfēi",
+        "meaning": "coffee"
+      },
+      {
+        "id": "b1l05-g05-glossary-94",
+        "traditional": "水果",
+        "pinyin": "shuǐguǒ",
+        "meaning": "fruit"
+      },
+      {
+        "id": "b1l05-g05-glossary-95",
+        "traditional": "牛肉麵",
+        "simplified": "牛肉面",
+        "pinyin": "niúròu miàn",
+        "meaning": "beef noodles"
+      },
+      {
+        "id": "b1l05-g05-glossary-96",
+        "traditional": "小籠包",
+        "simplified": "小笼包",
+        "pinyin": "xiǎolóngbāo",
+        "meaning": "soup dumplings"
+      },
+      {
+        "id": "b1l05-g05-glossary-97",
+        "traditional": "很喜歡",
+        "simplified": "很喜欢",
+        "pinyin": "hěn xǐhuān",
+        "meaning": "like very much"
+      },
+      {
+        "id": "b1l05-g05-glossary-98",
+        "traditional": "都",
+        "pinyin": "dōu",
+        "meaning": "all; both"
+      }
+    ],
+    "pattern": "Place + 有 / 沒有 + thing",
+    "patternColumns": [
+      "Place",
+      "有 or 沒有",
+      "Thing"
+    ],
+    "patternAccentColumn": 1,
+    "discoveryLab": {
+      "title": "Change what the place contains",
+      "description": "Start with the place, then report whether something is there.",
+      "prompt": "What is in the place?",
+      "choices": [
+        {
+          "id": "g5-found",
+          "label": "Found",
+          "traditional": "桌子上面有一本書。",
+          "simplified": "桌子上面有一本书。",
+          "pinyin": "Zhuōzi shàngmiàn yǒu yì běn shū.",
+          "english": "There is a book on the table.",
+          "note": "Place first. 有 says the thing is there."
+        },
+        {
+          "id": "g5-empty",
+          "label": "Not found",
+          "traditional": "桌子上面沒有書。",
+          "simplified": "桌子上面没有书。",
+          "pinyin": "Zhuōzi shàngmiàn méiyǒu shū.",
+          "english": "There is no book on the table.",
+          "note": "沒有 is how you say “there is not”."
+        },
+        {
+          "id": "g5-repair",
+          "label": "Repair negative",
+          "traditional": "桌子上面不有書 → 桌子上面沒有書",
+          "simplified": "桌子上面不有书 → 桌子上面没有书",
+          "pinyin": "Zhuōzi shàngmiàn bù yǒu shū → Zhuōzi shàngmiàn méiyǒu shū",
+          "english": "There is no book on the table.",
+          "note": "Use 沒 with 有. Never use 不.",
+          "isCorrection": true
+        }
+      ],
+      "takeaway": "Place first. Use 有 when something is there; use 沒有 when it is not."
+    },
+    "contrast": {
+      "title": "在 says where. 有 says what is there.",
+      "description": "Pick the form by what the listener already knows.",
+      "items": [
+        {
+          "id": "g5-c1",
+          "label": "Find a known thing",
+          "traditional": "書在桌子上面。",
+          "simplified": "书在桌子上面。",
+          "pinyin": "Shū zài zhuōzi shàngmiàn.",
+          "english": "The book is on the table.",
+          "note": "Start with the known book and say where it is.",
+          "particle": {
+            "id": "g5-c1-p",
+            "traditional": "在"
+          }
+        },
+        {
+          "id": "g5-c2",
+          "label": "List what is in a place",
+          "traditional": "桌子上面有一本書。",
+          "simplified": "桌子上面有一本书。",
+          "pinyin": "Zhuōzi shàngmiàn yǒu yì běn shū.",
+          "english": "There is a book on the table.",
+          "note": "Start with the place and say what is there.",
+          "particle": {
+            "id": "g5-c2-p",
+            "traditional": "有"
+          }
+        }
+      ]
+    },
+    "patternRows": [
+      {
+        "id": "g5-p1",
+        "subject": [
+          {
+            "id": "g5-p1-tw",
+            "traditional": "台灣",
+            "simplified": "台湾",
+            "pinyin": "Táiwān",
+            "meaning": "Taiwan"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g5-p1-have",
+            "traditional": "有",
+            "pinyin": "yǒu",
+            "meaning": "there is; there are"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g5-p1-food",
+            "traditional": "很多好吃的東西",
+            "simplified": "很多好吃的东西",
+            "pinyin": "hěn duō hǎochī de dōngxi",
+            "meaning": "lots of delicious food",
+            "suffix": "。"
+          }
+        ],
+        "english": "There is lots of delicious food in Taiwan."
+      },
+      {
+        "id": "g5-p2",
+        "subject": [
+          {
+            "id": "g5-p2-lib",
+            "traditional": "圖書館",
+            "simplified": "图书馆",
+            "pinyin": "túshūguǎn",
+            "meaning": "library"
+          },
+          {
+            "id": "g5-p2-side",
+            "traditional": "旁邊",
+            "simplified": "旁边",
+            "pinyin": "pángbiān",
+            "meaning": "beside; next to"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g5-p2-none",
+            "traditional": "沒有",
+            "simplified": "没有",
+            "pinyin": "méiyǒu",
+            "meaning": "there is not; there are not"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g5-p2-cafe",
+            "traditional": "咖啡廳",
+            "simplified": "咖啡厅",
+            "pinyin": "kāfēitīng",
+            "meaning": "café",
+            "suffix": "。"
+          }
+        ],
+        "english": "There is no café beside the library."
+      },
+      {
+        "id": "g5-p3",
+        "subject": [
+          {
+            "id": "g5-p3-table",
+            "traditional": "桌子",
+            "pinyin": "zhuōzi",
+            "meaning": "table"
+          },
+          {
+            "id": "g5-p3-top",
+            "traditional": "上面",
+            "pinyin": "shàngmiàn",
+            "meaning": "on; above"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g5-p3-have",
+            "traditional": "有",
+            "pinyin": "yǒu",
+            "meaning": "there is; there are"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g5-p3-things",
+            "traditional": "很多",
+            "pinyin": "hěn duō",
+            "meaning": "many; a lot"
+          },
+          {
+            "id": "g5-p3-stuff",
+            "traditional": "東西",
+            "simplified": "东西",
+            "pinyin": "dōngxi",
+            "meaning": "thing; things",
+            "suffix": "。"
+          }
+        ],
+        "english": "There are many things on the table."
+      }
+    ],
+    "confusion": {
+      "title": "Don't mix these up",
+      "items": [
+        {
+          "id": "g5-confusion-shi-vs-you",
+          "question": "There is a book on the table. 是 or 有?",
+          "answer": "有. It introduces what is in a place. 是 says what something is.",
+          "wrongTraditional": "桌子上是一本書。",
+          "wrongSimplified": "桌子上是一本书。",
+          "right": {
+            "traditional": "桌子上面有一本書。",
+            "simplified": "桌子上面有一本书。",
+            "pinyin": "Zhuōzi shàngmiàn yǒu yì běn shū.",
+            "english": "There is a book on the table.",
+            "words": [
+              {
+                "id": "b1l05-g5-confusion-1-word-1",
+                "traditional": "桌子",
+                "pinyin": "zhuōzi",
+                "meaning": "table"
+              },
+              {
+                "id": "b1l05-g5-confusion-1-word-2",
+                "traditional": "上面",
+                "pinyin": "shàngmiàn",
+                "meaning": "on; above"
+              },
+              {
+                "id": "b1l05-g5-confusion-1-word-3",
+                "traditional": "有",
+                "pinyin": "yǒu",
+                "meaning": "there is; there are"
+              },
+              {
+                "id": "b1l05-g5-confusion-1-word-4",
+                "traditional": "一本書",
+                "simplified": "一本书",
+                "pinyin": "yì běn shū",
+                "meaning": "one book",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "g5-confusion-bu-you",
+          "question": "How do I say “there is no book”? Is it 不有?",
+          "answer": "No. 有 takes 沒, never 不: 沒有.",
+          "wrongTraditional": "桌子上面不有書。",
+          "wrongSimplified": "桌子上面不有书。",
+          "right": {
+            "traditional": "桌子上面沒有書。",
+            "simplified": "桌子上面没有书。",
+            "pinyin": "Zhuōzi shàngmiàn méiyǒu shū.",
+            "english": "There is no book on the table.",
+            "words": [
+              {
+                "id": "b1l05-g5-confusion-2-word-1",
+                "traditional": "桌子",
+                "pinyin": "zhuōzi",
+                "meaning": "table"
+              },
+              {
+                "id": "b1l05-g5-confusion-2-word-2",
+                "traditional": "上面",
+                "pinyin": "shàngmiàn",
+                "meaning": "on; above"
+              },
+              {
+                "id": "b1l05-g5-confusion-2-word-3",
+                "traditional": "沒有",
+                "simplified": "没有",
+                "pinyin": "méiyǒu",
+                "meaning": "there is not; there are not"
+              },
+              {
+                "id": "b1l05-g5-confusion-2-word-4",
+                "traditional": "書",
+                "simplified": "书",
+                "pinyin": "shū",
+                "meaning": "book",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "g5-confusion-zai-vs-you",
+          "question": "The book is already known. Do I say 桌子上面有書 or 書在桌子上面?",
+          "answer": "書在桌子上面 — start with the known thing and use 在. 有 introduces something new.",
+          "wrongTraditional": "桌子上面有書。",
+          "wrongSimplified": "桌子上面有书。",
+          "right": {
+            "traditional": "書在桌子上面。",
+            "simplified": "书在桌子上面。",
+            "pinyin": "Shū zài zhuōzi shàngmiàn.",
+            "english": "The book is on the table.",
+            "words": [
+              {
+                "id": "b1l05-g5-confusion-3-word-1",
+                "traditional": "書",
+                "simplified": "书",
+                "pinyin": "shū",
+                "meaning": "book"
+              },
+              {
+                "id": "b1l05-g5-confusion-3-word-2",
+                "traditional": "在",
+                "pinyin": "zài",
+                "meaning": "be located; at"
+              },
+              {
+                "id": "b1l05-g5-confusion-3-word-3",
+                "traditional": "桌子",
+                "pinyin": "zhuōzi",
+                "meaning": "table"
+              },
+              {
+                "id": "b1l05-g5-confusion-3-word-4",
+                "traditional": "上面",
+                "pinyin": "shàngmiàn",
+                "meaning": "on; above",
+                "suffix": "。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "examples": [
+      {
+        "id": "g5-e1",
+        "number": 1,
+        "text": {
+          "traditional": "A：台灣有什麼好吃的東西？ B：水果、牛肉麵跟小籠包，我都很喜歡。",
+          "simplified": "A：台湾有什么好吃的东西？ B：水果、牛肉面跟小笼包，我都很喜欢。",
+          "pinyin": "A: Táiwān yǒu shénme hǎochī de dōngxi? B: Shuǐguǒ, niúròu miàn gēn xiǎolóngbāo, wǒ dōu hěn xǐhuān.",
+          "english": "A: What delicious foods are in Taiwan? B: I like fruit, beef noodles, and soup dumplings.",
+          "words": [
+            {
+              "id": "b1l05-g5-e1-word-1",
+              "traditional": "台灣",
+              "simplified": "台湾",
+              "pinyin": "Táiwān",
+              "meaning": "Taiwan",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l05-g5-e1-word-2",
+              "traditional": "有",
+              "pinyin": "yǒu",
+              "meaning": "there is; there are"
+            },
+            {
+              "id": "b1l05-g5-e1-word-3",
+              "traditional": "什麼",
+              "simplified": "什么",
+              "pinyin": "shénme",
+              "meaning": "what"
+            },
+            {
+              "id": "b1l05-g5-e1-word-4",
+              "traditional": "好吃",
+              "pinyin": "hǎochī",
+              "meaning": "delicious"
+            },
+            {
+              "id": "b1l05-g5-e1-word-5",
+              "traditional": "的",
+              "pinyin": "de",
+              "meaning": "possessive or descriptive linker"
+            },
+            {
+              "id": "b1l05-g5-e1-word-6",
+              "traditional": "東西",
+              "simplified": "东西",
+              "pinyin": "dōngxi",
+              "meaning": "thing; things"
+            },
+            {
+              "id": "b1l05-g5-e1-word-7",
+              "traditional": "水果",
+              "pinyin": "shuǐguǒ",
+              "meaning": "fruit",
+              "prefix": "？ B："
+            },
+            {
+              "id": "b1l05-g5-e1-word-8",
+              "traditional": "牛肉麵",
+              "simplified": "牛肉面",
+              "pinyin": "niúròu miàn",
+              "meaning": "beef noodles",
+              "prefix": "、"
+            },
+            {
+              "id": "b1l05-g5-e1-word-9",
+              "traditional": "跟",
+              "pinyin": "gēn",
+              "meaning": "and; with"
+            },
+            {
+              "id": "b1l05-g5-e1-word-10",
+              "traditional": "小籠包",
+              "simplified": "小笼包",
+              "pinyin": "xiǎolóngbāo",
+              "meaning": "soup dumplings"
+            },
+            {
+              "id": "b1l05-g5-e1-word-11",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me",
+              "prefix": "，"
+            },
+            {
+              "id": "b1l05-g5-e1-word-12",
+              "traditional": "都",
+              "pinyin": "dōu",
+              "meaning": "all; both"
+            },
+            {
+              "id": "b1l05-g5-e1-word-13",
+              "traditional": "很喜歡",
+              "simplified": "很喜欢",
+              "pinyin": "hěn xǐhuān",
+              "meaning": "like very much",
+              "suffix": "。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g5-e2",
+        "number": 2,
+        "text": {
+          "traditional": "A：你們學校旁邊有什麼？ B：我們學校旁邊有一家很大的餐廳。",
+          "simplified": "A：你们学校旁边有什么？ B：我们学校旁边有一家很大的餐厅。",
+          "pinyin": "A: Nǐmen xuéxiào pángbiān yǒu shénme? B: Wǒmen xuéxiào pángbiān yǒu yì jiā hěn dà de cāntīng.",
+          "english": "A: What is beside your school? B: There is a large restaurant beside our school.",
+          "words": [
+            {
+              "id": "b1l05-g5-e2-word-1",
+              "traditional": "你們",
+              "simplified": "你们",
+              "pinyin": "nǐmen",
+              "meaning": "you all",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l05-g5-e2-word-2",
+              "traditional": "學校",
+              "simplified": "学校",
+              "pinyin": "xuéxiào",
+              "meaning": "school"
+            },
+            {
+              "id": "b1l05-g5-e2-word-3",
+              "traditional": "旁邊",
+              "simplified": "旁边",
+              "pinyin": "pángbiān",
+              "meaning": "beside; next to"
+            },
+            {
+              "id": "b1l05-g5-e2-word-4",
+              "traditional": "有",
+              "pinyin": "yǒu",
+              "meaning": "there is; there are"
+            },
+            {
+              "id": "b1l05-g5-e2-word-5",
+              "traditional": "什麼",
+              "simplified": "什么",
+              "pinyin": "shénme",
+              "meaning": "what"
+            },
+            {
+              "id": "b1l05-g5-e2-word-6",
+              "traditional": "我們",
+              "simplified": "我们",
+              "pinyin": "wǒmen",
+              "meaning": "we; us",
+              "prefix": "？ B："
+            },
+            {
+              "id": "b1l05-g5-e2-word-7",
+              "traditional": "學校",
+              "simplified": "学校",
+              "pinyin": "xuéxiào",
+              "meaning": "school"
+            },
+            {
+              "id": "b1l05-g5-e2-word-8",
+              "traditional": "旁邊",
+              "simplified": "旁边",
+              "pinyin": "pángbiān",
+              "meaning": "beside; next to"
+            },
+            {
+              "id": "b1l05-g5-e2-word-9",
+              "traditional": "有",
+              "pinyin": "yǒu",
+              "meaning": "there is; there are"
+            },
+            {
+              "id": "b1l05-g5-e2-word-10",
+              "traditional": "一家很大的餐廳",
+              "simplified": "一家很大的餐厅",
+              "pinyin": "yì jiā hěn dà de cāntīng",
+              "meaning": "one large restaurant",
+              "suffix": "。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g5-e3",
+        "number": 3,
+        "text": {
+          "traditional": "A：那個房間裡面有桌子、椅子嗎？ B：房間裡面有一張桌子跟兩張椅子。",
+          "simplified": "A：那个房间里面有桌子、椅子吗？ B：房间里面有一张桌子跟两张椅子。",
+          "pinyin": "A: Nà ge fángjiān lǐmiàn yǒu zhuōzi, yǐzi ma? B: Fángjiān lǐmiàn yǒu yì zhāng zhuōzi gēn liǎng zhāng yǐzi.",
+          "english": "A: Are there tables and chairs in that room? B: There is one table and two chairs.",
+          "words": [
+            {
+              "id": "b1l05-g5-e3-word-1",
+              "traditional": "那個",
+              "simplified": "那个",
+              "pinyin": "nà ge",
+              "meaning": "that",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l05-g5-e3-word-2",
+              "traditional": "房間",
+              "simplified": "房间",
+              "pinyin": "fángjiān",
+              "meaning": "room"
+            },
+            {
+              "id": "b1l05-g5-e3-word-3",
+              "traditional": "裡面",
+              "simplified": "里面",
+              "pinyin": "lǐmiàn",
+              "meaning": "inside"
+            },
+            {
+              "id": "b1l05-g5-e3-word-4",
+              "traditional": "有",
+              "pinyin": "yǒu",
+              "meaning": "there is; there are"
+            },
+            {
+              "id": "b1l05-g5-e3-word-5",
+              "traditional": "桌子",
+              "pinyin": "zhuōzi",
+              "meaning": "table"
+            },
+            {
+              "id": "b1l05-g5-e3-word-6",
+              "traditional": "椅子",
+              "pinyin": "yǐzi",
+              "meaning": "chair",
+              "prefix": "、"
+            },
+            {
+              "id": "b1l05-g5-e3-word-7",
+              "traditional": "嗎",
+              "simplified": "吗",
+              "pinyin": "ma",
+              "meaning": "ending word for a yes/no question"
+            },
+            {
+              "id": "b1l05-g5-e3-word-8",
+              "traditional": "房間",
+              "simplified": "房间",
+              "pinyin": "fángjiān",
+              "meaning": "room",
+              "prefix": "？ B："
+            },
+            {
+              "id": "b1l05-g5-e3-word-9",
+              "traditional": "裡面",
+              "simplified": "里面",
+              "pinyin": "lǐmiàn",
+              "meaning": "inside"
+            },
+            {
+              "id": "b1l05-g5-e3-word-10",
+              "traditional": "有",
+              "pinyin": "yǒu",
+              "meaning": "there is; there are"
+            },
+            {
+              "id": "b1l05-g5-e3-word-11",
+              "traditional": "一張桌子",
+              "simplified": "一张桌子",
+              "pinyin": "yì zhāng zhuōzi",
+              "meaning": "one table"
+            },
+            {
+              "id": "b1l05-g5-e3-word-12",
+              "traditional": "跟",
+              "pinyin": "gēn",
+              "meaning": "and; with"
+            },
+            {
+              "id": "b1l05-g5-e3-word-13",
+              "traditional": "兩張椅子",
+              "simplified": "两张椅子",
+              "pinyin": "liǎng zhāng yǐzi",
+              "meaning": "two chairs",
+              "suffix": "。"
+            }
+          ]
+        }
+      }
+    ],
+    "exerciseTitle": "Describe each place",
+    "exercisePreview": "Name the place first, then say what is there.",
+    "exerciseInstruction": "Answer each open book prompt with place + 有／沒有 + item.",
+    "exerciseNote": "The book prints no answers. These sample answers use Lesson 5 words.",
+    "exerciseResponseMode": "text",
+    "questions": [
+      {
+        "id": "g5-q1",
+        "number": 1,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：我們學校有多少學生？ B："
+          },
+          {
+            "type": "blank",
+            "id": "g5-q1-blank",
+            "answer": "我們學校有一千個學生",
+            "hint": "Give a simple number after 有."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g5-q1-correct",
+            "traditional": "我們學校有一千個學生",
+            "pinyin": "wǒmen xuéxiào yǒu yìqiān ge xuésheng",
+            "meaning": "our school has one thousand students"
+          },
+          {
+            "id": "g5-q1-d1",
+            "traditional": "一千個學生有我們學校",
+            "pinyin": "yìqiān ge xuésheng yǒu wǒmen xuéxiào",
+            "meaning": "reversed order"
+          },
+          {
+            "id": "g5-q1-d2",
+            "traditional": "我們學校在一千個學生",
+            "pinyin": "wǒmen xuéxiào zài yìqiān ge xuésheng",
+            "meaning": "uses 在 instead of 有"
+          }
+        ],
+        "correctFeedback": "The school comes first. 有 introduces the number.",
+        "repairFeedback": "Use place + 有 + quantity + noun."
+      },
+      {
+        "id": "g5-q2",
+        "number": 2,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：你家旁邊有飲料店嗎？ B："
+          },
+          {
+            "type": "blank",
+            "id": "g5-q2-blank",
+            "answer": "我家旁邊沒有飲料店",
+            "hint": "Practice the correct “no” form of 有."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g5-q2-correct",
+            "traditional": "我家旁邊沒有飲料店",
+            "pinyin": "wǒ jiā pángbiān méiyǒu yǐnliào diàn",
+            "meaning": "there is no drink shop beside my home"
+          },
+          {
+            "id": "g5-q2-d1",
+            "traditional": "我家旁邊不有飲料店",
+            "pinyin": "wǒ jiā pángbiān bù yǒu yǐnliào diàn",
+            "meaning": "incorrect negative"
+          },
+          {
+            "id": "g5-q2-d2",
+            "traditional": "飲料店不在我家旁邊",
+            "pinyin": "yǐnliào diàn bú zài wǒ jiā pángbiān",
+            "meaning": "the drink shop is not beside my home"
+          }
+        ],
+        "correctFeedback": "沒有 says there is none.",
+        "repairFeedback": "Make 有 negative with 沒: 沒有. Never say 不有."
+      },
+      {
+        "id": "g5-q3",
+        "number": 3,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：你的桌子上有什麼東西？ B："
+          },
+          {
+            "type": "blank",
+            "id": "g5-q3-blank",
+            "answer": "我的桌子上有一本書",
+            "hint": "Start with the place. Then name one thing."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g5-q3-correct",
+            "traditional": "我的桌子上有一本書",
+            "pinyin": "wǒ de zhuōzi shàng yǒu yì běn shū",
+            "meaning": "there is one book on my table"
+          },
+          {
+            "id": "g5-q3-d1",
+            "traditional": "一本書在我的桌子上",
+            "pinyin": "yì běn shū zài wǒ de zhuōzi shàng",
+            "meaning": "the book is on my table"
+          },
+          {
+            "id": "g5-q3-d2",
+            "traditional": "我的桌子上在一本書",
+            "pinyin": "wǒ de zhuōzi shàng zài yì běn shū",
+            "meaning": "uses 在 instead of 有"
+          }
+        ],
+        "correctFeedback": "The question asks what is on the table. The place comes first, and 有 introduces the book.",
+        "repairFeedback": "Use 我的桌子上 + 有 + 一本書."
+      }
+    ]
+  },
+  "LESSON_FIVE_GRAMMAR_FOUR": {
+    "id": "B1L05-G04-P124",
+    "bookId": 1,
+    "lessonId": 5,
+    "partId": 2,
+    "lessonTitle": "我的錢包在哪裡？",
+    "lessonTitleEnglish": "Where Is My Wallet?",
+    "grammarNumber": 4,
+    "titleTraditional": "名詞 + 方位詞",
+    "titleEnglish": "Say Exactly Where Something Is",
+    "learnerPromise": "Locate something precisely: inside, on, under, beside, in front, or behind.",
+    "printedPages": [
+      124,
+      125
+    ],
+    "audioReference": "05-2-3",
+    "explanation": "A direction word needs an anchor word. Say the thing first, then add 上面, 下面, 裡面, 外面, 旁邊, 前面, or 後面. Together they make one place name.",
+    "focusTerms": [
+      "名詞",
+      "名词",
+      "方位詞",
+      "方位词",
+      "上面",
+      "下面",
+      "裡面",
+      "里面",
+      "旁邊",
+      "旁边"
+    ],
+    "teachingGlossary": [
+      {
+        "id": "b1l05-g04-glossary-1",
+        "traditional": "我",
+        "pinyin": "wǒ",
+        "meaning": "I; me"
+      },
+      {
+        "id": "b1l05-g04-glossary-2",
+        "traditional": "我們",
+        "simplified": "我们",
+        "pinyin": "wǒmen",
+        "meaning": "we; us"
+      },
+      {
+        "id": "b1l05-g04-glossary-3",
+        "traditional": "你們",
+        "simplified": "你们",
+        "pinyin": "nǐmen",
+        "meaning": "you all"
+      },
+      {
+        "id": "b1l05-g04-glossary-4",
+        "traditional": "你",
+        "pinyin": "nǐ",
+        "meaning": "you"
+      },
+      {
+        "id": "b1l05-g04-glossary-5",
+        "traditional": "妳",
+        "pinyin": "nǐ",
+        "meaning": "you"
+      },
+      {
+        "id": "b1l05-g04-glossary-6",
+        "traditional": "他",
+        "pinyin": "tā",
+        "meaning": "he; him"
+      },
+      {
+        "id": "b1l05-g04-glossary-7",
+        "traditional": "他們",
+        "simplified": "他们",
+        "pinyin": "tāmen",
+        "meaning": "they; them"
+      },
+      {
+        "id": "b1l05-g04-glossary-8",
+        "traditional": "她",
+        "pinyin": "tā",
+        "meaning": "she; her"
+      },
+      {
+        "id": "b1l05-g04-glossary-9",
+        "traditional": "媽媽",
+        "simplified": "妈妈",
+        "pinyin": "māma",
+        "meaning": "mom"
+      },
+      {
+        "id": "b1l05-g04-glossary-10",
+        "traditional": "媽",
+        "simplified": "妈",
+        "pinyin": "mā",
+        "meaning": "mom"
+      },
+      {
+        "id": "b1l05-g04-glossary-11",
+        "traditional": "哥哥",
+        "pinyin": "gēge",
+        "meaning": "older brother"
+      },
+      {
+        "id": "b1l05-g04-glossary-12",
+        "traditional": "弟弟",
+        "pinyin": "dìdi",
+        "meaning": "younger brother"
+      },
+      {
+        "id": "b1l05-g04-glossary-13",
+        "traditional": "中明",
+        "pinyin": "Zhōngmíng",
+        "meaning": "Zhongming"
+      },
+      {
+        "id": "b1l05-g04-glossary-14",
+        "traditional": "小明",
+        "pinyin": "Xiǎomíng",
+        "meaning": "Xiaoming"
+      },
+      {
+        "id": "b1l05-g04-glossary-15",
+        "traditional": "友美",
+        "pinyin": "Yǒuměi",
+        "meaning": "Youmei"
+      },
+      {
+        "id": "b1l05-g04-glossary-16",
+        "traditional": "孩子",
+        "pinyin": "háizi",
+        "meaning": "child"
+      },
+      {
+        "id": "b1l05-g04-glossary-17",
+        "traditional": "錢包",
+        "simplified": "钱包",
+        "pinyin": "qiánbāo",
+        "meaning": "wallet"
+      },
+      {
+        "id": "b1l05-g04-glossary-18",
+        "traditional": "書",
+        "simplified": "书",
+        "pinyin": "shū",
+        "meaning": "book"
+      },
+      {
+        "id": "b1l05-g04-glossary-19",
+        "traditional": "筆",
+        "simplified": "笔",
+        "pinyin": "bǐ",
+        "meaning": "pen"
+      },
+      {
+        "id": "b1l05-g04-glossary-20",
+        "traditional": "東西",
+        "simplified": "东西",
+        "pinyin": "dōngxi",
+        "meaning": "thing; things"
+      },
+      {
+        "id": "b1l05-g04-glossary-21",
+        "traditional": "桌子",
+        "pinyin": "zhuōzi",
+        "meaning": "table"
+      },
+      {
+        "id": "b1l05-g04-glossary-22",
+        "traditional": "椅子",
+        "pinyin": "yǐzi",
+        "meaning": "chair"
+      },
+      {
+        "id": "b1l05-g04-glossary-23",
+        "traditional": "沙發",
+        "simplified": "沙发",
+        "pinyin": "shāfā",
+        "meaning": "sofa"
+      },
+      {
+        "id": "b1l05-g04-glossary-24",
+        "traditional": "房間",
+        "simplified": "房间",
+        "pinyin": "fángjiān",
+        "meaning": "room"
+      },
+      {
+        "id": "b1l05-g04-glossary-25",
+        "traditional": "客廳",
+        "simplified": "客厅",
+        "pinyin": "kètīng",
+        "meaning": "living room"
+      },
+      {
+        "id": "b1l05-g04-glossary-26",
+        "traditional": "廚房",
+        "simplified": "厨房",
+        "pinyin": "chúfáng",
+        "meaning": "kitchen"
+      },
+      {
+        "id": "b1l05-g04-glossary-27",
+        "traditional": "圖書館",
+        "simplified": "图书馆",
+        "pinyin": "túshūguǎn",
+        "meaning": "library"
+      },
+      {
+        "id": "b1l05-g04-glossary-28",
+        "traditional": "學校",
+        "simplified": "学校",
+        "pinyin": "xuéxiào",
+        "meaning": "school"
+      },
+      {
+        "id": "b1l05-g04-glossary-29",
+        "traditional": "餐廳",
+        "simplified": "餐厅",
+        "pinyin": "cāntīng",
+        "meaning": "restaurant"
+      },
+      {
+        "id": "b1l05-g04-glossary-30",
+        "traditional": "咖啡廳",
+        "simplified": "咖啡厅",
+        "pinyin": "kāfēitīng",
+        "meaning": "café"
+      },
+      {
+        "id": "b1l05-g04-glossary-31",
+        "traditional": "飲料店",
+        "simplified": "饮料店",
+        "pinyin": "yǐnliào diàn",
+        "meaning": "drink shop"
+      },
+      {
+        "id": "b1l05-g04-glossary-32",
+        "traditional": "台灣",
+        "simplified": "台湾",
+        "pinyin": "Táiwān",
+        "meaning": "Taiwan"
+      },
+      {
+        "id": "b1l05-g04-glossary-33",
+        "traditional": "家",
+        "pinyin": "jiā",
+        "meaning": "home"
+      },
+      {
+        "id": "b1l05-g04-glossary-34",
+        "traditional": "裡面",
+        "simplified": "里面",
+        "pinyin": "lǐmiàn",
+        "meaning": "inside"
+      },
+      {
+        "id": "b1l05-g04-glossary-35",
+        "traditional": "裡",
+        "simplified": "里",
+        "pinyin": "lǐ",
+        "meaning": "inside; in"
+      },
+      {
+        "id": "b1l05-g04-glossary-36",
+        "traditional": "外面",
+        "pinyin": "wàimiàn",
+        "meaning": "outside"
+      },
+      {
+        "id": "b1l05-g04-glossary-37",
+        "traditional": "上面",
+        "pinyin": "shàngmiàn",
+        "meaning": "on; above"
+      },
+      {
+        "id": "b1l05-g04-glossary-38",
+        "traditional": "上",
+        "pinyin": "shàng",
+        "meaning": "on; above"
+      },
+      {
+        "id": "b1l05-g04-glossary-39",
+        "traditional": "下面",
+        "pinyin": "xiàmiàn",
+        "meaning": "under; below"
+      },
+      {
+        "id": "b1l05-g04-glossary-40",
+        "traditional": "旁邊",
+        "simplified": "旁边",
+        "pinyin": "pángbiān",
+        "meaning": "beside; next to"
+      },
+      {
+        "id": "b1l05-g04-glossary-41",
+        "traditional": "前面",
+        "pinyin": "qiánmiàn",
+        "meaning": "in front"
+      },
+      {
+        "id": "b1l05-g04-glossary-42",
+        "traditional": "後面",
+        "simplified": "后面",
+        "pinyin": "hòumiàn",
+        "meaning": "behind"
+      },
+      {
+        "id": "b1l05-g04-glossary-43",
+        "traditional": "在",
+        "pinyin": "zài",
+        "meaning": "be located; at"
+      },
+      {
+        "id": "b1l05-g04-glossary-44",
+        "traditional": "不在",
+        "pinyin": "bú zài",
+        "meaning": "is not located at"
+      },
+      {
+        "id": "b1l05-g04-glossary-45",
+        "traditional": "有",
+        "pinyin": "yǒu",
+        "meaning": "there is; there are"
+      },
+      {
+        "id": "b1l05-g04-glossary-46",
+        "traditional": "沒有",
+        "simplified": "没有",
+        "pinyin": "méiyǒu",
+        "meaning": "there is not; there are not"
+      },
+      {
+        "id": "b1l05-g04-glossary-47",
+        "traditional": "都沒有",
+        "simplified": "都没有",
+        "pinyin": "dōu méiyǒu",
+        "meaning": "none of them have; nowhere has"
+      },
+      {
+        "id": "b1l05-g04-glossary-48",
+        "traditional": "是",
+        "pinyin": "shì",
+        "meaning": "is; am; are"
+      },
+      {
+        "id": "b1l05-g04-glossary-49",
+        "traditional": "不是",
+        "pinyin": "bú shì",
+        "meaning": "is not"
+      },
+      {
+        "id": "b1l05-g04-glossary-50",
+        "traditional": "不知道",
+        "pinyin": "bù zhīdào",
+        "meaning": "do not know"
+      },
+      {
+        "id": "b1l05-g04-glossary-51",
+        "traditional": "要",
+        "pinyin": "yào",
+        "meaning": "will; want to"
+      },
+      {
+        "id": "b1l05-g04-glossary-52",
+        "traditional": "去",
+        "pinyin": "qù",
+        "meaning": "go"
+      },
+      {
+        "id": "b1l05-g04-glossary-53",
+        "traditional": "喝下午茶",
+        "pinyin": "hē xiàwǔ chá",
+        "meaning": "have afternoon tea"
+      },
+      {
+        "id": "b1l05-g04-glossary-54",
+        "traditional": "找",
+        "pinyin": "zhǎo",
+        "meaning": "look for"
+      },
+      {
+        "id": "b1l05-g04-glossary-55",
+        "traditional": "幫",
+        "simplified": "帮",
+        "pinyin": "bāng",
+        "meaning": "help"
+      },
+      {
+        "id": "b1l05-g04-glossary-56",
+        "traditional": "再去",
+        "pinyin": "zài qù",
+        "meaning": "go again"
+      },
+      {
+        "id": "b1l05-g04-glossary-57",
+        "traditional": "做飯",
+        "simplified": "做饭",
+        "pinyin": "zuòfàn",
+        "meaning": "cook"
+      },
+      {
+        "id": "b1l05-g04-glossary-58",
+        "traditional": "看",
+        "pinyin": "kàn",
+        "meaning": "look; watch"
+      },
+      {
+        "id": "b1l05-g04-glossary-59",
+        "traditional": "看書",
+        "simplified": "看书",
+        "pinyin": "kànshū",
+        "meaning": "read"
+      },
+      {
+        "id": "b1l05-g04-glossary-60",
+        "traditional": "睡覺",
+        "simplified": "睡觉",
+        "pinyin": "shuìjiào",
+        "meaning": "sleep"
+      },
+      {
+        "id": "b1l05-g04-glossary-61",
+        "traditional": "玩",
+        "pinyin": "wán",
+        "meaning": "play; hang out"
+      },
+      {
+        "id": "b1l05-g04-glossary-62",
+        "traditional": "喜歡",
+        "simplified": "喜欢",
+        "pinyin": "xǐhuān",
+        "meaning": "like"
+      },
+      {
+        "id": "b1l05-g04-glossary-63",
+        "traditional": "很忙",
+        "pinyin": "hěn máng",
+        "meaning": "very busy"
+      },
+      {
+        "id": "b1l05-g04-glossary-64",
+        "traditional": "現在",
+        "simplified": "现在",
+        "pinyin": "xiànzài",
+        "meaning": "now"
+      },
+      {
+        "id": "b1l05-g04-glossary-65",
+        "traditional": "這裡",
+        "simplified": "这里",
+        "pinyin": "zhèlǐ",
+        "meaning": "here"
+      },
+      {
+        "id": "b1l05-g04-glossary-66",
+        "traditional": "哪裡",
+        "simplified": "哪里",
+        "pinyin": "nǎlǐ",
+        "meaning": "where"
+      },
+      {
+        "id": "b1l05-g04-glossary-67",
+        "traditional": "什麼",
+        "simplified": "什么",
+        "pinyin": "shénme",
+        "meaning": "what"
+      },
+      {
+        "id": "b1l05-g04-glossary-68",
+        "traditional": "多少",
+        "pinyin": "duōshao",
+        "meaning": "how many; how much"
+      },
+      {
+        "id": "b1l05-g04-glossary-69",
+        "traditional": "嗎",
+        "simplified": "吗",
+        "pinyin": "ma",
+        "meaning": "ending word for a yes/no question"
+      },
+      {
+        "id": "b1l05-g04-glossary-70",
+        "traditional": "呢",
+        "pinyin": "ne",
+        "meaning": "what about; and"
+      },
+      {
+        "id": "b1l05-g04-glossary-71",
+        "traditional": "吧",
+        "pinyin": "ba",
+        "meaning": "softens a suggestion"
+      },
+      {
+        "id": "b1l05-g04-glossary-72",
+        "traditional": "啊",
+        "pinyin": "a",
+        "meaning": "ending word that adds feeling"
+      },
+      {
+        "id": "b1l05-g04-glossary-73",
+        "traditional": "好嗎",
+        "simplified": "好吗",
+        "pinyin": "hǎo ma",
+        "meaning": "okay; could you"
+      },
+      {
+        "id": "b1l05-g04-glossary-74",
+        "traditional": "跟",
+        "pinyin": "gēn",
+        "meaning": "and; with"
+      },
+      {
+        "id": "b1l05-g04-glossary-75",
+        "traditional": "可是",
+        "pinyin": "kěshì",
+        "meaning": "but"
+      },
+      {
+        "id": "b1l05-g04-glossary-76",
+        "traditional": "的",
+        "pinyin": "de",
+        "meaning": "possessive or descriptive linker"
+      },
+      {
+        "id": "b1l05-g04-glossary-77",
+        "traditional": "我的",
+        "pinyin": "wǒ de",
+        "meaning": "mine; my"
+      },
+      {
+        "id": "b1l05-g04-glossary-78",
+        "traditional": "你的",
+        "pinyin": "nǐ de",
+        "meaning": "yours; your"
+      },
+      {
+        "id": "b1l05-g04-glossary-79",
+        "traditional": "哥哥的",
+        "pinyin": "gēge de",
+        "meaning": "older brother’s"
+      },
+      {
+        "id": "b1l05-g04-glossary-80",
+        "traditional": "那",
+        "pinyin": "nà",
+        "meaning": "that"
+      },
+      {
+        "id": "b1l05-g04-glossary-81",
+        "traditional": "那個",
+        "simplified": "那个",
+        "pinyin": "nà ge",
+        "meaning": "that"
+      },
+      {
+        "id": "b1l05-g04-glossary-82",
+        "traditional": "那家",
+        "pinyin": "nà jiā",
+        "meaning": "that business"
+      },
+      {
+        "id": "b1l05-g04-glossary-83",
+        "traditional": "一個錢包",
+        "simplified": "一个钱包",
+        "pinyin": "yí ge qiánbāo",
+        "meaning": "one wallet"
+      },
+      {
+        "id": "b1l05-g04-glossary-84",
+        "traditional": "一張桌子",
+        "simplified": "一张桌子",
+        "pinyin": "yì zhāng zhuōzi",
+        "meaning": "one table"
+      },
+      {
+        "id": "b1l05-g04-glossary-85",
+        "traditional": "兩張椅子",
+        "simplified": "两张椅子",
+        "pinyin": "liǎng zhāng yǐzi",
+        "meaning": "two chairs"
+      },
+      {
+        "id": "b1l05-g04-glossary-86",
+        "traditional": "一家很大的餐廳",
+        "simplified": "一家很大的餐厅",
+        "pinyin": "yì jiā hěn dà de cāntīng",
+        "meaning": "one large restaurant"
+      },
+      {
+        "id": "b1l05-g04-glossary-87",
+        "traditional": "很多",
+        "pinyin": "hěn duō",
+        "meaning": "many; a lot"
+      },
+      {
+        "id": "b1l05-g04-glossary-88",
+        "traditional": "很多好吃的東西",
+        "simplified": "很多好吃的东西",
+        "pinyin": "hěn duō hǎochī de dōngxi",
+        "meaning": "lots of delicious food"
+      },
+      {
+        "id": "b1l05-g04-glossary-89",
+        "traditional": "好吃",
+        "pinyin": "hǎochī",
+        "meaning": "delicious"
+      },
+      {
+        "id": "b1l05-g04-glossary-90",
+        "traditional": "學生",
+        "simplified": "学生",
+        "pinyin": "xuésheng",
+        "meaning": "student; students"
+      },
+      {
+        "id": "b1l05-g04-glossary-91",
+        "traditional": "一千個學生",
+        "simplified": "一千个学生",
+        "pinyin": "yìqiān ge xuésheng",
+        "meaning": "one thousand students"
+      },
+      {
+        "id": "b1l05-g04-glossary-92",
+        "traditional": "一本書",
+        "simplified": "一本书",
+        "pinyin": "yì běn shū",
+        "meaning": "one book"
+      },
+      {
+        "id": "b1l05-g04-glossary-93",
+        "traditional": "咖啡",
+        "pinyin": "kāfēi",
+        "meaning": "coffee"
+      },
+      {
+        "id": "b1l05-g04-glossary-94",
+        "traditional": "水果",
+        "pinyin": "shuǐguǒ",
+        "meaning": "fruit"
+      },
+      {
+        "id": "b1l05-g04-glossary-95",
+        "traditional": "牛肉麵",
+        "simplified": "牛肉面",
+        "pinyin": "niúròu miàn",
+        "meaning": "beef noodles"
+      },
+      {
+        "id": "b1l05-g04-glossary-96",
+        "traditional": "小籠包",
+        "simplified": "小笼包",
+        "pinyin": "xiǎolóngbāo",
+        "meaning": "soup dumplings"
+      },
+      {
+        "id": "b1l05-g04-glossary-97",
+        "traditional": "很喜歡",
+        "simplified": "很喜欢",
+        "pinyin": "hěn xǐhuān",
+        "meaning": "like very much"
+      },
+      {
+        "id": "b1l05-g04-glossary-98",
+        "traditional": "都",
+        "pinyin": "dōu",
+        "meaning": "all; both"
+      }
+    ],
+    "pattern": "Thing + 在 + anchor noun + direction",
+    "patternColumns": [
+      "Thing",
+      "Location link",
+      "Anchor + direction"
+    ],
+    "patternAccentColumn": 2,
+    "discoveryLab": {
+      "title": "Change the direction word",
+      "description": "Keep the same anchor word. Change the direction word to move the thing.",
+      "prompt": "Where is the book?",
+      "choices": [
+        {
+          "id": "g4-top",
+          "label": "On",
+          "traditional": "書在桌子上面。",
+          "simplified": "书在桌子上面。",
+          "pinyin": "Shū zài zhuōzi shàngmiàn.",
+          "english": "The book is on the table.",
+          "note": "桌子 is the anchor word; 上面 is the direction word."
+        },
+        {
+          "id": "g4-under",
+          "label": "Under",
+          "traditional": "書在桌子下面。",
+          "simplified": "书在桌子下面。",
+          "pinyin": "Shū zài zhuōzi xiàmiàn.",
+          "english": "The book is under the table.",
+          "note": "Change the direction word, and the book moves under the table."
+        },
+        {
+          "id": "g4-beside",
+          "label": "Beside",
+          "traditional": "書在桌子旁邊。",
+          "simplified": "书在桌子旁边。",
+          "pinyin": "Shū zài zhuōzi pángbiān.",
+          "english": "The book is beside the table.",
+          "note": "旁邊 means next to the anchor word."
+        },
+        {
+          "id": "g4-repair",
+          "label": "Repair order",
+          "traditional": "書在上面桌子 → 書在桌子上面",
+          "simplified": "书在上面桌子 → 书在桌子上面",
+          "pinyin": "Shū zài shàngmiàn zhuōzi → Shū zài zhuōzi shàngmiàn",
+          "english": "The book is on the table.",
+          "note": "The anchor word must come before its direction word.",
+          "isCorrection": true
+        }
+      ],
+      "takeaway": "Thing + 在 + anchor + direction. Keep the anchor and its direction word together."
+    },
+    "contrast": {
+      "title": "A place alone, or a place plus an action?",
+      "description": "The same anchor + direction words can end a sentence or come before an action.",
+      "items": [
+        {
+          "id": "g4-c1",
+          "label": "Location",
+          "traditional": "筆在椅子下面。",
+          "simplified": "笔在椅子下面。",
+          "pinyin": "Bǐ zài yǐzi xiàmiàn.",
+          "english": "The pen is under the chair.",
+          "note": "The sentence ends after the place.",
+          "particle": {
+            "id": "g4-c1-p",
+            "traditional": "在"
+          }
+        },
+        {
+          "id": "g4-c2",
+          "label": "Action stage",
+          "traditional": "他在房間裡面睡覺。",
+          "simplified": "他在房间里面睡觉。",
+          "pinyin": "Tā zài fángjiān lǐmiàn shuìjiào.",
+          "english": "He sleeps in the room.",
+          "note": "The place comes before the action 睡覺.",
+          "particle": {
+            "id": "g4-c2-p",
+            "traditional": "在"
+          }
+        }
+      ]
+    },
+    "patternRows": [
+      {
+        "id": "g4-p1",
+        "subject": [
+          {
+            "id": "g4-p1-your",
+            "traditional": "你的",
+            "pinyin": "nǐ de",
+            "meaning": "yours; your"
+          },
+          {
+            "id": "g4-p1-book",
+            "traditional": "書",
+            "simplified": "书",
+            "pinyin": "shū",
+            "meaning": "book"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g4-p1-zai",
+            "traditional": "在",
+            "pinyin": "zài",
+            "meaning": "be located; at"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g4-p1-table",
+            "traditional": "桌子",
+            "pinyin": "zhuōzi",
+            "meaning": "table"
+          },
+          {
+            "id": "g4-p1-top",
+            "traditional": "上面",
+            "pinyin": "shàngmiàn",
+            "meaning": "on; above",
+            "suffix": "。"
+          }
+        ],
+        "english": "Your book is on the table."
+      },
+      {
+        "id": "g4-p2",
+        "subject": [
+          {
+            "id": "g4-p2-restaurant",
+            "traditional": "餐廳",
+            "simplified": "餐厅",
+            "pinyin": "cāntīng",
+            "meaning": "restaurant"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g4-p2-not",
+            "traditional": "不在",
+            "pinyin": "bú zài",
+            "meaning": "is not located at"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g4-p2-school",
+            "traditional": "學校",
+            "simplified": "学校",
+            "pinyin": "xuéxiào",
+            "meaning": "school"
+          },
+          {
+            "id": "g4-p2-side",
+            "traditional": "旁邊",
+            "simplified": "旁边",
+            "pinyin": "pángbiān",
+            "meaning": "beside; next to",
+            "suffix": "。"
+          }
+        ],
+        "english": "The restaurant is not next to the school."
+      },
+      {
+        "id": "g4-p3",
+        "subject": [
+          {
+            "id": "g4-p3-mom",
+            "traditional": "媽媽",
+            "simplified": "妈妈",
+            "pinyin": "māma",
+            "meaning": "mom"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g4-p3-zai",
+            "traditional": "在",
+            "pinyin": "zài",
+            "meaning": "be located; at"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g4-p3-kitchen",
+            "traditional": "廚房",
+            "simplified": "厨房",
+            "pinyin": "chúfáng",
+            "meaning": "kitchen"
+          },
+          {
+            "id": "g4-p3-inside",
+            "traditional": "裡面",
+            "simplified": "里面",
+            "pinyin": "lǐmiàn",
+            "meaning": "inside"
+          },
+          {
+            "id": "g4-p3-cook",
+            "traditional": "做飯",
+            "simplified": "做饭",
+            "pinyin": "zuòfàn",
+            "meaning": "cook",
+            "suffix": "。"
+          }
+        ],
+        "english": "Mom cooks in the kitchen."
+      }
+    ],
+    "confusion": {
+      "title": "Don't mix these up",
+      "items": [
+        {
+          "id": "g4-confusion-anchor-word",
+          "question": "Can I just say 書在上面 to mean “on the table”?",
+          "answer": "No. 上面 needs an anchor word. Name the thing first: 桌子上面.",
+          "wrongTraditional": "書在上面。",
+          "wrongSimplified": "书在上面。",
+          "right": {
+            "traditional": "書在桌子上面。",
+            "simplified": "书在桌子上面。",
+            "pinyin": "Shū zài zhuōzi shàngmiàn.",
+            "english": "The book is on the table.",
+            "words": [
+              {
+                "id": "b1l05-g4-confusion-1-word-1",
+                "traditional": "書",
+                "simplified": "书",
+                "pinyin": "shū",
+                "meaning": "book"
+              },
+              {
+                "id": "b1l05-g4-confusion-1-word-2",
+                "traditional": "在",
+                "pinyin": "zài",
+                "meaning": "be located; at"
+              },
+              {
+                "id": "b1l05-g4-confusion-1-word-3",
+                "traditional": "桌子",
+                "pinyin": "zhuōzi",
+                "meaning": "table"
+              },
+              {
+                "id": "b1l05-g4-confusion-1-word-4",
+                "traditional": "上面",
+                "pinyin": "shàngmiàn",
+                "meaning": "on; above",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "g4-confusion-direction-order",
+          "question": "Do I say 在下面椅子 or 在椅子下面?",
+          "answer": "Anchor word first, direction second: 椅子下面.",
+          "wrongTraditional": "筆在下面椅子。",
+          "wrongSimplified": "笔在下面椅子。",
+          "right": {
+            "traditional": "筆在椅子下面。",
+            "simplified": "笔在椅子下面。",
+            "pinyin": "Bǐ zài yǐzi xiàmiàn.",
+            "english": "The pen is under the chair.",
+            "words": [
+              {
+                "id": "b1l05-g4-confusion-2-word-1",
+                "traditional": "筆",
+                "simplified": "笔",
+                "pinyin": "bǐ",
+                "meaning": "pen"
+              },
+              {
+                "id": "b1l05-g4-confusion-2-word-2",
+                "traditional": "在",
+                "pinyin": "zài",
+                "meaning": "be located; at"
+              },
+              {
+                "id": "b1l05-g4-confusion-2-word-3",
+                "traditional": "椅子",
+                "pinyin": "yǐzi",
+                "meaning": "chair"
+              },
+              {
+                "id": "b1l05-g4-confusion-2-word-4",
+                "traditional": "下面",
+                "pinyin": "xiàmiàn",
+                "meaning": "under; below",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "g4-confusion-shang-vs-li",
+          "question": "My older brother is inside the room. Is it 在房間上面?",
+          "answer": "No. 上面 means on top. For inside a room, use 裡面.",
+          "wrongTraditional": "哥哥在房間上面。",
+          "wrongSimplified": "哥哥在房间上面。",
+          "right": {
+            "traditional": "哥哥在房間裡面。",
+            "simplified": "哥哥在房间里面。",
+            "pinyin": "Gēge zài fángjiān lǐmiàn.",
+            "english": "My older brother is inside the room.",
+            "words": [
+              {
+                "id": "b1l05-g4-confusion-3-word-1",
+                "traditional": "哥哥",
+                "pinyin": "gēge",
+                "meaning": "older brother"
+              },
+              {
+                "id": "b1l05-g4-confusion-3-word-2",
+                "traditional": "在",
+                "pinyin": "zài",
+                "meaning": "be located; at"
+              },
+              {
+                "id": "b1l05-g4-confusion-3-word-3",
+                "traditional": "房間",
+                "simplified": "房间",
+                "pinyin": "fángjiān",
+                "meaning": "room"
+              },
+              {
+                "id": "b1l05-g4-confusion-3-word-4",
+                "traditional": "裡面",
+                "simplified": "里面",
+                "pinyin": "lǐmiàn",
+                "meaning": "inside",
+                "suffix": "。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "examples": [
+      {
+        "id": "g4-e1",
+        "number": 1,
+        "text": {
+          "traditional": "A：那家餐廳在你家旁邊嗎？ B：不在我家旁邊，在我家後面。",
+          "simplified": "A：那家餐厅在你家旁边吗？ B：不在我家旁边，在我家后面。",
+          "pinyin": "A: Nà jiā cāntīng zài nǐ jiā pángbiān ma? B: Bú zài wǒ jiā pángbiān, zài wǒ jiā hòumiàn.",
+          "english": "A: Is that restaurant next to your home? B: No, it is behind my home.",
+          "words": [
+            {
+              "id": "b1l05-g4-e1-word-1",
+              "traditional": "那家",
+              "pinyin": "nà jiā",
+              "meaning": "that business",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l05-g4-e1-word-2",
+              "traditional": "餐廳",
+              "simplified": "餐厅",
+              "pinyin": "cāntīng",
+              "meaning": "restaurant"
+            },
+            {
+              "id": "b1l05-g4-e1-word-3",
+              "traditional": "在",
+              "pinyin": "zài",
+              "meaning": "be located; at"
+            },
+            {
+              "id": "b1l05-g4-e1-word-4",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you"
+            },
+            {
+              "id": "b1l05-g4-e1-word-5",
+              "traditional": "家",
+              "pinyin": "jiā",
+              "meaning": "home"
+            },
+            {
+              "id": "b1l05-g4-e1-word-6",
+              "traditional": "旁邊",
+              "simplified": "旁边",
+              "pinyin": "pángbiān",
+              "meaning": "beside; next to"
+            },
+            {
+              "id": "b1l05-g4-e1-word-7",
+              "traditional": "嗎",
+              "simplified": "吗",
+              "pinyin": "ma",
+              "meaning": "ending word for a yes/no question"
+            },
+            {
+              "id": "b1l05-g4-e1-word-8",
+              "traditional": "不在",
+              "pinyin": "bú zài",
+              "meaning": "is not located at",
+              "prefix": "？ B："
+            },
+            {
+              "id": "b1l05-g4-e1-word-9",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me"
+            },
+            {
+              "id": "b1l05-g4-e1-word-10",
+              "traditional": "家",
+              "pinyin": "jiā",
+              "meaning": "home"
+            },
+            {
+              "id": "b1l05-g4-e1-word-11",
+              "traditional": "旁邊",
+              "simplified": "旁边",
+              "pinyin": "pángbiān",
+              "meaning": "beside; next to"
+            },
+            {
+              "id": "b1l05-g4-e1-word-12",
+              "traditional": "在",
+              "pinyin": "zài",
+              "meaning": "be located; at",
+              "prefix": "，"
+            },
+            {
+              "id": "b1l05-g4-e1-word-13",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me"
+            },
+            {
+              "id": "b1l05-g4-e1-word-14",
+              "traditional": "家",
+              "pinyin": "jiā",
+              "meaning": "home"
+            },
+            {
+              "id": "b1l05-g4-e1-word-15",
+              "traditional": "後面",
+              "simplified": "后面",
+              "pinyin": "hòumiàn",
+              "meaning": "behind",
+              "suffix": "。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g4-e2",
+        "number": 2,
+        "text": {
+          "traditional": "A：我的筆在哪裡？ B：你看，你的筆在椅子下面。",
+          "simplified": "A：我的笔在哪里？ B：你看，你的笔在椅子下面。",
+          "pinyin": "A: Wǒ de bǐ zài nǎlǐ? B: Nǐ kàn, nǐ de bǐ zài yǐzi xiàmiàn.",
+          "english": "A: Where is my pen? B: Look. Your pen is under the chair.",
+          "words": [
+            {
+              "id": "b1l05-g4-e2-word-1",
+              "traditional": "我的",
+              "pinyin": "wǒ de",
+              "meaning": "mine; my",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l05-g4-e2-word-2",
+              "traditional": "筆",
+              "simplified": "笔",
+              "pinyin": "bǐ",
+              "meaning": "pen"
+            },
+            {
+              "id": "b1l05-g4-e2-word-3",
+              "traditional": "在",
+              "pinyin": "zài",
+              "meaning": "be located; at"
+            },
+            {
+              "id": "b1l05-g4-e2-word-4",
+              "traditional": "哪裡",
+              "simplified": "哪里",
+              "pinyin": "nǎlǐ",
+              "meaning": "where"
+            },
+            {
+              "id": "b1l05-g4-e2-word-5",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you",
+              "prefix": "？ B："
+            },
+            {
+              "id": "b1l05-g4-e2-word-6",
+              "traditional": "看",
+              "pinyin": "kàn",
+              "meaning": "look; watch"
+            },
+            {
+              "id": "b1l05-g4-e2-word-7",
+              "traditional": "你的",
+              "pinyin": "nǐ de",
+              "meaning": "yours; your",
+              "prefix": "，"
+            },
+            {
+              "id": "b1l05-g4-e2-word-8",
+              "traditional": "筆",
+              "simplified": "笔",
+              "pinyin": "bǐ",
+              "meaning": "pen"
+            },
+            {
+              "id": "b1l05-g4-e2-word-9",
+              "traditional": "在",
+              "pinyin": "zài",
+              "meaning": "be located; at"
+            },
+            {
+              "id": "b1l05-g4-e2-word-10",
+              "traditional": "椅子",
+              "pinyin": "yǐzi",
+              "meaning": "chair"
+            },
+            {
+              "id": "b1l05-g4-e2-word-11",
+              "traditional": "下面",
+              "pinyin": "xiàmiàn",
+              "meaning": "under; below",
+              "suffix": "。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g4-e3",
+        "number": 3,
+        "text": {
+          "traditional": "A：他們都在房間裡面嗎？ B：哥哥在房間裡面，我不知道弟弟在哪裡。",
+          "simplified": "A：他们都在房间里面吗？ B：哥哥在房间里面，我不知道弟弟在哪里。",
+          "pinyin": "A: Tāmen dōu zài fángjiān lǐmiàn ma? B: Gēge zài fángjiān lǐmiàn, wǒ bù zhīdào dìdi zài nǎlǐ.",
+          "english": "A: Are they all inside the room? B: My older brother is inside the room. I do not know where my younger brother is.",
+          "words": [
+            {
+              "id": "b1l05-g4-e3-word-1",
+              "traditional": "他們",
+              "simplified": "他们",
+              "pinyin": "tāmen",
+              "meaning": "they; them",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l05-g4-e3-word-2",
+              "traditional": "都",
+              "pinyin": "dōu",
+              "meaning": "all; both"
+            },
+            {
+              "id": "b1l05-g4-e3-word-3",
+              "traditional": "在",
+              "pinyin": "zài",
+              "meaning": "be located; at"
+            },
+            {
+              "id": "b1l05-g4-e3-word-4",
+              "traditional": "房間",
+              "simplified": "房间",
+              "pinyin": "fángjiān",
+              "meaning": "room"
+            },
+            {
+              "id": "b1l05-g4-e3-word-5",
+              "traditional": "裡面",
+              "simplified": "里面",
+              "pinyin": "lǐmiàn",
+              "meaning": "inside"
+            },
+            {
+              "id": "b1l05-g4-e3-word-6",
+              "traditional": "嗎",
+              "simplified": "吗",
+              "pinyin": "ma",
+              "meaning": "ending word for a yes/no question"
+            },
+            {
+              "id": "b1l05-g4-e3-word-7",
+              "traditional": "哥哥",
+              "pinyin": "gēge",
+              "meaning": "older brother",
+              "prefix": "？ B："
+            },
+            {
+              "id": "b1l05-g4-e3-word-8",
+              "traditional": "在",
+              "pinyin": "zài",
+              "meaning": "be located; at"
+            },
+            {
+              "id": "b1l05-g4-e3-word-9",
+              "traditional": "房間",
+              "simplified": "房间",
+              "pinyin": "fángjiān",
+              "meaning": "room"
+            },
+            {
+              "id": "b1l05-g4-e3-word-10",
+              "traditional": "裡面",
+              "simplified": "里面",
+              "pinyin": "lǐmiàn",
+              "meaning": "inside"
+            },
+            {
+              "id": "b1l05-g4-e3-word-11",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me",
+              "prefix": "，"
+            },
+            {
+              "id": "b1l05-g4-e3-word-12",
+              "traditional": "不知道",
+              "pinyin": "bù zhīdào",
+              "meaning": "do not know"
+            },
+            {
+              "id": "b1l05-g4-e3-word-13",
+              "traditional": "弟弟",
+              "pinyin": "dìdi",
+              "meaning": "younger brother"
+            },
+            {
+              "id": "b1l05-g4-e3-word-14",
+              "traditional": "在",
+              "pinyin": "zài",
+              "meaning": "be located; at"
+            },
+            {
+              "id": "b1l05-g4-e3-word-15",
+              "traditional": "哪裡",
+              "simplified": "哪里",
+              "pinyin": "nǎlǐ",
+              "meaning": "where",
+              "suffix": "。"
+            }
+          ]
+        }
+      }
+    ],
+    "exerciseTitle": "Build the location",
+    "exercisePreview": "Find the anchor word, then choose its direction.",
+    "exerciseInstruction": "Answer all four pictures. Use the anchor word plus its direction word.",
+    "exerciseNote": "The pictures on printed page 125 give these answers.",
+    "exerciseCues": [
+      {
+        "id": "g4-cue1",
+        "label": "Book",
+        "pinyin": "zhuōzi shàngmiàn",
+        "detail": "The book rests on the table."
+      },
+      {
+        "id": "g4-cue2",
+        "label": "Brothers",
+        "pinyin": "gēge pángbiān",
+        "detail": "The younger brother stands beside the older brother."
+      },
+      {
+        "id": "g4-cue3",
+        "label": "Reading",
+        "pinyin": "fángjiān lǐmiàn",
+        "detail": "She reads inside a bedroom."
+      },
+      {
+        "id": "g4-cue4",
+        "label": "Sleeping",
+        "pinyin": "túshūguǎn lǐmiàn",
+        "detail": "Xiaoming sleeps inside the library."
+      }
+    ],
+    "questions": [
+      {
+        "id": "g4-q1",
+        "number": 1,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：我的書在哪裡？ B："
+          },
+          {
+            "type": "blank",
+            "id": "g4-q1-blank",
+            "answer": "你的書在桌子上面",
+            "hint": "The table is the anchor word. The book is on top of it."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g4-q1-correct",
+            "traditional": "你的書在桌子上面",
+            "pinyin": "nǐ de shū zài zhuōzi shàngmiàn",
+            "meaning": "your book is on the table"
+          },
+          {
+            "id": "g4-q1-d1",
+            "traditional": "你的書在桌子下面",
+            "pinyin": "nǐ de shū zài zhuōzi xiàmiàn",
+            "meaning": "your book is under the table"
+          },
+          {
+            "id": "g4-q1-d2",
+            "traditional": "你的書在上面桌子",
+            "pinyin": "nǐ de shū zài shàngmiàn zhuōzi",
+            "meaning": "direction before anchor"
+          }
+        ],
+        "correctFeedback": "桌子 + 上面 matches the picture.",
+        "repairFeedback": "Name the anchor before the direction: 桌子上面."
+      },
+      {
+        "id": "g4-q2",
+        "number": 2,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：弟弟在哪裡？ B："
+          },
+          {
+            "type": "blank",
+            "id": "g4-q2-blank",
+            "answer": "弟弟在哥哥旁邊",
+            "hint": "Use the older brother as the anchor."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g4-q2-correct",
+            "traditional": "弟弟在哥哥旁邊",
+            "pinyin": "dìdi zài gēge pángbiān",
+            "meaning": "the younger brother is beside the older brother"
+          },
+          {
+            "id": "g4-q2-d1",
+            "traditional": "弟弟在哥哥後面",
+            "pinyin": "dìdi zài gēge hòumiàn",
+            "meaning": "the younger brother is behind the older brother"
+          },
+          {
+            "id": "g4-q2-d2",
+            "traditional": "弟弟在旁邊哥哥",
+            "pinyin": "dìdi zài pángbiān gēge",
+            "meaning": "direction before anchor"
+          }
+        ],
+        "correctFeedback": "哥哥旁邊 describes the side-by-side picture.",
+        "repairFeedback": "Keep 哥哥 before 旁邊."
+      },
+      {
+        "id": "g4-q3",
+        "number": 3,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：她在哪裡看書？ B："
+          },
+          {
+            "type": "blank",
+            "id": "g4-q3-blank",
+            "answer": "她在房間裡面看書",
+            "hint": "Put the room place before 看書."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g4-q3-correct",
+            "traditional": "她在房間裡面看書",
+            "pinyin": "tā zài fángjiān lǐmiàn kànshū",
+            "meaning": "she reads inside the room"
+          },
+          {
+            "id": "g4-q3-d1",
+            "traditional": "她看書在房間裡面",
+            "pinyin": "tā kànshū zài fángjiān lǐmiàn",
+            "meaning": "English-like order"
+          },
+          {
+            "id": "g4-q3-d2",
+            "traditional": "她在房間外面看書",
+            "pinyin": "tā zài fángjiān wàimiàn kànshū",
+            "meaning": "she reads outside the room"
+          }
+        ],
+        "correctFeedback": "房間裡面 is one place. It comes before 看書.",
+        "repairFeedback": "Build 在 + 房間裡面 first, then add the action."
+      },
+      {
+        "id": "g4-q4",
+        "number": 4,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：小明在圖書館裡面做什麼？ B："
+          },
+          {
+            "type": "blank",
+            "id": "g4-q4-blank",
+            "answer": "他在圖書館裡面睡覺",
+            "hint": "The picture shows Xiaoming asleep in the library."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g4-q4-correct",
+            "traditional": "他在圖書館裡面睡覺",
+            "pinyin": "tā zài túshūguǎn lǐmiàn shuìjiào",
+            "meaning": "he sleeps inside the library"
+          },
+          {
+            "id": "g4-q4-d1",
+            "traditional": "他在圖書館裡面看書",
+            "pinyin": "tā zài túshūguǎn lǐmiàn kànshū",
+            "meaning": "he reads inside the library"
+          },
+          {
+            "id": "g4-q4-d2",
+            "traditional": "他睡覺在圖書館裡面",
+            "pinyin": "tā shuìjiào zài túshūguǎn lǐmiàn",
+            "meaning": "English-like order"
+          }
+        ],
+        "correctFeedback": "The picture shows 睡覺. The question gives the place.",
+        "repairFeedback": "Keep 在圖書館裡面 before 睡覺."
+      }
+    ]
+  },
+  "LESSON_FIVE_PART_TWO": {
+    "id": "B1L05-P02-D02",
+    "bookId": 1,
+    "lessonId": 5,
+    "partId": 2,
+    "title": "Grammar 4–5 · Pages 124–126",
+    "grammarPages": [
+      {
+        "id": "B1L05-G04-P124",
+        "bookId": 1,
+        "lessonId": 5,
+        "partId": 2,
+        "lessonTitle": "我的錢包在哪裡？",
+        "lessonTitleEnglish": "Where Is My Wallet?",
+        "grammarNumber": 4,
+        "titleTraditional": "名詞 + 方位詞",
+        "titleEnglish": "Say Exactly Where Something Is",
+        "learnerPromise": "Locate something precisely: inside, on, under, beside, in front, or behind.",
+        "printedPages": [
+          124,
+          125
+        ],
+        "audioReference": "05-2-3",
+        "explanation": "A direction word needs an anchor word. Say the thing first, then add 上面, 下面, 裡面, 外面, 旁邊, 前面, or 後面. Together they make one place name.",
+        "focusTerms": [
+          "名詞",
+          "名词",
+          "方位詞",
+          "方位词",
+          "上面",
+          "下面",
+          "裡面",
+          "里面",
+          "旁邊",
+          "旁边"
+        ],
+        "teachingGlossary": [
+          {
+            "id": "b1l05-g04-glossary-1",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
+          },
+          {
+            "id": "b1l05-g04-glossary-2",
+            "traditional": "我們",
+            "simplified": "我们",
+            "pinyin": "wǒmen",
+            "meaning": "we; us"
+          },
+          {
+            "id": "b1l05-g04-glossary-3",
+            "traditional": "你們",
+            "simplified": "你们",
+            "pinyin": "nǐmen",
+            "meaning": "you all"
+          },
+          {
+            "id": "b1l05-g04-glossary-4",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          },
+          {
+            "id": "b1l05-g04-glossary-5",
+            "traditional": "妳",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          },
+          {
+            "id": "b1l05-g04-glossary-6",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "he; him"
+          },
+          {
+            "id": "b1l05-g04-glossary-7",
+            "traditional": "他們",
+            "simplified": "他们",
+            "pinyin": "tāmen",
+            "meaning": "they; them"
+          },
+          {
+            "id": "b1l05-g04-glossary-8",
+            "traditional": "她",
+            "pinyin": "tā",
+            "meaning": "she; her"
+          },
+          {
+            "id": "b1l05-g04-glossary-9",
+            "traditional": "媽媽",
+            "simplified": "妈妈",
+            "pinyin": "māma",
+            "meaning": "mom"
+          },
+          {
+            "id": "b1l05-g04-glossary-10",
+            "traditional": "媽",
+            "simplified": "妈",
+            "pinyin": "mā",
+            "meaning": "mom"
+          },
+          {
+            "id": "b1l05-g04-glossary-11",
+            "traditional": "哥哥",
+            "pinyin": "gēge",
+            "meaning": "older brother"
+          },
+          {
+            "id": "b1l05-g04-glossary-12",
+            "traditional": "弟弟",
+            "pinyin": "dìdi",
+            "meaning": "younger brother"
+          },
+          {
+            "id": "b1l05-g04-glossary-13",
+            "traditional": "中明",
+            "pinyin": "Zhōngmíng",
+            "meaning": "Zhongming"
+          },
+          {
+            "id": "b1l05-g04-glossary-14",
+            "traditional": "小明",
+            "pinyin": "Xiǎomíng",
+            "meaning": "Xiaoming"
+          },
+          {
+            "id": "b1l05-g04-glossary-15",
+            "traditional": "友美",
+            "pinyin": "Yǒuměi",
+            "meaning": "Youmei"
+          },
+          {
+            "id": "b1l05-g04-glossary-16",
+            "traditional": "孩子",
+            "pinyin": "háizi",
+            "meaning": "child"
+          },
+          {
+            "id": "b1l05-g04-glossary-17",
+            "traditional": "錢包",
+            "simplified": "钱包",
+            "pinyin": "qiánbāo",
+            "meaning": "wallet"
+          },
+          {
+            "id": "b1l05-g04-glossary-18",
+            "traditional": "書",
+            "simplified": "书",
+            "pinyin": "shū",
+            "meaning": "book"
+          },
+          {
+            "id": "b1l05-g04-glossary-19",
+            "traditional": "筆",
+            "simplified": "笔",
+            "pinyin": "bǐ",
+            "meaning": "pen"
+          },
+          {
+            "id": "b1l05-g04-glossary-20",
+            "traditional": "東西",
+            "simplified": "东西",
+            "pinyin": "dōngxi",
+            "meaning": "thing; things"
+          },
+          {
+            "id": "b1l05-g04-glossary-21",
+            "traditional": "桌子",
+            "pinyin": "zhuōzi",
+            "meaning": "table"
+          },
+          {
+            "id": "b1l05-g04-glossary-22",
+            "traditional": "椅子",
+            "pinyin": "yǐzi",
+            "meaning": "chair"
+          },
+          {
+            "id": "b1l05-g04-glossary-23",
+            "traditional": "沙發",
+            "simplified": "沙发",
+            "pinyin": "shāfā",
+            "meaning": "sofa"
+          },
+          {
+            "id": "b1l05-g04-glossary-24",
+            "traditional": "房間",
+            "simplified": "房间",
+            "pinyin": "fángjiān",
+            "meaning": "room"
+          },
+          {
+            "id": "b1l05-g04-glossary-25",
+            "traditional": "客廳",
+            "simplified": "客厅",
+            "pinyin": "kètīng",
+            "meaning": "living room"
+          },
+          {
+            "id": "b1l05-g04-glossary-26",
+            "traditional": "廚房",
+            "simplified": "厨房",
+            "pinyin": "chúfáng",
+            "meaning": "kitchen"
+          },
+          {
+            "id": "b1l05-g04-glossary-27",
+            "traditional": "圖書館",
+            "simplified": "图书馆",
+            "pinyin": "túshūguǎn",
+            "meaning": "library"
+          },
+          {
+            "id": "b1l05-g04-glossary-28",
+            "traditional": "學校",
+            "simplified": "学校",
+            "pinyin": "xuéxiào",
+            "meaning": "school"
+          },
+          {
+            "id": "b1l05-g04-glossary-29",
+            "traditional": "餐廳",
+            "simplified": "餐厅",
+            "pinyin": "cāntīng",
+            "meaning": "restaurant"
+          },
+          {
+            "id": "b1l05-g04-glossary-30",
+            "traditional": "咖啡廳",
+            "simplified": "咖啡厅",
+            "pinyin": "kāfēitīng",
+            "meaning": "café"
+          },
+          {
+            "id": "b1l05-g04-glossary-31",
+            "traditional": "飲料店",
+            "simplified": "饮料店",
+            "pinyin": "yǐnliào diàn",
+            "meaning": "drink shop"
+          },
+          {
+            "id": "b1l05-g04-glossary-32",
+            "traditional": "台灣",
+            "simplified": "台湾",
+            "pinyin": "Táiwān",
+            "meaning": "Taiwan"
+          },
+          {
+            "id": "b1l05-g04-glossary-33",
+            "traditional": "家",
+            "pinyin": "jiā",
+            "meaning": "home"
+          },
+          {
+            "id": "b1l05-g04-glossary-34",
+            "traditional": "裡面",
+            "simplified": "里面",
+            "pinyin": "lǐmiàn",
+            "meaning": "inside"
+          },
+          {
+            "id": "b1l05-g04-glossary-35",
+            "traditional": "裡",
+            "simplified": "里",
+            "pinyin": "lǐ",
+            "meaning": "inside; in"
+          },
+          {
+            "id": "b1l05-g04-glossary-36",
+            "traditional": "外面",
+            "pinyin": "wàimiàn",
+            "meaning": "outside"
+          },
+          {
+            "id": "b1l05-g04-glossary-37",
+            "traditional": "上面",
+            "pinyin": "shàngmiàn",
+            "meaning": "on; above"
+          },
+          {
+            "id": "b1l05-g04-glossary-38",
+            "traditional": "上",
+            "pinyin": "shàng",
+            "meaning": "on; above"
+          },
+          {
+            "id": "b1l05-g04-glossary-39",
+            "traditional": "下面",
+            "pinyin": "xiàmiàn",
+            "meaning": "under; below"
+          },
+          {
+            "id": "b1l05-g04-glossary-40",
+            "traditional": "旁邊",
+            "simplified": "旁边",
+            "pinyin": "pángbiān",
+            "meaning": "beside; next to"
+          },
+          {
+            "id": "b1l05-g04-glossary-41",
+            "traditional": "前面",
+            "pinyin": "qiánmiàn",
+            "meaning": "in front"
+          },
+          {
+            "id": "b1l05-g04-glossary-42",
+            "traditional": "後面",
+            "simplified": "后面",
+            "pinyin": "hòumiàn",
+            "meaning": "behind"
+          },
+          {
+            "id": "b1l05-g04-glossary-43",
+            "traditional": "在",
+            "pinyin": "zài",
+            "meaning": "be located; at"
+          },
+          {
+            "id": "b1l05-g04-glossary-44",
+            "traditional": "不在",
+            "pinyin": "bú zài",
+            "meaning": "is not located at"
+          },
+          {
+            "id": "b1l05-g04-glossary-45",
+            "traditional": "有",
+            "pinyin": "yǒu",
+            "meaning": "there is; there are"
+          },
+          {
+            "id": "b1l05-g04-glossary-46",
+            "traditional": "沒有",
+            "simplified": "没有",
+            "pinyin": "méiyǒu",
+            "meaning": "there is not; there are not"
+          },
+          {
+            "id": "b1l05-g04-glossary-47",
+            "traditional": "都沒有",
+            "simplified": "都没有",
+            "pinyin": "dōu méiyǒu",
+            "meaning": "none of them have; nowhere has"
+          },
+          {
+            "id": "b1l05-g04-glossary-48",
+            "traditional": "是",
+            "pinyin": "shì",
+            "meaning": "is; am; are"
+          },
+          {
+            "id": "b1l05-g04-glossary-49",
+            "traditional": "不是",
+            "pinyin": "bú shì",
+            "meaning": "is not"
+          },
+          {
+            "id": "b1l05-g04-glossary-50",
+            "traditional": "不知道",
+            "pinyin": "bù zhīdào",
+            "meaning": "do not know"
+          },
+          {
+            "id": "b1l05-g04-glossary-51",
+            "traditional": "要",
+            "pinyin": "yào",
+            "meaning": "will; want to"
+          },
+          {
+            "id": "b1l05-g04-glossary-52",
+            "traditional": "去",
+            "pinyin": "qù",
+            "meaning": "go"
+          },
+          {
+            "id": "b1l05-g04-glossary-53",
+            "traditional": "喝下午茶",
+            "pinyin": "hē xiàwǔ chá",
+            "meaning": "have afternoon tea"
+          },
+          {
+            "id": "b1l05-g04-glossary-54",
+            "traditional": "找",
+            "pinyin": "zhǎo",
+            "meaning": "look for"
+          },
+          {
+            "id": "b1l05-g04-glossary-55",
+            "traditional": "幫",
+            "simplified": "帮",
+            "pinyin": "bāng",
+            "meaning": "help"
+          },
+          {
+            "id": "b1l05-g04-glossary-56",
+            "traditional": "再去",
+            "pinyin": "zài qù",
+            "meaning": "go again"
+          },
+          {
+            "id": "b1l05-g04-glossary-57",
+            "traditional": "做飯",
+            "simplified": "做饭",
+            "pinyin": "zuòfàn",
+            "meaning": "cook"
+          },
+          {
+            "id": "b1l05-g04-glossary-58",
+            "traditional": "看",
+            "pinyin": "kàn",
+            "meaning": "look; watch"
+          },
+          {
+            "id": "b1l05-g04-glossary-59",
+            "traditional": "看書",
+            "simplified": "看书",
+            "pinyin": "kànshū",
+            "meaning": "read"
+          },
+          {
+            "id": "b1l05-g04-glossary-60",
+            "traditional": "睡覺",
+            "simplified": "睡觉",
+            "pinyin": "shuìjiào",
+            "meaning": "sleep"
+          },
+          {
+            "id": "b1l05-g04-glossary-61",
+            "traditional": "玩",
+            "pinyin": "wán",
+            "meaning": "play; hang out"
+          },
+          {
+            "id": "b1l05-g04-glossary-62",
+            "traditional": "喜歡",
+            "simplified": "喜欢",
+            "pinyin": "xǐhuān",
+            "meaning": "like"
+          },
+          {
+            "id": "b1l05-g04-glossary-63",
+            "traditional": "很忙",
+            "pinyin": "hěn máng",
+            "meaning": "very busy"
+          },
+          {
+            "id": "b1l05-g04-glossary-64",
+            "traditional": "現在",
+            "simplified": "现在",
+            "pinyin": "xiànzài",
+            "meaning": "now"
+          },
+          {
+            "id": "b1l05-g04-glossary-65",
+            "traditional": "這裡",
+            "simplified": "这里",
+            "pinyin": "zhèlǐ",
+            "meaning": "here"
+          },
+          {
+            "id": "b1l05-g04-glossary-66",
+            "traditional": "哪裡",
+            "simplified": "哪里",
+            "pinyin": "nǎlǐ",
+            "meaning": "where"
+          },
+          {
+            "id": "b1l05-g04-glossary-67",
+            "traditional": "什麼",
+            "simplified": "什么",
+            "pinyin": "shénme",
+            "meaning": "what"
+          },
+          {
+            "id": "b1l05-g04-glossary-68",
+            "traditional": "多少",
+            "pinyin": "duōshao",
+            "meaning": "how many; how much"
+          },
+          {
+            "id": "b1l05-g04-glossary-69",
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma",
+            "meaning": "ending word for a yes/no question"
+          },
+          {
+            "id": "b1l05-g04-glossary-70",
+            "traditional": "呢",
+            "pinyin": "ne",
+            "meaning": "what about; and"
+          },
+          {
+            "id": "b1l05-g04-glossary-71",
+            "traditional": "吧",
+            "pinyin": "ba",
+            "meaning": "softens a suggestion"
+          },
+          {
+            "id": "b1l05-g04-glossary-72",
+            "traditional": "啊",
+            "pinyin": "a",
+            "meaning": "ending word that adds feeling"
+          },
+          {
+            "id": "b1l05-g04-glossary-73",
+            "traditional": "好嗎",
+            "simplified": "好吗",
+            "pinyin": "hǎo ma",
+            "meaning": "okay; could you"
+          },
+          {
+            "id": "b1l05-g04-glossary-74",
+            "traditional": "跟",
+            "pinyin": "gēn",
+            "meaning": "and; with"
+          },
+          {
+            "id": "b1l05-g04-glossary-75",
+            "traditional": "可是",
+            "pinyin": "kěshì",
+            "meaning": "but"
+          },
+          {
+            "id": "b1l05-g04-glossary-76",
+            "traditional": "的",
+            "pinyin": "de",
+            "meaning": "possessive or descriptive linker"
+          },
+          {
+            "id": "b1l05-g04-glossary-77",
+            "traditional": "我的",
+            "pinyin": "wǒ de",
+            "meaning": "mine; my"
+          },
+          {
+            "id": "b1l05-g04-glossary-78",
+            "traditional": "你的",
+            "pinyin": "nǐ de",
+            "meaning": "yours; your"
+          },
+          {
+            "id": "b1l05-g04-glossary-79",
+            "traditional": "哥哥的",
+            "pinyin": "gēge de",
+            "meaning": "older brother’s"
+          },
+          {
+            "id": "b1l05-g04-glossary-80",
+            "traditional": "那",
+            "pinyin": "nà",
+            "meaning": "that"
+          },
+          {
+            "id": "b1l05-g04-glossary-81",
+            "traditional": "那個",
+            "simplified": "那个",
+            "pinyin": "nà ge",
+            "meaning": "that"
+          },
+          {
+            "id": "b1l05-g04-glossary-82",
+            "traditional": "那家",
+            "pinyin": "nà jiā",
+            "meaning": "that business"
+          },
+          {
+            "id": "b1l05-g04-glossary-83",
+            "traditional": "一個錢包",
+            "simplified": "一个钱包",
+            "pinyin": "yí ge qiánbāo",
+            "meaning": "one wallet"
+          },
+          {
+            "id": "b1l05-g04-glossary-84",
+            "traditional": "一張桌子",
+            "simplified": "一张桌子",
+            "pinyin": "yì zhāng zhuōzi",
+            "meaning": "one table"
+          },
+          {
+            "id": "b1l05-g04-glossary-85",
+            "traditional": "兩張椅子",
+            "simplified": "两张椅子",
+            "pinyin": "liǎng zhāng yǐzi",
+            "meaning": "two chairs"
+          },
+          {
+            "id": "b1l05-g04-glossary-86",
+            "traditional": "一家很大的餐廳",
+            "simplified": "一家很大的餐厅",
+            "pinyin": "yì jiā hěn dà de cāntīng",
+            "meaning": "one large restaurant"
+          },
+          {
+            "id": "b1l05-g04-glossary-87",
+            "traditional": "很多",
+            "pinyin": "hěn duō",
+            "meaning": "many; a lot"
+          },
+          {
+            "id": "b1l05-g04-glossary-88",
+            "traditional": "很多好吃的東西",
+            "simplified": "很多好吃的东西",
+            "pinyin": "hěn duō hǎochī de dōngxi",
+            "meaning": "lots of delicious food"
+          },
+          {
+            "id": "b1l05-g04-glossary-89",
+            "traditional": "好吃",
+            "pinyin": "hǎochī",
+            "meaning": "delicious"
+          },
+          {
+            "id": "b1l05-g04-glossary-90",
+            "traditional": "學生",
+            "simplified": "学生",
+            "pinyin": "xuésheng",
+            "meaning": "student; students"
+          },
+          {
+            "id": "b1l05-g04-glossary-91",
+            "traditional": "一千個學生",
+            "simplified": "一千个学生",
+            "pinyin": "yìqiān ge xuésheng",
+            "meaning": "one thousand students"
+          },
+          {
+            "id": "b1l05-g04-glossary-92",
+            "traditional": "一本書",
+            "simplified": "一本书",
+            "pinyin": "yì běn shū",
+            "meaning": "one book"
+          },
+          {
+            "id": "b1l05-g04-glossary-93",
+            "traditional": "咖啡",
+            "pinyin": "kāfēi",
+            "meaning": "coffee"
+          },
+          {
+            "id": "b1l05-g04-glossary-94",
+            "traditional": "水果",
+            "pinyin": "shuǐguǒ",
+            "meaning": "fruit"
+          },
+          {
+            "id": "b1l05-g04-glossary-95",
+            "traditional": "牛肉麵",
+            "simplified": "牛肉面",
+            "pinyin": "niúròu miàn",
+            "meaning": "beef noodles"
+          },
+          {
+            "id": "b1l05-g04-glossary-96",
+            "traditional": "小籠包",
+            "simplified": "小笼包",
+            "pinyin": "xiǎolóngbāo",
+            "meaning": "soup dumplings"
+          },
+          {
+            "id": "b1l05-g04-glossary-97",
+            "traditional": "很喜歡",
+            "simplified": "很喜欢",
+            "pinyin": "hěn xǐhuān",
+            "meaning": "like very much"
+          },
+          {
+            "id": "b1l05-g04-glossary-98",
+            "traditional": "都",
+            "pinyin": "dōu",
+            "meaning": "all; both"
+          }
+        ],
+        "pattern": "Thing + 在 + anchor noun + direction",
+        "patternColumns": [
+          "Thing",
+          "Location link",
+          "Anchor + direction"
+        ],
+        "patternAccentColumn": 2,
+        "discoveryLab": {
+          "title": "Change the direction word",
+          "description": "Keep the same anchor word. Change the direction word to move the thing.",
+          "prompt": "Where is the book?",
+          "choices": [
+            {
+              "id": "g4-top",
+              "label": "On",
+              "traditional": "書在桌子上面。",
+              "simplified": "书在桌子上面。",
+              "pinyin": "Shū zài zhuōzi shàngmiàn.",
+              "english": "The book is on the table.",
+              "note": "桌子 is the anchor word; 上面 is the direction word."
+            },
+            {
+              "id": "g4-under",
+              "label": "Under",
+              "traditional": "書在桌子下面。",
+              "simplified": "书在桌子下面。",
+              "pinyin": "Shū zài zhuōzi xiàmiàn.",
+              "english": "The book is under the table.",
+              "note": "Change the direction word, and the book moves under the table."
+            },
+            {
+              "id": "g4-beside",
+              "label": "Beside",
+              "traditional": "書在桌子旁邊。",
+              "simplified": "书在桌子旁边。",
+              "pinyin": "Shū zài zhuōzi pángbiān.",
+              "english": "The book is beside the table.",
+              "note": "旁邊 means next to the anchor word."
+            },
+            {
+              "id": "g4-repair",
+              "label": "Repair order",
+              "traditional": "書在上面桌子 → 書在桌子上面",
+              "simplified": "书在上面桌子 → 书在桌子上面",
+              "pinyin": "Shū zài shàngmiàn zhuōzi → Shū zài zhuōzi shàngmiàn",
+              "english": "The book is on the table.",
+              "note": "The anchor word must come before its direction word.",
+              "isCorrection": true
+            }
+          ],
+          "takeaway": "Thing + 在 + anchor + direction. Keep the anchor and its direction word together."
+        },
+        "contrast": {
+          "title": "A place alone, or a place plus an action?",
+          "description": "The same anchor + direction words can end a sentence or come before an action.",
+          "items": [
+            {
+              "id": "g4-c1",
+              "label": "Location",
+              "traditional": "筆在椅子下面。",
+              "simplified": "笔在椅子下面。",
+              "pinyin": "Bǐ zài yǐzi xiàmiàn.",
+              "english": "The pen is under the chair.",
+              "note": "The sentence ends after the place.",
+              "particle": {
+                "id": "g4-c1-p",
+                "traditional": "在"
+              }
+            },
+            {
+              "id": "g4-c2",
+              "label": "Action stage",
+              "traditional": "他在房間裡面睡覺。",
+              "simplified": "他在房间里面睡觉。",
+              "pinyin": "Tā zài fángjiān lǐmiàn shuìjiào.",
+              "english": "He sleeps in the room.",
+              "note": "The place comes before the action 睡覺.",
+              "particle": {
+                "id": "g4-c2-p",
+                "traditional": "在"
+              }
+            }
+          ]
+        },
+        "patternRows": [
+          {
+            "id": "g4-p1",
+            "subject": [
+              {
+                "id": "g4-p1-your",
+                "traditional": "你的",
+                "pinyin": "nǐ de",
+                "meaning": "yours; your"
+              },
+              {
+                "id": "g4-p1-book",
+                "traditional": "書",
+                "simplified": "书",
+                "pinyin": "shū",
+                "meaning": "book"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g4-p1-zai",
+                "traditional": "在",
+                "pinyin": "zài",
+                "meaning": "be located; at"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g4-p1-table",
+                "traditional": "桌子",
+                "pinyin": "zhuōzi",
+                "meaning": "table"
+              },
+              {
+                "id": "g4-p1-top",
+                "traditional": "上面",
+                "pinyin": "shàngmiàn",
+                "meaning": "on; above",
+                "suffix": "。"
+              }
+            ],
+            "english": "Your book is on the table."
+          },
+          {
+            "id": "g4-p2",
+            "subject": [
+              {
+                "id": "g4-p2-restaurant",
+                "traditional": "餐廳",
+                "simplified": "餐厅",
+                "pinyin": "cāntīng",
+                "meaning": "restaurant"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g4-p2-not",
+                "traditional": "不在",
+                "pinyin": "bú zài",
+                "meaning": "is not located at"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g4-p2-school",
+                "traditional": "學校",
+                "simplified": "学校",
+                "pinyin": "xuéxiào",
+                "meaning": "school"
+              },
+              {
+                "id": "g4-p2-side",
+                "traditional": "旁邊",
+                "simplified": "旁边",
+                "pinyin": "pángbiān",
+                "meaning": "beside; next to",
+                "suffix": "。"
+              }
+            ],
+            "english": "The restaurant is not next to the school."
+          },
+          {
+            "id": "g4-p3",
+            "subject": [
+              {
+                "id": "g4-p3-mom",
+                "traditional": "媽媽",
+                "simplified": "妈妈",
+                "pinyin": "māma",
+                "meaning": "mom"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g4-p3-zai",
+                "traditional": "在",
+                "pinyin": "zài",
+                "meaning": "be located; at"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g4-p3-kitchen",
+                "traditional": "廚房",
+                "simplified": "厨房",
+                "pinyin": "chúfáng",
+                "meaning": "kitchen"
+              },
+              {
+                "id": "g4-p3-inside",
+                "traditional": "裡面",
+                "simplified": "里面",
+                "pinyin": "lǐmiàn",
+                "meaning": "inside"
+              },
+              {
+                "id": "g4-p3-cook",
+                "traditional": "做飯",
+                "simplified": "做饭",
+                "pinyin": "zuòfàn",
+                "meaning": "cook",
+                "suffix": "。"
+              }
+            ],
+            "english": "Mom cooks in the kitchen."
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "g4-confusion-anchor-word",
+              "question": "Can I just say 書在上面 to mean “on the table”?",
+              "answer": "No. 上面 needs an anchor word. Name the thing first: 桌子上面.",
+              "wrongTraditional": "書在上面。",
+              "wrongSimplified": "书在上面。",
+              "right": {
+                "traditional": "書在桌子上面。",
+                "simplified": "书在桌子上面。",
+                "pinyin": "Shū zài zhuōzi shàngmiàn.",
+                "english": "The book is on the table.",
+                "words": [
+                  {
+                    "id": "b1l05-g4-confusion-1-word-1",
+                    "traditional": "書",
+                    "simplified": "书",
+                    "pinyin": "shū",
+                    "meaning": "book"
+                  },
+                  {
+                    "id": "b1l05-g4-confusion-1-word-2",
+                    "traditional": "在",
+                    "pinyin": "zài",
+                    "meaning": "be located; at"
+                  },
+                  {
+                    "id": "b1l05-g4-confusion-1-word-3",
+                    "traditional": "桌子",
+                    "pinyin": "zhuōzi",
+                    "meaning": "table"
+                  },
+                  {
+                    "id": "b1l05-g4-confusion-1-word-4",
+                    "traditional": "上面",
+                    "pinyin": "shàngmiàn",
+                    "meaning": "on; above",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "g4-confusion-direction-order",
+              "question": "Do I say 在下面椅子 or 在椅子下面?",
+              "answer": "Anchor word first, direction second: 椅子下面.",
+              "wrongTraditional": "筆在下面椅子。",
+              "wrongSimplified": "笔在下面椅子。",
+              "right": {
+                "traditional": "筆在椅子下面。",
+                "simplified": "笔在椅子下面。",
+                "pinyin": "Bǐ zài yǐzi xiàmiàn.",
+                "english": "The pen is under the chair.",
+                "words": [
+                  {
+                    "id": "b1l05-g4-confusion-2-word-1",
+                    "traditional": "筆",
+                    "simplified": "笔",
+                    "pinyin": "bǐ",
+                    "meaning": "pen"
+                  },
+                  {
+                    "id": "b1l05-g4-confusion-2-word-2",
+                    "traditional": "在",
+                    "pinyin": "zài",
+                    "meaning": "be located; at"
+                  },
+                  {
+                    "id": "b1l05-g4-confusion-2-word-3",
+                    "traditional": "椅子",
+                    "pinyin": "yǐzi",
+                    "meaning": "chair"
+                  },
+                  {
+                    "id": "b1l05-g4-confusion-2-word-4",
+                    "traditional": "下面",
+                    "pinyin": "xiàmiàn",
+                    "meaning": "under; below",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "g4-confusion-shang-vs-li",
+              "question": "My older brother is inside the room. Is it 在房間上面?",
+              "answer": "No. 上面 means on top. For inside a room, use 裡面.",
+              "wrongTraditional": "哥哥在房間上面。",
+              "wrongSimplified": "哥哥在房间上面。",
+              "right": {
+                "traditional": "哥哥在房間裡面。",
+                "simplified": "哥哥在房间里面。",
+                "pinyin": "Gēge zài fángjiān lǐmiàn.",
+                "english": "My older brother is inside the room.",
+                "words": [
+                  {
+                    "id": "b1l05-g4-confusion-3-word-1",
+                    "traditional": "哥哥",
+                    "pinyin": "gēge",
+                    "meaning": "older brother"
+                  },
+                  {
+                    "id": "b1l05-g4-confusion-3-word-2",
+                    "traditional": "在",
+                    "pinyin": "zài",
+                    "meaning": "be located; at"
+                  },
+                  {
+                    "id": "b1l05-g4-confusion-3-word-3",
+                    "traditional": "房間",
+                    "simplified": "房间",
+                    "pinyin": "fángjiān",
+                    "meaning": "room"
+                  },
+                  {
+                    "id": "b1l05-g4-confusion-3-word-4",
+                    "traditional": "裡面",
+                    "simplified": "里面",
+                    "pinyin": "lǐmiàn",
+                    "meaning": "inside",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "examples": [
+          {
+            "id": "g4-e1",
+            "number": 1,
+            "text": {
+              "traditional": "A：那家餐廳在你家旁邊嗎？ B：不在我家旁邊，在我家後面。",
+              "simplified": "A：那家餐厅在你家旁边吗？ B：不在我家旁边，在我家后面。",
+              "pinyin": "A: Nà jiā cāntīng zài nǐ jiā pángbiān ma? B: Bú zài wǒ jiā pángbiān, zài wǒ jiā hòumiàn.",
+              "english": "A: Is that restaurant next to your home? B: No, it is behind my home.",
+              "words": [
+                {
+                  "id": "b1l05-g4-e1-word-1",
+                  "traditional": "那家",
+                  "pinyin": "nà jiā",
+                  "meaning": "that business",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l05-g4-e1-word-2",
+                  "traditional": "餐廳",
+                  "simplified": "餐厅",
+                  "pinyin": "cāntīng",
+                  "meaning": "restaurant"
+                },
+                {
+                  "id": "b1l05-g4-e1-word-3",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "be located; at"
+                },
+                {
+                  "id": "b1l05-g4-e1-word-4",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you"
+                },
+                {
+                  "id": "b1l05-g4-e1-word-5",
+                  "traditional": "家",
+                  "pinyin": "jiā",
+                  "meaning": "home"
+                },
+                {
+                  "id": "b1l05-g4-e1-word-6",
+                  "traditional": "旁邊",
+                  "simplified": "旁边",
+                  "pinyin": "pángbiān",
+                  "meaning": "beside; next to"
+                },
+                {
+                  "id": "b1l05-g4-e1-word-7",
+                  "traditional": "嗎",
+                  "simplified": "吗",
+                  "pinyin": "ma",
+                  "meaning": "ending word for a yes/no question"
+                },
+                {
+                  "id": "b1l05-g4-e1-word-8",
+                  "traditional": "不在",
+                  "pinyin": "bú zài",
+                  "meaning": "is not located at",
+                  "prefix": "？ B："
+                },
+                {
+                  "id": "b1l05-g4-e1-word-9",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                },
+                {
+                  "id": "b1l05-g4-e1-word-10",
+                  "traditional": "家",
+                  "pinyin": "jiā",
+                  "meaning": "home"
+                },
+                {
+                  "id": "b1l05-g4-e1-word-11",
+                  "traditional": "旁邊",
+                  "simplified": "旁边",
+                  "pinyin": "pángbiān",
+                  "meaning": "beside; next to"
+                },
+                {
+                  "id": "b1l05-g4-e1-word-12",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "be located; at",
+                  "prefix": "，"
+                },
+                {
+                  "id": "b1l05-g4-e1-word-13",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                },
+                {
+                  "id": "b1l05-g4-e1-word-14",
+                  "traditional": "家",
+                  "pinyin": "jiā",
+                  "meaning": "home"
+                },
+                {
+                  "id": "b1l05-g4-e1-word-15",
+                  "traditional": "後面",
+                  "simplified": "后面",
+                  "pinyin": "hòumiàn",
+                  "meaning": "behind",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g4-e2",
+            "number": 2,
+            "text": {
+              "traditional": "A：我的筆在哪裡？ B：你看，你的筆在椅子下面。",
+              "simplified": "A：我的笔在哪里？ B：你看，你的笔在椅子下面。",
+              "pinyin": "A: Wǒ de bǐ zài nǎlǐ? B: Nǐ kàn, nǐ de bǐ zài yǐzi xiàmiàn.",
+              "english": "A: Where is my pen? B: Look. Your pen is under the chair.",
+              "words": [
+                {
+                  "id": "b1l05-g4-e2-word-1",
+                  "traditional": "我的",
+                  "pinyin": "wǒ de",
+                  "meaning": "mine; my",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l05-g4-e2-word-2",
+                  "traditional": "筆",
+                  "simplified": "笔",
+                  "pinyin": "bǐ",
+                  "meaning": "pen"
+                },
+                {
+                  "id": "b1l05-g4-e2-word-3",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "be located; at"
+                },
+                {
+                  "id": "b1l05-g4-e2-word-4",
+                  "traditional": "哪裡",
+                  "simplified": "哪里",
+                  "pinyin": "nǎlǐ",
+                  "meaning": "where"
+                },
+                {
+                  "id": "b1l05-g4-e2-word-5",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you",
+                  "prefix": "？ B："
+                },
+                {
+                  "id": "b1l05-g4-e2-word-6",
+                  "traditional": "看",
+                  "pinyin": "kàn",
+                  "meaning": "look; watch"
+                },
+                {
+                  "id": "b1l05-g4-e2-word-7",
+                  "traditional": "你的",
+                  "pinyin": "nǐ de",
+                  "meaning": "yours; your",
+                  "prefix": "，"
+                },
+                {
+                  "id": "b1l05-g4-e2-word-8",
+                  "traditional": "筆",
+                  "simplified": "笔",
+                  "pinyin": "bǐ",
+                  "meaning": "pen"
+                },
+                {
+                  "id": "b1l05-g4-e2-word-9",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "be located; at"
+                },
+                {
+                  "id": "b1l05-g4-e2-word-10",
+                  "traditional": "椅子",
+                  "pinyin": "yǐzi",
+                  "meaning": "chair"
+                },
+                {
+                  "id": "b1l05-g4-e2-word-11",
+                  "traditional": "下面",
+                  "pinyin": "xiàmiàn",
+                  "meaning": "under; below",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g4-e3",
+            "number": 3,
+            "text": {
+              "traditional": "A：他們都在房間裡面嗎？ B：哥哥在房間裡面，我不知道弟弟在哪裡。",
+              "simplified": "A：他们都在房间里面吗？ B：哥哥在房间里面，我不知道弟弟在哪里。",
+              "pinyin": "A: Tāmen dōu zài fángjiān lǐmiàn ma? B: Gēge zài fángjiān lǐmiàn, wǒ bù zhīdào dìdi zài nǎlǐ.",
+              "english": "A: Are they all inside the room? B: My older brother is inside the room. I do not know where my younger brother is.",
+              "words": [
+                {
+                  "id": "b1l05-g4-e3-word-1",
+                  "traditional": "他們",
+                  "simplified": "他们",
+                  "pinyin": "tāmen",
+                  "meaning": "they; them",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l05-g4-e3-word-2",
+                  "traditional": "都",
+                  "pinyin": "dōu",
+                  "meaning": "all; both"
+                },
+                {
+                  "id": "b1l05-g4-e3-word-3",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "be located; at"
+                },
+                {
+                  "id": "b1l05-g4-e3-word-4",
+                  "traditional": "房間",
+                  "simplified": "房间",
+                  "pinyin": "fángjiān",
+                  "meaning": "room"
+                },
+                {
+                  "id": "b1l05-g4-e3-word-5",
+                  "traditional": "裡面",
+                  "simplified": "里面",
+                  "pinyin": "lǐmiàn",
+                  "meaning": "inside"
+                },
+                {
+                  "id": "b1l05-g4-e3-word-6",
+                  "traditional": "嗎",
+                  "simplified": "吗",
+                  "pinyin": "ma",
+                  "meaning": "ending word for a yes/no question"
+                },
+                {
+                  "id": "b1l05-g4-e3-word-7",
+                  "traditional": "哥哥",
+                  "pinyin": "gēge",
+                  "meaning": "older brother",
+                  "prefix": "？ B："
+                },
+                {
+                  "id": "b1l05-g4-e3-word-8",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "be located; at"
+                },
+                {
+                  "id": "b1l05-g4-e3-word-9",
+                  "traditional": "房間",
+                  "simplified": "房间",
+                  "pinyin": "fángjiān",
+                  "meaning": "room"
+                },
+                {
+                  "id": "b1l05-g4-e3-word-10",
+                  "traditional": "裡面",
+                  "simplified": "里面",
+                  "pinyin": "lǐmiàn",
+                  "meaning": "inside"
+                },
+                {
+                  "id": "b1l05-g4-e3-word-11",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me",
+                  "prefix": "，"
+                },
+                {
+                  "id": "b1l05-g4-e3-word-12",
+                  "traditional": "不知道",
+                  "pinyin": "bù zhīdào",
+                  "meaning": "do not know"
+                },
+                {
+                  "id": "b1l05-g4-e3-word-13",
+                  "traditional": "弟弟",
+                  "pinyin": "dìdi",
+                  "meaning": "younger brother"
+                },
+                {
+                  "id": "b1l05-g4-e3-word-14",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "be located; at"
+                },
+                {
+                  "id": "b1l05-g4-e3-word-15",
+                  "traditional": "哪裡",
+                  "simplified": "哪里",
+                  "pinyin": "nǎlǐ",
+                  "meaning": "where",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Build the location",
+        "exercisePreview": "Find the anchor word, then choose its direction.",
+        "exerciseInstruction": "Answer all four pictures. Use the anchor word plus its direction word.",
+        "exerciseNote": "The pictures on printed page 125 give these answers.",
+        "exerciseCues": [
+          {
+            "id": "g4-cue1",
+            "label": "Book",
+            "pinyin": "zhuōzi shàngmiàn",
+            "detail": "The book rests on the table."
+          },
+          {
+            "id": "g4-cue2",
+            "label": "Brothers",
+            "pinyin": "gēge pángbiān",
+            "detail": "The younger brother stands beside the older brother."
+          },
+          {
+            "id": "g4-cue3",
+            "label": "Reading",
+            "pinyin": "fángjiān lǐmiàn",
+            "detail": "She reads inside a bedroom."
+          },
+          {
+            "id": "g4-cue4",
+            "label": "Sleeping",
+            "pinyin": "túshūguǎn lǐmiàn",
+            "detail": "Xiaoming sleeps inside the library."
+          }
+        ],
+        "questions": [
+          {
+            "id": "g4-q1",
+            "number": 1,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：我的書在哪裡？ B："
+              },
+              {
+                "type": "blank",
+                "id": "g4-q1-blank",
+                "answer": "你的書在桌子上面",
+                "hint": "The table is the anchor word. The book is on top of it."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g4-q1-correct",
+                "traditional": "你的書在桌子上面",
+                "pinyin": "nǐ de shū zài zhuōzi shàngmiàn",
+                "meaning": "your book is on the table"
+              },
+              {
+                "id": "g4-q1-d1",
+                "traditional": "你的書在桌子下面",
+                "pinyin": "nǐ de shū zài zhuōzi xiàmiàn",
+                "meaning": "your book is under the table"
+              },
+              {
+                "id": "g4-q1-d2",
+                "traditional": "你的書在上面桌子",
+                "pinyin": "nǐ de shū zài shàngmiàn zhuōzi",
+                "meaning": "direction before anchor"
+              }
+            ],
+            "correctFeedback": "桌子 + 上面 matches the picture.",
+            "repairFeedback": "Name the anchor before the direction: 桌子上面."
+          },
+          {
+            "id": "g4-q2",
+            "number": 2,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：弟弟在哪裡？ B："
+              },
+              {
+                "type": "blank",
+                "id": "g4-q2-blank",
+                "answer": "弟弟在哥哥旁邊",
+                "hint": "Use the older brother as the anchor."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g4-q2-correct",
+                "traditional": "弟弟在哥哥旁邊",
+                "pinyin": "dìdi zài gēge pángbiān",
+                "meaning": "the younger brother is beside the older brother"
+              },
+              {
+                "id": "g4-q2-d1",
+                "traditional": "弟弟在哥哥後面",
+                "pinyin": "dìdi zài gēge hòumiàn",
+                "meaning": "the younger brother is behind the older brother"
+              },
+              {
+                "id": "g4-q2-d2",
+                "traditional": "弟弟在旁邊哥哥",
+                "pinyin": "dìdi zài pángbiān gēge",
+                "meaning": "direction before anchor"
+              }
+            ],
+            "correctFeedback": "哥哥旁邊 describes the side-by-side picture.",
+            "repairFeedback": "Keep 哥哥 before 旁邊."
+          },
+          {
+            "id": "g4-q3",
+            "number": 3,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：她在哪裡看書？ B："
+              },
+              {
+                "type": "blank",
+                "id": "g4-q3-blank",
+                "answer": "她在房間裡面看書",
+                "hint": "Put the room place before 看書."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g4-q3-correct",
+                "traditional": "她在房間裡面看書",
+                "pinyin": "tā zài fángjiān lǐmiàn kànshū",
+                "meaning": "she reads inside the room"
+              },
+              {
+                "id": "g4-q3-d1",
+                "traditional": "她看書在房間裡面",
+                "pinyin": "tā kànshū zài fángjiān lǐmiàn",
+                "meaning": "English-like order"
+              },
+              {
+                "id": "g4-q3-d2",
+                "traditional": "她在房間外面看書",
+                "pinyin": "tā zài fángjiān wàimiàn kànshū",
+                "meaning": "she reads outside the room"
+              }
+            ],
+            "correctFeedback": "房間裡面 is one place. It comes before 看書.",
+            "repairFeedback": "Build 在 + 房間裡面 first, then add the action."
+          },
+          {
+            "id": "g4-q4",
+            "number": 4,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：小明在圖書館裡面做什麼？ B："
+              },
+              {
+                "type": "blank",
+                "id": "g4-q4-blank",
+                "answer": "他在圖書館裡面睡覺",
+                "hint": "The picture shows Xiaoming asleep in the library."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g4-q4-correct",
+                "traditional": "他在圖書館裡面睡覺",
+                "pinyin": "tā zài túshūguǎn lǐmiàn shuìjiào",
+                "meaning": "he sleeps inside the library"
+              },
+              {
+                "id": "g4-q4-d1",
+                "traditional": "他在圖書館裡面看書",
+                "pinyin": "tā zài túshūguǎn lǐmiàn kànshū",
+                "meaning": "he reads inside the library"
+              },
+              {
+                "id": "g4-q4-d2",
+                "traditional": "他睡覺在圖書館裡面",
+                "pinyin": "tā shuìjiào zài túshūguǎn lǐmiàn",
+                "meaning": "English-like order"
+              }
+            ],
+            "correctFeedback": "The picture shows 睡覺. The question gives the place.",
+            "repairFeedback": "Keep 在圖書館裡面 before 睡覺."
+          }
+        ]
+      },
+      {
+        "id": "B1L05-G05-P126",
+        "bookId": 1,
+        "lessonId": 5,
+        "partId": 2,
+        "lessonTitle": "我的錢包在哪裡？",
+        "lessonTitleEnglish": "Where Is My Wallet?",
+        "grammarNumber": 5,
+        "titleTraditional": "地方 + 有／沒有 + 東西",
+        "titleEnglish": "Say What Is in a Place",
+        "learnerPromise": "Say what is in a place—and what is not there.",
+        "printedPages": [
+          126
+        ],
+        "audioReference": "05-2-3",
+        "explanation": "Say the place first, then 有, then the thing that is there. Use 沒有—not 不有—to say something is not there.",
+        "focusTerms": [
+          "地方",
+          "有",
+          "沒有",
+          "没有",
+          "東西",
+          "东西"
+        ],
+        "teachingGlossary": [
+          {
+            "id": "b1l05-g05-glossary-1",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
+          },
+          {
+            "id": "b1l05-g05-glossary-2",
+            "traditional": "我們",
+            "simplified": "我们",
+            "pinyin": "wǒmen",
+            "meaning": "we; us"
+          },
+          {
+            "id": "b1l05-g05-glossary-3",
+            "traditional": "你們",
+            "simplified": "你们",
+            "pinyin": "nǐmen",
+            "meaning": "you all"
+          },
+          {
+            "id": "b1l05-g05-glossary-4",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          },
+          {
+            "id": "b1l05-g05-glossary-5",
+            "traditional": "妳",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          },
+          {
+            "id": "b1l05-g05-glossary-6",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "he; him"
+          },
+          {
+            "id": "b1l05-g05-glossary-7",
+            "traditional": "他們",
+            "simplified": "他们",
+            "pinyin": "tāmen",
+            "meaning": "they; them"
+          },
+          {
+            "id": "b1l05-g05-glossary-8",
+            "traditional": "她",
+            "pinyin": "tā",
+            "meaning": "she; her"
+          },
+          {
+            "id": "b1l05-g05-glossary-9",
+            "traditional": "媽媽",
+            "simplified": "妈妈",
+            "pinyin": "māma",
+            "meaning": "mom"
+          },
+          {
+            "id": "b1l05-g05-glossary-10",
+            "traditional": "媽",
+            "simplified": "妈",
+            "pinyin": "mā",
+            "meaning": "mom"
+          },
+          {
+            "id": "b1l05-g05-glossary-11",
+            "traditional": "哥哥",
+            "pinyin": "gēge",
+            "meaning": "older brother"
+          },
+          {
+            "id": "b1l05-g05-glossary-12",
+            "traditional": "弟弟",
+            "pinyin": "dìdi",
+            "meaning": "younger brother"
+          },
+          {
+            "id": "b1l05-g05-glossary-13",
+            "traditional": "中明",
+            "pinyin": "Zhōngmíng",
+            "meaning": "Zhongming"
+          },
+          {
+            "id": "b1l05-g05-glossary-14",
+            "traditional": "小明",
+            "pinyin": "Xiǎomíng",
+            "meaning": "Xiaoming"
+          },
+          {
+            "id": "b1l05-g05-glossary-15",
+            "traditional": "友美",
+            "pinyin": "Yǒuměi",
+            "meaning": "Youmei"
+          },
+          {
+            "id": "b1l05-g05-glossary-16",
+            "traditional": "孩子",
+            "pinyin": "háizi",
+            "meaning": "child"
+          },
+          {
+            "id": "b1l05-g05-glossary-17",
+            "traditional": "錢包",
+            "simplified": "钱包",
+            "pinyin": "qiánbāo",
+            "meaning": "wallet"
+          },
+          {
+            "id": "b1l05-g05-glossary-18",
+            "traditional": "書",
+            "simplified": "书",
+            "pinyin": "shū",
+            "meaning": "book"
+          },
+          {
+            "id": "b1l05-g05-glossary-19",
+            "traditional": "筆",
+            "simplified": "笔",
+            "pinyin": "bǐ",
+            "meaning": "pen"
+          },
+          {
+            "id": "b1l05-g05-glossary-20",
+            "traditional": "東西",
+            "simplified": "东西",
+            "pinyin": "dōngxi",
+            "meaning": "thing; things"
+          },
+          {
+            "id": "b1l05-g05-glossary-21",
+            "traditional": "桌子",
+            "pinyin": "zhuōzi",
+            "meaning": "table"
+          },
+          {
+            "id": "b1l05-g05-glossary-22",
+            "traditional": "椅子",
+            "pinyin": "yǐzi",
+            "meaning": "chair"
+          },
+          {
+            "id": "b1l05-g05-glossary-23",
+            "traditional": "沙發",
+            "simplified": "沙发",
+            "pinyin": "shāfā",
+            "meaning": "sofa"
+          },
+          {
+            "id": "b1l05-g05-glossary-24",
+            "traditional": "房間",
+            "simplified": "房间",
+            "pinyin": "fángjiān",
+            "meaning": "room"
+          },
+          {
+            "id": "b1l05-g05-glossary-25",
+            "traditional": "客廳",
+            "simplified": "客厅",
+            "pinyin": "kètīng",
+            "meaning": "living room"
+          },
+          {
+            "id": "b1l05-g05-glossary-26",
+            "traditional": "廚房",
+            "simplified": "厨房",
+            "pinyin": "chúfáng",
+            "meaning": "kitchen"
+          },
+          {
+            "id": "b1l05-g05-glossary-27",
+            "traditional": "圖書館",
+            "simplified": "图书馆",
+            "pinyin": "túshūguǎn",
+            "meaning": "library"
+          },
+          {
+            "id": "b1l05-g05-glossary-28",
+            "traditional": "學校",
+            "simplified": "学校",
+            "pinyin": "xuéxiào",
+            "meaning": "school"
+          },
+          {
+            "id": "b1l05-g05-glossary-29",
+            "traditional": "餐廳",
+            "simplified": "餐厅",
+            "pinyin": "cāntīng",
+            "meaning": "restaurant"
+          },
+          {
+            "id": "b1l05-g05-glossary-30",
+            "traditional": "咖啡廳",
+            "simplified": "咖啡厅",
+            "pinyin": "kāfēitīng",
+            "meaning": "café"
+          },
+          {
+            "id": "b1l05-g05-glossary-31",
+            "traditional": "飲料店",
+            "simplified": "饮料店",
+            "pinyin": "yǐnliào diàn",
+            "meaning": "drink shop"
+          },
+          {
+            "id": "b1l05-g05-glossary-32",
+            "traditional": "台灣",
+            "simplified": "台湾",
+            "pinyin": "Táiwān",
+            "meaning": "Taiwan"
+          },
+          {
+            "id": "b1l05-g05-glossary-33",
+            "traditional": "家",
+            "pinyin": "jiā",
+            "meaning": "home"
+          },
+          {
+            "id": "b1l05-g05-glossary-34",
+            "traditional": "裡面",
+            "simplified": "里面",
+            "pinyin": "lǐmiàn",
+            "meaning": "inside"
+          },
+          {
+            "id": "b1l05-g05-glossary-35",
+            "traditional": "裡",
+            "simplified": "里",
+            "pinyin": "lǐ",
+            "meaning": "inside; in"
+          },
+          {
+            "id": "b1l05-g05-glossary-36",
+            "traditional": "外面",
+            "pinyin": "wàimiàn",
+            "meaning": "outside"
+          },
+          {
+            "id": "b1l05-g05-glossary-37",
+            "traditional": "上面",
+            "pinyin": "shàngmiàn",
+            "meaning": "on; above"
+          },
+          {
+            "id": "b1l05-g05-glossary-38",
+            "traditional": "上",
+            "pinyin": "shàng",
+            "meaning": "on; above"
+          },
+          {
+            "id": "b1l05-g05-glossary-39",
+            "traditional": "下面",
+            "pinyin": "xiàmiàn",
+            "meaning": "under; below"
+          },
+          {
+            "id": "b1l05-g05-glossary-40",
+            "traditional": "旁邊",
+            "simplified": "旁边",
+            "pinyin": "pángbiān",
+            "meaning": "beside; next to"
+          },
+          {
+            "id": "b1l05-g05-glossary-41",
+            "traditional": "前面",
+            "pinyin": "qiánmiàn",
+            "meaning": "in front"
+          },
+          {
+            "id": "b1l05-g05-glossary-42",
+            "traditional": "後面",
+            "simplified": "后面",
+            "pinyin": "hòumiàn",
+            "meaning": "behind"
+          },
+          {
+            "id": "b1l05-g05-glossary-43",
+            "traditional": "在",
+            "pinyin": "zài",
+            "meaning": "be located; at"
+          },
+          {
+            "id": "b1l05-g05-glossary-44",
+            "traditional": "不在",
+            "pinyin": "bú zài",
+            "meaning": "is not located at"
+          },
+          {
+            "id": "b1l05-g05-glossary-45",
+            "traditional": "有",
+            "pinyin": "yǒu",
+            "meaning": "there is; there are"
+          },
+          {
+            "id": "b1l05-g05-glossary-46",
+            "traditional": "沒有",
+            "simplified": "没有",
+            "pinyin": "méiyǒu",
+            "meaning": "there is not; there are not"
+          },
+          {
+            "id": "b1l05-g05-glossary-47",
+            "traditional": "都沒有",
+            "simplified": "都没有",
+            "pinyin": "dōu méiyǒu",
+            "meaning": "none of them have; nowhere has"
+          },
+          {
+            "id": "b1l05-g05-glossary-48",
+            "traditional": "是",
+            "pinyin": "shì",
+            "meaning": "is; am; are"
+          },
+          {
+            "id": "b1l05-g05-glossary-49",
+            "traditional": "不是",
+            "pinyin": "bú shì",
+            "meaning": "is not"
+          },
+          {
+            "id": "b1l05-g05-glossary-50",
+            "traditional": "不知道",
+            "pinyin": "bù zhīdào",
+            "meaning": "do not know"
+          },
+          {
+            "id": "b1l05-g05-glossary-51",
+            "traditional": "要",
+            "pinyin": "yào",
+            "meaning": "will; want to"
+          },
+          {
+            "id": "b1l05-g05-glossary-52",
+            "traditional": "去",
+            "pinyin": "qù",
+            "meaning": "go"
+          },
+          {
+            "id": "b1l05-g05-glossary-53",
+            "traditional": "喝下午茶",
+            "pinyin": "hē xiàwǔ chá",
+            "meaning": "have afternoon tea"
+          },
+          {
+            "id": "b1l05-g05-glossary-54",
+            "traditional": "找",
+            "pinyin": "zhǎo",
+            "meaning": "look for"
+          },
+          {
+            "id": "b1l05-g05-glossary-55",
+            "traditional": "幫",
+            "simplified": "帮",
+            "pinyin": "bāng",
+            "meaning": "help"
+          },
+          {
+            "id": "b1l05-g05-glossary-56",
+            "traditional": "再去",
+            "pinyin": "zài qù",
+            "meaning": "go again"
+          },
+          {
+            "id": "b1l05-g05-glossary-57",
+            "traditional": "做飯",
+            "simplified": "做饭",
+            "pinyin": "zuòfàn",
+            "meaning": "cook"
+          },
+          {
+            "id": "b1l05-g05-glossary-58",
+            "traditional": "看",
+            "pinyin": "kàn",
+            "meaning": "look; watch"
+          },
+          {
+            "id": "b1l05-g05-glossary-59",
+            "traditional": "看書",
+            "simplified": "看书",
+            "pinyin": "kànshū",
+            "meaning": "read"
+          },
+          {
+            "id": "b1l05-g05-glossary-60",
+            "traditional": "睡覺",
+            "simplified": "睡觉",
+            "pinyin": "shuìjiào",
+            "meaning": "sleep"
+          },
+          {
+            "id": "b1l05-g05-glossary-61",
+            "traditional": "玩",
+            "pinyin": "wán",
+            "meaning": "play; hang out"
+          },
+          {
+            "id": "b1l05-g05-glossary-62",
+            "traditional": "喜歡",
+            "simplified": "喜欢",
+            "pinyin": "xǐhuān",
+            "meaning": "like"
+          },
+          {
+            "id": "b1l05-g05-glossary-63",
+            "traditional": "很忙",
+            "pinyin": "hěn máng",
+            "meaning": "very busy"
+          },
+          {
+            "id": "b1l05-g05-glossary-64",
+            "traditional": "現在",
+            "simplified": "现在",
+            "pinyin": "xiànzài",
+            "meaning": "now"
+          },
+          {
+            "id": "b1l05-g05-glossary-65",
+            "traditional": "這裡",
+            "simplified": "这里",
+            "pinyin": "zhèlǐ",
+            "meaning": "here"
+          },
+          {
+            "id": "b1l05-g05-glossary-66",
+            "traditional": "哪裡",
+            "simplified": "哪里",
+            "pinyin": "nǎlǐ",
+            "meaning": "where"
+          },
+          {
+            "id": "b1l05-g05-glossary-67",
+            "traditional": "什麼",
+            "simplified": "什么",
+            "pinyin": "shénme",
+            "meaning": "what"
+          },
+          {
+            "id": "b1l05-g05-glossary-68",
+            "traditional": "多少",
+            "pinyin": "duōshao",
+            "meaning": "how many; how much"
+          },
+          {
+            "id": "b1l05-g05-glossary-69",
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma",
+            "meaning": "ending word for a yes/no question"
+          },
+          {
+            "id": "b1l05-g05-glossary-70",
+            "traditional": "呢",
+            "pinyin": "ne",
+            "meaning": "what about; and"
+          },
+          {
+            "id": "b1l05-g05-glossary-71",
+            "traditional": "吧",
+            "pinyin": "ba",
+            "meaning": "softens a suggestion"
+          },
+          {
+            "id": "b1l05-g05-glossary-72",
+            "traditional": "啊",
+            "pinyin": "a",
+            "meaning": "ending word that adds feeling"
+          },
+          {
+            "id": "b1l05-g05-glossary-73",
+            "traditional": "好嗎",
+            "simplified": "好吗",
+            "pinyin": "hǎo ma",
+            "meaning": "okay; could you"
+          },
+          {
+            "id": "b1l05-g05-glossary-74",
+            "traditional": "跟",
+            "pinyin": "gēn",
+            "meaning": "and; with"
+          },
+          {
+            "id": "b1l05-g05-glossary-75",
+            "traditional": "可是",
+            "pinyin": "kěshì",
+            "meaning": "but"
+          },
+          {
+            "id": "b1l05-g05-glossary-76",
+            "traditional": "的",
+            "pinyin": "de",
+            "meaning": "possessive or descriptive linker"
+          },
+          {
+            "id": "b1l05-g05-glossary-77",
+            "traditional": "我的",
+            "pinyin": "wǒ de",
+            "meaning": "mine; my"
+          },
+          {
+            "id": "b1l05-g05-glossary-78",
+            "traditional": "你的",
+            "pinyin": "nǐ de",
+            "meaning": "yours; your"
+          },
+          {
+            "id": "b1l05-g05-glossary-79",
+            "traditional": "哥哥的",
+            "pinyin": "gēge de",
+            "meaning": "older brother’s"
+          },
+          {
+            "id": "b1l05-g05-glossary-80",
+            "traditional": "那",
+            "pinyin": "nà",
+            "meaning": "that"
+          },
+          {
+            "id": "b1l05-g05-glossary-81",
+            "traditional": "那個",
+            "simplified": "那个",
+            "pinyin": "nà ge",
+            "meaning": "that"
+          },
+          {
+            "id": "b1l05-g05-glossary-82",
+            "traditional": "那家",
+            "pinyin": "nà jiā",
+            "meaning": "that business"
+          },
+          {
+            "id": "b1l05-g05-glossary-83",
+            "traditional": "一個錢包",
+            "simplified": "一个钱包",
+            "pinyin": "yí ge qiánbāo",
+            "meaning": "one wallet"
+          },
+          {
+            "id": "b1l05-g05-glossary-84",
+            "traditional": "一張桌子",
+            "simplified": "一张桌子",
+            "pinyin": "yì zhāng zhuōzi",
+            "meaning": "one table"
+          },
+          {
+            "id": "b1l05-g05-glossary-85",
+            "traditional": "兩張椅子",
+            "simplified": "两张椅子",
+            "pinyin": "liǎng zhāng yǐzi",
+            "meaning": "two chairs"
+          },
+          {
+            "id": "b1l05-g05-glossary-86",
+            "traditional": "一家很大的餐廳",
+            "simplified": "一家很大的餐厅",
+            "pinyin": "yì jiā hěn dà de cāntīng",
+            "meaning": "one large restaurant"
+          },
+          {
+            "id": "b1l05-g05-glossary-87",
+            "traditional": "很多",
+            "pinyin": "hěn duō",
+            "meaning": "many; a lot"
+          },
+          {
+            "id": "b1l05-g05-glossary-88",
+            "traditional": "很多好吃的東西",
+            "simplified": "很多好吃的东西",
+            "pinyin": "hěn duō hǎochī de dōngxi",
+            "meaning": "lots of delicious food"
+          },
+          {
+            "id": "b1l05-g05-glossary-89",
+            "traditional": "好吃",
+            "pinyin": "hǎochī",
+            "meaning": "delicious"
+          },
+          {
+            "id": "b1l05-g05-glossary-90",
+            "traditional": "學生",
+            "simplified": "学生",
+            "pinyin": "xuésheng",
+            "meaning": "student; students"
+          },
+          {
+            "id": "b1l05-g05-glossary-91",
+            "traditional": "一千個學生",
+            "simplified": "一千个学生",
+            "pinyin": "yìqiān ge xuésheng",
+            "meaning": "one thousand students"
+          },
+          {
+            "id": "b1l05-g05-glossary-92",
+            "traditional": "一本書",
+            "simplified": "一本书",
+            "pinyin": "yì běn shū",
+            "meaning": "one book"
+          },
+          {
+            "id": "b1l05-g05-glossary-93",
+            "traditional": "咖啡",
+            "pinyin": "kāfēi",
+            "meaning": "coffee"
+          },
+          {
+            "id": "b1l05-g05-glossary-94",
+            "traditional": "水果",
+            "pinyin": "shuǐguǒ",
+            "meaning": "fruit"
+          },
+          {
+            "id": "b1l05-g05-glossary-95",
+            "traditional": "牛肉麵",
+            "simplified": "牛肉面",
+            "pinyin": "niúròu miàn",
+            "meaning": "beef noodles"
+          },
+          {
+            "id": "b1l05-g05-glossary-96",
+            "traditional": "小籠包",
+            "simplified": "小笼包",
+            "pinyin": "xiǎolóngbāo",
+            "meaning": "soup dumplings"
+          },
+          {
+            "id": "b1l05-g05-glossary-97",
+            "traditional": "很喜歡",
+            "simplified": "很喜欢",
+            "pinyin": "hěn xǐhuān",
+            "meaning": "like very much"
+          },
+          {
+            "id": "b1l05-g05-glossary-98",
+            "traditional": "都",
+            "pinyin": "dōu",
+            "meaning": "all; both"
+          }
+        ],
+        "pattern": "Place + 有 / 沒有 + thing",
+        "patternColumns": [
+          "Place",
+          "有 or 沒有",
+          "Thing"
+        ],
+        "patternAccentColumn": 1,
+        "discoveryLab": {
+          "title": "Change what the place contains",
+          "description": "Start with the place, then report whether something is there.",
+          "prompt": "What is in the place?",
+          "choices": [
+            {
+              "id": "g5-found",
+              "label": "Found",
+              "traditional": "桌子上面有一本書。",
+              "simplified": "桌子上面有一本书。",
+              "pinyin": "Zhuōzi shàngmiàn yǒu yì běn shū.",
+              "english": "There is a book on the table.",
+              "note": "Place first. 有 says the thing is there."
+            },
+            {
+              "id": "g5-empty",
+              "label": "Not found",
+              "traditional": "桌子上面沒有書。",
+              "simplified": "桌子上面没有书。",
+              "pinyin": "Zhuōzi shàngmiàn méiyǒu shū.",
+              "english": "There is no book on the table.",
+              "note": "沒有 is how you say “there is not”."
+            },
+            {
+              "id": "g5-repair",
+              "label": "Repair negative",
+              "traditional": "桌子上面不有書 → 桌子上面沒有書",
+              "simplified": "桌子上面不有书 → 桌子上面没有书",
+              "pinyin": "Zhuōzi shàngmiàn bù yǒu shū → Zhuōzi shàngmiàn méiyǒu shū",
+              "english": "There is no book on the table.",
+              "note": "Use 沒 with 有. Never use 不.",
+              "isCorrection": true
+            }
+          ],
+          "takeaway": "Place first. Use 有 when something is there; use 沒有 when it is not."
+        },
+        "contrast": {
+          "title": "在 says where. 有 says what is there.",
+          "description": "Pick the form by what the listener already knows.",
+          "items": [
+            {
+              "id": "g5-c1",
+              "label": "Find a known thing",
+              "traditional": "書在桌子上面。",
+              "simplified": "书在桌子上面。",
+              "pinyin": "Shū zài zhuōzi shàngmiàn.",
+              "english": "The book is on the table.",
+              "note": "Start with the known book and say where it is.",
+              "particle": {
+                "id": "g5-c1-p",
+                "traditional": "在"
+              }
+            },
+            {
+              "id": "g5-c2",
+              "label": "List what is in a place",
+              "traditional": "桌子上面有一本書。",
+              "simplified": "桌子上面有一本书。",
+              "pinyin": "Zhuōzi shàngmiàn yǒu yì běn shū.",
+              "english": "There is a book on the table.",
+              "note": "Start with the place and say what is there.",
+              "particle": {
+                "id": "g5-c2-p",
+                "traditional": "有"
+              }
+            }
+          ]
+        },
+        "patternRows": [
+          {
+            "id": "g5-p1",
+            "subject": [
+              {
+                "id": "g5-p1-tw",
+                "traditional": "台灣",
+                "simplified": "台湾",
+                "pinyin": "Táiwān",
+                "meaning": "Taiwan"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g5-p1-have",
+                "traditional": "有",
+                "pinyin": "yǒu",
+                "meaning": "there is; there are"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g5-p1-food",
+                "traditional": "很多好吃的東西",
+                "simplified": "很多好吃的东西",
+                "pinyin": "hěn duō hǎochī de dōngxi",
+                "meaning": "lots of delicious food",
+                "suffix": "。"
+              }
+            ],
+            "english": "There is lots of delicious food in Taiwan."
+          },
+          {
+            "id": "g5-p2",
+            "subject": [
+              {
+                "id": "g5-p2-lib",
+                "traditional": "圖書館",
+                "simplified": "图书馆",
+                "pinyin": "túshūguǎn",
+                "meaning": "library"
+              },
+              {
+                "id": "g5-p2-side",
+                "traditional": "旁邊",
+                "simplified": "旁边",
+                "pinyin": "pángbiān",
+                "meaning": "beside; next to"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g5-p2-none",
+                "traditional": "沒有",
+                "simplified": "没有",
+                "pinyin": "méiyǒu",
+                "meaning": "there is not; there are not"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g5-p2-cafe",
+                "traditional": "咖啡廳",
+                "simplified": "咖啡厅",
+                "pinyin": "kāfēitīng",
+                "meaning": "café",
+                "suffix": "。"
+              }
+            ],
+            "english": "There is no café beside the library."
+          },
+          {
+            "id": "g5-p3",
+            "subject": [
+              {
+                "id": "g5-p3-table",
+                "traditional": "桌子",
+                "pinyin": "zhuōzi",
+                "meaning": "table"
+              },
+              {
+                "id": "g5-p3-top",
+                "traditional": "上面",
+                "pinyin": "shàngmiàn",
+                "meaning": "on; above"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g5-p3-have",
+                "traditional": "有",
+                "pinyin": "yǒu",
+                "meaning": "there is; there are"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g5-p3-things",
+                "traditional": "很多",
+                "pinyin": "hěn duō",
+                "meaning": "many; a lot"
+              },
+              {
+                "id": "g5-p3-stuff",
+                "traditional": "東西",
+                "simplified": "东西",
+                "pinyin": "dōngxi",
+                "meaning": "thing; things",
+                "suffix": "。"
+              }
+            ],
+            "english": "There are many things on the table."
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "g5-confusion-shi-vs-you",
+              "question": "There is a book on the table. 是 or 有?",
+              "answer": "有. It introduces what is in a place. 是 says what something is.",
+              "wrongTraditional": "桌子上是一本書。",
+              "wrongSimplified": "桌子上是一本书。",
+              "right": {
+                "traditional": "桌子上面有一本書。",
+                "simplified": "桌子上面有一本书。",
+                "pinyin": "Zhuōzi shàngmiàn yǒu yì běn shū.",
+                "english": "There is a book on the table.",
+                "words": [
+                  {
+                    "id": "b1l05-g5-confusion-1-word-1",
+                    "traditional": "桌子",
+                    "pinyin": "zhuōzi",
+                    "meaning": "table"
+                  },
+                  {
+                    "id": "b1l05-g5-confusion-1-word-2",
+                    "traditional": "上面",
+                    "pinyin": "shàngmiàn",
+                    "meaning": "on; above"
+                  },
+                  {
+                    "id": "b1l05-g5-confusion-1-word-3",
+                    "traditional": "有",
+                    "pinyin": "yǒu",
+                    "meaning": "there is; there are"
+                  },
+                  {
+                    "id": "b1l05-g5-confusion-1-word-4",
+                    "traditional": "一本書",
+                    "simplified": "一本书",
+                    "pinyin": "yì běn shū",
+                    "meaning": "one book",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "g5-confusion-bu-you",
+              "question": "How do I say “there is no book”? Is it 不有?",
+              "answer": "No. 有 takes 沒, never 不: 沒有.",
+              "wrongTraditional": "桌子上面不有書。",
+              "wrongSimplified": "桌子上面不有书。",
+              "right": {
+                "traditional": "桌子上面沒有書。",
+                "simplified": "桌子上面没有书。",
+                "pinyin": "Zhuōzi shàngmiàn méiyǒu shū.",
+                "english": "There is no book on the table.",
+                "words": [
+                  {
+                    "id": "b1l05-g5-confusion-2-word-1",
+                    "traditional": "桌子",
+                    "pinyin": "zhuōzi",
+                    "meaning": "table"
+                  },
+                  {
+                    "id": "b1l05-g5-confusion-2-word-2",
+                    "traditional": "上面",
+                    "pinyin": "shàngmiàn",
+                    "meaning": "on; above"
+                  },
+                  {
+                    "id": "b1l05-g5-confusion-2-word-3",
+                    "traditional": "沒有",
+                    "simplified": "没有",
+                    "pinyin": "méiyǒu",
+                    "meaning": "there is not; there are not"
+                  },
+                  {
+                    "id": "b1l05-g5-confusion-2-word-4",
+                    "traditional": "書",
+                    "simplified": "书",
+                    "pinyin": "shū",
+                    "meaning": "book",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "g5-confusion-zai-vs-you",
+              "question": "The book is already known. Do I say 桌子上面有書 or 書在桌子上面?",
+              "answer": "書在桌子上面 — start with the known thing and use 在. 有 introduces something new.",
+              "wrongTraditional": "桌子上面有書。",
+              "wrongSimplified": "桌子上面有书。",
+              "right": {
+                "traditional": "書在桌子上面。",
+                "simplified": "书在桌子上面。",
+                "pinyin": "Shū zài zhuōzi shàngmiàn.",
+                "english": "The book is on the table.",
+                "words": [
+                  {
+                    "id": "b1l05-g5-confusion-3-word-1",
+                    "traditional": "書",
+                    "simplified": "书",
+                    "pinyin": "shū",
+                    "meaning": "book"
+                  },
+                  {
+                    "id": "b1l05-g5-confusion-3-word-2",
+                    "traditional": "在",
+                    "pinyin": "zài",
+                    "meaning": "be located; at"
+                  },
+                  {
+                    "id": "b1l05-g5-confusion-3-word-3",
+                    "traditional": "桌子",
+                    "pinyin": "zhuōzi",
+                    "meaning": "table"
+                  },
+                  {
+                    "id": "b1l05-g5-confusion-3-word-4",
+                    "traditional": "上面",
+                    "pinyin": "shàngmiàn",
+                    "meaning": "on; above",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "examples": [
+          {
+            "id": "g5-e1",
+            "number": 1,
+            "text": {
+              "traditional": "A：台灣有什麼好吃的東西？ B：水果、牛肉麵跟小籠包，我都很喜歡。",
+              "simplified": "A：台湾有什么好吃的东西？ B：水果、牛肉面跟小笼包，我都很喜欢。",
+              "pinyin": "A: Táiwān yǒu shénme hǎochī de dōngxi? B: Shuǐguǒ, niúròu miàn gēn xiǎolóngbāo, wǒ dōu hěn xǐhuān.",
+              "english": "A: What delicious foods are in Taiwan? B: I like fruit, beef noodles, and soup dumplings.",
+              "words": [
+                {
+                  "id": "b1l05-g5-e1-word-1",
+                  "traditional": "台灣",
+                  "simplified": "台湾",
+                  "pinyin": "Táiwān",
+                  "meaning": "Taiwan",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l05-g5-e1-word-2",
+                  "traditional": "有",
+                  "pinyin": "yǒu",
+                  "meaning": "there is; there are"
+                },
+                {
+                  "id": "b1l05-g5-e1-word-3",
+                  "traditional": "什麼",
+                  "simplified": "什么",
+                  "pinyin": "shénme",
+                  "meaning": "what"
+                },
+                {
+                  "id": "b1l05-g5-e1-word-4",
+                  "traditional": "好吃",
+                  "pinyin": "hǎochī",
+                  "meaning": "delicious"
+                },
+                {
+                  "id": "b1l05-g5-e1-word-5",
+                  "traditional": "的",
+                  "pinyin": "de",
+                  "meaning": "possessive or descriptive linker"
+                },
+                {
+                  "id": "b1l05-g5-e1-word-6",
+                  "traditional": "東西",
+                  "simplified": "东西",
+                  "pinyin": "dōngxi",
+                  "meaning": "thing; things"
+                },
+                {
+                  "id": "b1l05-g5-e1-word-7",
+                  "traditional": "水果",
+                  "pinyin": "shuǐguǒ",
+                  "meaning": "fruit",
+                  "prefix": "？ B："
+                },
+                {
+                  "id": "b1l05-g5-e1-word-8",
+                  "traditional": "牛肉麵",
+                  "simplified": "牛肉面",
+                  "pinyin": "niúròu miàn",
+                  "meaning": "beef noodles",
+                  "prefix": "、"
+                },
+                {
+                  "id": "b1l05-g5-e1-word-9",
+                  "traditional": "跟",
+                  "pinyin": "gēn",
+                  "meaning": "and; with"
+                },
+                {
+                  "id": "b1l05-g5-e1-word-10",
+                  "traditional": "小籠包",
+                  "simplified": "小笼包",
+                  "pinyin": "xiǎolóngbāo",
+                  "meaning": "soup dumplings"
+                },
+                {
+                  "id": "b1l05-g5-e1-word-11",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me",
+                  "prefix": "，"
+                },
+                {
+                  "id": "b1l05-g5-e1-word-12",
+                  "traditional": "都",
+                  "pinyin": "dōu",
+                  "meaning": "all; both"
+                },
+                {
+                  "id": "b1l05-g5-e1-word-13",
+                  "traditional": "很喜歡",
+                  "simplified": "很喜欢",
+                  "pinyin": "hěn xǐhuān",
+                  "meaning": "like very much",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g5-e2",
+            "number": 2,
+            "text": {
+              "traditional": "A：你們學校旁邊有什麼？ B：我們學校旁邊有一家很大的餐廳。",
+              "simplified": "A：你们学校旁边有什么？ B：我们学校旁边有一家很大的餐厅。",
+              "pinyin": "A: Nǐmen xuéxiào pángbiān yǒu shénme? B: Wǒmen xuéxiào pángbiān yǒu yì jiā hěn dà de cāntīng.",
+              "english": "A: What is beside your school? B: There is a large restaurant beside our school.",
+              "words": [
+                {
+                  "id": "b1l05-g5-e2-word-1",
+                  "traditional": "你們",
+                  "simplified": "你们",
+                  "pinyin": "nǐmen",
+                  "meaning": "you all",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l05-g5-e2-word-2",
+                  "traditional": "學校",
+                  "simplified": "学校",
+                  "pinyin": "xuéxiào",
+                  "meaning": "school"
+                },
+                {
+                  "id": "b1l05-g5-e2-word-3",
+                  "traditional": "旁邊",
+                  "simplified": "旁边",
+                  "pinyin": "pángbiān",
+                  "meaning": "beside; next to"
+                },
+                {
+                  "id": "b1l05-g5-e2-word-4",
+                  "traditional": "有",
+                  "pinyin": "yǒu",
+                  "meaning": "there is; there are"
+                },
+                {
+                  "id": "b1l05-g5-e2-word-5",
+                  "traditional": "什麼",
+                  "simplified": "什么",
+                  "pinyin": "shénme",
+                  "meaning": "what"
+                },
+                {
+                  "id": "b1l05-g5-e2-word-6",
+                  "traditional": "我們",
+                  "simplified": "我们",
+                  "pinyin": "wǒmen",
+                  "meaning": "we; us",
+                  "prefix": "？ B："
+                },
+                {
+                  "id": "b1l05-g5-e2-word-7",
+                  "traditional": "學校",
+                  "simplified": "学校",
+                  "pinyin": "xuéxiào",
+                  "meaning": "school"
+                },
+                {
+                  "id": "b1l05-g5-e2-word-8",
+                  "traditional": "旁邊",
+                  "simplified": "旁边",
+                  "pinyin": "pángbiān",
+                  "meaning": "beside; next to"
+                },
+                {
+                  "id": "b1l05-g5-e2-word-9",
+                  "traditional": "有",
+                  "pinyin": "yǒu",
+                  "meaning": "there is; there are"
+                },
+                {
+                  "id": "b1l05-g5-e2-word-10",
+                  "traditional": "一家很大的餐廳",
+                  "simplified": "一家很大的餐厅",
+                  "pinyin": "yì jiā hěn dà de cāntīng",
+                  "meaning": "one large restaurant",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g5-e3",
+            "number": 3,
+            "text": {
+              "traditional": "A：那個房間裡面有桌子、椅子嗎？ B：房間裡面有一張桌子跟兩張椅子。",
+              "simplified": "A：那个房间里面有桌子、椅子吗？ B：房间里面有一张桌子跟两张椅子。",
+              "pinyin": "A: Nà ge fángjiān lǐmiàn yǒu zhuōzi, yǐzi ma? B: Fángjiān lǐmiàn yǒu yì zhāng zhuōzi gēn liǎng zhāng yǐzi.",
+              "english": "A: Are there tables and chairs in that room? B: There is one table and two chairs.",
+              "words": [
+                {
+                  "id": "b1l05-g5-e3-word-1",
+                  "traditional": "那個",
+                  "simplified": "那个",
+                  "pinyin": "nà ge",
+                  "meaning": "that",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l05-g5-e3-word-2",
+                  "traditional": "房間",
+                  "simplified": "房间",
+                  "pinyin": "fángjiān",
+                  "meaning": "room"
+                },
+                {
+                  "id": "b1l05-g5-e3-word-3",
+                  "traditional": "裡面",
+                  "simplified": "里面",
+                  "pinyin": "lǐmiàn",
+                  "meaning": "inside"
+                },
+                {
+                  "id": "b1l05-g5-e3-word-4",
+                  "traditional": "有",
+                  "pinyin": "yǒu",
+                  "meaning": "there is; there are"
+                },
+                {
+                  "id": "b1l05-g5-e3-word-5",
+                  "traditional": "桌子",
+                  "pinyin": "zhuōzi",
+                  "meaning": "table"
+                },
+                {
+                  "id": "b1l05-g5-e3-word-6",
+                  "traditional": "椅子",
+                  "pinyin": "yǐzi",
+                  "meaning": "chair",
+                  "prefix": "、"
+                },
+                {
+                  "id": "b1l05-g5-e3-word-7",
+                  "traditional": "嗎",
+                  "simplified": "吗",
+                  "pinyin": "ma",
+                  "meaning": "ending word for a yes/no question"
+                },
+                {
+                  "id": "b1l05-g5-e3-word-8",
+                  "traditional": "房間",
+                  "simplified": "房间",
+                  "pinyin": "fángjiān",
+                  "meaning": "room",
+                  "prefix": "？ B："
+                },
+                {
+                  "id": "b1l05-g5-e3-word-9",
+                  "traditional": "裡面",
+                  "simplified": "里面",
+                  "pinyin": "lǐmiàn",
+                  "meaning": "inside"
+                },
+                {
+                  "id": "b1l05-g5-e3-word-10",
+                  "traditional": "有",
+                  "pinyin": "yǒu",
+                  "meaning": "there is; there are"
+                },
+                {
+                  "id": "b1l05-g5-e3-word-11",
+                  "traditional": "一張桌子",
+                  "simplified": "一张桌子",
+                  "pinyin": "yì zhāng zhuōzi",
+                  "meaning": "one table"
+                },
+                {
+                  "id": "b1l05-g5-e3-word-12",
+                  "traditional": "跟",
+                  "pinyin": "gēn",
+                  "meaning": "and; with"
+                },
+                {
+                  "id": "b1l05-g5-e3-word-13",
+                  "traditional": "兩張椅子",
+                  "simplified": "两张椅子",
+                  "pinyin": "liǎng zhāng yǐzi",
+                  "meaning": "two chairs",
+                  "suffix": "。"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Describe each place",
+        "exercisePreview": "Name the place first, then say what is there.",
+        "exerciseInstruction": "Answer each open book prompt with place + 有／沒有 + item.",
+        "exerciseNote": "The book prints no answers. These sample answers use Lesson 5 words.",
+        "exerciseResponseMode": "text",
+        "questions": [
+          {
+            "id": "g5-q1",
+            "number": 1,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：我們學校有多少學生？ B："
+              },
+              {
+                "type": "blank",
+                "id": "g5-q1-blank",
+                "answer": "我們學校有一千個學生",
+                "hint": "Give a simple number after 有."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g5-q1-correct",
+                "traditional": "我們學校有一千個學生",
+                "pinyin": "wǒmen xuéxiào yǒu yìqiān ge xuésheng",
+                "meaning": "our school has one thousand students"
+              },
+              {
+                "id": "g5-q1-d1",
+                "traditional": "一千個學生有我們學校",
+                "pinyin": "yìqiān ge xuésheng yǒu wǒmen xuéxiào",
+                "meaning": "reversed order"
+              },
+              {
+                "id": "g5-q1-d2",
+                "traditional": "我們學校在一千個學生",
+                "pinyin": "wǒmen xuéxiào zài yìqiān ge xuésheng",
+                "meaning": "uses 在 instead of 有"
+              }
+            ],
+            "correctFeedback": "The school comes first. 有 introduces the number.",
+            "repairFeedback": "Use place + 有 + quantity + noun."
+          },
+          {
+            "id": "g5-q2",
+            "number": 2,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：你家旁邊有飲料店嗎？ B："
+              },
+              {
+                "type": "blank",
+                "id": "g5-q2-blank",
+                "answer": "我家旁邊沒有飲料店",
+                "hint": "Practice the correct “no” form of 有."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g5-q2-correct",
+                "traditional": "我家旁邊沒有飲料店",
+                "pinyin": "wǒ jiā pángbiān méiyǒu yǐnliào diàn",
+                "meaning": "there is no drink shop beside my home"
+              },
+              {
+                "id": "g5-q2-d1",
+                "traditional": "我家旁邊不有飲料店",
+                "pinyin": "wǒ jiā pángbiān bù yǒu yǐnliào diàn",
+                "meaning": "incorrect negative"
+              },
+              {
+                "id": "g5-q2-d2",
+                "traditional": "飲料店不在我家旁邊",
+                "pinyin": "yǐnliào diàn bú zài wǒ jiā pángbiān",
+                "meaning": "the drink shop is not beside my home"
+              }
+            ],
+            "correctFeedback": "沒有 says there is none.",
+            "repairFeedback": "Make 有 negative with 沒: 沒有. Never say 不有."
+          },
+          {
+            "id": "g5-q3",
+            "number": 3,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：你的桌子上有什麼東西？ B："
+              },
+              {
+                "type": "blank",
+                "id": "g5-q3-blank",
+                "answer": "我的桌子上有一本書",
+                "hint": "Start with the place. Then name one thing."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g5-q3-correct",
+                "traditional": "我的桌子上有一本書",
+                "pinyin": "wǒ de zhuōzi shàng yǒu yì běn shū",
+                "meaning": "there is one book on my table"
+              },
+              {
+                "id": "g5-q3-d1",
+                "traditional": "一本書在我的桌子上",
+                "pinyin": "yì běn shū zài wǒ de zhuōzi shàng",
+                "meaning": "the book is on my table"
+              },
+              {
+                "id": "g5-q3-d2",
+                "traditional": "我的桌子上在一本書",
+                "pinyin": "wǒ de zhuōzi shàng zài yì běn shū",
+                "meaning": "uses 在 instead of 有"
+              }
+            ],
+            "correctFeedback": "The question asks what is on the table. The place comes first, and 有 introduces the book.",
+            "repairFeedback": "Use 我的桌子上 + 有 + 一本書."
+          }
+        ]
+      }
+    ],
+    "dialogue": {
+      "id": "B1L05-D02",
+      "title": "對話二 · Dialogue 2",
+      "setting": "找不見的錢包 · Searching for a missing wallet",
+      "printedPages": [
+        119,
+        120,
+        121
+      ],
+      "audioReference": "05-2-1",
+      "grammarFocus": [
+        "方位詞",
+        "有",
+        "沒有"
+      ],
+      "lines": [
+        {
+          "id": "b1l05-d2-l1",
+          "speaker": "中明",
+          "text": {
+            "traditional": "媽，我跟友美要去喝下午茶，可是我的錢包不在房間裡。",
+            "simplified": "妈，我跟友美要去喝下午茶，可是我的钱包不在房间里。",
+            "pinyin": "Mā, wǒ gēn Yǒuměi yào qù hē xiàwǔ chá, kěshì wǒ de qiánbāo bú zài fángjiān lǐ.",
+            "english": "Mom, Youmei and I are going for afternoon tea, but my wallet is not in my room.",
+            "words": [
+              {
+                "id": "b1l05-d2-l1-word-1",
+                "traditional": "媽",
+                "simplified": "妈",
+                "pinyin": "mā",
+                "meaning": "mom"
+              },
+              {
+                "id": "b1l05-d2-l1-word-2",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me",
+                "prefix": "，"
+              },
+              {
+                "id": "b1l05-d2-l1-word-3",
+                "traditional": "跟",
+                "pinyin": "gēn",
+                "meaning": "and; with"
+              },
+              {
+                "id": "b1l05-d2-l1-word-4",
+                "traditional": "友美",
+                "pinyin": "Yǒuměi",
+                "meaning": "Youmei"
+              },
+              {
+                "id": "b1l05-d2-l1-word-5",
+                "traditional": "要",
+                "pinyin": "yào",
+                "meaning": "will; want to"
+              },
+              {
+                "id": "b1l05-d2-l1-word-6",
+                "traditional": "去",
+                "pinyin": "qù",
+                "meaning": "go"
+              },
+              {
+                "id": "b1l05-d2-l1-word-7",
+                "traditional": "喝下午茶",
+                "pinyin": "hē xiàwǔ chá",
+                "meaning": "have afternoon tea"
+              },
+              {
+                "id": "b1l05-d2-l1-word-8",
+                "traditional": "可是",
+                "pinyin": "kěshì",
+                "meaning": "but",
+                "prefix": "，"
+              },
+              {
+                "id": "b1l05-d2-l1-word-9",
+                "traditional": "我的",
+                "pinyin": "wǒ de",
+                "meaning": "mine; my"
+              },
+              {
+                "id": "b1l05-d2-l1-word-10",
+                "traditional": "錢包",
+                "simplified": "钱包",
+                "pinyin": "qiánbāo",
+                "meaning": "wallet"
+              },
+              {
+                "id": "b1l05-d2-l1-word-11",
+                "traditional": "不在",
+                "pinyin": "bú zài",
+                "meaning": "is not located at"
+              },
+              {
+                "id": "b1l05-d2-l1-word-12",
+                "traditional": "房間",
+                "simplified": "房间",
+                "pinyin": "fángjiān",
+                "meaning": "room"
+              },
+              {
+                "id": "b1l05-d2-l1-word-13",
+                "traditional": "裡",
+                "simplified": "里",
+                "pinyin": "lǐ",
+                "meaning": "inside; in",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "b1l05-d2-l2",
+          "speaker": "媽媽",
+          "text": {
+            "traditional": "客廳的桌子上有一個錢包，是不是你的？",
+            "simplified": "客厅的桌子上有一个钱包，是不是你的？",
+            "pinyin": "Kètīng de zhuōzi shàng yǒu yí ge qiánbāo, shì bú shì nǐ de?",
+            "english": "There is a wallet on the living-room table. Is it yours?",
+            "words": [
+              {
+                "id": "b1l05-d2-l2-word-1",
+                "traditional": "客廳",
+                "simplified": "客厅",
+                "pinyin": "kètīng",
+                "meaning": "living room"
+              },
+              {
+                "id": "b1l05-d2-l2-word-2",
+                "traditional": "的",
+                "pinyin": "de",
+                "meaning": "possessive or descriptive linker"
+              },
+              {
+                "id": "b1l05-d2-l2-word-3",
+                "traditional": "桌子",
+                "pinyin": "zhuōzi",
+                "meaning": "table"
+              },
+              {
+                "id": "b1l05-d2-l2-word-4",
+                "traditional": "上",
+                "pinyin": "shàng",
+                "meaning": "on; above"
+              },
+              {
+                "id": "b1l05-d2-l2-word-5",
+                "traditional": "有",
+                "pinyin": "yǒu",
+                "meaning": "there is; there are"
+              },
+              {
+                "id": "b1l05-d2-l2-word-6",
+                "traditional": "一個錢包",
+                "simplified": "一个钱包",
+                "pinyin": "yí ge qiánbāo",
+                "meaning": "one wallet"
+              },
+              {
+                "id": "b1l05-d2-l2-word-7",
+                "traditional": "是",
+                "pinyin": "shì",
+                "meaning": "is; am; are",
+                "prefix": "，"
+              },
+              {
+                "id": "b1l05-d2-l2-word-8",
+                "traditional": "不是",
+                "pinyin": "bú shì",
+                "meaning": "is not"
+              },
+              {
+                "id": "b1l05-d2-l2-word-9",
+                "traditional": "你的",
+                "pinyin": "nǐ de",
+                "meaning": "yours; your",
+                "suffix": "？"
+              }
+            ]
+          }
+        },
+        {
+          "id": "b1l05-d2-l3",
+          "speaker": "中明",
+          "text": {
+            "traditional": "那不是我的，是哥哥的。我的錢包不在客廳裡。",
+            "simplified": "那不是我的，是哥哥的。我的钱包不在客厅里。",
+            "pinyin": "Nà bú shì wǒ de, shì gēge de. Wǒ de qiánbāo bú zài kètīng lǐ.",
+            "english": "That is not mine; it is my older brother’s. My wallet is not in the living room.",
+            "words": [
+              {
+                "id": "b1l05-d2-l3-word-1",
+                "traditional": "那",
+                "pinyin": "nà",
+                "meaning": "that"
+              },
+              {
+                "id": "b1l05-d2-l3-word-2",
+                "traditional": "不是",
+                "pinyin": "bú shì",
+                "meaning": "is not"
+              },
+              {
+                "id": "b1l05-d2-l3-word-3",
+                "traditional": "我的",
+                "pinyin": "wǒ de",
+                "meaning": "mine; my"
+              },
+              {
+                "id": "b1l05-d2-l3-word-4",
+                "traditional": "是",
+                "pinyin": "shì",
+                "meaning": "is; am; are",
+                "prefix": "，"
+              },
+              {
+                "id": "b1l05-d2-l3-word-5",
+                "traditional": "哥哥的",
+                "pinyin": "gēge de",
+                "meaning": "older brother’s"
+              },
+              {
+                "id": "b1l05-d2-l3-word-6",
+                "traditional": "我的",
+                "pinyin": "wǒ de",
+                "meaning": "mine; my",
+                "prefix": "。"
+              },
+              {
+                "id": "b1l05-d2-l3-word-7",
+                "traditional": "錢包",
+                "simplified": "钱包",
+                "pinyin": "qiánbāo",
+                "meaning": "wallet"
+              },
+              {
+                "id": "b1l05-d2-l3-word-8",
+                "traditional": "不在",
+                "pinyin": "bú zài",
+                "meaning": "is not located at"
+              },
+              {
+                "id": "b1l05-d2-l3-word-9",
+                "traditional": "客廳",
+                "simplified": "客厅",
+                "pinyin": "kètīng",
+                "meaning": "living room"
+              },
+              {
+                "id": "b1l05-d2-l3-word-10",
+                "traditional": "裡",
+                "simplified": "里",
+                "pinyin": "lǐ",
+                "meaning": "inside; in",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "b1l05-d2-l4",
+          "speaker": "媽媽",
+          "text": {
+            "traditional": "沙發下面呢？",
+            "simplified": "沙发下面呢？",
+            "pinyin": "Shāfā xiàmiàn ne?",
+            "english": "What about under the sofa?",
+            "words": [
+              {
+                "id": "b1l05-d2-l4-word-1",
+                "traditional": "沙發",
+                "simplified": "沙发",
+                "pinyin": "shāfā",
+                "meaning": "sofa"
+              },
+              {
+                "id": "b1l05-d2-l4-word-2",
+                "traditional": "下面",
+                "pinyin": "xiàmiàn",
+                "meaning": "under; below"
+              },
+              {
+                "id": "b1l05-d2-l4-word-3",
+                "traditional": "呢",
+                "pinyin": "ne",
+                "meaning": "what about; and",
+                "suffix": "？"
+              }
+            ]
+          }
+        },
+        {
+          "id": "b1l05-d2-l5",
+          "speaker": "中明",
+          "text": {
+            "traditional": "沙發上面、下面跟旁邊都沒有。媽，妳幫我找，好嗎？",
+            "simplified": "沙发上面、下面跟旁边都没有。妈，妳帮我找，好吗？",
+            "pinyin": "Shāfā shàngmiàn, xiàmiàn gēn pángbiān dōu méiyǒu. Mā, nǐ bāng wǒ zhǎo, hǎo ma?",
+            "english": "It is not on, under, or beside the sofa. Mom, can you help me look?",
+            "words": [
+              {
+                "id": "b1l05-d2-l5-word-1",
+                "traditional": "沙發",
+                "simplified": "沙发",
+                "pinyin": "shāfā",
+                "meaning": "sofa"
+              },
+              {
+                "id": "b1l05-d2-l5-word-2",
+                "traditional": "上面",
+                "pinyin": "shàngmiàn",
+                "meaning": "on; above"
+              },
+              {
+                "id": "b1l05-d2-l5-word-3",
+                "traditional": "下面",
+                "pinyin": "xiàmiàn",
+                "meaning": "under; below",
+                "prefix": "、"
+              },
+              {
+                "id": "b1l05-d2-l5-word-4",
+                "traditional": "跟",
+                "pinyin": "gēn",
+                "meaning": "and; with"
+              },
+              {
+                "id": "b1l05-d2-l5-word-5",
+                "traditional": "旁邊",
+                "simplified": "旁边",
+                "pinyin": "pángbiān",
+                "meaning": "beside; next to"
+              },
+              {
+                "id": "b1l05-d2-l5-word-6",
+                "traditional": "都沒有",
+                "simplified": "都没有",
+                "pinyin": "dōu méiyǒu",
+                "meaning": "none of them have; nowhere has"
+              },
+              {
+                "id": "b1l05-d2-l5-word-7",
+                "traditional": "媽",
+                "simplified": "妈",
+                "pinyin": "mā",
+                "meaning": "mom",
+                "prefix": "。"
+              },
+              {
+                "id": "b1l05-d2-l5-word-8",
+                "traditional": "妳",
+                "pinyin": "nǐ",
+                "meaning": "you",
+                "prefix": "，"
+              },
+              {
+                "id": "b1l05-d2-l5-word-9",
+                "traditional": "幫",
+                "simplified": "帮",
+                "pinyin": "bāng",
+                "meaning": "help"
+              },
+              {
+                "id": "b1l05-d2-l5-word-10",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
+              },
+              {
+                "id": "b1l05-d2-l5-word-11",
+                "traditional": "找",
+                "pinyin": "zhǎo",
+                "meaning": "look for"
+              },
+              {
+                "id": "b1l05-d2-l5-word-12",
+                "traditional": "好嗎",
+                "simplified": "好吗",
+                "pinyin": "hǎo ma",
+                "meaning": "okay; could you",
+                "prefix": "，",
+                "suffix": "？"
+              }
+            ]
+          }
+        },
+        {
+          "id": "b1l05-d2-l6",
+          "speaker": "媽媽",
+          "text": {
+            "traditional": "我很忙，現在要去廚房做飯，你再去房間找吧。",
+            "simplified": "我很忙，现在要去厨房做饭，你再去房间找吧。",
+            "pinyin": "Wǒ hěn máng, xiànzài yào qù chúfáng zuòfàn, nǐ zài qù fángjiān zhǎo ba.",
+            "english": "I am busy and need to cook. Go search your room again.",
+            "words": [
+              {
+                "id": "b1l05-d2-l6-word-1",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
+              },
+              {
+                "id": "b1l05-d2-l6-word-2",
+                "traditional": "很忙",
+                "pinyin": "hěn máng",
+                "meaning": "very busy"
+              },
+              {
+                "id": "b1l05-d2-l6-word-3",
+                "traditional": "現在",
+                "simplified": "现在",
+                "pinyin": "xiànzài",
+                "meaning": "now",
+                "prefix": "，"
+              },
+              {
+                "id": "b1l05-d2-l6-word-4",
+                "traditional": "要",
+                "pinyin": "yào",
+                "meaning": "will; want to"
+              },
+              {
+                "id": "b1l05-d2-l6-word-5",
+                "traditional": "去",
+                "pinyin": "qù",
+                "meaning": "go"
+              },
+              {
+                "id": "b1l05-d2-l6-word-6",
+                "traditional": "廚房",
+                "simplified": "厨房",
+                "pinyin": "chúfáng",
+                "meaning": "kitchen"
+              },
+              {
+                "id": "b1l05-d2-l6-word-7",
+                "traditional": "做飯",
+                "simplified": "做饭",
+                "pinyin": "zuòfàn",
+                "meaning": "cook"
+              },
+              {
+                "id": "b1l05-d2-l6-word-8",
+                "traditional": "你",
+                "pinyin": "nǐ",
+                "meaning": "you",
+                "prefix": "，"
+              },
+              {
+                "id": "b1l05-d2-l6-word-9",
+                "traditional": "再去",
+                "pinyin": "zài qù",
+                "meaning": "go again"
+              },
+              {
+                "id": "b1l05-d2-l6-word-10",
+                "traditional": "房間",
+                "simplified": "房间",
+                "pinyin": "fángjiān",
+                "meaning": "room"
+              },
+              {
+                "id": "b1l05-d2-l6-word-11",
+                "traditional": "找",
+                "pinyin": "zhǎo",
+                "meaning": "look for"
+              },
+              {
+                "id": "b1l05-d2-l6-word-12",
+                "traditional": "吧",
+                "pinyin": "ba",
+                "meaning": "softens a suggestion",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "b1l05-d2-l7",
+          "speaker": "中明",
+          "text": {
+            "traditional": "啊！在這裡！錢包在我的書下面。",
+            "simplified": "啊！在这里！钱包在我的书下面。",
+            "pinyin": "A! Zài zhèlǐ! Qiánbāo zài wǒ de shū xiàmiàn.",
+            "english": "Ah, here it is! The wallet is under my book.",
+            "words": [
+              {
+                "id": "b1l05-d2-l7-word-1",
+                "traditional": "啊",
+                "pinyin": "a",
+                "meaning": "ending word that adds feeling"
+              },
+              {
+                "id": "b1l05-d2-l7-word-2",
+                "traditional": "在",
+                "pinyin": "zài",
+                "meaning": "be located; at",
+                "prefix": "！"
+              },
+              {
+                "id": "b1l05-d2-l7-word-3",
+                "traditional": "這裡",
+                "simplified": "这里",
+                "pinyin": "zhèlǐ",
+                "meaning": "here"
+              },
+              {
+                "id": "b1l05-d2-l7-word-4",
+                "traditional": "錢包",
+                "simplified": "钱包",
+                "pinyin": "qiánbāo",
+                "meaning": "wallet",
+                "prefix": "！"
+              },
+              {
+                "id": "b1l05-d2-l7-word-5",
+                "traditional": "在",
+                "pinyin": "zài",
+                "meaning": "be located; at"
+              },
+              {
+                "id": "b1l05-d2-l7-word-6",
+                "traditional": "我的",
+                "pinyin": "wǒ de",
+                "meaning": "mine; my"
+              },
+              {
+                "id": "b1l05-d2-l7-word-7",
+                "traditional": "書",
+                "simplified": "书",
+                "pinyin": "shū",
+                "meaning": "book"
+              },
+              {
+                "id": "b1l05-d2-l7-word-8",
+                "traditional": "下面",
+                "pinyin": "xiàmiàn",
+                "meaning": "under; below",
+                "suffix": "。"
+              }
+            ]
+          }
+        }
+      ],
+      "comprehension": {
+        "prompt": "中明的錢包最後在哪裡？",
+        "options": [
+          "書下面",
+          "沙發旁邊",
+          "客廳桌子上面"
+        ],
+        "answer": "書下面",
+        "hint": "Read Zhongming’s final discovery."
+      }
+    },
+    "completionTitle": "Lesson 5 grammar complete — you can describe a room.",
+    "completionDescription": "You said exactly where things are with anchor + direction words, and used 有／沒有 to say what is in a place.",
+    "nextBookLabel": "Next in the book · Review the lesson patterns."
+  }
+}

@@ -30,10 +30,11 @@ export function resolveActiveReadingIndex({
     ?? targetReadings[0]?.lessonId
     ?? 1;
 
-  // Determine target dialogue (Part 2 -> Dialogue 2, otherwise Dialogue 1)
+  // Determine target dialogue (Part 3 -> Dialogue 3, Part 2 -> Dialogue 2, otherwise Dialogue 1)
   const partSelection = selectedLessonParts[getLessonSelectionKey(bookId, activeLessonId)];
+  const isPart3 = Array.isArray(partSelection) && partSelection.includes(3) && !partSelection.includes(1) && !partSelection.includes(2);
   const isPart2 = Array.isArray(partSelection) && partSelection.includes(2) && !partSelection.includes(1);
-  const targetDialogueNumber = isPart2 ? 2 : 1;
+  const targetDialogueNumber = isPart3 ? 3 : isPart2 ? 2 : 1;
 
   // Find exact reading match
   const exactIndex = readings.findIndex(

@@ -21,7 +21,7 @@ import {
 import {
   CJKVI_OPERAND_ADAPTER,
   MAKE_ME_A_HANZI_OPERAND_ADAPTER,
-} from '../src/features/character-decomposition';
+} from '../scripts/character-decomposition/sources';
 
 interface Example {
   character: string;

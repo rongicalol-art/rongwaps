@@ -1,13 +1,23 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
 import { useAppStore } from '../../store/useAppStore';
-import type { ReadingRecord } from '../../types/models';
-import { DIALOGUE_ALIGNMENTS } from '../../data/dialogueAlignment';
-import { officialAudioFileName } from '../../utils/officialAudio';
+import type { DialogueAlignment, ReaderTextSize, ReadingRecord } from '../../types/models';
+import { LoadingScreen } from '../../lib/widgets';
+
 import { useReaderAudio } from './hooks/useReaderAudio';
 import { ReaderHeader } from './components/ReaderHeader';
-import { ReadingCanvas } from './components/ReadingCanvas';
+import { isNarrativeReading } from './utils/narrativeParagraphs';
 import { ReadingBottomDock } from './components/ReadingBottomDock';
+
+// Window shell (this module) stays eager so the Reader opens instantly with
+// its canvas tone + header; the heavy reading canvases stream in under a
+// spinner. Never static-import them here or they join the main bundle.
+const ReadingCanvas = lazy(() =>
+  import('./components/ReadingCanvas').then((m) => ({ default: m.ReadingCanvas })),
+);
+const ReadingNarrativeView = lazy(() =>
+  import('./components/ReadingNarrativeView').then((m) => ({ default: m.ReadingNarrativeView })),
+);
 
 interface ReaderScreenProps {
   readings: ReadingRecord[];
@@ -16,66 +26,98 @@ interface ReaderScreenProps {
   onClose: () => void;
 }
 
+/** Mounts only once the lazy reading-content chunk has resolved; the shell
+ *  uses it to keep the bottom dock hidden while the reading streams in. */
+function ReaderContentMount({
+  onMounted,
+  children,
+}: {
+  onMounted: () => void;
+  children: ReactNode;
+}) {
+  useEffect(() => {
+    onMounted();
+  }, [onMounted]);
+  return <>{children}</>;
+}
+
 export function ReaderScreen({ readings, index, onNavigate, onClose }: ReaderScreenProps) {
+  const dialogRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLElement>(null);
   const lastScrollY = useRef(0);
 
   const [isDockVisible, setIsDockVisible] = useState(true);
   const [showPinyin, setShowPinyin] = useState(false);
   const [showMeaning, setShowMeaning] = useState(false);
-  const [textSize, setTextSize] = useState<'normal' | 'large'>('normal');
-  const [audioMode, setAudioMode] = useState<'book' | 'tts'>('book');
-  const [navToast, setNavToast] = useState<{
-    lessonId: number;
-    partId: number;
-    title: string;
-  } | null>(null);
-  const toastTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const showNavToast = useCallback((targetReading: ReadingRecord) => {
-    if (toastTimeoutRef.current) {
-      clearTimeout(toastTimeoutRef.current);
+  const [showHoverDefinitions, setShowHoverDefinitions] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = window.localStorage.getItem('rongwaps:reader_hover_definitions');
+      if (saved !== null) {
+        return saved === 'true';
+      }
     }
-    setNavToast({
-      lessonId: targetReading.lessonId,
-      partId: targetReading.dialogueNumber,
-      title: targetReading.title,
+    return true;
+  });
+
+  const handleToggleHoverDefinitions = useCallback(() => {
+    setShowHoverDefinitions((prev) => {
+      const next = !prev;
+      try {
+        window.localStorage.setItem('rongwaps:reader_hover_definitions', String(next));
+      } catch {
+        // Ignore storage errors in restricted contexts
+      }
+      return next;
     });
-    toastTimeoutRef.current = setTimeout(() => {
-      setNavToast(null);
-    }, 1800);
   }, []);
 
-  const prevIndexRef = useRef(index);
-  useEffect(() => {
-    if (prevIndexRef.current !== index) {
-      prevIndexRef.current = index;
-      const targetReading = readings[index];
-      if (targetReading) {
-        showNavToast(targetReading);
+  const [textSize, setTextSize] = useState<ReaderTextSize>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = window.localStorage.getItem('rongwaps:reader_text_size');
+      if (saved === 'normal' || saved === 'large' || saved === 'extra-large') {
+        return saved;
       }
     }
-  }, [index, readings, showNavToast]);
+    return 'normal';
+  });
 
+  const handleTextSizeChange = useCallback((newSize: ReaderTextSize) => {
+    setTextSize(newSize);
+    try {
+      window.localStorage.setItem('rongwaps:reader_text_size', newSize);
+    } catch {
+      // Ignore storage errors in restricted contexts
+    }
+  }, []);
+
+  const audioMode = 'book';
+  const characterPreference = useAppStore((state) => state.characterPreference);
+  const reading = readings[index] ?? readings[0];
+
+  // The dialogue alignment pack (~1.1MB) loads async so the Reader window can
+  // open before it lands. Until it arrives the audio hook falls back to
+  // whole-track playback (no karaoke) — never block the window on this.
+  const [alignmentMap, setAlignmentMap] = useState<Record<string, DialogueAlignment> | null>(null);
+  const [contentReady, setContentReady] = useState(false);
+  const markContentReady = useCallback(() => setContentReady(true), []);
   useEffect(() => {
+    let cancelled = false;
+    import('../../../content/dialogueAlignment.json')
+      .then((module) => {
+        if (!cancelled) {
+          setAlignmentMap((module.default ?? {}) as Record<string, DialogueAlignment>);
+        }
+      })
+      .catch(() => {
+        // Missing/malformed pack: reader still works without karaoke sync.
+      });
     return () => {
-      if (toastTimeoutRef.current) {
-        clearTimeout(toastTimeoutRef.current);
-      }
+      cancelled = true;
     };
   }, []);
 
-  const characterPreference = useAppStore((state) => state.characterPreference);
-  const setCharacterPreference = useAppStore((state) => state.setCharacterPreference);
-
-  const reading = readings[index] ?? readings[0];
-
   // Dialogue alignment for karaoke sync
-  const alignment = DIALOGUE_ALIGNMENTS[reading?.id ?? ''] ?? null;
-  const bookAudioFileName = useMemo(
-    () => (reading ? officialAudioFileName(reading.bookId, reading.audioReference) : null),
-    [reading],
-  );
+  const alignment = alignmentMap?.[reading?.id ?? ''] ?? null;
 
   // Audio Hook
   const {
@@ -83,19 +125,16 @@ export function ReaderScreen({ readings, index, onNavigate, onClose }: ReaderScr
     currentTime,
     totalDuration,
     playbackSpeed,
-    isLooping,
     canKaraoke,
     activeLineIndex,
     togglePlay,
     playLine,
     playFromTime,
-    stop,
     seekTo,
     scrubTo,
     prevSentence,
     nextSentence,
     cycleSpeed,
-    toggleLoop,
   } = useReaderAudio({
     reading,
     alignment,
@@ -147,20 +186,16 @@ export function ReaderScreen({ readings, index, onNavigate, onClose }: ReaderScr
     if (!main) return;
 
     const handleScroll = () => {
-      // Don't auto-hide dock if user is currently hovering at the bottom
       if (isHoveringBottomRef.current) return;
 
       const currentScrollY = main.scrollTop;
       const delta = currentScrollY - lastScrollY.current;
 
-      // Scroll threshold to avoid jitter
       if (Math.abs(delta) > 8) {
         if (delta > 0 && currentScrollY > 40) {
-          // Scrolling down -> hide dock
           wasHoverRevealedRef.current = false;
           setIsDockVisible(false);
         } else if (delta < 0) {
-          // Scrolling up -> reveal dock smoothly
           wasHoverRevealedRef.current = false;
           setIsDockVisible(true);
         }
@@ -179,6 +214,45 @@ export function ReaderScreen({ readings, index, onNavigate, onClose }: ReaderScr
     setIsDockVisible(true);
   }, [reading?.id]);
 
+  // Isolate background from accessibility tree and user focus while reader is open
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    const root = document.getElementById('root');
+    const siblings = root
+      ? Array.from(root.children).filter((element) => element !== dialog) as HTMLElement[]
+      : [];
+    const targets = siblings.map((element) => (
+      (element.querySelector('[data-workspace-content]') as HTMLElement | null) ?? element
+    ));
+    const previousStates = targets.map((target) => ({
+      target,
+      inert: target.hasAttribute('inert'),
+      ariaHidden: target.getAttribute('aria-hidden'),
+    }));
+
+    targets.forEach((target) => {
+      target.setAttribute('inert', '');
+      target.setAttribute('aria-hidden', 'true');
+    });
+
+    return () => {
+      targets.forEach((target, i) => {
+        const state = previousStates[i];
+        if (!state) return;
+        if (state.inert) {
+          target.setAttribute('inert', '');
+        } else {
+          target.removeAttribute('inert');
+        }
+        if (state.ariaHidden !== null) {
+          target.setAttribute('aria-hidden', state.ariaHidden);
+        } else {
+          target.removeAttribute('aria-hidden');
+        }
+      });
+    };
+  }, []);
+
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -188,72 +262,83 @@ export function ReaderScreen({ readings, index, onNavigate, onClose }: ReaderScr
       }
 
       if (event.key === 'Escape') {
+        event.stopPropagation();
         onClose();
       } else if (event.key === ' ') {
         event.preventDefault();
+        event.stopPropagation();
         setIsDockVisible(true);
         togglePlay();
       } else if (event.key === 'ArrowLeft') {
         event.preventDefault();
+        event.stopPropagation();
         if (event.altKey || event.metaKey) {
           setIsDockVisible(true);
           prevSentence();
         } else {
-          // Debug keymap: jump to previous dialogue across lessons
-          const nextIndex = index > 0 ? index - 1 : readings.length - 1;
-          const targetReading = readings[nextIndex];
-          if (targetReading) {
-            showNavToast(targetReading);
-            onNavigate(nextIndex);
-          }
+          if (index > 0) onNavigate(index - 1);
         }
       } else if (event.key === 'ArrowRight') {
         event.preventDefault();
+        event.stopPropagation();
         if (event.altKey || event.metaKey) {
           setIsDockVisible(true);
           nextSentence();
         } else {
-          // Debug keymap: jump to next dialogue across lessons
-          const nextIndex = index < readings.length - 1 ? index + 1 : 0;
-          const targetReading = readings[nextIndex];
-          if (targetReading) {
-            showNavToast(targetReading);
-            onNavigate(nextIndex);
-          }
+          if (index < readings.length - 1) onNavigate(index + 1);
         }
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onClose, togglePlay, prevSentence, nextSentence, onNavigate, index, readings, showNavToast]);
+  }, [index, readings.length, onNavigate, onClose, togglePlay, prevSentence, nextSentence]);
 
-  // Stop audio when unmounting
-  useEffect(() => {
-    return () => {
-      stop();
-    };
-  }, [stop]);
+  // Touch Swipe Gestures for Previous / Next Dialogue
+  const touchStartXRef = useRef<number | null>(null);
+  const touchStartYRef = useRef<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    const touch = e.touches[0];
+    touchStartXRef.current = touch.clientX;
+    touchStartYRef.current = touch.clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartXRef.current === null || touchStartYRef.current === null) return;
+    const touch = e.changedTouches[0];
+    const diffX = touch.clientX - touchStartXRef.current;
+    const diffY = touch.clientY - touchStartYRef.current;
+
+    touchStartXRef.current = null;
+    touchStartYRef.current = null;
+
+    if (Math.abs(diffX) > 80 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
+      if (diffX > 0) {
+        if (index > 0) onNavigate(index - 1);
+      } else {
+        if (index < readings.length - 1) onNavigate(index + 1);
+      }
+    }
+  };
 
   if (!reading) return null;
 
   return (
-    <motion.div
-      tabIndex={-1}
-      initial={{ opacity: 0, y: '100%' }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: '100%' }}
-      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-0 bottom-0 right-0 z-[500] flex flex-col overflow-hidden bg-ui-practice-canvas outline-none transition-[left] duration-300 ease-out"
-      style={{ left: 'var(--workspace-nav-width, 0px)' }}
+    <div
+      ref={dialogRef}
       role="dialog"
       aria-modal="true"
-      aria-label={`Reading: Lesson ${reading.lessonId} ${reading.title}`}
-      onPointerMove={(e) => {
-        // Approaching the bottom of the screen (within 75px) reveals the dock
-        if (e.clientY >= window.innerHeight - 75) {
+      aria-label="Reading Mode"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      className="fixed inset-0 z-50 flex flex-col bg-ui-practice-canvas transition-[padding-left] duration-300 ease-out outline-none select-none"
+      style={{ paddingLeft: 'var(--workspace-nav-width, 0px)' }}
+      onMouseMove={(e) => {
+        const threshold = window.innerHeight - 90;
+        if (e.clientY >= threshold) {
           handleBottomHoverEnter();
-        } else if (wasHoverRevealedRef.current && e.clientY < window.innerHeight - 90) {
+        } else {
           handleBottomHoverLeave();
         }
       }}
@@ -262,99 +347,113 @@ export function ReaderScreen({ readings, index, onNavigate, onClose }: ReaderScr
       <main
         ref={mainRef}
         onClick={() => setIsDockVisible(true)}
-        className="relative z-10 min-h-0 flex-1 overflow-y-auto overscroll-contain"
+        className="relative z-10 min-h-0 flex-1 overflow-y-auto overscroll-none"
       >
         <ReaderHeader
           reading={reading}
-          characterPreference={characterPreference}
-          onCharacterPreferenceChange={setCharacterPreference}
-          audioMode={audioMode}
-          onAudioModeChange={setAudioMode}
-          hasOfficialAudio={Boolean(bookAudioFileName)}
           textSize={textSize}
-          onTextSizeChange={setTextSize}
+          onTextSizeChange={handleTextSizeChange}
           showPinyin={showPinyin}
           onTogglePinyin={() => setShowPinyin((v) => !v)}
           showMeaning={showMeaning}
           onToggleMeaning={() => setShowMeaning((v) => !v)}
+          showHoverDefinitions={showHoverDefinitions}
+          onToggleHoverDefinitions={handleToggleHoverDefinitions}
           onClose={onClose}
         />
-        <ReadingCanvas
-          reading={reading}
-          alignment={alignment}
-          characterPreference={characterPreference}
-          showPinyin={showPinyin}
-          showMeaning={showMeaning}
-          textSize={textSize}
-          activeLineIndex={activeLineIndex}
-          currentTime={currentTime}
-          onPlayLine={(idx) => {
-            setIsDockVisible(true);
-            playLine(idx);
-          }}
-          onPlayFromTime={(startSec, endSec) => {
-            setIsDockVisible(true);
-            playFromTime(startSec, endSec);
-          }}
-        />
+        <Suspense fallback={<LoadingScreen message="Loading reading…" inline />}>
+          <ReaderContentMount onMounted={markContentReady}>
+            {isNarrativeReading(reading) ? (
+              <ReadingNarrativeView
+                key={reading.id}
+                reading={reading}
+                alignment={alignment}
+                characterPreference={characterPreference}
+                showPinyin={showPinyin}
+                showMeaning={showMeaning}
+                showHoverDefinitions={showHoverDefinitions}
+                textSize={textSize}
+                activeLineIndex={activeLineIndex}
+                currentTime={currentTime}
+                onPlayLine={(idx) => {
+                  setIsDockVisible(true);
+                  playLine(idx);
+                }}
+                onPlayRange={(startSec) => {
+                  setIsDockVisible(true);
+                  playFromTime(startSec);
+                }}
+                onPlayFromTime={(startSec, endSec) => {
+                  setIsDockVisible(true);
+                  playFromTime(startSec, endSec);
+                }}
+              />
+            ) : (
+              <ReadingCanvas
+                key={reading.id}
+                reading={reading}
+                alignment={alignment}
+                characterPreference={characterPreference}
+                showPinyin={showPinyin}
+                showMeaning={showMeaning}
+                showHoverDefinitions={showHoverDefinitions}
+                textSize={textSize}
+                activeLineIndex={activeLineIndex}
+                currentTime={currentTime}
+                onPlayLine={(idx) => {
+                  setIsDockVisible(true);
+                  playLine(idx);
+                }}
+                onPlayRange={(startSec) => {
+                  setIsDockVisible(true);
+                  playFromTime(startSec);
+                }}
+                onPlayFromTime={(startSec, endSec) => {
+                  setIsDockVisible(true);
+                  playFromTime(startSec, endSec);
+                }}
+              />
+            )}
+          </ReaderContentMount>
+        </Suspense>
       </main>
 
       {/* Invisible bottom hover hotspot: hovering near the bottom reveals playback dock */}
       <div
         aria-hidden="true"
-        className="pointer-events-auto absolute inset-x-0 bottom-0 z-30 h-20"
+        className="pointer-events-auto absolute bottom-0 right-0 z-30 h-24"
+        style={{ left: 'var(--workspace-nav-width, 0px)' }}
         onMouseEnter={handleBottomHoverEnter}
         onMouseLeave={handleBottomHoverLeave}
       />
 
-      {/* Du Chinese-style Floating Bottom Playback Dock (moves together with its top gradient mask) */}
-      <ReadingBottomDock
+      {/* Du Chinese-style Floating Bottom Playback Dock (hidden until the
+          reading content chunk has mounted, so it never floats over the
+          loading state) */}
+      {contentReady && (
+        <ReadingBottomDock
         isVisible={isDockVisible}
         playing={playing}
         currentTime={currentTime}
         totalDuration={totalDuration}
         playbackSpeed={playbackSpeed}
-        isLooping={isLooping}
         canKaraoke={canKaraoke}
         showPinyin={showPinyin}
         showMeaning={showMeaning}
+        showHoverDefinitions={showHoverDefinitions}
         onTogglePlay={togglePlay}
         onPrevSentence={prevSentence}
         onNextSentence={nextSentence}
         onSeek={seekTo}
         onScrub={scrubTo}
         onCycleSpeed={cycleSpeed}
-        onToggleLoop={toggleLoop}
         onTogglePinyin={() => setShowPinyin((v) => !v)}
         onToggleMeaning={() => setShowMeaning((v) => !v)}
+        onToggleHoverDefinitions={handleToggleHoverDefinitions}
         onMouseEnter={handleBottomHoverEnter}
         onMouseLeave={handleBottomHoverLeave}
-      />
-
-      {/* Dialogue Navigation HUD / Popup */}
-      <AnimatePresence>
-        {navToast && (
-          <motion.aside
-            initial={{ opacity: 0, y: -24, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -16, scale: 0.95 }}
-            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-            className="pointer-events-none absolute top-4 inset-x-0 z-[600] flex justify-center px-4"
-            aria-live="polite"
-          >
-            <div className="flex items-center gap-3 rounded-full border border-ui-border bg-ui-surface/95 px-5 py-2.5 backdrop-blur-md">
-              <span className="flex h-2.5 w-2.5 shrink-0 rounded-full bg-brand-primary animate-pulse" />
-              <div className="flex items-center gap-2 text-xs sm:text-sm font-black text-ui-ink-strong">
-                <span className="font-chinese text-brand-primary">第 {navToast.lessonId} 課</span>
-                <span className="text-ui-muted-strong">·</span>
-                <span>Part {navToast.partId}</span>
-                <span className="text-ui-muted-strong">·</span>
-                <span className="font-chinese text-ui-ink">{navToast.title}</span>
-              </div>
-            </div>
-          </motion.aside>
-        )}
-      </AnimatePresence>
-    </motion.div>
+        />
+      )}
+    </div>
   );
 }

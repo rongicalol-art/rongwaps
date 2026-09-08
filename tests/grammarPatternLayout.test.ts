@@ -153,7 +153,7 @@ test('Pinyin extends a column when shown', () => {
   assert.ok(withPinyin[0] > withoutPinyin[0]);
 });
 
-test('A clearly heaviest column becomes the single flexible track', () => {
+test('A clearly heaviest column receives proportionally more share without starving neighbors', () => {
   const layout = getPatternSectionLayout({
     patternColumns: ['Who', 'Action', 'What'],
     patternRows: [
@@ -171,12 +171,15 @@ test('A clearly heaviest column becomes the single flexible track', () => {
   assert.equal(layout.weights.length, 3);
   assert.ok(layout.weights.every((weight) => weight >= 1 && weight <= 5));
   assert.ok(layout.weights[0] > layout.weights[2]);
-  // The heavy subject column stretches; short neighbors size to their content.
-  assert.equal(layout.flexColumnIndex, 0);
-  assert.equal(layout.gridTemplateColumns, '1fr min-content min-content');
+  // The heavy subject column receives more share, bounded within [0.20, 0.60].
+  assert.ok(layout.shares[0] > layout.shares[2]);
+  assert.ok(layout.shares[0] >= 0.38);
+  assert.ok(layout.shares[2] >= 0.20);
+  assert.match(layout.gridTemplateColumns, /^minmax\(0, 0\.\d+fr\)/);
+  assert.equal(layout.flexColumnIndex, null);
 });
 
-test('Near-equal columns share one flexible track each', () => {
+test('Near-equal columns share balanced proportional tracks', () => {
   const layout = getPatternSectionLayout({
     patternColumns: ['Time', 'Not word', 'Action'],
     patternRows: [
@@ -188,10 +191,12 @@ test('Near-equal columns share one flexible track each', () => {
   });
 
   assert.equal(layout.flexColumnIndex, null);
-  assert.equal(layout.gridTemplateColumns, '1fr 1fr 1fr');
+  assert.match(layout.gridTemplateColumns, /^minmax\(0, 0\.\d+fr\)/);
+  assert.ok(Math.abs(layout.shares[0] - layout.shares[1]) < 0.05);
+  assert.ok(Math.abs(layout.shares[1] - layout.shares[2]) < 0.05);
 });
 
-test('A short one-character ending stays content-sized next to a heavy column', () => {
+test('A short one-character ending stays bounded next to a heavy column', () => {
   const layout = getPatternSectionLayout({
     patternColumns: ['Who or what', 'Rest of the sentence', '嗎'],
     patternColumnDetails: ['S', 'keep the order', 'question ending'],
@@ -219,11 +224,13 @@ test('A short one-character ending stays content-sized next to a heavy column', 
     showPinyin: true,
   });
 
-  assert.equal(layout.flexColumnIndex, 1);
-  assert.equal(layout.gridTemplateColumns, 'min-content 1fr min-content');
+  assert.equal(layout.flexColumnIndex, null);
+  assert.ok(layout.shares[1] > layout.shares[2]);
+  assert.ok(layout.shares[2] >= 0.20);
+  assert.match(layout.gridTemplateColumns, /^minmax\(0, 0\.\d+fr\)/);
 });
 
-test('Wide viewports spread tracks proportionally with content minimums', () => {
+test('Proportional tracks maintain bounded shares summing to 1', () => {
   const layout = getPatternSectionLayout({
     patternColumns: ['Who or what', 'Rest of the sentence', '嗎'],
     patternColumnDetails: ['S', 'keep the order', 'question ending'],
@@ -253,7 +260,7 @@ test('Wide viewports spread tracks proportionally with content minimums', () => 
   });
 
   assert.equal(layout.flexColumnIndex, null);
-  assert.match(layout.gridTemplateColumns, /^minmax\(auto, 0\.\d+fr\) /);
+  assert.match(layout.gridTemplateColumns, /^minmax\(0, 0\.\d+fr\) /);
   assert.equal(gridTemplateTrackCount(layout.gridTemplateColumns), 3);
   assert.ok(Math.abs(layout.shares.reduce((sum, share) => sum + share, 0) - 1) < 0.002);
 });
@@ -268,7 +275,7 @@ test('Globally empty columns are removed', () => {
 
   assert.deepEqual(layout.sourceColumns, [0]);
   assert.equal(layout.weights.length, 1);
-  assert.equal(layout.gridTemplateColumns, '1fr');
+  assert.equal(layout.gridTemplateColumns, 'minmax(0, 1fr)');
 });
 
 test('Locally empty cells preserve the shared column position', () => {
@@ -286,7 +293,7 @@ test('Locally empty cells preserve the shared column position', () => {
   assert.equal(layout.weights.length, 3);
 });
 
-test('Two-column layouts with one heavy side use one flexible track', () => {
+test('Two-column layouts distribute bounded proportional shares', () => {
   const layout = getPatternSectionLayout({
     patternColumns: ['Adjustment', 'Action'],
     patternRows: [row({
@@ -301,8 +308,11 @@ test('Two-column layouts with one heavy side use one flexible track', () => {
   });
 
   assert.deepEqual(layout.sourceColumns, [0, 1]);
-  assert.equal(layout.flexColumnIndex, 1);
-  assert.equal(layout.gridTemplateColumns, 'min-content 1fr');
+  assert.equal(layout.flexColumnIndex, null);
+  assert.ok(layout.shares[1] > layout.shares[0]);
+  assert.ok(layout.shares[0] >= 0.35);
+  assert.ok(layout.shares[1] <= 0.65);
+  assert.match(layout.gridTemplateColumns, /^minmax\(0, 0\.\d+fr\) minmax\(0, 0\.\d+fr\)$/);
 });
 
 test('Extended four-column layouts remain finite and bounded', () => {
@@ -317,10 +327,10 @@ test('Extended four-column layouts remain finite and bounded', () => {
 
   assert.deepEqual(layout.sourceColumns, [0, 1, 2, 3]);
   assert.ok(layout.weights.every((weight) => Number.isFinite(weight) && weight >= 1 && weight <= 5));
-  assert.equal(layout.isScrollable, false);
+  assert.equal(layout.isScrollable, true);
 });
 
-test('Five-column layouts opt into table-only horizontal scrolling', () => {
+test('Three or more columns opt into scrollable table layout', () => {
   const layout = getPatternSectionLayout({
     patternColumns: ['A', 'B', 'C', 'D', 'E'],
     patternRows: [row({
@@ -333,3 +343,67 @@ test('Five-column layouts opt into table-only horizontal scrolling', () => {
   assert.equal(layout.sourceColumns.length, 5);
   assert.equal(layout.isScrollable, true);
 });
+
+test('Lesson 3 Grammar 4 defines 3 sequential subsections for continuous scrolling', async () => {
+  const { LESSON_THREE_GRAMMAR_FOUR } = await import('../src/data/grammar/lessonThreePartTwo');
+  assert.ok(LESSON_THREE_GRAMMAR_FOUR.subsections);
+  assert.equal(LESSON_THREE_GRAMMAR_FOUR.subsections.length, 3);
+
+  const [part1, part2, part3] = LESSON_THREE_GRAMMAR_FOUR.subsections;
+
+  // Part 1: Vs + 的 + 名詞
+  assert.equal(part1.sectionNumber, 1);
+  assert.ok(part1.title);
+  assert.ok(part1.explanation);
+  assert.ok(part1.patternColumns && part1.patternColumns.length > 0);
+  assert.ok(part1.patternRows && part1.patternRows.length > 0);
+  assert.ok(part1.exampleIds && part1.exampleIds.length > 0);
+
+  // Part 2: 單音節 Vs + 名詞 (省略 的)
+  assert.equal(part2.sectionNumber, 2);
+  assert.ok(part2.title);
+  assert.ok(part2.explanation);
+  assert.ok(part2.patternColumns && part2.patternColumns.length > 0);
+  assert.ok(part2.patternRows && part2.patternRows.length > 0);
+  assert.ok(part2.exampleIds && part2.exampleIds.length > 0);
+
+  // Part 3: Dropping the Noun
+  assert.equal(part3.sectionNumber, 3);
+  assert.ok(part3.title);
+  assert.ok(part3.explanation);
+  assert.deepEqual(part3.patternColumns, ['Adjective', '的', '(Noun Dropped)']);
+  assert.equal(part3.patternRows?.[0].english, 'big cakes');
+  assert.ok(part3.exampleIds && part3.exampleIds.length > 0);
+});
+
+test('Every Lesson 3 Grammar 4 subsection example ID resolves to a valid example in root examples', async () => {
+  const { LESSON_THREE_GRAMMAR_FOUR } = await import('../src/data/grammar/lessonThreePartTwo');
+  const rootExampleIds = new Set(LESSON_THREE_GRAMMAR_FOUR.examples.map((e) => e.id));
+
+  for (const subsection of LESSON_THREE_GRAMMAR_FOUR.subsections ?? []) {
+    assert.ok(subsection.exampleIds && subsection.exampleIds.length > 0);
+    for (const id of subsection.exampleIds) {
+      assert.ok(rootExampleIds.has(id), `Example ID ${id} not found in root examples`);
+    }
+  }
+});
+
+test('Pattern layout resolves correctly for all subsections in Lesson 3 Grammar 4', async () => {
+  const { LESSON_THREE_GRAMMAR_FOUR } = await import('../src/data/grammar/lessonThreePartTwo');
+
+  for (const subsection of LESSON_THREE_GRAMMAR_FOUR.subsections ?? []) {
+    const layout = getPatternSectionLayout({
+      patternColumns: subsection.patternColumns ?? [],
+      patternColumnDetails: subsection.patternColumnDetails,
+      patternRows: subsection.patternRows ?? [],
+      characterPreference: 'traditional',
+      showPinyin: true,
+      sideColumnSizing: 'proportional',
+    });
+
+    assert.ok(layout.gridTemplateColumns);
+    assert.ok(layout.sourceColumns.length > 0);
+    assert.equal(layout.sourceColumns.length, (subsection.patternColumns ?? []).length);
+  }
+});
+

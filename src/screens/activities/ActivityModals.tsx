@@ -1,4 +1,4 @@
-import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { AnimatePresence } from 'motion/react';
 import { ActivityModalWrapper, ScreenSkeleton } from '../../lib/widgets';
@@ -7,13 +7,14 @@ import { useAppStore } from '../../store/useAppStore';
 import { AddCardScreen } from '../add-card';
 import type { ActivityType } from '../../types/models';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { getInteractiveGrammarPartsForLesson } from '../../data/interactiveGrammarPages';
+import { getInteractiveGrammarManifestForLesson } from '../../data/interactiveGrammarManifest';
 import { fetchVocabulary } from '../../services/vocabularyService';
 import type { CourseLessonPartProgress } from '../../types/models';
 import {
   getCurriculumSessionKey,
   getLessonSelectionKey,
   normalizePartSelection,
+  SHARED_REVIEW_SESSION_KEY,
 } from '../../utils/lessonPartSelection';
 import {
   selectPracticePreferences,
@@ -69,6 +70,7 @@ export function ActivityModals({
   const showDock = Boolean(
     resolvedActivity &&
     validModes.some((mode) => mode === resolvedActivity) &&
+    resolvedActivity !== 'writing' &&
     !isOverlayOpen &&
     !isInteractionActive,
   );
@@ -86,9 +88,13 @@ export function ActivityModals({
     if (!activeActivity) setFlashcardMode('cards');
   }, [activeActivity]);
 
+  const previousActivityRef = useRef<ActivityType>(null);
   useEffect(() => {
     if (activeActivity) {
       setPrevTask(activeActivity);
+      if (activeActivity !== 'writing') {
+        previousActivityRef.current = activeActivity;
+      }
     }
   }, [activeActivity]);
 
@@ -128,7 +134,7 @@ export function ActivityModals({
   const practiceGrammarPart = useMemo(() => {
     if (!studyLessonId || isLibraryMode || isReviewMode || !onOpenGrammarPart) return undefined;
 
-    const lessonGrammarParts = getInteractiveGrammarPartsForLesson(activeBookId, studyLessonId);
+    const lessonGrammarParts = getInteractiveGrammarManifestForLesson(activeBookId, studyLessonId);
     const enabledGrammarParts = lessonGrammarParts.filter((part) => (
       selectedStudyPartIds.includes(part.partId)
     ));
@@ -151,6 +157,7 @@ export function ActivityModals({
     : `${activities.find((activity) => activity.id === resolvedActivity)?.label ?? 'Study'} practice`;
 
   const handleClose = () => {
+    previousActivityRef.current = null;
     setActiveActivity(null);
     if (isReviewMode) {
       useAppStore.getState().setIsReviewMode(false);
@@ -160,12 +167,22 @@ export function ActivityModals({
       return;
     }
     const currentLibraryFolder = useAppStore.getState().libraryActiveFolder;
-    const sharedKey = (isReviewMode || activeActivity === 'flashcards-review') ? `shared_deck_review_${activeBookId}` :
+    const sharedKey = (isReviewMode || activeActivity === 'flashcards-review') ? SHARED_REVIEW_SESSION_KEY :
       (isLibraryMode || activeActivity === 'flashcards-library') ? `shared_deck_library_${currentLibraryFolder}` :
       getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
     useAppStore.getState().clearSessionProgressIndex(sharedKey);
     useAppStore.getState().setActiveReviewSessionCards(null);
   };
+
+  const handleWritingClose = useCallback(() => {
+    const defaultStudyCards: ActivityType = isLibraryMode
+      ? 'flashcards-library'
+      : isReviewMode
+      ? 'flashcards-review'
+      : 'flashcards';
+    const targetActivity = previousActivityRef.current || defaultStudyCards;
+    setActiveActivity(targetActivity);
+  }, [isLibraryMode, isReviewMode, setActiveActivity]);
 
   useEffect(() => {
     let isMounted = true;
@@ -244,6 +261,54 @@ export function ActivityModals({
     visibleStudyParts,
   ]);
 
+  /**
+   * On completion, advances to the next vocabulary part for this lesson and
+   * resets the session so the new part starts at card 0. Wraps to Part 1 when
+   * the last part is finished, giving a natural "loop back" behaviour.
+   */
+  const handleNextPart = useCallback(() => {
+    if (!studySelectionKey || visibleStudyParts.length < 2) return;
+
+    const availablePartIds = visibleStudyParts.map((p) => p.id);
+    const currentlySelected = selectedStudyPartIds[0] ?? availablePartIds[0];
+    const currentPos = availablePartIds.indexOf(currentlySelected);
+    const nextPartId = availablePartIds[(currentPos + 1) % availablePartIds.length];
+
+    // Clear old session progress so the new part starts at card 0.
+    const oldSessionKey = getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
+    useAppStore.getState().clearSessionProgressIndex(oldSessionKey);
+
+    const normalized = normalizePartSelection([nextPartId], availablePartIds);
+    if (!normalized) return;
+
+    setSelectedLessonParts((current) => ({
+      ...current,
+      [studySelectionKey]: normalized,
+    }));
+  }, [
+    activeBookId,
+    selectedLessons,
+    selectedLessonParts,
+    selectedStudyPartIds,
+    setSelectedLessonParts,
+    studySelectionKey,
+    visibleStudyParts,
+  ]);
+
+  // Provide a next-part action only in single-lesson, multi-part, non-review/library sessions.
+  const isMultiPart = !isLibraryMode && !isReviewMode && visibleStudyParts.length >= 2;
+  const onPartContinue = isMultiPart ? handleNextPart : undefined;
+
+  // Compute the label for the continue button (e.g. "Part 2" when wrapping from Part 1).
+  const partContinueLabel = useMemo(() => {
+    if (!isMultiPart) return 'Continue';
+    const availablePartIds = visibleStudyParts.map((p) => p.id);
+    const currentlySelected = selectedStudyPartIds[0] ?? availablePartIds[0];
+    const currentPos = availablePartIds.indexOf(currentlySelected);
+    const nextPartId = availablePartIds[(currentPos + 1) % availablePartIds.length];
+    return `Part ${nextPartId}`;
+  }, [isMultiPart, visibleStudyParts, selectedStudyPartIds]);
+
   return (
     <>
       <AnimatePresence>
@@ -254,7 +319,7 @@ export function ActivityModals({
                  <PracticeHeader
                     key={resolvedActivity}
                     maxWidth="none"
-                    onClose={handleClose}
+                    onClose={activeActivity === 'writing' ? handleWritingClose : handleClose}
                     progress={practiceHeader.progress}
                     currentIndex={practiceHeader.currentIndex}
                     totalCount={practiceHeader.totalCount}
@@ -291,6 +356,8 @@ export function ActivityModals({
                       isLibraryDeck={activeActivity === 'flashcards-library' || isLibraryMode}
                       mode={flashcardMode}
                       onClose={handleClose}
+                      onContinue={onPartContinue}
+                      continueLabel={partContinueLabel}
                       onNavigateToPractice={onNavigateToPractice}
                     />
                   </Suspense>
@@ -306,6 +373,8 @@ export function ActivityModals({
                       isReviewDeck={isReviewMode}
                       isLibraryDeck={isLibraryMode}
                       onClose={handleClose}
+                      onContinue={onPartContinue}
+                      continueLabel={partContinueLabel}
                     />
                   </Suspense>
                 </AnimatedActivityScreen>
@@ -321,6 +390,8 @@ export function ActivityModals({
                       isLibraryDeck={isLibraryMode}
                       mode={activeQuizMode ?? 'choices'}
                       onClose={handleClose}
+                      onContinue={onPartContinue}
+                      continueLabel={partContinueLabel}
                     />
                   </Suspense>
                 </AnimatedActivityScreen>
@@ -334,7 +405,9 @@ export function ActivityModals({
                       selectedLessons={selectedLessons}
                       isReviewDeck={isReviewMode}
                       isLibraryDeck={isLibraryMode}
-                      onClose={handleClose}
+                      onClose={handleWritingClose}
+                      onContinue={onPartContinue}
+                      continueLabel={partContinueLabel}
                     />
                   </Suspense>
                 </AnimatedActivityScreen>

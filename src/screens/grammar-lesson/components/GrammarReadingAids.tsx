@@ -1,4 +1,4 @@
-import { AppIcon, SegmentedControl } from '../../../lib/widgets';
+import { SegmentedControl } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 
 interface GrammarReadingAidsProps {
@@ -19,58 +19,56 @@ export function GrammarReadingAids({
   onToggleTranslation,
 }: GrammarReadingAidsProps) {
   return (
-    <div className="flex flex-col gap-4 text-left">
-      <div>
-        <div className="flex items-center gap-2">
-          <AppIcon name="settings" size={16} className="text-brand-primary" />
-          <h3 className="text-sm font-black text-ui-ink-strong">Display Settings</h3>
-        </div>
-        <p className="mt-0.5 text-xs font-bold text-ui-muted">Customize how grammar content appears</p>
-      </div>
-
+    <div className="flex flex-col gap-3 text-left">
+      {/* Script Selection */}
       <div className="space-y-1.5">
-        <span className="block text-[11px] font-black uppercase tracking-wider text-ui-muted-strong">
+        <span className="block px-1 text-xs font-black uppercase tracking-wider text-ui-muted-strong">
           Character Script
         </span>
-        <SegmentedControl
+        <SegmentedControl<'traditional' | 'simplified'>
           value={characterPreference}
           onChange={onCharacterPreferenceChange}
-          ariaLabel="Character script format"
+          ariaLabel="Character script preference"
           options={[
-            { value: 'traditional', label: <span>Traditional (繁體)</span> },
-            { value: 'simplified', label: <span>Simplified (简体)</span> },
+            { value: 'traditional', label: <span>Traditional</span> },
+            { value: 'simplified', label: <span>Simplified</span> },
           ]}
         />
       </div>
 
-      <div className="space-y-2">
-        <span className="block text-[11px] font-black uppercase tracking-wider text-ui-muted-strong">
+      <div className="h-px bg-ui-divider" />
+
+      {/* Reading Aids Toggles */}
+      <div className="space-y-1.5">
+        <span className="block px-1 text-xs font-black uppercase tracking-wider text-ui-muted-strong">
           Reading Aids
         </span>
-        <div className="overflow-hidden rounded-xl bg-ui-hover/60 divide-y divide-ui-divider/70">
+        <div role="menu" aria-label="Reading aids" className="flex flex-col gap-1.5">
           {/* Pinyin Toggle */}
           <button
             type="button"
             role="switch"
             aria-checked={showPinyin}
             onClick={onTogglePinyin}
-            className="flex w-full items-center justify-between gap-3 p-3 text-left transition-colors outline-none hover:bg-ui-surface-hover focus-visible:bg-ui-surface-hover"
+            className={cn(
+              'flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold transition-colors outline-none focus-ring',
+              showPinyin
+                ? 'bg-brand-primary/10 text-brand-primary'
+                : 'text-ui-ink-strong hover:bg-ui-hover',
+            )}
           >
-            <div className="min-w-0">
-              <span className="block text-xs font-black text-ui-ink-strong">Pinyin</span>
-              <span className="block text-[11px] font-bold text-ui-muted">Pronunciation above characters</span>
-            </div>
+            <span>Pinyin</span>
             <span
               aria-hidden="true"
               className={cn(
-                'relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out',
-                showPinyin ? 'bg-brand-primary' : 'bg-ui-hover',
+                'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out',
+                showPinyin ? 'bg-brand-primary' : 'bg-ui-divider',
               )}
             >
               <span
                 className={cn(
-                  'pointer-events-none inline-block h-5 w-5 rounded-full bg-ui-surface border-b-[length:var(--depth-sm)] border-ui-border ring-0 transition duration-200 ease-in-out',
-                  showPinyin ? 'translate-x-5' : 'translate-x-0',
+                  'pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-0 border-b-px border-b-ui-border ring-0 transition duration-200 ease-in-out translate-y-0.5',
+                  showPinyin ? 'translate-x-[18px]' : 'translate-x-0.5',
                 )}
               />
             </span>
@@ -82,23 +80,25 @@ export function GrammarReadingAids({
             role="switch"
             aria-checked={showTranslation}
             onClick={onToggleTranslation}
-            className="flex w-full items-center justify-between gap-3 p-3 text-left transition-colors outline-none hover:bg-ui-surface-hover focus-visible:bg-ui-surface-hover"
+            className={cn(
+              'flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold transition-colors outline-none focus-ring',
+              showTranslation
+                ? 'bg-brand-primary/10 text-brand-primary'
+                : 'text-ui-ink-strong hover:bg-ui-hover',
+            )}
           >
-            <div className="min-w-0">
-              <span className="block text-xs font-black text-ui-ink-strong">Translations</span>
-              <span className="block text-[11px] font-bold text-ui-muted">English sentence meanings</span>
-            </div>
+            <span>Translation</span>
             <span
               aria-hidden="true"
               className={cn(
-                'relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out',
-                showTranslation ? 'bg-brand-primary' : 'bg-ui-hover',
+                'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out',
+                showTranslation ? 'bg-brand-primary' : 'bg-ui-divider',
               )}
             >
               <span
                 className={cn(
-                  'pointer-events-none inline-block h-5 w-5 rounded-full bg-ui-surface border-b-[length:var(--depth-sm)] border-ui-border ring-0 transition duration-200 ease-in-out',
-                  showTranslation ? 'translate-x-5' : 'translate-x-0',
+                  'pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-0 border-b-px border-b-ui-border ring-0 transition duration-200 ease-in-out translate-y-0.5',
+                  showTranslation ? 'translate-x-[18px]' : 'translate-x-0.5',
                 )}
               />
             </span>

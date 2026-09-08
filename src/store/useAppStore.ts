@@ -31,7 +31,15 @@ import type {
   SessionProgress,
   UserFlashcard,
 } from '../types/models';
-import type { UserSnapshot } from './useAuthStore';
+
+export interface UserSnapshot {
+  id: string;
+  email?: string;
+  name?: string;
+  avatar_url?: string;
+  fullName?: string;
+  avatarUrl?: string;
+}
 
 const idbStorage: StateStorage = {
   getItem: async (name: string): Promise<string | null> => {
@@ -44,9 +52,6 @@ const idbStorage: StateStorage = {
     await del(name);
   },
 };
-
-// Re-export UserSnapshot for backward compatibility
-export type { UserSnapshot } from './useAuthStore';
 
 // Re-export the full AppState interface for backward compatibility
 export interface AppState {
@@ -85,25 +90,8 @@ export interface AppState {
   // Session Progress
   sessionProgress: SessionProgress;
   startSession: () => void;
-  addSessionXp: (amount: number) => void;
   incrementSessionCardsReviewed: (isNew: boolean) => void;
   resetSessionProgress: () => void;
-
-  // Aggregate Progress Stats
-  currentStreak: number;
-  longestStreak: number;
-  totalXp: number;
-  totalCardsReviewed: number;
-  totalCardsLearned: number;
-  lastStudyDate: string | null;
-  setProgressStats: (stats: Partial<{
-    currentStreak: number;
-    longestStreak: number;
-    totalXp: number;
-    totalCardsReviewed: number;
-    totalCardsLearned: number;
-    lastStudyDate: string | null;
-  }>) => void;
 
   // Last Activity
   lastActivity: 'flashcards' | 'flashcards-review' | 'listening' | 'quiz' | 'writing' | 'personal-vocab' | null;
@@ -155,8 +143,6 @@ export interface AppState {
   // UI State
   isSearchOpen: boolean;
   setIsSearchOpen: (open: boolean) => void;
-  isMainHeaderCompact: boolean;
-  setIsMainHeaderCompact: (compact: boolean) => void;
   isOverlayOpen: boolean;
   setIsOverlayOpen: (open: boolean) => void;
   isInteractionActive: boolean;
@@ -212,16 +198,6 @@ export interface AppState {
   resetProgress: () => void;
 }
 
-// For backward compatibility, useAppStore delegates to domain stores.
-// New code should import directly from the domain stores.
-export { useAuthStore } from './useAuthStore';
-export { useNavigationStore } from './useNavigationStore';
-export { useSrsStore } from './useSrsStore';
-export { useUiStore } from './useUiStore';
-export { useLibraryStore } from './useLibraryStore';
-export { useSyncStore } from './useSyncStore';
-
-// Keep the persisted store for backward compatibility
 export const useAppStore = create<AppState>()(
   persist(
     (set) => ({
@@ -264,9 +240,6 @@ export const useAppStore = create<AppState>()(
       startSession: () => set((s) => ({
         sessionProgress: { ...s.sessionProgress, startTime: Date.now() },
       })),
-      addSessionXp: (amount) => set((s) => ({
-        sessionProgress: { ...s.sessionProgress, xpEarned: s.sessionProgress.xpEarned + amount },
-      })),
       incrementSessionCardsReviewed: (isNew) => set((s) => ({
         sessionProgress: {
           ...s.sessionProgress,
@@ -275,22 +248,6 @@ export const useAppStore = create<AppState>()(
         },
       })),
       resetSessionProgress: () => set({ sessionProgress: createEmptySessionProgress() }),
-
-      // Aggregate Progress Stats
-      currentStreak: 0,
-      longestStreak: 0,
-      totalXp: 0,
-      totalCardsReviewed: 0,
-      totalCardsLearned: 0,
-      lastStudyDate: null,
-      setProgressStats: (stats) => set((s) => ({
-        currentStreak: stats.currentStreak ?? s.currentStreak,
-        longestStreak: stats.longestStreak ?? s.longestStreak,
-        totalXp: stats.totalXp ?? s.totalXp,
-        totalCardsReviewed: stats.totalCardsReviewed ?? s.totalCardsReviewed,
-        totalCardsLearned: stats.totalCardsLearned ?? s.totalCardsLearned,
-        lastStudyDate: stats.lastStudyDate ?? s.lastStudyDate,
-      })),
 
       // Last Activity
       lastActivity: null,
@@ -371,8 +328,6 @@ export const useAppStore = create<AppState>()(
       // UI State
       isSearchOpen: false,
       setIsSearchOpen: (open) => set({ isSearchOpen: open }),
-      isMainHeaderCompact: false,
-      setIsMainHeaderCompact: (compact) => set({ isMainHeaderCompact: compact }),
       isOverlayOpen: false,
       setIsOverlayOpen: (open) => set({ isOverlayOpen: open }),
       isInteractionActive: false,
@@ -444,12 +399,6 @@ export const useAppStore = create<AppState>()(
         favorites: state.favorites,
         srsData: state.srsData,
         learnedCards: state.learnedCards,
-        currentStreak: state.currentStreak,
-        longestStreak: state.longestStreak,
-        totalXp: state.totalXp,
-        totalCardsReviewed: state.totalCardsReviewed,
-        totalCardsLearned: state.totalCardsLearned,
-        lastStudyDate: state.lastStudyDate,
         sessionProgressIndex: state.sessionProgressIndex,
         deckExclusions: state.deckExclusions,
         activeTab: state.activeTab,

@@ -28,6 +28,19 @@ export function DictionaryDetailOverlay() {
     return () => setIsOverlayOpen(false);
   }, [dictionaryWord, setIsOverlayOpen]);
 
+  useEffect(() => {
+    const handleSelectWord = (event: Event) => {
+      const customEvent = event as CustomEvent<{ word?: string }>;
+      if (customEvent.detail?.word) {
+        setDictionaryWord(customEvent.detail.word);
+      }
+    };
+    window.addEventListener('app:select-dictionary-word', handleSelectWord);
+    return () => {
+      window.removeEventListener('app:select-dictionary-word', handleSelectWord);
+    };
+  }, [setDictionaryWord]);
+
   const pushCharacter = (word: string) => {
     setStack((prev) => [...prev, { word, index: 0 }]);
   };
@@ -38,11 +51,11 @@ export function DictionaryDetailOverlay() {
 
   const [portalNode, setPortalNode] = useState<HTMLElement | null>(null);
   useEffect(() => {
-    setPortalNode(document.getElementById('activity-overlays-root') || document.body);
+    setPortalNode(document.body);
   }, []);
 
   const rootWord = stack[0];
-  const workspaceOffset = portalNode?.id !== 'activity-overlays-root';
+  const workspaceOffset = true;
   // Single characters open the shared breakdown screen (same as practice);
   // multi-character words keep the full dictionary detail view.
   const rootIsSingleChar =
@@ -55,7 +68,7 @@ export function DictionaryDetailOverlay() {
       {dictionaryWord && rootWord && (
         <div
           id="dictionary-detail-overlay-container"
-          className="absolute inset-0 z-[300] h-full w-full pointer-events-none"
+          className="fixed inset-0 z-[700] h-full w-full pointer-events-none"
         >
           {rootIsSingleChar ? (
             <SingleBreakdownView

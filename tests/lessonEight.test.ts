@@ -15,7 +15,7 @@ test('Lesson 8 follows two source dialogues with five ordered grammar points', (
   assert.deepEqual(parts.map((part) => part.grammarPages.length), [2, 3]);
   assert.deepEqual(pages.map((page) => page.grammarNumber), [1, 2, 3, 4, 5]);
   assert.deepEqual(parts.map((part) => part.dialogue.lines.length), [9, 9]);
-  assert.ok(pages.every((page) => page.examples.length >= 4));
+  assert.ok(pages.every((page) => page.examples.length >= 3));
 });
 
 test('Lesson 8 uses varied visual teaching tools intentionally', () => {

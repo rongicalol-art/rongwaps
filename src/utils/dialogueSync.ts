@@ -4,7 +4,8 @@
  * Alignments are best-effort: lines the recording never spoke are marked
  * `unmatched` (zero-length) and are skipped everywhere.
  */
-import type { DialogueAlignment } from '../data/dialogueAlignment';
+import type { DialogueAlignment } from '../types/models';
+import type { PhraseChunk } from './rubyPinyin';
 
 export interface WordCharRange {
   /** Character offsets into the rendered line text (inclusive start, exclusive end). */
@@ -71,9 +72,101 @@ export function wordRangeForTime(
   return { start: word.charStart, end: word.charEnd };
 }
 
+/**
+ * Character range of the syllable being spoken at `time` inside `lineIndex`,
+ * from character-level forced-alignment data (`line.chars`). Returns null when
+ * the time is between characters or the rendered text length differs from the
+ * aligned (traditional) text. Prefer this over `wordRangeForTime` for the new
+ * MMS alignments; the renderer groups characters into words via `getWordChunks`.
+ */
+export function charRangeForTime(
+  alignment: DialogueAlignment,
+  lineIndex: number,
+  time: number,
+  renderedLineText: string,
+): WordCharRange | null {
+  const line = alignment.lines[lineIndex];
+  if (!line || line.unmatched || !line.chars || line.chars.length === 0) return null;
+
+  const ch = line.chars.find((candidate) => (
+    time >= candidate.start && time < candidate.end
+  ));
+  if (!ch) return null;
+
+  if (renderedLineText.length !== line.text.length) return null;
+  if (ch.charStart < 0 || ch.charEnd > line.text.length || ch.charEnd <= ch.charStart) {
+    return null;
+  }
+  return { start: ch.charStart, end: ch.charEnd };
+}
+
 /** Duration of the aligned dialogue audio (end of the last matched line). */
 export function alignmentDuration(alignment: DialogueAlignment): number {
   const lines = validLines(alignment);
   if (lines.length === 0) return 0;
   return lines[lines.length - 1].end;
 }
+
+export interface DialogueSentenceItem {
+  id: string;
+  text: string;
+  chunks: PhraseChunk[];
+  start?: number;
+  end?: number;
+}
+
+/**
+ * Splits a line's word chunks into bite-sized clause-level units at punctuation boundaries
+ * (including commas, enumerations, semicolons, colons, ellipses, em-dashes, and full sentence stops).
+ * Derives start and end timestamps from aligned chunks so each clause can play and highlight independently.
+ */
+export function splitChunksIntoSentences(
+  chunks: PhraseChunk[],
+  lineIndex: number,
+  lineStart?: number,
+  lineEnd?: number,
+): DialogueSentenceItem[] {
+  const sentences: DialogueSentenceItem[] = [];
+  let currentChunks: PhraseChunk[] = [];
+  let sentenceIdx = 0;
+
+  for (let i = 0; i < chunks.length; i += 1) {
+    const chunk = chunks[i];
+    currentChunks.push(chunk);
+
+    // Split on clauses at commas, pauses, semicolons, colons, dashes, and sentence closers
+    const isClauseCloser = chunk.isPunctuation && /[，、；：。！？!?…—,]/.test(chunk.text);
+    const isLast = i === chunks.length - 1;
+
+    if (isClauseCloser || isLast) {
+      const spokenChunks = currentChunks.filter(
+        (c) => !c.isPunctuation && typeof c.start === 'number' && typeof c.end === 'number',
+      );
+      const start = spokenChunks.length > 0 ? spokenChunks[0].start : lineStart;
+      const end = spokenChunks.length > 0 ? spokenChunks[spokenChunks.length - 1].end : lineEnd;
+
+      sentences.push({
+        id: `${lineIndex}-${sentenceIdx}`,
+        text: currentChunks.map((c) => c.text).join(''),
+        chunks: currentChunks,
+        start,
+        end,
+      });
+
+      sentenceIdx += 1;
+      currentChunks = [];
+    }
+  }
+
+  // Extend clause end to next clause start so karaoke transitions seamlessly without gaps
+  for (let i = 0; i < sentences.length - 1; i += 1) {
+    if (typeof sentences[i].end === 'number' && typeof sentences[i + 1].start === 'number') {
+      if (sentences[i].end! < sentences[i + 1].start!) {
+        sentences[i].end = sentences[i + 1].start;
+      }
+    }
+  }
+
+  return sentences;
+}
+

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchAllMnemonicsDebug, clearAllMnemonics } from '../../services/aiService';
+import { fetchAllMnemonicsDebug, clearAllMnemonics } from '../../services/mnemonicCache';
 import { debugLogger, DebugLog } from '../../utils/debugLogger';
 
 const icons = import.meta.glob('/src/assets/icons/*.svg', { query: '?raw', import: 'default', eager: true });

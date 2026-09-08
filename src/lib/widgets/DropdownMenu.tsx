@@ -45,7 +45,7 @@ export function DropdownMenu({
   onOpenChange,
   align = 'end',
   gapClassName = 'mt-2',
-  widthClassName = 'w-44',
+  widthClassName = 'w-60 sm:w-64',
   className,
   children,
   ...props
@@ -210,7 +210,7 @@ export function DropdownMenuItem({
       role="menuitem"
       tabIndex={-1}
       className={cn(
-        'flex min-h-9 w-full cursor-pointer select-none items-center gap-2.5 rounded-sm px-3 py-1.5 text-left text-xs font-extrabold text-ui-ink outline-none transition-[background-color,color,transform] duration-100',
+        'flex min-h-11 sm:min-h-12 w-full cursor-pointer select-none items-center gap-3 rounded-compact px-3.5 py-2.5 text-left text-sm sm:text-base font-extrabold text-ui-ink outline-none transition-[background-color,color,transform] duration-100',
         'focus-ring',
         active
           ? 'bg-brand-primary/10 text-brand-primary'
@@ -220,7 +220,7 @@ export function DropdownMenuItem({
       )}
       {...props}
     >
-      {icon && <span className={cn('shrink-0 text-[19px]', active && 'text-brand-primary', iconClassName)}>{icon}</span>}
+      {icon && <span className={cn('shrink-0 text-[21px]', active && 'text-brand-primary', iconClassName)}>{icon}</span>}
       <span className="min-w-0 flex-1 truncate">{children ?? label}</span>
     </button>
   );

@@ -150,3 +150,5 @@ export async function saveMnemonicToCache(cacheKey: string, mnemonic: string): P
 export function hasCachedMnemonic(cacheKey: string): boolean {
   return mnemonicCache.has(cacheKey);
 }
+
+export { getCachedMnemonic as getMnemonic, saveMnemonicToCache as saveMnemonic };

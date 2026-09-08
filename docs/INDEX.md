@@ -1,68 +1,37 @@
 # RongWaps Docs Index
 
-Use this file to find the right document. Do not read every Markdown file for one task.
+Use this file to locate active system documentation. All listed documents are actively maintained and accurately reflect current application behavior, schema, or conventions.
 
-## Read First
+## Read First & Core Directives
 
-- `../AGENTS.md` — permanent coding, architecture, and product rules.
-- `../WORK_CONTEXT.md` — editable current focus, scope, and next step.
-- `../README.md` — project overview, setup, and commands.
+- `../AGENTS.md` — Core instructions, architecture boundaries, and conventions for coding agents.
+- `../README.md` — Project overview, architecture summary, and local development commands.
+- `../DECISIONS.md` — Active architectural, interaction, and design decisions that must remain stable.
 
-## Working Memory
+## Architecture & Data Contracts
 
-- `../DECISIONS.md` — stable project decisions; read when changing architecture or behavior.
-- `../TASK_TEMPLATE.md` — reusable task brief for larger changes.
+- `ARCHITECTURE.md` — Source folder layout, module boundaries, ESLint import restrictions, and component ownership.
+- `DATABASE_SCHEMA.md` — Supabase database schema, tables, RPCs, RLS policies, and pack-first fetch paths.
+- `DESIGN_TOKENS.md` — Semantic design tokens (border radius, tactile depth, ambient shadows, focus rings, and colors).
+- `API_SPEC.md` — Express backend API specification for media streaming proxy endpoints (`/api/audio/*`).
 
-## Project Docs
+## Curriculum & Feature Specifications
 
-- `ROADMAP.md` — larger product direction and priorities.
-- `PROGRESS_AND_PLANS.md` — implementation progress and unfinished work.
-- `UI_CONSISTENCY_AUDIT.md` — current UI issues and polish priorities.
-- `WIDGET_ARCHITECTURE_REFACTOR_PLAN.md` — phased execution plan for separating shared UI, app shell, and feature-owned components.
-- `GRAMMAR_LESSON_TEMPLATE.md` — reusable grammar lesson behavior.
-- `GRAMMAR_PART_TWO_PLAN.md` — grammar part structure and source-reading model.
-- `LESSON_9_GRAMMAR_PLAN.md` — one feature plan: Lesson 9 grammar.
-
-## Technical Reference
-
-- `ARCHITECTURE.md` — folders, boundaries, and application structure.
-- `DATABASE_SCHEMA.md` — Supabase tables, relationships, and policies.
-- `API_SPEC.md` — Express API endpoints.
-- `SEARCH_SPEC.md` — dictionary search design.
-- `COURSE_EXAMPLES.md` — rich example-sentence packs, runtime filtering, and OCR import workflow.
-- `COURSE_EXAMPLE_COVERAGE.md` — current Book 1 per-lesson coverage and verified-source limitations.
-- `../WIDGETS.md` — public shared-widget catalog; its list mirrors `src/lib/widgets/index.ts`.
-
-## History / Background
-
-- `../ARCHITECT_LOG.md` — historical architect session notes.
-- `CHANGELOG.md` — released change history.
-- `team.md` — team/process notes.
-- `GRAMMAR_CONVERSATION_QUEST.md` — superseded grammar quest exploration; use only for ideas.
-- `../AGENTS.md.original.md` — backup copy of agent rules.
-- `../WIDGETS.md.original.md` — backup copy of widget documentation.
-
-## Source Content
-
-- `../output/ocr/modern_chinese_1/` — OCR-derived book lessons.
-- For Lesson 9 source, read `../output/ocr/modern_chinese_1/lesson-09/lesson.md`.
-- `raw-ocr.md` files are extraction backups; use only when the cleaned lesson has an OCR question.
+- `GRAMMAR_LESSON_TEMPLATE.md` — Specification for interactive grammar lessons, data contracts, supported exercises, and plain-English guidelines.
+- `COURSE_EXAMPLES.md` — Specification for course example sentence packs, runtime matching, and OCR export workflow.
+- `../WIDGETS.md` — Public shared widget catalog mirroring `src/lib/widgets/index.ts`.
+- `OFFICIAL_AUDIO_SOURCES.md` — Modern Chinese official audio sources, track mapping (`B1-LL-P-T`), karaoke alignment pipeline, and audio caching.
+- `LESSON_15_16_SOURCES.md` — Modern Chinese Book 1 Lessons 15 & 16 curriculum, dialogue/reading transcripts, vocabularies, grammar points, and online source index.
 
 ## Task Routing
 
 | Task | Read |
 | --- | --- |
-| Any code change | `../AGENTS.md`, relevant code |
-| Any grammar lesson | `GRAMMAR_LESSON_TEMPLATE.md`, relevant grammar plan, relevant book source |
-| Lesson 9 grammar | `LESSON_9_GRAMMAR_PLAN.md`, `GRAMMAR_LESSON_TEMPLATE.md`, Lesson 9 source |
-| New reusable widget | `../AGENTS.md`, `../WIDGETS.md`, relevant widget code |
-| Shared UI API cleanup | `../WIDGETS.md`, `../src/lib/widgets/index.ts`, relevant widget code |
-| UI redesign | `../AGENTS.md`, `UI_CONSISTENCY_AUDIT.md`, relevant screen/widgets |
-| Data/API change | `ARCHITECTURE.md`, `DATABASE_SCHEMA.md` or `API_SPEC.md` |
-| Dictionary search | `SEARCH_SPEC.md`, relevant services/hooks |
-| Flashcard examples | `COURSE_EXAMPLES.md`, relevant services/hooks |
-| Product planning | `ROADMAP.md`, `PROGRESS_AND_PLANS.md` |
-
-## Documentation Rule
-
-New active docs need one line here. This index covers the whole RongWaps project, not one lesson or feature. Completed experiments move to the History / Background section. Keep permanent agent rules in `AGENTS.md`, not scattered across planning files.
+| Any code change | `../AGENTS.md`, relevant feature code |
+| Shared UI / reusable widgets | `../WIDGETS.md`, `DESIGN_TOKENS.md`, `src/lib/widgets/` |
+| UI styling & tokens | `DESIGN_TOKENS.md`, `src/index.css` |
+| Grammar lessons | `GRAMMAR_LESSON_TEMPLATE.md`, `../DECISIONS.md`, `src/screens/grammar-lesson/` |
+| Data model or Supabase RPC | `DATABASE_SCHEMA.md`, `src/services/`, `src/types/database.ts` |
+| Flashcard examples & matching | `COURSE_EXAMPLES.md`, `src/services/courseExamplePackService.ts` |
+| Audio & karaoke alignment | `OFFICIAL_AUDIO_SOURCES.md`, `API_SPEC.md`, `src/services/audioService.ts` |
+| Architectural boundary changes | `ARCHITECTURE.md`, `../AGENTS.md`, `../DECISIONS.md` |

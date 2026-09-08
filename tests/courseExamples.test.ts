@@ -159,3 +159,76 @@ test('longest form present wins within a rank group', () => {
     ['我有一點兒累。', '我只知道一點。'],
   );
 });
+
+test('Lesson 15 and 16 block anchor sets resolve Rank 1 for target cards without their own sentence', () => {
+  const l15Target: Flashcard = {
+    id: 'B1L15-1-01',
+    bookId: 1,
+    lessonId: 15,
+    partId: 1,
+    front: '生肖',
+    back: '',
+    examples: [],
+  };
+  const l15Anchor: Flashcard = {
+    id: 'B1L15-1-02',
+    bookId: 1,
+    lessonId: 15,
+    partId: 1,
+    front: '課',
+    back: '',
+    examples: [{
+      chinese: '我們今天要學第十五課，老師會給我們介紹十二生肖。',
+      pinyin: "Wǒmen jīntiān yào xué dì shíwǔ kè, lǎoshī huì gěi wǒmen jièshào shí'èr shēngxiào.",
+      english: 'We are going to study Lesson 15 today; the teacher will introduce the twelve Chinese zodiac signs to us.',
+    }],
+  };
+  const l15Other: Flashcard = {
+    id: 'B1L15-1-10',
+    bookId: 1,
+    lessonId: 15,
+    partId: 1,
+    front: '一樣',
+    back: '',
+    examples: [{
+      chinese: '華人和日本人都有十二生肖，十二生肖的動物也一樣嗎？',
+      pinyin: "Huárén hé Rìběn rén dōu yǒu shí'èr shēngxiào, shí'èr shēngxiào de dòngwù yě yíyàng ma?",
+      english: 'Both Chinese and Japanese people have the twelve zodiac animals. Are the animals of the twelve zodiac signs also the same?',
+    }],
+  };
+
+  const rankedL15 = findSmartExamplesForWord([l15Target, l15Anchor, l15Other], '生肖', l15Target.id);
+  assert.equal(rankedL15[0]?.sourceCardId, 'B1L15-1-02');
+  assert.equal(rankedL15[0]?.rank, 1);
+  assert.equal(rankedL15[1]?.sourceCardId, 'B1L15-1-10');
+  assert.equal(rankedL15[1]?.rank, 2);
+
+  // L16 grouped set: 這次 (04), 上次 (05), 下次 (06)
+  const l16Target: Flashcard = {
+    id: 'B1L16-1-04',
+    bookId: 1,
+    lessonId: 16,
+    partId: 1,
+    front: '這次',
+    back: '',
+    examples: [],
+  };
+  const l16Anchor: Flashcard = {
+    id: 'B1L16-1-06',
+    bookId: 1,
+    lessonId: 16,
+    partId: 1,
+    front: '下次',
+    back: '',
+    examples: [{
+      chinese: '上次我們吃牛肉麵，這次也吃牛肉麵，下次吃別的吧。',
+      pinyin: 'Shàng cì wǒmen chī niúròumiàn, zhè cì yě chī niúròumiàn, xià cì chī bié de ba.',
+      english: "Last time we ate beef noodles, this time we also ate beef noodles; let's eat something else next time.",
+    }],
+  };
+
+  const rankedL16 = findSmartExamplesForWord([l16Target, l16Anchor], '這次', l16Target.id);
+  assert.equal(rankedL16[0]?.sourceCardId, 'B1L16-1-06');
+  assert.equal(rankedL16[0]?.rank, 1);
+});
+

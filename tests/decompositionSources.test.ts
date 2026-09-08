@@ -4,12 +4,14 @@ import type { NormalizedDecompositionNode } from '../src/types/decomposition';
 import { getVisibleCardChildren, projectLearnerDecomposition, resolveExplorableCharacterTree } from '../src/utils/idsParser';
 import {
   LazyDecompositionResolver,
+} from '../src/features/character-decomposition';
+import {
   adaptCjkviRecord,
   adaptCjkviText,
   adaptCns11643Bulk,
   adaptMakeMeAHanziRecord,
   parseCjkviLine,
-} from '../src/features/character-decomposition';
+} from '../scripts/character-decomposition/sources';
 
 const CJKVI_OPTIONS = { sourceVersion: 'fixture-sha', locale: 'zh-Hant-TW' } as const;
 

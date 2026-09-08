@@ -64,7 +64,7 @@ OPENROUTER_API_KEY=your_openrouter_key
    ```bash
    npm run dev
    ```
-   *This starts both the Express server API and Vite dev server under `server.ts`.*
+   *This starts both the Express server API and Vite dev server under `server/index.ts`.*
 
 3. Open your browser and navigate to `http://localhost:3000`.
 
@@ -88,7 +88,7 @@ rongwaps/
 │   ├── types/                  # Database and application types
 │   └── utils/                  # formatting, caching, and SRS logic helpers
 ├── supabase/                   # Supabase migrations and database configuration
-├── server.ts                   # Express server acting as API endpoint & web server
+├── server/index.ts             # Express server acting as API endpoint & web server
 └── vite.config.ts              # Vite configuration
 ```
 

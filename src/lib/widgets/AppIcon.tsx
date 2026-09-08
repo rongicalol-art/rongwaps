@@ -19,6 +19,8 @@ import {
   PiFolderFill,
   PiGraduationCapFill,
   PiGaugeBold,
+  PiEyeBold,
+  PiEyeSlashBold,
   PiHeadphonesFill,
   PiKeyboardBold,
   PiLightbulbBold,
@@ -96,6 +98,8 @@ export type AppIconName =
   | 'expand'
   | 'exam'
   | 'error'
+  | 'eye'
+  | 'eyeSlash'
   | 'flashcard'
   | 'flame'
   | 'folder'
@@ -178,6 +182,8 @@ const ICONS: Record<AppIconName, IconType> = {
   expand: PiCaretDownBold,
   exam: PiLightningFill,
   error: PiXCircleFill,
+  eye: PiEyeBold,
+  eyeSlash: PiEyeSlashBold,
   flashcard: PiCardsFill,
   flame: PiFireFill,
   folder: PiFolderFill,

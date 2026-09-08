@@ -16,6 +16,8 @@ import { useNumberKeySelection } from '../../hooks/useNumberKeySelection';
 interface QuizModeProps {
   cards: Flashcard[];
   onEnd: () => void;
+  onContinue?: () => void;
+  continueLabel?: string;
   activeBookId: number;
   sessionKey: string;
 }
@@ -104,7 +106,7 @@ const QuizChoicesCard: React.FC<QuizChoicesCardProps> = ({
   );
 };
 
-export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, activeBookId, sessionKey }) => {
+export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue, continueLabel, activeBookId, sessionKey }) => {
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
   const [breakdownIndex, setBreakdownIndex] = useState(0);
   const [breakdownOpen, setBreakdownOpen] = useState(false);
@@ -171,7 +173,8 @@ export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, activeBookI
       <LessonComplete
         learnedCount={learnedCount}
         unlearnedCount={unlearnedCount}
-        onContinue={onEnd}
+        onContinue={onContinue ?? onEnd}
+        continueLabel={onContinue ? continueLabel : undefined}
         onReviewUnlearned={unlearnedCount > 0 ? reviewUnlearned : undefined}
         onResetAll={resetAll}
       />

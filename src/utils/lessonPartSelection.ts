@@ -126,3 +126,11 @@ export function getCurriculumSessionKey(
 ) {
   return `shared_deck_${bookId}_${getCurriculumSelectionFingerprint(bookId, selectedLessons, selections)}`;
 }
+
+/**
+ * Session-progress key for review decks. Review decks always cover the full
+ * catalog (every book), so this key is deliberately book-agnostic — it must
+ * match the deck-exclusion key (`deckExclusions.ts`) or resume indexes,
+ * exclusions, and the session snapshot would silently disagree.
+ */
+export const SHARED_REVIEW_SESSION_KEY = 'shared_deck_review';

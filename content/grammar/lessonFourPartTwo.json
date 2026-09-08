@@ -1,0 +1,5495 @@
+{
+  "LESSON_FOUR_GRAMMAR_FIVE": {
+    "id": "B1L04-G05-P105",
+    "bookId": 1,
+    "lessonId": 4,
+    "partId": 2,
+    "lessonTitle": "你要咖啡還是茶？",
+    "lessonTitleEnglish": "Would You Like Coffee or Tea?",
+    "grammarNumber": 5,
+    "titleTraditional": "數字 + 多：超過一點",
+    "titleEnglish": "Give an Approximate Amount with 多",
+    "learnerPromise": "Say “over ten,” “over one hundred,” or “a little after twelve” without claiming an exact number.",
+    "printedPages": [
+      105,
+      106,
+      107
+    ],
+    "audioReference": "04-2-3",
+    "explanation": "After a round number, 多 means somewhere above it: 一百多 is 101–199. After a unit, it means slightly beyond: 十一點多 is a little after eleven.",
+    "focusTerms": [
+      "數字",
+      "数字",
+      "多",
+      "超過",
+      "超过",
+      "一點",
+      "一点"
+    ],
+    "teachingGlossary": [
+      {
+        "id": "b1l04-g05-glossary-1",
+        "traditional": "我",
+        "pinyin": "wǒ",
+        "meaning": "I; me"
+      },
+      {
+        "id": "b1l04-g05-glossary-2",
+        "traditional": "我們",
+        "simplified": "我们",
+        "pinyin": "wǒmen",
+        "meaning": "we; us"
+      },
+      {
+        "id": "b1l04-g05-glossary-3",
+        "traditional": "你",
+        "pinyin": "nǐ",
+        "meaning": "you"
+      },
+      {
+        "id": "b1l04-g05-glossary-4",
+        "traditional": "你們",
+        "simplified": "你们",
+        "pinyin": "nǐmen",
+        "meaning": "you all"
+      },
+      {
+        "id": "b1l04-g05-glossary-5",
+        "traditional": "他",
+        "pinyin": "tā",
+        "meaning": "he; him"
+      },
+      {
+        "id": "b1l04-g05-glossary-6",
+        "traditional": "她",
+        "pinyin": "tā",
+        "meaning": "she; her"
+      },
+      {
+        "id": "b1l04-g05-glossary-7",
+        "traditional": "中明",
+        "pinyin": "Zhōngmíng",
+        "meaning": "Zhongming"
+      },
+      {
+        "id": "b1l04-g05-glossary-8",
+        "traditional": "友美",
+        "pinyin": "Yǒuměi",
+        "meaning": "Youmei"
+      },
+      {
+        "id": "b1l04-g05-glossary-9",
+        "traditional": "女店員",
+        "simplified": "女店员",
+        "pinyin": "nǚ diànyuán",
+        "meaning": "female shop clerk"
+      },
+      {
+        "id": "b1l04-g05-glossary-10",
+        "traditional": "小姐",
+        "pinyin": "xiǎojiě",
+        "meaning": "miss"
+      },
+      {
+        "id": "b1l04-g05-glossary-11",
+        "traditional": "兩位",
+        "simplified": "两位",
+        "pinyin": "liǎng wèi",
+        "meaning": "two people, polite"
+      },
+      {
+        "id": "b1l04-g05-glossary-12",
+        "traditional": "請問",
+        "simplified": "请问",
+        "pinyin": "qǐngwèn",
+        "meaning": "may I ask"
+      },
+      {
+        "id": "b1l04-g05-glossary-13",
+        "traditional": "請",
+        "simplified": "请",
+        "pinyin": "qǐng",
+        "meaning": "please"
+      },
+      {
+        "id": "b1l04-g05-glossary-14",
+        "traditional": "給",
+        "simplified": "给",
+        "pinyin": "gěi",
+        "meaning": "give"
+      },
+      {
+        "id": "b1l04-g05-glossary-15",
+        "traditional": "您",
+        "pinyin": "nín",
+        "meaning": "you, polite"
+      },
+      {
+        "id": "b1l04-g05-glossary-16",
+        "traditional": "謝謝",
+        "simplified": "谢谢",
+        "pinyin": "xièxie",
+        "meaning": "thank you"
+      },
+      {
+        "id": "b1l04-g05-glossary-17",
+        "traditional": "點",
+        "simplified": "点",
+        "pinyin": "diǎn",
+        "meaning": "order from a menu; o’clock"
+      },
+      {
+        "id": "b1l04-g05-glossary-18",
+        "traditional": "要",
+        "pinyin": "yào",
+        "meaning": "want"
+      },
+      {
+        "id": "b1l04-g05-glossary-19",
+        "traditional": "一共",
+        "pinyin": "yígòng",
+        "meaning": "altogether; in total"
+      },
+      {
+        "id": "b1l04-g05-glossary-20",
+        "traditional": "多少錢",
+        "simplified": "多少钱",
+        "pinyin": "duōshǎo qián",
+        "meaning": "how much money"
+      },
+      {
+        "id": "b1l04-g05-glossary-21",
+        "traditional": "找",
+        "pinyin": "zhǎo",
+        "meaning": "give change"
+      },
+      {
+        "id": "b1l04-g05-glossary-22",
+        "traditional": "好",
+        "pinyin": "hǎo",
+        "meaning": "very; good"
+      },
+      {
+        "id": "b1l04-g05-glossary-23",
+        "traditional": "便宜",
+        "pinyin": "piányi",
+        "meaning": "inexpensive"
+      },
+      {
+        "id": "b1l04-g05-glossary-24",
+        "traditional": "牛肉麵",
+        "simplified": "牛肉面",
+        "pinyin": "niúròu miàn",
+        "meaning": "beef noodles"
+      },
+      {
+        "id": "b1l04-g05-glossary-25",
+        "traditional": "紅茶",
+        "simplified": "红茶",
+        "pinyin": "hóngchá",
+        "meaning": "black tea"
+      },
+      {
+        "id": "b1l04-g05-glossary-26",
+        "traditional": "綠茶",
+        "simplified": "绿茶",
+        "pinyin": "lǜchá",
+        "meaning": "green tea"
+      },
+      {
+        "id": "b1l04-g05-glossary-27",
+        "traditional": "茶",
+        "pinyin": "chá",
+        "meaning": "tea"
+      },
+      {
+        "id": "b1l04-g05-glossary-28",
+        "traditional": "一杯",
+        "pinyin": "yì bēi",
+        "meaning": "one cup of"
+      },
+      {
+        "id": "b1l04-g05-glossary-29",
+        "traditional": "兩杯",
+        "simplified": "两杯",
+        "pinyin": "liǎng bēi",
+        "meaning": "two cups of"
+      },
+      {
+        "id": "b1l04-g05-glossary-30",
+        "traditional": "兩碗",
+        "simplified": "两碗",
+        "pinyin": "liǎng wǎn",
+        "meaning": "two bowls of"
+      },
+      {
+        "id": "b1l04-g05-glossary-31",
+        "traditional": "和",
+        "pinyin": "hé",
+        "meaning": "and"
+      },
+      {
+        "id": "b1l04-g05-glossary-32",
+        "traditional": "還是",
+        "simplified": "还是",
+        "pinyin": "háishì",
+        "meaning": "or in a question"
+      },
+      {
+        "id": "b1l04-g05-glossary-33",
+        "traditional": "人",
+        "pinyin": "rén",
+        "meaning": "person; people"
+      },
+      {
+        "id": "b1l04-g05-glossary-34",
+        "traditional": "老師",
+        "simplified": "老师",
+        "pinyin": "lǎoshī",
+        "meaning": "teacher"
+      },
+      {
+        "id": "b1l04-g05-glossary-35",
+        "traditional": "位老師",
+        "simplified": "位老师",
+        "pinyin": "wèi lǎoshī",
+        "meaning": "teachers, polite measure"
+      },
+      {
+        "id": "b1l04-g05-glossary-36",
+        "traditional": "學生",
+        "simplified": "学生",
+        "pinyin": "xuéshēng",
+        "meaning": "student"
+      },
+      {
+        "id": "b1l04-g05-glossary-37",
+        "traditional": "學校",
+        "simplified": "学校",
+        "pinyin": "xuéxiào",
+        "meaning": "school"
+      },
+      {
+        "id": "b1l04-g05-glossary-38",
+        "traditional": "蛋糕",
+        "pinyin": "dàngāo",
+        "meaning": "cake"
+      },
+      {
+        "id": "b1l04-g05-glossary-39",
+        "traditional": "花",
+        "pinyin": "huā",
+        "meaning": "flower"
+      },
+      {
+        "id": "b1l04-g05-glossary-40",
+        "traditional": "鉛筆",
+        "simplified": "铅笔",
+        "pinyin": "qiānbǐ",
+        "meaning": "pencil"
+      },
+      {
+        "id": "b1l04-g05-glossary-41",
+        "traditional": "書",
+        "simplified": "书",
+        "pinyin": "shū",
+        "meaning": "book"
+      },
+      {
+        "id": "b1l04-g05-glossary-42",
+        "traditional": "手機",
+        "simplified": "手机",
+        "pinyin": "shǒujī",
+        "meaning": "cell phone"
+      },
+      {
+        "id": "b1l04-g05-glossary-43",
+        "traditional": "衣服",
+        "pinyin": "yīfu",
+        "meaning": "clothes"
+      },
+      {
+        "id": "b1l04-g05-glossary-44",
+        "traditional": "杯子",
+        "pinyin": "bēizi",
+        "meaning": "cup"
+      },
+      {
+        "id": "b1l04-g05-glossary-45",
+        "traditional": "錢",
+        "simplified": "钱",
+        "pinyin": "qián",
+        "meaning": "money"
+      },
+      {
+        "id": "b1l04-g05-glossary-46",
+        "traditional": "塊錢",
+        "simplified": "块钱",
+        "pinyin": "kuài qián",
+        "meaning": "dollars"
+      },
+      {
+        "id": "b1l04-g05-glossary-47",
+        "traditional": "個",
+        "simplified": "个",
+        "pinyin": "ge",
+        "meaning": "general measure word"
+      },
+      {
+        "id": "b1l04-g05-glossary-48",
+        "traditional": "位",
+        "pinyin": "wèi",
+        "meaning": "polite measure word for people"
+      },
+      {
+        "id": "b1l04-g05-glossary-49",
+        "traditional": "枝",
+        "pinyin": "zhī",
+        "meaning": "measure word for pens"
+      },
+      {
+        "id": "b1l04-g05-glossary-50",
+        "traditional": "本",
+        "pinyin": "běn",
+        "meaning": "measure word for books"
+      },
+      {
+        "id": "b1l04-g05-glossary-51",
+        "traditional": "朵",
+        "pinyin": "duǒ",
+        "meaning": "measure word for flowers"
+      },
+      {
+        "id": "b1l04-g05-glossary-52",
+        "traditional": "杯",
+        "pinyin": "bēi",
+        "meaning": "measure word for cups"
+      },
+      {
+        "id": "b1l04-g05-glossary-53",
+        "traditional": "塊",
+        "simplified": "块",
+        "pinyin": "kuài",
+        "meaning": "dollar unit"
+      },
+      {
+        "id": "b1l04-g05-glossary-54",
+        "traditional": "歲",
+        "simplified": "岁",
+        "pinyin": "suì",
+        "meaning": "years old"
+      },
+      {
+        "id": "b1l04-g05-glossary-55",
+        "traditional": "星期",
+        "pinyin": "xīngqí",
+        "meaning": "week"
+      },
+      {
+        "id": "b1l04-g05-glossary-56",
+        "traditional": "月",
+        "pinyin": "yuè",
+        "meaning": "month"
+      },
+      {
+        "id": "b1l04-g05-glossary-57",
+        "traditional": "現在",
+        "simplified": "现在",
+        "pinyin": "xiànzài",
+        "meaning": "now"
+      },
+      {
+        "id": "b1l04-g05-glossary-58",
+        "traditional": "這些東西",
+        "simplified": "这些东西",
+        "pinyin": "zhèxiē dōngxi",
+        "meaning": "these things"
+      },
+      {
+        "id": "b1l04-g05-glossary-59",
+        "traditional": "這件衣服",
+        "simplified": "这件衣服",
+        "pinyin": "zhè jiàn yīfu",
+        "meaning": "this item of clothing"
+      },
+      {
+        "id": "b1l04-g05-glossary-60",
+        "traditional": "這支手機",
+        "simplified": "这支手机",
+        "pinyin": "zhè zhī shǒujī",
+        "meaning": "this cell phone"
+      },
+      {
+        "id": "b1l04-g05-glossary-61",
+        "traditional": "孩子",
+        "pinyin": "háizi",
+        "meaning": "child"
+      },
+      {
+        "id": "b1l04-g05-glossary-62",
+        "traditional": "李先生",
+        "pinyin": "Lǐ xiānsheng",
+        "meaning": "Mr. Li"
+      },
+      {
+        "id": "b1l04-g05-glossary-63",
+        "traditional": "幾點",
+        "simplified": "几点",
+        "pinyin": "jǐ diǎn",
+        "meaning": "what time"
+      },
+      {
+        "id": "b1l04-g05-glossary-64",
+        "traditional": "幾歲",
+        "simplified": "几岁",
+        "pinyin": "jǐ suì",
+        "meaning": "how old"
+      },
+      {
+        "id": "b1l04-g05-glossary-65",
+        "traditional": "多",
+        "pinyin": "duō",
+        "meaning": "more than; over"
+      },
+      {
+        "id": "b1l04-g05-glossary-66",
+        "traditional": "零",
+        "pinyin": "líng",
+        "meaning": "zero; fills an empty place"
+      },
+      {
+        "id": "b1l04-g05-glossary-67",
+        "traditional": "一",
+        "pinyin": "yī",
+        "meaning": "one"
+      },
+      {
+        "id": "b1l04-g05-glossary-68",
+        "traditional": "二",
+        "pinyin": "èr",
+        "meaning": "two in numbers"
+      },
+      {
+        "id": "b1l04-g05-glossary-69",
+        "traditional": "兩",
+        "simplified": "两",
+        "pinyin": "liǎng",
+        "meaning": "two before 百, 千, or a measure word"
+      },
+      {
+        "id": "b1l04-g05-glossary-70",
+        "traditional": "三",
+        "pinyin": "sān",
+        "meaning": "three"
+      },
+      {
+        "id": "b1l04-g05-glossary-71",
+        "traditional": "四",
+        "pinyin": "sì",
+        "meaning": "four"
+      },
+      {
+        "id": "b1l04-g05-glossary-72",
+        "traditional": "五",
+        "pinyin": "wǔ",
+        "meaning": "five"
+      },
+      {
+        "id": "b1l04-g05-glossary-73",
+        "traditional": "六",
+        "pinyin": "liù",
+        "meaning": "six"
+      },
+      {
+        "id": "b1l04-g05-glossary-74",
+        "traditional": "七",
+        "pinyin": "qī",
+        "meaning": "seven"
+      },
+      {
+        "id": "b1l04-g05-glossary-75",
+        "traditional": "八",
+        "pinyin": "bā",
+        "meaning": "eight"
+      },
+      {
+        "id": "b1l04-g05-glossary-76",
+        "traditional": "九",
+        "pinyin": "jiǔ",
+        "meaning": "nine"
+      },
+      {
+        "id": "b1l04-g05-glossary-77",
+        "traditional": "十",
+        "pinyin": "shí",
+        "meaning": "ten"
+      },
+      {
+        "id": "b1l04-g05-glossary-78",
+        "traditional": "百",
+        "pinyin": "bǎi",
+        "meaning": "hundred"
+      },
+      {
+        "id": "b1l04-g05-glossary-79",
+        "traditional": "千",
+        "pinyin": "qiān",
+        "meaning": "thousand"
+      },
+      {
+        "id": "b1l04-g05-glossary-80",
+        "traditional": "萬",
+        "simplified": "万",
+        "pinyin": "wàn",
+        "meaning": "ten thousand"
+      },
+      {
+        "id": "b1l04-g05-glossary-81",
+        "traditional": "一百零五",
+        "pinyin": "yì bǎi líng wǔ",
+        "meaning": "105"
+      },
+      {
+        "id": "b1l04-g05-glossary-82",
+        "traditional": "一百一十五",
+        "pinyin": "yì bǎi yīshíwǔ",
+        "meaning": "115"
+      },
+      {
+        "id": "b1l04-g05-glossary-83",
+        "traditional": "八百五十",
+        "pinyin": "bā bǎi wǔshí",
+        "meaning": "850"
+      },
+      {
+        "id": "b1l04-g05-glossary-84",
+        "traditional": "兩千零五",
+        "simplified": "两千零五",
+        "pinyin": "liǎng qiān líng wǔ",
+        "meaning": "2,005"
+      },
+      {
+        "id": "b1l04-g05-glossary-85",
+        "traditional": "九萬零五百",
+        "simplified": "九万零五百",
+        "pinyin": "jiǔ wàn líng wǔ bǎi",
+        "meaning": "90,500"
+      },
+      {
+        "id": "b1l04-g05-glossary-86",
+        "traditional": "三百零五萬",
+        "simplified": "三百零五万",
+        "pinyin": "sān bǎi líng wǔ wàn",
+        "meaning": "3,050,000"
+      },
+      {
+        "id": "b1l04-g05-glossary-87",
+        "traditional": "五千零八十",
+        "pinyin": "wǔ qiān líng bāshí",
+        "meaning": "5,080"
+      },
+      {
+        "id": "b1l04-g05-glossary-88",
+        "traditional": "零九三六零六八四九三",
+        "pinyin": "líng jiǔ sān liù, líng liù bā, sì jiǔ sān",
+        "meaning": "0936-068-493"
+      },
+      {
+        "id": "b1l04-g05-glossary-89",
+        "traditional": "兩千兩百位老師",
+        "simplified": "两千两百位老师",
+        "pinyin": "liǎng qiān liǎng bǎi wèi lǎoshī",
+        "meaning": "2,200 teachers"
+      },
+      {
+        "id": "b1l04-g05-glossary-90",
+        "traditional": "十多個人",
+        "simplified": "十多个人",
+        "pinyin": "shí duō ge rén",
+        "meaning": "more than ten people"
+      },
+      {
+        "id": "b1l04-g05-glossary-91",
+        "traditional": "一百多塊錢",
+        "simplified": "一百多块钱",
+        "pinyin": "yì bǎi duō kuài qián",
+        "meaning": "over one hundred dollars"
+      },
+      {
+        "id": "b1l04-g05-glossary-92",
+        "traditional": "兩千多塊錢",
+        "simplified": "两千多块钱",
+        "pinyin": "liǎng qiān duō kuài qián",
+        "meaning": "over two thousand dollars"
+      },
+      {
+        "id": "b1l04-g05-glossary-93",
+        "traditional": "十二點多",
+        "simplified": "十二点多",
+        "pinyin": "shí’èr diǎn duō",
+        "meaning": "a little after twelve"
+      },
+      {
+        "id": "b1l04-g05-glossary-94",
+        "traditional": "四歲多",
+        "simplified": "四岁多",
+        "pinyin": "sì suì duō",
+        "meaning": "older than four but not yet five"
+      },
+      {
+        "id": "b1l04-g05-glossary-95",
+        "traditional": "八塊多",
+        "simplified": "八块多",
+        "pinyin": "bā kuài duō",
+        "meaning": "more than eight dollars"
+      },
+      {
+        "id": "b1l04-g05-glossary-96",
+        "traditional": "十多個蛋糕",
+        "simplified": "十多个蛋糕",
+        "pinyin": "shí duō ge dàngāo",
+        "meaning": "11–19 cakes"
+      },
+      {
+        "id": "b1l04-g05-glossary-97",
+        "traditional": "二十多朵花",
+        "pinyin": "èrshí duō duǒ huā",
+        "meaning": "21–29 flowers"
+      },
+      {
+        "id": "b1l04-g05-glossary-98",
+        "traditional": "一百多枝鉛筆",
+        "simplified": "一百多枝铅笔",
+        "pinyin": "yì bǎi duō zhī qiānbǐ",
+        "meaning": "101–199 pencils"
+      },
+      {
+        "id": "b1l04-g05-glossary-99",
+        "traditional": "三千多本書",
+        "simplified": "三千多本书",
+        "pinyin": "sān qiān duō běn shū",
+        "meaning": "3,001–3,999 books"
+      },
+      {
+        "id": "b1l04-g05-glossary-100",
+        "traditional": "六萬多個學生",
+        "simplified": "六万多个学生",
+        "pinyin": "liù wàn duō ge xuéshēng",
+        "meaning": "60,001–69,999 students"
+      },
+      {
+        "id": "b1l04-g05-glossary-101",
+        "traditional": "十個多蛋糕",
+        "simplified": "十个多蛋糕",
+        "pinyin": "shí ge duō dàngāo",
+        "meaning": "a little more than ten cakes"
+      },
+      {
+        "id": "b1l04-g05-glossary-102",
+        "traditional": "五塊多錢",
+        "simplified": "五块多钱",
+        "pinyin": "wǔ kuài duō qián",
+        "meaning": "more than five dollars"
+      },
+      {
+        "id": "b1l04-g05-glossary-103",
+        "traditional": "十一點多",
+        "simplified": "十一点多",
+        "pinyin": "shíyī diǎn duō",
+        "meaning": "after eleven o’clock"
+      },
+      {
+        "id": "b1l04-g05-glossary-104",
+        "traditional": "兩個多星期",
+        "simplified": "两个多星期",
+        "pinyin": "liǎng ge duō xīngqí",
+        "meaning": "more than two weeks"
+      }
+    ],
+    "pattern": "Round number + 多 + measure word, or number + measure word + 多",
+    "patternColumns": [
+      "Known starting amount",
+      "Position of 多",
+      "Possible range"
+    ],
+    "patternAccentColumn": 1,
+    "discoveryLab": {
+      "title": "Move 多, change the size of the fuzzy zone",
+      "description": "多 always means “over,” but its position tells the listener how wide the possible range is.",
+      "prompt": "How wide is the unknown extra amount?",
+      "choices": [
+        {
+          "id": "g5-tens",
+          "label": "After a round ten",
+          "traditional": "十多個蛋糕",
+          "simplified": "十多个蛋糕",
+          "pinyin": "shí duō ge dàngāo",
+          "english": "11–19 cakes",
+          "note": "多 follows 十, so the unknown part can fill the ones place."
+        },
+        {
+          "id": "g5-hundreds",
+          "label": "After a round hundred",
+          "traditional": "一百多枝鉛筆",
+          "simplified": "一百多枝铅笔",
+          "pinyin": "yì bǎi duō zhī qiānbǐ",
+          "english": "101–199 pencils",
+          "note": "多 follows 百, so the amount stays below the next hundred."
+        },
+        {
+          "id": "g5-small-extra",
+          "label": "After the measure word",
+          "traditional": "十個多蛋糕",
+          "simplified": "十个多蛋糕",
+          "pinyin": "shí ge duō dàngāo",
+          "english": "a little more than ten cakes",
+          "note": "多 follows 個, so the extra amount is less than one whole 個."
+        },
+        {
+          "id": "g5-time",
+          "label": "A little after a time",
+          "traditional": "十一點多",
+          "simplified": "十一点多",
+          "pinyin": "shíyī diǎn duō",
+          "english": "a little after 11:00",
+          "note": "多 follows 點, so the time is after eleven but before twelve."
+        }
+      ],
+      "takeaway": "多 after a round number gives a wider range; 多 after a unit means only a little beyond it."
+    },
+    "patternRows": [
+      {
+        "id": "g5-pattern-1",
+        "subject": [
+          {
+            "id": "g5-p1-ten",
+            "traditional": "十",
+            "pinyin": "shí",
+            "meaning": "ten"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g5-p1-more",
+            "traditional": "多",
+            "pinyin": "duō",
+            "meaning": "more than; over"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g5-p1-ge",
+            "traditional": "個",
+            "simplified": "个",
+            "pinyin": "ge",
+            "meaning": "general measure word"
+          },
+          {
+            "id": "g5-p1-cake",
+            "traditional": "蛋糕",
+            "pinyin": "dàngāo",
+            "meaning": "cake"
+          }
+        ],
+        "english": "11–19 cakes"
+      },
+      {
+        "id": "g5-pattern-2",
+        "subject": [
+          {
+            "id": "g5-p2-hundred",
+            "traditional": "百",
+            "pinyin": "bǎi",
+            "meaning": "hundred"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g5-p2-more",
+            "traditional": "多",
+            "pinyin": "duō",
+            "meaning": "more than; over"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g5-p2-branch",
+            "traditional": "枝",
+            "pinyin": "zhī",
+            "meaning": "measure word for pens"
+          },
+          {
+            "id": "g5-p2-pencil",
+            "traditional": "鉛筆",
+            "simplified": "铅笔",
+            "pinyin": "qiānbǐ",
+            "meaning": "pencil"
+          }
+        ],
+        "english": "101–199 pencils"
+      },
+      {
+        "id": "g5-pattern-3",
+        "subject": [
+          {
+            "id": "g5-p3-eleven",
+            "traditional": "十",
+            "pinyin": "shí",
+            "meaning": "ten"
+          },
+          {
+            "id": "g5-p3-one",
+            "traditional": "一",
+            "pinyin": "yī",
+            "meaning": "one"
+          },
+          {
+            "id": "g5-p3-oclock",
+            "traditional": "點",
+            "simplified": "点",
+            "pinyin": "diǎn",
+            "meaning": "order from a menu; o’clock"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g5-p3-more",
+            "traditional": "多",
+            "pinyin": "duō",
+            "meaning": "more than; over"
+          }
+        ],
+        "complement": [],
+        "english": "a little after 11:00"
+      }
+    ],
+    "confusion": {
+      "title": "Don't mix these up",
+      "items": [
+        {
+          "id": "g5-confusion-duo-round",
+          "question": "There are fifteen cakes. Where does 多 go?",
+          "answer": "After the round number 十: 十多個. 十個多 would mean just a little more than ten.",
+          "wrongTraditional": "十個多蛋糕。",
+          "wrongSimplified": "十个多蛋糕。",
+          "right": {
+            "traditional": "十多個蛋糕。",
+            "simplified": "十多个蛋糕。",
+            "pinyin": "Shí duō ge dàngāo.",
+            "english": "More than ten cakes (11–19).",
+            "words": [
+              {
+                "id": "b1l04-g5-c1-word-1",
+                "traditional": "十多個蛋糕",
+                "simplified": "十多个蛋糕",
+                "pinyin": "shí duō ge dàngāo",
+                "meaning": "11–19 cakes",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "g5-confusion-duo-time",
+          "question": "The clock shows a little after twelve. 多 before or after 點?",
+          "answer": "After 點: 十二點多. For a clock hour, 多 follows the time unit.",
+          "wrongTraditional": "十二多點。",
+          "wrongSimplified": "十二多点。",
+          "right": {
+            "traditional": "十二點多。",
+            "simplified": "十二点多。",
+            "pinyin": "Shí’èr diǎn duō.",
+            "english": "A little after twelve.",
+            "words": [
+              {
+                "id": "b1l04-g5-c2-word-1",
+                "traditional": "十二點多",
+                "simplified": "十二点多",
+                "pinyin": "shí’èr diǎn duō",
+                "meaning": "a little after twelve",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "g5-confusion-duo-age",
+          "question": "A child is older than four but not yet five. How do I say it?",
+          "answer": "四歲多 — 多 goes after 歲, so the extra is less than one full year.",
+          "wrongTraditional": "四多歲。",
+          "wrongSimplified": "四多岁。",
+          "right": {
+            "traditional": "四歲多。",
+            "simplified": "四岁多。",
+            "pinyin": "Sì suì duō.",
+            "english": "Older than four but not yet five.",
+            "words": [
+              {
+                "id": "b1l04-g5-c3-word-1",
+                "traditional": "四歲多",
+                "simplified": "四岁多",
+                "pinyin": "sì suì duō",
+                "meaning": "older than four but not yet five",
+                "suffix": "。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "examples": [
+      {
+        "id": "g5-example-1",
+        "number": 1,
+        "text": {
+          "traditional": "二十多朵花",
+          "simplified": "二十多朵花",
+          "pinyin": "Èrshí duō duǒ huā.",
+          "english": "21–29 flowers",
+          "words": [
+            {
+              "id": "b1l04-g5-e1-word-1",
+              "traditional": "二十多朵花",
+              "pinyin": "èrshí duō duǒ huā",
+              "meaning": "21–29 flowers"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g5-example-2",
+        "number": 2,
+        "text": {
+          "traditional": "三千多本書",
+          "simplified": "三千多本书",
+          "pinyin": "Sān qiān duō běn shū.",
+          "english": "3,001–3,999 books",
+          "words": [
+            {
+              "id": "b1l04-g5-e2-word-1",
+              "traditional": "三千多本書",
+              "simplified": "三千多本书",
+              "pinyin": "sān qiān duō běn shū",
+              "meaning": "3,001–3,999 books"
+            }
+          ]
+        }
+      },
+      {
+        "id": "g5-example-3",
+        "number": 3,
+        "text": {
+          "traditional": "兩個多星期",
+          "simplified": "两个多星期",
+          "pinyin": "Liǎng ge duō xīngqí.",
+          "english": "More than two weeks but less than three.",
+          "words": [
+            {
+              "id": "b1l04-g5-e3-word-1",
+              "traditional": "兩個多星期",
+              "simplified": "两个多星期",
+              "pinyin": "liǎng ge duō xīngqí",
+              "meaning": "more than two weeks"
+            }
+          ]
+        }
+      }
+    ],
+    "exerciseTitle": "Place 多, estimate the range",
+    "exercisePreview": "Answer all six printed picture prompts with 多.",
+    "exerciseInstruction": "Use the visible quantity as the starting amount. Choose whether 多 follows a round number or a unit.",
+    "exerciseNote": "The source age prompt depends on the moving date 今天. Question 5 uses the textbook’s stable 四歲多 model so the answer stays correct over time.",
+    "exerciseCues": [
+      {
+        "id": "g5-cue-people",
+        "label": "Picture 1",
+        "pinyin": "shí duō ge rén",
+        "detail": "Fifteen people are pictured."
+      },
+      {
+        "id": "g5-cue-tea",
+        "label": "Picture 2",
+        "pinyin": "yì bǎi duō kuài qián",
+        "detail": "Two cups of black tea cost $180."
+      },
+      {
+        "id": "g5-cue-shirt",
+        "label": "Picture 3",
+        "pinyin": "liǎng qiān duō kuài qián",
+        "detail": "The shirt costs $2,200."
+      },
+      {
+        "id": "g5-cue-clock",
+        "label": "Picture 4",
+        "pinyin": "shí’èr diǎn duō",
+        "detail": "The clock shows a time slightly after twelve."
+      },
+      {
+        "id": "g5-cue-age",
+        "label": "Stable age model",
+        "pinyin": "sì suì duō",
+        "detail": "The printed birth-date prompt changes with 今天; the app uses the source model range 4–5."
+      },
+      {
+        "id": "g5-cue-total",
+        "label": "Picture 6",
+        "pinyin": "bā kuài duō",
+        "detail": "Three pens and one flower cost US$8.45 in total."
+      }
+    ],
+    "questions": [
+      {
+        "id": "g5-question-1",
+        "number": 1,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：一共多少人？ B："
+          },
+          {
+            "type": "blank",
+            "id": "g5-q1-answer",
+            "answer": "十多個人",
+            "answerSimplified": "十多个人",
+            "hint": "Fifteen is somewhere between 10 and 20."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g5-q1-correct",
+            "traditional": "十多個人",
+            "simplified": "十多个人",
+            "pinyin": "shí duō ge rén",
+            "meaning": "more than ten people"
+          },
+          {
+            "id": "g5-q1-unit",
+            "traditional": "十個多人",
+            "simplified": "十个多人",
+            "pinyin": "shí ge duō rén",
+            "meaning": "a little more than ten people"
+          },
+          {
+            "id": "g5-q1-hundred",
+            "traditional": "一百多個人",
+            "simplified": "一百多个人",
+            "pinyin": "yì bǎi duō ge rén",
+            "meaning": "more than one hundred people"
+          }
+        ],
+        "correctFeedback": "Fifteen fits the 11–19 range expressed by 十多個人.",
+        "repairFeedback": "Put 多 after the round ten: 十多個人."
+      },
+      {
+        "id": "g5-question-2",
+        "number": 2,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：兩杯紅茶多少錢？ B：",
+            "simplified": "A：两杯红茶多少钱？ B："
+          },
+          {
+            "type": "blank",
+            "id": "g5-q2-answer",
+            "answer": "一百多塊錢",
+            "answerSimplified": "一百多块钱",
+            "hint": "$180 is between $101 and $199."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g5-q2-correct",
+            "traditional": "一百多塊錢",
+            "simplified": "一百多块钱",
+            "pinyin": "yì bǎi duō kuài qián",
+            "meaning": "over one hundred dollars"
+          },
+          {
+            "id": "g5-q2-ten",
+            "traditional": "十多塊錢",
+            "simplified": "十多块钱",
+            "pinyin": "shí duō kuài qián",
+            "meaning": "over ten dollars"
+          },
+          {
+            "id": "g5-q2-unit",
+            "traditional": "一百塊多錢",
+            "simplified": "一百块多钱",
+            "pinyin": "yì bǎi kuài duō qián",
+            "meaning": "only slightly over one hundred dollars"
+          }
+        ],
+        "correctFeedback": "$180 belongs in the 一百多 range.",
+        "repairFeedback": "The hundreds digit is known; put 多 after 一百."
+      },
+      {
+        "id": "g5-question-3",
+        "number": 3,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：這件衣服多少錢？ B：",
+            "simplified": "A：这件衣服多少钱？ B："
+          },
+          {
+            "type": "blank",
+            "id": "g5-q3-answer",
+            "answer": "兩千多塊錢",
+            "answerSimplified": "两千多块钱",
+            "hint": "$2,200 is over $2,000 but below $3,000."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g5-q3-correct",
+            "traditional": "兩千多塊錢",
+            "simplified": "两千多块钱",
+            "pinyin": "liǎng qiān duō kuài qián",
+            "meaning": "over two thousand dollars"
+          },
+          {
+            "id": "g5-q3-hundred",
+            "traditional": "兩百多塊錢",
+            "simplified": "两百多块钱",
+            "pinyin": "liǎng bǎi duō kuài qián",
+            "meaning": "over two hundred dollars"
+          },
+          {
+            "id": "g5-q3-unit",
+            "traditional": "兩千塊多錢",
+            "simplified": "两千块多钱",
+            "pinyin": "liǎng qiān kuài duō qián",
+            "meaning": "only slightly over two thousand dollars"
+          }
+        ],
+        "correctFeedback": "$2,200 fits the 2,001–2,999 range.",
+        "repairFeedback": "Keep the known thousands amount before 多: 兩千多."
+      },
+      {
+        "id": "g5-question-4",
+        "number": 4,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：現在幾點？ B：",
+            "simplified": "A：现在几点？ B："
+          },
+          {
+            "type": "blank",
+            "id": "g5-q4-answer",
+            "answer": "十二點多",
+            "answerSimplified": "十二点多",
+            "hint": "The clock is slightly after twelve."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g5-q4-correct",
+            "traditional": "十二點多",
+            "simplified": "十二点多",
+            "pinyin": "shí’èr diǎn duō",
+            "meaning": "a little after twelve"
+          },
+          {
+            "id": "g5-q4-before",
+            "traditional": "十多二點",
+            "simplified": "十多二点",
+            "pinyin": "shí duō èr diǎn",
+            "meaning": "incorrect 多 position"
+          },
+          {
+            "id": "g5-q4-eleven",
+            "traditional": "十一點多",
+            "simplified": "十一点多",
+            "pinyin": "shíyī diǎn duō",
+            "meaning": "a little after eleven"
+          }
+        ],
+        "correctFeedback": "For a little after a clock hour, 多 follows 點.",
+        "repairFeedback": "Say the hour and 點 first, then 多: 十二點多."
+      },
+      {
+        "id": "g5-question-5",
+        "number": 5,
+        "sectionLabel": "Stable model for the source’s moving-date prompt",
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "「older than four, not yet five」= "
+          },
+          {
+            "type": "blank",
+            "id": "g5-q5-answer",
+            "answer": "四歲多",
+            "answerSimplified": "四岁多",
+            "hint": "Put 多 after the age unit 歲."
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g5-q5-correct",
+            "traditional": "四歲多",
+            "simplified": "四岁多",
+            "pinyin": "sì suì duō",
+            "meaning": "older than four but not yet five"
+          },
+          {
+            "id": "g5-q5-wide",
+            "traditional": "四多歲",
+            "simplified": "四多岁",
+            "pinyin": "sì duō suì",
+            "meaning": "an approximate age in the forties"
+          },
+          {
+            "id": "g5-q5-five",
+            "traditional": "五歲多",
+            "simplified": "五岁多",
+            "pinyin": "wǔ suì duō",
+            "meaning": "older than five but not yet six"
+          }
+        ],
+        "correctFeedback": "多 follows 歲, so the extra amount is less than one full year.",
+        "repairFeedback": "Use number + 歲 + 多 for a partial year beyond that age."
+      },
+      {
+        "id": "g5-question-6",
+        "number": 6,
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "A：這些東西一共多少錢？ B：",
+            "simplified": "A：这些东西一共多少钱？ B："
+          },
+          {
+            "type": "blank",
+            "id": "g5-q6-answer",
+            "answer": "八塊多",
+            "answerSimplified": "八块多",
+            "hint": "US$8.45 is a little more than eight dollars."
+          },
+          {
+            "type": "text",
+            "traditional": "。"
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g5-q6-correct",
+            "traditional": "八塊多",
+            "simplified": "八块多",
+            "pinyin": "bā kuài duō",
+            "meaning": "a little over eight dollars"
+          },
+          {
+            "id": "g5-q6-wide",
+            "traditional": "八多塊",
+            "simplified": "八多块",
+            "pinyin": "bā duō kuài",
+            "meaning": "incorrect placement for this small extra"
+          },
+          {
+            "id": "g5-q6-nine",
+            "traditional": "九塊多",
+            "simplified": "九块多",
+            "pinyin": "jiǔ kuài duō",
+            "meaning": "a little over nine dollars"
+          }
+        ],
+        "correctFeedback": "多 follows the dollar unit because 45 cents is less than one whole dollar.",
+        "repairFeedback": "Use 八 + 塊 + 多 for a small extra beyond eight dollars."
+      }
+    ]
+  },
+  "LESSON_FOUR_GRAMMAR_FOUR": {
+    "id": "B1L04-G04-P104",
+    "bookId": 1,
+    "lessonId": 4,
+    "partId": 2,
+    "lessonTitle": "你要咖啡還是茶？",
+    "lessonTitleEnglish": "Would You Like Coffee or Tea?",
+    "grammarNumber": 4,
+    "titleTraditional": "萬、千、百、十",
+    "titleEnglish": "Build Large Numbers by Place Value",
+    "learnerPromise": "Read prices, quantities, and large numbers without guessing.",
+    "printedPages": [
+      104,
+      105
+    ],
+    "audioReference": "04-2-3",
+    "explanation": "Chinese names each place: 十, 百, 千, then 萬 for ten thousand. Read from large to small, and use 零 once to bridge a skipped place.",
+    "focusTerms": [
+      "萬",
+      "万",
+      "千",
+      "百",
+      "十",
+      "零",
+      "數字",
+      "数字"
+    ],
+    "teachingGlossary": [
+      {
+        "id": "b1l04-g04-glossary-1",
+        "traditional": "我",
+        "pinyin": "wǒ",
+        "meaning": "I; me"
+      },
+      {
+        "id": "b1l04-g04-glossary-2",
+        "traditional": "我們",
+        "simplified": "我们",
+        "pinyin": "wǒmen",
+        "meaning": "we; us"
+      },
+      {
+        "id": "b1l04-g04-glossary-3",
+        "traditional": "你",
+        "pinyin": "nǐ",
+        "meaning": "you"
+      },
+      {
+        "id": "b1l04-g04-glossary-4",
+        "traditional": "你們",
+        "simplified": "你们",
+        "pinyin": "nǐmen",
+        "meaning": "you all"
+      },
+      {
+        "id": "b1l04-g04-glossary-5",
+        "traditional": "他",
+        "pinyin": "tā",
+        "meaning": "he; him"
+      },
+      {
+        "id": "b1l04-g04-glossary-6",
+        "traditional": "她",
+        "pinyin": "tā",
+        "meaning": "she; her"
+      },
+      {
+        "id": "b1l04-g04-glossary-7",
+        "traditional": "中明",
+        "pinyin": "Zhōngmíng",
+        "meaning": "Zhongming"
+      },
+      {
+        "id": "b1l04-g04-glossary-8",
+        "traditional": "友美",
+        "pinyin": "Yǒuměi",
+        "meaning": "Youmei"
+      },
+      {
+        "id": "b1l04-g04-glossary-9",
+        "traditional": "女店員",
+        "simplified": "女店员",
+        "pinyin": "nǚ diànyuán",
+        "meaning": "female shop clerk"
+      },
+      {
+        "id": "b1l04-g04-glossary-10",
+        "traditional": "小姐",
+        "pinyin": "xiǎojiě",
+        "meaning": "miss"
+      },
+      {
+        "id": "b1l04-g04-glossary-11",
+        "traditional": "兩位",
+        "simplified": "两位",
+        "pinyin": "liǎng wèi",
+        "meaning": "two people, polite"
+      },
+      {
+        "id": "b1l04-g04-glossary-12",
+        "traditional": "請問",
+        "simplified": "请问",
+        "pinyin": "qǐngwèn",
+        "meaning": "may I ask"
+      },
+      {
+        "id": "b1l04-g04-glossary-13",
+        "traditional": "請",
+        "simplified": "请",
+        "pinyin": "qǐng",
+        "meaning": "please"
+      },
+      {
+        "id": "b1l04-g04-glossary-14",
+        "traditional": "給",
+        "simplified": "给",
+        "pinyin": "gěi",
+        "meaning": "give"
+      },
+      {
+        "id": "b1l04-g04-glossary-15",
+        "traditional": "您",
+        "pinyin": "nín",
+        "meaning": "you, polite"
+      },
+      {
+        "id": "b1l04-g04-glossary-16",
+        "traditional": "謝謝",
+        "simplified": "谢谢",
+        "pinyin": "xièxie",
+        "meaning": "thank you"
+      },
+      {
+        "id": "b1l04-g04-glossary-17",
+        "traditional": "點",
+        "simplified": "点",
+        "pinyin": "diǎn",
+        "meaning": "order from a menu; o’clock"
+      },
+      {
+        "id": "b1l04-g04-glossary-18",
+        "traditional": "要",
+        "pinyin": "yào",
+        "meaning": "want"
+      },
+      {
+        "id": "b1l04-g04-glossary-19",
+        "traditional": "一共",
+        "pinyin": "yígòng",
+        "meaning": "altogether; in total"
+      },
+      {
+        "id": "b1l04-g04-glossary-20",
+        "traditional": "多少錢",
+        "simplified": "多少钱",
+        "pinyin": "duōshǎo qián",
+        "meaning": "how much money"
+      },
+      {
+        "id": "b1l04-g04-glossary-21",
+        "traditional": "找",
+        "pinyin": "zhǎo",
+        "meaning": "give change"
+      },
+      {
+        "id": "b1l04-g04-glossary-22",
+        "traditional": "好",
+        "pinyin": "hǎo",
+        "meaning": "very; good"
+      },
+      {
+        "id": "b1l04-g04-glossary-23",
+        "traditional": "便宜",
+        "pinyin": "piányi",
+        "meaning": "inexpensive"
+      },
+      {
+        "id": "b1l04-g04-glossary-24",
+        "traditional": "牛肉麵",
+        "simplified": "牛肉面",
+        "pinyin": "niúròu miàn",
+        "meaning": "beef noodles"
+      },
+      {
+        "id": "b1l04-g04-glossary-25",
+        "traditional": "紅茶",
+        "simplified": "红茶",
+        "pinyin": "hóngchá",
+        "meaning": "black tea"
+      },
+      {
+        "id": "b1l04-g04-glossary-26",
+        "traditional": "綠茶",
+        "simplified": "绿茶",
+        "pinyin": "lǜchá",
+        "meaning": "green tea"
+      },
+      {
+        "id": "b1l04-g04-glossary-27",
+        "traditional": "茶",
+        "pinyin": "chá",
+        "meaning": "tea"
+      },
+      {
+        "id": "b1l04-g04-glossary-28",
+        "traditional": "一杯",
+        "pinyin": "yì bēi",
+        "meaning": "one cup of"
+      },
+      {
+        "id": "b1l04-g04-glossary-29",
+        "traditional": "兩杯",
+        "simplified": "两杯",
+        "pinyin": "liǎng bēi",
+        "meaning": "two cups of"
+      },
+      {
+        "id": "b1l04-g04-glossary-30",
+        "traditional": "兩碗",
+        "simplified": "两碗",
+        "pinyin": "liǎng wǎn",
+        "meaning": "two bowls of"
+      },
+      {
+        "id": "b1l04-g04-glossary-31",
+        "traditional": "和",
+        "pinyin": "hé",
+        "meaning": "and"
+      },
+      {
+        "id": "b1l04-g04-glossary-32",
+        "traditional": "還是",
+        "simplified": "还是",
+        "pinyin": "háishì",
+        "meaning": "or in a question"
+      },
+      {
+        "id": "b1l04-g04-glossary-33",
+        "traditional": "人",
+        "pinyin": "rén",
+        "meaning": "person; people"
+      },
+      {
+        "id": "b1l04-g04-glossary-34",
+        "traditional": "老師",
+        "simplified": "老师",
+        "pinyin": "lǎoshī",
+        "meaning": "teacher"
+      },
+      {
+        "id": "b1l04-g04-glossary-35",
+        "traditional": "位老師",
+        "simplified": "位老师",
+        "pinyin": "wèi lǎoshī",
+        "meaning": "teachers, polite measure"
+      },
+      {
+        "id": "b1l04-g04-glossary-36",
+        "traditional": "學生",
+        "simplified": "学生",
+        "pinyin": "xuéshēng",
+        "meaning": "student"
+      },
+      {
+        "id": "b1l04-g04-glossary-37",
+        "traditional": "學校",
+        "simplified": "学校",
+        "pinyin": "xuéxiào",
+        "meaning": "school"
+      },
+      {
+        "id": "b1l04-g04-glossary-38",
+        "traditional": "蛋糕",
+        "pinyin": "dàngāo",
+        "meaning": "cake"
+      },
+      {
+        "id": "b1l04-g04-glossary-39",
+        "traditional": "花",
+        "pinyin": "huā",
+        "meaning": "flower"
+      },
+      {
+        "id": "b1l04-g04-glossary-40",
+        "traditional": "鉛筆",
+        "simplified": "铅笔",
+        "pinyin": "qiānbǐ",
+        "meaning": "pencil"
+      },
+      {
+        "id": "b1l04-g04-glossary-41",
+        "traditional": "書",
+        "simplified": "书",
+        "pinyin": "shū",
+        "meaning": "book"
+      },
+      {
+        "id": "b1l04-g04-glossary-42",
+        "traditional": "手機",
+        "simplified": "手机",
+        "pinyin": "shǒujī",
+        "meaning": "cell phone"
+      },
+      {
+        "id": "b1l04-g04-glossary-43",
+        "traditional": "衣服",
+        "pinyin": "yīfu",
+        "meaning": "clothes"
+      },
+      {
+        "id": "b1l04-g04-glossary-44",
+        "traditional": "杯子",
+        "pinyin": "bēizi",
+        "meaning": "cup"
+      },
+      {
+        "id": "b1l04-g04-glossary-45",
+        "traditional": "錢",
+        "simplified": "钱",
+        "pinyin": "qián",
+        "meaning": "money"
+      },
+      {
+        "id": "b1l04-g04-glossary-46",
+        "traditional": "塊錢",
+        "simplified": "块钱",
+        "pinyin": "kuài qián",
+        "meaning": "dollars"
+      },
+      {
+        "id": "b1l04-g04-glossary-47",
+        "traditional": "個",
+        "simplified": "个",
+        "pinyin": "ge",
+        "meaning": "general measure word"
+      },
+      {
+        "id": "b1l04-g04-glossary-48",
+        "traditional": "位",
+        "pinyin": "wèi",
+        "meaning": "polite measure word for people"
+      },
+      {
+        "id": "b1l04-g04-glossary-49",
+        "traditional": "枝",
+        "pinyin": "zhī",
+        "meaning": "measure word for pens"
+      },
+      {
+        "id": "b1l04-g04-glossary-50",
+        "traditional": "本",
+        "pinyin": "běn",
+        "meaning": "measure word for books"
+      },
+      {
+        "id": "b1l04-g04-glossary-51",
+        "traditional": "朵",
+        "pinyin": "duǒ",
+        "meaning": "measure word for flowers"
+      },
+      {
+        "id": "b1l04-g04-glossary-52",
+        "traditional": "杯",
+        "pinyin": "bēi",
+        "meaning": "measure word for cups"
+      },
+      {
+        "id": "b1l04-g04-glossary-53",
+        "traditional": "塊",
+        "simplified": "块",
+        "pinyin": "kuài",
+        "meaning": "dollar unit"
+      },
+      {
+        "id": "b1l04-g04-glossary-54",
+        "traditional": "歲",
+        "simplified": "岁",
+        "pinyin": "suì",
+        "meaning": "years old"
+      },
+      {
+        "id": "b1l04-g04-glossary-55",
+        "traditional": "星期",
+        "pinyin": "xīngqí",
+        "meaning": "week"
+      },
+      {
+        "id": "b1l04-g04-glossary-56",
+        "traditional": "月",
+        "pinyin": "yuè",
+        "meaning": "month"
+      },
+      {
+        "id": "b1l04-g04-glossary-57",
+        "traditional": "現在",
+        "simplified": "现在",
+        "pinyin": "xiànzài",
+        "meaning": "now"
+      },
+      {
+        "id": "b1l04-g04-glossary-58",
+        "traditional": "這些東西",
+        "simplified": "这些东西",
+        "pinyin": "zhèxiē dōngxi",
+        "meaning": "these things"
+      },
+      {
+        "id": "b1l04-g04-glossary-59",
+        "traditional": "這件衣服",
+        "simplified": "这件衣服",
+        "pinyin": "zhè jiàn yīfu",
+        "meaning": "this item of clothing"
+      },
+      {
+        "id": "b1l04-g04-glossary-60",
+        "traditional": "這支手機",
+        "simplified": "这支手机",
+        "pinyin": "zhè zhī shǒujī",
+        "meaning": "this cell phone"
+      },
+      {
+        "id": "b1l04-g04-glossary-61",
+        "traditional": "孩子",
+        "pinyin": "háizi",
+        "meaning": "child"
+      },
+      {
+        "id": "b1l04-g04-glossary-62",
+        "traditional": "李先生",
+        "pinyin": "Lǐ xiānsheng",
+        "meaning": "Mr. Li"
+      },
+      {
+        "id": "b1l04-g04-glossary-63",
+        "traditional": "幾點",
+        "simplified": "几点",
+        "pinyin": "jǐ diǎn",
+        "meaning": "what time"
+      },
+      {
+        "id": "b1l04-g04-glossary-64",
+        "traditional": "幾歲",
+        "simplified": "几岁",
+        "pinyin": "jǐ suì",
+        "meaning": "how old"
+      },
+      {
+        "id": "b1l04-g04-glossary-65",
+        "traditional": "多",
+        "pinyin": "duō",
+        "meaning": "more than; over"
+      },
+      {
+        "id": "b1l04-g04-glossary-66",
+        "traditional": "零",
+        "pinyin": "líng",
+        "meaning": "zero; fills an empty place"
+      },
+      {
+        "id": "b1l04-g04-glossary-67",
+        "traditional": "一",
+        "pinyin": "yī",
+        "meaning": "one"
+      },
+      {
+        "id": "b1l04-g04-glossary-68",
+        "traditional": "二",
+        "pinyin": "èr",
+        "meaning": "two in numbers"
+      },
+      {
+        "id": "b1l04-g04-glossary-69",
+        "traditional": "兩",
+        "simplified": "两",
+        "pinyin": "liǎng",
+        "meaning": "two before 百, 千, or a measure word"
+      },
+      {
+        "id": "b1l04-g04-glossary-70",
+        "traditional": "三",
+        "pinyin": "sān",
+        "meaning": "three"
+      },
+      {
+        "id": "b1l04-g04-glossary-71",
+        "traditional": "四",
+        "pinyin": "sì",
+        "meaning": "four"
+      },
+      {
+        "id": "b1l04-g04-glossary-72",
+        "traditional": "五",
+        "pinyin": "wǔ",
+        "meaning": "five"
+      },
+      {
+        "id": "b1l04-g04-glossary-73",
+        "traditional": "六",
+        "pinyin": "liù",
+        "meaning": "six"
+      },
+      {
+        "id": "b1l04-g04-glossary-74",
+        "traditional": "七",
+        "pinyin": "qī",
+        "meaning": "seven"
+      },
+      {
+        "id": "b1l04-g04-glossary-75",
+        "traditional": "八",
+        "pinyin": "bā",
+        "meaning": "eight"
+      },
+      {
+        "id": "b1l04-g04-glossary-76",
+        "traditional": "九",
+        "pinyin": "jiǔ",
+        "meaning": "nine"
+      },
+      {
+        "id": "b1l04-g04-glossary-77",
+        "traditional": "十",
+        "pinyin": "shí",
+        "meaning": "ten"
+      },
+      {
+        "id": "b1l04-g04-glossary-78",
+        "traditional": "百",
+        "pinyin": "bǎi",
+        "meaning": "hundred"
+      },
+      {
+        "id": "b1l04-g04-glossary-79",
+        "traditional": "千",
+        "pinyin": "qiān",
+        "meaning": "thousand"
+      },
+      {
+        "id": "b1l04-g04-glossary-80",
+        "traditional": "萬",
+        "simplified": "万",
+        "pinyin": "wàn",
+        "meaning": "ten thousand"
+      },
+      {
+        "id": "b1l04-g04-glossary-81",
+        "traditional": "一百零五",
+        "pinyin": "yì bǎi líng wǔ",
+        "meaning": "105"
+      },
+      {
+        "id": "b1l04-g04-glossary-82",
+        "traditional": "一百一十五",
+        "pinyin": "yì bǎi yīshíwǔ",
+        "meaning": "115"
+      },
+      {
+        "id": "b1l04-g04-glossary-83",
+        "traditional": "八百五十",
+        "pinyin": "bā bǎi wǔshí",
+        "meaning": "850"
+      },
+      {
+        "id": "b1l04-g04-glossary-84",
+        "traditional": "兩千零五",
+        "simplified": "两千零五",
+        "pinyin": "liǎng qiān líng wǔ",
+        "meaning": "2,005"
+      },
+      {
+        "id": "b1l04-g04-glossary-85",
+        "traditional": "九萬零五百",
+        "simplified": "九万零五百",
+        "pinyin": "jiǔ wàn líng wǔ bǎi",
+        "meaning": "90,500"
+      },
+      {
+        "id": "b1l04-g04-glossary-86",
+        "traditional": "三百零五萬",
+        "simplified": "三百零五万",
+        "pinyin": "sān bǎi líng wǔ wàn",
+        "meaning": "3,050,000"
+      },
+      {
+        "id": "b1l04-g04-glossary-87",
+        "traditional": "五千零八十",
+        "pinyin": "wǔ qiān líng bāshí",
+        "meaning": "5,080"
+      },
+      {
+        "id": "b1l04-g04-glossary-88",
+        "traditional": "零九三六零六八四九三",
+        "pinyin": "líng jiǔ sān liù, líng liù bā, sì jiǔ sān",
+        "meaning": "0936-068-493"
+      },
+      {
+        "id": "b1l04-g04-glossary-89",
+        "traditional": "兩千兩百位老師",
+        "simplified": "两千两百位老师",
+        "pinyin": "liǎng qiān liǎng bǎi wèi lǎoshī",
+        "meaning": "2,200 teachers"
+      },
+      {
+        "id": "b1l04-g04-glossary-90",
+        "traditional": "十多個人",
+        "simplified": "十多个人",
+        "pinyin": "shí duō ge rén",
+        "meaning": "more than ten people"
+      },
+      {
+        "id": "b1l04-g04-glossary-91",
+        "traditional": "一百多塊錢",
+        "simplified": "一百多块钱",
+        "pinyin": "yì bǎi duō kuài qián",
+        "meaning": "over one hundred dollars"
+      },
+      {
+        "id": "b1l04-g04-glossary-92",
+        "traditional": "兩千多塊錢",
+        "simplified": "两千多块钱",
+        "pinyin": "liǎng qiān duō kuài qián",
+        "meaning": "over two thousand dollars"
+      },
+      {
+        "id": "b1l04-g04-glossary-93",
+        "traditional": "十二點多",
+        "simplified": "十二点多",
+        "pinyin": "shí’èr diǎn duō",
+        "meaning": "a little after twelve"
+      },
+      {
+        "id": "b1l04-g04-glossary-94",
+        "traditional": "四歲多",
+        "simplified": "四岁多",
+        "pinyin": "sì suì duō",
+        "meaning": "older than four but not yet five"
+      },
+      {
+        "id": "b1l04-g04-glossary-95",
+        "traditional": "八塊多",
+        "simplified": "八块多",
+        "pinyin": "bā kuài duō",
+        "meaning": "more than eight dollars"
+      },
+      {
+        "id": "b1l04-g04-glossary-96",
+        "traditional": "十多個蛋糕",
+        "simplified": "十多个蛋糕",
+        "pinyin": "shí duō ge dàngāo",
+        "meaning": "11–19 cakes"
+      },
+      {
+        "id": "b1l04-g04-glossary-97",
+        "traditional": "二十多朵花",
+        "pinyin": "èrshí duō duǒ huā",
+        "meaning": "21–29 flowers"
+      },
+      {
+        "id": "b1l04-g04-glossary-98",
+        "traditional": "一百多枝鉛筆",
+        "simplified": "一百多枝铅笔",
+        "pinyin": "yì bǎi duō zhī qiānbǐ",
+        "meaning": "101–199 pencils"
+      },
+      {
+        "id": "b1l04-g04-glossary-99",
+        "traditional": "三千多本書",
+        "simplified": "三千多本书",
+        "pinyin": "sān qiān duō běn shū",
+        "meaning": "3,001–3,999 books"
+      },
+      {
+        "id": "b1l04-g04-glossary-100",
+        "traditional": "六萬多個學生",
+        "simplified": "六万多个学生",
+        "pinyin": "liù wàn duō ge xuéshēng",
+        "meaning": "60,001–69,999 students"
+      },
+      {
+        "id": "b1l04-g04-glossary-101",
+        "traditional": "十個多蛋糕",
+        "simplified": "十个多蛋糕",
+        "pinyin": "shí ge duō dàngāo",
+        "meaning": "a little more than ten cakes"
+      },
+      {
+        "id": "b1l04-g04-glossary-102",
+        "traditional": "五塊多錢",
+        "simplified": "五块多钱",
+        "pinyin": "wǔ kuài duō qián",
+        "meaning": "more than five dollars"
+      },
+      {
+        "id": "b1l04-g04-glossary-103",
+        "traditional": "十一點多",
+        "simplified": "十一点多",
+        "pinyin": "shíyī diǎn duō",
+        "meaning": "after eleven o’clock"
+      },
+      {
+        "id": "b1l04-g04-glossary-104",
+        "traditional": "兩個多星期",
+        "simplified": "两个多星期",
+        "pinyin": "liǎng ge duō xīngqí",
+        "meaning": "more than two weeks"
+      }
+    ],
+    "pattern": "Large place + smaller places, with 零 for an internal gap",
+    "patternColumns": [
+      "萬 group",
+      "千／百／十 group",
+      "Spoken number"
+    ],
+    "patternAccentColumn": 2,
+    "numberLab": {
+      "title": "Climb the place-value staircase",
+      "description": "Tap a number. Each block shows which place contributes sound and where 零 bridges an empty step.",
+      "prompt": "Choose a number to take apart",
+      "choices": [
+        {
+          "id": "number-105",
+          "label": "105",
+          "digits": "105",
+          "traditional": "一百零五",
+          "pinyin": "yì bǎi líng wǔ",
+          "english": "one hundred and five",
+          "groups": [
+            {
+              "label": "百",
+              "digit": "1",
+              "traditional": "一百"
+            },
+            {
+              "label": "十",
+              "digit": "0",
+              "traditional": "零"
+            },
+            {
+              "label": "個",
+              "digit": "5",
+              "traditional": "五"
+            }
+          ],
+          "note": "The tens place is empty between two spoken places, so 零 bridges 百 to 五."
+        },
+        {
+          "id": "number-2005",
+          "label": "2,005",
+          "digits": "2,005",
+          "traditional": "兩千零五",
+          "simplified": "两千零五",
+          "pinyin": "liǎng qiān líng wǔ",
+          "english": "two thousand and five",
+          "groups": [
+            {
+              "label": "千",
+              "digit": "2",
+              "traditional": "兩千",
+              "simplified": "两千"
+            },
+            {
+              "label": "百／十",
+              "digit": "00",
+              "traditional": "零"
+            },
+            {
+              "label": "個",
+              "digit": "5",
+              "traditional": "五"
+            }
+          ],
+          "note": "Two empty places are crossed with one 零, not two."
+        },
+        {
+          "id": "number-90500",
+          "label": "90,500",
+          "digits": "90,500",
+          "traditional": "九萬零五百",
+          "simplified": "九万零五百",
+          "pinyin": "jiǔ wàn líng wǔ bǎi",
+          "english": "ninety thousand five hundred",
+          "groups": [
+            {
+              "label": "萬",
+              "digit": "9",
+              "traditional": "九萬",
+              "simplified": "九万"
+            },
+            {
+              "label": "千",
+              "digit": "0",
+              "traditional": "零"
+            },
+            {
+              "label": "百",
+              "digit": "5",
+              "traditional": "五百"
+            },
+            {
+              "label": "十／個",
+              "digit": "00",
+              "traditional": "不說",
+              "simplified": "不说"
+            }
+          ],
+          "note": "零 bridges the missing 千 place. Zeroes at the end are not spoken."
+        },
+        {
+          "id": "number-3050000",
+          "label": "3,050,000",
+          "digits": "3,050,000",
+          "traditional": "三百零五萬",
+          "simplified": "三百零五万",
+          "pinyin": "sān bǎi líng wǔ wàn",
+          "english": "three million fifty thousand",
+          "groups": [
+            {
+              "label": "萬 block",
+              "digit": "305",
+              "traditional": "三百零五萬",
+              "simplified": "三百零五万"
+            },
+            {
+              "label": "ones block",
+              "digit": "0000",
+              "traditional": "不說",
+              "simplified": "不说"
+            }
+          ],
+          "note": "Chinese groups large numbers around 萬: 305 groups of ten thousand."
+        }
+      ],
+      "takeaway": "Read large to small; use one 零 for an empty place inside; do not say zeroes at the end."
+    },
+    "patternRows": [
+      {
+        "id": "g4-pattern-1",
+        "subject": [],
+        "grammar": [
+          {
+            "id": "g4-p1-hundred",
+            "traditional": "百",
+            "pinyin": "bǎi",
+            "meaning": "hundred"
+          },
+          {
+            "id": "g4-p1-zero",
+            "traditional": "零",
+            "pinyin": "líng",
+            "meaning": "zero; fills an empty place"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g4-p1-number",
+            "traditional": "一百零五",
+            "pinyin": "yì bǎi líng wǔ",
+            "meaning": "105"
+          }
+        ],
+        "english": "105: one hundred, 零, five"
+      },
+      {
+        "id": "g4-pattern-2",
+        "subject": [],
+        "grammar": [
+          {
+            "id": "g4-p2-thousand",
+            "traditional": "千",
+            "pinyin": "qiān",
+            "meaning": "thousand"
+          },
+          {
+            "id": "g4-p2-zero",
+            "traditional": "零",
+            "pinyin": "líng",
+            "meaning": "zero; fills an empty place"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g4-p2-number",
+            "traditional": "兩千零五",
+            "simplified": "两千零五",
+            "pinyin": "liǎng qiān líng wǔ",
+            "meaning": "2,005"
+          }
+        ],
+        "english": "2,005: two thousand, 零, five"
+      },
+      {
+        "id": "g4-pattern-3",
+        "subject": [
+          {
+            "id": "g4-p3-wan",
+            "traditional": "萬",
+            "simplified": "万",
+            "pinyin": "wàn",
+            "meaning": "ten thousand"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "g4-p3-zero",
+            "traditional": "零",
+            "pinyin": "líng",
+            "meaning": "zero; fills an empty place"
+          },
+          {
+            "id": "g4-p3-hundred",
+            "traditional": "百",
+            "pinyin": "bǎi",
+            "meaning": "hundred"
+          }
+        ],
+        "complement": [
+          {
+            "id": "g4-p3-number",
+            "traditional": "九萬零五百",
+            "simplified": "九万零五百",
+            "pinyin": "jiǔ wàn líng wǔ bǎi",
+            "meaning": "90,500"
+          }
+        ],
+        "english": "90,500: nine ten-thousands, 零, five hundred"
+      }
+    ],
+    "confusion": {
+      "title": "Don't mix these up",
+      "items": [
+        {
+          "id": "g4-confusion-zero",
+          "question": "5,080 — do I say 零?",
+          "answer": "Yes, once. One 零 bridges the empty 百 place: 五千零八十.",
+          "wrongTraditional": "五千八十。",
+          "right": {
+            "traditional": "五千零八十。",
+            "simplified": "五千零八十。",
+            "pinyin": "Wǔ qiān líng bāshí.",
+            "english": "Five thousand and eighty (5,080).",
+            "words": [
+              {
+                "id": "b1l04-g4-c1-word-1",
+                "traditional": "五千零八十",
+                "pinyin": "wǔ qiān líng bāshí",
+                "meaning": "5,080",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "g4-confusion-liang",
+          "question": "2,200 — is it 二 or 兩?",
+          "answer": "兩. Use 兩 before 千, 百, and 萬: 兩千兩百. 二 stays in tens and single digits.",
+          "wrongTraditional": "二千兩百位老師。",
+          "wrongSimplified": "二千两百位老师。",
+          "right": {
+            "traditional": "兩千兩百位老師。",
+            "simplified": "两千两百位老师。",
+            "pinyin": "Liǎng qiān liǎng bǎi wèi lǎoshī.",
+            "english": "2,200 teachers.",
+            "words": [
+              {
+                "id": "b1l04-g4-c2-word-1",
+                "traditional": "兩千兩百位老師",
+                "simplified": "两千两百位老师",
+                "pinyin": "liǎng qiān liǎng bǎi wèi lǎoshī",
+                "meaning": "2,200 teachers",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "g4-confusion-wan",
+          "question": "How do I say 30,000?",
+          "answer": "三萬. After 千 comes 萬, the ten-thousand group: 三萬, not 三十千.",
+          "wrongTraditional": "三十千。",
+          "right": {
+            "traditional": "三萬。",
+            "simplified": "三万。",
+            "pinyin": "Sān wàn.",
+            "english": "Thirty thousand (30,000).",
+            "words": [
+              {
+                "id": "b1l04-g4-c3-word-1",
+                "traditional": "三",
+                "pinyin": "sān",
+                "meaning": "three"
+              },
+              {
+                "id": "b1l04-g4-c3-word-2",
+                "traditional": "萬",
+                "simplified": "万",
+                "pinyin": "wàn",
+                "meaning": "ten thousand",
+                "suffix": "。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "examples": [
+      {
+        "id": "g4-example-1",
+        "number": 1,
+        "text": {
+          "traditional": "一百一十五",
+          "simplified": "一百一十五",
+          "pinyin": "Yì bǎi yīshíwǔ.",
+          "english": "115",
+          "words": [
+            {
+              "id": "b1l04-g4-e1-word-1",
+              "traditional": "一百一十五",
+              "pinyin": "yì bǎi yīshíwǔ",
+              "meaning": "115"
+            }
+          ]
+        },
+        "teachingNote": "Every place from 百 through 個 has a value, so no 零 is needed."
+      },
+      {
+        "id": "g4-example-2",
+        "number": 2,
+        "text": {
+          "traditional": "兩千零五",
+          "simplified": "两千零五",
+          "pinyin": "Liǎng qiān líng wǔ.",
+          "english": "2,005",
+          "words": [
+            {
+              "id": "b1l04-g4-e2-word-1",
+              "traditional": "兩千零五",
+              "simplified": "两千零五",
+              "pinyin": "liǎng qiān líng wǔ",
+              "meaning": "2,005"
+            }
+          ]
+        },
+        "teachingNote": "One 零 bridges both missing middle places."
+      },
+      {
+        "id": "g4-example-3",
+        "number": 3,
+        "text": {
+          "traditional": "三百零五萬",
+          "simplified": "三百零五万",
+          "pinyin": "Sān bǎi líng wǔ wàn.",
+          "english": "3,050,000",
+          "words": [
+            {
+              "id": "b1l04-g4-e3-word-1",
+              "traditional": "三百零五萬",
+              "simplified": "三百零五万",
+              "pinyin": "sān bǎi líng wǔ wàn",
+              "meaning": "3,050,000"
+            }
+          ]
+        },
+        "teachingNote": "Think “305 ten-thousands,” then attach 萬."
+      }
+    ],
+    "exerciseTitle": "Decode the place values",
+    "exercisePreview": "Read one number from each printed source set.",
+    "exerciseInstruction": "Choose the spoken form that preserves every important place and uses 零 correctly.",
+    "exerciseNote": "The source exercise is oral and contains several items per set. These scored representatives cover ordinary numbers, phone digits, and number + measure word.",
+    "questions": [
+      {
+        "id": "g4-question-1",
+        "number": 1,
+        "sectionLabel": "Ordinary number · source set 1",
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "5,080 = "
+          },
+          {
+            "type": "blank",
+            "id": "g4-q1-answer",
+            "answer": "五千零八十",
+            "hint": "Bridge the empty hundreds place with 零."
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g4-q1-correct",
+            "traditional": "五千零八十",
+            "pinyin": "wǔ qiān líng bāshí",
+            "meaning": "5,080"
+          },
+          {
+            "id": "g4-q1-no-zero",
+            "traditional": "五千八十",
+            "pinyin": "wǔ qiān bāshí",
+            "meaning": "missing the zero bridge"
+          },
+          {
+            "id": "g4-q1-extra-zero",
+            "traditional": "五千零零八十",
+            "pinyin": "wǔ qiān líng líng bāshí",
+            "meaning": "too many spoken zeros"
+          }
+        ],
+        "correctFeedback": "零 bridges 千 to 十 because the 百 place is empty.",
+        "repairFeedback": "Use one 零 for the internal gap: 五千零八十."
+      },
+      {
+        "id": "g4-question-2",
+        "number": 2,
+        "sectionLabel": "Phone number · source set 2",
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "0936-068-493 = "
+          },
+          {
+            "type": "blank",
+            "id": "g4-q2-answer",
+            "answer": "零九三六零六八四九三",
+            "hint": "Phone numbers read digit by digit."
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g4-q2-correct",
+            "traditional": "零九三六零六八四九三",
+            "pinyin": "líng jiǔ sān liù, líng liù bā, sì jiǔ sān",
+            "meaning": "0936-068-493"
+          },
+          {
+            "id": "g4-q2-place-value",
+            "traditional": "九百三十六萬零六百八十四",
+            "pinyin": "jiǔ bǎi sānshíliù wàn líng liù bǎi bāshísì",
+            "meaning": "incorrect place-value reading"
+          },
+          {
+            "id": "g4-q2-missing-zero",
+            "traditional": "九三六六八四九三",
+            "pinyin": "jiǔ sān liù liù bā sì jiǔ sān",
+            "meaning": "zeros omitted"
+          }
+        ],
+        "correctFeedback": "Phone numbers are read one digit at a time, so say each digit, including 零.",
+        "repairFeedback": "Do not read a phone number as one big number. Read each digit."
+      },
+      {
+        "id": "g4-question-3",
+        "number": 3,
+        "sectionLabel": "Quantity + measure word · source set 3",
+        "segments": [
+          {
+            "type": "text",
+            "traditional": "2,200（老師）= ",
+            "simplified": "2,200（老师）= "
+          },
+          {
+            "type": "blank",
+            "id": "g4-q3-answer",
+            "answer": "兩千兩百位老師",
+            "answerSimplified": "两千两百位老师",
+            "hint": "Read 2,200, then add 位老師."
+          }
+        ],
+        "tiles": [
+          {
+            "id": "g4-q3-correct",
+            "traditional": "兩千兩百位老師",
+            "simplified": "两千两百位老师",
+            "pinyin": "liǎng qiān liǎng bǎi wèi lǎoshī",
+            "meaning": "2,200 teachers"
+          },
+          {
+            "id": "g4-q3-zero",
+            "traditional": "兩千零兩百位老師",
+            "simplified": "两千零两百位老师",
+            "pinyin": "liǎng qiān líng liǎng bǎi wèi lǎoshī",
+            "meaning": "unneeded zero bridge"
+          },
+          {
+            "id": "g4-q3-no-measure",
+            "traditional": "兩千兩百老師",
+            "simplified": "两千两百老师",
+            "pinyin": "liǎng qiān liǎng bǎi lǎoshī",
+            "meaning": "missing 位"
+          }
+        ],
+        "correctFeedback": "Nothing is skipped between 千 and 百; 位 is the polite measure word for people.",
+        "repairFeedback": "Read 兩千兩百 without 零, then add 位老師."
+      }
+    ]
+  },
+  "LESSON_FOUR_PART_TWO": {
+    "id": "B1L04-P02-D02",
+    "bookId": 1,
+    "lessonId": 4,
+    "partId": 2,
+    "title": "Grammar 4–5 · Pages 104–107",
+    "grammarPages": [
+      {
+        "id": "B1L04-G04-P104",
+        "bookId": 1,
+        "lessonId": 4,
+        "partId": 2,
+        "lessonTitle": "你要咖啡還是茶？",
+        "lessonTitleEnglish": "Would You Like Coffee or Tea?",
+        "grammarNumber": 4,
+        "titleTraditional": "萬、千、百、十",
+        "titleEnglish": "Build Large Numbers by Place Value",
+        "learnerPromise": "Read prices, quantities, and large numbers without guessing.",
+        "printedPages": [
+          104,
+          105
+        ],
+        "audioReference": "04-2-3",
+        "explanation": "Chinese names each place: 十, 百, 千, then 萬 for ten thousand. Read from large to small, and use 零 once to bridge a skipped place.",
+        "focusTerms": [
+          "萬",
+          "万",
+          "千",
+          "百",
+          "十",
+          "零",
+          "數字",
+          "数字"
+        ],
+        "teachingGlossary": [
+          {
+            "id": "b1l04-g04-glossary-1",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
+          },
+          {
+            "id": "b1l04-g04-glossary-2",
+            "traditional": "我們",
+            "simplified": "我们",
+            "pinyin": "wǒmen",
+            "meaning": "we; us"
+          },
+          {
+            "id": "b1l04-g04-glossary-3",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          },
+          {
+            "id": "b1l04-g04-glossary-4",
+            "traditional": "你們",
+            "simplified": "你们",
+            "pinyin": "nǐmen",
+            "meaning": "you all"
+          },
+          {
+            "id": "b1l04-g04-glossary-5",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "he; him"
+          },
+          {
+            "id": "b1l04-g04-glossary-6",
+            "traditional": "她",
+            "pinyin": "tā",
+            "meaning": "she; her"
+          },
+          {
+            "id": "b1l04-g04-glossary-7",
+            "traditional": "中明",
+            "pinyin": "Zhōngmíng",
+            "meaning": "Zhongming"
+          },
+          {
+            "id": "b1l04-g04-glossary-8",
+            "traditional": "友美",
+            "pinyin": "Yǒuměi",
+            "meaning": "Youmei"
+          },
+          {
+            "id": "b1l04-g04-glossary-9",
+            "traditional": "女店員",
+            "simplified": "女店员",
+            "pinyin": "nǚ diànyuán",
+            "meaning": "female shop clerk"
+          },
+          {
+            "id": "b1l04-g04-glossary-10",
+            "traditional": "小姐",
+            "pinyin": "xiǎojiě",
+            "meaning": "miss"
+          },
+          {
+            "id": "b1l04-g04-glossary-11",
+            "traditional": "兩位",
+            "simplified": "两位",
+            "pinyin": "liǎng wèi",
+            "meaning": "two people, polite"
+          },
+          {
+            "id": "b1l04-g04-glossary-12",
+            "traditional": "請問",
+            "simplified": "请问",
+            "pinyin": "qǐngwèn",
+            "meaning": "may I ask"
+          },
+          {
+            "id": "b1l04-g04-glossary-13",
+            "traditional": "請",
+            "simplified": "请",
+            "pinyin": "qǐng",
+            "meaning": "please"
+          },
+          {
+            "id": "b1l04-g04-glossary-14",
+            "traditional": "給",
+            "simplified": "给",
+            "pinyin": "gěi",
+            "meaning": "give"
+          },
+          {
+            "id": "b1l04-g04-glossary-15",
+            "traditional": "您",
+            "pinyin": "nín",
+            "meaning": "you, polite"
+          },
+          {
+            "id": "b1l04-g04-glossary-16",
+            "traditional": "謝謝",
+            "simplified": "谢谢",
+            "pinyin": "xièxie",
+            "meaning": "thank you"
+          },
+          {
+            "id": "b1l04-g04-glossary-17",
+            "traditional": "點",
+            "simplified": "点",
+            "pinyin": "diǎn",
+            "meaning": "order from a menu; o’clock"
+          },
+          {
+            "id": "b1l04-g04-glossary-18",
+            "traditional": "要",
+            "pinyin": "yào",
+            "meaning": "want"
+          },
+          {
+            "id": "b1l04-g04-glossary-19",
+            "traditional": "一共",
+            "pinyin": "yígòng",
+            "meaning": "altogether; in total"
+          },
+          {
+            "id": "b1l04-g04-glossary-20",
+            "traditional": "多少錢",
+            "simplified": "多少钱",
+            "pinyin": "duōshǎo qián",
+            "meaning": "how much money"
+          },
+          {
+            "id": "b1l04-g04-glossary-21",
+            "traditional": "找",
+            "pinyin": "zhǎo",
+            "meaning": "give change"
+          },
+          {
+            "id": "b1l04-g04-glossary-22",
+            "traditional": "好",
+            "pinyin": "hǎo",
+            "meaning": "very; good"
+          },
+          {
+            "id": "b1l04-g04-glossary-23",
+            "traditional": "便宜",
+            "pinyin": "piányi",
+            "meaning": "inexpensive"
+          },
+          {
+            "id": "b1l04-g04-glossary-24",
+            "traditional": "牛肉麵",
+            "simplified": "牛肉面",
+            "pinyin": "niúròu miàn",
+            "meaning": "beef noodles"
+          },
+          {
+            "id": "b1l04-g04-glossary-25",
+            "traditional": "紅茶",
+            "simplified": "红茶",
+            "pinyin": "hóngchá",
+            "meaning": "black tea"
+          },
+          {
+            "id": "b1l04-g04-glossary-26",
+            "traditional": "綠茶",
+            "simplified": "绿茶",
+            "pinyin": "lǜchá",
+            "meaning": "green tea"
+          },
+          {
+            "id": "b1l04-g04-glossary-27",
+            "traditional": "茶",
+            "pinyin": "chá",
+            "meaning": "tea"
+          },
+          {
+            "id": "b1l04-g04-glossary-28",
+            "traditional": "一杯",
+            "pinyin": "yì bēi",
+            "meaning": "one cup of"
+          },
+          {
+            "id": "b1l04-g04-glossary-29",
+            "traditional": "兩杯",
+            "simplified": "两杯",
+            "pinyin": "liǎng bēi",
+            "meaning": "two cups of"
+          },
+          {
+            "id": "b1l04-g04-glossary-30",
+            "traditional": "兩碗",
+            "simplified": "两碗",
+            "pinyin": "liǎng wǎn",
+            "meaning": "two bowls of"
+          },
+          {
+            "id": "b1l04-g04-glossary-31",
+            "traditional": "和",
+            "pinyin": "hé",
+            "meaning": "and"
+          },
+          {
+            "id": "b1l04-g04-glossary-32",
+            "traditional": "還是",
+            "simplified": "还是",
+            "pinyin": "háishì",
+            "meaning": "or in a question"
+          },
+          {
+            "id": "b1l04-g04-glossary-33",
+            "traditional": "人",
+            "pinyin": "rén",
+            "meaning": "person; people"
+          },
+          {
+            "id": "b1l04-g04-glossary-34",
+            "traditional": "老師",
+            "simplified": "老师",
+            "pinyin": "lǎoshī",
+            "meaning": "teacher"
+          },
+          {
+            "id": "b1l04-g04-glossary-35",
+            "traditional": "位老師",
+            "simplified": "位老师",
+            "pinyin": "wèi lǎoshī",
+            "meaning": "teachers, polite measure"
+          },
+          {
+            "id": "b1l04-g04-glossary-36",
+            "traditional": "學生",
+            "simplified": "学生",
+            "pinyin": "xuéshēng",
+            "meaning": "student"
+          },
+          {
+            "id": "b1l04-g04-glossary-37",
+            "traditional": "學校",
+            "simplified": "学校",
+            "pinyin": "xuéxiào",
+            "meaning": "school"
+          },
+          {
+            "id": "b1l04-g04-glossary-38",
+            "traditional": "蛋糕",
+            "pinyin": "dàngāo",
+            "meaning": "cake"
+          },
+          {
+            "id": "b1l04-g04-glossary-39",
+            "traditional": "花",
+            "pinyin": "huā",
+            "meaning": "flower"
+          },
+          {
+            "id": "b1l04-g04-glossary-40",
+            "traditional": "鉛筆",
+            "simplified": "铅笔",
+            "pinyin": "qiānbǐ",
+            "meaning": "pencil"
+          },
+          {
+            "id": "b1l04-g04-glossary-41",
+            "traditional": "書",
+            "simplified": "书",
+            "pinyin": "shū",
+            "meaning": "book"
+          },
+          {
+            "id": "b1l04-g04-glossary-42",
+            "traditional": "手機",
+            "simplified": "手机",
+            "pinyin": "shǒujī",
+            "meaning": "cell phone"
+          },
+          {
+            "id": "b1l04-g04-glossary-43",
+            "traditional": "衣服",
+            "pinyin": "yīfu",
+            "meaning": "clothes"
+          },
+          {
+            "id": "b1l04-g04-glossary-44",
+            "traditional": "杯子",
+            "pinyin": "bēizi",
+            "meaning": "cup"
+          },
+          {
+            "id": "b1l04-g04-glossary-45",
+            "traditional": "錢",
+            "simplified": "钱",
+            "pinyin": "qián",
+            "meaning": "money"
+          },
+          {
+            "id": "b1l04-g04-glossary-46",
+            "traditional": "塊錢",
+            "simplified": "块钱",
+            "pinyin": "kuài qián",
+            "meaning": "dollars"
+          },
+          {
+            "id": "b1l04-g04-glossary-47",
+            "traditional": "個",
+            "simplified": "个",
+            "pinyin": "ge",
+            "meaning": "general measure word"
+          },
+          {
+            "id": "b1l04-g04-glossary-48",
+            "traditional": "位",
+            "pinyin": "wèi",
+            "meaning": "polite measure word for people"
+          },
+          {
+            "id": "b1l04-g04-glossary-49",
+            "traditional": "枝",
+            "pinyin": "zhī",
+            "meaning": "measure word for pens"
+          },
+          {
+            "id": "b1l04-g04-glossary-50",
+            "traditional": "本",
+            "pinyin": "běn",
+            "meaning": "measure word for books"
+          },
+          {
+            "id": "b1l04-g04-glossary-51",
+            "traditional": "朵",
+            "pinyin": "duǒ",
+            "meaning": "measure word for flowers"
+          },
+          {
+            "id": "b1l04-g04-glossary-52",
+            "traditional": "杯",
+            "pinyin": "bēi",
+            "meaning": "measure word for cups"
+          },
+          {
+            "id": "b1l04-g04-glossary-53",
+            "traditional": "塊",
+            "simplified": "块",
+            "pinyin": "kuài",
+            "meaning": "dollar unit"
+          },
+          {
+            "id": "b1l04-g04-glossary-54",
+            "traditional": "歲",
+            "simplified": "岁",
+            "pinyin": "suì",
+            "meaning": "years old"
+          },
+          {
+            "id": "b1l04-g04-glossary-55",
+            "traditional": "星期",
+            "pinyin": "xīngqí",
+            "meaning": "week"
+          },
+          {
+            "id": "b1l04-g04-glossary-56",
+            "traditional": "月",
+            "pinyin": "yuè",
+            "meaning": "month"
+          },
+          {
+            "id": "b1l04-g04-glossary-57",
+            "traditional": "現在",
+            "simplified": "现在",
+            "pinyin": "xiànzài",
+            "meaning": "now"
+          },
+          {
+            "id": "b1l04-g04-glossary-58",
+            "traditional": "這些東西",
+            "simplified": "这些东西",
+            "pinyin": "zhèxiē dōngxi",
+            "meaning": "these things"
+          },
+          {
+            "id": "b1l04-g04-glossary-59",
+            "traditional": "這件衣服",
+            "simplified": "这件衣服",
+            "pinyin": "zhè jiàn yīfu",
+            "meaning": "this item of clothing"
+          },
+          {
+            "id": "b1l04-g04-glossary-60",
+            "traditional": "這支手機",
+            "simplified": "这支手机",
+            "pinyin": "zhè zhī shǒujī",
+            "meaning": "this cell phone"
+          },
+          {
+            "id": "b1l04-g04-glossary-61",
+            "traditional": "孩子",
+            "pinyin": "háizi",
+            "meaning": "child"
+          },
+          {
+            "id": "b1l04-g04-glossary-62",
+            "traditional": "李先生",
+            "pinyin": "Lǐ xiānsheng",
+            "meaning": "Mr. Li"
+          },
+          {
+            "id": "b1l04-g04-glossary-63",
+            "traditional": "幾點",
+            "simplified": "几点",
+            "pinyin": "jǐ diǎn",
+            "meaning": "what time"
+          },
+          {
+            "id": "b1l04-g04-glossary-64",
+            "traditional": "幾歲",
+            "simplified": "几岁",
+            "pinyin": "jǐ suì",
+            "meaning": "how old"
+          },
+          {
+            "id": "b1l04-g04-glossary-65",
+            "traditional": "多",
+            "pinyin": "duō",
+            "meaning": "more than; over"
+          },
+          {
+            "id": "b1l04-g04-glossary-66",
+            "traditional": "零",
+            "pinyin": "líng",
+            "meaning": "zero; fills an empty place"
+          },
+          {
+            "id": "b1l04-g04-glossary-67",
+            "traditional": "一",
+            "pinyin": "yī",
+            "meaning": "one"
+          },
+          {
+            "id": "b1l04-g04-glossary-68",
+            "traditional": "二",
+            "pinyin": "èr",
+            "meaning": "two in numbers"
+          },
+          {
+            "id": "b1l04-g04-glossary-69",
+            "traditional": "兩",
+            "simplified": "两",
+            "pinyin": "liǎng",
+            "meaning": "two before 百, 千, or a measure word"
+          },
+          {
+            "id": "b1l04-g04-glossary-70",
+            "traditional": "三",
+            "pinyin": "sān",
+            "meaning": "three"
+          },
+          {
+            "id": "b1l04-g04-glossary-71",
+            "traditional": "四",
+            "pinyin": "sì",
+            "meaning": "four"
+          },
+          {
+            "id": "b1l04-g04-glossary-72",
+            "traditional": "五",
+            "pinyin": "wǔ",
+            "meaning": "five"
+          },
+          {
+            "id": "b1l04-g04-glossary-73",
+            "traditional": "六",
+            "pinyin": "liù",
+            "meaning": "six"
+          },
+          {
+            "id": "b1l04-g04-glossary-74",
+            "traditional": "七",
+            "pinyin": "qī",
+            "meaning": "seven"
+          },
+          {
+            "id": "b1l04-g04-glossary-75",
+            "traditional": "八",
+            "pinyin": "bā",
+            "meaning": "eight"
+          },
+          {
+            "id": "b1l04-g04-glossary-76",
+            "traditional": "九",
+            "pinyin": "jiǔ",
+            "meaning": "nine"
+          },
+          {
+            "id": "b1l04-g04-glossary-77",
+            "traditional": "十",
+            "pinyin": "shí",
+            "meaning": "ten"
+          },
+          {
+            "id": "b1l04-g04-glossary-78",
+            "traditional": "百",
+            "pinyin": "bǎi",
+            "meaning": "hundred"
+          },
+          {
+            "id": "b1l04-g04-glossary-79",
+            "traditional": "千",
+            "pinyin": "qiān",
+            "meaning": "thousand"
+          },
+          {
+            "id": "b1l04-g04-glossary-80",
+            "traditional": "萬",
+            "simplified": "万",
+            "pinyin": "wàn",
+            "meaning": "ten thousand"
+          },
+          {
+            "id": "b1l04-g04-glossary-81",
+            "traditional": "一百零五",
+            "pinyin": "yì bǎi líng wǔ",
+            "meaning": "105"
+          },
+          {
+            "id": "b1l04-g04-glossary-82",
+            "traditional": "一百一十五",
+            "pinyin": "yì bǎi yīshíwǔ",
+            "meaning": "115"
+          },
+          {
+            "id": "b1l04-g04-glossary-83",
+            "traditional": "八百五十",
+            "pinyin": "bā bǎi wǔshí",
+            "meaning": "850"
+          },
+          {
+            "id": "b1l04-g04-glossary-84",
+            "traditional": "兩千零五",
+            "simplified": "两千零五",
+            "pinyin": "liǎng qiān líng wǔ",
+            "meaning": "2,005"
+          },
+          {
+            "id": "b1l04-g04-glossary-85",
+            "traditional": "九萬零五百",
+            "simplified": "九万零五百",
+            "pinyin": "jiǔ wàn líng wǔ bǎi",
+            "meaning": "90,500"
+          },
+          {
+            "id": "b1l04-g04-glossary-86",
+            "traditional": "三百零五萬",
+            "simplified": "三百零五万",
+            "pinyin": "sān bǎi líng wǔ wàn",
+            "meaning": "3,050,000"
+          },
+          {
+            "id": "b1l04-g04-glossary-87",
+            "traditional": "五千零八十",
+            "pinyin": "wǔ qiān líng bāshí",
+            "meaning": "5,080"
+          },
+          {
+            "id": "b1l04-g04-glossary-88",
+            "traditional": "零九三六零六八四九三",
+            "pinyin": "líng jiǔ sān liù, líng liù bā, sì jiǔ sān",
+            "meaning": "0936-068-493"
+          },
+          {
+            "id": "b1l04-g04-glossary-89",
+            "traditional": "兩千兩百位老師",
+            "simplified": "两千两百位老师",
+            "pinyin": "liǎng qiān liǎng bǎi wèi lǎoshī",
+            "meaning": "2,200 teachers"
+          },
+          {
+            "id": "b1l04-g04-glossary-90",
+            "traditional": "十多個人",
+            "simplified": "十多个人",
+            "pinyin": "shí duō ge rén",
+            "meaning": "more than ten people"
+          },
+          {
+            "id": "b1l04-g04-glossary-91",
+            "traditional": "一百多塊錢",
+            "simplified": "一百多块钱",
+            "pinyin": "yì bǎi duō kuài qián",
+            "meaning": "over one hundred dollars"
+          },
+          {
+            "id": "b1l04-g04-glossary-92",
+            "traditional": "兩千多塊錢",
+            "simplified": "两千多块钱",
+            "pinyin": "liǎng qiān duō kuài qián",
+            "meaning": "over two thousand dollars"
+          },
+          {
+            "id": "b1l04-g04-glossary-93",
+            "traditional": "十二點多",
+            "simplified": "十二点多",
+            "pinyin": "shí’èr diǎn duō",
+            "meaning": "a little after twelve"
+          },
+          {
+            "id": "b1l04-g04-glossary-94",
+            "traditional": "四歲多",
+            "simplified": "四岁多",
+            "pinyin": "sì suì duō",
+            "meaning": "older than four but not yet five"
+          },
+          {
+            "id": "b1l04-g04-glossary-95",
+            "traditional": "八塊多",
+            "simplified": "八块多",
+            "pinyin": "bā kuài duō",
+            "meaning": "more than eight dollars"
+          },
+          {
+            "id": "b1l04-g04-glossary-96",
+            "traditional": "十多個蛋糕",
+            "simplified": "十多个蛋糕",
+            "pinyin": "shí duō ge dàngāo",
+            "meaning": "11–19 cakes"
+          },
+          {
+            "id": "b1l04-g04-glossary-97",
+            "traditional": "二十多朵花",
+            "pinyin": "èrshí duō duǒ huā",
+            "meaning": "21–29 flowers"
+          },
+          {
+            "id": "b1l04-g04-glossary-98",
+            "traditional": "一百多枝鉛筆",
+            "simplified": "一百多枝铅笔",
+            "pinyin": "yì bǎi duō zhī qiānbǐ",
+            "meaning": "101–199 pencils"
+          },
+          {
+            "id": "b1l04-g04-glossary-99",
+            "traditional": "三千多本書",
+            "simplified": "三千多本书",
+            "pinyin": "sān qiān duō běn shū",
+            "meaning": "3,001–3,999 books"
+          },
+          {
+            "id": "b1l04-g04-glossary-100",
+            "traditional": "六萬多個學生",
+            "simplified": "六万多个学生",
+            "pinyin": "liù wàn duō ge xuéshēng",
+            "meaning": "60,001–69,999 students"
+          },
+          {
+            "id": "b1l04-g04-glossary-101",
+            "traditional": "十個多蛋糕",
+            "simplified": "十个多蛋糕",
+            "pinyin": "shí ge duō dàngāo",
+            "meaning": "a little more than ten cakes"
+          },
+          {
+            "id": "b1l04-g04-glossary-102",
+            "traditional": "五塊多錢",
+            "simplified": "五块多钱",
+            "pinyin": "wǔ kuài duō qián",
+            "meaning": "more than five dollars"
+          },
+          {
+            "id": "b1l04-g04-glossary-103",
+            "traditional": "十一點多",
+            "simplified": "十一点多",
+            "pinyin": "shíyī diǎn duō",
+            "meaning": "after eleven o’clock"
+          },
+          {
+            "id": "b1l04-g04-glossary-104",
+            "traditional": "兩個多星期",
+            "simplified": "两个多星期",
+            "pinyin": "liǎng ge duō xīngqí",
+            "meaning": "more than two weeks"
+          }
+        ],
+        "pattern": "Large place + smaller places, with 零 for an internal gap",
+        "patternColumns": [
+          "萬 group",
+          "千／百／十 group",
+          "Spoken number"
+        ],
+        "patternAccentColumn": 2,
+        "numberLab": {
+          "title": "Climb the place-value staircase",
+          "description": "Tap a number. Each block shows which place contributes sound and where 零 bridges an empty step.",
+          "prompt": "Choose a number to take apart",
+          "choices": [
+            {
+              "id": "number-105",
+              "label": "105",
+              "digits": "105",
+              "traditional": "一百零五",
+              "pinyin": "yì bǎi líng wǔ",
+              "english": "one hundred and five",
+              "groups": [
+                {
+                  "label": "百",
+                  "digit": "1",
+                  "traditional": "一百"
+                },
+                {
+                  "label": "十",
+                  "digit": "0",
+                  "traditional": "零"
+                },
+                {
+                  "label": "個",
+                  "digit": "5",
+                  "traditional": "五"
+                }
+              ],
+              "note": "The tens place is empty between two spoken places, so 零 bridges 百 to 五."
+            },
+            {
+              "id": "number-2005",
+              "label": "2,005",
+              "digits": "2,005",
+              "traditional": "兩千零五",
+              "simplified": "两千零五",
+              "pinyin": "liǎng qiān líng wǔ",
+              "english": "two thousand and five",
+              "groups": [
+                {
+                  "label": "千",
+                  "digit": "2",
+                  "traditional": "兩千",
+                  "simplified": "两千"
+                },
+                {
+                  "label": "百／十",
+                  "digit": "00",
+                  "traditional": "零"
+                },
+                {
+                  "label": "個",
+                  "digit": "5",
+                  "traditional": "五"
+                }
+              ],
+              "note": "Two empty places are crossed with one 零, not two."
+            },
+            {
+              "id": "number-90500",
+              "label": "90,500",
+              "digits": "90,500",
+              "traditional": "九萬零五百",
+              "simplified": "九万零五百",
+              "pinyin": "jiǔ wàn líng wǔ bǎi",
+              "english": "ninety thousand five hundred",
+              "groups": [
+                {
+                  "label": "萬",
+                  "digit": "9",
+                  "traditional": "九萬",
+                  "simplified": "九万"
+                },
+                {
+                  "label": "千",
+                  "digit": "0",
+                  "traditional": "零"
+                },
+                {
+                  "label": "百",
+                  "digit": "5",
+                  "traditional": "五百"
+                },
+                {
+                  "label": "十／個",
+                  "digit": "00",
+                  "traditional": "不說",
+                  "simplified": "不说"
+                }
+              ],
+              "note": "零 bridges the missing 千 place. Zeroes at the end are not spoken."
+            },
+            {
+              "id": "number-3050000",
+              "label": "3,050,000",
+              "digits": "3,050,000",
+              "traditional": "三百零五萬",
+              "simplified": "三百零五万",
+              "pinyin": "sān bǎi líng wǔ wàn",
+              "english": "three million fifty thousand",
+              "groups": [
+                {
+                  "label": "萬 block",
+                  "digit": "305",
+                  "traditional": "三百零五萬",
+                  "simplified": "三百零五万"
+                },
+                {
+                  "label": "ones block",
+                  "digit": "0000",
+                  "traditional": "不說",
+                  "simplified": "不说"
+                }
+              ],
+              "note": "Chinese groups large numbers around 萬: 305 groups of ten thousand."
+            }
+          ],
+          "takeaway": "Read large to small; use one 零 for an empty place inside; do not say zeroes at the end."
+        },
+        "patternRows": [
+          {
+            "id": "g4-pattern-1",
+            "subject": [],
+            "grammar": [
+              {
+                "id": "g4-p1-hundred",
+                "traditional": "百",
+                "pinyin": "bǎi",
+                "meaning": "hundred"
+              },
+              {
+                "id": "g4-p1-zero",
+                "traditional": "零",
+                "pinyin": "líng",
+                "meaning": "zero; fills an empty place"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g4-p1-number",
+                "traditional": "一百零五",
+                "pinyin": "yì bǎi líng wǔ",
+                "meaning": "105"
+              }
+            ],
+            "english": "105: one hundred, 零, five"
+          },
+          {
+            "id": "g4-pattern-2",
+            "subject": [],
+            "grammar": [
+              {
+                "id": "g4-p2-thousand",
+                "traditional": "千",
+                "pinyin": "qiān",
+                "meaning": "thousand"
+              },
+              {
+                "id": "g4-p2-zero",
+                "traditional": "零",
+                "pinyin": "líng",
+                "meaning": "zero; fills an empty place"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g4-p2-number",
+                "traditional": "兩千零五",
+                "simplified": "两千零五",
+                "pinyin": "liǎng qiān líng wǔ",
+                "meaning": "2,005"
+              }
+            ],
+            "english": "2,005: two thousand, 零, five"
+          },
+          {
+            "id": "g4-pattern-3",
+            "subject": [
+              {
+                "id": "g4-p3-wan",
+                "traditional": "萬",
+                "simplified": "万",
+                "pinyin": "wàn",
+                "meaning": "ten thousand"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g4-p3-zero",
+                "traditional": "零",
+                "pinyin": "líng",
+                "meaning": "zero; fills an empty place"
+              },
+              {
+                "id": "g4-p3-hundred",
+                "traditional": "百",
+                "pinyin": "bǎi",
+                "meaning": "hundred"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g4-p3-number",
+                "traditional": "九萬零五百",
+                "simplified": "九万零五百",
+                "pinyin": "jiǔ wàn líng wǔ bǎi",
+                "meaning": "90,500"
+              }
+            ],
+            "english": "90,500: nine ten-thousands, 零, five hundred"
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "g4-confusion-zero",
+              "question": "5,080 — do I say 零?",
+              "answer": "Yes, once. One 零 bridges the empty 百 place: 五千零八十.",
+              "wrongTraditional": "五千八十。",
+              "right": {
+                "traditional": "五千零八十。",
+                "simplified": "五千零八十。",
+                "pinyin": "Wǔ qiān líng bāshí.",
+                "english": "Five thousand and eighty (5,080).",
+                "words": [
+                  {
+                    "id": "b1l04-g4-c1-word-1",
+                    "traditional": "五千零八十",
+                    "pinyin": "wǔ qiān líng bāshí",
+                    "meaning": "5,080",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "g4-confusion-liang",
+              "question": "2,200 — is it 二 or 兩?",
+              "answer": "兩. Use 兩 before 千, 百, and 萬: 兩千兩百. 二 stays in tens and single digits.",
+              "wrongTraditional": "二千兩百位老師。",
+              "wrongSimplified": "二千两百位老师。",
+              "right": {
+                "traditional": "兩千兩百位老師。",
+                "simplified": "两千两百位老师。",
+                "pinyin": "Liǎng qiān liǎng bǎi wèi lǎoshī.",
+                "english": "2,200 teachers.",
+                "words": [
+                  {
+                    "id": "b1l04-g4-c2-word-1",
+                    "traditional": "兩千兩百位老師",
+                    "simplified": "两千两百位老师",
+                    "pinyin": "liǎng qiān liǎng bǎi wèi lǎoshī",
+                    "meaning": "2,200 teachers",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "g4-confusion-wan",
+              "question": "How do I say 30,000?",
+              "answer": "三萬. After 千 comes 萬, the ten-thousand group: 三萬, not 三十千.",
+              "wrongTraditional": "三十千。",
+              "right": {
+                "traditional": "三萬。",
+                "simplified": "三万。",
+                "pinyin": "Sān wàn.",
+                "english": "Thirty thousand (30,000).",
+                "words": [
+                  {
+                    "id": "b1l04-g4-c3-word-1",
+                    "traditional": "三",
+                    "pinyin": "sān",
+                    "meaning": "three"
+                  },
+                  {
+                    "id": "b1l04-g4-c3-word-2",
+                    "traditional": "萬",
+                    "simplified": "万",
+                    "pinyin": "wàn",
+                    "meaning": "ten thousand",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "examples": [
+          {
+            "id": "g4-example-1",
+            "number": 1,
+            "text": {
+              "traditional": "一百一十五",
+              "simplified": "一百一十五",
+              "pinyin": "Yì bǎi yīshíwǔ.",
+              "english": "115",
+              "words": [
+                {
+                  "id": "b1l04-g4-e1-word-1",
+                  "traditional": "一百一十五",
+                  "pinyin": "yì bǎi yīshíwǔ",
+                  "meaning": "115"
+                }
+              ]
+            },
+            "teachingNote": "Every place from 百 through 個 has a value, so no 零 is needed."
+          },
+          {
+            "id": "g4-example-2",
+            "number": 2,
+            "text": {
+              "traditional": "兩千零五",
+              "simplified": "两千零五",
+              "pinyin": "Liǎng qiān líng wǔ.",
+              "english": "2,005",
+              "words": [
+                {
+                  "id": "b1l04-g4-e2-word-1",
+                  "traditional": "兩千零五",
+                  "simplified": "两千零五",
+                  "pinyin": "liǎng qiān líng wǔ",
+                  "meaning": "2,005"
+                }
+              ]
+            },
+            "teachingNote": "One 零 bridges both missing middle places."
+          },
+          {
+            "id": "g4-example-3",
+            "number": 3,
+            "text": {
+              "traditional": "三百零五萬",
+              "simplified": "三百零五万",
+              "pinyin": "Sān bǎi líng wǔ wàn.",
+              "english": "3,050,000",
+              "words": [
+                {
+                  "id": "b1l04-g4-e3-word-1",
+                  "traditional": "三百零五萬",
+                  "simplified": "三百零五万",
+                  "pinyin": "sān bǎi líng wǔ wàn",
+                  "meaning": "3,050,000"
+                }
+              ]
+            },
+            "teachingNote": "Think “305 ten-thousands,” then attach 萬."
+          }
+        ],
+        "exerciseTitle": "Decode the place values",
+        "exercisePreview": "Read one number from each printed source set.",
+        "exerciseInstruction": "Choose the spoken form that preserves every important place and uses 零 correctly.",
+        "exerciseNote": "The source exercise is oral and contains several items per set. These scored representatives cover ordinary numbers, phone digits, and number + measure word.",
+        "questions": [
+          {
+            "id": "g4-question-1",
+            "number": 1,
+            "sectionLabel": "Ordinary number · source set 1",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "5,080 = "
+              },
+              {
+                "type": "blank",
+                "id": "g4-q1-answer",
+                "answer": "五千零八十",
+                "hint": "Bridge the empty hundreds place with 零."
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g4-q1-correct",
+                "traditional": "五千零八十",
+                "pinyin": "wǔ qiān líng bāshí",
+                "meaning": "5,080"
+              },
+              {
+                "id": "g4-q1-no-zero",
+                "traditional": "五千八十",
+                "pinyin": "wǔ qiān bāshí",
+                "meaning": "missing the zero bridge"
+              },
+              {
+                "id": "g4-q1-extra-zero",
+                "traditional": "五千零零八十",
+                "pinyin": "wǔ qiān líng líng bāshí",
+                "meaning": "too many spoken zeros"
+              }
+            ],
+            "correctFeedback": "零 bridges 千 to 十 because the 百 place is empty.",
+            "repairFeedback": "Use one 零 for the internal gap: 五千零八十."
+          },
+          {
+            "id": "g4-question-2",
+            "number": 2,
+            "sectionLabel": "Phone number · source set 2",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "0936-068-493 = "
+              },
+              {
+                "type": "blank",
+                "id": "g4-q2-answer",
+                "answer": "零九三六零六八四九三",
+                "hint": "Phone numbers read digit by digit."
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g4-q2-correct",
+                "traditional": "零九三六零六八四九三",
+                "pinyin": "líng jiǔ sān liù, líng liù bā, sì jiǔ sān",
+                "meaning": "0936-068-493"
+              },
+              {
+                "id": "g4-q2-place-value",
+                "traditional": "九百三十六萬零六百八十四",
+                "pinyin": "jiǔ bǎi sānshíliù wàn líng liù bǎi bāshísì",
+                "meaning": "incorrect place-value reading"
+              },
+              {
+                "id": "g4-q2-missing-zero",
+                "traditional": "九三六六八四九三",
+                "pinyin": "jiǔ sān liù liù bā sì jiǔ sān",
+                "meaning": "zeros omitted"
+              }
+            ],
+            "correctFeedback": "Phone numbers are read one digit at a time, so say each digit, including 零.",
+            "repairFeedback": "Do not read a phone number as one big number. Read each digit."
+          },
+          {
+            "id": "g4-question-3",
+            "number": 3,
+            "sectionLabel": "Quantity + measure word · source set 3",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "2,200（老師）= ",
+                "simplified": "2,200（老师）= "
+              },
+              {
+                "type": "blank",
+                "id": "g4-q3-answer",
+                "answer": "兩千兩百位老師",
+                "answerSimplified": "两千两百位老师",
+                "hint": "Read 2,200, then add 位老師."
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g4-q3-correct",
+                "traditional": "兩千兩百位老師",
+                "simplified": "两千两百位老师",
+                "pinyin": "liǎng qiān liǎng bǎi wèi lǎoshī",
+                "meaning": "2,200 teachers"
+              },
+              {
+                "id": "g4-q3-zero",
+                "traditional": "兩千零兩百位老師",
+                "simplified": "两千零两百位老师",
+                "pinyin": "liǎng qiān líng liǎng bǎi wèi lǎoshī",
+                "meaning": "unneeded zero bridge"
+              },
+              {
+                "id": "g4-q3-no-measure",
+                "traditional": "兩千兩百老師",
+                "simplified": "两千两百老师",
+                "pinyin": "liǎng qiān liǎng bǎi lǎoshī",
+                "meaning": "missing 位"
+              }
+            ],
+            "correctFeedback": "Nothing is skipped between 千 and 百; 位 is the polite measure word for people.",
+            "repairFeedback": "Read 兩千兩百 without 零, then add 位老師."
+          }
+        ]
+      },
+      {
+        "id": "B1L04-G05-P105",
+        "bookId": 1,
+        "lessonId": 4,
+        "partId": 2,
+        "lessonTitle": "你要咖啡還是茶？",
+        "lessonTitleEnglish": "Would You Like Coffee or Tea?",
+        "grammarNumber": 5,
+        "titleTraditional": "數字 + 多：超過一點",
+        "titleEnglish": "Give an Approximate Amount with 多",
+        "learnerPromise": "Say “over ten,” “over one hundred,” or “a little after twelve” without claiming an exact number.",
+        "printedPages": [
+          105,
+          106,
+          107
+        ],
+        "audioReference": "04-2-3",
+        "explanation": "After a round number, 多 means somewhere above it: 一百多 is 101–199. After a unit, it means slightly beyond: 十一點多 is a little after eleven.",
+        "focusTerms": [
+          "數字",
+          "数字",
+          "多",
+          "超過",
+          "超过",
+          "一點",
+          "一点"
+        ],
+        "teachingGlossary": [
+          {
+            "id": "b1l04-g05-glossary-1",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
+          },
+          {
+            "id": "b1l04-g05-glossary-2",
+            "traditional": "我們",
+            "simplified": "我们",
+            "pinyin": "wǒmen",
+            "meaning": "we; us"
+          },
+          {
+            "id": "b1l04-g05-glossary-3",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          },
+          {
+            "id": "b1l04-g05-glossary-4",
+            "traditional": "你們",
+            "simplified": "你们",
+            "pinyin": "nǐmen",
+            "meaning": "you all"
+          },
+          {
+            "id": "b1l04-g05-glossary-5",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "he; him"
+          },
+          {
+            "id": "b1l04-g05-glossary-6",
+            "traditional": "她",
+            "pinyin": "tā",
+            "meaning": "she; her"
+          },
+          {
+            "id": "b1l04-g05-glossary-7",
+            "traditional": "中明",
+            "pinyin": "Zhōngmíng",
+            "meaning": "Zhongming"
+          },
+          {
+            "id": "b1l04-g05-glossary-8",
+            "traditional": "友美",
+            "pinyin": "Yǒuměi",
+            "meaning": "Youmei"
+          },
+          {
+            "id": "b1l04-g05-glossary-9",
+            "traditional": "女店員",
+            "simplified": "女店员",
+            "pinyin": "nǚ diànyuán",
+            "meaning": "female shop clerk"
+          },
+          {
+            "id": "b1l04-g05-glossary-10",
+            "traditional": "小姐",
+            "pinyin": "xiǎojiě",
+            "meaning": "miss"
+          },
+          {
+            "id": "b1l04-g05-glossary-11",
+            "traditional": "兩位",
+            "simplified": "两位",
+            "pinyin": "liǎng wèi",
+            "meaning": "two people, polite"
+          },
+          {
+            "id": "b1l04-g05-glossary-12",
+            "traditional": "請問",
+            "simplified": "请问",
+            "pinyin": "qǐngwèn",
+            "meaning": "may I ask"
+          },
+          {
+            "id": "b1l04-g05-glossary-13",
+            "traditional": "請",
+            "simplified": "请",
+            "pinyin": "qǐng",
+            "meaning": "please"
+          },
+          {
+            "id": "b1l04-g05-glossary-14",
+            "traditional": "給",
+            "simplified": "给",
+            "pinyin": "gěi",
+            "meaning": "give"
+          },
+          {
+            "id": "b1l04-g05-glossary-15",
+            "traditional": "您",
+            "pinyin": "nín",
+            "meaning": "you, polite"
+          },
+          {
+            "id": "b1l04-g05-glossary-16",
+            "traditional": "謝謝",
+            "simplified": "谢谢",
+            "pinyin": "xièxie",
+            "meaning": "thank you"
+          },
+          {
+            "id": "b1l04-g05-glossary-17",
+            "traditional": "點",
+            "simplified": "点",
+            "pinyin": "diǎn",
+            "meaning": "order from a menu; o’clock"
+          },
+          {
+            "id": "b1l04-g05-glossary-18",
+            "traditional": "要",
+            "pinyin": "yào",
+            "meaning": "want"
+          },
+          {
+            "id": "b1l04-g05-glossary-19",
+            "traditional": "一共",
+            "pinyin": "yígòng",
+            "meaning": "altogether; in total"
+          },
+          {
+            "id": "b1l04-g05-glossary-20",
+            "traditional": "多少錢",
+            "simplified": "多少钱",
+            "pinyin": "duōshǎo qián",
+            "meaning": "how much money"
+          },
+          {
+            "id": "b1l04-g05-glossary-21",
+            "traditional": "找",
+            "pinyin": "zhǎo",
+            "meaning": "give change"
+          },
+          {
+            "id": "b1l04-g05-glossary-22",
+            "traditional": "好",
+            "pinyin": "hǎo",
+            "meaning": "very; good"
+          },
+          {
+            "id": "b1l04-g05-glossary-23",
+            "traditional": "便宜",
+            "pinyin": "piányi",
+            "meaning": "inexpensive"
+          },
+          {
+            "id": "b1l04-g05-glossary-24",
+            "traditional": "牛肉麵",
+            "simplified": "牛肉面",
+            "pinyin": "niúròu miàn",
+            "meaning": "beef noodles"
+          },
+          {
+            "id": "b1l04-g05-glossary-25",
+            "traditional": "紅茶",
+            "simplified": "红茶",
+            "pinyin": "hóngchá",
+            "meaning": "black tea"
+          },
+          {
+            "id": "b1l04-g05-glossary-26",
+            "traditional": "綠茶",
+            "simplified": "绿茶",
+            "pinyin": "lǜchá",
+            "meaning": "green tea"
+          },
+          {
+            "id": "b1l04-g05-glossary-27",
+            "traditional": "茶",
+            "pinyin": "chá",
+            "meaning": "tea"
+          },
+          {
+            "id": "b1l04-g05-glossary-28",
+            "traditional": "一杯",
+            "pinyin": "yì bēi",
+            "meaning": "one cup of"
+          },
+          {
+            "id": "b1l04-g05-glossary-29",
+            "traditional": "兩杯",
+            "simplified": "两杯",
+            "pinyin": "liǎng bēi",
+            "meaning": "two cups of"
+          },
+          {
+            "id": "b1l04-g05-glossary-30",
+            "traditional": "兩碗",
+            "simplified": "两碗",
+            "pinyin": "liǎng wǎn",
+            "meaning": "two bowls of"
+          },
+          {
+            "id": "b1l04-g05-glossary-31",
+            "traditional": "和",
+            "pinyin": "hé",
+            "meaning": "and"
+          },
+          {
+            "id": "b1l04-g05-glossary-32",
+            "traditional": "還是",
+            "simplified": "还是",
+            "pinyin": "háishì",
+            "meaning": "or in a question"
+          },
+          {
+            "id": "b1l04-g05-glossary-33",
+            "traditional": "人",
+            "pinyin": "rén",
+            "meaning": "person; people"
+          },
+          {
+            "id": "b1l04-g05-glossary-34",
+            "traditional": "老師",
+            "simplified": "老师",
+            "pinyin": "lǎoshī",
+            "meaning": "teacher"
+          },
+          {
+            "id": "b1l04-g05-glossary-35",
+            "traditional": "位老師",
+            "simplified": "位老师",
+            "pinyin": "wèi lǎoshī",
+            "meaning": "teachers, polite measure"
+          },
+          {
+            "id": "b1l04-g05-glossary-36",
+            "traditional": "學生",
+            "simplified": "学生",
+            "pinyin": "xuéshēng",
+            "meaning": "student"
+          },
+          {
+            "id": "b1l04-g05-glossary-37",
+            "traditional": "學校",
+            "simplified": "学校",
+            "pinyin": "xuéxiào",
+            "meaning": "school"
+          },
+          {
+            "id": "b1l04-g05-glossary-38",
+            "traditional": "蛋糕",
+            "pinyin": "dàngāo",
+            "meaning": "cake"
+          },
+          {
+            "id": "b1l04-g05-glossary-39",
+            "traditional": "花",
+            "pinyin": "huā",
+            "meaning": "flower"
+          },
+          {
+            "id": "b1l04-g05-glossary-40",
+            "traditional": "鉛筆",
+            "simplified": "铅笔",
+            "pinyin": "qiānbǐ",
+            "meaning": "pencil"
+          },
+          {
+            "id": "b1l04-g05-glossary-41",
+            "traditional": "書",
+            "simplified": "书",
+            "pinyin": "shū",
+            "meaning": "book"
+          },
+          {
+            "id": "b1l04-g05-glossary-42",
+            "traditional": "手機",
+            "simplified": "手机",
+            "pinyin": "shǒujī",
+            "meaning": "cell phone"
+          },
+          {
+            "id": "b1l04-g05-glossary-43",
+            "traditional": "衣服",
+            "pinyin": "yīfu",
+            "meaning": "clothes"
+          },
+          {
+            "id": "b1l04-g05-glossary-44",
+            "traditional": "杯子",
+            "pinyin": "bēizi",
+            "meaning": "cup"
+          },
+          {
+            "id": "b1l04-g05-glossary-45",
+            "traditional": "錢",
+            "simplified": "钱",
+            "pinyin": "qián",
+            "meaning": "money"
+          },
+          {
+            "id": "b1l04-g05-glossary-46",
+            "traditional": "塊錢",
+            "simplified": "块钱",
+            "pinyin": "kuài qián",
+            "meaning": "dollars"
+          },
+          {
+            "id": "b1l04-g05-glossary-47",
+            "traditional": "個",
+            "simplified": "个",
+            "pinyin": "ge",
+            "meaning": "general measure word"
+          },
+          {
+            "id": "b1l04-g05-glossary-48",
+            "traditional": "位",
+            "pinyin": "wèi",
+            "meaning": "polite measure word for people"
+          },
+          {
+            "id": "b1l04-g05-glossary-49",
+            "traditional": "枝",
+            "pinyin": "zhī",
+            "meaning": "measure word for pens"
+          },
+          {
+            "id": "b1l04-g05-glossary-50",
+            "traditional": "本",
+            "pinyin": "běn",
+            "meaning": "measure word for books"
+          },
+          {
+            "id": "b1l04-g05-glossary-51",
+            "traditional": "朵",
+            "pinyin": "duǒ",
+            "meaning": "measure word for flowers"
+          },
+          {
+            "id": "b1l04-g05-glossary-52",
+            "traditional": "杯",
+            "pinyin": "bēi",
+            "meaning": "measure word for cups"
+          },
+          {
+            "id": "b1l04-g05-glossary-53",
+            "traditional": "塊",
+            "simplified": "块",
+            "pinyin": "kuài",
+            "meaning": "dollar unit"
+          },
+          {
+            "id": "b1l04-g05-glossary-54",
+            "traditional": "歲",
+            "simplified": "岁",
+            "pinyin": "suì",
+            "meaning": "years old"
+          },
+          {
+            "id": "b1l04-g05-glossary-55",
+            "traditional": "星期",
+            "pinyin": "xīngqí",
+            "meaning": "week"
+          },
+          {
+            "id": "b1l04-g05-glossary-56",
+            "traditional": "月",
+            "pinyin": "yuè",
+            "meaning": "month"
+          },
+          {
+            "id": "b1l04-g05-glossary-57",
+            "traditional": "現在",
+            "simplified": "现在",
+            "pinyin": "xiànzài",
+            "meaning": "now"
+          },
+          {
+            "id": "b1l04-g05-glossary-58",
+            "traditional": "這些東西",
+            "simplified": "这些东西",
+            "pinyin": "zhèxiē dōngxi",
+            "meaning": "these things"
+          },
+          {
+            "id": "b1l04-g05-glossary-59",
+            "traditional": "這件衣服",
+            "simplified": "这件衣服",
+            "pinyin": "zhè jiàn yīfu",
+            "meaning": "this item of clothing"
+          },
+          {
+            "id": "b1l04-g05-glossary-60",
+            "traditional": "這支手機",
+            "simplified": "这支手机",
+            "pinyin": "zhè zhī shǒujī",
+            "meaning": "this cell phone"
+          },
+          {
+            "id": "b1l04-g05-glossary-61",
+            "traditional": "孩子",
+            "pinyin": "háizi",
+            "meaning": "child"
+          },
+          {
+            "id": "b1l04-g05-glossary-62",
+            "traditional": "李先生",
+            "pinyin": "Lǐ xiānsheng",
+            "meaning": "Mr. Li"
+          },
+          {
+            "id": "b1l04-g05-glossary-63",
+            "traditional": "幾點",
+            "simplified": "几点",
+            "pinyin": "jǐ diǎn",
+            "meaning": "what time"
+          },
+          {
+            "id": "b1l04-g05-glossary-64",
+            "traditional": "幾歲",
+            "simplified": "几岁",
+            "pinyin": "jǐ suì",
+            "meaning": "how old"
+          },
+          {
+            "id": "b1l04-g05-glossary-65",
+            "traditional": "多",
+            "pinyin": "duō",
+            "meaning": "more than; over"
+          },
+          {
+            "id": "b1l04-g05-glossary-66",
+            "traditional": "零",
+            "pinyin": "líng",
+            "meaning": "zero; fills an empty place"
+          },
+          {
+            "id": "b1l04-g05-glossary-67",
+            "traditional": "一",
+            "pinyin": "yī",
+            "meaning": "one"
+          },
+          {
+            "id": "b1l04-g05-glossary-68",
+            "traditional": "二",
+            "pinyin": "èr",
+            "meaning": "two in numbers"
+          },
+          {
+            "id": "b1l04-g05-glossary-69",
+            "traditional": "兩",
+            "simplified": "两",
+            "pinyin": "liǎng",
+            "meaning": "two before 百, 千, or a measure word"
+          },
+          {
+            "id": "b1l04-g05-glossary-70",
+            "traditional": "三",
+            "pinyin": "sān",
+            "meaning": "three"
+          },
+          {
+            "id": "b1l04-g05-glossary-71",
+            "traditional": "四",
+            "pinyin": "sì",
+            "meaning": "four"
+          },
+          {
+            "id": "b1l04-g05-glossary-72",
+            "traditional": "五",
+            "pinyin": "wǔ",
+            "meaning": "five"
+          },
+          {
+            "id": "b1l04-g05-glossary-73",
+            "traditional": "六",
+            "pinyin": "liù",
+            "meaning": "six"
+          },
+          {
+            "id": "b1l04-g05-glossary-74",
+            "traditional": "七",
+            "pinyin": "qī",
+            "meaning": "seven"
+          },
+          {
+            "id": "b1l04-g05-glossary-75",
+            "traditional": "八",
+            "pinyin": "bā",
+            "meaning": "eight"
+          },
+          {
+            "id": "b1l04-g05-glossary-76",
+            "traditional": "九",
+            "pinyin": "jiǔ",
+            "meaning": "nine"
+          },
+          {
+            "id": "b1l04-g05-glossary-77",
+            "traditional": "十",
+            "pinyin": "shí",
+            "meaning": "ten"
+          },
+          {
+            "id": "b1l04-g05-glossary-78",
+            "traditional": "百",
+            "pinyin": "bǎi",
+            "meaning": "hundred"
+          },
+          {
+            "id": "b1l04-g05-glossary-79",
+            "traditional": "千",
+            "pinyin": "qiān",
+            "meaning": "thousand"
+          },
+          {
+            "id": "b1l04-g05-glossary-80",
+            "traditional": "萬",
+            "simplified": "万",
+            "pinyin": "wàn",
+            "meaning": "ten thousand"
+          },
+          {
+            "id": "b1l04-g05-glossary-81",
+            "traditional": "一百零五",
+            "pinyin": "yì bǎi líng wǔ",
+            "meaning": "105"
+          },
+          {
+            "id": "b1l04-g05-glossary-82",
+            "traditional": "一百一十五",
+            "pinyin": "yì bǎi yīshíwǔ",
+            "meaning": "115"
+          },
+          {
+            "id": "b1l04-g05-glossary-83",
+            "traditional": "八百五十",
+            "pinyin": "bā bǎi wǔshí",
+            "meaning": "850"
+          },
+          {
+            "id": "b1l04-g05-glossary-84",
+            "traditional": "兩千零五",
+            "simplified": "两千零五",
+            "pinyin": "liǎng qiān líng wǔ",
+            "meaning": "2,005"
+          },
+          {
+            "id": "b1l04-g05-glossary-85",
+            "traditional": "九萬零五百",
+            "simplified": "九万零五百",
+            "pinyin": "jiǔ wàn líng wǔ bǎi",
+            "meaning": "90,500"
+          },
+          {
+            "id": "b1l04-g05-glossary-86",
+            "traditional": "三百零五萬",
+            "simplified": "三百零五万",
+            "pinyin": "sān bǎi líng wǔ wàn",
+            "meaning": "3,050,000"
+          },
+          {
+            "id": "b1l04-g05-glossary-87",
+            "traditional": "五千零八十",
+            "pinyin": "wǔ qiān líng bāshí",
+            "meaning": "5,080"
+          },
+          {
+            "id": "b1l04-g05-glossary-88",
+            "traditional": "零九三六零六八四九三",
+            "pinyin": "líng jiǔ sān liù, líng liù bā, sì jiǔ sān",
+            "meaning": "0936-068-493"
+          },
+          {
+            "id": "b1l04-g05-glossary-89",
+            "traditional": "兩千兩百位老師",
+            "simplified": "两千两百位老师",
+            "pinyin": "liǎng qiān liǎng bǎi wèi lǎoshī",
+            "meaning": "2,200 teachers"
+          },
+          {
+            "id": "b1l04-g05-glossary-90",
+            "traditional": "十多個人",
+            "simplified": "十多个人",
+            "pinyin": "shí duō ge rén",
+            "meaning": "more than ten people"
+          },
+          {
+            "id": "b1l04-g05-glossary-91",
+            "traditional": "一百多塊錢",
+            "simplified": "一百多块钱",
+            "pinyin": "yì bǎi duō kuài qián",
+            "meaning": "over one hundred dollars"
+          },
+          {
+            "id": "b1l04-g05-glossary-92",
+            "traditional": "兩千多塊錢",
+            "simplified": "两千多块钱",
+            "pinyin": "liǎng qiān duō kuài qián",
+            "meaning": "over two thousand dollars"
+          },
+          {
+            "id": "b1l04-g05-glossary-93",
+            "traditional": "十二點多",
+            "simplified": "十二点多",
+            "pinyin": "shí’èr diǎn duō",
+            "meaning": "a little after twelve"
+          },
+          {
+            "id": "b1l04-g05-glossary-94",
+            "traditional": "四歲多",
+            "simplified": "四岁多",
+            "pinyin": "sì suì duō",
+            "meaning": "older than four but not yet five"
+          },
+          {
+            "id": "b1l04-g05-glossary-95",
+            "traditional": "八塊多",
+            "simplified": "八块多",
+            "pinyin": "bā kuài duō",
+            "meaning": "more than eight dollars"
+          },
+          {
+            "id": "b1l04-g05-glossary-96",
+            "traditional": "十多個蛋糕",
+            "simplified": "十多个蛋糕",
+            "pinyin": "shí duō ge dàngāo",
+            "meaning": "11–19 cakes"
+          },
+          {
+            "id": "b1l04-g05-glossary-97",
+            "traditional": "二十多朵花",
+            "pinyin": "èrshí duō duǒ huā",
+            "meaning": "21–29 flowers"
+          },
+          {
+            "id": "b1l04-g05-glossary-98",
+            "traditional": "一百多枝鉛筆",
+            "simplified": "一百多枝铅笔",
+            "pinyin": "yì bǎi duō zhī qiānbǐ",
+            "meaning": "101–199 pencils"
+          },
+          {
+            "id": "b1l04-g05-glossary-99",
+            "traditional": "三千多本書",
+            "simplified": "三千多本书",
+            "pinyin": "sān qiān duō běn shū",
+            "meaning": "3,001–3,999 books"
+          },
+          {
+            "id": "b1l04-g05-glossary-100",
+            "traditional": "六萬多個學生",
+            "simplified": "六万多个学生",
+            "pinyin": "liù wàn duō ge xuéshēng",
+            "meaning": "60,001–69,999 students"
+          },
+          {
+            "id": "b1l04-g05-glossary-101",
+            "traditional": "十個多蛋糕",
+            "simplified": "十个多蛋糕",
+            "pinyin": "shí ge duō dàngāo",
+            "meaning": "a little more than ten cakes"
+          },
+          {
+            "id": "b1l04-g05-glossary-102",
+            "traditional": "五塊多錢",
+            "simplified": "五块多钱",
+            "pinyin": "wǔ kuài duō qián",
+            "meaning": "more than five dollars"
+          },
+          {
+            "id": "b1l04-g05-glossary-103",
+            "traditional": "十一點多",
+            "simplified": "十一点多",
+            "pinyin": "shíyī diǎn duō",
+            "meaning": "after eleven o’clock"
+          },
+          {
+            "id": "b1l04-g05-glossary-104",
+            "traditional": "兩個多星期",
+            "simplified": "两个多星期",
+            "pinyin": "liǎng ge duō xīngqí",
+            "meaning": "more than two weeks"
+          }
+        ],
+        "pattern": "Round number + 多 + measure word, or number + measure word + 多",
+        "patternColumns": [
+          "Known starting amount",
+          "Position of 多",
+          "Possible range"
+        ],
+        "patternAccentColumn": 1,
+        "discoveryLab": {
+          "title": "Move 多, change the size of the fuzzy zone",
+          "description": "多 always means “over,” but its position tells the listener how wide the possible range is.",
+          "prompt": "How wide is the unknown extra amount?",
+          "choices": [
+            {
+              "id": "g5-tens",
+              "label": "After a round ten",
+              "traditional": "十多個蛋糕",
+              "simplified": "十多个蛋糕",
+              "pinyin": "shí duō ge dàngāo",
+              "english": "11–19 cakes",
+              "note": "多 follows 十, so the unknown part can fill the ones place."
+            },
+            {
+              "id": "g5-hundreds",
+              "label": "After a round hundred",
+              "traditional": "一百多枝鉛筆",
+              "simplified": "一百多枝铅笔",
+              "pinyin": "yì bǎi duō zhī qiānbǐ",
+              "english": "101–199 pencils",
+              "note": "多 follows 百, so the amount stays below the next hundred."
+            },
+            {
+              "id": "g5-small-extra",
+              "label": "After the measure word",
+              "traditional": "十個多蛋糕",
+              "simplified": "十个多蛋糕",
+              "pinyin": "shí ge duō dàngāo",
+              "english": "a little more than ten cakes",
+              "note": "多 follows 個, so the extra amount is less than one whole 個."
+            },
+            {
+              "id": "g5-time",
+              "label": "A little after a time",
+              "traditional": "十一點多",
+              "simplified": "十一点多",
+              "pinyin": "shíyī diǎn duō",
+              "english": "a little after 11:00",
+              "note": "多 follows 點, so the time is after eleven but before twelve."
+            }
+          ],
+          "takeaway": "多 after a round number gives a wider range; 多 after a unit means only a little beyond it."
+        },
+        "patternRows": [
+          {
+            "id": "g5-pattern-1",
+            "subject": [
+              {
+                "id": "g5-p1-ten",
+                "traditional": "十",
+                "pinyin": "shí",
+                "meaning": "ten"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g5-p1-more",
+                "traditional": "多",
+                "pinyin": "duō",
+                "meaning": "more than; over"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g5-p1-ge",
+                "traditional": "個",
+                "simplified": "个",
+                "pinyin": "ge",
+                "meaning": "general measure word"
+              },
+              {
+                "id": "g5-p1-cake",
+                "traditional": "蛋糕",
+                "pinyin": "dàngāo",
+                "meaning": "cake"
+              }
+            ],
+            "english": "11–19 cakes"
+          },
+          {
+            "id": "g5-pattern-2",
+            "subject": [
+              {
+                "id": "g5-p2-hundred",
+                "traditional": "百",
+                "pinyin": "bǎi",
+                "meaning": "hundred"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g5-p2-more",
+                "traditional": "多",
+                "pinyin": "duō",
+                "meaning": "more than; over"
+              }
+            ],
+            "complement": [
+              {
+                "id": "g5-p2-branch",
+                "traditional": "枝",
+                "pinyin": "zhī",
+                "meaning": "measure word for pens"
+              },
+              {
+                "id": "g5-p2-pencil",
+                "traditional": "鉛筆",
+                "simplified": "铅笔",
+                "pinyin": "qiānbǐ",
+                "meaning": "pencil"
+              }
+            ],
+            "english": "101–199 pencils"
+          },
+          {
+            "id": "g5-pattern-3",
+            "subject": [
+              {
+                "id": "g5-p3-eleven",
+                "traditional": "十",
+                "pinyin": "shí",
+                "meaning": "ten"
+              },
+              {
+                "id": "g5-p3-one",
+                "traditional": "一",
+                "pinyin": "yī",
+                "meaning": "one"
+              },
+              {
+                "id": "g5-p3-oclock",
+                "traditional": "點",
+                "simplified": "点",
+                "pinyin": "diǎn",
+                "meaning": "order from a menu; o’clock"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "g5-p3-more",
+                "traditional": "多",
+                "pinyin": "duō",
+                "meaning": "more than; over"
+              }
+            ],
+            "complement": [],
+            "english": "a little after 11:00"
+          }
+        ],
+        "confusion": {
+          "title": "Don't mix these up",
+          "items": [
+            {
+              "id": "g5-confusion-duo-round",
+              "question": "There are fifteen cakes. Where does 多 go?",
+              "answer": "After the round number 十: 十多個. 十個多 would mean just a little more than ten.",
+              "wrongTraditional": "十個多蛋糕。",
+              "wrongSimplified": "十个多蛋糕。",
+              "right": {
+                "traditional": "十多個蛋糕。",
+                "simplified": "十多个蛋糕。",
+                "pinyin": "Shí duō ge dàngāo.",
+                "english": "More than ten cakes (11–19).",
+                "words": [
+                  {
+                    "id": "b1l04-g5-c1-word-1",
+                    "traditional": "十多個蛋糕",
+                    "simplified": "十多个蛋糕",
+                    "pinyin": "shí duō ge dàngāo",
+                    "meaning": "11–19 cakes",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "g5-confusion-duo-time",
+              "question": "The clock shows a little after twelve. 多 before or after 點?",
+              "answer": "After 點: 十二點多. For a clock hour, 多 follows the time unit.",
+              "wrongTraditional": "十二多點。",
+              "wrongSimplified": "十二多点。",
+              "right": {
+                "traditional": "十二點多。",
+                "simplified": "十二点多。",
+                "pinyin": "Shí’èr diǎn duō.",
+                "english": "A little after twelve.",
+                "words": [
+                  {
+                    "id": "b1l04-g5-c2-word-1",
+                    "traditional": "十二點多",
+                    "simplified": "十二点多",
+                    "pinyin": "shí’èr diǎn duō",
+                    "meaning": "a little after twelve",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "g5-confusion-duo-age",
+              "question": "A child is older than four but not yet five. How do I say it?",
+              "answer": "四歲多 — 多 goes after 歲, so the extra is less than one full year.",
+              "wrongTraditional": "四多歲。",
+              "wrongSimplified": "四多岁。",
+              "right": {
+                "traditional": "四歲多。",
+                "simplified": "四岁多。",
+                "pinyin": "Sì suì duō.",
+                "english": "Older than four but not yet five.",
+                "words": [
+                  {
+                    "id": "b1l04-g5-c3-word-1",
+                    "traditional": "四歲多",
+                    "simplified": "四岁多",
+                    "pinyin": "sì suì duō",
+                    "meaning": "older than four but not yet five",
+                    "suffix": "。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "examples": [
+          {
+            "id": "g5-example-1",
+            "number": 1,
+            "text": {
+              "traditional": "二十多朵花",
+              "simplified": "二十多朵花",
+              "pinyin": "Èrshí duō duǒ huā.",
+              "english": "21–29 flowers",
+              "words": [
+                {
+                  "id": "b1l04-g5-e1-word-1",
+                  "traditional": "二十多朵花",
+                  "pinyin": "èrshí duō duǒ huā",
+                  "meaning": "21–29 flowers"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g5-example-2",
+            "number": 2,
+            "text": {
+              "traditional": "三千多本書",
+              "simplified": "三千多本书",
+              "pinyin": "Sān qiān duō běn shū.",
+              "english": "3,001–3,999 books",
+              "words": [
+                {
+                  "id": "b1l04-g5-e2-word-1",
+                  "traditional": "三千多本書",
+                  "simplified": "三千多本书",
+                  "pinyin": "sān qiān duō běn shū",
+                  "meaning": "3,001–3,999 books"
+                }
+              ]
+            }
+          },
+          {
+            "id": "g5-example-3",
+            "number": 3,
+            "text": {
+              "traditional": "兩個多星期",
+              "simplified": "两个多星期",
+              "pinyin": "Liǎng ge duō xīngqí.",
+              "english": "More than two weeks but less than three.",
+              "words": [
+                {
+                  "id": "b1l04-g5-e3-word-1",
+                  "traditional": "兩個多星期",
+                  "simplified": "两个多星期",
+                  "pinyin": "liǎng ge duō xīngqí",
+                  "meaning": "more than two weeks"
+                }
+              ]
+            }
+          }
+        ],
+        "exerciseTitle": "Place 多, estimate the range",
+        "exercisePreview": "Answer all six printed picture prompts with 多.",
+        "exerciseInstruction": "Use the visible quantity as the starting amount. Choose whether 多 follows a round number or a unit.",
+        "exerciseNote": "The source age prompt depends on the moving date 今天. Question 5 uses the textbook’s stable 四歲多 model so the answer stays correct over time.",
+        "exerciseCues": [
+          {
+            "id": "g5-cue-people",
+            "label": "Picture 1",
+            "pinyin": "shí duō ge rén",
+            "detail": "Fifteen people are pictured."
+          },
+          {
+            "id": "g5-cue-tea",
+            "label": "Picture 2",
+            "pinyin": "yì bǎi duō kuài qián",
+            "detail": "Two cups of black tea cost $180."
+          },
+          {
+            "id": "g5-cue-shirt",
+            "label": "Picture 3",
+            "pinyin": "liǎng qiān duō kuài qián",
+            "detail": "The shirt costs $2,200."
+          },
+          {
+            "id": "g5-cue-clock",
+            "label": "Picture 4",
+            "pinyin": "shí’èr diǎn duō",
+            "detail": "The clock shows a time slightly after twelve."
+          },
+          {
+            "id": "g5-cue-age",
+            "label": "Stable age model",
+            "pinyin": "sì suì duō",
+            "detail": "The printed birth-date prompt changes with 今天; the app uses the source model range 4–5."
+          },
+          {
+            "id": "g5-cue-total",
+            "label": "Picture 6",
+            "pinyin": "bā kuài duō",
+            "detail": "Three pens and one flower cost US$8.45 in total."
+          }
+        ],
+        "questions": [
+          {
+            "id": "g5-question-1",
+            "number": 1,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：一共多少人？ B："
+              },
+              {
+                "type": "blank",
+                "id": "g5-q1-answer",
+                "answer": "十多個人",
+                "answerSimplified": "十多个人",
+                "hint": "Fifteen is somewhere between 10 and 20."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g5-q1-correct",
+                "traditional": "十多個人",
+                "simplified": "十多个人",
+                "pinyin": "shí duō ge rén",
+                "meaning": "more than ten people"
+              },
+              {
+                "id": "g5-q1-unit",
+                "traditional": "十個多人",
+                "simplified": "十个多人",
+                "pinyin": "shí ge duō rén",
+                "meaning": "a little more than ten people"
+              },
+              {
+                "id": "g5-q1-hundred",
+                "traditional": "一百多個人",
+                "simplified": "一百多个人",
+                "pinyin": "yì bǎi duō ge rén",
+                "meaning": "more than one hundred people"
+              }
+            ],
+            "correctFeedback": "Fifteen fits the 11–19 range expressed by 十多個人.",
+            "repairFeedback": "Put 多 after the round ten: 十多個人."
+          },
+          {
+            "id": "g5-question-2",
+            "number": 2,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：兩杯紅茶多少錢？ B：",
+                "simplified": "A：两杯红茶多少钱？ B："
+              },
+              {
+                "type": "blank",
+                "id": "g5-q2-answer",
+                "answer": "一百多塊錢",
+                "answerSimplified": "一百多块钱",
+                "hint": "$180 is between $101 and $199."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g5-q2-correct",
+                "traditional": "一百多塊錢",
+                "simplified": "一百多块钱",
+                "pinyin": "yì bǎi duō kuài qián",
+                "meaning": "over one hundred dollars"
+              },
+              {
+                "id": "g5-q2-ten",
+                "traditional": "十多塊錢",
+                "simplified": "十多块钱",
+                "pinyin": "shí duō kuài qián",
+                "meaning": "over ten dollars"
+              },
+              {
+                "id": "g5-q2-unit",
+                "traditional": "一百塊多錢",
+                "simplified": "一百块多钱",
+                "pinyin": "yì bǎi kuài duō qián",
+                "meaning": "only slightly over one hundred dollars"
+              }
+            ],
+            "correctFeedback": "$180 belongs in the 一百多 range.",
+            "repairFeedback": "The hundreds digit is known; put 多 after 一百."
+          },
+          {
+            "id": "g5-question-3",
+            "number": 3,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：這件衣服多少錢？ B：",
+                "simplified": "A：这件衣服多少钱？ B："
+              },
+              {
+                "type": "blank",
+                "id": "g5-q3-answer",
+                "answer": "兩千多塊錢",
+                "answerSimplified": "两千多块钱",
+                "hint": "$2,200 is over $2,000 but below $3,000."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g5-q3-correct",
+                "traditional": "兩千多塊錢",
+                "simplified": "两千多块钱",
+                "pinyin": "liǎng qiān duō kuài qián",
+                "meaning": "over two thousand dollars"
+              },
+              {
+                "id": "g5-q3-hundred",
+                "traditional": "兩百多塊錢",
+                "simplified": "两百多块钱",
+                "pinyin": "liǎng bǎi duō kuài qián",
+                "meaning": "over two hundred dollars"
+              },
+              {
+                "id": "g5-q3-unit",
+                "traditional": "兩千塊多錢",
+                "simplified": "两千块多钱",
+                "pinyin": "liǎng qiān kuài duō qián",
+                "meaning": "only slightly over two thousand dollars"
+              }
+            ],
+            "correctFeedback": "$2,200 fits the 2,001–2,999 range.",
+            "repairFeedback": "Keep the known thousands amount before 多: 兩千多."
+          },
+          {
+            "id": "g5-question-4",
+            "number": 4,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：現在幾點？ B：",
+                "simplified": "A：现在几点？ B："
+              },
+              {
+                "type": "blank",
+                "id": "g5-q4-answer",
+                "answer": "十二點多",
+                "answerSimplified": "十二点多",
+                "hint": "The clock is slightly after twelve."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g5-q4-correct",
+                "traditional": "十二點多",
+                "simplified": "十二点多",
+                "pinyin": "shí’èr diǎn duō",
+                "meaning": "a little after twelve"
+              },
+              {
+                "id": "g5-q4-before",
+                "traditional": "十多二點",
+                "simplified": "十多二点",
+                "pinyin": "shí duō èr diǎn",
+                "meaning": "incorrect 多 position"
+              },
+              {
+                "id": "g5-q4-eleven",
+                "traditional": "十一點多",
+                "simplified": "十一点多",
+                "pinyin": "shíyī diǎn duō",
+                "meaning": "a little after eleven"
+              }
+            ],
+            "correctFeedback": "For a little after a clock hour, 多 follows 點.",
+            "repairFeedback": "Say the hour and 點 first, then 多: 十二點多."
+          },
+          {
+            "id": "g5-question-5",
+            "number": 5,
+            "sectionLabel": "Stable model for the source’s moving-date prompt",
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "「older than four, not yet five」= "
+              },
+              {
+                "type": "blank",
+                "id": "g5-q5-answer",
+                "answer": "四歲多",
+                "answerSimplified": "四岁多",
+                "hint": "Put 多 after the age unit 歲."
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g5-q5-correct",
+                "traditional": "四歲多",
+                "simplified": "四岁多",
+                "pinyin": "sì suì duō",
+                "meaning": "older than four but not yet five"
+              },
+              {
+                "id": "g5-q5-wide",
+                "traditional": "四多歲",
+                "simplified": "四多岁",
+                "pinyin": "sì duō suì",
+                "meaning": "an approximate age in the forties"
+              },
+              {
+                "id": "g5-q5-five",
+                "traditional": "五歲多",
+                "simplified": "五岁多",
+                "pinyin": "wǔ suì duō",
+                "meaning": "older than five but not yet six"
+              }
+            ],
+            "correctFeedback": "多 follows 歲, so the extra amount is less than one full year.",
+            "repairFeedback": "Use number + 歲 + 多 for a partial year beyond that age."
+          },
+          {
+            "id": "g5-question-6",
+            "number": 6,
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "A：這些東西一共多少錢？ B：",
+                "simplified": "A：这些东西一共多少钱？ B："
+              },
+              {
+                "type": "blank",
+                "id": "g5-q6-answer",
+                "answer": "八塊多",
+                "answerSimplified": "八块多",
+                "hint": "US$8.45 is a little more than eight dollars."
+              },
+              {
+                "type": "text",
+                "traditional": "。"
+              }
+            ],
+            "tiles": [
+              {
+                "id": "g5-q6-correct",
+                "traditional": "八塊多",
+                "simplified": "八块多",
+                "pinyin": "bā kuài duō",
+                "meaning": "a little over eight dollars"
+              },
+              {
+                "id": "g5-q6-wide",
+                "traditional": "八多塊",
+                "simplified": "八多块",
+                "pinyin": "bā duō kuài",
+                "meaning": "incorrect placement for this small extra"
+              },
+              {
+                "id": "g5-q6-nine",
+                "traditional": "九塊多",
+                "simplified": "九块多",
+                "pinyin": "jiǔ kuài duō",
+                "meaning": "a little over nine dollars"
+              }
+            ],
+            "correctFeedback": "多 follows the dollar unit because 45 cents is less than one whole dollar.",
+            "repairFeedback": "Use 八 + 塊 + 多 for a small extra beyond eight dollars."
+          }
+        ]
+      }
+    ],
+    "dialogue": {
+      "id": "B1L04-D02",
+      "title": "對話二 · Dialogue 2",
+      "setting": "在餐廳櫃台點餐 · Ordering at the restaurant counter",
+      "printedPages": [
+        100,
+        101,
+        102
+      ],
+      "audioReference": "04-2-1",
+      "grammarFocus": [
+        "萬",
+        "千",
+        "百",
+        "十",
+        "零",
+        "多"
+      ],
+      "lines": [
+        {
+          "id": "b1l04-d2-l1",
+          "speaker": "中明",
+          "text": {
+            "traditional": "小姐，我們要點兩碗牛肉麵和兩杯茶。",
+            "simplified": "小姐，我们要点两碗牛肉面和两杯茶。",
+            "pinyin": "Xiǎojiě, wǒmen yào diǎn liǎng wǎn niúròu miàn hé liǎng bēi chá.",
+            "english": "Miss, we would like to order two bowls of beef noodles and two cups of tea.",
+            "words": [
+              {
+                "id": "b1l04-d2-l1-word-1",
+                "traditional": "小姐",
+                "pinyin": "xiǎojiě",
+                "meaning": "miss"
+              },
+              {
+                "id": "b1l04-d2-l1-word-2",
+                "traditional": "我們",
+                "simplified": "我们",
+                "pinyin": "wǒmen",
+                "meaning": "we; us",
+                "prefix": "，"
+              },
+              {
+                "id": "b1l04-d2-l1-word-3",
+                "traditional": "要",
+                "pinyin": "yào",
+                "meaning": "want"
+              },
+              {
+                "id": "b1l04-d2-l1-word-4",
+                "traditional": "點",
+                "simplified": "点",
+                "pinyin": "diǎn",
+                "meaning": "order from a menu; o’clock"
+              },
+              {
+                "id": "b1l04-d2-l1-word-5",
+                "traditional": "兩碗",
+                "simplified": "两碗",
+                "pinyin": "liǎng wǎn",
+                "meaning": "two bowls of"
+              },
+              {
+                "id": "b1l04-d2-l1-word-6",
+                "traditional": "牛肉麵",
+                "simplified": "牛肉面",
+                "pinyin": "niúròu miàn",
+                "meaning": "beef noodles"
+              },
+              {
+                "id": "b1l04-d2-l1-word-7",
+                "traditional": "和",
+                "pinyin": "hé",
+                "meaning": "and"
+              },
+              {
+                "id": "b1l04-d2-l1-word-8",
+                "traditional": "兩杯",
+                "simplified": "两杯",
+                "pinyin": "liǎng bēi",
+                "meaning": "two cups of"
+              },
+              {
+                "id": "b1l04-d2-l1-word-9",
+                "traditional": "茶",
+                "pinyin": "chá",
+                "meaning": "tea",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "b1l04-d2-l2",
+          "speaker": "女店員",
+          "text": {
+            "traditional": "請問兩位要紅茶還是綠茶？",
+            "simplified": "请问两位要红茶还是绿茶？",
+            "pinyin": "Qǐngwèn liǎng wèi yào hóngchá háishì lǜchá?",
+            "english": "Would you two like black tea or green tea?",
+            "words": [
+              {
+                "id": "b1l04-d2-l2-word-1",
+                "traditional": "請問",
+                "simplified": "请问",
+                "pinyin": "qǐngwèn",
+                "meaning": "may I ask"
+              },
+              {
+                "id": "b1l04-d2-l2-word-2",
+                "traditional": "兩位",
+                "simplified": "两位",
+                "pinyin": "liǎng wèi",
+                "meaning": "two people, polite"
+              },
+              {
+                "id": "b1l04-d2-l2-word-3",
+                "traditional": "要",
+                "pinyin": "yào",
+                "meaning": "want"
+              },
+              {
+                "id": "b1l04-d2-l2-word-4",
+                "traditional": "紅茶",
+                "simplified": "红茶",
+                "pinyin": "hóngchá",
+                "meaning": "black tea"
+              },
+              {
+                "id": "b1l04-d2-l2-word-5",
+                "traditional": "還是",
+                "simplified": "还是",
+                "pinyin": "háishì",
+                "meaning": "or in a question"
+              },
+              {
+                "id": "b1l04-d2-l2-word-6",
+                "traditional": "綠茶",
+                "simplified": "绿茶",
+                "pinyin": "lǜchá",
+                "meaning": "green tea",
+                "suffix": "？"
+              }
+            ]
+          }
+        },
+        {
+          "id": "b1l04-d2-l3",
+          "speaker": "友美",
+          "text": {
+            "traditional": "我要紅茶。",
+            "simplified": "我要红茶。",
+            "pinyin": "Wǒ yào hóngchá.",
+            "english": "I would like black tea.",
+            "words": [
+              {
+                "id": "b1l04-d2-l3-word-1",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
+              },
+              {
+                "id": "b1l04-d2-l3-word-2",
+                "traditional": "要",
+                "pinyin": "yào",
+                "meaning": "want"
+              },
+              {
+                "id": "b1l04-d2-l3-word-3",
+                "traditional": "紅茶",
+                "simplified": "红茶",
+                "pinyin": "hóngchá",
+                "meaning": "black tea",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "b1l04-d2-l4",
+          "speaker": "中明",
+          "text": {
+            "traditional": "請給我們一杯紅茶、一杯綠茶。請問一共多少錢？",
+            "simplified": "请给我们一杯红茶、一杯绿茶。请问一共多少钱？",
+            "pinyin": "Qǐng gěi wǒmen yì bēi hóngchá, yì bēi lǜchá. Qǐngwèn yígòng duōshǎo qián?",
+            "english": "Please give us one black tea and one green tea. How much is it altogether?",
+            "words": [
+              {
+                "id": "b1l04-d2-l4-word-1",
+                "traditional": "請",
+                "simplified": "请",
+                "pinyin": "qǐng",
+                "meaning": "please"
+              },
+              {
+                "id": "b1l04-d2-l4-word-2",
+                "traditional": "給",
+                "simplified": "给",
+                "pinyin": "gěi",
+                "meaning": "give"
+              },
+              {
+                "id": "b1l04-d2-l4-word-3",
+                "traditional": "我們",
+                "simplified": "我们",
+                "pinyin": "wǒmen",
+                "meaning": "we; us"
+              },
+              {
+                "id": "b1l04-d2-l4-word-4",
+                "traditional": "一杯",
+                "pinyin": "yì bēi",
+                "meaning": "one cup of"
+              },
+              {
+                "id": "b1l04-d2-l4-word-5",
+                "traditional": "紅茶",
+                "simplified": "红茶",
+                "pinyin": "hóngchá",
+                "meaning": "black tea"
+              },
+              {
+                "id": "b1l04-d2-l4-word-6",
+                "traditional": "一杯",
+                "pinyin": "yì bēi",
+                "meaning": "one cup of",
+                "prefix": "、"
+              },
+              {
+                "id": "b1l04-d2-l4-word-7",
+                "traditional": "綠茶",
+                "simplified": "绿茶",
+                "pinyin": "lǜchá",
+                "meaning": "green tea"
+              },
+              {
+                "id": "b1l04-d2-l4-word-8",
+                "traditional": "請問",
+                "simplified": "请问",
+                "pinyin": "qǐngwèn",
+                "meaning": "may I ask",
+                "prefix": "。"
+              },
+              {
+                "id": "b1l04-d2-l4-word-9",
+                "traditional": "一共",
+                "pinyin": "yígòng",
+                "meaning": "altogether; in total"
+              },
+              {
+                "id": "b1l04-d2-l4-word-10",
+                "traditional": "多少錢",
+                "simplified": "多少钱",
+                "pinyin": "duōshǎo qián",
+                "meaning": "how much money",
+                "suffix": "？"
+              }
+            ]
+          }
+        },
+        {
+          "id": "b1l04-d2-l5",
+          "speaker": "女店員",
+          "text": {
+            "traditional": "一共兩百一十五塊錢。",
+            "simplified": "一共两百一十五块钱。",
+            "pinyin": "Yígòng liǎng bǎi yīshíwǔ kuài qián.",
+            "english": "It is 215 dollars in total.",
+            "words": [
+              {
+                "id": "b1l04-d2-l5-word-1",
+                "traditional": "一共",
+                "pinyin": "yígòng",
+                "meaning": "altogether; in total"
+              },
+              {
+                "id": "b1l04-d2-l5-word-2",
+                "traditional": "兩",
+                "simplified": "两",
+                "pinyin": "liǎng",
+                "meaning": "two before 百, 千, or a measure word"
+              },
+              {
+                "id": "b1l04-d2-l5-word-3",
+                "traditional": "百",
+                "pinyin": "bǎi",
+                "meaning": "hundred"
+              },
+              {
+                "id": "b1l04-d2-l5-word-4",
+                "traditional": "一",
+                "pinyin": "yī",
+                "meaning": "one"
+              },
+              {
+                "id": "b1l04-d2-l5-word-5",
+                "traditional": "十",
+                "pinyin": "shí",
+                "meaning": "ten"
+              },
+              {
+                "id": "b1l04-d2-l5-word-6",
+                "traditional": "五",
+                "pinyin": "wǔ",
+                "meaning": "five"
+              },
+              {
+                "id": "b1l04-d2-l5-word-7",
+                "traditional": "塊錢",
+                "simplified": "块钱",
+                "pinyin": "kuài qián",
+                "meaning": "dollars",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "b1l04-d2-l6",
+          "speaker": "女店員",
+          "text": {
+            "traditional": "找您七百八十五塊錢，謝謝。",
+            "simplified": "找您七百八十五块钱，谢谢。",
+            "pinyin": "Zhǎo nín qī bǎi bāshíwǔ kuài qián, xièxie.",
+            "english": "Here is 785 dollars in change. Thank you.",
+            "words": [
+              {
+                "id": "b1l04-d2-l6-word-1",
+                "traditional": "找",
+                "pinyin": "zhǎo",
+                "meaning": "give change"
+              },
+              {
+                "id": "b1l04-d2-l6-word-2",
+                "traditional": "您",
+                "pinyin": "nín",
+                "meaning": "you, polite"
+              },
+              {
+                "id": "b1l04-d2-l6-word-3",
+                "traditional": "七",
+                "pinyin": "qī",
+                "meaning": "seven"
+              },
+              {
+                "id": "b1l04-d2-l6-word-4",
+                "traditional": "百",
+                "pinyin": "bǎi",
+                "meaning": "hundred"
+              },
+              {
+                "id": "b1l04-d2-l6-word-5",
+                "traditional": "八",
+                "pinyin": "bā",
+                "meaning": "eight"
+              },
+              {
+                "id": "b1l04-d2-l6-word-6",
+                "traditional": "十",
+                "pinyin": "shí",
+                "meaning": "ten"
+              },
+              {
+                "id": "b1l04-d2-l6-word-7",
+                "traditional": "五",
+                "pinyin": "wǔ",
+                "meaning": "five"
+              },
+              {
+                "id": "b1l04-d2-l6-word-8",
+                "traditional": "塊錢",
+                "simplified": "块钱",
+                "pinyin": "kuài qián",
+                "meaning": "dollars"
+              },
+              {
+                "id": "b1l04-d2-l6-word-9",
+                "traditional": "謝謝",
+                "simplified": "谢谢",
+                "pinyin": "xièxie",
+                "meaning": "thank you",
+                "prefix": "，",
+                "suffix": "。"
+              }
+            ]
+          }
+        },
+        {
+          "id": "b1l04-d2-l7",
+          "speaker": "中明",
+          "text": {
+            "traditional": "一共兩百多塊錢，好便宜！",
+            "simplified": "一共两百多块钱，好便宜！",
+            "pinyin": "Yígòng liǎng bǎi duō kuài qián, hǎo piányi!",
+            "english": "It is a little over 200 dollars in total. So inexpensive!",
+            "words": [
+              {
+                "id": "b1l04-d2-l7-word-1",
+                "traditional": "一共",
+                "pinyin": "yígòng",
+                "meaning": "altogether; in total"
+              },
+              {
+                "id": "b1l04-d2-l7-word-2",
+                "traditional": "兩",
+                "simplified": "两",
+                "pinyin": "liǎng",
+                "meaning": "two before 百, 千, or a measure word"
+              },
+              {
+                "id": "b1l04-d2-l7-word-3",
+                "traditional": "百",
+                "pinyin": "bǎi",
+                "meaning": "hundred"
+              },
+              {
+                "id": "b1l04-d2-l7-word-4",
+                "traditional": "多",
+                "pinyin": "duō",
+                "meaning": "more than; over"
+              },
+              {
+                "id": "b1l04-d2-l7-word-5",
+                "traditional": "塊錢",
+                "simplified": "块钱",
+                "pinyin": "kuài qián",
+                "meaning": "dollars"
+              },
+              {
+                "id": "b1l04-d2-l7-word-6",
+                "traditional": "好",
+                "pinyin": "hǎo",
+                "meaning": "very; good",
+                "prefix": "，"
+              },
+              {
+                "id": "b1l04-d2-l7-word-7",
+                "traditional": "便宜",
+                "pinyin": "piányi",
+                "meaning": "inexpensive",
+                "suffix": "！"
+              }
+            ]
+          }
+        }
+      ],
+      "comprehension": {
+        "prompt": "中明和友美一共付多少錢？",
+        "options": [
+          "兩百一十五塊錢",
+          "七百八十五塊錢",
+          "兩百多杯茶"
+        ],
+        "answer": "兩百一十五塊錢",
+        "hint": "The clerk states the exact total before giving change."
+      }
+    },
+    "completionTitle": "Lesson 4 grammar complete — exact and approximate prices are readable.",
+    "completionDescription": "You built large numbers by place value and placed 多 to express useful approximate ranges.",
+    "nextBookLabel": "Next in the book · Review the lesson patterns."
+  }
+}

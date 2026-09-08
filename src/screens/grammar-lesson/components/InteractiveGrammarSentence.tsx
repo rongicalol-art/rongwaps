@@ -118,7 +118,7 @@ export function InteractiveGrammarSentence({
                   '-mx-0.5 rounded-[8px] px-0.5 font-chinese font-black leading-tight outline-none transition-colors hover:bg-brand-primary-soft focus-visible:bg-brand-primary-soft focus-visible:ring-2 focus-visible:ring-brand-primary/35 active:bg-brand-primary-soft',
                   teachingTextSizeClass,
                   isFocus
-                    ? 'bg-transparent text-brand-primary'
+                    ? 'text-brand-primary font-black'
                     : tone === 'accent' ? 'text-brand-primary' : 'text-ui-ink-strong',
                   isOpen && 'bg-brand-primary-soft',
                   isAligned && 'bg-brand-primary text-ui-surface hover:bg-brand-primary focus-visible:bg-brand-primary',
@@ -127,7 +127,7 @@ export function InteractiveGrammarSentence({
                 {text}
               </button>
               {word.suffix && (
-                <span className={cn('font-chinese font-black leading-tight text-ui-ink-strong', teachingTextSizeClass)}>
+                <span className={cn('-ml-0.5 font-chinese font-black leading-tight text-ui-ink-strong', teachingTextSizeClass)}>
                   {word.suffix}
                 </span>
               )}

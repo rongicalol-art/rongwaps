@@ -1,5 +1,4 @@
-import { AppIcon, PlayfulNavIcon, type PlayfulNavIconName } from '../../lib/widgets';
-import { BrandWordmark } from './BrandWordmark';
+import { AppIcon, BrandWordmark, PlayfulNavIcon, type PlayfulNavIconName } from '../../lib/widgets';
 
 export interface SideNavProps {
   activeTab: 'path' | 'search' | 'library' | 'profile';
@@ -30,7 +29,10 @@ export function SideNav({
   ] as const;
 
   return (
-    <nav className="z-50 flex h-full w-[256px] shrink-0 flex-col bg-ui-surface px-4 pb-4 pt-7">
+    // The bar shell (LayoutShell) paints bg-ui-surface; this nav stays
+    // transparent so the white card shows through. Active items use a soft
+    // canvas chip so they stay visible on the white bar.
+    <nav className="z-50 flex h-full w-[256px] shrink-0 flex-col bg-transparent px-4 pb-4 pt-7">
       <div className="mb-7 flex items-center justify-between gap-2 px-2">
         <BrandWordmark />
       </div>
@@ -48,7 +50,7 @@ export function SideNav({
               className={`group relative flex h-16 w-full items-center overflow-hidden rounded-[20px] border-b-4 px-1 outline-none transition-[transform,background-color,border-color] duration-150 focus-visible:ring-4 focus-visible:ring-brand-primary/20 active:translate-y-1 active:border-b-0 ${
                 isActuallyActive 
                   ? `${buttonEdgeClass} bg-ui-canvas`
-                  : 'border-transparent hover:bg-ui-canvas'
+                  : 'border-transparent hover:bg-ui-hover'
               }`}
               aria-current={isActuallyActive ? 'page' : undefined}
             >
@@ -72,7 +74,7 @@ export function SideNav({
         <button
           type="button"
           onClick={onSettingsClick}
-          className="group flex h-12 w-full items-center gap-5 rounded-[18px] px-4 text-ui-muted transition-colors hover:bg-ui-canvas hover:text-ui-ink-strong active:scale-[0.98]"
+          className="group flex h-12 w-full items-center gap-5 rounded-[18px] px-4 text-ui-muted transition-colors hover:bg-ui-hover hover:text-ui-ink-strong active:scale-[0.98]"
           aria-label="Open app settings"
           title="Settings"
         >

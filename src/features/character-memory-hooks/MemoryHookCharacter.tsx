@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, useMotionValue, useReducedMotion, useSpring } from 'motion/react';
 import { AppIcon } from '../../lib/widgets';
-import { getCachedMnemonic } from '../../services/aiService';
+import { getCachedMnemonic } from '../../services/mnemonicCache';
 import { cn } from '../../utils/cn';
 import { normalizeMnemonic, renderHookText } from './hookText';
 

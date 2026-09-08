@@ -6,7 +6,7 @@ import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
 import { shuffleItems } from '../../../utils/sessionOrder';
 import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
 import { queueMissedItem } from '../../../utils/mistakeQueue';
-import { getCurriculumSessionKey } from '../../../utils/lessonPartSelection';
+import { getCurriculumSessionKey, SHARED_REVIEW_SESSION_KEY } from '../../../utils/lessonPartSelection';
 import { getSessionStartIndex, retainCurrentCardIndex } from '../../../utils/sessionProgress';
 import { buildMeaningChoices } from '../../../utils/meaningChoices';
 
@@ -24,7 +24,7 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
   const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
   const autoPlayAudio = usePracticePreferencesStore((state) => state.autoPlayAudio);
   const repeatMistakes = usePracticePreferencesStore((state) => state.repeatMistakes);
-  const sessionKey = isReviewDeck ? `shared_deck_review_${activeBookId}` : isLibraryDeck ? `shared_deck_library_${libraryActiveFolder}` : getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
+  const sessionKey = isReviewDeck ? SHARED_REVIEW_SESSION_KEY : isLibraryDeck ? `shared_deck_library_${libraryActiveFolder}` : getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
   
   const [screenState, setScreenState] = useState<'playing' | 'complete'>('playing');
   const [currentIndex, setCurrentIndex] = useState(() => {

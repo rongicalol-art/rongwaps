@@ -1,0 +1,4 @@
+interface:
+  display_name: "RongWaps UI Director"
+  short_description: "Design premium, playful RongWaps learning interfaces"
+  default_prompt: "Use $rongwaps-ui-director to improve this RongWaps screen with a cohesive premium visual direction."

@@ -1,9 +1,10 @@
 import { AppIcon, IconActionButton } from '../../../lib/widgets';
 import { GrammarFocusText } from './GrammarFocusText';
 import { audioService } from '../../../services/audioService';
-import type { GrammarWordToken, InteractiveGrammarPage } from '../../../types/models';
+import type { GrammarLessonExample, GrammarWordToken, InteractiveGrammarPage } from '../../../types/models';
 import { getGrammarText } from './GrammarText';
 import { GrammarExampleText } from './GrammarExampleText';
+import { cn } from '../../../utils/cn';
 
 interface GrammarExamplesSectionProps {
   page: InteractiveGrammarPage;
@@ -12,6 +13,10 @@ interface GrammarExamplesSectionProps {
   showTranslation: boolean;
   onOpenWord: (word: string) => void;
   contextTokens: GrammarWordToken[];
+  examples?: GrammarLessonExample[];
+  hideHeader?: boolean;
+  title?: string;
+  variant?: 'cards' | 'clean';
 }
 
 export function GrammarExamplesSection({
@@ -21,9 +26,15 @@ export function GrammarExamplesSection({
   showTranslation,
   onOpenWord,
   contextTokens,
+  examples,
+  hideHeader = false,
+  title = 'Examples',
+  variant = 'clean',
 }: GrammarExamplesSectionProps) {
+  const activeExamples = examples ?? page.examples;
+
   const speakExample = (exampleIndex: number) => {
-    const example = page.examples[exampleIndex];
+    const example = activeExamples[exampleIndex];
     return audioService.speakText(
       getGrammarText(example.text, characterPreference),
       characterPreference === 'traditional' ? 'zh-TW' : 'zh-CN',
@@ -31,23 +42,39 @@ export function GrammarExamplesSection({
     );
   };
 
+  if (activeExamples.length === 0) return null;
+
+  const headingId = `examples-heading-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+
   return (
-    <section aria-labelledby="examples-heading" className="mt-10">
-      <div className="mb-3 flex items-center justify-between gap-3">
-        <h2 id="examples-heading" className="text-sm font-black uppercase tracking-[0.08em] text-ui-muted-strong">
-          Examples
-        </h2>
-        <span className="text-xs font-bold text-ui-muted">
-          {page.examples.length} {page.examples.length === 1 ? 'sentence' : 'sentences'}
-        </span>
-      </div>
-      <div className="space-y-3">
-        {page.examples.map((example, index) => (
+    <section aria-labelledby={headingId} className={cn(!hideHeader && 'mt-10')}>
+      {!hideHeader && (
+        <div className="mb-3 flex items-center justify-between gap-3">
+          <h2 id={headingId} className="text-xs font-black uppercase tracking-[0.08em] text-ui-muted-strong">
+            {title}
+          </h2>
+        </div>
+      )}
+      <div
+        className={cn(
+          variant === 'cards'
+            ? 'space-y-3'
+            : 'rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface divide-y divide-ui-divider/60 overflow-hidden'
+        )}
+      >
+        {activeExamples.map((example, index) => (
           <div
             key={example.id}
-            className="flex items-start gap-3.5 rounded-feature bg-ui-surface p-4 border-b-[length:var(--depth-md)] border-ui-border sm:gap-4 sm:p-5"
+            className={cn(
+              'flex items-start gap-3.5 transition-colors sm:gap-4',
+              variant === 'cards'
+                ? 'rounded-feature bg-ui-surface p-4 border-b-[length:var(--depth-md)] border-ui-border sm:p-5'
+                : 'p-3.5 sm:p-4 hover:bg-ui-hover/40'
+            )}
           >
-            <span className="flex h-7 w-7 sm:h-8 sm:w-8 shrink-0 select-none items-center justify-center rounded-full bg-feedback-warning text-xs sm:text-sm font-black text-ui-ink-strong border-b-[length:var(--depth-sm)] border-feedback-warning-edge mt-0.5">
+            <span
+              className="flex h-7 w-7 shrink-0 select-none items-center justify-center rounded-full bg-feedback-warning text-xs font-black text-ui-ink-strong border-b-[length:var(--depth-sm)] border-feedback-warning-edge sm:h-8 sm:w-8 sm:text-sm mt-0.5"
+            >
               {example.number}
             </span>
 
@@ -56,7 +83,7 @@ export function GrammarExamplesSection({
                 <p className="mb-2 text-xs font-bold leading-snug text-ui-muted-strong">
                   <span className="font-black text-brand-primary">Focus · </span>
                   <GrammarFocusText
-                    text={example.teachingNote}
+                    text={example.teachingNote.replace(/^Part\s+\d+\s*·\s*/i, '')}
                     terms={page.focusTerms}
                     contextTokens={contextTokens}
                     characterPreference={characterPreference}

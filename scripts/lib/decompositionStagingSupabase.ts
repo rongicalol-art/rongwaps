@@ -1,5 +1,5 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
-import type { JsonObject, StagingPlan } from '../../src/features/character-decomposition/staging/model';
+import type { JsonObject, StagingPlan } from '../character-decomposition/staging/model';
 
 const APPEND_ONLY_BEFORE_RELEASE = [
   'decomposition_source_records',

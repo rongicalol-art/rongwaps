@@ -4,7 +4,7 @@ import { ScreenSkeleton } from '../../lib/widgets';
 import { QuizChoices } from './QuizChoices';
 import { QuizTyping } from './QuizTyping';
 import { useAppStore } from '../../store/useAppStore';
-import { getCurriculumSessionKey } from '../../utils/lessonPartSelection';
+import { getCurriculumSessionKey, SHARED_REVIEW_SESSION_KEY } from '../../utils/lessonPartSelection';
 import type { QuizMode } from '../../types/models';
 
 interface QuizScreenProps {
@@ -13,6 +13,8 @@ interface QuizScreenProps {
   isLibraryDeck?: boolean;
   isReviewDeck?: boolean;
   onClose?: () => void;
+  onContinue?: () => void;
+  continueLabel?: string;
   mode?: QuizMode;
 }
 
@@ -22,6 +24,8 @@ export function QuizScreen({
   isLibraryDeck = false,
   isReviewDeck = false,
   onClose,
+  onContinue,
+  continueLabel,
   mode = 'choices',
 }: QuizScreenProps) {
   const { cards, isLoading } = useQuizLoader(activeBookId, selectedLessons, isLibraryDeck, isReviewDeck);
@@ -29,7 +33,7 @@ export function QuizScreen({
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
 
   const sessionKey = isReviewDeck
-    ? `shared_deck_review_${activeBookId}`
+    ? SHARED_REVIEW_SESSION_KEY
     : isLibraryDeck
       ? `shared_deck_library_${libraryActiveFolder}`
       : getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
@@ -56,6 +60,8 @@ export function QuizScreen({
                 cards={cards}
                 sessionKey={sessionKey}
                 onEnd={onClose || (() => {})}
+                onContinue={onContinue}
+                continueLabel={continueLabel}
               />
             ) : (
               <QuizTyping
@@ -63,6 +69,8 @@ export function QuizScreen({
                 cards={cards}
                 sessionKey={`${sessionKey}:typing`}
                 onEnd={onClose || (() => {})}
+                onContinue={onContinue}
+                continueLabel={continueLabel}
               />
             )}
           </motion.div>

@@ -56,10 +56,25 @@ export default defineConfig(() => {
       emptyOutDir: true,
       rollupOptions: {
         output: {
-          manualChunks: {
-            vendor: ['react', 'react-dom', 'motion', 'lucide-react'],
-            // Supabase client is heavy (~200 kB) and only needed for auth/sync paths.
-            supabase: ['@supabase/supabase-js'],
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (
+                id.includes('node_modules/react/') ||
+                id.includes('node_modules/react-dom/') ||
+                id.includes('node_modules/scheduler/')
+              ) {
+                return 'vendor-react';
+              }
+              if (id.includes('motion')) {
+                return 'vendor-motion';
+              }
+              if (id.includes('@supabase')) {
+                return 'supabase';
+              }
+              if (id.includes('hanzi-writer')) {
+                return 'hanzi-writer';
+              }
+            }
           }
         }
       }
@@ -70,8 +85,9 @@ export default defineConfig(() => {
       },
     },
     server: {
+      allowedHosts: true as const,
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
+      // Do not modifyâ€”file watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',
     },
   };
