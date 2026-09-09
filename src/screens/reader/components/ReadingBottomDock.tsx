@@ -186,130 +186,71 @@ export function ReadingBottomDock({
         )}
       >
 
-        {/* ── Secondary row: animated in/out when waveform is tapped ── */}
+        {/* ── Controls row: speed · pinyin · translation ── */}
         <AnimatePresence>
           {isControlsOpen && (
             <motion.div
               key="controls"
-              initial={{ opacity: 0, y: 6, height: 0 }}
+              initial={{ opacity: 0, y: 8, height: 0 }}
               animate={{ opacity: 1, y: 0, height: 'auto' }}
-              exit={{ opacity: 0, y: 4, height: 0 }}
+              exit={{ opacity: 0, y: 5, height: 0 }}
               transition={{ duration: 0.18, ease: [0.32, 0.72, 0, 1] }}
               className="overflow-hidden"
             >
-              <div className="flex items-center justify-between px-1 pb-0.5">
-                {/* Sentence navigation */}
-                <div className="flex items-center gap-0.5">
-                  <IconActionButton
-                    onClick={onPrevSentence}
-                    size="sm"
-                    variant="quiet"
-                    icon={<AppIcon name="back" size={16} />}
-                    label="Previous sentence"
-                    disabled={!canKaraoke}
-                  />
-                  <IconActionButton
-                    onClick={onNextSentence}
-                    size="sm"
-                    variant="quiet"
-                    icon={<AppIcon name="forward" size={16} />}
-                    label="Next sentence"
-                    disabled={!canKaraoke}
-                  />
-                </div>
+              <div className="flex items-center justify-center gap-2 pb-2 px-2">
+                {/* Speed chip — cycles through speeds */}
+                <button
+                  type="button"
+                  onClick={onCycleSpeed}
+                  aria-label="Playback speed"
+                  className={cn(
+                    'flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-black tabular-nums transition-colors focus-ring-inline',
+                    'bg-ui-surface text-ui-ink-strong hover:bg-ui-hover',
+                  )}
+                >
+                  <AppIcon name="slowAudio" size={13} />
+                  <span>{playbackSpeed}×</span>
+                </button>
 
-                {/* Speed + aids */}
-                <div className="flex items-center gap-1.5">
-                  <button
-                    type="button"
-                    onClick={onCycleSpeed}
-                    title="Playback speed"
-                    className="flex h-8 min-w-[36px] items-center justify-center rounded-compact border-b-[length:var(--depth-sm)] border-b-ui-border bg-ui-surface px-2 text-xs font-black tabular-nums text-ui-ink-strong transition-all active:translate-y-[length:var(--depth-sm)] active:border-b-0 hover:bg-ui-hover focus-ring"
-                  >
-                    {playbackSpeed}×
-                  </button>
+                {/* Divider */}
+                <span aria-hidden="true" className="h-4 w-px bg-ui-divider shrink-0" />
 
-                  <div ref={aidsPopoverRef} className="relative">
-                    <button
-                      type="button"
-                      onClick={() => setIsAidsPopoverOpen((o) => !o)}
-                      aria-label="Reading aids"
-                      aria-haspopup="dialog"
-                      aria-expanded={isAidsPopoverOpen}
-                      className={cn(
-                        'relative flex h-8 w-8 items-center justify-center rounded-compact transition-all active:translate-y-[length:var(--depth-sm)] active:border-b-0 focus-ring',
-                        hasAidActive || isAidsPopoverOpen
-                          ? 'border-b-[length:var(--depth-sm)] border-b-brand-primary-edge bg-brand-primary text-white'
-                          : 'border-b-[length:var(--depth-sm)] border-b-ui-border bg-ui-surface text-ui-ink hover:bg-ui-hover',
-                      )}
-                    >
-                      <span aria-hidden="true" className="font-chinese text-[15px] font-bold leading-none select-none">文</span>
-                      {hasAidActive && !isAidsPopoverOpen && (
-                        <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-feedback-success border border-ui-surface" />
-                      )}
-                    </button>
+                {/* Pinyin chip */}
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked={showPinyin}
+                  onClick={onTogglePinyin}
+                  className={cn(
+                    'flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-black transition-colors focus-ring-inline',
+                    showPinyin
+                      ? 'bg-brand-primary/12 text-brand-primary'
+                      : 'bg-ui-surface text-ui-muted-strong hover:bg-ui-hover hover:text-ui-ink-strong',
+                  )}
+                >
+                  <AppIcon name="describe" size={13} />
+                  <span>Pinyin</span>
+                </button>
 
-                    <AnimatePresence>
-                      {isAidsPopoverOpen && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 6, scale: 0.97 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: 4, scale: 0.97 }}
-                          transition={{ duration: 0.15, ease: [0.32, 0.72, 0, 1] }}
-                          className="absolute right-0 bottom-full z-50 mb-2.5 w-56 sm:w-60 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-2 shadow-ambient-lg text-left"
-                        >
-                          <div role="menu" aria-label="Reading aids" className="flex flex-col gap-1">
-                            {([
-                              { label: 'Translation', active: showMeaning, onToggle: onToggleMeaning },
-                              { label: 'Pinyin', active: showPinyin, onToggle: onTogglePinyin },
-                            ] as const).map(({ label, active, onToggle }) => (
-                              <button
-                                key={label}
-                                type="button"
-                                role="switch"
-                                aria-checked={active}
-                                onClick={onToggle}
-                                className={cn(
-                                  'flex min-h-11 w-full items-center justify-between rounded-compact px-3.5 py-2 text-sm font-extrabold transition-colors outline-none focus-ring',
-                                  active ? 'bg-brand-primary/10 text-brand-primary' : 'text-ui-ink-strong hover:bg-ui-hover',
-                                )}
-                              >
-                                <span>{label}</span>
-                                <span
-                                  aria-hidden="true"
-                                  className={cn('relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors duration-200', active ? 'bg-brand-primary' : 'bg-ui-divider')}
-                                >
-                                  <span className={cn('pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-b border-b-ui-border ring-0 transition duration-200 translate-y-0.5', active ? 'translate-x-[18px]' : 'translate-x-0.5')} />
-                                </span>
-                              </button>
-                            ))}
+                {/* Divider */}
+                <span aria-hidden="true" className="h-4 w-px bg-ui-divider shrink-0" />
 
-                            {onToggleHoverDefinitions && (
-                              <button
-                                type="button"
-                                role="switch"
-                                aria-checked={showHoverDefinitions}
-                                onClick={onToggleHoverDefinitions}
-                                className={cn(
-                                  'flex min-h-11 w-full items-center justify-between rounded-compact px-3.5 py-2 text-sm font-extrabold transition-colors outline-none focus-ring',
-                                  showHoverDefinitions ? 'bg-brand-primary/10 text-brand-primary' : 'text-ui-ink-strong hover:bg-ui-hover',
-                                )}
-                              >
-                                <span>Hover Definitions</span>
-                                <span
-                                  aria-hidden="true"
-                                  className={cn('relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors duration-200', showHoverDefinitions ? 'bg-brand-primary' : 'bg-ui-divider')}
-                                >
-                                  <span className={cn('pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-b border-b-ui-border ring-0 transition duration-200 translate-y-0.5', showHoverDefinitions ? 'translate-x-[18px]' : 'translate-x-0.5')} />
-                                </span>
-                              </button>
-                            )}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </div>
+                {/* Translation chip */}
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked={showMeaning}
+                  onClick={onToggleMeaning}
+                  className={cn(
+                    'flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-black transition-colors focus-ring-inline',
+                    showMeaning
+                      ? 'bg-brand-primary/12 text-brand-primary'
+                      : 'bg-ui-surface text-ui-muted-strong hover:bg-ui-hover hover:text-ui-ink-strong',
+                  )}
+                >
+                  <AppIcon name="eye" size={13} />
+                  <span>Translate</span>
+                </button>
               </div>
             </motion.div>
           )}
@@ -322,7 +263,7 @@ export function ReadingBottomDock({
             type="button"
             onClick={onTogglePlay}
             aria-label={playing ? 'Pause dialogue' : 'Play dialogue'}
-            className="shrink-0 flex h-9 w-9 items-center justify-center rounded-full border-b-[length:var(--depth-md)] border-b-brand-primary-edge bg-brand-primary text-white transition-all active:translate-y-[length:var(--depth-md)] active:border-b-0 hover:brightness-105 focus-ring"
+            className="shrink-0 flex h-9 w-9 items-center justify-center rounded-full bg-brand-primary text-white transition-all hover:brightness-105 active:scale-95 focus-ring"
           >
             <AppIcon name={playing ? 'pause' : 'play'} size={18} />
           </button>
