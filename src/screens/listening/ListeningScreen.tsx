@@ -65,8 +65,8 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
     setBreakdownOpen(false);
   }, [currentCard?.id]);
   const partSegments = useMemo(
-    () => (isShuffled ? [] : buildPracticePartSegments(playlist)),
-    [isShuffled, playlist],
+    () => (isShuffled || isReviewDeck || isLibraryDeck ? [] : buildPracticePartSegments(playlist)),
+    [isLibraryDeck, isReviewDeck, isShuffled, playlist],
   );
 
   usePracticeHeaderRegistration({

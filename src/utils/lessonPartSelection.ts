@@ -99,7 +99,11 @@ export function isCardInPartSelection(
   selections: LessonPartSelectionMap,
 ): boolean {
   const selection = selections[getLessonSelectionKey(card.bookId, card.lessonId)];
-  if (!selection || selection === 'all') return true;
+  if (selection === 'all') return true;
+  if (!selection) {
+    // If no part selection is recorded for this lesson, default to Part 1 (matching ActivityModals and toggleLesson)
+    return (card.partId ?? 1) === 1;
+  }
   return selection.includes(card.partId ?? 1);
 }
 
@@ -114,7 +118,7 @@ export function getCurriculumSelectionFingerprint(
     .sort((a, b) => a - b)
     .map((lessonId) => {
       const selection = selections[getLessonSelectionKey(bookId, lessonId)];
-      return `${lessonId}:${selection === 'all' || !selection ? 'all' : selection.join('.')}`;
+      return `${lessonId}:${selection === 'all' ? 'all' : (selection ?? [1]).join('.')}`;
     })
     .join(',');
 }

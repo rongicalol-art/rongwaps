@@ -91,8 +91,8 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
   }, [setIsAnimatingStrokes]);
 
   const partSegments = React.useMemo(
-    () => (isShuffled ? [] : buildPracticePartSegments(playlist)),
-    [isShuffled, playlist],
+    () => (isShuffled || isReviewDeck || isLibraryDeck ? [] : buildPracticePartSegments(playlist)),
+    [isLibraryDeck, isReviewDeck, isShuffled, playlist],
   );
 
   usePracticeHeaderRegistration({

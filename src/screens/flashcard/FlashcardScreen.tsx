@@ -154,8 +154,8 @@ export function FlashcardScreen({
     resetAll();
   }, [resetAll, stopFlow]);
   const partSegments = useMemo(
-    () => (isShuffled ? [] : buildPracticePartSegments(cards)),
-    [cards, isShuffled],
+    () => (isShuffled || isReviewDeck || isLibraryDeck ? [] : buildPracticePartSegments(cards)),
+    [cards, isLibraryDeck, isReviewDeck, isShuffled],
   );
 
   // Header semantics: cards mode reports live session position (1 / N);

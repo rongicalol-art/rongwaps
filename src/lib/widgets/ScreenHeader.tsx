@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { cn } from '../../utils/cn';
 import { AppIcon } from './AppIcon';
 import { IconActionButton } from './IconActionButton';
-import { PracticePartProgressRail, StudyPartProgressRail } from './PartProgressRail';
+import { StudyPartProgressRail } from './PartProgressRail';
 import type { CourseLessonPartProgress, PartSegment } from '../../types/models';
 import { visibleProgressWidth } from '../../utils/progress';
 
@@ -102,16 +102,6 @@ export function ScreenHeader({
                   currentIndex={currentIndex ?? 0}
                   totalCount={totalCount ?? 0}
                   density={progressSize === 'compact' ? 'compact' : 'default'}
-                  className="w-full"
-                />
-              ) : partSegments.length > 1 && currentIndex !== undefined && totalCount !== undefined ? (
-                <PracticePartProgressRail
-                  segments={partSegments}
-                  currentIndex={currentIndex}
-                  totalCount={totalCount}
-                  density={progressSize === 'compact' ? 'compact' : 'default'}
-                  ariaLabel={progressAriaLabel}
-                  unitLabel={progressUnitLabel}
                   className="w-full"
                 />
               ) : (

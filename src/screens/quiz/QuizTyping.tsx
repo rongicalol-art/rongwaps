@@ -160,9 +160,10 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue, 
     advanceWrong: false,
     blocked: Boolean(activeBreakdown),
   });
+  const isNonCurriculum = sessionKey.includes('review') || sessionKey.includes('library');
   const partSegments = useMemo(
-    () => (isShuffled ? [] : buildPracticePartSegments(activeCards)),
-    [activeCards, isShuffled],
+    () => (isShuffled || isNonCurriculum ? [] : buildPracticePartSegments(activeCards)),
+    [activeCards, isNonCurriculum, isShuffled],
   );
   usePracticeHeaderRegistration({
     currentIndex,

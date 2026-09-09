@@ -9,6 +9,8 @@ import type { ActivityType } from '../../types/models';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { getInteractiveGrammarManifestForLesson } from '../../data/interactiveGrammarManifest';
 import { fetchVocabulary } from '../../services/vocabularyService';
+import { vocabularyCache } from '../../utils/cache';
+import type { Flashcard } from '../../data/flashcards';
 import type { CourseLessonPartProgress } from '../../types/models';
 import {
   getCurriculumSessionKey,
@@ -112,10 +114,33 @@ export function ActivityModals({
   const completedGrammarPageIds = useGrammarLessonStore((state) => state.completedPageIds);
   const selectedLessonParts = useAppStore(state => state.selectedLessonParts);
   const setSelectedLessonParts = useAppStore(state => state.setSelectedLessonParts);
-  const [studyLessonParts, setStudyLessonParts] = useState<CourseLessonPartProgress[]>([]);
   const studyLessonId = !isLibraryMode && !isReviewMode && selectedLessons.length === 1
     ? selectedLessons[0]
     : null;
+
+  const getCachedParts = useCallback((lessonId: number): CourseLessonPartProgress[] => {
+    const cacheKey = `vocab-${activeBookId}-${lessonId}`;
+    const allCacheKey = `vocab-${activeBookId}-all`;
+    const cached = vocabularyCache.get<Flashcard[]>(cacheKey) || vocabularyCache.get<Flashcard[]>(allCacheKey);
+    const lessonCards = cached?.filter((c) => c.lessonId === lessonId);
+    if (!lessonCards || lessonCards.length === 0) return [];
+    const learnedCards = useAppStore.getState().learnedCards;
+    return Array.from(
+      lessonCards.reduce((map, card) => {
+        const partId = card.partId ?? 1;
+        const current = map.get(partId) ?? { id: partId, wordCount: 0, learnedCount: 0, isSelected: false };
+        current.wordCount += 1;
+        if (learnedCards.includes(card.id)) current.learnedCount += 1;
+        map.set(partId, current);
+        return map;
+      }, new Map<number, CourseLessonPartProgress>()).values(),
+    ).sort((a, b) => a.id - b.id);
+  }, [activeBookId]);
+
+  const [studyLessonParts, setStudyLessonParts] = useState<CourseLessonPartProgress[]>(() => {
+    if (!studyLessonId) return [];
+    return getCachedParts(studyLessonId);
+  });
   const studySelectionKey = studyLessonId === null
     ? null
     : getLessonSelectionKey(activeBookId, studyLessonId);
@@ -192,6 +217,11 @@ export function ActivityModals({
       return;
     }
 
+    const cachedParts = getCachedParts(studyLessonId);
+    if (cachedParts.length > 0) {
+      setStudyLessonParts(cachedParts);
+    }
+
     fetchVocabulary(activeBookId, studyLessonId).then((cards) => {
       if (!isMounted) return;
       const learnedCards = useAppStore.getState().learnedCards;
@@ -207,13 +237,13 @@ export function ActivityModals({
       ).sort((a, b) => a.id - b.id);
       setStudyLessonParts(parts);
     }).catch(() => {
-      if (isMounted) setStudyLessonParts([]);
+      if (isMounted && cachedParts.length === 0) setStudyLessonParts([]);
     });
 
     return () => {
       isMounted = false;
     };
-  }, [activeActivity, activeBookId, studyLessonId]);
+  }, [activeActivity, activeBookId, getCachedParts, studyLessonId]);
 
   const toggleStudyPart = useCallback((partId: number) => {
     if (!studyLessonId || !studySelectionKey || visibleStudyParts.length === 0) return;
