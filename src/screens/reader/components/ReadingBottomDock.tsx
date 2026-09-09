@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { AppIcon, IconActionButton } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
@@ -33,6 +33,37 @@ function formatTime(seconds: number): string {
   return `${mins}:${secs.toString().padStart(2, '0')}`;
 }
 
+/** Animated waveform bars — bounce while playing */
+function WaveformBars({ playing }: { playing: boolean }) {
+  const bars = useMemo(() => [
+    { height: 10, delay: 0 },
+    { height: 18, delay: 0.1 },
+    { height: 14, delay: 0.2 },
+    { height: 22, delay: 0.05 },
+    { height: 12, delay: 0.15 },
+  ], []);
+
+  return (
+    <div aria-hidden="true" className="flex items-center gap-[3px] h-6 shrink-0">
+      {bars.map((bar, i) => (
+        <motion.span
+          key={i}
+          className="block w-[3px] rounded-full bg-brand-primary/50"
+          animate={playing
+            ? { scaleY: [1, 1.8, 0.55, 1.5, 1], opacity: [0.45, 1, 0.55, 1, 0.45] }
+            : { scaleY: 0.3, opacity: 0.25 }
+          }
+          transition={playing
+            ? { duration: 0.85, repeat: Infinity, delay: bar.delay, ease: 'easeInOut' }
+            : { duration: 0.3 }
+          }
+          style={{ height: bar.height, originY: 0.5 }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export function ReadingBottomDock({
   isVisible = true,
   playing,
@@ -64,15 +95,11 @@ export function ReadingBottomDock({
 
   useEffect(() => {
     if (!isAidsPopoverOpen) return;
-    const handlePointerDown = (event: PointerEvent) => {
-      if (!aidsPopoverRef.current?.contains(event.target as Node)) {
-        setIsAidsPopoverOpen(false);
-      }
+    const handlePointerDown = (e: PointerEvent) => {
+      if (!aidsPopoverRef.current?.contains(e.target as Node)) setIsAidsPopoverOpen(false);
     };
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setIsAidsPopoverOpen(false);
-      }
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsAidsPopoverOpen(false);
     };
     document.addEventListener('pointerdown', handlePointerDown);
     document.addEventListener('keydown', handleKeyDown);
@@ -82,11 +109,9 @@ export function ReadingBottomDock({
     };
   }, [isAidsPopoverOpen]);
 
-
   const progressPercent = totalDuration > 0 ? (currentTime / totalDuration) * 100 : 0;
   const displayTime = isDragging ? dragTime : currentTime;
 
-  // Handle Scrubbing
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     e.preventDefault();
     if (!trackRef.current || totalDuration <= 0) return;
@@ -115,49 +140,169 @@ export function ReadingBottomDock({
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      onSeek(Math.max(0, currentTime - 3));
-    } else if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      onSeek(Math.min(totalDuration, currentTime + 3));
-    }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); onSeek(Math.max(0, currentTime - 3)); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); onSeek(Math.min(totalDuration, currentTime + 3)); }
   };
+
+  const hasAidActive = showPinyin || showMeaning;
 
   return (
     <motion.div
       animate={{ y: isVisible ? 0 : 180 }}
       transition={{ type: 'spring', stiffness: 600, damping: 40, mass: 0.4 }}
-      className="pointer-events-none absolute bottom-4 right-0 z-40 flex justify-center px-4 sm:bottom-6"
+      className="pointer-events-none absolute bottom-4 right-0 z-40 flex justify-center px-3 sm:bottom-6 sm:px-4"
       style={{ left: 'var(--workspace-nav-width, 0px)' }}
     >
-      {/* Moving Background Gradient attached behind and above the dock */}
+      {/* Canvas fade behind dock */}
       <div
         aria-hidden="true"
-        className={cn(
-        "pointer-events-none absolute -top-20 inset-x-0 -bottom-6 -z-10 bg-gradient-to-t from-ui-practice-canvas via-ui-practice-canvas/90 to-transparent"
-        )}
+        className="pointer-events-none absolute -top-16 inset-x-0 -bottom-6 -z-10 bg-gradient-to-t from-ui-practice-canvas via-ui-practice-canvas/85 to-transparent"
       />
 
-      {/* Dock Pill Container with No Shadows */}
       <nav
         aria-label="Audio Playback and Reading Controls"
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         className={cn(
-          "relative flex w-full max-w-md flex-col gap-2 rounded-feature bg-ui-surface px-4 py-2.5 sm:px-5 sm:py-3.5 border-0 border-b-[length:var(--depth-lg)] border-b-ui-border",
-          isVisible ? "pointer-events-auto" : "pointer-events-none"
+          'relative flex w-full max-w-lg flex-col gap-2',
+          isVisible ? 'pointer-events-auto' : 'pointer-events-none',
         )}
       >
-        {/* Row 1: Time + Scrubber Track on the Same Row */}
-        {canKaraoke && totalDuration > 0 && (
-          <div className="flex items-center gap-2 px-0.5">
-            {/* Current Time */}
-            <span className="w-8 shrink-0 text-left text-xs font-bold tabular-nums text-ui-muted select-none">
-              {formatTime(displayTime)}
-            </span>
+        {/* ── Secondary row: prev/next sentence · speed · reading aids ── */}
+        <div className="flex items-center justify-between px-1">
+          {/* Sentence navigation */}
+          <div className="flex items-center gap-0.5">
+            <IconActionButton
+              onClick={onPrevSentence}
+              size="sm"
+              variant="quiet"
+              icon={<AppIcon name="back" size={16} />}
+              label="Previous sentence"
+              disabled={!canKaraoke}
+            />
+            <IconActionButton
+              onClick={onNextSentence}
+              size="sm"
+              variant="quiet"
+              icon={<AppIcon name="forward" size={16} />}
+              label="Next sentence"
+              disabled={!canKaraoke}
+            />
+          </div>
 
-            {/* Scrubber Slider */}
+          {/* Speed + aids */}
+          <div className="flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={onCycleSpeed}
+              title="Playback speed"
+              className="flex h-8 min-w-[36px] items-center justify-center rounded-compact border-b-[length:var(--depth-sm)] border-b-ui-border bg-ui-surface px-2 text-xs font-black tabular-nums text-ui-ink-strong transition-all active:translate-y-[length:var(--depth-sm)] active:border-b-0 hover:bg-ui-hover focus-ring"
+            >
+              {playbackSpeed}×
+            </button>
+
+            <div ref={aidsPopoverRef} className="relative">
+              <button
+                type="button"
+                onClick={() => setIsAidsPopoverOpen((o) => !o)}
+                aria-label="Reading aids"
+                aria-haspopup="dialog"
+                aria-expanded={isAidsPopoverOpen}
+                className={cn(
+                  'relative flex h-8 w-8 items-center justify-center rounded-compact transition-all active:translate-y-[length:var(--depth-sm)] active:border-b-0 focus-ring',
+                  hasAidActive || isAidsPopoverOpen
+                    ? 'border-b-[length:var(--depth-sm)] border-b-brand-primary-edge bg-brand-primary text-white'
+                    : 'border-b-[length:var(--depth-sm)] border-b-ui-border bg-ui-surface text-ui-ink hover:bg-ui-hover',
+                )}
+              >
+                <span aria-hidden="true" className="font-chinese text-[15px] font-bold leading-none select-none">文</span>
+                {hasAidActive && !isAidsPopoverOpen && (
+                  <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-feedback-success border border-ui-surface" />
+                )}
+              </button>
+
+              <AnimatePresence>
+                {isAidsPopoverOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 6, scale: 0.97 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 4, scale: 0.97 }}
+                    transition={{ duration: 0.15, ease: [0.32, 0.72, 0, 1] }}
+                    className="absolute right-0 bottom-full z-50 mb-2.5 w-56 sm:w-60 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-2 shadow-ambient-lg text-left"
+                  >
+                    <div role="menu" aria-label="Reading aids" className="flex flex-col gap-1">
+                      {([
+                        { label: 'Translation', active: showMeaning, onToggle: onToggleMeaning },
+                        { label: 'Pinyin', active: showPinyin, onToggle: onTogglePinyin },
+                      ] as const).map(({ label, active, onToggle }) => (
+                        <button
+                          key={label}
+                          type="button"
+                          role="switch"
+                          aria-checked={active}
+                          onClick={onToggle}
+                          className={cn(
+                            'flex min-h-11 w-full items-center justify-between rounded-compact px-3.5 py-2 text-sm font-extrabold transition-colors outline-none focus-ring',
+                            active ? 'bg-brand-primary/10 text-brand-primary' : 'text-ui-ink-strong hover:bg-ui-hover',
+                          )}
+                        >
+                          <span>{label}</span>
+                          <span
+                            aria-hidden="true"
+                            className={cn('relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors duration-200', active ? 'bg-brand-primary' : 'bg-ui-divider')}
+                          >
+                            <span className={cn('pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-b border-b-ui-border ring-0 transition duration-200 translate-y-0.5', active ? 'translate-x-[18px]' : 'translate-x-0.5')} />
+                          </span>
+                        </button>
+                      ))}
+
+                      {onToggleHoverDefinitions && (
+                        <button
+                          type="button"
+                          role="switch"
+                          aria-checked={showHoverDefinitions}
+                          onClick={onToggleHoverDefinitions}
+                          className={cn(
+                            'flex min-h-11 w-full items-center justify-between rounded-compact px-3.5 py-2 text-sm font-extrabold transition-colors outline-none focus-ring',
+                            showHoverDefinitions ? 'bg-brand-primary/10 text-brand-primary' : 'text-ui-ink-strong hover:bg-ui-hover',
+                          )}
+                        >
+                          <span>Hover Definitions</span>
+                          <span
+                            aria-hidden="true"
+                            className={cn('relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors duration-200', showHoverDefinitions ? 'bg-brand-primary' : 'bg-ui-divider')}
+                          >
+                            <span className={cn('pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-b border-b-ui-border ring-0 transition duration-200 translate-y-0.5', showHoverDefinitions ? 'translate-x-[18px]' : 'translate-x-0.5')} />
+                          </span>
+                        </button>
+                      )}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Hero scrubber pill ── */}
+        <div className="flex items-center gap-3 rounded-full bg-ui-surface px-3 py-2.5 border-b-[length:var(--depth-md)] border-b-ui-border">
+          {/* Play / Pause */}
+          <button
+            type="button"
+            onClick={onTogglePlay}
+            aria-label={playing ? 'Pause dialogue' : 'Play dialogue'}
+            className="shrink-0 flex h-9 w-9 items-center justify-center rounded-full border-b-[length:var(--depth-md)] border-b-brand-primary-edge bg-brand-primary text-white transition-all active:translate-y-[length:var(--depth-md)] active:border-b-0 hover:brightness-105 focus-ring"
+          >
+            <AppIcon name={playing ? 'pause' : 'play'} size={18} />
+          </button>
+
+          {/* Current time */}
+          <span className="w-8 shrink-0 text-left text-xs font-bold tabular-nums text-ui-muted select-none">
+            {formatTime(displayTime)}
+          </span>
+
+          {/* Scrubber track */}
+          {canKaraoke && totalDuration > 0 ? (
             <div
               ref={trackRef}
               role="slider"
@@ -176,216 +321,39 @@ export function ReadingBottomDock({
               onMouseLeave={() => setIsHovered(false)}
               className="group relative flex h-5 flex-1 cursor-pointer touch-none select-none items-center outline-none focus-ring-inline"
             >
-              {/* Visual Track Background */}
-              <div className="relative h-2 w-full rounded-full bg-ui-border/80 transition-[height] duration-150 ease-out group-hover:h-2.5 group-active:h-2.5">
-                {/* Active Progress Fill */}
+              <div className="relative h-1.5 w-full rounded-full bg-ui-border/70 transition-[height] duration-150 ease-out group-hover:h-2 group-active:h-2">
                 <div
                   className="h-full rounded-full bg-brand-primary"
                   style={{ width: `${progressPercent}%` }}
                 />
-
-                {/* Tactile Handle / Thumb */}
                 <div
                   className={cn(
-                    "pointer-events-none absolute top-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full bg-brand-primary transition-transform duration-100",
+                    'pointer-events-none absolute top-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full bg-brand-primary shadow-sm transition-all duration-100',
                     isDragging || isHovered
-                      ? "h-4.5 w-4.5 scale-110"
-                      : "h-3.5 w-3.5 opacity-95 group-hover:h-4 group-hover:w-4"
+                      ? 'h-4 w-4 scale-110'
+                      : 'h-3 w-3 group-hover:h-3.5 group-hover:w-3.5',
                   )}
                   style={{ left: `${progressPercent}%` }}
                 >
-                  {/* Floating Time Tooltip while Dragging */}
                   {isDragging && (
-                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 rounded-control bg-ui-ink px-2 py-0.5 text-xs font-black text-ui-surface tabular-nums whitespace-nowrap">
+                    <div className="absolute -top-7 left-1/2 -translate-x-1/2 rounded-control bg-ui-ink px-2 py-0.5 text-xs font-black text-ui-surface tabular-nums whitespace-nowrap">
                       {formatTime(dragTime)}
                     </div>
                   )}
                 </div>
               </div>
             </div>
+          ) : (
+            <div className="flex-1 h-1.5 rounded-full bg-ui-border/35" />
+          )}
 
-            {/* Total Duration (Static, avoids dual ticking distraction) */}
-            <span className="w-8 shrink-0 text-right text-xs font-bold tabular-nums text-ui-muted select-none">
-              {formatTime(totalDuration)}
-            </span>
-          </div>
-        )}
+          {/* Total duration */}
+          <span className="w-8 shrink-0 text-right text-xs font-bold tabular-nums text-ui-muted select-none">
+            {canKaraoke && totalDuration > 0 ? formatTime(totalDuration) : '--:--'}
+          </span>
 
-        {/* Row 2: Controls Row Directly Underneath - Symmetrical Audio Layout */}
-        <div className="flex items-center justify-between gap-1.5 pt-0.5">
-          {/* Left: Playback Speed */}
-          <div className="flex shrink-0 items-center justify-start">
-            <button
-              type="button"
-              onClick={onCycleSpeed}
-              title="Playback Speed"
-              className="flex h-9 sm:h-10 min-w-[40px] sm:min-w-[46px] items-center justify-center rounded-compact border-0 border-b-[length:var(--depth-sm)] border-b-ui-border bg-ui-hover px-2 text-xs font-black tabular-nums text-ui-ink-strong transition-all active:translate-y-[length:var(--depth-sm)] active:border-b-0 focus-ring"
-            >
-              {playbackSpeed}x
-            </button>
-          </div>
-
-          {/* Center: Prev Sentence + Hero Circular Play/Pause + Next Sentence */}
-          <div className="flex items-center gap-1.5 sm:gap-2.5">
-            <IconActionButton
-              onClick={onPrevSentence}
-              size="sm"
-              variant="quiet"
-              icon={<AppIcon name="back" size={18} />}
-              label="Previous sentence"
-              disabled={!canKaraoke}
-            />
-
-            <button
-              type="button"
-              onClick={onTogglePlay}
-              aria-label={playing ? 'Pause dialogue' : 'Play dialogue'}
-              className="group relative flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full border-0 border-b-[length:var(--depth-md)] border-b-brand-primary-edge bg-brand-primary text-white transition-all active:translate-y-[length:var(--depth-md)] active:border-b-0 focus-ring hover:brightness-105"
-            >
-              <AppIcon name={playing ? 'pause' : 'play'} size={24} />
-            </button>
-
-            <IconActionButton
-              onClick={onNextSentence}
-              size="sm"
-              variant="quiet"
-              icon={<AppIcon name="forward" size={18} />}
-              label="Next sentence"
-              disabled={!canKaraoke}
-            />
-          </div>
-
-          {/* Right: Reading Aids Popover Trigger */}
-          <div ref={aidsPopoverRef} className="relative flex shrink-0 items-center justify-end">
-            <button
-              type="button"
-              onClick={() => setIsAidsPopoverOpen((open) => !open)}
-              aria-label="Reading aids (Pinyin and Translation)"
-              aria-haspopup="dialog"
-              aria-expanded={isAidsPopoverOpen}
-              title="Reading aids (Pinyin & Translation)"
-              className={cn(
-                'relative flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-compact transition-all active:translate-y-[length:var(--depth-sm)] active:border-b-0 focus-ring',
-                showPinyin || showMeaning || isAidsPopoverOpen
-                  ? 'border-0 border-b-[length:var(--depth-sm)] border-b-brand-primary-edge bg-brand-primary text-white'
-                  : 'border-0 border-b-[length:var(--depth-sm)] border-b-ui-border bg-ui-hover text-ui-ink hover:text-ui-ink-strong'
-              )}
-            >
-              <span aria-hidden="true" className="font-chinese text-[16px] sm:text-[18px] font-bold leading-none select-none">
-                文
-              </span>
-              {(showPinyin || showMeaning) && !isAidsPopoverOpen && (
-                <span className="absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-feedback-success border border-ui-surface" />
-              )}
-            </button>
-
-            {/* Reading Aids Popover Floating Above */}
-            <AnimatePresence>
-              {isAidsPopoverOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 6, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 4, scale: 0.98 }}
-                  transition={{ duration: 0.16, ease: [0.32, 0.72, 0, 1] }}
-                  className="absolute right-0 bottom-full z-50 mb-3 w-60 sm:w-64 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-2 shadow-ambient-lg text-left"
-                >
-                  <div role="menu" aria-label="Reading aids" className="flex flex-col gap-1.5">
-                    {/* Translation Toggle */}
-                    <button
-                      type="button"
-                      role="switch"
-                      aria-checked={showMeaning}
-                      onClick={onToggleMeaning}
-                      className={cn(
-                        'flex min-h-12 w-full items-center justify-between rounded-compact px-4 py-2.5 text-sm sm:text-base font-extrabold transition-colors outline-none focus-ring',
-                        showMeaning
-                          ? 'bg-brand-primary/10 text-brand-primary'
-                          : 'text-ui-ink-strong hover:bg-ui-hover'
-                      )}
-                    >
-                      <span>Translation</span>
-                      <span
-                        aria-hidden="true"
-                        className={cn(
-                          'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out',
-                          showMeaning ? 'bg-brand-primary' : 'bg-ui-divider'
-                        )}
-                      >
-                        <span
-                          className={cn(
-                            'pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-0 border-b-px border-b-ui-border ring-0 transition duration-200 ease-in-out translate-y-0.5',
-                            showMeaning ? 'translate-x-[18px]' : 'translate-x-0.5'
-                          )}
-                        />
-                      </span>
-                    </button>
-
-                    {/* Pinyin Toggle */}
-                    <button
-                      type="button"
-                      role="switch"
-                      aria-checked={showPinyin}
-                      onClick={onTogglePinyin}
-                      className={cn(
-                        'flex min-h-12 w-full items-center justify-between rounded-compact px-4 py-2.5 text-sm sm:text-base font-extrabold transition-colors outline-none focus-ring',
-                        showPinyin
-                          ? 'bg-brand-primary/10 text-brand-primary'
-                          : 'text-ui-ink-strong hover:bg-ui-hover'
-                      )}
-                    >
-                      <span>Pinyin</span>
-                      <span
-                        aria-hidden="true"
-                        className={cn(
-                          'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out',
-                          showPinyin ? 'bg-brand-primary' : 'bg-ui-divider'
-                        )}
-                      >
-                        <span
-                          className={cn(
-                            'pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-0 border-b-px border-b-ui-border ring-0 transition duration-200 ease-in-out translate-y-0.5',
-                            showPinyin ? 'translate-x-[18px]' : 'translate-x-0.5'
-                          )}
-                        />
-                      </span>
-                    </button>
-
-                    {/* Hover Definitions Toggle */}
-                    {onToggleHoverDefinitions && (
-                      <button
-                        type="button"
-                        role="switch"
-                        aria-checked={showHoverDefinitions}
-                        onClick={onToggleHoverDefinitions}
-                        className={cn(
-                          'flex min-h-12 w-full items-center justify-between rounded-compact px-4 py-2.5 text-sm sm:text-base font-extrabold transition-colors outline-none focus-ring',
-                          showHoverDefinitions
-                            ? 'bg-brand-primary/10 text-brand-primary'
-                            : 'text-ui-ink-strong hover:bg-ui-hover'
-                        )}
-                      >
-                        <span>Hover Definitions</span>
-                        <span
-                          aria-hidden="true"
-                          className={cn(
-                            'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out',
-                            showHoverDefinitions ? 'bg-brand-primary' : 'bg-ui-divider'
-                          )}
-                        >
-                          <span
-                            className={cn(
-                              'pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-0 border-b-px border-b-ui-border ring-0 transition duration-200 ease-in-out translate-y-0.5',
-                              showHoverDefinitions ? 'translate-x-[18px]' : 'translate-x-0.5'
-                            )}
-                          />
-                        </span>
-                      </button>
-                    )}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+          {/* Waveform */}
+          <WaveformBars playing={playing && canKaraoke} />
         </div>
       </nav>
     </motion.div>
