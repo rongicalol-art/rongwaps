@@ -34,24 +34,33 @@ function formatTime(seconds: number): string {
 }
 
 /** Animated waveform bars — bounce while playing */
-function WaveformBars({ playing }: { playing: boolean }) {
+function WaveformBars({ playing, active, onClick }: { playing: boolean; active?: boolean; onClick?: () => void }) {
   const bars = useMemo(() => [
-    { height: 10, delay: 0 },
-    { height: 18, delay: 0.1 },
-    { height: 14, delay: 0.2 },
-    { height: 22, delay: 0.05 },
-    { height: 12, delay: 0.15 },
+    { height: 7, delay: 0 },
+    { height: 13, delay: 0.1 },
+    { height: 10, delay: 0.2 },
+    { height: 16, delay: 0.05 },
+    { height: 8, delay: 0.15 },
   ], []);
 
   return (
-    <div aria-hidden="true" className="flex items-center gap-[3px] h-6 shrink-0">
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label="Toggle controls"
+      aria-pressed={active}
+      className={cn(
+        'shrink-0 flex items-center gap-[2.5px] h-5 px-1 rounded-compact transition-opacity focus-ring-inline',
+        active ? 'opacity-100' : 'opacity-60 hover:opacity-90',
+      )}
+    >
       {bars.map((bar, i) => (
         <motion.span
           key={i}
-          className="block w-[3px] rounded-full bg-brand-primary/50"
+          className={cn('block w-[2.5px] rounded-full', active ? 'bg-brand-primary' : 'bg-brand-primary/70')}
           animate={playing
-            ? { scaleY: [1, 1.8, 0.55, 1.5, 1], opacity: [0.45, 1, 0.55, 1, 0.45] }
-            : { scaleY: 0.3, opacity: 0.25 }
+            ? { scaleY: [1, 1.8, 0.55, 1.5, 1], opacity: [0.6, 1, 0.6, 1, 0.6] }
+            : { scaleY: 0.3, opacity: 0.3 }
           }
           transition={playing
             ? { duration: 0.85, repeat: Infinity, delay: bar.delay, ease: 'easeInOut' }
@@ -60,7 +69,7 @@ function WaveformBars({ playing }: { playing: boolean }) {
           style={{ height: bar.height, originY: 0.5 }}
         />
       ))}
-    </div>
+    </button>
   );
 }
 
@@ -89,9 +98,17 @@ export function ReadingBottomDock({
   const [isDragging, setIsDragging] = useState(false);
   const [dragTime, setDragTime] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [isControlsOpen, setIsControlsOpen] = useState(false);
   const [isAidsPopoverOpen, setIsAidsPopoverOpen] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
   const aidsPopoverRef = useRef<HTMLDivElement>(null);
+
+  const toggleControls = () => {
+    setIsControlsOpen((o) => {
+      if (o) setIsAidsPopoverOpen(false); // close popover when collapsing controls
+      return !o;
+    });
+  };
 
   useEffect(() => {
     if (!isAidsPopoverOpen) return;
@@ -168,121 +185,135 @@ export function ReadingBottomDock({
           isVisible ? 'pointer-events-auto' : 'pointer-events-none',
         )}
       >
-        {/* ── Secondary row: prev/next sentence · speed · reading aids ── */}
-        <div className="flex items-center justify-between px-1">
-          {/* Sentence navigation */}
-          <div className="flex items-center gap-0.5">
-            <IconActionButton
-              onClick={onPrevSentence}
-              size="sm"
-              variant="quiet"
-              icon={<AppIcon name="back" size={16} />}
-              label="Previous sentence"
-              disabled={!canKaraoke}
-            />
-            <IconActionButton
-              onClick={onNextSentence}
-              size="sm"
-              variant="quiet"
-              icon={<AppIcon name="forward" size={16} />}
-              label="Next sentence"
-              disabled={!canKaraoke}
-            />
-          </div>
 
-          {/* Speed + aids */}
-          <div className="flex items-center gap-1.5">
-            <button
-              type="button"
-              onClick={onCycleSpeed}
-              title="Playback speed"
-              className="flex h-8 min-w-[36px] items-center justify-center rounded-compact border-b-[length:var(--depth-sm)] border-b-ui-border bg-ui-surface px-2 text-xs font-black tabular-nums text-ui-ink-strong transition-all active:translate-y-[length:var(--depth-sm)] active:border-b-0 hover:bg-ui-hover focus-ring"
+        {/* ── Secondary row: animated in/out when waveform is tapped ── */}
+        <AnimatePresence>
+          {isControlsOpen && (
+            <motion.div
+              key="controls"
+              initial={{ opacity: 0, y: 6, height: 0 }}
+              animate={{ opacity: 1, y: 0, height: 'auto' }}
+              exit={{ opacity: 0, y: 4, height: 0 }}
+              transition={{ duration: 0.18, ease: [0.32, 0.72, 0, 1] }}
+              className="overflow-hidden"
             >
-              {playbackSpeed}×
-            </button>
+              <div className="flex items-center justify-between px-1 pb-0.5">
+                {/* Sentence navigation */}
+                <div className="flex items-center gap-0.5">
+                  <IconActionButton
+                    onClick={onPrevSentence}
+                    size="sm"
+                    variant="quiet"
+                    icon={<AppIcon name="back" size={16} />}
+                    label="Previous sentence"
+                    disabled={!canKaraoke}
+                  />
+                  <IconActionButton
+                    onClick={onNextSentence}
+                    size="sm"
+                    variant="quiet"
+                    icon={<AppIcon name="forward" size={16} />}
+                    label="Next sentence"
+                    disabled={!canKaraoke}
+                  />
+                </div>
 
-            <div ref={aidsPopoverRef} className="relative">
-              <button
-                type="button"
-                onClick={() => setIsAidsPopoverOpen((o) => !o)}
-                aria-label="Reading aids"
-                aria-haspopup="dialog"
-                aria-expanded={isAidsPopoverOpen}
-                className={cn(
-                  'relative flex h-8 w-8 items-center justify-center rounded-compact transition-all active:translate-y-[length:var(--depth-sm)] active:border-b-0 focus-ring',
-                  hasAidActive || isAidsPopoverOpen
-                    ? 'border-b-[length:var(--depth-sm)] border-b-brand-primary-edge bg-brand-primary text-white'
-                    : 'border-b-[length:var(--depth-sm)] border-b-ui-border bg-ui-surface text-ui-ink hover:bg-ui-hover',
-                )}
-              >
-                <span aria-hidden="true" className="font-chinese text-[15px] font-bold leading-none select-none">文</span>
-                {hasAidActive && !isAidsPopoverOpen && (
-                  <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-feedback-success border border-ui-surface" />
-                )}
-              </button>
-
-              <AnimatePresence>
-                {isAidsPopoverOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 6, scale: 0.97 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 4, scale: 0.97 }}
-                    transition={{ duration: 0.15, ease: [0.32, 0.72, 0, 1] }}
-                    className="absolute right-0 bottom-full z-50 mb-2.5 w-56 sm:w-60 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-2 shadow-ambient-lg text-left"
+                {/* Speed + aids */}
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={onCycleSpeed}
+                    title="Playback speed"
+                    className="flex h-8 min-w-[36px] items-center justify-center rounded-compact border-b-[length:var(--depth-sm)] border-b-ui-border bg-ui-surface px-2 text-xs font-black tabular-nums text-ui-ink-strong transition-all active:translate-y-[length:var(--depth-sm)] active:border-b-0 hover:bg-ui-hover focus-ring"
                   >
-                    <div role="menu" aria-label="Reading aids" className="flex flex-col gap-1">
-                      {([
-                        { label: 'Translation', active: showMeaning, onToggle: onToggleMeaning },
-                        { label: 'Pinyin', active: showPinyin, onToggle: onTogglePinyin },
-                      ] as const).map(({ label, active, onToggle }) => (
-                        <button
-                          key={label}
-                          type="button"
-                          role="switch"
-                          aria-checked={active}
-                          onClick={onToggle}
-                          className={cn(
-                            'flex min-h-11 w-full items-center justify-between rounded-compact px-3.5 py-2 text-sm font-extrabold transition-colors outline-none focus-ring',
-                            active ? 'bg-brand-primary/10 text-brand-primary' : 'text-ui-ink-strong hover:bg-ui-hover',
-                          )}
-                        >
-                          <span>{label}</span>
-                          <span
-                            aria-hidden="true"
-                            className={cn('relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors duration-200', active ? 'bg-brand-primary' : 'bg-ui-divider')}
-                          >
-                            <span className={cn('pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-b border-b-ui-border ring-0 transition duration-200 translate-y-0.5', active ? 'translate-x-[18px]' : 'translate-x-0.5')} />
-                          </span>
-                        </button>
-                      ))}
+                    {playbackSpeed}×
+                  </button>
 
-                      {onToggleHoverDefinitions && (
-                        <button
-                          type="button"
-                          role="switch"
-                          aria-checked={showHoverDefinitions}
-                          onClick={onToggleHoverDefinitions}
-                          className={cn(
-                            'flex min-h-11 w-full items-center justify-between rounded-compact px-3.5 py-2 text-sm font-extrabold transition-colors outline-none focus-ring',
-                            showHoverDefinitions ? 'bg-brand-primary/10 text-brand-primary' : 'text-ui-ink-strong hover:bg-ui-hover',
-                          )}
-                        >
-                          <span>Hover Definitions</span>
-                          <span
-                            aria-hidden="true"
-                            className={cn('relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors duration-200', showHoverDefinitions ? 'bg-brand-primary' : 'bg-ui-divider')}
-                          >
-                            <span className={cn('pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-b border-b-ui-border ring-0 transition duration-200 translate-y-0.5', showHoverDefinitions ? 'translate-x-[18px]' : 'translate-x-0.5')} />
-                          </span>
-                        </button>
+                  <div ref={aidsPopoverRef} className="relative">
+                    <button
+                      type="button"
+                      onClick={() => setIsAidsPopoverOpen((o) => !o)}
+                      aria-label="Reading aids"
+                      aria-haspopup="dialog"
+                      aria-expanded={isAidsPopoverOpen}
+                      className={cn(
+                        'relative flex h-8 w-8 items-center justify-center rounded-compact transition-all active:translate-y-[length:var(--depth-sm)] active:border-b-0 focus-ring',
+                        hasAidActive || isAidsPopoverOpen
+                          ? 'border-b-[length:var(--depth-sm)] border-b-brand-primary-edge bg-brand-primary text-white'
+                          : 'border-b-[length:var(--depth-sm)] border-b-ui-border bg-ui-surface text-ui-ink hover:bg-ui-hover',
                       )}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </div>
-        </div>
+                    >
+                      <span aria-hidden="true" className="font-chinese text-[15px] font-bold leading-none select-none">文</span>
+                      {hasAidActive && !isAidsPopoverOpen && (
+                        <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-feedback-success border border-ui-surface" />
+                      )}
+                    </button>
+
+                    <AnimatePresence>
+                      {isAidsPopoverOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 6, scale: 0.97 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 4, scale: 0.97 }}
+                          transition={{ duration: 0.15, ease: [0.32, 0.72, 0, 1] }}
+                          className="absolute right-0 bottom-full z-50 mb-2.5 w-56 sm:w-60 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-2 shadow-ambient-lg text-left"
+                        >
+                          <div role="menu" aria-label="Reading aids" className="flex flex-col gap-1">
+                            {([
+                              { label: 'Translation', active: showMeaning, onToggle: onToggleMeaning },
+                              { label: 'Pinyin', active: showPinyin, onToggle: onTogglePinyin },
+                            ] as const).map(({ label, active, onToggle }) => (
+                              <button
+                                key={label}
+                                type="button"
+                                role="switch"
+                                aria-checked={active}
+                                onClick={onToggle}
+                                className={cn(
+                                  'flex min-h-11 w-full items-center justify-between rounded-compact px-3.5 py-2 text-sm font-extrabold transition-colors outline-none focus-ring',
+                                  active ? 'bg-brand-primary/10 text-brand-primary' : 'text-ui-ink-strong hover:bg-ui-hover',
+                                )}
+                              >
+                                <span>{label}</span>
+                                <span
+                                  aria-hidden="true"
+                                  className={cn('relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors duration-200', active ? 'bg-brand-primary' : 'bg-ui-divider')}
+                                >
+                                  <span className={cn('pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-b border-b-ui-border ring-0 transition duration-200 translate-y-0.5', active ? 'translate-x-[18px]' : 'translate-x-0.5')} />
+                                </span>
+                              </button>
+                            ))}
+
+                            {onToggleHoverDefinitions && (
+                              <button
+                                type="button"
+                                role="switch"
+                                aria-checked={showHoverDefinitions}
+                                onClick={onToggleHoverDefinitions}
+                                className={cn(
+                                  'flex min-h-11 w-full items-center justify-between rounded-compact px-3.5 py-2 text-sm font-extrabold transition-colors outline-none focus-ring',
+                                  showHoverDefinitions ? 'bg-brand-primary/10 text-brand-primary' : 'text-ui-ink-strong hover:bg-ui-hover',
+                                )}
+                              >
+                                <span>Hover Definitions</span>
+                                <span
+                                  aria-hidden="true"
+                                  className={cn('relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors duration-200', showHoverDefinitions ? 'bg-brand-primary' : 'bg-ui-divider')}
+                                >
+                                  <span className={cn('pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-b border-b-ui-border ring-0 transition duration-200 translate-y-0.5', showHoverDefinitions ? 'translate-x-[18px]' : 'translate-x-0.5')} />
+                                </span>
+                              </button>
+                            )}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* ── Hero scrubber pill ── */}
         <div className="flex items-center gap-3 rounded-full bg-ui-surface px-3 py-2.5 border-b-[length:var(--depth-md)] border-b-ui-border">
@@ -352,8 +383,8 @@ export function ReadingBottomDock({
             {canKaraoke && totalDuration > 0 ? formatTime(totalDuration) : '--:--'}
           </span>
 
-          {/* Waveform */}
-          <WaveformBars playing={playing && canKaraoke} />
+          {/* Waveform — tap to reveal controls */}
+          <WaveformBars playing={playing && canKaraoke} active={isControlsOpen} onClick={toggleControls} />
         </div>
       </nav>
     </motion.div>
