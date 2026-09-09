@@ -179,7 +179,13 @@ export function useReaderAudio({
     const clamped = Math.max(0, Math.min(timeSec, totalDuration));
     setCurrentTime(clamped);
     if (playing && alignment && bookAudioFileName) {
-      playRange(clamped, totalDuration);
+      // Set audio element time directly if available and playing the same track
+      const audio = audioService.getGlobalAudio();
+      if (audio && !audio.paused && !isNaN(audio.duration) && audio.duration > 0) {
+        audio.currentTime = clamped;
+      } else {
+        playRange(clamped, totalDuration);
+      }
     }
   }, [alignment, bookAudioFileName, playing, playRange, totalDuration]);
 

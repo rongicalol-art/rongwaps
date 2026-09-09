@@ -84,7 +84,20 @@ export function playRangeOnAudioElement(
     onFinish();
   };
 
-  if (audio.src !== src) {
+  let lastReportedTime = -1;
+  let lastReportedTimestamp = 0;
+
+  const reportTime = (time: number) => {
+    const now = typeof performance !== 'undefined' ? performance.now() : Date.now();
+    // Report only if time shifted significantly (>40ms) or at least 50ms passed, to avoid 60fps React render storms
+    if (Math.abs(time - lastReportedTime) >= 0.04 || now - lastReportedTimestamp >= 50) {
+      lastReportedTime = time;
+      lastReportedTimestamp = now;
+      onTime?.(time);
+    }
+  };
+
+  if (audio.src !== src && !audio.src.endsWith(src)) {
     audio.src = src;
     if (typeof audio.addEventListener === 'function' && audio.readyState < 1) {
       audio.addEventListener('loadedmetadata', () => {
@@ -96,7 +109,11 @@ export function playRangeOnAudioElement(
 
   audio.defaultPlaybackRate = rate;
   audio.playbackRate = rate;
-  try { audio.currentTime = start; } catch { /* ignore */ }
+  try {
+    if (Math.abs(audio.currentTime - start) > 0.05) {
+      audio.currentTime = start;
+    }
+  } catch { /* ignore */ }
   audio.onerror = cleanup;
   audio.onended = cleanup;
 
@@ -105,7 +122,7 @@ export function playRangeOnAudioElement(
     : null;
 
   audio.ontimeupdate = () => {
-    if (!raf) onTime?.(audio.currentTime);
+    if (!raf) reportTime(audio.currentTime);
     if (audio.currentTime >= end) {
       audio.pause();
       cleanup();
@@ -119,7 +136,11 @@ export function playRangeOnAudioElement(
 
   playPromise?.then(() => {
     if (!settled) {
-      audio.currentTime = start;
+      try {
+        if (Math.abs(audio.currentTime - start) > 0.08) {
+          audio.currentTime = start;
+        }
+      } catch { /* ignore */ }
       audio.playbackRate = rate;
       if (raf) {
         const tick = () => {
@@ -127,13 +148,13 @@ export function playRangeOnAudioElement(
           rafHandle = null;
           onRafHandle(null);
           const time = audio.currentTime;
-          if (time < start - 0.05) {
+          if (time < start - 0.15) {
             try { audio.currentTime = start; } catch { /* ignore */ }
             rafHandle = raf(tick);
             onRafHandle(rafHandle);
             return;
           }
-          onTime?.(time);
+          reportTime(time);
           if (time >= end) {
             audio.pause();
             cleanup();

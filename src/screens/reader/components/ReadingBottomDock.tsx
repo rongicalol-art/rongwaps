@@ -33,15 +33,15 @@ function formatTime(seconds: number): string {
   return `${mins}:${secs.toString().padStart(2, '0')}`;
 }
 
-/** Animated waveform bars — bounce while playing */
+/** Animated waveform bars — lightweight CSS animation while playing */
 function WaveformBars({ playing, active, onClick }: { playing: boolean; active?: boolean; onClick?: () => void }) {
-  const bars = useMemo(() => [
-    { height: 7, delay: 0 },
-    { height: 13, delay: 0.1 },
-    { height: 10, delay: 0.2 },
-    { height: 16, delay: 0.05 },
-    { height: 8, delay: 0.15 },
-  ], []);
+  const bars = [
+    { height: 7, delay: '0s' },
+    { height: 13, delay: '0.1s' },
+    { height: 10, delay: '0.2s' },
+    { height: 16, delay: '0.05s' },
+    { height: 8, delay: '0.15s' },
+  ];
 
   return (
     <button
@@ -55,18 +55,18 @@ function WaveformBars({ playing, active, onClick }: { playing: boolean; active?:
       )}
     >
       {bars.map((bar, i) => (
-        <motion.span
+        <span
           key={i}
-          className={cn('block w-[2.5px] rounded-full', active ? 'bg-brand-primary' : 'bg-brand-primary/70')}
-          animate={playing
-            ? { scaleY: [1, 1.8, 0.55, 1.5, 1], opacity: [0.6, 1, 0.6, 1, 0.6] }
-            : { scaleY: 0.3, opacity: 0.3 }
-          }
-          transition={playing
-            ? { duration: 0.85, repeat: Infinity, delay: bar.delay, ease: 'easeInOut' }
-            : { duration: 0.3 }
-          }
-          style={{ height: bar.height, originY: 0.5 }}
+          className={cn(
+            'block w-[2.5px] rounded-full transition-transform duration-200',
+            active ? 'bg-brand-primary' : 'bg-brand-primary/70',
+            playing ? 'animate-pulse' : 'scale-y-[0.3] opacity-30',
+          )}
+          style={{
+            height: bar.height,
+            animationDelay: bar.delay,
+            animationDuration: '0.8s',
+          }}
         />
       ))}
     </button>

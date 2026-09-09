@@ -209,6 +209,10 @@ export class AudioService {
     finish?.();
   }
 
+  public getGlobalAudio(): HTMLAudioElement | null {
+    return this.globalAudio;
+  }
+
   public getCurrentTime(): number {
     if (this.globalAudio && !this.globalAudio.paused) {
       return this.globalAudio.currentTime;
