@@ -203,7 +203,7 @@ export function useReaderAudio({
   }, [activeLineIndex, alignment, playLine]);
 
   const cycleSpeed = useCallback(() => {
-    const speeds = [0.75, 1, 1.25];
+    const speeds = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
     const currentIdx = speeds.indexOf(playbackSpeedRef.current);
     const nextSpeed = speeds[(currentIdx + 1) % speeds.length] ?? 1;
     playbackSpeedRef.current = nextSpeed;
