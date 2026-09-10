@@ -58,6 +58,9 @@ const LEGACY_ACCOUNT_SWITCH_KEYS = [
   'activeActivity',
   'lastActivity',
   'lastCloudUpdate',
+  // Session-scoped review snapshot: a pinned due-set must never leak
+  // into another account's view (added with the stale-snapshot fix).
+  'activeReviewSessionCards',
 ].sort();
 
 test('account-switch defaults match the legacy reset contract exactly', () => {
@@ -84,6 +87,7 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
     activeActivity: 'quiz',
     lastActivity: 'quiz',
     lastCloudUpdate: '2026-01-01T00:00:00.000Z',
+    activeReviewSessionCards: ['card_a'],
     // Account-agnostic state that must survive the switch:
     activeTab: 'library',
     activeBookId: 1,
@@ -110,6 +114,7 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
   assert.equal(state.activeActivity, null);
   assert.equal(state.lastActivity, null);
   assert.equal(state.lastCloudUpdate, null);
+  assert.deepEqual(state.activeReviewSessionCards, null);
 
   // Account-agnostic state survives.
   assert.equal(state.activeTab, 'library');

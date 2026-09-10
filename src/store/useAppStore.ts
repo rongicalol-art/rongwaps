@@ -73,6 +73,45 @@ export type AppState =
 // A browser may block or lack IndexedDB; persistence is then best-effort.
 // Swallowing here keeps a failed cache write from becoming an unhandled
 // rejection — the in-memory store remains the source of truth.
+
+// Persisted writes are coalesced: a card answer changes `srsData`, which
+// re-serializes the entire persisted payload. Answering back-to-back would
+// serialize megabytes per tap. A trailing debounce (fixed window from the
+// first pending write — a continuous stream never postpones it) bounds the
+// cost to roughly one serialization per second of studying. The in-memory
+// store stays the source of truth and cloud sync remains the durable path.
+const PERSIST_DEBOUNCE_MS = 1_000;
+let pendingWrite: { name: string; value: string } | null = null;
+let pendingWriteLastValue: string | null = null;
+let persistTimer: ReturnType<typeof setTimeout> | null = null;
+
+function flushPendingPersist(): void {
+  if (persistTimer) {
+    clearTimeout(persistTimer);
+    persistTimer = null;
+  }
+  const pending = pendingWrite;
+  if (!pending) return;
+  pendingWrite = null;
+  // Environments without IndexedDB (tests, blocked browsers): persistence is
+  // best-effort, so drop the write instead of letting the access throw.
+  if (typeof indexedDB === 'undefined') return;
+  pendingWriteLastValue = pending.value;
+  void set(pending.name, pending.value).catch(() => {
+    // Cache writes are optional and must never block the store.
+  });
+}
+
+if (typeof window !== 'undefined') {
+  // Best-effort flush when the page is being hidden/closed: the write is
+  // started immediately so it has the best chance of completing. Cloud sync
+  // (10s debounce / 45s max-wait) is the real durability backstop.
+  window.addEventListener('pagehide', flushPendingPersist);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') flushPendingPersist();
+  });
+}
+
 const idbStorage: StateStorage = {
   getItem: async (name: string): Promise<string | null> => {
     try {
@@ -83,13 +122,24 @@ const idbStorage: StateStorage = {
   },
   setItem: async (name: string, value: string): Promise<void> => {
     try {
-      await set(name, value);
+      // Skip a write that would reproduce the last persisted payload.
+      if (value === pendingWriteLastValue && pendingWrite === null) return;
+      if (value === pendingWrite?.value) return;
+      pendingWrite = { name, value };
+      if (!persistTimer) {
+        persistTimer = setTimeout(flushPendingPersist, PERSIST_DEBOUNCE_MS);
+      }
     } catch {
       // Cache writes are optional and must never block the store.
     }
   },
   removeItem: async (name: string): Promise<void> => {
     try {
+      pendingWrite = null;
+      if (persistTimer) {
+        clearTimeout(persistTimer);
+        persistTimer = null;
+      }
       await del(name);
     } catch {
       // Ignore browsers where persistent storage is unavailable.

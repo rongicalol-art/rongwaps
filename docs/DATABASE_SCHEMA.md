@@ -13,15 +13,15 @@ User tables reference `auth.users.id` with cascade deletion.
                   |    auth.users     |
                   +---------+---------+
                             |
-       +--------------------+--------------------+--------------------+
-       | (1:1)              | (1:N)              | (1:N)              | (1:N)
-+------v-------+    +-------v--------+   +-------v--------+    +-------v--------+
-| user_profiles |   | user_folders   |   | user_card_progress |  | user_daily_progress|
-+------+--------+    +-------+--------+   +-------------------+  +------------------+
-       |                     | (1:N)
-       |             +-------v--------+
-       |             | user_flashcards|
-       |             +----------------+
+        +--------------------+--------------------+--------------------+
+        | (1:1)              | (1:N)              | (1:N)              | (1:N)
+ +------v-------+    +-------v--------+   +-------v--------+    +-------v--------+
+ | user_profiles |   | user_folders   |   | user_card_progress |  | user_daily_progress|
+ +------+--------+    +-------+--------+   +-------------------+  +------------------+
+        |                     | (1:N)               | (1:N)
+        |             +-------v--------+     +-------v---------+
+        |             | user_flashcards|     | user_learned_cards|
+        |             +----------------+     +-----------------+
 ```
 
 Reference content tables (`dictionary`, `character_breakdowns_v2`, `book_vocabulary`, `mnemonics`) are RLS-free, publicly readable, and **read pack-first from static JSON** (`public/data/...`) with the database as fallback — see [Fetch paths](#-fetch-paths).
@@ -37,7 +37,7 @@ One row per user; profile info + learning metadata.
   - `email` (text)
   - `full_name` (text)
   - `avatar_url` (text)
-  - `learned_cards` (text[] default `'{}'`) — migrated from the dropped `user_progress` table
+  - `learned_cards` (text[] default `'{}'`) — legacy mirror of `user_learned_cards`, kept in sync by the learned-card RPCs during the client rollout (drop once every client is upgraded)
   - `last_activity` (text) — migrated from the dropped `user_progress` table
   - `updated_at` (timestamptz)
 - **RLS**:
@@ -63,9 +63,18 @@ Granular card-level SRS state (the single source of truth for SRS).
   - `user_id` (uuid FK) / `card_id` (text) — composite Primary Key
   - `ease` (numeric default 2.5), `interval` (integer default 0), `repetitions` (integer default 0)
   - `next_review_date` (timestamptz), `last_updated` (timestamptz)
-- **Indexes**: `idx_user_card_progress_user_id`, `idx_user_card_progress_next_review`
+- **Indexes**: `idx_user_card_progress_user_due` on (`user_id`, `next_review_date`) — serves both `getProgress` (user prefix) and `get_due_card_ids` (user + due filter); the PK (`user_id`, `card_id`) covers id lookups. The redundant single-column `user_id` / `next_review_date` indexes were dropped in the 20260912 cleanup.
 - **RLS**: owner-only.
-- **Notes**: Written via the `upsert_card_progress` RPC (batched); read by `userService.getProgress`. The old `user_progress` table (with a dead `srs_data` jsonb column) was dropped in the cleanup.
+- **Notes**: Written via the `upsert_card_progress` RPC (batched); read by `userService.getProgress` and the `get_due_card_ids` RPC (review sessions). The old `user_progress` table (with a dead `srs_data` jsonb column) was dropped in the cleanup.
+
+### 4b. `user_learned_cards`
+One row per learned card (per-card source of truth for `learnedCards`).
+- **Columns**:
+  - `user_id` (uuid FK → `auth.users` on delete cascade) / `card_id` (text) — composite Primary Key
+  - `created_at` (timestamptz default now())
+- **Indexes**: `idx_user_learned_cards_created` on (`user_id`, `created_at`) — enables future incremental learned pulls
+- **RLS**: owner-only.
+- **Notes**: Backfilled from `user_profiles.learned_cards` at migration. Written via `append_learned_cards` / `replace_learned_cards` RPCs (which mirror to the legacy `user_profiles.learned_cards` array for pre-upgrade clients); read by `userService.getProgress`, which unions both sources during the rollout. Cleared by `reset_user_learning_progress`.
 
 ### 5. `user_daily_progress`
 Daily XP/study totals; one row per user per date.
@@ -74,7 +83,7 @@ Daily XP/study totals; one row per user per date.
   - `xp_earned`, `cards_reviewed`, `cards_learned`, `study_time_minutes` (integers)
   - `activities_breakdown` (jsonb, `{"flashcards":0,"quiz":0,"listening":0,"writing":0}`)
   - `created_at`, `updated_at`
-- **Indexes**: `idx_user_daily_progress_user_date` on (`user_id`, `date` DESC)
+- **Indexes**: PK (`user_id`, `date`) — the redundant `idx_user_daily_progress_user_date` (same column pair) was dropped in the 20260912 cleanup
 - **RLS**: owner-only.
 - **Notes**: Written exclusively through the `upsert_daily_progress` RPC (atomic increment + breakdown merge).
 
@@ -112,9 +121,11 @@ Cache of AI-generated memory hooks (read-only from the learner app; generation w
 |---|---|---|
 | `search_dictionary(search_query text, result_limit int default 50)` | Scored dictionary search (hanzi/pinyin/english) | Hanzi queries use tiered exact→prefix→capped-substring matching; the legacy `search_dictionary(text)` ILIKE overload was dropped in the cleanup |
 | `upsert_card_progress(p_records jsonb)` | Batch upsert SRS card rows (security definer, fills `user_id` from JWT) | |
-| `upsert_daily_progress(...)` | Atomic daily progress increment + activity breakdown merge | Validates `p_user_id = auth.uid()` |
-| `get_user_aggregate_stats(p_user_id uuid)` | Server-side streak/XP/review aggregates | |
-| `reset_user_learning_progress()` | Clears the caller's `user_card_progress` and `learned_cards` | Added in the cleanup; was previously missing from the live DB |
+| `get_due_card_ids()` | Due-card ids (`next_review_date <= now()`) for the caller, most-overdue first | Powers the review session (`userService.getDueCardIds`); client caps/prioritizes further (`src/utils/reviewSession.ts`, cap 20) and falls back to the local SRS filter if the RPC is absent |
+| `append_learned_cards(p_cards text[])` | Order-preserving dedupe-append of new learned-card ids into `user_learned_cards` + the legacy `user_profiles.learned_cards` array | The common sync path for first passes; full-array replaces stay on `syncMetadata` (first sync, reset/shrink, RPC fallback) |
+| `replace_learned_cards(p_cards text[])` | Full replace of `user_learned_cards` rows + the legacy profile array | First sync, shrink (progress reset), and the client's direct-upsert fallback |
+| `reset_user_learning_progress()` | Clears the caller's `user_card_progress`, `user_learned_cards`, and `learned_cards` | Added in the cleanup; clears the learned-card table since 20260911 |
+| `upsert_daily_progress(...)` | Single-statement daily-progress upsert + activity breakdown merge | Validates `p_user_id = auth.uid()`; the 20260913 rewrite removed the pre-SELECT (one table touch per call) |
 | `handle_new_user()` | Trigger on `auth.users` insert → creates `user_profiles` row | |
 
 ---

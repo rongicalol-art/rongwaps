@@ -94,6 +94,13 @@ export function getSessionProgressDelta(
   current: SyncProgressCounters,
   lastSynced: SyncProgressCounters,
 ): SyncProgressCounters {
+  // A manual progress reset lowers the local counters below the synced
+  // baseline. Re-baseline to zero so post-reset reviews are counted against
+  // the fresh counters instead of being shrunk by the stale baseline.
+  const synced = isSessionProgressReset(current, lastSynced)
+    ? { cardsReviewed: 0, cardsLearned: 0 }
+    : lastSynced;
+
   const delta = (currentValue: number, syncedValue: number) => {
     const normalizedCurrent = normalizedCounter(currentValue);
     const normalizedSynced = normalizedCounter(syncedValue);
@@ -103,13 +110,24 @@ export function getSessionProgressDelta(
   };
 
   return {
-    cardsReviewed: delta(current.cardsReviewed, lastSynced.cardsReviewed),
-    cardsLearned: delta(current.cardsLearned, lastSynced.cardsLearned),
+    cardsReviewed: delta(current.cardsReviewed, synced.cardsReviewed),
+    cardsLearned: delta(current.cardsLearned, synced.cardsLearned),
   };
 }
 
 export function hasSessionProgressDelta(delta: SyncProgressCounters): boolean {
   return delta.cardsReviewed > 0 || delta.cardsLearned > 0;
+}
+
+/** True when the live counters dropped below the synced baseline (manual reset). */
+export function isSessionProgressReset(
+  current: SyncProgressCounters,
+  lastSynced: SyncProgressCounters,
+): boolean {
+  return (
+    current.cardsReviewed < lastSynced.cardsReviewed
+    || current.cardsLearned < lastSynced.cardsLearned
+  );
 }
 
 export interface SyncedFolderSnapshot {
@@ -118,14 +136,30 @@ export interface SyncedFolderSnapshot {
   color: string;
 }
 
-/** True when the array is element-wise identical (order matters). */
-export function isSameStringArray(
-  synced: string[] | null,
+export interface LearnedCardsDelta {
+  /** Ids present in the current list but not in the synced baseline, in
+   * current-list order. */
+  appended: string[];
+  /** True when the current list lost baseline ids (progress reset) — the
+   * caller must fall back to a full replace instead of an append. */
+  shrank: boolean;
+}
+
+/**
+ * Compute the append-only delta between the last synced learned-cards list
+ * and the current one. A first-ever sync (null baseline) is a full replace.
+ */
+export function computeLearnedDelta(
+  baseline: string[] | null,
   current: string[],
-): boolean {
-  if (!synced) return false;
-  if (synced.length !== current.length) return false;
-  return synced.every((value, index) => value === current[index]);
+): LearnedCardsDelta {
+  if (!baseline) return { appended: [], shrank: false };
+
+  const baselineSet = new Set(baseline);
+  const appended = current.filter((id) => !baselineSet.has(id));
+  const shrank = current.length < baseline.length
+    || baseline.some((id) => !current.includes(id));
+  return { appended, shrank };
 }
 
 /** True when the folder list is identical (id + name + color, order matters). */

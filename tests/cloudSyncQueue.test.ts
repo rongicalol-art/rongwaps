@@ -1,12 +1,13 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
+  computeLearnedDelta,
   createSingleFlightSaveCoordinator,
   getNextAutoSaveDelay,
   getNextCloudSyncBackoff,
   getSessionProgressDelta,
   isSameFolderList,
-  isSameStringArray,
+  isSessionProgressReset,
   mergePulledSrsData,
   planFolderSync,
   pruneAcknowledgedTombstones,
@@ -101,6 +102,43 @@ test('session deltas include reviews and learned cards exactly once', () => {
       { cardsReviewed: 4, cardsLearned: 2 },
     ),
     { cardsReviewed: 1, cardsLearned: 1 },
+  );
+});
+
+test('a counter reset re-baselines so post-reset reviews count fully', () => {
+  // Manual progress reset cleared the counters, then 10 reviews happened:
+  // the stale synced baseline (50) must not shrink the delta to 10.
+  assert.deepEqual(
+    getSessionProgressDelta(
+      { cardsReviewed: 10, cardsLearned: 4 },
+      { cardsReviewed: 50, cardsLearned: 20 },
+    ),
+    { cardsReviewed: 10, cardsLearned: 4 },
+  );
+
+  // Only one counter regressed (the other still ahead of its baseline):
+  // the reset re-baselines both counters.
+  assert.deepEqual(
+    getSessionProgressDelta(
+      { cardsReviewed: 10, cardsLearned: 0 },
+      { cardsReviewed: 4, cardsLearned: 2 },
+    ),
+    { cardsReviewed: 10, cardsLearned: 0 },
+  );
+
+  assert.equal(
+    isSessionProgressReset(
+      { cardsReviewed: 0, cardsLearned: 0 },
+      { cardsReviewed: 50, cardsLearned: 20 },
+    ),
+    true,
+  );
+  assert.equal(
+    isSessionProgressReset(
+      { cardsReviewed: 60, cardsLearned: 20 },
+      { cardsReviewed: 50, cardsLearned: 20 },
+    ),
+    false,
   );
 });
 
@@ -222,15 +260,6 @@ test('pulled merge preserves prior baseline rows an incremental pull omitted', (
 });
 
 test('unchanged-skip checks never skip after a null baseline or a real change', () => {
-  // Null = "never synced": must always write.
-  assert.equal(isSameStringArray(null, []), false);
-  assert.equal(isSameStringArray(null, ['a']), false);
-
-  assert.equal(isSameStringArray(['a', 'b'], ['a', 'b']), true);
-  assert.equal(isSameStringArray([], []), true);
-  assert.equal(isSameStringArray(['a', 'b'], ['b', 'a']), false); // order changed
-  assert.equal(isSameStringArray(['a'], ['a', 'a']), false);
-
   const folder = { id: 'f1', name: 'Words', color: '#fff' };
   assert.equal(
     isSameFolderList(null, []),
@@ -282,4 +311,38 @@ test('tombstone pruning keeps only ids still present on the server', () => {
   assert.deepEqual(pruneAcknowledgedTombstones(['f1', 'f2', 'f3'], ['f1']), ['f1']);
   assert.deepEqual(pruneAcknowledgedTombstones(['f1'], []), []);
   assert.deepEqual(pruneAcknowledgedTombstones([], ['f1']), []);
+});
+
+test('learned delta appends only new ids, preserving current order', () => {
+  assert.deepEqual(
+    computeLearnedDelta(['a', 'b'], ['a', 'b', 'c', 'd']),
+    { appended: ['c', 'd'], shrank: false },
+  );
+});
+
+test('learned delta flags a shrink (progress reset) for full replace', () => {
+  assert.deepEqual(
+    computeLearnedDelta(['a', 'b', 'c'], ['a']),
+    { appended: [], shrank: true },
+  );
+
+  // Reset + new first passes in the same window: still a full replace.
+  assert.deepEqual(
+    computeLearnedDelta(['a', 'b'], ['c', 'd']),
+    { appended: ['c', 'd'], shrank: true },
+  );
+});
+
+test('learned delta treats a first-ever sync (null baseline) as full replace', () => {
+  assert.deepEqual(
+    computeLearnedDelta(null, ['a', 'b']),
+    { appended: [], shrank: false },
+  );
+});
+
+test('learned delta is empty when nothing changed', () => {
+  assert.deepEqual(
+    computeLearnedDelta(['a', 'b'], ['a', 'b']),
+    { appended: [], shrank: false },
+  );
 });

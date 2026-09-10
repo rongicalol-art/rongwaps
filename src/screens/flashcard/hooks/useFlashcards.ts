@@ -33,6 +33,14 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
   const sessionProgressIndex = useAppStore((state) => state.sessionProgressIndex);
   const setSessionProgressIndex = useAppStore((state) => state.setSessionProgressIndex);
   const clearSessionProgressIndex = useAppStore((state) => state.clearSessionProgressIndex);
+  // The pinned due-set snapshot is a per-session pin: once the review session
+  // completes, drop it so the next review entry recomputes from the live SRS
+  // due set instead of replaying already-reviewed cards.
+  const clearReviewSessionSnapshot = () => {
+    if (isReviewDeck) {
+      useAppStore.getState().setActiveReviewSessionCards(null);
+    }
+  };
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
   const sessionKey = isReviewDeck ? SHARED_REVIEW_SESSION_KEY : isLibraryDeck ? `shared_deck_library_${libraryActiveFolder}` : getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
@@ -237,6 +245,7 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
       setCurrentIndex(prev => prev + 1);
     } else {
       clearSessionProgressIndex(sessionKey);
+      clearReviewSessionSnapshot();
       setCompleted(true);
     }
   };
@@ -248,6 +257,7 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
       setIsFlipped(false);
     } else if (newDoc >= cards.length) {
       clearSessionProgressIndex(sessionKey);
+      clearReviewSessionSnapshot();
       setCompleted(true);
     }
   };

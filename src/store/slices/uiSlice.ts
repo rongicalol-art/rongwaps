@@ -87,4 +87,8 @@ export const UI_PERSISTED_KEYS = [
 ] as const;
 
 /** Keys this domain clears when the signed-in account changes. */
-export const UI_ACCOUNT_SWITCH_DEFAULTS = {};
+export const UI_ACCOUNT_SWITCH_DEFAULTS = {
+  // A pinned review deck's due-set snapshot is session-scoped learner data:
+  // it must never survive an account switch.
+  activeReviewSessionCards: null,
+};

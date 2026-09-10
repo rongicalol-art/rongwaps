@@ -87,7 +87,9 @@ function mapVocabularyRows(items: readonly unknown[]): Flashcard[] {
   });
 }
 
-function prepareVocabulary(items: readonly unknown[], lessonId?: number): Flashcard[] {
+/** Map + optional lesson filter + canonical id sort. Exported for the review
+ * deck loader, which composes due-card sessions from pack rows directly. */
+export function prepareVocabulary(items: readonly unknown[], lessonId?: number): Flashcard[] {
   const mapped = mapVocabularyRows(items);
   const filtered = lessonId ? mapped.filter((card) => card.lessonId === lessonId) : mapped;
   return filtered.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true, sensitivity: 'base' }));
@@ -218,6 +220,42 @@ export async function fetchVocabulary(bookId?: number, lessonId?: number): Promi
 
   fetchPromises.set(cacheKey, fetchPromise);
   return fetchPromise;
+}
+
+/**
+ * Fetch specific vocabulary rows by id (Supabase, chunked `.in` queries).
+ * Used by the review deck when static packs are unavailable but the server
+ * already supplied the due-card ids — fetching only the session's rows beats
+ * paginating the whole book_vocabulary table. Returns null on failure so the
+ * caller can fall back to the full-catalog path.
+ */
+export async function fetchVocabularyByIds(ids: string[]): Promise<Flashcard[] | null> {
+  const uniqueIds = [...new Set(ids)].filter(Boolean);
+  if (uniqueIds.length === 0) return [];
+
+  try {
+    const rows: DBVocabularyRow[] = [];
+    const chunkSize = 100;
+    for (let i = 0; i < uniqueIds.length; i += chunkSize) {
+      const chunk = uniqueIds.slice(i, i + chunkSize);
+      const { data, error } = await timeDataRequest(
+        `vocabulary by ids chunk ${Math.floor(i / chunkSize) + 1}`,
+        () => supabase
+          .from('book_vocabulary')
+          .select(VOCABULARY_COLUMNS)
+          .in('id', chunk),
+      );
+      if (error) {
+        console.error('Error fetching vocabulary by ids:', error);
+        return null;
+      }
+      if (data) rows.push(...(data as DBVocabularyRow[]));
+    }
+    return prepareVocabulary(rows);
+  } catch (err) {
+    console.error('Exception fetching vocabulary by ids:', err);
+    return null;
+  }
 }
 
 /**

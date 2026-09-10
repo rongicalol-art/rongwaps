@@ -6,14 +6,15 @@ import { progressService } from '../services/progressService';
 import { authService } from '../services/authService';
 import type { SRSData } from '../utils/srsEngine';
 import {
+  computeLearnedDelta,
   createCloudSyncFingerprint,
   createSingleFlightSaveCoordinator,
   getNextAutoSaveDelay,
   getNextCloudSyncBackoff,
   getSessionProgressDelta,
   hasSessionProgressDelta,
+  isSessionProgressReset,
   isSameFolderList,
-  isSameStringArray,
   mergePulledSrsData,
   pruneAcknowledgedTombstones,
   type SyncedFolderSnapshot,
@@ -437,20 +438,38 @@ export function useCloudSync() {
       ...(lastSyncedSrsRef.current ?? {}),
       ...deltaSrsData,
     };
-    // Skip the learned-cards/activity rewrite when neither changed since the
-    // last acknowledged sync. The array grows over a learner's lifetime, so
-    // resending it on every save was the largest redundant write.
-    const metadataRowUnchanged =
-      isSameStringArray(lastSyncedLearnedRef.current, store.learnedCards)
-      && lastSyncedActivityRef.current === store.lastActivity;
-    if (!metadataRowUnchanged) {
+    // Learned cards are append-only in the common case: a first pass appends
+    // ids server-side (append_learned_cards RPC) instead of re-uploading the
+    // lifetime-growing array. Full replaces are reserved for the first sync
+    // (null baseline), a shrink (progress reset), and RPC-less environments
+    // (the append call fails) — all via syncMetadata.
+    const learnedDelta = computeLearnedDelta(lastSyncedLearnedRef.current, store.learnedCards);
+    let learnedSynced = false;
+    if (learnedDelta.shrank || lastSyncedLearnedRef.current === null) {
       await userService.syncMetadata(userId, {
         learnedCards: store.learnedCards,
         lastActivity: store.lastActivity,
       });
-      lastSyncedLearnedRef.current = store.learnedCards;
-      lastSyncedActivityRef.current = store.lastActivity;
+      learnedSynced = true;
+    } else if (learnedDelta.appended.length > 0) {
+      learnedSynced = await userService.appendLearnedCards(userId, learnedDelta.appended);
+      // RPC unavailable (not deployed): fall back to the full replace so the
+      // append is not stranded locally.
+      if (!learnedSynced) {
+        await userService.syncMetadata(userId, {
+          learnedCards: store.learnedCards,
+          lastActivity: store.lastActivity,
+        });
+      }
     }
+
+    // lastActivity changes ride a targeted write that never touches
+    // learned_cards; when the full path above already ran, it was included.
+    if (!learnedSynced && lastSyncedActivityRef.current !== store.lastActivity) {
+      await userService.syncLastActivity(userId, store.lastActivity);
+    }
+    lastSyncedLearnedRef.current = store.learnedCards;
+    lastSyncedActivityRef.current = store.lastActivity;
 
     // The cloud lesson field is the legacy flat list; it is derived from the
     // canonical per-book parts map for the active book at save time.
@@ -502,6 +521,11 @@ export function useCloudSync() {
         activityType: getDailyActivity(store.lastActivity),
         activityCount: dailyDelta.cardsReviewed,
       });
+      lastSyncedSessionRef.current = snapshotSession;
+    } else if (isSessionProgressReset(snapshotSession, savedSession)) {
+      // Counters were manually reset with nothing new to upload yet: adopt
+      // the fresh counters as the baseline so later post-reset reviews are
+      // measured against them, not against the stale pre-reset baseline.
       lastSyncedSessionRef.current = snapshotSession;
     }
 

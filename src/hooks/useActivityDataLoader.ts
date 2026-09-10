@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Flashcard } from '../data/flashcards';
-import { fetchVocabulary } from '../services/vocabularyService';
+import { fetchVocabulary, fetchVocabularyByIds, prepareVocabulary } from '../services/vocabularyService';
+import { fetchAllVocabularyPacks } from '../services/vocabularyPackService';
+import { userService } from '../services/userService';
 import { getDictionaryEntriesBatch } from '../services/dictionaryService';
 import { flashcardService } from '../services/flashcardService';
 import { useAppStore } from '../store/useAppStore';
@@ -13,11 +15,77 @@ import {
   filterDeckByExclusions,
   pruneExcludedIds,
 } from '../utils/deckExclusions';
+import { buildReviewSession } from '../utils/reviewSession';
+import type { SRSData } from '../utils/srsEngine';
 
 function isSameCards(a: Flashcard[], b: Flashcard[]): boolean {
   if (a === b) return true;
   if (a.length !== b.length) return false;
   return a.every((card, idx) => card.id === b[idx].id);
+}
+
+/**
+ * Review-deck assembly.
+ *
+ * Fresh session (`pinnedIds` null): due-card ids come from the server first
+ * (`get_due_card_ids` RPC — reviews made on other devices count without
+ * waiting for the client pull), falling back to the local SRS due filter.
+ * The due pool is then capped and prioritized by `buildReviewSession`
+ * (learning-phase backlog first, then most-overdue/weakest, capped at
+ * REVIEW_SESSION_CAP), and pinned into the store so the deck cannot mutate
+ * mid-session.
+ *
+ * Content resolution is pack-first in every branch (IndexedDB-cached); the
+ * Supabase paths fetch only the needed rows by id instead of paginating the
+ * whole book_vocabulary table.
+ *
+ * `knownIds` feeds exclusion pruning and is the FULL vocabulary id universe
+ * whenever one is available; when only a partial fetch was possible it is
+ * null and the caller must skip pruning rather than prune against a partial
+ * set (see deckExclusions.ts — a not-due-today card must keep its exclusion).
+ */
+async function loadReviewDeck(
+  srsData: Record<string, SRSData>,
+  pinnedIds: string[] | null,
+): Promise<{ cards: Flashcard[]; knownIds: Set<string> | null }> {
+  const resolveByIds = async (ids: string[]): Promise<{ cards: Flashcard[]; knownIds: Set<string> | null } | null> => {
+    const idSet = new Set(ids);
+    const packedRows = await fetchAllVocabularyPacks();
+    if (packedRows) {
+      const allCards = prepareVocabulary(packedRows);
+      return {
+        cards: allCards.filter((card) => idSet.has(card.id)),
+        knownIds: new Set(packedRows.map((row) => String(row.id))),
+      };
+    }
+    const rowsById = await fetchVocabularyByIds(ids);
+    if (rowsById) {
+      // No full id universe this load — pruning must be skipped.
+      return { cards: rowsById, knownIds: null };
+    }
+    const data = await fetchVocabulary();
+    return {
+      cards: data.filter((card) => idSet.has(card.id)),
+      knownIds: new Set(data.map((card) => card.id)),
+    };
+  };
+
+  if (pinnedIds) {
+    return resolveByIds(pinnedIds);
+  }
+
+  const dueIds = await userService.getDueCardIds();
+  if (dueIds) {
+    const pool = await resolveByIds(dueIds);
+    return { cards: buildReviewSession(pool.cards, srsData), knownIds: pool.knownIds };
+  }
+
+  // No server due set available (RPC absent/failed): derive due ids from the
+  // local SRS map and rebuild the session with cap + smart ordering.
+  const now = Date.now();
+  const localDueIds = Object.keys(srsData).filter((id) => srsData[id]?.nextReviewDate <= now);
+  const pool = await resolveByIds(localDueIds);
+  return { cards: buildReviewSession(pool.cards, srsData), knownIds: pool.knownIds };
 }
 
 /**
@@ -73,15 +141,17 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
 
   // For pruning we must know which card ids really existed in this deck.
   // Review is the special case: its exclusion list is global and must survive
-  // cards that are simply not due today, so it prunes against ALL fetched
-  // vocabulary ids (the pre-due-set fetch), never against the due set.
-  const knownIdsRef = useRef<{ key: string; ids: Set<string> } | null>(null);
+  // cards that are simply not due today, so it prunes against the FULL
+  // vocabulary id universe (the pre-due-set source), never against the due
+  // set. A null `ids` means only a partial fetch was possible — pruning is
+  // skipped for that load rather than run against the partial set.
+  const knownIdsRef = useRef<{ key: string; ids: Set<string> | null } | null>(null);
 
   useEffect(() => {
     const record = deckExclusions[deckExclusionKey];
     if (!record || record.length === 0) return;
     const known = knownIdsRef.current;
-    if (!known || known.key !== deckExclusionKey) return;
+    if (!known || known.key !== deckExclusionKey || !known.ids) return;
     const pruned = pruneExcludedIds(record, known.ids);
     if (pruned.length !== record.length) {
       setDeckExclusions(deckExclusionKey, pruned);
@@ -202,24 +272,23 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
 
       // ── Default curriculum load ─────────────────────────────────────
       try {
-        const data = await fetchVocabulary(isReviewDeck ? undefined : activeBookId); 
-        let filtered = data;
-        let knownIds = new Set(data.map(c => c.id));
-        
-        // Review deck: only show cards that are due for SRS review
+        let filtered: Flashcard[];
+        let knownIds: Set<string> | null;
+
+        // Review deck: due-card session (pinned resume or fresh smart build).
         if (isReviewDeck) {
           const { activeReviewSessionCards, setActiveReviewSessionCards } = useAppStore.getState();
-          if (activeReviewSessionCards) {
-            filtered = filtered.filter(c => activeReviewSessionCards.includes(c.id));
-          } else {
-            const now = Date.now();
-            filtered = filtered.filter(c => {
-              const srs = srsData[c.id];
-              return srs && srs.nextReviewDate <= now;
-            });
+          const review = await loadReviewDeck(srsData, activeReviewSessionCards);
+          filtered = review.cards;
+          knownIds = review.knownIds;
+          if (!activeReviewSessionCards) {
             setActiveReviewSessionCards(filtered.map(c => c.id));
           }
         } else {
+          const data = await fetchVocabulary(activeBookId);
+          filtered = data;
+          knownIds = new Set(data.map(c => c.id));
+
           const parsedLessons = stableSelectedLessonsKey ? stableSelectedLessonsKey.split(',').map(Number) : [];
           if (parsedLessons.length > 0) {
             // Normal mode: filter by the selected lessons and their selected parts.

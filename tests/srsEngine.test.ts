@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
   calculateNextReview,
+  dayBoundaryDueTimestamp,
   fuzzInterval,
   LEARNING_STEPS_MINUTES,
   type SRSData,
@@ -48,7 +49,8 @@ test('a card passes through each learning step and then graduates', () => {
     const graduated = calculateNextReview(step0, 'card-1', 4);
     assert.equal(graduated.learningStep, undefined);
     assert.equal(graduated.repetition, 0);
-    assert.equal(graduated.nextReviewDate - NOW, 1 * DAY);
+    // Review-phase due dates land on the day rollover boundary, not NOW+24h.
+    assert.equal(graduated.nextReviewDate, dayBoundaryDueTimestamp(1, NOW));
   });
 });
 
@@ -68,7 +70,7 @@ test('a legacy card without learningStep stays in the review phase', () => {
     assert.equal(next.learningStep, undefined);
     assert.equal(next.interval, 1);
     assert.equal(next.repetition, 1);
-    assert.equal(next.nextReviewDate - NOW, 1 * DAY);
+    assert.equal(next.nextReviewDate, dayBoundaryDueTimestamp(1, NOW));
   });
 });
 
@@ -88,4 +90,44 @@ test('fuzzInterval stays within +/-10% and never below one day', () => {
     assert.ok(fuzzed <= 11, 'expected upper fuzz bound');
   }
   assert.equal(fuzzInterval(1), 1);
+});
+
+test('day-boundary scheduling lands on the rollover hour of the due day', () => {
+  // 2026-09-10 05:00 local, rollover 04:00: next boundary is tomorrow 04:00.
+  const morning = new Date(2026, 8, 10, 5, 0, 0).getTime();
+  const due = dayBoundaryDueTimestamp(1, morning);
+  assert.equal(due, new Date(2026, 8, 11, 4, 0, 0).getTime());
+
+  // Multi-day intervals add whole days after the next rollover.
+  const threeDay = dayBoundaryDueTimestamp(3, morning);
+  assert.equal(threeDay, new Date(2026, 8, 13, 4, 0, 0).getTime());
+});
+
+test('answers before the rollover hour belong to the previous study day', () => {
+  // 2026-09-10 03:00 local: today's 04:00 boundary is still ahead, so a
+  // 1-day interval becomes due in one hour (Anki-matching behavior).
+  const beforeRollover = new Date(2026, 8, 10, 3, 0, 0).getTime();
+  const due = dayBoundaryDueTimestamp(1, beforeRollover);
+  assert.equal(due, new Date(2026, 8, 10, 4, 0, 0).getTime());
+});
+
+test('review-phase nextReviewDate uses the day boundary, learning steps stay minute-based', () => {
+  withNow(() => {
+    // Graduation: first review-phase pass (interval = 1 day).
+    const graduated = calculateNextReview(
+      srs({ learningStep: LEARNING_STEPS_MINUTES.length - 1 }),
+      'card-1',
+      4,
+    );
+    assert.equal(graduated.learningStep, undefined);
+    assert.equal(graduated.nextReviewDate, dayBoundaryDueTimestamp(1, NOW));
+
+    // Learning-phase card: exact minutes, no boundary alignment.
+    const learning = calculateNextReview(
+      srs({ learningStep: 0 }),
+      'card-1',
+      4,
+    );
+    assert.equal(learning.nextReviewDate, NOW + LEARNING_STEPS_MINUTES[1] * MINUTE);
+  });
 });

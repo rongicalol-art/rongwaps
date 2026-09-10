@@ -38,14 +38,40 @@ export const userService = {
       if (options?.since) {
         query = query.gte('last_updated', options.since);
       }
-      const { data: cardProgress, error: cardError } = await query;
+
+      // 2. Learned cards from the per-card table (source of truth).
+      //    Fails soft: before the learned_cards_table migration deploys the
+      //    query errors, and the legacy profile array is used instead.
+      const learnedRowsQuery = supabase
+        .from('user_learned_cards')
+        .select('card_id')
+        .eq('user_id', userId);
+
+      const [{ data: cardProgress, error: cardError }, learnedRows] = await Promise.all([
+        (async () => {
+          const { data, error } = await query;
+          return { data, error };
+        })(),
+        (async () => {
+          try {
+            const { data, error } = await learnedRowsQuery;
+            if (error) throw error;
+            return (data ?? [])
+              .map((row: { card_id: string }) => row.card_id)
+              .filter((id: unknown): id is string => typeof id === 'string');
+          } catch (e) {
+            console.warn('user_learned_cards read failed, using legacy array:', e);
+            return null;
+          }
+        })(),
+      ]);
 
       if (cardError) {
         console.error("Error fetching card progress:", cardError);
         throw cardError;
       }
 
-      // 2. Fetch metadata (learned_cards, last_activity) from the profile row
+      // 3. Metadata (last_activity) from the profile row
       const { data: legacyRow, error: legacyError } = await supabase
         .from('user_profiles')
         .select('learned_cards, last_activity, updated_at')
@@ -56,6 +82,18 @@ export const userService = {
         console.error("Error fetching legacy progress:", legacyError);
         throw legacyError;
       }
+
+      const legacyLearned = Array.isArray(legacyRow?.learned_cards)
+        ? (legacyRow?.learned_cards as unknown[]).filter((id): id is string => typeof id === 'string')
+        : [];
+      // Transitional read: union the table with the legacy array. The RPCs
+      // keep both in sync, but a legacy client (or the direct-upsert
+      // fallback while the RPC is missing) writes only the array, so the
+      // union is correct through the whole rollout. Once every client is
+      // upgraded the array can be dropped and this becomes a plain read.
+      const learnedCards = learnedRows !== null
+        ? Array.from(new Set([...learnedRows, ...legacyLearned]))
+        : legacyLearned;
 
       // Convert card_progress rows back into SRSData map
       const srsData: Record<string, SRSData> = {};
@@ -70,7 +108,7 @@ export const userService = {
 
       return {
         srsData,
-        learnedCards: legacyRow?.learned_cards || [],
+        learnedCards,
         lastActivity: legacyRow?.last_activity || null,
         lastUpdated: legacyRow?.updated_at || undefined,
         hasCardDelta: Object.keys(srsData).length > 0,
@@ -133,12 +171,21 @@ export const userService = {
     }
   },
 
-  // Save metadata (learned_cards, last_activity) to the user's profile row
+  // Full metadata replace (learned_cards, last_activity). The full-replace
+  // RPC keeps the per-card table and the legacy array consistent; when it is
+  // not deployed yet, the direct profile upsert still works (the table only
+  // catches up on the next append or replace RPC).
   syncMetadata: async (
     userId: string,
     data: { learnedCards: string[]; lastActivity: string | null }
   ) => {
     try {
+      const { error: rpcError } = await supabase.rpc('replace_learned_cards', {
+        p_cards: data.learnedCards,
+      });
+      if (!rpcError) return;
+      console.warn('replace_learned_cards RPC failed, falling back to direct upsert:', rpcError);
+
       const { error } = await supabase
         .from('user_profiles')
         .upsert(
@@ -151,7 +198,7 @@ export const userService = {
           { onConflict: 'id' }
         );
       if (error) {
-        console.error("Error syncing metadata:", error);
+        console.error("Error upserting learned cards:", error);
         throw error;
       }
     } catch (e) {
@@ -167,6 +214,72 @@ export const userService = {
     if (error) {
       console.error('Learning progress reset failed:', error);
       throw error;
+    }
+  },
+
+  // Append-only learned-card sync via the `append_learned_cards` RPC: new
+  // first passes are added server-side without re-uploading the whole
+  // array. Returns false when the RPC is not deployed in the current
+  // environment so the caller can fall back to the full metadata write.
+  appendLearnedCards: async (userId: string, newCardIds: string[]): Promise<boolean> => {
+    if (newCardIds.length === 0) return true;
+    try {
+      const { error } = await supabase.rpc('append_learned_cards', {
+        p_cards: newCardIds,
+      });
+      if (error) {
+        console.warn('append_learned_cards RPC failed:', error);
+        return false;
+      }
+      return true;
+    } catch (e) {
+      console.warn('appendLearnedCards exception:', e);
+      return false;
+    }
+  },
+
+  // Save only last_activity — deliberately does not touch learned_cards, so
+  // an activity change never rewrites the (lifetime-growing) learned array.
+  syncLastActivity: async (userId: string, lastActivity: string | null) => {
+    try {
+      const { error } = await supabase
+        .from('user_profiles')
+        .upsert(
+          {
+            id: userId,
+            last_activity: lastActivity,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: 'id' }
+        );
+      if (error) {
+        console.error('Error syncing last activity:', error);
+        throw error;
+      }
+    } catch (e) {
+      console.error('Last-activity sync exception:', e);
+      throw e;
+    }
+  },
+
+  // Due-card ids for the review session, straight from the server so reviews
+  // made on other devices count without waiting for the client pull. Returns
+  // null when the RPC is unavailable (not deployed / network error) and the
+  // caller falls back to the local SRS due filter.
+  getDueCardIds: async (): Promise<string[] | null> => {
+    try {
+      const { data, error } = await supabase.rpc('get_due_card_ids');
+      if (error) {
+        console.warn('get_due_card_ids RPC failed, using local due filter:', error);
+        return null;
+      }
+      const ids = (data ?? [])
+        .map((row: { card_id: string }) => row.card_id)
+        .filter((id: unknown): id is string => typeof id === 'string');
+      return ids;
+    } catch (e) {
+      console.warn('getDueCardIds exception:', e);
+      return null;
     }
   },
 

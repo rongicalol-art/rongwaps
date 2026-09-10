@@ -52,6 +52,32 @@ export function fuzzInterval(intervalDays: number): number {
   return Math.max(1, fuzzed);
 }
 
+/**
+ * Review-phase due dates are day-granular: a card scheduled N days out
+ * becomes due at the day's rollover hour (local time), not N×24h after the
+ * exact answer moment. This mirrors Anki's model and keeps reviews aligned
+ * to a consistent time of day instead of drifting later with every session
+ * (answer at 20:00 → next due 04:00, not 20:00+24h).
+ *
+ * The rollover is 04:00 local: an answer at 03:00 still belongs to the
+ * previous study day, so a 1-day interval becomes due at today's 04:00 —
+ * the same behavior Anki produces.
+ */
+export const REVIEW_DAY_ROLLOVER_HOUR = 4;
+
+export function dayBoundaryDueTimestamp(
+  intervalDays: number,
+  nowMs: number = Date.now(),
+): number {
+  const boundary = new Date(nowMs);
+  boundary.setHours(REVIEW_DAY_ROLLOVER_HOUR, 0, 0, 0);
+  if (boundary.getTime() <= nowMs) {
+    boundary.setDate(boundary.getDate() + 1);
+  }
+  boundary.setDate(boundary.getDate() + (intervalDays - 1));
+  return boundary.getTime();
+}
+
 export type Quality = 0 | 1 | 2 | 3 | 4 | 5;
 
 // Quality mapping optimized for binary "Again" & "Got it" + quizzes:
@@ -123,10 +149,11 @@ export function calculateNextReview(current: SRSData | undefined, cardId: string
   if (efactor < 1.3) efactor = 1.3;
   if (efactor > 3.0) efactor = 3.0;
 
-  // Learning phase schedules in minutes; review phase in days.
+  // Learning phase schedules in minutes; review phase lands on the day's
+  // rollover boundary (day-granular scheduling).
   const nextReviewDate = inLearning
     ? Date.now() + interval * 60 * 1000
-    : Date.now() + interval * 24 * 60 * 60 * 1000;
+    : dayBoundaryDueTimestamp(interval);
 
   return {
     cardId,

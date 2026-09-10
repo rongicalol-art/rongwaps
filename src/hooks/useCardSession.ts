@@ -5,6 +5,7 @@ import { usePracticePreferencesStore } from '../store/usePracticePreferencesStor
 import { shuffleItems } from '../utils/sessionOrder';
 import { queueMissedItem } from '../utils/mistakeQueue';
 import { getSessionStartIndex, retainCurrentCardIndex } from '../utils/sessionProgress';
+import { SHARED_REVIEW_SESSION_KEY } from '../utils/lessonPartSelection';
 
 /**
  * Generic card-session engine shared by the practice activities.
@@ -156,6 +157,12 @@ export function useCardSession(
       return 'advanced';
     }
     clearSessionProgressIndex(sessionKey);
+    // The pinned due-set snapshot is a per-session pin: once the review
+    // session completes, drop it so the next review entry recomputes from
+    // the live SRS due set instead of replaying already-reviewed cards.
+    if (sessionKey === SHARED_REVIEW_SESSION_KEY) {
+      useAppStore.getState().setActiveReviewSessionCards(null);
+    }
     setCompleted(true);
     return 'completed';
   }, [activeCards.length, clearSessionProgressIndex, currentIndex, sessionKey]);
