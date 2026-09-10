@@ -69,14 +69,14 @@
 
     <link rel="manifest" href="/manifest.json" />
     <link rel="preload" href="/fonts/edukai.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/nunito.woff2" as="font" type="font/woff2" crossorigin />
 
-    <!-- Fonts: preconnect + non-blocking stylesheet (replaces render-blocking CSS @import) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=LXGW+WenKai+TC:wght@400;700&display=swap"
-    />
+    <!--
+      Nunito is self-hosted (see @font-face in src/index.css) for offline support.
+      LXGW WenKai TC (a Chinese fallback behind the local TW-EduKai font) is the
+      only remaining remote font; it is runtime-cached by the service worker.
+      font-sans has no network dependency, so the UI shell always renders.
+    -->
 
     <!-- Icons -->
     <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />

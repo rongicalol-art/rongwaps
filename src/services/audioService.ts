@@ -71,6 +71,12 @@ export class AudioService {
     if (typeof window !== 'undefined' && window.speechSynthesis) {
       void ensureSpeechVoices();
     }
+    // Best-effort: request persistent storage so the browser is less likely to
+    // evict the indexed audio cache under quota pressure. Must follow a user
+    // interaction; failures are ignored.
+    try {
+      void navigator.storage?.persist?.();
+    } catch { /* ignore */ }
     this.isInitialized = true;
   }
 

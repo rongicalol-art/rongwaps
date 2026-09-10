@@ -1,5 +1,24 @@
+import { del, get, keys, set } from 'idb-keyval';
+
 export const AUDIO_BUCKET = 'vocabulary-audio';
+
+/** Cap on in-memory decoded buffers and object URLs per map (FIFO/LRU count). */
 export const MAX_AUDIO_CACHE = 100;
+
+/**
+ * Cap on persistent Cache Storage bytes. Evicted least-recently-used first.
+ * 150MB default: large enough for meaningful offline audio, small enough to
+ * keep Safari/iOS quota pressure low.
+ */
+export const MAX_AUDIO_CACHE_BYTES = 150 * 1024 * 1024;
+
+/** IndexedDB meta namespace for the LRU byte index. */
+const AUDIO_META_PREFIX = 'rongwaps-audio-meta:';
+
+interface AudioMeta {
+  size: number;
+  lastAccessed: number;
+}
 
 function viteEnv(key: string): string | undefined {
   const env = (
@@ -23,6 +42,64 @@ export async function getAudioFileCache(): Promise<Cache | null> {
     audioFileCacheInstance = null;
   }
   return audioFileCacheInstance;
+}
+
+function metaKey(fileName: string): string {
+  return `${AUDIO_META_PREFIX}${fileName}`;
+}
+
+export async function touchAudioMeta(fileName: string, size?: number): Promise<void> {
+  const key = metaKey(fileName);
+  try {
+    const existing = await get<AudioMeta>(key);
+    await set(key, { size: size ?? existing?.size ?? 0, lastAccessed: Date.now() });
+  } catch {
+    // IndexedDB may be blocked; the byte cap simply becomes best-effort.
+  }
+}
+
+export async function removeAudioMeta(fileName: string): Promise<void> {
+  try {
+    await del(metaKey(fileName));
+  } catch {
+    // Best-effort cleanup; ignore.
+  }
+}
+
+/**
+ * Enforce the byte cap on the persistent audio cache. Called after a put.
+ * Evicts least-recently-accessed entries until the estimated total is under
+ * MAX_AUDIO_CACHE_BYTES. All errors are swallowed so caching never blocks
+ * playback.
+ */
+export async function pruneAudioCacheToLimit(): Promise<void> {
+  const cache = await getAudioFileCache();
+  if (!cache) return;
+  try {
+    if (typeof indexedDB === 'undefined') return;
+    const allKeys = await keys();
+    let total = 0;
+    const indexed: { fileName: string; size: number; lastAccessed: number }[] = [];
+    for (const key of allKeys) {
+      if (typeof key !== 'string' || !key.startsWith(AUDIO_META_PREFIX)) continue;
+      const meta = await get<AudioMeta>(key);
+      if (!meta) continue;
+      const fileName = key.slice(AUDIO_META_PREFIX.length);
+      indexed.push({ fileName, size: meta.size, lastAccessed: meta.lastAccessed });
+      total += meta.size;
+    }
+    if (total <= MAX_AUDIO_CACHE_BYTES) return;
+
+    indexed.sort((a, b) => a.lastAccessed - b.lastAccessed);
+    for (const entry of indexed) {
+      if (total <= MAX_AUDIO_CACHE_BYTES) break;
+      await cache.delete(audioFileCacheRequest(entry.fileName)).catch(() => {});
+      await removeAudioMeta(entry.fileName);
+      total -= entry.size;
+    }
+  } catch {
+    // Best-effort; never fail playback.
+  }
 }
 
 export function resolveRequestUrl(path: string): string {
@@ -50,7 +127,10 @@ export async function fetchAudioBlob(fileName: string): Promise<Blob> {
 
   if (cache) {
     const cached = await cache.match(cacheRequest).catch(() => null);
-    if (cached) return await cached.blob();
+    if (cached) {
+      void touchAudioMeta(fileName);
+      return await cached.blob();
+    }
   }
 
   const sources = [
@@ -67,6 +147,8 @@ export async function fetchAudioBlob(fileName: string): Promise<Blob> {
       if (cache) {
         cache
           .put(cacheRequest, new Response(blob, { headers: { 'Content-Type': 'audio/mpeg' } }))
+          .then(() => touchAudioMeta(fileName, blob.size))
+          .then(() => pruneAudioCacheToLimit())
           .catch(() => {});
       }
       return blob;
@@ -80,12 +162,23 @@ export async function fetchAudioBlob(fileName: string): Promise<Blob> {
     : new Error('Failed to fetch audio: ' + fileName);
 }
 
+/**
+ * Set/replace a map entry, moving it to the most-recently-used end so the
+ * leading keys are the least-recently-used (evicted first). Returns the new
+ * value so callers can both set and keep it.
+ */
+function setLru<T>(map: Map<string, T>, key: string, value: T): T {
+  if (map.has(key)) map.delete(key);
+  map.set(key, value);
+  return value;
+}
+
 export function cacheBuffer(
   buffers: Map<string, AudioBuffer>,
   fileName: string,
   audioBuffer: AudioBuffer,
 ): void {
-  buffers.set(fileName, audioBuffer);
+  setLru(buffers, fileName, audioBuffer);
   while (buffers.size > MAX_AUDIO_CACHE) {
     const oldest = buffers.keys().next().value;
     if (oldest === undefined) break;
@@ -98,7 +191,9 @@ export function cacheObjectUrl(
   fileName: string,
   objectUrl: string,
 ): void {
-  objectUrls.set(fileName, objectUrl);
+  const oldUrl = objectUrls.get(fileName);
+  setLru(objectUrls, fileName, objectUrl);
+  if (oldUrl !== undefined && oldUrl !== objectUrl) URL.revokeObjectURL(oldUrl);
   while (objectUrls.size > MAX_AUDIO_CACHE) {
     const oldest = objectUrls.keys().next().value;
     if (oldest === undefined) break;

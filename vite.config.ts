@@ -5,6 +5,7 @@ import { readFile } from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { defineConfig, type Plugin } from 'vite';
+import { VitePWA } from 'vite-plugin-pwa';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -48,9 +49,53 @@ function decompositionRuntimeDevPackPlugin(): Plugin {
   };
 }
 
+const pwaPlugin = VitePWA({
+  // Reuse the existing hand-written public/manifest.json; do not generate a
+  // second manifest from the plugin.
+  manifest: false,
+  registerType: 'autoUpdate',
+  injectRegister: 'auto',
+  strategies: 'generateSW',
+  includeAssets: ['icons/*'],
+  devOptions: { enabled: false },
+  workbox: {
+    // Precache only the app shell. Large authored data packs (public/data,
+    // public/videos, public/hanzi-data) already load offline through IndexedDB
+    // (staticContentService) and the audio Cache Storage, and must not be
+    // precached here.
+    globPatterns: ['**/*.{js,css,html,svg,png,woff2,ico}'],
+    globIgnores: [
+      'data/**',
+      'videos/**',
+      'hanzi-data/**',
+      '**/sw.js',
+      '**/workbox-*.js',
+    ],
+    // Run the app shell (including the local TW-EduKai Chinese font) fully
+    // offline; it must be in the precache even though it is larger than the
+    // 2 MiB default.
+    maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
+    navigateFallback: '/index.html',
+    navigateFallbackDenylist: [/^\/api\//],
+    runtimeCaching: [
+      {
+        // LXGW WenKai TC (Chinese fallback behind the local TW-EduKai) is the
+        // only remaining remote font. Cache it stale-while-revalidate.
+        urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com\//,
+        handler: 'StaleWhileRevalidate',
+        options: {
+          cacheName: 'rongwaps-fonts',
+          expiration: { maxEntries: 40, maxAgeSeconds: 60 * 60 * 24 * 365 },
+          cacheableResponse: { statuses: [0, 200] },
+        },
+      },
+    ],
+  },
+});
+
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss(), decompositionRuntimeDevPackPlugin()],
+    plugins: [react(), tailwindcss(), decompositionRuntimeDevPackPlugin(), pwaPlugin],
     build: {
       outDir: 'dist',
       emptyOutDir: true,

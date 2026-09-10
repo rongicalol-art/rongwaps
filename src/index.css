@@ -8,6 +8,16 @@
   font-display: swap;
 }
 
+/* Self-hosted Nunito (variable, latin subset) so the UI shell works offline
+   without a request to Google Fonts. */
+@font-face {
+  font-family: 'Nunito';
+  src: url('/fonts/nunito.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --font-sans: "Nunito", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-chinese: "TW-EduKai", "BiauKai", "標楷體", "DFKai-SB", "Kaiti TC", "STKaiti", "KaiTi", "TW-Kai", "LXGW WenKai TC", serif;
