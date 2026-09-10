@@ -1,16 +1,15 @@
 /**
- * @fileoverview Main app store — delegates to domain-specific stores.
+ * @fileoverview Global app store.
  *
- * This file maintains backward compatibility by re-exporting the full AppState
- * interface while delegating state management to focused domain stores:
- *   - useAuthStore: currentUser
- *   - useNavigationStore: activeTab, activeActivity, selectedLessons, selectedBooks
- *   - useSrsStore: srsData, learnedCards, sessionProgress, stats, etc.
- *   - useUiStore: isSearchOpen, isOverlayOpen, practiceHeader, etc.
- *   - useLibraryStore: favorites, dictionaryWord, customFolders
- *   - useSyncStore: syncStatus, syncError, lastCloudUpdate
+ * A single persisted Zustand store holding auth, SRS/learning state,
+ * navigation, session progress, UI flags, library folders, and sync status.
+ * Persisted slices are whitelisted in `partialize` below and stored in
+ * IndexedDB under 'rongwaps-storage'.
  *
- * New code should import directly from the domain stores.
+ * KNOWN DEBT (architecture refactor): this file mixes unrelated domains and
+ * the persistence whitelist is maintained by hand. Do not add new domains
+ * here — new cross-screen state belongs in a separate domain store. The
+ * account-switch reset in useCloudSync must stay in sync with `partialize`.
  */
 
 import { create } from 'zustand';
@@ -53,7 +52,7 @@ const idbStorage: StateStorage = {
   },
 };
 
-// Re-export the full AppState interface for backward compatibility
+// Full AppState interface — every slice of the single persisted store.
 export interface AppState {
   // Auth
   currentUser: UserSnapshot | null;

@@ -75,7 +75,39 @@ export default [
         {
           patterns: [
             {
-              regex: '(^|/)features/(dictionary|practice)/',
+              regex: '(^|/)features/(character-decomposition|character-memory-hooks|dictionary|practice)/',
+              message: 'Features must use another feature’s public index, not its internal folders.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ['src/features/character-decomposition/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              regex: '(^|/)features/(character-breakdown|character-memory-hooks|dictionary|practice)/',
+              message: 'Features must use another feature’s public index, not its internal folders.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ['src/features/character-memory-hooks/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              regex: '(^|/)features/(character-breakdown|character-decomposition|dictionary|practice)/',
               message: 'Features must use another feature’s public index, not its internal folders.',
             },
           ],
@@ -91,7 +123,7 @@ export default [
         {
           patterns: [
             {
-              regex: '(^|/)features/(character-breakdown|practice)/',
+              regex: '(^|/)features/(character-breakdown|character-decomposition|character-memory-hooks|practice)/',
               message: 'Features must use another feature’s public index, not its internal folders.',
             },
           ],
@@ -107,7 +139,7 @@ export default [
         {
           patterns: [
             {
-              regex: '(^|/)features/(character-breakdown|dictionary)/',
+              regex: '(^|/)features/(character-breakdown|character-decomposition|character-memory-hooks|dictionary)/',
               message: 'Features must use another feature’s public index, not its internal folders.',
             },
           ],

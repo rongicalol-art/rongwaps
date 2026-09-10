@@ -33,7 +33,7 @@ export const DebugWindow = () => {
     }
   };
 
-  // Load Firestore mnemonics
+  // Load cached mnemonics
   useEffect(() => {
     if (activeTab === 'mnemonics') {
       setLoading(true);
@@ -55,7 +55,7 @@ export const DebugWindow = () => {
   const getCategoryClass = (category: DebugLog['category']) => {
     switch (category) {
       case 'AI': return 'bg-emerald-100 text-emerald-800 border-emerald-300';
-      case 'Firestore': return 'bg-orange-100 text-orange-800 border-orange-300';
+      case 'Mnemonics': return 'bg-orange-100 text-orange-800 border-orange-300';
       case 'Supabase': return 'bg-teal-100 text-teal-800 border-teal-300';
       case 'Auth': return 'bg-purple-100 text-purple-800 border-purple-300';
       case 'Cache': return 'bg-sky-100 text-sky-800 border-sky-300';
@@ -113,7 +113,7 @@ export const DebugWindow = () => {
               : 'bg-ui-surface border-ui-divider text-ui-ink hover:bg-ui-hover'
           }`}
         >
-          Mnemonic Firestore Cache ({mnemonics.length})
+          Mnemonic Cache ({mnemonics.length})
         </button>
         <button 
           onClick={() => setActiveTab('icons')}
@@ -204,7 +204,7 @@ export const DebugWindow = () => {
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-ui-surface p-4 rounded-feature border-b-[length:var(--depth-md)] border-ui-border gap-4">
               <div>
                 <h4 className="font-extrabold text-ui-ink text-sm">GLOBAL DATABASE CONTROLS</h4>
-                <p className="text-xs text-ui-muted">{mnemonics.length} items currently in the active Firestore database cache.</p>
+                <p className="text-xs text-ui-muted">{mnemonics.length} items currently in the active mnemonics cache.</p>
               </div>
               {!showConfirmDelete ? (
                 <button
@@ -255,7 +255,7 @@ export const DebugWindow = () => {
               ))
             ) : (
               <div className="text-center py-12 text-ui-muted bg-ui-surface border-2 border-dashed border-ui-divider rounded-feature font-bold">
-                No mnemonics found in the global Firestore cache.
+                No mnemonics found in the global cache.
               </div>
             )}
           </div>

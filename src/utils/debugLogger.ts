@@ -2,7 +2,7 @@ export interface DebugLog {
   id: string;
   timestamp: string;
   level: 'info' | 'warn' | 'error';
-  category: 'AI' | 'Firestore' | 'Supabase' | 'Auth' | 'Cache';
+  category: 'AI' | 'Mnemonics' | 'Supabase' | 'Auth' | 'Cache';
   message: string;
   details?: unknown;
 }

@@ -19,7 +19,7 @@ src/
 └── utils/                  # pure helpers and caches
 ```
 
-`src/screens/<feature>/` is the default home for feature-specific UI. Existing screen folders such as `grammar-lesson`, `library`, `flashcard`, `quiz`, `reading-lesson`, and `writing` are vertical slices and do not need to be moved into `src/features/`.
+`src/screens/<feature>/` is the default home for feature-specific UI. Existing screen folders such as `grammar-lesson`, `library`, `flashcard`, `quiz`, `reader`, and `writing` are vertical slices and do not need to be moved into `src/features/`.
 
 Profile, flashcard, and curriculum components that have one clear owner live in their screen-local `components/` folders. This keeps feature-specific presentation close to its screen without expanding the cross-screen feature packages.
 
@@ -56,7 +56,7 @@ The existing ESLint configuration contains a small set of core `no-restricted-im
 - `src/services/` cannot import UI modules from `src/app/`, `src/screens/`, `src/features/`, or `src/lib/widgets/`.
 - A feature package cannot reach into another feature package's internal folders. Its public directory/index API remains available for intentional cross-feature composition.
 
-The feature rule lists the current packages explicitly (`character-breakdown`, `dictionary`, and `practice`). When a new cross-screen feature package is added, update the corresponding ESLint override so the same internal-folder boundary applies. These checks guard import direction; they do not replace ownership review or the public barrels.
+The feature rule lists the current packages explicitly (`character-breakdown`, `character-decomposition`, `character-memory-hooks`, `dictionary`, and `practice`). When a new cross-screen feature package is added, update the corresponding ESLint override so the same internal-folder boundary applies. These checks guard import direction; they do not replace ownership review or the public barrels.
 
 ## Component ownership
 
@@ -86,7 +86,7 @@ Application-wide routing, navigation, and layout belong in `App.tsx` and, after 
 
 ## State, data, and persistence
 
-- Zustand stores in `src/store/` own persisted cross-screen state and domain state. `useAppStore` remains a compatibility facade while new code can use focused domain stores directly.
+- Zustand stores in `src/store/` own persisted cross-screen state and domain state. `useAppStore` is currently a single store covering auth, SRS/learning, navigation, session progress, UI flags, library folders, and sync status (see the KNOWN DEBT note in its header). A phased split into focused domain stores is planned; until then `useGrammarLessonStore` and `usePracticePreferencesStore` are the model to follow.
 - Hooks coordinate UI lifecycle and service/store access. Complex logic should not be lifted into `App.tsx`.
 - Services in `src/services/` own Supabase, API, authentication, audio, dictionary, vocabulary, and other external access.
 - Static curriculum and authored lesson content belongs in `src/data/`. Database/API contracts belong in `src/types/database.ts`; application models belong in `src/types/models.ts`.

@@ -180,37 +180,6 @@ export const userService = {
     }
   },
 
-  // Legacy: full sync (kept for backward compat, delegates to new methods)
-  syncProgress: async (
-    userId: string,
-    progress: Partial<UserProgressData>,
-    isUnload: boolean = false
-  ) => {
-    const promises: Promise<void>[] = [];
-
-    if (progress.srsData) {
-      if (isUnload) {
-        // Best-effort save during unload — fire and forget
-        promises.push(
-          userService.syncCardProgress(userId, progress.srsData).catch(() => {})
-        );
-      } else {
-        promises.push(userService.syncCardProgress(userId, progress.srsData));
-      }
-    }
-
-    if (progress.learnedCards || progress.lastActivity) {
-      promises.push(
-        userService.syncMetadata(userId, {
-          learnedCards: progress.learnedCards || [],
-          lastActivity: progress.lastActivity || null,
-        })
-      );
-    }
-
-    await Promise.all(promises);
-  },
-
   // Delete only learning progress. Saved words, custom folders, and custom cards
   // deliberately remain intact.
   resetLearningProgress: async (): Promise<void> => {

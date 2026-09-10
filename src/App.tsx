@@ -23,7 +23,11 @@ import { SignInWindow } from './screens/auth';
 // activity streams in under its ScreenSkeleton. Grammar + Reader are eager
 // WINDOW SHELLS (their heavy content chunks load inside, under a spinner).
 const ActivityModals = lazy(() => import('./screens/activities/ActivityModals').then((m) => ({ default: m.ActivityModals })));
-const DebugWindow = lazy(() => import('./screens/debug/DebugWindow').then((m) => ({ default: m.DebugWindow })));
+// Dev-only debug tools. import.meta.env.DEV is statically false in production
+// builds, so the dynamic import chunk is dropped from the bundle graph.
+const DebugWindow = import.meta.env.DEV
+  ? lazy(() => import('./screens/debug/DebugWindow').then((m) => ({ default: m.DebugWindow })))
+  : null;
 
 export default function App() {
   useAudioUnlock();
@@ -67,6 +71,7 @@ export default function App() {
   });
 
   useEffect(() => {
+    if (!import.meta.env.DEV) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (document.activeElement?.tagName === 'INPUT' || document.activeElement?.tagName === 'TEXTAREA') return;
       if (e.key === '0' && e.ctrlKey && e.shiftKey) {
@@ -212,7 +217,7 @@ export default function App() {
       </AnimatePresence>
       
       <AnimatePresence>
-        {showDebugWindow && (
+        {showDebugWindow && DebugWindow && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -229,7 +234,7 @@ export default function App() {
             </div>
             <div className="relative isolate flex min-h-0 flex-1">
               <Suspense fallback={<LoadingScreen message="Loading debug tools..." />}>
-                <DebugWindow />
+                {DebugWindow && <DebugWindow />}
               </Suspense>
             </div>
           </motion.div>
