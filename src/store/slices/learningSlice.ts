@@ -5,7 +5,6 @@ import {
   createEmptySessionProgress,
 } from '../../utils/reviewProgress';
 import type {
-  LessonPartSelectionMap,
   PartSegment,
   PracticeHeaderActions,
   SessionProgress,

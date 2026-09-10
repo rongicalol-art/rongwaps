@@ -67,7 +67,6 @@ export async function fetchDictionaryRowsFromPacks(
   const results = new Map<string, DBDictionaryRow[]>();
 
   try {
-    const manifest = await dictionaryPackLoader.manifest();
     const uniqueWords = [...new Set(words.map((word) => word.trim()).filter(Boolean))];
     const wordsByShard = new Map<number, Set<string>>();
 

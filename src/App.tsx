@@ -1,5 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router';
 import { useAppNavigation } from './hooks/useAppNavigation.tsx';
 import { useAudioUnlock } from './hooks/useAudioUnlock';
 import { useAppStore } from './store/useAppStore';
@@ -28,6 +29,22 @@ const ActivityModals = lazy(() => import('./screens/activities/ActivityModals').
 const DebugWindow = import.meta.env.DEV
   ? lazy(() => import('./screens/debug/DebugWindow').then((m) => ({ default: m.DebugWindow })))
   : null;
+
+// Route is the source of truth for the top-level workspace; the persisted
+// store tab only decides where a bare '/' boots.
+const TAB_ROUTES = {
+  path: '/path',
+  search: '/search',
+  library: '/library',
+  profile: '/profile',
+} as const;
+
+type TabRoute = keyof typeof TAB_ROUTES;
+
+function tabFromPathname(pathname: string): TabRoute | null {
+  const first = pathname.split('/')[1];
+  return first && first in TAB_ROUTES ? (first as TabRoute) : null;
+}
 
 export default function App() {
   useAudioUnlock();
@@ -105,6 +122,39 @@ export default function App() {
     useAppStore.getState().setIsOverlayOpen(isOverlayActive);
   }, [isOverlayActive]);
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  const routeTab = tabFromPathname(location.pathname);
+
+  // The route drives the workspace: every location change (sidebar click,
+  // browser back/forward, deep link) runs the same tab-change side effects
+  // the old onTabChange handler owned.
+  useEffect(() => {
+    if (!routeTab || routeTab === activeTab) return;
+    // Sidebar navigation is workspace-level: dismiss every open
+    // full-viewport/column window (Reading Mode, grammar lesson,
+    // dictionary word detail) so the destination tab actually comes
+    // to the front instead of switching behind the still-open window.
+    closeReader();
+    setActiveActivity(null);
+    setActiveGrammarPartId(null);
+    const store = useAppStore.getState();
+    store.setDictionaryWord(null);
+    setActiveTab(routeTab);
+    // Kick off the destination tab's chunk immediately so the switch is
+    // instant when the user actually lands there (the browser dedupes
+    // the import with React.lazy's own fetch).
+    prefetchTabScreen(routeTab);
+    store.setIsReviewMode(false);
+    store.setActiveReviewSessionCards(null);
+    store.setIsSearchOpen(false);
+  }, [routeTab, activeTab, closeReader, setActiveActivity, setActiveGrammarPartId, setActiveTab]);
+
+  const handleTabChange = (tab: TabRoute) => {
+    navigate(TAB_ROUTES[tab]);
+    if (!isDesktop()) setIsNavOpen(false);
+  };
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-ui-canvas">
@@ -127,36 +177,17 @@ export default function App() {
           setIsSettingsOpen(true);
           if (!isDesktop()) setIsNavOpen(false);
         }}
-        onTabChange={(tab) => {
-          // Sidebar navigation is workspace-level: dismiss every open
-          // full-viewport/column window (Reading Mode, grammar lesson,
-          // dictionary word detail) so the destination tab actually comes
-          // to the front instead of switching behind the still-open window.
-          closeReader();
-          setActiveActivity(null);
-          setActiveGrammarPartId(null);
-          const store = useAppStore.getState();
-          store.setDictionaryWord(null);
-          setActiveTab(tab);
-          // Kick off the destination tab's chunk immediately so the switch is
-          // instant when the user actually lands there (the browser dedupes
-          // the import with React.lazy's own fetch).
-          prefetchTabScreen(tab);
-          store.setIsReviewMode(false);
-          store.setActiveReviewSessionCards(null);
-          store.setIsSearchOpen(false);
-          if (!isDesktop()) setIsNavOpen(false);
-        }}
+        onTabChange={handleTabChange}
         activityModals={
           <Suspense fallback={null}>
-            <ActivityModals 
+            <ActivityModals
               activeActivity={activeActivity}
               setActiveActivity={setActiveActivity}
               activeBookId={activeBook.id}
               selectedLessons={selectedLessons}
               isLibraryMode={activeTab === 'library'}
               onNavigateToPractice={() => {
-                setActiveTab('path');
+                navigate(TAB_ROUTES.path);
                 setActiveActivity(null);
               }}
               onOpenGrammarPart={(partId) => setActiveGrammarPartId(partId)}
@@ -165,18 +196,16 @@ export default function App() {
           </Suspense>
         }
       >
-        <TabScreens
-          activeTab={activeTab}
-          activeBookId={activeBookId}
-          setActiveBookId={setActiveBookId}
-          selectedLessons={selectedLessons}
-          toggleLesson={toggleLesson}
-          startPathPractice={startPathPractice}
-          setActiveTab={setActiveTab}
-          setActiveActivity={setActiveActivity}
-          isNavOpen={isNavOpen}
-          setIsNavOpen={setIsNavOpen}
-        />
+        <Routes>
+          {/* '/' renders the persisted tab — boot restore keeps working; the
+              catch-all sends unknown URLs to the persisted tab. */}
+          <Route index element={<TabScreens activeTab={activeTab} activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />} />
+          <Route path={TAB_ROUTES.path.slice(1)} element={<TabScreens activeTab="path" activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />} />
+          <Route path={TAB_ROUTES.search.slice(1)} element={<TabScreens activeTab="search" activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />} />
+          <Route path={TAB_ROUTES.library.slice(1)} element={<TabScreens activeTab="library" activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />} />
+          <Route path={TAB_ROUTES.profile.slice(1)} element={<TabScreens activeTab="profile" activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />} />
+          <Route path="*" element={<Navigate to={`/${activeTab}`} replace />} />
+        </Routes>
       </LayoutShell>
 
       <AnimatePresence>
