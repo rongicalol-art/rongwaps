@@ -52,6 +52,7 @@ const LEGACY_ACCOUNT_SWITCH_KEYS = [
   'foldersSyncedUserId',
   'sessionProgress',
   'sessionProgressIndex',
+  'deckExclusions',
   'selectedLessonParts',
   'selectedBooks',
   'activeActivity',
@@ -77,6 +78,7 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
     foldersSyncedUserId: 'user-a',
     sessionProgress: { startTime: 1, cardsReviewed: 5, cardsLearned: 2 },
     sessionProgressIndex: { key: 3 },
+    deckExclusions: { 'vocab-1-2': ['card_x'] },
     selectedLessonParts: { '1:2': [1] },
     selectedBooks: [1],
     activeActivity: 'quiz',
@@ -102,6 +104,7 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
   assert.equal(state.foldersSyncedUserId, null);
   assert.deepEqual(state.sessionProgress, createEmptySessionProgress());
   assert.deepEqual(state.sessionProgressIndex, {});
+  assert.deepEqual(state.deckExclusions, {});
   assert.deepEqual(state.selectedLessonParts, {});
   assert.deepEqual(state.selectedBooks, []);
   assert.equal(state.activeActivity, null);

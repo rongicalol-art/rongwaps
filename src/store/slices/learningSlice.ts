@@ -147,18 +147,15 @@ export const LEARNING_PERSISTED_KEYS = [
   'deckExclusions',
 ] as const;
 
-/**
- * Keys this domain clears when the signed-in account changes. NOTE: today the
- * account switch deliberately does NOT clear deckExclusions (content
- * curation), matching the previous hand-written reset — flagged in
- * DECISIONS.md as an open question, not silently changed.
- */
+/** Keys this domain clears when the signed-in account changes. */
 export const LEARNING_ACCOUNT_SWITCH_DEFAULTS = {
   srsData: {},
   learnedCards: [],
   sessionProgress: createEmptySessionProgress(),
   sessionProgressIndex: {},
   lastActivity: null,
+  // Deck curation is user-scoped content: it must not leak across accounts.
+  deckExclusions: {},
 };
 
 export type PracticeHeaderState = {
