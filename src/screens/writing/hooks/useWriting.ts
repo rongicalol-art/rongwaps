@@ -1,12 +1,11 @@
 import { useState, useMemo, useEffect, useCallback, useRef } from 'react';
-import { Flashcard } from '../../../data/flashcards';
 import { useAppStore } from '../../../store/useAppStore';
 import { audioService } from '../../../services/audioService';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
 import { shuffleItems } from '../../../utils/sessionOrder';
 import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
 import { getCurriculumSessionKey, SHARED_REVIEW_SESSION_KEY } from '../../../utils/lessonPartSelection';
-import { getSessionStartIndex, retainCurrentCardIndex } from '../../../utils/sessionProgress';
+import { useCardSession } from '../../../hooks/useCardSession';
 
 // How many upcoming cards (without recorded audio) get neural TTS pre-warmed
 // so their first play uses the good voice instead of browser speech.
@@ -28,28 +27,20 @@ const NEURAL_PRELOAD_AHEAD = 2;
  */
 export function useWriting(activeBookId: number, selectedLessons: number[], onClose: () => void, isLibraryDeck: boolean = false, isReviewDeck: boolean = false) {
   const markCardReviewed = useAppStore((state) => state.markCardReviewed);
-  const sessionProgressIndex = useAppStore((state) => state.sessionProgressIndex);
-  const setSessionProgressIndex = useAppStore((state) => state.setSessionProgressIndex);
-  const clearSessionProgressIndex = useAppStore((state) => state.clearSessionProgressIndex);
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
   const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
   const autoPlayAudio = usePracticePreferencesStore((state) => state.autoPlayAudio);
   const sessionKey = isReviewDeck ? SHARED_REVIEW_SESSION_KEY : isLibraryDeck ? `shared_deck_library_${libraryActiveFolder}` : getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
 
-  const [screenState, setScreenState] = useState<'playing' | 'complete'>('playing');
-  const [currentIndex, setCurrentIndex] = useState(() => {
-    return sessionProgressIndex[sessionKey] || 0;
-  });
-
   const { cards: loadedCards, isLoading, error: loadError } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
-  const [cards, setCards] = useState<Flashcard[]>([]);
-  const [isShuffled, setIsShuffled] = useState(false);
-  const canonicalOrderRef = useRef<Flashcard[]>([]);
-  const sessionKeyRef = useRef(sessionKey);
-  const sessionInitializedRef = useRef(false);
-  const pendingSessionCardIdRef = useRef<string | null>(null);
-  const currentCardIdRef = useRef<string | null>(null);
+
+  const [activeCharIndex, setActiveCharIndex] = useState(0);
+  const [status, setStatus] = useState<'idle' | 'correct'>('idle');
+  const [completedChars, setCompletedChars] = useState<Set<number>>(new Set());
+  const [canvasSize, setCanvasSize] = useState(280);
+  const [showOutline, setShowOutline] = useState(true);
+  const [resetCounter, setResetCounter] = useState(0);
   const charCompletionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const clearCharCompletionTimer = useCallback(() => {
@@ -59,72 +50,30 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
     }
   }, []);
 
-  useEffect(() => {
-    if (sessionKeyRef.current !== sessionKey) {
-      pendingSessionCardIdRef.current = currentCardIdRef.current;
-      sessionKeyRef.current = sessionKey;
-      sessionInitializedRef.current = false;
-      currentCardIdRef.current = null;
-      canonicalOrderRef.current = [];
+  const resetCharState = useCallback(() => {
+    clearCharCompletionTimer();
+    setActiveCharIndex(0);
+    setCompletedChars(new Set());
+    setStatus('idle');
+    setResetCounter((counter) => counter + 1);
+  }, [clearCharCompletionTimer]);
+
+  const session = useCardSession(loadedCards, sessionKey, {
+    onSessionReset: () => {
       clearCharCompletionTimer();
       audioService.stop();
-      setCards([]);
-      setIsShuffled(false);
-      setCurrentIndex(0);
-      setScreenState('playing');
-      setActiveCharIndex(0);
-      setCompletedChars(new Set());
-      setStatus('idle');
-      setResetCounter((counter) => counter + 1);
-      return;
-    }
+      resetCharState();
+    },
+    onAnswerStateReset: resetCharState,
+  });
+  const { activeCards: cards, currentIndex, currentCard, completed } = session;
+  const screenState: 'playing' | 'complete' = completed ? 'complete' : 'playing';
 
-    const isSameDeck = sessionInitializedRef.current
-      && loadedCards.length === canonicalOrderRef.current.length
-      && loadedCards.every((c, idx) => c.id === canonicalOrderRef.current[idx]?.id);
-
-    if (isSameDeck) {
-      return;
-    }
-
-    setCards(loadedCards);
-    if (loadedCards.length > 0) {
-      const cardIdToRetain = sessionInitializedRef.current
-        ? currentCardIdRef.current
-        : pendingSessionCardIdRef.current;
-      const retainCurrentCard = sessionInitializedRef.current || Boolean(
-        cardIdToRetain && loadedCards.some((card) => card.id === cardIdToRetain),
-      );
-      const savedIndex = retainCurrentCard ? 0 : getSessionStartIndex(
-          useAppStore.getState().sessionProgressIndex,
-          sessionKey,
-          loadedCards.length,
-        );
-      setCurrentIndex((previousIndex) => retainCurrentCard
-        ? retainCurrentCardIndex(loadedCards, cardIdToRetain, previousIndex)
-        : savedIndex);
-      sessionInitializedRef.current = true;
-      pendingSessionCardIdRef.current = null;
-    }
-    setIsShuffled(false);
-    canonicalOrderRef.current = loadedCards;
-    if (loadedCards.length > 0) {
-      audioService.preload(loadedCards.map(c => c.audio));
-    }
-  }, [clearCharCompletionTimer, loadedCards, sessionKey]);
-  
-  const [activeCharIndex, setActiveCharIndex] = useState(0);
-  const [status, setStatus] = useState<'idle' | 'correct'>('idle');
-  const [completedChars, setCompletedChars] = useState<Set<number>>(new Set());
-  const [canvasSize, setCanvasSize] = useState(280);
-  const [showOutline, setShowOutline] = useState(true);
-  const [resetCounter, setResetCounter] = useState(0);
-
+  // Warm the deck's recorded audio once its cards arrive.
   useEffect(() => {
-    if (cards.length > 0 && currentIndex >= cards.length) {
-      setCurrentIndex(0);
-    }
-  }, [cards.length, currentIndex]);
+    if (cards.length === 0) return;
+    audioService.preload(cards.map(c => c.audio));
+  }, [cards]);
 
   useEffect(() => {
     const updateSize = () => {
@@ -137,12 +86,7 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
     return () => window.removeEventListener('resize', updateSize);
   }, []);
 
-  const playlist = useMemo(() => {
-    return cards;
-  }, [cards]);
-
-  const currentCard = playlist[currentIndex];
-  if (currentCard) currentCardIdRef.current = currentCard.id;
+  const playlist = useMemo(() => cards, [cards]);
   const chars: string[] = currentCard ? Array.from(currentCard.front) : [];
 
   useEffect(() => {
@@ -154,17 +98,8 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
   }, [clearCharCompletionTimer, currentCard?.id, screenState]);
 
   const toggleShuffle = useCallback(() => {
-    clearCharCompletionTimer();
-    const nextShuffled = !isShuffled;
-    setCards(nextShuffled ? shuffleItems(canonicalOrderRef.current) : [...canonicalOrderRef.current]);
-    setCurrentIndex(0);
-    setScreenState('playing');
-    setActiveCharIndex(0);
-    setCompletedChars(new Set());
-    setStatus('idle');
-    setResetCounter((counter) => counter + 1);
-    setIsShuffled(nextShuffled);
-  }, [clearCharCompletionTimer, isShuffled]);
+    session.toggleShuffle();
+  }, [session]);
 
   // Play audio when the card changes
   useEffect(() => {
@@ -187,36 +122,27 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
     }
   }, [playlist, currentIndex]);
 
-  // Save progress
-  useEffect(() => {
-    if (!sessionInitializedRef.current || cards.length === 0) return;
-    setSessionProgressIndex(sessionKey, currentIndex);
-  }, [cards.length, currentIndex, sessionKey, setSessionProgressIndex]);
-
   const handlePrev = useCallback(() => {
     if (currentIndex > 0) {
       clearCharCompletionTimer();
-      setCurrentIndex(c => c - 1);
+      session.moveTo(currentIndex - 1);
       setActiveCharIndex(0);
       setCompletedChars(new Set());
       setStatus('idle');
       setResetCounter(0);
     }
-  }, [clearCharCompletionTimer, currentIndex]);
+  }, [clearCharCompletionTimer, currentIndex, session]);
 
   const handleNext = useCallback(() => {
     clearCharCompletionTimer();
-    if (currentIndex < playlist.length - 1) {
-      setCurrentIndex(c => c + 1);
+    const outcome = session.advanceOrComplete();
+    if (outcome === 'advanced') {
       setActiveCharIndex(0);
       setCompletedChars(new Set());
       setStatus('idle');
       setResetCounter(0);
-    } else {
-      clearSessionProgressIndex(sessionKey);
-      setScreenState('complete');
     }
-  }, [clearCharCompletionTimer, currentIndex, playlist.length, sessionKey, clearSessionProgressIndex]);
+  }, [clearCharCompletionTimer, session]);
 
   // When the last character is completed, auto-advance after a short delay
   // so the user sees the "correct" feedback before moving on.
@@ -313,17 +239,8 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
   }, []);
 
   const restartRound = useCallback(() => {
-    clearCharCompletionTimer();
-    setCards(loadedCards);
-    canonicalOrderRef.current = loadedCards;
-    setIsShuffled(false);
-    setCurrentIndex(0);
-    setScreenState('playing');
-    setActiveCharIndex(0);
-    setCompletedChars(new Set());
-    setStatus('idle');
-    setResetCounter((counter) => counter + 1);
-  }, [clearCharCompletionTimer, loadedCards]);
+    session.resetAll();
+  }, [session]);
 
   return {
     screenState,
@@ -354,7 +271,7 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
     setIsAnimatingStrokes,
     triggerAnimateStrokes,
     restartRound,
-    isShuffled,
+    isShuffled: session.isShuffled,
     toggleShuffle,
   };
 }

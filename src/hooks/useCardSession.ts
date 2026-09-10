@@ -160,6 +160,12 @@ export function useCardSession(
     return 'completed';
   }, [activeCards.length, clearSessionProgressIndex, currentIndex, sessionKey]);
 
+  /** Moves to an exact card, bounded (swipe/keyboard navigation). */
+  const moveTo = useCallback((index: number) => {
+    if (activeCards.length === 0) return;
+    setCurrentIndex(Math.max(0, Math.min(index, activeCards.length - 1)));
+  }, [activeCards.length]);
+
   const toggleShuffle = useCallback(() => {
     const nextShuffled = !isShuffled;
     setActiveCards(nextShuffled ? shuffleItems(canonicalOrderRef.current) : [...canonicalOrderRef.current]);
@@ -215,6 +221,7 @@ export function useCardSession(
     clearGrading,
     recordAnswer,
     advanceOrComplete,
+    moveTo,
     toggleShuffle,
     resetAll,
     reviewUnlearned,
