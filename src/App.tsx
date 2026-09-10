@@ -33,14 +33,14 @@ export default function App() {
   useAudioUnlock();
   useCloudSync();
 
-  const {
-    activeBookId,
-    setActiveBookId,
-    characterPreference,
-    setCharacterPreference,
-    isSettingsOpen,
-    setIsSettingsOpen,
-  } = useAppStore();
+  // Per-slice selectors: a no-argument useAppStore() call would subscribe the
+  // shell to every store change (including SRS progress updates).
+  const activeBookId = useAppStore((state) => state.activeBookId);
+  const setActiveBookId = useAppStore((state) => state.setActiveBookId);
+  const characterPreference = useAppStore((state) => state.characterPreference);
+  const setCharacterPreference = useAppStore((state) => state.setCharacterPreference);
+  const isSettingsOpen = useAppStore((state) => state.isSettingsOpen);
+  const setIsSettingsOpen = useAppStore((state) => state.setIsSettingsOpen);
   const { currentUser, isLoading } = useAuth();
   
   const {

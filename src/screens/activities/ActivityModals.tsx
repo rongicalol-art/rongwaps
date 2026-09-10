@@ -105,7 +105,8 @@ export function ActivityModals({
   const prevIdx = activities.findIndex(a => a.id === prevTaskResolved);
   const direction = currentIdx >= prevIdx ? 1 : -1;
 
-  const { practiceHeader, practiceHeaderActions } = useAppStore();
+  const practiceHeader = useAppStore((state) => state.practiceHeader);
+  const practiceHeaderActions = useAppStore((state) => state.practiceHeaderActions);
   const characterPreference = useAppStore(state => state.characterPreference);
   const setCharacterPreference = useAppStore(state => state.setCharacterPreference);
   const practicePreferences = usePracticePreferencesStore(useShallow(selectPracticePreferences));

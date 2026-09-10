@@ -29,7 +29,12 @@ const WARM_AHEAD_COUNT = 4;
  *   level 4 → quality 5 (Easy / Perfect)
  */
 export function useFlashcards(activeBookId: number, selectedLessons: number[], isReviewDeck: boolean = false, isLibraryDeck: boolean = false) {
-  const { markCardReviewed, sessionProgressIndex, setSessionProgressIndex, clearSessionProgressIndex, libraryActiveFolder, selectedLessonParts } = useAppStore();
+  const markCardReviewed = useAppStore((state) => state.markCardReviewed);
+  const sessionProgressIndex = useAppStore((state) => state.sessionProgressIndex);
+  const setSessionProgressIndex = useAppStore((state) => state.setSessionProgressIndex);
+  const clearSessionProgressIndex = useAppStore((state) => state.clearSessionProgressIndex);
+  const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
+  const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
   const sessionKey = isReviewDeck ? SHARED_REVIEW_SESSION_KEY : isLibraryDeck ? `shared_deck_library_${libraryActiveFolder}` : getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
 
   const { cards: loadedCards, deckCards: fullDeckCards, isLoading, error, deckExclusionKey, excludedIds } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);

@@ -16,7 +16,7 @@ interface RelatedWordsListModalProps {
 }
 
 export function RelatedWordsListModal({ initialChar, relatedWords, activeBook, onClose, onWordClick }: RelatedWordsListModalProps) {
-  const { setDictionaryWord } = useAppStore();
+  const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
   const groups = React.useMemo(() => {
     const groupsMap: { [key: number]: Flashcard[] } = {};
     relatedWords.forEach(card => {

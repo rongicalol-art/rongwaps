@@ -19,7 +19,7 @@ interface UsedAsListModalProps {
 }
 
 export function UsedAsListModal({ initialChar, usedAsComponents, activeBook, onClose, onWordClick }: UsedAsListModalProps) {
-  const { setDictionaryWord } = useAppStore();
+  const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
   const { inCourseItems, outOfCourseItems } = React.useMemo(() => {
     const keys = ['vocab-all-all', 'vocab-1-all', 'vocab-2-all', 'vocab-3-all', 'vocab-4-all', 'vocab-5-all', 'vocab-6-all'];
     const loadedList: Flashcard[] = [];

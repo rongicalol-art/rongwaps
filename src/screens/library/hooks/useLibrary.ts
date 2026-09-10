@@ -47,22 +47,20 @@ const COLLECTIONS = [
 
 export function useLibrary() {
   const { currentUser } = useAuth();
-  const { 
-    favorites, 
-    toggleFavorite, 
-    setDictionaryWord, 
-    libraryActiveFolder, 
-    setLibraryActiveFolder, 
-    librarySearchQuery: searchQuery,
-    setLibrarySearchQuery: setSearchQuery,
-    customFolders, 
-    addCustomFolder,
-    deleteCustomFolder,
-    localFlashcards,
-    deleteLocalFlashcard,
-    setLibraryActiveView,
-    libraryActiveView: storeActiveView,
-  } = useAppStore();
+  const favorites = useAppStore((state) => state.favorites);
+  const toggleFavorite = useAppStore((state) => state.toggleFavorite);
+  const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
+  const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
+  const setLibraryActiveFolder = useAppStore((state) => state.setLibraryActiveFolder);
+  const searchQuery = useAppStore((state) => state.librarySearchQuery);
+  const setSearchQuery = useAppStore((state) => state.setLibrarySearchQuery);
+  const customFolders = useAppStore((state) => state.customFolders);
+  const addCustomFolder = useAppStore((state) => state.addCustomFolder);
+  const deleteCustomFolder = useAppStore((state) => state.deleteCustomFolder);
+  const localFlashcards = useAppStore((state) => state.localFlashcards);
+  const deleteLocalFlashcard = useAppStore((state) => state.deleteLocalFlashcard);
+  const setLibraryActiveView = useAppStore((state) => state.setLibraryActiveView);
+  const storeActiveView = useAppStore((state) => state.libraryActiveView);
   
   const [activeView, setActiveViewLocal] = useState<ViewState>(storeActiveView);
 

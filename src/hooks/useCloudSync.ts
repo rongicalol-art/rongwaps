@@ -99,30 +99,30 @@ function numberRecord(value: unknown): Record<string, number> | null {
     : null;
 }
 
+/**
+ * Slice keys whose changes drive the debounced auto-save. Mirrors the exact
+ * dependency list the autosave effect used before the render-subscription
+ * was replaced with a side-band store subscription — keep in sync when the
+ * sync payload changes.
+ */
+const AUTO_SAVE_TRIGGER_SLICES = [
+  'activeActivity',
+  'activeBookId',
+  'activeTab',
+  'characterPreference',
+  'customFolders',
+  'favorites',
+  'lastActivity',
+  'learnedCards',
+  'selectedBooks',
+  'selectedLessons',
+  'sessionProgress',
+  'sessionProgressIndex',
+  'srsData',
+] as const;
+
 export function useCloudSync() {
   const { currentUser } = useAuth();
-  const {
-    srsData,
-    learnedCards,
-    favorites,
-    activeBookId,
-    characterPreference,
-    sessionProgressIndex,
-    activeTab,
-    activeActivity,
-    selectedLessons,
-    selectedBooks,
-    customFolders,
-    sessionProgress,
-    lastActivity,
-    setSrsDataAndLearnedCards,
-    setCustomFolders,
-    setDeletedFolderIds,
-    setFoldersSyncedUserId,
-    setSyncStatus,
-    setSyncError,
-    setLastCloudUpdate,
-  } = useAppStore();
 
   const hasFetchedForUserRef = useRef<string | null>(null);
   const activeUserIdRef = useRef<string | null>(null);
@@ -162,6 +162,17 @@ export function useCloudSync() {
 
   const fetchFromCloud = useCallback(async () => {
     if (!currentUser) return;
+    // Store API functions are stable; reading them via getState() keeps this
+    // callback free of render-time store subscriptions.
+    const {
+      setSyncStatus,
+      setSyncError,
+      setLastCloudUpdate,
+      setSrsDataAndLearnedCards,
+      setCustomFolders,
+      setDeletedFolderIds,
+      setFoldersSyncedUserId,
+    } = useAppStore.getState();
 
     try {
       setSyncStatus('syncing');
@@ -408,16 +419,7 @@ export function useCloudSync() {
       setSyncStatus('error');
       setSyncError(errorMessage(error, 'Failed to sync from cloud'));
     }
-  }, [
-    currentUser,
-    setCustomFolders,
-    setDeletedFolderIds,
-    setFoldersSyncedUserId,
-    setLastCloudUpdate,
-    setSrsDataAndLearnedCards,
-    setSyncError,
-    setSyncStatus,
-  ]);
+  }, [currentUser]);
 
   const performSave = useCallback(async (snapshot: CloudSaveSnapshot) => {
     const { store, userId, userMetadata, deltaSrsData } = snapshot;
@@ -501,8 +503,8 @@ export function useCloudSync() {
 
     // Local counters already track the session deltas; no aggregate re-fetch
     // is needed after a save.
-    setLastCloudUpdate(new Date().toISOString());
-  }, [setLastCloudUpdate]);
+    useAppStore.getState().setLastCloudUpdate(new Date().toISOString());
+  }, []);
 
   performSaveRef.current = performSave;
 
@@ -539,6 +541,7 @@ export function useCloudSync() {
 
   const requestSave = useCallback(async () => {
     if (!currentUser || !coordinatorRef.current) return;
+    const { setSyncStatus, setSyncError } = useAppStore.getState();
     setSyncStatus('syncing');
     setSyncError(null);
     try {
@@ -552,7 +555,7 @@ export function useCloudSync() {
       setSyncError(errorMessage(error, 'Failed to save to cloud'));
       throw error;
     }
-  }, [currentUser, setSyncError, setSyncStatus]);
+  }, [currentUser]);
 
   useEffect(() => {
     if (!currentUser) return;
@@ -583,45 +586,53 @@ export function useCloudSync() {
     };
   }, [currentUser, fetchFromCloud, requestSave]);
 
+  // Auto-save scheduling lives in a side-band store subscription instead of
+  // effect dependencies, so study progress never re-renders the component
+  // tree that mounts this hook (previously App). The debounce/max-wait logic
+  // and the trigger slice list are unchanged.
   useEffect(() => {
-    if (!currentUser || hasFetchedForUserRef.current !== currentUser.id) return;
-    if (syncTimeoutRef.current) clearTimeout(syncTimeoutRef.current);
+    if (!currentUser) return;
 
-    // Trailing debounce, with a max-wait floor: every store change below
-    // restarts the 10s window, so a learner answering cards back-to-back used
-    // to postpone saving forever. Once the oldest unsaved change is ~45s old,
-    // the save fires at that deadline instead (error backoff still respected).
-    const nowMs = Date.now();
-    if (autoSaveDirtySinceRef.current == null) autoSaveDirtySinceRef.current = nowMs;
+    const scheduleDebouncedSave = () => {
+      if (hasFetchedForUserRef.current !== currentUser.id) return;
+      if (syncTimeoutRef.current) clearTimeout(syncTimeoutRef.current);
 
-    syncTimeoutRef.current = setTimeout(() => {
-      void requestSave().catch((error: unknown) => {
-        console.error('Auto-save failed:', error);
-      });
-    }, getNextAutoSaveDelay({
-      dirtySinceMs: autoSaveDirtySinceRef.current,
-      nowMs,
-      backoffMs: saveBackoffMsRef.current,
-    }));
+      // Trailing debounce, with a max-wait floor: every synced store change
+      // restarts the 10s window, so a learner answering cards back-to-back
+      // used to postpone saving forever. Once the oldest unsaved change is
+      // ~45s old, the save fires at that deadline instead (error backoff
+      // still respected).
+      const nowMs = Date.now();
+      if (autoSaveDirtySinceRef.current == null) autoSaveDirtySinceRef.current = nowMs;
+
+      syncTimeoutRef.current = setTimeout(() => {
+        void requestSave().catch((error: unknown) => {
+          console.error('Auto-save failed:', error);
+        });
+      }, getNextAutoSaveDelay({
+        dirtySinceMs: autoSaveDirtySinceRef.current,
+        nowMs,
+        backoffMs: saveBackoffMsRef.current,
+      }));
+    };
+
+    // Mirror of the previous effect's mount-time run: a save request is a
+    // no-op when nothing changed (the coordinator skips identical
+    // fingerprints), so scheduling once at setup preserves that behavior.
+    scheduleDebouncedSave();
+
+    const unsubscribe = useAppStore.subscribe((state, previousState) => {
+      for (const slice of AUTO_SAVE_TRIGGER_SLICES) {
+        if (state[slice] !== previousState[slice]) {
+          scheduleDebouncedSave();
+          return;
+        }
+      }
+    });
 
     return () => {
+      unsubscribe();
       if (syncTimeoutRef.current) clearTimeout(syncTimeoutRef.current);
     };
-  }, [
-    activeActivity,
-    activeBookId,
-    activeTab,
-    characterPreference,
-    currentUser,
-    customFolders,
-    favorites,
-    lastActivity,
-    learnedCards,
-    requestSave,
-    selectedBooks,
-    selectedLessons,
-    sessionProgress,
-    sessionProgressIndex,
-    srsData,
-  ]);
+  }, [currentUser, requestSave]);
 }

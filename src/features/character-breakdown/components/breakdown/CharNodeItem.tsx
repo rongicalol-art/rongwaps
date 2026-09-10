@@ -25,7 +25,8 @@ export function CharNodeItem({
   accentTextClass = 'text-brand-secondary',
   onWordClick,
 }: CharNodeItemProps) {
-  const { setDictionaryWord, activeBookId } = useAppStore();
+  const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
+  const activeBookId = useAppStore((state) => state.activeBookId);
   const activeBook = SAMPLE_BOOKS.find(b => b.id === activeBookId) || SAMPLE_BOOKS[0];
   const data = useCharBreakdown(char);
   const isUnknown = char === '？' || char === '?';

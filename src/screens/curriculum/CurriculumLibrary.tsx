@@ -57,7 +57,9 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
   menuToggle,
   onProfileClick,
 }: CurriculumLibraryProps) {
-  const { learnedCards, selectedLessonParts, setSelectedLessonParts } = useAppStore();
+  const learnedCards = useAppStore((state) => state.learnedCards);
+  const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
+  const setSelectedLessonParts = useAppStore((state) => state.setSelectedLessonParts);
   const activeBook = useMemo(
     () => SAMPLE_BOOKS.find((book) => book.id === activeBookId) || SAMPLE_BOOKS[0],
     [activeBookId],

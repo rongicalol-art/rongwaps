@@ -27,14 +27,12 @@ const NEURAL_PRELOAD_AHEAD = 2;
  *   - Retry (reset current card) and navigation between cards
  */
 export function useWriting(activeBookId: number, selectedLessons: number[], onClose: () => void, isLibraryDeck: boolean = false, isReviewDeck: boolean = false) {
-  const { 
-    markCardReviewed,
-    sessionProgressIndex,
-    setSessionProgressIndex,
-    clearSessionProgressIndex,
-    libraryActiveFolder,
-    selectedLessonParts,
-  } = useAppStore();
+  const markCardReviewed = useAppStore((state) => state.markCardReviewed);
+  const sessionProgressIndex = useAppStore((state) => state.sessionProgressIndex);
+  const setSessionProgressIndex = useAppStore((state) => state.setSessionProgressIndex);
+  const clearSessionProgressIndex = useAppStore((state) => state.clearSessionProgressIndex);
+  const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
+  const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
   const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
   const autoPlayAudio = usePracticePreferencesStore((state) => state.autoPlayAudio);
   const sessionKey = isReviewDeck ? SHARED_REVIEW_SESSION_KEY : isLibraryDeck ? `shared_deck_library_${libraryActiveFolder}` : getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);

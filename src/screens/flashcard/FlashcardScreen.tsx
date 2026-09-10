@@ -73,7 +73,7 @@ export function FlashcardScreen({
 
   const { toggleCard } = useDeckExclusionActions(deckExclusionKey);
 
-  const { setSwipeFeedback } = useAppStore();
+  const setSwipeFeedback = useAppStore((state) => state.setSwipeFeedback);
   const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
   const autoPlayAudio = usePracticePreferencesStore((state) => state.autoPlayAudio);
   const showPinyin = usePracticePreferencesStore((state) => state.showPinyin);

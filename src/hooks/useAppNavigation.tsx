@@ -11,15 +11,21 @@ export type TabType = 'path' | 'search' | 'library' | 'profile';
 export type { ActivityType } from '../types/models';
 
 export function useAppNavigation() {
-  const {
-    lastActivity, setLastActivity,
-    activeTab, setActiveTab: _setActiveTab,
-    activeActivity, setActiveActivity: _setActiveActivity,
-    activeBookId,
-    selectedLessons: legacySelectedLessons, setSelectedLessons,
-    selectedLessonParts, setSelectedLessonParts,
-    selectedBooks, setSelectedBooks,
-  } = useAppStore();
+  // Per-slice selectors: a whole-store destructure would re-render every
+  // consumer on any unrelated store change.
+  const lastActivity = useAppStore((state) => state.lastActivity);
+  const setLastActivity = useAppStore((state) => state.setLastActivity);
+  const activeTab = useAppStore((state) => state.activeTab);
+  const setActiveTab = useAppStore((state) => state.setActiveTab);
+  const activeActivity = useAppStore((state) => state.activeActivity);
+  const setActiveActivity = useAppStore((state) => state.setActiveActivity);
+  const activeBookId = useAppStore((state) => state.activeBookId);
+  const legacySelectedLessons = useAppStore((state) => state.selectedLessons);
+  const setSelectedLessons = useAppStore((state) => state.setSelectedLessons);
+  const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
+  const setSelectedLessonParts = useAppStore((state) => state.setSelectedLessonParts);
+  const selectedBooks = useAppStore((state) => state.selectedBooks);
+  const setSelectedBooks = useAppStore((state) => state.setSelectedBooks);
 
   const selectedLessons = useMemo(() => {
     const keyedSelections = getSelectedLessonIds(selectedLessonParts, activeBookId);
@@ -29,11 +35,11 @@ export function useAppNavigation() {
   }, [activeBookId, legacySelectedLessons, selectedLessonParts]);
 
   const handleSetActiveActivity = useCallback((activity: ActivityType) => {
-    _setActiveActivity(activity);
+    setActiveActivity(activity);
     if (activity && activity !== 'flashcards-library' && activity !== 'create-card' && activity !== 'flashcards-review') {
       setLastActivity(activity);
     }
-  }, [_setActiveActivity, setLastActivity]);
+  }, [setActiveActivity, setLastActivity]);
 
   const clearReviewContext = useCallback(() => {
     useAppStore.getState().setIsReviewMode(false);
@@ -42,8 +48,8 @@ export function useAppNavigation() {
 
   const handleSetActiveTab = useCallback((tab: TabType) => {
     useAppStore.getState().setIsSearchOpen(false);
-    _setActiveTab(tab);
-  }, [_setActiveTab]);
+    setActiveTab(tab);
+  }, [setActiveTab]);
 
   const startPathPractice = useCallback(() => {
     clearReviewContext();

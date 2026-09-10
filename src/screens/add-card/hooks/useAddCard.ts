@@ -12,7 +12,9 @@ import { resolveFolderColor } from '../../library/utils/folderColors';
 
 export function useAddCard(onClose: () => void) {
   const { currentUser } = useAuth();
-  const { customFolders, libraryActiveFolder, addLocalFlashcard } = useAppStore();
+  const customFolders = useAppStore((state) => state.customFolders);
+  const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
+  const addLocalFlashcard = useAppStore((state) => state.addLocalFlashcard);
   
   const folderId = libraryActiveFolder;
   const targetFolder = customFolders.find(f => f.id === folderId);

@@ -43,7 +43,7 @@ export function CharacterBreakdown({
   selectedCharIndex?: number;
   onWordClick?: (char: string) => void;
 }) {
-  const { activeBookId } = useAppStore();
+  const activeBookId = useAppStore((state) => state.activeBookId);
   const chars = Array.from(character || '').filter(c => c.trim().length > 0);
   if (chars.length === 0) return null;
   const activeChar = chars[selectedCharIndex] || chars[0];
