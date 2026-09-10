@@ -25,7 +25,6 @@ const LEGACY_PERSISTED_KEYS = [
   'activeActivity',
   'activeQuizMode',
   'isReviewMode',
-  'selectedLessons',
   'selectedBooks',
   'selectedLessonParts',
   'customFolders',
@@ -54,7 +53,6 @@ const LEGACY_ACCOUNT_SWITCH_KEYS = [
   'sessionProgress',
   'sessionProgressIndex',
   'selectedLessonParts',
-  'selectedLessons',
   'selectedBooks',
   'activeActivity',
   'lastActivity',
@@ -80,7 +78,6 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
     sessionProgress: { startTime: 1, cardsReviewed: 5, cardsLearned: 2 },
     sessionProgressIndex: { key: 3 },
     selectedLessonParts: { '1:2': [1] },
-    selectedLessons: [2],
     selectedBooks: [1],
     activeActivity: 'quiz',
     lastActivity: 'quiz',
@@ -106,7 +103,6 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
   assert.deepEqual(state.sessionProgress, createEmptySessionProgress());
   assert.deepEqual(state.sessionProgressIndex, {});
   assert.deepEqual(state.selectedLessonParts, {});
-  assert.deepEqual(state.selectedLessons, []);
   assert.deepEqual(state.selectedBooks, []);
   assert.equal(state.activeActivity, null);
   assert.equal(state.lastActivity, null);

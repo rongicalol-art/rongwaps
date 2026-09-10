@@ -20,6 +20,7 @@ import {
   type SyncProgressCounters,
 } from '../utils/cloudSyncQueue';
 import { isSameSrsData } from '../utils/srsRowMapping';
+import { getSelectedLessonIds, lessonsToPartSelection } from '../utils/lessonPartSelection';
 
 type AppStoreSnapshot = ReturnType<typeof useAppStore.getState>;
 
@@ -264,7 +265,22 @@ export function useCloudSync() {
               useAppStore.setState({ activeTab: 'path' });
             }
             if (metadataLessons || isAccountSwitch) {
-              useAppStore.setState({ selectedLessons: metadataLessons ?? [] });
+              // Cloud lesson selections arrive as the legacy flat list; they
+              // convert into the canonical per-book parts map for the active
+              // book (the only book the derived lesson list ever applies to).
+              // Replacing this book's entries matches the previous wholesale
+              // replace of the flat array.
+              const activeBookId = useAppStore.getState().activeBookId;
+              const currentParts = useAppStore.getState().selectedLessonParts;
+              const otherBooks = Object.fromEntries(
+                Object.entries(currentParts).filter(([key]) => !key.startsWith(`${activeBookId}:`)),
+              );
+              useAppStore.setState({
+                selectedLessonParts: {
+                  ...otherBooks,
+                  ...lessonsToPartSelection(activeBookId, metadataLessons ?? []),
+                },
+              });
             }
             if (metadataBooks || isAccountSwitch) {
               useAppStore.setState({ selectedBooks: metadataBooks ?? [] });
@@ -436,6 +452,9 @@ export function useCloudSync() {
       lastSyncedActivityRef.current = store.lastActivity;
     }
 
+    // The cloud lesson field is the legacy flat list; it is derived from the
+    // canonical per-book parts map for the active book at save time.
+    const selectedLessons = getSelectedLessonIds(store.selectedLessonParts, store.activeBookId);
     const metadataChanged =
       JSON.stringify(userMetadata.favorites) !== JSON.stringify(store.favorites) ||
       userMetadata.activeBookId !== store.activeBookId ||
@@ -443,7 +462,7 @@ export function useCloudSync() {
       JSON.stringify(userMetadata.sessionProgressIndex) !== JSON.stringify(store.sessionProgressIndex) ||
       userMetadata.activeTab !== store.activeTab ||
       userMetadata.activeActivity !== store.activeActivity ||
-      JSON.stringify(userMetadata.selectedLessons) !== JSON.stringify(store.selectedLessons) ||
+      JSON.stringify(userMetadata.selectedLessons) !== JSON.stringify(selectedLessons) ||
       JSON.stringify(userMetadata.selectedBooks) !== JSON.stringify(store.selectedBooks);
 
     if (metadataChanged) {
@@ -454,7 +473,7 @@ export function useCloudSync() {
         sessionProgressIndex: store.sessionProgressIndex,
         activeTab: store.activeTab,
         activeActivity: store.activeActivity,
-        selectedLessons: store.selectedLessons,
+        selectedLessons,
         selectedBooks: store.selectedBooks,
       });
     }
@@ -511,7 +530,12 @@ export function useCloudSync() {
         if (hasFetchedForUserRef.current !== userId) return null;
         const store = useAppStore.getState();
         return {
-          fingerprint: createCloudSyncFingerprint(userId, store),
+          fingerprint: createCloudSyncFingerprint(userId, {
+            ...store,
+            // The fingerprint tracks the synced lesson view, now derived
+            // from the canonical per-book parts map.
+            selectedLessons: getSelectedLessonIds(store.selectedLessonParts, store.activeBookId),
+          }),
           value: {
             userId,
             userMetadata: (currentUser.user_metadata || {}) as Record<string, unknown>,

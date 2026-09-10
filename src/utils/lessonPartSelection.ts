@@ -37,6 +37,42 @@ export function getSelectedLessonIds(
   return Array.from(new Set(lessonIds)).sort((a, b) => a - b);
 }
 
+/** Converts a flat lesson-id list into per-book part selections (part 1 default). */
+export function lessonsToPartSelection(
+  bookId: number,
+  lessonIds: number[],
+): LessonPartSelectionMap {
+  return Object.fromEntries(
+    lessonIds.map((lessonId) => [getLessonSelectionKey(bookId, lessonId), [1]]),
+  );
+}
+
+/**
+ * One-time migration of the legacy flat `selectedLessons` array into the
+ * canonical per-book `selectedLessonParts` map. Mirrors the old
+ * `withLegacySelections` glue: the legacy list only seeds a book whose parts
+ * map is entirely empty. Mutates the passed state object (a persisted
+ * snapshot) in place and removes the legacy key.
+ */
+export function migrateLegacyLessonSelection(state: {
+  activeBookId?: unknown;
+  selectedLessons?: unknown;
+  selectedLessonParts?: unknown;
+}): void {
+  const legacyLessons = Array.isArray(state.selectedLessons)
+    ? state.selectedLessons.filter((id): id is number => Number.isSafeInteger(id))
+    : [];
+  const parts = sanitizeLessonPartSelectionMap(state.selectedLessonParts);
+
+  if (legacyLessons.length > 0 && Object.keys(parts).length === 0) {
+    const bookId = typeof state.activeBookId === 'number' ? state.activeBookId : 1;
+    Object.assign(parts, lessonsToPartSelection(bookId, legacyLessons));
+  }
+
+  state.selectedLessonParts = parts;
+  delete state.selectedLessons;
+}
+
 export function normalizePartSelection(
   partIds: number[],
   availablePartIds: number[],

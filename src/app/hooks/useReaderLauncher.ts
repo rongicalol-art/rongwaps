@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import type { ReadingRecord } from '../../types/models';
 import { useAppStore } from '../../store/useAppStore';
+import { getSelectedLessonIds } from '../../utils/lessonPartSelection';
 import { resolveActiveReadingIndex } from '../../utils/readingContext';
 
 export async function loadReadings(bookId: number): Promise<ReadingRecord[]> {
@@ -28,9 +29,12 @@ export function useReaderLauncher({
       return;
     }
     const store = useAppStore.getState();
+    // Lessons derived from the canonical per-book parts map; the passed-in
+    // prop is the fallback for callers that already computed a view.
+    const storeLessons = getSelectedLessonIds(store.selectedLessonParts, bookId);
     const targetIdx = resolveActiveReadingIndex({
       bookId,
-      selectedLessons: store.selectedLessons.length > 0 ? store.selectedLessons : selectedLessons,
+      selectedLessons: storeLessons.length > 0 ? storeLessons : selectedLessons,
       selectedLessonParts: store.selectedLessonParts,
       readings: loaded,
     });

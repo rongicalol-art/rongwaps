@@ -17,6 +17,7 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage, StateStorage } from 'zustand/middleware';
 import { get, set, del } from 'idb-keyval';
+import { migrateLegacyLessonSelection } from '../utils/lessonPartSelection';
 import {
   createAuthSlice,
   AUTH_PERSISTED_KEYS,
@@ -148,6 +149,15 @@ export const useAppStore = create<AppState & AppStoreActions>()(
     }),
     {
       name: 'rongwaps-storage',
+      version: 1,
+      // v0 -> v1: the legacy flat `selectedLessons` array migrates into the
+      // canonical per-book `selectedLessonParts` map (see
+      // migrateLegacyLessonSelection). Runs once for pre-split persisted data.
+      migrate: (persistedState) => {
+        const state = (persistedState ?? {}) as Record<string, unknown>;
+        migrateLegacyLessonSelection(state);
+        return state as unknown as AppState;
+      },
       storage: createJSONStorage(() => idbStorage),
       partialize: derivePersistedState,
     }

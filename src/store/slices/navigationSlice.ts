@@ -7,8 +7,6 @@ export interface NavigationState {
   setActiveActivity: (activity: ActivityType) => void;
   activeQuizMode: QuizMode | null;
   setActiveQuizMode: (mode: QuizMode | null) => void;
-  selectedLessons: number[];
-  setSelectedLessons: (lessons: number[] | ((prev: number[]) => number[])) => void;
   selectedBooks: number[];
   setSelectedBooks: (books: number[] | ((prev: number[]) => number[])) => void;
   selectedLessonParts: LessonPartSelectionMap;
@@ -27,10 +25,6 @@ export function createNavigationSlice(set: SetState): NavigationState {
     setActiveActivity: (activity) => set({ activeActivity: activity }),
     activeQuizMode: null,
     setActiveQuizMode: (mode) => set({ activeQuizMode: mode }),
-    selectedLessons: [],
-    setSelectedLessons: (lessons) => set((state) => ({
-      selectedLessons: typeof lessons === 'function' ? lessons(state.selectedLessons) : lessons,
-    })),
     selectedBooks: [],
     setSelectedBooks: (books) => set((state) => ({
       selectedBooks: typeof books === 'function' ? books(state.selectedBooks) : books,
@@ -49,7 +43,6 @@ export const NAVIGATION_PERSISTED_KEYS = [
   'activeTab',
   'activeActivity',
   'activeQuizMode',
-  'selectedLessons',
   'selectedBooks',
   'selectedLessonParts',
 ] as const;
@@ -57,7 +50,6 @@ export const NAVIGATION_PERSISTED_KEYS = [
 /** Keys this domain clears when the signed-in account changes. */
 export const NAVIGATION_ACCOUNT_SWITCH_DEFAULTS = {
   activeActivity: null,
-  selectedLessons: [],
   selectedBooks: [],
   selectedLessonParts: {},
 };
