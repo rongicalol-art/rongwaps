@@ -86,9 +86,15 @@ Application-wide routing, navigation, and layout belong in `App.tsx` and, after 
 
 ## State, data, and persistence
 
-- Zustand stores in `src/store/` own persisted cross-screen state and domain state. `useAppStore` is currently a single store covering auth, SRS/learning, navigation, session progress, UI flags, library folders, and sync status (see the KNOWN DEBT note in its header). A phased split into focused domain stores is planned; until then `useGrammarLessonStore` and `usePracticePreferencesStore` are the model to follow.
+## State, data, and persistence
+
+- Zustand stores in `src/store/` own persisted cross-screen state and domain state. `useAppStore` is composed from domain slices under `src/store/slices/` (auth, learning, navigation, library, ui, sync); each slice declares its persisted keys and account-switch defaults, and `useAppStore` derives the persistence contract from them (see `tests/storeContract.test.ts`). New cross-screen state belongs in a slice, not appended ad hoc.
+- Pack-first content loads through the shared `src/services/packLoader.ts` (`createPackLoader`); the per-content `*PackService` files own only their manifest/pack validation and database fallback policy. Do not add a new pack service; configure the shared loader.
+- `src/hooks/useCardSession.ts` is the shared card-session engine (deck lifecycle, resume, mistake queue, grading dedupe); activities own their answer UX on top of it.
+- `src/utils/srsRowMapping.ts` is the single SRSData ↔ `user_card_progress` mapping; services and the sync delta convert through it.
+- Top-level workspace tabs are URL routes (`/path`, `/search`, `/library`, `/profile`) via react-router; the route is the navigation source of truth and the persisted store tab only decides what a bare `/` boots to. Overlay windows (reader, grammar, dictionary, activities) remain state-driven.
 - Hooks coordinate UI lifecycle and service/store access. Complex logic should not be lifted into `App.tsx`.
-- Services in `src/services/` own Supabase, API, authentication, audio, dictionary, vocabulary, and other external access.
+- Services in `src/services/` own Supabase, API, authentication, audio, dictionary, vocabulary, and other external access. `server/` must not import browser application infrastructure (enforced by ESLint); it owns `server/supabase.ts`.
 - Static curriculum and authored lesson content belongs in `src/data/`. Database/API contracts belong in `src/types/database.ts`; application models belong in `src/types/models.ts`.
 - Pure transformations and caches belong in `src/utils/`.
 

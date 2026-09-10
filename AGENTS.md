@@ -54,3 +54,16 @@ Auto-injected each project session. Keep these core rules concise; read the link
 
 - Add a project-wide user rule here only when it is genuinely durable. Update `WIDGETS.md` when adding a reusable widget. Keep docs and code aligned.
 - Prefer the simplest structure that meets the current requirement. Reuse or consolidate before adding abstractions, configuration, or dependencies. Flag only real trade-offs; never remove required validation, security, accessibility, or error handling.
+
+## Architectural rules (refactor contract)
+
+1. New cross-screen state goes into the matching store slice (`src/store/slices/`) with its persistence class declared — never appended ad hoc to the composed store, and never as a second representation of existing persisted state.
+2. Pack-first content uses `createPackLoader` (`src/services/packLoader.ts`); no new `*PackService` — a new content type adds validation + a configured loader.
+3. Card-session mechanics live in `useCardSession`; activities own only their answer UX. No new per-activity session engine.
+4. SRSData ↔ database row conversion happens only in `src/utils/srsRowMapping.ts` (including the sync delta equality).
+5. Business rules are not duplicated between UI and services; each has one owner file.
+6. `server/` never imports browser application infrastructure (ESLint-enforced); shared items are types only.
+7. Authored content must not require new React engine code unless it introduces a genuinely new behavior type (labs/exercises are data-driven).
+8. Development-only tooling must be gated behind `import.meta.env.DEV` and absent from production bundles.
+9. Documentation must describe the architecture that exists — a comment describing a planned state is a bug.
+10. Before adding an abstraction, name the duplication it removes; otherwise prefer boring, obvious code.

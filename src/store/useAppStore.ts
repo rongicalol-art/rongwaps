@@ -12,6 +12,9 @@
  *   - Account switches reset exactly the ACCOUNT_SWITCH_DEFAULTS of each
  *     domain via `resetAccountScopedState()`; useCloudSync calls it and must
  *     not hand-write a reset list.
+ *
+ * New cross-screen state: add it to the matching slice (or create a new
+ * slice module) and classify it there.
  */
 
 import { create } from 'zustand';
