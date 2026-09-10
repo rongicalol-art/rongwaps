@@ -63,8 +63,6 @@ export function GrammarLessonHeader({
         progress={progress}
         maxWidth="4xl"
         progressSize="compact"
-        progressAriaLabel="Grammar lesson progress"
-        progressUnitLabel="steps"
         className="!h-auto !min-h-0 !border-0 !bg-transparent !px-4 !py-1 !shadow-none sm:!px-6 lg:!px-10"
         rightAction={
           showReadingAids ? (

@@ -440,16 +440,12 @@ export function ReaderScreen({ readings, index, onNavigate, onClose }: ReaderScr
         canKaraoke={canKaraoke}
         showPinyin={showPinyin}
         showMeaning={showMeaning}
-        showHoverDefinitions={showHoverDefinitions}
         onTogglePlay={togglePlay}
-        onPrevSentence={prevSentence}
-        onNextSentence={nextSentence}
         onSeek={seekTo}
         onScrub={scrubTo}
         onCycleSpeed={cycleSpeed}
         onTogglePinyin={() => setShowPinyin((v) => !v)}
         onToggleMeaning={() => setShowMeaning((v) => !v)}
-        onToggleHoverDefinitions={handleToggleHoverDefinitions}
         onMouseEnter={handleBottomHoverEnter}
         onMouseLeave={handleBottomHoverLeave}
         />

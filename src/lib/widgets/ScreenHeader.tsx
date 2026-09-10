@@ -25,8 +25,6 @@ export interface ScreenHeaderProps {
   className?: string;
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '4xl' | 'none';
   progressSize?: 'default' | 'compact';
-  progressAriaLabel?: string;
-  progressUnitLabel?: string;
 }
 
 export function ScreenHeader({ 
@@ -47,8 +45,6 @@ export function ScreenHeader({
   className = "",
   maxWidth = '2xl',
   progressSize = 'default',
-  progressAriaLabel,
-  progressUnitLabel,
 }: ScreenHeaderProps) {
   const metrics = { controlSize: 'lg' as const, iconSize: 25, sideSpacerClassName: 'w-11' };
   const maxWidthClasses = {

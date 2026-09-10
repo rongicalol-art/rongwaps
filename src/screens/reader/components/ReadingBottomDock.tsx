@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useMemo } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { AppIcon } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
@@ -12,16 +12,12 @@ interface ReadingBottomDockProps {
   canKaraoke: boolean;
   showPinyin: boolean;
   showMeaning: boolean;
-  showHoverDefinitions?: boolean;
   onTogglePlay: () => void;
-  onPrevSentence: () => void;
-  onNextSentence: () => void;
   onSeek: (time: number) => void;
   onScrub?: (time: number) => void;
   onCycleSpeed: () => void;
   onTogglePinyin: () => void;
   onToggleMeaning: () => void;
-  onToggleHoverDefinitions?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
 }
@@ -82,16 +78,12 @@ export function ReadingBottomDock({
   canKaraoke,
   showPinyin,
   showMeaning,
-  showHoverDefinitions = true,
   onTogglePlay,
-  onPrevSentence,
-  onNextSentence,
   onSeek,
   onScrub,
   onCycleSpeed,
   onTogglePinyin,
   onToggleMeaning,
-  onToggleHoverDefinitions,
   onMouseEnter,
   onMouseLeave,
 }: ReadingBottomDockProps) {
