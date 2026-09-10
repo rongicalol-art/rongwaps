@@ -1,5 +1,6 @@
 import React from 'react';
 import { ActionButton, AppIcon } from '../../../lib/widgets';
+import { REVIEW_SESSION_CAP } from '../../../utils/reviewSession';
 import type { ReviewOverview } from '../../../utils/reviewOverview';
 
 interface ProgressSummaryProps {
@@ -107,6 +108,11 @@ export function ProgressSummary({ overview, favoriteCount, onStartReview }: Prog
             <AppIcon name="play" size={20} />
             <span>Start review</span>
           </ActionButton>
+          {dueCount > REVIEW_SESSION_CAP && (
+            <p className="mt-2 text-center text-xs font-bold text-ui-muted">
+              Backlog {dueCount} — {REVIEW_SESSION_CAP} most urgent per session
+            </p>
+          )}
         </div>
       ) : (
         <div className="mt-5 flex items-center justify-center gap-2 rounded-control border-b-[length:var(--depth-sm)] border-feedback-success-edge bg-feedback-success-surface p-3 text-sm font-black text-feedback-success-edge">
