@@ -10,6 +10,7 @@ import { TabScreens, prefetchTabScreen } from './app/components/TabScreens';
 import { useResponsiveNav } from './app/hooks/useResponsiveNav';
 import { useReaderLauncher } from './app/hooks/useReaderLauncher';
 import { useGrammarLauncher } from './app/hooks/useGrammarLauncher';
+import { useOverlayUrlSync } from './app/hooks/useOverlayUrlSync';
 import { DictionaryDetailOverlay } from './features/dictionary';
 import { GrammarLessonScreen } from './screens/grammar-lesson';
 import { ReaderScreen } from './screens/reader';
@@ -116,6 +117,7 @@ export default function App() {
   const isReaderOpen = Boolean(activeReading);
   const isGrammarOpen = Boolean(activeGrammarPart);
   const dictionaryWord = useAppStore((state) => state.dictionaryWord);
+  const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
   const isOverlayActive = isReaderOpen || isGrammarOpen || Boolean(dictionaryWord);
 
   useEffect(() => {
@@ -125,6 +127,29 @@ export default function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const routeTab = tabFromPathname(location.pathname);
+
+  useOverlayUrlSync({
+    reader: {
+      activeReadingIndex,
+      readingsLength: readings.length,
+      activeBookId: activeBook.id,
+      openReader,
+      navigateReader,
+      closeReader,
+    },
+    grammar: {
+      activeGrammarPartId,
+      setActiveGrammarPartId,
+    },
+    dictionary: {
+      dictionaryWord,
+      setDictionaryWord,
+    },
+    activity: {
+      activeActivity,
+      setActiveActivity,
+    },
+  });
 
   // The route drives the workspace: every location change (sidebar click,
   // browser back/forward, deep link) runs the same tab-change side effects

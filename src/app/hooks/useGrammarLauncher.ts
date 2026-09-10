@@ -7,12 +7,8 @@ export async function loadInteractiveGrammarPart(partId: string): Promise<Intera
 }
 
 export function useGrammarLauncher() {
-  const [activeGrammarPartId, setActiveGrammarPartId] = useState<string | null>(() => {
-    if (typeof window !== 'undefined') {
-      return new URLSearchParams(window.location.search).get('grammarPart') || null;
-    }
-    return null;
-  });
+  // The overlay URL sync in App owns ?grammarPart; local state starts empty.
+  const [activeGrammarPartId, setActiveGrammarPartId] = useState<string | null>(null);
   const [activeGrammarPart, setActiveGrammarPart] = useState<InteractiveGrammarPart | null>(null);
 
   useEffect(() => {

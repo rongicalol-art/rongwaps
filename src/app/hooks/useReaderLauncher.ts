@@ -21,7 +21,7 @@ export function useReaderLauncher({
   const [readings, setReadings] = useState<ReadingRecord[]>([]);
   const [activeReadingIndex, setActiveReadingIndex] = useState<number | null>(null);
 
-  const openReader = useCallback(async (bookId: number) => {
+  const openReader = useCallback(async (bookId: number, explicitIndex?: number) => {
     const loaded = await loadReadings(bookId);
     if (!loaded.length) {
       setReadings([]);
@@ -32,12 +32,14 @@ export function useReaderLauncher({
     // Lessons derived from the canonical per-book parts map; the passed-in
     // prop is the fallback for callers that already computed a view.
     const storeLessons = getSelectedLessonIds(store.selectedLessonParts, bookId);
-    const targetIdx = resolveActiveReadingIndex({
-      bookId,
-      selectedLessons: storeLessons.length > 0 ? storeLessons : selectedLessons,
-      selectedLessonParts: store.selectedLessonParts,
-      readings: loaded,
-    });
+    const targetIdx = explicitIndex !== undefined
+      ? Math.max(0, Math.min(explicitIndex, loaded.length - 1))
+      : resolveActiveReadingIndex({
+        bookId,
+        selectedLessons: storeLessons.length > 0 ? storeLessons : selectedLessons,
+        selectedLessonParts: store.selectedLessonParts,
+        readings: loaded,
+      });
     setReadings(loaded);
     setActiveReadingIndex(targetIdx);
   }, [selectedLessons]);
@@ -67,23 +69,6 @@ export function useReaderLauncher({
     window.addEventListener('keydown', handleReaderKey);
     return () => window.removeEventListener('keydown', handleReaderKey);
   }, [activeGrammarPartId, activeReadingIndex, activeBookId, closeReader, openReader]);
-
-  // Support direct URL opening (e.g. ?reader=true or ?readingIndex=2)
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const params = new URLSearchParams(window.location.search);
-    const shouldOpen = params.get('reader') === 'true' || params.has('readingIndex');
-    if (shouldOpen && activeReadingIndex === null) {
-      loadReadings(activeBookId).then((loaded) => {
-        if (!loaded.length) return;
-        const requestedIndex = params.get('readingIndex');
-        const parsedIdx = requestedIndex !== null ? parseInt(requestedIndex, 10) : NaN;
-        const finalIdx = !isNaN(parsedIdx) && parsedIdx >= 0 && parsedIdx < loaded.length ? parsedIdx : 0;
-        setReadings(loaded);
-        setActiveReadingIndex(finalIdx);
-      });
-    }
-  }, [activeBookId, activeReadingIndex]);
 
   return {
     readings,
