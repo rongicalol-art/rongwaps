@@ -86,6 +86,7 @@ function computeSrsDelta(
       || prev.interval !== value.interval
       || prev.repetition !== value.repetition
       || prev.nextReviewDate !== value.nextReviewDate
+      || (prev.learningStep ?? null) !== (value.learningStep ?? null)
     ) {
       delta[key] = value;
     }

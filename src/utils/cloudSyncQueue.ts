@@ -252,6 +252,7 @@ function sameSrsData(
     && a.interval === b.interval
     && a.repetition === b.repetition
     && a.nextReviewDate === b.nextReviewDate
+    && (a.learningStep ?? null) === (b.learningStep ?? null)
   );
 }
 

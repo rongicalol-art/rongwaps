@@ -32,7 +32,7 @@ export const userService = {
       // 1. Fetch from user_card_progress (granular table)
       let query = supabase
         .from('user_card_progress')
-        .select('card_id, ease, interval, repetitions, next_review_date, last_updated')
+        .select('card_id, ease, interval, repetitions, next_review_date, learning_step, last_updated')
         .eq('user_id', userId);
       if (options?.since) {
         query = query.gte('last_updated', options.since);
@@ -72,6 +72,7 @@ export const userService = {
             interval: row.interval,
             repetition: row.repetitions,
             nextReviewDate: nextReviewMs,
+            ...(row.learning_step != null ? { learningStep: row.learning_step } : {}),
           };
         }
       }
@@ -105,6 +106,7 @@ export const userService = {
         interval: data.interval,
         repetitions: data.repetition,
         next_review_date: new Date(data.nextReviewDate).toISOString(),
+        learning_step: data.learningStep ?? null,
         last_updated: new Date().toISOString(),
       }));
 
@@ -122,6 +124,7 @@ export const userService = {
             interval: row.interval,
             repetitions: row.repetitions,
             next_review_date: row.next_review_date,
+            learning_step: row.learning_step,
           })),
         });
         if (rpcError) {
