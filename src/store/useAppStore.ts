@@ -1,418 +1,155 @@
 /**
- * @fileoverview Global app store.
+ * @fileoverview Global app store — composed from domain slices.
  *
- * A single persisted Zustand store holding auth, SRS/learning state,
- * navigation, session progress, UI flags, library folders, and sync status.
- * Persisted slices are whitelisted in `partialize` below and stored in
- * IndexedDB under 'rongwaps-storage'.
+ * A single persisted Zustand store (IndexedDB key 'rongwaps-storage') built
+ * from domain slice modules under `src/store/slices/`. Each slice owns its
+ * state, actions, persisted-key list, and account-switch defaults;
+ * `useAppStore` only composes them and derives the persistence contract:
  *
- * KNOWN DEBT (architecture refactor): this file mixes unrelated domains and
- * the persistence whitelist is maintained by hand. Do not add new domains
- * here — new cross-screen state belongs in a separate domain store. The
- * account-switch reset in useCloudSync must stay in sync with `partialize`.
+ *   - Persisted keys come from the slices' PERSISTED_KEYS lists (see
+ *     tests/storeContract.test.ts — adding a slice key without declaring its
+ *     persistence class fails the contract test).
+ *   - Account switches reset exactly the ACCOUNT_SWITCH_DEFAULTS of each
+ *     domain via `resetAccountScopedState()`; useCloudSync calls it and must
+ *     not hand-write a reset list.
  */
 
 import { create } from 'zustand';
 import { persist, createJSONStorage, StateStorage } from 'zustand/middleware';
 import { get, set, del } from 'idb-keyval';
-import { SRSData, Quality } from '../utils/srsEngine';
 import {
-  applyCardReview,
-  createClearedReviewProgress,
-  createEmptySessionProgress,
-} from '../utils/reviewProgress';
-import type {
-  LessonPartSelectionMap,
-  PartSegment,
-  PracticeHeaderActions,
-  ActivityType,
-  QuizMode,
-  SessionProgress,
-  UserFlashcard,
-} from '../types/models';
+  createAuthSlice,
+  AUTH_PERSISTED_KEYS,
+  AUTH_ACCOUNT_SWITCH_DEFAULTS,
+  type AuthState,
+  type UserSnapshot,
+} from './slices/authSlice';
+import {
+  createLearningSlice,
+  LEARNING_PERSISTED_KEYS,
+  LEARNING_ACCOUNT_SWITCH_DEFAULTS,
+  type LearningState,
+} from './slices/learningSlice';
+import {
+  createNavigationSlice,
+  NAVIGATION_PERSISTED_KEYS,
+  NAVIGATION_ACCOUNT_SWITCH_DEFAULTS,
+  type NavigationState,
+} from './slices/navigationSlice';
+import {
+  createLibrarySlice,
+  LIBRARY_PERSISTED_KEYS,
+  LIBRARY_ACCOUNT_SWITCH_DEFAULTS,
+  type LibraryState,
+} from './slices/librarySlice';
+import {
+  createUiSlice,
+  UI_PERSISTED_KEYS,
+  UI_ACCOUNT_SWITCH_DEFAULTS,
+  type UiState,
+} from './slices/uiSlice';
+import {
+  createSyncSlice,
+  SYNC_PERSISTED_KEYS,
+  SYNC_ACCOUNT_SWITCH_DEFAULTS,
+  type SyncState,
+} from './slices/syncSlice';
 
-export interface UserSnapshot {
-  id: string;
-  email?: string;
-  name?: string;
-  avatar_url?: string;
-  fullName?: string;
-  avatarUrl?: string;
-}
+export type { UserSnapshot };
 
+export type AppState =
+  & AuthState
+  & LearningState
+  & NavigationState
+  & LibraryState
+  & UiState
+  & SyncState
+  & AppStoreActions;
+
+// A browser may block or lack IndexedDB; persistence is then best-effort.
+// Swallowing here keeps a failed cache write from becoming an unhandled
+// rejection — the in-memory store remains the source of truth.
 const idbStorage: StateStorage = {
   getItem: async (name: string): Promise<string | null> => {
-    return (await get(name)) || null;
+    try {
+      return (await get(name)) || null;
+    } catch {
+      return null;
+    }
   },
   setItem: async (name: string, value: string): Promise<void> => {
-    await set(name, value);
+    try {
+      await set(name, value);
+    } catch {
+      // Cache writes are optional and must never block the store.
+    }
   },
   removeItem: async (name: string): Promise<void> => {
-    await del(name);
+    try {
+      await del(name);
+    } catch {
+      // Ignore browsers where persistent storage is unavailable.
+    }
   },
 };
 
-// Full AppState interface — every slice of the single persisted store.
-export interface AppState {
-  // Auth
-  currentUser: UserSnapshot | null;
-  setCurrentUser: (user: UserSnapshot | null) => void;
-  // Persisted owner of the locally cached progress. Used by the sync layer to
-  // detect account switches that survive page reloads (e.g. OAuth redirects),
-  // so one user's cached SRS data is never merged into or uploaded to
-  // another user's account.
-  lastActiveUserId: string | null;
-  setLastActiveUserId: (userId: string | null) => void;
+/**
+ * Every persisted slice, derived from the domain lists. The contract test
+ * asserts this set equals the legacy persisted state exactly — a new slice
+ * key must be classified in its slice module or it will not survive reloads.
+ */
+export const PERSISTED_KEYS = [
+  ...AUTH_PERSISTED_KEYS,
+  ...LEARNING_PERSISTED_KEYS,
+  ...NAVIGATION_PERSISTED_KEYS,
+  ...LIBRARY_PERSISTED_KEYS,
+  ...UI_PERSISTED_KEYS,
+  ...SYNC_PERSISTED_KEYS,
+] as const;
 
-  // App Config
-  activeBookId: number;
-  setActiveBookId: (id: number) => void;
-  characterPreference: 'traditional' | 'simplified';
-  setCharacterPreference: (pref: 'traditional' | 'simplified') => void;
-  isSettingsOpen: boolean;
-  setIsSettingsOpen: (open: boolean) => void;
-
-  // Global Dictionary
-  dictionaryWord: string | null;
-  setDictionaryWord: (word: string | null) => void;
-
-  // Favorites
-  favorites: string[];
-  toggleFavorite: (word: string) => void;
-
-  // SRS and Tracking
-  srsData: Record<string, SRSData>;
-  learnedCards: string[];
-  setSrsDataAndLearnedCards: (srs: Record<string, SRSData>, learned: string[]) => void;
-  markCardReviewed: (cardId: string, quality: Quality) => void;
-
-  // Session Progress
-  sessionProgress: SessionProgress;
-  startSession: () => void;
-  incrementSessionCardsReviewed: (isNew: boolean) => void;
-  resetSessionProgress: () => void;
-
-  // Last Activity
-  lastActivity: 'flashcards' | 'flashcards-review' | 'listening' | 'quiz' | 'writing' | 'personal-vocab' | null;
-  setLastActivity: (activity: 'flashcards' | 'flashcards-review' | 'listening' | 'quiz' | 'writing' | 'personal-vocab' | null) => void;
-
-  // Session Progress Index
-  sessionProgressIndex: Record<string, number>;
-  setSessionProgressIndex: (key: string, index: number) => void;
-  clearSessionProgressIndex: (key: string) => void;
-
-  // Deck Exclusions
-  /**
-   * Per-deck include/exclude curation: deck key → ids the user removed from
-   * the deck. Persisted so a curated vocabulary list survives reloads; an
-   * absent/empty entry means "include everything".
-   */
-  deckExclusions: Record<string, string[]>;
-  /** Replace the whole exclusion list for a deck key (empty writes delete the key). */
-  setDeckExclusions: (key: string, excludedIds: string[]) => void;
-  /** Toggle one card in a deck's exclusion list. */
-  toggleCardExclusion: (key: string, cardId: string) => void;
-  /** Restore a deck to "include everything". */
-  clearDeckExclusions: (key: string) => void;
-
-  // Navigation State
-  activeTab: 'path' | 'search' | 'library' | 'profile';
-  setActiveTab: (tab: 'path' | 'search' | 'library' | 'profile') => void;
-  activeActivity: ActivityType;
-  setActiveActivity: (activity: ActivityType) => void;
-  activeQuizMode: QuizMode | null;
-  setActiveQuizMode: (mode: QuizMode | null) => void;
-  selectedLessons: number[];
-  setSelectedLessons: (lessons: number[] | ((prev: number[]) => number[])) => void;
-  selectedBooks: number[];
-  setSelectedBooks: (books: number[] | ((prev: number[]) => number[])) => void;
-  selectedLessonParts: LessonPartSelectionMap;
-  setSelectedLessonParts: (
-    parts: LessonPartSelectionMap | ((prev: LessonPartSelectionMap) => LessonPartSelectionMap)
-  ) => void;
-
-  // Cloud Sync
-  lastCloudUpdate: string | null;
-  setLastCloudUpdate: (ts: string | null) => void;
-  syncStatus: 'idle' | 'syncing' | 'error' | 'success';
-  setSyncStatus: (status: 'idle' | 'syncing' | 'error' | 'success') => void;
-  syncError: string | null;
-  setSyncError: (error: string | null) => void;
-
-  // UI State
-  isSearchOpen: boolean;
-  setIsSearchOpen: (open: boolean) => void;
-  isOverlayOpen: boolean;
-  setIsOverlayOpen: (open: boolean) => void;
-  isInteractionActive: boolean;
-  setIsInteractionActive: (active: boolean) => void;
-  swipeFeedback: { text: string; type: 'learned' | 'review' } | null;
-  setSwipeFeedback: (feedback: { text: string; type: 'learned' | 'review' } | null) => void;
-  isReviewMode: boolean;
-  setIsReviewMode: (review: boolean) => void;
-  activeReviewSessionCards: string[] | null;
-  setActiveReviewSessionCards: (cards: string[] | null) => void;
-  searchQuery: string;
-  setSearchQuery: (query: string) => void;
-  librarySearchQuery: string;
-  setLibrarySearchQuery: (query: string) => void;
-  practiceHeader: {
-    progress: number;
-    currentIndex: number;
-    totalCount: number;
-    showLightbulb: boolean;
-    partSegments: PartSegment[];
-  };
-  setPracticeHeader: (state: Partial<AppState['practiceHeader']>) => void;
-  practiceHeaderActions: PracticeHeaderActions;
-  setPracticeHeaderActions: (actions: Partial<AppState['practiceHeaderActions']>) => void;
-
-  // Library State
-  libraryActiveFolder: string;
-  setLibraryActiveFolder: (folderId: string) => void;
-  libraryActiveView: 'home' | 'folder';
-  setLibraryActiveView: (view: 'home' | 'folder') => void;
-  customFolders: { id: string; name: string; color: string }[];
-  setCustomFolders: (folders: { id: string; name: string; color: string }[]) => void;
-  addCustomFolder: (name: string, color: string, id?: string) => void;
-  deleteCustomFolder: (id: string) => void;
-  /**
-   * Sticky delete tombstones: ids of folders the user deleted. Persisted so
-   * a stale local folder list (another tab/device, or a reload between the
-   * delete and the debounced save) can never resurrect the row via upsert.
-   */
-  deletedFolderIds: string[];
-  setDeletedFolderIds: (ids: string[]) => void;
-  /**
-   * Id of the user the current folder list was last synced to/pulled from on
-   * this device. Null until folders have ever been synced for an account —
-   * the guest -> account migration only runs for lists that were never
-   * synced, so a stale server-derived list is never uploaded as guest data.
-   */
-  foldersSyncedUserId: string | null;
-  setFoldersSyncedUserId: (userId: string | null) => void;
-  localFlashcards: UserFlashcard[];
-  addLocalFlashcard: (card: UserFlashcard) => void;
-  deleteLocalFlashcard: (id: string) => void;
-  resetProgress: () => void;
+function derivePersistedState(state: AppState): Partial<AppState> {
+  const persisted: Record<string, unknown> = {};
+  for (const key of PERSISTED_KEYS) {
+    persisted[key] = state[key];
+  }
+  return persisted as Partial<AppState>;
 }
 
-export const useAppStore = create<AppState>()(
+/**
+ * Union of every domain's account-switch defaults: the state cleared when a
+ * different user signs in, so no account's cached progress can leak into
+ * another's. useCloudSync calls `resetAccountScopedState()` instead of
+ * maintaining its own list.
+ */
+export const ACCOUNT_SWITCH_DEFAULTS = {
+  ...AUTH_ACCOUNT_SWITCH_DEFAULTS,
+  ...LEARNING_ACCOUNT_SWITCH_DEFAULTS,
+  ...NAVIGATION_ACCOUNT_SWITCH_DEFAULTS,
+  ...LIBRARY_ACCOUNT_SWITCH_DEFAULTS,
+  ...UI_ACCOUNT_SWITCH_DEFAULTS,
+  ...SYNC_ACCOUNT_SWITCH_DEFAULTS,
+} as Partial<AppState>;
+
+export interface AppStoreActions {
+  /** Clears all account-scoped state (see ACCOUNT_SWITCH_DEFAULTS). */
+  resetAccountScopedState: () => void;
+}
+
+export const useAppStore = create<AppState & AppStoreActions>()(
   persist(
     (set) => ({
-      // Auth
-      currentUser: null,
-      setCurrentUser: (user) => set({ currentUser: user }),
-      lastActiveUserId: null,
-      setLastActiveUserId: (userId) => set({ lastActiveUserId: userId }),
-
-      // App Config
-      activeBookId: 1,
-      setActiveBookId: (id) => set({ activeBookId: id }),
-      characterPreference: 'traditional',
-      setCharacterPreference: (pref) => set({ characterPreference: pref }),
-      isSettingsOpen: false,
-      setIsSettingsOpen: (open) => set({ isSettingsOpen: open }),
-
-      // Global Dictionary
-      dictionaryWord: null,
-      setDictionaryWord: (word) => set({ dictionaryWord: word }),
-
-      // Favorites
-      favorites: [],
-      toggleFavorite: (word) => set((state) => ({
-        favorites: state.favorites.includes(word)
-          ? state.favorites.filter(w => w !== word)
-          : [...state.favorites, word],
-      })),
-
-      // SRS and Tracking
-      srsData: {},
-      learnedCards: [],
-      setSrsDataAndLearnedCards: (srs, learned) => set({ srsData: srs, learnedCards: learned }),
-      markCardReviewed: (cardId: string, quality: Quality) => set((state) => (
-        applyCardReview(state, cardId, quality)
-      )),
-
-      // Session Progress
-      sessionProgress: createEmptySessionProgress(),
-      startSession: () => set((s) => ({
-        sessionProgress: { ...s.sessionProgress, startTime: Date.now() },
-      })),
-      incrementSessionCardsReviewed: (isNew) => set((s) => ({
-        sessionProgress: {
-          ...s.sessionProgress,
-          cardsReviewed: s.sessionProgress.cardsReviewed + 1,
-          cardsLearned: isNew ? s.sessionProgress.cardsLearned + 1 : s.sessionProgress.cardsLearned,
-        },
-      })),
-      resetSessionProgress: () => set({ sessionProgress: createEmptySessionProgress() }),
-
-      // Last Activity
-      lastActivity: null,
-      setLastActivity: (activity) => set({ lastActivity: activity }),
-
-      // Session Progress Index
-      sessionProgressIndex: {},
-      setSessionProgressIndex: (key, index) => set((s) => ({
-        sessionProgressIndex: { ...s.sessionProgressIndex, [key]: index },
-      })),
-      clearSessionProgressIndex: (key) => set((s) => {
-        const nextProgress = { ...s.sessionProgressIndex };
-        delete nextProgress[key];
-        return { sessionProgressIndex: nextProgress };
-      }),
-
-      // Deck Exclusions
-      deckExclusions: {},
-      setDeckExclusions: (key, excludedIds) => set((s) => {
-        const next = { ...s.deckExclusions };
-        if (excludedIds.length === 0) {
-          delete next[key];
-        } else {
-          next[key] = Array.from(new Set(excludedIds));
-        }
-        return { deckExclusions: next };
-      }),
-      toggleCardExclusion: (key, cardId) => set((s) => {
-        const current = s.deckExclusions[key] ?? [];
-        const nextList = current.includes(cardId)
-          ? current.filter((id) => id !== cardId)
-          : [...current, cardId];
-        const next = { ...s.deckExclusions };
-        if (nextList.length === 0) {
-          delete next[key];
-        } else {
-          next[key] = nextList;
-        }
-        return { deckExclusions: next };
-      }),
-      clearDeckExclusions: (key) => set((s) => {
-        if (!(key in s.deckExclusions)) return {};
-        const next = { ...s.deckExclusions };
-        delete next[key];
-        return { deckExclusions: next };
-      }),
-
-      // Navigation State
-      activeTab: 'path',
-      setActiveTab: (tab) => set({ activeTab: tab }),
-      activeActivity: null,
-      setActiveActivity: (activity) => set({ activeActivity: activity }),
-      activeQuizMode: null,
-      setActiveQuizMode: (mode) => set({ activeQuizMode: mode }),
-      selectedLessons: [],
-      setSelectedLessons: (lessons) => set((state) => ({
-        selectedLessons: typeof lessons === 'function' ? lessons(state.selectedLessons) : lessons,
-      })),
-      selectedBooks: [],
-      setSelectedBooks: (books) => set((state) => ({
-        selectedBooks: typeof books === 'function' ? books(state.selectedBooks) : books,
-      })),
-      selectedLessonParts: {},
-      setSelectedLessonParts: (parts) => set((state) => ({
-        selectedLessonParts: typeof parts === 'function'
-          ? parts(state.selectedLessonParts)
-          : parts,
-      })),
-
-      // Cloud Sync
-      lastCloudUpdate: null,
-      setLastCloudUpdate: (ts) => set({ lastCloudUpdate: ts }),
-      syncStatus: 'idle',
-      setSyncStatus: (status) => set({ syncStatus: status }),
-      syncError: null,
-      setSyncError: (error) => set({ syncError: error }),
-
-      // UI State
-      isSearchOpen: false,
-      setIsSearchOpen: (open) => set({ isSearchOpen: open }),
-      isOverlayOpen: false,
-      setIsOverlayOpen: (open) => set({ isOverlayOpen: open }),
-      isInteractionActive: false,
-      setIsInteractionActive: (active) => set({ isInteractionActive: active }),
-      swipeFeedback: null,
-      setSwipeFeedback: (feedback) => set({ swipeFeedback: feedback }),
-      isReviewMode: false,
-      setIsReviewMode: (review) => set({ isReviewMode: review }),
-      activeReviewSessionCards: null,
-      setActiveReviewSessionCards: (cards) => set({ activeReviewSessionCards: cards }),
-      searchQuery: '',
-      setSearchQuery: (query) => set({ searchQuery: query }),
-      librarySearchQuery: '',
-      setLibrarySearchQuery: (query) => set({ librarySearchQuery: query }),
-      practiceHeader: { progress: 0, currentIndex: 0, totalCount: 0, showLightbulb: false, partSegments: [] },
-      setPracticeHeader: (headerState) => set((state) => ({
-        practiceHeader: { ...state.practiceHeader, ...headerState },
-      })),
-      practiceHeaderActions: {},
-      setPracticeHeaderActions: (actions) => set((state) => ({
-        practiceHeaderActions: { ...state.practiceHeaderActions, ...actions },
-      })),
-
-      // Library State
-      libraryActiveFolder: 'all',
-      setLibraryActiveFolder: (folderId) => set({ libraryActiveFolder: folderId }),
-      libraryActiveView: 'home' as 'home' | 'folder',
-      setLibraryActiveView: (view) => set({ libraryActiveView: view }),
-      customFolders: [],
-      setCustomFolders: (folders) => set({ customFolders: folders }),
-      addCustomFolder: (name, color, id) => set((s) => ({
-        customFolders: [...s.customFolders, { id: id || crypto.randomUUID(), name, color }],
-      })),
-      deleteCustomFolder: (id) => set((s) => ({
-        customFolders: s.customFolders.filter(f => f.id !== id),
-        // Tombstone the deletion so no stale local list can re-upload it.
-        deletedFolderIds: s.deletedFolderIds.includes(id)
-          ? s.deletedFolderIds
-          : [...s.deletedFolderIds, id],
-      })),
-      deletedFolderIds: [],
-      setDeletedFolderIds: (ids) => set({ deletedFolderIds: ids }),
-      foldersSyncedUserId: null,
-      setFoldersSyncedUserId: (userId) => set({ foldersSyncedUserId: userId }),
-      localFlashcards: [],
-      addLocalFlashcard: (card) => set((s) => ({
-        localFlashcards: [...s.localFlashcards, card],
-      })),
-      deleteLocalFlashcard: (id) => set((s) => ({
-        localFlashcards: s.localFlashcards.filter(c => c.id !== id),
-      })),
-
-      // Reset
-      resetProgress: () => set({
-        ...createClearedReviewProgress(),
-        lastActivity: null,
-        isReviewMode: false,
-        activeReviewSessionCards: null,
-        swipeFeedback: null,
-      }),
+      ...createAuthSlice(set),
+      ...createLearningSlice(set),
+      ...createNavigationSlice(set),
+      ...createLibrarySlice(set),
+      ...createUiSlice(set),
+      ...createSyncSlice(set),
+      resetAccountScopedState: () => set({ ...ACCOUNT_SWITCH_DEFAULTS }),
     }),
     {
       name: 'rongwaps-storage',
       storage: createJSONStorage(() => idbStorage),
-      partialize: (state) => ({
-        lastActiveUserId: state.lastActiveUserId,
-        activeBookId: state.activeBookId,
-        characterPreference: state.characterPreference,
-        favorites: state.favorites,
-        srsData: state.srsData,
-        learnedCards: state.learnedCards,
-        sessionProgressIndex: state.sessionProgressIndex,
-        deckExclusions: state.deckExclusions,
-        activeTab: state.activeTab,
-        activeActivity: state.activeActivity,
-        activeQuizMode: state.activeQuizMode,
-        isReviewMode: state.isReviewMode,
-        selectedLessons: state.selectedLessons,
-        selectedBooks: state.selectedBooks,
-        selectedLessonParts: state.selectedLessonParts,
-        customFolders: state.customFolders,
-        deletedFolderIds: state.deletedFolderIds,
-        foldersSyncedUserId: state.foldersSyncedUserId,
-        libraryActiveFolder: state.libraryActiveFolder,
-        localFlashcards: state.localFlashcards,
-      }),
+      partialize: derivePersistedState,
     }
   )
 );

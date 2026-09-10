@@ -20,7 +20,6 @@ import {
   type SyncProgressCounters,
 } from '../utils/cloudSyncQueue';
 import { isSameSrsData } from '../utils/srsRowMapping';
-import { createEmptySessionProgress } from '../utils/reviewProgress';
 
 type AppStoreSnapshot = ReturnType<typeof useAppStore.getState>;
 
@@ -197,24 +196,10 @@ export function useCloudSync() {
 
       if (isAccountSwitch) {
         // Fresh account: force a full pull and never let the previous user's
-        // locally cached data merge into the new account's view.
+        // locally cached data merge into the new account's view. The reset
+        // contract lives in the store (ACCOUNT_SWITCH_DEFAULTS per slice).
         lastPulledCursorRef.current = null;
-        useAppStore.setState({
-          srsData: {},
-          learnedCards: [],
-          favorites: [],
-          customFolders: [],
-          deletedFolderIds: [],
-          foldersSyncedUserId: null,
-          sessionProgress: createEmptySessionProgress(),
-          sessionProgressIndex: {},
-          selectedLessonParts: {},
-          selectedLessons: [],
-          selectedBooks: [],
-          activeActivity: null,
-          lastActivity: null,
-          lastCloudUpdate: null,
-        });
+        useAppStore.getState().resetAccountScopedState();
       }
 
       // Claim ownership of the local cache before any pull/save can run, so
