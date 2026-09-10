@@ -4,7 +4,7 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import dotenv from "dotenv";
 import { MsEdgeTTS, OUTPUT_FORMAT } from "msedge-tts";
-import { supabase } from "../src/services/supabaseClient.js";
+import { supabase } from "./supabase.js";
 
 // Load local server configuration.
 dotenv.config();

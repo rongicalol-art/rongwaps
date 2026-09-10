@@ -11,7 +11,7 @@
     "start": "node dist/server.js",
     "clean": "rm -rf dist",
     "typecheck": "node --stack-size=6000 node_modules/typescript/lib/tsc.js --noEmit",
-    "lint": "eslint src tests server/index.ts vite.config.ts --max-warnings=0",
+    "lint": "eslint src tests server vite.config.ts --max-warnings=0",
     "test": "tsx --test tests/*.test.ts",
     "content:validate": "tsx scripts/validateLessons.ts",
     "stroke-data:vendor": "tsx scripts/vendorHanziStrokeData.ts",

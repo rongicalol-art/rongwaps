@@ -36,6 +36,22 @@ export default [
     },
   },
   {
+    files: ['server/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              regex: '(^|/)src/(app|screens|features|lib|hooks|store|services/supabaseClient)(/|$)',
+              message: 'Server code must not import browser application infrastructure; use server-owned modules.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
     files: ['src/lib/widgets/**/*.{ts,tsx}'],
     rules: {
       'no-restricted-imports': [
