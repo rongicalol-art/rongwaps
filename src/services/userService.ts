@@ -1,6 +1,7 @@
 import { supabase } from './supabaseClient';
 import { SRSData } from '../utils/srsEngine';
 import { planFolderSync } from '../utils/cloudSyncQueue';
+import { rowToSrsData, srsDataToUpsert } from '../utils/srsRowMapping';
 
 export interface UserProgressData {
   srsData: Record<string, SRSData>;
@@ -63,17 +64,7 @@ export const userService = {
         for (const row of cardProgress) {
           const rowTs = row.last_updated ? new Date(row.last_updated).getTime() : 0;
           if (rowTs > serverLastUpdatedMs) serverLastUpdatedMs = rowTs;
-          const nextReviewMs = row.next_review_date
-            ? new Date(row.next_review_date).getTime()
-            : Date.now();
-          srsData[row.card_id] = {
-            cardId: row.card_id,
-            efactor: Number(row.ease),
-            interval: row.interval,
-            repetition: row.repetitions,
-            nextReviewDate: nextReviewMs,
-            ...(row.learning_step != null ? { learningStep: row.learning_step } : {}),
-          };
+          srsData[row.card_id] = rowToSrsData(row);
         }
       }
 
@@ -99,14 +90,10 @@ export const userService = {
   // is not deployed in the current environment.
   syncCardProgress: async (userId: string, srsData: Record<string, SRSData>) => {
     try {
-      const rows = Object.entries(srsData).map(([card_id, data]) => ({
+      const upserts = Object.entries(srsData).map(([card_id, data]) => srsDataToUpsert(data, card_id));
+      const rows = upserts.map((upsert) => ({
         user_id: userId,
-        card_id,
-        ease: data.efactor,
-        interval: data.interval,
-        repetitions: data.repetition,
-        next_review_date: new Date(data.nextReviewDate).toISOString(),
-        learning_step: data.learningStep ?? null,
+        ...upsert,
         last_updated: new Date().toISOString(),
       }));
 
@@ -115,17 +102,10 @@ export const userService = {
       // RPC path, chunked to stay under PostgREST payload limits.
       const rpcBatchSize = 500;
       let rpcOk = true;
-      for (let i = 0; i < rows.length; i += rpcBatchSize) {
-        const batch = rows.slice(i, i + rpcBatchSize);
+      for (let i = 0; i < upserts.length; i += rpcBatchSize) {
+        const batch = upserts.slice(i, i + rpcBatchSize);
         const { error: rpcError } = await supabase.rpc('upsert_card_progress', {
-          p_records: batch.map((row) => ({
-            card_id: row.card_id,
-            ease: row.ease,
-            interval: row.interval,
-            repetitions: row.repetitions,
-            next_review_date: row.next_review_date,
-            learning_step: row.learning_step,
-          })),
+          p_records: batch,
         });
         if (rpcError) {
           console.warn('upsert_card_progress RPC failed, falling back to batch upsert:', rpcError);

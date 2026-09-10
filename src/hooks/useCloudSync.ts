@@ -19,6 +19,7 @@ import {
   type SyncedFolderSnapshot,
   type SyncProgressCounters,
 } from '../utils/cloudSyncQueue';
+import { isSameSrsData } from '../utils/srsRowMapping';
 import { createEmptySessionProgress } from '../utils/reviewProgress';
 
 type AppStoreSnapshot = ReturnType<typeof useAppStore.getState>;
@@ -80,14 +81,7 @@ function computeSrsDelta(
   const delta: Record<string, SRSData> = {};
   for (const [key, value] of Object.entries(current)) {
     const prev = previous[key];
-    if (
-      !prev
-      || prev.efactor !== value.efactor
-      || prev.interval !== value.interval
-      || prev.repetition !== value.repetition
-      || prev.nextReviewDate !== value.nextReviewDate
-      || (prev.learningStep ?? null) !== (value.learningStep ?? null)
-    ) {
+    if (!prev || !isSameSrsData(prev, value)) {
       delta[key] = value;
     }
   }
