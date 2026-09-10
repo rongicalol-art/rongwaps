@@ -4,37 +4,37 @@ import type {
   CourseExamplePack,
   CourseExampleRecord,
 } from '../types/models';
-import { fetchStaticJson, pruneStaticJsonCache } from './staticContentService';
+import { createPackLoader } from './packLoader';
 
-let recordsPromise: Promise<CourseExampleRecord[]> | null = null;
+const courseExamplePackLoader = createPackLoader<CourseExampleManifest, CourseExamplePack, CourseExampleRecord[]>({
+  namespace: 'course-examples',
+  manifestPath: '/data/course-examples/manifest.json',
+  manifestLabel: 'course example manifest',
+  partPathPrefix: '/data/course-examples/',
+  partCacheKeyKind: 'book',
+  partLabel: (bookId) => `course examples book ${bookId}`,
+  validateManifest: (manifest) => (
+    manifest.schemaVersion === 1
+    && typeof manifest.version === 'string'
+    && Array.isArray(manifest.books)
+  ),
+  getParts: (manifest) => manifest.books.map((book) => ({
+    key: book.bookId,
+    path: book.path,
+    count: book.count,
+  })),
+  validatePack: (pack, part, manifest) => (
+    pack.schemaVersion === manifest.schemaVersion
+    && pack.bookId === part.key
+    && pack.count === pack.records.length
+    && pack.count === part.count
+  ),
+  transform: (pack) => pack.records,
+});
 
 async function loadCourseExampleRecords(): Promise<CourseExampleRecord[]> {
-  const manifest = await fetchStaticJson<CourseExampleManifest>(
-    '/data/course-examples/manifest.json',
-    'course example manifest',
-    { revalidate: true },
-  );
-  if (manifest.schemaVersion !== 1 || !Array.isArray(manifest.books)) {
-    throw new Error('Unsupported course example manifest');
-  }
-
-  void pruneStaticJsonCache('course-examples', manifest.version);
-  const packs = await Promise.all(manifest.books.map(async (book) => {
-    const pack = await fetchStaticJson<CourseExamplePack>(
-      book.path,
-      `course examples book ${book.bookId}`,
-      { persistentKey: `course-examples:${manifest.version}:book:${book.bookId}` },
-    );
-    if (
-      pack.schemaVersion !== manifest.schemaVersion
-      || pack.bookId !== book.bookId
-      || pack.count !== pack.records.length
-      || pack.count !== book.count
-    ) {
-      throw new Error(`Course example pack for book ${book.bookId} failed validation`);
-    }
-    return pack.records;
-  }));
+  const manifest = await courseExamplePackLoader.manifest();
+  const packs = await courseExamplePackLoader.loadAllParts();
 
   const records = packs.flat();
   if (records.length !== manifest.totalCount) {
@@ -85,10 +85,8 @@ export function recordsToExampleCards(
 
 export async function fetchCourseExampleCards(searchTerms: string[]): Promise<Flashcard[]> {
   try {
-    recordsPromise ||= loadCourseExampleRecords();
-    return recordsToExampleCards(await recordsPromise, searchTerms);
+    return recordsToExampleCards(await loadCourseExampleRecords(), searchTerms);
   } catch (error) {
-    recordsPromise = null;
     console.warn('Static course examples unavailable; using vocabulary examples.', error);
     return [];
   }

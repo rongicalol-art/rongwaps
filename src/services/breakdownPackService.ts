@@ -1,5 +1,6 @@
 import { DBCharacterBreakdown } from '../types/database';
-import { fetchStaticJson, pruneStaticJsonCache, removeStaticJsonCache } from './staticContentService';
+import { fetchStaticJson, removeStaticJsonCache } from './staticContentService';
+import { createPackLoader } from './packLoader';
 
 interface BreakdownManifestShard {
   shard: number;
@@ -30,12 +31,11 @@ interface UsedAsPack {
   entries: Record<string, string[]>;
 }
 
-const shardCache = new Map<number, Map<string, DBCharacterBreakdown>>();
-const pendingShards = new Map<number, Promise<Map<string, DBCharacterBreakdown> | null>>();
-let manifestPromise: Promise<BreakdownManifest> | null = null;
-let usedAsPromise: Promise<Record<string, string[]> | null> | null = null;
 const MAX_STATIC_BATCH_CHARACTERS = 20;
 const MAX_STATIC_BATCH_SHARDS = 4;
+
+let usedAsCache: Record<string, string[]> | null = null;
+let usedAsPromise: Promise<Record<string, string[]> | null> | null = null;
 
 function getShard(character: string, shardCount: number): number {
   const codePoint = character.codePointAt(0);
@@ -43,83 +43,38 @@ function getShard(character: string, shardCount: number): number {
   return codePoint % shardCount;
 }
 
-async function getManifest(): Promise<BreakdownManifest> {
-  if (manifestPromise) return manifestPromise;
+const breakdownPackLoader = createPackLoader<BreakdownManifest, BreakdownPack, Map<string, DBCharacterBreakdown>>({
+  namespace: 'breakdowns',
+  manifestPath: '/data/breakdowns/manifest.json',
+  manifestLabel: 'breakdown manifest',
+  partPathPrefix: '/data/breakdowns/',
+  partCacheKeyKind: 'shard',
+  partLabel: (shard) => `breakdown shard ${shard}`,
+  validateManifest: (manifest) => (
+    manifest.schemaVersion === 1
+    && typeof manifest.version === 'string'
+    && manifest.shardStrategy === 'unicode-code-point-modulo'
+    && manifest.shardCount > 0
+    && manifest.shards.length === manifest.shardCount
+  ),
+  getParts: (manifest) => manifest.shards.map((shard) => ({
+    key: shard.shard,
+    path: shard.path,
+    count: shard.count,
+  })),
+  validatePack: (pack, part, manifest) => {
+    if (pack.schemaVersion !== 1 || pack.shard !== part.key) return false;
+    if (!Array.isArray(pack.items) || pack.count !== pack.items.length) return false;
+    if (pack.count !== part.count) return false;
 
-  manifestPromise = fetchStaticJson<BreakdownManifest>(
-    '/data/breakdowns/manifest.json',
-    'breakdown manifest',
-    { revalidate: true },
-  ).then((manifest) => {
-    const valid = manifest.schemaVersion === 1
-      && typeof manifest.version === 'string'
-      && manifest.shardStrategy === 'unicode-code-point-modulo'
-      && manifest.shardCount > 0
-      && manifest.shards.length === manifest.shardCount;
-    if (!valid) throw new Error('Unsupported breakdown manifest');
-    void pruneStaticJsonCache('breakdowns', manifest.version);
-    return manifest;
-  }).catch((error) => {
-    manifestPromise = null;
-    throw error;
-  });
-
-  return manifestPromise;
-}
-
-function isValidPack(
-  pack: BreakdownPack,
-  manifestShard: BreakdownManifestShard,
-  shardCount: number,
-): boolean {
-  if (pack.schemaVersion !== 1 || pack.shard !== manifestShard.shard) return false;
-  if (!Array.isArray(pack.items) || pack.count !== pack.items.length) return false;
-  if (pack.count !== manifestShard.count) return false;
-
-  return pack.items.every((item) => (
-    item
-    && typeof item.character === 'string'
-    && getShard(item.character, shardCount) === pack.shard
-  ));
-}
-
-async function loadShard(
-  shard: number,
-  manifest: BreakdownManifest,
-): Promise<Map<string, DBCharacterBreakdown> | null> {
-  const cached = shardCache.get(shard);
-  if (cached) return cached;
-
-  const pending = pendingShards.get(shard);
-  if (pending) return pending;
-
-  const request = (async () => {
-    try {
-      const manifestShard = manifest.shards.find((item) => item.shard === shard);
-      if (!manifestShard || !manifestShard.path.startsWith('/data/breakdowns/')) return null;
-
-      const persistentKey = `breakdowns:${manifest.version}:shard:${shard}`;
-      const pack = await fetchStaticJson<BreakdownPack>(
-        manifestShard.path,
-        `breakdown shard ${shard}`,
-        { persistentKey },
-      );
-      if (!isValidPack(pack, manifestShard, manifest.shardCount)) {
-        await removeStaticJsonCache(persistentKey);
-        throw new Error(`Breakdown shard ${shard} failed validation`);
-      }
-
-      const indexed = new Map(pack.items.map((item) => [item.character, item]));
-      shardCache.set(shard, indexed);
-      return indexed;
-    } finally {
-      pendingShards.delete(shard);
-    }
-  })();
-
-  pendingShards.set(shard, request);
-  return request;
-}
+    return pack.items.every((item) => (
+      item
+      && typeof item.character === 'string'
+      && getShard(item.character, manifest.shardCount) === pack.shard
+    ));
+  },
+  transform: (pack) => new Map(pack.items.map((item) => [item.character, item])),
+});
 
 export async function fetchBreakdownsFromPacks(
   characters: string[],
@@ -127,7 +82,7 @@ export async function fetchBreakdownsFromPacks(
   const results: Record<string, DBCharacterBreakdown> = {};
 
   try {
-    const manifest = await getManifest();
+    const manifest = await breakdownPackLoader.manifest();
     const charactersByShard = new Map<number, Set<string>>();
     const uniqueCharacters = [...new Set(characters.filter(Boolean))];
 
@@ -146,7 +101,7 @@ export async function fetchBreakdownsFromPacks(
     }
 
     await Promise.all([...charactersByShard.entries()].map(async ([shard, shardCharacters]) => {
-      const indexed = await loadShard(shard, manifest);
+      const indexed = await breakdownPackLoader.loadPart(shard);
       if (!indexed) return;
 
       for (const character of shardCharacters) {
@@ -168,11 +123,12 @@ export async function fetchBreakdownsFromPacks(
  * database `decomposition LIKE` query.
  */
 export async function fetchUsedAsFromPacks(): Promise<Record<string, string[]> | null> {
+  if (usedAsCache) return usedAsCache;
   if (usedAsPromise) return usedAsPromise;
 
   usedAsPromise = (async () => {
     try {
-      const manifest = await getManifest();
+      const manifest = await breakdownPackLoader.manifest();
       const persistentKey = `breakdowns:${manifest.version}:used-as`;
       const pack = await fetchStaticJson<UsedAsPack>(
         '/data/breakdowns/used-as.json',
@@ -187,11 +143,13 @@ export async function fetchUsedAsFromPacks(): Promise<Record<string, string[]> |
         await removeStaticJsonCache(persistentKey);
         return null;
       }
+      usedAsCache = pack.entries;
       return pack.entries;
     } catch (error) {
-      usedAsPromise = null;
       console.warn('Static used-as index unavailable; using Supabase.', error);
       return null;
+    } finally {
+      usedAsPromise = null;
     }
   })();
 

@@ -1,5 +1,5 @@
 import { DBVocabularyRow } from '../types/database';
-import { fetchStaticJson, pruneStaticJsonCache, removeStaticJsonCache } from './staticContentService';
+import { createPackLoader } from './packLoader';
 
 interface VocabularyManifestBook {
   bookId: number;
@@ -21,90 +21,51 @@ interface VocabularyPack {
   items: DBVocabularyRow[];
 }
 
-const packCache = new Map<number, DBVocabularyRow[]>();
-const pendingPacks = new Map<number, Promise<DBVocabularyRow[] | null>>();
-let manifestPromise: Promise<VocabularyManifest> | null = null;
-let allRowsCache: DBVocabularyRow[] | null = null;
-let allRowsPromise: Promise<DBVocabularyRow[] | null> | null = null;
+const vocabularyPackLoader = createPackLoader<VocabularyManifest, VocabularyPack, DBVocabularyRow[]>({
+  namespace: 'vocabulary',
+  manifestPath: '/data/vocabulary/manifest.json',
+  manifestLabel: 'vocabulary manifest',
+  partPathPrefix: '/data/vocabulary/',
+  partCacheKeyKind: 'book',
+  partLabel: (bookId) => `vocabulary pack book ${bookId}`,
+  validateManifest: (manifest) => (
+    manifest.schemaVersion === 1
+    && typeof manifest.version === 'string'
+    && Number.isInteger(manifest.totalCount)
+    && manifest.totalCount > 0
+    && Array.isArray(manifest.books)
+    && manifest.books.reduce((total, book) => total + book.count, 0) === manifest.totalCount
+  ),
+  getParts: (manifest) => manifest.books.map((book) => ({
+    key: book.bookId,
+    path: book.path,
+    count: book.count,
+  })),
+  validatePack: (pack, part) => {
+    if (pack.schemaVersion !== 1 || pack.bookId !== part.key) return false;
+    if (!Array.isArray(pack.items) || pack.count !== pack.items.length) return false;
+    if (pack.count !== part.count) return false;
 
-async function getManifest(): Promise<VocabularyManifest> {
-  if (manifestPromise) return manifestPromise;
+    return pack.items.every((item) => {
+      if (!item || typeof item.id !== 'string') return false;
+      const match = item.id.match(/^b(\d+)[-_]?l\d+/i);
+      return Boolean(match && Number(match[1]) === pack.bookId);
+    });
+  },
+  transform: (pack) => pack.items,
+});
 
-  manifestPromise = fetchStaticJson<VocabularyManifest>(
-    '/data/vocabulary/manifest.json',
-    'vocabulary manifest',
-    { revalidate: true },
-  ).then((manifest) => {
-    const valid = manifest.schemaVersion === 1
-      && typeof manifest.version === 'string'
-      && Number.isInteger(manifest.totalCount)
-      && manifest.totalCount > 0
-      && Array.isArray(manifest.books)
-      && manifest.books.reduce((total, book) => total + book.count, 0) === manifest.totalCount;
-    if (!valid) {
-      throw new Error('Unsupported vocabulary manifest');
-    }
-    void pruneStaticJsonCache('vocabulary', manifest.version);
-    return manifest;
-  }).catch((error) => {
-    manifestPromise = null;
-    throw error;
-  });
-
-  return manifestPromise;
-}
-
-function isValidPack(pack: VocabularyPack, manifestBook: VocabularyManifestBook): boolean {
-  if (pack.schemaVersion !== 1 || pack.bookId !== manifestBook.bookId) return false;
-  if (!Array.isArray(pack.items) || pack.count !== pack.items.length) return false;
-  if (pack.count !== manifestBook.count) return false;
-
-  return pack.items.every((item) => {
-    if (!item || typeof item.id !== 'string') return false;
-    const match = item.id.match(/^b(\d+)[-_]?l\d+/i);
-    return Boolean(match && Number(match[1]) === pack.bookId);
-  });
-}
-
-async function loadVocabularyPack(bookId: number): Promise<DBVocabularyRow[] | null> {
+export async function fetchVocabularyPack(bookId: number): Promise<DBVocabularyRow[] | null> {
   try {
-    const manifest = await getManifest();
-    const manifestBook = manifest.books.find((book) => book.bookId === bookId);
-
-    if (!manifestBook || !manifestBook.path.startsWith('/data/vocabulary/')) return null;
-
-    const persistentKey = `vocabulary:${manifest.version}:book:${bookId}`;
-    const pack = await fetchStaticJson<VocabularyPack>(
-      manifestBook.path,
-      `vocabulary pack book ${bookId}`,
-      { persistentKey },
-    );
-    if (!isValidPack(pack, manifestBook)) {
-      await removeStaticJsonCache(persistentKey);
-      throw new Error(`Vocabulary pack for book ${bookId} failed validation`);
-    }
-
-    packCache.set(bookId, pack.items);
-    return pack.items;
+    return await vocabularyPackLoader.loadPart(bookId);
   } catch (error) {
     console.warn(`Static vocabulary pack unavailable for book ${bookId}; using Supabase.`, error);
     return null;
-  } finally {
-    pendingPacks.delete(bookId);
   }
 }
 
-export function fetchVocabularyPack(bookId: number): Promise<DBVocabularyRow[] | null> {
-  const cached = packCache.get(bookId);
-  if (cached) return Promise.resolve(cached);
-
-  const pending = pendingPacks.get(bookId);
-  if (pending) return pending;
-
-  const request = loadVocabularyPack(bookId);
-  pendingPacks.set(bookId, request);
-  return request;
-}
+let allRowsCache: DBVocabularyRow[] | null = null;
+let allRowsPromise: Promise<DBVocabularyRow[] | null> | null = null;
 
 export function fetchAllVocabularyPacks(): Promise<DBVocabularyRow[] | null> {
   if (allRowsCache) return Promise.resolve(allRowsCache);
@@ -112,7 +73,7 @@ export function fetchAllVocabularyPacks(): Promise<DBVocabularyRow[] | null> {
 
   allRowsPromise = (async () => {
     try {
-      const manifest = await getManifest();
+      const manifest = await vocabularyPackLoader.manifest();
       const packs = await Promise.all(
         [...manifest.books]
           .sort((a, b) => a.bookId - b.bookId)
