@@ -18,11 +18,10 @@ Use this file to locate active system documentation. All listed documents are ac
 ## Curriculum & Feature Specifications
 
 - `GRAMMAR_LESSON_TEMPLATE.md` — Specification for interactive grammar lessons, data contracts, supported exercises, and plain-English guidelines.
-- `COURSE_EXAMPLES.md` — Specification for course example sentence packs, runtime matching, and OCR export workflow.
+- `COURSE_EXAMPLES.md` — Specification for course example sentence packs, runtime matching, the OCR export workflow, and the Book 1 reading-coverage audit with authored practice sentences.
 - `../WIDGETS.md` — Public shared widget catalog mirroring `src/lib/widgets/index.ts`.
-- `OFFICIAL_AUDIO_SOURCES.md` — Modern Chinese official audio sources, track mapping (`B1-LL-P-T`), karaoke alignment pipeline, and audio caching.
-- `LESSON_15_16_SOURCES.md` — Modern Chinese Book 1 Lessons 15 & 16 curriculum, dialogue/reading transcripts, vocabularies, grammar points, and online source index.
-- `READING_COVERAGE.md` — Book 1 vocabulary-in-reading coverage audit and authored practice sentences for target words that appear in no reading or grammar content.
+- `OFFICIAL_AUDIO_SOURCES.md` — Modern Chinese official audio sources, track mapping (`B1-LL-P-T`), karaoke alignment pipeline, audio caching, and the Lessons 15–16 curriculum/transcript appendix.
+- `VISUAL_PROMPTS.md` — Locked Master Character Visual DNA, character design sheets and avatar portraits, plus dialogue and reading scene composition prompts.
 
 ## Task Routing
 
