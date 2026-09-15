@@ -1,0 +1,2571 @@
+{
+  "schemaVersion": 1,
+  "distribution": "development-only-candidate",
+  "publishable": false,
+  "createdFor": "Book 1 V2 rollout (label round 1)",
+  "source": "book-1-component-label-candidates-v1.json + reviewer curation",
+  "records": [
+    {
+      "glyph": "艹",
+      "label": "grass",
+      "use": "label",
+      "rationale": "High-confidence candidate \"grass\" (meaning); uses: 英茶花萬藍華蘋蕉藥菜苦著蓮菲荷蘭.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "十",
+      "label": "ten",
+      "use": "label",
+      "rationale": "High-confidence candidate \"ten\" (meaning); uses: 什早午千汁支真計士準辛博南.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "糹",
+      "label": "silk",
+      "use": "label",
+      "rationale": "High-confidence candidate \"silk\" (meaning); uses: 紹紅綠給網級線練經約績結紙.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "八",
+      "label": "eight",
+      "use": "label",
+      "rationale": "High-confidence candidate \"eight\" (meaning); uses: 小分共具只興公火黃父屬其.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "亠",
+      "label": "lid",
+      "use": "label",
+      "rationale": "High-confidence candidate \"lid\" (meaning); uses: 亮文衣商旁高方市言交夜.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "二",
+      "label": "two",
+      "use": "label",
+      "rationale": "High-confidence candidate \"two\" (meaning); uses: 月些那半毛用言耳目次羊.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "竹",
+      "label": "bamboo",
+      "use": "label",
+      "rationale": "High-confidence candidate \"bamboo\" (meaning); uses: 筆籃等答算節第簡籠笑.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "阝",
+      "label": "place",
+      "use": "label",
+      "rationale": "High-confidence candidate \"place\" (meaning); uses: 那都陽部院附郵隊陸.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "王",
+      "label": "jade",
+      "use": "label",
+      "rationale": "As a component 王 is the jade radical: 珍珠/理/玩/球/班/現/環 all read jade, not king.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "金",
+      "label": "gold",
+      "use": "label",
+      "rationale": "High-confidence candidate \"gold\" (meaning); uses: 鐘鉛錢錯鐵錶鏡銀.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "尸",
+      "label": "body",
+      "use": "label",
+      "rationale": "High-confidence candidate \"body\" (meaning); uses: 尼戶局展屬尺.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "又",
+      "label": "hand",
+      "use": "label",
+      "rationale": "Right-hand radical (visual); enables 友 = two hands, 受 = passing hand. \"and/again\" is a function word.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "冂",
+      "label": "frame",
+      "use": "label",
+      "rationale": "Structural shape label (precedent: 囗 box); 冂 structures 月/用/向/南/肉.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "禾",
+      "label": "grain",
+      "use": "label",
+      "rationale": "One-word simplification of \"cereal\"; covers 和/種/秋/香/科.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "工",
+      "label": "work",
+      "use": "label",
+      "rationale": "One-word simplification of \"labor\".",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "⺼",
+      "label": "meat",
+      "use": "label",
+      "rationale": "High-confidence candidate \"meat\" (meaning); uses: 腦腳胖臉肚肖.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "大",
+      "label": "big",
+      "use": "label",
+      "rationale": "High-confidence candidate \"big\" (meaning); uses: 太美天因奇.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "飠",
+      "label": "food",
+      "use": "label",
+      "rationale": "High-confidence candidate \"food\" (meaning); uses: 館飯飲餓餃.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "立",
+      "label": "stand",
+      "use": "label",
+      "rationale": "High-confidence candidate \"stand\" (meaning); uses: 位音站章辛.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "車",
+      "label": "cart",
+      "use": "label",
+      "rationale": "High-confidence candidate \"cart\" (meaning); uses: 輛輕較轉輸.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "攵",
+      "label": "rap",
+      "use": "label",
+      "rationale": "High-confidence candidate \"rap\" (meaning); uses: 條教故數放.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "艮",
+      "label": "gèn",
+      "use": "label",
+      "rationale": "Reading label for the phonetic series (很 hěn, 跟 gēn); \"blunt\" is unusable in scenes.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "矢",
+      "label": "arrow",
+      "use": "label",
+      "rationale": "High-confidence candidate \"arrow\" (meaning); uses: 知候矮短.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "欠",
+      "label": "lack",
+      "use": "label",
+      "rationale": "High-confidence candidate \"lack\" (meaning); uses: 歡飲歌次.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "勹",
+      "label": "wrap",
+      "use": "label",
+      "rationale": "High-confidence candidate \"wrap\" (meaning); uses: 沒包句久.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "止",
+      "label": "stop",
+      "use": "label",
+      "rationale": "High-confidence candidate \"stop\" (meaning); uses: 歲步址歷.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "走",
+      "label": "walk",
+      "use": "label",
+      "rationale": "High-confidence candidate \"walk\" (meaning); uses: 起趣超越.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "巾",
+      "label": "cloth",
+      "use": "label",
+      "rationale": "High-confidence candidate \"cloth\" (meaning); uses: 兩常市帶.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "乂",
+      "label": "cross",
+      "use": "label",
+      "rationale": "Visual cross strokes in 文/父/史/更; \"govern\" is unusable. Shape label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "舌",
+      "label": "tongue",
+      "use": "label",
+      "rationale": "High-confidence candidate \"tongue\" (meaning); uses: 甜話舍活.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "雨",
+      "label": "rain",
+      "use": "label",
+      "rationale": "High-confidence candidate \"rain\" (meaning); uses: 零電需雪.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "衤",
+      "label": "cloth",
+      "use": "label",
+      "rationale": "High-confidence candidate \"cloth\" (meaning); uses: 裡裙褲襪.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "耂",
+      "label": "old",
+      "use": "label",
+      "rationale": "High-confidence candidate \"old\" (meaning); uses: 老考者.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "也",
+      "label": "also",
+      "use": "label",
+      "rationale": "High-confidence candidate \"also\" (meaning); uses: 他她地.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "且",
+      "label": "qiě",
+      "use": "label",
+      "rationale": "Function-word gloss; 且 is the phonetic in 姐 (qiě -> jiě). Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "至",
+      "label": "reach",
+      "use": "label",
+      "rationale": "High-confidence candidate \"reach\" (meaning); uses: 臺到室.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "厶",
+      "label": "private",
+      "use": "label",
+      "rationale": "High-confidence candidate \"private\" (meaning); uses: 台去公.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "幺",
+      "label": "small",
+      "use": "label",
+      "rationale": "Matches the shipped 幾 hook 幺(small); \"one\" is a numeral misfit for scenes.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "各",
+      "label": "each",
+      "use": "label",
+      "rationale": "One-word simplification of \"individual\"; keeps 客/路/閣 scenes clean.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "米",
+      "label": "rice",
+      "use": "label",
+      "rationale": "High-confidence candidate \"rice\" (meaning); uses: 氣糕料.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "交",
+      "label": "cross",
+      "use": "label",
+      "rationale": "Concrete visual/meaning that works in 校/較/餃 scenes; \"connect\" overlaps 連 join.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "巴",
+      "label": "bā",
+      "use": "label",
+      "rationale": "Reading label matching the shipped 爸 sound note (bā -> bà); \"desire\" is obscure.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "卜",
+      "label": "divination",
+      "use": "label",
+      "rationale": "High-confidence candidate \"divination\" (meaning); uses: 下外卡.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "刀",
+      "label": "knife",
+      "use": "label",
+      "rationale": "High-confidence candidate \"knife\" (meaning); uses: 分那留.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "乍",
+      "label": "first",
+      "use": "label",
+      "rationale": "One-word simplification; 昨 = sun + first (yesterday) works.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "頁",
+      "label": "head",
+      "use": "label",
+      "rationale": "As a component 頁 is the head radical: 頭/顏/題 all read head.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "亡",
+      "label": "perish",
+      "use": "label",
+      "rationale": "Keeps the 忘/忙 mnemonics (\"a heart that perishes forgets\") without the blunt noun \"death\".",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "礻",
+      "label": "spirit",
+      "use": "label",
+      "rationale": "High-confidence candidate \"spirit\" (meaning); uses: 禮視祝.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "牛",
+      "label": "ox",
+      "use": "label",
+      "rationale": "High-confidence candidate \"ox\" (meaning); uses: 物件特.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "者",
+      "label": "zhě",
+      "use": "label",
+      "rationale": "Function-word gloss \"that which\"; pure phonetic in 都/豬/著. Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "穴",
+      "label": "cave",
+      "use": "label",
+      "rationale": "High-confidence candidate \"cave\" (meaning); uses: 穿空窗.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "非",
+      "label": "fēi",
+      "use": "label",
+      "rationale": "Function word \"not\" (and 非 is a shipped target already); 啡/排/菲 are phonetic. Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "冫",
+      "label": "ice",
+      "use": "label",
+      "rationale": "High-confidence candidate \"ice\" (meaning); uses: 冷冰然.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "臼",
+      "label": "mortar",
+      "use": "label",
+      "rationale": "High-confidence candidate \"mortar\" (meaning); uses: 兒舊鼠.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "合",
+      "label": "join",
+      "use": "label",
+      "rationale": "Concrete noun/verb over \"combine\" (which is template-banned in hooks); 給 = silk holds the join of two hands.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "里",
+      "label": "village",
+      "use": "label",
+      "rationale": "High-confidence candidate \"village\" (meaning); uses: 裡理重.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "古",
+      "label": "old",
+      "use": "label",
+      "rationale": "High-confidence candidate \"old\" (meaning); uses: 克苦故.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "奇",
+      "label": "strange",
+      "use": "label",
+      "rationale": "High-confidence candidate \"strange\" (meaning); uses: 椅騎寄.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "昜",
+      "label": "bright",
+      "use": "label",
+      "rationale": "High-confidence candidate \"bright\" (meaning); uses: 陽場湯.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "自",
+      "label": "self",
+      "use": "label",
+      "rationale": "High-confidence candidate \"self\" (meaning); uses: 息首鼻.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "寺",
+      "label": "court",
+      "use": "label",
+      "rationale": "High-confidence candidate \"court\" (meaning); uses: 時等特.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "刂",
+      "label": "knife",
+      "use": "label",
+      "rationale": "High-confidence candidate \"knife\" (meaning); uses: 到別剛.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "圭",
+      "label": "jade tablet",
+      "use": "label",
+      "rationale": "High-confidence candidate \"jade tablet\" (meaning); uses: 街封鞋.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "寸",
+      "label": "inch",
+      "use": "label",
+      "rationale": "High-confidence candidate \"inch\" (meaning); uses: 封對付.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "疒",
+      "label": "sickness",
+      "use": "label",
+      "rationale": "High-confidence candidate \"sickness\" (meaning); uses: 瘦病痛.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "主",
+      "label": "master",
+      "use": "label",
+      "rationale": "Concrete noun for 注/住/往 scenes over the verb \"own\".",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "尔",
+      "label": "you",
+      "use": "label",
+      "rationale": "High-confidence candidate \"you\" (meaning); uses: 你妳.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "生",
+      "label": "life",
+      "use": "label",
+      "rationale": "High-confidence candidate \"life\" (meaning); uses: 姓星.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "丁",
+      "label": "nail",
+      "use": "label",
+      "rationale": "Shape label (precedent: 爻 crossed sticks, 肀 brush); gives 打 = hand + nail, \"to hit\".",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "吉",
+      "label": "lucky",
+      "use": "label",
+      "rationale": "High-confidence candidate \"lucky\" (meaning); uses: 臺結.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "雚",
+      "label": "heron",
+      "use": "label",
+      "rationale": "High-confidence candidate \"heron\" (meaning); uses: 歡觀.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "气",
+      "label": "air",
+      "use": "label",
+      "rationale": "High-confidence candidate \"air\" (meaning); uses: 氣汽.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "召",
+      "label": "summon",
+      "use": "label",
+      "rationale": "Concrete verb over the noun phrase \"imperial decree\".",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "免",
+      "label": "escape",
+      "use": "label",
+      "rationale": "Gives 兔 = rabbit escaping and 晚 = sun escaping (evening); \"spare\" is weaker.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "父",
+      "label": "father",
+      "use": "label",
+      "rationale": "High-confidence candidate \"father\" (meaning); uses: 爸交.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "其",
+      "label": "qí",
+      "use": "label",
+      "rationale": "Pure phonetic in 期/淇 (qí); possessive pronoun is a function word. Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "覀",
+      "label": "west",
+      "use": "label",
+      "rationale": "High-confidence candidate \"west\" (meaning); uses: 要票.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "夬",
+      "label": "decisive",
+      "use": "label",
+      "rationale": "High-confidence candidate \"decisive\" (meaning); uses: 快決.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "己",
+      "label": "self",
+      "use": "label",
+      "rationale": "High-confidence candidate \"self\" (meaning); uses: 起記.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "反",
+      "label": "reverse",
+      "use": "label",
+      "rationale": "High-confidence candidate \"reverse\" (meaning); uses: 飯板.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "垂",
+      "label": "hang",
+      "use": "label",
+      "rationale": "High-confidence candidate \"hang\" (meaning); uses: 睡郵.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "糸",
+      "label": "silk",
+      "use": "label",
+      "rationale": "High-confidence candidate \"silk\" (meaning); uses: 累緊.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "豊",
+      "label": "abundant",
+      "use": "label",
+      "rationale": "High-confidence candidate \"abundant\" (meaning); uses: 禮體.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "勿",
+      "label": "wù",
+      "use": "label",
+      "rationale": "Function word \"must not\"; 物 is a same-reading phonetic. Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "化",
+      "label": "change",
+      "use": "label",
+      "rationale": "High-confidence candidate \"change\" (meaning); uses: 花貨.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "几",
+      "label": "table",
+      "use": "label",
+      "rationale": "One-word visual object; \"small table\" duplicates 幾.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "虫",
+      "label": "insect",
+      "use": "label",
+      "rationale": "High-confidence candidate \"insect\" (meaning); uses: 蛋蛇.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "重",
+      "label": "heavy",
+      "use": "label",
+      "rationale": "High-confidence candidate \"heavy\" (meaning); uses: 種動.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "聿",
+      "label": "writing brush",
+      "use": "label",
+      "rationale": "High-confidence candidate \"writing brush\" (meaning); uses: 筆律.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "加",
+      "label": "add",
+      "use": "label",
+      "rationale": "One-word simplification of \"add to\"; the verb form works as an infinitive in scenes (咖: begs to add milk).",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "令",
+      "label": "command",
+      "use": "label",
+      "rationale": "High-confidence candidate \"command\" (meaning); uses: 冷零.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "斗",
+      "label": "measuring cup",
+      "use": "label",
+      "rationale": "The container sense gives 料/科 scenes (\"a cup of grain\"); \"struggle\" collides with 鬥.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "小",
+      "label": "small",
+      "use": "label",
+      "rationale": "High-confidence candidate \"small\" (meaning); uses: 少原.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "取",
+      "label": "take",
+      "use": "label",
+      "rationale": "High-confidence candidate \"take\" (meaning); uses: 最趣.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "石",
+      "label": "stone",
+      "use": "label",
+      "rationale": "High-confidence candidate \"stone\" (meaning); uses: 碗碼.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "夂",
+      "label": "go",
+      "use": "label",
+      "rationale": "High-confidence candidate \"go\" (meaning); uses: 冬夜.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "⺀",
+      "label": "ice",
+      "use": "label",
+      "rationale": "High-confidence candidate \"ice\" (meaning); uses: 冬望.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "巳",
+      "label": "curl",
+      "use": "label",
+      "rationale": "Branch gloss is junk; 包 = 勹(wrap) around 巳(curl). Shape label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "丂",
+      "label": "kǎo",
+      "use": "label",
+      "rationale": "Variant-of-考 junk gloss; 考 is same-reading and 巧 is a phonetic. Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "尌",
+      "label": "prop up",
+      "use": "label",
+      "rationale": "High-confidence candidate \"prop up\" (meaning); uses: 廚樹.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "囪",
+      "label": "chimney",
+      "use": "label",
+      "rationale": "High-confidence candidate \"chimney\" (meaning); uses: 窗聰.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "犭",
+      "label": "dog",
+      "use": "label",
+      "rationale": "High-confidence candidate \"dog\" (meaning); uses: 狗猴.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "句",
+      "label": "sentence",
+      "use": "label",
+      "rationale": "High-confidence candidate \"sentence\" (meaning); uses: 狗夠.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "監",
+      "label": "supervise",
+      "use": "label",
+      "rationale": "Concrete verb; 藍/籃 are phonetic.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "凵",
+      "label": "container",
+      "use": "label",
+      "rationale": "High-confidence candidate \"container\" (meaning); uses: 山出.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "京",
+      "label": "capital",
+      "use": "label",
+      "rationale": "One-word simplification of \"capital city\".",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "斿",
+      "label": "swim",
+      "use": "label",
+      "rationale": "High-confidence candidate \"swim\" (meaning); uses: 游遊.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "彡",
+      "label": "hair",
+      "use": "label",
+      "rationale": "High-confidence candidate \"hair\" (meaning); uses: 影參.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "亍",
+      "label": "small step",
+      "use": "label",
+      "rationale": "Pairs with 彳(step) in 行/街 as the right step.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "袁",
+      "label": "robe",
+      "use": "label",
+      "rationale": "High-confidence candidate \"robe\" (meaning); uses: 遠園.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "廿",
+      "label": "twenty",
+      "use": "label",
+      "rationale": "High-confidence candidate \"twenty\" (meaning); uses: 難黃.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "谷",
+      "label": "valley",
+      "use": "label",
+      "rationale": "High-confidence candidate \"valley\" (meaning); uses: 容浴.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "豆",
+      "label": "beans",
+      "use": "label",
+      "rationale": "High-confidence candidate \"beans\" (meaning); uses: 短頭.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "婁",
+      "label": "lóu",
+      "use": "label",
+      "rationale": "Gloss \"a constellation\" is unusable; 樓/數 are phonetic. Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "业",
+      "label": "business",
+      "use": "label",
+      "rationale": "High-confidence candidate \"business\" (meaning); uses: 對業.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "巠",
+      "label": "underground river",
+      "use": "label",
+      "rationale": "High-confidence candidate \"underground river\" (meaning); uses: 輕經.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "酉",
+      "label": "wine",
+      "use": "label",
+      "rationale": "High-confidence candidate \"wine\" (meaning); uses: 醫酒.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "甬",
+      "label": "path",
+      "use": "label",
+      "rationale": "High-confidence candidate \"path\" (meaning); uses: 痛通.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "僉",
+      "label": "all",
+      "use": "label",
+      "rationale": "High-confidence candidate \"all\" (meaning); uses: 臉驗.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "竟",
+      "label": "finally",
+      "use": "label",
+      "rationale": "High-confidence candidate \"finally\" (meaning); uses: 鏡境.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "爭",
+      "label": "dispute",
+      "use": "label",
+      "rationale": "High-confidence candidate \"dispute\" (meaning); uses: 淨靜.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "旦",
+      "label": "dawn",
+      "use": "label",
+      "rationale": "High-confidence candidate \"dawn\" (meaning); uses: 但查.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "甲",
+      "label": "armor",
+      "use": "label",
+      "rationale": "High-confidence candidate \"armor\" (meaning); uses: 單里.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "彐",
+      "label": "snout",
+      "use": "label",
+      "rationale": "High-confidence candidate \"snout\" (meaning); uses: 事雪.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "帀",
+      "label": "rotate",
+      "use": "label",
+      "rationale": "High-confidence candidate \"rotate\" (meaning); uses: 師.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "丩",
+      "label": "jiū",
+      "use": "label",
+      "rationale": "Used phonetically in 叫 (jiū -> jiào); meaning \"connect/vine\" is unusable in scenes. Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "那",
+      "label": "that",
+      "use": "label",
+      "rationale": "High-confidence candidate \"that\" (meaning); uses: 哪.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "首",
+      "label": "head",
+      "use": "label",
+      "rationale": "Concrete body-part meaning; \"chief\" is abstract.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "彎",
+      "label": "bend",
+      "use": "label",
+      "rationale": "High-confidence candidate \"bend\" (meaning); uses: 灣.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "央",
+      "label": "center",
+      "use": "label",
+      "rationale": "Concrete noun over the adjective \"central\"; 英 = sprout at the center.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "票",
+      "label": "ticket",
+      "use": "label",
+      "rationale": "Simpler common word than \"bank note\".",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "麻",
+      "label": "hemp",
+      "use": "label",
+      "rationale": "High-confidence candidate \"hemp\" (meaning); uses: 麼.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "尼",
+      "label": "Buddhist nun",
+      "use": "label",
+      "rationale": "High-confidence candidate \"Buddhist nun\" (meaning); uses: 呢.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "卩",
+      "label": "seal",
+      "use": "label",
+      "rationale": "High-confidence candidate \"seal\" (meaning); uses: 印.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "壴",
+      "label": "drum",
+      "use": "label",
+      "rationale": "High-confidence candidate \"drum\" (meaning); uses: 喜.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "射",
+      "label": "shoot",
+      "use": "label",
+      "rationale": "High-confidence candidate \"shoot\" (meaning); uses: 謝.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "㐱",
+      "label": "zhēn",
+      "use": "label",
+      "rationale": "Pure phonetic in 珍 (zhēn -> zhēn); gloss \"bushy hair\" is unusable. Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "朱",
+      "label": "cinnabar",
+      "use": "label",
+      "rationale": "High-confidence candidate \"cinnabar\" (meaning); uses: 珠.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "乃",
+      "label": "nǎi",
+      "use": "label",
+      "rationale": "Function word \"then\"; phonetic in 奶 (nǎi -> nǎi). Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "童",
+      "label": "child",
+      "use": "label",
+      "rationale": "High-confidence candidate \"child\" (meaning); uses: 鐘.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "了",
+      "label": "swaddle",
+      "use": "label",
+      "rationale": "Visual label: the curled swaddling shape in 子 (了 under 一 reads as a wrapped baby). Its only use is 子.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "号",
+      "label": "mark",
+      "use": "label",
+      "rationale": "High-confidence candidate \"mark\" (meaning); uses: 號.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "虎",
+      "label": "tiger",
+      "use": "label",
+      "rationale": "High-confidence candidate \"tiger\" (meaning); uses: 號.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "啚",
+      "label": "bǐ",
+      "use": "label",
+      "rationale": "Obscure block inside 圖; only a reading is honest. Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "官",
+      "label": "official",
+      "use": "label",
+      "rationale": "High-confidence candidate \"official\" (meaning); uses: 館.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "周",
+      "label": "zhōu",
+      "use": "label",
+      "rationale": "Dynasty/proper noun is unusable; 週 is a same-reading phonetic. Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "阿",
+      "label": "aah",
+      "use": "label",
+      "rationale": "Function-word gloss; 啊 is the same interjection sound. Interjection label (needs 2+ chars).",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "是",
+      "label": "true",
+      "use": "label",
+      "rationale": "Concrete adjective over the adverb \"indeed\"; 題 scene reads \"true + page\".",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "冉",
+      "label": "tender",
+      "use": "label",
+      "rationale": "High-confidence candidate \"tender\" (meaning); uses: 再.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "故",
+      "label": "reason",
+      "use": "label",
+      "rationale": "High-confidence candidate \"reason\" (meaning); uses: 做.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "相",
+      "label": "mutual",
+      "use": "label",
+      "rationale": "High-confidence candidate \"mutual\" (meaning); uses: 想.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "关",
+      "label": "frontier pass",
+      "use": "label",
+      "rationale": "High-confidence candidate \"frontier pass\" (meaning); uses: 送.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "固",
+      "label": "solid",
+      "use": "label",
+      "rationale": "Simpler adjective; 個 = person + solid.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "此",
+      "label": "this",
+      "use": "label",
+      "rationale": "High-confidence candidate \"this\" (meaning); uses: 些.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "疋",
+      "label": "roll",
+      "use": "label",
+      "rationale": "High-confidence candidate \"roll\" (meaning); uses: 蛋.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "羔",
+      "label": "lamb",
+      "use": "label",
+      "rationale": "High-confidence candidate \"lamb\" (meaning); uses: 糕.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "羕",
+      "label": "river",
+      "use": "label",
+      "rationale": "High-confidence candidate \"river\" (meaning); uses: 樣.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "支",
+      "label": "support",
+      "use": "label",
+      "rationale": "High-confidence candidate \"support\" (meaning); uses: 枝.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "鬼",
+      "label": "ghost",
+      "use": "label",
+      "rationale": "High-confidence candidate \"ghost\" (meaning); uses: 塊.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "戔",
+      "label": "small",
+      "use": "label",
+      "rationale": "High-confidence candidate \"small\" (meaning); uses: 錢.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "兀",
+      "label": "weak",
+      "use": "label",
+      "rationale": "High-confidence candidate \"weak\" (meaning); uses: 元.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "更",
+      "label": "more",
+      "use": "label",
+      "rationale": "High-confidence candidate \"more\" (meaning); uses: 便.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "彥",
+      "label": "elegant",
+      "use": "label",
+      "rationale": "High-confidence candidate \"elegant\" (meaning); uses: 顏.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "牙",
+      "label": "tooth",
+      "use": "label",
+      "rationale": "High-confidence candidate \"tooth\" (meaning); uses: 穿.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "元",
+      "label": "first",
+      "use": "label",
+      "rationale": "High-confidence candidate \"first\" (meaning); uses: 玩.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "甘",
+      "label": "sweet",
+      "use": "label",
+      "rationale": "High-confidence candidate \"sweet\" (meaning); uses: 甜.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "埶",
+      "label": "art",
+      "use": "label",
+      "rationale": "High-confidence candidate \"art\" (meaning); uses: 熱.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "我",
+      "label": "me",
+      "use": "label",
+      "rationale": "High-confidence candidate \"me\" (meaning); uses: 餓.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "食",
+      "label": "food",
+      "use": "label",
+      "rationale": "High-confidence candidate \"food\" (meaning); uses: 餐.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "聽",
+      "label": "hear",
+      "use": "label",
+      "rationale": "High-confidence candidate \"hear\" (meaning); uses: 廳.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "麥",
+      "label": "wheat",
+      "use": "label",
+      "rationale": "High-confidence candidate \"wheat\" (meaning); uses: 麵.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "面",
+      "label": "face",
+      "use": "label",
+      "rationale": "High-confidence candidate \"face\" (meaning); uses: 麵.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "士",
+      "label": "scholar",
+      "use": "label",
+      "rationale": "High-confidence candidate \"scholar\" (meaning); uses: 賣.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "買",
+      "label": "buy",
+      "use": "label",
+      "rationale": "High-confidence candidate \"buy\" (meaning); uses: 賣.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "仌",
+      "label": "frozen",
+      "use": "label",
+      "rationale": "High-confidence candidate \"frozen\" (meaning); uses: 肉.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "宛",
+      "label": "wǎn",
+      "use": "label",
+      "rationale": "Same-reading phonetic in 碗 (wǎn -> wǎn); \"seem\" is unusable as a scene token. Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "不",
+      "label": "no",
+      "use": "label",
+      "rationale": "High-confidence candidate \"no\" (meaning); uses: 杯.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "并",
+      "label": "merge",
+      "use": "label",
+      "rationale": "Concrete verb over \"combine\", which the hook style gate bans as template language inside tokens (瓶).",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "瓦",
+      "label": "tile",
+      "use": "label",
+      "rationale": "High-confidence candidate \"tile\" (meaning); uses: 瓶.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "彔",
+      "label": "carve wood",
+      "use": "label",
+      "rationale": "High-confidence candidate \"carve wood\" (meaning); uses: 綠.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "禺",
+      "label": "district",
+      "use": "label",
+      "rationale": "High-confidence candidate \"district\" (meaning); uses: 萬.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "你",
+      "label": "you",
+      "use": "label",
+      "rationale": "High-confidence candidate \"you\" (meaning); uses: 您.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "冏",
+      "label": "bright",
+      "use": "label",
+      "rationale": "High-confidence candidate \"bright\" (meaning); uses: 商.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "母",
+      "label": "mother",
+      "use": "label",
+      "rationale": "High-confidence candidate \"mother\" (meaning); uses: 每.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "昔",
+      "label": "past",
+      "use": "label",
+      "rationale": "High-confidence candidate \"past\" (meaning); uses: 錯.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "林",
+      "label": "forest",
+      "use": "label",
+      "rationale": "High-confidence candidate \"forest\" (meaning); uses: 淋.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "東",
+      "label": "east",
+      "use": "label",
+      "rationale": "High-confidence candidate \"east\" (meaning); uses: 棟.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "杲",
+      "label": "brilliant",
+      "use": "label",
+      "rationale": "High-confidence candidate \"brilliant\" (meaning); uses: 桌.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "弓",
+      "label": "bow",
+      "use": "label",
+      "rationale": "High-confidence candidate \"bow\" (meaning); uses: 張.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "長",
+      "label": "long",
+      "use": "label",
+      "rationale": "High-confidence candidate \"long\" (meaning); uses: 張.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "未",
+      "label": "wèi",
+      "use": "label",
+      "rationale": "Function word \"not yet\"; 妹 is a phonetic (wèi -> mèi). Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "少",
+      "label": "few",
+      "use": "label",
+      "rationale": "High-confidence candidate \"few\" (meaning); uses: 沙.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "癶",
+      "label": "legs",
+      "use": "label",
+      "rationale": "High-confidence candidate \"legs\" (meaning); uses: 發.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "封",
+      "label": "envelope",
+      "use": "label",
+      "rationale": "High-confidence candidate \"envelope\" (meaning); uses: 幫.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "帛",
+      "label": "silk",
+      "use": "label",
+      "rationale": "High-confidence candidate \"silk\" (meaning); uses: 幫.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "幾",
+      "label": "small table",
+      "use": "label",
+      "rationale": "High-confidence candidate \"small table\" (meaning); uses: 機.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "豸",
+      "label": "badger",
+      "use": "label",
+      "rationale": "High-confidence candidate \"badger\" (meaning); uses: 貓.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "苗",
+      "label": "sprouts",
+      "use": "label",
+      "rationale": "High-confidence candidate \"sprouts\" (meaning); uses: 貓.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "麗",
+      "label": "beautiful",
+      "use": "label",
+      "rationale": "High-confidence candidate \"beautiful\" (meaning); uses: 曬.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "西",
+      "label": "west",
+      "use": "label",
+      "rationale": "High-confidence candidate \"west\" (meaning); uses: 晒.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "罔",
+      "label": "none",
+      "use": "label",
+      "rationale": "High-confidence candidate \"none\" (meaning); uses: 網.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "求",
+      "label": "seek",
+      "use": "label",
+      "rationale": "High-confidence candidate \"seek\" (meaning); uses: 球.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "奉",
+      "label": "offer",
+      "use": "label",
+      "rationale": "High-confidence candidate \"offer\" (meaning); uses: 棒.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "易",
+      "label": "change",
+      "use": "label",
+      "rationale": "High-confidence candidate \"change\" (meaning); uses: 踢.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "每",
+      "label": "each",
+      "use": "label",
+      "rationale": "High-confidence candidate \"each\" (meaning); uses: 海.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "永",
+      "label": "long",
+      "use": "label",
+      "rationale": "High-confidence candidate \"long\" (meaning); uses: 泳.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "包",
+      "label": "wrap",
+      "use": "label",
+      "rationale": "High-confidence candidate \"wrap\" (meaning); uses: 跑.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "曼",
+      "label": "long",
+      "use": "label",
+      "rationale": "High-confidence candidate \"long\" (meaning); uses: 慢.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "景",
+      "label": "scenery",
+      "use": "label",
+      "rationale": "High-confidence candidate \"scenery\" (meaning); uses: 影.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "咅",
+      "label": "spit out",
+      "use": "label",
+      "rationale": "High-confidence candidate \"spit out\" (meaning); uses: 部.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "完",
+      "label": "complete",
+      "use": "label",
+      "rationale": "High-confidence candidate \"complete\" (meaning); uses: 院.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "䧹",
+      "label": "eagle",
+      "use": "label",
+      "rationale": "High-confidence candidate \"eagle\" (meaning); uses: 應.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "軍",
+      "label": "army",
+      "use": "label",
+      "rationale": "High-confidence candidate \"army\" (meaning); uses: 運.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "卻",
+      "label": "still",
+      "use": "label",
+      "rationale": "High-confidence candidate \"still\" (meaning); uses: 腳.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "沓",
+      "label": "connected",
+      "use": "label",
+      "rationale": "High-confidence candidate \"connected\" (meaning); uses: 踏.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "兩",
+      "label": "two",
+      "use": "label",
+      "rationale": "High-confidence candidate \"two\" (meaning); uses: 輛.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "同",
+      "label": "same",
+      "use": "label",
+      "rationale": "High-confidence candidate \"same\" (meaning); uses: 興.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "羽",
+      "label": "feather",
+      "use": "label",
+      "rationale": "High-confidence candidate \"feather\" (meaning); uses: 習.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "昌",
+      "label": "sunlight",
+      "use": "label",
+      "rationale": "High-confidence candidate \"sunlight\" (meaning); uses: 唱.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "哥",
+      "label": "elder brother",
+      "use": "label",
+      "rationale": "High-confidence candidate \"elder brother\" (meaning); uses: 歌.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "兆",
+      "label": "omen",
+      "use": "label",
+      "rationale": "High-confidence candidate \"omen\" (meaning); uses: 跳.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "卌",
+      "label": "forty",
+      "use": "label",
+      "rationale": "High-confidence candidate \"forty\" (meaning); uses: 舞.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "舛",
+      "label": "crossed feet",
+      "use": "label",
+      "rationale": "Matches the shipped 舞 overhaul label; \"mistaken\" is unusable.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "具",
+      "label": "tool",
+      "use": "label",
+      "rationale": "High-confidence candidate \"tool\" (meaning); uses: 真.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "冋",
+      "label": "desert",
+      "use": "label",
+      "rationale": "High-confidence candidate \"desert\" (meaning); uses: 高.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "韋",
+      "label": "tanned leather",
+      "use": "label",
+      "rationale": "High-confidence candidate \"tanned leather\" (meaning); uses: 韓.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "疌",
+      "label": "nimble",
+      "use": "label",
+      "rationale": "High-confidence candidate \"nimble\" (meaning); uses: 捷.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "呈",
+      "label": "petition",
+      "use": "label",
+      "rationale": "High-confidence candidate \"petition\" (meaning); uses: 程.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "表",
+      "label": "show",
+      "use": "label",
+      "rationale": "High-confidence candidate \"show\" (meaning); uses: 錶.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "付",
+      "label": "give",
+      "use": "label",
+      "rationale": "High-confidence candidate \"give\" (meaning); uses: 附.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "及",
+      "label": "extend",
+      "use": "label",
+      "rationale": "High-confidence candidate \"extend\" (meaning); uses: 級.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "舍",
+      "label": "house",
+      "use": "label",
+      "rationale": "High-confidence candidate \"house\" (meaning); uses: 舒.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "予",
+      "label": "give",
+      "use": "label",
+      "rationale": "High-confidence candidate \"give\" (meaning); uses: 舒.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "泉",
+      "label": "spring",
+      "use": "label",
+      "rationale": "High-confidence candidate \"spring\" (meaning); uses: 線.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "君",
+      "label": "sovereign",
+      "use": "label",
+      "rationale": "High-confidence candidate \"sovereign\" (meaning); uses: 裙.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "片",
+      "label": "slice",
+      "use": "label",
+      "rationale": "High-confidence candidate \"slice\" (meaning); uses: 牌.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "卑",
+      "label": "humble",
+      "use": "label",
+      "rationale": "High-confidence candidate \"humble\" (meaning); uses: 牌.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "庫",
+      "label": "armory",
+      "use": "label",
+      "rationale": "High-confidence candidate \"armory\" (meaning); uses: 褲.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "夫",
+      "label": "man",
+      "use": "label",
+      "rationale": "High-confidence candidate \"man\" (meaning); uses: 難.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "半",
+      "label": "half",
+      "use": "label",
+      "rationale": "High-confidence candidate \"half\" (meaning); uses: 胖.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "叟",
+      "label": "old man",
+      "use": "label",
+      "rationale": "High-confidence candidate \"old man\" (meaning); uses: 瘦.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "委",
+      "label": "appoint",
+      "use": "label",
+      "rationale": "High-confidence candidate \"appoint\" (meaning); uses: 矮.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "㐬",
+      "label": "pennant",
+      "use": "label",
+      "rationale": "High-confidence candidate \"pennant\" (meaning); uses: 流.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "革",
+      "label": "leather",
+      "use": "label",
+      "rationale": "High-confidence candidate \"leather\" (meaning); uses: 鞋.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "蔑",
+      "label": "disdain",
+      "use": "label",
+      "rationale": "High-confidence candidate \"disdain\" (meaning); uses: 襪.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "雔",
+      "label": "companion",
+      "use": "label",
+      "rationale": "High-confidence candidate \"companion\" (meaning); uses: 雙.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "弟",
+      "label": "young brother",
+      "use": "label",
+      "rationale": "High-confidence candidate \"young brother\" (meaning); uses: 梯.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "系",
+      "label": "system",
+      "use": "label",
+      "rationale": "High-confidence candidate \"system\" (meaning); uses: 係.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "攴",
+      "label": "tap",
+      "use": "label",
+      "rationale": "Action of the hand with a stick; rap is stiffer. Same as 攵.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "志",
+      "label": "determination",
+      "use": "label",
+      "rationale": "High-confidence candidate \"determination\" (meaning); uses: 誌.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "雈",
+      "label": "owl",
+      "use": "label",
+      "rationale": "High-confidence candidate \"owl\" (meaning); uses: 舊.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "音",
+      "label": "sound",
+      "use": "label",
+      "rationale": "High-confidence candidate \"sound\" (meaning); uses: 意.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "董",
+      "label": "direct",
+      "use": "label",
+      "rationale": "High-confidence candidate \"direct\" (meaning); uses: 懂.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "孝",
+      "label": "filial piety",
+      "use": "label",
+      "rationale": "High-confidence candidate \"filial piety\" (meaning); uses: 教.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "去",
+      "label": "go away",
+      "use": "label",
+      "rationale": "High-confidence candidate \"go away\" (meaning); uses: 法.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "佰",
+      "label": "hundred",
+      "use": "label",
+      "rationale": "High-confidence candidate \"hundred\" (meaning); uses: 宿.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "丰",
+      "label": "abundant",
+      "use": "label",
+      "rationale": "High-confidence candidate \"abundant\" (meaning); uses: 拜.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "午",
+      "label": "noon",
+      "use": "label",
+      "rationale": "High-confidence candidate \"noon\" (meaning); uses: 許.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "布",
+      "label": "cotton",
+      "use": "label",
+      "rationale": "High-confidence candidate \"cotton\" (meaning); uses: 希.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "奐",
+      "label": "numerous",
+      "use": "label",
+      "rationale": "High-confidence candidate \"numerous\" (meaning); uses: 換.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "台",
+      "label": "platform",
+      "use": "label",
+      "rationale": "High-confidence candidate \"platform\" (meaning); uses: 始.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "舄",
+      "label": "shoe",
+      "use": "label",
+      "rationale": "High-confidence candidate \"shoe\" (meaning); uses: 寫.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "柬",
+      "label": "card",
+      "use": "label",
+      "rationale": "High-confidence candidate \"card\" (meaning); uses: 練.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "賣",
+      "label": "sell",
+      "use": "label",
+      "rationale": "High-confidence candidate \"sell\" (meaning); uses: 讀.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "臤",
+      "label": "stern",
+      "use": "label",
+      "rationale": "High-confidence candidate \"stern\" (meaning); uses: 緊.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "式",
+      "label": "formula",
+      "use": "label",
+      "rationale": "High-confidence candidate \"formula\" (meaning); uses: 試.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "咸",
+      "label": "all",
+      "use": "label",
+      "rationale": "High-confidence candidate \"all\" (meaning); uses: 感.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "叚",
+      "label": "false",
+      "use": "label",
+      "rationale": "High-confidence candidate \"false\" (meaning); uses: 假.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "堯",
+      "label": "yáo",
+      "use": "label",
+      "rationale": "Proper noun (Emperor Yao); 燒 is a phonetic (yáo -> shāo). Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "殹",
+      "label": "an echo",
+      "use": "label",
+      "rationale": "High-confidence candidate \"an echo\" (meaning); uses: 醫.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "異",
+      "label": "different",
+      "use": "label",
+      "rationale": "High-confidence candidate \"different\" (meaning); uses: 戴.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "卓",
+      "label": "profound",
+      "use": "label",
+      "rationale": "High-confidence candidate \"profound\" (meaning); uses: 罩.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "先",
+      "label": "first",
+      "use": "label",
+      "rationale": "High-confidence candidate \"first\" (meaning); uses: 洗.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "旨",
+      "label": "aim",
+      "use": "label",
+      "rationale": "High-confidence candidate \"aim\" (meaning); uses: 指.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "建",
+      "label": "build",
+      "use": "label",
+      "rationale": "High-confidence candidate \"build\" (meaning); uses: 健.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "隶",
+      "label": "subservient",
+      "use": "label",
+      "rationale": "High-confidence candidate \"subservient\" (meaning); uses: 康.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "丙",
+      "label": "third",
+      "use": "label",
+      "rationale": "High-confidence candidate \"third\" (meaning); uses: 病.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "骨",
+      "label": "bone",
+      "use": "label",
+      "rationale": "High-confidence candidate \"bone\" (meaning); uses: 體.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "頻",
+      "label": "frequency",
+      "use": "label",
+      "rationale": "High-confidence candidate \"frequency\" (meaning); uses: 蘋.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "焦",
+      "label": "burned",
+      "use": "label",
+      "rationale": "High-confidence candidate \"burned\" (meaning); uses: 蕉.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "欶",
+      "label": "suck",
+      "use": "label",
+      "rationale": "High-confidence candidate \"suck\" (meaning); uses: 嗽.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "髟",
+      "label": "long hair",
+      "use": "label",
+      "rationale": "High-confidence candidate \"long hair\" (meaning); uses: 髮.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "犮",
+      "label": "pull up",
+      "use": "label",
+      "rationale": "High-confidence candidate \"pull up\" (meaning); uses: 髮.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "畀",
+      "label": "give",
+      "use": "label",
+      "rationale": "Keeps \"self + given breath\" for 鼻; same word class as 付/予.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "觜",
+      "label": "beak",
+      "use": "label",
+      "rationale": "High-confidence candidate \"beak\" (meaning); uses: 嘴.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "而",
+      "label": "beard",
+      "use": "label",
+      "rationale": "Function word \"and\"; the standard visual reading is a beard, and 需 = rain + beard works.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "樂",
+      "label": "cheerful",
+      "use": "label",
+      "rationale": "High-confidence candidate \"cheerful\" (meaning); uses: 藥.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "尤",
+      "label": "yóu",
+      "use": "label",
+      "rationale": "Adverb \"especially\"; 就 is a phonetic. Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "妾",
+      "label": "qiè",
+      "use": "label",
+      "rationale": "Historical term best kept out of hooks; 接 is a phonetic. Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "詹",
+      "label": "talkative",
+      "use": "label",
+      "rationale": "High-confidence candidate \"talkative\" (meaning); uses: 擔.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "斥",
+      "label": "scold",
+      "use": "label",
+      "rationale": "High-confidence candidate \"scold\" (meaning); uses: 訴.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "忍",
+      "label": "endure",
+      "use": "label",
+      "rationale": "High-confidence candidate \"endure\" (meaning); uses: 認.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "戠",
+      "label": "zhí",
+      "use": "label",
+      "rationale": "Mixed junk glosses (\"sword/potter's clay\"); 識 is a phonetic. Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "上",
+      "label": "above",
+      "use": "label",
+      "rationale": "High-confidence candidate \"above\" (meaning); uses: 卡.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "早",
+      "label": "early",
+      "use": "label",
+      "rationale": "High-confidence candidate \"early\" (meaning); uses: 章.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "犬",
+      "label": "dog",
+      "use": "label",
+      "rationale": "High-confidence candidate \"dog\" (meaning); uses: 然.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "卯",
+      "label": "mǎo",
+      "use": "label",
+      "rationale": "Terrestrial-branch gloss is junk; 聊 is a phonetic. Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "圣",
+      "label": "holy",
+      "use": "label",
+      "rationale": "High-confidence candidate \"holy\" (meaning); uses: 怪.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "辛",
+      "label": "bitter",
+      "use": "label",
+      "rationale": "High-confidence candidate \"bitter\" (meaning); uses: 辦.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "采",
+      "label": "collect",
+      "use": "label",
+      "rationale": "High-confidence candidate \"collect\" (meaning); uses: 菜.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "般",
+      "label": "sort",
+      "use": "label",
+      "rationale": "High-confidence candidate \"sort\" (meaning); uses: 盤.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "皿",
+      "label": "dish",
+      "use": "label",
+      "rationale": "High-confidence candidate \"dish\" (meaning); uses: 盤.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "昭",
+      "label": "bright",
+      "use": "label",
+      "rationale": "High-confidence candidate \"bright\" (meaning); uses: 照.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "屮",
+      "label": "sprout",
+      "use": "label",
+      "rationale": "High-confidence candidate \"sprout\" (meaning); uses: 出.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "丄",
+      "label": "above",
+      "use": "label",
+      "rationale": "High-confidence candidate \"above\" (meaning); uses: 工.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "蒦",
+      "label": "measure",
+      "use": "label",
+      "rationale": "High-confidence candidate \"measure\" (meaning); uses: 護.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "品",
+      "label": "article",
+      "use": "label",
+      "rationale": "High-confidence candidate \"article\" (meaning); uses: 闆.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "淮",
+      "label": "huái",
+      "use": "label",
+      "rationale": "River proper noun inside 準; only a reading is honest. Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "責",
+      "label": "duty",
+      "use": "label",
+      "rationale": "One-word simplification; 績 is a phonetic.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "多",
+      "label": "much",
+      "use": "label",
+      "rationale": "High-confidence candidate \"much\" (meaning); uses: 夠.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "犀",
+      "label": "rhinoceros",
+      "use": "label",
+      "rationale": "High-confidence candidate \"rhinoceros\" (meaning); uses: 遲.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "即",
+      "label": "jí",
+      "use": "label",
+      "rationale": "Adverb \"promptly\"; 節 is a phonetic (jí -> jié). Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "炎",
+      "label": "flame",
+      "use": "label",
+      "rationale": "High-confidence candidate \"flame\" (meaning); uses: 談.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "昏",
+      "label": "dusk",
+      "use": "label",
+      "rationale": "High-confidence candidate \"dusk\" (meaning); uses: 婚.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "千",
+      "label": "thousand",
+      "use": "label",
+      "rationale": "High-confidence candidate \"thousand\" (meaning); uses: 重.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "敞",
+      "label": "wide",
+      "use": "label",
+      "rationale": "High-confidence candidate \"wide\" (meaning); uses: 廠.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "畏",
+      "label": "fear",
+      "use": "label",
+      "rationale": "High-confidence candidate \"fear\" (meaning); uses: 喂.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "岡",
+      "label": "ridge",
+      "use": "label",
+      "rationale": "Gloss \"ridge or crest of hill\"; 剛 is a same-reading phonetic.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "尃",
+      "label": "announce",
+      "use": "label",
+      "rationale": "High-confidence candidate \"announce\" (meaning); uses: 博.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "專",
+      "label": "concentrated",
+      "use": "label",
+      "rationale": "High-confidence candidate \"concentrated\" (meaning); uses: 轉.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "㒸",
+      "label": "obey",
+      "use": "label",
+      "rationale": "High-confidence candidate \"obey\" (meaning); uses: 隊.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "示",
+      "label": "altar",
+      "use": "label",
+      "rationale": "High-confidence candidate \"altar\" (meaning); uses: 票.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "殸",
+      "label": "stone chimes",
+      "use": "label",
+      "rationale": "High-confidence candidate \"stone chimes\" (meaning); uses: 聲.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "厤",
+      "label": "calculate",
+      "use": "label",
+      "rationale": "High-confidence candidate \"calculate\" (meaning); uses: 歷.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "褱",
+      "label": "wrap",
+      "use": "label",
+      "rationale": "High-confidence candidate \"wrap\" (meaning); uses: 壞.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "介",
+      "label": "agent",
+      "use": "label",
+      "rationale": "High-confidence candidate \"agent\" (meaning); uses: 界.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "夸",
+      "label": "extravagant",
+      "use": "label",
+      "rationale": "High-confidence candidate \"extravagant\" (meaning); uses: 跨.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "成",
+      "label": "accomplish",
+      "use": "label",
+      "rationale": "High-confidence candidate \"accomplish\" (meaning); uses: 城.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "寅",
+      "label": "respect",
+      "use": "label",
+      "rationale": "High-confidence candidate \"respect\" (meaning); uses: 演.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "鬥",
+      "label": "struggle",
+      "use": "label",
+      "rationale": "High-confidence candidate \"struggle\" (meaning); uses: 鬧.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "市",
+      "label": "city",
+      "use": "label",
+      "rationale": "High-confidence candidate \"city\" (meaning); uses: 鬧.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "卬",
+      "label": "lofty",
+      "use": "label",
+      "rationale": "High-confidence candidate \"lofty\" (meaning); uses: 迎.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "兄",
+      "label": "elder brother",
+      "use": "label",
+      "rationale": "High-confidence candidate \"elder brother\" (meaning); uses: 祝.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "敬",
+      "label": "respect",
+      "use": "label",
+      "rationale": "High-confidence candidate \"respect\" (meaning); uses: 警.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "祭",
+      "label": "sacrifice",
+      "use": "label",
+      "rationale": "One-word simplification of \"sacrifice to\".",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "厂",
+      "label": "cliff",
+      "use": "label",
+      "rationale": "High-confidence candidate \"cliff\" (meaning); uses: 原.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "弋",
+      "label": "catch",
+      "use": "label",
+      "rationale": "High-confidence candidate \"catch\" (meaning); uses: 代.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "蜀",
+      "label": "shǔ",
+      "use": "label",
+      "rationale": "Ancient-state proper noun; 屬 is a phonetic. Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "間",
+      "label": "between",
+      "use": "label",
+      "rationale": "High-confidence candidate \"between\" (meaning); uses: 簡.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "登",
+      "label": "rise",
+      "use": "label",
+      "rationale": "High-confidence candidate \"rise\" (meaning); uses: 燈.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "龍",
+      "label": "dragon",
+      "use": "label",
+      "rationale": "High-confidence candidate \"dragon\" (meaning); uses: 籠.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "冓",
+      "label": "secret",
+      "use": "label",
+      "rationale": "High-confidence candidate \"secret\" (meaning); uses: 講.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "肖",
+      "label": "resemble",
+      "use": "label",
+      "rationale": "High-confidence candidate \"resemble\" (meaning); uses: 宵.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "虍",
+      "label": "tiger",
+      "use": "label",
+      "rationale": "High-confidence candidate \"tiger\" (meaning); uses: 虎.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "氏",
+      "label": "clan",
+      "use": "label",
+      "rationale": "High-confidence candidate \"clan\" (meaning); uses: 紙.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "胡",
+      "label": "hú",
+      "use": "label",
+      "rationale": "Adverb \"recklessly\" is unusable; 湖 is a same-reading phonetic. Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "卂",
+      "label": "fly rapidly",
+      "use": "label",
+      "rationale": "High-confidence candidate \"fly rapidly\" (meaning); uses: 贏.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "俞",
+      "label": "consent",
+      "use": "label",
+      "rationale": "High-confidence candidate \"consent\" (meaning); uses: 輸.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "它",
+      "label": "it",
+      "use": "label",
+      "rationale": "High-confidence candidate \"it\" (meaning); uses: 蛇.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "侯",
+      "label": "marquis",
+      "use": "label",
+      "rationale": "High-confidence candidate \"marquis\" (meaning); uses: 猴.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "奚",
+      "label": "xī",
+      "use": "label",
+      "rationale": "Function word \"where\"; 雞 is a phonetic. Reading label.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "离",
+      "label": "rare beast",
+      "use": "label",
+      "rationale": "High-confidence candidate \"rare beast\" (meaning); uses: 離.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "幸",
+      "label": "favor",
+      "use": "label",
+      "rationale": "High-confidence candidate \"favor\" (meaning); uses: 報.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "分",
+      "label": "divide",
+      "use": "label",
+      "rationale": "High-confidence candidate \"divide\" (meaning); uses: 份.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "魚",
+      "label": "fish",
+      "use": "label",
+      "rationale": "High-confidence candidate \"fish\" (meaning); uses: 魯.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "連",
+      "label": "join",
+      "use": "label",
+      "rationale": "High-confidence candidate \"join\" (meaning); uses: 蓮.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "覃",
+      "label": "reach",
+      "use": "label",
+      "rationale": "High-confidence candidate \"reach\" (meaning); uses: 潭.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "荅",
+      "label": "answer",
+      "use": "label",
+      "rationale": "High-confidence candidate \"answer\" (meaning); uses: 搭.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "則",
+      "label": "rule",
+      "use": "label",
+      "rationale": "High-confidence candidate \"rule\" (meaning); uses: 廁.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "喿",
+      "label": "chirp",
+      "use": "label",
+      "rationale": "Gloss \"sound of birds chirping\"; 澡 scene = water + chirping birds.",
+      "source": "reviewer"
+    },
+    {
+      "glyph": "夭",
+      "label": "young",
+      "use": "label",
+      "rationale": "High-confidence candidate \"young\" (meaning); uses: 笑.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "厷",
+      "label": "forearm",
+      "use": "label",
+      "rationale": "High-confidence candidate \"forearm\" (meaning); uses: 雄.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "坴",
+      "label": "land",
+      "use": "label",
+      "rationale": "High-confidence candidate \"land\" (meaning); uses: 陸.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "何",
+      "label": "what",
+      "use": "label",
+      "rationale": "High-confidence candidate \"what\" (meaning); uses: 荷.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "闌",
+      "label": "screen door",
+      "use": "label",
+      "rationale": "High-confidence candidate \"screen door\" (meaning); uses: 蘭.",
+      "source": "candidate"
+    },
+    {
+      "glyph": "良",
+      "label": "good",
+      "use": "label",
+      "rationale": "High-confidence candidate \"good\" (meaning); uses: 食.",
+      "source": "candidate"
+    }
+  ]
+}

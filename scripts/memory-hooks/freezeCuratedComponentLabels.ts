@@ -72,12 +72,12 @@ interface ReviewedLabelRecord {
   source?: string;
 }
 
-const REVIEWED_LABELS_PATH = resolve(OUTPUT_DIR, 'book-1-reviewed-component-labels-v1.json');
+const REVIEWED_LABELS_PATH = resolve(ROOT, 'scripts/memory-hooks/book-1-reviewed-component-labels-v1.json');
 
 /**
- * The reviewed-label table is the mass-curation artifact for V2 rollout batches.
- * It is applied like `EDIT_MAP` (same mechanical guards), with `EDIT_MAP` winning
- * on any glyph it already defines.
+ * The reviewed-label table is the committed mass-curation artifact for the V2
+ * rollout (366 glyphs from the label round). It is applied like `EDIT_MAP`
+ * (same mechanical guards), with `EDIT_MAP` winning on any glyph it defines.
  */
 function loadReviewedLabels(): Map<string, ReviewedLabelRecord> {
   if (!existsSync(REVIEWED_LABELS_PATH)) return new Map();
