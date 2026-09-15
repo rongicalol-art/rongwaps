@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const ROOT = resolve(import.meta.dirname, '../..');
 const OUTPUT_DIR = resolve(ROOT, 'output/memory-hooks');
@@ -50,7 +51,16 @@ export interface CharacterAudit {
 const CONSONANT_SOUNDS = /^[bcdfghjklmnpqrstvwxyz]/i;
 const VOWEL_SOUNDS = /^[aeiou]/i;
 
-export function auditSingleHook(record: HookRecord): AuditFinding[] {
+/** The prose checks only read these fields; callers may pass any richer record. */
+export interface HookProseInput {
+  character: string;
+  meaning: string | null;
+  hook: string | null;
+  /** Reviewed V2 target token (`字(label)`) — sanctioned, exempt from regex checks. */
+  targetDisplayLabel?: string | null;
+}
+
+export function auditSingleHook(record: HookProseInput): AuditFinding[] {
   const findings: AuditFinding[] = [];
   const hook = record.hook ?? '';
   const meaning = (record.meaning ?? '').trim().toLowerCase();
@@ -61,8 +71,15 @@ export function auditSingleHook(record: HookRecord): AuditFinding[] {
     return findings;
   }
 
+  // V2 hooks land on the reviewed target token `字(label)`. That token is curated
+  // content, so regex checks run against the hook with it removed; self-referential
+  // and jargon rules then police only the surrounding prose. Legacy v3 records
+  // carry no targetDisplayLabel and keep the original behavior.
+  const targetToken = record.targetDisplayLabel ? `${character}(${record.targetDisplayLabel})` : null;
+  const proseHook = targetToken && hook.includes(targetToken) ? hook.split(targetToken).join('') : hook;
+
   // ERR-6: Article mismatches: "An" before consonant, "A" before vowel
-  const articleMatches = [...hook.matchAll(/\b(A|An)\s+[\p{Script=Han}]+\(([^)]+)\)/gu)];
+  const articleMatches = [...proseHook.matchAll(/\b(A|An)\s+[\p{Script=Han}]+\(([^)]+)\)/gu)];
   for (const match of articleMatches) {
     const art = match[1].toLowerCase();
     const label = match[2].trim().toLowerCase();
@@ -76,27 +93,27 @@ export function auditSingleHook(record: HookRecord): AuditFinding[] {
 
   // ERR-4: Leaked dictionary / grammar metalanguage
   const jargonPattern = /\b(sentence-final|particle|measure word|counter for|classifier for|possessive particle|modal particle|pronoun|grammatical)\b/i;
-  const jargonMatch = hook.match(jargonPattern);
+  const jargonMatch = proseHook.match(jargonPattern);
   if (jargonMatch) {
     findings.push({ code: 'ERR-4', category: 'Grammar Jargon', detail: `Contains metalanguage '${jargonMatch[0]}'` });
   }
 
   // ERR-5: Dry / robotic phonetic boilerplate
-  if (/is the sound component\s*\([^)]+\):/i.test(hook)) {
+  if (/is the sound component\s*\([^)]+\):/i.test(proseHook)) {
     findings.push({ code: 'ERR-5', category: 'Robotic Phonetic', detail: 'Uses dry boilerplate "is the sound component (...):"' });
   }
 
   // ERR-3: Tautological lead-in, circular definition, or self-referential token
-  if (new RegExp(`^${character}\\s+means\\s+`, 'i').test(hook) || new RegExp(`^To\\s+${character}\\s+means\\s+`, 'i').test(hook)) {
+  if (new RegExp(`^${character}\\s+means\\s+`, 'i').test(proseHook) || new RegExp(`^To\\s+${character}\\s+means\\s+`, 'i').test(proseHook)) {
     findings.push({ code: 'ERR-3', category: 'Tautological', detail: `Starts with circular '${character} means'` });
   }
-  if (hook.includes(character + '(')) {
+  if (proseHook.includes(character + '(')) {
     findings.push({ code: 'ERR-3', category: 'Self-Referential', detail: `Uses character ${character} as a parenthetical component token of itself` });
   }
-  if (character !== '知' && /[:—–-]\s*[\p{Script=Han}]?\s*means\s+/iu.test(hook)) {
+  if (character !== '知' && /[:—–-]\s*[\p{Script=Han}]?\s*means\s+/iu.test(proseHook)) {
     findings.push({ code: 'ERR-3', category: 'Formulaic Suffix', detail: `Ends with formulaic ': <char> means' or '— <char> means'` });
   }
-  if (/[—–-]\s*that['’]?s\s+(a|an)\s+/i.test(hook) || /\bthat is a\b/i.test(hook)) {
+  if (/[—–-]\s*that['’]?s\s+(a|an)\s+/i.test(proseHook) || /\bthat is a\b/i.test(proseHook)) {
     findings.push({ code: 'ERR-3', category: 'Cop-Out Ending', detail: `Ends with lazy 'that's a...' or 'that is a...'` });
   }
 
@@ -106,17 +123,17 @@ export function auditSingleHook(record: HookRecord): AuditFinding[] {
   }
 
   // ERR-5: Unapproved sound component usage
-  if (hook.includes('sound component') && !['媽', '爸', '請', '客', '喝', '城', '湖', '花', '問'].includes(character)) {
+  if (proseHook.includes('sound component') && !['媽', '爸', '請', '客', '喝', '城', '湖', '花', '問'].includes(character)) {
     findings.push({ code: 'ERR-5', category: 'Unapproved Phonetic', detail: `Uses 'sound component' outside approved curriculum phonetics` });
   }
 
   // ERR-1: Meaning distortion / shoehorning
-  if (hook.includes('see red') || (meaning !== 'birth' && hook.includes('give birth to'))) {
+  if (proseHook.includes('see red') || (meaning !== 'birth' && proseHook.includes('give birth to'))) {
     findings.push({ code: 'ERR-1', category: 'Meaning Distortion', detail: 'Shoehorned idiom without connection' });
   }
 
   // Formulaic ends with "means <char>(<meaning>)" where the story has no connection
-  if (new RegExp(`means\\s+${character}\\(`, 'i').test(hook)) {
+  if (new RegExp(`means\\s+${character}\\(`, 'i').test(proseHook)) {
     findings.push({ code: 'ERR-3', category: 'Tautological Ending', detail: `Formulaic '... means ${character}(...)' ending` });
   }
 
@@ -159,4 +176,6 @@ function main(): void {
   console.log('Violations breakdown:', findingsByCode);
 }
 
-main();
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main();
+}

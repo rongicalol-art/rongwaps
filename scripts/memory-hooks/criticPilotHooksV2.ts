@@ -141,9 +141,11 @@ function buildPrompt(plan: CharacterHookPlanV2, candidate: MemoryHookCandidateV2
       targetToken: `${plan.character}(${plan.targetDisplayLabel})`,
       frameKind: plan.frame.kind,
       components: plan.frame.components.map((component) => ({
-        token: `${component.glyph}(${component.displayLabel})`,
+        token: component.glyph ? `${component.glyph}(${component.displayLabel})` : null,
+        occurrenceIds: component.occurrenceIds,
         role: component.role,
         labelBasis: component.labelBasis,
+        ...(component.glyph ? {} : { described: 'no encoded glyph; the hook must describe the visible shape in plain English' }),
       })),
       sceneGuidance: plan.frame.kind === 'scene' ? plan.frame.sceneGuidance : null,
       requiredMnemonicProps: plan.frame.kind === 'scene' ? plan.frame.requiredMnemonicProps ?? [] : [],

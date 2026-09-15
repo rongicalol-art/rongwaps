@@ -174,12 +174,14 @@ export interface ComponentLabelCandidate {
 }
 
 export interface PlannedComponentUse {
-  /** Exact source occurrences represented by this one learner-facing token. */
+  /** Exact source occurrences represented by this one learner-facing element. */
   occurrenceIds: string[];
-  profileKey: `g:${string}`;
-  glyph: string;
+  profileKey: string;
+  /** Encoded glyph for token parts; null when the part must be described instead. */
+  glyph: string | null;
   treePaths: string[];
-  displayLabel: string;
+  /** Token label for encoded glyphs; null for described parts. */
+  displayLabel: string | null;
   labelBasis: DisplayLabelBasis;
   role: RelationshipRole;
   evidenceRefs: string[];
@@ -287,12 +289,20 @@ export interface CharacterHookPlanV2 {
   reviewReasons: string[];
 }
 
+export interface DescribedPartUse {
+  occurrenceIds: string[];
+  /** Short plain-English visible-shape phrase the hook is expected to contain. */
+  description: string;
+}
+
 export interface MemoryHookCandidateV2 {
   character: string;
   frameKind: Exclude<HookFrame['kind'], 'none'>;
   canonicalMeaning: string;
   hook: string;
   componentOccurrenceRefs: string[];
+  /** Candidate-declared shape phrases for planned parts that have no encoded glyph. */
+  describedParts?: DescribedPartUse[];
   mnemonicProps: string[];
   ahaConnection: string;
   evidenceRefs: string[];

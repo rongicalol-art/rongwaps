@@ -212,6 +212,47 @@ function expectedEvidence(frame: Exclude<HookFrame, { kind: 'none' }>): string[]
 const HISTORICAL_LANGUAGE = /\b(ancient|historically|history|originally|origin|evolved|pictograph|oracle bone|bronze script|was created|was formed|comes from|symbolized|represented)\b/i;
 const FILLER_LANGUAGE = /\b(recall|helps? you remember|suggests?|together forms?|in (?:a|this) scene)\b/i;
 const COMPONENT_LIST_ONLY = /\b(and|plus)\b.*\b(make|makes|form|forms|forming|combine|combines|mean|means|recall|suggest|suggests)\b/i;
+const DESCRIBED_PART_STOPWORDS = new Set([
+  'the', 'a', 'an', 'and', 'or', 'of', 'in', 'on', 'to', 'with', 'for', 'from', 'into',
+  'over', 'under', 'as', 'is', 'it', 'its', 'at', 'by', 'two', 'three', 'four', 'five',
+  'six', 'seven', 'eight', 'nine', 'ten',
+]);
+
+function describedPartWords(description: string): string[] {
+  return [...new Set(description
+    .toLowerCase()
+    .split(/[^a-z]+/)
+    .filter((word) => word.length >= 3 && !DESCRIBED_PART_STOPWORDS.has(word)))];
+}
+
+function validateDescribedPart(
+  component: PlannedComponentUse,
+  candidate: MemoryHookCandidateV2,
+  add: (code: string, severity: 'error' | 'flag', message: string) => void,
+): void {
+  const entry = (candidate.describedParts ?? []).find((described) => (
+    sameStrings(described.occurrenceIds, component.occurrenceIds)
+  ));
+  if (!entry || !entry.description.trim()) {
+    add(
+      'missing-described-part',
+      'error',
+      `Hook must declare a describedParts entry for the glyph-less part ${component.occurrenceIds.join(', ')}.`,
+    );
+    return;
+  }
+  const hook = candidate.hook.toLowerCase();
+  const missing = describedPartWords(entry.description).filter((word) => (
+    !new RegExp(`(^|[^a-z])${word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`).test(hook)
+  ));
+  if (missing.length > 0) {
+    add(
+      'described-part-absent',
+      'error',
+      `The description "${entry.description}" is not fully reflected in the hook (missing: ${missing.join(', ')}).`,
+    );
+  }
+}
 
 export function validateHookQualityDeterministically(
   plan: CharacterHookPlanV2,
@@ -234,9 +275,19 @@ export function validateHookQualityDeterministically(
   }
 
   for (const component of frameComponents(plan.frame)) {
+    if (!component.glyph) {
+      validateDescribedPart(component, candidate, add);
+      continue;
+    }
     const token = `${component.glyph}(${component.displayLabel})`;
     if (countOccurrences(candidate.hook, token) !== 1) {
       add('component-token-count', 'error', `Hook must contain ${token} exactly once.`);
+    }
+  }
+  const plannedDescribed = frameComponents(plan.frame).filter((component) => !component.glyph);
+  for (const described of candidate.describedParts ?? []) {
+    if (!plannedDescribed.some((component) => sameStrings(component.occurrenceIds, described.occurrenceIds))) {
+      add('unplanned-described-part', 'error', `describedParts references unplanned occurrences: ${described.occurrenceIds.join(', ')}.`);
     }
   }
   const targetLabel = plan.targetDisplayLabel;
@@ -259,7 +310,7 @@ export function validateHookQualityDeterministically(
 
   const allowedHan = new Set([
     plan.character,
-    ...frameComponents(plan.frame).flatMap((component) => Array.from(component.glyph)),
+    ...frameComponents(plan.frame).flatMap((component) => component.glyph ? Array.from(component.glyph) : []),
   ]);
   const unexpectedHan = [...new Set(Array.from(candidate.hook).filter((glyph) => (
     /\p{Script=Han}/u.test(glyph) && !allowedHan.has(glyph)

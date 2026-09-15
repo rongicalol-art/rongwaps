@@ -27,6 +27,7 @@ export interface CuratedOverride {
   hook: string;
   meaning?: string;
   reason?: string;
+  componentsUsed?: ComponentUsed[];
 }
 
 export const REWRITES: Record<string, CuratedOverride> = {
@@ -40,8 +41,8 @@ export const REWRITES: Record<string, CuratedOverride> = {
     reason: 'Eliminates tautology, connects mound and circuit to leading/teaching.'
   },
   '學': {
-    hook: 'Under the protective sheltering 冖(cover), an eager young 子(child) opens up scrolls to study and learn.',
-    reason: 'Connects sheltering cover and child to learning.'
+    hook: 'Under the 冖(cover) of a little schoolhouse where two hands stack crossed sticks, an eager 子(child) opens up scrolls and learns.',
+    reason: 'Restores the schoolhouse top (hands and crossed sticks) instead of dropping it.'
   },
   '你': {
     hook: 'One friendly 亻(person) points warmly toward 尔(you), greeting you face to face.',
@@ -205,8 +206,13 @@ export const REWRITES: Record<string, CuratedOverride> = {
     reason: 'Self-pointing gesture.'
   },
   '幾': {
-    hook: 'A vigilant 人(person) armed with a 戈(dagger-axe) inspects the frontier to see how many defenders remain.',
-    reason: 'Counting defenders.'
+    hook: 'Two tiny 幺(small) threads drift above a 人(person) armed with a 戈(dagger-axe) — so few that he asks 幾: how many?',
+    reason: 'Surfaces the double-tiny top through its inner 幺 and keeps the how-many question.',
+    componentsUsed: [
+      { glyph: '人', label: 'person' },
+      { glyph: '戈', label: 'dagger-axe' },
+      { glyph: '幺', label: 'small' }
+    ]
   },
   '鐘': {
     hook: 'A great 金(metal) bell rings out to call every playful 童(child) back inside as the clock strikes the hour.',
@@ -401,8 +407,8 @@ export const REWRITES: Record<string, CuratedOverride> = {
     reason: 'Fastening garment toggle.'
   },
   '服': {
-    hook: 'Under the gentle light of the 月(moon), wearing well-tailored clothes makes you feel relaxed and comfortable.',
-    reason: 'Comfortable clothing.'
+    hook: 'A hand holding a seal smooths a 月(moon) motif into cloth, making clothes that feel comfortable.',
+    reason: 'Surfaces the hand-holding-seal part instead of dropping it.'
   },
   '件': {
     hook: 'A rancher 亻(person) separates each prize 牛(ox), tallying every individual item and piece.',
@@ -2124,8 +2130,13 @@ export const ADDITIONAL_149_REWRITES: Record<string, CuratedOverride> = {
     reason: 'Wings flapping in bright sky to practice.'
   },
   '舞': {
-    hook: 'Swinging 卌(forty) silk ribbons to 一(one) rhythmic pulse, performers cross 舛(mistaken) steps in a vibrant dance.',
-    reason: 'Forty ribbons and crossing steps in a dance.'
+    hook: 'A tilted person sways with 舛(crossed feet) and waves 卌(forty) ribbons to a 一(one) beat — a joyful dance.',
+    reason: 'Surfaces the tilted-person top and reads 舛 as crossed feet.',
+    componentsUsed: [
+      { glyph: '卌', label: 'forty' },
+      { glyph: '一', label: 'one' },
+      { glyph: '舛', label: 'crossed feet' }
+    ]
   },
   '平': {
     hook: 'A broad 干(dry) field dotted with two small 丷(horns) stretches out level, unadorned, and ordinary.',
@@ -2360,6 +2371,7 @@ function main(): void {
     record.hook = override.hook;
     if (override.meaning) record.meaning = override.meaning;
     if (override.reason) record.reason = override.reason;
+    if (override.componentsUsed) record.componentsUsed = override.componentsUsed;
     record.acceptance = 'clean';
     record.validation = { valid: true, issues: [] };
     updatedCount++;

@@ -4,6 +4,7 @@ import { COMPONENT_LEXICON_BY_KEY } from '../src/data/memoryHooks/componentLexic
 import type {
   BookCharacterInventoryEntry,
   CharacterHookPlanV2,
+  ComponentLexiconEntry,
   GeneratedMemoryHookCandidate,
 } from '../src/features/character-memory-hooks/model';
 import {
@@ -19,6 +20,8 @@ import {
   buildPilotQualityPlan,
   validateHookQualityDeterministically,
 } from '../scripts/memory-hooks/qualityPlanner';
+import { mergeSceneComponents } from '../scripts/memory-hooks/prepareBookOneEvaluationBatch';
+import type { RuntimeDirectComponent } from '../scripts/memory-hooks/runtimeIndex';
 import { evaluateHookStylePreflight } from '../scripts/memory-hooks/stylePreflight';
 import { renderDeterministicCandidate } from '../scripts/memory-hooks/deterministicRenderer';
 
@@ -130,7 +133,7 @@ test('component role hints never become target-character relationship roles', ()
   assert.deepEqual(plan.components.map((component) => component.role), ['unclassified', 'unclassified']);
 });
 
-test('unencoded direct components block automatic generation', () => {
+test('unencoded direct components plan as described parts instead of blocking', () => {
   const inventory: BookCharacterInventoryEntry = {
     character: '不',
     bookId: 1,
@@ -157,8 +160,12 @@ test('unencoded direct components block automatic generation', () => {
     lexicon: COMPONENT_LEXICON_BY_KEY,
   });
 
-  assert.equal(plan.status, 'needs-review');
-  assert.ok(plan.blockers.includes('unresolved-direct-component'));
+  assert.equal(plan.status, 'eligible');
+  assert.ok(!plan.blockers.includes('unresolved-direct-component'));
+  const described = plan.components.find((component) => component.kind === 'unencoded-component');
+  assert.equal(described?.glyph, null);
+  assert.equal(described?.label, null);
+  assert.deepEqual(plan.components.map((component) => component.key), ['g:一', 'u:fixture:three-stroke']);
 });
 
 test('validator rejects historical claims in an unsourced memory aid', () => {
@@ -725,6 +732,131 @@ test('V2 scene validation requires reviewed props and the exact target token', (
 
   assert.ok(result.issues.some((issue) => issue.code === 'target-token-count'));
   assert.ok(result.issues.some((issue) => issue.code === 'missing-mnemonic-prop'));
+});
+
+test('auto scene components merge repeated glyphs and keep described parts separate', () => {
+  const merged = mergeSceneComponents('朋', [
+    { key: 'g:月', kind: 'glyph', glyph: '月', treePath: '0', senseId: '月:core-v1', label: 'moon', role: 'unclassified', roleEvidenceRefs: [] },
+    { key: 'u:fixture:3-stroke', kind: 'unencoded-component', glyph: null, treePath: '1', senseId: null, label: null, role: 'unclassified', roleEvidenceRefs: [] },
+    { key: 'g:月', kind: 'glyph', glyph: '月', treePath: '2', senseId: '月:core-v1', label: 'moon', role: 'unclassified', roleEvidenceRefs: [] },
+  ]);
+  assert.equal(merged?.length, 2);
+  assert.deepEqual(merged?.[0].occurrenceIds, ['朋:0', '朋:2']);
+  assert.deepEqual(merged?.[0].treePaths, ['0', '2']);
+  assert.equal(merged?.[1].glyph, null);
+  assert.deepEqual(merged?.[1].occurrenceIds, ['朋:1']);
+});
+
+test('rare glyph parts expand to labeled common children', () => {
+  const lexicon = new Map<string, ComponentLexiconEntry>([
+    ['g:心', { key: 'g:心', glyph: '心', senses: [{ id: '心:core', label: 'heart', sourceRefs: ['fixture'], safeForMemoryAid: true }] }],
+    ['g:夊', { key: 'g:夊', glyph: '夊', senses: [{ id: '夊:core', label: 'slow step', sourceRefs: ['fixture'], safeForMemoryAid: true }] }],
+  ]);
+  const childComponentsByGlyph = new Map<string, RuntimeDirectComponent[]>([
+    ['𢖻', [
+      { kind: 'glyph', key: 'g:心', glyph: '心' },
+      { kind: 'glyph', key: 'g:夊', glyph: '夊' },
+    ]],
+    ['𦥯', [
+      { kind: 'glyph', key: 'g:𦥑', glyph: '𦥑' },
+      { kind: 'glyph', key: 'g:冖', glyph: '冖' },
+    ]],
+  ]);
+  const glyphComponent = (glyph: string, treePath: string, label: string) => ({
+    key: `g:${glyph}`, kind: 'glyph' as const, glyph, treePath, senseId: null, label, role: 'unclassified' as const, roleEvidenceRefs: [],
+  });
+  const merged = mergeSceneComponents(
+    '慶',
+    [glyphComponent('广', '0.0', 'broad'), glyphComponent('𢖻', '1.1', 'heart')],
+    { lexicon, childComponentsByGlyph },
+  );
+  assert.deepEqual(merged?.map((component) => component.glyph), ['广', '心', '夊']);
+  assert.deepEqual(merged?.[1].occurrenceIds, ['慶:1.1.0']);
+  assert.deepEqual(merged?.[2].occurrenceIds, ['慶:1.1.1']);
+  assert.equal(merged?.[1].displayLabel, 'heart');
+
+  const blocked = mergeSceneComponents(
+    '學',
+    [glyphComponent('𦥯', '0', 'schoolhouse')],
+    { lexicon, childComponentsByGlyph },
+  );
+  assert.equal(blocked?.length, 2);
+  assert.equal(blocked?.[0].glyph, null);
+  assert.deepEqual(blocked?.[0].occurrenceIds, ['學:0.0']);
+  assert.equal(blocked?.[1].glyph, null);
+  assert.deepEqual(blocked?.[1].occurrenceIds, ['學:0.1']);
+});
+
+test('V2 scene validation requires glyph-less parts to be described in plain English', () => {
+  const plan: CharacterHookPlanV2 = {
+    schemaVersion: 2,
+    character: '不',
+    bookId: 1,
+    canonicalMeaning: 'not',
+    targetDisplayLabel: 'not',
+    canonicalPinyin: 'bù',
+    meaningReviewReasons: [],
+    decompositionVersion: 'fixture-v2',
+    decompositionRecordId: 'fixture',
+    distribution: 'development-only-candidate',
+    publishable: false,
+    status: 'candidate',
+    frame: {
+      kind: 'scene',
+      components: [
+        {
+          occurrenceIds: ['不:0'],
+          profileKey: 'g:一',
+          glyph: '一',
+          treePaths: ['0'],
+          displayLabel: 'one',
+          labelBasis: 'meaning',
+          role: 'unclassified',
+          evidenceRefs: [],
+        },
+        {
+          occurrenceIds: ['不:1'],
+          profileKey: 'u:fixture:three-stroke',
+          glyph: null,
+          treePaths: ['1'],
+          displayLabel: null,
+          labelBasis: 'visual',
+          role: 'unclassified',
+          evidenceRefs: [],
+        },
+      ],
+      requiresHumanApproval: true,
+      reviewStatus: 'review-required',
+      sceneGuidance: '',
+      requiredMnemonicProps: [],
+    },
+    reviewReasons: [],
+  };
+  const base = {
+    character: '不',
+    frameKind: 'scene' as const,
+    canonicalMeaning: 'not',
+    hook: 'A tender root sits trapped beneath the 一(one) hard surface — it will 不(not) sprout.',
+    componentOccurrenceRefs: ['不:0', '不:1'],
+    mnemonicProps: [],
+    ahaConnection: 'A root trapped under a hard line refuses to sprout.',
+    evidenceRefs: [],
+  };
+
+  const missingDeclaration = validateHookQualityDeterministically(plan, base);
+  assert.ok(missingDeclaration.issues.some((issue) => issue.code === 'missing-described-part'));
+
+  const weakDescription = validateHookQualityDeterministically(plan, {
+    ...base,
+    describedParts: [{ occurrenceIds: ['不:1'], description: 'a tiny seedling leaf' }],
+  });
+  assert.ok(weakDescription.issues.some((issue) => issue.code === 'described-part-absent'));
+
+  const described = validateHookQualityDeterministically(plan, {
+    ...base,
+    describedParts: [{ occurrenceIds: ['不:1'], description: 'tender root' }],
+  });
+  assert.deepEqual(described.issues.filter((issue) => issue.severity === 'error'), []);
 });
 
 test('V2 formation validation flags literal props for phonetic components', () => {

@@ -23,8 +23,7 @@ function add(result: StylePreflightResult, issue: HookStyleIssue, reason: string
 function targetNearEnd(plan: CharacterHookPlanV2, hook: string): boolean {
   const targetToken = `${plan.character}(${plan.targetDisplayLabel})`;
   const words = hook.trim().split(/\s+/).filter(Boolean);
-  const index = words.findIndex((word) => word.includes(targetToken));
-  return index >= Math.max(0, words.length - 4);
+  return words.slice(Math.max(0, words.length - 4)).join(' ').includes(targetToken);
 }
 
 /**

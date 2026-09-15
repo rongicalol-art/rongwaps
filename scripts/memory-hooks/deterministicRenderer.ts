@@ -13,6 +13,9 @@ export interface DeterministicRenderResult {
 }
 
 function token(component: PlannedComponentUse): string {
+  if (!component.glyph) {
+    throw new Error(`The formation renderer cannot tokenize a glyph-less part: ${component.occurrenceIds.join(', ')}.`);
+  }
   return `${component.glyph}(${component.displayLabel})`;
 }
 

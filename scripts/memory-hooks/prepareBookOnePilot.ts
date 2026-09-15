@@ -1,7 +1,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { COMPONENT_LEXICON_BY_KEY, COMPONENT_LEXICON_VERSION } from '../../src/data/memoryHooks/componentLexicon';
 import { buildComponentProfile } from '../../src/data/memoryHooks/componentProfiles';
+import { loadCuratedSkipGlyphs, loadPlanningLexicon, PLANNING_LEXICON_VERSION } from './planningLexicon';
 import {
   PILOT_FRAME_REVIEWS,
   PILOT_RELATIONSHIP_EVIDENCE_SLOTS,
@@ -128,11 +128,14 @@ function main(): void {
 
   const runtimeRecords = loadRuntimeRecords(manifest);
   const inventory = flagPossibleMetadataCollisions(buildInventory(vocabulary, breakdowns));
+  const planningLexicon = loadPlanningLexicon();
+  const skipGlyphs = loadCuratedSkipGlyphs();
   const plans = inventory.map((entry) => buildCharacterPlan({
     inventory: entry,
     runtimeRecord: runtimeRecords.get(entry.character) ?? null,
     decompositionVersion: manifest.version,
-    lexicon: COMPONENT_LEXICON_BY_KEY,
+    lexicon: planningLexicon,
+    skipGlyphs,
   }));
 
   const inventoryByCharacter = new Map(inventory.map((entry) => [entry.character, entry]));
@@ -169,7 +172,7 @@ function main(): void {
   }, null, 2)}\n`);
   writeFileSync(resolve(OUTPUT_DIR, 'book-1-plans.json'), `${JSON.stringify({
     schemaVersion: 1,
-    componentLexiconVersion: COMPONENT_LEXICON_VERSION,
+    componentLexiconVersion: PLANNING_LEXICON_VERSION,
     decompositionVersion: manifest.version,
     distribution: 'development-only-candidate',
     publishable: false,

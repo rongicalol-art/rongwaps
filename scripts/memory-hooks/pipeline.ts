@@ -12,6 +12,7 @@ import type {
   RelationshipEvidence,
 } from '../../src/features/character-memory-hooks/model';
 import type { RuntimeTreeNode } from '../../src/features/character-decomposition/runtimePack';
+import { STROKE_GLYPHS } from './componentRules';
 
 export interface LegacyCharacterMetadata {
   character: string;
@@ -280,19 +281,27 @@ export function buildCharacterPlan(options: {
   runtimeRecord: RuntimePlanRecord | null;
   decompositionVersion: string;
   lexicon: Map<string, ComponentLexiconEntry>;
+  /** Curated "never a story part" glyphs; excluded alongside pure strokes. */
+  skipGlyphs?: Set<string>;
   relationshipEvidence?: RelationshipEvidence[];
   originEvidence?: CharacterOriginEvidence[];
 }): CharacterMemoryHookPlan {
   const { inventory, runtimeRecord, decompositionVersion, lexicon } = options;
+  const skipGlyphs = options.skipGlyphs ?? new Set<string>();
   const relationshipEvidence = options.relationshipEvidence ?? [];
   const originEvidence = options.originEvidence ?? [];
   const blockers: string[] = [];
-  const direct = runtimeRecord ? getDirectVisibleRuntimeComponents(runtimeRecord.tree) : [];
+  // Pure stroke shapes and curated skip glyphs are never story parts, so they do
+  // not need a sense or a token; every other direct part must tokenize or be described.
+  const direct = (runtimeRecord ? getDirectVisibleRuntimeComponents(runtimeRecord.tree) : [])
+    .filter((component) => !(component.glyph && (STROKE_GLYPHS.has(component.glyph) || skipGlyphs.has(component.glyph))));
 
   if (!runtimeRecord) blockers.push('missing-v3-runtime-record');
   if (!inventory.meaningDecision.selectedMeaning) blockers.push('missing-canonical-meaning');
   if (direct.length > 4) blockers.push('too-many-direct-components');
-  if (direct.some((component) => component.kind !== 'glyph')) blockers.push('unresolved-direct-component');
+  // Unencoded and unknown direct parts are visible shapes: they may be described
+  // instead of tokenized. Source entities have no visible shape and still block.
+  if (direct.some((component) => component.kind === 'source-entity')) blockers.push('unresolved-direct-component');
 
   const components: PlannedHookComponent[] = direct.map((component) => {
     const lexiconEntry = lexicon.get(component.key);

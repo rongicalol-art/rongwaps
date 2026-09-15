@@ -49,6 +49,16 @@ const EDIT_MAP: Record<string, string> = {
   '𦥑': 'hands',
   '刖': 'blade',
   '或': 'guard',
+  '見': 'see',
+  '隹': 'bird',
+  '彳': 'step',
+  '夊': 'slow step',
+  '爻': 'crossed sticks',
+  '肀': 'brush',
+  '囗': 'box',
+  '咼': 'guō',
+  '可': 'kě',
+  '吾': 'me',
 };
 
 /** Parts that must never be used as story parts; they are decomposition scraps. */

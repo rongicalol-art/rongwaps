@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 import dotenv from 'dotenv';
 import type {
   CharacterHookPlanV2,
+  DescribedPartUse,
   DeterministicHookQualityResult,
   HookFrame,
   MemoryHookCandidateV2,
@@ -113,8 +114,14 @@ function buildPrompt(plan: CharacterHookPlanV2, retryIssues: string[] = []): str
     displayLabel: component.displayLabel,
     labelBasis: component.labelBasis,
     role: component.role,
+    ...(component.glyph ? {} : { describe: 'visible shape only, no Han glyph' }),
   }));
-  const requiredComponentTokens = components.map((component) => `${component.glyph}(${component.displayLabel})`);
+  const requiredComponentTokens = components
+    .filter((component) => component.glyph)
+    .map((component) => `${component.glyph}(${component.displayLabel})`);
+  const requiredDescribedParts = components
+    .filter((component) => !component.glyph)
+    .map((component) => ({ occurrenceIds: component.occurrenceIds }));
   const requiredOccurrenceRefs = components.flatMap((component) => component.occurrenceIds);
   const evidenceRefs = expectedEvidence(plan.frame);
   const frameRules = [
@@ -132,15 +139,18 @@ function buildPrompt(plan: CharacterHookPlanV2, retryIssues: string[] = []): str
     frameKind: plan.frame.kind,
     components,
     requiredComponentTokens,
+    requiredDescribedParts,
     requiredOccurrenceRefs,
     requiredEvidenceRefs: evidenceRefs,
     rules: [
-      'Return JSON only with character, frameKind, canonicalMeaning, hook, componentOccurrenceRefs, mnemonicProps, ahaConnection, and evidenceRefs.',
+      'Return JSON only with character, frameKind, canonicalMeaning, hook, componentOccurrenceRefs, describedParts, mnemonicProps, ahaConnection, and evidenceRefs.',
       'Use only the supplied Han characters. Keep all other prose in English.',
       'Include every required component token exactly once, verbatim as glyph(label), with no reversed or nested form.',
       'Include the target token exactly once, verbatim as 字(label).',
       `The hook must contain this exact target token: ${plan.character}(${plan.targetDisplayLabel}).`,
-      'Never write label (字) or describe a component only by its English word; every supplied component must appear in the exact glyph(label) token.',
+      'Every component with a glyph must appear in the exact glyph(label) token; never describe it only by its English word.',
+      'A component with glyph null has no encoded character: never invent or write a Han token for it; describe its visible shape in plain English inside the hook.',
+      'Return describedParts as an array with one entry { occurrenceIds, description } for every glyph-null component; description is a short visible-shape phrase whose words all appear in the hook.',
       'Never attach English plural or verb endings directly to a glyph(label) token, such as 占(occupy)s.',
       'Use one natural sentence of at most 32 space-delimited words.',
       'Make one clear aha connection: a concrete scene or a supported formation relationship. Do not merely say A and B make C.',
@@ -149,7 +159,7 @@ function buildPrompt(plan: CharacterHookPlanV2, retryIssues: string[] = []): str
       'Style references are patterns, not answer strings: a visual scene can briefly contextualize a target-specific label and show one clear spatial action; an invented scene should make one physical action cause the target meaning.',
       'Generate the sentence independently. Do not copy, paraphrase, or aim for any prewritten target hook.',
       'If a scene setup mentions a question, keep it as a natural detail inside one causal action; do not turn the hook into a question-answer logic puzzle.',
-      'Copy componentOccurrenceRefs and evidenceRefs exactly from the supplied arrays.',
+      'Copy componentOccurrenceRefs and evidenceRefs exactly from the supplied arrays; describedParts occurrenceIds must exactly match the supplied glyph-null occurrence ids.',
       ...frameRules,
       'Tone benchmarks: 亻(person) rests against 木(tree)—that scene is 休(rest).; 日(sun) and 月(moon) fill the sky with light: 明(bright).',
       ...(retryIssues.length > 0 ? [`Fix these deterministic validation issues from the previous draft: ${retryIssues.join(' | ')}`] : []),
@@ -165,6 +175,17 @@ function stringArray(value: unknown): string[] {
   return Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string') : [];
 }
 
+function parseDescribedParts(value: unknown): DescribedPartUse[] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((item) => (item ?? {}) as Record<string, unknown>)
+    .map((item) => ({
+      occurrenceIds: stringArray(item.occurrenceIds),
+      description: stringValue(item.description).trim(),
+    }))
+    .filter((entry) => entry.occurrenceIds.length > 0 && entry.description.length > 0);
+}
+
 function parseCandidate(content: string): MemoryHookCandidateV2 {
   const unwrapped = content.trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '');
   const parsed = JSON.parse(unwrapped) as Record<string, unknown>;
@@ -174,6 +195,7 @@ function parseCandidate(content: string): MemoryHookCandidateV2 {
     canonicalMeaning: stringValue(parsed.canonicalMeaning),
     hook: stringValue(parsed.hook),
     componentOccurrenceRefs: stringArray(parsed.componentOccurrenceRefs),
+    describedParts: parseDescribedParts(parsed.describedParts),
     mnemonicProps: stringArray(parsed.mnemonicProps),
     ahaConnection: stringValue(parsed.ahaConnection),
     evidenceRefs: stringArray(parsed.evidenceRefs),
