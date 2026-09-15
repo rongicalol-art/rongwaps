@@ -38,10 +38,8 @@ interface ShippedHookRecord extends HookRecord {
   promptVersion?: string | null;
 }
 
-/** V2 hooks whose scene carries a pinyin sound cue ship with the v3 `sound` strategy. */
-const SOUND_STRATEGY_CHARACTERS = new Set<string>([
-  '得', '們', '該', '課', '渴', '親', '開', '新', '過', '哥', '近',
-]);
+/** Hooks that carry a tone-marked pinyin sound cue ship with the v3 `sound` strategy. */
+const SOUND_CUE = /(^|[^A-Za-z])[A-Za-zü]+[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/u;
 
 function readJson<T>(path: string): T {
   return JSON.parse(readFileSync(path, 'utf8')) as T;
@@ -68,6 +66,20 @@ function main(): void {
 
   if (!existsSync(BACKUP_PATH)) copyFileSync(ARTIFACT_PATH, BACKUP_PATH);
 
+  // The original v3 parts carry sanctioned glyph aliases (e.g. 𠂒 for 儿). Keep
+  // them on the merged records so coverage can resolve aliased runtime parts.
+  const aliasByCharacterGlyph = new Map<string, string[]>();
+  {
+    const backup = readJson<{ records: ShippedHookRecord[] }>(BACKUP_PATH);
+    for (const record of backup.records) {
+      for (const part of record.parts ?? []) {
+        if (part.glyph && part.aliases?.length) {
+          aliasByCharacterGlyph.set(`${record.character}:${part.glyph}`, part.aliases);
+        }
+      }
+    }
+  }
+
   const merged: Array<{ character: string; strategy: string }> = [];
   for (const draft of drafts.drafts) {
     const plan = planByCharacter.get(draft.character);
@@ -81,7 +93,7 @@ function main(): void {
     if (index === undefined) throw new Error(`Shipped artifact has no record for ${draft.character}.`);
     const strategy = plan.frame.components.length === 0
       ? 'shape'
-      : SOUND_STRATEGY_CHARACTERS.has(draft.character) ? 'sound' : 'scene';
+      : SOUND_CUE.test(hook) ? 'sound' : 'scene';
     artifact.records[index] = {
       character: plan.character,
       meaning: plan.canonicalMeaning,
@@ -102,7 +114,7 @@ function main(): void {
               suggestedLabel: component.displayLabel,
               glosses: [],
               readings: [],
-              aliases: [],
+              aliases: aliasByCharacterGlyph.get(`${plan.character}:${component.glyph}`) ?? [],
             }]
           : []
       )),

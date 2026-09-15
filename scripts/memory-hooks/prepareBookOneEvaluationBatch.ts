@@ -128,6 +128,14 @@ const SHAPE_ONLY_CHARACTERS = new Set<string>(['長', '上']);
  */
 const TARGET_DISPLAY_OVERRIDES: Record<string, string> = {
   '們': 'plural marker',
+  '嗎': 'question particle',
+  '台': 'platform',
+  '本': 'book',
+  '麼': 'suffix',
+  '道': 'way',
+  '久': 'long',
+  '妳': 'you',
+  '姓': 'surname',
 };
 
 export interface SceneComponentOptions {

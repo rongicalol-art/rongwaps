@@ -30,10 +30,19 @@ const OVERRIDES: Record<string, string> = {
   '方': 'direction; side',
   '士': 'scholar',
   '淋': 'to pour; drench',
+  '台': 'Taiwan; platform',
+  '嗎': 'sentence-final particle for a "Yes / No" question',
 };
 
 function main(): void {
   const apply = process.argv.includes('--apply');
+  const charactersFlagIndex = process.argv.indexOf('--characters');
+  const charactersFilter = charactersFlagIndex > -1
+    ? new Set(process.argv[charactersFlagIndex + 1]?.split(/[\s,]+/u).filter(Boolean))
+    : null;
+  if (charactersFlagIndex > -1 && (!charactersFilter || charactersFilter.size === 0)) {
+    throw new Error('--characters requires a list of characters.');
+  }
   const audit = JSON.parse(readFileSync(resolve(OUTPUT_DIR, 'book-1-meaning-audit-v1.json'), 'utf8')) as {
     records: AuditRecord[];
   };
@@ -59,6 +68,7 @@ function main(): void {
 
   const decisions: Array<{ character: string; from: string | null; to: string; source: string; note: string }> = [];
   for (const record of audit.records) {
+    if (charactersFilter && !charactersFilter.has(record.character)) continue;
     if (KEEP.has(record.character)) continue;
     const override = OVERRIDES[record.character];
     const proposal = record.verdict === 'change' ? record.suggestedMeaning : null;
