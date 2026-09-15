@@ -155,6 +155,14 @@ const TARGET_DISPLAY_OVERRIDES: Record<string, string> = {
   '元': 'dollar',
   '怎': 'how',
   '做': 'do',
+  '位': 'seat',
+  '杯': 'cup',
+  '瓶': 'bottle',
+  '淇': 'ice cream',
+  '您': 'you',
+  '吧': 'suggestion',
+  '給': 'give',
+  '共': 'common',
 };
 
 export interface SceneComponentOptions {
