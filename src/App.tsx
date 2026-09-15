@@ -1,20 +1,22 @@
-import React, { useState, useEffect, useCallback, lazy, Suspense } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
-import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
+import { AnimatePresence } from 'motion/react';
+import { useNavigate } from 'react-router';
 import { useAppNavigation } from './hooks/useAppNavigation.tsx';
 import { useAudioUnlock } from './hooks/useAudioUnlock';
 import { useAppStore } from './store/useAppStore';
 import { SAMPLE_BOOKS } from './data/books';
 import { AppSettingsDrawer, LayoutShell } from './app/index';
-import { TabScreens, prefetchTabScreen } from './app/components/TabScreens';
+import { AppRoutes } from './app/components/AppRoutes';
+import { DebugToolsOverlay } from './app/components/DebugToolsOverlay';
+import { GrammarWindow } from './app/components/GrammarWindow';
+import { ReaderWindow } from './app/components/ReaderWindow';
 import { useResponsiveNav } from './app/hooks/useResponsiveNav';
 import { useReaderLauncher } from './app/hooks/useReaderLauncher';
 import { useGrammarLauncher } from './app/hooks/useGrammarLauncher';
 import { useOverlayUrlSync } from './app/hooks/useOverlayUrlSync';
+import { useWorkspaceRouting } from './app/hooks/useWorkspaceRouting';
+import { TAB_ROUTES } from './app/routes';
 import { DictionaryDetailOverlay } from './features/dictionary';
-import { GrammarLessonScreen } from './screens/grammar-lesson';
-import { ReaderScreen } from './screens/reader';
-import { AppIcon, IconActionButton, LoadingScreen } from './lib/widgets';
 import { useCloudSync } from './hooks/useCloudSync';
 import { useAuth } from './hooks/useAuth';
 import { useResetProgress } from './hooks/useResetProgress';
@@ -25,27 +27,6 @@ import { SignInWindow } from './screens/auth';
 // activity streams in under its ScreenSkeleton. Grammar + Reader are eager
 // WINDOW SHELLS (their heavy content chunks load inside, under a spinner).
 const ActivityModals = lazy(() => import('./screens/activities/ActivityModals').then((m) => ({ default: m.ActivityModals })));
-// Dev-only debug tools. import.meta.env.DEV is statically false in production
-// builds, so the dynamic import chunk is dropped from the bundle graph.
-const DebugWindow = import.meta.env.DEV
-  ? lazy(() => import('./screens/debug/DebugWindow').then((m) => ({ default: m.DebugWindow })))
-  : null;
-
-// Route is the source of truth for the top-level workspace; the persisted
-// store tab only decides where a bare '/' boots.
-const TAB_ROUTES = {
-  path: '/path',
-  search: '/search',
-  library: '/library',
-  profile: '/profile',
-} as const;
-
-type TabRoute = keyof typeof TAB_ROUTES;
-
-function tabFromPathname(pathname: string): TabRoute | null {
-  const first = pathname.split('/')[1];
-  return first && first in TAB_ROUTES ? (first as TabRoute) : null;
-}
 
 export default function App() {
   useAudioUnlock();
@@ -61,7 +42,7 @@ export default function App() {
   const setIsSettingsOpen = useAppStore((state) => state.setIsSettingsOpen);
   const isLibraryFolderView = useAppStore((state) => state.libraryActiveView === 'folder');
   const { currentUser, isLoading } = useAuth();
-  
+
   const {
     activeTab,
     setActiveTab,
@@ -81,7 +62,6 @@ export default function App() {
     isCollapsed,
     toggleCollapse,
   } = useResponsiveNav();
-  const [showDebugWindow, setShowDebugWindow] = useState(false);
   const [isInitialAuthOpen, setIsInitialAuthOpen] = useState(true);
 
   const { activeGrammarPartId, setActiveGrammarPartId, activeGrammarPageId, setActiveGrammarPageId, activeGrammarPart } = useGrammarLauncher();
@@ -96,18 +76,6 @@ export default function App() {
     onActivityCleared: () => setActiveActivity(null),
     onGrammarCleared: () => setActiveGrammarPartId(null),
   });
-
-  useEffect(() => {
-    if (!import.meta.env.DEV) return;
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (document.activeElement?.tagName === 'INPUT' || document.activeElement?.tagName === 'TEXTAREA') return;
-      if (e.key === '0' && e.ctrlKey && e.shiftKey) {
-        setShowDebugWindow((prev) => !prev);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
 
   useEffect(() => {
     const store = useAppStore.getState();
@@ -137,8 +105,6 @@ export default function App() {
   }, [isOverlayActive]);
 
   const navigate = useNavigate();
-  const location = useLocation();
-  const routeTab = tabFromPathname(location.pathname);
 
   useOverlayUrlSync({
     reader: {
@@ -163,42 +129,17 @@ export default function App() {
     },
   });
 
-  // The route drives the workspace: every location change (sidebar click,
-  // browser back/forward, deep link) runs the same tab-change side effects
-  // the old onTabChange handler owned.
-  useEffect(() => {
-    if (!routeTab || routeTab === activeTab) return;
-    // Sidebar navigation is workspace-level: dismiss every open
-    // full-viewport/column window (Reading Mode, grammar lesson,
-    // dictionary word detail) so the destination tab actually comes
-    // to the front instead of switching behind the still-open window.
-    closeReader();
-    setActiveActivity(null);
-    setActiveGrammarPartId(null);
-    const store = useAppStore.getState();
-    store.setDictionaryWord(null);
-    setActiveTab(routeTab);
-    // Kick off the destination tab's chunk immediately so the switch is
-    // instant when the user actually lands there (the browser dedupes
-    // the import with React.lazy's own fetch).
-    prefetchTabScreen(routeTab);
-    store.setIsReviewMode(false);
-    store.setActiveReviewSessionCards(null);
-    store.setIsSearchOpen(false);
-  }, [routeTab, activeTab, closeReader, setActiveActivity, setActiveGrammarPartId, setActiveTab]);
-
-  const handleTabChange = useCallback((tab: TabRoute) => {
-    navigate(TAB_ROUTES[tab]);
-    if (!isDesktop()) setIsNavOpen(false);
-  }, [navigate, isDesktop, setIsNavOpen]);
-
-  const handleNavToggle = useCallback(() => {
-    if (isDesktopOrTablet) {
-      toggleCollapse();
-    } else {
-      setIsNavOpen((open) => !open);
-    }
-  }, [isDesktopOrTablet, toggleCollapse, setIsNavOpen]);
+  const { handleTabChange, handleNavToggle } = useWorkspaceRouting({
+    activeTab,
+    setActiveTab,
+    setActiveActivity,
+    closeReader,
+    setActiveGrammarPartId,
+    isDesktop,
+    isDesktopOrTablet,
+    toggleCollapse,
+    setIsNavOpen,
+  });
 
   if (isLoading) {
     return (
@@ -248,52 +189,43 @@ export default function App() {
           </Suspense>
         }
       >
-        <Routes>
-          {/* '/' renders the persisted tab — boot restore keeps working; the
-              catch-all sends unknown URLs to the persisted tab. */}
-          <Route index element={<TabScreens activeTab={activeTab} activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} onToggleNav={handleNavToggle} />} />
-          <Route path={TAB_ROUTES.path.slice(1)} element={<TabScreens activeTab="path" activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} onToggleNav={handleNavToggle} />} />
-          <Route path={TAB_ROUTES.search.slice(1)} element={<TabScreens activeTab="search" activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} onToggleNav={handleNavToggle} />} />
-          <Route path={TAB_ROUTES.library.slice(1)} element={<TabScreens activeTab="library" activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} onToggleNav={handleNavToggle} />} />
-          <Route path={TAB_ROUTES.profile.slice(1)} element={<TabScreens activeTab="profile" activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} onToggleNav={handleNavToggle} />} />
-          <Route path="*" element={<Navigate to={`/${activeTab}`} replace />} />
-        </Routes>
+        <AppRoutes
+          activeTab={activeTab}
+          activeBookId={activeBookId}
+          setActiveBookId={setActiveBookId}
+          selectedLessons={selectedLessons}
+          toggleLesson={toggleLesson}
+          startPathPractice={startPathPractice}
+          setActiveTab={handleTabChange}
+          setActiveActivity={setActiveActivity}
+          onToggleNav={handleNavToggle}
+        />
       </LayoutShell>
 
-      <AnimatePresence>
-        {activeGrammarPart && (
-          <GrammarLessonScreen
-            key={activeGrammarPart.id}
-            part={activeGrammarPart}
-            initialPageId={activeGrammarPageId ?? undefined}
-            onClose={() => {
-              setActiveGrammarPartId(null);
-              setActiveGrammarPageId(null);
-            }}
-            onProceedToReading={(targetPart) => {
-              setActiveGrammarPartId(null);
-              setActiveGrammarPageId(null);
-              void openReaderForPart(targetPart.bookId, targetPart.lessonId, targetPart.partId);
-            }}
-          />
-        )}
-      </AnimatePresence>
+      <GrammarWindow
+        part={activeGrammarPart ?? null}
+        initialPageId={activeGrammarPageId ?? undefined}
+        onClose={() => {
+          setActiveGrammarPartId(null);
+          setActiveGrammarPageId(null);
+        }}
+        onProceedToReading={(targetPart) => {
+          setActiveGrammarPartId(null);
+          setActiveGrammarPageId(null);
+          void openReaderForPart(targetPart.bookId, targetPart.lessonId, targetPart.partId);
+        }}
+      />
 
-      <AnimatePresence>
-        {activeReadingIndex !== null && readings[activeReadingIndex] && (
-          <ReaderScreen
-            key="reader-screen"
-            readings={readings}
-            index={activeReadingIndex}
-            onNavigate={navigateReader}
-            onClose={closeReader}
-            onOpenGrammarPart={(partId, pageId) => {
-              setActiveGrammarPageId(pageId ?? null);
-              setActiveGrammarPartId(partId);
-            }}
-          />
-        )}
-      </AnimatePresence>
+      <ReaderWindow
+        readings={readings}
+        index={activeReadingIndex}
+        onNavigate={navigateReader}
+        onClose={closeReader}
+        onOpenGrammarPart={(partId, pageId) => {
+          setActiveGrammarPageId(pageId ?? null);
+          setActiveGrammarPartId(partId);
+        }}
+      />
 
       <DictionaryDetailOverlay />
       <AppSettingsDrawer
@@ -309,31 +241,8 @@ export default function App() {
           <SignInWindow onClose={() => setIsInitialAuthOpen(false)} />
         )}
       </AnimatePresence>
-      
-      <AnimatePresence>
-        {showDebugWindow && DebugWindow && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="workspace-window absolute inset-0 z-[1000] bg-ui-surface flex flex-col overflow-auto overscroll-none"
-          >
-            <div className="sticky top-0 right-0 p-4 shrink-0 flex justify-end bg-ui-surface/90 backdrop-blur-sm shadow-sm z-10">
-              <IconActionButton
-                onClick={() => setShowDebugWindow(false)}
-                label="Close debug tools"
-                icon={<AppIcon name="close" size={24} />}
-                className="h-12 w-12 rounded-full"
-              />
-            </div>
-            <div className="relative isolate flex min-h-0 flex-1">
-              <Suspense fallback={<LoadingScreen message="Loading debug tools..." />}>
-                {DebugWindow && <DebugWindow />}
-              </Suspense>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
+      <DebugToolsOverlay />
     </>
   );
 }
