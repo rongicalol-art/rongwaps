@@ -36,7 +36,7 @@ export function V3CharacterBreakdown({
         : 'flex min-w-0 flex-col gap-6 lg:gap-8'}>
         <div className="flex min-w-0 flex-col gap-6 lg:gap-8">
           <V3RuntimeTree character={activeChar} onGlyphClick={setDictionaryWord} mode="summary" onSeeTree={openTree} />
-          <V3MemoryHook character={activeChar} />
+          <V3MemoryHook character={activeChar} pinyin={charData?.pinyin?.[0] ?? undefined} />
           <V3ExampleSentences character={activeChar} />
         </div>
         {hasSupporting && (

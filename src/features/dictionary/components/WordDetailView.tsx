@@ -299,6 +299,8 @@ export function WordDetailView({
 
                   <MemoryHookBlock
                     cacheKey={`word_${word}`}
+                    word={word}
+                    pinyin={pinyin || undefined}
                     emptyText={<>No memory hook for this word yet.</>}
                   />
 
