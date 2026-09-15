@@ -136,6 +136,11 @@ const TARGET_DISPLAY_OVERRIDES: Record<string, string> = {
   '久': 'long',
   '妳': 'you',
   '姓': 'surname',
+  '呢': 'how-about particle',
+  '請': 'please',
+  '問': 'ask',
+  '期': 'period',
+  '圖': 'map',
 };
 
 export interface SceneComponentOptions {

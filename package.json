@@ -51,6 +51,7 @@
     "memory-hooks:check": "tsx scripts/memory-hooks/checkHookQuality.ts",
     "memory-hooks:apply:batch-drafts": "tsx scripts/memory-hooks/applyBatchDrafts.ts",
     "memory-hooks:apply:pack": "tsx scripts/memory-hooks/applyCuratedDraftsToPack.ts",
+    "memory-hooks:validate:batch-drafts": "tsx scripts/memory-hooks/validateBatchDrafts.ts",
     "memory-hooks:export": "tsx scripts/memory-hooks/exportHookPack.ts",
     "memory-hooks:generate:words": "tsx scripts/memory-hooks/generateWordHooks.ts",
     "memory-hooks:critic:pilot": "tsx scripts/memory-hooks/criticPilotHooksV2.ts",

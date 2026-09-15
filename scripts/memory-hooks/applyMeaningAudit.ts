@@ -32,6 +32,7 @@ const OVERRIDES: Record<string, string> = {
   '淋': 'to pour; drench',
   '台': 'Taiwan; platform',
   '嗎': 'sentence-final particle for a "Yes / No" question',
+  '子': 'child',
 };
 
 function main(): void {
