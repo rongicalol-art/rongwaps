@@ -236,7 +236,7 @@ function normalizeReading(value: string | null): string {
   return (value ?? '')
     .toLowerCase()
     .replace(/\([^)]*\)/gu, '')
-    .replace(/[’'\s\-]/gu, '');
+    .replace(/[’'\s-]/gu, '');
 }
 
 function stripReadingAnnotation(value: string | null): string {
@@ -474,7 +474,6 @@ function md(value: string): string {
 
 function renderMarkdown(artifact: ReviewedArtifact): string {
   const lines: string[] = [];
-  const consistencyRecords = artifact.records.map((record) => record.consistency);
   lines.push('# Book 1 frozen-47 reviewed construction meanings', '');
   lines.push('> Development-only reviewed meaning layer. It freezes construction/core meaning separately from Book 1 lesson senses. It does not modify the frozen planner, generate hooks, call DeepSeek, research external sources, assign roles, or publish.', '');
   lines.push('## Summary', '');

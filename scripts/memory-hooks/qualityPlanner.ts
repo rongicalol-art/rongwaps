@@ -2,7 +2,6 @@ import type {
   BookCharacterInventoryEntry,
   CharacterHookPlanV2,
   DeterministicHookQualityResult,
-  FormationHookFrame,
   HookFrame,
   MemoryHookCandidateV2,
   PlannedComponentUse,

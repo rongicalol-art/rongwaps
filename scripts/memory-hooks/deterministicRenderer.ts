@@ -3,7 +3,6 @@ import type {
   FormationHookFrame,
   HookFrame,
   MemoryHookCandidateV2,
-  OriginHookFrameV2,
   PlannedComponentUse,
 } from '../../src/features/character-memory-hooks/model';
 import { validateTargetSemanticBridge } from './semanticBridge';

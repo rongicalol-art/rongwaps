@@ -14,7 +14,6 @@ const TEMPLATE_LANGUAGE = /\b(?:plus|combine|combines|forming|forms|formed|make|
 const LOGIC_PUZZLE_LANGUAGE = /\basks?\s+what\b|\bwhat\s+you\b/i;
 const SCENE_TEMPLATE_START = /^(?:with|when|in a scene|to)\b/i;
 const SCENE_ACTION = /\b(?:rests?|leans?|calls?|sits?|stands?|opens?|holds?|marks?|takes?|begs?|fills?|touches?|lies?|points?|asks?|drinks?|eats?|puts?|covers?|claims?|becomes?)\b/i;
-const SPATIAL_ACTION = /\b(?:on|under|against|beside|between|inside|through|sits?|standing|rests?|ground|place|spot)\b/i;
 
 function add(result: StylePreflightResult, issue: HookStyleIssue, reason: string): void {
   if (!result.issues.includes(issue)) result.issues.push(issue);

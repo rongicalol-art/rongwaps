@@ -11,12 +11,12 @@ const tables = ['book_vocab', 'vocabulary', 'flashcards', 'cards', 'words', 'les
 
 for (const t of tables) {
   try {
-    const { data, error } = await sb.from(t).select('*').limit(1);
+    const { error } = await sb.from(t).select('*').limit(1);
     if (!error) {
       const { count } = await sb.from(t).select('*', { count: 'exact', head: true });
       console.log(`TABLE: ${t} (${count} rows)`);
     }
-  } catch (e) {
+  } catch {
     // skip
   }
 }

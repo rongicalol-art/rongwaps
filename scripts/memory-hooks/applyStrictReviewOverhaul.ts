@@ -17,10 +17,10 @@ interface HookRecord {
   strategy: string;
   hook: string | null;
   componentsUsed: ComponentUsed[];
-  parts: any[];
+  parts: unknown[];
   reason: string | null;
   acceptance: string;
-  validation: { valid: boolean; issues: any[] };
+  validation: { valid: boolean; issues: unknown[] };
 }
 
 export interface CuratedOverride {

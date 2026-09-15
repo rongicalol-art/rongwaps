@@ -347,7 +347,7 @@ async function main(): Promise<void> {
       }
     }
 
-    let candidate: MemoryHookCandidateV2 | null = null;
+    let candidate: MemoryHookCandidateV2 | null;
     let validation: DeterministicHookQualityResult | null = null;
     let styleIssues: string[] = [];
     let attempts = 0;

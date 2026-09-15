@@ -50,11 +50,6 @@ function isValidPos(pos: string): boolean {
   return pos.split('/').every((atom) => POS_ATOMS.has(atom));
 }
 
-function bookIdOf(id: string): number {
-  const match = id.match(/^B(\d+)/i);
-  return match ? Number(match[1]) : 0;
-}
-
 /** Canonical measure-word pinyin, spaced: `M: 張 zhāng, 個 gè`. */
 const MEASURE_WORD_PINYIN: Record<string, string> = {
   本: 'běn', 朵: 'duǒ', 枝: 'zhī', 件: 'jiàn', 家: 'jiā', 個: 'gè', 間: 'jiān', 棟: 'dòng',

@@ -108,7 +108,7 @@ function resolveProvider(): ProviderConfig {
   throw new Error('No DEEPSEEK_API_KEY or OPENROUTER_API_KEY is configured.');
 }
 
-function parseReview(content: string, plan: CharacterHookPlanV2): HookStyleReview {
+function parseReview(content: string): HookStyleReview {
   const unwrapped = content.trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '');
   const parsed = JSON.parse(unwrapped) as Record<string, unknown>;
   const issues = Array.isArray(parsed.issues)
@@ -191,7 +191,7 @@ async function critique(provider: ProviderConfig, plan: CharacterHookPlanV2, can
   const payload = await response.json() as OpenRouterResponse;
   const content = payload.choices?.[0]?.message?.content;
   if (!content) throw new Error('Style critic returned empty content.');
-  return parseReview(content, plan);
+  return parseReview(content);
 }
 
 async function main(): Promise<void> {

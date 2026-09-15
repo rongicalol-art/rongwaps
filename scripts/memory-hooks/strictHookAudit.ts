@@ -28,7 +28,7 @@ export interface HookRecord {
   parts: Part[];
   reason: string | null;
   acceptance: string;
-  validation: { valid: boolean; issues: any[] };
+  validation: { valid: boolean; issues: unknown[] };
 }
 
 export interface AuditFinding {
@@ -50,7 +50,7 @@ export interface CharacterAudit {
 const CONSONANT_SOUNDS = /^[bcdfghjklmnpqrstvwxyz]/i;
 const VOWEL_SOUNDS = /^[aeiou]/i;
 
-export function auditSingleHook(record: HookRecord, index: number): AuditFinding[] {
+export function auditSingleHook(record: HookRecord): AuditFinding[] {
   const findings: AuditFinding[] = [];
   const hook = record.hook ?? '';
   const meaning = (record.meaning ?? '').trim().toLowerCase();
@@ -139,7 +139,7 @@ function main(): void {
 
   for (let i = 0; i < artifact.records.length; i++) {
     const record = artifact.records[i];
-    const findings = auditSingleHook(record, i);
+    const findings = auditSingleHook(record);
     allAudits.push({
       index: i,
       character: record.character,

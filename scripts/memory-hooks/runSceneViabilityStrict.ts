@@ -204,8 +204,6 @@ const COMPARISON_REPORT_PATH = resolve(OUTPUT_DIR, 'book-1-frozen-47-scene-viabi
 const ALLOWED_DECISIONS: readonly SceneDecision[] = ['scene-viable', 'scene-weak', 'scene-not-useful'];
 const ALLOWED_HARD_ISSUES: readonly string[] = HARD_ISSUE_CODES;
 const FORBIDDEN_INFERENCE = /(?:semantic\s+role|phonetic\s+role|phonetic\s+relationship|sound\s+relationship|pronunciation\s+(?:clue|relationship)|histor(?:y|ical)|etymolog|origin|decomposition|component\s+means|represents|derived\s+from)/iu;
-const TARGET_TOKEN_PATTERN = /[\p{Script=Han}](?:\([^)]*\))?/u;
-
 const STRICT_SYSTEM_PROMPT = [
   'You are a conservative, target-specific Scene-viability evaluator. Return JSON only. Do not write a mnemonic hook.',
   'Judge only whether the supplied component meanings naturally support one memorable physical or spatial action whose consequence makes the target meaning intuitive.',

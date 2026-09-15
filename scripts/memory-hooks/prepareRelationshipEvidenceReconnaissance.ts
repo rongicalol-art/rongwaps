@@ -786,10 +786,6 @@ function mdCell(value: string): string {
   return value.replaceAll('|', '\\|').replaceAll('\n', '<br>');
 }
 
-function list(items: string[]): string {
-  return items.length > 0 ? items.map((item) => `- ${item}`).join('\n') : '- none';
-}
-
 function renderMarkdown(artifact: ReconArtifact): string {
   const lines: string[] = [];
   lines.push('# Book 1 target-specific relationship/evidence reconnaissance', '');
