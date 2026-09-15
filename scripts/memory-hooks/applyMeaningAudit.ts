@@ -33,6 +33,7 @@ const OVERRIDES: Record<string, string> = {
   '台': 'Taiwan; platform',
   '嗎': 'sentence-final particle for a "Yes / No" question',
   '子': 'child',
+  '個': 'individual; unit',
 };
 
 function main(): void {

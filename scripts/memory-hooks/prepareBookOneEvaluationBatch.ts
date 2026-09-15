@@ -141,6 +141,20 @@ const TARGET_DISPLAY_OVERRIDES: Record<string, string> = {
   '問': 'ask',
   '期': 'period',
   '圖': 'map',
+  '要': 'want',
+  '題': 'topic',
+  '見': 'see',
+  '個': 'unit',
+  '朵': 'blossom',
+  '枝': 'branch',
+  '塊': 'lump',
+  '件': 'item',
+  '便': 'convenient',
+  '宜': 'suitable',
+  '文': 'language',
+  '元': 'dollar',
+  '怎': 'how',
+  '做': 'do',
 };
 
 export interface SceneComponentOptions {
