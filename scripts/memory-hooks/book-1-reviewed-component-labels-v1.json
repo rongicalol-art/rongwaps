@@ -700,10 +700,10 @@
     },
     {
       "glyph": "尌",
-      "label": "prop up",
+      "label": "prop",
       "use": "label",
-      "rationale": "High-confidence candidate \"prop up\" (meaning); uses: 廚樹.",
-      "source": "candidate"
+      "rationale": "One-word noun over \"prop up\"; token + post reads cleanly in 廚.",
+      "source": "reviewer"
     },
     {
       "glyph": "囪",
@@ -728,9 +728,9 @@
     },
     {
       "glyph": "監",
-      "label": "supervise",
+      "label": "jiān",
       "use": "label",
-      "rationale": "Concrete verb; 藍/籃 are phonetic.",
+      "rationale": "Reading label; pure phonetic in 藍/籃 (jiān -> lán).",
       "source": "reviewer"
     },
     {
@@ -749,10 +749,10 @@
     },
     {
       "glyph": "斿",
-      "label": "swim",
+      "label": "yóu",
       "use": "label",
-      "rationale": "High-confidence candidate \"swim\" (meaning); uses: 游遊.",
-      "source": "candidate"
+      "rationale": "Reading label; same-reading phonetic in 游 (yóu -> yóu). \"Swim\" duplicates the target.",
+      "source": "reviewer"
     },
     {
       "glyph": "彡",
@@ -1470,10 +1470,10 @@
     },
     {
       "glyph": "咅",
-      "label": "spit out",
+      "label": "pǒu",
       "use": "label",
-      "rationale": "High-confidence candidate \"spit out\" (meaning); uses: 部.",
-      "source": "candidate"
+      "rationale": "Reading label; phonetic series in 部/倍/培 (pǒu -> bù/péi). \"Spit out\" is unusable in scenes.",
+      "source": "reviewer"
     },
     {
       "glyph": "完",

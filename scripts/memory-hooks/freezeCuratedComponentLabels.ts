@@ -31,7 +31,7 @@ const EDIT_MAP: Record<string, string> = {
   '朩': 'split wood',
   '𦘒': 'brush hand',
   '𠀐': 'terraced hill',
-  '臱': 'nose in cave',
+  '臱': 'mián',
   '𭥴': 'sun in box',
   '𠮛': 'lined mouth',
   '𠮠': 'mouth with tongue',

@@ -163,6 +163,15 @@ const TARGET_DISPLAY_OVERRIDES: Record<string, string> = {
   '吧': 'suggestion',
   '給': 'give',
   '共': 'common',
+  '棟': 'pillar',
+  '張': 'stretch',
+  '隻': 'single',
+  '曬': 'sun-dry',
+  '晒': 'sun-dry',
+  '陽': 'sun',
+  '機': 'machine',
+  '發': 'send',
+  '游': 'swim',
 };
 
 export interface SceneComponentOptions {
