@@ -10,6 +10,15 @@ Record choices that should remain stable across tasks. Keep each entry short.
 - Reason:
 - Affects:
 
+### 2026-09-15 — Two-panel layout for word breakdown
+
+- Chosen:
+  - `WordDetailView` adopts the responsive two-panel architecture of `V3CharacterBreakdown`. The header changes from "Dictionary" to "Word breakdown", spanning full-width across both columns with tactile shadow.
+  - On desktop (`lg` and above), content below the header card splits into a primary 64% column (Decomposition strip, Memory hook, In-context examples) and a 36% sticky supporting rail (`WordSupportingInformation`: Characters in word and Related words, styled with clean reference rows). On mobile, it stacks in natural sequential order.
+  - Skeletons and empty states collapse gracefully without layout shift.
+- Reason: Unifies word breakdown with character breakdown so both views share identical visual hierarchy, spatial density, tactile tokens, and mental model.
+- Affects: `WordDetailView.tsx`, `WordSupportingInformation.tsx`, `WordDecompositionStrip.tsx`, `WordExamplesSection.tsx`, `DECISIONS.md`.
+
 ### 2026-08-10 — Simplified linear grammar lesson
 
 - Chosen:
@@ -155,3 +164,86 @@ Record choices that should remain stable across tasks. Keep each entry short.
   - Sign-in is a dedicated full-screen window (`SignInWindow`) that owns its tone, replaces the old `AuthScreen` bottom drawer, and closes automatically when a session appears; guests continue with one quiet action and are never gated.
 - Reason: Review progress must live on the same key as the deck that backs it, or resume/exclusions silently fragment per book. Streaks and XP gamified the wrong loop and duplicated numbers the app no longer shows. A full-screen sign-in makes the account decision legible instead of tucking it into a drawer.
 - Affects: `SHARED_REVIEW_SESSION_KEY` (5 call sites unified), deleted `xpSystem.ts`/`CourseProgressSummary.tsx`/`AuthScreen.tsx`, slimmed `useAppStore`, `reviewProgress`, `cloudSyncQueue`, `progressService` (daily upsert only), `useCloudSync`, `useResetProgress`, `LessonComplete`/`WritingScreen` (no XP), `types/models.ts` (no `SessionProgress.xpEarned`/aggregate stat types), tests (`reviewProgress`, `cloudSyncQueue`, acceptance tiers 1–4) updated to the no-XP shapes; new `SignInWindow` + auth barrel.
+
+### 2026-09-11 — Profile screen remake: elevated identity, review hub, milestone grid, curriculum link & in-place study preferences
+
+- Chosen:
+  - Remade `ProfileScreen` into a modular, motivating learning hub organized into 5 focused subcomponents under `src/screens/profile/components/`: `ProfileHeroCard`, `ReviewHubCard`, `LearningStatsGrid`, `CurrentCourseCard`, and `LearningPreferencesCard`.
+  - Replaced bare floating hero with `ProfileHeroCard`: learner avatar, cloud sync indicator (or guest status), quick settings icon trigger, and sign-in/sign-out actions.
+  - Upgraded `ReviewHubCard`: keeps honest SRS states (due words → review CTA; caught up → celebrate; empty → start first lesson) with a dual-stage retention progress rail (Solid vs In Training) and percentage breakdown.
+  - Introduced `LearningStatsGrid`: responsive 2x2 grid tracking Mastered Words (3+ reviews), In Training, Starred Favorites, and Custom Decks/Cards.
+  - Added `CurrentCourseCard`: active book card with CEFR level badge, Hanzi subtitle, and direct jump to the Course Path.
+  - Added `LearningPreferencesCard`: in-place Chinese character script switcher (Simplified / Traditional) and quick trigger to the practice & audio settings drawer.
+- Reason: Elevated learner motivation, improved hierarchy, and brought essential study controls directly onto the Profile tab while strictly adhering to RongWaps design tokens, tactile standards, and honest metrics.
+- Affects: `src/screens/profile/ProfileScreen.tsx`, new components in `src/screens/profile/components/`, deleted obsolete `ProfileIdentity.tsx` and `ProgressSummary.tsx`.
+
+### 2026-09-11 — In-practice format menu for Quiz and Listening modes
+
+- Chosen:
+  - Added `PracticeFormatMenu` (tactile `BottomDrawer`) anchored directly to the left of the prompt text with the standard three horizontal lines hamburger menu icon (`AppIcon name="menu"`) in Quiz Choices, Quiz Typing, and Listening modes.
+  - Quiz Choices: independent selectors for Question Display (`Character` | `Pinyin` | `Meaning`) and Choice Options (`Meaning` | `Character` | `Pinyin`), with automatic collision prevention (auto-shifting the counterpart if matching).
+  - Quiz Typing: selector for Prompt Display (`Character` | `Meaning`) with quiet tone-rule reminder for answer typing.
+  - Listening Mode: question is fixed to Audio Playback; menu configures Choice Options (`Meaning` | `Character` | `Pinyin`), rendering Chinese glyphs in `font-chinese` when Character is selected.
+  - Dynamic Prompt Titles: prompt titles update in real-time based on the choice target (`Select the meaning`, `Select the character`, `Select the pinyin`, `Type the pinyin`).
+  - Answer evaluation and choice generation use `buildAttributeChoices` and `getCardChoiceTarget` across all modes, cached per card ID and choice type to ensure zero render stutter and correct grading.
+  - Preferences persist across sessions in `usePracticePreferencesStore` and update the active card immediately.
+- Reason: Empowers learners to adapt practice directly to their current learning focus (character recognition, pinyin recall, or comprehension) without leaving their active session or navigating into settings drawers.
+- Affects: `PracticeFormatMenu` in `src/features/practice/components/`, `usePracticePreferencesStore`, `src/utils/meaningChoices.ts` (`buildAttributeChoices`, `getCardChoiceTarget`), `QuizChoices`, `QuizTyping`, `useQuiz`, `ListeningScreen`, `ListeningOptions`, `useListening`.
+
+### 2026-09-11 — Single-line practice header and responsive prompt sizing on mobile
+
+- Chosen:
+  - Unified the practice card counter (`{currentIndex + 1} / {totalCount}`) into `ScreenHeader` inline controls on all viewports, changing from `hidden sm:inline` to responsive `text-xs sm:text-sm font-extrabold`.
+  - Removed the separate `<motion.div className="sm:hidden">` transient count row underneath `ScreenHeader` in `PracticeHeader`, eliminating the awkward 2-line stacked header and blank layout shift on mobile.
+  - Sized quiz and listening prompt headlines (`<h2>`) responsively with `text-xl sm:text-[26px]` to prevent text wrapping on ultra-compact mobile viewports (e.g. 320px screens).
+- Reason: Practice headers should remain a concise, single-line horizontal bar on mobile matching desktop, maximizing vertical real estate for card learning and handwriting surfaces.
+- Affects: `src/lib/widgets/ScreenHeader.tsx`, `src/features/practice/components/PracticeHeader.tsx`, `src/screens/quiz/QuizChoices.tsx`, `src/screens/quiz/QuizTyping.tsx`, `src/screens/listening/ListeningScreen.tsx`.
+
+
+
+### 2026-09-14 — Memory hooks ship as a static pack
+
+- Chosen:
+  - Book 1 character memory hooks (656) are generated, reviewed, and exported to `public/data/memory-hooks/book-1.json` with a versioned manifest; word hooks will extend the same pack later.
+  - `memoryHookPackService` loads the packs through `createPackLoader` (IndexedDB-cached, manifest-version keyed) and exposes `lookupPackMnemonic(cacheKey)`.
+  - `getCachedMnemonic` checks the pack first and falls back to the `mnemonics` table; word keys (`word_{text}`) and character keys (`{char}`) share one lookup path.
+  - Hooks are generated by the dev-only `scripts/memory-hooks/` pipeline (meaning audit, curated component labels, critic-reviewed generation) — no learner-facing generation.
+- Reason: The app reads hooks in flashcards and breakdown panels where a miss shows a placeholder; shipping curated hooks as a pack makes them available offline-first without depending on database seeding, consistent with the pack-first content architecture.
+- Affects: `src/services/memoryHookPackService.ts` (new), `src/services/mnemonicCache.ts`, `public/data/memory-hooks/`, `scripts/memory-hooks/exportHookPack.ts`, `tests/memoryHookPack.test.ts`.
+
+### 2026-09-15 — Word memory hooks surface on flashcards and dictionary word pages
+
+- Chosen:
+  - Multi-character flashcards show a quiet `Hook` chip (sparkles icon) on the card front; hover/tap opens the word-level memory hook. Single-character cards keep only the character hover — their word hook is the same text.
+  - The dictionary word detail view gains the same `Memory hook` card the character breakdown has, reading `word_{word}`; both surfaces reuse one shared `MemoryHookBlock`.
+  - `MemoryHookCharacter`, the chip, and the block share `useMemoryHook` (pack-first lookup) and `MemoryHookPopover` (portal, reserved two-line body, quiet entrance). The chip stays hidden until a hook exists for the key, and never flips or drags the card.
+- Reason: The pack serves `word_{text}` hooks for every Book 1 vocabulary item, but only the practice breakdown panel surfaced them; the card face and dictionary word pages are where learners actually meet words.
+- Affects: `src/features/character-memory-hooks/` (`useMemoryHook`, `MemoryHookPopover`, `MemoryHookBlock`, `wordHook`, `index`), `DraggableFlashcard`, `WordDetailView`, `V3MemoryHook`, `tests/memoryHookSurface.test.ts`.
+
+### 2026-09-15 — Word hook quality pass: every character named, verifiable origins only
+
+- Chosen:
+  - All 489 multi-character word hooks were re-reviewed against the character hooks and the vocabulary pack: 72 rewritten, 22 previously unhookable words added (511 word records; pack now 1442 items, version `9975333c4ffa`).
+  - Rule: a multi-character word hook names every character of the word (glossed, or explicitly flagged as suffix/particle); origins appear only when a real, checkable story exists (東西, 馬上, 世界, 越南, 日本, 荷蘭, transliterations); no puns, no invented history, no bare "X means Y" restatements.
+  - `cleanVocabText` now drops full-width `（）` while keeping the content, because this corpus marks optional syllables (`想（要）` → `想要`); the generator and pack export mirror the same rule. The 21 parenthesized fronts plus `台北101` that could never match a hook key now all resolve.
+  - `applyWordReview` gained `--additions`, `--refresh-meanings`, and per-decision `strategy` so curated additions and meaning fixes land through one review path.
+  - Flashcard hook chip: hover arms only for mouse pointers, and focus reveals the hook only on `:focus-visible` — touch taps used to focus-open the popover and then click-close it.
+- Reason: The first word-hook pass allowed hooks that explained a word without naming its characters, kept unverifiable origin stories, and silently skipped every vocabulary front containing full-width parentheses.
+- Affects: `output/memory-hooks/book-1-word-hooks-v1.json` (`.pre-quality.json` backup, `book-1-word-review-decisions-v2.json`, `book-1-word-hooks-additions-v1.json`), `scripts/memory-hooks/applyWordReview.ts`, `src/utils/vocabCleaner.ts`, `DraggableFlashcard`, `tests/memoryHookWordQuality.test.ts`, `public/data/memory-hooks/`.
+
+### 2026-09-15 — Vocabulary QA sweep: glosses, pinyin, measure words, examples
+
+- Chosen:
+  - All 4,061 `book_vocabulary` rows audited (`scripts/vocab-qa/auditVocabulary.ts`) and proofread with the dev-only model pass; 403 rows updated at the source (Supabase) and packs re-exported: 248 gloss fixes (typos, mistranslations, and the live 綠色 "red" → "green"), 139 `<br>`-joined example blobs converted to JSON arrays, 17 pinyin corrections, 6 POS fills.
+  - Measure words canonicalized to Han + space + pinyin, comma + space between: `M: 張 zhāng, 個 gè` (also fixing 匹 pī → pǐ).
+  - Model suggestions that would have imported mainland readings were rejected and recorded: 垃圾桶 lèsè (not lājī), 主角 zhǔjiǎo, 友誼 yǒuyí, 企業 qìyè, 一方面 yìfāngmiàn, 姑娘 gūniáng, plus neutral-tone-attached pinyin is corpus style. Adjudications live in `output/vocab-qa/vocabulary-qa-decisions-v1.json`; before/after state in `vocabulary-backup-pre-qa.json` + `vocabulary-qa-applied-v1.json`.
+  - Missing audio for 5 rows stays empty (TTS fallback, same as every unhosted Book 2–4 file); duplicate listings 餐 and 滿 are kept as textbook re-listings.
+  - `tests/vocabularyPack.test.ts` guards manifest/hash, id/audio naming, pinyin charset + tone rules, the spaced `M:` shape, gloss punctuation, example shapes, and the POS whitelist.
+- Reason: The vocabulary meanings/pinyin had never been checked as data; the sweep caught a learner-facing wrong gloss and made the three formats canonical so they can be machine-guarded.
+- Affects: `scripts/vocab-qa/` (audit, proofread, decisions, apply), `output/vocab-qa/`, `public/data/vocabulary/`, `tests/vocabularyPack.test.ts`.
+
+### 2026-09-15 — PracticeSettingsScreen restored after an external bad save
+
+- Chosen: `src/features/practice/components/PracticeSettingsScreen.tsx` was found corrupted (a splice of the practice header, settings, and reader-panel fragments from an external edit) and was rebuilt by extracting the last shipped component from `dist/assets/ActivityModals-*.js`.
+- Reason: The corruption broke typecheck and the test suite with no source copy available; the production bundle contained the complete pre-corruption component.
+- Affects: `src/features/practice/components/PracticeSettingsScreen.tsx`.

@@ -1,15 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import type { PracticePreferences } from '../../../store/usePracticePreferencesStore';
 import { cn } from '../../../utils/cn';
-import { ActionButton, AppIcon, IconActionButton, SegmentedControl } from '../../../lib/widgets';
-import { QuizModeSettingsTab } from '../settings/QuizModeSettingsTab';
-import { FlowModeSettingsTab } from '../settings/FlowModeSettingsTab';
-import { GeneralSettingsTab } from '../settings/GeneralSettingsTab';
+import { ScreenHeader, SettingsDropdownPicker } from '../../../lib/widgets';
+import { SettingsToggleRow } from '../settings/PracticeSettingControls';
 import { useModalFocus } from '../../../hooks/useModalFocus';
-
-type SettingsTab = 'general' | 'quiz' | 'flow';
 
 export interface PracticeSettingsScreenProps extends React.HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;
@@ -20,6 +16,99 @@ export interface PracticeSettingsScreenProps extends React.HTMLAttributes<HTMLDi
   onCharacterPreferenceChange: (preference: 'traditional' | 'simplified') => void;
 }
 
+export function normalizePronunciationRate(rate: number): number {
+  if (rate <= 0.85) return 0.75;
+  if (rate >= 1.15) return 1.25;
+  return 1.0;
+}
+
+type BooleanPreferenceKey =
+  | 'showPinyin'
+  | 'showTranslation'
+  | 'autoPlayAudio'
+  | 'speakDefinition'
+  | 'replayAudioAfterAnswer'
+  | 'autoAdvanceCorrect'
+  | 'autoAdvanceWrong';
+
+const SPEED_OPTIONS: Array<{ value: number; label: string }> = [
+  { value: 0.75, label: 'Slow (0.75x)' },
+  { value: 1.0, label: 'Normal (1.0x)' },
+  { value: 1.25, label: 'Fast (1.25x)' },
+];
+
+const FLIP_DELAY_OPTIONS = [
+  { value: '500', label: 'Fast' },
+  { value: '1200', label: 'Normal' },
+  { value: '2000', label: 'Slow' },
+];
+const NEXT_CARD_DELAY_OPTIONS = [
+  { value: '1000', label: 'Fast' },
+  { value: '2000', label: 'Normal' },
+  { value: '3000', label: 'Slow' },
+];
+
+/** Duolingo-style flat section: quiet eyebrow heading + hairline, then bare control rows. */
+function SettingsPageSection({
+  title,
+  children,
+  className,
+}: {
+  title: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <section className={cn('flex flex-col', className)}>
+      <h2 className="text-xs font-black uppercase tracking-widest text-ui-muted-strong">{title}</h2>
+      <div className="mb-1 mt-2 h-0.5 w-full rounded-full bg-ui-divider" />
+      <div className="flex flex-col gap-1 pl-4">{children}</div>
+    </section>
+  );
+}
+
+function ScriptPreviewCard({
+  selected,
+  heading,
+  sample,
+  onClick,
+  label,
+}: {
+  selected: boolean;
+  heading: string;
+  sample: string;
+  onClick: () => void;
+  label: string;
+}) {
+  return (
+    <button
+      type="button"
+      role="radio"
+      aria-checked={selected}
+      aria-label={label}
+      onClick={onClick}
+      className={cn(
+        'flex min-h-[88px] flex-1 flex-col items-center justify-center gap-1 rounded-feature border-2 px-4 py-3 shadow-[0_var(--depth-md)_0_var(--color-ui-border)] outline-none transition-shadow focus-ring',
+        selected
+          ? 'border-brand-primary bg-brand-primary-soft shadow-[0_var(--depth-md)_0_var(--color-brand-primary-edge)]'
+          : 'border-ui-border bg-ui-surface hover:bg-ui-hover',
+      )}
+    >
+      <span className={cn('block text-xs font-extrabold', selected ? 'text-brand-primary-edge' : 'text-ui-muted')}>
+        {heading}
+      </span>
+      <span
+        className={cn(
+          'font-chinese text-2xl font-black leading-none sm:text-[28px]',
+          selected ? 'text-brand-primary-edge' : 'text-ui-ink',
+        )}
+      >
+        {sample}
+      </span>
+    </button>
+  );
+}
+
 export function PracticeSettingsScreen({
   isOpen,
   onClose,
@@ -27,123 +116,167 @@ export function PracticeSettingsScreen({
   onPreferencesChange,
   characterPreference,
   onCharacterPreferenceChange,
-  className,
   ...props
 }: PracticeSettingsScreenProps) {
-  const [activeTab, setActiveTab] = useState<SettingsTab>('general');
   const reduceMotion = useReducedMotion();
-  const dialogRef = useRef<HTMLDivElement>(null);
-  const modalFocusProps = useModalFocus({
-    containerRef: dialogRef,
-    isActive: isOpen,
-    onEscape: onClose,
-  });
+  const panelRef = useRef<HTMLDivElement>(null);
+  const { onKeyDown } = useModalFocus({ containerRef: panelRef, isActive: isOpen, onEscape: onClose });
 
   useEffect(() => {
-    if (!isOpen) return;
-    setActiveTab('general');
+    if (isOpen) panelRef.current?.focus();
   }, [isOpen]);
 
   if (typeof document === 'undefined') return null;
 
-  const tabProps = {
-    preferences,
-    onChange: onPreferencesChange,
-    characterPreference,
-    onCharacterPreferenceChange,
+  const toggle = (key: BooleanPreferenceKey) => () => {
+    const patch: Partial<PracticePreferences> = {};
+    patch[key] = !preferences[key];
+    onPreferencesChange(patch);
   };
 
   return createPortal(
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[700]">
-          {/* Dimmed theme-aware backdrop — covers the full viewport */}
-          <motion.div
-            aria-hidden="true"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: reduceMotion ? 0 : 0.16 }}
-            onClick={onClose}
-            className="absolute inset-0 cursor-default bg-ui-ink-strong/40 backdrop-blur-sm"
-          />
+        <motion.div
+          ref={panelRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Practice settings"
+          tabIndex={-1}
+          onKeyDown={onKeyDown}
+          initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 14 }}
+          transition={reduceMotion ? { duration: 0 } : { duration: 0.2, ease: 'easeOut' }}
+          className="workspace-window pointer-events-auto fixed inset-0 z-[700] flex flex-col bg-ui-practice-canvas outline-none"
+        >
+          {/* Scrollable content column — header is sticky inside so content slides under the gradient */}
+          <main className="relative z-10 min-h-0 flex-1 overflow-y-auto overscroll-contain">
+            <ScreenHeader
+              onClose={onClose}
+              title="Study settings"
+              maxWidth="2xl"
+              className="sticky top-0 z-30 w-full shrink-0 !h-auto !min-h-0 border-0 bg-gradient-to-b from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent px-4 pb-2 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] shadow-none backdrop-blur-[2px] sm:px-6 lg:px-10"
+            />
+            <div className="mx-auto flex w-full max-w-2xl flex-col gap-7 px-5 pb-16 pt-2 sm:px-8" {...props}>
+              <SettingsPageSection title="Card display">
+                <SettingsToggleRow
+                  checked={preferences.showPinyin}
+                  onClick={toggle('showPinyin')}
+                  label="Pinyin"
+                  className="border-b-0"
+                />
+                <SettingsToggleRow
+                  checked={preferences.showTranslation}
+                  onClick={toggle('showTranslation')}
+                  label="English meaning"
+                  className="border-b-0"
+                />
+              </SettingsPageSection>
 
-          {/* Centering wrapper */}
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center p-3 sm:p-6">
-            {/* Centered responsive modal card with consistent fixed height */}
-            <motion.div
-              ref={dialogRef}
-              role="dialog"
-              aria-modal="true"
-              aria-label="Practice settings"
-              tabIndex={-1}
-              onKeyDown={modalFocusProps.onKeyDown}
-              initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 16, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 10, scale: 0.98 }}
-              transition={reduceMotion ? { duration: 0 } : { duration: 0.18, ease: 'easeOut' }}
-              className="pointer-events-auto relative flex h-[520px] max-h-[85vh] w-full max-w-md flex-col overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-canvas shadow-ambient-lg outline-none"
-            >
-              {/* Single Clean Header with General / Quiz / Flow Tabs + Close */}
-              <header className="z-30 flex shrink-0 items-center gap-3 border-b border-ui-divider bg-ui-canvas/95 px-4 py-2.5 backdrop-blur sm:px-5">
-                <div className="min-w-0 flex-1">
-                  <SegmentedControl<SettingsTab>
-                    value={activeTab}
-                    onChange={setActiveTab}
-                    ariaLabel="Practice settings tabs"
-                    options={[
-                      { value: 'general', label: 'General' },
-                      { value: 'quiz', label: 'Quiz' },
-                      { value: 'flow', label: 'Flow' },
-                    ]}
+              <SettingsPageSection title="Audio">
+                <SettingsToggleRow
+                  checked={preferences.autoPlayAudio}
+                  onClick={toggle('autoPlayAudio')}
+                  label="Speak Chinese"
+                  className="border-b-0"
+                />
+                <SettingsToggleRow
+                  checked={preferences.speakDefinition}
+                  onClick={toggle('speakDefinition')}
+                  label="Speak English meaning"
+                  className="border-b-0"
+                />
+                <SettingsToggleRow
+                  checked={preferences.replayAudioAfterAnswer}
+                  onClick={toggle('replayAudioAfterAnswer')}
+                  label="Replay audio after answering"
+                  className="border-b-0"
+                />
+                <div className="pt-2.5">
+                  <SettingsDropdownPicker
+                    label="Speech speed"
+                    ariaLabel="Speech speed"
+                    value={String(normalizePronunciationRate(preferences.pronunciationRate))}
+                    options={SPEED_OPTIONS.map(({ value, label }) => ({ value: String(value), label }))}
+                    onChange={(value) => onPreferencesChange({ pronunciationRate: Number(value) })}
                   />
                 </div>
-                <IconActionButton
-                  onClick={onClose}
-                  label="Close practice settings"
-                  size="md"
-                  icon={<AppIcon name="close" size={20} />}
-                />
-              </header>
+              </SettingsPageSection>
 
-              {/* Scrollable Content */}
-              <main className="relative z-10 min-h-0 flex-1 overflow-y-auto px-4 py-4 sm:px-5">
-                <div className="mx-auto w-full" {...props}>
-                  <AnimatePresence mode="wait" initial={false}>
-                    <motion.div
-                      key={activeTab}
-                      id={`practice-settings-panel-${activeTab}`}
-                      role="tabpanel"
-                      aria-labelledby={`practice-settings-tab-${activeTab}`}
-                      initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 6 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -4 }}
-                      transition={{ duration: reduceMotion ? 0 : 0.14, ease: 'easeOut' }}
-                      className={cn('outline-none', className)}
-                    >
-                      {activeTab === 'general' && <GeneralSettingsTab {...tabProps} />}
-                      {activeTab === 'quiz' && <QuizModeSettingsTab {...tabProps} />}
-                      {activeTab === 'flow' && <FlowModeSettingsTab {...tabProps} />}
-                    </motion.div>
-                  </AnimatePresence>
+              <SettingsPageSection title="Flow pacing">
+                <div className="flex flex-col gap-4">
+                  <SettingsDropdownPicker
+                    label="Flip delay"
+                    ariaLabel="Flip delay"
+                    value={String(preferences.flowFrontDelayMs)}
+                    options={FLIP_DELAY_OPTIONS}
+                    onChange={(value) => onPreferencesChange({ flowFrontDelayMs: Number(value) })}
+                  />
+                  <SettingsDropdownPicker
+                    label="Next card delay"
+                    ariaLabel="Next card delay"
+                    value={String(preferences.flowBackDelayMs)}
+                    options={NEXT_CARD_DELAY_OPTIONS}
+                    onChange={(value) => onPreferencesChange({ flowBackDelayMs: Number(value) })}
+                  />
                 </div>
-              </main>
+              </SettingsPageSection>
 
-              {/* Footer */}
-              <footer className="shrink-0 border-t border-ui-divider bg-ui-canvas px-4 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] pt-3 sm:px-5">
-                <ActionButton
-                  variant="primary"
-                  size="lg"
-                  fullWidth
-                  onClick={onClose}
-                  className="uppercase tracking-widest"
+              <SettingsPageSection title="Quiz">
+                <SettingsToggleRow
+                  checked={preferences.autoAdvanceCorrect}
+                  onClick={toggle('autoAdvanceCorrect')}
+                  label="Auto-advance after correct answers"
+                  className="border-b-0"
+                />
+                <SettingsToggleRow
+                  checked={preferences.autoAdvanceWrong}
+                  onClick={toggle('autoAdvanceWrong')}
+                  label="Auto-advance after wrong answers"
+                  className="border-b-0"
+                />
+              </SettingsPageSection>
+
+              <SettingsPageSection title="Mistake repeats">
+                <SettingsDropdownPicker
+                  label="Mistake repeats"
+                  ariaLabel="Mistake recycling preference"
+                  value={preferences.repeatMistakes}
+                  options={[
+                    { value: 'off', label: 'Off' },
+                    { value: 'soon', label: 'Soon (3 cards)' },
+                    { value: 'end', label: 'At end' },
+                  ]}
+                  onChange={(value) => onPreferencesChange({ repeatMistakes: value as PracticePreferences['repeatMistakes'] })}
+                />
+              </SettingsPageSection>
+
+              <SettingsPageSection title="Character script">
+                <div
+                  role="radiogroup"
+                  aria-label="Character script format"
+                  className="mt-3 flex flex-col gap-3 [--font-chinese:var(--font-chinese-sans)] sm:flex-row"
                 >
-                  Done
-                </ActionButton>
-              </footer>
-            </motion.div>
-          </div>
-        </div>
+                  <ScriptPreviewCard
+                    selected={characterPreference === 'traditional'}
+                    heading="Traditional"
+                    sample="聽說讀寫"
+                    label="Traditional characters"
+                    onClick={() => onCharacterPreferenceChange('traditional')}
+                  />
+                  <ScriptPreviewCard
+                    selected={characterPreference === 'simplified'}
+                    heading="Simplified"
+                    sample="听说读写"
+                    label="Simplified characters"
+                    onClick={() => onCharacterPreferenceChange('simplified')}
+                  />
+                </div>
+              </SettingsPageSection>
+            </div>
+          </main>
+        </motion.div>
       )}
     </AnimatePresence>,
     document.body,

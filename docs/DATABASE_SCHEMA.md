@@ -111,6 +111,7 @@ Cache of AI-generated memory hooks (read-only from the learner app; generation w
 - **Columns**: `id` (text PK, `word_{text}` or `{char}`), `character` (text), `mnemonic` (text), `content_type` (text), `created_at`
 - **Indexes**: `idx_mnemonics_character`, `idx_mnemonics_content_type`
 - **RLS**: public select; insert/update/delete restricted to `service_role`.
+- **Read path**: static pack (`public/data/memory-hooks/`) first via `lookupPackMnemonic`, then direct table queries.
 - **Notes**: `getCachedMnemonic` reads are micro-batched client-side (one `IN` query per burst instead of per-character round trips).
 
 ---
@@ -148,6 +149,7 @@ Client code never talks to the database directly for reference content — it go
    - breakdown "used in" lists → `public/data/breakdowns/used-as.json` (component → characters inverted index)
    - course vocabulary → `public/data/vocabulary/` book packs
    - course examples → `public/data/course-examples/`
+   - memory hooks → `public/data/memory-hooks/` book packs (characters and words)
    - stroke data → `public/hanzi-data/` (CDN fallback)
 2. **Supabase fallback**: direct table queries or RPCs when packs are missing/unavailable.
 3. **In-memory caches** (`src/utils/cache.ts`) dedupe repeated lookups; `requestTiming` instruments data calls.
