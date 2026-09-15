@@ -9,11 +9,13 @@ export async function loadInteractiveGrammarPart(partId: string): Promise<Intera
 export function useGrammarLauncher() {
   // The overlay URL sync in App owns ?grammarPart; local state starts empty.
   const [activeGrammarPartId, setActiveGrammarPartId] = useState<string | null>(null);
+  const [activeGrammarPageId, setActiveGrammarPageId] = useState<string | null>(null);
   const [activeGrammarPart, setActiveGrammarPart] = useState<InteractiveGrammarPart | null>(null);
 
   useEffect(() => {
     if (!activeGrammarPartId) {
       setActiveGrammarPart(null);
+      setActiveGrammarPageId(null);
       return;
     }
     let cancelled = false;
@@ -28,6 +30,8 @@ export function useGrammarLauncher() {
   return {
     activeGrammarPartId,
     setActiveGrammarPartId,
+    activeGrammarPageId,
+    setActiveGrammarPageId,
     activeGrammarPart,
   };
 }

@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from 'react';
 import type { ReadingRecord } from '../../types/models';
 import { useAppStore } from '../../store/useAppStore';
 import { getSelectedLessonIds } from '../../utils/lessonPartSelection';
-import { resolveActiveReadingIndex } from '../../utils/readingContext';
+import { resolveActiveReadingIndex, findReadingIndexForPart } from '../../utils/readingContext';
 
 export async function loadReadings(bookId: number): Promise<ReadingRecord[]> {
   const { getReadingsForBook } = await import('../../data/readings');
@@ -44,6 +44,18 @@ export function useReaderLauncher({
     setActiveReadingIndex(targetIdx);
   }, [selectedLessons]);
 
+  const openReaderForPart = useCallback(async (bookId: number, lessonId: number, partId: number) => {
+    const loaded = await loadReadings(bookId);
+    if (!loaded.length) {
+      setReadings([]);
+      setActiveReadingIndex(null);
+      return;
+    }
+    const targetIdx = findReadingIndexForPart(loaded, bookId, lessonId, partId);
+    setReadings(loaded);
+    setActiveReadingIndex(targetIdx);
+  }, []);
+
   const closeReader = useCallback(() => {
     setActiveReadingIndex(null);
     setReadings([]);
@@ -74,7 +86,9 @@ export function useReaderLauncher({
     readings,
     activeReadingIndex,
     openReader,
+    openReaderForPart,
     closeReader,
     navigateReader,
   };
 }
+

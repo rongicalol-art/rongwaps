@@ -64,12 +64,12 @@ export function WordCharacterChips({
               type="button"
               onClick={() => pushCharacter(char)}
               aria-label={`Open breakdown for ${char}`}
-              className={`flex min-h-[72px] items-center gap-2.5 rounded-compact bg-ui-surface px-3 py-2 shadow-[0_2px_0_var(--color-ui-divider)] outline-none transition-[background-color,transform,box-shadow] hover:bg-ui-surface-hover active:translate-y-px active:shadow-[0_1px_0_var(--color-ui-divider)] focus-visible:ring-4 focus-visible:ring-brand-primary/25 ${hasInfo ? '' : 'justify-center'}`}
+              className={`flex min-h-[72px] items-center gap-2.5 rounded-compact bg-ui-surface px-3 py-2 shadow-[0_2px_0_var(--color-ui-divider)] transition-[background-color,transform,box-shadow] hover:bg-ui-surface-hover active:translate-y-px active:shadow-[0_1px_0_var(--color-ui-divider)] focus-ring ${hasInfo ? '' : 'justify-center'}`}
             >
-              <span className="shrink-0 font-chinese text-[28px] font-bold leading-none text-ui-ink-strong">{char}</span>
+              <span className="shrink-0 font-chinese text-2xl font-bold leading-none text-ui-ink-strong">{char}</span>
               <span className="flex min-w-0 flex-1 flex-col text-left">
-                <span className="truncate text-[11px] font-extrabold leading-tight text-brand-primary">{info?.pinyin || '\u00A0'}</span>
-                <span className="line-clamp-2 text-[11px] font-bold leading-snug text-ui-muted">{info?.meaning || ''}</span>
+                <span className="truncate text-xs font-extrabold leading-tight text-brand-primary">{info?.pinyin || '\u00A0'}</span>
+                <span className="line-clamp-2 text-xs font-bold leading-snug text-ui-muted">{info?.meaning || ''}</span>
               </span>
             </button>
           );

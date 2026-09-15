@@ -7,7 +7,7 @@ import { SAMPLE_BOOKS } from '../../../data/books';
 import { FLASHCARDS_DATA } from '../../../data/flashcards';
 import type { Flashcard } from '../../../data/flashcards';
 import { vocabularyCache } from '../../../utils/cache';
-import { PosBadge, Skeleton } from '../../../lib/widgets';
+import { Skeleton } from '../../../lib/widgets';
 import { DBCharacterBreakdown } from '../../../types/database';
 import { BreakdownComponentCard } from './breakdown/BreakdownComponentCard';
 import { UsedAsCompactItem } from './breakdown/UsedAsCompactItem';
@@ -146,7 +146,7 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
   return (
     <div className="flex h-full w-full flex-col gap-7">
       {/* Top Character Area */}
-      <section className="relative flex flex-col overflow-hidden rounded-[24px] bg-ui-surface shadow-sm sm:rounded-[28px]">
+      <section className="relative flex flex-col overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
 
         <SummaryQuickActions char={activeChar} audioSrc={charData?.audio ?? undefined} />
         <div className="p-6 md:p-8 flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 relative z-10 text-center sm:text-left">
@@ -177,7 +177,7 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
                 if (!charCardsInfo || charCardsInfo.length === 0) return null;
                 
                 return (
-                  <div className="flex w-full flex-col items-start gap-2 border-t-2 border-ui-divider pt-3 text-left">
+                  <div className="flex w-full flex-col items-start gap-2 border-t border-ui-divider/70 pt-3 text-left">
                      <div className="mb-1 text-[11px] font-extrabold uppercase tracking-widest text-ui-muted">
                        In Your Course
                      </div>
@@ -190,7 +190,6 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
                                 <span className="flex items-center gap-1.5 py-0.5">
                                   <span>B{card.bookId} · L{card.lessonId}</span>
                                   <span className={`w-1.5 h-1.5 rounded-full ${cardBook.accentBg} shrink-0`} />
-                                  <PosBadge pos={card.pos} />
                                 </span>
                               </span>
                               <p className="break-words text-left text-[15px] font-bold leading-snug text-ui-ink sm:text-[16px]">
@@ -214,10 +213,10 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
       {components.length > 0 && (
          <div className="flex flex-col gap-3">
            <div className="flex flex-row items-center justify-between ml-2">
-             <h3 className="text-[15px] font-extrabold uppercase tracking-[0.05em] text-ui-muted">
+             <h3 className="text-sm font-extrabold uppercase tracking-wider text-ui-muted">
                Components
              </h3>
-             <button type="button" onClick={openDeepBreakdown} className={`min-h-11 rounded-xl px-2 text-[13px] font-extrabold uppercase tracking-wider transition-colors hover:bg-ui-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25 ${activeBook.accent}`}>
+             <button type="button" onClick={openDeepBreakdown} className={`min-h-11 rounded-compact px-2 text-xs font-extrabold uppercase tracking-wider transition-colors hover:bg-ui-hover focus-ring ${activeBook.accent}`}>
                Show Tree
              </button>
            </div>
@@ -240,11 +239,11 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
       {(isUsedAsLoading || usedAsComponents.length > 0) && (
         <div className="flex flex-col gap-3 pt-2">
            <div className="flex flex-row items-center justify-between ml-2">
-              <h3 className="text-[15px] font-extrabold uppercase tracking-[0.05em] text-ui-muted">
+              <h3 className="text-sm font-extrabold uppercase tracking-wider text-ui-muted">
                 Used As Component
               </h3>
               {!isUsedAsLoading && usedAsComponents.length > 6 && (
-                <button type="button" onClick={openUsedAsBreakdown} className={`min-h-11 rounded-xl px-2 text-[13px] font-extrabold uppercase tracking-wider transition-colors hover:bg-ui-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25 ${activeBook.accent}`}>
+                <button type="button" onClick={openUsedAsBreakdown} className={`min-h-11 rounded-compact px-2 text-xs font-extrabold uppercase tracking-wider transition-colors hover:bg-ui-hover focus-ring ${activeBook.accent}`}>
                   Show All ({usedAsComponents.length})
                 </button>
               )}
@@ -260,16 +259,16 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
                  transition={{ duration: 0.15 }}
                  className="flex flex-col gap-3"
                >
-                 <div className="flex w-full flex-col overflow-hidden rounded-[20px] bg-ui-surface shadow-sm">
+                 <div className="flex w-full flex-col overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
                    {[1, 2, 3].map((i) => (
-                     <div key={i} className="flex w-full flex-row items-center gap-4 border-b-2 border-ui-divider bg-ui-surface px-4 py-[13.5px] last:border-0">
-                       <Skeleton className="w-[32px] h-[32px] rounded-[8px] shrink-0" />
-                       <div className="flex flex-col flex-1 gap-1.5 justify-center min-w-0">
-                         <div className="flex flex-row items-center justify-between gap-2 w-full">
-                           <Skeleton className="w-12 h-3.5 rounded-[4px]" />
-                           <Skeleton className="w-20 h-3 rounded-[3px]" />
-                         </div>
-                         <Skeleton className="w-32 h-3.5 rounded-[4px]" />
+                      <div key={i} className="flex w-full flex-row items-center gap-4 border-b border-ui-divider/70 bg-ui-surface px-4 py-3 last:border-0">
+                        <Skeleton className="w-[32px] h-[32px] rounded-compact shrink-0" />
+                        <div className="flex flex-col flex-1 gap-1.5 justify-center min-w-0">
+                          <div className="flex flex-row items-center justify-between gap-2 w-full">
+                            <Skeleton className="w-12 h-3.5 rounded-compact" />
+                            <Skeleton className="w-20 h-3 rounded-xs" />
+                          </div>
+                          <Skeleton className="w-32 h-3.5 rounded-compact" />
                        </div>
                      </div>
                    ))}
@@ -300,7 +299,7 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
                        {sortedIds.map(bookId => {
                          const items = groups[bookId];
                          return (
-                           <div key={bookId} className="flex w-full flex-col overflow-hidden rounded-[20px] bg-ui-surface shadow-sm">
+                           <div key={bookId} className="flex w-full flex-col overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
                              {items.map((item, idx) => (
                                <UsedAsCompactItem
                                  key={item.char}
@@ -320,7 +319,7 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
 
                  {outOfCourseItems.length > 0 && (
                     <div className="flex flex-col gap-2 mt-2">
-                      <div className="flex w-full flex-col overflow-hidden rounded-[20px] bg-ui-surface shadow-sm">
+                      <div className="flex w-full flex-col overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
                         {outOfCourseItems.slice(0, Math.max(2, 5 - inCourseItems.length)).map((item, idx) => {
                           const limit = Math.max(2, 5 - inCourseItems.length);
                           return (
@@ -347,14 +346,14 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
       {(isRelatedLoading || totalRelatedCount > 0) && (
         <div className="flex flex-col gap-5 pt-2">
           <div className="flex flex-row items-center justify-between ml-2">
-            <h3 className="text-[15px] font-extrabold uppercase tracking-[0.05em] text-ui-muted">
+            <h3 className="text-sm font-extrabold uppercase tracking-wider text-ui-muted">
               Related Words
             </h3>
             {!isRelatedLoading && hasMore && (
               <button
                 type="button"
                 onClick={openRelatedBreakdown}
-                className={`min-h-11 rounded-xl px-2 text-[13px] font-extrabold uppercase tracking-wider transition-colors hover:bg-ui-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25 ${activeBook.accent}`}
+                className={`min-h-11 rounded-compact px-2 text-xs font-extrabold uppercase tracking-wider transition-colors hover:bg-ui-hover focus-ring ${activeBook.accent}`}
               >
                 Show All ({relatedWords.length})
               </button>
@@ -369,17 +368,17 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -6 }}
                 transition={{ duration: 0.2 }}
-                className="flex w-full flex-col overflow-hidden rounded-[20px] bg-ui-surface shadow-sm"
+                className="flex w-full flex-col overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]"
               >
                 {[1, 2].map((i) => (
                   <div key={i} className="flex w-full flex-row items-center gap-4 border-b-2 border-ui-divider bg-ui-surface px-4 py-[13.5px] last:border-0">
-                    <Skeleton className="w-[32px] h-[32px] rounded-[8px] shrink-0" />
+                    <Skeleton className="w-[32px] h-[32px] rounded-compact shrink-0" />
                     <div className="flex flex-col flex-1 gap-1.5 justify-center min-w-0">
                       <div className="flex flex-row items-center justify-between gap-2 w-full">
-                        <Skeleton className="w-24 h-3.5 rounded-[4px]" />
-                        <Skeleton className="w-20 h-3 rounded-[3px]" />
+                        <Skeleton className="w-24 h-3.5 rounded-compact" />
+                        <Skeleton className="w-20 h-3 rounded-xs" />
                       </div>
-                      <Skeleton className="w-40 h-3.5 rounded-[4px]" />
+                      <Skeleton className="w-40 h-3.5 rounded-compact" />
                     </div>
                   </div>
                 ))}
@@ -395,28 +394,28 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
               >
                 {relatedGroups.map(group => {
                   return (
-                    <div key={group.bookId} className="flex w-full flex-col overflow-hidden rounded-[20px] bg-ui-surface shadow-sm">
+                    <div key={group.bookId} className="flex w-full flex-col overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
                       {group.cards.map((card, idx) => {
                         const isLast = idx === group.cards.length - 1;
                         return (
                           <button
                             key={idx}
                             onClick={() => useAppStore.getState().setDictionaryWord(card.front)}
-                            className={`group flex w-full flex-row items-center gap-4 bg-ui-surface px-4 py-3 outline-none transition-colors hover:bg-ui-surface-hover active:bg-ui-hover focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-brand-primary/25 ${!isLast ? 'border-b-2 border-ui-divider' : ''}`}
+                            className={`group flex w-full flex-row items-center gap-4 bg-ui-surface px-4 py-3 transition-colors hover:bg-ui-surface-hover active:bg-ui-hover focus-ring focus-visible:ring-inset ${!isLast ? 'border-b border-ui-divider/70' : ''}`}
                           >
-                            <span className={`text-[28px] sm:text-[32px] leading-none font-chinese pt-1 ${activeBook.accent} transition-all shrink-0`}>
+                            <span className={`text-2xl sm:text-3xl leading-none font-chinese pt-1 ${activeBook.accent} transition-all shrink-0`}>
                               {card.front}
                             </span>
                             <div className="flex flex-col items-start justify-center flex-1 min-w-0 text-left overflow-hidden">
                               <div className="flex flex-row items-center justify-between gap-2 mb-0.5 w-full pr-1">
-                                <span className="h-[20px] flex-1 truncate text-left text-[13px] font-bold tracking-widest text-ui-muted sm:text-[14px]">
+                                <span className="h-5 flex-1 truncate text-left text-xs font-bold tracking-widest text-ui-muted sm:text-sm">
                                   {numberToToneMarks(card.pinyin)}
                                 </span>
                                 {(() => {
                                   const cardBook = SAMPLE_BOOKS.find(b => b.id === card.bookId);
                                   const dotColorClass = cardBook ? cardBook.accentBg : activeBook.accentBg;
                                   return (
-                                    <span className="flex shrink-0 select-none items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-ui-muted opacity-80">
+                                    <span className="flex shrink-0 select-none items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-ui-muted opacity-80">
                                       <span>B{card.bookId} · L{card.lessonId}</span>
                                       <span className={`w-2 h-2 rounded-full ${dotColorClass} shrink-0`} />
                                     </span>

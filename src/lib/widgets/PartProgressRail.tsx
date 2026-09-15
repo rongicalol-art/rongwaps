@@ -74,7 +74,7 @@ function PartButton({
       type="button"
       aria-pressed={selected}
       className={cn(
-        'group relative min-h-[56px] min-w-[84px] flex-1 overflow-hidden rounded-[16px] border-2 px-3 py-2 text-left transition-all duration-150 font-sans',
+        'group relative min-h-[56px] min-w-[84px] flex-1 overflow-hidden rounded-control border-2 px-3 py-2 text-left transition-all duration-150 font-sans focus-ring',
         selected
           ? 'border-brand-primary-edge bg-brand-primary-soft text-ui-ink-strong shadow-[0_4px_14px] shadow-brand-primary/15'
           : 'border-ui-border bg-ui-canvas text-ui-muted hover:bg-ui-surface-hover',
@@ -127,19 +127,19 @@ export function SelectablePartProgressRail({
             aria-label={`Part ${part.id}, ${part.wordCount} words, ${progress} percent through this study session${part.isSelected ? ', active' : ''}`}
           >
             <span className="flex items-center justify-between gap-2 font-sans">
-              <span className="text-[13px] font-black">Part {part.id}</span>
+              <span className="text-xs font-black">Part {part.id}</span>
               <span className={cn(
-                'rounded-full px-2 py-0.5 text-[10px] font-black font-sans',
+                'rounded-full px-2 py-0.5 text-xs font-black font-sans',
                 part.isSelected ? 'bg-brand-primary text-white' : 'bg-ui-surface text-ui-muted-strong',
               )}>
                 {part.isSelected ? 'ON' : 'OFF'}
               </span>
             </span>
             <span className="flex items-end justify-between gap-2 font-sans">
-              <span className="text-[10px] font-black uppercase tracking-[0.06em] text-ui-muted-strong font-sans">
+              <span className="text-xs font-black uppercase tracking-wider text-ui-muted-strong font-sans">
                 {part.wordCount} words
               </span>
-              <span className="text-[15px] font-black tabular-nums text-ui-ink-strong font-sans">{progress}%</span>
+              <span className="text-sm font-black tabular-nums text-ui-ink-strong font-sans">{progress}%</span>
             </span>
           </PartButton>
         );
@@ -237,7 +237,7 @@ function StudyPartButton({
       whileTap={disabled || reduceMotion ? undefined : { y: 0, scale: 0.96 }}
       transition={interactionTransition}
       className={cn(
-        'group relative h-5 w-full min-w-0 cursor-pointer select-none overflow-hidden rounded-full outline-none transition-colors duration-300 focus-visible:ring-4 focus-visible:ring-brand-primary/25 disabled:cursor-not-allowed disabled:opacity-50',
+        'group relative h-5 w-full min-w-0 cursor-pointer select-none overflow-hidden rounded-full transition-colors duration-300 focus-ring disabled:cursor-not-allowed disabled:opacity-50',
         isSelected
           ? 'bg-brand-primary-track'
           : 'bg-brand-primary-track hover:brightness-90',

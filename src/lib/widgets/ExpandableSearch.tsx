@@ -69,7 +69,7 @@ export function ExpandableSearch({
               onChange={(e) => onChange(e.target.value)}
               placeholder={placeholder}
               aria-label={placeholder}
-              className="h-full w-full bg-transparent pb-0.5 pl-[38px] pr-11 text-[16px] font-bold text-ui-ink outline-none placeholder:text-ui-muted md:text-base"
+              className="h-full w-full bg-transparent pb-0.5 pl-[38px] pr-11 text-base font-bold text-ui-ink outline-none placeholder:text-ui-muted"
               onKeyDown={(event) => {
                 if (event.key !== 'Escape') return;
                 event.preventDefault();

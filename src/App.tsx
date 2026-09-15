@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router';
 import { useAppNavigation } from './hooks/useAppNavigation.tsx';
@@ -59,6 +59,7 @@ export default function App() {
   const setCharacterPreference = useAppStore((state) => state.setCharacterPreference);
   const isSettingsOpen = useAppStore((state) => state.isSettingsOpen);
   const setIsSettingsOpen = useAppStore((state) => state.setIsSettingsOpen);
+  const isLibraryFolderView = useAppStore((state) => state.libraryActiveView === 'folder');
   const { currentUser, isLoading } = useAuth();
   
   const {
@@ -71,12 +72,20 @@ export default function App() {
     startPathPractice,
   } = useAppNavigation();
 
-  const { isNavOpen, setIsNavOpen, setResponsiveNavOpen, isDesktop } = useResponsiveNav(activeTab);
+  const {
+    isNavOpen,
+    setIsNavOpen,
+    setResponsiveNavOpen,
+    isDesktop,
+    isDesktopOrTablet,
+    isCollapsed,
+    toggleCollapse,
+  } = useResponsiveNav();
   const [showDebugWindow, setShowDebugWindow] = useState(false);
   const [isInitialAuthOpen, setIsInitialAuthOpen] = useState(true);
 
-  const { activeGrammarPartId, setActiveGrammarPartId, activeGrammarPart } = useGrammarLauncher();
-  const { readings, activeReadingIndex, openReader, closeReader, navigateReader } = useReaderLauncher({
+  const { activeGrammarPartId, setActiveGrammarPartId, activeGrammarPageId, setActiveGrammarPageId, activeGrammarPart } = useGrammarLauncher();
+  const { readings, activeReadingIndex, openReader, openReaderForPart, closeReader, navigateReader } = useReaderLauncher({
     selectedLessons,
     activeBookId,
     activeGrammarPartId,
@@ -119,6 +128,9 @@ export default function App() {
   const dictionaryWord = useAppStore((state) => state.dictionaryWord);
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
   const isOverlayActive = isReaderOpen || isGrammarOpen || Boolean(dictionaryWord);
+  const showSidebarCollapse = Boolean(
+    activeActivity || isReaderOpen || isGrammarOpen || (activeTab === 'library' && isLibraryFolderView)
+  );
 
   useEffect(() => {
     useAppStore.getState().setIsOverlayOpen(isOverlayActive);
@@ -175,10 +187,18 @@ export default function App() {
     store.setIsSearchOpen(false);
   }, [routeTab, activeTab, closeReader, setActiveActivity, setActiveGrammarPartId, setActiveTab]);
 
-  const handleTabChange = (tab: TabRoute) => {
+  const handleTabChange = useCallback((tab: TabRoute) => {
     navigate(TAB_ROUTES[tab]);
     if (!isDesktop()) setIsNavOpen(false);
-  };
+  }, [navigate, isDesktop, setIsNavOpen]);
+
+  const handleNavToggle = useCallback(() => {
+    if (isDesktopOrTablet) {
+      toggleCollapse();
+    } else {
+      setIsNavOpen((open) => !open);
+    }
+  }, [isDesktopOrTablet, toggleCollapse, setIsNavOpen]);
 
   if (isLoading) {
     return (
@@ -196,8 +216,12 @@ export default function App() {
         practiceCanvasOpen={Boolean(dictionaryWord)}
         activeBook={activeBook}
         isNavOpen={isNavOpen}
+        isCollapsed={isCollapsed}
+        isDesktopOrTablet={isDesktopOrTablet}
+        onToggleCollapse={toggleCollapse}
         setIsNavOpen={setResponsiveNavOpen}
         isOverlayActive={isOverlayActive}
+        showSidebarCollapse={showSidebarCollapse}
         onSettingsClick={() => {
           setIsSettingsOpen(true);
           if (!isDesktop()) setIsNavOpen(false);
@@ -215,7 +239,10 @@ export default function App() {
                 navigate(TAB_ROUTES.path);
                 setActiveActivity(null);
               }}
-              onOpenGrammarPart={(partId) => setActiveGrammarPartId(partId)}
+              onOpenGrammarPart={(partId, pageId) => {
+                setActiveGrammarPageId(pageId ?? null);
+                setActiveGrammarPartId(partId);
+              }}
               onOpenReading={() => void openReader(activeBook.id)}
             />
           </Suspense>
@@ -224,11 +251,11 @@ export default function App() {
         <Routes>
           {/* '/' renders the persisted tab — boot restore keeps working; the
               catch-all sends unknown URLs to the persisted tab. */}
-          <Route index element={<TabScreens activeTab={activeTab} activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />} />
-          <Route path={TAB_ROUTES.path.slice(1)} element={<TabScreens activeTab="path" activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />} />
-          <Route path={TAB_ROUTES.search.slice(1)} element={<TabScreens activeTab="search" activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />} />
-          <Route path={TAB_ROUTES.library.slice(1)} element={<TabScreens activeTab="library" activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />} />
-          <Route path={TAB_ROUTES.profile.slice(1)} element={<TabScreens activeTab="profile" activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />} />
+          <Route index element={<TabScreens activeTab={activeTab} activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} onToggleNav={handleNavToggle} />} />
+          <Route path={TAB_ROUTES.path.slice(1)} element={<TabScreens activeTab="path" activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} onToggleNav={handleNavToggle} />} />
+          <Route path={TAB_ROUTES.search.slice(1)} element={<TabScreens activeTab="search" activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} onToggleNav={handleNavToggle} />} />
+          <Route path={TAB_ROUTES.library.slice(1)} element={<TabScreens activeTab="library" activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} onToggleNav={handleNavToggle} />} />
+          <Route path={TAB_ROUTES.profile.slice(1)} element={<TabScreens activeTab="profile" activeBookId={activeBookId} setActiveBookId={setActiveBookId} selectedLessons={selectedLessons} toggleLesson={toggleLesson} startPathPractice={startPathPractice} setActiveTab={handleTabChange} setActiveActivity={setActiveActivity} onToggleNav={handleNavToggle} />} />
           <Route path="*" element={<Navigate to={`/${activeTab}`} replace />} />
         </Routes>
       </LayoutShell>
@@ -238,7 +265,16 @@ export default function App() {
           <GrammarLessonScreen
             key={activeGrammarPart.id}
             part={activeGrammarPart}
-            onClose={() => setActiveGrammarPartId(null)}
+            initialPageId={activeGrammarPageId ?? undefined}
+            onClose={() => {
+              setActiveGrammarPartId(null);
+              setActiveGrammarPageId(null);
+            }}
+            onProceedToReading={(targetPart) => {
+              setActiveGrammarPartId(null);
+              setActiveGrammarPageId(null);
+              void openReaderForPart(targetPart.bookId, targetPart.lessonId, targetPart.partId);
+            }}
           />
         )}
       </AnimatePresence>
@@ -251,6 +287,10 @@ export default function App() {
             index={activeReadingIndex}
             onNavigate={navigateReader}
             onClose={closeReader}
+            onOpenGrammarPart={(partId, pageId) => {
+              setActiveGrammarPageId(pageId ?? null);
+              setActiveGrammarPartId(partId);
+            }}
           />
         )}
       </AnimatePresence>
@@ -276,9 +316,9 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="workspace-window absolute inset-0 z-[1000] bg-white flex flex-col overflow-auto overscroll-none"
+            className="workspace-window absolute inset-0 z-[1000] bg-ui-surface flex flex-col overflow-auto overscroll-none"
           >
-            <div className="sticky top-0 right-0 p-4 shrink-0 flex justify-end bg-white/90 backdrop-blur-sm shadow-sm z-10">
+            <div className="sticky top-0 right-0 p-4 shrink-0 flex justify-end bg-ui-surface/90 backdrop-blur-sm shadow-sm z-10">
               <IconActionButton
                 onClick={() => setShowDebugWindow(false)}
                 label="Close debug tools"

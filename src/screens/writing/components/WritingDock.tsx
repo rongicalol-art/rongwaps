@@ -98,7 +98,7 @@ export function WritingDock({
               <AppIcon
                 name="restart"
                 size={24}
-                className="h-6 w-6 transition-transform group-hover:scale-105 md:h-[24px] md:w-[24px]"
+                className="h-6 w-6 transition-transform group-hover:scale-105"
               />
               <span className="sr-only">Restart character</span>
             </span>
@@ -121,7 +121,7 @@ export function WritingDock({
                 name="play"
                 size={24}
                 className={cn(
-                  'h-6 w-6 transition-transform group-hover:scale-105 md:h-[24px] md:w-[24px]',
+                  'h-6 w-6 transition-transform group-hover:scale-105',
                   isAnimatingStrokes && 'text-brand-primary animate-pulse'
                 )}
               />
@@ -164,7 +164,7 @@ export function WritingDock({
               <AppIcon
                 name="eye"
                 size={24}
-                className="h-6 w-6 transition-transform group-hover:scale-105 md:h-[24px] md:w-[24px]"
+                className="h-6 w-6 transition-transform group-hover:scale-105"
               />
               <span className="sr-only">Toggle outline</span>
             </span>
@@ -182,7 +182,7 @@ export function WritingDock({
               <AppIcon
                 name="close"
                 size={24}
-                className="h-6 w-6 transition-transform group-hover:scale-105 md:h-[24px] md:w-[24px]"
+                className="h-6 w-6 transition-transform group-hover:scale-105"
               />
               <span className="sr-only">Exit writing mode</span>
             </span>

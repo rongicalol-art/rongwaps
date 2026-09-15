@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, memo, useMemo, useCallback } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { ErrorBoundary, LoadingScreen } from '../../lib/widgets';
 import { useAppStore } from '../../store/useAppStore';
@@ -33,11 +33,10 @@ interface TabScreensProps {
   startPathPractice: () => void;
   setActiveTab: (tab: string) => void;
   setActiveActivity: (activity: ActivityType) => void;
-  isNavOpen: boolean;
-  setIsNavOpen: (open: boolean) => void;
+  onToggleNav: () => void;
 }
 
-export const TabScreens: React.FC<TabScreensProps> = ({
+export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
   activeTab,
   activeBookId,
   setActiveBookId,
@@ -46,9 +45,36 @@ export const TabScreens: React.FC<TabScreensProps> = ({
   startPathPractice,
   setActiveTab,
   setActiveActivity,
-  isNavOpen,
-  setIsNavOpen,
-}) => {
+  onToggleNav,
+}) {
+  const menuToggle = useMemo(
+    () => ({ onClick: onToggleNav, label: 'Menu' }),
+    [onToggleNav],
+  );
+
+  const handleStartReview = useCallback(() => {
+    const store = useAppStore.getState();
+    store.setIsReviewMode(true);
+    store.setActiveReviewSessionCards(null);
+    setActiveActivity('flashcards-review');
+  }, [setActiveActivity]);
+
+  const handleAddCard = useCallback(() => {
+    setActiveActivity('create-card');
+  }, [setActiveActivity]);
+
+  const handlePlayFlashcards = useCallback(() => {
+    setActiveActivity('flashcards-library');
+  }, [setActiveActivity]);
+
+  const handleProfileClick = useCallback(() => {
+    setActiveTab('profile');
+  }, [setActiveTab]);
+
+  const handleNavigateToFavorites = useCallback(() => {
+    useAppStore.getState().setLibraryActiveFolder('favorites');
+    setActiveTab('library');
+  }, [setActiveTab]);
   return (
     <AnimatePresence mode="wait">
       {activeTab === 'path' && (
@@ -68,8 +94,8 @@ export const TabScreens: React.FC<TabScreensProps> = ({
                 selectedLessons={selectedLessons}
                 onToggleLesson={toggleLesson}
                 onStartPractice={startPathPractice}
-                onProfileClick={() => setActiveTab('profile')}
-                menuToggle={{ onClick: () => setIsNavOpen(!isNavOpen), label: 'Menu' }}
+                onProfileClick={handleProfileClick}
+                menuToggle={menuToggle}
               />
             </Suspense>
           </ErrorBoundary>
@@ -88,9 +114,9 @@ export const TabScreens: React.FC<TabScreensProps> = ({
           <ErrorBoundary>
             <Suspense fallback={<LoadingScreen message="Loading library…" />}>
               <LibraryScreen
-                onAddCard={() => setActiveActivity('create-card')}
-                onPlayFlashcards={() => setActiveActivity('flashcards-library')}
-                menuToggle={{ onClick: () => setIsNavOpen(!isNavOpen), label: 'Menu' }}
+                onAddCard={handleAddCard}
+                onPlayFlashcards={handlePlayFlashcards}
+                menuToggle={menuToggle}
               />
             </Suspense>
           </ErrorBoundary>
@@ -108,7 +134,7 @@ export const TabScreens: React.FC<TabScreensProps> = ({
         >
           <ErrorBoundary>
             <Suspense fallback={<LoadingScreen message="Loading dictionary…" />}>
-              <SearchScreen menuToggle={{ onClick: () => setIsNavOpen(!isNavOpen), label: 'Menu' }} />
+              <SearchScreen menuToggle={menuToggle} />
             </Suspense>
           </ErrorBoundary>
         </motion.div>
@@ -126,13 +152,10 @@ export const TabScreens: React.FC<TabScreensProps> = ({
           <ErrorBoundary>
             <Suspense fallback={<LoadingScreen message="Loading profile…" />}>
               <ProfileScreen
-                onStartReview={() => {
-                  const store = useAppStore.getState();
-                  store.setIsReviewMode(true);
-                  store.setActiveReviewSessionCards(null);
-                  setActiveActivity('flashcards-review');
-                }}
-                menuToggle={{ onClick: () => setIsNavOpen(!isNavOpen), label: 'Menu' }}
+                onStartReview={handleStartReview}
+                menuToggle={menuToggle}
+                onNavigateToFavorites={handleNavigateToFavorites}
+                onCreateCustomCard={handleAddCard}
               />
             </Suspense>
           </ErrorBoundary>
@@ -140,4 +163,4 @@ export const TabScreens: React.FC<TabScreensProps> = ({
       )}
     </AnimatePresence>
   );
-};
+});

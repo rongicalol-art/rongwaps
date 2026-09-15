@@ -36,7 +36,7 @@ export function GrammarHelpDisclosure({ title, children, className }: GrammarHel
         aria-expanded={isOpen}
         aria-controls={contentId}
         onClick={toggle}
-        className="flex min-h-12 w-full cursor-pointer items-center justify-end gap-2 py-3 text-right outline-none transition-colors hover:text-brand-primary focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2"
+        className="flex min-h-12 w-full cursor-pointer items-center justify-end gap-2 rounded-sm py-3 text-right transition-colors hover:text-brand-primary focus-ring"
       >
         <span className="text-sm font-black text-ui-ink-strong">{title}</span>
         <span

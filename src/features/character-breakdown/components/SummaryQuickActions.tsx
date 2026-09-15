@@ -4,7 +4,7 @@ import { useAppStore } from '../../../store/useAppStore';
 import { useCharDictionaryEntry } from '../hooks/useCharDictionaryEntry';
 
 const ICON_ACTION =
-  'flex h-9 w-9 shrink-0 items-center justify-center rounded-full outline-none transition-colors focus-visible:ring-4 focus-visible:ring-brand-primary/25';
+  'flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors focus-ring';
 
 /**
  * Always-visible audio + save controls pinned to the top-right of the

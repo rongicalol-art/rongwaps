@@ -1,6 +1,8 @@
 import { PracticeChoiceButton, type PracticeChoiceState } from '../../features/practice';
 import type { Flashcard } from '../../data/flashcards';
 import { SAMPLE_BOOKS } from '../../data/books';
+import { getCardChoiceTarget } from '../../utils/meaningChoices';
+import type { ListeningChoiceType } from '../../store/usePracticePreferencesStore';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
 
@@ -11,6 +13,7 @@ interface ListeningOptionsProps {
   isChecked: boolean;
   currentCard: Flashcard;
   activeBook: CourseBook;
+  choiceType?: ListeningChoiceType;
 }
 
 export function ListeningOptions({
@@ -19,13 +22,16 @@ export function ListeningOptions({
   onSelect,
   isChecked,
   currentCard,
-  activeBook
+  activeBook,
+  choiceType = 'meaning',
 }: ListeningOptionsProps) {
+  const correctTarget = getCardChoiceTarget(currentCard, choiceType);
+
   return (
     <div className="flex flex-col gap-3 w-full">
       {options.map((opt, i) => {
         const isSelected = selectedOption === opt;
-        const isCorrectOption = opt === currentCard.back;
+        const isCorrectOption = opt === correctTarget;
 
         let state: PracticeChoiceState = 'idle';
         if (isSelected && !isChecked) {
@@ -48,9 +54,11 @@ export function ListeningOptions({
             selectedClassName={`${activeBook.bg} ${activeBook.accentBorder} ${activeBook.accent}`}
             selectedEdgeColor={activeBook.accentHex}
           >
-            {opt}
+            <span className={choiceType === 'hanzi' ? 'font-chinese text-2xl font-bold sm:text-3xl' : ''}>
+              {opt}
+            </span>
           </PracticeChoiceButton>
-        )
+        );
       })}
     </div>
   );

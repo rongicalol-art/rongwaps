@@ -49,7 +49,7 @@ export function GrammarPathActions({
               className="flex flex-col gap-3 py-3 first:pt-2 sm:flex-row sm:items-center"
             >
               <div className="min-w-0 flex-1">
-                <p className="text-[11px] font-black uppercase tracking-[0.06em] text-feedback-warning-edge">
+                <p className="text-xs font-black uppercase tracking-wider text-feedback-warning-edge">
                   Part {part.partId} · {part.grammarPages.length}{' '}
                   {part.grammarPages.length === 1 ? 'grammar point' : 'grammar points'}
                 </p>

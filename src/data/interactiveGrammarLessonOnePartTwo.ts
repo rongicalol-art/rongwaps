@@ -941,7 +941,7 @@ export const LESSON_ONE_PART_TWO: InteractiveGrammarPart = {
         speaker: '中明',
         text: {
           traditional: '妳好！我是李中明，請問妳叫什麼名字？',
-          simplified: '妳好！我是李中明，请问妳叫什么名字？',
+          simplified: '你好！我是李中明，请问你叫什么名字？',
           pinyin: 'Nǐ hǎo! Wǒ shì Lǐ Zhōngmíng, qǐngwèn nǐ jiào shénme míngzi?',
           english: 'Hi, my name is Li Zhongming. May I ask what your name is?',
         },
@@ -951,6 +951,7 @@ export const LESSON_ONE_PART_TWO: InteractiveGrammarPart = {
         speaker: '友美',
         text: {
           traditional: '我姓小林，叫友美。',
+          simplified: '我姓小林，叫友美。',
           pinyin: 'Wǒ xìng Xiǎolín, jiào Yǒuměi.',
           english: 'My surname is Xiaolin. My first name is Youmei.',
         },
@@ -960,7 +961,7 @@ export const LESSON_ONE_PART_TWO: InteractiveGrammarPart = {
         speaker: '中明',
         text: {
           traditional: '請問妳是哪國人？',
-          simplified: '请问妳是哪国人？',
+          simplified: '请问你是哪国人？',
           pinyin: 'Qǐngwèn nǐ shì nǎ guó rén?',
           english: 'May I ask where you are from?',
         },
@@ -970,6 +971,7 @@ export const LESSON_ONE_PART_TWO: InteractiveGrammarPart = {
         speaker: '友美',
         text: {
           traditional: '我是日本人，你呢？',
+          simplified: '我是日本人，你呢？',
           pinyin: 'Wǒ shì Rìběn rén, nǐ ne?',
           english: 'I am from Japan. How about you?',
         },
@@ -979,7 +981,7 @@ export const LESSON_ONE_PART_TWO: InteractiveGrammarPart = {
         speaker: '中明',
         text: {
           traditional: '我是印尼人。妳喜歡台灣嗎？',
-          simplified: '我是印尼人。妳喜欢台湾吗？',
+          simplified: '我是印尼人。你喜欢台湾吗？',
           pinyin: 'Wǒ shì Yìnní rén. Nǐ xǐhuān Táiwān ma?',
           english: 'I am from Indonesia. Do you like Taiwan?',
         },

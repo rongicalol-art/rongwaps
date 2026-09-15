@@ -5,6 +5,7 @@ export { FeedbackBottomBar } from './components/FeedbackBottomBar';
 export { LessonComplete } from './components/LessonComplete';
 export { PracticeChoiceButton } from './components/PracticeChoiceButton';
 export { BreakdownExpandPanel } from './components/BreakdownExpandPanel';
+export { PracticeFormatMenu } from './components/PracticeFormatMenu';
 
 export type { PracticeSettingsScreenProps } from './components/PracticeSettingsScreen';
 export type { FeedbackBottomBarProps } from './components/FeedbackBottomBar';

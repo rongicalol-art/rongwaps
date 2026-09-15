@@ -37,14 +37,14 @@ export function StarterLesson({ starterLesson, activeBook, isSelected, onToggleL
           </div>
           <div>
             <p
-              className={`text-[11px] font-extrabold uppercase tracking-widest mb-0.5 transition-colors duration-300 ${
+              className={`text-xs font-black uppercase tracking-wider mb-0.5 transition-colors duration-300 ${
                 isSelected ? activeBook.accent : 'text-ui-muted'
               }`}
             >
               Introduction
             </p>
             <h2
-              className={`text-[17px] font-extrabold truncate transition-colors duration-300 ${
+              className={`text-lg font-black truncate transition-colors duration-300 ${
                 isSelected ? 'text-ui-ink' : 'text-ui-muted'
               }`}
             >

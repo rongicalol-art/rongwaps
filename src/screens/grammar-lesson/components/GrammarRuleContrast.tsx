@@ -42,7 +42,7 @@ export function GrammarRuleContrast({
             <article
               key={example.id}
               className={cn(
-                'rounded-[18px] border-2 bg-ui-surface px-4 py-4',
+                'rounded-feature border-2 bg-ui-surface px-4 py-4',
                 isCorrect ? 'border-feedback-success' : 'border-feedback-danger',
               )}
             >

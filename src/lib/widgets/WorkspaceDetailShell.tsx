@@ -70,7 +70,7 @@ export function WorkspaceDetailShell({
           rightAction={rightAction}
           maxWidth="none"
           className={cn(
-            'sticky top-0 z-20 w-full max-w-full shrink-0 border-b-0 bg-gradient-to-b from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent pb-2 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] backdrop-blur-[2px] px-4 shadow-none sm:px-6 lg:px-10',
+            'sticky top-0 z-30 w-full max-w-full shrink-0 !h-auto !min-h-0 border-0 bg-gradient-to-b from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent pb-2 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] backdrop-blur-[2px] px-4 shadow-none sm:px-6 lg:px-10',
             headerClassName,
           )}
         />

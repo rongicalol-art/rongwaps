@@ -2769,7 +2769,7 @@ export const ALL_READINGS_DATA: ReadingRecord[] = [
         "speaker": "narrator",
         "traditional": "今年是我第一次在台灣過新年，我跟老師、同學們先去一個同學家吃晚飯，再去參加101大樓的跨年活動。",
         "simplified": "今年是我第一次在台湾过新年，我跟老师、同学们先去一个同学家吃晚饭，再去参加101大楼的跨年活动。",
-        "pinyin": "Jīnnián shì wǒ dì yī cì zài Táiwān guò xīnnián, wǒ gēn lǎoshī, tóngxuémen xiān qù yí ge tóngxué jiā chī wǎnfàn, zài qù cānjiā yībǎilíngyī dàlóu de kuànián huódòng.",
+        "pinyin": "Jīnnián shì wǒ dì yī cì zài Táiwān guò xīnnián, wǒ gēn lǎoshī, tóngxuémen xiān qù yí ge tóngxué jiā chī wǎnfàn, zài qù cānjiā 101 dàlóu de kuànián huódòng.",
         "english": "This year was my first time spending New Year in Taiwan; my teacher, classmates, and I ate at a classmate's home before joining the Taipei 101 event."
       },
       {
@@ -2786,8 +2786,8 @@ export const ALL_READINGS_DATA: ReadingRecord[] = [
     "bookId": 1,
     "lessonId": 15,
     "dialogueNumber": 1,
-    "title": "十二生肖 · The Chinese Animal Zodiac",
-    "setting": "對話一 · Dialogue 1",
+    "title": "對話一 · Dialogue 1",
+    "setting": "十二生肖 · The Chinese Animal Zodiac",
     "printedPages": [
       343,
       344
@@ -2797,70 +2797,70 @@ export const ALL_READINGS_DATA: ReadingRecord[] = [
       {
         "speaker": "家樂",
         "traditional": "我們下個星期要學第十五課，我剛才先看了一點，書上有很多種動物，我覺得很有意思。",
-        "simplified": "我們下個星期要學第十五課，我剛才先看了一點，書上有很多種動物，我覺得很有意思。",
+        "simplified": "我们下个星期要学第十五课，我刚才先看了一点，书上有很多种动物，我觉得很有意思。",
         "pinyin": "Wǒmen xià ge xīngqí yào xué dì shíwǔ kè, wǒ gāngcái xiān kàn le yìdiǎn, shū shàng yǒu hěn duō zhǒng dòngwù, wǒ juéde hěn yǒuyìsi.",
         "english": "We are going to study Lesson 15 next week. I just glanced at it earlier. There are many kinds of animals in the book, which I think is very interesting."
       },
       {
         "speaker": "友美",
         "traditional": "有哪些動物？",
-        "simplified": "有哪些動物？",
+        "simplified": "有哪些动物？",
         "pinyin": "Yǒu nǎxiē dòngwù?",
         "english": "What animals are there?"
       },
       {
         "speaker": "家樂",
         "traditional": "我記得有羊、馬、兔子，最特別的是龍。你看看！",
-        "simplified": "我記得有羊、馬、兔子，最特別的是龍。你看看！",
+        "simplified": "我记得有羊、马、兔子，最特别的是龙。你看看！",
         "pinyin": "Wǒ jìdé yǒu yáng, mǎ, tùzi, zuì tèbié de shì lóng. Nǐ kànkan!",
         "english": "I remember there are goats, horses, rabbits, and the most special one is the dragon. Take a look!"
       },
       {
         "speaker": "友美",
         "traditional": "原來是十二生肖，真的很有意思。",
-        "simplified": "原來是十二生肖，真的很有意思。",
+        "simplified": "原来是十二生肖，真的很有意思。",
         "pinyin": "Yuánlái shì shí'èr shēngxiào, zhēn de hěn yǒuyìsi.",
         "english": "Oh, so it’s the Chinese zodiac! That’s really fascinating."
       },
       {
         "speaker": "家樂",
         "traditional": "什麼是十二生肖？",
-        "simplified": "什麼是十二生肖？",
+        "simplified": "什么是十二生肖？",
         "pinyin": "Shénme shì shí'èr shēngxiào?",
         "english": "What is the Chinese zodiac?"
       },
       {
         "speaker": "友美",
         "traditional": "華人用不一樣的動物代表每一年，一共有十二種動物。",
-        "simplified": "華人用不一樣的動物代表每一年，一共有十二種動物。",
+        "simplified": "华人用不一样的动物代表每一年，一共有十二种动物。",
         "pinyin": "Huárén yòng bù yíyàng de dòngwù dàibiǎo měi yì nián, yígòng yǒu shí'èr zhǒng dòngwù.",
         "english": "Chinese people use different animals to represent each year. There are twelve animals in total."
       },
       {
         "speaker": "元真",
         "traditional": "越南也有十二生肖，可是我們沒有兔年，有貓年。我是貓年出生的，屬貓。",
-        "simplified": "越南也有十二生肖，可是我們沒有兔年，有貓年。我是貓年出生的，屬貓。",
+        "simplified": "越南也有十二生肖，可是我们没有兔年，有猫年。我是猫年出生的，属猫。",
         "pinyin": "Yuènán yě yǒu shí'èr shēngxiào, kěshì wǒmen méiyǒu tùnián, yǒu māonián. Wǒ shì māonián chūshēng de, shǔ māo.",
         "english": "Vietnam also has the twelve zodiac animals, but we don't have the Year of the Rabbit; we have the Year of the Cat. I was born in the Year of the Cat, so my zodiac sign is the cat."
       },
       {
         "speaker": "家樂",
         "traditional": "真的？好有趣！原來越南的生肖跟中國的有點不一樣。我好想知道我屬什麼。",
-        "simplified": "真的？好有趣！原來越南的生肖跟中國的有點不一樣。我好想知道我屬什麼。",
+        "simplified": "真的？好有趣！原来越南的生肖跟中国的有点不一样。我好想知道我属什么。",
         "pinyin": "Zhēn de? Hǎo yǒuqù! Yuánlái Yuènán de shēngxiào gēn Zhōngguó de yǒudiǎn bù yíyàng. Wǒ hǎo xiǎng zhīdào wǒ shǔ shénme.",
         "english": "Really? How interesting! It turns out Vietnam's zodiac is a bit different from China's. I really want to know what sign I am."
       },
       {
         "speaker": "友美",
         "traditional": "很簡單，上網一查就知道了。",
-        "simplified": "很簡單，上網一查就知道了。",
+        "simplified": "很简单，上网一查就知道了。",
         "pinyin": "Hěn jiǎndān, shàngwǎng yì chá jiù zhīdào le.",
         "english": "It's very simple. Just look it up online and you'll know immediately."
       },
       {
         "speaker": "家樂",
         "traditional": "好，我上網查查看。",
-        "simplified": "好，我上網查查看。",
+        "simplified": "好，我上网查查看。",
         "pinyin": "Hǎo, wǒ shàngwǎng cháchá kàn.",
         "english": "Okay, I'll search for it online."
       }
@@ -2871,8 +2871,8 @@ export const ALL_READINGS_DATA: ReadingRecord[] = [
     "bookId": 1,
     "lessonId": 15,
     "dialogueNumber": 2,
-    "title": "十二生肖 · The Chinese Animal Zodiac",
-    "setting": "對話二 · Dialogue 2",
+    "title": "對話二 · Dialogue 2",
+    "setting": "十二生肖 · The Chinese Animal Zodiac",
     "printedPages": [
       351,
       352
@@ -2882,70 +2882,70 @@ export const ALL_READINGS_DATA: ReadingRecord[] = [
       {
         "speaker": "宜文",
         "traditional": "中明，你手裡拿著什麼？",
-        "simplified": "中明，你手裡拿著什麼？",
+        "simplified": "中明，你手里拿着什么？",
         "pinyin": "Zhōngmíng, nǐ shǒulǐ názhe shénme?",
         "english": "Zhongming, what are you holding in your hand?"
       },
       {
         "speaker": "中明",
         "traditional": "這是燈籠。",
-        "simplified": "這是燈籠。",
+        "simplified": "这是灯笼。",
         "pinyin": "Zhè shì dēnglóng.",
         "english": "This is a lantern."
       },
       {
         "speaker": "宜文",
         "traditional": "燈籠上的小老虎好可愛。",
-        "simplified": "燈籠上的小老虎好可愛。",
+        "simplified": "灯笼上的小老虎好可爱。",
         "pinyin": "Dēnglóng shàng de xiǎo lǎohǔ hǎo kě'ài.",
         "english": "The little tiger on the lantern is so cute."
       },
       {
         "speaker": "中明",
         "traditional": "這是我朋友做的，因為他屬虎。你知道十二生肖嗎？",
-        "simplified": "這是我朋友做的，因為他屬虎。你知道十二生肖嗎？",
+        "simplified": "这是我朋友做的，因为他属虎。你知道十二生肖吗？",
         "pinyin": "Zhè shì wǒ péngyǒu zuò de, yīnwèi tā shǔ hǔ. Nǐ zhīdào shí'èr shēngxiào ma?",
         "english": "A friend of mine made it because he was born in the year of the tiger. Do you know about the twelve zodiac animals?"
       },
       {
         "speaker": "宜文",
         "traditional": "知道，友美跟我講過。",
-        "simplified": "知道，友美跟我講過。",
+        "simplified": "知道，友美跟我讲过。",
         "pinyin": "Zhīdào, Yǒuměi gēn wǒ jiǎng guò.",
         "english": "Yes, Youmei mentioned it to me."
       },
       {
         "speaker": "中明",
         "traditional": "這個星期六是元宵節，你跟友美會去看燈會嗎？",
-        "simplified": "這個星期六是元宵節，你跟友美會去看燈會嗎？",
+        "simplified": "这个星期六是元宵节，你跟友美会去看灯会吗？",
         "pinyin": "Zhège xīngqíliù shì Yuánxiāojié, nǐ gēn Yǒuměi huì qù kàn dēnghuì ma?",
         "english": "This Saturday is the Lantern Festival. Are you and Youmei going to see the lantern show?"
       },
       {
         "speaker": "宜文",
         "traditional": "友美說她想去，我還沒決定去不去。燈會好玩嗎？",
-        "simplified": "友美說她想去，我還沒決定去不去。燈會好玩嗎？",
+        "simplified": "友美说她想去，我还没决定去不去。灯会好玩吗？",
         "pinyin": "Yǒuměi shuō tā xiǎng qù, wǒ hái méi juédìng qù bú qù. Dēnghuì hǎowán ma?",
         "english": "Youmei said she wants to go, but I haven't decided yet. Is the lantern festival fun?"
       },
       {
         "speaker": "中明",
         "traditional": "我去年去看了，很多大人帶著小孩去看燈會，非常熱鬧。我照了很多相片。",
-        "simplified": "我去年去看了，很多大人帶著小孩去看燈會，非常熱鬧。我照了很多相片。",
+        "simplified": "我去年去看了，很多大人带着小孩去看灯会，非常热闹。我照了很多相片。",
         "pinyin": "Wǒ qùnián qù kàn le, hěn duō dàrén dàizhe xiǎohái qù kàn dēnghuì, fēicháng rènào. Wǒ zhào le hěn duō xiàngpiàn.",
         "english": "I went last year. Many adults brought their kids to see the lantern show; it was very lively. I took a lot of pictures."
       },
       {
         "speaker": "宜文",
         "traditional": "那我這個週末一定要去看看。",
-        "simplified": "那我這個週末一定要去看看。",
+        "simplified": "那我这个周末一定要去看看。",
         "pinyin": "Nà wǒ zhège zhōumò yídìng yào qù kànkan.",
         "english": "Then I must definitely go see it this weekend."
       },
       {
         "speaker": "中明",
         "traditional": "我週末還要工作，打算一下班就去看燈會。我們可以約友美一起去。",
-        "simplified": "我週末還要工作，打算一下班就去看燈會。我們可以約友美一起去。",
+        "simplified": "我周末还要工作，打算一下班就去看灯会。我们可以约友美一起去。",
         "pinyin": "Wǒ zhōumò hái yào gōngzuò, dǎsuàn yí xiàbān jiù qù kàn dēnghuì. Wǒmen kěyǐ yuē Yǒuměi yìqǐ qù.",
         "english": "I have to work this weekend, but I plan to go see the lantern show right after getting off work. We can invite Youmei to join us."
       }
@@ -2966,35 +2966,35 @@ export const ALL_READINGS_DATA: ReadingRecord[] = [
       {
         "speaker": "narrator",
         "traditional": "今天一進教室，就看到桌上放著幾隻用紙做的動物，黑板上也有很多張動物的圖片，我覺得很有趣。",
-        "simplified": "今天一進教室，就看到桌上放著幾隻用紙做的動物，黑板上也有很多張動物的圖片，我覺得很有趣。",
+        "simplified": "今天一进教室，就看到桌上放着几只用纸做的动物，黑板上也有很多张动物的图片，我觉得很有趣。",
         "pinyin": "Jīntiān yí jìn jiàoshì, jiù kàndào zhuō shàng fàngzhe jǐ zhī yòng zhǐ zuò de dòngwù, hēibǎn shàng yě yǒu hěn duō zhāng dòngwù de túpiàn, wǒ juéde hěn yǒuqù.",
         "english": "As soon as I walked into the classroom today, I saw several paper animals placed on the table, and there were also many pictures of animals on the blackboard. I found it very interesting."
       },
       {
         "speaker": "narrator",
         "traditional": "老師告訴我們，很久以前，有十二種動物一起參加了一個過河比賽，看誰游得最快。",
-        "simplified": "老師告訴我們，很久以前，有十二種動物一起參加了一個過河比賽，看誰游得最快。",
+        "simplified": "老师告诉我们，很久以前，有十二种动物一起参加了一个过河比赛，看谁游得最快。",
         "pinyin": "Lǎoshī gàosu wǒmen, hěn jiǔ yǐqián, yǒu shí'èr zhǒng dòngwù yìqǐ cānjiā le yí ge guòhé bǐsài, kàn shéi yóu de zuì kuài.",
         "english": "The teacher told us that a long time ago, twelve animals entered a river-crossing race together to see who could swim the fastest."
       },
       {
         "speaker": "narrator",
         "traditional": "開始比賽以後，每隻動物都游得很快很辛苦。老鼠先過了河，第二個到的是牛，最後到的是豬。老鼠贏了，排第一，其他動物排後面。",
-        "simplified": "開始比賽以後，每隻動物都游得很快很辛苦。老鼠先過了河，第二個到的是牛，最後到的是豬。老鼠贏了，排第一，其他動物排後面。",
+        "simplified": "开始比赛以后，每只动物都游得很快很辛苦。老鼠先过了河，第二个到的是牛，最后到的是猪。老鼠赢了，排第一，其他动物排后面。",
         "pinyin": "Kāishǐ bǐsài yǐhòu, měi zhī dòngwù dōu yóu de hěn kuài hěn xīnkǔ. Lǎoshǔ xiān guò le hé, dì èr ge dào de shì niú, zuìhòu dào de shì zhū. Lǎoshǔ yíng le, pái dì yī, qítā dòngwù pái hòumiàn.",
         "english": "After the race began, each animal swam hard and fast. The rat crossed the river first, the ox arrived second, and the pig arrived last. The rat won, ranking first, and the other animals lined up behind."
       },
       {
         "speaker": "narrator",
         "traditional": "這次比賽以後，華人就用鼠、牛、虎、兔、龍、蛇、馬、羊、猴、雞、狗和豬代表每一年，而且叫這十二種動物「十二生肖」。",
-        "simplified": "這次比賽以後，華人就用鼠、牛、虎、兔、龍、蛇、馬、羊、猴、雞、狗和豬代表每一年，而且叫這十二種動物「十二生肖」。",
+        "simplified": "这次比赛以后，华人就用鼠、牛、虎、兔、龙、蛇、马、羊、猴、鸡、狗和猪代表每一年，而且叫这十二种动物「十二生肖」。",
         "pinyin": "Zhè cì bǐsài yǐhòu, Huárén jiù yòng shǔ, niú, hǔ, tù, lóng, shé, mǎ, yáng, hóu, jī, gǒu hé zhū dàibiǎo měi yì nián, érqiě jiào zhè shí'èr zhǒng dòngwù \"shí'èr shēngxiào\".",
         "english": "After this race, Chinese people used the rat, ox, tiger, rabbit, dragon, snake, horse, goat, monkey, rooster, dog, and pig to represent each year, calling these twelve animals the \"Twelve Zodiac Animals\"."
       },
       {
         "speaker": "narrator",
         "traditional": "華人聊天的時候，會問別人「你屬什麼？」。每年到了元宵節，代表那年的動物燈籠，也會最受歡迎。",
-        "simplified": "華人聊天的時候，會問別人「你屬什麼？」。每年到了元宵節，代表那年的動物燈籠，也會最受歡迎。",
+        "simplified": "华人聊天的时候，会问别人「你属什么？」。每年到了元宵节，代表那年的动物灯笼，也会最受欢迎。",
         "pinyin": "Huárén liáotiān de shíhou, huì wèn biérén \"nǐ shǔ shénme?\". Měi nián dào le Yuánxiāojié, dàibiǎo nà nián de dòngwù dēnglóng, yě huì zuì shòu huānyíng.",
         "english": "When chatting, Chinese people often ask others, \"What is your zodiac sign?\". Every year during the Lantern Festival, the lantern representing the animal of that year is also the most popular."
       }
@@ -3005,8 +3005,8 @@ export const ALL_READINGS_DATA: ReadingRecord[] = [
     "bookId": 1,
     "lessonId": 16,
     "dialogueNumber": 1,
-    "title": "在台灣旅行 · Traveling in Taiwan",
-    "setting": "對話一 · Dialogue 1",
+    "title": "對話一 · Dialogue 1",
+    "setting": "在台灣旅行 · Traveling in Taiwan",
     "printedPages": [
       371
     ],
@@ -3015,98 +3015,98 @@ export const ALL_READINGS_DATA: ReadingRecord[] = [
       {
         "speaker": "家樂",
         "traditional": "國安，這次學校放假，你有什麼計畫？",
-        "simplified": "國安，這次學校放假，你有什麼計畫？",
+        "simplified": "国安，这次学校放假，你有什么计划？",
         "pinyin": "Guó'ān, zhè cì xuéxiào fàngjià, nǐ yǒu shénme jìhuà?",
         "english": "Guo'an, school is going on vacation this time. Do you have any plans?"
       },
       {
         "speaker": "國安",
         "traditional": "我還沒打算要做什麼。這次放假，沒有上次放得那麼久，只放三天假，我不知道去哪裡比較好。",
-        "simplified": "我還沒打算要做什麼。這次放假，沒有上次放得那麼久，只放三天假，我不知道去哪裡比較好。",
+        "simplified": "我还没打算要做什么。这次放假，没有上次放得那么久，只放三天假，我不知道去哪里比较好。",
         "pinyin": "Wǒ hái méi dǎsuàn yào zuò shénme. Zhè cì fàngjià, méiyǒu shàng cì fàng de nàme jiǔ, zhǐ fàng sān tiān jià, wǒ bù zhīdào qù nǎlǐ bǐjiào hǎo.",
         "english": "I haven't decided what to do yet. This break is not as long as the last one—only three days—so I don't know where it's best to go."
       },
       {
         "speaker": "家樂",
         "traditional": "我覺得太魯閣不錯，有山又有河。",
-        "simplified": "我覺得太魯閣不錯，有山又有河。",
+        "simplified": "我觉得太鲁阁不错，有山又有河。",
         "pinyin": "Wǒ juéde Tàilǔgé búcuò, yǒu shān yòu yǒu hé.",
         "english": "I think Taroko Gorge is great; it has both mountains and rivers."
       },
       {
         "speaker": "國安",
         "traditional": "在哪裡？離台北遠不遠？",
-        "simplified": "在哪裡？離台北遠不遠？",
+        "simplified": "在哪里？离台北远不远？",
         "pinyin": "Zài nǎlǐ? Lí Táiběi yuǎn bù yuǎn?",
         "english": "Where is it? Is it far from Taipei?"
       },
       {
         "speaker": "家樂",
         "traditional": "在花蓮。花蓮在台灣東部，離台北有點遠，你可以坐火車去，也可以開車去，差不多四個小時。",
-        "simplified": "在花蓮。花蓮在台灣東部，離台北有點遠，你可以坐火車去，也可以開車去，差不多四個小時。",
+        "simplified": "在花莲。花莲在台湾东部，离台北有点远，你可以坐火车去，也可以开车去，差不多四个小时。",
         "pinyin": "Zài Huālián. Huālián zài Táiwān dōngbù, lí Táiběi yǒudiǎn yuǎn, nǐ kěyǐ zuò huǒchē qù, yě kěyǐ kāichē qù, chàbùduō sì ge xiǎoshí.",
         "english": "It's in Hualien. Hualien is in eastern Taiwan, somewhat far from Taipei. You can take a train or drive there; it takes about four hours."
       },
       {
         "speaker": "國安",
         "traditional": "你去過嗎？",
-        "simplified": "你去過嗎？",
+        "simplified": "你去过吗？",
         "pinyin": "Nǐ qù guò ma?",
         "english": "Have you been there?"
       },
       {
         "speaker": "家樂",
         "traditional": "我小學六年級的時候去過，我很喜歡那裡。",
-        "simplified": "我小學六年級的時候去過，我很喜歡那裡。",
+        "simplified": "我小学六年级的时候去过，我很喜欢那里。",
         "pinyin": "Wǒ xiǎoxué liù niánjí de shíhou qù guò, wǒ hěn xǐhuān nàlǐ.",
         "english": "I went when I was in sixth grade of elementary school. I liked it very much."
       },
       {
         "speaker": "國安",
         "traditional": "那你打算去哪裡玩？",
-        "simplified": "那你打算去哪裡玩？",
+        "simplified": "那你打算去哪里玩？",
         "pinyin": "Nà nǐ dǎsuàn qù nǎlǐ wán?",
         "english": "Where do you plan to go for fun?"
       },
       {
         "speaker": "家樂",
         "traditional": "我想去合歡山。報紙上寫，這幾天可能會下雪。",
-        "simplified": "我想去合歡山。報紙上寫，這幾天可能會下雪。",
+        "simplified": "我想去合欢山。报纸上写，这几天可能会下雪。",
         "pinyin": "Wǒ xiǎng qù Héhuān Shān. Bàozhǐ shàng xiě, zhè jǐ tiān kěnéng huì xiàxuě.",
         "english": "I want to go to Hehuanshan. The newspaper says it might snow these few days."
       },
       {
         "speaker": "國安",
         "traditional": "下雪？我還沒看過雪，合歡山在哪裡？",
-        "simplified": "下雪？我還沒看過雪，合歡山在哪裡？",
+        "simplified": "下雪？我还没看过雪，合欢山在哪里？",
         "pinyin": "Xiàxuě? Wǒ hái méi kàn guò xuě, Héhuān Shān zài nǎlǐ?",
         "english": "Snow? I haven't seen snow before. Where is Hehuanshan?"
       },
       {
         "speaker": "家樂",
         "traditional": "在台灣的中部，日月潭也在附近。",
-        "simplified": "在台灣的中部，日月潭也在附近。",
+        "simplified": "在台湾的中部，日月潭也在附近。",
         "pinyin": "Zài Táiwān de zhōngbù, Rìyuè Tán yě zài fùjìn.",
         "english": "In central Taiwan. Sun Moon Lake is also nearby."
       },
       {
         "speaker": "國安",
         "traditional": "日月潭很有名，我在書上看過，離合歡山近嗎？",
-        "simplified": "日月潭很有名，我在書上看過，離合歡山近嗎？",
+        "simplified": "日月潭很有名，我在书上看过，离合欢山近吗？",
         "pinyin": "Rìyuè Tán hěn yǒumíng, wǒ zài shū shàng kàn guò, lí Héhuān Shān jìn ma?",
         "english": "Sun Moon Lake is very famous. I read about it in a book. Is it close to Hehuanshan?"
       },
       {
         "speaker": "家樂",
         "traditional": "不遠，我想去玩三天兩夜，先去日月潭，再去合歡山。",
-        "simplified": "不遠，我想去玩三天兩夜，先去日月潭，再去合歡山。",
+        "simplified": "不远，我想去玩三天两夜，先去日月潭，再去合欢山。",
         "pinyin": "Bù yuǎn, wǒ xiǎng qù wán sān tiān liǎng yè, xiān qù Rìyuè Tán, zài qù Héhuān Shān.",
         "english": "Not far. I want to go for three days and two nights: go to Sun Moon Lake first, and then to Hehuanshan."
       },
       {
         "speaker": "國安",
         "traditional": "你記得多照一些相片給我看！",
-        "simplified": "你記得多照一些相片給我看！",
+        "simplified": "你记得多照一些相片给我看！",
         "pinyin": "Nǐ jìdé duō zhào yìxiē xiàngpiàn gěi wǒ kàn!",
         "english": "Remember to take more pictures for me to see!"
       }
@@ -3117,8 +3117,8 @@ export const ALL_READINGS_DATA: ReadingRecord[] = [
     "bookId": 1,
     "lessonId": 16,
     "dialogueNumber": 2,
-    "title": "在台灣旅行 · Traveling in Taiwan",
-    "setting": "對話二 · Dialogue 2",
+    "title": "對話二 · Dialogue 2",
+    "setting": "在台灣旅行 · Traveling in Taiwan",
     "printedPages": [
       381
     ],
@@ -3127,84 +3127,84 @@ export const ALL_READINGS_DATA: ReadingRecord[] = [
       {
         "speaker": "家樂",
         "traditional": "放假的時候，你去太魯閣了嗎？",
-        "simplified": "放假的時候，你去太魯閣了嗎？",
+        "simplified": "放假的时候，你去太鲁阁了吗？",
         "pinyin": "Fàngjià de shíhou, nǐ qù Tàilǔgé le ma?",
         "english": "Did you go to Taroko during the vacation?"
       },
       {
         "speaker": "國安",
         "traditional": "我本來要去那裡，可是因為沒有車票了，所以後來決定去高雄玩。",
-        "simplified": "我本來要去那裡，可是因為沒有車票了，所以後來決定去高雄玩。",
+        "simplified": "我本来要去那里，可是因为没有车票了，所以后来决定去高雄玩。",
         "pinyin": "Wǒ běnlái yào qù nàlǐ, kěshì yīnwèi méiyǒu chēpiào le, suǒyǐ hòulái juédìng qù Gāoxióng wán. ",
         "english": "I originally intended to go there, but because there were no more train tickets, I later decided to go to Kaohsiung."
       },
       {
         "speaker": "家樂",
         "traditional": "高雄好玩嗎？",
-        "simplified": "高雄好玩嗎？",
+        "simplified": "高雄好玩吗？",
         "pinyin": "Gāoxióng hǎowán ma?",
         "english": "Was Kaohsiung fun?"
       },
       {
         "speaker": "國安",
         "traditional": "很好玩，我坐了三個半小時的火車，下了火車就坐捷運去西子灣了，那裡風景很漂亮。",
-        "simplified": "很好玩，我坐了三個半小時的火車，下了火車就坐捷運去西子灣了，那裡風景很漂亮。",
+        "simplified": "很好玩，我坐了三个半小时的火车，下了火车就坐捷运去西子湾了，那里风景很漂亮。",
         "pinyin": "Hěn hǎowán, wǒ zuò le sān ge bàn xiǎoshí de huǒchē, xià le huǒchē jiù zuò jiéyùn qù Xīzǐwān le, nàlǐ fēngjǐng hěn piàoliàng.",
         "english": "Very fun! I took the train for three and a half hours, and as soon as I got off the train, I took the MRT to Sizihwan. The scenery there was gorgeous."
       },
       {
         "speaker": "家樂",
         "traditional": "你應該搭高鐵去，這樣更快，只需要一個半小時。",
-        "simplified": "你應該搭高鐵去，這樣更快，只需要一個半小時。",
+        "simplified": "你应该搭高铁去，这样更快，只需要一个半小时。",
         "pinyin": "Nǐ yīnggāi dā gāotiě qù, zhèyàng gèng kuài, zhǐ xūyào yí ge bàn xiǎoshí.",
         "english": "You should have taken the High Speed Rail (HSR); it’s much faster, taking only an hour and a half."
       },
       {
         "speaker": "國安",
         "traditional": "好，我下次一定要坐高鐵。你呢？這次旅行怎麼樣？",
-        "simplified": "好，我下次一定要坐高鐵。你呢？這次旅行怎麼樣？",
+        "simplified": "好，我下次一定要坐高铁。你呢？这次旅行怎么样？",
         "pinyin": "Hǎo, wǒ xià cì yídìng yào zuò gāotiě. Nǐ ne? Zhè cì lǚxíng zěnmeyàng?",
         "english": "All right, I'll definitely take the HSR next time. How about you? How was your trip?"
       },
       {
         "speaker": "家樂",
         "traditional": "我玩得很開心，可是旅館的房間有點問題，浴室沒有水。",
-        "simplified": "我玩得很開心，可是旅館的房間有點問題，浴室沒有水。",
+        "simplified": "我玩得很开心，可是旅馆的房间有点问题，浴室没有水。",
         "pinyin": "Wǒ wán de hěn kāixīn, kěshì lǚguǎn de fángjiān yǒudiǎn wèntí, yùshì méiyǒu shuǐ.",
         "english": "I had a great time, but there was a problem with the hotel room: the bathroom had no water."
       },
       {
         "speaker": "國安",
         "traditional": "沒有水？那你怎麼洗澡？",
-        "simplified": "沒有水？那你怎麼洗澡？",
+        "simplified": "没有水？那你怎么洗澡？",
         "pinyin": "Méiyǒu shuǐ? Nà nǐ zěnme xǐzǎo?",
         "english": "No water? Then how did you take a shower?"
       },
       {
         "speaker": "家樂",
         "traditional": "後來我換了房間，旅館老闆說付一半的錢就好了。",
-        "simplified": "後來我換了房間，旅館老闆說付一半的錢就好了。",
+        "simplified": "后来我换了房间，旅馆老板说付一半的钱就好了。",
         "pinyin": "Hòulái wǒ huàn le fángjiān, lǚguǎn lǎobǎn shuō fù yíbàn de qián jiù hǎo le.",
         "english": "Later I changed rooms, and the hotel owner said paying half price was fine."
       },
       {
         "speaker": "國安",
         "traditional": "合歡山下雪了嗎？冷不冷？",
-        "simplified": "合歡山下雪了嗎？冷不冷？",
+        "simplified": "合欢山下雪了吗？冷不冷？",
         "pinyin": "Héhuān Shān xiàxuě le ma? Lěng bù lěng?",
         "english": "Did it snow on Hehuanshan? Was it cold?"
       },
       {
         "speaker": "家樂",
         "traditional": "下雪了，很冷，風也很大，可是很好玩。你看，這是我照的相片。",
-        "simplified": "下雪了，很冷，風也很大，可是很好玩。你看，這是我照的相片。",
+        "simplified": "下雪了，很冷，风也很大，可是很好玩。你看，这是我照的相片。",
         "pinyin": "Xiàxuě le, hěn lěng, fēng yě hěn dà, kěshì hěn hǎowán. Nǐ kàn, zhè shì wǒ zhào de xiàngpiàn.",
         "english": "It did snow. It was very cold, and the wind was strong, but it was really fun. Look, these are photos I took."
       },
       {
         "speaker": "國安",
         "traditional": "你笑得好開心，風景真漂亮！",
-        "simplified": "你笑得好開心，風景真漂亮！",
+        "simplified": "你笑得好开心，风景真漂亮！",
         "pinyin": "Nǐ xiào de hǎo kāixīn, fēngjǐng zhēn piàoliàng!",
         "english": "You're smiling so happily, and the scenery is really beautiful!"
       }
@@ -3233,7 +3233,7 @@ export const ALL_READINGS_DATA: ReadingRecord[] = [
         "speaker": "narrator",
         "traditional": "台灣不大，比荷蘭小一點，從北到南只有385公里。但是有山有海，風景漂亮的地方很多。而且交通很方便，從山上到海邊，不需要太多時間，有的外國人覺得這樣很有意思。",
         "simplified": "台湾不大，比荷兰小一点，从北到南只有385公里。但是有山有海，风景漂亮的地方很多。而且交通很方便，从山上到海边，不需要太多时间，有的外国人觉得这样很有意思。",
-        "pinyin": "Táiwān bú dà, bǐ Hélán xiǎo yìdiǎn, cóng běi dào nán zhǐ yǒu sān-bǎi-bā-shí-wǔ gōnglǐ. Dànshì yǒu shān yǒu hǎi, fēngjǐng piàoliàng de dìfāng hěn duō. Érqiě jiāotōng hěn fāngbiàn, cóng shān shàng dào hǎibiān, bù xūyào tài duō shíjiān, yǒude wàiguórén juéde zhèyàng hěn yǒuyìsi.",
+        "pinyin": "Táiwān bú dà, bǐ Hélán xiǎo yìdiǎn, cóng běi dào nán zhǐ yǒu 385 gōnglǐ. Dànshì yǒu shān yǒu hǎi, fēngjǐng piàoliàng de dìfāng hěn duō. Érqiě jiāotōng hěn fāngbiàn, cóng shān shàng dào hǎibiān, bù xūyào tài duō shíjiān, yǒude wàiguórén juéde zhèyàng hěn yǒuyìsi.",
         "english": "Taiwan is not big—a bit smaller than the Netherlands, only 385 kilometers from north to south. However, it has both mountains and the sea, with many scenic spots. Furthermore, transportation is very convenient: going from the mountains to the coast doesn't take much time, which some foreigners find fascinating."
       },
       {

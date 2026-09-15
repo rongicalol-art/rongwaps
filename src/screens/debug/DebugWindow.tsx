@@ -87,7 +87,7 @@ export const DebugWindow = () => {
           <a 
             href="https://supabase.com/dashboard/projects" 
             target="_blank" rel="noreferrer"
-            className="px-4 py-2 font-black text-xs md:text-sm uppercase tracking-wider rounded-control border-b-[length:var(--depth-sm)] border-black active:border-b-0 active:translate-y-[length:var(--depth-sm)] bg-ui-ink-strong text-white hover:brightness-110 transition-all select-none"
+            className="px-4 py-2 font-black text-xs md:text-sm uppercase tracking-wider rounded-control border-b-[length:var(--depth-sm)] border-ui-border active:border-b-0 active:translate-y-[length:var(--depth-sm)] bg-ui-ink-strong text-white hover:brightness-110 transition-all select-none"
           >
             Open Supabase DB
           </a>
@@ -232,7 +232,7 @@ export const DebugWindow = () => {
             </div>
             
             {errorMessage && (
-              <div className="bg-red-50 text-red-600 p-4 rounded-xl text-sm font-bold border border-red-200">
+              <div className="bg-feedback-danger/10 text-feedback-danger-edge p-4 rounded-feature text-sm font-bold border border-feedback-danger-edge/30">
                 {errorMessage}
               </div>
             )}

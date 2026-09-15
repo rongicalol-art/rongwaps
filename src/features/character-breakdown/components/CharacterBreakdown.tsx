@@ -19,7 +19,7 @@ function RootTree({
   return (
     <div className="flex flex-col items-center w-full relative pt-2 px-4 sm:px-0">
        <div className="w-full flex flex-col relative z-10 gap-6">
-         <div className="flex flex-col w-full bg-white border-2 border-[#E5E5E5] border-b-[6px] rounded-[24px] sm:rounded-[28px] overflow-hidden z-10 relative">
+         <div className="flex flex-col w-full bg-ui-surface border-2 border-ui-border border-b-[length:var(--depth-lg)] rounded-feature overflow-hidden z-10 relative">
            <CharNodeItem 
              char={char} 
              isRoot={true} 

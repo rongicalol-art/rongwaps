@@ -115,7 +115,7 @@ export function InteractiveGrammarSentence({
                 aria-describedby={isOpen ? tooltipId : undefined}
                 aria-label={`${text}: ${word.pinyin}, ${word.meaning}`}
                 className={cn(
-                  '-mx-0.5 rounded-[8px] px-0.5 font-chinese font-black leading-tight outline-none transition-colors hover:bg-brand-primary-soft focus-visible:bg-brand-primary-soft focus-visible:ring-2 focus-visible:ring-brand-primary/35 active:bg-brand-primary-soft',
+                  '-mx-0.5 rounded-xs px-0.5 font-chinese font-black leading-tight transition-colors hover:bg-brand-primary-soft focus-ring-inline focus-visible:bg-brand-primary-soft active:bg-brand-primary-soft',
                   teachingTextSizeClass,
                   isFocus
                     ? 'text-brand-primary font-black'

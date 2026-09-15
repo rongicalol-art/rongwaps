@@ -6,6 +6,7 @@ interface CollectionStat {
   title: string;
   count?: number;
   accentBg?: string;
+  colorFront?: string;
 }
 
 interface LibraryStatsCardProps {
@@ -13,12 +14,12 @@ interface LibraryStatsCardProps {
 }
 
 const FALLBACK_COLORS = [
-  '#FFB020', '#CE82FF', '#1CB0F6', '#58CC02', '#FF4B4B', '#00CD9C',
+  '#1CB0F6', '#58CC02', '#FF9600', '#FF4B4B', '#FFC800', '#CE82FF', '#00CD9C', '#FF64B4',
 ];
 
-function extractColor(accentBg: string | undefined, index: number): string {
-  const match = accentBg?.match(/\[([^\]]+)\]/);
-  return match ? match[1] : FALLBACK_COLORS[index % FALLBACK_COLORS.length];
+function extractColor(collection: CollectionStat | undefined, index: number): string {
+  if (collection?.colorFront) return collection.colorFront;
+  return FALLBACK_COLORS[index % FALLBACK_COLORS.length];
 }
 
 function DonutChart({ collections = [] }: { collections?: CollectionStat[] }) {
@@ -32,7 +33,7 @@ function DonutChart({ collections = [] }: { collections?: CollectionStat[] }) {
   if (total === 0) {
     return (
       <svg viewBox="0 0 80 80" className="h-20 w-20 shrink-0">
-        <circle cx={cx} cy={cy} r={r} fill="none" stroke="#E7E5E4" strokeWidth="8" />
+        <circle cx={cx} cy={cy} r={r} fill="none" stroke="var(--color-ui-divider)" strokeWidth="8" />
       </svg>
     );
   }
@@ -40,7 +41,7 @@ function DonutChart({ collections = [] }: { collections?: CollectionStat[] }) {
   const activeCollections = collections.filter((c) => (c?.count || 0) > 0);
   let offset = 0;
   const slices = activeCollections.map((c, i) => {
-    const color = extractColor(c.accentBg, i);
+    const color = extractColor(c, i);
     const count = c.count || 0;
     const fraction = count / total;
     const dash = Math.max(0, fraction * circumference - (activeCollections.length > 1 ? GAP : 0));
@@ -52,7 +53,7 @@ function DonutChart({ collections = [] }: { collections?: CollectionStat[] }) {
 
   return (
     <svg viewBox="0 0 80 80" className="h-20 w-20 shrink-0 -rotate-90">
-      <circle cx={cx} cy={cy} r={r} fill="none" stroke="#F0F2F3" strokeWidth="8" />
+      <circle cx={cx} cy={cy} r={r} fill="none" stroke="var(--color-ui-divider)" strokeWidth="8" />
       {slices.map((s, i) => (
         <circle
           key={i}
@@ -82,19 +83,18 @@ export const LibraryStatsCard = memo(function LibraryStatsCard({
       className="rounded-feature bg-ui-surface p-5 sm:p-6 border-b-[length:var(--depth-md)] border-ui-border"
     >
       <div className="mb-4 flex items-center gap-2.5">
-        <AppIcon name="analytics" size={19} className="text-emerald-500" />
-        <h2 className="text-[16px] font-black text-ui-ink-strong">
+        <AppIcon name="analytics" size={19} className="text-feedback-success" />
+        <h2 className="text-base font-black text-ui-ink-strong">
           Library at a glance
         </h2>
       </div>
-
 
       <div className="flex items-center gap-5">
         {/* Donut with total */}
         <div className="relative shrink-0">
           <DonutChart collections={collections} />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-            <strong className="block text-[17px] font-black leading-none text-ui-ink-strong">
+            <strong className="block text-lg font-black leading-none text-ui-ink-strong">
               {totalItems}
             </strong>
             <span className="mt-0.5 block text-[8px] font-black uppercase tracking-wide text-ui-muted">
@@ -106,7 +106,7 @@ export const LibraryStatsCard = memo(function LibraryStatsCard({
         {/* Legend */}
         <dl className="min-w-0 flex-1 space-y-1.5">
           {collections.map((collection, i) => {
-            const color = extractColor(collection.accentBg, i);
+            const color = extractColor(collection, i);
             const count = collection.count || 0;
             return (
               <div key={collection.id || i} className="flex items-center justify-between gap-2">
@@ -115,11 +115,11 @@ export const LibraryStatsCard = memo(function LibraryStatsCard({
                     className="block h-2 w-2 shrink-0 rounded-full"
                     style={{ backgroundColor: color }}
                   />
-                  <dt className="min-w-0 truncate text-[11px] font-bold text-ui-muted-strong">
+                  <dt className="min-w-0 truncate text-xs font-bold text-ui-muted-strong">
                     {collection.title}
                   </dt>
                 </div>
-                <dd className="shrink-0 rounded-full bg-ui-canvas px-2 py-0.5 text-[11px] font-black text-ui-ink">
+                <dd className="shrink-0 rounded-full bg-ui-canvas px-2 py-0.5 text-xs font-black text-ui-ink">
                   {count}
                 </dd>
               </div>

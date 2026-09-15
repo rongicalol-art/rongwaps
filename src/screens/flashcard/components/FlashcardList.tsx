@@ -65,7 +65,7 @@ function BookToken({ bookId, lessonId, excluded }: { bookId: number; lessonId: n
   return (
     <span
       className={cn(
-        'shrink-0 select-none rounded-[6px] px-1.5 py-[3px] text-[10px] font-black uppercase leading-none tracking-wide',
+        'shrink-0 select-none rounded-xs px-1.5 py-1 text-xs font-black uppercase leading-none tracking-wide',
         excluded ? 'bg-ui-canvas text-ui-muted/60' : 'bg-ui-canvas text-ui-muted-strong',
       )}
     >
@@ -105,7 +105,7 @@ export const FlashcardList = memo(function FlashcardList({
           <AppIcon name="cards" size={28} />
         </span>
         <div className="max-w-sm">
-          <p className="text-[17px] font-extrabold text-ui-ink">No vocab here yet</p>
+          <p className="text-lg font-extrabold text-ui-ink">No vocab here yet</p>
           <p className="mt-1 text-sm font-medium text-ui-muted">
             This selection has no words to list. Pick a lesson or add words to your library.
           </p>
@@ -142,7 +142,7 @@ export const FlashcardList = memo(function FlashcardList({
               )}
               {isFirst && (
                 <span className={cn(
-                  'px-4 pt-3 pb-0.5 text-[11px] font-extrabold uppercase tracking-widest transition-colors',
+                  'px-4 pt-3 pb-0.5 text-xs font-extrabold uppercase tracking-widest transition-colors',
                   excluded ? 'text-ui-muted' : accentColor,
                 )}>
                   Part {partId}
@@ -153,21 +153,21 @@ export const FlashcardList = memo(function FlashcardList({
                 onClick={() => onToggleCard(card.id)}
                 aria-pressed={!excluded}
                 aria-label={excluded ? `Include ${card.front}` : `Exclude ${card.front}`}
-                className="group flex min-w-0 flex-1 items-center gap-3 self-stretch rounded-[inherit] px-3.5 py-3 text-left outline-none focus-ring"
+                className="group flex min-w-0 flex-1 items-center gap-3.5 self-stretch rounded-[inherit] px-4 py-3 sm:py-3.5 text-left outline-none focus-ring"
               >
                 <span className={cn(
-                  'shrink-0 font-chinese text-[22px] font-black leading-none transition-colors',
+                  'shrink-0 font-chinese text-2xl font-black leading-none transition-colors sm:text-[28px]',
                   excluded ? 'text-ui-muted/60' : 'text-ui-ink',
                 )}>
                   {card.front}
                 </span>
 
-                <span aria-hidden="true" className="h-8 w-px shrink-0 bg-ui-divider" />
+                <span aria-hidden="true" className="h-9 sm:h-10 w-px shrink-0 bg-ui-divider" />
 
                 <span className="min-w-0 flex-1">
                   {card.pinyin && (
                     <span className={cn(
-                      'block truncate text-[13px] font-extrabold leading-tight transition-colors',
+                      'block truncate text-xs font-extrabold leading-tight transition-colors sm:text-[13px]',
                       excluded ? 'text-ui-muted' : 'text-ui-ink-strong',
                     )}>
                       {card.pinyin}
@@ -175,7 +175,7 @@ export const FlashcardList = memo(function FlashcardList({
                   )}
                   {card.back && (
                     <span className={cn(
-                      'block truncate text-[13px] font-medium leading-snug transition-colors',
+                      'block truncate text-xs font-medium leading-snug transition-colors sm:text-[13px]',
                       excluded ? 'text-ui-muted/50' : 'text-ui-muted',
                     )}>
                       {card.back}

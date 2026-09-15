@@ -2,7 +2,7 @@ import { AppIcon, SectionEyebrow, Skeleton } from '../../../lib/widgets';
 import { useCharacterDecomposition } from '../hooks/useWordExtras';
 
 const GLYPH_BUTTON =
-  'flex h-12 w-12 shrink-0 items-center justify-center rounded-compact bg-ui-canvas font-chinese text-xl font-bold text-ui-ink-strong outline-none transition-colors hover:bg-ui-surface-hover focus-visible:ring-4 focus-visible:ring-brand-primary/25 active:bg-ui-divider';
+  'flex h-12 w-12 shrink-0 items-center justify-center rounded-compact bg-ui-canvas font-chinese text-xl font-bold text-ui-ink-strong transition-colors hover:bg-ui-surface-hover focus-ring active:bg-ui-divider';
 
 function DecompositionCard({
   char,
@@ -16,7 +16,7 @@ function DecompositionCard({
   // Still loading and no cached breakdown yet.
   if (data === null) {
     return (
-      <div className="flex min-h-[120px] w-full flex-col gap-3 rounded-feature bg-ui-surface p-4 shadow-[0_3px_0_var(--color-ui-divider)]">
+      <div className="flex min-h-[120px] w-full flex-col gap-3 rounded-feature bg-ui-surface p-4 shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
         <div className="flex items-center gap-3">
           <Skeleton className="h-14 w-14 rounded-compact" />
           <div className="flex flex-1 flex-col gap-1.5">
@@ -34,20 +34,20 @@ function DecompositionCard({
   }
 
   return (
-    <div className="flex min-h-[120px] w-full flex-col gap-3 rounded-feature bg-ui-surface p-4 shadow-[0_3px_0_var(--color-ui-divider)]">
+    <div className="flex min-h-[120px] w-full flex-col gap-3 rounded-feature bg-ui-surface p-4 shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
       <button
         type="button"
         aria-label={`Open breakdown for ${char}`}
         onClick={() => onOpenCharacter(char)}
-        className="group flex w-full items-center gap-3 text-left outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25"
+        className="group flex w-full items-center gap-3 text-left rounded-compact focus-ring"
       >
-        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-compact bg-ui-canvas font-chinese text-[26px] font-bold leading-none text-ui-ink-strong transition-colors group-hover:bg-ui-surface-hover">
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-compact bg-ui-canvas font-chinese text-2xl font-bold leading-none text-ui-ink-strong transition-colors group-hover:bg-ui-surface-hover">
           {char}
         </span>
         <span className="flex min-w-0 flex-1 flex-col leading-tight">
-          {pinyin && <span className="text-[12px] font-extrabold text-brand-primary">{pinyin}</span>}
+          {pinyin && <span className="text-xs font-extrabold text-brand-primary">{pinyin}</span>}
           {meaning && (
-            <span className="line-clamp-2 text-[12px] font-bold leading-snug text-ui-muted">{meaning}</span>
+            <span className="line-clamp-2 text-xs font-bold leading-snug text-ui-muted">{meaning}</span>
           )}
         </span>
       </button>
@@ -77,7 +77,7 @@ function DecompositionCard({
           )}
         </div>
       ) : (
-        <p className="text-[11px] font-bold text-ui-muted">No breakdown available</p>
+        <p className="text-xs font-bold text-ui-muted">No breakdown available</p>
       )}
     </div>
   );

@@ -48,7 +48,7 @@ export function GrammarInteractiveSentence({
           className="text-ui-muted hover:text-brand-primary"
         />
       </div>
-      <p className="mt-4 rounded-[14px] bg-brand-primary/5 px-4 py-3 text-sm font-bold leading-6 text-ui-muted-strong">
+      <p className="mt-4 rounded-compact bg-brand-primary/5 px-4 py-3 text-sm font-bold leading-6 text-ui-muted-strong">
         <GrammarFocusText
           text={choice.note}
           contextTokens={contextTokens}

@@ -1,4 +1,5 @@
 import express from "express";
+import compression from "compression";
 import rateLimit from "express-rate-limit";
 import path from "path";
 import { createServer as createViteServer } from "vite";
@@ -28,6 +29,7 @@ const MINIMAX_VOICE_MAP: Record<string, string> = {
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 
+app.use(compression());
 app.use(express.json());
 
 // ─── Rate limiting (abuse protection for paid/rate-limited APIs) ──────
@@ -47,40 +49,153 @@ const paidApiLimiter = rateLimit({
   message: { error: "Too many requests. Try again later." },
 });
 
- // ─── Audio proxy endpoint (bypasses CORS for Safari) ──────────────────
- // GET /api/audio/:filename — downloads from Supabase Storage and streams to client
- app.get("/api/audio/*", apiLimiter, async (req: express.Request, res: express.Response) => {
-   try {
-     const fileName = req.params[0];
-     if (!fileName) {
-       return res.status(400).json({ error: "Missing filename" });
-     }
- 
-     // Path traversal protection: only allow safe filename characters and forbid ../ segments.
-     if (fileName.includes("..") || fileName.includes("/") || fileName.includes("\\") || !/^[\w.-]+$/.test(fileName)) {
-       return res.status(400).json({ error: "Invalid filename" });
-     }
- 
-     const { data, error } = await supabase.storage.from("vocabulary-audio").download(fileName);
-    if (error || !data) {
-      console.warn(`Audio proxy: file not found: ${fileName}`, error?.message);
+const audioProxyLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  limit: 1200, // High capacity for cohort study sessions & audio preloading (1200 req/min per IP)
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Too many audio requests. Try again later." },
+});
+
+// In-memory audio proxy cache for up to 1,000 files (~10-15 MB RAM)
+interface CachedAudio {
+  buffer: Buffer;
+  contentType: string;
+  etag: string;
+}
+
+const AUDIO_CACHE_MAX_ENTRIES = 1000;
+const audioMemoryCache = new Map<string, CachedAudio>();
+const audioInFlightFetches = new Map<string, Promise<CachedAudio | null>>();
+
+function setInAudioMemoryCache(key: string, item: CachedAudio) {
+  if (audioMemoryCache.size >= AUDIO_CACHE_MAX_ENTRIES) {
+    const oldestKey = audioMemoryCache.keys().next().value;
+    if (oldestKey !== undefined) {
+      audioMemoryCache.delete(oldestKey);
+    }
+  }
+  audioMemoryCache.set(key, item);
+}
+
+function sendAudioBuffer(
+  req: express.Request,
+  res: express.Response,
+  buffer: Buffer,
+  contentType: string,
+  etag: string,
+  cacheControl: string = "public, max-age=31536000, immutable",
+) {
+  // HTTP 304 Not Modified validation
+  if (req.headers["if-none-match"] === etag) {
+    return res.status(304).end();
+  }
+
+  res.setHeader("Accept-Ranges", "bytes");
+  res.setHeader("ETag", etag);
+  res.setHeader("Cache-Control", cacheControl);
+
+  const range = req.headers.range;
+  if (!range) {
+    res.setHeader("Content-Type", contentType);
+    res.setHeader("Content-Length", buffer.length);
+    return res.send(buffer);
+  }
+
+  // Parse Range header e.g. "bytes=0-1023" or "bytes=0-" or "bytes=-500"
+  const match = /^bytes=(\d*)-(\d*)$/.exec(range.trim());
+  if (!match) {
+    res.setHeader("Content-Range", `bytes */${buffer.length}`);
+    return res.status(416).end();
+  }
+
+  let start = match[1] ? parseInt(match[1], 10) : undefined;
+  let end = match[2] ? parseInt(match[2], 10) : undefined;
+
+  if (start === undefined && end !== undefined) {
+    // Suffix range: bytes=-500 (last 500 bytes)
+    start = buffer.length - end;
+    end = buffer.length - 1;
+  } else if (start !== undefined && end === undefined) {
+    // Open range: bytes=500-
+    end = buffer.length - 1;
+  }
+
+  if (start === undefined || end === undefined || start >= buffer.length || end < start || start < 0) {
+    res.setHeader("Content-Range", `bytes */${buffer.length}`);
+    return res.status(416).end();
+  }
+
+  end = Math.min(end, buffer.length - 1);
+  const chunkSize = end - start + 1;
+
+  res.status(206);
+  res.setHeader("Content-Type", contentType);
+  res.setHeader("Content-Range", `bytes ${start}-${end}/${buffer.length}`);
+  res.setHeader("Content-Length", chunkSize);
+  return res.send(buffer.subarray(start, end + 1));
+}
+
+// ─── Audio proxy endpoint (bypasses CORS for Safari) ──────────────────
+// GET /api/audio/:filename — downloads from Supabase Storage, caches in RAM, and streams to client
+app.get("/api/audio/*", audioProxyLimiter, async (req: express.Request, res: express.Response) => {
+  try {
+    const fileName = req.params[0];
+    if (!fileName) {
+      return res.status(400).json({ error: "Missing filename" });
+    }
+
+    // Path traversal protection: only allow safe filename characters and forbid ../ segments.
+    if (fileName.includes("..") || fileName.includes("/") || fileName.includes("\\") || !/^[\w.-]+$/.test(fileName)) {
+      return res.status(400).json({ error: "Invalid filename" });
+    }
+
+    // 1. Check in-memory cache
+    let cached = audioMemoryCache.get(fileName);
+
+    // 2. If not in cache, fetch with in-flight deduplication
+    if (!cached) {
+      let inFlight = audioInFlightFetches.get(fileName);
+      if (!inFlight) {
+        inFlight = (async () => {
+          try {
+            const { data, error } = await supabase.storage.from("vocabulary-audio").download(fileName);
+            if (error || !data) {
+              console.warn(`Audio proxy: file not found: ${fileName}`, error?.message);
+              return null;
+            }
+
+            const buffer = Buffer.from(await data.arrayBuffer());
+            const ext = fileName.split(".").pop()?.toLowerCase();
+            const mimeMap: Record<string, string> = {
+              mp3: "audio/mpeg",
+              wav: "audio/wav",
+              ogg: "audio/ogg",
+              m4a: "audio/mp4",
+            };
+            const contentType = mimeMap[ext || ""] || "audio/mpeg";
+            const etag = `"${fileName}-${buffer.length}"`;
+
+            const item: CachedAudio = { buffer, contentType, etag };
+            setInAudioMemoryCache(fileName, item);
+            return item;
+          } catch (fetchErr) {
+            console.error(`Audio proxy download error for ${fileName}:`, fetchErr);
+            return null;
+          } finally {
+            audioInFlightFetches.delete(fileName);
+          }
+        })();
+        audioInFlightFetches.set(fileName, inFlight);
+      }
+      cached = (await inFlight) || undefined;
+    }
+
+    if (!cached) {
       return res.status(404).json({ error: "Audio file not found" });
     }
 
-    const buffer = Buffer.from(await data.arrayBuffer());
-    const ext = fileName.split(".").pop()?.toLowerCase();
-    const mimeMap: Record<string, string> = {
-      mp3: "audio/mpeg",
-      wav: "audio/wav",
-      ogg: "audio/ogg",
-      m4a: "audio/mp4",
-    };
-    const contentType = mimeMap[ext || ""] || "audio/mpeg";
-
-    res.setHeader("Content-Type", contentType);
-    res.setHeader("Content-Length", buffer.length);
-    res.setHeader("Cache-Control", "public, max-age=86400");
-    res.send(buffer);
+    sendAudioBuffer(req, res, cached.buffer, cached.contentType, cached.etag);
   } catch (err: unknown) {
     console.error("Audio proxy error:", err);
     res.status(500).json({ error: "Failed to fetch audio" });
@@ -182,18 +297,29 @@ async function synthesizeNeural(text: string, voiceName: string): Promise<Buffer
   return Buffer.concat(chunks);
 }
 
-async function getTtsAudio(text: string, voiceName: string): Promise<Buffer> {
+async function getTtsAudio(text: string, voiceName: string): Promise<CachedAudio> {
   const key = ttsCacheKey(text, voiceName);
+  const cacheKey = `tts-key:${key}`;
+  const inMemory = audioMemoryCache.get(cacheKey);
+  if (inMemory) return inMemory;
 
   // 1. Check cache
   const { data, error } = await supabase.storage.from(TTS_AUDIO_BUCKET).download(key);
   if (!error && data) {
-    return Buffer.from(await data.arrayBuffer());
+    const buffer = Buffer.from(await data.arrayBuffer());
+    const etag = `"tts-${Buffer.from(key).toString("base64url")}-${buffer.length}"`;
+    const item: CachedAudio = { buffer, contentType: "audio/mpeg", etag };
+    setInAudioMemoryCache(cacheKey, item);
+    return item;
   }
 
   // 2. Dedupe concurrent synthesis
   const existing = ttsInFlight.get(key);
-  if (existing) return existing;
+  if (existing) {
+    const buffer = await existing;
+    const etag = `"tts-${Buffer.from(key).toString("base64url")}-${buffer.length}"`;
+    return { buffer, contentType: "audio/mpeg", etag };
+  }
 
   const promise = (async () => {
     const audio = await synthesizeNeural(text, voiceName);
@@ -211,7 +337,11 @@ async function getTtsAudio(text: string, voiceName: string): Promise<Buffer> {
 
   ttsInFlight.set(key, promise);
   try {
-    return await promise;
+    const buffer = await promise;
+    const etag = `"tts-${Buffer.from(key).toString("base64url")}-${buffer.length}"`;
+    const item: CachedAudio = { buffer, contentType: "audio/mpeg", etag };
+    setInAudioMemoryCache(cacheKey, item);
+    return item;
   } finally {
     ttsInFlight.delete(key);
   }
@@ -245,12 +375,9 @@ app.post("/api/tts", paidApiLimiter, async (req: express.Request, res: express.R
     }
 
     const voiceName = voice && TTS_VOICES[voice] ? voice : "zh-CN-XiaoxiaoNeural";
-    const audio = await getTtsAudio(cleanText, voiceName);
+    const cachedAudio = await getTtsAudio(cleanText, voiceName);
 
-    res.setHeader("Content-Type", "audio/mpeg");
-    res.setHeader("Content-Length", audio.length);
-    res.setHeader("Cache-Control", "public, max-age=86400");
-    res.send(audio);
+    sendAudioBuffer(req, res, cachedAudio.buffer, cachedAudio.contentType, cachedAudio.etag, "public, max-age=86400");
   } catch (err: unknown) {
     console.error("Neural TTS error:", err);
     res.status(502).json({ error: "Neural TTS unavailable right now." });
@@ -266,15 +393,21 @@ app.get("/api/tts-cache/:text", apiLimiter, async (req: express.Request, res: ex
       return res.status(400).json({ error: "Invalid text or voice" });
     }
     const key = ttsCacheKey(text, voice);
-    const { data, error } = await supabase.storage.from(TTS_AUDIO_BUCKET).download(key);
-    if (error || !data) {
-      return res.status(404).json({ error: "TTS audio not cached" });
+    const cacheKey = `tts-key:${key}`;
+    let cached = audioMemoryCache.get(cacheKey);
+
+    if (!cached) {
+      const { data, error } = await supabase.storage.from(TTS_AUDIO_BUCKET).download(key);
+      if (error || !data) {
+        return res.status(404).json({ error: "TTS audio not cached" });
+      }
+      const buffer = Buffer.from(await data.arrayBuffer());
+      const etag = `"tts-${Buffer.from(key).toString("base64url")}-${buffer.length}"`;
+      cached = { buffer, contentType: "audio/mpeg", etag };
+      setInAudioMemoryCache(cacheKey, cached);
     }
-    const buffer = Buffer.from(await data.arrayBuffer());
-    res.setHeader("Content-Type", "audio/mpeg");
-    res.setHeader("Content-Length", buffer.length);
-    res.setHeader("Cache-Control", "public, max-age=86400");
-    res.send(buffer);
+
+    sendAudioBuffer(req, res, cached.buffer, cached.contentType, cached.etag, "public, max-age=86400");
   } catch (err: unknown) {
     console.error("TTS cache read error:", err);
     res.status(500).json({ error: "Failed to fetch TTS audio" });
@@ -289,16 +422,22 @@ app.get("/api/tts/:voice/*", apiLimiter, async (req: express.Request, res: expre
     if (!fileTail) {
       return res.status(400).json({ error: "Missing filename" });
     }
-    const key = `${TTS_CACHE_PREFIX}${voice}/${fileTail}`;
-    const { data, error } = await supabase.storage.from(TTS_AUDIO_BUCKET).download(key);
-    if (error || !data) {
-      return res.status(404).json({ error: "TTS audio not found" });
+    const cacheKey = `tts:${voice}:${fileTail}`;
+    let cached = audioMemoryCache.get(cacheKey);
+
+    if (!cached) {
+      const key = `${TTS_CACHE_PREFIX}${voice}/${fileTail}`;
+      const { data, error } = await supabase.storage.from(TTS_AUDIO_BUCKET).download(key);
+      if (error || !data) {
+        return res.status(404).json({ error: "TTS audio not found" });
+      }
+      const buffer = Buffer.from(await data.arrayBuffer());
+      const etag = `"tts-${voice}-${fileTail}-${buffer.length}"`;
+      cached = { buffer, contentType: "audio/mpeg", etag };
+      setInAudioMemoryCache(cacheKey, cached);
     }
-    const buffer = Buffer.from(await data.arrayBuffer());
-    res.setHeader("Content-Type", "audio/mpeg");
-    res.setHeader("Content-Length", buffer.length);
-    res.setHeader("Cache-Control", "public, max-age=86400");
-    res.send(buffer);
+
+    sendAudioBuffer(req, res, cached.buffer, cached.contentType, cached.etag, "public, max-age=86400");
   } catch (err: unknown) {
     console.error("TTS cache read error:", err);
     res.status(500).json({ error: "Failed to fetch TTS audio" });

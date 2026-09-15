@@ -63,12 +63,12 @@ export function SentenceUnscrambleExercise({
           </h2>
           <p className="mt-2 text-sm font-bold text-ui-muted-strong sm:text-base">{page.exerciseInstruction}</p>
         </div>
-        <span className="shrink-0 rounded-[13px] border border-ui-border bg-ui-surface px-3 py-2 text-xs font-black text-ui-muted-strong">
+        <span className="shrink-0 rounded-compact border border-ui-border bg-ui-surface px-3 py-2 text-xs font-black text-ui-muted-strong">
           Page {page.printedPages[0]}
         </span>
       </div>
 
-      <div className="mx-auto max-w-4xl overflow-hidden rounded-[20px] border-2 border-ui-border bg-ui-surface p-3 sm:p-6">
+      <div className="mx-auto max-w-4xl overflow-hidden rounded-feature border-2 border-ui-border bg-ui-surface p-3 sm:p-6">
         <article className="bg-ui-surface px-1 py-2 sm:px-2 sm:py-1">
           <p className="text-sm font-black text-ui-ink-strong">{data.prompt}</p>
           <p className="mt-1 text-xs font-bold text-ui-muted-strong">Tap tiles to place them. Drag or use arrow keys to reorder.</p>
@@ -78,7 +78,7 @@ export function SentenceUnscrambleExercise({
             onDragOver={(event) => event.preventDefault()}
             onDrop={handleDropIntoAnswer}
             className={cn(
-              'mt-5 flex min-h-20 flex-wrap items-center gap-2 rounded-[16px] border-2 border-dashed bg-ui-canvas p-3',
+              'mt-5 flex min-h-20 flex-wrap items-center gap-2 rounded-control border-2 border-dashed bg-ui-canvas p-3',
               exercise.status === 'needs-repair' && 'border-feedback-danger',
               exercise.status === 'complete' && 'border-feedback-success',
               exercise.status === 'idle' && 'border-ui-border',
@@ -118,8 +118,8 @@ export function SentenceUnscrambleExercise({
               {data.correctOrder.map((tileId) => {
                 const tile = tileById(tileId);
                 return tile ? (
-                  <div key={tile.id} className="rounded-[10px] bg-brand-primary/10 px-2 py-2 text-center">
-                    <p className="text-[10px] font-black uppercase text-brand-primary">{tile.role}</p>
+                  <div key={tile.id} className="rounded-xs bg-brand-primary/10 px-2 py-2 text-center">
+                    <p className="text-xs font-black uppercase text-brand-primary">{tile.role}</p>
                     <p className="mt-0.5 font-chinese text-sm font-black text-ui-ink-strong">{textFor(tile)}</p>
                   </div>
                 ) : null;

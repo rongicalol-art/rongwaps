@@ -11,7 +11,6 @@ import {
   speakUtterance,
 } from './audio/speechEngine';
 import {
-  playBufferSource,
   playHtmlAudio,
   playRangeOnAudioElement,
   type PlayRangeOptions,
@@ -83,10 +82,22 @@ export class AudioService {
   private async getAudioObjectUrl(fileName: string): Promise<string> {
     const existing = this.objectUrls.get(fileName);
     if (existing) return existing;
-    const blob = await fetchAudioBlob(fileName);
-    const objectUrl = URL.createObjectURL(blob);
-    cacheObjectUrl(this.objectUrls, fileName, objectUrl);
-    return objectUrl;
+    const inflight = this.blobPromises.get(fileName);
+    if (inflight) return inflight;
+
+    const promise = (async () => {
+      const blob = await fetchAudioBlob(fileName);
+      const objectUrl = URL.createObjectURL(blob);
+      cacheObjectUrl(this.objectUrls, fileName, objectUrl);
+      return objectUrl;
+    })();
+
+    this.blobPromises.set(fileName, promise);
+    try {
+      return await promise;
+    } finally {
+      this.blobPromises.delete(fileName);
+    }
   }
 
   public async preload(audioFileNames: (string | undefined)[]): Promise<void> {
@@ -237,7 +248,12 @@ export class AudioService {
       || lowercase.startsWith('https://');
   }
 
-  public play(audioFileName?: string, playbackRate = 1.0, textFallback?: string): Promise<void> {
+  public play(
+    audioFileName?: string,
+    playbackRate = 1.0,
+    textFallback?: string,
+    preferredVoice?: string,
+  ): Promise<void> {
     this.stop();
     const textToSpeak = textFallback
       || (audioFileName && !this.isAudioFileName(audioFileName) ? audioFileName : undefined);
@@ -246,13 +262,15 @@ export class AudioService {
       const finish = this.trackPlayback(resolve);
       const startSpeechFallback = () => {
         if (textToSpeak) {
+          const fallbackVoice = preferredVoice || 'zh-CN-XiaoxiaoNeural';
+          const fallbackLocale = fallbackVoice.startsWith('zh-TW') ? 'zh-TW' : 'zh-CN';
           playNeuralAudio(
             textToSpeak,
-            'zh-CN-XiaoxiaoNeural',
+            fallbackVoice,
             playbackRate,
             () => this.activePlaybackFinish === finish,
             finish,
-            () => void this.startSpeech(textToSpeak, 'zh-CN', 0.86, finish, true),
+            () => void this.startSpeech(textToSpeak, fallbackLocale, 0.86, finish, true),
             (audio) => { this.activeBlobAudio = audio; },
           );
         } else {
@@ -263,24 +281,6 @@ export class AudioService {
       if (!audioFileName || !this.isAudioFileName(audioFileName)) {
         startSpeechFallback();
         return;
-      }
-
-      if (this.audioContext && this.buffers.has(audioFileName)) {
-        try {
-          this.currentSource = playBufferSource(
-            this.audioContext,
-            this.buffers.get(audioFileName)!,
-            playbackRate,
-            () => {
-              this.currentSource = null;
-              finish();
-            },
-          );
-          return;
-        } catch (error) {
-          this.currentSource = null;
-          console.warn('Web Audio playback failed, trying HTML audio', error);
-        }
       }
 
       const audio = this.globalAudio;
@@ -354,10 +354,16 @@ export class AudioService {
   public setPlaybackRate(rate: number): void {
     const validRate = rate > 0 ? rate : 1;
     if (this.globalAudio) {
+      this.globalAudio.preservesPitch = true;
+      (this.globalAudio as unknown as { mozPreservesPitch?: boolean }).mozPreservesPitch = true;
+      (this.globalAudio as unknown as { webkitPreservesPitch?: boolean }).webkitPreservesPitch = true;
       this.globalAudio.defaultPlaybackRate = validRate;
       this.globalAudio.playbackRate = validRate;
     }
     if (this.activeBlobAudio) {
+      this.activeBlobAudio.preservesPitch = true;
+      (this.activeBlobAudio as unknown as { mozPreservesPitch?: boolean }).mozPreservesPitch = true;
+      (this.activeBlobAudio as unknown as { webkitPreservesPitch?: boolean }).webkitPreservesPitch = true;
       this.activeBlobAudio.defaultPlaybackRate = validRate;
       this.activeBlobAudio.playbackRate = validRate;
     }

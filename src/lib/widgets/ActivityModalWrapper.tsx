@@ -38,7 +38,7 @@ export const ActivityModalWrapper: React.FC<ActivityModalWrapperProps> = ({ id, 
         mass: 0.86,
         opacity: { duration: 0.2, ease: 'easeOut' },
       }}
-      className="absolute inset-0 z-[200] flex origin-bottom flex-col overflow-hidden bg-ui-practice-canvas overscroll-none pointer-events-auto will-change-[transform,opacity]"
+      className="absolute inset-0 z-[200] flex origin-bottom flex-col overflow-hidden bg-ui-practice-canvas overscroll-none pointer-events-auto"
     >
       {children}
       <div id="activity-overlays-root" className="absolute inset-0 z-[300] pointer-events-none" />

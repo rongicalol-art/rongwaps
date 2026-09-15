@@ -83,7 +83,7 @@ export function StrokeOrderBox({ char, size = 140, accentHex = DESIGN_TOKENS.col
        type="button"
        aria-label={`Replay stroke order for ${char}`}
        disabled={strokeDataFailed}
-       className={`relative overflow-hidden rounded-feature outline-none transition-transform active:scale-95 focus-visible:ring-4 focus-visible:ring-brand-primary/25 disabled:cursor-default disabled:active:scale-100 ${className}`}
+       className={`relative overflow-hidden rounded-feature transition-transform active:scale-95 focus-ring disabled:cursor-default disabled:active:scale-100 ${className}`}
        style={{ width: size, height: size }}
        onClick={() => writerRef.current?.loopCharacterAnimation?.()}
      >

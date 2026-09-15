@@ -5,7 +5,7 @@ import { useAppStore } from '../../../store/useAppStore';
 import { shuffleItems } from '../../../utils/sessionOrder';
 import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
 import { getCurriculumSessionKey, SHARED_REVIEW_SESSION_KEY } from '../../../utils/lessonPartSelection';
-import { buildMeaningChoices } from '../../../utils/meaningChoices';
+import { buildAttributeChoices, getCardChoiceTarget } from '../../../utils/meaningChoices';
 import { useCardSession } from '../../../hooks/useCardSession';
 
 // How many upcoming cards (without recorded audio) get neural TTS pre-warmed
@@ -17,6 +17,7 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
   const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
   const autoPlayAudio = usePracticePreferencesStore((state) => state.autoPlayAudio);
+  const listeningChoiceType = usePracticePreferencesStore((state) => state.listeningChoiceType);
   const sessionKey = isReviewDeck ? SHARED_REVIEW_SESSION_KEY : isLibraryDeck ? `shared_deck_library_${libraryActiveFolder}` : getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
 
   const { cards: loadedCards, isLoading } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
@@ -24,7 +25,7 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
   const [isPlaying, setIsPlaying] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isChecked, setIsChecked] = useState(false);
-  const currentCardChoicesRef = useRef<{ cardId: string; options: string[] } | null>(null);
+  const currentCardChoicesRef = useRef<{ cardId: string; choiceType: string; options: string[] } | null>(null);
   const isMountedRef = useRef(true);
   const playbackRequestRef = useRef(0);
 
@@ -65,19 +66,27 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
     session.toggleShuffle();
   }, [session]);
 
-  // Generate distinct, shuffled meanings.
-  // Pinned per card ID so background updates / tab switches never refresh choices mid-card.
+  // Generate distinct, shuffled choices matching the preferred choice type.
+  // Pinned per card ID and choiceType so background updates / tab switches never refresh choices mid-card.
   const options = useMemo(() => {
     if (!currentCard || loadedCards.length === 0) return [];
-    if (currentCardChoicesRef.current && currentCardChoicesRef.current.cardId === currentCard.id) {
+    if (
+      currentCardChoicesRef.current &&
+      currentCardChoicesRef.current.cardId === currentCard.id &&
+      currentCardChoicesRef.current.choiceType === listeningChoiceType
+    ) {
       return currentCardChoicesRef.current.options;
     }
 
-    const choices = buildMeaningChoices(currentCard, shuffleItems(loadedCards));
-    const result = shuffleItems(choices).map((choice) => choice.back);
-    currentCardChoicesRef.current = { cardId: currentCard.id, options: result };
+    const choices = shuffleItems(buildAttributeChoices(currentCard, shuffleItems(loadedCards), listeningChoiceType));
+    const result = choices.map((choice) => getCardChoiceTarget(choice, listeningChoiceType));
+    currentCardChoicesRef.current = { cardId: currentCard.id, choiceType: listeningChoiceType, options: result };
     return result;
-  }, [currentCard, loadedCards]);
+  }, [currentCard, listeningChoiceType, loadedCards]);
+
+  useEffect(() => {
+    clearAnswerState();
+  }, [currentCard?.id, listeningChoiceType, clearAnswerState]);
 
   const playAudio = useCallback(async (rate: number = pronunciationRate) => {
     if (!currentCard) return;
@@ -113,7 +122,8 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
     }
   }, [playlist, currentIndex]);
 
-  const isCorrect = selectedOption === currentCard?.back;
+  const correctTarget = currentCard ? getCardChoiceTarget(currentCard, listeningChoiceType) : null;
+  const isCorrect = selectedOption === correctTarget;
 
   const advanceCard = useCallback(() => {
     clearAnswerState();
@@ -126,9 +136,9 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
 
     setSelectedOption(option);
     setIsChecked(true);
-    const correct = option === currentCard.back;
+    const correct = option === getCardChoiceTarget(currentCard, listeningChoiceType);
     session.recordAnswer(currentCard, correct ? 4 : 2);
-  }, [currentCard, session]);
+  }, [currentCard, listeningChoiceType, session]);
 
   const handleCheck = useCallback(() => {
     if (!selectedOption) return;
@@ -176,6 +186,7 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
     unlearnedCount: session.unlearnedCount,
     learnedCount: session.learnedCount,
     isShuffled: session.isShuffled,
-    toggleShuffle
+    toggleShuffle,
+    listeningChoiceType,
   };
 }

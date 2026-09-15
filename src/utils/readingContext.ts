@@ -50,3 +50,34 @@ export function resolveActiveReadingIndex({
 
   return 0;
 }
+
+/**
+ * Resolves the reading index for a specific lesson part (dialogue).
+ * Part 1 -> Dialogue 1, Part 2 -> Dialogue 2, Part 3 -> Dialogue 3.
+ * Falls back gracefully to any dialogue in the lesson, then in the book, then 0.
+ */
+export function findReadingIndexForPart(
+  readings: ReadingRecord[],
+  bookId: number,
+  lessonId: number,
+  partId: number,
+): number {
+  if (!readings || readings.length === 0) return 0;
+
+  const targetDialogueNumber = partId === 3 ? 3 : partId === 2 ? 2 : 1;
+  const exactIndex = readings.findIndex(
+    (r) => r.bookId === bookId && r.lessonId === lessonId && r.dialogueNumber === targetDialogueNumber,
+  );
+  if (exactIndex !== -1) return exactIndex;
+
+  const lessonFallbackIndex = readings.findIndex(
+    (r) => r.bookId === bookId && r.lessonId === lessonId,
+  );
+  if (lessonFallbackIndex !== -1) return lessonFallbackIndex;
+
+  const bookFallbackIndex = readings.findIndex((r) => r.bookId === bookId);
+  if (bookFallbackIndex !== -1) return bookFallbackIndex;
+
+  return 0;
+}
+

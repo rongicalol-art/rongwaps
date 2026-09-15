@@ -3,10 +3,12 @@ import { cn } from '../../utils/cn';
 
 export interface BrandWordmarkProps extends HTMLAttributes<HTMLDivElement> {
   name?: string;
+  collapsed?: boolean;
 }
 
 export function BrandWordmark({
   name = "Ron's Mandarin",
+  collapsed = false,
   className,
   ...props
 }: BrandWordmarkProps) {
@@ -16,7 +18,7 @@ export function BrandWordmark({
   return (
     <div
       aria-label={name}
-      className={cn('flex min-w-0 items-center gap-2.5', className)}
+      className={cn('flex min-w-0 items-center gap-2.5', collapsed && 'justify-center', className)}
       {...props}
     >
       <span
@@ -28,10 +30,12 @@ export function BrandWordmark({
         </span>
       </span>
 
-      <span aria-hidden="true" className="min-w-0 text-[19px] font-black leading-none">
-        <span className="text-ui-ink">{owner}</span>{' '}
-        <span className="text-feedback-warning-edge">{subject}</span>
-      </span>
+      {!collapsed && (
+        <span aria-hidden="true" className="min-w-0 text-[19px] font-black leading-none">
+          <span className="text-ui-ink">{owner}</span>{' '}
+          <span className="text-feedback-warning-edge">{subject}</span>
+        </span>
+      )}
     </div>
   );
 }

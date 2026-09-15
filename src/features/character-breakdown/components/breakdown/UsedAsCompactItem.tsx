@@ -34,18 +34,18 @@ export const UsedAsCompactItem: React.FC<UsedAsCompactItemProps> = ({
   return (
     <button
       onClick={() => setDictionaryWord(c)}
-      className={`group flex min-h-[68px] w-full flex-row items-center gap-4 bg-ui-surface px-4 py-3 outline-none transition-colors hover:bg-ui-surface-hover active:bg-ui-hover focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-brand-primary/25 ${!isLast ? 'border-b border-ui-divider' : ''}`}
+      className={`group flex min-h-[68px] w-full flex-row items-center gap-4 bg-ui-surface px-4 py-3 transition-colors hover:bg-ui-surface-hover active:bg-ui-hover focus-ring focus-visible:ring-inset ${!isLast ? 'border-b border-ui-divider' : ''}`}
     >
-      <CharacterGlyph character={c} className={`shrink-0 text-[28px] leading-none sm:text-[32px] ${itemBookAccent}`} />
+      <CharacterGlyph character={c} className={`shrink-0 text-2xl leading-none sm:text-3xl ${itemBookAccent}`} />
       <div className="flex min-w-0 flex-1 flex-col items-start justify-center overflow-hidden text-left">
         <div className="flex w-full flex-row items-center justify-between gap-2 pr-1">
           <div className="min-w-0 flex-1 text-left">
             {isLoading ? (
-              <Skeleton className="h-3 w-20 rounded-[3px]" />
+              <Skeleton className="h-3 w-20 rounded-xs" />
             ) : hasMetadata ? (
               <>
-                {pinyin && <span className="block truncate text-[13px] font-bold tracking-wide text-ui-muted sm:text-[14px]">{pinyin}</span>}
-                {definition && <span className="mt-0.5 block truncate text-[13px] font-bold text-ui-ink sm:text-[14px]">{definition}</span>}
+                {pinyin && <span className="block truncate text-xs font-bold tracking-wide text-ui-muted sm:text-sm">{pinyin}</span>}
+                {definition && <span className="mt-0.5 block truncate text-xs font-bold text-ui-ink sm:text-sm">{definition}</span>}
               </>
             ) : null}
           </div>
@@ -53,7 +53,7 @@ export const UsedAsCompactItem: React.FC<UsedAsCompactItemProps> = ({
             const bookInfo = SAMPLE_BOOKS.find(b => b.id === badgeInfo.bookId);
             const dotColorClass = bookInfo ? bookInfo.accentBg : activeBook.accentBg;
             return (
-              <span className="flex shrink-0 select-none items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-ui-muted opacity-80">
+              <span className="flex shrink-0 select-none items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-ui-muted opacity-80">
                 <span>B{badgeInfo.bookId} · L{badgeInfo.lessonId}</span>
                 <span className={`w-2 h-2 rounded-full ${dotColorClass} shrink-0`} />
               </span>

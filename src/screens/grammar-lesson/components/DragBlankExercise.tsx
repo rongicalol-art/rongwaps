@@ -65,7 +65,7 @@ export function DragBlankExercise({
           </h2>
           <p className="mt-2 text-sm font-bold text-ui-muted-strong sm:text-base">{page.exerciseInstruction}</p>
         </div>
-        <span className="shrink-0 rounded-[13px] border border-ui-border bg-ui-surface px-3 py-2 text-xs font-black text-ui-muted-strong">
+        <span className="shrink-0 rounded-compact border border-ui-border bg-ui-surface px-3 py-2 text-xs font-black text-ui-muted-strong">
           Page {page.printedPages[0]}
         </span>
       </div>
@@ -73,17 +73,17 @@ export function DragBlankExercise({
       {page.profiles && page.profiles.length > 0 && <ExerciseProfileStrip profiles={page.profiles} />}
       {page.exerciseCues && page.exerciseCues.length > 0 && <ExerciseContextStrip cues={page.exerciseCues} />}
 
-      <div className="mx-auto mt-8 max-w-4xl overflow-hidden rounded-[20px] border-2 border-ui-border bg-ui-surface px-3 py-2 sm:px-5 sm:py-3">
+      <div className="mx-auto mt-8 max-w-4xl overflow-hidden rounded-feature border-2 border-ui-border bg-ui-surface px-3 py-2 sm:px-5 sm:py-3">
         {currentQuestion.sectionLabel && (
-          <h3 className="mb-2 mt-2 inline-flex rounded-[9px] bg-feedback-warning px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.06em] text-ui-ink-strong">
+          <h3 className="mb-2 mt-2 inline-flex rounded-xs bg-feedback-warning px-3 py-1.5 text-xs font-black uppercase tracking-wider text-ui-ink-strong">
             {currentQuestion.sectionLabel}
           </h3>
         )}
         <div className="flex items-center justify-between gap-3 px-2 pb-1 pt-3 sm:px-3">
-          <p className="text-[11px] font-black uppercase tracking-[0.07em] text-brand-primary">
+          <p className="text-xs font-black uppercase tracking-wider text-brand-primary">
             Question {currentQuestionIndex + 1} of {page.questions.length}
           </p>
-          <span className="text-[11px] font-bold text-ui-muted">Follow the sentence carefully</span>
+          <span className="text-xs font-bold text-ui-muted">Follow the sentence carefully</span>
         </div>
         {(currentQuestion.responseMode ?? page.exerciseResponseMode) === 'text' ? (
           <OpenResponseQuestionCard
@@ -141,7 +141,7 @@ export function DragBlankExercise({
 
           {exercise.status === 'complete' ? (
             isLastQuestion ? (
-              <div className="flex flex-col gap-4 rounded-[16px] border-2 border-feedback-success bg-ui-surface p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5" role="status">
+              <div className="flex flex-col gap-4 rounded-control border-2 border-feedback-success bg-ui-surface p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5" role="status">
                 <div>
                   <p className="flex items-center gap-2 font-black text-feedback-success">
                     <AppIcon name="check" size={21} /> Exercise complete
@@ -153,7 +153,7 @@ export function DragBlankExercise({
                 </ActionButton>
               </div>
             ) : (
-              <div className="flex flex-col gap-3 rounded-[16px] bg-feedback-success-surface/60 p-4 sm:flex-row sm:items-center sm:justify-between" role="status">
+              <div className="flex flex-col gap-3 rounded-control bg-feedback-success-surface/60 p-4 sm:flex-row sm:items-center sm:justify-between" role="status">
                 <p className="flex items-center gap-2 text-sm font-black text-feedback-success">
                   <AppIcon name="check" size={19} /> Question complete
                 </p>

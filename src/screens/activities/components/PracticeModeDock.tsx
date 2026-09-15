@@ -340,9 +340,9 @@ export function PracticeModeDock({
                   }}
                   label="Study materials (grammar and reading)"
                   variant="warning"
-                  icon={<AppIcon name="grammar" size={26} className="h-6 w-6 md:h-[26px] md:w-[26px]" />}
+                  icon={<AppIcon name="grammar" size={26} className="h-6 w-6" />}
                   className={cn(
-                    "h-14 w-14 rounded-feature md:w-[56px]",
+                    "h-14 w-14 rounded-feature",
                     isStudyMenuOpen && "ring-2 ring-brand-primary/40",
                   )}
                 />
@@ -415,7 +415,7 @@ export function PracticeModeDock({
                           <AppIcon
                             name={activity.icon}
                             size={24}
-                            className="h-6 w-6 transition-transform group-hover:scale-105 md:h-[24px] md:w-[24px]"
+                            className="h-6 w-6 transition-transform group-hover:scale-105"
                           />
                         ),
                         title: activity.label,

@@ -17,11 +17,15 @@ interface LayoutShellProps {
   practiceCanvasOpen?: boolean;
   activeBook: CourseBook;
   isNavOpen: boolean;
+  isCollapsed?: boolean;
+  isDesktopOrTablet?: boolean;
+  onToggleCollapse?: () => void;
   setIsNavOpen: (open: boolean) => void;
   onTabChange: SideNavProps['onTabChange'];
   onSettingsClick: () => void;
   activityModals?: React.ReactNode;
   isOverlayActive?: boolean;
+  showSidebarCollapse?: boolean;
 }
 
 export function LayoutShell({
@@ -30,20 +34,26 @@ export function LayoutShell({
   activeActivity,
   activeBook,
   isNavOpen,
+  isCollapsed = false,
+  isDesktopOrTablet = true,
+  onToggleCollapse,
   setIsNavOpen,
   onTabChange,
   onSettingsClick,
   activityModals,
   isOverlayActive = false,
   practiceCanvasOpen = false,
+  showSidebarCollapse = false,
 }: LayoutShellProps) {
   useEffect(() => {
     const root = document.documentElement;
-    root.style.setProperty('--workspace-desktop-nav-width', isNavOpen ? '288px' : '0px');
-    return () => {
-      root.style.removeProperty('--workspace-desktop-nav-width');
-    };
-  }, [isNavOpen]);
+    const desktopNavWidth = isDesktopOrTablet
+      ? isCollapsed
+        ? '108px'
+        : '288px'
+      : '0px';
+    root.style.setProperty('--workspace-desktop-nav-width', desktopNavWidth);
+  }, [isDesktopOrTablet, isCollapsed]);
 
   // This shell root is the ONLY owner of the workspace canvas tone. Every
   // child column (sidebar lane, content) is transparent and shows it through.
@@ -58,8 +68,30 @@ export function LayoutShell({
         activeActivity || practiceCanvasOpen ? 'bg-ui-practice-canvas' : 'bg-ui-canvas'
       }`}
     >
+      {/* Desktop / Tablet permanent floating sidebar (never hidden to 0px) */}
+      <div className="hidden md:flex">
+        <div
+          className={`absolute inset-y-4 left-4 z-[600] flex shrink-0 flex-col rounded-modal border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface overflow-visible transition-[width] duration-200 ${
+            isCollapsed ? 'w-[76px]' : 'w-[256px]'
+          }`}
+        >
+          <SideNav 
+            activeTab={activeTab}
+            activeActivity={activeActivity}
+            onTabChange={onTabChange} 
+            onSettingsClick={onSettingsClick}
+            onToggleCollapse={onToggleCollapse}
+            accentClass={activeBook.accent}
+            buttonEdgeClass={activeBook.buttonEdge}
+            isCollapsed={isCollapsed}
+            showCollapseButton={showSidebarCollapse}
+          />
+        </div>
+      </div>
+
+      {/* Mobile drawer (< 768px) */}
       <AnimatePresence>
-        {isNavOpen && (
+        {!isDesktopOrTablet && isNavOpen && (
           <>
             <motion.div
               initial={{ opacity: 0 }}
@@ -74,15 +106,22 @@ export function LayoutShell({
               animate={{ width: "auto", opacity: 1 }}
               exit={{ width: 0, opacity: 0 }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-              className="absolute inset-y-3 left-3 z-[600] flex shrink-0 flex-col overflow-hidden rounded-[28px] border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface md:inset-y-4 md:left-4"
+              className="absolute inset-y-3 left-3 z-[600] flex shrink-0 flex-col overflow-hidden rounded-modal border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface md:hidden"
             >
               <SideNav 
                 activeTab={activeTab}
                 activeActivity={activeActivity}
-                onTabChange={onTabChange} 
-                onSettingsClick={onSettingsClick}
+                onTabChange={(tab) => {
+                  onTabChange(tab);
+                  setIsNavOpen(false);
+                }} 
+                onSettingsClick={() => {
+                  onSettingsClick();
+                  setIsNavOpen(false);
+                }}
                 accentClass={activeBook.accent}
                 buttonEdgeClass={activeBook.buttonEdge}
+                isCollapsed={false}
               />
             </motion.div>
           </>

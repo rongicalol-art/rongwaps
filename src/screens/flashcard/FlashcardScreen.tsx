@@ -14,7 +14,6 @@ import { useCardFlow } from '../../hooks/useCardFlow';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
 import { buildPracticePartSegments } from '../../utils/practicePartSegments';
-import { useCurriculumExamples } from './hooks/useCurriculumExamples';
 import { useDeckExclusionActions } from '../../hooks/useDeckExclusionActions';
 
 export type FlashcardViewMode = 'cards' | 'list';
@@ -78,7 +77,6 @@ export function FlashcardScreen({
   const autoPlayAudio = usePracticePreferencesStore((state) => state.autoPlayAudio);
   const showPinyin = usePracticePreferencesStore((state) => state.showPinyin);
   const showTranslation = usePracticePreferencesStore((state) => state.showTranslation);
-  const { examples: curriculumExamples, isLoading: areExamplesLoading } = useCurriculumExamples(currentCard, isFlipped);
 
   const feedbackTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const manualRevealAudioRef = useRef(false);
@@ -115,6 +113,27 @@ export function FlashcardScreen({
     triggerNav,
   } = useFlashcardSwipe(wrappedHandleNext, handleNavigate);
 
+  const handleFinishSetInFlow = React.useCallback(() => {
+    if (onContinue) {
+      if (continueLabel) {
+        const cleaned = continueLabel.replace(/^Continue\s*\(?/, '').replace(/\)?$/, '').trim();
+        if (cleaned) {
+          setSwipeFeedback({ text: cleaned, type: 'learned' });
+          setTimeout(() => {
+            setSwipeFeedback(null);
+          }, 800);
+        }
+      }
+      onContinue();
+    } else {
+      setSwipeFeedback({ text: 'Replaying Deck', type: 'learned' });
+      setTimeout(() => {
+        setSwipeFeedback(null);
+      }, 800);
+      resetAll();
+    }
+  }, [continueLabel, onContinue, resetAll, setSwipeFeedback]);
+
   const { flowStatus, pauseFlow, stopFlow, toggleFlow } = useCardFlow({
     currentCard,
     currentIndex,
@@ -122,6 +141,7 @@ export function FlashcardScreen({
     setIsFlipped,
     onAdvance: () => handleNavigate(1),
     onReplay: resetAll,
+    onFinishSet: handleFinishSetInFlow,
   });
 
   useEffect(() => {
@@ -135,19 +155,6 @@ export function FlashcardScreen({
     manualRevealAudioRef.current = false;
   }, [currentCard?.id]);
 
-  // Pre-warm neural TTS for upcoming cards without recorded audio so the
-  // first play of each card is the neural voice, not browser speech.
-  useEffect(() => {
-    if (cards.length === 0 || currentIndex < 0) return;
-    const upcoming = cards.slice(currentIndex, currentIndex + 2);
-    const fronts = upcoming
-      .filter((card) => !audioService.isAudioFileName(card.audio))
-      .map((card) => card.front?.trim())
-      .filter((text): text is string => Boolean(text));
-    if (fronts.length > 0) {
-      audioService.preloadNeural(fronts, undefined, { limit: 2 }).catch(() => {});
-    }
-  }, [cards, currentIndex]);
 
   const restartSession = React.useCallback(() => {
     stopFlow();
@@ -227,7 +234,6 @@ export function FlashcardScreen({
       if (['ArrowLeft', 'ArrowRight', ' ', 'm', 'M', 'n', 'N'].includes(e.key)) pauseFlow();
 
       const idx = currentIndexRef.current;
-      const len = cardsLengthRef.current;
       const maxIdx = maxVisitedIndexRef.current;
       const card = currentCardRef.current;
       const reviewDeck = isReviewDeckRef.current;
@@ -235,12 +241,8 @@ export function FlashcardScreen({
       if (e.key === 'ArrowLeft') {
         if (idx > 0) triggerNav(-1);
       } else if (e.key === 'ArrowRight') {
-        const canGoNext = !reviewDeck || idx < maxIdx;
-        if (canGoNext && idx < len - 1) {
-          triggerNav(1);
-        } else if (canGoNext && idx === len - 1) {
-          triggerNav(1);
-        }
+        const canGoNext = (!reviewDeck || idx < maxIdx) && idx < cardsLengthRef.current;
+        if (canGoNext) triggerNav(1);
       } else if (e.key === ' ' || e.code === 'Space') {
         e.preventDefault();
         setIsFlipped((prev: boolean) => {
@@ -249,21 +251,13 @@ export function FlashcardScreen({
           return next;
         });
       } else if (e.key === 'm' || e.key === 'M') {
+        // m rates learned immediately; no flip-first step.
         if (!card) return;
-        if (!isFlipped) {
-          if (!autoPlayAudio) manualRevealAudioRef.current = true;
-          setIsFlipped(true);
-        } else {
-          triggerKeyboardRate(3, 1);
-        }
+        triggerKeyboardRate(3, -1);
       } else if (e.key === 'n' || e.key === 'N') {
+        // n rates review immediately; no flip-first step.
         if (!card) return;
-        if (!isFlipped) {
-          if (!autoPlayAudio) manualRevealAudioRef.current = true;
-          setIsFlipped(true);
-        } else {
-          triggerKeyboardRate(1, -1);
-        }
+        triggerKeyboardRate(1, 1);
       }
     };
 
@@ -364,6 +358,8 @@ export function FlashcardScreen({
     >
       <button
         type="button"
+        tabIndex={-1}
+        aria-hidden="true"
         aria-label="Previous flashcard"
         disabled={!canNavigatePrevious}
         onClick={() => triggerNav(-1)}
@@ -371,16 +367,18 @@ export function FlashcardScreen({
       />
       <button
         type="button"
+        tabIndex={-1}
+        aria-hidden="true"
         aria-label="Next flashcard"
         disabled={!canNavigateNext}
         onClick={() => triggerNav(1)}
         className="absolute bottom-0 right-0 top-[72px] z-0 w-1/2 bg-transparent outline-none disabled:pointer-events-none"
       />
 
-      <ScreenLayout maxWidth="none" className="relative flex h-full max-w-[960px] flex-col pb-[112px] pt-2 pointer-events-none md:pb-[120px]">
+      <ScreenLayout maxWidth="none" className="relative flex h-full max-w-[760px] flex-col pb-[112px] pt-2 pointer-events-none md:pb-[120px]">
         <div className="flex-1 flex flex-col justify-center pointer-events-none">
           <div
-            className="relative z-10 mx-auto flex h-[clamp(420px,68vh,640px)] max-h-[calc(100dvh-180px)] w-full max-w-[900px] flex-col items-center justify-center perspective-[2000px] pointer-events-none"
+            className="relative z-10 mx-auto flex h-[clamp(420px,68vh,660px)] max-h-[calc(100dvh-180px)] w-full max-w-[720px] flex-col items-center justify-center pointer-events-none"
           >
             <AnimatePresence mode="popLayout" custom={direction}>
               {currentCard && (
@@ -393,8 +391,6 @@ export function FlashcardScreen({
                   triggerSwipeRate={triggerSwipeRate}
                   showPinyin={showPinyin}
                   showTranslation={showTranslation}
-                  examples={curriculumExamples}
-                  isExamplesLoading={areExamplesLoading}
                   onCardTap={handleCardTap}
                 />
               )}

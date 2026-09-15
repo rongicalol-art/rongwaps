@@ -5,7 +5,7 @@ export const BreakdownSkeleton: React.FC = () => {
   return (
     <div className="w-full flex flex-col gap-6 pb-8 animate-pulse">
       {/* Hero Section Skeleton */}
-      <div className="bg-ui-surface border-b-[length:var(--depth-lg)] border-ui-border rounded-feature p-6 flex flex-row items-center justify-between gap-4">
+      <div className="bg-ui-surface rounded-feature p-6 flex flex-row items-center justify-between gap-4 shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
         <div className="flex flex-col flex-1 z-10 w-full">
           <Skeleton className="w-16 h-6 mb-3 rounded-sm" />
           <Skeleton className="w-24 h-[64px] mb-2 rounded-control" />
@@ -15,14 +15,14 @@ export const BreakdownSkeleton: React.FC = () => {
       </div>
 
       {/* Meaning & Course Usages Skeleton */}
-      <div className="bg-ui-surface border-b-[length:var(--depth-lg)] border-ui-border rounded-feature p-4 sm:p-5 flex flex-col gap-4">
+      <div className="bg-ui-surface rounded-feature p-4 sm:p-6 flex flex-col gap-4 shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
         <div className="flex flex-col gap-1">
           <Skeleton className="w-20 h-4 rounded-sm mb-2" />
           <Skeleton className="w-full h-5 rounded-sm" />
           <Skeleton className="w-3/4 h-5 rounded-sm" />
         </div>
-        
-        <div className="flex flex-col gap-2 pt-3 border-t-2 border-ui-divider">
+
+        <div className="flex flex-col gap-2 pt-3 border-t border-ui-divider/70">
           <Skeleton className="w-24 h-4 rounded-sm mb-2" />
           <div className="flex gap-3 items-start">
             <Skeleton className="w-12 h-5 rounded-sm shrink-0" />
@@ -43,7 +43,7 @@ export const BreakdownSkeleton: React.FC = () => {
         </div>
         <div className="grid grid-cols-2 min-[480px]:grid-cols-3 sm:grid-cols-4 gap-3">
           {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="w-full bg-ui-surface rounded-control p-3 flex flex-col items-center justify-center border-b-[length:var(--depth-md)] border-ui-border min-h-[120px]">
+            <div key={i} className="w-full bg-ui-surface rounded-feature p-3 flex flex-col items-center justify-center shadow-[0_var(--depth-md)_0_var(--color-ui-border)] min-h-[120px]">
               <Skeleton className="w-10 h-3 rounded-sm mb-2" />
               <Skeleton className="w-12 h-12 rounded-sm mb-2" />
               <Skeleton className="w-16 h-3 rounded-sm" />

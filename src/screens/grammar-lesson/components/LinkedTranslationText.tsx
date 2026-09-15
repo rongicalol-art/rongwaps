@@ -31,10 +31,10 @@ export function LinkedTranslationText({
             onBlur={() => onActiveAlignmentChange(null)}
             onClick={() => onActiveAlignmentChange(segment.alignmentId ?? null)}
             className={cn(
-              'rounded-[6px] px-0.5 text-left font-medium outline-none transition-colors',
+              'rounded-xs px-0.5 text-left font-medium transition-colors',
               isActive
                 ? 'bg-brand-primary text-ui-surface'
-                : 'hover:bg-brand-primary/10 hover:text-ui-ink-strong focus-visible:bg-brand-primary/10 focus-visible:ring-2 focus-visible:ring-brand-primary/30',
+                : 'hover:bg-brand-primary/10 hover:text-ui-ink-strong focus-ring-inline focus-visible:bg-brand-primary/10',
             )}
           >
             {segment.text}

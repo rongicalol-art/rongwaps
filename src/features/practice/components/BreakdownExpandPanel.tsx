@@ -14,15 +14,17 @@ export interface BreakdownExpandPanelProps {
   front: string;
   pinyin?: string;
   meaning: string;
+  onClose?: () => void;
+  onOpenDetails?: () => void;
 }
 
-function getFrontFontSize(len: number) {
-  if (len <= 2) return 'text-[34px]';
-  if (len <= 4) return 'text-[28px]';
-  return 'text-[22px]';
-}
-
-export function BreakdownExpandPanel({ front, pinyin, meaning }: BreakdownExpandPanelProps) {
+export function BreakdownExpandPanel({
+  front,
+  pinyin,
+  meaning,
+  onClose,
+  onOpenDetails,
+}: BreakdownExpandPanelProps) {
   const [hook, setHook] = useState<string | null | undefined>(undefined);
   const [hookLoaded, setHookLoaded] = useState(false);
 
@@ -39,52 +41,68 @@ export function BreakdownExpandPanel({ front, pinyin, meaning }: BreakdownExpand
   }, [front]);
 
   return (
-    <div className="rounded-[16px] border border-ui-border bg-white p-4 shadow-[0_3px_0_var(--color-ui-border)]">
-      <div className="flex items-center gap-1.5">
-        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-primary text-ui-surface shadow-[0_2px_0_var(--color-brand-primary-edge)]">
-          <AppIcon name="breakdown" size={13} />
-        </span>
-        <span className="text-[11px] font-black uppercase tracking-widest text-ui-ink-strong">
-          Breakdown
-        </span>
-        <AppIcon name="sparkles" size={12} className="text-feedback-warning" />
+    <div className="relative rounded-feature border-2 border-ui-border/70 bg-ui-surface p-4 sm:p-5 shadow-ambient-sm">
+      {/* Header bar */}
+      <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-ui-muted-strong">
+          <AppIcon name="breakdown" size={14} className="text-ui-ink-strong" />
+          <span>Word breakdown</span>
+        </div>
+        {onClose && (
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close breakdown"
+            className="flex h-7 w-7 items-center justify-center rounded-full text-ui-muted transition-colors hover:bg-ui-hover hover:text-ui-ink focus-ring"
+          >
+            <AppIcon name="close" size={14} />
+          </button>
+        )}
       </div>
 
-      <div className="mt-3 flex min-w-0 items-baseline justify-between gap-3">
-        <span className={`${getFrontFontSize(front.length)} shrink-0 font-chinese leading-none text-ui-ink-strong`}>
+      {/* Main vocabulary lockup */}
+      <div className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <span className="font-chinese text-3xl sm:text-4xl font-extrabold leading-none text-ui-ink-strong">
           {front}
         </span>
-        <span className="min-w-0 text-right text-[15px] font-extrabold leading-snug text-ui-ink">
-          {meaning}
+        {pinyin && (
+          <span className="text-sm sm:text-base font-bold text-ui-muted-strong">
+            {numberToToneMarks(pinyin)}
+          </span>
+        )}
+        <span className="text-sm sm:text-base font-extrabold text-ui-ink">
+          &bull; {meaning}
         </span>
       </div>
-      {pinyin && (
-        <p className="mt-1 text-[13px] font-bold text-ui-muted-strong">
-          {numberToToneMarks(pinyin)}
-        </p>
+
+      {/* Memory hook (rendered only if one exists) */}
+      {hookLoaded && hook && (
+        <div className="mt-3 flex items-start gap-2.5 rounded-control border border-feedback-warning-edge/40 bg-feedback-warning/10 p-3">
+          <AppIcon name="sparkles" size={15} className="mt-0.5 shrink-0 text-feedback-warning-edge" />
+          <div className="min-w-0 flex-1">
+            <span className="block text-[10px] font-black uppercase tracking-wider text-feedback-warning-edge">
+              Memory hook
+            </span>
+            <p className="mt-0.5 text-xs font-semibold leading-relaxed text-ui-ink">
+              {renderHookText(hook)}
+            </p>
+          </div>
+        </div>
       )}
 
-      <div className="mt-3 flex items-start gap-2 rounded-[12px] border border-feedback-warning-edge bg-feedback-warning/10 px-3 py-2.5">
-        <AppIcon name="sparkles" size={14} className="mt-[2px] shrink-0 text-feedback-warning" />
-        <div className="min-w-0">
-          <span className="block text-[10px] font-black uppercase tracking-widest text-feedback-warning-edge">
-            Memory hook
-          </span>
-          <span className="mt-0.5 block text-[12.5px] font-bold leading-relaxed text-ui-ink">
-            {hookLoaded ? (
-              hook ? (
-                renderHookText(hook)
-              ) : (
-                <span className="text-ui-muted">
-                  No memory hook for this word yet — hover its characters for their own hooks.
-                </span>
-              )
-            ) : (
-              <span className="mt-1 block h-3 w-full max-w-[220px] animate-pulse rounded-full bg-ui-hover" />
-            )}
-          </span>
+      {/* Detailed character inspection action */}
+      {onOpenDetails && (
+        <div className="mt-3 flex justify-end border-t border-ui-border/40 pt-2.5">
+          <button
+            type="button"
+            onClick={onOpenDetails}
+            className="inline-flex items-center gap-1 rounded-sm text-xs font-black uppercase tracking-wider text-brand-primary transition-opacity hover:opacity-80 focus-ring"
+          >
+            <span>Inspect characters</span>
+            <AppIcon name="forward" size={12} />
+          </button>
         </div>
-      </div>
+      )}
     </div>
   );
 }

@@ -22,6 +22,17 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
   ```tsx
   <SegmentedControl ariaLabel="Study mode" value={mode} options={options} onChange={setMode} />
   ```
+- **SettingsDropdownPicker** — Duolingo-style settings select: field label above a full-width tactile value button (uppercase tracked value + chevron) opening a dropdown list. Generic over the string option value type; falls back to the numerically nearest option for stored custom numeric values.
+  ```tsx
+  <SettingsDropdownPicker label="Speech speed" ariaLabel="Speech speed" value={rate} options={options} onChange={setRate} />
+  ```
+- **ToggleSwitch** — canonical tactile on/off switch (white rounded knob + brand track) used by every toggle in the app. Presentational and `aria-hidden`: render it inside the row-level `<button role="switch" aria-checked>` that owns the state.
+  ```tsx
+  <button type="button" role="switch" aria-checked={on} onClick={toggle}>
+    <span>Pinyin</span>
+    <ToggleSwitch checked={on} />
+  </button>
+  ```
 
 ## Icons, flags, and branded presentation
 
@@ -29,9 +40,10 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
   ```tsx
   <AppIcon name="search" size={18} />
   ```
-- **BrandWordmark** — app wordmark lockup: the yellow 文 brand tile plus owner/subject wordmark text. Used by the shell side navigation and the full-screen sign-in window. Optionally override the display `name`.
+- **BrandWordmark** — app wordmark lockup: the yellow 文 brand tile plus owner/subject wordmark text. Used by the shell side navigation and the full-screen sign-in window. Optionally override the display `name` or pass `collapsed` to render only the brand tile.
   ```tsx
   <BrandWordmark />
+  <BrandWordmark collapsed />
   ```
 - **CloudPuff** — flat white puff-cloud silhouette for sky-themed decorative scenes (sign-in window, profile hero canopy). Purely decorative: render inside an `aria-hidden` container and vary depth/size via wrapper `opacity-*`/`scale-*` classes; `className` can narrow the width (e.g. `w-44`).
   ```tsx
@@ -162,7 +174,7 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
   ```tsx
   <ExpandableSearch label="Search dictionary" value={query} onChange={setQuery} />
   ```
-- **ProgressMetricCard** — compact derived metric with label, value, detail, optional semantic icon, and accent classes. Use for real metrics only.
+- **ProgressMetricCard** — compact derived metric with label, value, optional detail, optional semantic icon, and accent classes. Use for real metrics only.
   ```tsx
   <ProgressMetricCard label="Words learned" value={count} detail="This month" icon="progress" />
   ```

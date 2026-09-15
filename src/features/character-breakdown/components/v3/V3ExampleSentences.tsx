@@ -6,7 +6,7 @@ import { useCharExampleSentences } from '../../hooks/useCharExampleSentences';
 const INITIAL_VISIBLE = 4;
 
 const EXPAND_BUTTON =
-  'mt-2 flex min-h-9 w-full items-center justify-center gap-1.5 rounded-compact px-2.5 text-xs font-extrabold text-brand-primary outline-none transition-colors hover:bg-brand-primary/10 focus-visible:ring-4 focus-visible:ring-brand-primary/25';
+  'mt-2 flex min-h-9 w-full items-center justify-center gap-1.5 rounded-compact px-2.5 text-xs font-extrabold text-brand-primary transition-colors hover:bg-brand-primary/10 focus-ring';
 
 /**
  * Example-sentence block for the V3 breakdown summary. Sits directly below the
@@ -27,15 +27,15 @@ export function V3ExampleSentences({ character }: { character: string }) {
   const canCollapse = expanded && sentences.length > INITIAL_VISIBLE;
 
   return (
-    <section aria-label="Example sentences" className="min-w-0 rounded-feature bg-ui-surface p-4 shadow-[0_3px_0_var(--color-ui-divider)] sm:p-6">
+    <section aria-label="Example sentences" className="min-w-0 rounded-feature bg-ui-surface p-4 shadow-[0_var(--depth-md)_0_var(--color-ui-border)] sm:p-6">
       <SectionEyebrow title="Example sentences" />
       {isLoading ? (
         <div className="mt-1 flex flex-col gap-3" role="status" aria-label="Loading example sentences">
           {[0, 1, 2].map((index) => (
             <div key={index}>
-              <Skeleton className="h-4 w-3/4 rounded-[4px]" />
-              <Skeleton className="mt-1.5 h-3 w-1/2 rounded-[4px]" />
-              <Skeleton className="mt-1 h-3 w-2/5 rounded-[4px]" />
+              <Skeleton className="h-4 w-3/4 rounded-xs" />
+              <Skeleton className="mt-1.5 h-3 w-1/2 rounded-xs" />
+              <Skeleton className="mt-1 h-3 w-2/5 rounded-xs" />
             </div>
           ))}
         </div>

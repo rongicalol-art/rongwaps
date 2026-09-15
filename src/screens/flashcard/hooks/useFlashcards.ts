@@ -88,14 +88,14 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     setIsShuffled(false);
     canonicalOrderRef.current = loadedCards;
     if (loadedCards.length > 0) {
-      audioService.preload(loadedCards.map(c => c.audio));
+      audioService.preload(loadedCards.slice(0, 10).map(c => c.audio));
 
-      // Pre-warm neural TTS for the first few cards so the first flips play
-      // instantly rather than blocking on a server synthesis round-trip.
+      // Pre-warm neural TTS only for cards without recorded audio files.
       // Fire per-card so the warm-ups run concurrently (~1 synth trip total
       // instead of N sequential ones); preloadNeural skips cached words.
       const initialWarm = loadedCards
         .slice(0, WARM_AHEAD_COUNT)
+        .filter((card) => !audioService.isAudioFileName(card.audio))
         .map(c => c.front.trim())
         .filter(Boolean);
       for (const text of initialWarm) {
@@ -137,8 +137,19 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
   useEffect(() => {
     if (cards.length === 0) return;
     const start = currentIndex + 1;
+    // Rolling lookahead audio preload for recorded audio
+    const upcomingAudio = cards
+      .slice(currentIndex, currentIndex + 10)
+      .map(c => c.audio)
+      .filter(Boolean);
+    if (upcomingAudio.length > 0) {
+      audioService.preload(upcomingAudio).catch(() => {});
+    }
+
+    // Pre-warm neural TTS only for cards without recorded audio
     const warm = cards
       .slice(start, start + WARM_AHEAD_COUNT)
+      .filter((card) => !audioService.isAudioFileName(card.audio))
       .map(c => c.front.trim())
       .filter(Boolean);
     for (const text of warm) {
@@ -154,12 +165,6 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
   const [maxVisitedIndex, setMaxVisitedIndex] = useState(() => {
     return sessionProgressIndex[sessionKey] || 0;
   });
-
-  useEffect(() => {
-    if (currentIndex > maxVisitedIndex) {
-      setMaxVisitedIndex(currentIndex);
-    }
-  }, [currentIndex, maxVisitedIndex]);
 
   const resetAll = async () => {
     setCards([...canonicalOrderRef.current]);
@@ -242,7 +247,9 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     setIsFlipped(false);
 
     if (currentIndex < cards.length - 1) {
-      setCurrentIndex(prev => prev + 1);
+      const nextIdx = currentIndex + 1;
+      setCurrentIndex(nextIdx);
+      setMaxVisitedIndex(prev => Math.max(prev, nextIdx));
     } else {
       clearSessionProgressIndex(sessionKey);
       clearReviewSessionSnapshot();
@@ -254,6 +261,7 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     const newDoc = currentIndex + dir;
     if (newDoc >= 0 && newDoc < cards.length) {
       setCurrentIndex(newDoc);
+      setMaxVisitedIndex(prev => Math.max(prev, newDoc));
       setIsFlipped(false);
     } else if (newDoc >= cards.length) {
       clearSessionProgressIndex(sessionKey);

@@ -83,12 +83,12 @@ function LessonItemBase({
         </span>
 
         <span className="min-w-0 flex-1">
-          <span className={`mb-0.5 block text-[11px] font-extrabold uppercase tracking-widest transition-colors ${
+          <span className={`mb-0.5 block text-xs font-extrabold uppercase tracking-widest transition-colors ${
             isSelected ? accentColor : 'text-ui-muted'
           }`}>
             {lesson.label}
           </span>
-          <span className={`block truncate text-[17px] font-extrabold transition-colors ${
+          <span className={`block truncate text-lg font-extrabold transition-colors ${
             isSelected ? 'text-ui-ink' : 'text-ui-muted group-hover:text-ui-ink'
           }`}>
             {englishTitle}

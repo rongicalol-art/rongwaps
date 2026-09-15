@@ -47,7 +47,7 @@ interface ActivityModalsProps {
   selectedLessons: number[];
   isLibraryMode?: boolean;
   onNavigateToPractice?: () => void;
-  onOpenGrammarPart?: (partId: string) => void;
+  onOpenGrammarPart?: (partId: string, pageId?: string) => void;
   onOpenReading?: () => void;
 }
 
@@ -337,7 +337,7 @@ export function ActivityModals({
     const currentlySelected = selectedStudyPartIds[0] ?? availablePartIds[0];
     const currentPos = availablePartIds.indexOf(currentlySelected);
     const nextPartId = availablePartIds[(currentPos + 1) % availablePartIds.length];
-    return `Part ${nextPartId}`;
+    return `Continue (Part ${nextPartId})`;
   }, [isMultiPart, visibleStudyParts, selectedStudyPartIds]);
 
   return (
@@ -349,7 +349,7 @@ export function ActivityModals({
                <div className={`absolute top-0 left-0 right-0 z-[150] ${isOverlayOpen ? 'invisible' : ''}`}>
                  <PracticeHeader
                     key={resolvedActivity}
-                    maxWidth="none"
+                    maxWidth="2xl"
                     onClose={activeActivity === 'writing' ? handleWritingClose : handleClose}
                     progress={practiceHeader.progress}
                     currentIndex={practiceHeader.currentIndex}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { PosBadge, WorkspaceDetailShell } from '../../../lib/widgets';
+import { WorkspaceDetailShell } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import { numberToToneMarks } from '../../../utils/pinyin';
@@ -57,7 +57,7 @@ export function RelatedWordsListModal({ initialChar, relatedWords, activeBook, o
                       <span>{bookTitle}</span>
                       <span className="text-[11px] font-bold lowercase opacity-80">{group.cards.length} word(s)</span>
                     </div>
-                    <div className="flex w-full flex-col overflow-hidden rounded-[20px] bg-ui-surface shadow-sm">
+                    <div className="flex w-full flex-col overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
                       {group.cards.map((card, idx) => {
                         const isLast = idx === group.cards.length - 1;
                         return (
@@ -70,23 +70,22 @@ export function RelatedWordsListModal({ initialChar, relatedWords, activeBook, o
                                 setDictionaryWord(card.front);
                               }
                             }}
-                            className={`group flex w-full flex-row items-center gap-4 bg-ui-surface px-4 py-3 text-left outline-none transition-colors hover:bg-ui-surface-hover active:bg-ui-hover focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-brand-primary/25 ${!isLast ? 'border-b-2 border-ui-divider' : ''}`}
+                            className={`group flex w-full flex-row items-center gap-4 bg-ui-surface px-4 py-3 text-left transition-colors hover:bg-ui-surface-hover active:bg-ui-hover focus-ring focus-visible:ring-inset ${!isLast ? 'border-b border-ui-divider/70' : ''}`}
                           >
-                            <span className={`text-[28px] sm:text-[32px] leading-none font-chinese pt-1 ${activeBook.accent} transition-all shrink-0`}>
+                            <span className={`text-2xl sm:text-3xl leading-none font-chinese pt-1 ${activeBook.accent} transition-all shrink-0`}>
                               {card.front}
                             </span>
                             <div className="flex flex-col items-start justify-center flex-1 min-w-0 overflow-hidden">
                               <div className="flex flex-row items-center justify-between gap-2 mb-0.5 w-full pr-1">
-                                <span className="h-[20px] flex-1 truncate text-[13px] font-bold tracking-widest text-ui-muted sm:text-[14px]">
+                                <span className="h-5 flex-1 truncate text-xs font-bold tracking-widest text-ui-muted sm:text-sm">
                                   {numberToToneMarks(card.pinyin)}
                                 </span>
-                                <PosBadge pos={card.pos} />
-                                {group.bookId > 0 && <span className="flex shrink-0 select-none items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-ui-muted opacity-80">
+                                {group.bookId > 0 && <span className="flex shrink-0 select-none items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-ui-muted opacity-80">
                                   <span>B{card.bookId} · L{card.lessonId}</span>
                                   <span className={`w-2 h-2 rounded-full ${bookInfo?.accentBg || activeBook.accentBg} shrink-0`} />
                                 </span>}
                               </div>
-                              <span className="mt-0.5 h-[20px] w-full truncate text-[13px] font-bold text-ui-ink sm:text-[14px]">
+                              <span className="mt-0.5 h-5 w-full truncate text-xs font-bold text-ui-ink sm:text-sm">
                                 {card.back}
                               </span>
                             </div>

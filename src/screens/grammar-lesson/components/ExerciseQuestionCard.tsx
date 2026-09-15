@@ -106,7 +106,7 @@ export function ExerciseQuestionCard({
                   ? `${placedText}. Remove answer`
                   : `Blank ${segment.id}. ${segment.hint}`}
                 className={cn(
-                  'inline-flex min-h-9 items-center justify-center rounded-[10px] border-2 border-dashed px-2 align-middle font-chinese text-base font-black transition-all sm:text-lg',
+                  'inline-flex min-h-9 items-center justify-center rounded-sm border-2 border-dashed px-2 align-middle font-chinese text-base font-black transition-all sm:text-lg',
                   blankWidthClass,
                   !placedTile && !canReceiveSelected && 'border-ui-muted bg-ui-canvas text-ui-muted',
                   !placedTile && canReceiveSelected && 'border-feedback-warning-edge bg-feedback-warning/15 text-feedback-warning-edge focus-ring',

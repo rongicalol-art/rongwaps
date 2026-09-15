@@ -121,45 +121,59 @@ export function publicAudioUrl(fileName: string): string | null {
   return null;
 }
 
+const inFlightBlobFetches = new Map<string, Promise<Blob>>();
+
 export async function fetchAudioBlob(fileName: string): Promise<Blob> {
-  const cache = await getAudioFileCache();
-  const cacheRequest = audioFileCacheRequest(fileName);
+  const existing = inFlightBlobFetches.get(fileName);
+  if (existing) return existing;
 
-  if (cache) {
-    const cached = await cache.match(cacheRequest).catch(() => null);
-    if (cached) {
-      void touchAudioMeta(fileName);
-      return await cached.blob();
-    }
-  }
+  const promise = (async () => {
+    const cache = await getAudioFileCache();
+    const cacheRequest = audioFileCacheRequest(fileName);
 
-  const sources = [
-    publicAudioUrl(fileName),
-    '/api/audio/' + fileName,
-  ].filter((source): source is string => source !== null);
-
-  let lastError: unknown;
-  for (const source of sources) {
-    try {
-      const response = await fetch(source);
-      if (!response.ok) throw new Error('Failed to fetch audio: ' + response.statusText);
-      const blob = await response.blob();
-      if (cache) {
-        cache
-          .put(cacheRequest, new Response(blob, { headers: { 'Content-Type': 'audio/mpeg' } }))
-          .then(() => touchAudioMeta(fileName, blob.size))
-          .then(() => pruneAudioCacheToLimit())
-          .catch(() => {});
+    if (cache) {
+      const cached = await cache.match(cacheRequest).catch(() => null);
+      if (cached) {
+        void touchAudioMeta(fileName);
+        return await cached.blob();
       }
-      return blob;
-    } catch (error) {
-      lastError = error;
     }
-  }
 
-  throw lastError instanceof Error
-    ? lastError
-    : new Error('Failed to fetch audio: ' + fileName);
+    const sources = [
+      '/api/audio/' + fileName,
+      publicAudioUrl(fileName),
+    ].filter((source): source is string => source !== null);
+
+    let lastError: unknown;
+    for (const source of sources) {
+      try {
+        const response = await fetch(source);
+        if (!response.ok) throw new Error('Failed to fetch audio: ' + response.statusText);
+        const blob = await response.blob();
+        if (cache) {
+          cache
+            .put(cacheRequest, new Response(blob, { headers: { 'Content-Type': 'audio/mpeg' } }))
+            .then(() => touchAudioMeta(fileName, blob.size))
+            .then(() => pruneAudioCacheToLimit())
+            .catch(() => {});
+        }
+        return blob;
+      } catch (error) {
+        lastError = error;
+      }
+    }
+
+    throw lastError instanceof Error
+      ? lastError
+      : new Error('Failed to fetch audio: ' + fileName);
+  })();
+
+  inFlightBlobFetches.set(fileName, promise);
+  try {
+    return await promise;
+  } finally {
+    inFlightBlobFetches.delete(fileName);
+  }
 }
 
 /**
@@ -219,33 +233,17 @@ export async function preloadAudioFiles(
     if (queue.length === 0) return;
     const fileName = queue.shift()!;
     try {
-      if (audioContext) {
-        if (!buffers.has(fileName) && !fetchPromises.has(fileName)) {
-          const promise = (async () => {
-            const blob = await fetchAudioBlob(fileName);
-            const arrayBuffer = await blob.arrayBuffer();
-            const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-            cacheBuffer(buffers, fileName, audioBuffer);
-            return audioBuffer;
-          })();
-          fetchPromises.set(fileName, promise);
-          try { await promise; } finally { fetchPromises.delete(fileName); }
-        }
-        await getAudioObjectUrl(fileName).catch(() => {});
-      } else {
-        if (!objectUrls.has(fileName) && !blobPromises.has(fileName)) {
-          const promise = getAudioObjectUrl(fileName);
-          blobPromises.set(fileName, promise);
-          try { await promise; } finally { blobPromises.delete(fileName); }
-        }
+      if (!objectUrls.has(fileName) && !blobPromises.has(fileName)) {
+        const promise = getAudioObjectUrl(fileName);
+        blobPromises.set(fileName, promise);
+        try { await promise; } finally { blobPromises.delete(fileName); }
       }
     } catch (error) {
       console.warn('Failed to preload audio', fileName, error);
-      if (audioContext) fetchPromises.delete(fileName);
-      else blobPromises.delete(fileName);
+      blobPromises.delete(fileName);
     }
     await processNext();
   };
 
-  await Promise.all(Array.from({ length: Math.min(3, queue.length) }, () => processNext()));
+  await Promise.all(Array.from({ length: Math.min(4, queue.length) }, () => processNext()));
 }

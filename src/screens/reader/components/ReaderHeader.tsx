@@ -4,7 +4,8 @@ import {
   AppIcon,
   IconActionButton,
   ScreenHeader,
-  SegmentedControl,
+  SettingsDropdownPicker,
+  ToggleSwitch,
 } from '../../../lib/widgets';
 import type { ReaderTextSize, ReadingRecord } from '../../../types/models';
 import { cn } from '../../../utils/cn';
@@ -19,6 +20,8 @@ interface ReaderHeaderProps {
   onToggleMeaning: () => void;
   showHoverDefinitions?: boolean;
   onToggleHoverDefinitions?: () => void;
+  onOpenStudyGuide?: () => void;
+  isStudyGuideOpen?: boolean;
   onClose: () => void;
 }
 
@@ -92,6 +95,8 @@ export function ReaderHeader({
   onToggleMeaning,
   showHoverDefinitions = true,
   onToggleHoverDefinitions,
+  onOpenStudyGuide,
+  isStudyGuideOpen,
   onClose,
 }: ReaderHeaderProps) {
   const [isAidsOpen, setIsAidsOpen] = useState(false);
@@ -125,36 +130,53 @@ export function ReaderHeader({
     >
       <ScreenHeader
         onClose={onClose}
-        maxWidth="4xl"
-        className="!h-auto !min-h-0 !border-0 !bg-transparent !px-4 !py-1 !shadow-none sm:!px-8"
+        maxWidth="none"
+        className="!h-auto !min-h-0 !border-0 !bg-transparent !px-4 !py-1 !shadow-none sm:!px-6 lg:!px-10 w-full"
         centerContent={
-          <div className="min-w-0 text-center">
+          <div className="flex items-center justify-center">
             <h1 className="truncate text-xs sm:text-sm font-black uppercase tracking-wider text-ui-ink-strong">
               <span className="text-brand-primary">Lesson {reading.lessonId}</span>
               <span className="mx-1.5 text-ui-muted-strong">·</span>
-              <span>{isNarrative ? 'Reading' : `Dialogue ${reading.dialogueNumber}`}</span>
+              <span>{isNarrative ? 'Reading' : `Part ${reading.dialogueNumber}`}</span>
             </h1>
           </div>
         }
         rightAction={
-          <div ref={aidsRef} className="relative">
-            <IconActionButton
-              size="md"
-              onClick={() => setIsAidsOpen((open) => !open)}
-              className={isAidsOpen ? 'text-brand-primary hover:text-brand-primary' : undefined}
-              icon={
-                <motion.span
-                  animate={{ rotate: isAidsOpen ? 90 : 0 }}
-                  transition={reduceMotion ? { duration: 0 } : { duration: 0.2, ease: 'easeOut' }}
-                >
-                  <AppIcon name="settings" size={20} />
-                </motion.span>
-              }
-              label="Reading settings"
-              title="Reading settings"
-              aria-haspopup="dialog"
-              aria-expanded={isAidsOpen}
-            />
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            {onOpenStudyGuide && (
+              <IconActionButton
+                size="md"
+                onClick={onOpenStudyGuide}
+                className={cn(
+                  'lg:hidden',
+                  isStudyGuideOpen && 'text-brand-primary hover:text-brand-primary',
+                )}
+                icon={<AppIcon name="sparkles" size={20} />}
+                label="Study guide"
+                title="Study guide"
+                aria-haspopup="dialog"
+                aria-expanded={isStudyGuideOpen}
+              />
+            )}
+
+            <div ref={aidsRef} className="relative">
+              <IconActionButton
+                size="md"
+                onClick={() => setIsAidsOpen((open) => !open)}
+                className={isAidsOpen ? 'text-brand-primary hover:text-brand-primary' : undefined}
+                icon={
+                  <motion.span
+                    animate={{ rotate: isAidsOpen ? 90 : 0 }}
+                    transition={reduceMotion ? { duration: 0 } : { duration: 0.2, ease: 'easeOut' }}
+                  >
+                    <AppIcon name="settings" size={20} />
+                  </motion.span>
+                }
+                label="Reading settings"
+                title="Reading settings"
+                aria-haspopup="dialog"
+                aria-expanded={isAidsOpen}
+              />
 
             <AnimatePresence>
               {isAidsOpen && (
@@ -163,21 +185,19 @@ export function ReaderHeader({
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 4, scale: 0.98 }}
                   transition={{ duration: 0.16, ease: [0.32, 0.72, 0, 1] }}
-                  className="absolute right-0 top-full z-50 mt-2 w-64 sm:w-72 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-2.5 shadow-ambient-lg text-left space-y-3"
+                  className="absolute right-0 top-full z-50 mt-2 w-64 sm:w-72 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-2.5 shadow-ambient-lg text-left space-y-3.5"
                 >
                   {/* Font Size */}
-                  <div className="space-y-1.5">
-                    <span className="block px-1 text-xs font-black uppercase tracking-wider text-ui-muted-strong">
-                      Font Size
-                    </span>
-                    <SegmentedControl<ReaderTextSize>
+                  <div className="pb-0.5">
+                    <SettingsDropdownPicker<ReaderTextSize>
+                      label="Font size"
+                      ariaLabel="Font size preference"
                       value={textSize}
                       onChange={onTextSizeChange}
-                      ariaLabel="Font size preference"
                       options={[
-                        { value: 'normal', label: <span>Standard</span> },
-                        { value: 'large', label: <span>Large</span> },
-                        { value: 'extra-large', label: <span>Huge</span> },
+                        { value: 'normal', label: 'Standard' },
+                        { value: 'large', label: 'Large' },
+                        { value: 'extra-large', label: 'Huge' },
                       ]}
                     />
                   </div>
@@ -191,28 +211,10 @@ export function ReaderHeader({
                       role="switch"
                       aria-checked={showMeaning}
                       onClick={onToggleMeaning}
-                      className={cn(
-                        'flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold transition-colors outline-none focus-ring',
-                        showMeaning
-                          ? 'bg-brand-primary/10 text-brand-primary'
-                          : 'text-ui-ink-strong hover:bg-ui-hover'
-                      )}
+                      className="flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold text-ui-ink-strong transition-colors outline-none hover:bg-ui-hover focus-ring"
                     >
                       <span>Translation</span>
-                      <span
-                        aria-hidden="true"
-                        className={cn(
-                          'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out',
-                          showMeaning ? 'bg-brand-primary' : 'bg-ui-divider'
-                        )}
-                      >
-                        <span
-                          className={cn(
-                            'pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-0 border-b-px border-b-ui-border ring-0 transition duration-200 ease-in-out translate-y-0.5',
-                            showMeaning ? 'translate-x-[18px]' : 'translate-x-0.5'
-                          )}
-                        />
-                      </span>
+                      <ToggleSwitch checked={showMeaning} />
                     </button>
 
                     <button
@@ -220,28 +222,10 @@ export function ReaderHeader({
                       role="switch"
                       aria-checked={showPinyin}
                       onClick={onTogglePinyin}
-                      className={cn(
-                        'flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold transition-colors outline-none focus-ring',
-                        showPinyin
-                          ? 'bg-brand-primary/10 text-brand-primary'
-                          : 'text-ui-ink-strong hover:bg-ui-hover'
-                      )}
+                      className="flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold text-ui-ink-strong transition-colors outline-none hover:bg-ui-hover focus-ring"
                     >
                       <span>Pinyin</span>
-                      <span
-                        aria-hidden="true"
-                        className={cn(
-                          'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out',
-                          showPinyin ? 'bg-brand-primary' : 'bg-ui-divider'
-                        )}
-                      >
-                        <span
-                          className={cn(
-                            'pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-0 border-b-px border-b-ui-border ring-0 transition duration-200 ease-in-out translate-y-0.5',
-                            showPinyin ? 'translate-x-[18px]' : 'translate-x-0.5'
-                          )}
-                        />
-                      </span>
+                      <ToggleSwitch checked={showPinyin} />
                     </button>
 
                     {onToggleHoverDefinitions && (
@@ -250,37 +234,21 @@ export function ReaderHeader({
                       role="switch"
                       aria-checked={showHoverDefinitions}
                       onClick={onToggleHoverDefinitions}
-                      className={cn(
-                        'flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold transition-colors outline-none focus-ring',
-                        showHoverDefinitions
-                          ? 'bg-brand-primary/10 text-brand-primary'
-                          : 'text-ui-ink-strong hover:bg-ui-hover'
-                      )}
+                      className="flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold text-ui-ink-strong transition-colors outline-none hover:bg-ui-hover focus-ring"
                     >
                       <span>Hover Definitions</span>
-                      <span
-                        aria-hidden="true"
-                        className={cn(
-                          'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out',
-                          showHoverDefinitions ? 'bg-brand-primary' : 'bg-ui-divider'
-                        )}
-                      >
-                        <span
-                          className={cn(
-                            'pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-0 border-b-px border-b-ui-border ring-0 transition duration-200 ease-in-out translate-y-0.5',
-                            showHoverDefinitions ? 'translate-x-[18px]' : 'translate-x-0.5'
-                          )}
-                        />
-                      </span>
+                      <ToggleSwitch checked={showHoverDefinitions} />
                     </button>
                   )}
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
+            </div>
           </div>
         }
-    />
-  </div>
-);
+      />
+    </div>
+  );
 }
+

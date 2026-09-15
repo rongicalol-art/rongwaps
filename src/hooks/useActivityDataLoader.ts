@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Flashcard } from '../data/flashcards';
-import { fetchVocabulary, fetchVocabularyByIds, prepareVocabulary } from '../services/vocabularyService';
+import { fetchVocabulary, fetchVocabularyByIds, prepareVocabulary, getCourseVocabLookupMap } from '../services/vocabularyService';
 import { fetchAllVocabularyPacks } from '../services/vocabularyPackService';
 import { userService } from '../services/userService';
 import { getDictionaryEntriesBatch } from '../services/dictionaryService';
@@ -186,21 +186,28 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
             return;
           }
           try {
-            const batchResults = await getDictionaryEntriesBatch(favorites);
+            const [batchResults, vocabMap] = await Promise.all([
+              getDictionaryEntriesBatch(favorites),
+              getCourseVocabLookupMap().catch(() => new Map<string, Flashcard>()),
+            ]);
             const results: Flashcard[] = [];
             const knownIds = new Set<string>();
             for (const word of favorites) {
               if (batchResults.has(word)) {
                 const entry = batchResults.get(word)!;
                 knownIds.add(`star-${entry.traditional}`);
+                const courseMatch =
+                  vocabMap.get(entry.traditional) ||
+                  vocabMap.get(entry.simplified) ||
+                  vocabMap.get(word);
                 results.push({
                   id: `star-${entry.traditional}`,
-                  bookId: 0,
-                  lessonId: 0,
+                  bookId: courseMatch?.bookId || 0,
+                  lessonId: courseMatch?.lessonId || 0,
                   front: entry.traditional || entry.simplified,
                   back: entry.definitions ? (Array.isArray(entry.definitions) ? entry.definitions.join(' • ') : Object.values(entry.definitions).join(' • ')) : '',
-                  pinyin: entry.pinyin ? entry.pinyin.join(', ') : '',
-                  audio: '',
+                  pinyin: entry.pinyin ? entry.pinyin.join(', ') : (courseMatch?.pinyin || ''),
+                  audio: courseMatch?.audio || '',
                   notes: ''
                 });
               }
@@ -234,24 +241,32 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
                   filtered = customCards.filter(c => !c.folderId || c.folderId === 'custom');
               }
 
-              const results: Flashcard[] = filtered.map(c => ({
-                id: `custom-${c.id}`,
-                bookId: 0,
-                lessonId: 0,
-                front: c.traditional || c.simplified,
-                back: c.translation,
-                pinyin: c.pinyin || '',
-                audio: '',
-                notes: c.notes || ''
-              }));
-              if (isMounted) {
-                knownIdsRef.current = {
-                  key: deckExclusionKey,
-                  ids: new Set(results.map(c => c.id)),
-                };
-                setCards((prev) => (isSameCards(prev, results) ? prev : results));
-                setIsLoading(false);
-              }
+              void getCourseVocabLookupMap()
+                .catch(() => new Map<string, Flashcard>())
+                .then((vocabMap) => {
+                  if (!isMounted) return;
+                  const results: Flashcard[] = filtered.map((c) => {
+                    const courseMatch =
+                      vocabMap.get(c.traditional || '') ||
+                      vocabMap.get(c.simplified || '');
+                    return {
+                      id: `custom-${c.id}`,
+                      bookId: courseMatch?.bookId || 0,
+                      lessonId: courseMatch?.lessonId || 0,
+                      front: c.traditional || c.simplified,
+                      back: c.translation,
+                      pinyin: c.pinyin || courseMatch?.pinyin || '',
+                      audio: courseMatch?.audio || '',
+                      notes: c.notes || '',
+                    };
+                  });
+                  knownIdsRef.current = {
+                    key: deckExclusionKey,
+                    ids: new Set(results.map((c) => c.id)),
+                  };
+                  setCards((prev) => (isSameCards(prev, results) ? prev : results));
+                  setIsLoading(false);
+                });
             });
 
             if (!isMounted) {

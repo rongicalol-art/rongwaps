@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { AppIcon } from '../../../lib/widgets';
+import { AppIcon, ToggleSwitch } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 
 interface ReadingBottomDockProps {
@@ -152,8 +152,7 @@ export function ReadingBottomDock({
     <motion.div
       animate={{ y: isVisible ? 0 : 180 }}
       transition={{ type: 'spring', stiffness: 600, damping: 40, mass: 0.4 }}
-      className="pointer-events-none absolute bottom-4 right-0 z-40 flex justify-center px-3 sm:bottom-6 sm:px-4"
-      style={{ left: 'var(--workspace-nav-width, 0px)' }}
+      className="pointer-events-none absolute bottom-4 inset-x-0 z-40 flex justify-center px-3 sm:bottom-6 sm:px-4"
     >
       {/* Canvas fade behind dock */}
       <div
@@ -275,12 +274,7 @@ export function ReadingBottomDock({
                       )}
                     >
                       <span>Pinyin</span>
-                      <span
-                        aria-hidden="true"
-                        className={cn('relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors duration-200', showPinyin ? 'bg-brand-primary' : 'bg-ui-divider')}
-                      >
-                        <span className={cn('pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-b border-b-ui-border ring-0 transition duration-200 translate-y-0.5', showPinyin ? 'translate-x-[18px]' : 'translate-x-0.5')} />
-                      </span>
+                      <ToggleSwitch checked={showPinyin} />
                     </button>
 
                     {/* Translation toggle */}
@@ -295,12 +289,7 @@ export function ReadingBottomDock({
                       )}
                     >
                       <span>Translation</span>
-                      <span
-                        aria-hidden="true"
-                        className={cn('relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors duration-200', showMeaning ? 'bg-brand-primary' : 'bg-ui-divider')}
-                      >
-                        <span className={cn('pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-b border-b-ui-border ring-0 transition duration-200 translate-y-0.5', showMeaning ? 'translate-x-[18px]' : 'translate-x-0.5')} />
-                      </span>
+                      <ToggleSwitch checked={showMeaning} />
                     </button>
                   </div>
                 </motion.div>

@@ -11,6 +11,10 @@ class FakeAudio {
 
   src = '';
   playbackRate = 1;
+  defaultPlaybackRate = 1;
+  preservesPitch = false;
+  mozPreservesPitch = false;
+  webkitPreservesPitch = false;
   currentTime = 0;
   onended: (() => void) | null = null;
   onerror: (() => void) | null = null;
@@ -194,3 +198,30 @@ test('playRange resolves when stopped mid-range', async () => {
   service.stop();
   await playback; // must settle, not hang
 });
+
+test('setPlaybackRate enforces pitch preservation and updates rate', async () => {
+  const service = new AudioService();
+  const audio = FakeAudio.instances.at(-1)!;
+
+  service.setPlaybackRate(0.75);
+  assert.equal(audio.preservesPitch, true);
+  assert.equal(audio.playbackRate, 0.75);
+  assert.equal(audio.defaultPlaybackRate, 0.75);
+
+  service.setPlaybackRate(1.25);
+  assert.equal(audio.preservesPitch, true);
+  assert.equal(audio.playbackRate, 1.25);
+  assert.equal(audio.defaultPlaybackRate, 1.25);
+});
+
+test('fetchAudioBlob deduplicates concurrent in-flight requests', async () => {
+  const { fetchAudioBlob } = await import('../src/services/audio/audioCache');
+  const [blob1, blob2] = await Promise.all([
+    fetchAudioBlob('dedupe-test.mp3'),
+    fetchAudioBlob('dedupe-test.mp3'),
+  ]);
+  assert.ok(blob1 instanceof Blob);
+  assert.ok(blob2 instanceof Blob);
+  assert.equal(blob1.size, blob2.size);
+});
+

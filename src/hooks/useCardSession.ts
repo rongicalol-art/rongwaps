@@ -6,6 +6,7 @@ import { shuffleItems } from '../utils/sessionOrder';
 import { queueMissedItem } from '../utils/mistakeQueue';
 import { getSessionStartIndex, retainCurrentCardIndex } from '../utils/sessionProgress';
 import { SHARED_REVIEW_SESSION_KEY } from '../utils/lessonPartSelection';
+import { audioService } from '../services/audioService';
 
 /**
  * Generic card-session engine shared by the practice activities.
@@ -56,6 +57,7 @@ export function useCardSession(
   const pendingSessionCardIdRef = useRef<string | null>(null);
   const currentCardIdRef = useRef<string | null>(null);
   const gradingCardKeyRef = useRef<string | null>(null);
+  const firstAttemptMissedRef = useRef<Set<string>>(new Set());
 
   // Activity callbacks arrive as inline closures; keep latest refs so the
   // engine's effects and stable callbacks never hold stale ones.
@@ -66,6 +68,7 @@ export function useCardSession(
 
   useEffect(() => {
     if (sessionKeyRef.current !== sessionKey) {
+      firstAttemptMissedRef.current.clear();
       pendingSessionCardIdRef.current = currentCardIdRef.current;
       sessionKeyRef.current = sessionKey;
       sessionInitializedRef.current = false;
@@ -124,6 +127,21 @@ export function useCardSession(
     setSessionProgressIndex(sessionKey, currentIndex);
   }, [activeCards.length, currentIndex, sessionKey, setSessionProgressIndex]);
 
+  // Preload upcoming audio for next 3 cards during idle time
+  useEffect(() => {
+    if (!activeCards || activeCards.length === 0) return;
+    const upcomingAudios = activeCards
+      .slice(currentIndex + 1, currentIndex + 4)
+      .map((c) => c.audio)
+      .filter((a): a is string => Boolean(a));
+    if (upcomingAudios.length === 0) return;
+
+    const timeoutId = window.setTimeout(() => {
+      void audioService.preload(upcomingAudios);
+    }, 250);
+    return () => window.clearTimeout(timeoutId);
+  }, [activeCards, currentIndex]);
+
   const currentCard = activeCards[currentIndex];
   if (currentCard) currentCardIdRef.current = currentCard.id;
 
@@ -144,10 +162,23 @@ export function useCardSession(
 
   /** Records the result, feeds the mistake queue, and updates session tallies. */
   const recordAnswer = useCallback((card: Flashcard, quality: CardSessionQuality) => {
-    markCardReviewed(card.id, quality);
-    setSessionResults((previous) => ({ ...previous, [card.id]: quality }));
+    const wasMissed = firstAttemptMissedRef.current.has(card.id);
+
     if (quality <= 2) {
-      setActiveCards((items) => queueMissedItem(items, card, currentIndex, repeatMistakes));
+      if (!wasMissed) {
+        firstAttemptMissedRef.current.add(card.id);
+        markCardReviewed(card.id, quality);
+        setSessionResults((previous) => ({ ...previous, [card.id]: quality }));
+        setActiveCards((items) => queueMissedItem(items, card, currentIndex, repeatMistakes));
+      }
+    } else {
+      // For cards answered correctly on initial attempt, record success.
+      // If wasMissed is true, this is an immediate retry: allow the UI to advance,
+      // but do not grant SRS success or clear the mistake from sessionResults / reviewUnlearned.
+      if (!wasMissed) {
+        markCardReviewed(card.id, quality);
+        setSessionResults((previous) => ({ ...previous, [card.id]: quality }));
+      }
     }
   }, [currentIndex, markCardReviewed, repeatMistakes]);
 
@@ -174,6 +205,7 @@ export function useCardSession(
   }, [activeCards.length]);
 
   const toggleShuffle = useCallback(() => {
+    firstAttemptMissedRef.current.clear();
     const nextShuffled = !isShuffled;
     setActiveCards(nextShuffled ? shuffleItems(canonicalOrderRef.current) : [...canonicalOrderRef.current]);
     setCurrentIndex(0);
@@ -184,6 +216,7 @@ export function useCardSession(
   }, [isShuffled]);
 
   const resetAll = useCallback(() => {
+    firstAttemptMissedRef.current.clear();
     setActiveCards(cards);
     canonicalOrderRef.current = cards;
     setIsShuffled(false);
@@ -195,6 +228,7 @@ export function useCardSession(
   }, [cards]);
 
   const reviewUnlearned = useCallback(() => {
+    firstAttemptMissedRef.current.clear();
     const unlearnedIds = Object.entries(sessionResults)
       .filter(([, quality]) => quality === 1 || quality === 2)
       .map(([id]) => id);

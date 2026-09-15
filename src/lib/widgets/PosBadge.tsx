@@ -54,6 +54,8 @@ interface PosBadgeProps {
   pos?: string | null;
   className?: string;
   characterPreference?: ScriptPreference;
+  /** Optional custom label override (defaults to formatPosLabel(pos)). */
+  label?: string;
 }
 
 interface Anchor {
@@ -75,8 +77,13 @@ interface TooltipPlacement {
  * ("N" → "NOUN"). Hovering it opens a learner-friendly explainer with the
  * Chinese term. Renders nothing when the card has no tag.
  */
-export function PosBadge({ pos, className = '', characterPreference = 'traditional' }: PosBadgeProps) {
-  const label = formatPosLabel(pos);
+export function PosBadge({
+  pos,
+  className = '',
+  characterPreference = 'traditional',
+  label: customLabel,
+}: PosBadgeProps) {
+  const label = customLabel ?? formatPosLabel(pos);
   const reduceMotion = useReducedMotion();
   const tagRef = useRef<HTMLSpanElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
@@ -160,8 +167,8 @@ export function PosBadge({ pos, className = '', characterPreference = 'tradition
         }}
         onPointerLeave={disarm}
         className={cn(
-          'inline-flex shrink-0 select-none cursor-help items-center rounded-[6px] px-1.5 py-[3px]',
-          'text-[10px] font-black uppercase leading-none tracking-wide text-ui-ink-strong',
+          'inline-flex shrink-0 select-none cursor-help items-center rounded-xs px-1.5 py-1',
+          'text-xs font-black uppercase leading-none tracking-wide text-ui-ink-strong',
           'transition-colors',
           TAG_TONES[category],
           className,
@@ -173,7 +180,7 @@ export function PosBadge({ pos, className = '', characterPreference = 'tradition
       {isOpen && anchor && createPortal(
         <div
           aria-hidden="true"
-          className="pointer-events-none fixed z-[60]"
+          className="pointer-events-none fixed z-[800]"
           style={
             placement
               ? { left: placement.left, top: placement.top }

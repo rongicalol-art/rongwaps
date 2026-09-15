@@ -53,9 +53,9 @@ export function ExtendedDefinitions({ char, entries: entriesProp }: { char?: str
         type="button"
         onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
-        className="flex min-h-11 w-full items-center justify-between gap-3 rounded-b-feature px-4 text-left outline-none transition-colors hover:bg-ui-canvas focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-brand-primary/25 sm:px-5"
+        className="flex min-h-11 w-full items-center justify-between gap-3 rounded-b-feature px-4 text-left transition-colors hover:bg-ui-canvas focus-ring focus-visible:ring-inset sm:px-5"
       >
-        <span className="flex items-baseline gap-1.5 text-[13px] font-extrabold text-ui-muted-strong">
+        <span className="flex items-baseline gap-1.5 text-sm font-extrabold text-ui-muted-strong">
           More definitions
           {definitions.length > 1 && <span className="font-bold text-ui-muted">· {definitions.length}</span>}
         </span>
@@ -78,7 +78,7 @@ export function ExtendedDefinitions({ char, entries: entriesProp }: { char?: str
               <div className="flex flex-col gap-3.5">
                 <ul className="flex flex-col gap-2">
                   {definitions.map((definition, index) => (
-                    <li key={index} className="text-[15px] font-bold leading-relaxed text-ui-ink">
+                    <li key={index} className="text-sm font-bold leading-relaxed text-ui-ink">
                       {definition}
                     </li>
                   ))}
@@ -87,12 +87,12 @@ export function ExtendedDefinitions({ char, entries: entriesProp }: { char?: str
                 {(measureWords.length > 0 || hasLevel) && (
                   <div className="flex flex-wrap items-center gap-2">
                     {measureWords.map((mw) => (
-                      <span key={mw} className="rounded-md bg-ui-canvas px-2 py-0.5 font-chinese text-sm font-bold text-ui-ink-strong">
+                      <span key={mw} className="rounded-compact bg-ui-canvas px-2 py-0.5 font-chinese text-sm font-bold text-ui-ink-strong">
                         {mw}
                       </span>
                     ))}
                     {hasLevel && (
-                      <span className="rounded-md bg-feedback-success-surface px-2 py-0.5 text-[11px] font-extrabold text-feedback-success">
+                      <span className="rounded-compact bg-feedback-success-surface px-2 py-0.5 text-xs font-extrabold text-feedback-success">
                         {CEFR[(level as number) - 1]}
                       </span>
                     )}

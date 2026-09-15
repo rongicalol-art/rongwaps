@@ -1,4 +1,4 @@
-import { SegmentedControl } from '../../../lib/widgets';
+import { SegmentedControl, ToggleSwitch } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 
 interface GrammarReadingAidsProps {
@@ -58,20 +58,7 @@ export function GrammarReadingAids({
             )}
           >
             <span>Pinyin</span>
-            <span
-              aria-hidden="true"
-              className={cn(
-                'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out',
-                showPinyin ? 'bg-brand-primary' : 'bg-ui-divider',
-              )}
-            >
-              <span
-                className={cn(
-                  'pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-0 border-b-px border-b-ui-border ring-0 transition duration-200 ease-in-out translate-y-0.5',
-                  showPinyin ? 'translate-x-[18px]' : 'translate-x-0.5',
-                )}
-              />
-            </span>
+            <ToggleSwitch checked={showPinyin} />
           </button>
 
           {/* Translation Toggle */}
@@ -88,20 +75,7 @@ export function GrammarReadingAids({
             )}
           >
             <span>Translation</span>
-            <span
-              aria-hidden="true"
-              className={cn(
-                'relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out',
-                showTranslation ? 'bg-brand-primary' : 'bg-ui-divider',
-              )}
-            >
-              <span
-                className={cn(
-                  'pointer-events-none inline-block h-4 w-4 rounded-full bg-ui-surface border-0 border-b-px border-b-ui-border ring-0 transition duration-200 ease-in-out translate-y-0.5',
-                  showTranslation ? 'translate-x-[18px]' : 'translate-x-0.5',
-                )}
-              />
-            </span>
+            <ToggleSwitch checked={showTranslation} />
           </button>
         </div>
       </div>

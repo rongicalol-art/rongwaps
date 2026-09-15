@@ -3,6 +3,10 @@ import { persist } from 'zustand/middleware';
 
 export type PracticePreset = 'comfortable' | 'balanced' | 'sprint' | 'custom';
 export type MistakeRepeat = 'off' | 'soon' | 'end';
+export type QuizQuestionType = 'hanzi' | 'pinyin' | 'meaning';
+export type QuizChoiceType = 'meaning' | 'hanzi' | 'pinyin';
+export type ListeningChoiceType = 'meaning' | 'hanzi' | 'pinyin';
+export type TypingPromptType = 'hanzi' | 'meaning';
 
 export interface PracticePreferences {
   preset: PracticePreset;
@@ -21,6 +25,10 @@ export interface PracticePreferences {
   speakDefinition: boolean;
   showPinyin: boolean;
   showTranslation: boolean;
+  quizQuestionType: QuizQuestionType;
+  quizChoiceType: QuizChoiceType;
+  listeningChoiceType: ListeningChoiceType;
+  typingPromptType: TypingPromptType;
 }
 
 type PaceTimings = Pick<
@@ -73,6 +81,10 @@ export const DEFAULT_PREFERENCES: PracticePreferences = {
   speakDefinition: true,
   showPinyin: true,
   showTranslation: true,
+  quizQuestionType: 'hanzi',
+  quizChoiceType: 'meaning',
+  listeningChoiceType: 'meaning',
+  typingPromptType: 'hanzi',
 };
 
 interface PracticePreferencesState extends PracticePreferences {
@@ -99,6 +111,10 @@ const persistedKeys: Array<keyof PracticePreferences> = [
   'speakDefinition',
   'showPinyin',
   'showTranslation',
+  'quizQuestionType',
+  'quizChoiceType',
+  'listeningChoiceType',
+  'typingPromptType',
 ];
 
 export const usePracticePreferencesStore = create<PracticePreferencesState>()(

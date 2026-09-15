@@ -11,6 +11,7 @@ interface UseCardFlowOptions {
   setIsFlipped: React.Dispatch<React.SetStateAction<boolean>>;
   onAdvance: () => void;
   onReplay: () => void;
+  onFinishSet?: () => void;
 }
 
 export function useCardFlow({
@@ -20,18 +21,22 @@ export function useCardFlow({
   setIsFlipped,
   onAdvance,
   onReplay,
+  onFinishSet,
 }: UseCardFlowOptions) {
   const [flowStatus, setFlowStatus] = useState<PracticeFlowStatus>('idle');
+  const [flowStep, setFlowStep] = useState(0);
   const flowFrontDelayMs = usePracticePreferencesStore((state) => state.flowFrontDelayMs);
   const flowBackDelayMs = usePracticePreferencesStore((state) => state.flowBackDelayMs);
   const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
   const speakDefinition = usePracticePreferencesStore((state) => state.speakDefinition);
   const onAdvanceRef = useRef(onAdvance);
   const onReplayRef = useRef(onReplay);
+  const onFinishSetRef = useRef(onFinishSet);
   const setIsFlippedRef = useRef(setIsFlipped);
 
   onAdvanceRef.current = onAdvance;
   onReplayRef.current = onReplay;
+  onFinishSetRef.current = onFinishSet;
   setIsFlippedRef.current = setIsFlipped;
 
   const pauseFlow = useCallback(() => {
@@ -99,8 +104,19 @@ export function useCardFlow({
 
       if (currentIndex < totalCount - 1) {
         onAdvanceRef.current();
+        setFlowStep((s) => s + 1);
       } else {
-        setFlowStatus('finished');
+        // Continuous flow mode: do not stop when finishing a set!
+        // Smoothly flip card back to front and transition to next part or loop back to card 0.
+        setIsFlippedRef.current(false);
+        await wait(320);
+        if (cancelled) return;
+        if (onFinishSetRef.current) {
+          onFinishSetRef.current();
+        } else {
+          onReplayRef.current();
+        }
+        setFlowStep((s) => s + 1);
       }
     };
 
@@ -109,7 +125,7 @@ export function useCardFlow({
       cancelled = true;
       audioService.stop();
     };
-  }, [currentCard, currentIndex, flowBackDelayMs, flowFrontDelayMs, flowStatus, pronunciationRate, speakDefinition, totalCount]);
+  }, [currentCard, currentIndex, flowBackDelayMs, flowFrontDelayMs, flowStatus, flowStep, pronunciationRate, speakDefinition, totalCount]);
 
   // Note: the flow deliberately does NOT pause when the document is hidden
   // (tab switch). Timers get throttled by the browser while hidden, so the

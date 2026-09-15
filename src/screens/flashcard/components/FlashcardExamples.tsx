@@ -45,42 +45,44 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
 
   return (
     <li
-      className={`flex min-w-0 flex-col gap-1 [content-visibility:auto] [contain-intrinsic-size:0_104px] ${
+      className={`flex min-w-0 flex-col gap-1.5 sm:gap-2 [content-visibility:auto] [contain-intrinsic-size:0_110px] ${
         divider ? 'border-b border-ui-divider' : ''
       } ${className}`}
     >
-      <div className="flex w-full items-start gap-2">
-        {isTopPick && (
-          <span
-            role="img"
-            aria-label="Top match"
-            title="Top match"
-            className={`mt-1 shrink-0 ${book?.accent ?? 'text-brand-primary'}`}
-          >
-            <AppIcon name="star" size={15} />
-          </span>
-        )}
+      <div className="flex w-full items-baseline justify-between gap-3">
         <SmartSentence
           text={example.chinese}
           highlightTerms={highlightTerms}
-          className="min-w-0 flex-1 font-chinese text-[16px] font-bold leading-snug text-ui-ink sm:text-[17px]"
+          className="min-w-0 flex-1 font-chinese text-[18px] sm:text-[20px] md:text-[22px] font-bold leading-relaxed text-ui-ink-strong"
         />
+        {showMeta && (
+          <span
+            className="shrink-0 inline-flex items-center gap-1.5 rounded-compact bg-ui-hover px-2 py-0.5 text-[11px] font-extrabold uppercase tracking-wider text-ui-muted"
+            title={`Book ${example.sourceBookId}, Lesson ${example.sourceLessonId}${isTopPick ? ' · Top match' : ''}`}
+          >
+            {isTopPick && (
+              <span
+                role="img"
+                aria-label="Top match"
+                className={`shrink-0 ${book?.accent ?? 'text-brand-primary'}`}
+              >
+                <AppIcon name="star" size={12} />
+              </span>
+            )}
+            <span>B{example.sourceBookId} · L{example.sourceLessonId}</span>
+            <span className={`h-1.5 w-1.5 rounded-full ${book?.accentBg ?? 'bg-brand-primary'}`} />
+          </span>
+        )}
       </div>
       {showPinyin && example.pinyin && (
-        <p className={`text-[13px] font-bold leading-snug sm:text-[14px] ${book?.accent ?? 'text-brand-primary'}`}>
+        <p className="text-sm sm:text-[15px] font-semibold tracking-wide leading-snug text-ui-muted-strong">
           {numberToToneMarks(example.pinyin)}
         </p>
       )}
       {showTranslation && example.english && (
-        <p className="text-[13px] font-medium leading-relaxed text-ui-muted sm:text-[14px]">
+        <p className="text-sm sm:text-[15px] font-medium leading-relaxed text-ui-muted-strong/90">
           {example.english}
         </p>
-      )}
-      {showMeta && (
-        <span className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-ui-muted">
-          <span>B{example.sourceBookId} · L{example.sourceLessonId}</span>
-          <span className={`h-1.5 w-1.5 rounded-full ${book?.accentBg ?? 'bg-brand-primary'}`} />
-        </span>
       )}
     </li>
   );
@@ -88,13 +90,15 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
 
 function FlashcardExamplesLoading() {
   return (
-    <div className="mt-4 flex w-full flex-col px-5 pb-4 sm:px-6" role="status" aria-label="Loading example sentences">
+    <div className="mt-4 flex w-full flex-col px-6 pb-4 sm:px-8" role="status" aria-label="Loading example sentences">
       {[0, 1].map((index) => (
-        <div key={index} className="flex flex-col gap-1.5 border-b border-ui-divider py-3.5 last:border-b-0">
-          <Skeleton className="h-5 w-3/4 rounded-[4px]" />
-          <Skeleton className="h-3 w-1/3 rounded-[3px]" />
-          <Skeleton className="h-3 w-2/5 rounded-[3px]" />
-          <Skeleton className="h-2 w-16 rounded-[2px]" />
+        <div key={index} className="flex flex-col gap-2 border-b border-ui-divider py-4 last:border-b-0">
+          <div className="flex items-center justify-between gap-3">
+            <Skeleton className="h-6 w-3/5 rounded-xs" />
+            <Skeleton className="h-4.5 w-14 rounded-compact" />
+          </div>
+          <Skeleton className="h-4 w-1/3 rounded-xs" />
+          <Skeleton className="h-4 w-1/2 rounded-xs" />
         </div>
       ))}
     </div>
@@ -171,7 +175,7 @@ export const FlashcardExamples = memo(function FlashcardExamples({
                   showTranslation={showTranslation}
                   isTopPick
                   divider={divider}
-                  className="px-5 py-3.5 sm:px-6"
+                  className="px-6 py-4 sm:px-8 sm:py-4.5"
                 />
               );
             })}
@@ -200,7 +204,7 @@ export const FlashcardExamples = memo(function FlashcardExamples({
                     showPinyin={showPinyin}
                     showTranslation={showTranslation}
                     divider={divider}
-                    className="px-5 py-3.5 sm:px-6"
+                    className="px-6 py-4 sm:px-8 sm:py-4.5"
                   />
                 );
               })}

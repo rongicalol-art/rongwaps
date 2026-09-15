@@ -119,6 +119,18 @@ export default defineConfig(() => {
               if (id.includes('hanzi-writer')) {
                 return 'hanzi-writer';
               }
+              if (id.includes('lottie-web') || id.includes('lottie-react')) {
+                return 'vendor-lottie';
+              }
+              if (id.includes('react-router')) {
+                return 'vendor-router';
+              }
+            }
+            if (id.includes('src/data/grammar/') || id.includes('src/data/interactiveGrammar')) {
+              return 'data-interactive-grammar';
+            }
+            if (id.includes('src/data/readingsData')) {
+              return 'data-readings';
             }
           }
         }

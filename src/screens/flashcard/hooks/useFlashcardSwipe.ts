@@ -17,21 +17,18 @@ export function useFlashcardSwipe(
   const navPendingRef = useRef(false);
   const swipeTimeoutRef = useRef<number | null>(null);
   const unlockTimeoutRef = useRef<number | null>(null);
-  const [isRatingPending, setIsRatingPending] = useState(false);
   handleNextRef.current = handleNext;
   handleNavigateRef.current = handleNavigate;
 
   const unlockRating = useCallback(() => {
     ratePendingRef.current = false;
-    setIsRatingPending(false);
   }, []);
 
-  /** Rate a card after its gesture has begun settling. */
-  const triggerSwipeRate = useCallback((level: number) => {
+  /** Rate a card after its gesture has begun settling. animDir: 1 exit left, -1 exit right, 2 exit up, -2 exit down. */
+  const triggerSwipeRate = useCallback((level: number, animDir?: number) => {
     if (ratePendingRef.current) return;
     ratePendingRef.current = true;
-    setIsRatingPending(true);
-    setDirection(level <= 2 ? 1 : -1);
+    setDirection(animDir ?? (level <= 2 ? 1 : -1));
     // Defer state update slightly so the drag gesture and snap-back can finish/begin cleanly
     swipeTimeoutRef.current = window.setTimeout(() => {
       handleNextRef.current(level);
@@ -54,7 +51,6 @@ export function useFlashcardSwipe(
   const triggerKeyboardRate = useCallback((level: number, animDir: number) => {
     if (ratePendingRef.current) return;
     ratePendingRef.current = true;
-    setIsRatingPending(true);
     setDirection(animDir);
     handleNextRef.current(level);
     unlockTimeoutRef.current = window.setTimeout(unlockRating, 260);
@@ -67,7 +63,6 @@ export function useFlashcardSwipe(
 
   return {
     direction,
-    isRatingPending,
     triggerSwipeRate,
     triggerKeyboardRate,
     triggerNav,

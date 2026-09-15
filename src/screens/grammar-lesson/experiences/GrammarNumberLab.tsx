@@ -95,7 +95,7 @@ export function GrammarNumberLab({
             </div>
           </div>
 
-          <div className="grid auto-rows-fr grid-cols-2 gap-px overflow-hidden rounded-[16px] border border-ui-divider bg-ui-divider">
+          <div className="grid auto-rows-fr grid-cols-2 gap-px overflow-hidden rounded-control border border-ui-divider bg-ui-divider">
             {selected.groups.map((group, index) => {
               const groupText = characterPreference === 'simplified' && group.simplified
                 ? group.simplified
@@ -105,7 +105,7 @@ export function GrammarNumberLab({
                   key={`${selected.id}-${group.label}`}
                   className={`bg-ui-canvas px-3 py-3 ${selected.groups.length % 2 === 1 && index === selected.groups.length - 1 ? 'col-span-2' : ''}`}
                 >
-                  <p className="text-[10px] font-black uppercase tracking-[0.08em] text-ui-muted-strong">{group.label}</p>
+                  <p className="text-xs font-black uppercase tracking-wider text-ui-muted-strong">{group.label}</p>
                   <p className="mt-1 text-lg font-black text-ui-ink-strong">{group.digit}</p>
                   <p className="font-chinese text-sm font-black text-brand-primary">
                     <GrammarFocusText text={groupText} contextTokens={contextTokens} characterPreference={characterPreference} onOpenWord={onOpenWord} />

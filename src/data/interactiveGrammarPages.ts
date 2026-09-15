@@ -921,9 +921,9 @@ export const LESSON_ONE_PART_ONE: InteractiveGrammarPart = {
     lines: [
       { id: 'd1-l1', speaker: '中明', text: { traditional: '宜文，她是誰？', simplified: '宜文，她是谁？', pinyin: 'Yíwén, tā shì shéi?', english: 'Yiwen, who is she?' } },
       { id: 'd1-l2', speaker: '宜文', text: { traditional: '她是新同學，叫友美。她很可愛。', simplified: '她是新同学，叫友美。她很可爱。', pinyin: 'Tā shì xīn tóngxué, jiào Yǒuměi. Tā hěn kěài.', english: 'She is our new classmate. Her name is Youmei. She is cute.' } },
-      { id: 'd1-l3', speaker: '中明', text: { traditional: '她是哪國人？妳知道嗎？', simplified: '她是哪国人？妳知道吗？', pinyin: 'Tā shì nǎ guó rén? Nǐ zhīdào ma?', english: 'Which country is she from? Do you know?' } },
-      { id: 'd1-l4', speaker: '宜文', text: { traditional: '我知道，她是日本人。', pinyin: 'Wǒ zhīdào, tā shì Rìběn rén.', english: 'Yes, I do. She is from Japan.' } },
-      { id: 'd1-l5', speaker: '中明', text: { traditional: '她很漂亮。', pinyin: 'Tā hěn piàoliàng.', english: 'She is very pretty.' } },
+      { id: 'd1-l3', speaker: '中明', text: { traditional: '她是哪國人？妳知道嗎？', simplified: '她是哪国人？你知道吗？', pinyin: 'Tā shì nǎ guó rén? Nǐ zhīdào ma?', english: 'Which country is she from? Do you know?' } },
+      { id: 'd1-l4', speaker: '宜文', text: { traditional: '我知道，她是日本人。', simplified: '我知道，她是日本人。', pinyin: 'Wǒ zhīdào, tā shì Rìběn rén.', english: 'Yes, I do. She is from Japan.' } },
+      { id: 'd1-l5', speaker: '中明', text: { traditional: '她很漂亮。', simplified: '她很漂亮。', pinyin: 'Tā hěn piàoliàng.', english: 'She is very pretty.' } },
     ],
     comprehension: {
       prompt: '中明覺得友美怎麼樣？',

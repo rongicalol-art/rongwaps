@@ -162,7 +162,7 @@ export function SmartSentence({
                   );
                 }
               }}
-              className="-mx-0.5 cursor-pointer rounded-[8px] px-0.5 align-baseline text-ui-ink outline-none transition-colors hover:bg-ui-surface-hover focus-visible:bg-ui-surface-hover focus-visible:ring-2 focus-visible:ring-brand-primary/35 active:translate-y-px active:bg-ui-divider"
+              className="-mx-0.5 cursor-pointer rounded-xs px-0.5 align-baseline text-ui-ink transition-colors hover:bg-ui-surface-hover focus-ring-inline focus-visible:bg-ui-surface-hover active:translate-y-px active:bg-ui-divider"
             >
               {renderHighlightedText(seg.segment, seg.index, highlightRanges)}
             </button>

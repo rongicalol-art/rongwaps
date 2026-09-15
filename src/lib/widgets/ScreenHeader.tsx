@@ -25,6 +25,7 @@ export interface ScreenHeaderProps {
   className?: string;
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '4xl' | 'none';
   progressSize?: 'default' | 'compact';
+  controlSize?: 'sm' | 'md' | 'lg';
 }
 
 export function ScreenHeader({ 
@@ -45,8 +46,13 @@ export function ScreenHeader({
   className = "",
   maxWidth = '2xl',
   progressSize = 'default',
+  controlSize = 'md',
 }: ScreenHeaderProps) {
-  const metrics = { controlSize: 'lg' as const, iconSize: 25, sideSpacerClassName: 'w-11' };
+  const controlMetrics = {
+    sm: { controlSize: 'sm' as const, iconSize: 18, sideSpacerClassName: 'w-9' },
+    md: { controlSize: 'md' as const, iconSize: 20, sideSpacerClassName: 'w-10' },
+    lg: { controlSize: 'lg' as const, iconSize: 25, sideSpacerClassName: 'w-11' },
+  }[controlSize];
   const maxWidthClasses = {
     sm: 'max-w-sm',
     md: 'max-w-md',
@@ -60,7 +66,8 @@ export function ScreenHeader({
 
   return (
     <header className={cn(
-      "window-header relative z-10 w-full shrink-0 border-b-2 border-ui-border bg-ui-surface px-3 py-3 shadow-sm pointer-events-auto md:px-5",
+      "relative z-10 w-full shrink-0 pointer-events-auto",
+      !className.includes('bg-') && !className.includes('sticky') && "window-header border-b-2 border-ui-border bg-ui-surface px-3 py-3 shadow-sm md:px-5",
       className
     )}>
       <div className={cn("w-full flex items-center justify-between mx-auto", maxWidthClasses[maxWidth])}>
@@ -69,19 +76,19 @@ export function ScreenHeader({
             onClick={onClose}
             className="relative z-30 -ml-1"
             label="Close"
-            size={metrics.controlSize}
-            icon={<AppIcon name="close" size={metrics.iconSize} />}
+            size={controlMetrics.controlSize}
+            icon={<AppIcon name="close" size={controlMetrics.iconSize} />}
           />
         ) : onBack ? (
           <IconActionButton
             onClick={onBack}
             className="relative z-30 -ml-1"
             label="Go back"
-            size={metrics.controlSize}
-            icon={<AppIcon name="back" size={metrics.iconSize} />}
+            size={controlMetrics.controlSize}
+            icon={<AppIcon name="back" size={controlMetrics.iconSize} />}
           />
         ) : (
-          <div className={metrics.sideSpacerClassName} />
+          <div className={controlMetrics.sideSpacerClassName} />
         )}
         
         <div className={cn("flex-1 mx-2 md:mx-4 flex items-center", eyebrow ? "justify-start" : "justify-center")}>
@@ -129,7 +136,7 @@ export function ScreenHeader({
               </div>
             ) : (
               <h1 className={cn(
-                "w-full text-center text-[15px] font-black uppercase tracking-widest text-ui-muted sm:text-[17px]",
+                "w-full text-center text-xs sm:text-sm font-black uppercase tracking-wider text-ui-ink-strong",
               )}>
                 {title}
               </h1>
@@ -139,14 +146,14 @@ export function ScreenHeader({
 
         <div className="flex h-10 shrink-0 items-center gap-2">
           {(currentIndex !== undefined && totalCount !== undefined && totalCount > 0 && !usesStudyPartRail) && (
-            <span className="mt-0.5 hidden text-sm font-extrabold tracking-widest text-ui-muted tabular-nums sm:inline">
+            <span className="mt-0.5 text-xs font-extrabold tracking-wider text-ui-muted tabular-nums sm:text-sm sm:tracking-widest">
               {currentIndex + 1} / {totalCount}
             </span>
           )}
           {rightAction !== undefined ? (
             rightAction
           ) : (
-            <span aria-hidden="true" className={metrics.sideSpacerClassName} />
+            <span aria-hidden="true" className={controlMetrics.sideSpacerClassName} />
           )}
         </div>
       </div>

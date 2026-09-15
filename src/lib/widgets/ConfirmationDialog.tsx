@@ -8,6 +8,7 @@ import { useModalFocus } from '../../hooks/useModalFocus';
 export interface ConfirmationDialogProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   cancelLabel?: string;
   confirmLabel: string;
+  confirmLoadingLabel?: string;
   description: ReactNode;
   errorMessage?: string | null;
   icon?: ReactNode;
@@ -21,6 +22,7 @@ export function ConfirmationDialog({
   cancelLabel = 'Cancel',
   className,
   confirmLabel,
+  confirmLoadingLabel = 'Please wait...',
   description,
   errorMessage,
   icon = <AppIcon name="trash" size={32} />,
@@ -91,7 +93,7 @@ export function ConfirmationDialog({
               variant="danger"
               fullWidth
               loading={isConfirming}
-              loadingLabel="Resetting"
+              loadingLabel={confirmLoadingLabel}
               onClick={onConfirm}
             >
               {confirmLabel}

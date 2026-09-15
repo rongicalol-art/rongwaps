@@ -7,6 +7,7 @@ import { getDialogueSpeakerColorMap, getSpeakerDotColor } from '../../../utils/s
 import { getCharacterForSpeaker } from '../../../utils/speakerCharacters';
 import { RongWapsCharacterPortrait } from '../../../lib/widgets';
 import { audioService } from '../../../services/audioService';
+import { findMatchingCourseVocab } from '../../../services/vocabularyService';
 import { useReaderWordInteractions } from '../hooks/useReaderWordInteractions';
 import { useReaderDictionaryBatch } from '../hooks/useReaderDictionaryBatch';
 import { ReaderWordTooltip } from './ReaderWordTooltip';
@@ -28,20 +29,21 @@ interface ReadingCanvasProps {
   onPlayFromTime: (startSec: number, endSec?: number) => void;
 }
 
-const LEFT_ANCHOR_SPEAKERS = new Set(['老師', '媽媽', '醫生', '女店員']);
+
+const LEFT_ANCHOR_SPEAKERS = new Set(['老師', '媽媽', '醫生', '女店員', '店員']);
 const STUDENT_PRIORITY = ['中明', '家樂', '宜文', '友美', '國安', '元真'];
 
 function pickRightSpeaker(speakers: string[]): string | null {
   if (speakers.length < 2) return null;
 
-  // In 2-person dialogues:
+  // In 2-person dialogues: anchor authority/elder/clerks to the left
   if (speakers.length === 2) {
     if (LEFT_ANCHOR_SPEAKERS.has(speakers[0]) && !LEFT_ANCHOR_SPEAKERS.has(speakers[1])) return speakers[1];
     if (LEFT_ANCHOR_SPEAKERS.has(speakers[1]) && !LEFT_ANCHOR_SPEAKERS.has(speakers[0])) return speakers[0];
     return speakers[1];
   }
 
-  // In 3+ person dialogues: pick the primary student protagonist who acts as "You"
+  // In 3+ person dialogues: pick the primary student protagonist who acts as "You" / responder
   for (const candidate of STUDENT_PRIORITY) {
     if (speakers.includes(candidate)) return candidate;
   }
@@ -124,8 +126,8 @@ export function ReadingCanvas({
       const lineAlignment = alignment?.lines[index];
       const chunks = getWordChunks(text, paragraph.pinyin, lineAlignment);
       const isNarrator = !paragraph.speaker || paragraph.speaker.toLowerCase() === 'narrator';
+      const isRightAligned = !isNarrator && Boolean(rightSpeaker && paragraph.speaker === rightSpeaker);
       const speakerDotColor = getSpeakerDotColor(paragraph.speaker, speakerColorMap);
-      const isRightAligned = Boolean(rightSpeaker && paragraph.speaker === rightSpeaker);
       const speakerChar = getCharacterForSpeaker(paragraph.speaker);
       const avatarInitial = paragraph.speaker ? paragraph.speaker[0] : '？';
       const sentences = splitChunksIntoSentences(chunks, index, lineAlignment?.start, lineAlignment?.end);
@@ -134,8 +136,8 @@ export function ReadingCanvas({
         index,
         paragraph,
         isNarrator,
-        speakerDotColor,
         isRightAligned,
+        speakerDotColor,
         speakerChar,
         avatarInitial,
         sentences,
@@ -146,23 +148,118 @@ export function ReadingCanvas({
   return (
     <article
       className={cn(
-        'mx-auto w-full px-3 pb-36 pt-4 sm:px-6 sm:pt-6',
+        'mx-auto w-full px-3 pb-52 pt-16 sm:px-6 sm:pt-20 transition-all',
         textSize === 'extra-large' ? 'max-w-3xl' : 'max-w-2xl',
       )}
     >
       {/* Dialogue Chat Messages Flow */}
-      <div className="flex flex-col space-y-3.5 sm:space-y-4">
+      <div className="flex flex-col space-y-4 sm:space-y-5">
         {linesData.map(({
           index,
           paragraph,
           isNarrator,
-          speakerDotColor,
           isRightAligned,
+          speakerDotColor,
           speakerChar,
           avatarInitial,
           sentences,
         }) => {
           const isActive = index === activeLineIndex;
+
+          if (isNarrator) {
+            return (
+              <motion.div
+                key={index}
+                ref={(node) => {
+                  if (node) {
+                    lineRefs.current.set(index, node);
+                  } else {
+                    lineRefs.current.delete(index);
+                  }
+                }}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.02 }}
+                className="flex w-full justify-center my-1"
+              >
+                <div
+                  onClick={() => onPlayLine(index)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      onPlayLine(index);
+                    }
+                  }}
+                  className={cn(
+                    'w-fit max-w-xl rounded-2xl bg-ui-surface-soft/60 px-4 py-3 text-center transition-all duration-150 cursor-pointer outline-none select-text focus-ring border',
+                    isActive
+                      ? 'border-brand-primary/60 bg-brand-primary-soft/15 ring-2 ring-brand-primary/20 shadow-xs'
+                      : 'border-ui-border/60 hover:border-ui-border shadow-xs',
+                  )}
+                >
+                  <div
+                    className={cn(
+                      'font-chinese font-bold text-ui-ink-strong [line-break:strict]',
+                      showPinyin
+                        ? textSize === 'extra-large'
+                          ? 'text-[28px] sm:text-[32px] leading-[2.6] sm:leading-[2.8]'
+                          : textSize === 'large'
+                            ? 'text-[24px] sm:text-[27px] leading-[2.4] sm:leading-[2.6]'
+                            : 'text-[21px] sm:text-[24px] leading-[2.3] sm:leading-[2.5]'
+                        : textSize === 'extra-large'
+                          ? 'text-[28px] sm:text-[32px] leading-[1.9] sm:leading-[2.0] tracking-normal'
+                          : textSize === 'large'
+                            ? 'text-[24px] sm:text-[27px] leading-[1.8] sm:leading-[1.9] tracking-normal'
+                            : 'text-[21px] sm:text-[24px] leading-[1.7] sm:leading-[1.8] tracking-normal',
+                    )}
+                  >
+                    {sentences.map((sentence) => (
+                      <span key={sentence.id} className="inline">
+                        {sentence.chunks.map((chunk, chunkIdx) => {
+                          if (chunk.isPunctuation) {
+                            return (
+                              <span key={chunkIdx} className="inline">
+                                {chunk.rubyItems.map((item, itemIdx) => (
+                                  <span key={itemIdx} className="inline">
+                                    {item.char}
+                                  </span>
+                                ))}
+                              </span>
+                            );
+                          }
+                          return (
+                            <span key={chunkIdx} className="inline">
+                              {showPinyin ? (
+                                chunk.rubyItems.map((item, itemIdx) => (
+                                  <ruby key={itemIdx} className="font-chinese mx-[2px] [ruby-position:over]">
+                                    {item.char}
+                                    <rt className="font-sans font-semibold text-brand-primary leading-none text-[10px] sm:text-[11px]">
+                                      {item.pinyin}
+                                    </rt>
+                                  </ruby>
+                                ))
+                              ) : (
+                                <span>{chunk.text}</span>
+                              )}
+                            </span>
+                          );
+                        })}
+                      </span>
+                    ))}
+                  </div>
+                  {showMeaning && paragraph.english && (
+                    <div className="mt-2 border-t border-ui-divider/50 pt-1.5">
+                      <p className="font-sans text-xs italic text-ui-muted">
+                        {paragraph.english}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            );
+          }
 
           return (
             <motion.div
@@ -178,62 +275,51 @@ export function ReadingCanvas({
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.02 }}
               className={cn(
-                'flex w-full',
-                isRightAligned ? 'justify-end' : 'justify-start items-start gap-2 sm:gap-3',
+                'flex w-full items-end gap-2.5 sm:gap-3.5',
+                isRightAligned ? 'justify-end' : 'justify-start',
               )}
             >
-              {/* Left-side Avatar (Only for other speakers, NO avatar for main speaker on right, and NO avatar for narrator) */}
-              {!isRightAligned && !isNarrator && (
-                speakerChar ? (
-                  <div
-                    className={cn(
-                      textSize === 'extra-large' ? 'mt-4 sm:mt-5' : 'mt-3.5 sm:mt-4',
-                      'h-8 w-8 sm:h-9 sm:w-9 shrink-0 select-none overflow-hidden rounded-full',
-                    )}
-                    title={paragraph.speaker}
-                  >
-                    <RongWapsCharacterPortrait
-                      character={speakerChar}
-                      label={paragraph.speaker || ''}
-                      className="h-full w-full"
-                    />
-                  </div>
-                ) : (
-                  <div
-                    className={cn(
-                      textSize === 'extra-large' ? 'mt-4 sm:mt-5' : 'mt-3.5 sm:mt-4',
-                      'flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 select-none items-center justify-center rounded-full font-chinese font-black text-xs text-white',
-                      speakerDotColor,
-                    )}
-                    aria-hidden="true"
-                    title={paragraph.speaker}
-                  >
-                    {avatarInitial}
-                  </div>
-                )
+              {/* Speaker Avatar (Left side, only if not right-aligned) */}
+              {!isRightAligned && (
+                <div className="shrink-0 select-none">
+                  {speakerChar ? (
+                    <div
+                      className="h-9 w-9 sm:h-10 sm:w-10 overflow-hidden rounded-full ring-2 ring-ui-border/50 shadow-xs"
+                      title={paragraph.speaker}
+                    >
+                      <RongWapsCharacterPortrait
+                        character={speakerChar}
+                        label={paragraph.speaker || ''}
+                        className="h-full w-full"
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      className={cn(
+                        'flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full font-chinese font-black text-xs text-white shadow-xs',
+                        speakerDotColor,
+                      )}
+                      aria-hidden="true"
+                      title={paragraph.speaker}
+                    >
+                      {avatarInitial}
+                    </div>
+                  )}
+                </div>
               )}
 
-              {/* Message Column: clearly indented so right never touches left, and left never touches right */}
+              {/* Message Column */}
               <div
                 className={cn(
-                  'flex flex-col min-w-0',
-                  isRightAligned
-                    ? textSize === 'extra-large'
-                      ? 'items-end ml-6 sm:ml-10 max-w-[88%] sm:max-w-[82%]'
-                      : 'items-end ml-10 sm:ml-16 max-w-[78%] sm:max-w-[72%]'
-                    : isNarrator
-                      ? 'items-start w-full max-w-full'
-                      : textSize === 'extra-large'
-                        ? 'items-start mr-6 sm:mr-10 max-w-[88%] sm:max-w-[82%]'
-                        : 'items-start mr-8 sm:mr-14 max-w-[78%] sm:max-w-[72%]',
+                  'flex flex-col min-w-0 max-w-[85%] sm:max-w-[80%]',
+                  isRightAligned ? 'items-end' : 'items-start',
                 )}
               >
-                {/* Speaker Header */}
-                {!isNarrator && paragraph.speaker && (
+                {/* Speaker Header — shown on both sides */}
+                {paragraph.speaker && (
                   <div
                     className={cn(
-                      'mb-1 flex items-center px-1 tracking-wide',
-                      textSize === 'extra-large' ? 'text-xs sm:text-sm font-black' : 'text-xs font-black',
+                      'mb-1 flex items-center px-1 text-xs font-black tracking-wide',
                       isRightAligned ? 'justify-end text-right' : 'justify-start text-left',
                     )}
                   >
@@ -243,7 +329,7 @@ export function ReadingCanvas({
                   </div>
                 )}
 
-                {/* Content-hugging Speech Bubble Card */}
+                {/* Content-hugging Speech Bubble Card with tactile depth */}
                 <div
                   onClick={() => {
                     onPlayLine(index);
@@ -251,37 +337,41 @@ export function ReadingCanvas({
                   role="button"
                   tabIndex={0}
                   onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
+                    if (e.key === 'Enter') {
                       e.preventDefault();
                       onPlayLine(index);
                     }
                   }}
                   className={cn(
-                    'group relative w-fit max-w-full bg-ui-surface transition-all duration-150 cursor-pointer outline-none select-text focus-ring text-left',
-                    textSize === 'extra-large' ? 'p-3.5 sm:p-5' : 'p-3 sm:p-4.5',
-                    isNarrator
-                      ? 'rounded-2xl'
+                    'group relative w-fit max-w-full transition-all duration-150 cursor-pointer outline-none select-text focus-ring text-left',
+                    isRightAligned
+                      ? 'rounded-r-2xl rounded-l-[32px] sm:rounded-l-[36px]'
+                      : 'rounded-l-2xl rounded-r-[32px] sm:rounded-r-[36px]',
+                    textSize === 'extra-large' ? 'px-5 py-3.5 sm:px-6 sm:py-4' : 'px-4 py-3 sm:px-5 sm:py-3.5',
+                    isActive
+                      ? isRightAligned
+                        ? 'bg-ui-surface border-0 border-b-[length:var(--depth-md)] border-b-brand-primary-edge ring-2 ring-brand-primary shadow-xs'
+                        : 'border-0 border-b-[length:var(--depth-md)] border-b-brand-primary-edge ring-2 ring-brand-primary bg-brand-primary-soft shadow-xs'
                       : isRightAligned
-                        ? 'rounded-2xl rounded-tr-xs'
-                        : 'rounded-2xl rounded-tl-xs',
-                    'border-0 border-b-[length:var(--depth-md)] border-b-ui-border active:translate-y-[length:var(--depth-sm)] active:border-b-[length:var(--depth-sm)]',
+                        ? 'bg-ui-surface border-0 border-b-[length:var(--depth-md)] border-b-brand-primary-deep/80 hover:border-b-brand-primary-deep shadow-xs active:translate-y-[length:var(--depth-sm)] active:border-b-[length:var(--depth-sm)]'
+                        : 'bg-ui-surface border-0 border-b-[length:var(--depth-md)] border-b-ui-border hover:border-b-ui-border-strong shadow-xs active:translate-y-[length:var(--depth-sm)] active:border-b-[length:var(--depth-sm)]',
                   )}
                 >
                   {/* Chinese text + Native Aligned Ruby Pinyin */}
                   <div
                     className={cn(
-                      'font-chinese font-bold text-ui-ink-strong',
+                      'font-chinese font-bold text-ui-ink-strong [line-break:strict]',
                       showPinyin
                         ? textSize === 'extra-large'
-                          ? 'text-[24px] sm:text-[28px] leading-[2.6] sm:leading-[2.8]'
+                          ? 'text-[28px] sm:text-[32px] leading-[2.6] sm:leading-[2.8]'
                           : textSize === 'large'
-                            ? 'text-[20px] sm:text-[22px] leading-[2.3] sm:leading-[2.5]'
-                            : 'text-[17px] sm:text-[19px] leading-[2.1] sm:leading-[2.3]'
+                            ? 'text-[24px] sm:text-[27px] leading-[2.4] sm:leading-[2.6]'
+                            : 'text-[21px] sm:text-[24px] leading-[2.3] sm:leading-[2.5]'
                         : textSize === 'extra-large'
-                          ? 'text-[24px] sm:text-[28px] leading-[1.8] sm:leading-[1.9] tracking-normal'
+                          ? 'text-[28px] sm:text-[32px] leading-[1.9] sm:leading-[2.0] tracking-normal'
                           : textSize === 'large'
-                            ? 'text-[20px] sm:text-[22px] leading-[1.8] sm:leading-[1.9] tracking-normal'
-                            : 'text-[17px] sm:text-[19px] leading-[1.7] sm:leading-[1.8] tracking-normal',
+                            ? 'text-[24px] sm:text-[27px] leading-[1.8] sm:leading-[1.9] tracking-normal'
+                            : 'text-[21px] sm:text-[24px] leading-[1.7] sm:leading-[1.8] tracking-normal',
                     )}
                   >
                     {sentences.map((sentence) => {
@@ -304,7 +394,7 @@ export function ReadingCanvas({
                             }
                           }}
                           onKeyDown={(e) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
+                            if (e.key === 'Enter') {
                               e.preventDefault();
                               e.stopPropagation();
                               if (
@@ -323,9 +413,9 @@ export function ReadingCanvas({
                           {sentence.chunks.map((chunk, chunkIdx) => {
                             if (chunk.isPunctuation) {
                               return (
-                                <span key={chunkIdx} className="transition-colors">
+                                <span key={chunkIdx} className="transition-colors inline select-text">
                                   {chunk.rubyItems.map((item, itemIdx) => (
-                                    <span key={itemIdx} className="inline-block">
+                                    <span key={itemIdx} className="inline">
                                       {item.char}
                                     </span>
                                   ))}
@@ -371,7 +461,7 @@ export function ReadingCanvas({
                                     e.preventDefault();
                                     e.stopPropagation();
                                     useAppStore.getState().setDictionaryWord(chunk.text);
-                                  } else if (e.key === 'Enter' || e.key === ' ') {
+                                  } else if (e.key === 'Enter') {
                                     e.preventDefault();
                                     e.stopPropagation();
                                     const wordStart = typeof chunk.start === 'number'
@@ -400,7 +490,7 @@ export function ReadingCanvas({
                                 {showPinyin ? (
                                   chunk.rubyItems.map((item, itemIdx) => {
                                     if (item.isPunctuation || !item.pinyin) {
-                                      return <span key={itemIdx}>{item.char}</span>;
+                                      return <span key={itemIdx} className="inline">{item.char}</span>;
                                     }
                                     const isLongSyllable = item.pinyin.length >= 5;
                                     return (
@@ -421,13 +511,13 @@ export function ReadingCanvas({
                                               ? textSize === 'extra-large'
                                                 ? 'text-[11.5px] sm:text-[12.5px] tracking-tight'
                                                 : textSize === 'large'
-                                                  ? 'text-[10px] sm:text-[10.5px] tracking-tight'
-                                                  : 'text-[9.5px] sm:text-[10px] tracking-tight'
+                                                  ? 'text-[10px] sm:text-[11px] tracking-tight'
+                                                  : 'text-[9.5px] sm:text-[10.5px] tracking-tight'
                                               : textSize === 'extra-large'
-                                                ? 'text-[12.5px] sm:text-[13.5px] tracking-normal'
+                                                ? 'text-[12px] sm:text-[13px]'
                                                 : textSize === 'large'
-                                                  ? 'text-[10.5px] sm:text-[11.5px] tracking-normal'
-                                                  : 'text-[10px] sm:text-[11px] tracking-normal',
+                                                  ? 'text-[10.5px] sm:text-[11.5px]'
+                                                  : 'text-[10px] sm:text-[11px]',
                                           )}
                                         >
                                           {item.pinyin}
@@ -436,7 +526,9 @@ export function ReadingCanvas({
                                     );
                                   })
                                 ) : (
-                                  <span>{chunk.text}</span>
+                                  chunk.rubyItems.map((item, itemIdx) => (
+                                    <span key={itemIdx} className="inline">{item.char}</span>
+                                  ))
                                 )}
                               </span>
                             );
@@ -446,17 +538,16 @@ export function ReadingCanvas({
                     })}
                   </div>
 
-                  {/* English Meaning Line */}
+                  {/* Optional English Translation */}
                   {showMeaning && paragraph.english && (
-                    <div className="mt-2 border-t border-ui-divider/40 pt-1.5">
+                    <div className="mt-2 border-t border-ui-divider/50 pt-1.5">
                       <p
                         className={cn(
-                          'font-medium transition-all select-text',
-                          isActive ? 'text-ui-ink font-semibold' : 'text-ui-muted',
+                          'font-sans font-medium text-ui-muted',
                           textSize === 'extra-large'
-                            ? 'text-sm leading-relaxed sm:text-[15px]'
+                            ? 'text-xs leading-relaxed sm:text-sm'
                             : textSize === 'large'
-                              ? 'text-xs leading-relaxed sm:text-[13px]'
+                              ? 'text-xs leading-relaxed'
                               : 'text-[11px] leading-snug sm:text-xs sm:leading-relaxed',
                         )}
                       >
@@ -466,6 +557,35 @@ export function ReadingCanvas({
                   )}
                 </div>
               </div>
+
+              {/* Speaker Avatar (Right side, only if right-aligned) */}
+              {isRightAligned && (
+                <div className="shrink-0 select-none">
+                  {speakerChar ? (
+                    <div
+                      className="h-9 w-9 sm:h-10 sm:w-10 overflow-hidden rounded-full ring-2 ring-ui-border/50 shadow-xs"
+                      title={paragraph.speaker}
+                    >
+                      <RongWapsCharacterPortrait
+                        character={speakerChar}
+                        label={paragraph.speaker || ''}
+                        className="h-full w-full"
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      className={cn(
+                        'flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full font-chinese font-black text-xs text-white shadow-xs',
+                        speakerDotColor,
+                      )}
+                      aria-hidden="true"
+                      title={paragraph.speaker}
+                    >
+                      {avatarInitial}
+                    </div>
+                  )}
+                </div>
+              )}
             </motion.div>
           );
         })}
@@ -480,9 +600,8 @@ export function ReadingCanvas({
             const voice = characterPreference === 'traditional'
               ? 'zh-TW-HsiaoChenNeural'
               : 'zh-CN-XiaoxiaoNeural';
-            void audioService.speakNeural(hoveredWord.text, voice).catch(() => {
-              const locale = characterPreference === 'simplified' ? 'zh-CN' : 'zh-TW';
-              return audioService.speakText(hoveredWord.text, locale, 1).catch(() => {});
+            void findMatchingCourseVocab(hoveredWord.text).then((match) => {
+              void audioService.play(match?.audio, 1.0, hoveredWord.text, voice);
             });
           }}
           onMouseEnter={handleTooltipMouseEnter}

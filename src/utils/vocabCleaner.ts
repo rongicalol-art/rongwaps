@@ -13,9 +13,13 @@ export function cleanVocabText(text: string): string {
   if (!text) return '';
   let cleaned = text.trim();
 
-  // Remove parenthetical content (optional characters)
+  // Remove half-width parenthetical content (optional characters)
   // e.g. "你好(吗)" → "你好"
   cleaned = cleaned.replace(/\(.*?\)/g, '');
+
+  // Drop full-width parens but keep their content: in this corpus they mark
+  // optional syllables of the word itself, e.g. "想（要）" → "想要".
+  cleaned = cleaned.replace(/[（）]/g, '');
 
   // Take only the first variant before "/"
   // e.g. "你好/您好" → "你好"

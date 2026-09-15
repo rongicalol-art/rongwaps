@@ -113,7 +113,7 @@ export function SentenceSpine({
       {spine.notes && spine.notes.length > 0 && (
         <ul className="mt-4 grid gap-2 text-xs font-bold leading-relaxed text-ui-ink sm:grid-cols-2 sm:text-sm">
           {spine.notes.map((note, index) => (
-            <li key={note} className="flex items-start gap-2 rounded-[14px] bg-brand-primary/5 px-3 py-3">
+            <li key={note} className="flex items-start gap-2 rounded-compact bg-brand-primary/5 px-3 py-3">
               <span className={cn('mt-1.5 h-2 w-2 shrink-0 rounded-full', index === 0 ? 'bg-brand-primary' : 'bg-brand-primary/55')} />
               <GrammarFocusText text={note} contextTokens={contextTokens} characterPreference={characterPreference} onOpenWord={onOpenWord} />
             </li>

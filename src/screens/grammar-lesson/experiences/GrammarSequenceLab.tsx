@@ -31,13 +31,13 @@ export function GrammarSequenceLab({
       </div>
       <div className="mt-5 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
         <div className="grid gap-4 p-5 sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:p-7">
-          <div className="rounded-[18px] border-2 border-brand-primary bg-brand-primary/5 p-5">
+          <div className="rounded-feature border-2 border-brand-primary bg-brand-primary/5 p-5">
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-primary text-sm font-black text-white">1</span>
             <span className="mt-3 block font-chinese text-2xl font-black text-ui-ink-strong">{focus(`先${selected.first}`)}</span>
             <span className="mt-1 block text-xs font-black text-ui-muted">first step</span>
           </div>
           <div className="text-center text-xl font-black text-brand-primary" aria-hidden="true">···</div>
-          <div className="rounded-[18px] border-2 border-feedback-success bg-feedback-success/5 p-5">
+          <div className="rounded-feature border-2 border-feedback-success bg-feedback-success/5 p-5">
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-feedback-success text-sm font-black text-white">2</span>
             <span className="mt-3 block font-chinese text-2xl font-black text-ui-ink-strong">{focus(`再${selected.then}`)}</span>
             <span className="mt-1 block text-xs font-black text-ui-muted">next step</span>

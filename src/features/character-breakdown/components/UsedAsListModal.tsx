@@ -103,7 +103,7 @@ export function UsedAsListModal({ initialChar, usedAsComponents, activeBook, onC
                 {sortedIds.map(bookId => {
                   const items = groups[bookId];
                   return (
-                    <div key={bookId} className="flex w-full flex-col overflow-hidden rounded-[20px] bg-ui-surface shadow-sm">
+                    <div key={bookId} className="flex w-full flex-col overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
                       {items.map((item, idx) => (
                         <UsedAsCompactItem
                           key={item.char}

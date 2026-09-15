@@ -129,7 +129,7 @@ export function GrammarRouteLab({
             className="text-ui-muted hover:text-brand-primary"
           />
         </div>
-        <p className="mx-5 mb-5 rounded-[14px] bg-brand-primary/5 px-4 py-3 text-sm font-bold leading-6 text-ui-muted-strong sm:mx-7 sm:mb-6">
+        <p className="mx-5 mb-5 rounded-compact bg-brand-primary/5 px-4 py-3 text-sm font-bold leading-6 text-ui-muted-strong sm:mx-7 sm:mb-6">
           <GrammarFocusText text={selected.note} contextTokens={contextTokens} characterPreference={characterPreference} onOpenWord={onOpenWord} />
         </p>
       </div>

@@ -78,15 +78,15 @@ function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, re
       ? 'min-w-[128px] max-w-[220px] flex-1 basis-0 sm:min-w-[150px]'
       : 'min-w-[140px] max-w-[240px] flex-1 basis-0 sm:min-w-[168px]';
   const summaryCardClass = depth > 0
-    ? 'flex min-h-[64px] items-center rounded-compact px-3 py-2 shadow-[0_2px_0_var(--color-ui-divider)] active:translate-y-px active:shadow-[0_1px_0_var(--color-ui-divider)]'
-    : 'flex min-h-[74px] items-center px-3.5 py-2.5 shadow-[0_3px_0_var(--color-ui-divider)] active:translate-y-[1px] active:shadow-[0_2px_0_var(--color-ui-divider)]';
+    ? 'flex min-h-[64px] items-center rounded-compact px-3 py-2 shadow-[0_var(--depth-sm)_0_var(--color-ui-divider)] active:translate-y-[length:var(--depth-sm)] active:shadow-none'
+    : 'flex min-h-[74px] items-center px-3.5 py-2.5 shadow-[0_var(--depth-md)_0_var(--color-ui-divider)] active:translate-y-[length:var(--depth-md)] active:shadow-none';
 
   return (
     <div className={`relative ${mode === 'summary' ? 'min-w-0' : treeWidthClass}`}>
-      <article className={`relative rounded-control transition-[background-color,transform,box-shadow] ${mode === 'summary' ? `${summaryCardClass} ${isExpanded ? 'ring-2 ring-brand-primary/20' : ''}` : 'border-2'} ${presentation.navigable ? `${mode === 'tree' ? 'min-h-[104px] px-4 py-3 shadow-[0_var(--depth-compact)_0_var(--color-ui-divider)] active:translate-y-[2px] active:shadow-[0_2px_0_var(--color-ui-divider)]' : ''} ${toneClasses(presentation, mode)}` : mode === 'summary' ? 'bg-ui-surface/65' : 'min-h-[76px] border-dashed border-ui-border bg-ui-surface/70 px-3 py-3'}`}>
+      <article className={`relative rounded-control transition-[background-color,transform,box-shadow] ${mode === 'summary' ? `${summaryCardClass} ${isExpanded ? 'ring-2 ring-brand-primary/20' : ''}` : 'border-2'} ${presentation.navigable ? `${mode === 'tree' ? 'min-h-[104px] px-4 py-3 shadow-[0_var(--depth-md)_0_var(--color-ui-border)] active:translate-y-[length:var(--depth-md)] active:shadow-none' : ''} ${toneClasses(presentation, mode)}` : mode === 'summary' ? 'bg-ui-surface/65' : 'min-h-[76px] border-dashed border-ui-border bg-ui-surface/70 px-3 py-3'}`}>
         {presentation.navigable && target ? (
           <>
-            <button type="button" onPointerEnter={() => onGlyphIntent?.(target)} onFocus={() => onGlyphIntent?.(target)} onClick={() => onGlyphClick?.(target)} aria-label={`Open breakdown for ${target}`} className="absolute inset-0 z-0 rounded-control outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25" />
+            <button type="button" onPointerEnter={() => onGlyphIntent?.(target)} onFocus={() => onGlyphIntent?.(target)} onClick={() => onGlyphClick?.(target)} aria-label={`Open breakdown for ${target}`} className="absolute inset-0 z-0 rounded-control focus-ring" />
             {mode === 'summary' ? (
               <div className={`pointer-events-none relative z-[1] flex h-full min-w-0 max-w-full items-center gap-3 text-left ${canExpand ? 'pr-8' : ''}`}>
                 {useShapeMark ? (
@@ -127,7 +127,7 @@ function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, re
             <span className="mt-1 text-[11px] font-bold text-ui-muted">No glyph for this</span>
           </div>
         )}
-        {canExpand && target && <button type="button" aria-expanded={isExpanded} aria-controls={regionId} aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${target}`} onPointerEnter={() => onGlyphIntent?.(target)} onFocus={() => onGlyphIntent?.(target)} onClick={() => onToggle(target)} className={`absolute right-1.5 top-1.5 z-10 flex h-9 w-9 items-center justify-center text-ui-muted outline-none transition-[color,transform] hover:text-brand-primary focus-visible:rounded-compact focus-visible:ring-4 focus-visible:ring-brand-primary/25 ${isExpanded ? 'rotate-180 text-brand-primary' : ''}`}><AppIcon name="expand" size={16} /></button>}
+        {canExpand && target && <button type="button" aria-expanded={isExpanded} aria-controls={regionId} aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${target}`} onPointerEnter={() => onGlyphIntent?.(target)} onFocus={() => onGlyphIntent?.(target)} onClick={() => onToggle(target)} className={`absolute right-1.5 top-1.5 z-10 flex h-9 w-9 items-center justify-center rounded-compact text-ui-muted transition-[color,transform] hover:text-brand-primary focus-ring ${isExpanded ? 'rotate-180 text-brand-primary' : ''}`}><AppIcon name="expand" size={16} /></button>}
       </article>
       <AnimatePresence initial={false}>
         {isExpanded && target && <motion.div id={regionId} role="region" aria-label={`Decomposition of ${target}`} initial={reduceMotion ? { opacity: 0 } : { opacity: 0, height: 0, y: -4 }} animate={{ opacity: 1, height: 'auto', y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, height: 0, y: -4 }} transition={{ duration: reduceMotion ? 0 : 0.16, ease: 'easeOut' }} className={mode === 'summary' ? 'mt-2 overflow-hidden' : 'mt-4 overflow-hidden rounded-control border border-ui-divider bg-ui-canvas/70 p-3 sm:p-4'}>
@@ -167,7 +167,7 @@ export function V3RuntimeTree({ character, onGlyphClick, mode = 'summary', onSee
         title="Breakdown"
         className="mb-3"
         action={children && children.length > 0 && onSeeTree ? (
-          <button type="button" onClick={onSeeTree} className="flex min-h-9 shrink-0 items-center gap-1.5 rounded-compact px-2.5 text-xs font-extrabold text-brand-primary outline-none transition-colors hover:bg-brand-primary/10 focus-visible:ring-4 focus-visible:ring-brand-primary/25"><AppIcon name="breakdown" size={16} />See tree</button>
+          <button type="button" onClick={onSeeTree} className="flex min-h-9 shrink-0 items-center gap-1.5 rounded-compact px-2.5 text-xs font-extrabold text-brand-primary transition-colors hover:bg-brand-primary/10 focus-ring"><AppIcon name="breakdown" size={16} />See tree</button>
         ) : undefined}
       />}
       <div className="min-w-0">

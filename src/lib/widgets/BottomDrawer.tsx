@@ -59,7 +59,7 @@ export function BottomDrawer({
             exit={{ opacity: 0 }}
             transition={{ duration: reduceMotion ? 0 : 0.18 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/60 pointer-events-auto"
+            className="absolute inset-0 bg-ui-ink-strong/35 backdrop-blur-sm pointer-events-auto cursor-pointer"
           />
 
           {/* Drawer content */}
@@ -86,7 +86,7 @@ export function BottomDrawer({
               }
             }}
             className={cn(
-              "absolute bottom-0 left-0 right-0 bg-ui-surface rounded-t-modal sm:max-w-lg md:max-w-xl sm:mx-auto shadow-ambient-lg flex flex-col max-h-[85vh] pointer-events-auto",
+              "absolute bottom-0 left-0 right-0 bg-ui-surface border-t-2 border-x-2 border-ui-border rounded-t-modal sm:max-w-lg md:max-w-xl sm:mx-auto shadow-ambient-lg flex flex-col max-h-[85vh] pointer-events-auto",
               className
             )}
           >
@@ -122,7 +122,7 @@ export function BottomDrawer({
             )}
 
             {/* Content Body */}
-            <div className="flex-1 overflow-y-auto px-6 pb-[env(safe-area-inset-bottom,12px)] mb-8 custom-scrollbar">
+            <div className="flex-1 overflow-y-auto px-6 pb-[env(safe-area-inset-bottom,12px)] mb-5 custom-scrollbar">
               {children}
             </div>
           </motion.div>

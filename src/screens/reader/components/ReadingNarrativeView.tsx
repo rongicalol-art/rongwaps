@@ -8,6 +8,7 @@ import { useReaderDictionaryBatch } from '../hooks/useReaderDictionaryBatch';
 import { ReaderWordTooltip } from './ReaderWordTooltip';
 import { useAppStore } from '../../../store/useAppStore';
 import { audioService } from '../../../services/audioService';
+import { findMatchingCourseVocab } from '../../../services/vocabularyService';
 import { groupSentencesIntoParagraphs } from '../utils/narrativeParagraphs';
 import { SAMPLE_LESSONS } from '../../../data/books';
 import { getReadingIllustration } from '../../../data/readingIllustrations';
@@ -128,7 +129,7 @@ export function ReadingNarrativeView({
   return (
     <article
       className={cn(
-        'mx-auto w-full px-4 pb-44 pt-4 sm:px-8 sm:pt-8 transition-all',
+        'mx-auto w-full px-4 pb-44 pt-16 sm:px-8 sm:pt-20 transition-all',
         textSize === 'extra-large' ? 'max-w-3xl' : 'max-w-2xl',
       )}
     >
@@ -170,15 +171,15 @@ export function ReadingNarrativeView({
                 'font-chinese font-bold text-ui-ink-strong select-text text-left indent-[2em]',
                 showPinyin
                   ? textSize === 'extra-large'
-                    ? 'text-[22px] sm:text-[26px] leading-[2.5] sm:leading-[2.7]'
+                    ? 'text-[28px] sm:text-[32px] leading-[2.6] sm:leading-[2.8]'
                     : textSize === 'large'
-                      ? 'text-[19px] sm:text-[21px] leading-[2.3] sm:leading-[2.5]'
-                      : 'text-[17px] sm:text-[19px] leading-[2.1] sm:leading-[2.3]'
+                      ? 'text-[24px] sm:text-[27px] leading-[2.4] sm:leading-[2.6]'
+                      : 'text-[21px] sm:text-[24px] leading-[2.2] sm:leading-[2.4]'
                   : textSize === 'extra-large'
-                    ? 'text-[22px] sm:text-[26px] leading-[2.0] sm:leading-[2.1]'
+                    ? 'text-[28px] sm:text-[32px] leading-[2.1] sm:leading-[2.2]'
                     : textSize === 'large'
-                      ? 'text-[19px] sm:text-[21px] leading-[1.9] sm:leading-[2.0]'
-                      : 'text-[17px] sm:text-[19px] leading-[1.8] sm:leading-[1.9]',
+                      ? 'text-[24px] sm:text-[27px] leading-[2.0] sm:leading-[2.1]'
+                      : 'text-[21px] sm:text-[24px] leading-[1.9] sm:leading-[2.0]',
               )}
             >
               {group.sentences.map((sentence) => (
@@ -212,7 +213,7 @@ export function ReadingNarrativeView({
                           }
                         }}
                         onKeyDown={(e) => {
-                          if (e.key === 'Enter' || e.key === ' ') {
+                          if (e.key === 'Enter') {
                             e.preventDefault();
                             e.stopPropagation();
                             if (
@@ -276,7 +277,7 @@ export function ReadingNarrativeView({
                                     e.preventDefault();
                                     e.stopPropagation();
                                     useAppStore.getState().setDictionaryWord(chunk.text);
-                                  } else if (e.key === 'Enter' || e.key === ' ') {
+                                  } else if (e.key === 'Enter') {
                                     e.preventDefault();
                                     e.stopPropagation();
                                     const wordStart = typeof chunk.start === 'number'
@@ -393,9 +394,8 @@ export function ReadingNarrativeView({
             const voice = characterPreference === 'traditional'
               ? 'zh-TW-HsiaoChenNeural'
               : 'zh-CN-XiaoxiaoNeural';
-            void audioService.speakNeural(hoveredWord.text, voice).catch(() => {
-              const locale = characterPreference === 'simplified' ? 'zh-CN' : 'zh-TW';
-              return audioService.speakText(hoveredWord.text, locale, 1).catch(() => {});
+            void findMatchingCourseVocab(hoveredWord.text).then((match) => {
+              void audioService.play(match?.audio, 1.0, hoveredWord.text, voice);
             });
           }}
           onMouseEnter={handleTooltipMouseEnter}

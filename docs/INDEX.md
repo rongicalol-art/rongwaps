@@ -22,6 +22,7 @@ Use this file to locate active system documentation. All listed documents are ac
 - `../WIDGETS.md` — Public shared widget catalog mirroring `src/lib/widgets/index.ts`.
 - `OFFICIAL_AUDIO_SOURCES.md` — Modern Chinese official audio sources, track mapping (`B1-LL-P-T`), karaoke alignment pipeline, and audio caching.
 - `LESSON_15_16_SOURCES.md` — Modern Chinese Book 1 Lessons 15 & 16 curriculum, dialogue/reading transcripts, vocabularies, grammar points, and online source index.
+- `READING_COVERAGE.md` — Book 1 vocabulary-in-reading coverage audit and authored practice sentences for target words that appear in no reading or grammar content.
 
 ## Task Routing
 

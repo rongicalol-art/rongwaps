@@ -10,7 +10,6 @@ import {
 
 const NOW = 1_700_000_000_000;
 const MINUTE = 60 * 1000;
-const DAY = 24 * 60 * 60 * 1000;
 
 const originalNow = Date.now;
 function withNow(fn: () => void): void {
@@ -78,8 +77,8 @@ test('review phase uses SM-2 progression and applies fuzz', () => {
   withNow(() => {
     const next = calculateNextReview(srs({ interval: 3, repetition: 2 }), 'card-1', 4);
     // interval * efactor = 3 * 2.5 = 7.5 -> rounded 8 -> fuzzed within [7, 9] days.
-    assert.ok(next.nextReviewDate - NOW >= 7 * DAY, 'expected lower fuzz bound');
-    assert.ok(next.nextReviewDate - NOW <= 9 * DAY, 'expected upper fuzz bound');
+    assert.ok(next.interval >= 7 && next.interval <= 9, 'expected interval within fuzz range');
+    assert.equal(next.nextReviewDate, dayBoundaryDueTimestamp(next.interval, NOW));
   });
 });
 

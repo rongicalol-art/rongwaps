@@ -1,17 +1,18 @@
 import React from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { LessonComplete } from '../../features/practice';
+import { FeedbackBottomBar, LessonComplete } from '../../features/practice';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
 import { ActionButton, AppIcon, ScreenLayout, ScreenSkeleton } from '../../lib/widgets';
 import { useWriting } from './hooks/useWriting';
 import { SingleChar } from './HanziCanvas';
 import { WritingDock } from './components/WritingDock';
 import { FlashcardBackFace } from '../flashcard/components/FlashcardBackFace';
-import { getCardHeight, getCardWidth } from '../flashcard/components/DraggableFlashcard';
+import { getCardWidth } from '../flashcard/components/DraggableFlashcard';
 import { useCurriculumExamples } from '../flashcard/hooks/useCurriculumExamples';
 import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
 import { numberToToneMarks } from '../../utils/pinyin';
+import { cn } from '../../utils/cn';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { buildPracticePartSegments } from '../../utils/practicePartSegments';
 
@@ -59,12 +60,10 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
   } = useWriting(activeBookId, selectedLessons, onClose, isLibraryDeck, isReviewDeck);
 
   const reduceMotion = useReducedMotion();
-  const [cardHeight, setCardHeight] = React.useState(getCardHeight);
   const [cardWidth, setCardWidth] = React.useState(getCardWidth);
 
   React.useEffect(() => {
     const handleResize = () => {
-      setCardHeight(getCardHeight());
       setCardWidth(getCardWidth());
     };
     window.addEventListener('resize', handleResize, { passive: true });
@@ -73,9 +72,10 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
 
   const showPinyin = usePracticePreferencesStore((state) => state.showPinyin);
   const showTranslation = usePracticePreferencesStore((state) => state.showTranslation);
+  const isCardFinished = activeCharIndex >= chars.length && chars.length > 0;
   const { examples: curriculumExamples, isLoading: areExamplesLoading } = useCurriculumExamples(
     currentCard,
-    status === 'correct' || activeCharIndex >= chars.length,
+    status === 'correct' || isCardFinished,
   );
 
   const handleCurrentCharComplete = React.useCallback(() => {
@@ -112,11 +112,9 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
         if (currentIndex > 0) handlePrev();
       } else if (e.key === 'ArrowRight') {
         if (currentIndex < playlist.length - 1) handleNext();
-      } else if (e.key === 'Enter' || e.key === ' ') {
-        if (status === 'correct') {
-          e.preventDefault();
-          handleNext();
-        }
+      } else if (e.key === ' ' && status === 'correct') {
+        e.preventDefault();
+        handleNext();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -167,7 +165,7 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
             <AppIcon name="pencil" size={48} className="text-feedback-danger" />
           </div>
           <h2 className="text-2xl font-extrabold text-ui-ink tracking-normal">Something went wrong</h2>
-          <p className="text-ui-muted text-[15px] font-bold mt-2 max-w-[280px]">
+          <p className="text-ui-muted text-sm font-bold mt-2 max-w-[280px]">
             We couldn't load the writing data. Please try again.
           </p>
           <div className="mt-8 flex gap-3">
@@ -216,7 +214,7 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
             <AppIcon name="pencil" size={44} className={activeBook.accent} />
           </div>
           <h2 className="text-2xl font-extrabold text-ui-ink tracking-normal">No characters to write yet</h2>
-          <p className="text-ui-muted text-[15px] font-bold mt-2 max-w-[280px]">
+          <p className="text-ui-muted text-sm font-bold mt-2 max-w-[280px]">
             We couldn't find any cards for this selection. Try choosing different lessons or adding cards to your library.
           </p>
           {onClose && (
@@ -244,6 +242,8 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
       {/* Edge Navigation Buttons for instant, reliable card switching */}
       <button
         type="button"
+        tabIndex={-1}
+        aria-hidden="true"
         aria-label="Previous card"
         disabled={currentIndex <= 0}
         onClick={(e) => {
@@ -254,6 +254,8 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
       />
       <button
         type="button"
+        tabIndex={-1}
+        aria-hidden="true"
         aria-label="Next card"
         disabled={currentIndex >= playlist.length - 1}
         onClick={(e) => {
@@ -263,8 +265,14 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
         className="absolute bottom-[90px] right-0 top-[72px] z-10 w-[20%] max-w-[130px] bg-transparent outline-none cursor-pointer disabled:pointer-events-none"
       />
 
-      <ScreenLayout maxWidth="xl" className="flex-1 mb-[120px] justify-center items-center overflow-hidden overscroll-none px-0 sm:px-0 flex-col relative w-full pointer-events-auto">
-        <div className="flex-1 flex flex-col items-center justify-center w-full px-4 gap-2 sm:gap-4 pb-2 pt-2">
+      <ScreenLayout
+        maxWidth="xl"
+        className={cn(
+          'flex-1 justify-center items-center overflow-hidden overscroll-none px-2 sm:px-4 flex-col relative w-full pointer-events-auto',
+          isCardFinished ? 'pb-[140px] md:pb-[130px]' : 'pb-[90px] md:pb-[100px]',
+        )}
+      >
+        <div className="flex-1 flex flex-col items-center justify-center w-full gap-2 sm:gap-4 pb-2 pt-2">
           <AnimatePresence mode="wait" initial={false}>
             {activeCharIndex < chars.length ? (
               <motion.div
@@ -277,7 +285,7 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
               >
                 {/* Meaning Above */}
                 <div className="w-full flex-shrink-0 flex flex-col items-center justify-center px-4 mb-3 sm:mb-6 mt-4 select-none cursor-pointer">
-                  <p className="text-[20px] sm:text-[24px] font-extrabold text-ui-ink text-center leading-tight">
+                  <p className="text-xl sm:text-2xl font-extrabold text-ui-ink text-center leading-tight">
                     {currentCard.back}
                   </p>
                 </div>
@@ -305,7 +313,7 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
                 {/* Bottom area of Canvas: Pinyin and indicator */}
                 <div className="mt-4 sm:mt-6 flex flex-col items-center gap-3 h-[40px]">
                   {currentCard.pinyin && (
-                    <p className="text-[17px] sm:text-[20px] font-bold text-ui-muted tracking-widest select-none">
+                    <p className="text-lg sm:text-xl font-bold text-ui-muted tracking-widest select-none">
                       {numberToToneMarks(currentCard.pinyin)}
                     </p>
                   )}
@@ -351,8 +359,8 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
                 {/* Study mode back card */}
                 <div
                   data-canvas-container="true"
-                  className="relative mx-auto flex flex-col rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface p-6 pb-10 sm:p-8 sm:pb-10 shadow-ambient-sm pointer-events-auto select-none"
-                  style={{ width: cardWidth, height: cardHeight }}
+                  className="relative mx-auto flex flex-col rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface p-4 sm:p-6 pb-6 sm:pb-8 shadow-ambient-sm pointer-events-auto select-none overflow-hidden w-full h-[clamp(320px,50vh,520px)] max-h-[calc(100dvh-220px)]"
+                  style={{ maxWidth: cardWidth }}
                 >
                   <FlashcardBackFace
                     card={currentCard}
@@ -363,39 +371,37 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
                     isExamplesLoading={areExamplesLoading}
                   />
                 </div>
-
-                {/* Text-only continue action beneath the card */}
-                <motion.div
-                  initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: reduceMotion ? 0 : 0.15, duration: 0.2 }}
-                  className="mt-4 flex flex-col items-center justify-center"
-                >
-                  <button
-                    type="button"
-                    onClick={handleNext}
-                    className="inline-flex min-h-11 items-center justify-center px-6 py-2.5 text-sm sm:text-base font-black uppercase tracking-wider text-ui-muted-strong hover:text-ui-ink active:scale-95 transition-all focus-ring rounded-control select-none"
-                  >
-                    Continue
-                  </button>
-                </motion.div>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
       </ScreenLayout>
 
-      {/* Floating Writing Dock remains visible throughout writing mode */}
-      <WritingDock
-        onRestartChar={restartCurrentChar}
-        onPrevChar={handlePrevChar}
-        canGoPrevChar={activeCharIndex > 0}
-        hasMultipleChars={chars.length > 1}
-        onAnimateStrokes={triggerAnimateStrokes}
-        showOutline={showOutline}
-        onToggleOutline={toggleOutline}
-        onExit={onClose}
-        isAnimatingStrokes={isAnimatingStrokes}
+      {/* Floating Writing Dock: visible during writing, hidden on completed card */}
+      <AnimatePresence>
+        {!isCardFinished && (
+          <WritingDock
+            onRestartChar={restartCurrentChar}
+            onPrevChar={handlePrevChar}
+            canGoPrevChar={activeCharIndex > 0}
+            hasMultipleChars={chars.length > 1}
+            onAnimateStrokes={triggerAnimateStrokes}
+            showOutline={showOutline}
+            onToggleOutline={toggleOutline}
+            onExit={onClose}
+            isAnimatingStrokes={isAnimatingStrokes}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Standard feedback bottom bar when writing is finished */}
+      <FeedbackBottomBar
+        status={isCardFinished ? 'correct' : 'idle'}
+        onContinue={handleNext}
+        onRetry={handleRetry}
+        showCheck={false}
+        keyboardShortcutDisabled={Boolean(activeBreakdown)}
+        activeBook={activeBook}
       />
 
       <CharacterBreakdownOverlay activeBreakdown={activeBreakdown} onClose={() => setActiveBreakdown(null)} activeBook={activeBook} />

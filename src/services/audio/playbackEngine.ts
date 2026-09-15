@@ -32,7 +32,13 @@ export function playHtmlAudio(
   onError: (err?: unknown) => void,
 ): void {
   try {
+    // Preserve pitch across all browsers for natural Mandarin tone contour
+    audio.preservesPitch = true;
+    (audio as unknown as { mozPreservesPitch?: boolean }).mozPreservesPitch = true;
+    (audio as unknown as { webkitPreservesPitch?: boolean }).webkitPreservesPitch = true;
+
     audio.src = src;
+    audio.defaultPlaybackRate = playbackRate;
     audio.playbackRate = playbackRate;
     audio.currentTime = 0;
     audio.onended = () => {
@@ -43,7 +49,13 @@ export function playHtmlAudio(
     audio.onerror = () => onError();
 
     const playPromise = audio.play();
-    playPromise?.catch(onError);
+    playPromise?.catch((err: unknown) => {
+      // Interrupted play (pause or subsequent play) is normal lifecycle, not an error
+      if ((err as Error)?.name === 'AbortError') {
+        return;
+      }
+      onError(err);
+    });
   } catch (error) {
     onError(error);
   }
@@ -107,6 +119,9 @@ export function playRangeOnAudioElement(
     }
   }
 
+  audio.preservesPitch = true;
+  (audio as unknown as { mozPreservesPitch?: boolean }).mozPreservesPitch = true;
+  (audio as unknown as { webkitPreservesPitch?: boolean }).webkitPreservesPitch = true;
   audio.defaultPlaybackRate = rate;
   audio.playbackRate = rate;
   try {

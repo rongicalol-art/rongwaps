@@ -28,7 +28,7 @@ export function BookCarousel({ activeBookId, onActiveBookChange }: BookCarouselP
           onPointerDown={navigation.handlePointerDown}
           onPointerUp={navigation.handlePointerUp}
           onPointerCancel={navigation.handlePointerCancel}
-          className="relative h-[230px] w-full select-none overflow-hidden outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25 sm:h-[260px] md:h-[290px]"
+          className="relative h-[230px] w-full select-none overflow-hidden focus-ring sm:h-[260px] md:h-[290px]"
           style={{
             touchAction: 'pan-y',
             WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)',
@@ -49,7 +49,7 @@ export function BookCarousel({ activeBookId, onActiveBookChange }: BookCarouselP
                 onClick={() => {
                   if (!navigation.shouldIgnoreClick()) navigation.selectIndex(index);
                 }}
-                className={`absolute left-1/2 top-0 flex w-[280px] items-center justify-center p-2 outline-none transition-[transform,opacity,filter] duration-300 ease-out focus-visible:ring-4 focus-visible:ring-brand-primary/25 motion-reduce:transition-none sm:w-[320px] md:w-[360px] ${
+                className={`absolute left-1/2 top-0 flex w-[280px] items-center justify-center p-2 focus-ring transition-[transform,opacity,filter] duration-300 ease-out motion-reduce:transition-none sm:w-[320px] md:w-[360px] ${
                   book.status === 'locked' ? 'saturate-[0.6]' : ''
                 }`}
                 style={{
@@ -65,7 +65,7 @@ export function BookCarousel({ activeBookId, onActiveBookChange }: BookCarouselP
                   />
                   {book.status === 'locked' && (
                     <span className="absolute inset-0 z-30 flex items-center justify-center">
-                      <span className="flex h-16 w-16 items-center justify-center rounded-[24px] border-b-4 border-ui-border bg-white/70 text-ui-muted backdrop-blur-md">
+                      <span className="flex h-16 w-16 items-center justify-center rounded-feature border-b-4 border-ui-border bg-ui-surface/70 text-ui-muted backdrop-blur-md">
                         <AppIcon name="lock" size={32} />
                       </span>
                     </span>

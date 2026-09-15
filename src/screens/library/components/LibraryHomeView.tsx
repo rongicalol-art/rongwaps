@@ -11,6 +11,7 @@ interface LibraryCollectionSummary {
   icon?: ReactNode;
   accentBg?: string;
   accentBorder?: string;
+  colorFront?: string;
 }
 
 interface LibraryHomeViewProps {

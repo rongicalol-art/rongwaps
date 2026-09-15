@@ -29,7 +29,7 @@ export function GrammarParticleWorkshop({
   if (!selected) return null;
 
   return (
-    <div className="overflow-hidden rounded-[20px] border-2 border-ui-border bg-ui-surface">
+    <div className="overflow-hidden rounded-feature border-2 border-ui-border bg-ui-surface">
       <div className="border-b border-ui-divider px-4 py-4 sm:px-5">
         <p className="text-base font-black text-ui-ink-strong">See the difference</p>
         <p className="mt-1 text-sm font-bold leading-6 text-ui-muted-strong">
@@ -48,7 +48,7 @@ export function GrammarParticleWorkshop({
                 aria-pressed={isSelected}
                 onClick={() => setSelectedId(item.id)}
                 className={cn(
-                  'min-w-max rounded-[11px] border-2 px-3 py-2 text-left text-sm font-black outline-none transition focus-visible:ring-4 focus-visible:ring-brand-primary/20 md:min-w-0',
+                  'min-w-max rounded-sm border-2 px-3 py-2 text-left text-sm font-black transition focus-ring md:min-w-0',
                   isSelected
                     ? 'border-brand-primary bg-brand-primary text-white'
                     : 'border-ui-border bg-ui-surface text-ui-ink hover:border-brand-primary',

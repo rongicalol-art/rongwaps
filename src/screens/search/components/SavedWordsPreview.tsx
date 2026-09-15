@@ -19,7 +19,7 @@ export function SavedWordsPreview({
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2 text-ui-ink-strong">
           <AppIcon name="bookmark" className="text-feedback-warning-edge" size={20} />
-          <h2 className="text-[16px] font-black">Saved</h2>
+          <h2 className="text-base font-black">Saved</h2>
         </div>
         {items.length > 0 && (
           <IconActionButton
@@ -42,11 +42,11 @@ export function SavedWordsPreview({
               onClick={() => onOpenWord(item.word)}
               className="min-w-0 rounded-control border-b-[length:var(--depth-sm)] border-ui-border bg-ui-canvas px-2 py-3 text-center text-ui-ink-strong outline-none transition-[background-color,border-color,transform] hover:bg-ui-hover focus-ring active:border-b-0 active:translate-y-[length:var(--depth-sm)]"
             >
-              <span className="block font-chinese text-[28px] font-bold leading-none">{item.traditional}</span>
-              <span className="mt-1 w-full truncate text-[11px] font-black text-ui-ink">
+              <span className="block font-chinese text-2xl font-bold leading-none">{item.traditional}</span>
+              <span className="mt-1 w-full truncate text-xs font-black text-ui-ink">
                 {item.pinyin || '—'}
               </span>
-              <span className="mt-0.5 block w-full truncate text-[11px] font-bold text-ui-muted-strong">
+              <span className="mt-0.5 block w-full truncate text-xs font-bold text-ui-muted-strong">
                 {item.meaning || 'Saved word'}
               </span>
             </button>
@@ -54,7 +54,7 @@ export function SavedWordsPreview({
         </div>
       ) : (
         <div className="mt-4 flex min-h-[126px] flex-1 items-center justify-center rounded-control bg-ui-canvas px-4 text-center">
-          <p className="text-[13px] font-bold text-ui-muted">
+          <p className="text-sm font-bold text-ui-muted">
             {isLoading ? 'Loading…' : 'Saved words appear here.'}
           </p>
         </div>

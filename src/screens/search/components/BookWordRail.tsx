@@ -30,17 +30,17 @@ function WordRow({ card, onOpenWord }: { card: Flashcard; onOpenWord: (word: str
         aria-label={`Open ${card.front}`}
         className="flex min-w-0 flex-1 items-center gap-3 text-left outline-none focus-ring rounded-sm sm:gap-4"
       >
-        <span className="shrink-0 font-chinese text-[26px] font-bold leading-none text-ui-ink transition-colors group-hover:text-brand-primary sm:text-[30px]">
+        <span className="shrink-0 font-chinese text-2xl font-bold leading-none text-ui-ink transition-colors group-hover:text-brand-primary sm:text-3xl">
           {card.front}
         </span>
         <span className="flex min-w-0 flex-1 flex-col gap-0.5">
           <span className="flex items-center gap-2">
-            <span className="truncate text-[13px] font-extrabold text-ui-muted sm:text-[14px]">
+            <span className="truncate text-xs font-extrabold text-ui-muted sm:text-sm">
               {card.pinyin || '\u00A0'}
             </span>
             <PosBadge pos={card.pos} />
           </span>
-          <span className="line-clamp-1 text-[14px] font-bold leading-snug text-ui-ink sm:text-[15px]">
+          <span className="line-clamp-1 text-sm font-bold leading-snug text-ui-ink">
             {card.back || '\u00A0'}
           </span>
         </span>
@@ -73,9 +73,9 @@ export function BookWordRail({ bookId, onOpenWord }: BookWordRailProps) {
     <section aria-label="From your book" className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-5 sm:p-6">
       <div className="flex items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-2 text-ui-ink-strong">
-          <h2 className="text-[16px] font-black">From your book</h2>
+          <h2 className="text-base font-black">From your book</h2>
           {!isLoading && !error && (
-            <span className="truncate text-[12px] font-bold text-ui-muted">
+            <span className="truncate text-xs font-bold text-ui-muted">
               · {cards.length} {cards.length === 1 ? 'word' : 'words'}
             </span>
           )}
@@ -95,7 +95,7 @@ export function BookWordRail({ bookId, onOpenWord }: BookWordRailProps) {
       {error ? (
         <div className="mt-4 flex flex-col items-center gap-3 rounded-control bg-ui-canvas px-4 py-8 text-center">
           <AppIcon name="error" size={24} className="text-feedback-danger" />
-          <p className="max-w-sm text-[13px] font-bold text-ui-muted">{error}</p>
+          <p className="max-w-sm text-sm font-bold text-ui-muted">{error}</p>
           <IconActionButton
             type="button"
             variant="quiet"

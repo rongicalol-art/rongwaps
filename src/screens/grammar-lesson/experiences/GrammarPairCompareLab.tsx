@@ -59,7 +59,7 @@ export function GrammarPairCompareLab({
             { label: selected.leftLabel, value: selected.leftValue, tone: 'bg-brand-primary' },
             { label: selected.rightLabel, value: selected.rightValue, tone: 'bg-brand-secondary' },
           ].map((item, index) => (
-            <div key={`${item.label}-${index}`} className="rounded-[18px] bg-ui-canvas p-4">
+            <div key={`${item.label}-${index}`} className="rounded-feature bg-ui-canvas p-4">
               <div className="flex items-end justify-between gap-3">
                 <span className="font-chinese text-lg font-black text-ui-ink-strong">{focus(item.label)}</span>
                 <span className="text-xs font-black text-ui-muted-strong">{selected.quality}</span>

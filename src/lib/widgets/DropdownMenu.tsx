@@ -25,6 +25,8 @@ export interface DropdownMenuProps extends Omit<React.HTMLAttributes<HTMLDivElem
   gapClassName?: string;
   /** Width of the menu surface (default w-60). */
   widthClassName?: string;
+  /** Extra classes for the popover surface (e.g. internal max-height scroll). */
+  menuClassName?: string;
   /** The menu items rendered inside the popover. */
   children: React.ReactNode;
 }
@@ -46,6 +48,7 @@ export function DropdownMenu({
   align = 'end',
   gapClassName = 'mt-2',
   widthClassName = 'w-60 sm:w-64',
+  menuClassName,
   className,
   children,
   ...props
@@ -170,6 +173,7 @@ export function DropdownMenu({
               'flex flex-col p-0.5',
               gapClassName,
               widthClassName,
+              menuClassName,
               align === 'end' ? 'right-0' : 'left-0',
               'max-w-[calc(100vw-1.5rem)]',
             )}

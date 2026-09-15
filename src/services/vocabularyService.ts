@@ -468,10 +468,13 @@ export async function fetchExamplesForWord(searchWords: string | string[]): Prom
       return allVocab.filter(c => c.examples?.some(e => e.chinese && searchTerms.some(v => e.chinese.includes(v))));
     };
 
-    if (!supabaseUrl) {
-      // Fallback to pack-first local data
-      const matching = await getLocalMatchingCards();
-      return mergeExampleCards(matching);
+    if (richExampleCards.length > 0) {
+      return mergeExampleCards([]);
+    }
+
+    const localMatching = await getLocalMatchingCards();
+    if (localMatching.length > 0 || !supabaseUrl) {
+      return mergeExampleCards(localMatching);
     }
 
     let query = supabase.from('book_vocabulary').select(VOCABULARY_COLUMNS);
@@ -505,4 +508,59 @@ export async function fetchExamplesForWord(searchWords: string | string[]): Prom
     console.error('Exception fetching examples:', err);
     return [];
   }
+}
+
+let courseVocabByWordMap: Map<string, Flashcard> | null = null;
+let courseVocabMapPromise: Promise<Map<string, Flashcard>> | null = null;
+
+/**
+ * Returns a cached lookup map of all course vocabulary words.
+ * Indexes traditional, simplified, front, and stripped variants for instant O(1) matching.
+ */
+export async function getCourseVocabLookupMap(): Promise<Map<string, Flashcard>> {
+  if (courseVocabByWordMap) return courseVocabByWordMap;
+  if (courseVocabMapPromise) return courseVocabMapPromise;
+
+  courseVocabMapPromise = (async () => {
+    try {
+      const allCards = await fetchVocabulary();
+      const map = new Map<string, Flashcard>();
+
+      const register = (key: string | undefined, card: Flashcard) => {
+        if (!key) return;
+        const trimmed = key.trim();
+        if (!trimmed) return;
+        if (!map.has(trimmed)) {
+          map.set(trimmed, card);
+        }
+        const cleaned = cleanVocabText(trimmed);
+        if (cleaned && !map.has(cleaned)) {
+          map.set(cleaned, card);
+        }
+      };
+
+      for (const card of allCards) {
+        register(card.front, card);
+        register(card.traditional, card);
+        register(card.simplified, card);
+      }
+
+      courseVocabByWordMap = map;
+      return map;
+    } finally {
+      courseVocabMapPromise = null;
+    }
+  })();
+
+  return courseVocabMapPromise;
+}
+
+/**
+ * Finds a matching course flashcard by exact word or cleaned variant.
+ */
+export async function findMatchingCourseVocab(word: string): Promise<Flashcard | undefined> {
+  if (!word || !word.trim()) return undefined;
+  const map = await getCourseVocabLookupMap();
+  const trimmed = word.trim();
+  return map.get(trimmed) || map.get(cleanVocabText(trimmed));
 }

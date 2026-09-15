@@ -61,9 +61,9 @@ export function AppSettingsDrawer({
             />
           </div>
 
-          <div className="rounded-[24px] border-2 border-ui-border bg-ui-surface p-4">
+          <div className="rounded-feature border-2 border-ui-border bg-ui-surface p-4">
             <p className="text-xs font-extrabold uppercase tracking-wider text-ui-muted">Practice controls</p>
-            <p className="mt-1 text-[15px] font-extrabold leading-relaxed text-ui-ink">
+            <p className="mt-1 text-sm font-extrabold leading-relaxed text-ui-ink">
               Adjust audio, pinyin, translations, pace, and answer timing from Session controls during practice.
             </p>
           </div>

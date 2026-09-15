@@ -40,20 +40,18 @@ export const SpellCard: React.FC<SpellCardProps> = ({ item, activeTab, onAction,
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ delay: Math.min(index * 0.04, 0.2), duration: 0.2 }}
-      role="button"
-      tabIndex={0}
-      aria-label={`Open ${traditional}`}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          onClick();
-        }
-      }}
-      onClick={onClick}
-      className="group h-full cursor-pointer select-none outline-none focus-ring rounded-feature"
+      className="group relative h-full select-none rounded-feature"
     >
       <article className="relative flex h-full flex-col overflow-hidden rounded-feature bg-ui-surface border-b-[length:var(--depth-md)] border-ui-border transition-[transform,background-color,border-color] duration-200 hover:bg-ui-hover active:translate-y-[length:var(--depth-md)] active:border-b-0">
         <button
+          type="button"
+          onClick={onClick}
+          aria-label={`Open ${traditional}`}
+          className="absolute inset-0 z-0 h-full w-full cursor-pointer rounded-feature outline-none focus-ring"
+        />
+
+        <button
+          type="button"
           onClick={(e) => { e.stopPropagation(); onAction(e); }}
           aria-label={isStarred ? `Remove ${traditional} from saved words` : `Delete ${traditional}`}
           className={`absolute top-2 right-2 w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all active:scale-90 z-10 ${
@@ -65,7 +63,7 @@ export const SpellCard: React.FC<SpellCardProps> = ({ item, activeTab, onAction,
           <AppIcon name={isStarred ? 'bookmarkFilled' : 'trash'} size={isStarred ? 18 : 16} />
         </button>
 
-        <div className="flex flex-1 flex-col items-center justify-center px-4 py-6">
+        <div className="pointer-events-none relative z-0 flex flex-1 flex-col items-center justify-center px-4 py-6">
           <span
             className="mb-3 font-chinese font-bold leading-none text-ui-ink-strong transition-colors group-hover:text-brand-primary"
             style={{ fontSize: traditional.length > 2 ? '30px' : traditional.length > 1 ? '38px' : '48px' }}
@@ -74,13 +72,13 @@ export const SpellCard: React.FC<SpellCardProps> = ({ item, activeTab, onAction,
           </span>
 
           {pinyinStr && (
-            <span className="mb-1 text-center text-[11px] font-extrabold text-ui-muted">
+            <span className="mb-1 text-center text-xs font-extrabold text-ui-muted">
               {pinyinStr}
             </span>
           )}
 
           {definition && (
-            <span className="text-[13px] font-semibold text-ui-muted-strong leading-snug text-center">
+            <span className="text-sm font-semibold text-ui-muted-strong leading-snug text-center">
               {definition}
             </span>
           )}

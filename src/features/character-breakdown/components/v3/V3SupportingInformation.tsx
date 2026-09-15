@@ -2,14 +2,14 @@ import type { ReactNode } from 'react';
 import type { Flashcard } from '../../../../data/flashcards';
 import type { SAMPLE_BOOKS } from '../../../../data/books';
 import { numberToToneMarks } from '../../../../utils/pinyin';
-import { PosBadge, SectionEyebrow, Skeleton } from '../../../../lib/widgets';
+import { SectionEyebrow, Skeleton } from '../../../../lib/widgets';
 import { useCharBreakdownState } from '../../../../hooks/useCharBreakdown';
 import { CharacterGlyph } from '../breakdown/CharacterGlyph';
 import type { UsedAsGroups } from '../../utils/rankParentCharacters';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
 
-const SEE_ALL_CLASSES = 'min-h-9 shrink-0 rounded-compact px-2.5 text-xs font-extrabold text-brand-primary outline-none transition-colors hover:bg-brand-primary/10 focus-visible:ring-4 focus-visible:ring-brand-primary/25';
+const SEE_ALL_CLASSES = 'min-h-9 shrink-0 rounded-compact px-2.5 text-xs font-extrabold text-brand-primary transition-colors hover:bg-brand-primary/10 focus-ring';
 
 const MAX_COURSE_ROWS = 4;
 const MAX_OTHER_CHIPS = 10;
@@ -46,14 +46,14 @@ function ReferenceRow({ glyph, accentClassName, primary, secondary, loading = fa
       type="button"
       onClick={onClick}
       aria-label={ariaLabel}
-      className="group flex min-h-[54px] w-full items-center gap-3 rounded-compact px-2 py-2 text-left outline-none transition-colors hover:bg-ui-hover focus-visible:z-10 focus-visible:ring-4 focus-visible:ring-brand-primary/25"
+      className="group flex min-h-[54px] w-full items-center gap-3 rounded-compact px-2 py-2 text-left transition-colors hover:bg-ui-hover focus-visible:z-10 focus-ring"
     >
-      <span className={`min-w-[3.75rem] shrink-0 font-chinese text-[28px] leading-none ${accentClassName}`}>{glyph}</span>
+      <span className={`min-w-[3.75rem] shrink-0 font-chinese text-2xl leading-none ${accentClassName}`}>{glyph}</span>
       <span className="min-w-0 flex-1">
         {loading ? (
           <>
-            <Skeleton className="h-3 w-14 rounded-[3px]" />
-            <Skeleton className="mt-1.5 h-3 w-full max-w-[10rem] rounded-[3px]" />
+            <Skeleton className="h-3 w-14 rounded-xs" />
+            <Skeleton className="mt-1.5 h-3 w-full max-w-[10rem] rounded-xs" />
           </>
         ) : (
           <>
@@ -103,7 +103,7 @@ function OtherParentChip({ character, accentClassName, onClick }: {
       onClick={onClick}
       aria-label={`Open breakdown for ${character}`}
       title={`Open breakdown for ${character}`}
-      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-compact border border-ui-border bg-ui-surface shadow-[0_2px_0_var(--color-ui-divider)] outline-none transition-[background-color,transform,box-shadow] hover:bg-ui-surface-hover active:translate-y-px active:shadow-[0_1px_0_var(--color-ui-divider)] focus-visible:ring-4 focus-visible:ring-brand-primary/25 ${accentClassName}`}
+      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-compact border border-ui-border bg-ui-surface shadow-[0_var(--depth-sm)_0_var(--color-ui-divider)] transition-[background-color,transform,box-shadow] hover:bg-ui-surface-hover active:translate-y-[length:var(--depth-sm)] active:shadow-none focus-ring ${accentClassName}`}
     >
       <CharacterGlyph character={character} className="font-chinese text-[20px] leading-none" />
     </button>
@@ -131,7 +131,7 @@ export function V3SupportingInformation({ relatedWords, usedAsComponents, usedAs
   return (
     <section className="flex min-w-0 flex-col gap-3" aria-label="Supporting information">
       {related.length > 0 && (
-        <div className="min-w-0 rounded-feature bg-ui-surface p-4 shadow-[0_3px_0_var(--color-ui-divider)] sm:p-4">
+        <div className="min-w-0 rounded-feature bg-ui-surface p-4 shadow-[0_var(--depth-md)_0_var(--color-ui-border)] sm:p-6">
           <SectionEyebrow
             title="In words"
             count={relatedWords.length}
@@ -152,10 +152,7 @@ export function V3SupportingInformation({ relatedWords, usedAsComponents, usedAs
                 onClick={() => setDictionaryWord(card.front)}
                 ariaLabel={`Open ${card.front}`}
                 trailing={card.source !== 'dictionary'
-                  ? <span className="flex shrink-0 items-center gap-1.5">
-                      <PosBadge pos={card.pos} />
-                      <span className="text-[9px] font-extrabold text-ui-muted">B{card.bookId} · L{card.lessonId}</span>
-                    </span>
+                  ? <span className="shrink-0 text-[9px] font-extrabold text-ui-muted">B{card.bookId} · L{card.lessonId}</span>
                   : undefined}
               />
             ))}
@@ -164,7 +161,7 @@ export function V3SupportingInformation({ relatedWords, usedAsComponents, usedAs
       )}
 
       {hasPartOfCard && (
-        <div className="min-w-0 rounded-feature bg-ui-surface p-4 shadow-[0_3px_0_var(--color-ui-divider)] sm:p-4">
+        <div className="min-w-0 rounded-feature bg-ui-surface p-4 shadow-[0_var(--depth-md)_0_var(--color-ui-border)] sm:p-6">
           <SectionEyebrow
             title="Part of"
             count={usedAsComponents.length}

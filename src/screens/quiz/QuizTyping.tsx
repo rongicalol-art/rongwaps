@@ -2,13 +2,13 @@ import React, { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { Flashcard } from '../../data/flashcards';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { FeedbackBottomBar, LessonComplete, BreakdownExpandPanel } from '../../features/practice';
+import { FeedbackBottomBar, LessonComplete, PracticeFormatMenu } from '../../features/practice';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
 import { MemoryHookCharacter } from '../../features/character-memory-hooks';
 import { useQuizTyping } from './hooks/useQuiz';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
-import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
+import { usePracticePreferencesStore, type TypingPromptType } from '../../store/usePracticePreferencesStore';
 import { buildPracticePartSegments } from '../../utils/practicePartSegments';
 import { isHanziChar } from '../../utils/hanzi';
 import { AppIcon } from '../../lib/widgets';
@@ -30,10 +30,11 @@ interface QuizTypingCardProps {
   onInputChange: (val: string) => void;
   onSubmit: () => void;
   onOpenBreakdown: (index: number) => void;
+  promptType: TypingPromptType;
 }
 
 const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
-  currentCard, input, status, onInputChange, onSubmit, onOpenBreakdown
+  currentCard, input, status, onInputChange, onSubmit, onOpenBreakdown, promptType
 }) => {
   const frontLength = currentCard?.front?.length || 1;
   const getFrontFontSize = (len: number) => {
@@ -52,24 +53,32 @@ const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
       transition={{ duration: 0.14, ease: 'easeOut' }}
       className="flex w-full flex-col will-change-transform"
     >
-      <div className="flex w-full flex-wrap items-center justify-center gap-x-1 pb-7 pt-8 px-4">
-        {Array.from(currentCard.front).map((char, i) =>
-          isHanziChar(char) ? (
-            <MemoryHookCharacter
-              key={i}
-              char={char}
-              label={`Open character breakdown for ${char}`}
-              onOpen={() => onOpenBreakdown(i)}
-              glyphClassName={`${getFrontFontSize(frontLength)} leading-tight text-ui-ink text-center`}
-              className="px-1.5 py-1"
-            />
-          ) : (
-            <span key={i} className={`${getFrontFontSize(frontLength)} font-chinese leading-tight text-ui-ink`}>
-              {char}
-            </span>
-          ),
-        )}
-      </div>
+      {promptType === 'meaning' ? (
+        <div className="flex w-full items-center justify-center pb-7 pt-8 px-4">
+          <span className="text-2xl sm:text-3xl font-extrabold text-ui-ink text-center leading-snug">
+            {currentCard.back}
+          </span>
+        </div>
+      ) : (
+        <div className="flex w-full flex-wrap items-center justify-center gap-x-1 pb-7 pt-8 px-4">
+          {Array.from(currentCard.front).map((char, i) =>
+            isHanziChar(char) ? (
+              <MemoryHookCharacter
+                key={i}
+                char={char}
+                label={`Open character breakdown for ${char}`}
+                onOpen={() => onOpenBreakdown(i)}
+                glyphClassName={`${getFrontFontSize(frontLength)} leading-tight text-ui-ink text-center`}
+                className="px-1.5 py-1"
+              />
+            ) : (
+              <span key={i} className={`${getFrontFontSize(frontLength)} font-chinese leading-tight text-ui-ink`}>
+                {char}
+              </span>
+            ),
+          )}
+        </div>
+      )}
 
       <form
         onSubmit={(event) => {
@@ -120,7 +129,6 @@ const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
 export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue, continueLabel, activeBookId, sessionKey }) => {
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
   const [breakdownIndex, setBreakdownIndex] = useState(0);
-  const [breakdownOpen, setBreakdownOpen] = useState(false);
   const {
     activeCards,
     currentIndex,
@@ -140,11 +148,6 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue, 
   } = useQuizTyping(cards, sessionKey);
   const autoAdvanceCorrect = usePracticePreferencesStore((state) => state.autoAdvanceCorrect);
   const autoAdvance = status === 'correct' ? autoAdvanceCorrect : false;
-
-  // The inline breakdown panel is per-card; close it when the card changes.
-  React.useEffect(() => {
-    setBreakdownOpen(false);
-  }, [currentCard?.id]);
 
   const handleTypingSubmit = () => {
     if (status === 'wrong') {
@@ -176,6 +179,7 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue, 
   });
 
   const activeBook = SAMPLE_BOOKS.find(b => b.id === activeBookId) || SAMPLE_BOOKS[0];
+  const typingPromptType = usePracticePreferencesStore((state) => state.typingPromptType);
 
   if (completed) {
     return (
@@ -194,9 +198,10 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue, 
 
   return (
     <div className="relative flex-1 flex flex-col bg-transparent overflow-hidden text-ui-ink font-sans pt-[72px]">
-      <div className="flex-1 flex flex-col max-w-lg mx-auto w-full px-4 sm:px-6 pb-[200px] overscroll-none overflow-y-auto">
-        <div className="mt-4 flex w-full items-center justify-start px-2">
-          <h2 className="text-[24px] font-extrabold text-ui-ink sm:text-[26px]">
+      <div className="flex-1 flex flex-col max-w-lg mx-auto w-full px-4 sm:px-6 pb-[240px] overscroll-none overflow-y-auto">
+        <div className="mt-4 flex w-full items-center gap-2.5 px-2">
+          <PracticeFormatMenu mode="quiz-typing" />
+          <h2 className="text-xl font-extrabold text-ui-ink sm:text-2xl">
             Type the pinyin
           </h2>
         </div>
@@ -210,9 +215,9 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue, 
           onSubmit={handleTypingSubmit}
           onOpenBreakdown={(index) => {
             setBreakdownIndex(index);
-            setBreakdownOpen(false);
             setActiveBreakdown(currentCard.front);
           }}
+          promptType={typingPromptType}
         />
       </div>
 
@@ -225,15 +230,10 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue, 
         hideWhenAutoAdvance={autoAdvance && status !== 'idle'}
         showContinueOnWrong
         keyboardShortcutDisabled={Boolean(activeBreakdown)}
-        onBreakdown={() => setBreakdownOpen((open) => !open)}
-        breakdownOpen={breakdownOpen}
-        breakdownPanel={
-          <BreakdownExpandPanel
-            front={currentCard.front}
-            pinyin={currentCard.pinyin}
-            meaning={currentCard.back}
-          />
-        }
+        onBreakdown={() => {
+          setBreakdownIndex(0);
+          setActiveBreakdown(currentCard.front);
+        }}
         activeBook={activeBook}
       />
 

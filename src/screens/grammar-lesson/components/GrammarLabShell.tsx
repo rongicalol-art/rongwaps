@@ -46,7 +46,7 @@ export function GrammarLabShell({
       <div className={panelClassName}>{children}</div>
 
       {takeaway && (
-        <div className="mt-4 rounded-[16px] bg-brand-primary/5 px-4 py-3 text-sm font-black leading-6 text-ui-ink sm:text-[15px]">
+        <div className="mt-4 rounded-control bg-brand-primary/5 px-4 py-3 text-sm font-black leading-6 text-ui-ink sm:text-base">
           {takeaway}
         </div>
       )}

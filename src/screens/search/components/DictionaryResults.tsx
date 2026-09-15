@@ -37,8 +37,8 @@ export function DictionaryResults({
 
       {!error && !isLoading && results.length === 0 && (
         <div className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface px-6 py-12 text-center">
-          <p className="text-[18px] font-black text-ui-ink">No match for “{query}”</p>
-          <p className="mt-2 text-[14px] font-bold text-ui-muted">
+          <p className="text-lg font-black text-ui-ink">No match for “{query}”</p>
+          <p className="mt-2 text-sm font-bold text-ui-muted">
             {mode === 'curriculum'
               ? 'Try enabling more books in the bottom dock or switch to Global search.'
               : 'Try searching characters, pinyin, or English.'}

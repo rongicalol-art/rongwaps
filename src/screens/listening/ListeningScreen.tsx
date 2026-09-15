@@ -1,6 +1,6 @@
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState } from 'react';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { FeedbackBottomBar, LessonComplete, BreakdownExpandPanel } from '../../features/practice';
+import { FeedbackBottomBar, LessonComplete, PracticeFormatMenu } from '../../features/practice';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
 import { ActionButton, AppIcon, ScreenSkeleton, ScreenLayout } from '../../lib/widgets';
 import { useListening } from './hooks/useListening';
@@ -8,9 +8,10 @@ import { AudioControls } from './AudioControls';
 import { ListeningOptions } from './ListeningOptions';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
-import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
+import { usePracticePreferencesStore, type ListeningChoiceType } from '../../store/usePracticePreferencesStore';
 import { buildPracticePartSegments } from '../../utils/practicePartSegments';
 import { useNumberKeySelection } from '../../hooks/useNumberKeySelection';
+import { getCardChoiceTarget } from '../../utils/meaningChoices';
 
 interface ListeningScreenProps {
   activeBookId?: number;
@@ -24,7 +25,6 @@ interface ListeningScreenProps {
 
 export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibraryDeck = false, isReviewDeck = false, onClose, onContinue, continueLabel }: ListeningScreenProps) {
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
-  const [breakdownOpen, setBreakdownOpen] = useState(false);
   const {
     screenState,
     currentIndex,
@@ -59,11 +59,14 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
   const showPinyin = usePracticePreferencesStore((state) => state.showPinyin);
   const autoAdvanceCorrect = usePracticePreferencesStore((state) => state.autoAdvanceCorrect);
   const autoAdvance = isCorrect ? autoAdvanceCorrect : false;
+  const listeningChoiceType = usePracticePreferencesStore((state) => state.listeningChoiceType);
 
-  // The inline breakdown panel is per-card; close it when the card changes.
-  useEffect(() => {
-    setBreakdownOpen(false);
-  }, [currentCard?.id]);
+  const listeningTitleMap: Record<ListeningChoiceType, string> = {
+    meaning: 'Select the meaning',
+    hanzi: 'Select the character',
+    pinyin: 'Select the pinyin',
+  };
+
   const partSegments = useMemo(
     () => (isShuffled || isReviewDeck || isLibraryDeck ? [] : buildPracticePartSegments(playlist)),
     [isLibraryDeck, isReviewDeck, isShuffled, playlist],
@@ -133,10 +136,11 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
   return (
     <div className="absolute inset-0 z-[100] w-full h-full bg-transparent flex flex-col overflow-hidden text-ui-ink font-sans pt-[72px]">
       
-      <ScreenLayout maxWidth="xl" className="pb-[200px] overscroll-none overflow-y-auto">
-        <div className="mt-4 flex w-full items-center">
-          <h2 className="text-[24px] font-extrabold text-ui-ink sm:text-[26px]">
-            Select the meaning
+      <ScreenLayout maxWidth="xl" className="pb-[240px] overscroll-none overflow-y-auto">
+        <div className="mt-4 flex w-full items-center gap-2.5 px-2">
+          <PracticeFormatMenu mode="listening" />
+          <h2 className="text-xl font-extrabold text-ui-ink sm:text-[26px]">
+            {listeningTitleMap[listeningChoiceType]}
           </h2>
         </div>
         
@@ -153,28 +157,23 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
           isChecked={isChecked}
           currentCard={currentCard}
           activeBook={activeBook}
+          choiceType={listeningChoiceType}
         />
 
       </ScreenLayout>
 
       <FeedbackBottomBar 
         status={!isChecked ? 'idle' : (isCorrect ? 'correct' : 'wrong')}
-        correctAnswer={currentCard.back}
+        correctAnswer={getCardChoiceTarget(currentCard, listeningChoiceType)}
         pinyin={showPinyin ? currentCard.pinyin : undefined}
         onContinue={isCorrect ? handleCheck : retryAnswer}
         showCheck={false}
         hideWhenAutoAdvance={autoAdvance && isChecked}
         showContinueOnWrong
         keyboardShortcutDisabled={Boolean(activeBreakdown)}
-        onBreakdown={() => setBreakdownOpen((open) => !open)}
-        breakdownOpen={breakdownOpen}
-        breakdownPanel={
-          <BreakdownExpandPanel
-            front={currentCard.front}
-            pinyin={showPinyin ? currentCard.pinyin : undefined}
-            meaning={currentCard.back}
-          />
-        }
+        onBreakdown={() => {
+          setActiveBreakdown(currentCard.front);
+        }}
         activeBook={activeBook}
       />
 

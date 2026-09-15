@@ -35,13 +35,13 @@ export function GrammarCompareLab({
             { label: selected.leftLabel, value: selected.leftValue, accent: false },
             { label: selected.rightLabel, value: selected.rightValue, accent: true },
           ].map((item) => (
-            <div key={item.label} className="rounded-[16px] bg-ui-canvas p-4">
+            <div key={item.label} className="rounded-control bg-ui-canvas p-4">
               <div className="flex items-end justify-between gap-2">
                 <span className="font-chinese text-lg font-black text-ui-ink-strong">{focus(item.label)}</span>
                 <span className="text-xs font-black text-ui-muted">{selected.quality}</span>
               </div>
               <div className="mt-4 h-4 overflow-hidden rounded-full bg-brand-primary-track">
-                <div className={`h-full rounded-full ${item.accent ? 'bg-brand-primary' : 'bg-warning'}`} style={{ width: `${item.value}%` }} />
+                <div className={`h-full rounded-full ${item.accent ? 'bg-brand-primary' : 'bg-feedback-warning'}`} style={{ width: `${item.value}%` }} />
               </div>
               {item.accent && <p className="mt-3 font-chinese text-lg font-black text-brand-primary">{focus(`比較${selected.quality}`)}</p>}
             </div>

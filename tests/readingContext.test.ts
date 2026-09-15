@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { resolveActiveReadingIndex } from '../src/utils/readingContext';
+import { resolveActiveReadingIndex, findReadingIndexForPart } from '../src/utils/readingContext';
 import type { ReadingRecord } from '../src/types/models';
 
 const mockReadings: ReadingRecord[] = [
@@ -118,3 +118,57 @@ test('resolves Lesson 2 Part 2 correctly', () => {
   assert.equal(index, 3);
   assert.equal(mockReadings[index].id, 'B1L02-R02');
 });
+
+test('findReadingIndexForPart maps Part 1 to Dialogue 1', () => {
+  const idx = findReadingIndexForPart(mockReadings, 1, 1, 1);
+  assert.equal(idx, 0);
+  assert.equal(mockReadings[idx].id, 'B1L01-R01');
+});
+
+test('findReadingIndexForPart maps Part 2 to Dialogue 2', () => {
+  const idx = findReadingIndexForPart(mockReadings, 1, 1, 2);
+  assert.equal(idx, 1);
+  assert.equal(mockReadings[idx].id, 'B1L01-R02');
+});
+
+test('findReadingIndexForPart maps Part 3 to Dialogue 3 with fallback if absent', () => {
+  // Absent dialogue 3 in mockReadings -> falls back to lesson dialogue 1
+  const idx = findReadingIndexForPart(mockReadings, 1, 1, 3);
+  assert.equal(idx, 0);
+  assert.equal(mockReadings[idx].id, 'B1L01-R01');
+});
+
+test('findReadingIndexForPart maps Part 3 to Dialogue 3 when present', () => {
+  const readingsWithPart3: ReadingRecord[] = [
+    ...mockReadings,
+    {
+      id: 'B1L01-R03',
+      bookId: 1,
+      lessonId: 1,
+      dialogueNumber: 3,
+      title: '短文',
+      setting: '教室',
+      printedPages: [47, 48],
+      audioReference: '1-3',
+      paragraphs: [],
+    },
+  ];
+  const idx = findReadingIndexForPart(readingsWithPart3, 1, 1, 3);
+  assert.equal(idx, 4);
+  assert.equal(readingsWithPart3[idx].id, 'B1L01-R03');
+});
+
+test('getCharacterForSpeaker identifies all curriculum dialogue participants to prevent vocab pollution', async () => {
+  const { getCharacterForSpeaker } = await import('../src/utils/speakerCharacters');
+  const names = ['李中明', '中明', '王宜文', '宜文', '小林友美', '友美', '馬國安', '國安', '陳元真', '元真', '高家樂', '家樂', '媽媽', '老師'];
+  for (const name of names) {
+    const char = getCharacterForSpeaker(name);
+    assert.ok(char !== null, `Expected speaker character for ${name}`);
+  }
+
+  // Non-speaker words should return null
+  assert.equal(getCharacterForSpeaker('圖書館'), null);
+  assert.equal(getCharacterForSpeaker('學校'), null);
+  assert.equal(getCharacterForSpeaker('台灣'), null);
+});
+

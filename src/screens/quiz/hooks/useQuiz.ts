@@ -5,7 +5,7 @@ import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
 import { shuffleItems } from '../../../utils/sessionOrder';
 import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
 import { isPinyinAnswerAccepted } from '../../../utils/pinyinAnswer';
-import { buildMeaningChoices } from '../../../utils/meaningChoices';
+import { buildAttributeChoices, getCardChoiceTarget } from '../../../utils/meaningChoices';
 import { useCardSession } from '../../../hooks/useCardSession';
 
 export function useQuizLoader(activeBookId: number, selectedLessons: number[], isLibraryDeck: boolean = false, isReviewDeck: boolean = false) {
@@ -23,10 +23,11 @@ export function useQuizLoader(activeBookId: number, selectedLessons: number[], i
 export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
   const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
   const replayAudioAfterAnswer = usePracticePreferencesStore((state) => state.replayAudioAfterAnswer);
+  const quizChoiceType = usePracticePreferencesStore((state) => state.quizChoiceType);
 
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isChecked, setIsChecked] = useState(false);
-  const currentCardChoicesRef = useRef<{ cardId: string; options: Flashcard[] } | null>(null);
+  const currentCardChoicesRef = useRef<{ cardId: string; choiceType: string; options: Flashcard[] } | null>(null);
 
   const session = useCardSession(cards, sessionKey, {
     onSessionReset: () => {
@@ -58,23 +59,28 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
   // Derive choices during the same render as the next card. Keeping these in an
   // effect briefly paired a new prompt with the previous prompt's answers,
   // producing a visible second render during every card transition.
-  // Pinned per card ID so background updates / tab switches never refresh choices mid-card.
+  // Pinned per card ID and choiceType so background updates / tab switches never refresh choices mid-card.
   const options = useMemo(() => {
     if (!currentCard) return [];
-    if (currentCardChoicesRef.current && currentCardChoicesRef.current.cardId === currentCard.id) {
+    if (
+      currentCardChoicesRef.current &&
+      currentCardChoicesRef.current.cardId === currentCard.id &&
+      currentCardChoicesRef.current.choiceType === quizChoiceType
+    ) {
       return currentCardChoicesRef.current.options;
     }
-    const choices = shuffleItems(buildMeaningChoices(currentCard, shuffleItems(cards)));
-    currentCardChoicesRef.current = { cardId: currentCard.id, options: choices };
+    const choices = shuffleItems(buildAttributeChoices(currentCard, shuffleItems(cards), quizChoiceType));
+    currentCardChoicesRef.current = { cardId: currentCard.id, choiceType: quizChoiceType, options: choices };
     return choices;
-  }, [cards, currentCard]);
+  }, [cards, currentCard, quizChoiceType]);
 
   useEffect(() => {
     setSelectedOption(null);
     setIsChecked(false);
-  }, [currentCard?.id]);
+  }, [currentCard?.id, quizChoiceType]);
 
-  const isCorrect = selectedOption === currentCard?.back;
+  const correctTarget = currentCard ? getCardChoiceTarget(currentCard, quizChoiceType) : null;
+  const isCorrect = selectedOption === correctTarget;
 
   const recordChoiceAnswer = useCallback((option: string) => {
     if (!currentCard) return;
@@ -82,12 +88,12 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
 
     setSelectedOption(option);
     setIsChecked(true);
-    const correct = option === currentCard.back;
+    const correct = option === getCardChoiceTarget(currentCard, quizChoiceType);
     if (correct && replayAudioAfterAnswer) {
       audioService.play(currentCard.audio, pronunciationRate, currentCard.front);
     }
     session.recordAnswer(currentCard, correct ? 4 : 2);
-  }, [currentCard, pronunciationRate, replayAudioAfterAnswer, session]);
+  }, [currentCard, pronunciationRate, quizChoiceType, replayAudioAfterAnswer, session]);
 
   const handleCheck = () => {
     if (!selectedOption) return;

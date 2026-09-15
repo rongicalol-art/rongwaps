@@ -31,19 +31,19 @@ export function GrammarLiveSceneLab({
       </div>
       <div className="mt-5 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
         <div className="grid gap-3 p-5 sm:grid-cols-[0.8fr_1.2fr_0.8fr] sm:items-stretch sm:p-7">
-          <div className="flex min-h-24 flex-col justify-center rounded-[16px] bg-ui-canvas px-4 py-3 text-center">
-            <span className="text-[10px] font-black uppercase text-ui-muted">Who</span>
+          <div className="flex min-h-24 flex-col justify-center rounded-control bg-ui-canvas px-4 py-3 text-center">
+            <span className="text-xs font-black uppercase text-ui-muted">Who</span>
             <span className="mt-2 font-chinese text-2xl font-black text-ui-ink-strong">{focus(selected.subject)}</span>
           </div>
-          <div className="relative flex min-h-32 flex-col items-center justify-center overflow-hidden rounded-[16px] border-2 border-brand-primary bg-brand-primary/5 px-4 py-4 text-center">
-            <span className="absolute right-3 top-3 flex items-center gap-1 text-[10px] font-black uppercase text-brand-primary">
+          <div className="relative flex min-h-32 flex-col items-center justify-center overflow-hidden rounded-control border-2 border-brand-primary bg-brand-primary/5 px-4 py-4 text-center">
+            <span className="absolute right-3 top-3 flex items-center gap-1 text-xs font-black uppercase text-brand-primary">
               <span className="h-2 w-2 rounded-full bg-feedback-success" /> Now
             </span>
-            <span className="font-chinese text-[34px] font-black text-brand-primary">{focus(`在${selected.action}`)}</span>
+            <span className="font-chinese text-3xl font-black text-brand-primary">{focus(`在${selected.action}`)}</span>
             <span className="mt-1 text-xs font-black text-ui-muted">action happening now</span>
           </div>
-          <div className="flex min-h-24 flex-col justify-center rounded-[16px] bg-ui-canvas px-4 py-3 text-center">
-            <span className="text-[10px] font-black uppercase text-ui-muted">{selected.place ? 'Where' : 'Action'}</span>
+          <div className="flex min-h-24 flex-col justify-center rounded-control bg-ui-canvas px-4 py-3 text-center">
+            <span className="text-xs font-black uppercase text-ui-muted">{selected.place ? 'Where' : 'Action'}</span>
             <span className="mt-2 font-chinese text-xl font-black text-ui-ink-strong">{focus(selected.place ?? selected.action)}</span>
           </div>
         </div>

@@ -26,7 +26,7 @@ export function GrammarQuickChecks({
 
   return (
     <div
-      className="mt-5 overflow-hidden rounded-[18px] border-2 border-ui-border bg-ui-surface"
+      className="mt-5 overflow-hidden rounded-feature border-2 border-ui-border bg-ui-surface"
       aria-labelledby="quick-check-heading"
     >
       <div className="flex items-center justify-between gap-3 px-4 py-3 sm:px-5">
@@ -88,7 +88,7 @@ export function GrammarQuickChecks({
                           setHasChecked(false);
                         }}
                         className={cn(
-                          'min-h-10 min-w-12 rounded-[12px] border-2 px-3 font-chinese text-base font-black outline-none transition-colors focus-visible:ring-4 focus-visible:ring-brand-primary/20',
+                          'min-h-10 min-w-12 rounded-sm border-2 px-3 font-chinese text-base font-black transition-colors focus-ring',
                           isSelected
                             ? 'border-brand-primary bg-brand-primary text-white'
                             : 'border-ui-border bg-ui-canvas text-ui-ink-strong hover:border-brand-primary',

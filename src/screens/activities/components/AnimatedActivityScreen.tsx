@@ -54,7 +54,7 @@ export function AnimatedActivityScreen({
       animate="animate"
       exit="exit"
       transition={useSlide && !reduceMotion ? undefined : { duration: reduceMotion ? 0 : 0.2 }}
-      className="absolute inset-0 h-full w-full will-change-[transform,opacity]"
+      className="absolute inset-0 h-full w-full"
     >
       {children}
     </motion.div>

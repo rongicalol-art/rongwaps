@@ -130,7 +130,7 @@ export function ContextualChineseText({
               ? `${token.text}: ${token.pinyin ? `${token.pinyin}, ` : ''}${token.meaning}`
               : `Open ${token.text} in the dictionary`}
             className={cn(
-              '-mx-0.5 rounded-[7px] px-0.5 font-chinese text-inherit outline-none transition-colors hover:bg-brand-primary-soft focus-visible:bg-brand-primary-soft focus-visible:ring-2 focus-visible:ring-brand-primary/35 active:bg-brand-primary-soft',
+              '-mx-0.5 rounded-xs px-0.5 font-chinese text-inherit transition-colors hover:bg-brand-primary-soft focus-ring-inline focus-visible:bg-brand-primary-soft active:bg-brand-primary-soft',
               token.focused && 'font-chinese font-black text-brand-primary',
             )}
           >
@@ -139,7 +139,7 @@ export function ContextualChineseText({
           {token.meaning && (
             <span
               role="tooltip"
-              className="pointer-events-none absolute bottom-[calc(100%+8px)] left-1/2 z-50 hidden w-max min-w-[112px] max-w-[190px] -translate-x-1/2 rounded-[11px] border-b-2 border-ui-border bg-ui-ink-strong px-3 py-2 text-center font-sans group-hover:block group-focus-within:block"
+              className="pointer-events-none absolute bottom-[calc(100%+8px)] left-1/2 z-50 hidden w-max min-w-[112px] max-w-[190px] -translate-x-1/2 rounded-sm border-b-2 border-ui-border bg-ui-ink-strong px-3 py-2 text-center font-sans group-hover:block group-focus-within:block"
             >
               {token.pinyin && <span className="block text-xs font-black text-brand-primary/70">{token.pinyin}</span>}
               <span className="mt-0.5 block text-xs font-bold leading-snug text-white">{token.meaning}</span>

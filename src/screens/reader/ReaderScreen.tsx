@@ -6,6 +6,8 @@ import { LoadingScreen } from '../../lib/widgets';
 
 import { useReaderAudio } from './hooks/useReaderAudio';
 import { ReaderHeader } from './components/ReaderHeader';
+import { ReaderStudyDrawer } from './components/ReaderStudyDrawer';
+import { ReaderStudyPanel } from './components/ReaderStudyPanel';
 import { isNarrativeReading } from './utils/narrativeParagraphs';
 import { ReadingBottomDock } from './components/ReadingBottomDock';
 
@@ -24,6 +26,7 @@ interface ReaderScreenProps {
   index: number;
   onNavigate: (targetIndex: number) => void;
   onClose: () => void;
+  onOpenGrammarPart?: (partId: string, pageId?: string) => void;
 }
 
 /** Mounts only once the lazy reading-content chunk has resolved; the shell
@@ -41,14 +44,61 @@ function ReaderContentMount({
   return <>{children}</>;
 }
 
-export function ReaderScreen({ readings, index, onNavigate, onClose }: ReaderScreenProps) {
+export function ReaderScreen({
+  readings,
+  index,
+  onNavigate,
+  onClose,
+  onOpenGrammarPart,
+}: ReaderScreenProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLElement>(null);
   const lastScrollY = useRef(0);
 
   const [isDockVisible, setIsDockVisible] = useState(true);
-  const [showPinyin, setShowPinyin] = useState(false);
-  const [showMeaning, setShowMeaning] = useState(false);
+  const [showPinyin, setShowPinyin] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = window.localStorage.getItem('rongwaps:reader_show_pinyin');
+      if (saved !== null) {
+        return saved === 'true';
+      }
+    }
+    return true;
+  });
+
+  const handleTogglePinyin = useCallback(() => {
+    setShowPinyin((prev) => {
+      const next = !prev;
+      try {
+        window.localStorage.setItem('rongwaps:reader_show_pinyin', String(next));
+      } catch {
+        // Ignore storage errors in restricted contexts
+      }
+      return next;
+    });
+  }, []);
+
+  const [showMeaning, setShowMeaning] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = window.localStorage.getItem('rongwaps:reader_show_meaning');
+      if (saved !== null) {
+        return saved === 'true';
+      }
+    }
+    return false;
+  });
+
+  const handleToggleMeaning = useCallback(() => {
+    setShowMeaning((prev) => {
+      const next = !prev;
+      try {
+        window.localStorage.setItem('rongwaps:reader_show_meaning', String(next));
+      } catch {
+        // Ignore storage errors in restricted contexts
+      }
+      return next;
+    });
+  }, []);
   const [showHoverDefinitions, setShowHoverDefinitions] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
       const saved = window.localStorage.getItem('rongwaps:reader_hover_definitions');
@@ -92,7 +142,9 @@ export function ReaderScreen({ readings, index, onNavigate, onClose }: ReaderScr
 
   const audioMode = 'book';
   const characterPreference = useAppStore((state) => state.characterPreference);
+  const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
   const reading = readings[index] ?? readings[0];
+  const [isStudyDrawerOpen, setIsStudyDrawerOpen] = useState(false);
 
   // The dialogue alignment pack (~1.1MB) loads async so the Reader window can
   // open before it lands. Until it arrives the audio hook falls back to
@@ -343,113 +395,151 @@ export function ReaderScreen({ readings, index, onNavigate, onClose }: ReaderScr
         }
       }}
     >
-      {/* Main Single-Dialogue Reading Canvas */}
-      <main
-        ref={mainRef}
-        onClick={() => setIsDockVisible(true)}
-        className="relative z-10 min-h-0 flex-1 overflow-y-auto overscroll-none"
-      >
+      {/* Main Single-Dialogue Reading Header */}
+      <div className="absolute top-0 inset-x-0 z-30 pointer-events-auto">
         <ReaderHeader
           reading={reading}
           textSize={textSize}
           onTextSizeChange={handleTextSizeChange}
           showPinyin={showPinyin}
-          onTogglePinyin={() => setShowPinyin((v) => !v)}
+          onTogglePinyin={handleTogglePinyin}
           showMeaning={showMeaning}
-          onToggleMeaning={() => setShowMeaning((v) => !v)}
+          onToggleMeaning={handleToggleMeaning}
           showHoverDefinitions={showHoverDefinitions}
           onToggleHoverDefinitions={handleToggleHoverDefinitions}
+          onOpenStudyGuide={() => setIsStudyDrawerOpen((open) => !open)}
+          isStudyGuideOpen={isStudyDrawerOpen}
           onClose={onClose}
         />
-        <Suspense fallback={<LoadingScreen message="Loading reading…" inline />}>
-          <ReaderContentMount onMounted={markContentReady}>
-            {isNarrativeReading(reading) ? (
-              <ReadingNarrativeView
-                key={reading.id}
-                reading={reading}
-                alignment={alignment}
-                characterPreference={characterPreference}
-                showPinyin={showPinyin}
-                showMeaning={showMeaning}
-                showHoverDefinitions={showHoverDefinitions}
-                textSize={textSize}
-                activeLineIndex={activeLineIndex}
-                currentTime={currentTime}
-                onPlayLine={(idx) => {
-                  setIsDockVisible(true);
-                  playLine(idx);
-                }}
-                onPlayRange={(startSec) => {
-                  setIsDockVisible(true);
-                  playFromTime(startSec);
-                }}
-                onPlayFromTime={(startSec, endSec) => {
-                  setIsDockVisible(true);
-                  playFromTime(startSec, endSec);
-                }}
-              />
-            ) : (
-              <ReadingCanvas
-                key={reading.id}
-                reading={reading}
-                alignment={alignment}
-                characterPreference={characterPreference}
-                showPinyin={showPinyin}
-                showMeaning={showMeaning}
-                showHoverDefinitions={showHoverDefinitions}
-                textSize={textSize}
-                activeLineIndex={activeLineIndex}
-                currentTime={currentTime}
-                onPlayLine={(idx) => {
-                  setIsDockVisible(true);
-                  playLine(idx);
-                }}
-                onPlayRange={(startSec) => {
-                  setIsDockVisible(true);
-                  playFromTime(startSec);
-                }}
-                onPlayFromTime={(startSec, endSec) => {
-                  setIsDockVisible(true);
-                  playFromTime(startSec, endSec);
-                }}
-              />
-            )}
-          </ReaderContentMount>
-        </Suspense>
-      </main>
+      </div>
 
-      {/* Invisible bottom hover hotspot: hovering near the bottom reveals playback dock */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-auto absolute bottom-0 right-0 z-30 h-24"
-        style={{ left: 'var(--workspace-nav-width, 0px)' }}
-        onMouseEnter={handleBottomHoverEnter}
-        onMouseLeave={handleBottomHoverLeave}
-      />
+      {/* Main Split Area: Reading Canvas + In-Window Study Guide */}
+      <div className="flex flex-1 min-h-0 min-w-0 h-full">
+        {/* Dialogue Stream Column */}
+        <div className="relative flex-1 min-w-0 flex flex-col min-h-0">
+          <main
+            ref={mainRef}
+            onClick={() => setIsDockVisible(true)}
+            className="relative z-10 flex-1 min-w-0 overflow-y-auto overscroll-none"
+          >
+            <Suspense fallback={<LoadingScreen message="Loading reading…" inline />}>
+              <ReaderContentMount onMounted={markContentReady}>
+                {isNarrativeReading(reading) ? (
+                  <ReadingNarrativeView
+                    key={reading.id}
+                    reading={reading}
+                    alignment={alignment}
+                    characterPreference={characterPreference}
+                    showPinyin={showPinyin}
+                    showMeaning={showMeaning}
+                    showHoverDefinitions={showHoverDefinitions}
+                    textSize={textSize}
+                    activeLineIndex={activeLineIndex}
+                    currentTime={currentTime}
+                    onPlayLine={(idx) => {
+                      setIsDockVisible(true);
+                      playLine(idx);
+                    }}
+                    onPlayRange={(startSec) => {
+                      setIsDockVisible(true);
+                      playFromTime(startSec);
+                    }}
+                    onPlayFromTime={(startSec, endSec) => {
+                      setIsDockVisible(true);
+                      playFromTime(startSec, endSec);
+                    }}
+                  />
+                ) : (
+                  <ReadingCanvas
+                    key={reading.id}
+                    reading={reading}
+                    alignment={alignment}
+                    characterPreference={characterPreference}
+                    showPinyin={showPinyin}
+                    showMeaning={showMeaning}
+                    showHoverDefinitions={showHoverDefinitions}
+                    textSize={textSize}
+                    activeLineIndex={activeLineIndex}
+                    currentTime={currentTime}
+                    onPlayLine={(idx) => {
+                      setIsDockVisible(true);
+                      playLine(idx);
+                    }}
+                    onPlayRange={(startSec) => {
+                      setIsDockVisible(true);
+                      playFromTime(startSec);
+                    }}
+                    onPlayFromTime={(startSec, endSec) => {
+                      setIsDockVisible(true);
+                      playFromTime(startSec, endSec);
+                    }}
+                  />
+                )}
+              </ReaderContentMount>
+            </Suspense>
+          </main>
 
-      {/* Du Chinese-style Floating Bottom Playback Dock (hidden until the
-          reading content chunk has mounted, so it never floats over the
-          loading state) */}
-      {contentReady && (
-        <ReadingBottomDock
-        isVisible={isDockVisible}
-        playing={playing}
-        currentTime={currentTime}
-        totalDuration={totalDuration}
-        playbackSpeed={playbackSpeed}
-        canKaraoke={canKaraoke}
-        showPinyin={showPinyin}
-        showMeaning={showMeaning}
-        onTogglePlay={togglePlay}
-        onSeek={seekTo}
-        onScrub={scrubTo}
-        onCycleSpeed={cycleSpeed}
-        onTogglePinyin={() => setShowPinyin((v) => !v)}
-        onToggleMeaning={() => setShowMeaning((v) => !v)}
-        onMouseEnter={handleBottomHoverEnter}
-        onMouseLeave={handleBottomHoverLeave}
+          {/* Invisible bottom hover hotspot: hovering near the bottom reveals playback dock */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-auto absolute bottom-0 inset-x-0 z-30 h-24"
+            onMouseEnter={handleBottomHoverEnter}
+            onMouseLeave={handleBottomHoverLeave}
+          />
+
+          {/* Floating Bottom Playback Dock (centered in dialogue column) */}
+          {contentReady && (
+            <ReadingBottomDock
+              isVisible={isDockVisible}
+              playing={playing}
+              currentTime={currentTime}
+              totalDuration={totalDuration}
+              playbackSpeed={playbackSpeed}
+              canKaraoke={canKaraoke}
+              showPinyin={showPinyin}
+              showMeaning={showMeaning}
+              onTogglePlay={togglePlay}
+              onSeek={seekTo}
+              onScrub={scrubTo}
+              onCycleSpeed={cycleSpeed}
+              onTogglePinyin={handleTogglePinyin}
+              onToggleMeaning={handleToggleMeaning}
+              onMouseEnter={handleBottomHoverEnter}
+              onMouseLeave={handleBottomHoverLeave}
+            />
+          )}
+        </div>
+
+        <aside
+          aria-label="Study Companion Panel"
+          className="hidden lg:flex w-80 xl:w-[410px] shrink-0 flex-col min-h-0 pt-14 sm:pt-16 mr-4 xl:mr-6 z-20 overflow-y-auto overscroll-contain pr-1 custom-scrollbar"
+        >
+          {/* Section label — not sticky, aside content is short */}
+          <p className="mb-3 text-xs font-black uppercase tracking-wider text-ui-ink-strong">Study Guide</p>
+
+          <div className="flex flex-col gap-3 pb-4">
+            <ReaderStudyPanel
+              reading={reading}
+              characterPreference={characterPreference}
+              onOpenWord={setDictionaryWord}
+              onOpenGrammarPart={onOpenGrammarPart}
+              showCloseButton={false}
+            />
+          </div>
+        </aside>
+      </div>
+
+      {/* Slide-over Study Guide Drawer for Mobile (screens < lg) */}
+      <div className="lg:hidden">
+        <ReaderStudyDrawer
+          isOpen={isStudyDrawerOpen}
+          onClose={() => setIsStudyDrawerOpen(false)}
+          reading={reading}
+          characterPreference={characterPreference}
+          onOpenWord={setDictionaryWord}
+          onOpenGrammarPart={onOpenGrammarPart}
         />
-      )}
+      </div>
     </div>
   );
 }

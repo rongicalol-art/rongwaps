@@ -26,6 +26,9 @@ const BookPageViewer = lazy(() =>
 interface GrammarLessonScreenProps {
   part: InteractiveGrammarPart;
   onClose: () => void;
+  onProceedToReading?: (part: InteractiveGrammarPart) => void;
+  initialPageId?: string;
+  initialGrammarIndex?: number;
 }
 
 /** Mounts only once the lazy study page chunk has resolved; the shell uses it
@@ -44,7 +47,13 @@ function GrammarContentMount({
   return <>{children}</>;
 }
 
-export function GrammarLessonScreen({ part, onClose }: GrammarLessonScreenProps) {
+export function GrammarLessonScreen({
+  part,
+  onClose,
+  onProceedToReading,
+  initialPageId,
+  initialGrammarIndex,
+}: GrammarLessonScreenProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLElement>(null);
   const bookPageButtonRef = useRef<HTMLButtonElement>(null);
@@ -54,6 +63,13 @@ export function GrammarLessonScreen({ part, onClose }: GrammarLessonScreenProps)
     [completedPageIds, part.grammarPages],
   );
   const [currentGrammarIndex, setCurrentGrammarIndex] = useState(() => {
+    if (initialPageId) {
+      const targetIndex = part.grammarPages.findIndex((p) => p.id === initialPageId);
+      if (targetIndex >= 0) return targetIndex;
+    }
+    if (initialGrammarIndex !== undefined && initialGrammarIndex >= 0 && initialGrammarIndex < part.grammarPages.length) {
+      return initialGrammarIndex;
+    }
     if (typeof window !== 'undefined') {
       const param = new URLSearchParams(window.location.search).get('grammarIndex');
       if (param !== null) {
@@ -65,6 +81,15 @@ export function GrammarLessonScreen({ part, onClose }: GrammarLessonScreenProps)
     }
     return firstIncompleteIndex === -1 ? 0 : firstIncompleteIndex;
   });
+
+  useEffect(() => {
+    if (initialPageId) {
+      const targetIndex = part.grammarPages.findIndex((p) => p.id === initialPageId);
+      if (targetIndex >= 0) {
+        setCurrentGrammarIndex(targetIndex);
+      }
+    }
+  }, [initialPageId, part.grammarPages]);
   const [isBookOpen, setIsBookOpen] = useState(false);
   const [isAtEnd, setIsAtEnd] = useState(false);
   // False until the lazy study-page chunk has mounted at least once, so the
@@ -161,6 +186,8 @@ export function GrammarLessonScreen({ part, onClose }: GrammarLessonScreenProps)
     onCloseRef.current = onClose;
   }, [onClose]);
 
+  const isLastPage = currentGrammarIndex === part.grammarPages.length - 1;
+
   const continueAfterStudy = useCallback(() => {
     if (!contentReady) return; // ignore keyboard advance until page content mounted
     const next = continueGrammarLesson({
@@ -171,13 +198,14 @@ export function GrammarLessonScreen({ part, onClose }: GrammarLessonScreenProps)
       allPageIds: part.grammarPages.map((grammarPage) => grammarPage.id),
     });
     markPageComplete(page.id);
-    if (next.isPartComplete) {
+    if (isLastPage || next.isPartComplete) {
       markPartComplete(part.id);
       closeLesson();
+      onProceedToReading?.(part);
       return;
     }
     setCurrentGrammarIndex(next.grammarIndex);
-  }, [closeLesson, completedPageIds, contentReady, currentGrammarIndex, markPageComplete, markPartComplete, page, part]);
+  }, [closeLesson, completedPageIds, contentReady, currentGrammarIndex, isLastPage, markPageComplete, markPartComplete, onProceedToReading, page, part]);
 
   const goBackToPreviousGrammar = useCallback(() => {
     if (!previousPage) return;
@@ -308,10 +336,10 @@ export function GrammarLessonScreen({ part, onClose }: GrammarLessonScreenProps)
                   variant="primary"
                   size="lg"
                   onClick={continueAfterStudy}
-                  aria-label="Continue"
+                  aria-label={isLastPage ? 'Proceed to Reading' : 'Continue'}
                   className="min-w-0 flex-1 sm:min-w-[9rem] sm:flex-none sm:ml-auto"
                 >
-                  Continue
+                  {isLastPage ? 'Proceed to Reading' : 'Continue'}
                 </ActionButton>
               </div>
             </div>

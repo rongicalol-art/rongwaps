@@ -46,31 +46,31 @@ export const BreakdownComponentCard: React.FC<BreakdownComponentCardProps> = ({
       onClick={() => {
         setDictionaryWord(c);
       }}
-      className={`group relative flex min-h-[110px] w-full flex-col items-center justify-center overflow-hidden rounded-[20px] border-b-4 border-ui-border p-3 outline-none transition-[transform,background-color,border-color] hover:bg-ui-surface-hover active:translate-y-[3px] active:border-b focus-visible:ring-4 focus-visible:ring-brand-primary/25 sm:min-h-[120px] ${cardColors.bgLight}`}
+      className={`group relative flex min-h-[110px] w-full flex-col items-center justify-center overflow-hidden rounded-feature border-2 border-ui-border bg-ui-surface p-3 shadow-[0_var(--depth-md)_0_var(--color-ui-border)] transition-[transform,background-color,border-color,box-shadow] hover:bg-ui-surface-hover active:translate-y-[length:var(--depth-md)] active:shadow-none focus-ring sm:min-h-[120px]`}
     >
-      <div className="mb-1.5 flex h-[18px] w-full items-center justify-center gap-1.5 px-1 text-[12px] font-bold leading-none tracking-widest text-ui-muted sm:text-[13px]">
+      <div className="mb-1.5 flex h-[18px] w-full items-center justify-center gap-1.5 px-1 text-xs font-bold leading-none tracking-widest text-ui-muted">
         <div className="flex items-center justify-center h-[18px] min-w-8">
           <span className="line-clamp-1 truncate text-center w-full block">
-            {data ? (data.pinyin?.[0] ? numberToToneMarks(data.pinyin[0]) : ' ') : <Skeleton className="w-8 h-3 rounded-[3px]" />}
+            {data ? (data.pinyin?.[0] ? numberToToneMarks(data.pinyin[0]) : ' ') : <Skeleton className="w-8 h-3 rounded-xs" />}
           </span>
         </div>
         {badgeInfo && (() => {
           const bookInfo = SAMPLE_BOOKS.find(b => b.id === badgeInfo.bookId);
           const dotColorClass = bookInfo ? bookInfo.accentBg : activeBook.accentBg;
           return (
-            <span className="flex shrink-0 select-none items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-ui-muted opacity-80 sm:text-[11px]">
+            <span className="flex shrink-0 select-none items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-ui-muted opacity-80">
               <span>B{badgeInfo.bookId} · L{badgeInfo.lessonId}</span>
               <span className={`w-1.5 h-1.5 rounded-full ${dotColorClass} shrink-0`} />
             </span>
           );
         })()}
       </div>
-      <span className={`text-[36px] sm:text-[40px] leading-none font-chinese ${cardColors.textAccent} transition-all block mb-1`}>
+      <span className={`text-4xl sm:text-5xl leading-none font-chinese ${cardColors.textAccent} transition-all block mb-1`}>
         {c}
       </span>
-      <div className="mb-1 flex h-[16px] min-h-[16px] w-full items-center justify-center px-1 text-[12px] font-bold text-ui-ink sm:text-[13px]">
+      <div className="mb-1 flex h-4 min-h-4 w-full items-center justify-center px-1 text-xs font-bold text-ui-ink">
         <span className="line-clamp-1 truncate text-center w-full">
-          {data ? (data.definition ? data.definition.split(';')[0] : ' ') : <Skeleton className="w-16 h-3 rounded-[3px] mx-auto" />}
+          {data ? (data.definition ? data.definition.split(';')[0] : ' ') : <Skeleton className="w-16 h-3 rounded-xs mx-auto" />}
         </span>
       </div>
     </button>

@@ -8,7 +8,7 @@ import type { WordExample } from '../hooks/useWordExtras';
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
 
 const PLAY_BUTTON =
-  'flex h-8 w-8 shrink-0 items-center justify-center rounded-full outline-none transition-colors hover:bg-ui-canvas focus-visible:ring-4 focus-visible:ring-brand-primary/25';
+  'flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors hover:bg-ui-canvas focus-ring';
 
 export function WordExamplesSection({
   examples,
@@ -33,7 +33,7 @@ export function WordExamplesSection({
         title="In Context"
         count={isLoading ? undefined : examples.length}
       />
-      <div className="flex w-full flex-col overflow-hidden rounded-feature bg-ui-surface shadow-[0_3px_0_var(--color-ui-divider)]">
+      <div className="flex w-full flex-col overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
         {isLoading ? (
           <div className="flex flex-col gap-4 p-5 sm:p-6">
             <Skeleton className="h-6 w-3/4" />
@@ -55,7 +55,7 @@ export function WordExamplesSection({
                   <SmartSentence
                     text={ex.chinese}
                     highlightTerms={[word]}
-                    className="font-chinese text-[20px] font-bold leading-normal text-ui-ink sm:text-[22px]"
+                    className="font-chinese text-xl font-bold leading-normal text-ui-ink sm:text-2xl"
                   />
                   <button
                     type="button"
@@ -67,16 +67,16 @@ export function WordExamplesSection({
                   </button>
                 </div>
                 {ex.pinyin && (
-                  <p className={`text-[16px] font-bold leading-snug ${activeBook.accent} sm:text-[17px]`}>
+                  <p className={`text-base font-bold leading-snug ${activeBook.accent}`}>
                     {numberToToneMarks(ex.pinyin)}
                   </p>
                 )}
                 {ex.english && (
-                  <p className="text-[15px] font-semibold leading-relaxed text-ui-muted sm:text-[16px]">
+                  <p className="text-sm font-semibold leading-relaxed text-ui-muted sm:text-base">
                     {ex.english}
                   </p>
                 )}
-                <span className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-ui-muted">
+                <span className="flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-widest text-ui-muted">
                   <span>B{ex.sourceBookId} · L{ex.sourceLessonId}</span>
                   <span className={`h-1.5 w-1.5 rounded-full ${dotClass}`} />
                 </span>

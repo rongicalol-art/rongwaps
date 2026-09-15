@@ -25,10 +25,10 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
     name: 'Royal Purple',
     front: '#CE82FF',
     back: '#A855F7',
-    accent: 'text-purple-600',
-    accentBg: 'bg-[#CE82FF]',
-    accentBorder: 'border-[#A855F7]',
-    lightBg: 'bg-purple-50',
+    accent: 'text-palette-purple-edge',
+    accentBg: 'bg-palette-purple',
+    accentBorder: 'border-palette-purple-edge',
+    lightBg: 'bg-palette-purple-soft',
   },
   {
     id: 'green',
@@ -48,7 +48,7 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
     accent: 'text-brand-secondary',
     accentBg: 'bg-brand-secondary',
     accentBorder: 'border-brand-secondary-edge',
-    lightBg: 'bg-[#FFEFDC]',
+    lightBg: 'bg-brand-secondary-soft',
   },
   {
     id: 'coral',
@@ -65,10 +65,10 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
     name: 'Mint Teal',
     front: '#00CD9C',
     back: '#00A880',
-    accent: 'text-teal-600',
-    accentBg: 'bg-[#00CD9C]',
-    accentBorder: 'border-[#00A880]',
-    lightBg: 'bg-teal-50',
+    accent: 'text-palette-teal-edge',
+    accentBg: 'bg-palette-teal',
+    accentBorder: 'border-palette-teal-edge',
+    lightBg: 'bg-palette-teal-soft',
   },
   {
     id: 'yellow',
@@ -78,17 +78,17 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
     accent: 'text-feedback-warning-edge',
     accentBg: 'bg-feedback-warning',
     accentBorder: 'border-feedback-warning-edge',
-    lightBg: 'bg-[#FFF9E8]',
+    lightBg: 'bg-feedback-warning-surface',
   },
   {
     id: 'pink',
     name: 'Blush Pink',
     front: '#FF64B4',
     back: '#E04090',
-    accent: 'text-pink-600',
-    accentBg: 'bg-[#FF64B4]',
-    accentBorder: 'border-[#E04090]',
-    lightBg: 'bg-pink-50',
+    accent: 'text-palette-pink-edge',
+    accentBg: 'bg-palette-pink',
+    accentBorder: 'border-palette-pink-edge',
+    lightBg: 'bg-palette-pink-soft',
   },
 ];
 
@@ -150,7 +150,12 @@ export function resolveFolderColor(colorStr: string | undefined, index = 0): Fol
         if (parsed.accentBg === 'bg-brand-primary') {
           return defaultFallback;
         }
-        const byBg = FOLDER_COLOR_PALETTE.find(c => c.accentBg === parsed.accentBg);
+        const byBg = FOLDER_COLOR_PALETTE.find(
+          (c) =>
+            c.accentBg === parsed.accentBg ||
+            parsed.accentBg.includes(c.id) ||
+            parsed.accentBg.includes(c.front)
+        );
         if (byBg) return byBg;
       }
     }

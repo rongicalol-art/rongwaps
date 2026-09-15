@@ -2,16 +2,17 @@ import React, { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { Flashcard } from '../../data/flashcards';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { FeedbackBottomBar, LessonComplete, PracticeChoiceButton, BreakdownExpandPanel, type PracticeChoiceState } from '../../features/practice';
+import { FeedbackBottomBar, LessonComplete, PracticeChoiceButton, PracticeFormatMenu, type PracticeChoiceState } from '../../features/practice';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
 import { MemoryHookCharacter } from '../../features/character-memory-hooks';
 import { useQuizChoices } from './hooks/useQuiz';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
-import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
+import { usePracticePreferencesStore, type QuizQuestionType, type QuizChoiceType } from '../../store/usePracticePreferencesStore';
 import { buildPracticePartSegments } from '../../utils/practicePartSegments';
 import { isHanziChar } from '../../utils/hanzi';
 import { useNumberKeySelection } from '../../hooks/useNumberKeySelection';
+import { getCardChoiceTarget } from '../../utils/meaningChoices';
 
 interface QuizModeProps {
   cards: Flashcard[];
@@ -30,10 +31,12 @@ interface QuizChoicesCardProps {
   handleSelect: (opt: string) => void;
   activeBook: (typeof SAMPLE_BOOKS)[number];
   onOpenBreakdown: (index: number) => void;
+  questionType: QuizQuestionType;
+  choiceType: QuizChoiceType;
 }
 
 const QuizChoicesCard: React.FC<QuizChoicesCardProps> = ({
-  currentCard, options, selectedOption, isChecked, handleSelect, activeBook, onOpenBreakdown
+  currentCard, options, selectedOption, isChecked, handleSelect, activeBook, onOpenBreakdown, questionType, choiceType,
 }) => {
   const frontLength = currentCard?.front?.length || 1;
   const getFrontFontSize = (len: number) => {
@@ -52,28 +55,47 @@ const QuizChoicesCard: React.FC<QuizChoicesCardProps> = ({
       transition={{ duration: 0.14, ease: 'easeOut' }}
       className="flex w-full flex-col will-change-transform"
     >
-      <div className="flex w-full flex-wrap items-center justify-center gap-x-1 py-4 mb-2 px-4">
-        {Array.from(currentCard.front).map((char, i) =>
-          isHanziChar(char) ? (
-            <MemoryHookCharacter
-              key={i}
-              char={char}
-              label={`Open character breakdown for ${char}`}
-              onOpen={() => onOpenBreakdown(i)}
-              glyphClassName={`${getFrontFontSize(frontLength)} leading-tight text-ui-ink text-center`}
-              className="px-1.5 py-1"
-            />
-          ) : (
-            <span key={i} className={`${getFrontFontSize(frontLength)} font-chinese leading-tight text-ui-ink`}>
-              {char}
-            </span>
-          ),
-        )}
-      </div>
+      {questionType === 'hanzi' && (
+        <div className="flex w-full flex-wrap items-center justify-center gap-x-1 py-4 mb-2 px-4">
+          {Array.from(currentCard.front).map((char, i) =>
+            isHanziChar(char) ? (
+              <MemoryHookCharacter
+                key={i}
+                char={char}
+                label={`Open character breakdown for ${char}`}
+                onOpen={() => onOpenBreakdown(i)}
+                glyphClassName={`${getFrontFontSize(frontLength)} leading-tight text-ui-ink text-center`}
+                className="px-1.5 py-1"
+              />
+            ) : (
+              <span key={i} className={`${getFrontFontSize(frontLength)} font-chinese leading-tight text-ui-ink`}>
+                {char}
+              </span>
+            ),
+          )}
+        </div>
+      )}
 
-      <div className="grid grid-cols-1 gap-3 w-full pb-[120px] px-2 sm:px-0">
+      {questionType === 'pinyin' && (
+        <div className="flex w-full items-center justify-center py-8 mb-2 px-4">
+          <span className="text-4xl sm:text-5xl font-extrabold text-ui-ink tracking-normal text-center">
+            {currentCard.pinyin}
+          </span>
+        </div>
+      )}
+
+      {questionType === 'meaning' && (
+        <div className="flex w-full items-center justify-center py-8 mb-2 px-4">
+          <span className="text-2xl sm:text-3xl font-extrabold text-ui-ink text-center leading-snug">
+            {currentCard.back}
+          </span>
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 gap-3 w-full pb-4 px-2 sm:px-0">
         {options.map((opt, i) => {
-          const isSelected = selectedOption === opt.back;
+          const optionValue = getCardChoiceTarget(opt, choiceType);
+          const isSelected = selectedOption === optionValue;
           const isCorrectOption = opt.id === currentCard.id;
           
           let state: PracticeChoiceState = 'idle';
@@ -93,11 +115,13 @@ const QuizChoicesCard: React.FC<QuizChoicesCardProps> = ({
               index={i}
               state={state}
               disabled={isChecked}
-              onClick={() => handleSelect(opt.back)}
+              onClick={() => handleSelect(optionValue)}
               selectedClassName={`${activeBook.bg} ${activeBook.accentBorder} ${activeBook.accent}`}
               selectedEdgeColor={activeBook.accentHex}
             >
-              {opt.back}
+              <span className={choiceType === 'hanzi' ? 'font-chinese text-2xl font-bold sm:text-3xl' : ''}>
+                {optionValue}
+              </span>
             </PracticeChoiceButton>
           );
         })}
@@ -109,7 +133,6 @@ const QuizChoicesCard: React.FC<QuizChoicesCardProps> = ({
 export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue, continueLabel, activeBookId, sessionKey }) => {
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
   const [breakdownIndex, setBreakdownIndex] = useState(0);
-  const [breakdownOpen, setBreakdownOpen] = useState(false);
   const {
     activeCards,
     currentIndex,
@@ -133,14 +156,12 @@ export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue,
   const autoAdvanceCorrect = usePracticePreferencesStore((state) => state.autoAdvanceCorrect);
   const autoAdvance = isCorrect ? autoAdvanceCorrect : false;
 
-  // The inline breakdown panel is per-card; close it when the card changes.
-  React.useEffect(() => {
-    setBreakdownOpen(false);
-  }, [currentCard?.id]);
+  const quizQuestionType = usePracticePreferencesStore((state) => state.quizQuestionType);
+  const quizChoiceType = usePracticePreferencesStore((state) => state.quizChoiceType);
 
   useNumberKeySelection({
     items: options,
-    onSelect: (option) => handleSelect(option.back),
+    onSelect: (option) => handleSelect(getCardChoiceTarget(option, quizChoiceType)),
     disabled: completed || isChecked || Boolean(activeBreakdown),
   });
 
@@ -169,6 +190,12 @@ export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue,
   const activeBook = SAMPLE_BOOKS.find(b => b.id === activeBookId) || SAMPLE_BOOKS[0];
   const showPinyin = usePracticePreferencesStore((state) => state.showPinyin);
 
+  const choiceTitleMap: Record<QuizChoiceType, string> = {
+    meaning: 'Select the meaning',
+    hanzi: 'Select the character',
+    pinyin: 'Select the pinyin',
+  };
+
   if (completed) {
     return (
       <LessonComplete
@@ -186,10 +213,11 @@ export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue,
 
   return (
     <div className="relative flex-1 flex flex-col bg-transparent overflow-hidden text-ui-ink font-sans pt-[72px]">
-      <div className="flex-1 flex flex-col max-w-xl mx-auto w-full px-4 sm:px-6 pb-[200px] overscroll-none overflow-y-auto">
-        <div className="mt-4 flex w-full items-center justify-start px-2">
-          <h2 className="text-[24px] font-extrabold text-ui-ink sm:text-[26px]">
-            Select the meaning
+      <div className="flex-1 flex flex-col max-w-xl mx-auto w-full px-4 sm:px-6 pb-[240px] overscroll-none overflow-y-auto">
+        <div className="mt-4 flex w-full items-center gap-2.5 px-2">
+          <PracticeFormatMenu mode="quiz-choices" />
+          <h2 className="text-xl font-extrabold text-ui-ink sm:text-[26px]">
+            {choiceTitleMap[quizChoiceType]}
           </h2>
         </div>
 
@@ -203,15 +231,16 @@ export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue,
           activeBook={activeBook}
           onOpenBreakdown={(index) => {
             setBreakdownIndex(index);
-            setBreakdownOpen(false);
             setActiveBreakdown(currentCard.front);
           }}
+          questionType={quizQuestionType}
+          choiceType={quizChoiceType}
         />
       </div>
 
       <FeedbackBottomBar 
         status={!isChecked ? 'idle' : (isCorrect ? 'correct' : 'wrong')}
-        correctAnswer={currentCard.back}
+        correctAnswer={getCardChoiceTarget(currentCard, quizChoiceType)}
         pinyin={showPinyin ? currentCard.pinyin : undefined}
         onContinue={isCorrect ? handleCheck : retryAnswer}
         showCheck={false}
@@ -219,15 +248,10 @@ export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue,
         hideWhenAutoAdvance={autoAdvance && isChecked}
         showContinueOnWrong
         keyboardShortcutDisabled={Boolean(activeBreakdown)}
-        onBreakdown={() => setBreakdownOpen((open) => !open)}
-        breakdownOpen={breakdownOpen}
-        breakdownPanel={
-          <BreakdownExpandPanel
-            front={currentCard.front}
-            pinyin={showPinyin ? currentCard.pinyin : undefined}
-            meaning={currentCard.back}
-          />
-        }
+        onBreakdown={() => {
+          setBreakdownIndex(0);
+          setActiveBreakdown(currentCard.front);
+        }}
         activeBook={activeBook}
       />
 

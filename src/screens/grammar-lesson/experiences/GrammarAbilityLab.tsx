@@ -40,13 +40,13 @@ export function GrammarAbilityLab({
       <div className="mt-5 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
         <div className="grid gap-4 p-5 sm:grid-cols-[0.7fr_1.3fr] sm:items-stretch sm:p-7">
           <div className="rounded-control bg-ui-canvas p-5">
-            <span className="text-[10px] font-black uppercase text-ui-muted">Real-world factor</span>
+            <span className="text-xs font-black uppercase text-ui-muted">Real-world factor</span>
             <span className="mt-3 block text-xl font-black capitalize text-ui-ink-strong">{selected.factor}</span>
             <span className="mt-1 block text-sm font-bold text-ui-muted">body, rules, or situation decides</span>
           </div>
-          <div className={cn('flex min-h-36 flex-col items-center justify-center rounded-[18px] border-2 p-5 text-center', gate.className)}>
-            <span className="text-[11px] font-black uppercase">{gate.label}</span>
-            <span className="mt-3 font-chinese text-[34px] font-black">{focus(`${selected.gate === 'closed' ? '不能' : selected.gate === 'limited' ? '只能' : '能'}${selected.verb}`)}</span>
+          <div className={cn('flex min-h-36 flex-col items-center justify-center rounded-feature border-2 p-5 text-center', gate.className)}>
+            <span className="text-xs font-black uppercase">{gate.label}</span>
+            <span className="mt-3 font-chinese text-3xl font-black">{focus(`${selected.gate === 'closed' ? '不能' : selected.gate === 'limited' ? '只能' : '能'}${selected.verb}`)}</span>
           </div>
         </div>
         <GrammarInteractiveSentence choice={selected} characterPreference={characterPreference} showPinyin={showPinyin} showTranslation={showTranslation} contextTokens={contextTokens} onOpenWord={onOpenWord} />

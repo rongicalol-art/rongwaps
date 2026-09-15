@@ -19,7 +19,7 @@ export function DisclosureLine({
       className={cn('group border-y border-ui-divider', className)}
       {...props}
     >
-      <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 outline-none transition-colors hover:text-brand-primary focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
+      <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-sm py-4 transition-colors hover:text-brand-primary focus-ring [&::-webkit-details-marker]:hidden">
         <span className="min-w-0">
           <span className="block text-sm font-black text-ui-ink-strong">{title}</span>
           {description && (

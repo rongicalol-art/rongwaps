@@ -2,6 +2,8 @@
 export * from './ActionButton';
 export * from './IconActionButton';
 export * from './SegmentedControl';
+export * from './SettingsDropdownPicker';
+export * from './ToggleSwitch';
 
 // Icons, flags, and branded presentation
 export * from './AppIcon';

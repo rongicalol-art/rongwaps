@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useAddCard } from './hooks/useAddCard';
-import { ActionButton, AppIcon, IconActionButton, ScreenHeader } from '../../lib/widgets';
+import { ActionButton, AppIcon, CustomProgressBar, IconActionButton, ScreenHeader } from '../../lib/widgets';
 
 interface AddCardScreenProps {
   onClose: () => void;
@@ -79,7 +79,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
                   <div className="text-[10px] sm:text-xs font-bold text-ui-muted uppercase tracking-wider text-center px-1">Suggestions</div>
                   <div className="h-[3px] flex-1 bg-ui-divider rounded-full"></div>
                 </div>
-                <div className="flex flex-col w-full gap-2 max-h-[160px] sm:max-h-[200px] overflow-y-auto hide-scrollbar pb-2 px-1">
+                <div className="flex flex-col w-full gap-2 max-h-[160px] sm:max-h-[200px] overflow-y-auto no-scrollbar pb-2 px-1">
                   {suggestions.slice(0, 15).map((s, i) => (
                     <motion.button 
                       key={i} 
@@ -133,11 +133,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
               ref={meaningInputRef}
               aria-label="Type meaning"
               value={cardData.meaning}
-              onChange={(e) => {
-                setCardData({...cardData, meaning: e.target.value});
-                e.target.style.height = 'auto';
-                e.target.style.height = (e.target.scrollHeight) + 'px';
-              }}
+              onChange={(e) => setCardData({ ...cardData, meaning: e.target.value })}
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
               onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSave(); } }}
@@ -164,7 +160,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
                   <div className="text-[10px] sm:text-xs font-bold text-ui-muted uppercase tracking-wider text-center px-1">Suggestions</div>
                   <div className="h-[3px] flex-1 bg-ui-divider rounded-full"></div>
                 </div>
-                <div className="flex flex-col gap-2 px-2 pb-4 pt-1 max-h-[140px] sm:max-h-[160px] overflow-y-auto hide-scrollbar w-full">
+                <div className="flex flex-col gap-2 px-2 pb-4 pt-1 max-h-[140px] sm:max-h-[160px] overflow-y-auto no-scrollbar w-full">
                   <AnimatePresence>
                     {cardData.availableMeanings.filter(m => m !== cardData.meaning).map((meaning) => (
                       <motion.button 
@@ -199,31 +195,28 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
         maxWidth="none"
         centerContent={(
           <div className="flex w-full flex-col items-center gap-2">
-            <span className="font-bold text-ui-muted uppercase tracking-widest text-[10px] md:text-xs">
+            <span className="font-bold text-ui-muted uppercase tracking-widest text-xs">
               Adding to <span className={folderAccent}>{folderName}</span>
             </span>
-            <div className="w-full h-3 md:h-4 bg-ui-divider rounded-full overflow-hidden">
-              <div 
-                className="h-full bg-brand-primary rounded-full spring-transition relative"
-                style={{ width: view === 'front' ? '50%' : '100%' }}
-              >
-                <div className="absolute top-1 left-2 right-2 h-1 bg-white/30 rounded-full" />
-              </div>
-            </div>
+            <CustomProgressBar
+              progress={view === 'front' ? 50 : 100}
+              size="sm"
+            />
           </div>
         )}
         rightAction={(
-          <IconActionButton
-            disabled
-            label="Card settings coming soon"
-            icon={<AppIcon name="settings" size={25} />}
-          />
-        )}
-        className="sticky top-0 z-20 w-full shrink-0 border-b-0 bg-gradient-to-b from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent pb-2 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] backdrop-blur-[2px] shadow-none"
-      />
+            <IconActionButton
+              disabled
+              size="md"
+              label="Card settings coming soon"
+              icon={<AppIcon name="settings" size={20} />}
+            />
+          )}
+          className="sticky top-0 z-30 w-full shrink-0 !h-auto !min-h-0 border-0 bg-gradient-to-b from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent px-4 pb-2 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] backdrop-blur-[2px] shadow-none sm:px-6 lg:px-10"
+        />
 
       {/* MAIN CONTENT AREA */}
-      <main className="relative z-10 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center overflow-x-hidden overflow-y-auto p-2 hide-scrollbar">
+      <main className="relative z-10 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center overflow-x-hidden overflow-y-auto p-2 no-scrollbar">
         {view === 'front' ? renderFrontScreen() : renderBackScreen()}
       </main>
 
