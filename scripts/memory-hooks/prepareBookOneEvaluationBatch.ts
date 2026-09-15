@@ -9,7 +9,6 @@ import type {
 } from '../../src/features/character-memory-hooks/model';
 import {
   BOOK_ONE_EVALUATION_BATCH_47,
-  BOOK_ONE_EVALUATION_BATCH_CHARACTERS,
 } from '../../src/data/memoryHooks/book1EvaluationBatch';
 import type { ComponentLexiconEntry } from '../../src/features/character-memory-hooks/model';
 import { STROKE_GLYPHS } from './componentRules';
@@ -65,8 +64,51 @@ const ROOT = resolve(import.meta.dirname, '../..');
 const OUTPUT_DIR = resolve(ROOT, 'output/memory-hooks');
 const GENERIC_PLAN_PATH = resolve(OUTPUT_DIR, 'book-1-plans.json');
 const INVENTORY_PATH = resolve(OUTPUT_DIR, 'book-1-inventory.json');
-const MANIFEST_PATH = resolve(OUTPUT_DIR, 'book-1-evaluation-batch-47-manifest.json');
-const QUALITY_PLAN_PATH = resolve(OUTPUT_DIR, 'book-1-evaluation-batch-47-quality-plans-v2.json');
+const DEFAULT_BATCH_STEM = 'book-1-evaluation-batch-47';
+
+interface BatchDescriptor {
+  batchId: string;
+  bookId: number;
+  script: 'traditional';
+  groups: readonly { id: string; purpose: string; characters: readonly string[] }[];
+  manualMetadata: {
+    relationshipEvidence: readonly string[];
+    targetSpecificLabels: readonly string[];
+    frameOverrides: readonly string[];
+  };
+}
+
+/**
+ * `--batch <stem> --characters "字 字 …"` prepares a V2 rollout batch under
+ * `<stem>-manifest.json` / `<stem>-quality-plans-v2.json`. Without arguments the
+ * frozen batch-47 evaluation artifacts are rebuilt exactly as before.
+ */
+function parseBatchArgs(): { stem: string; descriptor: BatchDescriptor; isDefault: boolean } {
+  const args = process.argv.slice(2);
+  const batchIndex = args.indexOf('--batch');
+  if (batchIndex === -1) {
+    return { stem: DEFAULT_BATCH_STEM, descriptor: BOOK_ONE_EVALUATION_BATCH_47, isDefault: true };
+  }
+  const stem = args[batchIndex + 1];
+  const charactersArg = args[args.indexOf('--characters') + 1];
+  if (!stem || !stem.startsWith('book-1-')) throw new Error('--batch requires a book-1-* file stem.');
+  if (!charactersArg) throw new Error('--batch requires --characters "字 字 …".');
+  const characters = [...new Set(charactersArg.split(/[\s,]+/u).filter(Boolean))];
+  if (characters.length === 0 || characters.some((character) => [...character].length !== 1)) {
+    throw new Error('--characters must be a list of single Han characters.');
+  }
+  return {
+    stem,
+    descriptor: {
+      batchId: `${stem}-v1`,
+      bookId: 1,
+      script: 'traditional',
+      groups: [{ id: 'v2-rollout-batch', purpose: 'Book 1 V2 rollout drafting batch.', characters }],
+      manualMetadata: { relationshipEvidence: [], targetSpecificLabels: [], frameOverrides: [] },
+    },
+    isDefault: false,
+  };
+}
 
 function readJson<T>(path: string): T {
   return JSON.parse(readFileSync(path, 'utf8')) as T;
@@ -295,9 +337,13 @@ function main(): void {
     throw new Error('Evaluation batch requires the Book 1 Traditional inventory.');
   }
 
+  const { stem, descriptor, isDefault } = parseBatchArgs();
+  const manifestPath = resolve(OUTPUT_DIR, `${stem}-manifest.json`);
+  const qualityPlanPath = resolve(OUTPUT_DIR, `${stem}-quality-plans-v2.json`);
+
   const inventoryCharacters = new Set(inventory.entries.map((entry) => entry.character));
-  const uniqueCharacters = [...new Set(BOOK_ONE_EVALUATION_BATCH_CHARACTERS)];
-  if (uniqueCharacters.length !== 47) throw new Error(`Expected 47 unique batch characters, found ${uniqueCharacters.length}.`);
+  const uniqueCharacters = [...new Set(descriptor.groups.flatMap((group) => group.characters))];
+  if (isDefault && uniqueCharacters.length !== 47) throw new Error(`Expected 47 unique batch characters, found ${uniqueCharacters.length}.`);
   const missing = uniqueCharacters.filter((character) => !inventoryCharacters.has(character));
   if (missing.length > 0) throw new Error(`Batch characters missing from Book 1 inventory: ${missing.join(' ')}`);
 
@@ -307,7 +353,7 @@ function main(): void {
 
   const pilotCharacters = new Set(['好', '點', '坐', '情', '請', '媽', '喝', '吃', '休', '明', '問', '說']);
   const overlap = uniqueCharacters.filter((character) => pilotCharacters.has(character));
-  if (overlap.length > 0) throw new Error(`Batch overlaps the original 12-character pilot: ${overlap.join(' ')}`);
+  if (isDefault && overlap.length > 0) throw new Error(`Batch overlaps the original 12-character pilot: ${overlap.join(' ')}`);
 
   const orderedCharacters = uniqueCharacters;
   const selectionHash = createHash('sha256').update(orderedCharacters.join('')).digest('hex');
@@ -326,9 +372,9 @@ function main(): void {
   }, {});
 
   mkdirSync(OUTPUT_DIR, { recursive: true });
-  writeFileSync(MANIFEST_PATH, `${JSON.stringify({
+  writeFileSync(manifestPath, `${JSON.stringify({
     schemaVersion: 1,
-    ...BOOK_ONE_EVALUATION_BATCH_47,
+    ...descriptor,
     characters: orderedCharacters,
     selectionHash,
     sourceInventory: 'book-1-inventory.json',
@@ -345,24 +391,24 @@ function main(): void {
     },
     publishable: false,
   }, null, 2)}\n`);
-  writeFileSync(QUALITY_PLAN_PATH, `${JSON.stringify({
+  writeFileSync(qualityPlanPath, `${JSON.stringify({
     schemaVersion: 2,
-    batchId: BOOK_ONE_EVALUATION_BATCH_47.batchId,
+    batchId: descriptor.batchId,
     distribution: 'development-only-candidate',
     publishable: false,
     promptChanged: false,
     hooksRegenerated: false,
-    manualMetadata: BOOK_ONE_EVALUATION_BATCH_47.manualMetadata,
+    manualMetadata: descriptor.manualMetadata,
     selectionHash,
     plans,
   }, null, 2)}\n`);
   console.log(JSON.stringify({
-    batchId: BOOK_ONE_EVALUATION_BATCH_47.batchId,
+    batchId: descriptor.batchId,
     selected: orderedCharacters.length,
     selectionHash,
     frameCounts,
     statusCounts,
-    manualMetadata: BOOK_ONE_EVALUATION_BATCH_47.manualMetadata,
+    manualMetadata: descriptor.manualMetadata,
     apiCallsMade: 0,
     publishable: false,
   }, null, 2));

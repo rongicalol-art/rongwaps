@@ -12,12 +12,16 @@ import { evaluateHookStylePreflight } from './stylePreflight';
 
 const ROOT = resolve(import.meta.dirname, '../..');
 const OUTPUT_DIR = resolve(ROOT, 'output/memory-hooks');
-const STEM = 'book-1-evaluation-batch-47';
-const DRAFTS_PATH = resolve(OUTPUT_DIR, `${STEM}-curated-drafts-v1.json`);
-const PLAN_PATH = resolve(OUTPUT_DIR, `${STEM}-quality-plans-v2.json`);
-const CANDIDATE_PATH = resolve(OUTPUT_DIR, `${STEM}-candidates-v2.json`);
-const VALIDATION_PATH = resolve(OUTPUT_DIR, `${STEM}-validation-v2.json`);
-const PROMPT_VERSION = 'batch-47-curated-drafts-v1';
+const DEFAULT_STEM = 'book-1-evaluation-batch-47';
+
+/** `--batch <stem>` selects a V2 rollout batch; without it the batch-47 artifacts are used. */
+function batchStem(): string {
+  const args = process.argv.slice(2);
+  const index = args.indexOf('--batch');
+  const stem = index > -1 ? args[index + 1] : DEFAULT_STEM;
+  if (!stem || !stem.startsWith('book-1-')) throw new Error('--batch requires a book-1-* file stem.');
+  return stem;
+}
 
 interface DraftRecord {
   character: string;
@@ -71,19 +75,26 @@ export function acceptanceFor(
 }
 
 function main(): void {
-  const drafts = readJson<DraftArtifact>(DRAFTS_PATH);
+  const stem = batchStem();
+  const draftsPath = resolve(OUTPUT_DIR, `${stem}-curated-drafts-v1.json`);
+  const planPath = resolve(OUTPUT_DIR, `${stem}-quality-plans-v2.json`);
+  const candidatePath = resolve(OUTPUT_DIR, `${stem}-candidates-v2.json`);
+  const validationPath = resolve(OUTPUT_DIR, `${stem}-validation-v2.json`);
+  const promptVersion = `${stem}-curated-drafts-v1`;
+
+  const drafts = readJson<DraftArtifact>(draftsPath);
   if (drafts.publishable || drafts.distribution !== 'development-only-candidate') {
     throw new Error('Refusing curated drafts from a publishable or non-candidate artifact.');
   }
-  const plans = readJson<{ plans: CharacterHookPlanV2[] }>(PLAN_PATH);
-  const candidates = readJson<{ records: CandidateRecord[] }>(CANDIDATE_PATH);
-  const validations = readJson<{ records: Array<{ character: string }> }>(VALIDATION_PATH);
+  const plans = readJson<{ plans: CharacterHookPlanV2[] }>(planPath);
+  const candidates = readJson<{ records: CandidateRecord[] }>(candidatePath);
+  const validations = readJson<{ records: Array<{ character: string }> }>(validationPath);
   const planByCharacter = new Map(plans.plans.map((plan) => [plan.character, plan]));
   const recordIndex = new Map(candidates.records.map((record, index) => [record.character, index]));
 
-  if (!existsSync(resolve(OUTPUT_DIR, `${STEM}-candidates-v2.pre-curated.json`))) {
-    copyFileSync(CANDIDATE_PATH, resolve(OUTPUT_DIR, `${STEM}-candidates-v2.pre-curated.json`));
-    copyFileSync(VALIDATION_PATH, resolve(OUTPUT_DIR, `${STEM}-validation-v2.pre-curated.json`));
+  if (!existsSync(resolve(OUTPUT_DIR, `${stem}-candidates-v2.pre-curated.json`))) {
+    copyFileSync(candidatePath, resolve(OUTPUT_DIR, `${stem}-candidates-v2.pre-curated.json`));
+    copyFileSync(validationPath, resolve(OUTPUT_DIR, `${stem}-validation-v2.pre-curated.json`));
   }
 
   const summary: Array<{ character: string; acceptance: CandidateRecord['acceptance']; issues: string[] }> = [];
@@ -120,14 +131,14 @@ function main(): void {
   }
 
   const acceptedByCharacter = new Map(candidates.records.map((record) => [record.character, record]));
-  writeFileSync(CANDIDATE_PATH, `${JSON.stringify({
+  writeFileSync(candidatePath, `${JSON.stringify({
     ...candidates,
-    promptVersion: PROMPT_VERSION,
-    sourcePlan: 'book-1-evaluation-batch-47-quality-plans-v2.json',
+    promptVersion,
+    sourcePlan: `${stem}-quality-plans-v2.json`,
   }, null, 2)}\n`);
-  writeFileSync(VALIDATION_PATH, `${JSON.stringify({
+  writeFileSync(validationPath, `${JSON.stringify({
     ...validations,
-    promptVersion: PROMPT_VERSION,
+    promptVersion,
     records: candidates.records.map((record) => ({
       character: record.character,
       planStatus: record.planStatus,

@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { FUNCTION_WORD_LABEL, TECHNICAL_LABEL } from './componentRules';
 
@@ -64,17 +64,59 @@ const EDIT_MAP: Record<string, string> = {
 /** Parts that must never be used as story parts; they are decomposition scraps. */
 const SKIP_GLYPHS = new Set<string>(['⺊', '壬', '𠁣', '𠃛']);
 
+interface ReviewedLabelRecord {
+  glyph: string;
+  label: string | null;
+  use: 'label' | 'skip';
+  rationale?: string;
+  source?: string;
+}
+
+const REVIEWED_LABELS_PATH = resolve(OUTPUT_DIR, 'book-1-reviewed-component-labels-v1.json');
+
+/**
+ * The reviewed-label table is the mass-curation artifact for V2 rollout batches.
+ * It is applied like `EDIT_MAP` (same mechanical guards), with `EDIT_MAP` winning
+ * on any glyph it already defines.
+ */
+function loadReviewedLabels(): Map<string, ReviewedLabelRecord> {
+  if (!existsSync(REVIEWED_LABELS_PATH)) return new Map();
+  const artifact = JSON.parse(readFileSync(REVIEWED_LABELS_PATH, 'utf8')) as { records: ReviewedLabelRecord[] };
+  const byGlyph = new Map<string, ReviewedLabelRecord>();
+  for (const record of artifact.records) {
+    if (!record.glyph) throw new Error('Reviewed label record is missing its glyph.');
+    if (record.use === 'label' && !record.label) throw new Error(`Reviewed label for ${record.glyph} is missing its label.`);
+    if (record.use !== 'label' && record.use !== 'skip') throw new Error(`Reviewed label for ${record.glyph} has invalid use "${record.use}".`);
+    if (byGlyph.has(record.glyph)) throw new Error(`Duplicate reviewed label for ${record.glyph}.`);
+    byGlyph.set(record.glyph, record);
+  }
+  return byGlyph;
+}
+
 function main(): void {
   const source = JSON.parse(
     readFileSync(resolve(OUTPUT_DIR, 'book-1-curated-component-labels-v1.proposed.json'), 'utf8'),
   ) as { records: LabelRecord[] };
+  const reviewed = loadReviewedLabels();
   const changes: string[] = [];
   const records = source.records.map((record) => {
     const edit = EDIT_MAP[record.glyph];
-    const use = SKIP_GLYPHS.has(record.glyph) ? ('skip' as const) : ('label' as const);
-    if (edit) {
-      if (record.label !== edit) changes.push(`${record.glyph}: ${record.label ?? '(none)'} -> ${edit}`);
-      return { ...record, label: edit, status: 'approved' as const, use };
+    const review = reviewed.get(record.glyph);
+    if (edit && review && review.use === 'label' && review.label !== edit) {
+      throw new Error(`Conflicting labels for ${record.glyph}: EDIT_MAP "${edit}" vs reviewed "${review.label}"`);
+    }
+    if (edit && review && review.use === 'skip') {
+      throw new Error(`Conflicting reviewer decisions for ${record.glyph}: EDIT_MAP label vs reviewed skip`);
+    }
+    const use = SKIP_GLYPHS.has(record.glyph) || review?.use === 'skip' ? ('skip' as const) : ('label' as const);
+    const label = review?.use === 'skip' ? null : edit ?? review?.label ?? null;
+    if (label) {
+      if (record.label !== label) changes.push(`${record.glyph}: ${record.label ?? '(none)'} -> ${label}`);
+      return { ...record, label, status: 'approved' as const, use };
+    }
+    if (review?.use === 'skip') {
+      if (record.label) changes.push(`${record.glyph}: ${record.label} -> (skip)`);
+      return { ...record, label: null, status: 'approved' as const, use };
     }
     if (record.status === 'seed' || record.status === 'proposed') {
       return { ...record, status: 'approved' as const, use };
@@ -86,6 +128,7 @@ function main(): void {
   for (const [glyph, label] of Object.entries(EDIT_MAP)) {
     if (present.has(glyph)) continue;
     changes.push(`${glyph}: (new) -> ${label}`);
+    present.add(glyph);
     records.push({
       glyph,
       status: 'approved',
@@ -98,8 +141,41 @@ function main(): void {
       frequency: 0,
     });
   }
+  for (const [glyph, review] of reviewed) {
+    if (present.has(glyph)) continue;
+    present.add(glyph);
+    if (review.use === 'skip') {
+      changes.push(`${glyph}: (new) -> (skip)`);
+      records.push({
+        glyph,
+        status: 'approved',
+        label: null,
+        use: 'skip',
+        alternatives: [],
+        basis: null,
+        confidence: null,
+        reason: 'reviewed-skip',
+        frequency: 0,
+      });
+    } else {
+      changes.push(`${glyph}: (new) -> ${review.label}`);
+      records.push({
+        glyph,
+        status: 'approved',
+        label: review.label,
+        use: 'label',
+        alternatives: [],
+        basis: 'meaning',
+        confidence: 'high',
+        reason: 'reviewed-label',
+        frequency: 0,
+      });
+    }
+  }
 
-  const unresolved = records.filter((record) => record.status === 'needs-review' && !EDIT_MAP[record.glyph]);
+  const unresolved = records.filter((record) => (
+    record.status === 'needs-review' && !EDIT_MAP[record.glyph] && !reviewed.has(record.glyph)
+  ));
   if (unresolved.length > 0) {
     throw new Error(`Unresolved labels (add edits or accept): ${unresolved.map((record) => record.glyph).join(' ')}`);
   }
@@ -128,6 +204,7 @@ function main(): void {
   console.log(JSON.stringify({
     records: records.length,
     editsApplied: changes.length,
+    reviewedApplied: reviewed.size,
     edits: changes,
     path: resolve(OUTPUT_DIR, 'book-1-curated-component-labels-v1.json'),
   }, null, 2));

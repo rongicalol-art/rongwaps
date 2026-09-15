@@ -239,6 +239,24 @@ export const REWRITES: Record<string, CuratedOverride> = {
     hook: 'A little infant with a bright 了(clear) mind reaching out 一(one) arm forms the character for child.',
     reason: 'Eliminates leaked metalanguage noun suffix in story.'
   },
+  '興': {
+    hook: 'Many hands and 八(eight) dancing feet raise 一(one) banner 同(same) — a crowd united in interest and excitement!',
+    reason: 'Surfaces the 八 base now that it has a reviewed label.',
+    componentsUsed: [
+      { glyph: '一', label: 'one' },
+      { glyph: '同', label: 'same' },
+      { glyph: '八', label: 'eight' }
+    ]
+  },
+  '對': {
+    hook: 'Measuring a 业(business) counter against a 寸(inch) ruler with 䒑(grass top) focus — every line is correct.',
+    reason: 'Surfaces the 业 top now that it has a reviewed label.',
+    componentsUsed: [
+      { glyph: '䒑', label: 'grass top' },
+      { glyph: '寸', label: 'inch' },
+      { glyph: '业', label: 'business' }
+    ]
+  },
   '號': {
     hook: 'A fierce 虎(tiger) marked with a carved 号(mark) bears its unique rank and identification number.',
     reason: 'Eliminates robotic sound template.'
@@ -2216,8 +2234,12 @@ export const ADDITIONAL_149_REWRITES: Record<string, CuratedOverride> = {
     reason: 'Soft curl with fine strands as hair.'
   },
   '業': {
-    hook: 'Cultivating young 未(not yet grown) crops across the farm requires dedicated devotion and honest work.',
-    reason: 'Tending crops requiring honest work.'
+    hook: 'Cultivating young 未(not yet grown) crops beside the 业(business) stalls takes devotion — honest work.',
+    reason: 'Surfaces the 业 top now that it has a reviewed label.',
+    componentsUsed: [
+      { glyph: '未', label: 'not yet grown' },
+      { glyph: '业', label: 'business' }
+    ]
   },
   '用': {
     hook: 'A sturdy 冂(wide) bucket reinforced with 二(two) iron bands is a practical implement you frequently use.',
@@ -2367,6 +2389,9 @@ function main(): void {
   for (const record of artifact.records) {
     const override = REWRITES[record.character];
     if (!override) continue;
+    // V2 merged records are owned by the curated-draft pipeline; re-running
+    // this map must not clobber them (fix those through the batch drafts).
+    if (record.meaningSource === 'evaluation-batch-47') continue;
 
     record.hook = override.hook;
     if (override.meaning) record.meaning = override.meaning;

@@ -6,14 +6,19 @@ import type { HookRecord } from './strictHookAudit';
 
 const ROOT = resolve(import.meta.dirname, '../..');
 const OUTPUT_DIR = resolve(ROOT, 'output/memory-hooks');
-const DRAFTS_PATH = resolve(OUTPUT_DIR, 'book-1-evaluation-batch-47-curated-drafts-v1.json');
-const PLAN_PATH = resolve(OUTPUT_DIR, 'book-1-evaluation-batch-47-quality-plans-v2.json');
-const CANDIDATE_PATH = resolve(OUTPUT_DIR, 'book-1-evaluation-batch-47-candidates-v2.json');
 const ARTIFACT_PATH = resolve(OUTPUT_DIR, 'book-1-hooks-v3.json');
 const BACKUP_PATH = resolve(OUTPUT_DIR, 'book-1-hooks-v3.pre-v2-merge.json');
-const PROMPT_VERSION = 'book-1-evaluation-batch-47-curated-drafts-v1';
+const DEFAULT_STEM = 'book-1-evaluation-batch-47';
 const MODEL = 'curated-in-review-v1';
-const REASON = 'Merged from the curated batch-47 evaluation drafts; deterministic validation and style preflight clean, no API calls.';
+
+/** `--batch <stem>` selects a V2 rollout batch; without it the batch-47 artifacts are used. */
+function batchStem(): string {
+  const args = process.argv.slice(2);
+  const index = args.indexOf('--batch');
+  const stem = index > -1 ? args[index + 1] : DEFAULT_STEM;
+  if (!stem || !stem.startsWith('book-1-')) throw new Error('--batch requires a book-1-* file stem.');
+  return stem;
+}
 
 interface DraftRecord {
   character: string;
@@ -43,12 +48,19 @@ function readJson<T>(path: string): T {
 }
 
 function main(): void {
-  const drafts = readJson<{ publishable: boolean; distribution: string; drafts: DraftRecord[] }>(DRAFTS_PATH);
+  const stem = batchStem();
+  const draftsPath = resolve(OUTPUT_DIR, `${stem}-curated-drafts-v1.json`);
+  const planPath = resolve(OUTPUT_DIR, `${stem}-quality-plans-v2.json`);
+  const candidatePath = resolve(OUTPUT_DIR, `${stem}-candidates-v2.json`);
+  const promptVersion = `${stem}-curated-drafts-v1`;
+  const reason = `Merged from the curated ${stem} drafts; deterministic validation and style preflight clean, no API calls.`;
+
+  const drafts = readJson<{ publishable: boolean; distribution: string; drafts: DraftRecord[] }>(draftsPath);
   if (drafts.publishable || drafts.distribution !== 'development-only-candidate') {
     throw new Error('Refusing curated drafts from a publishable or non-candidate artifact.');
   }
-  const plans = readJson<{ plans: CharacterHookPlanV2[] }>(PLAN_PATH);
-  const candidates = readJson<{ records: CandidateRecord[] }>(CANDIDATE_PATH);
+  const plans = readJson<{ plans: CharacterHookPlanV2[] }>(planPath);
+  const candidates = readJson<{ records: CandidateRecord[] }>(candidatePath);
   const artifact = readJson<{ records: ShippedHookRecord[] }>(ARTIFACT_PATH);
   const planByCharacter = new Map(plans.plans.map((plan) => [plan.character, plan]));
   const candidateByCharacter = new Map(candidates.records.map((record) => [record.character, record]));
@@ -94,12 +106,12 @@ function main(): void {
             }]
           : []
       )),
-      reason: REASON,
+      reason,
       validation: { valid: true, issues: [] },
       attempts: 0,
       acceptance: 'clean',
       model: MODEL,
-      promptVersion: PROMPT_VERSION,
+      promptVersion,
     };
     merged.push({ character: plan.character, strategy });
   }
