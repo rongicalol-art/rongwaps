@@ -1,5 +1,6 @@
 import { supabase } from "./supabaseClient";
 import { debugLogger } from "../utils/debugLogger";
+import { lookupPackMnemonic } from "./memoryHookPackService";
 
 /**
  * In-memory LRU-ish cache for mnemonics.
@@ -83,6 +84,16 @@ export async function getCachedMnemonic(cacheKey: string): Promise<string | null
 
   const existing = inFlight.get(cacheKey);
   if (existing) return existing;
+
+  const fromPack = await lookupPackMnemonic(cacheKey);
+  if (fromPack) {
+    mnemonicCache.set(cacheKey, fromPack);
+    debugLogger.info('Cache', `Static pack hit for "${cacheKey}"`, { mnemonic: fromPack });
+    return fromPack;
+  }
+
+  const racedInFlight = inFlight.get(cacheKey);
+  if (racedInFlight) return racedInFlight;
 
   const promise = new Promise<string | null>((resolve) => {
     pendingResolvers.set(cacheKey, resolve);

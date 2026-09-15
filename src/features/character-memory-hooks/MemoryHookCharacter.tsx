@@ -1,10 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
 import { motion, useMotionValue, useReducedMotion, useSpring } from 'motion/react';
-import { AppIcon } from '../../lib/widgets';
-import { getCachedMnemonic } from '../../services/mnemonicCache';
 import { cn } from '../../utils/cn';
-import { normalizeMnemonic, renderHookText } from './hookText';
+import { MemoryHookPopover } from './MemoryHookPopover';
+import { useMemoryHook } from './useMemoryHook';
 
 /**
  * A single Chinese character that plays a subtle magnetic hover game and
@@ -59,7 +57,6 @@ export function MemoryHookCharacter({
   const reduceMotion = useReducedMotion();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const openTimer = useRef<number | null>(null);
-  const requestedCharRef = useRef<string | null>(null);
   const centerRef = useRef<{ x: number; y: number } | null>(null);
 
   const [hoverCapable] = useState(
@@ -69,19 +66,14 @@ export function MemoryHookCharacter({
   const [showTooltip, setShowTooltip] = useState(false);
   const [tooltipAbove, setTooltipAbove] = useState(true);
   const [tooltipAnchor, setTooltipAnchor] = useState<{ x: number; top: number; bottom: number } | null>(null);
-  const [hook, setHook] = useState<string | null | undefined>(undefined);
-  const [hookLoaded, setHookLoaded] = useState(false);
+  const { hook, loaded: hookLoaded } = useMemoryHook(char, armed && !tooltipDisabled);
 
   const magnetX = useMotionValue(0);
   const magnetY = useMotionValue(0);
   const springX = useSpring(magnetX, { stiffness: 300, damping: 21, mass: 0.6 });
   const springY = useSpring(magnetY, { stiffness: 300, damping: 21, mass: 0.6 });
 
-  // A new character starts with a clean magnet and hook state.
   useEffect(() => {
-    setHook(undefined);
-    setHookLoaded(false);
-    requestedCharRef.current = null;
     magnetX.set(0);
     magnetY.set(0);
   }, [char, magnetX, magnetY]);
@@ -114,8 +106,8 @@ export function MemoryHookCharacter({
     };
     const handlePointerMove = (event: PointerEvent) => {
       if (event.pointerType !== 'mouse' || tooltipDisabled) {
-        magnetX.set(0);
-        magnetY.set(0);
+        if (magnetX.get() !== 0) magnetX.set(0);
+        if (magnetY.get() !== 0) magnetY.set(0);
         return;
       }
       const center = centerRef.current;
@@ -124,8 +116,8 @@ export function MemoryHookCharacter({
       const dy = event.clientY - center.y;
       const distance = Math.hypot(dx, dy);
       if (distance > magnetRadius) {
-        magnetX.set(0);
-        magnetY.set(0);
+        if (magnetX.get() !== 0) magnetX.set(0);
+        if (magnetY.get() !== 0) magnetY.set(0);
         return;
       }
       // Gentle falloff: the tug stays small over most of the field and only
@@ -138,11 +130,9 @@ export function MemoryHookCharacter({
     };
     updateCenter();
     window.addEventListener('pointermove', handlePointerMove);
-    window.addEventListener('scroll', updateCenter, true);
     window.addEventListener('resize', updateCenter);
     return () => {
       window.removeEventListener('pointermove', handlePointerMove);
-      window.removeEventListener('scroll', updateCenter, true);
       window.removeEventListener('resize', updateCenter);
     };
   }, [hoverCapable, reduceMotion, tooltipDisabled, magnetRadius, magnetStrength, magnetX, magnetY]);
@@ -194,34 +184,9 @@ export function MemoryHookCharacter({
     };
   }, [showTooltip, tooltipDisabled, updateAnchor]);
 
-  // Fetch starts as soon as the pointer rests on the character (or it is
-  // focused), so the hook is usually already loaded by the time the popover
-  // zooms open after the delay. Only pre-generated hooks are read; nothing
-  // is generated on the spot.
-  useEffect(() => {
-    if (!armed || tooltipDisabled) return;
-    if (requestedCharRef.current === char) return;
-    requestedCharRef.current = char;
-    let cancelled = false;
-    void getCachedMnemonic(char).then((raw) => {
-      if (cancelled) return;
-      setHook(normalizeMnemonic(raw));
-      setHookLoaded(true);
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [armed, tooltipDisabled, char]);
-
   const accessibleBase = label ?? `Open character breakdown for ${char}`;
   const accessibleLabel =
     hookLoaded && hook ? `${accessibleBase}. Memory hook: ${hook.replace(/\*\*/g, '')}` : accessibleBase;
-
-  // The popover opens with one quiet fade/rise — no blur, no springy
-  // overshoot, no per-part stagger.
-  const openTransition = reduceMotion
-    ? { duration: 0 }
-    : { duration: 0.18, ease: 'easeOut' as const };
 
   return (
     <button
@@ -237,8 +202,7 @@ export function MemoryHookCharacter({
         onOpen?.(char);
       }}
       className={cn(
-        'relative inline-flex items-center justify-center rounded-[12px] outline-none',
-        'focus-visible:ring-2 focus-visible:ring-brand-primary/40',
+        'relative inline-flex items-center justify-center rounded-sm focus-ring-inline',
         className,
       )}
     >
@@ -249,66 +213,16 @@ export function MemoryHookCharacter({
         {char}
       </motion.span>
 
-      {showTooltip && !tooltipDisabled && tooltipAnchor && createPortal(
-        <div
-          aria-hidden="true"
-          className="pointer-events-none fixed z-[60]"
-          style={{
-            left: tooltipAnchor.x,
-            top: tooltipAbove ? tooltipAnchor.top : tooltipAnchor.bottom,
-            transform: `translate(-50%, ${tooltipAbove ? 'calc(-100% - 10px)' : '10px'})`,
-          }}
-        >
-          <motion.div style={{ x: springX, y: springY }}>
-            <motion.span
-              key="memory-hook-tooltip"
-              initial={{ opacity: 0, scale: 0.97, y: tooltipAbove ? 6 : -6 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={openTransition}
-              style={{ transformOrigin: tooltipAbove ? '50% 100%' : '50% 0%' }}
-              className="relative block w-[min(236px,72vw)]"
-            >
-              <span className="block rounded-[14px] border border-feedback-warning-edge bg-white px-3.5 py-2.5 text-left shadow-[0_3px_0_var(--color-feedback-warning-edge)]">
-                <span className="flex items-center gap-1.5">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-feedback-warning shadow-[0_1.5px_0_var(--color-feedback-warning-edge)]">
-                    <AppIcon name="lightbulb" size={11} />
-                  </span>
-                  <span className="text-[10px] font-black uppercase tracking-widest text-ui-ink-strong">
-                    Memory hook
-                  </span>
-                  <AppIcon name="sparkles" size={11} className="text-feedback-warning" />
-                </span>
-                {/* Fixed width + two reserved lines keep the popover from
-                    resizing while the hook text loads. */}
-                <span className="mt-1 block min-h-[40px] text-[12px] font-bold leading-relaxed text-ui-ink">
-                  {hookLoaded ? (
-                    hook ? (
-                      renderHookText(hook)
-                    ) : (
-                      <span className="flex items-center gap-1 text-ui-muted">
-                        <AppIcon name="sparkles" size={12} className="text-feedback-warning" />
-                        No memory hook yet — this character&rsquo;s story will live here.
-                      </span>
-                    )
-                  ) : (
-                    <span className="flex flex-col justify-start gap-1.5 pt-0.5">
-                      <span className="block h-[13px] w-full animate-pulse rounded-full bg-ui-hover" />
-                      <span className="block h-[13px] w-3/4 animate-pulse rounded-full bg-ui-hover" />
-                    </span>
-                  )}
-                </span>
-              </span>
-              <span
-                className={cn(
-                  'absolute left-1/2 -translate-x-1/2 border-x-[7px] border-x-transparent border-t-[7px] border-t-feedback-warning-edge',
-                  tooltipAbove ? 'top-full' : 'bottom-full rotate-180',
-                )}
-              />
-            </motion.span>
-          </motion.div>
-        </div>,
-        document.body,
-      )}
+      <MemoryHookPopover
+        open={showTooltip && !tooltipDisabled}
+        anchor={tooltipAnchor}
+        above={tooltipAbove}
+        hook={hook}
+        loaded={hookLoaded}
+        emptyText={<>No memory hook yet — this character&rsquo;s story will live here.</>}
+        magneticX={springX}
+        magneticY={springY}
+      />
     </button>
   );
 }

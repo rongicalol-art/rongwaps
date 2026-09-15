@@ -1,0 +1,134 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import {
+  isValidMemoryHookItem,
+  isValidMemoryHookPack,
+  packItemsToMnemonicMap,
+  resolveMnemonicFromMap,
+} from '../src/services/memoryHookPackService';
+
+interface PackItem {
+  id: string;
+  character: string;
+  mnemonic: string;
+  content_type: string;
+}
+
+const item = {
+  id: '媽',
+  character: '媽',
+  mnemonic: 'The 女(woman) gives the meaning, while 馬(horse) is the sound component (mǎ -> mā): 媽 means mother.',
+  content_type: 'character',
+};
+
+test('memory hook items accept character and word entries', () => {
+  assert.equal(isValidMemoryHookItem(item), true);
+  assert.equal(isValidMemoryHookItem({ ...item, id: 'word_老師', content_type: 'word' }), true);
+  assert.equal(isValidMemoryHookItem({ ...item, mnemonic: '' }), false);
+  assert.equal(isValidMemoryHookItem({ ...item, content_type: 'sentence' }), false);
+  assert.equal(isValidMemoryHookItem(null), false);
+});
+
+test('memory hook packs must match book, count, and item shape', () => {
+  const pack = { schemaVersion: 1, bookId: 1, count: 2, items: [item, { ...item, id: '門', character: '門' }] };
+  assert.equal(isValidMemoryHookPack(pack, 1, 2), true);
+  assert.equal(isValidMemoryHookPack(pack, 2, 2), false);
+  assert.equal(isValidMemoryHookPack(pack, 1, 3), false);
+  assert.equal(isValidMemoryHookPack({ ...pack, schemaVersion: 2 }, 1, 2), false);
+  assert.equal(isValidMemoryHookPack({ ...pack, items: [item] }, 1, 2), false);
+});
+
+test('pack items map to mnemonic cache keys', () => {
+  const map = packItemsToMnemonicMap([item, { ...item, id: 'word_老師', character: '老師', content_type: 'word' }]);
+  assert.equal(map.get('媽'), item.mnemonic);
+  assert.equal(map.get('word_老師'), item.mnemonic);
+  assert.equal(map.get('missing'), undefined);
+});
+
+test('resolveMnemonicFromMap supports direct matches and resilient single-character fallback', () => {
+  const map = packItemsToMnemonicMap([
+    item, // id: '媽' (no word_ prefix in map)
+    { id: 'word_好', character: '好', mnemonic: 'A 女(woman) with her 子(child) means good.', content_type: 'word' },
+    { id: 'word_老師', character: '老師', mnemonic: 'Teacher mnemonic', content_type: 'word' },
+  ]);
+
+  // Direct hits
+  assert.equal(resolveMnemonicFromMap(map, '媽'), item.mnemonic);
+  assert.equal(resolveMnemonicFromMap(map, 'word_好'), 'A 女(woman) with her 子(child) means good.');
+
+  // Single-character fallbacks
+  // Looking up 'word_媽' falls back to '媽'
+  assert.equal(resolveMnemonicFromMap(map, 'word_媽'), item.mnemonic);
+  // Looking up '好' falls back to 'word_好'
+  assert.equal(resolveMnemonicFromMap(map, '好'), 'A 女(woman) with her 子(child) means good.');
+
+  // Multi-character word does NOT fall back
+  assert.equal(resolveMnemonicFromMap(map, '老師'), null);
+  assert.equal(resolveMnemonicFromMap(map, 'word_unknown'), null);
+  assert.equal(resolveMnemonicFromMap(map, 'unknown'), null);
+});
+
+test('production book-1 memory hook pack is device-safe, explicitly names sound components, and is semantically verified', async () => {
+  const { readFileSync } = await import('node:fs');
+  const { resolve } = await import('node:path');
+  const packPath = resolve(process.cwd(), 'public/data/memory-hooks/book-1.json');
+  const raw = JSON.parse(readFileSync(packPath, 'utf8')) as { schemaVersion: number; bookId: number; items: PackItem[] };
+
+  assert.equal(raw.schemaVersion, 1);
+  assert.equal(raw.bookId, 1);
+  assert.ok(raw.items.length >= 656);
+
+  const charItems = raw.items.filter((i) => i.content_type === 'character');
+  assert.equal(charItems.length, 656);
+
+  const vaguePhoneticPattern = /\b(sounds like|just sounds like|even sounds like|echoes the sound of|echoes|puffs the sound|sounds like 'fee'|is only a sound cue|lending its cool sound)\b/i;
+
+  for (const item of charItems) {
+    assert.ok(item.mnemonic.length >= 15, `${item.character} hook is too short`);
+    const nonBmp = [...item.mnemonic].filter((c: string) => c.codePointAt(0)! > 0xFFFF);
+    assert.equal(nonBmp.length, 0, `${item.character} contains non-BMP characters: ${nonBmp.join(' ')}`);
+
+    // Zero vague sound expressions allowed
+    assert.ok(
+      !vaguePhoneticPattern.test(item.mnemonic),
+      `${item.character} must not use vague phonetic phrasing: ${item.mnemonic}`
+    );
+  }
+
+  // Verify explicit sound component mentions with pinyin for key phono-semantic characters
+  const soundComponentChecks = [
+    { char: '媽', pinyin: 'mǎ -> mā' },
+    { char: '爸', pinyin: 'bā -> bà' },
+    { char: '請', pinyin: 'qīng -> qǐng' },
+    { char: '客', pinyin: 'gè -> kè' },
+    { char: '喝', pinyin: 'hé -> hē' },
+    { char: '城', pinyin: 'chéng' },
+    { char: '湖', pinyin: 'hú' },
+    { char: '花', pinyin: 'huà -> huā' },
+    { char: '問', pinyin: 'mén -> wèn' },
+  ];
+  for (const { char, pinyin } of soundComponentChecks) {
+    const entry = charItems.find((i) => i.character === char);
+    assert.ok(entry, `Character ${char} must exist in pack`);
+    assert.ok(
+      entry.mnemonic.includes('sound component'),
+      `${char} hook must explicitly mention 'sound component': ${entry.mnemonic}`
+    );
+    assert.ok(
+      entry.mnemonic.includes(pinyin),
+      `${char} hook must explicitly include pinyin '${pinyin}': ${entry.mnemonic}`
+    );
+  }
+
+  const ni = charItems.find((i) => i.character === '尼');
+  assert.ok(ni && !ni.mnemonic.includes('corpse') && !ni.mnemonic.includes('dead'), '尼 must not contain macabre imagery');
+
+  const qi = charItems.find((i) => i.character === '淇');
+  assert.ok(qi && qi.mnemonic.includes('ice cream'), '淇 must connect to ice cream');
+
+  const dan = charItems.find((i) => i.character === '但');
+  assert.ok(dan && !dan.mnemonic.includes('"dawn"'), '但 must not equate dàn with English dawn');
+
+  const gei = charItems.find((i) => i.character === '給');
+  assert.ok(gei && gei.mnemonic.toLowerCase().includes('give'), '給 must include give');
+});

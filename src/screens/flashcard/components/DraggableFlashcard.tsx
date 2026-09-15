@@ -1,8 +1,15 @@
 import React, { useEffect } from 'react';
 import { animate, motion, useMotionValue, useReducedMotion, useTransform } from 'motion/react';
 import type { Flashcard } from '../../../data/flashcards';
-import { MemoryHookCharacter } from '../../../features/character-memory-hooks';
+import {
+  MemoryHookCharacter,
+  shouldShowWordHook,
+  useMemoryHook,
+  wordMnemonicKey,
+} from '../../../features/character-memory-hooks';
+import { AppIcon } from '../../../lib/widgets';
 import type { RankedExample } from '../../../utils/courseExamples';
+import { cn } from '../../../utils/cn';
 import { isHanziChar } from '../../../utils/hanzi';
 import { FlashcardBackFace } from './FlashcardBackFace';
 
@@ -11,7 +18,7 @@ export interface DraggableFlashcardProps {
   direction: number;
   isFlipped: boolean;
   setActiveBreakdown: (char: string, index?: number) => void;
-  triggerSwipeRate: (level: number) => void;
+  triggerSwipeRate: (level: number, animDir?: number) => void;
   onCardTap: () => void;
   showPinyin?: boolean;
   showTranslation?: boolean;
@@ -24,11 +31,16 @@ export interface DraggableFlashcardProps {
 export function getCardHeight() {
   const viewportHeight = typeof window === 'undefined' ? 844 : window.innerHeight;
   const viewportWidth = typeof window === 'undefined' ? 390 : window.innerWidth;
-  return Math.round(
-    viewportWidth >= 640
-      ? Math.min(480, Math.max(420, viewportHeight * 0.53))
-      : Math.min(420, Math.max(360, viewportHeight * 0.48)),
-  );
+  if (viewportWidth >= 1024) {
+    return Math.round(Math.min(560, Math.max(480, viewportHeight * 0.58)));
+  }
+  if (viewportWidth >= 768) {
+    return Math.round(Math.min(520, Math.max(450, viewportHeight * 0.55)));
+  }
+  if (viewportWidth >= 640) {
+    return Math.round(Math.min(480, Math.max(420, viewportHeight * 0.53)));
+  }
+  return Math.round(Math.min(420, Math.max(360, viewportHeight * 0.48)));
 }
 
 export function getCardWidth() {
@@ -36,15 +48,19 @@ export function getCardWidth() {
   const workspaceNavWidth = typeof document === 'undefined'
     ? (viewportWidth >= 768 ? 288 : 0)
     : Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--workspace-nav-width')) || 0;
-  const shellPadding = viewportWidth >= 640 ? 48 : 32;
+  const shellPadding = viewportWidth >= 1024 ? 64 : viewportWidth >= 640 ? 48 : 32;
   // The available width follows the shell's responsive padding and persistent
   // side rail instead of overflowing the workspace at narrow desktop sizes.
   const availableWidth = viewportWidth - workspaceNavWidth - shellPadding;
-  return Math.round(Math.min(viewportWidth >= 640 ? 460 : 320, Math.max(280, availableWidth)));
+  const targetMaxWidth = viewportWidth >= 1024 ? 620 : viewportWidth >= 768 ? 540 : viewportWidth >= 640 ? 480 : 340;
+  return Math.round(Math.min(targetMaxWidth, Math.max(280, availableWidth)));
 }
 
+// direction: 1 = exit left, -1 = exit right, 2 = exit up, -2 = exit down
 const variants = {
   enter: (direction: number) => {
+    if (direction === 2) return { y: 64, opacity: 0, scale: 0.965 };
+    if (direction === -2) return { y: -64, opacity: 0, scale: 0.965 };
     return {
       x: direction > 0 ? 64 : -64,
       opacity: 0,
@@ -54,10 +70,13 @@ const variants = {
   center: {
     zIndex: 1,
     x: 0,
+    y: 0,
     opacity: 1,
     scale: 1,
   },
   exit: (direction: number) => {
+    if (direction === 2) return { zIndex: 0, y: -96, opacity: 0, scale: 0.975 };
+    if (direction === -2) return { zIndex: 0, y: 96, opacity: 0, scale: 0.975 };
     return {
       zIndex: 0,
       x: direction < 0 ? 96 : -96,
@@ -68,33 +87,86 @@ const variants = {
 };
 
 export const DraggableFlashcard = ({
-  card, direction, isFlipped,
-  setActiveBreakdown, triggerSwipeRate, onCardTap,
-  showPinyin = true, showTranslation = true,
-  examples = [], isExamplesLoading = false,
+  card,
+  direction,
+  isFlipped,
+  setActiveBreakdown,
+  triggerSwipeRate,
+  onCardTap,
+  showPinyin = true,
+  showTranslation = true,
+  examples,
+  isExamplesLoading,
 }: DraggableFlashcardProps) => {
   const isDraggingRef = React.useRef(false);
-  const [isDragging, setIsDragging] = React.useState(false);
-  const [cardHeight, setCardHeight] = React.useState(getCardHeight);
-  const [cardWidth, setCardWidth] = React.useState(getCardWidth);
   const backScrollRef = React.useRef<HTMLDivElement>(null);
   const scrollInteractionRef = React.useRef(false);
   const lastScrollInteractionAtRef = React.useRef(0);
   const reduceMotion = useReducedMotion();
 
+  // Memory hook: available for words and single characters when a hook exists.
+  // The toggle button appears on the back face of the card to switch into the Story Canvas.
+  const showWordHookChip = shouldShowWordHook(card.front);
+  const { hook: wordHook, loaded: wordHookLoaded } = useMemoryHook(wordMnemonicKey(card.front), showWordHookChip);
+  const [showHook, setShowHook] = React.useState(false);
+
+  // Flipping card back to front or switching cards resets the view to standard answer mode
   useEffect(() => {
-    const handleResize = () => {
-      setCardHeight(getCardHeight());
-      setCardWidth(getCardWidth());
-    };
-    window.addEventListener('resize', handleResize, { passive: true });
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    setShowHook(false);
+  }, [isFlipped, card.front]);
+
+  const renderWordHookButton = () => {
+    if (!showWordHookChip || !wordHookLoaded || !wordHook) return null;
+
+    return (
+      <button
+        type="button"
+        aria-label={showHook ? `Hide memory hook for ${card.front}` : `Open memory hook for ${card.front}`}
+        aria-expanded={showHook}
+        onPointerDown={(event) => event.stopPropagation()}
+        onClick={(event) => {
+          event.stopPropagation();
+          if (isDraggingRef.current) return;
+          setShowHook((prev) => {
+            const next = !prev;
+            if (backScrollRef.current) {
+              backScrollRef.current.scrollTop = 0;
+            }
+            return next;
+          });
+        }}
+        className={cn(
+          'absolute right-3.5 top-3.5 z-10 flex h-8 w-8 items-center justify-center rounded-full focus-ring active:scale-95',
+          showHook
+            ? 'bg-feedback-warning text-ui-ink-strong shadow-ambient-sm'
+            : 'text-ui-muted hover:bg-ui-hover hover:text-feedback-warning-edge active:bg-ui-divider',
+        )}
+      >
+        <AppIcon name="lightbulb" size={17} />
+      </button>
+    );
+  };
+
+  // Gesture drag offsets are kept on an inner layer isolated from the slide animation
+  const dragX = useMotionValue(0);
+  const dragY = useMotionValue(0);
+  const MAX_TINT_OFFSET = 80;
+
+  // Directional rating borders: Green for right/up (learned), Red for left/down (review)
+  // Only driven by active drag offset, never triggered by outer slide transitions
+  const greenBorderOpacity = useTransform([dragX, dragY], ([x, y]: [number, number]) => {
+    const intensity = Math.max(0, x, -y);
+    return Math.min(0.35, (intensity / MAX_TINT_OFFSET) * 0.35);
+  });
+  const redBorderOpacity = useTransform([dragX, dragY], ([x, y]: [number, number]) => {
+    const intensity = Math.max(0, -x, y);
+    return Math.min(0.35, (intensity / MAX_TINT_OFFSET) * 0.35);
+  });
 
   useEffect(() => {
-    if (isFlipped) return;
-    // Always land on the answer; the examples are a scroll away, not a state.
-    if (backScrollRef.current) backScrollRef.current.scrollTop = 0;
+    if (!isFlipped && backScrollRef.current) {
+      backScrollRef.current.scrollTop = 0;
+    }
   }, [isFlipped]);
 
   const markScrollInteraction = React.useCallback(() => {
@@ -102,23 +174,10 @@ export const DraggableFlashcard = ({
     lastScrollInteractionAtRef.current = Date.now();
   }, []);
 
-  // Pure scroll: the card keeps its size and the content glides inside it.
-  const handleBackScroll = () => {
-    markScrollInteraction();
-  };
-
-  // Flip: the card rotates with perspective while the faces crossfade around
-  // the 90° midpoint — instead of relying on `preserve-3d` + backface
-  // culling. Transformed descendants inside the faces (e.g. the magnetic
-  // character glyphs) break backface culling in some browsers and show
-  // mirrored characters mid-flip; the opacity crossfade makes the flip
-  // immune to that, in every browser.
+  // 3D Flip angle and smooth crossfade
   const flipAngle = useMotionValue(0);
   const frontOpacity = useTransform(flipAngle, [0, 80, 100, 180], [1, 1, 0, 0]);
   const backOpacity = useTransform(flipAngle, [0, 80, 100, 180], [0, 0, 1, 1]);
-  // A face that has fully faded out must not intercept pointer events, stay
-  // focusable, or paint — opacity (unlike backface culling) leaves the
-  // element hit-testable and in the tab order.
   const frontVisibility = useTransform(frontOpacity, (v) => (v > 0 ? 'visible' : 'hidden'));
   const backVisibility = useTransform(backOpacity, (v) => (v > 0 ? 'visible' : 'hidden'));
 
@@ -132,129 +191,164 @@ export const DraggableFlashcard = ({
 
   const frontLength = card?.front?.length || 1;
   const getFrontFontSize = (len: number) => {
-    if (len === 1) return 'text-[100px] sm:text-[130px] md:text-[150px]';
-    if (len === 2) return 'text-[80px] sm:text-[100px] md:text-[120px]';
-    if (len === 3) return 'text-[60px] sm:text-[76px] md:text-[90px]';
-    if (len === 4) return 'text-[46px] sm:text-[60px] md:text-[72px]';
-    if (len <= 6) return 'text-[36px] sm:text-[48px] md:text-[56px]';
-    return 'text-[28px] sm:text-[36px] md:text-[42px]';
+    if (len === 1) return 'text-[100px] sm:text-[130px] md:text-[150px] lg:text-[175px]';
+    if (len === 2) return 'text-[80px] sm:text-[100px] md:text-[120px] lg:text-[138px]';
+    if (len === 3) return 'text-[60px] sm:text-[76px] md:text-[90px] lg:text-[104px]';
+    if (len === 4) return 'text-[46px] sm:text-[60px] md:text-[72px] lg:text-[84px]';
+    if (len <= 6) return 'text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px]';
+    return 'text-[28px] sm:text-[36px] md:text-[42px] lg:text-[48px]';
+  };
+
+  const handleCardClick = (e: React.MouseEvent) => {
+    if (isDraggingRef.current) return;
+    if (scrollInteractionRef.current && Date.now() - lastScrollInteractionAtRef.current < 400) {
+      scrollInteractionRef.current = false;
+      return;
+    }
+    scrollInteractionRef.current = false;
+    if ((e.target as HTMLElement).closest('button')) return;
+    onCardTap();
   };
 
   return (
+    // Outer Container: Manages enter/exit slide transitions without rating border interference
     <motion.div
       custom={direction}
       variants={variants}
       initial="enter"
-      animate={{
-        zIndex: 1,
-        x: 0,
-        opacity: 1,
-        scale: 1,
-      }}
+      animate="center"
       exit="exit"
       transition={{
         x: reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 380, damping: 36, mass: 0.82 },
+        y: reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 380, damping: 36, mass: 0.82 },
         opacity: { duration: reduceMotion ? 0 : 0.18, ease: 'easeOut' },
         scale: reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 38, mass: 0.76 },
       }}
-      drag="x"
-      dragDirectionLock
-      dragConstraints={{ left: 0, right: 0 }}
-      dragElastic={0.5}
-      dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
-      onDragStart={() => {
-        isDraggingRef.current = true;
-        setIsDragging(true);
-      }}
-      onDragEnd={(e, info) => {
-        // Small delay to allow click handler to detect drag vs tap
-        setTimeout(() => {
-          isDraggingRef.current = false;
-          setIsDragging(false);
-        }, 50);
-
-        if (info.offset.x < -80) {
-          triggerSwipeRate(1);
-        } else if (info.offset.x > 80) {
-          triggerSwipeRate(3);
-        }
-      }}
-      onClick={(e: React.MouseEvent) => {
-        if (isDraggingRef.current) return;
-        if (scrollInteractionRef.current && Date.now() - lastScrollInteractionAtRef.current < 500) {
-          scrollInteractionRef.current = false;
-          return;
-        }
-        scrollInteractionRef.current = false;
-        if ((e.target as HTMLElement).closest('button')) return;
-        onCardTap();
-      }}
+      className="absolute inset-x-0 mx-auto pointer-events-auto flex items-center justify-center w-[min(340px,calc(100vw-32px))] sm:w-[min(480px,calc(100vw-var(--workspace-nav-width,0px)-48px))] md:w-[min(540px,calc(100vw-var(--workspace-nav-width,0px)-48px))] lg:w-[min(620px,calc(100vw-var(--workspace-nav-width,0px)-64px))] max-w-[620px] h-[clamp(360px,48vh,420px)] sm:h-[clamp(420px,53vh,480px)] md:h-[clamp(450px,55vh,520px)] lg:h-[clamp(480px,58vh,560px)] select-none"
       style={{
-        width: cardWidth,
-        touchAction: isFlipped ? 'pan-y' : 'none',
         userSelect: 'none',
         WebkitUserSelect: 'none',
       }}
-      className="absolute inset-x-0 mx-auto pointer-events-auto"
     >
+      {/* Inner Container: Handles touch/pointer dragging and rating borders */}
       <motion.div
-        style={{ rotateY: flipAngle, height: cardHeight }}
-        className="relative w-full cursor-pointer overflow-hidden"
+        drag={isFlipped ? 'x' : true}
+        dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+        dragElastic={0.5}
+        dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+        onDragStart={() => {
+          isDraggingRef.current = true;
+        }}
+        onDragEnd={(_e, info) => {
+          setTimeout(() => {
+            isDraggingRef.current = false;
+          }, 60);
+
+          const { offset } = info;
+          const absX = Math.abs(offset.x);
+          const absY = Math.abs(offset.y);
+
+          if (absX >= absY) {
+            if (offset.x < -80) {
+              triggerSwipeRate(1, 1);
+            } else if (offset.x > 80) {
+              triggerSwipeRate(3, -1);
+            }
+          } else {
+            if (offset.y < -80) {
+              triggerSwipeRate(4, 2);
+            } else if (offset.y > 80) {
+              triggerSwipeRate(2, -2);
+            }
+          }
+        }}
+        onClick={handleCardClick}
+        style={{
+          x: dragX,
+          y: dragY,
+          touchAction: isFlipped ? 'pan-y' : 'none',
+        }}
+        className="relative w-full h-full cursor-pointer [perspective:2000px]"
       >
-        {/* Front Side */}
+        {/* 3D Rotating Card Container */}
         <motion.div
-          className="absolute inset-0 flex items-center justify-center rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface p-8"
-          style={{ opacity: frontOpacity, visibility: frontVisibility }}
+          style={{ rotateY: flipAngle }}
+          className="relative w-full h-full [transform-style:preserve-3d]"
         >
-          <div className="flex max-w-full flex-row flex-wrap items-center justify-center">
-            {Array.from(card.front).map((char, i) => {
-              const isHanzi = isHanziChar(char);
-              const hanziIndex = Array.from(card.front).slice(0, i).filter(isHanziChar).length;
+          {/* Front Side */}
+          <motion.div
+            className="absolute inset-0 flex flex-col items-center justify-center rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface p-6 sm:p-8 [backface-visibility:hidden]"
+            style={{ opacity: frontOpacity, visibility: frontVisibility }}
+          >
+            <div className="flex max-w-full flex-row flex-wrap items-center justify-center">
+              {Array.from(card.front).map((char, i) => {
+                const isHanzi = isHanziChar(char);
+                const hanziIndex = Array.from(card.front).slice(0, i).filter(isHanziChar).length;
 
-              if (!isHanzi) {
+                if (!isHanzi) {
+                  return (
+                    <span
+                      key={i}
+                      className={`${getFrontFontSize(frontLength)} px-1 sm:px-2 py-4 sm:py-6 text-ui-muted leading-[1.1] font-chinese text-center mt-2`}
+                    >
+                      {char}
+                    </span>
+                  );
+                }
+
                 return (
-                  <span key={i} className={`${getFrontFontSize(frontLength)} px-1 sm:px-2 py-4 sm:py-6 text-ui-muted leading-[1.1] font-chinese text-center mt-2`}>
-                    {char}
-                  </span>
+                  <MemoryHookCharacter
+                    key={i}
+                    char={char}
+                    label={`Open character breakdown for ${char}`}
+                    onOpen={() => {
+                      if (isDraggingRef.current) return;
+                      setActiveBreakdown(card.front, hanziIndex);
+                    }}
+                    glyphClassName={`${getFrontFontSize(frontLength)} block leading-[1.1] text-ui-ink tracking-normal text-center`}
+                    className="flex flex-col items-center justify-center rounded-feature px-1 sm:px-2 py-4 sm:py-6"
+                  />
                 );
-              }
+              })}
+            </div>
+          </motion.div>
 
-              return (
-                <MemoryHookCharacter
-                  key={i}
-                  char={char}
-                  label={`Open character breakdown for ${char}`}
-                  tooltipDisabled={isDragging}
-                  onOpen={() => {
-                    if (isDraggingRef.current) return;
-                    setActiveBreakdown(card.front, hanziIndex);
-                  }}
-                  glyphClassName={`${getFrontFontSize(frontLength)} block leading-[1.1] text-ui-ink tracking-normal text-center`}
-                  className="flex flex-col items-center justify-center rounded-feature px-1 sm:px-2 py-4 sm:py-6"
-                />
-              );
-            })}
-          </div>
+          {/* Back Side */}
+          <motion.div
+            className={cn(
+              'absolute inset-0 flex flex-col rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface overflow-hidden [backface-visibility:hidden]',
+              showHook ? 'p-4 pb-4 sm:p-6 sm:pb-5' : 'p-6 pb-10 sm:p-8 sm:pb-10',
+            )}
+            style={{ opacity: backOpacity, rotateY: 180, visibility: backVisibility }}
+          >
+            {renderWordHookButton()}
+            <FlashcardBackFace
+              card={card}
+              setActiveBreakdown={setActiveBreakdown}
+              showPinyin={showPinyin}
+              showTranslation={showTranslation}
+              examples={examples}
+              isExamplesLoading={isExamplesLoading}
+              onScroll={markScrollInteraction}
+              scrollRef={backScrollRef}
+              showHook={showHook}
+              hook={wordHook}
+              hookLoaded={wordHookLoaded}
+            />
+          </motion.div>
         </motion.div>
 
-        {/* Back Side — pre-rotated 180° so it reads normally once the card
-            has flipped; the midpoint crossfade swaps which face is visible. */}
+        {/* Directional Rating Borders: Isolated to drag gesture, invisible during slide transitions */}
         <motion.div
-          className="absolute inset-0 flex flex-col rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface p-6 pb-10 sm:p-8 sm:pb-10"
-          style={{ opacity: backOpacity, rotateY: 180, visibility: backVisibility }}
-        >
-          <FlashcardBackFace
-            card={card}
-            setActiveBreakdown={setActiveBreakdown}
-            showPinyin={showPinyin}
-            showTranslation={showTranslation}
-            examples={examples}
-            isExamplesLoading={isExamplesLoading}
-            isDragging={isDragging}
-            onScroll={handleBackScroll}
-            scrollRef={backScrollRef}
-          />
-        </motion.div>
+          aria-hidden
+          className="pointer-events-none absolute inset-0 rounded-feature border-[6px] border-feedback-success"
+          style={{ opacity: greenBorderOpacity }}
+        />
+        <motion.div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 rounded-feature border-[6px] border-feedback-danger"
+          style={{ opacity: redBorderOpacity }}
+        />
       </motion.div>
     </motion.div>
   );

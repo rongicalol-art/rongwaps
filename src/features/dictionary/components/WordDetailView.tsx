@@ -4,6 +4,7 @@ import { AppIcon, ScreenHeader, Skeleton } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { getDictionaryEntries } from '../../../services/dictionaryService';
 import { searchVocabulary } from '../../../services/vocabularyService';
+import { cleanVocabText } from '../../../utils/vocabCleaner';
 import { sanitizeDictionaryDefinitions } from '../../../utils/dictionaryDefinitions';
 import { numberToToneMarks } from '../../../utils/pinyin';
 import type { DBDictionaryEntry } from '../../../types/database';
@@ -11,10 +12,10 @@ import type { Flashcard } from '../../../data/flashcards';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import { useModalFocus } from '../../../hooks/useModalFocus';
 import { ExtendedDefinitions, SummaryQuickActions } from '../../character-breakdown';
-import { WordCharacterChips } from './WordCharacterChips';
+import { MemoryHookBlock } from '../../character-memory-hooks';
 import { WordExamplesSection } from './WordExamplesSection';
-import { WordRelatedWords } from './WordRelatedWords';
 import { WordDecompositionStrip } from './WordDecompositionStrip';
+import { WordSupportingInformation, hasWordSupportingInfo } from './WordSupportingInformation';
 import { useWordExtras } from '../hooks/useWordExtras';
 
 const HANZI_RE = /[\u3400-\u9FFF]/u;
@@ -58,7 +59,7 @@ function FallbackWords({
             key={`${part}-${idx}`}
             type="button"
             onClick={() => onOpenWord(part)}
-            className="grid w-full grid-cols-[minmax(72px,0.32fr)_minmax(0,1fr)] gap-4 border-t border-ui-divider bg-ui-surface p-4 text-left outline-none transition first:border-t-0 hover:bg-ui-hover focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-brand-primary/20"
+            className="grid w-full grid-cols-[minmax(72px,0.32fr)_minmax(0,1fr)] gap-4 border-t border-ui-divider bg-ui-surface p-4 text-left transition first:border-t-0 hover:bg-ui-hover focus-ring focus-visible:ring-inset"
           >
             <div>
               <span className="font-chinese text-3xl font-black text-ui-ink-strong">{part}</span>
@@ -162,7 +163,17 @@ export function WordDetailView({
         if (isMounted) {
           setEntries(data);
           setFallbackWords(wordFallbacks);
-          setInCourseWords(vocabularyWords.filter((v) => v.front === word));
+          setInCourseWords(
+            vocabularyWords.filter(
+              (v) =>
+                v.front === word ||
+                v.traditional === word ||
+                v.simplified === word ||
+                cleanVocabText(v.traditional || '') === word ||
+                cleanVocabText(v.simplified || '') === word ||
+                cleanVocabText(v.front || '') === word,
+            ),
+          );
           setLoading(false);
         }
       } catch (err) {
@@ -202,12 +213,14 @@ export function WordDetailView({
     return lines.reduce((shortest, line) => (line.length < shortest.length ? line : shortest));
   }, [primaryCourseCard, sanitized]);
 
+  const hasSupporting = hasWordSupportingInfo(word, relatedWords, isExtrasLoading);
+
   return (
     <motion.div
       ref={containerRef}
       role="dialog"
       aria-modal="true"
-      aria-label={`Dictionary details for ${word}`}
+      aria-label={`Word breakdown for ${word}`}
       tabIndex={-1}
       onKeyDown={modalFocusProps.onKeyDown}
       initial={{ opacity: 0 }}
@@ -221,10 +234,10 @@ export function WordDetailView({
         <ScreenHeader
           onClose={onClose}
           centerContent={
-            <h1 className="w-full text-center text-sm font-black text-ui-ink-strong sm:text-base">Dictionary</h1>
+            <h1 className="w-full text-center text-xs sm:text-sm font-black uppercase tracking-wider text-ui-ink-strong">Word breakdown</h1>
           }
           maxWidth="none"
-          className="sticky top-0 z-40 w-full max-w-full shrink-0 border-0 bg-gradient-to-b from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent px-4 pb-2 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] shadow-none backdrop-blur-[2px] sm:px-6 lg:px-10"
+          className="sticky top-0 z-40 w-full max-w-full shrink-0 !h-auto !min-h-0 border-0 bg-gradient-to-b from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent px-4 pb-2 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] shadow-none backdrop-blur-[2px] sm:px-6 lg:px-10"
         />
 
         <div className="relative mx-auto flex min-h-full w-full max-w-[1180px] flex-col gap-6 px-4 py-4 pb-12 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
@@ -238,7 +251,7 @@ export function WordDetailView({
             )
           ) : (
             <>
-              <header className="relative isolate min-w-0 overflow-hidden rounded-feature bg-ui-surface">
+              <header className="relative isolate min-w-0 overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
                 <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4 p-4 sm:gap-7 sm:p-6">
                   <div className="flex min-w-0 items-baseline gap-x-1 font-chinese leading-tight text-ui-ink-strong">
                     {chars.map((char, index) => (
@@ -247,7 +260,7 @@ export function WordDetailView({
                         type="button"
                         onClick={() => pushCharacter(char)}
                         aria-label={`Open breakdown for ${char}`}
-                        className={`cursor-pointer whitespace-nowrap outline-none transition-colors hover:text-brand-primary focus-visible:rounded-md focus-visible:ring-4 focus-visible:ring-brand-primary/25 active:opacity-50 ${wordSizeClass}`}
+                        className={`cursor-pointer whitespace-nowrap rounded-xs focus-ring transition-colors hover:text-brand-primary active:opacity-50 ${wordSizeClass}`}
                       >
                         {char}
                       </button>
@@ -269,27 +282,50 @@ export function WordDetailView({
                     )}
                   </div>
                 </div>
-                <SummaryQuickActions char={primaryChar} />
+                <SummaryQuickActions char={primaryChar} audioSrc={primaryCourseCard?.audio} />
 
                 <ExtendedDefinitions entries={entries} />
               </header>
 
-              <WordCharacterChips word={word} pushCharacter={pushCharacter} />
+              <div
+                className={
+                  hasSupporting
+                    ? 'grid min-w-0 items-start gap-6 lg:grid-cols-[minmax(0,64fr)_minmax(19rem,36fr)] lg:gap-8'
+                    : 'flex min-w-0 flex-col gap-6 lg:gap-8'
+                }
+              >
+                <div className="flex min-w-0 flex-col gap-6 lg:gap-8">
+                  <WordDecompositionStrip word={word} onOpenCharacter={pushCharacter} />
 
-              <WordExamplesSection
-                examples={examples}
-                isLoading={isExtrasLoading}
-                word={word}
-                activeBook={activeBook}
-              />
+                  <MemoryHookBlock
+                    cacheKey={`word_${word}`}
+                    emptyText={<>No memory hook for this word yet.</>}
+                  />
 
-              <WordDecompositionStrip word={word} onOpenCharacter={pushCharacter} />
+                  <WordExamplesSection
+                    examples={examples}
+                    isLoading={isExtrasLoading}
+                    word={word}
+                    activeBook={activeBook}
+                  />
+                </div>
 
-              <WordRelatedWords
-                relatedWords={relatedWords}
-                isLoading={isExtrasLoading}
-                onOpenWord={setDictionaryWord}
-              />
+                {hasSupporting && (
+                  <aside
+                    aria-label="Word context"
+                    className="flex min-w-0 flex-col lg:sticky lg:top-4 lg:self-start"
+                  >
+                    <WordSupportingInformation
+                      word={word}
+                      pushCharacter={pushCharacter}
+                      relatedWords={relatedWords}
+                      isRelatedLoading={isExtrasLoading}
+                      onOpenWord={setDictionaryWord}
+                      activeBook={activeBook}
+                    />
+                  </aside>
+                )}
+              </div>
             </>
           )}
         </div>

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "version": "9975333c4ffad132068080bf417929c368dfde11621ef294d86732852519df35",
+  "generatedAt": "2026-09-15T03:25:59.344Z",
+  "totalCount": 1442,
+  "books": [
+    {
+      "bookId": 1,
+      "count": 1442,
+      "path": "/data/memory-hooks/book-1.json",
+      "sha256": "9975333c4ffad132068080bf417929c368dfde11621ef294d86732852519df35",
+      "bytes": 239556
+    }
+  ]
+}
