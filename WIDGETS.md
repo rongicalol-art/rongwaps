@@ -89,9 +89,9 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
   ```tsx
   <DropdownMenu label="Session controls" open={open} onOpenChange={setOpen} renderTrigger={renderTrigger} />
   ```
-- **ErrorBoundary** — app-level rendering fallback. Keep error recovery outside feature components unless a narrower boundary is intentional.
+- **ErrorBoundary** — app-level rendering fallback, mounted around the whole app in `main.tsx` and per tab screen in `TabScreens`. `fallback` swaps the recovery panel; `fallbackClassName` replaces the default container sizing (`min-h-[300px] p-8`) when the boundary fills a window. Keep error recovery outside feature components unless a narrower boundary is intentional.
   ```tsx
-  <ErrorBoundary><App /></ErrorBoundary>
+  <ErrorBoundary fallbackClassName="min-h-[100dvh] p-8"><App /></ErrorBoundary>
   ```
 - **WorkspaceDetailShell** — seamless workspace-bounded detail window with header, close/back actions, focus trapping, Escape, and reduced-motion behavior.
   ```tsx

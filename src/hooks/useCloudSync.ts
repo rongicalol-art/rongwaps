@@ -56,10 +56,6 @@ function getDailyActivity(
   return undefined;
 }
 
-function errorMessage(error: unknown, fallback: string): string {
-  return error instanceof Error && error.message ? error.message : fallback;
-}
-
 function stringArray(value: unknown): string[] | null {
   return Array.isArray(value) && value.every((item) => typeof item === 'string')
     ? value
@@ -176,8 +172,10 @@ export function useCloudSync() {
     } = useAppStore.getState();
 
     try {
+      // `syncError` is a user-facing message (rendered on the profile screen),
+      // cleared only by a successful round-trip — never by the start of a
+      // retry, so a failure that keeps repeating stays visible.
       setSyncStatus('syncing');
-      setSyncError(null);
 
       const activeUser = await authService.getCurrentUser() || currentUser;
       const metadata = (activeUser.user_metadata || {}) as Record<string, unknown>;
@@ -416,10 +414,11 @@ export function useCloudSync() {
         };
       }
       setSyncStatus('success');
+      setSyncError(null);
     } catch (error: unknown) {
       console.error('Failed to fetch from cloud:', error);
       setSyncStatus('error');
-      setSyncError(errorMessage(error, 'Failed to sync from cloud'));
+      setSyncError("Couldn't load your latest progress. Check your connection — we'll retry.");
     }
   }, [currentUser]);
 
@@ -576,16 +575,16 @@ export function useCloudSync() {
     if (!currentUser || !coordinatorRef.current) return;
     const { setSyncStatus, setSyncError } = useAppStore.getState();
     setSyncStatus('syncing');
-    setSyncError(null);
     try {
       await coordinatorRef.current.request();
       saveBackoffMsRef.current = 0;
       autoSaveDirtySinceRef.current = null;
       setSyncStatus('success');
+      setSyncError(null);
     } catch (error: unknown) {
       saveBackoffMsRef.current = getNextCloudSyncBackoff(saveBackoffMsRef.current, error);
       setSyncStatus('error');
-      setSyncError(errorMessage(error, 'Failed to save to cloud'));
+      setSyncError("Couldn't save to the cloud. Your work is safe on this device — we'll retry.");
       throw error;
     }
   }, [currentUser]);

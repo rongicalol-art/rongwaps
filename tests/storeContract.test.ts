@@ -61,6 +61,10 @@ const LEGACY_ACCOUNT_SWITCH_KEYS = [
   // Session-scoped review snapshot: a pinned due-set must never leak
   // into another account's view (added with the stale-snapshot fix).
   'activeReviewSessionCards',
+  // Sync status + message: a failed sync is surfaced on the profile screen, so
+  // its message must not follow the previous account into the new one.
+  'syncStatus',
+  'syncError',
 ].sort();
 
 test('account-switch defaults match the legacy reset contract exactly', () => {
@@ -88,6 +92,8 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
     lastActivity: 'quiz',
     lastCloudUpdate: '2026-01-01T00:00:00.000Z',
     activeReviewSessionCards: ['card_a'],
+    syncStatus: 'error',
+    syncError: "Couldn't save your progress.",
     // Account-agnostic state that must survive the switch:
     activeTab: 'library',
     activeBookId: 1,
@@ -115,6 +121,8 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
   assert.equal(state.lastActivity, null);
   assert.equal(state.lastCloudUpdate, null);
   assert.deepEqual(state.activeReviewSessionCards, null);
+  assert.equal(state.syncStatus, 'idle');
+  assert.equal(state.syncError, null);
 
   // Account-agnostic state survives.
   assert.equal(state.activeTab, 'library');

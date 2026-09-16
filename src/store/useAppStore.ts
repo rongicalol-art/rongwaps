@@ -57,9 +57,10 @@ import {
   SYNC_PERSISTED_KEYS,
   SYNC_ACCOUNT_SWITCH_DEFAULTS,
   type SyncState,
+  type SyncStatus,
 } from './slices/syncSlice';
 
-export type { UserSnapshot };
+export type { UserSnapshot, SyncStatus };
 
 export type AppState =
   & AuthState
