@@ -147,8 +147,17 @@ export function ReaderScreen({
     audioMode,
   });
 
-  // Tapping a bubble or sentence always reveals the dock, whichever reading
-  // view is mounted (narrative or dialogue) — keep that behaviour in one place.
+  // Always show dock when audio starts playing
+  useEffect(() => {
+    if (playing) {
+      setIsDockVisible(true);
+    }
+  }, [playing]);
+
+  // Stable play callbacks: the reading canvases memoize each word, so passing
+  // fresh arrow identities here would re-render every word on every karaoke
+  // tick. The audio hook's play actions do not depend on `currentTime`, so
+  // these stay referentially stable while playback is running.
   const handlePlayLine = useCallback((lineIndex: number) => {
     setIsDockVisible(true);
     playLine(lineIndex);
@@ -159,12 +168,10 @@ export function ReaderScreen({
     playFromTime(startSec);
   }, [playFromTime]);
 
-  // Always show dock when audio starts playing
-  useEffect(() => {
-    if (playing) {
-      setIsDockVisible(true);
-    }
-  }, [playing]);
+  const handlePlayFromTime = useCallback((startSec: number, endSec?: number) => {
+    setIsDockVisible(true);
+    playFromTime(startSec, endSec);
+  }, [playFromTime]);
 
   const isHoveringBottomRef = useRef(false);
   const wasHoverRevealedRef = useRef(false);
@@ -349,6 +356,7 @@ export function ReaderScreen({
     currentTime,
     onPlayLine: handlePlayLine,
     onPlayRange: handlePlayRange,
+    onPlayFromTime: handlePlayFromTime,
   };
 
   return (
