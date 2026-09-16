@@ -77,6 +77,7 @@ npx tsx scripts/memory-hooks/applyMeaningAudit.ts --apply --characters \
 ## Quality rubric (hard rules, enforced by the validator)
 
 - Target token `字(label)` exactly once, landing in the last ~4 words.
+- The scene→target separator is `→` (never `—`, which reads as the 一 glyph). The app renders `字(label)` as `字 label` with a bold label — keep drafting in the parenthesized form; it is the stored format the validators check.
 - Every labeled frame component token `字(label)` exactly once (copy labels
   from the prepared frame output verbatim — they come from the frozen lexicon).
 - Glyph-less frame parts: `describedParts: [{ occurrenceIds, description }]`
