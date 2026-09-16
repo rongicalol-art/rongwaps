@@ -45,7 +45,7 @@ export class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <div className="flex flex-col items-center justify-center min-h-[300px] p-8 text-center bg-ui-canvas">
+        <div role="alert" className="flex flex-col items-center justify-center min-h-[300px] p-8 text-center bg-ui-canvas">
           <div className="w-20 h-20 rounded-control bg-ui-surface border-b-[length:var(--depth-lg)] border-ui-border flex items-center justify-center mb-4">
             <span className="text-3xl">😵</span>
           </div>

@@ -224,7 +224,10 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
       <footer className="pointer-events-none relative z-20 shrink-0 bg-gradient-to-t from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent p-4 pt-8 md:p-6 md:pt-10">
           <div className="max-w-4xl mx-auto w-full">
             {saveError && (
-              <div className="mb-3 px-4 py-3 bg-feedback-danger/10 border-b-[length:var(--depth-sm)] border-feedback-danger-edge/30 rounded-control text-feedback-danger-edge font-bold text-sm text-center flex items-center justify-center gap-2">
+              <div
+                role="alert"
+                className="mb-3 px-4 py-3 bg-feedback-danger/10 border-b-[length:var(--depth-sm)] border-feedback-danger-edge/30 rounded-control text-feedback-danger-edge font-bold text-sm text-center flex items-center justify-center gap-2"
+              >
                 <span>{saveError}</span>
                 <button
                   onClick={() => setSaveError(null)}

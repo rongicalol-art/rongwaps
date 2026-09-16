@@ -36,9 +36,10 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
 
 ## Icons, flags, and branded presentation
 
-- **AppIcon** — semantic gateway to the approved Phosphor icon family. Add a stable semantic name here instead of importing a competing icon directly.
+- **AppIcon** — semantic gateway to the approved Phosphor icon family. Add a stable semantic name here instead of importing a competing icon directly. Decorative by default (`aria-hidden`), because it sits beside visible text in nearly every call site; pass `title` or `aria-label` when the icon itself carries the meaning, which promotes it to an accessible `role="img"`.
   ```tsx
   <AppIcon name="search" size={18} />
+  <AppIcon name="lock" title="Locked" />
   ```
 - **BrandWordmark** — app wordmark lockup: the yellow 文 brand tile plus owner/subject wordmark text. Used by the shell side navigation and the full-screen sign-in window. Optionally override the display `name` or pass `collapsed` to render only the brand tile.
   ```tsx
