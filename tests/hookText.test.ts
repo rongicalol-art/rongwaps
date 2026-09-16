@@ -28,16 +28,64 @@ test('tokenizeHookText handles leading tokens, multi-word labels and spaced vari
 
 test('tokenizeHookText handles legacy (字) references and (字 + 字) groups', () => {
   assert.deepEqual(tokenizeHookText('Knowing the way (道) is to know (知).'), [
-    { kind: 'text', text: 'Knowing the way ' },
+    { kind: 'text', text: 'Knowing the ' },
+    { kind: 'gloss', word: 'way' },
+    { kind: 'text', text: ' ' },
     { kind: 'glyphRef', glyphs: ['道'] },
-    { kind: 'text', text: ' is to know ' },
+    { kind: 'text', text: ' is to ' },
+    { kind: 'gloss', word: 'know' },
+    { kind: 'text', text: ' ' },
     { kind: 'glyphRef', glyphs: ['知'] },
     { kind: 'text', text: '.' },
   ]);
   assert.deepEqual(tokenizeHookText("the whole household' (大 + 家), so"), [
-    { kind: 'text', text: "the whole household' " },
+    { kind: 'text', text: 'the whole ' },
+    { kind: 'gloss', word: 'household' },
+    { kind: 'text', text: "' " },
     { kind: 'glyphRef', glyphs: ['大', '家'] },
     { kind: 'text', text: ', so' },
+  ]);
+});
+
+test('tokenizeHookText skips glue words but keeps glossable verbs', () => {
+  const shuo = tokenizeHookText('you hear of (聽說) the thing.');
+  assert.deepEqual(shuo, [
+    { kind: 'text', text: 'you ' },
+    { kind: 'gloss', word: 'hear' },
+    { kind: 'text', text: ' of ' },
+    { kind: 'glyphRef', glyphs: ['聽說'] },
+    { kind: 'text', text: ' the thing.' },
+  ]);
+  const shi = tokenizeHookText('you want (要) a situation to be (是) true.');
+  assert.deepEqual(shi.slice(-4), [
+    { kind: 'gloss', word: 'be' },
+    { kind: 'text', text: ' ' },
+    { kind: 'glyphRef', glyphs: ['是'] },
+    { kind: 'text', text: ' true.' },
+  ]);
+});
+
+test('tokenizeHookText keeps quotes outside the bold gloss', () => {
+  const day = tokenizeHookText("the unnumbered 'day' (天) is Sunday.");
+  assert.deepEqual(day.slice(0, 4), [
+    { kind: 'text', text: "the unnumbered '" },
+    { kind: 'gloss', word: 'day' },
+    { kind: 'text', text: "' " },
+    { kind: 'glyphRef', glyphs: ['天'] },
+  ]);
+  const cycle = tokenizeHookText('In the star-cycle (星期), Sunday.');
+  assert.deepEqual(cycle.slice(0, 4), [
+    { kind: 'text', text: 'In the ' },
+    { kind: 'gloss', word: 'star-cycle' },
+    { kind: 'text', text: ' ' },
+    { kind: 'glyphRef', glyphs: ['星期'] },
+  ]);
+});
+
+test('tokenizeHookText leaves a reference without a preceding word unemphasized', () => {
+  assert.deepEqual(tokenizeHookText('(道) alone.'), [
+    { kind: 'glyphRef', glyphs: ['道'] },
+    { kind: 'text', text: ' alone.' },
   ]);
 });
 
@@ -59,15 +107,19 @@ test('renderHookText drops gloss parentheses and bolds the label', () => {
   assert.ok(html.includes('同 <strong'), html);
 });
 
-test('renderHookText bolds legacy glyph references without parentheses', () => {
+test('renderHookText bolds the English gloss of legacy glyph references', () => {
   const html = renderToStaticMarkup(renderHookText("Knowing the way (道) is to know (知) → 知道 means 'to know'."));
   assert.ok(!html.includes('(道)') && !html.includes('(知)'), html);
-  assert.ok(html.includes('>道</strong>'), html);
-  assert.ok(html.includes('>知</strong>'), html);
-  const group = renderToStaticMarkup(renderHookText("the whole household' (大 + 家), so"));
-  assert.ok(!group.includes('(大 + 家)'), group);
-  assert.ok(group.includes('>大</strong> + <strong'), group);
-  assert.ok(group.includes('>家</strong>'), group);
+  assert.ok(html.includes('>way</strong>'), html);
+  assert.ok(html.includes('>know</strong>'), html);
+  assert.ok(!html.includes('>道</strong>') && !html.includes('>知</strong>'), html);
+  const plain = html.replace(/<[^>]+>/g, '');
+  assert.ok(plain.includes('Knowing the way 道 is to know 知'), plain);
+  const groupHtml = renderToStaticMarkup(renderHookText("the whole household' (大 + 家), so"));
+  assert.ok(!groupHtml.includes('(大 + 家)'), groupHtml);
+  assert.ok(groupHtml.includes('>household</strong>'), groupHtml);
+  const groupPlain = groupHtml.replace(/<[^>]+>/g, '');
+  assert.ok(groupPlain.includes('the whole household') && groupPlain.includes('大 + 家'), groupPlain);
 });
 
 test('renderHookText uses the softened emphasis tone', () => {
