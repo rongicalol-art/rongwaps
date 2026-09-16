@@ -15,6 +15,8 @@ export interface UiState {
   // UI State
   isOverlayOpen: boolean;
   setIsOverlayOpen: (open: boolean) => void;
+  isSearchOpen: boolean;
+  setIsSearchOpen: (open: boolean) => void;
   isInteractionActive: boolean;
   setIsInteractionActive: (active: boolean) => void;
   swipeFeedback: { text: string; type: 'learned' | 'review' } | null;
@@ -52,6 +54,8 @@ export function createUiSlice(set: SetState): UiState {
 
     isOverlayOpen: false,
     setIsOverlayOpen: (open) => set({ isOverlayOpen: open }),
+    isSearchOpen: false,
+    setIsSearchOpen: (open) => set({ isSearchOpen: open }),
     isInteractionActive: false,
     setIsInteractionActive: (active) => set({ isInteractionActive: active }),
     swipeFeedback: null,
