@@ -103,29 +103,37 @@ test('production book-1 memory hook pack is device-safe, explicitly names sound 
     );
   }
 
-  // Verify explicit sound component mentions with pinyin for key phono-semantic characters
+  // Verify explicit sound cue mentions with pinyin for key phono-semantic characters
+  const soundCuePattern = /\b(sound component|sound cue|lends the sound|sound shifts)\b/i;
   const soundComponentChecks = [
-    { char: '媽', pinyin: 'mǎ -> mā' },
-    { char: '爸', pinyin: 'bā -> bà' },
-    { char: '請', pinyin: 'qīng -> qǐng' },
-    { char: '客', pinyin: 'gè -> kè' },
-    { char: '喝', pinyin: 'hé -> hē' },
-    { char: '城', pinyin: 'chéng' },
-    { char: '湖', pinyin: 'hú' },
-    { char: '花', pinyin: 'huà -> huā' },
-    { char: '問', pinyin: 'mén -> wèn' },
+    { char: '媽', from: 'mǎ', to: 'mā' },
+    { char: '爸', from: 'bā', to: 'bà' },
+    { char: '請', from: 'qīng', to: 'qǐng' },
+    { char: '客', from: 'gè', to: 'kè' },
+    { char: '喝', from: 'hé', to: 'hē' },
+    { char: '城', from: 'chéng' },
+    { char: '湖', from: 'hú' },
+    { char: '花', from: 'huà', to: 'huā' },
+    { char: '問', from: 'mén', to: 'wèn' },
   ];
-  for (const { char, pinyin } of soundComponentChecks) {
+  for (const { char, from, to } of soundComponentChecks) {
     const entry = charItems.find((i) => i.character === char);
     assert.ok(entry, `Character ${char} must exist in pack`);
-    assert.ok(
-      entry.mnemonic.includes('sound component'),
-      `${char} hook must explicitly mention 'sound component': ${entry.mnemonic}`
+    assert.match(
+      entry.mnemonic,
+      soundCuePattern,
+      `${char} hook must explicitly name its sound cue: ${entry.mnemonic}`,
     );
     assert.ok(
-      entry.mnemonic.includes(pinyin),
-      `${char} hook must explicitly include pinyin '${pinyin}': ${entry.mnemonic}`
+      entry.mnemonic.includes(from),
+      `${char} hook must include the source pinyin '${from}': ${entry.mnemonic}`,
     );
+    if (to) {
+      assert.ok(
+        entry.mnemonic.includes(to),
+        `${char} hook must include the target pinyin '${to}': ${entry.mnemonic}`,
+      );
+    }
   }
 
   const ni = charItems.find((i) => i.character === '尼');

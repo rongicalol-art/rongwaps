@@ -3,6 +3,7 @@ import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { cleanVocabText } from '../src/utils/vocabCleaner';
+import { tokenizeHookText } from '../src/features/character-memory-hooks/hookText';
 import {
   packItemsToMnemonicMap,
   resolveMnemonicFromMap,
@@ -60,6 +61,22 @@ test('multi-character word hooks name every character of the word', () => {
   assert.deepEqual(offenders, [], `word hooks that do not name their characters: ${offenders.join(', ')}`);
 });
 
+test('every multi-character word hook renders at least one emphasis run', () => {
+  const pack = loadHookPack();
+  const wordItems = pack.items.filter((item) => item.content_type === 'word');
+
+  const offenders: string[] = [];
+  for (const item of wordItems) {
+    const uniqueChars = [...new Set([...item.character].filter((char) => HAN_CHAR.test(char)))];
+    if (uniqueChars.length < 2) continue;
+    const emphasized = item.mnemonic.includes('**')
+      || tokenizeHookText(item.mnemonic).some((segment) => segment.kind === 'token' || segment.kind === 'gloss');
+    if (!emphasized) offenders.push(item.character);
+  }
+
+  assert.deepEqual(offenders, [], `word hooks that render no bold: ${offenders.join(', ')}`);
+});
+
 test('word hook quality regressions stay fixed', () => {
   const pack = loadHookPack();
   const map = packItemsToMnemonicMap(pack.items);
@@ -74,7 +91,7 @@ test('word hook quality regressions stay fixed', () => {
   assert.doesNotMatch(hook('word_襪子'), /what's he/i);
   assert.doesNotMatch(hook('word_太太'), /tie-tie/i);
   assert.doesNotMatch(hook('word_希望'), /rare/i);
-  assert.match(hook('word_快樂'), /pleased/i);
+  assert.match(hook('word_快樂'), /happy|joy/i);
   assert.doesNotMatch(hook('word_醫生'), /birth/i);
   assert.doesNotMatch(hook('word_印尼'), /印度尼西亞/);
 
@@ -85,6 +102,31 @@ test('word hook quality regressions stay fixed', () => {
     'word_冷氣機', 'word_右邊', 'word_左邊', 'word_台北101',
   ];
   for (const key of coverageKeys) hook(key);
+});
+
+test('reported hook fixes stay in the pack', () => {
+  const pack = loadHookPack();
+  const map = packItemsToMnemonicMap(pack.items);
+  const hook = (key: string): string => {
+    const value = resolveMnemonicFromMap(map, key);
+    assert.ok(value, `missing hook for ${key}`);
+    return value;
+  };
+
+  assert.equal(hook('word_奶茶'), '奶(milk) + 茶(tea) → 奶茶(milk tea).');
+  assert.match(hook('友'), /又\(again\)/);
+  assert.doesNotMatch(hook('友'), /又\(hand/);
+  assert.match(hook('喝'), /口\(mouth\)/);
+  assert.doesNotMatch(hook('喝'), /calls with/i);
+
+  for (const character of ['沒', '服', '餐', '隻', '支', '雙', '受', '報']) {
+    assert.match(hook(character), /又\(again\)/, `${character} must gloss 又 with its taught meaning`);
+  }
+
+  for (const item of pack.items) {
+    assert.doesNotMatch(item.mnemonic, /calls with/i, `${item.id} uses the retired "calls with" phrasing`);
+    assert.doesNotMatch(item.mnemonic, /hand — also/i, `${item.id} keeps the retired bridge gloss`);
+  }
 });
 
 test('word hook pack count matches its item list', () => {

@@ -294,3 +294,59 @@ Record choices that should remain stable across tasks. Keep each entry short.
 - Chosen: `src/features/practice/components/PracticeSettingsScreen.tsx` was found corrupted (a splice of the practice header, settings, and reader-panel fragments from an external edit) and was rebuilt by extracting the last shipped component from `dist/assets/ActivityModals-*.js`.
 - Reason: The corruption broke typecheck and the test suite with no source copy available; the production bundle contained the complete pre-corruption component.
 - Affects: `src/features/practice/components/PracticeSettingsScreen.tsx`.
+
+### 2026-09-16 — Memory-hook style pass: token rewrites, scene-led phonetics, taught component labels
+
+- Chosen:
+  - All 110 multi-character word hooks that rendered with no emphasis (e.g. 奶茶) were rewritten into the canonical `字(label) … → 字(meaning)` token style via `output/memory-hooks/book-1-word-review-decisions-v3.json` and `applyWordReview.ts`; a new pack test asserts every multi-character word hook produces at least one emphasis run.
+  - 喝/請/舍 drop the "calls with … sound component" template. 喝 follows the approved pilot frame scene (`pilotFrameReviews.ts`): one cup action leads to drink while 曷 stays a quiet sound cue. Phonetic cues stay in hooks (no other surface teaches the sound component) and are phrased as "sound cue"/"lends the sound"; the pack test now accepts those alongside "sound component" and checks source + target pinyin separately.
+  - Component-label policy: a hook never glosses a taught character with a conflicting sense. 友 glosses 又 as its taught "again"; the 8 load-bearing hooks bridge with `又(hand — also 'again')`. The 15 legacy pilot hooks gain their missing `字(meaning)` target tokens: 人 水 一 心 了 牛 女 力 門 手 又 身 已 母 世. All 656 hooks pass `strictHookAudit` and the coverage checker.
+  - New tooling: `scripts/memory-hooks/applyCharacterReview.ts` (`memory-hooks:apply:character-review`) applies character-hook decisions files — the batch-47 curated-draft pipeline refuses targeted fixes and re-running old rollout batches clobbers later drafts. The advisory `scripts/memory-hooks/checkComponentLabelAlignment.ts` (`memory-hooks:check:labels`) reports component labels that differ from a glyph's taught meaning; 15 near-synonym or pictographic labels remain listed for manual review.
+- Reason: hooks that render no bold or gloss familiar characters with unfamiliar senses read as broken next to the rest of the pack; emphasis only comes from `字(label)` tokens, and learners compare hook glosses against the meanings on their cards.
+- Affects: `public/data/memory-hooks/` (pack version `7082c19e8bc1`), `output/memory-hooks/book-1-word-review-decisions-v3.json`, `output/memory-hooks/book-1-character-review-decisions-v1.json` + `…-v2.json`, `scripts/memory-hooks/applyCharacterReview.ts` (new), `scripts/memory-hooks/checkComponentLabelAlignment.ts` (new), `package.json`, `scripts/README.md`, `tests/memoryHookWordQuality.test.ts`, `tests/memoryHookPack.test.ts`, `tests/memoryHookQualityChecker.test.ts`.
+
+### 2026-09-16 — Memory hooks: reviewer feedback — taught meanings only, shipped hooks triaged
+
+- Chosen:
+  - The 8 bridge glosses (`又(hand — also 'again')`) are replaced with natural sentences that use the taught meaning, e.g. 沒 "…and 又(again) comes up empty → 沒(not) there."; the bridge pattern is banned pack-wide and test-enforced alongside "calls with".
+  - Four hooks that invented a shape sense for a taught glyph now use the taught meaning: 子 `了(completed)`, 貴 `中(central)`, 需 `而(ér)` (reading label), 備 `用(use)`. The rule ("taught meanings win; readings allowed; genuine contextual senses stay") is recorded in the new `scripts/memory-hooks/STYLE.md`.
+  - The review page now triages **all 1167 hooks** high/medium/low (972/173/22) with per-item reasons and a changed/shipped provenance chip; the separate "Shipped" bucket is gone, and the alignment checker's remaining near-synonym/reading labels are listed as low for manual review (11 decision pairs remain).
+- Reason: review feedback rejected inventing senses for components that are taught characters, and asked that shipped hooks carry confidence triage too, not just the 137 changed ones.
+- Affects: `public/data/memory-hooks/` (pack version `423d5cf45b29`), `output/memory-hooks/book-1-character-review-decisions-v3.json`, `scripts/memory-hooks/buildHookReviewPage.ts`, `scripts/memory-hooks/STYLE.md` (new), `output/memory-hooks/review/`, `tests/memoryHookWordQuality.test.ts`, `DECISIONS.md`.
+
+### 2026-09-16 — Memory hooks: documented senses only; review marks flag stale text
+
+- Chosen:
+  - Word hooks that glossed a character with an undocumented sense were rewritten: 女生/男生 `生(birth)` (was "student"), 出生/生日 `生(birth)`, 生病 `生(grow)`, 打開/打算 `打(hit)`, 文章 `章(section)`; 大家 gained its big-house origin with `大(big) 家(house)`; 睡覺/節目/題 were rebuilt with taught senses (題 target label now "question"). Documented contextual senses stay (公 metric, 會 gathering, 上 go-to, 車 bus, 機 cell-phone).
+  - The alignment checker now treats is/are/was/been as forms of "be" so `是(is)` aligns; remaining findings dropped to 10 pairs (all reviewed near-synonyms or readings).
+  - `scripts/memory-hooks/STYLE.md` gained the documented-sense rule (rejected 生 "student" etc.).
+  - The review page stores a hook-text signature with every mark; if the text later changes (or the pack version bumps) the card shows "⚠ updated" and exports mark the entry `stale: true`, so already-fixed hooks cannot re-trigger old verdicts.
+- Reason: round-2 review flagged character glosses that contradicted the taught/dictionary meaning, and a stale-verdict export re-reported hooks already fixed in the shipped pack.
+- Affects: `public/data/memory-hooks/` (pack version `c8e9f8925fdb`), `output/memory-hooks/book-1-word-review-decisions-v4.json` + `book-1-character-review-decisions-v4.json`, `scripts/memory-hooks/buildHookReviewPage.ts`, `scripts/memory-hooks/checkComponentLabelAlignment.ts`, `scripts/memory-hooks/STYLE.md`, `output/memory-hooks/review/`, `DECISIONS.md`.
+
+### 2026-09-16 — Memory hooks: documented-sense sweep + alignment-checker fix
+
+- Chosen:
+  - Flagged hooks fixed: 代表 `代(replace)`, 可以 `以(according to)`, 快樂 `快(quick) + 樂(joy) → a quick burst of joy`; 睡覺/節目/題 polished (題 needed +1 char to clear the 55-character floor).
+  - Same-class sweep: 也許 `許(allow)`, 以後/所以 `以(yǐ)` reading, 平常 `平(flat)`, 秋天 `天(sky)`, 英文 `英(Yīng)` reading, 容易 `容(allow)`, 學生 `生(life)`, 幾點鐘 `點(point)`, 點心 `點(dot)`.
+  - `checkComponentLabelAlignment.ts` now skips multi-glyph tokens (`大家(everyone)`, `手機(cell phone)`) — they are word-level glosses, not component labels; the previous single-glyph regex mis-attributed them to the final glyph and produced ~half the false findings (and false Low triage).
+  - Review-page stale rule: legacy marks with a comment also get ⚠ after a pack bump (comment-only entries like the 支 complaint previously slipped through).
+- Reason: review round 3 kept finding character glosses that named senses the dictionary does not document for that glyph, and the checker itself was feeding phantom findings into the triage.
+- Affects: `public/data/memory-hooks/` (pack version `dae625d97aee`), `output/memory-hooks/book-1-word-review-decisions-v6.json`, `book-1-character-review-decisions-v6.json` + `v7.json`, `scripts/memory-hooks/checkComponentLabelAlignment.ts`, `buildHookReviewPage.ts`, `STYLE.md`, `tests/memoryHookWordQuality.test.ts`, `output/memory-hooks/review/`.
+
+### 2026-09-16 — Memory hooks: components must be mentioned in breakdown order
+
+- Chosen:
+  - All 69 character hooks whose prose jumped around the decomposition were rewritten so their `字(label)` tokens follow the order the app's breakdown shows (top/left/outer → bottom/right/inner). Reviewer example: 服 now "A 月(moon) pattern with a 卩(seal) pressed on, and 又(again) a hand smooths the cloth → on goes 服(clothes)."
+  - New `scripts/memory-hooks/checkComponentOrder.ts` (`memory-hooks:check:order`, `--strict`) computes expected order from the runtime trees with child-echo descent, ignoring repeated components; the review page shows a `⚠ order` chip for any hook that violates it.
+  - `STYLE.md` gained the ordering rule; double-character words are exempt (they mention the character once and say "said twice").
+- Reason: the story should walk the character the way the learner sees it broken down; the reviewer flagged 服 as reading backwards.
+- Affects: `public/data/memory-hooks/` (pack version `31e108c96b9a`), `output/memory-hooks/book-1-character-review-decisions-v8.json` + `v9.json`, `scripts/memory-hooks/checkComponentOrder.ts` (new), `buildHookReviewPage.ts`, `STYLE.md`, `output/memory-hooks/review/`.
+
+### 2026-09-16 — Memory hooks: coherent scenes only (no dangling props)
+
+- Chosen:
+  - 右 no longer invents a spoon: "The 𠂇(hand) that brings food to your 口(mouth) is your eating hand → the 右(the right side)." 左 mirrors it ("the 𠂇(left hand) that steadies your 工(work) is the helper"), and 有's 𠂇 label aligned to the sanctioned "hand".
+  - `STYLE.md` gained the coherence rule: every prop/action must come from the character's parts; the parts→action→meaning chain must be retellable without inventing anything; a regex prop-checker was tried and rejected as too noisy, so coherence stays a human review item.
+- Reason: the reviewer flagged 右's "hold the spoon → dining on the right" as nonsensical — the story had a prop the character never supplies.
+- Affects: `public/data/memory-hooks/` (pack version `641a0131d888`), `output/memory-hooks/book-1-character-review-decisions-v10.json` + `v11.json`, `scripts/memory-hooks/STYLE.md`, `output/memory-hooks/review/`, `DECISIONS.md`.

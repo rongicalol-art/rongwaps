@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { analyzeCoverage, scanRenderSafety } from '../scripts/memory-hooks/checkHookQuality';
+import {
+  findAlignmentFindings,
+  labelAlignsWithMeaning,
+} from '../scripts/memory-hooks/checkComponentLabelAlignment';
 import type { RuntimeDirectComponent } from '../scripts/memory-hooks/runtimeIndex';
 
 const glyph = (value: string): RuntimeDirectComponent => ({ kind: 'glyph', key: `g:${value}`, glyph: value });
@@ -109,4 +113,29 @@ test('render safety rejects rare glyph tokens and flags Ext-A glyphs', () => {
 test('render safety accepts glyphs bundled in the RW-Extras webfont', () => {
   assert.equal(scanRenderSafety('A 䒑(grass) top rests above 𦥑(hands).').length, 0);
   assert.equal(scanRenderSafety('An 土(earth) plot and a 𣥂(footprint).').length, 0);
+});
+
+test('label alignment accepts taught senses, synonyms, readings, and explicit bridges', () => {
+  assert.equal(labelAlignsWithMeaning('person', 'person; human being'), true);
+  assert.equal(labelAlignsWithMeaning('moon', 'month'), false);
+  assert.equal(labelAlignsWithMeaning('qiě', 'moreover', ['qiě']), true);
+  assert.equal(labelAlignsWithMeaning('is', 'to be; indeed, right, yes', ['shì']), true);
+  assert.equal(labelAlignsWithMeaning('hand — also \'again\'', 'both...and...', ['yòu']), false);
+  assert.equal(labelAlignsWithMeaning('hand — also \'again\'', 'again, also, in addition', ['yòu']), true);
+});
+
+test('label alignment reports labels that drop a taught meaning', () => {
+  const records = [
+    { character: '友', hook: 'A 𠂇(left hand) reaches out as 友(friend).', acceptance: 'clean' },
+    { character: '備', hook: 'A 用(barred frame) readies 備(prepare).', acceptance: 'clean' },
+    { character: '水', hook: 'A cool 水(water) stream.', acceptance: 'clean' },
+  ];
+  const findings = findAlignmentFindings(records, new Map([
+    ['又', 'again, also, in addition'],
+    ['用', 'to use'],
+    ['水', 'water'],
+  ]), new Map([['又', ['yòu']]]));
+
+  assert.deepEqual(findings.map((finding) => finding.glyph), ['用']);
+  assert.deepEqual(findings[0].hooks, ['備']);
 });

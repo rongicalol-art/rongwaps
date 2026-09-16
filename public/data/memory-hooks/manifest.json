@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "version": "ec55f4d07a6fe6ffdbf3681ea098aa15aad98ca090449ca075b195322dfed72b",
-  "generatedAt": "2026-09-16T08:30:24.390Z",
+  "version": "641a0131d888c503cb6580d60fc666b5c6672526f18b01c9a2f2f4a82b7795fd",
+  "generatedAt": "2026-09-16T12:49:57.312Z",
   "totalCount": 1442,
   "books": [
     {
       "bookId": 1,
       "count": 1442,
       "path": "/data/memory-hooks/book-1.json",
-      "sha256": "ec55f4d07a6fe6ffdbf3681ea098aa15aad98ca090449ca075b195322dfed72b",
-      "bytes": 217459
+      "sha256": "641a0131d888c503cb6580d60fc666b5c6672526f18b01c9a2f2f4a82b7795fd",
+      "bytes": 217481
     }
   ]
 }

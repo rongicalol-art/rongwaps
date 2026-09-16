@@ -10,6 +10,7 @@
 import './acceptance/documentation.test';
 import './acceptance/dependencies.test';
 import './acceptance/agents_spec.test';
+import './acceptance/memory_hooks.test';
 import './acceptance/static_data.test';
 import './acceptance/code_quality.test';
 import './acceptance/server.test';
