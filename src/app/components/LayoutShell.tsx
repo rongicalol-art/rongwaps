@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { SideNav, type SideNavProps } from './SideNav';
+import { SideNav, navTabLabel, type SideNavProps } from './SideNav';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import { SAMPLE_BOOKS } from '../../data/books';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
@@ -55,6 +56,10 @@ export function LayoutShell({
     root.style.setProperty('--workspace-desktop-nav-width', desktopNavWidth);
   }, [isDesktopOrTablet, isCollapsed]);
 
+  // The shell owns the workspace view name; the study windows (reader, grammar)
+  // override it while they are open and hand it back when they close.
+  useDocumentTitle(navTabLabel(activeTab));
+
   // This shell root is the ONLY owner of the workspace canvas tone. Every
   // child column (sidebar lane, content) is transparent and shows it through.
   // Swap to the practice tone only when the open surface is practice-toned:
@@ -68,6 +73,22 @@ export function LayoutShell({
         activeActivity || practiceCanvasOpen ? 'bg-ui-practice-canvas' : 'bg-ui-canvas'
       }`}
     >
+      {/* WCAG 2.4.1: the first tab stop skips the sidebar + workspace chrome.
+          Hidden by translate + opacity (not `display:none`, which would remove
+          it from the keyboard order too). `z-50` puts it over the content
+          column and its sticky header while staying under the sidebar/drawer
+          layers, so an open nav drawer never gets a chip floating over it.
+          Omitted while a study window owns the viewport, because the target
+          `<main>` is hidden then. */}
+      {!isOverlayActive && (
+        <a
+          href="#main-content"
+          className="focus-ring pointer-events-none absolute left-1/2 top-3 z-50 -translate-x-1/2 -translate-y-24 rounded-control border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface px-4 py-2.5 text-sm font-black text-ui-ink-strong opacity-0 shadow-ambient-md transition-[transform,opacity] duration-150 motion-reduce:transition-none focus:pointer-events-auto focus:translate-y-0 focus:opacity-100"
+        >
+          Skip to main content
+        </a>
+      )}
+
       {/* Desktop / Tablet permanent floating sidebar (never hidden to 0px) */}
       <div className="hidden md:flex">
         <div
@@ -133,7 +154,12 @@ export function LayoutShell({
         className="absolute inset-y-0 right-0 z-10 flex flex-col overflow-hidden transition-[left] duration-300 ease-out"
         style={{ left: 'var(--workspace-nav-width)' }}
       >
-        <main className={`flex-1 w-full relative overflow-y-auto overflow-x-hidden overscroll-none flex flex-col ${isOverlayActive ? 'hidden' : ''}`} aria-hidden={isOverlayActive}>
+        <main
+          id="main-content"
+          tabIndex={-1}
+          className={`flex-1 w-full relative overflow-y-auto overflow-x-hidden overscroll-none flex flex-col outline-none ${isOverlayActive ? 'hidden' : ''}`}
+          aria-hidden={isOverlayActive}
+        >
           {children}
         </main>
 
