@@ -6,11 +6,11 @@ import type {
   CharacterHookPlanV2,
   HookFrame,
   PlannedComponentUse,
-} from '../../src/features/character-memory-hooks/model';
+} from '../../src/types/memoryHooks';
 import {
   BOOK_ONE_EVALUATION_BATCH_47,
 } from '../../src/data/memoryHooks/book1EvaluationBatch';
-import type { ComponentLexiconEntry } from '../../src/features/character-memory-hooks/model';
+import type { ComponentLexiconEntry } from '../../src/types/memoryHooks';
 import { STROKE_GLYPHS } from './componentRules';
 import { loadPlanningLexicon } from './planningLexicon';
 import { loadRuntimeDirectComponents, type RuntimeDirectComponent } from './runtimeIndex';

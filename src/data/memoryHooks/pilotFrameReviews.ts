@@ -5,7 +5,7 @@ import type {
   RelationshipEvidenceSlot,
   RelationshipRole,
   TargetSemanticBridge,
-} from '../../features/character-memory-hooks/model';
+} from '../../types/memoryHooks';
 
 export interface ReviewedComponentSelection {
   glyph: string;

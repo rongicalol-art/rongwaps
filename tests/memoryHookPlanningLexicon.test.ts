@@ -5,7 +5,7 @@ import { mergePlanningLexicon } from '../scripts/memory-hooks/planningLexicon';
 import type {
   BookCharacterInventoryEntry,
   ComponentLexiconEntry,
-} from '../src/features/character-memory-hooks/model';
+} from '../src/types/memoryHooks';
 
 const base = new Map<string, ComponentLexiconEntry>([
   ['g:子', {

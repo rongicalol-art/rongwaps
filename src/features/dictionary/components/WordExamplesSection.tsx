@@ -3,7 +3,7 @@ import { audioService } from '../../../services/audioService';
 import { useAppStore } from '../../../store/useAppStore';
 import { numberToToneMarks } from '../../../utils/pinyin';
 import { SAMPLE_BOOKS } from '../../../data/books';
-import type { WordExample } from '../hooks/useWordExtras';
+import type { WordExample } from '../../../types/models';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
 

@@ -1,4 +1,4 @@
-import type { ApprovedDefaultLabel, ComponentProfile } from '../../features/character-memory-hooks/model';
+import type { ApprovedDefaultLabel, ComponentProfile } from '../../types/memoryHooks';
 
 export interface RawComponentMetadata {
   character: string;

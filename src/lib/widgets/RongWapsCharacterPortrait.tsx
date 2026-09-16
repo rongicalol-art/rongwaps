@@ -1,19 +1,6 @@
 import React from 'react';
 import { cn } from '../../utils/cn';
-
-export type RongWapsCharacter =
-  | 'youmei'
-  | 'zhongming'
-  | 'yiwen'
-  | 'guoan'
-  | 'yuanzhen'
-  | 'jiale'
-  | 'teacher'
-  | 'parent'
-  | 'doctor'
-  | 'cafeWorker'
-  | 'apartmentAgent'
-  | 'neighbor';
+import type { RongWapsCharacter } from '../../types/models';
 
 const PORTRAITS: Record<RongWapsCharacter, string> = {
   youmei: new URL('../../assets/images/characters/portraits/youmei.webp', import.meta.url).href,

@@ -7,7 +7,7 @@ import {
   type TooltipPlacement,
 } from '../utils/readerTooltipPosition';
 import { cn } from '../../../utils/cn';
-import { AppIcon } from '../../../lib/widgets/AppIcon';
+import { AppIcon } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 
 export interface ReaderWordTooltipProps {

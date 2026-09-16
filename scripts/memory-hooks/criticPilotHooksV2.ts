@@ -6,8 +6,8 @@ import type {
   HookStyleIssue,
   HookStyleReview,
   MemoryHookCandidateV2,
-} from '../../src/features/character-memory-hooks/model';
-import type { DeterministicHookQualityResult } from '../../src/features/character-memory-hooks/model';
+} from '../../src/types/memoryHooks';
+import type { DeterministicHookQualityResult } from '../../src/types/memoryHooks';
 import { evaluateHookStylePreflight } from './stylePreflight';
 
 dotenv.config({ path: resolve(import.meta.dirname, '../../.env'), quiet: true });

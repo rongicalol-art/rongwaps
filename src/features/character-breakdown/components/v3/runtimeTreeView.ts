@@ -1,4 +1,4 @@
-import type { RuntimeVisibleChild } from '../../../character-decomposition/runtimeLoader';
+import type { RuntimeVisibleChild } from '../../../character-decomposition';
 import { canExpandRuntimeChild } from '../../hooks/useRuntimeDecompositionTree';
 
 export interface RuntimeChildPresentation {

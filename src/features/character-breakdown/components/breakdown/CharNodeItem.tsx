@@ -6,7 +6,7 @@ import { SAMPLE_BOOKS } from '../../../../data/books';
 import { numberToToneMarks } from '../../../../utils/pinyin';
 import { useComponentVocabRelation } from '../../../../hooks/useComponentVocabRelation';
 import { useCharBreakdown } from '../../../../hooks/useCharBreakdown';
-import { projectLegacyDecomposition } from '../../../character-decomposition/legacyProjection';
+import { projectLegacyDecomposition } from '../../../character-decomposition';
 
 interface CharNodeItemProps {
   char: string;

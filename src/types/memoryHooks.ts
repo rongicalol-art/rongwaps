@@ -1,3 +1,13 @@
+/**
+ * @fileoverview Memory-hook authored-content and planning models.
+ *
+ * These types describe the shape of the memory-hook content authored under
+ * `src/data/memoryHooks/` and produced by `scripts/memory-hooks/`. They live
+ * in the types layer rather than in the `character-memory-hooks` feature
+ * package because the data layer and the authoring scripts both consume them
+ * (see docs/ARCHITECTURE.md § Dependency direction).
+ */
+
 export type MemoryHookKind = 'origin' | 'formation-clue' | 'memory-aid';
 export type MemoryHookStatus = 'eligible' | 'needs-review' | 'no-hook';
 export type RelationshipRole = 'semantic' | 'phonetic' | 'visual' | 'unclassified';

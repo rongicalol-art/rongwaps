@@ -2,11 +2,9 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   getDecompositionRuntimeService,
   type DecompositionService,
-} from '../../character-decomposition/decompositionService';
-import type {
-  RuntimeDirectChildrenResult,
-  RuntimeVisibleChild,
-} from '../../character-decomposition/runtimeLoader';
+  type RuntimeDirectChildrenResult,
+  type RuntimeVisibleChild,
+} from '../../character-decomposition';
 
 export interface RuntimeTreeNodeState {
   status: RuntimeDirectChildrenResult['status'] | 'idle' | 'loading';

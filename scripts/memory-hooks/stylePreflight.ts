@@ -2,7 +2,7 @@ import type {
   CharacterHookPlanV2,
   HookStyleIssue,
   MemoryHookCandidateV2,
-} from '../../src/features/character-memory-hooks/model';
+} from '../../src/types/memoryHooks';
 
 export interface StylePreflightResult {
   issues: HookStyleIssue[];

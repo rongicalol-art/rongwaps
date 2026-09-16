@@ -6,7 +6,7 @@ import type {
   CharacterHookPlanV2,
   ComponentLexiconEntry,
   GeneratedMemoryHookCandidate,
-} from '../src/features/character-memory-hooks/model';
+} from '../src/types/memoryHooks';
 import {
   BOOK_ONE_PILOT_SELECTION,
   buildCharacterPlan,

@@ -5,7 +5,7 @@ import type {
   CharacterMemoryHookPlan,
   GeneratedMemoryHookCandidate,
   MemoryHookValidationResult,
-} from '../../src/features/character-memory-hooks/model';
+} from '../../src/types/memoryHooks';
 import { validateGeneratedCandidate } from './pipeline';
 
 dotenv.config({ path: resolve(import.meta.dirname, '../../.env'), quiet: true });

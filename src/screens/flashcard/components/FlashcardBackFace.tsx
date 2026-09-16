@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 import type { Flashcard } from '../../../data/flashcards';
-import { MemoryHookCharacter } from '../../../features/character-memory-hooks';
-import { renderHookText } from '../../../features/character-memory-hooks/hookText';
+import { MemoryHookCharacter, renderHookText } from '../../../features/character-memory-hooks';
 import type { RankedExample } from '../../../utils/courseExamples';
 import { extractWordVariants } from '../../../utils/courseExamples';
 import { isHanziChar } from '../../../utils/hanzi';

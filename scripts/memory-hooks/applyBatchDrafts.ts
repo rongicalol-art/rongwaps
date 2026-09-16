@@ -6,7 +6,7 @@ import type {
   DescribedPartUse,
   DeterministicHookQualityResult,
   MemoryHookCandidateV2,
-} from '../../src/features/character-memory-hooks/model';
+} from '../../src/types/memoryHooks';
 import { validateHookQualityDeterministically } from './qualityPlanner';
 import { evaluateHookStylePreflight } from './stylePreflight';
 

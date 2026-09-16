@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 import type {
   CharacterHookPlanV2,
   MemoryHookCandidateV2,
-} from '../../src/features/character-memory-hooks/model';
+} from '../../src/types/memoryHooks';
 import { evaluateHookStylePreflight } from './stylePreflight';
 import { validateHookQualityDeterministically } from './qualityPlanner';
 

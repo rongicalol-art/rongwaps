@@ -4,7 +4,7 @@ import type {
   HookFrame,
   MemoryHookCandidateV2,
   PlannedComponentUse,
-} from '../../src/features/character-memory-hooks/model';
+} from '../../src/types/memoryHooks';
 import { validateTargetSemanticBridge } from './semanticBridge';
 
 export interface DeterministicRenderResult {

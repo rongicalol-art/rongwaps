@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import type { CharacterHookPlanV2, DescribedPartUse, MemoryHookCandidateV2 } from '../../src/features/character-memory-hooks/model';
+import type { CharacterHookPlanV2, DescribedPartUse, MemoryHookCandidateV2 } from '../../src/types/memoryHooks';
 import { validateHookQualityDeterministically } from './qualityPlanner';
 import { evaluateHookStylePreflight } from './stylePreflight';
 import { auditSingleHook } from './strictHookAudit';

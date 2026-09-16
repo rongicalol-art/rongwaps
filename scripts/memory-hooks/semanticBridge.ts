@@ -2,7 +2,7 @@ import type {
   DeterministicHookQualityIssue,
   RelationshipEvidenceSlot,
   TargetSemanticBridge,
-} from '../../src/features/character-memory-hooks/model';
+} from '../../src/types/memoryHooks';
 
 const BRIDGE_MAX_WORDS = 18;
 

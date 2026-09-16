@@ -10,7 +10,7 @@ import type {
   MemoryHookValidationResult,
   PlannedHookComponent,
   RelationshipEvidence,
-} from '../../src/features/character-memory-hooks/model';
+} from '../../src/types/memoryHooks';
 import type { RuntimeTreeNode } from '../../src/features/character-decomposition/runtimePack';
 import { STROKE_GLYPHS } from './componentRules';
 

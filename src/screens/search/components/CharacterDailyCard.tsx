@@ -1,4 +1,4 @@
-import { useRuntimeDecompositionTree } from '../../../features/character-breakdown/hooks/useRuntimeDecompositionTree';
+import { useRuntimeDecompositionTree } from '../../../features/character-breakdown';
 import { AppIcon, Skeleton } from '../../../lib/widgets';
 import type { BeginnerDictionaryTerm } from '../../../data/dictionaryHome';
 

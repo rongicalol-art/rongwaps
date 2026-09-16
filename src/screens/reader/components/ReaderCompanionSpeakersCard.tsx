@@ -1,14 +1,11 @@
 import React, { useMemo } from 'react';
-import type { ReadingRecord } from '../../../types/models';
+import type { ReadingRecord, RongWapsCharacter } from '../../../types/models';
 import {
   CHARACTER_PROFILES,
   getCharacterForSpeaker,
   type CharacterProfileInfo,
 } from '../../../utils/speakerCharacters';
-import {
-  RongWapsCharacterPortrait,
-  type RongWapsCharacter,
-} from '../../../lib/widgets/RongWapsCharacterPortrait';
+import { RongWapsCharacterPortrait } from '../../../lib/widgets';
 
 export interface ReaderCompanionSpeakersCardProps {
   reading: ReadingRecord;

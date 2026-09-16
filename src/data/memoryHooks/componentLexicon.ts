@@ -1,4 +1,4 @@
-import type { ComponentLexiconEntry } from '../../features/character-memory-hooks/model';
+import type { ComponentLexiconEntry } from '../../types/memoryHooks';
 
 export const COMPONENT_LEXICON_VERSION = 'book1-pilot-v1';
 

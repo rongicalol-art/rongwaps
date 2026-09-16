@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { rankExampleSentences } from '../src/features/character-breakdown/utils/rankExampleSentences';
-import type { WordExample } from '../src/features/dictionary/hooks/useWordExtras';
+import type { WordExample } from '../src/types/models';
 
 function sentence(chinese: string, sourceFront: string): WordExample {
   return {

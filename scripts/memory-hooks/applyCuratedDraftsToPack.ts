@@ -1,7 +1,7 @@
 import { copyFileSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import type { CharacterHookPlanV2 } from '../../src/features/character-memory-hooks/model';
+import type { CharacterHookPlanV2 } from '../../src/types/memoryHooks';
 import type { HookRecord } from './strictHookAudit';
 
 const ROOT = resolve(import.meta.dirname, '../..');

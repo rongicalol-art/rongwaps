@@ -1,4 +1,4 @@
-import type { WordExample } from '../../dictionary/hooks/useWordExtras';
+import type { WordExample } from '../../../types/models';
 import { FORMULAIC_PHRASES } from '../../../data/formulaicPhrases';
 
 // Tunable scoring weights. Occurrences doing independent work should clearly
