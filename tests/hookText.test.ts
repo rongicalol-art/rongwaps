@@ -26,6 +26,21 @@ test('tokenizeHookText handles leading tokens, multi-word labels and spaced vari
   ]);
 });
 
+test('tokenizeHookText handles legacy (字) references and (字 + 字) groups', () => {
+  assert.deepEqual(tokenizeHookText('Knowing the way (道) is to know (知).'), [
+    { kind: 'text', text: 'Knowing the way ' },
+    { kind: 'glyphRef', glyphs: ['道'] },
+    { kind: 'text', text: ' is to know ' },
+    { kind: 'glyphRef', glyphs: ['知'] },
+    { kind: 'text', text: '.' },
+  ]);
+  assert.deepEqual(tokenizeHookText("the whole household' (大 + 家), so"), [
+    { kind: 'text', text: "the whole household' " },
+    { kind: 'glyphRef', glyphs: ['大', '家'] },
+    { kind: 'text', text: ', so' },
+  ]);
+});
+
 test('tokenizeHookText leaves the sanctioned sound-component pinyin note untouched', () => {
   const hook = 'A 青(qīng) as the sound component (qīng -> qǐng) → 請(please).';
   const segments = tokenizeHookText(hook);
@@ -42,6 +57,22 @@ test('renderHookText drops gloss parentheses and bolds the label', () => {
   assert.ok(html.includes('一 <strong'), html);
   assert.ok(html.includes('→ '), html);
   assert.ok(html.includes('同 <strong'), html);
+});
+
+test('renderHookText bolds legacy glyph references without parentheses', () => {
+  const html = renderToStaticMarkup(renderHookText("Knowing the way (道) is to know (知) → 知道 means 'to know'."));
+  assert.ok(!html.includes('(道)') && !html.includes('(知)'), html);
+  assert.ok(html.includes('>道</strong>'), html);
+  assert.ok(html.includes('>知</strong>'), html);
+  const group = renderToStaticMarkup(renderHookText("the whole household' (大 + 家), so"));
+  assert.ok(!group.includes('(大 + 家)'), group);
+  assert.ok(group.includes('>大</strong> + <strong'), group);
+  assert.ok(group.includes('>家</strong>'), group);
+});
+
+test('renderHookText uses the softened emphasis tone', () => {
+  const html = renderToStaticMarkup(renderHookText('A 口(mouth) and (道).'));
+  assert.ok(html.includes('class="font-black text-ui-ink-strong/90"'), html);
 });
 
 test('renderHookText keeps the sound-component pinyin note parenthesized', () => {

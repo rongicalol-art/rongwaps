@@ -18,24 +18,42 @@ export function normalizeMnemonic(raw: unknown): string | null {
 
 export type HookTextSegment =
   | { kind: 'text'; text: string }
-  | { kind: 'token'; glyph: string; label: string };
+  | { kind: 'token'; glyph: string; label: string }
+  | { kind: 'glyphRef'; glyphs: string[] };
 
 /**
- * Component tokens are stored as `字(label)`; the artifacts carry occasional
- * spaced variants (`字 (label)`) from older generators. Pure-English
- * parentheticals (e.g. the sanctioned "as the sound component (qīng -> qǐng)")
- * never match because the gloss needs a Han glyph immediately before the `(`.
+ * One bold tone for every emphasis in a hook: darker than body ink (`ui-ink`)
+ * but softer than the near-black heading tone. 85% opacity would cross lighter
+ * than the body text over the cream card, so 90% is the floor for "darker than
+ * normal".
  */
-const HOOK_TOKEN = /([\p{Script=Han}]+)\s*\(([^()]+)\)/gu;
+const EMPHASIS_CLASS = 'font-black text-ui-ink-strong/90';
 
-/** Splits a hook into plain-text runs and `字(label)` gloss segments. */
+/**
+ * Component tokens are stored as `字(label)` (older generators wrote
+ * `字 (label)`), and legacy word hooks carry glyph references as `(字)` or
+ * glyph groups as `(字 + 字)`. Pure-English parentheticals — e.g. the
+ * sanctioned "as the sound component (qīng -> qǐng)" — never match because
+ * every alternative requires a Han glyph next to the parenthesis.
+ */
+function hookTokenPattern(): RegExp {
+  return /([\p{Script=Han}]+)\s*\(([^()]+)\)|\(([\p{Script=Han}]+(?:\s*\+\s*[\p{Script=Han}]+)+)\)|\(([\p{Script=Han}]+)\)/gu;
+}
+
+/** Splits a hook into plain-text runs, `字(label)` glosses and `(字)` references. */
 export function tokenizeHookText(text: string): HookTextSegment[] {
   const segments: HookTextSegment[] = [];
   let lastIndex = 0;
-  for (const match of text.matchAll(HOOK_TOKEN)) {
+  for (const match of text.matchAll(hookTokenPattern())) {
     const index = match.index ?? 0;
     if (index > lastIndex) segments.push({ kind: 'text', text: text.slice(lastIndex, index) });
-    segments.push({ kind: 'token', glyph: match[1], label: match[2].trim() });
+    if (match[1]) {
+      segments.push({ kind: 'token', glyph: match[1], label: match[2].trim() });
+    } else if (match[3]) {
+      segments.push({ kind: 'glyphRef', glyphs: match[3].split(/\s*\+\s*/) });
+    } else if (match[4]) {
+      segments.push({ kind: 'glyphRef', glyphs: [match[4]] });
+    }
     lastIndex = index + match[0].length;
   }
   if (lastIndex < text.length) segments.push({ kind: 'text', text: text.slice(lastIndex) });
@@ -48,7 +66,7 @@ function renderEmphasis(text: string): ReactNode {
   if (parts.length < 3) return text;
   return parts.map((part, index) =>
     index % 2 === 1 ? (
-      <strong key={index} className="font-black text-ui-ink-strong">
+      <strong key={index} className={EMPHASIS_CLASS}>
         {part}
       </strong>
     ) : (
@@ -59,19 +77,31 @@ function renderEmphasis(text: string): ReactNode {
 
 /**
  * Renders a hook for display: `字(label)` glosses drop the parentheses and
- * bold the label (`口 mouth`) so the Chinese glyph can never be confused with
- * the `→` separator or punctuation, and `**emphasis**` stays supported.
+ * bold the label (`口 mouth`), legacy `(字)` / `(字 + 字)` references bold the
+ * glyphs instead, and `**emphasis**` stays supported.
  */
 export function renderHookText(text: string): ReactNode {
-  return tokenizeHookText(text).map((segment, index) =>
-    segment.kind === 'token' ? (
-      <span key={index}>
-        {segment.glyph}
-        {' '}
-        <strong className="font-black text-ui-ink-strong">{segment.label}</strong>
-      </span>
-    ) : (
-      <span key={index}>{renderEmphasis(segment.text)}</span>
-    ),
-  );
+  return tokenizeHookText(text).map((segment, index) => {
+    if (segment.kind === 'token') {
+      return (
+        <span key={index}>
+          {segment.glyph}
+          {' '}
+          <strong className={EMPHASIS_CLASS}>{segment.label}</strong>
+        </span>
+      );
+    }
+    if (segment.kind === 'glyphRef') {
+      return (
+        <span key={index}>
+          {segment.glyphs.flatMap((glyph, glyphIndex) =>
+            glyphIndex === 0
+              ? [<strong key={glyphIndex} className={EMPHASIS_CLASS}>{glyph}</strong>]
+              : [' + ', <strong key={glyphIndex} className={EMPHASIS_CLASS}>{glyph}</strong>],
+          )}
+        </span>
+      );
+    }
+    return <span key={index}>{renderEmphasis(segment.text)}</span>;
+  });
 }
