@@ -1,5 +1,6 @@
 import { cn } from '../../../utils/cn';
-import { RongWapsCharacterPortrait, type RongWapsCharacter } from '../../../lib/widgets';
+import { RongWapsCharacterPortrait } from '../../../lib/widgets';
+import type { RongWapsCharacter } from '../../../types/models';
 
 /**
  * Speaker avatar rendered beside a dialogue bubble (left for the opener,
