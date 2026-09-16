@@ -18,6 +18,7 @@ import {
   normalizePartSelection,
   SHARED_REVIEW_SESSION_KEY,
 } from '../../utils/lessonPartSelection';
+import { aggregateLessonPartProgress } from '../../utils/lessonPartProgress';
 import {
   selectPracticePreferences,
   usePracticePreferencesStore,
@@ -123,19 +124,8 @@ export function ActivityModals({
     const cacheKey = `vocab-${activeBookId}-${lessonId}`;
     const allCacheKey = `vocab-${activeBookId}-all`;
     const cached = vocabularyCache.get<Flashcard[]>(cacheKey) || vocabularyCache.get<Flashcard[]>(allCacheKey);
-    const lessonCards = cached?.filter((c) => c.lessonId === lessonId);
-    if (!lessonCards || lessonCards.length === 0) return [];
-    const learnedCards = useAppStore.getState().learnedCards;
-    return Array.from(
-      lessonCards.reduce((map, card) => {
-        const partId = card.partId ?? 1;
-        const current = map.get(partId) ?? { id: partId, wordCount: 0, learnedCount: 0, isSelected: false };
-        current.wordCount += 1;
-        if (learnedCards.includes(card.id)) current.learnedCount += 1;
-        map.set(partId, current);
-        return map;
-      }, new Map<number, CourseLessonPartProgress>()).values(),
-    ).sort((a, b) => a.id - b.id);
+    const lessonCards = cached?.filter((c) => c.lessonId === lessonId) ?? [];
+    return aggregateLessonPartProgress(lessonCards, useAppStore.getState().learnedCards);
   }, [activeBookId]);
 
   const [studyLessonParts, setStudyLessonParts] = useState<CourseLessonPartProgress[]>(() => {
@@ -225,18 +215,7 @@ export function ActivityModals({
 
     fetchVocabulary(activeBookId, studyLessonId).then((cards) => {
       if (!isMounted) return;
-      const learnedCards = useAppStore.getState().learnedCards;
-      const parts = Array.from(
-        cards.reduce((map, card) => {
-          const partId = card.partId ?? 1;
-          const current = map.get(partId) ?? { id: partId, wordCount: 0, learnedCount: 0, isSelected: false };
-          current.wordCount += 1;
-          if (learnedCards.includes(card.id)) current.learnedCount += 1;
-          map.set(partId, current);
-          return map;
-        }, new Map<number, CourseLessonPartProgress>()).values(),
-      ).sort((a, b) => a.id - b.id);
-      setStudyLessonParts(parts);
+      setStudyLessonParts(aggregateLessonPartProgress(cards, useAppStore.getState().learnedCards));
     }).catch(() => {
       if (isMounted && cachedParts.length === 0) setStudyLessonParts([]);
     });
@@ -245,6 +224,23 @@ export function ActivityModals({
       isMounted = false;
     };
   }, [activeActivity, activeBookId, getCachedParts, studyLessonId]);
+
+  /**
+   * Persists a part-id selection for the lesson on screen. `null` from
+   * `normalizePartSelection` means "nothing valid selected", which every caller
+   * treats as a no-op.
+   */
+  const applyPartSelection = useCallback((partIds: number[]) => {
+    if (!studySelectionKey || visibleStudyParts.length === 0) return;
+
+    const normalized = normalizePartSelection(partIds, visibleStudyParts.map((part) => part.id));
+    if (!normalized) return;
+
+    setSelectedLessonParts((current) => ({
+      ...current,
+      [studySelectionKey]: normalized,
+    }));
+  }, [setSelectedLessonParts, studySelectionKey, visibleStudyParts]);
 
   const toggleStudyPart = useCallback((partId: number) => {
     if (!studyLessonId || !studySelectionKey || visibleStudyParts.length === 0) return;
@@ -259,16 +255,10 @@ export function ActivityModals({
       : [...currentPartIds, partId];
     if (toggledPartIds.length === 0) return;
 
-    const normalized = normalizePartSelection(toggledPartIds, availablePartIds);
-    if (!normalized) return;
-
-    setSelectedLessonParts((current) => ({
-      ...current,
-      [studySelectionKey]: normalized,
-    }));
+    applyPartSelection(toggledPartIds);
   }, [
+    applyPartSelection,
     selectedLessonParts,
-    setSelectedLessonParts,
     studyLessonId,
     studySelectionKey,
     visibleStudyParts,
@@ -277,20 +267,24 @@ export function ActivityModals({
   const selectStudyPart = useCallback((partId: number) => {
     if (!studyLessonId || !studySelectionKey || visibleStudyParts.length === 0) return;
 
-    const availablePartIds = visibleStudyParts.map((part) => part.id);
-    const normalized = normalizePartSelection([partId], availablePartIds);
-    if (!normalized) return;
-
-    setSelectedLessonParts((current) => ({
-      ...current,
-      [studySelectionKey]: normalized,
-    }));
+    applyPartSelection([partId]);
   }, [
-    setSelectedLessonParts,
+    applyPartSelection,
     studyLessonId,
     studySelectionKey,
     visibleStudyParts,
   ]);
+
+  // Provide a next-part action only in single-lesson, multi-part, non-review/library sessions.
+  const isMultiPart = !isLibraryMode && !isReviewMode && visibleStudyParts.length >= 2;
+  const nextStudyPartId = useMemo(() => {
+    if (!isMultiPart) return null;
+
+    const availablePartIds = visibleStudyParts.map((part) => part.id);
+    const currentlySelected = selectedStudyPartIds[0] ?? availablePartIds[0];
+    const currentPos = availablePartIds.indexOf(currentlySelected);
+    return availablePartIds[(currentPos + 1) % availablePartIds.length];
+  }, [isMultiPart, selectedStudyPartIds, visibleStudyParts]);
 
   /**
    * On completion, advances to the next vocabulary part for this lesson and
@@ -298,47 +292,28 @@ export function ActivityModals({
    * the last part is finished, giving a natural "loop back" behaviour.
    */
   const handleNextPart = useCallback(() => {
-    if (!studySelectionKey || visibleStudyParts.length < 2) return;
-
-    const availablePartIds = visibleStudyParts.map((p) => p.id);
-    const currentlySelected = selectedStudyPartIds[0] ?? availablePartIds[0];
-    const currentPos = availablePartIds.indexOf(currentlySelected);
-    const nextPartId = availablePartIds[(currentPos + 1) % availablePartIds.length];
+    if (!studySelectionKey || nextStudyPartId === null) return;
 
     // Clear old session progress so the new part starts at card 0.
     const oldSessionKey = getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
     useAppStore.getState().clearSessionProgressIndex(oldSessionKey);
 
-    const normalized = normalizePartSelection([nextPartId], availablePartIds);
-    if (!normalized) return;
-
-    setSelectedLessonParts((current) => ({
-      ...current,
-      [studySelectionKey]: normalized,
-    }));
+    applyPartSelection([nextStudyPartId]);
   }, [
     activeBookId,
+    applyPartSelection,
+    nextStudyPartId,
     selectedLessons,
     selectedLessonParts,
-    selectedStudyPartIds,
-    setSelectedLessonParts,
     studySelectionKey,
-    visibleStudyParts,
   ]);
 
-  // Provide a next-part action only in single-lesson, multi-part, non-review/library sessions.
-  const isMultiPart = !isLibraryMode && !isReviewMode && visibleStudyParts.length >= 2;
   const onPartContinue = isMultiPart ? handleNextPart : undefined;
 
   // Compute the label for the continue button (e.g. "Part 2" when wrapping from Part 1).
-  const partContinueLabel = useMemo(() => {
-    if (!isMultiPart) return 'Continue';
-    const availablePartIds = visibleStudyParts.map((p) => p.id);
-    const currentlySelected = selectedStudyPartIds[0] ?? availablePartIds[0];
-    const currentPos = availablePartIds.indexOf(currentlySelected);
-    const nextPartId = availablePartIds[(currentPos + 1) % availablePartIds.length];
-    return `Continue (Part ${nextPartId})`;
-  }, [isMultiPart, visibleStudyParts, selectedStudyPartIds]);
+  const partContinueLabel = nextStudyPartId === null
+    ? 'Continue'
+    : `Continue (Part ${nextStudyPartId})`;
 
   return (
     <>
