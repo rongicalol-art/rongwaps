@@ -7,9 +7,7 @@ import { ActionButton, AppIcon, ScreenLayout, ScreenSkeleton } from '../../lib/w
 import { useWriting } from './hooks/useWriting';
 import { SingleChar } from './HanziCanvas';
 import { WritingDock } from './components/WritingDock';
-import { FlashcardBackFace } from '../flashcard/components/FlashcardBackFace';
-import { getCardWidth } from '../flashcard/components/DraggableFlashcard';
-import { useCurriculumExamples } from '../flashcard/hooks/useCurriculumExamples';
+import { FlashcardBackFace, getCardWidth, useCurriculumExamples } from '../../features/flashcards';
 import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
 import { numberToToneMarks } from '../../utils/pinyin';
 import { cn } from '../../utils/cn';

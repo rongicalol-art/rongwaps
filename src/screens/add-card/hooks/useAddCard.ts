@@ -8,7 +8,7 @@ import { useDictionarySearch, SearchResult } from '../../../hooks/useDictionaryS
 type ViewState = 'front' | 'back';
 type Direction = 'fwd' | 'back' | 'none';
 
-import { resolveFolderColor } from '../../library/utils/folderColors';
+import { resolveFolderColor } from '../../../utils/folderColors';
 
 export function useAddCard(onClose: () => void) {
   const { currentUser } = useAuth();

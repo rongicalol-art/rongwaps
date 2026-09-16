@@ -12,7 +12,7 @@ import {
   CUSTOM_CARDS_FOLDER_COLOR,
   CUSTOM_FOLDER_OPTIONS,
   resolveFolderColor,
-} from '../utils/folderColors';
+} from '../../../utils/folderColors';
 
 type ViewState = 'home' | 'folder';
 
