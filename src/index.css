@@ -41,7 +41,7 @@
 }
 
 @theme {
-  --font-sans: "Nunito", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Nunito", "RW-Extras", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-chinese: "TW-EduKai", "RW-Extras", "BiauKai", "標楷體", "DFKai-SB", "Kaiti TC", "STKaiti", "KaiTi", "TW-Kai", "LXGW WenKai TC", serif;
   --font-chinese-sans: "PingFang TC", "PingFang SC", "Microsoft JhengHei", "Heiti TC", "Noto Sans CJK TC", "Noto Sans CJK SC", "RW-Extras", system-ui, sans-serif;
   --font-kaiti: "TW-EduKai", "RW-Extras", "BiauKai", "標楷體", "DFKai-SB", "Kaiti TC", "STKaiti", "KaiTi", "TW-Kai", "LXGW WenKai TC", serif;
