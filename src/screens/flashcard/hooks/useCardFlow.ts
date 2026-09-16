@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { Flashcard } from '../data/flashcards';
-import type { PracticeFlowStatus } from '../types/models';
-import { audioService } from '../services/audioService';
-import { usePracticePreferencesStore } from '../store/usePracticePreferencesStore';
+import type { Flashcard } from '../../../data/flashcards';
+import type { PracticeFlowStatus } from '../../../types/models';
+import { audioService } from '../../../services/audioService';
+import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
 
 interface UseCardFlowOptions {
   currentCard?: Flashcard;

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { getDictionaryEntriesBatch } from '../services/dictionaryService';
+import { getDictionaryEntriesBatch } from '../../../services/dictionaryService';
 
 export interface SmartChineseSegment {
   segment: string;

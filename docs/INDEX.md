@@ -13,7 +13,7 @@ Use this file to locate active system documentation. All listed documents are ac
 - `ARCHITECTURE.md` — Source folder layout, module boundaries, ESLint import restrictions, and component ownership.
 - `DATABASE_SCHEMA.md` — Supabase database schema, tables, RPCs, RLS policies, and pack-first fetch paths.
 - `DESIGN_TOKENS.md` — Semantic design tokens (border radius, tactile depth, ambient shadows, focus rings, and colors).
-- `API_SPEC.md` — Express backend API specification for media streaming proxy endpoints (`/api/audio/*`).
+- `API_SPEC.md` — Express backend API specification: the `/api/audio/*` media proxy plus the neural TTS synthesis and cache endpoints (`/api/tts`, `/api/tts-cache/:text`, `/api/tts/:voice/*`), with their rate limits and auth contract.
 
 ## Curriculum & Feature Specifications
 
