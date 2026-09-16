@@ -145,6 +145,74 @@ const SCENE_FRAME_OVERRIDES: Record<string, Array<{ occurrenceIds: string[]; tre
 const SCENE_GUIDANCE = 'Use one concise causal or spatial action involving every supplied component that leads to the target meaning. This is an invented mnemonic, not etymology; do not add historical claims or new component meanings. For any component with no glyph, describe its visible shape in plain English and declare the phrase in describedParts; never invent a Han token for it.';
 
 /**
+ * Reviewed contextual labels for parts that were described by the early batches
+ * but expose a real glyph (rare parents without children, and rare-glyph
+ * children that had no lexicon label yet). Each part is shown as a token with
+ * the label the scene reads it as; the glyphs are bundled in the RW-Extras
+ * webfont so they render in the app's Chinese font stack. Parts with no glyph
+ * (unencoded/unknown shapes like 興's hands or 班's blade) stay described.
+ */
+const DESCRIBED_PART_UPGRADES: Record<string, { glyph: string; label: string }> = {
+  '學:0.0': { glyph: '𦥑', label: 'hands' },
+  '覺:0.0': { glyph: '𦥑', label: 'hands' },
+  '師:0.1': { glyph: '㠯', label: 'mound' },
+  '先:0': { glyph: '𠂒', label: 'leading steps' },
+  '友:0': { glyph: '𠂇', label: 'left hand' },
+  '午:0': { glyph: '𠂉', label: 'lying person' },
+  '有:0': { glyph: '𠂇', label: 'reaching hand' },
+  '貴:0.0': { glyph: '中', label: 'stack' },
+  '色:0': { glyph: '𠂊', label: 'soft claw' },
+  '常:0.0': { glyph: '龸', label: 'cap' },
+  '衣:1': { glyph: '𧘇', label: 'draped fabric' },
+  '餐:0.0': { glyph: '歺', label: 'dining board' },
+  '春:0.0': { glyph: '三', label: 'sprouts' },
+  '每:0': { glyph: '𠂉', label: 'lying person' },
+  '弟:1.0': { glyph: '弔', label: 'coil' },
+  '發:1.1': { glyph: '殳', label: 'striking hand' },
+  '步:1': { glyph: '𣥂', label: 'footprint' },
+  '腦:1.0': { glyph: '巛', label: 'hair' },
+  '腦:1.1': { glyph: '囟', label: 'skull' },
+  '賽:0.1': { glyph: '𠀎', label: 'offering' },
+  '旅:1.0': { glyph: '𠂉', label: 'lying person' },
+  '鐵:1.0': { glyph: '𢦏', label: 'blade' },
+  '歲:1.1': { glyph: '𣥂', label: 'footprint' },
+  '兩:1.1.0': { glyph: '入', label: 'upside-down person' },
+  '舞:0.0': { glyph: '𠂉', label: 'lying person' },
+  '斤:0': { glyph: '𠂆', label: 'cliff' },
+  '關:1.0': { glyph: '𢆶', label: 'silk threads' },
+  '關:1.1': { glyph: '丱', label: 'twin posts' },
+  '望:0.1.0': { glyph: '𠂊', label: 'bound hand' },
+  '告:0': { glyph: '𠂒', label: 'ox head' },
+  '然:0.0.0': { glyph: '𠂊', label: 'bound hand' },
+  '算:1.1': { glyph: '廾', label: 'two hands' },
+  '參:0.0': { glyph: '厽', label: 'stacked mounds' },
+  '當:0.0': { glyph: '龸', label: 'small roof' },
+  '而:1.1': { glyph: '𦉫', label: 'beard strands' },
+  '備:1.2': { glyph: '用', label: 'barred frame' },
+  '右:0': { glyph: '𠂇', label: 'right hand' },
+  '左:0': { glyph: '𠂇', label: 'left hand' },
+  '展:1.1.0': { glyph: '𠄌', label: 'hooked corner' },
+  '第:1.0': { glyph: '弔', label: 'bent bow' },
+  '表:1': { glyph: '𧘇', label: 'clothing top' },
+  '魚:0': { glyph: '𠂊', label: 'fish head' },
+  '堂:0.0': { glyph: '龸', label: 'small roof' },
+  '傷:1.0': { glyph: '𠂉', label: 'lying person' },
+  '賓:0.1.1': { glyph: '𣥂', label: 'footprint' },
+  '長:2.0': { glyph: '𠄌', label: 'hooked corner' },
+};
+
+/** Upgrades an outlined rare part to a token when the reviewed map names it. */
+function withDescribedUpgrades(components: PlannedComponentUse[] | null): PlannedComponentUse[] | null {
+  if (!components) return components;
+  return components.map((component) => {
+    if (component.glyph) return component;
+    const upgrade = DESCRIBED_PART_UPGRADES[component.occurrenceIds[0] ?? ''];
+    if (!upgrade) return component;
+    return { ...component, glyph: upgrade.glyph, displayLabel: upgrade.label, labelBasis: 'meaning' };
+  });
+}
+
+/**
  * Curated learner-facing token labels for characters whose canonical meaning is
  * too long to work as a hook token. The canonical meaning stays authoritative
  * (meaning audit, lesson alignment); only the `字(label)` token text shortens.
@@ -382,7 +450,7 @@ function buildAutoFrame(
   // Reviewed single-part scenes carry their one showable part as a token; only
   // characters with nothing showable keep the reviewed shape-only frame.
   if (SINGLE_PART_SCENE_CHARACTERS.has(plan.character) && plan.meaningDecision.selectedMeaning && plan.blockers.length === 0) {
-    const components = mergeSceneComponents(plan.character, plan.components, options);
+    const components = withDescribedUpgrades(mergeSceneComponents(plan.character, plan.components, options));
     if (components && components.some((component) => component.glyph)) {
       return {
         frame: {
@@ -408,7 +476,7 @@ function buildAutoFrame(
       reviewReasons: [...reviewReasons, 'reviewed-shape-only-frame'],
     };
   }
-  const components = mergeSceneComponents(plan.character, plan.components, options);
+  const components = withDescribedUpgrades(mergeSceneComponents(plan.character, plan.components, options));
   const occurrenceCount = components?.reduce((total, component) => total + component.occurrenceIds.length, 0) ?? 0;
   if (plan.status === 'eligible' && plan.meaningDecision.selectedMeaning && components && occurrenceCount >= 2) {
     return {

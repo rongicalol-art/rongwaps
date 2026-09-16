@@ -6,6 +6,7 @@ import {
   packItemsToMnemonicMap,
   resolveMnemonicFromMap,
 } from '../src/services/memoryHookPackService';
+import { BUNDLED_EXTRA_GLYPHS } from '../scripts/memory-hooks/checkHookQuality';
 
 interface PackItem {
   id: string;
@@ -85,8 +86,15 @@ test('production book-1 memory hook pack is device-safe, explicitly names sound 
 
   for (const item of charItems) {
     assert.ok(item.mnemonic.length >= 15, `${item.character} hook is too short`);
-    const nonBmp = [...item.mnemonic].filter((c: string) => c.codePointAt(0)! > 0xFFFF);
-    assert.equal(nonBmp.length, 0, `${item.character} contains non-BMP characters: ${nonBmp.join(' ')}`);
+    // Non-BMP component tokens are allowed only when the glyph is bundled in
+    // the RW-Extras webfont (public/fonts/rw-extras*.woff2); anything else
+    // risks tofu on a device without CJK Ext-B coverage.
+    const unbundledNonBmp = [...item.mnemonic].filter((c: string) => c.codePointAt(0)! > 0xFFFF && !BUNDLED_EXTRA_GLYPHS.has(c));
+    assert.equal(
+      unbundledNonBmp.length,
+      0,
+      `${item.character} contains non-BMP characters outside the bundled extras font: ${unbundledNonBmp.join(' ')}`,
+    );
 
     // Zero vague sound expressions allowed
     assert.ok(

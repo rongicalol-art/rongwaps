@@ -152,6 +152,22 @@ export function analyzeCoverage(input: CoverageInput): QualityFinding[] {
   return findings;
 }
 
+/**
+ * Glyphs bundled in the RW-Extras webfont (`public/fonts/rw-extras*.woff2`,
+ * subset from Noto Sans CJK TC + Plangothic, both SIL OFL): radicals, rare
+ * variants and CJK Ext-A/B shapes that TW-EduKai does not cover. Tokens using
+ * them render deterministically, so the safety scan treats them as safe.
+ * Keep in sync with the @font-face unicode-ranges in `src/index.css`.
+ */
+export const BUNDLED_EXTRA_GLYPHS = new Set<string>([
+  '㐅', '㐬', '㐱', '㒸', '㝵', '㠯', '䏍', '䒑', '䖒', '䖝', '䧹', '丂', '丄', '丅', '丆', '业', '丩', '丷', '亠', '亲',
+  '亻', '亼', '仌', '从', '关', '冂', '冃', '冋', '冖', '冫', '刂', '勹', '卂', '卩', '厶', '厷', '厽', '叚', '号', '吂',
+  '吅', '咅', '啚', '囬', '夂', '夊', '宀', '巛', '帀', '幺', '开', '彐', '彡', '忄', '扌', '攴', '攵', '朩', '歺', '殸',
+  '殹', '氵', '灬', '爫', '犭', '疒', '癶', '睘', '礻', '糹', '罒', '耂', '肀', '臤', '臱', '艹', '蒦', '衤', '覀', '辶',
+  '阝', '隶', '飞', '飠', '龰', '龵', '龶', '龷', '龸', '𠀎', '𠂆', '𠂇', '𠂉', '𠂊', '𠂒', '𠄌', '𢆶', '𢦏', '𣥂', '𦉫',
+  '𦥑', '𧘇',
+]);
+
 /** Font-safety rule: learner-facing tokens must render in the app's Chinese font stack. */
 export function scanRenderSafety(hook: string): QualityFinding[] {
   const findings: QualityFinding[] = [];
@@ -162,6 +178,7 @@ export function scanRenderSafety(hook: string): QualityFinding[] {
     const codePoint = glyph.codePointAt(0) ?? 0;
     const hex = codePoint.toString(16).toUpperCase();
     if ((codePoint >= 0x4e00 && codePoint <= 0x9fff) || (codePoint >= 0x2e80 && codePoint <= 0x2eff)) continue;
+    if (BUNDLED_EXTRA_GLYPHS.has(glyph)) continue;
     if (codePoint >= 0x3400 && codePoint <= 0x4dbf) {
       findings.push({
         code: 'risky-glyph',

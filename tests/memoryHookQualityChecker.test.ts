@@ -101,7 +101,12 @@ test('coverage skips pure stroke parts', () => {
 test('render safety rejects rare glyph tokens and flags Ext-A glyphs', () => {
   const rare = scanRenderSafety('A 學(learn) inside 𦥯(schoolhouse) is learned.');
   assert.equal(rare.find((finding) => finding.part === '𦥯')?.severity, 'error');
-  const extA = scanRenderSafety('A 䒑(grass) top sits on the 木(tree).');
-  assert.equal(extA.find((finding) => finding.part === '䒑')?.severity, 'flag');
+  const extA = scanRenderSafety('A 㐆(turn) post sits on the 木(tree).');
+  assert.equal(extA.find((finding) => finding.part === '㐆')?.severity, 'flag');
   assert.equal(scanRenderSafety('A 人(person) with a 戈(dagger-axe).').length, 0);
+});
+
+test('render safety accepts glyphs bundled in the RW-Extras webfont', () => {
+  assert.equal(scanRenderSafety('A 䒑(grass) top rests above 𦥑(hands).').length, 0);
+  assert.equal(scanRenderSafety('An 土(earth) plot and a 𣥂(footprint).').length, 0);
 });

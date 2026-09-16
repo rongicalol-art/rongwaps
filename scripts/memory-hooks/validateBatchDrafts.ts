@@ -5,6 +5,7 @@ import type { CharacterHookPlanV2, DescribedPartUse, MemoryHookCandidateV2 } fro
 import { validateHookQualityDeterministically } from './qualityPlanner';
 import { evaluateHookStylePreflight } from './stylePreflight';
 import { auditSingleHook } from './strictHookAudit';
+import { BUNDLED_EXTRA_GLYPHS } from './checkHookQuality';
 
 const ROOT = resolve(import.meta.dirname, '../..');
 const OUTPUT_DIR = resolve(ROOT, 'output/memory-hooks');
@@ -59,7 +60,9 @@ function main(): void {
     const extras: string[] = [];
     if (VAGUE_PHRASE.test(draft.hook)) extras.push('vague-phrase');
     if (JARGON.test(stripped)) extras.push('jargon-outside-target');
-    if ([...draft.hook].some((character) => character.codePointAt(0)! > 0xffff)) extras.push('non-bmp');
+    if ([...draft.hook].some((character) => character.codePointAt(0)! > 0xffff && !BUNDLED_EXTRA_GLYPHS.has(character))) {
+      extras.push('non-bmp');
+    }
     if (draft.hook.length < 55) extras.push('under-55-chars');
     const ok = validation.valid && validation.issues.length === 0 && style.issues.length === 0 && prose.length === 0 && extras.length === 0;
     if (ok) {

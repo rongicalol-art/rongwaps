@@ -8,6 +8,28 @@
   font-display: swap;
 }
 
+/* Supplementary glyphs for component tokens and decomposition parts that
+   TW-EduKai does not cover (radicals, rare variants, CJK Ext-A/B), subset
+   from Noto Sans CJK TC and Plangothic (both SIL OFL 1.1; see
+   public/fonts/rw-extras.LICENSE.txt). Scoped by unicode-range so the files
+   load only when one of these glyphs actually appears. */
+@font-face {
+  font-family: 'RW-Extras';
+  src: url('/fonts/rw-extras.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+3405, U+342C, U+3431, U+34B8, U+3775, U+382F, U+43CD, U+4491, U+4592, U+459D, U+49F9, U+4E02, U+4E04-4E06, U+4E1A, U+4E29, U+4E37, U+4EA0, U+4EB2, U+4EBB-4EBC, U+4ECC, U+4ECE, U+5173, U+5182-5183, U+518B, U+5196, U+51AB, U+5202, U+52F9, U+5342, U+5369, U+53B6-53B7, U+53BD, U+53DA, U+53F7, U+5402, U+5405, U+5485, U+555A, U+56EC, U+5902, U+590A, U+5B80, U+5DDB, U+5E00, U+5E7A, U+5F00, U+5F50, U+5F61, U+5FC4, U+624C, U+6534-6535, U+6729, U+6B7A, U+6BB8-6BB9, U+6C35, U+706C, U+722B, U+72AD, U+7592, U+7676, U+7758, U+793B, U+7CF9, U+7F52, U+8002, U+8080, U+81E4, U+81F1, U+8279, U+84A6, U+8864, U+8980, U+8FB6, U+961D, U+96B6, U+98DE, U+98E0, U+9FB0, U+9FB5-9FB8, U+20086-20087, U+20089-2008A, U+2010C, U+2298F, U+2626B, U+26951, U+27607;
+}
+@font-face {
+  font-family: 'RW-Extras';
+  src: url('/fonts/rw-extras-extb.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+2000E, U+20092, U+221B6, U+23942;
+}
+
 /* Self-hosted Nunito (variable, latin subset) so the UI shell works offline
    without a request to Google Fonts. */
 @font-face {
@@ -20,9 +42,9 @@
 
 @theme {
   --font-sans: "Nunito", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-chinese: "TW-EduKai", "BiauKai", "標楷體", "DFKai-SB", "Kaiti TC", "STKaiti", "KaiTi", "TW-Kai", "LXGW WenKai TC", serif;
-  --font-chinese-sans: "PingFang TC", "PingFang SC", "Microsoft JhengHei", "Heiti TC", "Noto Sans CJK TC", "Noto Sans CJK SC", system-ui, sans-serif;
-  --font-kaiti: "TW-EduKai", "BiauKai", "標楷體", "DFKai-SB", "Kaiti TC", "STKaiti", "KaiTi", "TW-Kai", "LXGW WenKai TC", serif;
+  --font-chinese: "TW-EduKai", "RW-Extras", "BiauKai", "標楷體", "DFKai-SB", "Kaiti TC", "STKaiti", "KaiTi", "TW-Kai", "LXGW WenKai TC", serif;
+  --font-chinese-sans: "PingFang TC", "PingFang SC", "Microsoft JhengHei", "Heiti TC", "Noto Sans CJK TC", "Noto Sans CJK SC", "RW-Extras", system-ui, sans-serif;
+  --font-kaiti: "TW-EduKai", "RW-Extras", "BiauKai", "標楷體", "DFKai-SB", "Kaiti TC", "STKaiti", "KaiTi", "TW-Kai", "LXGW WenKai TC", serif;
 
   /* Soft off-white canvases keep white controls and cards visually distinct. */
   --color-ui-canvas: #f2f3f4;

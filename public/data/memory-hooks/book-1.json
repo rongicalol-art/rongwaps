@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bookId": 1,
-  "generatedAt": "2026-09-16T04:17:12.101Z",
+  "generatedAt": "2026-09-16T04:59:52.018Z",
   "count": 1442,
   "items": [
     {
@@ -13,13 +13,13 @@
     {
       "id": "師",
       "character": "師",
-      "mnemonic": "A figure holds a 帀(rotate) banner atop a mound — students gather to the 師(teacher).",
+      "mnemonic": "A figure holds a 帀(rotate) banner atop a 㠯(mound) — students gather to the 師(teacher).",
       "content_type": "character"
     },
     {
       "id": "學",
       "character": "學",
-      "mnemonic": "Two hands hold out 爻(crossed sticks) above a 冖(cover), and a young 子(child) below takes them up: 學(learn).",
+      "mnemonic": "Two 𦥑(hands) hold out 爻(crossed sticks) above a 冖(cover), and a young 子(child) below takes them up: 學(learn).",
       "content_type": "character"
     },
     {
@@ -67,7 +67,7 @@
     {
       "id": "先",
       "character": "先",
-      "mnemonic": "A 儿(person) takes leading steps ahead of everyone — the 先(first).",
+      "mnemonic": "A 儿(person) takes 𠂒(leading steps) ahead of everyone — the 先(first).",
       "content_type": "character"
     },
     {
@@ -331,7 +331,7 @@
     {
       "id": "友",
       "character": "友",
-      "mnemonic": "A left hand holds a 又(hand) tight — clasped as 友(friend).",
+      "mnemonic": "A 𠂇(left hand) holds a 又(hand) tight — clasped as 友(friend).",
       "content_type": "character"
     },
     {
@@ -439,7 +439,7 @@
     {
       "id": "午",
       "character": "午",
-      "mnemonic": "A lying person leans over 十(ten) — high noon: the 午(noon).",
+      "mnemonic": "A 𠂉(lying person) leans over 十(ten) — high noon: the 午(noon).",
       "content_type": "character"
     },
     {
@@ -559,7 +559,7 @@
     {
       "id": "有",
       "character": "有",
-      "mnemonic": "A reaching hand holds the 月(moon) — now you 有(have) it.",
+      "mnemonic": "A 𠂇(reaching hand) holds the 月(moon) — now you 有(have) it.",
       "content_type": "character"
     },
     {
@@ -697,7 +697,7 @@
     {
       "id": "歲",
       "character": "歲",
-      "mnemonic": "A 止(stop) of the foot stands by a 戌(halberd) over a fading footprint — another 歲(measure word for age).",
+      "mnemonic": "A 止(stop) of the foot stands by a 戌(halberd) over a fading 𣥂(footprint) — another 歲(measure word for age).",
       "content_type": "character"
     },
     {
@@ -727,7 +727,7 @@
     {
       "id": "覺",
       "character": "覺",
-      "mnemonic": "Two hands hold 爻(crossed sticks) over a 冖(cover); below, eyes 見(see) the light — awake and 覺(conscious).",
+      "mnemonic": "Two 𦥑(hands) hold 爻(crossed sticks) over a 冖(cover); below, eyes 見(see) the light — awake and 覺(conscious).",
       "content_type": "character"
     },
     {
@@ -787,7 +787,7 @@
     {
       "id": "兩",
       "character": "兩",
-      "mnemonic": "A 一(one) beam rests across a 巾(cloth) hiding an upside-down person — 兩(two) coins below.",
+      "mnemonic": "A 一(one) beam rests across a 巾(cloth) hiding an 入(upside-down person) — 兩(two) coins below.",
       "content_type": "character"
     },
     {
@@ -931,7 +931,7 @@
     {
       "id": "貴",
       "character": "貴",
-      "mnemonic": "A 一(one) 貝(sea shell) rests under a stack — a 貴(expensive) price.",
+      "mnemonic": "A 一(one) 貝(sea shell) rests under a 中(stack) — a 貴(expensive) price.",
       "content_type": "character"
     },
     {
@@ -943,7 +943,7 @@
     {
       "id": "色",
       "character": "色",
-      "mnemonic": "A soft claw rests over 巴(bā) — the shifting 色(color) of a mood.",
+      "mnemonic": "A 𠂊(soft claw) rests over 巴(bā) — the shifting 色(color) of a mood.",
       "content_type": "character"
     },
     {
@@ -967,7 +967,7 @@
     {
       "id": "常",
       "character": "常",
-      "mnemonic": "A cap rests over a 口(mouth) and 巾(cloth) — worn 常(often).",
+      "mnemonic": "A 龸(cap) rests over a 口(mouth) and 巾(cloth) — worn 常(often).",
       "content_type": "character"
     },
     {
@@ -979,7 +979,7 @@
     {
       "id": "衣",
       "character": "衣",
-      "mnemonic": "A 亠(lid) rests gently over draped fabric — the 衣(cloth).",
+      "mnemonic": "A 亠(lid) rests gently over 𧘇(draped fabric) — the 衣(cloth).",
       "content_type": "character"
     },
     {
@@ -1087,7 +1087,7 @@
     {
       "id": "餐",
       "character": "餐",
-      "mnemonic": "A dining board holds 又(hand) and 食(food) — one 餐(meal).",
+      "mnemonic": "A 歺(dining board) holds 又(hand) and 食(food) — one 餐(meal).",
       "content_type": "character"
     },
     {
@@ -1243,7 +1243,7 @@
     {
       "id": "春",
       "character": "春",
-      "mnemonic": "Sprouts rest with a 人(person) in the 日(sun) — 春(springtime).",
+      "mnemonic": "三(sprouts) rest with a 人(person) in the 日(sun) — 春(springtime).",
       "content_type": "character"
     },
     {
@@ -1279,7 +1279,7 @@
     {
       "id": "每",
       "character": "每",
-      "mnemonic": "A lying person rests atop 母(mother) — every one: 每(each).",
+      "mnemonic": "A 𠂉(lying person) rests atop 母(mother) — every one: 每(each).",
       "content_type": "character"
     },
     {
@@ -1435,7 +1435,7 @@
     {
       "id": "弟",
       "character": "弟",
-      "mnemonic": "A pair of 丷(horns) rests above a coil — the young 弟(young brother).",
+      "mnemonic": "A pair of 丷(horns) rests above a 弔(coil) — the young 弟(young brother).",
       "content_type": "character"
     },
     {
@@ -1453,7 +1453,7 @@
     {
       "id": "發",
       "character": "發",
-      "mnemonic": "Braced 癶(legs) and a drawn 弓(bow) take aim — the striking hand lets it fly: 發(send).",
+      "mnemonic": "Braced 癶(legs) and a drawn 弓(bow) take aim — the 殳(striking hand) lets it fly: 發(send).",
       "content_type": "character"
     },
     {
@@ -1675,7 +1675,7 @@
     {
       "id": "步",
       "character": "步",
-      "mnemonic": "A 止(stop) rests over a footprint — measured strides: 步(step).",
+      "mnemonic": "A 止(stop) rests over a 𣥂(footprint) — measured strides: 步(step).",
       "content_type": "character"
     },
     {
@@ -1735,7 +1735,7 @@
     {
       "id": "腦",
       "character": "腦",
-      "mnemonic": "A ⺼(meat) mass rests with hair and a skull — the 腦(brain).",
+      "mnemonic": "A ⺼(meat) mass rests with 巛(hair) and a 囟(skull) — the 腦(brain).",
       "content_type": "character"
     },
     {
@@ -1861,7 +1861,7 @@
     {
       "id": "舞",
       "character": "舞",
-      "mnemonic": "A lying person holds 卌(forty) ribbons and 一(one) steady beat as 舛(crossed feet) cross — the 舞(dance).",
+      "mnemonic": "A 𠂉(lying person) holds 卌(forty) ribbons and 一(one) steady beat as 舛(crossed feet) cross — the 舞(dance).",
       "content_type": "character"
     },
     {
@@ -1897,7 +1897,7 @@
     {
       "id": "賽",
       "character": "賽",
-      "mnemonic": "Under a 宀(roof) stand 八(eight) 貝(sea shell) offerings — the games of 賽(compete).",
+      "mnemonic": "Under a 宀(roof) stand 八(eight) 貝(sea shell) 𠀎(offering) gifts — the games of 賽(compete).",
       "content_type": "character"
     },
     {
@@ -1921,7 +1921,7 @@
     {
       "id": "旅",
       "character": "旅",
-      "mnemonic": "A 方(direction) banner rests over a lying person and followers — a 旅(journey).",
+      "mnemonic": "A 方(direction) banner rests over a 𠂉(lying person) and followers — a 旅(journey).",
       "content_type": "character"
     },
     {
@@ -1957,7 +1957,7 @@
     {
       "id": "鐵",
       "character": "鐵",
-      "mnemonic": "A 呈(petition) takes 金(gold) and a blade to the forge — 鐵(iron).",
+      "mnemonic": "A 呈(petition) takes 金(gold) and a 𢦏(blade) to the forge — 鐵(iron).",
       "content_type": "character"
     },
     {
@@ -2251,7 +2251,7 @@
     {
       "id": "斤",
       "character": "斤",
-      "mnemonic": "A cliff ledge holds a 丅(T-shape) stamp on the old scale — one 斤(catty).",
+      "mnemonic": "A 𠂆(cliff) ledge holds a 丅(T-shape) stamp on the old scale — one 斤(catty).",
       "content_type": "character"
     },
     {
@@ -2281,7 +2281,7 @@
     {
       "id": "長",
       "character": "長",
-      "mnemonic": "Slanted strands rest in a little knot above a 一(one) line, with a hooked corner sweeping below — 長(long).",
+      "mnemonic": "Slanted strands rest in a little knot above a 一(one) line, with a 𠄌(hooked corner) sweeping below — 長(long).",
       "content_type": "character"
     },
     {
@@ -2317,7 +2317,7 @@
     {
       "id": "關",
       "character": "關",
-      "mnemonic": "A 門(door) woven of silk threads and twin posts stands shut — the gate will 關(close).",
+      "mnemonic": "A 門(door) woven of 𢆶(silk threads) and 丱(twin posts) stands shut — the gate will 關(close).",
       "content_type": "character"
     },
     {
@@ -2521,7 +2521,7 @@
     {
       "id": "望",
       "character": "望",
-      "mnemonic": "A 亡(perish) figure beside a bound hand rests above ⺀(ice) and raised 土(earth) — gazing up to 望(expect).",
+      "mnemonic": "A 亡(perish) figure beside a 𠂊(bound hand) rests above ⺀(ice) and raised 土(earth) — gazing up to 望(expect).",
       "content_type": "character"
     },
     {
@@ -2857,7 +2857,7 @@
     {
       "id": "告",
       "character": "告",
-      "mnemonic": "An ox head bows over a 口(mouth) to call out — ready to 告(tell).",
+      "mnemonic": "An 𠂒(ox head) bows over a 口(mouth) to call out — ready to 告(tell).",
       "content_type": "character"
     },
     {
@@ -2917,7 +2917,7 @@
     {
       "id": "然",
       "character": "然",
-      "mnemonic": "A bound hand rests over 冫(ice) as a 犬(dog) guards the 灬(fire) — and 然(then) supper is served.",
+      "mnemonic": "A 𠂊(bound hand) rests over 冫(ice) as a 犬(dog) guards the 灬(fire) — and 然(then) supper is served.",
       "content_type": "character"
     },
     {
@@ -2977,7 +2977,7 @@
     {
       "id": "算",
       "character": "算",
-      "mnemonic": "A 竹(bamboo) rod rests on the 目(eye) line as two hands count — ready to 算(calculate).",
+      "mnemonic": "A 竹(bamboo) rod rests on the 目(eye) line as 廾(two hands) count — ready to 算(calculate).",
       "content_type": "character"
     },
     {
@@ -3049,7 +3049,7 @@
     {
       "id": "參",
       "character": "參",
-      "mnemonic": "Stacked mounds rest above a 人(person) brushing 彡(hair) — ready to 參(take part in).",
+      "mnemonic": "厽(stacked mounds) rest above a 人(person) brushing 彡(hair) — ready to 參(take part in).",
       "content_type": "character"
     },
     {
@@ -3061,7 +3061,7 @@
     {
       "id": "當",
       "character": "當",
-      "mnemonic": "A small roof holds a 口(mouth) over the 田(field) — ready to 當(be) brave.",
+      "mnemonic": "A 龸(small roof) holds a 口(mouth) over the 田(field) — ready to 當(be) brave.",
       "content_type": "character"
     },
     {
@@ -3139,7 +3139,7 @@
     {
       "id": "而",
       "character": "而",
-      "mnemonic": "A 一(one) bar rests above beard strands that sway — linking words, 而(and).",
+      "mnemonic": "A 一(one) bar rests above 𦉫(beard strands) that sway — linking words, 而(and).",
       "content_type": "character"
     },
     {
@@ -3181,7 +3181,7 @@
     {
       "id": "備",
       "character": "備",
-      "mnemonic": "A 亻(person) puts 艹(grass) under the 丆(cliff edge) into a barred frame — ready to 備(prepare).",
+      "mnemonic": "A 亻(person) puts 艹(grass) under the 丆(cliff edge) into a 用(barred frame) — ready to 備(prepare).",
       "content_type": "character"
     },
     {
@@ -3289,13 +3289,13 @@
     {
       "id": "右",
       "character": "右",
-      "mnemonic": "A right hand and a 口(mouth) hold the spoon — dining on the 右(the right side).",
+      "mnemonic": "A 𠂇(right hand) and a 口(mouth) hold the spoon — dining on the 右(the right side).",
       "content_type": "character"
     },
     {
       "id": "左",
       "character": "左",
-      "mnemonic": "A left hand holds the 工(work) square steady — building on the 左(the left side).",
+      "mnemonic": "A 𠂇(left hand) holds the 工(work) square steady — building on the 左(the left side).",
       "content_type": "character"
     },
     {
@@ -3367,7 +3367,7 @@
     {
       "id": "展",
       "character": "展",
-      "mnemonic": "A 尸(body) display rests on a 龷(grass top) stand with a hooked corner — the 展(exhibition).",
+      "mnemonic": "A 尸(body) display rests on a 龷(grass top) stand with a 𠄌(hooked corner) — the 展(exhibition).",
       "content_type": "character"
     },
     {
@@ -3379,7 +3379,7 @@
     {
       "id": "第",
       "character": "第",
-      "mnemonic": "A 竹(bamboo) tally rests on a bent bow — marking the 第(ordinal) place.",
+      "mnemonic": "A 竹(bamboo) tally rests on a 弔(bent bow) — marking the 第(ordinal) place.",
       "content_type": "character"
     },
     {
@@ -3445,7 +3445,7 @@
     {
       "id": "表",
       "character": "表",
-      "mnemonic": "A 龶(growing plant) opens with a clothing top above — one proud 表(show).",
+      "mnemonic": "A 龶(growing plant) opens with a 𧘇(clothing top) above — one proud 表(show).",
       "content_type": "character"
     },
     {
@@ -3517,7 +3517,7 @@
     {
       "id": "魚",
       "character": "魚",
-      "mnemonic": "A fish head rests above a 田(field) grid over 灬(fire) — one fresh 魚(fish).",
+      "mnemonic": "A 𠂊(fish head) rests above a 田(field) grid over 灬(fire) — one fresh 魚(fish).",
       "content_type": "character"
     },
     {
@@ -3535,7 +3535,7 @@
     {
       "id": "堂",
       "character": "堂",
-      "mnemonic": "A small roof holds a 口(mouth) over the 土(earth) floor — the grand 堂(hall).",
+      "mnemonic": "A 龸(small roof) holds a 口(mouth) over the 土(earth) floor — the grand 堂(hall).",
       "content_type": "character"
     },
     {
@@ -3577,7 +3577,7 @@
     {
       "id": "傷",
       "character": "傷",
-      "mnemonic": "A 亻(person) and a lying person rest under 昜(bright) sun — the fall will 傷(injure) him.",
+      "mnemonic": "A 亻(person) and a 𠂉(lying person) rest under 昜(bright) sun — the fall will 傷(injure) him.",
       "content_type": "character"
     },
     {
@@ -3895,7 +3895,7 @@
     {
       "id": "賓",
       "character": "賓",
-      "mnemonic": "A 宀(roof) with 一(one) footprint path takes us to 貝(sea shell) gifts — welcome, 賓(guest).",
+      "mnemonic": "A 宀(roof) with 一(one) 𣥂(footprint) path takes us to 貝(sea shell) gifts — welcome, 賓(guest).",
       "content_type": "character"
     },
     {
@@ -3961,7 +3961,7 @@
     {
       "id": "word_學",
       "character": "學",
-      "mnemonic": "Two hands hold out 爻(crossed sticks) above a 冖(cover), and a young 子(child) below takes them up: 學(learn).",
+      "mnemonic": "Two 𦥑(hands) hold out 爻(crossed sticks) above a 冖(cover), and a young 子(child) below takes them up: 學(learn).",
       "content_type": "word"
     },
     {
@@ -3997,7 +3997,7 @@
     {
       "id": "word_先",
       "character": "先",
-      "mnemonic": "A 儿(person) takes leading steps ahead of everyone — the 先(first).",
+      "mnemonic": "A 儿(person) takes 𠂒(leading steps) ahead of everyone — the 先(first).",
       "content_type": "word"
     },
     {
@@ -4237,7 +4237,7 @@
     {
       "id": "word_有",
       "character": "有",
-      "mnemonic": "A reaching hand holds the 月(moon) — now you 有(have) it.",
+      "mnemonic": "A 𠂇(reaching hand) holds the 月(moon) — now you 有(have) it.",
       "content_type": "word"
     },
     {
@@ -4327,7 +4327,7 @@
     {
       "id": "word_歲",
       "character": "歲",
-      "mnemonic": "A 止(stop) of the foot stands by a 戌(halberd) over a fading footprint — another 歲(measure word for age).",
+      "mnemonic": "A 止(stop) of the foot stands by a 戌(halberd) over a fading 𣥂(footprint) — another 歲(measure word for age).",
       "content_type": "word"
     },
     {
@@ -4387,7 +4387,7 @@
     {
       "id": "word_兩",
       "character": "兩",
-      "mnemonic": "A 一(one) beam rests across a 巾(cloth) hiding an upside-down person — 兩(two) coins below.",
+      "mnemonic": "A 一(one) beam rests across a 巾(cloth) hiding an 入(upside-down person) — 兩(two) coins below.",
       "content_type": "word"
     },
     {
@@ -4477,7 +4477,7 @@
     {
       "id": "word_貴",
       "character": "貴",
-      "mnemonic": "A 一(one) 貝(sea shell) rests under a stack — a 貴(expensive) price.",
+      "mnemonic": "A 一(one) 貝(sea shell) rests under a 中(stack) — a 貴(expensive) price.",
       "content_type": "word"
     },
     {
@@ -4705,7 +4705,7 @@
     {
       "id": "word_每",
       "character": "每",
-      "mnemonic": "A lying person rests atop 母(mother) — every one: 每(each).",
+      "mnemonic": "A 𠂉(lying person) rests atop 母(mother) — every one: 每(each).",
       "content_type": "word"
     },
     {
@@ -5089,7 +5089,7 @@
     {
       "id": "word_斤",
       "character": "斤",
-      "mnemonic": "A cliff ledge holds a 丅(T-shape) stamp on the old scale — one 斤(catty).",
+      "mnemonic": "A 𠂆(cliff) ledge holds a 丅(T-shape) stamp on the old scale — one 斤(catty).",
       "content_type": "word"
     },
     {
@@ -5113,7 +5113,7 @@
     {
       "id": "word_長",
       "character": "長",
-      "mnemonic": "Slanted strands rest in a little knot above a 一(one) line, with a hooked corner sweeping below — 長(long).",
+      "mnemonic": "Slanted strands rest in a little knot above a 一(one) line, with a 𠄌(hooked corner) sweeping below — 長(long).",
       "content_type": "word"
     },
     {
@@ -5137,7 +5137,7 @@
     {
       "id": "word_關",
       "character": "關",
-      "mnemonic": "A 門(door) woven of silk threads and twin posts stands shut — the gate will 關(close).",
+      "mnemonic": "A 門(door) woven of 𢆶(silk threads) and 丱(twin posts) stands shut — the gate will 關(close).",
       "content_type": "word"
     },
     {
@@ -5269,7 +5269,7 @@
     {
       "id": "word_算",
       "character": "算",
-      "mnemonic": "A 竹(bamboo) rod rests on the 目(eye) line as two hands count — ready to 算(calculate).",
+      "mnemonic": "A 竹(bamboo) rod rests on the 目(eye) line as 廾(two hands) count — ready to 算(calculate).",
       "content_type": "word"
     },
     {
@@ -5305,7 +5305,7 @@
     {
       "id": "word_當",
       "character": "當",
-      "mnemonic": "A small roof holds a 口(mouth) over the 田(field) — ready to 當(be) brave.",
+      "mnemonic": "A 龸(small roof) holds a 口(mouth) over the 田(field) — ready to 當(be) brave.",
       "content_type": "word"
     },
     {
@@ -5365,13 +5365,13 @@
     {
       "id": "word_展",
       "character": "展",
-      "mnemonic": "A 尸(body) display rests on a 龷(grass top) stand with a hooked corner — the 展(exhibition).",
+      "mnemonic": "A 尸(body) display rests on a 龷(grass top) stand with a 𠄌(hooked corner) — the 展(exhibition).",
       "content_type": "word"
     },
     {
       "id": "word_第",
       "character": "第",
-      "mnemonic": "A 竹(bamboo) tally rests on a bent bow — marking the 第(ordinal) place.",
+      "mnemonic": "A 竹(bamboo) tally rests on a 弔(bent bow) — marking the 第(ordinal) place.",
       "content_type": "word"
     },
     {
@@ -5425,7 +5425,7 @@
     {
       "id": "word_魚",
       "character": "魚",
-      "mnemonic": "A fish head rests above a 田(field) grid over 灬(fire) — one fresh 魚(fish).",
+      "mnemonic": "A 𠂊(fish head) rests above a 田(field) grid over 灬(fire) — one fresh 魚(fish).",
       "content_type": "word"
     },
     {
