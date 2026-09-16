@@ -237,7 +237,7 @@ export function WritingScreen({ activeBookId, selectedLessons = [], isLibraryDec
   return (
     <div
       onClick={handleScreenTap}
-      className="absolute inset-0 z-[100] flex flex-col bg-transparent overflow-hidden text-ui-ink font-sans pt-[72px]"
+      className="absolute inset-0 z-content flex flex-col bg-transparent overflow-hidden text-ui-ink font-sans pt-[72px]"
     >
       {/* Edge Navigation Buttons for instant, reliable card switching */}
       <button

@@ -59,3 +59,32 @@ The shell owns the workspace canvas; every other layer is transparent over it or
 - **Loading, empty, and error surfaces inherit their window's tone** and never paint a page-level fill of their own: full-viewport study windows (Grammar, Reader) are **eager window shells** whose heavy content chunks load inside the mounted window under an inline spinner (`LoadingScreen inline`) — never root-level lazy windows, which flash a loading screen before the window exists. The dialogue-alignment pack and reading canvases stream into Reader the same way; audio degrades to whole-track playback until word timings land. Empty/error states that render inside the practice modal wrapper must not paint `bg-ui-canvas` (the wrapper already paints `bg-ui-practice-canvas`; offenders were `EmptyReviewState` and `WritingScreen`).
 - Route containers, the workspace content column, and headers in normal flow stay transparent — screens do not set page-level backgrounds (historically `LibraryScreen` painted `bg-ui-canvas`, the profile header painted an opaque band, and the activity card-adder painted `bg-ui-practice-canvas` on top of the same-tone modal wrapper; all were redundant and removed).
 - Only true full-screen windows (reader, grammar lesson, activity modal wrapper) own canvas fills, and sticky fades blend into the canvas via the canonical `from-ui-canvas` gradient recipe.
+
+## 7. Overlay layers (`z-*`)
+
+Overlay stacking has one owner: the `--z-index-*` scale in `src/index.css` `@theme`, surfaced as Tailwind `z-*` utilities. **Claim the rung for the kind of surface you own; never invent a numeric `z-[…]` value.** A rung is a layer, not a component: two surfaces may share one only when they can never be open at once, or when one is nested inside the other (nesting is what separates `ConfirmationDialog` from the drawer/dialog that opened it).
+
+| Utility | Value | Layer / owners |
+|---|---|---|
+| `z-tooltip` | 90 | Pointer-anchored tooltips (`ReaderWordTooltip`) |
+| `z-content` | 100 | Content layer of an overlay surface, below its chrome: activity screen roots (`QuizScreen`, `ListeningScreen`, `WritingScreen`), `LessonComplete`, in-window loading (`LoadingScreen`) |
+| `z-activity-header` | 150 | Sticky header strip of the activity surface (`ActivityModals`) |
+| `z-activity` | 200 | The activity modal shell (`ActivityModalWrapper`) |
+| `z-dock` | 250 | Floating docks and their scrims (`PracticeModeDock`, `SearchModeDock`, `WritingDock`, the mobile nav scrim) |
+| `z-overlay` | 300 | Overlay-host container inside an activity/column (`activity-overlays-root`, `character-breakdown-overlay-container`) |
+| `z-detail` | 400 | Workspace-bounded detail window (`WorkspaceDetailShell`) |
+| `z-detail-raised` | 450 | Detail window stacked above another detail window (`V3TreeScreen`) |
+| `z-window` | 500 | Full-viewport windows (`GrammarLessonScreen`), full-screen loading (`LoadingScreen fullScreen`), drawer base layer (`BottomDrawer`) |
+| `z-shell` | 600 | App chrome that outranks every window (sidebar and mobile nav panel in `LayoutShell`) and full-screen viewers that cover it (`BookPageViewer`, grammar book fallback) |
+| `z-drawer` | 650 | Reader study drawer (`ReaderStudyDrawer`) |
+| `z-dialog` | 700 | Dialogs and settings windows (`ConfirmationDialog`, `FolderModal`, `DictionaryDetailOverlay`, `PracticeSettingsScreen`) |
+| `z-popover` | 800 | Hover/anchored popovers (`PosBadge`, `MemoryHookPopover`) |
+| `z-auth` | 900 | Sign-in window (`SignInWindow`) |
+| `z-devtools` | 1000 | Developer tools (`DebugToolsOverlay`) |
+
+Two rules keep the table meaningful:
+
+- **Ascend in depth, not in importance.** A popover (800) outranks a dialog (700) because it opens *on top of* one, not because it matters more.
+- **Stacking contexts, not numbers, decide the outcome.** An ancestor with `position` + `z-index` (the shell content column is `relative z-10`) traps its descendants' z-index inside it, so a body-portaled overlay always paints above an in-tree one with the same value. When a surface must beat another that is portaled to the body, it needs a higher rung *and* a portal, not just a bigger number.
+
+`z-0`…`z-50` stay what they are: ordinary local stacking for children of one component (`z-10`, `z-20`, `z-30` for a surface's own layers, `z-50` for a dock's opened menu). Reach for a rung the moment an element has to stack against *another* surface rather than against its own siblings.

@@ -43,7 +43,7 @@ export function BottomCharacterTabs({
               {isSelected && (
                  <motion.div
                    layoutId={`${layoutIdPrefix}-tab-indicator`}
-                   className={`absolute inset-0 z-[-1] rounded-compact ${activeBook.accentBg || 'bg-brand-primary'} shadow-[inset_0_-3px_0_rgba(0,0,0,0.13)]`}
+                   className={`absolute inset-0 -z-1 rounded-compact ${activeBook.accentBg || 'bg-brand-primary'} shadow-[inset_0_-3px_0_rgba(0,0,0,0.13)]`}
                    transition={{ type: "spring", stiffness: 500, damping: 35 }}
                  />
               )}

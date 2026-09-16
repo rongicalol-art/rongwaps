@@ -22,7 +22,7 @@ export function V3TreeScreen({
       ariaLabel={`Component tree for ${character}`}
       title="Component tree"
       onBack={onBack}
-      zIndexClassName="z-[450]"
+      zIndexClassName="z-detail-raised"
       maxWidthClassName="max-w-[1040px]"
       headerClassName="border-b border-ui-divider/70 bg-ui-practice-canvas/95 backdrop-blur-[2px]"
       contentInnerClassName="pb-20"

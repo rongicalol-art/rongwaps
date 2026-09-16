@@ -92,7 +92,7 @@ export function BookPageViewer({
         aria-modal="true"
         aria-label={`Book reference for ${grammarTitle}`}
         tabIndex={-1}
-        className="fixed inset-0 z-[600] flex flex-col items-center justify-center bg-ui-ink-strong p-6 text-center text-ui-surface outline-none"
+        className="fixed inset-0 z-shell flex flex-col items-center justify-center bg-ui-ink-strong p-6 text-center text-ui-surface outline-none"
         {...modalFocusProps}
       >
         <IconActionButton
@@ -118,7 +118,7 @@ export function BookPageViewer({
       aria-modal="true"
       aria-label={`Book reference for ${grammarTitle}`}
       tabIndex={-1}
-      className="fixed inset-0 z-[600] flex flex-col overflow-hidden bg-ui-ink-strong outline-none"
+      className="fixed inset-0 z-shell flex flex-col overflow-hidden bg-ui-ink-strong outline-none"
       {...modalFocusProps}
     >
       <BookViewerHeader

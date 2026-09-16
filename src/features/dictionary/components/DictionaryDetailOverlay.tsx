@@ -68,7 +68,7 @@ export function DictionaryDetailOverlay() {
       {dictionaryWord && rootWord && (
         <div
           id="dictionary-detail-overlay-container"
-          className="fixed inset-0 z-[700] h-full w-full pointer-events-none"
+          className="fixed inset-0 z-dialog h-full w-full pointer-events-none"
         >
           {rootIsSingleChar ? (
             <SingleBreakdownView

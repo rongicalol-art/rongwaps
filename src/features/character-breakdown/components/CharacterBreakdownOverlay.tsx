@@ -53,7 +53,7 @@ export function CharacterBreakdownOverlay({
   const overlayContent = (
     <AnimatePresence>
       {activeBreakdown && rootBreakdown && (
-        <div id="character-breakdown-overlay-container" className="absolute inset-0 z-[300] w-full h-full pointer-events-none">
+        <div id="character-breakdown-overlay-container" className="absolute inset-0 z-overlay w-full h-full pointer-events-none">
           {/* Depth 0 View (Root) */}
           <SingleBreakdownView
             key={`depth-0-${rootBreakdown.word}`}

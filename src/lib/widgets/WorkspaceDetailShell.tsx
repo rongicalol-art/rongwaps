@@ -27,7 +27,7 @@ export function WorkspaceDetailShell({
   onClose,
   onBack,
   rightAction,
-  zIndexClassName = 'z-[400]',
+  zIndexClassName = 'z-detail',
   className,
   headerClassName,
   contentClassName,

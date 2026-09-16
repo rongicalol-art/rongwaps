@@ -36,7 +36,7 @@ export function ReaderStudyDrawer({
   const output = (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[650] pointer-events-none lg:hidden">
+        <div className="fixed inset-0 z-drawer pointer-events-none lg:hidden">
           {/* Full-viewport Unified Backdrop: blurs the entire app background including floating sidebar */}
           <motion.div
             aria-hidden="true"

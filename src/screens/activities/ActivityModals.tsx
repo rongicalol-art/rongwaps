@@ -346,7 +346,7 @@ export function ActivityModals({
         {activeActivity && (
           <ActivityModalWrapper id="global-activity-modal" ariaLabel={activityLabel} onClose={handleClose}>
             {activeActivity !== 'create-card' && (
-               <div className={`absolute top-0 left-0 right-0 z-[150] ${isOverlayOpen ? 'invisible' : ''}`}>
+               <div className={`absolute top-0 left-0 right-0 z-activity-header ${isOverlayOpen ? 'invisible' : ''}`}>
                  <PracticeHeader
                     key={resolvedActivity}
                     maxWidth="2xl"

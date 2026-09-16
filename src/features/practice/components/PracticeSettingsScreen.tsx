@@ -148,7 +148,7 @@ export function PracticeSettingsScreen({
           animate={{ opacity: 1, y: 0 }}
           exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 14 }}
           transition={reduceMotion ? { duration: 0 } : { duration: 0.2, ease: 'easeOut' }}
-          className="workspace-window pointer-events-auto fixed inset-0 z-[700] flex flex-col bg-ui-practice-canvas outline-none"
+          className="workspace-window pointer-events-auto fixed inset-0 z-dialog flex flex-col bg-ui-practice-canvas outline-none"
         >
           {/* Scrollable content column — header is sticky inside so content slides under the gradient */}
           <main className="relative z-10 min-h-0 flex-1 overflow-y-auto overscroll-contain">

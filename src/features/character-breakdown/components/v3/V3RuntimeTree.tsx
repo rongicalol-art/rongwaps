@@ -88,7 +88,7 @@ function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, re
           <>
             <button type="button" onPointerEnter={() => onGlyphIntent?.(target)} onFocus={() => onGlyphIntent?.(target)} onClick={() => onGlyphClick?.(target)} aria-label={`Open breakdown for ${target}`} className="absolute inset-0 z-0 rounded-control focus-ring" />
             {mode === 'summary' ? (
-              <div className={`pointer-events-none relative z-[1] flex h-full min-w-0 max-w-full items-center gap-3 text-left ${canExpand ? 'pr-8' : ''}`}>
+              <div className={`pointer-events-none relative z-1 flex h-full min-w-0 max-w-full items-center gap-3 text-left ${canExpand ? 'pr-8' : ''}`}>
                 {useShapeMark ? (
                   <>
                     <span className={`flex shrink-0 items-center justify-center text-ui-muted-strong ${depth > 0 ? 'w-10' : 'w-11'}`}><AppIcon name="breakdown" size={22} /></span>
@@ -105,7 +105,7 @@ function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, re
                 )}
               </div>
             ) : (
-              <div className={`pointer-events-none relative z-[1] flex h-full min-w-0 max-w-full flex-col justify-center text-left ${canExpand ? 'pr-7' : ''}`}>
+              <div className={`pointer-events-none relative z-1 flex h-full min-w-0 max-w-full flex-col justify-center text-left ${canExpand ? 'pr-7' : ''}`}>
                 {useShapeMark ? <span className="flex items-center gap-2 text-ui-muted-strong"><AppIcon name="breakdown" size={depth > 0 ? 21 : 25} /><span className="text-xs font-extrabold">Shape</span></span> : <CharacterGlyph character={presentation.title} className={`leading-none text-ui-ink-strong ${depth > 0 ? 'text-[34px]' : 'text-[40px]'}`} />}
                 {presentation.pinyin || presentation.meaning ? <span className="mt-1 flex min-w-0 items-baseline gap-1.5">
                 {presentation.pinyin && <span className="shrink-0 text-[11px] font-extrabold text-brand-primary">{numberToToneMarks(presentation.pinyin)}</span>}
@@ -115,14 +115,14 @@ function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, re
             )}
           </>
         ) : mode === 'summary' ? (
-          <div className="pointer-events-none relative z-[1] flex h-full min-w-0 max-w-full items-center gap-3 text-left">
+          <div className="pointer-events-none relative z-1 flex h-full min-w-0 max-w-full items-center gap-3 text-left">
             <span className={`flex shrink-0 items-center justify-center text-ui-muted-strong ${depth > 0 ? 'w-10' : 'w-11'}`}><AppIcon name="breakdown" size={22} /></span>
             <span className="flex min-w-0 flex-1 flex-col gap-0.5">
               <span className="text-[11px] font-bold leading-snug text-ui-muted">No glyph for this</span>
             </span>
           </div>
         ) : (
-          <div className="pointer-events-none relative z-[1] flex h-full min-w-0 max-w-full flex-col justify-center text-left">
+          <div className="pointer-events-none relative z-1 flex h-full min-w-0 max-w-full flex-col justify-center text-left">
             <span className="flex items-center justify-start text-ui-muted-strong"><AppIcon name="breakdown" size={22} /></span>
             <span className="mt-1 text-[11px] font-bold text-ui-muted">No glyph for this</span>
           </div>

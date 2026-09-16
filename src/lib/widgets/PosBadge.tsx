@@ -180,7 +180,7 @@ export function PosBadge({
       {isOpen && anchor && createPortal(
         <div
           aria-hidden="true"
-          className="pointer-events-none fixed z-[800]"
+          className="pointer-events-none fixed z-popover"
           style={
             placement
               ? { left: placement.left, top: placement.top }

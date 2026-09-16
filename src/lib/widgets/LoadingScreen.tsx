@@ -30,10 +30,10 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
 }) => {
   const toneClass = tone === 'practice' ? 'bg-ui-practice-canvas' : 'bg-ui-canvas';
   const containerClass = fullScreen
-    ? 'fixed z-[500] inset-0 w-full h-full'
+    ? 'fixed z-window inset-0 w-full h-full'
     : inline
       ? 'flex w-full min-h-[45vh] flex-col items-center justify-center px-4 py-16'
-      : 'absolute z-[100] inset-0 w-full h-full';
+      : 'absolute z-content inset-0 w-full h-full';
   return (
     <div
       role="status"
