@@ -202,6 +202,7 @@ const TARGET_DISPLAY_OVERRIDES: Record<string, string> = {
   '著': 'particle',
   '合': 'join',
   '份': 'copy',
+  '里': 'li',
 };
 
 export interface SceneComponentOptions {
