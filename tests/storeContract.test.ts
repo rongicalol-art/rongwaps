@@ -39,11 +39,11 @@ test('persisted key set matches the legacy persisted state exactly', () => {
 });
 
 /**
- * The account-switch reset contract. Exactly this state was cleared by the
- * hand-written reset in useCloudSync; a key added here without a
- * corresponding reset (or vice versa) leaks across accounts.
+ * The account-switch reset contract. This state is cleared whenever a
+ * different account signs in; a key added here without a corresponding reset
+ * (or vice versa) leaks one account's cached state into another's.
  */
-const LEGACY_ACCOUNT_SWITCH_KEYS = [
+const ACCOUNT_SWITCH_RESET_KEYS = [
   'srsData',
   'learnedCards',
   'favorites',
@@ -61,10 +61,14 @@ const LEGACY_ACCOUNT_SWITCH_KEYS = [
   // Session-scoped review snapshot: a pinned due-set must never leak
   // into another account's view (added with the stale-snapshot fix).
   'activeReviewSessionCards',
+  // Library view pointers into account-scoped folders: clearing the folder
+  // list without them pins the library to a folder that no longer exists.
+  'libraryActiveFolder',
+  'libraryActiveView',
 ].sort();
 
-test('account-switch defaults match the legacy reset contract exactly', () => {
-  assert.deepEqual(Object.keys(ACCOUNT_SWITCH_DEFAULTS).sort(), LEGACY_ACCOUNT_SWITCH_KEYS);
+test('account-switch defaults match the reset contract exactly', () => {
+  assert.deepEqual(Object.keys(ACCOUNT_SWITCH_DEFAULTS).sort(), ACCOUNT_SWITCH_RESET_KEYS);
   assert.deepEqual(ACCOUNT_SWITCH_DEFAULTS.sessionProgress, createEmptySessionProgress());
 });
 
@@ -77,6 +81,8 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
     learnedCards: ['card_a'],
     favorites: ['word_你好'],
     customFolders: [{ id: 'f1', name: 'Mine', color: 'blue' }],
+    libraryActiveFolder: 'f1',
+    libraryActiveView: 'folder',
     deletedFolderIds: ['f2'],
     foldersSyncedUserId: 'user-a',
     sessionProgress: { startTime: 1, cardsReviewed: 5, cardsLearned: 2 },
@@ -104,6 +110,8 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
   assert.deepEqual(state.learnedCards, []);
   assert.deepEqual(state.favorites, []);
   assert.deepEqual(state.customFolders, []);
+  assert.equal(state.libraryActiveFolder, 'all');
+  assert.equal(state.libraryActiveView, 'home');
   assert.deepEqual(state.deletedFolderIds, []);
   assert.equal(state.foldersSyncedUserId, null);
   assert.deepEqual(state.sessionProgress, createEmptySessionProgress());

@@ -62,7 +62,6 @@ export function useWorkspaceRouting({
     prefetchTabScreen(routeTab);
     store.setIsReviewMode(false);
     store.setActiveReviewSessionCards(null);
-    store.setIsSearchOpen(false);
   }, [routeTab, activeTab, closeReader, setActiveActivity, setActiveGrammarPartId, setActiveTab]);
 
   const handleTabChange = useCallback((tab: TabRoute) => {

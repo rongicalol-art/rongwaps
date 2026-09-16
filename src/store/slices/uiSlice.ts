@@ -13,8 +13,6 @@ export interface UiState {
   setIsSettingsOpen: (open: boolean) => void;
 
   // UI State
-  isSearchOpen: boolean;
-  setIsSearchOpen: (open: boolean) => void;
   isOverlayOpen: boolean;
   setIsOverlayOpen: (open: boolean) => void;
   isInteractionActive: boolean;
@@ -52,8 +50,6 @@ export function createUiSlice(set: SetState): UiState {
     isSettingsOpen: false,
     setIsSettingsOpen: (open) => set({ isSettingsOpen: open }),
 
-    isSearchOpen: false,
-    setIsSearchOpen: (open) => set({ isSearchOpen: open }),
     isOverlayOpen: false,
     setIsOverlayOpen: (open) => set({ isOverlayOpen: open }),
     isInteractionActive: false,

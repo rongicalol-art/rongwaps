@@ -14,8 +14,6 @@ import {
   resolveFolderColor,
 } from '../utils/folderColors';
 
-type ViewState = 'home' | 'folder';
-
 const COLLECTIONS = [
   {
     id: 'starred',
@@ -60,19 +58,11 @@ export function useLibrary() {
   const localFlashcards = useAppStore((state) => state.localFlashcards);
   const deleteLocalFlashcard = useAppStore((state) => state.deleteLocalFlashcard);
   const setLibraryActiveView = useAppStore((state) => state.setLibraryActiveView);
-  const storeActiveView = useAppStore((state) => state.libraryActiveView);
-  
-  const [activeView, setActiveViewLocal] = useState<ViewState>(storeActiveView);
-
-  // Sync local state when the store's view is reset externally (e.g. header back button)
-  useEffect(() => {
-    setActiveViewLocal(storeActiveView);
-  }, [storeActiveView]);
-
-  const setActiveView = (view: ViewState) => {
-    setActiveViewLocal(view);
-    setLibraryActiveView(view);
-  };
+  // The folder view is store-backed so the header's back action and this screen
+  // always agree; deriving it (instead of mirroring it into local state) keeps
+  // one source of truth and removes the sync effect between the two.
+  const activeView = useAppStore((state) => state.libraryActiveView);
+  const setActiveView = setLibraryActiveView;
 
   const [deleteFolderTarget, setDeleteFolderTarget] = useState<{ id: string; name: string } | null>(null);
   const deletingFoldersRef = useRef<Set<string>>(new Set());

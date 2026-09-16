@@ -98,4 +98,10 @@ export const LIBRARY_ACCOUNT_SWITCH_DEFAULTS = {
   customFolders: [],
   deletedFolderIds: [],
   foldersSyncedUserId: null,
+  // The library view points at account-scoped folders. `customFolders` is
+  // cleared above, so keeping the pointer would leave the library pinned to a
+  // folder that no longer exists (its deck/session key is built from the id,
+  // and a new card would be filed into the dead folder).
+  libraryActiveFolder: 'all',
+  libraryActiveView: 'home' as const,
 };

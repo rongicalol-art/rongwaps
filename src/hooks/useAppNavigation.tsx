@@ -43,7 +43,6 @@ export function useAppNavigation() {
   }, []);
 
   const handleSetActiveTab = useCallback((tab: TabType) => {
-    useAppStore.getState().setIsSearchOpen(false);
     setActiveTab(tab);
   }, [setActiveTab]);
 
