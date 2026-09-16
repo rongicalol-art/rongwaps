@@ -126,6 +126,17 @@ export default defineConfig(() => {
                 return 'vendor-router';
               }
             }
+            // The part-id manifest (~10 KB) is the only grammar module the
+            // curriculum dashboard, the activity wrapper and the dictionary
+            // screens import — they just need to know which parts exist. Keep
+            // it OUT of the authored-lesson chunk: while the two were grouped
+            // together, every one of those statically-imported screens pulled
+            // the whole ~2.4 MB lesson corpus (7 MB of raw JSON) onto its
+            // critical path. The lesson corpus must stay reachable only
+            // through dynamic import().
+            if (id.includes('src/data/interactiveGrammarManifest')) {
+              return 'data-grammar-manifest';
+            }
             if (id.includes('src/data/grammar/') || id.includes('src/data/interactiveGrammar')) {
               return 'data-interactive-grammar';
             }

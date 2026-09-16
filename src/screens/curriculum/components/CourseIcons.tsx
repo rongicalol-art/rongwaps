@@ -1,9 +1,17 @@
 import React, { memo } from 'react';
 import { LottiePlayer } from '../../../lib/widgets';
-import sleepingAnimation from '../../../assets/animations/Sleeping.json';
-import sandyLoadingAnimation from '../../../assets/animations/sandy-loading.json';
-import book2Animation from '../../../assets/animations/book 2logo.json';
-import book3Animation from '../../../assets/animations/book 3 logo.json';
+
+// Branded book animations load on demand: the JSON files are 87–176 KB each
+// and used to be inlined into the curriculum chunk, where they were ~90% of
+// its weight. Module-level loaders keep a stable identity for LottiePlayer.
+const loadSleepingAnimation = () =>
+  import('../../../assets/animations/Sleeping.json').then((m) => m.default);
+const loadSandyLoadingAnimation = () =>
+  import('../../../assets/animations/sandy-loading.json').then((m) => m.default);
+const loadBook2Animation = () =>
+  import('../../../assets/animations/book 2logo.json').then((m) => m.default);
+const loadBook3Animation = () =>
+  import('../../../assets/animations/book 3 logo.json').then((m) => m.default);
 
 export const CourseIcon = memo(({ id, className = '' }: { id: number; className?: string }) => {
   switch (id) {
@@ -11,7 +19,7 @@ export const CourseIcon = memo(({ id, className = '' }: { id: number; className?
       // Book 1 - Sleeping Lottie
       return (
         <div className={className}>
-          <LottiePlayer animationData={sleepingAnimation} loop={true} />
+          <LottiePlayer loadAnimationData={loadSleepingAnimation} loop={true} />
         </div>
       );
     case 2:
@@ -19,7 +27,7 @@ export const CourseIcon = memo(({ id, className = '' }: { id: number; className?
       return (
         <div className={`${className} flex items-center justify-center`}>
           <div className="w-[95%] h-[95%] transform -translate-y-2 scale-100">
-            <LottiePlayer animationData={book2Animation} loop={true} />
+            <LottiePlayer loadAnimationData={loadBook2Animation} loop={true} />
           </div>
         </div>
       );
@@ -28,7 +36,7 @@ export const CourseIcon = memo(({ id, className = '' }: { id: number; className?
       return (
         <div className={`${className} flex items-center justify-center`}>
           <div className="w-[70%] h-[70%]">
-            <LottiePlayer animationData={book3Animation} loop={true} />
+            <LottiePlayer loadAnimationData={loadBook3Animation} loop={true} />
           </div>
         </div>
       );
@@ -37,7 +45,7 @@ export const CourseIcon = memo(({ id, className = '' }: { id: number; className?
       return (
         <div className={`${className} flex items-center justify-center`}>
           <div className="w-[85%] h-[85%]">
-            <LottiePlayer animationData={sandyLoadingAnimation} loop={true} />
+            <LottiePlayer loadAnimationData={loadSandyLoadingAnimation} loop={true} />
           </div>
         </div>
       );

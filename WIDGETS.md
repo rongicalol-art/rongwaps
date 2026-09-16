@@ -115,9 +115,9 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
   ```tsx
   <LoadingScreen message="Loading reading…" inline />
   ```
-- **LottiePlayer** — controlled Lottie animation wrapper for existing branded motion assets; do not use it for UI controls.
+- **LottiePlayer** — controlled Lottie animation wrapper for existing branded motion assets; do not use it for UI controls. Prefer `loadAnimationData` (a module-level `() => import('…json').then((m) => m.default)`) over `animationData` for large animations: the JSON then loads on demand, off the caller's chunk, under the widget's own skeleton/error states. `animationData` (inline import) and `src` (remote URL) remain supported.
   ```tsx
-  <LottiePlayer animationData={animationData} />
+  <LottiePlayer loadAnimationData={loadSleepingAnimation} />
   ```
 - **ScreenSkeleton** — activity-content skeleton that assumes the shared practice header is already mounted and respects reduced motion.
   ```tsx
