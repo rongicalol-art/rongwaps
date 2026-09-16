@@ -4,6 +4,12 @@ import { ActionButton } from './ActionButton';
 interface Props {
   children: ReactNode;
   fallback?: ReactNode;
+  /**
+   * Replaces the default fallback container classes (`min-h-[300px] p-8`).
+   * Pass a viewport-sized value (e.g. `min-h-[100dvh] p-8`) when the boundary
+   * is the app-level safety net rather than a section inside a screen.
+   */
+  fallbackClassName?: string;
 }
 
 interface State {
@@ -15,9 +21,13 @@ interface State {
  * Catches JavaScript errors anywhere in the child component tree and
  * displays a fallback UI instead of crashing the entire app.
  *
+ * Mounted app-level in `main.tsx` (so no render error can blank the page)
+ * and per tab screen in `TabScreens`. Error boundaries do not catch errors
+ * thrown in event handlers or async callbacks; data-loading hooks own those.
+ *
  * Usage:
- *   <ErrorBoundary>
- *     <MyScreen />
+ *   <ErrorBoundary fallbackClassName="min-h-[100dvh] p-8">
+ *     <App />
  *   </ErrorBoundary>
  */
 export class ErrorBoundary extends Component<Props, State> {
@@ -45,7 +55,11 @@ export class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <div className="flex flex-col items-center justify-center min-h-[300px] p-8 text-center bg-ui-canvas">
+        <div
+          className={`flex flex-col items-center justify-center text-center bg-ui-canvas ${
+            this.props.fallbackClassName ?? 'min-h-[300px] p-8'
+          }`}
+        >
           <div className="w-20 h-20 rounded-control bg-ui-surface border-b-[length:var(--depth-lg)] border-ui-border flex items-center justify-center mb-4">
             <span className="text-3xl">😵</span>
           </div>

@@ -41,6 +41,8 @@ export function ProfileScreen({
   // App store selectors: subscribe to primitive lengths to avoid re-rendering on element updates
   const favoriteCount = useAppStore((state) => state.favorites.length);
   const localCardsCount = useAppStore((state) => state.localFlashcards.length);
+  const syncStatus = useAppStore((state) => state.syncStatus);
+  const syncError = useAppStore((state) => state.syncError);
   const setIsSettingsOpen = useAppStore((state) => state.setIsSettingsOpen);
 
   const handleNavigateToPath = useCallback(() => {
@@ -89,6 +91,8 @@ export function ProfileScreen({
               onSignOut={logout}
               isSigningOut={isAuthActionLoading}
               onOpenSettings={() => setIsSettingsOpen(true)}
+              syncStatus={syncStatus}
+              syncError={syncError}
             />
 
             {/* 2. Spaced Repetition Review */}
