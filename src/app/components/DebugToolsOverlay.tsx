@@ -5,7 +5,7 @@ import { AppIcon, IconActionButton, LoadingScreen } from '../../lib/widgets';
 // Dev-only debug tools. import.meta.env.DEV is statically false in production
 // builds, so the dynamic import chunk is dropped from the bundle graph.
 const DebugWindow = import.meta.env.DEV
-  ? lazy(() => import('../../screens/debug/DebugWindow').then((m) => ({ default: m.DebugWindow })))
+  ? lazy(() => import('../../screens/debug').then((m) => ({ default: m.DebugWindow })))
   : null;
 
 /** Ctrl+Shift+0 debug window; renders nothing in production builds. */

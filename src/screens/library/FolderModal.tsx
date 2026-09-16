@@ -8,7 +8,7 @@ import { FolderSvg } from './components/FolderItem';
 import {
   CUSTOM_FOLDER_OPTIONS,
   resolveFolderColor,
-} from './utils/folderColors';
+} from '../../utils/folderColors';
 
 interface FolderModalProps {
   showFolderModal: boolean;

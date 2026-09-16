@@ -7,7 +7,7 @@ import {
   CUSTOM_CARDS_FOLDER_COLOR,
   getFolderColorOption,
   resolveFolderColor,
-} from '../src/screens/library/utils/folderColors';
+} from '../src/utils/folderColors';
 
 test('palette has 8 distinct vibrant colors with front and back shades', () => {
   assert.equal(FOLDER_COLOR_PALETTE.length, 8);

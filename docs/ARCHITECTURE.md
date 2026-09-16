@@ -23,7 +23,7 @@ src/
 
 Profile, flashcard, and curriculum components that have one clear owner live in their screen-local `components/` folders. This keeps feature-specific presentation close to its screen without expanding the cross-screen feature packages.
 
-`src/features/<domain>/` is reserved for domain UI genuinely reused by multiple screens, such as character breakdown, dictionary, or practice session presentation. The current practice package owns settings, practice headers, answer feedback, choice rows, and completion states. Each domain package exposes only the API needed by other modules through its `index.ts`; consumers must not reach into another feature's internal folders.
+`src/features/<domain>/` is reserved for domain UI genuinely reused by multiple screens, such as character breakdown, dictionary, flashcard, or practice session presentation. The current practice package owns settings, practice headers, answer feedback, choice rows, and completion states. The `flashcards` package owns the reusable card answer face, its example-sentence stream, and the review-card geometry, shared by the flashcard study screen and the writing activity. Each domain package exposes only the API needed by other modules through its `index.ts`; consumers must not reach into another feature's internal folders.
 
 The shared library now contains only generic presentation. App-shell components live in `src/app/`, cross-screen domain UI lives in `src/features/<domain>/`, and screen-specific presentation stays beside its owning screen. The public widget API is the barrel in `src/lib/widgets/index.ts`; internal helpers such as the part-progress rail remain private to the shared component that composes them.
 
@@ -55,12 +55,13 @@ The existing ESLint configuration contains a small set of core `no-restricted-im
 - `src/lib/widgets/` cannot import from `src/screens/` or `src/features/`.
 - `src/services/` cannot import UI modules from `src/app/`, `src/screens/`, `src/features/`, or `src/lib/widgets/`.
 - A feature package cannot reach into another feature package's internal folders.
+- A screen slice cannot reach into another screen slice's internal folders: screens consume a sibling screen only through its public `index.ts`, and shared presentation moves to a feature package, widget, hook, util, or type instead.
 - App layers (`src/app/`, `src/screens/`, `src/hooks/`, `src/store/`, `src/utils/`, `src/data/`, `src/types/`) consume a feature package only through its public `index.ts`.
 - Shared widgets are consumed through the `src/lib/widgets` barrel, never by internal module path.
 
-Feature packages are declared once in the `FEATURE_PACKAGES` list at the top of `eslint.config.js`; the per-package isolation override is generated from it, so adding a cross-screen feature package is a one-line change and the boundary cannot drift from the package list. Tests are deliberately outside these rules so unit tests can still exercise package internals.
+Feature packages are declared once in the `FEATURE_PACKAGES` list and screen slices once in the `SCREEN_SLICES` list at the top of `eslint.config.js`; the per-package and per-screen isolation overrides are generated from them, so adding a cross-screen feature package or a screen folder is a one-line change and the boundary cannot drift from the list. Tests are deliberately outside these rules so unit tests can still exercise package internals.
 
-`no-restricted-imports` matches the raw import specifier, so each cross-feature pattern covers both spellings: the explicit `features/<other>/...` form and the relative `../<other>/...` form that `src/` code actually uses. A pattern that matches only the explicit form silently allows every relative import.
+`no-restricted-imports` matches the raw import specifier, so each cross-feature and cross-screen pattern covers both spellings: the explicit `features/<other>/...` / `screens/<other>/...` form and the relative `../<other>/...` form that `src/` code actually uses. A pattern that matches only the explicit form silently allows every relative import.
 
 These checks guard import direction; they do not replace ownership review or the public barrels.
 
