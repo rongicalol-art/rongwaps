@@ -1,5 +1,12 @@
 # V2 Memory-Hook Rollout — Handoff
 
+> **Status: complete (2026-09-16).** 641/656 Book 1 characters ship curated V2
+> hooks (543 scene, 76 sound, 22 reviewed shape-only); the remaining 15 are the
+> documented atomic no-hooks keeping their v3 shape hooks. Final pack sha256
+> `fb6b0dcfe13a…`, all gates green. See DECISIONS.md — "Memory-hook quality…"
+> and the batch 7–14 bullets — for the canonical record. The process below is
+> kept for reruns or future books.
+
 Committed handoff for continuing the Book 1 V2 memory-hook rollout. Read this
 first, then the DECISIONS.md entry "2026-09-15 — Memory-hook quality…" (canonical
 record, rollout bullets describe every batch).
