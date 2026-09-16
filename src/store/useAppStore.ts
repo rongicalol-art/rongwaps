@@ -61,6 +61,8 @@ import {
 } from './slices/syncSlice';
 
 export type { UserSnapshot, SyncStatus };
+// Selector for the composed overlay-source union (see `uiSlice`).
+export { selectIsActivityOverlayOpen } from './slices/uiSlice';
 
 /** Data-only store shape (state, no actions) — lets consumers key off real keys. */
 export type AppStoreData =

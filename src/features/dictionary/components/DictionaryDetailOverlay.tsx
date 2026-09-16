@@ -11,7 +11,6 @@ const SINGLE_HANZI_RE = /^[\u3400-\u9FFF]$/u;
 export function DictionaryDetailOverlay() {
   const dictionaryWord = useAppStore((state) => state.dictionaryWord);
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
-  const setIsOverlayOpen = useAppStore((state) => state.setIsOverlayOpen);
   const activeBookId = useAppStore((state) => state.activeBookId);
   const activeBook = SAMPLE_BOOKS.find((book) => book.id === activeBookId) || SAMPLE_BOOKS[0];
 
@@ -20,13 +19,13 @@ export function DictionaryDetailOverlay() {
   useEffect(() => {
     if (dictionaryWord) {
       setStack([{ word: dictionaryWord, index: 0 }]);
-      setIsOverlayOpen(true);
     } else {
       setStack([]);
-      setIsOverlayOpen(false);
     }
-    return () => setIsOverlayOpen(false);
-  }, [dictionaryWord, setIsOverlayOpen]);
+    // No overlay source is registered here: this overlay is opened by
+    // `dictionaryWord`, which `App.tsx` already folds into the shell overlay
+    // flag it passes to `ActivityModals`.
+  }, [dictionaryWord]);
 
   useEffect(() => {
     const handleSelectWord = (event: Event) => {

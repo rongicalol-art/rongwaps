@@ -3,6 +3,18 @@ import type {
   PracticeHeaderActions,
 } from '../../types/models';
 
+/**
+ * In-activity overlays that paint above the practice dock and header. Each one
+ * is an independent source its owner registers while open, so two overlays can
+ * never close each other on the way out — a single shared boolean made that
+ * impossible to express, because the last writer won.
+ *
+ * The app shell's own overlays (Reading Mode, grammar lesson, dictionary word
+ * detail) are not registered here: `App.tsx` derives them from state it owns
+ * and passes them to `ActivityModals` as a prop.
+ */
+export type ActivityOverlaySource = 'character-breakdown' | 'practice-settings';
+
 export interface UiState {
   // App Config
   activeBookId: number;
@@ -15,8 +27,8 @@ export interface UiState {
   // UI State
   isSearchOpen: boolean;
   setIsSearchOpen: (open: boolean) => void;
-  isOverlayOpen: boolean;
-  setIsOverlayOpen: (open: boolean) => void;
+  activityOverlaySources: ActivityOverlaySource[];
+  setActivityOverlayOpen: (source: ActivityOverlaySource, open: boolean) => void;
   isInteractionActive: boolean;
   setIsInteractionActive: (active: boolean) => void;
   swipeFeedback: { text: string; type: 'learned' | 'review' } | null;
@@ -54,8 +66,16 @@ export function createUiSlice(set: SetState): UiState {
 
     isSearchOpen: false,
     setIsSearchOpen: (open) => set({ isSearchOpen: open }),
-    isOverlayOpen: false,
-    setIsOverlayOpen: (open) => set({ isOverlayOpen: open }),
+    activityOverlaySources: [],
+    setActivityOverlayOpen: (source, open) => set((state) => {
+      const isOpen = state.activityOverlaySources.includes(source);
+      if (isOpen === open) return {};
+      return {
+        activityOverlaySources: open
+          ? [...state.activityOverlaySources, source]
+          : state.activityOverlaySources.filter((id) => id !== source),
+      };
+    }),
     isInteractionActive: false,
     setIsInteractionActive: (active) => set({ isInteractionActive: active }),
     swipeFeedback: null,
@@ -77,6 +97,17 @@ export function createUiSlice(set: SetState): UiState {
       practiceHeaderActions: { ...state.practiceHeaderActions, ...actions },
     })),
   };
+}
+
+/**
+ * True while an in-activity overlay is open. The union is derived here — never
+ * stored — so a writer can only ever describe its own source, and one overlay
+ * closing cannot clear another that is still open.
+ */
+export function selectIsActivityOverlayOpen(
+  state: Pick<UiState, 'activityOverlaySources'>,
+): boolean {
+  return state.activityOverlaySources.length > 0;
 }
 
 /** Persisted slices owned by this domain. */

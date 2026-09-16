@@ -20,19 +20,21 @@ export function CharacterBreakdownOverlay({
   onClose,
   activeBook,
 }: CharacterBreakdownOverlayProps) {
-  const setIsOverlayOpen = useAppStore((state) => state.setIsOverlayOpen);
+  const setActivityOverlayOpen = useAppStore((state) => state.setActivityOverlayOpen);
   const [breakdownStack, setBreakdownStack] = useState<{ word: string; index: number }[]>([]);
 
   useEffect(() => {
     if (activeBreakdown) {
       setBreakdownStack([{ word: activeBreakdown, index: initialCharIndex || 0 }]);
-      setIsOverlayOpen(true);
     } else {
       setBreakdownStack([]);
-      setIsOverlayOpen(false);
     }
-    return () => setIsOverlayOpen(false);
-  }, [activeBreakdown, initialCharIndex, setIsOverlayOpen]);
+    // Report only this overlay's own source: this component mounts inside every
+    // activity screen (usually with no breakdown open), so a shared boolean
+    // write here would clear the shell's or the settings panel's overlay.
+    setActivityOverlayOpen('character-breakdown', Boolean(activeBreakdown));
+    return () => setActivityOverlayOpen('character-breakdown', false);
+  }, [activeBreakdown, initialCharIndex, setActivityOverlayOpen]);
 
   const pushBreakdown = (word: string) => {
     setBreakdownStack((prev) => [...prev, { word, index: 0 }]);

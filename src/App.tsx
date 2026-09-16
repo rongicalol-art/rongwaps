@@ -100,10 +100,6 @@ export default function App() {
     activeActivity || isReaderOpen || isGrammarOpen || (activeTab === 'library' && isLibraryFolderView)
   );
 
-  useEffect(() => {
-    useAppStore.getState().setIsOverlayOpen(isOverlayActive);
-  }, [isOverlayActive]);
-
   const navigate = useNavigate();
 
   useOverlayUrlSync({
@@ -176,6 +172,7 @@ export default function App() {
               activeBookId={activeBook.id}
               selectedLessons={selectedLessons}
               isLibraryMode={activeTab === 'library'}
+              isShellOverlayOpen={isOverlayActive}
               onNavigateToPractice={() => {
                 navigate(TAB_ROUTES.path);
                 setActiveActivity(null);

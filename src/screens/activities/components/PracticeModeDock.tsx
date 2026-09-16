@@ -14,6 +14,9 @@ export const PRACTICE_ACTIVITIES = [
 
 export type PracticeActivityId = (typeof PRACTICE_ACTIVITIES)[number]['id'];
 
+/** The single anchored sub-menu the dock can have open at a time. */
+type DockMenu = 'quiz' | 'flashcards' | 'study';
+
 interface PracticeModeDockProps {
   feedback: { text: string; type: 'learned' | 'review' } | null;
   onChange: (activity: PracticeActivityId) => void;
@@ -150,9 +153,10 @@ export function PracticeModeDock({
   quizMode,
   value,
 }: PracticeModeDockProps) {
-  const [isQuizMenuOpen, setIsQuizMenuOpen] = useState(false);
-  const [isFlashcardsMenuOpen, setIsFlashcardsMenuOpen] = useState(false);
-  const [isStudyMenuOpen, setIsStudyMenuOpen] = useState(false);
+  // At most one anchored sub-menu is open, so a single slot replaces the
+  // three booleans + mutual-exclusion effects it used to take to hold that
+  // invariant (and the transient two-menus-open render they allowed).
+  const [openMenu, setOpenMenu] = useState<DockMenu | null>(null);
   const dockRef = useRef<HTMLDivElement>(null);
   const modesContainerRef = useRef<HTMLDivElement>(null);
   const grammarButtonRef = useRef<HTMLDivElement>(null);
@@ -160,7 +164,7 @@ export function PracticeModeDock({
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    if (!isStudyMenuOpen) return;
+    if (openMenu !== 'study') return;
 
     const updateStudyPosition = () => {
       if (!grammarButtonRef.current) return;
@@ -181,23 +185,19 @@ export function PracticeModeDock({
     updateStudyPosition();
     window.addEventListener('resize', updateStudyPosition);
     return () => window.removeEventListener('resize', updateStudyPosition);
-  }, [isStudyMenuOpen]);
+  }, [openMenu]);
 
   useEffect(() => {
-    if (!isQuizMenuOpen && !isFlashcardsMenuOpen && !isStudyMenuOpen) return;
+    if (!openMenu) return;
 
     const handlePointerDown = (event: PointerEvent) => {
       if (!dockRef.current?.contains(event.target as Node)) {
-        setIsQuizMenuOpen(false);
-        setIsFlashcardsMenuOpen(false);
-        setIsStudyMenuOpen(false);
+        setOpenMenu(null);
       }
     };
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        setIsQuizMenuOpen(false);
-        setIsFlashcardsMenuOpen(false);
-        setIsStudyMenuOpen(false);
+        setOpenMenu(null);
       }
     };
 
@@ -207,27 +207,7 @@ export function PracticeModeDock({
       document.removeEventListener('pointerdown', handlePointerDown);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isQuizMenuOpen, isFlashcardsMenuOpen, isStudyMenuOpen]);
-
-  // Only one sub-menu open at a time
-  useEffect(() => {
-    if (isQuizMenuOpen) {
-      setIsFlashcardsMenuOpen(false);
-      setIsStudyMenuOpen(false);
-    }
-  }, [isQuizMenuOpen]);
-  useEffect(() => {
-    if (isFlashcardsMenuOpen) {
-      setIsQuizMenuOpen(false);
-      setIsStudyMenuOpen(false);
-    }
-  }, [isFlashcardsMenuOpen]);
-  useEffect(() => {
-    if (isStudyMenuOpen) {
-      setIsQuizMenuOpen(false);
-      setIsFlashcardsMenuOpen(false);
-    }
-  }, [isStudyMenuOpen]);
+  }, [openMenu]);
 
   const selectQuizMode = (mode: QuizMode) => {
     onSelectQuizMode(mode);
@@ -256,9 +236,7 @@ export function PracticeModeDock({
           className="pointer-events-auto relative flex w-full max-w-[368px] items-center justify-center gap-2 sm:gap-3"
           onBlur={(event) => {
             if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-              setIsQuizMenuOpen(false);
-              setIsFlashcardsMenuOpen(false);
-              setIsStudyMenuOpen(false);
+              setOpenMenu(null);
             }
           }}
         >
@@ -275,7 +253,7 @@ export function PracticeModeDock({
               >
                 {/* Popover centered above the button on wide screens, clamped on mobile */}
                 <AnimatePresence>
-                  {isStudyMenuOpen && !feedback && (
+                  {openMenu === 'study' && !feedback && (
                     <motion.div
                       initial={{ opacity: 0, y: 6, scale: 0.98 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -299,7 +277,7 @@ export function PracticeModeDock({
                             fullWidth
                             className="justify-start gap-3 px-4 py-2.5 text-left text-sm sm:text-base font-extrabold text-ui-ink-strong hover:text-feedback-warning-edge"
                             onClick={() => {
-                              setIsStudyMenuOpen(false);
+                              setOpenMenu(null);
                               onOpenGrammar();
                             }}
                           >
@@ -315,7 +293,7 @@ export function PracticeModeDock({
                             fullWidth
                             className="justify-start gap-3 px-4 py-2.5 text-left text-sm sm:text-base font-extrabold text-ui-ink-strong hover:text-brand-primary"
                             onClick={() => {
-                              setIsStudyMenuOpen(false);
+                              setOpenMenu(null);
                               onOpenReading();
                             }}
                           >
@@ -331,7 +309,7 @@ export function PracticeModeDock({
                 <IconActionButton
                   onClick={() => {
                     if (onOpenGrammar && onOpenReading) {
-                      setIsStudyMenuOpen((prev) => !prev);
+                      setOpenMenu((current) => (current === 'study' ? null : 'study'));
                     } else if (onOpenGrammar) {
                       onOpenGrammar();
                     } else if (onOpenReading) {
@@ -343,7 +321,7 @@ export function PracticeModeDock({
                   icon={<AppIcon name="grammar" size={26} className="h-6 w-6" />}
                   className={cn(
                     "h-14 w-14 rounded-feature",
-                    isStudyMenuOpen && "ring-2 ring-brand-primary/40",
+                    openMenu === 'study' && "ring-2 ring-brand-primary/40",
                   )}
                 />
               </motion.div>
@@ -355,8 +333,8 @@ export function PracticeModeDock({
             className="relative flex h-14 min-w-0 flex-1 w-full max-w-[300px] items-center justify-center"
           >
             <DockSubMenu<QuizMode>
-              open={isQuizMenuOpen && !feedback}
-              onClose={() => setIsQuizMenuOpen(false)}
+              open={openMenu === 'quiz' && !feedback}
+              onClose={() => setOpenMenu(null)}
               modeKey="quiz"
               containerRef={modesContainerRef}
               label="Choose quiz mode"
@@ -365,8 +343,8 @@ export function PracticeModeDock({
               onSelect={selectQuizMode}
             />
             <DockSubMenu<FlashcardViewMode>
-              open={isFlashcardsMenuOpen && !feedback}
-              onClose={() => setIsFlashcardsMenuOpen(false)}
+              open={openMenu === 'flashcards' && !feedback}
+              onClose={() => setOpenMenu(null)}
               modeKey="flashcards"
               containerRef={modesContainerRef}
               label="Choose flashcards view"
@@ -422,28 +400,28 @@ export function PracticeModeDock({
                         buttonProps: isQuiz ? {
                             'data-mode': 'quiz',
                             'aria-haspopup': 'menu' as const,
-                            'aria-expanded': isQuizMenuOpen,
-                            className: isQuizMenuOpen ? 'ring-2 ring-white/40' : undefined,
+                            'aria-expanded': openMenu === 'quiz',
+                            className: openMenu === 'quiz' ? 'ring-2 ring-white/40' : undefined,
                         } : isFlashcards ? {
                             'data-mode': 'flashcards',
                             'aria-haspopup': 'menu' as const,
-                            'aria-expanded': isFlashcardsMenuOpen,
-                            className: isFlashcardsMenuOpen ? 'ring-2 ring-white/40' : undefined,
+                            'aria-expanded': openMenu === 'flashcards',
+                            className: openMenu === 'flashcards' ? 'ring-2 ring-white/40' : undefined,
                         } : undefined,
                       };
                     })}
                     onChange={(activity) => {
+                      // Tapping the segment that owns an open sub-menu closes
+                      // it; tapping the other one swaps the open sub-menu.
                       if (activity === 'quiz') {
-                        setIsQuizMenuOpen((isOpen) => !isOpen);
+                        setOpenMenu((current) => (current === 'quiz' ? null : 'quiz'));
                         return;
                       }
                       if (activity === 'flashcards') {
-                        setIsQuizMenuOpen(false);
-                        setIsFlashcardsMenuOpen((isOpen) => !isOpen);
+                        setOpenMenu((current) => (current === 'flashcards' ? null : 'flashcards'));
                         return;
                       }
-                      setIsQuizMenuOpen(false);
-                      setIsFlashcardsMenuOpen(false);
+                      setOpenMenu(null);
                       onChange(activity);
                     }}
                   />

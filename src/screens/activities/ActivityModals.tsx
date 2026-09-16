@@ -3,7 +3,7 @@ import { useShallow } from 'zustand/react/shallow';
 import { AnimatePresence } from 'motion/react';
 import { ActivityModalWrapper, ScreenSkeleton } from '../../lib/widgets';
 import { PracticeHeader } from '../../features/practice';
-import { useAppStore } from '../../store/useAppStore';
+import { useAppStore, selectIsActivityOverlayOpen } from '../../store/useAppStore';
 import { AddCardScreen } from '../add-card';
 import type { ActivityType } from '../../types/models';
 import { SAMPLE_BOOKS } from '../../data/books';
@@ -46,6 +46,12 @@ interface ActivityModalsProps {
   activeBookId: number;
   selectedLessons: number[];
   isLibraryMode?: boolean;
+  /**
+   * True while the app shell paints an overlay window (Reading Mode, grammar
+   * lesson, dictionary word detail) over this modal. Owned by `App.tsx` — the
+   * shell's overlays are not activity state and do not belong in the store.
+   */
+  isShellOverlayOpen: boolean;
   onNavigateToPractice?: () => void;
   onOpenGrammarPart?: (partId: string, pageId?: string) => void;
   onOpenReading?: () => void;
@@ -57,6 +63,7 @@ export function ActivityModals({
   activeBookId,
   selectedLessons,
   isLibraryMode = false,
+  isShellOverlayOpen,
   onNavigateToPractice,
   onOpenGrammarPart,
   onOpenReading,
@@ -64,7 +71,8 @@ export function ActivityModals({
   const activities = PRACTICE_ACTIVITIES;
 
   const validModes = activities.map(a => a.id);
-  const isOverlayOpen = useAppStore(state => state.isOverlayOpen);
+  const isActivityOverlayOpen = useAppStore(selectIsActivityOverlayOpen);
+  const isOverlayOpen = isShellOverlayOpen || isActivityOverlayOpen;
   const isInteractionActive = useAppStore(state => state.isInteractionActive);
   const swipeFeedback = useAppStore(state => state.swipeFeedback);
 
