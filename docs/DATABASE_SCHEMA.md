@@ -62,7 +62,7 @@ Granular card-level SRS state (the single source of truth for SRS).
 - **Columns**:
   - `user_id` (uuid FK) / `card_id` (text) — composite Primary Key
   - `ease` (numeric default 2.5), `interval` (integer default 0), `repetitions` (integer default 0)
-  - `next_review_date` (timestamptz), `last_updated` (timestamptz)
+  - `next_review_date` (timestamptz), `learning_step` (integer, nullable — intraday step index; added in `20260909_learning_step.sql`), `last_updated` (timestamptz)
 - **Indexes**: `idx_user_card_progress_user_due` on (`user_id`, `next_review_date`) — serves both `getProgress` (user prefix) and `get_due_card_ids` (user + due filter); the PK (`user_id`, `card_id`) covers id lookups. The redundant single-column `user_id` / `next_review_date` indexes were dropped in the 20260912 cleanup.
 - **RLS**: owner-only.
 - **Notes**: Written via the `upsert_card_progress` RPC (batched); read by `userService.getProgress` and the `get_due_card_ids` RPC (review sessions). The old `user_progress` table (with a dead `srs_data` jsonb column) was dropped in the cleanup.

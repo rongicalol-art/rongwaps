@@ -186,7 +186,7 @@ export async function fetchVocabulary(bookId?: number, lessonId?: number): Promi
           break;
         }
 
-        allData.push(...(data as DBVocabularyRow[]));
+        allData.push(...data);
         if (data.length < step) {
           break;
         }
@@ -250,7 +250,7 @@ export async function fetchVocabularyByIds(ids: string[]): Promise<Flashcard[] |
         console.error('Error fetching vocabulary by ids:', error);
         return null;
       }
-      if (data) rows.push(...(data as DBVocabularyRow[]));
+      if (data) rows.push(...data);
     }
     return prepareVocabulary(rows);
   } catch (err) {

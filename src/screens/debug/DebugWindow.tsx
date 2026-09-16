@@ -245,7 +245,7 @@ export const DebugWindow = () => {
                   <div className="flex justify-between items-center mb-2 pb-2 border-b border-ui-divider">
                     <span className="font-extrabold text-ui-ink text-2xl">{m.character}</span>
                     <span className="text-xs text-ui-muted">
-                      {m.createdAt?.toDate ? m.createdAt.toDate().toLocaleString() : 'Cached Global Memory'}
+                      {m.created_at ? new Date(m.created_at).toLocaleString() : 'Cached Global Memory'}
                     </span>
                   </div>
                   <p className="text-ui-ink font-bold whitespace-pre-wrap text-[15px] bg-ui-canvas p-3 rounded-control border-b-[length:var(--depth-sm)] border-ui-border leading-relaxed">

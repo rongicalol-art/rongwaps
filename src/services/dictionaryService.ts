@@ -152,7 +152,7 @@ export async function getDictionaryEntries(word: string): Promise<DBDictionaryEn
     }
 
     // 4. Cache and return
-    const rows = (data || []) as DBDictionaryEntryRow[];
+    const rows = data || [];
     const results = rows.map(mapRowToEntry);
     dictionaryCache.set(trimmedWord, results);
     return results;

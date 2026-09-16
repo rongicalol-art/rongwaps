@@ -17,15 +17,22 @@ export interface CardProgressRow {
   learning_step: number | null;
 }
 
-/** Per-card payload for the `upsert_card_progress` RPC and direct upserts. */
-export interface CardProgressUpsert {
+/**
+ * Per-card payload for the `upsert_card_progress` RPC and direct upserts.
+ *
+ * A type alias rather than an interface on purpose: the RPC argument is jsonb
+ * (`Json`), and only object *type aliases* receive TypeScript's implicit index
+ * signature, which is what lets this payload be passed as `p_records` without
+ * a cast.
+ */
+export type CardProgressUpsert = {
   card_id: string;
   ease: number;
   interval: number;
   repetitions: number;
   next_review_date: string;
   learning_step: number | null;
-}
+};
 
 export function srsDataToUpsert(data: SRSData, cardId: string): CardProgressUpsert {
   return {
