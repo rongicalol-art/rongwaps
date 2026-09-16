@@ -271,10 +271,15 @@ function buildBenchmarkCandidate(plan: CharacterHookPlanV2): MemoryHookCandidate
 
 async function main(): Promise<void> {
   requireExecutionApproval();
-  let provider: ProviderConfig | null = null;
+  // Lazy holder, not a bare `let`: TypeScript cannot see the assignment made
+  // inside `getProvider`, so a plain nullable variable reads as `null` at the
+  // report sites below. Resolving eagerly there would throw when no provider is
+  // configured (deterministic-only runs), so the nullable slot is kept as an
+  // object property and read through it.
+  const providerRef: { current: ProviderConfig | null } = { current: null };
   const getProvider = (): ProviderConfig => {
-    provider ??= resolveProvider();
-    return provider;
+    providerRef.current ??= resolveProvider();
+    return providerRef.current;
   };
   const artifact = JSON.parse(readFileSync(PLAN_PATH, 'utf8')) as QualityPlanArtifact;
   if (artifact.schemaVersion !== 2 || artifact.publishable) {
@@ -423,7 +428,7 @@ async function main(): Promise<void> {
     schemaVersion: 2,
     distribution: 'development-only-candidate',
     publishable: false,
-    model: provider?.model ?? 'deterministic-only',
+    model: providerRef.current?.model ?? 'deterministic-only',
     promptVersion: PROMPT_VERSION,
     sourcePlan: 'book-1-pilot-quality-plans-v2.json',
     records,
@@ -432,7 +437,7 @@ async function main(): Promise<void> {
     schemaVersion: 2,
     distribution: 'development-only-candidate',
     publishable: false,
-    model: provider?.model ?? 'deterministic-only',
+    model: providerRef.current?.model ?? 'deterministic-only',
     promptVersion: PROMPT_VERSION,
     records: records.map((record) => ({
       character: record.character,
@@ -443,8 +448,8 @@ async function main(): Promise<void> {
     })),
   }, null, 2)}\n`);
   console.log(JSON.stringify({
-    provider: provider?.provider ?? 'deterministic-only',
-    model: provider?.model ?? 'deterministic-only',
+    provider: providerRef.current?.provider ?? 'deterministic-only',
+    model: providerRef.current?.model ?? 'deterministic-only',
     promptVersion: PROMPT_VERSION,
     planCharacters: artifact.plans.length,
     apiCallsMade: records.reduce((sum, record) => sum + record.attempts, 0),

@@ -96,7 +96,7 @@ test('Every grammar page has beginner support, varied examples, and practice', (
       assert.ok(page.explanation.length > 0, `${page.id} explanation`);
       assert.ok(page.examples.length >= 3, `${page.id} needs at least three examples`);
       assert.ok(page.questions.length >= 3, `${page.id} needs at least three practice questions`);
-      assert.ok(page.teachingGlossary.length > 0, `${page.id} teaching glossary`);
+      assert.ok((page.teachingGlossary?.length ?? 0) > 0, `${page.id} teaching glossary`);
       assert.equal(page.lessonId, lessonId, `${page.id} lesson registration`);
     });
   });

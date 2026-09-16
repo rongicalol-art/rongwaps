@@ -221,7 +221,7 @@ test('persistent shard reads stay in the shared versioned cache namespace', asyn
   const fixture = makeFixture();
   const keys: string[] = [];
   const transport: RuntimePackTransport = {
-    async fetchJson<T>(path, label, persistentKey) {
+    async fetchJson<T>(path: string, label: string, persistentKey: string) {
       keys.push(persistentKey);
       const result = await fixture.transport.fetchJson<T>(path, label, persistentKey);
       return { data: result.data, source: path.endsWith('manifest.json') ? 'network' : 'persistent-cache' };

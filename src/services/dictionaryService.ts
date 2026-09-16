@@ -1,5 +1,5 @@
 import { supabase } from './supabaseClient';
-import { DBDictionaryEntry, DBDictionaryRow } from '../types/database';
+import { DBDictionaryEntry, DBDictionaryEntryRow } from '../types/database';
 import { dictionaryCache, dictionarySearchCache } from '../utils/cache';
 import { timeDataRequest } from '../utils/requestTiming';
 import { sanitizeDictionaryDefinitions } from '../utils/dictionaryDefinitions';
@@ -105,7 +105,7 @@ export async function searchDictionaryWordsContaining(
     .slice(0, Math.max(0, limit));
 }
 
-function mapRowToEntry(row: DBDictionaryRow): DBDictionaryEntry {
+function mapRowToEntry(row: DBDictionaryEntryRow): DBDictionaryEntry {
   return {
     traditional: row.traditional,
     simplified: row.simplified,
@@ -152,7 +152,7 @@ export async function getDictionaryEntries(word: string): Promise<DBDictionaryEn
     }
 
     // 4. Cache and return
-    const rows = (data || []) as DBDictionaryRow[];
+    const rows = (data || []) as DBDictionaryEntryRow[];
     const results = rows.map(mapRowToEntry);
     dictionaryCache.set(trimmedWord, results);
     return results;

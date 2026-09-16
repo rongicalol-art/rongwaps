@@ -154,11 +154,11 @@ export const DraggableFlashcard = ({
 
   // Directional rating borders: Green for right/up (learned), Red for left/down (review)
   // Only driven by active drag offset, never triggered by outer slide transitions
-  const greenBorderOpacity = useTransform([dragX, dragY], ([x, y]: [number, number]) => {
+  const greenBorderOpacity = useTransform([dragX, dragY], ([x, y]: number[]) => {
     const intensity = Math.max(0, x, -y);
     return Math.min(0.35, (intensity / MAX_TINT_OFFSET) * 0.35);
   });
-  const redBorderOpacity = useTransform([dragX, dragY], ([x, y]: [number, number]) => {
+  const redBorderOpacity = useTransform([dragX, dragY], ([x, y]: number[]) => {
     const intensity = Math.max(0, -x, y);
     return Math.min(0.35, (intensity / MAX_TINT_OFFSET) * 0.35);
   });
