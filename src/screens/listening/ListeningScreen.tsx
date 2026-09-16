@@ -134,7 +134,7 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
   }
 
   return (
-    <div className="absolute inset-0 z-[100] w-full h-full bg-transparent flex flex-col overflow-hidden text-ui-ink font-sans pt-[72px]">
+    <div className="absolute inset-0 z-content w-full h-full bg-transparent flex flex-col overflow-hidden text-ui-ink font-sans pt-[72px]">
       
       <ScreenLayout maxWidth="xl" className="pb-[240px] overscroll-none overflow-y-auto">
         <div className="mt-4 flex w-full items-center gap-2.5 px-2">

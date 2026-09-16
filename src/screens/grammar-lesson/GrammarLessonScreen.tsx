@@ -245,7 +245,7 @@ export function GrammarLessonScreen({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: '100%' }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed inset-0 z-[500] flex flex-col overflow-hidden bg-ui-canvas outline-none transition-[padding-left] duration-300 ease-out"
+      className="fixed inset-0 z-window flex flex-col overflow-hidden bg-ui-canvas outline-none transition-[padding-left] duration-300 ease-out"
       style={{ paddingLeft: 'var(--workspace-nav-width)' }}
       role="dialog"
       aria-modal="true"
@@ -347,7 +347,7 @@ export function GrammarLessonScreen({
             <div
               role="status"
               aria-label="Loading book"
-              className="fixed inset-0 z-[600] flex flex-col items-center justify-center gap-5 bg-ui-ink-strong"
+              className="fixed inset-0 z-shell flex flex-col items-center justify-center gap-5 bg-ui-ink-strong"
             >
               <span className="h-11 w-11 animate-spin rounded-full border-4 border-ui-surface/25 border-t-ui-surface" />
               <span className="text-xs font-black uppercase tracking-widest text-ui-surface/70">

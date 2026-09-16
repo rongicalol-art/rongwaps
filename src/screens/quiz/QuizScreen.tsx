@@ -43,7 +43,7 @@ export function QuizScreen({
   }
 
   return (
-    <div className="absolute inset-0 z-[100] bg-transparent w-full flex flex-col overflow-hidden">
+    <div className="absolute inset-0 z-content bg-transparent w-full flex flex-col overflow-hidden">
       <div className="flex-1 w-full mx-auto relative px-0 flex flex-col">
         <AnimatePresence mode="wait">
           <motion.div
@@ -52,7 +52,7 @@ export function QuizScreen({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.1 }}
-            className="absolute inset-0 z-[100] flex flex-col bg-transparent overflow-hidden"
+            className="absolute inset-0 z-content flex flex-col bg-transparent overflow-hidden"
           >
             {mode === 'choices' ? (
               <QuizChoices

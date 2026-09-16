@@ -31,7 +31,7 @@ export function DebugToolsOverlay() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="workspace-window absolute inset-0 z-[1000] bg-ui-surface flex flex-col overflow-auto overscroll-none"
+          className="workspace-window absolute inset-0 z-devtools bg-ui-surface flex flex-col overflow-auto overscroll-none"
         >
           <div className="sticky top-0 right-0 p-4 shrink-0 flex justify-end bg-ui-surface/90 backdrop-blur-sm shadow-sm z-10">
             <IconActionButton

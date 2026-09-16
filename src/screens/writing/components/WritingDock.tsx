@@ -37,7 +37,7 @@ export function WritingDock({
           ? { duration: 0 }
           : { type: 'spring', stiffness: 360, damping: 32, mass: 0.72 }
       }
-      className="pointer-events-none absolute inset-x-0 bottom-0 z-[250] mb-4 flex justify-center px-4 pb-[calc(16px+env(safe-area-inset-bottom,0px))] pt-3 md:mb-6"
+      className="pointer-events-none absolute inset-x-0 bottom-0 z-dock mb-4 flex justify-center px-4 pb-[calc(16px+env(safe-area-inset-bottom,0px))] pt-3 md:mb-6"
     >
       <div className="pointer-events-auto relative flex w-full max-w-[320px] items-center justify-center">
         <nav

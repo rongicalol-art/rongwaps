@@ -50,7 +50,7 @@ export function BottomDrawer({
   const output = (
     <AnimatePresence>
       {isOpen && (
-        <div className={cn('fixed inset-0 z-[500] pointer-events-none', workspaceBound && 'workspace-window')}>
+        <div className={cn('fixed inset-0 z-window pointer-events-none', workspaceBound && 'workspace-window')}>
           {/* Backdrop */}
           <motion.div
             aria-hidden="true"
@@ -92,7 +92,7 @@ export function BottomDrawer({
           >
             {/* Top Accessory */}
             {topAccessory && (
-              <div className="absolute bottom-[calc(100%-18px)] left-0 right-0 w-full flex justify-start z-[10] pointer-events-none px-4 md:px-6">
+              <div className="absolute bottom-[calc(100%-18px)] left-0 right-0 w-full flex justify-start z-10 pointer-events-none px-4 md:px-6">
                 <div className="pointer-events-auto w-full">
                   {topAccessory}
                 </div>

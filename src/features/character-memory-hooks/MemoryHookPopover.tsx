@@ -88,7 +88,7 @@ export function MemoryHookPopover({
   return createPortal(
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed z-[800]"
+      className="pointer-events-none fixed z-popover"
       style={{
         left: anchor.x,
         top: above ? anchor.top : anchor.bottom,

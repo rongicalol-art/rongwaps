@@ -46,7 +46,7 @@ export function ConfirmationDialog({
   });
 
   return (
-    <div className="fixed inset-0 z-[700] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-dialog flex items-center justify-center p-4">
       <motion.div
         aria-hidden="true"
         initial={{ opacity: 0 }}
@@ -54,7 +54,7 @@ export function ConfirmationDialog({
         exit={{ opacity: 0 }}
         transition={{ duration: reduceMotion ? 0 : 0.16 }}
         onClick={isConfirming ? undefined : onCancel}
-        className="absolute inset-0 cursor-default bg-black/40 backdrop-blur-sm"
+        className="absolute inset-0 cursor-default bg-ui-ink-strong/40 backdrop-blur-sm"
       />
       <motion.div
         initial={reduceMotion ? { opacity: 0 } : { scale: 0.96, opacity: 0, y: 12 }}

@@ -68,7 +68,7 @@ export const ReaderWordTooltip: React.FC<ReaderWordTooltipProps> = ({
   return createPortal(
     <div
       data-reader-word-tooltip="true"
-      className="pointer-events-auto fixed z-[90]"
+      className="pointer-events-auto fixed z-tooltip"
       style={{
         left: `${placement.left}px`,
         top: `${placement.top}px`,

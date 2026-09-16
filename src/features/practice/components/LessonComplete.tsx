@@ -110,7 +110,7 @@ export const LessonComplete = ({
   const quizStrokeLength = quizAccuracyRatio * circumference;
 
   return (
-    <div className="absolute inset-0 z-[100] flex h-full w-full items-center justify-center overflow-y-auto overscroll-contain bg-ui-practice-canvas/80 backdrop-blur-sm px-4 pt-14 pb-24 sm:px-6 sm:pt-16 sm:pb-28">
+    <div className="absolute inset-0 z-content flex h-full w-full items-center justify-center overflow-y-auto overscroll-contain bg-ui-practice-canvas/80 backdrop-blur-sm px-4 pt-14 pb-24 sm:px-6 sm:pt-16 sm:pb-28">
       <motion.main
         aria-labelledby="lesson-complete-title"
         initial={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: 14 }}

@@ -113,6 +113,25 @@
   --shadow-ambient-md: 0 8px 24px rgba(0, 0, 0, 0.10);
   --shadow-ambient-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
 
+  /* Overlay layer order. One named rung per surface kind; values ascend with
+     depth. Claim the rung for the surface you own — never invent a new value.
+     Full table + ownership rule: docs/DESIGN_TOKENS.md § 7. */
+  --z-index-tooltip: 90;
+  --z-index-content: 100;
+  --z-index-activity-header: 150;
+  --z-index-activity: 200;
+  --z-index-dock: 250;
+  --z-index-overlay: 300;
+  --z-index-detail: 400;
+  --z-index-detail-raised: 450;
+  --z-index-window: 500;
+  --z-index-shell: 600;
+  --z-index-drawer: 650;
+  --z-index-dialog: 700;
+  --z-index-popover: 800;
+  --z-index-auth: 900;
+  --z-index-devtools: 1000;
+
   --ring-focus: 4px;
   --ring-focus-color: var(--color-brand-primary) / 0.25;
 

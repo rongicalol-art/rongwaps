@@ -71,7 +71,7 @@ export function LayoutShell({
       {/* Desktop / Tablet permanent floating sidebar (never hidden to 0px) */}
       <div className="hidden md:flex">
         <div
-          className={`absolute inset-y-4 left-4 z-[600] flex shrink-0 flex-col rounded-modal border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface overflow-visible transition-[width] duration-200 ${
+          className={`absolute inset-y-4 left-4 z-shell flex shrink-0 flex-col rounded-modal border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface overflow-visible transition-[width] duration-200 ${
             isCollapsed ? 'w-[76px]' : 'w-[256px]'
           }`}
         >
@@ -98,7 +98,7 @@ export function LayoutShell({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="absolute inset-0 bg-black/20 z-[250] md:hidden"
+              className="absolute inset-0 bg-ui-ink-strong/20 z-dock md:hidden"
               onClick={() => setIsNavOpen(false)}
             />
             <motion.div
@@ -106,7 +106,7 @@ export function LayoutShell({
               animate={{ width: "auto", opacity: 1 }}
               exit={{ width: 0, opacity: 0 }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-              className="absolute inset-y-3 left-3 z-[600] flex shrink-0 flex-col overflow-hidden rounded-modal border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface md:hidden"
+              className="absolute inset-y-3 left-3 z-shell flex shrink-0 flex-col overflow-hidden rounded-modal border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface md:hidden"
             >
               <SideNav 
                 activeTab={activeTab}

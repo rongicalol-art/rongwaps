@@ -67,7 +67,7 @@ export function SignInWindow({ onClose }: SignInWindowProps = {}) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: reduceMotion ? 0 : 0.2 }}
-      className="fixed inset-0 z-[900] flex items-center justify-center p-4 md:p-8 bg-ui-ink/40 backdrop-blur-sm"
+      className="fixed inset-0 z-auth flex items-center justify-center p-4 md:p-8 bg-ui-ink/40 backdrop-blur-sm"
       onClick={(e) => {
         if (e.target === e.currentTarget && !isSigningIn && onClose) onClose();
       }}
