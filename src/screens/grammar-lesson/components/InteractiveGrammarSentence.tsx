@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'motion/react';
 import { useMemo, useState } from 'react';
-import { useSmartChineseSegments } from '../../../hooks/useSmartChineseSegments';
+import { useSmartChineseSegments } from '../hooks/useSmartChineseSegments';
 import type { GrammarWordToken } from '../../../types/models';
 import { cn } from '../../../utils/cn';
 

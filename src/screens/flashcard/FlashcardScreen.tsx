@@ -10,7 +10,7 @@ import { DraggableFlashcard } from './components/DraggableFlashcard';
 import { FlashcardList } from './components/FlashcardList';
 import { useAppStore } from '../../store/useAppStore';
 import { audioService } from '../../services/audioService';
-import { useCardFlow } from '../../hooks/useCardFlow';
+import { useCardFlow } from './hooks/useCardFlow';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
 import { buildPracticePartSegments } from '../../utils/practicePartSegments';
