@@ -123,132 +123,128 @@ export function ReaderHeader({
   const isNarrative = reading.dialogueNumber === 3 || reading.title.includes('短文');
 
   return (
-    <div
-      className={cn(
-        "sticky top-0 z-30 flex w-full origin-top flex-col items-center pb-2 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] backdrop-blur-[2px] transition-all duration-300 ease-out bg-gradient-to-b from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent"
-      )}
-    >
-      <ScreenHeader
-        onClose={onClose}
-        maxWidth="none"
-        className="!h-auto !min-h-0 !border-0 !bg-transparent !px-4 !py-1 !shadow-none sm:!px-6 lg:!px-10 w-full"
-        centerContent={
-          <div className="flex items-center justify-center">
-            <h1 className="truncate text-xs sm:text-sm font-black uppercase tracking-wider text-ui-ink-strong">
-              <span className="text-brand-primary">Lesson {reading.lessonId}</span>
-              <span className="mx-1.5 text-ui-muted-strong">·</span>
-              <span>{isNarrative ? 'Reading' : `Part ${reading.dialogueNumber}`}</span>
-            </h1>
-          </div>
-        }
-        rightAction={
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            {onOpenStudyGuide && (
-              <IconActionButton
-                size="md"
-                onClick={onOpenStudyGuide}
-                className={cn(
-                  'lg:hidden',
-                  isStudyGuideOpen && 'text-brand-primary hover:text-brand-primary',
-                )}
-                icon={<AppIcon name="sparkles" size={20} />}
-                label="Study guide"
-                title="Study guide"
-                aria-haspopup="dialog"
-                aria-expanded={isStudyGuideOpen}
-              />
-            )}
-
-            <div ref={aidsRef} className="relative">
-              <IconActionButton
-                size="md"
-                onClick={() => setIsAidsOpen((open) => !open)}
-                className={isAidsOpen ? 'text-brand-primary hover:text-brand-primary' : undefined}
-                icon={
-                  <motion.span
-                    animate={{ rotate: isAidsOpen ? 90 : 0 }}
-                    transition={reduceMotion ? { duration: 0 } : { duration: 0.2, ease: 'easeOut' }}
-                  >
-                    <AppIcon name="settings" size={20} />
-                  </motion.span>
-                }
-                label="Reading settings"
-                title="Reading settings"
-                aria-haspopup="dialog"
-                aria-expanded={isAidsOpen}
-              />
-
-            <AnimatePresence>
-              {isAidsOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 6, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 4, scale: 0.98 }}
-                  transition={{ duration: 0.16, ease: [0.32, 0.72, 0, 1] }}
-                  className="absolute right-0 top-full z-50 mt-2 w-64 sm:w-72 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-2.5 shadow-ambient-lg text-left space-y-3.5"
-                >
-                  {/* Font Size */}
-                  <div className="pb-0.5">
-                    <SettingsDropdownPicker<ReaderTextSize>
-                      label="Font size"
-                      ariaLabel="Font size preference"
-                      value={textSize}
-                      onChange={onTextSizeChange}
-                      options={[
-                        { value: 'normal', label: 'Standard' },
-                        { value: 'large', label: 'Large' },
-                        { value: 'extra-large', label: 'Huge' },
-                      ]}
-                    />
-                  </div>
-
-                  <div className="h-px bg-ui-divider" />
-
-                  {/* Reading Aids Toggles */}
-                  <div role="menu" aria-label="Reading aids" className="flex flex-col gap-1.5">
-                    <button
-                      type="button"
-                      role="switch"
-                      aria-checked={showMeaning}
-                      onClick={onToggleMeaning}
-                      className="flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold text-ui-ink-strong transition-colors outline-none hover:bg-ui-hover focus-ring"
-                    >
-                      <span>Translation</span>
-                      <ToggleSwitch checked={showMeaning} />
-                    </button>
-
-                    <button
-                      type="button"
-                      role="switch"
-                      aria-checked={showPinyin}
-                      onClick={onTogglePinyin}
-                      className="flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold text-ui-ink-strong transition-colors outline-none hover:bg-ui-hover focus-ring"
-                    >
-                      <span>Pinyin</span>
-                      <ToggleSwitch checked={showPinyin} />
-                    </button>
-
-                    {onToggleHoverDefinitions && (
-                    <button
-                      type="button"
-                      role="switch"
-                      aria-checked={showHoverDefinitions}
-                      onClick={onToggleHoverDefinitions}
-                      className="flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold text-ui-ink-strong transition-colors outline-none hover:bg-ui-hover focus-ring"
-                    >
-                      <span>Hover Definitions</span>
-                      <ToggleSwitch checked={showHoverDefinitions} />
-                    </button>
-                  )}
-                  </div>
-                </motion.div>
+    <ScreenHeader
+      variant="window"
+      tone="practice"
+      className="transition-all duration-300 ease-out"
+      onClose={onClose}
+      maxWidth="none"
+      centerContent={
+        <div className="flex items-center justify-center">
+          <h1 className="truncate text-xs sm:text-sm font-black uppercase tracking-wider text-ui-ink-strong">
+            <span className="text-brand-primary">Lesson {reading.lessonId}</span>
+            <span className="mx-1.5 text-ui-muted-strong">·</span>
+            <span>{isNarrative ? 'Reading' : `Part ${reading.dialogueNumber}`}</span>
+          </h1>
+        </div>
+      }
+      rightAction={
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          {onOpenStudyGuide && (
+            <IconActionButton
+              size="md"
+              onClick={onOpenStudyGuide}
+              className={cn(
+                'lg:hidden',
+                isStudyGuideOpen && 'text-brand-primary hover:text-brand-primary',
               )}
-            </AnimatePresence>
-            </div>
+              icon={<AppIcon name="sparkles" size={20} />}
+              label="Study guide"
+              title="Study guide"
+              aria-haspopup="dialog"
+              aria-expanded={isStudyGuideOpen}
+            />
+          )}
+
+          <div ref={aidsRef} className="relative">
+            <IconActionButton
+              size="md"
+              onClick={() => setIsAidsOpen((open) => !open)}
+              className={isAidsOpen ? 'text-brand-primary hover:text-brand-primary' : undefined}
+              icon={
+                <motion.span
+                  animate={{ rotate: isAidsOpen ? 90 : 0 }}
+                  transition={reduceMotion ? { duration: 0 } : { duration: 0.2, ease: 'easeOut' }}
+                >
+                  <AppIcon name="settings" size={20} />
+                </motion.span>
+              }
+              label="Reading settings"
+              title="Reading settings"
+              aria-haspopup="dialog"
+              aria-expanded={isAidsOpen}
+            />
+
+          <AnimatePresence>
+            {isAidsOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: 6, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 4, scale: 0.98 }}
+                transition={{ duration: 0.16, ease: [0.32, 0.72, 0, 1] }}
+                className="absolute right-0 top-full z-50 mt-2 w-64 sm:w-72 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-2.5 shadow-ambient-lg text-left space-y-3.5"
+              >
+                {/* Font Size */}
+                <div className="pb-0.5">
+                  <SettingsDropdownPicker<ReaderTextSize>
+                    label="Font size"
+                    ariaLabel="Font size preference"
+                    value={textSize}
+                    onChange={onTextSizeChange}
+                    options={[
+                      { value: 'normal', label: 'Standard' },
+                      { value: 'large', label: 'Large' },
+                      { value: 'extra-large', label: 'Huge' },
+                    ]}
+                  />
+                </div>
+
+                <div className="h-px bg-ui-divider" />
+
+                {/* Reading Aids Toggles */}
+                <div role="menu" aria-label="Reading aids" className="flex flex-col gap-1.5">
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-checked={showMeaning}
+                    onClick={onToggleMeaning}
+                    className="flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold text-ui-ink-strong transition-colors outline-none hover:bg-ui-hover focus-ring"
+                  >
+                    <span>Translation</span>
+                    <ToggleSwitch checked={showMeaning} />
+                  </button>
+
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-checked={showPinyin}
+                    onClick={onTogglePinyin}
+                    className="flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold text-ui-ink-strong transition-colors outline-none hover:bg-ui-hover focus-ring"
+                  >
+                    <span>Pinyin</span>
+                    <ToggleSwitch checked={showPinyin} />
+                  </button>
+
+                  {onToggleHoverDefinitions && (
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-checked={showHoverDefinitions}
+                    onClick={onToggleHoverDefinitions}
+                    className="flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold text-ui-ink-strong transition-colors outline-none hover:bg-ui-hover focus-ring"
+                  >
+                    <span>Hover Definitions</span>
+                    <ToggleSwitch checked={showHoverDefinitions} />
+                  </button>
+                )}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
           </div>
-        }
-      />
-    </div>
+        </div>
+      }
+    />
   );
 }
 

@@ -147,9 +147,10 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
 > transparent; only full-screen windows and the shared sticky gradient fades
 > reference canvas tokens.
 
-- **ScreenHeader** — canonical study/window header with title, progress, close/back, and composed center/right content. Segmented progress rails accept optional `progressAriaLabel` and `progressUnitLabel` through `PracticePartProgressRail` when a screen needs domain-specific accessibility copy.
+- **ScreenHeader** — canonical study/window header with title, progress, close/back, and composed center/right content. Segmented progress rails accept optional `progressAriaLabel` and `progressUnitLabel` through `PracticePartProgressRail` when a screen needs domain-specific accessibility copy. Pick the chrome with `variant`: `bar` (default, bordered surface bar for screens in normal workspace flow), `window` (the canonical sticky fade for full-viewport study windows — Grammar, Reader, practice), or `panel` (the same fade with a flush row for workspace-bounded detail windows — word detail, character breakdown). Sticky variants take `tone` (`canvas` | `practice`) so the fade blends into the canvas that owns the surface; never hand the fade recipe to `className` — the widget owns the recipe, the canvas owner owns the tone.
   ```tsx
   <ScreenHeader title="Practice" progress={progress} onClose={onClose} />
+  <ScreenHeader variant="panel" tone="practice" title="Study settings" onClose={onClose} />
   ```
 - **ScreenLayout** — consistent screen content wrapper for padding, width, and shell composition.
   ```tsx
