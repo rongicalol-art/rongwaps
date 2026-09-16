@@ -153,10 +153,11 @@ export function PracticeSettingsScreen({
           {/* Scrollable content column — header is sticky inside so content slides under the gradient */}
           <main className="relative z-10 min-h-0 flex-1 overflow-y-auto overscroll-contain">
             <ScreenHeader
+              variant="panel"
+              tone="practice"
               onClose={onClose}
               title="Study settings"
               maxWidth="2xl"
-              className="sticky top-0 z-30 w-full shrink-0 !h-auto !min-h-0 border-0 bg-gradient-to-b from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent px-4 pb-2 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] shadow-none backdrop-blur-[2px] sm:px-6 lg:px-10"
             />
             <div className="mx-auto flex w-full max-w-2xl flex-col gap-7 px-5 pb-16 pt-2 sm:px-8" {...props}>
               <SettingsPageSection title="Card display">

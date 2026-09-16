@@ -190,6 +190,8 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
   return (
     <div className="relative flex h-full w-full flex-col overflow-hidden font-sans selection:bg-brand-primary selection:text-white overscroll-none">
       <ScreenHeader
+        variant="panel"
+        tone="practice"
         onBack={view === 'back' ? handleBack : undefined}
         onClose={view === 'front' ? onClose : undefined}
         maxWidth="none"
@@ -212,7 +214,6 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
               icon={<AppIcon name="settings" size={20} />}
             />
           )}
-          className="sticky top-0 z-30 w-full shrink-0 !h-auto !min-h-0 border-0 bg-gradient-to-b from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent px-4 pb-2 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] backdrop-blur-[2px] shadow-none sm:px-6 lg:px-10"
         />
 
       {/* MAIN CONTENT AREA */}
