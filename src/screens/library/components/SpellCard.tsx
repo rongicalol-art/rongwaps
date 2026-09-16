@@ -17,8 +17,10 @@ export const SpellCard: React.FC<SpellCardProps> = ({ item, activeTab, onAction,
   const simplified = item.simplified;
   const traditional = item.traditional || simplified;
 
+  // Both are always rendered as strings: an entry may carry no definitions at
+  // all, so the declared `string` type starts from an explicit empty default.
   let pinyinStr: string;
-  let definition: string;
+  let definition = '';
 
   if (isStarred) {
     const dbItem = item as DBDictionaryEntry;

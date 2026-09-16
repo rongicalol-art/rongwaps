@@ -79,10 +79,22 @@ export async function generateJson(
   maxOutputTokens = 800,
 ): Promise<string> {
   const isOpenAiCompatible = provider.provider !== 'gemini';
+  // One explicitly-typed header map. Building it inside each request-literal
+  // branch made the union carry `'x-goog-api-key'?: undefined`, which is not
+  // assignable to `HeadersInit`.
+  const headers: Record<string, string> = provider.provider === 'gemini'
+    ? { 'Content-Type': 'application/json', 'x-goog-api-key': provider.apiKey }
+    : {
+        Authorization: `Bearer ${provider.apiKey}`,
+        'Content-Type': 'application/json',
+        ...(provider.provider === 'opencode-go'
+          ? { 'x-opencode-session': OPENCODE_SESSION_ID, Connection: 'close' }
+          : {}),
+      };
   const request = provider.provider === 'gemini'
     ? {
         url: provider.url,
-        headers: { 'Content-Type': 'application/json', 'x-goog-api-key': provider.apiKey },
+        headers,
         body: JSON.stringify({
           systemInstruction: { parts: [{ text: system }] },
           contents: [{ role: 'user', parts: [{ text: prompt }] }],
@@ -96,13 +108,7 @@ export async function generateJson(
       }
     : {
         url: provider.url,
-        headers: {
-          Authorization: `Bearer ${provider.apiKey}`,
-          'Content-Type': 'application/json',
-          ...(provider.provider === 'opencode-go'
-            ? { 'x-opencode-session': OPENCODE_SESSION_ID, Connection: 'close' }
-            : {}),
-        },
+        headers,
         body: JSON.stringify({
           model: provider.model,
           temperature: 0,

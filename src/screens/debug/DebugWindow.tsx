@@ -169,7 +169,7 @@ export const DebugWindow = () => {
                         )}
                       </div>
                       
-                      {log.details && (
+                      {Boolean(log.details) && (
                         <button 
                           onClick={() => setExpandedLogId(expandedLogId === log.id ? null : log.id)}
                           className="text-xs font-black text-feedback-success hover:underline"
@@ -183,7 +183,7 @@ export const DebugWindow = () => {
                       {log.message}
                     </p>
 
-                    {log.details && expandedLogId === log.id && (
+                    {Boolean(log.details) && expandedLogId === log.id && (
                       <div className="mt-2 bg-ui-ink-strong p-3 rounded-control overflow-x-auto text-[11px] font-mono text-emerald-400 border border-emerald-500 max-h-64 whitespace-pre">
                         {JSON.stringify(log.details, null, 2)}
                       </div>

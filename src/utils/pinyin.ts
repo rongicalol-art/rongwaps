@@ -15,7 +15,8 @@ const toneMap: Record<string, string[]> = {
   'Ü': ['Ü', 'Ǖ', 'Ǘ', 'Ǚ', 'Ǜ', 'Ü']
 };
 
-export function numberToToneMarks(pinyin: string): string {
+/** Accepts absent pinyin (card/entry fields are optional) and returns '' for it. */
+export function numberToToneMarks(pinyin: string | null | undefined): string {
   if (!pinyin) return '';
 
   return pinyin

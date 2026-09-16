@@ -28,21 +28,17 @@ export async function getCharacterBreakdown(character: string): Promise<DBCharac
     return pendingRequests.get(character)!;
   }
 
-  let resolvePromise: (value: DBCharacterBreakdown | null) => void;
-  const fetchPromise = new Promise<DBCharacterBreakdown | null>((resolve) => {
-    resolvePromise = resolve;
-  });
-
-  pendingRequests.set(character, fetchPromise);
-
-  (async () => {
+  // Resolve the promise with an async IIFE instead of an externally assigned
+  // `resolve` variable: the awaited work starts immediately, so callers that
+  // race into the `pendingRequests` branch above share this exact promise,
+  // while the map entry is registered before any `finally` can delete it.
+  const fetchPromise = (async (): Promise<DBCharacterBreakdown | null> => {
     try {
       const packedResults = await fetchBreakdownsFromPacks([character]);
       const packedData = packedResults[character];
       if (packedData) {
         breakdownCache.set(character, packedData);
-        resolvePromise(packedData);
-        return;
+        return packedData;
       }
 
       // 3. Query Supabase
@@ -60,25 +56,25 @@ export async function getCharacterBreakdown(character: string): Promise<DBCharac
         if (error.code !== 'PGRST116') { // PGRST116 = No rows found (which is fine, not a critical error)
           console.error(`Supabase error fetching breakdown for ${character}:`, error);
         }
-        resolvePromise(null);
-        return;
+        return null;
       }
 
       // 4. Cache and return
       if (data) {
         breakdownCache.set(character, data);
-        resolvePromise(data as DBCharacterBreakdown);
-        return;
+        return data as DBCharacterBreakdown;
       }
 
-      resolvePromise(null);
+      return null;
     } catch (err) {
       console.error(`Unexpected error fetching breakdown for ${character}:`, err);
-      resolvePromise(null);
+      return null;
     } finally {
       pendingRequests.delete(character);
     }
   })();
+
+  pendingRequests.set(character, fetchPromise);
 
   return fetchPromise;
 }

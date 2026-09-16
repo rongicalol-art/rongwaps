@@ -45,7 +45,11 @@ test('every authored Book 1 reading reference resolves to a hosted track', async
 
 test('every resolved reading track is present in the hosted manifest', async () => {
   const { readFile } = await import('node:fs/promises');
-  const manifest = JSON.parse(await readFile(new URL('../docs/audio_manifest_book1.json', import.meta.url), 'utf8'));
+  // Only the fields this test reads are declared; the manifest carries more.
+  const manifest = JSON.parse(await readFile(new URL('../docs/audio_manifest_book1.json', import.meta.url), 'utf8')) as {
+    count: number;
+    files: Array<{ file: string }>;
+  };
   const hosted = new Set(manifest.files.map((entry) => entry.file));
   const readings = (await import('../src/data/readings')).ALL_READINGS;
   const missing = readings

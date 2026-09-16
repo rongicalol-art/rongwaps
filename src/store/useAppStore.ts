@@ -61,14 +61,16 @@ import {
 
 export type { UserSnapshot };
 
-export type AppState =
+/** Data-only store shape (state, no actions) — lets consumers key off real keys. */
+export type AppStoreData =
   & AuthState
   & LearningState
   & NavigationState
   & LibraryState
   & UiState
-  & SyncState
-  & AppStoreActions;
+  & SyncState;
+
+export type AppState = AppStoreData & AppStoreActions;
 
 // A browser may block or lack IndexedDB; persistence is then best-effort.
 // Swallowing here keeps a failed cache write from becoming an unhandled

@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { ErrorBoundary, LoadingScreen } from '../../lib/widgets';
 import { useAppStore } from '../../store/useAppStore';
 import type { ActivityType } from '../../types/models';
+import type { TabRoute } from '../routes';
 
 // Single source for tab chunks: React.lazy consumes the same loaders that
 // prefetchTabScreen calls on navigation, so the browser dedupes the import
@@ -31,7 +32,7 @@ interface TabScreensProps {
   selectedLessons: number[];
   toggleLesson: (lessonId: number) => void;
   startPathPractice: () => void;
-  setActiveTab: (tab: string) => void;
+  setActiveTab: (tab: TabRoute) => void;
   setActiveActivity: (activity: ActivityType) => void;
   onToggleNav: () => void;
 }

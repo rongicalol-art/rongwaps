@@ -69,13 +69,16 @@ export function validateInteractiveLessons(): LessonValidationIssue[] {
       });
       page.examples.forEach((example) => {
         registerId(example.id, `${pageLocation} example`, pageIds, issues);
-        if (!example.text.traditional.trim() || !example.text.pinyin.trim() || !example.text.english.trim()) {
+        // The authored text fields are optional in the model: a missing one must
+        // be reported as a content issue, not crash the validator on `.trim()`.
+        const { pinyin = '', english = '', words = [] } = example.text;
+        if (!example.text.traditional.trim() || !pinyin.trim() || !english.trim()) {
           issues.push({ location: `${pageLocation} example ${example.number}`, message: 'Traditional, pinyin, and English are required.' });
         }
-        if (example.text.words.length === 0) {
+        if (words.length === 0) {
           issues.push({ location: `${pageLocation} example ${example.number}`, message: 'Dictionary word tokens are required.' });
         }
-        example.text.words.forEach((word) => {
+        words.forEach((word) => {
           registerId(word.id, `${pageLocation} example word`, pageIds, issues);
         });
         example.text.translationSegments?.forEach((segment) => {
@@ -114,13 +117,15 @@ export function validateInteractiveLessons(): LessonValidationIssue[] {
           if (!item.wrongTraditional.trim()) {
             issues.push({ location: `${pageLocation} confusion item ${item.id}`, message: 'The wrong form is required.' });
           }
-          if (!item.right.traditional.trim() || !item.right.pinyin.trim() || !item.right.english.trim()) {
+          // Same optional-field rule as examples above: report, don't throw.
+          const { pinyin = '', english = '', words = [] } = item.right;
+          if (!item.right.traditional.trim() || !pinyin.trim() || !english.trim()) {
             issues.push({ location: `${pageLocation} confusion item ${item.id}`, message: 'The right form needs traditional text, pinyin, and English.' });
           }
-          if (item.right.words.length === 0) {
+          if (words.length === 0) {
             issues.push({ location: `${pageLocation} confusion item ${item.id}`, message: 'Dictionary word tokens are required for the right form.' });
           }
-          item.right.words.forEach((word) => {
+          words.forEach((word) => {
             registerId(word.id, `${pageLocation} confusion word`, pageIds, issues);
           });
         });

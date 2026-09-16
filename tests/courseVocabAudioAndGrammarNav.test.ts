@@ -18,7 +18,7 @@ test('findMatchingCourseVocab matches exact and cleaned vocabulary entries', asy
   const match = await findMatchingCourseVocab('你好');
   assert.ok(match, 'Should find matching card for 你好');
   assert.equal(match.front, '你好');
-  assert.ok(match.audio.length > 0, 'Should have audio');
+  assert.ok(match.audio && match.audio.length > 0, 'Should have audio');
 
   const nonExistent = await findMatchingCourseVocab('xyz999nonexistentword');
   assert.equal(nonExistent, undefined, 'Should return undefined for unknown words');

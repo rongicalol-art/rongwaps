@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { useAuth } from './useAuth';
-import { useAppStore } from '../store/useAppStore';
+import { useAppStore, type AppStoreData } from '../store/useAppStore';
 import { userService } from '../services/userService';
 import { progressService } from '../services/progressService';
 import { authService } from '../services/authService';
@@ -105,6 +105,12 @@ function numberRecord(value: unknown): Record<string, number> | null {
  * dependency list the autosave effect used before the render-subscription
  * was replaced with a side-band store subscription — keep in sync when the
  * sync payload changes.
+ *
+ * `satisfies` (not a type annotation) keeps the literal union so `state[slice]`
+ * stays checked against the store, while making a key that does not exist on
+ * the store a compile error instead of a silently inert trigger. The lesson
+ * selection is the *derived* `selectedLessons` in the save payload, but the
+ * store key that changes is `selectedLessonParts`.
  */
 const AUTO_SAVE_TRIGGER_SLICES = [
   'activeActivity',
@@ -116,11 +122,11 @@ const AUTO_SAVE_TRIGGER_SLICES = [
   'lastActivity',
   'learnedCards',
   'selectedBooks',
-  'selectedLessons',
+  'selectedLessonParts',
   'sessionProgress',
   'sessionProgressIndex',
   'srsData',
-] as const;
+] as const satisfies readonly (keyof AppStoreData)[];
 
 export function useCloudSync() {
   const { currentUser } = useAuth();

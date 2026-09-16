@@ -34,6 +34,12 @@ export interface DBDictionaryRow {
   curriculum_level?: number | null;
 }
 
+/**
+ * The dictionary columns the entry mapper reads. Selects deliberately omit the
+ * numeric `id` (see `DICTIONARY_COLUMNS`), so the mapper must not require it.
+ */
+export type DBDictionaryEntryRow = Omit<DBDictionaryRow, 'id'>;
+
 export interface DBVocabularyRow {
   /** Part of speech tag (e.g. 'N', 'V', 'Vs', 'Adv'). */
   pos?: string | null;

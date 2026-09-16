@@ -98,7 +98,7 @@ export function GrammarConfusionSection({
                           <AppIcon name="check" size={18} className="shrink-0 text-feedback-success-edge mt-0.5" />
                           <div className="min-w-0 flex-1">
                             <InteractiveGrammarSentence
-                              words={item.right.words}
+                              words={item.right.words ?? []}
                               characterPreference={characterPreference}
                               showPinyin={false}
                               size="lg"

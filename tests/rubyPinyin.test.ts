@@ -91,10 +91,13 @@ test('getPhraseChunks splits a merged whole-sentence word into phrase chunks', (
   assert.equal(chunks.length, 3);
   assert.equal(chunks[0].start, 0);
   assert.equal(chunks[2].end, 6.96);
-  // Timestamps are interpolated and strictly increasing.
-  assert.ok(chunks[0].end > chunks[0].start);
-  assert.ok(chunks[1].start >= chunks[0].end);
-  assert.ok(chunks[2].start >= chunks[1].end);
+  // Timestamps are interpolated and strictly increasing. `start`/`end` are
+  // optional on PhraseChunk (unaligned chunks omit them), so default them.
+  const start = (index: number): number => chunks[index].start ?? 0;
+  const end = (index: number): number => chunks[index].end ?? 0;
+  assert.ok(end(0) > start(0));
+  assert.ok(start(1) >= end(0));
+  assert.ok(start(2) >= end(1));
 });
 
 test('getPhraseChunks subdivides oversized clauses at pinyin word starts', () => {

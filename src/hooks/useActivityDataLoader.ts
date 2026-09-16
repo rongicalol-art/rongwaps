@@ -48,7 +48,10 @@ async function loadReviewDeck(
   srsData: Record<string, SRSData>,
   pinnedIds: string[] | null,
 ): Promise<{ cards: Flashcard[]; knownIds: Set<string> | null }> {
-  const resolveByIds = async (ids: string[]): Promise<{ cards: Flashcard[]; knownIds: Set<string> | null } | null> => {
+  // Every branch resolves to a pool: pack-first when packs exist, otherwise a
+  // by-id fetch, otherwise the full vocabulary list. There is deliberately no
+  // `null` arm — callers dereference the result directly.
+  const resolveByIds = async (ids: string[]): Promise<{ cards: Flashcard[]; knownIds: Set<string> | null }> => {
     const idSet = new Set(ids);
     const packedRows = await fetchAllVocabularyPacks();
     if (packedRows) {

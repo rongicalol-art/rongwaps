@@ -50,7 +50,7 @@ export function buildAttributeChoices<T extends MultiAttributeChoiceSource>(
 
   const getAttrValue = (item: T): string => {
     if (attribute === 'hanzi') return item.front;
-    if (attribute === 'pinyin') return item.pinyin;
+    if (attribute === 'pinyin') return item.pinyin ?? '';
     return item.back;
   };
 
