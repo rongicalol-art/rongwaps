@@ -317,7 +317,8 @@ export function validateHookQualityDeterministically(
   )))];
   if (unexpectedHan.length > 0) add('unexpected-han-glyph', 'error', `Unplanned Han glyphs: ${unexpectedHan.join(' ')}.`);
 
-  if (plan.frame.kind !== 'origin' && HISTORICAL_LANGUAGE.test(candidate.hook)) {
+  if (plan.frame.kind !== 'origin' && HISTORICAL_LANGUAGE.test(candidate.hook
+    .split(`${plan.character}(${plan.targetDisplayLabel ?? ''})`).join(''))) {
     add('unsupported-history', 'error', 'Only an evidence-backed origin frame may make historical claims.');
   }
   const evidence = [...new Set(candidate.evidenceRefs)].sort();
