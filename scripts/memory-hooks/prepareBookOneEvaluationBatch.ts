@@ -172,6 +172,14 @@ const TARGET_DISPLAY_OVERRIDES: Record<string, string> = {
   '機': 'machine',
   '發': 'send',
   '游': 'swim',
+  '支': 'support',
+  '首': 'song',
+  '封': 'envelope',
+  '地': 'ground',
+  '汽': 'steam',
+  '到': 'arrive',
+  '走': 'walk',
+  '輛': 'vehicle',
 };
 
 export interface SceneComponentOptions {
