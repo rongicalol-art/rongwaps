@@ -183,6 +183,9 @@ const TARGET_DISPLAY_OVERRIDES: Record<string, string> = {
   '兩': 'two',
   '短': 'short',
   '斤': 'catty',
+  '雙': 'pair',
+  '聰': 'sharp',
+  '作': 'do',
 };
 
 export interface SceneComponentOptions {
