@@ -186,6 +186,7 @@ const TARGET_DISPLAY_OVERRIDES: Record<string, string> = {
   '雙': 'pair',
   '聰': 'sharp',
   '作': 'do',
+  '經': 'pass through',
 };
 
 export interface SceneComponentOptions {

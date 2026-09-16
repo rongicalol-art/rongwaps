@@ -69,7 +69,7 @@ function main(): void {
   const inventoryByCharacter = new Map(inventory.entries.map((entry) => [entry.character, entry]));
   const planByCharacter = new Map(plans.plans.map((plan) => [plan.character, plan]));
 
-  const decisions: Array<{ character: string; from: string | null; to: string; source: string; note: string }> = [];
+  const decisions: Array<{ character: string; from: string | null; to: string; fromPinyin: string | null; toPinyin: string | null; source: string; note: string }> = [];
   for (const record of audit.records) {
     if (charactersFilter && !charactersFilter.has(record.character)) continue;
     if (KEEP.has(record.character)) continue;
@@ -80,12 +80,17 @@ function main(): void {
     const effectiveCurrent = frozenRecord?.status === 'approved' && frozenRecord.constructionMeaning
       ? frozenRecord.constructionMeaning
       : inventoryByCharacter.get(record.character)?.meaningDecision.selectedMeaning ?? null;
+    const currentPinyin = inventoryByCharacter.get(record.character)?.meaningDecision.selectedPinyin ?? null;
+    const proposalPinyin = record.verdict === 'change' ? record.suggestedPinyin : null;
     const to = override ?? proposal!;
-    if (to === effectiveCurrent) continue;
+    const toPinyin = proposalPinyin && proposalPinyin !== currentPinyin ? proposalPinyin : null;
+    if (to === effectiveCurrent && !toPinyin) continue;
     decisions.push({
       character: record.character,
       from: effectiveCurrent,
       to,
+      fromPinyin: currentPinyin,
+      toPinyin,
       source: override ? 'reviewer' : 'audit',
       note: override ? 'reviewer override' : record.reason,
     });
@@ -96,7 +101,7 @@ function main(): void {
     mode: apply ? 'apply' : 'dry-run',
     changes: decisions.length,
     kept: KEEP.size,
-    changesSample: decisions.slice(0, 30).map((decision) => `${decision.character}: ${decision.from ?? '(none)'} -> ${decision.to}`),
+    changesSample: decisions.slice(0, 30).map((decision) => `${decision.character}: ${decision.from ?? '(none)'} -> ${decision.to}${decision.toPinyin ? ` [${decision.fromPinyin ?? '(none)'} -> ${decision.toPinyin}]` : ''}`),
   }, null, 2));
 
   if (!apply) return;
@@ -105,6 +110,7 @@ function main(): void {
     const inventoryEntry = inventoryByCharacter.get(decision.character);
     if (inventoryEntry) {
       inventoryEntry.meaningDecision.selectedMeaning = decision.to;
+      if (decision.toPinyin) inventoryEntry.meaningDecision.selectedPinyin = decision.toPinyin;
       inventoryEntry.meaningDecision.method = 'meaning-audit';
       inventoryEntry.meaningDecision.confidence = 'high';
       inventoryEntry.meaningDecision.reviewReasons = [
@@ -113,10 +119,14 @@ function main(): void {
       ];
     }
     const plan = planByCharacter.get(decision.character);
-    if (plan) plan.meaningDecision.selectedMeaning = decision.to;
+    if (plan) {
+      plan.meaningDecision.selectedMeaning = decision.to;
+      if (decision.toPinyin) plan.meaningDecision.selectedPinyin = decision.toPinyin;
+    }
     const frozenRecord = frozenByCharacter.get(decision.character);
     if (frozenRecord && frozenRecord.status === 'approved') {
       frozenRecord.constructionMeaning = decision.to;
+      if (decision.toPinyin) frozenRecord.constructionReading = decision.toPinyin;
     }
   }
 
