@@ -180,6 +180,9 @@ const TARGET_DISPLAY_OVERRIDES: Record<string, string> = {
   '到': 'arrive',
   '走': 'walk',
   '輛': 'vehicle',
+  '兩': 'two',
+  '短': 'short',
+  '斤': 'catty',
 };
 
 export interface SceneComponentOptions {
