@@ -197,6 +197,11 @@ const TARGET_DISPLAY_OVERRIDES: Record<string, string> = {
   '第': 'ordinal',
   '剛': 'just',
   '次': 'time',
+  '屬': 'belong to',
+  '查': 'look up',
+  '著': 'particle',
+  '合': 'join',
+  '份': 'copy',
 };
 
 export interface SceneComponentOptions {
