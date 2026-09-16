@@ -118,11 +118,31 @@ function occurrenceId(character: string, treePath: string): string {
   return `${character}:${treePath}`;
 }
 
-/** Reviewed shape-only frames: fragmentary or single-part forms, the hook describes the exact visible form. */
-const SHAPE_ONLY_CHARACTERS = new Set<string>([
-  '長', '上',
+/** Reviewed single-part scenes: the showable direct part becomes a token even
+ * when the character has only one planned occurrence; characters with nothing
+ * showable (也/己) keep the reviewed shape-only frame. */
+const SINGLE_PART_SCENE_CHARACTERS = new Set<string>([
   '小', '太', '中', '介', '今', '也', '少', '千', '桌', '戶', '山', '以', '方', '司', '毛', '成', '己', '十', '兔', '尺',
 ]);
+
+/**
+ * Reviewed full-frame overrides for forms whose showable parts sit below the
+ * planned direct level (桌: 杲's 日/朩 children) or whose skipped scaffold was
+ * reviewed back in as a real token (上/桌: ⺊ divination crack).
+ */
+const SCENE_FRAME_OVERRIDES: Record<string, Array<{ occurrenceIds: string[]; treePaths: string[]; key: string; glyph: string; label: string }>> = {
+  '上': [
+    { occurrenceIds: ['上:0'], treePaths: ['0'], key: 'g:⺊', glyph: '⺊', label: 'divination crack' },
+    { occurrenceIds: ['上:1'], treePaths: ['1'], key: 'g:一', glyph: '一', label: 'one' },
+  ],
+  '桌': [
+    { occurrenceIds: ['桌:0'], treePaths: ['0'], key: 'g:⺊', glyph: '⺊', label: 'divination crack' },
+    { occurrenceIds: ['桌:1.0'], treePaths: ['1.0'], key: 'g:日', glyph: '日', label: 'sun' },
+    { occurrenceIds: ['桌:1.1'], treePaths: ['1.1'], key: 'g:朩', glyph: '朩', label: 'split wood' },
+  ],
+};
+
+const SCENE_GUIDANCE = 'Use one concise causal or spatial action involving every supplied component that leads to the target meaning. This is an invented mnemonic, not etymology; do not add historical claims or new component meanings. For any component with no glyph, describe its visible shape in plain English and declare the phrase in describedParts; never invent a Han token for it.';
 
 /**
  * Curated learner-facing token labels for characters whose canonical meaning is
@@ -336,10 +356,46 @@ function buildAutoFrame(
     ...plan.meaningDecision.reviewReasons,
     ...plan.blockers.map((blocker) => `generic-planner:${blocker}`),
   ];
-  // Reviewed shape-only frames carry no component tokens, so they do not depend
-  // on component-count eligibility; only real blockers (missing runtime, meaning,
-  // or unresolved parts) keep them withheld.
-  if (SHAPE_ONLY_CHARACTERS.has(plan.character) && plan.meaningDecision.selectedMeaning && plan.blockers.length === 0) {
+  const overlay = SCENE_FRAME_OVERRIDES[plan.character];
+  if (overlay && plan.meaningDecision.selectedMeaning && plan.blockers.length === 0) {
+    return {
+      frame: {
+        kind: 'scene',
+        components: overlay.map((part) => ({
+          occurrenceIds: part.occurrenceIds,
+          profileKey: part.key,
+          glyph: part.glyph,
+          treePaths: part.treePaths,
+          displayLabel: part.label,
+          labelBasis: 'meaning',
+          role: 'unclassified',
+          evidenceRefs: [],
+        })),
+        requiresHumanApproval: true,
+        reviewStatus: 'review-required',
+        sceneGuidance: SCENE_GUIDANCE,
+      },
+      status: 'candidate',
+      reviewReasons: [...reviewReasons, 'reviewed-frame-override'],
+    };
+  }
+  // Reviewed single-part scenes carry their one showable part as a token; only
+  // characters with nothing showable keep the reviewed shape-only frame.
+  if (SINGLE_PART_SCENE_CHARACTERS.has(plan.character) && plan.meaningDecision.selectedMeaning && plan.blockers.length === 0) {
+    const components = mergeSceneComponents(plan.character, plan.components, options);
+    if (components && components.some((component) => component.glyph)) {
+      return {
+        frame: {
+          kind: 'scene',
+          components,
+          requiresHumanApproval: true,
+          reviewStatus: 'review-required',
+          sceneGuidance: SCENE_GUIDANCE,
+        },
+        status: 'candidate',
+        reviewReasons: [...reviewReasons, 'reviewed-single-part-scene'],
+      };
+    }
     return {
       frame: {
         kind: 'scene',
@@ -361,7 +417,7 @@ function buildAutoFrame(
         components,
         requiresHumanApproval: true,
         reviewStatus: 'review-required',
-        sceneGuidance: 'Use one concise causal or spatial action involving every supplied component that leads to the target meaning. This is an invented mnemonic, not etymology; do not add historical claims or new component meanings. For any component with no glyph, describe its visible shape in plain English and declare the phrase in describedParts; never invent a Han token for it.',
+        sceneGuidance: SCENE_GUIDANCE,
       },
       status: 'candidate',
       reviewReasons: [...reviewReasons, 'batch-auto-scene-frame'],

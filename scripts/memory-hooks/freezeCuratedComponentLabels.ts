@@ -15,6 +15,7 @@ interface LabelRecord {
   confidence: 'high' | 'medium' | 'low' | null;
   reason: string | null;
   frequency: number;
+  children?: Array<{ glyph: string; glosses?: string[]; label?: string | null }>;
 }
 
 /**
@@ -26,7 +27,7 @@ const EDIT_MAP: Record<string, string> = {
   '𢖻': 'heart',
   '𢛳': 'heart',
   '壬': 'pole',
-  '⺊': 'crack',
+  '⺊': 'divination crack',
   '龷': 'grass top',
   '朩': 'split wood',
   '𦘒': 'brush hand',
@@ -62,7 +63,12 @@ const EDIT_MAP: Record<string, string> = {
 };
 
 /** Parts that must never be used as story parts; they are decomposition scraps. */
-const SKIP_GLYPHS = new Set<string>(['⺊', '壬', '𠁣', '𠃛']);
+const SKIP_GLYPHS = new Set<string>(['壬', '𠁣', '𠃛']);
+
+/** Reviewed inner parts that coverage must see for a kept single-glyph part. */
+const CHILDREN_OVERRIDES: Record<string, string[]> = {
+  '杲': ['日', '朩'],
+};
 
 interface ReviewedLabelRecord {
   glyph: string;
@@ -178,6 +184,10 @@ function main(): void {
   ));
   if (unresolved.length > 0) {
     throw new Error(`Unresolved labels (add edits or accept): ${unresolved.map((record) => record.glyph).join(' ')}`);
+  }
+  for (const record of records) {
+    const children = CHILDREN_OVERRIDES[record.glyph];
+    if (children) record.children = children.map((glyph) => ({ glyph, glosses: [], label: null }));
   }
   for (const record of records) {
     if (!record.label) continue;
