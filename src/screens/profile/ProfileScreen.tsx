@@ -37,6 +37,7 @@ export function ProfileScreen({
   const { currentUser, isLoading: isAuthLoading, logout, isAuthActionLoading } = useAuth();
   const overview = useReviewOverview();
   const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [accountError, setAccountError] = useState<string | null>(null);
 
   // App store selectors: subscribe to primitive lengths to avoid re-rendering on element updates
   const favoriteCount = useAppStore((state) => state.favorites.length);
@@ -68,6 +69,20 @@ export function ProfileScreen({
     }
   }, [onCreateCustomCard]);
 
+  // `useAuth.logout` rethrows on purpose (see authService), and a rejected
+  // promise from an event handler is never caught by an error boundary. Without
+  // this the button simply stops spinning and the learner stays signed in with
+  // no explanation, so the failure is caught here and surfaced on the card.
+  const handleSignOut = useCallback(async () => {
+    setAccountError(null);
+    try {
+      await logout();
+    } catch (error) {
+      console.error('ProfileScreen: sign-out failed:', error);
+      setAccountError("Couldn't sign you out. Check your connection and try again.");
+    }
+  }, [logout]);
+
   return (
     <div className="relative flex w-full flex-1 flex-col text-ui-ink">
       <StickyWorkspaceHeader title="Profile" align="left" menuToggle={menuToggle} />
@@ -88,11 +103,12 @@ export function ProfileScreen({
             <ProfileHeroCard
               currentUser={currentUser}
               onOpenSignIn={() => setIsAuthOpen(true)}
-              onSignOut={logout}
+              onSignOut={handleSignOut}
               isSigningOut={isAuthActionLoading}
               onOpenSettings={() => setIsSettingsOpen(true)}
               syncStatus={syncStatus}
               syncError={syncError}
+              accountError={accountError}
             />
 
             {/* 2. Spaced Repetition Review */}

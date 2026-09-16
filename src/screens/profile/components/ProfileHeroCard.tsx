@@ -5,13 +5,19 @@ import type { SyncStatus, UserSnapshot } from '../../../store/useAppStore';
 interface ProfileHeroCardProps {
   currentUser: UserSnapshot | null;
   onOpenSignIn: () => void;
-  onSignOut: () => void;
+  /**
+   * Sign-out handler. The screen catches the rejection and reports it through
+   * `accountError`, so the returned promise may reject.
+   */
+  onSignOut: () => void | Promise<void>;
   isSigningOut: boolean;
   onOpenSettings?: () => void;
   /** Cloud-sync state of the signed-in account. */
   syncStatus: SyncStatus;
   /** User-facing message from the last failed cloud operation, if any. */
   syncError: string | null;
+  /** User-facing message from the last failed account action (e.g. sign-out). */
+  accountError?: string | null;
 }
 
 /**
@@ -25,6 +31,7 @@ export const ProfileHeroCard = memo(function ProfileHeroCard({
   isSigningOut,
   syncStatus,
   syncError,
+  accountError,
 }: ProfileHeroCardProps) {
   const isSignedIn = Boolean(currentUser);
   const avatarUrl = currentUser?.avatarUrl || currentUser?.avatar_url;
@@ -64,10 +71,14 @@ export const ProfileHeroCard = memo(function ProfileHeroCard({
                   {handle && <span className="truncate">{handle}</span>}
                   <SyncStatusPill hasIssue={hasSyncIssue} isSyncing={syncStatus === 'syncing'} />
                 </div>
-                {syncError && (
-                  <p role="alert" className="mt-1.5 text-xs font-bold leading-snug text-feedback-danger-edge">
-                    {syncError}
-                  </p>
+                {(accountError || syncError) && (
+                  <div
+                    role="alert"
+                    className="mt-1.5 flex flex-col gap-1 text-xs font-bold leading-snug text-feedback-danger-edge"
+                  >
+                    {accountError && <p>{accountError}</p>}
+                    {syncError && <p>{syncError}</p>}
+                  </div>
                 )}
               </>
             ) : (
