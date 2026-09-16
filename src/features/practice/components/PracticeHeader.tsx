@@ -39,18 +39,18 @@ export function PracticeHeader({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const reduceMotion = useReducedMotion();
-  const setIsOverlayOpen = useAppStore((state) => state.setIsOverlayOpen);
+  const setActivityOverlayOpen = useAppStore((state) => state.setActivityOverlayOpen);
 
   useEffect(() => {
     if (flowStatus === 'playing') setIsMenuOpen(false);
   }, [flowStatus]);
 
   useEffect(() => {
-    setIsOverlayOpen(isSettingsOpen);
-    return () => {
-      if (isSettingsOpen) setIsOverlayOpen(false);
-    };
-  }, [isSettingsOpen, setIsOverlayOpen]);
+    // The study-settings panel covers the practice dock; register it as its own
+    // overlay source so closing it cannot clear another surface's overlay.
+    setActivityOverlayOpen('practice-settings', isSettingsOpen);
+    return () => setActivityOverlayOpen('practice-settings', false);
+  }, [isSettingsOpen, setActivityOverlayOpen]);
 
   const openSettings = () => {
     setIsMenuOpen(false);

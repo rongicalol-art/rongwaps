@@ -164,10 +164,6 @@ export default function App() {
     }
   }, [activeFocusModeKey, collapseNav, restoreBaseNavPreference]);
 
-  useEffect(() => {
-    useAppStore.getState().setIsOverlayOpen(isOverlayActive);
-  }, [isOverlayActive]);
-
   // Defensive: when every overlay is closed, ensure no element stays inert.
   // This acts as a safety net in case the isolating effects in Reader/Grammar
   // fail to restore state (e.g. due to concurrent mount/unmount ordering).
@@ -262,6 +258,7 @@ export default function App() {
               activeBookId={activeBook.id}
               selectedLessons={selectedLessons}
               isLibraryMode={activeTab === 'library'}
+              isShellOverlayOpen={isOverlayActive}
               onNavigateToPractice={handleNavigateToPractice}
               onOpenGrammarPart={handleOpenGrammarPart}
               onOpenReading={handleOpenReading}
