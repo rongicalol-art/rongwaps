@@ -10,6 +10,10 @@ export interface ReaderCompanionVocabCardProps {
   wordsInDialogue: ReaderTargetWord[];
   characterPreference: 'traditional' | 'simplified';
   isLoading: boolean;
+  /** User-facing message when the vocabulary fetch failed, or null on success. */
+  error: string | null;
+  /** Re-runs the vocabulary fetch; the card offers it in the error state. */
+  onRetry: () => void;
   onOpenWord?: (word: string) => void;
 }
 
@@ -35,6 +39,8 @@ export const ReaderCompanionVocabCard = React.memo(function ReaderCompanionVocab
   wordsInDialogue,
   characterPreference,
   isLoading,
+  error,
+  onRetry,
   onOpenWord,
 }: ReaderCompanionVocabCardProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -60,9 +66,11 @@ export const ReaderCompanionVocabCard = React.memo(function ReaderCompanionVocab
           <h3 className="font-sans text-xs font-black uppercase tracking-wider text-ui-ink-strong">
             Vocabulary
           </h3>
-          <span className="font-sans text-[10px] font-black px-1.5 py-0.5 rounded-full bg-ui-surface-soft text-ui-muted-strong">
-            {displayedWords.length}
-          </span>
+          {!error && (
+            <span className="font-sans text-[10px] font-black px-1.5 py-0.5 rounded-full bg-ui-surface-soft text-ui-muted-strong">
+              {displayedWords.length}
+            </span>
+          )}
         </div>
 
         <button
@@ -86,6 +94,21 @@ export const ReaderCompanionVocabCard = React.memo(function ReaderCompanionVocab
           {isLoading ? (
             <div className="py-4 text-center font-sans text-xs font-bold text-ui-muted">
               Loading…
+            </div>
+          ) : error ? (
+            <div
+              role="alert"
+              className="flex flex-col items-center gap-2 py-3 px-2 text-center"
+            >
+              <p className="font-sans text-xs font-bold leading-snug text-ui-muted">{error}</p>
+              <button
+                type="button"
+                onClick={onRetry}
+                className="inline-flex min-h-9 items-center gap-1.5 rounded-compact px-2.5 font-sans text-xs font-extrabold text-brand-primary transition-colors hover:bg-brand-primary/10 focus-ring"
+              >
+                <AppIcon name="restart" size={14} />
+                Retry
+              </button>
             </div>
           ) : displayedWords.length === 0 ? (
             <div className="py-4 text-center font-sans text-xs font-bold text-ui-muted">

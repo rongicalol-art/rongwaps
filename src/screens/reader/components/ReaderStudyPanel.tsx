@@ -22,9 +22,8 @@ export const ReaderStudyPanel = React.memo(function ReaderStudyPanel({
   onOpenGrammarPart,
   showCloseButton = true,
 }: ReaderStudyPanelProps) {
-  const { allLessonWords, wordsInDialogue, grammarPoints, isLoading } = useReaderStudyData({
-    reading,
-  });
+  const { allLessonWords, wordsInDialogue, grammarPoints, isLoading, vocabError, refetch } =
+    useReaderStudyData({ reading });
 
   return (
     <div className="flex flex-col gap-3 min-h-0">
@@ -49,6 +48,8 @@ export const ReaderStudyPanel = React.memo(function ReaderStudyPanel({
         wordsInDialogue={wordsInDialogue}
         characterPreference={characterPreference}
         isLoading={isLoading}
+        error={vocabError}
+        onRetry={refetch}
         onOpenWord={onOpenWord}
       />
     </div>
