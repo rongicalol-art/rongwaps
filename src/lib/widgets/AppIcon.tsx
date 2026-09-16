@@ -251,7 +251,20 @@ export interface AppIconProps extends IconBaseProps {
   name: AppIconName;
 }
 
-export function AppIcon({ name, ...props }: AppIconProps) {
+export function AppIcon({ name, title, 'aria-label': ariaLabel, ...props }: AppIconProps) {
   const IconComponent = ICONS[name] ?? PiBookOpenFill;
-  return <IconComponent {...props} />;
+  // Icons sit beside visible text in almost every call site, so they are
+  // decorative by default and stay out of the accessibility tree (they would
+  // otherwise be announced as unlabeled graphics). Pass `title` or `aria-label`
+  // when the icon itself carries meaning — the MUI SvgIcon contract.
+  const hasAccessibleName = Boolean(title || ariaLabel);
+  return (
+    <IconComponent
+      {...props}
+      title={title}
+      role={hasAccessibleName ? 'img' : undefined}
+      aria-label={ariaLabel}
+      aria-hidden={hasAccessibleName ? undefined : true}
+    />
+  );
 }

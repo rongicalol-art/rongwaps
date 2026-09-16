@@ -35,7 +35,12 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
       ? 'flex w-full min-h-[45vh] flex-col items-center justify-center px-4 py-16'
       : 'absolute z-[100] inset-0 w-full h-full';
   return (
-    <div className={`${containerClass} ${inline ? '' : `${toneClass} `}flex flex-col justify-center items-center overflow-hidden`}>
+    <div
+      role="status"
+      aria-live="polite"
+      aria-busy="true"
+      className={`${containerClass} ${inline ? '' : `${toneClass} `}flex flex-col justify-center items-center overflow-hidden`}
+    >
       <LottiePlayer 
         loadAnimationData={loadSandyLoadingAnimation} 
         width={200} 

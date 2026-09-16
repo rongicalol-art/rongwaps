@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, useReducedMotion } from 'motion/react';
 import { useAuth } from '../../hooks/useAuth';
+import { useModalFocus } from '../../hooks/useModalFocus';
 import {
   ActionButton,
   AppIcon,
@@ -23,20 +24,19 @@ export function SignInWindow({ onClose }: SignInWindowProps = {}) {
   const [authError, setAuthError] = useState<string | null>(null);
   const [isSigningIn, setIsSigningIn] = useState(false);
   const reduceMotion = useReducedMotion();
+  const dialogRef = useRef<HTMLDivElement>(null);
+  // Focus trap, initial focus and focus restore for the declared aria-modal
+  // contract; Escape is ignored mid sign-in so the request cannot be abandoned.
+  const modalFocus = useModalFocus({
+    containerRef: dialogRef,
+    isActive: true,
+    onEscape: isSigningIn || !onClose ? undefined : onClose,
+  });
 
   // Auto-close as soon as a session appears if onClose callback was provided.
   useEffect(() => {
     if (currentUser && onClose) onClose();
   }, [currentUser, onClose]);
-
-  // Support Escape key to close modal
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && !isSigningIn && onClose) onClose();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isSigningIn, onClose]);
 
   const handleGoogleLogin = async () => {
     setAuthError(null);
@@ -57,9 +57,12 @@ export function SignInWindow({ onClose }: SignInWindowProps = {}) {
 
   return createPortal(
     <motion.div
+      ref={dialogRef}
       role="dialog"
       aria-modal="true"
       aria-label="Sign in"
+      tabIndex={-1}
+      onKeyDown={modalFocus.onKeyDown}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -91,9 +94,11 @@ export function SignInWindow({ onClose }: SignInWindowProps = {}) {
 
           {/* Welcoming value proposition */}
           <div className="relative z-10 mt-auto pt-6 text-white">
-            <h2 className="text-2xl font-black tracking-tight text-white drop-shadow-sm sm:text-3xl md:text-4xl">
+            {/* Marketing line, not a heading: keeps the dialog's single h1 as
+                the first heading in the outline (WCAG 1.3.1). */}
+            <p className="text-2xl font-black tracking-tight text-white drop-shadow-sm sm:text-3xl md:text-4xl">
               Welcome back!
-            </h2>
+            </p>
             <p className="mt-2 text-xs font-semibold leading-relaxed text-white/90 drop-shadow-sm sm:text-sm">
               Unlock your full journey — save progress, sync across devices, and access your library anywhere.
             </p>

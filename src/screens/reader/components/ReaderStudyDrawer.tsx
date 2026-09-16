@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import type { ReadingRecord } from '../../../types/models';
 import { AppIcon, IconActionButton } from '../../../lib/widgets';
+import { useModalFocus } from '../../../hooks/useModalFocus';
 import { ReaderStudyPanel } from './ReaderStudyPanel';
 
 interface ReaderStudyDrawerProps {
@@ -23,19 +24,14 @@ export function ReaderStudyDrawer({
   onOpenGrammarPart,
 }: ReaderStudyDrawerProps) {
   const reduceMotion = useReducedMotion();
-
-  useEffect(() => {
-    if (!isOpen) return;
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        event.stopPropagation();
-        event.preventDefault();
-        onClose();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown, true);
-    return () => window.removeEventListener('keydown', handleKeyDown, true);
-  }, [isOpen, onClose]);
+  const drawerRef = useRef<HTMLDivElement>(null);
+  // Focus trap, initial focus and focus restore for the declared aria-modal
+  // contract; also closes on Escape (replacing the old capture listener).
+  const modalFocus = useModalFocus({
+    containerRef: drawerRef,
+    isActive: isOpen,
+    onEscape: onClose,
+  });
 
   const output = (
     <AnimatePresence>
@@ -54,10 +50,12 @@ export function ReaderStudyDrawer({
 
           {/* Slide-over Drawer: full-width on mobile, centered sheet on tablet/desktop */}
           <motion.div
+            ref={drawerRef}
             role="dialog"
             aria-modal="true"
             aria-label="Study Guide"
             tabIndex={-1}
+            onKeyDown={modalFocus.onKeyDown}
             initial={reduceMotion ? { opacity: 0 } : { y: '100%' }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduceMotion ? { opacity: 0 } : { y: '100%' }}
