@@ -21,6 +21,8 @@ interface WorkspaceRoutingOptions {
   isDesktopOrTablet: ResponsiveNav['isDesktopOrTablet'];
   toggleCollapse: ResponsiveNav['toggleCollapse'];
   setIsNavOpen: ResponsiveNav['setIsNavOpen'];
+  collapseNav?: ResponsiveNav['collapseNav'];
+  isFocusMode?: boolean;
 }
 
 /**
@@ -39,6 +41,8 @@ export function useWorkspaceRouting({
   isDesktopOrTablet,
   toggleCollapse,
   setIsNavOpen,
+  collapseNav,
+  isFocusMode = false,
 }: WorkspaceRoutingOptions) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -50,6 +54,9 @@ export function useWorkspaceRouting({
     // full-viewport/column window (Reading Mode, grammar lesson,
     // dictionary word detail) so the destination tab actually comes
     // to the front instead of switching behind the still-open window.
+    if (isFocusMode && collapseNav) {
+      collapseNav();
+    }
     closeReader();
     setActiveActivity(null);
     setActiveGrammarPartId(null);
@@ -63,12 +70,27 @@ export function useWorkspaceRouting({
     store.setIsReviewMode(false);
     store.setActiveReviewSessionCards(null);
     store.setIsSearchOpen(false);
-  }, [routeTab, activeTab, closeReader, setActiveActivity, setActiveGrammarPartId, setActiveTab]);
+  }, [routeTab, activeTab, closeReader, setActiveActivity, setActiveGrammarPartId, setActiveTab, isFocusMode, collapseNav]);
 
   const handleTabChange = useCallback((tab: TabRoute) => {
-    navigate(TAB_ROUTES[tab]);
+    if (isFocusMode && collapseNav) {
+      collapseNav();
+    }
+    if (tab === activeTab) {
+      // Re-clicking current tab dismisses any open overlay/activity so user cleanly returns to tab root
+      closeReader();
+      setActiveActivity(null);
+      setActiveGrammarPartId(null);
+      const store = useAppStore.getState();
+      store.setDictionaryWord(null);
+      store.setIsReviewMode(false);
+      store.setActiveReviewSessionCards(null);
+      store.setIsSearchOpen(false);
+    } else {
+      navigate(TAB_ROUTES[tab]);
+    }
     if (!isDesktop()) setIsNavOpen(false);
-  }, [navigate, isDesktop, setIsNavOpen]);
+  }, [isFocusMode, collapseNav, activeTab, closeReader, setActiveActivity, setActiveGrammarPartId, navigate, isDesktop, setIsNavOpen]);
 
   const handleNavToggle = useCallback(() => {
     if (isDesktopOrTablet) {

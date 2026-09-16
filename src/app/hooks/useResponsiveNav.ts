@@ -42,6 +42,25 @@ export function useResponsiveNav() {
     setIsNavOpen(open);
   }, []);
 
+  const collapseNav = useCallback(() => {
+    setIsCollapsed(true);
+    setIsNavOpen(false);
+  }, []);
+
+  const expandNav = useCallback(() => {
+    setIsCollapsed(false);
+  }, []);
+
+  const restoreBaseNavPreference = useCallback(() => {
+    if (typeof window === 'undefined') return;
+    if (!isExpandedViewport()) {
+      setIsCollapsed(true);
+    } else {
+      const saved = window.localStorage.getItem(SIDEBAR_COLLAPSED_PREFERENCE_KEY);
+      setIsCollapsed(saved === 'true');
+    }
+  }, []);
+
   const toggleCollapse = useCallback(() => {
     setIsCollapsed((prev) => {
       const next = !prev;
@@ -99,6 +118,9 @@ export function useResponsiveNav() {
     isDesktopOrTablet,
     isCollapsed,
     setIsCollapsed,
+    collapseNav,
+    expandNav,
+    restoreBaseNavPreference,
     toggleCollapse,
   };
 }

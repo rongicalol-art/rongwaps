@@ -21,6 +21,8 @@ const ReadingNarrativeView = lazy(() =>
   import('./components/ReadingNarrativeView').then((m) => ({ default: m.ReadingNarrativeView })),
 );
 
+let cachedAlignmentMap: Record<string, DialogueAlignment> | null = null;
+
 interface ReaderScreenProps {
   readings: ReadingRecord[];
   index: number;
@@ -54,6 +56,21 @@ export function ReaderScreen({
   const dialogRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLElement>(null);
   const lastScrollY = useRef(0);
+  const previousActiveElementRef = useRef<HTMLElement | null>(null);
+
+  // Preserve and restore user's focus upon exiting reading mode
+  useEffect(() => {
+    previousActiveElementRef.current = document.activeElement as HTMLElement | null;
+    return () => {
+      try {
+        if (previousActiveElementRef.current && document.contains(previousActiveElementRef.current)) {
+          previousActiveElementRef.current.focus();
+        }
+      } catch {
+        // Ignore focus restoration errors
+      }
+    };
+  }, []);
 
   const [isDockVisible, setIsDockVisible] = useState(true);
   const [showPinyin, setShowPinyin] = useState<boolean>(() => {
@@ -145,19 +162,26 @@ export function ReaderScreen({
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
   const reading = readings[index] ?? readings[0];
   const [isStudyDrawerOpen, setIsStudyDrawerOpen] = useState(false);
+  const isStudyDrawerOpenRef = useRef(isStudyDrawerOpen);
+  isStudyDrawerOpenRef.current = isStudyDrawerOpen;
 
   // The dialogue alignment pack (~1.1MB) loads async so the Reader window can
   // open before it lands. Until it arrives the audio hook falls back to
   // whole-track playback (no karaoke) — never block the window on this.
-  const [alignmentMap, setAlignmentMap] = useState<Record<string, DialogueAlignment> | null>(null);
+  const [alignmentMap, setAlignmentMap] = useState<Record<string, DialogueAlignment> | null>(
+    () => cachedAlignmentMap,
+  );
   const [contentReady, setContentReady] = useState(false);
   const markContentReady = useCallback(() => setContentReady(true), []);
   useEffect(() => {
+    if (cachedAlignmentMap) return;
     let cancelled = false;
     import('../../../content/dialogueAlignment.json')
       .then((module) => {
+        const map = (module.default ?? {}) as Record<string, DialogueAlignment>;
+        cachedAlignmentMap = map;
         if (!cancelled) {
-          setAlignmentMap((module.default ?? {}) as Record<string, DialogueAlignment>);
+          setAlignmentMap(map);
         }
       })
       .catch(() => {
@@ -246,10 +270,10 @@ export function ReaderScreen({
       if (Math.abs(delta) > 8) {
         if (delta > 0 && currentScrollY > 40) {
           wasHoverRevealedRef.current = false;
-          setIsDockVisible(false);
+          setIsDockVisible((prev) => (prev ? false : prev));
         } else if (delta < 0) {
           wasHoverRevealedRef.current = false;
-          setIsDockVisible(true);
+          setIsDockVisible((prev) => (!prev ? true : prev));
         }
       }
 
@@ -276,11 +300,6 @@ export function ReaderScreen({
     const targets = siblings.map((element) => (
       (element.querySelector('[data-workspace-content]') as HTMLElement | null) ?? element
     ));
-    const previousStates = targets.map((target) => ({
-      target,
-      inert: target.hasAttribute('inert'),
-      ariaHidden: target.getAttribute('aria-hidden'),
-    }));
 
     targets.forEach((target) => {
       target.setAttribute('inert', '');
@@ -288,19 +307,9 @@ export function ReaderScreen({
     });
 
     return () => {
-      targets.forEach((target, i) => {
-        const state = previousStates[i];
-        if (!state) return;
-        if (state.inert) {
-          target.setAttribute('inert', '');
-        } else {
-          target.removeAttribute('inert');
-        }
-        if (state.ariaHidden !== null) {
-          target.setAttribute('aria-hidden', state.ariaHidden);
-        } else {
-          target.removeAttribute('aria-hidden');
-        }
+      targets.forEach((target) => {
+        target.removeAttribute('inert');
+        target.removeAttribute('aria-hidden');
       });
     };
   }, []);
@@ -315,6 +324,14 @@ export function ReaderScreen({
 
       if (event.key === 'Escape') {
         event.stopPropagation();
+        if (isStudyDrawerOpenRef.current) {
+          setIsStudyDrawerOpen(false);
+          return;
+        }
+        if (useAppStore.getState().dictionaryWord) {
+          useAppStore.getState().setDictionaryWord(null);
+          return;
+        }
         onClose();
       } else if (event.key === ' ') {
         event.preventDefault();

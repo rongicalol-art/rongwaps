@@ -1,7 +1,7 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { useNavigate } from 'react-router';
-import { useAppNavigation } from './hooks/useAppNavigation.tsx';
+import { useAppNavigation, type ActivityType } from './hooks/useAppNavigation.tsx';
 import { useAudioUnlock } from './hooks/useAudioUnlock';
 import { useAppStore } from './store/useAppStore';
 import { SAMPLE_BOOKS } from './data/books';
@@ -60,15 +60,20 @@ export default function App() {
     isDesktop,
     isDesktopOrTablet,
     isCollapsed,
+    collapseNav,
+    restoreBaseNavPreference,
     toggleCollapse,
   } = useResponsiveNav();
   const [isInitialAuthOpen, setIsInitialAuthOpen] = useState(true);
 
-  const { activeGrammarPartId, setActiveGrammarPartId, activeGrammarPageId, setActiveGrammarPageId, activeGrammarPart } = useGrammarLauncher();
+  const { activeGrammarPartId, setActiveGrammarPartId, activeGrammarPageId, setActiveGrammarPageId, activeGrammarPart } = useGrammarLauncher({
+    onOpen: collapseNav,
+  });
   const { readings, activeReadingIndex, openReader, openReaderForPart, closeReader, navigateReader } = useReaderLauncher({
     selectedLessons,
     activeBookId,
     activeGrammarPartId,
+    onOpen: collapseNav,
   });
 
   const handleResetProgress = useResetProgress({
@@ -90,18 +95,90 @@ export default function App() {
 
   useBookTheme(activeBook.theme);
 
-  const activeReading = activeReadingIndex !== null ? readings[activeReadingIndex] : null;
-  const isReaderOpen = Boolean(activeReading);
-  const isGrammarOpen = Boolean(activeGrammarPart);
+  const handleSetActiveActivity = useCallback((activity: ActivityType) => {
+    if (activity) {
+      collapseNav();
+    }
+    setActiveActivity(activity);
+  }, [collapseNav, setActiveActivity]);
+
+  const handleStartPathPractice = useCallback(() => {
+    collapseNav();
+    startPathPractice();
+  }, [collapseNav, startPathPractice]);
+
+  const handleOpenReading = useCallback(() => {
+    collapseNav();
+    void openReader(activeBook.id);
+  }, [collapseNav, openReader, activeBook.id]);
+
+  const handleOpenGrammarPart = useCallback((partId: string, pageId?: string | null) => {
+    collapseNav();
+    setActiveGrammarPageId(pageId ?? null);
+    setActiveGrammarPartId(partId);
+  }, [collapseNav, setActiveGrammarPageId, setActiveGrammarPartId]);
+
+  const isReaderOpen = activeReadingIndex !== null;
+  const isGrammarOpen = Boolean(activeGrammarPartId);
   const dictionaryWord = useAppStore((state) => state.dictionaryWord);
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
   const isOverlayActive = isReaderOpen || isGrammarOpen || Boolean(dictionaryWord);
+  const isFocusMode = Boolean(activeActivity || isOverlayActive);
   const showSidebarCollapse = Boolean(
     activeActivity || isReaderOpen || isGrammarOpen || (activeTab === 'library' && isLibraryFolderView)
   );
 
+  // Clear any open dictionary word before closing the reader to avoid
+  // isOverlayActive staying true (dictionaryWord truthy) and hiding the
+  // main workspace after the reader unmounts.
+  const handleCloseReader = useCallback(() => {
+    useAppStore.getState().setDictionaryWord(null);
+    closeReader();
+  }, [closeReader]);
+
+  const activeFocusModeKey = isReaderOpen
+    ? `reader:${activeReadingIndex}`
+    : isGrammarOpen
+      ? `grammar:${activeGrammarPartId}`
+      : dictionaryWord
+        ? `dictionary:${dictionaryWord}`
+        : activeActivity
+          ? `activity:${activeActivity}`
+          : null;
+
+  const prevFocusModeKeyRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    const prevKey = prevFocusModeKeyRef.current;
+    prevFocusModeKeyRef.current = activeFocusModeKey;
+
+    if (activeFocusModeKey !== null) {
+      // 1. Entering a focus mode (from null)
+      // 2. OR switching between focus modes (e.g. flashcards -> quiz, reader -> grammar)
+      // Automatically collapse sidebar so study content has maximum space
+      collapseNav();
+    } else if (prevKey !== null && activeFocusModeKey === null) {
+      // Exiting focus mode back to main browsing hub:
+      // Restore user's preferred desktop browsing layout
+      restoreBaseNavPreference();
+    }
+  }, [activeFocusModeKey, collapseNav, restoreBaseNavPreference]);
+
   useEffect(() => {
     useAppStore.getState().setIsOverlayOpen(isOverlayActive);
+  }, [isOverlayActive]);
+
+  // Defensive: when every overlay is closed, ensure no element stays inert.
+  // This acts as a safety net in case the isolating effects in Reader/Grammar
+  // fail to restore state (e.g. due to concurrent mount/unmount ordering).
+  useEffect(() => {
+    if (!isOverlayActive) {
+      const targets = document.querySelectorAll<HTMLElement>('[data-workspace-content]');
+      targets.forEach((el) => {
+        el.removeAttribute('inert');
+        if (el.getAttribute('aria-hidden') === 'true') el.removeAttribute('aria-hidden');
+      });
+    }
   }, [isOverlayActive]);
 
   const navigate = useNavigate();
@@ -139,7 +216,19 @@ export default function App() {
     isDesktopOrTablet,
     toggleCollapse,
     setIsNavOpen,
+    collapseNav,
+    isFocusMode,
   });
+
+  const handleNavigateToPractice = useCallback(() => {
+    navigate(TAB_ROUTES.path);
+    setActiveActivity(null);
+  }, [navigate, setActiveActivity]);
+
+  const handleSettingsClick = useCallback(() => {
+    setIsSettingsOpen(true);
+    if (!isDesktop()) setIsNavOpen(false);
+  }, [setIsSettingsOpen, isDesktop, setIsNavOpen]);
 
   if (isLoading) {
     return (
@@ -163,28 +252,19 @@ export default function App() {
         setIsNavOpen={setResponsiveNavOpen}
         isOverlayActive={isOverlayActive}
         showSidebarCollapse={showSidebarCollapse}
-        onSettingsClick={() => {
-          setIsSettingsOpen(true);
-          if (!isDesktop()) setIsNavOpen(false);
-        }}
+        onSettingsClick={handleSettingsClick}
         onTabChange={handleTabChange}
         activityModals={
           <Suspense fallback={null}>
             <ActivityModals
               activeActivity={activeActivity}
-              setActiveActivity={setActiveActivity}
+              setActiveActivity={handleSetActiveActivity}
               activeBookId={activeBook.id}
               selectedLessons={selectedLessons}
               isLibraryMode={activeTab === 'library'}
-              onNavigateToPractice={() => {
-                navigate(TAB_ROUTES.path);
-                setActiveActivity(null);
-              }}
-              onOpenGrammarPart={(partId, pageId) => {
-                setActiveGrammarPageId(pageId ?? null);
-                setActiveGrammarPartId(partId);
-              }}
-              onOpenReading={() => void openReader(activeBook.id)}
+              onNavigateToPractice={handleNavigateToPractice}
+              onOpenGrammarPart={handleOpenGrammarPart}
+              onOpenReading={handleOpenReading}
             />
           </Suspense>
         }
@@ -195,9 +275,9 @@ export default function App() {
           setActiveBookId={setActiveBookId}
           selectedLessons={selectedLessons}
           toggleLesson={toggleLesson}
-          startPathPractice={startPathPractice}
+          startPathPractice={handleStartPathPractice}
           setActiveTab={handleTabChange}
-          setActiveActivity={setActiveActivity}
+          setActiveActivity={handleSetActiveActivity}
           onToggleNav={handleNavToggle}
         />
       </LayoutShell>
@@ -210,6 +290,7 @@ export default function App() {
           setActiveGrammarPageId(null);
         }}
         onProceedToReading={(targetPart) => {
+          collapseNav();
           setActiveGrammarPartId(null);
           setActiveGrammarPageId(null);
           void openReaderForPart(targetPart.bookId, targetPart.lessonId, targetPart.partId);
@@ -220,11 +301,8 @@ export default function App() {
         readings={readings}
         index={activeReadingIndex}
         onNavigate={navigateReader}
-        onClose={closeReader}
-        onOpenGrammarPart={(partId, pageId) => {
-          setActiveGrammarPageId(pageId ?? null);
-          setActiveGrammarPartId(partId);
-        }}
+        onClose={handleCloseReader}
+        onOpenGrammarPart={handleOpenGrammarPart}
       />
 
       <DictionaryDetailOverlay />

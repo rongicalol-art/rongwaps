@@ -109,7 +109,10 @@ export function ReaderHeader({
       if (!aidsRef.current?.contains(event.target as Node)) setIsAidsOpen(false);
     };
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setIsAidsOpen(false);
+      if (event.key === 'Escape') {
+        event.stopPropagation();
+        setIsAidsOpen(false);
+      }
     };
     document.addEventListener('pointerdown', handlePointerDown);
     document.addEventListener('keydown', handleKeyDown);

@@ -13,15 +13,18 @@ export function useReaderLauncher({
   selectedLessons,
   activeBookId,
   activeGrammarPartId,
+  onOpen,
 }: {
   selectedLessons: number[];
   activeBookId: number;
   activeGrammarPartId: string | null;
+  onOpen?: () => void;
 }) {
   const [readings, setReadings] = useState<ReadingRecord[]>([]);
   const [activeReadingIndex, setActiveReadingIndex] = useState<number | null>(null);
 
   const openReader = useCallback(async (bookId: number, explicitIndex?: number) => {
+    onOpen?.();
     const loaded = await loadReadings(bookId);
     if (!loaded.length) {
       setReadings([]);
@@ -42,9 +45,10 @@ export function useReaderLauncher({
       });
     setReadings(loaded);
     setActiveReadingIndex(targetIdx);
-  }, [selectedLessons]);
+  }, [onOpen, selectedLessons]);
 
   const openReaderForPart = useCallback(async (bookId: number, lessonId: number, partId: number) => {
+    onOpen?.();
     const loaded = await loadReadings(bookId);
     if (!loaded.length) {
       setReadings([]);
@@ -54,7 +58,7 @@ export function useReaderLauncher({
     const targetIdx = findReadingIndexForPart(loaded, bookId, lessonId, partId);
     setReadings(loaded);
     setActiveReadingIndex(targetIdx);
-  }, []);
+  }, [onOpen]);
 
   const closeReader = useCallback(() => {
     setActiveReadingIndex(null);
@@ -76,11 +80,14 @@ export function useReaderLauncher({
       if (e.key.toLowerCase() !== 'r' || e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
       if (activeGrammarPartId) return;
       if (activeReadingIndex !== null) closeReader();
-      else void openReader(activeBookId);
+      else {
+        onOpen?.();
+        void openReader(activeBookId);
+      }
     };
     window.addEventListener('keydown', handleReaderKey);
     return () => window.removeEventListener('keydown', handleReaderKey);
-  }, [activeGrammarPartId, activeReadingIndex, activeBookId, closeReader, openReader]);
+  }, [activeGrammarPartId, activeReadingIndex, activeBookId, closeReader, openReader, onOpen]);
 
   return {
     readings,

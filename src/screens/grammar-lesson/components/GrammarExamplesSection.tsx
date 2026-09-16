@@ -50,7 +50,7 @@ export function GrammarExamplesSection({
     <section aria-labelledby={headingId} className={cn(!hideHeader && 'mt-10')}>
       {!hideHeader && (
         <div className="mb-3 flex items-center justify-between gap-3">
-          <h2 id={headingId} className="text-xs font-black uppercase tracking-[0.08em] text-ui-muted-strong">
+          <h2 id={headingId} className="text-xs font-black uppercase tracking-wider text-ui-ink-strong">
             {title}
           </h2>
         </div>
@@ -59,7 +59,7 @@ export function GrammarExamplesSection({
         className={cn(
           variant === 'cards'
             ? 'space-y-3'
-            : 'rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface divide-y divide-ui-divider/60 overflow-hidden'
+            : 'rounded-feature border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface divide-y divide-ui-divider/60 overflow-hidden'
         )}
       >
         {activeExamples.map((example, index) => (

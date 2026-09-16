@@ -154,11 +154,6 @@ export function GrammarLessonScreen({
     const targets = siblings.map((element) => (
       (element.querySelector('[data-workspace-content]') as HTMLElement | null) ?? element
     ));
-    const previousStates = targets.map((target) => ({
-      target,
-      inert: target.hasAttribute('inert'),
-      ariaHidden: target.getAttribute('aria-hidden'),
-    }));
 
     targets.forEach((target) => {
       target.setAttribute('inert', '');
@@ -168,10 +163,9 @@ export function GrammarLessonScreen({
 
     return () => {
       audioService.stop();
-      previousStates.forEach(({ target, inert, ariaHidden }) => {
-        if (!inert) target.removeAttribute('inert');
-        if (ariaHidden === null) target.removeAttribute('aria-hidden');
-        else target.setAttribute('aria-hidden', ariaHidden);
+      targets.forEach((target) => {
+        target.removeAttribute('inert');
+        target.removeAttribute('aria-hidden');
       });
     };
   }, []);

@@ -124,7 +124,7 @@ export function GrammarStudyPage({
                 {/* Pattern Table */}
                 {sectionPatternRows.length > 0 && (
                   <div className="space-y-2">
-                    <span className="text-xs font-black uppercase tracking-[0.08em] text-ui-muted-strong">
+                    <span className="text-xs font-black uppercase tracking-wider text-ui-ink-strong">
                       Sentence Pattern
                     </span>
                     <GrammarPatternSection
@@ -145,7 +145,7 @@ export function GrammarStudyPage({
                 {/* Examples */}
                 {sectionExamples.length > 0 && (
                   <div className="space-y-2">
-                    <span className="text-xs font-black uppercase tracking-[0.08em] text-ui-muted-strong">
+                    <span className="text-xs font-black uppercase tracking-wider text-ui-ink-strong">
                       Examples
                     </span>
                     <GrammarExamplesSection

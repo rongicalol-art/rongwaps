@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import type { InteractiveGrammarPart } from '../../types/models';
 
 export async function loadInteractiveGrammarPart(partId: string): Promise<InteractiveGrammarPart | undefined> {
@@ -6,11 +6,16 @@ export async function loadInteractiveGrammarPart(partId: string): Promise<Intera
   return getInteractiveGrammarPart(partId);
 }
 
-export function useGrammarLauncher() {
+export function useGrammarLauncher({ onOpen }: { onOpen?: () => void } = {}) {
   // The overlay URL sync in App owns ?grammarPart; local state starts empty.
-  const [activeGrammarPartId, setActiveGrammarPartId] = useState<string | null>(null);
+  const [activeGrammarPartId, setActiveGrammarPartIdState] = useState<string | null>(null);
   const [activeGrammarPageId, setActiveGrammarPageId] = useState<string | null>(null);
   const [activeGrammarPart, setActiveGrammarPart] = useState<InteractiveGrammarPart | null>(null);
+
+  const setActiveGrammarPartId = useCallback((partId: string | null) => {
+    if (partId) onOpen?.();
+    setActiveGrammarPartIdState(partId);
+  }, [onOpen]);
 
   useEffect(() => {
     if (!activeGrammarPartId) {
