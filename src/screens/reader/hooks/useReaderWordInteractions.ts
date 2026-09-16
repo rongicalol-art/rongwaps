@@ -15,6 +15,30 @@ export interface HoveredWordState {
   anchorRect: AnchorRect;
 }
 
+/**
+ * Shared handler shapes for the reading surfaces. The handlers below are
+ * memoized, and the per-word `ReaderChunk` leaf is memoized as well, so these
+ * declared types keep every caller honest about the identity-stable contract:
+ * a handler that is not a stable `useCallback` re-renders every word on every
+ * karaoke tick.
+ */
+export type ReaderPointerHandler = (
+  e: React.PointerEvent<HTMLSpanElement>,
+  chunk: PhraseChunk,
+  /** Chunk-key prefix: the dialogue sentence id, or the narrative clause id. */
+  lineKey: number | string,
+  chunkIdx: number,
+) => void;
+
+export type ReaderPointerMoveHandler = (e: React.PointerEvent<HTMLSpanElement>) => void;
+
+export type ReaderPointerUpHandler = (
+  e: React.PointerEvent<HTMLSpanElement>,
+  chunk: PhraseChunk,
+  lineIndex: number,
+  range?: { start?: number; end?: number },
+) => void;
+
 interface UseReaderWordInteractionsOptions {
   onPlayLine?: (lineIndex: number) => void;
   onPlayRange?: (startSec: number, endSec: number) => void;
@@ -123,13 +147,8 @@ export function useReaderWordInteractions({
     [clearHoverTimers],
   );
 
-  const handlePointerEnter = useCallback(
-    (
-      e: React.PointerEvent<HTMLSpanElement>,
-      chunk: PhraseChunk,
-      lineIndex: number | string,
-      chunkIdx: number,
-    ) => {
+  const handlePointerEnter = useCallback<ReaderPointerHandler>(
+    (e, chunk, lineIndex, chunkIdx) => {
       if (e.pointerType === 'touch' || !showHoverDefinitions || chunk.isPunctuation) {
         return;
       }
@@ -191,13 +210,8 @@ export function useReaderWordInteractions({
     }, 100);
   }, []);
 
-  const handlePointerDown = useCallback(
-    (
-      e: React.PointerEvent<HTMLSpanElement>,
-      chunk: PhraseChunk,
-      lineIndex: number | string,
-      chunkIdx: number,
-    ) => {
+  const handlePointerDown = useCallback<ReaderPointerHandler>(
+    (e, chunk, lineIndex, chunkIdx) => {
       if (e.button !== 0) return;
       e.stopPropagation();
 
@@ -228,8 +242,8 @@ export function useReaderWordInteractions({
     [cancelHoldTimer, clearHoveredWord],
   );
 
-  const handlePointerMove = useCallback(
-    (e: React.PointerEvent<HTMLSpanElement>) => {
+  const handlePointerMove = useCallback<ReaderPointerMoveHandler>(
+    (e) => {
       if (!activeChunkRef.current) return;
 
       const dist = Math.hypot(
@@ -247,13 +261,8 @@ export function useReaderWordInteractions({
     [cancelHoldTimer, clearHoveredWord],
   );
 
-  const handlePointerUp = useCallback(
-    (
-      e: React.PointerEvent<HTMLSpanElement>,
-      _chunk: PhraseChunk,
-      lineIndex: number,
-      range?: { start?: number; end?: number },
-    ) => {
+  const handlePointerUp = useCallback<ReaderPointerUpHandler>(
+    (e, _chunk, lineIndex, range) => {
       e.stopPropagation();
       cancelHoldTimer();
       setHoldingChunkKey(null);

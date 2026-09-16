@@ -6,7 +6,7 @@ import { splitChunksIntoSentences } from '../../../utils/dialogueSync';
 import { useReaderWordInteractions } from '../hooks/useReaderWordInteractions';
 import { useReaderDictionaryBatch } from '../hooks/useReaderDictionaryBatch';
 import { ReaderWordTooltip } from './ReaderWordTooltip';
-import { useAppStore } from '../../../store/useAppStore';
+import { ReaderChunk, NARRATIVE_CHUNK_APPEARANCE } from './ReaderChunk';
 import { audioService } from '../../../services/audioService';
 import { findMatchingCourseVocab } from '../../../services/vocabularyService';
 import { groupSentencesIntoParagraphs } from '../utils/narrativeParagraphs';
@@ -238,114 +238,34 @@ export function ReadingNarrativeView({
                           }
 
                           const chunkKey = `${clause.id}-${chunkIdx}`;
-                          const isHoldingThisChunk = holdingChunkKey === chunkKey;
                           const isWordActive = typeof chunk.start === 'number' && typeof chunk.end === 'number'
                             ? currentTime >= chunk.start && currentTime < chunk.end
                             : false;
-                          const isWordHovered = hoveredChunkKey === chunkKey;
 
                           return (
-                              <span
-                                key={chunkIdx}
-                                data-reader-chunk="true"
-                                data-chunk-key={chunkKey}
-                                data-chunk-start={chunk.start}
-                                data-chunk-text={chunk.text}
-                                role="button"
-                                tabIndex={0}
-                                title="Tap to play · Hover for definition · Hold for breakdown"
-                                onClick={(e) => e.stopPropagation()}
-                                onPointerEnter={(e) =>
-                                  handlePointerEnter(e, chunk, clause.id, chunkIdx)
-                                }
-                                onPointerLeave={handlePointerLeave}
-                                onPointerDown={(e) =>
-                                  handlePointerDown(e, chunk, clause.id, chunkIdx)
-                                }
-                                onPointerMove={handlePointerMove}
-                                onPointerUp={(e) =>
-                                  handlePointerUp(e, chunk, sentence.index, {
-                                    start: typeof chunk.start === 'number'
-                                      ? chunk.start
-                                      : clause.start,
-                                    end: clause.end,
-                                  })
-                                }
-                                onPointerCancel={handlePointerCancel}
-                                onKeyDown={(e) => {
-                                  if (e.key === 'Enter' && e.shiftKey) {
-                                    e.preventDefault();
-                                    e.stopPropagation();
-                                    useAppStore.getState().setDictionaryWord(chunk.text);
-                                  } else if (e.key === 'Enter') {
-                                    e.preventDefault();
-                                    e.stopPropagation();
-                                    const wordStart = typeof chunk.start === 'number'
-                                      ? chunk.start
-                                      : clause.start;
-                                    if (
-                                      typeof wordStart === 'number' &&
-                                      typeof clause.end === 'number' &&
-                                      onPlayRange
-                                    ) {
-                                      onPlayRange(wordStart, clause.end);
-                                    } else {
-                                      onPlayLine(sentence.index);
-                                    }
-                                  }
-                                }}
-                                className={cn(
-                                  'outline-none -mx-0.5 px-0.5 rounded box-decoration-clone transition-colors duration-100',
-                                  isHoldingThisChunk || isWordActive
-                                    ? 'bg-brand-primary-soft text-brand-primary font-black'
-                                    : isWordHovered
-                                      ? 'bg-brand-primary/10 text-brand-primary'
-                                      : '',
-                                )}
-                              >
-                                {showPinyin ? (
-                                  chunk.rubyItems.map((item, itemIdx) => {
-                                    if (item.isPunctuation || !item.pinyin) {
-                                      return <span key={itemIdx}>{item.char}</span>;
-                                    }
-                                    const isLongSyllable = item.pinyin.length >= 5;
-                                    return (
-                                      <ruby
-                                        key={itemIdx}
-                                        className={cn(
-                                          'font-chinese [ruby-position:over]',
-                                          textSize === 'extra-large'
-                                            ? 'mx-[3px] sm:mx-[4px]'
-                                            : 'mx-[2px] sm:mx-[3px]',
-                                        )}
-                                      >
-                                        {item.char}
-                                        <rt
-                                          className={cn(
-                                            'font-sans font-semibold text-brand-primary select-none leading-none pb-0.5 [ruby-position:over]',
-                                            isLongSyllable
-                                              ? textSize === 'extra-large'
-                                                ? 'text-[11.5px] sm:text-[12.5px] tracking-tight'
-                                                : textSize === 'large'
-                                                  ? 'text-[10px] sm:text-[10.5px] tracking-tight'
-                                                  : 'text-[9.5px] sm:text-[10px] tracking-tight'
-                                              : textSize === 'extra-large'
-                                                ? 'text-[12.5px] sm:text-[13.5px] tracking-normal'
-                                                : textSize === 'large'
-                                                  ? 'text-[10.5px] sm:text-[11.5px] tracking-normal'
-                                                  : 'text-[10px] sm:text-[11px] tracking-normal',
-                                          )}
-                                        >
-                                          {item.pinyin}
-                                        </rt>
-                                      </ruby>
-                                    );
-                                  })
-                                ) : (
-                                  <span>{chunk.text}</span>
-                                )}
-                              </span>
-                            );
+                            <ReaderChunk
+                              key={chunkIdx}
+                              chunk={chunk}
+                              keyPrefix={clause.id}
+                              chunkIdx={chunkIdx}
+                              lineIndex={sentence.index}
+                              fallbackStart={clause.start}
+                              fallbackEnd={clause.end}
+                              isActive={holdingChunkKey === chunkKey || isWordActive}
+                              isHovered={hoveredChunkKey === chunkKey}
+                              showPinyin={showPinyin}
+                              textSize={textSize}
+                              appearance={NARRATIVE_CHUNK_APPEARANCE}
+                              onPlayLine={onPlayLine}
+                              onPlayRange={onPlayRange}
+                              onPointerEnter={handlePointerEnter}
+                              onPointerLeave={handlePointerLeave}
+                              onPointerDown={handlePointerDown}
+                              onPointerMove={handlePointerMove}
+                              onPointerUp={handlePointerUp}
+                              onPointerCancel={handlePointerCancel}
+                            />
+                          );
                           })}</span>
                     );
                   })}</span>

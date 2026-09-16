@@ -201,6 +201,25 @@ export function ReaderScreen({
     }
   }, [playing]);
 
+  // Stable play callbacks: the reading canvases memoize each word, so passing
+  // fresh arrow identities here would re-render every word on every karaoke
+  // tick. The audio hook's play actions do not depend on `currentTime`, so
+  // these stay referentially stable while playback is running.
+  const handlePlayLine = useCallback((lineIndex: number) => {
+    setIsDockVisible(true);
+    playLine(lineIndex);
+  }, [playLine]);
+
+  const handlePlayRange = useCallback((startSec: number) => {
+    setIsDockVisible(true);
+    playFromTime(startSec);
+  }, [playFromTime]);
+
+  const handlePlayFromTime = useCallback((startSec: number, endSec?: number) => {
+    setIsDockVisible(true);
+    playFromTime(startSec, endSec);
+  }, [playFromTime]);
+
   const isHoveringBottomRef = useRef(false);
   const wasHoverRevealedRef = useRef(false);
   const hoverLeaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -436,18 +455,9 @@ export function ReaderScreen({
                     textSize={textSize}
                     activeLineIndex={activeLineIndex}
                     currentTime={currentTime}
-                    onPlayLine={(idx) => {
-                      setIsDockVisible(true);
-                      playLine(idx);
-                    }}
-                    onPlayRange={(startSec) => {
-                      setIsDockVisible(true);
-                      playFromTime(startSec);
-                    }}
-                    onPlayFromTime={(startSec, endSec) => {
-                      setIsDockVisible(true);
-                      playFromTime(startSec, endSec);
-                    }}
+                    onPlayLine={handlePlayLine}
+                    onPlayRange={handlePlayRange}
+                    onPlayFromTime={handlePlayFromTime}
                   />
                 ) : (
                   <ReadingCanvas
@@ -461,18 +471,9 @@ export function ReaderScreen({
                     textSize={textSize}
                     activeLineIndex={activeLineIndex}
                     currentTime={currentTime}
-                    onPlayLine={(idx) => {
-                      setIsDockVisible(true);
-                      playLine(idx);
-                    }}
-                    onPlayRange={(startSec) => {
-                      setIsDockVisible(true);
-                      playFromTime(startSec);
-                    }}
-                    onPlayFromTime={(startSec, endSec) => {
-                      setIsDockVisible(true);
-                      playFromTime(startSec, endSec);
-                    }}
+                    onPlayLine={handlePlayLine}
+                    onPlayRange={handlePlayRange}
+                    onPlayFromTime={handlePlayFromTime}
                   />
                 )}
               </ReaderContentMount>
