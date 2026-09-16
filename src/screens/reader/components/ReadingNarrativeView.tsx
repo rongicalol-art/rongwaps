@@ -26,7 +26,6 @@ interface ReadingNarrativeViewProps {
   currentTime: number;
   onPlayLine: (index: number) => void;
   onPlayRange?: (startSec: number, endSec: number) => void;
-  onPlayFromTime?: (startSec: number, endSec?: number) => void;
 }
 
 export function ReadingNarrativeView({

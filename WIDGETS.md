@@ -179,6 +179,10 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
   ```tsx
   <ProgressMetricCard label="Words learned" value={count} detail="This month" icon="progress" />
   ```
+- **ReferenceRow** — the single row anatomy for reference sheets (character breakdown, word detail): Chinese glyph left, pinyin over meaning right, optional trailing meta, and a `loading` skeleton state. Keeps every supporting-information rail on the same row rhythm; `accentClassName` tints the glyph with the active book accent.
+  ```tsx
+  <ReferenceRow glyph="東" accentClassName={activeBook.accent} primary="dōng" secondary="east" onClick={() => open('東')} ariaLabel="Open breakdown for 東" />
+  ```
 - **SmartSentence** — clickable Chinese sentence presentation for dictionary lookup. Use `highlightTerms` to emphasize the vocabulary currently being taught.
   ```tsx
   <SmartSentence text={sentence} highlightTerms={[currentWord]} />

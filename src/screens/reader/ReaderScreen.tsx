@@ -1,10 +1,11 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import { useAppStore } from '../../store/useAppStore';
-import type { DialogueAlignment, ReaderTextSize, ReadingRecord } from '../../types/models';
+import type { DialogueAlignment, ReadingRecord } from '../../types/models';
 import { LoadingScreen } from '../../lib/widgets';
 
 import { useReaderAudio } from './hooks/useReaderAudio';
+import { useReaderPreferences } from './hooks/useReaderPreferences';
 import { ReaderHeader } from './components/ReaderHeader';
 import { ReaderStudyDrawer } from './components/ReaderStudyDrawer';
 import { ReaderStudyPanel } from './components/ReaderStudyPanel';
@@ -73,89 +74,17 @@ export function ReaderScreen({
   }, []);
 
   const [isDockVisible, setIsDockVisible] = useState(true);
-  const [showPinyin, setShowPinyin] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = window.localStorage.getItem('rongwaps:reader_show_pinyin');
-      if (saved !== null) {
-        return saved === 'true';
-      }
-    }
-    return true;
-  });
 
-  const handleTogglePinyin = useCallback(() => {
-    setShowPinyin((prev) => {
-      const next = !prev;
-      try {
-        window.localStorage.setItem('rongwaps:reader_show_pinyin', String(next));
-      } catch {
-        // Ignore storage errors in restricted contexts
-      }
-      return next;
-    });
-  }, []);
-
-  const [showMeaning, setShowMeaning] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = window.localStorage.getItem('rongwaps:reader_show_meaning');
-      if (saved !== null) {
-        return saved === 'true';
-      }
-    }
-    return false;
-  });
-
-  const handleToggleMeaning = useCallback(() => {
-    setShowMeaning((prev) => {
-      const next = !prev;
-      try {
-        window.localStorage.setItem('rongwaps:reader_show_meaning', String(next));
-      } catch {
-        // Ignore storage errors in restricted contexts
-      }
-      return next;
-    });
-  }, []);
-  const [showHoverDefinitions, setShowHoverDefinitions] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = window.localStorage.getItem('rongwaps:reader_hover_definitions');
-      if (saved !== null) {
-        return saved === 'true';
-      }
-    }
-    return true;
-  });
-
-  const handleToggleHoverDefinitions = useCallback(() => {
-    setShowHoverDefinitions((prev) => {
-      const next = !prev;
-      try {
-        window.localStorage.setItem('rongwaps:reader_hover_definitions', String(next));
-      } catch {
-        // Ignore storage errors in restricted contexts
-      }
-      return next;
-    });
-  }, []);
-
-  const [textSize, setTextSize] = useState<ReaderTextSize>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = window.localStorage.getItem('rongwaps:reader_text_size');
-      if (saved === 'normal' || saved === 'large' || saved === 'extra-large') {
-        return saved;
-      }
-    }
-    return 'normal';
-  });
-
-  const handleTextSizeChange = useCallback((newSize: ReaderTextSize) => {
-    setTextSize(newSize);
-    try {
-      window.localStorage.setItem('rongwaps:reader_text_size', newSize);
-    } catch {
-      // Ignore storage errors in restricted contexts
-    }
-  }, []);
+  const {
+    showPinyin,
+    showMeaning,
+    showHoverDefinitions,
+    textSize,
+    toggleShowPinyin,
+    toggleShowMeaning,
+    toggleShowHoverDefinitions,
+    setTextSize,
+  } = useReaderPreferences();
 
   const audioMode = 'book';
   const characterPreference = useAppStore((state) => state.characterPreference);
@@ -217,6 +146,18 @@ export function ReaderScreen({
     characterPreference,
     audioMode,
   });
+
+  // Tapping a bubble or sentence always reveals the dock, whichever reading
+  // view is mounted (narrative or dialogue) — keep that behaviour in one place.
+  const handlePlayLine = useCallback((lineIndex: number) => {
+    setIsDockVisible(true);
+    playLine(lineIndex);
+  }, [playLine]);
+
+  const handlePlayRange = useCallback((startSec: number) => {
+    setIsDockVisible(true);
+    playFromTime(startSec);
+  }, [playFromTime]);
 
   // Always show dock when audio starts playing
   useEffect(() => {
@@ -393,6 +334,23 @@ export function ReaderScreen({
 
   if (!reading) return null;
 
+  // Both reading views are mutually exclusive renderings of the same reading,
+  // so they take the same inputs; keep the list in one place so a new input
+  // cannot land on only one of them.
+  const readingViewProps = {
+    reading,
+    alignment,
+    characterPreference,
+    showPinyin,
+    showMeaning,
+    showHoverDefinitions,
+    textSize,
+    activeLineIndex,
+    currentTime,
+    onPlayLine: handlePlayLine,
+    onPlayRange: handlePlayRange,
+  };
+
   return (
     <div
       ref={dialogRef}
@@ -417,13 +375,13 @@ export function ReaderScreen({
         <ReaderHeader
           reading={reading}
           textSize={textSize}
-          onTextSizeChange={handleTextSizeChange}
+          onTextSizeChange={setTextSize}
           showPinyin={showPinyin}
-          onTogglePinyin={handleTogglePinyin}
+          onTogglePinyin={toggleShowPinyin}
           showMeaning={showMeaning}
-          onToggleMeaning={handleToggleMeaning}
+          onToggleMeaning={toggleShowMeaning}
           showHoverDefinitions={showHoverDefinitions}
-          onToggleHoverDefinitions={handleToggleHoverDefinitions}
+          onToggleHoverDefinitions={toggleShowHoverDefinitions}
           onOpenStudyGuide={() => setIsStudyDrawerOpen((open) => !open)}
           isStudyGuideOpen={isStudyDrawerOpen}
           onClose={onClose}
@@ -442,55 +400,9 @@ export function ReaderScreen({
             <Suspense fallback={<LoadingScreen message="Loading reading…" inline />}>
               <ReaderContentMount onMounted={markContentReady}>
                 {isNarrativeReading(reading) ? (
-                  <ReadingNarrativeView
-                    key={reading.id}
-                    reading={reading}
-                    alignment={alignment}
-                    characterPreference={characterPreference}
-                    showPinyin={showPinyin}
-                    showMeaning={showMeaning}
-                    showHoverDefinitions={showHoverDefinitions}
-                    textSize={textSize}
-                    activeLineIndex={activeLineIndex}
-                    currentTime={currentTime}
-                    onPlayLine={(idx) => {
-                      setIsDockVisible(true);
-                      playLine(idx);
-                    }}
-                    onPlayRange={(startSec) => {
-                      setIsDockVisible(true);
-                      playFromTime(startSec);
-                    }}
-                    onPlayFromTime={(startSec, endSec) => {
-                      setIsDockVisible(true);
-                      playFromTime(startSec, endSec);
-                    }}
-                  />
+                  <ReadingNarrativeView key={reading.id} {...readingViewProps} />
                 ) : (
-                  <ReadingCanvas
-                    key={reading.id}
-                    reading={reading}
-                    alignment={alignment}
-                    characterPreference={characterPreference}
-                    showPinyin={showPinyin}
-                    showMeaning={showMeaning}
-                    showHoverDefinitions={showHoverDefinitions}
-                    textSize={textSize}
-                    activeLineIndex={activeLineIndex}
-                    currentTime={currentTime}
-                    onPlayLine={(idx) => {
-                      setIsDockVisible(true);
-                      playLine(idx);
-                    }}
-                    onPlayRange={(startSec) => {
-                      setIsDockVisible(true);
-                      playFromTime(startSec);
-                    }}
-                    onPlayFromTime={(startSec, endSec) => {
-                      setIsDockVisible(true);
-                      playFromTime(startSec, endSec);
-                    }}
-                  />
+                  <ReadingCanvas key={reading.id} {...readingViewProps} />
                 )}
               </ReaderContentMount>
             </Suspense>
@@ -519,8 +431,8 @@ export function ReaderScreen({
               onSeek={seekTo}
               onScrub={scrubTo}
               onCycleSpeed={cycleSpeed}
-              onTogglePinyin={handleTogglePinyin}
-              onToggleMeaning={handleToggleMeaning}
+              onTogglePinyin={toggleShowPinyin}
+              onToggleMeaning={toggleShowMeaning}
               onMouseEnter={handleBottomHoverEnter}
               onMouseLeave={handleBottomHoverLeave}
             />
