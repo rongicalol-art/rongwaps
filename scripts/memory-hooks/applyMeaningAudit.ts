@@ -59,6 +59,7 @@ function main(): void {
     plans: Array<{
       character: string;
       meaningDecision: { selectedMeaning: string | null; selectedPinyin: string | null };
+      blockers?: string[];
     }>;
   };
   const frozenPath = resolve(OUTPUT_DIR, 'book-1-frozen-47-reviewed-construction-meanings-v1.json');
@@ -122,6 +123,11 @@ function main(): void {
     if (plan) {
       plan.meaningDecision.selectedMeaning = decision.to;
       if (decision.toPinyin) plan.meaningDecision.selectedPinyin = decision.toPinyin;
+      // A supplied meaning resolves the canonical-meaning blocker; leaving it
+      // would keep single-part specials withheld after a reviewer override.
+      if (plan.blockers?.length) {
+        plan.blockers = plan.blockers.filter((blocker) => blocker !== 'missing-canonical-meaning');
+      }
     }
     const frozenRecord = frozenByCharacter.get(decision.character);
     if (frozenRecord && frozenRecord.status === 'approved') {

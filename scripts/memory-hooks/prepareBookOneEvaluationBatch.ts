@@ -119,7 +119,10 @@ function occurrenceId(character: string, treePath: string): string {
 }
 
 /** Reviewed shape-only frames: fragmentary or single-part forms, the hook describes the exact visible form. */
-const SHAPE_ONLY_CHARACTERS = new Set<string>(['長', '上']);
+const SHAPE_ONLY_CHARACTERS = new Set<string>([
+  '長', '上',
+  '小', '太', '中', '介', '今', '也', '少', '千', '桌', '戶', '山', '以', '方', '司', '毛', '成', '己', '十', '兔', '尺',
+]);
 
 /**
  * Curated learner-facing token labels for characters whose canonical meaning is
@@ -203,6 +206,8 @@ const TARGET_DISPLAY_OVERRIDES: Record<string, string> = {
   '合': 'join',
   '份': 'copy',
   '里': 'li',
+  '戶': 'household',
+  '方': 'direction',
 };
 
 export interface SceneComponentOptions {
