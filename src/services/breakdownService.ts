@@ -62,7 +62,7 @@ export async function getCharacterBreakdown(character: string): Promise<DBCharac
       // 4. Cache and return
       if (data) {
         breakdownCache.set(character, data);
-        return data as DBCharacterBreakdown;
+        return data;
       }
 
       return null;
@@ -219,7 +219,7 @@ export async function getMultipleBreakdowns(characters: string[]): Promise<Recor
       }
       if (res.data && Array.isArray(res.data)) {
         res.data.forEach(item => {
-          const charData = item as DBCharacterBreakdown;
+          const charData = item;
           results[charData.character] = charData;
           breakdownCache.set(charData.character, charData);
         });
