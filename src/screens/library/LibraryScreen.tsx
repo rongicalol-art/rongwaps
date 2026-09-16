@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { motion } from 'motion/react';
 import { cn } from '../../utils/cn';
 import { ActionButton, AppIcon, StickyWorkspaceHeader, type StickyWorkspaceHeaderMenuToggle } from '../../lib/widgets';
@@ -102,6 +103,28 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
 
   const isStarred = libraryActiveFolder === 'starred';
   const totalCount = activeCollection?.count ?? 0;
+
+  // Item-based handlers so the memoized SpellCard keeps its identity-stable
+  // props: the grid maps over the filtered list on every search keystroke, and
+  // per-card closures here would re-render every card each time.
+  const handleOpenCard = useCallback(
+    (card: DBDictionaryEntry | UserFlashcard) => {
+      setDictionaryWord(
+        isStarred
+          ? (card as DBDictionaryEntry).traditional
+          : (card as UserFlashcard).traditional || card.simplified,
+      );
+    },
+    [isStarred, setDictionaryWord],
+  );
+
+  const handleRemoveCard = useCallback(
+    (card: DBDictionaryEntry | UserFlashcard) => {
+      if (isStarred) toggleFavorite((card as DBDictionaryEntry).traditional);
+      else void handleDeleteCustomCard((card as UserFlashcard).id);
+    },
+    [isStarred, toggleFavorite, handleDeleteCustomCard],
+  );
 
   return (
     // No page background here: the layout shell owns the unified canvas, so
@@ -216,18 +239,8 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
                       item={item}
                       activeTab={libraryActiveFolder}
                       index={idx}
-                      onAction={(e) => {
-                        e.stopPropagation();
-                        if (isStarred) toggleFavorite((item as DBDictionaryEntry).traditional);
-                        else handleDeleteCustomCard((item as UserFlashcard).id);
-                      }}
-                      onClick={() => {
-                        setDictionaryWord(
-                          isStarred
-                            ? (item as DBDictionaryEntry).traditional
-                            : (item.traditional || item.simplified)
-                        );
-                      }}
+                      onRemove={handleRemoveCard}
+                      onOpen={handleOpenCard}
                     />
                   );
                 })}

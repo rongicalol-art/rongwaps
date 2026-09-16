@@ -7,8 +7,13 @@ import { cn } from '../../../utils/cn';
 interface DictionaryCardProps {
   entry: DictionaryListEntry;
   isFavorite: boolean;
-  onToggleFavorite: () => void;
-  onClick: () => void;
+  /**
+   * Word-based, not pre-bound: the list passes one stable function for every
+   * row and the card applies it to its own entry, so `memo` below can bail out
+   * while the search query changes (see DictionaryResults).
+   */
+  onToggleFavorite: (word: string) => void;
+  onOpen: (word: string) => void;
 }
 
 function formatDefinitions(definitions: DictionaryListEntry['definitions']): string {
@@ -21,7 +26,7 @@ export const DictionaryCard = memo(function DictionaryCard({
   entry,
   isFavorite,
   onToggleFavorite,
-  onClick,
+  onOpen,
 }: DictionaryCardProps) {
   const book = entry.bookId ? SAMPLE_BOOKS.find((item) => item.id === entry.bookId) : null;
 
@@ -32,7 +37,7 @@ export const DictionaryCard = memo(function DictionaryCard({
     >
       <button
         type="button"
-        onClick={onClick}
+        onClick={() => onOpen(entry.traditional)}
         aria-label={`Open ${entry.traditional}: ${formatDefinitions(entry.definitions)}`}
         className="flex min-w-0 flex-1 items-center gap-3 text-left outline-none focus-ring rounded-sm sm:gap-4"
       >
@@ -62,7 +67,7 @@ export const DictionaryCard = memo(function DictionaryCard({
         type="button"
         onClick={(e) => {
           e.stopPropagation();
-          onToggleFavorite();
+          onToggleFavorite(entry.traditional);
         }}
         aria-label={isFavorite ? `Remove ${entry.traditional} from saved words` : `Save ${entry.traditional}`}
         aria-pressed={isFavorite}

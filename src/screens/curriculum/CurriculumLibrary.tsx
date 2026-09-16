@@ -166,13 +166,15 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
                 <div className="flex min-w-0 flex-1 flex-col">
                   {renderLessonList(lessonColumns[0])}
                 </div>
-                <div className="hidden min-w-0 flex-1 flex-col lg:flex">
+                {/* One tree for both breakpoints: the columns stack on mobile
+                    (parent `flex-col gap-4`, same 1.75rem separation the old
+                    `mt-4` copy produced) and sit side by side from lg up. The
+                    previous markup mounted lessonColumns[1] twice — once
+                    `hidden lg:flex`, once `lg:hidden` — so every lesson in the
+                    back half of every book existed twice in the DOM. */}
+                <div className="flex min-w-0 flex-1 flex-col">
                   {renderLessonList(lessonColumns[1])}
                 </div>
-              </div>
-
-              <div className="mt-4 flex w-full flex-col lg:hidden">
-                {renderLessonList(lessonColumns[1])}
               </div>
             </>
           )}
