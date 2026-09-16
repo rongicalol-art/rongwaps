@@ -4,7 +4,7 @@ import {
   chooseCanonicalMeaning,
   type LegacyCharacterMetadata,
 } from './pipeline';
-import type { BookCharacterInventoryEntry } from '../../src/features/character-memory-hooks/model';
+import type { BookCharacterInventoryEntry } from '../../src/types/memoryHooks';
 
 interface InventoryArtifact {
   schemaVersion: number;

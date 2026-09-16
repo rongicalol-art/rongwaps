@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { fetchExamples as fetchExampleSentences, type WordExample } from '../../dictionary/hooks/useWordExtras';
+import { fetchExamples as fetchExampleSentences } from '../../../services/vocabularyService';
+import type { WordExample } from '../../../types/models';
 import { rankExampleSentences } from '../utils/rankExampleSentences';
 
 /** Deep pool for the breakdown example-sentence block so a Show more toggle has
@@ -7,8 +8,8 @@ import { rankExampleSentences } from '../utils/rankExampleSentences';
 const EXAMPLE_POOL_LIMIT = 10;
 
 /** Course example sentences containing the given single character, for the
- * breakdown example-sentence block. Reuses the shared dictionary example
- * fetcher and ranks the pool by character usefulness. */
+ * breakdown example-sentence block. Reuses the shared service example fetcher
+ * and ranks the pool by character usefulness. */
 export function useCharExampleSentences(character: string): { sentences: WordExample[]; isLoading: boolean } {
   const [sentences, setSentences] = useState<WordExample[]>([]);
   const [isLoading, setIsLoading] = useState(true);

@@ -5,6 +5,7 @@ export {
   compareDecompositionRuntimes,
   createDecompositionRuntimeService,
   getDecompositionRuntimeService,
-} from '../character-decomposition/decompositionService';
+} from '../character-decomposition';
 export { ExtendedDefinitions } from './components/ExtendedDefinitions';
 export { SummaryQuickActions } from './components/SummaryQuickActions';
+export { useRuntimeDecompositionTree } from './hooks/useRuntimeDecompositionTree';

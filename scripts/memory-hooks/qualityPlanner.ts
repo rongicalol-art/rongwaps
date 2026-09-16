@@ -5,7 +5,7 @@ import type {
   HookFrame,
   MemoryHookCandidateV2,
   PlannedComponentUse,
-} from '../../src/features/character-memory-hooks/model';
+} from '../../src/types/memoryHooks';
 import {
   PILOT_EVIDENCE_BY_ID,
   PILOT_FRAME_REVIEWS_BY_CHARACTER,

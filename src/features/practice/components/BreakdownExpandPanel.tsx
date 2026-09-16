@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { AppIcon } from '../../../lib/widgets';
 import { getCachedMnemonic } from '../../../services/mnemonicCache';
 import { numberToToneMarks } from '../../../utils/pinyin';
-import { normalizeMnemonic, renderHookText } from '../../character-memory-hooks/hookText';
+import { normalizeMnemonic, renderHookText } from '../../character-memory-hooks';
 
 /**
  * Inline "breakdown" card shown inside the practice bottom bar when the

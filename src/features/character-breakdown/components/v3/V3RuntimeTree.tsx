@@ -2,7 +2,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import type { ReactNode } from 'react';
 import { AppIcon, SectionEyebrow, Skeleton } from '../../../../lib/widgets';
 import { numberToToneMarks } from '../../../../utils/pinyin';
-import type { RuntimeVisibleChild } from '../../../character-decomposition/runtimeLoader';
+import type { RuntimeVisibleChild } from '../../../character-decomposition';
 import { useRuntimeCharacterMetadata, type RuntimeCharacterMetadata } from '../../hooks/useRuntimeCharacterMetadata';
 import { useRuntimeDecompositionTree, type RuntimeTreeNodeState } from '../../hooks/useRuntimeDecompositionTree';
 import { getMultipleBreakdowns } from '../../../../services/breakdownService';

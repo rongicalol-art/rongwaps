@@ -8,6 +8,7 @@ import { timeDataRequest } from '../utils/requestTiming';
 import { fetchVocabularyPack, fetchAllVocabularyPacks } from './vocabularyPackService';
 import { parseVocabularyId } from '../utils/vocabularyId';
 import type { DBVocabularyRow } from '../types/database';
+import type { WordExample } from '../types/models';
 import { fetchCourseExampleCards } from './courseExamplePackService';
 
 const VOCABULARY_COLUMNS = 'id,traditional,simplified,meaning,pinyin,pos,audio,examples';
@@ -508,6 +509,47 @@ export async function fetchExamplesForWord(searchWords: string | string[]): Prom
     console.error('Exception fetching examples:', err);
     return [];
   }
+}
+
+/**
+ * Fetch example sentences that contain the given word, deduped by sentence text.
+ * Only sentences that carry a full pinyin + English translation are surfaced, so
+ * the section reads consistently (the course-example pack provides these; the
+ * fallback `book_vocabulary` source often stores Chinese-only strings).
+ * `limit` caps the returned pool; callers that need a deeper list (e.g. the
+ * breakdown example-sentence block with a Show more toggle) raise it.
+ *
+ * Owned by the service layer because both the dictionary and the breakdown
+ * features consume it (see docs/ARCHITECTURE.md § Dependency direction).
+ */
+export async function fetchExamples(word: string, limit = 3): Promise<WordExample[]> {
+  const cards = await fetchExamplesForWord(word);
+  const seen = new Set<string>();
+  const examples: WordExample[] = [];
+
+  for (const card of cards) {
+    for (const ex of card.examples ?? []) {
+      const chinese = ex.chinese?.trim();
+      const pinyin = ex.pinyin?.trim();
+      const english = ex.english?.trim();
+      if (!chinese || !chinese.includes(word)) continue;
+      if (!pinyin || !english) continue;
+      if (seen.has(chinese)) continue;
+      seen.add(chinese);
+      examples.push({
+        chinese,
+        pinyin,
+        english,
+        sourceCardId: card.id,
+        sourceFront: card.front,
+        sourceBookId: card.bookId,
+        sourceLessonId: card.lessonId,
+      });
+      if (examples.length >= limit) return examples;
+    }
+  }
+
+  return examples;
 }
 
 let courseVocabByWordMap: Map<string, Flashcard> | null = null;

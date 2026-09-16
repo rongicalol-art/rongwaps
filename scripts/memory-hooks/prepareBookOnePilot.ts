@@ -9,7 +9,7 @@ import {
 import type {
   BookCharacterInventoryEntry,
   LessonMeaningOccurrence,
-} from '../../src/features/character-memory-hooks/model';
+} from '../../src/types/memoryHooks';
 import type { RuntimeTreeNode } from '../../src/features/character-decomposition/runtimePack';
 import {
   BOOK_ONE_PILOT_SELECTION,

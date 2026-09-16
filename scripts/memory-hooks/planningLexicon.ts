@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { COMPONENT_LEXICON_BY_KEY } from '../../src/data/memoryHooks/componentLexicon';
-import type { ComponentLexiconEntry, ComponentSense } from '../../src/features/character-memory-hooks/model';
+import type { ComponentLexiconEntry, ComponentSense } from '../../src/types/memoryHooks';
 import { FUNCTION_WORD_LABEL, TECHNICAL_LABEL } from './componentRules';
 
 const ROOT = resolve(import.meta.dirname, '../..');

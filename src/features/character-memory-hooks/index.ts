@@ -7,3 +7,4 @@ export type { MemoryHookPopoverProps } from './MemoryHookPopover';
 export { useMemoryHook } from './useMemoryHook';
 export type { MemoryHookState } from './useMemoryHook';
 export { shouldShowWordHook, wordMnemonicKey } from './wordHook';
+export { normalizeMnemonic, renderHookText } from './hookText';

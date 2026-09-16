@@ -1,22 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
-import { fetchExamplesForWord } from '../../../services/vocabularyService';
+import { fetchExamples } from '../../../services/vocabularyService';
 import { searchDictionaryWordsContaining, type DictionaryContainingWord } from '../../../services/dictionaryService';
 import { useCharBreakdown } from '../../../hooks/useCharBreakdown';
 import { numberToToneMarks } from '../../../utils/pinyin';
 import type { DBCharacterBreakdown } from '../../../types/database';
+import type { WordExample } from '../../../types/models';
 
 const HANZI_RE = /[\u4E00-\u9FFF\u3400-\u4DBF]/u;
-
-/** A single in-context sentence pulled from the course that uses this word. */
-export interface WordExample {
-  chinese: string;
-  pinyin: string;
-  english: string;
-  sourceCardId: string;
-  sourceFront: string;
-  sourceBookId: number;
-  sourceLessonId: number;
-}
 
 /** A dictionary word sharing at least one of this word's characters. */
 export type WordRelatedWord = DictionaryContainingWord;
@@ -28,43 +18,6 @@ export interface CharacterDecomposition {
 }
 
 const NON_CHAR_RE = /[⿰⿱⿲⿳⿴⿵⿶⿷⿸⿹⿺⿻\s！？?]/;
-
-/** Fetch example sentences that contain the given word, deduped by sentence text.
- * Only sentences that carry a full pinyin + English translation are surfaced, so
- * the section reads consistently (the course-example pack provides these; the
- * fallback `book_vocabulary` source often stores Chinese-only strings).
- * `limit` caps the returned pool; callers that need a deeper list (e.g. the
- * breakdown example-sentence block with a Show more toggle) raise it.
- * Shared with other features (e.g. the breakdown memory hook). */
-export async function fetchExamples(word: string, limit = 3): Promise<WordExample[]> {
-  const cards = await fetchExamplesForWord(word);
-  const seen = new Set<string>();
-  const examples: WordExample[] = [];
-
-  for (const card of cards) {
-    for (const ex of card.examples ?? []) {
-      const chinese = ex.chinese?.trim();
-      const pinyin = ex.pinyin?.trim();
-      const english = ex.english?.trim();
-      if (!chinese || !chinese.includes(word)) continue;
-      if (!pinyin || !english) continue;
-      if (seen.has(chinese)) continue;
-      seen.add(chinese);
-      examples.push({
-        chinese,
-        pinyin,
-        english,
-        sourceCardId: card.id,
-        sourceFront: card.front,
-        sourceBookId: card.bookId,
-        sourceLessonId: card.lessonId,
-      });
-      if (examples.length >= limit) return examples;
-    }
-  }
-
-  return examples;
-}
 
 /** Gather dictionary words containing any of the word's characters, deduped. */
 async function fetchRelatedWords(word: string): Promise<WordRelatedWord[]> {

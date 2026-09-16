@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 import type {
   ComponentLabelCandidate,
   ComponentProfile,
-} from '../../src/features/character-memory-hooks/model';
+} from '../../src/types/memoryHooks';
 
 interface ComponentProfileArtifact {
   schemaVersion: number;

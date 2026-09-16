@@ -54,9 +54,15 @@ The existing ESLint configuration contains a small set of core `no-restricted-im
 
 - `src/lib/widgets/` cannot import from `src/screens/` or `src/features/`.
 - `src/services/` cannot import UI modules from `src/app/`, `src/screens/`, `src/features/`, or `src/lib/widgets/`.
-- A feature package cannot reach into another feature package's internal folders. Its public directory/index API remains available for intentional cross-feature composition.
+- A feature package cannot reach into another feature package's internal folders.
+- App layers (`src/app/`, `src/screens/`, `src/hooks/`, `src/store/`, `src/utils/`, `src/data/`, `src/types/`) consume a feature package only through its public `index.ts`.
+- Shared widgets are consumed through the `src/lib/widgets` barrel, never by internal module path.
 
-The feature rule lists the current packages explicitly (`character-breakdown`, `character-decomposition`, `character-memory-hooks`, `dictionary`, and `practice`). When a new cross-screen feature package is added, update the corresponding ESLint override so the same internal-folder boundary applies. These checks guard import direction; they do not replace ownership review or the public barrels.
+Feature packages are declared once in the `FEATURE_PACKAGES` list at the top of `eslint.config.js`; the per-package isolation override is generated from it, so adding a cross-screen feature package is a one-line change and the boundary cannot drift from the package list. Tests are deliberately outside these rules so unit tests can still exercise package internals.
+
+`no-restricted-imports` matches the raw import specifier, so each cross-feature pattern covers both spellings: the explicit `features/<other>/...` form and the relative `../<other>/...` form that `src/` code actually uses. A pattern that matches only the explicit form silently allows every relative import.
+
+These checks guard import direction; they do not replace ownership review or the public barrels.
 
 ## Component ownership
 
@@ -86,8 +92,6 @@ Application-wide routing, navigation, and layout belong in `App.tsx` and, after 
 
 ## State, data, and persistence
 
-## State, data, and persistence
-
 - Zustand stores in `src/store/` own persisted cross-screen state and domain state. `useAppStore` is composed from domain slices under `src/store/slices/` (auth, learning, navigation, library, ui, sync); each slice declares its persisted keys and account-switch defaults, and `useAppStore` derives the persistence contract from them (see `tests/storeContract.test.ts`). New cross-screen state belongs in a slice, not appended ad hoc.
 - Pack-first content loads through the shared `src/services/packLoader.ts` (`createPackLoader`); the per-content `*PackService` files own only their manifest/pack validation and database fallback policy. Do not add a new pack service; configure the shared loader.
 - `src/hooks/useCardSession.ts` is the shared card-session engine (deck lifecycle, resume, mistake queue, grading dedupe); activities own their answer UX on top of it.
@@ -96,6 +100,7 @@ Application-wide routing, navigation, and layout belong in `App.tsx` and, after 
 - Hooks coordinate UI lifecycle and service/store access. Complex logic should not be lifted into `App.tsx`.
 - Services in `src/services/` own Supabase, API, authentication, audio, dictionary, vocabulary, and other external access. `server/` must not import browser application infrastructure (enforced by ESLint); it owns `server/supabase.ts`.
 - Static curriculum and authored lesson content belongs in `src/data/`. Database/API contracts belong in `src/types/database.ts`; application models belong in `src/types/models.ts`.
+- Content and domain models needed by two features belong in the lowest layer both can reach — types in `src/types/` (domain splits such as `memoryHooks.ts`), fetching and mapping in `src/services/`. Example: `vocabularyService.fetchExamples` owns the word-example query for the dictionary and breakdown features, so neither package has to import the other.
 - Pure transformations and caches belong in `src/utils/`.
 
 ## UI foundations

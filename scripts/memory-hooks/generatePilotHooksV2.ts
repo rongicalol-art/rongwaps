@@ -7,7 +7,7 @@ import type {
   DeterministicHookQualityResult,
   HookFrame,
   MemoryHookCandidateV2,
-} from '../../src/features/character-memory-hooks/model';
+} from '../../src/types/memoryHooks';
 import { validateHookQualityDeterministically } from './qualityPlanner';
 import { evaluateHookStylePreflight } from './stylePreflight';
 import { renderDeterministicCandidate } from './deterministicRenderer';

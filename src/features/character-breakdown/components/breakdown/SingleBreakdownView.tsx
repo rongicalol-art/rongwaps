@@ -11,7 +11,7 @@ import { useSingleBreakdown } from "../../hooks/useSingleBreakdown";
 import { useAppStore } from "../../../../store/useAppStore";
 import { SAMPLE_BOOKS } from '../../../../data/books';
 import { useModalFocus } from "../../../../hooks/useModalFocus";
-import { getDecompositionRuntimeService } from '../../../character-decomposition/decompositionService';
+import { getDecompositionRuntimeService } from '../../../character-decomposition';
 import { V3CharacterBreakdown } from '../v3/V3CharacterBreakdown';
 import { V3TreeScreen } from '../v3/V3TreeScreen';
 

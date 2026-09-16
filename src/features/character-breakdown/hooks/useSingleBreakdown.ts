@@ -3,7 +3,7 @@ import { useCharBreakdown } from '../../../hooks/useCharBreakdown';
 import { getCharactersUsingComponent, getMultipleBreakdowns } from '../../../services/breakdownService';
 import { searchVocabulary, fetchVocabulary } from '../../../services/vocabularyService';
 import type { Flashcard } from '../../../data/flashcards';
-import { getDecompositionRuntimeService } from '../../character-decomposition/decompositionService';
+import { getDecompositionRuntimeService } from '../../character-decomposition';
 import { rankParentCharacters, partitionRankedParents, type UsedAsGroups } from '../utils/rankParentCharacters';
 import { searchDictionaryWordsContaining, type DictionaryContainingWord } from '../../../services/dictionaryService';
 import { mergeBreakdownWords } from '../utils/mergeBreakdownWords';

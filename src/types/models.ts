@@ -241,3 +241,37 @@ export interface CourseExampleManifest {
   totalCount: number;
   books: CourseExampleManifestBook[];
 }
+
+/**
+ * The RongWaps cast of characters. A domain identity shared by the speaker
+ * utilities and the portrait widget, so it lives in the types layer rather
+ * than inside the widget that renders it.
+ */
+export type RongWapsCharacter =
+  | 'youmei'
+  | 'zhongming'
+  | 'yiwen'
+  | 'guoan'
+  | 'yuanzhen'
+  | 'jiale'
+  | 'teacher'
+  | 'parent'
+  | 'doctor'
+  | 'cafeWorker'
+  | 'apartmentAgent'
+  | 'neighbor';
+
+/**
+ * A single in-context sentence pulled from the course that uses a word.
+ * Produced by `vocabularyService.fetchExamples` and shared by the dictionary
+ * and breakdown features.
+ */
+export interface WordExample {
+  chinese: string;
+  pinyin: string;
+  english: string;
+  sourceCardId: string;
+  sourceFront: string;
+  sourceBookId: number;
+  sourceLessonId: number;
+}

@@ -1,4 +1,4 @@
-import type { RongWapsCharacter } from '../lib/widgets/RongWapsCharacterPortrait';
+import type { RongWapsCharacter } from '../types/models';
 
 export interface CharacterProfileInfo {
   id: RongWapsCharacter;
