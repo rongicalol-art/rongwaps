@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import type { Flashcard } from '../../../../data/flashcards';
 import type { SAMPLE_BOOKS } from '../../../../data/books';
 import { numberToToneMarks } from '../../../../utils/pinyin';
-import { SectionEyebrow, Skeleton } from '../../../../lib/widgets';
+import { ReferenceRow, SectionEyebrow } from '../../../../lib/widgets';
 import { useCharBreakdownState } from '../../../../hooks/useCharBreakdown';
 import { CharacterGlyph } from '../breakdown/CharacterGlyph';
 import type { UsedAsGroups } from '../../utils/rankParentCharacters';
@@ -28,46 +28,9 @@ export function hasSupportingInfo(relatedWords: Flashcard[], usedAsGroups: UsedA
 }
 
 /**
- * One shared row anatomy for every entry on the reference sheet:
- * Chinese glyph on the left, pinyin over meaning on the right.
+ * "Part of" row: cached character-breakdown metadata, same shared row anatomy
+ * as word rows (`ReferenceRow` — see WIDGETS.md).
  */
-function ReferenceRow({ glyph, accentClassName, primary, secondary, loading = false, trailing, onClick, ariaLabel }: {
-  glyph: string;
-  accentClassName: string;
-  primary?: string;
-  secondary?: string;
-  loading?: boolean;
-  trailing?: ReactNode;
-  onClick: () => void;
-  ariaLabel: string;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-label={ariaLabel}
-      className="group flex min-h-[54px] w-full items-center gap-3 rounded-compact px-2 py-2 text-left transition-colors hover:bg-ui-hover focus-visible:z-10 focus-ring"
-    >
-      <span className={`min-w-[3.75rem] shrink-0 font-chinese text-2xl leading-none ${accentClassName}`}>{glyph}</span>
-      <span className="min-w-0 flex-1">
-        {loading ? (
-          <>
-            <Skeleton className="h-3 w-14 rounded-xs" />
-            <Skeleton className="mt-1.5 h-3 w-full max-w-[10rem] rounded-xs" />
-          </>
-        ) : (
-          <>
-            {primary && <span className="block truncate text-xs font-extrabold leading-tight text-brand-primary">{primary}</span>}
-            {secondary && <span className="block truncate text-sm font-bold leading-snug text-ui-ink">{secondary}</span>}
-          </>
-        )}
-      </span>
-      {trailing}
-    </button>
-  );
-}
-
-/** "Part of" row: cached character-breakdown metadata, same anatomy as word rows. */
 function PartOfRow({ character, accentClassName, onClick, trailing }: {
   character: string;
   accentClassName: string;

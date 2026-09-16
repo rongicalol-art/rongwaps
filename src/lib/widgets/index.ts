@@ -43,4 +43,5 @@ export * from './ContextualChineseText';
 export * from './ExpandableSearch';
 export * from './PosBadge';
 export * from './ProgressMetricCard';
+export * from './ReferenceRow';
 export * from './SmartSentence';

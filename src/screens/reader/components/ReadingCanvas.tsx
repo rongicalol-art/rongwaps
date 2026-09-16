@@ -1,18 +1,19 @@
-import { useMemo, useRef, useEffect } from 'react';
+import { useCallback, useMemo, useRef, useEffect } from 'react';
 import { motion } from 'motion/react';
 import type { DialogueAlignment, ReaderTextSize, ReadingRecord } from '../../../types/models';
 import { cn } from '../../../utils/cn';
 import { getWordChunks } from '../../../utils/rubyPinyin';
 import { getDialogueSpeakerColorMap, getSpeakerDotColor } from '../../../utils/speakerColors';
 import { getCharacterForSpeaker } from '../../../utils/speakerCharacters';
-import { RongWapsCharacterPortrait } from '../../../lib/widgets';
 import { audioService } from '../../../services/audioService';
 import { findMatchingCourseVocab } from '../../../services/vocabularyService';
 import { useReaderWordInteractions } from '../hooks/useReaderWordInteractions';
 import { useReaderDictionaryBatch } from '../hooks/useReaderDictionaryBatch';
 import { ReaderWordTooltip } from './ReaderWordTooltip';
+import { ReaderSpeakerAvatar } from './ReaderSpeakerAvatar';
 import { useAppStore } from '../../../store/useAppStore';
 import { splitChunksIntoSentences } from '../../../utils/dialogueSync';
+import { getDialogueTextClasses, getRubyPinyinClasses } from '../utils/readerTextStyles';
 
 interface ReadingCanvasProps {
   reading: ReadingRecord;
@@ -26,7 +27,6 @@ interface ReadingCanvasProps {
   currentTime: number;
   onPlayLine: (index: number) => void;
   onPlayRange?: (startSec: number, endSec: number) => void;
-  onPlayFromTime: (startSec: number, endSec?: number) => void;
 }
 
 
@@ -103,6 +103,18 @@ export function ReadingCanvas({
   });
 
   const lineRefs = useRef<Map<number, HTMLDivElement>>(new Map());
+
+  /** Play an aligned fragment when the pack provides timings, else the whole line. */
+  const playFragment = useCallback(
+    (start: number | undefined, end: number | undefined, lineIndex: number) => {
+      if (typeof start === 'number' && typeof end === 'number' && onPlayRange) {
+        onPlayRange(start, end);
+      } else {
+        onPlayLine(lineIndex);
+      }
+    },
+    [onPlayRange, onPlayLine],
+  );
 
   // Auto-scroll active line into view when activeLineIndex changes
   useEffect(() => {
@@ -202,17 +214,7 @@ export function ReadingCanvas({
                   <div
                     className={cn(
                       'font-chinese font-bold text-ui-ink-strong [line-break:strict]',
-                      showPinyin
-                        ? textSize === 'extra-large'
-                          ? 'text-[28px] sm:text-[32px] leading-[2.6] sm:leading-[2.8]'
-                          : textSize === 'large'
-                            ? 'text-[24px] sm:text-[27px] leading-[2.4] sm:leading-[2.6]'
-                            : 'text-[21px] sm:text-[24px] leading-[2.3] sm:leading-[2.5]'
-                        : textSize === 'extra-large'
-                          ? 'text-[28px] sm:text-[32px] leading-[1.9] sm:leading-[2.0] tracking-normal'
-                          : textSize === 'large'
-                            ? 'text-[24px] sm:text-[27px] leading-[1.8] sm:leading-[1.9] tracking-normal'
-                            : 'text-[21px] sm:text-[24px] leading-[1.7] sm:leading-[1.8] tracking-normal',
+                      getDialogueTextClasses(textSize, showPinyin),
                     )}
                   >
                     {sentences.map((sentence) => (
@@ -281,31 +283,12 @@ export function ReadingCanvas({
             >
               {/* Speaker Avatar (Left side, only if not right-aligned) */}
               {!isRightAligned && (
-                <div className="shrink-0 select-none">
-                  {speakerChar ? (
-                    <div
-                      className="h-9 w-9 sm:h-10 sm:w-10 overflow-hidden rounded-full ring-2 ring-ui-border/50 shadow-xs"
-                      title={paragraph.speaker}
-                    >
-                      <RongWapsCharacterPortrait
-                        character={speakerChar}
-                        label={paragraph.speaker || ''}
-                        className="h-full w-full"
-                      />
-                    </div>
-                  ) : (
-                    <div
-                      className={cn(
-                        'flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full font-chinese font-black text-xs text-white shadow-xs',
-                        speakerDotColor,
-                      )}
-                      aria-hidden="true"
-                      title={paragraph.speaker}
-                    >
-                      {avatarInitial}
-                    </div>
-                  )}
-                </div>
+                <ReaderSpeakerAvatar
+                  speaker={paragraph.speaker}
+                  character={speakerChar}
+                  initial={avatarInitial}
+                  dotColor={speakerDotColor}
+                />
               )}
 
               {/* Message Column */}
@@ -361,17 +344,7 @@ export function ReadingCanvas({
                   <div
                     className={cn(
                       'font-chinese font-bold text-ui-ink-strong [line-break:strict]',
-                      showPinyin
-                        ? textSize === 'extra-large'
-                          ? 'text-[28px] sm:text-[32px] leading-[2.6] sm:leading-[2.8]'
-                          : textSize === 'large'
-                            ? 'text-[24px] sm:text-[27px] leading-[2.4] sm:leading-[2.6]'
-                            : 'text-[21px] sm:text-[24px] leading-[2.3] sm:leading-[2.5]'
-                        : textSize === 'extra-large'
-                          ? 'text-[28px] sm:text-[32px] leading-[1.9] sm:leading-[2.0] tracking-normal'
-                          : textSize === 'large'
-                            ? 'text-[24px] sm:text-[27px] leading-[1.8] sm:leading-[1.9] tracking-normal'
-                            : 'text-[21px] sm:text-[24px] leading-[1.7] sm:leading-[1.8] tracking-normal',
+                      getDialogueTextClasses(textSize, showPinyin),
                     )}
                   >
                     {sentences.map((sentence) => {
@@ -383,29 +356,13 @@ export function ReadingCanvas({
                           title="Tap to play sentence"
                           onClick={(e) => {
                             e.stopPropagation();
-                            if (
-                              typeof sentence.start === 'number' &&
-                              typeof sentence.end === 'number' &&
-                              onPlayRange
-                            ) {
-                              onPlayRange(sentence.start, sentence.end);
-                            } else {
-                              onPlayLine(index);
-                            }
+                            playFragment(sentence.start, sentence.end, index);
                           }}
                           onKeyDown={(e) => {
                             if (e.key === 'Enter') {
                               e.preventDefault();
                               e.stopPropagation();
-                              if (
-                                typeof sentence.start === 'number' &&
-                                typeof sentence.end === 'number' &&
-                                onPlayRange
-                              ) {
-                                onPlayRange(sentence.start, sentence.end);
-                              } else {
-                                onPlayLine(index);
-                              }
+                              playFragment(sentence.start, sentence.end, index);
                             }
                           }}
                           className="group/sentence relative inline rounded cursor-pointer outline-none box-decoration-clone text-ui-ink-strong"
@@ -467,15 +424,7 @@ export function ReadingCanvas({
                                     const wordStart = typeof chunk.start === 'number'
                                       ? chunk.start
                                       : sentence.start;
-                                    if (
-                                      typeof wordStart === 'number' &&
-                                      typeof sentence.end === 'number' &&
-                                      onPlayRange
-                                    ) {
-                                      onPlayRange(wordStart, sentence.end);
-                                    } else {
-                                      onPlayLine(index);
-                                    }
+                                    playFragment(wordStart, sentence.end, index);
                                   }
                                 }}
                                 className={cn(
@@ -507,17 +456,7 @@ export function ReadingCanvas({
                                         <rt
                                           className={cn(
                                             'font-sans font-semibold text-brand-primary select-none leading-none pb-0.5 [ruby-position:over]',
-                                            isLongSyllable
-                                              ? textSize === 'extra-large'
-                                                ? 'text-[11.5px] sm:text-[12.5px] tracking-tight'
-                                                : textSize === 'large'
-                                                  ? 'text-[10px] sm:text-[11px] tracking-tight'
-                                                  : 'text-[9.5px] sm:text-[10.5px] tracking-tight'
-                                              : textSize === 'extra-large'
-                                                ? 'text-[12px] sm:text-[13px]'
-                                                : textSize === 'large'
-                                                  ? 'text-[10.5px] sm:text-[11.5px]'
-                                                  : 'text-[10px] sm:text-[11px]',
+                                            getRubyPinyinClasses(textSize, isLongSyllable),
                                           )}
                                         >
                                           {item.pinyin}
@@ -560,31 +499,12 @@ export function ReadingCanvas({
 
               {/* Speaker Avatar (Right side, only if right-aligned) */}
               {isRightAligned && (
-                <div className="shrink-0 select-none">
-                  {speakerChar ? (
-                    <div
-                      className="h-9 w-9 sm:h-10 sm:w-10 overflow-hidden rounded-full ring-2 ring-ui-border/50 shadow-xs"
-                      title={paragraph.speaker}
-                    >
-                      <RongWapsCharacterPortrait
-                        character={speakerChar}
-                        label={paragraph.speaker || ''}
-                        className="h-full w-full"
-                      />
-                    </div>
-                  ) : (
-                    <div
-                      className={cn(
-                        'flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full font-chinese font-black text-xs text-white shadow-xs',
-                        speakerDotColor,
-                      )}
-                      aria-hidden="true"
-                      title={paragraph.speaker}
-                    >
-                      {avatarInitial}
-                    </div>
-                  )}
-                </div>
+                <ReaderSpeakerAvatar
+                  speaker={paragraph.speaker}
+                  character={speakerChar}
+                  initial={avatarInitial}
+                  dotColor={speakerDotColor}
+                />
               )}
             </motion.div>
           );
