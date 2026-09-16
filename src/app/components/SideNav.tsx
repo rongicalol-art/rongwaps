@@ -13,7 +13,9 @@ export interface SideNavProps {
   showCollapseButton?: boolean;
 }
 
-const TABS: ReadonlyArray<{
+/** Top-level workspace names. One owner: the nav renders them, and the shell
+ *  titles the document with the same label, so a tab never has two names. */
+export const NAV_TABS: ReadonlyArray<{
   id: SideNavProps['activeTab'];
   label: string;
   icon: PlayfulNavIconName;
@@ -23,6 +25,10 @@ const TABS: ReadonlyArray<{
   { id: 'library', label: 'Library', icon: 'library' },
   { id: 'profile', label: 'Profile', icon: 'profile' },
 ] as const;
+
+export function navTabLabel(tab: SideNavProps['activeTab']): string {
+  return NAV_TABS.find((entry) => entry.id === tab)?.label ?? '';
+}
 
 const PRACTICE_ACTIVITIES = new Set([
   'flashcards',
@@ -51,6 +57,7 @@ export const SideNav = memo(function SideNav({
     // transparent so the white card shows through. Active items use a soft
     // canvas chip so they stay visible on the white bar.
     <nav
+      aria-label="Main navigation"
       className={`z-50 flex h-full shrink-0 flex-col bg-transparent pb-4 transition-[width,padding] duration-200 ${
         isCollapsed
           ? 'w-[76px] items-center px-2.5 pt-6'
@@ -97,7 +104,7 @@ export const SideNav = memo(function SideNav({
       </div>
       
       <div className={`flex w-full flex-col ${isCollapsed ? 'items-center gap-2.5' : 'gap-2'}`}>
-        {TABS.map((tab) => {
+        {NAV_TABS.map((tab) => {
           const isActuallyActive = activeTab === tab.id && !isPracticeActivityActive;
           
           return (
