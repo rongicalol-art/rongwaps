@@ -1,18 +1,22 @@
-import React from 'react';
+import { memo } from 'react';
 import { motion } from 'motion/react';
 import { DBDictionaryEntry } from '../../../types/database';
 import { UserFlashcard } from '../../../types/models';
 import { AppIcon } from '../../../lib/widgets';
 
+type LibraryCardItem = DBDictionaryEntry | UserFlashcard;
+
 interface SpellCardProps {
-  item: DBDictionaryEntry | UserFlashcard;
+  item: LibraryCardItem;
   activeTab: string;
-  onAction: (e: React.MouseEvent) => void;
-  onClick: () => void;
+  /** Stable, item-based handler — see the `memo` comparator below. */
+  onRemove: (item: LibraryCardItem) => void;
+  /** Stable, item-based handler — see the `memo` comparator below. */
+  onOpen: (item: LibraryCardItem) => void;
   index: number;
 }
 
-export const SpellCard: React.FC<SpellCardProps> = ({ item, activeTab, onAction, onClick, index }) => {
+function SpellCardBase({ item, activeTab, onRemove, onOpen, index }: SpellCardProps) {
   const isStarred = activeTab === 'starred';
   const simplified = item.simplified;
   const traditional = item.traditional || simplified;
@@ -47,14 +51,14 @@ export const SpellCard: React.FC<SpellCardProps> = ({ item, activeTab, onAction,
       <article className="relative flex h-full flex-col overflow-hidden rounded-feature bg-ui-surface border-b-[length:var(--depth-md)] border-ui-border transition-[transform,background-color,border-color] duration-200 hover:bg-ui-hover active:translate-y-[length:var(--depth-md)] active:border-b-0">
         <button
           type="button"
-          onClick={onClick}
+          onClick={() => onOpen(item)}
           aria-label={`Open ${traditional}`}
           className="absolute inset-0 z-0 h-full w-full cursor-pointer rounded-feature outline-none focus-ring"
         />
 
         <button
           type="button"
-          onClick={(e) => { e.stopPropagation(); onAction(e); }}
+          onClick={(e) => { e.stopPropagation(); onRemove(item); }}
           aria-label={isStarred ? `Remove ${traditional} from saved words` : `Delete ${traditional}`}
           className={`absolute top-2 right-2 w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all active:scale-90 z-10 ${
             isStarred
@@ -88,4 +92,17 @@ export const SpellCard: React.FC<SpellCardProps> = ({ item, activeTab, onAction,
       </article>
     </motion.div>
   );
-};
+}
+
+/**
+ * `index` seeds the entrance stagger delay only — `motion` runs it once at
+ * mount, so a shifted index (cards reflow while the folder search narrows the
+ * list) must not re-render every surviving card. Compared by hand because the
+ * default shallow compare would include it.
+ */
+export const SpellCard = memo(SpellCardBase, (prev, next) => (
+  prev.item === next.item
+  && prev.activeTab === next.activeTab
+  && prev.onRemove === next.onRemove
+  && prev.onOpen === next.onOpen
+));

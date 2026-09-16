@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { AppIcon } from '../../../lib/widgets';
 import { useAuth } from '../../../hooks/useAuth';
 import { useAppStore } from '../../../store/useAppStore';
@@ -213,9 +213,12 @@ export function useLibrary() {
 
   const [deleteTargetId, setDeleteTargetId] = useState<string | null>(null);
 
-  const handleDeleteCustomCard = async (cardId: string) => {
+  // Stable identity: the library grid memoizes its cards on this handler (and
+  // the screen derives its own item-based callback from it), so it must not be
+  // recreated on every hook render — which happens on every search keystroke.
+  const handleDeleteCustomCard = useCallback(async (cardId: string) => {
     setDeleteTargetId(cardId);
-  };
+  }, []);
 
   const confirmDelete = async () => {
     if (!deleteTargetId) return;

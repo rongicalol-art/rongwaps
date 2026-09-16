@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import type { DictionaryListEntry } from '../../../types/models';
 import { DictionaryCard } from './DictionaryCard';
 import type { SearchMode } from './SearchModeDock';
@@ -24,6 +25,11 @@ export function DictionaryResults({
   onOpenWord,
   onToggleFavorite,
 }: DictionaryResultsProps) {
+  // A Set (not `favorites.includes`) because this list renders up to 50 rows and
+  // the predicate is evaluated once per row on every parent render — a linear
+  // scan per row made the per-keystroke cost grow with the saved-word count.
+  const favoriteWords = useMemo(() => new Set(favorites), [favorites]);
+
   return (
     <div className="w-full">
       {error && (
@@ -66,9 +72,9 @@ export function DictionaryResults({
                   <DictionaryCard
                     key={`${mode}-${entry.id}-${entry.traditional}`}
                     entry={entry}
-                    isFavorite={favorites.includes(entry.traditional)}
-                    onToggleFavorite={() => onToggleFavorite(entry.traditional)}
-                    onClick={() => onOpenWord(entry.traditional)}
+                    isFavorite={favoriteWords.has(entry.traditional)}
+                    onToggleFavorite={onToggleFavorite}
+                    onOpen={onOpenWord}
                   />
                 ))}
           </div>
