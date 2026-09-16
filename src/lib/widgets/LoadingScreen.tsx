@@ -1,6 +1,11 @@
 import React from 'react';
 import { LottiePlayer } from './LottiePlayer';
-import sandyLoadingData from '../../assets/animations/sandy-loading.json';
+
+// The branded loader animation is 108 KB of JSON; loading it on demand keeps it
+// out of the entry chunk (every route pays for this widget's chunk). Module-level
+// loader keeps a stable identity for LottiePlayer.
+const loadSandyLoadingAnimation = () =>
+  import('../../assets/animations/sandy-loading.json').then((m) => m.default);
 
 interface LoadingScreenProps {
   message?: string;
@@ -32,7 +37,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
   return (
     <div className={`${containerClass} ${inline ? '' : `${toneClass} `}flex flex-col justify-center items-center overflow-hidden`}>
       <LottiePlayer 
-        animationData={sandyLoadingData} 
+        loadAnimationData={loadSandyLoadingAnimation} 
         width={200} 
         height={200} 
         loop={true} 
