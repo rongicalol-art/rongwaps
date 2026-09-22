@@ -31,7 +31,7 @@ export const ReviewHubCard = memo(function ReviewHubCard({
         <h2 className="mt-4 text-lg font-black text-ui-ink-strong sm:text-xl">
           No words to review yet
         </h2>
-        <p className="mt-1.5 max-w-md text-sm font-bold text-ui-muted">
+        <p className="mt-1.5 max-w-md text-sm font-bold text-ui-muted-strong">
           Complete lessons on the Course Path to start reviewing.
         </p>
         {onNavigateToPath && (

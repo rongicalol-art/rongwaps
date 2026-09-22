@@ -3,6 +3,7 @@ import { persist } from 'zustand/middleware';
 
 export type PracticePreset = 'comfortable' | 'balanced' | 'sprint' | 'custom';
 export type MistakeRepeat = 'off' | 'soon' | 'end';
+export type CharacterFont = 'huninn' | 'kai';
 export type QuizQuestionType = 'hanzi' | 'pinyin' | 'meaning';
 export type QuizChoiceType = 'meaning' | 'hanzi' | 'pinyin';
 export type ListeningChoiceType = 'meaning' | 'hanzi' | 'pinyin';
@@ -25,6 +26,8 @@ export interface PracticePreferences {
   speakDefinition: boolean;
   showPinyin: boolean;
   showTranslation: boolean;
+  hideExamplePinyin: boolean;
+  characterFont: CharacterFont;
   quizQuestionType: QuizQuestionType;
   quizChoiceType: QuizChoiceType;
   listeningChoiceType: ListeningChoiceType;
@@ -81,6 +84,8 @@ export const DEFAULT_PREFERENCES: PracticePreferences = {
   speakDefinition: true,
   showPinyin: true,
   showTranslation: true,
+  hideExamplePinyin: true,
+  characterFont: 'huninn',
   quizQuestionType: 'hanzi',
   quizChoiceType: 'meaning',
   listeningChoiceType: 'meaning',
@@ -111,6 +116,8 @@ const persistedKeys: Array<keyof PracticePreferences> = [
   'speakDefinition',
   'showPinyin',
   'showTranslation',
+  'hideExamplePinyin',
+  'characterFont',
   'quizQuestionType',
   'quizChoiceType',
   'listeningChoiceType',
@@ -131,7 +138,7 @@ export const usePracticePreferencesStore = create<PracticePreferencesState>()(
     }),
     {
       name: 'rongwaps-practice-preferences',
-      version: 5,
+      version: 9,
       migrate: (persisted) => {
         const preferences = (
           typeof persisted === 'object' && persisted !== null ? { ...persisted } : {}
@@ -147,6 +154,17 @@ export const usePracticePreferencesStore = create<PracticePreferencesState>()(
         }
         // v5: the rhythm got snappier — re-derive stored timings from the new
         // faster ranges so existing sessions move on quickly after a correct answer.
+        // v6: example-sentence pinyin became its own preference, hidden by default;
+        // stored sessions have no value, so the DEFAULT_PREFERENCES spread below
+        // hands them the new hidden default.
+        // v7: character font became a preference (sans by default, kai optional);
+        // stored sessions adopt the harmonized sans default the same way.
+        // v8: 'huninn' joined the character-font choices (rounded Traditional
+        // face); stored 'sans'/'kai' values stay valid, so no extra migration.
+        // v9: sans removed completely — fallback any stored 'sans' value to 'huninn'.
+        if ((preferences.characterFont as string) === 'sans') {
+          preferences.characterFont = 'huninn';
+        }
         const pace = typeof preferences.pace === 'number' ? preferences.pace : DEFAULT_PREFERENCES.pace;
         return {
           ...DEFAULT_PREFERENCES,

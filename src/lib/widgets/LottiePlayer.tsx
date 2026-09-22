@@ -88,8 +88,10 @@ export const LottiePlayer: React.FC<LottiePlayerProps> = ({
     return (
       <div 
         style={{ width, height, ...style }} 
-        className="animate-pulse bg-ui-border rounded-feature flex items-center justify-center"
-      />
+        className="flex items-center justify-center"
+      >
+        <div className="h-12 w-12 rounded-full border-3 border-brand-primary/20 border-t-brand-primary animate-spin" />
+      </div>
     );
   }
 
@@ -97,16 +99,22 @@ export const LottiePlayer: React.FC<LottiePlayerProps> = ({
     return (
       <div 
         style={{ width, height, ...style }} 
-        className="bg-ui-canvas border-2 border-ui-border rounded-feature flex items-center justify-center p-4 text-center"
+        className="flex items-center justify-center p-4 text-center"
       >
-        <span className="text-ui-muted font-bold text-sm">Failed to load animation</span>
+        <span className="text-ui-muted-strong font-bold text-sm">Failed to load animation</span>
       </div>
     );
   }
 
   return (
     <div style={{ width, height, ...style }} className="flex justify-center items-center">
-      <Suspense fallback={<div className="h-full w-full animate-pulse rounded-feature bg-ui-border" />}>
+      <Suspense
+        fallback={
+          <div className="flex h-full w-full items-center justify-center">
+            <div className="h-12 w-12 rounded-full border-3 border-brand-primary/20 border-t-brand-primary animate-spin" />
+          </div>
+        }
+      >
         <Lottie animationData={data} {...props} style={{ width: '100%', height: '100%' }} />
       </Suspense>
     </div>

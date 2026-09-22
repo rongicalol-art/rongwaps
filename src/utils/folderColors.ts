@@ -13,8 +13,8 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
   {
     id: 'blue',
     name: 'Sky Blue',
-    front: '#1CB0F6',
-    back: '#1899D6',
+    front: '#0284C7',
+    back: '#0369A1',
     accent: 'text-brand-primary',
     accentBg: 'bg-brand-primary',
     accentBorder: 'border-brand-primary-edge',
@@ -43,8 +43,8 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
   {
     id: 'orange',
     name: 'Tangerine',
-    front: '#FF9600',
-    back: '#E58700',
+    front: '#EA580C',
+    back: '#C2410C',
     accent: 'text-brand-secondary',
     accentBg: 'bg-brand-secondary',
     accentBorder: 'border-brand-secondary-edge',

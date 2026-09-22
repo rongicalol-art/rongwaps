@@ -1,9 +1,11 @@
 import React from 'react';
 import type { ReadingRecord } from '../../../types/models';
+import type { ReaderGrammarPoint, ReaderStudyTargetWord } from '../utils/readerStudyTargets';
 import { useReaderStudyData } from '../hooks/useReaderStudyData';
 import { ReaderCompanionSpeakersCard } from './ReaderCompanionSpeakersCard';
 import { ReaderCompanionGrammarCard } from './ReaderCompanionGrammarCard';
 import { ReaderCompanionVocabCard } from './ReaderCompanionVocabCard';
+import type { ReaderLocateMode } from '../utils/readerLocate';
 
 export interface ReaderStudyPanelProps {
   reading: ReadingRecord;
@@ -11,6 +13,13 @@ export interface ReaderStudyPanelProps {
   onClose?: () => void;
   onOpenWord?: (word: string) => void;
   onOpenGrammarPart?: (partId: string, pageId?: string) => void;
+  /** Highlights (or clears) a vocabulary word in the reading text. */
+  onLocateWord?: (word: ReaderStudyTargetWord | null) => void;
+  /** Highlights (or clears) a grammar point's sentence in the reading text. */
+  onLocateGrammarPoint?: (point: ReaderGrammarPoint | null) => void;
+  locateMode?: ReaderLocateMode;
+  locatedWordId?: string | null;
+  locatedGrammarPointId?: string | null;
   showCloseButton?: boolean;
 }
 
@@ -20,10 +29,22 @@ export const ReaderStudyPanel = React.memo(function ReaderStudyPanel({
   onClose,
   onOpenWord,
   onOpenGrammarPart,
+  onLocateWord,
+  onLocateGrammarPoint,
+  locateMode = 'hover',
+  locatedWordId = null,
+  locatedGrammarPointId = null,
   showCloseButton = true,
 }: ReaderStudyPanelProps) {
-  const { allLessonWords, wordsInDialogue, grammarPoints, isLoading, vocabError, refetch } =
-    useReaderStudyData({ reading });
+  const {
+    grammarPoints,
+    targetWords,
+    lessonWords,
+    usingLessonFallback,
+    isLoading,
+    vocabError,
+    refetch,
+  } = useReaderStudyData({ reading });
 
   return (
     <div className="flex flex-col gap-3 min-h-0">
@@ -40,17 +61,24 @@ export const ReaderStudyPanel = React.memo(function ReaderStudyPanel({
         grammarPoints={grammarPoints}
         dialogueNumber={reading.dialogueNumber}
         onOpenGrammarPart={onOpenGrammarPart}
+        onLocateGrammarPoint={onLocateGrammarPoint}
+        locateMode={locateMode}
+        locatedGrammarPointId={locatedGrammarPointId}
       />
 
       {/* Bento Card 3: Target Vocabulary */}
       <ReaderCompanionVocabCard
-        allLessonWords={allLessonWords}
-        wordsInDialogue={wordsInDialogue}
+        targetWords={targetWords}
+        lessonWords={lessonWords}
+        usingLessonFallback={usingLessonFallback}
         characterPreference={characterPreference}
         isLoading={isLoading}
         error={vocabError}
         onRetry={refetch}
         onOpenWord={onOpenWord}
+        onLocateWord={onLocateWord}
+        locateMode={locateMode}
+        locatedWordId={locatedWordId}
       />
     </div>
   );

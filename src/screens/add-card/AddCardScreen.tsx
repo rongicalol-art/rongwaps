@@ -32,7 +32,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
     <div key="front" className={`flex-1 flex flex-col items-center justify-center px-4 w-full h-full pb-8 ${direction === 'none' ? '' : direction === 'fwd' ? 'anim-fwd' : 'anim-back'}`}>
       <div className="mb-4 text-center sm:text-left w-full max-w-[320px] sm:max-w-[400px] md:max-w-[460px]">
         <h2 className="text-2xl sm:text-3xl font-extrabold text-ui-ink tracking-tight">Type character</h2>
-        <p className="text-ui-muted font-bold mt-2 text-lg">Front face of your card</p>
+        <p className="text-ui-muted-strong font-bold mt-2 text-lg">Front face of your card</p>
       </div>
 
       <div className="w-full max-w-[320px] sm:max-w-[400px] md:max-w-[460px] relative pointer-events-auto flex flex-col justify-center">
@@ -95,7 +95,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
                         <span className="text-[12px] sm:text-[14px] font-bold text-ui-muted group-hover:text-brand-primary leading-none mb-1 mt-1 transition-colors">
                           {s.pinyin_accented || s.simplified}
                         </span>
-                        <span className="text-[11px] sm:text-[13px] text-ui-muted truncate font-medium leading-none">
+                        <span className="text-[11px] sm:text-[13px] text-ui-muted-strong truncate font-bold leading-none">
                           {s.definitions && Array.isArray(s.definitions) ? s.definitions[0] : ''}
                         </span>
                       </div>
@@ -114,7 +114,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
     <div key="back" className={`flex-1 flex flex-col items-center justify-center px-4 w-full h-full pb-8 ${direction === 'none' ? '' : direction === 'fwd' ? 'anim-fwd' : 'anim-back'}`}>
       <div className="mb-4 text-center sm:text-left w-full max-w-[320px] sm:max-w-[400px] md:max-w-[460px]">
         <h2 className="text-2xl sm:text-3xl font-extrabold text-ui-ink tracking-tight">Type meaning</h2>
-        <p className="text-ui-muted font-bold mt-2 text-lg">Back face of your card</p>
+        <p className="text-ui-muted-strong font-bold mt-2 text-lg">Back face of your card</p>
       </div>
 
       <div className="w-full max-w-[320px] sm:max-w-[400px] md:max-w-[460px] relative pointer-events-auto flex flex-col justify-center">
@@ -211,7 +211,7 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
               disabled
               size="md"
               label="Card settings coming soon"
-              icon={<AppIcon name="settings" size={20} />}
+              icon={<AppIcon name="settings" size={20} className="opacity-40" />}
             />
           )}
         />

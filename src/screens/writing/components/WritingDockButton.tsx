@@ -61,8 +61,8 @@ export function WritingDockButton({
       title={title ?? label}
       aria-label={ariaLabel ?? label}
       className={cn(
-        'group relative inline-flex h-10 items-center justify-center rounded-control outline-none select-none transition-colors duration-150 focus-ring',
-        layout === 'grow' ? 'min-w-0 flex-1 px-2' : 'w-10',
+        'group relative inline-flex h-11 items-center justify-center rounded-control outline-none select-none transition-colors duration-150 focus-ring',
+        layout === 'grow' ? 'min-w-0 flex-1 px-2' : 'w-11',
         DOCK_BUTTON_TONES[tone],
         disabled && 'cursor-not-allowed',
         className,

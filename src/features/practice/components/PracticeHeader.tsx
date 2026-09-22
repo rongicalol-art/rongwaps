@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
 import {
   AppIcon,
   DropdownMenu,
@@ -11,7 +10,6 @@ import {
 import type { PracticeSettingsScreenProps } from './PracticeSettingsScreen';
 import { PracticeSettingsScreen } from './PracticeSettingsScreen';
 import type { PracticeHeaderActions } from '../../../types/models';
-import { cn } from '../../../utils/cn';
 import { useAppStore } from '../../../store/useAppStore';
 
 interface PracticeHeaderProps
@@ -38,7 +36,6 @@ export function PracticeHeader({
 }: PracticeHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const reduceMotion = useReducedMotion();
   const setActivityOverlayOpen = useAppStore((state) => state.setActivityOverlayOpen);
 
   useEffect(() => {
@@ -84,18 +81,12 @@ export function PracticeHeader({
                   <IconActionButton
                     {...triggerProps}
                     size="md"
-                    className={cn((isMenuOpen || isFlowActive) && 'text-brand-primary hover:text-brand-primary')}
                     label="Session controls"
                     title="Practice controls"
                     icon={(
                       <>
                         {isFlowActive && <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-feedback-success ring-2 ring-ui-surface animate-pulse" />}
-                        <motion.span
-                          animate={{ rotate: isMenuOpen ? 180 : 0 }}
-                          transition={reduceMotion ? { duration: 0 } : { duration: 0.15, ease: 'easeOut' }}
-                        >
-                          <AppIcon name="expand" size={20} />
-                        </motion.span>
+                        <AppIcon name="settings" size={20} />
                       </>
                     )}
                   />

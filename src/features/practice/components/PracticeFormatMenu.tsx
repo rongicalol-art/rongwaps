@@ -28,7 +28,7 @@ function formatLabel(type: QuizQuestionType | QuizChoiceType | ListeningChoiceTy
       };
     case 'pinyin':
       return {
-        icon: <span className="font-mono text-xs font-black leading-none text-brand-primary">pīn</span>,
+        icon: <span className="text-xs font-black leading-none text-brand-primary">pīn</span>,
         text: 'Pinyin',
       };
     case 'meaning':
@@ -172,7 +172,7 @@ export function PracticeFormatMenu({ mode, className = '' }: PracticeFormatMenuP
                     {
                       value: 'pinyin',
                       label: 'Pinyin',
-                      icon: <span className="font-mono text-xs font-black">pīn</span>,
+                      icon: <span className="text-xs font-black">pīn</span>,
                     },
                     {
                       value: 'meaning',
@@ -206,7 +206,7 @@ export function PracticeFormatMenu({ mode, className = '' }: PracticeFormatMenuP
                     {
                       value: 'pinyin',
                       label: 'Pinyin',
-                      icon: <span className="font-mono text-xs font-black">pīn</span>,
+                      icon: <span className="text-xs font-black">pīn</span>,
                     },
                   ]}
                 />
@@ -239,7 +239,7 @@ export function PracticeFormatMenu({ mode, className = '' }: PracticeFormatMenuP
                   ]}
                 />
               </div>
-              <div className="flex items-center gap-2.5 rounded-control bg-ui-canvas/60 px-3.5 py-2.5 text-xs font-bold text-ui-muted">
+              <div className="flex items-center gap-2.5 rounded-control bg-ui-canvas/60 px-3.5 py-2.5 text-xs font-bold text-ui-muted-strong">
                 <AppIcon name="keyboard" size={16} className="shrink-0 text-ui-muted-strong" />
                 <span>Answers are entered as pinyin with tone marks or numbers.</span>
               </div>
@@ -263,7 +263,7 @@ export function PracticeFormatMenu({ mode, className = '' }: PracticeFormatMenuP
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-extrabold text-ui-ink leading-tight">Spoken Mandarin</p>
-                    <p className="mt-0.5 text-xs font-medium text-ui-muted leading-tight">
+                    <p className="mt-0.5 text-xs font-bold text-ui-muted-strong leading-tight">
                       Listen to native speech and identify the corresponding answer
                     </p>
                   </div>
@@ -293,7 +293,7 @@ export function PracticeFormatMenu({ mode, className = '' }: PracticeFormatMenuP
                     {
                       value: 'pinyin',
                       label: 'Pinyin',
-                      icon: <span className="font-mono text-xs font-black">pīn</span>,
+                      icon: <span className="text-xs font-black">pīn</span>,
                     },
                   ]}
                 />

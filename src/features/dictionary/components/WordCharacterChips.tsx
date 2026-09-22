@@ -69,7 +69,7 @@ export function WordCharacterChips({
               <span className="shrink-0 font-chinese text-2xl font-bold leading-none text-ui-ink-strong">{char}</span>
               <span className="flex min-w-0 flex-1 flex-col text-left">
                 <span className="truncate text-xs font-extrabold leading-tight text-brand-primary">{info?.pinyin || '\u00A0'}</span>
-                <span className="line-clamp-2 text-xs font-bold leading-snug text-ui-muted">{info?.meaning || ''}</span>
+                <span className="line-clamp-2 text-xs font-bold leading-snug text-ui-muted-strong">{info?.meaning || ''}</span>
               </span>
             </button>
           );

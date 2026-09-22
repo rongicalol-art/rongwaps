@@ -126,7 +126,7 @@ export function FeedbackBottomBar({
             className={cn(
               'absolute bottom-0 left-0 right-0 z-40 transition-colors',
               // Mobile: edge-to-edge docked sheet
-              'border-t-2 pb-[env(safe-area-inset-bottom,0px)] shadow-[0_-4px_24px_rgba(0,0,0,0.06)]',
+              'border-t-2 pb-sheet-safe shadow-[0_-4px_24px_rgba(0,0,0,0.06)]',
               !isChecked
                 ? 'border-ui-border bg-ui-surface'
                 : isCorrect
@@ -138,7 +138,7 @@ export function FeedbackBottomBar({
           >
             <div
               className={cn(
-                'mx-auto flex w-full flex-col gap-4 px-4 pb-8 pt-5 md:gap-5',
+                'mx-auto flex w-full flex-col gap-3.5 px-4 pb-4 pt-4 sm:gap-4 sm:pb-6 sm:pt-5 md:gap-5',
                 // Desktop: floating rounded tactile island card
                 'md:pointer-events-auto md:max-w-xl md:rounded-feature md:border-2 md:border-b-[length:var(--depth-lg)] md:shadow-ambient-lg md:p-6',
                 !isChecked
@@ -182,7 +182,7 @@ export function FeedbackBottomBar({
                     variant="secondary"
                     size="lg"
                     fullWidth
-                    className="uppercase tracking-widest text-[15px] md:text-[17px]"
+                    className="uppercase tracking-widest text-base font-extrabold btn-touch-primary md:text-[17px]"
                     aria-label="Skip question"
                   >
                     Skip
@@ -193,7 +193,7 @@ export function FeedbackBottomBar({
                     variant={isCorrect ? 'success' : 'danger'}
                     size="lg"
                     fullWidth
-                    className="uppercase tracking-widest text-[15px] md:text-[17px]"
+                    className="uppercase tracking-widest text-base font-black btn-touch-primary md:text-[17px]"
                   >
                     {isCorrect ? 'Continue' : 'Got it'}
                   </ActionButton>
@@ -204,7 +204,7 @@ export function FeedbackBottomBar({
                     variant="success"
                     size="lg"
                     fullWidth
-                    className="uppercase tracking-widest text-[15px] md:text-[17px]"
+                    className="uppercase tracking-widest text-base font-black btn-touch-primary md:text-[17px]"
                   >
                     Check
                   </ActionButton>
@@ -217,10 +217,10 @@ export function FeedbackBottomBar({
                     icon={<AppIcon name="restart" size={24} />}
                     size="lg"
                     className={cn(
-                      'h-auto min-h-13 w-14 self-stretch shrink-0 rounded-feature border-2 border-b-[length:var(--depth-lg)] active:translate-y-[length:var(--depth-lg)] active:border-b-2 transition-[transform,filter,background-color,border-color]',
+                      'h-auto btn-touch-primary w-[52px] sm:w-14 self-stretch shrink-0 rounded-feature shadow-[0_var(--depth-lg)_0_var(--btn-edge)] active:translate-y-[length:var(--depth-lg)] active:shadow-none transition-[transform,filter,background-color,border-color,box-shadow]',
                       isCorrect
-                        ? 'border-feedback-success-edge bg-feedback-success-surface text-feedback-success-edge hover:bg-feedback-success-surface hover:text-feedback-success-edge hover:brightness-95 active:bg-feedback-success-surface active:text-feedback-success-edge active:brightness-90'
-                        : 'border-feedback-danger-edge bg-feedback-danger-surface text-feedback-danger-edge hover:bg-feedback-danger-surface hover:text-feedback-danger-edge hover:brightness-95 active:bg-feedback-danger-surface active:text-feedback-danger-edge active:brightness-90',
+                        ? '[--btn-edge:var(--color-feedback-success-edge)] border-2 border-feedback-success-edge bg-feedback-success-surface text-feedback-success-edge hover:brightness-95'
+                        : '[--btn-edge:var(--color-feedback-danger-edge)] border-2 border-feedback-danger-edge bg-feedback-danger-surface text-feedback-danger-edge hover:brightness-95',
                     )}
                   />
                 )}
@@ -231,10 +231,10 @@ export function FeedbackBottomBar({
                     icon={<AppIcon name="breakdown" size={24} />}
                     size="lg"
                     className={cn(
-                      'h-auto min-h-13 w-14 self-stretch shrink-0 rounded-feature border-2 border-b-[length:var(--depth-lg)] active:translate-y-[length:var(--depth-lg)] active:border-b-2 transition-[transform,filter,background-color,border-color]',
+                      'h-auto btn-touch-primary w-[52px] sm:w-14 self-stretch shrink-0 rounded-feature shadow-[0_var(--depth-lg)_0_var(--btn-edge)] active:translate-y-[length:var(--depth-lg)] active:shadow-none transition-[transform,filter,background-color,border-color,box-shadow]',
                       isCorrect
-                        ? 'border-feedback-success-edge bg-feedback-success-surface text-feedback-success-edge hover:bg-feedback-success-surface hover:text-feedback-success-edge hover:brightness-95 active:bg-feedback-success-surface active:text-feedback-success-edge active:brightness-90'
-                        : 'border-feedback-danger-edge bg-feedback-danger-surface text-feedback-danger-edge hover:bg-feedback-danger-surface hover:text-feedback-danger-edge hover:brightness-95 active:bg-feedback-danger-surface active:text-feedback-danger-edge active:brightness-90',
+                        ? '[--btn-edge:var(--color-feedback-success-edge)] border-2 border-feedback-success-edge bg-feedback-success-surface text-feedback-success-edge hover:brightness-95'
+                        : '[--btn-edge:var(--color-feedback-danger-edge)] border-2 border-feedback-danger-edge bg-feedback-danger-surface text-feedback-danger-edge hover:brightness-95',
                     )}
                   />
                 )}

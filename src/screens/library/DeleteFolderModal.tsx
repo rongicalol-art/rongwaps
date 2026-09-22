@@ -19,7 +19,7 @@ export function DeleteFolderModal({
       description={
         <>
           <p className="font-extrabold text-ui-ink">"{deleteFolderTarget.name}"</p>
-          <p className="mt-1 text-sm font-bold leading-relaxed text-ui-muted">
+          <p className="mt-1 text-sm font-bold leading-relaxed text-ui-muted-strong">
             This will remove this folder. Your flashcards inside will not be deleted but kept in custom cards.
           </p>
         </>

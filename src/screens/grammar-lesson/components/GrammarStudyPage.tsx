@@ -3,7 +3,6 @@ import type { RefObject } from 'react';
 import type { InteractiveGrammarPage } from '../../../types/models';
 import { getGrammarTeachingTokens } from '../../../utils/grammarTeachingTokens';
 import { cn } from '../../../utils/cn';
-import { GrammarConfusionSection } from './GrammarConfusionSection';
 import { GrammarExamplesSection } from './GrammarExamplesSection';
 
 import { GrammarFocusText } from './GrammarFocusText';
@@ -47,23 +46,7 @@ export function GrammarStudyPage({
               onOpenWord={onOpenWord}
             />
           </h1>
-          <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1">
-            {(page.bookPageAvailable ?? true) && (
-              <ActionButton
-                ref={bookPageButtonRef}
-                variant="quiet"
-                size="sm"
-                className="-ml-2 whitespace-nowrap text-ui-muted-strong hover:text-brand-primary"
-                onClick={onOpenBookPage}
-              >
-                <AppIcon name="dictionary" size={16} />
-                {page.printedPages.length === 1
-                  ? `View book page ${page.printedPages[0]}`
-                  : `View book pages ${page.printedPages[0]}–${page.printedPages.at(-1)}`}
-              </ActionButton>
-            )}
-          </div>
-          <p className="mt-4 max-w-2xl text-[15px] font-bold leading-7 text-ui-ink sm:text-[17px] sm:leading-8">
+          <p className="prose-chinese mt-7 max-w-2xl text-base font-bold leading-7 text-ui-ink sm:mt-8 sm:text-lg sm:leading-8">
             <GrammarFocusText
               text={page.explanation}
               terms={page.focusTerms}
@@ -71,6 +54,25 @@ export function GrammarStudyPage({
               characterPreference={characterPreference}
               onOpenWord={onOpenWord}
             />
+            {(page.bookPageAvailable ?? true) && (
+              <ActionButton
+                ref={bookPageButtonRef}
+                variant="quiet"
+                size="sm"
+                className="ml-1.5 -my-2 inline-flex min-h-0 items-center gap-1 whitespace-nowrap rounded-compact px-1.5 py-2 align-middle text-[13px] leading-none text-ui-muted-strong hover:text-brand-primary sm:text-sm"
+                onClick={onOpenBookPage}
+                aria-label={
+                  page.printedPages.length === 1
+                    ? `View book page ${page.printedPages[0]}`
+                    : `View book pages ${page.printedPages[0]}–${page.printedPages.at(-1)}`
+                }
+              >
+                <AppIcon name="dictionary" size={14} />
+                {page.printedPages.length === 1
+                  ? `Page ${page.printedPages[0]}`
+                  : `Pages ${page.printedPages[0]}–${page.printedPages.at(-1)}`}
+              </ActionButton>
+            )}
           </p>
         </header>
       )}
@@ -109,7 +111,7 @@ export function GrammarStudyPage({
                   </h2>
 
                   {section.explanation && (
-                    <p className="mt-2 text-[15px] font-medium leading-relaxed text-ui-ink sm:text-[16px]">
+                    <p className="prose-chinese mt-3.5 text-base font-bold leading-relaxed text-ui-muted-strong sm:mt-4 sm:text-lg">
                       <GrammarFocusText
                         text={section.explanation}
                         terms={page.focusTerms}
@@ -123,50 +125,36 @@ export function GrammarStudyPage({
 
                 {/* Pattern Table */}
                 {sectionPatternRows.length > 0 && (
-                  <div className="space-y-2">
-                    <span className="text-xs font-black uppercase tracking-wider text-ui-ink-strong">
-                      Sentence Pattern
-                    </span>
-                    <GrammarPatternSection
-                      page={page}
-                      patternColumns={section.patternColumns}
-                      patternColumnDetails={section.patternColumnDetails}
-                      patternRows={sectionPatternRows}
-                      characterPreference={characterPreference}
-                      showPinyin={showPinyin}
-                      showTranslation={showTranslation}
-                      onOpenWord={onOpenWord}
-                      hideHeader
-
-                    />
-                  </div>
+                  <GrammarPatternSection
+                    page={page}
+                    patternColumns={section.patternColumns}
+                    patternColumnDetails={section.patternColumnDetails}
+                    patternRows={sectionPatternRows}
+                    characterPreference={characterPreference}
+                    showPinyin={showPinyin}
+                    showTranslation={showTranslation}
+                    onOpenWord={onOpenWord}
+                  />
                 )}
 
                 {/* Examples */}
                 {sectionExamples.length > 0 && (
-                  <div className="space-y-2">
-                    <span className="text-xs font-black uppercase tracking-wider text-ui-ink-strong">
-                      Examples
-                    </span>
-                    <GrammarExamplesSection
-                      page={page}
-                      examples={sectionExamples}
-                      characterPreference={characterPreference}
-                      showPinyin={showPinyin}
-                      showTranslation={showTranslation}
-                      onOpenWord={onOpenWord}
-                      contextTokens={teachingTokens}
-                      hideHeader
-                      variant="clean"
-                    />
-                  </div>
+                  <GrammarExamplesSection
+                    page={page}
+                    examples={sectionExamples}
+                    characterPreference={characterPreference}
+                    showPinyin={showPinyin}
+                    showTranslation={showTranslation}
+                    onOpenWord={onOpenWord}
+                    contextTokens={teachingTokens}
+                  />
                 )}
               </section>
             );
           })}
         </div>
       ) : (
-        <>
+        <div className="mt-8 space-y-6">
           <GrammarPatternSection
             page={page}
             characterPreference={characterPreference}
@@ -181,19 +169,8 @@ export function GrammarStudyPage({
             showTranslation={showTranslation}
             onOpenWord={onOpenWord}
             contextTokens={teachingTokens}
-            variant="clean"
           />
-        </>
-      )}
-
-      {page.confusion && (
-        <GrammarConfusionSection
-          confusion={page.confusion}
-          characterPreference={characterPreference}
-          showPinyin={showPinyin}
-          showTranslation={showTranslation}
-          onOpenWord={onOpenWord}
-        />
+        </div>
       )}
 
     </article>

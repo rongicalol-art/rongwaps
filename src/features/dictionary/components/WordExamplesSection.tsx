@@ -1,6 +1,7 @@
 import { AppIcon, SectionEyebrow, SmartSentence, Skeleton } from '../../../lib/widgets';
 import { audioService } from '../../../services/audioService';
 import { useAppStore } from '../../../store/useAppStore';
+import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
 import { numberToToneMarks } from '../../../utils/pinyin';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import type { WordExample } from '../../../types/models';
@@ -22,6 +23,7 @@ export function WordExamplesSection({
   activeBook: CourseBook;
 }) {
   const characterPreference = useAppStore((state) => state.characterPreference);
+  const hideExamplePinyin = usePracticePreferencesStore((state) => state.hideExamplePinyin);
   const voice = characterPreference === 'traditional' ? 'zh-TW-HsiaoChenNeural' : 'zh-CN-XiaoxiaoNeural';
 
   if (!isLoading && examples.length === 0) return null;
@@ -33,7 +35,7 @@ export function WordExamplesSection({
         title="In Context"
         count={isLoading ? undefined : examples.length}
       />
-      <div className="flex w-full flex-col overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
+      <div className="flex w-full flex-col overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
         {isLoading ? (
           <div className="flex flex-col gap-4 p-5 sm:p-6">
             <Skeleton className="h-6 w-3/4" />
@@ -66,13 +68,13 @@ export function WordExamplesSection({
                     <AppIcon name="audio" size={17} />
                   </button>
                 </div>
-                {ex.pinyin && (
+                {!hideExamplePinyin && ex.pinyin && (
                   <p className={`text-base font-bold leading-snug ${activeBook.accent}`}>
                     {numberToToneMarks(ex.pinyin)}
                   </p>
                 )}
                 {ex.english && (
-                  <p className="text-sm font-semibold leading-relaxed text-ui-muted sm:text-base">
+                  <p className="ui-translation text-sm sm:text-base">
                     {ex.english}
                   </p>
                 )}

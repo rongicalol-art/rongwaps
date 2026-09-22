@@ -13,6 +13,9 @@ interface LessonItemProps {
   onToggle: (id: number) => void;
   accentColor: string;
   edgeHex: string;
+  /** Manifest id of the lesson's first grammar part; hides the panel when absent. */
+  grammarPartId?: string;
+  onOpenGrammar?: (partId: string) => void;
 }
 
 function LessonItemBase({
@@ -23,24 +26,26 @@ function LessonItemBase({
   onToggle,
   accentColor,
   edgeHex,
+  grammarPartId,
+  onOpenGrammar,
 }: LessonItemProps) {
   const isLocked = lesson.state === 'locked';
   const landscapeSrc = LESSON_LANDSCAPE_ART[lesson.id];
   const englishTitle = getEnglishLessonTitle(lesson.title);
-  let containerClasses = 'mb-3 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface hover:bg-ui-hover';
+  let containerClasses = 'mb-3 rounded-feature border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface';
   let innerDivider = null;
 
   if (isSelected) {
     if (!isPrevSelected && !isNextSelected) {
-      containerClasses = 'mb-3 rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface';
+      containerClasses = 'mb-3 rounded-feature border-2 border-ui-border border-b-[length:var(--depth-lg)] bg-ui-surface';
     } else if (!isPrevSelected && isNextSelected) {
-      containerClasses = 'mb-0 rounded-t-feature border-ui-border bg-ui-surface';
-      innerDivider = <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-ui-divider" />;
+      containerClasses = 'mb-0 rounded-t-feature border-2 border-ui-border border-b-0 bg-ui-surface';
+      innerDivider = <div className="absolute bottom-0 left-6 right-16 h-0.5" style={{ background: `linear-gradient(to right, ${edgeHex}, transparent)` }} />;
     } else if (isPrevSelected && isNextSelected) {
-      containerClasses = 'mb-0 border-ui-border bg-ui-surface';
-      innerDivider = <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-ui-divider" />;
+      containerClasses = 'mb-0 border-x-2 border-y-0 border-ui-border bg-ui-surface';
+      innerDivider = <div className="absolute bottom-0 left-6 right-16 h-0.5" style={{ background: `linear-gradient(to right, ${edgeHex}, transparent)` }} />;
     } else {
-      containerClasses = 'mb-3 rounded-b-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface';
+      containerClasses = 'mb-3 rounded-b-feature border-x-2 border-t-0 border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface';
     }
   }
 
@@ -53,7 +58,7 @@ function LessonItemBase({
         scale: { type: 'spring', stiffness: 500, damping: 28 },
       }}
       style={isSelected ? { borderColor: edgeHex } : undefined}
-      className={`relative flex min-h-20 min-w-0 items-center transition-colors duration-300 ${containerClasses}`}
+      className={`relative flex min-h-20 min-w-0 items-center overflow-hidden transition-colors duration-300 ${containerClasses}`}
     >
       {innerDivider}
       <button
@@ -61,7 +66,7 @@ function LessonItemBase({
         disabled={isLocked}
         onClick={() => onToggle(lesson.id)}
         aria-pressed={isSelected}
-        className="group flex min-w-0 flex-1 items-center gap-4 self-stretch rounded-[inherit] p-4 text-left outline-none focus-ring disabled:cursor-not-allowed"
+        className="group flex min-w-0 flex-1 items-center gap-4 self-stretch p-4 text-left outline-none transition-colors hover:bg-ui-hover focus-ring disabled:cursor-not-allowed"
       >
         <span className="relative flex h-14 w-14 shrink-0 items-center justify-center">
           <img
@@ -95,6 +100,25 @@ function LessonItemBase({
           </span>
         </span>
       </button>
+
+      {grammarPartId && onOpenGrammar && (
+        <button
+          type="button"
+          disabled={isLocked}
+          onClick={() => onOpenGrammar(grammarPartId)}
+          aria-label={`Open grammar for ${englishTitle}`}
+          style={isSelected ? { borderLeftColor: edgeHex } : undefined}
+          className={`flex w-16 shrink-0 items-center justify-center self-stretch border-l-2 border-ui-divider outline-none transition-[background-color,transform] duration-150 focus-ring focus-visible:ring-inset active:scale-95 disabled:active:scale-100 ${
+            isLocked
+              ? 'cursor-not-allowed text-ui-muted'
+              : isSelected
+                ? 'text-ui-ink hover:bg-brand-primary/12 active:bg-brand-primary/20'
+                : 'text-ui-muted hover:bg-brand-primary/12 active:bg-brand-primary/20'
+          }`}
+        >
+          <AppIcon name="grammar" size={26} />
+        </button>
+      )}
     </motion.div>
   );
 }

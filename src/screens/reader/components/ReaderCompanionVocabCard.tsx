@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import type { ReaderTargetWord } from '../hooks/useReaderStudyData';
-import { AppIcon, PosBadge } from '../../../lib/widgets';
+import type { ReaderStudyTargetWord } from '../utils/readerStudyTargets';
+import { AppIcon } from '../../../lib/widgets';
 import { audioService } from '../../../services/audioService';
-import { formatPosLabel } from '../../../utils/posLabels';
 import { cn } from '../../../utils/cn';
+import type { ReaderLocateMode } from '../utils/readerLocate';
+import { getPosTokenLabel, ReaderCompanionVocabRow } from './ReaderCompanionVocabRow';
 
 export interface ReaderCompanionVocabCardProps {
-  allLessonWords: ReaderTargetWord[];
-  wordsInDialogue: ReaderTargetWord[];
+  targetWords: ReaderStudyTargetWord[];
+  lessonWords: ReaderStudyTargetWord[];
+  usingLessonFallback: boolean;
   characterPreference: 'traditional' | 'simplified';
   isLoading: boolean;
   /** User-facing message when the vocabulary fetch failed, or null on success. */
@@ -15,38 +17,31 @@ export interface ReaderCompanionVocabCardProps {
   /** Re-runs the vocabulary fetch; the card offers it in the error state. */
   onRetry: () => void;
   onOpenWord?: (word: string) => void;
-}
-
-/** Formats part-of-speech into clean, concise token labels (e.g. Noun, Verb, Adjective). */
-function getPosTokenLabel(pos?: string | null): string | null {
-  if (!pos) return null;
-  const first = pos.split('/')[0].trim().toLowerCase();
-  if (first.startsWith('n') || first === 'name') return 'Noun';
-  if (first.startsWith('vs') && !first.startsWith('v-sep')) return 'Adjective';
-  if (first.startsWith('v')) return 'Verb';
-  if (first.startsWith('adv')) return 'Adverb';
-  if (first.startsWith('m')) return 'Measure';
-  if (first.startsWith('prep')) return 'Prep';
-  if (first.startsWith('conj')) return 'Conj';
-  if (first.startsWith('part') || first.startsWith('prc')) return 'Particle';
-  if (first.startsWith('pron')) return 'Pronoun';
-  if (first.startsWith('num')) return 'Number';
-  return formatPosLabel(pos) ?? pos;
+  /** Highlights (or clears) a located word in the reading text. */
+  onLocateWord?: (word: ReaderStudyTargetWord | null) => void;
+  locateMode?: ReaderLocateMode;
+  locatedWordId?: string | null;
 }
 
 export const ReaderCompanionVocabCard = React.memo(function ReaderCompanionVocabCard({
-  allLessonWords,
-  wordsInDialogue,
+  targetWords,
+  lessonWords,
+  usingLessonFallback,
   characterPreference,
   isLoading,
   error,
   onRetry,
   onOpenWord,
+  onLocateWord,
+  locateMode = 'hover',
+  locatedWordId = null,
 }: ReaderCompanionVocabCardProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
-  // Directly show dialogue words (falls back to lesson words if no dialogue words exist, e.g. solo narrative)
-  const displayedWords = wordsInDialogue.length > 0 ? wordsInDialogue : allLessonWords;
+  // Prefer the reading's own course part; fall back to the lesson list (labelled
+  // in the card) only when the part has no words at all.
+  const displayedWords = targetWords.length > 0 ? targetWords : lessonWords;
+  const inTextCount = displayedWords.filter((word) => word.inText).length;
 
   const handleSpeak = (text: string, audioFile?: string) => {
     const voice =
@@ -67,8 +62,11 @@ export const ReaderCompanionVocabCard = React.memo(function ReaderCompanionVocab
             Vocabulary
           </h3>
           {!error && (
-            <span className="font-sans text-[10px] font-black px-1.5 py-0.5 rounded-full bg-ui-surface-soft text-ui-muted-strong">
-              {displayedWords.length}
+            <span
+              className="font-sans text-[10px] font-black px-1.5 py-0.5 rounded-full bg-ui-surface-soft text-ui-muted-strong"
+              title="Used in this reading"
+            >
+              {inTextCount}
             </span>
           )}
         </div>
@@ -90,6 +88,14 @@ export const ReaderCompanionVocabCard = React.memo(function ReaderCompanionVocab
 
       {!isCollapsed && (
         <div className="flex flex-col gap-1 pt-0.5">
+          {/* Only warn when the part list is missing: the fallback words are
+              not this reading's targets, and the dimming cannot say that. */}
+          {!error && !isLoading && usingLessonFallback && displayedWords.length > 0 && (
+            <p className="px-2.5 font-sans text-[11px] font-bold leading-snug text-ui-muted-strong">
+              This dialogue's word list is missing — showing the lesson list.
+            </p>
+          )}
+
           {/* Borderless "In words" style list (clean rows directly on card surface) */}
           {isLoading ? (
             <div className="py-4 text-center font-sans text-xs font-bold text-ui-muted">
@@ -100,7 +106,7 @@ export const ReaderCompanionVocabCard = React.memo(function ReaderCompanionVocab
               role="alert"
               className="flex flex-col items-center gap-2 py-3 px-2 text-center"
             >
-              <p className="font-sans text-xs font-bold leading-snug text-ui-muted">{error}</p>
+              <p className="font-sans text-xs font-bold leading-snug text-ui-muted-strong">{error}</p>
               <button
                 type="button"
                 onClick={onRetry}
@@ -111,7 +117,7 @@ export const ReaderCompanionVocabCard = React.memo(function ReaderCompanionVocab
               </button>
             </div>
           ) : displayedWords.length === 0 ? (
-            <div className="py-4 text-center font-sans text-xs font-bold text-ui-muted">
+            <div className="py-4 text-center font-sans text-xs font-bold text-ui-muted-strong">
               No vocabulary words for this dialogue.
             </div>
           ) : (
@@ -121,56 +127,20 @@ export const ReaderCompanionVocabCard = React.memo(function ReaderCompanionVocab
                   characterPreference === 'simplified' && word.simplified
                     ? word.simplified
                     : word.traditional;
-                const posLabel = getPosTokenLabel(word.pos);
-
                 return (
-                  <button
-                    type="button"
+                  <ReaderCompanionVocabRow
                     key={word.id}
-                    onClick={() => onOpenWord?.(text)}
-                    aria-label={`Open dictionary for ${text}`}
-                    className="group flex min-h-[48px] w-full items-center gap-3 rounded-compact px-2 py-1.5 text-left transition-colors hover:bg-ui-hover focus-ring outline-none select-none"
-                  >
-                    {/* Chinese Glyph */}
-                    <span className="min-w-[3.25rem] shrink-0 font-chinese text-2xl font-bold leading-none text-ui-ink-strong group-hover:text-brand-primary transition-colors">
-                      {text}
-                    </span>
-
-                    {/* Pinyin and English Definition */}
-                    <span className="min-w-0 flex-1">
-                      <span className="block truncate font-sans text-xs font-extrabold leading-tight text-brand-primary">
-                        {word.pinyin}
-                      </span>
-                      <span className="block font-sans text-sm font-bold leading-snug text-ui-ink line-clamp-2">
-                        {word.english}
-                      </span>
-                    </span>
-
-                    {/* Right-side Token & Audio Action */}
-                    <div className="flex shrink-0 items-center gap-1.5">
-                      {word.pos && (
-                        <PosBadge
-                          pos={word.pos}
-                          label={posLabel ?? undefined}
-                          characterPreference={characterPreference}
-                          className="text-[10px] px-1.5 py-0.5 rounded-xs"
-                        />
-                      )}
-                      <span
-                        role="button"
-                        tabIndex={-1}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleSpeak(text, word.audio);
-                        }}
-                        className="shrink-0 p-1.5 rounded-full text-ui-muted hover:text-brand-primary hover:bg-brand-primary-soft/60 transition-colors"
-                        title={`Listen to ${text}`}
-                        aria-label={`Listen to ${text}`}
-                      >
-                        <AppIcon name="audio" size={16} />
-                      </span>
-                    </div>
-                  </button>
+                    word={word}
+                    displayText={text}
+                    posLabel={getPosTokenLabel(word.pos)}
+                    characterPreference={characterPreference}
+                    isInText={word.inText}
+                    isLocated={locatedWordId === word.id}
+                    locateMode={locateMode}
+                    onOpenWord={onOpenWord}
+                    onLocateWord={onLocateWord}
+                    onSpeak={handleSpeak}
+                  />
                 );
               })}
             </div>

@@ -28,7 +28,7 @@ export function BottomCharacterTabs({
       animate={{ opacity: 1, y: 0 }}
       exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 18 }}
       transition={{ duration: reduceMotion ? 0 : 0.16, ease: 'easeOut' }}
-      className="pointer-events-none absolute bottom-0 left-0 right-0 z-20 mb-1 flex justify-center px-4 pb-[calc(16px+env(safe-area-inset-bottom,0px))] pt-3"
+      className="pointer-events-none absolute bottom-0 left-0 right-0 z-20 mb-1 flex justify-center px-4 pb-sheet-safe pt-3"
     >
       <div className="pointer-events-auto flex w-full max-w-[280px] items-center justify-center rounded-feature bg-ui-surface p-1.5 shadow-ambient-md">
         {chars.map((c, idx) => {

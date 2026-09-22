@@ -17,6 +17,27 @@ import {
 } from '../utils/deckExclusions';
 import { buildReviewSession } from '../utils/reviewSession';
 import type { SRSData } from '../utils/srsEngine';
+import { audioService } from '../services/audioService';
+
+interface CachedDeckEntry {
+  cards: Flashcard[];
+  knownIds: Set<string> | null;
+  timestamp: number;
+}
+
+const activityDeckCache = new Map<string, CachedDeckEntry>();
+
+export function getCachedActivityDeck(key: string): CachedDeckEntry | undefined {
+  return activityDeckCache.get(key);
+}
+
+export function setCachedActivityDeck(key: string, entry: { cards: Flashcard[]; knownIds: Set<string> | null }) {
+  activityDeckCache.set(key, { ...entry, timestamp: Date.now() });
+}
+
+export function clearActivityDeckCache() {
+  activityDeckCache.clear();
+}
 
 function isSameCards(a: Flashcard[], b: Flashcard[]): boolean {
   if (a === b) return true;
@@ -105,9 +126,6 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
   const deckExclusions = useAppStore((state) => state.deckExclusions);
   const setDeckExclusions = useAppStore((state) => state.setDeckExclusions);
-  const [cards, setCards] = useState<Flashcard[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const { currentUser } = useAuth();
   const currentUserId = currentUser?.id ?? null;
 
@@ -130,6 +148,24 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
     libraryActiveFolder,
     stablePartSelectionKey,
   ]);
+
+  const cachedEntry = activityDeckCache.get(deckExclusionKey);
+  const [cards, setCards] = useState<Flashcard[]>(() => cachedEntry?.cards ?? []);
+  const [isLoading, setIsLoading] = useState(() => !cachedEntry);
+  const [error, setError] = useState<string | null>(null);
+
+  // Synchronously update state during render if deckExclusionKey changes.
+  // This ensures that when the user switches lessons or opens an activity,
+  // isLoading is immediately true (if not cached) or cards is immediately populated (if cached),
+  // without waiting an extra render cycle for useEffect to fire.
+  const [currentKey, setCurrentKey] = useState(deckExclusionKey);
+  if (currentKey !== deckExclusionKey) {
+    setCurrentKey(deckExclusionKey);
+    const nextCached = activityDeckCache.get(deckExclusionKey);
+    setCards(nextCached?.cards ?? []);
+    setIsLoading(!nextCached);
+    setError(null);
+  }
 
   const excludedIds = useMemo(
     () => new Set(deckExclusions[deckExclusionKey] ?? []),
@@ -217,6 +253,7 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
             }
             if (isMounted) {
               knownIdsRef.current = { key: deckExclusionKey, ids: knownIds };
+              setCachedActivityDeck(deckExclusionKey, { cards: results, knownIds });
               setCards((prev) => (isSameCards(prev, results) ? prev : results));
               setIsLoading(false);
             }
@@ -232,9 +269,10 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
           // ── Library deck: custom folders (Supabase real-time) ────────
           // Subscribe to real-time flashcard service for custom folders
           if (currentUserId) {
-            const sub = flashcardService.subscribeToUserFlashcards(currentUserId, (customCards) => {
+            const subHolder: { current?: () => void } = {};
+            subHolder.current = flashcardService.subscribeToUserFlashcards(currentUserId, (customCards) => {
               if (!isMounted) {
-                sub();
+                subHolder.current?.();
                 return;
               }
               let filtered = customCards;
@@ -267,15 +305,16 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
                     key: deckExclusionKey,
                     ids: new Set(results.map((c) => c.id)),
                   };
+                  setCachedActivityDeck(deckExclusionKey, { cards: results, knownIds: knownIdsRef.current.ids });
                   setCards((prev) => (isSameCards(prev, results) ? prev : results));
                   setIsLoading(false);
                 });
             });
 
             if (!isMounted) {
-              sub();
+              subHolder.current?.();
             } else {
-              unsubscribe = sub;
+              unsubscribe = subHolder.current;
             }
           } else {
             if (isMounted) {
@@ -321,7 +360,20 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
         
         if (isMounted) {
           knownIdsRef.current = { key: deckExclusionKey, ids: knownIds };
+          setCachedActivityDeck(deckExclusionKey, { cards: filtered, knownIds });
           setCards((prev) => (isSameCards(prev, filtered) ? prev : filtered));
+
+          if (filtered.length > 0) {
+            audioService.preload(filtered.slice(0, 10).map((c) => c.audio));
+            const initialWarm = filtered
+              .slice(0, 4)
+              .filter((card) => !audioService.isAudioFileName(card.audio))
+              .map((c) => c.front.trim())
+              .filter(Boolean);
+            if (initialWarm.length > 0) {
+              void audioService.preloadNeural(initialWarm);
+            }
+          }
         }
       } catch (err) {
         console.error("useActivityDataLoader failed:", err);
@@ -353,4 +405,123 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
   ]);
 
   return { cards: visibleCards, deckCards: cards, isLoading, error, deckExclusionKey, excludedIds };
+}
+
+export async function loadActivityDeck({
+  activeBookId,
+  selectedLessons,
+  isReviewDeck = false,
+  isLibraryDeck = false,
+}: {
+  activeBookId: number;
+  selectedLessons: number[];
+  isReviewDeck?: boolean;
+  isLibraryDeck?: boolean;
+}): Promise<{ cards: Flashcard[]; deckCards: Flashcard[]; excludedIds: Set<string> }> {
+  const store = useAppStore.getState();
+  const libraryActiveFolder = store.libraryActiveFolder;
+  const selectedLessonParts = store.selectedLessonParts;
+  const deckExclusions = store.deckExclusions;
+
+  const stablePartSelectionKey = getCurriculumSelectionFingerprint(
+    activeBookId,
+    selectedLessons || [],
+    selectedLessonParts,
+  );
+  const deckExclusionKey = isReviewDeck
+    ? 'shared_deck_review'
+    : isLibraryDeck
+    ? `shared_deck_library_${libraryActiveFolder}`
+    : `shared_deck_${activeBookId}_${stablePartSelectionKey}`;
+
+  const cached = activityDeckCache.get(deckExclusionKey);
+  const excludedIds = new Set(deckExclusions[deckExclusionKey] ?? []);
+
+  if (cached && Date.now() - cached.timestamp < 60_000) {
+    return {
+      cards: filterDeckByExclusions(cached.cards, excludedIds),
+      deckCards: cached.cards,
+      excludedIds,
+    };
+  }
+
+  let cards: Flashcard[] = [];
+  let knownIds: Set<string> | null = null;
+
+  if (isLibraryDeck) {
+    if (libraryActiveFolder === 'starred') {
+      const { favorites } = store;
+      if (favorites.length > 0) {
+        const [batchResults, vocabMap] = await Promise.all([
+          getDictionaryEntriesBatch(favorites),
+          getCourseVocabLookupMap().catch(() => new Map<string, Flashcard>()),
+        ]);
+        const results: Flashcard[] = [];
+        knownIds = new Set<string>();
+        for (const word of favorites) {
+          if (batchResults.has(word)) {
+            const entry = batchResults.get(word)!;
+            knownIds.add(`star-${entry.traditional}`);
+            const courseMatch =
+              vocabMap.get(entry.traditional) ||
+              vocabMap.get(entry.simplified) ||
+              vocabMap.get(word);
+            results.push({
+              id: `star-${entry.traditional}`,
+              bookId: courseMatch?.bookId || 0,
+              lessonId: courseMatch?.lessonId || 0,
+              front: entry.traditional || entry.simplified,
+              back: entry.definitions ? (Array.isArray(entry.definitions) ? entry.definitions.join(' • ') : Object.values(entry.definitions).join(' • ')) : '',
+              pinyin: entry.pinyin ? entry.pinyin.join(', ') : (courseMatch?.pinyin || ''),
+              audio: courseMatch?.audio || '',
+              notes: '',
+            });
+          }
+        }
+        cards = results;
+      }
+    }
+  } else if (isReviewDeck) {
+    const { activeReviewSessionCards, setActiveReviewSessionCards, srsData } = store;
+    const review = await loadReviewDeck(srsData, activeReviewSessionCards);
+    cards = review.cards;
+    knownIds = review.knownIds;
+    if (!activeReviewSessionCards) {
+      setActiveReviewSessionCards(cards.map((c) => c.id));
+    }
+  } else {
+    const data = await fetchVocabulary(activeBookId);
+    let filtered = data;
+    knownIds = new Set(data.map((c) => c.id));
+
+    if (selectedLessons && selectedLessons.length > 0) {
+      filtered = filtered.filter(
+        (card) =>
+          selectedLessons.includes(card.lessonId) &&
+          isCardInPartSelection(card, selectedLessonParts),
+      );
+      knownIds = new Set(filtered.map((c) => c.id));
+    }
+    cards = filtered;
+  }
+
+  setCachedActivityDeck(deckExclusionKey, { cards, knownIds });
+
+  if (cards.length > 0) {
+    audioService.preload(cards.slice(0, 10).map((c) => c.audio));
+    const initialWarm = cards
+      .slice(0, 4)
+      .filter((card) => !audioService.isAudioFileName(card.audio))
+      .map((c) => c.front.trim())
+      .filter(Boolean);
+    if (initialWarm.length > 0) {
+      void audioService.preloadNeural(initialWarm);
+    }
+  }
+
+  return {
+    cards: filterDeckByExclusions(cards, excludedIds),
+    deckCards: cards,
+    excludedIds,
+  };
 }

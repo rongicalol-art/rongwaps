@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ActionButton, AppIcon, BottomDrawer, ConfirmationDialog, SegmentedControl } from '../../lib/widgets';
+import { isIosDevice, isStandaloneDisplay } from '../../utils/pwaInstall';
 
 export interface AppSettingsDrawerProps extends React.HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;
@@ -21,6 +22,13 @@ export function AppSettingsDrawer({
   const [isConfirmResetOpen, setIsConfirmResetOpen] = useState(false);
   const [isResetting, setIsResetting] = useState(false);
   const [resetError, setResetError] = useState<string | null>(null);
+  const [isStandalone, setIsStandalone] = useState(false);
+  const [isIos, setIsIos] = useState(false);
+
+  useEffect(() => {
+    setIsStandalone(isStandaloneDisplay());
+    setIsIos(isIosDevice());
+  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen) return;
@@ -66,6 +74,70 @@ export function AppSettingsDrawer({
             <p className="mt-1 text-sm font-extrabold leading-relaxed text-ui-ink">
               Adjust audio, pinyin, translations, pace, and answer timing from Session controls during practice.
             </p>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <p className="text-xs font-extrabold uppercase tracking-wider text-ui-muted">App Experience</p>
+            {isStandalone ? (
+              <div className="flex items-center gap-3 rounded-feature border-2 border-feedback-success/30 bg-feedback-success/5 p-4">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-control bg-feedback-success text-white shadow-ambient-sm">
+                  <AppIcon name="check" size={18} />
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-sm font-black text-ui-ink-strong">Installed as Native App</p>
+                  <p className="text-xs font-bold text-ui-muted-strong">Running full-screen without Safari browser bars.</p>
+                </div>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-3 rounded-feature border-2 border-ui-border bg-ui-surface p-4">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-control bg-brand-primary-soft text-brand-primary">
+                    <AppIcon name="deviceMobile" size={20} />
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="text-sm font-black text-ui-ink-strong">
+                      {isIos ? 'Use Full-Screen (Hide Safari Bar)' : 'Install Web App'}
+                    </p>
+                    <p className="text-xs font-bold text-ui-muted-strong">
+                      Run RongWaps like a native app without the address bar.
+                    </p>
+                  </div>
+                </div>
+
+                {isIos ? (
+                  <div className="flex flex-col gap-2 rounded-control border border-ui-border/60 bg-ui-canvas p-3 text-xs font-bold text-ui-ink">
+                    <div className="flex items-center gap-2">
+                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-primary text-[11px] font-black text-white">
+                        1
+                      </span>
+                      <span>
+                        Tap the{' '}
+                        <span className="inline-flex items-center gap-1 font-black text-ui-ink-strong">
+                          <AppIcon name="share" size={13} className="text-brand-primary" /> Share
+                        </span>{' '}
+                        button in Safari.
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-primary text-[11px] font-black text-white">
+                        2
+                      </span>
+                      <span>
+                        Select{' '}
+                        <span className="inline-flex items-center gap-1 font-black text-ui-ink-strong">
+                          <AppIcon name="plus" size={13} className="text-brand-primary" /> Add to Home Screen
+                        </span>
+                        .
+                      </span>
+                    </div>
+                  </div>
+                ) : (
+                  <p className="text-xs font-bold text-ui-muted-strong">
+                    Tap your browser menu and choose "Install App" or "Add to Home Screen".
+                  </p>
+                )}
+              </div>
+            )}
           </div>
 
           <div className="h-[3px] w-full bg-ui-canvas" />

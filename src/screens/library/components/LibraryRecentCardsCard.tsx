@@ -61,7 +61,7 @@ export function LibraryRecentCardsCard({ items, onSelectWord }: LibraryRecentCar
         </div>
       ) : (
         <div className="p-5 text-center">
-          <p className="text-[13px] font-bold text-ui-muted">No cards yet</p>
+          <p className="text-[13px] font-bold text-ui-muted-strong">No cards yet</p>
         </div>
       )}
 

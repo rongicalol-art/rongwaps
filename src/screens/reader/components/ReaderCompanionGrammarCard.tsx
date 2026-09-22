@@ -1,25 +1,70 @@
 import React, { useState, useEffect } from 'react';
-import type { ReaderGrammarPoint } from '../hooks/useReaderStudyData';
+import type { ReaderGrammarPoint } from '../utils/readerStudyTargets';
+import type { ReaderLocateMode } from '../utils/readerLocate';
 import { AppIcon } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
+import { ReaderCompanionGrammarRow } from './ReaderCompanionGrammarRow';
 
 export interface ReaderCompanionGrammarCardProps {
   grammarPoints: ReaderGrammarPoint[];
   dialogueNumber: number;
   onOpenGrammarPart?: (partId: string, pageId?: string) => void;
+  /** Highlights (or clears) a grammar point's sentence in the reading text. */
+  onLocateGrammarPoint?: (point: ReaderGrammarPoint | null) => void;
+  locateMode?: ReaderLocateMode;
+  locatedGrammarPointId?: string | null;
 }
 
 export const ReaderCompanionGrammarCard = React.memo(function ReaderCompanionGrammarCard({
   grammarPoints,
   dialogueNumber,
   onOpenGrammarPart,
+  onLocateGrammarPoint,
+  locateMode = 'hover',
+  locatedGrammarPointId = null,
 }: ReaderCompanionGrammarCardProps) {
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
-  // Reset to closed by default whenever the active dialogue changes
+  // Reset to open by default whenever the active dialogue changes
   useEffect(() => {
-    setIsCollapsed(true);
+    setIsCollapsed(false);
   }, [dialogueNumber]);
+
+  const usedCount = grammarPoints.filter((point) => point.usage !== 'none').length;
+
+  // The whole lesson stays listed, separated per part: this reading's own part
+  // first in normal ink, every other part dimmed (used or not). Essays have no
+  // own part, so their used pages stay in normal ink and the rest dim.
+  const ownPartNumber = grammarPoints.find((point) => point.group === 'part')?.partNumber ?? null;
+  const groups = new Map<number, ReaderGrammarPoint[]>();
+  for (const point of grammarPoints) {
+    const list = groups.get(point.partNumber) ?? [];
+    list.push(point);
+    groups.set(point.partNumber, list);
+  }
+  const orderedPartNumbers = [...groups.keys()]
+    .filter((partNumber) => partNumber !== ownPartNumber)
+    .sort((a, b) => a - b);
+  if (ownPartNumber !== null) orderedPartNumbers.unshift(ownPartNumber);
+
+  const isDimmed = (point: ReaderGrammarPoint) =>
+    ownPartNumber !== null ? point.group !== 'part' : point.usage === 'none';
+
+  const renderRows = (points: ReaderGrammarPoint[]) =>
+    points.map((point) => (
+      <ReaderCompanionGrammarRow
+        key={point.id}
+        point={point}
+        isLocated={locatedGrammarPointId === point.id}
+        dimmed={isDimmed(point)}
+        locateMode={locateMode}
+        onOpenGrammarPart={onOpenGrammarPart}
+        onLocateGrammarPoint={onLocateGrammarPoint}
+      />
+    ));
+
+  const groupLabelClass =
+    'px-2.5 pt-0.5 font-sans text-[10px] font-black uppercase tracking-wider text-ui-muted-strong';
 
   return (
     <section
@@ -34,8 +79,11 @@ export const ReaderCompanionGrammarCard = React.memo(function ReaderCompanionGra
             Grammar
           </h3>
           {grammarPoints.length > 0 && (
-            <span className="font-sans text-[10px] font-black px-1.5 py-0.5 rounded-full bg-ui-surface-soft text-ui-muted-strong">
-              {grammarPoints.length}
+            <span
+              className="font-sans text-[10px] font-black px-1.5 py-0.5 rounded-full bg-ui-surface-soft text-ui-muted-strong"
+              title="Used in this reading"
+            >
+              {usedCount}
             </span>
           )}
         </div>
@@ -61,37 +109,20 @@ export const ReaderCompanionGrammarCard = React.memo(function ReaderCompanionGra
         <div className="flex flex-col gap-2 pt-0.5">
           {/* Grammar Points List */}
           {grammarPoints.length === 0 ? (
-            <div className="py-3 px-2 text-center font-sans text-xs font-bold text-ui-muted">
+            <div className="py-3 px-2 text-center font-sans text-xs font-bold text-ui-muted-strong">
               No grammar points recorded for this dialogue.
             </div>
           ) : (
-            <div className="flex flex-col gap-1">
-              {grammarPoints.map((point) => (
-                <button
-                  type="button"
-                  key={point.id}
-                  onClick={() => onOpenGrammarPart?.(point.partId, point.id)}
-                  disabled={!onOpenGrammarPart}
-                  aria-label={`Open grammar lab for ${point.titleEnglish}`}
-                  className="group flex w-full items-center justify-between gap-3 rounded-compact px-2.5 py-2 text-left transition-colors hover:bg-ui-hover focus-ring outline-none select-none disabled:cursor-default"
-                >
-                  {/* Chinese Title on top, English Title underneath (never truncated) */}
-                  <div className="flex flex-col flex-1 min-w-0">
-                    <span className="font-chinese text-base font-bold leading-snug text-ui-ink-strong group-hover:text-feedback-warning-edge transition-colors">
-                      {point.titleTraditional}
-                    </span>
-                    <span className="font-sans text-sm font-bold text-ui-ink mt-0.5 leading-snug">
-                      {point.titleEnglish}
-                    </span>
-                  </div>
-
-                  {/* Forward arrow */}
-                  {onOpenGrammarPart && (
-                    <span className="shrink-0 text-ui-muted group-hover:text-feedback-warning-edge group-hover:translate-x-0.5 transition-all pr-0.5">
-                      <AppIcon name="forward" size={15} />
-                    </span>
-                  )}
-                </button>
+            <div className="flex flex-col gap-2.5">
+              {orderedPartNumbers.map((partNumber) => (
+                <div key={partNumber} className="flex flex-col gap-1">
+                  <p className={groupLabelClass}>
+                    {ownPartNumber !== null && partNumber < ownPartNumber
+                      ? `Part ${partNumber} review`
+                      : `Part ${partNumber}`}
+                  </p>
+                  {renderRows(groups.get(partNumber) ?? [])}
+                </div>
               ))}
             </div>
           )}

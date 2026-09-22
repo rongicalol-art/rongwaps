@@ -83,7 +83,7 @@ export function DragBlankExercise({
           <p className="text-xs font-black uppercase tracking-wider text-brand-primary">
             Question {currentQuestionIndex + 1} of {page.questions.length}
           </p>
-          <span className="text-xs font-bold text-ui-muted">Follow the sentence carefully</span>
+          <span className="text-xs font-bold text-ui-muted-strong">Follow the sentence carefully</span>
         </div>
         {(currentQuestion.responseMode ?? page.exerciseResponseMode) === 'text' ? (
           <OpenResponseQuestionCard
@@ -182,7 +182,7 @@ export function DragBlankExercise({
             </div>
           )}
         </div>
-        {page.exerciseNote && <p className="text-center text-[11px] font-bold text-ui-muted">{page.exerciseNote}</p>}
+        {page.exerciseNote && <p className="text-center text-[11px] font-bold text-ui-muted-strong">{page.exerciseNote}</p>}
       </div>
     </section>
   );

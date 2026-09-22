@@ -181,7 +181,7 @@ export class AudioService {
     });
   }
 
-  public stop(): void {
+  public pause(): void {
     if (this.rangeRafHandle !== null) {
       try { cancelAnimationFrame(this.rangeRafHandle); } catch { /* ignore */ }
       this.rangeRafHandle = null;
@@ -200,7 +200,6 @@ export class AudioService {
       this.globalAudio.ontimeupdate = null;
       try {
         this.globalAudio.pause();
-        this.globalAudio.currentTime = 0;
       } catch { /* ignore */ }
     }
 
@@ -226,15 +225,24 @@ export class AudioService {
     finish?.();
   }
 
+  public stop(): void {
+    this.pause();
+    if (this.globalAudio) {
+      try {
+        this.globalAudio.currentTime = 0;
+      } catch { /* ignore */ }
+    }
+  }
+
   public getGlobalAudio(): HTMLAudioElement | null {
     return this.globalAudio;
   }
 
   public getCurrentTime(): number {
-    if (this.globalAudio && !this.globalAudio.paused) {
+    if (this.globalAudio) {
       return this.globalAudio.currentTime;
     }
-    return 0; // Or whatever fallback
+    return 0;
   }
 
   public isAudioFileName(filename?: string): boolean {
@@ -253,8 +261,9 @@ export class AudioService {
     playbackRate = 1.0,
     textFallback?: string,
     preferredVoice?: string,
+    startTime = 0,
   ): Promise<void> {
-    this.stop();
+    this.pause();
     const textToSpeak = textFallback
       || (audioFileName && !this.isAudioFileName(audioFileName) ? audioFileName : undefined);
 
@@ -299,14 +308,14 @@ export class AudioService {
 
       const isRemoteUrl = /^https?:\/\//i.test(audioFileName);
       if (isRemoteUrl) {
-        playHtmlAudio(audio, audioFileName, playbackRate, finish, handleAudioFailure);
+        playHtmlAudio(audio, audioFileName, playbackRate, finish, handleAudioFailure, startTime);
       } else {
         const existingUrl = this.objectUrls.get(audioFileName);
         if (existingUrl) {
-          playHtmlAudio(audio, existingUrl, playbackRate, finish, handleAudioFailure);
+          playHtmlAudio(audio, existingUrl, playbackRate, finish, handleAudioFailure, startTime);
         } else {
           this.getAudioObjectUrl(audioFileName)
-            .then((url) => playHtmlAudio(audio, url, playbackRate, finish, handleAudioFailure))
+            .then((url) => playHtmlAudio(audio, url, playbackRate, finish, handleAudioFailure, startTime))
             .catch(handleAudioFailure);
         }
       }
@@ -319,7 +328,7 @@ export class AudioService {
     endSec: number,
     options?: PlayRangeOptions,
   ): Promise<void> {
-    this.stop();
+    this.pause();
     return new Promise((resolve) => {
       const finish = this.trackPlayback(resolve);
       const audio = this.globalAudio;

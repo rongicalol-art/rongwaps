@@ -85,7 +85,7 @@ export function SentenceUnscrambleExercise({
             )}
           >
             {exercise.orderedTileIds.length === 0 && (
-              <p className="w-full text-center text-sm font-bold text-ui-muted">Build sentence here</p>
+              <p className="w-full text-center text-sm font-bold text-ui-muted-strong">Build sentence here</p>
             )}
             {exercise.orderedTileIds.map((tileId, index) => {
               const tile = tileById(tileId);
@@ -186,7 +186,7 @@ export function SentenceUnscrambleExercise({
             </div>
           )}
         </div>
-        {page.exerciseNote && <p className="mt-4 text-center text-[11px] font-bold text-ui-muted">{page.exerciseNote}</p>}
+        {page.exerciseNote && <p className="mt-4 text-center text-[11px] font-bold text-ui-muted-strong">{page.exerciseNote}</p>}
       </div>
     </section>
   );

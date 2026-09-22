@@ -8,7 +8,7 @@ import {
 } from '../utils/readerTooltipPosition';
 import { cn } from '../../../utils/cn';
 import { AppIcon } from '../../../lib/widgets';
-import { useAppStore } from '../../../store/useAppStore';
+import { FavoriteButton } from '../../../features/library';
 
 export interface ReaderWordTooltipProps {
   preview: ReaderWordPreview;
@@ -43,8 +43,6 @@ export const ReaderWordTooltip: React.FC<ReaderWordTooltipProps> = ({
 }) => {
   const tooltipRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
-  const favorites = useAppStore((state) => state.favorites);
-  const toggleFavorite = useAppStore((state) => state.toggleFavorite);
 
   // Initial fallback placement before DOM measurement
   const [placement, setPlacement] = useState<TooltipPlacement>(() =>
@@ -63,7 +61,6 @@ export const ReaderWordTooltip: React.FC<ReaderWordTooltipProps> = ({
   if (typeof document === 'undefined') return null;
 
   const headword = preview.headword || preview.word;
-  const isFavorite = favorites.includes(headword);
 
   return createPortal(
     <div
@@ -116,18 +113,15 @@ export const ReaderWordTooltip: React.FC<ReaderWordTooltipProps> = ({
                 <AppIcon name="audio" size={17} />
               </button>
             )}
-            <button
-              type="button"
-              aria-label={isFavorite ? `Remove ${headword} from saved words` : `Save ${headword}`}
-              aria-pressed={isFavorite}
-              onClick={(e) => {
-                e.stopPropagation();
-                toggleFavorite(headword);
-              }}
-              className={cn(ICON_BUTTON, isFavorite && 'text-brand-secondary hover:text-brand-secondary')}
-            >
-              <AppIcon name={isFavorite ? 'bookmarkFilled' : 'bookmark'} size={16} />
-            </button>
+            <FavoriteButton
+              word={headword}
+              traditional={preview.headword || headword}
+              pinyin={preview.pinyin || undefined}
+              definitions={preview.definitions}
+              size="sm"
+              variant="ghost"
+              className={ICON_BUTTON}
+            />
           </div>
         </div>
 

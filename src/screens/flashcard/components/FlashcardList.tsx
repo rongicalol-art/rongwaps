@@ -106,7 +106,7 @@ export const FlashcardList = memo(function FlashcardList({
         </span>
         <div className="max-w-sm">
           <p className="text-lg font-extrabold text-ui-ink">No vocab here yet</p>
-          <p className="mt-1 text-sm font-medium text-ui-muted">
+          <p className="mt-1 text-sm font-bold text-ui-muted-strong">
             This selection has no words to list. Pick a lesson or add words to your library.
           </p>
         </div>
@@ -175,8 +175,8 @@ export const FlashcardList = memo(function FlashcardList({
                   )}
                   {card.back && (
                     <span className={cn(
-                      'block truncate text-xs font-medium leading-snug transition-colors sm:text-[13px]',
-                      excluded ? 'text-ui-muted/50' : 'text-ui-muted',
+                      'block truncate text-xs font-bold leading-snug transition-colors sm:text-[13px]',
+                      excluded ? 'text-ui-muted-strong/50' : 'text-ui-muted-strong',
                     )}>
                       {card.back}
                     </span>
@@ -209,7 +209,7 @@ export const FlashcardList = memo(function FlashcardList({
         className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-40 bg-gradient-to-t from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent"
       />
 
-      <div className="flex-1 overflow-y-auto overscroll-contain pb-[calc(7rem+env(safe-area-inset-bottom,0px))]">
+      <div className="flex-1 overflow-y-auto overscroll-contain pb-dock-clearance">
         <div className="mx-auto w-full max-w-[880px] px-4 pb-4 pt-[76px] md:px-6">
           <LayoutGroup>
             {/* Single column; each part is its own chain. The part label

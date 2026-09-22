@@ -4,7 +4,10 @@ import { cn } from '../../../utils/cn';
 import { getWordChunks } from '../../../utils/rubyPinyin';
 import { splitChunksIntoSentences } from '../../../utils/dialogueSync';
 import { useReaderWordInteractions } from '../hooks/useReaderWordInteractions';
+import { useReaderLocate } from '../hooks/useReaderLocate';
 import { useReaderDictionaryBatch } from '../hooks/useReaderDictionaryBatch';
+import type { ReaderStudyTargetWord } from '../utils/readerStudyTargets';
+import { overlapsAnyLocatedRange, type ReaderLocatedRange } from '../utils/readerLocate';
 import { ReaderWordTooltip } from './ReaderWordTooltip';
 import { ReaderChunk, NARRATIVE_CHUNK_APPEARANCE } from './ReaderChunk';
 import { audioService } from '../../../services/audioService';
@@ -24,6 +27,10 @@ interface ReadingNarrativeViewProps {
   textSize: ReaderTextSize;
   activeLineIndex: number | null;
   currentTime: number;
+  /** Vocabulary word the Study Guide is locating in this text, if any. */
+  locatedWord: ReaderStudyTargetWord | null;
+  /** Sentences of the located grammar point, painted with a soft background. */
+  locatedGrammarRanges: readonly ReaderLocatedRange[];
   onPlayLine: (index: number) => void;
   onPlayRange?: (startSec: number, endSec: number) => void;
 }
@@ -38,6 +45,8 @@ export function ReadingNarrativeView({
   textSize,
   activeLineIndex,
   currentTime,
+  locatedWord,
+  locatedGrammarRanges,
   onPlayLine,
   onPlayRange,
 }: ReadingNarrativeViewProps) {
@@ -94,11 +103,20 @@ export function ReadingNarrativeView({
         lineAlignment?.start,
         lineAlignment?.end,
       );
+      // Chunks partition the paragraph, so accumulating clause text lengths
+      // gives each clause's character range for the grammar locate highlight.
+      let clauseOffset = 0;
+      const clauseRanges = clauses.map((clause) => {
+        const range = { charStart: clauseOffset, charEnd: clauseOffset + clause.text.length };
+        clauseOffset = range.charEnd;
+        return range;
+      });
       return {
         index,
         text,
         chunks,
         clauses,
+        clauseRanges,
         lineAlignment,
         english: paragraph.english,
         speaker: paragraph.speaker,
@@ -110,6 +128,40 @@ export function ReadingNarrativeView({
   const paragraphGroups = useMemo(() => {
     return groupSentencesIntoParagraphs(sentencesData);
   }, [sentencesData]);
+
+  const paragraphChunks = useMemo(
+    () => sentencesData.map((sentence) => sentence.chunks),
+    [sentencesData],
+  );
+
+  const { locatedChunks, firstParagraphIndex } = useReaderLocate({
+    reading,
+    script: characterPreference,
+    locatedWord,
+    paragraphChunks,
+  });
+
+  // Bring the first occurrence into view; `nearest` leaves the scroll position
+  // alone when the occurrence is already visible.
+  useEffect(() => {
+    if (!locatedWord || firstParagraphIndex === null) return;
+    sentenceRefs.current.get(firstParagraphIndex)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'nearest',
+    });
+  }, [locatedWord, firstParagraphIndex]);
+
+  // Same for a located grammar point's first matched sentence.
+  useEffect(() => {
+    const first = locatedGrammarRanges[0];
+    if (!first) return;
+    sentenceRefs.current.get(first.paragraphIndex)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'nearest',
+    });
+  }, [locatedGrammarRanges]);
 
   const lesson = useMemo(
     () => SAMPLE_LESSONS.find((l) => l.id === reading.lessonId),
@@ -128,7 +180,7 @@ export function ReadingNarrativeView({
   return (
     <article
       className={cn(
-        'mx-auto w-full px-4 pb-44 pt-16 sm:px-8 sm:pt-20 transition-all',
+        'mx-auto w-full px-4 pb-44 pt-[calc(5.5rem+env(safe-area-inset-top,0px))] sm:px-8 sm:pt-[6.5rem] transition-all',
         textSize === 'extra-large' ? 'max-w-3xl' : 'max-w-2xl',
       )}
     >
@@ -192,7 +244,7 @@ export function ReadingNarrativeView({
                     }
                   }}
                 >
-                  {sentence.clauses.map((clause) => {
+                  {sentence.clauses.map((clause, clauseIdx) => {
                     return (
                       <span
                         key={clause.id}
@@ -226,7 +278,15 @@ export function ReadingNarrativeView({
                             }
                           }
                         }}
-                        className="group/clause relative inline rounded cursor-pointer outline-none box-decoration-clone text-ui-ink-strong"
+                        className={cn(
+                          'group/clause relative inline rounded cursor-pointer outline-none box-decoration-clone text-ui-ink-strong',
+                          sentence.clauseRanges[clauseIdx] &&
+                            overlapsAnyLocatedRange(
+                              { paragraphIndex: sentence.index, ...sentence.clauseRanges[clauseIdx] },
+                              locatedGrammarRanges,
+                            ) &&
+                            'bg-feedback-warning/40',
+                        )}
                       >{clause.chunks.map((chunk, chunkIdx) => {
                           if (chunk.isPunctuation) {
                             return (
@@ -252,6 +312,7 @@ export function ReadingNarrativeView({
                               fallbackEnd={clause.end}
                               isActive={holdingChunkKey === chunkKey || isWordActive}
                               isHovered={hoveredChunkKey === chunkKey}
+                              isLocated={locatedChunks.has(chunk)}
                               showPinyin={showPinyin}
                               textSize={textSize}
                               appearance={NARRATIVE_CHUNK_APPEARANCE}
@@ -275,7 +336,7 @@ export function ReadingNarrativeView({
             {showMeaning && group.english && (
               <p
                 className={cn(
-                  'mt-3.5 font-sans font-medium text-ui-muted leading-relaxed select-text indent-6',
+                  'ui-translation mt-3.5 select-text',
                   textSize === 'extra-large'
                     ? 'text-base sm:text-lg'
                     : textSize === 'large'
@@ -291,7 +352,7 @@ export function ReadingNarrativeView({
                       key={s.index}
                       className={cn(
                         'transition-colors duration-200 rounded box-decoration-clone px-0.5',
-                        isSentenceActive ? 'text-ui-ink font-semibold' : 'text-ui-muted',
+                        isSentenceActive && 'font-black',
                       )}
                     >
                       {s.english}{' '}

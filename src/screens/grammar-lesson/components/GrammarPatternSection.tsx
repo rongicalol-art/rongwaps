@@ -1,6 +1,7 @@
 import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import type { GrammarPatternRow, InteractiveGrammarPage } from '../../../types/models';
 import { getPatternRowGroups, getPatternSectionLayout } from '../../../utils/grammarPatternLayout';
+import { isHanziChar } from '../../../utils/hanzi';
 import { cn } from '../../../utils/cn';
 import { InteractiveGrammarSentence } from './InteractiveGrammarSentence';
 
@@ -13,15 +14,42 @@ interface GrammarPatternSectionProps {
   patternColumns?: string[];
   patternColumnDetails?: string[];
   patternRows?: GrammarPatternRow[];
-  hideHeader?: boolean;
-  title?: string;
+}
+
+/**
+ * A header title can mix English and Chinese (`Double 了`, `比 + B`). Chinese
+ * runs follow the learner's character-font choice (sans / kai / rounded) just
+ * like the table cells, while Latin runs stay in the UI face.
+ */
+function HeaderTitle({ text }: { text: string }) {
+  const runs: Array<{ hanzi: boolean; text: string }> = [];
+  for (const char of text) {
+    const hanzi = isHanziChar(char);
+    const last = runs[runs.length - 1];
+    if (last && last.hanzi === hanzi) {
+      last.text += char;
+    } else {
+      runs.push({ hanzi, text: char });
+    }
+  }
+
+  return (
+    <>
+      {runs.map((run, index) => (run.hanzi ? (
+        <span key={index} className="font-chinese">{run.text}</span>
+      ) : (
+        <Fragment key={index}>{run.text}</Fragment>
+      )))}
+    </>
+  );
 }
 
 /**
  * One quiet table surface: a compact slot header and every example row live
  * in a single shared grid so vertical dividers stay aligned while each column
- * sizes proportionally based on content weight. Header labels and details wrap
- * naturally on narrow viewports to avoid starving neighbor columns; example rows
+ * sizes proportionally based on content weight. Each header cell carries one
+ * line only — the short slot title (grammarTableHeaders test); the compact
+ * `patternColumnDetails` notation stays in the cell tooltip. Example rows
  * stay clean (chunks and pinyin only, no labels mixed in). Responsive minimums
  * and scroll edge fades ensure smooth horizontal navigation on narrow devices
  * without clipping glyphs.
@@ -35,8 +63,6 @@ export function GrammarPatternSection({
   patternColumns,
   patternColumnDetails,
   patternRows,
-  hideHeader = false,
-  title = 'Sentence Pattern',
 }: GrammarPatternSectionProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -75,21 +101,11 @@ export function GrammarPatternSection({
 
   if (activeRows.length === 0) return null;
 
-  const headingId = `grammar-pattern-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
-
   return (
-    <section aria-labelledby={headingId} className={cn(!hideHeader && 'mt-10')}>
-      {!hideHeader && (
-        <div className="mb-3 flex items-center justify-between gap-3">
-          <h2 id={headingId} className="text-xs font-black uppercase tracking-wider text-ui-ink-strong">
-            {title}
-          </h2>
-        </div>
-      )}
-
+    <section aria-label="Sentence pattern">
       <div
         className={cn(
-          'relative overflow-hidden rounded-feature border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface',
+          'relative overflow-hidden rounded-feature border-2 border-brand-primary/40 border-b-[length:var(--depth-md)] bg-ui-surface',
         )}
       >
         {/* Left scroll fade indicator */}
@@ -132,18 +148,19 @@ export function GrammarPatternSection({
                 <div
                   key={`legend-${sourceIndex}`}
                   className={cn(
-                    'flex min-h-[56px] min-w-0 flex-col items-center justify-center border-b-2 border-ui-border bg-brand-primary/[0.06] px-2.5 py-2.5 text-center sm:min-h-[64px] sm:px-4 sm:py-3',
-                    colIndex > 0 && 'border-l border-ui-divider',
+                    'flex min-h-[48px] min-w-0 flex-col items-start justify-center border-b-2 border-brand-primary/30 bg-brand-primary/[0.08] px-3 py-2.5 text-left sm:min-h-[56px] sm:px-4 sm:py-3',
+                    colIndex > 0 && 'border-l-2 border-brand-primary/20',
                   )}
                 >
-                  <span className="block text-center text-[11px] font-black uppercase tracking-wider leading-tight text-ui-ink-strong break-words sm:text-xs">
-                    {columnTitle}
+                  {/* One line per header: the slot title only, authored as
+                      1-3 plain words (grammarTableHeaders test); the compact
+                      notation lives in the tooltip and the page explanation. */}
+                  <span
+                    className="block w-full truncate text-left text-base font-extrabold leading-tight text-ui-ink-strong"
+                    title={detail ? `${columnTitle} · ${detail}` : columnTitle}
+                  >
+                    <HeaderTitle text={columnTitle} />
                   </span>
-                  {detail && (
-                    <span className="mt-1 block text-center text-[10px] font-bold leading-tight text-brand-primary break-words sm:text-[11px]">
-                      {detail}
-                    </span>
-                  )}
                 </div>
               );
             })}
@@ -160,9 +177,9 @@ export function GrammarPatternSection({
                         key={`${row.id}-group-${sourceIndex}`}
                         aria-label={isEmpty ? 'Empty sentence slot' : undefined}
                         className={cn(
-                          'flex min-h-[76px] min-w-0 items-center justify-center bg-ui-surface px-2 py-3.5 sm:min-h-[88px] sm:px-5 sm:py-5',
-                          colIndex > 0 && 'border-l border-ui-divider',
-                          rowIndex > 0 && 'border-t border-ui-divider',
+                          'flex min-h-[64px] min-w-0 items-center justify-start bg-ui-surface px-3 py-3.5 sm:min-h-[76px] sm:px-5 sm:py-4',
+                          colIndex > 0 && 'border-l-2 border-brand-primary/20',
+                          rowIndex > 0 && 'border-t-2 border-brand-primary/20',
                         )}
                       >
                         {isEmpty ? (
@@ -172,7 +189,7 @@ export function GrammarPatternSection({
                             words={[...group]}
                             characterPreference={characterPreference}
                             showPinyin={showPinyin}
-                            align="center"
+                            align="start"
                             tone="default"
                             size="lg"
                             className="gap-x-0.5 gap-y-2"
@@ -185,11 +202,11 @@ export function GrammarPatternSection({
 
                   {showTranslation && (
                     <div
-                      className="border-t border-ui-divider/70 bg-ui-hover/35 px-4 py-2.5 sm:px-6 sm:py-3"
+                      className="border-t-2 border-brand-primary/20 bg-ui-hover/35 px-4 py-2.5 sm:px-6 sm:py-3"
                       style={{ gridColumn: '1 / -1' }}
                     >
                       <p className="sr-only">Meaning</p>
-                      <p className="text-center text-[13px] sm:text-[14px] font-black leading-relaxed text-ui-ink">
+                      <p className="ui-translation text-sm">
                         {row.english}
                       </p>
                     </div>

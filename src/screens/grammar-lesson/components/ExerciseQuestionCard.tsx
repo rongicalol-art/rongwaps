@@ -139,10 +139,10 @@ export function ExerciseQuestionCard({
               aria-pressed={isSelected}
               title={tile.meaning}
               className={cn(
-                'min-w-11 w-auto rounded-sm border-b-[length:var(--depth-sm)] px-3 py-1.5 font-chinese font-black text-base normal-case tracking-normal active:translate-y-[length:var(--depth-sm)] active:border-b-0',
+                'min-w-11 w-auto rounded-sm px-3 py-1.5 font-chinese font-black text-base normal-case tracking-normal',
                 isSelected
-                  ? 'border-feedback-warning-edge bg-feedback-warning text-ui-ink-strong'
-                  : 'border-brand-primary-edge bg-brand-primary-soft text-ui-ink-strong',
+                  ? 'border-2 border-feedback-warning-edge bg-feedback-warning text-ui-ink-strong shadow-[0_var(--depth-sm)_0_var(--color-feedback-warning-edge)] active:translate-y-[length:var(--depth-sm)] active:shadow-none'
+                  : 'border-2 border-brand-primary-edge bg-brand-primary-soft text-ui-ink-strong shadow-[0_var(--depth-sm)_0_var(--color-brand-primary-edge)] active:translate-y-[length:var(--depth-sm)] active:shadow-none',
               )}
             >
               {tileText}
@@ -155,7 +155,7 @@ export function ExerciseQuestionCard({
         <div className="mt-4 rounded-control border-l-4 border-feedback-danger bg-feedback-danger-surface px-4 py-3" role="status">
           <p className="text-sm font-black text-feedback-danger">Why this answer does not work</p>
           {wrongTile && (
-            <p className="mt-1 text-sm font-bold leading-6 text-ui-ink">
+          <p className="mt-1 text-sm font-bold leading-6 text-ui-muted-strong">
               You chose <span className="font-chinese font-black">{textFor(wrongTile.traditional, wrongTile.simplified)}</span>.
               {wrongTile.meaning ? ` That choice means: ${wrongTile.meaning}.` : ''}
             </p>
@@ -163,7 +163,7 @@ export function ExerciseQuestionCard({
           <p className="mt-1 text-sm font-bold leading-6 text-ui-ink">
             {question.repairFeedback ?? wrongHint.hint}
           </p>
-          <p className="mt-1 text-sm font-bold leading-6 text-ui-muted-strong">
+          <p className="mt-1 text-sm font-bold leading-6 text-ui-ink">
             Better model: <span className="font-chinese font-black text-ui-ink-strong">{textFor(wrongHint.answer, wrongHint.answerSimplified)}</span>
           </p>
         </div>

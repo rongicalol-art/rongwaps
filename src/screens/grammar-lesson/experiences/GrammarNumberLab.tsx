@@ -82,7 +82,7 @@ export function GrammarNumberLab({
                   <GrammarFocusText text={sentence} variant="sentence" contextTokens={contextTokens} characterPreference={characterPreference} onOpenWord={onOpenWord} />
                 </p>
                 {showPinyin && <p className="text-xs font-bold text-brand-primary sm:text-sm">{selected.pinyin}</p>}
-                {showTranslation && <p className="mt-1.5 text-sm font-black text-ui-ink sm:text-base">{selected.english}</p>}
+                {showTranslation && <p className="ui-translation mt-1.5 text-sm sm:text-base">{selected.english}</p>}
               </div>
               <IconActionButton
                 onClick={() => audioService.speakText(sentence, characterPreference === 'traditional' ? 'zh-TW' : 'zh-CN', 0.78)}

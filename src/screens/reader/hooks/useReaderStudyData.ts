@@ -1,47 +1,28 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import type { ReadingRecord } from '../../../types/models';
+import type { InteractiveGrammarPart, ReadingRecord } from '../../../types/models';
 import { fetchVocabulary } from '../../../services/vocabularyService';
+import type { Flashcard } from '../../../data/flashcards';
+import { buildReaderStudyTargets } from '../utils/readerStudyTargets';
 
-export interface ReaderTargetWord {
-  id: string;
-  traditional: string;
-  simplified?: string;
-  pinyin: string;
-  english: string;
-  pos?: string;
-  audio?: string;
-  inDialogue: boolean;
-}
-
-export interface ReaderGrammarPoint {
-  id: string;
-  partId: string;
-  grammarNumber: number;
-  titleTraditional: string;
-  titleEnglish: string;
-  pattern: string;
-  explanation: string;
-  isCurrentPart: boolean;
-}
+export type { ReaderGrammarPoint, ReaderStudyTargetWord } from '../utils/readerStudyTargets';
 
 interface UseReaderStudyDataOptions {
   reading: ReadingRecord;
 }
 
+/**
+ * Loads the reader Study Guide's vocabulary and grammar, then hands both to
+ * `buildReaderStudyTargets`, which owns the reading → course part mapping and
+ * the "used in this reading" detection. This hook only fetches and exposes.
+ */
 export function useReaderStudyData({ reading }: UseReaderStudyDataOptions) {
-  const [allLessonWords, setAllLessonWords] = useState<ReaderTargetWord[]>([]);
+  const [vocabulary, setVocabulary] = useState<Flashcard[]>([]);
+  const [parts, setParts] = useState<InteractiveGrammarPart[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [vocabError, setVocabError] = useState<string | null>(null);
   // Bumped by the card's retry control to re-run the vocabulary load.
   const [reloadToken, setReloadToken] = useState(0);
   const refetch = useCallback(() => setReloadToken((token) => token + 1), []);
-
-  // Concatenate all dialogue text to detect which target words appear in this dialogue
-  const dialogueText = useMemo(() => {
-    return reading.paragraphs
-      .map((p) => `${p.traditional} ${p.simplified}`)
-      .join(' ');
-  }, [reading.paragraphs]);
 
   useEffect(() => {
     let cancelled = false;
@@ -51,32 +32,14 @@ export function useReaderStudyData({ reading }: UseReaderStudyDataOptions) {
     fetchVocabulary(reading.bookId, reading.lessonId)
       .then((cards) => {
         if (cancelled) return;
-        const mapped: ReaderTargetWord[] = cards.map((card) => {
-          const trad = card.traditional || card.front;
-          const simp = card.simplified;
-          const inDialogue =
-            dialogueText.includes(trad) || (simp ? dialogueText.includes(simp) : false);
-
-          return {
-            id: card.id,
-            traditional: trad,
-            simplified: simp,
-            pinyin: card.pinyin || '',
-            english: card.back || '',
-            pos: card.pos,
-            audio: card.audio,
-            inDialogue,
-          };
-        });
-
-        setAllLessonWords(mapped);
+        setVocabulary(cards);
       })
       .catch((err) => {
         console.error('Failed to load study guide vocabulary:', err);
         if (cancelled) return;
         // A failed fetch must not read as "this dialogue has no vocabulary":
         // drop the words so the card shows a retryable error, not an empty list.
-        setAllLessonWords([]);
+        setVocabulary([]);
         setVocabError("Couldn't load this dialogue's vocabulary. Check your connection and try again.");
       })
       .finally(() => {
@@ -86,44 +49,14 @@ export function useReaderStudyData({ reading }: UseReaderStudyDataOptions) {
     return () => {
       cancelled = true;
     };
-  }, [reading.bookId, reading.lessonId, dialogueText, reloadToken]);
-
-  // Extract interactive grammar points for this lesson
-  const [grammarPoints, setGrammarPoints] = useState<ReaderGrammarPoint[]>([]);
+  }, [reading.bookId, reading.lessonId, reloadToken]);
 
   useEffect(() => {
     let cancelled = false;
     void import('../../../data/interactiveGrammarPages')
       .then(({ getInteractiveGrammarPartsForLesson }) => {
         if (cancelled) return;
-        const parts = getInteractiveGrammarPartsForLesson(reading.bookId, reading.lessonId);
-        const targetPartId = reading.dialogueNumber; // Dialogue 1 -> Part 1, Dialogue 2 -> Part 2
-
-        const points: ReaderGrammarPoint[] = [];
-        for (const part of parts) {
-          const isCurrentPart = part.partId === targetPartId;
-          for (const page of part.grammarPages) {
-            points.push({
-              id: page.id,
-              partId: part.id,
-              grammarNumber: page.grammarNumber,
-              titleTraditional: page.titleTraditional,
-              titleEnglish: page.titleEnglish,
-              pattern: page.pattern,
-              explanation: page.explanation,
-              isCurrentPart,
-            });
-          }
-        }
-
-        // Sort: current dialogue's grammar points first
-        points.sort((a, b) => {
-          if (a.isCurrentPart && !b.isCurrentPart) return -1;
-          if (!a.isCurrentPart && b.isCurrentPart) return 1;
-          return a.grammarNumber - b.grammarNumber;
-        });
-
-        setGrammarPoints(points);
+        setParts(getInteractiveGrammarPartsForLesson(reading.bookId, reading.lessonId));
       })
       .catch((error: unknown) => {
         // Grammar points are supplementary to the study panel: the card keeps
@@ -137,17 +70,21 @@ export function useReaderStudyData({ reading }: UseReaderStudyDataOptions) {
     return () => {
       cancelled = true;
     };
-  }, [reading.bookId, reading.lessonId, reading.dialogueNumber]);
+  }, [reading.bookId, reading.lessonId]);
 
-  // Filter words: in dialogue vs all
-  const wordsInDialogue = useMemo(() => {
-    return allLessonWords.filter((w) => w.inDialogue);
-  }, [allLessonWords]);
+  // Hovering a vocabulary row toggles locate state on the screen, which
+  // re-renders this panel; keep the built targets referentially stable so the
+  // reading's segmentation is not re-run on every hover.
+  const { grammarPoints, targetWords, lessonWords, usingLessonFallback } = useMemo(
+    () => buildReaderStudyTargets({ reading, parts, vocabulary }),
+    [reading, parts, vocabulary],
+  );
 
   return {
-    allLessonWords,
-    wordsInDialogue,
     grammarPoints,
+    targetWords,
+    lessonWords,
+    usingLessonFallback,
     isLoading,
     vocabError,
     refetch,

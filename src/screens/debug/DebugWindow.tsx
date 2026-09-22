@@ -2,10 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { fetchAllMnemonicsDebug, clearAllMnemonics } from '../../services/mnemonicCache';
 import { debugLogger, DebugLog } from '../../utils/debugLogger';
 
+import { ScreenSkeleton } from '../../lib/widgets';
+import { WordDetailSkeleton } from '../../features/dictionary';
+import { BreakdownSkeleton } from '../../features/character-breakdown';
+import { CurriculumSkeleton } from '../curriculum';
+import { LibrarySkeleton } from '../library';
+import { ProfileSkeleton } from '../profile';
+
 const icons = import.meta.glob('/src/assets/icons/*.svg', { query: '?raw', import: 'default', eager: true });
 
 export const DebugWindow = () => {
-  const [activeTab, setActiveTab] = useState<'icons' | 'mnemonics' | 'logs'>('logs');
+  const [activeTab, setActiveTab] = useState<'icons' | 'mnemonics' | 'logs' | 'skeletons'>('logs');
+  const [selectedSkeleton, setSelectedSkeleton] = useState<string>('quiz');
   const [mnemonics, setMnemonics] = useState<Awaited<ReturnType<typeof fetchAllMnemonicsDebug>>>([]);
   const [loading, setLoading] = useState(false);
   const [logs, setLogs] = useState<DebugLog[]>([]);
@@ -80,14 +88,14 @@ export const DebugWindow = () => {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-black text-ui-ink">Debug Control Panel</h1>
-          <p className="text-sm text-ui-muted">Monitor AI processes, cache statuses, database updates, and system integrity.</p>
+          <p className="text-sm font-bold text-ui-muted-strong">Monitor AI processes, cache statuses, database updates, and system integrity.</p>
         </div>
         
         <div className="flex gap-2">
           <a 
             href="https://supabase.com/dashboard/projects" 
             target="_blank" rel="noreferrer"
-            className="px-4 py-2 font-black text-xs md:text-sm uppercase tracking-wider rounded-control border-b-[length:var(--depth-sm)] border-ui-border active:border-b-0 active:translate-y-[length:var(--depth-sm)] bg-ui-ink-strong text-white hover:brightness-110 transition-all select-none"
+            className="px-4 py-2 font-black text-xs md:text-sm uppercase tracking-wider rounded-control shadow-[0_var(--depth-sm)_0_var(--color-ui-border)] active:shadow-none active:translate-y-[length:var(--depth-sm)] bg-ui-ink-strong text-white hover:brightness-110 transition-[transform,box-shadow,filter] select-none"
           >
             Open Supabase DB
           </a>
@@ -97,33 +105,43 @@ export const DebugWindow = () => {
       <div className="flex flex-wrap gap-2 mb-6 border-b border-ui-divider pb-4">
         <button 
           onClick={() => setActiveTab('logs')}
-          className={`px-4 py-2 text-xs md:text-sm font-black uppercase tracking-wide rounded-control border-b-[length:var(--depth-sm)] active:border-b-0 active:translate-y-[length:var(--depth-sm)] transition-all select-none ${
+          className={`px-4 py-2 text-xs md:text-sm font-black uppercase tracking-wide rounded-control transition-[transform,box-shadow,background-color] select-none ${
             activeTab === 'logs' 
-              ? 'bg-feedback-success border-feedback-success-edge text-white' 
-              : 'bg-ui-surface border-ui-divider text-ui-ink hover:bg-ui-hover'
+              ? 'bg-feedback-success text-white shadow-[0_var(--depth-sm)_0_var(--color-feedback-success-edge)] active:shadow-none active:translate-y-[length:var(--depth-sm)]' 
+              : 'bg-ui-surface text-ui-ink border border-ui-divider hover:bg-ui-hover'
           }`}
         >
           Active Log Stream & Errors
         </button>
         <button 
           onClick={() => setActiveTab('mnemonics')}
-          className={`px-4 py-2 text-xs md:text-sm font-black uppercase tracking-wide rounded-control border-b-[length:var(--depth-sm)] active:border-b-0 active:translate-y-[length:var(--depth-sm)] transition-all select-none ${
+          className={`px-4 py-2 text-xs md:text-sm font-black uppercase tracking-wide rounded-control transition-[transform,box-shadow,background-color] select-none ${
             activeTab === 'mnemonics' 
-              ? 'bg-feedback-success border-feedback-success-edge text-white' 
-              : 'bg-ui-surface border-ui-divider text-ui-ink hover:bg-ui-hover'
+              ? 'bg-feedback-success text-white shadow-[0_var(--depth-sm)_0_var(--color-feedback-success-edge)] active:shadow-none active:translate-y-[length:var(--depth-sm)]' 
+              : 'bg-ui-surface text-ui-ink border border-ui-divider hover:bg-ui-hover'
           }`}
         >
           Mnemonic Cache ({mnemonics.length})
         </button>
         <button 
           onClick={() => setActiveTab('icons')}
-          className={`px-4 py-2 text-xs md:text-sm font-black uppercase tracking-wide rounded-control border-b-[length:var(--depth-sm)] active:border-b-0 active:translate-y-[length:var(--depth-sm)] transition-all select-none ${
+          className={`px-4 py-2 text-xs md:text-sm font-black uppercase tracking-wide rounded-control transition-[transform,box-shadow,background-color] select-none ${
             activeTab === 'icons' 
-              ? 'bg-feedback-success border-feedback-success-edge text-white' 
-              : 'bg-ui-surface border-ui-divider text-ui-ink hover:bg-ui-hover'
+              ? 'bg-feedback-success text-white shadow-[0_var(--depth-sm)_0_var(--color-feedback-success-edge)] active:shadow-none active:translate-y-[length:var(--depth-sm)]' 
+              : 'bg-ui-surface text-ui-ink border border-ui-divider hover:bg-ui-hover'
           }`}
         >
           UI Icons List
+        </button>
+        <button 
+          onClick={() => setActiveTab('skeletons')}
+          className={`px-4 py-2 text-xs md:text-sm font-black uppercase tracking-wide rounded-control transition-[transform,box-shadow,background-color] select-none ${
+            activeTab === 'skeletons' 
+              ? 'bg-feedback-success text-white shadow-[0_var(--depth-sm)_0_var(--color-feedback-success-edge)] active:shadow-none active:translate-y-[length:var(--depth-sm)]' 
+              : 'bg-ui-surface text-ui-ink border border-ui-divider hover:bg-ui-hover'
+          }`}
+        >
+          Skeletons Preview
         </button>
       </div>
 
@@ -146,7 +164,7 @@ export const DebugWindow = () => {
               {logs.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-12 px-6 bg-ui-surface border-2 border-dashed border-ui-divider rounded-feature text-center">
                   <p className="font-bold text-ui-ink">No active logs captured yet.</p>
-                  <p className="text-xs text-ui-muted mt-1 max-w-sm">Interact with flashcards or trigger AI story generation to watch background API processes stream live right here.</p>
+                  <p className="text-xs font-bold text-ui-muted-strong mt-1 max-w-sm">Interact with flashcards or trigger AI story generation to watch background API processes stream live right here.</p>
                 </div>
               ) : (
                 logs.map((log) => (
@@ -197,19 +215,19 @@ export const DebugWindow = () => {
 
         {activeTab === 'mnemonics' && (
           <div className="h-full overflow-y-auto pb-24 space-y-4">
-            <div className="text-sm text-ui-muted bg-feedback-warning/10 p-4 border border-feedback-warning-edge/30 rounded-control">
+            <div className="text-sm font-bold text-ui-muted-strong bg-feedback-warning/10 p-4 border border-feedback-warning-edge/30 rounded-control">
               <strong>Mnemonics Cache:</strong> Memory hooks generated by the AI are globally cached in Supabase (table: <code>mnemonics</code>). Dictionary entries (pinyin, meanings, character breakdowns) are also cached in Supabase.
             </div>
 
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-ui-surface p-4 rounded-feature border-b-[length:var(--depth-md)] border-ui-border gap-4">
               <div>
                 <h4 className="font-extrabold text-ui-ink text-sm">GLOBAL DATABASE CONTROLS</h4>
-                <p className="text-xs text-ui-muted">{mnemonics.length} items currently in the active mnemonics cache.</p>
+                <p className="text-xs font-bold text-ui-muted-strong">{mnemonics.length} items currently in the active mnemonics cache.</p>
               </div>
               {!showConfirmDelete ? (
                 <button
                   onClick={() => setShowConfirmDelete(true)}
-                  className="px-4 py-2 bg-feedback-danger border-b-[length:var(--depth-md)] border-feedback-danger-edge active:border-b-0 active:translate-y-[length:var(--depth-md)] text-white text-xs font-black uppercase rounded-control transition-all hover:brightness-110 select-none"
+                  className="px-4 py-2 bg-feedback-danger shadow-[0_var(--depth-md)_0_var(--color-feedback-danger-edge)] active:shadow-none active:translate-y-[length:var(--depth-md)] text-white text-xs font-black uppercase rounded-control transition-[transform,box-shadow,filter] hover:brightness-110 select-none"
                 >
                   Clear All Mnemonics
                 </button>
@@ -217,13 +235,13 @@ export const DebugWindow = () => {
                 <div className="flex gap-2">
                   <button
                     onClick={clearAllMnemonicsFromDb}
-                    className="px-3 py-2 bg-feedback-success border-b-[length:var(--depth-md)] border-feedback-success-edge active:border-b-0 active:translate-y-[length:var(--depth-md)] text-white text-xs font-black uppercase rounded-control transition-all hover:brightness-110 select-none"
+                    className="px-3 py-2 bg-feedback-success shadow-[0_var(--depth-md)_0_var(--color-feedback-success-edge)] active:shadow-none active:translate-y-[length:var(--depth-md)] text-white text-xs font-black uppercase rounded-control transition-[transform,box-shadow,filter] hover:brightness-110 select-none"
                   >
                     Confirm Delete
                   </button>
                   <button
                     onClick={() => setShowConfirmDelete(false)}
-                    className="px-3 py-2 bg-ui-surface border-b-[length:var(--depth-md)] border-ui-border active:border-b-0 active:translate-y-[length:var(--depth-md)] text-ui-ink text-xs font-black uppercase rounded-control transition-all hover:bg-ui-hover select-none"
+                    className="px-3 py-2 bg-ui-surface border border-ui-border shadow-[0_var(--depth-md)_0_var(--color-ui-border)] active:shadow-none active:translate-y-[length:var(--depth-md)] text-ui-ink text-xs font-black uppercase rounded-control transition-[transform,box-shadow,background-color] hover:bg-ui-hover select-none"
                   >
                     Cancel
                   </button>
@@ -254,7 +272,7 @@ export const DebugWindow = () => {
                 </div>
               ))
             ) : (
-              <div className="text-center py-12 text-ui-muted bg-ui-surface border-2 border-dashed border-ui-divider rounded-feature font-bold">
+              <div className="text-center py-12 text-ui-muted-strong bg-ui-surface border-2 border-dashed border-ui-divider rounded-feature font-bold">
                 No mnemonics found in the global cache.
               </div>
             )}
@@ -274,6 +292,84 @@ export const DebugWindow = () => {
                   </p>
                 </div>
               ))}
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'skeletons' && (
+          <div className="h-full flex flex-col min-h-0">
+            <div className="flex flex-wrap gap-2 pb-4 border-b border-ui-divider mb-4 shrink-0">
+              {[
+                { id: 'quiz', label: 'Quiz (ScreenSkeleton)' },
+                { id: 'listening', label: 'Listening (ScreenSkeleton)' },
+                { id: 'flashcard', label: 'Flashcard (ScreenSkeleton)' },
+                { id: 'writing', label: 'Writing (ScreenSkeleton)' },
+                { id: 'dictionary', label: 'Word Detail (WordDetailSkeleton)' },
+                { id: 'breakdown', label: 'Character Breakdown (BreakdownSkeleton)' },
+                { id: 'curriculum', label: 'Curriculum (CurriculumSkeleton)' },
+                { id: 'library', label: 'Library (LibrarySkeleton)' },
+                { id: 'profile', label: 'Profile (ProfileSkeleton)' },
+              ].map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => setSelectedSkeleton(item.id)}
+                  className={`px-3 py-1.5 text-xs font-black uppercase rounded-control border-b-[length:var(--depth-sm)] transition-all ${
+                    selectedSkeleton === item.id
+                      ? 'bg-ui-ink border-ui-ink text-white'
+                      : 'bg-ui-surface border-ui-divider text-ui-ink hover:bg-ui-hover'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="flex-1 overflow-y-auto relative rounded-feature border border-ui-divider bg-ui-canvas p-6 min-h-[500px]">
+              {selectedSkeleton === 'quiz' && (
+                <div className="relative h-[650px] w-full max-w-2xl mx-auto overflow-hidden border border-ui-border rounded-feature bg-ui-canvas">
+                  <ScreenSkeleton type="quiz" />
+                </div>
+              )}
+              {selectedSkeleton === 'listening' && (
+                <div className="relative h-[650px] w-full max-w-2xl mx-auto overflow-hidden border border-ui-border rounded-feature bg-ui-canvas">
+                  <ScreenSkeleton type="listening" />
+                </div>
+              )}
+              {selectedSkeleton === 'flashcard' && (
+                <div className="relative h-[650px] w-full max-w-2xl mx-auto overflow-hidden border border-ui-border rounded-feature bg-ui-canvas">
+                  <ScreenSkeleton type="flashcard" />
+                </div>
+              )}
+              {selectedSkeleton === 'writing' && (
+                <div className="relative h-[650px] w-full max-w-2xl mx-auto overflow-hidden border border-ui-border rounded-feature bg-ui-canvas">
+                  <ScreenSkeleton type="writing" />
+                </div>
+              )}
+              {selectedSkeleton === 'dictionary' && (
+                <div className="w-full max-w-4xl mx-auto">
+                  <WordDetailSkeleton />
+                </div>
+              )}
+              {selectedSkeleton === 'breakdown' && (
+                <div className="w-full max-w-4xl mx-auto">
+                  <BreakdownSkeleton />
+                </div>
+              )}
+              {selectedSkeleton === 'curriculum' && (
+                <div className="w-full max-w-4xl mx-auto">
+                  <CurriculumSkeleton hasStarterLesson />
+                </div>
+              )}
+              {selectedSkeleton === 'library' && (
+                <div className="w-full max-w-4xl mx-auto">
+                  <LibrarySkeleton />
+                </div>
+              )}
+              {selectedSkeleton === 'profile' && (
+                <div className="w-full max-w-2xl mx-auto">
+                  <ProfileSkeleton />
+                </div>
+              )}
             </div>
           </div>
         )}

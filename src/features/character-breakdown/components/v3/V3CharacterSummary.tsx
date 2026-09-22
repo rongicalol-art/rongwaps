@@ -21,7 +21,7 @@ export function V3CharacterSummary({
   const meaning = data?.definition || courseCard?.back;
 
   return (
-    <header className="relative isolate min-w-0 overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
+    <header className="relative isolate min-w-0 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
         <div className="grid grid-cols-[112px_minmax(0,1fr)] items-center gap-4 p-4 sm:gap-7 sm:p-6 lg:gap-8">
           <StrokeOrderBox char={character} size={112} accentHex={accentHex} className="shrink-0 bg-ui-canvas/55" />
           <div className="relative min-w-0 text-left">

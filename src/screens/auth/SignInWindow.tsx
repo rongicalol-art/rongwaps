@@ -1,12 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { motion, useReducedMotion } from 'motion/react';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
-import { useModalFocus } from '../../hooks/useModalFocus';
 import {
   ActionButton,
   AppIcon,
   BrandWordmark,
+  Dialog,
   IconActionButton,
   VideoBackground,
 } from '../../lib/widgets';
@@ -23,15 +21,6 @@ export function SignInWindow({ onClose }: SignInWindowProps = {}) {
   const { currentUser, loginWithGoogle, isLoading } = useAuth();
   const [authError, setAuthError] = useState<string | null>(null);
   const [isSigningIn, setIsSigningIn] = useState(false);
-  const reduceMotion = useReducedMotion();
-  const dialogRef = useRef<HTMLDivElement>(null);
-  // Focus trap, initial focus and focus restore for the declared aria-modal
-  // contract; Escape is ignored mid sign-in so the request cannot be abandoned.
-  const modalFocus = useModalFocus({
-    containerRef: dialogRef,
-    isActive: true,
-    onEscape: isSigningIn || !onClose ? undefined : onClose,
-  });
 
   // Auto-close as soon as a session appears if onClose callback was provided.
   useEffect(() => {
@@ -55,27 +44,21 @@ export function SignInWindow({ onClose }: SignInWindowProps = {}) {
     }
   };
 
-  return createPortal(
-    <motion.div
-      ref={dialogRef}
-      role="dialog"
-      aria-modal="true"
-      aria-label="Sign in"
-      tabIndex={-1}
-      onKeyDown={modalFocus.onKeyDown}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: reduceMotion ? 0 : 0.2 }}
-      className="fixed inset-0 z-auth flex items-center justify-center p-4 md:p-8 bg-ui-ink/40 backdrop-blur-sm"
-      onClick={(e) => {
-        if (e.target === e.currentTarget && !isSigningIn && onClose) onClose();
-      }}
+  return (
+    <Dialog.Root
+      open={true}
+      onClose={onClose}
+      zIndexClassName="z-auth"
     >
-      <div
-        className="relative flex w-full max-w-3xl flex-col overflow-hidden rounded-feature border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface shadow-ambient-lg md:flex-row md:min-h-[460px]"
-        onClick={(e) => e.stopPropagation()}
+      <Dialog.Backdrop closeOnClick={!isSigningIn && Boolean(onClose)} />
+      <Dialog.Content
+        size="3xl"
+        depth="xl"
+        ariaLabel="Sign in"
+        closeOnEscape={!isSigningIn && Boolean(onClose)}
+        className="p-0 overflow-hidden rounded-feature md:min-h-[460px] max-h-none"
       >
+      <div className="relative flex w-full flex-col overflow-hidden md:flex-row md:min-h-[460px]">
         {/* Left column: Looping video + Welcome copy */}
         <div className="relative flex min-h-[220px] flex-col justify-between overflow-hidden p-6 sm:p-8 md:min-h-[460px] md:w-1/2">
           <VideoBackground
@@ -94,8 +77,6 @@ export function SignInWindow({ onClose }: SignInWindowProps = {}) {
 
           {/* Welcoming value proposition */}
           <div className="relative z-10 mt-auto pt-6 text-white">
-            {/* Marketing line, not a heading: keeps the dialog's single h1 as
-                the first heading in the outline (WCAG 1.3.1). */}
             <p className="text-2xl font-black tracking-tight text-white drop-shadow-sm sm:text-3xl md:text-4xl">
               Welcome back!
             </p>
@@ -124,7 +105,7 @@ export function SignInWindow({ onClose }: SignInWindowProps = {}) {
             <h1 className="text-2xl font-black tracking-tight text-ui-ink-strong md:text-3xl">
               Sign In
             </h1>
-            <p className="mt-1.5 text-sm font-semibold text-ui-muted-strong">
+            <p className="mt-1.5 text-sm font-bold text-ui-muted-strong">
               Sign in with Google to sync your learning progress.
             </p>
 
@@ -165,12 +146,12 @@ export function SignInWindow({ onClose }: SignInWindowProps = {}) {
           </div>
 
           {/* Quiet footer note */}
-          <p className="mt-auto pt-4 text-center text-xs font-semibold text-ui-muted">
+          <p className="mt-auto pt-4 text-center text-xs font-bold text-ui-muted-strong">
             Free forever. Learning works with or without an account.
           </p>
         </div>
       </div>
-    </motion.div>,
-    document.body,
+    </Dialog.Content>
+  </Dialog.Root>
   );
 }

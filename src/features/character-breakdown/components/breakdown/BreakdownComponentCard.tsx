@@ -46,7 +46,7 @@ export const BreakdownComponentCard: React.FC<BreakdownComponentCardProps> = ({
       onClick={() => {
         setDictionaryWord(c);
       }}
-      className={`group relative flex min-h-[110px] w-full flex-col items-center justify-center overflow-hidden rounded-feature border-2 border-ui-border bg-ui-surface p-3 shadow-[0_var(--depth-md)_0_var(--color-ui-border)] transition-[transform,background-color,border-color,box-shadow] hover:bg-ui-surface-hover active:translate-y-[length:var(--depth-md)] active:shadow-none focus-ring sm:min-h-[120px]`}
+      className={`group relative flex min-h-[110px] w-full flex-col items-center justify-center overflow-hidden rounded-feature border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface p-3 transition-[transform,background-color,border-color] hover:bg-ui-surface-hover active:scale-[0.98] focus-ring sm:min-h-[120px]`}
     >
       <div className="mb-1.5 flex h-[18px] w-full items-center justify-center gap-1.5 px-1 text-xs font-bold leading-none tracking-widest text-ui-muted">
         <div className="flex items-center justify-center h-[18px] min-w-8">

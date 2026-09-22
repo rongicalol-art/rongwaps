@@ -48,7 +48,7 @@ function SpellCardBase({ item, activeTab, onRemove, onOpen, index }: SpellCardPr
       transition={{ delay: Math.min(index * 0.04, 0.2), duration: 0.2 }}
       className="group relative h-full select-none rounded-feature"
     >
-      <article className="relative flex h-full flex-col overflow-hidden rounded-feature bg-ui-surface border-b-[length:var(--depth-md)] border-ui-border transition-[transform,background-color,border-color] duration-200 hover:bg-ui-hover active:translate-y-[length:var(--depth-md)] active:border-b-0">
+      <article className="relative flex h-full flex-col overflow-hidden rounded-feature border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface transition-[transform,background-color,border-color] duration-150 hover:bg-ui-hover active:scale-[0.98]">
         <button
           type="button"
           onClick={() => onOpen(item)}
@@ -84,7 +84,7 @@ function SpellCardBase({ item, activeTab, onRemove, onOpen, index }: SpellCardPr
           )}
 
           {definition && (
-            <span className="text-sm font-semibold text-ui-muted-strong leading-snug text-center">
+            <span className="text-sm font-bold text-ui-muted-strong leading-snug text-center">
               {definition}
             </span>
           )}

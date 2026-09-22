@@ -1,7 +1,8 @@
-import { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { AppIcon, ToggleSwitch } from '../../../lib/widgets';
+import { motion } from 'motion/react';
+import { AppIcon } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
+import { AudioScrubberTrack } from './AudioScrubberTrack';
+import { ReadingAudioPopover } from './ReadingAudioPopover';
 
 interface ReadingBottomDockProps {
   isVisible?: boolean;
@@ -10,16 +11,16 @@ interface ReadingBottomDockProps {
   totalDuration: number;
   playbackSpeed: number;
   canKaraoke: boolean;
+  isLooping?: boolean;
   showPinyin: boolean;
   showMeaning: boolean;
   onTogglePlay: () => void;
   onSeek: (time: number) => void;
   onScrub?: (time: number) => void;
   onCycleSpeed: () => void;
+  onToggleLoop?: () => void;
   onTogglePinyin: () => void;
   onToggleMeaning: () => void;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
 }
 
 function formatTime(seconds: number): string {
@@ -29,46 +30,6 @@ function formatTime(seconds: number): string {
   return `${mins}:${secs.toString().padStart(2, '0')}`;
 }
 
-/** Animated waveform bars — lightweight CSS animation while playing */
-function WaveformBars({ playing, active, onClick }: { playing: boolean; active?: boolean; onClick?: () => void }) {
-  const bars = [
-    { height: 7, delay: '0s' },
-    { height: 13, delay: '0.1s' },
-    { height: 10, delay: '0.2s' },
-    { height: 16, delay: '0.05s' },
-    { height: 8, delay: '0.15s' },
-  ];
-
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-label="Toggle controls"
-      aria-pressed={active}
-      className={cn(
-        'shrink-0 flex items-center gap-[2.5px] h-5 px-1 rounded-compact transition-opacity focus-ring-inline',
-        active ? 'opacity-100' : 'opacity-60 hover:opacity-90',
-      )}
-    >
-      {bars.map((bar, i) => (
-        <span
-          key={i}
-          className={cn(
-            'block w-[2.5px] rounded-full transition-transform duration-200',
-            active ? 'bg-brand-primary' : 'bg-brand-primary/70',
-            playing ? 'animate-pulse' : 'scale-y-[0.3] opacity-30',
-          )}
-          style={{
-            height: bar.height,
-            animationDelay: bar.delay,
-            animationDuration: '0.8s',
-          }}
-        />
-      ))}
-    </button>
-  );
-}
-
 export function ReadingBottomDock({
   isVisible = true,
   playing,
@@ -76,226 +37,90 @@ export function ReadingBottomDock({
   totalDuration,
   playbackSpeed,
   canKaraoke,
+  isLooping = false,
   showPinyin,
   showMeaning,
   onTogglePlay,
   onSeek,
   onScrub,
   onCycleSpeed,
+  onToggleLoop,
   onTogglePinyin,
   onToggleMeaning,
-  onMouseEnter,
-  onMouseLeave,
 }: ReadingBottomDockProps) {
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragTime, setDragTime] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isControlsOpen, setIsControlsOpen] = useState(false);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const controlsRef = useRef<HTMLDivElement>(null);
-
-  const toggleControls = () => setIsControlsOpen((o) => !o);
-
-  useEffect(() => {
-    if (!isControlsOpen) return;
-    const handlePointerDown = (e: PointerEvent) => {
-      if (!controlsRef.current?.contains(e.target as Node)) setIsControlsOpen(false);
-    };
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsControlsOpen(false);
-    };
-    document.addEventListener('pointerdown', handlePointerDown);
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('pointerdown', handlePointerDown);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isControlsOpen]);
-
-  const progressPercent = totalDuration > 0 ? (currentTime / totalDuration) * 100 : 0;
-  const displayTime = isDragging ? dragTime : currentTime;
-
-  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    if (!trackRef.current || totalDuration <= 0) return;
-    setIsDragging(true);
-    const rect = trackRef.current.getBoundingClientRect();
-    const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-    const nextTime = ratio * totalDuration;
-    setDragTime(nextTime);
-    onScrub?.(nextTime);
-  };
-
-  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!isDragging || !trackRef.current || totalDuration <= 0) return;
-    const rect = trackRef.current.getBoundingClientRect();
-    const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-    const nextTime = ratio * totalDuration;
-    setDragTime(nextTime);
-    onScrub?.(nextTime);
-  };
-
-  const handlePointerUp = () => {
-    if (isDragging) {
-      setIsDragging(false);
-      onSeek(dragTime);
-    }
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'ArrowLeft') { e.preventDefault(); onSeek(Math.max(0, currentTime - 3)); }
-    else if (e.key === 'ArrowRight') { e.preventDefault(); onSeek(Math.min(totalDuration, currentTime + 3)); }
-  };
-
-
   return (
     <motion.div
       animate={{ y: isVisible ? 0 : 180 }}
       transition={{ type: 'spring', stiffness: 600, damping: 40, mass: 0.4 }}
-      className="pointer-events-none absolute bottom-4 inset-x-0 z-40 flex justify-center px-3 sm:bottom-6 sm:px-4"
+      className="pointer-events-none absolute bottom-dock-safe inset-x-0 z-40 flex justify-center px-3 sm:px-4"
     >
       {/* Canvas fade behind dock */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-16 inset-x-0 -bottom-6 -z-10 bg-gradient-to-t from-ui-practice-canvas via-ui-practice-canvas/85 to-transparent"
+        className="pointer-events-none absolute -top-16 inset-x-0 -bottom-8 -z-10 bg-gradient-to-t from-ui-practice-canvas via-ui-practice-canvas/85 to-transparent"
       />
 
       <nav
         aria-label="Audio Playback and Reading Controls"
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
         className={cn(
-          'relative flex w-full max-w-lg flex-col gap-2',
-          isVisible ? 'pointer-events-auto' : 'pointer-events-none',
+          'relative flex w-full max-w-xl flex-col gap-2',
+          isVisible ? 'pointer-events-auto' : 'pointer-events-none'
         )}
       >
-
-        {/* ── Hero scrubber pill ── */}
-        <div className="flex items-center gap-3 rounded-full bg-ui-surface px-3 py-2.5 border-b-[length:var(--depth-md)] border-b-ui-border">
-          {/* Play / Pause */}
+        {/* Main Playback Pill */}
+        <div className="dock-pill flex items-center gap-2.5 rounded-full border-b-[length:var(--depth-md)] border-b-ui-border bg-ui-surface px-3 py-1.5 shadow-ambient-md sm:gap-3">
+          {/* Primary Play / Pause button with stationary 3D base */}
           <button
             type="button"
             onClick={onTogglePlay}
             aria-label={playing ? 'Pause dialogue' : 'Play dialogue'}
-            className="shrink-0 flex h-9 w-9 items-center justify-center rounded-full bg-brand-primary text-white transition-all hover:brightness-105 active:scale-95 focus-ring"
+            className="group relative flex h-10 w-10 shrink-0 items-stretch justify-center rounded-full border-none bg-transparent p-0 outline-none select-none focus-ring sm:h-11 sm:w-11"
           >
-            <AppIcon name={playing ? 'pause' : 'play'} size={18} />
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 top-[length:var(--depth-sm)] rounded-full bg-brand-primary-edge"
+            />
+            <span className="relative mb-[length:var(--depth-sm)] flex flex-1 items-center justify-center rounded-full bg-brand-primary text-white shadow-ambient-sm transition-all duration-75 group-hover:brightness-105 group-active:translate-y-[length:var(--depth-sm)]">
+              <AppIcon
+                name={playing ? 'pause' : 'play'}
+                size={20}
+                className={cn(!playing && 'translate-x-0.5')}
+              />
+            </span>
           </button>
 
           {/* Current time */}
-          <span className="w-8 shrink-0 text-left text-xs font-bold tabular-nums text-ui-muted select-none">
-            {formatTime(displayTime)}
+          <span className="min-w-[34px] shrink-0 text-left text-xs font-bold tabular-nums text-ui-ink select-none">
+            {formatTime(currentTime)}
           </span>
 
           {/* Scrubber track */}
-          {canKaraoke && totalDuration > 0 ? (
-            <div
-              ref={trackRef}
-              role="slider"
-              tabIndex={0}
-              aria-label="Playback progress"
-              aria-valuemin={0}
-              aria-valuemax={totalDuration}
-              aria-valuenow={displayTime}
-              aria-valuetext={`${formatTime(displayTime)} of ${formatTime(totalDuration)}`}
-              onKeyDown={handleKeyDown}
-              onPointerDown={handlePointerDown}
-              onPointerMove={handlePointerMove}
-              onPointerUp={handlePointerUp}
-              onPointerCancel={handlePointerUp}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-              className="group relative flex h-5 flex-1 cursor-pointer touch-none select-none items-center outline-none focus-ring-inline"
-            >
-              <div className="relative h-1.5 w-full rounded-full bg-ui-border/70 transition-[height] duration-150 ease-out group-hover:h-2 group-active:h-2">
-                <div
-                  className="h-full rounded-full bg-brand-primary"
-                  style={{ width: `${progressPercent}%` }}
-                />
-                <div
-                  className={cn(
-                    'pointer-events-none absolute top-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full bg-brand-primary shadow-sm transition-all duration-100',
-                    isDragging || isHovered
-                      ? 'h-4 w-4 scale-110'
-                      : 'h-3 w-3 group-hover:h-3.5 group-hover:w-3.5',
-                  )}
-                  style={{ left: `${progressPercent}%` }}
-                >
-                  {isDragging && (
-                    <div className="absolute -top-7 left-1/2 -translate-x-1/2 rounded-control bg-ui-ink px-2 py-0.5 text-xs font-black text-ui-surface tabular-nums whitespace-nowrap">
-                      {formatTime(dragTime)}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className="flex-1 h-1.5 rounded-full bg-ui-border/35" />
-          )}
+          <AudioScrubberTrack
+            currentTime={currentTime}
+            totalDuration={totalDuration}
+            canKaraoke={canKaraoke}
+            onSeek={onSeek}
+            onScrub={onScrub}
+          />
 
           {/* Total duration */}
-          <span className="w-8 shrink-0 text-right text-xs font-bold tabular-nums text-ui-muted select-none">
+          <span className="min-w-[34px] shrink-0 text-right text-xs font-bold tabular-nums text-ui-muted select-none">
             {canKaraoke && totalDuration > 0 ? formatTime(totalDuration) : '--:--'}
           </span>
 
-          {/* Waveform — tap to open controls popover */}
-          <div ref={controlsRef} className="relative shrink-0">
-            <WaveformBars playing={playing && canKaraoke} active={isControlsOpen} onClick={toggleControls} />
-
-            <AnimatePresence>
-              {isControlsOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 6, scale: 0.97 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 4, scale: 0.97 }}
-                  transition={{ duration: 0.16, ease: [0.32, 0.72, 0, 1] }}
-                  className="absolute right-0 bottom-full z-50 mb-3 w-56 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-2 shadow-ambient-lg"
-                >
-                  <div className="flex flex-col gap-1">
-                    {/* Speed row */}
-                    <button
-                      type="button"
-                      onClick={onCycleSpeed}
-                      className="flex min-h-11 w-full items-center justify-between rounded-compact px-4 py-2.5 text-sm font-extrabold text-ui-ink-strong hover:bg-ui-hover transition-colors outline-none focus-ring"
-                    >
-                      <span>Speed</span>
-                      <span className="text-brand-primary tabular-nums">{playbackSpeed}×</span>
-                    </button>
-
-                    {/* Pinyin toggle */}
-                    <button
-                      type="button"
-                      role="switch"
-                      aria-checked={showPinyin}
-                      onClick={onTogglePinyin}
-                      className={cn(
-                        'flex min-h-11 w-full items-center justify-between rounded-compact px-4 py-2.5 text-sm font-extrabold transition-colors outline-none focus-ring',
-                        showPinyin ? 'bg-brand-primary/10 text-brand-primary' : 'text-ui-ink-strong hover:bg-ui-hover',
-                      )}
-                    >
-                      <span>Pinyin</span>
-                      <ToggleSwitch checked={showPinyin} />
-                    </button>
-
-                    {/* Translation toggle */}
-                    <button
-                      type="button"
-                      role="switch"
-                      aria-checked={showMeaning}
-                      onClick={onToggleMeaning}
-                      className={cn(
-                        'flex min-h-11 w-full items-center justify-between rounded-compact px-4 py-2.5 text-sm font-extrabold transition-colors outline-none focus-ring',
-                        showMeaning ? 'bg-brand-primary/10 text-brand-primary' : 'text-ui-ink-strong hover:bg-ui-hover',
-                      )}
-                    >
-                      <span>Translation</span>
-                      <ToggleSwitch checked={showMeaning} />
-                    </button>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+          {/* Waveform & Settings Popover */}
+          <ReadingAudioPopover
+            playing={playing}
+            canKaraoke={canKaraoke}
+            playbackSpeed={playbackSpeed}
+            isLooping={isLooping}
+            showPinyin={showPinyin}
+            showMeaning={showMeaning}
+            onCycleSpeed={onCycleSpeed}
+            onToggleLoop={onToggleLoop}
+            onTogglePinyin={onTogglePinyin}
+            onToggleMeaning={onToggleMeaning}
+          />
         </div>
       </nav>
     </motion.div>

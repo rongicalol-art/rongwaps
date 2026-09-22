@@ -26,7 +26,7 @@ export function StrokeOrderBox({ char, size = 140, accentHex = DESIGN_TOKENS.col
     const container = containerRef.current;
     let canceled = false;
 
-    const resolvedStrokeColor = resolveDesignTokenColor(accentHex, '#1CB0F6');
+    const resolvedStrokeColor = resolveDesignTokenColor(accentHex, '#0284C7');
     const resolvedOutlineColor = resolveDesignTokenColor(DESIGN_TOKENS.color.border, '#C3C8CC');
 
     // Load hanzi-writer on first use so it is code-split out of the main bundle.
@@ -95,7 +95,7 @@ export function StrokeOrderBox({ char, size = 140, accentHex = DESIGN_TOKENS.col
           <span
             aria-hidden="true"
             className="absolute inset-0 z-20 flex items-center justify-center font-chinese font-black leading-none"
-            style={{ fontSize: size * 0.62, color: resolveDesignTokenColor(accentHex, '#1CB0F6') }}
+            style={{ fontSize: size * 0.62, color: resolveDesignTokenColor(accentHex, '#0284C7') }}
           >
             {char}
           </span>

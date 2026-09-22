@@ -18,7 +18,7 @@ export function EmptyReviewState({ onClose, accentBg, buttonEdge, title = "You'r
           <AppIcon name="sparkles" size={44} />
         </div>
         <h2 className="text-2xl font-extrabold text-ui-ink tracking-tight">{title}</h2>
-        <p className="text-ui-muted text-[15px] font-bold mt-2">
+        <p className="text-ui-muted-strong text-[15px] font-bold mt-2">
           {message}
         </p>
         <div className="mt-12 flex flex-col gap-4 w-full max-w-xs px-4">

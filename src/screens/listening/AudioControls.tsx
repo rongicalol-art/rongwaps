@@ -18,8 +18,10 @@ export function AudioControls({ isPlaying, playAudio, activeBook }: AudioControl
       <button
         type="button"
         onClick={() => playAudio()}
-        aria-label={isPlaying ? 'Replay pronunciation' : 'Play pronunciation'}
-        className={`relative flex h-[130px] w-[130px] items-center justify-center rounded-modal border-b-[length:var(--depth-xl)] ${activeBook.buttonEdge} ${activeBook.accentBg} text-white outline-none transition-[transform,border-width,filter] focus-ring ${isPlaying ? 'translate-y-[length:var(--depth-xl)] border-b-0' : 'hover:brightness-105 active:translate-y-[length:var(--depth-xl)] active:border-b-0'}`}
+        style={{
+          boxShadow: isPlaying ? 'none' : `0 var(--depth-xl) 0 ${activeBook.edgeHex}`,
+        }}
+        className={`relative flex h-[130px] w-[130px] items-center justify-center rounded-modal ${activeBook.accentBg} text-white outline-none transition-[transform,filter,box-shadow] duration-150 focus-ring ${isPlaying ? 'translate-y-[length:var(--depth-xl)]' : 'hover:brightness-105 active:translate-y-[length:var(--depth-xl)] active:!shadow-none'}`}
       >
         <AppIcon name="pronounce" size={72} />
         

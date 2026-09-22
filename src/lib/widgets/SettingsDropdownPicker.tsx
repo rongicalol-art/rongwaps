@@ -50,7 +50,7 @@ export function SettingsDropdownPicker<T extends string>({
           <button
             {...triggerProps}
             aria-label={ariaLabel}
-            className="flex w-full items-center justify-between gap-3 rounded-control border-2 border-ui-border bg-ui-surface px-4 py-2.5 shadow-[0_var(--depth-md)_0_var(--color-ui-border)] outline-none transition-shadow focus-ring active:shadow-none active:translate-y-[length:var(--depth-md)]"
+            className="flex w-full items-center justify-between gap-3 rounded-control border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface px-4 py-2.5 outline-none transition-[background-color,border-color] hover:bg-ui-hover focus-ring active:scale-[0.99]"
           >
             <span className="truncate text-sm font-black uppercase tracking-widest text-ui-muted-strong">
               {current?.label}

@@ -7,6 +7,7 @@ import {
   type RankedExample,
 } from '../../../utils/courseExamples';
 import { numberToToneMarks } from '../../../utils/pinyin';
+import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
 
 interface FlashcardExamplesProps {
   /** Every search form (both scripts, fully expanded, longest-first). */
@@ -80,7 +81,7 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
         </p>
       )}
       {showTranslation && example.english && (
-        <p className="text-sm sm:text-[15px] font-medium leading-relaxed text-ui-muted-strong/90">
+        <p className="ui-translation text-sm sm:text-[15px]">
           {example.english}
         </p>
       )}
@@ -121,6 +122,8 @@ export const FlashcardExamples = memo(function FlashcardExamples({
   showTranslation,
 }: FlashcardExamplesProps) {
   const reduceMotion = useReducedMotion();
+  const hideExamplePinyin = usePracticePreferencesStore((state) => state.hideExamplePinyin);
+  const showExamplePinyin = showPinyin && !hideExamplePinyin;
 
   const { topMatch, bookBlocks } = useMemo(() => {
     const groups = groupRankedExamples(examples);
@@ -171,7 +174,7 @@ export const FlashcardExamples = memo(function FlashcardExamples({
                   key={`top-${example.sourceCardId}-${example.chinese}-${index}`}
                   example={example}
                   highlightTerms={searchTerms}
-                  showPinyin={showPinyin}
+                  showPinyin={showExamplePinyin}
                   showTranslation={showTranslation}
                   isTopPick
                   divider={divider}
@@ -201,7 +204,7 @@ export const FlashcardExamples = memo(function FlashcardExamples({
                     key={`${example.sourceCardId}-${example.chinese}-${index}`}
                     example={example}
                     highlightTerms={searchTerms}
-                    showPinyin={showPinyin}
+                    showPinyin={showExamplePinyin}
                     showTranslation={showTranslation}
                     divider={divider}
                     className="px-6 py-4 sm:px-8 sm:py-4.5"

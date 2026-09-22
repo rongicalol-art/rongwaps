@@ -12,18 +12,12 @@ export interface GrammarFocusTextProps extends Omit<HTMLAttributes<HTMLSpanEleme
   onOpenWord?: (word: string) => void;
 }
 
-const variantClasses = {
-  title: 'font-chinese font-black text-brand-primary',
-  body: 'font-chinese font-black text-brand-primary',
-  sentence: 'font-chinese font-black text-brand-primary',
-} as const;
-
 const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const CJK_REGEX = /[\u3400-\u9FFF\uF900-\uFAFF]/;
 
 export function GrammarFocusText({
   text,
   terms = [],
-  variant = 'body',
   className,
   contextTokens,
   characterPreference,
@@ -52,7 +46,13 @@ export function GrammarFocusText({
   return (
     <span className={className} {...props}>
       {parts.map((part, index) => focusSet.has(part) ? (
-        <mark key={`${part}-${index}`} className={cn('box-decoration-clone', variantClasses[variant])}>
+        <mark
+          key={`${part}-${index}`}
+          className={cn(
+            'box-decoration-clone font-black text-brand-primary',
+            CJK_REGEX.test(part) ? 'font-chinese' : 'font-sans',
+          )}
+        >
           {part}
         </mark>
       ) : part)}

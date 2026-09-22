@@ -48,7 +48,7 @@ export function HanziCanvas({
   useEffect(() => {
     if (!containerRef.current) return;
     let canceled = false;
-    const resolvedStrokeColor = resolveDesignTokenColor(accentHex, '#1CB0F6');
+    const resolvedStrokeColor = resolveDesignTokenColor(accentHex, '#0284C7');
     const resolvedDangerColor = resolveDesignTokenColor(DESIGN_TOKENS.color.feedback.danger, '#FF4B4B');
     const resolvedOutlineColor = resolveDesignTokenColor(DESIGN_TOKENS.color.border, '#C3C8CC');
 

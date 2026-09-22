@@ -1,9 +1,21 @@
 import type { UserFlashcard } from '../../types/models';
 
+export interface SaveWordTarget {
+  word: string;
+  traditional?: string;
+  simplified?: string;
+  pinyin?: string;
+  definitions?: string | string[] | Record<string, unknown> | null;
+}
+
 export interface LibraryState {
   // Global Dictionary
   dictionaryWord: string | null;
   setDictionaryWord: (word: string | null) => void;
+
+  // Save Word Modal
+  saveWordTarget: SaveWordTarget | null;
+  setSaveWordTarget: (target: SaveWordTarget | null) => void;
 
   // Favorites
   favorites: string[];
@@ -44,6 +56,9 @@ export function createLibrarySlice(set: SetState): LibraryState {
   return {
     dictionaryWord: null,
     setDictionaryWord: (word) => set({ dictionaryWord: word }),
+
+    saveWordTarget: null,
+    setSaveWordTarget: (target) => set({ saveWordTarget: target }),
 
     favorites: [],
     toggleFavorite: (word) => set((state) => ({

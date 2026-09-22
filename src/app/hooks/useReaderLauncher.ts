@@ -5,7 +5,12 @@ import { getSelectedLessonIds } from '../../utils/lessonPartSelection';
 import { resolveActiveReadingIndex, findReadingIndexForPart } from '../../utils/readingContext';
 
 export async function loadReadings(bookId: number): Promise<ReadingRecord[]> {
-  const { getReadingsForBook } = await import('../../data/readings');
+  const [{ getReadingsForBook }] = await Promise.all([
+    import('../../data/readings'),
+    import('../../screens/reader/components/ReadingCanvas'),
+    import('../../screens/reader/components/ReadingNarrativeView'),
+    import('../../../content/dialogueAlignment.json'),
+  ]);
   return getReadingsForBook(bookId);
 }
 
@@ -22,45 +27,57 @@ export function useReaderLauncher({
 }) {
   const [readings, setReadings] = useState<ReadingRecord[]>([]);
   const [activeReadingIndex, setActiveReadingIndex] = useState<number | null>(null);
+  const [isOpening, setIsOpening] = useState(false);
 
   const openReader = useCallback(async (bookId: number, explicitIndex?: number) => {
     onOpen?.();
-    const loaded = await loadReadings(bookId);
-    if (!loaded.length) {
-      setReadings([]);
-      setActiveReadingIndex(null);
-      return;
+    setIsOpening(true);
+    try {
+      const loaded = await loadReadings(bookId);
+      if (!loaded.length) {
+        setReadings([]);
+        setActiveReadingIndex(null);
+        return;
+      }
+      const store = useAppStore.getState();
+      // Lessons derived from the canonical per-book parts map; the passed-in
+      // prop is the fallback for callers that already computed a view.
+      const storeLessons = getSelectedLessonIds(store.selectedLessonParts, bookId);
+      const targetIdx = explicitIndex !== undefined
+        ? Math.max(0, Math.min(explicitIndex, loaded.length - 1))
+        : resolveActiveReadingIndex({
+          bookId,
+          selectedLessons: storeLessons.length > 0 ? storeLessons : selectedLessons,
+          selectedLessonParts: store.selectedLessonParts,
+          readings: loaded,
+        });
+      setReadings(loaded);
+      setActiveReadingIndex(targetIdx);
+    } finally {
+      setIsOpening(false);
     }
-    const store = useAppStore.getState();
-    // Lessons derived from the canonical per-book parts map; the passed-in
-    // prop is the fallback for callers that already computed a view.
-    const storeLessons = getSelectedLessonIds(store.selectedLessonParts, bookId);
-    const targetIdx = explicitIndex !== undefined
-      ? Math.max(0, Math.min(explicitIndex, loaded.length - 1))
-      : resolveActiveReadingIndex({
-        bookId,
-        selectedLessons: storeLessons.length > 0 ? storeLessons : selectedLessons,
-        selectedLessonParts: store.selectedLessonParts,
-        readings: loaded,
-      });
-    setReadings(loaded);
-    setActiveReadingIndex(targetIdx);
   }, [onOpen, selectedLessons]);
 
   const openReaderForPart = useCallback(async (bookId: number, lessonId: number, partId: number) => {
     onOpen?.();
-    const loaded = await loadReadings(bookId);
-    if (!loaded.length) {
-      setReadings([]);
-      setActiveReadingIndex(null);
-      return;
+    setIsOpening(true);
+    try {
+      const loaded = await loadReadings(bookId);
+      if (!loaded.length) {
+        setReadings([]);
+        setActiveReadingIndex(null);
+        return;
+      }
+      const targetIdx = findReadingIndexForPart(loaded, bookId, lessonId, partId);
+      setReadings(loaded);
+      setActiveReadingIndex(targetIdx);
+    } finally {
+      setIsOpening(false);
     }
-    const targetIdx = findReadingIndexForPart(loaded, bookId, lessonId, partId);
-    setReadings(loaded);
-    setActiveReadingIndex(targetIdx);
   }, [onOpen]);
 
   const closeReader = useCallback(() => {
+    setIsOpening(false);
     setActiveReadingIndex(null);
     setReadings([]);
   }, []);
@@ -92,6 +109,7 @@ export function useReaderLauncher({
   return {
     readings,
     activeReadingIndex,
+    isOpeningReader: isOpening,
     openReader,
     openReaderForPart,
     closeReader,

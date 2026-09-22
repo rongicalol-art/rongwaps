@@ -42,6 +42,14 @@ class FlashcardService {
     }
   }
 
+  getCachedFlashcards(): UserFlashcard[] | null {
+    return this.cachedFlashcards;
+  }
+
+  getCachedFolders(): UserFolder[] | null {
+    return this.cachedFolders;
+  }
+
   async refetchFlashcards(userId: string) {
     const { data, error } = await supabase
       .from("user_flashcards")

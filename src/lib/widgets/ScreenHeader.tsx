@@ -10,14 +10,19 @@ import { visibleProgressWidth } from '../../utils/progress';
 /**
  * Chrome treatments for `ScreenHeader`:
  * - `bar`   — bordered surface bar with a fixed height; used by screens in
- *             normal workspace flow.
+ *             normal workspace flow and by Reading Mode's flat brand bar.
  * - `window` — the canonical sticky canvas fade for full-viewport study
  *             windows (Grammar, Reader, practice activities). Its row carries a
  *             small inner inset that matches those windows' content offsets.
  * - `panel` — the same fade with a flush row, for workspace-bounded detail
  *             windows (word detail, character breakdown).
+ * - `frosted` — tone-matched translucent bar with a backdrop blur, the
+ *             universal 2px `ui-border` edge, and the standard window-header
+ *             height; Reading Mode's header. Content scrolls under it without
+ *             showing through, so the consumer must overlay it (and pad the
+ *             scroller clear of it).
  */
-export type ScreenHeaderVariant = 'bar' | 'window' | 'panel';
+export type ScreenHeaderVariant = 'bar' | 'window' | 'panel' | 'frosted';
 
 /** Canvas that a sticky fade variant blends into. Mirrors `LoadingScreen`'s tone. */
 export type ScreenHeaderTone = 'canvas' | 'practice';
@@ -25,6 +30,11 @@ export type ScreenHeaderTone = 'canvas' | 'practice';
 const FADE_TONE_CLASSES: Record<ScreenHeaderTone, string> = {
   canvas: 'from-ui-canvas via-ui-canvas/95',
   practice: 'from-ui-practice-canvas via-ui-practice-canvas/95',
+};
+
+const FROST_TONE_CLASSES: Record<ScreenHeaderTone, string> = {
+  canvas: 'bg-ui-canvas/95',
+  practice: 'bg-ui-practice-canvas/95',
 };
 
 export interface ScreenHeaderProps {
@@ -154,7 +164,8 @@ export function ScreenHeader({
             <div className="min-w-0 text-left">
               <p className="truncate text-[9px] font-black uppercase tracking-[0.08em] text-brand-primary sm:text-[10px]">{eyebrow}</p>
               <h1 className={cn(
-                "truncate font-chinese text-base font-black text-ui-ink sm:text-lg",
+                "truncate text-base font-black text-ui-ink sm:text-lg",
+                /[\u3400-\u9FFF]/.test(title) ? "font-chinese" : "font-sans",
               )}>
                 {title}
               </h1>
@@ -183,6 +194,28 @@ export function ScreenHeader({
       </div>
     </div>
   );
+
+  if (variant === 'frosted') {
+    // Frosted window header: translucent canvas tone + blur hide the content
+    // sliding beneath, and the universal 2px border edge closes the bar. The
+    // row keeps the standard window-header height so every study window's
+    // chrome lines up. Positioning stays with the consumer (Reading Mode
+    // overlays it on the reading column), and the bar carries no shadow.
+    return (
+      <div
+        className={cn(
+          'flex w-full origin-top flex-col items-center justify-center border-b-2 border-ui-border pt-[env(safe-area-inset-top,0px)] backdrop-blur-md',
+          'min-h-[calc(var(--size-window-header)+env(safe-area-inset-top,0px))]',
+          FROST_TONE_CLASSES[tone],
+          className,
+        )}
+      >
+        <header className="relative z-10 w-full shrink-0 pointer-events-auto px-4 sm:px-6 lg:px-10">
+          {headerRow}
+        </header>
+      </div>
+    );
+  }
 
   if (variant !== 'bar') {
     // Sticky window header: the wrapper owns the canvas fade and the safe-area

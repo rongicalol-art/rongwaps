@@ -28,25 +28,25 @@ export function V3TreeScreen({
       contentInnerClassName="pb-20"
     >
       <div className="mx-auto flex w-full max-w-[920px] flex-col items-center">
-        <header className="flex min-w-[168px] max-w-full items-center gap-4 rounded-feature border-2 border-ui-border bg-ui-surface px-5 py-4 shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
+        <header className="flex min-w-[168px] max-w-full items-center gap-4 rounded-feature border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface px-5 py-4">
           <span className="font-chinese text-[62px] leading-none text-ui-ink-strong">{character}</span>
           {(pinyin || meaning) && (
             <span className="min-w-0 text-left">
               {pinyin && <span className="block text-sm font-black text-brand-primary">{numberToToneMarks(pinyin)}</span>}
-              {meaning && <span className="block max-w-[18rem] truncate text-xs font-bold text-ui-muted">{meaning}</span>}
+              {meaning && <span className="block max-w-[18rem] truncate text-xs font-bold text-ui-muted-strong">{meaning}</span>}
             </span>
           )}
         </header>
 
         <div aria-hidden="true" className="h-8 w-px bg-ui-divider" />
 
-        <section className="w-full rounded-feature border-2 border-ui-border bg-ui-surface p-4 shadow-[0_var(--depth-md)_0_var(--color-ui-border)] sm:p-6 lg:p-8">
+        <section className="w-full rounded-feature border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface p-4 sm:p-6 lg:p-8">
           <div className="mb-5 flex items-center justify-between gap-4">
             <div className="flex items-center gap-2.5">
               <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-primary/10 text-brand-primary"><AppIcon name="breakdown" size={18} /></span>
               <h2 className="text-lg font-black text-ui-ink-strong">Parts</h2>
             </div>
-            <p className="text-[11px] font-bold text-ui-muted">Use + to go deeper</p>
+            <p className="text-[11px] font-bold text-ui-muted-strong">Use + to go deeper</p>
           </div>
           <V3RuntimeTree character={character} onGlyphClick={onGlyphClick} mode="tree" showHeading={false} />
         </section>

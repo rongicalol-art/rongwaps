@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
-import { ScreenHeader } from "../../../../lib/widgets";
+import { DetailShell, ScreenHeader } from "../../../../lib/widgets";
 import { BreakdownWordInfo } from "../BreakdownWordInfo";
+import { BreakdownSettingsPopover } from "../BreakdownSettingsPopover";
 import { DeepBreakdownModal } from "../DeepBreakdownModal";
 import { UsedAsListModal } from "../UsedAsListModal";
 import { RelatedWordsListModal } from "../RelatedWordsListModal";
@@ -10,7 +11,6 @@ import { BottomCharacterTabs } from "./BottomCharacterTabs";
 import { useSingleBreakdown } from "../../hooks/useSingleBreakdown";
 import { useAppStore } from "../../../../store/useAppStore";
 import { SAMPLE_BOOKS } from '../../../../data/books';
-import { useModalFocus } from "../../../../hooks/useModalFocus";
 import { getDecompositionRuntimeService } from '../../../character-decomposition';
 import { V3CharacterBreakdown } from '../v3/V3CharacterBreakdown';
 import { V3TreeScreen } from '../v3/V3TreeScreen';
@@ -38,7 +38,6 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
   pushBreakdown,
   depth,
 }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const [showDeepBreakdown, setShowDeepBreakdown] = useState(false);
@@ -63,11 +62,6 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
   } = useSingleBreakdown(word, initialCharIndex, activeBook);
   const decompositionRuntime = getDecompositionRuntimeService();
   const isV3Runtime = decompositionRuntime.runtime === 'v3';
-  const modalFocusProps = useModalFocus({
-    containerRef,
-    isActive: true,
-    onEscape: onBack ?? onClose,
-  });
 
   const updateCharacterTabsVisibility = useCallback(() => {
     const scroller = scrollRef.current;
@@ -82,35 +76,22 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
   }, [activeChar, charData, relatedWords.length, usedAsComponents.length, updateCharacterTabsVisibility]);
 
   return (
-    <motion.div
-      ref={containerRef}
-      role="dialog"
-      aria-modal="true"
-      aria-label={`Character breakdown for ${word}`}
-      tabIndex={-1}
-      onKeyDown={modalFocusProps.onKeyDown}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: reduceMotion ? 0 : 0.18, ease: "easeOut" }}
+    <DetailShell.Root
+      ariaLabel={`Character breakdown for ${word}`}
+      tone="practice"
       style={{ zIndex: 300 + depth }}
-      className={`absolute inset-0 flex h-full flex-col bg-ui-practice-canvas font-sans pointer-events-auto ${workspaceOffset ? 'workspace-window w-auto' : 'w-full'}`}
+      workspaceOffset={workspaceOffset}
+      onEscape={onBack ?? onClose}
     >
-      {/* Main Content Area */}
-      <div
-        ref={scrollRef}
-        onScroll={updateCharacterTabsVisibility}
-        className="custom-scrollbar relative z-10 flex-1 overflow-y-auto bg-transparent"
-      >
+      <DetailShell.Scroller ref={scrollRef} onScroll={updateCharacterTabsVisibility}>
         <ScreenHeader
           variant="panel"
           tone="practice"
-          onBack={onBack}
           onClose={onClose}
+          onBack={onBack}
           centerContent={<h1 className="w-full text-center text-xs sm:text-sm font-black uppercase tracking-wider text-ui-ink-strong">Character breakdown</h1>}
-          maxWidth="none"
+          rightAction={<BreakdownSettingsPopover />}
         />
-
         <div className="relative mx-auto flex min-h-full w-full max-w-[1180px] flex-col gap-6 px-4 py-4 pb-12 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
           <AnimatePresence mode="wait">
             {!charData && !isV3Runtime ? (
@@ -169,91 +150,95 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
               </motion.div>
             )}
           </AnimatePresence>
-          {chars.length > 1 && <div className="h-28 shrink-0 pointer-events-none" />}
+          <div className="h-28 shrink-0 pointer-events-none" />
         </div>
-      </div>
+      </DetailShell.Scroller>
 
-      {/* Bottom Fade Gradient Overlay */}
-      {chars.length > 1 && showCharacterTabs && (
-        <div 
-          className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none z-10"
-          style={{
-            background: 'linear-gradient(to top, var(--color-ui-practice-canvas) 0%, color-mix(in srgb, var(--color-ui-practice-canvas) 82%, transparent) 50%, transparent 100%)'
-          }}
-        />
-      )}
-
-      {/* Bottom Tabs for Characters */}
-      <AnimatePresence>
-        {showCharacterTabs && (
-          <BottomCharacterTabs
-            chars={chars}
-            selectedIndex={breakdownCharIndex}
-            onChange={setBreakdownCharIndex}
-            activeBook={activeBook}
-            layoutIdPrefix={`breakdown-${depth}-${word}`}
-          />
-        )}
-      </AnimatePresence>
-
-      {/* Deep Breakdown Modal */}
-      <AnimatePresence>
-        {showDeepBreakdown && (
-          <DeepBreakdownModal
-            initialChar={activeChar}
-            onClose={() => setShowDeepBreakdown(false)}
-            activeBook={activeBook}
-            onWordClick={(w) => {
-              pushBreakdown(w);
-              setShowDeepBreakdown(false);
+      <DetailShell.Floating>
+        {/* Bottom Fade Gradient Overlay */}
+        {chars.length > 1 && showCharacterTabs && (
+          <div 
+            className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none z-10"
+            style={{
+              background: 'linear-gradient(to top, var(--color-ui-practice-canvas) 0%, color-mix(in srgb, var(--color-ui-practice-canvas) 82%, transparent) 50%, transparent 100%)'
             }}
           />
         )}
-      </AnimatePresence>
 
-      <AnimatePresence>
-        {showUsedAsBreakdown && (
-          <UsedAsListModal
-            initialChar={activeChar}
-            usedAsComponents={usedAsComponents}
-            activeBook={activeBook}
-            onClose={() => setShowUsedAsBreakdown(false)}
-            onWordClick={(w) => {
-              pushBreakdown(w);
-              setShowUsedAsBreakdown(false);
-            }}
-          />
-        )}
-      </AnimatePresence>
+        {/* Bottom Tabs for Characters */}
+        <AnimatePresence>
+          {showCharacterTabs && (
+            <BottomCharacterTabs
+              chars={chars}
+              selectedIndex={breakdownCharIndex}
+              onChange={setBreakdownCharIndex}
+              activeBook={activeBook}
+              layoutIdPrefix={`breakdown-${depth}-${word}`}
+            />
+          )}
+        </AnimatePresence>
 
-      <AnimatePresence>
-        {showRelatedBreakdown && (
-          <RelatedWordsListModal
-            initialChar={activeChar}
-            relatedWords={relatedWords}
-            activeBook={activeBook}
-            onClose={() => setShowRelatedBreakdown(false)}
-            onWordClick={(w) => {
-              useAppStore.getState().setDictionaryWord(w);
-              setShowRelatedBreakdown(false);
-            }}
-          />
-        )}
-      </AnimatePresence>
+        {/* Deep Breakdown Modal */}
+        <AnimatePresence>
+          {showDeepBreakdown && (
+            <DeepBreakdownModal
+              initialChar={activeChar}
+              onClose={() => setShowDeepBreakdown(false)}
+              activeBook={activeBook}
+              onWordClick={(w) => {
+                pushBreakdown(w);
+                setShowDeepBreakdown(false);
+              }}
+            />
+          )}
+        </AnimatePresence>
 
-      <AnimatePresence>
-        {isV3Runtime && showV3Tree && (
-          <V3TreeScreen
-            character={activeChar}
-            data={charData}
-            onBack={() => setShowV3Tree(false)}
-            onGlyphClick={(target) => {
-              setShowV3Tree(false);
-              pushBreakdown(target);
-            }}
-          />
-        )}
-      </AnimatePresence>
-    </motion.div>
+        {/* Used As List Modal */}
+        <AnimatePresence>
+          {showUsedAsBreakdown && (
+            <UsedAsListModal
+              initialChar={activeChar}
+              usedAsComponents={usedAsComponents}
+              activeBook={activeBook}
+              onClose={() => setShowUsedAsBreakdown(false)}
+              onWordClick={(w) => {
+                pushBreakdown(w);
+                setShowUsedAsBreakdown(false);
+              }}
+            />
+          )}
+        </AnimatePresence>
+
+        {/* Related Words List Modal */}
+        <AnimatePresence>
+          {showRelatedBreakdown && (
+            <RelatedWordsListModal
+              initialChar={activeChar}
+              relatedWords={relatedWords}
+              activeBook={activeBook}
+              onClose={() => setShowRelatedBreakdown(false)}
+              onWordClick={(w) => {
+                useAppStore.getState().setDictionaryWord(w);
+                setShowRelatedBreakdown(false);
+              }}
+            />
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {isV3Runtime && showV3Tree && (
+            <V3TreeScreen
+              character={activeChar}
+              data={charData}
+              onBack={() => setShowV3Tree(false)}
+              onGlyphClick={(target) => {
+                setShowV3Tree(false);
+                pushBreakdown(target);
+              }}
+            />
+          )}
+        </AnimatePresence>
+      </DetailShell.Floating>
+    </DetailShell.Root>
   );
 };

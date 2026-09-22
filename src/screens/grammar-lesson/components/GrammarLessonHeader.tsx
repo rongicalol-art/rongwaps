@@ -1,42 +1,52 @@
 import { useEffect, useRef, useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import {
   AppIcon,
   IconActionButton,
   ScreenHeader,
 } from '../../../lib/widgets';
 import { GrammarReadingAids } from './GrammarReadingAids';
+import type { CharacterFont } from '../../../store/usePracticePreferencesStore';
 
 interface GrammarLessonHeaderProps {
   characterPreference: 'traditional' | 'simplified';
+  characterFont: CharacterFont;
   showPinyin: boolean;
   showTranslation: boolean;
   currentStepIndex: number;
   totalSteps: number;
   progress: number;
   showReadingAids: boolean;
+  hasConfusion?: boolean;
+  isConfusionOpen?: boolean;
+  onOpenConfusion?: () => void;
   onClose: () => void;
   onTogglePinyin: () => void;
   onToggleTranslation: () => void;
   onCharacterPreferenceChange: (preference: 'traditional' | 'simplified') => void;
+  onCharacterFontChange: (font: CharacterFont) => void;
 }
 
 export function GrammarLessonHeader({
   characterPreference,
+  characterFont,
   showPinyin,
   showTranslation,
   currentStepIndex,
   totalSteps,
   progress,
   showReadingAids,
+  hasConfusion = false,
+  isConfusionOpen = false,
+  onOpenConfusion,
   onClose,
   onTogglePinyin,
   onToggleTranslation,
   onCharacterPreferenceChange,
+  onCharacterFontChange,
 }: GrammarLessonHeaderProps) {
   const [isAidsOpen, setIsAidsOpen] = useState(false);
   const aidsRef = useRef<HTMLDivElement>(null);
-  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (!isAidsOpen) return;
@@ -65,49 +75,58 @@ export function GrammarLessonHeader({
       maxWidth="4xl"
       progressSize="compact"
       rightAction={
-        showReadingAids ? (
-          <div ref={aidsRef} className="relative">
+        <div className="flex items-center gap-1.5">
+          {hasConfusion && onOpenConfusion && (
             <IconActionButton
               size="md"
-              onClick={() => setIsAidsOpen((open) => !open)}
-              className={isAidsOpen ? 'text-brand-primary hover:text-brand-primary' : undefined}
-              icon={(
-                <motion.span
-                  animate={{ rotate: isAidsOpen ? 90 : 0 }}
-                  transition={reduceMotion ? { duration: 0 } : { duration: 0.2, ease: 'easeOut' }}
-                >
-                  <AppIcon name="settings" size={20} />
-                </motion.span>
-              )}
-              label="Lesson settings"
-              title="Lesson settings"
+              onClick={onOpenConfusion}
+              className={isConfusionOpen ? 'text-brand-primary hover:text-brand-primary' : undefined}
+              icon={<AppIcon name="lightbulb" size={20} />}
+              label={isConfusionOpen ? "Hide confusion notes" : "Don't mix these up"}
+              title={isConfusionOpen ? "Hide confusion notes" : "Don't mix these up"}
               aria-haspopup="dialog"
-              aria-expanded={isAidsOpen}
+              aria-expanded={isConfusionOpen}
             />
-            <AnimatePresence>
-              {isAidsOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 6, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 4, scale: 0.98 }}
-                  transition={{ duration: 0.16, ease: [0.32, 0.72, 0, 1] }}
-                  className="absolute right-0 top-full z-50 mt-2 w-64 sm:w-72 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-2.5 shadow-ambient-lg text-left"
-                >
-                  <GrammarReadingAids
-                    characterPreference={characterPreference}
-                    showPinyin={showPinyin}
-                    showTranslation={showTranslation}
-                    onCharacterPreferenceChange={onCharacterPreferenceChange}
-                    onTogglePinyin={onTogglePinyin}
-                    onToggleTranslation={onToggleTranslation}
-                  />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        ) : (
-          <span aria-hidden="true" className="h-10 w-10 shrink-0" />
-        )
+          )}
+          {showReadingAids ? (
+            <div ref={aidsRef} className="relative">
+              <IconActionButton
+                size="md"
+                onClick={() => setIsAidsOpen((open) => !open)}
+                className={isAidsOpen ? 'text-brand-primary hover:text-brand-primary' : undefined}
+                icon={<AppIcon name="menu" size={20} />}
+                label="Lesson options"
+                title="Lesson options"
+                aria-haspopup="dialog"
+                aria-expanded={isAidsOpen}
+              />
+              <AnimatePresence>
+                {isAidsOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 6, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 4, scale: 0.98 }}
+                    transition={{ duration: 0.16, ease: [0.32, 0.72, 0, 1] }}
+                    className="absolute right-0 top-full z-50 mt-2 w-64 sm:w-72 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-2.5 shadow-ambient-lg text-left"
+                  >
+                    <GrammarReadingAids
+                      characterPreference={characterPreference}
+                      characterFont={characterFont}
+                      showPinyin={showPinyin}
+                      showTranslation={showTranslation}
+                      onCharacterPreferenceChange={onCharacterPreferenceChange}
+                      onCharacterFontChange={onCharacterFontChange}
+                      onTogglePinyin={onTogglePinyin}
+                      onToggleTranslation={onToggleTranslation}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ) : (
+            <span aria-hidden="true" className="h-10 w-10 shrink-0" />
+          )}
+        </div>
       }
     />
   );

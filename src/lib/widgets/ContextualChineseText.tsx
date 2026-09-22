@@ -150,7 +150,7 @@ export function ContextualChineseText({
       ) : (
         <span
           key={token.key}
-          className={token.focused ? 'font-chinese font-black text-brand-primary' : undefined}
+          className={token.focused ? (CHINESE_CHARACTER.test(token.text) ? 'font-chinese font-black text-brand-primary' : 'font-sans font-black text-brand-primary') : undefined}
         >
           {token.text}
         </span>

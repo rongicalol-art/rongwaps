@@ -65,7 +65,7 @@ export class ErrorBoundary extends Component<Props, State> {
             <span className="text-3xl">😵</span>
           </div>
           <h2 className="font-extrabold text-xl text-ui-ink mb-2">Something went wrong</h2>
-          <p className="text-sm text-ui-muted mb-6 max-w-xs">
+          <p className="text-sm font-bold text-ui-muted-strong mb-6 max-w-xs">
             An unexpected error occurred. You can try again or go back to the home screen.
           </p>
           <div className="flex gap-3">

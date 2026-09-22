@@ -113,7 +113,7 @@ export const SideNav = memo(function SideNav({
               type="button"
               onClick={() => onTabChange(tab.id)}
               aria-label={tab.label}
-              className={`group relative flex items-center rounded-feature border-b-4 focus-ring transition-[transform,background-color,border-color] duration-150 active:translate-y-1 active:border-b-0 ${
+              className={`group relative flex items-center rounded-feature border-b-4 focus-ring transition-[transform,background-color,border-color] duration-150 active:scale-[0.98] ${
                 isCollapsed
                   ? 'h-13 w-13 justify-center'
                   : 'h-16 w-full px-1'

@@ -1,4 +1,5 @@
 export { CharacterBreakdownOverlay } from './components/CharacterBreakdownOverlay';
+export { BreakdownSkeleton } from './components/BreakdownSkeleton';
 export { SingleBreakdownView } from './components/breakdown/SingleBreakdownView';
 export { V3RuntimeTree } from './components/v3/V3RuntimeTree';
 export {

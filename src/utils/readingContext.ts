@@ -1,4 +1,5 @@
-import type { LessonPartSelectionMap, ReadingRecord } from '../types/models';
+import type { InteractiveGrammarPart, LessonPartSelectionMap, ReadingRecord } from '../types/models';
+import { findNeighbourGrammarPart } from '../data/interactiveGrammarPages';
 import { getLessonSelectionKey } from './lessonPartSelection';
 
 export interface ResolveReadingTargetParams {
@@ -79,5 +80,42 @@ export function findReadingIndexForPart(
   if (bookFallbackIndex !== -1) return bookFallbackIndex;
 
   return 0;
+}
+
+/** The course part whose printed dialogue is this reading. */
+export function findGrammarPartForReading(
+  reading: ReadingRecord,
+  parts: readonly InteractiveGrammarPart[],
+): InteractiveGrammarPart | null {
+  const lessonParts = parts.filter(
+    (part) => part.bookId === reading.bookId && part.lessonId === reading.lessonId,
+  );
+  if (lessonParts.length === 0) return null;
+
+  const byAudio = lessonParts.find(
+    (part) => Boolean(reading.audioReference) && part.dialogue?.audioReference === reading.audioReference,
+  );
+  if (byAudio) return byAudio;
+
+  const readingPages = new Set(reading.printedPages);
+  const byPages = lessonParts.find(
+    (part) => (part.dialogue?.printedPages ?? []).some((page) => readingPages.has(page)),
+  );
+  if (byPages) return byPages;
+
+  return lessonParts.find((part) => part.partId === reading.dialogueNumber) ?? null;
+}
+
+/**
+ * The next grammar part after this reading's part in book order, or null when
+ * the reading has no part (essays) or its part is the last one. Drives the
+ * lesson path: a part's reading continues into the next part's grammar.
+ */
+export function findNextGrammarPartForReading(
+  reading: ReadingRecord,
+  parts: readonly InteractiveGrammarPart[],
+): InteractiveGrammarPart | null {
+  const part = findGrammarPartForReading(reading, parts);
+  return part ? findNeighbourGrammarPart(part.id, 'next') : null;
 }
 

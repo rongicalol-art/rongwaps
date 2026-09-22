@@ -1,4 +1,5 @@
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { FloatingDock } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 import { WritingDockButton } from './WritingDockButton';
 
@@ -28,21 +29,11 @@ export function WritingDock({
   const reduceMotion = useReducedMotion();
 
   return (
-    <motion.div
-      initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 26, scale: 0.98 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 18, scale: 0.985 }}
-      transition={
-        reduceMotion
-          ? { duration: 0 }
-          : { type: 'spring', stiffness: 360, damping: 32, mass: 0.72 }
-      }
-      className="pointer-events-none absolute inset-x-0 bottom-0 z-dock mb-4 flex justify-center px-4 pb-[calc(16px+env(safe-area-inset-bottom,0px))] pt-3 md:mb-6"
-    >
-      <div className="pointer-events-auto relative flex w-full max-w-[320px] items-center justify-center">
+    <FloatingDock.Root>
+      <FloatingDock.Pill maxWidth="md" className="p-0">
         <nav
           aria-label="Writing mode controls"
-          className="flex h-14 w-full items-center justify-between gap-1 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-1 px-2.5 shadow-ambient-sm"
+          className="flex w-full items-center justify-between gap-1 p-1.5 px-2.5"
         >
           {/* Previous character (for multi-character words) */}
           <AnimatePresence initial={false}>
@@ -57,9 +48,9 @@ export function WritingDock({
                     ? { duration: 0 }
                     : { duration: 0.22, ease: [0.16, 1, 0.3, 1] }
                 }
-                className="flex items-center justify-start overflow-hidden shrink-0"
+                className="flex shrink-0 items-center justify-start overflow-hidden"
               >
-                <div className="w-[48px] shrink-0 pr-1.5 flex items-center justify-center">
+                <div className="flex w-[48px] shrink-0 items-center justify-center pr-1.5">
                   <WritingDockButton
                     icon="back"
                     label="Previous character"
@@ -114,7 +105,7 @@ export function WritingDock({
             onClick={onExit}
           />
         </nav>
-      </div>
-    </motion.div>
+      </FloatingDock.Pill>
+    </FloatingDock.Root>
   );
 }

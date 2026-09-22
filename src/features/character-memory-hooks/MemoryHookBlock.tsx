@@ -76,7 +76,7 @@ export function MemoryHookBlock({ cacheKey, word, pinyin, emptyText, className }
               {renderHookText(hook)}
             </p>
           ) : (
-            <p className="text-sm font-semibold leading-relaxed text-ui-muted">
+            <p className="text-sm font-bold leading-relaxed text-ui-muted-strong">
               {emptyText}
             </p>
           )

@@ -98,13 +98,13 @@ export function SentenceSpine({
                   {index === 1 && isNegative && spine.negation ? `${spine.negation.pinyin} ` : ''}{slot.pinyin}
                 </p>
               )}
-              <p className="mt-1 text-[10px] font-bold leading-tight text-ui-muted sm:text-xs">{slot.english}</p>
+              <p className="ui-translation mt-1 text-[10px] leading-tight sm:text-xs">{slot.english}</p>
             </div>
           ))}
         </div>
 
         {showTranslation && (
-          <p className="border-t border-ui-divider px-4 py-4 text-sm font-black text-ui-ink sm:px-6 sm:text-base">
+          <p className="ui-translation border-t border-ui-divider px-4 py-4 text-sm sm:px-6 sm:text-base">
             {isNegative && spine.negativeEnglish ? spine.negativeEnglish : spine.positiveEnglish}
           </p>
         )}

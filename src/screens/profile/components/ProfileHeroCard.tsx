@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { ActionButton, AppIcon } from '../../../lib/widgets';
+import { ActionButton, AppIcon, UserAvatar } from '../../../lib/widgets';
 import type { SyncStatus, UserSnapshot } from '../../../store/useAppStore';
 
 interface ProfileHeroCardProps {
@@ -48,18 +48,13 @@ export const ProfileHeroCard = memo(function ProfileHeroCard({
       <div className="flex items-center justify-between gap-3 sm:gap-4">
         {/* Left: Avatar + Identity info */}
         <div className="flex min-w-0 items-center gap-3 sm:gap-3.5">
-          <div className="relative flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-brand-primary/10 ring-2 ring-brand-primary/20">
-            {avatarUrl ? (
-              <img
-                src={avatarUrl}
-                alt={displayName}
-                referrerPolicy="no-referrer"
-                className="h-full w-full object-cover"
-              />
-            ) : (
-              <AppIcon name="profile" size={26} className="text-brand-primary-deep" />
-            )}
-          </div>
+          <UserAvatar
+            src={avatarUrl}
+            alt={displayName}
+            size="xl"
+            ring
+            className="bg-brand-primary/10"
+          />
 
           <div className="min-w-0 text-left">
             <h1 className="truncate text-lg font-black tracking-tight text-ui-ink-strong sm:text-xl">

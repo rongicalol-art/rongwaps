@@ -37,7 +37,7 @@ export function GrammarInteractiveSentence({
             />
           </p>
           {showPinyin && <p className="mt-1 text-xs font-bold leading-relaxed text-brand-primary sm:text-sm">{choice.pinyin}</p>}
-          {showTranslation && <p className="mt-2 text-sm font-bold text-ui-ink sm:text-base">{choice.english}</p>}
+          {showTranslation && <p className="ui-translation mt-2 text-sm sm:text-base">{choice.english}</p>}
         </div>
         <IconActionButton
           size="sm"

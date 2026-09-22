@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
-import { AppIcon, ScreenHeader, Skeleton } from '../../../lib/widgets';
+import { useEffect, useMemo, useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
+import { AppIcon, DetailShell, ScreenHeader, Skeleton } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { getDictionaryEntries } from '../../../services/dictionaryService';
 import { searchVocabulary } from '../../../services/vocabularyService';
@@ -10,7 +10,6 @@ import { numberToToneMarks } from '../../../utils/pinyin';
 import type { DBDictionaryEntry } from '../../../types/database';
 import type { Flashcard } from '../../../data/flashcards';
 import { SAMPLE_BOOKS } from '../../../data/books';
-import { useModalFocus } from '../../../hooks/useModalFocus';
 import { ExtendedDefinitions, SummaryQuickActions } from '../../character-breakdown';
 import { MemoryHookBlock } from '../../character-memory-hooks';
 import { WordExamplesSection } from './WordExamplesSection';
@@ -20,17 +19,102 @@ import { useWordExtras } from '../hooks/useWordExtras';
 
 const HANZI_RE = /[\u3400-\u9FFF]/u;
 
-function WordDetailSkeleton() {
+export function WordDetailSkeleton() {
   return (
-    <div className="flex w-full flex-col gap-6" role="status" aria-label="Loading dictionary entry">
-      <div className="rounded-feature bg-ui-surface p-6">
-        <Skeleton className="h-16 w-40" />
-        <Skeleton className="mt-3 h-6 w-32" />
-      </div>
-      <div className="rounded-feature bg-ui-surface p-5">
-        <Skeleton className="h-5 w-24" />
-        <Skeleton className="mt-3 h-4 w-full" />
-        <Skeleton className="mt-2 h-4 w-3/4" />
+    <div className="flex w-full flex-col gap-6 animate-in fade-in duration-200" role="status" aria-label="Loading dictionary entry">
+      {/* 1. Header Card Skeleton */}
+      <header className="relative isolate min-w-0 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
+        <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4 p-4 sm:gap-7 sm:p-6">
+          <Skeleton className="h-16 w-20 sm:h-20 sm:w-28 rounded-feature shrink-0" />
+          <div className="flex min-w-0 flex-col gap-2">
+            <Skeleton className="h-6 w-28 sm:w-36" />
+            <Skeleton className="h-5 w-4/5 max-w-md" />
+            <Skeleton className="h-3.5 w-20" />
+          </div>
+        </div>
+
+        {/* Quick Actions Skeleton */}
+        <div className="border-t border-ui-divider/70 px-4 py-3 sm:px-6 flex items-center gap-3">
+          <Skeleton className="h-10 w-10 rounded-full shrink-0" />
+          <Skeleton className="h-10 w-10 rounded-full shrink-0" />
+          <Skeleton className="h-10 w-10 rounded-full shrink-0" />
+        </div>
+
+        {/* Extended Definitions Skeleton */}
+        <div className="border-t border-ui-divider/70 px-4 py-4 sm:px-6 flex flex-col gap-2.5">
+          <Skeleton className="h-4 w-32" />
+          <Skeleton className="h-4 w-full max-w-xl" />
+          <Skeleton className="h-4 w-2/3" />
+        </div>
+      </header>
+
+      {/* 2-Column Section Matching Loaded Layout */}
+      <div className="grid min-w-0 items-start gap-6 lg:grid-cols-[minmax(0,64fr)_minmax(19rem,36fr)] lg:gap-8">
+        <div className="flex min-w-0 flex-col gap-6 lg:gap-8">
+          {/* 2. Decomposition Strip Skeleton */}
+          <div className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-5 flex flex-col gap-3">
+            <Skeleton className="h-4 w-28" />
+            <div className="flex gap-3">
+              <Skeleton className="h-14 w-14 rounded-compact shrink-0" />
+              <Skeleton className="h-14 w-14 rounded-compact shrink-0" />
+            </div>
+          </div>
+
+          {/* 3. Memory Hook Skeleton */}
+          <div className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-5 flex flex-col gap-2.5">
+            <Skeleton className="h-4 w-24" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-3/4" />
+          </div>
+
+          {/* 4. Example Sentences Skeleton */}
+          <div className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-5 flex flex-col gap-3">
+            <Skeleton className="h-4 w-28" />
+            <div className="flex flex-col gap-2 pt-1">
+              <Skeleton className="h-5 w-4/5" />
+              <Skeleton className="h-3.5 w-1/2" />
+            </div>
+            <div className="flex flex-col gap-2 pt-2 border-t border-ui-divider/50">
+              <Skeleton className="h-5 w-3/4" />
+              <Skeleton className="h-3.5 w-2/5" />
+            </div>
+          </div>
+        </div>
+
+        {/* Right Sidebar on Desktop (Supporting info: Characters & Related Words) */}
+        <aside aria-label="Word context" className="flex min-w-0 flex-col gap-4 lg:sticky lg:top-4 lg:self-start">
+          {/* Characters Card Skeleton */}
+          <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6 flex flex-col gap-3">
+            <Skeleton className="h-4 w-24" />
+            <div className="mt-1 divide-y divide-ui-divider/40">
+              {Array.from({ length: 2 }).map((_, i) => (
+                <div key={i} className="flex items-center gap-3.5 py-3">
+                  <Skeleton className="h-10 w-10 rounded-compact shrink-0" />
+                  <div className="flex-1 flex flex-col gap-1.5">
+                    <Skeleton className="h-4 w-20" />
+                    <Skeleton className="h-3.5 w-36" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Related Words Card Skeleton */}
+          <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6 flex flex-col gap-3">
+            <Skeleton className="h-4 w-28" />
+            <div className="mt-1 divide-y divide-ui-divider/40">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <div key={i} className="flex items-center gap-3.5 py-3">
+                  <Skeleton className="h-10 w-10 rounded-compact shrink-0" />
+                  <div className="flex-1 flex flex-col gap-1.5">
+                    <Skeleton className="h-4 w-24" />
+                    <Skeleton className="h-3.5 w-40" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
   );
@@ -49,7 +133,7 @@ function FallbackWords({
     <div className="flex flex-col gap-5">
       <div className="flex flex-col gap-1.5 border-b border-ui-divider pb-5">
         <p className="text-lg font-extrabold leading-tight text-ui-ink">Read “{word}” as words</p>
-        <p className="text-sm font-bold text-ui-muted">
+        <p className="text-sm font-bold text-ui-muted-strong">
           Phrase has no single dictionary entry. Here are its useful word parts.
         </p>
       </div>
@@ -96,7 +180,7 @@ function NotFound({ word }: { word: string }) {
         <AppIcon name="search" size={32} className="text-ui-muted opacity-80" />
       </div>
       <p className="mb-2 text-2xl font-extrabold text-ui-ink">Not Found</p>
-      <p className="px-8 text-center text-[15px] font-bold text-ui-muted">
+      <p className="px-8 text-center text-[15px] font-bold text-ui-muted-strong">
         We couldn't find <span className="text-ui-ink">“{word}”</span> in the dictionary.
       </p>
     </div>
@@ -118,8 +202,6 @@ export function WordDetailView({
   pushCharacter,
   depth,
 }: WordDetailViewProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const reduceMotion = useReducedMotion();
   const activeBookId = useAppStore((state) => state.activeBookId);
   const activeBook = SAMPLE_BOOKS.find((book) => book.id === activeBookId) || SAMPLE_BOOKS[0];
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
@@ -129,8 +211,6 @@ export function WordDetailView({
   const [inCourseWords, setInCourseWords] = useState<Flashcard[]>([]);
   const [loading, setLoading] = useState(false);
   const { examples, relatedWords, isLoading: isExtrasLoading } = useWordExtras(word);
-
-  const modalFocusProps = useModalFocus({ containerRef, isActive: true, onEscape: onClose });
 
   useEffect(() => {
     let isMounted = true;
@@ -216,21 +296,14 @@ export function WordDetailView({
   const hasSupporting = hasWordSupportingInfo(word, relatedWords, isExtrasLoading);
 
   return (
-    <motion.div
-      ref={containerRef}
-      role="dialog"
-      aria-modal="true"
-      aria-label={`Word breakdown for ${word}`}
-      tabIndex={-1}
-      onKeyDown={modalFocusProps.onKeyDown}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: reduceMotion ? 0 : 0.18, ease: 'easeOut' }}
+    <DetailShell.Root
+      ariaLabel={`Word breakdown for ${word}`}
+      tone="practice"
       style={{ zIndex: 300 + depth }}
-      className={`absolute inset-0 flex h-full flex-col bg-ui-practice-canvas font-sans pointer-events-auto ${workspaceOffset ? 'workspace-window w-auto' : 'w-full'}`}
+      workspaceOffset={workspaceOffset}
+      onEscape={onClose}
     >
-      <div className="custom-scrollbar relative z-10 flex-1 overflow-y-auto bg-transparent">
+      <DetailShell.Scroller>
         <ScreenHeader
           variant="panel"
           tone="practice"
@@ -238,101 +311,126 @@ export function WordDetailView({
           centerContent={
             <h1 className="w-full text-center text-xs sm:text-sm font-black uppercase tracking-wider text-ui-ink-strong">Word breakdown</h1>
           }
-          maxWidth="none"
         />
-
         <div className="relative mx-auto flex min-h-full w-full max-w-[1180px] flex-col gap-6 px-4 py-4 pb-12 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
-          {loading ? (
-            <WordDetailSkeleton />
-          ) : entries.length === 0 ? (
-            fallbackWords.length > 0 ? (
-              <FallbackWords word={word} fallbackWords={fallbackWords} onOpenWord={setDictionaryWord} />
+          <AnimatePresence mode="wait">
+            {loading ? (
+              <motion.div
+                key="word-skeleton"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.16, ease: 'easeOut' }}
+                className="w-full"
+              >
+                <WordDetailSkeleton />
+              </motion.div>
+            ) : entries.length === 0 ? (
+              <motion.div
+                key="word-fallback"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.16 }}
+                className="w-full"
+              >
+                {fallbackWords.length > 0 ? (
+                  <FallbackWords word={word} fallbackWords={fallbackWords} onOpenWord={setDictionaryWord} />
+                ) : (
+                  <NotFound word={word} />
+                )}
+              </motion.div>
             ) : (
-              <NotFound word={word} />
-            )
-          ) : (
-            <>
-              <header className="relative isolate min-w-0 overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
-                <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4 p-4 sm:gap-7 sm:p-6">
-                  <div className="flex min-w-0 items-baseline gap-x-1 font-chinese leading-tight text-ui-ink-strong">
-                    {chars.map((char, index) => (
-                      <button
-                        key={index}
-                        type="button"
-                        onClick={() => pushCharacter(char)}
-                        aria-label={`Open breakdown for ${char}`}
-                        className={`cursor-pointer whitespace-nowrap rounded-xs focus-ring transition-colors hover:text-brand-primary active:opacity-50 ${wordSizeClass}`}
-                      >
-                        {char}
-                      </button>
-                    ))}
-                  </div>
-                  <div className="relative min-w-0 text-left">
-                    <div className="flex min-w-0 flex-wrap items-center gap-1.5">
-                      {pinyin && (
-                        <span className="truncate text-xl font-black text-brand-primary sm:text-2xl">{pinyin}</span>
+              <motion.div
+                key={`word-loaded-${word}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full flex flex-col gap-6"
+              >
+                <header className="relative isolate min-w-0 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
+                  <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4 p-4 sm:gap-7 sm:p-6">
+                    <div className="flex min-w-0 items-baseline gap-x-1 font-chinese leading-tight text-ui-ink-strong">
+                      {chars.map((char, index) => (
+                        <button
+                          key={index}
+                          type="button"
+                          onClick={() => pushCharacter(char)}
+                          aria-label={`Open breakdown for ${char}`}
+                          className={`cursor-pointer whitespace-nowrap rounded-xs focus-ring transition-colors hover:text-brand-primary active:opacity-50 ${wordSizeClass}`}
+                        >
+                          {char}
+                        </button>
+                      ))}
+                    </div>
+                    <div className="relative min-w-0 text-left">
+                      <div className="flex min-w-0 flex-wrap items-center gap-1.5">
+                        {pinyin && (
+                          <span className="truncate text-xl font-black text-brand-primary sm:text-2xl">{pinyin}</span>
+                        )}
+                      </div>
+                      {heroDefinition && (
+                        <p className="mt-1 line-clamp-2 max-w-2xl text-sm font-bold leading-snug text-ui-ink sm:text-lg">
+                          {heroDefinition}
+                        </p>
+                      )}
+                      {primaryCourseCard && (
+                        <p className="mt-2 text-[10px] font-extrabold text-ui-muted">B{primaryCourseCard.bookId} · L{primaryCourseCard.lessonId}</p>
                       )}
                     </div>
-                    {heroDefinition && (
-                      <p className="mt-1 line-clamp-2 max-w-2xl text-sm font-bold leading-snug text-ui-ink sm:text-lg">
-                        {heroDefinition}
-                      </p>
-                    )}
-                    {primaryCourseCard && (
-                      <p className="mt-2 text-[10px] font-extrabold text-ui-muted">B{primaryCourseCard.bookId} · L{primaryCourseCard.lessonId}</p>
-                    )}
                   </div>
-                </div>
-                <SummaryQuickActions char={primaryChar} audioSrc={primaryCourseCard?.audio} />
+                  <SummaryQuickActions char={primaryChar} audioSrc={primaryCourseCard?.audio} />
 
-                <ExtendedDefinitions entries={entries} />
-              </header>
+                  <ExtendedDefinitions entries={entries} />
+                </header>
 
-              <div
-                className={
-                  hasSupporting
-                    ? 'grid min-w-0 items-start gap-6 lg:grid-cols-[minmax(0,64fr)_minmax(19rem,36fr)] lg:gap-8'
-                    : 'flex min-w-0 flex-col gap-6 lg:gap-8'
-                }
-              >
-                <div className="flex min-w-0 flex-col gap-6 lg:gap-8">
-                  <WordDecompositionStrip word={word} onOpenCharacter={pushCharacter} />
+                <div
+                  className={
+                    hasSupporting
+                      ? 'grid min-w-0 items-start gap-6 lg:grid-cols-[minmax(0,64fr)_minmax(19rem,36fr)] lg:gap-8'
+                      : 'flex min-w-0 flex-col gap-6 lg:gap-8'
+                  }
+                >
+                  <div className="flex min-w-0 flex-col gap-6 lg:gap-8">
+                    <WordDecompositionStrip word={word} onOpenCharacter={pushCharacter} />
 
-                  <MemoryHookBlock
-                    cacheKey={`word_${word}`}
-                    word={word}
-                    pinyin={pinyin || undefined}
-                    emptyText={<>No memory hook for this word yet.</>}
-                  />
-
-                  <WordExamplesSection
-                    examples={examples}
-                    isLoading={isExtrasLoading}
-                    word={word}
-                    activeBook={activeBook}
-                  />
-                </div>
-
-                {hasSupporting && (
-                  <aside
-                    aria-label="Word context"
-                    className="flex min-w-0 flex-col lg:sticky lg:top-4 lg:self-start"
-                  >
-                    <WordSupportingInformation
+                    <MemoryHookBlock
+                      cacheKey={`word_${word}`}
                       word={word}
-                      pushCharacter={pushCharacter}
-                      relatedWords={relatedWords}
-                      isRelatedLoading={isExtrasLoading}
-                      onOpenWord={setDictionaryWord}
+                      pinyin={pinyin || undefined}
+                      emptyText={<>No memory hook for this word yet.</>}
+                    />
+
+                    <WordExamplesSection
+                      examples={examples}
+                      isLoading={isExtrasLoading}
+                      word={word}
                       activeBook={activeBook}
                     />
-                  </aside>
-                )}
-              </div>
-            </>
-          )}
+                  </div>
+
+                  {hasSupporting && (
+                    <aside
+                      aria-label="Word context"
+                      className="flex min-w-0 flex-col lg:sticky lg:top-4 lg:self-start"
+                    >
+                      <WordSupportingInformation
+                        word={word}
+                        pushCharacter={pushCharacter}
+                        relatedWords={relatedWords}
+                        isRelatedLoading={isExtrasLoading}
+                        onOpenWord={setDictionaryWord}
+                        activeBook={activeBook}
+                      />
+                    </aside>
+                  )}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-      </div>
-    </motion.div>
+      </DetailShell.Scroller>
+    </DetailShell.Root>
   );
 }

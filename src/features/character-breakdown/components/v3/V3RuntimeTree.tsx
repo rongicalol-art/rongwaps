@@ -58,7 +58,7 @@ function RuntimeBranch({ children, ...props }: BranchProps) {
 }
 
 function NodeMessage({ children, tone = 'muted' }: { children: ReactNode; tone?: 'muted' | 'danger' }) {
-  return <p role={tone === 'danger' ? 'alert' : undefined} className={`py-2 text-xs font-bold ${tone === 'danger' ? 'text-feedback-danger' : 'text-ui-muted'}`}>{children}</p>;
+  return <p role={tone === 'danger' ? 'alert' : undefined} className={`py-2 text-xs font-bold ${tone === 'danger' ? 'text-feedback-danger' : 'text-ui-muted-strong'}`}>{children}</p>;
 }
 
 function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, reduceMotion, onToggle, onRetry, onGlyphClick, onGlyphIntent, mode, nodeId }: Omit<BranchProps, 'children'> & { child: RuntimeVisibleChild; nodeId: string }) {
@@ -99,7 +99,7 @@ function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, re
                     <CharacterGlyph character={presentation.title} className={`flex shrink-0 items-center justify-center leading-none text-ui-ink-strong ${depth > 0 ? 'w-10 text-[30px]' : 'w-11 text-[34px]'}`} />
                     <span className="flex min-w-0 flex-1 flex-col gap-0.5">
                       {presentation.pinyin && <span className="truncate text-xs font-extrabold leading-tight text-brand-primary">{numberToToneMarks(presentation.pinyin)}</span>}
-                      {presentation.meaning ? <span className="line-clamp-2 text-[11px] font-bold leading-snug text-ui-muted">{presentation.meaning}</span> : <span className="text-[11px] font-bold leading-snug text-ui-muted">No meaning recorded</span>}
+                      {presentation.meaning ? <span className="line-clamp-2 text-[11px] font-bold leading-snug text-ui-muted-strong">{presentation.meaning}</span> : <span className="text-[11px] font-bold leading-snug text-ui-muted-strong">No meaning recorded</span>}
                     </span>
                   </>
                 )}
@@ -109,8 +109,8 @@ function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, re
                 {useShapeMark ? <span className="flex items-center gap-2 text-ui-muted-strong"><AppIcon name="breakdown" size={depth > 0 ? 21 : 25} /><span className="text-xs font-extrabold">Shape</span></span> : <CharacterGlyph character={presentation.title} className={`leading-none text-ui-ink-strong ${depth > 0 ? 'text-[34px]' : 'text-[40px]'}`} />}
                 {presentation.pinyin || presentation.meaning ? <span className="mt-1 flex min-w-0 items-baseline gap-1.5">
                 {presentation.pinyin && <span className="shrink-0 text-[11px] font-extrabold text-brand-primary">{numberToToneMarks(presentation.pinyin)}</span>}
-                {presentation.meaning && <span className="truncate text-[11px] font-bold text-ui-muted">{presentation.meaning}</span>}
-                </span> : <span className="mt-1 text-[11px] font-bold text-ui-muted">No meaning recorded</span>}
+                {presentation.meaning && <span className="truncate text-[11px] font-bold text-ui-muted-strong">{presentation.meaning}</span>}
+                </span> : <span className="mt-1 text-[11px] font-bold text-ui-muted-strong">No meaning recorded</span>}
               </div>
             )}
           </>
@@ -118,13 +118,13 @@ function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, re
           <div className="pointer-events-none relative z-1 flex h-full min-w-0 max-w-full items-center gap-3 text-left">
             <span className={`flex shrink-0 items-center justify-center text-ui-muted-strong ${depth > 0 ? 'w-10' : 'w-11'}`}><AppIcon name="breakdown" size={22} /></span>
             <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-              <span className="text-[11px] font-bold leading-snug text-ui-muted">No glyph for this</span>
+              <span className="text-[11px] font-bold leading-snug text-ui-muted-strong">No glyph for this</span>
             </span>
           </div>
         ) : (
           <div className="pointer-events-none relative z-1 flex h-full min-w-0 max-w-full flex-col justify-center text-left">
             <span className="flex items-center justify-start text-ui-muted-strong"><AppIcon name="breakdown" size={22} /></span>
-            <span className="mt-1 text-[11px] font-bold text-ui-muted">No glyph for this</span>
+            <span className="mt-1 text-[11px] font-bold text-ui-muted-strong">No glyph for this</span>
           </div>
         )}
         {canExpand && target && <button type="button" aria-expanded={isExpanded} aria-controls={regionId} aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${target}`} onPointerEnter={() => onGlyphIntent?.(target)} onFocus={() => onGlyphIntent?.(target)} onClick={() => onToggle(target)} className={`absolute right-1.5 top-1.5 z-10 flex h-9 w-9 items-center justify-center rounded-compact text-ui-muted transition-[color,transform] hover:text-brand-primary focus-ring ${isExpanded ? 'rotate-180 text-brand-primary' : ''}`}><AppIcon name="expand" size={16} /></button>}

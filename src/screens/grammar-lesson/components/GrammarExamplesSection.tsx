@@ -1,10 +1,11 @@
+import { useId, useState } from 'react';
 import { AppIcon, IconActionButton } from '../../../lib/widgets';
-import { GrammarFocusText } from './GrammarFocusText';
+import { GrammarFocusNote } from './GrammarFocusNote';
 import { audioService } from '../../../services/audioService';
 import type { GrammarLessonExample, GrammarWordToken, InteractiveGrammarPage } from '../../../types/models';
+import { cn } from '../../../utils/cn';
 import { getGrammarText } from './GrammarText';
 import { GrammarExampleText } from './GrammarExampleText';
-import { cn } from '../../../utils/cn';
 
 interface GrammarExamplesSectionProps {
   page: InteractiveGrammarPage;
@@ -14,9 +15,6 @@ interface GrammarExamplesSectionProps {
   onOpenWord: (word: string) => void;
   contextTokens: GrammarWordToken[];
   examples?: GrammarLessonExample[];
-  hideHeader?: boolean;
-  title?: string;
-  variant?: 'cards' | 'clean';
 }
 
 export function GrammarExamplesSection({
@@ -27,11 +25,10 @@ export function GrammarExamplesSection({
   onOpenWord,
   contextTokens,
   examples,
-  hideHeader = false,
-  title = 'Examples',
-  variant = 'clean',
 }: GrammarExamplesSectionProps) {
   const activeExamples = examples ?? page.examples;
+  const [openNoteId, setOpenNoteId] = useState<string | null>(null);
+  const noteIdBase = useId();
 
   const speakExample = (exampleIndex: number) => {
     const example = activeExamples[exampleIndex];
@@ -44,75 +41,71 @@ export function GrammarExamplesSection({
 
   if (activeExamples.length === 0) return null;
 
-  const headingId = `examples-heading-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
-
   return (
-    <section aria-labelledby={headingId} className={cn(!hideHeader && 'mt-10')}>
-      {!hideHeader && (
-        <div className="mb-3 flex items-center justify-between gap-3">
-          <h2 id={headingId} className="text-xs font-black uppercase tracking-wider text-ui-ink-strong">
-            {title}
-          </h2>
-        </div>
-      )}
-      <div
-        className={cn(
-          variant === 'cards'
-            ? 'space-y-3'
-            : 'rounded-feature border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface divide-y divide-ui-divider/60 overflow-hidden'
-        )}
-      >
-        {activeExamples.map((example, index) => (
-          <div
-            key={example.id}
-            className={cn(
-              'flex items-start gap-3.5 transition-colors sm:gap-4',
-              variant === 'cards'
-                ? 'rounded-feature bg-ui-surface p-4 border-b-[length:var(--depth-md)] border-ui-border sm:p-5'
-                : 'p-3.5 sm:p-4 hover:bg-ui-hover/40'
-            )}
-          >
-            <span
-              className="flex h-7 w-7 shrink-0 select-none items-center justify-center rounded-full bg-feedback-warning text-xs font-black text-ui-ink-strong border-b-[length:var(--depth-sm)] border-feedback-warning-edge sm:h-8 sm:w-8 sm:text-sm mt-0.5"
-            >
-              {example.number}
-            </span>
+    <section aria-label="Examples">
+      <div className="flex flex-col gap-5 sm:gap-6">
+        {activeExamples.map((example, index) => {
+          const note = example.teachingNote?.replace(/^Part\s+\d+\s*·\s*/i, '');
+          const noteId = `${noteIdBase}-${example.id}`;
+          const isNoteOpen = note !== undefined && openNoteId === example.id;
 
-            <div className="flex-1 min-w-0">
-              {example.teachingNote && (
-                <p className="mb-2 text-xs font-bold leading-snug text-ui-muted-strong">
-                  <span className="font-black text-brand-primary">Focus · </span>
-                  <GrammarFocusText
-                    text={example.teachingNote.replace(/^Part\s+\d+\s*·\s*/i, '')}
+          return (
+            <div key={example.id} className="flex items-start gap-2.5 sm:gap-3">
+              <div className="flex shrink-0 flex-col">
+                <IconActionButton
+                  onClick={() => speakExample(index)}
+                  size="sm"
+                  variant="quiet"
+                  icon={<AppIcon name="audio" size={22} />}
+                  label={`Play example ${example.number}`}
+                  className="-ml-1.5 -mt-1.5 text-brand-primary hover:text-brand-primary/80"
+                />
+
+                {note !== undefined && (
+                  <IconActionButton
+                    onClick={() => setOpenNoteId(isNoteOpen ? null : example.id)}
+                    aria-expanded={isNoteOpen}
+                    aria-controls={noteId}
+                    size="sm"
+                    variant="quiet"
+                    icon={<AppIcon name="lightbulb" size={18} />}
+                    label={isNoteOpen ? `Hide note for example ${example.number}` : `Show note for example ${example.number}`}
+                    className={cn(
+                      '-ml-1.5 mt-0.5',
+                      isNoteOpen
+                        ? 'bg-brand-primary/10 text-brand-primary'
+                        : 'text-ui-muted-strong hover:text-ui-ink-strong',
+                    )}
+                  />
+                )}
+              </div>
+
+              <div className="min-w-0 flex-1">
+                <GrammarExampleText
+                  text={example.text}
+                  characterPreference={characterPreference}
+                  showPinyin={showPinyin}
+                  showTranslation={showTranslation}
+                  focusTerms={page.focusTerms}
+                  contextTokens={contextTokens}
+                  onOpenWord={onOpenWord}
+                />
+
+                {note !== undefined && (
+                  <GrammarFocusNote
+                    id={noteId}
+                    open={isNoteOpen}
+                    note={note}
                     terms={page.focusTerms}
                     contextTokens={contextTokens}
                     characterPreference={characterPreference}
                     onOpenWord={onOpenWord}
                   />
-                </p>
-              )}
-
-              <GrammarExampleText
-                text={example.text}
-                characterPreference={characterPreference}
-                showPinyin={showPinyin}
-                showTranslation={showTranslation}
-                focusTerms={page.focusTerms}
-                contextTokens={contextTokens}
-                onOpenWord={onOpenWord}
-              />
+                )}
+              </div>
             </div>
-
-            <IconActionButton
-              onClick={() => speakExample(index)}
-              size="sm"
-              variant="quiet"
-              icon={<AppIcon name="audio" size={16} />}
-              label={`Play example ${example.number}`}
-              className="shrink-0 text-ui-muted hover:text-brand-primary -mt-1 -mr-1"
-            />
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

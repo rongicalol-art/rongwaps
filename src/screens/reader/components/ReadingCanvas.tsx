@@ -8,7 +8,10 @@ import { getCharacterForSpeaker } from '../../../utils/speakerCharacters';
 import { audioService } from '../../../services/audioService';
 import { findMatchingCourseVocab } from '../../../services/vocabularyService';
 import { useReaderWordInteractions } from '../hooks/useReaderWordInteractions';
+import { useReaderLocate } from '../hooks/useReaderLocate';
 import { useReaderDictionaryBatch } from '../hooks/useReaderDictionaryBatch';
+import type { ReaderStudyTargetWord } from '../utils/readerStudyTargets';
+import { overlapsAnyLocatedRange, type ReaderLocatedRange } from '../utils/readerLocate';
 import { ReaderWordTooltip } from './ReaderWordTooltip';
 import { ReaderChunk, DIALOGUE_CHUNK_APPEARANCE } from './ReaderChunk';
 import { ReaderSpeakerAvatar } from './ReaderSpeakerAvatar';
@@ -25,6 +28,10 @@ interface ReadingCanvasProps {
   textSize: ReaderTextSize;
   activeLineIndex: number | null;
   currentTime: number;
+  /** Vocabulary word the Study Guide is locating in this text, if any. */
+  locatedWord: ReaderStudyTargetWord | null;
+  /** Sentences of the located grammar point, painted with a soft background. */
+  locatedGrammarRanges: readonly ReaderLocatedRange[];
   onPlayLine: (index: number) => void;
   onPlayRange?: (startSec: number, endSec: number) => void;
 }
@@ -61,6 +68,8 @@ export function ReadingCanvas({
   textSize,
   activeLineIndex,
   currentTime,
+  locatedWord,
+  locatedGrammarRanges,
   onPlayLine,
   onPlayRange,
 }: ReadingCanvasProps) {
@@ -143,6 +152,14 @@ export function ReadingCanvas({
       const speakerChar = getCharacterForSpeaker(paragraph.speaker);
       const avatarInitial = paragraph.speaker ? paragraph.speaker[0] : '？';
       const sentences = splitChunksIntoSentences(chunks, index, lineAlignment?.start, lineAlignment?.end);
+      // Chunks partition the line, so accumulating sentence text lengths gives
+      // each sentence's character range for the grammar locate highlight.
+      let sentenceOffset = 0;
+      const sentenceRanges = sentences.map((sentence) => {
+        const range = { charStart: sentenceOffset, charEnd: sentenceOffset + sentence.text.length };
+        sentenceOffset = range.charEnd;
+        return range;
+      });
 
       return {
         index,
@@ -152,15 +169,51 @@ export function ReadingCanvas({
         speakerDotColor,
         speakerChar,
         avatarInitial,
+        chunks,
         sentences,
+        sentenceRanges,
       };
     });
   }, [reading.paragraphs, characterPreference, alignment, speakerColorMap, rightSpeaker]);
 
+  const paragraphChunks = useMemo(
+    () => linesData.map((line) => line.chunks),
+    [linesData],
+  );
+
+  const { locatedChunks, firstParagraphIndex } = useReaderLocate({
+    reading,
+    script: characterPreference,
+    locatedWord,
+    paragraphChunks,
+  });
+
+  // Bring the first occurrence into view; `nearest` leaves the scroll position
+  // alone when the occurrence is already visible.
+  useEffect(() => {
+    if (!locatedWord || firstParagraphIndex === null) return;
+    lineRefs.current.get(firstParagraphIndex)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'nearest',
+    });
+  }, [locatedWord, firstParagraphIndex]);
+
+  // Same for a located grammar point's first matched sentence.
+  useEffect(() => {
+    const first = locatedGrammarRanges[0];
+    if (!first) return;
+    lineRefs.current.get(first.paragraphIndex)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'nearest',
+    });
+  }, [locatedGrammarRanges]);
+
   return (
     <article
       className={cn(
-        'mx-auto w-full px-3 pb-52 pt-16 sm:px-6 sm:pt-20 transition-all',
+        'mx-auto w-full px-3 pb-52 pt-[calc(5.5rem+env(safe-area-inset-top,0px))] sm:px-6 sm:pt-[6.5rem] transition-all',
         textSize === 'extra-large' ? 'max-w-3xl' : 'max-w-2xl',
       )}
     >
@@ -175,6 +228,7 @@ export function ReadingCanvas({
           speakerChar,
           avatarInitial,
           sentences,
+          sentenceRanges,
         }) => {
           const isActive = index === activeLineIndex;
 
@@ -217,8 +271,19 @@ export function ReadingCanvas({
                       getDialogueTextClasses(textSize, showPinyin),
                     )}
                   >
-                    {sentences.map((sentence) => (
-                      <span key={sentence.id} className="inline">
+                    {sentences.map((sentence, sentenceIdx) => (
+                      <span
+                        key={sentence.id}
+                        className={cn(
+                          'inline rounded',
+                          sentenceRanges[sentenceIdx] &&
+                            overlapsAnyLocatedRange(
+                              { paragraphIndex: index, ...sentenceRanges[sentenceIdx] },
+                              locatedGrammarRanges,
+                            ) &&
+                            'bg-feedback-warning/40',
+                        )}
+                      >
                         {sentence.chunks.map((chunk, chunkIdx) => {
                           if (chunk.isPunctuation) {
                             return (
@@ -253,7 +318,7 @@ export function ReadingCanvas({
                   </div>
                   {showMeaning && paragraph.english && (
                     <div className="mt-2 border-t border-ui-divider/50 pt-1.5">
-                      <p className="font-sans text-xs italic text-ui-muted">
+                      <p className="ui-translation text-xs">
                         {paragraph.english}
                       </p>
                     </div>
@@ -277,17 +342,20 @@ export function ReadingCanvas({
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.02 }}
               className={cn(
-                'flex w-full items-end gap-2.5 sm:gap-3.5',
+                'flex w-full items-start gap-2.5 sm:gap-3.5',
                 isRightAligned ? 'justify-end' : 'justify-start',
               )}
             >
-              {/* Speaker Avatar (Left side, only if not right-aligned) */}
+              {/* Speaker Avatar (Left side, only if not right-aligned).
+                  mt-5 matches the speaker name row above the bubble so the
+                  disc sits flush with the bubble's top edge, not the name. */}
               {!isRightAligned && (
                 <ReaderSpeakerAvatar
                   speaker={paragraph.speaker}
                   character={speakerChar}
                   initial={avatarInitial}
                   dotColor={speakerDotColor}
+                  className="mt-5"
                 />
               )}
 
@@ -326,20 +394,23 @@ export function ReadingCanvas({
                     }
                   }}
                   className={cn(
-                    'group relative w-fit max-w-full transition-all duration-150 cursor-pointer outline-none select-text focus-ring text-left',
-                    isRightAligned
-                      ? 'rounded-r-2xl rounded-l-[32px] sm:rounded-l-[36px]'
-                      : 'rounded-l-2xl rounded-r-[32px] sm:rounded-r-[36px]',
+                    'group relative w-fit max-w-full rounded-2xl border-2 border-ui-border bg-ui-surface shadow-xs transition-colors duration-150 cursor-pointer outline-none select-text focus-ring text-left',
                     textSize === 'extra-large' ? 'px-5 py-3.5 sm:px-6 sm:py-4' : 'px-4 py-3 sm:px-5 sm:py-3.5',
                     isActive
-                      ? isRightAligned
-                        ? 'bg-ui-surface border-0 border-b-[length:var(--depth-md)] border-b-brand-primary-edge ring-2 ring-brand-primary shadow-xs'
-                        : 'border-0 border-b-[length:var(--depth-md)] border-b-brand-primary-edge ring-2 ring-brand-primary bg-brand-primary-soft shadow-xs'
-                      : isRightAligned
-                        ? 'bg-ui-surface border-0 border-b-[length:var(--depth-md)] border-b-brand-primary-deep/80 hover:border-b-brand-primary-deep shadow-xs active:translate-y-[length:var(--depth-sm)] active:border-b-[length:var(--depth-sm)]'
-                        : 'bg-ui-surface border-0 border-b-[length:var(--depth-md)] border-b-ui-border hover:border-b-ui-border-strong shadow-xs active:translate-y-[length:var(--depth-sm)] active:border-b-[length:var(--depth-sm)]',
+                      ? 'border-brand-primary ring-1 ring-brand-primary/20'
+                      : 'hover:border-ui-border-strong',
                   )}
                 >
+                  {/* Bubble tail pointing at the speaker avatar */}
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      'absolute top-3.5 h-3 w-3 rotate-45 border-b-2 border-l-2 bg-ui-surface',
+                      isRightAligned && '-right-1.5 border-r-2 border-t-2 border-b-0 border-l-0',
+                      !isRightAligned && '-left-1.5',
+                      isActive ? 'border-brand-primary' : 'border-ui-border',
+                    )}
+                  />
                   {/* Chinese text + Native Aligned Ruby Pinyin */}
                   <div
                     className={cn(
@@ -347,7 +418,7 @@ export function ReadingCanvas({
                       getDialogueTextClasses(textSize, showPinyin),
                     )}
                   >
-                    {sentences.map((sentence) => {
+                    {sentences.map((sentence, sentenceIdx) => {
                       return (
                         <span
                           key={sentence.id}
@@ -365,7 +436,15 @@ export function ReadingCanvas({
                               playFragment(sentence.start, sentence.end, index);
                             }
                           }}
-                          className="group/sentence relative inline rounded cursor-pointer outline-none box-decoration-clone text-ui-ink-strong"
+                          className={cn(
+                            'group/sentence relative inline rounded cursor-pointer outline-none box-decoration-clone text-ui-ink-strong',
+                            sentenceRanges[sentenceIdx] &&
+                              overlapsAnyLocatedRange(
+                                { paragraphIndex: index, ...sentenceRanges[sentenceIdx] },
+                                locatedGrammarRanges,
+                              ) &&
+                              'bg-feedback-warning/40',
+                          )}
                         >
                           {sentence.chunks.map((chunk, chunkIdx) => {
                             if (chunk.isPunctuation) {
@@ -394,9 +473,10 @@ export function ReadingCanvas({
                                 lineIndex={index}
                                 fallbackStart={sentence.start}
                                 fallbackEnd={sentence.end}
-                                isActive={holdingChunkKey === chunkKey || isWordActive}
-                                isHovered={hoveredChunkKey === chunkKey}
-                                showPinyin={showPinyin}
+                                 isActive={holdingChunkKey === chunkKey || isWordActive}
+                                 isHovered={hoveredChunkKey === chunkKey}
+                                 isLocated={locatedChunks.has(chunk)}
+                                 showPinyin={showPinyin}
                                 textSize={textSize}
                                 appearance={DIALOGUE_CHUNK_APPEARANCE}
                                 onPlayLine={onPlayLine}
@@ -420,11 +500,11 @@ export function ReadingCanvas({
                     <div className="mt-2 border-t border-ui-divider/50 pt-1.5">
                       <p
                         className={cn(
-                          'font-sans font-medium text-ui-muted',
+                          'ui-translation',
                           textSize === 'extra-large'
-                            ? 'text-xs leading-relaxed sm:text-sm'
+                            ? 'text-xs sm:text-sm'
                             : textSize === 'large'
-                              ? 'text-xs leading-relaxed'
+                              ? 'text-xs'
                               : 'text-[11px] leading-snug sm:text-xs sm:leading-relaxed',
                         )}
                       >
@@ -442,6 +522,7 @@ export function ReadingCanvas({
                   character={speakerChar}
                   initial={avatarInitial}
                   dotColor={speakerDotColor}
+                  className="mt-5"
                 />
               )}
             </motion.div>

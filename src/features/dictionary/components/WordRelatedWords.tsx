@@ -51,7 +51,7 @@ export function WordRelatedWords({
                 <span className="truncate text-xs font-extrabold leading-tight text-brand-primary">
                   {item.pinyin ? numberToToneMarks(item.pinyin) : '\u00A0'}
                 </span>
-                <span className="line-clamp-2 text-xs font-bold leading-snug text-ui-muted">
+                <span className="line-clamp-2 text-xs font-bold leading-snug text-ui-muted-strong">
                   {item.definition}
                 </span>
               </span>

@@ -66,7 +66,7 @@ function OtherParentChip({ character, accentClassName, onClick }: {
       onClick={onClick}
       aria-label={`Open breakdown for ${character}`}
       title={`Open breakdown for ${character}`}
-      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-compact border border-ui-border bg-ui-surface shadow-[0_var(--depth-sm)_0_var(--color-ui-divider)] transition-[background-color,transform,box-shadow] hover:bg-ui-surface-hover active:translate-y-[length:var(--depth-sm)] active:shadow-none focus-ring ${accentClassName}`}
+      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-compact border border-ui-border border-b-[length:var(--depth-sm)] bg-ui-surface transition-[background-color,transform,border-color] hover:bg-ui-surface-hover active:scale-[0.97] focus-ring ${accentClassName}`}
     >
       <CharacterGlyph character={character} className="font-chinese text-[20px] leading-none" />
     </button>
@@ -94,7 +94,7 @@ export function V3SupportingInformation({ relatedWords, usedAsComponents, usedAs
   return (
     <section className="flex min-w-0 flex-col gap-3" aria-label="Supporting information">
       {related.length > 0 && (
-        <div className="min-w-0 rounded-feature bg-ui-surface p-4 shadow-[0_var(--depth-md)_0_var(--color-ui-border)] sm:p-6">
+        <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6">
           <SectionEyebrow
             title="In words"
             count={relatedWords.length}
@@ -124,7 +124,7 @@ export function V3SupportingInformation({ relatedWords, usedAsComponents, usedAs
       )}
 
       {hasPartOfCard && (
-        <div className="min-w-0 rounded-feature bg-ui-surface p-4 shadow-[0_var(--depth-md)_0_var(--color-ui-border)] sm:p-6">
+        <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6">
           <SectionEyebrow
             title="Part of"
             count={usedAsComponents.length}

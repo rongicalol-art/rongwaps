@@ -73,6 +73,15 @@ const variants = {
   }
 };
 
+function getFrontFontSize(len: number) {
+  if (len === 1) return 'text-[100px] sm:text-[130px] md:text-[150px] lg:text-[175px]';
+  if (len === 2) return 'text-[80px] sm:text-[100px] md:text-[120px] lg:text-[138px]';
+  if (len === 3) return 'text-[60px] sm:text-[76px] md:text-[90px] lg:text-[104px]';
+  if (len === 4) return 'text-[46px] sm:text-[60px] md:text-[72px] lg:text-[84px]';
+  if (len <= 6) return 'text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px]';
+  return 'text-[28px] sm:text-[36px] md:text-[42px] lg:text-[48px]';
+}
+
 export const DraggableFlashcard = ({
   card,
   direction,
@@ -177,14 +186,6 @@ export const DraggableFlashcard = ({
   }, [flipAngle, isFlipped, reduceMotion]);
 
   const frontLength = card?.front?.length || 1;
-  const getFrontFontSize = (len: number) => {
-    if (len === 1) return 'text-[100px] sm:text-[130px] md:text-[150px] lg:text-[175px]';
-    if (len === 2) return 'text-[80px] sm:text-[100px] md:text-[120px] lg:text-[138px]';
-    if (len === 3) return 'text-[60px] sm:text-[76px] md:text-[90px] lg:text-[104px]';
-    if (len === 4) return 'text-[46px] sm:text-[60px] md:text-[72px] lg:text-[84px]';
-    if (len <= 6) return 'text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px]';
-    return 'text-[28px] sm:text-[36px] md:text-[42px] lg:text-[48px]';
-  };
 
   const handleCardClick = (e: React.MouseEvent) => {
     if (isDraggingRef.current) return;

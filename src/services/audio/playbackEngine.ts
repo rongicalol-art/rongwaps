@@ -30,6 +30,7 @@ export function playHtmlAudio(
   playbackRate: number,
   onEnd: () => void,
   onError: (err?: unknown) => void,
+  startTime = 0,
 ): void {
   try {
     // Preserve pitch across all browsers for natural Mandarin tone contour
@@ -37,10 +38,16 @@ export function playHtmlAudio(
     (audio as unknown as { mozPreservesPitch?: boolean }).mozPreservesPitch = true;
     (audio as unknown as { webkitPreservesPitch?: boolean }).webkitPreservesPitch = true;
 
-    audio.src = src;
+    if (audio.src !== src && !audio.src.endsWith(src)) {
+      audio.src = src;
+    }
     audio.defaultPlaybackRate = playbackRate;
     audio.playbackRate = playbackRate;
-    audio.currentTime = 0;
+    if (startTime > 0 && Math.abs(audio.currentTime - startTime) > 0.05) {
+      try { audio.currentTime = startTime; } catch { /* ignore */ }
+    } else if (startTime === 0 && Math.abs(audio.currentTime) > 0.05) {
+      try { audio.currentTime = 0; } catch { /* ignore */ }
+    }
     audio.onended = () => {
       audio.onended = null;
       audio.onerror = null;
@@ -109,6 +116,7 @@ export function playRangeOnAudioElement(
     }
   };
 
+  // Only assign src if changing, to avoid dumping decoded audio buffer
   if (audio.src !== src && !audio.src.endsWith(src)) {
     audio.src = src;
     if (typeof audio.addEventListener === 'function' && audio.readyState < 1) {
@@ -124,11 +132,13 @@ export function playRangeOnAudioElement(
   (audio as unknown as { webkitPreservesPitch?: boolean }).webkitPreservesPitch = true;
   audio.defaultPlaybackRate = rate;
   audio.playbackRate = rate;
-  try {
-    if (Math.abs(audio.currentTime - start) > 0.05) {
+
+  if (Math.abs(audio.currentTime - start) > 0.04) {
+    try {
       audio.currentTime = start;
-    }
-  } catch { /* ignore */ }
+    } catch { /* ignore */ }
+  }
+
   audio.onerror = cleanup;
   audio.onended = cleanup;
 
@@ -137,9 +147,10 @@ export function playRangeOnAudioElement(
     : null;
 
   audio.ontimeupdate = () => {
+    if (audio.seeking) return;
     if (!raf) reportTime(audio.currentTime);
     if (audio.currentTime >= end) {
-      audio.pause();
+      try { audio.pause(); } catch { /* ignore */ }
       cleanup();
     }
   };
@@ -151,27 +162,23 @@ export function playRangeOnAudioElement(
 
   playPromise?.then(() => {
     if (!settled) {
-      try {
-        if (Math.abs(audio.currentTime - start) > 0.08) {
-          audio.currentTime = start;
-        }
-      } catch { /* ignore */ }
       audio.playbackRate = rate;
       if (raf) {
         const tick = () => {
           if (settled) return;
           rafHandle = null;
           onRafHandle(null);
-          const time = audio.currentTime;
-          if (time < start - 0.15) {
-            try { audio.currentTime = start; } catch { /* ignore */ }
+
+          if (audio.seeking) {
             rafHandle = raf(tick);
             onRafHandle(rafHandle);
             return;
           }
+
+          const time = audio.currentTime;
           reportTime(time);
           if (time >= end) {
-            audio.pause();
+            try { audio.pause(); } catch { /* ignore */ }
             cleanup();
             return;
           }

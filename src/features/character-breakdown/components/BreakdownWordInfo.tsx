@@ -146,7 +146,7 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
   return (
     <div className="flex h-full w-full flex-col gap-7">
       {/* Top Character Area */}
-      <section className="relative flex flex-col overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
+      <section className="relative flex flex-col overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
 
         <SummaryQuickActions char={activeChar} audioSrc={charData?.audio ?? undefined} />
         <div className="p-6 md:p-8 flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 relative z-10 text-center sm:text-left">
@@ -259,7 +259,7 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
                  transition={{ duration: 0.15 }}
                  className="flex flex-col gap-3"
                >
-                 <div className="flex w-full flex-col overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
+                 <div className="flex w-full flex-col overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
                    {[1, 2, 3].map((i) => (
                       <div key={i} className="flex w-full flex-row items-center gap-4 border-b border-ui-divider/70 bg-ui-surface px-4 py-3 last:border-0">
                         <Skeleton className="w-[32px] h-[32px] rounded-compact shrink-0" />
@@ -299,7 +299,7 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
                        {sortedIds.map(bookId => {
                          const items = groups[bookId];
                          return (
-                           <div key={bookId} className="flex w-full flex-col overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
+                           <div key={bookId} className="flex w-full flex-col overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
                              {items.map((item, idx) => (
                                <UsedAsCompactItem
                                  key={item.char}
@@ -319,7 +319,7 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
 
                  {outOfCourseItems.length > 0 && (
                     <div className="flex flex-col gap-2 mt-2">
-                      <div className="flex w-full flex-col overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
+                      <div className="flex w-full flex-col overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
                         {outOfCourseItems.slice(0, Math.max(2, 5 - inCourseItems.length)).map((item, idx) => {
                           const limit = Math.max(2, 5 - inCourseItems.length);
                           return (
@@ -368,7 +368,7 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -6 }}
                 transition={{ duration: 0.2 }}
-                className="flex w-full flex-col overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]"
+                className="flex w-full flex-col overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface"
               >
                 {[1, 2].map((i) => (
                   <div key={i} className="flex w-full flex-row items-center gap-4 border-b-2 border-ui-divider bg-ui-surface px-4 py-[13.5px] last:border-0">
@@ -394,7 +394,7 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
               >
                 {relatedGroups.map(group => {
                   return (
-                    <div key={group.bookId} className="flex w-full flex-col overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
+                    <div key={group.bookId} className="flex w-full flex-col overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
                       {group.cards.map((card, idx) => {
                         const isLast = idx === group.cards.length - 1;
                         return (

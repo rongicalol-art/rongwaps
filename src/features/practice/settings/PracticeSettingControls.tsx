@@ -20,7 +20,7 @@ export function SettingsSection({
   return (
     <section className={cn('flex flex-col gap-2', className)} {...props}>
       <SectionEyebrow title={title} icon={icon ? <AppIcon name={icon} size={15} /> : undefined} />
-      {description && <p className="px-1 text-xs font-bold leading-snug text-ui-muted">{description}</p>}
+      {description && <p className="px-1 text-xs font-bold leading-snug text-ui-muted-strong">{description}</p>}
       {children}
     </section>
   );
@@ -66,7 +66,7 @@ export function SettingsToggleRow({ checked, label, description, disabled, class
     >
       <span className="min-w-0">
         <span className="block text-[15px] font-extrabold leading-tight text-ui-ink">{label}</span>
-        {description && <span className="mt-1 block text-[13px] font-bold leading-snug text-ui-muted">{description}</span>}
+        {description && <span className="mt-1 block text-[13px] font-bold leading-snug text-ui-muted-strong">{description}</span>}
       </span>
       <ToggleSwitch checked={checked} />
     </button>
@@ -94,7 +94,7 @@ export function SettingsRadioRow({ checked, label, detail, className, ...props }
     >
       <span className="min-w-0">
         <span className="block text-[15px] font-extrabold leading-tight text-ui-ink">{label}</span>
-        {detail && <span className="mt-1 block text-[13px] font-bold leading-snug text-ui-muted">{detail}</span>}
+        {detail && <span className="mt-1 block text-[13px] font-bold leading-snug text-ui-muted-strong">{detail}</span>}
       </span>
       <span
         aria-hidden="true"

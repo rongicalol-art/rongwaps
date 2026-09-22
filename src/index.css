@@ -3,6 +3,26 @@
 @font-face {
   font-family: 'TW-EduKai';
   src: url('/fonts/edukai.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* LXGW WenKai Medium (OFL 1.1) — KaiTi calligraphy face with balanced medium weight
+   for Simplified Chinese. */
+@font-face {
+  font-family: 'LXGW-WenKai';
+  src: url('/fonts/lxgw-wenkai.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Resource Han Rounded / 思源圆体 (OFL 1.1) — rounded Simplified Chinese face,
+   subset to course glyphs, matching Huninn's rounded visual weight. */
+@font-face {
+  font-family: 'Rounded-SC';
+  src: url('/fonts/rounded-sc.woff2') format('woff2');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -40,11 +60,38 @@
   font-display: swap;
 }
 
+/* jf open 粉圓 / Huninn (OFL 1.1) — rounded Traditional Chinese face, subset to
+   the course's glyphs. Single 400 weight; weight synthesis is disabled while it
+   is active (see the `data-character-font` rule below), because faked bold
+   merges the strokes of dense glyphs (臺, 灣) into a blob. Loaded only while the
+   "Rounded" character font is selected. */
+@font-face {
+  font-family: 'Huninn';
+  src: url('/fonts/huninn.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('/fonts/nunito.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme {
   --font-sans: "Nunito", "RW-Extras", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-chinese: "TW-EduKai", "RW-Extras", "BiauKai", "標楷體", "DFKai-SB", "Kaiti TC", "STKaiti", "KaiTi", "TW-Kai", "LXGW WenKai TC", serif;
-  --font-chinese-sans: "PingFang TC", "PingFang SC", "Microsoft JhengHei", "Heiti TC", "Noto Sans CJK TC", "Noto Sans CJK SC", "RW-Extras", system-ui, sans-serif;
-  --font-kaiti: "TW-EduKai", "RW-Extras", "BiauKai", "標楷體", "DFKai-SB", "Kaiti TC", "STKaiti", "KaiTi", "TW-Kai", "LXGW WenKai TC", serif;
+  --font-chinese-sans: "Nunito", "PingFang TC", "PingFang SC", "Microsoft YaHei", "Microsoft JhengHei", "Heiti TC", "Noto Sans CJK TC", "Noto Sans CJK SC", "RW-Extras", ui-sans-serif, system-ui, sans-serif;
+  --font-kaiti-tc: "Nunito", "TW-EduKai", "RW-Extras", "BiauKai", "標楷體", "DFKai-SB", "Kaiti TC", "STKaiti", "KaiTi", "TW-Kai", "LXGW-WenKai", ui-sans-serif, system-ui, sans-serif;
+  --font-kaiti-sc: "Nunito", "LXGW-WenKai", "Kaiti SC", "STKaiti", "KaiTi", "RW-Extras", ui-sans-serif, system-ui, sans-serif;
+  --font-kaiti: var(--font-kaiti-tc);
+  --font-chinese-huninn: "Nunito", "Huninn", "Rounded-SC", "RW-Extras", "PingFang TC", "Microsoft JhengHei", "Noto Sans CJK TC", ui-sans-serif, system-ui, sans-serif;
+  --font-chinese-rounded-sc: "Nunito", "Rounded-SC", "Huninn", "RW-Extras", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", ui-sans-serif, system-ui, sans-serif;
+  /* Character font: Rounded (Huninn) by default; the study setting writes
+     `data-character-font="kai"` on <html> to swap in the calligraphy stack. */
+  --font-chinese: var(--font-chinese-huninn);
 
   /* Soft off-white canvases keep white controls and cards visually distinct. */
   --color-ui-canvas: #f2f3f4;
@@ -59,15 +106,15 @@
   --color-ui-divider: #d6dade;
   --color-ui-hover: #f0f2f3;
 
-  --color-brand-primary: #1cb0f6;
-  --color-brand-primary-edge: #1899d6;
-  --color-brand-primary-deep: #117cad;
-  --color-brand-primary-soft: #f1f8fb;
-  --color-brand-primary-soft-edge: #bfe9ff;
-  --color-brand-primary-track: #c7d6e1;
-  --color-brand-secondary: #ff9600;
-  --color-brand-secondary-edge: #e58700;
-  --color-brand-secondary-soft: #ffefdc;
+  --color-brand-primary: #0284c7;
+  --color-brand-primary-edge: #0369a1;
+  --color-brand-primary-deep: #075985;
+  --color-brand-primary-soft: #f0f9ff;
+  --color-brand-primary-soft-edge: #bae6fd;
+  --color-brand-primary-track: #c7d9e5;
+  --color-brand-secondary: #ea580c;
+  --color-brand-secondary-edge: #c2410c;
+  --color-brand-secondary-soft: #fff7ed;
   --color-brand-disabled: var(--color-ui-border);
   --color-brand-disabled-edge: var(--color-ui-muted);
   --color-brand-text-secondary: var(--color-ui-muted);
@@ -144,6 +191,13 @@
   --size-window-header: 71px;
   --workspace-desktop-nav-width: 288px;
   --workspace-nav-width: 0px;
+
+  /* Universal Safe Area & Dock Layout Tokens */
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --dock-height: 60px;
+  --dock-bottom: max(1rem, calc(var(--safe-area-bottom) + 0.75rem));
+  --dock-clearance: max(6.5rem, calc(var(--safe-area-bottom) + 5.5rem));
+  --sheet-safe-pb: max(1rem, calc(var(--safe-area-bottom) + 0.5rem));
 }
 
 @media (min-width: 768px) {
@@ -159,10 +213,69 @@
 }
 
 @layer base {
+  /* Default font is Rounded (Huninn for Traditional, Rounded-SC for Simplified) */
+  :root[data-character-preference='simplified'] {
+    --font-chinese: var(--font-chinese-rounded-sc);
+  }
+
+  /* Character-font study setting: kai swaps the Chinese stack app-wide.
+     Traditional Chinese uses Taiwan MOE Standard Kai (school textbook font);
+     Simplified Chinese uses Simplified Kai (LXGW-WenKai / KaiTi SC). */
+  :root[data-character-font='kai'] {
+    --font-chinese: var(--font-kaiti-tc);
+  }
+
+  :root[data-character-font='kai'][data-character-preference='simplified'] {
+    --font-chinese: var(--font-kaiti-sc);
+  }
+
+  :root[data-character-font='huninn'] {
+    --font-chinese: var(--font-chinese-huninn);
+  }
+
+  :root[data-character-font='huninn'][data-character-preference='simplified'] {
+    --font-chinese: var(--font-chinese-rounded-sc);
+  }
+
+  /* Both Huninn and Kai avoid the browser's aggressive synthetic bold blob expansion.
+     The selectors mirror the font-synthesis shorthand below, which would otherwise
+     re-enable it on body/#root. */
+  :root[data-character-font='huninn'],
+  :root[data-character-font='huninn'] body,
+  :root[data-character-font='huninn'] #root,
+  :root[data-character-font='kai'],
+  :root[data-character-font='kai'] body,
+  :root[data-character-font='kai'] #root {
+    font-synthesis-weight: none;
+  }
+
+  /* Optical size & stroke tuning for Kai:
+     Kai calligraphy has a smaller visual footprint than geometric rounded glyphs.
+     We give it an optical boost (1.14em) so its characters feel naturally matching in size,
+     and a subtle stroke enhancement that is lean and refined (not fat/bloated). */
+  :root[data-character-font='kai'] .font-chinese {
+    font-size: 1.14em;
+    -webkit-text-stroke: 0.22px currentColor;
+  }
+
+  :root[data-character-font='kai'] .font-chinese .font-chinese {
+    font-size: 1em;
+  }
+
+  :root[data-character-font='kai'] .font-chinese.font-black,
+  :root[data-character-font='kai'] .font-black .font-chinese,
+  :root[data-character-font='kai'] .font-chinese.font-extrabold,
+  :root[data-character-font='kai'] .font-extrabold .font-chinese,
+  :root[data-character-font='kai'] .font-chinese.font-bold,
+  :root[data-character-font='kai'] .font-bold .font-chinese {
+    -webkit-text-stroke: 0.38px currentColor;
+  }
+
   html,
   body,
   #root {
     font-family: var(--font-sans);
+    font-synthesis: weight style;
     letter-spacing: 0;
   }
 
@@ -206,6 +319,7 @@ body {
   color: var(--color-ui-ink);
   margin: 0;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Hide scrollbars globally */
@@ -244,14 +358,6 @@ body {
   .window-header {
     height: var(--size-window-header);
     min-height: var(--size-window-header);
-  }
-
-  .grammar-learn-workspace {
-    --font-chinese: var(--font-chinese-sans);
-  }
-
-  .grammar-practice-workspace {
-    --font-chinese: var(--font-chinese-sans);
   }
 
   .no-scrollbar::-webkit-scrollbar,
@@ -295,6 +401,77 @@ body {
   .focus-ring-inline {
     @apply outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/30;
   }
+
+  /* Universal translation typography: same bold voice as definitions and
+     memory-hook body copy, in the shared muted gray token. */
+  .ui-translation {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    color: var(--color-ui-muted-strong);
+    line-height: 1.625;
+  }
+
+  /* Inline Chinese inside prose runs at the example-sentence scale so the
+     characters do not read smaller than the bold Latin around them. */
+  .prose-chinese .font-chinese {
+    font-size: 1.25em;
+  }
+  @media (min-width: 640px) {
+    .prose-chinese .font-chinese {
+      font-size: 1.3333em;
+    }
+  }
+
+  /* Universal Floating Dock Placement */
+  .bottom-dock-safe {
+    bottom: var(--dock-bottom);
+  }
+  @media (min-width: 640px) {
+    .bottom-dock-safe {
+      bottom: 1.25rem;
+    }
+  }
+  @media (min-width: 768px) {
+    .bottom-dock-safe {
+      bottom: 1.5rem;
+    }
+  }
+
+  /* Universal Dock Clearance for Scrollable Containers */
+  .pb-dock-clearance {
+    padding-bottom: var(--dock-clearance);
+  }
+  @media (min-width: 640px) {
+    .pb-dock-clearance {
+      padding-bottom: 7rem;
+    }
+  }
+
+  /* Universal Bottom Sheet / Sticky Footer Safe Area Padding */
+  .pb-sheet-safe {
+    padding-bottom: var(--sheet-safe-pb);
+  }
+
+  /* Universal Drawer / Overlay Scrollable Padding */
+  .pb-safe-area {
+    padding-bottom: max(1rem, var(--safe-area-bottom));
+  }
+
+  /* Universal Dock Pill Height */
+  .dock-pill {
+    height: var(--dock-height);
+    min-height: var(--dock-height);
+  }
+
+  /* Universal Primary Action / Continue Button Height */
+  .btn-touch-primary {
+    min-height: 52px;
+  }
+  @media (min-width: 640px) {
+    .btn-touch-primary {
+      min-height: 56px;
+    }
+  }
 }
 
 /* Card Maker Animations */
@@ -321,6 +498,11 @@ body {
   to { transform: translateX(-50%); }
 }
 .anim-teaser-marquee { animation: teaser-marquee 6s linear infinite; }
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .anim-fwd,

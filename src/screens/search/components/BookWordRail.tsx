@@ -95,7 +95,7 @@ export function BookWordRail({ bookId, onOpenWord }: BookWordRailProps) {
       {error ? (
         <div className="mt-4 flex flex-col items-center gap-3 rounded-control bg-ui-canvas px-4 py-8 text-center">
           <AppIcon name="error" size={24} className="text-feedback-danger" />
-          <p className="max-w-sm text-sm font-bold text-ui-muted">{error}</p>
+          <p className="max-w-sm text-sm font-bold text-ui-muted-strong">{error}</p>
           <IconActionButton
             type="button"
             variant="quiet"

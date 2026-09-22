@@ -34,6 +34,7 @@ interface TabScreensProps {
   startPathPractice: () => void;
   setActiveTab: (tab: TabRoute) => void;
   setActiveActivity: (activity: ActivityType) => void;
+  onOpenGrammarPart: (partId: string, pageId?: string | null) => void;
   onToggleNav: () => void;
 }
 
@@ -46,6 +47,7 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
   startPathPractice,
   setActiveTab,
   setActiveActivity,
+  onOpenGrammarPart,
   onToggleNav,
 }) {
   const menuToggle = useMemo(
@@ -95,6 +97,7 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
                 selectedLessons={selectedLessons}
                 onToggleLesson={toggleLesson}
                 onStartPractice={startPathPractice}
+                onOpenGrammarPart={onOpenGrammarPart}
                 onProfileClick={handleProfileClick}
                 menuToggle={menuToggle}
               />

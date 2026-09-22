@@ -1,14 +1,18 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import { useAppStore } from '../../store/useAppStore';
+import { cn } from '../../utils/cn';
 import type { DialogueAlignment, ReadingRecord } from '../../types/models';
-import { LoadingScreen } from '../../lib/widgets';
 
+import type { ReaderGrammarPoint, ReaderStudyTargetWord } from './utils/readerStudyTargets';
 import { useReaderAudio } from './hooks/useReaderAudio';
 import { useReaderPreferences } from './hooks/useReaderPreferences';
+import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
 import { ReaderHeader } from './components/ReaderHeader';
 import { ReaderStudyDrawer } from './components/ReaderStudyDrawer';
 import { ReaderStudyPanel } from './components/ReaderStudyPanel';
+import { StudySidePanel } from '../../lib/widgets';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { isNarrativeReading } from './utils/narrativeParagraphs';
 import { ReadingBottomDock } from './components/ReadingBottomDock';
 
@@ -24,10 +28,16 @@ const ReadingNarrativeView = lazy(() =>
 
 let cachedAlignmentMap: Record<string, DialogueAlignment> | null = null;
 
+/** Stable empty list so the reading views' locate memos do not churn. */
+const EMPTY_GRAMMAR_MATCHES: ReaderGrammarPoint['matches'] = [];
+
 interface ReaderScreenProps {
   readings: ReadingRecord[];
   index: number;
-  onNavigate: (targetIndex: number) => void;
+  /** Lesson-path next step: the reading continues into the next part's grammar. */
+  onNext: () => void;
+  /** Lesson-path previous step: back into this reading's part grammar. */
+  onPrevious: () => void;
   onClose: () => void;
   onOpenGrammarPart?: (partId: string, pageId?: string) => void;
 }
@@ -50,13 +60,13 @@ function ReaderContentMount({
 export function ReaderScreen({
   readings,
   index,
-  onNavigate,
+  onNext,
+  onPrevious,
   onClose,
   onOpenGrammarPart,
 }: ReaderScreenProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLElement>(null);
-  const lastScrollY = useRef(0);
   const previousActiveElementRef = useRef<HTMLElement | null>(null);
 
   // Preserve and restore user's focus upon exiting reading mode
@@ -73,7 +83,10 @@ export function ReaderScreen({
     };
   }, []);
 
-  const [isDockVisible, setIsDockVisible] = useState(true);
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
+
+  // Hover-only dock: hidden until the pointer reaches the bottom edge.
+  const [isDockVisible, setIsDockVisible] = useState(false);
 
   const {
     showPinyin,
@@ -89,8 +102,35 @@ export function ReaderScreen({
   const audioMode = 'book';
   const characterPreference = useAppStore((state) => state.characterPreference);
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
+  const characterFont = usePracticePreferencesStore((state) => state.characterFont);
+  const updatePracticePreferences = usePracticePreferencesStore((state) => state.updatePreferences);
   const reading = readings[index] ?? readings[0];
   const [isStudyDrawerOpen, setIsStudyDrawerOpen] = useState(false);
+  const [isStudySidePanelOpen, setIsStudySidePanelOpen] = useState(true);
+
+  const handleToggleStudyGuide = useCallback(() => {
+    if (isDesktop) {
+      setIsStudySidePanelOpen((prev) => !prev);
+    } else {
+      setIsStudyDrawerOpen((prev) => !prev);
+    }
+  }, [isDesktop]);
+
+  // Vocabulary word the Study Guide is locating in the text; owned here because
+  // the panel and the reading canvases are siblings.
+  const [locatedWord, setLocatedWord] = useState<ReaderStudyTargetWord | null>(null);
+  // Grammar point whose sentence is being located; locating one clears the other.
+  const [locatedGrammarPoint, setLocatedGrammarPoint] = useState<ReaderGrammarPoint | null>(null);
+
+  const handleLocateWord = useCallback((word: ReaderStudyTargetWord | null) => {
+    setLocatedWord(word);
+    if (word) setLocatedGrammarPoint(null);
+  }, []);
+
+  const handleLocateGrammarPoint = useCallback((point: ReaderGrammarPoint | null) => {
+    setLocatedGrammarPoint(point);
+    if (point) setLocatedWord(null);
+  }, []);
   const isStudyDrawerOpenRef = useRef(isStudyDrawerOpen);
   isStudyDrawerOpenRef.current = isStudyDrawerOpen;
 
@@ -131,6 +171,7 @@ export function ReaderScreen({
     totalDuration,
     playbackSpeed,
     canKaraoke,
+    isLooping,
     activeLineIndex,
     togglePlay,
     playLine,
@@ -140,6 +181,7 @@ export function ReaderScreen({
     prevSentence,
     nextSentence,
     cycleSpeed,
+    toggleLoop,
   } = useReaderAudio({
     reading,
     alignment,
@@ -147,95 +189,27 @@ export function ReaderScreen({
     audioMode,
   });
 
-  // Always show dock when audio starts playing
-  useEffect(() => {
-    if (playing) {
-      setIsDockVisible(true);
-    }
-  }, [playing]);
-
   // Stable play callbacks: the reading canvases memoize each word, so passing
   // fresh arrow identities here would re-render every word on every karaoke
   // tick. The audio hook's play actions do not depend on `currentTime`, so
   // these stay referentially stable while playback is running.
   const handlePlayLine = useCallback((lineIndex: number) => {
-    setIsDockVisible(true);
     playLine(lineIndex);
   }, [playLine]);
 
   const handlePlayRange = useCallback((startSec: number) => {
-    setIsDockVisible(true);
     playFromTime(startSec);
   }, [playFromTime]);
 
   const handlePlayFromTime = useCallback((startSec: number, endSec?: number) => {
-    setIsDockVisible(true);
     playFromTime(startSec, endSec);
   }, [playFromTime]);
 
-  const isHoveringBottomRef = useRef(false);
-  const wasHoverRevealedRef = useRef(false);
-  const hoverLeaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const handleBottomHoverEnter = useCallback(() => {
-    if (hoverLeaveTimerRef.current) {
-      clearTimeout(hoverLeaveTimerRef.current);
-      hoverLeaveTimerRef.current = null;
-    }
-    isHoveringBottomRef.current = true;
-    setIsDockVisible((currentVisible) => {
-      if (!currentVisible) {
-        wasHoverRevealedRef.current = true;
-      }
-      return true;
-    });
-  }, []);
-
-  const handleBottomHoverLeave = useCallback(() => {
-    isHoveringBottomRef.current = false;
-    if (hoverLeaveTimerRef.current) {
-      clearTimeout(hoverLeaveTimerRef.current);
-    }
-    hoverLeaveTimerRef.current = setTimeout(() => {
-      if (wasHoverRevealedRef.current) {
-        wasHoverRevealedRef.current = false;
-        setIsDockVisible(false);
-      }
-    }, 80);
-  }, []);
-
-  // Scroll listener for dynamic native-app hide/reveal of bottom dock
-  useEffect(() => {
-    const main = mainRef.current;
-    if (!main) return;
-
-    const handleScroll = () => {
-      if (isHoveringBottomRef.current) return;
-
-      const currentScrollY = main.scrollTop;
-      const delta = currentScrollY - lastScrollY.current;
-
-      if (Math.abs(delta) > 8) {
-        if (delta > 0 && currentScrollY > 40) {
-          wasHoverRevealedRef.current = false;
-          setIsDockVisible((prev) => (prev ? false : prev));
-        } else if (delta < 0) {
-          wasHoverRevealedRef.current = false;
-          setIsDockVisible((prev) => (!prev ? true : prev));
-        }
-      }
-
-      lastScrollY.current = currentScrollY;
-    };
-
-    main.addEventListener('scroll', handleScroll, { passive: true });
-    return () => main.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Scroll to top when reading changes
+  // Scroll to top when reading changes; located highlights belong to one reading.
   useEffect(() => {
     mainRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
-    setIsDockVisible(true);
+    setLocatedWord(null);
+    setLocatedGrammarPoint(null);
   }, [reading?.id]);
 
   // Isolate background from accessibility tree and user focus while reader is open
@@ -284,32 +258,29 @@ export function ReaderScreen({
       } else if (event.key === ' ') {
         event.preventDefault();
         event.stopPropagation();
-        setIsDockVisible(true);
         togglePlay();
       } else if (event.key === 'ArrowLeft') {
         event.preventDefault();
         event.stopPropagation();
         if (event.altKey || event.metaKey) {
-          setIsDockVisible(true);
           prevSentence();
         } else {
-          if (index > 0) onNavigate(index - 1);
+          onPrevious();
         }
       } else if (event.key === 'ArrowRight') {
         event.preventDefault();
         event.stopPropagation();
         if (event.altKey || event.metaKey) {
-          setIsDockVisible(true);
           nextSentence();
         } else {
-          if (index < readings.length - 1) onNavigate(index + 1);
+          onNext();
         }
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [index, readings.length, onNavigate, onClose, togglePlay, prevSentence, nextSentence]);
+  }, [onClose, onNext, onPrevious, togglePlay, prevSentence, nextSentence]);
 
   // Touch Swipe Gestures for Previous / Next Dialogue
   const touchStartXRef = useRef<number | null>(null);
@@ -332,9 +303,9 @@ export function ReaderScreen({
 
     if (Math.abs(diffX) > 80 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
       if (diffX > 0) {
-        if (index > 0) onNavigate(index - 1);
+        onPrevious();
       } else {
-        if (index < readings.length - 1) onNavigate(index + 1);
+        onNext();
       }
     }
   };
@@ -354,6 +325,8 @@ export function ReaderScreen({
     textSize,
     activeLineIndex,
     currentTime,
+    locatedWord,
+    locatedGrammarRanges: locatedGrammarPoint?.matches ?? EMPTY_GRAMMAR_MATCHES,
     onPlayLine: handlePlayLine,
     onPlayRange: handlePlayRange,
     onPlayFromTime: handlePlayFromTime,
@@ -370,42 +343,55 @@ export function ReaderScreen({
       className="fixed inset-0 z-50 flex flex-col bg-ui-practice-canvas transition-[padding-left] duration-300 ease-out outline-none select-none"
       style={{ paddingLeft: 'var(--workspace-nav-width, 0px)' }}
       onMouseMove={(e) => {
-        const threshold = window.innerHeight - 90;
-        if (e.clientY >= threshold) {
-          handleBottomHoverEnter();
-        } else {
-          handleBottomHoverLeave();
-        }
+        setIsDockVisible(e.clientY >= window.innerHeight - 90);
       }}
+      onMouseLeave={() => setIsDockVisible(false)}
     >
-      {/* Main Single-Dialogue Reading Header */}
-      <div className="absolute top-0 inset-x-0 z-30 pointer-events-auto">
-        <ReaderHeader
-          reading={reading}
-          textSize={textSize}
-          onTextSizeChange={setTextSize}
-          showPinyin={showPinyin}
-          onTogglePinyin={toggleShowPinyin}
-          showMeaning={showMeaning}
-          onToggleMeaning={toggleShowMeaning}
-          showHoverDefinitions={showHoverDefinitions}
-          onToggleHoverDefinitions={toggleShowHoverDefinitions}
-          onOpenStudyGuide={() => setIsStudyDrawerOpen((open) => !open)}
-          isStudyGuideOpen={isStudyDrawerOpen}
-          onClose={onClose}
-        />
-      </div>
-
       {/* Main Split Area: Reading Canvas + In-Window Study Guide */}
       <div className="flex flex-1 min-h-0 min-w-0 h-full">
         {/* Dialogue Stream Column */}
         <div className="relative flex-1 min-w-0 flex flex-col min-h-0">
+          {/* Reading header stays inside the reading column — it never spans
+              the study panel, and while that panel is open its border line
+              stops short of it (matching the panel's outer margin) so the
+              cut-off gets breathing room; without the panel, and on
+              phone/tablet, the line runs full width. It is overlaid on the
+              scroller: the frosted blur hides content passing beneath it, so
+              the reading canvases pad their top clear of the bar. */}
+          <div
+            className={cn(
+              'absolute top-0 left-0 z-30 pointer-events-auto',
+              isDesktop && isStudySidePanelOpen ? 'right-4 xl:right-6' : 'right-0',
+            )}
+          >
+            <ReaderHeader
+              reading={reading}
+              textSize={textSize}
+              onTextSizeChange={setTextSize}
+              characterFont={characterFont}
+              onCharacterFontChange={(font) => updatePracticePreferences({ characterFont: font })}
+              showPinyin={showPinyin}
+              onTogglePinyin={toggleShowPinyin}
+              showMeaning={showMeaning}
+              onToggleMeaning={toggleShowMeaning}
+              showHoverDefinitions={showHoverDefinitions}
+              onToggleHoverDefinitions={toggleShowHoverDefinitions}
+              onOpenStudyGuide={handleToggleStudyGuide}
+              isStudyGuideOpen={isDesktop ? isStudySidePanelOpen : isStudyDrawerOpen}
+              onClose={onClose}
+            />
+          </div>
+
           <main
             ref={mainRef}
-            onClick={() => setIsDockVisible(true)}
+            onClick={() => {
+              // A tap on the reading dismisses located highlights.
+              setLocatedWord(null);
+              setLocatedGrammarPoint(null);
+            }}
             className="relative z-10 flex-1 min-w-0 overflow-y-auto overscroll-none"
           >
-            <Suspense fallback={<LoadingScreen message="Loading reading…" inline />}>
+            <Suspense fallback={null}>
               <ReaderContentMount onMounted={markContentReady}>
                 {isNarrativeReading(reading) ? (
                   <ReadingNarrativeView key={reading.id} {...readingViewProps} />
@@ -416,14 +402,6 @@ export function ReaderScreen({
             </Suspense>
           </main>
 
-          {/* Invisible bottom hover hotspot: hovering near the bottom reveals playback dock */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-auto absolute bottom-0 inset-x-0 z-30 h-24"
-            onMouseEnter={handleBottomHoverEnter}
-            onMouseLeave={handleBottomHoverLeave}
-          />
-
           {/* Floating Bottom Playback Dock (centered in dialogue column) */}
           {contentReady && (
             <ReadingBottomDock
@@ -433,50 +411,53 @@ export function ReaderScreen({
               totalDuration={totalDuration}
               playbackSpeed={playbackSpeed}
               canKaraoke={canKaraoke}
+              isLooping={isLooping}
               showPinyin={showPinyin}
               showMeaning={showMeaning}
               onTogglePlay={togglePlay}
               onSeek={seekTo}
               onScrub={scrubTo}
               onCycleSpeed={cycleSpeed}
+              onToggleLoop={toggleLoop}
               onTogglePinyin={toggleShowPinyin}
               onToggleMeaning={toggleShowMeaning}
-              onMouseEnter={handleBottomHoverEnter}
-              onMouseLeave={handleBottomHoverLeave}
             />
           )}
         </div>
 
-        <aside
-          aria-label="Study Companion Panel"
-          className="hidden lg:flex w-80 xl:w-[410px] shrink-0 flex-col min-h-0 pt-14 sm:pt-16 mr-4 xl:mr-6 z-20 overflow-y-auto overscroll-contain pr-1 custom-scrollbar"
-        >
-          {/* Section label — not sticky, aside content is short */}
-          <p className="mb-3 text-xs font-black uppercase tracking-wider text-ui-ink-strong">Study Guide</p>
-
-          <div className="flex flex-col gap-3 pb-4">
+        {isStudySidePanelOpen && (
+          <StudySidePanel
+            ariaLabel="Study Companion Panel"
+            title="Study Guide"
+            onClose={() => setIsStudySidePanelOpen(false)}
+            closeLabel="Hide study guide"
+          >
             <ReaderStudyPanel
               reading={reading}
               characterPreference={characterPreference}
               onOpenWord={setDictionaryWord}
               onOpenGrammarPart={onOpenGrammarPart}
+              onLocateWord={handleLocateWord}
+              onLocateGrammarPoint={handleLocateGrammarPoint}
+              locatedWordId={locatedWord?.id ?? null}
+              locatedGrammarPointId={locatedGrammarPoint?.id ?? null}
               showCloseButton={false}
             />
-          </div>
-        </aside>
+          </StudySidePanel>
+        )}
       </div>
 
-      {/* Slide-over Study Guide Drawer for Mobile (screens < lg) */}
-      <div className="lg:hidden">
-        <ReaderStudyDrawer
-          isOpen={isStudyDrawerOpen}
-          onClose={() => setIsStudyDrawerOpen(false)}
-          reading={reading}
-          characterPreference={characterPreference}
-          onOpenWord={setDictionaryWord}
-          onOpenGrammarPart={onOpenGrammarPart}
-        />
-      </div>
+      {/* Slide-over Study Guide drawer for mobile (screens < lg); hidden from lg up where the side panel shows */}
+      <ReaderStudyDrawer
+        isOpen={isStudyDrawerOpen}
+        onClose={() => setIsStudyDrawerOpen(false)}
+        reading={reading}
+        characterPreference={characterPreference}
+        onOpenWord={setDictionaryWord}
+        onOpenGrammarPart={onOpenGrammarPart}
+        onLocateWord={handleLocateWord}
+        onLocateGrammarPoint={handleLocateGrammarPoint}
+      />
     </div>
   );
 }

@@ -12,7 +12,7 @@ export interface PhraseChunk {
   rubyItems: RubyItem[];
 }
 
-export const PUNCTUATION_REGEX = /^[，。？！、：；“”‘’（）《》〈〉…—\s,.?!:;"'()-]+$/;
+export const PUNCTUATION_REGEX = /^[，。？！、：；“”‘’「」『』（）《》〈〉…—\s,.?!:;"'()-]+$/;
 
 // Punctuation that closes a phrase/clause. Used to split long aligned words
 // (which Whisper sometimes merges into a single whole-sentence "word") back
@@ -106,7 +106,7 @@ export function splitPinyinWordToSyllables(word: string): string[] {
 // Punctuation/whitespace stripped out of pinyin before word/syllable work.
 // Note: Apostrophes (' and ’) are NOT stripped here because in standard pinyin orthography,
 // they serve as the syllable-dividing mark (隔音符號 géyīnfúhào) within compound words (e.g. zǎo'ān, kě'ài).
-const PINYIN_STRIP_REGEX = /[，。？！、：；“”«»（）《》〈〉…—\s,.?!:;"()-]/g;
+const PINYIN_STRIP_REGEX = /[，。？！、：；“”«»「」『』（）《》〈〉…—\s,.?!:;"()-]/g;
 
 /** Extracts all individual syllables from a pinyin sentence */
 export function splitPinyinToSyllables(pinyinStr: string): string[] {

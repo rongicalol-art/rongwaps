@@ -83,7 +83,7 @@ export function BreakdownExpandPanel({
             <span className="block text-[10px] font-black uppercase tracking-wider text-feedback-warning-edge">
               Memory hook
             </span>
-            <p className="mt-0.5 text-xs font-semibold leading-relaxed text-ui-ink">
+            <p className="mt-0.5 text-xs font-bold leading-relaxed text-ui-muted-strong">
               {renderHookText(hook)}
             </p>
           </div>

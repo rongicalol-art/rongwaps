@@ -27,8 +27,8 @@ export function ProgressMetricCard({
   return (
     <div
       className={cn(
-        'flex min-w-0 items-center gap-3 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 text-left transition-all',
-        interactive && 'cursor-pointer hover:bg-ui-hover active:border-b-0 active:translate-y-[length:var(--depth-md)] focus-ring select-none',
+        'flex min-w-0 items-center gap-3 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 text-left transition-[transform,background-color,border-color] duration-150',
+        interactive && 'cursor-pointer hover:bg-ui-hover active:scale-[0.98] focus-ring select-none',
         className,
       )}
       role={interactive ? 'button' : props.role}

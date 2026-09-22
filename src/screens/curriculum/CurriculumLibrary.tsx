@@ -1,14 +1,24 @@
-import { memo, useCallback, useEffect, useMemo, useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { memo, useCallback, useEffect, useMemo } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { ActionButton, AppIcon, StickyWorkspaceHeader, type StickyWorkspaceHeaderMenuToggle } from '../../lib/widgets';
+import { getInteractiveGrammarManifestForLesson } from '../../data/interactiveGrammarManifest';
+import {
+  ActionButton,
+  AlertBanner,
+  AppIcon,
+  StickyWorkspaceHeader,
+  UserAvatar,
+  type StickyWorkspaceHeaderMenuToggle,
+} from '../../lib/widgets';
 import { useAppStore } from '../../store/useAppStore';
 import { useAuth } from '../../hooks/useAuth';
 import { reconcilePartSelectionsForBook } from '../../utils/lessonPartSelection';
 import { BookCarousel } from './BookCarousel';
 import { LessonItem } from './LessonItem';
 import { StarterLesson } from './StarterLesson';
+import { CurriculumSkeleton } from './components/CurriculumSkeleton';
 import { useCourseDashboard } from './hooks/useCourseDashboard';
+import { loadPracticeSession } from '../../utils/practiceLoader';
 
 interface CurriculumLibraryProps {
   activeBookId?: number;
@@ -16,6 +26,8 @@ interface CurriculumLibraryProps {
   selectedLessons?: number[];
   onToggleLesson?: (id: number, availablePartIds: number[]) => void;
   onStartPractice?: () => void;
+  /** Opens the grammar window for a manifest part id. */
+  onOpenGrammarPart?: (partId: string) => void;
   /** Mobile hamburger shown overlaid left in the sticky header (Books home). */
   menuToggle?: StickyWorkspaceHeaderMenuToggle;
   /** Opens the Profile tab (rendered as the avatar in the header's right side). */
@@ -32,18 +44,9 @@ function ProfileAvatarButton({ onClick }: { onClick: () => void }) {
       type="button"
       onClick={onClick}
       aria-label="Open profile"
-      className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-ui-surface text-ui-muted-strong transition-colors hover:text-brand-primary focus-ring"
+      className="flex shrink-0 items-center justify-center rounded-full focus-ring"
     >
-      {avatarUrl ? (
-        <img
-          src={avatarUrl}
-          alt=""
-          referrerPolicy="no-referrer"
-          className="h-full w-full object-cover"
-        />
-      ) : (
-        <AppIcon name="profile" size={22} />
-      )}
+      <UserAvatar src={avatarUrl} size="md" />
     </button>
   );
 }
@@ -54,6 +57,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
   selectedLessons = [],
   onToggleLesson = () => {},
   onStartPractice,
+  onOpenGrammarPart,
   menuToggle,
   onProfileClick,
 }: CurriculumLibraryProps) {
@@ -88,6 +92,16 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     onToggleLesson(lessonId, availablePartIds);
   }, [onToggleLesson, progress.lessons]);
 
+  // Workshop button target: the lesson's first grammar part (manifest order).
+  const firstGrammarPartByLesson = useMemo(() => {
+    const firstPartByLesson = new Map<number, string>();
+    progress.lessons.forEach((lesson) => {
+      const [firstPart] = getInteractiveGrammarManifestForLesson(activeBookId, lesson.id);
+      if (firstPart) firstPartByLesson.set(lesson.id, firstPart.id);
+    });
+    return firstPartByLesson;
+  }, [activeBookId, progress.lessons]);
+
   const starterLesson = progress.lessons.find((lesson) => lesson.id === 0);
   const regularLessons = progress.lessons.filter((lesson) => lesson.id !== 0);
   const midIndex = Math.ceil(regularLessons.length / 2);
@@ -96,17 +110,6 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     regularLessons.slice(midIndex),
   ];
   const selectedLessonCount = progress.lessons.filter((lesson) => lesson.isSelected).length;
-  const reduceMotion = useReducedMotion();
-  const [isMobile, setIsMobile] = useState(() => (
-    typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
-  ));
-
-  useEffect(() => {
-    const mobileQuery = window.matchMedia('(max-width: 767px)');
-    const sync = (event: MediaQueryListEvent) => setIsMobile(event.matches);
-    mobileQuery.addEventListener('change', sync);
-    return () => mobileQuery.removeEventListener('change', sync);
-  }, []);
 
   const renderLessonList = (lessons: typeof regularLessons) => lessons.map((lesson, index) => (
       <LessonItem
@@ -118,6 +121,8 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
         onToggle={handleToggleLesson}
         accentColor={activeBook.accent}
         edgeHex={activeBook.edgeHex}
+        grammarPartId={firstGrammarPartByLesson.get(lesson.id)}
+        onOpenGrammar={onOpenGrammarPart}
       />
   ));
 
@@ -126,7 +131,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     // scroll briefly before it pins at top:0, which reads as unintentional.
     // The header sits flush against the scroll container top, like Library.
     <div className="relative w-full">
-      <div className="flex w-full animate-in flex-col pb-24 duration-500 fade-in zoom-in-[0.98]">
+      <div className="flex w-full animate-in flex-col pb-36 duration-500 fade-in zoom-in-[0.98] sm:pb-28">
         <StickyWorkspaceHeader
           title={activeBook.title}
           menuToggle={menuToggle}
@@ -140,74 +145,74 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
 
         <div className="mx-auto flex w-full max-w-5xl flex-col items-center px-6 pb-12 md:px-12">
           {error && (
-            <p role="alert" className="mb-5 w-full rounded-control border-b-[length:var(--depth-md)] border-feedback-danger-edge bg-feedback-danger-surface px-4 py-3 text-sm font-bold text-feedback-danger">
-              {error}
-            </p>
+            <AlertBanner variant="danger" message={error} className="mb-5" />
           )}
 
-          {isLoading && progress.lessons.length === 0 ? (
-            <div aria-label="Loading lessons" className="grid w-full grid-cols-1 gap-3 lg:grid-cols-2 lg:gap-x-6">
-              {Array.from({ length: 8 }, (_, index) => (
-                <div key={index} className="h-20 animate-pulse rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface" />
-              ))}
-            </div>
-          ) : (
-            <>
-              {starterLesson && (
-                <StarterLesson
-                  starterLesson={starterLesson}
-                  activeBook={activeBook}
-                  isSelected={starterLesson.isSelected}
-                  onToggleLesson={handleToggleLesson}
-                />
-              )}
+          <AnimatePresence mode="wait">
+            {isLoading && progress.lessons.length === 0 ? (
+              <motion.div
+                key="curriculum-skeleton"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.16, ease: 'easeOut' }}
+                className="w-full"
+              >
+                <CurriculumSkeleton hasStarterLesson={activeBook.id === 1} />
+              </motion.div>
+            ) : (
+              <motion.div
+                key={`lessons-${activeBookId}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="flex w-full flex-col items-center"
+              >
+                {starterLesson && (
+                  <StarterLesson
+                    starterLesson={starterLesson}
+                    activeBook={activeBook}
+                    isSelected={starterLesson.isSelected}
+                    onToggleLesson={handleToggleLesson}
+                  />
+                )}
 
-              <div className="flex w-full flex-col gap-4 lg:flex-row lg:gap-6">
-                <div className="flex min-w-0 flex-1 flex-col">
-                  {renderLessonList(lessonColumns[0])}
+                <div className="flex w-full flex-col gap-4 lg:flex-row lg:gap-6">
+                  <div className="flex min-w-0 flex-col lg:flex-[1.05]">
+                    {renderLessonList(lessonColumns[0])}
+                  </div>
+                  <div className="flex min-w-0 flex-col lg:mt-8 lg:flex-[0.95]">
+                    {renderLessonList(lessonColumns[1])}
+                  </div>
                 </div>
-                {/* One tree for both breakpoints: the columns stack on mobile
-                    (parent `flex-col gap-4`, same 1.75rem separation the old
-                    `mt-4` copy produced) and sit side by side from lg up. The
-                    previous markup mounted lessonColumns[1] twice — once
-                    `hidden lg:flex`, once `lg:hidden` — so every lesson in the
-                    back half of every book existed twice in the DOM. */}
-                <div className="flex min-w-0 flex-1 flex-col">
-                  {renderLessonList(lessonColumns[1])}
-                </div>
-              </div>
-            </>
-          )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
 
-      <AnimatePresence>
-        {(selectedLessonCount > 0 || isMobile) && (
-          <motion.div
-            initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="workspace-window pointer-events-none fixed bottom-0 right-0 z-50 bg-gradient-to-t from-ui-canvas via-ui-canvas/95 to-transparent pb-[calc(1rem+env(safe-area-inset-bottom,0px))] pt-10"
+      <div className="workspace-window pointer-events-none fixed bottom-0 right-0 z-50 bg-gradient-to-t from-ui-canvas via-ui-canvas/95 to-transparent pb-sheet-safe pt-10">
+        <div className="mx-auto w-full max-w-2xl px-4 md:px-6">
+          <ActionButton
+            size="lg"
+            fullWidth
+            disabled={isLoading || selectedLessonCount === 0 || !onStartPractice}
+            onClick={onStartPractice}
+            onMouseEnter={() => void loadPracticeSession({ activeBookId, selectedLessons, activity: 'flashcards' })}
+            onTouchStart={() => void loadPracticeSession({ activeBookId, selectedLessons, activity: 'flashcards' })}
+            onFocus={() => void loadPracticeSession({ activeBookId, selectedLessons, activity: 'flashcards' })}
+            edgeColor={activeBook.edgeHex}
+            aria-label={selectedLessonCount > 0
+              ? `Start with ${selectedLessonCount} selected ${selectedLessonCount === 1 ? 'lesson' : 'lessons'}`
+              : 'Select a lesson before starting'}
+            className={`pointer-events-auto min-h-14 btn-touch-primary ${activeBook.accentBg}`}
           >
-            <div className="mx-auto w-full max-w-2xl px-4 md:px-6">
-              <ActionButton
-                size="lg"
-                fullWidth
-                disabled={isLoading || selectedLessonCount === 0 || !onStartPractice}
-                onClick={onStartPractice}
-                aria-label={selectedLessonCount > 0
-                  ? `Start with ${selectedLessonCount} selected ${selectedLessonCount === 1 ? 'lesson' : 'lessons'}`
-                  : 'Select a lesson before starting'}
-                className={`pointer-events-auto min-h-14 ${activeBook.accentBg} ${activeBook.buttonEdge}`}
-              >
-                <AppIcon name="play" size={20} />
-                <span>Start</span>
-              </ActionButton>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <AppIcon name="play" size={20} />
+            <span>Start</span>
+          </ActionButton>
+        </div>
+      </div>
     </div>
   );
 });

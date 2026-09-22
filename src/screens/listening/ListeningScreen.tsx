@@ -114,7 +114,7 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
             <AppIcon name="audio" size={48} className={activeBook.accent} />
           </div>
           <h2 className="text-2xl font-extrabold text-ui-ink tracking-normal">No audio cards yet</h2>
-          <p className="text-ui-muted text-[15px] font-bold mt-2 max-w-[280px]">
+          <p className="text-ui-muted-strong text-[15px] font-bold mt-2 max-w-[280px]">
             We couldn't find any cards with audio for this selection. Try choosing different lessons or adding cards to your library.
           </p>
           {onClose && (

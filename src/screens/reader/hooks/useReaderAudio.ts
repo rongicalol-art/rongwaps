@@ -27,6 +27,9 @@ export function useReaderAudio({
   const [isLooping, setIsLooping] = useState(false);
 
   const playbackTokenRef = useRef(0);
+  const currentTimeRef = useRef(currentTime);
+  currentTimeRef.current = currentTime;
+
   const isLoopingRef = useRef(isLooping);
   isLoopingRef.current = isLooping;
 
@@ -65,6 +68,7 @@ export function useReaderAudio({
     audioService.stop();
     setPlaying(false);
     setCurrentTime(0);
+    currentTimeRef.current = 0;
   }, [reading.id]);
 
   // Clean up on unmount
@@ -86,6 +90,7 @@ export function useReaderAudio({
     playbackTokenRef.current = token;
     setPlaying(true);
     setCurrentTime(startSec);
+    currentTimeRef.current = startSec;
 
     void audioService.playRange(bookAudioFileName, startSec, endSec, {
       rate: playbackSpeedRef.current,
@@ -93,6 +98,7 @@ export function useReaderAudio({
         if (playbackTokenRef.current === token) {
           setPlaying(true);
           setCurrentTime(time);
+          currentTimeRef.current = time;
         }
       },
     }).then(() => {
@@ -103,49 +109,70 @@ export function useReaderAudio({
           setPlaying(false);
           if (totalDuration > 0 && endSec >= totalDuration - 0.25) {
             setCurrentTime(0);
+            currentTimeRef.current = 0;
           } else {
             setCurrentTime(endSec);
+            currentTimeRef.current = endSec;
           }
         }
       }
     });
   }, [bookAudioFileName, totalDuration]);
 
+  const pause = useCallback(() => {
+    playbackTokenRef.current += 1;
+    audioService.pause();
+    setPlaying(false);
+  }, []);
+
   const stop = useCallback(() => {
     playbackTokenRef.current += 1;
     audioService.stop();
     setPlaying(false);
+    setCurrentTime(0);
+    currentTimeRef.current = 0;
   }, []);
 
   const dictionaryWord = useAppStore((state) => state.dictionaryWord);
   useEffect(() => {
     if (dictionaryWord && playing) {
-      stop();
+      pause();
     }
-  }, [dictionaryWord, playing, stop]);
+  }, [dictionaryWord, playing, pause]);
 
   const togglePlay = useCallback(() => {
     if (playing) {
-      stop();
+      pause();
       return;
     }
 
     if (audioMode === 'tts' || !bookAudioFileName) {
       const locale = characterPreference === 'simplified' ? 'zh-CN' : 'zh-TW';
       setPlaying(true);
-      void audioService.speakText(fullText, locale, 0.84 * playbackSpeed).then(() => {
+      void audioService.speakText(fullText, locale, 0.84 * playbackSpeedRef.current).then(() => {
         setPlaying(false);
       });
       return;
     }
 
     if (alignment) {
-      const startFrom = currentTime > 0 && currentTime < totalDuration ? currentTime : 0;
+      const current = currentTimeRef.current;
+      const startFrom = current > 0 && current < totalDuration ? current : 0;
       playRange(startFrom, totalDuration);
     } else {
-      void audioService.play(bookAudioFileName, playbackSpeed, fullText);
+      setPlaying(true);
+      const current = currentTimeRef.current;
+      void audioService.play(
+        bookAudioFileName,
+        playbackSpeedRef.current,
+        fullText,
+        undefined,
+        current,
+      ).then(() => {
+        setPlaying(false);
+      });
     }
-  }, [playing, stop, audioMode, bookAudioFileName, characterPreference, fullText, playbackSpeed, alignment, currentTime, totalDuration, playRange]);
+  }, [playing, pause, audioMode, bookAudioFileName, characterPreference, fullText, alignment, totalDuration, playRange]);
 
   const playLine = useCallback((lineIndex: number) => {
     const line = alignment?.lines[lineIndex];
@@ -163,7 +190,7 @@ export function useReaderAudio({
         const text = characterPreference === 'simplified' ? paragraph.simplified : paragraph.traditional;
         const locale = characterPreference === 'simplified' ? 'zh-CN' : 'zh-TW';
         setPlaying(true);
-        void audioService.speakText(text, locale, 0.84 * playbackSpeed).then(() => {
+        void audioService.speakText(text, locale, 0.84 * playbackSpeedRef.current).then(() => {
           setPlaying(false);
         });
       }
@@ -173,40 +200,51 @@ export function useReaderAudio({
     // Play from this line through the rest of the reading — audio must keep
     // flowing past the line boundary instead of stopping at it.
     playRange(line!.start, totalDuration);
-  }, [alignment, bookAudioFileName, characterPreference, playbackSpeed, playRange, totalDuration, reading.paragraphs]);
+  }, [alignment, bookAudioFileName, characterPreference, playRange, totalDuration, reading.paragraphs]);
 
   const seekTo = useCallback((timeSec: number) => {
     const clamped = Math.max(0, Math.min(timeSec, totalDuration));
     setCurrentTime(clamped);
-    if (playing && alignment && bookAudioFileName) {
-      // Set audio element time directly if available and playing the same track
-      const audio = audioService.getGlobalAudio();
-      if (audio && !audio.paused && !isNaN(audio.duration) && audio.duration > 0) {
+    currentTimeRef.current = clamped;
+
+    // Immediately cue audio element to avoid seek delay on subsequent play
+    const audio = audioService.getGlobalAudio();
+    if (audio && !isNaN(audio.duration) && audio.duration > 0) {
+      try {
         audio.currentTime = clamped;
-      } else {
-        playRange(clamped, totalDuration);
-      }
+      } catch { /* ignore */ }
+    }
+
+    if (playing && alignment && bookAudioFileName) {
+      playRange(clamped, totalDuration);
     }
   }, [alignment, bookAudioFileName, playing, playRange, totalDuration]);
 
   const scrubTo = useCallback((timeSec: number) => {
     const clamped = Math.max(0, Math.min(timeSec, totalDuration));
     setCurrentTime(clamped);
+    currentTimeRef.current = clamped;
   }, [totalDuration]);
 
   const prevSentence = useCallback(() => {
-    if (!alignment || alignment.lines.length === 0) return;
+    if (!alignment || alignment.lines.length === 0) {
+      seekTo(Math.max(0, currentTimeRef.current - 5));
+      return;
+    }
     const currentIdx = activeLineIndex ?? 0;
     const prevIdx = Math.max(0, currentIdx - 1);
     playLine(prevIdx);
-  }, [activeLineIndex, alignment, playLine]);
+  }, [activeLineIndex, alignment, playLine, seekTo]);
 
   const nextSentence = useCallback(() => {
-    if (!alignment || alignment.lines.length === 0) return;
+    if (!alignment || alignment.lines.length === 0) {
+      seekTo(Math.min(totalDuration, currentTimeRef.current + 5));
+      return;
+    }
     const currentIdx = activeLineIndex ?? -1;
     const nextIdx = Math.min(alignment.lines.length - 1, currentIdx + 1);
     playLine(nextIdx);
-  }, [activeLineIndex, alignment, playLine]);
+  }, [activeLineIndex, alignment, playLine, seekTo, totalDuration]);
 
   const cycleSpeed = useCallback(() => {
     const speeds = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
@@ -236,6 +274,7 @@ export function useReaderAudio({
     canKaraoke,
     activeLineIndex,
     togglePlay,
+    pause,
     playLine,
     playRange,
     playFromTime,

@@ -17,6 +17,26 @@ function isCjk(char: string): boolean {
   return /[\u3000-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]/.test(char);
 }
 
+/**
+ * Visual width of one short header string, in "CJK character" units, using the
+ * same model as the column weight below. Shared with the lesson validator and
+ * the table-header tests so a one-line label has exactly one definition.
+ */
+export function grammarHeaderWeight(text: string): number {
+  return textScore(text);
+}
+
+/**
+ * Word count of one header label under the authoring rule that a label reads
+ * as a 1-3 word title. Slashes, middots, plus signs and parentheses count as
+ * separators, so `Who / Thing`, `跟 + Person` and `Double 了` each read as
+ * their real words. Shared with the lesson validator and the table-header
+ * tests so the cap has exactly one definition.
+ */
+export function grammarHeaderWordCount(text: string): number {
+  return text.split(/[\s/／·+()（）]+/u).filter(Boolean).length;
+}
+
 function textScore(text: string): number {
   let score = 0;
   for (const char of text) {
@@ -171,15 +191,10 @@ function getSectionColumnScore(
     : Math.max(...columnGroups.map((group) => group.length > 0
       ? groupScore(group, characterPreference, showPinyin)
       : 0));
-  // English headers wrap across lines; score by segments/words rather than total length
-  // so compound English titles (e.g. "What is there / Second Action") do not artificially
-  // dominate over the Chinese text weights.
-  const words = label.split(/[\s/]+/).filter(Boolean);
-  const longestLabelWord = words.length > 0
-    ? Math.max(...words.map((w) => textScore(w)))
-    : 0;
-  const headerScore = Math.min(longestLabelWord * 0.8, textScore(label) * 0.25)
-    + (detail ? Math.min(textScore(detail) * 0.15, 1) : 0);
+  // Header labels are authored to fit one line (see `grammarTableHeaders` test),
+  // so their whole width is what the column has to carry. The tooltip-only
+  // detail notation only nudges the score.
+  const headerScore = textScore(label) + (detail ? Math.min(textScore(detail) * 0.15, 1) : 0);
   return Math.min(MAX_WEIGHT, Math.max(MIN_WEIGHT, contentScore, headerScore));
 }
 

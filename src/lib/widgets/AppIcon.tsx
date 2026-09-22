@@ -14,6 +14,8 @@ import {
   PiChartDonutFill,
   PiCheckCircleFill,
   PiClockFill,
+  PiDeviceMobileBold,
+  PiExportBold,
   PiXCircleFill,
   PiFireFill,
   PiFolderFill,
@@ -21,7 +23,6 @@ import {
   PiGaugeBold,
   PiEyeBold,
   PiEyeSlashBold,
-  PiHeadphonesFill,
   PiKeyboardBold,
   PiLightbulbBold,
   PiListChecksBold,
@@ -34,6 +35,8 @@ import {
   PiLightningFill,
   PiPlayFill,
   PiPlayCircleFill,
+  PiSkipBackFill,
+  PiSkipForwardFill,
   PiPlusBold,
   PiMinusBold,
   PiSparkleFill,
@@ -43,9 +46,8 @@ import {
   PiSlidersHorizontalBold,
   PiShuffleBold,
   PiSidebarSimpleBold,
-  PiSpeakerHighFill,
   PiArrowCounterClockwiseBold,
-  PiGearSixBold,
+  PiGearSixFill,
   PiSignInBold,
   PiSignOutBold,
   PiTrashBold,
@@ -93,6 +95,7 @@ export type AppIconName =
   | 'clock'
   | 'close'
   | 'choices'
+  | 'deviceMobile'
   | 'dictionary'
   | 'dropdown'
   | 'expand'
@@ -106,6 +109,7 @@ export type AppIconName =
   | 'forward'
   | 'grammar'
   | 'lightbulb'
+  | 'hint'
   | 'keyboard'
   | 'lock'
   | 'level'
@@ -123,9 +127,12 @@ export type AppIconName =
   | 'sparkles'
   | 'star'
   | 'settings'
+  | 'share'
   | 'controls'
   | 'shuffle'
   | 'slowAudio'
+  | 'skipBack'
+  | 'skipForward'
   | 'flow'
   | 'restart'
   | 'signIn'
@@ -162,11 +169,79 @@ export type AppIconName =
   | 'writing'
   | 'book';
 
+/**
+ * Soft rounded speaker glyph used for every play/pronounce affordance.
+ * Phosphor's speaker reads too angular beside the app's rounded geometry, so
+ * this bespoke path keeps the filled body+cone silhouette with round-capped
+ * waves in the Duolingo-like soft voice.
+ */
+const SoftSpeakerIcon: IconType = ({ size = '1em', color = 'currentColor', className, ...props }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    fill={color}
+    className={className}
+    {...props}
+  >
+    <path d="M12.6 5.6C12.6 3.4 10.8 2.2 9.4 3.3L5.1 6.3H2.8A1.9 1.9 0 0 0 .9 8.2v7.6a1.9 1.9 0 0 0 1.9 1.9h2.3l4.3 3c1.4 1.1 3.2-.1 3.2-2.3V5.6Z" />
+    <path d="M16 9a4.4 4.4 0 0 1 0 6" fill="none" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+    <path d="M19.2 6.2a8.4 8.4 0 0 1 0 11.6" fill="none" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+  </svg>
+);
+
+/**
+ * Colorful study-guide bulb: a flat, gold bulb (no outline) with a darker
+ * base and a glossy highlight, matching the playful brand accents instead of
+ * Phosphor's monochrome outline bulb. Purely decorative — the
+ * owning button carries the accessible label.
+ */
+const StudyBulbIcon: IconType = ({ size = '1em', className, ...props }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    className={className}
+    {...props}
+  >
+    <path
+      d="M12 1.9c-4.25 0-7.6 3.2-7.6 7.2 0 2.6 1.2 4.55 2.7 6.25.75.85 1.1 1.5 1.15 2.45h7.5c.05-.95.4-1.6 1.15-2.45 1.5-1.7 2.7-3.65 2.7-6.25 0-4-3.35-7.2-7.6-7.2Z"
+      fill="var(--color-feedback-warning)"
+    />
+    <rect
+      x="8.6"
+      y="18.3"
+      width="6.8"
+      height="3.2"
+      rx="1.5"
+      fill="var(--color-feedback-warning-edge)"
+    />
+    <circle cx="9.4" cy="7.2" r="1.6" fill="var(--color-ui-surface)" opacity="0.9" />
+  </svg>
+);
+
+/**
+ * Colorful settings gear: Phosphor's filled gear geometry baked with the
+ * brand blue so every settings affordance shares one playful, flat mark
+ * (current-color states cannot recolor it, so open/disabled cues use chips
+ * or opacity at the call sites).
+ */
+const StudyGearIcon: IconType = ({ size = '1em', className, ...props }) => (
+  <PiGearSixFill
+    size={size}
+    className={className}
+    {...props}
+    color="var(--color-brand-primary)"
+  />
+);
+
 const ICONS: Record<AppIconName, IconType> = {
   add: PiPlusBold,
   analytics: PiChartBarFill,
-  appSettings: PiGearSixBold,
-  audio: PiHeadphonesFill,
+  appSettings: StudyGearIcon,
+  audio: SoftSpeakerIcon,
   back: PiArrowLeftBold,
   bookmark: PiBookmarkSimpleBold,
   bookmarkFilled: PiBookmarkSimpleFill,
@@ -177,6 +252,7 @@ const ICONS: Record<AppIconName, IconType> = {
   clock: PiClockFill,
   close: PiXBold,
   choices: PiListChecksBold,
+  deviceMobile: PiDeviceMobileBold,
   dictionary: PiBookOpenTextBold,
   dropdown: PiCaretDownBold,
   expand: PiCaretDownBold,
@@ -190,6 +266,7 @@ const ICONS: Record<AppIconName, IconType> = {
   forward: PiArrowRightBold,
   grammar: PiBookBookmarkFill,
   lightbulb: PiLightbulbBold,
+  hint: StudyBulbIcon,
   keyboard: PiKeyboardBold,
   lock: PiLockKeyFill,
   level: PiGraduationCapFill,
@@ -197,7 +274,7 @@ const ICONS: Record<AppIconName, IconType> = {
   minus: PiMinusBold,
   pause: PiPauseFill,
   play: PiPlayFill,
-  pronounce: PiSpeakerHighFill,
+  pronounce: SoftSpeakerIcon,
   progress: PiChartDonutFill,
   profile: PiUserBold,
   practice: PiPaintBrushFill,
@@ -208,10 +285,13 @@ const ICONS: Record<AppIconName, IconType> = {
   sidebarToggle: PiSidebarSimpleBold,
   sparkles: PiSparkleFill,
   star: PiStarFill,
-  settings: PiSlidersHorizontalBold,
+  settings: StudyGearIcon,
+  share: PiExportBold,
   controls: PiSlidersHorizontalBold,
   shuffle: PiShuffleBold,
   slowAudio: PiGaugeBold,
+  skipBack: PiSkipBackFill,
+  skipForward: PiSkipForwardFill,
   flow: PiPlayCircleFill,
   restart: PiArrowCounterClockwiseBold,
   signIn: PiSignInBold,

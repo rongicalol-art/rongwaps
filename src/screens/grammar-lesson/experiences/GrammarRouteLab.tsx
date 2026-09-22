@@ -118,7 +118,7 @@ export function GrammarRouteLab({
               <ContextualChineseText text={sentence} tokens={contextTokens} characterPreference={characterPreference} onOpenWord={onOpenWord} />
             </p>
             {showPinyin && <p className="mt-1 text-xs font-bold leading-relaxed text-brand-primary sm:text-sm">{selected.pinyin}</p>}
-            {showTranslation && <p className="mt-2 text-sm font-bold text-ui-ink sm:text-base">{selected.english}</p>}
+            {showTranslation && <p className="ui-translation mt-2 text-sm sm:text-base">{selected.english}</p>}
           </div>
           <IconActionButton
             size="sm"

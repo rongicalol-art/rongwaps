@@ -1,5 +1,7 @@
 import { INTERACTIVE_GRAMMAR_PARTS } from '../data/interactiveGrammarPages';
 import { ALL_READINGS, READING_LESSON_MAX, READING_LESSON_MIN } from '../data/readings';
+import { GRAMMAR_USAGE_RULES } from '../data/grammarUsageRules';
+import { grammarHeaderWeight, grammarHeaderWordCount } from './grammarPatternLayout';
 import type { ReadingRecord } from '../types/models';
 
 export interface LessonValidationIssue {
@@ -205,6 +207,138 @@ export function validateInteractiveLessons(): LessonValidationIssue[] {
       issues.push({ location: `lesson ${lessonId}`, message: `Expected 2 or 3 readings; found ${lessonReadings.length}.` });
     }
   }
+
+  // Grammar pages and readings: every part's source dialogue must resolve to
+  // exactly one reading, and that reading must sit on the same dialogue number.
+  // This is the mapping the reader's Study Guide relies on to call a grammar
+  // point "taught with this text" instead of guessing from numbering.
+  const readingsByAudio = new Map<string, ReadingRecord[]>();
+  ALL_READINGS.forEach((reading) => {
+    if (!reading.audioReference) return;
+    readingsByAudio.set(reading.audioReference, [
+      ...(readingsByAudio.get(reading.audioReference) ?? []),
+      reading,
+    ]);
+  });
+  INTERACTIVE_GRAMMAR_PARTS.forEach((part) => {
+    const location = `${part.id} dialogue`;
+    const audioReference = part.dialogue?.audioReference;
+    if (!audioReference) {
+      issues.push({ location, message: 'A grammar part needs its source dialogue audio reference.' });
+      return;
+    }
+    const matches = readingsByAudio.get(audioReference) ?? [];
+    if (matches.length !== 1) {
+      issues.push({
+        location,
+        message: `Audio reference "${audioReference}" must match exactly one reading; found ${matches.length}.`,
+      });
+      return;
+    }
+    if (matches[0].dialogueNumber !== part.partId) {
+      issues.push({
+        location,
+        message: `Reading ${matches[0].id} is dialogue ${matches[0].dialogueNumber} but sits on part ${part.partId}.`,
+      });
+    }
+  });
+
+  // Grammar usage rules: each page needs a reviewed rule or a declared reason,
+  // so "used in this reading" can never silently come from a guess.
+  INTERACTIVE_GRAMMAR_PARTS.forEach((part) => {
+    part.grammarPages.forEach((page) => {
+      const location = `${part.id} grammar ${page.grammarNumber}`;
+      const entry = GRAMMAR_USAGE_RULES[page.id];
+      if (!entry) {
+        issues.push({ location, message: 'Missing a grammar usage rule or an undetectable note.' });
+        return;
+      }
+      if (entry.detected && entry.detected.anyOf.length === 0) {
+        issues.push({ location, message: 'A detected rule needs at least one evidence pattern.' });
+      }
+      if (entry.undetectable !== undefined && !entry.undetectable.trim()) {
+        issues.push({ location, message: 'An undetectable note needs a reason.' });
+      }
+    });
+  });
+  Object.keys(GRAMMAR_USAGE_RULES).forEach((pageId) => {
+    const known = INTERACTIVE_GRAMMAR_PARTS.some((part) =>
+      part.grammarPages.some((page) => page.id === pageId),
+    );
+    if (!known) {
+      issues.push({ location: pageId, message: 'Grammar usage rule points at an unknown page.' });
+    }
+  });
+
+  // Pattern-table headers: labels are authored to stay on one line inside the
+  // narrowest mobile column and to read as a short 1-3 word title, so a long
+  // compound, parenthetical, or abbreviated label is a bug, not a style.
+  const HEADER_LABEL_MAX = 6;
+  const HEADER_LABEL_WORDS = 3;
+  const HEADER_DETAIL_MAX = 8;
+  INTERACTIVE_GRAMMAR_PARTS.forEach((part) => {
+    part.grammarPages.forEach((page) => {
+      const tables = [
+        { location: `${part.id} grammar ${page.grammarNumber} pattern table`, page },
+        ...(page.subsections ?? []).map((subsection) => ({
+          location: `${part.id} grammar ${page.grammarNumber} subsection ${subsection.id}`,
+          page: subsection,
+        })),
+      ];
+      tables.forEach(({ location, page: table }) => {
+        if ((table.patternRows ?? []).length === 0) return;
+        (table.patternColumns ?? []).forEach((label, index) => {
+          if (!label.trim()) {
+            issues.push({ location, message: `Column ${index + 1} needs a header label.` });
+            return;
+          }
+          if (grammarHeaderWeight(label) > HEADER_LABEL_MAX) {
+            issues.push({
+              location,
+              message: `Column header "${label}" is too wide to stay on one line; keep it to ${HEADER_LABEL_MAX} units (e.g. "Who", "Action", "Amount").`,
+            });
+          }
+          if (grammarHeaderWordCount(label) > HEADER_LABEL_WORDS) {
+            issues.push({
+              location,
+              message: `Column header "${label}" is ${grammarHeaderWordCount(label)} words; write a ${HEADER_LABEL_WORDS}-word-or-shorter title (e.g. "Who / Thing", "New topic").`,
+            });
+          }
+          if (label.startsWith('(') || label.endsWith(')')) {
+            issues.push({
+              location,
+              message: `Column header "${label}" reads as a parenthetical note; write a plain title (e.g. "No noun" instead of "(no noun)").`,
+            });
+          }
+        });
+        (table.patternColumnDetails ?? []).forEach((detail) => {
+          if (grammarHeaderWeight(detail) > HEADER_DETAIL_MAX) {
+            issues.push({
+              location,
+              message: `Column detail "${detail}" is too long; keep it to ${HEADER_DETAIL_MAX} units and move the nuance into the explanation.`,
+            });
+          }
+        });
+      });
+    });
+  });
+
+  // Grammar page order: printed pages must not go backwards within a part.
+  INTERACTIVE_GRAMMAR_PARTS.forEach((part) => {
+    let previousPage = -1;
+    [...part.grammarPages]
+      .sort((a, b) => a.grammarNumber - b.grammarNumber)
+      .forEach((page) => {
+        const firstPage = Math.min(...page.printedPages, Number.POSITIVE_INFINITY);
+        if (Number.isFinite(firstPage) && firstPage < previousPage) {
+          issues.push({
+            location: `${part.id} grammar ${page.grammarNumber}`,
+            message: 'Printed pages must not run backwards within a part.',
+          });
+        }
+        if (Number.isFinite(firstPage)) previousPage = Math.max(previousPage, firstPage);
+      });
+  });
 
   return issues;
 }

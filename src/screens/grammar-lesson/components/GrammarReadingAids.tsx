@@ -1,20 +1,25 @@
 import { SegmentedControl, ToggleSwitch } from '../../../lib/widgets';
+import type { CharacterFont } from '../../../store/usePracticePreferencesStore';
 import { cn } from '../../../utils/cn';
 
 interface GrammarReadingAidsProps {
   characterPreference: 'traditional' | 'simplified';
+  characterFont: CharacterFont;
   showPinyin: boolean;
   showTranslation: boolean;
   onCharacterPreferenceChange: (preference: 'traditional' | 'simplified') => void;
+  onCharacterFontChange: (font: CharacterFont) => void;
   onTogglePinyin: () => void;
   onToggleTranslation: () => void;
 }
 
 export function GrammarReadingAids({
   characterPreference,
+  characterFont,
   showPinyin,
   showTranslation,
   onCharacterPreferenceChange,
+  onCharacterFontChange,
   onTogglePinyin,
   onToggleTranslation,
 }: GrammarReadingAidsProps) {
@@ -32,6 +37,24 @@ export function GrammarReadingAids({
           options={[
             { value: 'traditional', label: <span>Traditional</span> },
             { value: 'simplified', label: <span>Simplified</span> },
+          ]}
+        />
+      </div>
+
+      <div className="h-px bg-ui-divider" />
+
+      {/* Character Font Selection */}
+      <div className="space-y-1.5">
+        <span className="block px-1 text-xs font-black uppercase tracking-wider text-ui-muted-strong">
+          Character Font
+        </span>
+        <SegmentedControl<CharacterFont>
+          value={characterFont}
+          onChange={onCharacterFontChange}
+          ariaLabel="Character font preference"
+          options={[
+            { value: 'huninn', label: <span>Rounded</span> },
+            { value: 'kai', label: <span>Kai</span> },
           ]}
         />
       </div>

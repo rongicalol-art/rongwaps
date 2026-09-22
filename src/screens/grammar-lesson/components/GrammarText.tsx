@@ -32,14 +32,14 @@ export function GrammarText({
 
   if (dialogue) {
     return (
-      <div>
-        <div className="space-y-1">
-          {dialogue.turns.map((turn, i) => (
-            <div key={i} className="flex items-start gap-1.5 font-chinese text-base font-black leading-relaxed text-ui-ink-strong sm:text-lg">
-              <span className="font-sans text-xs font-black tracking-wider text-brand-primary select-none shrink-0 mt-1">
-                {turn.speaker}
-              </span>
-              <p>
+      <div className="flex flex-col gap-4">
+        {dialogue.turns.map((turn, i) => (
+          <div key={i} className="flex items-start gap-2">
+            <span className="mt-1 shrink-0 select-none font-sans text-[13px] font-black tracking-wider text-brand-primary sm:text-sm">
+              {turn.speaker}
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="font-chinese text-xl font-black leading-relaxed text-ui-ink-strong sm:text-2xl">
                 <ContextualChineseText
                   text={turn.raw}
                   tokens={contextTokens}
@@ -47,36 +47,26 @@ export function GrammarText({
                   onOpenWord={onOpenWord}
                 />
               </p>
+              {showPinyin && turn.pinyin && (
+                <p className="mt-1 text-[13px] font-bold leading-relaxed text-brand-primary sm:text-sm">
+                  {turn.pinyin}
+                </p>
+              )}
+              {showTranslation && turn.english && (
+                <p className="ui-translation mt-1 text-[15px] sm:text-base">
+                  {turn.english}
+                </p>
+              )}
             </div>
-          ))}
-        </div>
-        {showPinyin && dialogue.turns.some((t) => t.pinyin) && (
-          <div className="mt-1.5 space-y-0.5">
-            {dialogue.turns.filter((t) => t.pinyin).map((turn, i) => (
-              <p key={i} className="text-xs font-bold leading-relaxed text-brand-primary">
-                <span className="font-black mr-1.5 select-none opacity-80">{turn.speaker}</span>
-                {turn.pinyin}
-              </p>
-            ))}
           </div>
-        )}
-        {showTranslation && dialogue.turns.some((t) => t.english) && (
-          <div className="mt-1.5 space-y-0.5">
-            {dialogue.turns.filter((t) => t.english).map((turn, i) => (
-              <p key={i} className="text-sm font-medium leading-relaxed text-ui-muted-strong">
-                <span className="font-bold mr-1.5 select-none text-ui-ink">{turn.speaker}</span>
-                {turn.english}
-              </p>
-            ))}
-          </div>
-        )}
+        ))}
       </div>
     );
   }
 
   return (
     <div>
-      <p className="font-chinese text-base font-black leading-relaxed text-ui-ink-strong sm:text-lg">
+      <p className="font-chinese text-xl font-black leading-relaxed text-ui-ink-strong sm:text-2xl">
         <ContextualChineseText
           text={getGrammarText(text, characterPreference)}
           tokens={contextTokens}
@@ -85,10 +75,10 @@ export function GrammarText({
         />
       </p>
       {showPinyin && text.pinyin && (
-        <p className="mt-1 text-xs font-bold leading-relaxed text-brand-primary">{text.pinyin}</p>
+        <p className="mt-1 text-[13px] font-bold leading-relaxed text-brand-primary sm:text-sm">{text.pinyin}</p>
       )}
       {showTranslation && text.english && (
-        <p className="mt-1.5 text-sm font-medium leading-relaxed text-ui-muted-strong">{text.english}</p>
+        <p className="ui-translation mt-1.5 text-[15px] sm:text-base">{text.english}</p>
       )}
     </div>
   );

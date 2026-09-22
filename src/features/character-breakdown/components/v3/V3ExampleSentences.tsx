@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { SectionEyebrow, Skeleton, SmartSentence } from '../../../../lib/widgets';
 import { numberToToneMarks } from '../../../../utils/pinyin';
+import { usePracticePreferencesStore } from '../../../../store/usePracticePreferencesStore';
 import { useCharExampleSentences } from '../../hooks/useCharExampleSentences';
 
 const INITIAL_VISIBLE = 4;
@@ -15,6 +16,7 @@ const EXPAND_BUTTON =
  */
 export function V3ExampleSentences({ character }: { character: string }) {
   const { sentences, isLoading } = useCharExampleSentences(character);
+  const hideExamplePinyin = usePracticePreferencesStore((state) => state.hideExamplePinyin);
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
@@ -27,7 +29,7 @@ export function V3ExampleSentences({ character }: { character: string }) {
   const canCollapse = expanded && sentences.length > INITIAL_VISIBLE;
 
   return (
-    <section aria-label="Example sentences" className="min-w-0 rounded-feature bg-ui-surface p-4 shadow-[0_var(--depth-md)_0_var(--color-ui-border)] sm:p-6">
+    <section aria-label="Example sentences" className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6">
       <SectionEyebrow title="Example sentences" />
       {isLoading ? (
         <div className="mt-1 flex flex-col gap-3" role="status" aria-label="Loading example sentences">
@@ -51,16 +53,18 @@ export function V3ExampleSentences({ character }: { character: string }) {
                   <SmartSentence
                     text={sentence.chinese}
                     highlightTerms={[character]}
-                    className="font-chinese text-base font-bold leading-snug text-ui-ink sm:text-[17px]"
+                    className="font-chinese text-xl font-bold leading-snug text-ui-ink sm:text-2xl"
                   />
                   <span className="shrink-0 text-[9px] font-extrabold text-ui-muted">
                     B{sentence.sourceBookId} · L{sentence.sourceLessonId}
                   </span>
                 </div>
-                <span className="text-xs font-extrabold leading-tight text-brand-primary">
-                  {numberToToneMarks(sentence.pinyin)}
-                </span>
-                <span className="text-xs font-semibold leading-snug text-ui-muted">{sentence.english}</span>
+                {!hideExamplePinyin && (
+                  <span className="text-[13px] font-extrabold leading-tight text-brand-primary sm:text-sm">
+                    {numberToToneMarks(sentence.pinyin)}
+                  </span>
+                )}
+                <span className="ui-translation text-sm leading-snug sm:text-base">{sentence.english}</span>
               </li>
             ))}
           </ul>

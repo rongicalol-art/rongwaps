@@ -3,6 +3,7 @@ import type { Flashcard } from '../../../../data/flashcards';
 import type { SAMPLE_BOOKS } from '../../../../data/books';
 import { V3CharacterSummary } from './V3CharacterSummary';
 import { V3MemoryHook } from './V3MemoryHook';
+import { V3Sound } from './V3Sound';
 import { V3ExampleSentences } from './V3ExampleSentences';
 import { V3RuntimeTree } from './V3RuntimeTree';
 import { V3SupportingInformation, hasSupportingInfo } from './V3SupportingInformation';
@@ -37,6 +38,7 @@ export function V3CharacterBreakdown({
         <div className="flex min-w-0 flex-col gap-6 lg:gap-8">
           <V3RuntimeTree character={activeChar} onGlyphClick={setDictionaryWord} mode="summary" onSeeTree={openTree} />
           <V3MemoryHook character={activeChar} pinyin={charData?.pinyin?.[0] ?? undefined} />
+          <V3Sound character={activeChar} onGlyphClick={setDictionaryWord} />
           <V3ExampleSentences character={activeChar} />
         </div>
         {hasSupporting && (

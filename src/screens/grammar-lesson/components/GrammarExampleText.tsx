@@ -43,50 +43,38 @@ export function GrammarExampleText({
 
   if (dialogue) {
     return (
-      <>
-        <div className="space-y-2">
-          {dialogue.turns.map((turn, i) => (
-            <div key={i} className="flex items-start gap-1.5">
-              <span className="font-sans text-xs font-black tracking-wider text-brand-primary select-none shrink-0 mt-0.5">
-                {turn.speaker}
-              </span>
+      <div className="flex flex-col gap-4">
+        {dialogue.turns.map((turn, i) => (
+          <div key={i} className="flex items-start gap-2">
+            <span className="mt-1 shrink-0 select-none font-sans text-[13px] font-black tracking-wider text-brand-primary sm:text-sm">
+              {turn.speaker}
+            </span>
+            <div className="min-w-0 flex-1">
               <InteractiveGrammarSentence
                 words={turn.words}
                 characterPreference={characterPreference}
                 showPinyin={false}
                 focusTerms={focusTerms}
-                size="md"
-                className="gap-y-2 flex-1"
+                size="lg"
+                className="gap-y-2"
                 activeAlignmentId={activeAlignmentId}
                 onActiveAlignmentChange={setActiveAlignmentId}
                 onOpenWord={onOpenWord}
               />
+              {showPinyin && turn.pinyin && (
+                <p className="mt-1 text-[13px] font-bold leading-relaxed text-brand-primary sm:text-sm">
+                  {turn.pinyin}
+                </p>
+              )}
+              {showTranslation && turn.english && (
+                <p className="ui-translation mt-1 text-[15px] sm:text-base">
+                  {turn.english}
+                </p>
+              )}
             </div>
-          ))}
-        </div>
-
-        {showPinyin && dialogue.turns.some((t) => t.pinyin) && (
-          <div className="mt-1.5 space-y-0.5">
-            {dialogue.turns.filter((t) => t.pinyin).map((turn, i) => (
-              <p key={i} className="text-xs font-bold leading-relaxed text-brand-primary">
-                <span className="font-black mr-1.5 select-none opacity-80">{turn.speaker}</span>
-                {turn.pinyin}
-              </p>
-            ))}
           </div>
-        )}
-
-        {showTranslation && dialogue.turns.some((t) => t.english) && (
-          <div className="mt-1.5 space-y-0.5">
-            {dialogue.turns.filter((t) => t.english).map((turn, i) => (
-              <p key={i} className="text-sm font-medium leading-relaxed text-ui-muted-strong">
-                <span className="font-bold mr-1.5 select-none text-ui-ink">{turn.speaker}</span>
-                {turn.english}
-              </p>
-            ))}
-          </div>
-        )}
-      </>
+        ))}
+      </div>
     );
   }
 
@@ -97,14 +85,14 @@ export function GrammarExampleText({
         characterPreference={characterPreference}
         showPinyin={false}
         focusTerms={focusTerms}
-        size="md"
+        size="lg"
         className="gap-y-2"
         activeAlignmentId={activeAlignmentId}
         onActiveAlignmentChange={setActiveAlignmentId}
         onOpenWord={onOpenWord}
       />
       {showPinyin && text.pinyin && (
-        <p className="mt-1 text-xs font-bold leading-relaxed text-brand-primary">
+        <p className="mt-1 text-[13px] font-bold leading-relaxed text-brand-primary sm:text-sm">
           {text.pinyin}
         </p>
       )}
@@ -116,7 +104,7 @@ export function GrammarExampleText({
           className="mt-1.5"
         />
       ) : showTranslation && text.english ? (
-        <p className="mt-1.5 text-sm font-medium leading-relaxed text-ui-muted-strong">{text.english}</p>
+        <p className="ui-translation mt-1.5 text-[15px] sm:text-base">{text.english}</p>
       ) : null}
     </>
   );

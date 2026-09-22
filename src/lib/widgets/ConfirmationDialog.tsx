@@ -1,11 +1,10 @@
-import { useId, useRef, type HTMLAttributes, type ReactNode } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
+import { useId, useRef, type ReactNode } from 'react';
 import { ActionButton } from './ActionButton';
 import { AppIcon } from './AppIcon';
+import { Dialog } from './Dialog';
 import { cn } from '../../utils/cn';
-import { useModalFocus } from '../../hooks/useModalFocus';
 
-export interface ConfirmationDialogProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface ConfirmationDialogProps {
   cancelLabel?: string;
   confirmLabel: string;
   confirmLoadingLabel?: string;
@@ -16,6 +15,7 @@ export interface ConfirmationDialogProps extends Omit<HTMLAttributes<HTMLDivElem
   onCancel: () => void;
   onConfirm: () => void | Promise<void>;
   title: string;
+  className?: string;
 }
 
 export function ConfirmationDialog({
@@ -30,77 +30,50 @@ export function ConfirmationDialog({
   onCancel,
   onConfirm,
   title,
-  ...props
 }: ConfirmationDialogProps) {
-  const titleId = useId();
-  const descriptionId = useId();
-  const errorId = useId();
-  const dialogRef = useRef<HTMLDivElement>(null);
   const cancelRef = useRef<HTMLButtonElement>(null);
-  const reduceMotion = useReducedMotion();
-  const modalFocus = useModalFocus({
-    containerRef: dialogRef,
-    initialFocusRef: cancelRef,
-    isActive: true,
-    onEscape: isConfirming ? undefined : onCancel,
-  });
+  const errorId = useId();
 
   return (
-    <div className="fixed inset-0 z-dialog flex items-center justify-center p-4">
-      <motion.div
-        aria-hidden="true"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: reduceMotion ? 0 : 0.16 }}
-        onClick={isConfirming ? undefined : onCancel}
-        className="absolute inset-0 cursor-default bg-ui-ink-strong/40 backdrop-blur-sm"
-      />
-      <motion.div
-        initial={reduceMotion ? { opacity: 0 } : { scale: 0.96, opacity: 0, y: 12 }}
-        animate={{ scale: 1, opacity: 1, y: 0 }}
-        exit={reduceMotion ? { opacity: 0 } : { scale: 0.96, opacity: 0, y: 12 }}
-        transition={{ duration: reduceMotion ? 0 : 0.18 }}
-        className="relative w-full max-w-sm"
+    <Dialog.Root open={true} onClose={isConfirming ? () => {} : onCancel}>
+      <Dialog.Backdrop closeOnClick={!isConfirming} />
+      <Dialog.Content
+        role="alertdialog"
+        size="sm"
+        depth="md"
+        initialFocusRef={cancelRef}
+        closeOnEscape={!isConfirming}
+        className={cn('rounded-feature p-6 text-center', className)}
       >
-        <div
-          ref={dialogRef}
-          onKeyDown={modalFocus.onKeyDown}
-          {...props}
-          role="alertdialog"
-          aria-modal="true"
-          aria-labelledby={titleId}
-          tabIndex={-1}
-          className={cn('rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-6 shadow-ambient-lg', className)}
-        >
-          <div className="mb-6 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-control bg-feedback-danger/10 text-feedback-danger">
-            {icon}
-          </div>
-          <h2 id={titleId} className="text-xl font-extrabold text-ui-ink">{title}</h2>
-          <div id={descriptionId} className="mt-2 text-sm font-bold leading-relaxed text-ui-muted">{description}</div>
-          {errorMessage && (
-            <p id={errorId} role="alert" className="mt-3 rounded-compact bg-feedback-danger/10 px-3 py-2 text-sm font-bold text-feedback-danger-edge">
-              {errorMessage}
-            </p>
-          )}
-          </div>
-          <div className="flex gap-3">
-            <ActionButton ref={cancelRef} variant="secondary" fullWidth disabled={isConfirming} onClick={onCancel}>
-              {cancelLabel}
-            </ActionButton>
-            <ActionButton
-              variant="danger"
-              fullWidth
-              loading={isConfirming}
-              loadingLabel={confirmLoadingLabel}
-              onClick={onConfirm}
-            >
-              {confirmLabel}
-            </ActionButton>
-          </div>
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-control bg-feedback-danger/10 text-feedback-danger">
+          {icon}
         </div>
-      </motion.div>
-    </div>
+        <Dialog.Title as="h2" className="text-xl font-extrabold text-ui-ink text-center">
+          {title}
+        </Dialog.Title>
+        <Dialog.Description className="mt-2 text-sm font-bold leading-relaxed text-ui-muted-strong text-center mb-0">
+          {description}
+        </Dialog.Description>
+        {errorMessage && (
+          <p id={errorId} role="alert" className="mt-3 rounded-compact bg-feedback-danger/10 px-3 py-2 text-sm font-bold text-feedback-danger-edge">
+            {errorMessage}
+          </p>
+        )}
+        <div className="mt-6 flex gap-3">
+          <ActionButton ref={cancelRef} variant="secondary" fullWidth disabled={isConfirming} onClick={onCancel}>
+            {cancelLabel}
+          </ActionButton>
+          <ActionButton
+            variant="danger"
+            fullWidth
+            loading={isConfirming}
+            loadingLabel={confirmLoadingLabel}
+            onClick={onConfirm}
+          >
+            {confirmLabel}
+          </ActionButton>
+        </div>
+      </Dialog.Content>
+    </Dialog.Root>
   );
 }

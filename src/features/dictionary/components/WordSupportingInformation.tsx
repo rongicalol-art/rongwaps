@@ -91,7 +91,7 @@ export function WordSupportingInformation({
     <section className="flex min-w-0 flex-col gap-4" aria-label="Word context">
       {/* Characters Card */}
       {chars.length > 0 && (
-        <div className="min-w-0 rounded-feature bg-ui-surface p-4 shadow-[0_var(--depth-md)_0_var(--color-ui-border)] sm:p-6">
+        <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6">
           <SectionEyebrow title="Characters" count={chars.length} />
           <div className="mt-1 divide-y divide-ui-divider/40">
             {charsLoading && charInfos.length === 0
@@ -122,7 +122,7 @@ export function WordSupportingInformation({
 
       {/* Related Words Card */}
       {(isRelatedLoading || relatedWords.length > 0) && (
-        <div className="min-w-0 rounded-feature bg-ui-surface p-4 shadow-[0_var(--depth-md)_0_var(--color-ui-border)] sm:p-6">
+        <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6">
           <SectionEyebrow
             title="Related Words"
             count={isRelatedLoading ? undefined : relatedWords.length}

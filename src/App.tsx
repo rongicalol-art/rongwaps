@@ -3,9 +3,13 @@ import { AnimatePresence } from 'motion/react';
 import { useNavigate } from 'react-router';
 import { useAppNavigation, type ActivityType } from './hooks/useAppNavigation.tsx';
 import { useAudioUnlock } from './hooks/useAudioUnlock';
+import { useCharacterFont } from './hooks/useCharacterFont';
 import { useAppStore } from './store/useAppStore';
 import { SAMPLE_BOOKS } from './data/books';
+import { INTERACTIVE_GRAMMAR_PARTS } from './data/interactiveGrammarPages';
+import { findGrammarPartForReading, findNextGrammarPartForReading } from './utils/readingContext';
 import { AppSettingsDrawer, LayoutShell } from './app/index';
+import { LoadingScreen } from './lib/widgets';
 import { AppRoutes } from './app/components/AppRoutes';
 import { DebugToolsOverlay } from './app/components/DebugToolsOverlay';
 import { GrammarWindow } from './app/components/GrammarWindow';
@@ -17,6 +21,7 @@ import { useOverlayUrlSync } from './app/hooks/useOverlayUrlSync';
 import { useWorkspaceRouting } from './app/hooks/useWorkspaceRouting';
 import { TAB_ROUTES } from './app/routes';
 import { DictionaryDetailOverlay } from './features/dictionary';
+import { SaveWordModal } from './features/library';
 import { useCloudSync } from './hooks/useCloudSync';
 import { useAuth } from './hooks/useAuth';
 import { useResetProgress } from './hooks/useResetProgress';
@@ -31,6 +36,7 @@ const ActivityModals = lazy(() => import('./screens/activities/ActivityModals').
 export default function App() {
   useAudioUnlock();
   useCloudSync();
+  useCharacterFont();
 
   // Per-slice selectors: a no-argument useAppStore() call would subscribe the
   // shell to every store change (including SRS progress updates).
@@ -69,7 +75,7 @@ export default function App() {
   const { activeGrammarPartId, setActiveGrammarPartId, activeGrammarPageId, setActiveGrammarPageId, activeGrammarPart } = useGrammarLauncher({
     onOpen: collapseNav,
   });
-  const { readings, activeReadingIndex, openReader, openReaderForPart, closeReader, navigateReader } = useReaderLauncher({
+  const { readings, activeReadingIndex, isOpeningReader, openReader, openReaderForPart, closeReader, navigateReader } = useReaderLauncher({
     selectedLessons,
     activeBookId,
     activeGrammarPartId,
@@ -118,7 +124,7 @@ export default function App() {
     setActiveGrammarPartId(partId);
   }, [collapseNav, setActiveGrammarPageId, setActiveGrammarPartId]);
 
-  const isReaderOpen = activeReadingIndex !== null;
+  const isReaderOpen = isOpeningReader || activeReadingIndex !== null;
   const isGrammarOpen = Boolean(activeGrammarPartId);
   const dictionaryWord = useAppStore((state) => state.dictionaryWord);
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
@@ -135,6 +141,33 @@ export default function App() {
     useAppStore.getState().setDictionaryWord(null);
     closeReader();
   }, [closeReader]);
+
+  /**
+   * The reader is one step on the lesson path, so both gestures walk it:
+   * `→` / swipe-left continue into the next part's grammar, `←` / swipe-right
+   * return into this reading's part grammar at its last page (the page that
+   * handed off to the reading). Readings that belong to no part — essays —
+   * have no step in either direction.
+   */
+  const handleReaderNext = useCallback(() => {
+    if (activeReadingIndex === null) return;
+    const reading = readings[activeReadingIndex];
+    const nextPart = reading
+      ? findNextGrammarPartForReading(reading, INTERACTIVE_GRAMMAR_PARTS)
+      : null;
+    if (!nextPart) return;
+    handleCloseReader();
+    handleOpenGrammarPart(nextPart.id);
+  }, [activeReadingIndex, readings, handleCloseReader, handleOpenGrammarPart]);
+
+  const handleReaderPrevious = useCallback(() => {
+    if (activeReadingIndex === null) return;
+    const reading = readings[activeReadingIndex];
+    const part = reading ? findGrammarPartForReading(reading, INTERACTIVE_GRAMMAR_PARTS) : null;
+    if (!part) return;
+    handleCloseReader();
+    handleOpenGrammarPart(part.id, part.grammarPages.at(-1)?.id ?? null);
+  }, [activeReadingIndex, readings, handleCloseReader, handleOpenGrammarPart]);
 
   const activeFocusModeKey = isReaderOpen
     ? `reader:${activeReadingIndex}`
@@ -227,11 +260,7 @@ export default function App() {
   }, [setIsSettingsOpen, isDesktop, setIsNavOpen]);
 
   if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-ui-canvas">
-        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-brand-primary"></div>
-      </div>
-    );
+    return <LoadingScreen message="Loading RongWaps…" fullScreen tone="canvas" />;
   }
 
   return (
@@ -251,7 +280,24 @@ export default function App() {
         onSettingsClick={handleSettingsClick}
         onTabChange={handleTabChange}
         activityModals={
-          <Suspense fallback={null}>
+          <Suspense
+            fallback={
+              activeActivity && activeActivity !== 'create-card' ? (
+                <div className="absolute inset-0 z-activity flex flex-col items-center justify-center bg-ui-practice-canvas">
+                  <LoadingScreen
+                    message={
+                      activeActivity === 'flashcards-review'
+                        ? 'Loading review…'
+                        : activeActivity === 'flashcards-library'
+                        ? 'Loading deck…'
+                        : 'Loading lesson…'
+                    }
+                    tone="practice"
+                  />
+                </div>
+              ) : null
+            }
+          >
             <ActivityModals
               activeActivity={activeActivity}
               setActiveActivity={handleSetActiveActivity}
@@ -275,11 +321,13 @@ export default function App() {
           startPathPractice={handleStartPathPractice}
           setActiveTab={handleTabChange}
           setActiveActivity={handleSetActiveActivity}
+          onOpenGrammarPart={handleOpenGrammarPart}
           onToggleNav={handleNavToggle}
         />
       </LayoutShell>
 
       <GrammarWindow
+        isOpen={isGrammarOpen}
         part={activeGrammarPart ?? null}
         initialPageId={activeGrammarPageId ?? undefined}
         onClose={() => {
@@ -292,17 +340,21 @@ export default function App() {
           setActiveGrammarPageId(null);
           void openReaderForPart(targetPart.bookId, targetPart.lessonId, targetPart.partId);
         }}
+        onNavigatePart={handleOpenGrammarPart}
       />
 
       <ReaderWindow
+        isOpen={isReaderOpen}
         readings={readings}
         index={activeReadingIndex}
-        onNavigate={navigateReader}
+        onNext={handleReaderNext}
+        onPrevious={handleReaderPrevious}
         onClose={handleCloseReader}
         onOpenGrammarPart={handleOpenGrammarPart}
       />
 
       <DictionaryDetailOverlay />
+      <SaveWordModal />
       <AppSettingsDrawer
         isOpen={isSettingsOpen}
         onClose={() => setIsSettingsOpen(false)}

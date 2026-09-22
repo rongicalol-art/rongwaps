@@ -64,7 +64,7 @@ export function MemoryHookPopover({
             hook ? (
               renderHookText(hook)
             ) : (
-              <span className="flex items-center gap-1 text-ui-muted">
+              <span className="flex items-center gap-1 font-bold text-ui-muted-strong">
                 {emptyText}
               </span>
             )

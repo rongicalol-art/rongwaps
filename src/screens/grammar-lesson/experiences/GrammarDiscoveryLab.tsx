@@ -109,7 +109,7 @@ export function GrammarDiscoveryLab({
                 {selected.isCorrection ? <CorrectionComparison value={selected.pinyin} /> : selected.pinyin}
               </p>
             )}
-            {showTranslation && <p className="mt-2 text-sm font-black text-ui-ink sm:text-base">{selected.english}</p>}
+            {showTranslation && <p className="ui-translation mt-2 text-sm sm:text-base">{selected.english}</p>}
           </div>
           <IconActionButton
             onClick={() => audioService.speakText(sentence, characterPreference === 'traditional' ? 'zh-TW' : 'zh-CN', 0.84)}

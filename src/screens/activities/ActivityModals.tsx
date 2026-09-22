@@ -1,31 +1,25 @@
-import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import { useShallow } from 'zustand/react/shallow';
-import { AnimatePresence } from 'motion/react';
-import { ActivityModalWrapper, ScreenSkeleton } from '../../lib/widgets';
+import { AnimatePresence, motion } from 'motion/react';
+import { ActivityModalWrapper, LoadingScreen } from '../../lib/widgets';
 import { PracticeHeader } from '../../features/practice';
 import { useAppStore, selectIsActivityOverlayOpen } from '../../store/useAppStore';
+import { useActivityDataLoader } from '../../hooks/useActivityDataLoader';
+import { getPracticeLoadingMessage, preloadPracticeChunks, preloadRemainingPracticeChunks } from '../../utils/practiceLoader';
 import { AddCardScreen } from '../add-card';
 import type { ActivityType } from '../../types/models';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { getInteractiveGrammarManifestForLesson } from '../../data/interactiveGrammarManifest';
-import { fetchVocabulary } from '../../services/vocabularyService';
-import { vocabularyCache } from '../../utils/cache';
-import type { Flashcard } from '../../data/flashcards';
-import type { CourseLessonPartProgress } from '../../types/models';
 import {
   getCurriculumSessionKey,
-  getLessonSelectionKey,
-  normalizePartSelection,
   SHARED_REVIEW_SESSION_KEY,
 } from '../../utils/lessonPartSelection';
-import { aggregateLessonPartProgress } from '../../utils/lessonPartProgress';
 import {
   selectPracticePreferences,
   usePracticePreferencesStore,
 } from '../../store/usePracticePreferencesStore';
 import { PracticeModeDock, PRACTICE_ACTIVITIES } from './components/PracticeModeDock';
 import { AnimatedActivityScreen } from './components/AnimatedActivityScreen';
-import { useGrammarLessonStore } from '../../store/useGrammarLessonStore';
+import { useActivityStudyParts } from './hooks';
 import type { FlashcardViewMode } from '../flashcard';
 
 const FlashcardScreen = lazy(() => (
@@ -78,12 +72,52 @@ export function ActivityModals({
   const swipeFeedback = useAppStore(state => state.swipeFeedback);
 
   const resolvedActivity = activeActivity === 'flashcards-library' ? 'flashcards' : activeActivity === 'flashcards-review' ? 'flashcards' : activeActivity;
+  const isReviewMode = useAppStore(state => state.isReviewMode);
+
+  const isPracticeSession = Boolean(activeActivity && activeActivity !== 'create-card');
+  const { cards: deckCards, isLoading: isLoadingDeck } = useActivityDataLoader(
+    activeBookId,
+    selectedLessons,
+    isReviewMode || activeActivity === 'flashcards-review',
+    isLibraryMode || activeActivity === 'flashcards-library',
+  );
+
+  const [loadedChunks, setLoadedChunks] = useState<Set<ActivityType>>(() => new Set());
+
+  useEffect(() => {
+    if (!resolvedActivity || resolvedActivity === 'create-card') return;
+    if (loadedChunks.has(resolvedActivity)) return;
+
+    let cancelled = false;
+    void preloadPracticeChunks(resolvedActivity).then(() => {
+      if (!cancelled) {
+        setLoadedChunks((prev) => new Set(prev).add(resolvedActivity));
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [resolvedActivity, loadedChunks]);
+
+  const isChunkReady = Boolean(resolvedActivity && loadedChunks.has(resolvedActivity));
+  const isDeckReady = !isLoadingDeck && (
+    isReviewMode || activeActivity === 'flashcards-review' || deckCards.length > 0
+  );
+  const isSessionLoading = isPracticeSession && (!isChunkReady || !isDeckReady);
+
+  useEffect(() => {
+    if (isPracticeSession && !isLoadingDeck) {
+      preloadRemainingPracticeChunks();
+    }
+  }, [isPracticeSession, isLoadingDeck]);
+
   const showDock = Boolean(
     resolvedActivity &&
     validModes.some((mode) => mode === resolvedActivity) &&
     resolvedActivity !== 'writing' &&
     !isOverlayOpen &&
-    !isInteractionActive,
+    !isInteractionActive &&
+    !isSessionLoading,
   );
 
   const activeBook = SAMPLE_BOOKS.find(b => b.id === activeBookId) || SAMPLE_BOOKS[0];
@@ -120,62 +154,23 @@ export function ActivityModals({
   const setCharacterPreference = useAppStore(state => state.setCharacterPreference);
   const practicePreferences = usePracticePreferencesStore(useShallow(selectPracticePreferences));
   const updatePracticePreferences = usePracticePreferencesStore(state => state.updatePreferences);
-  const isReviewMode = useAppStore(state => state.isReviewMode);
-  const completedGrammarPageIds = useGrammarLessonStore((state) => state.completedPageIds);
-  const selectedLessonParts = useAppStore(state => state.selectedLessonParts);
-  const setSelectedLessonParts = useAppStore(state => state.setSelectedLessonParts);
-  const studyLessonId = !isLibraryMode && !isReviewMode && selectedLessons.length === 1
-    ? selectedLessons[0]
-    : null;
 
-  const getCachedParts = useCallback((lessonId: number): CourseLessonPartProgress[] => {
-    const cacheKey = `vocab-${activeBookId}-${lessonId}`;
-    const allCacheKey = `vocab-${activeBookId}-all`;
-    const cached = vocabularyCache.get<Flashcard[]>(cacheKey) || vocabularyCache.get<Flashcard[]>(allCacheKey);
-    const lessonCards = cached?.filter((c) => c.lessonId === lessonId) ?? [];
-    return aggregateLessonPartProgress(lessonCards, useAppStore.getState().learnedCards);
-  }, [activeBookId]);
-
-  const [studyLessonParts, setStudyLessonParts] = useState<CourseLessonPartProgress[]>(() => {
-    if (!studyLessonId) return [];
-    return getCachedParts(studyLessonId);
-  });
-  const studySelectionKey = studyLessonId === null
-    ? null
-    : getLessonSelectionKey(activeBookId, studyLessonId);
-  const selectedStudyPartIds = useMemo(() => {
-    if (!studySelectionKey) return [];
-    const selection = selectedLessonParts[studySelectionKey];
-    if (selection === 'all') return studyLessonParts.map((part) => part.id);
-    return selection ?? [studyLessonParts[0]?.id ?? 1];
-  }, [selectedLessonParts, studyLessonParts, studySelectionKey]);
-  const visibleStudyParts = useMemo(() => (
-    studyLessonParts.map((part) => ({
-      ...part,
-      isSelected: selectedStudyPartIds.includes(part.id),
-    }))
-  ), [selectedStudyPartIds, studyLessonParts]);
-  const practiceGrammarPart = useMemo(() => {
-    if (!studyLessonId || isLibraryMode || isReviewMode || !onOpenGrammarPart) return undefined;
-
-    const lessonGrammarParts = getInteractiveGrammarManifestForLesson(activeBookId, studyLessonId);
-    const enabledGrammarParts = lessonGrammarParts.filter((part) => (
-      selectedStudyPartIds.includes(part.partId)
-    ));
-    const candidateParts = enabledGrammarParts.length > 0 ? enabledGrammarParts : lessonGrammarParts;
-
-    return candidateParts.find((part) => (
-      part.grammarPages.some((page) => !completedGrammarPageIds.includes(page.id))
-    )) ?? candidateParts[0];
-  }, [
+  const {
+    visibleStudyParts,
+    practiceGrammarPart,
+    selectStudyPart,
+    toggleStudyPart,
+    onPartContinue,
+    partContinueLabel,
+  } = useActivityStudyParts({
     activeBookId,
-    completedGrammarPageIds,
+    selectedLessons,
     isLibraryMode,
     isReviewMode,
+    activeActivity,
     onOpenGrammarPart,
-    selectedStudyPartIds,
-    studyLessonId,
-  ]);
+  });
+
   const activityLabel = activeActivity === 'create-card'
     ? 'Create a card'
     : `${activities.find((activity) => activity.id === resolvedActivity)?.label ?? 'Study'} practice`;
@@ -193,7 +188,7 @@ export function ActivityModals({
     const currentLibraryFolder = useAppStore.getState().libraryActiveFolder;
     const sharedKey = (isReviewMode || activeActivity === 'flashcards-review') ? SHARED_REVIEW_SESSION_KEY :
       (isLibraryMode || activeActivity === 'flashcards-library') ? `shared_deck_library_${currentLibraryFolder}` :
-      getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
+      getCurriculumSessionKey(activeBookId, selectedLessons, useAppStore.getState().selectedLessonParts);
     useAppStore.getState().clearSessionProgressIndex(sharedKey);
     useAppStore.getState().setActiveReviewSessionCards(null);
   };
@@ -208,271 +203,183 @@ export function ActivityModals({
     setActiveActivity(targetActivity);
   }, [isLibraryMode, isReviewMode, setActiveActivity]);
 
-  useEffect(() => {
-    let isMounted = true;
-
-    if (!studyLessonId || !activeActivity || activeActivity === 'create-card') {
-      setStudyLessonParts([]);
-      return;
-    }
-
-    const cachedParts = getCachedParts(studyLessonId);
-    if (cachedParts.length > 0) {
-      setStudyLessonParts(cachedParts);
-    }
-
-    fetchVocabulary(activeBookId, studyLessonId).then((cards) => {
-      if (!isMounted) return;
-      setStudyLessonParts(aggregateLessonPartProgress(cards, useAppStore.getState().learnedCards));
-    }).catch(() => {
-      if (isMounted && cachedParts.length === 0) setStudyLessonParts([]);
-    });
-
-    return () => {
-      isMounted = false;
-    };
-  }, [activeActivity, activeBookId, getCachedParts, studyLessonId]);
-
-  /**
-   * Persists a part-id selection for the lesson on screen. `null` from
-   * `normalizePartSelection` means "nothing valid selected", which every caller
-   * treats as a no-op.
-   */
-  const applyPartSelection = useCallback((partIds: number[]) => {
-    if (!studySelectionKey || visibleStudyParts.length === 0) return;
-
-    const normalized = normalizePartSelection(partIds, visibleStudyParts.map((part) => part.id));
-    if (!normalized) return;
-
-    setSelectedLessonParts((current) => ({
-      ...current,
-      [studySelectionKey]: normalized,
-    }));
-  }, [setSelectedLessonParts, studySelectionKey, visibleStudyParts]);
-
-  const toggleStudyPart = useCallback((partId: number) => {
-    if (!studyLessonId || !studySelectionKey || visibleStudyParts.length === 0) return;
-
-    const availablePartIds = visibleStudyParts.map((part) => part.id);
-    const currentSelection = selectedLessonParts[studySelectionKey];
-    const currentPartIds = currentSelection === 'all'
-      ? availablePartIds
-      : currentSelection ?? [availablePartIds[0]];
-    const toggledPartIds = currentPartIds.includes(partId)
-      ? currentPartIds.filter((id) => id !== partId)
-      : [...currentPartIds, partId];
-    if (toggledPartIds.length === 0) return;
-
-    applyPartSelection(toggledPartIds);
-  }, [
-    applyPartSelection,
-    selectedLessonParts,
-    studyLessonId,
-    studySelectionKey,
-    visibleStudyParts,
-  ]);
-
-  const selectStudyPart = useCallback((partId: number) => {
-    if (!studyLessonId || !studySelectionKey || visibleStudyParts.length === 0) return;
-
-    applyPartSelection([partId]);
-  }, [
-    applyPartSelection,
-    studyLessonId,
-    studySelectionKey,
-    visibleStudyParts,
-  ]);
-
-  // Provide a next-part action only in single-lesson, multi-part, non-review/library sessions.
-  const isMultiPart = !isLibraryMode && !isReviewMode && visibleStudyParts.length >= 2;
-  const nextStudyPartId = useMemo(() => {
-    if (!isMultiPart) return null;
-
-    const availablePartIds = visibleStudyParts.map((part) => part.id);
-    const currentlySelected = selectedStudyPartIds[0] ?? availablePartIds[0];
-    const currentPos = availablePartIds.indexOf(currentlySelected);
-    return availablePartIds[(currentPos + 1) % availablePartIds.length];
-  }, [isMultiPart, selectedStudyPartIds, visibleStudyParts]);
-
-  /**
-   * On completion, advances to the next vocabulary part for this lesson and
-   * resets the session so the new part starts at card 0. Wraps to Part 1 when
-   * the last part is finished, giving a natural "loop back" behaviour.
-   */
-  const handleNextPart = useCallback(() => {
-    if (!studySelectionKey || nextStudyPartId === null) return;
-
-    // Clear old session progress so the new part starts at card 0.
-    const oldSessionKey = getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
-    useAppStore.getState().clearSessionProgressIndex(oldSessionKey);
-
-    applyPartSelection([nextStudyPartId]);
-  }, [
-    activeBookId,
-    applyPartSelection,
-    nextStudyPartId,
-    selectedLessons,
-    selectedLessonParts,
-    studySelectionKey,
-  ]);
-
-  const onPartContinue = isMultiPart ? handleNextPart : undefined;
-
-  // Compute the label for the continue button (e.g. "Part 2" when wrapping from Part 1).
-  const partContinueLabel = nextStudyPartId === null
-    ? 'Continue'
-    : `Continue (Part ${nextStudyPartId})`;
-
   return (
     <>
       <AnimatePresence>
         {activeActivity && (
           <ActivityModalWrapper id="global-activity-modal" ariaLabel={activityLabel} onClose={handleClose}>
-            {activeActivity !== 'create-card' && (
-               <div className={`absolute top-0 left-0 right-0 z-activity-header ${isOverlayOpen ? 'invisible' : ''}`}>
-                 <PracticeHeader
-                    key={resolvedActivity}
-                    maxWidth="2xl"
-                    onClose={activeActivity === 'writing' ? handleWritingClose : handleClose}
-                    progress={practiceHeader.progress}
-                    currentIndex={practiceHeader.currentIndex}
-                    totalCount={practiceHeader.totalCount}
-                    partSegments={practiceHeader.partSegments}
-                    studyParts={visibleStudyParts}
-                    onSelectStudyPart={selectStudyPart}
-                    onToggleStudyPart={toggleStudyPart}
-                    accentBgClassName={activeBook.accentBg}
-                    onSettingsClick={practiceHeaderActions.onSettingsClick}
-                    onShuffleClick={practiceHeaderActions.onShuffleClick}
-                    onFlowClick={practiceHeaderActions.onFlowClick}
-                    onRestartClick={practiceHeaderActions.onRestartClick}
-                    isShuffled={practiceHeaderActions.isShuffled}
-                    flowStatus={practiceHeaderActions.flowStatus}
-                    showFlow={resolvedActivity === 'flashcards' && flashcardMode === 'cards'}
-                    settings={{
-                      preferences: practicePreferences,
-                      onPreferencesChange: updatePracticePreferences,
-                      characterPreference,
-                      onCharacterPreferenceChange: setCharacterPreference,
-                    }}
-                 />
-               </div>
-            )}
+            <AnimatePresence mode="wait">
+              {isSessionLoading ? (
+                <motion.div
+                  key="lesson-loader"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.18, ease: 'easeOut' }}
+                  className="absolute inset-0 z-activity flex flex-col items-center justify-center bg-ui-practice-canvas"
+                >
+                  <LoadingScreen
+                    message={getPracticeLoadingMessage(activeActivity, isReviewMode, isLibraryMode)}
+                    tone="practice"
+                  />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="lesson-loaded"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative flex flex-1 flex-col overflow-hidden"
+                >
+                  {activeActivity !== 'create-card' && (
+                     <div className={`absolute top-0 left-0 right-0 z-activity-header ${isOverlayOpen ? 'invisible' : ''}`}>
+                       <PracticeHeader
+                          key={resolvedActivity}
+                          maxWidth="2xl"
+                          onClose={activeActivity === 'writing' ? handleWritingClose : handleClose}
+                          progress={practiceHeader.progress}
+                          currentIndex={practiceHeader.currentIndex}
+                          totalCount={practiceHeader.totalCount}
+                          partSegments={practiceHeader.partSegments}
+                          studyParts={visibleStudyParts}
+                          onSelectStudyPart={selectStudyPart}
+                          onToggleStudyPart={toggleStudyPart}
+                          accentBgClassName={activeBook.accentBg}
+                          onSettingsClick={practiceHeaderActions.onSettingsClick}
+                          onShuffleClick={practiceHeaderActions.onShuffleClick}
+                          onFlowClick={practiceHeaderActions.onFlowClick}
+                          onRestartClick={practiceHeaderActions.onRestartClick}
+                          isShuffled={practiceHeaderActions.isShuffled}
+                          flowStatus={practiceHeaderActions.flowStatus}
+                          showFlow={resolvedActivity === 'flashcards' && flashcardMode === 'cards'}
+                          settings={{
+                            preferences: practicePreferences,
+                            onPreferencesChange: updatePracticePreferences,
+                            characterPreference,
+                            onCharacterPreferenceChange: setCharacterPreference,
+                          }}
+                       />
+                     </div>
+                  )}
 
-            <AnimatePresence custom={direction} mode="popLayout">
-              {(activeActivity === 'flashcards' || activeActivity === 'flashcards-library' || activeActivity === 'flashcards-review') && (
-                <AnimatedActivityScreen activityKey="flashcards" direction={direction}>
-                  <Suspense fallback={<ScreenSkeleton type="flashcard" />}>
-                    <FlashcardScreen
-                      activeBookId={activeBookId}
-                      selectedLessons={selectedLessons}
-                      isReviewDeck={isReviewMode || activeActivity === 'flashcards-review'}
-                      isLibraryDeck={activeActivity === 'flashcards-library' || isLibraryMode}
-                      mode={flashcardMode}
-                      onClose={handleClose}
-                      onContinue={onPartContinue}
-                      continueLabel={partContinueLabel}
-                      onNavigateToPractice={onNavigateToPractice}
-                    />
-                  </Suspense>
-                </AnimatedActivityScreen>
-              )}
+                  <AnimatePresence custom={direction} mode="popLayout">
+                    {(activeActivity === 'flashcards' || activeActivity === 'flashcards-library' || activeActivity === 'flashcards-review') && (
+                      <AnimatedActivityScreen activityKey="flashcards" direction={direction}>
+                        <Suspense fallback={null}>
+                          <FlashcardScreen
+                            activeBookId={activeBookId}
+                            selectedLessons={selectedLessons}
+                            isReviewDeck={isReviewMode || activeActivity === 'flashcards-review'}
+                            isLibraryDeck={activeActivity === 'flashcards-library' || isLibraryMode}
+                            mode={flashcardMode}
+                            onClose={handleClose}
+                            onContinue={onPartContinue}
+                            continueLabel={partContinueLabel}
+                            onNavigateToPractice={onNavigateToPractice}
+                          />
+                        </Suspense>
+                      </AnimatedActivityScreen>
+                    )}
 
-              {activeActivity === 'listening' && (
-                <AnimatedActivityScreen activityKey="listening" direction={direction}>
-                  <Suspense fallback={<ScreenSkeleton type="listening" />}>
-                    <ListeningScreen
-                      activeBookId={activeBookId}
-                      selectedLessons={selectedLessons}
-                      isReviewDeck={isReviewMode}
-                      isLibraryDeck={isLibraryMode}
-                      onClose={handleClose}
-                      onContinue={onPartContinue}
-                      continueLabel={partContinueLabel}
-                    />
-                  </Suspense>
-                </AnimatedActivityScreen>
-              )}
+                    {activeActivity === 'listening' && (
+                      <AnimatedActivityScreen activityKey="listening" direction={direction}>
+                        <Suspense fallback={null}>
+                          <ListeningScreen
+                            activeBookId={activeBookId}
+                            selectedLessons={selectedLessons}
+                            isReviewDeck={isReviewMode}
+                            isLibraryDeck={isLibraryMode}
+                            onClose={handleClose}
+                            onContinue={onPartContinue}
+                            continueLabel={partContinueLabel}
+                          />
+                        </Suspense>
+                      </AnimatedActivityScreen>
+                    )}
 
-              {activeActivity === 'quiz' && (
-                <AnimatedActivityScreen activityKey="quiz" direction={direction}>
-                  <Suspense fallback={<ScreenSkeleton type="quiz" />}>
-                    <QuizScreen
-                      activeBookId={activeBookId}
-                      selectedLessons={selectedLessons}
-                      isReviewDeck={isReviewMode}
-                      isLibraryDeck={isLibraryMode}
-                      mode={activeQuizMode ?? 'choices'}
-                      onClose={handleClose}
-                      onContinue={onPartContinue}
-                      continueLabel={partContinueLabel}
-                    />
-                  </Suspense>
-                </AnimatedActivityScreen>
-              )}
+                    {activeActivity === 'quiz' && (
+                      <AnimatedActivityScreen activityKey="quiz" direction={direction}>
+                        <Suspense fallback={null}>
+                          <QuizScreen
+                            activeBookId={activeBookId}
+                            selectedLessons={selectedLessons}
+                            isReviewDeck={isReviewMode}
+                            isLibraryDeck={isLibraryMode}
+                            mode={activeQuizMode ?? 'choices'}
+                            onClose={handleClose}
+                            onContinue={onPartContinue}
+                            continueLabel={partContinueLabel}
+                          />
+                        </Suspense>
+                      </AnimatedActivityScreen>
+                    )}
 
-              {activeActivity === 'writing' && (
-                <AnimatedActivityScreen activityKey="writing" direction={direction}>
-                  <Suspense fallback={<ScreenSkeleton type="writing" />}>
-                    <WritingScreen
-                      activeBookId={activeBookId}
-                      selectedLessons={selectedLessons}
-                      isReviewDeck={isReviewMode}
-                      isLibraryDeck={isLibraryMode}
-                      onClose={handleWritingClose}
-                      onContinue={onPartContinue}
-                      continueLabel={partContinueLabel}
-                    />
-                  </Suspense>
-                </AnimatedActivityScreen>
-              )}
+                    {activeActivity === 'writing' && (
+                      <AnimatedActivityScreen activityKey="writing" direction={direction}>
+                        <Suspense fallback={null}>
+                          <WritingScreen
+                            activeBookId={activeBookId}
+                            selectedLessons={selectedLessons}
+                            isReviewDeck={isReviewMode}
+                            isLibraryDeck={isLibraryMode}
+                            onClose={handleWritingClose}
+                            onContinue={onPartContinue}
+                            continueLabel={partContinueLabel}
+                          />
+                        </Suspense>
+                      </AnimatedActivityScreen>
+                    )}
 
-              {activeActivity === 'create-card' && (
-                <AnimatedActivityScreen activityKey="create-card" direction={direction} useSlide={false}>
-                  <AddCardScreen onClose={() => setActiveActivity(null)} />
-                </AnimatedActivityScreen>
+                    {activeActivity === 'create-card' && (
+                      <AnimatedActivityScreen activityKey="create-card" direction={direction} useSlide={false}>
+                        <AddCardScreen onClose={() => setActiveActivity(null)} />
+                      </AnimatedActivityScreen>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Floating Pill Dock for Modes */}
+                  <AnimatePresence>
+                    {showDock && (
+                      <PracticeModeDock
+                        feedback={swipeFeedback}
+                        value={resolvedActivity as (typeof PRACTICE_ACTIVITIES)[number]['id']}
+                        quizMode={activeQuizMode}
+                        flashcardMode={flashcardMode}
+                        onSelectFlashcardMode={(mode) => {
+                          if (isLibraryMode) {
+                            setActiveActivity('flashcards-library');
+                          } else if (isReviewMode) {
+                            setActiveActivity('flashcards-review');
+                          } else {
+                            setActiveActivity('flashcards');
+                          }
+                          setFlashcardMode(mode);
+                        }}
+                        onOpenGrammar={practiceGrammarPart && onOpenGrammarPart
+                          ? () => onOpenGrammarPart(practiceGrammarPart.id)
+                          : undefined}
+                        onOpenReading={onOpenReading}
+                        onSelectQuizMode={(mode) => {
+                          setActiveQuizMode(mode);
+                          setActiveActivity('quiz');
+                        }}
+                        onChange={(nextActivity) => {
+                          if (isLibraryMode && nextActivity === 'flashcards') {
+                            setActiveActivity('flashcards-library');
+                          } else if (isReviewMode && nextActivity === 'flashcards') {
+                            setActiveActivity('flashcards-review');
+                          } else {
+                            setActiveActivity(nextActivity);
+                          }
+                        }}
+                      />
+                    )}
+                  </AnimatePresence>
+                </motion.div>
               )}
             </AnimatePresence>
           </ActivityModalWrapper>
-        )}
-      </AnimatePresence>
-
-      {/* Floating Pill Dock for Modes */}
-      <AnimatePresence>
-        {showDock && (
-          <PracticeModeDock
-            feedback={swipeFeedback}
-            value={resolvedActivity as (typeof PRACTICE_ACTIVITIES)[number]['id']}
-            quizMode={activeQuizMode}
-            flashcardMode={flashcardMode}
-            onSelectFlashcardMode={(mode) => {
-              if (isLibraryMode) {
-                setActiveActivity('flashcards-library');
-              } else if (isReviewMode) {
-                setActiveActivity('flashcards-review');
-              } else {
-                setActiveActivity('flashcards');
-              }
-              setFlashcardMode(mode);
-            }}
-            onOpenGrammar={practiceGrammarPart && onOpenGrammarPart
-              ? () => onOpenGrammarPart(practiceGrammarPart.id)
-              : undefined}
-            onOpenReading={onOpenReading}
-            onSelectQuizMode={(mode) => {
-              setActiveQuizMode(mode);
-              setActiveActivity('quiz');
-            }}
-            onChange={(nextActivity) => {
-              if (isLibraryMode && nextActivity === 'flashcards') {
-                setActiveActivity('flashcards-library');
-              } else if (isReviewMode && nextActivity === 'flashcards') {
-                setActiveActivity('flashcards-review');
-              } else {
-                setActiveActivity(nextActivity);
-              }
-            }}
-          />
         )}
       </AnimatePresence>
     </>

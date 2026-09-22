@@ -16,7 +16,7 @@ function DecompositionCard({
   // Still loading and no cached breakdown yet.
   if (data === null) {
     return (
-      <div className="flex min-h-[120px] w-full flex-col gap-3 rounded-feature bg-ui-surface p-4 shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
+      <div className="flex min-h-[120px] w-full flex-col gap-3 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4">
         <div className="flex items-center gap-3">
           <Skeleton className="h-14 w-14 rounded-compact" />
           <div className="flex flex-1 flex-col gap-1.5">
@@ -34,7 +34,7 @@ function DecompositionCard({
   }
 
   return (
-    <div className="flex min-h-[120px] w-full flex-col gap-3 rounded-feature bg-ui-surface p-4 shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
+    <div className="flex min-h-[120px] w-full flex-col gap-3 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4">
       <button
         type="button"
         aria-label={`Open breakdown for ${char}`}
@@ -47,7 +47,7 @@ function DecompositionCard({
         <span className="flex min-w-0 flex-1 flex-col leading-tight">
           {pinyin && <span className="text-xs font-extrabold text-brand-primary">{pinyin}</span>}
           {meaning && (
-            <span className="line-clamp-2 text-xs font-bold leading-snug text-ui-muted">{meaning}</span>
+            <span className="line-clamp-2 text-xs font-bold leading-snug text-ui-muted-strong">{meaning}</span>
           )}
         </span>
       </button>
@@ -77,7 +77,7 @@ function DecompositionCard({
           )}
         </div>
       ) : (
-        <p className="text-xs font-bold text-ui-muted">No breakdown available</p>
+        <p className="text-xs font-bold text-ui-muted-strong">No breakdown available</p>
       )}
     </div>
   );

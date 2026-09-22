@@ -74,6 +74,8 @@ export interface ReaderChunkProps {
   /** Karaoke highlight: the chunk is held right now or currently spoken. */
   isActive: boolean;
   isHovered: boolean;
+  /** The Study Guide is locating this chunk's vocabulary word in the text. */
+  isLocated?: boolean;
   showPinyin: boolean;
   textSize: ReaderTextSize;
   appearance: ReaderChunkAppearance;
@@ -107,6 +109,7 @@ export const ReaderChunk = memo(function ReaderChunk({
   fallbackEnd,
   isActive,
   isHovered,
+  isLocated = false,
   showPinyin,
   textSize,
   appearance,
@@ -167,7 +170,9 @@ export const ReaderChunk = memo(function ReaderChunk({
           ? 'bg-brand-primary-soft text-brand-primary font-black'
           : isHovered
             ? 'bg-brand-primary/10 text-brand-primary'
-            : '',
+            : isLocated
+              ? 'bg-brand-primary-soft/45 text-brand-primary'
+              : '',
       )}
     >
       {showPinyin ? (

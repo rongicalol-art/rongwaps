@@ -42,7 +42,7 @@ export function GrammarAbilityLab({
           <div className="rounded-control bg-ui-canvas p-5">
             <span className="text-xs font-black uppercase text-ui-muted">Real-world factor</span>
             <span className="mt-3 block text-xl font-black capitalize text-ui-ink-strong">{selected.factor}</span>
-            <span className="mt-1 block text-sm font-bold text-ui-muted">body, rules, or situation decides</span>
+            <span className="mt-1 block text-sm font-bold text-ui-muted-strong">body, rules, or situation decides</span>
           </div>
           <div className={cn('flex min-h-36 flex-col items-center justify-center rounded-feature border-2 p-5 text-center', gate.className)}>
             <span className="text-xs font-black uppercase">{gate.label}</span>

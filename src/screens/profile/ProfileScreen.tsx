@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { AnimatePresence } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import { useNavigate } from 'react-router';
 import { useAuth } from '../../hooks/useAuth';
 import { useAppStore } from '../../store/useAppStore';
@@ -11,6 +11,7 @@ import { SignInWindow } from '../auth';
 import { ProfileHeroCard } from './components/ProfileHeroCard';
 import { ReviewHubCard } from './components/ReviewHubCard';
 import { LearningStatsGrid } from './components/LearningStatsGrid';
+import { ProfileSkeleton } from './components/ProfileSkeleton';
 import { useReviewOverview } from './hooks/useReviewOverview';
 
 interface ProfileScreenProps {
@@ -88,46 +89,57 @@ export function ProfileScreen({
       <StickyWorkspaceHeader title="Profile" align="left" menuToggle={menuToggle} />
 
       <div className="mx-auto flex min-h-full w-full max-w-xl flex-col gap-6 px-4 pb-32 pt-2 sm:gap-7 sm:px-6 md:pb-24 lg:max-w-2xl">
-        {isAuthLoading ? (
-          <div className="flex w-full flex-col gap-6">
-            <div className="h-32 w-full animate-pulse rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface" />
-            <div className="h-56 w-full animate-pulse rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface" />
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              <div className="h-24 animate-pulse rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface" />
-              <div className="h-24 animate-pulse rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface" />
-            </div>
-          </div>
-        ) : (
-          <>
-            {/* 1. Identity & Cloud Sync */}
-            <ProfileHeroCard
-              currentUser={currentUser}
-              onOpenSignIn={() => setIsAuthOpen(true)}
-              onSignOut={handleSignOut}
-              isSigningOut={isAuthActionLoading}
-              onOpenSettings={() => setIsSettingsOpen(true)}
-              syncStatus={syncStatus}
-              syncError={syncError}
-              accountError={accountError}
-            />
+        <AnimatePresence mode="wait">
+          {isAuthLoading ? (
+            <motion.div
+              key="profile-skeleton"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.16, ease: 'easeOut' }}
+              className="w-full flex flex-col gap-6"
+            >
+              <ProfileSkeleton />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="profile-content"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="w-full flex flex-col gap-6"
+            >
+              {/* 1. Identity & Cloud Sync */}
+              <ProfileHeroCard
+                currentUser={currentUser}
+                onOpenSignIn={() => setIsAuthOpen(true)}
+                onSignOut={handleSignOut}
+                isSigningOut={isAuthActionLoading}
+                onOpenSettings={() => setIsSettingsOpen(true)}
+                syncStatus={syncStatus}
+                syncError={syncError}
+                accountError={accountError}
+              />
 
-            {/* 2. Spaced Repetition Review */}
-            <ReviewHubCard
-              overview={overview}
-              onStartReview={onStartReview}
-              onNavigateToPath={handleNavigateToPath}
-            />
+              {/* 2. Spaced Repetition Review */}
+              <ReviewHubCard
+                overview={overview}
+                onStartReview={onStartReview}
+                onNavigateToPath={handleNavigateToPath}
+              />
 
-            {/* 3. Collections & Quick Access */}
-            <LearningStatsGrid
-              overview={overview}
-              favoriteCount={favoriteCount}
-              localCardsCount={localCardsCount}
-              onNavigateToFavorites={handleNavigateToFavorites}
-              onCreateCustomCard={handleCreateCustomCard}
-            />
-          </>
-        )}
+              {/* 3. Collections & Quick Access */}
+              <LearningStatsGrid
+                overview={overview}
+                favoriteCount={favoriteCount}
+                localCardsCount={localCardsCount}
+                onNavigateToFavorites={handleNavigateToFavorites}
+                onCreateCustomCard={handleCreateCustomCard}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       <AnimatePresence>

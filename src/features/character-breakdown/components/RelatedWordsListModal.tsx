@@ -42,7 +42,7 @@ export function RelatedWordsListModal({ initialChar, relatedWords, activeBook, o
       contentInnerClassName="flex flex-col gap-5 pb-24"
     >
           {groups.length === 0 ? (
-            <div className="py-12 text-center font-bold text-ui-muted">
+            <div className="py-12 text-center font-bold text-ui-muted-strong">
               No related words found.
             </div>
           ) : (
@@ -57,7 +57,7 @@ export function RelatedWordsListModal({ initialChar, relatedWords, activeBook, o
                       <span>{bookTitle}</span>
                       <span className="text-[11px] font-bold lowercase opacity-80">{group.cards.length} word(s)</span>
                     </div>
-                    <div className="flex w-full flex-col overflow-hidden rounded-feature bg-ui-surface shadow-[0_var(--depth-md)_0_var(--color-ui-border)]">
+                    <div className="flex w-full flex-col overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
                       {group.cards.map((card, idx) => {
                         const isLast = idx === group.cards.length - 1;
                         return (

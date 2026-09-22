@@ -1,11 +1,9 @@
-import React, { useEffect, useRef } from 'react';
-import { createPortal } from 'react-dom';
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import React from 'react';
 import type { PracticePreferences } from '../../../store/usePracticePreferencesStore';
 import { cn } from '../../../utils/cn';
-import { ScreenHeader, SettingsDropdownPicker } from '../../../lib/widgets';
+import { DetailShell, ScreenHeader, SettingsDropdownPicker } from '../../../lib/widgets';
 import { SettingsToggleRow } from '../settings/PracticeSettingControls';
-import { useModalFocus } from '../../../hooks/useModalFocus';
+import { ScriptPreviewCard } from '../settings/ScriptPreviewCard';
 
 export interface PracticeSettingsScreenProps extends React.HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;
@@ -24,6 +22,7 @@ export function normalizePronunciationRate(rate: number): number {
 
 type BooleanPreferenceKey =
   | 'showPinyin'
+  | 'hideExamplePinyin'
   | 'showTranslation'
   | 'autoPlayAudio'
   | 'speakDefinition'
@@ -67,48 +66,6 @@ function SettingsPageSection({
   );
 }
 
-function ScriptPreviewCard({
-  selected,
-  heading,
-  sample,
-  onClick,
-  label,
-}: {
-  selected: boolean;
-  heading: string;
-  sample: string;
-  onClick: () => void;
-  label: string;
-}) {
-  return (
-    <button
-      type="button"
-      role="radio"
-      aria-checked={selected}
-      aria-label={label}
-      onClick={onClick}
-      className={cn(
-        'flex min-h-[88px] flex-1 flex-col items-center justify-center gap-1 rounded-feature border-2 px-4 py-3 shadow-[0_var(--depth-md)_0_var(--color-ui-border)] outline-none transition-shadow focus-ring',
-        selected
-          ? 'border-brand-primary bg-brand-primary-soft shadow-[0_var(--depth-md)_0_var(--color-brand-primary-edge)]'
-          : 'border-ui-border bg-ui-surface hover:bg-ui-hover',
-      )}
-    >
-      <span className={cn('block text-xs font-extrabold', selected ? 'text-brand-primary-edge' : 'text-ui-muted')}>
-        {heading}
-      </span>
-      <span
-        className={cn(
-          'font-chinese text-2xl font-black leading-none sm:text-[28px]',
-          selected ? 'text-brand-primary-edge' : 'text-ui-ink',
-        )}
-      >
-        {sample}
-      </span>
-    </button>
-  );
-}
-
 export function PracticeSettingsScreen({
   isOpen,
   onClose,
@@ -118,15 +75,7 @@ export function PracticeSettingsScreen({
   onCharacterPreferenceChange,
   ...props
 }: PracticeSettingsScreenProps) {
-  const reduceMotion = useReducedMotion();
-  const panelRef = useRef<HTMLDivElement>(null);
-  const { onKeyDown } = useModalFocus({ containerRef: panelRef, isActive: isOpen, onEscape: onClose });
-
-  useEffect(() => {
-    if (isOpen) panelRef.current?.focus();
-  }, [isOpen]);
-
-  if (typeof document === 'undefined') return null;
+  if (!isOpen) return null;
 
   const toggle = (key: BooleanPreferenceKey) => () => {
     const patch: Partial<PracticePreferences> = {};
@@ -134,37 +83,90 @@ export function PracticeSettingsScreen({
     onPreferencesChange(patch);
   };
 
-  return createPortal(
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          ref={panelRef}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Practice settings"
-          tabIndex={-1}
-          onKeyDown={onKeyDown}
-          initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 14 }}
-          transition={reduceMotion ? { duration: 0 } : { duration: 0.2, ease: 'easeOut' }}
-          className="workspace-window pointer-events-auto fixed inset-0 z-dialog flex flex-col bg-ui-practice-canvas outline-none"
-        >
-          {/* Scrollable content column — header is sticky inside so content slides under the gradient */}
-          <main className="relative z-10 min-h-0 flex-1 overflow-y-auto overscroll-contain">
-            <ScreenHeader
-              variant="panel"
-              tone="practice"
-              onClose={onClose}
-              title="Study settings"
-              maxWidth="2xl"
-            />
-            <div className="mx-auto flex w-full max-w-2xl flex-col gap-7 px-5 pb-16 pt-2 sm:px-8" {...props}>
+  const fontSample = characterPreference === 'simplified' ? '听说读写' : '聽說讀寫';
+
+  return (
+    <DetailShell.Root
+      ariaLabel="Practice settings"
+      tone="practice"
+      position="fixed"
+      workspaceOffset={true}
+      zIndexClassName="z-dialog"
+      portalTarget={typeof document !== 'undefined' ? document.body : null}
+      onEscape={onClose}
+    >
+      <DetailShell.Scroller className="overscroll-contain">
+        <ScreenHeader
+          variant="panel"
+          tone="practice"
+          onClose={onClose}
+          title="Study settings"
+          maxWidth="2xl"
+        />
+        <div className="mx-auto flex w-full max-w-2xl flex-col gap-7 px-5 pb-16 pt-2 sm:px-8" {...props}>
+              <SettingsPageSection title="Character script">
+                <div
+                  role="radiogroup"
+                  aria-label="Character script format"
+                  className="mt-3 flex flex-col gap-3 sm:flex-row"
+                >
+                  <ScriptPreviewCard
+                    selected={characterPreference === 'traditional'}
+                    heading="Traditional"
+                    sample="聽說讀寫"
+                    label="Traditional characters"
+                    onClick={() => onCharacterPreferenceChange('traditional')}
+                  />
+                  <ScriptPreviewCard
+                    selected={characterPreference === 'simplified'}
+                    heading="Simplified"
+                    sample="听说读写"
+                    label="Simplified characters"
+                    onClick={() => onCharacterPreferenceChange('simplified')}
+                  />
+                </div>
+              </SettingsPageSection>
+
+              <SettingsPageSection title="Character font">
+                <div
+                  role="radiogroup"
+                  aria-label="Character font style"
+                  className="mt-3 flex flex-col gap-3 sm:flex-row"
+                >
+                  <ScriptPreviewCard
+                    selected={preferences.characterFont === 'huninn'}
+                    heading="Rounded"
+                    sample={fontSample}
+                    label="Rounded characters"
+                    sampleClassName={characterPreference === 'simplified' ? 'font-chinese-rounded-sc font-normal' : 'font-chinese-huninn font-normal'}
+                    onClick={() => onPreferencesChange({ characterFont: 'huninn' })}
+                  />
+                  <ScriptPreviewCard
+                    selected={preferences.characterFont === 'kai'}
+                    heading="Kai"
+                    sample={fontSample}
+                    label="Calligraphy kai characters"
+                    sampleClassName={
+                      characterPreference === 'simplified'
+                        ? 'font-kaiti-sc'
+                        : 'font-kaiti-tc'
+                    }
+                    onClick={() => onPreferencesChange({ characterFont: 'kai' })}
+                  />
+                </div>
+              </SettingsPageSection>
+
               <SettingsPageSection title="Card display">
                 <SettingsToggleRow
                   checked={preferences.showPinyin}
                   onClick={toggle('showPinyin')}
                   label="Pinyin"
+                  className="border-b-0"
+                />
+                <SettingsToggleRow
+                  checked={preferences.hideExamplePinyin}
+                  onClick={toggle('hideExamplePinyin')}
+                  label="Hide pinyin on example sentences"
                   className="border-b-0"
                 />
                 <SettingsToggleRow
@@ -252,34 +254,8 @@ export function PracticeSettingsScreen({
                   onChange={(value) => onPreferencesChange({ repeatMistakes: value as PracticePreferences['repeatMistakes'] })}
                 />
               </SettingsPageSection>
-
-              <SettingsPageSection title="Character script">
-                <div
-                  role="radiogroup"
-                  aria-label="Character script format"
-                  className="mt-3 flex flex-col gap-3 [--font-chinese:var(--font-chinese-sans)] sm:flex-row"
-                >
-                  <ScriptPreviewCard
-                    selected={characterPreference === 'traditional'}
-                    heading="Traditional"
-                    sample="聽說讀寫"
-                    label="Traditional characters"
-                    onClick={() => onCharacterPreferenceChange('traditional')}
-                  />
-                  <ScriptPreviewCard
-                    selected={characterPreference === 'simplified'}
-                    heading="Simplified"
-                    sample="听说读写"
-                    label="Simplified characters"
-                    onClick={() => onCharacterPreferenceChange('simplified')}
-                  />
-                </div>
-              </SettingsPageSection>
             </div>
-          </main>
-        </motion.div>
-      )}
-    </AnimatePresence>,
-    document.body,
+      </DetailShell.Scroller>
+    </DetailShell.Root>
   );
 }

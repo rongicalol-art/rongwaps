@@ -1,19 +1,15 @@
 import { memo } from 'react';
 import { SAMPLE_BOOKS } from '../../../data/books';
-import { AppIcon, PosBadge } from '../../../lib/widgets';
+import { PosBadge } from '../../../lib/widgets';
+import { FavoriteButton } from '../../../features/library';
 import type { DictionaryListEntry } from '../../../types/models';
 import { cn } from '../../../utils/cn';
 
 interface DictionaryCardProps {
   entry: DictionaryListEntry;
-  isFavorite: boolean;
-  /**
-   * Word-based, not pre-bound: the list passes one stable function for every
-   * row and the card applies it to its own entry, so `memo` below can bail out
-   * while the search query changes (see DictionaryResults).
-   */
-  onToggleFavorite: (word: string) => void;
   onOpen: (word: string) => void;
+  isFavorite?: boolean;
+  onToggleFavorite?: (word: string) => void;
 }
 
 function formatDefinitions(definitions: DictionaryListEntry['definitions']): string {
@@ -24,8 +20,6 @@ function formatDefinitions(definitions: DictionaryListEntry['definitions']): str
 
 export const DictionaryCard = memo(function DictionaryCard({
   entry,
-  isFavorite,
-  onToggleFavorite,
   onOpen,
 }: DictionaryCardProps) {
   const book = entry.bookId ? SAMPLE_BOOKS.find((item) => item.id === entry.bookId) : null;
@@ -39,7 +33,7 @@ export const DictionaryCard = memo(function DictionaryCard({
         type="button"
         onClick={() => onOpen(entry.traditional)}
         aria-label={`Open ${entry.traditional}: ${formatDefinitions(entry.definitions)}`}
-        className="flex min-w-0 flex-1 items-center gap-3 text-left outline-none focus-ring rounded-sm sm:gap-4"
+        className="flex min-w-0 flex-1 items-center gap-3 text-left outline-none focus-ring rounded-sm sm:gap-4 cursor-pointer"
       >
         <span className="shrink-0 font-chinese text-2xl font-bold leading-none text-ui-ink transition-colors group-hover:text-brand-primary sm:text-3xl">
           {entry.traditional}
@@ -63,25 +57,15 @@ export const DictionaryCard = memo(function DictionaryCard({
         </span>
       </button>
 
-      <button
-        type="button"
-        onClick={(e) => {
-          e.stopPropagation();
-          onToggleFavorite(entry.traditional);
-        }}
-        aria-label={isFavorite ? `Remove ${entry.traditional} from saved words` : `Save ${entry.traditional}`}
-        aria-pressed={isFavorite}
-        className={cn(
-          'shrink-0 p-2 rounded-control text-ui-muted outline-none transition-colors hover:text-brand-secondary focus-ring',
-          isFavorite && 'text-brand-secondary',
-        )}
-      >
-        <AppIcon
-          name={isFavorite ? 'bookmarkFilled' : 'bookmark'}
-          size={22}
-          className={isFavorite ? 'text-brand-secondary' : undefined}
-        />
-      </button>
+      <FavoriteButton
+        word={entry.traditional}
+        traditional={entry.traditional}
+        simplified={entry.simplified}
+        pinyin={entry.pinyin_accented || undefined}
+        definitions={entry.definitions}
+        size="lg"
+        variant="ghost"
+      />
     </div>
   );
 });
