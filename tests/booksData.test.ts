@@ -15,21 +15,21 @@ test('derived book themes match the legacy catalog values', () => {
 
   assert.deepEqual(b1, {
     id: 1, label: 'Book 1', title: 'Modern Chinese 1', subtitle: '時代華語 1', level: 'A1', progress: 0, status: 'active',
-    bg: 'bg-[#DDF4FF]', accent: 'text-brand-primary', accentBg: 'bg-brand-primary', accentBorder: 'border-brand-primary',
-    accentBgLight: 'bg-[#DDF4FF]', ring: 'ring-brand-primary/40', lightBg: 'bg-[#DDF4FF]',
-    gradientFrom: '#DDF4FF', gradientTo: '#ffffff', accentHex: '#1CB0F6', edgeHex: '#1899D6',
+    bg: 'bg-[#E0F2FE]', accent: 'text-brand-primary', accentBg: 'bg-brand-primary', accentBorder: 'border-brand-primary',
+    accentBgLight: 'bg-[#E0F2FE]', ring: 'ring-brand-primary/40', lightBg: 'bg-[#E0F2FE]',
+    gradientFrom: '#E0F2FE', gradientTo: '#ffffff', accentHex: '#0284C7', edgeHex: '#0369A1',
     buttonEdge: 'border-brand-primary-edge', patternOpacity: 0.1,
     neutralBg: '#F4F9FC', neutralBorder: '#E0EAEF', neutralText: '#464D54', neutralMuted: '#A6B2BD',
     theme: {
-      primary: '#1CB0F6', primaryEdge: '#1899D6', primaryDeep: '#117CAD', primarySoft: '#F1F8FB',
-      primarySoftEdge: '#BFE9FF', primaryTrack: '#C7D6E1', practiceCanvas: '#E9EEF1',
+      primary: '#0284C7', primaryEdge: '#0369A1', primaryDeep: '#075985', primarySoft: '#F0F9FF',
+      primarySoftEdge: '#BAE6FD', primaryTrack: '#C7D9E5', practiceCanvas: '#E9EEF1',
     },
   });
 
-  assert.equal(b2.bg, 'bg-[#FFEFDC]');
+  assert.equal(b2.bg, 'bg-[#FFEDD5]');
   assert.equal(b2.accent, 'text-brand-secondary');
-  assert.equal(b2.buttonEdge, 'border-[#E58700]');
-  assert.equal(b2.accentHex, '#FF9600');
+  assert.equal(b2.buttonEdge, 'border-[#C2410C]');
+  assert.equal(b2.accentHex, '#EA580C');
 
   assert.equal(b3.accent, 'text-[#A0522D]');
   assert.equal(b3.accentBg, 'bg-[#A0522D]');

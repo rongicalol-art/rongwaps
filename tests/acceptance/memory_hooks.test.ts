@@ -33,67 +33,98 @@ interface HookManifest {
 }
 
 const HOOKS_DIR = resolve(PROJECT_ROOT, 'public/data/memory-hooks');
-const PACK = JSON.parse(readFileSync(resolve(HOOKS_DIR, 'book-1.json'), 'utf8')) as HookPack;
 const MANIFEST = JSON.parse(readFileSync(resolve(HOOKS_DIR, 'manifest.json'), 'utf8')) as HookManifest;
 const DECOMPOSITION_TREES = JSON.parse(
   readFileSync(resolve(PROJECT_ROOT, 'tests/fixtures/memory-hook-decomposition-trees.json'), 'utf8'),
 ) as { runtimeVersion: string; trees: Record<string, RuntimeTreeNode> };
 
-const charRecords = PACK.items
-  .filter((item) => item.content_type === 'character')
-  .map((item) => ({ character: item.character, hook: item.mnemonic, acceptance: 'clean' }));
-const wordRecords = PACK.items
-  .filter((item) => item.content_type === 'word')
-  .map((item) => ({ word: item.character, hook: item.mnemonic }));
 const lookup: RuntimeLookup = (glyph) => DECOMPOSITION_TREES.trees[glyph] ?? null;
 
-test('Memory Hook Acceptance: pack manifest matches book-1.json', () => {
-  const compact = `${JSON.stringify(PACK)}\n`;
-  const hash = createHash('sha256').update(compact).digest('hex');
-  const book = MANIFEST.books[0];
+function loadPack(book: HookManifest['books'][number]): HookPack {
+  const packPath = resolve(PROJECT_ROOT, 'public/data', book.path.replace(/^\/data\//, ''));
+  return JSON.parse(readFileSync(packPath, 'utf8')) as HookPack;
+}
 
-  assert.equal(hash, MANIFEST.version, 'manifest version must be the pack content hash');
-  assert.equal(book.sha256, MANIFEST.version);
-  assert.equal(book.path, '/data/memory-hooks/book-1.json');
-  assert.equal(book.count, PACK.count);
-  assert.equal(book.count, PACK.items.length);
-  assert.equal(book.bytes, Buffer.byteLength(compact));
-  assert.equal(MANIFEST.totalCount, PACK.count);
-  assert.equal(PACK.schemaVersion, 1);
-  assert.equal(PACK.bookId, 1);
+test('Memory Hook Acceptance: every manifest pack matches its hash, count, and schema', () => {
+  assert.ok(MANIFEST.books.length > 0, 'manifest must list at least one book');
+  assert.equal(
+    MANIFEST.totalCount,
+    MANIFEST.books.reduce((total, book) => total + book.count, 0),
+    'totalCount must equal the sum of book counts',
+  );
+  for (const book of MANIFEST.books) {
+    const pack = loadPack(book);
+    const compact = `${JSON.stringify(pack)}\n`;
+    assert.equal(
+      createHash('sha256').update(compact).digest('hex'),
+      book.sha256,
+      `book ${book.bookId} pack hash mismatch`,
+    );
+    assert.equal(book.bytes, Buffer.byteLength(compact), `book ${book.bookId} byte size mismatch`);
+    assert.equal(pack.schemaVersion, 1);
+    assert.equal(pack.bookId, book.bookId);
+    assert.equal(pack.count, pack.items.length);
+    assert.equal(pack.count, book.count);
+  }
 });
 
 test('Memory Hook Acceptance: every hook renders at least one emphasis run', () => {
-  const offenders = PACK.items
-    .filter((item) => {
-      if (item.mnemonic.includes('**')) return false;
-      return !tokenizeHookText(item.mnemonic)
+  const offenders: string[] = [];
+  for (const book of MANIFEST.books) {
+    for (const item of loadPack(book).items) {
+      if (item.mnemonic.includes('**')) continue;
+      const emphasized = tokenizeHookText(item.mnemonic)
         .some((segment) => segment.kind === 'token' || segment.kind === 'gloss');
-    })
-    .map((item) => item.id);
-
+      if (!emphasized) offenders.push(`${book.bookId}:${item.id}`);
+    }
+  }
   assert.deepEqual(offenders, [], `hooks that render no bold: ${offenders.join(', ')}`);
 });
 
 test('Memory Hook Acceptance: word hooks name every character in word order', () => {
-  const mismatches = findWordOrderMismatches(wordRecords);
-  assert.deepEqual(
-    mismatches.map((finding) => `${finding.character} (${finding.actual.join('')} vs ${finding.expected.join('')})`),
-    [],
-  );
+  const offenders: string[] = [];
+  for (const book of MANIFEST.books) {
+    const wordRecords = loadPack(book).items
+      .filter((item) => item.content_type === 'word')
+      .map((item) => ({ word: item.character, hook: item.mnemonic }));
+    for (const mismatch of findWordOrderMismatches(wordRecords)) {
+      offenders.push(`${book.bookId}:${mismatch.character} (${mismatch.actual.join('')} vs ${mismatch.expected.join('')})`);
+    }
+  }
+  assert.deepEqual(offenders, []);
 });
 
 test('Memory Hook Acceptance: character hooks mention parts in breakdown order', () => {
-  const mismatches = findOrderMismatches(charRecords, lookup);
-  assert.deepEqual(
-    mismatches.map((finding) => `${finding.character} (${finding.actual.join('')} vs ${finding.expected.join('')})`),
-    [],
-  );
+  const offenders: string[] = [];
+  for (const book of MANIFEST.books) {
+    const charRecords = loadPack(book).items
+      .filter((item) => item.content_type === 'character')
+      .map((item) => ({ character: item.character, hook: item.mnemonic, acceptance: 'clean' }));
+    for (const mismatch of findOrderMismatches(charRecords, lookup)) {
+      offenders.push(`${book.bookId}:${mismatch.character} (${mismatch.actual.join('')} vs ${mismatch.expected.join('')})`);
+    }
+  }
+  assert.deepEqual(offenders, []);
 });
 
 test('Memory Hook Acceptance: retired phrasings stay gone', () => {
-  for (const item of PACK.items) {
-    assert.doesNotMatch(item.mnemonic, /calls with/i, `${item.id} uses the retired "calls with" phrasing`);
-    assert.doesNotMatch(item.mnemonic, /hand\s*[—-]\s*also/i, `${item.id} keeps the retired bridge gloss`);
+  for (const book of MANIFEST.books) {
+    for (const item of loadPack(book).items) {
+      assert.doesNotMatch(item.mnemonic, /calls with/i, `${item.id} uses the retired "calls with" phrasing`);
+      assert.doesNotMatch(item.mnemonic, /hand\s*[—-]\s*also/i, `${item.id} keeps the retired bridge gloss`);
+      // Meaning-only policy applies to Book 1; Book 3 migrates through the same
+      // pipeline next and still carries the pre-2026-09-22 sound-cue hooks.
+      if (book.bookId !== 1) continue;
+      assert.doesNotMatch(
+        item.mnemonic,
+        /\b(?:lends? the sound|sound component|sound cue|sound shifts?)\b/i,
+        `${item.id} keeps sound-cue language; sound belongs in the Sound block`,
+      );
+      assert.doesNotMatch(
+        item.mnemonic,
+        /\b(?:variant|archaic|ancient)\b|old\s+(?:form|version)|the\s+name\s+of/i,
+        `${item.id} uses variant/archaic framing`,
+      );
+    }
   }
 });

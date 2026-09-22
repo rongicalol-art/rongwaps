@@ -30,8 +30,8 @@ test('starred and custom cards canonical folder colors are defined', () => {
   assert.equal(STARRED_FOLDER_COLOR.back, '#E0A900');
 
   assert.equal(CUSTOM_CARDS_FOLDER_COLOR.id, 'blue');
-  assert.equal(CUSTOM_CARDS_FOLDER_COLOR.front, '#1CB0F6');
-  assert.equal(CUSTOM_CARDS_FOLDER_COLOR.back, '#1899D6');
+  assert.equal(CUSTOM_CARDS_FOLDER_COLOR.front, '#0284C7');
+  assert.equal(CUSTOM_CARDS_FOLDER_COLOR.back, '#0369A1');
 });
 
 test('getFolderColorOption finds color by id or hex case-insensitively', () => {

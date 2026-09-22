@@ -302,3 +302,33 @@ test('getWordChunks preserves compound words with syllable-dividing apostrophes 
   assert.equal(shierChunks[1].text, '十二');
 });
 
+
+test('corner-quote brackets stay punctuation so alignment never drifts (B1L15-R03)', () => {
+  // Regression: 「」 were treated as spoken characters, consuming pinyin
+  // syllables and shifting every following character's alignment (屬什|麼,
+  // 到了元|宵節, 「十|二生肖」).
+  const text =
+    '華人聊天的時候，會問別人「你屬什麼？」。每年到了元宵節，代表那年的動物燈籠，也會最受歡迎。';
+  const pinyin =
+    'Huárén liáotiān de shíhou, huì wèn biérén "nǐ shǔ shénme?". Měi nián dào le Yuánxiāojié, dàibiǎo nà nián de dòngwù dēnglóng, yě huì zuì shòu huānyíng.';
+  const words = getWordChunks(text, pinyin).filter((chunk) => !chunk.isPunctuation);
+  assert.deepEqual(
+    words.map((chunk) => chunk.text),
+    [
+      '華人', '聊天', '的', '時候', '會', '問', '別人', '你', '屬', '什麼',
+      '每', '年', '到', '了', '元宵節', '代表', '那', '年', '的', '動物',
+      '燈籠', '也', '會', '最', '受', '歡迎',
+    ],
+  );
+});
+
+test('quote brackets beside a quoted name keep the next word whole (B1L15-R03)', () => {
+  const words = getWordChunks(
+    '而且叫這十二種動物「十二生肖」。',
+    'érqiě jiào zhè shí\'èr zhǒng dòngwù "shí\'èr shēngxiào".',
+  ).filter((chunk) => !chunk.isPunctuation);
+  assert.deepEqual(
+    words.map((chunk) => chunk.text),
+    ['而且', '叫', '這', '十二', '種', '動物', '十二', '生肖'],
+  );
+});

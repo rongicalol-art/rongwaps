@@ -181,7 +181,7 @@ test('A clearly heaviest column receives proportionally more share without starv
 
 test('Near-equal columns share balanced proportional tracks', () => {
   const layout = getPatternSectionLayout({
-    patternColumns: ['Time', 'Not word', 'Action'],
+    patternColumns: ['Time', 'Word', 'Verb'],
     patternRows: [
       row({ subject: group(['她']), grammar: group(['是']), complement: group(['嗎']) }),
       row({ subject: group(['你']), grammar: group(['是']), complement: group(['嗎']) }),
@@ -198,8 +198,8 @@ test('Near-equal columns share balanced proportional tracks', () => {
 
 test('A short one-character ending stays bounded next to a heavy column', () => {
   const layout = getPatternSectionLayout({
-    patternColumns: ['Who or what', 'Rest of the sentence', '嗎'],
-    patternColumnDetails: ['S', 'keep the order', 'question ending'],
+    patternColumns: ['Who / What', 'Sentence body', '嗎'],
+    patternColumnDetails: ['S', 'keep order', 'ending'],
     patternRows: [
       {
         id: 'r1',
@@ -232,8 +232,8 @@ test('A short one-character ending stays bounded next to a heavy column', () => 
 
 test('Proportional tracks maintain bounded shares summing to 1', () => {
   const layout = getPatternSectionLayout({
-    patternColumns: ['Who or what', 'Rest of the sentence', '嗎'],
-    patternColumnDetails: ['S', 'keep the order', 'question ending'],
+    patternColumns: ['Who / What', 'Sentence body', '嗎'],
+    patternColumnDetails: ['S', 'keep order', 'ending'],
     patternRows: [
       {
         id: 'r1',
@@ -295,11 +295,11 @@ test('Locally empty cells preserve the shared column position', () => {
 
 test('Two-column layouts distribute bounded proportional shares', () => {
   const layout = getPatternSectionLayout({
-    patternColumns: ['Adjustment', 'Action'],
+    patternColumns: ['Amount', 'Action'],
     patternRows: [row({
       columns: [
         [token({ id: 'more', traditional: '多', pinyin: 'duō' })],
-        [token({ id: 'drink', traditional: '喝熱茶', pinyin: 'hē rè chá' })],
+        [token({ id: 'drink', traditional: '喝一杯熱茶', pinyin: 'hē yì bēi rè chá' })],
       ],
       complement: [],
     })],
@@ -371,7 +371,7 @@ test('Lesson 3 Grammar 4 defines 3 sequential subsections for continuous scrolli
   assert.equal(part3.sectionNumber, 3);
   assert.ok(part3.title);
   assert.ok(part3.explanation);
-  assert.deepEqual(part3.patternColumns, ['Adjective', '的', '(Noun Dropped)']);
+  assert.deepEqual(part3.patternColumns, ['Adjective', '的', 'No noun']);
   assert.equal(part3.patternRows?.[0].english, 'big cakes');
   assert.ok(part3.exampleIds && part3.exampleIds.length > 0);
 });
@@ -406,4 +406,5 @@ test('Pattern layout resolves correctly for all subsections in Lesson 3 Grammar 
     assert.equal(layout.sourceColumns.length, (subsection.patternColumns ?? []).length);
   }
 });
+
 

@@ -199,6 +199,35 @@ test('playRange resolves when stopped mid-range', async () => {
   await playback; // must settle, not hang
 });
 
+test('pause preserves currentTime while stop resets it to 0', async () => {
+  const service = new AudioService();
+  const audio = FakeAudio.instances.at(-1)!;
+  audio.currentTime = 14.2;
+
+  service.pause();
+  assert.equal(audio.currentTime, 14.2, 'pause() must preserve currentTime');
+  assert.equal(service.getCurrentTime(), 14.2);
+
+  service.stop();
+  assert.equal(audio.currentTime, 0, 'stop() must reset currentTime to 0');
+  assert.equal(service.getCurrentTime(), 0);
+});
+
+test('playRange resolves when paused mid-range without resetting currentTime', async () => {
+  const service = new AudioService();
+  const audio = FakeAudio.instances.at(-1)!;
+  const playback = service.playRange('first.mp3', 0, 10);
+
+  const started = Date.now();
+  while (!audio.src.startsWith('blob:') && Date.now() - started < 2000) {
+    await new Promise((resolve) => setTimeout(resolve, 10));
+  }
+  audio.currentTime = 4.8;
+  service.pause();
+  await playback; // must settle, not hang
+  assert.equal(audio.currentTime, 4.8, 'pause() must keep position');
+});
+
 test('setPlaybackRate enforces pitch preservation and updates rate', async () => {
   const service = new AudioService();
   const audio = FakeAudio.instances.at(-1)!;

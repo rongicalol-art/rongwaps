@@ -7,6 +7,7 @@ import {
   resolveMnemonicFromMap,
 } from '../src/services/memoryHookPackService';
 import { BUNDLED_EXTRA_GLYPHS } from '../scripts/memory-hooks/checkHookQuality';
+import { BANNED_HOOK_WORDS, findSoundLanguage } from '../scripts/memory-hooks/reviewRubric';
 
 interface PackItem {
   id: string;
@@ -69,7 +70,7 @@ test('resolveMnemonicFromMap supports direct matches and resilient single-charac
   assert.equal(resolveMnemonicFromMap(map, 'unknown'), null);
 });
 
-test('production book-1 memory hook pack is device-safe, explicitly names sound components, and is semantically verified', async () => {
+test('production book-1 memory hook pack is device-safe and meaning-only', async () => {
   const { readFileSync } = await import('node:fs');
   const { resolve } = await import('node:path');
   const packPath = resolve(process.cwd(), 'public/data/memory-hooks/book-1.json');
@@ -82,10 +83,8 @@ test('production book-1 memory hook pack is device-safe, explicitly names sound 
   const charItems = raw.items.filter((i) => i.content_type === 'character');
   assert.equal(charItems.length, 656);
 
-  const vaguePhoneticPattern = /\b(sounds like|just sounds like|even sounds like|echoes the sound of|echoes|puffs the sound|sounds like 'fee'|is only a sound cue|lending its cool sound)\b/i;
-
   for (const item of charItems) {
-    assert.ok(item.mnemonic.length >= 15, `${item.character} hook is too short`);
+    assert.ok(item.mnemonic.length >= 25, `${item.character} hook is too short: ${item.mnemonic}`);
     // Non-BMP component tokens are allowed only when the glyph is bundled in
     // the RW-Extras webfont (public/fonts/rw-extras*.woff2); anything else
     // risks tofu on a device without CJK Ext-B coverage.
@@ -96,44 +95,16 @@ test('production book-1 memory hook pack is device-safe, explicitly names sound 
       `${item.character} contains non-BMP characters outside the bundled extras font: ${unbundledNonBmp.join(' ')}`,
     );
 
-    // Zero vague sound expressions allowed
-    assert.ok(
-      !vaguePhoneticPattern.test(item.mnemonic),
-      `${item.character} must not use vague phonetic phrasing: ${item.mnemonic}`
-    );
-  }
-
-  // Verify explicit sound cue mentions with pinyin for key phono-semantic characters
-  const soundCuePattern = /\b(sound component|sound cue|lends the sound|sound shifts)\b/i;
-  const soundComponentChecks = [
-    { char: '媽', from: 'mǎ', to: 'mā' },
-    { char: '爸', from: 'bā', to: 'bà' },
-    { char: '請', from: 'qīng', to: 'qǐng' },
-    { char: '客', from: 'gè', to: 'kè' },
-    { char: '喝', from: 'hé', to: 'hē' },
-    { char: '城', from: 'chéng' },
-    { char: '湖', from: 'hú' },
-    { char: '花', from: 'huà', to: 'huā' },
-    { char: '問', from: 'mén', to: 'wèn' },
-  ];
-  for (const { char, from, to } of soundComponentChecks) {
-    const entry = charItems.find((i) => i.character === char);
-    assert.ok(entry, `Character ${char} must exist in pack`);
-    assert.match(
-      entry.mnemonic,
-      soundCuePattern,
-      `${char} hook must explicitly name its sound cue: ${entry.mnemonic}`,
+    // Meaning-only era: no sound language, no variant/etymology framing.
+    assert.equal(
+      findSoundLanguage(item.mnemonic).length,
+      0,
+      `${item.character} must not contain sound-cue language: ${item.mnemonic}`,
     );
     assert.ok(
-      entry.mnemonic.includes(from),
-      `${char} hook must include the source pinyin '${from}': ${entry.mnemonic}`,
+      !BANNED_HOOK_WORDS.test(item.mnemonic),
+      `${item.character} must not use variant/archaic framing: ${item.mnemonic}`,
     );
-    if (to) {
-      assert.ok(
-        entry.mnemonic.includes(to),
-        `${char} hook must include the target pinyin '${to}': ${entry.mnemonic}`,
-      );
-    }
   }
 
   const ni = charItems.find((i) => i.character === '尼');

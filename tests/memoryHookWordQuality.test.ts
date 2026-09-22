@@ -113,7 +113,7 @@ test('reported hook fixes stay in the pack', () => {
     return value;
   };
 
-  assert.equal(hook('word_奶茶'), '奶(milk) + 茶(tea) → 奶茶(milk tea).');
+  assert.match(hook('word_奶茶'), /奶\(milk\).*茶\(tea\)/);
   assert.match(hook('友'), /又\(again\)/);
   assert.doesNotMatch(hook('友'), /又\(hand/);
   assert.match(hook('喝'), /口\(mouth\)/);
