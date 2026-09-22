@@ -187,19 +187,6 @@ function setLru<T>(map: Map<string, T>, key: string, value: T): T {
   return value;
 }
 
-export function cacheBuffer(
-  buffers: Map<string, AudioBuffer>,
-  fileName: string,
-  audioBuffer: AudioBuffer,
-): void {
-  setLru(buffers, fileName, audioBuffer);
-  while (buffers.size > MAX_AUDIO_CACHE) {
-    const oldest = buffers.keys().next().value;
-    if (oldest === undefined) break;
-    buffers.delete(oldest);
-  }
-}
-
 export function cacheObjectUrl(
   objectUrls: Map<string, string>,
   fileName: string,

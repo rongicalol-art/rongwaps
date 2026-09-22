@@ -31,12 +31,3 @@ export function cleanVocabText(text: string): string {
   return cleaned.trim();
 }
 
-/**
- * Split a vocabulary entry into individual words if it contains slashes.
- * Returns array of cleaned words.
- * e.g. "你好/您好" → ["你好", "您好"]
- */
-export function splitVocabVariants(text: string): string[] {
-  if (!text) return [];
-  return text.split('/').map(v => v.trim()).filter(v => v.length > 0);
-}

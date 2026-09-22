@@ -3,27 +3,6 @@ export interface PlayRangeOptions {
   onTime?: (time: number) => void;
 }
 
-export function playBufferSource(
-  audioContext: AudioContext,
-  buffer: AudioBuffer,
-  playbackRate: number,
-  onEnd: () => void,
-): AudioBufferSourceNode {
-  if (audioContext.state === 'suspended') {
-    audioContext.resume().catch(() => {});
-  }
-  const source = audioContext.createBufferSource();
-  source.buffer = buffer;
-  source.playbackRate.value = playbackRate;
-  source.connect(audioContext.destination);
-  source.onended = () => {
-    try { source.disconnect(); } catch { /* ignore */ }
-    onEnd();
-  };
-  source.start(0);
-  return source;
-}
-
 export function playHtmlAudio(
   audio: HTMLAudioElement,
   src: string,

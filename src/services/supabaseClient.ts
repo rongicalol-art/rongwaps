@@ -52,6 +52,3 @@ export const supabase: SupabaseClient<Database> = new Proxy({} as SupabaseClient
   },
 });
 
-export function getSupabase(): SupabaseClient<Database> {
-  return getClient();
-}

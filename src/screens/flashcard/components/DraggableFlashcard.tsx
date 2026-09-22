@@ -26,23 +26,6 @@ export interface DraggableFlashcardProps {
   isExamplesLoading?: boolean;
 }
 
-// The card keeps one fixed size for both faces (matching the reference app):
-// the back is a scroll container, so examples never change the card's layout.
-export function getCardHeight() {
-  const viewportHeight = typeof window === 'undefined' ? 844 : window.innerHeight;
-  const viewportWidth = typeof window === 'undefined' ? 390 : window.innerWidth;
-  if (viewportWidth >= 1024) {
-    return Math.round(Math.min(560, Math.max(480, viewportHeight * 0.58)));
-  }
-  if (viewportWidth >= 768) {
-    return Math.round(Math.min(520, Math.max(450, viewportHeight * 0.55)));
-  }
-  if (viewportWidth >= 640) {
-    return Math.round(Math.min(480, Math.max(420, viewportHeight * 0.53)));
-  }
-  return Math.round(Math.min(420, Math.max(360, viewportHeight * 0.48)));
-}
-
 // direction: 1 = exit left, -1 = exit right, 2 = exit up, -2 = exit down
 const variants = {
   enter: (direction: number) => {
