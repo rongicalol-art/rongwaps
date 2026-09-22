@@ -8,7 +8,7 @@ Auto-injected each session. Core rules terse; read linked docs only when task ne
 - Screens = small containers: `[hooks/state] -> [derived data] -> [UI]`. Feature folders with `components/`, `hooks/`, `utils/`, public `index.ts` as complexity grows.
 - `App.tsx` = routing, global shell, light state only. No complex cross-screen state there.
 - DB/API types in `src/types/database.ts`; domain/UI models in `src/types/models.ts` (domain splits like `grammar.ts` where fit).
-- Size targets: screens/hooks under 250 lines; widgets/helpers under 150. Extract when file hard to reason about.
+- Size guidance: screens/hooks aim for ~250 lines; widgets/helpers ~150. Treat overage as a prompt to extract behavior into hooks/pure helpers, not a hard cap — enforced budgets live in `tests/acceptance/code_quality.test.ts` (App.tsx < 250, audioService.ts < 400, models.ts < 300).
 
 ## State, data, security
 
