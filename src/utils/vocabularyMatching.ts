@@ -11,6 +11,7 @@
  */
 import type { ReadingRecord } from '../types/models';
 import { getWordChunks } from './rubyPinyin';
+import { expandSlashAndOptionalVariants } from './pinyinNormalize';
 
 export interface VocabularyTermSource {
   traditional?: string | null;
@@ -21,20 +22,15 @@ export type ReadingScript = 'traditional' | 'simplified';
 
 /** Every spelling a pack row may appear as: slash alternates, optional parts, both scripts. */
 export function vocabularyTermVariants(row: VocabularyTermSource): string[] {
-  const raw = row.traditional ?? '';
-  const withoutOptionals = raw.replace(/[（(][^）)]*[）)]/g, '');
-  const parts = [raw, withoutOptionals, ...raw.split('/'), ...withoutOptionals.split('/')];
   const variants = new Set<string>();
-  const add = (candidate: string) => {
-    const cleaned = candidate.replace(/[（(）)]/g, '').trim();
-    // The raw slash form is not a spelling any text can use; the split parts are.
-    if (cleaned && !cleaned.includes('/')) variants.add(cleaned);
+  const add = (source: string | null | undefined) => {
+    if (!source) return;
+    for (const variant of expandSlashAndOptionalVariants(source)) {
+      variants.add(variant);
+    }
   };
-  for (const part of parts) add(part);
-  if (row.simplified) {
-    add(row.simplified);
-    for (const part of row.simplified.split('/')) add(part);
-  }
+  add(row.traditional);
+  add(row.simplified);
   return [...variants];
 }
 

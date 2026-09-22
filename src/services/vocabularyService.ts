@@ -3,6 +3,7 @@ import { Flashcard, FLASHCARDS_DATA } from '../data/flashcards';
 import { vocabularyCache } from '../utils/cache';
 import { extractSearchVariants } from '../utils/courseExamples';
 import { cleanVocabText } from '../utils/vocabCleaner';
+import { expandSlashAndOptionalVariants, stripPinyinTones } from '../utils/pinyinNormalize';
 import { escapeRegExp } from '../utils/escapeRegExp';
 import { timeDataRequest } from '../utils/requestTiming';
 import { fetchVocabularyPack, fetchAllVocabularyPacks } from './vocabularyPackService';
@@ -266,41 +267,11 @@ export async function fetchVocabularyByIds(ids: string[]): Promise<Flashcard[] |
  * static curated taxonomy.
  */
 
-function normalizePinyin(str: string) {
-  if (!str) return '';
-  // Remove tone marks, spaces, digits
-  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "").replace(/[1-5]/g, "").replace(/[-']/g, "").toLowerCase();
-}
-
-function getVariations(str: string): string[] {
-  if (!str) return [];
-  const results = new Set<string>();
-  results.add(str);
-
-  // Handle slashes: split by /
-  if (str.includes('/')) {
-    const parts = str.split('/').map(p => p.trim());
-    parts.forEach(p => results.add(p));
-  }
-
-  // Handle parentheses (both ASCII and full-width)
-  for (const res of Array.from(results)) {
-    if ((res.includes('(') && res.includes(')')) || (res.includes('（') && res.includes('）'))) {
-      const withoutParens = res.replace(/\([^)]+\)/g, '').replace(/（[^）]+）/g, '');
-      const withParensContent = res.replace(/[(（]/g, '').replace(/[)）]/g, '');
-      results.add(withoutParens.trim());
-      results.add(withParensContent.trim());
-    }
-  }
-
-  return Array.from(results).filter(s => s.length > 0);
-}
-
 function getSmartScore(card: Flashcard, rawQuery: string, lowerQuery: string, normQuery: string) {
   let maxScore = 0;
   
-  const frontVariations = getVariations(card.front || '');
-  const pinyinVariations = getVariations(card.pinyin || '');
+  const frontVariations = expandSlashAndOptionalVariants(card.front || '');
+  const pinyinVariations = expandSlashAndOptionalVariants(card.pinyin || '');
   const definitions = (card.back || '').toLowerCase();
 
   for (const front of frontVariations) {
@@ -309,7 +280,7 @@ function getSmartScore(card: Flashcard, rawQuery: string, lowerQuery: string, no
     
     for (const pinyinRaw of pinyinsToTest) {
       let score = 0;
-      const joinedPinyin = normalizePinyin(pinyinRaw);
+      const joinedPinyin = stripPinyinTones(pinyinRaw);
 
       // 1. Exact Matches (Highest Priority)
       if (front === rawQuery) score += 10000;
@@ -329,11 +300,11 @@ function getSmartScore(card: Flashcard, rawQuery: string, lowerQuery: string, no
 
       // 2. Starts With (High Priority)
       if (front.startsWith(rawQuery)) score += 500;
-      if (joinedPinyin && joinedPinyin.startsWith(normQuery)) score += 400;
-      
+      if (normQuery && joinedPinyin.startsWith(normQuery)) score += 400;
+
       // 3. Partial or Substring matches
       if (front.includes(rawQuery)) score += 100;
-      if (joinedPinyin && joinedPinyin.includes(normQuery)) score += 50;
+      if (normQuery && joinedPinyin.includes(normQuery)) score += 50;
       if (definitions.includes(lowerQuery)) score += 10;
 
       // 4. Penalty for length so shorter, more exact matches float higher
@@ -367,7 +338,7 @@ export async function searchVocabulary(queryStr: string): Promise<Flashcard[]> {
     try {
       const queryTrimmed = queryStr.trim();
       const queryLower = queryTrimmed.toLowerCase();
-      const normalizedQuery = normalizePinyin(queryTrimmed);
+      const normalizedQuery = stripPinyinTones(queryTrimmed);
 
       // Fast path: single Chinese character lookup
       // Check all cached vocabulary pages for words containing this character
