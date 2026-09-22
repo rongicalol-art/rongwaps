@@ -735,7 +735,7 @@
     "patternColumns": [
       "Who?",
       "Skill switch",
-      "Learned action"
+      "Action"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -2220,9 +2220,9 @@
     ],
     "pattern": "Topic or activity + action verb + 得 + performance",
     "patternColumns": [
-      "Who or activity?",
+      "Who / What",
       "Action + 得",
-      "Performance report"
+      "How well"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -4178,7 +4178,7 @@
         "patternColumns": [
           "Who?",
           "Skill switch",
-          "Learned action"
+          "Action"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
@@ -5663,9 +5663,9 @@
         ],
         "pattern": "Topic or activity + action verb + 得 + performance",
         "patternColumns": [
-          "Who or activity?",
+          "Who / What",
           "Action + 得",
-          "Performance report"
+          "How well"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {

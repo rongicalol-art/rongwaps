@@ -247,7 +247,7 @@
     ],
     "pattern": "Number + time marker + number + ending",
     "patternColumns": [
-      "First number or label",
+      "First",
       "Time marker",
       "Next detail"
     ],
@@ -1128,7 +1128,7 @@
     "pattern": "Who + 有／沒有 + thing",
     "patternColumns": [
       "Who",
-      "Has or does not have",
+      "有 / 沒有",
       "What"
     ],
     "patternAccentColumn": 1,
@@ -2682,7 +2682,7 @@
         ],
         "pattern": "Number + time marker + number + ending",
         "patternColumns": [
-          "First number or label",
+          "First",
           "Time marker",
           "Next detail"
         ],
@@ -4335,7 +4335,7 @@
         "pattern": "Who + 有／沒有 + thing",
         "patternColumns": [
           "Who",
-          "Has or does not have",
+          "有 / 沒有",
           "What"
         ],
         "patternAccentColumn": 1,

@@ -4022,7 +4022,7 @@
     "pattern": "Verb + object or amount + 了",
     "patternColumns": [
       "Who?",
-      "Completed action",
+      "Action",
       "Done sign"
     ],
     "patternAccentColumn": 2,
@@ -4723,8 +4723,8 @@
         "explanation": "Put 了 right after the action word or phrase to show it is done, like “he went to class” or “I saw the doctor.”",
         "patternColumns": [
           "Subject",
-          "(Adv / TW)",
-          "V(O)",
+          "Time word",
+          "Action",
           "了"
         ],
         "patternRows": [
@@ -4816,10 +4816,10 @@
         "explanation": "One 了 means the action finished in the past (“I drank two cups yesterday”). Two 了's mean you reached that number so far and might do more (“I have already drunk two cups, and want another”).",
         "patternColumns": [
           "Subject",
-          "(Adv / TW)",
+          "Time word",
           "V + 了",
-          "Quantity + Object",
-          "(Double 了)"
+          "Object",
+          "Double 了"
         ],
         "patternRows": [
           {
@@ -5778,8 +5778,8 @@
     "pattern": "Person + 是 + focused detail + action + 的",
     "patternColumns": [
       "Who?",
-      "Detail in the spotlight",
-      "Known event + 的"
+      "Focus",
+      "Event + 的"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -8393,7 +8393,7 @@
         "patternColumns": [
           "Subject",
           "還沒",
-          "Pending Action"
+          "Action"
         ],
         "patternRows": [
           {
@@ -9327,7 +9327,7 @@
         "pattern": "Verb + object or amount + 了",
         "patternColumns": [
           "Who?",
-          "Completed action",
+          "Action",
           "Done sign"
         ],
         "patternAccentColumn": 2,
@@ -10028,8 +10028,8 @@
             "explanation": "Put 了 right after the action word or phrase to show it is done, like “he went to class” or “I saw the doctor.”",
             "patternColumns": [
               "Subject",
-              "(Adv / TW)",
-              "V(O)",
+              "Time word",
+              "Action",
               "了"
             ],
             "patternRows": [
@@ -10121,10 +10121,10 @@
             "explanation": "One 了 means the action finished in the past (“I drank two cups yesterday”). Two 了's mean you reached that number so far and might do more (“I have already drunk two cups, and want another”).",
             "patternColumns": [
               "Subject",
-              "(Adv / TW)",
+              "Time word",
               "V + 了",
-              "Quantity + Object",
-              "(Double 了)"
+              "Object",
+              "Double 了"
             ],
             "patternRows": [
               {
@@ -11826,7 +11826,7 @@
             "patternColumns": [
               "Subject",
               "還沒",
-              "Pending Action"
+              "Action"
             ],
             "patternRows": [
               {
@@ -12754,8 +12754,8 @@
         "pattern": "Person + 是 + focused detail + action + 的",
         "patternColumns": [
           "Who?",
-          "Detail in the spotlight",
-          "Known event + 的"
+          "Focus",
+          "Event + 的"
         ],
         "patternAccentColumn": 1,
         "patternRows": [

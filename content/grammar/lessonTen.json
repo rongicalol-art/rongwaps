@@ -797,8 +797,8 @@
     "pattern": "如果／要是 + condition， 就 + result",
     "patternColumns": [
       "Condition",
-      "Result signal",
-      "What follows?"
+      "Result",
+      "Then"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -2349,7 +2349,7 @@
     "patternColumns": [
       "Future time",
       "Who + 會",
-      "Expected action"
+      "Action"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -4746,7 +4746,7 @@
         "patternColumns": [
           "Subject",
           "跟 + Person",
-          "Speech / Request"
+          "Speech"
         ],
         "patternRows": [
           {
@@ -4792,7 +4792,7 @@
         "explanation": "Put 跟 before the person you learn or receive something from, like “learn calligraphy from Teacher Shen” or “borrow money from a friend.”",
         "patternColumns": [
           "Subject",
-          "跟 + Source Person",
+          "跟 + who",
           "Action"
         ],
         "patternRows": [
@@ -7967,7 +7967,7 @@
         "patternColumns": [
           "Clause",
           "的",
-          "Person"
+          "Who"
         ],
         "patternRows": [
           {
@@ -9831,7 +9831,7 @@
             "patternColumns": [
               "Subject",
               "跟 + Person",
-              "Speech / Request"
+              "Speech"
             ],
             "patternRows": [
               {
@@ -9877,7 +9877,7 @@
             "explanation": "Put 跟 before the person you learn or receive something from, like “learn calligraphy from Teacher Shen” or “borrow money from a friend.”",
             "patternColumns": [
               "Subject",
-              "跟 + Source Person",
+              "跟 + who",
               "Action"
             ],
             "patternRows": [
@@ -11599,7 +11599,7 @@
             "patternColumns": [
               "Clause",
               "的",
-              "Person"
+              "Who"
             ],
             "patternRows": [
               {
@@ -14779,7 +14779,7 @@
         "patternColumns": [
           "Future time",
           "Who + 會",
-          "Expected action"
+          "Action"
         ],
         "patternAccentColumn": 1,
         "patternRows": [
@@ -16263,8 +16263,8 @@
         "pattern": "如果／要是 + condition， 就 + result",
         "patternColumns": [
           "Condition",
-          "Result signal",
-          "What follows?"
+          "Result",
+          "Then"
         ],
         "patternAccentColumn": 1,
         "patternRows": [

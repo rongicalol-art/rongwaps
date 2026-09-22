@@ -620,7 +620,7 @@
     "patternColumns": [
       "Whole group",
       "都",
-      "Shared action or quality"
+      "Shared"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -1903,9 +1903,9 @@
     ],
     "pattern": "Description + 的 + noun, or description + 的",
     "patternColumns": [
-      "Describing word",
+      "Adjective",
       "的",
-      "Thing (or nothing)"
+      "Thing"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -3248,7 +3248,7 @@
         "title": "Connecting Descriptions (Description + 的 + Noun)",
         "explanation": "Place 的 between a describing word and a noun, like “a pretty flower” or “a happy child.”",
         "patternColumns": [
-          "Vs (Adjective)",
+          "Adjective",
           "的",
           "Noun"
         ],
@@ -3354,8 +3354,8 @@
         "title": "Short One-Syllable Words (Skip 的)",
         "explanation": "With common one-syllable words like 好 (good), 新 (new), or 大 (big), you can skip 的 directly, like 好朋友 (good friend) or 新書 (new book).",
         "patternColumns": [
-          "Short Adjective",
-          "(Skip 的)",
+          "Adjective",
+          "Skip 的",
           "Noun"
         ],
         "patternRows": [
@@ -3459,7 +3459,7 @@
         "patternColumns": [
           "Adjective",
           "的",
-          "(Noun Dropped)"
+          "No noun"
         ],
         "patternRows": [
           {
@@ -4126,7 +4126,7 @@
     "pattern": "這 / 那 / 哪 + number + measure word + noun",
     "patternColumns": [
       "Point or ask",
-      "Quantity + measure word",
+      "Amount",
       "Thing"
     ],
     "patternAccentColumn": 0,
@@ -5448,7 +5448,7 @@
         "pattern": "這 / 那 / 哪 + number + measure word + noun",
         "patternColumns": [
           "Point or ask",
-          "Quantity + measure word",
+          "Amount",
           "Thing"
         ],
         "patternAccentColumn": 0,
@@ -6762,9 +6762,9 @@
         ],
         "pattern": "Description + 的 + noun, or description + 的",
         "patternColumns": [
-          "Describing word",
+          "Adjective",
           "的",
-          "Thing (or nothing)"
+          "Thing"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
@@ -8107,7 +8107,7 @@
             "title": "Connecting Descriptions (Description + 的 + Noun)",
             "explanation": "Place 的 between a describing word and a noun, like “a pretty flower” or “a happy child.”",
             "patternColumns": [
-              "Vs (Adjective)",
+              "Adjective",
               "的",
               "Noun"
             ],
@@ -8213,8 +8213,8 @@
             "title": "Short One-Syllable Words (Skip 的)",
             "explanation": "With common one-syllable words like 好 (good), 新 (new), or 大 (big), you can skip 的 directly, like 好朋友 (good friend) or 新書 (new book).",
             "patternColumns": [
-              "Short Adjective",
-              "(Skip 的)",
+              "Adjective",
+              "Skip 的",
               "Noun"
             ],
             "patternRows": [
@@ -8318,7 +8318,7 @@
             "patternColumns": [
               "Adjective",
               "的",
-              "(Noun Dropped)"
+              "No noun"
             ],
             "patternRows": [
               {
@@ -8982,7 +8982,7 @@
         "patternColumns": [
           "Whole group",
           "都",
-          "Shared action or quality"
+          "Shared"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {

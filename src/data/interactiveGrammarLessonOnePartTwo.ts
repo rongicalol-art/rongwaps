@@ -29,8 +29,8 @@ export const LESSON_ONE_GRAMMAR_FOUR: InteractiveGrammarPage = {
     token('g4-glossary-ma', '嗎', 'ma', 'yes/no question ending word; makes a new question', { simplified: '吗' }),
     token('g4-glossary-ni', '你', 'nǐ', 'you; the person who receives the question'),
   ],
-  pattern: 'Statement, + N + 呢',
-  patternColumns: ['Statement', 'N', '呢'],
+  pattern: 'Statement, + new topic + 呢',
+  patternColumns: ['Statement', 'New topic', '呢'],
   patternAccentColumn: 2,
   discoveryLab: {
     title: '呢 works like a conversation echo',
@@ -452,7 +452,7 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
     token('g5-glossary-wo', '我', 'wǒ', 'I; the person who does or feels the action'),
   ],
   pattern: 'S + (Neg)V + O',
-  patternColumns: ['Who', 'Does / feels', 'Who or what'],
+  patternColumns: ['Who', 'Does / feels', 'Who / What'],
   patternColumnDetails: ['S', '(Neg)V', 'O'],
   discoveryLab: {
     title: 'Let the sentence grow one meaning block at a time',
@@ -521,7 +521,7 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
     },
     object: {
       role: 'O',
-      label: 'Who or what',
+      label: 'Who / What',
       traditional: '他。',
       pinyin: 'tā',
       english: 'him',

@@ -652,8 +652,8 @@
     ],
     "pattern": "Person or thing +（不）在 + place",
     "patternColumns": [
-      "Who or what?",
-      "Location word",
+      "Who / What?",
+      "Place",
       "Where?"
     ],
     "patternAccentColumn": 1,
@@ -1942,8 +1942,8 @@
     ],
     "pattern": "Situation, suggested action + 吧",
     "patternColumns": [
-      "Notice the situation",
-      "Offer an action",
+      "Situation",
+      "Suggestion",
       "End with 吧"
     ],
     "patternAccentColumn": 2,
@@ -3351,7 +3351,7 @@
     "patternColumns": [
       "Who?",
       "Where?",
-      "What happens?"
+      "Action"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -4679,8 +4679,8 @@
         ],
         "pattern": "Person or thing +（不）在 + place",
         "patternColumns": [
-          "Who or what?",
-          "Location word",
+          "Who / What?",
+          "Place",
           "Where?"
         ],
         "patternAccentColumn": 1,
@@ -5972,7 +5972,7 @@
         "patternColumns": [
           "Who?",
           "Where?",
-          "What happens?"
+          "Action"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
@@ -7290,8 +7290,8 @@
         ],
         "pattern": "Situation, suggested action + 吧",
         "patternColumns": [
-          "Notice the situation",
-          "Offer an action",
+          "Situation",
+          "Suggestion",
           "End with 吧"
         ],
         "patternAccentColumn": 2,

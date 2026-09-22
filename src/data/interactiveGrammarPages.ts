@@ -54,8 +54,8 @@ export const LESSON_ONE_GRAMMAR_ONE: InteractiveGrammarPage = {
     { id: 'g1-glossary-zhang-xiaoming', traditional: '張小明', simplified: '张小明', pinyin: 'Zhāng Xiǎomíng', meaning: 'Zhang Xiaoming; a full name' },
   ],
   pattern: 'Person + identity verb + name or identity',
-  patternColumns: ['Person', '叫 · 姓 · 是', 'Name or identity'],
-  patternColumnDetails: ['Who?', 'the word you choose', 'What clue?'],
+  patternColumns: ['Who', '叫 · 姓 · 是', 'Name / identity'],
+  patternColumnDetails: ['Who?', 'which word', 'What clue?'],
   patternAccentColumn: 1,
   discoveryLab: {
     title: 'Change the word, change the clue',
@@ -437,7 +437,7 @@ export const LESSON_ONE_GRAMMAR_TWO: InteractiveGrammarPage = {
     { id: 'g2-glossary-keai', traditional: '可愛', simplified: '可爱', pinyin: "kě'ài", meaning: 'cute; lovely' },
   ],
   pattern: 'S + 很/不 + Vs',
-  patternColumns: ['Who or what', '很／不', 'Describing word'],
+  patternColumns: ['Who / What', '很／不', 'Adjective'],
   patternColumnDetails: ['S', 'yes or no', 'Vs'],
   discoveryLab: {
     title: 'Do not add 是',
@@ -664,8 +664,8 @@ export const LESSON_ONE_GRAMMAR_THREE: InteractiveGrammarPage = {
     { id: 'g3-glossary-hen', traditional: '很', pinyin: 'hěn', meaning: 'very; the usual link word' },
   ],
   pattern: 'Statement + 嗎',
-  patternColumns: ['Who or what', 'Rest of the sentence', '嗎'],
-  patternColumnDetails: ['S', 'keep the order', 'question ending'],
+  patternColumns: ['Who / What', 'Sentence body', '嗎'],
+  patternColumnDetails: ['S', 'keep order', 'ending'],
   patternAccentColumn: 2,
   discoveryLab: {
     title: 'One small ending turns it into a question',
@@ -975,6 +975,20 @@ export const INTERACTIVE_GRAMMAR_PARTS = [
 
 export function getInteractiveGrammarPart(partId: string) {
   return INTERACTIVE_GRAMMAR_PARTS.find((part) => part.id === partId);
+}
+
+/**
+ * The grammar part that follows or precedes `partId` in book order, so a
+ * keyboard jump or the reader's continue can move between lessons.
+ */
+export function findNeighbourGrammarPart(
+  partId: string,
+  direction: 'next' | 'previous',
+): InteractiveGrammarPart | null {
+  const index = INTERACTIVE_GRAMMAR_PARTS.findIndex((part) => part.id === partId);
+  if (index === -1) return null;
+  const neighbourIndex = direction === 'next' ? index + 1 : index - 1;
+  return INTERACTIVE_GRAMMAR_PARTS[neighbourIndex] ?? null;
 }
 
 export function getInteractiveGrammarPartsForLesson(bookId: number, lessonId: number) {

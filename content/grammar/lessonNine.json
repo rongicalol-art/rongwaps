@@ -4191,7 +4191,7 @@
         "patternColumns": [
           "Who",
           "能 · 不能",
-          "Physical Action"
+          "Action"
         ],
         "patternRows": [
           {
@@ -4236,9 +4236,9 @@
         "title": "Rules and Permission (Allowed / Not Allowed)",
         "explanation": "Use 不能 when rules or manners say you shouldn’t do something, like not eating on the MRT or not looking at phones during class.",
         "patternColumns": [
-          "Place / Context",
+          "Place",
           "不能",
-          "Prohibited Action"
+          "Action"
         ],
         "patternRows": [
           {
@@ -5526,7 +5526,7 @@
     "patternColumns": [
       "Who",
       "Now word",
-      "Action happening"
+      "Action"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -9300,8 +9300,8 @@
     ],
     "pattern": "從 + start time + 到 + finish time",
     "patternColumns": [
-      "Start pin",
-      "Finish pin"
+      "從 + start",
+      "到 + end"
     ],
     "patternAccentColumn": 0,
     "patternRows": [
@@ -11328,7 +11328,7 @@
         "patternColumns": [
           "Who",
           "Now word",
-          "Action happening"
+          "Action"
         ],
         "patternAccentColumn": 1,
         "patternRows": [
@@ -13185,8 +13185,8 @@
         ],
         "pattern": "從 + start time + 到 + finish time",
         "patternColumns": [
-          "Start pin",
-          "Finish pin"
+          "從 + start",
+          "到 + end"
         ],
         "patternAccentColumn": 0,
         "patternRows": [
@@ -18765,7 +18765,7 @@
             "patternColumns": [
               "Who",
               "能 · 不能",
-              "Physical Action"
+              "Action"
             ],
             "patternRows": [
               {
@@ -18810,9 +18810,9 @@
             "title": "Rules and Permission (Allowed / Not Allowed)",
             "explanation": "Use 不能 when rules or manners say you shouldn’t do something, like not eating on the MRT or not looking at phones during class.",
             "patternColumns": [
-              "Place / Context",
+              "Place",
               "不能",
-              "Prohibited Action"
+              "Action"
             ],
             "patternRows": [
               {

@@ -1270,8 +1270,8 @@
     "pattern": "Situation + 的時候，what happens",
     "patternColumns": [
       "Situation",
-      "Moment window",
-      "What happens then?"
+      "的時候",
+      "Result"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -3208,8 +3208,8 @@
     "pattern": "經驗：V + 過 ｜ 完成：V + 過 + 了",
     "patternColumns": [
       "Who?",
-      "Action + Particle",
-      "Object / Status"
+      "V + 過",
+      "Object"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -5586,7 +5586,7 @@
     "pattern": "Person + 用 + tool + action",
     "patternColumns": [
       "Who?",
-      "Tool or method",
+      "Tool",
       "Action"
     ],
     "patternAccentColumn": 1,
@@ -7520,7 +7520,7 @@
     "patternColumns": [
       "Subject",
       "對 + Target",
-      "Comment / Action"
+      "Comment"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -8283,7 +8283,7 @@
         "patternColumns": [
           "Subject",
           "對 + Person",
-          "Speech / Comment"
+          "Speech"
         ],
         "patternRows": [
           {
@@ -8330,7 +8330,7 @@
         "patternColumns": [
           "Item / Habit",
           "對 + Target",
-          "Effect / Evaluation"
+          "Effect"
         ],
         "patternRows": [
           {
@@ -8377,7 +8377,7 @@
         "patternColumns": [
           "Subject",
           "對 + Target",
-          "Attitude / Treatment"
+          "Attitude"
         ],
         "patternRows": [
           {
@@ -9696,7 +9696,7 @@
     "patternColumns": [
       "Time / Event",
       "以前 · 以後",
-      "Action / Status"
+      "Action"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -10687,7 +10687,7 @@
         "patternColumns": [
           "Subject",
           "以前 · 以後",
-          "Action / Status"
+          "Action"
         ],
         "patternRows": [
           {
@@ -10761,9 +10761,9 @@
         "title": "Before or After a Time (Time + 以前 / 以後)",
         "explanation": "Put a clock time or period of time first, then add 以前 or 以後, like “before 3:00” (三點以前) or “three months ago” (三個月以前).",
         "patternColumns": [
-          "Time Point / Duration",
+          "Time",
           "以前 · 以後",
-          "Action / Deadline"
+          "Action"
         ],
         "patternRows": [
           {
@@ -10902,7 +10902,7 @@
         "title": "Before or After an Activity (Activity + 以前 / 以後)",
         "explanation": "Say what you do first, then add 以前 or 以後: “before going to work” (上班以前) or “after getting off work” (下班以後).",
         "patternColumns": [
-          "Statement Clause",
+          "Clause",
           "以前 · 以後",
           "Main Clause"
         ],
@@ -12257,7 +12257,7 @@
         "pattern": "Person + 用 + tool + action",
         "patternColumns": [
           "Who?",
-          "Tool or method",
+          "Tool",
           "Action"
         ],
         "patternAccentColumn": 1,
@@ -14196,7 +14196,7 @@
         "patternColumns": [
           "Time / Event",
           "以前 · 以後",
-          "Action / Status"
+          "Action"
         ],
         "patternAccentColumn": 1,
         "patternRows": [
@@ -15187,7 +15187,7 @@
             "patternColumns": [
               "Subject",
               "以前 · 以後",
-              "Action / Status"
+              "Action"
             ],
             "patternRows": [
               {
@@ -15261,9 +15261,9 @@
             "title": "Before or After a Time (Time + 以前 / 以後)",
             "explanation": "Put a clock time or period of time first, then add 以前 or 以後, like “before 3:00” (三點以前) or “three months ago” (三個月以前).",
             "patternColumns": [
-              "Time Point / Duration",
+              "Time",
               "以前 · 以後",
-              "Action / Deadline"
+              "Action"
             ],
             "patternRows": [
               {
@@ -15402,7 +15402,7 @@
             "title": "Before or After an Activity (Activity + 以前 / 以後)",
             "explanation": "Say what you do first, then add 以前 or 以後: “before going to work” (上班以前) or “after getting off work” (下班以後).",
             "patternColumns": [
-              "Statement Clause",
+              "Clause",
               "以前 · 以後",
               "Main Clause"
             ],
@@ -16750,7 +16750,7 @@
         "patternColumns": [
           "Subject",
           "對 + Target",
-          "Comment / Action"
+          "Comment"
         ],
         "patternAccentColumn": 1,
         "patternRows": [
@@ -17513,7 +17513,7 @@
             "patternColumns": [
               "Subject",
               "對 + Person",
-              "Speech / Comment"
+              "Speech"
             ],
             "patternRows": [
               {
@@ -17560,7 +17560,7 @@
             "patternColumns": [
               "Item / Habit",
               "對 + Target",
-              "Effect / Evaluation"
+              "Effect"
             ],
             "patternRows": [
               {
@@ -17607,7 +17607,7 @@
             "patternColumns": [
               "Subject",
               "對 + Target",
-              "Attitude / Treatment"
+              "Attitude"
             ],
             "patternRows": [
               {
@@ -19762,8 +19762,8 @@
         "pattern": "經驗：V + 過 ｜ 完成：V + 過 + 了",
         "patternColumns": [
           "Who?",
-          "Action + Particle",
-          "Object / Status"
+          "V + 過",
+          "Object"
         ],
         "patternAccentColumn": 1,
         "patternRows": [
@@ -22139,8 +22139,8 @@
         "pattern": "Situation + 的時候，what happens",
         "patternColumns": [
           "Situation",
-          "Moment window",
-          "What happens then?"
+          "的時候",
+          "Result"
         ],
         "patternAccentColumn": 1,
         "patternRows": [

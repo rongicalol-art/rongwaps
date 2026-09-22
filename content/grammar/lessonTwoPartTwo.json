@@ -281,7 +281,7 @@
     "pattern": "Who + intention or feeling + action",
     "patternColumns": [
       "Who",
-      "Want, like, or love",
+      "Want / like",
       "Action"
     ],
     "patternAccentColumn": 1,
@@ -1094,7 +1094,7 @@
     ],
     "pattern": "Owner or description + 的 + thing",
     "patternColumns": [
-      "Owner or description",
+      "Owner / 的",
       "的",
       "Thing"
     ],
@@ -1859,8 +1859,8 @@
     "pattern": "Who + positive form + 不／沒 + positive form",
     "patternColumns": [
       "Who",
-      "Positive-negative pair",
-      "Rest of action"
+      "A-not-A",
+      "Action"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -2671,7 +2671,7 @@
         ],
         "pattern": "Owner or description + 的 + thing",
         "patternColumns": [
-          "Owner or description",
+          "Owner / 的",
           "的",
           "Thing"
         ],
@@ -3438,7 +3438,7 @@
         "pattern": "Who + intention or feeling + action",
         "patternColumns": [
           "Who",
-          "Want, like, or love",
+          "Want / like",
           "Action"
         ],
         "patternAccentColumn": 1,
@@ -4229,8 +4229,8 @@
         "pattern": "Who + positive form + 不／沒 + positive form",
         "patternColumns": [
           "Who",
-          "Positive-negative pair",
-          "Rest of action"
+          "A-not-A",
+          "Action"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {

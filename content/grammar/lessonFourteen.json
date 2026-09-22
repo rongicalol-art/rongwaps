@@ -1260,7 +1260,7 @@
     "patternColumns": [
       "Who?",
       "Action + 了",
-      "Amount of time"
+      "Duration"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -3144,9 +3144,9 @@
     ],
     "pattern": "A + 比 + B + quality or difference",
     "patternColumns": [
-      "A: described side",
-      "比 + B: reference",
-      "Quality or difference"
+      "Thing A",
+      "比 + B",
+      "Quality"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -5044,7 +5044,7 @@
     "pattern": "Verb + 了 + duration + 了",
     "patternColumns": [
       "Who?",
-      "Action + time so far",
+      "Action",
       "Ending 了"
     ],
     "patternAccentColumn": 2,
@@ -7006,7 +7006,7 @@
         "patternColumns": [
           "Who?",
           "Action + 了",
-          "Amount of time"
+          "Duration"
         ],
         "patternAccentColumn": 1,
         "patternRows": [
@@ -8891,7 +8891,7 @@
         "pattern": "Verb + 了 + duration + 了",
         "patternColumns": [
           "Who?",
-          "Action + time so far",
+          "Action",
           "Ending 了"
         ],
         "patternAccentColumn": 2,
@@ -12055,9 +12055,9 @@
         ],
         "pattern": "A + 比 + B + quality or difference",
         "patternColumns": [
-          "A: described side",
-          "比 + B: reference",
-          "Quality or difference"
+          "Thing A",
+          "比 + B",
+          "Quality"
         ],
         "patternAccentColumn": 1,
         "patternRows": [

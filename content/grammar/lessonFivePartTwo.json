@@ -664,7 +664,7 @@
     "pattern": "Place + 有 / 沒有 + thing",
     "patternColumns": [
       "Place",
-      "有 or 沒有",
+      "有 / 沒有",
       "Thing"
     ],
     "patternAccentColumn": 1,
@@ -2071,8 +2071,8 @@
     "pattern": "Thing + 在 + anchor noun + direction",
     "patternColumns": [
       "Thing",
-      "Location link",
-      "Anchor + direction"
+      "在",
+      "Anchor"
     ],
     "patternAccentColumn": 2,
     "discoveryLab": {
@@ -3597,8 +3597,8 @@
         "pattern": "Thing + 在 + anchor noun + direction",
         "patternColumns": [
           "Thing",
-          "Location link",
-          "Anchor + direction"
+          "在",
+          "Anchor"
         ],
         "patternAccentColumn": 2,
         "discoveryLab": {
@@ -5111,7 +5111,7 @@
         "pattern": "Place + 有 / 沒有 + thing",
         "patternColumns": [
           "Place",
-          "有 or 沒有",
+          "有 / 沒有",
           "Thing"
         ],
         "patternAccentColumn": 1,

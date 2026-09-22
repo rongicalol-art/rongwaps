@@ -866,7 +866,7 @@
     ],
     "pattern": "Person or thing + 又 + quality 1 + 又 + quality 2",
     "patternColumns": [
-      "One person or thing",
+      "Who / Thing",
       "又 + quality",
       "又 + quality"
     ],
@@ -2444,7 +2444,7 @@
     ],
     "pattern": "Activity + comment",
     "patternColumns": [
-      "Activity first",
+      "Activity",
       "Pause",
       "Comment"
     ],
@@ -3894,9 +3894,9 @@
     ],
     "pattern": "Person + 從 + start + 到 + destination + 來/去 + purpose",
     "patternColumns": [
-      "Start pin",
-      "Destination pin",
-      "Direction + purpose"
+      "從 + start",
+      "到 + end",
+      "Purpose"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -5577,7 +5577,7 @@
     "pattern": "New situation + 了",
     "patternColumns": [
       "Before",
-      "What changed?",
+      "Change",
       "Now"
     ],
     "patternAccentColumn": 1,
@@ -7045,7 +7045,7 @@
     "patternColumns": [
       "Who?",
       "How?",
-      "Destination + direction"
+      "Where"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -8581,9 +8581,9 @@
         ],
         "pattern": "Person + 從 + start + 到 + destination + 來/去 + purpose",
         "patternColumns": [
-          "Start pin",
-          "Destination pin",
-          "Direction + purpose"
+          "從 + start",
+          "到 + end",
+          "Purpose"
         ],
         "patternAccentColumn": 1,
         "patternRows": [
@@ -10268,7 +10268,7 @@
         "patternColumns": [
           "Who?",
           "How?",
-          "Destination + direction"
+          "Where"
         ],
         "patternAccentColumn": 1,
         "patternRows": [
@@ -11795,7 +11795,7 @@
         "pattern": "New situation + 了",
         "patternColumns": [
           "Before",
-          "What changed?",
+          "Change",
           "Now"
         ],
         "patternAccentColumn": 1,
@@ -13841,7 +13841,7 @@
         ],
         "pattern": "Activity + comment",
         "patternColumns": [
-          "Activity first",
+          "Activity",
           "Pause",
           "Comment"
         ],
@@ -15287,7 +15287,7 @@
         ],
         "pattern": "Person or thing + 又 + quality 1 + 又 + quality 2",
         "patternColumns": [
-          "One person or thing",
+          "Who / Thing",
           "又 + quality",
           "又 + quality"
         ],

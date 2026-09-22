@@ -599,9 +599,9 @@
     ],
     "pattern": "Thing in focus, person + action",
     "patternColumns": [
-      "Thing in the spotlight",
-      "Person",
-      "Action or opinion"
+      "Topic",
+      "Who",
+      "Comment"
     ],
     "patternAccentColumn": 0,
     "discoveryLab": {
@@ -1954,9 +1954,9 @@
     ],
     "pattern": "太 + description + 了",
     "patternColumns": [
-      "Strong reaction",
+      "太",
       "Description",
-      "Close the reaction"
+      "了"
     ],
     "patternAccentColumn": 0,
     "discoveryLab": {
@@ -3205,7 +3205,7 @@
     ],
     "pattern": "First situation, second person or thing + 也 + same result",
     "patternColumns": [
-      "New matching person or thing",
+      "Who / Thing",
       "也",
       "Shared result"
     ],
@@ -4533,9 +4533,9 @@
         ],
         "pattern": "Thing in focus, person + action",
         "patternColumns": [
-          "Thing in the spotlight",
-          "Person",
-          "Action or opinion"
+          "Topic",
+          "Who",
+          "Comment"
         ],
         "patternAccentColumn": 0,
         "discoveryLab": {
@@ -5884,7 +5884,7 @@
         ],
         "pattern": "First situation, second person or thing + 也 + same result",
         "patternColumns": [
-          "New matching person or thing",
+          "Who / Thing",
           "也",
           "Shared result"
         ],
@@ -7206,9 +7206,9 @@
         ],
         "pattern": "太 + description + 了",
         "patternColumns": [
-          "Strong reaction",
+          "太",
           "Description",
-          "Close the reaction"
+          "了"
         ],
         "patternAccentColumn": 0,
         "discoveryLab": {

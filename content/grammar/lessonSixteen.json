@@ -1515,8 +1515,8 @@
     "pattern": "S + 本來 + first part，後來 + changed part",
     "patternColumns": [
       "Who?",
-      "At first",
-      "What changed"
+      "本來",
+      "後來"
     ],
     "patternColumnDetails": [
       "S",
@@ -2746,7 +2746,7 @@
     "patternColumns": [
       "Thing 1",
       "比 + Thing 2",
-      "Even more how?"
+      "Quality"
     ],
     "patternColumnDetails": [
       "S1",
@@ -3763,7 +3763,7 @@
     ],
     "pattern": "First action (verb + 了) + just now + next action",
     "patternColumns": [
-      "First finished action",
+      "First action",
       "就",
       "Next action"
     ],
@@ -4928,12 +4928,12 @@
     "patternColumns": [
       "Who?",
       "Action + 得",
-      "Result or Degree"
+      "Result"
     ],
     "patternColumnDetails": [
       "Subject",
       "Verb + 得",
-      "Complement (e.g. 很開心)"
+      "e.g. 很開心"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -7117,8 +7117,8 @@
         "pattern": "S + 本來 + first part，後來 + changed part",
         "patternColumns": [
           "Who?",
-          "At first",
-          "What changed"
+          "本來",
+          "後來"
         ],
         "patternColumnDetails": [
           "S",
@@ -8348,7 +8348,7 @@
         "patternColumns": [
           "Thing 1",
           "比 + Thing 2",
-          "Even more how?"
+          "Quality"
         ],
         "patternColumnDetails": [
           "S1",
@@ -9365,7 +9365,7 @@
         ],
         "pattern": "First action (verb + 了) + just now + next action",
         "patternColumns": [
-          "First finished action",
+          "First action",
           "就",
           "Next action"
         ],
@@ -10530,12 +10530,12 @@
         "patternColumns": [
           "Who?",
           "Action + 得",
-          "Result or Degree"
+          "Result"
         ],
         "patternColumnDetails": [
           "Subject",
           "Verb + 得",
-          "Complement (e.g. 很開心)"
+          "e.g. 很開心"
         ],
         "patternAccentColumn": 1,
         "patternRows": [

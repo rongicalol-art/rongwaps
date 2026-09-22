@@ -1007,7 +1007,7 @@
     ],
     "pattern": "Subject + 快／快要／要 + event + 了",
     "patternColumns": [
-      "Situation now",
+      "Situation",
       "Soon",
       "Next event"
     ],
@@ -2748,7 +2748,7 @@
     "patternColumns": [
       "Action",
       "Small trial",
-      "See the result"
+      "Result"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -4535,7 +4535,7 @@
     "pattern": "感官評價：好／難＋感官動詞 ｜ 難易程度：好／難＋動作動詞",
     "patternColumns": [
       "好 · 難",
-      "Verb"
+      "Action"
     ],
     "patternAccentColumn": 0,
     "patternRows": [
@@ -5382,7 +5382,7 @@
         "explanation": "Put 好 before words like “eat,” “drink,” “look,” or “hear” when something is enjoyable (好吃 delicious, 好看 pretty). Use 難 when it is unpleasant (難喝 bad-tasting, 難看 ugly).",
         "patternColumns": [
           "好 · 難",
-          "Perception Verb"
+          "Sense verb"
         ],
         "patternRows": [
           {
@@ -10056,7 +10056,7 @@
         "pattern": "感官評價：好／難＋感官動詞 ｜ 難易程度：好／難＋動作動詞",
         "patternColumns": [
           "好 · 難",
-          "Verb"
+          "Action"
         ],
         "patternAccentColumn": 0,
         "patternRows": [
@@ -10903,7 +10903,7 @@
             "explanation": "Put 好 before words like “eat,” “drink,” “look,” or “hear” when something is enjoyable (好吃 delicious, 好看 pretty). Use 難 when it is unpleasant (難喝 bad-tasting, 難看 ugly).",
             "patternColumns": [
               "好 · 難",
-              "Perception Verb"
+              "Sense verb"
             ],
             "patternRows": [
               {
@@ -16418,7 +16418,7 @@
         "patternColumns": [
           "Action",
           "Small trial",
-          "See the result"
+          "Result"
         ],
         "patternAccentColumn": 1,
         "patternRows": [
@@ -18205,7 +18205,7 @@
         ],
         "pattern": "Subject + 快／快要／要 + event + 了",
         "patternColumns": [
-          "Situation now",
+          "Situation",
           "Soon",
           "Next event"
         ],

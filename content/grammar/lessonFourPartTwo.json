@@ -708,9 +708,9 @@
     ],
     "pattern": "Round number + 多 + measure word, or number + measure word + 多",
     "patternColumns": [
-      "Known starting amount",
-      "Position of 多",
-      "Possible range"
+      "Number",
+      "多",
+      "Amount"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -2027,8 +2027,8 @@
     "pattern": "Large place + smaller places, with 零 for an internal gap",
     "patternColumns": [
       "萬 group",
-      "千／百／十 group",
-      "Spoken number"
+      "千 · 百 · 十",
+      "Number"
     ],
     "patternAccentColumn": 2,
     "numberLab": {
@@ -3228,8 +3228,8 @@
         "pattern": "Large place + smaller places, with 零 for an internal gap",
         "patternColumns": [
           "萬 group",
-          "千／百／十 group",
-          "Spoken number"
+          "千 · 百 · 十",
+          "Number"
         ],
         "patternAccentColumn": 2,
         "numberLab": {
@@ -4421,9 +4421,9 @@
         ],
         "pattern": "Round number + 多 + measure word, or number + measure word + 多",
         "patternColumns": [
-          "Known starting amount",
-          "Position of 多",
-          "Possible range"
+          "Number",
+          "多",
+          "Amount"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {

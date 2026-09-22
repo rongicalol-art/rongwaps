@@ -1413,8 +1413,8 @@
     "pattern": "Giver + 送 + receiver + gift",
     "patternColumns": [
       "Giver + 送",
-      "Who receives it",
-      "What they receive"
+      "Receiver",
+      "Gift"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -3661,8 +3661,8 @@
         "pattern": "Giver + 送 + receiver + gift",
         "patternColumns": [
           "Giver + 送",
-          "Who receives it",
-          "What they receive"
+          "Receiver",
+          "Gift"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {

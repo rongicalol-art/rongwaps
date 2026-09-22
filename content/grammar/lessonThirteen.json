@@ -1490,7 +1490,7 @@
     "pattern": "Action + duration / Activity + action + duration",
     "patternColumns": [
       "Activity",
-      "Repeated action if needed",
+      "Repeat",
       "Duration"
     ],
     "patternAccentColumn": 2,
@@ -3566,8 +3566,8 @@
     ],
     "pattern": "Time clue + 就要／快要 + event + 了",
     "patternColumns": [
-      "Near-time clue",
-      "Countdown signal",
+      "Time clue",
+      "就要 / 快要",
       "Event + 了"
     ],
     "patternAccentColumn": 1,
@@ -5749,7 +5749,7 @@
     ],
     "pattern": "Action verb + action verb / Action verb + 一 + action verb",
     "patternColumns": [
-      "Person",
+      "Who",
       "Light action",
       "Context"
     ],
@@ -7905,7 +7905,7 @@
     "patternColumns": [
       "Context",
       "就 signal",
-      "Early action or result"
+      "Result"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -10095,7 +10095,7 @@
     ],
     "pattern": "從 + start + 往 + direction + action",
     "patternColumns": [
-      "Starting point",
+      "Start",
       "Direction",
       "Movement"
     ],
@@ -12366,7 +12366,7 @@
         ],
         "pattern": "Action verb + action verb / Action verb + 一 + action verb",
         "patternColumns": [
-          "Person",
+          "Who",
           "Light action",
           "Context"
         ],
@@ -14521,7 +14521,7 @@
         ],
         "pattern": "從 + start + 往 + direction + action",
         "patternColumns": [
-          "Starting point",
+          "Start",
           "Direction",
           "Movement"
         ],
@@ -16786,7 +16786,7 @@
         "patternColumns": [
           "Context",
           "就 signal",
-          "Early action or result"
+          "Result"
         ],
         "patternAccentColumn": 1,
         "patternRows": [
@@ -19784,8 +19784,8 @@
         ],
         "pattern": "Time clue + 就要／快要 + event + 了",
         "patternColumns": [
-          "Near-time clue",
-          "Countdown signal",
+          "Time clue",
+          "就要 / 快要",
           "Event + 了"
         ],
         "patternAccentColumn": 1,
@@ -21970,7 +21970,7 @@
         "pattern": "Action + duration / Activity + action + duration",
         "patternColumns": [
           "Activity",
-          "Repeated action if needed",
+          "Repeat",
           "Duration"
         ],
         "patternAccentColumn": 2,

@@ -821,7 +821,7 @@
     "patternColumns": [
       "Who?",
       "Green light",
-      "Suggested or permitted action"
+      "Action"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -2520,9 +2520,9 @@
     ],
     "pattern": "Person or thing + 有（一）點（兒） + describing word",
     "patternColumns": [
-      "Who or what?",
-      "Small degree dial",
-      "Describing word"
+      "Who / What?",
+      "Degree",
+      "Adjective"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -4131,9 +4131,9 @@
         ],
         "pattern": "Person or thing + 有（一）點（兒） + describing word",
         "patternColumns": [
-          "Who or what?",
-          "Small degree dial",
-          "Describing word"
+          "Who / What?",
+          "Degree",
+          "Adjective"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
@@ -5739,7 +5739,7 @@
         "patternColumns": [
           "Who?",
           "Green light",
-          "Suggested or permitted action"
+          "Action"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
