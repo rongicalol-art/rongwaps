@@ -1,4 +1,5 @@
 import type { SRSData } from './srsEngine';
+import { isSameSrsData } from './srsRowMapping';
 
 export interface SyncProgressCounters {
   cardsReviewed: number;
@@ -275,21 +276,6 @@ export function getNextAutoSaveDelay(input: AutoSaveDelayInput): number {
   return Math.max(backoffMs, eagerDelayMs);
 }
 
-function sameSrsData(
-  a: SRSData | undefined,
-  b: SRSData | undefined,
-): boolean {
-  if (a === b) return true;
-  if (!a || !b) return false;
-  return (
-    a.efactor === b.efactor
-    && a.interval === b.interval
-    && a.repetition === b.repetition
-    && a.nextReviewDate === b.nextReviewDate
-    && (a.learningStep ?? null) === (b.learningStep ?? null)
-  );
-}
-
 export interface PulledSrsMergeInput {
   /**
    * Last SRS state known to be persisted on the server (the delta baseline)
@@ -335,7 +321,7 @@ export function mergePulledSrsData(
   // Locally changed during the pull window (new reviews count as changes).
   const locallyChangedKeys = new Set<string>();
   for (const [key, value] of Object.entries(current)) {
-    if (!sameSrsData(atPullStart[key], value)) locallyChangedKeys.add(key);
+    if (!isSameSrsData(atPullStart[key], value)) locallyChangedKeys.add(key);
   }
 
   // Start from local state (keeps brand-new local cards), overlay server rows,

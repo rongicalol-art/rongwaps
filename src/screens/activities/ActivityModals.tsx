@@ -9,10 +9,7 @@ import { getPracticeLoadingMessage, preloadPracticeChunks, preloadRemainingPract
 import { AddCardScreen } from '../add-card';
 import type { ActivityType } from '../../types/models';
 import { SAMPLE_BOOKS } from '../../data/books';
-import {
-  getCurriculumSessionKey,
-  SHARED_REVIEW_SESSION_KEY,
-} from '../../utils/lessonPartSelection';
+import { getDeckIdentityKey } from '../../utils/lessonPartSelection';
 import {
   selectPracticePreferences,
   usePracticePreferencesStore,
@@ -185,10 +182,14 @@ export function ActivityModals({
       useAppStore.getState().setActiveReviewSessionCards(null);
       return;
     }
-    const currentLibraryFolder = useAppStore.getState().libraryActiveFolder;
-    const sharedKey = (isReviewMode || activeActivity === 'flashcards-review') ? SHARED_REVIEW_SESSION_KEY :
-      (isLibraryMode || activeActivity === 'flashcards-library') ? `shared_deck_library_${currentLibraryFolder}` :
-      getCurriculumSessionKey(activeBookId, selectedLessons, useAppStore.getState().selectedLessonParts);
+    const sharedKey = getDeckIdentityKey({
+      activeBookId,
+      selectedLessons,
+      selectedLessonParts: useAppStore.getState().selectedLessonParts,
+      libraryActiveFolder: useAppStore.getState().libraryActiveFolder,
+      isReviewDeck: isReviewMode || activeActivity === 'flashcards-review',
+      isLibraryDeck: isLibraryMode || activeActivity === 'flashcards-library',
+    });
     useAppStore.getState().clearSessionProgressIndex(sharedKey);
     useAppStore.getState().setActiveReviewSessionCards(null);
   };

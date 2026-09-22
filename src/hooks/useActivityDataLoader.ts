@@ -8,7 +8,7 @@ import { flashcardService } from '../services/flashcardService';
 import { useAppStore } from '../store/useAppStore';
 import { useAuth } from './useAuth';
 import {
-  getCurriculumSelectionFingerprint,
+  getDeckIdentityKey,
   isCardInPartSelection,
 } from '../utils/lessonPartSelection';
 import {
@@ -16,6 +16,7 @@ import {
   pruneExcludedIds,
 } from '../utils/deckExclusions';
 import { buildReviewSession } from '../utils/reviewSession';
+import { isSrsDue } from '../utils/reviewOverview';
 import type { SRSData } from '../utils/srsEngine';
 import { audioService } from '../services/audioService';
 
@@ -107,7 +108,10 @@ async function loadReviewDeck(
   // No server due set available (RPC absent/failed): derive due ids from the
   // local SRS map and rebuild the session with cap + smart ordering.
   const now = Date.now();
-  const localDueIds = Object.keys(srsData).filter((id) => srsData[id]?.nextReviewDate <= now);
+  const localDueIds = Object.keys(srsData).filter((id) => {
+    const record = srsData[id];
+    return record ? isSrsDue(record, now) : false;
+  });
   const pool = await resolveByIds(localDueIds);
   return { cards: buildReviewSession(pool.cards, srsData), knownIds: pool.knownIds };
 }
@@ -132,21 +136,21 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
   const stableSelectedLessonsKey = useMemo(() => {
     return (selectedLessons || []).join(',');
   }, [selectedLessons]);
-  const stablePartSelectionKey = useMemo(
-    () => getCurriculumSelectionFingerprint(activeBookId, selectedLessons || [], selectedLessonParts),
-    [activeBookId, selectedLessonParts, selectedLessons],
-  );
 
-  const deckExclusionKey = useMemo(() => {
-    if (isReviewDeck) return 'shared_deck_review';
-    if (isLibraryDeck) return `shared_deck_library_${libraryActiveFolder}`;
-    return `shared_deck_${activeBookId}_${stablePartSelectionKey}`;
-  }, [
+  const deckExclusionKey = useMemo(() => getDeckIdentityKey({
+    activeBookId,
+    selectedLessons: selectedLessons || [],
+    selectedLessonParts,
+    libraryActiveFolder,
+    isReviewDeck,
+    isLibraryDeck,
+  }), [
     activeBookId,
     isLibraryDeck,
     isReviewDeck,
     libraryActiveFolder,
-    stablePartSelectionKey,
+    selectedLessonParts,
+    selectedLessons,
   ]);
 
   const cachedEntry = activityDeckCache.get(deckExclusionKey);
@@ -396,7 +400,6 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
   }, [
     activeBookId,
     stableSelectedLessonsKey,
-    stablePartSelectionKey,
     isReviewDeck,
     isLibraryDeck,
     libraryActiveFolder,
@@ -423,16 +426,14 @@ export async function loadActivityDeck({
   const selectedLessonParts = store.selectedLessonParts;
   const deckExclusions = store.deckExclusions;
 
-  const stablePartSelectionKey = getCurriculumSelectionFingerprint(
+  const deckExclusionKey = getDeckIdentityKey({
     activeBookId,
-    selectedLessons || [],
+    selectedLessons: selectedLessons || [],
     selectedLessonParts,
-  );
-  const deckExclusionKey = isReviewDeck
-    ? 'shared_deck_review'
-    : isLibraryDeck
-    ? `shared_deck_library_${libraryActiveFolder}`
-    : `shared_deck_${activeBookId}_${stablePartSelectionKey}`;
+    libraryActiveFolder,
+    isReviewDeck,
+    isLibraryDeck,
+  });
 
   const cached = activityDeckCache.get(deckExclusionKey);
   const excludedIds = new Set(deckExclusions[deckExclusionKey] ?? []);

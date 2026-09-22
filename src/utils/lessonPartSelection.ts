@@ -170,7 +170,31 @@ export function getCurriculumSessionKey(
 /**
  * Session-progress key for review decks. Review decks always cover the full
  * catalog (every book), so this key is deliberately book-agnostic — it must
- * match the deck-exclusion key (`deckExclusions.ts`) or resume indexes,
+ * match the deck-exclusion key (`getDeckIdentityKey`) or resume indexes,
  * exclusions, and the session snapshot would silently disagree.
  */
 export const SHARED_REVIEW_SESSION_KEY = 'shared_deck_review';
+
+export interface DeckIdentityOptions {
+  activeBookId: number;
+  selectedLessons: number[];
+  selectedLessonParts: LessonPartSelectionMap;
+  libraryActiveFolder: string;
+  isReviewDeck: boolean;
+  isLibraryDeck: boolean;
+}
+
+/**
+ * The single derivation of a practice deck identity. Session progress,
+ * deck exclusions, and cached decks must all agree on this key: resume
+ * indexes, curation, and session snapshots silently diverge otherwise.
+ */
+export function getDeckIdentityKey(options: DeckIdentityOptions): string {
+  if (options.isReviewDeck) return SHARED_REVIEW_SESSION_KEY;
+  if (options.isLibraryDeck) return `shared_deck_library_${options.libraryActiveFolder}`;
+  return getCurriculumSessionKey(
+    options.activeBookId,
+    options.selectedLessons,
+    options.selectedLessonParts,
+  );
+}

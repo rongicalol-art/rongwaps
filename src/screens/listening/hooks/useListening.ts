@@ -4,7 +4,7 @@ import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
 import { useAppStore } from '../../../store/useAppStore';
 import { shuffleItems } from '../../../utils/sessionOrder';
 import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
-import { getCurriculumSessionKey, SHARED_REVIEW_SESSION_KEY } from '../../../utils/lessonPartSelection';
+import { getDeckIdentityKey } from '../../../utils/lessonPartSelection';
 import { buildAttributeChoices, getCardChoiceTarget } from '../../../utils/meaningChoices';
 import { useCardSession } from '../../../hooks/useCardSession';
 
@@ -18,7 +18,14 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
   const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
   const autoPlayAudio = usePracticePreferencesStore((state) => state.autoPlayAudio);
   const listeningChoiceType = usePracticePreferencesStore((state) => state.listeningChoiceType);
-  const sessionKey = isReviewDeck ? SHARED_REVIEW_SESSION_KEY : isLibraryDeck ? `shared_deck_library_${libraryActiveFolder}` : getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
+  const sessionKey = getDeckIdentityKey({
+    activeBookId,
+    selectedLessons,
+    selectedLessonParts,
+    libraryActiveFolder,
+    isReviewDeck,
+    isLibraryDeck,
+  });
 
   const { cards: loadedCards, isLoading } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
 

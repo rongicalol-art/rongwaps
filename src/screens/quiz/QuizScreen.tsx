@@ -4,7 +4,7 @@ import { ScreenSkeleton } from '../../lib/widgets';
 import { QuizChoices } from './QuizChoices';
 import { QuizTyping } from './QuizTyping';
 import { useAppStore } from '../../store/useAppStore';
-import { getCurriculumSessionKey, SHARED_REVIEW_SESSION_KEY } from '../../utils/lessonPartSelection';
+import { getDeckIdentityKey } from '../../utils/lessonPartSelection';
 import type { QuizMode } from '../../types/models';
 
 interface QuizScreenProps {
@@ -32,11 +32,14 @@ export function QuizScreen({
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
 
-  const sessionKey = isReviewDeck
-    ? SHARED_REVIEW_SESSION_KEY
-    : isLibraryDeck
-      ? `shared_deck_library_${libraryActiveFolder}`
-      : getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
+  const sessionKey = getDeckIdentityKey({
+    activeBookId,
+    selectedLessons,
+    selectedLessonParts,
+    libraryActiveFolder,
+    isReviewDeck,
+    isLibraryDeck,
+  });
 
   if (isLoading) {
     return <ScreenSkeleton type="quiz" />;

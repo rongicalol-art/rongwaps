@@ -3,10 +3,10 @@ import assert from 'node:assert/strict';
 import type { Flashcard } from '../src/data/flashcards';
 import {
   filterDeckByExclusions,
-  getDeckExclusionKey,
   isCardIdExcluded,
   pruneExcludedIds,
 } from '../src/utils/deckExclusions';
+import { getDeckIdentityKey } from '../src/utils/lessonPartSelection';
 
 function card(id: string): Flashcard {
   return {
@@ -21,7 +21,7 @@ function card(id: string): Flashcard {
 const EMPTY_PARTS = {};
 
 test('curriculum deck key includes book, lessons, and part fingerprint', () => {
-  const key = getDeckExclusionKey({
+  const key = getDeckIdentityKey({
     activeBookId: 2,
     selectedLessons: [3, 4],
     selectedLessonParts: { '2:3': [1], '2:4': 'all' },
@@ -33,7 +33,7 @@ test('curriculum deck key includes book, lessons, and part fingerprint', () => {
 });
 
 test('review deck key is global (not book-scoped)', () => {
-  const key1 = getDeckExclusionKey({
+  const key1 = getDeckIdentityKey({
     activeBookId: 1,
     selectedLessons: [],
     selectedLessonParts: EMPTY_PARTS,
@@ -41,7 +41,7 @@ test('review deck key is global (not book-scoped)', () => {
     isReviewDeck: true,
     isLibraryDeck: false,
   });
-  const key2 = getDeckExclusionKey({
+  const key2 = getDeckIdentityKey({
     activeBookId: 7,
     selectedLessons: [],
     selectedLessonParts: EMPTY_PARTS,
@@ -54,7 +54,7 @@ test('review deck key is global (not book-scoped)', () => {
 });
 
 test('library deck key is folder-scoped', () => {
-  const key = getDeckExclusionKey({
+  const key = getDeckIdentityKey({
     activeBookId: 1,
     selectedLessons: [],
     selectedLessonParts: EMPTY_PARTS,

@@ -4,7 +4,7 @@ import { useAppStore } from '../../../store/useAppStore';
 import { audioService } from '../../../services/audioService';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
 import { shuffleItems } from '../../../utils/sessionOrder';
-import { getCurriculumSessionKey, SHARED_REVIEW_SESSION_KEY } from '../../../utils/lessonPartSelection';
+import { getDeckIdentityKey } from '../../../utils/lessonPartSelection';
 import { getSessionStartIndex, retainCurrentCardIndex } from '../../../utils/sessionProgress';
 import type { Quality } from '../../../utils/srsEngine';
 
@@ -43,7 +43,14 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
   };
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
-  const sessionKey = isReviewDeck ? SHARED_REVIEW_SESSION_KEY : isLibraryDeck ? `shared_deck_library_${libraryActiveFolder}` : getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
+  const sessionKey = getDeckIdentityKey({
+    activeBookId,
+    selectedLessons,
+    selectedLessonParts,
+    libraryActiveFolder,
+    isReviewDeck,
+    isLibraryDeck,
+  });
 
   const { cards: loadedCards, deckCards: fullDeckCards, isLoading, error, deckExclusionKey, excludedIds } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
   const [cards, setCards] = useState<Flashcard[]>(() => loadedCards);

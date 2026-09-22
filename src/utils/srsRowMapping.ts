@@ -71,10 +71,14 @@ interface CardProgressRowLike {
 
 /**
  * Equality across every persisted SRS field — the delta comparison used by
- * the cloud sync layer. Keep in lockstep with `srsDataToUpsert`/
- * `rowToSrsData`: a new persisted field must be added to all three.
+ * the cloud sync layer. Accepts `undefined` so a missing baseline record
+ * (never synced) counts as different from any present record. Keep in
+ * lockstep with `srsDataToUpsert`/`rowToSrsData`: a new persisted field must
+ * be added to all three.
  */
-export function isSameSrsData(a: SRSData, b: SRSData): boolean {
+export function isSameSrsData(a: SRSData | undefined, b: SRSData | undefined): boolean {
+  if (a === b) return true;
+  if (!a || !b) return false;
   return (
     a.efactor === b.efactor
     && a.interval === b.interval

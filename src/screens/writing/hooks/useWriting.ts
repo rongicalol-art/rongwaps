@@ -3,7 +3,7 @@ import { useAppStore } from '../../../store/useAppStore';
 import { audioService } from '../../../services/audioService';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
 import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
-import { getCurriculumSessionKey, SHARED_REVIEW_SESSION_KEY } from '../../../utils/lessonPartSelection';
+import { getDeckIdentityKey } from '../../../utils/lessonPartSelection';
 import { useCardSession } from '../../../hooks/useCardSession';
 
 // How many upcoming cards (without recorded audio) get neural TTS pre-warmed
@@ -30,7 +30,14 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
   const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
   const autoPlayAudio = usePracticePreferencesStore((state) => state.autoPlayAudio);
-  const sessionKey = isReviewDeck ? SHARED_REVIEW_SESSION_KEY : isLibraryDeck ? `shared_deck_library_${libraryActiveFolder}` : getCurriculumSessionKey(activeBookId, selectedLessons, selectedLessonParts);
+  const sessionKey = getDeckIdentityKey({
+    activeBookId,
+    selectedLessons,
+    selectedLessonParts,
+    libraryActiveFolder,
+    isReviewDeck,
+    isLibraryDeck,
+  });
 
   const { cards: loadedCards, isLoading, error: loadError } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
 

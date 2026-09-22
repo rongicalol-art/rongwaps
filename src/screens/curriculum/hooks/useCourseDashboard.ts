@@ -6,6 +6,7 @@ import { fetchVocabulary } from '../../../services/vocabularyService';
 import { useGrammarLessonStore } from '../../../store/useGrammarLessonStore';
 import type { CourseDashboardProgress, LessonPartSelectionMap } from '../../../types/models';
 import { getLessonSelectionKey } from '../../../utils/lessonPartSelection';
+import { aggregateLessonPartProgress } from '../../../utils/lessonPartProgress';
 
 interface UseCourseDashboardOptions {
   activeBookId: number;
@@ -75,7 +76,6 @@ export function useCourseDashboard({
         title: `Lesson ${lessonId}`,
         status: 'available',
       });
-    const learnedSet = new Set(learnedCards.map((cardId) => cardId.toLowerCase()));
     const cardsByLesson = new Map<number, Flashcard[]>();
 
     cards.forEach((card) => {
@@ -87,9 +87,8 @@ export function useCourseDashboard({
     const baseLessons = lessonDefinitions
       .map((lesson) => {
         const lessonCards = cardsByLesson.get(lesson.id) ?? [];
-        const learnedCount = lessonCards.filter(
-          (card) => learnedSet.has(card.id.toLowerCase()),
-        ).length;
+        const partRows = aggregateLessonPartProgress(lessonCards, learnedCards);
+        const learnedCount = partRows.reduce((total, part) => total + part.learnedCount, 0);
         const grammarParts = getInteractiveGrammarManifestForLesson(activeBookId, lesson.id);
         const requiredPathCount = grammarParts.length;
         const completedPathCount = grammarParts.filter(
@@ -100,6 +99,7 @@ export function useCourseDashboard({
         return {
           lesson,
           lessonCards,
+          partRows,
           learnedCount,
           requiredPathCount,
           completedPathCount,
@@ -120,6 +120,7 @@ export function useCourseDashboard({
     const lessons = baseLessons.map(({
       lesson,
       lessonCards,
+      partRows,
       learnedCount,
       requiredPathCount,
       completedPathCount,
@@ -127,31 +128,17 @@ export function useCourseDashboard({
     }) => {
       const isLocked = lesson.status === 'locked';
       const isCurrent = lesson.id === currentLessonId;
-      const cardsByPart = new Map<number, Flashcard[]>();
-
-      lessonCards.forEach((card) => {
-        const partId = card.partId ?? 1;
-        const partCards = cardsByPart.get(partId) ?? [];
-        partCards.push(card);
-        cardsByPart.set(partId, partCards);
-      });
-
-      const availablePartIds = Array.from(cardsByPart.keys()).sort((a, b) => a - b);
+      const availablePartIds = partRows.map((part) => part.id);
       const partSelection = selectedLessonParts[getLessonSelectionKey(activeBookId, lesson.id)];
       const selectedPartIds = partSelection === 'all'
         || (!partSelection && selectedLessons.includes(lesson.id))
         ? availablePartIds
         : partSelection ?? [];
       const selectedPartSet = new Set(selectedPartIds);
-      const parts = availablePartIds.map((partId) => {
-        const partCards = cardsByPart.get(partId) ?? [];
-        return {
-          id: partId,
-          wordCount: partCards.length,
-          learnedCount: partCards.filter((card) => learnedSet.has(card.id.toLowerCase())).length,
-          isSelected: selectedPartSet.has(partId),
-        };
-      });
+      const parts = partRows.map((part) => ({
+        ...part,
+        isSelected: selectedPartSet.has(part.id),
+      }));
 
       return {
         id: lesson.id,
@@ -178,9 +165,7 @@ export function useCourseDashboard({
       };
     });
 
-    const learnedWords = cards.filter(
-      (card) => learnedSet.has(card.id.toLowerCase()),
-    ).length;
+    const learnedWords = lessons.reduce((total, lesson) => total + lesson.learnedCount, 0);
     const completedLessons = lessons.filter((lesson) => lesson.isFullyCompleted).length;
     const totalRequiredPaths = lessons.reduce(
       (total, lesson) => total + lesson.requiredPathCount,
