@@ -13,6 +13,7 @@ import { ReaderStudyDrawer } from './components/ReaderStudyDrawer';
 import { ReaderStudyPanel } from './components/ReaderStudyPanel';
 import { StudySidePanel } from '../../lib/widgets';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
+import { useWorkspaceIsolation } from '../../hooks/useWorkspaceIsolation';
 import { isNarrativeReading } from './utils/narrativeParagraphs';
 import { ReadingBottomDock } from './components/ReadingBottomDock';
 
@@ -213,28 +214,7 @@ export function ReaderScreen({
   }, [reading?.id]);
 
   // Isolate background from accessibility tree and user focus while reader is open
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    const root = document.getElementById('root');
-    const siblings = root
-      ? Array.from(root.children).filter((element) => element !== dialog) as HTMLElement[]
-      : [];
-    const targets = siblings.map((element) => (
-      (element.querySelector('[data-workspace-content]') as HTMLElement | null) ?? element
-    ));
-
-    targets.forEach((target) => {
-      target.setAttribute('inert', '');
-      target.setAttribute('aria-hidden', 'true');
-    });
-
-    return () => {
-      targets.forEach((target) => {
-        target.removeAttribute('inert');
-        target.removeAttribute('aria-hidden');
-      });
-    };
-  }, []);
+  useWorkspaceIsolation(dialogRef);
 
   // Keyboard navigation
   useEffect(() => {

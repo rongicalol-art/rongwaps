@@ -1,30 +1,29 @@
-import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import { audioService } from '../../services/audioService';
 import { useAppStore } from '../../store/useAppStore';
 import { useGrammarLessonStore } from '../../store/useGrammarLessonStore';
 import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
 import { findNeighbourGrammarPart } from '../../data/interactiveGrammarPages';
 import type { InteractiveGrammarPart } from '../../types/models';
-import {
-  continueGrammarLesson,
-} from '../../utils/grammarLessonFlow';
 import { cn } from '../../utils/cn';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
-import { ActionButton, AppIcon, StudySidePanel } from '../../lib/widgets';
+import { useWorkspaceIsolation } from '../../hooks/useWorkspaceIsolation';
+import { StudySidePanel } from '../../lib/widgets';
 import { GrammarLessonHeader } from './components/GrammarLessonHeader';
 import { GrammarConfusionDrawer } from './components/GrammarConfusionDrawer';
 import { GrammarConfusionPanel } from './components/GrammarConfusionPanel';
+import { GrammarContinueFooter } from './components/GrammarContinueFooter';
+import { GrammarBookPageViewer } from './components/GrammarBookPageViewer';
+import { useGrammarLessonPage } from './hooks/useGrammarLessonPage';
+import { useGrammarFooterVisibility } from './hooks/useGrammarFooterVisibility';
 
 // Window shell (this module) stays eager so the lesson opens instantly with
-// its canvas + header; the heavy study page and book viewer stream in under a
-// spinner. Never static-import them here or they join the main bundle.
+// its canvas + header; the heavy study page streams in under a spinner.
+// Never static-import it here or it joins the main bundle.
 const GrammarStudyPage = lazy(() =>
   import('./components/GrammarStudyPage').then((m) => ({ default: m.GrammarStudyPage })),
-);
-const BookPageViewer = lazy(() =>
-  import('./components/BookPageViewer').then((m) => ({ default: m.BookPageViewer })),
 );
 
 interface GrammarLessonScreenProps {
@@ -64,39 +63,6 @@ export function GrammarLessonScreen({
   const dialogRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLElement>(null);
   const bookPageButtonRef = useRef<HTMLButtonElement>(null);
-  const completedPageIds = useGrammarLessonStore((state) => state.completedPageIds);
-  const firstIncompleteIndex = useMemo(
-    () => part.grammarPages.findIndex((grammarPage) => !completedPageIds.includes(grammarPage.id)),
-    [completedPageIds, part.grammarPages],
-  );
-  const [currentGrammarIndex, setCurrentGrammarIndex] = useState(() => {
-    if (initialPageId) {
-      const targetIndex = part.grammarPages.findIndex((p) => p.id === initialPageId);
-      if (targetIndex >= 0) return targetIndex;
-    }
-    if (initialGrammarIndex !== undefined && initialGrammarIndex >= 0 && initialGrammarIndex < part.grammarPages.length) {
-      return initialGrammarIndex;
-    }
-    if (typeof window !== 'undefined') {
-      const param = new URLSearchParams(window.location.search).get('grammarIndex');
-      if (param !== null) {
-        const parsed = parseInt(param, 10);
-        if (!Number.isNaN(parsed) && parsed >= 0 && parsed < part.grammarPages.length) {
-          return parsed;
-        }
-      }
-    }
-    return firstIncompleteIndex === -1 ? 0 : firstIncompleteIndex;
-  });
-
-  useEffect(() => {
-    if (initialPageId) {
-      const targetIndex = part.grammarPages.findIndex((p) => p.id === initialPageId);
-      if (targetIndex >= 0) {
-        setCurrentGrammarIndex(targetIndex);
-      }
-    }
-  }, [initialPageId, part.grammarPages]);
 
   const [isBookOpen, setIsBookOpen] = useState(false);
   const [isConfusionOpen, setIsConfusionOpen] = useState(false);
@@ -115,8 +81,25 @@ export function GrammarLessonScreen({
   // Continue footer never floats over the loading state.
   const [contentReady, setContentReady] = useState(false);
   const markContentReady = useCallback(() => setContentReady(true), []);
-  const reduceMotion = useReducedMotion();
-  const page = part.grammarPages[currentGrammarIndex];
+
+  const {
+    page,
+    previousPage,
+    isLastPage,
+    continueAfterStudy,
+    goBackToPreviousGrammar,
+    currentGrammarIndex,
+    currentStepIndex,
+    totalSteps,
+  } = useGrammarLessonPage({
+    part,
+    initialPageId,
+    initialGrammarIndex,
+    contentReady,
+    onClose,
+    onProceedToReading,
+  });
+
   const hasConfusion = Boolean(page.confusion && page.confusion.items.length > 0);
   const characterPreference = useAppStore((state) => state.characterPreference);
   const setCharacterPreference = useAppStore((state) => state.setCharacterPreference);
@@ -125,152 +108,42 @@ export function GrammarLessonScreen({
   const showTranslation = usePracticePreferencesStore((state) => state.showTranslation);
   const characterFont = usePracticePreferencesStore((state) => state.characterFont);
   const updatePreferences = usePracticePreferencesStore((state) => state.updatePreferences);
-  const markPageComplete = useGrammarLessonStore((state) => state.markPageComplete);
   const markPartStarted = useGrammarLessonStore((state) => state.markPartStarted);
-  const markPartComplete = useGrammarLessonStore((state) => state.markPartComplete);
-  const previousPage = currentGrammarIndex > 0 ? part.grammarPages[currentGrammarIndex - 1] : null;
-  const closeBookViewer = useCallback(() => {
-    setIsBookOpen(false);
-    window.requestAnimationFrame(() => bookPageButtonRef.current?.focus());
-  }, []);
-  const totalSteps = part.grammarPages.length;
-  const currentStepIndex = currentGrammarIndex;
-
-  useEffect(() => {
-    markPartStarted(part.id);
-  }, [markPartStarted, part.id]);
-
-  const [isFooterVisible, setIsFooterVisible] = useState(true);
-  const lastScrollY = useRef(0);
-  const isHoveringBottomRef = useRef(false);
-  const wasHoverRevealedRef = useRef(false);
-  const hoverLeaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const handleBottomHoverEnter = useCallback(() => {
-    if (hoverLeaveTimerRef.current) {
-      clearTimeout(hoverLeaveTimerRef.current);
-      hoverLeaveTimerRef.current = null;
-    }
-    isHoveringBottomRef.current = true;
-    setIsFooterVisible((currentVisible) => {
-      if (!currentVisible) {
-        wasHoverRevealedRef.current = true;
-      }
-      return true;
-    });
-  }, []);
-
-  const handleBottomHoverLeave = useCallback(() => {
-    isHoveringBottomRef.current = false;
-    if (hoverLeaveTimerRef.current) {
-      clearTimeout(hoverLeaveTimerRef.current);
-    }
-    hoverLeaveTimerRef.current = setTimeout(() => {
-      if (wasHoverRevealedRef.current) {
-        wasHoverRevealedRef.current = false;
-        setIsFooterVisible(false);
-      }
-    }, 80);
-  }, []);
-
-  // Scroll listener for dynamic hide/reveal of bottom continue footer (matching Reader mode)
-  useEffect(() => {
-    const main = mainRef.current;
-    if (!main) return;
-
-    const handleScroll = () => {
-      if (isHoveringBottomRef.current) return;
-
-      const currentScrollY = main.scrollTop;
-      const delta = currentScrollY - lastScrollY.current;
-
-      if (Math.abs(delta) > 8) {
-        if (delta > 0 && currentScrollY > 40) {
-          wasHoverRevealedRef.current = false;
-          setIsFooterVisible((prev) => (prev ? false : prev));
-        } else if (delta < 0) {
-          wasHoverRevealedRef.current = false;
-          setIsFooterVisible((prev) => (!prev ? true : prev));
-        }
-      }
-
-      lastScrollY.current = currentScrollY;
-    };
-
-    main.addEventListener('scroll', handleScroll, { passive: true });
-    return () => main.removeEventListener('scroll', handleScroll);
-  }, [currentGrammarIndex]);
-
-  useEffect(() => {
-    lastScrollY.current = 0;
-    isHoveringBottomRef.current = false;
-    wasHoverRevealedRef.current = false;
-    setIsFooterVisible(true);
-    setIsConfusionOpen(false);
-    mainRef.current?.scrollTo({ top: 0 });
-    if (document.activeElement?.tagName === 'BODY') mainRef.current?.focus();
-  }, [currentGrammarIndex]);
-
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    const root = document.getElementById('root');
-    const siblings = root
-      ? Array.from(root.children).filter((element) => element !== dialog) as HTMLElement[]
-      : [];
-    const targets = siblings.map((element) => (
-      (element.querySelector('[data-workspace-content]') as HTMLElement | null) ?? element
-    ));
-
-    targets.forEach((target) => {
-      target.setAttribute('inert', '');
-      target.setAttribute('aria-hidden', 'true');
-    });
-    dialog?.focus();
-
-    return () => {
-      audioService.stop();
-      targets.forEach((target) => {
-        target.removeAttribute('inert');
-        target.removeAttribute('aria-hidden');
-      });
-    };
-  }, []);
 
   const closeLesson = useCallback(() => {
     audioService.stop();
     onClose();
   }, [onClose]);
 
+  const closeBookViewer = useCallback(() => {
+    setIsBookOpen(false);
+    window.requestAnimationFrame(() => bookPageButtonRef.current?.focus());
+  }, []);
+
+  useEffect(() => {
+    markPartStarted(part.id);
+  }, [markPartStarted, part.id]);
+
+  const { isFooterVisible, handleBottomHoverEnter, handleBottomHoverLeave, resetFooter } =
+    useGrammarFooterVisibility(mainRef, currentGrammarIndex);
+
+  useEffect(() => {
+    resetFooter();
+    setIsConfusionOpen(false);
+    mainRef.current?.scrollTo({ top: 0 });
+    if (document.activeElement?.tagName === 'BODY') mainRef.current?.focus();
+  }, [currentGrammarIndex, resetFooter]);
+
+  // Isolate the workspace behind the window and restore it (and audio) on close.
+  useWorkspaceIsolation(dialogRef, {
+    focusDialog: true,
+    onDeactivate: () => audioService.stop(),
+  });
+
   const onCloseRef = useRef(onClose);
   useEffect(() => {
     onCloseRef.current = onClose;
   }, [onClose]);
-
-  const isLastPage = currentGrammarIndex === part.grammarPages.length - 1;
-
-  const continueAfterStudy = useCallback(() => {
-    if (!contentReady) return; // ignore keyboard advance until page content mounted
-    const next = continueGrammarLesson({
-      grammarIndex: currentGrammarIndex,
-      grammarCount: part.grammarPages.length,
-      pageId: page.id,
-      completedPageIds,
-      allPageIds: part.grammarPages.map((grammarPage) => grammarPage.id),
-    });
-    markPageComplete(page.id);
-    if (isLastPage || next.isPartComplete) {
-      markPartComplete(part.id);
-      closeLesson();
-      onProceedToReading?.(part);
-      return;
-    }
-    setCurrentGrammarIndex(next.grammarIndex);
-  }, [closeLesson, completedPageIds, contentReady, currentGrammarIndex, isLastPage, markPageComplete, markPartComplete, onProceedToReading, page, part]);
-
-  const goBackToPreviousGrammar = useCallback(() => {
-    if (!previousPage) return;
-    setCurrentGrammarIndex((index) => Math.max(0, index - 1));
-  }, [previousPage]);
 
   const navigateToPart = useCallback(
     (direction: 'next' | 'previous') => {
@@ -348,16 +221,16 @@ export function GrammarLessonScreen({
               'grammar-learn-workspace',
             )}
           >
-          <GrammarLessonHeader
-            characterPreference={characterPreference}
-            characterFont={characterFont}
-            showPinyin={showPinyin}
-            showTranslation={showTranslation}
-            onClose={closeLesson}
-            onTogglePinyin={() => updatePreferences({ showPinyin: !showPinyin })}
-            onToggleTranslation={() => updatePreferences({ showTranslation: !showTranslation })}
-            onCharacterPreferenceChange={setCharacterPreference}
-            onCharacterFontChange={(font) => updatePreferences({ characterFont: font })}
+            <GrammarLessonHeader
+              characterPreference={characterPreference}
+              characterFont={characterFont}
+              showPinyin={showPinyin}
+              showTranslation={showTranslation}
+              onClose={closeLesson}
+              onTogglePinyin={() => updatePreferences({ showPinyin: !showPinyin })}
+              onToggleTranslation={() => updatePreferences({ showTranslation: !showTranslation })}
+              onCharacterPreferenceChange={setCharacterPreference}
+              onCharacterFontChange={(font) => updatePreferences({ characterFont: font })}
               currentStepIndex={currentStepIndex}
               totalSteps={totalSteps}
               progress={((currentStepIndex + 1) / totalSteps) * 100}
@@ -402,48 +275,14 @@ export function GrammarLessonScreen({
             onMouseLeave={handleBottomHoverLeave}
           />
 
-          <AnimatePresence>
-            {isFooterVisible && contentReady && (
-              <motion.footer
-                aria-label="Grammar navigation"
-                initial={{ opacity: 0, y: reduceMotion ? 0 : '100%' }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: reduceMotion ? 0 : '100%' }}
-                transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                className="pointer-events-none absolute bottom-0 inset-x-0 z-30"
-              >
-                <div className="bg-gradient-to-t from-ui-canvas via-ui-canvas/95 to-transparent px-4 pb-sheet-safe pt-8 sm:px-8 sm:pt-12 pointer-events-none">
-                  <div className="flex w-full items-center gap-3 pointer-events-auto">
-                    {previousPage && (
-                      <div className="shrink-0">
-                        <ActionButton
-                          variant="quiet"
-                          size="md"
-                          onClick={goBackToPreviousGrammar}
-                          className="px-2 text-ui-muted-strong"
-                        >
-                          <AppIcon name="back" size={16} />
-                          Back
-                        </ActionButton>
-                      </div>
-                    )}
-                    <div className="ml-auto flex-1 sm:flex-none w-full max-w-sm sm:w-auto sm:min-w-[16rem] flex justify-end">
-                      <ActionButton
-                        variant="primary"
-                        size="lg"
-                        fullWidth
-                        onClick={continueAfterStudy}
-                        aria-label={isLastPage ? 'Proceed to Reading' : 'Continue'}
-                        className="btn-touch-primary text-base font-black"
-                      >
-                        {isLastPage ? 'Proceed to Reading' : 'Continue'}
-                      </ActionButton>
-                    </div>
-                  </div>
-                </div>
-              </motion.footer>
-            )}
-          </AnimatePresence>
+          <GrammarContinueFooter
+            isVisible={isFooterVisible}
+            contentReady={contentReady}
+            previousPage={previousPage}
+            isLastPage={isLastPage}
+            onBack={goBackToPreviousGrammar}
+            onContinue={continueAfterStudy}
+          />
         </div>
 
         {hasConfusion && page.confusion && isSidePanelOpen && (
@@ -465,28 +304,13 @@ export function GrammarLessonScreen({
       </div>
 
       {isBookOpen && (
-        <Suspense
-          fallback={
-            <div
-              role="status"
-              aria-label="Loading book"
-              className="fixed inset-0 z-shell flex flex-col items-center justify-center gap-5 bg-ui-ink-strong"
-            >
-              <span className="h-11 w-11 animate-spin rounded-full border-4 border-ui-surface/25 border-t-ui-surface" />
-              <span className="text-xs font-black uppercase tracking-widest text-ui-surface/70">
-                Loading book…
-              </span>
-            </div>
-          }
-        >
-          <BookPageViewer
-            bookId={page.bookId}
-            lessonId={page.lessonId}
-            grammarTitle={page.titleEnglish}
-            pages={page.printedPages}
-            onClose={closeBookViewer}
-          />
-        </Suspense>
+        <GrammarBookPageViewer
+          bookId={page.bookId}
+          lessonId={page.lessonId}
+          grammarTitle={page.titleEnglish}
+          pages={page.printedPages}
+          onClose={closeBookViewer}
+        />
       )}
       {hasConfusion && page.confusion && (
         <GrammarConfusionDrawer
