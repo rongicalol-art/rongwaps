@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { useAppStore } from '../store/useAppStore';
 import {
   getLessonSelectionKey,
@@ -29,6 +29,15 @@ export function useAppNavigation() {
     () => getSelectedLessonIds(selectedLessonParts, activeBookId),
     [activeBookId, selectedLessonParts],
   );
+
+  // 'create-card' is a one-shot flow: a persisted value must not reopen the
+  // modal on the next boot.
+  useEffect(() => {
+    const store = useAppStore.getState();
+    if (store.activeActivity === 'create-card') {
+      store.setActiveActivity(null);
+    }
+  }, []);
 
   const handleSetActiveActivity = useCallback((activity: ActivityType) => {
     setActiveActivity(activity);
