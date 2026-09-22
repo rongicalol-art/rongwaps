@@ -1,0 +1,9044 @@
+{
+  "schemaVersion": 1,
+  "bookId": 1,
+  "generatedAt": "2026-09-22T05:30:14.647Z",
+  "count": 656,
+  "items": [
+    {
+      "id": "老",
+      "character": "老",
+      "meaning": "old",
+      "pinyin": "lǎo",
+      "phonetic": {
+        "glyph": "耂",
+        "reading": "lǎo",
+        "shift": "lǎo"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "師",
+      "character": "師",
+      "meaning": "teacher",
+      "pinyin": "shī",
+      "phonetic": {
+        "glyph": "㠯",
+        "reading": "yǐ",
+        "shift": "yǐ → shī"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.57,
+      "loose": false
+    },
+    {
+      "id": "學",
+      "character": "學",
+      "meaning": "learn",
+      "pinyin": "xué",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.5,
+      "loose": false
+    },
+    {
+      "id": "生",
+      "character": "生",
+      "meaning": "life",
+      "pinyin": "shēng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.6,
+      "loose": false
+    },
+    {
+      "id": "你",
+      "character": "你",
+      "meaning": "you",
+      "pinyin": "nǐ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.52,
+      "loose": false
+    },
+    {
+      "id": "我",
+      "character": "我",
+      "meaning": "me",
+      "pinyin": "wǒ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.76,
+      "loose": false
+    },
+    {
+      "id": "他",
+      "character": "他",
+      "meaning": "he",
+      "pinyin": "tā",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.54,
+      "loose": false
+    },
+    {
+      "id": "是",
+      "character": "是",
+      "meaning": "be",
+      "pinyin": "shì",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.74,
+      "loose": false
+    },
+    {
+      "id": "們",
+      "character": "們",
+      "meaning": "plural marker",
+      "pinyin": "men",
+      "phonetic": {
+        "glyph": "門",
+        "reading": "mén",
+        "shift": "mén → men"
+      },
+      "family": [
+        {
+          "character": "問",
+          "pinyin": "wèn",
+          "reading": "mén"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "人",
+      "character": "人",
+      "meaning": "person",
+      "pinyin": "rén",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "先",
+      "character": "先",
+      "meaning": "first",
+      "pinyin": "xiān",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.46,
+      "loose": false
+    },
+    {
+      "id": "小",
+      "character": "小",
+      "meaning": "small",
+      "pinyin": "xiǎo",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.86,
+      "loose": false
+    },
+    {
+      "id": "姐",
+      "character": "姐",
+      "meaning": "elder sister",
+      "pinyin": "jiě",
+      "phonetic": {
+        "glyph": "且",
+        "reading": "qiě",
+        "shift": "qiě → jiě"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.69,
+      "loose": false
+    },
+    {
+      "id": "太",
+      "character": "太",
+      "meaning": "too",
+      "pinyin": "tài",
+      "phonetic": {
+        "glyph": "大",
+        "reading": "dài",
+        "shift": "dài → tài"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.39,
+      "loose": false
+    },
+    {
+      "id": "新",
+      "character": "新",
+      "meaning": "new",
+      "pinyin": "xīn",
+      "phonetic": {
+        "glyph": "亲",
+        "reading": "qīn",
+        "shift": "qīn → xīn"
+      },
+      "family": [
+        {
+          "character": "親",
+          "pinyin": "qīn",
+          "reading": "qīn"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.34,
+      "loose": false
+    },
+    {
+      "id": "同",
+      "character": "同",
+      "meaning": "same",
+      "pinyin": "tóng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.73,
+      "loose": false
+    },
+    {
+      "id": "她",
+      "character": "她",
+      "meaning": "she",
+      "pinyin": "tā",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.39,
+      "loose": false
+    },
+    {
+      "id": "誰",
+      "character": "誰",
+      "meaning": "who",
+      "pinyin": "shéi",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.54,
+      "loose": false
+    },
+    {
+      "id": "叫",
+      "character": "叫",
+      "meaning": "be called",
+      "pinyin": "jiào",
+      "phonetic": {
+        "glyph": "丩",
+        "reading": "jiū",
+        "shift": "jiū → jiào"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.9,
+      "loose": true
+    },
+    {
+      "id": "姓",
+      "character": "姓",
+      "meaning": "surname",
+      "pinyin": "xìng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.22,
+      "loose": false
+    },
+    {
+      "id": "很",
+      "character": "很",
+      "meaning": "very",
+      "pinyin": "hěn",
+      "phonetic": {
+        "glyph": "艮",
+        "reading": "gèn",
+        "shift": "gèn → hěn"
+      },
+      "family": [
+        {
+          "character": "跟",
+          "pinyin": "gēn",
+          "reading": "gèn"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.68,
+      "loose": false
+    },
+    {
+      "id": "可",
+      "character": "可",
+      "meaning": "may",
+      "pinyin": "kě",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.3,
+      "loose": false
+    },
+    {
+      "id": "愛",
+      "character": "愛",
+      "meaning": "love",
+      "pinyin": "ài",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.88,
+      "loose": false
+    },
+    {
+      "id": "哪",
+      "character": "哪",
+      "meaning": "which",
+      "pinyin": "nǎ/něi",
+      "phonetic": {
+        "glyph": "那",
+        "reading": "Nuó",
+        "shift": "Nuó → nǎ/něi"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "國",
+      "character": "國",
+      "meaning": "country",
+      "pinyin": "guó",
+      "phonetic": {
+        "glyph": "或",
+        "reading": "huò",
+        "shift": "huò → guó"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.51,
+      "loose": false
+    },
+    {
+      "id": "妳",
+      "character": "妳",
+      "meaning": "you",
+      "pinyin": "nǐ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.09,
+      "loose": false
+    },
+    {
+      "id": "知",
+      "character": "知",
+      "meaning": "know",
+      "pinyin": "zhī",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.24,
+      "loose": false
+    },
+    {
+      "id": "道",
+      "character": "道",
+      "meaning": "way",
+      "pinyin": "dào",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.73,
+      "loose": false
+    },
+    {
+      "id": "嗎",
+      "character": "嗎",
+      "meaning": "question particle",
+      "pinyin": "ma",
+      "phonetic": {
+        "glyph": "馬",
+        "reading": "mǎ",
+        "shift": "mǎ → ma"
+      },
+      "family": [
+        {
+          "character": "碼",
+          "pinyin": "mǎ",
+          "reading": "mǎ"
+        },
+        {
+          "character": "媽",
+          "pinyin": "mā",
+          "reading": "mǎ"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "日",
+      "character": "日",
+      "meaning": "day",
+      "pinyin": "rì",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.78,
+      "loose": false
+    },
+    {
+      "id": "本",
+      "character": "本",
+      "meaning": "book",
+      "pinyin": "běn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.84,
+      "loose": false
+    },
+    {
+      "id": "臺",
+      "character": "臺",
+      "meaning": "platform",
+      "pinyin": "tái",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.6,
+      "loose": false
+    },
+    {
+      "id": "灣",
+      "character": "灣",
+      "meaning": "bay",
+      "pinyin": "wān",
+      "phonetic": {
+        "glyph": "彎",
+        "reading": "wān",
+        "shift": "wān"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "台",
+      "character": "台",
+      "meaning": "platform",
+      "pinyin": "tái",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.7,
+      "loose": false
+    },
+    {
+      "id": "中",
+      "character": "中",
+      "meaning": "central",
+      "pinyin": "zhōng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.88,
+      "loose": false
+    },
+    {
+      "id": "美",
+      "character": "美",
+      "meaning": "beautiful",
+      "pinyin": "měi",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.68,
+      "loose": false
+    },
+    {
+      "id": "英",
+      "character": "英",
+      "meaning": "English",
+      "pinyin": "yīng",
+      "phonetic": {
+        "glyph": "央",
+        "reading": "yāng",
+        "shift": "yāng → yīng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.75,
+      "loose": false
+    },
+    {
+      "id": "漂",
+      "character": "漂",
+      "meaning": "drift",
+      "pinyin": "piào",
+      "phonetic": {
+        "glyph": "票",
+        "reading": "piào",
+        "shift": "piào"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "亮",
+      "character": "亮",
+      "meaning": "bright",
+      "pinyin": "liàng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.75,
+      "loose": false
+    },
+    {
+      "id": "什",
+      "character": "什",
+      "meaning": "what",
+      "pinyin": "shén",
+      "phonetic": {
+        "glyph": "十",
+        "reading": "shí",
+        "shift": "shí → shén"
+      },
+      "family": [
+        {
+          "character": "士",
+          "pinyin": "shì",
+          "reading": "shí"
+        },
+        {
+          "character": "汁",
+          "pinyin": "zhī",
+          "reading": "shí"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.71,
+      "loose": true
+    },
+    {
+      "id": "麼",
+      "character": "麼",
+      "meaning": "suffix",
+      "pinyin": "me",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.38,
+      "loose": false
+    },
+    {
+      "id": "名",
+      "character": "名",
+      "meaning": "name",
+      "pinyin": "míng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.69,
+      "loose": false
+    },
+    {
+      "id": "字",
+      "character": "字",
+      "meaning": "character",
+      "pinyin": "zì",
+      "phonetic": {
+        "glyph": "子",
+        "reading": "zi",
+        "shift": "zi → zì"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "呢",
+      "character": "呢",
+      "meaning": "how-about particle",
+      "pinyin": "ne",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.4,
+      "loose": false
+    },
+    {
+      "id": "印",
+      "character": "印",
+      "meaning": "print",
+      "pinyin": "yìn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.88,
+      "loose": false
+    },
+    {
+      "id": "尼",
+      "character": "尼",
+      "meaning": "Buddhist nun",
+      "pinyin": "ní",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.82,
+      "loose": false
+    },
+    {
+      "id": "喜",
+      "character": "喜",
+      "meaning": "like",
+      "pinyin": "xǐ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.77,
+      "loose": false
+    },
+    {
+      "id": "歡",
+      "character": "歡",
+      "meaning": "happy",
+      "pinyin": "huān",
+      "phonetic": {
+        "glyph": "雚",
+        "reading": "huán",
+        "shift": "huán → huān"
+      },
+      "family": [
+        {
+          "character": "觀",
+          "pinyin": "guān",
+          "reading": "guàn"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "好",
+      "character": "好",
+      "meaning": "good",
+      "pinyin": "hǎo",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.74,
+      "loose": false
+    },
+    {
+      "id": "請",
+      "character": "請",
+      "meaning": "please",
+      "pinyin": "qǐng",
+      "phonetic": {
+        "glyph": "青",
+        "reading": "qīng",
+        "shift": "qīng → qǐng"
+      },
+      "family": [
+        {
+          "character": "睛",
+          "pinyin": "jīng",
+          "reading": "qīng"
+        },
+        {
+          "character": "情",
+          "pinyin": "qíng",
+          "reading": "qīng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "問",
+      "character": "問",
+      "meaning": "ask",
+      "pinyin": "wèn",
+      "phonetic": {
+        "glyph": "門",
+        "reading": "mén",
+        "shift": "mén → wèn"
+      },
+      "family": [
+        {
+          "character": "們",
+          "pinyin": "men",
+          "reading": "mén"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.34,
+      "loose": false
+    },
+    {
+      "id": "大",
+      "character": "大",
+      "meaning": "big",
+      "pinyin": "dà",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.82,
+      "loose": false
+    },
+    {
+      "id": "家",
+      "character": "家",
+      "meaning": "house",
+      "pinyin": "jiā",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.84,
+      "loose": false
+    },
+    {
+      "id": "朋",
+      "character": "朋",
+      "meaning": "friend",
+      "pinyin": "péng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.67,
+      "loose": false
+    },
+    {
+      "id": "友",
+      "character": "友",
+      "meaning": "friend",
+      "pinyin": "yǒu",
+      "phonetic": {
+        "glyph": "又",
+        "reading": "yòu",
+        "shift": "yòu → yǒu"
+      },
+      "family": [
+        {
+          "character": "受",
+          "pinyin": "shòu",
+          "reading": "yòu"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "吃",
+      "character": "吃",
+      "meaning": "eat",
+      "pinyin": "chī",
+      "phonetic": {
+        "glyph": "乞",
+        "reading": "qǐ",
+        "shift": "qǐ → chī"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.43,
+      "loose": false
+    },
+    {
+      "id": "水",
+      "character": "水",
+      "meaning": "water",
+      "pinyin": "shuǐ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "果",
+      "character": "果",
+      "meaning": "fruit",
+      "pinyin": "guǒ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.72,
+      "loose": false
+    },
+    {
+      "id": "喝",
+      "character": "喝",
+      "meaning": "drink",
+      "pinyin": "hē",
+      "phonetic": {
+        "glyph": "曷",
+        "reading": "hé",
+        "shift": "hé → hē"
+      },
+      "family": [
+        {
+          "character": "渴",
+          "pinyin": "kě",
+          "reading": "hé"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "茶",
+      "character": "茶",
+      "meaning": "tea",
+      "pinyin": "chá",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.53,
+      "loose": false
+    },
+    {
+      "id": "謝",
+      "character": "謝",
+      "meaning": "thank",
+      "pinyin": "xiè",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.29,
+      "loose": false
+    },
+    {
+      "id": "不",
+      "character": "不",
+      "meaning": "no",
+      "pinyin": "bù",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.92,
+      "loose": false
+    },
+    {
+      "id": "客",
+      "character": "客",
+      "meaning": "guest",
+      "pinyin": "kè",
+      "phonetic": {
+        "glyph": "各",
+        "reading": "gè",
+        "shift": "gè → kè"
+      },
+      "family": [
+        {
+          "character": "閣",
+          "pinyin": "gé",
+          "reading": "gè"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.45,
+      "loose": false
+    },
+    {
+      "id": "氣",
+      "character": "氣",
+      "meaning": "air",
+      "pinyin": "qì",
+      "phonetic": {
+        "glyph": "气",
+        "reading": "qì",
+        "shift": "qì"
+      },
+      "family": [
+        {
+          "character": "汽",
+          "pinyin": "qì",
+          "reading": "qì"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "珍",
+      "character": "珍",
+      "meaning": "precious",
+      "pinyin": "zhēn",
+      "phonetic": {
+        "glyph": "㐱",
+        "reading": "zhēn",
+        "shift": "zhēn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "珠",
+      "character": "珠",
+      "meaning": "pearl",
+      "pinyin": "zhū",
+      "phonetic": {
+        "glyph": "朱",
+        "reading": "zhū",
+        "shift": "zhū"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "奶",
+      "character": "奶",
+      "meaning": "milk",
+      "pinyin": "nǎi",
+      "phonetic": {
+        "glyph": "乃",
+        "reading": "nǎi",
+        "shift": "nǎi"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "自",
+      "character": "自",
+      "meaning": "self",
+      "pinyin": "zì",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.48,
+      "loose": false
+    },
+    {
+      "id": "介",
+      "character": "介",
+      "meaning": "agent",
+      "pinyin": "jiè",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.64,
+      "loose": false
+    },
+    {
+      "id": "紹",
+      "character": "紹",
+      "meaning": "introduce",
+      "pinyin": "shào",
+      "phonetic": {
+        "glyph": "召",
+        "reading": "zhào",
+        "shift": "zhào → shào"
+      },
+      "family": [
+        {
+          "character": "超",
+          "pinyin": "chāo",
+          "reading": "zhào"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.62,
+      "loose": false
+    },
+    {
+      "id": "早",
+      "character": "早",
+      "meaning": "early",
+      "pinyin": "zǎo",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.37,
+      "loose": false
+    },
+    {
+      "id": "安",
+      "character": "安",
+      "meaning": "peaceful",
+      "pinyin": "ān",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.82,
+      "loose": false
+    },
+    {
+      "id": "午",
+      "character": "午",
+      "meaning": "noon",
+      "pinyin": "wǔ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.78,
+      "loose": false
+    },
+    {
+      "id": "晚",
+      "character": "晚",
+      "meaning": "evening",
+      "pinyin": "wǎn",
+      "phonetic": {
+        "glyph": "免",
+        "reading": "wèn",
+        "shift": "wèn → wǎn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.8,
+      "loose": true
+    },
+    {
+      "id": "幾",
+      "character": "幾",
+      "meaning": "how many",
+      "pinyin": "jǐ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.61,
+      "loose": false
+    },
+    {
+      "id": "點",
+      "character": "點",
+      "meaning": "point",
+      "pinyin": "diǎn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.39,
+      "loose": false
+    },
+    {
+      "id": "鐘",
+      "character": "鐘",
+      "meaning": "clock",
+      "pinyin": "zhōng",
+      "phonetic": {
+        "glyph": "童",
+        "reading": "tóng",
+        "shift": "tóng → zhōng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.32,
+      "loose": false
+    },
+    {
+      "id": "現",
+      "character": "現",
+      "meaning": "appear",
+      "pinyin": "xiàn",
+      "phonetic": {
+        "glyph": "見",
+        "reading": "xiàn",
+        "shift": "xiàn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "在",
+      "character": "在",
+      "meaning": "at",
+      "pinyin": "zài",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.68,
+      "loose": false
+    },
+    {
+      "id": "去",
+      "character": "去",
+      "meaning": "go",
+      "pinyin": "qù",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.49,
+      "loose": false
+    },
+    {
+      "id": "校",
+      "character": "校",
+      "meaning": "school",
+      "pinyin": "xiào",
+      "phonetic": {
+        "glyph": "交",
+        "reading": "jiāo",
+        "shift": "jiāo → xiào"
+      },
+      "family": [
+        {
+          "character": "較",
+          "pinyin": "jiào",
+          "reading": "jiāo"
+        },
+        {
+          "character": "餃",
+          "pinyin": "jiǎo",
+          "reading": "jiāo"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.3,
+      "loose": false
+    },
+    {
+      "id": "媽",
+      "character": "媽",
+      "meaning": "mother",
+      "pinyin": "mā",
+      "phonetic": {
+        "glyph": "馬",
+        "reading": "mǎ",
+        "shift": "mǎ → mā"
+      },
+      "family": [
+        {
+          "character": "嗎",
+          "pinyin": "ma",
+          "reading": "mǎ"
+        },
+        {
+          "character": "碼",
+          "pinyin": "mǎ",
+          "reading": "mǎ"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "爸",
+      "character": "爸",
+      "meaning": "father",
+      "pinyin": "bà",
+      "phonetic": {
+        "glyph": "巴",
+        "reading": "bā",
+        "shift": "bā → bà"
+      },
+      "family": [
+        {
+          "character": "吧",
+          "pinyin": "ba",
+          "reading": "bā"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "孩",
+      "character": "孩",
+      "meaning": "baby",
+      "pinyin": "hái",
+      "phonetic": {
+        "glyph": "亥",
+        "reading": "hài",
+        "shift": "hài → hái"
+      },
+      "family": [
+        {
+          "character": "該",
+          "pinyin": "gāi",
+          "reading": "hài"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "子",
+      "character": "子",
+      "meaning": "child",
+      "pinyin": "zi",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.74,
+      "loose": false
+    },
+    {
+      "id": "今",
+      "character": "今",
+      "meaning": "modern",
+      "pinyin": "jīn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.17,
+      "loose": false
+    },
+    {
+      "id": "天",
+      "character": "天",
+      "meaning": "day",
+      "pinyin": "tiān",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.45,
+      "loose": false
+    },
+    {
+      "id": "星",
+      "character": "星",
+      "meaning": "star",
+      "pinyin": "xīng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.43,
+      "loose": false
+    },
+    {
+      "id": "期",
+      "character": "期",
+      "meaning": "period",
+      "pinyin": "qī",
+      "phonetic": {
+        "glyph": "其",
+        "reading": "qí",
+        "shift": "qí → qī"
+      },
+      "family": [
+        {
+          "character": "淇",
+          "pinyin": "qí",
+          "reading": "qí"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "月",
+      "character": "月",
+      "meaning": "month",
+      "pinyin": "yuè",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.85,
+      "loose": false
+    },
+    {
+      "id": "號",
+      "character": "號",
+      "meaning": "number",
+      "pinyin": "hào",
+      "phonetic": {
+        "glyph": "号",
+        "reading": "hào",
+        "shift": "hào"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "上",
+      "character": "上",
+      "meaning": "above",
+      "pinyin": "shàng(miàn)",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.91,
+      "loose": false
+    },
+    {
+      "id": "有",
+      "character": "有",
+      "meaning": "have",
+      "pinyin": "yǒu",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.29,
+      "loose": false
+    },
+    {
+      "id": "沒",
+      "character": "沒",
+      "meaning": "not",
+      "pinyin": "méi",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.78,
+      "loose": false
+    },
+    {
+      "id": "課",
+      "character": "課",
+      "meaning": "subject",
+      "pinyin": "kè",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.41,
+      "loose": false
+    },
+    {
+      "id": "圖",
+      "character": "圖",
+      "meaning": "map",
+      "pinyin": "tú",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.58,
+      "loose": false
+    },
+    {
+      "id": "書",
+      "character": "書",
+      "meaning": "book",
+      "pinyin": "shū",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.7,
+      "loose": false
+    },
+    {
+      "id": "館",
+      "character": "館",
+      "meaning": "public building",
+      "pinyin": "guǎn",
+      "phonetic": {
+        "glyph": "官",
+        "reading": "guān",
+        "shift": "guān → guǎn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "回",
+      "character": "回",
+      "meaning": "return",
+      "pinyin": "huí",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.72,
+      "loose": false
+    },
+    {
+      "id": "下",
+      "character": "下",
+      "meaning": "below",
+      "pinyin": "xià(miàn)",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.82,
+      "loose": false
+    },
+    {
+      "id": "分",
+      "character": "分",
+      "meaning": "minute",
+      "pinyin": "fēn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.7,
+      "loose": false
+    },
+    {
+      "id": "明",
+      "character": "明",
+      "meaning": "bright",
+      "pinyin": "míng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.79,
+      "loose": false
+    },
+    {
+      "id": "昨",
+      "character": "昨",
+      "meaning": "yesterday",
+      "pinyin": "zuó",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.25,
+      "loose": false
+    },
+    {
+      "id": "週",
+      "character": "週",
+      "meaning": "week",
+      "pinyin": "zhōu",
+      "phonetic": {
+        "glyph": "周",
+        "reading": "zhōu",
+        "shift": "zhōu"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "末",
+      "character": "末",
+      "meaning": "end",
+      "pinyin": "mò",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.81,
+      "loose": false
+    },
+    {
+      "id": "要",
+      "character": "要",
+      "meaning": "want",
+      "pinyin": "yào",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.67,
+      "loose": false
+    },
+    {
+      "id": "來",
+      "character": "來",
+      "meaning": "come",
+      "pinyin": "lái",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.7,
+      "loose": false
+    },
+    {
+      "id": "啊",
+      "character": "啊",
+      "meaning": "ah",
+      "pinyin": "ā",
+      "phonetic": {
+        "glyph": "阿",
+        "reading": "ā",
+        "shift": "ā"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "的",
+      "character": "的",
+      "meaning": "possessive particle",
+      "pinyin": "de",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.7,
+      "loose": false
+    },
+    {
+      "id": "快",
+      "character": "快",
+      "meaning": "quick",
+      "pinyin": "kuài",
+      "phonetic": {
+        "glyph": "夬",
+        "reading": "guài",
+        "shift": "guài → kuài"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.59,
+      "loose": false
+    },
+    {
+      "id": "樂",
+      "character": "樂",
+      "meaning": "cheerful",
+      "pinyin": "lè",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.81,
+      "loose": false
+    },
+    {
+      "id": "題",
+      "character": "題",
+      "meaning": "question",
+      "pinyin": "tí",
+      "phonetic": {
+        "glyph": "是",
+        "reading": "shì",
+        "shift": "shì → tí"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.26,
+      "loose": false
+    },
+    {
+      "id": "見",
+      "character": "見",
+      "meaning": "see",
+      "pinyin": "jiàn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.75,
+      "loose": false
+    },
+    {
+      "id": "再",
+      "character": "再",
+      "meaning": "again",
+      "pinyin": "zài",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.56,
+      "loose": false
+    },
+    {
+      "id": "做",
+      "character": "做",
+      "meaning": "do",
+      "pinyin": "zuò",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.43,
+      "loose": false
+    },
+    {
+      "id": "歲",
+      "character": "歲",
+      "meaning": "measure word for age",
+      "pinyin": "suì",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.53,
+      "loose": false
+    },
+    {
+      "id": "起",
+      "character": "起",
+      "meaning": "rise",
+      "pinyin": "qǐ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.48,
+      "loose": false
+    },
+    {
+      "id": "床",
+      "character": "床",
+      "meaning": "bed",
+      "pinyin": "chuáng",
+      "phonetic": {
+        "glyph": "广",
+        "reading": "guǎng",
+        "shift": "guǎng → chuáng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.63,
+      "loose": false
+    },
+    {
+      "id": "飯",
+      "character": "飯",
+      "meaning": "meal",
+      "pinyin": "fàn",
+      "phonetic": {
+        "glyph": "反",
+        "reading": "fǎn",
+        "shift": "fǎn → fàn"
+      },
+      "family": [
+        {
+          "character": "板",
+          "pinyin": "bǎn",
+          "reading": "fǎn"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "睡",
+      "character": "睡",
+      "meaning": "sleep",
+      "pinyin": "shuì",
+      "phonetic": {
+        "glyph": "垂",
+        "reading": "chuí",
+        "shift": "chuí → shuì"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.5,
+      "loose": false
+    },
+    {
+      "id": "覺",
+      "character": "覺",
+      "meaning": "conscious",
+      "pinyin": "jué",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.55,
+      "loose": false
+    },
+    {
+      "id": "忙",
+      "character": "忙",
+      "meaning": "busy",
+      "pinyin": "máng",
+      "phonetic": {
+        "glyph": "亡",
+        "reading": "wáng",
+        "shift": "wáng → máng"
+      },
+      "family": [
+        {
+          "character": "望",
+          "pinyin": "wàng",
+          "reading": "wáng"
+        },
+        {
+          "character": "忘",
+          "pinyin": "wàng",
+          "reading": "wáng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.53,
+      "loose": false
+    },
+    {
+      "id": "累",
+      "character": "累",
+      "meaning": "tired",
+      "pinyin": "lèi",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.7,
+      "loose": false
+    },
+    {
+      "id": "買",
+      "character": "買",
+      "meaning": "buy",
+      "pinyin": "mǎi",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.54,
+      "loose": false
+    },
+    {
+      "id": "禮",
+      "character": "禮",
+      "meaning": "courtesy",
+      "pinyin": "lǐ",
+      "phonetic": {
+        "glyph": "豊",
+        "reading": "lǐ",
+        "shift": "lǐ"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "物",
+      "character": "物",
+      "meaning": "thing",
+      "pinyin": "wù",
+      "phonetic": {
+        "glyph": "勿",
+        "reading": "wù",
+        "shift": "wù"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "想",
+      "character": "想",
+      "meaning": "think",
+      "pinyin": "xiǎng",
+      "phonetic": {
+        "glyph": "相",
+        "reading": "xiāng",
+        "shift": "xiāng → xiǎng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "送",
+      "character": "送",
+      "meaning": "give as a present",
+      "pinyin": "sòng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.76,
+      "loose": false
+    },
+    {
+      "id": "個",
+      "character": "個",
+      "meaning": "unit",
+      "pinyin": "ge",
+      "phonetic": {
+        "glyph": "固",
+        "reading": "gù",
+        "shift": "gù → ge"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.76,
+      "loose": true
+    },
+    {
+      "id": "看",
+      "character": "看",
+      "meaning": "look",
+      "pinyin": "kàn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.96,
+      "loose": false
+    },
+    {
+      "id": "兩",
+      "character": "兩",
+      "meaning": "two",
+      "pinyin": "liǎng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.82,
+      "loose": false
+    },
+    {
+      "id": "文",
+      "character": "文",
+      "meaning": "language",
+      "pinyin": "wén",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.79,
+      "loose": false
+    },
+    {
+      "id": "一",
+      "character": "一",
+      "meaning": "one",
+      "pinyin": "yī",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "些",
+      "character": "些",
+      "meaning": "some",
+      "pinyin": "xiē",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.35,
+      "loose": false
+    },
+    {
+      "id": "花",
+      "character": "花",
+      "meaning": "flower",
+      "pinyin": "huā",
+      "phonetic": {
+        "glyph": "化",
+        "reading": "huà",
+        "shift": "huà → huā"
+      },
+      "family": [
+        {
+          "character": "貨",
+          "pinyin": "huò",
+          "reading": "huà"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "朵",
+      "character": "朵",
+      "meaning": "blossom",
+      "pinyin": "duǒ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.66,
+      "loose": false
+    },
+    {
+      "id": "和",
+      "character": "和",
+      "meaning": "and",
+      "pinyin": "hé/hàn",
+      "phonetic": {
+        "glyph": "禾",
+        "reading": "hé",
+        "shift": "hé → hé/hàn"
+      },
+      "family": [
+        {
+          "character": "科",
+          "pinyin": "kē",
+          "reading": "hé"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.98,
+      "loose": false
+    },
+    {
+      "id": "蛋",
+      "character": "蛋",
+      "meaning": "egg",
+      "pinyin": "dàn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.76,
+      "loose": false
+    },
+    {
+      "id": "糕",
+      "character": "糕",
+      "meaning": "cake",
+      "pinyin": "gāo",
+      "phonetic": {
+        "glyph": "羔",
+        "reading": "gāo",
+        "shift": "gāo"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "這",
+      "character": "這",
+      "meaning": "this",
+      "pinyin": "zhè/zhèi",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.6,
+      "loose": false
+    },
+    {
+      "id": "那",
+      "character": "那",
+      "meaning": "that",
+      "pinyin": "nà/nèi",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.73,
+      "loose": false
+    },
+    {
+      "id": "種",
+      "character": "種",
+      "meaning": "kind",
+      "pinyin": "zhǒng",
+      "phonetic": {
+        "glyph": "重",
+        "reading": "zhòng",
+        "shift": "zhòng → zhǒng"
+      },
+      "family": [
+        {
+          "character": "動",
+          "pinyin": "dòng",
+          "reading": "zhòng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "鉛",
+      "character": "鉛",
+      "meaning": "lead",
+      "pinyin": "qiān",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.44,
+      "loose": false
+    },
+    {
+      "id": "筆",
+      "character": "筆",
+      "meaning": "pen",
+      "pinyin": "bǐ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.72,
+      "loose": false
+    },
+    {
+      "id": "怎",
+      "character": "怎",
+      "meaning": "how",
+      "pinyin": "zěn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.49,
+      "loose": false
+    },
+    {
+      "id": "樣",
+      "character": "樣",
+      "meaning": "form",
+      "pinyin": "yàng",
+      "phonetic": {
+        "glyph": "羕",
+        "reading": "yàng",
+        "shift": "yàng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "東",
+      "character": "東",
+      "meaning": "east",
+      "pinyin": "dōng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.84,
+      "loose": false
+    },
+    {
+      "id": "西",
+      "character": "西",
+      "meaning": "west",
+      "pinyin": "xī",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.62,
+      "loose": false
+    },
+    {
+      "id": "枝",
+      "character": "枝",
+      "meaning": "branch",
+      "pinyin": "zhī",
+      "phonetic": {
+        "glyph": "支",
+        "reading": "zhī",
+        "shift": "zhī"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "塊",
+      "character": "塊",
+      "meaning": "lump",
+      "pinyin": "kuài",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.71,
+      "loose": false
+    },
+    {
+      "id": "錢",
+      "character": "錢",
+      "meaning": "money",
+      "pinyin": "qián",
+      "phonetic": {
+        "glyph": "戔",
+        "reading": "jiān",
+        "shift": "jiān → qián"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.46,
+      "loose": false
+    },
+    {
+      "id": "元",
+      "character": "元",
+      "meaning": "dollar",
+      "pinyin": "yuán",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.65,
+      "loose": false
+    },
+    {
+      "id": "便",
+      "character": "便",
+      "meaning": "convenient",
+      "pinyin": "biàn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.41,
+      "loose": false
+    },
+    {
+      "id": "宜",
+      "character": "宜",
+      "meaning": "suitable",
+      "pinyin": "yí",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.56,
+      "loose": false
+    },
+    {
+      "id": "貴",
+      "character": "貴",
+      "meaning": "expensive",
+      "pinyin": "guì",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.73,
+      "loose": false
+    },
+    {
+      "id": "顏",
+      "character": "顏",
+      "meaning": "face",
+      "pinyin": "yán",
+      "phonetic": {
+        "glyph": "彥",
+        "reading": "yàn",
+        "shift": "yàn → yán"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "色",
+      "character": "色",
+      "meaning": "color",
+      "pinyin": "sè",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.81,
+      "loose": false
+    },
+    {
+      "id": "紅",
+      "character": "紅",
+      "meaning": "red",
+      "pinyin": "hóng",
+      "phonetic": {
+        "glyph": "工",
+        "reading": "gōng",
+        "shift": "gōng → hóng"
+      },
+      "family": [
+        {
+          "character": "功",
+          "pinyin": "gōng",
+          "reading": "gōng"
+        },
+        {
+          "character": "空",
+          "pinyin": "kōng",
+          "reading": "gōng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.42,
+      "loose": false
+    },
+    {
+      "id": "白",
+      "character": "白",
+      "meaning": "white",
+      "pinyin": "bái",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.76,
+      "loose": false
+    },
+    {
+      "id": "都",
+      "character": "都",
+      "meaning": "all",
+      "pinyin": "dōu",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.66,
+      "loose": false
+    },
+    {
+      "id": "常",
+      "character": "常",
+      "meaning": "often",
+      "pinyin": "cháng(cháng)",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.83,
+      "loose": false
+    },
+    {
+      "id": "穿",
+      "character": "穿",
+      "meaning": "wear",
+      "pinyin": "chuān",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.5,
+      "loose": false
+    },
+    {
+      "id": "衣",
+      "character": "衣",
+      "meaning": "cloth",
+      "pinyin": "yī",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.89,
+      "loose": false
+    },
+    {
+      "id": "服",
+      "character": "服",
+      "meaning": "clothes",
+      "pinyin": "fú",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.69,
+      "loose": false
+    },
+    {
+      "id": "件",
+      "character": "件",
+      "meaning": "item",
+      "pinyin": "jiàn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.63,
+      "loose": false
+    },
+    {
+      "id": "玩",
+      "character": "玩",
+      "meaning": "play",
+      "pinyin": "wán",
+      "phonetic": {
+        "glyph": "王",
+        "reading": "wáng",
+        "shift": "wáng → wán"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.72,
+      "loose": true
+    },
+    {
+      "id": "心",
+      "character": "心",
+      "meaning": "heart",
+      "pinyin": "xīn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "甜",
+      "character": "甜",
+      "meaning": "sweet",
+      "pinyin": "tián",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.39,
+      "loose": false
+    },
+    {
+      "id": "開",
+      "character": "開",
+      "meaning": "open",
+      "pinyin": "kāi",
+      "phonetic": {
+        "glyph": "开",
+        "reading": "kāi",
+        "shift": "kāi"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "咖",
+      "character": "咖",
+      "meaning": "coffee",
+      "pinyin": "kā",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.18,
+      "loose": false
+    },
+    {
+      "id": "啡",
+      "character": "啡",
+      "meaning": "coffee",
+      "pinyin": "fēi",
+      "phonetic": {
+        "glyph": "非",
+        "reading": "fēi",
+        "shift": "fēi"
+      },
+      "family": [
+        {
+          "character": "菲",
+          "pinyin": "fēi",
+          "reading": "fēi"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "還",
+      "character": "還",
+      "meaning": "also",
+      "pinyin": "hái",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.67,
+      "loose": false
+    },
+    {
+      "id": "熱",
+      "character": "熱",
+      "meaning": "hot",
+      "pinyin": "rè",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.72,
+      "loose": false
+    },
+    {
+      "id": "冷",
+      "character": "冷",
+      "meaning": "cold",
+      "pinyin": "lěng",
+      "phonetic": {
+        "glyph": "令",
+        "reading": "lǐng",
+        "shift": "lǐng → lěng"
+      },
+      "family": [
+        {
+          "character": "零",
+          "pinyin": "líng",
+          "reading": "lǐng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.46,
+      "loose": false
+    },
+    {
+      "id": "飲",
+      "character": "飲",
+      "meaning": "drink",
+      "pinyin": "yǐn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.6,
+      "loose": false
+    },
+    {
+      "id": "料",
+      "character": "料",
+      "meaning": "material",
+      "pinyin": "liào",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.61,
+      "loose": false
+    },
+    {
+      "id": "也",
+      "character": "也",
+      "meaning": "also",
+      "pinyin": "yě",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "餓",
+      "character": "餓",
+      "meaning": "hungry",
+      "pinyin": "è",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.66,
+      "loose": false
+    },
+    {
+      "id": "渴",
+      "character": "渴",
+      "meaning": "thirsty",
+      "pinyin": "kě",
+      "phonetic": {
+        "glyph": "曷",
+        "reading": "hé",
+        "shift": "hé → kě"
+      },
+      "family": [
+        {
+          "character": "喝",
+          "pinyin": "hē",
+          "reading": "hé"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.6,
+      "loose": false
+    },
+    {
+      "id": "兒",
+      "character": "兒",
+      "meaning": "son",
+      "pinyin": "ér",
+      "phonetic": {
+        "glyph": "儿",
+        "reading": "ér",
+        "shift": "ér"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "餐",
+      "character": "餐",
+      "meaning": "meal",
+      "pinyin": "cān",
+      "phonetic": {
+        "glyph": "歺",
+        "reading": "cān",
+        "shift": "cān"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "廳",
+      "character": "廳",
+      "meaning": "hall",
+      "pinyin": "tīng",
+      "phonetic": {
+        "glyph": "聽",
+        "reading": "tīng",
+        "shift": "tīng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "多",
+      "character": "多",
+      "meaning": "much",
+      "pinyin": "duō",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.89,
+      "loose": false
+    },
+    {
+      "id": "少",
+      "character": "少",
+      "meaning": "little",
+      "pinyin": "shǎo",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.16,
+      "loose": false
+    },
+    {
+      "id": "麵",
+      "character": "麵",
+      "meaning": "noodles",
+      "pinyin": "miàn",
+      "phonetic": {
+        "glyph": "面",
+        "reading": "miàn",
+        "shift": "miàn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "了",
+      "character": "了",
+      "meaning": "completed action",
+      "pinyin": "le",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "最",
+      "character": "最",
+      "meaning": "most",
+      "pinyin": "zuì",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.52,
+      "loose": false
+    },
+    {
+      "id": "賣",
+      "character": "賣",
+      "meaning": "sell",
+      "pinyin": "mài",
+      "phonetic": {
+        "glyph": "買",
+        "reading": "mǎi",
+        "shift": "mǎi → mài"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "牛",
+      "character": "牛",
+      "meaning": "cow",
+      "pinyin": "niú",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "肉",
+      "character": "肉",
+      "meaning": "meat",
+      "pinyin": "ròu",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.95,
+      "loose": false
+    },
+    {
+      "id": "碗",
+      "character": "碗",
+      "meaning": "bowl",
+      "pinyin": "wǎn",
+      "phonetic": {
+        "glyph": "宛",
+        "reading": "wǎn",
+        "shift": "wǎn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "杯",
+      "character": "杯",
+      "meaning": "cup",
+      "pinyin": "bēi",
+      "phonetic": {
+        "glyph": "不",
+        "reading": "bù",
+        "shift": "bù → bēi"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.65,
+      "loose": true
+    },
+    {
+      "id": "瓶",
+      "character": "瓶",
+      "meaning": "bottle",
+      "pinyin": "píng",
+      "phonetic": {
+        "glyph": "并",
+        "reading": "bìng",
+        "shift": "bìng → píng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.54,
+      "loose": false
+    },
+    {
+      "id": "女",
+      "character": "女",
+      "meaning": "female",
+      "pinyin": "nǚ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "男",
+      "character": "男",
+      "meaning": "male",
+      "pinyin": "nán",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.56,
+      "loose": false
+    },
+    {
+      "id": "位",
+      "character": "位",
+      "meaning": "seat",
+      "pinyin": "wèi",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.3,
+      "loose": false
+    },
+    {
+      "id": "綠",
+      "character": "綠",
+      "meaning": "green",
+      "pinyin": "lǜ",
+      "phonetic": {
+        "glyph": "彔",
+        "reading": "lù",
+        "shift": "lù → lǜ"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "給",
+      "character": "給",
+      "meaning": "give",
+      "pinyin": "gěi",
+      "phonetic": {
+        "glyph": "合",
+        "reading": "hé",
+        "shift": "hé → gěi"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.97,
+      "loose": false
+    },
+    {
+      "id": "共",
+      "character": "共",
+      "meaning": "common",
+      "pinyin": "gòng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.83,
+      "loose": false
+    },
+    {
+      "id": "百",
+      "character": "百",
+      "meaning": "hundred",
+      "pinyin": "bǎi",
+      "phonetic": {
+        "glyph": "白",
+        "reading": "bái",
+        "shift": "bái → bǎi"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "千",
+      "character": "千",
+      "meaning": "thousand",
+      "pinyin": "qiān",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.7,
+      "loose": false
+    },
+    {
+      "id": "萬",
+      "character": "萬",
+      "meaning": "ten thousand",
+      "pinyin": "wàn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.53,
+      "loose": false
+    },
+    {
+      "id": "零",
+      "character": "零",
+      "meaning": "zero",
+      "pinyin": "líng",
+      "phonetic": {
+        "glyph": "令",
+        "reading": "lǐng",
+        "shift": "lǐng → líng"
+      },
+      "family": [
+        {
+          "character": "冷",
+          "pinyin": "lěng",
+          "reading": "lǐng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "找",
+      "character": "找",
+      "meaning": "look for",
+      "pinyin": "zhǎo",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.77,
+      "loose": false
+    },
+    {
+      "id": "您",
+      "character": "您",
+      "meaning": "you",
+      "pinyin": "nín",
+      "phonetic": {
+        "glyph": "你",
+        "reading": "nǐ",
+        "shift": "nǐ → nín"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.8,
+      "loose": true
+    },
+    {
+      "id": "夏",
+      "character": "夏",
+      "meaning": "summer",
+      "pinyin": "xià",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.52,
+      "loose": false
+    },
+    {
+      "id": "春",
+      "character": "春",
+      "meaning": "springtime",
+      "pinyin": "chūn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.72,
+      "loose": false
+    },
+    {
+      "id": "秋",
+      "character": "秋",
+      "meaning": "autumn",
+      "pinyin": "qiū",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.58,
+      "loose": false
+    },
+    {
+      "id": "冬",
+      "character": "冬",
+      "meaning": "winter",
+      "pinyin": "dōng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.86,
+      "loose": false
+    },
+    {
+      "id": "店",
+      "character": "店",
+      "meaning": "shop",
+      "pinyin": "diàn/shāngdiàn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.43,
+      "loose": false
+    },
+    {
+      "id": "商",
+      "character": "商",
+      "meaning": "commerce",
+      "pinyin": "shāng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.89,
+      "loose": false
+    },
+    {
+      "id": "汁",
+      "character": "汁",
+      "meaning": "juice",
+      "pinyin": "zhī",
+      "phonetic": {
+        "glyph": "十",
+        "reading": "shí",
+        "shift": "shí → zhī"
+      },
+      "family": [
+        {
+          "character": "什",
+          "pinyin": "shén",
+          "reading": "shí"
+        },
+        {
+          "character": "士",
+          "pinyin": "shì",
+          "reading": "shí"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.41,
+      "loose": false
+    },
+    {
+      "id": "每",
+      "character": "每",
+      "meaning": "each",
+      "pinyin": "měi",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.43,
+      "loose": false
+    },
+    {
+      "id": "包",
+      "character": "包",
+      "meaning": "wrap",
+      "pinyin": "bāo",
+      "phonetic": {
+        "glyph": "勹",
+        "reading": "bāo",
+        "shift": "bāo"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "裡",
+      "character": "裡",
+      "meaning": "inside",
+      "pinyin": "lǐ(miàn)",
+      "phonetic": {
+        "glyph": "里",
+        "reading": "lǐ",
+        "shift": "lǐ → lǐ(miàn)"
+      },
+      "family": [
+        {
+          "character": "理",
+          "pinyin": "lǐ",
+          "reading": "lǐ"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.95,
+      "loose": false
+    },
+    {
+      "id": "聽",
+      "character": "聽",
+      "meaning": "listen",
+      "pinyin": "tīng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.26,
+      "loose": false
+    },
+    {
+      "id": "音",
+      "character": "音",
+      "meaning": "sound",
+      "pinyin": "yīn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.72,
+      "loose": false
+    },
+    {
+      "id": "錯",
+      "character": "錯",
+      "meaning": "wrong",
+      "pinyin": "cuò",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.52,
+      "loose": false
+    },
+    {
+      "id": "冰",
+      "character": "冰",
+      "meaning": "ice",
+      "pinyin": "bīng",
+      "phonetic": {
+        "glyph": "冫",
+        "reading": "bīng",
+        "shift": "bīng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "淇",
+      "character": "淇",
+      "meaning": "river",
+      "pinyin": "qí",
+      "phonetic": {
+        "glyph": "其",
+        "reading": "qí",
+        "shift": "qí"
+      },
+      "family": [
+        {
+          "character": "期",
+          "pinyin": "qī",
+          "reading": "qí"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "淋",
+      "character": "淋",
+      "meaning": "drench",
+      "pinyin": "lín",
+      "phonetic": {
+        "glyph": "林",
+        "reading": "lín",
+        "shift": "lín"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "巧",
+      "character": "巧",
+      "meaning": "skillful",
+      "pinyin": "qiǎo",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.33,
+      "loose": false
+    },
+    {
+      "id": "克",
+      "character": "克",
+      "meaning": "subdue",
+      "pinyin": "kè",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.75,
+      "loose": false
+    },
+    {
+      "id": "力",
+      "character": "力",
+      "meaning": "strength",
+      "pinyin": "lì",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "半",
+      "character": "半",
+      "meaning": "half",
+      "pinyin": "bàn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.66,
+      "loose": false
+    },
+    {
+      "id": "吧",
+      "character": "吧",
+      "meaning": "suggestion",
+      "pinyin": "ba",
+      "phonetic": {
+        "glyph": "巴",
+        "reading": "bā",
+        "shift": "bā → ba"
+      },
+      "family": [
+        {
+          "character": "爸",
+          "pinyin": "bà",
+          "reading": "bā"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "空",
+      "character": "空",
+      "meaning": "hollow",
+      "pinyin": "kōng",
+      "phonetic": {
+        "glyph": "工",
+        "reading": "gōng",
+        "shift": "gōng → kōng"
+      },
+      "family": [
+        {
+          "character": "功",
+          "pinyin": "gōng",
+          "reading": "gōng"
+        },
+        {
+          "character": "紅",
+          "pinyin": "hóng",
+          "reading": "gōng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.76,
+      "loose": false
+    },
+    {
+      "id": "跟",
+      "character": "跟",
+      "meaning": "heel",
+      "pinyin": "gēn",
+      "phonetic": {
+        "glyph": "艮",
+        "reading": "gèn",
+        "shift": "gèn → gēn"
+      },
+      "family": [
+        {
+          "character": "很",
+          "pinyin": "hěn",
+          "reading": "gèn"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "房",
+      "character": "房",
+      "meaning": "building",
+      "pinyin": "fáng",
+      "phonetic": {
+        "glyph": "方",
+        "reading": "fāng",
+        "shift": "fāng → fáng"
+      },
+      "family": [
+        {
+          "character": "放",
+          "pinyin": "fàng",
+          "reading": "fāng"
+        },
+        {
+          "character": "旁",
+          "pinyin": "páng",
+          "reading": "fāng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "間",
+      "character": "間",
+      "meaning": "measure word for rooms",
+      "pinyin": "jiān",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.67,
+      "loose": false
+    },
+    {
+      "id": "棟",
+      "character": "棟",
+      "meaning": "pillar",
+      "pinyin": "dòng",
+      "phonetic": {
+        "glyph": "東",
+        "reading": "dōng",
+        "shift": "dōng → dòng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "面",
+      "character": "面",
+      "meaning": "side",
+      "pinyin": "miàn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.79,
+      "loose": false
+    },
+    {
+      "id": "外",
+      "character": "外",
+      "meaning": "outside",
+      "pinyin": "wài(miàn)",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.73,
+      "loose": false
+    },
+    {
+      "id": "桌",
+      "character": "桌",
+      "meaning": "table",
+      "pinyin": "zhuō",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.78,
+      "loose": false
+    },
+    {
+      "id": "椅",
+      "character": "椅",
+      "meaning": "chair",
+      "pinyin": "yǐ",
+      "phonetic": {
+        "glyph": "奇",
+        "reading": "qí",
+        "shift": "qí → yǐ"
+      },
+      "family": [
+        {
+          "character": "寄",
+          "pinyin": "jì",
+          "reading": "jī"
+        },
+        {
+          "character": "騎",
+          "pinyin": "qí",
+          "reading": "qí"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.44,
+      "loose": false
+    },
+    {
+      "id": "張",
+      "character": "張",
+      "meaning": "stretch",
+      "pinyin": "zhāng",
+      "phonetic": {
+        "glyph": "長",
+        "reading": "zhǎng",
+        "shift": "zhǎng → zhāng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "哥",
+      "character": "哥",
+      "meaning": "elder brother",
+      "pinyin": "gē",
+      "phonetic": {
+        "glyph": "可",
+        "reading": "kě",
+        "shift": "kě → gē"
+      },
+      "family": [
+        {
+          "character": "河",
+          "pinyin": "hé",
+          "reading": "kě"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.4,
+      "loose": false
+    },
+    {
+      "id": "姊",
+      "character": "姊",
+      "meaning": "elder sister",
+      "pinyin": "zǐ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.63,
+      "loose": false
+    },
+    {
+      "id": "弟",
+      "character": "弟",
+      "meaning": "young brother",
+      "pinyin": "dì",
+      "phonetic": {
+        "glyph": "弔",
+        "reading": "diào",
+        "shift": "diào → dì"
+      },
+      "family": [
+        {
+          "character": "第",
+          "pinyin": "dì",
+          "reading": "diào"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.93,
+      "loose": true
+    },
+    {
+      "id": "妹",
+      "character": "妹",
+      "meaning": "younger sister",
+      "pinyin": "mèi",
+      "phonetic": {
+        "glyph": "未",
+        "reading": "wèi",
+        "shift": "wèi → mèi"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.55,
+      "loose": false
+    },
+    {
+      "id": "沙",
+      "character": "沙",
+      "meaning": "sand",
+      "pinyin": "shā",
+      "phonetic": {
+        "glyph": "少",
+        "reading": "shào",
+        "shift": "shào → shā"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.93,
+      "loose": true
+    },
+    {
+      "id": "發",
+      "character": "發",
+      "meaning": "send",
+      "pinyin": "fā",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.83,
+      "loose": false
+    },
+    {
+      "id": "旁",
+      "character": "旁",
+      "meaning": "side",
+      "pinyin": "páng",
+      "phonetic": {
+        "glyph": "方",
+        "reading": "fāng",
+        "shift": "fāng → páng"
+      },
+      "family": [
+        {
+          "character": "房",
+          "pinyin": "fáng",
+          "reading": "fāng"
+        },
+        {
+          "character": "放",
+          "pinyin": "fàng",
+          "reading": "fāng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.35,
+      "loose": false
+    },
+    {
+      "id": "邊",
+      "character": "邊",
+      "meaning": "side",
+      "pinyin": "biān/biānr",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.4,
+      "loose": false
+    },
+    {
+      "id": "前",
+      "character": "前",
+      "meaning": "the front",
+      "pinyin": "qián(miàn)",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.88,
+      "loose": false
+    },
+    {
+      "id": "後",
+      "character": "後",
+      "meaning": "behind",
+      "pinyin": "hòu(miàn)",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.81,
+      "loose": false
+    },
+    {
+      "id": "幫",
+      "character": "幫",
+      "meaning": "help",
+      "pinyin": "bāng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.33,
+      "loose": false
+    },
+    {
+      "id": "廚",
+      "character": "廚",
+      "meaning": "kitchen",
+      "pinyin": "chú",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.52,
+      "loose": false
+    },
+    {
+      "id": "具",
+      "character": "具",
+      "meaning": "tool",
+      "pinyin": "jù",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.8,
+      "loose": false
+    },
+    {
+      "id": "電",
+      "character": "電",
+      "meaning": "electricity",
+      "pinyin": "diàn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.72,
+      "loose": false
+    },
+    {
+      "id": "視",
+      "character": "視",
+      "meaning": "look at",
+      "pinyin": "shì",
+      "phonetic": {
+        "glyph": "礻",
+        "reading": "shì",
+        "shift": "shì"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "機",
+      "character": "機",
+      "meaning": "machine",
+      "pinyin": "jī",
+      "phonetic": {
+        "glyph": "幾",
+        "reading": "jǐ",
+        "shift": "jǐ → jī"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "窗",
+      "character": "窗",
+      "meaning": "window",
+      "pinyin": "chuāng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.51,
+      "loose": false
+    },
+    {
+      "id": "戶",
+      "character": "戶",
+      "meaning": "household",
+      "pinyin": "hù",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.85,
+      "loose": false
+    },
+    {
+      "id": "門",
+      "character": "門",
+      "meaning": "door",
+      "pinyin": "mén",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "貓",
+      "character": "貓",
+      "meaning": "cat",
+      "pinyin": "māo",
+      "phonetic": {
+        "glyph": "苗",
+        "reading": "miáo",
+        "shift": "miáo → māo"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.88,
+      "loose": true
+    },
+    {
+      "id": "狗",
+      "character": "狗",
+      "meaning": "dog",
+      "pinyin": "gǒu",
+      "phonetic": {
+        "glyph": "句",
+        "reading": "gōu",
+        "shift": "gōu → gǒu"
+      },
+      "family": [
+        {
+          "character": "夠",
+          "pinyin": "gòu",
+          "reading": "gōu"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "鳥",
+      "character": "鳥",
+      "meaning": "bird",
+      "pinyin": "niǎo",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.87,
+      "loose": false
+    },
+    {
+      "id": "隻",
+      "character": "隻",
+      "meaning": "single",
+      "pinyin": "zhī",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.52,
+      "loose": false
+    },
+    {
+      "id": "曬",
+      "character": "曬",
+      "meaning": "sun-dry",
+      "pinyin": "shài",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.65,
+      "loose": false
+    },
+    {
+      "id": "陽",
+      "character": "陽",
+      "meaning": "sun",
+      "pinyin": "yáng",
+      "phonetic": {
+        "glyph": "昜",
+        "reading": "yáng",
+        "shift": "yáng"
+      },
+      "family": [
+        {
+          "character": "場",
+          "pinyin": "chǎng",
+          "reading": "yáng"
+        },
+        {
+          "character": "傷",
+          "pinyin": "shāng",
+          "reading": "yáng"
+        },
+        {
+          "character": "湯",
+          "pinyin": "tāng",
+          "reading": "yáng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "晒",
+      "character": "晒",
+      "meaning": "sun-dry",
+      "pinyin": "shài",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.48,
+      "loose": false
+    },
+    {
+      "id": "打",
+      "character": "打",
+      "meaning": "beat",
+      "pinyin": "dǎ",
+      "phonetic": {
+        "glyph": "丁",
+        "reading": "dīng",
+        "shift": "dīng → dǎ"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.8,
+      "loose": true
+    },
+    {
+      "id": "網",
+      "character": "網",
+      "meaning": "net",
+      "pinyin": "wǎng",
+      "phonetic": {
+        "glyph": "罔",
+        "reading": "wǎng",
+        "shift": "wǎng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "球",
+      "character": "球",
+      "meaning": "ball",
+      "pinyin": "qiú",
+      "phonetic": {
+        "glyph": "求",
+        "reading": "qiú",
+        "shift": "qiú"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "籃",
+      "character": "籃",
+      "meaning": "basket",
+      "pinyin": "lán",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.62,
+      "loose": false
+    },
+    {
+      "id": "棒",
+      "character": "棒",
+      "meaning": "stick",
+      "pinyin": "bàng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.43,
+      "loose": false
+    },
+    {
+      "id": "足",
+      "character": "足",
+      "meaning": "foot",
+      "pinyin": "zú",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.86,
+      "loose": false
+    },
+    {
+      "id": "踢",
+      "character": "踢",
+      "meaning": "kick",
+      "pinyin": "tī",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.41,
+      "loose": false
+    },
+    {
+      "id": "海",
+      "character": "海",
+      "meaning": "sea",
+      "pinyin": "hǎi",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.43,
+      "loose": false
+    },
+    {
+      "id": "山",
+      "character": "山",
+      "meaning": "mountain",
+      "pinyin": "shān",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.83,
+      "loose": false
+    },
+    {
+      "id": "風",
+      "character": "風",
+      "meaning": "wind",
+      "pinyin": "fēng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.33,
+      "loose": false
+    },
+    {
+      "id": "景",
+      "character": "景",
+      "meaning": "scenery",
+      "pinyin": "jǐng",
+      "phonetic": {
+        "glyph": "京",
+        "reading": "jīng",
+        "shift": "jīng → jǐng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "游",
+      "character": "游",
+      "meaning": "swim",
+      "pinyin": "yóu",
+      "phonetic": {
+        "glyph": "斿",
+        "reading": "yóu",
+        "shift": "yóu"
+      },
+      "family": [
+        {
+          "character": "遊",
+          "pinyin": "yóu",
+          "reading": "yóu"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "泳",
+      "character": "泳",
+      "meaning": "swim",
+      "pinyin": "yǒng",
+      "phonetic": {
+        "glyph": "永",
+        "reading": "yǒng",
+        "shift": "yǒng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "會",
+      "character": "會",
+      "meaning": "assemble",
+      "pinyin": "huì",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.68,
+      "loose": false
+    },
+    {
+      "id": "得",
+      "character": "得",
+      "meaning": "complement marker",
+      "pinyin": "de",
+      "phonetic": {
+        "glyph": "㝵",
+        "reading": "dé",
+        "shift": "dé → de"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "跑",
+      "character": "跑",
+      "meaning": "run",
+      "pinyin": "pǎo",
+      "phonetic": {
+        "glyph": "包",
+        "reading": "bāo",
+        "shift": "bāo → pǎo"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.42,
+      "loose": false
+    },
+    {
+      "id": "步",
+      "character": "步",
+      "meaning": "step",
+      "pinyin": "bù",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.63,
+      "loose": false
+    },
+    {
+      "id": "慢",
+      "character": "慢",
+      "meaning": "slowly",
+      "pinyin": "màn",
+      "phonetic": {
+        "glyph": "曼",
+        "reading": "màn",
+        "shift": "màn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "說",
+      "character": "說",
+      "meaning": "speak",
+      "pinyin": "shuō",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.26,
+      "loose": false
+    },
+    {
+      "id": "話",
+      "character": "話",
+      "meaning": "talk",
+      "pinyin": "huà",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.55,
+      "loose": false
+    },
+    {
+      "id": "影",
+      "character": "影",
+      "meaning": "shadow",
+      "pinyin": "yǐng",
+      "phonetic": {
+        "glyph": "景",
+        "reading": "jǐng",
+        "shift": "jǐng → yǐng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.55,
+      "loose": false
+    },
+    {
+      "id": "部",
+      "character": "部",
+      "meaning": "part",
+      "pinyin": "bù",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.24,
+      "loose": false
+    },
+    {
+      "id": "院",
+      "character": "院",
+      "meaning": "court",
+      "pinyin": "yuàn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.19,
+      "loose": false
+    },
+    {
+      "id": "趣",
+      "character": "趣",
+      "meaning": "interest",
+      "pinyin": "qù",
+      "phonetic": {
+        "glyph": "取",
+        "reading": "qǔ",
+        "shift": "qǔ → qù"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "休",
+      "character": "休",
+      "meaning": "rest",
+      "pinyin": "xiū",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.76,
+      "loose": false
+    },
+    {
+      "id": "息",
+      "character": "息",
+      "meaning": "rest",
+      "pinyin": "xī",
+      "phonetic": {
+        "glyph": "自",
+        "reading": "zì",
+        "shift": "zì → xī"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.8,
+      "loose": false
+    },
+    {
+      "id": "腦",
+      "character": "腦",
+      "meaning": "brain",
+      "pinyin": "nǎo",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.66,
+      "loose": false
+    },
+    {
+      "id": "手",
+      "character": "手",
+      "meaning": "hand",
+      "pinyin": "shǒu",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "支",
+      "character": "支",
+      "meaning": "support",
+      "pinyin": "zhī",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.38,
+      "loose": false
+    },
+    {
+      "id": "應",
+      "character": "應",
+      "meaning": "should",
+      "pinyin": "yīng",
+      "phonetic": {
+        "glyph": "䧹",
+        "reading": "yīng",
+        "shift": "yīng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "該",
+      "character": "該",
+      "meaning": "should",
+      "pinyin": "gāi",
+      "phonetic": {
+        "glyph": "亥",
+        "reading": "hài",
+        "shift": "hài → gāi"
+      },
+      "family": [
+        {
+          "character": "孩",
+          "pinyin": "hái",
+          "reading": "hài"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.5,
+      "loose": false
+    },
+    {
+      "id": "運",
+      "character": "運",
+      "meaning": "run",
+      "pinyin": "yùn",
+      "phonetic": {
+        "glyph": "軍",
+        "reading": "jūn",
+        "shift": "jūn → yùn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.26,
+      "loose": false
+    },
+    {
+      "id": "動",
+      "character": "動",
+      "meaning": "move",
+      "pinyin": "dòng",
+      "phonetic": {
+        "glyph": "重",
+        "reading": "zhòng",
+        "shift": "zhòng → dòng"
+      },
+      "family": [
+        {
+          "character": "種",
+          "pinyin": "zhǒng",
+          "reading": "zhòng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.21,
+      "loose": false
+    },
+    {
+      "id": "以",
+      "character": "以",
+      "meaning": "according to",
+      "pinyin": "yǐ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.71,
+      "loose": false
+    },
+    {
+      "id": "騎",
+      "character": "騎",
+      "meaning": "ride",
+      "pinyin": "qí",
+      "phonetic": {
+        "glyph": "奇",
+        "reading": "qí",
+        "shift": "qí"
+      },
+      "family": [
+        {
+          "character": "寄",
+          "pinyin": "jì",
+          "reading": "jī"
+        },
+        {
+          "character": "椅",
+          "pinyin": "yǐ",
+          "reading": "qí"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "腳",
+      "character": "腳",
+      "meaning": "leg",
+      "pinyin": "jiǎo",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.33,
+      "loose": false
+    },
+    {
+      "id": "踏",
+      "character": "踏",
+      "meaning": "trample",
+      "pinyin": "tà",
+      "phonetic": {
+        "glyph": "沓",
+        "reading": "tà",
+        "shift": "tà"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "車",
+      "character": "車",
+      "meaning": "automobile",
+      "pinyin": "chē(zi)/qìchē",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.72,
+      "loose": false
+    },
+    {
+      "id": "行",
+      "character": "行",
+      "meaning": "go",
+      "pinyin": "xíng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.6,
+      "loose": false
+    },
+    {
+      "id": "輛",
+      "character": "輛",
+      "meaning": "vehicle",
+      "pinyin": "liàng",
+      "phonetic": {
+        "glyph": "兩",
+        "reading": "liǎng",
+        "shift": "liǎng → liàng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "只",
+      "character": "只",
+      "meaning": "only",
+      "pinyin": "zhǐ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.84,
+      "loose": false
+    },
+    {
+      "id": "興",
+      "character": "興",
+      "meaning": "thrive",
+      "pinyin": "xìng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.59,
+      "loose": false
+    },
+    {
+      "id": "習",
+      "character": "習",
+      "meaning": "study",
+      "pinyin": "xí",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.56,
+      "loose": false
+    },
+    {
+      "id": "唱",
+      "character": "唱",
+      "meaning": "sing",
+      "pinyin": "chàng",
+      "phonetic": {
+        "glyph": "昌",
+        "reading": "chāng",
+        "shift": "chāng → chàng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "歌",
+      "character": "歌",
+      "meaning": "song",
+      "pinyin": "gē",
+      "phonetic": {
+        "glyph": "哥",
+        "reading": "gē",
+        "shift": "gē"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "首",
+      "character": "首",
+      "meaning": "song",
+      "pinyin": "shǒu",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.46,
+      "loose": false
+    },
+    {
+      "id": "跳",
+      "character": "跳",
+      "meaning": "hop",
+      "pinyin": "tiào",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.39,
+      "loose": false
+    },
+    {
+      "id": "舞",
+      "character": "舞",
+      "meaning": "dance",
+      "pinyin": "wǔ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.86,
+      "loose": false
+    },
+    {
+      "id": "畫",
+      "character": "畫",
+      "meaning": "painting",
+      "pinyin": "huà",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.85,
+      "loose": false
+    },
+    {
+      "id": "平",
+      "character": "平",
+      "meaning": "flat",
+      "pinyin": "píng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.71,
+      "loose": false
+    },
+    {
+      "id": "時",
+      "character": "時",
+      "meaning": "time",
+      "pinyin": "shí",
+      "phonetic": {
+        "glyph": "寺",
+        "reading": "sì",
+        "shift": "sì → shí"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.18,
+      "loose": false
+    },
+    {
+      "id": "候",
+      "character": "候",
+      "meaning": "wait",
+      "pinyin": "hòu",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.56,
+      "loose": false
+    },
+    {
+      "id": "比",
+      "character": "比",
+      "meaning": "than",
+      "pinyin": "bǐ",
+      "phonetic": {
+        "glyph": "匕",
+        "reading": "bǐ",
+        "shift": "bǐ"
+      },
+      "family": [
+        {
+          "character": "北",
+          "pinyin": "běi",
+          "reading": "bǐ"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "賽",
+      "character": "賽",
+      "meaning": "compete",
+      "pinyin": "sài",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.45,
+      "loose": false
+    },
+    {
+      "id": "真",
+      "character": "真",
+      "meaning": "really",
+      "pinyin": "zhēn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.83,
+      "loose": false
+    },
+    {
+      "id": "高",
+      "character": "高",
+      "meaning": "tall",
+      "pinyin": "gāo",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.88,
+      "loose": false
+    },
+    {
+      "id": "到",
+      "character": "到",
+      "meaning": "arrive",
+      "pinyin": "dào",
+      "phonetic": {
+        "glyph": "刂",
+        "reading": "dāo",
+        "shift": "dāo → dào"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "旅",
+      "character": "旅",
+      "meaning": "journey",
+      "pinyin": "lǚ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.82,
+      "loose": false
+    },
+    {
+      "id": "韓",
+      "character": "韓",
+      "meaning": "Korea",
+      "pinyin": "hán",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.55,
+      "loose": false
+    },
+    {
+      "id": "等",
+      "character": "等",
+      "meaning": "wait for",
+      "pinyin": "děng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.53,
+      "loose": false
+    },
+    {
+      "id": "坐",
+      "character": "坐",
+      "meaning": "sit",
+      "pinyin": "zuò",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.73,
+      "loose": false
+    },
+    {
+      "id": "捷",
+      "character": "捷",
+      "meaning": "nimble",
+      "pinyin": "jié",
+      "phonetic": {
+        "glyph": "疌",
+        "reading": "jié",
+        "shift": "jié"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "地",
+      "character": "地",
+      "meaning": "ground",
+      "pinyin": "de",
+      "phonetic": {
+        "glyph": "也",
+        "reading": "yě",
+        "shift": "yě → de"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.36,
+      "loose": false
+    },
+    {
+      "id": "鐵",
+      "character": "鐵",
+      "meaning": "iron",
+      "pinyin": "tiě",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.65,
+      "loose": false
+    },
+    {
+      "id": "公",
+      "character": "公",
+      "meaning": "fair",
+      "pinyin": "gōng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.68,
+      "loose": false
+    },
+    {
+      "id": "汽",
+      "character": "汽",
+      "meaning": "steam",
+      "pinyin": "qì",
+      "phonetic": {
+        "glyph": "气",
+        "reading": "qì",
+        "shift": "qì"
+      },
+      "family": [
+        {
+          "character": "氣",
+          "pinyin": "qì",
+          "reading": "qì"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "計",
+      "character": "計",
+      "meaning": "calculate",
+      "pinyin": "jì",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.46,
+      "loose": false
+    },
+    {
+      "id": "程",
+      "character": "程",
+      "meaning": "process",
+      "pinyin": "chéng",
+      "phonetic": {
+        "glyph": "呈",
+        "reading": "chéng",
+        "shift": "chéng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "火",
+      "character": "火",
+      "meaning": "fire",
+      "pinyin": "huǒ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.85,
+      "loose": false
+    },
+    {
+      "id": "遠",
+      "character": "遠",
+      "meaning": "far",
+      "pinyin": "yuǎn",
+      "phonetic": {
+        "glyph": "袁",
+        "reading": "yuán",
+        "shift": "yuán → yuǎn"
+      },
+      "family": [
+        {
+          "character": "園",
+          "pinyin": "yuán",
+          "reading": "yuán"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "近",
+      "character": "近",
+      "meaning": "near",
+      "pinyin": "jìn",
+      "phonetic": {
+        "glyph": "斤",
+        "reading": "jīn",
+        "shift": "jīn → jìn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "從",
+      "character": "從",
+      "meaning": "from",
+      "pinyin": "cóng",
+      "phonetic": {
+        "glyph": "从",
+        "reading": "cóng",
+        "shift": "cóng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "走",
+      "character": "走",
+      "meaning": "walk",
+      "pinyin": "zǒu",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.75,
+      "loose": false
+    },
+    {
+      "id": "路",
+      "character": "路",
+      "meaning": "road",
+      "pinyin": "lù/mǎlù",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.55,
+      "loose": false
+    },
+    {
+      "id": "錶",
+      "character": "錶",
+      "meaning": "watch",
+      "pinyin": "biǎo/shǒubiǎo",
+      "phonetic": {
+        "glyph": "表",
+        "reading": "biǎo",
+        "shift": "biǎo → biǎo/shǒubiǎo"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.94,
+      "loose": false
+    },
+    {
+      "id": "馬",
+      "character": "馬",
+      "meaning": "horse",
+      "pinyin": "mǎ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.89,
+      "loose": false
+    },
+    {
+      "id": "條",
+      "character": "條",
+      "meaning": "measure word for roads",
+      "pinyin": "tiáo",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.89,
+      "loose": false
+    },
+    {
+      "id": "街",
+      "character": "街",
+      "meaning": "street",
+      "pinyin": "jiē",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.48,
+      "loose": false
+    },
+    {
+      "id": "方",
+      "character": "方",
+      "meaning": "direction",
+      "pinyin": "fāng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.88,
+      "loose": false
+    },
+    {
+      "id": "附",
+      "character": "附",
+      "meaning": "nearby",
+      "pinyin": "fù",
+      "phonetic": {
+        "glyph": "付",
+        "reading": "fù",
+        "shift": "fù"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "郵",
+      "character": "郵",
+      "meaning": "mail",
+      "pinyin": "yóu",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.26,
+      "loose": false
+    },
+    {
+      "id": "局",
+      "character": "局",
+      "meaning": "bureau",
+      "pinyin": "jú",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.81,
+      "loose": false
+    },
+    {
+      "id": "寄",
+      "character": "寄",
+      "meaning": "mail",
+      "pinyin": "jì",
+      "phonetic": {
+        "glyph": "奇",
+        "reading": "jī",
+        "shift": "jī → jì"
+      },
+      "family": [
+        {
+          "character": "騎",
+          "pinyin": "qí",
+          "reading": "qí"
+        },
+        {
+          "character": "椅",
+          "pinyin": "yǐ",
+          "reading": "qí"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "信",
+      "character": "信",
+      "meaning": "letter",
+      "pinyin": "xìn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.64,
+      "loose": false
+    },
+    {
+      "id": "封",
+      "character": "封",
+      "meaning": "envelope",
+      "pinyin": "fēng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.54,
+      "loose": false
+    },
+    {
+      "id": "超",
+      "character": "超",
+      "meaning": "jump over",
+      "pinyin": "chāo",
+      "phonetic": {
+        "glyph": "召",
+        "reading": "zhào",
+        "shift": "zhào → chāo"
+      },
+      "family": [
+        {
+          "character": "紹",
+          "pinyin": "shào",
+          "reading": "zhào"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.26,
+      "loose": false
+    },
+    {
+      "id": "級",
+      "character": "級",
+      "meaning": "level",
+      "pinyin": "jí",
+      "phonetic": {
+        "glyph": "及",
+        "reading": "jí",
+        "shift": "jí"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "市",
+      "character": "市",
+      "meaning": "city",
+      "pinyin": "shì",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.78,
+      "loose": false
+    },
+    {
+      "id": "場",
+      "character": "場",
+      "meaning": "measure word for concerts",
+      "pinyin": "chǎng",
+      "phonetic": {
+        "glyph": "昜",
+        "reading": "yáng",
+        "shift": "yáng → chǎng"
+      },
+      "family": [
+        {
+          "character": "傷",
+          "pinyin": "shāng",
+          "reading": "yáng"
+        },
+        {
+          "character": "湯",
+          "pinyin": "tāng",
+          "reading": "yáng"
+        },
+        {
+          "character": "陽",
+          "pinyin": "yáng",
+          "reading": "yáng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.35,
+      "loose": false
+    },
+    {
+      "id": "定",
+      "character": "定",
+      "meaning": "decide",
+      "pinyin": "dìng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.58,
+      "loose": false
+    },
+    {
+      "id": "又",
+      "character": "又",
+      "meaning": "again",
+      "pinyin": "yòu",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "舒",
+      "character": "舒",
+      "meaning": "relaxed",
+      "pinyin": "shū",
+      "phonetic": {
+        "glyph": "舍",
+        "reading": "shě",
+        "shift": "shě → shū"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.89,
+      "loose": true
+    },
+    {
+      "id": "線",
+      "character": "線",
+      "meaning": "line",
+      "pinyin": "xiàn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.5,
+      "loose": false
+    },
+    {
+      "id": "藍",
+      "character": "藍",
+      "meaning": "blue",
+      "pinyin": "lán",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.59,
+      "loose": false
+    },
+    {
+      "id": "飛",
+      "character": "飛",
+      "meaning": "fly",
+      "pinyin": "fēi",
+      "phonetic": {
+        "glyph": "飞",
+        "reading": "fēi",
+        "shift": "fēi"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "司",
+      "character": "司",
+      "meaning": "take charge of",
+      "pinyin": "sī",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.55,
+      "loose": false
+    },
+    {
+      "id": "站",
+      "character": "站",
+      "meaning": "stand",
+      "pinyin": "zhàn",
+      "phonetic": {
+        "glyph": "占",
+        "reading": "zhàn",
+        "shift": "zhàn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "架",
+      "character": "架",
+      "meaning": "measure word for airplanes",
+      "pinyin": "jià",
+      "phonetic": {
+        "glyph": "加",
+        "reading": "jiā",
+        "shift": "jiā → jià"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "裙",
+      "character": "裙",
+      "meaning": "skirt",
+      "pinyin": "qún",
+      "phonetic": {
+        "glyph": "君",
+        "reading": "jūn",
+        "shift": "jūn → qún"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.46,
+      "loose": false
+    },
+    {
+      "id": "年",
+      "character": "年",
+      "meaning": "year",
+      "pinyin": "nián",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.66,
+      "loose": false
+    },
+    {
+      "id": "牌",
+      "character": "牌",
+      "meaning": "card",
+      "pinyin": "pái",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.43,
+      "loose": false
+    },
+    {
+      "id": "因",
+      "character": "因",
+      "meaning": "cause",
+      "pinyin": "yīn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.63,
+      "loose": false
+    },
+    {
+      "id": "為",
+      "character": "為",
+      "meaning": "do",
+      "pinyin": "wèi",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.86,
+      "loose": false
+    },
+    {
+      "id": "褲",
+      "character": "褲",
+      "meaning": "pants",
+      "pinyin": "kù",
+      "phonetic": {
+        "glyph": "庫",
+        "reading": "kù",
+        "shift": "kù"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "所",
+      "character": "所",
+      "meaning": "place",
+      "pinyin": "suǒ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.65,
+      "loose": false
+    },
+    {
+      "id": "貨",
+      "character": "貨",
+      "meaning": "products",
+      "pinyin": "huò",
+      "phonetic": {
+        "glyph": "化",
+        "reading": "huà",
+        "shift": "huà → huò"
+      },
+      "family": [
+        {
+          "character": "花",
+          "pinyin": "huā",
+          "reading": "huà"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.87,
+      "loose": true
+    },
+    {
+      "id": "難",
+      "character": "難",
+      "meaning": "hard",
+      "pinyin": "nán",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.56,
+      "loose": false
+    },
+    {
+      "id": "容",
+      "character": "容",
+      "meaning": "appearance",
+      "pinyin": "róng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.56,
+      "loose": false
+    },
+    {
+      "id": "易",
+      "character": "易",
+      "meaning": "change",
+      "pinyin": "yì",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.58,
+      "loose": false
+    },
+    {
+      "id": "胖",
+      "character": "胖",
+      "meaning": "fat",
+      "pinyin": "pàng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.23,
+      "loose": false
+    },
+    {
+      "id": "瘦",
+      "character": "瘦",
+      "meaning": "thin",
+      "pinyin": "shòu",
+      "phonetic": {
+        "glyph": "叟",
+        "reading": "sǒu",
+        "shift": "sǒu → shòu"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.65,
+      "loose": false
+    },
+    {
+      "id": "矮",
+      "character": "矮",
+      "meaning": "short",
+      "pinyin": "ǎi",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.46,
+      "loose": false
+    },
+    {
+      "id": "斤",
+      "character": "斤",
+      "meaning": "catty",
+      "pinyin": "jīn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.9,
+      "loose": false
+    },
+    {
+      "id": "怕",
+      "character": "怕",
+      "meaning": "be scared of",
+      "pinyin": "pà",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.5,
+      "loose": false
+    },
+    {
+      "id": "黃",
+      "character": "黃",
+      "meaning": "yellow",
+      "pinyin": "huáng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.77,
+      "loose": false
+    },
+    {
+      "id": "流",
+      "character": "流",
+      "meaning": "flow",
+      "pinyin": "liú",
+      "phonetic": {
+        "glyph": "㐬",
+        "reading": "liú",
+        "shift": "liú"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "短",
+      "character": "短",
+      "meaning": "short",
+      "pinyin": "duǎn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.53,
+      "loose": false
+    },
+    {
+      "id": "長",
+      "character": "長",
+      "meaning": "long",
+      "pinyin": "cháng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.92,
+      "loose": false
+    },
+    {
+      "id": "鞋",
+      "character": "鞋",
+      "meaning": "shoes",
+      "pinyin": "xié",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.51,
+      "loose": false
+    },
+    {
+      "id": "襪",
+      "character": "襪",
+      "meaning": "socks",
+      "pinyin": "wà",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.38,
+      "loose": false
+    },
+    {
+      "id": "雙",
+      "character": "雙",
+      "meaning": "pair",
+      "pinyin": "shuāng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.52,
+      "loose": false
+    },
+    {
+      "id": "黑",
+      "character": "黑",
+      "meaning": "black",
+      "pinyin": "hēi",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.61,
+      "loose": false
+    },
+    {
+      "id": "樓",
+      "character": "樓",
+      "meaning": "floor",
+      "pinyin": "lóu",
+      "phonetic": {
+        "glyph": "婁",
+        "reading": "lóu",
+        "shift": "lóu"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "關",
+      "character": "關",
+      "meaning": "close",
+      "pinyin": "guān",
+      "phonetic": {
+        "glyph": "丱",
+        "reading": "guàn",
+        "shift": "guàn → guān"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "梯",
+      "character": "梯",
+      "meaning": "ladder",
+      "pinyin": "tī",
+      "phonetic": {
+        "glyph": "弟",
+        "reading": "tì",
+        "shift": "tì → tī"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "係",
+      "character": "係",
+      "meaning": "system",
+      "pinyin": "xì",
+      "phonetic": {
+        "glyph": "系",
+        "reading": "xì",
+        "shift": "xì"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "對",
+      "character": "對",
+      "meaning": "correct",
+      "pinyin": "duì",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.59,
+      "loose": false
+    },
+    {
+      "id": "輕",
+      "character": "輕",
+      "meaning": "light",
+      "pinyin": "qīng",
+      "phonetic": {
+        "glyph": "巠",
+        "reading": "jīng",
+        "shift": "jīng → qīng"
+      },
+      "family": [
+        {
+          "character": "經",
+          "pinyin": "jīng",
+          "reading": "jīng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.48,
+      "loose": false
+    },
+    {
+      "id": "皮",
+      "character": "皮",
+      "meaning": "skin",
+      "pinyin": "pí",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.08,
+      "loose": false
+    },
+    {
+      "id": "雜",
+      "character": "雜",
+      "meaning": "mix",
+      "pinyin": "zá",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.57,
+      "loose": false
+    },
+    {
+      "id": "誌",
+      "character": "誌",
+      "meaning": "determination",
+      "pinyin": "zhì",
+      "phonetic": {
+        "glyph": "志",
+        "reading": "zhì",
+        "shift": "zhì"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "舊",
+      "character": "舊",
+      "meaning": "old",
+      "pinyin": "jiù",
+      "phonetic": {
+        "glyph": "臼",
+        "reading": "jiù",
+        "shift": "jiù"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "句",
+      "character": "句",
+      "meaning": "sentence",
+      "pinyin": "jù",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.6,
+      "loose": false
+    },
+    {
+      "id": "意",
+      "character": "意",
+      "meaning": "thought",
+      "pinyin": "yì",
+      "phonetic": {
+        "glyph": "音",
+        "reading": "yīn",
+        "shift": "yīn → yì"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.67,
+      "loose": true
+    },
+    {
+      "id": "思",
+      "character": "思",
+      "meaning": "think",
+      "pinyin": "sī",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.36,
+      "loose": false
+    },
+    {
+      "id": "懂",
+      "character": "懂",
+      "meaning": "understand",
+      "pinyin": "dǒng",
+      "phonetic": {
+        "glyph": "董",
+        "reading": "dǒng",
+        "shift": "dǒng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "教",
+      "character": "教",
+      "meaning": "teach",
+      "pinyin": "jiāo",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.64,
+      "loose": false
+    },
+    {
+      "id": "非",
+      "character": "非",
+      "meaning": "not",
+      "pinyin": "fēi",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "聰",
+      "character": "聰",
+      "meaning": "sharp",
+      "pinyin": "cōng",
+      "phonetic": {
+        "glyph": "囪",
+        "reading": "cōng",
+        "shift": "cōng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "法",
+      "character": "法",
+      "meaning": "law",
+      "pinyin": "fǎ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.45,
+      "loose": false
+    },
+    {
+      "id": "毛",
+      "character": "毛",
+      "meaning": "hair",
+      "pinyin": "máo",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.89,
+      "loose": false
+    },
+    {
+      "id": "宿",
+      "character": "宿",
+      "meaning": "stop",
+      "pinyin": "sù",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.78,
+      "loose": false
+    },
+    {
+      "id": "舍",
+      "character": "舍",
+      "meaning": "house",
+      "pinyin": "shě",
+      "phonetic": {
+        "glyph": "舌",
+        "reading": "shé",
+        "shift": "shé → shě"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "功",
+      "character": "功",
+      "meaning": "achievement",
+      "pinyin": "gōng",
+      "phonetic": {
+        "glyph": "工",
+        "reading": "gōng",
+        "shift": "gōng"
+      },
+      "family": [
+        {
+          "character": "紅",
+          "pinyin": "hóng",
+          "reading": "gōng"
+        },
+        {
+          "character": "空",
+          "pinyin": "kōng",
+          "reading": "gōng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "作",
+      "character": "作",
+      "meaning": "do",
+      "pinyin": "zuò",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.47,
+      "loose": false
+    },
+    {
+      "id": "業",
+      "character": "業",
+      "meaning": "business",
+      "pinyin": "yè",
+      "phonetic": {
+        "glyph": "业",
+        "reading": "yè",
+        "shift": "yè"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "室",
+      "character": "室",
+      "meaning": "house",
+      "pinyin": "shì",
+      "phonetic": {
+        "glyph": "至",
+        "reading": "zhì",
+        "shift": "zhì → shì"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.65,
+      "loose": false
+    },
+    {
+      "id": "能",
+      "character": "能",
+      "meaning": "can",
+      "pinyin": "néng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.85,
+      "loose": false
+    },
+    {
+      "id": "用",
+      "character": "用",
+      "meaning": "use",
+      "pinyin": "yòng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.85,
+      "loose": false
+    },
+    {
+      "id": "班",
+      "character": "班",
+      "meaning": "class",
+      "pinyin": "bān",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.65,
+      "loose": false
+    },
+    {
+      "id": "拜",
+      "character": "拜",
+      "meaning": "bow",
+      "pinyin": "bài",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.78,
+      "loose": false
+    },
+    {
+      "id": "語",
+      "character": "語",
+      "meaning": "words",
+      "pinyin": "yǔ",
+      "phonetic": {
+        "glyph": "吾",
+        "reading": "wú",
+        "shift": "wú → yǔ"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.73,
+      "loose": false
+    },
+    {
+      "id": "言",
+      "character": "言",
+      "meaning": "words",
+      "pinyin": "yán",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.81,
+      "loose": false
+    },
+    {
+      "id": "別",
+      "character": "別",
+      "meaning": "separate",
+      "pinyin": "bié",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.8,
+      "loose": false
+    },
+    {
+      "id": "較",
+      "character": "較",
+      "meaning": "compare",
+      "pinyin": "jiào",
+      "phonetic": {
+        "glyph": "交",
+        "reading": "jiāo",
+        "shift": "jiāo → jiào"
+      },
+      "family": [
+        {
+          "character": "餃",
+          "pinyin": "jiǎo",
+          "reading": "jiāo"
+        },
+        {
+          "character": "校",
+          "pinyin": "xiào",
+          "reading": "jiāo"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "許",
+      "character": "許",
+      "meaning": "consent",
+      "pinyin": "xǔ",
+      "phonetic": {
+        "glyph": "午",
+        "reading": "wǔ",
+        "shift": "wǔ → xǔ"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.62,
+      "loose": false
+    },
+    {
+      "id": "希",
+      "character": "希",
+      "meaning": "rare",
+      "pinyin": "xī",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.65,
+      "loose": false
+    },
+    {
+      "id": "望",
+      "character": "望",
+      "meaning": "expect",
+      "pinyin": "wàng",
+      "phonetic": {
+        "glyph": "亡",
+        "reading": "wáng",
+        "shift": "wáng → wàng"
+      },
+      "family": [
+        {
+          "character": "忙",
+          "pinyin": "máng",
+          "reading": "wáng"
+        },
+        {
+          "character": "忘",
+          "pinyin": "wàng",
+          "reading": "wáng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "考",
+      "character": "考",
+      "meaning": "test",
+      "pinyin": "kǎo",
+      "phonetic": {
+        "glyph": "丂",
+        "reading": "kǎo",
+        "shift": "kǎo"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "交",
+      "character": "交",
+      "meaning": "connect",
+      "pinyin": "jiāo",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.86,
+      "loose": false
+    },
+    {
+      "id": "換",
+      "character": "換",
+      "meaning": "change",
+      "pinyin": "huàn",
+      "phonetic": {
+        "glyph": "奐",
+        "reading": "huàn",
+        "shift": "huàn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "始",
+      "character": "始",
+      "meaning": "begin",
+      "pinyin": "shǐ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.29,
+      "loose": false
+    },
+    {
+      "id": "華",
+      "character": "華",
+      "meaning": "flowery",
+      "pinyin": "huá",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.96,
+      "loose": false
+    },
+    {
+      "id": "寫",
+      "character": "寫",
+      "meaning": "write",
+      "pinyin": "xiě",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.53,
+      "loose": false
+    },
+    {
+      "id": "練",
+      "character": "練",
+      "meaning": "drill",
+      "pinyin": "liàn",
+      "phonetic": {
+        "glyph": "柬",
+        "reading": "jiǎn",
+        "shift": "jiǎn → liàn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.51,
+      "loose": false
+    },
+    {
+      "id": "讀",
+      "character": "讀",
+      "meaning": "study",
+      "pinyin": "dú",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.59,
+      "loose": false
+    },
+    {
+      "id": "進",
+      "character": "進",
+      "meaning": "get in",
+      "pinyin": "jìn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.76,
+      "loose": false
+    },
+    {
+      "id": "緊",
+      "character": "緊",
+      "meaning": "tense",
+      "pinyin": "jǐn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.57,
+      "loose": false
+    },
+    {
+      "id": "試",
+      "character": "試",
+      "meaning": "try",
+      "pinyin": "shì",
+      "phonetic": {
+        "glyph": "式",
+        "reading": "shì",
+        "shift": "shì"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "感",
+      "character": "感",
+      "meaning": "affect",
+      "pinyin": "gǎn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.4,
+      "loose": false
+    },
+    {
+      "id": "冒",
+      "character": "冒",
+      "meaning": "risk",
+      "pinyin": "mào",
+      "phonetic": {
+        "glyph": "冃",
+        "reading": "mào",
+        "shift": "mào"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "假",
+      "character": "假",
+      "meaning": "fake",
+      "pinyin": "jiǎ",
+      "phonetic": {
+        "glyph": "叚",
+        "reading": "jiǎ",
+        "shift": "jiǎ"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "燒",
+      "character": "燒",
+      "meaning": "burn",
+      "pinyin": "shāo",
+      "phonetic": {
+        "glyph": "堯",
+        "reading": "yáo",
+        "shift": "yáo → shāo"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.36,
+      "loose": false
+    },
+    {
+      "id": "醫",
+      "character": "醫",
+      "meaning": "cure",
+      "pinyin": "yī",
+      "phonetic": {
+        "glyph": "殹",
+        "reading": "yì",
+        "shift": "yì → yī"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "戴",
+      "character": "戴",
+      "meaning": "to wear",
+      "pinyin": "dài",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.77,
+      "loose": false
+    },
+    {
+      "id": "口",
+      "character": "口",
+      "meaning": "mouth",
+      "pinyin": "kǒu",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.77,
+      "loose": false
+    },
+    {
+      "id": "罩",
+      "character": "罩",
+      "meaning": "cover",
+      "pinyin": "zhào",
+      "phonetic": {
+        "glyph": "卓",
+        "reading": "zhuó",
+        "shift": "zhuó → zhào"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.68,
+      "loose": true
+    },
+    {
+      "id": "洗",
+      "character": "洗",
+      "meaning": "wash",
+      "pinyin": "xǐ",
+      "phonetic": {
+        "glyph": "先",
+        "reading": "xiān",
+        "shift": "xiān → xǐ"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.94,
+      "loose": true
+    },
+    {
+      "id": "指",
+      "character": "指",
+      "meaning": "finger",
+      "pinyin": "zhǐ",
+      "phonetic": {
+        "glyph": "旨",
+        "reading": "zhǐ",
+        "shift": "zhǐ"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "健",
+      "character": "健",
+      "meaning": "strong",
+      "pinyin": "jiàn",
+      "phonetic": {
+        "glyph": "建",
+        "reading": "jiàn",
+        "shift": "jiàn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "康",
+      "character": "康",
+      "meaning": "health",
+      "pinyin": "kāng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.65,
+      "loose": false
+    },
+    {
+      "id": "病",
+      "character": "病",
+      "meaning": "sickness",
+      "pinyin": "bìng",
+      "phonetic": {
+        "glyph": "丙",
+        "reading": "bǐng",
+        "shift": "bǐng → bìng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "注",
+      "character": "注",
+      "meaning": "concentrate",
+      "pinyin": "zhù",
+      "phonetic": {
+        "glyph": "主",
+        "reading": "zhǔ",
+        "shift": "zhǔ → zhù"
+      },
+      "family": [
+        {
+          "character": "住",
+          "pinyin": "zhù",
+          "reading": "zhǔ"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "身",
+      "character": "身",
+      "meaning": "body",
+      "pinyin": "shēn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "體",
+      "character": "體",
+      "meaning": "body",
+      "pinyin": "tǐ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.85,
+      "loose": false
+    },
+    {
+      "id": "帶",
+      "character": "帶",
+      "meaning": "belt",
+      "pinyin": "dài",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.76,
+      "loose": false
+    },
+    {
+      "id": "蘋",
+      "character": "蘋",
+      "meaning": "apple",
+      "pinyin": "píng",
+      "phonetic": {
+        "glyph": "頻",
+        "reading": "pín",
+        "shift": "pín → píng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.81,
+      "loose": false
+    },
+    {
+      "id": "香",
+      "character": "香",
+      "meaning": "incense",
+      "pinyin": "xiāng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.77,
+      "loose": false
+    },
+    {
+      "id": "蕉",
+      "character": "蕉",
+      "meaning": "banana",
+      "pinyin": "jiāo",
+      "phonetic": {
+        "glyph": "焦",
+        "reading": "jiāo",
+        "shift": "jiāo"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "咳",
+      "character": "咳",
+      "meaning": "cough",
+      "pinyin": "késòu/ké",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.07,
+      "loose": false
+    },
+    {
+      "id": "嗽",
+      "character": "嗽",
+      "meaning": "gargle",
+      "pinyin": "sòu",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.25,
+      "loose": false
+    },
+    {
+      "id": "頭",
+      "character": "頭",
+      "meaning": "head",
+      "pinyin": "tóu",
+      "phonetic": {
+        "glyph": "豆",
+        "reading": "dòu",
+        "shift": "dòu → tóu"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.41,
+      "loose": false
+    },
+    {
+      "id": "髮",
+      "character": "髮",
+      "meaning": "hair",
+      "pinyin": "fà",
+      "phonetic": {
+        "glyph": "犮",
+        "reading": "bá",
+        "shift": "bá → fà"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.56,
+      "loose": false
+    },
+    {
+      "id": "痛",
+      "character": "痛",
+      "meaning": "painful",
+      "pinyin": "tòng",
+      "phonetic": {
+        "glyph": "甬",
+        "reading": "tǒng",
+        "shift": "tǒng → tòng"
+      },
+      "family": [
+        {
+          "character": "通",
+          "pinyin": "tōng",
+          "reading": "tǒng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "鼻",
+      "character": "鼻",
+      "meaning": "nose",
+      "pinyin": "bí",
+      "phonetic": {
+        "glyph": "畀",
+        "reading": "bì",
+        "shift": "bì → bí"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "嘴",
+      "character": "嘴",
+      "meaning": "mouth",
+      "pinyin": "zuǐ(ba)",
+      "phonetic": {
+        "glyph": "觜",
+        "reading": "zuǐ",
+        "shift": "zuǐ → zuǐ(ba)"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.99,
+      "loose": false
+    },
+    {
+      "id": "巴",
+      "character": "巴",
+      "meaning": "desire",
+      "pinyin": "bā",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.81,
+      "loose": false
+    },
+    {
+      "id": "臉",
+      "character": "臉",
+      "meaning": "face",
+      "pinyin": "liǎn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.59,
+      "loose": false
+    },
+    {
+      "id": "耳",
+      "character": "耳",
+      "meaning": "ear",
+      "pinyin": "ěr",
+      "phonetic": {
+        "glyph": "二",
+        "reading": "èr",
+        "shift": "èr → ěr"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "眼",
+      "character": "眼",
+      "meaning": "eye",
+      "pinyin": "yǎn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.75,
+      "loose": false
+    },
+    {
+      "id": "睛",
+      "character": "睛",
+      "meaning": "eyeball",
+      "pinyin": "jīng",
+      "phonetic": {
+        "glyph": "青",
+        "reading": "qīng",
+        "shift": "qīng → jīng"
+      },
+      "family": [
+        {
+          "character": "情",
+          "pinyin": "qíng",
+          "reading": "qīng"
+        },
+        {
+          "character": "請",
+          "pinyin": "qǐng",
+          "reading": "qīng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.84,
+      "loose": false
+    },
+    {
+      "id": "鏡",
+      "character": "鏡",
+      "meaning": "mirror",
+      "pinyin": "jìng",
+      "phonetic": {
+        "glyph": "竟",
+        "reading": "jìng",
+        "shift": "jìng"
+      },
+      "family": [
+        {
+          "character": "境",
+          "pinyin": "jìng",
+          "reading": "jìng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "肚",
+      "character": "肚",
+      "meaning": "belly",
+      "pinyin": "dù",
+      "phonetic": {
+        "glyph": "土",
+        "reading": "tǔ",
+        "shift": "tǔ → dù"
+      },
+      "family": [
+        {
+          "character": "堂",
+          "pinyin": "táng",
+          "reading": "tǔ"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.64,
+      "loose": false
+    },
+    {
+      "id": "乾",
+      "character": "乾",
+      "meaning": "arid",
+      "pinyin": "gān",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.65,
+      "loose": false
+    },
+    {
+      "id": "淨",
+      "character": "淨",
+      "meaning": "clean",
+      "pinyin": "jìng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.47,
+      "loose": false
+    },
+    {
+      "id": "需",
+      "character": "需",
+      "meaning": "need",
+      "pinyin": "xū",
+      "phonetic": {
+        "glyph": "雨",
+        "reading": "yù",
+        "shift": "yù → xū"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.74,
+      "loose": false
+    },
+    {
+      "id": "藥",
+      "character": "藥",
+      "meaning": "medications",
+      "pinyin": "yào",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.37,
+      "loose": false
+    },
+    {
+      "id": "記",
+      "character": "記",
+      "meaning": "mark",
+      "pinyin": "jì",
+      "phonetic": {
+        "glyph": "己",
+        "reading": "jǐ",
+        "shift": "jǐ → jì"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "如",
+      "character": "如",
+      "meaning": "as",
+      "pinyin": "rú",
+      "phonetic": {
+        "glyph": "女",
+        "reading": "rǔ",
+        "shift": "rǔ → rú"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "就",
+      "character": "就",
+      "meaning": "then",
+      "pinyin": "jiù",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.52,
+      "loose": false
+    },
+    {
+      "id": "接",
+      "character": "接",
+      "meaning": "connect",
+      "pinyin": "jiē",
+      "phonetic": {
+        "glyph": "妾",
+        "reading": "qiè",
+        "shift": "qiè → jiē"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.55,
+      "loose": false
+    },
+    {
+      "id": "碼",
+      "character": "碼",
+      "meaning": "number",
+      "pinyin": "mǎ",
+      "phonetic": {
+        "glyph": "馬",
+        "reading": "mǎ",
+        "shift": "mǎ"
+      },
+      "family": [
+        {
+          "character": "嗎",
+          "pinyin": "ma",
+          "reading": "mǎ"
+        },
+        {
+          "character": "媽",
+          "pinyin": "mā",
+          "reading": "mǎ"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "擔",
+      "character": "擔",
+      "meaning": "bear",
+      "pinyin": "dān",
+      "phonetic": {
+        "glyph": "詹",
+        "reading": "zhān",
+        "shift": "zhān → dān"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.29,
+      "loose": false
+    },
+    {
+      "id": "告",
+      "character": "告",
+      "meaning": "tell",
+      "pinyin": "gào",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.72,
+      "loose": false
+    },
+    {
+      "id": "訴",
+      "character": "訴",
+      "meaning": "accuse",
+      "pinyin": "sù",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.26,
+      "loose": false
+    },
+    {
+      "id": "忘",
+      "character": "忘",
+      "meaning": "forget",
+      "pinyin": "wàng",
+      "phonetic": {
+        "glyph": "亡",
+        "reading": "wáng",
+        "shift": "wáng → wàng"
+      },
+      "family": [
+        {
+          "character": "忙",
+          "pinyin": "máng",
+          "reading": "wáng"
+        },
+        {
+          "character": "望",
+          "pinyin": "wàng",
+          "reading": "wáng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "認",
+      "character": "認",
+      "meaning": "know",
+      "pinyin": "rèn",
+      "phonetic": {
+        "glyph": "忍",
+        "reading": "rěn",
+        "shift": "rěn → rèn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "識",
+      "character": "識",
+      "meaning": "knowledge",
+      "pinyin": "shí",
+      "phonetic": {
+        "glyph": "戠",
+        "reading": "zhí",
+        "shift": "zhí → shí"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.3,
+      "loose": false
+    },
+    {
+      "id": "已",
+      "character": "已",
+      "meaning": "already",
+      "pinyin": "yǐ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "經",
+      "character": "經",
+      "meaning": "pass through",
+      "pinyin": "jīng",
+      "phonetic": {
+        "glyph": "巠",
+        "reading": "jīng",
+        "shift": "jīng"
+      },
+      "family": [
+        {
+          "character": "輕",
+          "pinyin": "qīng",
+          "reading": "jīng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "卡",
+      "character": "卡",
+      "meaning": "card",
+      "pinyin": "kǎ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.51,
+      "loose": false
+    },
+    {
+      "id": "片",
+      "character": "片",
+      "meaning": "slice",
+      "pinyin": "piàn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "章",
+      "character": "章",
+      "meaning": "chapter",
+      "pinyin": "zhāng",
+      "phonetic": {
+        "glyph": "早",
+        "reading": "zǎo",
+        "shift": "zǎo → zhāng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.64,
+      "loose": true
+    },
+    {
+      "id": "然",
+      "character": "然",
+      "meaning": "then",
+      "pinyin": "rán",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.83,
+      "loose": false
+    },
+    {
+      "id": "留",
+      "character": "留",
+      "meaning": "stay",
+      "pinyin": "liú",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.66,
+      "loose": false
+    },
+    {
+      "id": "答",
+      "character": "答",
+      "meaning": "answer",
+      "pinyin": "dá",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.4,
+      "loose": false
+    },
+    {
+      "id": "聊",
+      "character": "聊",
+      "meaning": "chat",
+      "pinyin": "liáo",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.49,
+      "loose": false
+    },
+    {
+      "id": "差",
+      "character": "差",
+      "meaning": "difference",
+      "pinyin": "chà",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.7,
+      "loose": false
+    },
+    {
+      "id": "決",
+      "character": "決",
+      "meaning": "decide",
+      "pinyin": "jué",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.29,
+      "loose": false
+    },
+    {
+      "id": "驗",
+      "character": "驗",
+      "meaning": "experience",
+      "pinyin": "yàn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.26,
+      "loose": false
+    },
+    {
+      "id": "奇",
+      "character": "奇",
+      "meaning": "strange",
+      "pinyin": "qí",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.46,
+      "loose": false
+    },
+    {
+      "id": "怪",
+      "character": "怪",
+      "meaning": "unusual",
+      "pinyin": "guài",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.57,
+      "loose": false
+    },
+    {
+      "id": "辦",
+      "character": "辦",
+      "meaning": "handle",
+      "pinyin": "bàn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.82,
+      "loose": false
+    },
+    {
+      "id": "算",
+      "character": "算",
+      "meaning": "calculate",
+      "pinyin": "suàn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.85,
+      "loose": false
+    },
+    {
+      "id": "約",
+      "character": "約",
+      "meaning": "appointment",
+      "pinyin": "yuē",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.29,
+      "loose": false
+    },
+    {
+      "id": "但",
+      "character": "但",
+      "meaning": "but",
+      "pinyin": "dàn",
+      "phonetic": {
+        "glyph": "旦",
+        "reading": "dàn",
+        "shift": "dàn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "菜",
+      "character": "菜",
+      "meaning": "dish",
+      "pinyin": "cài",
+      "phonetic": {
+        "glyph": "采",
+        "reading": "cài",
+        "shift": "cài"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "單",
+      "character": "單",
+      "meaning": "single",
+      "pinyin": "dān",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.44,
+      "loose": false
+    },
+    {
+      "id": "特",
+      "character": "特",
+      "meaning": "special",
+      "pinyin": "tè",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.44,
+      "loose": false
+    },
+    {
+      "id": "盤",
+      "character": "盤",
+      "meaning": "plate",
+      "pinyin": "pán",
+      "phonetic": {
+        "glyph": "般",
+        "reading": "pán",
+        "shift": "pán"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "照",
+      "character": "照",
+      "meaning": "photo",
+      "pinyin": "zhào",
+      "phonetic": {
+        "glyph": "昭",
+        "reading": "zhāo",
+        "shift": "zhāo → zhào"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "相",
+      "character": "相",
+      "meaning": "photo",
+      "pinyin": "xiàng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.89,
+      "loose": false
+    },
+    {
+      "id": "情",
+      "character": "情",
+      "meaning": "emotion",
+      "pinyin": "qíng",
+      "phonetic": {
+        "glyph": "青",
+        "reading": "qīng",
+        "shift": "qīng → qíng"
+      },
+      "family": [
+        {
+          "character": "睛",
+          "pinyin": "jīng",
+          "reading": "qīng"
+        },
+        {
+          "character": "請",
+          "pinyin": "qǐng",
+          "reading": "qīng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "出",
+      "character": "出",
+      "meaning": "exit",
+      "pinyin": "chū",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.75,
+      "loose": false
+    },
+    {
+      "id": "工",
+      "character": "工",
+      "meaning": "labor",
+      "pinyin": "gōng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.89,
+      "loose": false
+    },
+    {
+      "id": "參",
+      "character": "參",
+      "meaning": "take part in",
+      "pinyin": "cān",
+      "phonetic": {
+        "glyph": "彡",
+        "reading": "shān",
+        "shift": "shān → cān"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.48,
+      "loose": false
+    },
+    {
+      "id": "加",
+      "character": "加",
+      "meaning": "add to",
+      "pinyin": "jiā",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.76,
+      "loose": false
+    },
+    {
+      "id": "當",
+      "character": "當",
+      "meaning": "be",
+      "pinyin": "dāng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.66,
+      "loose": false
+    },
+    {
+      "id": "護",
+      "character": "護",
+      "meaning": "protect",
+      "pinyin": "hù",
+      "phonetic": {
+        "glyph": "蒦",
+        "reading": "huò",
+        "shift": "huò → hù"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.36,
+      "loose": false
+    },
+    {
+      "id": "理",
+      "character": "理",
+      "meaning": "reason",
+      "pinyin": "lǐ",
+      "phonetic": {
+        "glyph": "里",
+        "reading": "lǐ",
+        "shift": "lǐ"
+      },
+      "family": [
+        {
+          "character": "裡",
+          "pinyin": "lǐ(miàn)",
+          "reading": "lǐ"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "士",
+      "character": "士",
+      "meaning": "scholar",
+      "pinyin": "shì",
+      "phonetic": {
+        "glyph": "十",
+        "reading": "shí",
+        "shift": "shí → shì"
+      },
+      "family": [
+        {
+          "character": "什",
+          "pinyin": "shén",
+          "reading": "shí"
+        },
+        {
+          "character": "汁",
+          "pinyin": "zhī",
+          "reading": "shí"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "者",
+      "character": "者",
+      "meaning": "person",
+      "pinyin": "zhě",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.69,
+      "loose": false
+    },
+    {
+      "id": "銀",
+      "character": "銀",
+      "meaning": "silver",
+      "pinyin": "yín",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.48,
+      "loose": false
+    },
+    {
+      "id": "畢",
+      "character": "畢",
+      "meaning": "finish",
+      "pinyin": "bì",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.87,
+      "loose": false
+    },
+    {
+      "id": "闆",
+      "character": "闆",
+      "meaning": "boss",
+      "pinyin": "bǎn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.52,
+      "loose": false
+    },
+    {
+      "id": "板",
+      "character": "板",
+      "meaning": "board",
+      "pinyin": "bǎn",
+      "phonetic": {
+        "glyph": "反",
+        "reading": "fǎn",
+        "shift": "fǎn → bǎn"
+      },
+      "family": [
+        {
+          "character": "飯",
+          "pinyin": "fàn",
+          "reading": "fǎn"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.46,
+      "loose": false
+    },
+    {
+      "id": "事",
+      "character": "事",
+      "meaning": "affair",
+      "pinyin": "shì(qíng)",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.67,
+      "loose": false
+    },
+    {
+      "id": "準",
+      "character": "準",
+      "meaning": "accurate, exact",
+      "pinyin": "zhǔn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.5,
+      "loose": false
+    },
+    {
+      "id": "辛",
+      "character": "辛",
+      "meaning": "hard; tough",
+      "pinyin": "xīn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.79,
+      "loose": false
+    },
+    {
+      "id": "苦",
+      "character": "苦",
+      "meaning": "bitter",
+      "pinyin": "kǔ",
+      "phonetic": {
+        "glyph": "古",
+        "reading": "gǔ",
+        "shift": "gǔ → kǔ"
+      },
+      "family": [
+        {
+          "character": "故",
+          "pinyin": "gù",
+          "reading": "gǔ"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.43,
+      "loose": false
+    },
+    {
+      "id": "而",
+      "character": "而",
+      "meaning": "and",
+      "pinyin": "ér",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.89,
+      "loose": false
+    },
+    {
+      "id": "且",
+      "character": "且",
+      "meaning": "moreover",
+      "pinyin": "qiě",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.76,
+      "loose": false
+    },
+    {
+      "id": "成",
+      "character": "成",
+      "meaning": "accomplish",
+      "pinyin": "chéng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.75,
+      "loose": false
+    },
+    {
+      "id": "績",
+      "character": "績",
+      "meaning": "achievements",
+      "pinyin": "jī",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.4,
+      "loose": false
+    },
+    {
+      "id": "過",
+      "character": "過",
+      "meaning": "pass",
+      "pinyin": "guò",
+      "phonetic": {
+        "glyph": "咼",
+        "reading": "guō",
+        "shift": "guō → guò"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "夠",
+      "character": "夠",
+      "meaning": "enough",
+      "pinyin": "gòu",
+      "phonetic": {
+        "glyph": "句",
+        "reading": "gōu",
+        "shift": "gōu → gòu"
+      },
+      "family": [
+        {
+          "character": "狗",
+          "pinyin": "gǒu",
+          "reading": "gōu"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "遲",
+      "character": "遲",
+      "meaning": "tardy",
+      "pinyin": "chí",
+      "phonetic": {
+        "glyph": "犀",
+        "reading": "xī",
+        "shift": "xī → chí"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.38,
+      "loose": false
+    },
+    {
+      "id": "備",
+      "character": "備",
+      "meaning": "prepare",
+      "pinyin": "bèi",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.78,
+      "loose": false
+    },
+    {
+      "id": "節",
+      "character": "節",
+      "meaning": "festival",
+      "pinyin": "jié",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.5,
+      "loose": false
+    },
+    {
+      "id": "目",
+      "character": "目",
+      "meaning": "eye",
+      "pinyin": "mù",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.8,
+      "loose": false
+    },
+    {
+      "id": "父",
+      "character": "父",
+      "meaning": "father",
+      "pinyin": "fù",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.91,
+      "loose": false
+    },
+    {
+      "id": "母",
+      "character": "母",
+      "meaning": "mother",
+      "pinyin": "mǔ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "親",
+      "character": "親",
+      "meaning": "relatives",
+      "pinyin": "qīn",
+      "phonetic": {
+        "glyph": "亲",
+        "reading": "qīn",
+        "shift": "qīn"
+      },
+      "family": [
+        {
+          "character": "新",
+          "pinyin": "xīn",
+          "reading": "qīn"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "談",
+      "character": "談",
+      "meaning": "talk",
+      "pinyin": "tán",
+      "phonetic": {
+        "glyph": "炎",
+        "reading": "yán",
+        "shift": "yán → tán"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.2,
+      "loose": false
+    },
+    {
+      "id": "己",
+      "character": "己",
+      "meaning": "self",
+      "pinyin": "jǐ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "結",
+      "character": "結",
+      "meaning": "knot",
+      "pinyin": "jié",
+      "phonetic": {
+        "glyph": "吉",
+        "reading": "jí",
+        "shift": "jí → jié"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.94,
+      "loose": false
+    },
+    {
+      "id": "婚",
+      "character": "婚",
+      "meaning": "get married",
+      "pinyin": "hūn",
+      "phonetic": {
+        "glyph": "昏",
+        "reading": "hūn",
+        "shift": "hūn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "重",
+      "character": "重",
+      "meaning": "heavy",
+      "pinyin": "zhòng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.68,
+      "loose": false
+    },
+    {
+      "id": "廠",
+      "character": "廠",
+      "meaning": "factory",
+      "pinyin": "chǎng",
+      "phonetic": {
+        "glyph": "敞",
+        "reading": "chǎng",
+        "shift": "chǎng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "喂",
+      "character": "喂",
+      "meaning": "hello",
+      "pinyin": "wéi",
+      "phonetic": {
+        "glyph": "畏",
+        "reading": "wèi",
+        "shift": "wèi → wéi"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "剛",
+      "character": "剛",
+      "meaning": "just",
+      "pinyin": "gāng",
+      "phonetic": {
+        "glyph": "岡",
+        "reading": "gāng",
+        "shift": "gāng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "博",
+      "character": "博",
+      "meaning": "broad, extensive",
+      "pinyin": "bó",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.4,
+      "loose": false
+    },
+    {
+      "id": "址",
+      "character": "址",
+      "meaning": "location",
+      "pinyin": "zhǐ",
+      "phonetic": {
+        "glyph": "止",
+        "reading": "zhǐ",
+        "shift": "zhǐ"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "觀",
+      "character": "觀",
+      "meaning": "observe",
+      "pinyin": "guān",
+      "phonetic": {
+        "glyph": "雚",
+        "reading": "guàn",
+        "shift": "guàn → guān"
+      },
+      "family": [
+        {
+          "character": "歡",
+          "pinyin": "huān",
+          "reading": "huán"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "往",
+      "character": "往",
+      "meaning": "towards",
+      "pinyin": "wǎng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.44,
+      "loose": false
+    },
+    {
+      "id": "右",
+      "character": "右",
+      "meaning": "the right side",
+      "pinyin": "yòu(biān)",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.77,
+      "loose": false
+    },
+    {
+      "id": "左",
+      "character": "左",
+      "meaning": "the left side",
+      "pinyin": "zuǒ(biān)",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.43,
+      "loose": false
+    },
+    {
+      "id": "轉",
+      "character": "轉",
+      "meaning": "turn",
+      "pinyin": "zhuǎn",
+      "phonetic": {
+        "glyph": "專",
+        "reading": "zhuān",
+        "shift": "zhuān → zhuǎn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "排",
+      "character": "排",
+      "meaning": "line up",
+      "pinyin": "pái",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.39,
+      "loose": false
+    },
+    {
+      "id": "隊",
+      "character": "隊",
+      "meaning": "team",
+      "pinyin": "duì",
+      "phonetic": {
+        "glyph": "㒸",
+        "reading": "suì",
+        "shift": "suì → duì"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.33,
+      "loose": false
+    },
+    {
+      "id": "票",
+      "character": "票",
+      "meaning": "ticket",
+      "pinyin": "piào",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.38,
+      "loose": false
+    },
+    {
+      "id": "靜",
+      "character": "靜",
+      "meaning": "still",
+      "pinyin": "jìng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.26,
+      "loose": false
+    },
+    {
+      "id": "聲",
+      "character": "聲",
+      "meaning": "sound",
+      "pinyin": "shēng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.35,
+      "loose": false
+    },
+    {
+      "id": "歷",
+      "character": "歷",
+      "meaning": "history",
+      "pinyin": "lì",
+      "phonetic": {
+        "glyph": "厤",
+        "reading": "lì",
+        "shift": "lì"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "史",
+      "character": "史",
+      "meaning": "history",
+      "pinyin": "shǐ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.86,
+      "loose": false
+    },
+    {
+      "id": "故",
+      "character": "故",
+      "meaning": "old; past",
+      "pinyin": "gù",
+      "phonetic": {
+        "glyph": "古",
+        "reading": "gǔ",
+        "shift": "gǔ → gù"
+      },
+      "family": [
+        {
+          "character": "苦",
+          "pinyin": "kǔ",
+          "reading": "gǔ"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "數",
+      "character": "數",
+      "meaning": "count",
+      "pinyin": "shù",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.59,
+      "loose": false
+    },
+    {
+      "id": "科",
+      "character": "科",
+      "meaning": "section",
+      "pinyin": "kē",
+      "phonetic": {
+        "glyph": "禾",
+        "reading": "hé",
+        "shift": "hé → kē"
+      },
+      "family": [
+        {
+          "character": "和",
+          "pinyin": "hé/hàn",
+          "reading": "hé"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.66,
+      "loose": false
+    },
+    {
+      "id": "展",
+      "character": "展",
+      "meaning": "exhibition",
+      "pinyin": "zhǎn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.82,
+      "loose": false
+    },
+    {
+      "id": "向",
+      "character": "向",
+      "meaning": "towards",
+      "pinyin": "xiàng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.7,
+      "loose": false
+    },
+    {
+      "id": "第",
+      "character": "第",
+      "meaning": "ordinal",
+      "pinyin": "dì",
+      "phonetic": {
+        "glyph": "弔",
+        "reading": "diào",
+        "shift": "diào → dì"
+      },
+      "family": [
+        {
+          "character": "弟",
+          "pinyin": "dì",
+          "reading": "diào"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.95,
+      "loose": true
+    },
+    {
+      "id": "十",
+      "character": "十",
+      "meaning": "ten",
+      "pinyin": "shí",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.83,
+      "loose": false
+    },
+    {
+      "id": "壞",
+      "character": "壞",
+      "meaning": "bad",
+      "pinyin": "huài",
+      "phonetic": {
+        "glyph": "褱",
+        "reading": "huái",
+        "shift": "huái → huài"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "世",
+      "character": "世",
+      "meaning": "world",
+      "pinyin": "shì",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "界",
+      "character": "界",
+      "meaning": "boundary",
+      "pinyin": "jiè",
+      "phonetic": {
+        "glyph": "介",
+        "reading": "jiè",
+        "shift": "jiè"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "活",
+      "character": "活",
+      "meaning": "exist",
+      "pinyin": "huó",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.32,
+      "loose": false
+    },
+    {
+      "id": "跨",
+      "character": "跨",
+      "meaning": "straddle",
+      "pinyin": "kuà",
+      "phonetic": {
+        "glyph": "夸",
+        "reading": "kuā",
+        "shift": "kuā → kuà"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "住",
+      "character": "住",
+      "meaning": "reside",
+      "pinyin": "zhù",
+      "phonetic": {
+        "glyph": "主",
+        "reading": "zhǔ",
+        "shift": "zhǔ → zhù"
+      },
+      "family": [
+        {
+          "character": "注",
+          "pinyin": "zhù",
+          "reading": "zhǔ"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "次",
+      "character": "次",
+      "meaning": "time",
+      "pinyin": "cì",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.69,
+      "loose": false
+    },
+    {
+      "id": "城",
+      "character": "城",
+      "meaning": "city; town",
+      "pinyin": "chéng",
+      "phonetic": {
+        "glyph": "成",
+        "reading": "chéng",
+        "shift": "chéng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "演",
+      "character": "演",
+      "meaning": "perform",
+      "pinyin": "yǎn",
+      "phonetic": {
+        "glyph": "寅",
+        "reading": "yín",
+        "shift": "yín → yǎn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.72,
+      "loose": true
+    },
+    {
+      "id": "表",
+      "character": "表",
+      "meaning": "show",
+      "pinyin": "biǎo",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "鬧",
+      "character": "鬧",
+      "meaning": "busy",
+      "pinyin": "nào",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.66,
+      "loose": false
+    },
+    {
+      "id": "久",
+      "character": "久",
+      "meaning": "long",
+      "pinyin": "jiǔ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.8,
+      "loose": false
+    },
+    {
+      "id": "北",
+      "character": "北",
+      "meaning": "north",
+      "pinyin": "běi",
+      "phonetic": {
+        "glyph": "匕",
+        "reading": "bǐ",
+        "shift": "bǐ → běi"
+      },
+      "family": [
+        {
+          "character": "比",
+          "pinyin": "bǐ",
+          "reading": "bǐ"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.71,
+      "loose": true
+    },
+    {
+      "id": "迎",
+      "character": "迎",
+      "meaning": "welcome",
+      "pinyin": "yíng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.49,
+      "loose": false
+    },
+    {
+      "id": "園",
+      "character": "園",
+      "meaning": "garden",
+      "pinyin": "yuán",
+      "phonetic": {
+        "glyph": "袁",
+        "reading": "yuán",
+        "shift": "yuán"
+      },
+      "family": [
+        {
+          "character": "遠",
+          "pinyin": "yuǎn",
+          "reading": "yuán"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "樹",
+      "character": "樹",
+      "meaning": "tree",
+      "pinyin": "shù",
+      "phonetic": {
+        "glyph": "尌",
+        "reading": "shù",
+        "shift": "shù"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "棵",
+      "character": "棵",
+      "meaning": "measure word for trees",
+      "pinyin": "kē",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.49,
+      "loose": false
+    },
+    {
+      "id": "環",
+      "character": "環",
+      "meaning": "ring; to surround",
+      "pinyin": "huán",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.38,
+      "loose": false
+    },
+    {
+      "id": "境",
+      "character": "境",
+      "meaning": "environment; surroundings",
+      "pinyin": "jìng",
+      "phonetic": {
+        "glyph": "竟",
+        "reading": "jìng",
+        "shift": "jìng"
+      },
+      "family": [
+        {
+          "character": "鏡",
+          "pinyin": "jìng",
+          "reading": "jìng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "酒",
+      "character": "酒",
+      "meaning": "wine",
+      "pinyin": "jiǔ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.42,
+      "loose": false
+    },
+    {
+      "id": "餃",
+      "character": "餃",
+      "meaning": "stuffed dumplings",
+      "pinyin": "jiǎo",
+      "phonetic": {
+        "glyph": "交",
+        "reading": "jiāo",
+        "shift": "jiāo → jiǎo"
+      },
+      "family": [
+        {
+          "character": "較",
+          "pinyin": "jiào",
+          "reading": "jiāo"
+        },
+        {
+          "character": "校",
+          "pinyin": "xiào",
+          "reading": "jiāo"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "魚",
+      "character": "魚",
+      "meaning": "fish",
+      "pinyin": "yú",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.82,
+      "loose": false
+    },
+    {
+      "id": "湯",
+      "character": "湯",
+      "meaning": "soup",
+      "pinyin": "tāng",
+      "phonetic": {
+        "glyph": "昜",
+        "reading": "yáng",
+        "shift": "yáng → tāng"
+      },
+      "family": [
+        {
+          "character": "場",
+          "pinyin": "chǎng",
+          "reading": "yáng"
+        },
+        {
+          "character": "傷",
+          "pinyin": "shāng",
+          "reading": "yáng"
+        },
+        {
+          "character": "陽",
+          "pinyin": "yáng",
+          "reading": "yáng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.55,
+      "loose": false
+    },
+    {
+      "id": "拿",
+      "character": "拿",
+      "meaning": "hold",
+      "pinyin": "ná",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.58,
+      "loose": false
+    },
+    {
+      "id": "堂",
+      "character": "堂",
+      "meaning": "hall",
+      "pinyin": "táng",
+      "phonetic": {
+        "glyph": "土",
+        "reading": "tǔ",
+        "shift": "tǔ → táng"
+      },
+      "family": [
+        {
+          "character": "肚",
+          "pinyin": "dù",
+          "reading": "tǔ"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.77,
+      "loose": true
+    },
+    {
+      "id": "慶",
+      "character": "慶",
+      "meaning": "congratulate",
+      "pinyin": "qìng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.87,
+      "loose": false
+    },
+    {
+      "id": "祝",
+      "character": "祝",
+      "meaning": "wish well",
+      "pinyin": "zhù",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.68,
+      "loose": false
+    },
+    {
+      "id": "通",
+      "character": "通",
+      "meaning": "pass through",
+      "pinyin": "tōng",
+      "phonetic": {
+        "glyph": "甬",
+        "reading": "tǒng",
+        "shift": "tǒng → tōng"
+      },
+      "family": [
+        {
+          "character": "痛",
+          "pinyin": "tòng",
+          "reading": "tǒng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "警",
+      "character": "警",
+      "meaning": "guard",
+      "pinyin": "jǐng",
+      "phonetic": {
+        "glyph": "敬",
+        "reading": "jìng",
+        "shift": "jìng → jǐng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "察",
+      "character": "察",
+      "meaning": "examine",
+      "pinyin": "chá",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.79,
+      "loose": false
+    },
+    {
+      "id": "受",
+      "character": "受",
+      "meaning": "receive",
+      "pinyin": "shòu",
+      "phonetic": {
+        "glyph": "又",
+        "reading": "yòu",
+        "shift": "yòu → shòu"
+      },
+      "family": [
+        {
+          "character": "友",
+          "pinyin": "yǒu",
+          "reading": "yòu"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.8,
+      "loose": false
+    },
+    {
+      "id": "傷",
+      "character": "傷",
+      "meaning": "injure",
+      "pinyin": "shāng",
+      "phonetic": {
+        "glyph": "昜",
+        "reading": "yáng",
+        "shift": "yáng → shāng"
+      },
+      "family": [
+        {
+          "character": "場",
+          "pinyin": "chǎng",
+          "reading": "yáng"
+        },
+        {
+          "character": "湯",
+          "pinyin": "tāng",
+          "reading": "yáng"
+        },
+        {
+          "character": "陽",
+          "pinyin": "yáng",
+          "reading": "yáng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.3,
+      "loose": false
+    },
+    {
+      "id": "肖",
+      "character": "肖",
+      "meaning": "zodiac sign",
+      "pinyin": "xiào",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "才",
+      "character": "才",
+      "meaning": "ability",
+      "pinyin": "cái",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.88,
+      "loose": false
+    },
+    {
+      "id": "原",
+      "character": "原",
+      "meaning": "source",
+      "pinyin": "yuán",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.73,
+      "loose": false
+    },
+    {
+      "id": "代",
+      "character": "代",
+      "meaning": "era",
+      "pinyin": "dài",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.58,
+      "loose": false
+    },
+    {
+      "id": "越",
+      "character": "越",
+      "meaning": "exceed",
+      "pinyin": "yuè",
+      "phonetic": {
+        "glyph": "戉",
+        "reading": "yuè",
+        "shift": "yuè"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "南",
+      "character": "南",
+      "meaning": "south",
+      "pinyin": "nán",
+      "phonetic": {
+        "glyph": "干",
+        "reading": "gān",
+        "shift": "gān → nán"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.71,
+      "loose": false
+    },
+    {
+      "id": "屬",
+      "character": "屬",
+      "meaning": "belong to",
+      "pinyin": "shǔ",
+      "phonetic": {
+        "glyph": "蜀",
+        "reading": "shǔ",
+        "shift": "shǔ"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "簡",
+      "character": "簡",
+      "meaning": "simple",
+      "pinyin": "jiǎn",
+      "phonetic": {
+        "glyph": "間",
+        "reading": "jiàn",
+        "shift": "jiàn → jiǎn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "查",
+      "character": "查",
+      "meaning": "look up",
+      "pinyin": "chá",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.53,
+      "loose": false
+    },
+    {
+      "id": "羊",
+      "character": "羊",
+      "meaning": "sheep",
+      "pinyin": "yáng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.91,
+      "loose": false
+    },
+    {
+      "id": "兔",
+      "character": "兔",
+      "meaning": "rabbit",
+      "pinyin": "tù/tùzi",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.57,
+      "loose": false
+    },
+    {
+      "id": "龍",
+      "character": "龍",
+      "meaning": "dragon",
+      "pinyin": "lóng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.83,
+      "loose": false
+    },
+    {
+      "id": "著",
+      "character": "著",
+      "meaning": "particle",
+      "pinyin": "zhe",
+      "phonetic": {
+        "glyph": "者",
+        "reading": "zhě",
+        "shift": "zhě → zhe"
+      },
+      "family": [
+        {
+          "character": "豬",
+          "pinyin": "zhū",
+          "reading": "zhě"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "燈",
+      "character": "燈",
+      "meaning": "lamp",
+      "pinyin": "dēng",
+      "phonetic": {
+        "glyph": "登",
+        "reading": "dēng",
+        "shift": "dēng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "籠",
+      "character": "籠",
+      "meaning": "basket",
+      "pinyin": "lóng",
+      "phonetic": {
+        "glyph": "龍",
+        "reading": "lóng",
+        "shift": "lóng"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "講",
+      "character": "講",
+      "meaning": "talk",
+      "pinyin": "jiǎng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.29,
+      "loose": false
+    },
+    {
+      "id": "宵",
+      "character": "宵",
+      "meaning": "night",
+      "pinyin": "xiāo",
+      "phonetic": {
+        "glyph": "肖",
+        "reading": "xiào",
+        "shift": "xiào → xiāo"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "虎",
+      "character": "虎",
+      "meaning": "tiger",
+      "pinyin": "hǔ/lǎohǔ",
+      "phonetic": {
+        "glyph": "虍",
+        "reading": "hū",
+        "shift": "hū → hǔ/lǎohǔ"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.63,
+      "loose": true
+    },
+    {
+      "id": "放",
+      "character": "放",
+      "meaning": "put",
+      "pinyin": "fàng",
+      "phonetic": {
+        "glyph": "方",
+        "reading": "fāng",
+        "shift": "fāng → fàng"
+      },
+      "family": [
+        {
+          "character": "房",
+          "pinyin": "fáng",
+          "reading": "fāng"
+        },
+        {
+          "character": "旁",
+          "pinyin": "páng",
+          "reading": "fāng"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "紙",
+      "character": "紙",
+      "meaning": "paper",
+      "pinyin": "zhǐ",
+      "phonetic": {
+        "glyph": "氏",
+        "reading": "zhī",
+        "shift": "zhī → zhǐ"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "河",
+      "character": "河",
+      "meaning": "river",
+      "pinyin": "hé",
+      "phonetic": {
+        "glyph": "可",
+        "reading": "kě",
+        "shift": "kě → hé"
+      },
+      "family": [
+        {
+          "character": "哥",
+          "pinyin": "gē",
+          "reading": "kě"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.42,
+      "loose": false
+    },
+    {
+      "id": "湖",
+      "character": "湖",
+      "meaning": "lake",
+      "pinyin": "hú",
+      "phonetic": {
+        "glyph": "胡",
+        "reading": "hú",
+        "shift": "hú"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "贏",
+      "character": "贏",
+      "meaning": "win",
+      "pinyin": "yíng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.57,
+      "loose": false
+    },
+    {
+      "id": "輸",
+      "character": "輸",
+      "meaning": "lose",
+      "pinyin": "shū",
+      "phonetic": {
+        "glyph": "俞",
+        "reading": "shù",
+        "shift": "shù → shū"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "其",
+      "character": "其",
+      "meaning": "other",
+      "pinyin": "qí",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.82,
+      "loose": false
+    },
+    {
+      "id": "鼠",
+      "character": "鼠",
+      "meaning": "rat",
+      "pinyin": "shǔ/lǎoshǔ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.84,
+      "loose": false
+    },
+    {
+      "id": "蛇",
+      "character": "蛇",
+      "meaning": "snake",
+      "pinyin": "shé",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": true,
+      "confidence": 0.45,
+      "loose": false
+    },
+    {
+      "id": "猴",
+      "character": "猴",
+      "meaning": "monkey",
+      "pinyin": "hóu/hóuzi",
+      "phonetic": {
+        "glyph": "侯",
+        "reading": "hóu",
+        "shift": "hóu → hóu/hóuzi"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 1,
+      "loose": false
+    },
+    {
+      "id": "雞",
+      "character": "雞",
+      "meaning": "chicken",
+      "pinyin": "jī",
+      "phonetic": {
+        "glyph": "奚",
+        "reading": "xī",
+        "shift": "xī → jī"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.44,
+      "loose": false
+    },
+    {
+      "id": "豬",
+      "character": "豬",
+      "meaning": "pig",
+      "pinyin": "zhū",
+      "phonetic": {
+        "glyph": "者",
+        "reading": "zhě",
+        "shift": "zhě → zhū"
+      },
+      "family": [
+        {
+          "character": "著",
+          "pinyin": "zhe",
+          "reading": "zhě"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": 0.92,
+      "loose": true
+    },
+    {
+      "id": "離",
+      "character": "離",
+      "meaning": "away from",
+      "pinyin": "lí",
+      "phonetic": {
+        "glyph": "离",
+        "reading": "lí",
+        "shift": "lí"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "報",
+      "character": "報",
+      "meaning": "announce",
+      "pinyin": "bào",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.63,
+      "loose": false
+    },
+    {
+      "id": "份",
+      "character": "份",
+      "meaning": "copy",
+      "pinyin": "fèn",
+      "phonetic": {
+        "glyph": "分",
+        "reading": "fèn",
+        "shift": "fèn"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "雪",
+      "character": "雪",
+      "meaning": "snow",
+      "pinyin": "xuě",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.42,
+      "loose": false
+    },
+    {
+      "id": "雨",
+      "character": "雨",
+      "meaning": "rain",
+      "pinyin": "yǔ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.63,
+      "loose": false
+    },
+    {
+      "id": "夜",
+      "character": "夜",
+      "meaning": "night",
+      "pinyin": "yè",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.8,
+      "loose": false
+    },
+    {
+      "id": "魯",
+      "character": "魯",
+      "meaning": "foolish",
+      "pinyin": "lǔ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.68,
+      "loose": false
+    },
+    {
+      "id": "閣",
+      "character": "閣",
+      "meaning": "pavilion",
+      "pinyin": "gé",
+      "phonetic": {
+        "glyph": "各",
+        "reading": "gè",
+        "shift": "gè → gé"
+      },
+      "family": [
+        {
+          "character": "客",
+          "pinyin": "kè",
+          "reading": "gè"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "蓮",
+      "character": "蓮",
+      "meaning": "lotus",
+      "pinyin": "lián",
+      "phonetic": {
+        "glyph": "連",
+        "reading": "lián",
+        "shift": "lián"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "合",
+      "character": "合",
+      "meaning": "join",
+      "pinyin": "hé",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.26,
+      "loose": false
+    },
+    {
+      "id": "潭",
+      "character": "潭",
+      "meaning": "deep pool",
+      "pinyin": "tán",
+      "phonetic": {
+        "glyph": "覃",
+        "reading": "tán",
+        "shift": "tán"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "搭",
+      "character": "搭",
+      "meaning": "take",
+      "pinyin": "dā",
+      "phonetic": {
+        "glyph": "荅",
+        "reading": "dá",
+        "shift": "dá → dā"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "更",
+      "character": "更",
+      "meaning": "even",
+      "pinyin": "gèng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.75,
+      "loose": false
+    },
+    {
+      "id": "浴",
+      "character": "浴",
+      "meaning": "bathe",
+      "pinyin": "yù",
+      "phonetic": {
+        "glyph": "谷",
+        "reading": "gǔ",
+        "shift": "gǔ → yù"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.27,
+      "loose": false
+    },
+    {
+      "id": "廁",
+      "character": "廁",
+      "meaning": "toilet",
+      "pinyin": "cè",
+      "phonetic": {
+        "glyph": "則",
+        "reading": "zé",
+        "shift": "zé → cè"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.42,
+      "loose": false
+    },
+    {
+      "id": "澡",
+      "character": "澡",
+      "meaning": "wash",
+      "pinyin": "zǎo",
+      "phonetic": {
+        "glyph": "喿",
+        "reading": "zào",
+        "shift": "zào → zǎo"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "付",
+      "character": "付",
+      "meaning": "pay",
+      "pinyin": "fù",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.56,
+      "loose": false
+    },
+    {
+      "id": "笑",
+      "character": "笑",
+      "meaning": "smile",
+      "pinyin": "xiào",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.54,
+      "loose": false
+    },
+    {
+      "id": "雄",
+      "character": "雄",
+      "meaning": "hero; manly",
+      "pinyin": "xióng",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.56,
+      "loose": false
+    },
+    {
+      "id": "陸",
+      "character": "陸",
+      "meaning": "land",
+      "pinyin": "lù",
+      "phonetic": {
+        "glyph": "坴",
+        "reading": "lù",
+        "shift": "lù"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "菲",
+      "character": "菲",
+      "meaning": "fragrant",
+      "pinyin": "fēi",
+      "phonetic": {
+        "glyph": "非",
+        "reading": "fēi",
+        "shift": "fēi"
+      },
+      "family": [
+        {
+          "character": "啡",
+          "pinyin": "fēi",
+          "reading": "fēi"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "律",
+      "character": "律",
+      "meaning": "statute",
+      "pinyin": "lǜ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.4,
+      "loose": false
+    },
+    {
+      "id": "賓",
+      "character": "賓",
+      "meaning": "guest",
+      "pinyin": "bīn",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.59,
+      "loose": false
+    },
+    {
+      "id": "荷",
+      "character": "荷",
+      "meaning": "lotus",
+      "pinyin": "hé",
+      "phonetic": {
+        "glyph": "何",
+        "reading": "hé",
+        "shift": "hé"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "蘭",
+      "character": "蘭",
+      "meaning": "orchid",
+      "pinyin": "lán",
+      "phonetic": {
+        "glyph": "闌",
+        "reading": "lán",
+        "shift": "lán"
+      },
+      "family": [],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "里",
+      "character": "里",
+      "meaning": "li",
+      "pinyin": "lǐ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.5,
+      "loose": false
+    },
+    {
+      "id": "尺",
+      "character": "尺",
+      "meaning": "ruler",
+      "pinyin": "chǐ",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.77,
+      "loose": false
+    },
+    {
+      "id": "食",
+      "character": "食",
+      "meaning": "food",
+      "pinyin": "shí",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.56,
+      "loose": false
+    },
+    {
+      "id": "遊",
+      "character": "遊",
+      "meaning": "to play",
+      "pinyin": "yóu",
+      "phonetic": {
+        "glyph": "斿",
+        "reading": "yóu",
+        "shift": "yóu"
+      },
+      "family": [
+        {
+          "character": "游",
+          "pinyin": "yóu",
+          "reading": "yóu"
+        }
+      ],
+      "needsHuman": false,
+      "confidence": null,
+      "loose": false
+    },
+    {
+      "id": "戲",
+      "character": "戲",
+      "meaning": "game",
+      "pinyin": "xì",
+      "phonetic": null,
+      "family": [],
+      "needsHuman": false,
+      "confidence": 0.88,
+      "loose": false
+    }
+  ]
+}

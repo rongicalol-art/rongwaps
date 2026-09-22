@@ -1,15 +1,22 @@
 {
   "schemaVersion": 1,
-  "version": "641a0131d888c503cb6580d60fc666b5c6672526f18b01c9a2f2f4a82b7795fd",
-  "generatedAt": "2026-09-16T12:49:57.312Z",
-  "totalCount": 1442,
+  "version": "623f40ffe3a19728e6f685cee26bb4977b163fc12695b44c21a27e38d0b29384",
+  "generatedAt": "2026-09-22T03:11:14.577Z",
+  "totalCount": 2872,
   "books": [
     {
       "bookId": 1,
       "count": 1442,
       "path": "/data/memory-hooks/book-1.json",
-      "sha256": "641a0131d888c503cb6580d60fc666b5c6672526f18b01c9a2f2f4a82b7795fd",
-      "bytes": 217481
+      "sha256": "5f4dcb93fb65bf661997bc96bc75c8a7eb03444786b8d681511ff04571bf9124",
+      "bytes": 214609
+    },
+    {
+      "bookId": 3,
+      "count": 1430,
+      "path": "/data/memory-hooks/book-3.json",
+      "sha256": "749e99306bfc250d2f166acc43f0bcc0600897c1601e33f5dac036befab1368c",
+      "bytes": 233243
     }
   ]
 }

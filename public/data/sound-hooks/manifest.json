@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "version": "35e77cdb93983f5ee06d76100e3a37e42d2988a6adc95e2f23c2b08b432b2e41",
+  "generatedAt": "2026-09-22T05:30:14.647Z",
+  "totalCount": 656,
+  "books": [
+    {
+      "bookId": 1,
+      "count": 656,
+      "path": "/data/sound-hooks/book-1.json",
+      "sha256": "35e77cdb93983f5ee06d76100e3a37e42d2988a6adc95e2f23c2b08b432b2e41",
+      "bytes": 186809
+    }
+  ]
+}
