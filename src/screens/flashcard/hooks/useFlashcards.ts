@@ -1,46 +1,33 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { Flashcard } from '../../../data/flashcards';
+import { useState, useEffect, useCallback } from 'react';
 import { useAppStore } from '../../../store/useAppStore';
 import { audioService } from '../../../services/audioService';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
-import { shuffleItems } from '../../../utils/sessionOrder';
+import { useCardSession, type CardSessionQuality } from '../../../hooks/useCardSession';
 import { getDeckIdentityKey } from '../../../utils/lessonPartSelection';
-import { getSessionStartIndex, retainCurrentCardIndex } from '../../../utils/sessionProgress';
-import type { Quality } from '../../../utils/srsEngine';
 
 // How many upcoming cards to pre-warm neural TTS for, so flip-triggered
 // playback is instant instead of waiting a server synthesis round-trip.
 const WARM_AHEAD_COUNT = 4;
 
 /**
- * Core hook for the flashcard review session.
- *
- * Loads cards for a given book/lesson selection (or review/library deck),
- * manages flip state, tracks per-card quality ratings in the current session,
- * and persists progress so the user can resume where they left off.
- *
- * Quality scale (matches SRS engine):
- *   1 = Hard    2 = Bad    3 = Good    4 = Easy    5 = Perfect
- *
- * The `handleNext` level maps to quality as:
- *   level 1 → quality 1 (Hard / Again)
- *   level 2 → quality 2 (Bad)
- *   level 3 → quality 4 (Good / Got it)
- *   level 4 → quality 5 (Easy / Perfect)
+ * UI rating level (1-4) → SRS quality (1-5). The UI skips quality 3
+ * (difficult) for simplicity — users pick Hard(1), Bad(2), Good(3), Easy(4)
+ * which maps to SRS 1, 2, 4, 5.
+ */
+function levelToQuality(level: number): CardSessionQuality {
+  if (level === 1) return 1;
+  if (level === 2) return 2;
+  if (level === 3) return 4;
+  return 5;
+}
+
+/**
+ * Flashcard review session: deck loading plus the flip/breakdown UI state
+ * the flashcards screen owns. Session mechanics (deck lifecycle across
+ * session-key switches, resume, shuffle, grading dedupe, mistake requeue,
+ * completion, reset/review-unlearned) live in `useCardSession`.
  */
 export function useFlashcards(activeBookId: number, selectedLessons: number[], isReviewDeck: boolean = false, isLibraryDeck: boolean = false) {
-  const markCardReviewed = useAppStore((state) => state.markCardReviewed);
-  const sessionProgressIndex = useAppStore((state) => state.sessionProgressIndex);
-  const setSessionProgressIndex = useAppStore((state) => state.setSessionProgressIndex);
-  const clearSessionProgressIndex = useAppStore((state) => state.clearSessionProgressIndex);
-  // The pinned due-set snapshot is a per-session pin: once the review session
-  // completes, drop it so the next review entry recomputes from the live SRS
-  // due set instead of replaying already-reviewed cards.
-  const clearReviewSessionSnapshot = () => {
-    if (isReviewDeck) {
-      useAppStore.getState().setActiveReviewSessionCards(null);
-    }
-  };
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
   const sessionKey = getDeckIdentityKey({
@@ -52,272 +39,97 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     isLibraryDeck,
   });
 
-  const { cards: loadedCards, deckCards: fullDeckCards, isLoading, error, deckExclusionKey, excludedIds } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
-  const [cards, setCards] = useState<Flashcard[]>(() => loadedCards);
-  const [trackedSessionKey, setTrackedSessionKey] = useState(sessionKey);
-  if (trackedSessionKey !== sessionKey) {
-    setTrackedSessionKey(sessionKey);
-    setCards(loadedCards);
-  } else if (cards.length === 0 && loadedCards.length > 0) {
-    setCards(loadedCards);
-  }
-  const [isShuffled, setIsShuffled] = useState(false);
-  const canonicalOrderRef = useRef<Flashcard[]>([]);
-  const sessionStartedRef = useRef(false);
-  const sessionKeyRef = useRef(sessionKey);
-  const pendingSessionCardIdRef = useRef<string | null>(null);
-  const currentCardIdRef = useRef<string | null>(null);
-  const gradingCardIdRef = useRef<string | null>(null);
-  const gradedCardIdsRef = useRef<Set<string>>(new Set());
+  const { cards: loadedCards, deckCards, isLoading, error, deckExclusionKey, excludedIds } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
 
-  useEffect(() => {
-    if (sessionKeyRef.current !== sessionKey) {
-      pendingSessionCardIdRef.current = currentCardIdRef.current;
-      sessionKeyRef.current = sessionKey;
-      sessionStartedRef.current = false;
-      currentCardIdRef.current = null;
-      canonicalOrderRef.current = [];
-      setCards([]);
-      setIsShuffled(false);
-      setCurrentIndex(0);
-      setMaxVisitedIndex(0);
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [activeBreakdown, setActiveBreakdownState] = useState<string | null>(null);
+  const [activeBreakdownIndex, setActiveBreakdownIndex] = useState<number>(0);
+  // Furthest card reached this session; review decks gate forward navigation
+  // on it so a fresh review run cannot skip ahead of what was shown.
+  const [maxVisitedIndex, setMaxVisitedIndex] = useState(0);
+
+  const session = useCardSession(loadedCards, sessionKey, {
+    onSessionReset: () => {
       setIsFlipped(false);
-      setCompleted(false);
-      setSessionResults({});
       setActiveBreakdownState(null);
-      gradingCardIdRef.current = null;
-      gradedCardIdsRef.current.clear();
-      return;
-    }
+      setActiveBreakdownIndex(0);
+      setMaxVisitedIndex(0);
+    },
+    onAnswerStateReset: () => {
+      setIsFlipped(false);
+      setMaxVisitedIndex(0);
+    },
+  });
+  const { activeCards, currentCard, currentIndex, completed } = session;
 
-    const isSameDeck = sessionStartedRef.current
-      && loadedCards.length === canonicalOrderRef.current.length
-      && loadedCards.every((c, idx) => c.id === canonicalOrderRef.current[idx]?.id);
-
-    if (isSameDeck) {
-      return;
-    }
-
-    setCards(loadedCards);
-    setIsShuffled(false);
-    canonicalOrderRef.current = loadedCards;
-    if (loadedCards.length > 0) {
-      audioService.preload(loadedCards.slice(0, 10).map(c => c.audio));
-
-      // Pre-warm neural TTS only for cards without recorded audio files.
-      // Fire per-card so the warm-ups run concurrently (~1 synth trip total
-      // instead of N sequential ones); preloadNeural skips cached words.
-      const initialWarm = loadedCards
-        .slice(0, WARM_AHEAD_COUNT)
-        .filter((card) => !audioService.isAudioFileName(card.audio))
-        .map(c => c.front.trim())
-        .filter(Boolean);
-      for (const text of initialWarm) {
-        audioService.preloadNeural([text]).catch(() => {});
-      }
-
-      // Bounds-check the loaded index (Bug 11) and prevent cloud sync override mid-session (Bug 5)
-      if (!sessionStartedRef.current) {
-        const pendingCardId = pendingSessionCardIdRef.current;
-        const shouldRetainPendingCard = Boolean(
-          pendingCardId && loadedCards.some((card) => card.id === pendingCardId),
-        );
-        const target = shouldRetainPendingCard
-          ? retainCurrentCardIndex(loadedCards, pendingCardId, 0)
-          : getSessionStartIndex(
-            useAppStore.getState().sessionProgressIndex,
-            sessionKey,
-            loadedCards.length,
-          );
-        pendingSessionCardIdRef.current = null;
-        setCurrentIndex(target);
-        setMaxVisitedIndex(target);
-        sessionStartedRef.current = true;
-      } else {
-        setCurrentIndex((previousIndex) => (
-          retainCurrentCardIndex(loadedCards, currentCardIdRef.current, previousIndex)
-        ));
-      }
-    }
-  }, [loadedCards, sessionKey]);
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // Warm the upcoming cards' neural TTS in the background as the user
-  // advances, so the next flips play instantly. Fire-and-forget;
-  // preloadNeural skips words already cached in browser/Supabase storage.
-  // Per-card calls run concurrently so all warm-ups finish in ~1 synth
-  // round-trip rather than sequentially.
   useEffect(() => {
-    if (cards.length === 0) return;
-    const start = currentIndex + 1;
-    // Rolling lookahead audio preload for recorded audio
-    const upcomingAudio = cards
+    setMaxVisitedIndex((previous) => Math.max(previous, currentIndex));
+  }, [currentIndex]);
+
+  // Rolling lookahead: preload recorded audio for the next stretch and
+  // pre-warm neural TTS for cards without recorded audio. Fire-and-forget;
+  // preloadNeural skips words already cached in browser/Supabase storage.
+  useEffect(() => {
+    if (activeCards.length === 0) return;
+    const upcomingAudio = activeCards
       .slice(currentIndex, currentIndex + 10)
-      .map(c => c.audio)
-      .filter(Boolean);
+      .map((card) => card.audio)
+      .filter((audio): audio is string => Boolean(audio));
     if (upcomingAudio.length > 0) {
       audioService.preload(upcomingAudio).catch(() => {});
     }
 
-    // Pre-warm neural TTS only for cards without recorded audio
-    const warm = cards
-      .slice(start, start + WARM_AHEAD_COUNT)
+    const warm = activeCards
+      .slice(currentIndex, currentIndex + WARM_AHEAD_COUNT)
       .filter((card) => !audioService.isAudioFileName(card.audio))
-      .map(c => c.front.trim())
+      .map((card) => card.front.trim())
       .filter(Boolean);
     for (const text of warm) {
       audioService.preloadNeural([text]).catch(() => {});
     }
-  }, [currentIndex, cards]);
+  }, [currentIndex, activeCards]);
 
-  useEffect(() => {
-    gradingCardIdRef.current = null;
-    gradedCardIdsRef.current.clear();
-  }, [sessionKey]);
-
-  const [maxVisitedIndex, setMaxVisitedIndex] = useState(() => {
-    return sessionProgressIndex[sessionKey] || 0;
-  });
-
-  const resetAll = async () => {
-    setCards([...canonicalOrderRef.current]);
-    setIsShuffled(false);
-    setCurrentIndex(0);
-    setMaxVisitedIndex(0);
-    setCompleted(false);
-    setSessionResults({});
-    setIsFlipped(false);
-    gradingCardIdRef.current = null;
-    gradedCardIdsRef.current.clear();
-  };
-
-  useEffect(() => {
-    if (cards.length > 0 && currentIndex >= cards.length) {
-      setCurrentIndex(0);
-    }
-  }, [cards.length, currentIndex]);
-
-  // Save progress
-  useEffect(() => {
-    // Only save progress if the session has actually started/loaded cards to prevent overwriting with 0
-    if (sessionStartedRef.current && cards.length > 0) {
-      setSessionProgressIndex(sessionKey, currentIndex);
-    }
-  }, [currentIndex, sessionKey, cards.length, setSessionProgressIndex]);
-
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [completed, setCompleted] = useState(false);
-  
-  // Track how cards were rated in this exact session
-  // quality: 1-5
-  const [sessionResults, setSessionResults] = useState<Record<string, number>>({});
-  const [activeBreakdown, setActiveBreakdownState] = useState<string | null>(null);
-  const [activeBreakdownIndex, setActiveBreakdownIndex] = useState<number>(0);
-
-  const setActiveBreakdown = (text: string | null, index: number = 0) => {
+  const setActiveBreakdown = useCallback((text: string | null, index: number = 0) => {
     setActiveBreakdownState(text);
     setActiveBreakdownIndex(index);
-  };
+  }, []);
 
-  const currentCard = cards[currentIndex];
-  if (currentCard) currentCardIdRef.current = currentCard.id;
-
-  useEffect(() => {
-    gradingCardIdRef.current = null;
-  }, [currentCard?.id]);
-
-  const toggleShuffle = useCallback(() => {
-    const nextShuffled = !isShuffled;
-    const baseCards = canonicalOrderRef.current;
-    setCards(nextShuffled ? shuffleItems(baseCards) : [...baseCards]);
-    setCurrentIndex(0);
-    setMaxVisitedIndex(0);
-    setCompleted(false);
+  const handleNavigate = useCallback((dir: number) => {
     setIsFlipped(false);
-    setIsShuffled(nextShuffled);
-  }, [isShuffled]);
+    if (dir < 0) {
+      session.moveTo(currentIndex - 1);
+      return;
+    }
+    if (currentIndex >= activeCards.length - 1) {
+      // Moving past the last card completes the session.
+      session.advanceOrComplete();
+      return;
+    }
+    session.moveTo(currentIndex + 1);
+  }, [activeCards.length, currentIndex, session]);
 
-  const handleNext = (level: number) => {
-    if (!currentCard || gradingCardIdRef.current === currentCard.id) return;
-    gradingCardIdRef.current = currentCard.id;
-
-    // Convert UI level (1-4) to SRS quality (1-5).
-    // The UI skips quality 3 (difficult) for simplicity — users pick
-    // Hard(1), Bad(2), Good(3), Easy(4) which maps to SRS 1, 2, 4, 5.
-    let quality = 3;
-    if (level === 1) quality = 1;
-    if (level === 2) quality = 2;
-    if (level === 3) quality = 4;
-    if (level === 4) quality = 5;
-
-    // Navigating back to an already-rated card must not apply SRS/XP twice.
-    // The second rating still advances so keyboard and swipe navigation remain fluid.
-    if (!gradedCardIdsRef.current.has(currentCard.id)) {
-      gradedCardIdsRef.current.add(currentCard.id);
-      markCardReviewed(currentCard.id, quality as Quality);
-      setSessionResults(prev => ({ ...prev, [currentCard.id]: quality }));
+  const handleNext = useCallback((level: number) => {
+    if (!currentCard) return;
+    // Re-rating an already-graded card still advances so keyboard and swipe
+    // navigation stay fluid, but must not apply SRS or tallies twice.
+    if (session.beginGrading()) {
+      session.recordAnswer(currentCard, levelToQuality(level));
     }
     setIsFlipped(false);
+    session.advanceOrComplete();
+  }, [currentCard, session]);
 
-    if (currentIndex < cards.length - 1) {
-      const nextIdx = currentIndex + 1;
-      setCurrentIndex(nextIdx);
-      setMaxVisitedIndex(prev => Math.max(prev, nextIdx));
-    } else {
-      clearSessionProgressIndex(sessionKey);
-      clearReviewSessionSnapshot();
-      setCompleted(true);
-    }
-  };
+  const resetAll = useCallback(() => {
+    session.resetAll();
+  }, [session]);
 
-  const handleNavigate = (dir: number) => {
-    const newDoc = currentIndex + dir;
-    if (newDoc >= 0 && newDoc < cards.length) {
-      setCurrentIndex(newDoc);
-      setMaxVisitedIndex(prev => Math.max(prev, newDoc));
-      setIsFlipped(false);
-    } else if (newDoc >= cards.length) {
-      clearSessionProgressIndex(sessionKey);
-      clearReviewSessionSnapshot();
-      setCompleted(true);
-    }
-  };
-
-  // Re-build the card list from only the ones the user rated Hard(1) or Bad(2)
-  // so they can focus on weak cards before moving on.
-  const reviewUnlearned = () => {
-    const unlearnedIds = Object.entries(sessionResults)
-      .filter(([, q]) => q === 1 || q === 2)
-      .map(([id]) => id);
-      
-    const unlearnedCards = cards.filter(c => unlearnedIds.includes(c.id));
-    
-    // If somehow empty, just reset all
-    if (unlearnedCards.length === 0) {
-       resetAll();
-       return;
-    }
-
-    setCards(unlearnedCards);
-    canonicalOrderRef.current = unlearnedCards;
-    setIsShuffled(false);
-    setCurrentIndex(0);
-    setMaxVisitedIndex(0);
-    setCompleted(false);
-    setSessionResults({});
-    setIsFlipped(false);
-    gradingCardIdRef.current = null;
-    gradedCardIdsRef.current.clear();
-  };
-
-  // Helper stats for Recap screen
-  const unlearnedCount = Object.values(sessionResults).filter(q => (q as number) === 1 || (q as number) === 2).length;
-  const learnedCount = Object.values(sessionResults).filter(q => (q as number) > 2).length;
+  const reviewUnlearned = useCallback(() => {
+    session.reviewUnlearned();
+  }, [session]);
 
   return {
-    cards,
-    deckCards: fullDeckCards,
+    cards: activeCards,
+    deckCards,
     currentCard,
     currentIndex,
     maxVisitedIndex,
@@ -331,13 +143,13 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     handleNext,
     resetAll,
     reviewUnlearned,
-    unlearnedCount,
-    learnedCount,
-    isShuffled,
-    toggleShuffle,
+    unlearnedCount: session.unlearnedCount,
+    learnedCount: session.learnedCount,
+    isShuffled: session.isShuffled,
+    toggleShuffle: session.toggleShuffle,
     deckExclusionKey,
     excludedIds,
     isLoading,
-    error
+    error,
   };
 }
