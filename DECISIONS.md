@@ -10,6 +10,176 @@ Record choices that should remain stable across tasks. Keep each entry short.
 - Reason:
 - Affects:
 
+### 2026-09-22 — Lesson path: a part's reading continues into the next part's grammar
+
+- Chosen:
+  - In the reader, both gestures are lesson-path steps: `→` / swipe-left continues into the *next part's grammar* (`findNextGrammarPartForReading`), so `→` walks grammar points → reading → next grammar → reading across lesson boundaries; `←` / swipe-right returns into *this reading's part grammar* at its last page (the page that handed off). Readings that belong to no part — essays — have no step in either direction; the old reading-list browsing is gone.
+  - `ReaderScreen`/`ReaderWindow` replace the index-based `onNavigate(targetIndex)` with `onNext`/`onPrevious` (App owns the path decision, `handleReaderNext` / `handleReaderPrevious`); URL-driven reading indexes still use the launcher's `navigateReader`.
+  - `findNeighbourGrammarPart` moved from `GrammarLessonScreen` to `src/data/interactiveGrammarPages.ts` (the owner of part order); `findGrammarPartForReading` moved from `screens/reader/utils/readerStudyTargets.ts` to `src/utils/readingContext.ts` (the inverse of `findReadingIndexForPart`), where `findNextGrammarPartForReading` composes both.
+- Reason: the owner navigates with arrows and expects the lesson to keep flowing — after Part 1's reading the next step is Part 2's grammar (then its reading), and the previous step returns to the grammar that led there.
+- Affects: `src/App.tsx`, `src/utils/readingContext.ts`, `src/data/interactiveGrammarPages.ts`, `src/screens/grammar-lesson/GrammarLessonScreen.tsx`, `src/screens/reader/{ReaderScreen.tsx,utils/readerStudyTargets.ts}`, `src/app/components/ReaderWindow.tsx`, `scripts/auditReaderCurriculum.ts`, `tests/{readerGrammarUsage,grammarTableHeaders}.test.ts`, `docs/GRAMMAR_LESSON_TEMPLATE.md`.
+
+### 2026-09-22 — Grammar pattern-table headers: single-line 1-3 word titles, no detail line
+
+- Chosen:
+  - The header cell renders one line only — the slot label. `patternColumnDetails` no longer renders as a small second line under it; the notation rides in the cell tooltip (`label · detail`) and still nudges the column scorer.
+  - Labels read as plain 1-3 word titles, never as parenthetical notes or abbreviations: `Rest` → `Sentence body`, `Name / ID` → `Name / identity`, `N` → `New topic` (and its internal pattern string), `(Adv / TW)` → `Time word`, `V(O)` / `V + O` → `Action`, `(Double 了)` → `Double 了`, `(Skip 的)` → `Skip 的`, `(no noun)` → `No noun`.
+  - `grammarHeaderWordCount` (splits on `/`, `／`, `·`, `+`, whitespace, and parentheses) joins `grammarHeaderWeight` in `grammarPatternLayout`; `validateInteractiveLessons` and `tests/grammarTableHeaders.test.ts` now fail a label that is more than three words or wrapped in parentheses.
+  - Header titles render through a local `HeaderTitle` helper: Hanzi runs carry `font-chinese`, so the study font choice (sans / kai / rounded, with Kai's optical boost) applies exactly as in the table cells, while Latin runs stay in the UI face.
+- Reason: the owner asked grammar headers for a single line — no second line — with 1-3 word titles, simplified but not so far that meaning is lost (the one-word pass produced labels like "Rest" and "Name / ID").
+- Affects: `src/screens/grammar-lesson/components/GrammarPatternSection.tsx`, `src/utils/{grammarPatternLayout,validateInteractiveLessons}.ts`, `src/data/{interactiveGrammarPages,interactiveGrammarLessonOnePartTwo}.ts`, `content/grammar/{lessonThreePartTwo,lessonEleven}.json`, `tests/{grammarTableHeaders,grammarPatternLayout}.test.ts`, `docs/GRAMMAR_LESSON_TEMPLATE.md`.
+
+### 2026-09-22 — Universal colorful chrome glyphs (bulb + gear)
+
+- Chosen:
+  - `AppIcon` gains two baked-color glyphs in the Duolingo-like flat voice (no outlines): `hint` is a gold study bulb (`feedback-warning` fill, `-edge` base, glossy highlight — orange read as red and yellow read as canvas) and `settings`/`appSettings` share one brand-blue filled gear (`PiGearSixFill` geometry with `color: var(--color-brand-primary)`). The neutral outline `lightbulb` stays for generic tips (AlertBanner, flashcards, grammar options).
+  - Because baked icons ignore `currentColor`, these buttons carry no active-state recolor or chip at all — open/disabled state rides on `aria-expanded`, the panel itself, and the flow-active dot; the disabled "coming soon" gear on Add Card mutes with `opacity-40`.
+  - `StickyWorkspaceHeader`'s menu toggle now uses `menu` instead of `settings` — it opens nav, not settings.
+- Reason: the owner wanted the study-guide bulb and settings gear to read as colorful Duolingo-style marks (yellow vanished against the practice canvas), applied as universal logos rather than reader-only.
+- Affects: `src/lib/widgets/{AppIcon,StickyWorkspaceHeader}.tsx`, `src/screens/reader/components/ReaderSettingsPopover.tsx`, `src/features/character-breakdown/components/BreakdownSettingsPopover.tsx`, `src/features/practice/components/PracticeHeader.tsx`, `src/screens/add-card/AddCardScreen.tsx`, `WIDGETS.md`.
+
+### 2026-09-22 — Reading Mode gets a frosted header type
+
+- Chosen:
+  - New `ScreenHeader variant="frosted"`: a tone-matched translucent bar (`bg-ui-canvas/95` / `bg-ui-practice-canvas/95`) with `backdrop-blur-md`, the universal 2px `ui-border` bottom edge, its own `env(safe-area-inset-top)` inset, no shadow, and the standard `--size-window-header` (71px) footprint so study-window chrome lines up. It is a plain block — the consumer owns positioning.
+  - `ReaderHeader` composes it (`tone="practice"`) with the `Lesson N · Part N` title centered (the brand lockup stays in the side nav); close stays left, study-guide and reading settings stay right.
+  - Reading Mode overlays it on the reading column (`absolute top-0`), so scrolled content passes under the blurred bar without showing through. Both reading canvases pad their top clear of it (`pt-[calc(5.5rem+env(safe-area-inset-top,0px))] sm:pt-[6.5rem]`).
+  - Because the bar lives in the reading column, its border line stops at the Study Guide panel on desktop and runs full width on phone/tablet. Grammar keeps the canonical sticky fade. `getLessonTitles` / `getReaderHeaderTitles` stay — `ReadingNarrativeView` still renders the titles inside the reading.
+- Reason: the owner asked Reading Mode for a transparent-looking header at the default header height that hides the content beneath it, with a universal border line that is cut off at the side panels on desktop and full width on mobile/tablet, no shadow, and the lesson/part title (not the logo) in the center.
+- Affects: `src/lib/widgets/ScreenHeader.tsx`, `src/screens/reader/ReaderScreen.tsx`, `src/screens/reader/components/{ReaderHeader,ReadingCanvas,ReadingNarrativeView}.tsx`, `WIDGETS.md`.
+
+### 2026-09-21 — Reader grammar card: whole lesson listed, grouped per part, dimmed context
+
+- Chosen:
+  - `buildReaderStudyTargets` no longer hides pages: every lesson grammar page is returned, sorted own part → other parts (`group: 'part' | 'also'`), essays keep `group: 'other'`.
+  - `ReaderCompanionGrammarCard` always renders part-labelled groups (`Part N`, and `Part N review` when the source part is earlier; the own part comes first). Normal ink is reserved for the reading's own part — other parts are dimmed whether or not the text uses them, and essay pages are dimmed unless the text uses them. Dimmed rows stay tappable and locatable, so hovering still shows where the pattern lives.
+  - `ReaderCompanionGrammarRow` takes an explicit `dimmed` prop instead of deriving quiet styling from usage, because a used page from another part is context, not this reading's focus.
+- Reason: the owner wants the lesson's grammar structure visible in every reading — next and previous parts shown but quiet — while unused pages dim too, separated per part.
+- Affects: `src/screens/reader/utils/readerStudyTargets.ts`, `src/screens/reader/components/{ReaderCompanionGrammarCard,ReaderCompanionGrammarRow}.tsx`, `tests/readerStudyTargets.test.ts`, `docs/OFFICIAL_AUDIO_SOURCES.md`.
+
+### 2026-09-21 — Reader grammar: rules report every occurrence per sentence
+
+- Chosen:
+  - `matchAllTokenEvidence` (`src/utils/tokenEvidence.ts`) returns **every** non-overlapping token span a rule matches in a sentence: `inOrder`, `reduplication` and `tokenEndsWith` scan all positions; `regex` and `aNotA` run a cached global regex that rewinds one character when it consumed a trailing separator, so adjacent occurrences are still found. `matchTokenEvidence` remains the first-match helper and `matchesTokenEvidence` the boolean wrapper the vocabulary sense rules use.
+  - `detectGrammarUsage` collects all spans, so `mergeRanges` joins adjacent clauses into one wide highlight and non-adjacent instances each paint. This fixes e.g. `B1L02-G01` in the Lesson 2 essay, where only the first clock time of `她早上六點三十分起床，七點去學校，八點四十分上課。` was highlighted (now all eight time clauses across the reading paint), and the same class of misses for repeated 的 phrases, V過 forms, durations, direction words and measure words.
+  - Reduplication now respects clause boundaries: `ReadingSentenceLocation` records `clauseStartTokens`, and the matcher refuses a split pair whose second half begins a new clause, so `台灣，台灣` and `給你，你看到` no longer read as VV reduplication (`B1L13-G01` lost its `你你` false positive).
+  - Regression tests: `matchAllTokenEvidence` reports three clock times in one sentence, finds the next compound after a separator-consuming match, and rejects a pair that crosses a clause boundary; `detectGrammarUsage` paints the full Lesson 2 time sentence.
+- Reason: rules ran `some()` per sentence and the matcher returned only the first match, so a sentence that used the pattern twice silently lost the rest — the most visible symptom the owner reported for dates/times.
+- Affects: `src/utils/tokenEvidence.ts`, `src/utils/grammarUsage.ts`, `tests/{tokenEvidence,readerGrammarUsage}.test.ts`, `tests/fixtures/readerGrammarMatches.json`.
+
+### 2026-09-21 — Reader grammar: lessons 7–16 rule coverage (every page detectable)
+
+- Chosen:
+  - Every Book 1 grammar page now has a detection rule; the `undetectable` helper and its two shared reason strings were removed from `src/data/grammarUsageRules.ts` (the rule type still supports the variant for future pages).
+  - Seven structural pages authored: `B1L07-G04` activity-first (activity + 很／太／真／比較 + quality), `B1L08-G01` 好／難 + sensory or action verb (compound and split forms), `B1L09-G01` 在 + action, `B1L10-G02` modifier + 的 + noun, `B1L10-G03` 多／少 + action, `B1L10-G04` 會 + expected-future verb list, `B1L12-G04` V + 過 (packed 上過/去過… and split V + 過).
+  - Target-gap fixes: `B1L07-G01` 從 … 到 … adds fragment evidence (start + motion, destination) because its dialogue splits the route across paragraphs; `B1L12-G03` 對 is now the only `KNOWN_DIALOGUE_RULE_GAPS` entry (the dialogue never uses 對).
+  - Scan-driven coverage fixes: `B1L07-G02` travel-method evidence (坐／搭／騎 + transport, 走路／開車), `B1L09-G02` maxGap 5 → 8 (從上午八點四十分到中午十二點), `B1L14-G01/G02` accept 多久, `B1L16-G05` and `B1L06-G02` accept 得 + 那麼／這麼 complements, and sentence-start anchors on `B1L04-G05`, `B1L07-G05`, `B1L13-G05`, `B1L14-G01/G02`, `B1L12-G04`.
+  - Follow-up review of lessons 1–16 with the multi-match matcher found one more false positive: `B1L13-G05` treated `上個星期` / `下個星期` as durations. The 個 alternative now requires a counted number before 個 (兩個小時 counts, 上個星期 does not), and `B1L13-G02` / `B1L15-G01` gaps widened 5→8 / 6→8 so long start and comparison phrases stay covered.
+  - Fixtures regenerated: `readerGrammarUsage.json` (34 readings with detected pages) and `readerGrammarMatches.json` (139 pages / 276 clause ranges); positive/negative fixtures cover every new rule (e.g. 在圖書館看書 must not fire 在 + action, 我會游泳 must not fire 會-future, 覺得 must not fire the 得 complement).
+- Reason: every lessons 7–16 part page now has a sentence to locate, the last structural `undetectable`s were resolved with curated slot lists, and the marker scan exposed the remaining miss classes (packed tokens, missing anchors, too-small gaps).
+- Affects: `src/data/grammarUsageRules.ts`, `tests/readerGrammarUsage.test.ts` + `tests/fixtures/{readerGrammarUsage,readerGrammarMatches}.json`, `docs/OFFICIAL_AUDIO_SOURCES.md`.
+
+### 2026-09-21 — Reader grammar: clause-precise highlight, part-grouped card, three more structural rules
+
+- Chosen:
+  - `matchTokenEvidence` (`src/utils/tokenEvidence.ts`) returns the matched token span for every evidence kind; regex and A-not-A matches map the joined-stream match back to token indexes. `matchesTokenEvidence` stays as the boolean wrapper the vocabulary sense rules use.
+  - `segmentReadingSentenceLocations` records each token's character span and comma-level `clauseRanges`; `GrammarSentenceMatch` carries `ranges` — the clause(s) a match touches, merged when a pattern spans a comma. `detectGrammarUsage` collects every match per sentence instead of short-circuiting. Hovering 很／不 in `B1L01-R03` now paints only `台灣朋友很可愛。` (previously it also painted `我喜歡台灣，`); across lessons 1–6 this removes 137 wrongly painted clauses.
+  - The grammar card is part-scoped for readings with a mapped part: own-part pages first (`group: 'part'`, label `PART N`), then other parts' pages the text uses (`group: 'also'`), labelled `PART N` when the source part is later or `PART N REVIEW` when it is earlier; `none` pages are hidden. Short essays without a part keep the whole lesson list with dimming (`group: 'other'`) because there is no part to scope to. This supersedes the "keeps the whole lesson's list" half of the 2026-09-21 Study Guide decision; vocabulary remains part-scoped as decided there.
+  - Three pages that their own dialogue teaches were still `undetectable` and had nothing to locate; they now carry authored slot evidence: `B1L02-G04-P60` owner 的, `B1L02-G05-P61` want/like before the action, `B1L04-G01-P95` topic fronting. `MODIFIER_DE` stays for Lesson 10's 的 page and `WORD_ORDER` for Lesson 7's.
+  - The located sentence paints in the grammar card's `feedback-warning` yellow (`bg-feedback-warning/40`), not the near-invisible `brand-primary-soft` blue, so it reads clearly against the canvas.
+  - Coverage fixes found by re-reading lessons 1–6: `B1L01-G01` now matches 是 + identity (`我是日本人`, `她是誰`), `B1L02-G01` matches packed clock numbers (`十二點`), `B1L02-G02` includes 見 (`明天見`), `B1L03-G01` carries the fuller measure-word list (枝/塊/杯/臺/位/件/種/間/瓶/碗/歲), `B1L03-G03` anchors sentence-initial `這種`/`那種`, and `B1L03-G04` accepts colour descriptions (`白色的衣服`).
+  - Fixtures: `tests/fixtures/readerGrammarMatches.json` now pins clause ranges (`[paragraphIndex, sentenceIndex, charStart, charEnd]`, 123 rows); positive/negative fixtures cover the three rules (including `我要紅茶` and `我和朋友都很愛喝` near misses); a guard test pins traditional/simplified 1:1 paragraph lengths because highlight coordinates are traditional.
+- Reason: a hovered grammar row painted neighbouring clauses that do not show the pattern, three target pages highlighted nothing, and the card mixed parts with no indication of where a page came from.
+- Affects: `src/utils/{tokenEvidence,grammarUsage}.ts`, `src/data/grammarUsageRules.ts`, `src/screens/reader/{utils/readerStudyTargets.ts,components/ReaderCompanionGrammarCard.tsx}`, `tests/{tokenEvidence,readerGrammarUsage,readerStudyTargets}.test.ts` + `tests/fixtures/readerGrammarMatches.json`, `docs/OFFICIAL_AUDIO_SOURCES.md`.
+
+### 2026-09-21 — Reader grammar: structural pages get authored evidence, and grammar rows locate their sentence
+
+- Chosen:
+  - Lessons 1–6 grammar pages that were blanket `undetectable` now carry authored slot evidence in `src/data/grammarUsageRules.ts`: S-V-O (`B1L01-G05-P45`, subject pronoun/name + action or feeling verb + object that is not a sentence particle), time-before-action (`B1L02-G02-P55`, time marker or number+點 + ≤6 tokens + action verb), description + 的 (`B1L03-G04-P82`, curated multi- and single-syllable adjectives), 在 + place + action (`B1L05-G02-P117`), and 會 + learned skill (`B1L06-G01-P135`, skill list). `B1L06-G03-P146` now matches the degree phrase (有點／有點兒／有一點／有一點兒) before a state adjective, which fixes the 有點 miss and drops the `一點 + noun` false positive. Topic fronting (`B1L04-G01-P95`) and owner 的 (`B1L02-G04-P60`) stay `undetectable` with their reasons.
+  - `segmentReadingSentenceLocations` (core) and `segmentReadingSentences` (token view) own sentence segmentation; `detectGrammarUsage` evaluates rules for target pages too and returns `matchedSentences` (`paragraphIndex`, `sentenceIndex`, char range) per page. `ReaderGrammarPoint.matches` carries them to the Study Guide.
+  - Hovering (desktop) or pressing-and-holding (mobile drawer, reusing `useLongPress`) a grammar row highlights its matched sentences in the reading with a soft sentence background and scrolls the first into view; click/tap still opens the grammar lab. `ReaderScreen` owns `locatedGrammarPoint` and locating a word clears a located grammar point (and vice versa). Shared `ReaderLocateMode`/`rangeOverlaps` live in `src/screens/reader/utils/readerLocate.ts`.
+  - Reviewed snapshots: `tests/fixtures/readerGrammarMatches.json` pins every matched sentence (120 entries), and the status snapshot `readerGrammarUsage.json` gains the new structural detections (L01-R01/R02/R03, L02-R02/R03, L03-R03, L05-R03, L06-R03). Positive/negative fixtures cover each new rule.
+- Reason: the short essays obviously used the lesson's structural patterns (R03 我喜歡台灣／我愛吃水果 for S-V-O; time-before-action; 可愛的; 在沙發上看書; 有點忙) while the card dimmed them, and a hovered grammar point gave no clue where the pattern lives in the text.
+- Affects: `src/data/grammarUsageRules.ts`, `src/utils/grammarUsage.ts`, `src/screens/reader/utils/{readerStudyTargets,readerLocate}.ts`, `src/screens/reader/{ReaderScreen.tsx,components/{ReaderCompanionGrammarCard,ReaderCompanionGrammarRow,ReaderStudyPanel,ReaderStudyDrawer,ReadingCanvas,ReadingNarrativeView}.tsx}`, `tests/{readerGrammarUsage}.test.ts` + fixtures `readerGrammarUsage.json`, `readerGrammarMatches.json`, `docs/OFFICIAL_AUDIO_SOURCES.md`.
+
+### 2026-09-21 — Reader vocabulary: shared variant/span matching, locate-in-text, authored sense rules
+
+- Chosen:
+  - In-text detection moved to `src/utils/vocabularyMatching.ts` (one owner, shared with `scripts/auditReaderCurriculum.ts`): pack terms expand to slash alternates and optional `（…）` parts and match as spans of whole word chunks in both scripts. `珍珠奶茶` (authored `zhēnzhū nǎichá` → two chunks), `你好/妳好`, `想（要）`, `常（常）` now count as in-text; 愛 still cannot match inside 可愛 (chunk-span matching, never substrings). This fixed 61 dim-but-present word/reading pairs in Book 1 with zero new false positives.
+  - `PUNCTUATION_REGEX` (`src/utils/rubyPinyin.ts`) now treats corner brackets `「」『』` as punctuation. They previously consumed pinyin syllables and shifted the character↔pinyin alignment for the rest of the paragraph; `B1L15-R03` was the only reading affected (屬什|麼, 到了元|宵節, 「十|二生肖」), and no data change was needed.
+  - The Study Guide locates words in the text: desktop hover/focus highlights every occurrence (multi-chunk compounds included) and scrolls the first one into view; the mobile drawer taps to locate and press-and-holds to open the dictionary (reusing `src/hooks/useLongPress.ts`). `useReaderLocate` maps occurrences onto the rendered chunks by identity; `ReaderScreen` owns the located word because the panel and canvases are siblings. `useReaderStudyData` memoizes the built targets so hover re-renders do not re-segment the reading.
+  - Words whose surface is taught more than once get authored sense rules: `src/data/vocabularySenseRules.ts` (36 surfaces / 77 entries) resolved by `src/utils/vocabularySense.ts` through the shared token-evidence matcher extracted to `src/utils/tokenEvidence.ts` (used by both grammar and vocabulary rules). Three honest states — `this`, `other` (row note `Here: <meaning> · Lesson N`), `unclear` (siblings listed; senses that cannot be told apart declare `undetectable`, e.g. 會 ability vs expected future, 比賽 verb vs noun). Only non-`this` resolutions show a quiet note.
+  - Reviewed snapshots pin the results: `tests/fixtures/readerStudyTargets.json` (per-reading in-text ids) and `tests/fixtures/readerVocabularySense.json` (per-reading sense resolutions); `tests/vocabularySense.test.ts` also asserts every duplicated surface has a rule for each taught entry and that rules mirror the pack.
+- Reason: the vocabulary box dimmed words the text actually contained, the corner-bracket drift corrupted chunks/grammar detection/audit output, and a surface match alone cannot say which taught sense a later reading uses.
+- Affects: `src/utils/{vocabularyMatching,vocabularySense,tokenEvidence,grammarUsage,rubyPinyin}.ts`, `src/data/{vocabularySenseRules,grammarUsageRules}.ts`, `src/screens/reader/{ReaderScreen.tsx,utils/readerStudyTargets.ts,hooks/useReaderStudyData.ts,hooks/useReaderLocate.ts,components/{ReaderCompanionVocabCard,ReaderCompanionVocabRow,ReaderStudyPanel,ReaderStudyDrawer,ReadingCanvas,ReadingNarrativeView,ReaderChunk}.tsx}`, `scripts/auditReaderCurriculum.ts`, `tests/{readerStudyTargets,vocabularyMatching,vocabularySense,rubyPinyin}.test.ts` + fixtures, `docs/OFFICIAL_AUDIO_SOURCES.md`.
+
+### 2026-09-21 — Grammar lesson: keyboard part switching
+
+- Chosen: inside the grammar window, `Shift + ←/→` (and the `[` / `]` aliases) open the previous or next grammar part in `INTERACTIVE_GRAMMAR_PARTS` order — crossing lesson boundaries — through the same launcher callback the dock uses, so no new state owner. `←`/`→` keep stepping through the part's grammar points; `findNeighbourGrammarPart` (exported from `GrammarLessonScreen`) resolves the neighbour and returns null at the ends of the book.
+- Reason: moving between grammar lessons previously required closing the window and reopening it from the practice dock; a one-key jump keeps study flow intact while leaving the existing step navigation untouched.
+- Affects: `src/screens/grammar-lesson/GrammarLessonScreen.tsx`, `src/app/components/GrammarWindow.tsx`, `src/App.tsx`, `tests/grammarTableHeaders.test.ts`, `docs/GRAMMAR_LESSON_TEMPLATE.md`.
+
+### 2026-09-21 — Grammar pattern-table headers: canonical short labels, one line, no wrap compensation
+
+- Chosen:
+  - Every `patternColumns` label is rewritten to a short canonical slot vocabulary (`Who`, `Action`, `Thing`, `Time`, `Place`, `Where`, `How`, `Result`, `Condition`, `Amount`, `Then`, `Focus`, `Tool`, `Receiver`, `Shared`, `Object`, `Adjective`, …), keeping particle labels where the slot *is* the particle (`叫 · 姓 · 是`, `很／不`, `嗎`, `太`, `了`, `有 / 沒有`, `的時候`, `比 + B`, `一 + V1`, `就 + V2`, `V + 得`, `V + 過`). Compound headers are gone (`Suggested or permitted action` → `Action`, `What is there / Second Action` → `Object / Next`, `Positive-negative pair` → `A-not-A`).
+  - Hard caps, enforced by `validateInteractiveLessons` and `tests/grammarTableHeaders.test.ts`: a column label fits 6 visual-width units and a `patternColumnDetails` line 8, using the shared `grammarHeaderWeight` model (`CJK = 1`, `Latin = 0.45`) that the column scorer already used. The test also computes each column's mobile budget from `getPatternSectionLayout` + the table's 340/260px minimum and asserts the label fits it.
+  - `getSectionColumnScore` drops the word-splitting compensation that existed only because English headers wrapped: the whole label now scores into the column, so a header that needs room gets it instead of silently wrapping.
+  - Header cells render the label with `truncate` and a `title`/`aria-label` of `label · detail`; the full nuance stays in the page `explanation` (and the small detail line), so nothing depends on a compound header.
+- Reason: 82 of 215 labels were wide enough to wrap (and to squeeze neighbouring columns) in the narrowest mobile column, and the layout code was already working around that with a header-scoring hack. With one-line labels the tables read as a legend, columns size from real demand, and the rule is testable.
+- Affects: `content/grammar/*.json`, `src/data/interactiveGrammarPages.ts`, `src/data/interactiveGrammarLessonOnePartTwo.ts`, `src/utils/grammarPatternLayout.ts`, `src/utils/validateInteractiveLessons.ts`, `src/screens/grammar-lesson/components/GrammarPatternSection.tsx`, `tests/{grammarTableHeaders,grammarPatternLayout}.test.ts`, `docs/GRAMMAR_LESSON_TEMPLATE.md`.
+
+### 2026-09-21 — Reader Study Guide: target part, used-here detection, part-scoped vocabulary
+
+- Chosen:
+  - The Study Guide's grammar card keeps the whole lesson's list and says what the text uses through one visual state: pages of the reading's own course part or pages whose pattern an authored rule finds in the text render in normal ink, everything else is dimmed (muted text) while staying tappable to open its grammar lab. No per-row labels, no summary line: the header count is the used-page count. Structural patterns (word order, modifier 的) declare `undetectable` instead of guessing.
+  - Reading → part is data, not numbering: `findGrammarPartForReading` matches the part whose embedded dialogue carries the reading's `audioReference` (fallback printed pages, then dialogue number). All 33 Book 1 parts resolve to exactly one reading; only the 15 short essays without essay grammar have no target part.
+  - Vocabulary is the reading's own part list (`B1L01-2-xx` → part 2), not the whole lesson and not a substring filter: in-text words are detected on the reader's word segmentation (愛 can no longer be marked from 可愛) and listed first in normal ink, while the part's other words are dimmed; the header count is the in-text count; the lesson list remains a labelled fallback only when a part has no words.
+  - Rules live in `src/data/grammarUsageRules.ts` (one reviewed entry per page: evidence alternatives or an `undetectable` reason) and are matched by `src/utils/grammarUsage.ts` sentence by sentence. `validateInteractiveLessons` fails when a page has neither, when a rule points at an unknown page, or when a part's dialogue does not map to exactly one reading on the same dialogue number.
+  - Detection is pinned by reviewed fixtures: positive/negative pattern fixtures, a positive check that each rule fires on the dialogue it was authored with (with two documented exceptions), and `tests/fixtures/readerGrammarUsage.json` recording every badge the app can currently produce.
+- Reason: the grammar box previously showed all lesson grammar with no indication of what the text teaches, and the vocabulary box was a whole-lesson substring filter (Lesson 1 Dialogue 1 showed 15 of 19 target words, including 愛 from 可愛). The book's own part structure already answers both questions exactly; detection only has to be honest about the rest.
+- Affects: `src/data/grammarUsageRules.ts`, `src/utils/grammarUsage.ts`, `src/screens/reader/utils/readerStudyTargets.ts`, `src/screens/reader/hooks/useReaderStudyData.ts`, `src/screens/reader/components/{ReaderCompanionGrammarCard,ReaderCompanionVocabCard,ReaderStudyPanel}.tsx`, `src/utils/validateInteractiveLessons.ts`, `tests/{readerGrammarUsage,readerStudyTargets}.test.ts` + `tests/fixtures/readerGrammarUsage.json`, `scripts/auditReaderCurriculum.ts`, `docs/OFFICIAL_AUDIO_SOURCES.md` (Reading curriculum audit).
+
+### 2026-09-21 — Dialogue reading mode: flat bordered speech bubbles with tail + avatar-top rows
+
+- Chosen:
+  - `ReadingCanvas` dialogue bubbles are flat cards, not tactile ones: `rounded-2xl border-2 border-ui-border bg-ui-surface shadow-xs` (the app's universal 2px surface border), with the heavy `border-b-[var(--depth-md)]` edge and `active:scale-[0.99]` removed. Tactile depth in the reader now belongs to the playback dock and its buttons only.
+  - Each bubble carries a rotated-square tail (`h-3 w-3 rotate-45`, `border-b-2 border-l-2` left / `-right-1.5 border-t-2 border-r-2` right, mirrored by `isRightAligned`) whose border color follows the active state, so tail and bubble read as one outline.
+  - Speaker avatars align to the bubble's top edge, not the row's bottom: rows are `items-start` and the avatar takes `mt-5`, which matches the speaker-name row kept above each bubble. `ReaderSpeakerAvatar` is flat (no ring, no shadow) and steps up to `h-11 w-11 sm:h-12 sm:w-12`.
+  - Active line: `border-brand-primary ring-1 ring-brand-primary/20` replaces the old brand ring + tinted fill; karaoke word highlight, sentence/chunk tap-to-play, tooltips, and hold-for-breakdown are unchanged.
+  - No dashed word underlines, no per-line speaker button, and no "Tap to speak" mic: the reading mode stays playback-first, and word affordances are surfaced by hover/hold rather than permanent decoration.
+  - Narrative readings (`ReadingNarrativeView`, `NARRATIVE_CHUNK_APPEARANCE`) and `ReaderChunk` markup are untouched by the restyle.
+- Reason: the reference design inverts the reader's depth hierarchy — bubbles are plain outlined messages while the one primary action per surface stays tactile; avatar-top rows and a tail give each line an unmistakable owner without a heavy corner radius.
+- Affects: `src/screens/reader/components/{ReadingCanvas,ReaderSpeakerAvatar}.tsx`.
+
+### 2026-09-21 — Rounded character font: bundled Huninn (jf open 粉圓) as a third option
+
+- Chosen:
+  - `characterFont` gains `'huninn'` (`'sans' | 'kai' | 'huninn'`, default still `'sans'`); Study settings → Character font shows a third "Rounded" preview card.
+  - The face is self-hosted at `public/fonts/huninn.woff2` (jf open 粉圓 2.1, OFL 1.1, license alongside) and subset to the app's glyphs by `npm run font:huninn:vendor` (`scripts/vendorHuninn.ts`): it scans content packs, lesson data, and UI copy, shells to `fontTools.subset`, and fails unless all 1,677 traditional course characters are covered (simplified-only forms and rare components fall through to the system CJK/RW-Extras fallbacks).
+  - `--font-chinese-huninn` stays out of the default stacks; `data-character-font='huninn'` maps `--font-chinese` to it, so the ~1.7 MB file downloads only when the option is active (the settings preview card is the one always-visible user).
+  - Huninn is a single 400 face, so the same attribute sets `font-synthesis-weight: none` on `html`/`body`/`#root`: Chrome's faked bold merged the strokes of dense glyphs (臺, 灣) into a blob at `font-black`; the rounded option now renders every weight as drawn (matching how the single-weight Kai face behaves visually).
+- Reason: the owner wanted a softer, rounder Chinese face that harmonizes with Nunito; a bundled rounded TC font gives that offline without touching the default look, and the vendor script keeps the subset honest.
+- Affects: `src/index.css`, `src/store/usePracticePreferencesStore.ts`, `src/features/practice/components/PracticeSettingsScreen.tsx`, `scripts/vendorHuninn.ts` + `package.json`, `public/fonts/huninn.woff2` + license, `docs/DESIGN_TOKENS.md`.
+
+### 2026-09-21 — Grammar "don't mix these up" moved from a bottom disclosure to a header drawer
+
+- Chosen:
+  - The study page no longer renders a collapsed clarifier card at the bottom. Desktop (`lg+`) shows a permanent right-hand "Don't mix these up" panel, and phones get a header lightbulb `IconActionButton` (beside the settings gear, shown only when the page has confusion items) that opens a bottom-sheet drawer.
+  - The panel/drawer shells are shared widgets, not per-screen markup: `StudySidePanel` (right-hand `aside`, `w-80 xl:w-[410px]`, eyebrow title + gap-stacked content, no bottom fade) and `StudyDrawer` (handle/eyebrow-title/close shell over a `tone`). The reader's Study Guide (`ReaderScreen`, `ReaderStudyDrawer`) and the grammar clarifiers (`GrammarLessonScreen`, `GrammarConfusionDrawer`) both render through them; content stays feature-owned (`ReaderStudyPanel`, `GrammarConfusionPanel`).
+  - The lesson's bottom hover zone and Continue footer moved inside the content column (reader-dock parity), so the footer gradient never crosses the right panel and the panel needs no footer clearance. Lesson-level Escape/arrow handlers stand down while the drawer is open; the drawer closes on page change.
+- Reason: one template keeps the reader and grammar companion surfaces identical (geometry, scroll, drawer behavior) and removes the duplicated shell markup; the column-bound footer keeps the panel visually clean.
+- Affects: `src/lib/widgets/{StudySidePanel,StudyDrawer}.tsx` + `widgets/index.ts` + `WIDGETS.md`, `src/screens/reader/ReaderScreen.tsx`, `src/screens/reader/components/ReaderStudyDrawer.tsx`, `src/screens/grammar-lesson/GrammarLessonScreen.tsx`, `src/screens/grammar-lesson/components/{GrammarLessonHeader,GrammarConfusionDrawer,GrammarConfusionPanel,GrammarStudyPage}.tsx` (deleted `GrammarConfusionSection.tsx`), `docs/GRAMMAR_LESSON_TEMPLATE.md`.
+
+### 2026-09-21 — Grammar study: harmonized character font + Duolingo-style pattern table
+
+- Chosen:
+  - New study preference `characterFont` (`'sans'` default, `'kai'` optional): `useCharacterFont` writes `data-character-font` on `<html>`, `--font-chinese` resolves to the sans CJK stack by default, and `:root[data-character-font='kai']` swaps to `--font-kaiti` (calligraphy). Study settings gains a "Character font" section with Sans/Kai preview cards.
+  - Pattern table: slot headers are sentence-case, left-aligned bold; cells are left-aligned and slimmer; the outline and dividers are brand-tinted; the full-width English translation row stays under each Chinese row (no inline per-token glosses).
+  - Example rows: a leading soft speaker button replaces the numbered badge; examples render flat on the canvas (no card, dividers, or per-row container) with the quiet "Focus ·" teaching note above the sentence. Dialogue turns group per speaker (sentence + its own pinyin + English) instead of separate per-language blocks. The "Sentence Pattern" and "Examples" section labels are removed — the table and example stream follow the explanation directly (each block keeps an `aria-label`).
+- Reason: match Duolingo's harmonized Chinese/Latin typography and gloss-in-cell table, so meaning sits with the sentence instead of in a separate band; learners keep one reading rhythm across grammar, examples, and definitions.
+- Affects: `src/index.css`, `src/hooks/useCharacterFont.ts`, `src/App.tsx`, `src/store/usePracticePreferencesStore.ts`, `src/features/practice/components/PracticeSettingsScreen.tsx`, `src/features/practice/settings/ScriptPreviewCard.tsx`, `src/screens/grammar-lesson/components/{GrammarPatternSection,InteractiveGrammarSentence,GrammarExamplesSection}.tsx`, `src/lib/widgets/AppIcon.tsx`, `docs/GRAMMAR_LESSON_TEMPLATE.md`, `docs/DESIGN_TOKENS.md`.
+
 ### 2026-09-15 — Memory-hook quality: coverage checker + curated-label planning lexicon
 
 - Chosen:

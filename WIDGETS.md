@@ -10,13 +10,18 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
 
 ## Actions and selectors
 
-- **ActionButton** — text action with `primary`, `secondary`, `quiet`, `danger`, `success`, or `warning` hierarchy; supports `sm`/`md`/`lg`, `fullWidth`, and loading. Use one dominant action per surface.
+- **ActionButton** — text action with `primary`, `secondary`, `quiet`, `danger`, `success`, or `warning` hierarchy; supports `sm`/`md`/`lg`, `fullWidth`, `loading`, and custom `edgeColor` (e.g. course book or folder theme accents). Uses two-layer stationary base tactile depth (the bottom border remains completely stationary on press; button face sinks down into base with 0.00px layout shift). Use one dominant action per surface.
   ```tsx
   <ActionButton variant="primary" onClick={onContinue}>Continue</ActionButton>
+  <ActionButton variant="primary" edgeColor={activeBook.edgeHex} onClick={onStart}>Start</ActionButton>
   ```
-- **IconActionButton** — quiet, surface, danger, or warning icon utility for close, back, next, audio, settings, and highlighted action triggers. `icon` and a descriptive `label` are required; the label supplies the accessible name and tooltip.
+- **IconActionButton** — quiet, surface, primary, success, danger, or warning icon utility for close, back, next, audio, settings, and highlighted action triggers. Supports `edgeColor` and two-layer stationary base tactile depth. `icon` and a descriptive `label` are required; the label supplies the accessible name and tooltip.
   ```tsx
   <IconActionButton icon={<AppIcon name="close" />} label="Close" onClick={onClose} />
+  ```
+- **EdgeNavButtons** — transparent, accessible tap zones on the left and right edges of card-based practice screens (`FlashcardScreen`, `WritingScreen`). Supports `half` (50% each for full-screen flashcards) or `edge` (outer 20% margin strips for writing canvas), customizable `topOffset`, `bottomOffset`, and `zIndex`.
+  ```tsx
+  <EdgeNavButtons onPrevious={handlePrev} onNext={handleNext} canNavigatePrevious={hasPrev} canNavigateNext={hasNext} />
   ```
 - **SegmentedControl** — mutually exclusive mode or preference selection. Requires `value`, `options`, `onChange`, and `ariaLabel`; options support labels, icons, disabled state, titles, and button props.
   ```tsx
@@ -36,7 +41,7 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
 
 ## Icons, flags, and branded presentation
 
-- **AppIcon** — semantic gateway to the approved Phosphor icon family. Add a stable semantic name here instead of importing a competing icon directly. Decorative by default (`aria-hidden`), because it sits beside visible text in nearly every call site; pass `title` or `aria-label` when the icon itself carries the meaning, which promotes it to an accessible `role="img"`.
+- **AppIcon** — semantic gateway to the approved Phosphor icon family. Add a stable semantic name here instead of importing a competing icon directly. Three glyphs are drawn in-house in the same soft voice (`audio`/`pronounce` speaker, gold-filled `hint` study bulb, blue-filled `settings`/`appSettings` gear) with baked brand colors — flat, no outlines, Duolingo-like, with no active-state recolor or chip. Everything else is Phosphor. Decorative by default (`aria-hidden`), because it sits beside visible text in nearly every call site; pass `title` or `aria-label` when the icon itself carries the meaning, which promotes it to an accessible `role="img"`.
   ```tsx
   <AppIcon name="search" size={18} />
   <AppIcon name="lock" title="Locked" />
@@ -58,6 +63,11 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
   ```tsx
   <PlayfulNavIcon name="library" className="h-10 w-10" />
   ```
+- **UserAvatar** — learner avatar component with image error fallback, profile icon placeholder, size presets (`sm` | `md` | `lg` | `xl`), and optional brand ring.
+  ```tsx
+  <UserAvatar src={avatarUrl} alt={displayName} size="md" />
+  <UserAvatar src={avatarUrl} size="xl" ring />
+  ```
 - **RongWapsCharacterPortrait** — 1:1 bust portrait renderer for RongWaps character avatars. Requires a character and accessible `label`; the `RongWapsCharacter` id union is a domain model in `src/types/models.ts`.
   ```tsx
   <RongWapsCharacterPortrait character={character} label="Teacher" />
@@ -73,11 +83,59 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
   ```tsx
   <ActivityModalWrapper id="quiz" ariaLabel="Quiz" onClose={onClose}>{children}</ActivityModalWrapper>
   ```
-- **BottomDrawer** — portal drawer for settings, dictionary, examples, and mnemonics. Handles focus, Escape, restoration, and desktop workspace bounds.
+- **Dialog** (alias: **ModalDialog**) — unified modal pop-up window primitive supporting both single-tag invocation (`<Dialog isOpen={open} onClose={onClose} title="...">`) and compound customization (`Dialog.Root`, `Dialog.Backdrop`, `Dialog.Content`, `Dialog.Header`, `Dialog.Title`, `Dialog.Description`, `Dialog.Close`, `Dialog.Body`, `Dialog.Footer`). Provides automatic ARIA dialog attributes (`aria-labelledby`, `aria-describedby`), spring physics, tactile depth tiers (`sm` | `md` | `lg` | `xl`), focus trapping with `useModalFocus`, and portaling.
   ```tsx
-  <BottomDrawer isOpen={open} onClose={onClose} title="Examples">{children}</BottomDrawer>
+  // Single-tag usage:
+  <Dialog isOpen={open} onClose={onClose} title="Folder Details" size="sm">{children}</Dialog>
+
+  // Compound usage:
+  <Dialog.Root open={isOpen} onClose={onClose}>
+    <Dialog.Backdrop />
+    <Dialog.Content size="md" depth="md">
+      <Dialog.Header>
+        <Dialog.Title>Dialog Title</Dialog.Title>
+        <Dialog.Close />
+      </Dialog.Header>
+      <Dialog.Body>{children}</Dialog.Body>
+      <Dialog.Footer><ActionButton onClick={onClose}>Done</ActionButton></Dialog.Footer>
+    </Dialog.Content>
+  </Dialog.Root>
   ```
-- **ConfirmationDialog** — destructive confirmation with safe Cancel focus, Escape, focus restoration, optional icon, loading, and error message.
+- **Drawer** (alias: **BottomDrawer**) — unified bottom sheet drawer primitive supporting both single-tag invocation (`<Drawer isOpen={open} onClose={onClose} title="...">`) and compound customization (`Drawer.Root`, `Drawer.Backdrop`, `Drawer.Content`, `Drawer.Handle`, `Drawer.Header`, `Drawer.StickyHeader`, `Drawer.Title`, `Drawer.Close`, `Drawer.Body`). Provides gesture drag-to-dismiss, desktop workspace bounds, tone support (`surface` | `practice` | `canvas`), size presets (`sm` to `full`), and sticky gradient headers.
+  ```tsx
+  // Single-tag usage:
+  <Drawer isOpen={open} onClose={onClose} title="Examples">{children}</Drawer>
+
+  // Compound usage:
+  <Drawer.Root open={isOpen} onClose={onClose} tone="practice" workspaceBound>
+    <Drawer.Backdrop />
+    <Drawer.Content size="lg" heightClassName="h-[85vh]">
+      <Drawer.StickyHeader>
+        <Drawer.Handle />
+        <div className="flex items-center justify-between px-4 sm:px-6">
+          <Drawer.Title variant="eyebrow">Study Guide</Drawer.Title>
+          <Drawer.Close />
+        </div>
+      </Drawer.StickyHeader>
+      <Drawer.Body>{content}</Drawer.Body>
+    </Drawer.Content>
+  </Drawer.Root>
+  ```
+- **DetailShell** (alias: **WorkspaceDetailShell**) — unified workspace-bounded detail view primitive supporting both single-tag invocation (`<DetailShell ariaLabel="Word detail" onClose={onClose} title="Details">`) and compound customization (`DetailShell.Root`, `DetailShell.Scroller`, `DetailShell.Content`, `DetailShell.Floating`). Separates scroll mechanics, sticky headers, inner animated content, and floating overlay layers (bottom tabs, modals).
+  ```tsx
+  // Single-tag usage:
+  <DetailShell ariaLabel="Word detail" onClose={onClose} title="Breakdown">{content}</DetailShell>
+
+  // Compound usage:
+  <DetailShell.Root ariaLabel="Character breakdown" tone="practice" workspaceOffset onEscape={onClose}>
+    <DetailShell.Scroller ref={scrollRef} onScroll={handleScroll}>
+      <ScreenHeader variant="panel" tone="practice" onClose={onClose} title="Breakdown" />
+      <div className="mx-auto max-w-[1180px] p-6">{content}</div>
+    </DetailShell.Scroller>
+    <DetailShell.Floating>{bottomTabs}</DetailShell.Floating>
+  </DetailShell.Root>
+  ```
+- **ConfirmationDialog** — destructive confirmation modal built on `Dialog.*` with safe Cancel focus, Escape dismissal, focus restoration, optional icon, loading, and error message.
   ```tsx
   <ConfirmationDialog title="Reset progress" description="This cannot be undone." confirmLabel="Reset" onConfirm={reset} onCancel={close} />
   ```
@@ -93,9 +151,41 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
   ```tsx
   <ErrorBoundary fallbackClassName="min-h-[100dvh] p-8"><App /></ErrorBoundary>
   ```
-- **WorkspaceDetailShell** — seamless workspace-bounded detail window with header, close/back actions, focus trapping, Escape, and reduced-motion behavior.
+- **FloatingDock** — canonical compound primitive for floating bottom docks (`FloatingDock.Root`, `FloatingDock.Pill`, `FloatingDock.Popover`). Provides spring entry/exit animations, safe-area offsets, width profiles (`sm` | `md` | `lg` | `xl`), and integrated outside-click/Escape dismissal for popovers via `useDismiss`.
   ```tsx
-  <WorkspaceDetailShell ariaLabel="Character details" onClose={onClose}>{children}</WorkspaceDetailShell>
+  <FloatingDock.Root>
+    <FloatingDock.Pill maxWidth="md">
+      <SegmentedControl ... />
+    </FloatingDock.Pill>
+    <FloatingDock.Popover open={isOpen} onClose={() => setIsOpen(false)}>
+      <div role="menu">{options}</div>
+    </FloatingDock.Popover>
+  </FloatingDock.Root>
+  ```
+- **StudyDrawer** — shared mobile study drawer shell (`lg`-hidden): bottom sheet with drag handle, eyebrow title, close control, and a scrollable body over the given `tone`. Use it for any companion panel that becomes a `StudySidePanel` column on desktop. Screens own the content.
+  ```tsx
+  <StudyDrawer isOpen={isOpen} onClose={close} title="Study Guide" ariaLabel="Study Guide" tone="practice">
+    <ReaderStudyPanel ... />
+  </StudyDrawer>
+  ```
+- **StudySidePanel** — shared desktop study panel: right-hand, independently scrollable companion column (`hidden lg:flex`, eyebrow title + gap-stacked content, optional `onClose` to hide the panel). It carries no bottom fade; a screen's dock/footer belongs inside the content column beside it, so the fade never crosses the panel.
+  ```tsx
+  <StudySidePanel ariaLabel="Study Guide" title="Study Guide" onClose={() => setOpen(false)} closeLabel="Hide study guide">
+    <ReaderStudyPanel ... />
+  </StudySidePanel>
+  ```
+
+## Feedback, empty, and alert presentation
+
+- **AlertBanner** — unified error, warning, info, and success alert banner with tactile border, semantic icon, optional title, action slot, and dismiss callback.
+  ```tsx
+  <AlertBanner variant="danger" message={error} />
+  <AlertBanner variant="warning" title="Note" message="Review your cards before continuing." onDismiss={dismiss} />
+  ```
+- **EmptyState** — animated Duolingo-style empty state presenter featuring a centered circular icon badge, bold headline, muted descriptive copy, and optional action button. Supports `compact` mode for drawers and popovers.
+  ```tsx
+  <EmptyState icon="sparkles" title="No cards yet" description="Create your first flashcard." action={<ActionButton onClick={add}>Add Card</ActionButton>} />
+  <EmptyState icon="search" title="No matching cards" description="Try a different query." />
   ```
 
 ## Progress, loading, and animation
@@ -148,10 +238,11 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
 > transparent; only full-screen windows and the shared sticky gradient fades
 > reference canvas tokens.
 
-- **ScreenHeader** — canonical study/window header with title, progress, close/back, and composed center/right content. Segmented progress rails accept optional `progressAriaLabel` and `progressUnitLabel` through `PracticePartProgressRail` when a screen needs domain-specific accessibility copy. Pick the chrome with `variant`: `bar` (default, bordered surface bar for screens in normal workspace flow), `window` (the canonical sticky fade for full-viewport study windows — Grammar, Reader, practice), or `panel` (the same fade with a flush row for workspace-bounded detail windows — word detail, character breakdown). Sticky variants take `tone` (`canvas` | `practice`) so the fade blends into the canvas that owns the surface; never hand the fade recipe to `className` — the widget owns the recipe, the canvas owner owns the tone.
+- **ScreenHeader** — canonical study/window header with title, progress, close/back, and composed center/right content. Segmented progress rails accept optional `progressAriaLabel` and `progressUnitLabel` through `PracticePartProgressRail` when a screen needs domain-specific accessibility copy. Pick the chrome with `variant`: `bar` (default, bordered surface bar for screens in normal workspace flow), `window` (the canonical sticky fade for full-viewport study windows — Grammar, practice), `panel` (the same fade with a flush row for workspace-bounded detail windows — word detail, character breakdown), or `frosted` (tone-matched translucent bar at the standard window-header height, with a backdrop blur and the universal 2px border edge — Reading Mode's header, overlaid on its scroller so content passes underneath without showing through). Fade/frost variants take `tone` (`canvas` | `practice`) so they blend into the canvas that owns the surface; never hand the fade recipe to `className` — the widget owns the recipe, the canvas owner owns the tone.
   ```tsx
   <ScreenHeader title="Practice" progress={progress} onClose={onClose} />
   <ScreenHeader variant="panel" tone="practice" title="Study settings" onClose={onClose} />
+  <ScreenHeader variant="frosted" tone="practice" onClose={onClose} title="Lesson 3 · Part 2" />
   ```
 - **ScreenLayout** — consistent screen content wrapper for padding, width, and shell composition.
   ```tsx

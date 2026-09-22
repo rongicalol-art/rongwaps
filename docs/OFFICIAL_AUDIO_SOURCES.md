@@ -551,3 +551,147 @@ In Modern Chinese textbooks, vocabulary entries are grouped into logical blocks/
 | 遊戲 | 他喜歡玩手機遊戲，差不多每天玩兩個小時。 | Tā xǐhuān wán shǒujī yóuxì, chàbùduō měi tiān wán liǎng ge xiǎoshí. | He likes playing mobile phone games, playing for about two hours almost every day. |
 | *Trailing / Food* | 小籠包 | *(Introduced directly in Reading)* |
 
+---
+
+## Reading curriculum audit (Book 1)
+
+How the reader chooses the grammar and vocabulary it shows for a reading, what
+was verified against a source, and what still needs the printed book. The
+sentence-example coverage audit for readings lives in `COURSE_EXAMPLES.md`.
+Reproduce with:
+
+```bash
+npx tsx scripts/auditReaderCurriculum.ts   # grammar + advisory vocabulary report
+npm test                                   # includes the snapshot + fixture suites
+```
+
+### Structure: verified clean
+
+| Check | Result |
+|---|---|
+| Every grammar part's source dialogue resolves to exactly one reading (`audioReference`) | 33/33 |
+| That reading sits on the same dialogue number as the part (`partId`) | 33/33 |
+| Grammar page printed pages never run backwards within a part | pass |
+| Every grammar page has a reviewed usage rule or a declared `undetectable` reason | 76/76 |
+| Every reading resolves a non-empty target word list from its own vocabulary part | 48/48 |
+| Every duplicated vocabulary surface has a reviewed sense rule for each taught entry | 77/77 |
+| Per-reading grammar detections match the reviewed snapshot | `tests/fixtures/readerGrammarUsage.json` |
+| Per-reading in-text words and sense resolutions match the reviewed snapshots | `tests/fixtures/readerStudyTargets.json`, `tests/fixtures/readerVocabularySense.json` |
+| Matched clause ranges (the grammar locate highlight) match the reviewed snapshot | `tests/fixtures/readerGrammarMatches.json` |
+
+The mapping is exact because each course part embeds its source dialogue with
+the reading's own audio reference and printed pages. The reader therefore knows
+what a text teaches from data, never from numbering guesses: used pages show in
+normal ink, the rest dim, and the short essays that have no grammar part of
+their own rely on detection alone.
+
+### Grammar
+
+- Inventory source: the grammar pages themselves (`content/grammar/*.json`)
+  carry the book's printed page numbers, so each part can be compared against
+  the printed book.
+- **Lessons 15–16 verified** against the source appendix in
+  `docs/OFFICIAL_AUDIO_SOURCES.md` (§Lessons 15 & 16): Lesson 15 = 跟…(不)一樣 /
+  著 / 一……就……, Lesson 16 = 離 / 本來…後來 / 了…就 / 更 / 得-complement. The
+  app's five Lesson 16 pages match, and its numbering follows the printed page
+  order rather than the appendix's list order.
+- **Lessons 1–2 partially verifiable**: the official CLC trial platform exposes
+  an e-book sample of two Book 1 lessons (Drive id
+  `13AaR3z8Jll2duFxZlo_oQKwANRkqKau`), but the folder is not fetchable without
+  the CLC grant, so dialogue/vocabulary/grammar were not re-verified here.
+- **Lessons 3–14 unverified against a source.** No public per-lesson grammar or
+  vocabulary list was found (TKU trial platform materials, the 時代華語 teaching
+  Facebook group, Quizlet/Anki decks, university syllabi). Their claims are
+  therefore limited to: dialogue text pages, part grouping, and page order —
+  all structurally checked above.
+- Detection review: the reviewed snapshot records every badge the app can
+  produce today. Dialogues never badge pages of another part by accident. One
+  dialogue never uses its part's marker at all and is listed in
+  `tests/readerGrammarUsage.test.ts` (`KNOWN_DIALOGUE_RULE_GAPS`): Lesson 12
+  dialogue 1 does not use 對. (Lesson 7's 從 … / 到 … route is split across
+  paragraphs, so fragment evidence — start + motion and destination — now
+  evidences that page.)
+- Every grammar page carries authored slot evidence instead of a blanket
+  `undetectable`: S-V-O, time before the action, description + 的, 在 + place +
+  action, 會 + learned skill / expected future, 有點 + state, owner 的,
+  want/like before the action, topic fronting, activity-first comments,
+  好／難 + verb, 在 + action, modifier 的, 多／少 + action, and the 過
+  experience particle (each pinned by positive/negative fixtures).
+  `detectGrammarUsage` also records the clause ranges each rule matched
+  (target pages included), which the Study Guide uses to highlight a hovered
+  grammar point in the reading; those ranges are pinned in
+  `tests/fixtures/readerGrammarMatches.json`. Rules report **every** occurrence
+  in a sentence, so a sentence with several clock times (or 的 phrases, V過
+  forms, durations, direction words) paints all of them, and reduplication
+  never crosses a clause boundary.
+- The Study Guide grammar card lists the whole lesson, separated per part: the
+  reading's own part first (`PART N`, normal ink), then the other parts labelled
+  `PART N` when later and `PART N REVIEW` when earlier, all dimmed whether or
+  not the text uses them. Essays (no own part) keep the same per-part grouping
+  with used pages in normal ink and the rest dimmed. Hovering (desktop) or
+  pressing and holding (mobile drawer) a row still highlights only the clause(s)
+  that carry the pattern — dimmed rows included — painted in the grammar card's
+  yellow so it reads clearly.
+- Lesson 1–6 rules were re-read against the texts and extended where the
+  pattern was present but unmatched: 是 + identity for `B1L01-G01` (我是日本人),
+  packed clock numbers for `B1L02-G01` (十二點), 見 for `B1L02-G02` (明天見), a
+  fuller measure-word list for `B1L03-G01`, sentence-initial `這種`/`那種` for
+  `B1L03-G03`, and colour descriptions for `B1L03-G04` (白色的衣服).
+- Lessons 7–16 got the same pass: the seven structural pages became detectable
+  (activity-first, 好／難 + verb, 在 + action, modifier 的, 多／少 + action,
+  會 expected future, 過 experience), and the scan fixed travel-method
+  evidence (`B1L07-G02`), long 從 … 到 … time ranges (`B1L09-G02`, gap 5 → 8),
+  多久 durations (`B1L14-G01/G02`), 得 + 那麼／這麼 complements (`B1L16-G05`,
+  `B1L06-G02`), and sentence-start anchors on the number/又/duration rules.
+  The follow-up pass also stopped `B1L13-G05` counting `上個星期` / `下個星期`
+  as durations (a counted number must precede 個) and widened the `B1L13-G02`
+  and `B1L15-G01` gaps so long start/comparison phrases stay covered.
+
+### Vocabulary
+
+- The reader shows the reading's own course-part word list (`B1L01-1-xx` →
+  part 1, etc.), with words that actually occur in the text marked and listed
+  first. In-text matching is owned by `src/utils/vocabularyMatching.ts` and runs
+  on the reader's own word segmentation as a span of whole chunks — never a
+  substring — so 愛 is never marked from 可愛, while a pack compound authored
+  across pinyin words (`珍珠奶茶` = `zhēnzhū nǎichá`) and slash/optional
+  alternates (`你好/妳好`, `想（要）`) still count.
+- Hovering (desktop) or tapping (mobile drawer) a word row locates it in the
+  text and highlights every occurrence; a press-and-hold in the drawer opens
+  the dictionary instead.
+- Words taught more than once with different meanings carry authored sense
+  rules (`src/data/vocabularySenseRules.ts`, matched by
+  `src/utils/vocabularySense.ts` on the same token evidence as the grammar
+  rules): the row says `Here: <meaning> · Lesson N` when the text evidences a
+  sibling sense, or `Sense unclear · also …` when the senses cannot be told
+  apart (e.g. 會 ability vs expected future, declared `undetectable`).
+- Advisory audit (`scripts/auditReaderCurriculum.ts`) walks every reading and
+  reports word tokens that no vocabulary row up to that lesson covers. It
+  over-reports sub-word fragments on purpose (it compares tokens, while the
+  pack lists whole words), so the output is a review queue, not a defect list.
+- Classified findings from the current run:
+  1. **Compound/derivation fragments** — most items are parts of a taught word
+     that the segmenter split (游 ⊂ 游泳, 唱 ⊂ 唱歌, 綠 ⊂ 綠茶, 話 ⊂ 說話,
+     排/隊 ⊂ 排隊, 睡/起 ⊂ 睡覺/起床, 開/門 ⊂ 開心/門, 桌 ⊂ 桌子, 找 ⊂ 找錢)
+     or transparent derivations (看看/查查/穿穿, 拿著/放著/帶著, 同學們,
+     年輕人, 外國人, 麵包店).
+  2. **Compounds the pack encodes only as parts** — 看書 (看 + 書), 吃飯
+     (吃 + 飯), 寫字, 半年, 開門, 右轉, 音樂會, 車票, 手裡, 兔年/貓年,
+     星期六/禮拜六, 有點兒, 每天, 這個, 沒有, 哪些, 最受歡迎. These are
+     derivations the learner can read, but the pack could carry them explicitly
+     if they should be practiced as items.
+  3. ~~**Segmentation defects worth a data fix**~~ — fixed 2026-09-21: Lesson
+     15's essay fragments (屬什 / 麼, 到了元 / 宵節) came from corner brackets
+     `「」` not being punctuation in `PUNCTUATION_REGEX`, so they consumed pinyin
+     syllables and shifted the character↔pinyin alignment for the rest of the
+     paragraph. With them treated as punctuation the essay segments correctly
+     (什麼, 元宵節, 燈籠, 十二生肖); no data change was needed, and a regression
+     test pins the chunks.
+
+### What still needs the book
+
+- Grammar inventories for lessons 3–14 (last verified: 1–2 sample, 15–16).
+- Vocabulary part membership for lessons 3–14, plus the deliberate authoring
+  decision on the compounds listed in §3.2.
+- Source verification of the authored sense rules (they are reviewed against
+  the app's own readings, not against the printed book's vocabulary list).
