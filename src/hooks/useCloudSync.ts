@@ -21,7 +21,11 @@ import {
   type SyncProgressCounters,
 } from '../utils/cloudSyncQueue';
 import { isSameSrsData } from '../utils/srsRowMapping';
-import { getSelectedLessonIds, lessonsToPartSelection } from '../utils/lessonPartSelection';
+import { getSelectedLessonIds } from '../utils/lessonPartSelection';
+import {
+  resolveCloudMetadataPatch,
+  resolveGuestFolderMigration,
+} from '../utils/cloudMetadata';
 
 type AppStoreSnapshot = ReturnType<typeof useAppStore.getState>;
 
@@ -56,18 +60,6 @@ function getDailyActivity(
   return undefined;
 }
 
-function stringArray(value: unknown): string[] | null {
-  return Array.isArray(value) && value.every((item) => typeof item === 'string')
-    ? value
-    : null;
-}
-
-function numberArray(value: unknown): number[] | null {
-  return Array.isArray(value) && value.every((item) => typeof item === 'number')
-    ? value
-    : null;
-}
-
 function computeSrsDelta(
   previous: Record<string, SRSData> | null,
   current: Record<string, SRSData>,
@@ -86,14 +78,6 @@ function computeSrsDelta(
   // path is resetLearningProgress (RPC), and per-card deletion is not exposed
   // in the UI. Stale rows, if ever created, are reconciled on the next full pull.
   return delta;
-}
-
-function numberRecord(value: unknown): Record<string, number> | null {
-  if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
-  const entries = Object.entries(value);
-  return entries.every(([, item]) => typeof item === 'number')
-    ? Object.fromEntries(entries) as Record<string, number>
-    : null;
 }
 
 /**
@@ -245,71 +229,19 @@ export function useCloudSync() {
           const metadataIsNewer = isAccountSwitch || cloudTime > localTime;
 
           if (metadataIsNewer) {
-            const metadataFavorites = stringArray(metadata.favorites);
-            const metadataLessons = numberArray(metadata.selectedLessons);
-            const metadataBooks = numberArray(metadata.selectedBooks);
-            const metadataSessionIndex = numberRecord(metadata.sessionProgressIndex);
-
             setLastCloudUpdate(cloudData.lastUpdated || null);
-            if (metadataFavorites || isAccountSwitch) {
-              useAppStore.setState({ favorites: metadataFavorites ?? [] });
-            }
-            if (typeof metadata.activeBookId === 'number') {
-              useAppStore.setState({ activeBookId: metadata.activeBookId });
-            } else if (isAccountSwitch) {
-              useAppStore.setState({ activeBookId: 1 });
-            }
-            if (metadata.characterPreference === 'traditional' || metadata.characterPreference === 'simplified') {
-              useAppStore.setState({ characterPreference: metadata.characterPreference });
-            } else if (isAccountSwitch) {
-              useAppStore.setState({ characterPreference: 'traditional' });
-            }
-            if (metadata.activeTab === 'path' || metadata.activeTab === 'search' || metadata.activeTab === 'library' || metadata.activeTab === 'profile') {
-              useAppStore.setState({ activeTab: metadata.activeTab });
-            } else if (isAccountSwitch) {
-              useAppStore.setState({ activeTab: 'path' });
-            }
-            if (metadataLessons || isAccountSwitch) {
-              // Cloud lesson selections arrive as the legacy flat list; they
-              // convert into the canonical per-book parts map for the active
-              // book (the only book the derived lesson list ever applies to).
-              // Replacing this book's entries matches the previous wholesale
-              // replace of the flat array.
-              const activeBookId = useAppStore.getState().activeBookId;
-              const currentParts = useAppStore.getState().selectedLessonParts;
-              const otherBooks = Object.fromEntries(
-                Object.entries(currentParts).filter(([key]) => !key.startsWith(`${activeBookId}:`)),
-              );
-              useAppStore.setState({
-                selectedLessonParts: {
-                  ...otherBooks,
-                  ...lessonsToPartSelection(activeBookId, metadataLessons ?? []),
-                },
-              });
-            }
-            if (metadataBooks || isAccountSwitch) {
-              useAppStore.setState({ selectedBooks: metadataBooks ?? [] });
-            }
-
-            if (metadataSessionIndex) {
-              const localIndex = useAppStore.getState().sessionProgressIndex;
-              if (isAccountSwitch) {
-                useAppStore.setState({ sessionProgressIndex: metadataSessionIndex });
-              } else {
-                const mergedIndex = { ...localIndex };
-                for (const [key, cloudValue] of Object.entries(metadataSessionIndex)) {
-                  const localValue = localIndex[key];
-                  // Cloud wins only when it is strictly ahead. An explicit
-                  // local clear (key absent locally but present in cloud) keeps
-                  // the local view — the next save removes it server-side too.
-                  if (localValue !== undefined && cloudValue > localValue) {
-                    mergedIndex[key] = cloudValue;
-                  }
-                }
-                useAppStore.setState({ sessionProgressIndex: mergedIndex });
-              }
-            } else if (isAccountSwitch) {
-              useAppStore.setState({ sessionProgressIndex: {} });
+            const local = useAppStore.getState();
+            const patch = resolveCloudMetadataPatch(
+              metadata,
+              {
+                activeBookId: local.activeBookId,
+                selectedLessonParts: local.selectedLessonParts,
+                sessionProgressIndex: local.sessionProgressIndex,
+              },
+              { isAccountSwitch },
+            );
+            if (Object.keys(patch).length > 0) {
+              useAppStore.setState(patch);
             }
           }
 
@@ -363,32 +295,22 @@ export function useCloudSync() {
 
       if (isAccountSwitch || !localFoldersDirty) {
         const folders = await userService.getCustomFolders(currentUser.id);
-        // Pre-pull tombstones (guest deletions) — the account-switch reset
-        // above cleared the live list, but guest-deleted folders must still
-        // be excluded from the migration.
-        const tombstoneSet = new Set(prePullTombstones);
         setCustomFolders(folders);
         lastSyncedFoldersRef.current = folders;
 
-        // Guest -> account migration: an account that has never stored
-        // folders server-side adopts the pre-login local list — but only when
-        // that list was never synced to any account on this device, so a
-        // stale server-derived list can never be uploaded as if it were guest
-        // data. Tombstoned (deleted) guest folders are not migrated.
-        if (
-          isAccountSwitch
-          && folders.length === 0
-          && prePullFolders.length > 0
-          && prePullFolderOwner === null
-        ) {
-          const migrated = prePullFolders.filter(
-            (folder) => !tombstoneSet.has(folder.id),
-          );
-          if (migrated.length > 0) {
-            await userService.syncCustomFolders(currentUser.id, migrated, []);
-            setCustomFolders(migrated);
-            lastSyncedFoldersRef.current = migrated;
-          }
+        // Guest -> account migration: the decision rules live in
+        // `resolveGuestFolderMigration`; this branch only performs the write.
+        const migrated = resolveGuestFolderMigration({
+          isAccountSwitch,
+          prePullFolders,
+          prePullFolderOwner,
+          serverFolders: folders,
+          tombstones: prePullTombstones,
+        });
+        if (migrated.length > 0) {
+          await userService.syncCustomFolders(currentUser.id, migrated, []);
+          setCustomFolders(migrated);
+          lastSyncedFoldersRef.current = migrated;
         }
 
         // Drop tombstones the server has acknowledged (the folder is gone
