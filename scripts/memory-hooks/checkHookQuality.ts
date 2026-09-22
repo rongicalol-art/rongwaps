@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { STROKE_GLYPHS } from './componentRules';
 import { loadRuntimeDirectComponents, type RuntimeDirectComponent } from './runtimeIndex';
+import { STANDARD_RADICAL_ALIASES } from './standardAliases';
 import { auditSingleHook, type AuditFinding } from './strictHookAudit';
 
 const ROOT = resolve(import.meta.dirname, '../..');
@@ -99,8 +100,6 @@ export function analyzeCoverage(input: CoverageInput): QualityFinding[] {
     const glyph = component.glyph;
     if (STROKE_GLYPHS.has(glyph)) continue;
     if (input.hook.includes(`${glyph}(`)) continue;
-    const labels = input.labelCandidatesByGlyph.get(glyph) ?? [];
-    if (labels.some((label) => mentionsLabel(input.hook, label))) continue;
 
     const aliases = input.aliasesByGlyph.get(glyph) ?? [];
     const aliasToken = aliases.find((alias) => input.hook.includes(`${alias}(`));
@@ -110,17 +109,6 @@ export function analyzeCoverage(input: CoverageInput): QualityFinding[] {
         severity: 'info',
         part: glyph,
         message: `Written through its sanctioned alias ${aliasToken}; confirm the alias shape matches on the page.`,
-      });
-      continue;
-    }
-    const aliasLabels = aliases.flatMap((alias) => input.labelCandidatesByGlyph.get(alias) ?? []);
-    if (aliasLabels.some((label) => mentionsLabel(input.hook, label))) continue;
-    if (labels.some((label) => describesLabel(input.hook, label))) {
-      findings.push({
-        code: 'part-described',
-        severity: 'info',
-        part: glyph,
-        message: 'Surfaced through a plain-English shape description; confirm the wording matches the glyph.',
       });
       continue;
     }
@@ -134,6 +122,32 @@ export function analyzeCoverage(input: CoverageInput): QualityFinding[] {
         severity: 'info',
         part: glyph,
         message: `Surfaced through inner ${childEcho}; confirm the whole shape is still recognizable.`,
+      });
+      continue;
+    }
+
+    const labels = input.labelCandidatesByGlyph.get(glyph) ?? [];
+    const aliasLabels = aliases.flatMap((alias) => input.labelCandidatesByGlyph.get(alias) ?? []);
+
+    if (labels.some((label) => describesLabel(input.hook, label))) {
+      findings.push({
+        code: 'part-described',
+        severity: 'info',
+        part: glyph,
+        message: 'Surfaced through a plain-English shape description; confirm the wording matches the glyph.',
+      });
+      continue;
+    }
+
+    if (
+      labels.some((label) => mentionsLabel(input.hook, label)) ||
+      aliasLabels.some((label) => mentionsLabel(input.hook, label))
+    ) {
+      findings.push({
+        code: 'missing-glyph-token',
+        severity: 'flag',
+        part: glyph,
+        message: `Component is mentioned in English prose but lacks an explicit Chinese glyph token ${glyph}(...); add the Chinese component token so learners see the character matching the breakdown.`,
       });
       continue;
     }
@@ -244,6 +258,12 @@ function buildAliasesByGlyph(record: HookRecord): Map<string, string[]> {
   const relate = (left: string, right: string) => {
     aliasesByGlyph.set(left, [...new Set([...(aliasesByGlyph.get(left) ?? []), right])]);
   };
+  for (const [key, aliases] of Object.entries(STANDARD_RADICAL_ALIASES)) {
+    for (const alias of aliases) {
+      relate(key, alias);
+      relate(alias, key);
+    }
+  }
   for (const part of record.parts ?? []) {
     if (!part.glyph) continue;
     for (const alias of part.aliases ?? []) {

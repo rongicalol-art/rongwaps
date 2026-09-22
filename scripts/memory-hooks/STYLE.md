@@ -50,20 +50,39 @@ settles a new rule.
 - The alignment checker skips multi-glyph tokens (`大家(everyone)`,
   `手機(cell phone)`) — those are word-level glosses, not component labels.
 
-## Phonetics
+## Sound lives in the Sound block
 
-- Approved sound-cue characters: 媽 爸 請 客 喝 城 湖 花 問.
-- Phrase naturally: "…lends the sound (hē)", "as the sound cue (qīng → qǐng)".
-  Banned: "calls with", "is the sound component (…):".
-- 喝 keeps the pilot scene: a cup tips toward 口(mouth) and leads to
-  喝(drink); 曷 stays a quiet word cue, never a speaking character.
+- Hooks carry meaning work only. Sound never appears in a hook: no pinyin, no
+  "lends the sound", no sound shifts, no pronunciation notes.
+- The Sound block (`public/data/sound-hooks/`) holds pinyin, the phonetic
+  piece with its reading and tone shift, and the Book 1 sound family. It is
+  purely phonetic — no mnemonic, scene, or story.
+- The sound pass (`memory-hooks:sound:decide` → `memory-hooks:sound`) is
+  Jev-lean and decoupled from hook review:
+  - Code accepts a unique full match (initial + final, tone ignored) with no
+    API call; the rest go to one batched Jev pass (20 characters per request,
+    one Choice per character).
+  - Code verifies every Jev pick against ledger readings with sibilant and
+    nasal equivalence (j/zh/z, q/ch/c, x/sh/s; ing/eng, in/en); initial-only
+    links count as loose, and a confident (≥ 0.7) structural pick with no
+    modern-pinyin link is trusted as loose (historical phonetics like 尔/你 or
+    生/姓). Rejected or low-confidence picks become pinyin-only and land on the
+    needs-human list.
+  - Decisions cache by input hash (`review/sound-choice-cache-v1.json`), so
+    reruns and later books only pay for deltas. A previously accepted pick is
+    kept unless the new pass is confident (≥ 0.6) about a different glyph.
+  - `confidence` and `loose` ride along in the pack for tooling; the block
+    itself shows pinyin-only when there is no verified piece.
 
 ## Meaning and honesty
 
 - Real, checkable origins only (東西, 馬上); otherwise no history claims.
+- No variant/etymology framing: never write variant, archaic, ancient, old
+  form, old version, or "the name of".
 - No grammar metalanguage in prose (particle, measure word, classifier …).
-- Characters: at least 55 characters of prose. Words: 12–220 characters,
-  at most 30 words, at most 2 sentences.
+- Characters: one sentence, 25–170 characters of hook text, at most 15 words
+  of prose, at most two commas. Words: 12–220 characters, at most 30 words,
+  at most 2 sentences.
 
 ## Review and edit workflow
 
@@ -71,6 +90,20 @@ settles a new rule.
 - Character edits: decisions file → `applyCharacterReview.ts` → `exportHookPack.ts`.
 - Before shipping: `strictHookAudit.ts`, `checkHookQuality.ts --all`,
   `checkComponentLabelAlignment.ts`, and `tests/memoryHook*.test.ts`.
+- Meaning-only review round (2026-09-22):
+  - `memory-hooks:ledger` builds the component ledger (`component-ledger-v1.json`);
+    `component-ledger-overrides-v1.json` holds curated corrections (archaic
+    pieces carry a sourceRef).
+  - `memory-hooks:jev:all` judges every character hook with TypeSafe Jev
+    (thresholds in `review/typesafe-thresholds-v1.json`, calibrated on
+    `review/gold-set-v1.json`).
+  - `memory-hooks:triage` writes `review/char-triage-v1.json`;
+    `memory-hooks:repair` rewrites flagged hooks and re-verifies them.
+  - `memory-hooks:review:chars` writes `review/char-review.html`; decisions
+    export as `char-review-feedback.json`.
+  - `applyCharReview.ts` applies the outcome, strips sound mechanically, and
+    logs per-record decision sources to `review/char-decision-log-v1.json`.
+  - `memory-hooks:sound` (`buildSoundData.ts`) rebuilds the Sound pack.
 - Human review: `npm run memory-hooks:review:page` writes
   `output/memory-hooks/review/hook-review.html` — every hook triaged
   high/medium/low with reasons, component breakdowns, and Agree/Change/Decline
@@ -103,3 +136,33 @@ settles a new rule.
 - A regex-based prop checker was tried and rejected (too noisy); coherence is a
   human review item — after every content pass, retell a few random hooks
   aloud and fix any that need a missing step.
+
+## Formula v3 — meaning-only (2026-09-22)
+
+The prompt-ready version lives in `hookFormula.ts` (`HOOK_FORMULA_RULES`) and is
+embedded in every generation, critic, and repair prompt. The checklist:
+
+1. **Tokens**: `字(label)` everywhere; end on `字(meaning)` exactly once, as the
+   final token. The app bolds only labels.
+2. **Short and simple**: one sentence, one action, 25–170 characters of hook
+   text, at most 15 words of prose, at most two commas.
+3. **Ledger labels only**: taught meanings win; sound-only pieces take a reading
+   or a plainly visible shape description; no invented senses, no re-describing
+   a piece in your own words.
+4. **Breakdown order** — top/left/outer → bottom/right/inner; repeated parts
+   count once; doubled words say "said twice".
+5. **No dangling props** — every prop and action traces to a part.
+6. **Meaning-only** — no pinyin, no sound cues, no pronunciation notes; the
+   Sound block owns all phonetics.
+7. **No variant/etymology framing** — variant, archaic, ancient, old form,
+   old version, "the name of" are banned.
+8. **Honesty** — real origins only (東西, 馬上); no invented history.
+9. **Language hygiene** — no grammar metalanguage, one arrow before the target,
+   matching articles (`An 矢(arrow)`), words 12–220 / ≤30 words / ≤2 sentences
+   for word hooks, no stray Han.
+
+Every line is enforced by machine where possible: `strictHookAudit.ts` (prose),
+`checkHookQuality.ts` (coverage), `checkComponentOrder.ts` (order),
+`checkComponentLabelAlignment.ts` (labels, advisory), the acceptance suite
+(`tests/acceptance/memory_hooks.test.ts`), `tests/memoryHookPack.test.ts`, and
+the auto-ship gate (`runHookGates.ts`).

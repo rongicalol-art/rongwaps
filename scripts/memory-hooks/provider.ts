@@ -58,7 +58,7 @@ export function resolveProvider(): ProviderConfig {
       provider: 'deepseek',
       url: 'https://api.deepseek.com/chat/completions',
       apiKey: process.env.DEEPSEEK_API_KEY,
-      model: model || 'deepseek-v4-flash',
+      model: model || 'deepseek-v4.1-flash',
     };
   }
   if (preferred === 'openrouter' && process.env.OPENROUTER_API_KEY) {
@@ -66,7 +66,7 @@ export function resolveProvider(): ProviderConfig {
       provider: 'openrouter',
       url: 'https://openrouter.ai/api/v1/chat/completions',
       apiKey: process.env.OPENROUTER_API_KEY,
-      model: model || 'deepseek/deepseek-v4-flash',
+      model: model || 'deepseek/deepseek-v4.1-flash',
     };
   }
   throw new Error(`No usable memory-hook provider configured (MEMORY_HOOK_PROVIDER=${preferred || 'unset'}).`);

@@ -1,4 +1,4 @@
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import type { RuntimeTreeNode } from '../../src/features/character-decomposition/runtimePack';
@@ -19,6 +19,8 @@ interface RuntimeRecord {
 }
 
 function main(): void {
+  const bookArgIndex = process.argv.indexOf('--book');
+  const bookId = bookArgIndex > -1 ? Number(process.argv[bookArgIndex + 1]) : null;
   const manifest = JSON.parse(readFileSync(resolve(PHASE4_DIR, 'manifest.json'), 'utf8')) as {
     version: string;
     recordShards: unknown[];
@@ -38,11 +40,23 @@ function main(): void {
     return shardCache.get(shard)?.[glyph] ?? null;
   };
 
-  const hooks = (JSON.parse(
-    readFileSync(resolve(OUTPUT_DIR, 'book-1-hooks-v3.json'), 'utf8'),
-  ).records as HookRecord[])
+  const hookStems = bookId === null
+    ? readdirSync(OUTPUT_DIR)
+      .filter((name) => /^book-\d+-hooks-v3\.json$/.test(name))
+      .map((name) => name.replace(/\.json$/, ''))
+    : [`book-${bookId}-hooks-v3`];
+  const hooks = hookStems
+    .flatMap((stem) => {
+      const artifactPath = resolve(OUTPUT_DIR, `${stem}.json`);
+      if (!existsSync(artifactPath)) return [];
+      return (JSON.parse(readFileSync(artifactPath, 'utf8')).records as Array<HookRecord & { acceptance: string }>);
+    })
     .filter((hook) => hook.acceptance === 'clean' && hook.hook)
     .sort((left, right) => left.character.localeCompare(right.character, 'zh-Hant'));
+
+  const existing = existsSync(FIXTURE_PATH)
+    ? (JSON.parse(readFileSync(FIXTURE_PATH, 'utf8')) as { trees: Record<string, RuntimeTreeNode> }).trees
+    : {};
 
   const nodeChildren = (node: RuntimeTreeNode): RuntimeTreeNode[] => (
     node[0] === 's' ? node[2] : node[0] === 'g' && node.length === 3 ? node[2] : []
@@ -51,7 +65,7 @@ function main(): void {
     nodeChildren(node).flatMap((child) => (child[0] === 's' ? flat(child) : [child]))
   );
 
-  const trees: Record<string, RuntimeTreeNode> = {};
+  const trees: Record<string, RuntimeTreeNode> = { ...existing };
   const collectGlyph = (glyph: string): void => {
     if (trees[glyph]) return;
     const runtimeRecord = record(glyph);

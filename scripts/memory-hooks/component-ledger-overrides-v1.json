@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Curated corrections that override every other ledger source for a glyph. Use for archaic pieces whose sense is not in the app dictionary; always carry a sourceRef.",
+  "records": [
+    {
+      "glyph": "啚",
+      "senses": [
+        {
+          "label": "mean; low; rustic",
+          "sourceRef": "Shuowen: 啚, 嗇也; archaic variant of 鄙"
+        }
+      ],
+      "readings": [
+        "bǐ"
+      ],
+      "note": "圖's inner piece. Was shipped as 啚(bǐ) sketch; bǐ is the reading and 'sketch' was invented."
+    },
+    {
+      "glyph": "㐱",
+      "senses": [],
+      "readings": [
+        "zhēn"
+      ],
+      "note": "Reading-only. Legacy senses 'bushy'/'black hair' belong to 鬒; 㐱 is used as the sound piece in 珍."
+    },
+    {
+      "glyph": "厽",
+      "senses": [
+        {
+          "label": "stacked mounds",
+          "sourceRef": "project shape convention; Kangxi 厽: 絫也 (to pile up)"
+        }
+      ],
+      "readings": []
+    },
+    {
+      "glyph": "龸",
+      "senses": [
+        {
+          "label": "small roof",
+          "sourceRef": "project shape convention (top of 尚/堂)"
+        }
+      ],
+      "readings": []
+    },
+    {
+      "glyph": "𠀎",
+      "senses": [
+        {
+          "label": "offering",
+          "sourceRef": "project shape convention (used in 賽/寒)"
+        }
+      ],
+      "readings": []
+    },
+    {
+      "glyph": "𦉫",
+      "senses": [
+        {
+          "label": "hanging strands",
+          "sourceRef": "project shape convention (而's ancient pictograph)"
+        }
+      ],
+      "readings": []
+    }
+  ]
+}

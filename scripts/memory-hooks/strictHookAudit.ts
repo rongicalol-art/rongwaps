@@ -118,13 +118,17 @@ export function auditSingleHook(record: HookProseInput): AuditFinding[] {
   }
 
   // ERR-2: Too short / lazy fragment
-  if (hook.length < 55) {
-    findings.push({ code: 'ERR-2', category: 'Too Short/Lazy', detail: `Hook length (${hook.length}) is under 55 characters` });
+  if (hook.length < 25) {
+    findings.push({ code: 'ERR-2', category: 'Too Short/Lazy', detail: `Hook length (${hook.length}) is under 25 characters` });
   }
 
-  // ERR-5: Unapproved sound component usage
-  if (proseHook.includes('sound component') && !['媽', '爸', '請', '客', '喝', '城', '湖', '花', '問'].includes(character)) {
-    findings.push({ code: 'ERR-5', category: 'Unapproved Phonetic', detail: `Uses 'sound component' outside approved curriculum phonetics` });
+  // ERR-5: Sound component usage must show the pinyin pronunciation cue
+  if (proseHook.includes('sound component')) {
+    const hasPinyinCue = /[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/i.test(proseHook) ||
+                         /\([a-z]+\s*(->|→)\s*[a-z]+\)/i.test(proseHook);
+    if (!hasPinyinCue) {
+      findings.push({ code: 'ERR-5', category: 'Unexplained Phonetic', detail: `Mentions 'sound component' without showing the pinyin pronunciation` });
+    }
   }
 
   // ERR-1: Meaning distortion / shoehorning

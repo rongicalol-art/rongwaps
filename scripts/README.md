@@ -52,3 +52,19 @@ Run order (all via `npx tsx <script>` or the matching `npm run memory-hooks:*`):
 
 Keep artifacts in `output/` (gitignored); only packs under `public/data/` and
 tests are committed.
+
+## Book-generic memory hooks (Books 2–4)
+
+Same pipeline, parameterized by `--book N`:
+
+1. `prepareBookHooks.ts --book N` → `book-N-inventory.json`, `book-N-plans.json`,
+   `book-N-component-profiles-v2.json`, `book-N-scope.json` (new keys only).
+2. `generateBookOneHooks.ts --book N --scope … --stem book-N-hooks-v3 --execute --critic`
+   (characters; repairs via `--repair-report`).
+3. `generateWordHooks.ts --book N --execute --scope …` (words; repairs via `--repair-report`).
+4. `runHookGates.ts --book N` → gate report + repair files + `book-N-auto-ship-ids.json`.
+5. `exportHookPack.ts --book N [--ids …]` → `public/data/memory-hooks/book-N.json` + manifest merge.
+6. `buildHookReviewPage.ts --book N` → `output/memory-hooks/review/book-N-hook-review.html`.
+7. `runBookHooks.ts --book N [--auto-ship]` chains all of the above, runs
+   typecheck/lint/tests/build, and (with `--auto-ship`) commits and pushes the
+   machine-clean hooks only. Logs to `output/memory-hooks/book-N-run.log`.

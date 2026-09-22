@@ -2,11 +2,20 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 import { generateJson, resolveProvider, type ProviderConfig } from './provider';
+import { HOOK_FORMULA_RULES } from './hookFormula';
 import { extractJsonObject } from './jsonExtract';
 
 const ROOT = resolve(import.meta.dirname, '../..');
 const OUTPUT_DIR = resolve(ROOT, 'output/memory-hooks');
-const PROMPT_VERSION = 'book1-words-v1';
+
+function argumentValue(flag: string, fallback: string): string {
+  const index = process.argv.indexOf(flag);
+  return index > -1 ? process.argv[index + 1] : fallback;
+}
+
+const BOOK_ID = Number(argumentValue('--book', '1'));
+const BOOK_STEM = `book-${BOOK_ID}`;
+const PROMPT_VERSION = `${BOOK_STEM}-words-v2`;
 
 interface Occurrence {
   word: string;
@@ -55,7 +64,7 @@ function shortGloss(meaning: string | null): string | null {
 }
 
 function loadWords(): WordEntry[] {
-  const inventory = JSON.parse(readFileSync(resolve(OUTPUT_DIR, 'book-1-inventory.json'), 'utf8')) as {
+  const inventory = JSON.parse(readFileSync(resolve(OUTPUT_DIR, `${BOOK_STEM}-inventory.json`), 'utf8')) as {
     entries: InventoryEntry[];
   };
   const charMeaning = new Map(inventory.entries.map((entry) => [entry.character, entry.meaningDecision.selectedMeaning]));
@@ -93,6 +102,7 @@ function buildPrompt(entry: WordEntry, retryIssues: string[]): string {
       'Otherwise just explain the meaning in plain words. Never force a character story.',
       'Use only characters that appear in the word itself; no other Han characters.',
       'At most 2 sentences and at most 24 words.',
+      ...HOOK_FORMULA_RULES,
       'If no honest, helpful hook exists, use strategy "none" with hook null.',
       ...(retryIssues.length > 0 ? [`Fix these problems from the previous attempt: ${retryIssues.join(' | ')}`] : []),
     ],
@@ -143,6 +153,7 @@ async function critique(provider: ProviderConfig, entry: WordEntry, hook: string
         'Meaning: the whole word meaning is clearly present.',
         'Origin claims: any historical or origin explanation must be well-known and true; invented etymology costs points.',
         'Every named character must pull its weight; decoration costs points.',
+        ...HOOK_FORMULA_RULES.map((rule) => `Formula rule: ${rule}`),
       ],
       output: '{ "score": 1-5, "problems": [ "short problem", ... ] }',
     }),
@@ -167,7 +178,23 @@ async function main(): Promise<void> {
   const words = loadWords();
   const singles = words.filter((entry) => [...entry.word].length === 1);
   const multi = words.filter((entry) => [...entry.word].length > 1);
-  const scope = (flags.has('--singles') ? words : multi).slice(0, limit);
+  const scopeFlagIndex = process.argv.indexOf('--scope');
+  const scopeWords = scopeFlagIndex > -1
+    ? new Set((JSON.parse(readFileSync(resolve(process.argv[scopeFlagIndex + 1]), 'utf8')) as { words: string[] }).words)
+    : null;
+  const repairFlagIndex = process.argv.indexOf('--repair-report');
+  const repairIssues = repairFlagIndex > -1
+    ? new Map(Object.entries(
+      JSON.parse(readFileSync(resolve(process.argv[repairFlagIndex + 1]), 'utf8')) as Record<string, string[]>,
+    ))
+    : null;
+  const candidates = (flags.has('--singles') ? words : multi);
+  const scopedWords = repairIssues
+    ? candidates.filter((entry) => repairIssues.has(entry.word))
+    : scopeWords
+      ? candidates.filter((entry) => scopeWords.has(entry.word))
+      : candidates;
+  const scope = scopedWords.slice(0, limit);
 
   if (!execute) {
     console.log(JSON.stringify({
@@ -181,7 +208,7 @@ async function main(): Promise<void> {
     return;
   }
 
-  const artifactPath = resolve(OUTPUT_DIR, 'book-1-word-hooks-v1.json');
+  const artifactPath = resolve(OUTPUT_DIR, `${BOOK_STEM}-word-hooks-v1.json`);
   const prior = !force && existsSync(artifactPath)
     ? (JSON.parse(readFileSync(artifactPath, 'utf8')) as { records: WordRecord[] }).records
     : [];
@@ -211,7 +238,7 @@ async function main(): Promise<void> {
       const index = queue.shift()!;
       const entry = scope[index];
       const cached = priorByWord.get(entry.word);
-      if (cached && cached.acceptance !== 'failed' && cached.meaning === entry.meaning) {
+      if (cached && cached.acceptance !== 'failed' && !repairIssues?.has(entry.word) && cached.meaning === entry.meaning) {
         results[index] = cached;
         completed += 1;
         continue;
@@ -221,7 +248,7 @@ async function main(): Promise<void> {
       let strategy = 'none';
       let issues: WordRecord['issues'] = [];
       let attempts = 0;
-      let criticProblems: string[] = [];
+      let criticProblems: string[] = repairIssues?.get(entry.word) ?? [];
       while (attempts < 3) {
         attempts += 1;
         try {

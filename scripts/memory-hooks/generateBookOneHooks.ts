@@ -3,12 +3,21 @@ import { resolve } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 import { generateJson, resolveProvider, type ProviderConfig } from './provider';
 import { FUNCTION_WORD_LABEL, STROKE_GLYPHS, TECHNICAL_LABEL, usableGlosses } from './componentRules';
+import { HOOK_FORMULA_RULES } from './hookFormula';
 import { loadRuntimeDirectIndex } from './runtimeIndex';
 import { extractJsonObject } from './jsonExtract';
 
 const ROOT = resolve(import.meta.dirname, '../..');
 const OUTPUT_DIR = resolve(ROOT, 'output/memory-hooks');
-const PROMPT_VERSION = 'book1-lean-v2';
+
+function argumentValue(flag: string, fallback: string): string {
+  const index = process.argv.indexOf(flag);
+  return index > -1 ? process.argv[index + 1] : fallback;
+}
+
+const BOOK_ID = Number(argumentValue('--book', '1'));
+const BOOK_STEM = `book-${BOOK_ID}`;
+const PROMPT_VERSION = `${BOOK_STEM}-lean-v3`;
 
 type Strategy = 'combine' | 'scene' | 'sound' | 'shape' | 'none';
 
@@ -238,6 +247,7 @@ function buildPrompt(input: {
       'State the target meaning naturally in English ("... means 休(rest)." or inside the story).',
       'Never use historical or etymology language such as originally, ancient, historically, evolved, comes from, was created.',
       'The hook must be honest: a made-up scene is fine, a made-up fact is not. If no helpful hook exists, set strategy to "none" with a short reason.',
+      ...HOOK_FORMULA_RULES,
       ...(feedback.length > 0 ? [`Fix these problems from the previous attempt: ${feedback.join(' | ')}`] : []),
     ],
   });
@@ -470,6 +480,7 @@ async function critique(
         'No tautology: a part label that just restates the target meaning (e.g. "to assemble under the 亼(assemble) roof") is confusing; penalize it.',
         'Every named part must pull its weight: if you can delete a part\'s clause and the hook still explains the meaning, that part is decoration; penalize it.',
         'Natural English; not just a list of parts.',
+        ...HOOK_FORMULA_RULES.map((rule) => `Formula rule: ${rule}`),
       ],
       output: '{ "score": 1-5, "problems": [ "short problem", ... ] }',
     }),
@@ -540,36 +551,50 @@ async function main(): Promise<void> {
   const criticMin = Number(process.env.MEMORY_HOOK_CRITIC_MIN || 4);
   const maxAttempts = Number(process.env.MEMORY_HOOK_ATTEMPTS || (runCritic ? 3 : 2));
 
-  const planArtifact = loadJson<{ plans: PlanRecord[] }>(resolve(OUTPUT_DIR, 'book-1-plans.json'));
+  const planArtifact = loadJson<{ plans: PlanRecord[] }>(resolve(OUTPUT_DIR, `${BOOK_STEM}-plans.json`));
   const planByCharacter = new Map(planArtifact.plans.map((plan) => [plan.character, plan]));
   const profiles = loadJson<ComponentProfile[] | { profiles: ComponentProfile[] }>(
-    resolve(OUTPUT_DIR, 'book-1-component-profiles-v2.json'),
+    resolve(OUTPUT_DIR, `${BOOK_STEM}-component-profiles-v2.json`),
   );
   const profileList = Array.isArray(profiles) ? profiles : profiles.profiles;
   const profileByKey = new Map(profileList.map((profile) => [profile.key, profile]));
   const curated = loadCuratedLabels();
   const direct = loadRuntimeDirectIndex();
-  const reviewed = loadJson<ReviewedMeaning[] | { records: ReviewedMeaning[] }>(
-    resolve(OUTPUT_DIR, 'book-1-frozen-47-reviewed-construction-meanings-v1.json'),
-  );
+  const reviewedPath = resolve(OUTPUT_DIR, `${BOOK_STEM}-frozen-47-reviewed-construction-meanings-v1.json`);
+  const reviewed = existsSync(reviewedPath)
+    ? loadJson<ReviewedMeaning[] | { records: ReviewedMeaning[] }>(reviewedPath)
+    : { records: [] as ReviewedMeaning[] };
   const reviewedList = Array.isArray(reviewed) ? reviewed : reviewed.records;
   const reviewedByCharacter = new Map(reviewedList.map((record) => [record.character, record]));
 
   const inventory = loadJson<{ entries: Array<{ character: string; meaningDecision: PlanRecord['meaningDecision'] }> }>(
-    resolve(OUTPUT_DIR, 'book-1-inventory.json'),
+    resolve(OUTPUT_DIR, `${BOOK_STEM}-inventory.json`),
   );
   const inventoryByCharacter = new Map(inventory.entries.map((entry) => [entry.character, entry]));
 
+  const scopeFlagIndex = process.argv.indexOf('--scope');
+  const scopeCharacters = scopeFlagIndex > -1
+    ? loadJson<{ characters: string[] }>(resolve(process.argv[scopeFlagIndex + 1])).characters
+    : null;
+  const repairFlagIndex = process.argv.indexOf('--repair-report');
+  const repairIssues = repairFlagIndex > -1
+    ? new Map(Object.entries(
+      loadJson<Record<string, string[]>>(resolve(process.argv[repairFlagIndex + 1])),
+    ))
+    : null;
   const sampleFileIndex = process.argv.indexOf('--sample-file');
   const sampleCharacters = sampleFileIndex > -1
     ? loadJson<{ characters: string[] }>(process.argv[sampleFileIndex + 1]).characters
     : null;
-  const characters = sampleCharacters
-    ?? (runAll ? planArtifact.plans.map((plan) => plan.character) : reviewedList.map((record) => record.character));
+  const characters = repairIssues
+    ? [...repairIssues.keys()]
+    : sampleCharacters
+      ?? scopeCharacters
+      ?? (runAll ? planArtifact.plans.map((plan) => plan.character) : reviewedList.map((record) => record.character));
   const stemFlagIndex = process.argv.indexOf('--stem');
   const stem = stemFlagIndex > -1
     ? process.argv[stemFlagIndex + 1]
-    : runAll ? 'book-1-hooks-v3' : 'book-1-calibration-hooks-v1';
+    : runAll ? `${BOOK_STEM}-hooks-v3` : `${BOOK_STEM}-calibration-hooks-v1`;
   const jsonPath = resolve(OUTPUT_DIR, `${stem}.json`);
   const mdPath = resolve(OUTPUT_DIR, `${stem}.md`);
 
@@ -613,7 +638,7 @@ async function main(): Promise<void> {
   let abortMessage: string | null = null;
 
   const mergeForSave = (finished: HookRecord[]): HookRecord[] => {
-    if (!sampleCharacters) return finished;
+    if (characters.length === planArtifact.plans.length) return finished;
     const scope = new Set(characters);
     const byCharacter = new Map([
       ...priorAll.filter((record) => !scope.has(record.character)),
@@ -635,9 +660,7 @@ async function main(): Promise<void> {
       promptVersion: PROMPT_VERSION,
       records: finished,
     }, null, 2)}\n`);
-    writeFileSync(mdPath, renderMarkdown(finished, stem === 'book-1-calibration-hooks-v1'
-      ? 'Book 1 memory hook calibration (47 characters)'
-      : `Book 1 memory hooks — ${stem}`));
+    writeFileSync(mdPath, renderMarkdown(finished, `${BOOK_STEM} memory hooks — ${stem}`));
   };
 
   const processCharacter = async (index: number): Promise<void> => {
@@ -650,7 +673,7 @@ async function main(): Promise<void> {
       ? reviewedRecord!.constructionMeaning
       : inventoryRecord?.meaningDecision.selectedMeaning ?? plan?.meaningDecision.selectedMeaning ?? null;
     const cached = priorByCharacter.get(character);
-    if (cached && isReusable(cached) && (cached.meaning ?? null) === (meaning ?? null)) {
+    if (cached && isReusable(cached) && !repairIssues?.has(character) && (cached.meaning ?? null) === (meaning ?? null)) {
       indexed[index] = cached;
       return;
     }
@@ -703,7 +726,7 @@ async function main(): Promise<void> {
     let candidate = { strategy: 'none' as Strategy, hook: null as string | null, componentsUsed: [] as UsedComponent[], reason: null as string | null };
     let validation = { valid: true, issues: [] as HookIssue[] };
     let attempts = 0;
-    let criticProblems: string[] = [];
+    let criticProblems: string[] = repairIssues?.get(character) ?? [];
     while (attempts < maxAttempts) {
       attempts += 1;
       apiCalls += 1;

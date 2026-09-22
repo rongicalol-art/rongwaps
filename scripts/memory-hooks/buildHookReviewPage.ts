@@ -11,6 +11,7 @@ import {
   type InventoryEntry,
 } from './checkComponentLabelAlignment';
 import { findOrderMismatches, type OrderFinding } from './checkComponentOrder';
+import { STANDARD_RADICAL_ALIASES } from './standardAliases';
 
 const ROOT = resolve(import.meta.dirname, '../..');
 const OUTPUT_DIR = resolve(ROOT, 'output/memory-hooks');
@@ -43,6 +44,8 @@ interface WordRecord {
   meaning: string;
   hook: string | null;
   characters: Array<{ char: string; meaning: string | null }>;
+  acceptance?: string;
+  issues?: Array<{ code: string }>;
 }
 
 interface BeforeWord {
@@ -57,6 +60,7 @@ interface HookRecord {
   pinyin: string | null;
   hook: string | null;
   acceptance: string;
+  validation?: { valid: boolean; issues: Array<{ code: string }> };
 }
 
 interface BreakdownItem {
@@ -175,6 +179,14 @@ function createShardStore<T>(dir: string, pick: (pack: unknown, shard: number) =
 }
 
 function main(): void {
+  const bookFlagIndex = process.argv.indexOf('--book');
+  const bookId = bookFlagIndex > -1 ? Number(process.argv[bookFlagIndex + 1]) : 1;
+  const stem = `book-${bookId}`;
+  const freshGeneration = bookId !== 1;
+  const readIfExists = <T>(path: string, fallback: T): T => (
+    existsSync(path) ? readJson<T>(path) : fallback
+  );
+
   const runtimeManifest = readJson<{ recordShards: Array<{ count: number }> }>(resolve(PHASE4_DIR, 'manifest.json'));
   const runtimeShardCount = runtimeManifest.recordShards.length;
   const loadRuntimeShard = createShardStore<Record<string, RuntimeRecord>>(
@@ -266,11 +278,26 @@ function main(): void {
   };
 
   const hookedLabel = (hookText: string, glyph: string): string | undefined => {
-    const match = hookText.match(new RegExp(`${escapeRegExp(glyph)}\\s*\\(([^()]+)\\)`, 'u'));
-    return match?.[1].trim();
+    const directMatch = hookText.match(new RegExp(`${escapeRegExp(glyph)}\\s*\\(([^()]+)\\)`, 'u'));
+    if (directMatch) return directMatch[1].trim();
+    const aliases = STANDARD_RADICAL_ALIASES[glyph] ?? [];
+    for (const alias of aliases) {
+      const aliasMatch = hookText.match(new RegExp(`${escapeRegExp(alias)}\\s*\\(([^()]+)\\)`, 'u'));
+      if (aliasMatch) return aliasMatch[1].trim();
+    }
+    return undefined;
   };
 
-  const inventory = readJson<{ entries: InventoryEntry[] }>(resolve(OUTPUT_DIR, 'book-1-inventory.json'));
+  const hookedGlyph = (hookText: string, glyph: string): string => {
+    if (hookText.includes(`${glyph}(`)) return glyph;
+    const aliases = STANDARD_RADICAL_ALIASES[glyph] ?? [];
+    for (const alias of aliases) {
+      if (hookText.includes(`${alias}(`)) return alias;
+    }
+    return glyph;
+  };
+
+  const inventory = readJson<{ entries: InventoryEntry[] }>(resolve(OUTPUT_DIR, `${stem}-inventory.json`));
   const taughtSenses = buildTaughtSenses(inventory.entries);
 
   const buildSection = (char: string, primary: boolean, hookText: string, includeParts: boolean): BreakdownSection => {
@@ -285,17 +312,35 @@ function main(): void {
         const glyph = component[1];
         const componentMeta = glyphMeta(glyph);
         const hookLabel = hookedLabel(hookText, glyph);
+        const matchedGlyph = hookedGlyph(hookText, glyph);
         const taught = taughtSenses.meanings.get(glyph)
+          ?? (matchedGlyph !== glyph ? taughtSenses.meanings.get(matchedGlyph) : undefined)
           ?? breakdownItem(glyph)?.definition?.trim()
+          ?? (matchedGlyph !== glyph ? breakdownItem(matchedGlyph)?.definition?.trim() : undefined)
           ?? glyphMeta(glyph).meaning
           ?? '';
-        const readings = taughtSenses.readings.get(glyph) ?? breakdownItem(glyph)?.pinyin ?? [];
+        const readings = taughtSenses.readings.get(glyph)
+          ?? (matchedGlyph !== glyph ? taughtSenses.readings.get(matchedGlyph) : undefined)
+          ?? breakdownItem(glyph)?.pinyin
+          ?? [];
+
+        const directNamed = Boolean(hookLabel) || hookText.includes(`${glyph}(`) || (STANDARD_RADICAL_ALIASES[glyph] ?? []).some(a => hookText.includes(`${a}(`));
+        const children = recordChildren(glyph);
+        const childrenAllNamed = children.length > 0 && children.every((c: RuntimeTreeNode) => {
+          if (c[0] !== 'g') return true;
+          const cg = c[1];
+          return hookText.includes(`${cg}(`) || (STANDARD_RADICAL_ALIASES[cg] ?? []).some(a => hookText.includes(`${a}(`));
+        });
+
+        const isNamed = directNamed || childrenAllNamed;
+        const displayLabel = hookLabel ?? (childrenAllNamed ? children.map((c: RuntimeTreeNode) => c[0] === 'g' ? hookedLabel(hookText, c[1]) : null).filter(Boolean).join(' + ') : undefined);
+
         parts.push({
           glyph,
           appPinyin: componentMeta.pinyin,
           appMeaning: componentMeta.meaning,
-          hookLabel,
-          named: Boolean(hookLabel) || hookText.includes(`${glyph}(`),
+          hookLabel: displayLabel,
+          named: isNamed,
           aligned: hookLabel && taught ? labelAlignsWithMeaning(hookLabel, taught, readings) : undefined,
         });
       }
@@ -314,7 +359,17 @@ function main(): void {
     };
   };
 
-  const tags = readJson<TagsFile>(resolve(REVIEW_DIR, 'hook-review-tags-v1.json'));
+  const tagsName = bookId === 1 ? 'hook-review-tags-v1.json' : `${stem}-hook-review-tags-v1.json`;
+  const tags = readIfExists<TagsFile>(resolve(REVIEW_DIR, tagsName), {
+    levels: {
+      high: 'Pattern-checked scene with glosses matching the taught meanings — no known issues.',
+      medium: 'Worth a look — phonetic templates, origin claims, transliteration, contextual glosses, or fresh phrasing.',
+      low: 'Known concern — a component gloss that differs from its taught meaning, or wording to check.',
+      decision: 'Existing label kept on purpose — you decide whether it should change.',
+    },
+    items: {},
+    decisions: {},
+  });
 
   let alignmentHooks = new Set<string>();
   const triageUnchanged = (hook: string, id: string, kind: 'word' | 'character', wordConflict: boolean): Tag => {
@@ -351,15 +406,14 @@ function main(): void {
   const tagFor = (id: string, changed: boolean, triage: Tag): Tag => {
     const tag = tags.items[id];
     if (tag) return tag;
-    if (changed) throw new Error(`No confidence tag for changed hook ${id}`);
     return triage;
   };
 
-  const wordArtifact = readJson<{ records: WordRecord[] }>(resolve(OUTPUT_DIR, 'book-1-word-hooks-v1.json'));
-  const beforeWords = readJson<BeforeWord[]>(resolve(REVIEW_DIR, 'word-hooks-before-v3.json'));
+  const wordArtifact = readJson<{ records: WordRecord[] }>(resolve(OUTPUT_DIR, `${stem}-word-hooks-v1.json`));
+  const beforeWords = readIfExists<BeforeWord[]>(resolve(REVIEW_DIR, `${stem}-word-hooks-before.json`), []);
   const beforeByWord = new Map(beforeWords.map((record) => [record.word, record]));
   const wordDecisions = new Map(
-    readJson<{ decisions: WordDecision[] }>(resolve(OUTPUT_DIR, 'book-1-word-review-decisions-v3.json'))
+    readIfExists<{ decisions: WordDecision[] }>(resolve(OUTPUT_DIR, `${stem}-word-review-decisions.json`), { decisions: [] })
       .decisions
       .filter((decision) => decision.action && decision.hook)
       .map((decision) => [decision.word, decision]),
@@ -390,9 +444,15 @@ function main(): void {
     if (!afterHook) continue;
     const decision = wordDecisions.get(record.word);
     const beforeHook = beforeByWord.get(record.word)?.hook ?? afterHook;
-    const changed = beforeHook !== afterHook;
+    const changed = freshGeneration || beforeHook !== afterHook;
     const triage = triageUnchanged(afterHook, `word_${record.word}`, 'word', wordHasConflict(record, afterHook));
-    const tag = tagFor(`word_${record.word}`, changed, triage);
+    const baseTag = tagFor(`word_${record.word}`, changed, triage);
+    const codes = (record.issues ?? []).map((issue) => issue.code).join(', ');
+    const tag = record.acceptance === 'flagged'
+      ? { level: 'medium', why: `Generation flagged: ${codes || 'see artifact'}` }
+      : record.acceptance && record.acceptance !== 'clean'
+        ? { level: 'low', why: `Generation ${record.acceptance}: ${codes || 'no hook'}` }
+        : baseTag;
     items.push({
       id: `word_${record.word}`,
       kind: 'word',
@@ -412,21 +472,23 @@ function main(): void {
     });
   }
 
-  const charArtifact = readJson<{ records: HookRecord[] }>(resolve(OUTPUT_DIR, 'book-1-hooks-v3.json'));
+  const charArtifact = readJson<{ records: HookRecord[] }>(resolve(OUTPUT_DIR, `${stem}-hooks-v3.json`));
   const charByChar = new Map(charArtifact.records.map((record) => [record.character, record]));
-  const beforeChars = readJson<{ records: HookRecord[] }>(
-    resolve(OUTPUT_DIR, 'book-1-hooks-v3.pre-character-review.json'),
+  const beforeChars = readIfExists<{ records: HookRecord[] }>(
+    resolve(OUTPUT_DIR, `${stem}-hooks-v3.pre-character-review.json`),
+    { records: [] },
   );
   const beforeByChar = new Map(beforeChars.records.map((record) => [record.character, record]));
 
   const findings = findAlignmentFindings(charArtifact.records, taughtSenses.meanings, taughtSenses.readings);
   alignmentHooks = new Set(findings.flatMap((finding) => finding.hooks));
 
-  const charDecisionFiles = [
-    readJson<{ decisions: CharacterDecision[] }>(resolve(OUTPUT_DIR, 'book-1-character-review-decisions-v1.json')),
-    readJson<{ decisions: CharacterDecision[] }>(resolve(OUTPUT_DIR, 'book-1-character-review-decisions-v2.json')),
-    readJson<{ decisions: CharacterDecision[] }>(resolve(OUTPUT_DIR, 'book-1-character-review-decisions-v3.json')),
-  ];
+  const charDecisionFiles = Array.from({ length: 9 }, (_, index) => (
+    readIfExists<{ decisions: CharacterDecision[] }>(
+      resolve(OUTPUT_DIR, `${stem}-character-review-decisions-v${index + 1}.json`),
+      { decisions: [] },
+    )
+  ));
   const charDecisions = new Map<string, CharacterDecision>();
   for (const file of charDecisionFiles) {
     for (const decision of file.decisions) charDecisions.set(decision.character, decision);
@@ -444,9 +506,15 @@ function main(): void {
     if (!afterHook) continue;
     const decision = charDecisions.get(record.character);
     const beforeHook = beforeByChar.get(record.character)?.hook ?? afterHook;
-    const changed = beforeHook !== afterHook;
+    const changed = freshGeneration || beforeHook !== afterHook;
     const triage = triageUnchanged(afterHook, record.character, 'character', false);
-    const tag = tagFor(record.character, changed, triage);
+    const baseTag = tagFor(record.character, changed, triage);
+    const codes = (record.validation?.issues ?? []).map((issue) => issue.code).join(', ');
+    const tag = record.acceptance === 'flagged'
+      ? { level: 'medium', why: `Generation flagged: ${codes || 'see artifact'}` }
+      : record.acceptance !== 'clean'
+        ? { level: 'low', why: `Generation ${record.acceptance}: ${codes || 'no hook'}` }
+        : baseTag;
     const orderIssue = orderIssueByCharacter.get(record.character);
     items.push({
       id: record.character,
@@ -499,10 +567,14 @@ function main(): void {
     console.warn(`Untagged alignment findings: ${untaggedFindings.map((f) => `${f.glyph}(${f.label})`).join(', ')}`);
   }
 
-  const manifest = readJson<{ version: string }>(resolve(PACK_DIR, 'manifest.json'));
+  const manifest = readJson<{ version: string; books: Array<{ bookId: number; sha256: string }> }>(
+    resolve(PACK_DIR, 'manifest.json'),
+  );
+  const bookEntry = manifest.books.find((book) => book.bookId === bookId);
   const dataset = {
     generatedAt: new Date().toISOString(),
-    packVersion: manifest.version,
+    bookId,
+    packVersion: bookEntry?.sha256 ?? `${stem}-unexported`,
     levels: tags.levels,
     counts: {
       items: items.length,
@@ -517,25 +589,28 @@ function main(): void {
   };
 
   mkdirSync(REVIEW_DIR, { recursive: true });
-  writeFileSync(resolve(REVIEW_DIR, 'hook-review-v1.json'), `${JSON.stringify(dataset, null, 2)}\n`);
-  const html = renderHtml(JSON.stringify(dataset).replace(/</g, '\\u003c'), dataset.generatedAt);
-  writeFileSync(resolve(REVIEW_DIR, 'hook-review.html'), html);
+  const datasetName = bookId === 1 ? 'hook-review-v1.json' : `${stem}-hook-review.json`;
+  const htmlName = bookId === 1 ? 'hook-review.html' : `${stem}-hook-review.html`;
+  writeFileSync(resolve(REVIEW_DIR, datasetName), `${JSON.stringify(dataset, null, 2)}\n`);
+  const html = renderHtml(JSON.stringify(dataset).replace(/</g, '\\u003c'), dataset.generatedAt, bookId, items.length);
+  writeFileSync(resolve(REVIEW_DIR, htmlName), html);
   console.log(JSON.stringify({
+    bookId,
     items: items.length,
     decisions: decisions.length,
     byLevel: dataset.counts.byLevel,
-    html: resolve(REVIEW_DIR, 'hook-review.html'),
+    html: resolve(REVIEW_DIR, htmlName),
     bytes: Buffer.byteLength(html),
   }, null, 2));
 }
 
-function renderHtml(datasetJson: string, generatedAt: string): string {
+function renderHtml(datasetJson: string, generatedAt: string, bookId: number = 1, itemCount: number = 0): string {
   return `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>RongWaps memory-hook review</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>RongWaps Book ${bookId} memory-hook review</title>
 <style>
 :root {
   --canvas: #f2f3f4;
@@ -567,22 +642,95 @@ body {
   line-height: 1.5;
 }
 .zh { font-family: "PingFang TC", "Noto Sans TC", "Heiti TC", "Microsoft JhengHei", sans-serif; }
-header.top {
-  position: sticky; top: 0; z-index: 20;
-  background: linear-gradient(to bottom, var(--canvas) 75%, rgba(242,243,244,0));
-  padding: 18px 20px 10px;
+header.hero {
+  background: var(--canvas);
+  padding: 14px 0 6px;
+}
+.hero-top-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+.hero-meta {
+  font-size: 12px;
+  color: var(--muted-strong);
+  margin-top: 2px;
+}
+details.guide-toggle {
+  margin: 8px 0 10px;
+}
+details.guide-toggle summary {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--brand-deep);
+  cursor: pointer;
+  user-select: none;
+}
+details.guide-toggle[open] summary {
+  margin-bottom: 6px;
+}
+details.guide-toggle .sub {
+  margin: 0;
+  padding: 10px 14px;
+  background: var(--surface);
+  border: 1px solid var(--divider);
+  border-radius: 12px;
+  line-height: 1.45;
+  font-size: 13px;
+  color: var(--ink-body);
+}
+.sticky-bar {
+  position: sticky;
+  top: 0;
+  z-index: 25;
+  background: rgba(242, 243, 244, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--divider);
+  padding: 6px 0 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.sticky-wrap {
+  padding-bottom: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.toolbar-search-row {
+  width: 100%;
+}
+.toolbar-chips-track {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+.toolbar-chips-track::-webkit-scrollbar {
+  display: none;
+}
+.chip-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--divider);
+  flex-shrink: 0;
+  margin: 0 2px;
 }
 .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px 140px; }
-h1 { font-size: 22px; margin: 0 0 2px; color: var(--ink); }
+h1 { font-size: 20px; margin: 0 0 2px; color: var(--ink); }
 .sub { color: var(--muted-strong); font-size: 13px; margin-bottom: 12px; }
-.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; }
 .chip {
+  flex-shrink: 0; white-space: nowrap;
   border: 2px solid var(--border); background: var(--surface); color: var(--ink);
   border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 800; cursor: pointer;
+  touch-action: manipulation;
 }
 .chip.on { border-color: var(--brand); color: var(--brand-deep); background: var(--brand-soft); }
 input.search {
-  flex: 1 1 180px; min-width: 160px; border: 2px solid var(--border); border-radius: 12px;
+  width: 100%; border: 2px solid var(--border); border-radius: 12px;
   padding: 7px 12px; font-size: 14px; background: var(--surface); color: var(--ink);
 }
 input.search:focus { outline: none; border-color: var(--brand); }
@@ -591,7 +739,7 @@ h2.group-title { font-size: 13px; text-transform: uppercase; letter-spacing: 0.0
 p.group-hint { margin: 0 0 12px; color: var(--muted); font-size: 13px; }
 section.category { margin-top: 34px; }
 h2.cat-title { font-size: 20px; color: var(--ink); margin: 0 0 2px; }
-.stats { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 4px; }
+.stats { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 6px; }
 .stat-card {
   background: var(--surface); border: 2px solid var(--divider); border-radius: 12px;
   padding: 6px 10px; font-size: 12px; color: var(--muted-strong);
@@ -669,6 +817,7 @@ details.before-toggle .hook { margin-top: 8px; }
 .quick-btn {
   border: 2px solid var(--border); background: var(--surface); border-radius: 999px;
   padding: 4px 11px; font-size: 12px; font-weight: 800; cursor: pointer; color: var(--ink-body);
+  touch-action: manipulation;
 }
 .quick-btn.on.keep { border-color: var(--good); background: var(--good-soft); color: #3f9400; }
 .quick-btn.on.change { border-color: var(--warn-edge); background: var(--warn-surface); color: var(--warn-edge); }
@@ -682,7 +831,8 @@ textarea:focus, input.suggested:focus { outline: none; border-color: var(--brand
 .progress-hint { font-size: 12px; color: var(--muted-strong); margin-left: auto; }
 footer.bar {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
-  background: var(--surface); border-top: 2px solid var(--divider);
+  background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid var(--divider);
   padding: 10px 20px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
 }
 .bar .count { font-weight: 800; color: var(--ink); }
@@ -690,6 +840,7 @@ footer.bar {
 .btn {
   border: 2px solid var(--brand); border-bottom-width: 5px; border-radius: 14px; background: var(--brand);
   color: #fff; font-weight: 800; font-size: 14px; padding: 9px 16px; cursor: pointer;
+  touch-action: manipulation;
 }
 .btn.ghost { background: var(--surface); color: var(--brand-deep); border-bottom-width: 2px; }
 .btn:active { transform: translateY(1px); }
@@ -699,27 +850,130 @@ footer.bar {
   opacity: 0; pointer-events: none; transition: opacity 0.2s;
 }
 .toast.on { opacity: 1; }
+
+@media (min-width: 768px) {
+  .sticky-wrap {
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .toolbar-search-row {
+    width: auto;
+    flex: 0 1 300px;
+  }
+  .toolbar-chips-track {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+}
+
+@media (max-width: 640px) {
+  .wrap { padding-left: 12px; padding-right: 12px; padding-bottom: 110px; }
+  header.hero { padding: 10px 0 4px; }
+  h1 { font-size: 18px; }
+  .stat-card {
+    padding: 4px 8px;
+    font-size: 11px;
+    gap: 5px;
+    border-radius: 8px;
+  }
+  input.search {
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 10px;
+  }
+  .chip {
+    padding: 4px 9px;
+    font-size: 11px;
+  }
+  article.card {
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    border-radius: 14px;
+    border-bottom-width: 3px;
+  }
+  .glyph-title { font-size: 26px; }
+  .word-title { font-size: 20px; }
+  .hook {
+    padding: 10px 12px;
+    margin-top: 8px;
+    font-size: 14px;
+  }
+  .children {
+    margin-left: 10px;
+    padding-left: 8px;
+  }
+  .node-card {
+    min-width: 76px;
+    padding: 6px 8px;
+  }
+  .quick-row { gap: 4px; }
+  .quick-btn {
+    padding: 5px 9px;
+    font-size: 12px;
+  }
+  footer.bar {
+    padding: 8px 12px;
+    gap: 6px;
+  }
+  footer.bar .count {
+    font-size: 11px;
+  }
+  .btn {
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    border-bottom-width: 3px;
+  }
+  .toast {
+    bottom: 56px;
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
 </style>
 </head>
 <body>
-<header class="top">
+<header class="hero">
   <div class="wrap" style="padding-bottom:0">
-    <h1>Memory-hook review</h1>
-    <div class="sub">Every Book 1 hook — all 656 characters and 511 words, split into Words and Characters and triaged into high/medium/low confidence (each card shows why). Cards changed on 2026-09-16 carry a <em>changed 09-16</em> chip; the rest are <em>shipped</em>. Each collapsed card shows the hook plus ✅ Agree / ✏️ Change / ❌ Decline / 💬 Comment — <strong>Agree moves a card to the Agreed section at the bottom</strong>. Expand a card for before/after text, hook-vs-component diagnosis, and the app-style component breakdown (every part expands further). Finish with <strong>Export JSON</strong> or <strong>Copy for agent</strong> and paste it back. Generated ${generatedAt}.</div>
-    <div class="toolbar">
+    <div class="hero-top-row">
+      <div>
+        <h1>Book ${bookId} Memory-hook review</h1>
+        <div class="hero-meta">${itemCount ? `${itemCount} items &bull; ` : ''}Generated ${generatedAt.slice(0, 10)}</div>
+      </div>
+    </div>
+    <details class="guide-toggle">
+      <summary>Review guide &amp; how it works ▾</summary>
+      <div class="sub">
+        Every Book ${bookId} hook — split into Words and Characters and triaged into confidence levels.
+        Each card shows the hook plus ✅ Agree / ✏️ Change / ❌ Decline / 💬 Comment.
+        Agree moves a card to the Agreed section at the bottom.
+        Expand a card for before/after comparison, component breakdown diagnosis, and character tree.
+        Finish with <strong>Export JSON</strong> or <strong>Copy for agent</strong>.
+      </div>
+    </details>
+    <div class="stats" id="stats"></div>
+  </div>
+</header>
+<div class="sticky-bar">
+  <div class="wrap sticky-wrap">
+    <div class="toolbar-search-row">
+      <input class="search" id="search" type="search" placeholder="Search word, character, hook text…" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+    </div>
+    <div class="toolbar-chips-track">
       <button class="chip on" data-level="all">All</button>
       <button class="chip" data-level="high">High</button>
       <button class="chip" data-level="medium">Medium</button>
       <button class="chip" data-level="low">Low</button>
       <button class="chip" data-level="decision">Open decisions</button>
+      <div class="chip-divider"></div>
       <button class="chip" data-status="unreviewed">Unreviewed</button>
       <button class="chip" data-status="reviewed">Reviewed</button>
-      <input class="search" id="search" type="search" placeholder="Search word, character, hook text…" />
     </div>
-    <div class="stats" id="stats"></div>
   </div>
-</header>
-<div class="wrap" id="list"></div>
+</div>
+<div class="wrap" id="list" style="padding-top:12px"></div>
 <footer class="bar">
   <span class="count" id="progress">0 / 0 reviewed</span>
   <span class="spacer"></span>
