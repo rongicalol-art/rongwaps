@@ -1,3 +1,4 @@
+import { debugLogger } from '../../utils/debugLogger';
 import React, { useState, useCallback } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useNavigate } from 'react-router';
@@ -79,7 +80,7 @@ export function ProfileScreen({
     try {
       await logout();
     } catch (error) {
-      console.error('ProfileScreen: sign-out failed:', error);
+      debugLogger.error('Auth', 'ProfileScreen: sign-out failed:', error);
       setAccountError("Couldn't sign you out. Check your connection and try again.");
     }
   }, [logout]);

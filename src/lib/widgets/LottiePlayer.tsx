@@ -1,3 +1,4 @@
+import { debugLogger } from '../../utils/debugLogger';
 import React, { lazy, Suspense, useState, useEffect } from 'react';
 import type { LottieComponentProps } from 'lottie-react';
 
@@ -73,7 +74,7 @@ export const LottiePlayer: React.FC<LottiePlayerProps> = ({
         setLoading(false);
       } catch (err) {
         if (!isCurrent) return;
-        console.error("Failed to load Lottie source:", err);
+        debugLogger.error('App', "Failed to load Lottie source:", err);
         setError(true);
         setLoading(false);
       }

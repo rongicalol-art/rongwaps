@@ -1,3 +1,4 @@
+import { debugLogger } from '../../../utils/debugLogger';
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import type { DBDictionaryEntry } from '../../../types/database';
 import type { ReadingRecord } from '../../../types/models';
@@ -37,7 +38,7 @@ export function useReaderDictionaryBatch({
         }
       })
       .catch((err) => {
-        console.warn('Reader dictionary prefetch failed:', err);
+        debugLogger.warn('Cache', 'Reader dictionary prefetch failed:', err);
       });
 
     return () => {

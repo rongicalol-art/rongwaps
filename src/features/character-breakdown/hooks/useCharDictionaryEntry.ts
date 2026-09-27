@@ -1,3 +1,4 @@
+import { debugLogger } from '../../../utils/debugLogger';
 import { useEffect, useState } from 'react';
 import { getDictionaryEntries } from '../../../services/dictionaryService';
 import type { DBDictionaryEntry } from '../../../types/database';
@@ -20,7 +21,7 @@ export function useCharDictionaryEntry(char: string | undefined): DBDictionaryEn
         if (active) setEntries(data);
       })
       .catch((error) => {
-        console.error('useCharDictionaryEntry: failed to load entries:', error);
+        debugLogger.error('Supabase', 'useCharDictionaryEntry: failed to load entries:', error);
       });
     return () => {
       active = false;

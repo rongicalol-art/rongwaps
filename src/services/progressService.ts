@@ -1,3 +1,4 @@
+import { debugLogger } from '../utils/debugLogger';
 import { supabase } from './supabaseClient';
 
 function getLocalDateString(date: Date = new Date()): string {
@@ -42,11 +43,11 @@ export const progressService = {
       });
 
       if (error) {
-        console.error('Error upserting daily progress via RPC:', error);
+        debugLogger.error('Supabase', 'Error upserting daily progress via RPC:', error);
         throw error;
       }
     } catch (e) {
-      console.error('upsertDailyProgress exception:', e);
+      debugLogger.error('Supabase', 'upsertDailyProgress exception:', e);
       throw e;
     }
   },

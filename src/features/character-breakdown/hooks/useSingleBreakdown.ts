@@ -1,3 +1,4 @@
+import { debugLogger } from '../../../utils/debugLogger';
 import { useState, useEffect, useMemo } from 'react';
 import { useCharBreakdown } from '../../../hooks/useCharBreakdown';
 import { getCharactersUsingComponent, getMultipleBreakdowns } from '../../../services/breakdownService';
@@ -83,14 +84,14 @@ export function useSingleBreakdown(word: string, initialCharIndex: number, activ
               await getMultipleBreakdowns(charsList);
             }
           } catch (e) {
-            console.error("Error prefetching breakdowns in bulk:", e);
+            debugLogger.error('Supabase', "Error prefetching breakdowns in bulk:", e);
           }
           if (active) {
             setUsedAsComponents(charsList);
             setIsUsedAsLoading(false);
           }
         }).catch(err => {
-          console.error("Error fetching used as components:", err);
+          debugLogger.error('Supabase', "Error fetching used as components:", err);
           if (active) setIsUsedAsLoading(false);
         }),
         Promise.allSettled([
@@ -123,7 +124,7 @@ export function useSingleBreakdown(word: string, initialCharIndex: number, activ
       );
       if (subChars.length > 0) {
         getMultipleBreakdowns(subChars).catch(err => {
-          console.error("Error prefetching sub components:", err);
+          debugLogger.error('Supabase', "Error prefetching sub components:", err);
         });
       }
     }

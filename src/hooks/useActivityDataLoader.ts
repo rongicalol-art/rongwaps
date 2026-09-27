@@ -1,3 +1,4 @@
+import { debugLogger } from '../utils/debugLogger';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Flashcard } from '../data/flashcards';
 import { fetchVocabulary, fetchVocabularyByIds, prepareVocabulary, getCourseVocabLookupMap } from '../services/vocabularyService';
@@ -262,7 +263,7 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
               setIsLoading(false);
             }
           } catch (err) {
-            console.error("useActivityDataLoader: failed to load starred favorites:", err);
+            debugLogger.error('App', "useActivityDataLoader: failed to load starred favorites:", err);
             if (isMounted) {
               setError(err instanceof Error ? err.message : "Failed to load starred words");
               setCards([]);
@@ -380,7 +381,7 @@ export function useActivityDataLoader(activeBookId: number, selectedLessons: num
           }
         }
       } catch (err) {
-        console.error("useActivityDataLoader failed:", err);
+        debugLogger.error('App', "useActivityDataLoader failed:", err);
         if (isMounted) {
           setError(err instanceof Error ? err.message : "Failed to load cards");
         }

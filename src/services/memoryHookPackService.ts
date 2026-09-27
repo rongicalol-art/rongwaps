@@ -1,3 +1,4 @@
+import { debugLogger } from '../utils/debugLogger';
 import { createPackLoader } from './packLoader';
 
 /**
@@ -117,7 +118,7 @@ export async function lookupPackMnemonic(cacheKey: string): Promise<string | nul
     const map = await hookMapPromise;
     return resolveMnemonicFromMap(map, cacheKey);
   } catch (error) {
-    console.warn('Static memory hook pack unavailable; using database fallback.', error);
+    debugLogger.warn('Cache', 'Static memory hook pack unavailable; using database fallback.', error);
     hookMapPromise = null;
     return null;
   }

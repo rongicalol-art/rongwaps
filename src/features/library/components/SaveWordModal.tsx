@@ -1,3 +1,4 @@
+import { debugLogger } from '../../../utils/debugLogger';
 import { useState, useRef, useEffect } from 'react';
 import { ActionButton, AppIcon, Dialog } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
@@ -52,7 +53,7 @@ export function SaveWordModal() {
       setIsCreatingFolder(false);
       setNewFolderName('');
     } catch (err) {
-      console.error('Failed to create folder and save word:', err);
+      debugLogger.error('Supabase', 'Failed to create folder and save word:', err);
     } finally {
       setIsSubmittingFolder(false);
     }

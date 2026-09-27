@@ -23,6 +23,11 @@ Use this file to locate active system documentation. All listed documents are ac
 - `OFFICIAL_AUDIO_SOURCES.md` — Modern Chinese official audio sources, track mapping (`B1-LL-P-T`), karaoke alignment pipeline, audio caching, the Lessons 15–16 curriculum/transcript appendix, and the Book 1 reading curriculum audit (part mapping, grammar targets, vocabulary coverage).
 - `VISUAL_PROMPTS.md` — Locked Master Character Visual DNA, character design sheets and avatar portraits, plus dialogue and reading scene composition prompts.
 
+## Generated Artifacts & Scratch Policy
+
+- **Committed Pack Artifacts (`public/data/`)**: Static pre-indexed JSON packs (`course-examples/`, `decomposition/`, `dictionary/`, `memory-hooks/`, `sound-hooks/`, `vocabulary/`) and their hash-versioned `manifest.json` files are intentionally committed for pack-first offline/PWA delivery without remote database round-trips.
+- **Regenerable Scratch Artifacts (Gitignored)**: `output/` (pipeline staging, model audits, gate logs), `.audit/` (run logs), `dist/` (client and server production bundles), and `.vite/` (Vite dev cache) are strictly regenerable and cleaned locally via `npm run clean:local`.
+
 ## Task Routing
 
 | Task | Read |

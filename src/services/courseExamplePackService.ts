@@ -1,3 +1,4 @@
+import { debugLogger } from '../utils/debugLogger';
 import type { Flashcard } from '../data/flashcards';
 import type {
   CourseExampleManifest,
@@ -90,7 +91,7 @@ export async function fetchCourseExampleCards(searchTerms: string[], pos?: strin
   try {
     return recordsToExampleCards(await loadCourseExampleRecords(), searchTerms, pos);
   } catch (error) {
-    console.warn('Static course examples unavailable; using vocabulary examples.', error);
+    debugLogger.warn('Cache', 'Static course examples unavailable; using vocabulary examples.', error);
     return [];
   }
 }

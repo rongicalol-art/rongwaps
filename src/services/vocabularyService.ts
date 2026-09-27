@@ -1,3 +1,4 @@
+import { debugLogger } from '../utils/debugLogger';
 import { supabase } from './supabaseClient';
 import { Flashcard, FLASHCARDS_DATA } from '../data/flashcards';
 import { vocabularyCache } from '../utils/cache';
@@ -171,7 +172,7 @@ export async function fetchVocabulary(bookId?: number, lessonId?: number): Promi
         );
 
         if (error) {
-          console.error('Error fetching vocabulary:', error);
+          debugLogger.error('Supabase', 'Error fetching vocabulary:', error);
           if (allData.length === 0) {
             let filteredData = FLASHCARDS_DATA;
             if (bookId) filteredData = filteredData.filter(c => c.bookId === bookId);
@@ -208,7 +209,7 @@ export async function fetchVocabulary(bookId?: number, lessonId?: number): Promi
       vocabularyCache.set(cacheKey, finalData);
       return finalData;
     } catch (err) {
-      console.error('Exception fetching vocabulary:', err);
+      debugLogger.error('Supabase', 'Exception fetching vocabulary:', err);
       let filteredData = FLASHCARDS_DATA;
       if (bookId) filteredData = filteredData.filter(c => c.bookId === bookId);
       if (lessonId) filteredData = filteredData.filter(c => c.lessonId === lessonId);
@@ -248,14 +249,14 @@ export async function fetchVocabularyByIds(ids: string[]): Promise<Flashcard[] |
           .in('id', chunk),
       );
       if (error) {
-        console.error('Error fetching vocabulary by ids:', error);
+        debugLogger.error('Supabase', 'Error fetching vocabulary by ids:', error);
         return null;
       }
       if (data) rows.push(...data);
     }
     return prepareVocabulary(rows);
   } catch (err) {
-    console.error('Exception fetching vocabulary by ids:', err);
+    debugLogger.error('Supabase', 'Exception fetching vocabulary by ids:', err);
     return null;
   }
 }
@@ -389,7 +390,7 @@ export async function searchVocabulary(queryStr: string): Promise<Flashcard[]> {
       
       return finalData;
     } catch (err) {
-      console.error('Exception searching vocabulary:', err);
+      debugLogger.error('Supabase', 'Exception searching vocabulary:', err);
       return [];
     } finally {
       searchPromises.delete(cacheKey);
@@ -479,7 +480,7 @@ export async function fetchExamplesForWord(searchWords: string | string[], pos?:
     ); // 100 examples is plenty for sentences
 
     if (error) {
-      console.error('Error fetching examples:', error);
+      debugLogger.error('Supabase', 'Error fetching examples:', error);
       const fallback = await getLocalMatchingCards();
       return mergeExampleCards(fallback);
     }
@@ -493,7 +494,7 @@ export async function fetchExamplesForWord(searchWords: string | string[], pos?:
 
     return mergeExampleCards(mappedData);
   } catch (err) {
-    console.error('Exception fetching examples:', err);
+    debugLogger.error('Supabase', 'Exception fetching examples:', err);
     return [];
   }
 }

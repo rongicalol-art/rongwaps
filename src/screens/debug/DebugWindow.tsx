@@ -29,7 +29,7 @@ export const DebugWindow = () => {
       await clearAllMnemonics();
       setMnemonics([]);
     } catch (err: unknown) {
-      console.error(err);
+      debugLogger.error('Supabase', 'Failed to clear mnemonics', err);
       const message = err instanceof Error ? err.message : '';
       if (message.includes('permissions')) {
         setErrorMessage("Permission denied. You must be signed in to clear the global database.");

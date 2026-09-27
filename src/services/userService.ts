@@ -1,3 +1,4 @@
+import { debugLogger } from '../utils/debugLogger';
 import { supabase } from './supabaseClient';
 import { SRSData } from '../utils/srsEngine';
 import { planFolderSync } from '../utils/cloudSyncQueue';
@@ -60,14 +61,14 @@ export const userService = {
               .map((row: { card_id: string }) => row.card_id)
               .filter((id: unknown): id is string => typeof id === 'string');
           } catch (e) {
-            console.warn('user_learned_cards read failed, using legacy array:', e);
+            debugLogger.warn('Supabase', 'user_learned_cards read failed, using legacy array:', e);
             return null;
           }
         })(),
       ]);
 
       if (cardError) {
-        console.error("Error fetching card progress:", cardError);
+        debugLogger.error('Supabase', "Error fetching card progress:", cardError);
         throw cardError;
       }
 
@@ -79,7 +80,7 @@ export const userService = {
         .single();
 
       if (legacyError && legacyError.code !== 'PGRST116') {
-        console.error("Error fetching legacy progress:", legacyError);
+        debugLogger.error('Supabase', "Error fetching legacy progress:", legacyError);
         throw legacyError;
       }
 
@@ -117,7 +118,7 @@ export const userService = {
           : undefined,
       };
     } catch (e) {
-      console.error("Fetch exception:", e);
+      debugLogger.error('Supabase', "Fetch exception:", e);
       throw e;
     }
   },
@@ -146,7 +147,7 @@ export const userService = {
           p_records: batch,
         });
         if (rpcError) {
-          console.warn('upsert_card_progress RPC failed, falling back to batch upsert:', rpcError);
+          debugLogger.warn('Supabase', 'upsert_card_progress RPC failed, falling back to batch upsert:', rpcError);
           rpcOk = false;
           break;
         }
@@ -161,12 +162,12 @@ export const userService = {
           .from('user_card_progress')
           .upsert(batch, { onConflict: 'user_id,card_id'});
         if (error) {
-          console.error("Error upserting card progress batch:", error);
+          debugLogger.error('Supabase', "Error upserting card progress batch:", error);
           throw error;
         }
       }
     } catch (e) {
-      console.error("Card progress sync exception:", e);
+      debugLogger.error('Supabase', "Card progress sync exception:", e);
       throw e;
     }
   },
@@ -184,7 +185,7 @@ export const userService = {
         p_cards: data.learnedCards,
       });
       if (!rpcError) return;
-      console.warn('replace_learned_cards RPC failed, falling back to direct upsert:', rpcError);
+      debugLogger.warn('Supabase', 'replace_learned_cards RPC failed, falling back to direct upsert:', rpcError);
 
       const { error } = await supabase
         .from('user_profiles')
@@ -198,11 +199,11 @@ export const userService = {
           { onConflict: 'id' }
         );
       if (error) {
-        console.error("Error upserting learned cards:", error);
+        debugLogger.error('Supabase', "Error upserting learned cards:", error);
         throw error;
       }
     } catch (e) {
-      console.error("Metadata sync exception:", e);
+      debugLogger.error('Supabase', "Metadata sync exception:", e);
       throw e;
     }
   },
@@ -212,7 +213,7 @@ export const userService = {
   resetLearningProgress: async (): Promise<void> => {
     const { error } = await supabase.rpc('reset_user_learning_progress');
     if (error) {
-      console.error('Learning progress reset failed:', error);
+      debugLogger.error('Supabase', 'Learning progress reset failed:', error);
       throw error;
     }
   },
@@ -228,12 +229,12 @@ export const userService = {
         p_cards: newCardIds,
       });
       if (error) {
-        console.warn('append_learned_cards RPC failed:', error);
+        debugLogger.warn('Supabase', 'append_learned_cards RPC failed:', error);
         return false;
       }
       return true;
     } catch (e) {
-      console.warn('appendLearnedCards exception:', e);
+      debugLogger.warn('Supabase', 'appendLearnedCards exception:', e);
       return false;
     }
   },
@@ -253,11 +254,11 @@ export const userService = {
           { onConflict: 'id' }
         );
       if (error) {
-        console.error('Error syncing last activity:', error);
+        debugLogger.error('Supabase', 'Error syncing last activity:', error);
         throw error;
       }
     } catch (e) {
-      console.error('Last-activity sync exception:', e);
+      debugLogger.error('Supabase', 'Last-activity sync exception:', e);
       throw e;
     }
   },
@@ -270,7 +271,7 @@ export const userService = {
     try {
       const { data, error } = await supabase.rpc('get_due_card_ids');
       if (error) {
-        console.warn('get_due_card_ids RPC failed, using local due filter:', error);
+        debugLogger.warn('Supabase', 'get_due_card_ids RPC failed, using local due filter:', error);
         return null;
       }
       const ids = (data ?? [])
@@ -278,7 +279,7 @@ export const userService = {
         .filter((id: unknown): id is string => typeof id === 'string');
       return ids;
     } catch (e) {
-      console.warn('getDueCardIds exception:', e);
+      debugLogger.warn('Supabase', 'getDueCardIds exception:', e);
       return null;
     }
   },
@@ -292,12 +293,12 @@ export const userService = {
         .eq('user_id', userId);
 
       if (error) {
-        console.warn("Failed to fetch user folders:", error.message);
+        debugLogger.warn('Supabase', "Failed to fetch user folders:", error.message);
         throw error;
       }
       return data || [];
     } catch (e) {
-      console.error("getCustomFolders exception:", e);
+      debugLogger.error('Supabase', "getCustomFolders exception:", e);
       throw e;
     }
   },
@@ -319,7 +320,7 @@ export const userService = {
         .eq('user_id', userId);
 
       if (fetchError) {
-        console.error("Error fetching remote folders for reconciliation:", fetchError);
+        debugLogger.error('Supabase', "Error fetching remote folders for reconciliation:", fetchError);
         throw fetchError;
       }
 
@@ -341,7 +342,7 @@ export const userService = {
           .upsert(folderRows, { onConflict: 'id' });
 
         if (error) {
-          console.error("Error upserting custom folders:", error);
+          debugLogger.error('Supabase', "Error upserting custom folders:", error);
           throw error;
         }
       }
@@ -354,12 +355,12 @@ export const userService = {
           .eq('user_id', userId);
 
         if (deleteError) {
-          console.error("Error deleting stale folders:", deleteError);
+          debugLogger.error('Supabase', "Error deleting stale folders:", deleteError);
           throw deleteError;
         }
       }
     } catch (e) {
-      console.error("syncCustomFolders exception:", e);
+      debugLogger.error('Supabase', "syncCustomFolders exception:", e);
       throw e;
     }
   },

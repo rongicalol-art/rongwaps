@@ -1,3 +1,4 @@
+import { debugLogger } from '../../../utils/debugLogger';
 import { useEffect, useState } from 'react';
 import type { Flashcard } from '../../../data/flashcards';
 import type { RankedExample } from '../../../utils/courseExamples';
@@ -50,7 +51,7 @@ export function useCurriculumExamples(card: Flashcard | null | undefined, enable
         examplesCache.set(cacheKey, resolved);
         if (isMounted) setExamples(resolved);
       } catch (error) {
-        console.error('Error loading curriculum-safe examples:', error);
+        debugLogger.error('Cache', 'Error loading curriculum-safe examples:', error);
         if (isMounted) setExamples([]);
       } finally {
         if (isMounted) setIsLoading(false);

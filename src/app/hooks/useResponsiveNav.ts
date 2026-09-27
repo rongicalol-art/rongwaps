@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { readString, writeString } from '../../utils/localStorage';
 
 export const isDesktopViewport = () => (
   typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches
@@ -17,7 +18,7 @@ export const SIDEBAR_COLLAPSED_PREFERENCE_KEY = 'rongwaps:sidebar-collapsed';
 
 export const getInitialNavOpen = () => {
   if (!isDesktopViewport()) return false;
-  return window.localStorage.getItem(DESKTOP_NAV_PREFERENCE_KEY) !== 'false';
+  return readString(DESKTOP_NAV_PREFERENCE_KEY) !== 'false';
 };
 
 export const getInitialSidebarCollapsed = () => {
@@ -26,7 +27,7 @@ export const getInitialSidebarCollapsed = () => {
   if (!isExpandedViewport()) {
     return true;
   }
-  const saved = window.localStorage.getItem(SIDEBAR_COLLAPSED_PREFERENCE_KEY);
+  const saved = readString(SIDEBAR_COLLAPSED_PREFERENCE_KEY);
   if (saved !== null) {
     return saved === 'true';
   }
@@ -56,7 +57,7 @@ export function useResponsiveNav() {
     if (!isExpandedViewport()) {
       setIsCollapsed(true);
     } else {
-      const saved = window.localStorage.getItem(SIDEBAR_COLLAPSED_PREFERENCE_KEY);
+      const saved = readString(SIDEBAR_COLLAPSED_PREFERENCE_KEY);
       setIsCollapsed(saved === 'true');
     }
   }, []);
@@ -64,9 +65,7 @@ export function useResponsiveNav() {
   const toggleCollapse = useCallback(() => {
     setIsCollapsed((prev) => {
       const next = !prev;
-      if (typeof window !== 'undefined') {
-        window.localStorage.setItem(SIDEBAR_COLLAPSED_PREFERENCE_KEY, String(next));
-      }
+      writeString(SIDEBAR_COLLAPSED_PREFERENCE_KEY, String(next));
       return next;
     });
   }, []);
@@ -92,7 +91,7 @@ export function useResponsiveNav() {
           setIsCollapsed(true);
         } else if (!prevExpanded && isExp) {
           // Restored to large desktop: restore large-screen state
-          const saved = window.localStorage.getItem(SIDEBAR_COLLAPSED_PREFERENCE_KEY);
+          const saved = readString(SIDEBAR_COLLAPSED_PREFERENCE_KEY);
           setIsCollapsed(saved === 'true');
         }
         prevExpanded = isExp;

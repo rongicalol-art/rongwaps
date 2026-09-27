@@ -1,3 +1,4 @@
+import { debugLogger } from '../../../utils/debugLogger';
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { AppIcon } from '../../../lib/widgets';
 import { useAuth } from '../../../hooks/useAuth';
@@ -79,7 +80,7 @@ export function useLibrary() {
       try {
         await flashcardService.deleteFolder(currentUser.id, folderId);
       } catch (err) {
-        console.error("Failed to delete folder in Supabase:", err);
+        debugLogger.error('Supabase', "Failed to delete folder in Supabase:", err);
         try {
           const serverFolders = await userService.getCustomFolders(currentUser.id);
           useAppStore.getState().setCustomFolders(serverFolders);
@@ -87,7 +88,7 @@ export function useLibrary() {
             "Couldn't delete the folder — check your connection and try again.",
           );
         } catch (reconcileErr) {
-          console.error("Failed to reconcile folders after delete error:", reconcileErr);
+          debugLogger.error('Supabase', "Failed to reconcile folders after delete error:", reconcileErr);
         }
       } finally {
         deletingFoldersRef.current.delete(folderId);
@@ -172,7 +173,7 @@ export function useLibrary() {
         }
         if (!cancelled) setFavoriteResults(results);
       } catch (err) {
-        console.error("Error fetching library favorites:", err);
+        debugLogger.error('Supabase', "Error fetching library favorites:", err);
       } finally {
         if (!cancelled) setIsLoadingFavs(false);
       }

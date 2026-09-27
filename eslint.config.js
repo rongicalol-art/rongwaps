@@ -135,6 +135,13 @@ export default [
     },
   },
   {
+    files: ['src/**/*.{ts,tsx}'],
+    ignores: ['src/utils/debugLogger.ts', 'src/lib/widgets/ErrorBoundary.tsx'],
+    rules: {
+      'no-console': 'error',
+    },
+  },
+  {
     files: ['server/**/*.{ts,tsx}'],
     rules: {
       'no-restricted-imports': restricted([

@@ -1,3 +1,4 @@
+import { debugLogger } from '../../utils/debugLogger';
 import { useEffect, useState } from 'react';
 import { ActionButton, AppIcon, BottomDrawer, ConfirmationDialog, SegmentedControl } from '../../lib/widgets';
 import { isIosDevice, isStandaloneDisplay } from '../../utils/pwaInstall';
@@ -44,7 +45,7 @@ export function AppSettingsDrawer({
       setIsConfirmResetOpen(false);
       onClose();
     } catch (error) {
-      console.error('Learning progress reset failed:', error);
+      debugLogger.error('Supabase', 'Learning progress reset failed:', error);
       setResetError('Your progress was not reset. Check your connection and try again.');
     } finally {
       setIsResetting(false);

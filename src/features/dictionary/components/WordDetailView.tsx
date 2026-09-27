@@ -1,3 +1,4 @@
+import { debugLogger } from '../../../utils/debugLogger';
 import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { AppIcon, DetailShell, ScreenHeader, Skeleton } from '../../../lib/widgets';
@@ -257,7 +258,7 @@ export function WordDetailView({
           setLoading(false);
         }
       } catch (err) {
-        console.error('WordDetailView: failed to load word:', err);
+        debugLogger.error('Supabase', 'WordDetailView: failed to load word:', err);
         if (isMounted) setLoading(false);
       }
     };

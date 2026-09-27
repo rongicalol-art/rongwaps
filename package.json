@@ -10,6 +10,7 @@
     "build": "vite build && npm run build:server",
     "start": "node dist/server.js",
     "clean": "rm -rf dist",
+    "clean:local": "rm -rf output dist .audit .vite",
     "typecheck": "node --stack-size=6000 node_modules/typescript/lib/tsc.js --noEmit",
     "lint": "eslint src tests server scripts vite.config.ts --max-warnings=0",
     "test": "ACCEPTANCE_STRICT=true tsx --test tests/*.test.ts",

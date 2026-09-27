@@ -1,3 +1,4 @@
+import { debugLogger } from '../../../utils/debugLogger';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { InteractiveGrammarPart, ReadingRecord } from '../../../types/models';
 import { fetchVocabulary } from '../../../services/vocabularyService';
@@ -35,7 +36,7 @@ export function useReaderStudyData({ reading }: UseReaderStudyDataOptions) {
         setVocabulary(cards);
       })
       .catch((err) => {
-        console.error('Failed to load study guide vocabulary:', err);
+        debugLogger.error('App', 'Failed to load study guide vocabulary:', err);
         if (cancelled) return;
         // A failed fetch must not read as "this dialogue has no vocabulary":
         // drop the words so the card shows a retryable error, not an empty list.
@@ -64,7 +65,7 @@ export function useReaderStudyData({ reading }: UseReaderStudyDataOptions) {
         // none. Logged because the only visible symptom is a missing section,
         // and the likely cause is a lazy-chunk load failure (e.g. a deploy that
         // invalidated this chunk while the reader was open).
-        console.error('Failed to load grammar points for the reader study panel:', error);
+        debugLogger.error('App', 'Failed to load grammar points for the reader study panel:', error);
       });
 
     return () => {

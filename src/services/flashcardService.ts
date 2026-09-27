@@ -1,3 +1,4 @@
+import { debugLogger } from '../utils/debugLogger';
 import { supabase } from "./supabaseClient";
 import { UserFlashcard, UserFolder } from "../types/models";
 
@@ -128,7 +129,7 @@ class FlashcardService {
 
       await this.refetchFlashcards(card.userId);
     } catch (e) {
-      console.error("Error creating flashcard", e);
+      debugLogger.error('Supabase', "Error creating flashcard", e);
       throw e;
     }
   }
@@ -153,7 +154,7 @@ class FlashcardService {
         throw error;
       }
     } catch (e) {
-      console.error("Error deleting flashcard", e);
+      debugLogger.error('Supabase', "Error deleting flashcard", e);
       throw e;
     }
   }
@@ -224,7 +225,7 @@ class FlashcardService {
 
       await this.refetchFolders(userId);
     } catch (e) {
-      console.error("Error creating folder", e);
+      debugLogger.error('Supabase', "Error creating folder", e);
       throw e;
     }
   }
@@ -257,7 +258,7 @@ class FlashcardService {
         throw error;
       }
     } catch (e) {
-      console.error("Error deleting folder", e);
+      debugLogger.error('Supabase', "Error deleting folder", e);
       throw e;
     } finally {
       // Cooldown timer to prevent overlapping asynchronous PostgreSQL stream triggers from resurrecting the folder

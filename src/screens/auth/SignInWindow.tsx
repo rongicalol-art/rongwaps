@@ -1,3 +1,4 @@
+import { debugLogger } from '../../utils/debugLogger';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import {
@@ -34,7 +35,7 @@ export function SignInWindow({ onClose }: SignInWindowProps = {}) {
       await loginWithGoogle();
       // The auth listener in useAuth updates the store.
     } catch (error: unknown) {
-      console.error('Login failed', error);
+      debugLogger.error('Auth', 'Login failed', error);
       setAuthError(
         error instanceof Error
           ? error.message

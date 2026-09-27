@@ -1,3 +1,4 @@
+import { debugLogger } from '../../../utils/debugLogger';
 import { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import { useAppStore } from '../../../store/useAppStore';
@@ -145,7 +146,7 @@ export function useAddCard(onClose: () => void) {
           // Pre-warm neural TTS for the new word so first playback is instant.
           audioService.preloadNeural([cardData.front.trim()]).catch(() => {});
         } catch (e) {
-          console.error("Failed to save flashcard asynchronously:", e);
+          debugLogger.error('Supabase', "Failed to save flashcard asynchronously:", e);
         }
       }, 350);
     }

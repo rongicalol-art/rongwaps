@@ -1,3 +1,4 @@
+import { debugLogger } from '../../utils/debugLogger';
 import { del, get, keys, set } from 'idb-keyval';
 
 export const AUDIO_BUCKET = 'vocabulary-audio';
@@ -235,7 +236,7 @@ export async function preloadAudioFiles(
         try { await promise; } finally { blobPromises.delete(fileName); }
       }
     } catch (error) {
-      console.warn('Failed to preload audio', fileName, error);
+      debugLogger.warn('Audio', 'Failed to preload audio', { fileName, error });
       blobPromises.delete(fileName);
     }
     await processNext();

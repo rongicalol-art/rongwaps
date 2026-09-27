@@ -1,3 +1,4 @@
+import { debugLogger } from '../utils/debugLogger';
 import { useCallback, useEffect, useRef } from 'react';
 import { useAuth } from './useAuth';
 import { useAppStore, type AppStoreData } from '../store/useAppStore';
@@ -344,7 +345,7 @@ export function useCloudSync() {
       setSyncStatus('success');
       setSyncError(null);
     } catch (error: unknown) {
-      console.error('Failed to fetch from cloud:', error);
+      debugLogger.error('Sync', 'Failed to fetch from cloud:', error);
       setSyncStatus('error');
       setSyncError("Couldn't load your latest progress. Check your connection — we'll retry.");
     }
@@ -528,7 +529,7 @@ export function useCloudSync() {
     if (!currentUser) return;
     const requestBestEffortSave = () => {
       void requestSave().catch((error: unknown) => {
-        console.error('Background cloud save failed:', error);
+        debugLogger.error('Sync', 'Background cloud save failed:', error);
       });
     };
     const handleVisibility = () => {
@@ -567,7 +568,7 @@ export function useCloudSync() {
 
       syncTimeoutRef.current = setTimeout(() => {
         void requestSave().catch((error: unknown) => {
-          console.error('Auto-save failed:', error);
+          debugLogger.error('Sync', 'Auto-save failed:', error);
         });
       }, getNextAutoSaveDelay({
         dirtySinceMs: autoSaveDirtySinceRef.current,

@@ -36,3 +36,4 @@ materials/
 # Local tool caches / agent scratch
 .vite/
 .agents/
+.audit/

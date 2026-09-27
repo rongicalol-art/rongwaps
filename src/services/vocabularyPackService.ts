@@ -1,3 +1,4 @@
+import { debugLogger } from '../utils/debugLogger';
 import { DBVocabularyRow } from '../types/database';
 import { createPackLoader } from './packLoader';
 
@@ -59,7 +60,7 @@ export async function fetchVocabularyPack(bookId: number): Promise<DBVocabularyR
   try {
     return await vocabularyPackLoader.loadPart(bookId);
   } catch (error) {
-    console.warn(`Static vocabulary pack unavailable for book ${bookId}; using Supabase.`, error);
+    debugLogger.warn('Cache', `Static vocabulary pack unavailable for book ${bookId}; using Supabase.`, error);
     return null;
   }
 }
@@ -90,7 +91,7 @@ export function fetchAllVocabularyPacks(): Promise<DBVocabularyRow[] | null> {
       allRowsCache = rows;
       return rows;
     } catch (error) {
-      console.warn('Complete static vocabulary dataset unavailable; using Supabase.', error);
+      debugLogger.warn('Cache', 'Complete static vocabulary dataset unavailable; using Supabase.', error);
       return null;
     } finally {
       allRowsPromise = null;

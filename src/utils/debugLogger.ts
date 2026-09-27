@@ -1,8 +1,10 @@
+export type DebugCategory = 'AI' | 'Mnemonics' | 'Supabase' | 'Auth' | 'Cache' | 'Audio' | 'Sync' | 'App';
+
 export interface DebugLog {
   id: string;
   timestamp: string;
   level: 'info' | 'warn' | 'error';
-  category: 'AI' | 'Mnemonics' | 'Supabase' | 'Auth' | 'Cache';
+  category: DebugCategory;
   message: string;
   details?: unknown;
 }

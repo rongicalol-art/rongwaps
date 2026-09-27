@@ -1,3 +1,4 @@
+import { debugLogger } from '../utils/debugLogger';
 import { DBCharacterBreakdown } from '../types/database';
 import { fetchStaticJson, removeStaticJsonCache } from './staticContentService';
 import { createPackLoader } from './packLoader';
@@ -110,7 +111,7 @@ export async function fetchBreakdownsFromPacks(
       }
     }));
   } catch (error) {
-    console.warn('Static breakdown packs unavailable; using Supabase.', error);
+    debugLogger.warn('Cache', 'Static breakdown packs unavailable; using Supabase.', error);
   }
 
   return results;
@@ -146,7 +147,7 @@ export async function fetchUsedAsFromPacks(): Promise<Record<string, string[]> |
       usedAsCache = pack.entries;
       return pack.entries;
     } catch (error) {
-      console.warn('Static used-as index unavailable; using Supabase.', error);
+      debugLogger.warn('Cache', 'Static used-as index unavailable; using Supabase.', error);
       return null;
     } finally {
       usedAsPromise = null;

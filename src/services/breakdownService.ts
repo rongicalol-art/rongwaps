@@ -1,3 +1,4 @@
+import { debugLogger } from '../utils/debugLogger';
 import { supabase } from './supabaseClient';
 import { DBCharacterBreakdown } from '../types/database';
 import { breakdownCache, AppCache } from '../utils/cache';
@@ -54,7 +55,7 @@ export async function getCharacterBreakdown(character: string): Promise<DBCharac
 
       if (error) {
         if (error.code !== 'PGRST116') { // PGRST116 = No rows found (which is fine, not a critical error)
-          console.error(`Supabase error fetching breakdown for ${character}:`, error);
+          debugLogger.error('Supabase', `Supabase error fetching breakdown for ${character}:`, error);
         }
         return null;
       }
@@ -67,7 +68,7 @@ export async function getCharacterBreakdown(character: string): Promise<DBCharac
 
       return null;
     } catch (err) {
-      console.error(`Unexpected error fetching breakdown for ${character}:`, err);
+      debugLogger.error('Supabase', `Unexpected error fetching breakdown for ${character}:`, err);
       return null;
     } finally {
       pendingRequests.delete(character);
@@ -101,7 +102,7 @@ export async function getCharactersUsingComponent(component: string): Promise<st
       return characters;
     }
   } catch (err) {
-    console.warn('Used-as pack lookup failed; falling back to Supabase:', err);
+    debugLogger.warn('Supabase', 'Used-as pack lookup failed; falling back to Supabase:', err);
   }
 
   try {
@@ -134,7 +135,7 @@ export async function getCharactersUsingComponent(component: string): Promise<st
         );
 
         if (error) {
-          console.error("Error in getCharactersUsingComponent batch:", error);
+          debugLogger.error('Supabase', "Error in getCharactersUsingComponent batch:", error);
           continue;
         }
 
@@ -157,7 +158,7 @@ export async function getCharactersUsingComponent(component: string): Promise<st
     usedAsCache.set(component, finalResults);
     return finalResults;
   } catch (err) {
-    console.error("Error in getCharactersUsingComponent recursive lookup:", err);
+    debugLogger.error('Supabase', "Error in getCharactersUsingComponent recursive lookup:", err);
     return [];
   }
 }
@@ -214,7 +215,7 @@ export async function getMultipleBreakdowns(characters: string[]): Promise<Recor
     
     for (const res of resultsArray) {
       if (res.error) {
-        console.error('Error fetching multiple breakdowns chunk:', res.error);
+        debugLogger.error('Supabase', 'Error fetching multiple breakdowns chunk:', res.error);
         continue;
       }
       if (res.data && Array.isArray(res.data)) {
@@ -226,7 +227,7 @@ export async function getMultipleBreakdowns(characters: string[]): Promise<Recor
       }
     }
   } catch (err) {
-    console.error('Unexpected error fetching multiple breakdowns:', err);
+    debugLogger.error('Supabase', 'Unexpected error fetching multiple breakdowns:', err);
   }
 
   return results;

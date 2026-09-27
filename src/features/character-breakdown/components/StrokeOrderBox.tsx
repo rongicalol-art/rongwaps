@@ -1,3 +1,4 @@
+import { debugLogger } from '../../../utils/debugLogger';
 import React, { useRef, useEffect, useState } from 'react';
 import type HanziWriterType from 'hanzi-writer';
 import { useReducedMotion } from 'motion/react';
@@ -52,7 +53,7 @@ export function StrokeOrderBox({ char, size = 140, accentHex = DESIGN_TOKENS.col
                 if (!canceled) onLoad(data);
               })
               .catch((error) => {
-                console.error(`Stroke data unavailable for ${requestedChar}`, error);
+                debugLogger.error('App', `Stroke data unavailable for ${requestedChar}`, error);
                 if (!canceled) setStrokeDataFailed(true);
                 onError(error);
               });
@@ -62,7 +63,7 @@ export function StrokeOrderBox({ char, size = 140, accentHex = DESIGN_TOKENS.col
         if (!reduceMotion) writer.loopCharacterAnimation();
       })
       .catch((error) => {
-        console.error('Failed to load hanzi-writer module', error);
+        debugLogger.error('App', 'Failed to load hanzi-writer module', error);
         if (!canceled) setStrokeDataFailed(true);
       });
 

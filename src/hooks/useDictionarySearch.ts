@@ -1,3 +1,4 @@
+import { debugLogger } from '../utils/debugLogger';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { executeRemoteSearch } from '../services/dictionaryService';
 import { sanitizeDictionaryDefinitions } from '../utils/dictionaryDefinitions';
@@ -52,7 +53,7 @@ export function useDictionarySearch(externalQuery: string) {
       }
     } catch (err) {
       if (currentId !== searchIdRef.current) return;
-      console.error('SuperSearch RPC Failed:', err);
+      debugLogger.error('Supabase', 'SuperSearch RPC Failed:', err);
       setSearchError('Search is having trouble right now. Please try again.');
       setResults([]);
     } finally {

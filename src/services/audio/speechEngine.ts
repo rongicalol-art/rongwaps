@@ -1,3 +1,4 @@
+import { debugLogger } from '../../utils/debugLogger';
 import { authService } from '../authService';
 import { resolveRequestUrl } from './audioCache';
 
@@ -334,14 +335,14 @@ export async function speakUtterance(
     };
     utterance.onerror = (error) => {
       onUtteranceChange(null);
-      console.warn('SpeechSynthesis error:', error);
+      debugLogger.warn('Audio', 'SpeechSynthesis error:', error);
       finish();
     };
     window.speechSynthesis.speak(utterance);
     kickstartSpeech();
   } catch (error) {
     onUtteranceChange(null);
-    console.warn('SpeechSynthesis playback failed:', error);
+    debugLogger.warn('Audio', 'SpeechSynthesis playback failed:', error);
     finish();
   }
 }

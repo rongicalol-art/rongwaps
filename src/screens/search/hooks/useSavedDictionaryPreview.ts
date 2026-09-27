@@ -1,3 +1,4 @@
+import { debugLogger } from '../../../utils/debugLogger';
 import { useEffect, useMemo, useState } from 'react';
 import {
   BEGINNER_DICTIONARY_TERMS,
@@ -54,7 +55,7 @@ export function useSavedDictionaryPreview(favorites: string[]) {
         }));
       })
       .catch((error) => {
-        console.error('Could not load saved dictionary previews:', error);
+        debugLogger.error('Supabase', 'Could not load saved dictionary previews:', error);
       })
       .finally(() => {
         if (!cancelled) setIsLoading(false);

@@ -1,3 +1,4 @@
+import { debugLogger } from '../utils/debugLogger';
 import { useSyncExternalStore, useEffect, useState, useCallback } from 'react';
 import { User } from '@supabase/supabase-js';
 import { authService } from '../services/authService';
@@ -59,7 +60,7 @@ export function useAuth() {
   useEffect(() => {
     if (currentUser) {
       authService.upsertProfile(currentUser).catch(err => {
-        console.warn("Profile upsert failed (non-critical):", err);
+        debugLogger.warn('Auth', "Profile upsert failed (non-critical):", err);
       });
     }
   }, [currentUser]);

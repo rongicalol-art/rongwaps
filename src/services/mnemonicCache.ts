@@ -66,7 +66,7 @@ async function flushPendingLookups(): Promise<void> {
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : String(error);
     debugLogger.warn('Cache', 'Supabase batch lookup failed', { error: message });
-    console.warn('Could not fetch mnemonics from global cache:', message);
+    debugLogger.warn('Cache', 'Could not fetch mnemonics from global cache:', message);
     for (const key of keys) {
       pendingResolvers.get(key)?.(null);
       pendingResolvers.delete(key);
@@ -113,7 +113,7 @@ export async function clearAllMnemonics(): Promise<void> {
     debugLogger.info("Supabase", "Successfully cleared all mnemonics in Supabase cache!");
   } catch (error) {
     debugLogger.error("Supabase", "Failed to clear mnemonics cache", error);
-    console.error("Failed to clear mnemonics cache:", error);
+    debugLogger.error('Cache', "Failed to clear mnemonics cache:", error);
     throw error;
   }
 }
@@ -132,7 +132,7 @@ export async function fetchAllMnemonicsDebug() {
     return mnemonics;
   } catch (error) {
     debugLogger.error("Supabase", "Could not fetch debug mnemonics from Supabase", error);
-    console.warn("Could not fetch debug mnemonics:", error);
+    debugLogger.warn('Cache', "Could not fetch debug mnemonics:", error);
     return [];
   }
 }
@@ -153,7 +153,7 @@ export async function saveMnemonicToCache(cacheKey: string, mnemonic: string): P
     debugLogger.info("Supabase", `Saved "${cacheKey}" mnemonic to global Supabase Cache.`);
   } catch (error) {
     debugLogger.error("Supabase", `Could not save mnemonic for "${cacheKey}" to Supabase`, error);
-    console.warn("Could not save mnemonic to Supabase:", error);
+    debugLogger.warn('Cache', "Could not save mnemonic to Supabase:", error);
   }
 }
 

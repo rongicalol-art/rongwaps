@@ -1,3 +1,4 @@
+import { debugLogger } from '../../utils/debugLogger';
 import { useDeferredValue, useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { DAILY_CHARACTERS } from '../../data/dictionaryHome';
@@ -114,7 +115,7 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
           );
         })
         .catch((error) => {
-          console.error('SearchScreen: course vocabulary search failed:', error);
+          debugLogger.error('Supabase', 'SearchScreen: course vocabulary search failed:', error);
           if (isCurrent) {
             setCourseResults([]);
             setCourseSearchError('Course vocabulary search is unavailable right now. Try again in a moment.');

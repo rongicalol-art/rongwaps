@@ -1,3 +1,4 @@
+import { debugLogger } from '../utils/debugLogger';
 import { useState, useEffect } from 'react';
 import { searchVocabulary } from '../services/vocabularyService';
 import type { Flashcard } from '../data/flashcards';
@@ -87,7 +88,7 @@ export function useComponentVocabRelation(char: string): ComponentVocabRelation 
         setRelation(calculateRelation(vocab, char));
       })
       .catch((err) => {
-        console.error('Error in useComponentVocabRelation:', err);
+        debugLogger.error('Supabase', 'Error in useComponentVocabRelation:', err);
         if (active) {
           setRelation({
             exactVocab: null,

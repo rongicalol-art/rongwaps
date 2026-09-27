@@ -1,3 +1,4 @@
+import { debugLogger } from '../utils/debugLogger';
 export { AUDIO_BUCKET } from './audio/audioCache';
 import {
   cacheObjectUrl,
@@ -43,14 +44,14 @@ export class AudioService {
         try {
           this.audioContext = new AudioContextClass();
         } catch (error) {
-          console.warn('Web Audio initialization failed; using HTML audio fallback', error);
+          debugLogger.warn('Audio', 'Web Audio initialization failed; using HTML audio fallback', error);
         }
       }
       if (typeof Audio !== 'undefined') {
         try {
           this.globalAudio = new Audio();
         } catch (error) {
-          console.warn('HTML audio initialization failed; using TTS fallback', error);
+          debugLogger.warn('Audio', 'HTML audio initialization failed; using TTS fallback', error);
         }
       }
     }

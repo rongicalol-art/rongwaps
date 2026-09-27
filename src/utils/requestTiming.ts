@@ -1,3 +1,5 @@
+import { debugLogger } from './debugLogger';
+
 const isDevelopment = Boolean(import.meta.env?.DEV);
 
 function now(): number {
@@ -15,7 +17,7 @@ export async function timeDataRequest<T>(
   } finally {
     if (isDevelopment) {
       const durationMs = Math.round(now() - startedAt);
-      console.debug(`[Data request] ${label}: ${durationMs}ms`);
+      debugLogger.info('Cache', `[Data request] ${label}: ${durationMs}ms`);
     }
   }
 }

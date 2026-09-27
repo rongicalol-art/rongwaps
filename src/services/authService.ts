@@ -1,3 +1,4 @@
+import { debugLogger } from '../utils/debugLogger';
 import { isSupabaseConfigured, supabase } from './supabaseClient';
 import { User } from '@supabase/supabase-js';
 
@@ -24,7 +25,7 @@ export const authService = {
       });
       if (error) throw error;
     } catch (error) {
-      console.error("Login failed", error);
+      debugLogger.error('Auth', "Login failed", error);
       throw error;
     }
   },
@@ -35,21 +36,21 @@ export const authService = {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
     } catch (error) {
-      console.error("Logout failed", error);
+      debugLogger.error('Auth', "Logout failed", error);
       throw error;
     }
   },
 
   onAuthStateChanged: (callback: (user: User | null) => void) => {
     if (!isSupabaseConfigured()) {
-      console.warn(missingSupabaseMessage);
+      debugLogger.warn('Auth', missingSupabaseMessage);
       callback(null);
       return () => {};
     }
     supabase.auth.getSession().then(({ data: { session } }) => {
       callback(session?.user ?? null);
     }).catch((error) => {
-      console.error("Session check failed", error);
+      debugLogger.error('Auth', "Session check failed", error);
       callback(null);
     });
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -80,7 +81,7 @@ export const authService = {
         }, { onConflict: 'id' });
       if (error) throw error;
     } catch (error) {
-      console.error("Failed to upsert profile:", error);
+      debugLogger.error('Auth', "Failed to upsert profile:", error);
       throw error;
     }
   },
@@ -91,7 +92,7 @@ export const authService = {
       const { error } = await supabase.auth.refreshSession();
       if (error) throw error;
     } catch (error) {
-      console.error("Failed to refresh session:", error);
+      debugLogger.error('Auth', "Failed to refresh session:", error);
       throw error;
     }
   },
@@ -106,7 +107,7 @@ export const authService = {
       const { error } = await supabase.auth.updateUser({ data: metadata });
       if (error) throw error;
     } catch (error) {
-      console.error("Failed to update user metadata:", error);
+      debugLogger.error('Auth', "Failed to update user metadata:", error);
       throw error;
     }
   }

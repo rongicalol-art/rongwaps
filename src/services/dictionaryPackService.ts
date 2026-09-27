@@ -1,3 +1,4 @@
+import { debugLogger } from '../utils/debugLogger';
 import { DBDictionaryRow } from '../types/database';
 import { DICTIONARY_SHARD_COUNT, getDictionaryShard } from '../utils/dictionaryShard';
 import { createPackLoader } from './packLoader';
@@ -94,7 +95,7 @@ export async function fetchDictionaryRowsFromPacks(
       }
     }));
   } catch (error) {
-    console.warn('Static dictionary packs unavailable; using Supabase.', error);
+    debugLogger.warn('Cache', 'Static dictionary packs unavailable; using Supabase.', error);
   }
 
   return results;

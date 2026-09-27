@@ -1,3 +1,4 @@
+import { debugLogger } from '../utils/debugLogger';
 import { createPackLoader } from './packLoader';
 
 /**
@@ -108,7 +109,7 @@ export async function lookupSoundHook(character: string): Promise<SoundHookEntry
     const map = await soundMapPromise;
     return map.get(character) ?? null;
   } catch (error) {
-    console.warn('Sound hook pack unavailable.', error);
+    debugLogger.warn('Cache', 'Sound hook pack unavailable.', error);
     soundMapPromise = null;
     return null;
   }

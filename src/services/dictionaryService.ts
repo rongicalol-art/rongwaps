@@ -1,3 +1,4 @@
+import { debugLogger } from '../utils/debugLogger';
 import { supabase } from './supabaseClient';
 import { DBDictionaryEntry, DBDictionaryEntryRow } from '../types/database';
 import { dictionaryCache, dictionarySearchCache } from '../utils/cache';
@@ -47,7 +48,7 @@ export async function executeRemoteSearch(queryNormalized: string): Promise<unkn
       if (data) dictionarySearchCache.set(queryNormalized, data);
       return data || [];
     } catch (err) {
-      console.error('SuperSearch RPC Failed:', err);
+      debugLogger.error('Supabase', 'SuperSearch RPC Failed:', err);
       throw err;
     } finally {
       remoteSearchPromises.delete(queryNormalized);
@@ -147,7 +148,7 @@ export async function getDictionaryEntries(word: string): Promise<DBDictionaryEn
     );
 
     if (error) {
-      console.error(`Supabase error fetching dictionary entry for ${trimmedWord}:`, error);
+      debugLogger.error('Supabase', `Supabase error fetching dictionary entry for ${trimmedWord}:`, error);
       return [];
     }
 
@@ -157,7 +158,7 @@ export async function getDictionaryEntries(word: string): Promise<DBDictionaryEn
     dictionaryCache.set(trimmedWord, results);
     return results;
   } catch (err) {
-    console.error(`Unexpected error fetching dictionary entry for ${trimmedWord}:`, err);
+    debugLogger.error('Supabase', `Unexpected error fetching dictionary entry for ${trimmedWord}:`, err);
     return [];
   }
 }
@@ -215,7 +216,7 @@ export async function getDictionaryEntriesBatch(words: string[]): Promise<Map<st
       )
         .then(({ data, error }) => {
            if (error) {
-             console.error(`Supabase error fetching dictionary entries:`, error);
+             debugLogger.error('Supabase', `Supabase error fetching dictionary entries:`, error);
              return null;
            }
            return { chunk, data };
