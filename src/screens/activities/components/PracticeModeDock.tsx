@@ -7,6 +7,9 @@ import type { FlashcardViewMode } from '../../flashcard';
 import { DockSubMenu } from './DockSubMenu';
 import { PracticeStudyAction } from './PracticeStudyAction';
 
+import { cn } from '../../../utils/cn';
+import { useAppStore } from '../../../store/useAppStore';
+
 export const PRACTICE_ACTIVITIES = [
   { id: 'flashcards', label: 'Flashcards', icon: 'cards' },
   { id: 'quiz', label: 'Quiz', icon: 'quiz' },
@@ -20,7 +23,7 @@ export type PracticeActivityId = (typeof PRACTICE_ACTIVITIES)[number]['id'];
 type DockMenu = 'quiz' | 'flashcards' | 'study';
 
 export interface PracticeModeDockProps {
-  feedback: { text: string; type: 'learned' | 'review' } | null;
+  feedback?: { text: string; type: 'learned' | 'review' } | null;
   onChange: (activity: PracticeActivityId) => void;
   onOpenGrammar?: () => void;
   onOpenReading?: () => void;
@@ -52,6 +55,8 @@ export function PracticeModeDock({
   quizMode,
   value,
 }: PracticeModeDockProps) {
+  const storeFeedback = useAppStore((state) => state.swipeFeedback);
+  const activeFeedback = feedback !== undefined ? feedback : storeFeedback;
   const [openMenu, setOpenMenu] = useState<DockMenu | null>(null);
   const dockRef = useRef<HTMLDivElement>(null);
   const modesContainerRef = useRef<HTMLDivElement>(null);
@@ -77,7 +82,7 @@ export function PracticeModeDock({
           {(onOpenGrammar || onOpenReading) && (
             <PracticeStudyAction
               isOpen={openMenu === 'study'}
-              hasFeedback={Boolean(feedback)}
+              hasFeedback={Boolean(activeFeedback)}
               onToggle={() => {
                 if (onOpenGrammar && onOpenReading) {
                   setOpenMenu((current) => (current === 'study' ? null : 'study'));
@@ -96,10 +101,10 @@ export function PracticeModeDock({
 
         <div
           ref={modesContainerRef}
-          className="relative flex dock-pill min-w-0 flex-1 w-full max-w-[320px] items-center justify-center"
+          className="relative dock-pill min-w-0 flex-1 w-full max-w-[320px]"
         >
           <DockSubMenu<QuizMode>
-            open={openMenu === 'quiz' && !feedback}
+            open={openMenu === 'quiz' && !activeFeedback}
             onClose={() => setOpenMenu(null)}
             modeKey="quiz"
             containerRef={modesContainerRef}
@@ -109,7 +114,7 @@ export function PracticeModeDock({
             onSelect={onSelectQuizMode}
           />
           <DockSubMenu<FlashcardViewMode>
-            open={openMenu === 'flashcards' && !feedback}
+            open={openMenu === 'flashcards' && !activeFeedback}
             onClose={() => setOpenMenu(null)}
             modeKey="flashcards"
             containerRef={modesContainerRef}
@@ -118,46 +123,48 @@ export function PracticeModeDock({
             selectedValue={flashcardMode}
             onSelect={(mode) => onSelectFlashcardMode?.(mode)}
           />
-          <AnimatePresence mode="popLayout">
-            {feedback ? (
+          <AnimatePresence initial={false}>
+            {activeFeedback ? (
               <motion.div
                 key="feedback"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                initial={{ opacity: 0, scale: 0.94, y: 6 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.94, y: -6 }}
+                transition={{ duration: 0.16, ease: 'easeOut' }}
                 role="status"
-                className="flex dock-pill w-full items-center justify-center gap-2.5 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface px-4"
+                className="absolute inset-0 flex items-center justify-center gap-2.5 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface px-4 shadow-ambient-sm"
               >
                 <span
-                  className={`h-2 w-2 shrink-0 rounded-full ${
-                    feedback.type === 'learned' ? 'bg-feedback-success' : 'bg-feedback-danger'
-                  }`}
+                  className={cn(
+                    'h-2.5 w-2.5 shrink-0 rounded-full',
+                    activeFeedback.type === 'learned' ? 'bg-feedback-success' : 'bg-feedback-danger',
+                  )}
                 />
                 <span
-                  className={`text-[15px] font-extrabold uppercase tracking-widest ${
-                    feedback.type === 'learned'
+                  className={cn(
+                    'text-sm font-extrabold uppercase tracking-widest sm:text-[15px]',
+                    activeFeedback.type === 'learned'
                       ? 'text-feedback-success-edge'
-                      : 'text-feedback-danger-edge'
-                  }`}
+                      : 'text-feedback-danger-edge',
+                  )}
                 >
-                  {feedback.text}
+                  {activeFeedback.text}
                 </span>
               </motion.div>
             ) : (
               <motion.div
                 key="dock-icons"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                className="flex dock-pill w-full items-center justify-center"
+                initial={{ opacity: 0, scale: 0.94 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.94 }}
+                transition={{ duration: 0.16, ease: 'easeOut' }}
+                className="absolute inset-0 flex items-center justify-center"
               >
                 <SegmentedControl<PracticeActivityId>
                   value={value}
                   ariaLabel="Practice mode"
                   layoutId="practice-modes-dock-pill"
-                  className="w-full dock-pill rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-1.5 px-2.5"
+                  className="w-full h-full rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-1.5 px-2.5 shadow-ambient-sm"
                   options={PRACTICE_ACTIVITIES.map((activity) => {
                     const isQuiz = activity.id === 'quiz';
                     const isFlashcards = activity.id === 'flashcards';

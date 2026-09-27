@@ -42,11 +42,11 @@ export function useCurriculumExamples(card: Flashcard | null | undefined, enable
           (form): form is string => Boolean(form?.trim()),
         );
         const { fetchExamplesForWord } = await import('../../../services/vocabularyService');
-        const matchingCards = await fetchExamplesForWord(searchWords);
+        const matchingCards = await fetchExamplesForWord(searchWords, card.pos);
         if (!isMounted) return;
 
         const { findSmartExamplesForWord } = await import('../../../utils/courseExamples');
-        const resolved = findSmartExamplesForWord(matchingCards, searchWords, card.id);
+        const resolved = findSmartExamplesForWord(matchingCards, searchWords, card.id, card.pos);
         examplesCache.set(cacheKey, resolved);
         if (isMounted) setExamples(resolved);
       } catch (error) {
@@ -60,7 +60,7 @@ export function useCurriculumExamples(card: Flashcard | null | undefined, enable
     return () => {
       isMounted = false;
     };
-  }, [card?.front, card?.id, card?.traditional, card?.simplified, cacheKey, enabled]);
+  }, [card?.front, card?.id, card?.traditional, card?.simplified, card?.pos, cacheKey, enabled]);
 
   return { examples, isLoading };
 }

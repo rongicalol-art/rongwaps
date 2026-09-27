@@ -2348,8 +2348,8 @@
     "pattern": "Time + person + 會 + action",
     "patternColumns": [
       "Future time",
-      "Who + 會",
-      "Action"
+      "Subject + 會",
+      "Verb"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -3051,7 +3051,7 @@
       227
     ],
     "audioReference": "10-1-3",
-    "explanation": "跟 connects you with another person. Use it to do things together (“with”), to talk or ask (“to”), or to learn or borrow (“from”).",
+    "explanation": "跟 connects you with another person: do things together (\"with\"), speak or ask (\"to\"), or learn and borrow (\"from\").",
     "lessonWorld": {
       "kind": "care",
       "eyebrow": "Care message",
@@ -3833,7 +3833,7 @@
     "patternColumns": [
       "Subject",
       "跟 + Person",
-      "Action"
+      "Verb"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -4697,7 +4697,7 @@
         "patternColumns": [
           "Subject",
           "跟 + Person",
-          "Action"
+          "Verb"
         ],
         "patternRows": [
           {
@@ -4792,8 +4792,8 @@
         "explanation": "Put 跟 before the person you learn or receive something from, like “learn calligraphy from Teacher Shen” or “borrow money from a friend.”",
         "patternColumns": [
           "Subject",
-          "跟 + who",
-          "Action"
+          "跟 + Person",
+          "Verb"
         ],
         "patternRows": [
           {
@@ -5632,73 +5632,86 @@
     "pattern": "多／少 + action",
     "patternColumns": [
       "Adjustment",
-      "Action",
-      "Meaning"
+      "Verb"
     ],
     "patternAccentColumn": 0,
     "patternRows": [
       {
-        "id": "l10g3-p1",
-        "subject": [
-          {
-            "id": "l10g3-p1-s1",
-            "traditional": "多",
-            "pinyin": "duō",
-            "meaning": "more"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "l10g3-p1-g1",
-            "traditional": "喝水",
-            "pinyin": "hē shuǐ",
-            "meaning": "drink water"
-          }
-        ],
+        "id": "l10g3-r1",
+        "subject": [],
+        "grammar": [],
         "complement": [],
+        "columns": [
+          [
+            {
+              "id": "l10g3-r1-more",
+              "traditional": "多",
+              "pinyin": "duō",
+              "meaning": "more"
+            }
+          ],
+          [
+            {
+              "id": "l10g3-r1-water",
+              "traditional": "喝水",
+              "pinyin": "hē shuǐ",
+              "meaning": "drink water",
+              "suffix": "。"
+            }
+          ]
+        ],
         "english": "drink more water"
       },
       {
-        "id": "l10g3-p2",
-        "subject": [
-          {
-            "id": "l10g3-p2-s1",
-            "traditional": "多",
-            "pinyin": "duō",
-            "meaning": "more"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "l10g3-p2-g1",
-            "traditional": "休息",
-            "pinyin": "xiūxi",
-            "meaning": "rest"
-          }
-        ],
+        "id": "l10g3-r2",
+        "subject": [],
+        "grammar": [],
         "complement": [],
+        "columns": [
+          [
+            {
+              "id": "l10g3-r2-more",
+              "traditional": "多",
+              "pinyin": "duō",
+              "meaning": "more"
+            }
+          ],
+          [
+            {
+              "id": "l10g3-r2-rest",
+              "traditional": "休息",
+              "pinyin": "xiūxi",
+              "meaning": "rest",
+              "suffix": "。"
+            }
+          ]
+        ],
         "english": "rest more"
       },
       {
-        "id": "l10g3-p3",
-        "subject": [
-          {
-            "id": "l10g3-p3-s1",
-            "traditional": "少",
-            "pinyin": "shǎo",
-            "meaning": "less"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "l10g3-p3-g1",
-            "traditional": "看手機",
-            "simplified": "看手机",
-            "pinyin": "kàn shǒujī",
-            "meaning": "look at a phone"
-          }
-        ],
+        "id": "l10g3-r3",
+        "subject": [],
+        "grammar": [],
         "complement": [],
+        "columns": [
+          [
+            {
+              "id": "l10g3-r3-less",
+              "traditional": "少",
+              "pinyin": "shǎo",
+              "meaning": "less"
+            }
+          ],
+          [
+            {
+              "id": "l10g3-r3-phone",
+              "traditional": "看手機",
+              "pinyin": "kàn shǒujī",
+              "meaning": "look at the phone",
+              "suffix": "。"
+            }
+          ]
+        ],
         "english": "look at the phone less"
       }
     ],
@@ -6286,6 +6299,10 @@
         "correctFeedback": "少 changes the action 看手機.",
         "repairFeedback": "Use 少 + action."
       }
+    ],
+    "patternColumnDetails": [
+      "more or less",
+      "verb phrase"
     ]
   },
   "LESSON_TEN_GRAMMAR_TWO": {
@@ -6305,7 +6322,7 @@
       230
     ],
     "audioReference": "10-1-3",
-    "explanation": "Put your description first, add 的, and then say the person or thing you mean: Description + 的 + Noun. If you want to point out someone specific, add “this” or “that” right after 的.",
+    "explanation": "Descriptions always precede the noun: Description + 的 + Noun. To point out someone specific, place 這 (\"this\") or 那 (\"that\") right after 的.",
     "lessonWorld": {
       "kind": "care",
       "eyebrow": "Waiting room",
@@ -7967,7 +7984,7 @@
         "patternColumns": [
           "Clause",
           "的",
-          "Who"
+          "Subject"
         ],
         "patternRows": [
           {
@@ -8077,30 +8094,43 @@
         "patternRows": [
           {
             "id": "l10g2-s3-r1",
-            "subject": [
-              {
-                "id": "l10g2-s3-r1-s",
-                "traditional": "戴口罩",
-                "pinyin": "dài kǒuzhào",
-                "meaning": "wearing a mask"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "l10g2-s3-r1-g",
-                "traditional": "的",
-                "pinyin": "de",
-                "meaning": "modifying particle"
-              }
-            ],
-            "complement": [
-              {
-                "id": "l10g2-s3-r1-c",
-                "traditional": "那位醫生",
-                "simplified": "那位医生",
-                "pinyin": "nà wèi yīshēng",
-                "meaning": "that doctor"
-              }
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "l10g2-s3-r1-wear",
+                  "traditional": "戴口罩",
+                  "pinyin": "dài kǒuzhào",
+                  "meaning": "wear a mask"
+                }
+              ],
+              [
+                {
+                  "id": "l10g2-s3-r1-de",
+                  "traditional": "的",
+                  "pinyin": "de",
+                  "meaning": "connects the description to the person"
+                }
+              ],
+              [
+                {
+                  "id": "l10g2-s3-r1-that",
+                  "traditional": "那位",
+                  "pinyin": "nà wèi",
+                  "meaning": "that (person)"
+                }
+              ],
+              [
+                {
+                  "id": "l10g2-s3-r1-doctor",
+                  "traditional": "醫生",
+                  "pinyin": "yīshēng",
+                  "meaning": "doctor",
+                  "suffix": "。"
+                }
+              ]
             ],
             "english": "That doctor wearing a mask."
           }
@@ -8109,6 +8139,12 @@
           "l10g2-e7",
           "l10g2-e8",
           "l10g2-e9"
+        ],
+        "patternColumnDetails": [
+          "description",
+          "marker",
+          "that + measure word",
+          "person or thing"
         ]
       }
     ]
@@ -8918,7 +8954,7 @@
         "patternColumns": [
           "Subject",
           "跟 + Person",
-          "Action"
+          "Verb"
         ],
         "patternAccentColumn": 1,
         "patternRows": [
@@ -9782,7 +9818,7 @@
             "patternColumns": [
               "Subject",
               "跟 + Person",
-              "Action"
+              "Verb"
             ],
             "patternRows": [
               {
@@ -9877,8 +9913,8 @@
             "explanation": "Put 跟 before the person you learn or receive something from, like “learn calligraphy from Teacher Shen” or “borrow money from a friend.”",
             "patternColumns": [
               "Subject",
-              "跟 + who",
-              "Action"
+              "跟 + Person",
+              "Verb"
             ],
             "patternRows": [
               {
@@ -11599,7 +11635,7 @@
             "patternColumns": [
               "Clause",
               "的",
-              "Who"
+              "Subject"
             ],
             "patternRows": [
               {
@@ -11709,30 +11745,43 @@
             "patternRows": [
               {
                 "id": "l10g2-s3-r1",
-                "subject": [
-                  {
-                    "id": "l10g2-s3-r1-s",
-                    "traditional": "戴口罩",
-                    "pinyin": "dài kǒuzhào",
-                    "meaning": "wearing a mask"
-                  }
-                ],
-                "grammar": [
-                  {
-                    "id": "l10g2-s3-r1-g",
-                    "traditional": "的",
-                    "pinyin": "de",
-                    "meaning": "modifying particle"
-                  }
-                ],
-                "complement": [
-                  {
-                    "id": "l10g2-s3-r1-c",
-                    "traditional": "那位醫生",
-                    "simplified": "那位医生",
-                    "pinyin": "nà wèi yīshēng",
-                    "meaning": "that doctor"
-                  }
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "l10g2-s3-r1-wear",
+                      "traditional": "戴口罩",
+                      "pinyin": "dài kǒuzhào",
+                      "meaning": "wear a mask"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l10g2-s3-r1-de",
+                      "traditional": "的",
+                      "pinyin": "de",
+                      "meaning": "connects the description to the person"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l10g2-s3-r1-that",
+                      "traditional": "那位",
+                      "pinyin": "nà wèi",
+                      "meaning": "that (person)"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l10g2-s3-r1-doctor",
+                      "traditional": "醫生",
+                      "pinyin": "yīshēng",
+                      "meaning": "doctor",
+                      "suffix": "。"
+                    }
+                  ]
                 ],
                 "english": "That doctor wearing a mask."
               }
@@ -11741,6 +11790,12 @@
               "l10g2-e7",
               "l10g2-e8",
               "l10g2-e9"
+            ],
+            "patternColumnDetails": [
+              "description",
+              "marker",
+              "that + measure word",
+              "person or thing"
             ]
           }
         ]
@@ -12542,73 +12597,86 @@
         "pattern": "多／少 + action",
         "patternColumns": [
           "Adjustment",
-          "Action",
-          "Meaning"
+          "Verb"
         ],
         "patternAccentColumn": 0,
         "patternRows": [
           {
-            "id": "l10g3-p1",
-            "subject": [
-              {
-                "id": "l10g3-p1-s1",
-                "traditional": "多",
-                "pinyin": "duō",
-                "meaning": "more"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "l10g3-p1-g1",
-                "traditional": "喝水",
-                "pinyin": "hē shuǐ",
-                "meaning": "drink water"
-              }
-            ],
+            "id": "l10g3-r1",
+            "subject": [],
+            "grammar": [],
             "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "l10g3-r1-more",
+                  "traditional": "多",
+                  "pinyin": "duō",
+                  "meaning": "more"
+                }
+              ],
+              [
+                {
+                  "id": "l10g3-r1-water",
+                  "traditional": "喝水",
+                  "pinyin": "hē shuǐ",
+                  "meaning": "drink water",
+                  "suffix": "。"
+                }
+              ]
+            ],
             "english": "drink more water"
           },
           {
-            "id": "l10g3-p2",
-            "subject": [
-              {
-                "id": "l10g3-p2-s1",
-                "traditional": "多",
-                "pinyin": "duō",
-                "meaning": "more"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "l10g3-p2-g1",
-                "traditional": "休息",
-                "pinyin": "xiūxi",
-                "meaning": "rest"
-              }
-            ],
+            "id": "l10g3-r2",
+            "subject": [],
+            "grammar": [],
             "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "l10g3-r2-more",
+                  "traditional": "多",
+                  "pinyin": "duō",
+                  "meaning": "more"
+                }
+              ],
+              [
+                {
+                  "id": "l10g3-r2-rest",
+                  "traditional": "休息",
+                  "pinyin": "xiūxi",
+                  "meaning": "rest",
+                  "suffix": "。"
+                }
+              ]
+            ],
             "english": "rest more"
           },
           {
-            "id": "l10g3-p3",
-            "subject": [
-              {
-                "id": "l10g3-p3-s1",
-                "traditional": "少",
-                "pinyin": "shǎo",
-                "meaning": "less"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "l10g3-p3-g1",
-                "traditional": "看手機",
-                "simplified": "看手机",
-                "pinyin": "kàn shǒujī",
-                "meaning": "look at a phone"
-              }
-            ],
+            "id": "l10g3-r3",
+            "subject": [],
+            "grammar": [],
             "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "l10g3-r3-less",
+                  "traditional": "少",
+                  "pinyin": "shǎo",
+                  "meaning": "less"
+                }
+              ],
+              [
+                {
+                  "id": "l10g3-r3-phone",
+                  "traditional": "看手機",
+                  "pinyin": "kàn shǒujī",
+                  "meaning": "look at the phone",
+                  "suffix": "。"
+                }
+              ]
+            ],
             "english": "look at the phone less"
           }
         ],
@@ -13196,6 +13264,10 @@
             "correctFeedback": "少 changes the action 看手機.",
             "repairFeedback": "Use 少 + action."
           }
+        ],
+        "patternColumnDetails": [
+          "more or less",
+          "verb phrase"
         ]
       }
     ],
@@ -14778,8 +14850,8 @@
         "pattern": "Time + person + 會 + action",
         "patternColumns": [
           "Future time",
-          "Who + 會",
-          "Action"
+          "Subject + 會",
+          "Verb"
         ],
         "patternAccentColumn": 1,
         "patternRows": [

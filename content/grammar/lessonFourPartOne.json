@@ -16,7 +16,7 @@
       97
     ],
     "audioReference": "04-1-3",
-    "explanation": "Chinese can move a known thing to the front of the sentence. Pause, then say what the person does with it or how they feel about it. With several things up front, 都 means \"all of them\".",
+    "explanation": "Move a known topic to the front of the sentence for emphasis: Topic, then comment. When listing multiple items up front, use 都 (\"all\") before the verb.",
     "focusTerms": [
       "話題",
       "话题",
@@ -597,11 +597,14 @@
         "meaning": "how is it; what do you think"
       }
     ],
-    "pattern": "Thing in focus, person + action",
+    "pattern": "Topic, Subject + (Neg) + Verb; plural topic, Subject + 都 + (Neg) + Verb",
     "patternColumns": [
       "Topic",
-      "Who",
-      "Comment"
+      "Subject + Verb"
+    ],
+    "patternColumnDetails": [
+      "topic",
+      "S + (Neg) + V"
     ],
     "patternAccentColumn": 0,
     "discoveryLab": {
@@ -649,127 +652,7 @@
       ],
       "takeaway": "Put the thing first, pause, then say what you think or do."
     },
-    "patternRows": [
-      {
-        "id": "g1-pattern-1",
-        "subject": [
-          {
-            "id": "g1-p1-cake",
-            "traditional": "蛋糕",
-            "pinyin": "dàngāo",
-            "meaning": "cake",
-            "suffix": "，"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g1-p1-i",
-            "traditional": "我",
-            "pinyin": "wǒ",
-            "meaning": "I; me"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g1-p1-like",
-            "traditional": "喜歡",
-            "simplified": "喜欢",
-            "pinyin": "xǐhuān",
-            "meaning": "like",
-            "suffix": "。"
-          }
-        ],
-        "english": "Cake, I like."
-      },
-      {
-        "id": "g1-pattern-2",
-        "subject": [
-          {
-            "id": "g1-p2-book",
-            "traditional": "書",
-            "simplified": "书",
-            "pinyin": "shū",
-            "meaning": "book",
-            "suffix": "、"
-          },
-          {
-            "id": "g1-p2-pen",
-            "traditional": "筆",
-            "simplified": "笔",
-            "pinyin": "bǐ",
-            "meaning": "pen",
-            "suffix": "，"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g1-p2-i",
-            "traditional": "我",
-            "pinyin": "wǒ",
-            "meaning": "I; me"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g1-p2-all",
-            "traditional": "都",
-            "pinyin": "dōu",
-            "meaning": "both; all"
-          },
-          {
-            "id": "g1-p2-have",
-            "traditional": "有",
-            "pinyin": "yǒu",
-            "meaning": "have",
-            "suffix": "。"
-          }
-        ],
-        "english": "Books and pens, I have both."
-      },
-      {
-        "id": "g1-pattern-3",
-        "subject": [
-          {
-            "id": "g1-p3-two",
-            "traditional": "大的",
-            "pinyin": "dà de",
-            "meaning": "the big one",
-            "suffix": "、"
-          },
-          {
-            "id": "g1-p3-small",
-            "traditional": "小的",
-            "pinyin": "xiǎo de",
-            "meaning": "the small one",
-            "suffix": "，"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g1-p3-i",
-            "traditional": "我",
-            "pinyin": "wǒ",
-            "meaning": "I; me"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g1-p3-all",
-            "traditional": "都",
-            "pinyin": "dōu",
-            "meaning": "both; all"
-          },
-          {
-            "id": "g1-p3-want",
-            "traditional": "要",
-            "pinyin": "yào",
-            "meaning": "want",
-            "suffix": "。"
-          }
-        ],
-        "english": "The big and small ones, I want both."
-      }
-    ],
+    "patternRows": [],
     "confusion": {
       "title": "Don't mix these up",
       "items": [
@@ -1351,6 +1234,129 @@
         "repairFeedback": "When you feel the same about several things, use 都.",
         "sectionLabel": "Part 2 · All / Both with 都"
       }
+    ],
+    "subsections": [
+      {
+        "id": "b1l04-g01-sec-1",
+        "sectionNumber": 1,
+        "title": "Singular Topic",
+        "explanation": "Move the thing you are talking about to the front. The rest of the sentence comments on it.",
+        "patternColumns": [
+          "Topic",
+          "Subject + Verb"
+        ],
+        "patternColumnDetails": [
+          "topic",
+          "S + (Neg) + V"
+        ],
+        "patternRows": [
+          {
+            "id": "g1-sec1-row",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g1-p1-cake",
+                  "traditional": "蛋糕",
+                  "pinyin": "dàngāo",
+                  "meaning": "cake",
+                  "suffix": "，"
+                }
+              ],
+              [
+                {
+                  "id": "g1-p1-i",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                },
+                {
+                  "id": "g1-p1-like",
+                  "traditional": "喜歡",
+                  "simplified": "喜欢",
+                  "pinyin": "xǐhuān",
+                  "meaning": "like",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "I like cakes."
+          }
+        ],
+        "exampleIds": [
+          "g1-example-1",
+          "g1-example-2"
+        ]
+      },
+      {
+        "id": "b1l04-g01-sec-2",
+        "sectionNumber": 2,
+        "title": "Plural Topic",
+        "explanation": "When the topic has two or more things, add 都 after the subject: 我都有 means “I have them all.”",
+        "patternColumns": [
+          "Topic",
+          "Subject + 都"
+        ],
+        "patternColumnDetails": [
+          "plural topic",
+          "S + 都 + (Neg) + V"
+        ],
+        "patternRows": [
+          {
+            "id": "g1-sec2-row",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g1-p2-book",
+                  "traditional": "書",
+                  "simplified": "书",
+                  "pinyin": "shū",
+                  "meaning": "book",
+                  "suffix": "、"
+                },
+                {
+                  "id": "g1-p2-pen",
+                  "traditional": "筆",
+                  "simplified": "笔",
+                  "pinyin": "bǐ",
+                  "meaning": "pen",
+                  "suffix": "，"
+                }
+              ],
+              [
+                {
+                  "id": "g1-p2-i",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                },
+                {
+                  "id": "g1-p2-all",
+                  "traditional": "都",
+                  "pinyin": "dōu",
+                  "meaning": "both; all"
+                },
+                {
+                  "id": "g1-p2-have",
+                  "traditional": "有",
+                  "pinyin": "yǒu",
+                  "meaning": "have",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "The book and the pen, I have them both."
+          }
+        ],
+        "exampleIds": [
+          "g1-example-3"
+        ]
+      }
     ]
   },
   "LESSON_FOUR_GRAMMAR_THREE": {
@@ -1369,7 +1375,7 @@
       99
     ],
     "audioReference": "04-1-3",
-    "explanation": "Wrap a description with 太 before it and 了 after it. The frame can mean “too,” or an enthusiastic “so” or “really,” depending on context.",
+    "explanation": "Express extremes with 太 + Adjective + 了. It can mean excessive (\"too expensive\") or enthusiastic (\"so good!\").",
     "focusTerms": [
       "太",
       "了",
@@ -1952,11 +1958,16 @@
         "meaning": "how is it; what do you think"
       }
     ],
-    "pattern": "太 + description + 了",
+    "pattern": "太 + Adjective + 了",
     "patternColumns": [
       "太",
-      "Description",
+      "Adjective",
       "了"
+    ],
+    "patternColumnDetails": [
+      "too",
+      "Vs",
+      "ending"
     ],
     "patternAccentColumn": 0,
     "discoveryLab": {
@@ -2624,7 +2635,7 @@
       98
     ],
     "audioReference": "04-1-3",
-    "explanation": "First say one situation. In the next part of the sentence, put 也 before the repeated action or description. 也 tells the listener that another person or thing matches what was already said.",
+    "explanation": "Put 也 (\"also / too\") before the verb or adjective to show that another person or item matches the situation just mentioned.",
     "focusTerms": [
       "也",
       "第二個",
@@ -3203,11 +3214,18 @@
         "meaning": "how is it; what do you think"
       }
     ],
-    "pattern": "First situation, second person or thing + 也 + same result",
+    "pattern": "Subject + Verb, 也 + Verb (same or new subject)",
     "patternColumns": [
-      "Who / Thing",
+      "Subject",
+      "Verb",
       "也",
-      "Shared result"
+      "Verb"
+    ],
+    "patternColumnDetails": [
+      "S",
+      "(A)Vs / V(O)",
+      "also",
+      "(A)Vs / V(O)"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -3255,118 +3273,7 @@
       ],
       "takeaway": "New person or thing first, 也 second, shared result after it."
     },
-    "patternRows": [
-      {
-        "id": "g2-pattern-1",
-        "subject": [
-          {
-            "id": "g2-p1-she",
-            "traditional": "她",
-            "pinyin": "tā",
-            "meaning": "she; her"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g2-p1-also",
-            "traditional": "也",
-            "pinyin": "yě",
-            "meaning": "also; too"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g2-p1-very",
-            "traditional": "很",
-            "pinyin": "hěn",
-            "meaning": "marks a positive description"
-          },
-          {
-            "id": "g2-p1-cute",
-            "traditional": "可愛",
-            "simplified": "可爱",
-            "pinyin": "kě’ài",
-            "meaning": "cute",
-            "suffix": "。"
-          }
-        ],
-        "english": "She is also cute."
-      },
-      {
-        "id": "g2-pattern-2",
-        "subject": [
-          {
-            "id": "g2-p2-i",
-            "traditional": "我",
-            "pinyin": "wǒ",
-            "meaning": "I; me"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g2-p2-also",
-            "traditional": "也",
-            "pinyin": "yě",
-            "meaning": "also; too"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g2-p2-buy",
-            "traditional": "買",
-            "simplified": "买",
-            "pinyin": "mǎi",
-            "meaning": "buy"
-          },
-          {
-            "id": "g2-p2-pen",
-            "traditional": "筆",
-            "simplified": "笔",
-            "pinyin": "bǐ",
-            "meaning": "pen",
-            "suffix": "。"
-          }
-        ],
-        "english": "I also buy pens."
-      },
-      {
-        "id": "g2-pattern-3",
-        "subject": [
-          {
-            "id": "g2-p3-he",
-            "traditional": "他",
-            "pinyin": "tā",
-            "meaning": "he; him"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g2-p3-also",
-            "traditional": "也",
-            "pinyin": "yě",
-            "meaning": "also; too"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g2-p3-buy",
-            "traditional": "買",
-            "simplified": "买",
-            "pinyin": "mǎi",
-            "meaning": "buy"
-          },
-          {
-            "id": "g2-p3-book",
-            "traditional": "書",
-            "simplified": "书",
-            "pinyin": "shū",
-            "meaning": "book",
-            "suffix": "。"
-          }
-        ],
-        "english": "He also buys books."
-      }
-    ],
+    "patternRows": [],
     "confusion": {
       "title": "Don't mix these up",
       "items": [
@@ -3923,6 +3830,245 @@
         "correctFeedback": "中明 is the new matching person, so 中明 comes before 也.",
         "repairFeedback": "Use person + 也 + shared action.",
         "sectionLabel": "Part 2 · Different People"
+      }
+    ],
+    "subsections": [
+      {
+        "id": "b1l04-g02-sec-1",
+        "sectionNumber": 1,
+        "title": "When the subjects are the same",
+        "explanation": "Both parts are about the same subject. Repeat the verb or description after 也.",
+        "patternColumns": [
+          "Subject",
+          "Verb",
+          "也",
+          "Verb"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "(A)Vs / V(O)",
+          "also",
+          "(A)Vs / V(O)"
+        ],
+        "patternRows": [
+          {
+            "id": "g2-sec1-row-1",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g2-s1a-she",
+                  "traditional": "她",
+                  "pinyin": "tā",
+                  "meaning": "she; her"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s1a-pretty",
+                  "traditional": "很漂亮",
+                  "pinyin": "hěn piàoliang",
+                  "meaning": "very beautiful",
+                  "suffix": "，"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s1a-also",
+                  "traditional": "也",
+                  "pinyin": "yě",
+                  "meaning": "also; too"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s1a-cute",
+                  "traditional": "很可愛",
+                  "pinyin": "hěn kě’ài",
+                  "meaning": "very cute",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "She is very beautiful, and is also very cute."
+          },
+          {
+            "id": "g2-sec1-row-2",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g2-s1b-i",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s1b-buy-book",
+                  "traditional": "買書",
+                  "pinyin": "mǎi shū",
+                  "meaning": "buy a book",
+                  "suffix": "，"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s1b-also",
+                  "traditional": "也",
+                  "pinyin": "yě",
+                  "meaning": "also; too"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s1b-buy-pen",
+                  "traditional": "買筆",
+                  "pinyin": "mǎi bǐ",
+                  "meaning": "buy a pen",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "I bought a book, and (I bought) a pen too."
+          }
+        ],
+        "exampleIds": [
+          "g2-example-1"
+        ]
+      },
+      {
+        "id": "b1l04-g02-sec-2",
+        "sectionNumber": 2,
+        "title": "When the subjects are different",
+        "explanation": "Name the new subject first, then 也, then the repeated verb or description.",
+        "patternColumns": [
+          "Subject",
+          "Verb",
+          "Subject",
+          "也",
+          "Verb"
+        ],
+        "patternColumnDetails": [
+          "S₁",
+          "(A)Vs / V(O)",
+          "S₂",
+          "also",
+          "(A)Vs / V(O)"
+        ],
+        "patternRows": [
+          {
+            "id": "g2-sec2-row-1",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g2-s2a-this-pen",
+                  "traditional": "這枝筆",
+                  "pinyin": "zhè zhī qiānbǐ",
+                  "meaning": "this pen"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s2a-cheap",
+                  "traditional": "很便宜",
+                  "pinyin": "hěn piányi",
+                  "meaning": "very cheap",
+                  "suffix": "，"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s2a-that-pen",
+                  "traditional": "那枝筆",
+                  "pinyin": "nà zhī qiānbǐ",
+                  "meaning": "that pen"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s2a-also",
+                  "traditional": "也",
+                  "pinyin": "yě",
+                  "meaning": "also; too"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s2a-cheap-late",
+                  "traditional": "很便宜",
+                  "pinyin": "hěn piányi",
+                  "meaning": "very cheap",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "This pen is very cheap, and that pen is very cheap as well."
+          },
+          {
+            "id": "g2-sec2-row-2",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g2-s2b-i",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s2b-buy-book",
+                  "traditional": "買書",
+                  "pinyin": "mǎi shū",
+                  "meaning": "buy a book",
+                  "suffix": "，"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s2b-he",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he; him"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s2b-also",
+                  "traditional": "也",
+                  "pinyin": "yě",
+                  "meaning": "also; too"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s2b-buy-book-late",
+                  "traditional": "買書",
+                  "pinyin": "mǎi shū",
+                  "meaning": "buy a book",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "I bought a book, and he also bought one."
+          }
+        ],
+        "exampleIds": [
+          "g2-example-2",
+          "g2-example-3"
+        ]
       }
     ]
   },
@@ -4531,11 +4677,14 @@
             "meaning": "how is it; what do you think"
           }
         ],
-        "pattern": "Thing in focus, person + action",
+        "pattern": "Topic, Subject + (Neg) + Verb; plural topic, Subject + 都 + (Neg) + Verb",
         "patternColumns": [
           "Topic",
-          "Who",
-          "Comment"
+          "Subject + Verb"
+        ],
+        "patternColumnDetails": [
+          "topic",
+          "S + (Neg) + V"
         ],
         "patternAccentColumn": 0,
         "discoveryLab": {
@@ -4583,127 +4732,7 @@
           ],
           "takeaway": "Put the thing first, pause, then say what you think or do."
         },
-        "patternRows": [
-          {
-            "id": "g1-pattern-1",
-            "subject": [
-              {
-                "id": "g1-p1-cake",
-                "traditional": "蛋糕",
-                "pinyin": "dàngāo",
-                "meaning": "cake",
-                "suffix": "，"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g1-p1-i",
-                "traditional": "我",
-                "pinyin": "wǒ",
-                "meaning": "I; me"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g1-p1-like",
-                "traditional": "喜歡",
-                "simplified": "喜欢",
-                "pinyin": "xǐhuān",
-                "meaning": "like",
-                "suffix": "。"
-              }
-            ],
-            "english": "Cake, I like."
-          },
-          {
-            "id": "g1-pattern-2",
-            "subject": [
-              {
-                "id": "g1-p2-book",
-                "traditional": "書",
-                "simplified": "书",
-                "pinyin": "shū",
-                "meaning": "book",
-                "suffix": "、"
-              },
-              {
-                "id": "g1-p2-pen",
-                "traditional": "筆",
-                "simplified": "笔",
-                "pinyin": "bǐ",
-                "meaning": "pen",
-                "suffix": "，"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g1-p2-i",
-                "traditional": "我",
-                "pinyin": "wǒ",
-                "meaning": "I; me"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g1-p2-all",
-                "traditional": "都",
-                "pinyin": "dōu",
-                "meaning": "both; all"
-              },
-              {
-                "id": "g1-p2-have",
-                "traditional": "有",
-                "pinyin": "yǒu",
-                "meaning": "have",
-                "suffix": "。"
-              }
-            ],
-            "english": "Books and pens, I have both."
-          },
-          {
-            "id": "g1-pattern-3",
-            "subject": [
-              {
-                "id": "g1-p3-two",
-                "traditional": "大的",
-                "pinyin": "dà de",
-                "meaning": "the big one",
-                "suffix": "、"
-              },
-              {
-                "id": "g1-p3-small",
-                "traditional": "小的",
-                "pinyin": "xiǎo de",
-                "meaning": "the small one",
-                "suffix": "，"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g1-p3-i",
-                "traditional": "我",
-                "pinyin": "wǒ",
-                "meaning": "I; me"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g1-p3-all",
-                "traditional": "都",
-                "pinyin": "dōu",
-                "meaning": "both; all"
-              },
-              {
-                "id": "g1-p3-want",
-                "traditional": "要",
-                "pinyin": "yào",
-                "meaning": "want",
-                "suffix": "。"
-              }
-            ],
-            "english": "The big and small ones, I want both."
-          }
-        ],
+        "patternRows": [],
         "confusion": {
           "title": "Don't mix these up",
           "items": [
@@ -5284,6 +5313,129 @@
             "correctFeedback": "Three gifts come first; 都 means \"all three\".",
             "repairFeedback": "When you feel the same about several things, use 都.",
             "sectionLabel": "Part 2 · All / Both with 都"
+          }
+        ],
+        "subsections": [
+          {
+            "id": "b1l04-g01-sec-1",
+            "sectionNumber": 1,
+            "title": "Singular Topic",
+            "explanation": "Move the thing you are talking about to the front. The rest of the sentence comments on it.",
+            "patternColumns": [
+              "Topic",
+              "Subject + Verb"
+            ],
+            "patternColumnDetails": [
+              "topic",
+              "S + (Neg) + V"
+            ],
+            "patternRows": [
+              {
+                "id": "g1-sec1-row",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g1-p1-cake",
+                      "traditional": "蛋糕",
+                      "pinyin": "dàngāo",
+                      "meaning": "cake",
+                      "suffix": "，"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g1-p1-i",
+                      "traditional": "我",
+                      "pinyin": "wǒ",
+                      "meaning": "I; me"
+                    },
+                    {
+                      "id": "g1-p1-like",
+                      "traditional": "喜歡",
+                      "simplified": "喜欢",
+                      "pinyin": "xǐhuān",
+                      "meaning": "like",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "I like cakes."
+              }
+            ],
+            "exampleIds": [
+              "g1-example-1",
+              "g1-example-2"
+            ]
+          },
+          {
+            "id": "b1l04-g01-sec-2",
+            "sectionNumber": 2,
+            "title": "Plural Topic",
+            "explanation": "When the topic has two or more things, add 都 after the subject: 我都有 means “I have them all.”",
+            "patternColumns": [
+              "Topic",
+              "Subject + 都"
+            ],
+            "patternColumnDetails": [
+              "plural topic",
+              "S + 都 + (Neg) + V"
+            ],
+            "patternRows": [
+              {
+                "id": "g1-sec2-row",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g1-p2-book",
+                      "traditional": "書",
+                      "simplified": "书",
+                      "pinyin": "shū",
+                      "meaning": "book",
+                      "suffix": "、"
+                    },
+                    {
+                      "id": "g1-p2-pen",
+                      "traditional": "筆",
+                      "simplified": "笔",
+                      "pinyin": "bǐ",
+                      "meaning": "pen",
+                      "suffix": "，"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g1-p2-i",
+                      "traditional": "我",
+                      "pinyin": "wǒ",
+                      "meaning": "I; me"
+                    },
+                    {
+                      "id": "g1-p2-all",
+                      "traditional": "都",
+                      "pinyin": "dōu",
+                      "meaning": "both; all"
+                    },
+                    {
+                      "id": "g1-p2-have",
+                      "traditional": "有",
+                      "pinyin": "yǒu",
+                      "meaning": "have",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "The book and the pen, I have them both."
+              }
+            ],
+            "exampleIds": [
+              "g1-example-3"
+            ]
           }
         ]
       },
@@ -5882,11 +6034,18 @@
             "meaning": "how is it; what do you think"
           }
         ],
-        "pattern": "First situation, second person or thing + 也 + same result",
+        "pattern": "Subject + Verb, 也 + Verb (same or new subject)",
         "patternColumns": [
-          "Who / Thing",
+          "Subject",
+          "Verb",
           "也",
-          "Shared result"
+          "Verb"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "(A)Vs / V(O)",
+          "also",
+          "(A)Vs / V(O)"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
@@ -5934,118 +6093,7 @@
           ],
           "takeaway": "New person or thing first, 也 second, shared result after it."
         },
-        "patternRows": [
-          {
-            "id": "g2-pattern-1",
-            "subject": [
-              {
-                "id": "g2-p1-she",
-                "traditional": "她",
-                "pinyin": "tā",
-                "meaning": "she; her"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g2-p1-also",
-                "traditional": "也",
-                "pinyin": "yě",
-                "meaning": "also; too"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g2-p1-very",
-                "traditional": "很",
-                "pinyin": "hěn",
-                "meaning": "marks a positive description"
-              },
-              {
-                "id": "g2-p1-cute",
-                "traditional": "可愛",
-                "simplified": "可爱",
-                "pinyin": "kě’ài",
-                "meaning": "cute",
-                "suffix": "。"
-              }
-            ],
-            "english": "She is also cute."
-          },
-          {
-            "id": "g2-pattern-2",
-            "subject": [
-              {
-                "id": "g2-p2-i",
-                "traditional": "我",
-                "pinyin": "wǒ",
-                "meaning": "I; me"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g2-p2-also",
-                "traditional": "也",
-                "pinyin": "yě",
-                "meaning": "also; too"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g2-p2-buy",
-                "traditional": "買",
-                "simplified": "买",
-                "pinyin": "mǎi",
-                "meaning": "buy"
-              },
-              {
-                "id": "g2-p2-pen",
-                "traditional": "筆",
-                "simplified": "笔",
-                "pinyin": "bǐ",
-                "meaning": "pen",
-                "suffix": "。"
-              }
-            ],
-            "english": "I also buy pens."
-          },
-          {
-            "id": "g2-pattern-3",
-            "subject": [
-              {
-                "id": "g2-p3-he",
-                "traditional": "他",
-                "pinyin": "tā",
-                "meaning": "he; him"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g2-p3-also",
-                "traditional": "也",
-                "pinyin": "yě",
-                "meaning": "also; too"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g2-p3-buy",
-                "traditional": "買",
-                "simplified": "买",
-                "pinyin": "mǎi",
-                "meaning": "buy"
-              },
-              {
-                "id": "g2-p3-book",
-                "traditional": "書",
-                "simplified": "书",
-                "pinyin": "shū",
-                "meaning": "book",
-                "suffix": "。"
-              }
-            ],
-            "english": "He also buys books."
-          }
-        ],
+        "patternRows": [],
         "confusion": {
           "title": "Don't mix these up",
           "items": [
@@ -6602,6 +6650,245 @@
             "correctFeedback": "中明 is the new matching person, so 中明 comes before 也.",
             "repairFeedback": "Use person + 也 + shared action.",
             "sectionLabel": "Part 2 · Different People"
+          }
+        ],
+        "subsections": [
+          {
+            "id": "b1l04-g02-sec-1",
+            "sectionNumber": 1,
+            "title": "When the subjects are the same",
+            "explanation": "Both parts are about the same subject. Repeat the verb or description after 也.",
+            "patternColumns": [
+              "Subject",
+              "Verb",
+              "也",
+              "Verb"
+            ],
+            "patternColumnDetails": [
+              "S",
+              "(A)Vs / V(O)",
+              "also",
+              "(A)Vs / V(O)"
+            ],
+            "patternRows": [
+              {
+                "id": "g2-sec1-row-1",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g2-s1a-she",
+                      "traditional": "她",
+                      "pinyin": "tā",
+                      "meaning": "she; her"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s1a-pretty",
+                      "traditional": "很漂亮",
+                      "pinyin": "hěn piàoliang",
+                      "meaning": "very beautiful",
+                      "suffix": "，"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s1a-also",
+                      "traditional": "也",
+                      "pinyin": "yě",
+                      "meaning": "also; too"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s1a-cute",
+                      "traditional": "很可愛",
+                      "pinyin": "hěn kě’ài",
+                      "meaning": "very cute",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "She is very beautiful, and is also very cute."
+              },
+              {
+                "id": "g2-sec1-row-2",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g2-s1b-i",
+                      "traditional": "我",
+                      "pinyin": "wǒ",
+                      "meaning": "I; me"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s1b-buy-book",
+                      "traditional": "買書",
+                      "pinyin": "mǎi shū",
+                      "meaning": "buy a book",
+                      "suffix": "，"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s1b-also",
+                      "traditional": "也",
+                      "pinyin": "yě",
+                      "meaning": "also; too"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s1b-buy-pen",
+                      "traditional": "買筆",
+                      "pinyin": "mǎi bǐ",
+                      "meaning": "buy a pen",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "I bought a book, and (I bought) a pen too."
+              }
+            ],
+            "exampleIds": [
+              "g2-example-1"
+            ]
+          },
+          {
+            "id": "b1l04-g02-sec-2",
+            "sectionNumber": 2,
+            "title": "When the subjects are different",
+            "explanation": "Name the new subject first, then 也, then the repeated verb or description.",
+            "patternColumns": [
+              "Subject",
+              "Verb",
+              "Subject",
+              "也",
+              "Verb"
+            ],
+            "patternColumnDetails": [
+              "S₁",
+              "(A)Vs / V(O)",
+              "S₂",
+              "also",
+              "(A)Vs / V(O)"
+            ],
+            "patternRows": [
+              {
+                "id": "g2-sec2-row-1",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g2-s2a-this-pen",
+                      "traditional": "這枝筆",
+                      "pinyin": "zhè zhī qiānbǐ",
+                      "meaning": "this pen"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s2a-cheap",
+                      "traditional": "很便宜",
+                      "pinyin": "hěn piányi",
+                      "meaning": "very cheap",
+                      "suffix": "，"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s2a-that-pen",
+                      "traditional": "那枝筆",
+                      "pinyin": "nà zhī qiānbǐ",
+                      "meaning": "that pen"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s2a-also",
+                      "traditional": "也",
+                      "pinyin": "yě",
+                      "meaning": "also; too"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s2a-cheap-late",
+                      "traditional": "很便宜",
+                      "pinyin": "hěn piányi",
+                      "meaning": "very cheap",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "This pen is very cheap, and that pen is very cheap as well."
+              },
+              {
+                "id": "g2-sec2-row-2",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g2-s2b-i",
+                      "traditional": "我",
+                      "pinyin": "wǒ",
+                      "meaning": "I; me"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s2b-buy-book",
+                      "traditional": "買書",
+                      "pinyin": "mǎi shū",
+                      "meaning": "buy a book",
+                      "suffix": "，"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s2b-he",
+                      "traditional": "他",
+                      "pinyin": "tā",
+                      "meaning": "he; him"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s2b-also",
+                      "traditional": "也",
+                      "pinyin": "yě",
+                      "meaning": "also; too"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s2b-buy-book-late",
+                      "traditional": "買書",
+                      "pinyin": "mǎi shū",
+                      "meaning": "buy a book",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "I bought a book, and he also bought one."
+              }
+            ],
+            "exampleIds": [
+              "g2-example-2",
+              "g2-example-3"
+            ]
           }
         ]
       },
@@ -7204,11 +7491,16 @@
             "meaning": "how is it; what do you think"
           }
         ],
-        "pattern": "太 + description + 了",
+        "pattern": "太 + Adjective + 了",
         "patternColumns": [
           "太",
-          "Description",
+          "Adjective",
           "了"
+        ],
+        "patternColumnDetails": [
+          "too",
+          "Vs",
+          "ending"
         ],
         "patternAccentColumn": 0,
         "discoveryLab": {

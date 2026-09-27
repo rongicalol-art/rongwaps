@@ -661,11 +661,16 @@
         "meaning": "all; both"
       }
     ],
-    "pattern": "Place + 有 / 沒有 + thing",
+    "pattern": "Place + 有／沒有 + noun",
     "patternColumns": [
       "Place",
       "有 / 沒有",
-      "Thing"
+      "Noun"
+    ],
+    "patternColumnDetails": [
+      "PW",
+      "have or not",
+      "N"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -1417,7 +1422,7 @@
       125
     ],
     "audioReference": "05-2-3",
-    "explanation": "A direction word needs an anchor word. Say the thing first, then add 上面, 下面, 裡面, 外面, 旁邊, 前面, or 後面. Together they make one place name.",
+    "explanation": "Form locations with Reference Object + Position Word (桌子上面, 房間裡面, 學校旁邊). Together they act as a single place name.",
     "focusTerms": [
       "名詞",
       "名词",
@@ -2068,11 +2073,16 @@
         "meaning": "all; both"
       }
     ],
-    "pattern": "Thing + 在 + anchor noun + direction",
+    "pattern": "Subject +（不）在 + place word; Subject + 在 + place word + verb",
     "patternColumns": [
-      "Thing",
+      "Subject",
       "在",
-      "Anchor"
+      "Place word"
+    ],
+    "patternColumnDetails": [
+      "S",
+      "(Neg) 在",
+      "N + Direction"
     ],
     "patternAccentColumn": 2,
     "discoveryLab": {
@@ -2152,133 +2162,7 @@
         }
       ]
     },
-    "patternRows": [
-      {
-        "id": "g4-p1",
-        "subject": [
-          {
-            "id": "g4-p1-your",
-            "traditional": "你的",
-            "pinyin": "nǐ de",
-            "meaning": "yours; your"
-          },
-          {
-            "id": "g4-p1-book",
-            "traditional": "書",
-            "simplified": "书",
-            "pinyin": "shū",
-            "meaning": "book"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g4-p1-zai",
-            "traditional": "在",
-            "pinyin": "zài",
-            "meaning": "be located; at"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g4-p1-table",
-            "traditional": "桌子",
-            "pinyin": "zhuōzi",
-            "meaning": "table"
-          },
-          {
-            "id": "g4-p1-top",
-            "traditional": "上面",
-            "pinyin": "shàngmiàn",
-            "meaning": "on; above",
-            "suffix": "。"
-          }
-        ],
-        "english": "Your book is on the table."
-      },
-      {
-        "id": "g4-p2",
-        "subject": [
-          {
-            "id": "g4-p2-restaurant",
-            "traditional": "餐廳",
-            "simplified": "餐厅",
-            "pinyin": "cāntīng",
-            "meaning": "restaurant"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g4-p2-not",
-            "traditional": "不在",
-            "pinyin": "bú zài",
-            "meaning": "is not located at"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g4-p2-school",
-            "traditional": "學校",
-            "simplified": "学校",
-            "pinyin": "xuéxiào",
-            "meaning": "school"
-          },
-          {
-            "id": "g4-p2-side",
-            "traditional": "旁邊",
-            "simplified": "旁边",
-            "pinyin": "pángbiān",
-            "meaning": "beside; next to",
-            "suffix": "。"
-          }
-        ],
-        "english": "The restaurant is not next to the school."
-      },
-      {
-        "id": "g4-p3",
-        "subject": [
-          {
-            "id": "g4-p3-mom",
-            "traditional": "媽媽",
-            "simplified": "妈妈",
-            "pinyin": "māma",
-            "meaning": "mom"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g4-p3-zai",
-            "traditional": "在",
-            "pinyin": "zài",
-            "meaning": "be located; at"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g4-p3-kitchen",
-            "traditional": "廚房",
-            "simplified": "厨房",
-            "pinyin": "chúfáng",
-            "meaning": "kitchen"
-          },
-          {
-            "id": "g4-p3-inside",
-            "traditional": "裡面",
-            "simplified": "里面",
-            "pinyin": "lǐmiàn",
-            "meaning": "inside"
-          },
-          {
-            "id": "g4-p3-cook",
-            "traditional": "做飯",
-            "simplified": "做饭",
-            "pinyin": "zuòfàn",
-            "meaning": "cook",
-            "suffix": "。"
-          }
-        ],
-        "english": "Mom cooks in the kitchen."
-      }
-    ],
+    "patternRows": [],
     "confusion": {
       "title": "Don't mix these up",
       "items": [
@@ -2917,6 +2801,238 @@
         ],
         "correctFeedback": "The picture shows 睡覺. The question gives the place.",
         "repairFeedback": "Keep 在圖書館裡面 before 睡覺."
+      }
+    ],
+    "subsections": [
+      {
+        "id": "b1l05-g04-sec-1",
+        "sectionNumber": 1,
+        "title": "Subject +（不）在 + Place word",
+        "explanation": "This form says where something is. Use 在 or 不在 before the place word.",
+        "patternColumns": [
+          "Subject",
+          "在",
+          "Place word"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "(Neg) 在",
+          "N + Direction"
+        ],
+        "patternRows": [
+          {
+            "id": "g4-sec1-row-1",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-p1-your",
+                  "traditional": "你的",
+                  "pinyin": "nǐ de",
+                  "meaning": "yours; your"
+                },
+                {
+                  "id": "g4-p1-book",
+                  "traditional": "書",
+                  "simplified": "书",
+                  "pinyin": "shū",
+                  "meaning": "book"
+                }
+              ],
+              [
+                {
+                  "id": "g4-p1-zai",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "be located; at"
+                }
+              ],
+              [
+                {
+                  "id": "g4-p1-table",
+                  "traditional": "桌子",
+                  "pinyin": "zhuōzi",
+                  "meaning": "table"
+                },
+                {
+                  "id": "g4-p1-top",
+                  "traditional": "上面",
+                  "pinyin": "shàngmiàn",
+                  "meaning": "on; above",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "Your book is on the table."
+          },
+          {
+            "id": "g4-sec1-row-2",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-p2-restaurant",
+                  "traditional": "餐廳",
+                  "simplified": "餐厅",
+                  "pinyin": "cāntīng",
+                  "meaning": "restaurant"
+                }
+              ],
+              [
+                {
+                  "id": "g4-p2-not",
+                  "traditional": "不在",
+                  "pinyin": "bú zài",
+                  "meaning": "is not located at"
+                }
+              ],
+              [
+                {
+                  "id": "g4-p2-school",
+                  "traditional": "學校",
+                  "simplified": "学校",
+                  "pinyin": "xuéxiào",
+                  "meaning": "school"
+                },
+                {
+                  "id": "g4-p2-side",
+                  "traditional": "旁邊",
+                  "simplified": "旁边",
+                  "pinyin": "pángbiān",
+                  "meaning": "beside; next to",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "That restaurant is not next to the school."
+          }
+        ],
+        "exampleIds": [
+          "g4-e1",
+          "g4-e2",
+          "g4-e3"
+        ]
+      },
+      {
+        "id": "b1l05-g04-sec-2",
+        "sectionNumber": 2,
+        "title": "Subject + 在 + Place word + Verb",
+        "explanation": "This form says where an action happens. The place word comes before the verb.",
+        "patternColumns": [
+          "Subject",
+          "在",
+          "Place word",
+          "Verb"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "在",
+          "N + Direction",
+          "V(O)"
+        ],
+        "patternRows": [
+          {
+            "id": "g4-sec2-row-1",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-s2-mom",
+                  "traditional": "媽媽",
+                  "pinyin": "māma",
+                  "meaning": "mom"
+                }
+              ],
+              [
+                {
+                  "id": "g4-s2-zai",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "be located; at"
+                }
+              ],
+              [
+                {
+                  "id": "g4-s2-kitchen",
+                  "traditional": "廚房",
+                  "pinyin": "chúfáng",
+                  "meaning": "kitchen"
+                },
+                {
+                  "id": "g4-s2-inside",
+                  "traditional": "裡面",
+                  "pinyin": "lǐmiàn",
+                  "meaning": "inside"
+                }
+              ],
+              [
+                {
+                  "id": "g4-s2-cook",
+                  "traditional": "做飯",
+                  "pinyin": "zuòfàn",
+                  "meaning": "cook",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "Mom is cooking in the kitchen."
+          },
+          {
+            "id": "g4-sec2-row-2",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-s2-they",
+                  "traditional": "他們",
+                  "pinyin": "tāmen",
+                  "meaning": "they; them"
+                }
+              ],
+              [
+                {
+                  "id": "g4-s2-zai-2",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "be located; at"
+                }
+              ],
+              [
+                {
+                  "id": "g4-s2-school",
+                  "traditional": "學校",
+                  "pinyin": "xuéxiào",
+                  "meaning": "school"
+                },
+                {
+                  "id": "g4-s2-front",
+                  "traditional": "前面",
+                  "pinyin": "qiánmiàn",
+                  "meaning": "in front of"
+                }
+              ],
+              [
+                {
+                  "id": "g4-s2-play",
+                  "traditional": "玩",
+                  "pinyin": "wán",
+                  "meaning": "hang out; play",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "They are hanging out in front of the school."
+          }
+        ],
+        "exampleIds": []
       }
     ]
   },
@@ -3594,11 +3710,16 @@
             "meaning": "all; both"
           }
         ],
-        "pattern": "Thing + 在 + anchor noun + direction",
+        "pattern": "Subject +（不）在 + place word; Subject + 在 + place word + verb",
         "patternColumns": [
-          "Thing",
+          "Subject",
           "在",
-          "Anchor"
+          "Place word"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "(Neg) 在",
+          "N + Direction"
         ],
         "patternAccentColumn": 2,
         "discoveryLab": {
@@ -3678,133 +3799,7 @@
             }
           ]
         },
-        "patternRows": [
-          {
-            "id": "g4-p1",
-            "subject": [
-              {
-                "id": "g4-p1-your",
-                "traditional": "你的",
-                "pinyin": "nǐ de",
-                "meaning": "yours; your"
-              },
-              {
-                "id": "g4-p1-book",
-                "traditional": "書",
-                "simplified": "书",
-                "pinyin": "shū",
-                "meaning": "book"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g4-p1-zai",
-                "traditional": "在",
-                "pinyin": "zài",
-                "meaning": "be located; at"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g4-p1-table",
-                "traditional": "桌子",
-                "pinyin": "zhuōzi",
-                "meaning": "table"
-              },
-              {
-                "id": "g4-p1-top",
-                "traditional": "上面",
-                "pinyin": "shàngmiàn",
-                "meaning": "on; above",
-                "suffix": "。"
-              }
-            ],
-            "english": "Your book is on the table."
-          },
-          {
-            "id": "g4-p2",
-            "subject": [
-              {
-                "id": "g4-p2-restaurant",
-                "traditional": "餐廳",
-                "simplified": "餐厅",
-                "pinyin": "cāntīng",
-                "meaning": "restaurant"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g4-p2-not",
-                "traditional": "不在",
-                "pinyin": "bú zài",
-                "meaning": "is not located at"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g4-p2-school",
-                "traditional": "學校",
-                "simplified": "学校",
-                "pinyin": "xuéxiào",
-                "meaning": "school"
-              },
-              {
-                "id": "g4-p2-side",
-                "traditional": "旁邊",
-                "simplified": "旁边",
-                "pinyin": "pángbiān",
-                "meaning": "beside; next to",
-                "suffix": "。"
-              }
-            ],
-            "english": "The restaurant is not next to the school."
-          },
-          {
-            "id": "g4-p3",
-            "subject": [
-              {
-                "id": "g4-p3-mom",
-                "traditional": "媽媽",
-                "simplified": "妈妈",
-                "pinyin": "māma",
-                "meaning": "mom"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g4-p3-zai",
-                "traditional": "在",
-                "pinyin": "zài",
-                "meaning": "be located; at"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g4-p3-kitchen",
-                "traditional": "廚房",
-                "simplified": "厨房",
-                "pinyin": "chúfáng",
-                "meaning": "kitchen"
-              },
-              {
-                "id": "g4-p3-inside",
-                "traditional": "裡面",
-                "simplified": "里面",
-                "pinyin": "lǐmiàn",
-                "meaning": "inside"
-              },
-              {
-                "id": "g4-p3-cook",
-                "traditional": "做飯",
-                "simplified": "做饭",
-                "pinyin": "zuòfàn",
-                "meaning": "cook",
-                "suffix": "。"
-              }
-            ],
-            "english": "Mom cooks in the kitchen."
-          }
-        ],
+        "patternRows": [],
         "confusion": {
           "title": "Don't mix these up",
           "items": [
@@ -4443,6 +4438,238 @@
             ],
             "correctFeedback": "The picture shows 睡覺. The question gives the place.",
             "repairFeedback": "Keep 在圖書館裡面 before 睡覺."
+          }
+        ],
+        "subsections": [
+          {
+            "id": "b1l05-g04-sec-1",
+            "sectionNumber": 1,
+            "title": "Subject +（不）在 + Place word",
+            "explanation": "This form says where something is. Use 在 or 不在 before the place word.",
+            "patternColumns": [
+              "Subject",
+              "在",
+              "Place word"
+            ],
+            "patternColumnDetails": [
+              "S",
+              "(Neg) 在",
+              "N + Direction"
+            ],
+            "patternRows": [
+              {
+                "id": "g4-sec1-row-1",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-p1-your",
+                      "traditional": "你的",
+                      "pinyin": "nǐ de",
+                      "meaning": "yours; your"
+                    },
+                    {
+                      "id": "g4-p1-book",
+                      "traditional": "書",
+                      "simplified": "书",
+                      "pinyin": "shū",
+                      "meaning": "book"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-p1-zai",
+                      "traditional": "在",
+                      "pinyin": "zài",
+                      "meaning": "be located; at"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-p1-table",
+                      "traditional": "桌子",
+                      "pinyin": "zhuōzi",
+                      "meaning": "table"
+                    },
+                    {
+                      "id": "g4-p1-top",
+                      "traditional": "上面",
+                      "pinyin": "shàngmiàn",
+                      "meaning": "on; above",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "Your book is on the table."
+              },
+              {
+                "id": "g4-sec1-row-2",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-p2-restaurant",
+                      "traditional": "餐廳",
+                      "simplified": "餐厅",
+                      "pinyin": "cāntīng",
+                      "meaning": "restaurant"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-p2-not",
+                      "traditional": "不在",
+                      "pinyin": "bú zài",
+                      "meaning": "is not located at"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-p2-school",
+                      "traditional": "學校",
+                      "simplified": "学校",
+                      "pinyin": "xuéxiào",
+                      "meaning": "school"
+                    },
+                    {
+                      "id": "g4-p2-side",
+                      "traditional": "旁邊",
+                      "simplified": "旁边",
+                      "pinyin": "pángbiān",
+                      "meaning": "beside; next to",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "That restaurant is not next to the school."
+              }
+            ],
+            "exampleIds": [
+              "g4-e1",
+              "g4-e2",
+              "g4-e3"
+            ]
+          },
+          {
+            "id": "b1l05-g04-sec-2",
+            "sectionNumber": 2,
+            "title": "Subject + 在 + Place word + Verb",
+            "explanation": "This form says where an action happens. The place word comes before the verb.",
+            "patternColumns": [
+              "Subject",
+              "在",
+              "Place word",
+              "Verb"
+            ],
+            "patternColumnDetails": [
+              "S",
+              "在",
+              "N + Direction",
+              "V(O)"
+            ],
+            "patternRows": [
+              {
+                "id": "g4-sec2-row-1",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-s2-mom",
+                      "traditional": "媽媽",
+                      "pinyin": "māma",
+                      "meaning": "mom"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-s2-zai",
+                      "traditional": "在",
+                      "pinyin": "zài",
+                      "meaning": "be located; at"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-s2-kitchen",
+                      "traditional": "廚房",
+                      "pinyin": "chúfáng",
+                      "meaning": "kitchen"
+                    },
+                    {
+                      "id": "g4-s2-inside",
+                      "traditional": "裡面",
+                      "pinyin": "lǐmiàn",
+                      "meaning": "inside"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-s2-cook",
+                      "traditional": "做飯",
+                      "pinyin": "zuòfàn",
+                      "meaning": "cook",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "Mom is cooking in the kitchen."
+              },
+              {
+                "id": "g4-sec2-row-2",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-s2-they",
+                      "traditional": "他們",
+                      "pinyin": "tāmen",
+                      "meaning": "they; them"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-s2-zai-2",
+                      "traditional": "在",
+                      "pinyin": "zài",
+                      "meaning": "be located; at"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-s2-school",
+                      "traditional": "學校",
+                      "pinyin": "xuéxiào",
+                      "meaning": "school"
+                    },
+                    {
+                      "id": "g4-s2-front",
+                      "traditional": "前面",
+                      "pinyin": "qiánmiàn",
+                      "meaning": "in front of"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-s2-play",
+                      "traditional": "玩",
+                      "pinyin": "wán",
+                      "meaning": "hang out; play",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "They are hanging out in front of the school."
+              }
+            ],
+            "exampleIds": []
           }
         ]
       },
@@ -5108,11 +5335,16 @@
             "meaning": "all; both"
           }
         ],
-        "pattern": "Place + 有 / 沒有 + thing",
+        "pattern": "Place + 有／沒有 + noun",
         "patternColumns": [
           "Place",
           "有 / 沒有",
-          "Thing"
+          "Noun"
+        ],
+        "patternColumnDetails": [
+          "PW",
+          "have or not",
+          "N"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {

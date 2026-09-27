@@ -1,10 +1,12 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import type { GrammarExerciseQuestion } from '../../../types/models';
 import {
+  collectPendingTextBlanks,
   evaluateGrammarPlacements,
   evaluateGrammarTextResponses,
   getGrammarExerciseTiles,
 } from '../../../utils/grammarExercise';
+import { gradeGrammarAnswer } from '../../../services/answerGradingService';
 
 type ExerciseStatus = 'idle' | 'needs-repair' | 'complete';
 type ResponseMode = 'tiles' | 'text';
@@ -20,6 +22,11 @@ export function useDragBlankExercise(
   const [wrongBlankIds, setWrongBlankIds] = useState<string[]>([]);
   const [hasChecked, setHasChecked] = useState(false);
   const [status, setStatus] = useState<ExerciseStatus>('idle');
+  const checkToken = useRef(0);
+
+  const invalidateChecks = () => {
+    checkToken.current += 1;
+  };
 
   const tileQuestions = useMemo(
     () => questions.filter((question) => (question.responseMode ?? defaultResponseMode) === 'tiles'),
@@ -50,6 +57,7 @@ export function useDragBlankExercise(
 
   const placeTile = (blankId: string, tileId: string) => {
     if (correctBlankIds.includes(blankId)) return;
+    invalidateChecks();
     setPlacements((current) => {
       const next = Object.fromEntries(
         Object.entries(current).filter(([, placedTileId]) => placedTileId !== tileId),
@@ -65,6 +73,7 @@ export function useDragBlankExercise(
 
   const removeTile = (blankId: string) => {
     if (correctBlankIds.includes(blankId)) return;
+    invalidateChecks();
     setPlacements((current) => {
       return Object.fromEntries(
         Object.entries(current).filter(([id]) => id !== blankId),
@@ -75,12 +84,15 @@ export function useDragBlankExercise(
   };
 
   const setTextResponse = (blankId: string, value: string) => {
+    invalidateChecks();
     setTextResponses((current) => ({ ...current, [blankId]: value }));
     setHasChecked(false);
     setStatus('idle');
   };
 
-  const checkAnswers = () => {
+  const checkAnswers = async () => {
+    const token = checkToken.current + 1;
+    checkToken.current = token;
     const tileEvaluation = evaluateGrammarPlacements(tileQuestions, placements);
     const textEvaluation = evaluateGrammarTextResponses(textQuestions, textResponses);
     const nextCorrectBlankIds = [
@@ -96,9 +108,28 @@ export function useDragBlankExercise(
     setWrongBlankIds(nextWrongBlankIds);
     setHasChecked(true);
     setStatus(nextWrongBlankIds.length === 0 ? 'complete' : 'needs-repair');
+
+    const pending = collectPendingTextBlanks(textQuestions, textResponses, textEvaluation.wrongBlankIds);
+    if (pending.length === 0) return;
+    const graded = await Promise.all(pending.map(async (blank) => ({
+      blankId: blank.blankId,
+      result: await gradeGrammarAnswer({
+        reference: blank.reference,
+        answer: blank.response,
+        accepted: blank.accepted,
+      }),
+    })));
+    if (checkToken.current !== token) return;
+    const recovered = graded.filter((entry) => entry.result?.pass).map((entry) => entry.blankId);
+    if (recovered.length === 0) return;
+    const remainingWrong = nextWrongBlankIds.filter((id) => !recovered.includes(id));
+    setCorrectBlankIds([...nextCorrectBlankIds, ...recovered]);
+    setWrongBlankIds(remainingWrong);
+    setStatus(remainingWrong.length === 0 ? 'complete' : 'needs-repair');
   };
 
   const returnIncorrectTiles = () => {
+    invalidateChecks();
     setPlacements((current) => Object.fromEntries(
       Object.entries(current).filter(([blankId]) => !wrongBlankIds.includes(blankId)),
     ));
@@ -112,6 +143,7 @@ export function useDragBlankExercise(
   };
 
   const resetExercise = () => {
+    invalidateChecks();
     setPlacements({});
     setTextResponses({});
     setSelectedTileId(null);

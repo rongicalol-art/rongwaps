@@ -22,6 +22,8 @@ interface ReaderSettingsPopoverProps {
   onToggleMeaning: () => void;
   showHoverDefinitions?: boolean;
   onToggleHoverDefinitions?: () => void;
+  size?: 'sm' | 'md' | 'lg';
+  iconSize?: number;
 }
 
 export function ReaderSettingsPopover({
@@ -35,6 +37,8 @@ export function ReaderSettingsPopover({
   onToggleMeaning,
   showHoverDefinitions = true,
   onToggleHoverDefinitions,
+  size = 'lg',
+  iconSize = 25,
 }: ReaderSettingsPopoverProps) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -48,9 +52,9 @@ export function ReaderSettingsPopover({
   return (
     <div ref={containerRef} className="relative">
       <IconActionButton
-        size="md"
+        size={size}
         onClick={() => setIsOpen((open) => !open)}
-        icon={<AppIcon name="settings" size={20} />}
+        icon={<AppIcon name="settings" size={iconSize} />}
         label="Reading settings"
         title="Reading settings"
         aria-haspopup="dialog"

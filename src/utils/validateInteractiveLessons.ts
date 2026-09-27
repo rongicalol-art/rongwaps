@@ -1,7 +1,7 @@
 import { INTERACTIVE_GRAMMAR_PARTS } from '../data/interactiveGrammarPages';
 import { ALL_READINGS, READING_LESSON_MAX, READING_LESSON_MIN } from '../data/readings';
 import { GRAMMAR_USAGE_RULES } from '../data/grammarUsageRules';
-import { grammarHeaderWeight, grammarHeaderWordCount } from './grammarPatternLayout';
+import { getPatternRowGroups, grammarHeaderWeight, grammarHeaderWordCount } from './grammarPatternLayout';
 import type { ReadingRecord } from '../types/models';
 
 export interface LessonValidationIssue {
@@ -53,7 +53,11 @@ export function validateInteractiveLessons(): LessonValidationIssue[] {
       if (!page.audioReference.trim()) {
         issues.push({ location: pageLocation, message: 'Audio reference is required.' });
       }
-      if (page.examples.length === 0 || page.questions.length === 0) {
+      // The number-system reference page teaches with a complete place-value
+      // table plus the number lab; the printed book prints no numbered
+      // examples there, so example cards would only duplicate the table.
+      const teachesWithReferenceTable = Boolean(page.numberLab);
+      if ((page.examples.length === 0 && !teachesWithReferenceTable) || page.questions.length === 0) {
         issues.push({ location: pageLocation, message: 'Examples and practice questions are required.' });
       }
       if (page.exerciseType === 'unscramble' && !page.unscrambleExercise) {
@@ -65,7 +69,7 @@ export function validateInteractiveLessons(): LessonValidationIssue[] {
       });
       page.patternRows.forEach((row) => {
         registerId(row.id, `${pageLocation} pattern row`, pageIds, issues);
-        [...row.subject, ...row.grammar, ...row.complement].forEach((token) => {
+        getPatternRowGroups(row).flat().forEach((token) => {
           registerId(token.id, `${pageLocation} pattern token`, pageIds, issues);
         });
       });

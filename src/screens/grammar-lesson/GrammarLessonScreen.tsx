@@ -124,7 +124,7 @@ export function GrammarLessonScreen({
     markPartStarted(part.id);
   }, [markPartStarted, part.id]);
 
-  const { isFooterVisible, handleBottomHoverEnter, handleBottomHoverLeave, resetFooter } =
+  const { isFooterVisible, resetFooter } =
     useGrammarFooterVisibility(mainRef, currentGrammarIndex);
 
   useEffect(() => {
@@ -222,6 +222,7 @@ export function GrammarLessonScreen({
             )}
           >
             <GrammarLessonHeader
+              title={`Part ${part.partId} - Grammar ${page.grammarNumber ?? (currentGrammarIndex + 1)}`}
               characterPreference={characterPreference}
               characterFont={characterFont}
               showPinyin={showPinyin}
@@ -242,7 +243,7 @@ export function GrammarLessonScreen({
 
             <Suspense fallback={null}>
               <GrammarContentMount onMounted={markContentReady}>
-                <div className="mx-auto w-full max-w-4xl px-4 pb-32 pt-2 sm:px-8 sm:pb-32 sm:pt-4">
+                <div className="mx-auto w-full max-w-5xl xl:max-w-6xl px-4 pb-32 pt-6 sm:px-6 sm:pb-32 sm:pt-8">
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.div
                       key={`study-${page.id}`}
@@ -267,13 +268,6 @@ export function GrammarLessonScreen({
             </Suspense>
           </main>
 
-          {/* Hover trigger zone at bottom of viewport to reveal footer on mouseover (matching Reader mode) */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-auto absolute bottom-0 inset-x-0 z-20 h-24"
-            onMouseEnter={handleBottomHoverEnter}
-            onMouseLeave={handleBottomHoverLeave}
-          />
 
           <GrammarContinueFooter
             isVisible={isFooterVisible}

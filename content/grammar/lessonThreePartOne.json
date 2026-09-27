@@ -15,7 +15,7 @@
       74
     ],
     "audioReference": "03-1-3",
-    "explanation": "Chinese needs a measure word between a number and noun: 個 for general nouns, 本 for books, and 朵 for flowers. Before a measure word, say 兩 for “two,” not 二.",
+    "explanation": "Place a measure word between a number and noun (Number + MW + Noun: 一個, 兩本書). Always use 兩 instead of 二 before a measure word.",
     "focusTerms": [
       "數字",
       "数字",
@@ -367,9 +367,14 @@
     ],
     "pattern": "Number or 幾 + measure word + noun",
     "patternColumns": [
-      "How many",
+      "Number",
       "Measure word",
-      "Thing"
+      "Noun"
+    ],
+    "patternColumnDetails": [
+      "Nu",
+      "M",
+      "N"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -1410,11 +1415,16 @@
         "meaning": "and"
       }
     ],
-    "pattern": "Giver + 送 + receiver + gift",
+    "pattern": "Subject + 送 + receiver + gift",
     "patternColumns": [
-      "Giver + 送",
+      "Subject · 送",
       "Receiver",
       "Gift"
+    ],
+    "patternColumnDetails": [
+      "S + 送",
+      "IO",
+      "DO"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -2615,9 +2625,14 @@
         ],
         "pattern": "Number or 幾 + measure word + noun",
         "patternColumns": [
-          "How many",
+          "Number",
           "Measure word",
-          "Thing"
+          "Noun"
+        ],
+        "patternColumnDetails": [
+          "Nu",
+          "M",
+          "N"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
@@ -3658,11 +3673,16 @@
             "meaning": "and"
           }
         ],
-        "pattern": "Giver + 送 + receiver + gift",
+        "pattern": "Subject + 送 + receiver + gift",
         "patternColumns": [
-          "Giver + 送",
+          "Subject · 送",
           "Receiver",
           "Gift"
+        ],
+        "patternColumnDetails": [
+          "S + 送",
+          "IO",
+          "DO"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {

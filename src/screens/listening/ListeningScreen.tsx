@@ -27,7 +27,6 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
   const {
     screenState,
-    currentIndex,
     playlist,
     currentCard,
     options,
@@ -45,7 +44,8 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
     unlearnedCount,
     learnedCount,
     isShuffled,
-    toggleShuffle
+    toggleShuffle,
+    progressInfo,
   } = useListening(activeBookId, selectedLessons, isLibraryDeck, isReviewDeck);
 
   usePracticeAnswerAutomation({
@@ -73,10 +73,12 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
   );
 
   usePracticeHeaderRegistration({
-    currentIndex,
-    totalCount: playlist.length,
+    currentIndex: progressInfo.displayIndex,
+    totalCount: progressInfo.totalCount,
     showLightbulb: false,
     partSegments,
+    isRetry: progressInfo.isRetry,
+    cleanupPhase: progressInfo.cleanupPhase,
     onShuffleClick: toggleShuffle,
     onRestartClick: resetAll,
     isShuffled,

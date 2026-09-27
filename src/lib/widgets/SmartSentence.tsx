@@ -63,6 +63,23 @@ function renderHighlightedText(text: string, startIndex: number, ranges: Highlig
   ) : part.text);
 }
 
+let sharedSegmenter: Intl.Segmenter | null = null;
+
+function getSharedSegmenter(): Intl.Segmenter {
+  if (!sharedSegmenter) {
+    sharedSegmenter = new Intl.Segmenter('zh-CN', { granularity: 'word' });
+  }
+  return sharedSegmenter;
+}
+
+function segmentChineseText(text: string): SegmentData[] {
+  try {
+    return Array.from(getSharedSegmenter().segment(text)) as SegmentData[];
+  } catch {
+    return [{ segment: text, isWordLike: true, index: 0, input: text }];
+  }
+}
+
 export function SmartSentence({
   text,
   className = '',
@@ -72,25 +89,24 @@ export function SmartSentence({
 }: SmartSentenceProps) {
   const [finalSegments, setFinalSegments] = useState<SegmentData[]>([]);
 
+  // Synchronous segmentation using shared segmenter: instantaneous on mount with zero double-renders
+  const fallbackSegments = useMemo(() => segmentChineseText(text), [text]);
+
   useEffect(() => {
+    if (!validateWords) return;
+    const validator = validateWords;
     let isMounted = true;
     
-    async function validateAndSetSegments() {
+    async function validateAndSetSegments(fn: (words: string[]) => Promise<Map<string, unknown> | Set<string>>) {
       try {
-        const segmenter = new Intl.Segmenter('zh-CN', { granularity: 'word' });
-        const initialSegments = Array.from(segmenter.segment(text)) as SegmentData[];
-
-        if (!validateWords) {
-          if (isMounted) setFinalSegments(initialSegments);
-          return;
-        }
+        const initialSegments = segmentChineseText(text);
 
         const wordsRequiringNetworkValidation = initialSegments
           .filter((seg) => seg.isWordLike && /[\u4E00-\u9FFF]/.test(seg.segment) && Array.from(seg.segment).length > 1)
           .map((seg) => seg.segment);
 
         const validResult = wordsRequiringNetworkValidation.length > 0
-          ? await validateWords(wordsRequiringNetworkValidation)
+          ? await fn(wordsRequiringNetworkValidation)
           : null;
         if (!isMounted) return;
 
@@ -117,24 +133,14 @@ export function SmartSentence({
       }
     }
     
-    validateAndSetSegments();
+    void validateAndSetSegments(validator);
     
     return () => {
       isMounted = false;
     };
   }, [text, validateWords]);
 
-  // Provide an immediate fallback while async validation is happening
-  const fallbackSegments = useMemo(() => {
-    try {
-      const segmenter = new Intl.Segmenter('zh-CN', { granularity: 'word' });
-      return Array.from(segmenter.segment(text)) as SegmentData[];
-    } catch {
-      return [{ segment: text, isWordLike: true, index: 0, input: text }];
-    }
-  }, [text]);
-
-  const displaySegments = finalSegments.length > 0 ? finalSegments : fallbackSegments;
+  const displaySegments = validateWords && finalSegments.length > 0 ? finalSegments : fallbackSegments;
   const highlightRanges = useMemo(
     () => findHighlightRanges(text, highlightTerms),
     [highlightTerms, text],

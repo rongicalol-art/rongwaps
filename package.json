@@ -81,7 +81,15 @@
     "memory-hooks:review:chars": "tsx scripts/memory-hooks/buildCharReviewPage.ts",
     "memory-hooks:apply:char-review": "tsx scripts/memory-hooks/applyCharReview.ts",
     "memory-hooks:sound": "tsx scripts/memory-hooks/buildSoundData.ts",
-    "memory-hooks:sound:decide": "tsx scripts/memory-hooks/decideSoundPieces.ts"
+    "memory-hooks:sound:decide": "tsx scripts/memory-hooks/decideSoundPieces.ts",
+    "jev:check": "tsx scripts/jev/client.ts --check",
+    "jev:lint": "tsx scripts/jev/lintRules.ts",
+    "jev:lint:staged": "tsx scripts/jev/lintRules.ts --staged",
+    "jev:lint:strict": "tsx scripts/jev/lintRules.ts --strict",
+    "jev:verify": "tsx scripts/jev/verifyHandoff.ts",
+    "jev:context": "tsx scripts/jev/contextRouter.ts",
+    "jev:qa:words": "tsx scripts/jev/reviewWordHooksTypesafe.ts",
+    "jev:qa:grammar": "tsx scripts/jev/reviewGrammarExamples.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.105.3",

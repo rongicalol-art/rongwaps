@@ -13,6 +13,7 @@ import { useCurriculumExamples } from '../hooks/useCurriculumExamples';
 
 export interface FlashcardBackFaceProps {
   card: Flashcard;
+  isFlipped?: boolean;
   setActiveBreakdown: (char: string, index?: number) => void;
   showPinyin?: boolean;
   showTranslation?: boolean;
@@ -28,6 +29,7 @@ export interface FlashcardBackFaceProps {
 
 export const FlashcardBackFace = ({
   card,
+  isFlipped = true,
   setActiveBreakdown,
   showPinyin = true,
   showTranslation = true,
@@ -40,7 +42,7 @@ export const FlashcardBackFace = ({
   hook,
   hookLoaded = false,
 }: FlashcardBackFaceProps) => {
-  const fetched = useCurriculumExamples(card, !examples);
+  const fetched = useCurriculumExamples(card, Boolean(isFlipped && !examples));
   const resolvedExamples = examples ?? fetched.examples;
   const resolvedLoading = isExamplesLoading ?? fetched.isLoading;
 

@@ -89,6 +89,41 @@ export function evaluateGrammarTextResponses(
   };
 }
 
+export interface PendingTextBlank {
+  blankId: string;
+  reference: string;
+  accepted: string[];
+  response: string;
+}
+
+/** Wrong text blanks with a real response, shaped for semantic re-grading. */
+export function collectPendingTextBlanks(
+  questions: GrammarExerciseQuestion[],
+  responses: Record<string, string>,
+  wrongBlankIds: string[],
+): PendingTextBlank[] {
+  const wrong = new Set(wrongBlankIds);
+  const pending: PendingTextBlank[] = [];
+  questions.forEach((question) => {
+    question.segments.forEach((segment) => {
+      if (segment.type !== 'blank' || !wrong.has(segment.id)) return;
+      const response = (responses[segment.id] ?? '').trim();
+      if (!response) return;
+      pending.push({
+        blankId: segment.id,
+        reference: segment.answer,
+        accepted: [
+          ...(segment.acceptedAnswers ?? []),
+          ...(segment.answerSimplified ? [segment.answerSimplified] : []),
+          ...(segment.acceptedAnswersSimplified ?? []),
+        ],
+        response,
+      });
+    });
+  });
+  return pending;
+}
+
 export function findCanonicalTile(
   question: GrammarExerciseQuestion,
   answer: string,

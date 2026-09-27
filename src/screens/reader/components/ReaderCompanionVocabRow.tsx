@@ -110,15 +110,18 @@ export const ReaderCompanionVocabRow = React.memo(function ReaderCompanionVocabR
       title={title}
       {...interactionProps}
       className={cn(
-        'group flex min-h-[48px] w-full items-center gap-3 rounded-compact px-2 py-1.5 text-left transition-colors hover:bg-ui-hover focus-ring outline-none select-none',
+        'group flex min-h-10 w-full items-center gap-2 rounded-compact px-2 py-1 text-left transition-colors hover:bg-ui-hover focus-ring outline-none select-none',
         !isInText && 'opacity-70',
         isLocated && 'bg-brand-primary-soft/40 ring-1 ring-brand-primary/25',
       )}
     >
+      {/* Quiet › prefix */}
+      <span className="shrink-0 text-ui-muted-strong font-sans font-black mr-0.5 select-none text-xs">›</span>
+
       {/* Chinese Glyph */}
       <span
         className={cn(
-          'min-w-[3.25rem] shrink-0 font-chinese text-2xl font-bold leading-none transition-colors',
+          'min-w-9 shrink-0 font-chinese text-base sm:text-lg font-bold leading-tight transition-colors',
           isInText
             ? 'text-ui-ink-strong group-hover:text-brand-primary'
             : 'text-ui-muted group-hover:text-ui-ink-strong',
@@ -139,7 +142,7 @@ export const ReaderCompanionVocabRow = React.memo(function ReaderCompanionVocabR
         </span>
         <span
           className={cn(
-            'block font-sans text-sm font-bold leading-snug line-clamp-2',
+            'block font-sans text-xs font-medium leading-snug line-clamp-1',
             isInText ? 'text-ui-ink' : 'text-ui-muted',
           )}
         >
@@ -148,7 +151,7 @@ export const ReaderCompanionVocabRow = React.memo(function ReaderCompanionVocabR
         {note && (
           <span
             title={note.title}
-            className="mt-0.5 block font-sans text-[10px] font-bold leading-snug text-ui-muted-strong"
+            className="mt-0.5 block font-sans text-[10px] font-bold leading-snug text-ui-muted-strong line-clamp-1"
           >
             {note.text}
           </span>
@@ -156,7 +159,7 @@ export const ReaderCompanionVocabRow = React.memo(function ReaderCompanionVocabR
       </span>
 
       {/* Right-side Token & Audio Action */}
-      <div className="flex shrink-0 items-center gap-1.5">
+      <div className="flex shrink-0 items-center gap-1">
         {word.pos && (
           <PosBadge
             pos={word.pos}
@@ -172,11 +175,11 @@ export const ReaderCompanionVocabRow = React.memo(function ReaderCompanionVocabR
             e.stopPropagation();
             onSpeak(displayText, word.audio);
           }}
-          className="shrink-0 p-1.5 rounded-full text-ui-muted hover:text-brand-primary hover:bg-brand-primary-soft/60 transition-colors"
+          className="shrink-0 p-1 rounded-full text-ui-muted hover:text-brand-primary hover:bg-brand-primary-soft/60 transition-colors"
           title={`Listen to ${displayText}`}
           aria-label={`Listen to ${displayText}`}
         >
-          <AppIcon name="audio" size={16} />
+          <AppIcon name="audio" size={14} />
         </span>
       </div>
     </button>

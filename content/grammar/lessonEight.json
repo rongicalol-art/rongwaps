@@ -2746,7 +2746,7 @@
     ],
     "pattern": "Action + action + 看",
     "patternColumns": [
-      "Action",
+      "Verb",
       "Small trial",
       "Result"
     ],
@@ -4535,7 +4535,7 @@
     "pattern": "感官評價：好／難＋感官動詞 ｜ 難易程度：好／難＋動作動詞",
     "patternColumns": [
       "好 · 難",
-      "Action"
+      "Verb"
     ],
     "patternAccentColumn": 0,
     "patternRows": [
@@ -5379,7 +5379,7 @@
         "id": "b1l08-g01-sec-1",
         "sectionNumber": 1,
         "title": "Pleasant or Unpleasant (Delicious, Pretty, Nice to Hear)",
-        "explanation": "Put 好 before words like “eat,” “drink,” “look,” or “hear” when something is enjoyable (好吃 delicious, 好看 pretty). Use 難 when it is unpleasant (難喝 bad-tasting, 難看 ugly).",
+        "explanation": "Prefix verbs with 好 for pleasant sensory experiences (好吃 delicious, 好看 pretty) and 難 for unpleasant ones (難喝 bad-tasting, 難看 ugly).",
         "patternColumns": [
           "好 · 難",
           "Sense verb"
@@ -5421,7 +5421,7 @@
         "explanation": "Put 好 before an action word when it is easy to do (好找 easy to find, 好學 easy to learn). Use 難 when it is difficult (難學 hard to learn, 難騎 hard to ride).",
         "patternColumns": [
           "好 · 難",
-          "Action Verb"
+          "Verb"
         ],
         "patternRows": [
           {
@@ -7415,7 +7415,7 @@
       187
     ],
     "audioReference": "08-1-3",
-    "explanation": "因為 starts the reason. 所以 starts the result. Say the reason first, then the result. Quick speech may leave one out, but you can keep both.",
+    "explanation": "Connect cause and effect with 因為 + Reason, 所以 + Result. State the reason first, then the result.",
     "focusTerms": [
       "因為",
       "因为",
@@ -10056,7 +10056,7 @@
         "pattern": "感官評價：好／難＋感官動詞 ｜ 難易程度：好／難＋動作動詞",
         "patternColumns": [
           "好 · 難",
-          "Action"
+          "Verb"
         ],
         "patternAccentColumn": 0,
         "patternRows": [
@@ -10942,7 +10942,7 @@
             "explanation": "Put 好 before an action word when it is easy to do (好找 easy to find, 好學 easy to learn). Use 難 when it is difficult (難學 hard to learn, 難騎 hard to ride).",
             "patternColumns": [
               "好 · 難",
-              "Action Verb"
+              "Verb"
             ],
             "patternRows": [
               {
@@ -16416,7 +16416,7 @@
         ],
         "pattern": "Action + action + 看",
         "patternColumns": [
-          "Action",
+          "Verb",
           "Small trial",
           "Result"
         ],

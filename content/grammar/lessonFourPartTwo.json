@@ -16,7 +16,7 @@
       107
     ],
     "audioReference": "04-2-3",
-    "explanation": "After a round number, 多 means somewhere above it: 一百多 is 101–199. After a unit, it means slightly beyond: 十一點多 is a little after eleven.",
+    "explanation": "Use 多 for approximations: after round numbers (一百多 = 101–199) or after time units (十一點多 = a little after 11:00).",
     "focusTerms": [
       "數字",
       "数字",
@@ -706,11 +706,18 @@
         "meaning": "more than two weeks"
       }
     ],
-    "pattern": "Round number + 多 + measure word, or number + measure word + 多",
+    "pattern": "Number + 多 + measure word; Number + measure word + 多",
     "patternColumns": [
       "Number",
       "多",
-      "Amount"
+      "Measure word",
+      "Noun"
+    ],
+    "patternColumnDetails": [
+      "Nu",
+      "over",
+      "M",
+      "N"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -757,112 +764,7 @@
       ],
       "takeaway": "多 after a round number gives a wider range; 多 after a unit means only a little beyond it."
     },
-    "patternRows": [
-      {
-        "id": "g5-pattern-1",
-        "subject": [
-          {
-            "id": "g5-p1-ten",
-            "traditional": "十",
-            "pinyin": "shí",
-            "meaning": "ten"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g5-p1-more",
-            "traditional": "多",
-            "pinyin": "duō",
-            "meaning": "more than; over"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g5-p1-ge",
-            "traditional": "個",
-            "simplified": "个",
-            "pinyin": "ge",
-            "meaning": "general measure word"
-          },
-          {
-            "id": "g5-p1-cake",
-            "traditional": "蛋糕",
-            "pinyin": "dàngāo",
-            "meaning": "cake"
-          }
-        ],
-        "english": "11–19 cakes"
-      },
-      {
-        "id": "g5-pattern-2",
-        "subject": [
-          {
-            "id": "g5-p2-hundred",
-            "traditional": "百",
-            "pinyin": "bǎi",
-            "meaning": "hundred"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g5-p2-more",
-            "traditional": "多",
-            "pinyin": "duō",
-            "meaning": "more than; over"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g5-p2-branch",
-            "traditional": "枝",
-            "pinyin": "zhī",
-            "meaning": "measure word for pens"
-          },
-          {
-            "id": "g5-p2-pencil",
-            "traditional": "鉛筆",
-            "simplified": "铅笔",
-            "pinyin": "qiānbǐ",
-            "meaning": "pencil"
-          }
-        ],
-        "english": "101–199 pencils"
-      },
-      {
-        "id": "g5-pattern-3",
-        "subject": [
-          {
-            "id": "g5-p3-eleven",
-            "traditional": "十",
-            "pinyin": "shí",
-            "meaning": "ten"
-          },
-          {
-            "id": "g5-p3-one",
-            "traditional": "一",
-            "pinyin": "yī",
-            "meaning": "one"
-          },
-          {
-            "id": "g5-p3-oclock",
-            "traditional": "點",
-            "simplified": "点",
-            "pinyin": "diǎn",
-            "meaning": "order from a menu; o’clock"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g5-p3-more",
-            "traditional": "多",
-            "pinyin": "duō",
-            "meaning": "more than; over"
-          }
-        ],
-        "complement": [],
-        "english": "a little after 11:00"
-      }
-    ],
+    "patternRows": [],
     "confusion": {
       "title": "Don't mix these up",
       "items": [
@@ -1315,6 +1217,223 @@
         "correctFeedback": "多 follows the dollar unit because 45 cents is less than one whole dollar.",
         "repairFeedback": "Use 八 + 塊 + 多 for a small extra beyond eight dollars."
       }
+    ],
+    "subsections": [
+      {
+        "id": "b1l04-g05-sec-1",
+        "sectionNumber": 1,
+        "title": "Number + 多 + Measure word + Noun",
+        "explanation": "Put 多 right after a round number. The amount is somewhere above that number.",
+        "patternColumns": [
+          "Number",
+          "多",
+          "Measure word",
+          "Noun"
+        ],
+        "patternColumnDetails": [
+          "Nu",
+          "over",
+          "M",
+          "N"
+        ],
+        "patternRows": [
+          {
+            "id": "g5-sec1-row",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g5-p1-ten",
+                  "traditional": "十",
+                  "pinyin": "shí",
+                  "meaning": "ten"
+                }
+              ],
+              [
+                {
+                  "id": "g5-p1-more",
+                  "traditional": "多",
+                  "pinyin": "duō",
+                  "meaning": "more than; over"
+                }
+              ],
+              [
+                {
+                  "id": "g5-p1-ge",
+                  "traditional": "個",
+                  "simplified": "个",
+                  "pinyin": "ge",
+                  "meaning": "general measure word"
+                }
+              ],
+              [
+                {
+                  "id": "g5-p1-cake",
+                  "traditional": "蛋糕",
+                  "pinyin": "dàngāo",
+                  "meaning": "cake"
+                }
+              ]
+            ],
+            "english": "more than ten cakes (11–19)"
+          }
+        ],
+        "exampleIds": [
+          "g5-example-1",
+          "g5-example-2"
+        ]
+      },
+      {
+        "id": "b1l04-g05-sec-2",
+        "sectionNumber": 2,
+        "title": "Number + Measure word + 多 + Noun",
+        "explanation": "Put 多 after the measure word or time word. The extra part is less than one full unit, so the noun can be left out.",
+        "patternColumns": [
+          "Number",
+          "Measure word",
+          "多",
+          "Noun"
+        ],
+        "patternColumnDetails": [
+          "Nu",
+          "M",
+          "over",
+          "(N)"
+        ],
+        "patternRows": [
+          {
+            "id": "g5-sec2-row-1",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g5-s2-ten",
+                  "traditional": "十",
+                  "pinyin": "shí",
+                  "meaning": "ten"
+                }
+              ],
+              [
+                {
+                  "id": "g5-s2-ge",
+                  "traditional": "個",
+                  "pinyin": "ge",
+                  "meaning": "general measure word"
+                }
+              ],
+              [
+                {
+                  "id": "g5-s2-more",
+                  "traditional": "多",
+                  "pinyin": "duō",
+                  "meaning": "more than; over"
+                }
+              ],
+              [
+                {
+                  "id": "g5-s2-cake",
+                  "traditional": "蛋糕",
+                  "pinyin": "dàngāo",
+                  "meaning": "cake",
+                  "prefix": "（",
+                  "suffix": "）"
+                }
+              ]
+            ],
+            "english": "more than ten cakes (10–11)"
+          },
+          {
+            "id": "g5-sec2-row-2",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g5-s2-five",
+                  "traditional": "五",
+                  "pinyin": "wǔ",
+                  "meaning": "five"
+                }
+              ],
+              [
+                {
+                  "id": "g5-s2-kuai",
+                  "traditional": "塊",
+                  "pinyin": "kuài",
+                  "meaning": "measure word for money"
+                }
+              ],
+              [
+                {
+                  "id": "g5-s2-more-2",
+                  "traditional": "多",
+                  "pinyin": "duō",
+                  "meaning": "more than; over"
+                }
+              ],
+              [
+                {
+                  "id": "g5-s2-money",
+                  "traditional": "錢",
+                  "pinyin": "qián",
+                  "meaning": "money",
+                  "prefix": "（",
+                  "suffix": "）"
+                }
+              ]
+            ],
+            "english": "more than five dollars (5–6)"
+          },
+          {
+            "id": "g5-sec2-row-3",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g5-s2-ten-2",
+                  "traditional": "十",
+                  "pinyin": "shí",
+                  "meaning": "ten"
+                },
+                {
+                  "id": "g5-s2-one",
+                  "traditional": "一",
+                  "pinyin": "yī",
+                  "meaning": "one"
+                }
+              ],
+              [
+                {
+                  "id": "g5-s2-oclock",
+                  "traditional": "點",
+                  "pinyin": "diǎn",
+                  "meaning": "hour word; o’clock"
+                }
+              ],
+              [
+                {
+                  "id": "g5-s2-more-3",
+                  "traditional": "多",
+                  "pinyin": "duō",
+                  "meaning": "more than; over"
+                }
+              ],
+              []
+            ],
+            "english": "a little after 11:00 (11:00–12:00)"
+          }
+        ],
+        "exampleIds": [
+          "g5-example-3"
+        ]
+      }
     ]
   },
   "LESSON_FOUR_GRAMMAR_FOUR": {
@@ -1333,7 +1452,7 @@
       105
     ],
     "audioReference": "04-2-3",
-    "explanation": "Chinese names each place: 十, 百, 千, then 萬 for ten thousand. Read from large to small, and use 零 once to bridge a skipped place.",
+    "explanation": "Numbers use 十 (10), 百 (100), 千 (1,000), and 萬 (10,000). Read largest to smallest. When places are skipped, say 零 once. In prices, the final unit is often dropped.",
     "focusTerms": [
       "萬",
       "万",
@@ -2024,11 +2143,16 @@
         "meaning": "more than two weeks"
       }
     ],
-    "pattern": "Large place + smaller places, with 零 for an internal gap",
+    "pattern": "Read the biggest part, then read the rest",
     "patternColumns": [
-      "萬 group",
-      "千 · 百 · 十",
-      "Number"
+      "Block",
+      "Means",
+      "Example"
+    ],
+    "patternColumnDetails": [
+      "block",
+      "value",
+      "number + block"
     ],
     "patternAccentColumn": 2,
     "numberLab": {
@@ -2151,99 +2275,7 @@
       ],
       "takeaway": "Read large to small; use one 零 for an empty place inside; do not say zeroes at the end."
     },
-    "patternRows": [
-      {
-        "id": "g4-pattern-1",
-        "subject": [],
-        "grammar": [
-          {
-            "id": "g4-p1-hundred",
-            "traditional": "百",
-            "pinyin": "bǎi",
-            "meaning": "hundred"
-          },
-          {
-            "id": "g4-p1-zero",
-            "traditional": "零",
-            "pinyin": "líng",
-            "meaning": "zero; fills an empty place"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g4-p1-number",
-            "traditional": "一百零五",
-            "pinyin": "yì bǎi líng wǔ",
-            "meaning": "105"
-          }
-        ],
-        "english": "105: one hundred, 零, five"
-      },
-      {
-        "id": "g4-pattern-2",
-        "subject": [],
-        "grammar": [
-          {
-            "id": "g4-p2-thousand",
-            "traditional": "千",
-            "pinyin": "qiān",
-            "meaning": "thousand"
-          },
-          {
-            "id": "g4-p2-zero",
-            "traditional": "零",
-            "pinyin": "líng",
-            "meaning": "zero; fills an empty place"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g4-p2-number",
-            "traditional": "兩千零五",
-            "simplified": "两千零五",
-            "pinyin": "liǎng qiān líng wǔ",
-            "meaning": "2,005"
-          }
-        ],
-        "english": "2,005: two thousand, 零, five"
-      },
-      {
-        "id": "g4-pattern-3",
-        "subject": [
-          {
-            "id": "g4-p3-wan",
-            "traditional": "萬",
-            "simplified": "万",
-            "pinyin": "wàn",
-            "meaning": "ten thousand"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g4-p3-zero",
-            "traditional": "零",
-            "pinyin": "líng",
-            "meaning": "zero; fills an empty place"
-          },
-          {
-            "id": "g4-p3-hundred",
-            "traditional": "百",
-            "pinyin": "bǎi",
-            "meaning": "hundred"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g4-p3-number",
-            "traditional": "九萬零五百",
-            "simplified": "九万零五百",
-            "pinyin": "jiǔ wàn líng wǔ bǎi",
-            "meaning": "90,500"
-          }
-        ],
-        "english": "90,500: nine ten-thousands, 零, five hundred"
-      }
-    ],
+    "patternRows": [],
     "confusion": {
       "title": "Don't mix these up",
       "items": [
@@ -2321,67 +2353,7 @@
         }
       ]
     },
-    "examples": [
-      {
-        "id": "g4-example-1",
-        "number": 1,
-        "text": {
-          "traditional": "一百一十五",
-          "simplified": "一百一十五",
-          "pinyin": "Yì bǎi yīshíwǔ.",
-          "english": "115",
-          "words": [
-            {
-              "id": "b1l04-g4-e1-word-1",
-              "traditional": "一百一十五",
-              "pinyin": "yì bǎi yīshíwǔ",
-              "meaning": "115"
-            }
-          ]
-        },
-        "teachingNote": "Every place from 百 through 個 has a value, so no 零 is needed."
-      },
-      {
-        "id": "g4-example-2",
-        "number": 2,
-        "text": {
-          "traditional": "兩千零五",
-          "simplified": "两千零五",
-          "pinyin": "Liǎng qiān líng wǔ.",
-          "english": "2,005",
-          "words": [
-            {
-              "id": "b1l04-g4-e2-word-1",
-              "traditional": "兩千零五",
-              "simplified": "两千零五",
-              "pinyin": "liǎng qiān líng wǔ",
-              "meaning": "2,005"
-            }
-          ]
-        },
-        "teachingNote": "One 零 bridges both missing middle places."
-      },
-      {
-        "id": "g4-example-3",
-        "number": 3,
-        "text": {
-          "traditional": "三百零五萬",
-          "simplified": "三百零五万",
-          "pinyin": "Sān bǎi líng wǔ wàn.",
-          "english": "3,050,000",
-          "words": [
-            {
-              "id": "b1l04-g4-e3-word-1",
-              "traditional": "三百零五萬",
-              "simplified": "三百零五万",
-              "pinyin": "sān bǎi líng wǔ wàn",
-              "meaning": "3,050,000"
-            }
-          ]
-        },
-        "teachingNote": "Think “305 ten-thousands,” then attach 萬."
-      }
-    ],
+    "examples": [],
     "exerciseTitle": "Decode the place values",
     "exercisePreview": "Read one number from each printed source set.",
     "exerciseInstruction": "Choose the spoken form that preserves every important place and uses 零 correctly.",
@@ -2509,6 +2481,613 @@
         "correctFeedback": "Nothing is skipped between 千 and 百; 位 is the polite measure word for people.",
         "repairFeedback": "Read 兩千兩百 without 零, then add 位老師."
       }
+    ],
+    "subsections": [
+      {
+        "id": "b1l04-g04-sec-1",
+        "sectionNumber": 1,
+        "title": "The four building blocks",
+        "explanation": "These four words are the blocks. Put a number in front of a block to count it: 三 + 百 = 三百.",
+        "patternColumns": [
+          "Block",
+          "Means",
+          "Example"
+        ],
+        "patternColumnDetails": [
+          "block",
+          "value",
+          "number + block"
+        ],
+        "patternRows": [
+          {
+            "id": "g4-block-row-1",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-block-ten",
+                  "traditional": "十",
+                  "pinyin": "shí",
+                  "meaning": "ten"
+                }
+              ],
+              [
+                {
+                  "id": "g4-block-ten-value",
+                  "traditional": "10",
+                  "pinyin": "shí",
+                  "meaning": "ten"
+                }
+              ],
+              [
+                {
+                  "id": "g4-block-ten-example",
+                  "traditional": "二十",
+                  "pinyin": "èrshí",
+                  "meaning": "twenty"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "g4-block-row-2",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-block-hundred",
+                  "traditional": "百",
+                  "pinyin": "bǎi",
+                  "meaning": "hundred"
+                }
+              ],
+              [
+                {
+                  "id": "g4-block-hundred-value",
+                  "traditional": "100",
+                  "pinyin": "bǎi",
+                  "meaning": "one hundred"
+                }
+              ],
+              [
+                {
+                  "id": "g4-block-hundred-example",
+                  "traditional": "三百",
+                  "pinyin": "sān bǎi",
+                  "meaning": "three hundred"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "g4-block-row-3",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-block-thousand",
+                  "traditional": "千",
+                  "pinyin": "qiān",
+                  "meaning": "thousand"
+                }
+              ],
+              [
+                {
+                  "id": "g4-block-thousand-value",
+                  "traditional": "1,000",
+                  "pinyin": "qiān",
+                  "meaning": "one thousand"
+                }
+              ],
+              [
+                {
+                  "id": "g4-block-thousand-example",
+                  "traditional": "五千",
+                  "pinyin": "wǔ qiān",
+                  "meaning": "five thousand"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "g4-block-row-4",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-block-wan",
+                  "traditional": "萬",
+                  "pinyin": "wàn",
+                  "meaning": "ten thousand"
+                }
+              ],
+              [
+                {
+                  "id": "g4-block-wan-value",
+                  "traditional": "10,000",
+                  "pinyin": "wàn",
+                  "meaning": "ten thousand"
+                }
+              ],
+              [
+                {
+                  "id": "g4-block-wan-example",
+                  "traditional": "八萬",
+                  "pinyin": "bā wàn",
+                  "meaning": "eighty thousand"
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1l04-g04-sec-2",
+        "sectionNumber": 2,
+        "title": "Read the first part, then the rest",
+        "explanation": "Read the biggest part, then read what is left: 一百 + 一十五. When a place is skipped, the second part starts with 零: 一百 + 零五.",
+        "patternColumns": [
+          "Number",
+          "First part",
+          "The rest"
+        ],
+        "patternColumnDetails": [
+          "digits",
+          "biggest part",
+          "what is left"
+        ],
+        "patternRows": [
+          {
+            "id": "g4-split-row-1",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-split-115-digits",
+                  "traditional": "115",
+                  "pinyin": "yì bǎi yī shí wǔ",
+                  "meaning": "115"
+                }
+              ],
+              [
+                {
+                  "id": "g4-split-115-first",
+                  "traditional": "一百",
+                  "pinyin": "yì bǎi",
+                  "meaning": "one hundred"
+                }
+              ],
+              [
+                {
+                  "id": "g4-split-115-rest",
+                  "traditional": "一十五",
+                  "pinyin": "yī shí wǔ",
+                  "meaning": "fifteen"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "g4-split-row-2",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-split-105-digits",
+                  "traditional": "105",
+                  "pinyin": "yì bǎi líng wǔ",
+                  "meaning": "105"
+                }
+              ],
+              [
+                {
+                  "id": "g4-split-105-first",
+                  "traditional": "一百",
+                  "pinyin": "yì bǎi",
+                  "meaning": "one hundred"
+                }
+              ],
+              [
+                {
+                  "id": "g4-split-105-rest",
+                  "traditional": "零五",
+                  "pinyin": "líng wǔ",
+                  "meaning": "zero five"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "g4-split-row-3",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-split-850-digits",
+                  "traditional": "850",
+                  "pinyin": "bā bǎi wǔ shí",
+                  "meaning": "850"
+                }
+              ],
+              [
+                {
+                  "id": "g4-split-850-first",
+                  "traditional": "八百",
+                  "pinyin": "bā bǎi",
+                  "meaning": "eight hundred"
+                }
+              ],
+              [
+                {
+                  "id": "g4-split-850-rest",
+                  "traditional": "五十",
+                  "pinyin": "wǔ shí",
+                  "meaning": "fifty"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "g4-split-row-4",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-split-2005-digits",
+                  "traditional": "2,005",
+                  "pinyin": "liǎng qiān líng wǔ",
+                  "meaning": "2,005"
+                }
+              ],
+              [
+                {
+                  "id": "g4-split-2005-first",
+                  "traditional": "兩千",
+                  "pinyin": "liǎng qiān",
+                  "meaning": "two thousand"
+                }
+              ],
+              [
+                {
+                  "id": "g4-split-2005-rest",
+                  "traditional": "零五",
+                  "pinyin": "líng wǔ",
+                  "meaning": "zero five"
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1l04-g04-sec-3",
+        "sectionNumber": 3,
+        "title": "The last word can be dropped",
+        "explanation": "In prices and amounts, the last place word is often left out. Both ways mean the same number: 八百五十 = 八百五.",
+        "patternColumns": [
+          "Number",
+          "Full reading",
+          "Short way"
+        ],
+        "patternColumnDetails": [
+          "digits",
+          "with the last word",
+          "with it dropped"
+        ],
+        "patternRows": [
+          {
+            "id": "g4-drop-row-1",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-drop-850-digits",
+                  "traditional": "850",
+                  "pinyin": "bā bǎi wǔ shí",
+                  "meaning": "850"
+                }
+              ],
+              [
+                {
+                  "id": "g4-drop-850-full",
+                  "traditional": "八百五十",
+                  "pinyin": "bā bǎi wǔ shí",
+                  "meaning": "eight hundred fifty"
+                }
+              ],
+              [
+                {
+                  "id": "g4-drop-850-short",
+                  "traditional": "八百五",
+                  "pinyin": "bā bǎi wǔ",
+                  "meaning": "eight hundred fifty (short way)"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "g4-drop-row-2",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-drop-6500-digits",
+                  "traditional": "6,500",
+                  "pinyin": "liù qiān wǔ bǎi",
+                  "meaning": "6,500"
+                }
+              ],
+              [
+                {
+                  "id": "g4-drop-6500-full",
+                  "traditional": "六千五百",
+                  "pinyin": "liù qiān wǔ bǎi",
+                  "meaning": "six thousand five hundred"
+                }
+              ],
+              [
+                {
+                  "id": "g4-drop-6500-short",
+                  "traditional": "六千五",
+                  "pinyin": "liù qiān wǔ",
+                  "meaning": "six thousand five hundred (short way)"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "g4-drop-row-3",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-drop-78000-digits",
+                  "traditional": "78,000",
+                  "pinyin": "qī wàn bā qiān",
+                  "meaning": "78,000"
+                }
+              ],
+              [
+                {
+                  "id": "g4-drop-78000-full",
+                  "traditional": "七萬八千",
+                  "pinyin": "qī wàn bā qiān",
+                  "meaning": "seventy-eight thousand"
+                }
+              ],
+              [
+                {
+                  "id": "g4-drop-78000-short",
+                  "traditional": "七萬八",
+                  "pinyin": "qī wàn bā",
+                  "meaning": "seventy-eight thousand (short way)"
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1l04-g04-sec-4",
+        "sectionNumber": 4,
+        "title": "Big numbers: how many 萬",
+        "explanation": "萬 counts ten-thousands. Say how many 萬, then add what is left: 七 萬 八千 is 7 × 10,000 + 8,000.",
+        "patternColumns": [
+          "Number",
+          "How many",
+          "萬",
+          "The rest"
+        ],
+        "patternColumnDetails": [
+          "digits",
+          "count of 萬",
+          "ten thousand",
+          "what is left"
+        ],
+        "patternRows": [
+          {
+            "id": "g4-wan-row-1",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-wan-78000-digits",
+                  "traditional": "78,000",
+                  "pinyin": "qī wàn bā qiān",
+                  "meaning": "78,000"
+                }
+              ],
+              [
+                {
+                  "id": "g4-wan-78000-count",
+                  "traditional": "七",
+                  "pinyin": "qī",
+                  "meaning": "seven"
+                }
+              ],
+              [
+                {
+                  "id": "g4-wan-78000-wan",
+                  "traditional": "萬",
+                  "pinyin": "wàn",
+                  "meaning": "ten thousand"
+                }
+              ],
+              [
+                {
+                  "id": "g4-wan-78000-rest",
+                  "traditional": "八千",
+                  "pinyin": "bā qiān",
+                  "meaning": "eight thousand"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "g4-wan-row-2",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-wan-90500-digits",
+                  "traditional": "90,500",
+                  "pinyin": "jiǔ wàn líng wǔ bǎi",
+                  "meaning": "90,500"
+                }
+              ],
+              [
+                {
+                  "id": "g4-wan-90500-count",
+                  "traditional": "九",
+                  "pinyin": "jiǔ",
+                  "meaning": "nine"
+                }
+              ],
+              [
+                {
+                  "id": "g4-wan-90500-wan",
+                  "traditional": "萬",
+                  "pinyin": "wàn",
+                  "meaning": "ten thousand"
+                }
+              ],
+              [
+                {
+                  "id": "g4-wan-90500-rest",
+                  "traditional": "零五百",
+                  "pinyin": "líng wǔ bǎi",
+                  "meaning": "zero, five hundred"
+                }
+              ]
+            ]
+          },
+          {
+            "id": "g4-wan-row-3",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-wan-500000-digits",
+                  "traditional": "500,000",
+                  "pinyin": "wǔ shí wàn",
+                  "meaning": "500,000"
+                }
+              ],
+              [
+                {
+                  "id": "g4-wan-500000-count",
+                  "traditional": "五十",
+                  "pinyin": "wǔ shí",
+                  "meaning": "fifty"
+                }
+              ],
+              [
+                {
+                  "id": "g4-wan-500000-wan",
+                  "traditional": "萬",
+                  "pinyin": "wàn",
+                  "meaning": "ten thousand"
+                }
+              ],
+              []
+            ]
+          },
+          {
+            "id": "g4-wan-row-4",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-wan-3050000-digits",
+                  "traditional": "3,050,000",
+                  "pinyin": "sān bǎi líng wǔ wàn",
+                  "meaning": "3,050,000"
+                }
+              ],
+              [
+                {
+                  "id": "g4-wan-3050000-count",
+                  "traditional": "三百零五",
+                  "pinyin": "sān bǎi líng wǔ",
+                  "meaning": "three hundred five"
+                }
+              ],
+              [
+                {
+                  "id": "g4-wan-3050000-wan",
+                  "traditional": "萬",
+                  "pinyin": "wàn",
+                  "meaning": "ten thousand"
+                }
+              ],
+              []
+            ]
+          },
+          {
+            "id": "g4-wan-row-5",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-wan-90090000-digits",
+                  "traditional": "90,090,000",
+                  "pinyin": "jiǔ qiān líng jiǔ wàn",
+                  "meaning": "90,090,000"
+                }
+              ],
+              [
+                {
+                  "id": "g4-wan-90090000-count",
+                  "traditional": "九千零九",
+                  "pinyin": "jiǔ qiān líng jiǔ",
+                  "meaning": "nine thousand nine"
+                }
+              ],
+              [
+                {
+                  "id": "g4-wan-90090000-wan",
+                  "traditional": "萬",
+                  "pinyin": "wàn",
+                  "meaning": "ten thousand"
+                }
+              ],
+              []
+            ]
+          }
+        ]
+      }
     ]
   },
   "LESSON_FOUR_PART_TWO": {
@@ -2534,7 +3113,7 @@
           105
         ],
         "audioReference": "04-2-3",
-        "explanation": "Chinese names each place: 十, 百, 千, then 萬 for ten thousand. Read from large to small, and use 零 once to bridge a skipped place.",
+        "explanation": "Chinese numbers are built from four words: 十 (10), 百 (100), 千 (1,000), 萬 (10,000). Read the biggest part first, then read what is left. When a place is skipped, say 零 once; in prices, the last place word is often dropped.",
         "focusTerms": [
           "萬",
           "万",
@@ -3225,11 +3804,16 @@
             "meaning": "more than two weeks"
           }
         ],
-        "pattern": "Large place + smaller places, with 零 for an internal gap",
+        "pattern": "Read the biggest part, then read the rest",
         "patternColumns": [
-          "萬 group",
-          "千 · 百 · 十",
-          "Number"
+          "Block",
+          "Means",
+          "Example"
+        ],
+        "patternColumnDetails": [
+          "block",
+          "value",
+          "number + block"
         ],
         "patternAccentColumn": 2,
         "numberLab": {
@@ -3352,99 +3936,7 @@
           ],
           "takeaway": "Read large to small; use one 零 for an empty place inside; do not say zeroes at the end."
         },
-        "patternRows": [
-          {
-            "id": "g4-pattern-1",
-            "subject": [],
-            "grammar": [
-              {
-                "id": "g4-p1-hundred",
-                "traditional": "百",
-                "pinyin": "bǎi",
-                "meaning": "hundred"
-              },
-              {
-                "id": "g4-p1-zero",
-                "traditional": "零",
-                "pinyin": "líng",
-                "meaning": "zero; fills an empty place"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g4-p1-number",
-                "traditional": "一百零五",
-                "pinyin": "yì bǎi líng wǔ",
-                "meaning": "105"
-              }
-            ],
-            "english": "105: one hundred, 零, five"
-          },
-          {
-            "id": "g4-pattern-2",
-            "subject": [],
-            "grammar": [
-              {
-                "id": "g4-p2-thousand",
-                "traditional": "千",
-                "pinyin": "qiān",
-                "meaning": "thousand"
-              },
-              {
-                "id": "g4-p2-zero",
-                "traditional": "零",
-                "pinyin": "líng",
-                "meaning": "zero; fills an empty place"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g4-p2-number",
-                "traditional": "兩千零五",
-                "simplified": "两千零五",
-                "pinyin": "liǎng qiān líng wǔ",
-                "meaning": "2,005"
-              }
-            ],
-            "english": "2,005: two thousand, 零, five"
-          },
-          {
-            "id": "g4-pattern-3",
-            "subject": [
-              {
-                "id": "g4-p3-wan",
-                "traditional": "萬",
-                "simplified": "万",
-                "pinyin": "wàn",
-                "meaning": "ten thousand"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g4-p3-zero",
-                "traditional": "零",
-                "pinyin": "líng",
-                "meaning": "zero; fills an empty place"
-              },
-              {
-                "id": "g4-p3-hundred",
-                "traditional": "百",
-                "pinyin": "bǎi",
-                "meaning": "hundred"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g4-p3-number",
-                "traditional": "九萬零五百",
-                "simplified": "九万零五百",
-                "pinyin": "jiǔ wàn líng wǔ bǎi",
-                "meaning": "90,500"
-              }
-            ],
-            "english": "90,500: nine ten-thousands, 零, five hundred"
-          }
-        ],
+        "patternRows": [],
         "confusion": {
           "title": "Don't mix these up",
           "items": [
@@ -3522,67 +4014,7 @@
             }
           ]
         },
-        "examples": [
-          {
-            "id": "g4-example-1",
-            "number": 1,
-            "text": {
-              "traditional": "一百一十五",
-              "simplified": "一百一十五",
-              "pinyin": "Yì bǎi yīshíwǔ.",
-              "english": "115",
-              "words": [
-                {
-                  "id": "b1l04-g4-e1-word-1",
-                  "traditional": "一百一十五",
-                  "pinyin": "yì bǎi yīshíwǔ",
-                  "meaning": "115"
-                }
-              ]
-            },
-            "teachingNote": "Every place from 百 through 個 has a value, so no 零 is needed."
-          },
-          {
-            "id": "g4-example-2",
-            "number": 2,
-            "text": {
-              "traditional": "兩千零五",
-              "simplified": "两千零五",
-              "pinyin": "Liǎng qiān líng wǔ.",
-              "english": "2,005",
-              "words": [
-                {
-                  "id": "b1l04-g4-e2-word-1",
-                  "traditional": "兩千零五",
-                  "simplified": "两千零五",
-                  "pinyin": "liǎng qiān líng wǔ",
-                  "meaning": "2,005"
-                }
-              ]
-            },
-            "teachingNote": "One 零 bridges both missing middle places."
-          },
-          {
-            "id": "g4-example-3",
-            "number": 3,
-            "text": {
-              "traditional": "三百零五萬",
-              "simplified": "三百零五万",
-              "pinyin": "Sān bǎi líng wǔ wàn.",
-              "english": "3,050,000",
-              "words": [
-                {
-                  "id": "b1l04-g4-e3-word-1",
-                  "traditional": "三百零五萬",
-                  "simplified": "三百零五万",
-                  "pinyin": "sān bǎi líng wǔ wàn",
-                  "meaning": "3,050,000"
-                }
-              ]
-            },
-            "teachingNote": "Think “305 ten-thousands,” then attach 萬."
-          }
-        ],
+        "examples": [],
         "exerciseTitle": "Decode the place values",
         "exercisePreview": "Read one number from each printed source set.",
         "exerciseInstruction": "Choose the spoken form that preserves every important place and uses 零 correctly.",
@@ -3709,6 +4141,613 @@
             ],
             "correctFeedback": "Nothing is skipped between 千 and 百; 位 is the polite measure word for people.",
             "repairFeedback": "Read 兩千兩百 without 零, then add 位老師."
+          }
+        ],
+        "subsections": [
+          {
+            "id": "b1l04-g04-sec-1",
+            "sectionNumber": 1,
+            "title": "The four building blocks",
+            "explanation": "These four words are the blocks. Put a number in front of a block to count it: 三 + 百 = 三百.",
+            "patternColumns": [
+              "Block",
+              "Means",
+              "Example"
+            ],
+            "patternColumnDetails": [
+              "block",
+              "value",
+              "number + block"
+            ],
+            "patternRows": [
+              {
+                "id": "g4-block-row-1",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-block-ten",
+                      "traditional": "十",
+                      "pinyin": "shí",
+                      "meaning": "ten"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-block-ten-value",
+                      "traditional": "10",
+                      "pinyin": "shí",
+                      "meaning": "ten"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-block-ten-example",
+                      "traditional": "二十",
+                      "pinyin": "èrshí",
+                      "meaning": "twenty"
+                    }
+                  ]
+                ]
+              },
+              {
+                "id": "g4-block-row-2",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-block-hundred",
+                      "traditional": "百",
+                      "pinyin": "bǎi",
+                      "meaning": "hundred"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-block-hundred-value",
+                      "traditional": "100",
+                      "pinyin": "bǎi",
+                      "meaning": "one hundred"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-block-hundred-example",
+                      "traditional": "三百",
+                      "pinyin": "sān bǎi",
+                      "meaning": "three hundred"
+                    }
+                  ]
+                ]
+              },
+              {
+                "id": "g4-block-row-3",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-block-thousand",
+                      "traditional": "千",
+                      "pinyin": "qiān",
+                      "meaning": "thousand"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-block-thousand-value",
+                      "traditional": "1,000",
+                      "pinyin": "qiān",
+                      "meaning": "one thousand"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-block-thousand-example",
+                      "traditional": "五千",
+                      "pinyin": "wǔ qiān",
+                      "meaning": "five thousand"
+                    }
+                  ]
+                ]
+              },
+              {
+                "id": "g4-block-row-4",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-block-wan",
+                      "traditional": "萬",
+                      "pinyin": "wàn",
+                      "meaning": "ten thousand"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-block-wan-value",
+                      "traditional": "10,000",
+                      "pinyin": "wàn",
+                      "meaning": "ten thousand"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-block-wan-example",
+                      "traditional": "八萬",
+                      "pinyin": "bā wàn",
+                      "meaning": "eighty thousand"
+                    }
+                  ]
+                ]
+              }
+            ]
+          },
+          {
+            "id": "b1l04-g04-sec-2",
+            "sectionNumber": 2,
+            "title": "Read the first part, then the rest",
+            "explanation": "Read the biggest part, then read what is left: 一百 + 一十五. When a place is skipped, the second part starts with 零: 一百 + 零五.",
+            "patternColumns": [
+              "Number",
+              "First part",
+              "The rest"
+            ],
+            "patternColumnDetails": [
+              "digits",
+              "biggest part",
+              "what is left"
+            ],
+            "patternRows": [
+              {
+                "id": "g4-split-row-1",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-split-115-digits",
+                      "traditional": "115",
+                      "pinyin": "yì bǎi yī shí wǔ",
+                      "meaning": "115"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-split-115-first",
+                      "traditional": "一百",
+                      "pinyin": "yì bǎi",
+                      "meaning": "one hundred"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-split-115-rest",
+                      "traditional": "一十五",
+                      "pinyin": "yī shí wǔ",
+                      "meaning": "fifteen"
+                    }
+                  ]
+                ]
+              },
+              {
+                "id": "g4-split-row-2",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-split-105-digits",
+                      "traditional": "105",
+                      "pinyin": "yì bǎi líng wǔ",
+                      "meaning": "105"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-split-105-first",
+                      "traditional": "一百",
+                      "pinyin": "yì bǎi",
+                      "meaning": "one hundred"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-split-105-rest",
+                      "traditional": "零五",
+                      "pinyin": "líng wǔ",
+                      "meaning": "zero five"
+                    }
+                  ]
+                ]
+              },
+              {
+                "id": "g4-split-row-3",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-split-850-digits",
+                      "traditional": "850",
+                      "pinyin": "bā bǎi wǔ shí",
+                      "meaning": "850"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-split-850-first",
+                      "traditional": "八百",
+                      "pinyin": "bā bǎi",
+                      "meaning": "eight hundred"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-split-850-rest",
+                      "traditional": "五十",
+                      "pinyin": "wǔ shí",
+                      "meaning": "fifty"
+                    }
+                  ]
+                ]
+              },
+              {
+                "id": "g4-split-row-4",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-split-2005-digits",
+                      "traditional": "2,005",
+                      "pinyin": "liǎng qiān líng wǔ",
+                      "meaning": "2,005"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-split-2005-first",
+                      "traditional": "兩千",
+                      "pinyin": "liǎng qiān",
+                      "meaning": "two thousand"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-split-2005-rest",
+                      "traditional": "零五",
+                      "pinyin": "líng wǔ",
+                      "meaning": "zero five"
+                    }
+                  ]
+                ]
+              }
+            ]
+          },
+          {
+            "id": "b1l04-g04-sec-3",
+            "sectionNumber": 3,
+            "title": "The last word can be dropped",
+            "explanation": "In prices and amounts, the last place word is often left out. Both ways mean the same number: 八百五十 = 八百五.",
+            "patternColumns": [
+              "Number",
+              "Full reading",
+              "Short way"
+            ],
+            "patternColumnDetails": [
+              "digits",
+              "with the last word",
+              "with it dropped"
+            ],
+            "patternRows": [
+              {
+                "id": "g4-drop-row-1",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-drop-850-digits",
+                      "traditional": "850",
+                      "pinyin": "bā bǎi wǔ shí",
+                      "meaning": "850"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-drop-850-full",
+                      "traditional": "八百五十",
+                      "pinyin": "bā bǎi wǔ shí",
+                      "meaning": "eight hundred fifty"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-drop-850-short",
+                      "traditional": "八百五",
+                      "pinyin": "bā bǎi wǔ",
+                      "meaning": "eight hundred fifty (short way)"
+                    }
+                  ]
+                ]
+              },
+              {
+                "id": "g4-drop-row-2",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-drop-6500-digits",
+                      "traditional": "6,500",
+                      "pinyin": "liù qiān wǔ bǎi",
+                      "meaning": "6,500"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-drop-6500-full",
+                      "traditional": "六千五百",
+                      "pinyin": "liù qiān wǔ bǎi",
+                      "meaning": "six thousand five hundred"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-drop-6500-short",
+                      "traditional": "六千五",
+                      "pinyin": "liù qiān wǔ",
+                      "meaning": "six thousand five hundred (short way)"
+                    }
+                  ]
+                ]
+              },
+              {
+                "id": "g4-drop-row-3",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-drop-78000-digits",
+                      "traditional": "78,000",
+                      "pinyin": "qī wàn bā qiān",
+                      "meaning": "78,000"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-drop-78000-full",
+                      "traditional": "七萬八千",
+                      "pinyin": "qī wàn bā qiān",
+                      "meaning": "seventy-eight thousand"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-drop-78000-short",
+                      "traditional": "七萬八",
+                      "pinyin": "qī wàn bā",
+                      "meaning": "seventy-eight thousand (short way)"
+                    }
+                  ]
+                ]
+              }
+            ]
+          },
+          {
+            "id": "b1l04-g04-sec-4",
+            "sectionNumber": 4,
+            "title": "Big numbers: how many 萬",
+            "explanation": "萬 counts ten-thousands. Say how many 萬, then add what is left: 七 萬 八千 is 7 × 10,000 + 8,000.",
+            "patternColumns": [
+              "Number",
+              "How many",
+              "萬",
+              "The rest"
+            ],
+            "patternColumnDetails": [
+              "digits",
+              "count of 萬",
+              "ten thousand",
+              "what is left"
+            ],
+            "patternRows": [
+              {
+                "id": "g4-wan-row-1",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-wan-78000-digits",
+                      "traditional": "78,000",
+                      "pinyin": "qī wàn bā qiān",
+                      "meaning": "78,000"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-wan-78000-count",
+                      "traditional": "七",
+                      "pinyin": "qī",
+                      "meaning": "seven"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-wan-78000-wan",
+                      "traditional": "萬",
+                      "pinyin": "wàn",
+                      "meaning": "ten thousand"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-wan-78000-rest",
+                      "traditional": "八千",
+                      "pinyin": "bā qiān",
+                      "meaning": "eight thousand"
+                    }
+                  ]
+                ]
+              },
+              {
+                "id": "g4-wan-row-2",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-wan-90500-digits",
+                      "traditional": "90,500",
+                      "pinyin": "jiǔ wàn líng wǔ bǎi",
+                      "meaning": "90,500"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-wan-90500-count",
+                      "traditional": "九",
+                      "pinyin": "jiǔ",
+                      "meaning": "nine"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-wan-90500-wan",
+                      "traditional": "萬",
+                      "pinyin": "wàn",
+                      "meaning": "ten thousand"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-wan-90500-rest",
+                      "traditional": "零五百",
+                      "pinyin": "líng wǔ bǎi",
+                      "meaning": "zero, five hundred"
+                    }
+                  ]
+                ]
+              },
+              {
+                "id": "g4-wan-row-3",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-wan-500000-digits",
+                      "traditional": "500,000",
+                      "pinyin": "wǔ shí wàn",
+                      "meaning": "500,000"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-wan-500000-count",
+                      "traditional": "五十",
+                      "pinyin": "wǔ shí",
+                      "meaning": "fifty"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-wan-500000-wan",
+                      "traditional": "萬",
+                      "pinyin": "wàn",
+                      "meaning": "ten thousand"
+                    }
+                  ],
+                  []
+                ]
+              },
+              {
+                "id": "g4-wan-row-4",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-wan-3050000-digits",
+                      "traditional": "3,050,000",
+                      "pinyin": "sān bǎi líng wǔ wàn",
+                      "meaning": "3,050,000"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-wan-3050000-count",
+                      "traditional": "三百零五",
+                      "pinyin": "sān bǎi líng wǔ",
+                      "meaning": "three hundred five"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-wan-3050000-wan",
+                      "traditional": "萬",
+                      "pinyin": "wàn",
+                      "meaning": "ten thousand"
+                    }
+                  ],
+                  []
+                ]
+              },
+              {
+                "id": "g4-wan-row-5",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-wan-90090000-digits",
+                      "traditional": "90,090,000",
+                      "pinyin": "jiǔ qiān líng jiǔ wàn",
+                      "meaning": "90,090,000"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-wan-90090000-count",
+                      "traditional": "九千零九",
+                      "pinyin": "jiǔ qiān líng jiǔ",
+                      "meaning": "nine thousand nine"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-wan-90090000-wan",
+                      "traditional": "萬",
+                      "pinyin": "wàn",
+                      "meaning": "ten thousand"
+                    }
+                  ],
+                  []
+                ]
+              }
+            ]
           }
         ]
       },
@@ -4419,11 +5458,18 @@
             "meaning": "more than two weeks"
           }
         ],
-        "pattern": "Round number + 多 + measure word, or number + measure word + 多",
+        "pattern": "Number + 多 + measure word; Number + measure word + 多",
         "patternColumns": [
           "Number",
           "多",
-          "Amount"
+          "Measure word",
+          "Noun"
+        ],
+        "patternColumnDetails": [
+          "Nu",
+          "over",
+          "M",
+          "N"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
@@ -4470,112 +5516,7 @@
           ],
           "takeaway": "多 after a round number gives a wider range; 多 after a unit means only a little beyond it."
         },
-        "patternRows": [
-          {
-            "id": "g5-pattern-1",
-            "subject": [
-              {
-                "id": "g5-p1-ten",
-                "traditional": "十",
-                "pinyin": "shí",
-                "meaning": "ten"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g5-p1-more",
-                "traditional": "多",
-                "pinyin": "duō",
-                "meaning": "more than; over"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g5-p1-ge",
-                "traditional": "個",
-                "simplified": "个",
-                "pinyin": "ge",
-                "meaning": "general measure word"
-              },
-              {
-                "id": "g5-p1-cake",
-                "traditional": "蛋糕",
-                "pinyin": "dàngāo",
-                "meaning": "cake"
-              }
-            ],
-            "english": "11–19 cakes"
-          },
-          {
-            "id": "g5-pattern-2",
-            "subject": [
-              {
-                "id": "g5-p2-hundred",
-                "traditional": "百",
-                "pinyin": "bǎi",
-                "meaning": "hundred"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g5-p2-more",
-                "traditional": "多",
-                "pinyin": "duō",
-                "meaning": "more than; over"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g5-p2-branch",
-                "traditional": "枝",
-                "pinyin": "zhī",
-                "meaning": "measure word for pens"
-              },
-              {
-                "id": "g5-p2-pencil",
-                "traditional": "鉛筆",
-                "simplified": "铅笔",
-                "pinyin": "qiānbǐ",
-                "meaning": "pencil"
-              }
-            ],
-            "english": "101–199 pencils"
-          },
-          {
-            "id": "g5-pattern-3",
-            "subject": [
-              {
-                "id": "g5-p3-eleven",
-                "traditional": "十",
-                "pinyin": "shí",
-                "meaning": "ten"
-              },
-              {
-                "id": "g5-p3-one",
-                "traditional": "一",
-                "pinyin": "yī",
-                "meaning": "one"
-              },
-              {
-                "id": "g5-p3-oclock",
-                "traditional": "點",
-                "simplified": "点",
-                "pinyin": "diǎn",
-                "meaning": "order from a menu; o’clock"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g5-p3-more",
-                "traditional": "多",
-                "pinyin": "duō",
-                "meaning": "more than; over"
-              }
-            ],
-            "complement": [],
-            "english": "a little after 11:00"
-          }
-        ],
+        "patternRows": [],
         "confusion": {
           "title": "Don't mix these up",
           "items": [
@@ -5027,6 +5968,223 @@
             ],
             "correctFeedback": "多 follows the dollar unit because 45 cents is less than one whole dollar.",
             "repairFeedback": "Use 八 + 塊 + 多 for a small extra beyond eight dollars."
+          }
+        ],
+        "subsections": [
+          {
+            "id": "b1l04-g05-sec-1",
+            "sectionNumber": 1,
+            "title": "Number + 多 + Measure word + Noun",
+            "explanation": "Put 多 right after a round number. The amount is somewhere above that number.",
+            "patternColumns": [
+              "Number",
+              "多",
+              "Measure word",
+              "Noun"
+            ],
+            "patternColumnDetails": [
+              "Nu",
+              "over",
+              "M",
+              "N"
+            ],
+            "patternRows": [
+              {
+                "id": "g5-sec1-row",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g5-p1-ten",
+                      "traditional": "十",
+                      "pinyin": "shí",
+                      "meaning": "ten"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g5-p1-more",
+                      "traditional": "多",
+                      "pinyin": "duō",
+                      "meaning": "more than; over"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g5-p1-ge",
+                      "traditional": "個",
+                      "simplified": "个",
+                      "pinyin": "ge",
+                      "meaning": "general measure word"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g5-p1-cake",
+                      "traditional": "蛋糕",
+                      "pinyin": "dàngāo",
+                      "meaning": "cake"
+                    }
+                  ]
+                ],
+                "english": "more than ten cakes (11–19)"
+              }
+            ],
+            "exampleIds": [
+              "g5-example-1",
+              "g5-example-2"
+            ]
+          },
+          {
+            "id": "b1l04-g05-sec-2",
+            "sectionNumber": 2,
+            "title": "Number + Measure word + 多 + Noun",
+            "explanation": "Put 多 after the measure word or time word. The extra part is less than one full unit, so the noun can be left out.",
+            "patternColumns": [
+              "Number",
+              "Measure word",
+              "多",
+              "Noun"
+            ],
+            "patternColumnDetails": [
+              "Nu",
+              "M",
+              "over",
+              "(N)"
+            ],
+            "patternRows": [
+              {
+                "id": "g5-sec2-row-1",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g5-s2-ten",
+                      "traditional": "十",
+                      "pinyin": "shí",
+                      "meaning": "ten"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g5-s2-ge",
+                      "traditional": "個",
+                      "pinyin": "ge",
+                      "meaning": "general measure word"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g5-s2-more",
+                      "traditional": "多",
+                      "pinyin": "duō",
+                      "meaning": "more than; over"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g5-s2-cake",
+                      "traditional": "蛋糕",
+                      "pinyin": "dàngāo",
+                      "meaning": "cake",
+                      "prefix": "（",
+                      "suffix": "）"
+                    }
+                  ]
+                ],
+                "english": "more than ten cakes (10–11)"
+              },
+              {
+                "id": "g5-sec2-row-2",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g5-s2-five",
+                      "traditional": "五",
+                      "pinyin": "wǔ",
+                      "meaning": "five"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g5-s2-kuai",
+                      "traditional": "塊",
+                      "pinyin": "kuài",
+                      "meaning": "measure word for money"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g5-s2-more-2",
+                      "traditional": "多",
+                      "pinyin": "duō",
+                      "meaning": "more than; over"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g5-s2-money",
+                      "traditional": "錢",
+                      "pinyin": "qián",
+                      "meaning": "money",
+                      "prefix": "（",
+                      "suffix": "）"
+                    }
+                  ]
+                ],
+                "english": "more than five dollars (5–6)"
+              },
+              {
+                "id": "g5-sec2-row-3",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g5-s2-ten-2",
+                      "traditional": "十",
+                      "pinyin": "shí",
+                      "meaning": "ten"
+                    },
+                    {
+                      "id": "g5-s2-one",
+                      "traditional": "一",
+                      "pinyin": "yī",
+                      "meaning": "one"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g5-s2-oclock",
+                      "traditional": "點",
+                      "pinyin": "diǎn",
+                      "meaning": "hour word; o’clock"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g5-s2-more-3",
+                      "traditional": "多",
+                      "pinyin": "duō",
+                      "meaning": "more than; over"
+                    }
+                  ],
+                  []
+                ],
+                "english": "a little after 11:00 (11:00–12:00)"
+              }
+            ],
+            "exampleIds": [
+              "g5-example-3"
+            ]
           }
         ]
       }

@@ -15,7 +15,7 @@
       117
     ],
     "audioReference": "05-1-3",
-    "explanation": "Use 在 to say where someone or something is. Put the person or thing first, then 在 or 不在, then the place. This form only answers “Where?”",
+    "explanation": "State location with Subject + 在 / 不在 + Place (他在學校). This pattern answers \"Where is someone/something?\".",
     "focusTerms": [
       "在",
       "地方",
@@ -650,11 +650,16 @@
         "meaning": "clothes"
       }
     ],
-    "pattern": "Person or thing +（不）在 + place",
+    "pattern": "Subject +（不）在 + place",
     "patternColumns": [
-      "Who / What?",
-      "Place",
-      "Where?"
+      "Subject",
+      "在",
+      "Place"
+    ],
+    "patternColumnDetails": [
+      "S",
+      "(Neg) 在",
+      "PW"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -1940,11 +1945,14 @@
         "meaning": "clothes"
       }
     ],
-    "pattern": "Situation, suggested action + 吧",
+    "pattern": "Statement, suggestion + 吧",
     "patternColumns": [
-      "Situation",
-      "Suggestion",
-      "End with 吧"
+      "Statement 1",
+      "Statement 2 + 吧"
+    ],
+    "patternColumnDetails": [
+      "situation",
+      "action + 吧"
     ],
     "patternAccentColumn": 2,
     "discoveryLab": {
@@ -2036,9 +2044,7 @@
             "traditional": "小的",
             "pinyin": "xiǎo de",
             "meaning": "the smaller one"
-          }
-        ],
-        "complement": [
+          },
           {
             "id": "g3-p1-ba",
             "traditional": "吧",
@@ -2047,6 +2053,7 @@
             "suffix": "。"
           }
         ],
+        "complement": [],
         "english": "This cake is too large; buy the small one."
       },
       {
@@ -2098,9 +2105,7 @@
             "simplified": "这杯",
             "pinyin": "zhè bēi",
             "meaning": "this cup"
-          }
-        ],
-        "complement": [
+          },
           {
             "id": "g3-p2-ba",
             "traditional": "吧",
@@ -2109,6 +2114,7 @@
             "suffix": "。"
           }
         ],
+        "complement": [],
         "english": "That water is too hot; drink this cup instead."
       },
       {
@@ -2128,9 +2134,7 @@
             "traditional": "一起去",
             "pinyin": "yìqǐ qù",
             "meaning": "go together"
-          }
-        ],
-        "complement": [
+          },
           {
             "id": "g3-p3-ba",
             "traditional": "吧",
@@ -2139,6 +2143,7 @@
             "suffix": "。"
           }
         ],
+        "complement": [],
         "english": "Let’s go together."
       }
     ],
@@ -3347,11 +3352,18 @@
         "meaning": "clothes"
       }
     ],
-    "pattern": "Person + 在 + place + action",
+    "pattern": "Subject + 在 + place + verb",
     "patternColumns": [
-      "Who?",
-      "Where?",
-      "Action"
+      "Subject",
+      "在",
+      "Place",
+      "Verb"
+    ],
+    "patternColumnDetails": [
+      "S",
+      "在",
+      "PW",
+      "V(O)"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -3393,112 +3405,133 @@
     "patternRows": [
       {
         "id": "g2-p1",
-        "subject": [
-          {
-            "id": "g2-p1-i",
-            "traditional": "我",
-            "pinyin": "wǒ",
-            "meaning": "I; me"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g2-p1-zai",
-            "traditional": "在",
-            "pinyin": "zài",
-            "meaning": "to be located at; in; on"
-          },
-          {
-            "id": "g2-p1-tw",
-            "traditional": "台灣",
-            "simplified": "台湾",
-            "pinyin": "Táiwān",
-            "meaning": "Taiwan"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g2-p1-class",
-            "traditional": "上中文課",
-            "simplified": "上中文课",
-            "pinyin": "shàng Zhōngwén kè",
-            "meaning": "take Chinese class",
-            "suffix": "。"
-          }
+        "subject": [],
+        "grammar": [],
+        "complement": [],
+        "columns": [
+          [
+            {
+              "id": "g2-p1-i",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me"
+            }
+          ],
+          [
+            {
+              "id": "g2-p1-zai",
+              "traditional": "在",
+              "pinyin": "zài",
+              "meaning": "to be located at; in; on"
+            }
+          ],
+          [
+            {
+              "id": "g2-p1-tw",
+              "traditional": "台灣",
+              "simplified": "台湾",
+              "pinyin": "Táiwān",
+              "meaning": "Taiwan"
+            }
+          ],
+          [
+            {
+              "id": "g2-p1-class",
+              "traditional": "上中文課",
+              "simplified": "上中文课",
+              "pinyin": "shàng Zhōngwén kè",
+              "meaning": "take Chinese class",
+              "suffix": "。"
+            }
+          ]
         ],
         "english": "I take Chinese class in Taiwan."
       },
       {
         "id": "g2-p2",
-        "subject": [
-          {
-            "id": "g2-p2-he",
-            "traditional": "他",
-            "pinyin": "tā",
-            "meaning": "he; him"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g2-p2-zai",
-            "traditional": "在",
-            "pinyin": "zài",
-            "meaning": "to be located at; in; on"
-          },
-          {
-            "id": "g2-p2-lib",
-            "traditional": "圖書館",
-            "simplified": "图书馆",
-            "pinyin": "túshūguǎn",
-            "meaning": "library"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g2-p2-read",
-            "traditional": "看書",
-            "simplified": "看书",
-            "pinyin": "kànshū",
-            "meaning": "read",
-            "suffix": "。"
-          }
+        "subject": [],
+        "grammar": [],
+        "complement": [],
+        "columns": [
+          [
+            {
+              "id": "g2-p2-he",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he; him"
+            }
+          ],
+          [
+            {
+              "id": "g2-p2-zai",
+              "traditional": "在",
+              "pinyin": "zài",
+              "meaning": "to be located at; in; on"
+            }
+          ],
+          [
+            {
+              "id": "g2-p2-lib",
+              "traditional": "圖書館",
+              "simplified": "图书馆",
+              "pinyin": "túshūguǎn",
+              "meaning": "library"
+            }
+          ],
+          [
+            {
+              "id": "g2-p2-read",
+              "traditional": "看書",
+              "simplified": "看书",
+              "pinyin": "kànshū",
+              "meaning": "read",
+              "suffix": "。"
+            }
+          ]
         ],
         "english": "He reads at the library."
       },
       {
         "id": "g2-p3",
-        "subject": [
-          {
-            "id": "g2-p3-she",
-            "traditional": "她",
-            "pinyin": "tā",
-            "meaning": "she; her"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g2-p3-zai",
-            "traditional": "在",
-            "pinyin": "zài",
-            "meaning": "to be located at; in; on"
-          },
-          {
-            "id": "g2-p3-school",
-            "traditional": "學校",
-            "simplified": "学校",
-            "pinyin": "xuéxiào",
-            "meaning": "school"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g2-p3-class",
-            "traditional": "上課",
-            "simplified": "上课",
-            "pinyin": "shàngkè",
-            "meaning": "attend class",
-            "suffix": "。"
-          }
+        "subject": [],
+        "grammar": [],
+        "complement": [],
+        "columns": [
+          [
+            {
+              "id": "g2-p3-she",
+              "traditional": "她",
+              "pinyin": "tā",
+              "meaning": "she; her"
+            }
+          ],
+          [
+            {
+              "id": "g2-p3-zai",
+              "traditional": "在",
+              "pinyin": "zài",
+              "meaning": "to be located at; in; on"
+            }
+          ],
+          [
+            {
+              "id": "g2-p3-school",
+              "traditional": "學校",
+              "simplified": "学校",
+              "pinyin": "xuéxiào",
+              "meaning": "school"
+            }
+          ],
+          [
+            {
+              "id": "g2-p3-class",
+              "traditional": "上課",
+              "simplified": "上课",
+              "pinyin": "shàngkè",
+              "meaning": "attend class",
+              "suffix": "。"
+            }
+          ]
         ],
         "english": "She attends class at school."
       }
@@ -4677,11 +4710,16 @@
             "meaning": "clothes"
           }
         ],
-        "pattern": "Person or thing +（不）在 + place",
+        "pattern": "Subject +（不）在 + place",
         "patternColumns": [
-          "Who / What?",
-          "Place",
-          "Where?"
+          "Subject",
+          "在",
+          "Place"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "(Neg) 在",
+          "PW"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
@@ -5968,11 +6006,18 @@
             "meaning": "clothes"
           }
         ],
-        "pattern": "Person + 在 + place + action",
+        "pattern": "Subject + 在 + place + verb",
         "patternColumns": [
-          "Who?",
-          "Where?",
-          "Action"
+          "Subject",
+          "在",
+          "Place",
+          "Verb"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "在",
+          "PW",
+          "V(O)"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
@@ -6014,112 +6059,133 @@
         "patternRows": [
           {
             "id": "g2-p1",
-            "subject": [
-              {
-                "id": "g2-p1-i",
-                "traditional": "我",
-                "pinyin": "wǒ",
-                "meaning": "I; me"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g2-p1-zai",
-                "traditional": "在",
-                "pinyin": "zài",
-                "meaning": "to be located at; in; on"
-              },
-              {
-                "id": "g2-p1-tw",
-                "traditional": "台灣",
-                "simplified": "台湾",
-                "pinyin": "Táiwān",
-                "meaning": "Taiwan"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g2-p1-class",
-                "traditional": "上中文課",
-                "simplified": "上中文课",
-                "pinyin": "shàng Zhōngwén kè",
-                "meaning": "take Chinese class",
-                "suffix": "。"
-              }
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g2-p1-i",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                }
+              ],
+              [
+                {
+                  "id": "g2-p1-zai",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "to be located at; in; on"
+                }
+              ],
+              [
+                {
+                  "id": "g2-p1-tw",
+                  "traditional": "台灣",
+                  "simplified": "台湾",
+                  "pinyin": "Táiwān",
+                  "meaning": "Taiwan"
+                }
+              ],
+              [
+                {
+                  "id": "g2-p1-class",
+                  "traditional": "上中文課",
+                  "simplified": "上中文课",
+                  "pinyin": "shàng Zhōngwén kè",
+                  "meaning": "take Chinese class",
+                  "suffix": "。"
+                }
+              ]
             ],
             "english": "I take Chinese class in Taiwan."
           },
           {
             "id": "g2-p2",
-            "subject": [
-              {
-                "id": "g2-p2-he",
-                "traditional": "他",
-                "pinyin": "tā",
-                "meaning": "he; him"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g2-p2-zai",
-                "traditional": "在",
-                "pinyin": "zài",
-                "meaning": "to be located at; in; on"
-              },
-              {
-                "id": "g2-p2-lib",
-                "traditional": "圖書館",
-                "simplified": "图书馆",
-                "pinyin": "túshūguǎn",
-                "meaning": "library"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g2-p2-read",
-                "traditional": "看書",
-                "simplified": "看书",
-                "pinyin": "kànshū",
-                "meaning": "read",
-                "suffix": "。"
-              }
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g2-p2-he",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he; him"
+                }
+              ],
+              [
+                {
+                  "id": "g2-p2-zai",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "to be located at; in; on"
+                }
+              ],
+              [
+                {
+                  "id": "g2-p2-lib",
+                  "traditional": "圖書館",
+                  "simplified": "图书馆",
+                  "pinyin": "túshūguǎn",
+                  "meaning": "library"
+                }
+              ],
+              [
+                {
+                  "id": "g2-p2-read",
+                  "traditional": "看書",
+                  "simplified": "看书",
+                  "pinyin": "kànshū",
+                  "meaning": "read",
+                  "suffix": "。"
+                }
+              ]
             ],
             "english": "He reads at the library."
           },
           {
             "id": "g2-p3",
-            "subject": [
-              {
-                "id": "g2-p3-she",
-                "traditional": "她",
-                "pinyin": "tā",
-                "meaning": "she; her"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g2-p3-zai",
-                "traditional": "在",
-                "pinyin": "zài",
-                "meaning": "to be located at; in; on"
-              },
-              {
-                "id": "g2-p3-school",
-                "traditional": "學校",
-                "simplified": "学校",
-                "pinyin": "xuéxiào",
-                "meaning": "school"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g2-p3-class",
-                "traditional": "上課",
-                "simplified": "上课",
-                "pinyin": "shàngkè",
-                "meaning": "attend class",
-                "suffix": "。"
-              }
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g2-p3-she",
+                  "traditional": "她",
+                  "pinyin": "tā",
+                  "meaning": "she; her"
+                }
+              ],
+              [
+                {
+                  "id": "g2-p3-zai",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "to be located at; in; on"
+                }
+              ],
+              [
+                {
+                  "id": "g2-p3-school",
+                  "traditional": "學校",
+                  "simplified": "学校",
+                  "pinyin": "xuéxiào",
+                  "meaning": "school"
+                }
+              ],
+              [
+                {
+                  "id": "g2-p3-class",
+                  "traditional": "上課",
+                  "simplified": "上课",
+                  "pinyin": "shàngkè",
+                  "meaning": "attend class",
+                  "suffix": "。"
+                }
+              ]
             ],
             "english": "She attends class at school."
           }
@@ -7288,11 +7354,14 @@
             "meaning": "clothes"
           }
         ],
-        "pattern": "Situation, suggested action + 吧",
+        "pattern": "Statement, suggestion + 吧",
         "patternColumns": [
-          "Situation",
-          "Suggestion",
-          "End with 吧"
+          "Statement 1",
+          "Statement 2 + 吧"
+        ],
+        "patternColumnDetails": [
+          "situation",
+          "action + 吧"
         ],
         "patternAccentColumn": 2,
         "discoveryLab": {
@@ -7384,9 +7453,7 @@
                 "traditional": "小的",
                 "pinyin": "xiǎo de",
                 "meaning": "the smaller one"
-              }
-            ],
-            "complement": [
+              },
               {
                 "id": "g3-p1-ba",
                 "traditional": "吧",
@@ -7395,6 +7462,7 @@
                 "suffix": "。"
               }
             ],
+            "complement": [],
             "english": "This cake is too large; buy the small one."
           },
           {
@@ -7446,9 +7514,7 @@
                 "simplified": "这杯",
                 "pinyin": "zhè bēi",
                 "meaning": "this cup"
-              }
-            ],
-            "complement": [
+              },
               {
                 "id": "g3-p2-ba",
                 "traditional": "吧",
@@ -7457,6 +7523,7 @@
                 "suffix": "。"
               }
             ],
+            "complement": [],
             "english": "That water is too hot; drink this cup instead."
           },
           {
@@ -7476,9 +7543,7 @@
                 "traditional": "一起去",
                 "pinyin": "yìqǐ qù",
                 "meaning": "go together"
-              }
-            ],
-            "complement": [
+              },
               {
                 "id": "g3-p3-ba",
                 "traditional": "吧",
@@ -7487,6 +7552,7 @@
                 "suffix": "。"
               }
             ],
+            "complement": [],
             "english": "Let’s go together."
           }
         ],

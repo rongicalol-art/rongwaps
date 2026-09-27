@@ -34,7 +34,7 @@ export function StudySidePanel({
     <aside
       aria-label={ariaLabel}
       className={cn(
-        'hidden lg:flex w-80 xl:w-[410px] shrink-0 flex-col min-h-0 pt-6 mr-4 xl:mr-6 z-20 overflow-y-auto overscroll-contain pr-1 custom-scrollbar',
+        'hidden lg:flex w-72 xl:w-80 shrink-0 flex-col min-h-0 pt-6 mr-4 xl:mr-6 z-20 overflow-y-auto overscroll-contain pr-1 custom-scrollbar',
         className,
       )}
     >

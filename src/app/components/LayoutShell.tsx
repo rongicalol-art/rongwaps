@@ -157,8 +157,8 @@ export function LayoutShell({
         <main
           id="main-content"
           tabIndex={-1}
-          className={`flex-1 w-full relative overflow-y-auto overflow-x-hidden overscroll-none flex flex-col pb-12 md:pb-6 outline-none ${isOverlayActive ? 'hidden' : ''}`}
-          aria-hidden={isOverlayActive}
+          className={`flex-1 w-full relative overflow-y-auto overflow-x-hidden overscroll-none flex flex-col pb-12 md:pb-6 outline-none ${isOverlayActive || Boolean(activeActivity) ? 'hidden' : ''}`}
+          aria-hidden={isOverlayActive || Boolean(activeActivity)}
         >
           {children}
         </main>

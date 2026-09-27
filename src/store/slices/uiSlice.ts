@@ -47,6 +47,8 @@ export interface UiState {
     totalCount: number;
     showLightbulb: boolean;
     partSegments: PartSegment[];
+    isRetry?: boolean;
+    cleanupPhase?: { currentIndex: number; totalCount: number } | null;
   };
   setPracticeHeader: (state: Partial<UiState['practiceHeader']>) => void;
   practiceHeaderActions: PracticeHeaderActions;

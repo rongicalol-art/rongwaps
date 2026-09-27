@@ -45,14 +45,13 @@ function HeaderTitle({ text }: { text: string }) {
 }
 
 /**
- * One quiet table surface: a compact slot header and every example row live
- * in a single shared grid so vertical dividers stay aligned while each column
- * sizes proportionally based on content weight. Each header cell carries one
- * line only — the short slot title (grammarTableHeaders test); the compact
- * `patternColumnDetails` notation stays in the cell tooltip. Example rows
- * stay clean (chunks and pinyin only, no labels mixed in). Responsive minimums
- * and scroll edge fades ensure smooth horizontal navigation on narrow devices
- * without clipping glyphs.
+ * Semantic, responsive grammar pattern table.
+ *
+ * Uses native table semantics with `<colgroup>` proportional column weights so
+ * columns size naturally according to content without right-edge dead zones or
+ * unnatural character stacking. The outer container manages smooth horizontal
+ * scrolling with tactile edge-fade indicators when content extends past the
+ * viewport.
  */
 export function GrammarPatternSection({
   page,
@@ -101,11 +100,13 @@ export function GrammarPatternSection({
 
   if (activeRows.length === 0) return null;
 
+  const columnCount = layout.sourceColumns.length;
+
   return (
     <section aria-label="Sentence pattern">
       <div
         className={cn(
-          'relative overflow-hidden rounded-feature border-2 border-brand-primary/40 border-b-[length:var(--depth-md)] bg-ui-surface',
+          'relative w-full overflow-hidden rounded-feature border-2 border-brand-primary/30 border-b-[length:var(--depth-md)] bg-ui-surface',
         )}
       >
         {/* Left scroll fade indicator */}
@@ -126,95 +127,110 @@ export function GrammarPatternSection({
           )}
         />
 
-        {/* The table surface always contains horizontal overflow by scrolling;
-            it is never clipped by the card. */}
+        {/* Scrollable table container */}
         <div
           ref={scrollContainerRef}
           onScroll={updateScrollIndicators}
           className="overflow-x-auto scrollbar-none"
         >
-          <div
-            className={cn(
-              'grid w-full items-stretch',
-              layout.isScrollable && (layout.sourceColumns.length >= 3 ? 'min-w-[340px]' : 'min-w-[260px]'),
-            )}
-            style={{ gridTemplateColumns: layout.gridTemplateColumns }}
-          >
-            {layout.sourceColumns.map((sourceIndex, colIndex) => {
-              const columnTitle = activeColumns[sourceIndex] ?? '';
-              const detail = activeDetails?.[sourceIndex];
+          <table className="w-full min-w-full border-collapse table-auto text-left">
+            <colgroup>
+              {layout.sourceColumns.map((sourceIndex, colIndex) => {
+                const share = layout.shares[colIndex] ?? (1 / columnCount);
+                return (
+                  <col
+                    key={`col-${sourceIndex}`}
+                    style={{ width: `${Math.round(share * 100)}%` }}
+                  />
+                );
+              })}
+            </colgroup>
+            <thead>
+              <tr className="border-b border-brand-primary/20 bg-brand-primary/[0.08]">
+                {layout.sourceColumns.map((sourceIndex, colIndex) => {
+                  const columnTitle = activeColumns[sourceIndex] ?? '';
+                  const detail = activeDetails?.[sourceIndex];
 
-              return (
-                <div
-                  key={`legend-${sourceIndex}`}
-                  className={cn(
-                    'flex min-h-[48px] min-w-0 flex-col items-start justify-center border-b-2 border-brand-primary/30 bg-brand-primary/[0.08] px-3 py-2.5 text-left sm:min-h-[56px] sm:px-4 sm:py-3',
-                    colIndex > 0 && 'border-l-2 border-brand-primary/20',
-                  )}
-                >
-                  {/* One line per header: the slot title only, authored as
-                      1-3 plain words (grammarTableHeaders test); the compact
-                      notation lives in the tooltip and the page explanation. */}
-                  <span
-                    className="block w-full truncate text-left text-base font-extrabold leading-tight text-ui-ink-strong"
-                    title={detail ? `${columnTitle} · ${detail}` : columnTitle}
-                  >
-                    <HeaderTitle text={columnTitle} />
-                  </span>
-                </div>
-              );
-            })}
-
-            {activeRows.map((row, rowIndex) => {
-              const groups = getPatternRowGroups(row);
-              return (
-                <Fragment key={row.id}>
-                  {layout.sourceColumns.map((sourceIndex, colIndex) => {
-                    const group = groups[sourceIndex] ?? [];
-                    const isEmpty = group.length === 0;
-                    return (
-                      <div
-                        key={`${row.id}-group-${sourceIndex}`}
-                        aria-label={isEmpty ? 'Empty sentence slot' : undefined}
-                        className={cn(
-                          'flex min-h-[64px] min-w-0 items-center justify-start bg-ui-surface px-3 py-3.5 sm:min-h-[76px] sm:px-5 sm:py-4',
-                          colIndex > 0 && 'border-l-2 border-brand-primary/20',
-                          rowIndex > 0 && 'border-t-2 border-brand-primary/20',
-                        )}
-                      >
-                        {isEmpty ? (
-                          <span className="text-xs font-bold text-ui-muted/40 select-none" aria-hidden="true">—</span>
-                        ) : (
-                          <InteractiveGrammarSentence
-                            words={[...group]}
-                            characterPreference={characterPreference}
-                            showPinyin={showPinyin}
-                            align="start"
-                            tone="default"
-                            size="lg"
-                            className="gap-x-0.5 gap-y-2"
-                            onOpenWord={onOpenWord}
-                          />
-                        )}
-                      </div>
-                    );
-                  })}
-
-                  {showTranslation && (
-                    <div
-                      className="border-t-2 border-brand-primary/20 bg-ui-hover/35 px-4 py-2.5 sm:px-6 sm:py-3"
-                      style={{ gridColumn: '1 / -1' }}
+                  return (
+                    <th
+                      key={`th-${sourceIndex}`}
+                      scope="col"
+                      className={cn(
+                        'px-4 py-3 text-left font-black text-ui-ink-strong sm:px-5 sm:py-3.5',
+                        colIndex > 0 && 'border-l border-brand-primary/20',
+                      )}
                     >
-                      <p className="sr-only">Meaning</p>
-                      <p className="ui-translation text-sm">
-                        {row.english}
-                      </p>
-                    </div>
-                  )}
-                </Fragment>
-              );
-            })}
-          </div>
+                      <span
+                        className="block whitespace-nowrap text-sm font-black leading-tight tracking-wide text-ui-ink-strong sm:text-base"
+                        title={detail ? `${columnTitle} · ${detail}` : columnTitle}
+                      >
+                        <HeaderTitle text={columnTitle} />
+                      </span>
+                    </th>
+                  );
+                })}
+              </tr>
+            </thead>
+            <tbody>
+              {activeRows.map((row, rowIndex) => {
+                const groups = getPatternRowGroups(row);
+                return (
+                  <Fragment key={row.id}>
+                    <tr
+                      className={cn(
+                        rowIndex > 0 && 'border-t border-brand-primary/15',
+                      )}
+                    >
+                      {layout.sourceColumns.map((sourceIndex, colIndex) => {
+                        const group = groups[sourceIndex] ?? [];
+                        const isEmpty = group.length === 0;
+                        return (
+                          <td
+                            key={`${row.id}-group-${sourceIndex}`}
+                            aria-label={isEmpty ? 'Empty sentence slot' : undefined}
+                            className={cn(
+                              'px-4 py-3.5 align-middle sm:px-5 sm:py-4.5',
+                              colIndex > 0 && 'border-l border-brand-primary/15',
+                            )}
+                          >
+                            {isEmpty ? (
+                              <span className="text-xs font-bold text-ui-muted/40 select-none" aria-hidden="true">—</span>
+                            ) : (
+                              <InteractiveGrammarSentence
+                                words={[...group]}
+                                characterPreference={characterPreference}
+                                showPinyin={showPinyin}
+                                align="start"
+                                tone="default"
+                                size="lg"
+                                className="flex-nowrap whitespace-nowrap gap-x-0.5 gap-y-2"
+                                onOpenWord={onOpenWord}
+                              />
+                            )}
+                          </td>
+                        );
+                      })}
+                    </tr>
+
+                    {/* Full-width meaning row */}
+                    {showTranslation && row.english && (
+                      <tr className="border-t border-brand-primary/10">
+                        <td
+                          colSpan={columnCount}
+                          className="px-4 py-2 sm:px-5 sm:py-2.5"
+                        >
+                          <p className="sr-only">Meaning</p>
+                          <p className="ui-translation text-xs font-semibold text-ui-muted sm:text-sm">
+                            {row.english}
+                          </p>
+                        </td>
+                      </tr>
+                    )}
+                  </Fragment>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
     </section>

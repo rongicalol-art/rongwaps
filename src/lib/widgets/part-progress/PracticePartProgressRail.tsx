@@ -29,14 +29,14 @@ export function PracticePartProgressRail({
   return (
     <div className={cn('flex w-full gap-2 sm:gap-2.5', className)} aria-label={ariaLabel}>
       {segments.map((segment) => {
-        const flexWeight = totalAllCards > 0 ? segment.cardCount : 1;
+        const flexWeight = totalAllCards > 0 ? Math.max(segment.cardCount, 3) : 1;
         const progressPercent = segmentFill(currentIndex, segment.startIndex, segment.cardCount);
 
         return (
           <div
             key={`${segment.partId}-${segment.startIndex}`}
             style={{ flex: flexWeight }}
-            className="relative h-5 w-full min-w-0 overflow-hidden rounded-full bg-brand-primary-track"
+            className="relative h-5 w-full min-w-12 overflow-hidden rounded-full bg-brand-primary-track"
             title={`${segment.label}: ${segment.cardCount} ${unitLabel}`}
           >
             <motion.div

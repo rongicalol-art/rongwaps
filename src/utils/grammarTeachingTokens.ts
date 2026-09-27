@@ -1,4 +1,5 @@
 import type { GrammarWordToken, InteractiveGrammarPage } from '../types/models';
+import { getPatternRowGroups } from './grammarPatternLayout';
 
 export function getGrammarTeachingTokens(page: InteractiveGrammarPage): GrammarWordToken[] {
   const sentenceSpineTokens: GrammarWordToken[] = page.sentenceSpine
@@ -29,7 +30,7 @@ export function getGrammarTeachingTokens(page: InteractiveGrammarPage): GrammarW
       choice.destination,
       choice.purpose,
     ].filter((token): token is GrammarWordToken => Boolean(token))) ?? []),
-    ...page.patternRows.flatMap((row) => [...row.subject, ...row.grammar, ...row.complement]),
+    ...page.patternRows.flatMap((row) => getPatternRowGroups(row).flat()),
     ...page.examples.flatMap((example) => example.text.words ?? []),
     ...sentenceSpineTokens,
   ];

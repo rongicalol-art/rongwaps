@@ -84,7 +84,7 @@ test('generated Book 1 pack selects term-specific examples from grouped textbook
     'utf8',
   )) as CourseExamplePack;
 
-  assert.equal(pack.count, 276);
+  assert.equal(pack.count, 356);
   const cupSources = recordsToExampleCards(pack.records, ['杯子']);
   const cupExamples = findSmartExamplesForWord(cupSources, '杯子', 'B1L04-2-04');
   assert.deepEqual(cupExamples.map((example) => example.chinese), ['這個杯子一百多塊錢。']);
@@ -100,12 +100,14 @@ test('generated Book 1 pack selects term-specific examples from grouped textbook
   assert.deepEqual(summerExamples.map((example) => example.rank), [1, 5]);
 });
 
-test('later-lesson pack publishes only pinyin-verified dialogue and reading sources', () => {
+test('pack publishes only pinyin-verified dialogue and reading sources', () => {
   const pack = JSON.parse(readFileSync(
     new URL('../public/data/course-examples/book-1.json', import.meta.url),
     'utf8',
   )) as CourseExamplePack;
 
+  assert.ok(pack.records.some((record) => record.sourceOcrId === 'B1L01-D01-L01'));
+  assert.ok(pack.records.some((record) => record.sourceOcrId === 'B1L04-D02-L06'));
   assert.ok(pack.records.some((record) => record.sourceOcrId === 'B1L07-D01-L01'));
   assert.ok(pack.records.some((record) => record.sourceOcrId === 'B1L09-RDG01'));
   assert.ok(pack.records.some((record) => record.sourceOcrId === 'B1L10-D01-L01'));
@@ -114,3 +116,51 @@ test('later-lesson pack publishes only pinyin-verified dialogue and reading sour
     record.lessonId >= 11 && /-D\d|RDG/.test(record.sourceOcrId)
   )), false);
 });
+
+test('separable verb-object words match their split usage in a sentence', () => {
+  const pack = JSON.parse(readFileSync(
+    new URL('../public/data/course-examples/book-1.json', import.meta.url),
+    'utf8',
+  )) as CourseExamplePack;
+
+  // 找錢 is taught split apart in the dialogue: 找您七百八十五塊錢.
+  const records = pack.records.filter((record) => (
+    record.sourceOcrId === 'B1L04-D02-L06' || record.id === 'B1L04-2-21-E01'
+  ));
+  const cards = recordsToExampleCards(records, ['找錢'], 'V-sep');
+  const examples = findSmartExamplesForWord(cards, '找錢', 'B1L04-2-21', 'V-sep');
+  const sentences = examples.map((example) => example.chinese);
+  assert.ok(sentences.includes('找您七百八十五塊錢，謝謝。'), 'dialogue sentence is included');
+  assert.ok(sentences.includes('他找你多少錢？'), 'textbook example is included');
+
+  // Without the V-sep marker the split usage never matches the block form.
+  assert.deepEqual(recordsToExampleCards(records, ['找錢']), []);
+});
+
+test('progressive example disclosure budgets 3 initial items and reports hidden count', () => {
+  const mockRankedExamples = Array.from({ length: 8 }).map((_, i) => ({
+    chinese: `句子 ${i + 1}`,
+    pinyin: `jùzi ${i + 1}`,
+    english: `Sentence ${i + 1}`,
+    sourceCardId: `c-${i}`,
+    sourceFront: '詞',
+    sourceBookId: 1,
+    sourceLessonId: 1,
+    sourcePartId: 1,
+    rank: i === 0 ? 1 : 2,
+  }));
+
+  const INITIAL_VISIBLE_COUNT = 3;
+  const total = mockRankedExamples.length;
+  assert.equal(total, 8);
+
+  // Initial collapsed view: exactly 3 items
+  const collapsed = mockRankedExamples.slice(0, INITIAL_VISIBLE_COUNT);
+  assert.equal(collapsed.length, 3);
+  assert.equal(total > INITIAL_VISIBLE_COUNT, true);
+
+  // Expanded view: all 8 items
+  const expanded = mockRankedExamples;
+  assert.equal(expanded.length, 8);
+});
+

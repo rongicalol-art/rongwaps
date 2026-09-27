@@ -616,11 +616,16 @@
         "meaning": "red and white"
       }
     ],
-    "pattern": "Group + 都 + action or description",
+    "pattern": "Subject + 都 + verb",
     "patternColumns": [
-      "Whole group",
+      "Subject",
       "都",
-      "Shared"
+      "Verb"
+    ],
+    "patternColumnDetails": [
+      "S",
+      "Adverb",
+      "V or adjective"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -1297,7 +1302,7 @@
       84
     ],
     "audioReference": "03-2-3",
-    "explanation": "Use 的 to link a describing word to a noun. With short one-syllable words, you can usually skip 的. If what you are talking about is already clear, you can drop the noun and just leave 的.",
+    "explanation": "Use 的 to connect descriptions to nouns: Description + 的 + Noun. Skip 的 with common single-syllable adjectives (新書). When the noun is clear, drop it and end on 的.",
     "focusTerms": [
       "描述",
       "的",
@@ -1905,7 +1910,7 @@
     "patternColumns": [
       "Adjective",
       "的",
-      "Thing"
+      "Noun"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -4125,9 +4130,16 @@
     ],
     "pattern": "這 / 那 / 哪 + number + measure word + noun",
     "patternColumns": [
-      "Point or ask",
-      "Amount",
-      "Thing"
+      "這 · 那 · 哪",
+      "Number",
+      "Measure word",
+      "Noun"
+    ],
+    "patternColumnDetails": [
+      "this / that / which",
+      "Nu",
+      "M",
+      "N"
     ],
     "patternAccentColumn": 0,
     "discoveryLab": {
@@ -4168,104 +4180,133 @@
     "patternRows": [
       {
         "id": "g3-pattern-1",
-        "subject": [
-          {
-            "id": "g3-p1-this",
-            "traditional": "這",
-            "simplified": "这",
-            "pinyin": "zhè",
-            "meaning": "this"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g3-p1-kind",
-            "traditional": "種",
-            "simplified": "种",
-            "pinyin": "zhǒng",
-            "meaning": "kind; type"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g3-p1-pen",
-            "traditional": "筆",
-            "simplified": "笔",
-            "pinyin": "bǐ",
-            "meaning": "pen"
-          }
+        "subject": [],
+        "grammar": [],
+        "complement": [],
+        "columns": [
+          [
+            {
+              "id": "g3-p1-this",
+              "traditional": "這",
+              "simplified": "这",
+              "pinyin": "zhè",
+              "meaning": "this"
+            }
+          ],
+          [
+            {
+              "id": "g3-p1-one",
+              "traditional": "一",
+              "pinyin": "yī",
+              "meaning": "one; usually left out here",
+              "prefix": "（",
+              "suffix": "）"
+            }
+          ],
+          [
+            {
+              "id": "g3-p1-kind",
+              "traditional": "種",
+              "simplified": "种",
+              "pinyin": "zhǒng",
+              "meaning": "kind; type"
+            }
+          ],
+          [
+            {
+              "id": "g3-p1-pen",
+              "traditional": "筆",
+              "simplified": "笔",
+              "pinyin": "bǐ",
+              "meaning": "pen"
+            }
+          ]
         ],
         "english": "this kind of pen"
       },
       {
         "id": "g3-pattern-2",
-        "subject": [
-          {
-            "id": "g3-p2-that",
-            "traditional": "那",
-            "pinyin": "nà",
-            "meaning": "that"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g3-p2-two",
-            "traditional": "兩",
-            "simplified": "两",
-            "pinyin": "liǎng",
-            "meaning": "two before a measure word"
-          },
-          {
-            "id": "g3-p2-books-mw",
-            "traditional": "本",
-            "pinyin": "běn",
-            "meaning": "measure word for books"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g3-p2-books",
-            "traditional": "書",
-            "simplified": "书",
-            "pinyin": "shū",
-            "meaning": "book"
-          }
+        "subject": [],
+        "grammar": [],
+        "complement": [],
+        "columns": [
+          [
+            {
+              "id": "g3-p2-that",
+              "traditional": "那",
+              "pinyin": "nà",
+              "meaning": "that"
+            }
+          ],
+          [
+            {
+              "id": "g3-p2-two",
+              "traditional": "兩",
+              "simplified": "两",
+              "pinyin": "liǎng",
+              "meaning": "two before a measure word"
+            }
+          ],
+          [
+            {
+              "id": "g3-p2-books-mw",
+              "traditional": "本",
+              "pinyin": "běn",
+              "meaning": "measure word for books"
+            }
+          ],
+          [
+            {
+              "id": "g3-p2-book",
+              "traditional": "書",
+              "simplified": "书",
+              "pinyin": "shū",
+              "meaning": "book"
+            }
+          ]
         ],
         "english": "those two books"
       },
       {
         "id": "g3-pattern-3",
-        "subject": [
-          {
-            "id": "g3-p3-which",
-            "traditional": "哪",
-            "pinyin": "nǎ",
-            "meaning": "which"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g3-p3-ten",
-            "traditional": "十",
-            "pinyin": "shí",
-            "meaning": "ten"
-          },
-          {
-            "id": "g3-p3-ge",
-            "traditional": "個",
-            "simplified": "个",
-            "pinyin": "ge",
-            "meaning": "general measure word"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g3-p3-people",
-            "traditional": "人",
-            "pinyin": "rén",
-            "meaning": "person; people",
-            "suffix": "？"
-          }
+        "subject": [],
+        "grammar": [],
+        "complement": [],
+        "columns": [
+          [
+            {
+              "id": "g3-p3-which",
+              "traditional": "哪",
+              "pinyin": "nǎ",
+              "meaning": "which"
+            }
+          ],
+          [
+            {
+              "id": "g3-p3-ten",
+              "traditional": "十",
+              "pinyin": "shí",
+              "meaning": "ten"
+            }
+          ],
+          [
+            {
+              "id": "g3-p3-ge",
+              "traditional": "個",
+              "simplified": "个",
+              "pinyin": "ge",
+              "meaning": "general measure word"
+            }
+          ],
+          [
+            {
+              "id": "g3-p3-people",
+              "traditional": "人",
+              "pinyin": "rén",
+              "meaning": "person; people",
+              "suffix": "？"
+            }
+          ]
         ],
         "english": "which ten people?"
       }
@@ -5447,9 +5488,16 @@
         ],
         "pattern": "這 / 那 / 哪 + number + measure word + noun",
         "patternColumns": [
-          "Point or ask",
-          "Amount",
-          "Thing"
+          "這 · 那 · 哪",
+          "Number",
+          "Measure word",
+          "Noun"
+        ],
+        "patternColumnDetails": [
+          "this / that / which",
+          "Nu",
+          "M",
+          "N"
         ],
         "patternAccentColumn": 0,
         "discoveryLab": {
@@ -5490,104 +5538,133 @@
         "patternRows": [
           {
             "id": "g3-pattern-1",
-            "subject": [
-              {
-                "id": "g3-p1-this",
-                "traditional": "這",
-                "simplified": "这",
-                "pinyin": "zhè",
-                "meaning": "this"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g3-p1-kind",
-                "traditional": "種",
-                "simplified": "种",
-                "pinyin": "zhǒng",
-                "meaning": "kind; type"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g3-p1-pen",
-                "traditional": "筆",
-                "simplified": "笔",
-                "pinyin": "bǐ",
-                "meaning": "pen"
-              }
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g3-p1-this",
+                  "traditional": "這",
+                  "simplified": "这",
+                  "pinyin": "zhè",
+                  "meaning": "this"
+                }
+              ],
+              [
+                {
+                  "id": "g3-p1-one",
+                  "traditional": "一",
+                  "pinyin": "yī",
+                  "meaning": "one; usually left out here",
+                  "prefix": "（",
+                  "suffix": "）"
+                }
+              ],
+              [
+                {
+                  "id": "g3-p1-kind",
+                  "traditional": "種",
+                  "simplified": "种",
+                  "pinyin": "zhǒng",
+                  "meaning": "kind; type"
+                }
+              ],
+              [
+                {
+                  "id": "g3-p1-pen",
+                  "traditional": "筆",
+                  "simplified": "笔",
+                  "pinyin": "bǐ",
+                  "meaning": "pen"
+                }
+              ]
             ],
             "english": "this kind of pen"
           },
           {
             "id": "g3-pattern-2",
-            "subject": [
-              {
-                "id": "g3-p2-that",
-                "traditional": "那",
-                "pinyin": "nà",
-                "meaning": "that"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g3-p2-two",
-                "traditional": "兩",
-                "simplified": "两",
-                "pinyin": "liǎng",
-                "meaning": "two before a measure word"
-              },
-              {
-                "id": "g3-p2-books-mw",
-                "traditional": "本",
-                "pinyin": "běn",
-                "meaning": "measure word for books"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g3-p2-books",
-                "traditional": "書",
-                "simplified": "书",
-                "pinyin": "shū",
-                "meaning": "book"
-              }
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g3-p2-that",
+                  "traditional": "那",
+                  "pinyin": "nà",
+                  "meaning": "that"
+                }
+              ],
+              [
+                {
+                  "id": "g3-p2-two",
+                  "traditional": "兩",
+                  "simplified": "两",
+                  "pinyin": "liǎng",
+                  "meaning": "two before a measure word"
+                }
+              ],
+              [
+                {
+                  "id": "g3-p2-books-mw",
+                  "traditional": "本",
+                  "pinyin": "běn",
+                  "meaning": "measure word for books"
+                }
+              ],
+              [
+                {
+                  "id": "g3-p2-book",
+                  "traditional": "書",
+                  "simplified": "书",
+                  "pinyin": "shū",
+                  "meaning": "book"
+                }
+              ]
             ],
             "english": "those two books"
           },
           {
             "id": "g3-pattern-3",
-            "subject": [
-              {
-                "id": "g3-p3-which",
-                "traditional": "哪",
-                "pinyin": "nǎ",
-                "meaning": "which"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g3-p3-ten",
-                "traditional": "十",
-                "pinyin": "shí",
-                "meaning": "ten"
-              },
-              {
-                "id": "g3-p3-ge",
-                "traditional": "個",
-                "simplified": "个",
-                "pinyin": "ge",
-                "meaning": "general measure word"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g3-p3-people",
-                "traditional": "人",
-                "pinyin": "rén",
-                "meaning": "person; people",
-                "suffix": "？"
-              }
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g3-p3-which",
+                  "traditional": "哪",
+                  "pinyin": "nǎ",
+                  "meaning": "which"
+                }
+              ],
+              [
+                {
+                  "id": "g3-p3-ten",
+                  "traditional": "十",
+                  "pinyin": "shí",
+                  "meaning": "ten"
+                }
+              ],
+              [
+                {
+                  "id": "g3-p3-ge",
+                  "traditional": "個",
+                  "simplified": "个",
+                  "pinyin": "ge",
+                  "meaning": "general measure word"
+                }
+              ],
+              [
+                {
+                  "id": "g3-p3-people",
+                  "traditional": "人",
+                  "pinyin": "rén",
+                  "meaning": "person; people",
+                  "suffix": "？"
+                }
+              ]
             ],
             "english": "which ten people?"
           }
@@ -6764,7 +6841,7 @@
         "patternColumns": [
           "Adjective",
           "的",
-          "Thing"
+          "Noun"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
@@ -8978,11 +9055,16 @@
             "meaning": "red and white"
           }
         ],
-        "pattern": "Group + 都 + action or description",
+        "pattern": "Subject + 都 + verb",
         "patternColumns": [
-          "Whole group",
+          "Subject",
           "都",
-          "Shared"
+          "Verb"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "Adverb",
+          "V or adjective"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {

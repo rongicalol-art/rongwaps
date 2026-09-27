@@ -7,11 +7,14 @@ import { usePracticePreferencesStore } from '../../../store/usePracticePreferenc
 import { buildPracticePartSegments } from '../../../utils/practicePartSegments';
 import type { Flashcard } from '../../../data/flashcards';
 
+import type { CardSessionProgressInfo } from '../../../utils/mistakeQueue';
+
 interface UseFlashcardFlowProps {
   cards: Flashcard[];
   deckCards: Flashcard[];
   currentCard: Flashcard | null;
   currentIndex: number;
+  progressInfo?: CardSessionProgressInfo;
   isFlipped: boolean;
   setIsFlipped: React.Dispatch<React.SetStateAction<boolean>>;
   handleNavigate: (offset: number) => void;
@@ -33,6 +36,7 @@ export function useFlashcardFlow({
   deckCards,
   currentCard,
   currentIndex,
+  progressInfo,
   isFlipped,
   setIsFlipped,
   handleNavigate,
@@ -132,14 +136,20 @@ export function useFlashcardFlow({
     [cards, isLibraryDeck, isReviewDeck, isShuffled]
   );
 
-  const headerCurrentIndex = mode === 'list' ? Math.max(cards.length - 1, -1) : currentIndex;
-  const headerTotalCount = mode === 'list' ? deckCards.length : cards.length;
+  const headerCurrentIndex = mode === 'list'
+    ? Math.max(cards.length - 1, -1)
+    : (progressInfo?.displayIndex ?? currentIndex);
+  const headerTotalCount = mode === 'list'
+    ? deckCards.length
+    : (progressInfo?.totalCount ?? cards.length);
 
   usePracticeHeaderRegistration({
     currentIndex: headerCurrentIndex,
     totalCount: headerTotalCount,
     showLightbulb: false,
     partSegments,
+    isRetry: progressInfo?.isRetry,
+    cleanupPhase: progressInfo?.cleanupPhase,
     onShuffleClick: toggleShuffle,
     onFlowClick: toggleFlow,
     onRestartClick: restartSession,

@@ -16,7 +16,7 @@
       321
     ],
     "audioReference": "14-1-3",
-    "explanation": "This sentence tells how long an action lasted. The action is already finished. A time word like 昨天 (yesterday) or 去年 (last year) shows that the story is closed.",
+    "explanation": "Express completed duration with Verb + 了 + Time Duration. Past time words like 昨天 or 去年 confirm the action is finished.",
     "lessonWorld": {
       "kind": "countdown",
       "eyebrow": "Last New Year",
@@ -1258,8 +1258,8 @@
     ],
     "pattern": "Verb + 了 + duration",
     "patternColumns": [
-      "Who?",
-      "Action + 了",
+      "Subject",
+      "Verb + 了",
       "Duration"
     ],
     "patternAccentColumn": 1,
@@ -1902,7 +1902,7 @@
       333
     ],
     "audioReference": "14-2-3",
-    "explanation": "Put the thing you are describing before 比. Put the thing you compare it with after 比. End with the describing word or the difference.",
+    "explanation": "Compare two things with A + 比 + B + Adjective (這件比那件貴). Add any specific difference amount at the end.",
     "lessonWorld": {
       "kind": "countdown",
       "eyebrow": "New Year opinion wall",
@@ -3144,9 +3144,9 @@
     ],
     "pattern": "A + 比 + B + quality or difference",
     "patternColumns": [
-      "Thing A",
+      "Noun A",
       "比 + B",
-      "Quality"
+      "Adjective"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -5043,8 +5043,8 @@
     ],
     "pattern": "Verb + 了 + duration + 了",
     "patternColumns": [
-      "Who?",
-      "Action",
+      "Subject",
+      "Verb",
       "Ending 了"
     ],
     "patternAccentColumn": 2,
@@ -7004,8 +7004,8 @@
         ],
         "pattern": "Verb + 了 + duration",
         "patternColumns": [
-          "Who?",
-          "Action + 了",
+          "Subject",
+          "Verb + 了",
           "Duration"
         ],
         "patternAccentColumn": 1,
@@ -8890,8 +8890,8 @@
         ],
         "pattern": "Verb + 了 + duration + 了",
         "patternColumns": [
-          "Who?",
-          "Action",
+          "Subject",
+          "Verb",
           "Ending 了"
         ],
         "patternAccentColumn": 2,
@@ -12055,9 +12055,9 @@
         ],
         "pattern": "A + 比 + B + quality or difference",
         "patternColumns": [
-          "Thing A",
+          "Noun A",
           "比 + B",
-          "Quality"
+          "Adjective"
         ],
         "patternAccentColumn": 1,
         "patternRows": [

@@ -7,6 +7,7 @@ import {
   pruneExcludedIds,
 } from '../src/utils/deckExclusions';
 import { getDeckIdentityKey } from '../src/utils/lessonPartSelection';
+import { useAppStore } from '../src/store/useAppStore';
 
 function card(id: string): Flashcard {
   return {
@@ -100,4 +101,13 @@ test('isCardIdExcluded', () => {
   const excluded = new Set(['b']);
   assert.equal(isCardIdExcluded(excluded, 'b'), true);
   assert.equal(isCardIdExcluded(excluded, 'a'), false);
+});
+
+test('clearDeckExclusions removes all exclusions for specified deck key', () => {
+  const store = useAppStore;
+  const key = 'shared_deck_test_clear';
+  store.getState().setDeckExclusions(key, ['card-1', 'card-2']);
+  assert.deepEqual(store.getState().deckExclusions[key], ['card-1', 'card-2']);
+  store.getState().clearDeckExclusions(key);
+  assert.equal(store.getState().deckExclusions[key], undefined);
 });

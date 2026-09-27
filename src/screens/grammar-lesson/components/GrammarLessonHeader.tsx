@@ -9,6 +9,7 @@ import { GrammarReadingAids } from './GrammarReadingAids';
 import type { CharacterFont } from '../../../store/usePracticePreferencesStore';
 
 interface GrammarLessonHeaderProps {
+  title?: string;
   characterPreference: 'traditional' | 'simplified';
   characterFont: CharacterFont;
   showPinyin: boolean;
@@ -28,12 +29,11 @@ interface GrammarLessonHeaderProps {
 }
 
 export function GrammarLessonHeader({
+  title,
   characterPreference,
   characterFont,
   showPinyin,
   showTranslation,
-  currentStepIndex,
-  totalSteps,
   progress,
   showReadingAids,
   hasConfusion = false,
@@ -68,20 +68,19 @@ export function GrammarLessonHeader({
     <ScreenHeader
       variant="window"
       tone="canvas"
-      onClose={onClose}
-      currentIndex={currentStepIndex}
-      totalCount={totalSteps}
+      onBack={onClose}
+      title={title}
       progress={progress}
-      maxWidth="4xl"
-      progressSize="compact"
+      maxWidth="none"
+      controlSize="lg"
       rightAction={
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-2">
           {hasConfusion && onOpenConfusion && (
             <IconActionButton
-              size="md"
+              size="lg"
               onClick={onOpenConfusion}
               className={isConfusionOpen ? 'text-brand-primary hover:text-brand-primary' : undefined}
-              icon={<AppIcon name="lightbulb" size={20} />}
+              icon={<AppIcon name="hint" size={25} />}
               label={isConfusionOpen ? "Hide confusion notes" : "Don't mix these up"}
               title={isConfusionOpen ? "Hide confusion notes" : "Don't mix these up"}
               aria-haspopup="dialog"
@@ -91,10 +90,10 @@ export function GrammarLessonHeader({
           {showReadingAids ? (
             <div ref={aidsRef} className="relative">
               <IconActionButton
-                size="md"
+                size="lg"
                 onClick={() => setIsAidsOpen((open) => !open)}
                 className={isAidsOpen ? 'text-brand-primary hover:text-brand-primary' : undefined}
-                icon={<AppIcon name="menu" size={20} />}
+                icon={<AppIcon name="menu" size={25} />}
                 label="Lesson options"
                 title="Lesson options"
                 aria-haspopup="dialog"

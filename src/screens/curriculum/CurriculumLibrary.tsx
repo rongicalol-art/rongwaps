@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useMemo } from 'react';
+import { memo, useCallback, useEffect, useMemo, useRef } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { getInteractiveGrammarManifestForLesson } from '../../data/interactiveGrammarManifest';
@@ -61,7 +61,14 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
   menuToggle,
   onProfileClick,
 }: CurriculumLibraryProps) {
-  const learnedCards = useAppStore((state) => state.learnedCards);
+  const hasActiveActivity = useAppStore((state) => Boolean(state.activeActivity));
+  const activeLearnedCards = useAppStore((state) => (
+    state.activeActivity ? null : state.learnedCards
+  ));
+  const stableLearnedCardsRef = useRef<string[]>(useAppStore.getState().learnedCards);
+  if (activeLearnedCards !== null) {
+    stableLearnedCardsRef.current = activeLearnedCards;
+  }
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
   const setSelectedLessonParts = useAppStore((state) => state.setSelectedLessonParts);
   const activeBook = useMemo(
@@ -70,13 +77,13 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
   );
   const { progress, isLoading, error } = useCourseDashboard({
     activeBookId,
-    learnedCards,
+    learnedCards: stableLearnedCardsRef.current,
     selectedLessons,
     selectedLessonParts,
   });
 
   useEffect(() => {
-    if (isLoading || error) return;
+    if (isLoading || error || hasActiveActivity) return;
 
     const availablePartsByLesson = Object.fromEntries(
       progress.lessons.map((lesson) => [lesson.id, lesson.parts.map((part) => part.id)]),
@@ -84,7 +91,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     setSelectedLessonParts((current) => (
       reconcilePartSelectionsForBook(current, activeBookId, availablePartsByLesson)
     ));
-  }, [activeBookId, error, isLoading, progress.lessons, setSelectedLessonParts]);
+  }, [activeBookId, error, hasActiveActivity, isLoading, progress.lessons, setSelectedLessonParts]);
 
   const handleToggleLesson = useCallback((lessonId: number) => {
     const lesson = progress.lessons.find((item) => item.id === lessonId);

@@ -424,16 +424,15 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
   lessonTitleEnglish: 'The New Classmate',
   grammarNumber: 5,
   titleTraditional: '主語 + 動詞 + 受詞',
-  titleEnglish: 'Build Chinese from Left to Right',
-  learnerPromise: 'Build a complete sentence by saying who, what they do, and who or what receives it.',
+  titleEnglish: 'Subject–Verb–Object Structure',
+  learnerPromise: 'Build a complete sentence with a subject, a verb, and an object, in that order.',
   printedPages: [45],
   audioReference: '01-2-3',
   explanation:
-    'Build the idea from left to right: who → action or feeling → person or thing affected. That order is the whole sentence pattern.',
+    'A Chinese sentence follows one order: Subject → Verb → Object. Put the subject first, then the verb, then the object. The object is the person or thing the verb affects.',
   focusTerms: [
-    'Left to Right',
     'Subject–Verb–Object',
-    'who → does what → to whom or what',
+    'subject → verb → object',
     '不',
     '喜歡',
     '喜欢',
@@ -441,18 +440,18 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
     '爱',
   ],
   teachingGlossary: [
-    token('g5-glossary-bu', '不', 'bù', 'not; goes right before the action or feeling word'),
-    token('g5-glossary-xihuan', '喜歡', 'xǐhuān', 'to like; the feeling word in this sentence pattern', {
+    token('g5-glossary-bu', '不', 'bù', 'not; goes right before the verb'),
+    token('g5-glossary-xihuan', '喜歡', 'xǐhuān', 'to like; the verb in this sentence pattern', {
       simplified: '喜欢',
     }),
-    token('g5-glossary-ai', '愛', 'ài', 'to love; an action or feeling word', {
+    token('g5-glossary-ai', '愛', 'ài', 'to love; a verb', {
       simplified: '爱',
     }),
-    token('g5-glossary-shi', '是', 'shì', '“to be”; links someone to an identity. Do not put it before an action or feeling word'),
-    token('g5-glossary-wo', '我', 'wǒ', 'I; the person who does or feels the action'),
+    token('g5-glossary-shi', '是', 'shì', '“to be”; links someone to an identity. Do not put it before a verb'),
+    token('g5-glossary-wo', '我', 'wǒ', 'I; the subject'),
   ],
   pattern: 'S + (Neg)V + O',
-  patternColumns: ['Who', 'Does / feels', 'Who / What'],
+  patternColumns: ['Subject', 'Verb', 'Object'],
   patternColumnDetails: ['S', '(Neg)V', 'O'],
   discoveryLab: {
     title: 'Let the sentence grow one meaning block at a time',
@@ -462,30 +461,30 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
     choices: [
       {
         id: 'g5-discover-who',
-        label: '1 · Who?',
+        label: '1 · Subject',
         traditional: '我⋯',
         simplified: '我⋯',
         pinyin: 'Wǒ…',
         english: 'I…',
-        note: 'The listener knows who the sentence is about, but still waits for the action or feeling.',
+        note: 'The subject comes first. The listener knows who the sentence is about, but still waits for the verb.',
       },
       {
         id: 'g5-discover-feeling',
-        label: '2 · Does what?',
+        label: '2 · Verb',
         traditional: '我喜歡⋯',
         simplified: '我喜欢⋯',
         pinyin: 'Wǒ xǐhuān…',
         english: 'I like…',
-        note: 'Now the feeling is clear. The listener still needs to know who or what is liked.',
+        note: 'The verb comes second. The listener still needs the object — the person or thing that is liked.',
       },
       {
         id: 'g5-discover-target',
-        label: '3 · What?',
+        label: '3 · Object',
         traditional: '我喜歡臺灣。',
         simplified: '我喜欢台湾。',
         pinyin: 'Wǒ xǐhuān Táiwān.',
         english: 'I like Taiwan.',
-        note: 'The target 臺灣 completes the thought: who → feeling → what is liked.',
+        note: '臺灣 is the object. Subject → Verb → Object completes the sentence.',
       },
       {
         id: 'g5-discover-repair',
@@ -494,26 +493,26 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
         simplified: '我是喜欢台湾。 → 我喜欢台湾。',
         pinyin: 'Wǒ shì xǐhuān Táiwān. → Wǒ xǐhuān Táiwān.',
         english: 'Repair it: I like Taiwan.',
-        note: '喜歡 is already the feeling word. Do not add 是 before it.',
+        note: '喜歡 is already the verb. Do not add 是 before it.',
         isCorrection: true,
       },
     ],
     takeaway:
-      'Build the meaning in order: who → action or feeling → target. Put 不 right before the action or feeling to make it negative.',
+      'Build the sentence in order: Subject → Verb → Object. Put 不 right before the verb to make it negative.',
   },
   sentenceSpine: {
     title: 'Now switch the meaning without rebuilding the sentence',
-    description: 'Keep the three slots in place and attach 不 directly to the feeling word.',
+    description: 'Keep the three slots in place and attach 不 directly to the verb.',
     subject: {
       role: 'S',
-      label: 'Who',
+      label: 'Subject',
       traditional: '我',
       pinyin: 'wǒ',
       english: 'I',
     },
     verb: {
       role: '(Neg)V',
-      label: 'Does / feels',
+      label: 'Verb',
       traditional: '喜歡',
       simplified: '喜欢',
       pinyin: 'xǐhuān',
@@ -521,7 +520,7 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
     },
     object: {
       role: 'O',
-      label: 'Who / What',
+      label: 'Object',
       traditional: '他。',
       pinyin: 'tā',
       english: 'him',
@@ -533,7 +532,7 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
     },
     positiveEnglish: 'I like him.',
     negativeEnglish: "I don't like him.",
-    notes: ['不 stays right before the feeling word: 不喜歡.', 'Doing or feeling words like 喜歡 and 愛 do not need 是.'],
+    notes: ['不 stays right before the verb: 不喜歡.', 'Verbs like 喜歡 and 愛 do not need 是.'],
   },
   patternRows: [
     {
@@ -578,7 +577,7 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
       {
         id: 'g5-confusion-bu-placement',
         question: 'Where does 不 go to say I do not like something?',
-        answer: 'Right before the feeling word: 不喜歡. Never after the feeling word or before the person or thing.',
+        answer: 'Right before the verb: 不喜歡. Never after the verb or before the object.',
         wrongTraditional: '我喜歡不王小姐。',
         wrongSimplified: '我喜欢不王小姐。',
         right: {
@@ -600,7 +599,7 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
       {
         id: 'g5-confusion-object-order',
         question: 'Can the person or thing come first, like “Dad and Mom I love”?',
-        answer: 'No. Build the sentence left to right: who → feeling → thing. The thing goes last.',
+        answer: 'No. Chinese keeps the order Subject → Verb → Object. The object goes last.',
         wrongTraditional: '爸爸、媽媽我愛。',
         wrongSimplified: '爸爸、妈妈我爱。',
         right: {
@@ -671,7 +670,7 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
     {
       id: 'g5-example-3',
       number: 3,
-      teachingNote: 'One action word can point to two people.',
+      teachingNote: 'One verb can take two objects.',
       text: {
         traditional: '我愛爸爸、媽媽。',
         simplified: '我爱爸爸、妈妈。',
@@ -699,18 +698,18 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
     correct: {
       traditional: '我不喜歡王小姐。',
       simplified: '我不喜欢王小姐。',
-      explanation: 'Who → 不 + feeling → target.',
+      explanation: 'Subject → 不 + Verb → Object.',
     },
     avoid: [
       {
         traditional: '我是喜歡王小姐。',
         simplified: '我是喜欢王小姐。',
-        explanation: 'Do not put 是 before an action or feeling word.',
+        explanation: 'Do not put 是 before a verb.',
       },
       {
         traditional: '我喜歡不王小姐。',
         simplified: '我喜欢不王小姐。',
-        explanation: '不 belongs right before the action word, not before the person or thing.',
+        explanation: '不 belongs right before the verb, not before the object.',
       },
     ],
   },
@@ -732,21 +731,21 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
           type: 'blank',
           id: 'g5-q1-subject',
           answer: '我',
-          hint: 'Start with who.',
+          hint: 'Start with the subject.',
         },
         {
           type: 'blank',
           id: 'g5-q1-verb',
           answer: '喜歡',
           answerSimplified: '喜欢',
-          hint: 'Put the feeling/action second.',
+          hint: 'Put the verb second.',
         },
         {
           type: 'blank',
           id: 'g5-q1-object',
           answer: '臺灣',
           answerSimplified: '台湾',
-          hint: 'End with what is liked.',
+          hint: 'End with the object.',
         },
         { type: 'text', traditional: '。' },
       ],
@@ -755,8 +754,8 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
         { id: 'g5-q1-i', traditional: '我' },
         { id: 'g5-q1-like', traditional: '喜歡', simplified: '喜欢' },
       ],
-      correctFeedback: 'Who → feeling → what: 我 + 喜歡 + 臺灣.',
-      repairFeedback: 'Use the three meaning slots in order: who, does/feels, who or what.',
+      correctFeedback: 'Subject → Verb → Object: 我 + 喜歡 + 臺灣.',
+      repairFeedback: 'Use the three slots in order: subject, verb, object.',
     },
     {
       id: 'g5-question-2',
@@ -766,26 +765,26 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
           type: 'blank',
           id: 'g5-q2-subject',
           answer: '我',
-          hint: 'Start with who.',
+          hint: 'Start with the subject.',
         },
         {
           type: 'blank',
           id: 'g5-q2-negation',
           answer: '不',
-          hint: 'Put 不 right before the feeling word.',
+          hint: 'Put 不 right before the verb.',
         },
         {
           type: 'blank',
           id: 'g5-q2-verb',
           answer: '喜歡',
           answerSimplified: '喜欢',
-          hint: 'The feeling word comes after 不.',
+          hint: 'The verb comes after 不.',
         },
         {
           type: 'blank',
           id: 'g5-q2-object',
           answer: '王小姐',
-          hint: 'End with the person receiving the feeling.',
+          hint: 'End with the object: the person the verb affects.',
         },
         { type: 'text', traditional: '。' },
       ],
@@ -796,7 +795,7 @@ export const LESSON_ONE_GRAMMAR_FIVE: InteractiveGrammarPage = {
         { id: 'g5-q2-subject-tile', traditional: '我' },
       ],
       correctFeedback: '不 stays right before 喜歡: 我 + 不喜歡 + 王小姐.',
-      repairFeedback: 'Keep 不 right before 喜歡: after the person, before the person or thing.',
+      repairFeedback: 'Keep 不 right before 喜歡: after the subject, before the object.',
     },
     {
       id: 'g5-question-3',
@@ -926,7 +925,7 @@ export const LESSON_ONE_PART_TWO: InteractiveGrammarPart = {
   bookId: 1,
   lessonId: 1,
   partId: 2,
-  title: 'Grammar 4–5 · Pages 44–45',
+  title: 'Grammar 4–5',
   grammarPages: [LESSON_ONE_GRAMMAR_FOUR, LESSON_ONE_GRAMMAR_FIVE],
   dialogue: {
     id: 'B1L01-D02',

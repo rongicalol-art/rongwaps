@@ -44,6 +44,14 @@ Auto-injected each session. Core rules terse; read linked docs only when task ne
 
 - Express backend in `server/`, media streaming endpoints (e.g. `/api/audio/*`). Backend strictly isolated from client React app in `src/`.
 
+## Jev tooling (TypeSafe System One)
+
+- Key: `TYPESAFE_API_KEY` in `.env.memory-hooks.local` for scripts; server reads its own env (never expose to the client). Shared client + pinned model (`jev-1.13.0`): `scripts/jev/client.ts`; smoke check `npm run jev:check`.
+- Dev gates: `jev:lint` / `jev:lint:strict` (semantic rules in `scripts/jev/lintRuleSet.ts`, report `output/jev/lint/latest.json`), `jev:verify -- --crew NAME` (handoff vs diff), `jev:context -- "task"` (Jev-ranked context), `jev:qa:words` / `jev:qa:grammar` (content gates).
+- Default verification after any `src/` change: run `npm run jev:lint` (warn-only) alongside `typecheck`, `lint`, `test`. Treat each flagged rule as a prompt to re-check that file; do not silence a flag by weakening a rule — fix the code or calibrate the rule's threshold in `lintRuleSet.ts`.
+- Runtime grading: `POST /api/jev/grade-answer` (`server/jevClient.ts`) + `src/services/answerGradingService.ts`, used as the free-text fallback in `useDragBlankExercise`; missing key or 503 = exact-match only. Answers pass only when meaning, grammar, and natural all clear thresholds.
+- Jev judges only (noul/score/choice); code owns thresholds and verdicts. English instructions; Chinese only in state.
+
 ## Grammar + feature-specific
 
 - Grammar source-first, reading-centered: source Reading stored once; grammar points grouped in same Part.

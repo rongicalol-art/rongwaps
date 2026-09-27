@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react';
+import { memo, useEffect, useMemo, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { AppIcon, Skeleton, SmartSentence } from '../../../lib/widgets';
 import { SAMPLE_BOOKS } from '../../../data/books';
@@ -8,6 +8,9 @@ import {
 } from '../../../utils/courseExamples';
 import { numberToToneMarks } from '../../../utils/pinyin';
 import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
+import { cn } from '../../../utils/cn';
+
+const INITIAL_VISIBLE_COUNT = 3;
 
 interface FlashcardExamplesProps {
   /** Every search form (both scripts, fully expanded, longest-first). */
@@ -111,8 +114,11 @@ function FlashcardExamplesLoading() {
  * marked with a small star in the source book's accent on the left — no
  * frame, no label text. Everything else flows as quiet per-book blocks:
  * plain rows with only a bottom divider, grouped by book (order itself
- * carries the ranking). Only blocks animate, so a deep result set still
- * mounts all sentences without one animation per row.
+ * carries the ranking).
+ *
+ * For performance, only a curated initial budget (up to 3 sentences) is mounted
+ * initially. An expandable toggle allows revealing the full set on demand without
+ * bogging down the initial card flip animation.
  */
 export const FlashcardExamples = memo(function FlashcardExamples({
   searchTerms,
@@ -124,6 +130,12 @@ export const FlashcardExamples = memo(function FlashcardExamples({
   const reduceMotion = useReducedMotion();
   const hideExamplePinyin = usePracticePreferencesStore((state) => state.hideExamplePinyin);
   const showExamplePinyin = showPinyin && !hideExamplePinyin;
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  // Collapse back to initial budget when switching to a different card's examples
+  useEffect(() => {
+    setIsExpanded(false);
+  }, [examples]);
 
   const { topMatch, bookBlocks } = useMemo(() => {
     const groups = groupRankedExamples(examples);
@@ -143,6 +155,41 @@ export const FlashcardExamples = memo(function FlashcardExamples({
     };
   }, [examples]);
 
+  const { visibleTopMatch, visibleBookBlocks, totalRows, hasHidden } = useMemo(() => {
+    const total = topMatch.length + bookBlocks.reduce((sum, [, list]) => sum + list.length, 0);
+    if (isExpanded || total <= INITIAL_VISIBLE_COUNT) {
+      return {
+        visibleTopMatch: topMatch,
+        visibleBookBlocks: bookBlocks,
+        totalRows: total,
+        hasHidden: total > INITIAL_VISIBLE_COUNT,
+      };
+    }
+
+    let remainingBudget = INITIAL_VISIBLE_COUNT;
+    const slicedTop = topMatch.slice(0, remainingBudget);
+    remainingBudget -= slicedTop.length;
+
+    const slicedBlocks: Array<[number, RankedExample[]]> = [];
+    if (remainingBudget > 0) {
+      for (const [bookId, list] of bookBlocks) {
+        if (remainingBudget <= 0) break;
+        const take = list.slice(0, remainingBudget);
+        if (take.length > 0) {
+          slicedBlocks.push([bookId, take]);
+          remainingBudget -= take.length;
+        }
+      }
+    }
+
+    return {
+      visibleTopMatch: slicedTop,
+      visibleBookBlocks: slicedBlocks,
+      totalRows: total,
+      hasHidden: true,
+    };
+  }, [bookBlocks, isExpanded, topMatch]);
+
   if (isLoading) return <FlashcardExamplesLoading />;
   if (topMatch.length === 0 && bookBlocks.length === 0) return null;
 
@@ -156,18 +203,16 @@ export const FlashcardExamples = memo(function FlashcardExamples({
       : { duration: 0.24, delay: index * 0.045, ease: EASE },
   });
 
-  // One continuous stream: dividers run across every row except the last, so
-  // the per-book grouping and the top match stay visually seamless.
-  const totalRows = topMatch.length + bookBlocks.reduce((sum, [, list]) => sum + list.length, 0);
+  const currentTotal = visibleTopMatch.length + visibleBookBlocks.reduce((sum, [, list]) => sum + list.length, 0);
   let rowIndex = 0;
 
   return (
     <div className="mt-4 flex w-full flex-col pb-4" aria-label="Example sentences">
-      {topMatch.length > 0 && (
+      {visibleTopMatch.length > 0 && (
         <motion.section {...blockEntrance(0)} aria-label="Top match" className="w-full">
           <ul className="flex w-full flex-col">
-            {topMatch.map((example, index) => {
-              const divider = rowIndex < totalRows - 1;
+            {visibleTopMatch.map((example, index) => {
+              const divider = rowIndex < currentTotal - 1;
               rowIndex += 1;
               return (
                 <FlashcardExampleRow
@@ -186,7 +231,7 @@ export const FlashcardExamples = memo(function FlashcardExamples({
         </motion.section>
       )}
 
-      {bookBlocks.map(([bookId, blockExamples], blockIndex) => {
+      {visibleBookBlocks.map(([bookId, blockExamples], blockIndex) => {
         const book = SAMPLE_BOOKS.find((b) => b.id === bookId);
         return (
           <motion.section
@@ -197,7 +242,7 @@ export const FlashcardExamples = memo(function FlashcardExamples({
           >
             <ul className="flex w-full flex-col">
               {blockExamples.map((example, index) => {
-                const divider = rowIndex < totalRows - 1;
+                const divider = rowIndex < currentTotal - 1;
                 rowIndex += 1;
                 return (
                   <FlashcardExampleRow
@@ -215,6 +260,24 @@ export const FlashcardExamples = memo(function FlashcardExamples({
           </motion.section>
         );
       })}
+
+      {hasHidden && (
+        <div className="mt-3 flex w-full justify-center px-6 sm:px-8">
+          <button
+            type="button"
+            onClick={() => setIsExpanded((prev) => !prev)}
+            aria-expanded={isExpanded}
+            className="group flex min-h-9 items-center justify-center gap-1.5 rounded-compact px-3.5 py-1.5 text-xs font-extrabold text-brand-primary transition-colors hover:bg-brand-primary/10 focus-ring"
+          >
+            <span>{isExpanded ? 'Show fewer' : `Show all ${totalRows} examples`}</span>
+            <AppIcon
+              name="expand"
+              size={14}
+              className={cn('transition-transform duration-200', isExpanded && 'rotate-180')}
+            />
+          </button>
+        </div>
+      )}
     </div>
   );
 });

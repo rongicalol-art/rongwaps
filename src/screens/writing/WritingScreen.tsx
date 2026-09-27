@@ -41,7 +41,7 @@ export function WritingScreen({
     handlePrev, handleNext, handleCharComplete, isLoading, handleRetry,
     restartCurrentChar, handlePrevChar, jumpToChar, animateStrokesSignal,
     isAnimatingStrokes, setIsAnimatingStrokes, triggerAnimateStrokes,
-    loadError, restartRound, isShuffled, toggleShuffle,
+    loadError, restartRound, isShuffled, toggleShuffle, progressInfo,
   } = writing;
 
   const reduceMotion = useReducedMotion();
@@ -67,10 +67,12 @@ export function WritingScreen({
   );
 
   usePracticeHeaderRegistration({
-    currentIndex,
-    totalCount: playlist.length,
+    currentIndex: progressInfo.displayIndex,
+    totalCount: progressInfo.totalCount,
     showLightbulb: false,
     partSegments,
+    isRetry: progressInfo.isRetry,
+    cleanupPhase: progressInfo.cleanupPhase,
     onShuffleClick: toggleShuffle,
     onRestartClick: restartRound,
     isShuffled,

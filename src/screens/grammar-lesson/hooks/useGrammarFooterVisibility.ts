@@ -1,85 +1,58 @@
-import { useCallback, useEffect, useRef, useState, type RefObject } from 'react';
+import { useCallback, useEffect, useState, type RefObject } from 'react';
 
 /**
- * Hide/reveal behavior for the bottom continue footer (matching Reader mode):
- * scrolling down hides it, scrolling up reveals it, and hovering the bottom
- * trigger zone reveals it until the pointer leaves. Resets per page.
+ * Reveal behavior for the bottom continue footer in grammar lessons:
+ * Appears only when scrolled to the very bottom ("downest"), or if the
+ * page content fits completely on screen without scrolling.
  */
 export function useGrammarFooterVisibility(
   mainRef: RefObject<HTMLElement | null>,
   resetKey: unknown,
 ) {
-  const [isFooterVisible, setIsFooterVisible] = useState(true);
-  const lastScrollY = useRef(0);
-  const isHoveringBottomRef = useRef(false);
-  const wasHoverRevealedRef = useRef(false);
-  const hoverLeaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
 
-  const handleBottomHoverEnter = useCallback(() => {
-    if (hoverLeaveTimerRef.current) {
-      clearTimeout(hoverLeaveTimerRef.current);
-      hoverLeaveTimerRef.current = null;
+  const checkScrollPosition = useCallback(() => {
+    const main = mainRef.current;
+    if (!main) return;
+
+    // If the content is not scrollable (fits on screen), show the footer immediately.
+    const isScrollable = main.scrollHeight > main.clientHeight + 24;
+    if (!isScrollable) {
+      setIsFooterVisible(true);
+      return;
     }
-    isHoveringBottomRef.current = true;
-    setIsFooterVisible((currentVisible) => {
-      if (!currentVisible) {
-        wasHoverRevealedRef.current = true;
-      }
-      return true;
-    });
-  }, []);
 
-  const handleBottomHoverLeave = useCallback(() => {
-    isHoveringBottomRef.current = false;
-    if (hoverLeaveTimerRef.current) {
-      clearTimeout(hoverLeaveTimerRef.current);
+    // "Downest": within 48px of the very bottom of the scroll container
+    const distanceFromBottom = main.scrollHeight - main.scrollTop - main.clientHeight;
+    if (distanceFromBottom <= 48) {
+      setIsFooterVisible(true);
+    } else if (distanceFromBottom > 96) {
+      setIsFooterVisible(false);
     }
-    hoverLeaveTimerRef.current = setTimeout(() => {
-      if (wasHoverRevealedRef.current) {
-        wasHoverRevealedRef.current = false;
-        setIsFooterVisible(false);
-      }
-    }, 80);
-  }, []);
+  }, [mainRef]);
 
-  // Scroll listener for dynamic hide/reveal of bottom continue footer (matching Reader mode)
   useEffect(() => {
     const main = mainRef.current;
     if (!main) return;
 
-    const handleScroll = () => {
-      if (isHoveringBottomRef.current) return;
+    main.addEventListener('scroll', checkScrollPosition, { passive: true });
+    const observer = new ResizeObserver(() => checkScrollPosition());
+    observer.observe(main);
 
-      const currentScrollY = main.scrollTop;
-      const delta = currentScrollY - lastScrollY.current;
+    checkScrollPosition();
 
-      if (Math.abs(delta) > 8) {
-        if (delta > 0 && currentScrollY > 40) {
-          wasHoverRevealedRef.current = false;
-          setIsFooterVisible((prev) => (prev ? false : prev));
-        } else if (delta < 0) {
-          wasHoverRevealedRef.current = false;
-          setIsFooterVisible((prev) => (!prev ? true : prev));
-        }
-      }
-
-      lastScrollY.current = currentScrollY;
+    return () => {
+      main.removeEventListener('scroll', checkScrollPosition);
+      observer.disconnect();
     };
-
-    main.addEventListener('scroll', handleScroll, { passive: true });
-    return () => main.removeEventListener('scroll', handleScroll);
-  }, [mainRef, resetKey]);
+  }, [mainRef, resetKey, checkScrollPosition]);
 
   const resetFooter = useCallback(() => {
-    lastScrollY.current = 0;
-    isHoveringBottomRef.current = false;
-    wasHoverRevealedRef.current = false;
-    setIsFooterVisible(true);
-  }, []);
+    requestAnimationFrame(() => checkScrollPosition());
+  }, [checkScrollPosition]);
 
-  useEffect(() => () => {
-    if (hoverLeaveTimerRef.current) clearTimeout(hoverLeaveTimerRef.current);
-  }, []);
+  const handleBottomHoverEnter = useCallback(() => {}, []);
+  const handleBottomHoverLeave = useCallback(() => {}, []);
 
   return { isFooterVisible, handleBottomHoverEnter, handleBottomHoverLeave, resetFooter };
 }

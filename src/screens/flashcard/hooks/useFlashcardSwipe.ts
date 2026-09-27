@@ -7,6 +7,7 @@ import { useState, useCallback, useEffect, useRef } from 'react';
 export function useFlashcardSwipe(
   handleNext: (level: number) => void,
   handleNavigate: (dir: number) => void,
+  currentIndex?: number,
 ) {
   // direction: 1 for next/right, -1 for prev/left
   const [direction, setDirection] = useState<number>(1);
@@ -15,26 +16,40 @@ export function useFlashcardSwipe(
   const handleNavigateRef = useRef(handleNavigate);
   const ratePendingRef = useRef(false);
   const navPendingRef = useRef(false);
-  const swipeTimeoutRef = useRef<number | null>(null);
+  const lastRatedIndexRef = useRef<number | null>(null);
   const unlockTimeoutRef = useRef<number | null>(null);
   handleNextRef.current = handleNext;
   handleNavigateRef.current = handleNavigate;
 
   const unlockRating = useCallback(() => {
     ratePendingRef.current = false;
+    lastRatedIndexRef.current = null;
   }, []);
 
-  /** Rate a card after its gesture has begun settling. animDir: 1 exit left, -1 exit right, 2 exit up, -2 exit down. */
-  const triggerSwipeRate = useCallback((level: number, animDir?: number) => {
-    if (ratePendingRef.current) return;
+  // When card advances to a new index, immediately release any pending locks
+  // so the new card is instantly interactive and never locked out.
+  useEffect(() => {
+    ratePendingRef.current = false;
+    navPendingRef.current = false;
+    lastRatedIndexRef.current = null;
+    if (unlockTimeoutRef.current !== null) {
+      window.clearTimeout(unlockTimeoutRef.current);
+      unlockTimeoutRef.current = null;
+    }
+  }, [currentIndex]);
+
+  /** Rate a card via horizontal swipe. Returns true if accepted, false if locked. */
+  const triggerSwipeRate = useCallback((level: number, animDir?: number): boolean => {
+    if (currentIndex !== undefined && lastRatedIndexRef.current === currentIndex) return false;
+    if (ratePendingRef.current) return false;
     ratePendingRef.current = true;
+    lastRatedIndexRef.current = currentIndex ?? null;
     setDirection(animDir ?? (level <= 2 ? 1 : -1));
-    // Defer state update slightly so the drag gesture and snap-back can finish/begin cleanly
-    swipeTimeoutRef.current = window.setTimeout(() => {
-      handleNextRef.current(level);
-      unlockTimeoutRef.current = window.setTimeout(unlockRating, 260);
-    }, 100);
-  }, [unlockRating]);
+    handleNextRef.current(level);
+    if (unlockTimeoutRef.current !== null) window.clearTimeout(unlockTimeoutRef.current);
+    unlockTimeoutRef.current = window.setTimeout(unlockRating, 60);
+    return true;
+  }, [currentIndex, unlockRating]);
 
   /** Navigate prev/next. dir is both logical (-1/+1) and animation direction */
   const triggerNav = useCallback((dir: number) => {
@@ -48,16 +63,19 @@ export function useFlashcardSwipe(
   }, []);
 
   /** Rate a card via keyboard with an explicit travel direction. */
-  const triggerKeyboardRate = useCallback((level: number, animDir: number) => {
-    if (ratePendingRef.current) return;
+  const triggerKeyboardRate = useCallback((level: number, animDir: number): boolean => {
+    if (currentIndex !== undefined && lastRatedIndexRef.current === currentIndex) return false;
+    if (ratePendingRef.current) return false;
     ratePendingRef.current = true;
+    lastRatedIndexRef.current = currentIndex ?? null;
     setDirection(animDir);
     handleNextRef.current(level);
-    unlockTimeoutRef.current = window.setTimeout(unlockRating, 260);
-  }, [unlockRating]);
+    if (unlockTimeoutRef.current !== null) window.clearTimeout(unlockTimeoutRef.current);
+    unlockTimeoutRef.current = window.setTimeout(unlockRating, 60);
+    return true;
+  }, [currentIndex, unlockRating]);
 
   useEffect(() => () => {
-    if (swipeTimeoutRef.current !== null) window.clearTimeout(swipeTimeoutRef.current);
     if (unlockTimeoutRef.current !== null) window.clearTimeout(unlockTimeoutRef.current);
   }, []);
 

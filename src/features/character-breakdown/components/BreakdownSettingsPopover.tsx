@@ -24,9 +24,9 @@ export function BreakdownSettingsPopover() {
   return (
     <div ref={containerRef} className="relative">
       <IconActionButton
-        size="md"
+        size="lg"
         onClick={() => setIsOpen((open) => !open)}
-        icon={<AppIcon name="settings" size={20} />}
+        icon={<AppIcon name="settings" size={25} />}
         label="Breakdown settings"
         aria-haspopup="dialog"
         aria-expanded={isOpen}

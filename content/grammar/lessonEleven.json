@@ -883,9 +883,9 @@
     ],
     "pattern": "Person + 給 + receiver + action",
     "patternColumns": [
-      "Who?",
-      "Who gets it",
-      "Action"
+      "Subject",
+      "Receiver",
+      "Verb"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -3153,7 +3153,7 @@
       248
     ],
     "audioReference": "11-1-3",
-    "explanation": "Put 了 after the action word to show it is finished. When talking about amounts (like “two cups” or “ten pages”), a single 了 means you stopped there, while two 了’s mean you reached that amount so far and may keep going.",
+    "explanation": "Put 了 after the action to show completion. With amounts, one 了 means finished and stopped. Two 了's (one after the action, one at the end) mean reached so far and continuing.",
     "lessonWorld": {
       "kind": "chat",
       "eyebrow": "Missing message",
@@ -4021,8 +4021,8 @@
     ],
     "pattern": "Verb + object or amount + 了",
     "patternColumns": [
-      "Who?",
-      "Action",
+      "Subject",
+      "Verb",
       "Done sign"
     ],
     "patternAccentColumn": 2,
@@ -4724,81 +4724,91 @@
         "patternColumns": [
           "Subject",
           "Time word",
-          "Action",
+          "Verb",
           "了"
         ],
         "patternRows": [
           {
             "id": "l11g1-s1-r1",
-            "subject": [
-              {
-                "id": "l11g1-s1-r1-s",
-                "traditional": "他",
-                "pinyin": "tā",
-                "meaning": "he"
-              },
-              {
-                "id": "l11g1-s1-r1-t",
-                "traditional": "已經",
-                "simplified": "已经",
-                "pinyin": "yǐjīng",
-                "meaning": "already"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "l11g1-s1-r1-g",
-                "traditional": "來",
-                "simplified": "来",
-                "pinyin": "lái",
-                "meaning": "arrive"
-              }
-            ],
-            "complement": [
-              {
-                "id": "l11g1-s1-r1-c",
-                "traditional": "了",
-                "pinyin": "le",
-                "meaning": "completed particle",
-                "suffix": "。"
-              }
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "l11g1-s1-r1-he",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he; him"
+                }
+              ],
+              [
+                {
+                  "id": "l11g1-s1-r1-already",
+                  "traditional": "已經",
+                  "pinyin": "yǐjīng",
+                  "meaning": "already"
+                }
+              ],
+              [
+                {
+                  "id": "l11g1-s1-r1-come",
+                  "traditional": "來",
+                  "pinyin": "lái",
+                  "meaning": "come"
+                }
+              ],
+              [
+                {
+                  "id": "l11g1-s1-r1-le",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "shows the action is done",
+                  "suffix": "。"
+                }
+              ]
             ],
             "english": "He has already arrived."
           },
           {
             "id": "l11g1-s1-r2",
-            "subject": [
-              {
-                "id": "l11g1-s1-r2-s",
-                "traditional": "我們",
-                "simplified": "我们",
-                "pinyin": "wǒmen",
-                "meaning": "we"
-              },
-              {
-                "id": "l11g1-s1-r2-t",
-                "traditional": "昨天",
-                "pinyin": "zuótiān",
-                "meaning": "yesterday"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "l11g1-s1-r2-g",
-                "traditional": "見面",
-                "simplified": "见面",
-                "pinyin": "jiànmiàn",
-                "meaning": "meet"
-              }
-            ],
-            "complement": [
-              {
-                "id": "l11g1-s1-r2-c",
-                "traditional": "了",
-                "pinyin": "le",
-                "meaning": "completed particle",
-                "suffix": "。"
-              }
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "l11g1-s1-r2-we",
+                  "traditional": "我們",
+                  "pinyin": "wǒmen",
+                  "meaning": "we; us"
+                }
+              ],
+              [
+                {
+                  "id": "l11g1-s1-r2-yesterday",
+                  "traditional": "昨天",
+                  "pinyin": "zuótiān",
+                  "meaning": "yesterday"
+                }
+              ],
+              [
+                {
+                  "id": "l11g1-s1-r2-meet",
+                  "traditional": "見面",
+                  "pinyin": "jiànmiàn",
+                  "meaning": "meet"
+                }
+              ],
+              [
+                {
+                  "id": "l11g1-s1-r2-le",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "shows the action is done",
+                  "suffix": "。"
+                }
+              ]
             ],
             "english": "We met yesterday."
           }
@@ -4807,13 +4817,19 @@
           "l11g1-e1",
           "l11g1-e2",
           "l11g1-e3"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "when",
+          "V",
+          "done sign"
         ]
       },
       {
         "id": "b1l11-g01-sec-2",
         "sectionNumber": 2,
         "title": "Counting Amounts: One 了 vs Two 了's",
-        "explanation": "One 了 means the action finished in the past (“I drank two cups yesterday”). Two 了's mean you reached that number so far and might do more (“I have already drunk two cups, and want another”).",
+        "explanation": "One 了 marks an action finished in the past (drank two cups). Two 了's mark an amount reached so far that may continue (already drank two cups and counting).",
         "patternColumns": [
           "Subject",
           "Time word",
@@ -4824,62 +4840,94 @@
         "patternRows": [
           {
             "id": "l11g1-s2-r1",
-            "subject": [
-              {
-                "id": "l11g1-s2-r1-s",
-                "traditional": "我昨天",
-                "pinyin": "wǒ zuótiān",
-                "meaning": "I yesterday"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "l11g1-s2-r1-g",
-                "traditional": "喝了",
-                "pinyin": "hē le",
-                "meaning": "drank"
-              }
-            ],
-            "complement": [
-              {
-                "id": "l11g1-s2-r1-c",
-                "traditional": "兩杯咖啡",
-                "simplified": "两杯咖啡",
-                "pinyin": "liǎng bēi kāfēi",
-                "meaning": "two cups of coffee",
-                "suffix": "。"
-              }
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "l11g1-s2-r1-i",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                }
+              ],
+              [
+                {
+                  "id": "l11g1-s2-r1-yesterday",
+                  "traditional": "昨天",
+                  "pinyin": "zuótiān",
+                  "meaning": "yesterday"
+                }
+              ],
+              [
+                {
+                  "id": "l11g1-s2-r1-drank",
+                  "traditional": "喝了",
+                  "pinyin": "hē le",
+                  "meaning": "drank"
+                }
+              ],
+              [
+                {
+                  "id": "l11g1-s2-r1-coffee",
+                  "traditional": "兩杯咖啡",
+                  "pinyin": "liǎng bēi kāfēi",
+                  "meaning": "two cups of coffee",
+                  "suffix": "。"
+                }
+              ],
+              []
             ],
             "english": "I drank two cups of coffee yesterday (Single 了: completed in past)."
           },
           {
             "id": "l11g1-s2-r2",
-            "subject": [
-              {
-                "id": "l11g1-s2-r2-s",
-                "traditional": "我已經",
-                "simplified": "我已经",
-                "pinyin": "wǒ yǐjīng",
-                "meaning": "I already"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "l11g1-s2-r2-g",
-                "traditional": "喝了",
-                "pinyin": "hē le",
-                "meaning": "drank"
-              }
-            ],
-            "complement": [
-              {
-                "id": "l11g1-s2-r2-c",
-                "traditional": "兩杯咖啡了",
-                "simplified": "两杯咖啡了",
-                "pinyin": "liǎng bēi kāfēi le",
-                "meaning": "two cups of coffee so far",
-                "suffix": "。"
-              }
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "l11g1-s2-r2-i",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                }
+              ],
+              [
+                {
+                  "id": "l11g1-s2-r2-already",
+                  "traditional": "已經",
+                  "pinyin": "yǐjīng",
+                  "meaning": "already"
+                }
+              ],
+              [
+                {
+                  "id": "l11g1-s2-r2-drank",
+                  "traditional": "喝了",
+                  "pinyin": "hē le",
+                  "meaning": "drank"
+                }
+              ],
+              [
+                {
+                  "id": "l11g1-s2-r2-coffee",
+                  "traditional": "兩杯咖啡",
+                  "pinyin": "liǎng bēi kāfēi",
+                  "meaning": "two cups of coffee"
+                }
+              ],
+              [
+                {
+                  "id": "l11g1-s2-r2-le",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "shows the amount is reached",
+                  "suffix": "。"
+                }
+              ]
             ],
             "english": "I have already drunk two cups of coffee so far (Double 了: may continue)."
           }
@@ -4888,6 +4936,13 @@
           "l11g1-e4",
           "l11g1-e5",
           "l11g1-e6"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "when",
+          "V + done",
+          "O",
+          "final 了"
         ]
       }
     ]
@@ -5777,7 +5832,7 @@
     ],
     "pattern": "Person + 是 + focused detail + action + 的",
     "patternColumns": [
-      "Who?",
+      "Subject",
       "Focus",
       "Event + 的"
     ],
@@ -6780,7 +6835,7 @@
       250
     ],
     "audioReference": "11-1-3",
-    "explanation": "To say someone did not do an action in the past, use 沒 instead of 不. When an action hasn’t happened yet but you expect to do it later, use 還沒.",
+    "explanation": "Use 沒 to state an action did not happen in the past. Use 還沒 (\"not yet\") when an action hasn't happened but is expected.",
     "lessonWorld": {
       "kind": "chat",
       "eyebrow": "Missing message",
@@ -7651,7 +7706,7 @@
     "patternColumns": [
       "Subject",
       "沒 · 還沒",
-      "Action"
+      "Verb"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -8342,7 +8397,7 @@
         "id": "b1l11-g02-sec-1",
         "sectionNumber": 1,
         "title": "Did Not Happen (沒 + Action)",
-        "explanation": "Use 沒 before the action to say someone didn’t do it. Never use 不 or 了 here: say “he didn’t come” or “Dad didn’t drink coffee.” To ask if someone did it, add 了沒 at the end.",
+        "explanation": "Use 沒 before an action to say it did not happen (never use 不 or 了). To ask if someone did it yet, add 了沒 at the end.",
         "patternColumns": [
           "Subject",
           "沒",
@@ -8393,7 +8448,7 @@
         "patternColumns": [
           "Subject",
           "還沒",
-          "Action"
+          "Verb"
         ],
         "patternRows": [
           {
@@ -9326,8 +9381,8 @@
         ],
         "pattern": "Verb + object or amount + 了",
         "patternColumns": [
-          "Who?",
-          "Action",
+          "Subject",
+          "Verb",
           "Done sign"
         ],
         "patternAccentColumn": 2,
@@ -10029,81 +10084,91 @@
             "patternColumns": [
               "Subject",
               "Time word",
-              "Action",
+              "Verb",
               "了"
             ],
             "patternRows": [
               {
                 "id": "l11g1-s1-r1",
-                "subject": [
-                  {
-                    "id": "l11g1-s1-r1-s",
-                    "traditional": "他",
-                    "pinyin": "tā",
-                    "meaning": "he"
-                  },
-                  {
-                    "id": "l11g1-s1-r1-t",
-                    "traditional": "已經",
-                    "simplified": "已经",
-                    "pinyin": "yǐjīng",
-                    "meaning": "already"
-                  }
-                ],
-                "grammar": [
-                  {
-                    "id": "l11g1-s1-r1-g",
-                    "traditional": "來",
-                    "simplified": "来",
-                    "pinyin": "lái",
-                    "meaning": "arrive"
-                  }
-                ],
-                "complement": [
-                  {
-                    "id": "l11g1-s1-r1-c",
-                    "traditional": "了",
-                    "pinyin": "le",
-                    "meaning": "completed particle",
-                    "suffix": "。"
-                  }
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "l11g1-s1-r1-he",
+                      "traditional": "他",
+                      "pinyin": "tā",
+                      "meaning": "he; him"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l11g1-s1-r1-already",
+                      "traditional": "已經",
+                      "pinyin": "yǐjīng",
+                      "meaning": "already"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l11g1-s1-r1-come",
+                      "traditional": "來",
+                      "pinyin": "lái",
+                      "meaning": "come"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l11g1-s1-r1-le",
+                      "traditional": "了",
+                      "pinyin": "le",
+                      "meaning": "shows the action is done",
+                      "suffix": "。"
+                    }
+                  ]
                 ],
                 "english": "He has already arrived."
               },
               {
                 "id": "l11g1-s1-r2",
-                "subject": [
-                  {
-                    "id": "l11g1-s1-r2-s",
-                    "traditional": "我們",
-                    "simplified": "我们",
-                    "pinyin": "wǒmen",
-                    "meaning": "we"
-                  },
-                  {
-                    "id": "l11g1-s1-r2-t",
-                    "traditional": "昨天",
-                    "pinyin": "zuótiān",
-                    "meaning": "yesterday"
-                  }
-                ],
-                "grammar": [
-                  {
-                    "id": "l11g1-s1-r2-g",
-                    "traditional": "見面",
-                    "simplified": "见面",
-                    "pinyin": "jiànmiàn",
-                    "meaning": "meet"
-                  }
-                ],
-                "complement": [
-                  {
-                    "id": "l11g1-s1-r2-c",
-                    "traditional": "了",
-                    "pinyin": "le",
-                    "meaning": "completed particle",
-                    "suffix": "。"
-                  }
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "l11g1-s1-r2-we",
+                      "traditional": "我們",
+                      "pinyin": "wǒmen",
+                      "meaning": "we; us"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l11g1-s1-r2-yesterday",
+                      "traditional": "昨天",
+                      "pinyin": "zuótiān",
+                      "meaning": "yesterday"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l11g1-s1-r2-meet",
+                      "traditional": "見面",
+                      "pinyin": "jiànmiàn",
+                      "meaning": "meet"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l11g1-s1-r2-le",
+                      "traditional": "了",
+                      "pinyin": "le",
+                      "meaning": "shows the action is done",
+                      "suffix": "。"
+                    }
+                  ]
                 ],
                 "english": "We met yesterday."
               }
@@ -10112,6 +10177,12 @@
               "l11g1-e1",
               "l11g1-e2",
               "l11g1-e3"
+            ],
+            "patternColumnDetails": [
+              "S",
+              "when",
+              "V",
+              "done sign"
             ]
           },
           {
@@ -10129,62 +10200,94 @@
             "patternRows": [
               {
                 "id": "l11g1-s2-r1",
-                "subject": [
-                  {
-                    "id": "l11g1-s2-r1-s",
-                    "traditional": "我昨天",
-                    "pinyin": "wǒ zuótiān",
-                    "meaning": "I yesterday"
-                  }
-                ],
-                "grammar": [
-                  {
-                    "id": "l11g1-s2-r1-g",
-                    "traditional": "喝了",
-                    "pinyin": "hē le",
-                    "meaning": "drank"
-                  }
-                ],
-                "complement": [
-                  {
-                    "id": "l11g1-s2-r1-c",
-                    "traditional": "兩杯咖啡",
-                    "simplified": "两杯咖啡",
-                    "pinyin": "liǎng bēi kāfēi",
-                    "meaning": "two cups of coffee",
-                    "suffix": "。"
-                  }
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "l11g1-s2-r1-i",
+                      "traditional": "我",
+                      "pinyin": "wǒ",
+                      "meaning": "I; me"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l11g1-s2-r1-yesterday",
+                      "traditional": "昨天",
+                      "pinyin": "zuótiān",
+                      "meaning": "yesterday"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l11g1-s2-r1-drank",
+                      "traditional": "喝了",
+                      "pinyin": "hē le",
+                      "meaning": "drank"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l11g1-s2-r1-coffee",
+                      "traditional": "兩杯咖啡",
+                      "pinyin": "liǎng bēi kāfēi",
+                      "meaning": "two cups of coffee",
+                      "suffix": "。"
+                    }
+                  ],
+                  []
                 ],
                 "english": "I drank two cups of coffee yesterday (Single 了: completed in past)."
               },
               {
                 "id": "l11g1-s2-r2",
-                "subject": [
-                  {
-                    "id": "l11g1-s2-r2-s",
-                    "traditional": "我已經",
-                    "simplified": "我已经",
-                    "pinyin": "wǒ yǐjīng",
-                    "meaning": "I already"
-                  }
-                ],
-                "grammar": [
-                  {
-                    "id": "l11g1-s2-r2-g",
-                    "traditional": "喝了",
-                    "pinyin": "hē le",
-                    "meaning": "drank"
-                  }
-                ],
-                "complement": [
-                  {
-                    "id": "l11g1-s2-r2-c",
-                    "traditional": "兩杯咖啡了",
-                    "simplified": "两杯咖啡了",
-                    "pinyin": "liǎng bēi kāfēi le",
-                    "meaning": "two cups of coffee so far",
-                    "suffix": "。"
-                  }
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "l11g1-s2-r2-i",
+                      "traditional": "我",
+                      "pinyin": "wǒ",
+                      "meaning": "I; me"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l11g1-s2-r2-already",
+                      "traditional": "已經",
+                      "pinyin": "yǐjīng",
+                      "meaning": "already"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l11g1-s2-r2-drank",
+                      "traditional": "喝了",
+                      "pinyin": "hē le",
+                      "meaning": "drank"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l11g1-s2-r2-coffee",
+                      "traditional": "兩杯咖啡",
+                      "pinyin": "liǎng bēi kāfēi",
+                      "meaning": "two cups of coffee"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l11g1-s2-r2-le",
+                      "traditional": "了",
+                      "pinyin": "le",
+                      "meaning": "shows the amount is reached",
+                      "suffix": "。"
+                    }
+                  ]
                 ],
                 "english": "I have already drunk two cups of coffee so far (Double 了: may continue)."
               }
@@ -10193,6 +10296,13 @@
               "l11g1-e4",
               "l11g1-e5",
               "l11g1-e6"
+            ],
+            "patternColumnDetails": [
+              "S",
+              "when",
+              "V + done",
+              "O",
+              "final 了"
             ]
           }
         ]
@@ -11084,7 +11194,7 @@
         "patternColumns": [
           "Subject",
           "沒 · 還沒",
-          "Action"
+          "Verb"
         ],
         "patternAccentColumn": 1,
         "patternRows": [
@@ -11826,7 +11936,7 @@
             "patternColumns": [
               "Subject",
               "還沒",
-              "Action"
+              "Verb"
             ],
             "patternRows": [
               {
@@ -12753,7 +12863,7 @@
         ],
         "pattern": "Person + 是 + focused detail + action + 的",
         "patternColumns": [
-          "Who?",
+          "Subject",
           "Focus",
           "Event + 的"
         ],
@@ -17035,9 +17145,9 @@
         ],
         "pattern": "Person + 給 + receiver + action",
         "patternColumns": [
-          "Who?",
-          "Who gets it",
-          "Action"
+          "Subject",
+          "Receiver",
+          "Verb"
         ],
         "patternAccentColumn": 1,
         "patternRows": [

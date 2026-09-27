@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { GrammarExerciseQuestion } from '../src/types/models';
 import {
+  collectPendingTextBlanks,
   evaluateGrammarTextResponses,
   normalizeGrammarTextAnswer,
 } from '../src/utils/grammarExercise';
@@ -47,4 +48,19 @@ test('grammar text responses accept only authored traditional or simplified answ
       complete: false,
     },
   );
+});
+
+test('collectPendingTextBlanks gathers wrong text blanks with their accepted variants', () => {
+  const pending = collectPendingTextBlanks([question], { answer: '現在十點' }, ['answer']);
+  assert.deepEqual(pending, [{
+    blankId: 'answer',
+    reference: '現在十點十五分',
+    accepted: ['現在九點', '现在十点十五分', '现在九点'],
+    response: '現在十點',
+  }]);
+});
+
+test('collectPendingTextBlanks skips blanks that are not wrong or have no response', () => {
+  assert.deepEqual(collectPendingTextBlanks([question], { answer: '現在十點' }, []), []);
+  assert.deepEqual(collectPendingTextBlanks([question], { answer: '   ' }, ['answer']), []);
 });

@@ -8,6 +8,8 @@ interface PracticeHeaderRegistration extends PracticeHeaderActions {
   totalCount: number;
   showLightbulb: boolean;
   partSegments?: PartSegment[];
+  isRetry?: boolean;
+  cleanupPhase?: { currentIndex: number; totalCount: number } | null;
 }
 
 export function usePracticeHeaderRegistration({
@@ -15,6 +17,8 @@ export function usePracticeHeaderRegistration({
   totalCount,
   showLightbulb,
   partSegments = [],
+  isRetry,
+  cleanupPhase,
   ...actions
 }: PracticeHeaderRegistration) {
   const setPracticeHeader = useAppStore((state) => state.setPracticeHeader);
@@ -41,7 +45,12 @@ export function usePracticeHeaderRegistration({
       totalCount,
       showLightbulb,
       partSegments,
+      isRetry,
+      cleanupPhase,
     });
+  }, [cleanupPhase, currentIndex, isRetry, partSegments, setPracticeHeader, showLightbulb, totalCount]);
+
+  useEffect(() => {
     setPracticeHeaderActions({
       onLightbulbClick: hasLightbulbAction ? callLightbulb : undefined,
       onSettingsClick: hasSettingsAction ? callSettings : undefined,
@@ -59,17 +68,12 @@ export function usePracticeHeaderRegistration({
     callShuffle,
     actions.flowStatus,
     actions.isShuffled,
-    currentIndex,
     hasFlowAction,
     hasLightbulbAction,
     hasRestartAction,
     hasSettingsAction,
     hasShuffleAction,
-    setPracticeHeader,
     setPracticeHeaderActions,
-    showLightbulb,
-    partSegments,
-    totalCount,
   ]);
 
   useEffect(() => () => setPracticeHeaderActions({}), [setPracticeHeaderActions]);

@@ -19,7 +19,7 @@ interface InteractiveGrammarSentenceProps {
 }
 
 const TEACHING_TEXT_SIZE_CLASSES = {
-  lg: 'text-xl sm:text-2xl',
+  lg: 'text-2xl',
   md: 'text-base sm:text-lg',
   sm: 'text-sm sm:text-base',
 } as const;

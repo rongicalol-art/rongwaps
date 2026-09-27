@@ -4,6 +4,7 @@ import type { GrammarLessonText, GrammarWordToken } from '../../../types/models'
 import { GrammarText } from './GrammarText';
 import { InteractiveGrammarSentence } from './InteractiveGrammarSentence';
 import { splitDialogueText } from '../utils/grammarDialogueLayout';
+import { cn } from '../../../utils/cn';
 
 interface GrammarExampleTextProps {
   text: GrammarLessonText;
@@ -43,20 +44,22 @@ export function GrammarExampleText({
 
   if (dialogue) {
     return (
-      <div className="flex flex-col gap-4">
+      <div className="space-y-3 sm:space-y-3.5">
         {dialogue.turns.map((turn, i) => (
-          <div key={i} className="flex items-start gap-2">
-            <span className="mt-1 shrink-0 select-none font-sans text-[13px] font-black tracking-wider text-brand-primary sm:text-sm">
-              {turn.speaker}
-            </span>
-            <div className="min-w-0 flex-1">
+          <div key={i} className={cn('min-w-0', i > 0 && 'flex items-start gap-2 pt-1')}>
+            {i > 0 && (
+              <span className="mt-0.5 select-none font-bold text-ui-muted/60 text-sm sm:text-base" aria-hidden="true">
+                ↳
+              </span>
+            )}
+            <div className="flex-1 min-w-0">
               <InteractiveGrammarSentence
                 words={turn.words}
                 characterPreference={characterPreference}
                 showPinyin={false}
                 focusTerms={focusTerms}
                 size="lg"
-                className="gap-y-2"
+                className="inline-flex flex-wrap gap-y-2"
                 activeAlignmentId={activeAlignmentId}
                 onActiveAlignmentChange={setActiveAlignmentId}
                 onOpenWord={onOpenWord}
@@ -67,7 +70,7 @@ export function GrammarExampleText({
                 </p>
               )}
               {showTranslation && turn.english && (
-                <p className="ui-translation mt-1 text-[15px] sm:text-base">
+                <p className="ui-translation mt-1 text-[14px] sm:text-[15px]">
                   {turn.english}
                 </p>
               )}

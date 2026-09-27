@@ -1,7 +1,7 @@
 import { supabase } from './supabaseClient';
 import { Flashcard, FLASHCARDS_DATA } from '../data/flashcards';
 import { vocabularyCache } from '../utils/cache';
-import { extractSearchVariants } from '../utils/courseExamples';
+import { extractSearchVariants, sentenceMatchesForms } from '../utils/courseExamples';
 import { cleanVocabText } from '../utils/vocabCleaner';
 import { expandSlashAndOptionalVariants, stripPinyinTones } from '../utils/pinyinNormalize';
 import { escapeRegExp } from '../utils/escapeRegExp';
@@ -400,7 +400,7 @@ export async function searchVocabulary(queryStr: string): Promise<Flashcard[]> {
   return searchPromise;
 }
 
-export async function fetchExamplesForWord(searchWords: string | string[]): Promise<Flashcard[]> {
+export async function fetchExamplesForWord(searchWords: string | string[], pos?: string): Promise<Flashcard[]> {
   const words = Array.isArray(searchWords) ? searchWords : [searchWords];
   const cleanWords = words.map((word) => word?.trim()).filter(Boolean);
   if (cleanWords.length === 0) return [];
@@ -408,6 +408,22 @@ export async function fetchExamplesForWord(searchWords: string | string[]): Prom
   const cacheKey = `examples-${[...new Set(cleanWords)].sort().join('|')}`;
   if (vocabularyCache.has(cacheKey)) {
     return vocabularyCache.get<Flashcard[]>(cacheKey) || [];
+  }
+
+  // Callers that only have the word (dictionary, breakdown) still get the
+  // card's part of speech, so separable words like 找錢 match split usage.
+  let resolvedPos = pos?.trim() || undefined;
+  if (!resolvedPos) {
+    try {
+      const allVocab = await fetchVocabulary();
+      resolvedPos = allVocab.find((card) => (
+        cleanWords.includes(card.front)
+        || (card.traditional ? cleanWords.includes(card.traditional) : false)
+        || (card.simplified ? cleanWords.includes(card.simplified) : false)
+      ))?.pos?.trim() || undefined;
+    } catch {
+      resolvedPos = undefined;
+    }
   }
 
   try {
@@ -421,7 +437,7 @@ export async function fetchExamplesForWord(searchWords: string | string[]): Prom
     }
     const variantList = Array.from(variants).sort((a, b) => b.length - a.length);
     const searchTerms = variantList.length > 0 ? variantList : cleanWords;
-    const richExampleCards = await fetchCourseExampleCards(searchTerms);
+    const richExampleCards = await fetchCourseExampleCards(searchTerms, resolvedPos);
 
     const mergeExampleCards = (fallbackCards: Flashcard[]) => {
       const merged = new Map<string, Flashcard>();
@@ -437,7 +453,7 @@ export async function fetchExamplesForWord(searchWords: string | string[]): Prom
     
     const getLocalMatchingCards = async () => {
       const allVocab = await fetchVocabulary();
-      return allVocab.filter(c => c.examples?.some(e => e.chinese && searchTerms.some(v => e.chinese.includes(v))));
+      return allVocab.filter(c => c.examples?.some(e => sentenceMatchesForms(e.chinese, searchTerms, resolvedPos)));
     };
 
     if (richExampleCards.length > 0) {

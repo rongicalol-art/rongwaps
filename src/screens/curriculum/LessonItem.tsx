@@ -102,22 +102,24 @@ function LessonItemBase({
       </button>
 
       {grammarPartId && onOpenGrammar && (
-        <button
-          type="button"
-          disabled={isLocked}
-          onClick={() => onOpenGrammar(grammarPartId)}
-          aria-label={`Open grammar for ${englishTitle}`}
-          style={isSelected ? { borderLeftColor: edgeHex } : undefined}
-          className={`flex w-16 shrink-0 items-center justify-center self-stretch border-l-2 border-ui-divider outline-none transition-[background-color,transform] duration-150 focus-ring focus-visible:ring-inset active:scale-95 disabled:active:scale-100 ${
-            isLocked
-              ? 'cursor-not-allowed text-ui-muted'
-              : isSelected
-                ? 'text-ui-ink hover:bg-brand-primary/12 active:bg-brand-primary/20'
-                : 'text-ui-muted hover:bg-brand-primary/12 active:bg-brand-primary/20'
-          }`}
-        >
-          <AppIcon name="grammar" size={26} />
-        </button>
+        <div className="flex self-stretch items-stretch">
+          <div className="my-3 w-0.5 shrink-0 bg-ui-divider" />
+          <button
+            type="button"
+            disabled={isLocked}
+            onClick={() => onOpenGrammar(grammarPartId)}
+            aria-label={`Open grammar for ${englishTitle}`}
+            className={`flex w-[3.75rem] shrink-0 items-center justify-center outline-none transition-[background-color,transform] duration-150 focus-ring focus-visible:ring-inset active:scale-95 disabled:active:scale-100 ${
+              isLocked
+                ? 'cursor-not-allowed text-ui-muted'
+                : isSelected
+                  ? 'text-ui-ink hover:bg-brand-primary/12 active:bg-brand-primary/20'
+                  : 'text-ui-muted hover:bg-brand-primary/12 active:bg-brand-primary/20'
+            }`}
+          >
+            <AppIcon name="grammar" size={26} />
+          </button>
+        </div>
       )}
     </motion.div>
   );

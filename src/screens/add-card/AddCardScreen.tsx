@@ -209,9 +209,9 @@ export function AddCardScreen({ onClose }: AddCardScreenProps) {
         rightAction={(
             <IconActionButton
               disabled
-              size="md"
+              size="lg"
               label="Card settings coming soon"
-              icon={<AppIcon name="settings" size={20} className="opacity-40" />}
+              icon={<AppIcon name="settings" size={25} className="opacity-40" />}
             />
           )}
         />

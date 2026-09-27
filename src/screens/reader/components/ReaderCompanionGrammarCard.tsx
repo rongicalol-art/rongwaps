@@ -69,12 +69,12 @@ export const ReaderCompanionGrammarCard = React.memo(function ReaderCompanionGra
   return (
     <section
       aria-label="Grammar Points"
-      className="shrink-0 rounded-2xl bg-ui-surface border-2 border-feedback-warning-edge border-b-[length:var(--depth-md)] shadow-xs p-3.5 flex flex-col gap-2.5"
+      className="shrink-0 rounded-2xl bg-ui-surface border-2 border-ui-border border-b-[length:var(--depth-md)] shadow-xs p-3 sm:p-3.5 flex flex-col gap-2"
     >
       {/* Bento Header */}
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-2 min-w-0">
-          <AppIcon name="grammar" size={16} className="text-feedback-warning-edge shrink-0" />
+          <AppIcon name="grammar" size={16} className="text-ui-muted-strong shrink-0" />
           <h3 className="font-sans text-xs font-black uppercase tracking-wider text-ui-ink-strong">
             Grammar
           </h3>

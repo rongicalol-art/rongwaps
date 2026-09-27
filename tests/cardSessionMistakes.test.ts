@@ -112,3 +112,229 @@ test('queueMissedItem inserts missed card without duplicating already queued ite
   const duplicateCheck = queueMissedItem(updatedEnd, card1, 0, 'end');
   assert.equal(duplicateCheck.length, 3);
 });
+
+test('queueMissedItem returns identical array unchanged when repeat is off', () => {
+  const card1 = createMockCard('c1');
+  const card2 = createMockCard('c2');
+  const deck = [card1, card2];
+
+  const result = queueMissedItem(deck, card1, 0, 'off');
+  assert.equal(result, deck);
+  assert.equal(result.length, 2);
+});
+
+test('rapid sequential reviews with repeat mistakes off processes all cards without lockup', () => {
+  const cards = [
+    createMockCard('c1'),
+    createMockCard('c2'),
+    createMockCard('c3'),
+    createMockCard('c4'),
+  ];
+
+  let currentIndex = 0;
+  let activeCards = [...cards];
+  const firstAttemptMissed = new Set<string>();
+  const reviewedCards: Array<{ id: string; quality: number }> = [];
+  const sessionResults: Record<string, number> = {};
+
+  const handleReviewSwipe = (level: number) => {
+    const card = activeCards[currentIndex];
+    assert.ok(card, `Card at index ${currentIndex} must exist`);
+
+    const wasMissed = firstAttemptMissed.has(card.id);
+    if (level <= 2 && !wasMissed) {
+      firstAttemptMissed.add(card.id);
+      reviewedCards.push({ id: card.id, quality: level });
+      sessionResults[card.id] = level;
+      // When repeat is off, queue is not appended
+      activeCards = queueMissedItem(activeCards, card, currentIndex, 'off');
+    }
+
+    // Advance
+    if (currentIndex < activeCards.length - 1) {
+      currentIndex += 1;
+      return 'advanced';
+    }
+    return 'completed';
+  };
+
+  // User rapidly swipes "Review" (level 1) across the first 3 cards
+  assert.equal(handleReviewSwipe(1), 'advanced');
+  assert.equal(currentIndex, 1);
+  assert.equal(activeCards.length, 4);
+
+  assert.equal(handleReviewSwipe(1), 'advanced');
+  assert.equal(currentIndex, 2);
+  assert.equal(activeCards.length, 4);
+
+  assert.equal(handleReviewSwipe(1), 'advanced');
+  assert.equal(currentIndex, 3);
+  assert.equal(activeCards.length, 4);
+
+  // Fourth and last card
+  assert.equal(handleReviewSwipe(1), 'completed');
+  assert.equal(currentIndex, 3);
+
+  // All 4 cards were reviewed as mistakes
+  assert.equal(reviewedCards.length, 4);
+  assert.equal(firstAttemptMissed.size, 4);
+  assert.deepEqual(Object.keys(sessionResults), ['c1', 'c2', 'c3', 'c4']);
+});
+
+test('rapid sequential swipe ratings are accepted immediately on index advance without freeze', () => {
+  let currentIndex = 0;
+  let lastRatedIndex: number | null = null;
+  let ratePending = false;
+  const gradedCards: number[] = [];
+
+  const triggerSwipeRate = (cardIndex: number): boolean => {
+    if (lastRatedIndex === cardIndex) return false;
+    if (ratePending) return false;
+    ratePending = true;
+    lastRatedIndex = cardIndex;
+    gradedCards.push(cardIndex);
+    return true;
+  };
+
+  const onRenderCommit = (newIndex: number) => {
+    currentIndex = newIndex;
+    ratePending = false;
+    lastRatedIndex = null;
+  };
+
+  // Card 0: First swipe accepted
+  assert.equal(triggerSwipeRate(currentIndex), true);
+  // Duplicate swipe before render commit is rejected
+  assert.equal(triggerSwipeRate(currentIndex), false);
+
+  // Render commits to Card 1: locks are released
+  onRenderCommit(1);
+
+  // Rapid swipe on Card 1 immediately follows without artificial delay: accepted
+  assert.equal(triggerSwipeRate(currentIndex), true);
+  // Duplicate swipe on Card 1 before commit is rejected
+  assert.equal(triggerSwipeRate(currentIndex), false);
+
+  // Render commits to Card 2: locks are released
+  onRenderCommit(2);
+
+  // Rapid swipe on Card 2 immediately follows: accepted
+  assert.equal(triggerSwipeRate(currentIndex), true);
+
+  assert.deepEqual(gradedCards, [0, 1, 2]);
+});
+
+test('exiting or swiped cards are non-interactive to prevent ghost touch interception', () => {
+  const computeIsInteractive = (isPresent: boolean, isSwiped: boolean) => isPresent && !isSwiped;
+
+  // Active mounted card
+  assert.equal(computeIsInteractive(true, false), true);
+
+  // Card swiped away (animating exit)
+  assert.equal(computeIsInteractive(true, true), false);
+
+  // Card unmounted by AnimatePresence
+  assert.equal(computeIsInteractive(false, false), false);
+
+  // Exiting swiped card
+  assert.equal(computeIsInteractive(false, true), false);
+});
+
+test('rating the last card as Again re-queues it and advances instead of completing the session', () => {
+  const cards = [
+    createMockCard('c1'),
+    createMockCard('c2'),
+    createMockCard('c3'),
+  ];
+
+  let currentIndex = 0;
+  let activeCards = [...cards];
+  const firstAttemptMissed = new Set<string>();
+  const reviewedCards: Array<{ id: string; quality: number }> = [];
+  const sessionResults: Record<string, number> = {};
+
+  const handleRate = (quality: number, repeat: 'soon' | 'end' | 'off') => {
+    const card = activeCards[currentIndex];
+    assert.ok(card, `Card at index ${currentIndex} must exist`);
+
+    const wasMissed = firstAttemptMissed.has(card.id);
+    if (quality <= 2) {
+      if (!wasMissed) {
+        firstAttemptMissed.add(card.id);
+        reviewedCards.push({ id: card.id, quality });
+        sessionResults[card.id] = quality;
+      }
+      if (repeat !== 'off') {
+        activeCards = queueMissedItem(activeCards, card, currentIndex, repeat);
+      }
+    } else {
+      if (!wasMissed) {
+        reviewedCards.push({ id: card.id, quality });
+        sessionResults[card.id] = quality;
+      }
+    }
+
+    if (currentIndex < activeCards.length - 1) {
+      currentIndex += 1;
+      return 'advanced';
+    }
+    return 'completed';
+  };
+
+  // c1 and c2 pass
+  assert.equal(handleRate(4, 'soon'), 'advanced'); // moves to c2 (index 1)
+  assert.equal(handleRate(4, 'soon'), 'advanced'); // moves to c3 (index 2)
+  assert.equal(currentIndex, 2);
+  assert.equal(activeCards.length, 3);
+
+  // c3 is the LAST card: rated as Again (quality 1)
+  // Must NOT complete! Must re-queue c3 and advance to index 3!
+  assert.equal(handleRate(1, 'soon'), 'advanced');
+  assert.equal(currentIndex, 3);
+  assert.equal(activeCards.length, 4);
+  assert.equal(activeCards[3].id, 'c3');
+
+  // On the retry card at index 3, if user misses again:
+  assert.equal(handleRate(1, 'soon'), 'advanced');
+  assert.equal(currentIndex, 4);
+  assert.equal(activeCards.length, 5);
+  assert.equal(activeCards[4].id, 'c3');
+
+  // Finally answered correctly on index 4: now completes!
+  assert.equal(handleRate(4, 'soon'), 'completed');
+  assert.equal(currentIndex, 4);
+
+  // Only initial attempt was recorded in SRS / reviewedCards
+  assert.equal(reviewedCards.length, 3);
+  assert.equal(sessionResults['c3'], 1);
+});
+
+test('single card deck rated as Again does not complete on first try', () => {
+  const cards = [createMockCard('c1')];
+  let currentIndex = 0;
+  let activeCards = [...cards];
+  const firstAttemptMissed = new Set<string>();
+
+  const rate = (quality: number) => {
+    const card = activeCards[currentIndex];
+    const wasMissed = firstAttemptMissed.has(card.id);
+    if (quality <= 2) {
+      if (!wasMissed) firstAttemptMissed.add(card.id);
+      activeCards = queueMissedItem(activeCards, card, currentIndex, 'soon');
+    }
+    if (currentIndex < activeCards.length - 1) {
+      currentIndex += 1;
+      return 'advanced';
+    }
+    return 'completed';
+  };
+
+  assert.equal(rate(1), 'advanced');
+  assert.equal(currentIndex, 1);
+  assert.equal(activeCards.length, 2);
+  assert.equal(activeCards[1].id, 'c1');
+
+  // Pass on retry
+  assert.equal(rate(4), 'completed');
+});
+

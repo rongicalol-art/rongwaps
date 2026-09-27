@@ -85,26 +85,29 @@ export const ReaderCompanionGrammarRow = React.memo(function ReaderCompanionGram
       title={title}
       {...interactionProps}
       className={cn(
-        'group flex w-full items-center justify-between gap-3 rounded-compact px-2.5 py-2 text-left transition-colors hover:bg-ui-hover focus-ring outline-none select-none disabled:cursor-default',
+        'group flex w-full items-center justify-between gap-2.5 rounded-compact px-2 py-1.5 text-left transition-colors hover:bg-ui-hover focus-ring outline-none select-none disabled:cursor-default',
         dimmed && 'opacity-70',
         isLocated && 'bg-feedback-warning-subtle/40 ring-1 ring-feedback-warning-edge/30',
       )}
     >
-      {/* Chinese Title on top, English Title underneath (never truncated) */}
+      {/* Chinese Title with › prefix + English subtitle */}
       <div className="flex flex-col flex-1 min-w-0">
+        <div className="flex items-center min-w-0">
+          <span className="shrink-0 text-ui-muted-strong font-sans font-black mr-1.5 select-none text-xs">›</span>
+          <span
+            className={cn(
+              'font-chinese text-sm sm:text-base font-bold leading-tight transition-colors truncate',
+              dimmed
+                ? 'text-ui-muted group-hover:text-ui-ink-strong'
+                : 'text-ui-ink-strong group-hover:text-brand-primary',
+            )}
+          >
+            {point.titleTraditional}
+          </span>
+        </div>
         <span
           className={cn(
-            'font-chinese text-base font-bold leading-snug transition-colors',
-            dimmed
-              ? 'text-ui-muted group-hover:text-ui-ink-strong'
-              : 'text-ui-ink-strong group-hover:text-feedback-warning-edge',
-          )}
-        >
-          {point.titleTraditional}
-        </span>
-        <span
-          className={cn(
-            'font-sans text-sm font-bold mt-0.5 leading-snug',
+            'font-sans text-xs font-medium mt-0.5 leading-snug pl-3.5 line-clamp-1',
             dimmed ? 'text-ui-muted' : 'text-ui-ink',
           )}
         >
@@ -114,8 +117,8 @@ export const ReaderCompanionGrammarRow = React.memo(function ReaderCompanionGram
 
       {/* Forward arrow */}
       {onOpenGrammarPart && (
-        <span className="shrink-0 text-ui-muted group-hover:text-feedback-warning-edge group-hover:translate-x-0.5 transition-all pr-0.5">
-          <AppIcon name="forward" size={15} />
+        <span className="shrink-0 text-ui-muted/70 group-hover:text-brand-primary group-hover:translate-x-0.5 transition-all pr-0.5">
+          <AppIcon name="forward" size={13} />
         </span>
       )}
     </button>

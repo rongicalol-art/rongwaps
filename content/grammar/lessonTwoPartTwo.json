@@ -278,11 +278,16 @@
         "meaning": "action"
       }
     ],
-    "pattern": "Who + intention or feeling + action",
+    "pattern": "Subject + Vaux + verb",
     "patternColumns": [
-      "Who",
-      "Want / like",
-      "Action"
+      "Subject",
+      "Vaux",
+      "Verb"
+    ],
+    "patternColumnDetails": [
+      "S",
+      "want or like",
+      "V(O)"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -897,7 +902,7 @@
       60
     ],
     "audioReference": "02-2-3",
-    "explanation": "Put 的 between an owner and the thing that belongs to them. With close family, you can often drop 的: 我媽媽. But keep 的 with things like phones: 我的手機.",
+    "explanation": "Show possession with Owner + 的 + Item (我的手機). You can omit 的 with close family and relationships (我媽媽).",
     "focusTerms": [
       "的",
       "名詞",
@@ -1092,11 +1097,11 @@
         "meaning": "February 24"
       }
     ],
-    "pattern": "Owner or description + 的 + thing",
+    "pattern": "Noun + 的 + Noun",
     "patternColumns": [
-      "Owner / 的",
+      "Possessor",
       "的",
-      "Thing"
+      "Noun"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -1684,7 +1689,7 @@
       62
     ],
     "audioReference": "02-2-3",
-    "explanation": "Repeat the key doing or describing word around 不: 忙不忙, 吃不吃, 要不要. With 有, use 有沒有. This pattern already makes a question, so do not add 嗎.",
+    "explanation": "Form questions by pairing affirmative and negative forms: Verb-不-Verb (吃不吃, 忙不忙) or 有沒有. Do not add 嗎 at the end.",
     "focusTerms": [
       "忙不忙",
       "吃不吃",
@@ -1856,11 +1861,11 @@
         "meaning": "do not want to"
       }
     ],
-    "pattern": "Who + positive form + 不／沒 + positive form",
+    "pattern": "Subject + positive form + 不／沒 + positive form",
     "patternColumns": [
-      "Who",
+      "Subject",
       "A-not-A",
-      "Action"
+      "Verb"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -2669,11 +2674,11 @@
             "meaning": "February 24"
           }
         ],
-        "pattern": "Owner or description + 的 + thing",
+        "pattern": "Noun + 的 + Noun",
         "patternColumns": [
-          "Owner / 的",
+          "Possessor",
           "的",
-          "Thing"
+          "Noun"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
@@ -3435,11 +3440,16 @@
             "meaning": "action"
           }
         ],
-        "pattern": "Who + intention or feeling + action",
+        "pattern": "Subject + Vaux + verb",
         "patternColumns": [
-          "Who",
-          "Want / like",
-          "Action"
+          "Subject",
+          "Vaux",
+          "Verb"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "want or like",
+          "V(O)"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
@@ -4226,11 +4236,11 @@
             "meaning": "do not want to"
           }
         ],
-        "pattern": "Who + positive form + 不／沒 + positive form",
+        "pattern": "Subject + positive form + 不／沒 + positive form",
         "patternColumns": [
-          "Who",
+          "Subject",
           "A-not-A",
-          "Action"
+          "Verb"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {

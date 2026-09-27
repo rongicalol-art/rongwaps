@@ -261,15 +261,42 @@ export function extractWordVariants(front: string, traditional?: string, simplif
 }
 
 /**
+ * True when the sentence uses the word: it contains one of the expanded forms,
+ * or — for separable verb-object cards (`pos` = `V-sep`, e.g. 找錢, 放假) — the
+ * verb and the object appear in order, as in 找您七百八十五塊錢 and 放四天假.
+ * The split form is only tried for V-sep cards, so ordinary words keep exact
+ * block matching.
+ */
+export function sentenceMatchesForms(
+  sentence: string | undefined,
+  forms: readonly string[],
+  pos?: string,
+): boolean {
+  if (!sentence) return false;
+  if (forms.some((form) => form && sentence.includes(form))) return true;
+  if (pos !== 'V-sep') return false;
+  return forms.some((form) => {
+    if (form.length < 2) return false;
+    const verb = form.slice(0, 1);
+    const object = form.slice(1);
+    const verbIndex = sentence.indexOf(verb);
+    return verbIndex !== -1 && sentence.indexOf(object, verbIndex + verb.length) !== -1;
+  });
+}
+
+/**
  * Smartly prioritize and find sentences for a given word using the block ranking algorithm.
  * @param searchWords The word/phrase(s) to search for — pass both the raw
  *   traditional and simplified forms so sentences in either script match.
  * @param targetCardId The ID of the flashcard that we are finding examples for.
+ * @param pos The card's part of speech, so separable verb-object words match
+ *   their split usage (找錢 → 找…錢).
  */
 export function findSmartExamplesForWord(
   FLASHCARDS_DATA: Flashcard[],
   searchWords: string | string[],
   targetCardId: string,
+  pos?: string,
 ): RankedExample[] {
   const words = Array.isArray(searchWords) ? searchWords : [searchWords];
   const variants = new Set<string>();
@@ -292,10 +319,9 @@ export function findSmartExamplesForWord(
     // Longest-form matching: scan the expanded variants longest-first so a
     // sentence that contains the full form (一點兒) is never recorded as a
     // bare-char hit (點). `_matchLength` drives ordering within each group.
-    const matchingExamples = sourceCard.examples.filter(ex => {
-      if (!ex.chinese) return false;
-      return variantList.some(v => ex.chinese.includes(v));
-    });
+    const matchingExamples = sourceCard.examples.filter(ex => (
+      sentenceMatchesForms(ex.chinese, variantList, pos)
+    ));
     if (matchingExamples.length === 0) return;
 
     const sourceContext = getCardPosition(sourceCard);

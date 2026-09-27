@@ -1,8 +1,6 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
-import { useShallow } from 'zustand/react/shallow';
 import { AnimatePresence, motion } from 'motion/react';
 import { ActivityModalWrapper, LoadingScreen } from '../../lib/widgets';
-import { PracticeHeader } from '../../features/practice';
 import { useAppStore, selectIsActivityOverlayOpen } from '../../store/useAppStore';
 import { useActivityDataLoader } from '../../hooks/useActivityDataLoader';
 import { getPracticeLoadingMessage, preloadPracticeChunks, preloadRemainingPracticeChunks } from '../../utils/practiceLoader';
@@ -10,12 +8,9 @@ import { AddCardScreen } from '../add-card';
 import type { ActivityType } from '../../types/models';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { getDeckIdentityKey } from '../../utils/lessonPartSelection';
-import {
-  selectPracticePreferences,
-  usePracticePreferencesStore,
-} from '../../store/usePracticePreferencesStore';
 import { PracticeModeDock, PRACTICE_ACTIVITIES } from './components/PracticeModeDock';
 import { AnimatedActivityScreen } from './components/AnimatedActivityScreen';
+import { ActivityPracticeHeader } from './components/ActivityPracticeHeader';
 import { useActivityStudyParts } from './hooks';
 import type { FlashcardViewMode } from '../flashcard';
 
@@ -66,7 +61,6 @@ export function ActivityModals({
   const isActivityOverlayOpen = useAppStore(selectIsActivityOverlayOpen);
   const isOverlayOpen = isShellOverlayOpen || isActivityOverlayOpen;
   const isInteractionActive = useAppStore(state => state.isInteractionActive);
-  const swipeFeedback = useAppStore(state => state.swipeFeedback);
 
   const resolvedActivity = activeActivity === 'flashcards-library' ? 'flashcards' : activeActivity === 'flashcards-review' ? 'flashcards' : activeActivity;
   const isReviewMode = useAppStore(state => state.isReviewMode);
@@ -145,12 +139,6 @@ export function ActivityModals({
   const prevIdx = activities.findIndex(a => a.id === prevTaskResolved);
   const direction = currentIdx >= prevIdx ? 1 : -1;
 
-  const practiceHeader = useAppStore((state) => state.practiceHeader);
-  const practiceHeaderActions = useAppStore((state) => state.practiceHeaderActions);
-  const characterPreference = useAppStore(state => state.characterPreference);
-  const setCharacterPreference = useAppStore(state => state.setCharacterPreference);
-  const practicePreferences = usePracticePreferencesStore(useShallow(selectPracticePreferences));
-  const updatePracticePreferences = usePracticePreferencesStore(state => state.updatePreferences);
 
   const {
     visibleStudyParts,
@@ -233,36 +221,18 @@ export function ActivityModals({
                   transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                   className="relative flex flex-1 flex-col overflow-hidden"
                 >
-                  {activeActivity !== 'create-card' && (
-                     <div className={`absolute top-0 left-0 right-0 z-activity-header ${isOverlayOpen ? 'invisible' : ''}`}>
-                       <PracticeHeader
-                          key={resolvedActivity}
-                          maxWidth="2xl"
-                          onClose={activeActivity === 'writing' ? handleWritingClose : handleClose}
-                          progress={practiceHeader.progress}
-                          currentIndex={practiceHeader.currentIndex}
-                          totalCount={practiceHeader.totalCount}
-                          partSegments={practiceHeader.partSegments}
-                          studyParts={visibleStudyParts}
-                          onSelectStudyPart={selectStudyPart}
-                          onToggleStudyPart={toggleStudyPart}
-                          accentBgClassName={activeBook.accentBg}
-                          onSettingsClick={practiceHeaderActions.onSettingsClick}
-                          onShuffleClick={practiceHeaderActions.onShuffleClick}
-                          onFlowClick={practiceHeaderActions.onFlowClick}
-                          onRestartClick={practiceHeaderActions.onRestartClick}
-                          isShuffled={practiceHeaderActions.isShuffled}
-                          flowStatus={practiceHeaderActions.flowStatus}
-                          showFlow={resolvedActivity === 'flashcards' && flashcardMode === 'cards'}
-                          settings={{
-                            preferences: practicePreferences,
-                            onPreferencesChange: updatePracticePreferences,
-                            characterPreference,
-                            onCharacterPreferenceChange: setCharacterPreference,
-                          }}
-                       />
-                     </div>
-                  )}
+                  <ActivityPracticeHeader
+                    resolvedActivity={resolvedActivity}
+                    activeActivity={activeActivity}
+                    isOverlayOpen={isOverlayOpen}
+                    accentBgClassName={activeBook.accentBg}
+                    studyParts={visibleStudyParts}
+                    onSelectStudyPart={selectStudyPart}
+                    onToggleStudyPart={toggleStudyPart}
+                    onClose={handleClose}
+                    onWritingClose={handleWritingClose}
+                    flashcardMode={flashcardMode}
+                  />
 
                   <AnimatePresence custom={direction} mode="popLayout">
                     {(activeActivity === 'flashcards' || activeActivity === 'flashcards-library' || activeActivity === 'flashcards-review') && (
@@ -343,7 +313,6 @@ export function ActivityModals({
                   <AnimatePresence>
                     {showDock && (
                       <PracticeModeDock
-                        feedback={swipeFeedback}
                         value={resolvedActivity as (typeof PRACTICE_ACTIVITIES)[number]['id']}
                         quizMode={activeQuizMode}
                         flashcardMode={flashcardMode}

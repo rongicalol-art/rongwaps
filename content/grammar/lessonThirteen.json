@@ -16,7 +16,7 @@
       306
     ],
     "audioReference": "13-2-3",
-    "explanation": "Duration follows the action. With some activities that pair an action word with a thing, Chinese repeats the action word or uses duration + 的 before the thing.",
+    "explanation": "Duration follows the verb. For verb-object pairs, either repeat the verb (學中文學了三年) or place duration + 的 before the noun (學了三年的中文).",
     "lessonWorld": {
       "kind": "route",
       "eyebrow": "Museum visit",
@@ -5749,7 +5749,7 @@
     ],
     "pattern": "Action verb + action verb / Action verb + 一 + action verb",
     "patternColumns": [
-      "Who",
+      "Subject",
       "Light action",
       "Context"
     ],
@@ -12366,7 +12366,7 @@
         ],
         "pattern": "Action verb + action verb / Action verb + 一 + action verb",
         "patternColumns": [
-          "Who",
+          "Subject",
           "Light action",
           "Context"
         ],

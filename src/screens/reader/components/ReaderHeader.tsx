@@ -100,20 +100,19 @@ export function ReaderHeader({
 }: ReaderHeaderProps) {
   const isNarrative = reading.dialogueNumber === 3 || reading.title.includes('短文');
 
-  // Reading Mode's header type: a frosted canvas bar (blur, not a surface
-  // fill) at the standard window-header height, its center carrying the
-  // lesson/part context. Reading Mode overlays it on the reading column, so
-  // the bar ends — and its border line stops — at the Study Guide panel on
-  // desktop and runs full width on phone/tablet.
+  // Reading Mode's header: a frosted canvas bar with back navigation,
+  // left-anchored prominent lesson and part context, and right-anchored
+  // universal-sized utility actions (Study Guide toggle + Reader settings).
   return (
     <ScreenHeader
       variant="frosted"
       tone="practice"
-      onClose={onClose}
+      onBack={onClose}
       maxWidth="none"
-      centerContent={
-        <div className="flex items-center justify-center">
-          <h1 className="truncate text-xs font-black uppercase tracking-wider text-ui-ink-strong sm:text-sm">
+      controlSize="lg"
+      leftContent={
+        <div className="flex items-center min-w-0">
+          <h1 className="truncate text-base sm:text-lg font-black uppercase tracking-normal text-ui-ink-strong">
             <span className="text-brand-primary">Lesson {reading.lessonId}</span>
             <span className="mx-1.5 text-ui-muted-strong">·</span>
             <span>{isNarrative ? 'Reading' : `Part ${reading.dialogueNumber}`}</span>
@@ -121,12 +120,12 @@ export function ReaderHeader({
         </div>
       }
       rightAction={
-        <div className="flex items-center gap-1.5 sm:gap-2">
+        <div className="flex items-center gap-2">
           {onOpenStudyGuide && (
             <IconActionButton
-              size="md"
+              size="lg"
               onClick={onOpenStudyGuide}
-              icon={<AppIcon name="hint" size={22} />}
+              icon={<AppIcon name="hint" size={25} />}
               label={isStudyGuideOpen ? 'Hide study guide' : 'Study guide'}
               title={isStudyGuideOpen ? 'Hide study guide' : 'Study guide'}
               aria-haspopup="dialog"
@@ -135,6 +134,8 @@ export function ReaderHeader({
           )}
 
           <ReaderSettingsPopover
+            size="lg"
+            iconSize={25}
             textSize={textSize}
             onTextSizeChange={onTextSizeChange}
             characterFont={characterFont}

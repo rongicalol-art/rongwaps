@@ -10,6 +10,7 @@ interface VocabularyPackRow {
   id: string;
   traditional: string | null;
   meaning: string | null;
+  pos: string | null;
   examples: string | null;
 }
 
@@ -34,6 +35,7 @@ function toFallbackCard(row: VocabularyPackRow): Flashcard | null {
     bookId: location.bookId,
     lessonId: location.lessonId,
     partId: location.partId,
+    pos: (row.pos || '').trim() || undefined,
     examples: row.examples?.trim()
       ? [{ chinese: row.examples.trim(), pinyin: '', english: '' }]
       : [],
@@ -53,10 +55,10 @@ async function main() {
 
   const cards = fallbackCards.map((card) => {
     const terms = [card.front, ...extractSearchVariants(card.front)];
-    const richSources = recordsToExampleCards(examplePack.records, terms);
-    const richExamples = findSmartExamplesForWord(richSources, card.front, card.id);
+    const richSources = recordsToExampleCards(examplePack.records, terms, card.pos);
+    const richExamples = findSmartExamplesForWord(richSources, card.front, card.id, card.pos);
     const chineseOnlyExamples = richExamples.length === 0
-      ? findSmartExamplesForWord(fallbackCards, card.front, card.id)
+      ? findSmartExamplesForWord(fallbackCards, card.front, card.id, card.pos)
       : [];
     const status: CoverageStatus = richExamples.length > 0
       ? 'rich'

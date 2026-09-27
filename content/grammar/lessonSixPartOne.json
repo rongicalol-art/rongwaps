@@ -15,7 +15,7 @@
       136
     ],
     "audioReference": "06-1-3",
-    "explanation": "Use 會 before a learned or practiced skill. Put 不 before 會 for a missing skill. Here, 會 means “know how to”, not a future prediction.",
+    "explanation": "Use 會 before a verb for acquired skills (\"know how to\"): 會說中文. Negate with 不會. It refers to learned ability, not future events.",
     "focusTerms": [
       "會",
       "会",
@@ -731,11 +731,16 @@
         "meaning": "many kinds of"
       }
     ],
-    "pattern": "Person +（不）會 + learned action",
+    "pattern": "Subject +（Neg）會 + verb",
     "patternColumns": [
-      "Who?",
-      "Skill switch",
-      "Action"
+      "Subject",
+      "會",
+      "Verb"
+    ],
+    "patternColumnDetails": [
+      "S",
+      "(Neg) 會",
+      "V(O)"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -2218,11 +2223,18 @@
         "meaning": "many kinds of"
       }
     ],
-    "pattern": "Topic or activity + action verb + 得 + performance",
+    "pattern": "Subject + Verb + 得 + Adjective",
     "patternColumns": [
-      "Who / What",
-      "Action + 得",
-      "How well"
+      "Subject",
+      "Verb",
+      "得",
+      "Adjective"
+    ],
+    "patternColumnDetails": [
+      "S",
+      "V",
+      "marker",
+      "(A)Vs"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -2309,126 +2321,7 @@
         "Wrong: 跑步 + 得 + 很快. The word 步 cannot attach directly to 得."
       ]
     },
-    "patternRows": [
-      {
-        "id": "g2-p1",
-        "subject": [
-          {
-            "id": "g2-p1-he",
-            "traditional": "他",
-            "pinyin": "tā",
-            "meaning": "he; him"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g2-p1-run",
-            "traditional": "跑",
-            "pinyin": "pǎo",
-            "meaning": "run"
-          },
-          {
-            "id": "g2-p1-de",
-            "traditional": "得",
-            "pinyin": "de",
-            "meaning": "shows how an action is done"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g2-p1-fast",
-            "traditional": "快",
-            "pinyin": "kuài",
-            "meaning": "fast; quickly",
-            "suffix": "。"
-          }
-        ],
-        "english": "He runs very fast."
-      },
-      {
-        "id": "g2-p2",
-        "subject": [
-          {
-            "id": "g2-p2-i",
-            "traditional": "我",
-            "pinyin": "wǒ",
-            "meaning": "I; me"
-          },
-          {
-            "id": "g2-p2-run-act",
-            "traditional": "跑步",
-            "pinyin": "pǎobù",
-            "meaning": "run"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g2-p2-run",
-            "traditional": "跑",
-            "pinyin": "pǎo",
-            "meaning": "run"
-          },
-          {
-            "id": "g2-p2-de",
-            "traditional": "得",
-            "pinyin": "de",
-            "meaning": "shows how an action is done"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g2-p2-slow",
-            "traditional": "慢",
-            "pinyin": "màn",
-            "meaning": "slow; slowly",
-            "suffix": "。"
-          }
-        ],
-        "english": "I run very slowly."
-      },
-      {
-        "id": "g2-p3",
-        "subject": [
-          {
-            "id": "g2-p3-she",
-            "traditional": "她",
-            "pinyin": "tā",
-            "meaning": "she; her"
-          },
-          {
-            "id": "g2-p3-tennis",
-            "traditional": "網球",
-            "simplified": "网球",
-            "pinyin": "wǎngqiú",
-            "meaning": "tennis"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g2-p3-play",
-            "traditional": "打",
-            "pinyin": "dǎ",
-            "meaning": "play; hit"
-          },
-          {
-            "id": "g2-p3-de",
-            "traditional": "得",
-            "pinyin": "de",
-            "meaning": "shows how an action is done"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g2-p3-good",
-            "traditional": "很好",
-            "pinyin": "hěn hǎo",
-            "meaning": "very well",
-            "suffix": "。"
-          }
-        ],
-        "english": "She plays tennis very well."
-      }
-    ],
+    "patternRows": [],
     "confusion": {
       "title": "Don't mix these up",
       "items": [
@@ -3433,6 +3326,472 @@
         "correctFeedback": "The question mirrors 她的英文 + 說得很好.",
         "repairFeedback": "Keep 她的英文 as topic, then ask 說得怎麼樣."
       }
+    ],
+    "subsections": [
+      {
+        "id": "b1l06-g02-sec-1",
+        "sectionNumber": 1,
+        "title": "Simple verb + 得",
+        "explanation": "Put the verb right before 得, then say how the action is done.",
+        "patternColumns": [
+          "Subject",
+          "Verb",
+          "得",
+          "Adjective"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "V",
+          "marker",
+          "(A)Vs"
+        ],
+        "patternRows": [
+          {
+            "id": "g2-sec1-row-1",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g2-s1-he",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he; him"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s1-run",
+                  "traditional": "跑",
+                  "pinyin": "pǎo",
+                  "meaning": "run"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s1-de",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "links a verb to how it is done"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s1-fast",
+                  "traditional": "很快",
+                  "pinyin": "hěn kuài",
+                  "meaning": "very fast",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "He runs very fast."
+          },
+          {
+            "id": "g2-sec1-row-2",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g2-s1-you",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s1-do",
+                  "traditional": "做",
+                  "pinyin": "zuò",
+                  "meaning": "do"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s1-de-2",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "links a verb to how it is done"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s1-good",
+                  "traditional": "很好",
+                  "pinyin": "hěn hǎo",
+                  "meaning": "very well",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "You do very well."
+          }
+        ],
+        "exampleIds": [
+          "g2-e1"
+        ]
+      },
+      {
+        "id": "b1l06-g02-sec-2",
+        "sectionNumber": 2,
+        "title": "Repeat verb after V+O",
+        "explanation": "When the verb has an object, repeat the verb before 得.",
+        "patternColumns": [
+          "Subject",
+          "Verb + Object",
+          "Verb",
+          "得",
+          "Adjective"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "V + O",
+          "V",
+          "marker",
+          "(A)Vs"
+        ],
+        "patternRows": [
+          {
+            "id": "g2-sec2-row-1",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g2-s2-sister",
+                  "traditional": "我妹妹",
+                  "pinyin": "wǒ mèimei",
+                  "meaning": "my younger sister"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s2-eat-meal",
+                  "traditional": "吃飯",
+                  "pinyin": "chīfàn",
+                  "meaning": "eat a meal"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s2-eat",
+                  "traditional": "吃",
+                  "pinyin": "chī",
+                  "meaning": "eat"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s2-de",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "links a verb to how it is done"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s2-slow",
+                  "traditional": "很慢",
+                  "pinyin": "hěn màn",
+                  "meaning": "very slowly",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "My younger sister eats very slowly."
+          },
+          {
+            "id": "g2-sec2-row-2",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g2-s2-brother",
+                  "traditional": "我哥哥",
+                  "pinyin": "wǒ gēge",
+                  "meaning": "my elder brother"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s2-talk",
+                  "traditional": "說話",
+                  "pinyin": "shuōhuà",
+                  "meaning": "speak; talk"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s2-speak",
+                  "traditional": "說",
+                  "pinyin": "shuō",
+                  "meaning": "speak; say"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s2-de-2",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "links a verb to how it is done"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s2-fast",
+                  "traditional": "很快",
+                  "pinyin": "hěn kuài",
+                  "meaning": "very fast",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "My elder brother speaks very fast."
+          }
+        ],
+        "exampleIds": [
+          "g2-e2",
+          "g2-e4"
+        ]
+      },
+      {
+        "id": "b1l06-g02-sec-3",
+        "sectionNumber": 3,
+        "title": "Object as topic",
+        "explanation": "Move the object to the front, so the verb can sit right before 得.",
+        "patternColumns": [
+          "Subject",
+          "Object",
+          "Verb",
+          "得",
+          "Adjective"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "O",
+          "V",
+          "marker",
+          "(A)Vs"
+        ],
+        "patternRows": [
+          {
+            "id": "g2-sec3-row-1",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g2-s3-he",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he; him"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s3-rice",
+                  "traditional": "飯",
+                  "pinyin": "fàn",
+                  "meaning": "rice; meal"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s3-cook",
+                  "traditional": "做",
+                  "pinyin": "zuò",
+                  "meaning": "cook; make"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s3-de",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "links a verb to how it is done"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s3-good",
+                  "traditional": "很好",
+                  "pinyin": "hěn hǎo",
+                  "meaning": "very well",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "He cooks very well."
+          },
+          {
+            "id": "g2-sec3-row-2",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g2-s3-sister",
+                  "traditional": "我妹妹",
+                  "pinyin": "wǒ mèimei",
+                  "meaning": "my younger sister"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s3-chinese",
+                  "traditional": "中文",
+                  "pinyin": "Zhōngwén",
+                  "meaning": "Chinese"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s3-speak",
+                  "traditional": "說",
+                  "pinyin": "shuō",
+                  "meaning": "speak; say"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s3-de-2",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "links a verb to how it is done"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s3-good-2",
+                  "traditional": "很不錯",
+                  "pinyin": "hěn búcuò",
+                  "meaning": "very good",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "My younger sister speaks Chinese very well."
+          }
+        ],
+        "exampleIds": []
+      },
+      {
+        "id": "b1l06-g02-sec-4",
+        "sectionNumber": 4,
+        "title": "Possessor + 的 + object",
+        "explanation": "When the object belongs to the subject, move both in front. The verb still sits right before 得.",
+        "patternColumns": [
+          "Subject 的 Noun",
+          "Verb",
+          "得",
+          "Adjective"
+        ],
+        "patternColumnDetails": [
+          "S 的 O",
+          "V",
+          "marker",
+          "(A)Vs"
+        ],
+        "patternRows": [
+          {
+            "id": "g2-sec4-row-1",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g2-s4-your-tennis",
+                  "traditional": "你的網球",
+                  "pinyin": "nǐ de wǎngqiú",
+                  "meaning": "your tennis"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s4-play",
+                  "traditional": "打",
+                  "pinyin": "dǎ",
+                  "meaning": "play; hit"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s4-de",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "links a verb to how it is done"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s4-good",
+                  "traditional": "很好",
+                  "pinyin": "hěn hǎo",
+                  "meaning": "very well",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "You play tennis very well."
+          },
+          {
+            "id": "g2-sec4-row-2",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g2-s4-his-beef",
+                  "traditional": "他的牛肉麵",
+                  "pinyin": "tā de niúròu miàn",
+                  "meaning": "his beef noodles"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s4-cook",
+                  "traditional": "做",
+                  "pinyin": "zuò",
+                  "meaning": "cook; make"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s4-de-2",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "links a verb to how it is done"
+                }
+              ],
+              [
+                {
+                  "id": "g2-s4-good-2",
+                  "traditional": "很不錯",
+                  "pinyin": "hěn búcuò",
+                  "meaning": "very good",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "He cooks good beef noodles."
+          }
+        ],
+        "exampleIds": [
+          "g2-e3",
+          "g2-e5"
+        ]
+      }
     ]
   },
   "LESSON_SIX_PART_ONE": {
@@ -4174,11 +4533,16 @@
             "meaning": "many kinds of"
           }
         ],
-        "pattern": "Person +（不）會 + learned action",
+        "pattern": "Subject +（Neg）會 + verb",
         "patternColumns": [
-          "Who?",
-          "Skill switch",
-          "Action"
+          "Subject",
+          "會",
+          "Verb"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "(Neg) 會",
+          "V(O)"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
@@ -5661,11 +6025,18 @@
             "meaning": "many kinds of"
           }
         ],
-        "pattern": "Topic or activity + action verb + 得 + performance",
+        "pattern": "Subject + Verb + 得 + Adjective",
         "patternColumns": [
-          "Who / What",
-          "Action + 得",
-          "How well"
+          "Subject",
+          "Verb",
+          "得",
+          "Adjective"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "V",
+          "marker",
+          "(A)Vs"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
@@ -5752,126 +6123,7 @@
             "Wrong: 跑步 + 得 + 很快. The word 步 cannot attach directly to 得."
           ]
         },
-        "patternRows": [
-          {
-            "id": "g2-p1",
-            "subject": [
-              {
-                "id": "g2-p1-he",
-                "traditional": "他",
-                "pinyin": "tā",
-                "meaning": "he; him"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g2-p1-run",
-                "traditional": "跑",
-                "pinyin": "pǎo",
-                "meaning": "run"
-              },
-              {
-                "id": "g2-p1-de",
-                "traditional": "得",
-                "pinyin": "de",
-                "meaning": "shows how an action is done"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g2-p1-fast",
-                "traditional": "快",
-                "pinyin": "kuài",
-                "meaning": "fast; quickly",
-                "suffix": "。"
-              }
-            ],
-            "english": "He runs very fast."
-          },
-          {
-            "id": "g2-p2",
-            "subject": [
-              {
-                "id": "g2-p2-i",
-                "traditional": "我",
-                "pinyin": "wǒ",
-                "meaning": "I; me"
-              },
-              {
-                "id": "g2-p2-run-act",
-                "traditional": "跑步",
-                "pinyin": "pǎobù",
-                "meaning": "run"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g2-p2-run",
-                "traditional": "跑",
-                "pinyin": "pǎo",
-                "meaning": "run"
-              },
-              {
-                "id": "g2-p2-de",
-                "traditional": "得",
-                "pinyin": "de",
-                "meaning": "shows how an action is done"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g2-p2-slow",
-                "traditional": "慢",
-                "pinyin": "màn",
-                "meaning": "slow; slowly",
-                "suffix": "。"
-              }
-            ],
-            "english": "I run very slowly."
-          },
-          {
-            "id": "g2-p3",
-            "subject": [
-              {
-                "id": "g2-p3-she",
-                "traditional": "她",
-                "pinyin": "tā",
-                "meaning": "she; her"
-              },
-              {
-                "id": "g2-p3-tennis",
-                "traditional": "網球",
-                "simplified": "网球",
-                "pinyin": "wǎngqiú",
-                "meaning": "tennis"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g2-p3-play",
-                "traditional": "打",
-                "pinyin": "dǎ",
-                "meaning": "play; hit"
-              },
-              {
-                "id": "g2-p3-de",
-                "traditional": "得",
-                "pinyin": "de",
-                "meaning": "shows how an action is done"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g2-p3-good",
-                "traditional": "很好",
-                "pinyin": "hěn hǎo",
-                "meaning": "very well",
-                "suffix": "。"
-              }
-            ],
-            "english": "She plays tennis very well."
-          }
-        ],
+        "patternRows": [],
         "confusion": {
           "title": "Don't mix these up",
           "items": [
@@ -6875,6 +7127,472 @@
             ],
             "correctFeedback": "The question mirrors 她的英文 + 說得很好.",
             "repairFeedback": "Keep 她的英文 as topic, then ask 說得怎麼樣."
+          }
+        ],
+        "subsections": [
+          {
+            "id": "b1l06-g02-sec-1",
+            "sectionNumber": 1,
+            "title": "Simple verb + 得",
+            "explanation": "Put the verb right before 得, then say how the action is done.",
+            "patternColumns": [
+              "Subject",
+              "Verb",
+              "得",
+              "Adjective"
+            ],
+            "patternColumnDetails": [
+              "S",
+              "V",
+              "marker",
+              "(A)Vs"
+            ],
+            "patternRows": [
+              {
+                "id": "g2-sec1-row-1",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g2-s1-he",
+                      "traditional": "他",
+                      "pinyin": "tā",
+                      "meaning": "he; him"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s1-run",
+                      "traditional": "跑",
+                      "pinyin": "pǎo",
+                      "meaning": "run"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s1-de",
+                      "traditional": "得",
+                      "pinyin": "de",
+                      "meaning": "links a verb to how it is done"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s1-fast",
+                      "traditional": "很快",
+                      "pinyin": "hěn kuài",
+                      "meaning": "very fast",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "He runs very fast."
+              },
+              {
+                "id": "g2-sec1-row-2",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g2-s1-you",
+                      "traditional": "你",
+                      "pinyin": "nǐ",
+                      "meaning": "you"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s1-do",
+                      "traditional": "做",
+                      "pinyin": "zuò",
+                      "meaning": "do"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s1-de-2",
+                      "traditional": "得",
+                      "pinyin": "de",
+                      "meaning": "links a verb to how it is done"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s1-good",
+                      "traditional": "很好",
+                      "pinyin": "hěn hǎo",
+                      "meaning": "very well",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "You do very well."
+              }
+            ],
+            "exampleIds": [
+              "g2-e1"
+            ]
+          },
+          {
+            "id": "b1l06-g02-sec-2",
+            "sectionNumber": 2,
+            "title": "Repeat verb after V+O",
+            "explanation": "When the verb has an object, repeat the verb before 得.",
+            "patternColumns": [
+              "Subject",
+              "Verb + Object",
+              "Verb",
+              "得",
+              "Adjective"
+            ],
+            "patternColumnDetails": [
+              "S",
+              "V + O",
+              "V",
+              "marker",
+              "(A)Vs"
+            ],
+            "patternRows": [
+              {
+                "id": "g2-sec2-row-1",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g2-s2-sister",
+                      "traditional": "我妹妹",
+                      "pinyin": "wǒ mèimei",
+                      "meaning": "my younger sister"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s2-eat-meal",
+                      "traditional": "吃飯",
+                      "pinyin": "chīfàn",
+                      "meaning": "eat a meal"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s2-eat",
+                      "traditional": "吃",
+                      "pinyin": "chī",
+                      "meaning": "eat"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s2-de",
+                      "traditional": "得",
+                      "pinyin": "de",
+                      "meaning": "links a verb to how it is done"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s2-slow",
+                      "traditional": "很慢",
+                      "pinyin": "hěn màn",
+                      "meaning": "very slowly",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "My younger sister eats very slowly."
+              },
+              {
+                "id": "g2-sec2-row-2",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g2-s2-brother",
+                      "traditional": "我哥哥",
+                      "pinyin": "wǒ gēge",
+                      "meaning": "my elder brother"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s2-talk",
+                      "traditional": "說話",
+                      "pinyin": "shuōhuà",
+                      "meaning": "speak; talk"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s2-speak",
+                      "traditional": "說",
+                      "pinyin": "shuō",
+                      "meaning": "speak; say"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s2-de-2",
+                      "traditional": "得",
+                      "pinyin": "de",
+                      "meaning": "links a verb to how it is done"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s2-fast",
+                      "traditional": "很快",
+                      "pinyin": "hěn kuài",
+                      "meaning": "very fast",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "My elder brother speaks very fast."
+              }
+            ],
+            "exampleIds": [
+              "g2-e2",
+              "g2-e4"
+            ]
+          },
+          {
+            "id": "b1l06-g02-sec-3",
+            "sectionNumber": 3,
+            "title": "Object as topic",
+            "explanation": "Move the object to the front, so the verb can sit right before 得.",
+            "patternColumns": [
+              "Subject",
+              "Object",
+              "Verb",
+              "得",
+              "Adjective"
+            ],
+            "patternColumnDetails": [
+              "S",
+              "O",
+              "V",
+              "marker",
+              "(A)Vs"
+            ],
+            "patternRows": [
+              {
+                "id": "g2-sec3-row-1",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g2-s3-he",
+                      "traditional": "他",
+                      "pinyin": "tā",
+                      "meaning": "he; him"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s3-rice",
+                      "traditional": "飯",
+                      "pinyin": "fàn",
+                      "meaning": "rice; meal"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s3-cook",
+                      "traditional": "做",
+                      "pinyin": "zuò",
+                      "meaning": "cook; make"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s3-de",
+                      "traditional": "得",
+                      "pinyin": "de",
+                      "meaning": "links a verb to how it is done"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s3-good",
+                      "traditional": "很好",
+                      "pinyin": "hěn hǎo",
+                      "meaning": "very well",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "He cooks very well."
+              },
+              {
+                "id": "g2-sec3-row-2",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g2-s3-sister",
+                      "traditional": "我妹妹",
+                      "pinyin": "wǒ mèimei",
+                      "meaning": "my younger sister"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s3-chinese",
+                      "traditional": "中文",
+                      "pinyin": "Zhōngwén",
+                      "meaning": "Chinese"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s3-speak",
+                      "traditional": "說",
+                      "pinyin": "shuō",
+                      "meaning": "speak; say"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s3-de-2",
+                      "traditional": "得",
+                      "pinyin": "de",
+                      "meaning": "links a verb to how it is done"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s3-good-2",
+                      "traditional": "很不錯",
+                      "pinyin": "hěn búcuò",
+                      "meaning": "very good",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "My younger sister speaks Chinese very well."
+              }
+            ],
+            "exampleIds": []
+          },
+          {
+            "id": "b1l06-g02-sec-4",
+            "sectionNumber": 4,
+            "title": "Possessor + 的 + object",
+            "explanation": "When the object belongs to the subject, move both in front. The verb still sits right before 得.",
+            "patternColumns": [
+              "Subject 的 Noun",
+              "Verb",
+              "得",
+              "Adjective"
+            ],
+            "patternColumnDetails": [
+              "S 的 O",
+              "V",
+              "marker",
+              "(A)Vs"
+            ],
+            "patternRows": [
+              {
+                "id": "g2-sec4-row-1",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g2-s4-your-tennis",
+                      "traditional": "你的網球",
+                      "pinyin": "nǐ de wǎngqiú",
+                      "meaning": "your tennis"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s4-play",
+                      "traditional": "打",
+                      "pinyin": "dǎ",
+                      "meaning": "play; hit"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s4-de",
+                      "traditional": "得",
+                      "pinyin": "de",
+                      "meaning": "links a verb to how it is done"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s4-good",
+                      "traditional": "很好",
+                      "pinyin": "hěn hǎo",
+                      "meaning": "very well",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "You play tennis very well."
+              },
+              {
+                "id": "g2-sec4-row-2",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g2-s4-his-beef",
+                      "traditional": "他的牛肉麵",
+                      "pinyin": "tā de niúròu miàn",
+                      "meaning": "his beef noodles"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s4-cook",
+                      "traditional": "做",
+                      "pinyin": "zuò",
+                      "meaning": "cook; make"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s4-de-2",
+                      "traditional": "得",
+                      "pinyin": "de",
+                      "meaning": "links a verb to how it is done"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g2-s4-good-2",
+                      "traditional": "很不錯",
+                      "pinyin": "hěn búcuò",
+                      "meaning": "very good",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "He cooks good beef noodles."
+              }
+            ],
+            "exampleIds": [
+              "g2-e3",
+              "g2-e5"
+            ]
           }
         ]
       }

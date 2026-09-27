@@ -31,7 +31,8 @@ export interface GrammarPatternRow {
   complement: GrammarWordToken[];
   /** Optional extended slot list for future patterns with more than three columns. */
   columns?: GrammarWordToken[][];
-  english: string;
+  /** Omitted when the row carries no translation (e.g. number tables). */
+  english?: string;
 }
 
 export interface GrammarLessonExample {

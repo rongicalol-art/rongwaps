@@ -145,6 +145,7 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue, 
     learnedCount,
     isShuffled,
     toggleShuffle,
+    progressInfo,
   } = useQuizTyping(cards, sessionKey);
   const autoAdvanceCorrect = usePracticePreferencesStore((state) => state.autoAdvanceCorrect);
   const autoAdvance = status === 'correct' ? autoAdvanceCorrect : false;
@@ -169,10 +170,12 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue, 
     [activeCards, isNonCurriculum, isShuffled],
   );
   usePracticeHeaderRegistration({
-    currentIndex,
-    totalCount: activeCards.length,
+    currentIndex: progressInfo.displayIndex,
+    totalCount: progressInfo.totalCount,
     showLightbulb: false,
     partSegments,
+    isRetry: progressInfo.isRetry,
+    cleanupPhase: progressInfo.cleanupPhase,
     onShuffleClick: toggleShuffle,
     onRestartClick: resetAll,
     isShuffled,

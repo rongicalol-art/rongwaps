@@ -147,7 +147,7 @@ export function ReadingCanvas({
     <article
       className={cn(
         'mx-auto w-full px-3 pb-52 pt-[calc(5.5rem+env(safe-area-inset-top,0px))] sm:px-6 sm:pt-[6.5rem] transition-all',
-        textSize === 'extra-large' ? 'max-w-3xl' : 'max-w-2xl',
+        textSize === 'extra-large' ? 'max-w-4xl' : 'max-w-3xl xl:max-w-4xl',
       )}
     >
       {/* Dialogue Chat Messages Flow */}

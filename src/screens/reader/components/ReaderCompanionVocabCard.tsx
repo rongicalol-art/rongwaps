@@ -52,12 +52,12 @@ export const ReaderCompanionVocabCard = React.memo(function ReaderCompanionVocab
   return (
     <section
       aria-label="Target Vocabulary"
-      className="shrink-0 rounded-l-[36px] rounded-r-2xl bg-ui-surface border-2 border-brand-primary-edge border-b-[length:var(--depth-md)] shadow-xs p-3.5 pl-4 sm:pl-4.5 flex flex-col gap-2.5"
+      className="shrink-0 rounded-2xl bg-ui-surface border-2 border-ui-border border-b-[length:var(--depth-md)] shadow-xs p-3 sm:p-3.5 flex flex-col gap-2"
     >
       {/* Header */}
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-2 min-w-0">
-          <AppIcon name="cards" size={16} className="text-brand-primary shrink-0" />
+          <AppIcon name="cards" size={16} className="text-ui-muted-strong shrink-0" />
           <h3 className="font-sans text-xs font-black uppercase tracking-wider text-ui-ink-strong">
             Vocabulary
           </h3>

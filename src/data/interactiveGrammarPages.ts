@@ -53,9 +53,9 @@ export const LESSON_ONE_GRAMMAR_ONE: InteractiveGrammarPage = {
     { id: 'g1-glossary-zhang', traditional: '張', simplified: '张', pinyin: 'Zhāng', meaning: 'Zhang; a family name' },
     { id: 'g1-glossary-zhang-xiaoming', traditional: '張小明', simplified: '张小明', pinyin: 'Zhāng Xiǎomíng', meaning: 'Zhang Xiaoming; a full name' },
   ],
-  pattern: 'Person + identity verb + name or identity',
-  patternColumns: ['Who', '叫 · 姓 · 是', 'Name / identity'],
-  patternColumnDetails: ['Who?', 'which word', 'What clue?'],
+  pattern: 'Subject + 叫／姓／是 + Noun',
+  patternColumns: ['Subject', '叫 · 姓 · 是', 'Noun'],
+  patternColumnDetails: ['S', 'which word', 'N'],
   patternAccentColumn: 1,
   discoveryLab: {
     title: 'Change the word, change the clue',
@@ -437,7 +437,7 @@ export const LESSON_ONE_GRAMMAR_TWO: InteractiveGrammarPage = {
     { id: 'g2-glossary-keai', traditional: '可愛', simplified: '可爱', pinyin: "kě'ài", meaning: 'cute; lovely' },
   ],
   pattern: 'S + 很/不 + Vs',
-  patternColumns: ['Who / What', '很／不', 'Adjective'],
+  patternColumns: ['Subject', '很／不', 'Adjective'],
   patternColumnDetails: ['S', 'yes or no', 'Vs'],
   discoveryLab: {
     title: 'Do not add 是',
@@ -664,9 +664,9 @@ export const LESSON_ONE_GRAMMAR_THREE: InteractiveGrammarPage = {
     { id: 'g3-glossary-hen', traditional: '很', pinyin: 'hěn', meaning: 'very; the usual link word' },
   ],
   pattern: 'Statement + 嗎',
-  patternColumns: ['Who / What', 'Sentence body', '嗎'],
-  patternColumnDetails: ['S', 'keep order', 'ending'],
-  patternAccentColumn: 2,
+  patternColumns: ['Statement', '嗎'],
+  patternColumnDetails: ['keep order', 'ending'],
+  patternAccentColumn: 1,
   discoveryLab: {
     title: 'One small ending turns it into a question',
     description: 'The sentence stays exactly the same. Only the ending changes.',
@@ -706,20 +706,24 @@ export const LESSON_ONE_GRAMMAR_THREE: InteractiveGrammarPage = {
   patternRows: [
     {
       id: 'g3-pattern-1',
-      subject: [{ id: 'g3-p1-he', traditional: '他', pinyin: 'tā', meaning: 'he' }],
-      grammar: [
+      subject: [
+        { id: 'g3-p1-he', traditional: '他', pinyin: 'tā', meaning: 'he' },
         { id: 'g3-p1-is', traditional: '是', pinyin: 'shì', meaning: 'is / am / are' },
         { id: 'g3-p1-taiwan', traditional: '臺灣', simplified: '台湾', pinyin: 'Táiwān', meaning: 'Taiwan' },
         { id: 'g3-p1-person', traditional: '人', pinyin: 'rén', meaning: 'person' },
       ],
-      complement: [{ id: 'g3-p1-ma', traditional: '嗎', simplified: '吗', pinyin: 'ma', meaning: 'yes/no question ending', suffix: '？' }],
+      grammar: [{ id: 'g3-p1-ma', traditional: '嗎', simplified: '吗', pinyin: 'ma', meaning: 'yes/no question ending', suffix: '？' }],
+      complement: [],
       english: 'Is he Taiwanese?',
     },
     {
       id: 'g3-pattern-2',
-      subject: [{ id: 'g3-p2-she', traditional: '她', pinyin: 'tā', meaning: 'she' }],
-      grammar: [{ id: 'g3-p2-pretty', traditional: '漂亮', pinyin: 'piàoliang', meaning: 'pretty' }],
-      complement: [{ id: 'g3-p2-ma', traditional: '嗎', simplified: '吗', pinyin: 'ma', meaning: 'yes/no question ending', suffix: '？' }],
+      subject: [
+        { id: 'g3-p2-she', traditional: '她', pinyin: 'tā', meaning: 'she' },
+        { id: 'g3-p2-pretty', traditional: '漂亮', pinyin: 'piàoliang', meaning: 'pretty' },
+      ],
+      grammar: [{ id: 'g3-p2-ma', traditional: '嗎', simplified: '吗', pinyin: 'ma', meaning: 'yes/no question ending', suffix: '？' }],
+      complement: [],
       english: 'Is she pretty?',
     },
   ],
@@ -909,7 +913,7 @@ export const LESSON_ONE_PART_ONE: InteractiveGrammarPart = {
   bookId: 1,
   lessonId: 1,
   partId: 1,
-  title: 'Grammar 1–3 · Pages 38–40',
+  title: 'Grammar 1–3',
   grammarPages: INTERACTIVE_GRAMMAR_PAGES,
   dialogue: {
     id: 'B1L01-D01',

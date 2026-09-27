@@ -40,10 +40,14 @@ const FROST_TONE_CLASSES: Record<ScreenHeaderTone, string> = {
 export interface ScreenHeaderProps {
   title?: string;
   eyebrow?: string;
+  leftContent?: React.ReactNode;
   centerContent?: React.ReactNode;
   progress?: number;
+  showPercentage?: boolean;
   currentIndex?: number;
   totalCount?: number;
+  isRetry?: boolean;
+  cleanupPhase?: { currentIndex: number; totalCount: number } | null;
   partSegments?: PartSegment[];
   studyParts?: CourseLessonPartProgress[];
   onSelectStudyPart?: (partId: number) => void;
@@ -69,10 +73,14 @@ export interface ScreenHeaderProps {
 export function ScreenHeader({ 
   title, 
   eyebrow,
+  leftContent,
   centerContent,
   progress, 
+  showPercentage = false,
   currentIndex, 
   totalCount, 
+  isRetry = false,
+  cleanupPhase = null,
   partSegments = [],
   studyParts = [],
   onSelectStudyPart,
@@ -84,14 +92,14 @@ export function ScreenHeader({
   className = "",
   maxWidth = '2xl',
   progressSize = 'default',
-  controlSize = 'md',
+  controlSize = 'lg',
   variant = 'bar',
   tone = 'canvas',
 }: ScreenHeaderProps) {
   const controlMetrics = {
-    sm: { controlSize: 'sm' as const, iconSize: 18, sideSpacerClassName: 'w-9' },
-    md: { controlSize: 'md' as const, iconSize: 20, sideSpacerClassName: 'w-10' },
-    lg: { controlSize: 'lg' as const, iconSize: 25, sideSpacerClassName: 'w-11' },
+    sm: { controlSize: 'sm' as const, iconSize: 18, sideSpacerClassName: 'w-9', containerHeightClassName: 'h-9' },
+    md: { controlSize: 'md' as const, iconSize: 20, sideSpacerClassName: 'w-10', containerHeightClassName: 'h-10' },
+    lg: { controlSize: 'lg' as const, iconSize: 25, sideSpacerClassName: 'w-11', containerHeightClassName: 'h-11' },
   }[controlSize];
   const maxWidthClasses = {
     sm: 'max-w-sm',
@@ -102,65 +110,134 @@ export function ScreenHeader({
     '4xl': 'max-w-4xl',
     none: 'max-w-none',
   };
-  const usesStudyPartRail = studyParts.length > 1 && Boolean(onSelectStudyPart && onToggleStudyPart);
+  const usesStudyPartRail = studyParts.length > 1 && onSelectStudyPart !== undefined && onToggleStudyPart !== undefined && partSegments.length > 0;
+  const hasCenteredContent = progress === undefined && !eyebrow && (centerContent !== undefined || Boolean(title));
+  const effectiveAccentBg = cleanupPhase ? 'bg-feedback-warning' : accentBgClassName;
+  const effectiveTotalCount = cleanupPhase ? cleanupPhase.totalCount : totalCount;
+  const effectiveCurrentIndex = cleanupPhase ? cleanupPhase.currentIndex : currentIndex;
 
   const headerRow = (
-    <div className={cn("w-full flex items-center justify-between mx-auto", maxWidthClasses[maxWidth])}>
-      {onClose ? (
-        <IconActionButton
-          onClick={onClose}
-          className="relative z-30 -ml-1"
-          label="Close"
-          size={controlMetrics.controlSize}
-          icon={<AppIcon name="close" size={controlMetrics.iconSize} />}
-        />
-      ) : onBack ? (
-        <IconActionButton
-          onClick={onBack}
-          className="relative z-30 -ml-1"
-          label="Go back"
-          size={controlMetrics.controlSize}
-          icon={<AppIcon name="back" size={controlMetrics.iconSize} />}
-        />
-      ) : (
-        <div className={controlMetrics.sideSpacerClassName} />
-      )}
-      
-      <div className={cn("flex-1 mx-2 md:mx-4 flex items-center", eyebrow ? "justify-start" : "justify-center")}>
-        {centerContent !== undefined ? (
-          centerContent
-        ) : progress !== undefined ? (
-          <div className="w-full flex items-center justify-center">
-            {studyParts.length > 1 && onSelectStudyPart && onToggleStudyPart ? (
-              <StudyPartProgressRail
-                parts={studyParts}
-                onSelectPart={onSelectStudyPart}
-                onTogglePart={onToggleStudyPart}
-                segments={partSegments}
-                currentIndex={currentIndex ?? 0}
-                totalCount={totalCount ?? 0}
-                density={progressSize === 'compact' ? 'compact' : 'default'}
-                className="w-full"
-              />
-            ) : (
-              <div className={cn(
-                "relative h-5 w-full overflow-hidden rounded-full bg-brand-primary-track",
-              )}>
-                <motion.div
-                  className={`absolute bottom-0 left-0 top-0 min-w-0 overflow-hidden rounded-full ${accentBgClassName} will-change-[width]`}
-                  initial={{ width: 0 }}
-                  animate={{ width: visibleProgressWidth(progress) }}
-                  transition={{ type: 'spring', stiffness: 280, damping: 32, mass: 0.7 }}
-                >
-                  {progress > 0 && (
-                    <div className="absolute left-2 right-2 top-1 h-1.5 rounded-full bg-white/30" />
-                  )}
-                </motion.div>
-              </div>
-            )}
+    <div className={cn("relative w-full flex items-center justify-between mx-auto", maxWidthClasses[maxWidth])}>
+      <div className="relative z-20 flex shrink-0 items-center gap-2">
+        {onClose ? (
+          <IconActionButton
+            onClick={onClose}
+            className="-ml-1"
+            label="Close"
+            size={controlMetrics.controlSize}
+            icon={<AppIcon name="close" size={controlMetrics.iconSize} />}
+          />
+        ) : onBack ? (
+          <IconActionButton
+            onClick={onBack}
+            className="-ml-1"
+            label="Go back"
+            size={controlMetrics.controlSize}
+            icon={<AppIcon name="back" size={controlMetrics.iconSize} />}
+          />
+        ) : (
+          <div className={controlMetrics.sideSpacerClassName} />
+        )}
+        {leftContent}
+        {title && progress !== undefined && (
+          <span className="hidden truncate text-sm font-black text-ui-ink-strong sm:inline sm:text-base max-w-56 md:max-w-xs lg:max-w-md whitespace-nowrap">
+            {title}
+          </span>
+        )}
+      </div>
+
+      {hasCenteredContent ? (
+        <>
+          <div className="flex-1" aria-hidden="true" />
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-14 sm:px-24">
+            <div className="pointer-events-auto min-w-0 max-w-full flex items-center justify-center">
+              {centerContent !== undefined ? (
+                centerContent
+              ) : (
+                <h1 className={cn(
+                  "truncate text-base font-black text-ui-ink-strong sm:text-lg",
+                  /[\u3400-\u9FFF]/.test(title!) ? "font-chinese" : "font-sans",
+                )}>
+                  {title}
+                </h1>
+              )}
+            </div>
           </div>
-        ) : title ? (
-          eyebrow ? (
+        </>
+      ) : (
+        <div className={cn("flex-1 mx-2 md:mx-4 flex items-center", eyebrow ? "justify-start" : "justify-center")}>
+          {progress !== undefined ? (
+            <div className="w-full flex items-center justify-center gap-3">
+              {usesStudyPartRail ? (
+                <StudyPartProgressRail
+                  parts={studyParts}
+                  onSelectPart={onSelectStudyPart}
+                  onTogglePart={onToggleStudyPart}
+                  segments={partSegments}
+                  currentIndex={effectiveCurrentIndex ?? currentIndex ?? 0}
+                  totalCount={effectiveTotalCount ?? totalCount ?? 0}
+                  isRetry={isRetry || Boolean(cleanupPhase)}
+                  density={progressSize === 'compact' ? 'compact' : 'default'}
+                  className="w-full"
+                />
+              ) : (effectiveTotalCount !== undefined && effectiveTotalCount > 0 && effectiveTotalCount <= 4) ? (
+                <div
+                  className={cn(
+                    "flex w-full items-center justify-center gap-2",
+                    effectiveTotalCount === 1 ? "max-w-28" : effectiveTotalCount === 2 ? "max-w-48" : "max-w-64"
+                  )}
+                  aria-label={
+                    cleanupPhase
+                      ? `Review: ${cleanupPhase.currentIndex + 1} of ${cleanupPhase.totalCount}`
+                      : isRetry
+                      ? `Review: ${Math.min((effectiveCurrentIndex ?? 0) + 1, effectiveTotalCount)} of ${effectiveTotalCount}`
+                      : `Progress: ${Math.min((effectiveCurrentIndex ?? 0) + 1, effectiveTotalCount)} of ${effectiveTotalCount}`
+                  }
+                >
+                  {Array.from({ length: effectiveTotalCount }).map((_, idx) => {
+                    const isPassedOrCurrent = idx <= (effectiveCurrentIndex ?? 0);
+                    return (
+                      <div
+                        key={idx}
+                        className="relative h-5 flex-1 min-w-9 overflow-hidden rounded-full bg-brand-primary-track"
+                      >
+                        <motion.div
+                          className={`absolute inset-0 overflow-hidden rounded-full ${effectiveAccentBg} will-change-[transform,opacity]`}
+                          initial={false}
+                          animate={{
+                            scaleX: isPassedOrCurrent ? 1 : 0,
+                            opacity: isPassedOrCurrent ? 1 : 0,
+                          }}
+                          style={{ originX: 0 }}
+                          transition={{ type: 'spring', stiffness: 280, damping: 32, mass: 0.7 }}
+                        >
+                          <div className="absolute left-2 right-2 top-1 h-1.5 rounded-full bg-white/30" />
+                        </motion.div>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <div className="relative h-5 w-full overflow-hidden rounded-full bg-brand-primary-track">
+                  <motion.div
+                    className={`absolute bottom-0 left-0 top-0 min-w-0 overflow-hidden rounded-full ${effectiveAccentBg} will-change-[width]`}
+                    initial={{ width: 0 }}
+                    animate={{ width: visibleProgressWidth(progress) }}
+                    transition={{ type: 'spring', stiffness: 280, damping: 32, mass: 0.7 }}
+                  >
+                    {progress > 0 && (
+                      <div className="absolute left-2 right-2 top-1 h-1.5 rounded-full bg-white/30" />
+                    )}
+                  </motion.div>
+                </div>
+              )}
+              {showPercentage && (
+                <span className="shrink-0 text-xs font-extrabold text-ui-muted tabular-nums sm:text-sm">
+                  {Math.round(progress)}%
+                </span>
+              )}
+            </div>
+          ) : title ? (
             <div className="min-w-0 text-left">
               <p className="truncate text-[9px] font-black uppercase tracking-[0.08em] text-brand-primary sm:text-[10px]">{eyebrow}</p>
               <h1 className={cn(
@@ -170,21 +247,23 @@ export function ScreenHeader({
                 {title}
               </h1>
             </div>
-          ) : (
-            <h1 className={cn(
-              "w-full text-center text-xs sm:text-sm font-black uppercase tracking-wider text-ui-ink-strong",
-            )}>
-              {title}
-            </h1>
-          )
-        ) : null}
-      </div>
+          ) : null}
+        </div>
+      )}
 
-      <div className="flex h-10 shrink-0 items-center gap-2">
-        {(currentIndex !== undefined && totalCount !== undefined && totalCount > 0 && !usesStudyPartRail) && (
-          <span className="mt-0.5 text-xs font-extrabold tracking-wider text-ui-muted tabular-nums sm:text-sm sm:tracking-widest">
-            {currentIndex + 1} / {totalCount}
-          </span>
+      <div className={cn("relative z-20 flex shrink-0 items-center gap-2", controlMetrics.containerHeightClassName)}>
+        {!usesStudyPartRail && (
+          (isRetry || cleanupPhase) ? (
+            <span className="mt-0.5 text-xs font-extrabold tracking-wider text-feedback-warning-edge sm:text-sm sm:tracking-widest">
+              Again
+            </span>
+          ) : (
+            (currentIndex !== undefined && totalCount !== undefined && totalCount > 0) && (
+              <span className="mt-0.5 text-xs font-extrabold tracking-wider text-ui-muted tabular-nums sm:text-sm sm:tracking-widest">
+                {currentIndex + 1} / {totalCount}
+              </span>
+            )
+          )
         )}
         {rightAction !== undefined ? (
           rightAction
@@ -210,12 +289,13 @@ export function ScreenHeader({
           className,
         )}
       >
-        <header className="relative z-10 w-full shrink-0 pointer-events-auto px-4 sm:px-6 lg:px-10">
+        <header className="relative z-10 w-full shrink-0 pointer-events-auto px-3 sm:px-6 lg:px-10">
           {headerRow}
         </header>
       </div>
     );
   }
+
 
   if (variant !== 'bar') {
     // Sticky window header: the wrapper owns the canvas fade and the safe-area

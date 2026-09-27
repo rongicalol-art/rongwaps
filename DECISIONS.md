@@ -10,6 +10,37 @@ Record choices that should remain stable across tasks. Keep each entry short.
 - Reason:
 - Affects:
 
+### 2026-09-26 — Reader redesign: left-anchored dialogue, balanced 72/28 layout, unified Study Guide
+
+- Chosen:
+  - Dialogue conversation widened to `max-w-3xl xl:max-w-4xl` (~72% screen area), and `StudySidePanel` narrowed to `w-72 xl:w-80` (~28% screen area), keeping the dialogue as the clear primary focus of the lesson without dead center stops.
+  - All dialogue lines left-anchored: speaker avatars, speaker name headers, and speech bubble tails all sit consistently on the left margin, eliminating erratic left/right zig-zag and making conversation scanning effortless.
+  - Standardized bubble padding to `px-3.5 py-2.5 sm:px-4 sm:py-3` with natural content-hugging widths.
+  - Unified Study Guide into one quiet, neutral reference panel: removed the yellow alert outline from Grammar and the asymmetric blue outline from Vocabulary; standardized Characters, Grammar, and Vocabulary cards to neutral `rounded-2xl bg-ui-surface border-2 border-ui-border border-b-[length:var(--depth-md)] shadow-xs` with matching collapsible headers and quiet `›` row markers.
+  - Top bar upgraded to use `ScreenHeader` with left-anchored lesson title (`← LESSON X · PART Y`), line progress counter (`3 / 8 lines`), and right-anchored tools (💡 study guide toggle and ⚙ reader settings).
+- Reason: user design review — right study guide panel was competing heavily with dialogue, yellow outline looked like an alert state, dialogue zig-zag made reading jumpy, and bubble gutters were oversized.
+- Affects: `src/lib/widgets/{ScreenHeader,StudySidePanel}.tsx`, `src/screens/reader/ReaderScreen.tsx`, `src/screens/reader/components/{ReaderHeader,ReadingCanvas,ReadingNarrativeView,ReaderDialogueLine,ReaderCompanionSpeakersCard,ReaderCompanionGrammarCard,ReaderCompanionGrammarRow,ReaderCompanionVocabCard,ReaderCompanionVocabRow}.tsx`, `WIDGETS.md`.
+
+### 2026-09-23 — Course examples: verified Lesson 1–6 dialogues + separable verb-object matching
+
+- Chosen:
+  - The Book 1 importer publishes pinyin-verified dialogue lines for every lesson up to 14 (was Lessons 7–14); aligned Reading sentences stay Lessons 7–10. 80 new Part-scoped records (Lessons 1–6) were merged into `public/data/course-examples/book-1.json` surgically instead of regenerating, because the local OCR copy predates the Lesson 10 pinyin cleanup; count 276 → 356 and the manifest was re-hashed.
+  - `sentenceMatchesForms` (`src/utils/courseExamples.ts`) adds split matching for `V-sep` cards: the verb and object may appear in order, so 找錢 matches 找您七百八十五塊錢 and 他找你多少錢？. Used by `recordsToExampleCards`, `findSmartExamplesForWord`, the local vocabulary fallback, and the coverage report; `pos` comes from the flashcard card, or is resolved from the vocabulary pack inside `fetchExamplesForWord` for dictionary callers.
+- Reason: owner review — 找錢 is taught in the Lesson 4 dialogue 找您七百八十五塊錢, yet the card had no example: the importer never published Lesson 1–6 dialogue lines, and the literal matcher cannot see a separable verb-object form. Coverage: 10 cards moved from no-example to covered (找錢 now rich with both the dialogue sentence and the textbook example).
+- Affects: `scripts/exportCourseExamples.ts`, `scripts/reportCourseExampleCoverage.ts`, `src/utils/courseExamples.ts`, `src/services/{courseExamplePackService,vocabularyService}.ts`, `src/features/flashcards/hooks/useCurriculumExamples.ts`, `public/data/course-examples/*`, `tests/courseExamplePack.test.ts`, `docs/COURSE_EXAMPLES.md`.
+
+### 2026-09-23 — Book-faithful grammar tables: normalized slot terms, one table per printed part
+
+- Chosen:
+  - Slot labels use the standard grammar term where the slot has one (`Subject`, `Verb`, `Object`, `Noun`, `Adjective`, `Number`, `Measure word`, `Statement`) instead of role phrases (`Who`, `Does / feels`, `Who / What`, `First`, `Next detail`, `Thing`, `Action`); particle slots keep particle labels (`叫 · 姓 · 是`, `很／不`, `嗎`, `有 / 沒有`, `太`, `了`, `得`, `都`, `多`, `這 · 那 · 哪`, `可以`). Applied to the pattern tables plus their labs, hints, and feedback in Lessons 1–6.
+  - Every grammar point the book prints in numbered parts renders as `subsections`, each with its own table matching the printed grid: L4 G1 (Singular/Plural Topic), L4 G2 (same/different subjects), L4 G5 (Nu+多+M+N / Nu+M+多+N), L5 G4 (at a place / place before an action), L6 G2 (four 得 frames), L6 G4 (suggestion/permission). Root `patternRows` stay empty on those pages; the study screen renders the subsections.
+  - Tables match the printed columns elsewhere: L1 G3 `Statement | 嗎`; L2 G1 `Number | Time word | Number | Measure word` (incl. 號/日, plus the note on why 星期四 puts 星期 first); L3 G3 `這 · 那 · 哪 | Number | Measure word | Noun` (incl. （一）); L5 G2 `Subject | 在 | Place | Verb`.
+  - L4 G4 is the deliberate exception to book shape: the printed place-value grid is replaced by four labelled step tables around one mechanical model — read the biggest part first, then read the rest — so every row reads left to right as the spoken number: (1) the four building blocks (`Block | Means | Example`: 三百, 五千, 八萬), (2) `Number | First part | The rest` incl. the 零 start (115 = 一百 + 一十五, 105 = 一百 + 零五), (3) the droppable last word (`Number | Full reading | Short way`: 八百五十 = 八百五), (4) big numbers counted in 萬 (`Number | How many | 萬 | The rest`: 90,500 = 九 + 萬 + 零五百). These number rows carry no `english`, so the translation band is skipped for them (`GrammarPatternRow.english` is optional and the table renders the band only when authored).
+  - Multi-column rows use `GrammarPatternRow.columns`; `validateInteractiveLessons` and `grammarTeachingTokens` read rows through `getPatternRowGroups`, so four/five-column tables keep ID checks and dictionary targets.
+  - L4 G4 ships no example cards: the printed page has no numbered examples and the table already lists every reading, so the validator's examples requirement is calibrated to exempt a page that teaches with its number lab + reference table.
+- Reason: owner review of Lessons 1–6 against the printed book found tables that dropped or mislabeled slots, two-part grammars shown as one invented table, and "who does" role labels instead of grammar terms.
+- Affects: `content/grammar/*.json` (Lessons 1–6), `src/data/interactiveGrammarPages.ts`, `src/data/interactiveGrammarLessonOnePartTwo.ts`, `src/utils/{validateInteractiveLessons,grammarTeachingTokens}.ts`, `tests/lessonFive.test.ts`, `docs/GRAMMAR_LESSON_TEMPLATE.md`.
+
 ### 2026-09-22 — Architecture cleanup: single owners, shared session engine, strict acceptance
 
 - Chosen:

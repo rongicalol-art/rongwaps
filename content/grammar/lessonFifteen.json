@@ -16,7 +16,7 @@
     ],
     "audioReference": "15-1-1",
     "bookPageAvailable": true,
-    "explanation": "Use 跟 between two things to compare them with 一樣 (the same) or 不一樣 (different). You can also add an adjective or descriptive verb at the end.",
+    "explanation": "Compare with A + 跟 + B + 一樣 / 不一樣 (the same / different). Add an adjective at the end for specific qualities (一樣大).",
     "focusTerms": [
       "跟",
       "一樣",
@@ -548,8 +548,8 @@
     ],
     "pattern": "Thing A + 跟 + Thing B + (不)一樣 (+ Describing Word)",
     "patternColumns": [
-      "Thing A",
-      "跟 + Thing B",
+      "Noun A",
+      "跟 + Noun B",
       "一樣"
     ],
     "patternColumnDetails": [
@@ -1086,7 +1086,7 @@
     ],
     "audioReference": "15-2-1",
     "bookPageAvailable": true,
-    "explanation": "The particle 著 attaches to a verb (like 拿著, 放著, 坐著) to show that the physical position or state continues, often as the background while another action happens.",
+    "explanation": "Attach 著 to a verb (拿著, 放著, 坐著) to show a continuing state or posture, often serving as the background for another action.",
     "focusTerms": [
       "著"
     ],
@@ -1606,7 +1606,7 @@
     ],
     "pattern": "Subject / Place + Verb + 著 + Object (+ Next Action)",
     "patternColumns": [
-      "Who / Where",
+      "Subject / Place",
       "Verb + 著",
       "Object / Next"
     ],
@@ -2110,7 +2110,7 @@
     ],
     "audioReference": "15-3-1",
     "bookPageAvailable": true,
-    "explanation": "Put 一 before the first action and 就 before the second action to express 'as soon as... then...'. It emphasizes how quickly and immediately the second event occurs.",
+    "explanation": "Use 一 + Action 1 + 就 + Action 2 to express \"as soon as… then…\", highlighting how immediately the second event follows.",
     "focusTerms": [
       "一",
       "就"
@@ -3657,8 +3657,8 @@
         ],
         "pattern": "Thing A + 跟 + Thing B + (不)一樣 (+ Describing Word)",
         "patternColumns": [
-          "Thing A",
-          "跟 + Thing B",
+          "Noun A",
+          "跟 + Noun B",
           "一樣"
         ],
         "patternColumnDetails": [
@@ -4865,7 +4865,7 @@
         ],
         "pattern": "Subject / Place + Verb + 著 + Object (+ Next Action)",
         "patternColumns": [
-          "Who / Where",
+          "Subject / Place",
           "Verb + 著",
           "Object / Next"
         ],

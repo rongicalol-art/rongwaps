@@ -19,3 +19,65 @@ export function queueMissedItem<T extends { id: string }>(
     ...items.slice(insertionIndex),
   ];
 }
+
+export interface CardSessionProgressInfo {
+  displayIndex: number;
+  totalCount: number;
+  isRetry: boolean;
+  cleanupPhase: { currentIndex: number; totalCount: number } | null;
+}
+
+export function computeCardSessionProgress(
+  currentIndex: number,
+  currentCardId: string | null | undefined,
+  canonicalCards: Array<{ id: string }>,
+  activeCards: Array<{ id: string }>,
+  repeatMistakes: MistakeRepeat,
+  missedCardIds: Set<string>,
+): CardSessionProgressInfo {
+  const initialTotal = canonicalCards.length || activeCards.length;
+  if (initialTotal === 0) {
+    return {
+      displayIndex: 0,
+      totalCount: 0,
+      isRetry: false,
+      cleanupPhase: null,
+    };
+  }
+
+  const isCleanup =
+    repeatMistakes === 'end' &&
+    currentIndex >= initialTotal &&
+    activeCards.length > initialTotal;
+
+  if (isCleanup) {
+    const cleanupIndex = currentIndex - initialTotal;
+    const cleanupTotal = activeCards.length - initialTotal;
+    return {
+      displayIndex: cleanupIndex,
+      totalCount: cleanupTotal,
+      isRetry: true,
+      cleanupPhase: {
+        currentIndex: cleanupIndex,
+        totalCount: cleanupTotal,
+      },
+    };
+  }
+
+  const isRetry = Boolean(currentCardId && missedCardIds.has(currentCardId));
+  const cardCanonicalIndex = currentCardId
+    ? canonicalCards.findIndex((c) => c.id === currentCardId)
+    : -1;
+
+  const displayIndex =
+    cardCanonicalIndex >= 0
+      ? cardCanonicalIndex
+      : Math.min(currentIndex, Math.max(0, initialTotal - 1));
+
+  return {
+    displayIndex,
+    totalCount: initialTotal,
+    isRetry,
+    cleanupPhase: null,
+  };
+}

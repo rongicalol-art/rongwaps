@@ -107,7 +107,7 @@
       55
     ],
     "audioReference": "02-1-3",
-    "explanation": "Chinese says bigger time units first: month before date, 星期 before weekday number, hour before minutes.",
+    "explanation": "Dates and clock times put numbers first: 五月十六號, 九點二十分. Weekdays flip this: 星期 comes first, then the number (星期四), with no measure word.",
     "focusTerms": [
       "月",
       "號",
@@ -245,11 +245,18 @@
         "meaning": "minute"
       }
     ],
-    "pattern": "Number + time marker + number + ending",
+    "pattern": "Number + time word + number + measure word",
     "patternColumns": [
-      "First",
-      "Time marker",
-      "Next detail"
+      "Number",
+      "Time word",
+      "Number",
+      "Measure word"
+    ],
+    "patternColumnDetails": [
+      "Nu",
+      "月 · 星期 · 點",
+      "Nu",
+      "號 · 日 · 分"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -272,7 +279,7 @@
           "traditional": "星期四",
           "pinyin": "Xīngqí sì",
           "english": "Thursday",
-          "note": "星期 plus numbers one through six gives Monday through Saturday. Sunday uses 星期天 or 星期日."
+          "note": "星期 comes before the number: 星期四. Numbers one to six give Monday to Saturday; Sunday uses 星期天 or 星期日."
         },
         {
           "id": "g1-clock",
@@ -293,97 +300,124 @@
           "note": "Replace the unknown number with 幾. Keep its time marker after it."
         }
       ],
-      "takeaway": "Large unit first, small unit second: month then date, hour then minute."
+      "takeaway": "Large unit first, small unit second: month then date, hour then minute. 星期 is different: it comes before its number."
     },
     "patternRows": [
       {
         "id": "g1-pattern-date",
-        "subject": [
-          {
-            "id": "g1-p1-five",
-            "traditional": "五",
-            "pinyin": "wǔ",
-            "meaning": "five"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g1-p1-month",
-            "traditional": "月",
-            "pinyin": "yuè",
-            "meaning": "month"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g1-p1-sixteen",
-            "traditional": "十六",
-            "pinyin": "shíliù",
-            "meaning": "sixteen"
-          },
-          {
-            "id": "g1-p1-date",
-            "traditional": "號",
-            "simplified": "号",
-            "pinyin": "hào",
-            "meaning": "day number in a date (spoken form)"
-          }
+        "subject": [],
+        "grammar": [],
+        "complement": [],
+        "columns": [
+          [
+            {
+              "id": "g1-p1-five",
+              "traditional": "五",
+              "pinyin": "wǔ",
+              "meaning": "five"
+            }
+          ],
+          [
+            {
+              "id": "g1-p1-month",
+              "traditional": "月",
+              "pinyin": "yuè",
+              "meaning": "month"
+            }
+          ],
+          [
+            {
+              "id": "g1-p1-sixteen",
+              "traditional": "十六",
+              "pinyin": "shíliù",
+              "meaning": "sixteen"
+            }
+          ],
+          [
+            {
+              "id": "g1-p1-date",
+              "traditional": "號",
+              "simplified": "号",
+              "pinyin": "hào",
+              "meaning": "day number in a date (spoken form)"
+            },
+            {
+              "id": "g1-p1-date-written",
+              "traditional": "日",
+              "pinyin": "rì",
+              "meaning": "day number in a date (written form)",
+              "prefix": "/"
+            }
+          ]
         ],
         "english": "May 16"
       },
       {
         "id": "g1-pattern-weekday",
-        "subject": [
-          {
-            "id": "g1-p2-week",
-            "traditional": "星期",
-            "pinyin": "xīngqí",
-            "meaning": "week; weekday"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g1-p2-four",
-            "traditional": "四",
-            "pinyin": "sì",
-            "meaning": "four"
-          }
-        ],
+        "subject": [],
+        "grammar": [],
         "complement": [],
+        "columns": [
+          [],
+          [
+            {
+              "id": "g1-p2-week",
+              "traditional": "星期",
+              "pinyin": "xīngqí",
+              "meaning": "week; weekday"
+            }
+          ],
+          [
+            {
+              "id": "g1-p2-four",
+              "traditional": "四",
+              "pinyin": "sì",
+              "meaning": "four"
+            }
+          ],
+          []
+        ],
         "english": "Thursday"
       },
       {
         "id": "g1-pattern-clock",
-        "subject": [
-          {
-            "id": "g1-p3-nine",
-            "traditional": "九",
-            "pinyin": "jiǔ",
-            "meaning": "nine"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g1-p3-hour",
-            "traditional": "點",
-            "simplified": "点",
-            "pinyin": "diǎn",
-            "meaning": "o’clock; hour word"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g1-p3-twenty",
-            "traditional": "二十",
-            "pinyin": "èrshí",
-            "meaning": "twenty"
-          },
-          {
-            "id": "g1-p3-minute",
-            "traditional": "分",
-            "pinyin": "fēn",
-            "meaning": "minute"
-          }
+        "subject": [],
+        "grammar": [],
+        "complement": [],
+        "columns": [
+          [
+            {
+              "id": "g1-p3-nine",
+              "traditional": "九",
+              "pinyin": "jiǔ",
+              "meaning": "nine"
+            }
+          ],
+          [
+            {
+              "id": "g1-p3-hour",
+              "traditional": "點",
+              "simplified": "点",
+              "pinyin": "diǎn",
+              "meaning": "o’clock; hour word"
+            }
+          ],
+          [
+            {
+              "id": "g1-p3-twenty",
+              "traditional": "二十",
+              "pinyin": "èrshí",
+              "meaning": "twenty"
+            }
+          ],
+          [
+            {
+              "id": "g1-p3-minute",
+              "traditional": "分",
+              "pinyin": "fēn",
+              "meaning": "minute"
+            }
+          ]
         ],
         "english": "9:20"
       }
@@ -1125,11 +1159,16 @@
         "meaning": "not"
       }
     ],
-    "pattern": "Who + 有／沒有 + thing",
+    "pattern": "Subject + 有／沒有 + object",
     "patternColumns": [
-      "Who",
+      "Subject",
       "有 / 沒有",
-      "What"
+      "Object"
+    ],
+    "patternColumnDetails": [
+      "S",
+      "negation",
+      "O"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -1903,11 +1942,16 @@
         "meaning": "library"
       }
     ],
-    "pattern": "Who + time word + action",
+    "pattern": "Subject + time word + verb",
     "patternColumns": [
-      "Who",
-      "When",
-      "What happens"
+      "Subject",
+      "Time",
+      "Verb"
+    ],
+    "patternColumnDetails": [
+      "S",
+      "Time word",
+      "V(O)"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -2542,7 +2586,7 @@
           55
         ],
         "audioReference": "02-1-3",
-        "explanation": "Chinese says bigger time units first: month before date, 星期 before weekday number, hour before minutes.",
+        "explanation": "Dates and clock times put the number first: 五月十六號, 九點二十分. Weekdays are the other way around: 星期 comes first, then the number, as in 星期四. So the weekday row has no first number and no measure word at the end.",
         "focusTerms": [
           "月",
           "號",
@@ -2680,11 +2724,18 @@
             "meaning": "minute"
           }
         ],
-        "pattern": "Number + time marker + number + ending",
+        "pattern": "Number + time word + number + measure word",
         "patternColumns": [
-          "First",
-          "Time marker",
-          "Next detail"
+          "Number",
+          "Time word",
+          "Number",
+          "Measure word"
+        ],
+        "patternColumnDetails": [
+          "Nu",
+          "月 · 星期 · 點",
+          "Nu",
+          "號 · 日 · 分"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
@@ -2707,7 +2758,7 @@
               "traditional": "星期四",
               "pinyin": "Xīngqí sì",
               "english": "Thursday",
-              "note": "星期 plus numbers one through six gives Monday through Saturday. Sunday uses 星期天 or 星期日."
+              "note": "星期 comes before the number: 星期四. Numbers one to six give Monday to Saturday; Sunday uses 星期天 or 星期日."
             },
             {
               "id": "g1-clock",
@@ -2728,97 +2779,124 @@
               "note": "Replace the unknown number with 幾. Keep its time marker after it."
             }
           ],
-          "takeaway": "Large unit first, small unit second: month then date, hour then minute."
+          "takeaway": "Large unit first, small unit second: month then date, hour then minute. 星期 is different: it comes before its number."
         },
         "patternRows": [
           {
             "id": "g1-pattern-date",
-            "subject": [
-              {
-                "id": "g1-p1-five",
-                "traditional": "五",
-                "pinyin": "wǔ",
-                "meaning": "five"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g1-p1-month",
-                "traditional": "月",
-                "pinyin": "yuè",
-                "meaning": "month"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g1-p1-sixteen",
-                "traditional": "十六",
-                "pinyin": "shíliù",
-                "meaning": "sixteen"
-              },
-              {
-                "id": "g1-p1-date",
-                "traditional": "號",
-                "simplified": "号",
-                "pinyin": "hào",
-                "meaning": "day number in a date (spoken form)"
-              }
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g1-p1-five",
+                  "traditional": "五",
+                  "pinyin": "wǔ",
+                  "meaning": "five"
+                }
+              ],
+              [
+                {
+                  "id": "g1-p1-month",
+                  "traditional": "月",
+                  "pinyin": "yuè",
+                  "meaning": "month"
+                }
+              ],
+              [
+                {
+                  "id": "g1-p1-sixteen",
+                  "traditional": "十六",
+                  "pinyin": "shíliù",
+                  "meaning": "sixteen"
+                }
+              ],
+              [
+                {
+                  "id": "g1-p1-date",
+                  "traditional": "號",
+                  "simplified": "号",
+                  "pinyin": "hào",
+                  "meaning": "day number in a date (spoken form)"
+                },
+                {
+                  "id": "g1-p1-date-written",
+                  "traditional": "日",
+                  "pinyin": "rì",
+                  "meaning": "day number in a date (written form)",
+                  "prefix": "/"
+                }
+              ]
             ],
             "english": "May 16"
           },
           {
             "id": "g1-pattern-weekday",
-            "subject": [
-              {
-                "id": "g1-p2-week",
-                "traditional": "星期",
-                "pinyin": "xīngqí",
-                "meaning": "week; weekday"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g1-p2-four",
-                "traditional": "四",
-                "pinyin": "sì",
-                "meaning": "four"
-              }
-            ],
+            "subject": [],
+            "grammar": [],
             "complement": [],
+            "columns": [
+              [],
+              [
+                {
+                  "id": "g1-p2-week",
+                  "traditional": "星期",
+                  "pinyin": "xīngqí",
+                  "meaning": "week; weekday"
+                }
+              ],
+              [
+                {
+                  "id": "g1-p2-four",
+                  "traditional": "四",
+                  "pinyin": "sì",
+                  "meaning": "four"
+                }
+              ],
+              []
+            ],
             "english": "Thursday"
           },
           {
             "id": "g1-pattern-clock",
-            "subject": [
-              {
-                "id": "g1-p3-nine",
-                "traditional": "九",
-                "pinyin": "jiǔ",
-                "meaning": "nine"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g1-p3-hour",
-                "traditional": "點",
-                "simplified": "点",
-                "pinyin": "diǎn",
-                "meaning": "o’clock; hour word"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g1-p3-twenty",
-                "traditional": "二十",
-                "pinyin": "èrshí",
-                "meaning": "twenty"
-              },
-              {
-                "id": "g1-p3-minute",
-                "traditional": "分",
-                "pinyin": "fēn",
-                "meaning": "minute"
-              }
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g1-p3-nine",
+                  "traditional": "九",
+                  "pinyin": "jiǔ",
+                  "meaning": "nine"
+                }
+              ],
+              [
+                {
+                  "id": "g1-p3-hour",
+                  "traditional": "點",
+                  "simplified": "点",
+                  "pinyin": "diǎn",
+                  "meaning": "o’clock; hour word"
+                }
+              ],
+              [
+                {
+                  "id": "g1-p3-twenty",
+                  "traditional": "二十",
+                  "pinyin": "èrshí",
+                  "meaning": "twenty"
+                }
+              ],
+              [
+                {
+                  "id": "g1-p3-minute",
+                  "traditional": "分",
+                  "pinyin": "fēn",
+                  "meaning": "minute"
+                }
+              ]
             ],
             "english": "9:20"
           }
@@ -3540,11 +3618,16 @@
             "meaning": "library"
           }
         ],
-        "pattern": "Who + time word + action",
+        "pattern": "Subject + time word + verb",
         "patternColumns": [
-          "Who",
-          "When",
-          "What happens"
+          "Subject",
+          "Time",
+          "Verb"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "Time word",
+          "V(O)"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
@@ -4332,11 +4415,16 @@
             "meaning": "not"
           }
         ],
-        "pattern": "Who + 有／沒有 + thing",
+        "pattern": "Subject + 有／沒有 + object",
         "patternColumns": [
-          "Who",
+          "Subject",
           "有 / 沒有",
-          "What"
+          "Object"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "negation",
+          "O"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {

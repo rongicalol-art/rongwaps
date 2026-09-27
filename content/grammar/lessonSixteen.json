@@ -1514,7 +1514,7 @@
     ],
     "pattern": "S + 本來 + first part，後來 + changed part",
     "patternColumns": [
-      "Who?",
+      "Subject",
       "本來",
       "後來"
     ],
@@ -2744,9 +2744,9 @@
     ],
     "pattern": "Thing one + 比 + thing two + 更 + describing word",
     "patternColumns": [
-      "Thing 1",
-      "比 + Thing 2",
-      "Quality"
+      "Noun 1",
+      "比 + Noun 2",
+      "Adjective"
     ],
     "patternColumnDetails": [
       "S1",
@@ -4926,8 +4926,8 @@
     ],
     "pattern": "Subject + Verb + 得 + Degree / Result Complement",
     "patternColumns": [
-      "Who?",
-      "Action + 得",
+      "Subject",
+      "Verb + 得",
       "Result"
     ],
     "patternColumnDetails": [
@@ -7116,7 +7116,7 @@
         ],
         "pattern": "S + 本來 + first part，後來 + changed part",
         "patternColumns": [
-          "Who?",
+          "Subject",
           "本來",
           "後來"
         ],
@@ -8346,9 +8346,9 @@
         ],
         "pattern": "Thing one + 比 + thing two + 更 + describing word",
         "patternColumns": [
-          "Thing 1",
-          "比 + Thing 2",
-          "Quality"
+          "Noun 1",
+          "比 + Noun 2",
+          "Adjective"
         ],
         "patternColumnDetails": [
           "S1",
@@ -10528,8 +10528,8 @@
         ],
         "pattern": "Subject + Verb + 得 + Degree / Result Complement",
         "patternColumns": [
-          "Who?",
-          "Action + 得",
+          "Subject",
+          "Verb + 得",
           "Result"
         ],
         "patternColumnDetails": [

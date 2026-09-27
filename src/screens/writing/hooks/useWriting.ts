@@ -279,5 +279,6 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
     restartRound,
     isShuffled: session.isShuffled,
     toggleShuffle,
+    progressInfo: session.progressInfo,
   };
 }

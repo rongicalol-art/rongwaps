@@ -7,7 +7,7 @@ import { getDeckIdentityKey } from '../../../utils/lessonPartSelection';
 
 // How many upcoming cards to pre-warm neural TTS for, so flip-triggered
 // playback is instant instead of waiting a server synthesis round-trip.
-const WARM_AHEAD_COUNT = 4;
+const WARM_AHEAD_COUNT = 1;
 
 /**
  * UI rating level (1-4) → SRS quality (1-5). The UI skips quality 3
@@ -67,26 +67,30 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
   }, [currentIndex]);
 
   // Rolling lookahead: preload recorded audio for the next stretch and
-  // pre-warm neural TTS for cards without recorded audio. Fire-and-forget;
-  // preloadNeural skips words already cached in browser/Supabase storage.
+  // pre-warm neural TTS for cards without recorded audio. Debounced so rapid
+  // card navigation never contends with card transitions or the main thread.
   useEffect(() => {
     if (activeCards.length === 0) return;
-    const upcomingAudio = activeCards
-      .slice(currentIndex, currentIndex + 10)
-      .map((card) => card.audio)
-      .filter((audio): audio is string => Boolean(audio));
-    if (upcomingAudio.length > 0) {
-      audioService.preload(upcomingAudio).catch(() => {});
-    }
+    const timer = window.setTimeout(() => {
+      const upcomingAudio = activeCards
+        .slice(currentIndex + 1, currentIndex + 5)
+        .map((card) => card.audio)
+        .filter((audio): audio is string => Boolean(audio));
+      if (upcomingAudio.length > 0) {
+        void audioService.preload(upcomingAudio).catch(() => {});
+      }
 
-    const warm = activeCards
-      .slice(currentIndex, currentIndex + WARM_AHEAD_COUNT)
-      .filter((card) => !audioService.isAudioFileName(card.audio))
-      .map((card) => card.front.trim())
-      .filter(Boolean);
-    for (const text of warm) {
-      audioService.preloadNeural([text]).catch(() => {});
-    }
+      const warm = activeCards
+        .slice(currentIndex + 1, currentIndex + 1 + WARM_AHEAD_COUNT)
+        .filter((card) => !audioService.isAudioFileName(card.audio))
+        .map((card) => card.front.trim())
+        .filter(Boolean);
+      if (warm.length > 0) {
+        void audioService.preloadNeural(warm).catch(() => {});
+      }
+    }, 600);
+
+    return () => window.clearTimeout(timer);
   }, [currentIndex, activeCards]);
 
   const setActiveBreakdown = useCallback((text: string | null, index: number = 0) => {
@@ -100,28 +104,25 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
       session.moveTo(currentIndex - 1);
       return;
     }
-    if (currentIndex >= activeCards.length - 1) {
-      // Moving past the last card completes the session.
-      session.advanceOrComplete();
-      return;
-    }
-    session.moveTo(currentIndex + 1);
-  }, [activeCards.length, currentIndex, session]);
+    session.advanceOrComplete();
+  }, [currentIndex, session]);
 
   const handleNext = useCallback((level: number) => {
-    if (!currentCard) return;
+    const cardToRate = activeCards[currentIndex] ?? currentCard;
+    if (!cardToRate) return;
     // Re-rating an already-graded card still advances so keyboard and swipe
     // navigation stay fluid, but must not apply SRS or tallies twice.
     if (session.beginGrading()) {
-      session.recordAnswer(currentCard, levelToQuality(level));
+      session.recordAnswer(cardToRate, levelToQuality(level));
     }
     setIsFlipped(false);
     session.advanceOrComplete();
-  }, [currentCard, session]);
+  }, [activeCards, currentCard, currentIndex, session]);
 
   const resetAll = useCallback(() => {
+    useAppStore.getState().clearDeckExclusions(deckExclusionKey);
     session.resetAll();
-  }, [session]);
+  }, [deckExclusionKey, session]);
 
   const reviewUnlearned = useCallback(() => {
     session.reviewUnlearned();
@@ -147,6 +148,7 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     learnedCount: session.learnedCount,
     isShuffled: session.isShuffled,
     toggleShuffle: session.toggleShuffle,
+    progressInfo: session.progressInfo,
     deckExclusionKey,
     excludedIds,
     isLoading,

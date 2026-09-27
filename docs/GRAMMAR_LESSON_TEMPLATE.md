@@ -25,10 +25,10 @@ Each grammar page inside a part provides:
 
 - Book, lesson, part, grammar number, printed pages, and audio reference
 - Traditional title, English title, a concrete learner promise, and textbook-based explanation
-- Three pattern-column labels and one or more pattern rows. Labels use the canonical slot vocabulary (`Who`, `Action`, `Thing`, `Time`, `Place`, `Where`, `How`, `Result`, `Condition`, `Amount`, `Then`, `Focus`, `Tool`, `Receiver`, …), read as plain 1–3 word titles, stay within 6 visual-width units (≈ 6 CJK glyphs or ~13 Latin characters) so they never wrap in the narrowest mobile column, and keep particle labels (`嗎`, `有 / 沒有`, `一……就……`) where the slot *is* the particle. Full nuance belongs in the page `explanation` or the short `patternColumnDetails` notation (≤ 8 units) that rides in the cell tooltip, never in a compound, abbreviated, or parenthetical header such as "Suggested or permitted action", "Name / ID", or "(no noun)"; `validateInteractiveLessons` fails a label that is too wide, more than three words, or wrapped in parentheses.
+- Three pattern-column labels and one or more pattern rows. Labels use the standardized grammar term when the slot has one (`Subject`, `Verb`, `Object`, `Noun`, `Adjective`, `Number`, `Measure word`, `Statement`) and the canonical slot vocabulary (`Time`, `Place`, `Result`, `Condition`, `Tool`, `Receiver`, `Focus`, …) when the role has no standard term; they read as plain 1–3 word titles, stay within 6 visual-width units (≈ 6 CJK glyphs or ~13 Latin characters) so they never wrap in the narrowest mobile column, and keep particle labels (`嗎`, `有 / 沒有`, `一……就……`) where the slot *is* the particle. Full nuance belongs in the page `explanation` or the short `patternColumnDetails` notation (≤ 8 units) that rides in the cell tooltip, never in a compound, abbreviated, or parenthetical header such as "Suggested or permitted action", "Name / ID", or "(no noun)"; `validateInteractiveLessons` fails a label that is too wide, more than three words, or wrapped in parentheses.
 - A `confusion` block of don't-mix-these-up clarifiers (see below)
 - A discovery interaction when comparison, repair, or meaning choice makes the rule easier to notice
-- Segmented examples with pinyin, English translations, and dictionary meanings
+- Segmented examples with pinyin, English translations, and dictionary meanings (a reference page such as the number system may ship no example cards when its full pattern table plus number lab already carry every reading — the printed book prints no numbered examples there)
 - Data-driven exercise title, preview, instruction, optional note, and questions
 - Optional profile cards or book exercise cues
 
@@ -96,7 +96,7 @@ The compact blank-tile exercise can also teach word order by rendering consecuti
 
 Use the optional `sentenceSpine` recipe when a grammar point depends on a stable sequence of semantic roles, such as subject–verb–object order. The grammar lesson `SentenceSpine` component should introduce the meaning slots before the formal pattern table, preserve the same column proportions at every state, and use a switch only when changing one element materially clarifies the rule. For negation, keep the negation visually attached to the verb and preserve it as a separate tile in structure-building Practice so the learner must place it deliberately.
 
-Use `patternColumnDetails` for compact notation such as `S`, `(Neg)V`, and `O` (≤ 8 units, e.g. `which word`, `right after`); keep the primary table labels in plain learner-facing language as 1–3 word titles. The cell tooltip carries `label · detail`, and the column-share scorer reads the label's full width, so long headers are both unnecessary and penalised. Optional `teachingNote` text on examples should identify one useful discovery rather than restating the full translation. A `completionRecap` may contrast one correct sentence with a small number of deliberately authored structural mistakes after the exercise is complete.
+Use `patternColumnDetails` for compact notation such as `S`, `(Neg)V`, and `O` (≤ 8 units, e.g. `which word`, `right after`); keep the primary table labels as standardized 1–3 word grammar titles. The cell tooltip carries `label · detail`, and the column-share scorer reads the label's full width, so long headers are both unnecessary and penalised. Optional `teachingNote` text on examples should identify one useful discovery rather than restating the full translation. A `completionRecap` may contrast one correct sentence with a small number of deliberately authored structural mistakes after the exercise is complete.
 
 ### Guided timeline readings
 
@@ -146,10 +146,10 @@ All learner-facing English (titles, promises, explanations, glossary meanings, l
 
 - One idea per sentence. Split long sentences.
 - Address the learner as "you".
-- Use everyday words. Do not use grammar-school terms such as *predicate*, *subject*, *object*, *auxiliary*, *intransitive/transitive*, *state verb*, *complement*, *clause*, *particle*, or *adverb*. Use plain replacements instead: "action word", "describing word", "ending word" (for 嗎/呢/吧/了-type endings), "the person or thing the sentence is about".
-- Keep these terms consistent across every lesson: **measure word** (not "counting word"), **action word**, **describing word**, **ending word**.
+- Use everyday words, and name sentence slots with their standard terms — **subject**, **verb**, **object**, **noun**, **adjective**, **number**, **measure word**, **statement** — instead of role phrases such as "who", "does / feels", or "who or what". Keep "ending word" for 嗎/呢/吧/了-type endings. Avoid rarer grammar-school jargon such as *predicate*, *auxiliary*, *intransitive/transitive*, *state verb*, *complement*, or *clause*.
+- Keep these terms consistent across every lesson: **subject**, **verb**, **object**, **noun**, **adjective**, **number**, **measure word** (not "counting word"), **ending word**.
 - Point at the actual Chinese example instead of explaining abstractly.
 - Keep labels and hints short (about eight words or fewer).
-- Keep the compact source notation (`S`, `V`, `O`, `(Neg)V`, `Vs`) only in `patternColumnDetails`; use plain words in `patternColumns`.
+- Keep the compact source notation (`S`, `V`, `O`, `(Neg)V`, `Vs`) only in `patternColumnDetails`; use the standardized grammar term in `patternColumns`.
 
 Do not change Chinese text, pinyin, simplified forms, IDs, keys, or page/audio references during an English pass. Printed textbook sentences stay verbatim; app-authored model sentences are allowed only when clearly derived and labeled.

@@ -148,7 +148,8 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
     unlearnedCount: session.unlearnedCount,
     learnedCount: session.learnedCount,
     isShuffled: session.isShuffled,
-    toggleShuffle
+    toggleShuffle,
+    progressInfo: session.progressInfo,
   };
 }
 
@@ -255,6 +256,7 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
     unlearnedCount: session.unlearnedCount,
     learnedCount: session.learnedCount,
     isShuffled: session.isShuffled,
-    toggleShuffle: session.toggleShuffle
+    toggleShuffle: session.toggleShuffle,
+    progressInfo: session.progressInfo,
   };
 }

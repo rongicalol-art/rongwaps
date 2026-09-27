@@ -41,6 +41,10 @@ Vocabulary forms are authored with notation, and matching expands it fully:
 - Substring matching is deliberate: a short core (點, 事) is still a real word,
   so occurrences inside other words (點心, 同事) are included but sink below
   sentences where the form does real work.
+- Separable verb-object words (`pos` = `V-sep`, e.g. 找錢, 放假) also match when
+  the verb and the object appear in order — 找錢 finds 找您七百八十五塊錢 and
+  他找你多少錢？. The split form is only tried for V-sep cards; ordinary words
+  keep exact block matching.
 
 ## Book 1 import
 
@@ -62,10 +66,11 @@ pack preserves that source association, while runtime lookup shows the sentence
 only for words that actually occur in it. A source-verified sentence from the same
 Part's Reading supplies the term-specific example for 夏天.
 
-For Lessons 7–10, the importer also publishes visually verified dialogue lines and
-aligned Reading sentences as Part-scoped examples. Context extraction accepts
-either lesson-wide pinyin verification or the narrower dialogue-and-Reading
-verification flag. Raw OCR pinyin is never published for unverified sections.
+The importer also publishes pinyin-verified dialogue lines (every lesson up to 14
+whose OCR section carries a verification flag) and, for Lessons 7–10, aligned
+Reading sentences as Part-scoped examples. Context extraction accepts either
+lesson-wide pinyin verification or the narrower dialogue-and-Reading verification
+flag. Raw OCR pinyin is never published for unverified sections.
 
 The OCR source and review report are local generated inputs and are intentionally
 ignored by Git. The generated manifest and per-book packs under `public/data/` are
@@ -98,8 +103,10 @@ audio, or a flashcard example).
 - Target words: the Book 1 vocabulary pack (`public/data/vocabulary/book-1.json`).
 - Covered = the word (in any authored variant form) occurs in a reading of its
   lesson, in interactive grammar content, or in the course-example packs.
-- 825 target words checked: **670 covered, 155 never used in a reading**, of which
-  **75 are already practiced in grammar labs/examples** and **80 have no usage
+  Separable verb-object words count as used when the verb and object appear in
+  order (找錢 → 找您七百八十五塊錢).
+- 825 target words checked: **671 covered, 154 never used in a reading**, of which
+  **75 are already practiced in grammar labs/examples** and **79 have no usage
   anywhere in reading or grammar content** — listed below.
 - Every suggested sentence was machine-checked for level fit (all characters taught
   by its lesson, two marked one-lesson previews), pinyin syllable coverage, and
@@ -123,13 +130,12 @@ audio, or a flashcard example).
 | 再見 | zàijiàn | Good-bye. | 老師，再見！ | 老师，再见！ | Goodbye, teacher! |
 | 晚飯 | wǎnfàn | dinner | 我們晚上吃晚飯。 | 我们晚上吃晚饭。 | We eat dinner in the evening. |
 
-## Lesson 4 (5)
+## Lesson 4 (4)
 
 | Word | Pinyin | Meaning | Suggested sentence (traditional) | Suggested sentence (simplified) | English |
 | --- | --- | --- | --- | --- | --- |
 | 瓶子 | píngzi | bottle | 這個瓶子是綠色的。 | 这个瓶子是绿色的。 | This bottle is green. |
 | 綠色 | lǜsè | green color | 我有一個綠色的瓶子。 | 我有一个绿色的瓶子。 | I have a green bottle. |
-| 找錢 | zhǎoqián | to give change _(verb–object word; appears as 找我錢 in natural use)_ | 小姐，請找我錢。 | 小姐，请找我钱。 | Miss, please give me my change. |
 | 春天 | chūntiān | spring | 台灣的春天不冷也不熱。 | 台湾的春天不冷也不热。 | Spring in Taiwan is neither cold nor hot. |
 | 冬天 | dōngtiān | winter | 台灣的冬天不太冷。 | 台湾的冬天不太冷。 | Winter in Taiwan is not very cold. |
 

@@ -18,7 +18,7 @@
  */
 
 import { create } from 'zustand';
-import { persist, createJSONStorage, StateStorage } from 'zustand/middleware';
+import { persist, type PersistStorage } from 'zustand/middleware';
 import { get, set, del } from 'idb-keyval';
 import { migrateLegacyLessonSelection } from '../utils/lessonPartSelection';
 import {
@@ -86,8 +86,8 @@ export type AppState = AppStoreData & AppStoreActions;
 // cost to roughly one serialization per second of studying. The in-memory
 // store stays the source of truth and cloud sync remains the durable path.
 const PERSIST_DEBOUNCE_MS = 1_000;
-let pendingWrite: { name: string; value: string } | null = null;
-let pendingWriteLastValue: string | null = null;
+let pendingWrite: { name: string; value: unknown } | null = null;
+let pendingWriteLastValue: unknown | null = null;
 let persistTimer: ReturnType<typeof setTimeout> | null = null;
 
 function flushPendingPersist(): void {
@@ -117,19 +117,36 @@ if (typeof window !== 'undefined') {
   });
 }
 
-const idbStorage: StateStorage = {
-  getItem: async (name: string): Promise<string | null> => {
+const idbStorage: PersistStorage<Partial<AppState>> = {
+  getItem: async (name) => {
     try {
       return (await get(name)) || null;
     } catch {
       return null;
     }
   },
-  setItem: async (name: string, value: string): Promise<void> => {
+  setItem: async (name, value) => {
     try {
       // Skip a write that would reproduce the last persisted payload.
-      if (value === pendingWriteLastValue && pendingWrite === null) return;
-      if (value === pendingWrite?.value) return;
+      // Since value is now an object, we must do a shallow comparison of its state.
+      const isValueEqual = (a: { state?: Record<string, unknown>; version?: number } | null | undefined, b: { state?: Record<string, unknown>; version?: number } | null | undefined) => {
+        if (a === b) return true;
+        if (!a || !b) return false;
+        if (a.version !== b.version) return false;
+        const stateA = a.state;
+        const stateB = b.state;
+        if (stateA === stateB) return true;
+        if (!stateA || !stateB) return false;
+        for (const key of PERSISTED_KEYS) {
+          if (stateA[key] !== stateB[key]) return false;
+        }
+        return true;
+      };
+
+      type StoredVal = { state?: Record<string, unknown>; version?: number } | null | undefined;
+      if (isValueEqual(value, pendingWriteLastValue as StoredVal) && pendingWrite === null) return;
+      if (isValueEqual(value, pendingWrite?.value as StoredVal)) return;
+
       pendingWrite = { name, value };
       if (!persistTimer) {
         persistTimer = setTimeout(flushPendingPersist, PERSIST_DEBOUNCE_MS);
@@ -138,7 +155,7 @@ const idbStorage: StateStorage = {
       // Cache writes are optional and must never block the store.
     }
   },
-  removeItem: async (name: string): Promise<void> => {
+  removeItem: async (name) => {
     try {
       pendingWrite = null;
       if (persistTimer) {
@@ -216,7 +233,7 @@ export const useAppStore = create<AppState & AppStoreActions>()(
         migrateLegacyLessonSelection(state);
         return state as unknown as AppState;
       },
-      storage: createJSONStorage(() => idbStorage),
+      storage: idbStorage,
       partialize: derivePersistedState,
     }
   )

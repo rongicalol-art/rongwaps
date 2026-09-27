@@ -250,15 +250,19 @@ function buildContextRecord(
   };
 }
 
-function createLaterLessonContextExamples(
+/**
+ * Verified dialogue lines (Lessons 1–14) and aligned Reading sentences
+ * (Lessons 7–10, the ones with an English-group mapping) become Part-scoped
+ * examples. Every line must come from a pinyin-verified section.
+ */
+function createVerifiedContextExamples(
   lessons: OcrLesson[],
   vocabularyRows: VocabularyPackRow[],
 ): CourseExampleRecord[] {
   const records: CourseExampleRecord[] = [];
 
   lessons.filter((lesson) => (
-    lesson.lessonId >= 7
-    && lesson.lessonId <= 14
+    lesson.lessonId <= 14
     && (
       lesson.verification?.checklist?.pinyinToneMarksPreservedAsPrinted === true
       || lesson.verification?.checklist?.dialogueAndReadingPinyinVerified === true
@@ -429,7 +433,7 @@ async function main() {
 
   const readingExample = createReadingExample(lessons, vocabularyPack.items);
   if (readingExample) records.push(readingExample);
-  records.push(...createLaterLessonContextExamples(lessons, vocabularyPack.items));
+  records.push(...createVerifiedContextExamples(lessons, vocabularyPack.items));
 
   records.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true, sensitivity: 'base' }));
   const pack: CourseExamplePack = {

@@ -817,11 +817,16 @@
         "meaning": "say"
       }
     ],
-    "pattern": "Person + 可以 + action / 可以…嗎？",
+    "pattern": "Subject + 可以 + Verb; Subject + 可以 + Verb 嗎？",
     "patternColumns": [
-      "Who?",
-      "Green light",
-      "Action"
+      "Subject",
+      "可以",
+      "Verb"
+    ],
+    "patternColumnDetails": [
+      "S",
+      "suggestion",
+      "V(O)"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -902,112 +907,7 @@
         }
       ]
     },
-    "patternRows": [
-      {
-        "id": "g4-p1",
-        "subject": [
-          {
-            "id": "g4-p1-you",
-            "traditional": "你",
-            "pinyin": "nǐ",
-            "meaning": "you"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g4-p1-can",
-            "traditional": "可以",
-            "pinyin": "kěyǐ",
-            "meaning": "can; may; could"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g4-p1-order",
-            "traditional": "點",
-            "simplified": "点",
-            "pinyin": "diǎn",
-            "meaning": "order"
-          },
-          {
-            "id": "g4-p1-tea",
-            "traditional": "一杯熱茶",
-            "simplified": "一杯热茶",
-            "pinyin": "yì bēi rè chá",
-            "meaning": "one cup of hot tea",
-            "suffix": "。"
-          }
-        ],
-        "english": "You could order a cup of hot tea."
-      },
-      {
-        "id": "g4-p2",
-        "subject": [
-          {
-            "id": "g4-p2-we",
-            "traditional": "我們",
-            "simplified": "我们",
-            "pinyin": "wǒmen",
-            "meaning": "we; us"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g4-p2-can",
-            "traditional": "可以",
-            "pinyin": "kěyǐ",
-            "meaning": "can; may; could"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g4-p2-watch",
-            "traditional": "一起去看",
-            "pinyin": "yìqǐ qù kàn",
-            "meaning": "go watch together",
-            "suffix": "。"
-          }
-        ],
-        "english": "We could go watch it together."
-      },
-      {
-        "id": "g4-p3",
-        "subject": [
-          {
-            "id": "g4-p3-i",
-            "traditional": "我",
-            "pinyin": "wǒ",
-            "meaning": "I; me"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g4-p3-can",
-            "traditional": "可以",
-            "pinyin": "kěyǐ",
-            "meaning": "can; may; could"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g4-p3-restroom",
-            "traditional": "去洗手間",
-            "simplified": "去洗手间",
-            "pinyin": "qù xǐshǒujiān",
-            "meaning": "go to the restroom"
-          },
-          {
-            "id": "g4-p3-ma",
-            "traditional": "嗎",
-            "simplified": "吗",
-            "pinyin": "ma",
-            "meaning": "ending word for yes-or-no questions",
-            "suffix": "？"
-          }
-        ],
-        "english": "May I go to the restroom?"
-      }
-    ],
+    "patternRows": [],
     "confusion": {
       "title": "Don't mix these up",
       "items": [
@@ -1700,6 +1600,298 @@
         "correctFeedback": "可以…嗎 asks permission; 可以 grants it.",
         "repairFeedback": "Use 我可以 before the action, then answer 可以 because reading is allowed."
       }
+    ],
+    "subsections": [
+      {
+        "id": "b1l06-g04-sec-1",
+        "sectionNumber": 1,
+        "title": "Giving suggestions with 可以",
+        "explanation": "Use 可以 + verb to offer a possible solution to a problem.",
+        "patternColumns": [
+          "Subject",
+          "可以",
+          "Verb"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "suggestion",
+          "V(O)"
+        ],
+        "patternRows": [
+          {
+            "id": "g4-sec1-row-1",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-s1-you",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you"
+                }
+              ],
+              [
+                {
+                  "id": "g4-s1-can",
+                  "traditional": "可以",
+                  "pinyin": "kěyǐ",
+                  "meaning": "can; may; could"
+                }
+              ],
+              [
+                {
+                  "id": "g4-s1-order",
+                  "traditional": "點",
+                  "pinyin": "diǎn",
+                  "meaning": "order"
+                },
+                {
+                  "id": "g4-s1-tea",
+                  "traditional": "一杯熱茶",
+                  "pinyin": "yì bēi rè chá",
+                  "meaning": "one cup of hot tea",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "You can order a cup of hot tea."
+          },
+          {
+            "id": "g4-sec1-row-2",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-s1-you-2",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you"
+                }
+              ],
+              [
+                {
+                  "id": "g4-s1-can-2",
+                  "traditional": "可以",
+                  "pinyin": "kěyǐ",
+                  "meaning": "can; may; could"
+                }
+              ],
+              [
+                {
+                  "id": "g4-s1-send",
+                  "traditional": "送她",
+                  "pinyin": "sòng tā",
+                  "meaning": "give her"
+                },
+                {
+                  "id": "g4-s1-clothes",
+                  "traditional": "一件紅色的新衣服",
+                  "pinyin": "yí jiàn hóngsè de xīn yīfu",
+                  "meaning": "a new red piece of clothing",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "You can give her a new red piece of clothing."
+          },
+          {
+            "id": "g4-sec1-row-3",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-s1-we",
+                  "traditional": "我們",
+                  "pinyin": "wǒmen",
+                  "meaning": "we; us"
+                }
+              ],
+              [
+                {
+                  "id": "g4-s1-can-3",
+                  "traditional": "可以",
+                  "pinyin": "kěyǐ",
+                  "meaning": "can; may; could"
+                }
+              ],
+              [
+                {
+                  "id": "g4-s1-order-2",
+                  "traditional": "點",
+                  "pinyin": "diǎn",
+                  "meaning": "order"
+                },
+                {
+                  "id": "g4-s1-bubble-tea",
+                  "traditional": "珍珠奶茶",
+                  "pinyin": "zhēnzhū nǎichá",
+                  "meaning": "bubble milk tea",
+                  "prefix": "（",
+                  "suffix": "）。"
+                }
+              ]
+            ],
+            "english": "We can order (bubble milk tea)."
+          }
+        ],
+        "exampleIds": [
+          "g4-e1"
+        ]
+      },
+      {
+        "id": "b1l06-g04-sec-2",
+        "sectionNumber": 2,
+        "title": "Expressing permission with 可以",
+        "explanation": "Use 可以…嗎？ to ask for permission, and answer with 可以 or 不可以.",
+        "patternColumns": [
+          "Subject",
+          "可以",
+          "Verb"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "permission",
+          "V(O) + 嗎"
+        ],
+        "patternRows": [
+          {
+            "id": "g4-sec2-row-1",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-s2-i",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                }
+              ],
+              [
+                {
+                  "id": "g4-s2-can",
+                  "traditional": "可以",
+                  "pinyin": "kěyǐ",
+                  "meaning": "can; may; could"
+                }
+              ],
+              [
+                {
+                  "id": "g4-s2-eat",
+                  "traditional": "吃",
+                  "pinyin": "chī",
+                  "meaning": "eat"
+                },
+                {
+                  "id": "g4-s2-icecream",
+                  "traditional": "冰淇淋",
+                  "pinyin": "bīngqílín",
+                  "meaning": "ice cream"
+                },
+                {
+                  "id": "g4-s2-ma",
+                  "traditional": "嗎",
+                  "pinyin": "ma",
+                  "meaning": "yes/no question ending",
+                  "suffix": "？"
+                }
+              ]
+            ],
+            "english": "May I eat ice cream? — No, it is too cold."
+          },
+          {
+            "id": "g4-sec2-row-2",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-s2-i-2",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                }
+              ],
+              [
+                {
+                  "id": "g4-s2-can-2",
+                  "traditional": "可以",
+                  "pinyin": "kěyǐ",
+                  "meaning": "can; may; could"
+                }
+              ],
+              [
+                {
+                  "id": "g4-s2-restroom",
+                  "traditional": "去洗手間",
+                  "pinyin": "qù xǐshǒujiān",
+                  "meaning": "go to the restroom"
+                },
+                {
+                  "id": "g4-s2-ma-2",
+                  "traditional": "嗎",
+                  "pinyin": "ma",
+                  "meaning": "yes/no question ending",
+                  "suffix": "？"
+                }
+              ]
+            ],
+            "english": "May I go to the restroom? — Yes."
+          },
+          {
+            "id": "g4-sec2-row-3",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "g4-s2-we",
+                  "traditional": "我們",
+                  "pinyin": "wǒmen",
+                  "meaning": "we; us"
+                }
+              ],
+              [
+                {
+                  "id": "g4-s2-can-3",
+                  "traditional": "可以",
+                  "pinyin": "kěyǐ",
+                  "meaning": "can; may; could"
+                }
+              ],
+              [
+                {
+                  "id": "g4-s2-mrt-eat",
+                  "traditional": "在捷運上吃東西",
+                  "pinyin": "zài jiéyùn shàng chī dōngxi",
+                  "meaning": "eat on the MRT"
+                },
+                {
+                  "id": "g4-s2-ma-3",
+                  "traditional": "嗎",
+                  "pinyin": "ma",
+                  "meaning": "yes/no question ending",
+                  "suffix": "？"
+                }
+              ]
+            ],
+            "english": "May we eat on the MRT? — No, and we cannot drink drinks either."
+          }
+        ],
+        "exampleIds": [
+          "g4-e2",
+          "g4-e3"
+        ]
+      }
     ]
   },
   "LESSON_SIX_GRAMMAR_THREE": {
@@ -1717,7 +1909,7 @@
       146
     ],
     "audioReference": "06-2-3",
-    "explanation": "Put 有一點兒 or 有點兒 right before a describing word to mean “a little.” It often softens a problem or an unwanted feeling. Do not add 很 after it.",
+    "explanation": "Put 有一點兒 / 有點兒 before an adjective to mean \"a little / somewhat\". It usually describes slightly negative or unpleasant qualities.",
     "focusTerms": [
       "有一點兒",
       "有一点儿",
@@ -2518,11 +2710,16 @@
         "meaning": "say"
       }
     ],
-    "pattern": "Person or thing + 有（一）點（兒） + describing word",
+    "pattern": "Subject + 有（一）點（兒） + adjective",
     "patternColumns": [
-      "Who / What?",
+      "Subject",
       "Degree",
       "Adjective"
+    ],
+    "patternColumnDetails": [
+      "S",
+      "a little",
+      "Vs"
     ],
     "patternAccentColumn": 1,
     "discoveryLab": {
@@ -4129,11 +4326,16 @@
             "meaning": "say"
           }
         ],
-        "pattern": "Person or thing + 有（一）點（兒） + describing word",
+        "pattern": "Subject + 有（一）點（兒） + adjective",
         "patternColumns": [
-          "Who / What?",
+          "Subject",
           "Degree",
           "Adjective"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "a little",
+          "Vs"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
@@ -5735,11 +5937,16 @@
             "meaning": "say"
           }
         ],
-        "pattern": "Person + 可以 + action / 可以…嗎？",
+        "pattern": "Subject + 可以 + Verb; Subject + 可以 + Verb 嗎？",
         "patternColumns": [
-          "Who?",
-          "Green light",
-          "Action"
+          "Subject",
+          "可以",
+          "Verb"
+        ],
+        "patternColumnDetails": [
+          "S",
+          "suggestion",
+          "V(O)"
         ],
         "patternAccentColumn": 1,
         "discoveryLab": {
@@ -5820,112 +6027,7 @@
             }
           ]
         },
-        "patternRows": [
-          {
-            "id": "g4-p1",
-            "subject": [
-              {
-                "id": "g4-p1-you",
-                "traditional": "你",
-                "pinyin": "nǐ",
-                "meaning": "you"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g4-p1-can",
-                "traditional": "可以",
-                "pinyin": "kěyǐ",
-                "meaning": "can; may; could"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g4-p1-order",
-                "traditional": "點",
-                "simplified": "点",
-                "pinyin": "diǎn",
-                "meaning": "order"
-              },
-              {
-                "id": "g4-p1-tea",
-                "traditional": "一杯熱茶",
-                "simplified": "一杯热茶",
-                "pinyin": "yì bēi rè chá",
-                "meaning": "one cup of hot tea",
-                "suffix": "。"
-              }
-            ],
-            "english": "You could order a cup of hot tea."
-          },
-          {
-            "id": "g4-p2",
-            "subject": [
-              {
-                "id": "g4-p2-we",
-                "traditional": "我們",
-                "simplified": "我们",
-                "pinyin": "wǒmen",
-                "meaning": "we; us"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g4-p2-can",
-                "traditional": "可以",
-                "pinyin": "kěyǐ",
-                "meaning": "can; may; could"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g4-p2-watch",
-                "traditional": "一起去看",
-                "pinyin": "yìqǐ qù kàn",
-                "meaning": "go watch together",
-                "suffix": "。"
-              }
-            ],
-            "english": "We could go watch it together."
-          },
-          {
-            "id": "g4-p3",
-            "subject": [
-              {
-                "id": "g4-p3-i",
-                "traditional": "我",
-                "pinyin": "wǒ",
-                "meaning": "I; me"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g4-p3-can",
-                "traditional": "可以",
-                "pinyin": "kěyǐ",
-                "meaning": "can; may; could"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g4-p3-restroom",
-                "traditional": "去洗手間",
-                "simplified": "去洗手间",
-                "pinyin": "qù xǐshǒujiān",
-                "meaning": "go to the restroom"
-              },
-              {
-                "id": "g4-p3-ma",
-                "traditional": "嗎",
-                "simplified": "吗",
-                "pinyin": "ma",
-                "meaning": "ending word for yes-or-no questions",
-                "suffix": "？"
-              }
-            ],
-            "english": "May I go to the restroom?"
-          }
-        ],
+        "patternRows": [],
         "confusion": {
           "title": "Don't mix these up",
           "items": [
@@ -6617,6 +6719,298 @@
             ],
             "correctFeedback": "可以…嗎 asks permission; 可以 grants it.",
             "repairFeedback": "Use 我可以 before the action, then answer 可以 because reading is allowed."
+          }
+        ],
+        "subsections": [
+          {
+            "id": "b1l06-g04-sec-1",
+            "sectionNumber": 1,
+            "title": "Giving suggestions with 可以",
+            "explanation": "Use 可以 + verb to offer a possible solution to a problem.",
+            "patternColumns": [
+              "Subject",
+              "可以",
+              "Verb"
+            ],
+            "patternColumnDetails": [
+              "S",
+              "suggestion",
+              "V(O)"
+            ],
+            "patternRows": [
+              {
+                "id": "g4-sec1-row-1",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-s1-you",
+                      "traditional": "你",
+                      "pinyin": "nǐ",
+                      "meaning": "you"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-s1-can",
+                      "traditional": "可以",
+                      "pinyin": "kěyǐ",
+                      "meaning": "can; may; could"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-s1-order",
+                      "traditional": "點",
+                      "pinyin": "diǎn",
+                      "meaning": "order"
+                    },
+                    {
+                      "id": "g4-s1-tea",
+                      "traditional": "一杯熱茶",
+                      "pinyin": "yì bēi rè chá",
+                      "meaning": "one cup of hot tea",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "You can order a cup of hot tea."
+              },
+              {
+                "id": "g4-sec1-row-2",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-s1-you-2",
+                      "traditional": "你",
+                      "pinyin": "nǐ",
+                      "meaning": "you"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-s1-can-2",
+                      "traditional": "可以",
+                      "pinyin": "kěyǐ",
+                      "meaning": "can; may; could"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-s1-send",
+                      "traditional": "送她",
+                      "pinyin": "sòng tā",
+                      "meaning": "give her"
+                    },
+                    {
+                      "id": "g4-s1-clothes",
+                      "traditional": "一件紅色的新衣服",
+                      "pinyin": "yí jiàn hóngsè de xīn yīfu",
+                      "meaning": "a new red piece of clothing",
+                      "suffix": "。"
+                    }
+                  ]
+                ],
+                "english": "You can give her a new red piece of clothing."
+              },
+              {
+                "id": "g4-sec1-row-3",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-s1-we",
+                      "traditional": "我們",
+                      "pinyin": "wǒmen",
+                      "meaning": "we; us"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-s1-can-3",
+                      "traditional": "可以",
+                      "pinyin": "kěyǐ",
+                      "meaning": "can; may; could"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-s1-order-2",
+                      "traditional": "點",
+                      "pinyin": "diǎn",
+                      "meaning": "order"
+                    },
+                    {
+                      "id": "g4-s1-bubble-tea",
+                      "traditional": "珍珠奶茶",
+                      "pinyin": "zhēnzhū nǎichá",
+                      "meaning": "bubble milk tea",
+                      "prefix": "（",
+                      "suffix": "）。"
+                    }
+                  ]
+                ],
+                "english": "We can order (bubble milk tea)."
+              }
+            ],
+            "exampleIds": [
+              "g4-e1"
+            ]
+          },
+          {
+            "id": "b1l06-g04-sec-2",
+            "sectionNumber": 2,
+            "title": "Expressing permission with 可以",
+            "explanation": "Use 可以…嗎？ to ask for permission, and answer with 可以 or 不可以.",
+            "patternColumns": [
+              "Subject",
+              "可以",
+              "Verb"
+            ],
+            "patternColumnDetails": [
+              "S",
+              "permission",
+              "V(O) + 嗎"
+            ],
+            "patternRows": [
+              {
+                "id": "g4-sec2-row-1",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-s2-i",
+                      "traditional": "我",
+                      "pinyin": "wǒ",
+                      "meaning": "I; me"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-s2-can",
+                      "traditional": "可以",
+                      "pinyin": "kěyǐ",
+                      "meaning": "can; may; could"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-s2-eat",
+                      "traditional": "吃",
+                      "pinyin": "chī",
+                      "meaning": "eat"
+                    },
+                    {
+                      "id": "g4-s2-icecream",
+                      "traditional": "冰淇淋",
+                      "pinyin": "bīngqílín",
+                      "meaning": "ice cream"
+                    },
+                    {
+                      "id": "g4-s2-ma",
+                      "traditional": "嗎",
+                      "pinyin": "ma",
+                      "meaning": "yes/no question ending",
+                      "suffix": "？"
+                    }
+                  ]
+                ],
+                "english": "May I eat ice cream? — No, it is too cold."
+              },
+              {
+                "id": "g4-sec2-row-2",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-s2-i-2",
+                      "traditional": "我",
+                      "pinyin": "wǒ",
+                      "meaning": "I; me"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-s2-can-2",
+                      "traditional": "可以",
+                      "pinyin": "kěyǐ",
+                      "meaning": "can; may; could"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-s2-restroom",
+                      "traditional": "去洗手間",
+                      "pinyin": "qù xǐshǒujiān",
+                      "meaning": "go to the restroom"
+                    },
+                    {
+                      "id": "g4-s2-ma-2",
+                      "traditional": "嗎",
+                      "pinyin": "ma",
+                      "meaning": "yes/no question ending",
+                      "suffix": "？"
+                    }
+                  ]
+                ],
+                "english": "May I go to the restroom? — Yes."
+              },
+              {
+                "id": "g4-sec2-row-3",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "g4-s2-we",
+                      "traditional": "我們",
+                      "pinyin": "wǒmen",
+                      "meaning": "we; us"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-s2-can-3",
+                      "traditional": "可以",
+                      "pinyin": "kěyǐ",
+                      "meaning": "can; may; could"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "g4-s2-mrt-eat",
+                      "traditional": "在捷運上吃東西",
+                      "pinyin": "zài jiéyùn shàng chī dōngxi",
+                      "meaning": "eat on the MRT"
+                    },
+                    {
+                      "id": "g4-s2-ma-3",
+                      "traditional": "嗎",
+                      "pinyin": "ma",
+                      "meaning": "yes/no question ending",
+                      "suffix": "？"
+                    }
+                  ]
+                ],
+                "english": "May we eat on the MRT? — No, and we cannot drink drinks either."
+              }
+            ],
+            "exampleIds": [
+              "g4-e2",
+              "g4-e3"
+            ]
           }
         ]
       }

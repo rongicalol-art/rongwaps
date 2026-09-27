@@ -51,7 +51,7 @@ export function StudyPartButton({
       whileTap={disabled || reduceMotion ? undefined : { y: 0, scale: 0.96 }}
       transition={interactionTransition}
       className={cn(
-        'group relative h-5 w-full min-w-0 cursor-pointer select-none overflow-hidden rounded-full transition-colors duration-300 focus-ring disabled:cursor-not-allowed disabled:opacity-50',
+        'group relative h-5 w-full min-w-12 cursor-pointer select-none overflow-hidden rounded-full transition-colors duration-300 focus-ring disabled:cursor-not-allowed disabled:opacity-50',
         isSelected
           ? 'bg-brand-primary-track'
           : 'bg-brand-primary-track hover:brightness-90',

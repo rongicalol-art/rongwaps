@@ -104,11 +104,17 @@ export function MemoryHookCharacter({
         ? { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 }
         : null;
     };
+    const invalidateCenter = () => {
+      centerRef.current = null;
+    };
     const handlePointerMove = (event: PointerEvent) => {
       if (event.pointerType !== 'mouse' || tooltipDisabled) {
         if (magnetX.get() !== 0) magnetX.set(0);
         if (magnetY.get() !== 0) magnetY.set(0);
         return;
+      }
+      if (!centerRef.current) {
+        updateCenter();
       }
       const center = centerRef.current;
       if (!center) return;
@@ -128,12 +134,11 @@ export function MemoryHookCharacter({
       magnetX.set(offsetX);
       magnetY.set(offsetY);
     };
-    updateCenter();
     window.addEventListener('pointermove', handlePointerMove);
-    window.addEventListener('resize', updateCenter);
+    window.addEventListener('resize', invalidateCenter);
     return () => {
       window.removeEventListener('pointermove', handlePointerMove);
-      window.removeEventListener('resize', updateCenter);
+      window.removeEventListener('resize', invalidateCenter);
     };
   }, [hoverCapable, reduceMotion, tooltipDisabled, magnetRadius, magnetStrength, magnetX, magnetY]);
 
@@ -144,12 +149,12 @@ export function MemoryHookCharacter({
   };
 
   const arm = () => {
+    if (tooltipDisabled) return;
     setArmed(true);
     const rect = buttonRef.current?.getBoundingClientRect();
     centerRef.current = rect
       ? { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 }
       : null;
-    if (tooltipDisabled) return;
     if (openTimer.current !== null) window.clearTimeout(openTimer.current);
     openTimer.current = window.setTimeout(() => {
       openTimer.current = null;

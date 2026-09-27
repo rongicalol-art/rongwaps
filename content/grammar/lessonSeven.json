@@ -14,7 +14,7 @@
       172
     ],
     "audioReference": "07-2-3",
-    "explanation": "Put 又 before each quality: 又快又方便. Both sides describe the same person or thing, and they match in shape. Use 又…又… for two qualities that are true at the same time — not for two things.",
+    "explanation": "Use 又…又… to pair two qualities true at the same time: 又 + Adjective + 又 + Adjective (又快又方便). Both sides describe the same subject.",
     "focusTerms": [
       "又",
       "方便",
@@ -866,9 +866,9 @@
     ],
     "pattern": "Person or thing + 又 + quality 1 + 又 + quality 2",
     "patternColumns": [
-      "Who / Thing",
-      "又 + quality",
-      "又 + quality"
+      "Subject",
+      "又 + Adjective",
+      "又 + Adjective"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -2444,83 +2444,86 @@
     ],
     "pattern": "Activity + comment",
     "patternColumns": [
-      "Activity",
-      "Pause",
+      "Topic",
       "Comment"
     ],
     "patternAccentColumn": 0,
     "patternRows": [
       {
-        "id": "l7g4-p1",
-        "subject": [
-          {
-            "id": "l7g4-mrt",
-            "traditional": "坐捷運",
-            "simplified": "坐捷运",
-            "pinyin": "zuò jiéyùn",
-            "meaning": "take the MRT"
-          }
-        ],
+        "id": "l7g4-r1",
+        "subject": [],
         "grammar": [],
-        "complement": [
-          {
-            "id": "l7g4-easy",
-            "traditional": "方便",
-            "pinyin": "fāngbiàn",
-            "meaning": "convenient",
-            "suffix": "。"
-          }
+        "complement": [],
+        "columns": [
+          [
+            {
+              "id": "l7g4-r1-mrt",
+              "traditional": "坐捷運",
+              "pinyin": "zuò jiéyùn",
+              "meaning": "take the MRT"
+            }
+          ],
+          [
+            {
+              "id": "l7g4-r1-convenient",
+              "traditional": "方便",
+              "pinyin": "fāngbiàn",
+              "meaning": "convenient",
+              "suffix": "。"
+            }
+          ]
         ],
         "english": "Taking the MRT is convenient."
       },
       {
-        "id": "l7g4-p2",
-        "subject": [
-          {
-            "id": "l7g4-walk",
-            "traditional": "走路去",
-            "pinyin": "zǒulù qù",
-            "meaning": "go on foot"
-          }
-        ],
+        "id": "l7g4-r2",
+        "subject": [],
         "grammar": [],
-        "complement": [
-          {
-            "id": "l7g4-slow",
-            "traditional": "太慢",
-            "pinyin": "tài màn",
-            "meaning": "too slow",
-            "suffix": "。"
-          }
+        "complement": [],
+        "columns": [
+          [
+            {
+              "id": "l7g4-r2-walk",
+              "traditional": "走路去",
+              "pinyin": "zǒulù qù",
+              "meaning": "walk there"
+            }
+          ],
+          [
+            {
+              "id": "l7g4-r2-slow",
+              "traditional": "太慢",
+              "pinyin": "tài màn",
+              "meaning": "too slow",
+              "suffix": "。"
+            }
+          ]
         ],
         "english": "Walking there is too slow."
       },
       {
-        "id": "l7g4-p3",
-        "subject": [
-          {
-            "id": "l7g4-run",
-            "traditional": "跑步",
-            "pinyin": "pǎobù",
-            "meaning": "run"
-          },
-          {
-            "id": "l7g4-swim",
-            "traditional": "游泳",
-            "pinyin": "yóuyǒng",
-            "meaning": "swim"
-          }
-        ],
+        "id": "l7g4-r3",
+        "subject": [],
         "grammar": [],
-        "complement": [
-          {
-            "id": "l7g4-like",
-            "traditional": "都喜歡",
-            "simplified": "都喜欢",
-            "pinyin": "dōu xǐhuān",
-            "meaning": "like all of them",
-            "suffix": "。"
-          }
+        "complement": [],
+        "columns": [
+          [
+            {
+              "id": "l7g4-r3-sports",
+              "traditional": "跑步游泳",
+              "pinyin": "pǎobù yóuyǒng",
+              "meaning": "run and swim"
+            }
+          ],
+          [
+            {
+              "id": "l7g4-r3-both",
+              "traditional": "都喜歡",
+              "pinyin": "dōu xǐhuān",
+              "meaning": "like both",
+              "suffix": "。"
+            }
+          ]
         ],
         "english": "I like both running and swimming."
       }
@@ -3021,6 +3024,10 @@
         "correctFeedback": "都 gathers every listed activity into one comment.",
         "repairFeedback": "Put 都 right after the person: 我都喜歡."
       }
+    ],
+    "patternColumnDetails": [
+      "what you do",
+      "how it is"
     ]
   },
   "LESSON_SEVEN_GRAMMAR_ONE": {
@@ -3039,7 +3046,7 @@
       163
     ],
     "audioReference": "07-1-3",
-    "explanation": "從 is the start pin. 到 is the destination pin. Put each place right after its pin. Finish with 來 or 去. You can add the purpose (the why) at the end.",
+    "explanation": "Express routes with 從 + Start + 到 + Destination + 來/去. Add an optional purpose at the end (從家到學校去上課).",
     "focusTerms": [
       "從",
       "从",
@@ -4724,7 +4731,7 @@
       166
     ],
     "audioReference": "07-1-3",
-    "explanation": "Put 了 at the end of the sentence when something new happens. Before, it was not true; now it is. 了 can come after a feeling, a time, an arrival, or a new chance to act. 了 does not mean \"past time\".",
+    "explanation": "Put 了 at the end of a sentence to signal a change of state: something is true now that was not before. It highlights a new situation, not past tense.",
     "focusTerms": [
       "了",
       "現在",
@@ -7043,7 +7050,7 @@
     ],
     "pattern": "Person + travel method + 到 + place + 來/去",
     "patternColumns": [
-      "Who?",
+      "Subject",
       "How?",
       "Where"
     ],
@@ -10266,7 +10273,7 @@
         ],
         "pattern": "Person + travel method + 到 + place + 來/去",
         "patternColumns": [
-          "Who?",
+          "Subject",
           "How?",
           "Where"
         ],
@@ -13841,83 +13848,86 @@
         ],
         "pattern": "Activity + comment",
         "patternColumns": [
-          "Activity",
-          "Pause",
+          "Topic",
           "Comment"
         ],
         "patternAccentColumn": 0,
         "patternRows": [
           {
-            "id": "l7g4-p1",
-            "subject": [
-              {
-                "id": "l7g4-mrt",
-                "traditional": "坐捷運",
-                "simplified": "坐捷运",
-                "pinyin": "zuò jiéyùn",
-                "meaning": "take the MRT"
-              }
-            ],
+            "id": "l7g4-r1",
+            "subject": [],
             "grammar": [],
-            "complement": [
-              {
-                "id": "l7g4-easy",
-                "traditional": "方便",
-                "pinyin": "fāngbiàn",
-                "meaning": "convenient",
-                "suffix": "。"
-              }
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "l7g4-r1-mrt",
+                  "traditional": "坐捷運",
+                  "pinyin": "zuò jiéyùn",
+                  "meaning": "take the MRT"
+                }
+              ],
+              [
+                {
+                  "id": "l7g4-r1-convenient",
+                  "traditional": "方便",
+                  "pinyin": "fāngbiàn",
+                  "meaning": "convenient",
+                  "suffix": "。"
+                }
+              ]
             ],
             "english": "Taking the MRT is convenient."
           },
           {
-            "id": "l7g4-p2",
-            "subject": [
-              {
-                "id": "l7g4-walk",
-                "traditional": "走路去",
-                "pinyin": "zǒulù qù",
-                "meaning": "go on foot"
-              }
-            ],
+            "id": "l7g4-r2",
+            "subject": [],
             "grammar": [],
-            "complement": [
-              {
-                "id": "l7g4-slow",
-                "traditional": "太慢",
-                "pinyin": "tài màn",
-                "meaning": "too slow",
-                "suffix": "。"
-              }
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "l7g4-r2-walk",
+                  "traditional": "走路去",
+                  "pinyin": "zǒulù qù",
+                  "meaning": "walk there"
+                }
+              ],
+              [
+                {
+                  "id": "l7g4-r2-slow",
+                  "traditional": "太慢",
+                  "pinyin": "tài màn",
+                  "meaning": "too slow",
+                  "suffix": "。"
+                }
+              ]
             ],
             "english": "Walking there is too slow."
           },
           {
-            "id": "l7g4-p3",
-            "subject": [
-              {
-                "id": "l7g4-run",
-                "traditional": "跑步",
-                "pinyin": "pǎobù",
-                "meaning": "run"
-              },
-              {
-                "id": "l7g4-swim",
-                "traditional": "游泳",
-                "pinyin": "yóuyǒng",
-                "meaning": "swim"
-              }
-            ],
+            "id": "l7g4-r3",
+            "subject": [],
             "grammar": [],
-            "complement": [
-              {
-                "id": "l7g4-like",
-                "traditional": "都喜歡",
-                "simplified": "都喜欢",
-                "pinyin": "dōu xǐhuān",
-                "meaning": "like all of them",
-                "suffix": "。"
-              }
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "l7g4-r3-sports",
+                  "traditional": "跑步游泳",
+                  "pinyin": "pǎobù yóuyǒng",
+                  "meaning": "run and swim"
+                }
+              ],
+              [
+                {
+                  "id": "l7g4-r3-both",
+                  "traditional": "都喜歡",
+                  "pinyin": "dōu xǐhuān",
+                  "meaning": "like both",
+                  "suffix": "。"
+                }
+              ]
             ],
             "english": "I like both running and swimming."
           }
@@ -14418,6 +14428,10 @@
             "correctFeedback": "都 gathers every listed activity into one comment.",
             "repairFeedback": "Put 都 right after the person: 我都喜歡."
           }
+        ],
+        "patternColumnDetails": [
+          "what you do",
+          "how it is"
         ]
       },
       {
@@ -15287,9 +15301,9 @@
         ],
         "pattern": "Person or thing + 又 + quality 1 + 又 + quality 2",
         "patternColumns": [
-          "Who / Thing",
-          "又 + quality",
-          "又 + quality"
+          "Subject",
+          "又 + Adjective",
+          "又 + Adjective"
         ],
         "patternAccentColumn": 1,
         "patternRows": [

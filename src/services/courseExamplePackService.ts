@@ -4,6 +4,7 @@ import type {
   CourseExamplePack,
   CourseExampleRecord,
 } from '../types/models';
+import { sentenceMatchesForms } from '../utils/courseExamples';
 import { createPackLoader } from './packLoader';
 
 const courseExamplePackLoader = createPackLoader<CourseExampleManifest, CourseExamplePack, CourseExampleRecord[]>({
@@ -46,12 +47,14 @@ async function loadCourseExampleRecords(): Promise<CourseExampleRecord[]> {
 export function recordsToExampleCards(
   records: CourseExampleRecord[],
   searchTerms: string[],
+  pos?: string,
 ): Flashcard[] {
   const terms = Array.from(new Set(searchTerms.map((term) => term.trim()).filter(Boolean)));
   if (terms.length === 0) return [];
 
   const matching = records.filter((record) => (
-    terms.some((term) => record.traditional.includes(term) || record.simplified?.includes(term))
+    sentenceMatchesForms(record.traditional, terms, pos)
+    || sentenceMatchesForms(record.simplified, terms, pos)
   ));
   const cards = new Map<string, Flashcard>();
 
@@ -83,9 +86,9 @@ export function recordsToExampleCards(
   return [...cards.values()];
 }
 
-export async function fetchCourseExampleCards(searchTerms: string[]): Promise<Flashcard[]> {
+export async function fetchCourseExampleCards(searchTerms: string[], pos?: string): Promise<Flashcard[]> {
   try {
-    return recordsToExampleCards(await loadCourseExampleRecords(), searchTerms);
+    return recordsToExampleCards(await loadCourseExampleRecords(), searchTerms, pos);
   } catch (error) {
     console.warn('Static course examples unavailable; using vocabulary examples.', error);
     return [];

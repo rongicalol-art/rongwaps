@@ -70,7 +70,7 @@ export function PracticeHeader({
         totalCount={totalCount}
         progressSize="compact"
         rightAction={
-          <div className="flex h-10 shrink-0 items-center gap-2 pointer-events-auto">
+          <div className="flex h-11 shrink-0 items-center gap-2 pointer-events-auto">
             {hasSessionControls && (
               <DropdownMenu
                 label="Session controls"
@@ -80,13 +80,13 @@ export function PracticeHeader({
                 renderTrigger={(triggerProps) => (
                   <IconActionButton
                     {...triggerProps}
-                    size="md"
+                    size="lg"
                     label="Session controls"
                     title="Practice controls"
                     icon={(
                       <>
                         {isFlowActive && <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-feedback-success ring-2 ring-ui-surface animate-pulse" />}
-                        <AppIcon name="settings" size={20} />
+                        <AppIcon name="settings" size={25} />
                       </>
                     )}
                   />

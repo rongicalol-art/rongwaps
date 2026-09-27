@@ -195,5 +195,6 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
     isShuffled: session.isShuffled,
     toggleShuffle,
     listeningChoiceType,
+    progressInfo: session.progressInfo,
   };
 }

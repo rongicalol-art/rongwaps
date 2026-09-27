@@ -22,11 +22,11 @@ test('Lesson 5 has five ordered grammar points and all 16 source prompts', () =>
 
 test('Lesson 5 progresses from location to action, direction, and existence', () => {
   assert.deepEqual(lessonFivePages.map((page) => page.pattern), [
-    'Person or thing +（不）在 + place',
-    'Person + 在 + place + action',
-    'Situation, suggested action + 吧',
-    'Thing + 在 + anchor noun + direction',
-    'Place + 有 / 沒有 + thing',
+    'Subject +（不）在 + place',
+    'Subject + 在 + place + verb',
+    'Statement, suggestion + 吧',
+    'Subject +（不）在 + place word; Subject + 在 + place word + verb',
+    'Place + 有／沒有 + noun',
   ]);
   assert.ok(lessonFivePages[3].contrast);
   assert.ok(lessonFivePages[4].contrast);

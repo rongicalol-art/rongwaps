@@ -150,7 +150,8 @@ export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue,
     unlearnedCount,
     learnedCount,
     isShuffled,
-    toggleShuffle
+    toggleShuffle,
+    progressInfo,
   } = useQuizChoices(cards, sessionKey);
 
   const autoAdvanceCorrect = usePracticePreferencesStore((state) => state.autoAdvanceCorrect);
@@ -178,10 +179,12 @@ export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue,
   );
 
   usePracticeHeaderRegistration({
-    currentIndex,
-    totalCount: activeCards.length,
+    currentIndex: progressInfo.displayIndex,
+    totalCount: progressInfo.totalCount,
     showLightbulb: false,
     partSegments,
+    isRetry: progressInfo.isRetry,
+    cleanupPhase: progressInfo.cleanupPhase,
     onShuffleClick: toggleShuffle,
     onRestartClick: resetAll,
     isShuffled,

@@ -1,5 +1,5 @@
-import { ActionButton, AppIcon } from '../../../lib/widgets';
 import type { RefObject } from 'react';
+import { ActionButton, AppIcon } from '../../../lib/widgets';
 import type { InteractiveGrammarPage } from '../../../types/models';
 import { getGrammarTeachingTokens } from '../../../utils/grammarTeachingTokens';
 import { cn } from '../../../utils/cn';
@@ -14,7 +14,7 @@ interface GrammarStudyPageProps {
   showPinyin: boolean;
   showTranslation: boolean;
   onOpenWord: (word: string) => void;
-  onOpenBookPage: () => void;
+  onOpenBookPage?: () => void;
   bookPageButtonRef?: RefObject<HTMLButtonElement | null>;
   hideHeader?: boolean;
 }
@@ -33,10 +33,10 @@ export function GrammarStudyPage({
   const hasSubsections = Boolean(page.subsections && page.subsections.length > 0);
 
   return (
-    <article className="mx-auto w-full max-w-3xl">
+    <article className="w-full max-w-3xl sm:max-w-4xl mx-auto">
       {!hideHeader && (
-        <header className="pb-2">
-          <h1 className="max-w-none text-[clamp(1.75rem,4.5vw,2.35rem)] font-black leading-[1.12] text-ui-ink-strong">
+        <header className="space-y-4 sm:space-y-5">
+          <h1 className="max-w-none text-2xl font-black leading-tight text-ui-ink-strong sm:text-3xl lg:text-4xl">
             <GrammarFocusText
               text={page.titleEnglish}
               terms={page.focusTerms}
@@ -46,7 +46,7 @@ export function GrammarStudyPage({
               onOpenWord={onOpenWord}
             />
           </h1>
-          <p className="prose-chinese mt-7 max-w-2xl text-base font-bold leading-7 text-ui-ink sm:mt-8 sm:text-lg sm:leading-8">
+          <p className="prose-chinese max-w-none text-base font-bold leading-7 text-ui-ink sm:text-lg sm:leading-8">
             <GrammarFocusText
               text={page.explanation}
               terms={page.focusTerms}
@@ -54,7 +54,7 @@ export function GrammarStudyPage({
               characterPreference={characterPreference}
               onOpenWord={onOpenWord}
             />
-            {(page.bookPageAvailable ?? true) && (
+            {(page.bookPageAvailable ?? true) && onOpenBookPage && (
               <ActionButton
                 ref={bookPageButtonRef}
                 variant="quiet"
@@ -79,7 +79,7 @@ export function GrammarStudyPage({
 
       {/* Multi-Part Continuous Scroll Flow */}
       {hasSubsections && page.subsections ? (
-        <div className="mt-8 space-y-12">
+        <div className="mt-8 space-y-10 sm:mt-10 sm:space-y-12">
           {page.subsections.map((section, idx) => {
             const sectionExamples = section.examples ?? (
               section.exampleIds
@@ -93,8 +93,8 @@ export function GrammarStudyPage({
               <section
                 key={section.id}
                 className={cn(
-                  'space-y-6',
-                  idx > 0 && 'border-t border-ui-divider/80 pt-10'
+                  'space-y-8 sm:space-y-10',
+                  idx > 0 && 'border-t-2 border-ui-border pt-10 sm:pt-12'
                 )}
                 aria-labelledby={`subsection-heading-${section.id}`}
               >
@@ -102,7 +102,7 @@ export function GrammarStudyPage({
                 <div>
                   <h2
                     id={`subsection-heading-${section.id}`}
-                    className="text-lg font-black text-ui-ink-strong sm:text-xl"
+                    className="text-xl font-black leading-snug text-ui-ink-strong sm:text-2xl"
                   >
                     <span className="mr-2 font-sans font-black text-brand-primary">
                       {section.sectionNumber ?? idx + 1}.
@@ -111,7 +111,7 @@ export function GrammarStudyPage({
                   </h2>
 
                   {section.explanation && (
-                    <p className="prose-chinese mt-3.5 text-base font-bold leading-relaxed text-ui-muted-strong sm:mt-4 sm:text-lg">
+                    <p className="prose-chinese mt-4 max-w-none text-base font-bold leading-7 text-ui-ink sm:mt-5 sm:text-lg sm:leading-8">
                       <GrammarFocusText
                         text={section.explanation}
                         terms={page.focusTerms}
@@ -154,7 +154,7 @@ export function GrammarStudyPage({
           })}
         </div>
       ) : (
-        <div className="mt-8 space-y-6">
+        <div className="mt-8 space-y-8 sm:mt-10 sm:space-y-10">
           <GrammarPatternSection
             page={page}
             characterPreference={characterPreference}

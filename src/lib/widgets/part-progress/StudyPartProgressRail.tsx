@@ -12,6 +12,7 @@ export interface StudyPartProgressRailProps {
   segments: PartSegment[];
   currentIndex: number;
   totalCount: number;
+  isRetry?: boolean;
   disabled?: boolean;
   density?: 'default' | 'compact';
   className?: string;
@@ -24,6 +25,7 @@ export function StudyPartProgressRail({
   segments,
   currentIndex,
   totalCount,
+  isRetry = false,
   disabled = false,
   className,
 }: StudyPartProgressRailProps) {
@@ -58,7 +60,7 @@ export function StudyPartProgressRail({
         aria-label="Choose study parts"
       >
         {partsWithCounts.map(({ part, segment, cardCount, startIndex }, partIndex) => {
-          const flexWeight = totalAllCards > 0 ? cardCount : 1;
+          const flexWeight = totalAllCards > 0 ? Math.max(cardCount, 3) : 1;
           const isSelected = part.isSelected;
 
           const progressPercent =
@@ -88,9 +90,12 @@ export function StudyPartProgressRail({
                   animate={{ opacity: 1, scale: 1 }}
                   transition={interactionTransition}
                   aria-live="polite"
-                  className="hidden min-w-[54px] shrink-0 whitespace-nowrap text-center text-sm font-extrabold tabular-nums text-ui-muted sm:inline-flex sm:justify-center"
+                  className={cn(
+                    "hidden min-w-14 shrink-0 whitespace-nowrap text-center text-sm font-extrabold sm:inline-flex sm:justify-center",
+                    isRetry ? "text-feedback-warning-edge tracking-wider" : "tabular-nums text-ui-muted"
+                  )}
                 >
-                  {Math.min(currentIndex + 1, totalCount)} / {totalCount}
+                  {isRetry ? 'Again' : `${Math.min(currentIndex + 1, totalCount)} / ${totalCount}`}
                 </motion.span>
               )}
             </Fragment>

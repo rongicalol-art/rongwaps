@@ -102,6 +102,15 @@ export async function pruneAudioCacheToLimit(): Promise<void> {
   }
 }
 
+let pruneTimeout: ReturnType<typeof setTimeout> | null = null;
+export function schedulePruneAudioCache(): void {
+  if (pruneTimeout) return;
+  pruneTimeout = setTimeout(() => {
+    pruneTimeout = null;
+    void pruneAudioCacheToLimit();
+  }, 4000);
+}
+
 export function resolveRequestUrl(path: string): string {
   if (typeof location !== 'undefined' && location.href) {
     return new URL(path, location.href).href;
@@ -154,7 +163,7 @@ export async function fetchAudioBlob(fileName: string): Promise<Blob> {
           cache
             .put(cacheRequest, new Response(blob, { headers: { 'Content-Type': 'audio/mpeg' } }))
             .then(() => touchAudioMeta(fileName, blob.size))
-            .then(() => pruneAudioCacheToLimit())
+            .then(() => schedulePruneAudioCache())
             .catch(() => {});
         }
         return blob;

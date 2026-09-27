@@ -1,7 +1,7 @@
 import { memo, useMemo } from 'react';
 import { LayoutGroup, motion, useReducedMotion } from 'motion/react';
 import type { Flashcard } from '../../../data/flashcards';
-import { AppIcon, PosBadge } from '../../../lib/widgets';
+import { ActionButton, AppIcon, PosBadge } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 
 /**
@@ -22,6 +22,7 @@ interface FlashcardListProps {
   cards: Flashcard[];
   excludedIds: ReadonlySet<string>;
   onToggleCard: (cardId: string) => void;
+  onResetExclusions?: () => void;
   accentColor: string;
   edgeHex: string;
 }
@@ -78,6 +79,7 @@ export const FlashcardList = memo(function FlashcardList({
   cards,
   excludedIds,
   onToggleCard,
+  onResetExclusions,
   accentColor,
   edgeHex,
 }: FlashcardListProps) {
@@ -109,6 +111,35 @@ export const FlashcardList = memo(function FlashcardList({
           <p className="mt-1 text-sm font-bold text-ui-muted-strong">
             This selection has no words to list. Pick a lesson or add words to your library.
           </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (cards.length > 0 && excludedIds.size >= cards.length) {
+    return (
+      <div className="absolute inset-0 z-0 flex flex-col items-center justify-center gap-4 px-6 pb-24 text-center">
+        <span className="grid h-14 w-14 place-items-center rounded-2xl bg-ui-surface text-ui-muted-strong">
+          <AppIcon name="cards" size={28} />
+        </span>
+        <div className="max-w-sm">
+          <p className="text-lg font-extrabold text-ui-ink">All cards disabled</p>
+          <p className="mt-1 text-sm font-bold text-ui-muted-strong">
+            You've excluded every card in this deck. Reset the list or tap a card to study.
+          </p>
+          {onResetExclusions && (
+            <ActionButton
+              onClick={onResetExclusions}
+              size="md"
+              variant="secondary"
+              className="mt-4"
+            >
+              <span className="flex items-center gap-2">
+                <AppIcon name="restart" size={16} />
+                Reset list
+              </span>
+            </ActionButton>
+          )}
         </div>
       </div>
     );
@@ -211,6 +242,21 @@ export const FlashcardList = memo(function FlashcardList({
 
       <div className="flex-1 overflow-y-auto overscroll-contain pb-dock-clearance">
         <div className="mx-auto w-full max-w-[880px] px-4 pb-4 pt-[76px] md:px-6">
+          {excludedIds.size > 0 && onResetExclusions && (
+            <div className="mb-4 flex items-center justify-between rounded-control border border-ui-border bg-ui-surface/80 px-3.5 py-2 backdrop-blur-sm">
+              <span className="text-xs font-bold text-ui-muted-strong">
+                {cards.length - excludedIds.size} of {cards.length} cards included
+              </span>
+              <button
+                type="button"
+                onClick={onResetExclusions}
+                className="inline-flex items-center gap-1.5 text-xs font-black text-brand-primary hover:underline focus-ring"
+              >
+                <AppIcon name="restart" size={14} />
+                Reset list
+              </button>
+            </div>
+          )}
           <LayoutGroup>
             {/* Single column; each part is its own chain. The part label
                 lives inside the first block of each part. */}

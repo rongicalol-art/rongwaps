@@ -3,8 +3,8 @@ import type { Flashcard } from '../data/flashcards';
 import { useAppStore } from '../store/useAppStore';
 import { usePracticePreferencesStore } from '../store/usePracticePreferencesStore';
 import { shuffleItems } from '../utils/sessionOrder';
-import { queueMissedItem } from '../utils/mistakeQueue';
-import { getSessionStartIndex, retainCurrentCardIndex } from '../utils/sessionProgress';
+import { queueMissedItem, computeCardSessionProgress, type CardSessionProgressInfo } from '../utils/mistakeQueue';
+import { getSessionStartIndex, planDeckAdoption } from '../utils/sessionProgress';
 import { SHARED_REVIEW_SESSION_KEY } from '../utils/lessonPartSelection';
 import { audioService } from '../services/audioService';
 
@@ -51,11 +51,14 @@ export function useCardSession(
   const [sessionResults, setSessionResults] = useState<Record<string, number>>({});
   const [completed, setCompleted] = useState(false);
 
+  const activeCardsRef = useRef<Flashcard[]>(cards);
   const canonicalOrderRef = useRef<Flashcard[]>(cards);
   const sessionKeyRef = useRef(sessionKey);
   const sessionInitializedRef = useRef(false);
   const pendingSessionCardIdRef = useRef<string | null>(null);
   const currentCardIdRef = useRef<string | null>(null);
+  const currentIndexRef = useRef(currentIndex);
+  currentIndexRef.current = currentIndex;
   const gradingCardKeyRef = useRef<string | null>(null);
   const firstAttemptMissedRef = useRef<Set<string>>(new Set());
 
@@ -67,13 +70,18 @@ export function useCardSession(
   onAnswerStateResetRef.current = onAnswerStateReset;
 
   useEffect(() => {
-    if (sessionKeyRef.current !== sessionKey) {
+    const keyChanged = sessionKeyRef.current !== sessionKey;
+    if (keyChanged) {
+      if (sessionInitializedRef.current && canonicalOrderRef.current.length > 0) {
+        useAppStore.getState().setSessionProgressIndex(sessionKeyRef.current, currentIndexRef.current);
+      }
       firstAttemptMissedRef.current.clear();
       pendingSessionCardIdRef.current = currentCardIdRef.current;
       sessionKeyRef.current = sessionKey;
       sessionInitializedRef.current = false;
       currentCardIdRef.current = null;
       canonicalOrderRef.current = [];
+      activeCardsRef.current = [];
       setActiveCards([]);
       setIsShuffled(false);
       setCurrentIndex(0);
@@ -81,38 +89,31 @@ export function useCardSession(
       setSessionResults({});
       gradingCardKeyRef.current = null;
       onSessionResetRef.current();
-      return;
     }
 
-    const isSameDeck = sessionInitializedRef.current
-      && cards.length === canonicalOrderRef.current.length
-      && cards.every((c, idx) => c.id === canonicalOrderRef.current[idx]?.id);
-
-    if (isSameDeck) {
-      return;
-    }
-
-    setActiveCards(cards);
-    if (cards.length > 0) {
-      const cardIdToRetain = sessionInitializedRef.current
-        ? currentCardIdRef.current
-        : pendingSessionCardIdRef.current;
-      const retainCurrentCard = sessionInitializedRef.current || Boolean(
-        cardIdToRetain && cards.some((card) => card.id === cardIdToRetain),
-      );
-      const savedIndex = retainCurrentCard ? 0 : getSessionStartIndex(
+    const plan = planDeckAdoption({
+      cards,
+      keyChanged,
+      sessionInitialized: sessionInitializedRef.current,
+      pendingCardId: pendingSessionCardIdRef.current,
+      currentCardId: currentCardIdRef.current,
+      canonicalOrder: canonicalOrderRef.current,
+      savedIndex: getSessionStartIndex(
         useAppStore.getState().sessionProgressIndex,
         sessionKey,
         cards.length,
-      );
-      setCurrentIndex((previousIndex) => retainCurrentCard
-        ? retainCurrentCardIndex(cards, cardIdToRetain, previousIndex)
-        : savedIndex);
-      sessionInitializedRef.current = true;
-      pendingSessionCardIdRef.current = null;
-    }
+      ),
+      currentIndex: currentIndexRef.current,
+    });
+    if (plan.action !== 'adopt') return;
+
+    activeCardsRef.current = cards;
+    setActiveCards(cards);
     setIsShuffled(false);
     canonicalOrderRef.current = cards;
+    sessionInitializedRef.current = true;
+    if (plan.clearPendingCard) pendingSessionCardIdRef.current = null;
+    setCurrentIndex(plan.index);
   }, [cards, sessionKey]);
 
   useEffect(() => {
@@ -121,11 +122,23 @@ export function useCardSession(
     }
   }, [activeCards.length, currentIndex]);
 
-  // Save progress
+  // Save progress (debounced to avoid massive re-renders)
   useEffect(() => {
     if (!sessionInitializedRef.current || activeCards.length === 0) return;
-    setSessionProgressIndex(sessionKey, currentIndex);
+    const timeoutId = setTimeout(() => {
+      setSessionProgressIndex(sessionKey, currentIndex);
+    }, 3000);
+    return () => clearTimeout(timeoutId);
   }, [activeCards.length, currentIndex, sessionKey, setSessionProgressIndex]);
+
+  // Save on unmount
+  useEffect(() => {
+    return () => {
+      if (sessionInitializedRef.current && canonicalOrderRef.current.length > 0) {
+        useAppStore.getState().setSessionProgressIndex(sessionKeyRef.current, currentIndexRef.current);
+      }
+    };
+  }, []);
 
   // Preload upcoming audio for next 3 cards during idle time
   useEffect(() => {
@@ -138,23 +151,19 @@ export function useCardSession(
 
     const timeoutId = window.setTimeout(() => {
       void audioService.preload(upcomingAudios);
-    }, 250);
+    }, 500);
     return () => window.clearTimeout(timeoutId);
   }, [activeCards, currentIndex]);
 
   const currentCard = activeCards[currentIndex];
   if (currentCard) currentCardIdRef.current = currentCard.id;
 
-  /**
-   * Claims the per-card grading slot so a double-check (double click, or
-   * select + check) never records the same answer twice.
-   */
   const beginGrading = useCallback((): boolean => {
-    const gradingCardKey = `${currentIndex}:${currentCard?.id}`;
+    const gradingCardKey = `${currentIndexRef.current}:${currentCardIdRef.current}`;
     if (gradingCardKeyRef.current === gradingCardKey) return false;
     gradingCardKeyRef.current = gradingCardKey;
     return true;
-  }, [currentCard, currentIndex]);
+  }, []);
 
   const clearGrading = useCallback(() => {
     gradingCardKeyRef.current = null;
@@ -169,7 +178,13 @@ export function useCardSession(
         firstAttemptMissedRef.current.add(card.id);
         markCardReviewed(card.id, quality);
         setSessionResults((previous) => ({ ...previous, [card.id]: quality }));
-        setActiveCards((items) => queueMissedItem(items, card, currentIndex, repeatMistakes));
+      }
+      if (repeatMistakes !== 'off') {
+        const nextItems = queueMissedItem(activeCardsRef.current, card, currentIndexRef.current, repeatMistakes);
+        if (nextItems !== activeCardsRef.current) {
+          activeCardsRef.current = nextItems;
+          setActiveCards(nextItems);
+        }
       }
     } else {
       // For cards answered correctly on initial attempt, record success.
@@ -180,11 +195,16 @@ export function useCardSession(
         setSessionResults((previous) => ({ ...previous, [card.id]: quality }));
       }
     }
-  }, [currentIndex, markCardReviewed, repeatMistakes]);
+  }, [markCardReviewed, repeatMistakes]);
 
   const advanceOrComplete = useCallback((): 'advanced' | 'completed' => {
-    if (currentIndex < activeCards.length - 1) {
-      setCurrentIndex((c) => c + 1);
+    const current = currentIndexRef.current;
+    const cardsList = activeCardsRef.current;
+    if (current < cardsList.length - 1) {
+      const nextIndex = current + 1;
+      currentIndexRef.current = nextIndex;
+      currentCardIdRef.current = cardsList[nextIndex]?.id ?? null;
+      setCurrentIndex(nextIndex);
       return 'advanced';
     }
     clearSessionProgressIndex(sessionKey);
@@ -196,18 +216,24 @@ export function useCardSession(
     }
     setCompleted(true);
     return 'completed';
-  }, [activeCards.length, clearSessionProgressIndex, currentIndex, sessionKey]);
+  }, [clearSessionProgressIndex, sessionKey]);
 
   /** Moves to an exact card, bounded (swipe/keyboard navigation). */
   const moveTo = useCallback((index: number) => {
-    if (activeCards.length === 0) return;
-    setCurrentIndex(Math.max(0, Math.min(index, activeCards.length - 1)));
-  }, [activeCards.length]);
+    const cardsList = activeCardsRef.current;
+    if (cardsList.length === 0) return;
+    const target = Math.max(0, Math.min(index, cardsList.length - 1));
+    currentIndexRef.current = target;
+    currentCardIdRef.current = cardsList[target]?.id ?? null;
+    setCurrentIndex(target);
+  }, []);
 
   const toggleShuffle = useCallback(() => {
     firstAttemptMissedRef.current.clear();
     const nextShuffled = !isShuffled;
-    setActiveCards(nextShuffled ? shuffleItems(canonicalOrderRef.current) : [...canonicalOrderRef.current]);
+    const nextCards = nextShuffled ? shuffleItems(canonicalOrderRef.current) : [...canonicalOrderRef.current];
+    activeCardsRef.current = nextCards;
+    setActiveCards(nextCards);
     setCurrentIndex(0);
     setCompleted(false);
     gradingCardKeyRef.current = null;
@@ -217,6 +243,7 @@ export function useCardSession(
 
   const resetAll = useCallback(() => {
     firstAttemptMissedRef.current.clear();
+    activeCardsRef.current = cards;
     setActiveCards(cards);
     canonicalOrderRef.current = cards;
     setIsShuffled(false);
@@ -238,6 +265,7 @@ export function useCardSession(
       resetAll();
       return;
     }
+    activeCardsRef.current = unlearnedCards;
     setActiveCards(unlearnedCards);
     canonicalOrderRef.current = unlearnedCards;
     setIsShuffled(false);
@@ -250,6 +278,15 @@ export function useCardSession(
 
   const unlearnedCount = Object.values(sessionResults).filter((quality) => quality === 1 || quality === 2).length;
   const learnedCount = Object.values(sessionResults).filter((quality) => quality > 2).length;
+
+  const progressInfo = computeCardSessionProgress(
+    currentIndex,
+    currentCard?.id,
+    canonicalOrderRef.current,
+    activeCards,
+    repeatMistakes,
+    firstAttemptMissedRef.current,
+  );
 
   return {
     activeCards,
@@ -268,5 +305,9 @@ export function useCardSession(
     reviewUnlearned,
     unlearnedCount,
     learnedCount,
+    progressInfo,
+    initialTotalCount: canonicalOrderRef.current.length || cards.length,
   };
 }
+
+export type { CardSessionProgressInfo };

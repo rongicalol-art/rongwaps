@@ -235,7 +235,9 @@ export function getPatternSectionLayout({
     showPinyin,
   ));
   const shares = clampShares(weights);
-  const gridTemplateColumns = shares.map((share) => `minmax(0, ${share}fr)`).join(' ');
+  const gridTemplateColumns = safeSourceColumns.length === 1
+    ? 'minmax(0, 1fr)'
+    : shares.map((share) => `minmax(0, ${share}fr)`).join(' ');
 
   return {
     sourceColumns: safeSourceColumns,
@@ -246,3 +248,4 @@ export function getPatternSectionLayout({
     isScrollable: safeSourceColumns.length >= 3,
   };
 }
+

@@ -6,6 +6,7 @@ import { createServer as createViteServer } from "vite";
 import dotenv from "dotenv";
 import { MsEdgeTTS, OUTPUT_FORMAT } from "msedge-tts";
 import { supabase } from "./supabase.js";
+import { gradeGrammarAnswer } from "./jevClient.js";
 
 // Load local server configuration.
 dotenv.config();
@@ -382,6 +383,18 @@ app.post("/api/tts", paidApiLimiter, async (req: express.Request, res: express.R
     console.error("Neural TTS error:", err);
     res.status(502).json({ error: "Neural TTS unavailable right now." });
   }
+});
+
+// POST /api/jev/grade-answer — semantic grading for free-text answers.
+// 503 when TYPESAFE_API_KEY is unset, so clients fall back to exact matching.
+app.post("/api/jev/grade-answer", paidApiLimiter, async (req: express.Request, res: express.Response) => {
+  if (!(await requireAuth(req, res))) return;
+  const outcome = await gradeGrammarAnswer(req.body);
+  if (outcome.status === 200) {
+    res.json(outcome.result);
+    return;
+  }
+  res.status(outcome.status).json({ error: outcome.error });
 });
 
 // GET /api/tts-cache/:text — serve cached TTS MP3 by text, or 404 (client synthesizes on miss)

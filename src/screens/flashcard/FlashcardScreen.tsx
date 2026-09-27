@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { EdgeNavButtons, ScreenSkeleton, ScreenLayout } from '../../lib/widgets';
 import { EmptyReviewState, LessonComplete } from '../../features/practice';
@@ -62,13 +62,14 @@ export function FlashcardScreen({
     learnedCount,
     isShuffled,
     toggleShuffle,
+    progressInfo,
     deckExclusionKey,
     excludedIds,
     isLoading,
     error,
   } = useFlashcards(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
 
-  const { toggleCard } = useDeckExclusionActions(deckExclusionKey);
+  const { toggleCard, resetDeckExclusions } = useDeckExclusionActions(deckExclusionKey);
   const showPinyin = usePracticePreferencesStore((state) => state.showPinyin);
   const showTranslation = usePracticePreferencesStore((state) => state.showTranslation);
 
@@ -77,6 +78,7 @@ export function FlashcardScreen({
     deckCards,
     currentCard,
     currentIndex,
+    progressInfo,
     isFlipped,
     setIsFlipped,
     handleNavigate,
@@ -93,9 +95,15 @@ export function FlashcardScreen({
     continueLabel,
   });
 
+  const handleCardTap = useCallback(() => {
+    if (!isFlipped && currentCard && !autoPlayAudio) triggerManualReveal();
+    setIsFlipped((prev) => !prev);
+  }, [autoPlayAudio, currentCard, isFlipped, setIsFlipped, triggerManualReveal]);
+
   const { direction, triggerSwipeRate, triggerKeyboardRate, triggerNav } = useFlashcardSwipe(
     wrappedHandleNext,
-    handleNavigate
+    handleNavigate,
+    currentIndex,
   );
 
   useFlashcardKeyboardShortcuts({
@@ -171,16 +179,12 @@ export function FlashcardScreen({
         cards={deckCards}
         excludedIds={excludedIds}
         onToggleCard={toggleCard}
+        onResetExclusions={resetDeckExclusions}
         accentColor={activeBook.accent}
         edgeHex={activeBook.edgeHex}
       />
     );
   }
-
-  const handleCardTap = () => {
-    if (!isFlipped && currentCard && !autoPlayAudio) triggerManualReveal();
-    setIsFlipped((prev) => !prev);
-  };
 
   return (
     <div
@@ -203,10 +207,10 @@ export function FlashcardScreen({
       >
         <div className="pointer-events-none flex flex-1 w-full flex-col items-center justify-center">
           <div className="pointer-events-none relative z-10 mx-auto flex h-full max-h-[min(520px,calc(100dvh-170px))] w-full max-w-[680px] flex-col items-center justify-center px-4">
-            <AnimatePresence mode="popLayout" custom={direction}>
+            <AnimatePresence initial={false} custom={direction}>
               {currentCard && (
                 <DraggableFlashcard
-                  key={currentCard.id}
+                  key={`${currentCard.id}-${currentIndex}`}
                   card={currentCard}
                   direction={direction}
                   isFlipped={isFlipped}
