@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { lookupSoundHook, type SoundHookEntry } from '../../services/soundHookPack';
+import { lookupSoundHook, type SoundHookEntry } from '../../services/contentPacks';
 
 export interface SoundHookState {
   /** undefined while loading, null when the character has no sound entry. */

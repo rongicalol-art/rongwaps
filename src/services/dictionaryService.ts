@@ -4,7 +4,7 @@ import { DBDictionaryEntry, DBDictionaryEntryRow } from '../types/database';
 import { dictionaryCache, dictionarySearchCache } from '../utils/cache';
 import { timeDataRequest } from '../utils/requestTiming';
 import { sanitizeDictionaryDefinitions } from '../utils/dictionaryDefinitions';
-import { fetchDictionaryRowsFromPacks } from './dictionaryPackService';
+import { fetchDictionaryRowsFromPacks } from './contentPacks';
 
 const DICTIONARY_COLUMNS = 'traditional,simplified,pinyin_accented,pinyin_flat,definitions,frequency_score,curriculum_level';
 

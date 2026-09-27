@@ -1,6 +1,6 @@
 import { supabase } from "./supabaseClient";
 import { debugLogger } from "../utils/debugLogger";
-import { lookupPackMnemonic } from "./memoryHookPackService";
+import { lookupPackMnemonic } from './contentPacks';
 
 /**
  * In-memory LRU-ish cache for mnemonics.

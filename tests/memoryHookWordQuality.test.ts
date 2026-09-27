@@ -7,7 +7,7 @@ import { tokenizeHookText } from '../src/features/character-memory-hooks/hookTex
 import {
   packItemsToMnemonicMap,
   resolveMnemonicFromMap,
-} from '../src/services/memoryHookPackService';
+} from '../src/services/contentPacks';
 
 interface PackItem {
   id: string;

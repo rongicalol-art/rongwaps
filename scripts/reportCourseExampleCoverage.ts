@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import type { Flashcard } from '../src/data/flashcards';
-import { recordsToExampleCards } from '../src/services/courseExamplePackService';
+import { recordsToExampleCards } from '../src/services/contentPacks';
 import type { CourseExamplePack } from '../src/types/models';
 import { extractSearchVariants, findSmartExamplesForWord } from '../src/utils/courseExamples';
 import { parseVocabularyId } from '../src/utils/vocabularyId';

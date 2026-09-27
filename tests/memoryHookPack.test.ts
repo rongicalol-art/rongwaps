@@ -5,7 +5,7 @@ import {
   isValidMemoryHookPack,
   packItemsToMnemonicMap,
   resolveMnemonicFromMap,
-} from '../src/services/memoryHookPackService';
+} from '../src/services/contentPacks';
 import { BUNDLED_EXTRA_GLYPHS } from '../scripts/memory-hooks/checkHookQuality';
 import { BANNED_HOOK_WORDS, findSoundLanguage } from '../scripts/memory-hooks/reviewRubric';
 

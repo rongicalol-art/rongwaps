@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
-import { isValidSoundHookPack, type SoundHookPack } from '../src/services/soundHookPack';
+import { isValidSoundHookPack, type SoundHookPack } from '../src/services/contentPacks';
 
 interface SoundManifest {
   schemaVersion: number;

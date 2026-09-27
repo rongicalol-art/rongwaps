@@ -1,6 +1,6 @@
 import { AppIcon } from '../../lib/widgets';
 import { cn } from '../../utils/cn';
-import type { SoundHookEntry } from '../../services/soundHookPack';
+import type { SoundHookEntry } from '../../services/contentPacks';
 
 export interface SoundBlockProps {
   entry: SoundHookEntry;

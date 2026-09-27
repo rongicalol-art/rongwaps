@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
-import { recordsToExampleCards } from '../src/services/courseExamplePackService';
+import { recordsToExampleCards } from '../src/services/contentPacks';
 import type { CourseExamplePack, CourseExampleRecord } from '../src/types/models';
 import { findSmartExamplesForWord } from '../src/utils/courseExamples';
 

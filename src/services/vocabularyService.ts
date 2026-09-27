@@ -5,10 +5,13 @@ import { vocabularyCache } from '../utils/cache';
 import { extractSearchVariants, sentenceMatchesForms } from '../utils/courseExamples';
 import { stripPinyinTones } from '../utils/pinyinNormalize';
 import { timeDataRequest } from '../utils/requestTiming';
-import { fetchVocabularyPack, fetchAllVocabularyPacks } from './vocabularyPackService';
+import {
+  fetchVocabularyPack,
+  fetchAllVocabularyPacks,
+  fetchCourseExampleCards,
+} from './contentPacks';
 import type { DBVocabularyRow } from '../types/database';
 import type { WordExample } from '../types/models';
-import { fetchCourseExampleCards } from './courseExamplePackService';
 import { withPackFirstLookup } from './packFirstLookup';
 import { getSmartScore } from '../utils/vocabularySearchScoring';
 import { mapVocabularyRows, prepareVocabulary } from '../utils/vocabularyMapping';

@@ -1,6 +1,6 @@
 import type { Flashcard } from '../data/flashcards';
 import { fetchVocabulary, fetchVocabularyByIds, prepareVocabulary, getCourseVocabLookupMap } from './vocabularyService';
-import { fetchAllVocabularyPacks } from './vocabularyPackService';
+import { fetchAllVocabularyPacks } from './contentPacks';
 import { userService } from './userService';
 import { getDictionaryEntriesBatch } from './dictionaryService';
 import { buildReviewSession } from '../utils/reviewSession';

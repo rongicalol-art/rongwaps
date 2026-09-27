@@ -3,7 +3,7 @@ import { supabase } from './supabaseClient';
 import { DBCharacterBreakdown } from '../types/database';
 import { breakdownCache, AppCache } from '../utils/cache';
 import { timeDataRequest } from '../utils/requestTiming';
-import { fetchBreakdownsFromPacks, fetchUsedAsFromPacks } from './breakdownPackService';
+import { fetchBreakdownsFromPacks, fetchUsedAsFromPacks } from './contentPacks';
 
 const BREAKDOWN_COLUMNS = 'character,radical,pinyin,definition,decomposition,components_historical';
 
