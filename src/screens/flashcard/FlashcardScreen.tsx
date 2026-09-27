@@ -8,7 +8,7 @@ import { useFlashcards } from './hooks/useFlashcards';
 import { useFlashcardSwipe } from './hooks/useFlashcardSwipe';
 import { DraggableFlashcard } from './components/DraggableFlashcard';
 import { FlashcardList } from './components/FlashcardList';
-import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
+import { useAppStore } from '../../store/useAppStore';
 import { useDeckExclusionActions } from '../../hooks/useDeckExclusionActions';
 import { useFlashcardKeyboardShortcuts } from './hooks/useFlashcardKeyboardShortcuts';
 import { useFlashcardFlow } from './hooks/useFlashcardFlow';
@@ -70,8 +70,8 @@ export function FlashcardScreen({
   } = useFlashcards(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
 
   const { toggleCard, resetDeckExclusions } = useDeckExclusionActions(deckExclusionKey);
-  const showPinyin = usePracticePreferencesStore((state) => state.showPinyin);
-  const showTranslation = usePracticePreferencesStore((state) => state.showTranslation);
+  const showPinyin = useAppStore((state) => state.showPinyin);
+  const showTranslation = useAppStore((state) => state.showTranslation);
 
   const { wrappedHandleNext, pauseFlow, triggerManualReveal, autoPlayAudio } = useFlashcardFlow({
     cards,

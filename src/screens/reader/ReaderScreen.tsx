@@ -8,7 +8,6 @@ import type { ReaderGrammarPoint, ReaderStudyTargetWord } from './utils/readerSt
 import { useDialogueAlignment } from './hooks/useDialogueAlignment';
 import { useReaderAudio } from './hooks/useReaderAudio';
 import { useReaderPreferences } from './hooks/useReaderPreferences';
-import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
 import { ReaderHeader } from './components/ReaderHeader';
 import { ReaderStudyDrawer } from './components/ReaderStudyDrawer';
 import { ReaderStudyPanel } from './components/ReaderStudyPanel';
@@ -103,8 +102,8 @@ export function ReaderScreen({
   const audioMode = 'book';
   const characterPreference = useAppStore((state) => state.characterPreference);
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
-  const characterFont = usePracticePreferencesStore((state) => state.characterFont);
-  const updatePracticePreferences = usePracticePreferencesStore((state) => state.updatePreferences);
+  const characterFont = useAppStore((state) => state.characterFont);
+  const updatePracticePreferences = useAppStore((state) => state.updatePreferences);
   const reading = readings[index] ?? readings[0];
   const [isStudyDrawerOpen, setIsStudyDrawerOpen] = useState(false);
   const [isStudySidePanelOpen, setIsStudySidePanelOpen] = useState(true);

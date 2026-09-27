@@ -3,8 +3,6 @@ import type { ReactNode } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { audioService } from '../../services/audioService';
 import { useAppStore } from '../../store/useAppStore';
-import { useGrammarLessonStore } from '../../store/useGrammarLessonStore';
-import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
 import { findNeighbourGrammarPartId } from '../../data/interactiveGrammarManifest';
 import type { InteractiveGrammarPart } from '../../types/models';
 import { cn } from '../../utils/cn';
@@ -104,11 +102,11 @@ export function GrammarLessonScreen({
   const characterPreference = useAppStore((state) => state.characterPreference);
   const setCharacterPreference = useAppStore((state) => state.setCharacterPreference);
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
-  const showPinyin = usePracticePreferencesStore((state) => state.showPinyin);
-  const showTranslation = usePracticePreferencesStore((state) => state.showTranslation);
-  const characterFont = usePracticePreferencesStore((state) => state.characterFont);
-  const updatePreferences = usePracticePreferencesStore((state) => state.updatePreferences);
-  const markPartStarted = useGrammarLessonStore((state) => state.markPartStarted);
+  const showPinyin = useAppStore((state) => state.showPinyin);
+  const showTranslation = useAppStore((state) => state.showTranslation);
+  const characterFont = useAppStore((state) => state.characterFont);
+  const updatePreferences = useAppStore((state) => state.updatePreferences);
+  const markPartStarted = useAppStore((state) => state.markPartStarted);
 
   const closeLesson = useCallback(() => {
     audioService.stop();

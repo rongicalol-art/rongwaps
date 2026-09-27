@@ -9,7 +9,7 @@ import { WritingDock } from './components/WritingDock';
 import { WritingQuizzingCanvas } from './components/WritingQuizzingCanvas';
 import { WritingCompletedCard } from './components/WritingCompletedCard';
 import { getCardWidth, useCurriculumExamples } from '../../features/flashcards';
-import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
+import { useAppStore } from '../../store/useAppStore';
 import { cn } from '../../utils/cn';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { buildPracticePartSegments } from '../../utils/practicePartSegments';
@@ -53,8 +53,8 @@ export function WritingScreen({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const showPinyin = usePracticePreferencesStore((state) => state.showPinyin);
-  const showTranslation = usePracticePreferencesStore((state) => state.showTranslation);
+  const showPinyin = useAppStore((state) => state.showPinyin);
+  const showTranslation = useAppStore((state) => state.showTranslation);
   const isCardFinished = activeCharIndex >= chars.length && chars.length > 0;
   const { examples: curriculumExamples, isLoading: areExamplesLoading } = useCurriculumExamples(
     currentCard,

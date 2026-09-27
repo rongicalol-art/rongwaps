@@ -8,7 +8,7 @@ import { MemoryHookCharacter } from '../../features/character-memory-hooks';
 import { useQuizChoices } from './hooks/useQuiz';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
-import { usePracticePreferencesStore, type QuizQuestionType, type QuizChoiceType } from '../../store/usePracticePreferencesStore';
+import { useAppStore, type QuizQuestionType, type QuizChoiceType } from '../../store/useAppStore';
 import { buildPracticePartSegments } from '../../utils/practicePartSegments';
 import { isHanziChar } from '../../utils/hanzi';
 import { useNumberKeySelection } from '../../hooks/useNumberKeySelection';
@@ -154,11 +154,11 @@ export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue,
     progressInfo,
   } = useQuizChoices(cards, sessionKey);
 
-  const autoAdvanceCorrect = usePracticePreferencesStore((state) => state.autoAdvanceCorrect);
+  const autoAdvanceCorrect = useAppStore((state) => state.autoAdvanceCorrect);
   const autoAdvance = isCorrect ? autoAdvanceCorrect : false;
 
-  const quizQuestionType = usePracticePreferencesStore((state) => state.quizQuestionType);
-  const quizChoiceType = usePracticePreferencesStore((state) => state.quizChoiceType);
+  const quizQuestionType = useAppStore((state) => state.quizQuestionType);
+  const quizChoiceType = useAppStore((state) => state.quizChoiceType);
 
   useNumberKeySelection({
     items: options,
@@ -191,7 +191,7 @@ export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue,
   });
 
   const activeBook = SAMPLE_BOOKS.find(b => b.id === activeBookId) || SAMPLE_BOOKS[0];
-  const showPinyin = usePracticePreferencesStore((state) => state.showPinyin);
+  const showPinyin = useAppStore((state) => state.showPinyin);
 
   const choiceTitleMap: Record<QuizChoiceType, string> = {
     meaning: 'Select the meaning',

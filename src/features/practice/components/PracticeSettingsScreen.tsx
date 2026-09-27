@@ -1,5 +1,5 @@
 import React from 'react';
-import type { PracticePreferences } from '../../../store/usePracticePreferencesStore';
+import type { PracticePreferences } from '../../../store/useAppStore';
 import { cn } from '../../../utils/cn';
 import { DetailShell, ScreenHeader, SettingsDropdownPicker } from '../../../lib/widgets';
 import { SettingsToggleRow } from '../settings/PracticeSettingControls';

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Flashcard } from '../../../data/flashcards';
 import type { PracticeFlowStatus } from '../../../types/models';
 import { audioService } from '../../../services/audioService';
-import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
+import { useAppStore } from '../../../store/useAppStore';
 
 interface UseCardFlowOptions {
   currentCard?: Flashcard;
@@ -25,10 +25,10 @@ export function useCardFlow({
 }: UseCardFlowOptions) {
   const [flowStatus, setFlowStatus] = useState<PracticeFlowStatus>('idle');
   const [flowStep, setFlowStep] = useState(0);
-  const flowFrontDelayMs = usePracticePreferencesStore((state) => state.flowFrontDelayMs);
-  const flowBackDelayMs = usePracticePreferencesStore((state) => state.flowBackDelayMs);
-  const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
-  const speakDefinition = usePracticePreferencesStore((state) => state.speakDefinition);
+  const flowFrontDelayMs = useAppStore((state) => state.flowFrontDelayMs);
+  const flowBackDelayMs = useAppStore((state) => state.flowBackDelayMs);
+  const pronunciationRate = useAppStore((state) => state.pronunciationRate);
+  const speakDefinition = useAppStore((state) => state.speakDefinition);
   const onAdvanceRef = useRef(onAdvance);
   const onReplayRef = useRef(onReplay);
   const onFinishSetRef = useRef(onFinishSet);

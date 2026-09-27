@@ -6,7 +6,7 @@ import {
   ScreenHeader,
 } from '../../../lib/widgets';
 import { GrammarReadingAids } from './GrammarReadingAids';
-import type { CharacterFont } from '../../../store/usePracticePreferencesStore';
+import type { CharacterFont } from '../../../store/useAppStore';
 
 interface GrammarLessonHeaderProps {
   title?: string;

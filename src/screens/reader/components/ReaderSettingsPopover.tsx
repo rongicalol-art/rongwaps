@@ -9,7 +9,7 @@ import {
 } from '../../../lib/widgets';
 import { useDismiss } from '../../../hooks/useDismiss';
 import type { ReaderTextSize } from '../../../types/models';
-import type { CharacterFont } from '../../../store/usePracticePreferencesStore';
+import type { CharacterFont } from '../../../store/useAppStore';
 
 interface ReaderSettingsPopoverProps {
   textSize: ReaderTextSize;

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { usePracticePreferencesStore } from '../store/usePracticePreferencesStore';
+import { useAppStore } from '../store/useAppStore';
 
 type AnswerStatus = 'idle' | 'correct' | 'wrong';
 
@@ -20,37 +20,37 @@ export function usePracticeAnswerAutomation({
   blocked = false,
   advanceWrong = true,
 }: UsePracticeAnswerAutomationOptions) {
-  const autoAdvanceCorrect = usePracticePreferencesStore((state) => state.autoAdvanceCorrect);
-  const autoAdvanceWrong = usePracticePreferencesStore((state) => state.autoAdvanceWrong);
-  const correctDelayMs = usePracticePreferencesStore((state) => state.correctDelayMs);
-  const wrongDelayMs = usePracticePreferencesStore((state) => state.wrongDelayMs);
-  const betweenCardsMs = usePracticePreferencesStore((state) => state.betweenCardsMs);
+  const autoAdvanceCorrect = useAppStore((state) => state.autoAdvanceCorrect);
+  const autoAdvanceWrong = useAppStore((state) => state.autoAdvanceWrong);
+  const correctDelayMs = useAppStore((state) => state.correctDelayMs);
+  const wrongDelayMs = useAppStore((state) => state.wrongDelayMs);
+  const betweenCardsMs = useAppStore((state) => state.betweenCardsMs);
   const onAdvanceRef = useRef(onAdvance);
   const onCheckRef = useRef(onCheck);
 
-  onAdvanceRef.current = onAdvance;
-  onCheckRef.current = onCheck;
-
-  // Only an explicit blocker (e.g. a character breakdown the learner is
-  // reading) pauses the auto-advance. Settings and other overlays must NOT
-  // stop the flow — the session keeps moving on behind them.
-  const isPaused = blocked;
+  useEffect(() => {
+    onAdvanceRef.current = onAdvance;
+    onCheckRef.current = onCheck;
+  });
 
   useEffect(() => {
-    if (!selectedValue || status !== 'idle' || isPaused || !onCheckRef.current) return;
-    const timer = window.setTimeout(() => onCheckRef.current?.(), 0);
-    return () => window.clearTimeout(timer);
-  }, [isPaused, selectedValue, status]);
+    if (status !== 'correct' || blocked || !autoAdvanceCorrect) return;
+    const timer = setTimeout(() => {
+      onAdvanceRef.current();
+    }, correctDelayMs + betweenCardsMs);
+    return () => clearTimeout(timer);
+  }, [status, blocked, autoAdvanceCorrect, correctDelayMs, betweenCardsMs]);
 
   useEffect(() => {
-    if (status === 'idle' || isPaused) return;
-    const shouldAdvance = status === 'correct' ? autoAdvanceCorrect : advanceWrong && autoAdvanceWrong;
-    if (!shouldAdvance) return;
+    if (status !== 'wrong' || blocked || !autoAdvanceWrong || !advanceWrong) return;
+    const timer = setTimeout(() => {
+      onAdvanceRef.current();
+    }, wrongDelayMs + betweenCardsMs);
+    return () => clearTimeout(timer);
+  }, [status, blocked, autoAdvanceWrong, advanceWrong, wrongDelayMs, betweenCardsMs]);
 
-    const advanceDelay = status === 'correct'
-      ? correctDelayMs + betweenCardsMs
-      : wrongDelayMs + betweenCardsMs;
-    const timer = window.setTimeout(() => onAdvanceRef.current(), advanceDelay);
-    return () => window.clearTimeout(timer);
-  }, [advanceWrong, autoAdvanceCorrect, autoAdvanceWrong, betweenCardsMs, correctDelayMs, isPaused, status, wrongDelayMs]);
+  useEffect(() => {
+    if (status !== 'idle' || blocked || !selectedValue || !onCheckRef.current) return;
+    onCheckRef.current();
+  }, [status, blocked, selectedValue]);
 }

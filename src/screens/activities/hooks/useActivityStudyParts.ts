@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { ActivityType, CourseLessonPartProgress } from '../../../types/models';
 import { useAppStore } from '../../../store/useAppStore';
-import { useGrammarLessonStore } from '../../../store/useGrammarLessonStore';
 import { vocabularyCache } from '../../../utils/cache';
 import { fetchVocabulary } from '../../../services/vocabularyService';
 import { aggregateLessonPartProgress } from '../../../utils/lessonPartProgress';
@@ -48,7 +47,7 @@ export function useActivityStudyParts({
   activeActivity,
   onOpenGrammarPart,
 }: UseActivityStudyPartsOptions): UseActivityStudyPartsResult {
-  const completedGrammarPageIds = useGrammarLessonStore((state) => state.completedPageIds);
+  const completedGrammarPageIds = useAppStore((state) => state.completedPageIds);
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
   const setSelectedLessonParts = useAppStore((state) => state.setSelectedLessonParts);
 

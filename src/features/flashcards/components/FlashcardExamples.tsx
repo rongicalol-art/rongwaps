@@ -7,7 +7,7 @@ import {
   type RankedExample,
 } from '../../../utils/courseExamples';
 import { numberToToneMarks } from '../../../utils/pinyin';
-import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
+import { useAppStore } from '../../../store/useAppStore';
 import { cn } from '../../../utils/cn';
 
 const INITIAL_VISIBLE_COUNT = 3;
@@ -128,7 +128,7 @@ export const FlashcardExamples = memo(function FlashcardExamples({
   showTranslation,
 }: FlashcardExamplesProps) {
   const reduceMotion = useReducedMotion();
-  const hideExamplePinyin = usePracticePreferencesStore((state) => state.hideExamplePinyin);
+  const hideExamplePinyin = useAppStore((state) => state.hideExamplePinyin);
   const showExamplePinyin = showPinyin && !hideExamplePinyin;
   const [isExpanded, setIsExpanded] = useState(false);
 

@@ -3,7 +3,7 @@ import { Flashcard } from '../../../data/flashcards';
 import { audioService } from '../../../services/audioService';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
 import { shuffleItems } from '../../../utils/sessionOrder';
-import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
+import { useAppStore } from '../../../store/useAppStore';
 import { isPinyinAnswerAccepted } from '../../../utils/pinyinAnswer';
 import { buildAttributeChoices, getCardChoiceTarget } from '../../../utils/meaningChoices';
 import { useCardSession } from '../../../hooks/useCardSession';
@@ -21,9 +21,9 @@ export function useQuizLoader(activeBookId: number, selectedLessons: number[], i
  *   Second click → advance to the next card (or complete the session)
  */
 export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
-  const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
-  const replayAudioAfterAnswer = usePracticePreferencesStore((state) => state.replayAudioAfterAnswer);
-  const quizChoiceType = usePracticePreferencesStore((state) => state.quizChoiceType);
+  const pronunciationRate = useAppStore((state) => state.pronunciationRate);
+  const replayAudioAfterAnswer = useAppStore((state) => state.replayAudioAfterAnswer);
+  const quizChoiceType = useAppStore((state) => state.quizChoiceType);
 
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isChecked, setIsChecked] = useState(false);
@@ -166,8 +166,8 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
  *   Second click → advance to the next card (or complete the session)
  */
 export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
-  const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
-  const replayAudioAfterAnswer = usePracticePreferencesStore((state) => state.replayAudioAfterAnswer);
+  const pronunciationRate = useAppStore((state) => state.pronunciationRate);
+  const replayAudioAfterAnswer = useAppStore((state) => state.replayAudioAfterAnswer);
 
   const [input, setInput] = useState('');
   const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle');

@@ -1,5 +1,5 @@
 import { SegmentedControl, ToggleSwitch } from '../../../lib/widgets';
-import type { CharacterFont } from '../../../store/usePracticePreferencesStore';
+import type { CharacterFont } from '../../../store/useAppStore';
 import { cn } from '../../../utils/cn';
 
 interface GrammarReadingAidsProps {

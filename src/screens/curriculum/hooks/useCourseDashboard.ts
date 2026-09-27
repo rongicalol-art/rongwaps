@@ -3,7 +3,7 @@ import { SAMPLE_LESSONS } from '../../../data/books';
 import type { Flashcard } from '../../../data/flashcards';
 import { getInteractiveGrammarManifestForLesson } from '../../../data/interactiveGrammarManifest';
 import { fetchVocabulary } from '../../../services/vocabularyService';
-import { useGrammarLessonStore } from '../../../store/useGrammarLessonStore';
+import { useAppStore } from '../../../store/useAppStore';
 import type { CourseDashboardProgress, LessonPartSelectionMap } from '../../../types/models';
 import { getLessonSelectionKey } from '../../../utils/lessonPartSelection';
 import { aggregateLessonPartProgress } from '../../../utils/lessonPartProgress';
@@ -34,7 +34,7 @@ export function useCourseDashboard({
   const [cards, setCards] = useState<Flashcard[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const completedGrammarPartIds = useGrammarLessonStore((state) => state.completedPartIds);
+  const completedGrammarPartIds = useAppStore((state) => state.completedPartIds);
 
   useEffect(() => {
     let isMounted = true;

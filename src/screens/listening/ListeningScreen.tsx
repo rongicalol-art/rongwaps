@@ -8,7 +8,7 @@ import { AudioControls } from './AudioControls';
 import { ListeningOptions } from './ListeningOptions';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
-import { usePracticePreferencesStore, type ListeningChoiceType } from '../../store/usePracticePreferencesStore';
+import { useAppStore, type ListeningChoiceType } from '../../store/useAppStore';
 import { buildPracticePartSegments } from '../../utils/practicePartSegments';
 import { useNumberKeySelection } from '../../hooks/useNumberKeySelection';
 import { getCardChoiceTarget } from '../../utils/meaningChoices';
@@ -56,10 +56,10 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
   });
 
   const activeBook = SAMPLE_BOOKS.find(b => b.id === activeBookId) || SAMPLE_BOOKS[0];
-  const showPinyin = usePracticePreferencesStore((state) => state.showPinyin);
-  const autoAdvanceCorrect = usePracticePreferencesStore((state) => state.autoAdvanceCorrect);
+  const showPinyin = useAppStore((state) => state.showPinyin);
+  const autoAdvanceCorrect = useAppStore((state) => state.autoAdvanceCorrect);
   const autoAdvance = isCorrect ? autoAdvanceCorrect : false;
-  const listeningChoiceType = usePracticePreferencesStore((state) => state.listeningChoiceType);
+  const listeningChoiceType = useAppStore((state) => state.listeningChoiceType);
 
   const listeningTitleMap: Record<ListeningChoiceType, string> = {
     meaning: 'Select the meaning',

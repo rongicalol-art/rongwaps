@@ -1,6 +1,6 @@
 import { AppIcon, IconActionButton, ScreenHeader } from '../../../lib/widgets';
 import type { ReaderTextSize, ReadingRecord } from '../../../types/models';
-import type { CharacterFont } from '../../../store/usePracticePreferencesStore';
+import type { CharacterFont } from '../../../store/useAppStore';
 import { ReaderSettingsPopover } from './ReaderSettingsPopover';
 
 interface ReaderHeaderProps {

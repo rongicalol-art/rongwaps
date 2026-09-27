@@ -12,7 +12,7 @@ import { createEmptySessionProgress } from '../src/utils/reviewProgress';
  * keys under 'rongwaps-storage'; this test fails if a slice key gains or
  * loses persistence silently.
  */
-const LEGACY_PERSISTED_KEYS = [
+const EXPECTED_PERSISTED_KEYS = [
   'lastActiveUserId',
   'activeBookId',
   'characterPreference',
@@ -32,10 +32,37 @@ const LEGACY_PERSISTED_KEYS = [
   'foldersSyncedUserId',
   'libraryActiveFolder',
   'localFlashcards',
+  // Grammar progress
+  'startedPartIds',
+  'completedPageIds',
+  'completedPartIds',
+  // Practice preferences
+  'preset',
+  'pace',
+  'correctDelayMs',
+  'wrongDelayMs',
+  'betweenCardsMs',
+  'flowFrontDelayMs',
+  'flowBackDelayMs',
+  'autoAdvanceCorrect',
+  'autoAdvanceWrong',
+  'repeatMistakes',
+  'pronunciationRate',
+  'autoPlayAudio',
+  'replayAudioAfterAnswer',
+  'speakDefinition',
+  'showPinyin',
+  'showTranslation',
+  'hideExamplePinyin',
+  'characterFont',
+  'quizQuestionType',
+  'quizChoiceType',
+  'listeningChoiceType',
+  'typingPromptType',
 ].sort();
 
-test('persisted key set matches the legacy persisted state exactly', () => {
-  assert.deepEqual([...PERSISTED_KEYS].sort(), LEGACY_PERSISTED_KEYS);
+test('persisted key set matches the declared slices contract exactly', () => {
+  assert.deepEqual([...PERSISTED_KEYS].sort(), EXPECTED_PERSISTED_KEYS);
 });
 
 /**
@@ -69,6 +96,10 @@ const ACCOUNT_SWITCH_RESET_KEYS = [
   // list without them pins the library to a folder that no longer exists.
   'libraryActiveFolder',
   'libraryActiveView',
+  // Grammar progress is account-scoped
+  'startedPartIds',
+  'completedPageIds',
+  'completedPartIds',
 ].sort();
 
 test('account-switch defaults match the reset contract exactly', () => {
@@ -100,6 +131,10 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
     activeReviewSessionCards: ['card_a'],
     syncStatus: 'error',
     syncError: "Couldn't save your progress.",
+    // Grammar progress (account-scoped)
+    startedPartIds: ['b1-l1-p1'],
+    completedPageIds: ['b1-l1-g1'],
+    completedPartIds: ['b1-l1-p1'],
     // Account-agnostic state that must survive the switch:
     activeTab: 'library',
     activeBookId: 1,
@@ -107,6 +142,8 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
     isReviewMode: true,
     localFlashcards: [],
     lastActiveUserId: 'user-a',
+    preset: 'comfortable',
+    pace: 28,
   });
 
   store.getState().resetAccountScopedState();
@@ -131,6 +168,9 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
   assert.deepEqual(state.activeReviewSessionCards, null);
   assert.equal(state.syncStatus, 'idle');
   assert.equal(state.syncError, null);
+  assert.deepEqual(state.startedPartIds, []);
+  assert.deepEqual(state.completedPageIds, []);
+  assert.deepEqual(state.completedPartIds, []);
 
   // Account-agnostic state survives.
   assert.equal(state.activeTab, 'library');
@@ -138,4 +178,6 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
   assert.equal(state.characterPreference, 'simplified');
   assert.equal(state.isReviewMode, true);
   assert.equal(state.lastActiveUserId, 'user-a');
+  assert.equal(state.preset, 'comfortable');
+  assert.equal(state.pace, 28);
 });

@@ -1,10 +1,6 @@
 import { useShallow } from 'zustand/react/shallow';
 import { PracticeHeader } from '../../../features/practice';
-import { useAppStore } from '../../../store/useAppStore';
-import {
-  selectPracticePreferences,
-  usePracticePreferencesStore,
-} from '../../../store/usePracticePreferencesStore';
+import { useAppStore, selectPracticePreferences } from '../../../store/useAppStore';
 import type { ActivityType, CourseLessonPartProgress } from '../../../types/models';
 import type { FlashcardViewMode } from '../../flashcard';
 
@@ -37,8 +33,8 @@ export function ActivityPracticeHeader({
   const practiceHeaderActions = useAppStore((state) => state.practiceHeaderActions);
   const characterPreference = useAppStore((state) => state.characterPreference);
   const setCharacterPreference = useAppStore((state) => state.setCharacterPreference);
-  const practicePreferences = usePracticePreferencesStore(useShallow(selectPracticePreferences));
-  const updatePracticePreferences = usePracticePreferencesStore((state) => state.updatePreferences);
+  const practicePreferences = useAppStore(useShallow(selectPracticePreferences));
+  const updatePracticePreferences = useAppStore((state) => state.updatePreferences);
 
   if (activeActivity === 'create-card') return null;
 

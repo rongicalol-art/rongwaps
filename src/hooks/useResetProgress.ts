@@ -1,6 +1,5 @@
 import { useCallback } from 'react';
 import { useAppStore } from '../store/useAppStore';
-import { useGrammarLessonStore } from '../store/useGrammarLessonStore';
 import { userService } from '../services/userService';
 
 interface UseResetProgressOptions {
@@ -24,7 +23,6 @@ export function useResetProgress({
 }: UseResetProgressOptions) {
   return useCallback(async () => {
     const appState = useAppStore.getState();
-    const grammarState = useGrammarLessonStore.getState();
     const appSnapshot = {
       srsData: appState.srsData,
       learnedCards: appState.learnedCards,
@@ -34,11 +32,9 @@ export function useResetProgress({
       isReviewMode: appState.isReviewMode,
       activeReviewSessionCards: appState.activeReviewSessionCards,
       swipeFeedback: appState.swipeFeedback,
-    };
-    const grammarSnapshot = {
-      startedPartIds: grammarState.startedPartIds,
-      completedPageIds: grammarState.completedPageIds,
-      completedPartIds: grammarState.completedPartIds,
+      startedPartIds: appState.startedPartIds,
+      completedPageIds: appState.completedPageIds,
+      completedPartIds: appState.completedPartIds,
     };
 
     if (currentUser && appState.syncStatus === 'syncing') {
@@ -57,7 +53,7 @@ export function useResetProgress({
     }
 
     appState.resetProgress();
-    grammarState.resetProgress();
+    appState.resetGrammarProgress();
 
     try {
       if (currentUser) await userService.resetLearningProgress();
@@ -65,7 +61,6 @@ export function useResetProgress({
       onGrammarCleared();
     } catch (error) {
       useAppStore.setState(appSnapshot);
-      useGrammarLessonStore.setState(grammarSnapshot);
       throw error;
     }
   }, [currentUser, onActivityCleared, onGrammarCleared]);

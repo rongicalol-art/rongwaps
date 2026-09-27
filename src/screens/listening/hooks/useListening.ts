@@ -3,7 +3,6 @@ import { audioService } from '../../../services/audioService';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
 import { useAppStore } from '../../../store/useAppStore';
 import { shuffleItems } from '../../../utils/sessionOrder';
-import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
 import { getDeckIdentityKey } from '../../../utils/lessonPartSelection';
 import { buildAttributeChoices, getCardChoiceTarget } from '../../../utils/meaningChoices';
 import { useCardSession } from '../../../hooks/useCardSession';
@@ -15,9 +14,9 @@ const NEURAL_PRELOAD_AHEAD = 2;
 export function useListening(activeBookId: number, selectedLessons: number[], isLibraryDeck: boolean = false, isReviewDeck: boolean = false) {
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
-  const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
-  const autoPlayAudio = usePracticePreferencesStore((state) => state.autoPlayAudio);
-  const listeningChoiceType = usePracticePreferencesStore((state) => state.listeningChoiceType);
+  const pronunciationRate = useAppStore((state) => state.pronunciationRate);
+  const autoPlayAudio = useAppStore((state) => state.autoPlayAudio);
+  const listeningChoiceType = useAppStore((state) => state.listeningChoiceType);
   const sessionKey = getDeckIdentityKey({
     activeBookId,
     selectedLessons,

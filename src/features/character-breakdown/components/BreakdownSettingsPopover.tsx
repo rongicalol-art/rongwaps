@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { AppIcon, IconActionButton, ToggleSwitch } from '../../../lib/widgets';
 import { useDismiss } from '../../../hooks/useDismiss';
-import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
+import { useAppStore } from '../../../store/useAppStore';
 
 /**
  * Contextual display settings for the character-breakdown window. For now it
@@ -12,8 +12,8 @@ import { usePracticePreferencesStore } from '../../../store/usePracticePreferenc
 export function BreakdownSettingsPopover() {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const hideExamplePinyin = usePracticePreferencesStore((state) => state.hideExamplePinyin);
-  const updatePreferences = usePracticePreferencesStore((state) => state.updatePreferences);
+  const hideExamplePinyin = useAppStore((state) => state.hideExamplePinyin);
+  const updatePreferences = useAppStore((state) => state.updatePreferences);
 
   useDismiss({
     ref: containerRef,

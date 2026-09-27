@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useGrammarLessonStore } from '../../../store/useGrammarLessonStore';
+import { useAppStore } from '../../../store/useAppStore';
 import type { InteractiveGrammarPart } from '../../../types/models';
 import { continueGrammarLesson } from '../../../utils/grammarLessonFlow';
 
@@ -26,9 +26,9 @@ export function useGrammarLessonPage({
   onClose,
   onProceedToReading,
 }: UseGrammarLessonPageOptions) {
-  const completedPageIds = useGrammarLessonStore((state) => state.completedPageIds);
-  const markPageComplete = useGrammarLessonStore((state) => state.markPageComplete);
-  const markPartComplete = useGrammarLessonStore((state) => state.markPartComplete);
+  const completedPageIds = useAppStore((state) => state.completedPageIds);
+  const markPageComplete = useAppStore((state) => state.markPageComplete);
+  const markPartComplete = useAppStore((state) => state.markPartComplete);
 
   const firstIncompleteIndex = useMemo(
     () => part.grammarPages.findIndex((grammarPage) => !completedPageIds.includes(grammarPage.id)),

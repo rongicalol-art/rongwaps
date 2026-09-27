@@ -1,4 +1,4 @@
-import type { MistakeRepeat } from '../store/usePracticePreferencesStore';
+import type { MistakeRepeat } from '../store/useAppStore';
 
 export function queueMissedItem<T extends { id: string }>(
   items: T[],

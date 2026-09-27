@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { SectionEyebrow, Skeleton, SmartSentence } from '../../../../lib/widgets';
 import { numberToToneMarks } from '../../../../utils/pinyin';
-import { usePracticePreferencesStore } from '../../../../store/usePracticePreferencesStore';
+import { useAppStore } from '../../../../store/useAppStore';
 import { useCharExampleSentences } from '../../hooks/useCharExampleSentences';
 
 const INITIAL_VISIBLE = 4;
@@ -16,7 +16,7 @@ const EXPAND_BUTTON =
  */
 export function V3ExampleSentences({ character }: { character: string }) {
   const { sentences, isLoading } = useCharExampleSentences(character);
-  const hideExamplePinyin = usePracticePreferencesStore((state) => state.hideExamplePinyin);
+  const hideExamplePinyin = useAppStore((state) => state.hideExamplePinyin);
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {

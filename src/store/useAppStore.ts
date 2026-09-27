@@ -21,6 +21,7 @@ import { create } from 'zustand';
 import { persist, type PersistStorage } from 'zustand/middleware';
 import { get, set, del } from 'idb-keyval';
 import { migrateLegacyLessonSelection } from '../utils/lessonPartSelection';
+import { migrateLegacyStores } from '../utils/legacyStoreMigration';
 import {
   createAuthSlice,
   AUTH_PERSISTED_KEYS,
@@ -48,6 +49,7 @@ import {
 } from './slices/librarySlice';
 import {
   createUiSlice,
+  selectIsActivityOverlayOpen,
   UI_PERSISTED_KEYS,
   UI_ACCOUNT_SWITCH_DEFAULTS,
   type UiState,
@@ -59,10 +61,52 @@ import {
   type SyncState,
   type SyncStatus,
 } from './slices/syncSlice';
+import {
+  createGrammarProgressSlice,
+  GRAMMAR_PROGRESS_PERSISTED_KEYS,
+  GRAMMAR_PROGRESS_ACCOUNT_SWITCH_DEFAULTS,
+  type GrammarProgressState,
+} from './slices/grammarProgressSlice';
+import {
+  createPracticePreferencesSlice,
+  PRACTICE_PREFERENCES_PERSISTED_KEYS,
+  PRACTICE_PREFERENCES_ACCOUNT_SWITCH_DEFAULTS,
+  type PracticePreferencesState,
+  type PracticePreferences,
+  type PracticePreset,
+  type MistakeRepeat,
+  type CharacterFont,
+  type QuizQuestionType,
+  type QuizChoiceType,
+  type ListeningChoiceType,
+  type TypingPromptType,
+  getPaceTimings,
+  getPaceLabel,
+  DEFAULT_PREFERENCES,
+  selectPracticePreferences,
+} from './slices/practicePreferencesSlice';
 
-export type { UserSnapshot, SyncStatus };
-// Selector for the composed overlay-source union (see `uiSlice`).
-export { selectIsActivityOverlayOpen } from './slices/uiSlice';
+export type {
+  UserSnapshot,
+  SyncStatus,
+  GrammarProgressState,
+  PracticePreferencesState,
+  PracticePreferences,
+  PracticePreset,
+  MistakeRepeat,
+  CharacterFont,
+  QuizQuestionType,
+  QuizChoiceType,
+  ListeningChoiceType,
+  TypingPromptType,
+};
+export {
+  selectIsActivityOverlayOpen,
+  getPaceTimings,
+  getPaceLabel,
+  DEFAULT_PREFERENCES,
+  selectPracticePreferences,
+};
 
 /** Data-only store shape (state, no actions) — lets consumers key off real keys. */
 export type AppStoreData =
@@ -71,20 +115,12 @@ export type AppStoreData =
   & NavigationState
   & LibraryState
   & UiState
-  & SyncState;
+  & SyncState
+  & GrammarProgressState
+  & PracticePreferencesState;
 
 export type AppState = AppStoreData & AppStoreActions;
 
-// A browser may block or lack IndexedDB; persistence is then best-effort.
-// Swallowing here keeps a failed cache write from becoming an unhandled
-// rejection — the in-memory store remains the source of truth.
-
-// Persisted writes are coalesced: a card answer changes `srsData`, which
-// re-serializes the entire persisted payload. Answering back-to-back would
-// serialize megabytes per tap. A trailing debounce (fixed window from the
-// first pending write — a continuous stream never postpones it) bounds the
-// cost to roughly one serialization per second of studying. The in-memory
-// store stays the source of truth and cloud sync remains the durable path.
 const PERSIST_DEBOUNCE_MS = 1_000;
 let pendingWrite: { name: string; value: unknown } | null = null;
 let pendingWriteLastValue: unknown | null = null;
@@ -98,8 +134,7 @@ function flushPendingPersist(): void {
   const pending = pendingWrite;
   if (!pending) return;
   pendingWrite = null;
-  // Environments without IndexedDB (tests, blocked browsers): persistence is
-  // best-effort, so drop the write instead of letting the access throw.
+
   if (typeof indexedDB === 'undefined') return;
   pendingWriteLastValue = pending.value;
   void set(pending.name, pending.value).catch(() => {
@@ -108,9 +143,6 @@ function flushPendingPersist(): void {
 }
 
 if (typeof window !== 'undefined') {
-  // Best-effort flush when the page is being hidden/closed: the write is
-  // started immediately so it has the best chance of completing. Cloud sync
-  // (10s debounce / 45s max-wait) is the real durability backstop.
   window.addEventListener('pagehide', flushPendingPersist);
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'hidden') flushPendingPersist();
@@ -120,16 +152,25 @@ if (typeof window !== 'undefined') {
 const idbStorage: PersistStorage<Partial<AppState>> = {
   getItem: async (name) => {
     try {
-      return (await get(name)) || null;
+      const item = (await get(name)) || null;
+      if (!item) {
+        const initialLegacyState: Record<string, unknown> = {};
+        const migrated = migrateLegacyStores(initialLegacyState);
+        if (migrated) {
+          return { state: initialLegacyState as Partial<AppState>, version: 2 };
+        }
+      }
+      return item;
     } catch {
       return null;
     }
   },
   setItem: async (name, value) => {
     try {
-      // Skip a write that would reproduce the last persisted payload.
-      // Since value is now an object, we must do a shallow comparison of its state.
-      const isValueEqual = (a: { state?: Record<string, unknown>; version?: number } | null | undefined, b: { state?: Record<string, unknown>; version?: number } | null | undefined) => {
+      const isValueEqual = (
+        a: { state?: Record<string, unknown>; version?: number } | null | undefined,
+        b: { state?: Record<string, unknown>; version?: number } | null | undefined,
+      ) => {
         if (a === b) return true;
         if (!a || !b) return false;
         if (a.version !== b.version) return false;
@@ -170,9 +211,7 @@ const idbStorage: PersistStorage<Partial<AppState>> = {
 };
 
 /**
- * Every persisted slice, derived from the domain lists. The contract test
- * asserts this set equals the legacy persisted state exactly — a new slice
- * key must be classified in its slice module or it will not survive reloads.
+ * Every persisted slice, derived from the domain lists.
  */
 export const PERSISTED_KEYS = [
   ...AUTH_PERSISTED_KEYS,
@@ -181,6 +220,8 @@ export const PERSISTED_KEYS = [
   ...LIBRARY_PERSISTED_KEYS,
   ...UI_PERSISTED_KEYS,
   ...SYNC_PERSISTED_KEYS,
+  ...GRAMMAR_PROGRESS_PERSISTED_KEYS,
+  ...PRACTICE_PREFERENCES_PERSISTED_KEYS,
 ] as const;
 
 function derivePersistedState(state: AppState): Partial<AppState> {
@@ -191,12 +232,6 @@ function derivePersistedState(state: AppState): Partial<AppState> {
   return persisted as Partial<AppState>;
 }
 
-/**
- * Union of every domain's account-switch defaults: the state cleared when a
- * different user signs in, so no account's cached progress can leak into
- * another's. useCloudSync calls `resetAccountScopedState()` instead of
- * maintaining its own list.
- */
 export const ACCOUNT_SWITCH_DEFAULTS = {
   ...AUTH_ACCOUNT_SWITCH_DEFAULTS,
   ...LEARNING_ACCOUNT_SWITCH_DEFAULTS,
@@ -204,6 +239,8 @@ export const ACCOUNT_SWITCH_DEFAULTS = {
   ...LIBRARY_ACCOUNT_SWITCH_DEFAULTS,
   ...UI_ACCOUNT_SWITCH_DEFAULTS,
   ...SYNC_ACCOUNT_SWITCH_DEFAULTS,
+  ...GRAMMAR_PROGRESS_ACCOUNT_SWITCH_DEFAULTS,
+  ...PRACTICE_PREFERENCES_ACCOUNT_SWITCH_DEFAULTS,
 } as Partial<AppState>;
 
 export interface AppStoreActions {
@@ -220,21 +257,25 @@ export const useAppStore = create<AppState & AppStoreActions>()(
       ...createLibrarySlice(set),
       ...createUiSlice(set),
       ...createSyncSlice(set),
+      ...createGrammarProgressSlice(set),
+      ...createPracticePreferencesSlice(set),
       resetAccountScopedState: () => set({ ...ACCOUNT_SWITCH_DEFAULTS }),
     }),
     {
       name: 'rongwaps-storage',
-      version: 1,
-      // v0 -> v1: the legacy flat `selectedLessons` array migrates into the
-      // canonical per-book `selectedLessonParts` map (see
-      // migrateLegacyLessonSelection). Runs once for pre-split persisted data.
-      migrate: (persistedState) => {
+      version: 2,
+      migrate: (persistedState, version) => {
         const state = (persistedState ?? {}) as Record<string, unknown>;
-        migrateLegacyLessonSelection(state);
+        if (version < 1) {
+          migrateLegacyLessonSelection(state);
+        }
+        if (version < 2) {
+          migrateLegacyStores(state);
+        }
         return state as unknown as AppState;
       },
       storage: idbStorage,
       partialize: derivePersistedState,
-    }
-  )
+    },
+  ),
 );

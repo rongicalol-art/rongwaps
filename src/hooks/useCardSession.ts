@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Flashcard } from '../data/flashcards';
 import { useAppStore } from '../store/useAppStore';
-import { usePracticePreferencesStore } from '../store/usePracticePreferencesStore';
 import { shuffleItems } from '../utils/sessionOrder';
 import { queueMissedItem, computeCardSessionProgress, type CardSessionProgressInfo } from '../utils/mistakeQueue';
 import { getSessionStartIndex, planDeckAdoption } from '../utils/sessionProgress';
@@ -41,7 +40,7 @@ export function useCardSession(
   const markCardReviewed = useAppStore((state) => state.markCardReviewed);
   const setSessionProgressIndex = useAppStore((state) => state.setSessionProgressIndex);
   const clearSessionProgressIndex = useAppStore((state) => state.clearSessionProgressIndex);
-  const repeatMistakes = usePracticePreferencesStore((state) => state.repeatMistakes);
+  const repeatMistakes = useAppStore((state) => state.repeatMistakes);
 
   const [activeCards, setActiveCards] = useState<Flashcard[]>(cards);
   const [isShuffled, setIsShuffled] = useState(false);

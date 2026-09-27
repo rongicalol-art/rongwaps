@@ -8,7 +8,7 @@ import { MemoryHookCharacter } from '../../features/character-memory-hooks';
 import { useQuizTyping } from './hooks/useQuiz';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
-import { usePracticePreferencesStore, type TypingPromptType } from '../../store/usePracticePreferencesStore';
+import { useAppStore, type TypingPromptType } from '../../store/useAppStore';
 import { buildPracticePartSegments } from '../../utils/practicePartSegments';
 import { isHanziChar } from '../../utils/hanzi';
 import { AppIcon } from '../../lib/widgets';
@@ -147,7 +147,7 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue, 
     toggleShuffle,
     progressInfo,
   } = useQuizTyping(cards, sessionKey);
-  const autoAdvanceCorrect = usePracticePreferencesStore((state) => state.autoAdvanceCorrect);
+  const autoAdvanceCorrect = useAppStore((state) => state.autoAdvanceCorrect);
   const autoAdvance = status === 'correct' ? autoAdvanceCorrect : false;
 
   const handleTypingSubmit = () => {
@@ -182,7 +182,7 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue, 
   });
 
   const activeBook = SAMPLE_BOOKS.find(b => b.id === activeBookId) || SAMPLE_BOOKS[0];
-  const typingPromptType = usePracticePreferencesStore((state) => state.typingPromptType);
+  const typingPromptType = useAppStore((state) => state.typingPromptType);
 
   if (completed) {
     return (

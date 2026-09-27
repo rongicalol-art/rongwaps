@@ -2,7 +2,6 @@ import { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import { useAppStore } from '../../../store/useAppStore';
 import { audioService } from '../../../services/audioService';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
-import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
 import { getDeckIdentityKey } from '../../../utils/lessonPartSelection';
 import { useCardSession } from '../../../hooks/useCardSession';
 
@@ -28,8 +27,8 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
   const markCardReviewed = useAppStore((state) => state.markCardReviewed);
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
   const selectedLessonParts = useAppStore((state) => state.selectedLessonParts);
-  const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
-  const autoPlayAudio = usePracticePreferencesStore((state) => state.autoPlayAudio);
+  const pronunciationRate = useAppStore((state) => state.pronunciationRate);
+  const autoPlayAudio = useAppStore((state) => state.autoPlayAudio);
   const sessionKey = getDeckIdentityKey({
     activeBookId,
     selectedLessons,

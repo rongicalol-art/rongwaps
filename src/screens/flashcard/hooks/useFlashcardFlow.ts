@@ -3,7 +3,6 @@ import { audioService } from '../../../services/audioService';
 import { useAppStore } from '../../../store/useAppStore';
 import { useCardFlow } from './useCardFlow';
 import { usePracticeHeaderRegistration } from '../../../hooks/usePracticeHeaderRegistration';
-import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
 import { buildPracticePartSegments } from '../../../utils/practicePartSegments';
 import type { Flashcard } from '../../../data/flashcards';
 
@@ -84,8 +83,8 @@ export function useFlashcardFlow({
     };
   }, []);
 
-  const pronunciationRate = usePracticePreferencesStore((state) => state.pronunciationRate);
-  const autoPlayAudio = usePracticePreferencesStore((state) => state.autoPlayAudio);
+  const pronunciationRate = useAppStore((state) => state.pronunciationRate);
+  const autoPlayAudio = useAppStore((state) => state.autoPlayAudio);
   const manualRevealAudioRef = useRef(false);
 
   const handleFinishSetInFlow = useCallback(() => {

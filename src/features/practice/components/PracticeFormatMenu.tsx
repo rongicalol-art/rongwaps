@@ -7,12 +7,12 @@ import {
 } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 import {
-  usePracticePreferencesStore,
+  useAppStore,
   type QuizQuestionType,
   type QuizChoiceType,
   type ListeningChoiceType,
   type TypingPromptType,
-} from '../../../store/usePracticePreferencesStore';
+} from '../../../store/useAppStore';
 
 export interface PracticeFormatMenuProps {
   mode: 'quiz-choices' | 'listening' | 'quiz-typing';
@@ -47,11 +47,11 @@ function formatLabel(type: QuizQuestionType | QuizChoiceType | ListeningChoiceTy
 export function PracticeFormatMenu({ mode, className = '' }: PracticeFormatMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const quizQuestionType = usePracticePreferencesStore((state) => state.quizQuestionType);
-  const quizChoiceType = usePracticePreferencesStore((state) => state.quizChoiceType);
-  const listeningChoiceType = usePracticePreferencesStore((state) => state.listeningChoiceType);
-  const typingPromptType = usePracticePreferencesStore((state) => state.typingPromptType);
-  const updatePreferences = usePracticePreferencesStore((state) => state.updatePreferences);
+  const quizQuestionType = useAppStore((state) => state.quizQuestionType);
+  const quizChoiceType = useAppStore((state) => state.quizChoiceType);
+  const listeningChoiceType = useAppStore((state) => state.listeningChoiceType);
+  const typingPromptType = useAppStore((state) => state.typingPromptType);
+  const updatePreferences = useAppStore((state) => state.updatePreferences);
 
   const handleQuizQuestionChange = (newQuestion: QuizQuestionType) => {
     if (newQuestion === quizChoiceType) {

@@ -1,7 +1,6 @@
 import { AppIcon, SectionEyebrow, SmartSentence, Skeleton } from '../../../lib/widgets';
 import { audioService } from '../../../services/audioService';
 import { useAppStore } from '../../../store/useAppStore';
-import { usePracticePreferencesStore } from '../../../store/usePracticePreferencesStore';
 import { numberToToneMarks } from '../../../utils/pinyin';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import type { WordExample } from '../../../types/models';
@@ -23,7 +22,7 @@ export function WordExamplesSection({
   activeBook: CourseBook;
 }) {
   const characterPreference = useAppStore((state) => state.characterPreference);
-  const hideExamplePinyin = usePracticePreferencesStore((state) => state.hideExamplePinyin);
+  const hideExamplePinyin = useAppStore((state) => state.hideExamplePinyin);
   const voice = characterPreference === 'traditional' ? 'zh-TW-HsiaoChenNeural' : 'zh-CN-XiaoxiaoNeural';
 
   if (!isLoading && examples.length === 0) return null;
