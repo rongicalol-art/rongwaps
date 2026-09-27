@@ -1,145 +1,31 @@
-import { debugLogger } from '../utils/debugLogger';
-import { useCallback, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useAuth } from './useAuth';
-import { useAppStore, type AppStoreData } from '../store/useAppStore';
-import { userService } from '../services/userService';
-import { progressService } from '../services/progressService';
-import { authService } from '../services/authService';
+import { useAppStore } from '../store/useAppStore';
 import type { SRSData } from '../utils/srsEngine';
-import {
-  computeLearnedDelta,
-  createCloudSyncFingerprint,
-  createSingleFlightSaveCoordinator,
-  getNextAutoSaveDelay,
-  getNextCloudSyncBackoff,
-  getSessionProgressDelta,
-  hasSessionProgressDelta,
-  isSessionProgressReset,
-  isSameFolderList,
-  mergePulledSrsData,
-  pruneAcknowledgedTombstones,
-  type SyncedFolderSnapshot,
-  type SyncProgressCounters,
+import type {
+  SyncedFolderSnapshot,
+  SyncProgressCounters,
 } from '../utils/cloudSyncQueue';
-import { isSameSrsData } from '../utils/srsRowMapping';
-import { getSelectedLessonIds } from '../utils/lessonPartSelection';
-import {
-  resolveCloudMetadataPatch,
-  resolveGuestFolderMigration,
-} from '../utils/cloudMetadata';
-
-type AppStoreSnapshot = ReturnType<typeof useAppStore.getState>;
-
-interface CloudSaveSnapshot {
-  userId: string;
-  userMetadata: Record<string, unknown>;
-  store: AppStoreSnapshot;
-  /**
-   * Only the SRS cards that changed since the last acknowledged sync.
-   * Computed at snapshot time so writes scale with session churn, not
-   * with total lifetime card count.
-   */
-  deltaSrsData: Record<string, SRSData>;
-}
-
-interface SaveCoordinator {
-  request: () => Promise<void>;
-}
-
-function getProgressCounters(store: AppStoreSnapshot): SyncProgressCounters {
-  return {
-    cardsReviewed: store.sessionProgress.cardsReviewed,
-    cardsLearned: store.sessionProgress.cardsLearned,
-  };
-}
-
-function getDailyActivity(
-  activity: AppStoreSnapshot['lastActivity'],
-): 'flashcards' | 'quiz' | 'listening' | 'writing' | undefined {
-  if (activity === 'flashcards' || activity === 'flashcards-review') return 'flashcards';
-  if (activity === 'quiz' || activity === 'listening' || activity === 'writing') return activity;
-  return undefined;
-}
-
-function computeSrsDelta(
-  previous: Record<string, SRSData> | null,
-  current: Record<string, SRSData>,
-): Record<string, SRSData> {
-  // First sync for this user (never pulled/saved): send everything.
-  if (!previous) return current;
-
-  const delta: Record<string, SRSData> = {};
-  for (const [key, value] of Object.entries(current)) {
-    const prev = previous[key];
-    if (!prev || !isSameSrsData(prev, value)) {
-      delta[key] = value;
-    }
-  }
-  // Deletions are intentionally NOT tracked here: the only whole-table delete
-  // path is resetLearningProgress (RPC), and per-card deletion is not exposed
-  // in the UI. Stale rows, if ever created, are reconciled on the next full pull.
-  return delta;
-}
+import { getProgressCounters } from '../utils/cloudSyncTransforms';
+import { useCloudSyncFetch } from './useCloudSyncFetch';
+import { useCloudSyncSave } from './useCloudSyncSave';
 
 /**
- * Slice keys whose changes drive the debounced auto-save. Mirrors the exact
- * dependency list the autosave effect used before the render-subscription
- * was replaced with a side-band store subscription — keep in sync when the
- * sync payload changes.
+ * Cloud sync composition root.
  *
- * `satisfies` (not a type annotation) keeps the literal union so `state[slice]`
- * stays checked against the store, while making a key that does not exist on
- * the store a compile error instead of a silently inert trigger. The lesson
- * selection is the *derived* `selectedLessons` in the save payload, but the
- * store key that changes is `selectedLessonParts`.
+ * Coordinates authentication state, pull/merge lifecycle (useCloudSyncFetch),
+ * and dirty-tracking/debounced save lifecycle (useCloudSyncSave).
  */
-const AUTO_SAVE_TRIGGER_SLICES = [
-  'activeActivity',
-  'activeBookId',
-  'activeTab',
-  'characterPreference',
-  'customFolders',
-  'favorites',
-  'lastActivity',
-  'learnedCards',
-  'selectedBooks',
-  'selectedLessonParts',
-  'sessionProgress',
-  'sessionProgressIndex',
-  'srsData',
-] as const satisfies readonly (keyof AppStoreData)[];
-
 export function useCloudSync() {
   const { currentUser } = useAuth();
 
   const hasFetchedForUserRef = useRef<string | null>(null);
   const activeUserIdRef = useRef<string | null>(null);
-  // Persisted owner of the locally cached progress. Survives page reloads —
-  // e.g. an OAuth redirect after signing in as a different user — so a user's
-  // cached SRS data is never merged into, or uploaded to, another account.
-  // Null on a fresh browser where no user has been synced yet.
   const persistedOwnerRef = useRef<string | null>(
     typeof window !== 'undefined' ? useAppStore.getState().lastActiveUserId : null,
   );
-  // Last SRS state known to be persisted on the server for the current user.
-  // Used to compute the per-save delta so writes scale with churn, not with
-  // total lifetime card count.
   const lastSyncedSrsRef = useRef<Record<string, SRSData> | null>(null);
-  // Server watermark for incremental pulls: max user_card_progress.last_updated
-  // from the previous fetch. Null cursor → full pull.
   const lastPulledCursorRef = useRef<{ userId: string; cursor: string | null } | null>(null);
-  const coordinatorRef = useRef<SaveCoordinator | null>(null);
-  const performSaveRef = useRef<(snapshot: CloudSaveSnapshot) => Promise<void>>(async () => {});
-  const syncTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const saveBackoffMsRef = useRef(0);
-  // When the oldest still-unsaved store change happened. Null once a save
-  // acknowledges everything — drives the auto-save max-wait so continuous
-  // studying can never postpone persistence indefinitely.
-  const autoSaveDirtySinceRef = useRef<number | null>(null);
-  // Server-truth snapshots powering the "skip when unchanged" autosave trims.
-  // Null means never synced / must write. They are updated only after a
-  // confirmed write or an authoritative pull, so skipping never strands a
-  // change on the client.
   const lastSyncedLearnedRef = useRef<string[] | null>(null);
   const lastSyncedActivityRef = useRef<string | null>(null);
   const lastSyncedFoldersRef = useRef<SyncedFolderSnapshot[] | null>(null);
@@ -148,452 +34,44 @@ export function useCloudSync() {
     cardsLearned: 0,
   });
 
-  const fetchFromCloud = useCallback(async () => {
-    if (!currentUser) return;
-    // Store API functions are stable; reading them via getState() keeps this
-    // callback free of render-time store subscriptions.
-    const {
-      setSyncStatus,
-      setSyncError,
-      setLastCloudUpdate,
-      setSrsDataAndLearnedCards,
-      setCustomFolders,
-      setDeletedFolderIds,
-      setFoldersSyncedUserId,
-    } = useAppStore.getState();
+  const { fetchFromCloud } = useCloudSyncFetch({
+    currentUser,
+    persistedOwnerRef,
+    lastSyncedSrsRef,
+    lastPulledCursorRef,
+    lastSyncedLearnedRef,
+    lastSyncedActivityRef,
+    lastSyncedFoldersRef,
+    lastSyncedSessionRef,
+    hasFetchedForUserRef,
+    activeUserIdRef,
+  });
 
-    try {
-      // `syncError` is a user-facing message (rendered on the profile screen),
-      // cleared only by a successful round-trip — never by the start of a
-      // retry, so a failure that keeps repeating stays visible.
-      setSyncStatus('syncing');
-
-      const activeUser = await authService.getCurrentUser() || currentUser;
-      const metadata = (activeUser.user_metadata || {}) as Record<string, unknown>;
-
-      // Folder state captured BEFORE the account-switch reset below: the
-      // pre-login local list, its sync owner, and the delete tombstones drive
-      // the guest -> account migration.
-      const prePullFolders = useAppStore.getState().customFolders;
-      const prePullFolderOwner = useAppStore.getState().foldersSyncedUserId;
-      const prePullTombstones = useAppStore.getState().deletedFolderIds;
-
-      // Detect a switch to a different account. activeUserIdRef only survives
-      // within this page, so also consult the persisted owner to catch
-      // switches that happen across a reload (OAuth redirect flow).
-      const isAccountSwitch =
-        (activeUserIdRef.current !== null && activeUserIdRef.current !== currentUser.id)
-        || (persistedOwnerRef.current !== null && persistedOwnerRef.current !== currentUser.id);
-
-      if (isAccountSwitch) {
-        // Fresh account: force a full pull and never let the previous user's
-        // locally cached data merge into the new account's view. The reset
-        // contract lives in the store (ACCOUNT_SWITCH_DEFAULTS per slice).
-        lastPulledCursorRef.current = null;
-        useAppStore.getState().resetAccountScopedState();
-      }
-
-      // Claim ownership of the local cache before any pull/save can run, so
-      // neither merges nor saves can leak another user's data into this one.
-      useAppStore.setState({ lastActiveUserId: currentUser.id });
-      persistedOwnerRef.current = currentUser.id;
-
-      // Incremental pull: after the first full pull for this user, only fetch
-      // card rows updated at/after the previous pull's server watermark.
-      const lastCursor = lastPulledCursorRef.current
-        && lastPulledCursorRef.current.userId === currentUser.id
-        ? lastPulledCursorRef.current.cursor
-        : null;
-      const cloudData = await userService.getProgress(
-        currentUser.id,
-        lastCursor ? { since: lastCursor } : undefined,
-      );
-      // Snapshot captured BEFORE the network round-trip above: any card that
-      // differs from this at merge time was reviewed while the pull was in
-      // flight and must not be clobbered by stale server rows.
-      const srsAtPullStart = useAppStore.getState().srsData;
-
-      if (cloudData) {
-        const cloudTime = cloudData.lastUpdated ? new Date(cloudData.lastUpdated).getTime() : 0;
-        const localLastUpdate = useAppStore.getState().lastCloudUpdate;
-        const localTime = localLastUpdate ? new Date(localLastUpdate).getTime() : 0;
-
-        // Enter the merge when the pull returned any card rows too: card
-        // writes update user_card_progress.last_updated but NOT
-        // user_progress.updated_at, so the cloudTime gate alone would
-        // silently drop incremental card updates.
-        if (isAccountSwitch || cloudData.hasCardDelta || cloudTime > localTime) {
-          // Metadata (favorites, selection, bookmarks) is only overwritten from
-          // the cloud when the cloud is at least as new as the local state, or
-          // on an account switch. A plain hasCardDelta pull must not clobber
-          // local changes that are still inside the debounced save window.
-          const metadataIsNewer = isAccountSwitch || cloudTime > localTime;
-
-          if (metadataIsNewer) {
-            setLastCloudUpdate(cloudData.lastUpdated || null);
-            const local = useAppStore.getState();
-            const patch = resolveCloudMetadataPatch(
-              metadata,
-              {
-                activeBookId: local.activeBookId,
-                selectedLessonParts: local.selectedLessonParts,
-                sessionProgressIndex: local.sessionProgressIndex,
-              },
-              { isAccountSwitch },
-            );
-            if (Object.keys(patch).length > 0) {
-              useAppStore.setState(patch);
-            }
-          }
-
-          const localProgress = useAppStore.getState();
-          if (isAccountSwitch) {
-            setSrsDataAndLearnedCards(cloudData.srsData, cloudData.learnedCards);
-            // Fresh account: the server state is the whole truth.
-            lastSyncedSrsRef.current = cloudData.srsData;
-            lastSyncedLearnedRef.current = cloudData.learnedCards;
-            lastSyncedActivityRef.current = cloudData.lastActivity ?? null;
-          } else {
-            // Reviews made while the pull was in flight win locally AND stay
-            // dirty against the baseline, so the next save uploads them
-            // instead of being silently lost to stale server rows.
-            const { merged, baseline } = mergePulledSrsData({
-              priorBaseline: lastSyncedSrsRef.current,
-              atPullStart: srsAtPullStart,
-              current: localProgress.srsData,
-              cloud: cloudData.srsData,
-            });
-            setSrsDataAndLearnedCards(
-              merged,
-              Array.from(new Set([...localProgress.learnedCards, ...cloudData.learnedCards])),
-            );
-            lastSyncedSrsRef.current = baseline;
-          }
-        }
-      }
-
-      // Even when nothing was merged (no cloud data or cloud older than local),
-      // the pull itself establishes the baseline for the next delta.
-      if (isAccountSwitch) {
-        lastSyncedSrsRef.current = cloudData?.srsData ?? null;
-        lastSyncedLearnedRef.current = cloudData?.learnedCards ?? null;
-        lastSyncedActivityRef.current = cloudData?.lastActivity ?? null;
-      }
-
-      // Folders are pulled on EVERY fetch, not just account switches:
-      // folder writes never touch user_progress.updated_at, so the metadata
-      // freshness gate above cannot see them. The server list replaces the
-      // local one unless the local list has unsaved changes (a change inside
-      // the debounce window), which a racing pull must not clobber — the next
-      // save reconciles it instead. On a fresh boot the ref is null, so the
-      // server always wins and a stale persisted list (another tab, another
-      // device, or a reload) is corrected before any autosave can re-upload
-      // a deleted folder.
-      const localFolders = useAppStore.getState().customFolders;
-      const localFoldersDirty =
-        lastSyncedFoldersRef.current !== null
-        && !isSameFolderList(lastSyncedFoldersRef.current, localFolders);
-
-      if (isAccountSwitch || !localFoldersDirty) {
-        const folders = await userService.getCustomFolders(currentUser.id);
-        setCustomFolders(folders);
-        lastSyncedFoldersRef.current = folders;
-
-        // Guest -> account migration: the decision rules live in
-        // `resolveGuestFolderMigration`; this branch only performs the write.
-        const migrated = resolveGuestFolderMigration({
-          isAccountSwitch,
-          prePullFolders,
-          prePullFolderOwner,
-          serverFolders: folders,
-          tombstones: prePullTombstones,
-        });
-        if (migrated.length > 0) {
-          await userService.syncCustomFolders(currentUser.id, migrated, []);
-          setCustomFolders(migrated);
-          lastSyncedFoldersRef.current = migrated;
-        }
-
-        // Drop tombstones the server has acknowledged (the folder is gone
-        // remotely); keep the ones still present — their delete is pending
-        // and the next save retries it.
-        if (!isAccountSwitch) {
-          const serverFolderIds = folders.map((folder) => folder.id);
-          const remaining = pruneAcknowledgedTombstones(
-            useAppStore.getState().deletedFolderIds,
-            serverFolderIds,
-          );
-          setDeletedFolderIds(remaining);
-        }
-
-        // This device's folder list is now in sync with this account — the
-        // guest migration must not run again for it.
-        setFoldersSyncedUserId(currentUser.id);
-      }
-
-      lastSyncedSessionRef.current = getProgressCounters(useAppStore.getState());
-      hasFetchedForUserRef.current = currentUser.id;
-      activeUserIdRef.current = currentUser.id;
-      // Advance the incremental-pull watermark to the max card last_updated
-      // the server reported, so the next fetch only pulls changes since now.
-      if (cloudData?.serverLastUpdated) {
-        lastPulledCursorRef.current = {
-          userId: currentUser.id,
-          cursor: cloudData.serverLastUpdated,
-        };
-      }
-      setSyncStatus('success');
-      setSyncError(null);
-    } catch (error: unknown) {
-      debugLogger.error('Sync', 'Failed to fetch from cloud:', error);
-      setSyncStatus('error');
-      setSyncError("Couldn't load your latest progress. Check your connection — we'll retry.");
-    }
-  }, [currentUser]);
-
-  const performSave = useCallback(async (snapshot: CloudSaveSnapshot) => {
-    const { store, userId, userMetadata, deltaSrsData } = snapshot;
-    // Sanity check: never save the previous user's locally cached progress
-    // into another user's account. The coordinator can capture a snapshot
-    // right as the user switches, so re-assert the owner at save time.
-    if (persistedOwnerRef.current !== userId) {
-      return;
-    }
-    await userService.syncCardProgress(userId, deltaSrsData);
-    // After a successful save, the delta is acknowledged: fold it into the
-    // baseline so the next save only ships cards that changed again.
-    lastSyncedSrsRef.current = {
-      ...(lastSyncedSrsRef.current ?? {}),
-      ...deltaSrsData,
-    };
-    // Learned cards are append-only in the common case: a first pass appends
-    // ids server-side (append_learned_cards RPC) instead of re-uploading the
-    // lifetime-growing array. Full replaces are reserved for the first sync
-    // (null baseline), a shrink (progress reset), and RPC-less environments
-    // (the append call fails) — all via syncMetadata.
-    const learnedDelta = computeLearnedDelta(lastSyncedLearnedRef.current, store.learnedCards);
-    let learnedSynced = false;
-    if (learnedDelta.shrank || lastSyncedLearnedRef.current === null) {
-      await userService.syncMetadata(userId, {
-        learnedCards: store.learnedCards,
-        lastActivity: store.lastActivity,
-      });
-      learnedSynced = true;
-    } else if (learnedDelta.appended.length > 0) {
-      learnedSynced = await userService.appendLearnedCards(userId, learnedDelta.appended);
-      // RPC unavailable (not deployed): fall back to the full replace so the
-      // append is not stranded locally.
-      if (!learnedSynced) {
-        await userService.syncMetadata(userId, {
-          learnedCards: store.learnedCards,
-          lastActivity: store.lastActivity,
-        });
-      }
-    }
-
-    // lastActivity changes ride a targeted write that never touches
-    // learned_cards; when the full path above already ran, it was included.
-    if (!learnedSynced && lastSyncedActivityRef.current !== store.lastActivity) {
-      await userService.syncLastActivity(userId, store.lastActivity);
-    }
-    lastSyncedLearnedRef.current = store.learnedCards;
-    lastSyncedActivityRef.current = store.lastActivity;
-
-    // The cloud lesson field is the legacy flat list; it is derived from the
-    // canonical per-book parts map for the active book at save time.
-    const selectedLessons = getSelectedLessonIds(store.selectedLessonParts, store.activeBookId);
-    const metadataChanged =
-      JSON.stringify(userMetadata.favorites) !== JSON.stringify(store.favorites) ||
-      userMetadata.activeBookId !== store.activeBookId ||
-      userMetadata.characterPreference !== store.characterPreference ||
-      JSON.stringify(userMetadata.sessionProgressIndex) !== JSON.stringify(store.sessionProgressIndex) ||
-      userMetadata.activeTab !== store.activeTab ||
-      userMetadata.activeActivity !== store.activeActivity ||
-      JSON.stringify(userMetadata.selectedLessons) !== JSON.stringify(selectedLessons) ||
-      JSON.stringify(userMetadata.selectedBooks) !== JSON.stringify(store.selectedBooks);
-
-    if (metadataChanged) {
-      await authService.updateUserMetadata({
-        favorites: store.favorites,
-        activeBookId: store.activeBookId,
-        characterPreference: store.characterPreference,
-        sessionProgressIndex: store.sessionProgressIndex,
-        activeTab: store.activeTab,
-        activeActivity: store.activeActivity,
-        selectedLessons,
-        selectedBooks: store.selectedBooks,
-      });
-    }
-
-    // Same skip-when-unchanged rule for folders. Empty lists still sync on the
-    // first save (the ref starts null), so deleting the last folder is
-    // persisted instead of resurrecting on the next pull. Tombstones ride
-    // along so a deleted folder is never re-uploaded from a stale list.
-    if (!isSameFolderList(lastSyncedFoldersRef.current, store.customFolders)) {
-      await userService.syncCustomFolders(
-        userId,
-        store.customFolders,
-        store.deletedFolderIds,
-      );
-      lastSyncedFoldersRef.current = [...store.customFolders];
-      useAppStore.getState().setFoldersSyncedUserId(userId);
-    }
-
-    const savedSession = lastSyncedSessionRef.current;
-    const snapshotSession = getProgressCounters(store);
-    const dailyDelta = getSessionProgressDelta(snapshotSession, savedSession);
-    if (hasSessionProgressDelta(dailyDelta)) {
-      await progressService.upsertDailyProgress(userId, {
-        cardsReviewed: dailyDelta.cardsReviewed,
-        cardsLearned: dailyDelta.cardsLearned,
-        activityType: getDailyActivity(store.lastActivity),
-        activityCount: dailyDelta.cardsReviewed,
-      });
-      lastSyncedSessionRef.current = snapshotSession;
-    } else if (isSessionProgressReset(snapshotSession, savedSession)) {
-      // Counters were manually reset with nothing new to upload yet: adopt
-      // the fresh counters as the baseline so later post-reset reviews are
-      // measured against them, not against the stale pre-reset baseline.
-      lastSyncedSessionRef.current = snapshotSession;
-    }
-
-    // Local counters already track the session deltas; no aggregate re-fetch
-    // is needed after a save.
-    useAppStore.getState().setLastCloudUpdate(new Date().toISOString());
-  }, []);
-
-  performSaveRef.current = performSave;
+  const { requestSave } = useCloudSyncSave({
+    currentUser,
+    persistedOwnerRef,
+    lastSyncedSrsRef,
+    lastSyncedLearnedRef,
+    lastSyncedActivityRef,
+    lastSyncedFoldersRef,
+    lastSyncedSessionRef,
+    hasFetchedForUserRef,
+    fetchFromCloud,
+  });
 
   useEffect(() => {
     if (!currentUser) {
-      coordinatorRef.current = null;
       hasFetchedForUserRef.current = null;
       lastPulledCursorRef.current = null;
-      autoSaveDirtySinceRef.current = null;
       lastSyncedLearnedRef.current = null;
       lastSyncedActivityRef.current = null;
       lastSyncedFoldersRef.current = null;
       return;
     }
-
-    const userId = currentUser.id;
-    coordinatorRef.current = createSingleFlightSaveCoordinator(
-      () => {
-        if (hasFetchedForUserRef.current !== userId) return null;
-        const store = useAppStore.getState();
-        return {
-          fingerprint: createCloudSyncFingerprint(userId, {
-            ...store,
-            // The fingerprint tracks the synced lesson view, now derived
-            // from the canonical per-book parts map.
-            selectedLessons: getSelectedLessonIds(store.selectedLessonParts, store.activeBookId),
-          }),
-          value: {
-            userId,
-            userMetadata: (currentUser.user_metadata || {}) as Record<string, unknown>,
-            store,
-            deltaSrsData: computeSrsDelta(lastSyncedSrsRef.current, store.srsData),
-          },
-        };
-      },
-      (snapshot) => performSaveRef.current(snapshot),
-    );
-  }, [currentUser]);
-
-  const requestSave = useCallback(async () => {
-    if (!currentUser || !coordinatorRef.current) return;
-    const { setSyncStatus, setSyncError } = useAppStore.getState();
-    setSyncStatus('syncing');
-    try {
-      await coordinatorRef.current.request();
-      saveBackoffMsRef.current = 0;
-      autoSaveDirtySinceRef.current = null;
-      setSyncStatus('success');
-      setSyncError(null);
-    } catch (error: unknown) {
-      saveBackoffMsRef.current = getNextCloudSyncBackoff(saveBackoffMsRef.current, error);
-      setSyncStatus('error');
-      setSyncError("Couldn't save to the cloud. Your work is safe on this device — we'll retry.");
-      throw error;
-    }
-  }, [currentUser]);
-
-  useEffect(() => {
-    if (!currentUser) return;
     hasFetchedForUserRef.current = null;
     lastSyncedSessionRef.current = getProgressCounters(useAppStore.getState());
     void fetchFromCloud();
   }, [currentUser, fetchFromCloud]);
 
-  useEffect(() => {
-    if (!currentUser) return;
-    const requestBestEffortSave = () => {
-      void requestSave().catch((error: unknown) => {
-        debugLogger.error('Sync', 'Background cloud save failed:', error);
-      });
-    };
-    const handleVisibility = () => {
-      if (document.visibilityState === 'visible') void fetchFromCloud();
-      else requestBestEffortSave();
-    };
-
-    window.addEventListener('blur', requestBestEffortSave);
-    window.addEventListener('pagehide', requestBestEffortSave);
-    document.addEventListener('visibilitychange', handleVisibility);
-    return () => {
-      window.removeEventListener('blur', requestBestEffortSave);
-      window.removeEventListener('pagehide', requestBestEffortSave);
-      document.removeEventListener('visibilitychange', handleVisibility);
-    };
-  }, [currentUser, fetchFromCloud, requestSave]);
-
-  // Auto-save scheduling lives in a side-band store subscription instead of
-  // effect dependencies, so study progress never re-renders the component
-  // tree that mounts this hook (previously App). The debounce/max-wait logic
-  // and the trigger slice list are unchanged.
-  useEffect(() => {
-    if (!currentUser) return;
-
-    const scheduleDebouncedSave = () => {
-      if (hasFetchedForUserRef.current !== currentUser.id) return;
-      if (syncTimeoutRef.current) clearTimeout(syncTimeoutRef.current);
-
-      // Trailing debounce, with a max-wait floor: every synced store change
-      // restarts the 10s window, so a learner answering cards back-to-back
-      // used to postpone saving forever. Once the oldest unsaved change is
-      // ~45s old, the save fires at that deadline instead (error backoff
-      // still respected).
-      const nowMs = Date.now();
-      if (autoSaveDirtySinceRef.current == null) autoSaveDirtySinceRef.current = nowMs;
-
-      syncTimeoutRef.current = setTimeout(() => {
-        void requestSave().catch((error: unknown) => {
-          debugLogger.error('Sync', 'Auto-save failed:', error);
-        });
-      }, getNextAutoSaveDelay({
-        dirtySinceMs: autoSaveDirtySinceRef.current,
-        nowMs,
-        backoffMs: saveBackoffMsRef.current,
-      }));
-    };
-
-    // Mirror of the previous effect's mount-time run: a save request is a
-    // no-op when nothing changed (the coordinator skips identical
-    // fingerprints), so scheduling once at setup preserves that behavior.
-    scheduleDebouncedSave();
-
-    const unsubscribe = useAppStore.subscribe((state, previousState) => {
-      for (const slice of AUTO_SAVE_TRIGGER_SLICES) {
-        if (state[slice] !== previousState[slice]) {
-          scheduleDebouncedSave();
-          return;
-        }
-      }
-    });
-
-    return () => {
-      unsubscribe();
-      if (syncTimeoutRef.current) clearTimeout(syncTimeoutRef.current);
-    };
-  }, [currentUser, requestSave]);
+  return { fetchFromCloud, requestSave };
 }

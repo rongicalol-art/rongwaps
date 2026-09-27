@@ -1,353 +1,152 @@
 import { debugLogger } from '../utils/debugLogger';
-import { supabase } from './supabaseClient';
+import { supabase, isSupabaseConfigured } from './supabaseClient';
 import { Flashcard, FLASHCARDS_DATA } from '../data/flashcards';
 import { vocabularyCache } from '../utils/cache';
 import { extractSearchVariants, sentenceMatchesForms } from '../utils/courseExamples';
-import { cleanVocabText } from '../utils/vocabCleaner';
-import { expandSlashAndOptionalVariants, stripPinyinTones } from '../utils/pinyinNormalize';
-import { escapeRegExp } from '../utils/escapeRegExp';
+import { stripPinyinTones } from '../utils/pinyinNormalize';
 import { timeDataRequest } from '../utils/requestTiming';
 import { fetchVocabularyPack, fetchAllVocabularyPacks } from './vocabularyPackService';
-import { parseVocabularyId } from '../utils/vocabularyId';
 import type { DBVocabularyRow } from '../types/database';
 import type { WordExample } from '../types/models';
 import { fetchCourseExampleCards } from './courseExamplePackService';
+import { withPackFirstLookup } from './packFirstLookup';
+import { getSmartScore } from '../utils/vocabularySearchScoring';
+import { mapVocabularyRows, prepareVocabulary } from '../utils/vocabularyMapping';
+
+export { prepareVocabulary };
 
 const VOCABULARY_COLUMNS = 'id,traditional,simplified,meaning,pinyin,pos,audio,examples';
 
-// Maps a cache key to its currently ongoing fetch promise (if any)
-const fetchPromises = new Map<string, Promise<Flashcard[]>>();
-const searchPromises = new Map<string, Promise<Flashcard[]>>();
-
-interface VocabularySourceRow extends Partial<Omit<DBVocabularyRow, 'examples'>> {
-  examples?: unknown;
-  book_id?: number;
-  book?: number;
-  lesson_id?: number;
-  lesson?: number;
-  part_id?: number;
-  partId?: number;
-  character?: string;
-  hanzi?: string;
-  word?: string;
-  english?: string;
-  definition?: string;
-  pronunciation?: string;
-  audio_url?: string;
-  notes?: string;
-  note?: string;
-  pos?: string;
+function getFallbackFlashcards(bookId?: number, lessonId?: number): Flashcard[] {
+  let filtered = FLASHCARDS_DATA;
+  if (bookId) filtered = filtered.filter((c) => c.bookId === bookId);
+  if (lessonId) filtered = filtered.filter((c) => c.lessonId === lessonId);
+  return [...filtered].sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true, sensitivity: 'base' }));
 }
 
-function parseExamples(value: unknown): Flashcard['examples'] {
-  if (typeof value === 'string') {
-    try {
-      const parsed: unknown = JSON.parse(value);
-      return Array.isArray(parsed)
-        ? parseExamples(parsed)
-        : [{ chinese: value, pinyin: '', english: '' }];
-    } catch {
-      return value.trim() ? [{ chinese: value, pinyin: '', english: '' }] : [];
+async function fetchVocabularyFromSupabase(bookId?: number, lessonId?: number): Promise<Flashcard[]> {
+  const allData: DBVocabularyRow[] = [];
+  let from = 0;
+  const step = 1000;
+
+  try {
+    while (true) {
+      let query = supabase
+        .from('book_vocabulary')
+        .select(VOCABULARY_COLUMNS)
+        .order('id', { ascending: true })
+        .range(from, from + step - 1);
+
+      if (bookId) {
+        const padBId = bookId < 10 ? `0${bookId}` : bookId;
+        query = query.or(`id.ilike.b${bookId}l%,id.ilike.b${bookId}-l%,id.ilike.b${padBId}l%,id.ilike.b${padBId}-l%`);
+      } else if (lessonId) {
+        const padLId = lessonId < 10 ? `0${lessonId}` : lessonId;
+        query = query.or(`id.ilike.%l${lessonId}-%,id.ilike.%l${lessonId}\\%,id.ilike.%l${padLId}-%,id.ilike.%l${padLId}\\%`);
+      }
+
+      const pageNumber = Math.floor(from / step) + 1;
+      const { data, error } = await timeDataRequest(`vocabulary page ${pageNumber}`, () => query);
+
+      if (error) {
+        debugLogger.error('Supabase', 'Error fetching vocabulary:', error);
+        if (allData.length === 0) return getFallbackFlashcards(bookId, lessonId);
+        break;
+      }
+      if (!data || data.length === 0) break;
+      allData.push(...data);
+      if (data.length < step) break;
+      from += step;
     }
+
+    if (allData.length === 0) return getFallbackFlashcards(bookId, lessonId);
+    return prepareVocabulary(allData, lessonId);
+  } catch (err) {
+    debugLogger.error('Supabase', 'Exception fetching vocabulary:', err);
+    return getFallbackFlashcards(bookId, lessonId);
   }
-  if (!Array.isArray(value)) return [];
-  return value.flatMap((example) => {
-    if (typeof example !== 'object' || example === null) return [];
-    const record = example as Record<string, unknown>;
-    const chinese = typeof record.chinese === 'string' ? record.chinese : '';
-    if (!chinese) return [];
-    return [{
-      chinese,
-      pinyin: typeof record.pinyin === 'string' ? record.pinyin : '',
-      english: typeof record.english === 'string' ? record.english : '',
-    }];
-  });
-}
-
-function mapVocabularyRows(items: readonly unknown[]): Flashcard[] {
-  return items.map((rawItem) => {
-    const item = rawItem as VocabularySourceRow;
-    const rawId = item.id?.toString() || '';
-    const location = parseVocabularyId(rawId);
-
-    return {
-      id: rawId || Math.random().toString(),
-      bookId: location?.bookId || item.book_id || item.book || 0,
-      lessonId: location?.lessonId ?? item.lesson_id ?? item.lesson ?? 0,
-      partId: location?.partId || item.part_id || item.partId || 1,
-      front: cleanVocabText(item.traditional || item.simplified || item.character || item.hanzi || item.word || ''),
-      back: (item.meaning || item.english || item.definition || '').trim(),
-      // Keep the raw authored forms: matching and highlighting need both
-      // scripts plus their / alternatives and （） optionals intact.
-      traditional: item.traditional?.trim() || undefined,
-      simplified: item.simplified?.trim() || undefined,
-      pinyin: (item.pinyin || item.pronunciation || '').trim(),
-      pos: (item.pos || '').trim(),
-      audio: item.audio || item.audio_url || '',
-      notes: item.notes || item.note || '',
-      examples: parseExamples(item.examples),
-    };
-  });
-}
-
-/** Map + optional lesson filter + canonical id sort. Exported for the review
- * deck loader, which composes due-card sessions from pack rows directly. */
-export function prepareVocabulary(items: readonly unknown[], lessonId?: number): Flashcard[] {
-  const mapped = mapVocabularyRows(items);
-  const filtered = lessonId ? mapped.filter((card) => card.lessonId === lessonId) : mapped;
-  return filtered.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true, sensitivity: 'base' }));
 }
 
 export async function fetchVocabulary(bookId?: number, lessonId?: number): Promise<Flashcard[]> {
   const cacheKey = `vocab-${bookId || 'all'}-${lessonId || 'all'}`;
-  
-  if (vocabularyCache.has(cacheKey)) {
-    return vocabularyCache.get<Flashcard[]>(cacheKey) || [];
-  }
 
-  if (fetchPromises.has(cacheKey)) {
-    return fetchPromises.get(cacheKey)!;
-  }
-
-  const fetchPromise = (async () => {
-    if (bookId) {
-      const packedRows = await fetchVocabularyPack(bookId);
-      if (packedRows) {
-        const packedData = prepareVocabulary(packedRows, lessonId);
-        vocabularyCache.set(cacheKey, packedData);
-        return packedData;
+  return withPackFirstLookup<Flashcard[]>({
+    dedupeKey: cacheKey,
+    cache: {
+      get: (k) => vocabularyCache.get<Flashcard[]>(k),
+      set: (k, v) => vocabularyCache.set(k, v),
+    },
+    fromPack: async () => {
+      if (bookId) {
+        const packedRows = await fetchVocabularyPack(bookId);
+        if (packedRows) return prepareVocabulary(packedRows, lessonId);
+      } else {
+        const allPackedRows = await fetchAllVocabularyPacks();
+        if (allPackedRows) return prepareVocabulary(allPackedRows, lessonId);
       }
-    }
-
-    // Full-catalog requests (search, review decks) come from the static packs
-    // first. Falling through to the paginated Supabase pull below downloads
-    // the whole book_vocabulary table per session — the largest avoidable
-    // egress/latency cost at scale — so it stays a fallback only.
-    if (!bookId) {
-      const allPackedRows = await fetchAllVocabularyPacks();
-      if (allPackedRows) {
-        const packedData = prepareVocabulary(allPackedRows, lessonId);
-        vocabularyCache.set(cacheKey, packedData);
-        return packedData;
+      return null;
+    },
+    fromDb: async () => {
+      if (!isSupabaseConfigured()) {
+        return getFallbackFlashcards(bookId, lessonId);
       }
-    }
-
-    // If Supabase is not configured, fall back to local data
-    const supabaseUrl = import.meta.env?.VITE_SUPABASE_URL || (typeof process !== 'undefined' ? process.env?.VITE_SUPABASE_URL : undefined);
-    
-    if (!supabaseUrl) {
-      let filteredData = FLASHCARDS_DATA;
-      if (bookId) filteredData = filteredData.filter(c => c.bookId === bookId);
-      if (lessonId) filteredData = filteredData.filter(c => c.lessonId === lessonId);
-      
-      const sortedData = [...filteredData].sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true, sensitivity: 'base' }));
-      vocabularyCache.set(cacheKey, sortedData);
-      return sortedData;
-    }
-
-    const allData: DBVocabularyRow[] = [];
-    let from = 0;
-    const step = 1000;
-
-    try {
-      while (true) {
-        let query = supabase
-          .from('book_vocabulary')
-          .select(VOCABULARY_COLUMNS)
-          .order('id', { ascending: true })
-          .range(from, from + step - 1);
-
-        if (bookId) {
-          const padBId = bookId < 10 ? `0${bookId}` : bookId;
-          query = query.or(`id.ilike.b${bookId}l%,id.ilike.b${bookId}-l%,id.ilike.b${padBId}l%,id.ilike.b${padBId}-l%`);
-        } else if (lessonId) {
-          const padLId = lessonId < 10 ? `0${lessonId}` : lessonId;
-          query = query.or(`id.ilike.%l${lessonId}-%,id.ilike.%l${lessonId}\\%,id.ilike.%l${padLId}-%,id.ilike.%l${padLId}\\%`);
-        }
-
-        const pageNumber = Math.floor(from / step) + 1;
-        const { data, error } = await timeDataRequest(
-          `vocabulary page ${pageNumber}`,
-          () => query,
-        );
-
-        if (error) {
-          debugLogger.error('Supabase', 'Error fetching vocabulary:', error);
-          if (allData.length === 0) {
-            let filteredData = FLASHCARDS_DATA;
-            if (bookId) filteredData = filteredData.filter(c => c.bookId === bookId);
-            if (lessonId) filteredData = filteredData.filter(c => c.lessonId === lessonId);
-            const sortedData = [...filteredData].sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true, sensitivity: 'base' }));
-            vocabularyCache.set(cacheKey, sortedData);
-            return sortedData;
-          }
-          break;
-        }
-
-        if (!data || data.length === 0) {
-          break;
-        }
-
-        allData.push(...data);
-        if (data.length < step) {
-          break;
-        }
-        from += step;
-      }
-
-      if (allData.length === 0) {
-        let filteredData = FLASHCARDS_DATA;
-        if (bookId) filteredData = filteredData.filter(c => c.bookId === bookId);
-        if (lessonId) filteredData = filteredData.filter(c => c.lessonId === lessonId);
-        const sortedData = [...filteredData].sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true, sensitivity: 'base' }));
-        vocabularyCache.set(cacheKey, sortedData);
-        return sortedData;
-      }
-
-      const finalData = prepareVocabulary(allData, lessonId);
-      
-      vocabularyCache.set(cacheKey, finalData);
-      return finalData;
-    } catch (err) {
-      debugLogger.error('Supabase', 'Exception fetching vocabulary:', err);
-      let filteredData = FLASHCARDS_DATA;
-      if (bookId) filteredData = filteredData.filter(c => c.bookId === bookId);
-      if (lessonId) filteredData = filteredData.filter(c => c.lessonId === lessonId);
-      const sortedData = [...filteredData].sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true, sensitivity: 'base' }));
-      vocabularyCache.set(cacheKey, sortedData);
-      return sortedData;
-    } finally {
-      fetchPromises.delete(cacheKey);
-    }
-  })();
-
-  fetchPromises.set(cacheKey, fetchPromise);
-  return fetchPromise;
+      return fetchVocabularyFromSupabase(bookId, lessonId);
+    },
+  });
 }
 
-/**
- * Fetch specific vocabulary rows by id (Supabase, chunked `.in` queries).
- * Used by the review deck when static packs are unavailable but the server
- * already supplied the due-card ids — fetching only the session's rows beats
- * paginating the whole book_vocabulary table. Returns null on failure so the
- * caller can fall back to the full-catalog path.
- */
 export async function fetchVocabularyByIds(ids: string[]): Promise<Flashcard[] | null> {
   const uniqueIds = [...new Set(ids)].filter(Boolean);
   if (uniqueIds.length === 0) return [];
+  const dedupeKey = `vocab-ids-${[...uniqueIds].sort().join(',')}`;
 
-  try {
-    const rows: DBVocabularyRow[] = [];
-    const chunkSize = 100;
-    for (let i = 0; i < uniqueIds.length; i += chunkSize) {
-      const chunk = uniqueIds.slice(i, i + chunkSize);
-      const { data, error } = await timeDataRequest(
-        `vocabulary by ids chunk ${Math.floor(i / chunkSize) + 1}`,
-        () => supabase
-          .from('book_vocabulary')
-          .select(VOCABULARY_COLUMNS)
-          .in('id', chunk),
-      );
-      if (error) {
-        debugLogger.error('Supabase', 'Error fetching vocabulary by ids:', error);
+  return withPackFirstLookup<Flashcard[] | null>({
+    dedupeKey,
+    fromPack: async () => null,
+    fromDb: async () => {
+      try {
+        const rows: DBVocabularyRow[] = [];
+        const chunkSize = 100;
+        for (let i = 0; i < uniqueIds.length; i += chunkSize) {
+          const chunk = uniqueIds.slice(i, i + chunkSize);
+          const { data, error } = await timeDataRequest(
+            `vocabulary by ids chunk ${Math.floor(i / chunkSize) + 1}`,
+            () => supabase.from('book_vocabulary').select(VOCABULARY_COLUMNS).in('id', chunk),
+          );
+          if (error) {
+            debugLogger.error('Supabase', 'Error fetching vocabulary by ids:', error);
+            return null;
+          }
+          if (data) rows.push(...data);
+        }
+        return prepareVocabulary(rows);
+      } catch (err) {
+        debugLogger.error('Supabase', 'Exception fetching vocabulary by ids:', err);
         return null;
       }
-      if (data) rows.push(...data);
-    }
-    return prepareVocabulary(rows);
-  } catch (err) {
-    debugLogger.error('Supabase', 'Exception fetching vocabulary by ids:', err);
-    return null;
-  }
-}
-
-/**
- * Fetches a book's vocabulary tagged with a Browse theme (requires the
- * 'category' column from migration 20260817_vocabulary_categories.sql).
- * Returns null when the column is missing so callers can fall back to the
- * static curated taxonomy.
- */
-
-function getSmartScore(card: Flashcard, rawQuery: string, lowerQuery: string, normQuery: string) {
-  let maxScore = 0;
-  
-  const frontVariations = expandSlashAndOptionalVariants(card.front || '');
-  const pinyinVariations = expandSlashAndOptionalVariants(card.pinyin || '');
-  const definitions = (card.back || '').toLowerCase();
-
-  for (const front of frontVariations) {
-    // If no pinyin variations, still run at least once
-    const pinyinsToTest = pinyinVariations.length > 0 ? pinyinVariations : [''];
-    
-    for (const pinyinRaw of pinyinsToTest) {
-      let score = 0;
-      const joinedPinyin = stripPinyinTones(pinyinRaw);
-
-      // 1. Exact Matches (Highest Priority)
-      if (front === rawQuery) score += 10000;
-      if (joinedPinyin === normQuery && joinedPinyin.length > 0) score += 8000;
-
-      // Exact English meaning word match. The query is escaped so regex
-      // metacharacters in the user's input (e.g. "(", "?", "[", "*") never
-      // throw a SyntaxError that turns the whole search into an empty result.
-      // \b is only meaningful for Latin text; Chinese/English mixed strings
-      // still match on literal substring boundaries via includes() below.
-      const escapedQuery = escapeRegExp(lowerQuery.trim());
-      const wordsRegex = escapedQuery ? new RegExp(`(?:^|[^A-Za-z])${escapedQuery}(?=$|[^A-Za-z])`, 'i') : null;
-      if (wordsRegex && wordsRegex.test(definitions)) {
-         score += 4000;
-         if (definitions.startsWith(lowerQuery)) score += 1000;
-      }
-
-      // 2. Starts With (High Priority)
-      if (front.startsWith(rawQuery)) score += 500;
-      if (normQuery && joinedPinyin.startsWith(normQuery)) score += 400;
-
-      // 3. Partial or Substring matches
-      if (front.includes(rawQuery)) score += 100;
-      if (normQuery && joinedPinyin.includes(normQuery)) score += 50;
-      if (definitions.includes(lowerQuery)) score += 10;
-
-      // 4. Penalty for length so shorter, more exact matches float higher
-      score -= front.length * 2; 
-      if (joinedPinyin) {
-         score -= joinedPinyin.length;
-      }
-      
-      if (score > maxScore) {
-        maxScore = score;
-      }
-    }
-  }
-  
-  return maxScore;
+    },
+  });
 }
 
 export async function searchVocabulary(queryStr: string): Promise<Flashcard[]> {
   if (!queryStr || queryStr.trim() === '') return [];
-  
-  const cacheKey = `search-${queryStr}`;
-  if (vocabularyCache.has(cacheKey)) {
-    return vocabularyCache.get<Flashcard[]>(cacheKey) || [];
-  }
+  const queryTrimmed = queryStr.trim();
+  const cacheKey = `search-${queryTrimmed}`;
 
-  if (searchPromises.has(cacheKey)) {
-    return searchPromises.get(cacheKey)!;
-  }
-
-  const searchPromise = (async () => {
-    try {
-      const queryTrimmed = queryStr.trim();
+  return withPackFirstLookup<Flashcard[]>({
+    dedupeKey: cacheKey,
+    cache: {
+      get: (k) => vocabularyCache.get<Flashcard[]>(k),
+      set: (k, v) => vocabularyCache.set(k, v),
+    },
+    fromPack: async () => {
       const queryLower = queryTrimmed.toLowerCase();
       const normalizedQuery = stripPinyinTones(queryTrimmed);
 
-      // Fast path: single Chinese character lookup
-      // Check all cached vocabulary pages for words containing this character
       const isSingleChar = queryTrimmed.length === 1 && /[\u4E00-\u9FFF\u3400-\u4DBF\u{20000}-\u{2A6DF}\u{2A700}-\u{2B73F}\u{2B740}-\u{2B81F}\u{2B820}-\u{2CEAF}]/u.test(queryTrimmed);
       if (isSingleChar) {
         const results: Flashcard[] = [];
         const seen = new Set<string>();
-        // Scan all vocabulary cache keys for matches (including compound words)
         const vocabKeys = ['vocab-all-all', 'vocab-1-all', 'vocab-2-all', 'vocab-3-all', 'vocab-4-all', 'vocab-5-all', 'vocab-6-all'];
         for (const key of vocabKeys) {
           const cached = vocabularyCache.get<Flashcard[]>(key);
@@ -360,9 +159,7 @@ export async function searchVocabulary(queryStr: string): Promise<Flashcard[]> {
             }
           }
         }
-        // If we found matches in cache, return immediately without fetching all vocab
         if (results.length > 0) {
-          // Sort: exact matches first, then by length (shorter first), then by book/lesson
           results.sort((a, b) => {
             if (a.front === queryTrimmed && b.front !== queryTrimmed) return -1;
             if (a.front !== queryTrimmed && b.front === queryTrimmed) return 1;
@@ -370,146 +167,92 @@ export async function searchVocabulary(queryStr: string): Promise<Flashcard[]> {
             if (a.bookId !== b.bookId) return a.bookId - b.bookId;
             return a.lessonId - b.lessonId;
           });
-          vocabularyCache.set(cacheKey, results);
           return results;
         }
-        // If no cache hits, fall through to full search
       }
 
       const allCards = await fetchVocabulary();
-      
-      const scoredResults = allCards.map(card => ({
-        card,
-        score: getSmartScore(card, queryTrimmed, queryLower, normalizedQuery)
-      })).filter(item => item.score > 0);
-      
+      const scoredResults = allCards
+        .map((card) => ({ card, score: getSmartScore(card, queryTrimmed, queryLower, normalizedQuery) }))
+        .filter((item) => item.score > 0);
       scoredResults.sort((a, b) => b.score - a.score);
-      
-      const finalData = scoredResults.slice(0, 100).map(s => s.card);
-      vocabularyCache.set(cacheKey, finalData);
-      
-      return finalData;
-    } catch (err) {
-      debugLogger.error('Supabase', 'Exception searching vocabulary:', err);
-      return [];
-    } finally {
-      searchPromises.delete(cacheKey);
-    }
-  })();
-
-  searchPromises.set(cacheKey, searchPromise);
-  return searchPromise;
+      return scoredResults.slice(0, 100).map((s) => s.card);
+    },
+    fromDb: async () => [],
+  });
 }
 
 export async function fetchExamplesForWord(searchWords: string | string[], pos?: string): Promise<Flashcard[]> {
   const words = Array.isArray(searchWords) ? searchWords : [searchWords];
-  const cleanWords = words.map((word) => word?.trim()).filter(Boolean);
+  const cleanWords = words.map((w) => w?.trim()).filter(Boolean);
   if (cleanWords.length === 0) return [];
-
   const cacheKey = `examples-${[...new Set(cleanWords)].sort().join('|')}`;
-  if (vocabularyCache.has(cacheKey)) {
-    return vocabularyCache.get<Flashcard[]>(cacheKey) || [];
-  }
 
-  // Callers that only have the word (dictionary, breakdown) still get the
-  // card's part of speech, so separable words like 找錢 match split usage.
-  let resolvedPos = pos?.trim() || undefined;
-  if (!resolvedPos) {
-    try {
+  return withPackFirstLookup<Flashcard[]>({
+    dedupeKey: cacheKey,
+    cache: {
+      get: (k) => vocabularyCache.get<Flashcard[]>(k),
+      set: (k, v) => vocabularyCache.set(k, v),
+    },
+    fromPack: async () => {
+      let resolvedPos = pos?.trim() || undefined;
+      if (!resolvedPos) {
+        try {
+          const allVocab = await fetchVocabulary();
+          resolvedPos = allVocab.find((c) => (
+            cleanWords.includes(c.front)
+            || (c.traditional ? cleanWords.includes(c.traditional) : false)
+            || (c.simplified ? cleanWords.includes(c.simplified) : false)
+          ))?.pos?.trim() || undefined;
+        } catch {
+          resolvedPos = undefined;
+        }
+      }
+
+      const variants = new Set<string>();
+      for (const word of cleanWords) {
+        for (const variant of extractSearchVariants(word)) variants.add(variant);
+      }
+      const variantList = Array.from(variants).sort((a, b) => b.length - a.length);
+      const searchTerms = variantList.length > 0 ? variantList : cleanWords;
+      const richExampleCards = await fetchCourseExampleCards(searchTerms, resolvedPos);
+
+      const mergeExampleCards = (fallbackCards: Flashcard[]) => {
+        const merged = new Map<string, Flashcard>();
+        fallbackCards.forEach((c) => merged.set(c.id, c));
+        richExampleCards.forEach((c) => {
+          const fallback = merged.get(c.id);
+          merged.set(c.id, fallback ? { ...fallback, ...c, examples: c.examples } : c);
+        });
+        return [...merged.values()];
+      };
+
+      if (richExampleCards.length > 0) return mergeExampleCards([]);
+
       const allVocab = await fetchVocabulary();
-      resolvedPos = allVocab.find((card) => (
-        cleanWords.includes(card.front)
-        || (card.traditional ? cleanWords.includes(card.traditional) : false)
-        || (card.simplified ? cleanWords.includes(card.simplified) : false)
-      ))?.pos?.trim() || undefined;
-    } catch {
-      resolvedPos = undefined;
-    }
-  }
+      const localMatching = allVocab.filter((c) => c.examples?.some((e) => sentenceMatchesForms(e.chinese, searchTerms, resolvedPos)));
+      if (localMatching.length > 0 || !isSupabaseConfigured()) {
+        return mergeExampleCards(localMatching);
+      }
 
-  try {
-    const supabaseUrl = import.meta.env?.VITE_SUPABASE_URL || (typeof process !== 'undefined' ? process.env?.VITE_SUPABASE_URL : undefined);
-    // Expand every script form (traditional + simplified + front) so a
-    // sentence in either script — or any / alternative or （） optional form —
-    // is found.
-    const variants = new Set<string>();
-    for (const word of cleanWords) {
-      for (const variant of extractSearchVariants(word)) variants.add(variant);
-    }
-    const variantList = Array.from(variants).sort((a, b) => b.length - a.length);
-    const searchTerms = variantList.length > 0 ? variantList : cleanWords;
-    const richExampleCards = await fetchCourseExampleCards(searchTerms, resolvedPos);
+      let query = supabase.from('book_vocabulary').select(VOCABULARY_COLUMNS);
+      if (variantList.length > 0) {
+        query = query.or(variantList.map((v) => `examples.ilike.%${v}%`).join(','));
+      } else {
+        query = query.ilike('examples', `%${cleanWords[0]}%`);
+      }
 
-    const mergeExampleCards = (fallbackCards: Flashcard[]) => {
-      const merged = new Map<string, Flashcard>();
-      fallbackCards.forEach((card) => merged.set(card.id, card));
-      richExampleCards.forEach((card) => {
-        const fallback = merged.get(card.id);
-        merged.set(card.id, fallback ? { ...fallback, ...card, examples: card.examples } : card);
-      });
-      const result = [...merged.values()];
-      vocabularyCache.set(cacheKey, result);
-      return result;
-    };
-    
-    const getLocalMatchingCards = async () => {
-      const allVocab = await fetchVocabulary();
-      return allVocab.filter(c => c.examples?.some(e => sentenceMatchesForms(e.chinese, searchTerms, resolvedPos)));
-    };
-
-    if (richExampleCards.length > 0) {
-      return mergeExampleCards([]);
-    }
-
-    const localMatching = await getLocalMatchingCards();
-    if (localMatching.length > 0 || !supabaseUrl) {
-      return mergeExampleCards(localMatching);
-    }
-
-    let query = supabase.from('book_vocabulary').select(VOCABULARY_COLUMNS);
-    if (variantList.length > 0) {
-      const orString = variantList.map(v => `examples.ilike.%${v}%`).join(',');
-      query = query.or(orString);
-    } else {
-      query = query.ilike('examples', `%${cleanWords[0]}%`);
-    }
-
-    const { data, error } = await timeDataRequest(
-      'vocabulary examples',
-      () => query.limit(100),
-    ); // 100 examples is plenty for sentences
-
-    if (error) {
-      debugLogger.error('Supabase', 'Error fetching examples:', error);
-      const fallback = await getLocalMatchingCards();
-      return mergeExampleCards(fallback);
-    }
-
-    if (!data || data.length === 0) {
-      const fallback = await getLocalMatchingCards();
-      return mergeExampleCards(fallback);
-    }
-
-    const mappedData = mapVocabularyRows(data);
-
-    return mergeExampleCards(mappedData);
-  } catch (err) {
-    debugLogger.error('Supabase', 'Exception fetching examples:', err);
-    return [];
-  }
+      const { data, error } = await timeDataRequest('vocabulary examples', () => query.limit(100));
+      if (error || !data || data.length === 0) {
+        if (error) debugLogger.error('Supabase', 'Error fetching examples:', error);
+        return mergeExampleCards(localMatching);
+      }
+      return mergeExampleCards(mapVocabularyRows(data));
+    },
+    fromDb: async () => [],
+  });
 }
 
-/**
- * Fetch example sentences that contain the given word, deduped by sentence text.
- * Only sentences that carry a full pinyin + English translation are surfaced, so
- * the section reads consistently (the course-example pack provides these; the
- * fallback `book_vocabulary` source often stores Chinese-only strings).
- * `limit` caps the returned pool; callers that need a deeper list (e.g. the
- * breakdown example-sentence block with a Show more toggle) raise it.
- *
- * Owned by the service layer because both the dictionary and the breakdown
- * features consume it (see docs/ARCHITECTURE.md § Dependency direction).
- */
 export async function fetchExamples(word: string, limit = 3): Promise<WordExample[]> {
   const cards = await fetchExamplesForWord(word);
   const seen = new Set<string>();
@@ -540,57 +283,4 @@ export async function fetchExamples(word: string, limit = 3): Promise<WordExampl
   return examples;
 }
 
-let courseVocabByWordMap: Map<string, Flashcard> | null = null;
-let courseVocabMapPromise: Promise<Map<string, Flashcard>> | null = null;
-
-/**
- * Returns a cached lookup map of all course vocabulary words.
- * Indexes traditional, simplified, front, and stripped variants for instant O(1) matching.
- */
-export async function getCourseVocabLookupMap(): Promise<Map<string, Flashcard>> {
-  if (courseVocabByWordMap) return courseVocabByWordMap;
-  if (courseVocabMapPromise) return courseVocabMapPromise;
-
-  courseVocabMapPromise = (async () => {
-    try {
-      const allCards = await fetchVocabulary();
-      const map = new Map<string, Flashcard>();
-
-      const register = (key: string | undefined, card: Flashcard) => {
-        if (!key) return;
-        const trimmed = key.trim();
-        if (!trimmed) return;
-        if (!map.has(trimmed)) {
-          map.set(trimmed, card);
-        }
-        const cleaned = cleanVocabText(trimmed);
-        if (cleaned && !map.has(cleaned)) {
-          map.set(cleaned, card);
-        }
-      };
-
-      for (const card of allCards) {
-        register(card.front, card);
-        register(card.traditional, card);
-        register(card.simplified, card);
-      }
-
-      courseVocabByWordMap = map;
-      return map;
-    } finally {
-      courseVocabMapPromise = null;
-    }
-  })();
-
-  return courseVocabMapPromise;
-}
-
-/**
- * Finds a matching course flashcard by exact word or cleaned variant.
- */
-export async function findMatchingCourseVocab(word: string): Promise<Flashcard | undefined> {
-  if (!word || !word.trim()) return undefined;
-  const map = await getCourseVocabLookupMap();
-  const trimmed = word.trim();
-  return map.get(trimmed) || map.get(cleanVocabText(trimmed));
-}
+export { getCourseVocabLookupMap, findMatchingCourseVocab } from './courseVocabLookup';

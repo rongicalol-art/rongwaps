@@ -1,185 +1,30 @@
-export interface RubyItem {
-  char: string;
-  pinyin?: string;
-  isPunctuation: boolean;
-}
+import type { RubyItem, PhraseChunk } from '../types/ruby';
+import {
+  PUNCTUATION_REGEX,
+  PHRASE_TERMINATORS,
+  MAX_PHRASE_CHARS,
+} from '../data/pinyinTables';
+import {
+  alignRubyPinyin,
+  itemCharStarts,
+  sliceItemsByCharRange,
+  containedItemIndexes,
+  buildWordStartFlags,
+} from './rubyAlignment';
+import { getWordChunks } from './pinyinWordChunks';
+import {
+  splitPinyinWordToSyllables,
+  splitPinyinToSyllables,
+} from './pinyinSyllables';
 
-export interface PhraseChunk {
-  text: string;
-  start?: number;
-  end?: number;
-  isPunctuation: boolean;
-  rubyItems: RubyItem[];
-}
-
-export const PUNCTUATION_REGEX = /^[，。？！、：；“”‘’「」『』（）《》〈〉…—\s,.?!:;"'()-]+$/;
-
-// Punctuation that closes a phrase/clause. Used to split long aligned words
-// (which Whisper sometimes merges into a single whole-sentence "word") back
-// into tappable phrase chunks. Deliberately excludes marks that only appear
-// *inside* a phrase, such as （ ） — and range dashes.
-const PHRASE_TERMINATORS = new Set([...'，。！？、；：…', ...',.!?;:']);
-
-// All 410 valid standard Mandarin pinyin base syllables (tone-free)
-const ALL_VALID_BASES = new Set([
-  'a', 'ai', 'an', 'ang', 'ao', 'ba', 'bai', 'ban', 'bang', 'bao', 'bei', 'ben', 'beng', 'bi', 'bian', 'biao', 'bie', 'bin', 'bing', 'bo', 'bu',
-  'ca', 'cai', 'can', 'cang', 'cao', 'ce', 'cen', 'ceng', 'cha', 'chai', 'chan', 'chang', 'chao', 'che', 'chen', 'cheng', 'chi', 'chong', 'chou', 'chu', 'chua', 'chuai', 'chuan', 'chuang', 'chui', 'chun', 'chuo', 'ci', 'cong', 'cou', 'cu', 'cuan', 'cui', 'cun', 'cuo',
-  'da', 'dai', 'dan', 'dang', 'dao', 'de', 'dei', 'den', 'deng', 'di', 'dia', 'dian', 'diao', 'die', 'ding', 'diu', 'dong', 'dou', 'du', 'duan', 'dui', 'dun', 'duo',
-  'e', 'ei', 'en', 'eng', 'er', 'fa', 'fan', 'fang', 'fei', 'fen', 'feng', 'fo', 'fou', 'fu',
-  'ga', 'gai', 'gan', 'gang', 'gao', 'ge', 'gei', 'gen', 'geng', 'gong', 'gou', 'gu', 'gua', 'guai', 'guan', 'guang', 'gui', 'gun', 'guo',
-  'ha', 'hai', 'han', 'hang', 'hao', 'he', 'hei', 'hen', 'heng', 'hong', 'hou', 'hu', 'hua', 'huai', 'huan', 'huang', 'hui', 'hun', 'huo',
-  'ji', 'jia', 'jian', 'jiang', 'jiao', 'jie', 'jin', 'jing', 'jiong', 'jiu', 'ju', 'juan', 'jue', 'jun',
-  'ka', 'kai', 'kan', 'kang', 'kao', 'ke', 'kei', 'ken', 'keng', 'kong', 'kou', 'ku', 'kua', 'kuai', 'kuan', 'kuang', 'kui', 'kun', 'kuo',
-  'la', 'lai', 'lan', 'lang', 'lao', 'le', 'lei', 'leng', 'li', 'lia', 'lian', 'liang', 'liao', 'lie', 'lin', 'ling', 'liu', 'lo', 'long', 'lou', 'lu', 'luan', 'lun', 'luo', 'lü', 'lüe',
-  'ma', 'mai', 'man', 'mang', 'mao', 'me', 'mei', 'men', 'meng', 'mi', 'mian', 'miao', 'mie', 'min', 'ming', 'miu', 'mo', 'mou', 'mu',
-  'na', 'nai', 'nan', 'nang', 'nao', 'ne', 'nei', 'nen', 'neng', 'ni', 'nian', 'niang', 'niao', 'nie', 'nin', 'ning', 'niu', 'nong', 'nou', 'nu', 'nuan', 'nun', 'nuo', 'nü', 'nüe',
-  'o', 'ou', 'pa', 'pai', 'pan', 'pang', 'pao', 'pei', 'pen', 'peng', 'pi', 'pian', 'piao', 'pie', 'pin', 'ping', 'po', 'pou', 'pu',
-  'qi', 'qia', 'qian', 'qiang', 'qiao', 'qie', 'qin', 'qing', 'qiong', 'qiu', 'qu', 'quan', 'que', 'qun',
-  'ran', 'rang', 'rao', 're', 'ren', 'reng', 'ri', 'rong', 'rou', 'ru', 'ruan', 'rui', 'run', 'ruo',
-  'sa', 'sai', 'san', 'sang', 'sao', 'se', 'sen', 'seng', 'sha', 'shai', 'shan', 'shang', 'shao', 'she', 'shei', 'shen', 'sheng', 'shi', 'shou', 'shu', 'shua', 'shuai', 'shuan', 'shuang', 'shui', 'shun', 'shuo', 'si', 'song', 'sou', 'su', 'suan', 'sui', 'sun', 'suo',
-  'ta', 'tai', 'tan', 'tang', 'tao', 'te', 'teng', 'ti', 'tian', 'tiao', 'tie', 'ting', 'tong', 'tou', 'tu', 'tuan', 'tui', 'tun', 'tuo',
-  'wa', 'wai', 'wan', 'wang', 'wei', 'wen', 'weng', 'wo', 'wu',
-  'xi', 'xia', 'xian', 'xiang', 'xiao', 'xie', 'xin', 'xing', 'xiong', 'xiu', 'xu', 'xuan', 'xue', 'xun',
-  'ya', 'yan', 'yang', 'yao', 'ye', 'yi', 'yin', 'ying', 'yo', 'yong', 'you', 'yu', 'yuan', 'yue', 'yun',
-  'za', 'zai', 'zan', 'zang', 'zao', 'ze', 'zei', 'zen', 'zeng', 'zha', 'zhai', 'zhan', 'zhang', 'zhao', 'zhe', 'zhei', 'zhen', 'zheng', 'zhi', 'zhong', 'zhou', 'zhu', 'zhua', 'zhuai', 'zhuan', 'zhuang', 'zhui', 'zhun', 'zhuo', 'zi', 'zong', 'zou', 'zu', 'zuan', 'zui', 'zun', 'zuo'
-]);
-
-function stripTones(str: string): string {
-  return str.toLowerCase()
-    .replace(/[āáǎà]/g, 'a')
-    .replace(/[ēéěè]/g, 'e')
-    .replace(/[īíǐì]/g, 'i')
-    .replace(/[ōóǒò]/g, 'o')
-    .replace(/[ūúǔù]/g, 'u')
-    .replace(/[ǖǘǚǜ]/g, 'ü');
-}
-
-/**
- * Splits compound pinyin words into individual syllables using official Mandarin phonotactics
- * (e.g. "kuànián" -> ["kuà", "nián"], "rènao" -> ["rè", "nao"], "piàoliàng" -> ["piào", "liàng"])
- */
-export function splitPinyinWordToSyllables(word: string): string[] {
-  if (!word) return [];
-  if (/^[0-9]+$/.test(word)) return [word];
-  if (word.includes("'") || word.includes("’") || word.includes("‘")) {
-    return word.split(/['’‘]/).flatMap(splitPinyinWordToSyllables).filter(Boolean);
-  }
-
-  // Handle Erhua: e.g. "diǎnr" -> ["diǎn", "r"]
-  if (word.toLowerCase().endsWith('r') && word.length > 2 && !word.toLowerCase().startsWith('r') && !word.toLowerCase().startsWith('er')) {
-    const withoutR = word.slice(0, -1);
-    return [...splitPinyinWordToSyllables(withoutR), 'r'];
-  }
-
-  function solve(sub: string): string[] | null {
-    if (!sub) return [];
-
-    for (let len = Math.min(sub.length, 7); len >= 1; len--) {
-      const candidate = sub.slice(0, len);
-      const base = stripTones(candidate);
-      if (ALL_VALID_BASES.has(base)) {
-        const rest = sub.slice(len);
-        if (!rest) return [candidate];
-
-        // Standard orthography rule: if candidate ends in 'n' (not 'ng') and rest starts with a/o/e without apostrophe,
-        // the 'n' is the initial of the next syllable (e.g. rè-nao, not rèn-ao).
-        if (candidate.toLowerCase().endsWith('n') && !candidate.toLowerCase().endsWith('ng')) {
-          const nextChar = rest[0]?.toLowerCase();
-          if (nextChar === 'a' || nextChar === 'o' || nextChar === 'e') {
-            continue;
-          }
-        }
-
-        const restSolution = solve(rest);
-        if (restSolution !== null) {
-          return [candidate, ...restSolution];
-        }
-      }
-    }
-    return null;
-  }
-
-  const res = solve(word);
-  return res ?? [word];
-}
-
-// Punctuation/whitespace stripped out of pinyin before word/syllable work.
-// Note: Apostrophes (' and ’) are NOT stripped here because in standard pinyin orthography,
-// they serve as the syllable-dividing mark (隔音符號 géyīnfúhào) within compound words (e.g. zǎo'ān, kě'ài).
-const PINYIN_STRIP_REGEX = /[，。？！、：；“”«»「」『』（）《》〈〉…—\s,.?!:;"()-]/g;
-
-/** Extracts all individual syllables from a pinyin sentence */
-export function splitPinyinToSyllables(pinyinStr: string): string[] {
-  if (!pinyinStr) return [];
-  const clean = pinyinStr.replace(PINYIN_STRIP_REGEX, ' ');
-  const words = clean
-    .trim()
-    .split(/\s+/)
-    .map((w) => w.replace(/^['‘’]+|['‘’]+$/g, ''))
-    .filter(Boolean);
-  const syllables: string[] = [];
-
-  for (const word of words) {
-    syllables.push(...splitPinyinWordToSyllables(word));
-  }
-
-  return syllables;
-}
-
-/**
- * Pairs each Chinese character 1-to-1 with its Pinyin syllable
- * while preserving natural punctuation and handling numeric tokens.
- */
-export function alignRubyPinyin(text: string, pinyinStr: string): RubyItem[] {
-  if (!text) return [];
-  const syllables = splitPinyinToSyllables(pinyinStr);
-
-  const items: RubyItem[] = [];
-  let sylIndex = 0;
-  let i = 0;
-
-  while (i < text.length) {
-    const char = text[i];
-    if (PUNCTUATION_REGEX.test(char)) {
-      items.push({
-        char,
-        isPunctuation: true,
-      });
-      i++;
-    } else if (/[0-9]/.test(char)) {
-      // Group contiguous digits (e.g. "101")
-      let numStr = '';
-      while (i < text.length && /[0-9]/.test(text[i])) {
-        numStr += text[i];
-        i++;
-      }
-      // Consume the digit token from syllables if present
-      if (sylIndex < syllables.length && /^[0-9]+$/.test(syllables[sylIndex])) {
-        sylIndex++;
-      }
-      items.push({
-        char: numStr,
-        pinyin: undefined,
-        isPunctuation: false,
-      });
-    } else {
-      const pinyin = sylIndex < syllables.length ? syllables[sylIndex] : undefined;
-      sylIndex++;
-      items.push({
-        char,
-        pinyin,
-        isPunctuation: false,
-      });
-      i++;
-    }
-  }
-
-  return items;
-}
-
-/** Longest tappable phrase, in characters. Chunks above this are subdivided
- * at authored pinyin word boundaries (see splitPhraseWord). */
-const MAX_PHRASE_CHARS = 12;
+export type { RubyItem, PhraseChunk };
+export {
+  PUNCTUATION_REGEX,
+  alignRubyPinyin,
+  getWordChunks,
+  splitPinyinWordToSyllables,
+  splitPinyinToSyllables,
+};
 
 function charCountOf(seg: RubyItem[]): number {
   return seg.reduce((n, item) => n + item.char.length, 0);
@@ -217,14 +62,7 @@ function packWords(items: RubyItem[], boundaries: number[]): RubyItem[][] {
 
 /**
  * Splits an aligned word chunk into tappable phrase chunks when Whisper
- * merged several clauses into a single "word". Phrases close at clause/
- * sentence punctuation; each terminator run attaches to the phrase it closes
- * (so "……" and sentence-final marks stay with their clause). A phrase that
- * would still be longer than MAX_PHRASE_CHARS is further subdivided at the
- * authored pinyin word starts passed in `wordStarts` (positions into
- * `chunk.rubyItems`). Timestamps are interpolated across the word's
- * [start, end] proportionally to character count so every phrase stays
- * independently tappable and karaoke-highlightable.
+ * merged several clauses into a single "word".
  */
 function splitPhraseWord(
   chunk: PhraseChunk,
@@ -235,9 +73,6 @@ function splitPhraseWord(
     return [chunk];
   }
 
-  // Clause-level groups: a group closes after a run of clause/sentence
-  // terminators, which attach to the group they close. Word starts are
-  // recorded as positions into `rubyItems` (chunk-relative).
   type Group = { items: RubyItem[]; wordStarts: number[] };
   const raw: Group[] = [];
   let current: RubyItem[] = [];
@@ -262,9 +97,6 @@ function splitPhraseWord(
     }
   }
 
-  // A leading phrase made only of punctuation (the aligner attached a
-  // sentence-final mark to the start of this word) is not tappable on its
-  // own — fold it into the phrase that follows.
   if (raw.length > 1 && raw[0].items.every((item) => item.isPunctuation)) {
     const lead = raw[0];
     const next = raw[1];
@@ -273,9 +105,6 @@ function splitPhraseWord(
     raw.shift();
   }
 
-  // Subdivide any clause group that is still too long at pinyin word starts,
-  // then interpolate timestamps over the chunk's [start, end]. Only spoken
-  // characters count toward the cap — trailing punctuation rides along.
   const parts: RubyItem[][] = [];
   let cursor = 0;
   for (const group of raw) {
@@ -318,120 +147,6 @@ function splitPhraseWord(
 }
 
 /**
- * rubyItems partition the line text: every non-digit character is its own
- * item, while a run of digits is a single item whose `char` holds the whole
- * run. So an item's array index is NOT its character offset once a digit run
- * appears (e.g. "台北101大樓" groups "101" into one item and the rest of the
- * array shifts by two). Alignment words are indexed by character offset into
- * the authored text, so slices must be computed from each item's character
- * span rather than from raw array indexes.
- */
-function itemCharStarts(rubyItems: RubyItem[]): number[] {
-  const starts: number[] = [];
-  let pos = 0;
-  for (const item of rubyItems) {
-    starts.push(pos);
-    pos += item.char.length;
-  }
-  return starts;
-}
-
-/** Items fully contained in the character range [from, to). */
-function sliceItemsByCharRange(
-  rubyItems: RubyItem[],
-  starts: number[],
-  from: number,
-  to: number,
-): RubyItem[] {
-  const out: RubyItem[] = [];
-  for (let i = 0; i < rubyItems.length; i += 1) {
-    const item = rubyItems[i];
-    if (starts[i] >= from && starts[i] + item.char.length <= to) out.push(item);
-  }
-  return out;
-}
-
-/** Absolute indexes of the items fully contained in [from, to). */
-function containedItemIndexes(
-  rubyItems: RubyItem[],
-  starts: number[],
-  from: number,
-  to: number,
-): number[] {
-  const out: number[] = [];
-  for (let i = 0; i < rubyItems.length; i += 1) {
-    const item = rubyItems[i];
-    if (starts[i] >= from && starts[i] + item.char.length <= to) out.push(i);
-  }
-  return out;
-}
-
-/** True for every ruby item that begins an authored pinyin word. */
-function buildWordStartFlags(rubyItems: RubyItem[], pinyinStr: string): boolean[] {
-  const flags = rubyItems.map(() => false);
-  // Punctuation and whitespace carry no word boundary; the rest of the pinyin
-  // string is a sequence of space-separated words.
-  const words = pinyinStr
-    .replace(PINYIN_STRIP_REGEX, ' ')
-    .trim()
-    .split(/\s+/)
-    .map((w) => w.replace(/^['‘’]+|['‘’]+$/g, ''))
-    .filter(Boolean);
-
-  let wordIndex = 0; // next pinyin word to consume from
-  let queue: string[] = []; // syllables of the current pinyin word
-  let queuePos = 0; // next syllable in `queue` to match
-
-  // Loads the next non-numeric pinyin word's syllables; returns false when
-  // the pinyin string is exhausted.
-  const loadWord = (): boolean => {
-    while (wordIndex < words.length) {
-      const word = words[wordIndex];
-      wordIndex += 1;
-      if (/^[0-9]+$/.test(word)) continue; // numeric tokens pair with digit runs
-      const syllables = splitPinyinWordToSyllables(word);
-      if (syllables.length > 0) {
-        queue = syllables.map((syllable) => stripTones(syllable));
-        queuePos = 0;
-        return true;
-      }
-    }
-    queue = [];
-    queuePos = 0;
-    return false;
-  };
-
-  for (let i = 0; i < rubyItems.length; i += 1) {
-    const item = rubyItems[i];
-    if (item.isPunctuation) continue;
-
-    if (/^[0-9]+$/.test(item.char)) {
-      // A digit run begins a word only when the pinyin has a number here too.
-      if (wordIndex < words.length && /^[0-9]+$/.test(words[wordIndex])) {
-        flags[i] = true;
-        wordIndex += 1; // consume the numeric token
-      }
-      continue;
-    }
-
-    if (queuePos >= queue.length) {
-      if (!loadWord()) continue; // pinyin exhausted: no more word boundaries
-      flags[i] = true;
-    }
-
-    const actual = stripTones(item.pinyin ?? '');
-    // The item syllable sequence mirrors the pinyin string exactly (1:1
-    // coverage), so matches always consume; on any drift we simply stall and
-    // emit no further word boundaries — the chunk then stays whole rather
-    // than being split at wrong places.
-    if (queue[queuePos] !== undefined && actual === queue[queuePos]) {
-      queuePos += 1;
-    }
-  }
-  return flags;
-}
-
-/**
  * Groups a line of dialogue into interactive, tappable phrase chunks
  * using Whisper alignment timestamps.
  */
@@ -457,7 +172,6 @@ export function getPhraseChunks(
   for (const word of lineAlignment.words) {
     if (typeof word.charStart !== 'number' || typeof word.charEnd !== 'number') continue;
 
-    // Handle any punctuation or chars before this word
     if (charIdx < word.charStart) {
       const beforeText = text.slice(charIdx, word.charStart);
       const beforeRuby = sliceItemsByCharRange(rubyItems, itemStarts, charIdx, word.charStart);
@@ -468,9 +182,6 @@ export function getPhraseChunks(
       });
     }
 
-    // Word chunk — split into phrases when Whisper merged several clauses
-    // into one long "word" (otherwise a whole utterance becomes a single
-    // tappable chunk instead of phrase-by-phrase).
     const wordText = text.slice(word.charStart, word.charEnd);
     const wordIndexes = containedItemIndexes(rubyItems, itemStarts, word.charStart, word.charEnd);
     const wordRuby = wordIndexes.map((index) => rubyItems[index]);
@@ -489,10 +200,6 @@ export function getPhraseChunks(
     charIdx = word.charEnd;
   }
 
-  // Any trailing text: when it is pure punctuation (e.g. a final ？。！),
-  // fold it into the last word chunk so the sentence-final punctuation
-  // lights up together with the last spoken phrase instead of never
-  // highlighting. Real (un-aligned) text stays a separate inert chunk.
   if (charIdx < text.length) {
     const trailingText = text.slice(charIdx);
     const trailingRuby = sliceItemsByCharRange(rubyItems, itemStarts, charIdx, text.length);
@@ -512,183 +219,4 @@ export function getPhraseChunks(
   }
 
   return chunks;
-}
-
-/**
- * Groups a line of text into individual word chunks (and separate punctuation chunks),
- * matching authored pinyin word boundaries and Whisper alignment timestamps.
- * When hovering or tapping, each word is an independent interactive token.
- */
-export function getWordChunks(
-  text: string,
-  pinyinStr: string,
-  lineAlignment?: {
-    start?: number;
-    end?: number;
-    words?: Array<{ charStart?: number; charEnd?: number; start: number; end: number }>;
-    chars?: Array<{ charStart: number; charEnd: number; start: number; end: number }>;
-  } | null,
-): PhraseChunk[] {
-  const rubyItems = alignRubyPinyin(text, pinyinStr);
-  if (rubyItems.length === 0) return [];
-
-  let flags = buildWordStartFlags(rubyItems, pinyinStr);
-  const spokenCount = rubyItems.filter((r) => !r.isPunctuation).length;
-  const flagCount = flags.filter(Boolean).length;
-
-  // Fall back to Intl.Segmenter if authored pinyin lacked word spaces or boundary flags
-  if (flagCount <= 1 && spokenCount > 1 && typeof Intl !== 'undefined' && Intl.Segmenter) {
-    flags = rubyItems.map(() => false);
-    const segs = Array.from(new Intl.Segmenter('zh-TW', { granularity: 'word' }).segment(text));
-    let charOffset = 0;
-    const itemStarts: number[] = [];
-    for (const r of rubyItems) {
-      itemStarts.push(charOffset);
-      charOffset += r.char.length;
-    }
-    for (const seg of segs) {
-      if (seg.isWordLike) {
-        const itemIdx = itemStarts.indexOf(seg.index);
-        if (itemIdx >= 0) flags[itemIdx] = true;
-      }
-    }
-  }
-
-  interface InternalUnit {
-    text: string;
-    isPunctuation: boolean;
-    rubyItems: RubyItem[];
-    charStart: number;
-    charEnd: number;
-    start?: number;
-    end?: number;
-  }
-
-  const units: InternalUnit[] = [];
-  let currentWord: RubyItem[] = [];
-  let currentWordStart = 0;
-  let charPos = 0;
-
-  for (let i = 0; i < rubyItems.length; i += 1) {
-    const item = rubyItems[i];
-    const itemStart = charPos;
-    charPos += item.char.length;
-
-    if (item.isPunctuation) {
-      if (currentWord.length > 0) {
-        units.push({
-          text: currentWord.map((r) => r.char).join(''),
-          isPunctuation: false,
-          rubyItems: currentWord,
-          charStart: currentWordStart,
-          charEnd: itemStart,
-        });
-        currentWord = [];
-      }
-      const lastUnit = units[units.length - 1];
-      if (lastUnit && lastUnit.isPunctuation) {
-        lastUnit.text += item.char;
-        lastUnit.rubyItems.push(item);
-        lastUnit.charEnd = charPos;
-      } else {
-        units.push({
-          text: item.char,
-          isPunctuation: true,
-          rubyItems: [item],
-          charStart: itemStart,
-          charEnd: charPos,
-        });
-      }
-    } else {
-      if (flags[i] && currentWord.length > 0) {
-        units.push({
-          text: currentWord.map((r) => r.char).join(''),
-          isPunctuation: false,
-          rubyItems: currentWord,
-          charStart: currentWordStart,
-          charEnd: itemStart,
-        });
-        currentWord = [];
-      }
-      if (currentWord.length === 0) currentWordStart = itemStart;
-      currentWord.push(item);
-    }
-  }
-  if (currentWord.length > 0) {
-    units.push({
-      text: currentWord.map((r) => r.char).join(''),
-      isPunctuation: false,
-      rubyItems: currentWord,
-      charStart: currentWordStart,
-      charEnd: charPos,
-    });
-  }
-
-  // Assign timestamps
-  if (lineAlignment) {
-    const alignChars = lineAlignment.chars?.filter(
-      (c) => typeof c.charStart === 'number' && typeof c.charEnd === 'number' && typeof c.start === 'number' && typeof c.end === 'number',
-    ) ?? [];
-
-    if (alignChars.length > 0) {
-      // Character-accurate onsets (MMS forced alignment): each word gets its
-      // first character's onset and its last character's end (which is the
-      // next character's onset), so the highlight is seamless and accurate.
-      for (const u of units) {
-        if (u.isPunctuation) continue;
-        const matching = alignChars.filter(
-          (c) => c.charStart < u.charEnd && c.charEnd > u.charStart,
-        );
-        if (matching.length > 0) {
-          u.start = matching[0].start;
-          u.end = matching[matching.length - 1].end;
-        }
-      }
-    } else {
-      const alignWords = lineAlignment.words?.filter(
-        (w) => typeof w.charStart === 'number' && typeof w.charEnd === 'number' && typeof w.start === 'number' && typeof w.end === 'number',
-      ) ?? [];
-
-      if (alignWords.length > 0) {
-        for (const w of alignWords) {
-          const matchingUnits = units.filter(
-            (u) => !u.isPunctuation && u.charStart < w.charEnd! && u.charEnd > w.charStart!,
-          );
-          if (matchingUnits.length > 0) {
-            const totalChars = matchingUnits.reduce((acc, u) => acc + u.text.length, 0) || 1;
-            const duration = Math.max(0, w.end - w.start);
-            let elapsed = 0;
-            for (const u of matchingUnits) {
-              u.start = w.start + (elapsed / totalChars) * duration;
-              elapsed += u.text.length;
-              u.end = w.start + (elapsed / totalChars) * duration;
-            }
-          }
-        }
-      }
-    }
-
-    // Fallback: If line has overall start & end, assign timestamps to any spoken units still unaligned
-    if (typeof lineAlignment.start === 'number' && typeof lineAlignment.end === 'number') {
-      const unaligned = units.filter((u) => !u.isPunctuation && u.start === undefined);
-      if (unaligned.length > 0) {
-        const totalChars = unaligned.reduce((acc, u) => acc + u.text.length, 0) || 1;
-        const duration = Math.max(0, lineAlignment.end - lineAlignment.start);
-        let elapsed = 0;
-        for (const u of unaligned) {
-          u.start = lineAlignment.start + (elapsed / totalChars) * duration;
-          elapsed += u.text.length;
-          u.end = lineAlignment.start + (elapsed / totalChars) * duration;
-        }
-      }
-    }
-  }
-
-  return units.map(({ text: uText, isPunctuation, rubyItems: uRuby, start, end }) => ({
-    text: uText,
-    isPunctuation,
-    rubyItems: uRuby,
-    start,
-    end,
-  }));
 }
