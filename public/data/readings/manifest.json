@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "version": "6220588dab002a86",
+  "generatedAt": "2026-09-27T14:33:30.107Z",
+  "totalCount": 48,
+  "books": [
+    {
+      "bookId": 1,
+      "count": 48,
+      "path": "/data/readings/book-1.json",
+      "sha256": "6220588dab002a8697b44c382664b647db90aac2a3cbf1ad948c7401b884f8bc",
+      "bytes": 172650
+    }
+  ]
+}

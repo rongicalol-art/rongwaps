@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { ALL_READINGS_DATA } from '../src/data/readingsData';
+import { TEST_ALL_READINGS as ALL_READINGS_DATA } from './acceptance_helpers';
 import {
   groupSentencesIntoParagraphs,
   isNarrativeReading,

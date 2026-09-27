@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { INTERACTIVE_GRAMMAR_PARTS, findNeighbourGrammarPart } from '../src/data/interactiveGrammarPages';
+import { TEST_INTERACTIVE_GRAMMAR_PARTS as INTERACTIVE_GRAMMAR_PARTS } from './acceptance_helpers';
+import { findNeighbourGrammarPart } from '../src/utils/readingContext';
 import type { InteractiveGrammarPage, InteractiveGrammarPart } from '../src/types/models';
 import {
   getPatternSectionLayout,
@@ -152,9 +153,9 @@ test('keyboard part switching walks book order and stops at the ends', () => {
   const second = INTERACTIVE_GRAMMAR_PARTS[1];
   const last = INTERACTIVE_GRAMMAR_PARTS[INTERACTIVE_GRAMMAR_PARTS.length - 1];
 
-  assert.equal(findNeighbourGrammarPart(first.id, 'next')?.id, second.id);
-  assert.equal(findNeighbourGrammarPart(second.id, 'previous')?.id, first.id);
-  assert.equal(findNeighbourGrammarPart(first.id, 'previous'), null);
-  assert.equal(findNeighbourGrammarPart(last.id, 'next'), null);
-  assert.equal(findNeighbourGrammarPart('missing-part', 'next'), null);
+  assert.equal(findNeighbourGrammarPart(first.id, 'next', INTERACTIVE_GRAMMAR_PARTS)?.id, second.id);
+  assert.equal(findNeighbourGrammarPart(second.id, 'previous', INTERACTIVE_GRAMMAR_PARTS)?.id, first.id);
+  assert.equal(findNeighbourGrammarPart(first.id, 'previous', INTERACTIVE_GRAMMAR_PARTS), null);
+  assert.equal(findNeighbourGrammarPart(last.id, 'next', INTERACTIVE_GRAMMAR_PARTS), null);
+  assert.equal(findNeighbourGrammarPart('missing-part', 'next', INTERACTIVE_GRAMMAR_PARTS), null);
 });

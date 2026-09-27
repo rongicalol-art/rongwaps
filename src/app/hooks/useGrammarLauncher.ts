@@ -2,11 +2,14 @@ import { useState, useEffect, useCallback } from 'react';
 import type { InteractiveGrammarPart } from '../../types/models';
 
 export async function loadInteractiveGrammarPart(partId: string): Promise<InteractiveGrammarPart | undefined> {
-  const [{ getInteractiveGrammarPart }] = await Promise.all([
-    import('../../data/interactiveGrammarPages'),
+  const match = partId.match(/^B(\d+)/i);
+  const bookId = match ? Number(match[1]) : 1;
+  const [{ fetchGrammarPack }] = await Promise.all([
+    import('../../services/contentPacks'),
     import('../../screens/grammar-lesson/components/GrammarStudyPage'),
   ]);
-  return getInteractiveGrammarPart(partId);
+  const parts = await fetchGrammarPack(bookId);
+  return parts?.find((part) => part.id === partId);
 }
 
 export function useGrammarLauncher({ onOpen }: { onOpen?: () => void } = {}) {

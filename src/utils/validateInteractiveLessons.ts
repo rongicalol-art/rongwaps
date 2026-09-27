@@ -1,13 +1,14 @@
-import { INTERACTIVE_GRAMMAR_PARTS } from '../data/interactiveGrammarPages';
-import { ALL_READINGS, READING_LESSON_MAX, READING_LESSON_MIN } from '../data/readings';
 import { GRAMMAR_USAGE_RULES } from '../data/grammarUsageRules';
 import { getPatternRowGroups, grammarHeaderWeight, grammarHeaderWordCount } from './grammarPatternLayout';
-import type { ReadingRecord } from '../types/models';
+import type { ReadingRecord, InteractiveGrammarPart } from '../types/models';
 
 export interface LessonValidationIssue {
   location: string;
   message: string;
 }
+
+export const READING_LESSON_MIN = 1;
+export const READING_LESSON_MAX = 16;
 
 function registerId(
   id: string,
@@ -23,11 +24,14 @@ function registerId(
   seen.set(id, location);
 }
 
-export function validateInteractiveLessons(): LessonValidationIssue[] {
+export function validateInteractiveLessons(
+  parts: InteractiveGrammarPart[],
+  readings: ReadingRecord[],
+): LessonValidationIssue[] {
   const issues: LessonValidationIssue[] = [];
   const topLevelIds = new Map<string, string>();
 
-  INTERACTIVE_GRAMMAR_PARTS.forEach((part) => {
+  parts.forEach((part) => {
     registerId(part.id, `grammar part ${part.id}`, topLevelIds, issues);
     registerId(part.dialogue.id, `dialogue ${part.dialogue.id}`, topLevelIds, issues);
 
@@ -165,7 +169,7 @@ export function validateInteractiveLessons(): LessonValidationIssue[] {
   });
 
   const lessonGrammarNumbers = new Map<string, number[]>();
-  INTERACTIVE_GRAMMAR_PARTS.forEach((part) => {
+  parts.forEach((part) => {
     const key = `${part.bookId}-${part.lessonId}`;
     lessonGrammarNumbers.set(key, [
       ...(lessonGrammarNumbers.get(key) ?? []),
@@ -181,7 +185,7 @@ export function validateInteractiveLessons(): LessonValidationIssue[] {
 
   // Readings: every in-scope lesson must have exactly two complete dialogues.
   const readingsByLesson = new Map<number, ReadingRecord[]>();
-  ALL_READINGS.forEach((reading) => {
+  readings.forEach((reading) => {
     registerId(reading.id, `reading ${reading.id}`, topLevelIds, issues);
     const lessonReadings = readingsByLesson.get(reading.lessonId) ?? [];
     lessonReadings.push(reading);
@@ -217,14 +221,14 @@ export function validateInteractiveLessons(): LessonValidationIssue[] {
   // This is the mapping the reader's Study Guide relies on to call a grammar
   // point "taught with this text" instead of guessing from numbering.
   const readingsByAudio = new Map<string, ReadingRecord[]>();
-  ALL_READINGS.forEach((reading) => {
+  readings.forEach((reading) => {
     if (!reading.audioReference) return;
     readingsByAudio.set(reading.audioReference, [
       ...(readingsByAudio.get(reading.audioReference) ?? []),
       reading,
     ]);
   });
-  INTERACTIVE_GRAMMAR_PARTS.forEach((part) => {
+  parts.forEach((part) => {
     const location = `${part.id} dialogue`;
     const audioReference = part.dialogue?.audioReference;
     if (!audioReference) {
@@ -249,7 +253,7 @@ export function validateInteractiveLessons(): LessonValidationIssue[] {
 
   // Grammar usage rules: each page needs a reviewed rule or a declared reason,
   // so "used in this reading" can never silently come from a guess.
-  INTERACTIVE_GRAMMAR_PARTS.forEach((part) => {
+  parts.forEach((part) => {
     part.grammarPages.forEach((page) => {
       const location = `${part.id} grammar ${page.grammarNumber}`;
       const entry = GRAMMAR_USAGE_RULES[page.id];
@@ -266,7 +270,7 @@ export function validateInteractiveLessons(): LessonValidationIssue[] {
     });
   });
   Object.keys(GRAMMAR_USAGE_RULES).forEach((pageId) => {
-    const known = INTERACTIVE_GRAMMAR_PARTS.some((part) =>
+    const known = parts.some((part) =>
       part.grammarPages.some((page) => page.id === pageId),
     );
     if (!known) {
@@ -280,7 +284,7 @@ export function validateInteractiveLessons(): LessonValidationIssue[] {
   const HEADER_LABEL_MAX = 6;
   const HEADER_LABEL_WORDS = 3;
   const HEADER_DETAIL_MAX = 8;
-  INTERACTIVE_GRAMMAR_PARTS.forEach((part) => {
+  parts.forEach((part) => {
     part.grammarPages.forEach((page) => {
       const tables = [
         { location: `${part.id} grammar ${page.grammarNumber} pattern table`, page },
@@ -328,7 +332,7 @@ export function validateInteractiveLessons(): LessonValidationIssue[] {
   });
 
   // Grammar page order: printed pages must not go backwards within a part.
-  INTERACTIVE_GRAMMAR_PARTS.forEach((part) => {
+  parts.forEach((part) => {
     let previousPage = -1;
     [...part.grammarPages]
       .sort((a, b) => a.grammarNumber - b.grammarNumber)

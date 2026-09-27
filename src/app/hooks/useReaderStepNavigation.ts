@@ -1,6 +1,8 @@
 import { useCallback } from 'react';
-import { INTERACTIVE_GRAMMAR_PARTS } from '../../data/interactiveGrammarPages';
-import { findGrammarPartForReading, findNextGrammarPartForReading } from '../../utils/readingContext';
+import {
+  findGrammarManifestPartForReading,
+  findNextGrammarManifestPartForReading,
+} from '../../data/interactiveGrammarManifest';
 import type { ReadingRecord } from '../../types/models';
 
 interface UseReaderStepNavigationOptions {
@@ -26,9 +28,7 @@ export function useReaderStepNavigation({
   const handleReaderNext = useCallback(() => {
     if (activeReadingIndex === null) return;
     const reading = readings[activeReadingIndex];
-    const nextPart = reading
-      ? findNextGrammarPartForReading(reading, INTERACTIVE_GRAMMAR_PARTS)
-      : null;
+    const nextPart = reading ? findNextGrammarManifestPartForReading(reading) : null;
     if (!nextPart) return;
     closeReader();
     openGrammarPart(nextPart.id);
@@ -37,7 +37,7 @@ export function useReaderStepNavigation({
   const handleReaderPrevious = useCallback(() => {
     if (activeReadingIndex === null) return;
     const reading = readings[activeReadingIndex];
-    const part = reading ? findGrammarPartForReading(reading, INTERACTIVE_GRAMMAR_PARTS) : null;
+    const part = reading ? findGrammarManifestPartForReading(reading) : null;
     if (!part) return;
     closeReader();
     openGrammarPart(part.id, part.grammarPages.at(-1)?.id ?? null);

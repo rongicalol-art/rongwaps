@@ -5,6 +5,9 @@ import {
   isValidMemoryHookPack,
   isValidSoundHookItem,
   isValidSoundHookPack,
+  isValidReadingsPack,
+  isValidGrammarPack,
+  isValidDialogueAlignmentPack,
   packItemsToMnemonicMap,
   resolveMnemonicFromMap,
   getBreakdownShard,
@@ -99,4 +102,44 @@ test('recordsToExampleCards: builds flashcards with matching examples', () => {
   assert.equal(cards[0].front, '同學');
   assert.equal(cards[0].examples?.length, 1);
   assert.equal(cards[0].examples?.[0].chinese, '他是新同學。');
+});
+
+test('isValidReadingsPack: validates reading pack structure', () => {
+  const validReading = {
+    id: 'B1L01-R01',
+    bookId: 1,
+    lessonId: 1,
+    dialogueNumber: 1,
+    title: 'Dialogue 1',
+    dialogueLines: [{ id: 'l1', index: 0, speaker: '中明', text: '你好' }],
+  };
+  const pack = { schemaVersion: 1, bookId: 1, count: 1, items: [validReading] };
+  assert.equal(isValidReadingsPack(pack, 1, 1), true);
+  assert.equal(isValidReadingsPack(pack, 2, 1), false);
+  assert.equal(isValidReadingsPack({ ...pack, items: [{ invalid: true }] }, 1, 1), false);
+});
+
+test('isValidGrammarPack: validates grammar pack structure', () => {
+  const validPart = {
+    id: 'B1L01-P01-D01',
+    bookId: 1,
+    lessonId: 1,
+    partId: 1,
+    title: 'Part 1',
+    grammarPages: [{ id: 'p1' }],
+  };
+  const pack = { schemaVersion: 1, bookId: 1, count: 1, items: [validPart] };
+  assert.equal(isValidGrammarPack(pack, 1, 1), true);
+  assert.equal(isValidGrammarPack(pack, 2, 1), false);
+});
+
+test('isValidDialogueAlignmentPack: validates dialogue alignment pack structure', () => {
+  const pack = {
+    schemaVersion: 1,
+    bookId: 1,
+    count: 1,
+    items: { 'B1L01-R01': { audioFile: 'test.mp3', lessonId: 1, dialogueNumber: 1, lines: [] } },
+  };
+  assert.equal(isValidDialogueAlignmentPack(pack, 1, 1), true);
+  assert.equal(isValidDialogueAlignmentPack(pack, 2, 1), false);
 });

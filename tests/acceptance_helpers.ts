@@ -1,11 +1,59 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import type { ReadingRecord, InteractiveGrammarPart } from '../src/types/models';
+import { validateInteractiveLessons as validateCore } from '../src/utils/validateInteractiveLessons';
 
 export const PROJECT_ROOT = fileURLToPath(new URL('..', import.meta.url));
 
 export function isStrictAcceptance(): boolean {
   return process.env.ACCEPTANCE_STRICT === 'true';
+}
+
+export function readJson<T = unknown>(relativePath: string): T {
+  const fullPath = path.resolve(PROJECT_ROOT, relativePath);
+  return JSON.parse(fs.readFileSync(fullPath, 'utf-8')) as T;
+}
+
+export function readSource(relativePath: string): string {
+  const fullPath = path.resolve(PROJECT_ROOT, relativePath);
+  return fs.readFileSync(fullPath, 'utf-8');
+}
+
+export function listSourceFiles(dir: string): string[] {
+  return listFilesRecursive(path.resolve(PROJECT_ROOT, dir), (f) => f.endsWith('.ts') || f.endsWith('.tsx'));
+}
+
+export function getTestReadings(bookId: number = 1): ReadingRecord[] {
+  return readJson<{ items: ReadingRecord[] }>(`public/data/readings/book-${bookId}.json`).items;
+}
+
+export function getTestGrammarParts(bookId: number = 1): InteractiveGrammarPart[] {
+  return readJson<{ items: InteractiveGrammarPart[] }>(`public/data/grammar/book-${bookId}.json`).items;
+}
+
+export function getTestGrammarPart(partId: string, bookId: number = 1): InteractiveGrammarPart {
+  const part = getTestGrammarParts(bookId).find((p) => p.id === partId);
+  if (!part) throw new Error(`Test grammar part not found: ${partId}`);
+  return part;
+}
+
+export function getTestReadingsForLesson(bookId: number, lessonId: number): ReadingRecord[] {
+  return getTestReadings(bookId).filter((r) => r.lessonId === lessonId);
+}
+
+export function getTestGrammarPartsForLesson(bookId: number, lessonId: number): InteractiveGrammarPart[] {
+  return getTestGrammarParts(bookId).filter((p) => p.lessonId === lessonId);
+}
+
+export const TEST_ALL_READINGS: ReadingRecord[] = getTestReadings(1);
+export const TEST_INTERACTIVE_GRAMMAR_PARTS: InteractiveGrammarPart[] = getTestGrammarParts(1);
+
+export function validateInteractiveLessons(
+  parts: InteractiveGrammarPart[] = getTestGrammarParts(),
+  readings: ReadingRecord[] = getTestReadings(),
+) {
+  return validateCore(parts, readings);
 }
 
 export function countFileLines(filePath: string): number {

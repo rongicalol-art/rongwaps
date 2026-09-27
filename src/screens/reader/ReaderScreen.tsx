@@ -2,9 +2,10 @@ import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react';
 import { useAppStore } from '../../store/useAppStore';
 import { cn } from '../../utils/cn';
-import type { DialogueAlignment, ReadingRecord } from '../../types/models';
+import type { ReadingRecord } from '../../types/models';
 
 import type { ReaderGrammarPoint, ReaderStudyTargetWord } from './utils/readerStudyTargets';
+import { useDialogueAlignment } from './hooks/useDialogueAlignment';
 import { useReaderAudio } from './hooks/useReaderAudio';
 import { useReaderPreferences } from './hooks/useReaderPreferences';
 import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
@@ -27,7 +28,6 @@ const ReadingNarrativeView = lazy(() =>
   import('./components/ReadingNarrativeView').then((m) => ({ default: m.ReadingNarrativeView })),
 );
 
-let cachedAlignmentMap: Record<string, DialogueAlignment> | null = null;
 
 /** Stable empty list so the reading views' locate memos do not churn. */
 const EMPTY_GRAMMAR_MATCHES: ReaderGrammarPoint['matches'] = [];
@@ -135,35 +135,9 @@ export function ReaderScreen({
   const isStudyDrawerOpenRef = useRef(isStudyDrawerOpen);
   isStudyDrawerOpenRef.current = isStudyDrawerOpen;
 
-  // The dialogue alignment pack (~1.1MB) loads async so the Reader window can
-  // open before it lands. Until it arrives the audio hook falls back to
-  // whole-track playback (no karaoke) — never block the window on this.
-  const [alignmentMap, setAlignmentMap] = useState<Record<string, DialogueAlignment> | null>(
-    () => cachedAlignmentMap,
-  );
   const [contentReady, setContentReady] = useState(false);
   const markContentReady = useCallback(() => setContentReady(true), []);
-  useEffect(() => {
-    if (cachedAlignmentMap) return;
-    let cancelled = false;
-    import('../../../content/dialogueAlignment.json')
-      .then((module) => {
-        const map = (module.default ?? {}) as Record<string, DialogueAlignment>;
-        cachedAlignmentMap = map;
-        if (!cancelled) {
-          setAlignmentMap(map);
-        }
-      })
-      .catch(() => {
-        // Missing/malformed pack: reader still works without karaoke sync.
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  // Dialogue alignment for karaoke sync
-  const alignment = alignmentMap?.[reading?.id ?? ''] ?? null;
+  const alignment = useDialogueAlignment(reading?.bookId, reading?.id);
 
   // Audio Hook
   const {

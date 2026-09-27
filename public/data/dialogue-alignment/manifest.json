@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "version": "53d90410f3741e7c",
+  "generatedAt": "2026-09-27T14:33:30.263Z",
+  "totalCount": 48,
+  "books": [
+    {
+      "bookId": 1,
+      "count": 48,
+      "path": "/data/dialogue-alignment/book-1.json",
+      "sha256": "53d90410f3741e7c0151e3d631393e0ad9532c06eaefe1bcc5cbc19e6400fd3d",
+      "bytes": 1238481
+    }
+  ]
+}

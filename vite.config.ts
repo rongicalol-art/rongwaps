@@ -137,12 +137,6 @@ export default defineConfig(() => {
             if (id.includes('src/data/interactiveGrammarManifest')) {
               return 'data-grammar-manifest';
             }
-            if (id.includes('src/data/grammar/') || id.includes('src/data/interactiveGrammar')) {
-              return 'data-interactive-grammar';
-            }
-            if (id.includes('src/data/readingsData')) {
-              return 'data-readings';
-            }
           }
         }
       }

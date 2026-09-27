@@ -2,6 +2,7 @@ import { debugLogger } from '../../../utils/debugLogger';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { InteractiveGrammarPart, ReadingRecord } from '../../../types/models';
 import { fetchVocabulary } from '../../../services/vocabularyService';
+import { fetchGrammarPack } from '../../../services/contentPacks';
 import type { Flashcard } from '../../../data/flashcards';
 import { buildReaderStudyTargets } from '../utils/readerStudyTargets';
 
@@ -54,10 +55,13 @@ export function useReaderStudyData({ reading }: UseReaderStudyDataOptions) {
 
   useEffect(() => {
     let cancelled = false;
-    void import('../../../data/interactiveGrammarPages')
-      .then(({ getInteractiveGrammarPartsForLesson }) => {
+    void fetchGrammarPack(reading.bookId)
+      .then((grammarParts) => {
         if (cancelled) return;
-        setParts(getInteractiveGrammarPartsForLesson(reading.bookId, reading.lessonId));
+        const lessonParts = (grammarParts ?? []).filter(
+          (part) => part.bookId === reading.bookId && part.lessonId === reading.lessonId,
+        );
+        setParts(lessonParts);
       })
       .catch((error: unknown) => {
         // Grammar points are supplementary to the study panel: the card keeps

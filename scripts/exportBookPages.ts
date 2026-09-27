@@ -7,7 +7,8 @@ import {
 } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { basename, join, resolve } from 'node:path';
-import { INTERACTIVE_GRAMMAR_PARTS } from '../src/data/interactiveGrammarPages';
+import { readFileSync } from 'node:fs';
+import type { InteractiveGrammarPart } from '../src/types/models';
 
 const PROJECT_ROOT = resolve(import.meta.dirname, '..');
 const SOURCE_DIRECTORY = join(PROJECT_ROOT, 'output/pdf/modern_chinese_1_lessons');
@@ -42,8 +43,9 @@ function pageFilename(page: number) {
   return `page-${String(page).padStart(3, '0')}.webp`;
 }
 
+const grammarPack = JSON.parse(readFileSync(join(PROJECT_ROOT, 'public/data/grammar/book-1.json'), 'utf8')) as { items: InteractiveGrammarPart[] };
 const pagesByLesson = new Map<number, Set<number>>();
-for (const part of INTERACTIVE_GRAMMAR_PARTS) {
+for (const part of grammarPack.items) {
   if (part.bookId !== 1) continue;
   const lessonPages = pagesByLesson.get(part.lessonId) ?? new Set<number>();
   for (const grammarPage of part.grammarPages) {

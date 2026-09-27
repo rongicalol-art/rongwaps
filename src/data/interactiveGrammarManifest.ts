@@ -547,3 +547,27 @@ export function getInteractiveGrammarManifestForLesson(
     (part) => part.bookId === bookId && part.lessonId === lessonId,
   );
 }
+
+export function findNeighbourGrammarPartId(
+  partId: string,
+  direction: 'next' | 'previous',
+): string | null {
+  const index = INTERACTIVE_GRAMMAR_MANIFEST.findIndex((p) => p.id === partId);
+  if (index === -1) return null;
+  const nextIndex = direction === 'next' ? index + 1 : index - 1;
+  return INTERACTIVE_GRAMMAR_MANIFEST[nextIndex]?.id ?? null;
+}
+
+export function findGrammarManifestPartForReading(reading: { bookId: number; lessonId: number; dialogueNumber?: number }): GrammarManifestPart | null {
+  return INTERACTIVE_GRAMMAR_MANIFEST.find(
+    (p) => p.bookId === reading.bookId && p.lessonId === reading.lessonId && p.partId === reading.dialogueNumber,
+  ) ?? null;
+}
+
+export function findNextGrammarManifestPartForReading(reading: { bookId: number; lessonId: number; dialogueNumber?: number }): GrammarManifestPart | null {
+  const part = findGrammarManifestPartForReading(reading);
+  if (!part) return null;
+  const index = INTERACTIVE_GRAMMAR_MANIFEST.findIndex((p) => p.id === part.id);
+  if (index === -1) return null;
+  return INTERACTIVE_GRAMMAR_MANIFEST[index + 1] ?? null;
+}

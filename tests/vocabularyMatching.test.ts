@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { ALL_READINGS } from '../src/data/readings';
+import { TEST_ALL_READINGS as ALL_READINGS } from './acceptance_helpers';
 import type { ReadingRecord } from '../src/types/models';
 import { parseVocabularyId } from '../src/utils/vocabularyId';
 import {

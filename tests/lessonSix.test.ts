@@ -6,7 +6,7 @@ import {
   evaluateGrammarPlacements,
   findCanonicalTile,
 } from '../src/utils/grammarExercise';
-import { validateInteractiveLessons } from '../src/utils/validateInteractiveLessons';
+import { validateInteractiveLessons } from './acceptance_helpers';
 
 const lessonSixParts = [LESSON_SIX_PART_ONE, LESSON_SIX_PART_TWO];
 const lessonSixPages = lessonSixParts.flatMap((part) => part.grammarPages);

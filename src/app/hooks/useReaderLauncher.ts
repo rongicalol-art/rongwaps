@@ -3,15 +3,16 @@ import type { ReadingRecord } from '../../types/models';
 import { useAppStore } from '../../store/useAppStore';
 import { getSelectedLessonIds } from '../../utils/lessonPartSelection';
 import { resolveActiveReadingIndex, findReadingIndexForPart } from '../../utils/readingContext';
+import { fetchReadingsPack, fetchDialogueAlignmentPack } from '../../services/contentPacks';
 
 export async function loadReadings(bookId: number): Promise<ReadingRecord[]> {
-  const [{ getReadingsForBook }] = await Promise.all([
-    import('../../data/readings'),
+  const [readings] = await Promise.all([
+    fetchReadingsPack(bookId),
     import('../../screens/reader/components/ReadingCanvas'),
     import('../../screens/reader/components/ReadingNarrativeView'),
-    import('../../../content/dialogueAlignment.json'),
   ]);
-  return getReadingsForBook(bookId);
+  void fetchDialogueAlignmentPack(bookId);
+  return readings ?? [];
 }
 
 export function useReaderLauncher({

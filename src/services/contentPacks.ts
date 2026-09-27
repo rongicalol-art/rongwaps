@@ -1,19 +1,19 @@
 import { debugLogger } from '../utils/debugLogger';
 import type { DBDictionaryRow, DBCharacterBreakdown, DBVocabularyRow } from '../types/database';
 import type { Flashcard } from '../data/flashcards';
-import type { CourseExampleRecord } from '../types/models';
+import type { CourseExampleRecord, ReadingRecord, InteractiveGrammarPart, DialogueAlignment } from '../types/models';
 import { getDictionaryShard } from '../utils/dictionaryShard';
 import { fetchStaticJson, removeStaticJsonCache } from './staticContentService';
 import { createPackLoader, type PackLoader } from './packLoader';
 import {
   type ContentPackKind,
   type GenericContentManifest,
-  PACK_CONFIGS,
   getBreakdownShard,
   recordsToExampleCards,
   resolveMnemonicFromMap,
   type SoundHookEntry,
 } from '../utils/packValidators';
+import { PACK_CONFIGS } from './contentPackConfigs';
 
 export * from '../utils/packValidators';
 
@@ -240,4 +240,31 @@ export async function lookupSoundHook(character: string): Promise<SoundHookEntry
 
 export function resetSoundHookPackCache(): void {
   soundMapPromise = null;
+}
+
+export async function fetchReadingsPack(bookId: number): Promise<ReadingRecord[] | null> {
+  try {
+    return await loadPack<ReadingRecord[]>('readings', bookId);
+  } catch (error) {
+    debugLogger.warn('Cache', `Static readings pack unavailable for book ${bookId}.`, error);
+    return null;
+  }
+}
+
+export async function fetchGrammarPack(bookId: number): Promise<InteractiveGrammarPart[] | null> {
+  try {
+    return await loadPack<InteractiveGrammarPart[]>('grammar', bookId);
+  } catch (error) {
+    debugLogger.warn('Cache', `Static grammar pack unavailable for book ${bookId}.`, error);
+    return null;
+  }
+}
+
+export async function fetchDialogueAlignmentPack(bookId: number): Promise<Record<string, DialogueAlignment> | null> {
+  try {
+    return await loadPack<Record<string, DialogueAlignment>>('dialogue-alignment', bookId);
+  } catch (error) {
+    debugLogger.warn('Cache', `Static dialogue alignment pack unavailable for book ${bookId}.`, error);
+    return null;
+  }
 }

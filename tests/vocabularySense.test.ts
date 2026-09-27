@@ -2,8 +2,10 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { INTERACTIVE_GRAMMAR_PARTS } from '../src/data/interactiveGrammarPages';
-import { ALL_READINGS } from '../src/data/readings';
+import {
+  TEST_ALL_READINGS as ALL_READINGS,
+  TEST_INTERACTIVE_GRAMMAR_PARTS as INTERACTIVE_GRAMMAR_PARTS,
+} from './acceptance_helpers';
 import { VOCABULARY_SENSE_RULES } from '../src/data/vocabularySenseRules';
 import { parseVocabularyId } from '../src/utils/vocabularyId';
 import { buildReaderStudyTargets } from '../src/screens/reader/utils/readerStudyTargets';

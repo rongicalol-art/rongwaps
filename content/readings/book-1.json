@@ -1,6 +1,4 @@
-import type { ReadingRecord } from '../types/models';
-
-export const ALL_READINGS_DATA: ReadingRecord[] = [
+[
   {
     "id": "B1L01-R01",
     "bookId": 1,
@@ -3252,4 +3250,4 @@ export const ALL_READINGS_DATA: ReadingRecord[] = [
       }
     ]
   }
-];
+]

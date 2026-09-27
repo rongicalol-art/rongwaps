@@ -2,12 +2,11 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { LESSON_TWO_PART_ONE } from '../src/data/grammar/lessonTwoPartOne';
 import { LESSON_TWO_PART_TWO } from '../src/data/grammar/lessonTwoPartTwo';
-import { getReadingsForLesson } from '../src/data/readings';
 import {
   evaluateGrammarPlacements,
   findCanonicalTile,
 } from '../src/utils/grammarExercise';
-import { validateInteractiveLessons } from '../src/utils/validateInteractiveLessons';
+import { getTestReadingsForLesson as getReadingsForLesson, validateInteractiveLessons } from './acceptance_helpers';
 
 const lessonTwoPages = [
   ...LESSON_TWO_PART_ONE.grammarPages,

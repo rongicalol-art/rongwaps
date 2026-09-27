@@ -9,12 +9,18 @@ import {
   LESSON_SIXTEEN_PART_ONE,
   LESSON_SIXTEEN_PART_TWO,
 } from '../src/data/grammar/lessonSixteen';
-import { ALL_READINGS, READING_LESSON_MIN, READING_LESSON_MAX } from '../src/data/readings';
 import {
   evaluateGrammarPlacements,
   findCanonicalTile,
 } from '../src/utils/grammarExercise';
-import { validateInteractiveLessons } from '../src/utils/validateInteractiveLessons';
+import {
+  READING_LESSON_MIN,
+  READING_LESSON_MAX,
+} from '../src/utils/validateInteractiveLessons';
+import {
+  TEST_ALL_READINGS as ALL_READINGS,
+  validateInteractiveLessons,
+} from './acceptance_helpers';
 
 test('Lesson 15 and 16 interactive grammar parts are registered and ordered', () => {
   const l15Parts = [LESSON_FIFTEEN_PART_ONE, LESSON_FIFTEEN_PART_TWO, LESSON_FIFTEEN_PART_THREE];

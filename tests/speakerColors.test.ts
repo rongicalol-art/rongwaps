@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { getDialogueSpeakerColorMap } from '../src/utils/speakerColors.js';
-import { ALL_READINGS } from '../src/data/readings.js';
+import { TEST_ALL_READINGS as ALL_READINGS } from './acceptance_helpers';
 
 test('every dialogue in the curriculum has distinct speaker colors with zero collisions', () => {
   for (const reading of ALL_READINGS) {

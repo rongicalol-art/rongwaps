@@ -2,9 +2,11 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { INTERACTIVE_GRAMMAR_PARTS } from '../src/data/interactiveGrammarPages';
+import {
+  TEST_ALL_READINGS as ALL_READINGS,
+  TEST_INTERACTIVE_GRAMMAR_PARTS as INTERACTIVE_GRAMMAR_PARTS,
+} from './acceptance_helpers';
 import { GRAMMAR_USAGE_RULES } from '../src/data/grammarUsageRules';
-import { ALL_READINGS } from '../src/data/readings';
 import type { ReadingRecord } from '../src/types/models';
 import {
   detectGrammarUsage,

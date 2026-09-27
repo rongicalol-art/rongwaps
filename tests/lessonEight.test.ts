@@ -5,7 +5,7 @@ import {
   LESSON_EIGHT_PART_TWO,
 } from '../src/data/grammar/lessonEight';
 import { evaluateGrammarPlacements, findCanonicalTile } from '../src/utils/grammarExercise';
-import { validateInteractiveLessons } from '../src/utils/validateInteractiveLessons';
+import { validateInteractiveLessons } from './acceptance_helpers';
 
 const parts = [LESSON_EIGHT_PART_ONE, LESSON_EIGHT_PART_TWO];
 const pages = parts.flatMap((part) => part.grammarPages);

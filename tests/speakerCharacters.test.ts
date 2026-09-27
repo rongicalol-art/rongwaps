@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { getCharacterForSpeaker, CHARACTER_PROFILES } from '../src/utils/speakerCharacters.js';
-import { ALL_READINGS } from '../src/data/readings.js';
+import { TEST_ALL_READINGS as ALL_READINGS } from './acceptance_helpers';
 
 test('all 12 characters have complete metadata in CHARACTER_PROFILES', () => {
   const expectedCharacters = [

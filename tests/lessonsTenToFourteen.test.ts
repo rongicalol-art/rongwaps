@@ -22,7 +22,7 @@ import {
 } from '../src/data/grammar/lessonFourteen';
 import type { InteractiveGrammarPart } from '../src/types/models';
 import { evaluateGrammarPlacements, findCanonicalTile } from '../src/utils/grammarExercise';
-import { validateInteractiveLessons } from '../src/utils/validateInteractiveLessons';
+import { validateInteractiveLessons } from './acceptance_helpers';
 
 const lessons: Array<{
   lessonId: number;

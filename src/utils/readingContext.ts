@@ -1,5 +1,4 @@
 import type { InteractiveGrammarPart, LessonPartSelectionMap, ReadingRecord } from '../types/models';
-import { findNeighbourGrammarPart } from '../data/interactiveGrammarPages';
 import { getLessonSelectionKey } from './lessonPartSelection';
 
 export interface ResolveReadingTargetParams {
@@ -106,6 +105,17 @@ export function findGrammarPartForReading(
   return lessonParts.find((part) => part.partId === reading.dialogueNumber) ?? null;
 }
 
+export function findNeighbourGrammarPart(
+  partId: string,
+  direction: 'next' | 'previous',
+  parts: readonly InteractiveGrammarPart[],
+): InteractiveGrammarPart | null {
+  const index = parts.findIndex((part) => part.id === partId);
+  if (index === -1) return null;
+  const neighbourIndex = direction === 'next' ? index + 1 : index - 1;
+  return parts[neighbourIndex] ?? null;
+}
+
 /**
  * The next grammar part after this reading's part in book order, or null when
  * the reading has no part (essays) or its part is the last one. Drives the
@@ -116,6 +126,6 @@ export function findNextGrammarPartForReading(
   parts: readonly InteractiveGrammarPart[],
 ): InteractiveGrammarPart | null {
   const part = findGrammarPartForReading(reading, parts);
-  return part ? findNeighbourGrammarPart(part.id, 'next') : null;
+  return part ? findNeighbourGrammarPart(part.id, 'next', parts) : null;
 }
 

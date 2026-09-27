@@ -5,7 +5,7 @@ import { audioService } from '../../services/audioService';
 import { useAppStore } from '../../store/useAppStore';
 import { useGrammarLessonStore } from '../../store/useGrammarLessonStore';
 import { usePracticePreferencesStore } from '../../store/usePracticePreferencesStore';
-import { findNeighbourGrammarPart } from '../../data/interactiveGrammarPages';
+import { findNeighbourGrammarPartId } from '../../data/interactiveGrammarManifest';
 import type { InteractiveGrammarPart } from '../../types/models';
 import { cn } from '../../utils/cn';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
@@ -148,8 +148,8 @@ export function GrammarLessonScreen({
   const navigateToPart = useCallback(
     (direction: 'next' | 'previous') => {
       if (!onNavigatePart) return;
-      const neighbour = findNeighbourGrammarPart(part.id, direction);
-      if (neighbour) onNavigatePart(neighbour.id);
+      const neighbourId = findNeighbourGrammarPartId(part.id, direction);
+      if (neighbourId) onNavigatePart(neighbourId);
     },
     [onNavigatePart, part.id],
   );

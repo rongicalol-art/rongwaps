@@ -1,9 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {
-  LESSON_ONE_PART_ONE,
-  LESSON_ONE_PART_TWO,
-} from '../src/data/interactiveGrammarPages';
+import { getTestGrammarPartsForLesson } from './acceptance_helpers';
 import {
   evaluateGrammarPlacements,
   findCanonicalTile,
@@ -19,7 +16,8 @@ import {
   getReadingPathStatus,
 } from '../src/utils/lessonProgress';
 
-const lessonOneParts = [LESSON_ONE_PART_ONE, LESSON_ONE_PART_TWO];
+const lessonOneParts = getTestGrammarPartsForLesson(1, 1);
+const [LESSON_ONE_PART_ONE] = lessonOneParts;
 const lessonOnePages = lessonOneParts.flatMap((part) => part.grammarPages);
 
 test('Lesson 1 covers five ordered grammar points in two source-reading parts', () => {

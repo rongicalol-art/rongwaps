@@ -5,6 +5,7 @@ import {
   OFFICIAL_BOOK_AUDIO_ENABLED,
   officialAudioFileName,
 } from '../src/utils/officialAudio';
+import { TEST_ALL_READINGS as ALL_READINGS } from './acceptance_helpers';
 
 test('resolves Book 1 audio references to official track file names', () => {
   assert.equal(officialAudioFileName(1, '01-1-1'), 'B1-01-1-1.mp3');
@@ -33,8 +34,8 @@ test('returns null for malformed or empty audio references', () => {
   assert.equal(officialAudioFileName(1, '  01-1-1  '), 'B1-01-1-1.mp3');
 });
 
-test('every authored Book 1 reading reference resolves to a hosted track', async () => {
-  const readings = (await import('../src/data/readings')).ALL_READINGS;
+test('every authored Book 1 reading reference resolves to a hosted track', () => {
+  const readings = ALL_READINGS;
   const resolutions = readings.map((reading) => ({
     id: reading.id,
     file: officialAudioFileName(reading.bookId, reading.audioReference),
@@ -51,7 +52,7 @@ test('every resolved reading track is present in the hosted manifest', async () 
     files: Array<{ file: string }>;
   };
   const hosted = new Set(manifest.files.map((entry) => entry.file));
-  const readings = (await import('../src/data/readings')).ALL_READINGS;
+  const readings = ALL_READINGS;
   const missing = readings
     .map((reading) => officialAudioFileName(reading.bookId, reading.audioReference))
     .filter((file): file is string => file !== null)
