@@ -3,7 +3,8 @@ import { resolve } from 'node:path';
 import type { Flashcard } from '../src/data/flashcards';
 import { recordsToExampleCards } from '../src/services/contentPacks';
 import type { CourseExamplePack } from '../src/types/models';
-import { extractSearchVariants, findSmartExamplesForWord } from '../src/utils/courseExamples';
+import { findSmartExamplesForWord } from '../src/utils/courseExamples';
+import { extractSearchVariants } from '../src/utils/wordForms';
 import { parseVocabularyId } from '../src/utils/vocabularyId';
 
 interface VocabularyPackRow {

@@ -1,171 +1,10 @@
-import { useState } from 'react';
-import { useAppNavigation } from './hooks/useAppNavigation.tsx';
-import { useAudioUnlock } from './hooks/useAudioUnlock';
-import { useCharacterFont } from './hooks/useCharacterFont';
 import { LoadingScreen } from './lib/widgets';
 import { AppWorkspace } from './app/components/AppWorkspace';
 import { AppOverlays } from './app/components/AppOverlays';
-import { useResponsiveNav } from './app/hooks/useResponsiveNav';
-import { useReaderLauncher } from './app/hooks/useReaderLauncher';
-import { useGrammarLauncher } from './app/hooks/useGrammarLauncher';
-import { useOverlayUrlSync } from './app/hooks/useOverlayUrlSync';
-import { useWorkspaceRouting } from './app/hooks/useWorkspaceRouting';
-import { useFocusModeSidebar } from './app/hooks/useFocusModeSidebar';
-import { useReaderStepNavigation } from './app/hooks/useReaderStepNavigation';
-import { useAppShellActions } from './app/hooks/useAppShellActions';
-import { useAppShellState } from './app/hooks/useAppShellState';
-import { useActiveBook } from './app/hooks/useActiveBook';
-import { useCloudSync } from './hooks/useCloudSync';
-import { useAuth } from './hooks/useAuth';
-import { useResetProgress } from './hooks/useResetProgress';
+import { useAppShell } from './app/hooks/useAppShell';
 
 export default function App() {
-  useAudioUnlock();
-  useCloudSync();
-  useCharacterFont();
-
-  const {
-    activeBookId,
-    setActiveBookId,
-    characterPreference,
-    setCharacterPreference,
-    isSettingsOpen,
-    setIsSettingsOpen,
-    isLibraryFolderView,
-    dictionaryWord,
-    setDictionaryWord,
-  } = useAppShellState();
-  const { currentUser, isLoading } = useAuth();
-
-  const {
-    activeTab,
-    setActiveTab,
-    activeActivity,
-    setActiveActivity,
-    selectedLessons,
-    toggleLesson,
-    startPathPractice,
-  } = useAppNavigation();
-
-  const {
-    isNavOpen,
-    setIsNavOpen,
-    setResponsiveNavOpen,
-    isDesktop,
-    isDesktopOrTablet,
-    isCollapsed,
-    collapseNav,
-    restoreBaseNavPreference,
-    toggleCollapse,
-  } = useResponsiveNav();
-  const [isInitialAuthOpen, setIsInitialAuthOpen] = useState(true);
-
-  const { activeGrammarPartId, setActiveGrammarPartId, activeGrammarPageId, setActiveGrammarPageId, activeGrammarPart } = useGrammarLauncher({
-    onOpen: collapseNav,
-  });
-  const { readings, activeReadingIndex, isOpeningReader, openReader, openReaderForPart, closeReader, navigateReader } = useReaderLauncher({
-    selectedLessons,
-    activeBookId,
-    activeGrammarPartId,
-    onOpen: collapseNav,
-  });
-
-  const handleResetProgress = useResetProgress({
-    currentUser,
-    onActivityCleared: () => setActiveActivity(null),
-    onGrammarCleared: () => setActiveGrammarPartId(null),
-  });
-
-  const activeBook = useActiveBook(activeBookId, activeTab);
-
-  const {
-    handleSetActiveActivity,
-    handleStartPathPractice,
-    handleOpenReading,
-    handleOpenGrammarPart,
-    handleCloseGrammar,
-    handleCloseReader,
-    handleProceedToReading,
-    handleNavigateToPractice,
-    handleSettingsClick,
-  } = useAppShellActions({
-    activeBookId: activeBook.id,
-    collapseNav,
-    setActiveActivity,
-    startPathPractice,
-    openReader,
-    openReaderForPart,
-    closeReader,
-    setActiveGrammarPartId,
-    setActiveGrammarPageId,
-    setIsSettingsOpen,
-    setIsNavOpen,
-    isDesktop,
-  });
-
-  const { handleReaderNext, handleReaderPrevious } = useReaderStepNavigation({
-    activeReadingIndex,
-    readings,
-    closeReader: handleCloseReader,
-    openGrammarPart: handleOpenGrammarPart,
-  });
-
-  const isReaderOpen = isOpeningReader || activeReadingIndex !== null;
-  const isGrammarOpen = Boolean(activeGrammarPartId);
-  const isOverlayActive = isReaderOpen || isGrammarOpen || Boolean(dictionaryWord);
-  const isFocusMode = Boolean(activeActivity || isOverlayActive);
-  const showSidebarCollapse = Boolean(
-    activeActivity || isReaderOpen || isGrammarOpen || (activeTab === 'library' && isLibraryFolderView)
-  );
-
-  useFocusModeSidebar({
-    isReaderOpen,
-    activeReadingIndex,
-    isGrammarOpen,
-    activeGrammarPartId,
-    dictionaryWord,
-    activeActivity,
-    isOverlayActive,
-    collapseNav,
-    restoreBaseNavPreference,
-  });
-
-  useOverlayUrlSync({
-    reader: {
-      activeReadingIndex,
-      readingsLength: readings.length,
-      activeBookId: activeBook.id,
-      openReader,
-      navigateReader,
-      closeReader,
-    },
-    grammar: {
-      activeGrammarPartId,
-      setActiveGrammarPartId,
-    },
-    dictionary: {
-      dictionaryWord,
-      setDictionaryWord,
-    },
-    activity: {
-      activeActivity,
-      setActiveActivity,
-    },
-  });
-
-  const { handleTabChange, handleNavToggle } = useWorkspaceRouting({
-    activeTab,
-    setActiveTab,
-    setActiveActivity,
-    closeReader,
-    setActiveGrammarPartId,
-    isDesktop,
-    isDesktopOrTablet,
-    toggleCollapse,
-    setIsNavOpen,
-    collapseNav,
-    isFocusMode,
-  });
+  const { isLoading, nav, reader, grammar, activity, settings, overlays } = useAppShell();
 
   if (isLoading) {
     return <LoadingScreen message="Loading RongWaps…" fullScreen tone="canvas" />;
@@ -175,66 +14,66 @@ export default function App() {
     <>
       <AppWorkspace
         shell={{
-          activeTab,
-          activeActivity: isOverlayActive ? null : activeActivity,
-          practiceCanvasOpen: Boolean(dictionaryWord),
-          activeBook,
-          isNavOpen,
-          isCollapsed,
-          isDesktopOrTablet,
-          onToggleCollapse: toggleCollapse,
-          setIsNavOpen: setResponsiveNavOpen,
-          isOverlayActive,
-          showSidebarCollapse,
-          onSettingsClick: handleSettingsClick,
-          onTabChange: handleTabChange,
+          activeTab: nav.activeTab,
+          activeActivity: overlays.isOverlayActive ? null : activity.activeActivity,
+          practiceCanvasOpen: Boolean(overlays.dictionaryWord),
+          activeBook: activity.activeBook,
+          isNavOpen: nav.isNavOpen,
+          isCollapsed: nav.isCollapsed,
+          isDesktopOrTablet: nav.isDesktopOrTablet,
+          onToggleCollapse: nav.toggleCollapse,
+          setIsNavOpen: nav.setResponsiveNavOpen,
+          isOverlayActive: overlays.isOverlayActive,
+          showSidebarCollapse: nav.showSidebarCollapse,
+          onSettingsClick: settings.onOpen,
+          onTabChange: nav.handleTabChange,
         }}
         activityModals={{
-          activeActivity,
-          setActiveActivity: handleSetActiveActivity,
-          activeBookId: activeBook.id,
-          selectedLessons,
-          isLibraryMode: activeTab === 'library',
-          isShellOverlayOpen: isOverlayActive,
-          onNavigateToPractice: handleNavigateToPractice,
-          onOpenGrammarPart: handleOpenGrammarPart,
-          onOpenReading: handleOpenReading,
+          activeActivity: activity.activeActivity,
+          setActiveActivity: activity.onSetActiveActivity,
+          activeBookId: activity.activeBook.id,
+          selectedLessons: activity.selectedLessons,
+          isLibraryMode: nav.activeTab === 'library',
+          isShellOverlayOpen: overlays.isOverlayActive,
+          onNavigateToPractice: activity.onNavigateToPractice,
+          onOpenGrammarPart: grammar.onOpenPart,
+          onOpenReading: activity.onOpenReading,
         }}
         routes={{
-          activeTab,
-          activeBookId,
-          setActiveBookId,
-          selectedLessons,
-          toggleLesson,
-          startPathPractice: handleStartPathPractice,
-          setActiveTab: handleTabChange,
-          setActiveActivity: handleSetActiveActivity,
-          onOpenGrammarPart: handleOpenGrammarPart,
-          onToggleNav: handleNavToggle,
+          activeTab: nav.activeTab,
+          activeBookId: nav.activeBookId,
+          setActiveBookId: nav.setActiveBookId,
+          selectedLessons: activity.selectedLessons,
+          toggleLesson: activity.toggleLesson,
+          startPathPractice: activity.onStartPathPractice,
+          setActiveTab: nav.handleTabChange,
+          setActiveActivity: activity.onSetActiveActivity,
+          onOpenGrammarPart: grammar.onOpenPart,
+          onToggleNav: nav.handleNavToggle,
         }}
       />
 
       <AppOverlays
-        isGrammarOpen={isGrammarOpen}
-        grammarPart={activeGrammarPart ?? null}
-        grammarPageId={activeGrammarPageId ?? undefined}
-        onCloseGrammar={handleCloseGrammar}
-        onProceedToReading={handleProceedToReading}
-        onNavigateGrammarPart={handleOpenGrammarPart}
-        isReaderOpen={isReaderOpen}
-        readings={readings}
-        readingIndex={activeReadingIndex}
-        onReaderNext={handleReaderNext}
-        onReaderPrevious={handleReaderPrevious}
-        onCloseReader={handleCloseReader}
-        onOpenGrammarPart={handleOpenGrammarPart}
-        isSettingsOpen={isSettingsOpen}
-        onCloseSettings={() => setIsSettingsOpen(false)}
-        characterPreference={characterPreference}
-        onCharacterPreferenceChange={setCharacterPreference}
-        onResetProgress={handleResetProgress}
-        isAuthOpen={!currentUser && isInitialAuthOpen}
-        onCloseAuth={() => setIsInitialAuthOpen(false)}
+        isGrammarOpen={grammar.isOpen}
+        grammarPart={grammar.part ?? null}
+        grammarPageId={grammar.pageId ?? undefined}
+        onCloseGrammar={grammar.onClose}
+        onProceedToReading={grammar.onProceedToReading}
+        onNavigateGrammarPart={grammar.onOpenPart}
+        isReaderOpen={reader.isOpen}
+        readings={reader.readings}
+        readingIndex={reader.index}
+        onReaderNext={reader.onNext}
+        onReaderPrevious={reader.onPrevious}
+        onCloseReader={reader.onClose}
+        onOpenGrammarPart={grammar.onOpenPart}
+        isSettingsOpen={settings.isOpen}
+        onCloseSettings={settings.onClose}
+        characterPreference={settings.characterPreference}
+        onCharacterPreferenceChange={settings.setCharacterPreference}
+        onResetProgress={settings.onResetProgress}
+        isAuthOpen={overlays.isAuthOpen}
+        onCloseAuth={overlays.closeAuth}
       />
     </>
   );

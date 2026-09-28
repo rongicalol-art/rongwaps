@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import type { Flashcard } from '../../../data/flashcards';
 import { MemoryHookCharacter, renderHookText } from '../../character-memory-hooks';
 import type { RankedExample } from '../../../utils/courseExamples';
-import { extractWordVariants } from '../../../utils/courseExamples';
+import { extractWordVariants } from '../../../utils/wordForms';
 import { isHanziChar } from '../../../utils/hanzi';
 import { AppIcon, PosBadge } from '../../../lib/widgets';
 import { formatPosLabel } from '../../../utils/posLabels';

@@ -132,6 +132,7 @@ export type LastActivityType = PracticeActivityType | 'flashcards-review' | null
 
 
 export * from './grammar';
+export * from './grammarLabs';
 
 export interface AlignedWord {
   w: string;

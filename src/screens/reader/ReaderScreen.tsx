@@ -10,9 +10,9 @@ import { useDialogueAlignment } from './hooks/useDialogueAlignment';
 import { useReaderAudio } from './hooks/useReaderAudio';
 import { useReaderPreferences } from './hooks/useReaderPreferences';
 import { ReaderHeader } from './components/ReaderHeader';
-import { ReaderStudyDrawer } from './components/ReaderStudyDrawer';
-import { ReaderStudyPanel } from './components/ReaderStudyPanel';
-import { StudySidePanel } from '../../lib/widgets';
+import { ReaderStudySurfaces } from './components/ReaderStudySurfaces';
+import { useReaderKeyboardNavigation } from './hooks/useReaderKeyboardNavigation';
+import { useReaderSwipeNavigation } from './hooks/useReaderSwipeNavigation';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useWorkspaceIsolation } from '../../hooks/useWorkspaceIsolation';
 import { isNarrativeReading } from './utils/narrativeParagraphs';
@@ -133,8 +133,6 @@ export function ReaderScreen({
     setLocatedGrammarPoint(point);
     if (point) setLocatedWord(null);
   }, []);
-  const isStudyDrawerOpenRef = useRef(isStudyDrawerOpen);
-  isStudyDrawerOpenRef.current = isStudyDrawerOpen;
 
   const [contentReady, setContentReady] = useState(false);
   const markContentReady = useCallback(() => setContentReady(true), []);
@@ -165,6 +163,19 @@ export function ReaderScreen({
     audioMode,
   });
 
+  useReaderKeyboardNavigation({
+    isStudyDrawerOpen,
+    setStudyDrawerOpen: setIsStudyDrawerOpen,
+    onClose,
+    onNext,
+    onPrevious,
+    togglePlay,
+    prevSentence,
+    nextSentence,
+  });
+
+  const { handleTouchStart, handleTouchEnd } = useReaderSwipeNavigation({ onNext, onPrevious });
+
   // Stable play callbacks: the reading canvases memoize each word, so passing
   // fresh arrow identities here would re-render every word on every karaoke
   // tick. The audio hook's play actions do not depend on `currentTime`, so
@@ -190,80 +201,6 @@ export function ReaderScreen({
 
   // Isolate background from accessibility tree and user focus while reader is open
   useWorkspaceIsolation(dialogRef);
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      const target = event.target as HTMLElement | null;
-      if (target?.tagName === 'INPUT' || target?.tagName === 'TEXTAREA' || target?.isContentEditable) {
-        return;
-      }
-
-      if (event.key === 'Escape') {
-        event.stopPropagation();
-        if (isStudyDrawerOpenRef.current) {
-          setIsStudyDrawerOpen(false);
-          return;
-        }
-        if (useAppStore.getState().dictionaryWord) {
-          useAppStore.getState().setDictionaryWord(null);
-          return;
-        }
-        onClose();
-      } else if (event.key === ' ') {
-        event.preventDefault();
-        event.stopPropagation();
-        togglePlay();
-      } else if (event.key === 'ArrowLeft') {
-        event.preventDefault();
-        event.stopPropagation();
-        if (event.altKey || event.metaKey) {
-          prevSentence();
-        } else {
-          onPrevious();
-        }
-      } else if (event.key === 'ArrowRight') {
-        event.preventDefault();
-        event.stopPropagation();
-        if (event.altKey || event.metaKey) {
-          nextSentence();
-        } else {
-          onNext();
-        }
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onClose, onNext, onPrevious, togglePlay, prevSentence, nextSentence]);
-
-  // Touch Swipe Gestures for Previous / Next Dialogue
-  const touchStartXRef = useRef<number | null>(null);
-  const touchStartYRef = useRef<number | null>(null);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    const touch = e.touches[0];
-    touchStartXRef.current = touch.clientX;
-    touchStartYRef.current = touch.clientY;
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartXRef.current === null || touchStartYRef.current === null) return;
-    const touch = e.changedTouches[0];
-    const diffX = touch.clientX - touchStartXRef.current;
-    const diffY = touch.clientY - touchStartYRef.current;
-
-    touchStartXRef.current = null;
-    touchStartYRef.current = null;
-
-    if (Math.abs(diffX) > 80 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
-      if (diffX > 0) {
-        onPrevious();
-      } else {
-        onNext();
-      }
-    }
-  };
 
   if (!reading) return null;
 
@@ -380,38 +317,21 @@ export function ReaderScreen({
           )}
         </div>
 
-        {isStudySidePanelOpen && (
-          <StudySidePanel
-            ariaLabel="Study Companion Panel"
-            title="Study Guide"
-            onClose={() => setIsStudySidePanelOpen(false)}
-            closeLabel="Hide study guide"
-          >
-            <ReaderStudyPanel
-              reading={reading}
-              characterPreference={characterPreference}
-              onOpenWord={setDictionaryWord}
-              onOpenGrammarPart={onOpenGrammarPart}
-              onLocateWord={handleLocateWord}
-              onLocateGrammarPoint={handleLocateGrammarPoint}
-              locatedWordId={locatedWord?.id ?? null}
-              locatedGrammarPointId={locatedGrammarPoint?.id ?? null}
-              showCloseButton={false}
-            />
-          </StudySidePanel>
-        )}
       </div>
 
-      {/* Slide-over Study Guide drawer for mobile (screens < lg); hidden from lg up where the side panel shows */}
-      <ReaderStudyDrawer
-        isOpen={isStudyDrawerOpen}
-        onClose={() => setIsStudyDrawerOpen(false)}
+      <ReaderStudySurfaces
         reading={reading}
         characterPreference={characterPreference}
         onOpenWord={setDictionaryWord}
         onOpenGrammarPart={onOpenGrammarPart}
         onLocateWord={handleLocateWord}
         onLocateGrammarPoint={handleLocateGrammarPoint}
+        isStudySidePanelOpen={isStudySidePanelOpen}
+        setIsStudySidePanelOpen={setIsStudySidePanelOpen}
+        isStudyDrawerOpen={isStudyDrawerOpen}
+        setIsStudyDrawerOpen={setIsStudyDrawerOpen}
+        locatedWordId={locatedWord?.id ?? null}
+        locatedGrammarPointId={locatedGrammarPoint?.id ?? null}
       />
     </div>
   );

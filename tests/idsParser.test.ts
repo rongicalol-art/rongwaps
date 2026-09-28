@@ -9,15 +9,17 @@ import type {
 import {
   IdsParseError,
   STRICT_IDS_OPERAND_ADAPTER,
+  normalizeIdsExpression,
+  parseIdsExpression,
+  type IdsOperandAdapter,
+} from '../src/utils/idsParser';
+import {
   collectLearnerCards,
   getDecompositionLookupKey,
   getVisibleCardChildren,
-  normalizeIdsExpression,
-  parseIdsExpression,
   projectLearnerDecomposition,
   resolveExplorableCharacterTree,
-  type IdsOperandAdapter,
-} from '../src/utils/idsParser';
+} from '../src/utils/idsLearnerProjection';
 import {
   CJKVI_OPERAND_ADAPTER,
   MAKE_ME_A_HANZI_OPERAND_ADAPTER,

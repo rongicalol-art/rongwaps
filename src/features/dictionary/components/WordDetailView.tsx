@@ -1,7 +1,7 @@
 import { debugLogger } from '../../../utils/debugLogger';
 import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { AppIcon, DetailShell, ScreenHeader, Skeleton } from '../../../lib/widgets';
+import { DetailShell, ScreenHeader } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { getDictionaryEntries } from '../../../services/dictionaryService';
 import { searchVocabulary } from '../../../services/vocabularyService';
@@ -16,177 +16,12 @@ import { MemoryHookBlock } from '../../character-memory-hooks';
 import { WordExamplesSection } from './WordExamplesSection';
 import { WordDecompositionStrip } from './WordDecompositionStrip';
 import { WordSupportingInformation, hasWordSupportingInfo } from './WordSupportingInformation';
+import { WordDetailSkeleton } from './WordDetailSkeleton';
+import { FallbackWords } from './FallbackWords';
+import { NotFound } from './NotFound';
 import { useWordExtras } from '../hooks/useWordExtras';
 
 const HANZI_RE = /[\u3400-\u9FFF]/u;
-
-export function WordDetailSkeleton() {
-  return (
-    <div className="flex w-full flex-col gap-6 animate-in fade-in duration-200" role="status" aria-label="Loading dictionary entry">
-      {/* 1. Header Card Skeleton */}
-      <header className="relative isolate min-w-0 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
-        <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4 p-4 sm:gap-7 sm:p-6">
-          <Skeleton className="h-16 w-20 sm:h-20 sm:w-28 rounded-feature shrink-0" />
-          <div className="flex min-w-0 flex-col gap-2">
-            <Skeleton className="h-6 w-28 sm:w-36" />
-            <Skeleton className="h-5 w-4/5 max-w-md" />
-            <Skeleton className="h-3.5 w-20" />
-          </div>
-        </div>
-
-        {/* Quick Actions Skeleton */}
-        <div className="border-t border-ui-divider/70 px-4 py-3 sm:px-6 flex items-center gap-3">
-          <Skeleton className="h-10 w-10 rounded-full shrink-0" />
-          <Skeleton className="h-10 w-10 rounded-full shrink-0" />
-          <Skeleton className="h-10 w-10 rounded-full shrink-0" />
-        </div>
-
-        {/* Extended Definitions Skeleton */}
-        <div className="border-t border-ui-divider/70 px-4 py-4 sm:px-6 flex flex-col gap-2.5">
-          <Skeleton className="h-4 w-32" />
-          <Skeleton className="h-4 w-full max-w-xl" />
-          <Skeleton className="h-4 w-2/3" />
-        </div>
-      </header>
-
-      {/* 2-Column Section Matching Loaded Layout */}
-      <div className="grid min-w-0 items-start gap-6 lg:grid-cols-[minmax(0,64fr)_minmax(19rem,36fr)] lg:gap-8">
-        <div className="flex min-w-0 flex-col gap-6 lg:gap-8">
-          {/* 2. Decomposition Strip Skeleton */}
-          <div className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-5 flex flex-col gap-3">
-            <Skeleton className="h-4 w-28" />
-            <div className="flex gap-3">
-              <Skeleton className="h-14 w-14 rounded-compact shrink-0" />
-              <Skeleton className="h-14 w-14 rounded-compact shrink-0" />
-            </div>
-          </div>
-
-          {/* 3. Memory Hook Skeleton */}
-          <div className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-5 flex flex-col gap-2.5">
-            <Skeleton className="h-4 w-24" />
-            <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-3/4" />
-          </div>
-
-          {/* 4. Example Sentences Skeleton */}
-          <div className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-5 flex flex-col gap-3">
-            <Skeleton className="h-4 w-28" />
-            <div className="flex flex-col gap-2 pt-1">
-              <Skeleton className="h-5 w-4/5" />
-              <Skeleton className="h-3.5 w-1/2" />
-            </div>
-            <div className="flex flex-col gap-2 pt-2 border-t border-ui-divider/50">
-              <Skeleton className="h-5 w-3/4" />
-              <Skeleton className="h-3.5 w-2/5" />
-            </div>
-          </div>
-        </div>
-
-        {/* Right Sidebar on Desktop (Supporting info: Characters & Related Words) */}
-        <aside aria-label="Word context" className="flex min-w-0 flex-col gap-4 lg:sticky lg:top-4 lg:self-start">
-          {/* Characters Card Skeleton */}
-          <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6 flex flex-col gap-3">
-            <Skeleton className="h-4 w-24" />
-            <div className="mt-1 divide-y divide-ui-divider/40">
-              {Array.from({ length: 2 }).map((_, i) => (
-                <div key={i} className="flex items-center gap-3.5 py-3">
-                  <Skeleton className="h-10 w-10 rounded-compact shrink-0" />
-                  <div className="flex-1 flex flex-col gap-1.5">
-                    <Skeleton className="h-4 w-20" />
-                    <Skeleton className="h-3.5 w-36" />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Related Words Card Skeleton */}
-          <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6 flex flex-col gap-3">
-            <Skeleton className="h-4 w-28" />
-            <div className="mt-1 divide-y divide-ui-divider/40">
-              {Array.from({ length: 3 }).map((_, i) => (
-                <div key={i} className="flex items-center gap-3.5 py-3">
-                  <Skeleton className="h-10 w-10 rounded-compact shrink-0" />
-                  <div className="flex-1 flex flex-col gap-1.5">
-                    <Skeleton className="h-4 w-24" />
-                    <Skeleton className="h-3.5 w-40" />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </aside>
-      </div>
-    </div>
-  );
-}
-
-function FallbackWords({
-  word,
-  fallbackWords,
-  onOpenWord,
-}: {
-  word: string;
-  fallbackWords: Array<{ word: string; entries: DBDictionaryEntry[] }>;
-  onOpenWord: (word: string) => void;
-}) {
-  return (
-    <div className="flex flex-col gap-5">
-      <div className="flex flex-col gap-1.5 border-b border-ui-divider pb-5">
-        <p className="text-lg font-extrabold leading-tight text-ui-ink">Read “{word}” as words</p>
-        <p className="text-sm font-bold text-ui-muted-strong">
-          Phrase has no single dictionary entry. Here are its useful word parts.
-        </p>
-      </div>
-      <div className="overflow-hidden rounded-control border border-ui-divider">
-        {fallbackWords.map(({ word: part, entries: partEntries }, idx) => (
-          <button
-            key={`${part}-${idx}`}
-            type="button"
-            onClick={() => onOpenWord(part)}
-            className="grid w-full grid-cols-[minmax(72px,0.32fr)_minmax(0,1fr)] gap-4 border-t border-ui-divider bg-ui-surface p-4 text-left transition first:border-t-0 hover:bg-ui-hover focus-ring focus-visible:ring-inset"
-          >
-            <div>
-              <span className="font-chinese text-3xl font-black text-ui-ink-strong">{part}</span>
-              <div className="mt-1 flex flex-wrap gap-1.5">
-                {(partEntries[0].pinyin || []).slice(0, 2).map((py, i) => (
-                  <span key={i} className="text-xs font-bold text-brand-primary">
-                    {numberToToneMarks(py)}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <ul className="space-y-1">
-              {partEntries
-                .flatMap((entry) => Object.values(entry.definitions ?? {}))
-                .slice(0, 4)
-                .map((definition, i) => (
-                  <li key={i} className="text-sm font-bold leading-5 text-ui-ink">
-                    <span className="mr-1.5 text-ui-muted">{i + 1}.</span>
-                    {String(definition)}
-                  </li>
-                ))}
-            </ul>
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function NotFound({ word }: { word: string }) {
-  return (
-    <div className="flex flex-col items-center justify-center py-16 text-ui-muted">
-      <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-ui-canvas">
-        <AppIcon name="search" size={32} className="text-ui-muted opacity-80" />
-      </div>
-      <p className="mb-2 text-2xl font-extrabold text-ui-ink">Not Found</p>
-      <p className="px-8 text-center text-[15px] font-bold text-ui-muted-strong">
-        We couldn't find <span className="text-ui-ink">“{word}”</span> in the dictionary.
-      </p>
-    </div>
-  );
-}
 
 interface WordDetailViewProps {
   word: string;

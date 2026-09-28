@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { NormalizedDecompositionNode } from '../src/types/decomposition';
-import { getVisibleCardChildren, projectLearnerDecomposition, resolveExplorableCharacterTree } from '../src/utils/idsParser';
+import { getVisibleCardChildren, projectLearnerDecomposition, resolveExplorableCharacterTree } from '../src/utils/idsLearnerProjection';
 import {
   LazyDecompositionResolver,
 } from '../src/features/character-decomposition';

@@ -1,2 +1,2 @@
 export { DictionaryDetailOverlay } from './components/DictionaryDetailOverlay';
-export { WordDetailSkeleton } from './components/WordDetailView';
+export { WordDetailSkeleton } from './components/WordDetailSkeleton';

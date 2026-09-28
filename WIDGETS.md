@@ -55,6 +55,10 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
   ```tsx
   <CloudPuff className="w-44" />
   ```
+- **VideoBackground** — silently looping video backdrop with an instant poster frame (no layout shift), a crossfade once decoding starts, and automatic `prefers-reduced-motion`/tab-visibility handling. Decorative only: pass `posterSrc` plus at least one of `webmSrc`/`mp4Src`, and override `scrimClassName` for a different tint; optional `children` render above the scrim.
+  ```tsx
+  <VideoBackground posterSrc={poster} webmSrc={clipWebm} mp4Src={clipMp4} />
+  ```
 - **CountryFlag** — consistent rectangular vector flag. Use `code` (`GB`, `ID`, `JP`, or `US`) instead of platform emoji.
   ```tsx
   <CountryFlag code="JP" alt="Japan" />

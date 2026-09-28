@@ -2,12 +2,11 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { Flashcard } from '../src/data/flashcards';
 import {
-  extractSearchVariants,
-  extractWordVariants,
   findSmartExamplesForWord,
   groupRankedExamples,
-  isExampleSourceAvailable,
 } from '../src/utils/courseExamples';
+import { extractSearchVariants, extractWordVariants } from '../src/utils/wordForms';
+import { isExampleSourceAvailable } from '../src/utils/curriculumPosition';
 
 const target: Flashcard = {
   id: 'B1L03-2-04',

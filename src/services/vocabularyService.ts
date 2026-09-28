@@ -2,7 +2,7 @@ import { debugLogger } from '../utils/debugLogger';
 import { supabase, isSupabaseConfigured } from './supabaseClient';
 import { Flashcard, FLASHCARDS_DATA } from '../data/flashcards';
 import { vocabularyCache } from '../utils/cache';
-import { extractSearchVariants, sentenceMatchesForms } from '../utils/courseExamples';
+import { extractSearchVariants, sentenceMatchesForms } from '../utils/wordForms';
 import { stripPinyinTones } from '../utils/pinyinNormalize';
 import { timeDataRequest } from '../utils/requestTiming';
 import {

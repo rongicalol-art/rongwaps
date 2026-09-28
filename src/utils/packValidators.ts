@@ -1,6 +1,6 @@
 import type { Flashcard } from '../data/flashcards';
 import type { CourseExampleRecord, ReadingRecord, InteractiveGrammarPart } from '../types/models';
-import { sentenceMatchesForms } from '../utils/courseExamples';
+import { sentenceMatchesForms } from './wordForms';
 import type { PackPart } from '../services/packLoader';
 
 export interface GenericManifestPart { key: number; path: string; count: number; }

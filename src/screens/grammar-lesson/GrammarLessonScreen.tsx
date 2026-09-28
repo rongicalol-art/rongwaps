@@ -16,6 +16,7 @@ import { GrammarContinueFooter } from './components/GrammarContinueFooter';
 import { GrammarBookPageViewer } from './components/GrammarBookPageViewer';
 import { useGrammarLessonPage } from './hooks/useGrammarLessonPage';
 import { useGrammarFooterVisibility } from './hooks/useGrammarFooterVisibility';
+import { useGrammarLessonKeyboardNavigation } from './hooks/useGrammarLessonKeyboardNavigation';
 
 // Window shell (this module) stays eager so the lesson opens instantly with
 // its canvas + header; the heavy study page streams in under a spinner.
@@ -138,11 +139,6 @@ export function GrammarLessonScreen({
     onDeactivate: () => audioService.stop(),
   });
 
-  const onCloseRef = useRef(onClose);
-  useEffect(() => {
-    onCloseRef.current = onClose;
-  }, [onClose]);
-
   const navigateToPart = useCallback(
     (direction: 'next' | 'previous') => {
       if (!onNavigatePart) return;
@@ -152,41 +148,17 @@ export function GrammarLessonScreen({
     [onNavigatePart, part.id],
   );
 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (isBookOpen || isConfusionOpen) return;
-      if (event.key === 'Escape') {
-        onCloseRef.current();
-        return;
-      }
-      const target = event.target as HTMLElement | null;
-      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) return;
-      if (event.key === 'ArrowRight' && event.shiftKey) {
-        event.preventDefault();
-        navigateToPart('next');
-      } else if (event.key === 'ArrowLeft' && event.shiftKey) {
-        event.preventDefault();
-        navigateToPart('previous');
-      } else if (event.key === ']' && !event.metaKey && !event.ctrlKey) {
-        event.preventDefault();
-        navigateToPart('next');
-      } else if (event.key === '[' && !event.metaKey && !event.ctrlKey) {
-        event.preventDefault();
-        navigateToPart('previous');
-      } else if (event.key === 'ArrowRight') {
-        event.preventDefault();
-        if (event.repeat && currentGrammarIndex >= part.grammarPages.length - 1) return;
-        continueAfterStudy();
-      } else if (event.key === 'ArrowLeft' && previousPage) {
-        event.preventDefault();
-        goBackToPreviousGrammar();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isBookOpen, isConfusionOpen, previousPage, continueAfterStudy, goBackToPreviousGrammar, navigateToPart, currentGrammarIndex, part]);
+  useGrammarLessonKeyboardNavigation({
+    isBookOpen,
+    isConfusionOpen,
+    previousPage,
+    continueAfterStudy,
+    goBackToPreviousGrammar,
+    navigateToPart,
+    currentGrammarIndex,
+    part,
+    onClose,
+  });
 
   useEffect(() => {
     const dialog = dialogRef.current;

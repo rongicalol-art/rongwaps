@@ -13,7 +13,7 @@ import {
   getVisibleCardChildren,
   projectLearnerDecomposition,
   resolveExplorableCharacterTree,
-} from '../../../src/utils/idsParser';
+} from '../../../src/utils/idsLearnerProjection';
 
 export const DECOMPOSITION_IMPORTER_VERSION = 'phase3-v1';
 export const DECOMPOSITION_PARSER_VERSION = 'normalized-ids-v2';
