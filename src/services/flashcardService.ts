@@ -1,5 +1,6 @@
 import { debugLogger } from '../utils/debugLogger';
 import { supabase } from "./supabaseClient";
+import type { RealtimeChannel } from "@supabase/supabase-js";
 import { UserFlashcard, UserFolder } from "../types/models";
 
 type FlashcardListener = (cards: UserFlashcard[]) => void;
@@ -25,6 +26,10 @@ class FlashcardService {
   private cachedFolders: UserFolder[] | null = null;
   private currentUserId: string | null = null;
   private deletingFolderIds: Set<string> = new Set();
+  /** Service-owned realtime channels: one per table while listeners exist. */
+  private flashcardsChannel: RealtimeChannel | null = null;
+  private foldersChannel: RealtimeChannel | null = null;
+  private channelSeq = 0;
 
   private notifyFlashcards() {
     if (this.cachedFlashcards) {
@@ -170,6 +175,49 @@ class FlashcardService {
     }
   }
 
+  /**
+   * Supabase reuses a channel by topic, and `.on()` after `.subscribe()`
+   * throws ("cannot add `postgres_changes` callbacks ... after subscribe()").
+   * StrictMode double-mounts and every second concurrent subscriber (library,
+   * save-word modal, activity loader) hit exactly that. Every channel gets a
+   * unique topic, and it is owned here: opened once per table while listeners
+   * exist, torn down with the last one.
+   */
+  private openRealtimeChannel(
+    table: "user_flashcards" | "user_folders",
+    userId: string,
+    onChange: () => void,
+  ): RealtimeChannel | null {
+    try {
+      this.channelSeq += 1;
+      return supabase
+        .channel(`public:${table}:${this.channelSeq}`)
+        .on(
+          "postgres_changes",
+          {
+            event: "*",
+            schema: "public",
+            table,
+            filter: `user_id=eq.${userId}`,
+          },
+          onChange,
+        )
+        .subscribe();
+    } catch (error) {
+      // Graceful degradation: realtime is an enhancement — the manual refetch
+      // above already ran, so an unavailable subscription must never crash.
+      debugLogger.warn("Supabase", `Realtime subscription for ${table} unavailable.`, error);
+      return null;
+    }
+  }
+
+  private closeRealtimeChannel(channel: RealtimeChannel | null) {
+    if (!channel) return;
+    void supabase.removeChannel(channel).catch((error) => {
+      debugLogger.warn("Supabase", "Failed to remove realtime channel.", error);
+    });
+  }
+
   subscribeToUserFlashcards(userId: string, onUpdate: FlashcardListener) {
     this.flashcardListeners.add(onUpdate);
 
@@ -185,26 +233,19 @@ class FlashcardService {
       this.refetchFlashcards(userId);
     }
 
-    // Attempt real-time too
-    const subscription = supabase
-      .channel("public:user_flashcards")
-      .on(
-        "postgres_changes",
-        {
-          event: "*",
-          schema: "public",
-          table: "user_flashcards",
-          filter: `user_id=eq.${userId}`,
-        },
-        () => {
-          this.refetchFlashcards(userId);
-        },
-      )
-      .subscribe();
+    if (!this.flashcardsChannel) {
+      this.flashcardsChannel = this.openRealtimeChannel("user_flashcards", userId, () => {
+        this.refetchFlashcards(userId);
+      });
+    }
 
     return () => {
       this.flashcardListeners.delete(onUpdate);
-      supabase.removeChannel(subscription);
+      if (this.flashcardListeners.size === 0) {
+        const channel = this.flashcardsChannel;
+        this.flashcardsChannel = null;
+        this.closeRealtimeChannel(channel);
+      }
     };
   }
 
@@ -288,25 +329,19 @@ class FlashcardService {
       this.refetchFolders(userId);
     }
 
-    const subscription = supabase
-      .channel("public:user_folders")
-      .on(
-        "postgres_changes",
-        {
-          event: "*",
-          schema: "public",
-          table: "user_folders",
-          filter: `user_id=eq.${userId}`,
-        },
-        () => {
-          this.refetchFolders(userId);
-        },
-      )
-      .subscribe();
+    if (!this.foldersChannel) {
+      this.foldersChannel = this.openRealtimeChannel("user_folders", userId, () => {
+        this.refetchFolders(userId);
+      });
+    }
 
     return () => {
       this.folderListeners.delete(onUpdate);
-      supabase.removeChannel(subscription);
+      if (this.folderListeners.size === 0) {
+        const channel = this.foldersChannel;
+        this.foldersChannel = null;
+        this.closeRealtimeChannel(channel);
+      }
     };
   }
 }
