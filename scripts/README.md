@@ -25,7 +25,7 @@ Run order (all via `npx tsx <script>` or the matching `npm run memory-hooks:*`):
    `checkComponentOrder.ts` (`memory-hooks:check:order`) for hooks that
    mention components out of breakdown order.
 6. Ship: `exportHookPack.ts` writes `public/data/memory-hooks/book-1.json` +
-   `manifest.json` (hash version). Guarded by `tests/memoryHook*.test.ts`.
+   `manifest.json` (hash version). Guarded by `tests/content/memoryHook*.test.ts`.
 7. Human review surface: `buildHookReviewPage.ts` (`memory-hooks:review:page`)
    emits `output/memory-hooks/review/hook-review.html` — a standalone page with
    before/after hooks, confidence tags, app-style component breakdowns, and

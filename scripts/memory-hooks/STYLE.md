@@ -11,7 +11,7 @@ settles a new rule.
   `字(meaning)` so the target itself bolds.
 - Multi-character word hooks name every character of the word. No bare
   "X means Y" restatement.
-- A hook must render at least one emphasis run (`tests/memoryHookWordQuality.test.ts`).
+- A hook must render at least one emphasis run (`tests/content/memoryHookWordQuality.test.ts`).
 - Legacy `(字)` references and `**…**` still render, but new content uses tokens.
 
 ## Component labels: taught meanings win
@@ -89,7 +89,7 @@ settles a new rule.
 - Word edits: decisions file → `applyWordReview.ts` → `exportHookPack.ts`.
 - Character edits: decisions file → `applyCharacterReview.ts` → `exportHookPack.ts`.
 - Before shipping: `strictHookAudit.ts`, `checkHookQuality.ts --all`,
-  `checkComponentLabelAlignment.ts`, and `tests/memoryHook*.test.ts`.
+  `checkComponentLabelAlignment.ts`, and `tests/content/memoryHook*.test.ts`.
 - Meaning-only review round (2026-09-22):
   - `memory-hooks:ledger` builds the component ledger (`component-ledger-v1.json`);
     `component-ledger-overrides-v1.json` holds curated corrections (archaic
@@ -164,5 +164,5 @@ embedded in every generation, critic, and repair prompt. The checklist:
 Every line is enforced by machine where possible: `strictHookAudit.ts` (prose),
 `checkHookQuality.ts` (coverage), `checkComponentOrder.ts` (order),
 `checkComponentLabelAlignment.ts` (labels, advisory), the acceptance suite
-(`tests/acceptance/memory_hooks.test.ts`), `tests/memoryHookPack.test.ts`, and
+(`tests/acceptance/memory_hooks.test.ts`), `tests/content/memoryHookPack.test.ts`, and
 the auto-ship gate (`runHookGates.ts`).

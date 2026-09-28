@@ -74,11 +74,15 @@ This testing infrastructure is designed around five core tenets:
 
 ## 3. Test Suite Inventory & Layout
 
-All acceptance and E2E tests are organized under `tests/acceptance/` with a top-level runner in `tests/acceptance.test.ts` for unified `npm test` execution.
+Tests are grouped by kind: authored-data gates (`tests/content/`), pure and screen-level
+units (`tests/unit/`), script/tooling gates (`tests/pipeline/`), and the acceptance tiers
+(`tests/acceptance/`). `tests/acceptance_runner.test.ts` is the single entry point that
+imports every acceptance suite, so acceptance criteria are executed by the `npm test` glob
+without also being picked up individually.
 
 ```
 tests/
-├── acceptance/
+├── acceptance/                    # Acceptance tiers, executed only via the runner
 │   ├── documentation.test.ts      # R1: Doc count, .original.md, INDEX links, DECISIONS
 │   ├── dependencies.test.ts       # R2: Dead npm packages, config cleanup, ghost dirs, phantom stores
 │   ├── agents_spec.test.ts        # R3: AGENTS.md truthfulness, pixel rules, mnemonics
@@ -86,24 +90,28 @@ tests/
 │   ├── code_quality.test.ts       # R5: Line counts, widget encapsulation, node:crypto purge
 │   ├── server.test.ts             # R6: server/index.ts location and script targets
 │   ├── build_runtime.test.ts      # R7: build verification, runtime sanity
+│   ├── memory_hooks.test.ts       # Authored memory-hook pack audits
 │   ├── tier1_features.test.ts     # Tier 1 happy path requirements
 │   ├── tier2_boundaries.test.ts   # Tier 2 boundary and corner case validation
 │   ├── tier3_cross_feature.test.ts# Tier 3 pairwise integration verification
 │   └── tier4_real_world.test.ts   # Tier 4 full learner journey simulation
-├── acceptance.test.ts             # Progressive bridge runner for npm test
-├── acceptance_helpers.ts          # Shared testing utilities, file scanners, AST inspectors
-└── ... (existing 41 unit test files)
+├── content/                       # Authored-content gates (packs, lessons, audio, vocab)
+├── unit/                          # Pure modules, services, hooks, and screen-level units
+├── pipeline/                      # Script gates (jev context/lint/verify, decomposition pipeline)
+├── fixtures/                      # JSON snapshots consumed by content/unit suites
+├── acceptance_runner.test.ts      # Single entry point for every tests/acceptance suite
+└── acceptance_helpers.ts          # Shared fs/JSON helpers + acceptance utilities (single fs owner)
 ```
 
 ---
 
 ## 4. Execution Commands & Pipeline
 
-### Standard Test Execution (Unit + Acceptance)
+### Standard Test Execution (Unit + Content + Pipeline + Acceptance)
 ```bash
 npm test
 ```
-*Executes all 41 existing unit test suites (301+ tests) alongside acceptance suites. In standard mode, pending milestone tests yield informative skips, ensuring a non-breaking developer workflow.*
+*Executes every suite under `tests/unit/`, `tests/content/`, and `tests/pipeline/`, plus the acceptance runner (726 cases at the time of writing). In standard mode, pending milestone tests yield informative skips, ensuring a non-breaking developer workflow.*
 
 ### Strict Acceptance Test Execution (All Acceptance Criteria)
 ```bash
@@ -133,8 +141,8 @@ npm run build
 
 | Metric | Target | Verification Method |
 |---|---|---|
-| Existing Unit Tests | 301 passing (0 failures) | `npm test` |
-| Acceptance Test Suites | 11 suites, 100% passing | `npx tsx --test tests/acceptance/*.test.ts` |
+| Unit + content + pipeline suites | 726 cases passing (0 failures) | `npm test` |
+| Acceptance Test Suites | 12 suites, 100% passing | `npx tsx --test tests/acceptance/*.test.ts` |
 | Markdown Files Count | <= 12 files (root + docs/ excluding README) | `tests/acceptance/documentation.test.ts` |
 | Dead Dependencies | 0 occurrences in dependencies & src | `tests/acceptance/dependencies.test.ts` |
 | Monolith Max Lines: `App.tsx` | < 250 lines | `tests/acceptance/code_quality.test.ts` |

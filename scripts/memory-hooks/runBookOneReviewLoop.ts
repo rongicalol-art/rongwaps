@@ -46,8 +46,8 @@ function main(): void {
 
   // Step 6: Test Suite Validation
   console.log('\n[STEP 6] Running targeted memory hook test suites...');
-  execSync('npx tsx --test tests/memoryHookPack.test.ts', { cwd: ROOT, stdio: 'inherit' });
-  execSync('npx tsx --test tests/memoryHookWordQuality.test.ts', { cwd: ROOT, stdio: 'inherit' });
+  execSync('npx tsx --test tests/content/memoryHookPack.test.ts', { cwd: ROOT, stdio: 'inherit' });
+  execSync('npx tsx --test tests/content/memoryHookWordQuality.test.ts', { cwd: ROOT, stdio: 'inherit' });
   execSync('npx tsx --test tests/acceptance/memory_hooks.test.ts', { cwd: ROOT, stdio: 'inherit' });
 
   console.log('\n===============================================================');

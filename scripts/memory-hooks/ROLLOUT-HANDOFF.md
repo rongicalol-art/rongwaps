@@ -58,7 +58,7 @@ npm run memory-hooks:export
 # gates:
 npx tsx scripts/memory-hooks/strictHookAudit.ts            # 0 violations
 npm run memory-hooks:check -- --all                         # 0 errors
-npx tsx --test tests/memoryHookPack.test.ts                 # 5/5
+npx tsx --test tests/content/memoryHookPack.test.ts                 # 5/5
 npm test && npm run typecheck && npm run lint               # 502/0, clean, clean
 # append a DECISIONS bullet for the batch, commit (pack + scripts + DECISIONS).
 ```
@@ -148,7 +148,7 @@ npx tsx scripts/memory-hooks/applyMeaningAudit.ts --apply --characters \
 ```bash
 npx tsx scripts/memory-hooks/strictHookAudit.ts    # must be 0
 npm run memory-hooks:check -- --all                 # must be 0 errors
-npx tsx --test tests/memoryHookPack.test.ts         # 5/5
+npx tsx --test tests/content/memoryHookPack.test.ts         # 5/5
 npm test                                            # 502 pass, 0 fail
 npm run typecheck && npm run lint                   # clean
 ```
