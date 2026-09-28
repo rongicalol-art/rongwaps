@@ -10,7 +10,8 @@ import { useDialogueAlignment } from './hooks/useDialogueAlignment';
 import { useReaderAudio } from './hooks/useReaderAudio';
 import { useReaderPreferences } from './hooks/useReaderPreferences';
 import { ReaderHeader } from './components/ReaderHeader';
-import { ReaderStudySurfaces } from './components/ReaderStudySurfaces';
+import { ReaderStudySidePanel } from './components/ReaderStudySidePanel';
+import { ReaderStudyDrawer } from './components/ReaderStudyDrawer';
 import { useReaderKeyboardNavigation } from './hooks/useReaderKeyboardNavigation';
 import { useReaderSwipeNavigation } from './hooks/useReaderSwipeNavigation';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
@@ -317,21 +318,30 @@ export function ReaderScreen({
           )}
         </div>
 
+        {isStudySidePanelOpen && (
+          <ReaderStudySidePanel
+            reading={reading}
+            characterPreference={characterPreference}
+            onOpenWord={setDictionaryWord}
+            onOpenGrammarPart={onOpenGrammarPart}
+            onLocateWord={handleLocateWord}
+            onLocateGrammarPoint={handleLocateGrammarPoint}
+            onClose={() => setIsStudySidePanelOpen(false)}
+            locatedWordId={locatedWord?.id ?? null}
+            locatedGrammarPointId={locatedGrammarPoint?.id ?? null}
+          />
+        )}
       </div>
 
-      <ReaderStudySurfaces
+      <ReaderStudyDrawer
+        isOpen={isStudyDrawerOpen}
+        onClose={() => setIsStudyDrawerOpen(false)}
         reading={reading}
         characterPreference={characterPreference}
         onOpenWord={setDictionaryWord}
         onOpenGrammarPart={onOpenGrammarPart}
         onLocateWord={handleLocateWord}
         onLocateGrammarPoint={handleLocateGrammarPoint}
-        isStudySidePanelOpen={isStudySidePanelOpen}
-        setIsStudySidePanelOpen={setIsStudySidePanelOpen}
-        isStudyDrawerOpen={isStudyDrawerOpen}
-        setIsStudyDrawerOpen={setIsStudyDrawerOpen}
-        locatedWordId={locatedWord?.id ?? null}
-        locatedGrammarPointId={locatedGrammarPoint?.id ?? null}
       />
     </div>
   );
