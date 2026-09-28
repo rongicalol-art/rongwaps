@@ -38,7 +38,7 @@ export function GrammarExamplesSection({
 
   return (
     <section aria-label="Examples" className="rounded-feature bg-ui-surface">
-      <h3 className="px-4 pt-4 text-xs font-black uppercase tracking-wider text-ui-muted-strong sm:px-5 sm:pt-5">
+      <h3 className="px-4 pt-4 text-2xl font-black leading-tight text-ui-ink-strong sm:px-5 sm:pt-5 sm:text-3xl lg:text-4xl">
         Examples
       </h3>
       {activeExamples.map((example, index) => (
