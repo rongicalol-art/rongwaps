@@ -237,6 +237,51 @@ function derivePersistedState(state: AppState): Partial<AppState> {
   return persisted as Partial<AppState>;
 }
 
+/**
+ * Persisted slice fields whose runtime shape is an array. IndexedDB is
+ * untrusted input (hand edits, interrupted writes, older app versions), and a
+ * non-array here crashes render trees far from the store — e.g. `favorites:
+ * null` detonates the Library tab boundary. Coerce to the empty default and
+ * say so in the debug log instead.
+ */
+const PERSISTED_ARRAY_KEYS = [
+  'favorites',
+  'customFolders',
+  'deletedFolderIds',
+  'localFlashcards',
+  'learnedCards',
+  'selectedBooks',
+  'startedPartIds',
+  'completedPageIds',
+  'completedPartIds',
+] as const;
+
+/** Persisted slice fields whose runtime shape is a plain record. */
+const PERSISTED_RECORD_KEYS = [
+  'selectedLessonParts',
+  'srsData',
+  'sessionProgressIndex',
+  'deckExclusions',
+] as const;
+
+function sanitizePersistedState(state: Record<string, unknown>): Record<string, unknown> {
+  const cleaned = { ...state };
+  for (const key of PERSISTED_ARRAY_KEYS) {
+    if (key in cleaned && !Array.isArray(cleaned[key])) {
+      debugLogger.warn('Sync', `Persisted "${key}" was not an array; using an empty list.`, cleaned[key]);
+      cleaned[key] = [];
+    }
+  }
+  for (const key of PERSISTED_RECORD_KEYS) {
+    const value = cleaned[key];
+    if (key in cleaned && (value === null || typeof value !== 'object' || Array.isArray(value))) {
+      debugLogger.warn('Sync', `Persisted "${key}" was not a record; using an empty record.`, value);
+      cleaned[key] = {};
+    }
+  }
+  return cleaned;
+}
+
 export const ACCOUNT_SWITCH_DEFAULTS = {
   ...AUTH_ACCOUNT_SWITCH_DEFAULTS,
   ...LEARNING_ACCOUNT_SWITCH_DEFAULTS,
@@ -279,6 +324,10 @@ export const useAppStore = create<AppState & AppStoreActions>()(
         }
         return state as unknown as AppState;
       },
+      merge: (persistedState, currentState) => ({
+        ...currentState,
+        ...sanitizePersistedState((persistedState ?? {}) as Record<string, unknown>),
+      }),
       storage: idbStorage,
       partialize: derivePersistedState,
     },

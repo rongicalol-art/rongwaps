@@ -120,6 +120,8 @@ export function resolveFolderColor(colorStr: string | undefined, index = 0): Fol
   const defaultFallback = FOLDER_COLOR_PALETTE[fallbackIndex];
 
   if (!colorStr) return defaultFallback;
+  // Runtime guard: legacy/cloud data has held non-string color payloads.
+  if (typeof colorStr !== 'string') return defaultFallback;
 
   // 1. Direct palette ID match (e.g. 'purple', 'teal')
   const directMatch = getFolderColorOption(colorStr);

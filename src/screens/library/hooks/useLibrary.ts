@@ -44,19 +44,30 @@ const COLLECTIONS = [
   }
 ];
 
+/** Stable empties so a malformed persisted value does not churn identities. */
+const NO_FAVORITES: string[] = [];
+const NO_CARDS: UserFlashcard[] = [];
+
 export function useLibrary() {
   const { currentUser } = useAuth();
-  const favorites = useAppStore((state) => state.favorites);
+  const favoritesRaw = useAppStore((state) => state.favorites);
+  // IndexedDB/cloud is untrusted input; a null here used to crash the tab.
+  const favorites = Array.isArray(favoritesRaw) ? favoritesRaw : NO_FAVORITES;
   const toggleFavorite = useAppStore((state) => state.toggleFavorite);
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
   const setLibraryActiveFolder = useAppStore((state) => state.setLibraryActiveFolder);
   const searchQuery = useAppStore((state) => state.librarySearchQuery);
   const setSearchQuery = useAppStore((state) => state.setLibrarySearchQuery);
-  const customFolders = useAppStore((state) => state.customFolders);
+  const customFoldersRaw = useAppStore((state) => state.customFolders);
+  const customFolders = useMemo(
+    () => (Array.isArray(customFoldersRaw) ? customFoldersRaw.filter((folder) => Boolean(folder)) : []),
+    [customFoldersRaw],
+  );
   const addCustomFolder = useAppStore((state) => state.addCustomFolder);
   const deleteCustomFolder = useAppStore((state) => state.deleteCustomFolder);
-  const localFlashcards = useAppStore((state) => state.localFlashcards);
+  const localFlashcardsRaw = useAppStore((state) => state.localFlashcards);
+  const localFlashcards = Array.isArray(localFlashcardsRaw) ? localFlashcardsRaw : NO_CARDS;
   const deleteLocalFlashcard = useAppStore((state) => state.deleteLocalFlashcard);
   const setLibraryActiveView = useAppStore((state) => state.setLibraryActiveView);
   // The folder view is store-backed so the header's back action and this screen
@@ -136,10 +147,14 @@ export function useLibrary() {
 
   useEffect(() => {
     if (currentUser) {
-      const unsubscribeCards = flashcardService.subscribeToUserFlashcards(currentUser.id, setCustomFlashcards);
-      
+      // Guard the listener inputs: a malformed payload must not poison the
+      // grid or the folder list.
+      const unsubscribeCards = flashcardService.subscribeToUserFlashcards(currentUser.id, (cards) => {
+        setCustomFlashcards(Array.isArray(cards) ? cards : []);
+      });
+
       const unsubscribeFolders = flashcardService.subscribeToFolders(currentUser.id, (folders) => {
-        if (folders) {
+        if (Array.isArray(folders)) {
           const { setCustomFolders } = useAppStore.getState();
           setCustomFolders(folders);
         }
@@ -236,11 +251,11 @@ export function useLibrary() {
     const q = searchQuery.toLowerCase().trim();
     if (!q) return favoriteResults;
     return favoriteResults.filter(entry => {
-      const pinyinJoined = entry.pinyin ? entry.pinyin.join(' ').toLowerCase() : '';
+      const pinyinJoined = Array.isArray(entry.pinyin) ? entry.pinyin.join(' ').toLowerCase() : '';
       const defs = entry.definitions ? Object.values(entry.definitions).join(' ').toLowerCase() : '';
-      return entry.simplified.includes(q) || 
-             entry.traditional.includes(q) || 
-             pinyinJoined.includes(q) || 
+      return (entry.simplified || '').includes(q) ||
+             (entry.traditional || '').includes(q) ||
+             pinyinJoined.includes(q) ||
              defs.includes(q);
     });
   }, [favoriteResults, searchQuery]);
@@ -258,9 +273,9 @@ export function useLibrary() {
     return filtered.filter(card => {
       const pin = card.pinyin ? card.pinyin.toLowerCase() : '';
       const trans = card.translation ? card.translation.toLowerCase() : '';
-      return card.simplified.includes(q) || 
-             card.traditional?.includes(q) || 
-             pin.includes(q) || 
+      return (card.simplified || '').includes(q) ||
+             (card.traditional || '').includes(q) ||
+             pin.includes(q) ||
              trans.includes(q);
     });
   }, [customFlashcards, searchQuery, libraryActiveFolder]);

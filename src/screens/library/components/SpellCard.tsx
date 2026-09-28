@@ -19,7 +19,9 @@ interface SpellCardProps {
 function SpellCardBase({ item, activeTab, onRemove, onOpen, index }: SpellCardProps) {
   const isStarred = activeTab === 'starred';
   const simplified = item.simplified;
-  const traditional = item.traditional || simplified;
+  // Runtime guard: malformed cloud/persisted cards may lack both fields, and
+  // `traditional.length` below must never throw inside the library grid.
+  const traditional = item.traditional || simplified || '';
 
   // Both are always rendered as strings: an entry may carry no definitions at
   // all, so the declared `string` type starts from an explicit empty default.
@@ -28,7 +30,7 @@ function SpellCardBase({ item, activeTab, onRemove, onOpen, index }: SpellCardPr
 
   if (isStarred) {
     const dbItem = item as DBDictionaryEntry;
-    pinyinStr = dbItem.pinyin ? dbItem.pinyin.join(' ') : '';
+    pinyinStr = Array.isArray(dbItem.pinyin) ? dbItem.pinyin.join(' ') : '';
     if (dbItem.definitions) {
       if (typeof dbItem.definitions === 'string') definition = dbItem.definitions;
       else if (Array.isArray(dbItem.definitions)) definition = (dbItem.definitions as string[]).slice(0, 2).join(' · ');

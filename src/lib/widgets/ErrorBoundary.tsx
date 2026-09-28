@@ -68,6 +68,11 @@ export class ErrorBoundary extends Component<Props, State> {
           <p className="text-sm font-bold text-ui-muted-strong mb-6 max-w-xs">
             An unexpected error occurred. You can try again or go back to the home screen.
           </p>
+          {import.meta.env.DEV && this.state.error && (
+            <p className="mb-6 max-w-md break-words rounded-control bg-ui-surface px-3 py-2 text-left font-mono text-xs font-bold text-feedback-danger-edge">
+              {this.state.error.message}
+            </p>
+          )}
           <div className="flex gap-3">
             <ActionButton onClick={this.handleReset} variant="primary">
               Try Again

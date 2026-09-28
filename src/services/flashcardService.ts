@@ -58,6 +58,12 @@ class FlashcardService {
       .eq("user_id", userId)
       .order("created_at", { ascending: false });
 
+    if (error) {
+      // Graceful degradation: keep the previous list; the library surfaces
+      // emptiness, so a failed refetch must leave a visible trace.
+      debugLogger.warn('Supabase', "refetchFlashcards failed; keeping the previous card list.", error);
+    }
+
     if (!error && data) {
       this.cachedFlashcards = data.map((d) => ({
         id: d.id,
@@ -80,6 +86,11 @@ class FlashcardService {
       .from("user_folders")
       .select("*")
       .eq("user_id", userId);
+
+    if (error) {
+      // Graceful degradation: keep the previous list; log the failure.
+      debugLogger.warn('Supabase', "refetchFolders failed; keeping the previous folder list.", error);
+    }
 
     if (!error && data) {
       this.cachedFolders = data

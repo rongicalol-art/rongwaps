@@ -37,7 +37,7 @@ export function LibraryHomeView({
 }: LibraryHomeViewProps) {
   const normalizedSearch = searchQuery.trim().toLowerCase();
   const visibleCollections = normalizedSearch
-    ? collections.filter((collection) => collection.title.toLowerCase().includes(normalizedSearch))
+    ? collections.filter((collection) => (collection.title ?? '').toLowerCase().includes(normalizedSearch))
     : collections;
 
   return (

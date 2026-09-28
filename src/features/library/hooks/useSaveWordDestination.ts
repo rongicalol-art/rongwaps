@@ -28,11 +28,19 @@ function formatPinyin(pinyin: string[] | string | null | undefined): string {
   return pinyin;
 }
 
+const NO_FAVORITES: string[] = [];
+
 export function useSaveWordDestination(target: SaveWordTarget | null) {
   const { currentUser } = useAuth();
-  const favorites = useAppStore((state) => state.favorites);
+  const favoritesRaw = useAppStore((state) => state.favorites);
+  // IndexedDB/cloud is untrusted input; a null here crashed the app shell.
+  const favorites = Array.isArray(favoritesRaw) ? favoritesRaw : NO_FAVORITES;
   const toggleFavoriteStore = useAppStore((state) => state.toggleFavorite);
-  const customFolders = useAppStore((state) => state.customFolders);
+  const customFoldersRaw = useAppStore((state) => state.customFolders);
+  const customFolders = useMemo(
+    () => (Array.isArray(customFoldersRaw) ? customFoldersRaw.filter((folder) => Boolean(folder)) : []),
+    [customFoldersRaw],
+  );
   const addCustomFolder = useAppStore((state) => state.addCustomFolder);
   const addLocalFlashcard = useAppStore((state) => state.addLocalFlashcard);
   const deleteLocalFlashcard = useAppStore((state) => state.deleteLocalFlashcard);
