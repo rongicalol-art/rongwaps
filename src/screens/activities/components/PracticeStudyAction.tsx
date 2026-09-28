@@ -80,18 +80,18 @@ export function PracticeStudyAction({
         {/* Stationary 3D Edge / Base (Aligned with the dock pill's 4px bottom border) */}
         <span
           aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 top-[length:var(--depth-md)] rounded-[inherit] bg-ui-border"
+          className="absolute inset-x-0 bottom-0 top-[length:var(--depth-md)] rounded-[inherit] bg-feedback-warning-edge"
         />
 
         {/* Moving Front Surface (4px tactile travel on active; depressed when sub-menu is open) */}
         <span
           className={cn(
             'relative flex w-full h-full items-center justify-center rounded-[inherit] mb-[length:var(--depth-md)]',
-            'border-2 border-ui-border bg-ui-surface shadow-ambient-sm',
+            'border-2 border-feedback-warning-edge bg-ui-surface shadow-ambient-sm',
             'transition-[transform,background-color,border-color,color] duration-150 ease-out',
             isOpen
-              ? 'translate-y-[length:var(--depth-md)] border-feedback-warning-edge bg-ui-hover ring-2 ring-brand-primary/40'
-              : 'group-active:translate-y-[length:var(--depth-md)] hover:bg-ui-hover hover:border-feedback-warning-edge/60',
+              ? 'translate-y-[length:var(--depth-md)] bg-ui-hover ring-2 ring-feedback-warning-edge/40'
+              : 'group-active:translate-y-[length:var(--depth-md)] hover:bg-ui-hover',
           )}
         >
           <AppIcon

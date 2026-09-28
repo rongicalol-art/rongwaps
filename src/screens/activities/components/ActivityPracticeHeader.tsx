@@ -42,7 +42,7 @@ export function ActivityPracticeHeader({
     <div className={`absolute top-0 left-0 right-0 z-activity-header ${isOverlayOpen ? 'invisible' : ''}`}>
       <PracticeHeader
         key={resolvedActivity}
-        maxWidth="2xl"
+        maxWidth="none"
         onClose={activeActivity === 'writing' ? onWritingClose : onClose}
         progress={practiceHeader.progress}
         currentIndex={practiceHeader.currentIndex}
