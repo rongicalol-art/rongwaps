@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { AppIcon } from '../../../lib/widgets';
 import { LinkedTranslationText } from './LinkedTranslationText';
 import type { GrammarLessonText, GrammarWordToken } from '../../../types/models';
 import { GrammarText } from './GrammarText';
@@ -48,9 +49,11 @@ export function GrammarExampleText({
         {dialogue.turns.map((turn, i) => (
           <div key={i} className={cn('min-w-0', i > 0 && 'flex items-start gap-2 pt-1')}>
             {i > 0 && (
-              <span className="mt-0.5 select-none font-bold text-ui-muted/60 text-sm sm:text-base" aria-hidden="true">
-                ↳
-              </span>
+              <AppIcon
+                name="followUp"
+                size={18}
+                className="mt-1 shrink-0 text-ui-muted/60"
+              />
             )}
             <div className="flex-1 min-w-0">
               <InteractiveGrammarSentence

@@ -1,5 +1,6 @@
 import type { IconBaseProps, IconType } from 'react-icons';
 import {
+  PiArrowBendDownRightBold,
   PiArrowLeftBold,
   PiArrowRightBold,
   PiChartBarFill,
@@ -106,6 +107,7 @@ export type AppIconName =
   | 'flashcard'
   | 'flame'
   | 'folder'
+  | 'followUp'
   | 'forward'
   | 'grammar'
   | 'lightbulb'
@@ -263,6 +265,7 @@ const ICONS: Record<AppIconName, IconType> = {
   flashcard: PiCardsFill,
   flame: PiFireFill,
   folder: PiFolderFill,
+  followUp: PiArrowBendDownRightBold,
   forward: PiArrowRightBold,
   grammar: PiBookBookmarkFill,
   lightbulb: PiLightbulbBold,

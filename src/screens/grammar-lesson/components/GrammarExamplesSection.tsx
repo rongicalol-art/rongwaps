@@ -46,14 +46,6 @@ export function GrammarExamplesSection({
           key={example.id}
           className="flex items-start gap-3.5 px-4 pb-4 pt-3 sm:gap-4 sm:px-5 sm:pb-5 sm:pt-3.5"
         >
-          {/* Number Index */}
-          <span
-            className="mt-0.5 flex h-6 w-6 shrink-0 select-none items-center justify-center rounded-full bg-feedback-warning font-sans text-xs font-black text-ui-ink-strong sm:h-7 sm:w-7"
-            aria-hidden="true"
-          >
-            {example.number ?? index + 1}
-          </span>
-
           {/* Sentence Content */}
           <div className="flex-1 min-w-0 pt-0.5">
             <GrammarExampleText
