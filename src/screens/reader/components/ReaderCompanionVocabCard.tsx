@@ -58,7 +58,7 @@ export const ReaderCompanionVocabCard = React.memo(function ReaderCompanionVocab
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-2 min-w-0">
           <AppIcon name="cards" size={16} className="text-ui-muted-strong shrink-0" />
-          <h3 className="font-sans text-xs font-black uppercase tracking-wider text-ui-ink-strong">
+          <h3 className="font-sans text-xs font-black uppercase tracking-wider text-ui-muted-strong">
             Vocabulary
           </h3>
           {!error && (
@@ -91,7 +91,7 @@ export const ReaderCompanionVocabCard = React.memo(function ReaderCompanionVocab
           {/* Only warn when the part list is missing: the fallback words are
               not this reading's targets, and the dimming cannot say that. */}
           {!error && !isLoading && usingLessonFallback && displayedWords.length > 0 && (
-            <p className="px-2.5 font-sans text-[11px] font-bold leading-snug text-ui-muted-strong">
+            <p className="px-2.5 font-sans text-xs font-bold leading-snug text-ui-muted-strong">
               This dialogue's word list is missing — showing the lesson list.
             </p>
           )}

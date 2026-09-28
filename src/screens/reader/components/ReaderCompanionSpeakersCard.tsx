@@ -68,7 +68,7 @@ export const ReaderCompanionSpeakersCard = React.memo(function ReaderCompanionSp
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-2 min-w-0">
           <AppIcon name="profile" size={16} className="text-ui-muted-strong shrink-0" />
-          <h3 className="font-sans text-xs font-black uppercase tracking-wider text-ui-ink-strong">
+          <h3 className="font-sans text-xs font-black uppercase tracking-wider text-ui-muted-strong">
             Characters
           </h3>
           <span
@@ -128,14 +128,14 @@ export const ReaderCompanionSpeakersCard = React.memo(function ReaderCompanionSp
                     {displayName}
                   </span>
                   {speaker.profile?.englishName && (
-                    <span className="font-sans text-xs font-medium text-ui-muted truncate">
+                    <span className="font-sans text-xs font-bold text-ui-muted truncate">
                       {speaker.profile.englishName}
                     </span>
                   )}
                 </div>
 
                 {/* Quiet dialogue line count */}
-                <span className="shrink-0 font-sans text-[11px] font-bold text-ui-muted-strong tabular-nums">
+                <span className="shrink-0 font-sans text-xs font-bold text-ui-muted-strong tabular-nums">
                   {speaker.lineCount} lines
                 </span>
               </div>

@@ -90,10 +90,9 @@ export const ReaderCompanionGrammarRow = React.memo(function ReaderCompanionGram
         isLocated && 'bg-feedback-warning-subtle/40 ring-1 ring-feedback-warning-edge/30',
       )}
     >
-      {/* Chinese Title with › prefix + English subtitle */}
+      {/* Chinese Title + English subtitle */}
       <div className="flex flex-col flex-1 min-w-0">
         <div className="flex items-center min-w-0">
-          <span className="shrink-0 text-ui-muted-strong font-sans font-black mr-1.5 select-none text-xs">›</span>
           <span
             className={cn(
               'font-chinese text-sm sm:text-base font-bold leading-tight transition-colors truncate',
@@ -107,7 +106,7 @@ export const ReaderCompanionGrammarRow = React.memo(function ReaderCompanionGram
         </div>
         <span
           className={cn(
-            'font-sans text-xs font-medium mt-0.5 leading-snug pl-3.5 line-clamp-1',
+            'font-sans text-xs font-bold mt-0.5 leading-snug line-clamp-1',
             dimmed ? 'text-ui-muted' : 'text-ui-ink',
           )}
         >

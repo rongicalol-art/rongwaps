@@ -115,13 +115,10 @@ export const ReaderCompanionVocabRow = React.memo(function ReaderCompanionVocabR
         isLocated && 'bg-brand-primary-soft/40 ring-1 ring-brand-primary/25',
       )}
     >
-      {/* Quiet › prefix */}
-      <span className="shrink-0 text-ui-muted-strong font-sans font-black mr-0.5 select-none text-xs">›</span>
-
       {/* Chinese Glyph */}
       <span
         className={cn(
-          'min-w-9 shrink-0 font-chinese text-base sm:text-lg font-bold leading-tight transition-colors',
+          'min-w-9 shrink-0 font-chinese text-xl sm:text-2xl font-bold leading-tight transition-colors',
           isInText
             ? 'text-ui-ink-strong group-hover:text-brand-primary'
             : 'text-ui-muted group-hover:text-ui-ink-strong',
@@ -142,7 +139,7 @@ export const ReaderCompanionVocabRow = React.memo(function ReaderCompanionVocabR
         </span>
         <span
           className={cn(
-            'block font-sans text-xs font-medium leading-snug line-clamp-1',
+            'block font-sans text-xs font-bold leading-snug line-clamp-1',
             isInText ? 'text-ui-ink' : 'text-ui-muted',
           )}
         >

@@ -64,7 +64,7 @@ export const ReaderCompanionGrammarCard = React.memo(function ReaderCompanionGra
     ));
 
   const groupLabelClass =
-    'px-2.5 pt-0.5 font-sans text-[10px] font-black uppercase tracking-wider text-ui-muted-strong';
+    'px-2.5 pt-0.5 font-sans text-xs font-black uppercase tracking-wider text-ui-muted-strong';
 
   return (
     <section
@@ -75,7 +75,7 @@ export const ReaderCompanionGrammarCard = React.memo(function ReaderCompanionGra
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-2 min-w-0">
           <AppIcon name="grammar" size={16} className="text-ui-muted-strong shrink-0" />
-          <h3 className="font-sans text-xs font-black uppercase tracking-wider text-ui-ink-strong">
+          <h3 className="font-sans text-xs font-black uppercase tracking-wider text-ui-muted-strong">
             Grammar
           </h3>
           {grammarPoints.length > 0 && (
