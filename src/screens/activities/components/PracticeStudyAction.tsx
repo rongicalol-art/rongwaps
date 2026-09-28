@@ -75,9 +75,9 @@ export function PracticeStudyAction({
         className={cn(
           'group relative inline-flex shrink-0 items-center justify-center outline-none select-none focus-ring',
           'dock-pill w-[60px] rounded-feature bg-ui-surface',
-          // Universal tactile 3D bottom: surface + edge-colored bottom block,
-          // matching the dock pill and the segmented control beside it.
-          'border-b-[length:var(--depth-md)] border-feedback-warning-edge shadow-ambient-sm',
+          // Universal tactile 3D bottom: gold border with a deeper bottom
+          // block, matching the dock pill and the segmented control beside it.
+          'border-2 border-feedback-warning-edge border-b-[length:var(--depth-md)] shadow-ambient-sm',
           'transition-[background-color,box-shadow] duration-150 ease-out',
           isOpen
             ? 'bg-ui-hover ring-2 ring-feedback-warning-edge/40'
