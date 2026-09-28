@@ -73,36 +73,25 @@ export function PracticeStudyAction({
         aria-expanded={isOpen}
         aria-haspopup="menu"
         className={cn(
-          'group relative inline-flex shrink-0 items-stretch justify-center p-0 border-none bg-transparent outline-none select-none focus-ring',
-          'dock-pill w-[60px] rounded-feature',
+          'group relative inline-flex shrink-0 items-center justify-center outline-none select-none focus-ring',
+          'dock-pill w-[60px] rounded-feature bg-ui-surface',
+          // Universal tactile 3D bottom: surface + edge-colored bottom block,
+          // matching the dock pill and the segmented control beside it.
+          'border-b-[length:var(--depth-md)] border-feedback-warning-edge shadow-ambient-sm',
+          'transition-[background-color,box-shadow] duration-150 ease-out',
+          isOpen
+            ? 'bg-ui-hover ring-2 ring-feedback-warning-edge/40'
+            : 'hover:bg-ui-hover',
         )}
       >
-        {/* Stationary 3D Edge / Base (Aligned with the dock pill's 4px bottom border) */}
-        <span
-          aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 top-[length:var(--depth-md)] rounded-[inherit] bg-feedback-warning-edge"
-        />
-
-        {/* Moving Front Surface (4px tactile travel on active; depressed when sub-menu is open) */}
-        <span
+        <AppIcon
+          name="grammar"
+          size={28}
           className={cn(
-            'relative flex w-full h-full items-center justify-center rounded-[inherit] mb-[length:var(--depth-md)]',
-            'border-2 border-feedback-warning-edge bg-ui-surface shadow-ambient-sm',
-            'transition-[transform,background-color,border-color,color] duration-150 ease-out',
-            isOpen
-              ? 'translate-y-[length:var(--depth-md)] bg-ui-hover ring-2 ring-feedback-warning-edge/40'
-              : 'group-active:translate-y-[length:var(--depth-md)] hover:bg-ui-hover',
+            'h-7 w-7 text-feedback-warning-edge transition-transform duration-200',
+            isOpen ? 'scale-95' : 'group-hover:scale-110 group-active:scale-95',
           )}
-        >
-          <AppIcon
-            name="grammar"
-            size={28}
-            className={cn(
-              'h-7 w-7 text-feedback-warning-edge transition-transform duration-200',
-              isOpen ? 'scale-95 text-feedback-warning-edge' : 'group-hover:scale-110',
-            )}
-          />
-        </span>
+        />
       </button>
     </motion.div>
   );
