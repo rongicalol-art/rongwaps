@@ -1,4 +1,5 @@
 import { authService } from './authService';
+import { logFallback } from './errors';
 
 /**
  * Semantic grading for free-text answers, backed by the server's Jev endpoint.
@@ -44,7 +45,8 @@ export async function gradeGrammarAnswer(input: GradeAnswerInput, deps: GradeDep
       checks: payload.checks,
       model: payload.model ?? '',
     };
-  } catch {
-    return null;
+  } catch (error) {
+    // Graceful degradation: grading network error or unavailable model falls back to exact match
+    return logFallback('AI', 'Jev answer grading request failed, falling back to exact match', error, null);
   }
 }

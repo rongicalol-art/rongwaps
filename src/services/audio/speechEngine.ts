@@ -41,15 +41,18 @@ export function ensureSpeechVoices(): Promise<SpeechSynthesisVoice[]> {
       settled = true;
       try {
         synth.removeEventListener('voiceschanged', done);
-      } catch {
-        // Not a real EventTarget on some engines
+      } catch (err) {
+        // Graceful degradation: not a standard EventTarget on some browser speech synthesis engines
+        debugLogger.warn('Audio', 'removeEventListener failed on speechSynthesis', err);
       }
       speechVoicesCache = synth.getVoices();
       resolve(speechVoicesCache);
     };
     try {
       synth.addEventListener('voiceschanged', done);
-    } catch {
+    } catch (err) {
+      // Graceful degradation: addEventListener not supported; proceed immediately
+      debugLogger.warn('Audio', 'addEventListener failed on speechSynthesis', err);
       done();
       return;
     }
@@ -100,8 +103,9 @@ export function kickstartSpeech(): void {
     if (!isMacChrome || typeof window === 'undefined' || !window.speechSynthesis) return;
     window.speechSynthesis.pause();
     window.speechSynthesis.resume();
-  } catch {
-    // Best-effort
+  } catch (err) {
+    // Graceful degradation: best-effort speech synthesis kickstart on Chromium
+    debugLogger.warn('Audio', 'kickstartSpeech failed', err);
   }
 }
 
@@ -111,7 +115,9 @@ export async function getNeuralCache(): Promise<Cache | null> {
     if (typeof caches !== 'undefined') {
       neuralCacheInstance = await caches.open('rongwaps-tts-v1');
     }
-  } catch {
+  } catch (err) {
+    // Graceful degradation: caches unavailable in private browsing mode
+    debugLogger.warn('Audio', 'CacheStorage open failed for TTS cache', err);
     neuralCacheInstance = null;
   }
   return neuralCacheInstance;
@@ -145,7 +151,9 @@ export async function fetchTtsCacheEndpoint(text: string, voice: string | undefi
     const blob = await response.blob();
     putNeuralCache(ttsCacheRequest(text, voice), blob);
     return blob;
-  } catch {
+  } catch (err) {
+    // Graceful degradation: TTS cache endpoint fetch failed; caller tries on-demand generation
+    debugLogger.warn('Audio', 'fetchTtsCacheEndpoint request failed', err);
     return null;
   }
 }
@@ -169,7 +177,9 @@ export async function fetchNeuralBlob(text: string, voice: string | undefined): 
     let token: string | null;
     try {
       token = await authService.getAccessToken();
-    } catch {
+    } catch (err) {
+      // Graceful degradation: auth token unavailable; guest TTS fallback
+      debugLogger.warn('Audio', 'authService.getAccessToken failed for neural TTS', err);
       token = null;
     }
     if (!token) return null;
@@ -189,7 +199,9 @@ export async function fetchNeuralBlob(text: string, voice: string | undefined): 
       const blob = await response.blob();
       putNeuralCache(cacheReq, blob);
       return blob;
-    } catch {
+    } catch (err) {
+      // Graceful degradation: neural TTS synthesis endpoint failed; falls back to browser voice
+      debugLogger.warn('Audio', 'Neural TTS synthesis request failed', err);
       return null;
     }
   })();

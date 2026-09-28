@@ -1,4 +1,5 @@
 import { normalizePracticePreferences } from '../store/slices/practicePreferencesSlice';
+import { debugLogger } from './debugLogger';
 
 export const LEGACY_GRAMMAR_STORE_KEY = 'rongwaps-grammar-lesson-progress';
 export const LEGACY_PRACTICE_PREFERENCES_KEY = 'rongwaps-practice-preferences';
@@ -19,7 +20,9 @@ export function migrateLegacyStores(
   getLocalStorageItem: (key: string) => string | null = (k) => {
     try {
       return typeof localStorage !== 'undefined' ? localStorage.getItem(k) : null;
-    } catch {
+    } catch (error) {
+      // Graceful degradation: localStorage inaccessible in restricted/private browsing modes
+      debugLogger.warn('App', `Legacy store read failed for "${k}"`, error);
       return null;
     }
   },
@@ -53,8 +56,9 @@ export function migrateLegacyStores(
           }
           migrated = true;
         }
-      } catch {
-        // Corrupted legacy storage: ignore gracefully
+      } catch (error) {
+        // Graceful degradation: corrupted legacy grammar storage JSON is safely ignored
+        debugLogger.warn('App', 'Legacy grammar progress payload unparseable', error);
       }
     }
   }
@@ -70,8 +74,9 @@ export function migrateLegacyStores(
           Object.assign(targetState, normalized);
           migrated = true;
         }
-      } catch {
-        // Corrupted legacy storage: ignore gracefully
+      } catch (error) {
+        // Graceful degradation: corrupted legacy preferences storage JSON is safely ignored
+        debugLogger.warn('App', 'Legacy practice preferences payload unparseable', error);
       }
     }
   }

@@ -2,6 +2,7 @@
  * Pure mapping and preparation of vocabulary rows into Flashcard models.
  */
 
+import { debugLogger } from './debugLogger';
 import type { DBVocabularyRow } from '../types/database';
 import type { Flashcard } from '../data/flashcards';
 import { cleanVocabText } from './vocabCleaner';
@@ -34,7 +35,9 @@ export function parseExamples(value: unknown): Flashcard['examples'] {
       return Array.isArray(parsed)
         ? parseExamples(parsed)
         : [{ chinese: value, pinyin: '', english: '' }];
-    } catch {
+    } catch (error) {
+      // Intentional fallback: plain text example string not formatted as JSON array
+      debugLogger.warn('App', 'Vocabulary example unparseable as JSON; treated as plain text', error);
       return value.trim() ? [{ chinese: value, pinyin: '', english: '' }] : [];
     }
   }

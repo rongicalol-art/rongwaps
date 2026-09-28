@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { DialogueAlignment, ReadingRecord } from '../../../types/models';
 import { audioService } from '../../../services/audioService';
+import { debugLogger } from '../../../utils/debugLogger';
 import { useAppStore } from '../../../store/useAppStore';
 import {
   alignmentDuration,
@@ -212,7 +213,10 @@ export function useReaderAudio({
     if (audio && !isNaN(audio.duration) && audio.duration > 0) {
       try {
         audio.currentTime = clamped;
-      } catch { /* ignore */ }
+      } catch (err) {
+        // Graceful degradation: media element not ready or seek operation interrupted
+        debugLogger.warn('Audio', 'HTMLAudioElement seek failed during cue', err);
+      }
     }
 
     if (playing && alignment && bookAudioFileName) {

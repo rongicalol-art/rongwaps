@@ -60,23 +60,21 @@ export class AudioService {
   public initialize(): void {
     if (this.isInitialized) return;
     if (this.audioContext && this.audioContext.state === 'suspended') {
-      try { this.audioContext.resume().catch(() => {}); } catch { /* ignore */ }
+      try { this.audioContext.resume().catch(() => {}); } catch (e) { debugLogger.warn('Audio', 'AudioContext resume failed', e); }
     }
     if (this.globalAudio) {
       try {
         this.globalAudio.src = 'data:audio/mp3;base64,//OkwAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAB//OkwAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAB//OkwAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAB';
         this.globalAudio.play()?.catch(() => {});
-      } catch { /* ignore */ }
+      } catch (e) { debugLogger.warn('Audio', 'Silent unlock play failed', e); }
     }
     if (typeof window !== 'undefined' && window.speechSynthesis) {
       void ensureSpeechVoices();
     }
-    // Best-effort: request persistent storage so the browser is less likely to
-    // evict the indexed audio cache under quota pressure. Must follow a user
-    // interaction; failures are ignored.
+    // Best-effort: request persistent storage so the browser is less likely to evict audio cache
     try {
       void navigator.storage?.persist?.();
-    } catch { /* ignore */ }
+    } catch (e) { debugLogger.warn('Audio', 'Storage persist request failed', e); }
     this.isInitialized = true;
   }
 
@@ -184,15 +182,15 @@ export class AudioService {
 
   public pause(): void {
     if (this.rangeRafHandle !== null) {
-      try { cancelAnimationFrame(this.rangeRafHandle); } catch { /* ignore */ }
+      try { cancelAnimationFrame(this.rangeRafHandle); } catch (e) { debugLogger.warn('Audio', 'cancelAnimationFrame failed', e); }
       this.rangeRafHandle = null;
     }
     const source = this.currentSource;
     this.currentSource = null;
     if (source) {
       source.onended = null;
-      try { source.stop(); } catch { /* ignore */ }
-      try { source.disconnect(); } catch { /* ignore */ }
+      try { source.stop(); } catch (e) { debugLogger.warn('Audio', 'AudioBufferSourceNode stop failed', e); }
+      try { source.disconnect(); } catch (e) { debugLogger.warn('Audio', 'AudioBufferSourceNode disconnect failed', e); }
     }
 
     if (this.globalAudio) {
@@ -201,7 +199,7 @@ export class AudioService {
       this.globalAudio.ontimeupdate = null;
       try {
         this.globalAudio.pause();
-      } catch { /* ignore */ }
+      } catch (e) { debugLogger.warn('Audio', 'Global audio pause failed', e); }
     }
 
     const blobAudio = this.activeBlobAudio;
@@ -209,7 +207,7 @@ export class AudioService {
     if (blobAudio) {
       blobAudio.onended = null;
       blobAudio.onerror = null;
-      try { blobAudio.pause(); } catch { /* ignore */ }
+      try { blobAudio.pause(); } catch (e) { debugLogger.warn('Audio', 'Blob audio pause failed', e); }
     }
 
     if (this.currentUtterance) {
@@ -218,7 +216,7 @@ export class AudioService {
       this.currentUtterance = null;
     }
     if (typeof window !== 'undefined') {
-      try { window.speechSynthesis?.cancel(); } catch { /* ignore */ }
+      try { window.speechSynthesis?.cancel(); } catch (e) { debugLogger.warn('Audio', 'SpeechSynthesis cancel failed', e); }
     }
 
     const finish = this.activePlaybackFinish;
@@ -231,7 +229,7 @@ export class AudioService {
     if (this.globalAudio) {
       try {
         this.globalAudio.currentTime = 0;
-      } catch { /* ignore */ }
+      } catch (e) { debugLogger.warn('Audio', 'Reset currentTime failed', e); }
     }
   }
 
@@ -303,7 +301,7 @@ export class AudioService {
       const handleAudioFailure = () => {
         if (fallbackStarted || this.activePlaybackFinish !== finish) return;
         fallbackStarted = true;
-        try { audio.pause(); } catch { /* ignore */ }
+        try { audio.pause(); } catch (e) { debugLogger.warn('Audio', 'Pause on audio failure failed', e); }
         startSpeechFallback();
       };
 

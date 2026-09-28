@@ -1,3 +1,5 @@
+import { debugLogger } from './debugLogger';
+
 export interface SanitizedDefinitions {
   definitions: string[];
   measure_words: string[];
@@ -47,7 +49,9 @@ function parseEncodedDefinitions(value: unknown): unknown {
 
   try {
     return JSON.parse(trimmed);
-  } catch {
+  } catch (error) {
+    // Intentional fallback: unparseable string is treated as plain text definition
+    debugLogger.warn('App', 'Encoded dictionary definitions unparseable; treated as plain text', error);
     return value;
   }
 }

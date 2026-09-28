@@ -1,3 +1,5 @@
+import { debugLogger } from '../../utils/debugLogger';
+
 export interface PlayRangeOptions {
   rate?: number;
   onTime?: (time: number) => void;
@@ -23,9 +25,19 @@ export function playHtmlAudio(
     audio.defaultPlaybackRate = playbackRate;
     audio.playbackRate = playbackRate;
     if (startTime > 0 && Math.abs(audio.currentTime - startTime) > 0.05) {
-      try { audio.currentTime = startTime; } catch { /* ignore */ }
+      try {
+        audio.currentTime = startTime;
+      } catch (err) {
+        // Graceful degradation: seek before metadata loaded is tolerated
+        debugLogger.warn('Audio', 'HTMLAudioElement seek to startTime failed', err);
+      }
     } else if (startTime === 0 && Math.abs(audio.currentTime) > 0.05) {
-      try { audio.currentTime = 0; } catch { /* ignore */ }
+      try {
+        audio.currentTime = 0;
+      } catch (err) {
+        // Graceful degradation: seek to origin before metadata loaded is tolerated
+        debugLogger.warn('Audio', 'HTMLAudioElement reset to 0 failed', err);
+      }
     }
     audio.onended = () => {
       audio.onended = null;
@@ -75,7 +87,10 @@ export function playRangeOnAudioElement(
         if (typeof cancelAnimationFrame !== 'undefined') {
           cancelAnimationFrame(rafHandle);
         }
-      } catch { /* ignore */ }
+      } catch (err) {
+        // Graceful degradation: RAF handle already cancelled or window unavailable
+        debugLogger.warn('Audio', 'cancelAnimationFrame failed during audio cleanup', err);
+      }
       rafHandle = null;
       onRafHandle(null);
     }
@@ -100,7 +115,12 @@ export function playRangeOnAudioElement(
     audio.src = src;
     if (typeof audio.addEventListener === 'function' && audio.readyState < 1) {
       audio.addEventListener('loadedmetadata', () => {
-        try { audio.currentTime = start; } catch { /* ignore */ }
+        try {
+          audio.currentTime = start;
+        } catch (err) {
+          // Graceful degradation: loadedmetadata seek failed
+          debugLogger.warn('Audio', 'loadedmetadata currentTime assignment failed', err);
+        }
         audio.playbackRate = rate;
       }, { once: true });
     }
@@ -115,7 +135,10 @@ export function playRangeOnAudioElement(
   if (Math.abs(audio.currentTime - start) > 0.04) {
     try {
       audio.currentTime = start;
-    } catch { /* ignore */ }
+    } catch (err) {
+      // Graceful degradation: immediate seek failed, handled by loadedmetadata listener
+      debugLogger.warn('Audio', 'Immediate currentTime assignment failed', err);
+    }
   }
 
   audio.onerror = cleanup;
@@ -129,7 +152,12 @@ export function playRangeOnAudioElement(
     if (audio.seeking) return;
     if (!raf) reportTime(audio.currentTime);
     if (audio.currentTime >= end) {
-      try { audio.pause(); } catch { /* ignore */ }
+      try {
+        audio.pause();
+      } catch (err) {
+        // Graceful degradation: pause after range end
+        debugLogger.warn('Audio', 'Pause at range end failed', err);
+      }
       cleanup();
     }
   };
@@ -157,7 +185,12 @@ export function playRangeOnAudioElement(
           const time = audio.currentTime;
           reportTime(time);
           if (time >= end) {
-            try { audio.pause(); } catch { /* ignore */ }
+            try {
+              audio.pause();
+            } catch (err) {
+              // Graceful degradation: pause in RAF loop after range end
+              debugLogger.warn('Audio', 'Pause at range end in RAF loop failed', err);
+            }
             cleanup();
             return;
           }

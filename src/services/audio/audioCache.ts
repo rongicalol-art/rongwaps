@@ -39,7 +39,9 @@ export async function getAudioFileCache(): Promise<Cache | null> {
     if (typeof caches !== 'undefined') {
       audioFileCacheInstance = await caches.open('rongwaps-audio-v6');
     }
-  } catch {
+  } catch (error) {
+    // Graceful degradation: CacheStorage unavailable in private mode or non-secure contexts
+    debugLogger.warn('Audio', 'CacheStorage open failed, proceeding without persistent audio cache', error);
     audioFileCacheInstance = null;
   }
   return audioFileCacheInstance;
@@ -54,16 +56,18 @@ export async function touchAudioMeta(fileName: string, size?: number): Promise<v
   try {
     const existing = await get<AudioMeta>(key);
     await set(key, { size: size ?? existing?.size ?? 0, lastAccessed: Date.now() });
-  } catch {
-    // IndexedDB may be blocked; the byte cap simply becomes best-effort.
+  } catch (error) {
+    // Graceful degradation: IndexedDB may be blocked; the byte cap simply becomes best-effort
+    debugLogger.warn('Audio', 'Failed to update audio cache metadata', error);
   }
 }
 
 export async function removeAudioMeta(fileName: string): Promise<void> {
   try {
     await del(metaKey(fileName));
-  } catch {
-    // Best-effort cleanup; ignore.
+  } catch (error) {
+    // Graceful degradation: best-effort IndexedDB cleanup
+    debugLogger.warn('Audio', 'Failed to remove audio cache metadata', error);
   }
 }
 
@@ -98,8 +102,9 @@ export async function pruneAudioCacheToLimit(): Promise<void> {
       await removeAudioMeta(entry.fileName);
       total -= entry.size;
     }
-  } catch {
-    // Best-effort; never fail playback.
+  } catch (error) {
+    // Graceful degradation: cache pruning failed; never fail playback
+    debugLogger.warn('Audio', 'Audio cache pruning failed', error);
   }
 }
 

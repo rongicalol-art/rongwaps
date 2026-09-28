@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from 'react';
+import { debugLogger } from '../../utils/debugLogger';
 
 export interface SmartSentenceProps {
   text: string;
@@ -75,7 +76,9 @@ function getSharedSegmenter(): Intl.Segmenter {
 function segmentChineseText(text: string): SegmentData[] {
   try {
     return Array.from(getSharedSegmenter().segment(text)) as SegmentData[];
-  } catch {
+  } catch (error) {
+    // Graceful degradation: segmenter failure falls back to treating full text as single segment
+    debugLogger.warn('App', 'Intl.Segmenter failure, using raw text fallback', error);
     return [{ segment: text, isWordLike: true, index: 0, input: text }];
   }
 }
@@ -127,8 +130,10 @@ export function SmartSentence({
 
         if (!isMounted) return;
         setFinalSegments(processed);
-      } catch {
+      } catch (error) {
         if (!isMounted) return;
+        // Graceful degradation: word validation failure falls back to raw unsegmented text
+        debugLogger.warn('App', 'SmartSentence word validation failed, using fallback', error);
         setFinalSegments([{ segment: text, isWordLike: true, index: 0, input: text }]);
       }
     }

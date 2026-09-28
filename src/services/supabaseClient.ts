@@ -1,5 +1,6 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import type { Database } from '../types/database';
+import { logFallback } from './errors';
 
 function getEnv(key: string): string | undefined {
   const viteValue = import.meta.env?.[key];
@@ -17,8 +18,9 @@ function isValidSupabaseUrl(value: string): boolean {
   try {
     const url = new URL(value);
     return url.protocol === 'https:' || url.protocol === 'http:';
-  } catch {
-    return false;
+  } catch (error) {
+    // Intentional validation failure: malformed URL string returns false
+    return logFallback('Supabase', 'Malformed Supabase URL rejected', error, false);
   }
 }
 

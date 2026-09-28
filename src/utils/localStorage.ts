@@ -5,11 +5,15 @@
  * for private browsing, quota exhaustion, and SSR/node environments.
  */
 
+import { debugLogger } from './debugLogger';
+
 function getStorage(): Storage | null {
   if (typeof window === 'undefined') return null;
   try {
     return window.localStorage;
-  } catch {
+  } catch (error) {
+    // Graceful degradation: window.localStorage blocked in third-party or restricted context
+    debugLogger.warn('App', 'localStorage access unavailable', error);
     return null;
   }
 }
@@ -20,7 +24,9 @@ export function readString(key: string, fallback: string | null = null): string 
   try {
     const value = storage.getItem(key);
     return value !== null ? value : fallback;
-  } catch {
+  } catch (error) {
+    // Graceful degradation: storage read access denied
+    debugLogger.warn('App', `localStorage read failed for "${key}"`, error);
     return fallback;
   }
 }
@@ -30,8 +36,9 @@ export function writeString(key: string, value: string): void {
   if (!storage) return;
   try {
     storage.setItem(key, value);
-  } catch {
-    // Ignore storage errors in restricted contexts
+  } catch (error) {
+    // Graceful degradation: quota exceeded or storage write restricted
+    debugLogger.warn('App', `localStorage write failed for "${key}"`, error);
   }
 }
 
@@ -49,7 +56,9 @@ export function readJSON<T>(key: string, fallback: T): T {
   if (raw === null) return fallback;
   try {
     return JSON.parse(raw) as T;
-  } catch {
+  } catch (error) {
+    // Graceful degradation: JSON syntax error in stored value falls back to default
+    debugLogger.warn('App', `Stored JSON unparseable for "${key}"`, error);
     return fallback;
   }
 }
@@ -57,8 +66,9 @@ export function readJSON<T>(key: string, fallback: T): T {
 export function writeJSON<T>(key: string, value: T): void {
   try {
     writeString(key, JSON.stringify(value));
-  } catch {
-    // Ignore storage errors in restricted contexts
+  } catch (error) {
+    // Graceful degradation: serialization error or quota exceeded
+    debugLogger.warn('App', `Value not serializable for "${key}"`, error);
   }
 }
 
@@ -67,7 +77,8 @@ export function remove(key: string): void {
   if (!storage) return;
   try {
     storage.removeItem(key);
-  } catch {
-    // Ignore storage errors in restricted contexts
+  } catch (error) {
+    // Graceful degradation: storage remove access denied
+    debugLogger.warn('App', `localStorage remove failed for "${key}"`, error);
   }
 }

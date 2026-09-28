@@ -207,7 +207,9 @@ export async function fetchExamplesForWord(searchWords: string | string[], pos?:
             || (c.traditional ? cleanWords.includes(c.traditional) : false)
             || (c.simplified ? cleanWords.includes(c.simplified) : false)
           ))?.pos?.trim() || undefined;
-        } catch {
+        } catch (error) {
+          // Graceful degradation: vocabulary fetch for part-of-speech lookup failed, proceed without POS filter
+          debugLogger.warn('Supabase', 'Failed to resolve part-of-speech for example lookup', error);
           resolvedPos = undefined;
         }
       }

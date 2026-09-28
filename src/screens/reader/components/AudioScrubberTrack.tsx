@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback } from 'react';
 import { cn } from '../../../utils/cn';
+import { debugLogger } from '../../../utils/debugLogger';
 
 interface AudioScrubberTrackProps {
   currentTime: number;
@@ -43,7 +44,12 @@ export function AudioScrubberTrack({
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     e.preventDefault();
     if (!trackRef.current || totalDuration <= 0) return;
-    try { trackRef.current.setPointerCapture(e.pointerId); } catch { /* ignore */ }
+    try {
+      trackRef.current.setPointerCapture(e.pointerId);
+    } catch (err) {
+      // Graceful degradation: browser pointer capture not supported or pointer already released
+      debugLogger.warn('Audio', 'Failed to set pointer capture', err);
+    }
     setIsDragging(true);
     const nextTime = calculateTimeFromPointer(e.clientX);
     setDragTime(nextTime);
@@ -65,7 +71,12 @@ export function AudioScrubberTrack({
 
   const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
     if (isDragging) {
-      try { trackRef.current?.releasePointerCapture(e.pointerId); } catch { /* ignore */ }
+      try {
+        trackRef.current?.releasePointerCapture(e.pointerId);
+      } catch (err) {
+        // Graceful degradation: pointer capture already released or invalid id
+        debugLogger.warn('Audio', 'Failed to release pointer capture', err);
+      }
       setIsDragging(false);
       onSeek(dragTime);
     }

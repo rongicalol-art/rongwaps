@@ -2,6 +2,7 @@ import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react';
 import { useAppStore } from '../../store/useAppStore';
 import { cn } from '../../utils/cn';
+import { debugLogger } from '../../utils/debugLogger';
 import type { ReadingRecord } from '../../types/models';
 
 import type { ReaderGrammarPoint, ReaderStudyTargetWord } from './utils/readerStudyTargets';
@@ -77,8 +78,9 @@ export function ReaderScreen({
         if (previousActiveElementRef.current && document.contains(previousActiveElementRef.current)) {
           previousActiveElementRef.current.focus();
         }
-      } catch {
-        // Ignore focus restoration errors
+      } catch (error) {
+        // Graceful degradation: detached or unfocusable element during teardown
+        debugLogger.warn('App', 'Reader focus restoration failed', error);
       }
     };
   }, []);

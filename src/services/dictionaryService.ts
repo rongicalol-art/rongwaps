@@ -91,7 +91,9 @@ export async function searchDictionaryWordsContaining(
   let rows: unknown[];
   try {
     rows = await executeRemoteSearch(query.toLowerCase());
-  } catch {
+  } catch (error) {
+    // Graceful degradation: remote dictionary search failed, return empty containing words
+    debugLogger.warn('Supabase', `Failed to fetch words containing "${query}"`, error);
     return [];
   }
 

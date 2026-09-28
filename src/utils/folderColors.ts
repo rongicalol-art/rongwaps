@@ -1,3 +1,5 @@
+import { debugLogger } from './debugLogger';
+
 export interface FolderColorOption {
   id: string;
   name: string;
@@ -159,8 +161,9 @@ export function resolveFolderColor(colorStr: string | undefined, index = 0): Fol
         if (byBg) return byBg;
       }
     }
-  } catch {
-    // Not JSON, continue to string match
+  } catch (error) {
+    // Intentional fallback: colorStr is not a JSON object, continue to string match
+    debugLogger.warn('App', 'Folder color value is not a JSON object; continuing with string match', error);
   }
 
   // 3. Hex code match (e.g. '#CE82FF')

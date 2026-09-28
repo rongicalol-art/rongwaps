@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { getDictionaryEntriesBatch } from '../../../services/dictionaryService';
+import { debugLogger } from '../../../utils/debugLogger';
 
 export interface SmartChineseSegment {
   segment: string;
@@ -12,7 +13,9 @@ function segmentWithBrowser(text: string): SmartChineseSegment[] {
   try {
     const segmenter = new Intl.Segmenter('zh-CN', { granularity: 'word' });
     return Array.from(segmenter.segment(text)) as SmartChineseSegment[];
-  } catch {
+  } catch (error) {
+    // Graceful degradation: environments without Intl.Segmenter fallback to unsegmented text
+    debugLogger.warn('App', 'Intl.Segmenter failure, using raw text fallback', error);
     return [{ segment: text, isWordLike: true, index: 0, input: text }];
   }
 }
@@ -62,8 +65,11 @@ export function useSmartChineseSegments(text: string) {
         }
 
         if (isMounted) setValidatedSegments(processed);
-      } catch {
-        if (isMounted) setValidatedSegments(fallbackSegments);
+      } catch (error) {
+        if (!isMounted) return;
+        // Graceful degradation: dictionary validation failure falls back to initial browser segmentation
+        debugLogger.warn('App', 'Segment dictionary validation failed, using fallback', error);
+        setValidatedSegments(fallbackSegments);
       }
     };
 

@@ -1,5 +1,7 @@
 import { del, get, keys, set } from 'idb-keyval';
 import { timeDataRequest } from '../utils/requestTiming';
+import { debugLogger } from '../utils/debugLogger';
+import { NetworkError, PackMissError } from './errors';
 
 interface StaticJsonOptions {
   persistentKey?: string;
@@ -32,8 +34,9 @@ export async function fetchStaticJsonWithMetadata<T>(
     try {
       const cached = await get<T>(cacheKey);
       if (cached !== undefined) return { data: cached, source: 'persistent-cache' };
-    } catch {
-      // A browser may block IndexedDB; network loading remains available.
+    } catch (error) {
+      // Graceful degradation: IndexedDB blocked; network loading remains available
+      debugLogger.warn('Cache', `Persistent cache read failed for "${cacheKey}"`, error);
     }
   }
 
@@ -43,7 +46,12 @@ export async function fetchStaticJsonWithMetadata<T>(
   );
   const contentType = response.headers.get('content-type');
 
-  if (!response.ok) throw new Error(`${path} returned ${response.status}`);
+  if (!response.ok) {
+    if (response.status === 404) {
+      throw new PackMissError(label, `${path} returned 404`);
+    }
+    throw new NetworkError(`${path} returned ${response.status}`, response.status);
+  }
   if (!contentType?.includes('application/json')) {
     throw new Error(`${path} did not return JSON`);
   }
@@ -53,8 +61,9 @@ export async function fetchStaticJsonWithMetadata<T>(
   if (cacheKey && canUsePersistentCache()) {
     try {
       await set(cacheKey, data);
-    } catch {
-      // Cache writes are optional and must never block content delivery.
+    } catch (error) {
+      // Graceful degradation: cache writes are optional and must never block content delivery
+      debugLogger.warn('Cache', `Persistent cache write failed for "${cacheKey}"`, error);
     }
   }
 
@@ -73,8 +82,9 @@ export async function removeStaticJsonCache(key: string): Promise<void> {
   if (!canUsePersistentCache()) return;
   try {
     await del(toCacheKey(key));
-  } catch {
-    // Ignore browsers where persistent storage is unavailable.
+  } catch (error) {
+    // Graceful degradation: persistent storage unavailable during cache deletion
+    debugLogger.warn('Cache', `Persistent cache delete failed for "${key}"`, error);
   }
 }
 
@@ -94,7 +104,9 @@ export async function pruneStaticJsonCache(namespace: string, activeVersion: str
       && !key.startsWith(activePrefix)
     ));
     await Promise.all(staleKeys.map((key) => del(key)));
-  } catch {
+  } catch (error) {
+    // Graceful degradation: cache pruning failure resets tracking set
+    debugLogger.warn('Cache', `Persistent cache pruning failed for "${pruneKey}"`, error);
     prunedVersions.delete(pruneKey);
   }
 }

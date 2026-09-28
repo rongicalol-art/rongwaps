@@ -20,6 +20,7 @@
 import { create } from 'zustand';
 import { persist, type PersistStorage } from 'zustand/middleware';
 import { get, set, del } from 'idb-keyval';
+import { debugLogger } from '../utils/debugLogger';
 import { migrateLegacyLessonSelection } from '../utils/lessonPartSelection';
 import { migrateLegacyStores } from '../utils/legacyStoreMigration';
 import {
@@ -161,7 +162,9 @@ const idbStorage: PersistStorage<Partial<AppState>> = {
         }
       }
       return item;
-    } catch {
+    } catch (error) {
+      // Graceful degradation: IndexedDB blocked; fall back to unpersisted memory state
+      debugLogger.warn('Sync', 'IndexedDB read failed in idbStorage.getItem', error);
       return null;
     }
   },
@@ -192,8 +195,9 @@ const idbStorage: PersistStorage<Partial<AppState>> = {
       if (!persistTimer) {
         persistTimer = setTimeout(flushPendingPersist, PERSIST_DEBOUNCE_MS);
       }
-    } catch {
-      // Cache writes are optional and must never block the store.
+    } catch (error) {
+      // Graceful degradation: cache write failed; never block the in-memory store
+      debugLogger.warn('Sync', 'IndexedDB write debouncing failed in idbStorage.setItem', error);
     }
   },
   removeItem: async (name) => {
@@ -204,8 +208,9 @@ const idbStorage: PersistStorage<Partial<AppState>> = {
         persistTimer = null;
       }
       await del(name);
-    } catch {
-      // Ignore browsers where persistent storage is unavailable.
+    } catch (error) {
+      // Graceful degradation: persistent storage unavailable during removeItem
+      debugLogger.warn('Sync', 'IndexedDB delete failed in idbStorage.removeItem', error);
     }
   },
 };
