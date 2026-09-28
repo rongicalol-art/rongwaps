@@ -46,6 +46,16 @@ export function GrammarExamplesSection({
           key={example.id}
           className="flex items-start gap-3.5 px-4 pb-4 pt-3 sm:gap-4 sm:px-5 sm:pb-5 sm:pt-3.5"
         >
+          {/* Audio Button */}
+          <IconActionButton
+            onClick={() => speakExample(index)}
+            size="sm"
+            variant="quiet"
+            icon={<AppIcon name="audio" size={20} />}
+            label={`Play example ${example.number ?? index + 1}`}
+            className="shrink-0 text-brand-primary hover:text-brand-primary/80 -ml-1 -mt-0.5"
+          />
+
           {/* Sentence Content */}
           <div className="flex-1 min-w-0 pt-0.5">
             <GrammarExampleText
@@ -58,16 +68,6 @@ export function GrammarExamplesSection({
               onOpenWord={onOpenWord}
             />
           </div>
-
-          {/* Audio Button */}
-          <IconActionButton
-            onClick={() => speakExample(index)}
-            size="sm"
-            variant="quiet"
-            icon={<AppIcon name="audio" size={20} />}
-            label={`Play example ${example.number ?? index + 1}`}
-            className="shrink-0 text-brand-primary hover:text-brand-primary/80 -mt-0.5 -mr-1"
-          />
         </div>
       ))}
     </section>
