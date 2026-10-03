@@ -228,7 +228,7 @@ architectural inconsistency in the repo.
    byte size and its consumer(s). Keep genuine code (`designTokens.ts`, token tables, routing
    maps) in place — do not turn constants into fetches.
 2. For each, export JSON under the existing `public/data/<kind>/book-<n>/…` convention using a
-   **new export step in the existing pipeline style** (mirroring `scripts/exportBookPages.ts` /
+   **new export step in the existing pipeline style** (mirroring `scripts/content/exportBookPages.ts` /
    `exportHookPack.ts`), with a hash-versioned `manifest.json` exactly like the memory-hooks pack.
 3. Load it through the P2 registry (`loadPack(kind, key)`) so IndexedDB caching, version
    invalidation and fallback behavior come for free. Do not hand-roll a new fetcher.

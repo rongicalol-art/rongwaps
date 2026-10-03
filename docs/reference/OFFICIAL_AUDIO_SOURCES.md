@@ -82,11 +82,11 @@ dialogue 2 = `LL-2-1`, grammar pages = `LL-P-3`.
 - **對話一 tracks (`B1-LL-1-1.mp3`) are intro-trimmed at the true dialogue
   start.** Every dialogue-1 track opens with ~11s of music followed by a
   SPOKEN lesson title (e.g. 「第一課 新同學 對話一」, ~13–19s) before the
-  dialogue. `scripts/align_dialogue_audio.py` finds where line 1 actually
+  dialogue. `scripts/audio/align_dialogue_audio.py` finds where line 1 actually
   starts (Whisper + pinyin matching) and re-cuts the file there (keeping
   ~0.8s of pause). Trim points are in `docs/audio_manifest_book1.json`
   (`trimmedIntroSec`) and in the alignment data (`trimSec`).
-- **Karaoke alignment (MMS forced alignment)**: `scripts/align_mms.py` force-aligns
+- **Karaoke alignment (MMS forced alignment)**: `scripts/audio/align_mms.py` force-aligns
   every reading's authored lines to the trimmed audio at CHARACTER resolution using
   `torchaudio.pipelines.MMS_FA` (wav2vec2 CTC over tone-free pinyin). Output:
   `content/dialogueAlignment.json` — per-line start/end + per-character onsets
@@ -95,20 +95,20 @@ dialogue 2 = `LL-2-1`, grammar pages = `LL-P-3`.
   `短文` + reading-title intro) have line 1 located via Whisper, then are aligned from
   that onset. Lines whose mean score is < 0.5 (the recording diverges, e.g.
   兩百一十五 read as 二百一十五) are marked `unmatched` and fall back to TTS. The old
-  Whisper-token-timestamp alignment in `scripts/align_dialogue_audio.py` is superseded
+  Whisper-token-timestamp alignment in `scripts/audio/align_dialogue_audio.py` is superseded
   for alignment (kept only for its download / intro-trim / manifest steps).
 - **Reader karaoke UI**: playback bar (play/pause + live progress), current
   line highlight, per-word highlight, and tap-a-line to hear just that line
   (`audioService.playRange`). Missing or failed alignments degrade to
   whole-track playback / TTS.
 - Scripts:
-  - `scripts/downloadOfficialAudio.mjs` — download from Drive + ffmpeg
+  - `scripts/audio/downloadOfficialAudio.mjs` — download from Drive + ffmpeg
     re-encode (no trim; alignment owns trimming).
-  - `scripts/align_mms.py` — MMS forced alignment → `content/dialogueAlignment.json`
+  - `scripts/audio/align_mms.py` — MMS forced alignment → `content/dialogueAlignment.json`
     (venv: `output/venv`; Whisper model cache: `output/whisper-models`).
-  - `scripts/align_dialogue_audio.py` — legacy: Whisper alignment + intro re-trim +
+  - `scripts/audio/align_dialogue_audio.py` — legacy: Whisper alignment + intro re-trim +
     manifest update (alignment superseded; kept for the download/trim steps).
-  - `scripts/uploadOfficialAudio.mjs` — upload `output/official-audio/book1/`
+  - `scripts/audio/uploadOfficialAudio.mjs` — upload `output/official-audio/book1/`
     to `vocabulary-audio` (needs `SUPABASE_SERVICE_ROLE_KEY` in env).
 - The audio Cache API is versioned (`rongwaps-audio-v3` in
   `src/services/audioService.ts`): bump it whenever hosted audio changes so

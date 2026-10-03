@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run typecheck)",
+      "Bash(npm run lint)",
+      "Bash(npm test)",
+      "Bash(npm run jev:lint)",
+      "Bash(npm run content:validate)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)"
+    ],
+    "deny": [
+      "Read(./.env*)",
+      "Read(./.batch_key_env)",
+      "Read(./.openrouter_key)",
+      "Read(./scripts/.config.json)"
+    ]
+  }
+}
