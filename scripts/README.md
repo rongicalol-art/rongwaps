@@ -1,8 +1,20 @@
 # Dev-only scripts
 
-None of this code ships to learners. `scripts/memory-hooks/` is a data
-pipeline whose outputs are committed artifacts (packs in `public/data/` and
-review files in `output/`).
+None of this code ships to learners. Run via the matching `npm run …` alias or `npx tsx scripts/<folder>/<file>`.
+
+| Folder | Contents |
+| --- | --- |
+| `content/` | authored-content export/validate, book pages, course examples, vocabulary pack optimizing |
+| `dictionary/` | dictionary pack export/restore/compress, frequency build + apply |
+| `character-decomposition/` | decomposition runtime packs + measurement |
+| `strokes/` | stroke-order data vendoring + pack build |
+| `audio/` | official audio download/upload/R2 sync, dialogue alignment (Python) |
+| `assets/` | font vendoring, video optimizing |
+| `memory-hooks/` | hook-generation pipeline (finished experiments in `archive/`); `phonetic/`, `jev/` hold sound-hook and Jev tooling |
+| `dev/` | one-off helpers (`listTables.mjs`, `ui_sweep.py`) |
+| `lib/` | shared script helpers |
+
+Secrets: `scripts/.config.json` and `.env*` are never read by agents or committed.
 
 ## memory-hooks pipeline (Book 1)
 
@@ -11,7 +23,7 @@ model, concurrency). The key is read from `~/.local/share/opencode/auth.json`.
 
 Run order (all via `npx tsx <script>` or the matching `npm run memory-hooks:*`):
 
-1. Inventory and plans: `prepareBookOnePilot.ts`, `prepareBookOneEvaluationBatch.ts`
+1. Inventory and plans: `prepareBookOneEvaluationBatch.ts` (pilot stage `archive/prepareBookOnePilot.ts`; other finished experiments live in `memory-hooks/archive/`, see its README)
    → `output/memory-hooks/book-1-inventory.json`, `book-1-plans.json`.
 2. Curated component labels: `proposeCuratedComponentLabels.ts` then
    `freezeCuratedComponentLabels.ts` (`EDIT_MAP` + `SKIP_GLYPHS`).
