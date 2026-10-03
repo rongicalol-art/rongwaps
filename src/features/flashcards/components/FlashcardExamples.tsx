@@ -45,38 +45,31 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
   divider = false,
   className = '',
 }: FlashcardExampleRowProps) {
-  const book = SAMPLE_BOOKS.find((b) => b.id === example.sourceBookId);
-
   return (
     <li
       className={`flex min-w-0 flex-col gap-1.5 sm:gap-2 [content-visibility:auto] [contain-intrinsic-size:0_110px] ${
-        divider ? 'border-b border-ui-divider' : ''
+        divider ? 'border-b-2 border-ui-divider' : ''
       } ${className}`}
     >
-      <div className="flex w-full items-baseline justify-between gap-3">
-        <SmartSentence
-          text={example.chinese}
-          highlightTerms={highlightTerms}
-          className="min-w-0 flex-1 font-chinese text-[18px] sm:text-[20px] md:text-[22px] font-bold leading-relaxed text-ui-ink-strong"
-        />
+      <div className="w-full flow-root">
         {showMeta && (
           <span
-            className="shrink-0 inline-flex items-center gap-1.5 rounded-compact bg-ui-hover px-2 py-0.5 text-[11px] font-extrabold uppercase tracking-wider text-ui-muted"
+            className="float-right ml-3 mb-1 inline-flex items-center gap-1 pt-1 text-[10px] sm:text-[11px] font-extrabold tracking-wide text-ui-muted select-none"
             title={`Book ${example.sourceBookId}, Lesson ${example.sourceLessonId}${isTopPick ? ' · Top match' : ''}`}
           >
             {isTopPick && (
-              <span
-                role="img"
-                aria-label="Top match"
-                className={`shrink-0 ${book?.accent ?? 'text-brand-primary'}`}
-              >
-                <AppIcon name="star" size={12} />
+              <span role="img" aria-label="Top match" className="shrink-0 text-brand-primary">
+                <AppIcon name="star" size={11} />
               </span>
             )}
             <span>B{example.sourceBookId} · L{example.sourceLessonId}</span>
-            <span className={`h-1.5 w-1.5 rounded-full ${book?.accentBg ?? 'bg-brand-primary'}`} />
           </span>
         )}
+        <SmartSentence
+          text={example.chinese}
+          highlightTerms={highlightTerms}
+          className="font-chinese text-[18px] sm:text-[20px] md:text-[22px] font-bold leading-relaxed text-ui-ink-strong"
+        />
       </div>
       {showPinyin && example.pinyin && (
         <p className="text-sm sm:text-[15px] font-semibold tracking-wide leading-snug text-ui-muted-strong">
@@ -96,10 +89,10 @@ function FlashcardExamplesLoading() {
   return (
     <div className="mt-4 flex w-full flex-col px-6 pb-4 sm:px-8" role="status" aria-label="Loading example sentences">
       {[0, 1].map((index) => (
-        <div key={index} className="flex flex-col gap-2 border-b border-ui-divider py-4 last:border-b-0">
+        <div key={index} className="flex flex-col gap-2 border-b-2 border-ui-divider py-4 last:border-b-0">
           <div className="flex items-center justify-between gap-3">
             <Skeleton className="h-6 w-3/5 rounded-xs" />
-            <Skeleton className="h-4.5 w-14 rounded-compact" />
+            <Skeleton className="h-3.5 w-10 rounded-xs" />
           </div>
           <Skeleton className="h-4 w-1/3 rounded-xs" />
           <Skeleton className="h-4 w-1/2 rounded-xs" />
@@ -110,11 +103,9 @@ function FlashcardExamplesLoading() {
 }
 
 /**
- * The flashcard back's example stream. The exact match leads as a plain row
- * marked with a small star in the source book's accent on the left — no
- * frame, no label text. Everything else flows as quiet per-book blocks:
- * plain rows with only a bottom divider, grouped by book (order itself
- * carries the ranking).
+ * The flashcard back's example stream. Clean, frameless rows matching character
+ * breakdowns with quiet B# · L# metadata, grouped by book (order itself carries
+ * the ranking).
  *
  * For performance, only a curated initial budget (up to 3 sentences) is mounted
  * initially. An expandable toggle allows revealing the full set on demand without

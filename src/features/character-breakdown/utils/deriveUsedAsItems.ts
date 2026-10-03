@@ -1,6 +1,6 @@
-import { FLASHCARDS_DATA } from '../../../data/flashcards';
 import type { Flashcard } from '../../../data/flashcards';
 import { vocabularyCache } from '../../../utils/cache';
+import { isStandardHanzi } from '../../../utils/hanzi';
 
 export interface UsedAsGroupItem {
   char: string;
@@ -10,7 +10,7 @@ export interface UsedAsGroupItem {
 /**
  * Buckets "used as component" characters into in-course vs out-of-course,
  * resolving each character's owning book/lesson badge from the loaded
- * vocabulary cache (falling back to the bundled flashcard set).
+ * vocabulary cache.
  */
 export function deriveUsedAsItems(usedAsComponents: string[]): {
   inCourseItems: UsedAsGroupItem[];
@@ -27,11 +27,7 @@ export function deriveUsedAsItems(usedAsComponents: string[]): {
 
   const uniqueMap = new Map<string, Flashcard>();
   loadedList.forEach(c => uniqueMap.set(c.id, c));
-  let allVocabs = Array.from(uniqueMap.values());
-
-  if (allVocabs.length === 0) {
-    allVocabs = FLASHCARDS_DATA;
-  }
+  const allVocabs = Array.from(uniqueMap.values());
 
   const items = usedAsComponents.map(c => {
     const exact = allVocabs.find(card => card.front === c);
@@ -55,7 +51,9 @@ export function deriveUsedAsItems(usedAsComponents: string[]): {
   });
 
   const inCourse = items.filter(item => item.badgeInfo !== null);
-  const outOfCourse = items.filter(item => item.badgeInfo === null);
+  const outOfCourse = items
+    .filter(item => item.badgeInfo === null && isStandardHanzi(item.char))
+    .slice(0, 35);
 
   // Sort course items by book and lesson
   inCourse.sort((a, b) => {

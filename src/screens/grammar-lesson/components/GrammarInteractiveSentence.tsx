@@ -25,7 +25,7 @@ export function GrammarInteractiveSentence({
     : choice.traditional;
 
   return (
-    <div className="border-t border-ui-divider px-5 py-5 sm:px-7 sm:py-6">
+    <div className="border-t-2 border-ui-divider px-5 py-5 sm:px-7 sm:py-6">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="font-chinese text-[26px] font-black leading-relaxed text-ui-ink-strong sm:text-[32px]">

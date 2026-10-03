@@ -16,40 +16,29 @@ export function buildPracticePartSegments(cards: Flashcard[]): PartSegment[] {
     return [];
   }
 
-  // Also, if partIds are interleaved/non-contiguous (e.g. Part 1, Part 2, Part 1 again),
-  // it means the deck is shuffled or not clean sequential parts.
-  const seenPartIds = new Set<number>();
-  let currentPartId = cards[0].partId ?? 1;
-  seenPartIds.add(currentPartId);
-
+  // Count cards per partId in order of partId
+  const countByPart = new Map<number, number>();
   for (const card of cards) {
     const pId = card.partId ?? 1;
-    if (pId !== currentPartId) {
-      if (seenPartIds.has(pId)) {
-        return [];
-      }
-      seenPartIds.add(pId);
-      currentPartId = pId;
-    }
+    countByPart.set(pId, (countByPart.get(pId) ?? 0) + 1);
   }
 
+  // Keep single-part sessions too: the study header needs its live position
+  // even while other lesson parts are currently switched off.
+  const sortedPartIds = Array.from(countByPart.keys()).sort((a, b) => a - b);
   const segments: PartSegment[] = [];
+  let runningStartIndex = 0;
 
-  cards.forEach((card, index) => {
-    const partId = card.partId ?? 1;
-    const previous = segments.at(-1);
-    if (previous?.partId === partId) {
-      previous.cardCount += 1;
-      return;
-    }
-
+  for (const partId of sortedPartIds) {
+    const cardCount = countByPart.get(partId) ?? 0;
     segments.push({
       partId,
       label: `Part ${partId}`,
-      cardCount: 1,
-      startIndex: index,
+      cardCount,
+      startIndex: runningStartIndex,
     });
-  });
+    runningStartIndex += cardCount;
+  }
 
   return segments;
 }

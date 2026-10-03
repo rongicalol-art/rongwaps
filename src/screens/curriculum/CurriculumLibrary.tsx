@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useMemo, useRef } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { getInteractiveGrammarManifestForLesson } from '../../data/interactiveGrammarManifest';
 import {
@@ -61,6 +61,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
   menuToggle,
   onProfileClick,
 }: CurriculumLibraryProps) {
+  const reduceMotion = useReducedMotion();
   const hasActiveActivity = useAppStore((state) => Boolean(state.activeActivity));
   const activeLearnedCards = useAppStore((state) => (
     state.activeActivity ? null : state.learnedCards
@@ -199,27 +200,35 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
         </div>
       </div>
 
-      <div className="workspace-window pointer-events-none fixed bottom-0 right-0 z-50 bg-gradient-to-t from-ui-canvas via-ui-canvas/95 to-transparent pb-sheet-safe pt-10">
-        <div className="mx-auto w-full max-w-2xl px-4 md:px-6">
-          <ActionButton
-            size="lg"
-            fullWidth
-            disabled={isLoading || selectedLessonCount === 0 || !onStartPractice}
-            onClick={onStartPractice}
-            onMouseEnter={() => void loadPracticeSession({ activeBookId, selectedLessons, activity: 'flashcards' })}
-            onTouchStart={() => void loadPracticeSession({ activeBookId, selectedLessons, activity: 'flashcards' })}
-            onFocus={() => void loadPracticeSession({ activeBookId, selectedLessons, activity: 'flashcards' })}
-            edgeColor={activeBook.edgeHex}
-            aria-label={selectedLessonCount > 0
-              ? `Start with ${selectedLessonCount} selected ${selectedLessonCount === 1 ? 'lesson' : 'lessons'}`
-              : 'Select a lesson before starting'}
-            className={`pointer-events-auto min-h-14 btn-touch-primary ${activeBook.accentBg}`}
+      <AnimatePresence>
+        {selectedLessonCount > 0 && (
+          <motion.div
+            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
+            animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
+            transition={reduceMotion ? { duration: 0.1 } : { duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="workspace-window pointer-events-none fixed bottom-0 right-0 z-50 bg-gradient-to-t from-ui-canvas via-ui-canvas/95 to-transparent pb-sheet-safe pt-10"
           >
-            <AppIcon name="play" size={20} />
-            <span>Start</span>
-          </ActionButton>
-        </div>
-      </div>
+            <div className="mx-auto w-full max-w-2xl px-4 md:px-6">
+              <ActionButton
+                size="lg"
+                fullWidth
+                disabled={isLoading || !onStartPractice}
+                onClick={onStartPractice}
+                onMouseEnter={() => void loadPracticeSession({ activeBookId, selectedLessons, activity: 'flashcards' })}
+                onTouchStart={() => void loadPracticeSession({ activeBookId, selectedLessons, activity: 'flashcards' })}
+                onFocus={() => void loadPracticeSession({ activeBookId, selectedLessons, activity: 'flashcards' })}
+                edgeColor={activeBook.edgeHex}
+                aria-label={`Start with ${selectedLessonCount} selected ${selectedLessonCount === 1 ? 'lesson' : 'lessons'}`}
+                className={`pointer-events-auto min-h-14 btn-touch-primary ${activeBook.accentBg}`}
+              >
+                <AppIcon name="play" size={20} />
+                <span>Start</span>
+              </ActionButton>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 });

@@ -1,6 +1,11 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { sanitizeDictionaryDefinitions } from '../../src/utils/dictionaryDefinitions';
+import {
+  sanitizeDictionaryDefinitions,
+  humanizeCedictMarkup,
+  extractCedictReference,
+  formatCompactMeaning,
+} from '../../src/utils/dictionaryDefinitions';
 
 test('serialized definition arrays render as learner-facing meanings', () => {
   assert.deepEqual(
@@ -47,3 +52,67 @@ test('a lone classifier string sanitizes to nothing instead of resurrecting', ()
   const result = sanitizeDictionaryDefinitions('CL:個|个[ge4]');
   assert.deepEqual(result, { definitions: [], measure_words: ['個'] });
 });
+
+test('humanizeCedictMarkup formats traditional/simplified bracketed pinyin', () => {
+  assert.equal(
+    humanizeCedictMarkup('variant of 令愛|令爱[ling4 ai4]', 'simplified'),
+    'variant of 令爱 (lìng ài)',
+  );
+  assert.equal(
+    humanizeCedictMarkup('variant of 令愛|令爱[ling4 ai4]', 'traditional'),
+    'variant of 令愛 (lìng ài)',
+  );
+  assert.equal(
+    humanizeCedictMarkup('used in 令嬡|令嫒[ling4 ai4]', 'simplified'),
+    'used in 令嫒 (lìng ài)',
+  );
+  assert.equal(
+    humanizeCedictMarkup('see 丁青縣|丁青县[Ding1 qing1 Xian4]', 'simplified'),
+    'see 丁青县 (Dīng qīng Xiàn)',
+  );
+  assert.equal(
+    humanizeCedictMarkup('also written 五胡十六國|五胡十六国', 'simplified'),
+    'also written 五胡十六国',
+  );
+});
+
+test('extractCedictReference extracts relation and target', () => {
+  assert.deepEqual(
+    extractCedictReference('variant of 令愛|令爱[ling4 ai4]'),
+    {
+      relation: 'variant of',
+      traditional: '令愛',
+      simplified: '令爱',
+      pinyin: 'lìng ài',
+      raw: 'variant of 令愛|令爱[ling4 ai4]',
+    },
+  );
+  assert.deepEqual(
+    extractCedictReference('used in 令嬡|令嫒[ling4 ai4]'),
+    {
+      relation: 'used in',
+      traditional: '令嬡',
+      simplified: '令嫒',
+      pinyin: 'lìng ài',
+      raw: 'used in 令嬡|令嫒[ling4 ai4]',
+    },
+  );
+});
+
+test('pure variant definitions are humanized instead of resurrecting raw CEDICT markup', () => {
+  const result = sanitizeDictionaryDefinitions(['variant of 令愛|令爱[ling4 ai4]'], { preferredScript: 'simplified' });
+  assert.deepEqual(result.definitions, ['variant of 令爱 (lìng ài)']);
+  assert.deepEqual(result.measure_words, []);
+
+  const usedInResult = sanitizeDictionaryDefinitions(['used in 令嬡|令嫒[ling4 ai4]'], { preferredScript: 'simplified' });
+  assert.deepEqual(usedInResult.definitions, ['used in 令嫒 (lìng ài)']);
+});
+
+test('formatCompactMeaning extracts concise meaning without mid-word truncation', () => {
+  assert.equal(formatCompactMeaning('woman, girl; female'), 'woman, girl');
+  assert.equal(formatCompactMeaning('to love, to like, to be fond of; love, affection'), 'to love');
+  assert.equal(formatCompactMeaning('square; direction; side'), 'square');
+  assert.equal(formatCompactMeaning(''), '');
+});
+
+

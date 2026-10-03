@@ -68,8 +68,8 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
   };
 
   const partSegments = useMemo(
-    () => (isShuffled || isReviewDeck || isLibraryDeck ? [] : buildPracticePartSegments(playlist)),
-    [isLibraryDeck, isReviewDeck, isShuffled, playlist],
+    () => (isReviewDeck || isLibraryDeck ? [] : buildPracticePartSegments(playlist)),
+    [isLibraryDeck, isReviewDeck, playlist],
   );
 
   usePracticeHeaderRegistration({

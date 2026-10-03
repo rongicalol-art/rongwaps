@@ -15,6 +15,7 @@ interface ActivityPracticeHeaderProps {
   onClose: () => void;
   onWritingClose: () => void;
   flashcardMode: FlashcardViewMode;
+  activeBookId?: number;
 }
 
 export function ActivityPracticeHeader({
@@ -28,6 +29,7 @@ export function ActivityPracticeHeader({
   onClose,
   onWritingClose,
   flashcardMode,
+  activeBookId,
 }: ActivityPracticeHeaderProps) {
   const practiceHeader = useAppStore((state) => state.practiceHeader);
   const practiceHeaderActions = useAppStore((state) => state.practiceHeaderActions);
@@ -49,11 +51,12 @@ export function ActivityPracticeHeader({
         totalCount={practiceHeader.totalCount}
         isRetry={practiceHeader.isRetry}
         cleanupPhase={practiceHeader.cleanupPhase}
-        partSegments={practiceHeaderActions.isShuffled ? [] : practiceHeader.partSegments}
-        studyParts={practiceHeaderActions.isShuffled ? [] : studyParts}
+        partSegments={practiceHeader.partSegments}
+        studyParts={studyParts}
         onSelectStudyPart={onSelectStudyPart}
         onToggleStudyPart={onToggleStudyPart}
         accentBgClassName={accentBgClassName}
+        activeBookId={activeBookId}
         onSettingsClick={practiceHeaderActions.onSettingsClick}
         onShuffleClick={practiceHeaderActions.onShuffleClick}
         onFlowClick={practiceHeaderActions.onFlowClick}

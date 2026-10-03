@@ -34,6 +34,7 @@ export function computeCardSessionProgress(
   activeCards: Array<{ id: string }>,
   repeatMistakes: MistakeRepeat,
   missedCardIds: Set<string>,
+  isShuffled: boolean = false,
 ): CardSessionProgressInfo {
   const initialTotal = canonicalCards.length || activeCards.length;
   if (initialTotal === 0) {
@@ -65,7 +66,7 @@ export function computeCardSessionProgress(
   }
 
   const isRetry = Boolean(currentCardId && missedCardIds.has(currentCardId));
-  const cardCanonicalIndex = currentCardId
+  const cardCanonicalIndex = !isShuffled && isRetry && currentCardId
     ? canonicalCards.findIndex((c) => c.id === currentCardId)
     : -1;
 

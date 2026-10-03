@@ -46,7 +46,6 @@ export function ReaderStudySidePanel({
         onLocateGrammarPoint={onLocateGrammarPoint}
         locatedWordId={locatedWordId}
         locatedGrammarPointId={locatedGrammarPointId}
-        showCloseButton={false}
       />
     </StudySidePanel>
   );

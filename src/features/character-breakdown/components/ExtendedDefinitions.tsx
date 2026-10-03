@@ -47,6 +47,10 @@ export function ExtendedDefinitions({ char, entries: entriesProp }: { char?: str
   const level = primary?.curriculum_level ?? null;
   const hasLevel = level !== null && level >= 1 && level <= 6;
 
+  const hasExtraDefinitions = definitions.length > 1;
+  const hasExtraMetadata = measureWords.length > 0 || hasLevel;
+  if (!hasExtraDefinitions && !hasExtraMetadata) return null;
+
   return (
     <div>
       <button
@@ -56,8 +60,8 @@ export function ExtendedDefinitions({ char, entries: entriesProp }: { char?: str
         className="flex min-h-11 w-full items-center justify-between gap-3 rounded-b-feature px-4 text-left transition-colors hover:bg-ui-canvas focus-ring focus-visible:ring-inset sm:px-5"
       >
         <span className="flex items-baseline gap-1.5 text-sm font-extrabold text-ui-muted-strong">
-          More definitions
-          {definitions.length > 1 && <span className="font-bold text-ui-muted">· {definitions.length}</span>}
+          {hasExtraDefinitions ? 'More definitions' : 'Dictionary details'}
+          {hasExtraDefinitions && <span className="font-bold text-ui-muted">· {definitions.length}</span>}
         </span>
         <Chevron open={open} />
       </button>
@@ -73,16 +77,18 @@ export function ExtendedDefinitions({ char, entries: entriesProp }: { char?: str
           >
             <div className="px-4 pb-4 sm:px-5">
               {/* Single inset hairline separating the trigger from the details */}
-              <div aria-hidden="true" className="mb-4 border-t border-ui-divider" />
+              <div aria-hidden="true" className="mb-4 border-t-2 border-ui-divider" />
 
               <div className="flex flex-col gap-3.5">
-                <ul className="flex flex-col gap-2">
-                  {definitions.map((definition, index) => (
-                    <li key={index} className="text-sm font-bold leading-relaxed text-ui-ink">
-                      {definition}
-                    </li>
-                  ))}
-                </ul>
+                {hasExtraDefinitions && (
+                  <ul className="flex flex-col gap-2">
+                    {definitions.map((definition, index) => (
+                      <li key={index} className="text-sm font-bold leading-relaxed text-ui-ink">
+                        {definition}
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
                 {(measureWords.length > 0 || hasLevel) && (
                   <div className="flex flex-wrap items-center gap-2">

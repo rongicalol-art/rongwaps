@@ -3,7 +3,7 @@ import type { PracticePreferences } from '../../../store/useAppStore';
 import { cn } from '../../../utils/cn';
 import { DetailShell, ScreenHeader, SettingsDropdownPicker } from '../../../lib/widgets';
 import { SettingsToggleRow } from '../settings/PracticeSettingControls';
-import { ScriptPreviewCard } from '../settings/ScriptPreviewCard';
+import { CharacterAppearanceSection } from '../settings/CharacterAppearanceSection';
 
 export interface PracticeSettingsScreenProps extends React.HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;
@@ -47,7 +47,6 @@ const NEXT_CARD_DELAY_OPTIONS = [
   { value: '3000', label: 'Slow' },
 ];
 
-/** Duolingo-style flat section: quiet eyebrow heading + hairline, then bare control rows. */
 function SettingsPageSection({
   title,
   children,
@@ -59,9 +58,9 @@ function SettingsPageSection({
 }) {
   return (
     <section className={cn('flex flex-col', className)}>
-      <h2 className="text-xs font-black uppercase tracking-widest text-ui-muted-strong">{title}</h2>
-      <div className="mb-1 mt-2 h-0.5 w-full rounded-full bg-ui-divider" />
-      <div className="flex flex-col gap-1 pl-4">{children}</div>
+      <h2 className="text-lg font-black tracking-tight text-ui-ink-strong sm:text-xl">{title}</h2>
+      <div className="mb-3 mt-2 h-px w-full bg-ui-divider" />
+      <div className="flex flex-col gap-1">{children}</div>
     </section>
   );
 }
@@ -83,8 +82,6 @@ export function PracticeSettingsScreen({
     onPreferencesChange(patch);
   };
 
-  const fontSample = characterPreference === 'simplified' ? '听说读写' : '聽說讀寫';
-
   return (
     <DetailShell.Root
       ariaLabel="Practice settings"
@@ -101,147 +98,110 @@ export function PracticeSettingsScreen({
           tone="practice"
           onClose={onClose}
           title="Study settings"
-          maxWidth="2xl"
+          maxWidth="none"
         />
-        <div className="mx-auto flex w-full max-w-2xl flex-col gap-7 px-5 pb-16 pt-2 sm:px-8" {...props}>
-              <SettingsPageSection title="Character script">
-                <div
-                  role="radiogroup"
-                  aria-label="Character script format"
-                  className="mt-3 flex flex-col gap-3 sm:flex-row"
-                >
-                  <ScriptPreviewCard
-                    selected={characterPreference === 'traditional'}
-                    heading="Traditional"
-                    sample="聽說讀寫"
-                    label="Traditional characters"
-                    onClick={() => onCharacterPreferenceChange('traditional')}
-                  />
-                  <ScriptPreviewCard
-                    selected={characterPreference === 'simplified'}
-                    heading="Simplified"
-                    sample="听说读写"
-                    label="Simplified characters"
-                    onClick={() => onCharacterPreferenceChange('simplified')}
-                  />
-                </div>
-              </SettingsPageSection>
+        <div className="mx-auto flex w-full max-w-4xl flex-col gap-8 px-5 pb-16 pt-3 sm:px-8 lg:grid lg:grid-cols-2 lg:gap-x-12 lg:gap-y-9" {...props}>
+          {/* Column 1: Characters, Card display, Quiz */}
+          <div className="flex flex-col gap-8 sm:gap-9">
+            <SettingsPageSection title="Characters">
+              <CharacterAppearanceSection
+                characterPreference={characterPreference}
+                onCharacterPreferenceChange={onCharacterPreferenceChange}
+                characterFont={preferences.characterFont}
+                onCharacterFontChange={(font) => onPreferencesChange({ characterFont: font })}
+              />
+            </SettingsPageSection>
 
-              <SettingsPageSection title="Character font">
-                <div
-                  role="radiogroup"
-                  aria-label="Character font style"
-                  className="mt-3 flex flex-col gap-3 sm:flex-row"
-                >
-                  <ScriptPreviewCard
-                    selected={preferences.characterFont === 'huninn'}
-                    heading="Rounded"
-                    sample={fontSample}
-                    label="Rounded characters"
-                    sampleClassName={characterPreference === 'simplified' ? 'font-chinese-rounded-sc font-normal' : 'font-chinese-huninn font-normal'}
-                    onClick={() => onPreferencesChange({ characterFont: 'huninn' })}
-                  />
-                  <ScriptPreviewCard
-                    selected={preferences.characterFont === 'kai'}
-                    heading="Kai"
-                    sample={fontSample}
-                    label="Calligraphy kai characters"
-                    sampleClassName={
-                      characterPreference === 'simplified'
-                        ? 'font-kaiti-sc'
-                        : 'font-kaiti-tc'
-                    }
-                    onClick={() => onPreferencesChange({ characterFont: 'kai' })}
-                  />
-                </div>
-              </SettingsPageSection>
+            <SettingsPageSection title="Card display">
+              <SettingsToggleRow
+                checked={preferences.showPinyin}
+                onClick={toggle('showPinyin')}
+                label="Pinyin"
+                className="border-b-0"
+              />
+              <SettingsToggleRow
+                checked={preferences.hideExamplePinyin}
+                onClick={toggle('hideExamplePinyin')}
+                label="Hide pinyin on example sentences"
+                className="border-b-0"
+              />
+              <SettingsToggleRow
+                checked={preferences.showTranslation}
+                onClick={toggle('showTranslation')}
+                label="English meaning"
+                className="border-b-0"
+              />
+            </SettingsPageSection>
 
-              <SettingsPageSection title="Card display">
-                <SettingsToggleRow
-                  checked={preferences.showPinyin}
-                  onClick={toggle('showPinyin')}
-                  label="Pinyin"
-                  className="border-b-0"
-                />
-                <SettingsToggleRow
-                  checked={preferences.hideExamplePinyin}
-                  onClick={toggle('hideExamplePinyin')}
-                  label="Hide pinyin on example sentences"
-                  className="border-b-0"
-                />
-                <SettingsToggleRow
-                  checked={preferences.showTranslation}
-                  onClick={toggle('showTranslation')}
-                  label="English meaning"
-                  className="border-b-0"
-                />
-              </SettingsPageSection>
+            <SettingsPageSection title="Quiz">
+              <SettingsToggleRow
+                checked={preferences.autoAdvanceCorrect}
+                onClick={toggle('autoAdvanceCorrect')}
+                label="Auto-advance after correct answers"
+                className="border-b-0"
+              />
+              <SettingsToggleRow
+                checked={preferences.autoAdvanceWrong}
+                onClick={toggle('autoAdvanceWrong')}
+                label="Auto-advance after wrong answers"
+                className="border-b-0"
+              />
+            </SettingsPageSection>
+          </div>
 
-              <SettingsPageSection title="Audio">
-                <SettingsToggleRow
-                  checked={preferences.autoPlayAudio}
-                  onClick={toggle('autoPlayAudio')}
-                  label="Speak Chinese"
-                  className="border-b-0"
+          {/* Column 2: Audio, Flow pacing, Mistake repeats */}
+          <div className="flex flex-col gap-8 sm:gap-9">
+            <SettingsPageSection title="Audio">
+              <SettingsToggleRow
+                checked={preferences.autoPlayAudio}
+                onClick={toggle('autoPlayAudio')}
+                label="Speak Chinese"
+                className="border-b-0"
+              />
+              <SettingsToggleRow
+                checked={preferences.speakDefinition}
+                onClick={toggle('speakDefinition')}
+                label="Speak English meaning"
+                className="border-b-0"
+              />
+              <SettingsToggleRow
+                checked={preferences.replayAudioAfterAnswer}
+                onClick={toggle('replayAudioAfterAnswer')}
+                label="Replay audio after answering"
+                className="border-b-0"
+              />
+              <div className="px-2 pt-2">
+                <SettingsDropdownPicker
+                  label="Speech speed"
+                  ariaLabel="Speech speed"
+                  value={String(normalizePronunciationRate(preferences.pronunciationRate))}
+                  options={SPEED_OPTIONS.map(({ value, label }) => ({ value: String(value), label }))}
+                  onChange={(value) => onPreferencesChange({ pronunciationRate: Number(value) })}
                 />
-                <SettingsToggleRow
-                  checked={preferences.speakDefinition}
-                  onClick={toggle('speakDefinition')}
-                  label="Speak English meaning"
-                  className="border-b-0"
-                />
-                <SettingsToggleRow
-                  checked={preferences.replayAudioAfterAnswer}
-                  onClick={toggle('replayAudioAfterAnswer')}
-                  label="Replay audio after answering"
-                  className="border-b-0"
-                />
-                <div className="pt-2.5">
-                  <SettingsDropdownPicker
-                    label="Speech speed"
-                    ariaLabel="Speech speed"
-                    value={String(normalizePronunciationRate(preferences.pronunciationRate))}
-                    options={SPEED_OPTIONS.map(({ value, label }) => ({ value: String(value), label }))}
-                    onChange={(value) => onPreferencesChange({ pronunciationRate: Number(value) })}
-                  />
-                </div>
-              </SettingsPageSection>
+              </div>
+            </SettingsPageSection>
 
-              <SettingsPageSection title="Flow pacing">
-                <div className="flex flex-col gap-4">
-                  <SettingsDropdownPicker
-                    label="Flip delay"
-                    ariaLabel="Flip delay"
-                    value={String(preferences.flowFrontDelayMs)}
-                    options={FLIP_DELAY_OPTIONS}
-                    onChange={(value) => onPreferencesChange({ flowFrontDelayMs: Number(value) })}
-                  />
-                  <SettingsDropdownPicker
-                    label="Next card delay"
-                    ariaLabel="Next card delay"
-                    value={String(preferences.flowBackDelayMs)}
-                    options={NEXT_CARD_DELAY_OPTIONS}
-                    onChange={(value) => onPreferencesChange({ flowBackDelayMs: Number(value) })}
-                  />
-                </div>
-              </SettingsPageSection>
-
-              <SettingsPageSection title="Quiz">
-                <SettingsToggleRow
-                  checked={preferences.autoAdvanceCorrect}
-                  onClick={toggle('autoAdvanceCorrect')}
-                  label="Auto-advance after correct answers"
-                  className="border-b-0"
+            <SettingsPageSection title="Flow pacing">
+              <div className="flex flex-col gap-4 px-2">
+                <SettingsDropdownPicker
+                  label="Flip delay"
+                  ariaLabel="Flip delay"
+                  value={String(preferences.flowFrontDelayMs)}
+                  options={FLIP_DELAY_OPTIONS}
+                  onChange={(value) => onPreferencesChange({ flowFrontDelayMs: Number(value) })}
                 />
-                <SettingsToggleRow
-                  checked={preferences.autoAdvanceWrong}
-                  onClick={toggle('autoAdvanceWrong')}
-                  label="Auto-advance after wrong answers"
-                  className="border-b-0"
+                <SettingsDropdownPicker
+                  label="Next card delay"
+                  ariaLabel="Next card delay"
+                  value={String(preferences.flowBackDelayMs)}
+                  options={NEXT_CARD_DELAY_OPTIONS}
+                  onChange={(value) => onPreferencesChange({ flowBackDelayMs: Number(value) })}
                 />
-              </SettingsPageSection>
+              </div>
+            </SettingsPageSection>
 
-              <SettingsPageSection title="Mistake repeats">
+            <SettingsPageSection title="Mistake repeats">
+              <div className="px-2">
                 <SettingsDropdownPicker
                   label="Mistake repeats"
                   ariaLabel="Mistake recycling preference"
@@ -253,8 +213,10 @@ export function PracticeSettingsScreen({
                   ]}
                   onChange={(value) => onPreferencesChange({ repeatMistakes: value as PracticePreferences['repeatMistakes'] })}
                 />
-              </SettingsPageSection>
-            </div>
+              </div>
+            </SettingsPageSection>
+          </div>
+        </div>
       </DetailShell.Scroller>
     </DetailShell.Root>
   );

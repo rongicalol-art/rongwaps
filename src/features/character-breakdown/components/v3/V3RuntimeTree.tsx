@@ -1,11 +1,13 @@
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import type { ReactNode } from 'react';
+import { useEffect, useRef, type ReactNode } from 'react';
 import { AppIcon, SectionEyebrow, Skeleton } from '../../../../lib/widgets';
 import { numberToToneMarks } from '../../../../utils/pinyin';
+import { formatCompactMeaning } from '../../../../utils/dictionaryDefinitions';
 import type { RuntimeVisibleChild } from '../../../character-decomposition';
 import { useRuntimeCharacterMetadata, type RuntimeCharacterMetadata } from '../../hooks/useRuntimeCharacterMetadata';
 import { useRuntimeDecompositionTree, type RuntimeTreeNodeState } from '../../hooks/useRuntimeDecompositionTree';
 import { getMultipleBreakdowns } from '../../../../services/breakdownService';
+import { resolveSoundRevealPath } from '../../utils/soundRevealPath';
 import { CharacterGlyph } from '../breakdown/CharacterGlyph';
 import { presentRuntimeChild, usesShapeFallback, type RuntimeChildPresentation } from './runtimeTreeView';
 
@@ -25,6 +27,12 @@ interface BranchProps {
   onGlyphClick?: (character: string) => void;
   onGlyphIntent?: (character: string) => void;
   mode: RuntimeTreeMode;
+  /** Glyph of the phonetic piece; its tile carries the book-accent treatment. */
+  soundGlyph?: string;
+  /** Tone shift for the phonetic piece, e.g. `qīn → xīn`. */
+  soundShift?: string;
+  accentHex?: string;
+  edgeHex?: string;
 }
 
 function groupClasses(mode: RuntimeTreeMode, childCount: number, depth: number): string {
@@ -61,7 +69,7 @@ function NodeMessage({ children, tone = 'muted' }: { children: ReactNode; tone?:
   return <p role={tone === 'danger' ? 'alert' : undefined} className={`py-2 text-xs font-bold ${tone === 'danger' ? 'text-feedback-danger' : 'text-ui-muted-strong'}`}>{children}</p>;
 }
 
-function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, reduceMotion, onToggle, onRetry, onGlyphClick, onGlyphIntent, mode, nodeId }: Omit<BranchProps, 'children'> & { child: RuntimeVisibleChild; nodeId: string }) {
+function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, reduceMotion, onToggle, onRetry, onGlyphClick, onGlyphIntent, mode, soundGlyph, soundShift, accentHex, edgeHex, nodeId }: Omit<BranchProps, 'children'> & { child: RuntimeVisibleChild; nodeId: string }) {
   const target = child.glyph;
   const presentation = presentRuntimeChild(child, target ? metadata.get(target) : undefined);
   const nodeState = target ? nodes[target] : undefined;
@@ -72,18 +80,32 @@ function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, re
   const regionId = target ? `runtime-decomposition-${nodeId}` : undefined;
   const result = nodeState?.result;
   const useShapeMark = usesShapeFallback(presentation);
+  const isSound = Boolean(soundGlyph && target === soundGlyph);
+  const primaryLine = (isSound && soundShift)
+    ? soundShift
+    : (presentation.pinyin ? numberToToneMarks(presentation.pinyin) : undefined);
+  const soundDepth = depth > 0 ? 'var(--depth-sm)' : 'var(--depth-md)';
+  const soundStyle = isSound && edgeHex
+    ? {
+        borderColor: edgeHex,
+        boxShadow: `0 ${soundDepth} 0 ${edgeHex}`,
+      }
+    : undefined;
   const treeWidthClass = isExpanded
     ? 'min-w-[300px] max-w-[420px] flex-[2] basis-0 sm:min-w-[360px]'
     : depth > 0
       ? 'min-w-[128px] max-w-[220px] flex-1 basis-0 sm:min-w-[150px]'
       : 'min-w-[140px] max-w-[240px] flex-1 basis-0 sm:min-w-[168px]';
   const summaryCardClass = depth > 0
-    ? 'flex min-h-[64px] items-center rounded-compact px-3 py-2 shadow-[0_var(--depth-sm)_0_var(--color-ui-divider)] active:translate-y-[length:var(--depth-sm)] active:shadow-none'
-    : 'flex min-h-[74px] items-center px-3.5 py-2.5 shadow-[0_var(--depth-md)_0_var(--color-ui-divider)] active:translate-y-[length:var(--depth-md)] active:shadow-none';
+    ? 'flex min-h-[64px] items-center rounded-compact px-3 py-2 shadow-[0_var(--depth-sm)_0_var(--color-ui-border)] active:translate-y-[length:var(--depth-sm)] active:shadow-none'
+    : 'flex min-h-[74px] items-center px-3.5 py-2.5 shadow-[0_var(--depth-md)_0_var(--color-ui-border)] active:translate-y-[length:var(--depth-md)] active:shadow-none';
 
   return (
     <div className={`relative ${mode === 'summary' ? 'min-w-0' : treeWidthClass}`}>
-      <article className={`relative rounded-control transition-[background-color,transform,box-shadow] ${mode === 'summary' ? `${summaryCardClass} ${isExpanded ? 'ring-2 ring-brand-primary/20' : ''}` : 'border-2'} ${presentation.navigable ? `${mode === 'tree' ? 'min-h-[104px] px-4 py-3 shadow-[0_var(--depth-md)_0_var(--color-ui-border)] active:translate-y-[length:var(--depth-md)] active:shadow-none' : ''} ${toneClasses(presentation, mode)}` : mode === 'summary' ? 'bg-ui-surface/65' : 'min-h-[76px] border-dashed border-ui-border bg-ui-surface/70 px-3 py-3'}`}>
+      <article
+        style={soundStyle}
+        className={`relative rounded-control transition-[background-color,transform,box-shadow] border-2 ${isSound ? '' : 'border-ui-border'} ${mode === 'summary' ? `${summaryCardClass} ${isExpanded ? 'ring-2 ring-brand-primary/20' : ''}` : ''} ${presentation.navigable ? `${mode === 'tree' ? 'min-h-[104px] px-4 py-3 shadow-[0_var(--depth-md)_0_var(--color-ui-border)] active:translate-y-[length:var(--depth-md)] active:shadow-none' : ''} ${toneClasses(presentation, mode)}` : mode === 'summary' ? 'bg-ui-surface/65' : 'min-h-[76px] border-dashed border-ui-border bg-ui-surface/70 px-3 py-3'}`}
+      >
         {presentation.navigable && target ? (
           <>
             <button type="button" onPointerEnter={() => onGlyphIntent?.(target)} onFocus={() => onGlyphIntent?.(target)} onClick={() => onGlyphClick?.(target)} aria-label={`Open breakdown for ${target}`} className="absolute inset-0 z-0 rounded-control focus-ring" />
@@ -97,9 +119,19 @@ function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, re
                 ) : (
                   <>
                     <CharacterGlyph character={presentation.title} className={`flex shrink-0 items-center justify-center leading-none text-ui-ink-strong ${depth > 0 ? 'w-10 text-[30px]' : 'w-11 text-[34px]'}`} />
-                    <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-                      {presentation.pinyin && <span className="truncate text-xs font-extrabold leading-tight text-brand-primary">{numberToToneMarks(presentation.pinyin)}</span>}
-                      {presentation.meaning ? <span className="line-clamp-2 text-[11px] font-bold leading-snug text-ui-muted-strong">{presentation.meaning}</span> : <span className="text-[11px] font-bold leading-snug text-ui-muted-strong">No meaning recorded</span>}
+                    <span className="flex min-w-0 flex-1 flex-col justify-center gap-0.5">
+                      {primaryLine && (
+                        <span className="truncate text-xs font-extrabold text-brand-primary leading-tight">
+                          {isSound ? `Sound · ${primaryLine}` : primaryLine}
+                        </span>
+                      )}
+                      {presentation.meaning ? (
+                        <span className="truncate text-[11px] font-bold leading-snug text-ui-muted-strong">
+                          {formatCompactMeaning(presentation.meaning)}
+                        </span>
+                      ) : (
+                        <span className="text-[11px] font-bold leading-snug text-ui-muted-strong">No meaning recorded</span>
+                      )}
                     </span>
                   </>
                 )}
@@ -107,8 +139,8 @@ function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, re
             ) : (
               <div className={`pointer-events-none relative z-1 flex h-full min-w-0 max-w-full flex-col justify-center text-left ${canExpand ? 'pr-7' : ''}`}>
                 {useShapeMark ? <span className="flex items-center gap-2 text-ui-muted-strong"><AppIcon name="breakdown" size={depth > 0 ? 21 : 25} /><span className="text-xs font-extrabold">Shape</span></span> : <CharacterGlyph character={presentation.title} className={`leading-none text-ui-ink-strong ${depth > 0 ? 'text-[34px]' : 'text-[40px]'}`} />}
-                {presentation.pinyin || presentation.meaning ? <span className="mt-1 flex min-w-0 items-baseline gap-1.5">
-                {presentation.pinyin && <span className="shrink-0 text-[11px] font-extrabold text-brand-primary">{numberToToneMarks(presentation.pinyin)}</span>}
+                {primaryLine || presentation.meaning ? <span className="mt-1 flex min-w-0 items-baseline gap-1.5">
+                {primaryLine && <span className="shrink-0 text-[11px] font-extrabold text-brand-primary">{isSound ? `Sound · ${primaryLine}` : primaryLine}</span>}
                 {presentation.meaning && <span className="truncate text-[11px] font-bold text-ui-muted-strong">{presentation.meaning}</span>}
                 </span> : <span className="mt-1 text-[11px] font-bold text-ui-muted-strong">No meaning recorded</span>}
               </div>
@@ -134,7 +166,7 @@ function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, re
           {nodeState?.status === 'loading' && <div className="flex items-center gap-2 py-2 text-[11px] font-bold text-ui-muted" role="status"><Skeleton className="h-3 w-12" /> Loading</div>}
           {nodeState?.status === 'error' && <NodeMessage tone="danger">Could not load. <button type="button" onClick={() => onRetry(target)} className="underline underline-offset-2">Retry</button></NodeMessage>}
           {nodeState?.status === 'missing' && <NodeMessage>No decomposition available.</NodeMessage>}
-          {nodeState?.status === 'found' && result && result.children.length > 0 && <RuntimeBranch children={result.children} nodes={nodes} expanded={expanded} metadata={metadata} ancestry={[...ancestry, target]} depth={depth + 1} reduceMotion={reduceMotion} onToggle={onToggle} onRetry={onRetry} onGlyphClick={onGlyphClick} onGlyphIntent={onGlyphIntent} mode={mode} />}
+          {nodeState?.status === 'found' && result && result.children.length > 0 && <RuntimeBranch children={result.children} nodes={nodes} expanded={expanded} metadata={metadata} ancestry={[...ancestry, target]} depth={depth + 1} reduceMotion={reduceMotion} onToggle={onToggle} onRetry={onRetry} onGlyphClick={onGlyphClick} onGlyphIntent={onGlyphIntent} mode={mode} soundGlyph={soundGlyph} soundShift={soundShift} accentHex={accentHex} edgeHex={edgeHex} />}
           {nodeState?.status === 'found' && result?.children.length === 0 && <NodeMessage>No visible components.</NodeMessage>}
         </motion.div>}
       </AnimatePresence>
@@ -151,11 +183,47 @@ function RootState({ state, retry, character }: { state: RuntimeTreeNodeState; r
   return null;
 }
 
-export function V3RuntimeTree({ character, onGlyphClick, mode = 'summary', onSeeTree, showHeading = true }: { character: string; onGlyphClick?: (character: string) => void; mode?: RuntimeTreeMode; onSeeTree?: () => void; showHeading?: boolean }) {
-  const { service, root, nodes, expanded, toggle, retry } = useRuntimeDecompositionTree(character);
+export function V3RuntimeTree({ character, onGlyphClick, mode = 'summary', onSeeTree, showHeading = true, soundGlyph, soundShift, accentHex, edgeHex }: {
+  character: string;
+  onGlyphClick?: (character: string) => void;
+  mode?: RuntimeTreeMode;
+  onSeeTree?: () => void;
+  showHeading?: boolean;
+  /** Phonetic-piece glyph from the sound pack; highlighted with the book accent. */
+  soundGlyph?: string;
+  /** Tone shift of the phonetic piece, shown on its tile instead of pinyin. */
+  soundShift?: string;
+  accentHex?: string;
+  edgeHex?: string;
+}) {
+  const { service, root, nodes, expanded, toggle, expand, retry } = useRuntimeDecompositionTree(character);
   const metadata = useRuntimeCharacterMetadata(nodes);
   const reduceMotion = Boolean(useReducedMotion());
   const children = root.status === 'found' ? root.result?.children : undefined;
+  const revealKeyRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (!soundGlyph || !children) return;
+    const revealKey = `${character}:${soundGlyph}`;
+    if (revealKeyRef.current === revealKey) return;
+    revealKeyRef.current = revealKey;
+
+    if (children.some((child) => child.glyph === soundGlyph)) return;
+
+    let cancelled = false;
+    void resolveSoundRevealPath({
+      character,
+      soundGlyph,
+      getParents: (componentKey) => service.getParents(componentKey),
+    }).then((path) => {
+      if (cancelled) return;
+      for (const ancestor of path) expand(ancestor);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [character, soundGlyph, children, service, expand]);
+
   const prepareGlyph = (target: string) => {
     void service.prefetch([target]);
     void getMultipleBreakdowns([target]);
@@ -171,7 +239,7 @@ export function V3RuntimeTree({ character, onGlyphClick, mode = 'summary', onSee
         ) : undefined}
       />}
       <div className="min-w-0">
-          {children && children.length > 0 ? <RuntimeBranch children={children} nodes={nodes} expanded={expanded} metadata={metadata} ancestry={[character]} depth={0} reduceMotion={reduceMotion} onToggle={toggle} onRetry={retry} onGlyphClick={onGlyphClick} onGlyphIntent={prepareGlyph} mode={mode} /> : <RootState state={root} retry={() => retry(character)} character={character} />}
+          {children && children.length > 0 ? <RuntimeBranch children={children} nodes={nodes} expanded={expanded} metadata={metadata} ancestry={[character]} depth={0} reduceMotion={reduceMotion} onToggle={toggle} onRetry={retry} onGlyphClick={onGlyphClick} onGlyphIntent={prepareGlyph} mode={mode} soundGlyph={soundGlyph} soundShift={soundShift} accentHex={accentHex} edgeHex={edgeHex} /> : <RootState state={root} retry={() => retry(character)} character={character} />}
       </div>
     </section>
   );

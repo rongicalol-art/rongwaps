@@ -29,7 +29,7 @@ export function GrammarHelpDisclosure({ title, children, className }: GrammarHel
   };
 
   return (
-    <div className={cn('border-b border-ui-divider', className)}>
+    <div className={cn('border-b-2 border-ui-divider', className)}>
       <button
         ref={buttonRef}
         type="button"

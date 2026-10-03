@@ -76,9 +76,9 @@ export const LINT_RULES: LintRule[] = [
     appliesTo: UI_SOURCES,
     trigger: /focus:|focus-visible:|ring-\d|outline-/,
     instructions:
-      'Do interactive elements changed in `file.diff` use the standard `.focus-ring` (or `.focus-ring-inline`) class instead of manual focus ring utilities? Manual `focus-visible:ring-*` stacks, `outline-none` with no replacement, or ad-hoc focus styles are violations. If no focusable element changed, the rule holds.',
-    trueCriteria: 'Changed focusable elements use .focus-ring, or none changed.',
-    falseCriteria: 'Changed focusable elements use ad-hoc focus styling.',
+      'Do interactive elements changed in `file.diff` use the standard `.focus-ring` (or `.focus-ring-inline`) class instead of manual focus ring utilities? Manual `focus-visible:ring-*` stacks, `outline-none` with no replacement, or ad-hoc focus styles are violations. NOTE: `ring-*` classes used WITHOUT a `focus-visible:` prefix as decorative open-state indicators (e.g. `ring-2 ring-white/40` on an open submenu button) are NOT a violation — only focus-visible-prefixed ring stacks replacing `.focus-ring` are flagged. If no focusable element changed, the rule holds.',
+    trueCriteria: 'Changed focusable elements use .focus-ring, or none changed, or changed ring-* are decorative (no focus-visible: prefix).',
+    falseCriteria: 'Changed focusable elements use ad-hoc focus-visible:ring-* stacks or outline-none with no replacement.',
     threshold: 0.35,
   },
   {

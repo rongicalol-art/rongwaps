@@ -44,7 +44,7 @@ export function GrammarQuickChecks({
             : `${checks.length} ${checks.length === 1 ? 'check' : 'checks'}`}
         </span>
       </div>
-      <div className="border-t border-ui-divider">
+      <div className="border-t-2 border-ui-divider">
         {checks.map((check, checkIndex) => {
           const answerId = answers[checkIndex];
           const isCorrect = answerId === check.answerId;
@@ -55,7 +55,7 @@ export function GrammarQuickChecks({
           return (
             <article
               key={`${check.traditional}-${checkIndex}`}
-              className="border-t border-ui-divider px-4 py-4 first:border-t-0 sm:px-5"
+              className="border-t-2 border-ui-divider px-4 py-4 first:border-t-0 sm:px-5"
             >
               <div className="grid items-center gap-4 md:grid-cols-[minmax(0,1fr)_auto]">
                 <div>
@@ -125,7 +125,7 @@ export function GrammarQuickChecks({
           );
         })}
       </div>
-      <div className="flex justify-end border-t border-ui-divider bg-ui-canvas px-4 py-3 sm:px-5">
+      <div className="flex justify-end border-t-2 border-ui-divider bg-ui-canvas px-4 py-3 sm:px-5">
         <ActionButton
           disabled={!allAnswered}
           onClick={() => setHasChecked(true)}

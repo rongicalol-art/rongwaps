@@ -36,7 +36,6 @@ export function ReaderStudyDrawer({
       <ReaderStudyPanel
         reading={reading}
         characterPreference={characterPreference}
-        onClose={onClose}
         onOpenWord={onOpenWord}
         onOpenGrammarPart={onOpenGrammarPart}
         onLocateWord={(word) => {
@@ -49,7 +48,6 @@ export function ReaderStudyDrawer({
           if (point) onClose();
         }}
         locateMode="tap"
-        showCloseButton
       />
     </StudyDrawer>
   );

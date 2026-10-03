@@ -112,7 +112,7 @@ export function GrammarRouteLab({
           ))}
         </div>
 
-        <div className="flex items-start justify-between gap-3 border-t border-ui-divider px-5 py-5 sm:px-7 sm:py-6">
+        <div className="flex items-start justify-between gap-3 border-t-2 border-ui-divider px-5 py-5 sm:px-7 sm:py-6">
           <div className="min-w-0">
             <p className="font-chinese text-[27px] font-black leading-relaxed text-ui-ink-strong sm:text-[34px]">
               <ContextualChineseText text={sentence} tokens={contextTokens} characterPreference={characterPreference} onOpenWord={onOpenWord} />

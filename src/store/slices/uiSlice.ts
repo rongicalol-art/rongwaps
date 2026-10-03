@@ -31,8 +31,10 @@ export interface UiState {
   setActivityOverlayOpen: (source: ActivityOverlaySource, open: boolean) => void;
   isInteractionActive: boolean;
   setIsInteractionActive: (active: boolean) => void;
-  swipeFeedback: { text: string; type: 'learned' | 'review' } | null;
+  swipeFeedback: { text: string; type: 'learned' | 'review' | 'neutral' } | null;
   setSwipeFeedback: (feedback: UiState['swipeFeedback']) => void;
+  feedbackToast: { text: string; type?: 'learned' | 'review' | 'neutral' } | null;
+  showFeedbackToast: (text: string, type?: 'learned' | 'review' | 'neutral', durationMs?: number) => void;
   isReviewMode: boolean;
   setIsReviewMode: (review: boolean) => void;
   activeReviewSessionCards: string[] | null;
@@ -56,6 +58,8 @@ export interface UiState {
 }
 
 type SetState = (partial: Partial<UiState> | ((state: UiState) => Partial<UiState>)) => void;
+
+let feedbackToastTimer: ReturnType<typeof setTimeout> | null = null;
 
 export function createUiSlice(set: SetState): UiState {
   return {
@@ -82,6 +86,15 @@ export function createUiSlice(set: SetState): UiState {
     setIsInteractionActive: (active) => set({ isInteractionActive: active }),
     swipeFeedback: null,
     setSwipeFeedback: (feedback) => set({ swipeFeedback: feedback }),
+    feedbackToast: null,
+    showFeedbackToast: (text, type = 'neutral', durationMs = 1200) => {
+      if (feedbackToastTimer) clearTimeout(feedbackToastTimer);
+      set({ feedbackToast: { text, type } });
+      feedbackToastTimer = setTimeout(() => {
+        set({ feedbackToast: null });
+        feedbackToastTimer = null;
+      }, durationMs);
+    },
     isReviewMode: false,
     setIsReviewMode: (review) => set({ isReviewMode: review }),
     activeReviewSessionCards: null,

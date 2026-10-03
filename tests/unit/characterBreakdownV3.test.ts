@@ -5,6 +5,8 @@ import { preferCharacterMetadata } from '../../src/features/character-breakdown/
 import { projectLegacyDecomposition } from '../../src/features/character-decomposition/legacyProjection';
 import { rankParentCharacters } from '../../src/features/character-breakdown/utils/rankParentCharacters';
 import { mergeBreakdownWords } from '../../src/features/character-breakdown/utils/mergeBreakdownWords';
+import { resolveSoundRevealPath } from '../../src/features/character-breakdown/utils/soundRevealPath';
+import { hasSupportingInfo } from '../../src/features/character-breakdown/components/v3/V3SupportingInformation';
 import type { DBDictionaryEntry } from '../../src/types/database';
 
 // The dictionary service maps rows with string-array definitions at runtime.
@@ -151,5 +153,69 @@ test('tree metadata shortens only dictionary-sourced meanings', () => {
   assert.deepEqual(
     preferCharacterMetadata({ pinyin: ['yào'], definition: long }, undefined),
     { pinyin: 'yào', meaning: long },
+  );
+});
+
+function parentIndex(edges: Record<string, string[]>) {
+  return async (componentKey: string) =>
+    edges[componentKey]
+      ? { status: 'found', parents: edges[componentKey] }
+      : { status: 'missing', parents: [] };
+}
+
+test('sound reveal path is empty when the sound glyph is a direct component', async () => {
+  const path = await resolveSoundRevealPath({
+    character: '新',
+    soundGlyph: '亲',
+    getParents: parentIndex({ 'g:亲': ['新'] }),
+  });
+  assert.deepEqual(path, []);
+});
+
+test('sound reveal path walks up to the main component (師 → 㠯 inside 𠂤)', async () => {
+  const path = await resolveSoundRevealPath({
+    character: '師',
+    soundGlyph: '㠯',
+    getParents: parentIndex({ 'g:㠯': ['𠂤'], 'g:𠂤': ['師'] }),
+  });
+  assert.deepEqual(path, ['𠂤']);
+});
+
+test('sound reveal path returns outer ancestors first for deeper nesting', async () => {
+  const path = await resolveSoundRevealPath({
+    character: '甲',
+    soundGlyph: '丁',
+    getParents: parentIndex({ 'g:丁': ['乙'], 'g:乙': ['丙'], 'g:丙': ['甲'] }),
+  });
+  assert.deepEqual(path, ['丙', '乙']);
+});
+
+test('sound reveal path stays empty for missing glyphs and cycles', async () => {
+  assert.deepEqual(
+    await resolveSoundRevealPath({
+      character: '師',
+      soundGlyph: '㠯',
+      getParents: parentIndex({}),
+    }),
+    [],
+  );
+  assert.deepEqual(
+    await resolveSoundRevealPath({
+      character: '師',
+      soundGlyph: '㠯',
+      getParents: parentIndex({ 'g:㠯': ['𠂤'], 'g:𠂤': ['㠯'] }),
+    }),
+    [],
+  );
+});
+
+test('hasSupportingInfo returns true when sound family has members even if words/parents are empty', () => {
+  assert.equal(
+    hasSupportingInfo([], { courseParents: [], otherParents: [] }, [{ character: '冻', pinyin: 'dòng', reading: 'dōng' }]),
+    true,
+  );
+  assert.equal(
+    hasSupportingInfo([], { courseParents: [], otherParents: [] }, []),
+    false,
   );
 });

@@ -115,7 +115,7 @@ export function GrammarNumberLab({
             })}
           </div>
         </div>
-        <p className="mt-5 border-t border-ui-divider pt-4 text-sm font-bold leading-6 text-ui-muted-strong">{selected.note}</p>
+        <p className="mt-5 border-t-2 border-ui-divider pt-4 text-sm font-bold leading-6 text-ui-muted-strong">{selected.note}</p>
       </div>
     </GrammarLabShell>
   );

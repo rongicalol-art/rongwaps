@@ -16,7 +16,7 @@ export function DisclosureLine({
 }: DisclosureLineProps) {
   return (
     <details
-      className={cn('group border-y border-ui-divider', className)}
+      className={cn('group border-y-2 border-ui-divider', className)}
       {...props}
     >
       <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-sm py-4 transition-colors hover:text-brand-primary focus-ring [&::-webkit-details-marker]:hidden">
@@ -30,7 +30,7 @@ export function DisclosureLine({
           <AppIcon name="expand" size={17} />
         </span>
       </summary>
-      <div className="border-t border-ui-divider">{children}</div>
+      <div className="border-t-2 border-ui-divider">{children}</div>
     </details>
   );
 }

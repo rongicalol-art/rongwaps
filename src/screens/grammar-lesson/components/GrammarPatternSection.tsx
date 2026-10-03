@@ -4,6 +4,7 @@ import { getPatternRowGroups, getPatternSectionLayout } from '../../../utils/gra
 import { isHanziChar } from '../../../utils/hanzi';
 import { cn } from '../../../utils/cn';
 import { InteractiveGrammarSentence } from './InteractiveGrammarSentence';
+import { SAMPLE_BOOKS } from '../../../data/books';
 
 interface GrammarPatternSectionProps {
   page: InteractiveGrammarPage;
@@ -14,6 +15,7 @@ interface GrammarPatternSectionProps {
   patternColumns?: string[];
   patternColumnDetails?: string[];
   patternRows?: GrammarPatternRow[];
+  patternAccentColumn?: number;
 }
 
 /**
@@ -26,20 +28,15 @@ function HeaderTitle({ text }: { text: string }) {
   for (const char of text) {
     const hanzi = isHanziChar(char);
     const last = runs[runs.length - 1];
-    if (last && last.hanzi === hanzi) {
-      last.text += char;
-    } else {
-      runs.push({ hanzi, text: char });
-    }
+    if (last && last.hanzi === hanzi) last.text += char;
+    else runs.push({ hanzi, text: char });
   }
 
   return (
     <>
-      {runs.map((run, index) => (run.hanzi ? (
-        <span key={index} className="font-chinese">{run.text}</span>
-      ) : (
-        <Fragment key={index}>{run.text}</Fragment>
-      )))}
+      {runs.map((run, index) =>
+        run.hanzi ? <span key={index} className="font-chinese">{run.text}</span> : <Fragment key={index}>{run.text}</Fragment>
+      )}
     </>
   );
 }
@@ -66,11 +63,9 @@ export function GrammarPatternSection({
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
-
   const activeColumns = patternColumns ?? page.patternColumns;
   const activeDetails = patternColumnDetails ?? page.patternColumnDetails;
   const activeRows = patternRows ?? page.patternRows;
-
   const layout = getPatternSectionLayout({
     patternColumns: activeColumns,
     patternColumnDetails: activeDetails,
@@ -100,13 +95,13 @@ export function GrammarPatternSection({
 
   if (activeRows.length === 0) return null;
 
+  const book = SAMPLE_BOOKS.find((b) => b.id === page.bookId) || SAMPLE_BOOKS[0];
   const columnCount = layout.sourceColumns.length;
-
   return (
     <section aria-label="Sentence pattern">
       <div
         className={cn(
-          'relative w-full overflow-hidden rounded-feature border-2 border-brand-primary/30 border-b-[length:var(--depth-md)] bg-ui-surface',
+          'relative w-full overflow-hidden rounded-feature border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface shadow-xs',
         )}
       >
         {/* Left scroll fade indicator */}
@@ -146,8 +141,11 @@ export function GrammarPatternSection({
               })}
             </colgroup>
             <thead>
-              <tr className="border-b border-brand-primary/20 bg-brand-primary/[0.08]">
-                {layout.sourceColumns.map((sourceIndex, colIndex) => {
+              <tr
+                className="border-b-2 border-ui-border bg-brand-primary-soft/40"
+                style={{ backgroundColor: book.theme.primarySoft }}
+              >
+                {layout.sourceColumns.map((sourceIndex) => {
                   const columnTitle = activeColumns[sourceIndex] ?? '';
                   const detail = activeDetails?.[sourceIndex];
 
@@ -155,10 +153,7 @@ export function GrammarPatternSection({
                     <th
                       key={`th-${sourceIndex}`}
                       scope="col"
-                      className={cn(
-                        'px-4 py-3 text-left font-black text-ui-ink-strong sm:px-5 sm:py-3.5',
-                        colIndex > 0 && 'border-l border-brand-primary/20',
-                      )}
+                      className="px-5 py-3.5 text-left font-black sm:px-6 sm:py-4"
                     >
                       <span
                         className="block whitespace-nowrap text-sm font-black leading-tight tracking-wide text-ui-ink-strong sm:text-base"
@@ -178,23 +173,21 @@ export function GrammarPatternSection({
                   <Fragment key={row.id}>
                     <tr
                       className={cn(
-                        rowIndex > 0 && 'border-t border-brand-primary/15',
+                        rowIndex > 0 && 'border-t-2 border-ui-divider',
+                        'transition-colors hover:bg-ui-hover/30',
                       )}
                     >
-                      {layout.sourceColumns.map((sourceIndex, colIndex) => {
+                      {layout.sourceColumns.map((sourceIndex) => {
                         const group = groups[sourceIndex] ?? [];
                         const isEmpty = group.length === 0;
                         return (
                           <td
                             key={`${row.id}-group-${sourceIndex}`}
                             aria-label={isEmpty ? 'Empty sentence slot' : undefined}
-                            className={cn(
-                              'px-4 py-3.5 align-middle sm:px-5 sm:py-4.5',
-                              colIndex > 0 && 'border-l border-brand-primary/15',
-                            )}
+                            className="px-5 py-3.5 align-middle sm:px-6 sm:py-4"
                           >
                             {isEmpty ? (
-                              <span className="text-xs font-bold text-ui-muted/40 select-none" aria-hidden="true">—</span>
+                              <span className="text-xs font-bold text-ui-muted/30 select-none" aria-hidden="true">—</span>
                             ) : (
                               <InteractiveGrammarSentence
                                 words={[...group]}
@@ -212,15 +205,15 @@ export function GrammarPatternSection({
                       })}
                     </tr>
 
-                    {/* Full-width meaning row */}
+                    {/* Full-width meaning row rendered as a natural subtitle under the sentence */}
                     {showTranslation && row.english && (
-                      <tr className="border-t border-brand-primary/10">
+                      <tr className="bg-transparent">
                         <td
                           colSpan={columnCount}
-                          className="px-4 py-2 sm:px-5 sm:py-2.5"
+                          className="px-5 pb-3.5 -mt-1 pt-0 sm:px-6 sm:pb-4"
                         >
                           <p className="sr-only">Meaning</p>
-                          <p className="ui-translation text-xs font-semibold text-ui-muted sm:text-sm">
+                          <p className="ui-translation text-xs font-semibold text-ui-muted sm:text-sm pl-0.5">
                             {row.english}
                           </p>
                         </td>

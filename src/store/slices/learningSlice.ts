@@ -59,7 +59,7 @@ interface LearningSetState {
   // Cross-domain flags cleared by the manual progress reset.
   isReviewMode: boolean;
   activeReviewSessionCards: string[] | null;
-  swipeFeedback: { text: string; type: 'learned' | 'review' } | null;
+  swipeFeedback: { text: string; type: 'learned' | 'review' | 'neutral' } | null;
 }
 
 type SetState = (partial: Partial<LearningSetState> | ((state: LearningSetState) => Partial<LearningSetState>)) => void;

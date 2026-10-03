@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from 'react';
+import { cn } from '../../utils/cn';
 import { debugLogger } from '../../utils/debugLogger';
 
 export interface SmartSentenceProps {
@@ -152,7 +153,7 @@ export function SmartSentence({
   );
 
   return (
-    <span className={`inline-block ${className}`}>
+    <span className={cn('inline', className)}>
       {displaySegments.map((seg, idx) => {
         // Only Chinese characters that are word-like should be clickable
         const isClickable = seg.isWordLike && /[\u4E00-\u9FFF]/.test(seg.segment);

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { normalizeMnemonic, renderHookText, tokenizeHookText } from '../../src/features/character-memory-hooks/hookText';
+import { cleanHookStory, normalizeMnemonic, renderHookText, tokenizeHookText } from '../../src/features/character-memory-hooks/hookText';
 
 test('tokenizeHookText splits plain text and 字(label) glosses', () => {
   const segments = tokenizeHookText('A 口(mouth) rests inside a 冂(frame).');
@@ -127,9 +127,11 @@ test('renderHookText uses the softened emphasis tone', () => {
   assert.ok(html.includes('class="font-black text-ui-ink-strong/90"'), html);
 });
 
-test('renderHookText keeps the sound-component pinyin note parenthesized', () => {
-  const html = renderToStaticMarkup(renderHookText('A 青(qīng) as the sound component (qīng -> qǐng) → 請(please).'));
-  assert.ok(html.includes('(qīng -&gt; qǐng)'), html);
+test('renderHookText strips formulaic sound-component clauses for clean narrative storytelling', () => {
+  const html = renderToStaticMarkup(renderHookText('A steadfast 亻(person) who endures delays and is 乃(indeed) continuing onward is 仍(yet) standing tall, with 乃(indeed) as the sound component (nǎi -> réng).'));
+  assert.ok(!html.includes('sound component'));
+  assert.ok(!html.includes('nǎi -&gt; réng'));
+  assert.ok(html.includes('standing tall.'));
 });
 
 test('renderHookText still renders **emphasis** as bold', () => {
@@ -144,3 +146,22 @@ test('normalizeMnemonic reads strings and hook objects', () => {
   assert.equal(normalizeMnemonic({}), null);
   assert.equal(normalizeMnemonic('   '), null);
 });
+
+test('cleanHookStory strips sound component clauses in multiple sentence structures', () => {
+  // Pattern 1: trailing clause
+  assert.equal(
+    cleanHookStory('A steadfast person who endures delays and is continuing onward is yet standing tall, with 乃(indeed) as the sound component (nǎi -> réng).'),
+    'A steadfast person who endures delays and is continuing onward is yet standing tall.',
+  );
+  // Pattern 2: colon clause
+  assert.equal(
+    cleanHookStory('Sampling fine cuisine with an appreciative 口(mouth), with 未(wèi) as the sound component (wèi): 味(taste).'),
+    'Sampling fine cuisine with an appreciative 口(mouth): 味(taste).',
+  );
+  // Pattern 3: comma shift
+  assert.equal(
+    cleanHookStory('With welcoming 彳(step) footsteps approaching the guest 寺(court) hall, hosts prepare to 待(entertain), with 寺(court) as the sound component (sì -> dài).'),
+    'With welcoming 彳(step) footsteps approaching the guest 寺(court) hall, hosts prepare to 待(entertain).',
+  );
+});
+

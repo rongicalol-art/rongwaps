@@ -1,73 +1,25 @@
 import { debugLogger } from '../utils/debugLogger';
-import { supabase, isSupabaseConfigured } from './supabaseClient';
 import { Flashcard, FLASHCARDS_DATA } from '../data/flashcards';
 import { vocabularyCache } from '../utils/cache';
 import { extractSearchVariants, sentenceMatchesForms } from '../utils/wordForms';
 import { stripPinyinTones } from '../utils/pinyinNormalize';
-import { timeDataRequest } from '../utils/requestTiming';
 import {
   fetchVocabularyPack,
   fetchAllVocabularyPacks,
   fetchCourseExampleCards,
 } from './contentPacks';
-import type { DBVocabularyRow } from '../types/database';
 import type { WordExample } from '../types/models';
 import { withPackFirstLookup } from './packFirstLookup';
 import { getSmartScore } from '../utils/vocabularySearchScoring';
-import { mapVocabularyRows, prepareVocabulary } from '../utils/vocabularyMapping';
+import { prepareVocabulary } from '../utils/vocabularyMapping';
 
 export { prepareVocabulary };
-
-const VOCABULARY_COLUMNS = 'id,traditional,simplified,meaning,pinyin,pos,audio,examples';
 
 function getFallbackFlashcards(bookId?: number, lessonId?: number): Flashcard[] {
   let filtered = FLASHCARDS_DATA;
   if (bookId) filtered = filtered.filter((c) => c.bookId === bookId);
   if (lessonId) filtered = filtered.filter((c) => c.lessonId === lessonId);
   return [...filtered].sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true, sensitivity: 'base' }));
-}
-
-async function fetchVocabularyFromSupabase(bookId?: number, lessonId?: number): Promise<Flashcard[]> {
-  const allData: DBVocabularyRow[] = [];
-  let from = 0;
-  const step = 1000;
-
-  try {
-    while (true) {
-      let query = supabase
-        .from('book_vocabulary')
-        .select(VOCABULARY_COLUMNS)
-        .order('id', { ascending: true })
-        .range(from, from + step - 1);
-
-      if (bookId) {
-        const padBId = bookId < 10 ? `0${bookId}` : bookId;
-        query = query.or(`id.ilike.b${bookId}l%,id.ilike.b${bookId}-l%,id.ilike.b${padBId}l%,id.ilike.b${padBId}-l%`);
-      } else if (lessonId) {
-        const padLId = lessonId < 10 ? `0${lessonId}` : lessonId;
-        query = query.or(`id.ilike.%l${lessonId}-%,id.ilike.%l${lessonId}\\%,id.ilike.%l${padLId}-%,id.ilike.%l${padLId}\\%`);
-      }
-
-      const pageNumber = Math.floor(from / step) + 1;
-      const { data, error } = await timeDataRequest(`vocabulary page ${pageNumber}`, () => query);
-
-      if (error) {
-        debugLogger.error('Supabase', 'Error fetching vocabulary:', error);
-        if (allData.length === 0) return getFallbackFlashcards(bookId, lessonId);
-        break;
-      }
-      if (!data || data.length === 0) break;
-      allData.push(...data);
-      if (data.length < step) break;
-      from += step;
-    }
-
-    if (allData.length === 0) return getFallbackFlashcards(bookId, lessonId);
-    return prepareVocabulary(allData, lessonId);
-  } catch (err) {
-    debugLogger.error('Supabase', 'Exception fetching vocabulary:', err);
-    return getFallbackFlashcards(bookId, lessonId);
-  }
 }
 
 export async function fetchVocabulary(bookId?: number, lessonId?: number): Promise<Flashcard[]> {
@@ -90,10 +42,7 @@ export async function fetchVocabulary(bookId?: number, lessonId?: number): Promi
       return null;
     },
     fromDb: async () => {
-      if (!isSupabaseConfigured()) {
-        return getFallbackFlashcards(bookId, lessonId);
-      }
-      return fetchVocabularyFromSupabase(bookId, lessonId);
+      return getFallbackFlashcards(bookId, lessonId);
     },
   });
 }
@@ -105,28 +54,21 @@ export async function fetchVocabularyByIds(ids: string[]): Promise<Flashcard[] |
 
   return withPackFirstLookup<Flashcard[] | null>({
     dedupeKey,
-    fromPack: async () => null,
-    fromDb: async () => {
-      try {
-        const rows: DBVocabularyRow[] = [];
-        const chunkSize = 100;
-        for (let i = 0; i < uniqueIds.length; i += chunkSize) {
-          const chunk = uniqueIds.slice(i, i + chunkSize);
-          const { data, error } = await timeDataRequest(
-            `vocabulary by ids chunk ${Math.floor(i / chunkSize) + 1}`,
-            () => supabase.from('book_vocabulary').select(VOCABULARY_COLUMNS).in('id', chunk),
-          );
-          if (error) {
-            debugLogger.error('Supabase', 'Error fetching vocabulary by ids:', error);
-            return null;
-          }
-          if (data) rows.push(...data);
-        }
-        return prepareVocabulary(rows);
-      } catch (err) {
-        debugLogger.error('Supabase', 'Exception fetching vocabulary by ids:', err);
-        return null;
+    fromPack: async () => {
+      const allRows = await fetchAllVocabularyPacks();
+      if (!allRows) return null;
+      const idSet = new Set(uniqueIds);
+      const matches = allRows.filter((r) => r.id && idSet.has(r.id));
+      if (matches.length > 0) {
+        return prepareVocabulary(matches);
       }
+      return null;
+    },
+    fromDb: async () => {
+      const fallback = getFallbackFlashcards();
+      const idSet = new Set(uniqueIds);
+      const matches = fallback.filter((c) => idSet.has(c.id));
+      return matches.length > 0 ? matches : null;
     },
   });
 }
@@ -236,23 +178,7 @@ export async function fetchExamplesForWord(searchWords: string | string[], pos?:
 
       const allVocab = await fetchVocabulary();
       const localMatching = allVocab.filter((c) => c.examples?.some((e) => sentenceMatchesForms(e.chinese, searchTerms, resolvedPos)));
-      if (localMatching.length > 0 || !isSupabaseConfigured()) {
-        return mergeExampleCards(localMatching);
-      }
-
-      let query = supabase.from('book_vocabulary').select(VOCABULARY_COLUMNS);
-      if (variantList.length > 0) {
-        query = query.or(variantList.map((v) => `examples.ilike.%${v}%`).join(','));
-      } else {
-        query = query.ilike('examples', `%${cleanWords[0]}%`);
-      }
-
-      const { data, error } = await timeDataRequest('vocabulary examples', () => query.limit(100));
-      if (error || !data || data.length === 0) {
-        if (error) debugLogger.error('Supabase', 'Error fetching examples:', error);
-        return mergeExampleCards(localMatching);
-      }
-      return mergeExampleCards(mapVocabularyRows(data));
+      return mergeExampleCards(localMatching);
     },
     fromDb: async () => [],
   });

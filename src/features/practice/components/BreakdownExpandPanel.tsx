@@ -92,7 +92,7 @@ export function BreakdownExpandPanel({
 
       {/* Detailed character inspection action */}
       {onOpenDetails && (
-        <div className="mt-3 flex justify-end border-t border-ui-border/40 pt-2.5">
+        <div className="mt-3 flex justify-end border-t-2 border-ui-divider pt-2.5">
           <button
             type="button"
             onClick={onOpenDetails}

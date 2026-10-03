@@ -23,28 +23,26 @@ function dealRandomWords(cards: Flashcard[], count: number): Flashcard[] {
 
 function WordRow({ card, onOpenWord }: { card: Flashcard; onOpenWord: (word: string) => void }) {
   return (
-    <div className="group flex w-full items-center gap-3 py-3.5 text-left outline-none sm:gap-4">
+    <div className="group flex w-full items-center justify-between gap-3 py-3.5 text-left outline-none sm:gap-4">
       <button
         type="button"
         onClick={() => onOpenWord(card.front)}
         aria-label={`Open ${card.front}`}
-        className="flex min-w-0 flex-1 items-center gap-3 text-left outline-none focus-ring rounded-sm sm:gap-4"
+        className="flex min-w-0 flex-1 items-center gap-3 text-left outline-none focus-ring rounded-sm sm:gap-4 cursor-pointer"
       >
         <span className="shrink-0 font-chinese text-2xl font-bold leading-none text-ui-ink transition-colors group-hover:text-brand-primary sm:text-3xl">
           {card.front}
         </span>
         <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-          <span className="flex items-center gap-2">
-            <span className="truncate text-xs font-extrabold text-ui-muted sm:text-sm">
-              {card.pinyin || '\u00A0'}
-            </span>
-            <PosBadge pos={card.pos} />
+          <span className="truncate text-xs font-extrabold text-ui-muted sm:text-sm">
+            {card.pinyin || '\u00A0'}
           </span>
           <span className="line-clamp-1 text-sm font-bold leading-snug text-ui-ink">
             {card.back || '\u00A0'}
           </span>
         </span>
       </button>
+      {card.pos && <PosBadge pos={card.pos} className="shrink-0" />}
     </div>
   );
 }
@@ -109,12 +107,15 @@ export function BookWordRail({ bookId, onOpenWord }: BookWordRailProps) {
         <div className="mt-2 flex flex-col [&>*+*]:border-t-2 [&>*+*]:border-ui-divider">
           {isLoading
             ? Array.from({ length: ROW_COUNT }, (_, index) => (
-                <div key={index} className="flex w-full items-center gap-3 py-3.5 sm:gap-4">
-                  <Skeleton className="h-8 w-20 shrink-0 sm:w-24" />
-                  <div className="flex min-w-0 flex-1 flex-col gap-2">
-                    <Skeleton className="h-3.5 w-28" />
-                    <Skeleton className="h-4 w-44 max-w-full" />
+                <div key={index} className="flex w-full items-center justify-between gap-3 py-3.5 sm:gap-4">
+                  <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-4">
+                    <Skeleton className="h-8 w-20 shrink-0 sm:w-24" />
+                    <div className="flex min-w-0 flex-1 flex-col gap-2">
+                      <Skeleton className="h-3.5 w-28" />
+                      <Skeleton className="h-4 w-44 max-w-full" />
+                    </div>
                   </div>
+                  <Skeleton className="h-4 w-12 shrink-0 rounded-xs" />
                 </div>
               ))
             : shownWords.map((card) => (

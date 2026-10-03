@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { ActivityModalWrapper, LoadingScreen } from '../../lib/widgets';
+import { ActivityModalWrapper, AppIcon, type AppIconName, LoadingScreen } from '../../lib/widgets';
 import { useAppStore, selectIsActivityOverlayOpen } from '../../store/useAppStore';
+import { cn } from '../../utils/cn';
 import { useActivityDataLoader } from '../../hooks/useActivityDataLoader';
 import { getPracticeLoadingMessage, preloadPracticeChunks, preloadRemainingPracticeChunks } from '../../utils/practiceLoader';
 import type { ActivityType } from '../../types/models';
@@ -47,6 +48,9 @@ export function ActivityModals({
   const isActivityOverlayOpen = useAppStore(selectIsActivityOverlayOpen);
   const isOverlayOpen = isShellOverlayOpen || isActivityOverlayOpen;
   const isInteractionActive = useAppStore(state => state.isInteractionActive);
+  const feedbackToast = useAppStore(state => state.feedbackToast);
+  const swipeFeedback = useAppStore(state => state.swipeFeedback);
+  const activeToast = feedbackToast || swipeFeedback;
 
   const resolvedActivity = activeActivity === 'flashcards-library' ? 'flashcards' : activeActivity === 'flashcards-review' ? 'flashcards' : activeActivity;
   const isReviewMode = useAppStore(state => state.isReviewMode);
@@ -106,9 +110,12 @@ export function ActivityModals({
   // Cards vs List view for the flashcards deck. Resets to Cards on close so
   // the next session opens in the default study view.
   const [flashcardMode, setFlashcardMode] = useState<FlashcardViewMode>('cards');
+  const [isDockScrollVisible, setIsDockScrollVisible] = useState(true);
+
   useEffect(() => {
     if (!activeActivity) setFlashcardMode('cards');
-  }, [activeActivity]);
+    setIsDockScrollVisible(true);
+  }, [activeActivity, flashcardMode]);
 
   const previousActivityRef = useRef<ActivityType>(null);
   useEffect(() => {
@@ -212,6 +219,7 @@ export function ActivityModals({
                     activeActivity={activeActivity}
                     isOverlayOpen={isOverlayOpen}
                     accentBgClassName={activeBook.accentBg}
+                    activeBookId={activeBookId}
                     studyParts={visibleStudyParts}
                     onSelectStudyPart={selectStudyPart}
                     onToggleStudyPart={toggleStudyPart}
@@ -235,6 +243,7 @@ export function ActivityModals({
                     onContinue={onPartContinue}
                     continueLabel={partContinueLabel}
                     onNavigateToPractice={onNavigateToPractice}
+                    onScrollDockVisibility={flashcardMode === 'list' ? setIsDockScrollVisible : undefined}
                   />
 
                   {/* Floating Pill Dock for Modes */}
@@ -244,6 +253,7 @@ export function ActivityModals({
                         value={resolvedActivity as (typeof PRACTICE_ACTIVITIES)[number]['id']}
                         quizMode={activeQuizMode}
                         flashcardMode={flashcardMode}
+                        visible={isDockScrollVisible}
                         onSelectFlashcardMode={(mode) => {
                           if (isLibraryMode) {
                             setActiveActivity('flashcards-library');
@@ -276,6 +286,48 @@ export function ActivityModals({
                   </AnimatePresence>
                 </motion.div>
               )}
+            </AnimatePresence>
+
+            {/* Simple, non-distracting confirmation toast matching RongWaps tactile tokens */}
+            <AnimatePresence>
+              {activeToast && (() => {
+                const isLearned = activeToast.type === 'learned' || activeToast.text.toLowerCase() === 'learned';
+                const isReview = activeToast.type === 'review' || activeToast.text.toLowerCase() === 'review';
+                const isShuffle = activeToast.text.toLowerCase().includes('shuffle');
+                const isRestart = activeToast.text.toLowerCase().includes('restart');
+
+                const iconName: AppIconName = isLearned
+                  ? 'statusCheck'
+                  : isReview
+                    ? 'statusCross'
+                    : isShuffle
+                      ? (activeToast.text.toLowerCase().includes('unshuffled') ? 'statusUnshuffled' : 'statusShuffle')
+                      : isRestart
+                        ? 'statusRestart'
+                        : 'statusCheck';
+                const textColor = isLearned ? 'text-feedback-success-edge' : isReview ? 'text-feedback-danger-edge' : 'text-ui-ink-strong';
+
+                return (
+                  <motion.div
+                    key={`${activeToast.text}-${activeToast.type || ''}`}
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.15 }}
+                    role="status"
+                    className="pointer-events-none absolute top-15 right-8 sm:right-10 lg:right-14 z-popover flex items-center gap-2.5 rounded-control border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface px-3.5 py-2"
+                  >
+                    <AppIcon
+                      name={iconName}
+                      size={20}
+                      className="shrink-0"
+                    />
+                    <span className={cn('text-xs font-black uppercase tracking-wider', textColor)}>
+                      {activeToast.text}
+                    </span>
+                  </motion.div>
+                );
+              })()}
             </AnimatePresence>
           </ActivityModalWrapper>
         )}

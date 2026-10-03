@@ -95,11 +95,25 @@ test('buildPracticePartSegments returns clean sequential segments for single les
   ]);
 });
 
-test('buildPracticePartSegments returns empty for non-contiguous or interleaved parts', () => {
+test('buildPracticePartSegments returns proportional segments for shuffled or interleaved parts', () => {
   const interleavedCards = [
     { id: '1', bookId: 1, lessonId: 1, partId: 1, front: '一', back: 'one' },
     { id: '2', bookId: 1, lessonId: 1, partId: 2, front: '二', back: 'two' },
     { id: '3', bookId: 1, lessonId: 1, partId: 1, front: '三', back: 'three' },
   ];
-  assert.deepEqual(buildPracticePartSegments(interleavedCards), []);
+  assert.deepEqual(buildPracticePartSegments(interleavedCards), [
+    { partId: 1, label: 'Part 1', cardCount: 2, startIndex: 0 },
+    { partId: 2, label: 'Part 2', cardCount: 1, startIndex: 2 },
+  ]);
 });
+
+test('buildPracticePartSegments returns segment for single-part selection so rail buttons render', () => {
+  const singlePartCards = [
+    { id: '1', bookId: 1, lessonId: 1, partId: 1, front: '一', back: 'one' },
+    { id: '2', bookId: 1, lessonId: 1, partId: 1, front: '二', back: 'two' },
+  ];
+  assert.deepEqual(buildPracticePartSegments(singlePartCards), [
+    { partId: 1, label: 'Part 1', cardCount: 2, startIndex: 0 },
+  ]);
+});
+

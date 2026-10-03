@@ -99,9 +99,9 @@ export async function fetchBreakdownsFromPacks(characters: string[]): Promise<Re
       charactersByShard.set(shard, shardCharacters);
     }
 
-    if (uniqueCharacters.length > 20 || charactersByShard.size > 4) return results;
+    const shardEntries = [...charactersByShard.entries()].slice(0, 6);
 
-    await Promise.all([...charactersByShard.entries()].map(async ([shard, shardCharacters]) => {
+    await Promise.all(shardEntries.map(async ([shard, shardCharacters]) => {
       const indexed = await loadPack<Map<string, DBCharacterBreakdown>>('breakdowns', shard);
       if (!indexed) return;
       for (const character of shardCharacters) {
@@ -161,8 +161,6 @@ export async function fetchDictionaryRowsFromPacks(words: string[]): Promise<Map
       wordsByShard.set(shard, shardWords);
     }
 
-    if (uniqueWords.length > 20 || wordsByShard.size > 4) return results;
-
     await Promise.all([...wordsByShard.entries()].map(async ([shard, shardWords]) => {
       const rows = await loadPack<DBDictionaryRow[]>('dictionary', shard);
       if (!rows) return;
@@ -194,7 +192,7 @@ export async function fetchCourseExampleCards(searchTerms: string[], pos?: strin
 
 let hookMapPromise: Promise<Map<string, string>> | null = null;
 
-export async function lookupPackMnemonic(cacheKey: string): Promise<string | null> {
+export async function fetchMemoryHooksMap(): Promise<Map<string, string> | null> {
   try {
     hookMapPromise ??= (async () => {
       const parts = await loadAllParts<Map<string, string>>('memory-hooks');
@@ -204,17 +202,47 @@ export async function lookupPackMnemonic(cacheKey: string): Promise<string | nul
       }
       return map;
     })();
-    const map = await hookMapPromise;
-    return resolveMnemonicFromMap(map, cacheKey);
+    return await hookMapPromise;
   } catch (error) {
-    debugLogger.warn('Cache', 'Static memory hook pack unavailable; using database fallback.', error);
+    debugLogger.warn('Cache', 'Static memory hook pack unavailable.', error);
     hookMapPromise = null;
     return null;
   }
 }
 
+export async function lookupPackMnemonic(cacheKey: string): Promise<string | null> {
+  const map = await fetchMemoryHooksMap();
+  if (!map) return null;
+  return resolveMnemonicFromMap(map, cacheKey);
+}
+
 export function resetMemoryHookPackCache(): void {
   hookMapPromise = null;
+}
+
+let soundFamiliesMapPromise: Promise<Map<string, { glyph: string; reading: string; family: Array<{ character: string; pinyin: string; reading: string }> }>> | null = null;
+
+export async function lookupSoundFamily(character: string): Promise<{ glyph: string; reading: string; family: Array<{ character: string; pinyin: string; reading: string }> } | null> {
+  try {
+    soundFamiliesMapPromise ??= (async () => {
+      const parts = await loadAllParts<Map<string, { glyph: string; reading: string; family: Array<{ character: string; pinyin: string; reading: string }> }>>('sound-families');
+      const map = new Map<string, { glyph: string; reading: string; family: Array<{ character: string; pinyin: string; reading: string }> }>();
+      for (const part of parts) {
+        for (const [key, value] of part) map.set(key, value);
+      }
+      return map;
+    })();
+    const map = await soundFamiliesMapPromise;
+    return map.get(character) ?? null;
+  } catch (error) {
+    debugLogger.warn('Cache', 'Sound families pack unavailable.', error);
+    soundFamiliesMapPromise = null;
+    return null;
+  }
+}
+
+export function resetSoundFamilyPackCache(): void {
+  soundFamiliesMapPromise = null;
 }
 
 let soundMapPromise: Promise<Map<string, SoundHookEntry>> | null = null;
@@ -230,7 +258,22 @@ export async function lookupSoundHook(character: string): Promise<SoundHookEntry
       return map;
     })();
     const map = await soundMapPromise;
-    return map.get(character) ?? null;
+    const entry = map.get(character);
+    if (entry) return entry;
+
+    // Fallback to global sound-families for general dictionary characters
+    const familyInfo = await lookupSoundFamily(character);
+    if (!familyInfo) return null;
+
+    return {
+      id: character,
+      character,
+      meaning: '',
+      pinyin: '',
+      phonetic: { glyph: familyInfo.glyph, reading: familyInfo.reading, shift: familyInfo.reading },
+      family: familyInfo.family,
+      needsHuman: false,
+    };
   } catch (error) {
     debugLogger.warn('Cache', 'Sound hook pack unavailable.', error);
     soundMapPromise = null;
@@ -240,6 +283,7 @@ export async function lookupSoundHook(character: string): Promise<SoundHookEntry
 
 export function resetSoundHookPackCache(): void {
   soundMapPromise = null;
+  soundFamiliesMapPromise = null;
 }
 
 export async function fetchReadingsPack(bookId: number): Promise<ReadingRecord[] | null> {

@@ -30,7 +30,7 @@ export function GrammarParticleWorkshop({
 
   return (
     <div className="overflow-hidden rounded-feature border-2 border-ui-border bg-ui-surface">
-      <div className="border-b border-ui-divider px-4 py-4 sm:px-5">
+      <div className="border-b-2 border-ui-divider px-4 py-4 sm:px-5">
         <p className="text-base font-black text-ui-ink-strong">See the difference</p>
         <p className="mt-1 text-sm font-bold leading-6 text-ui-muted-strong">
           Choose an example, then notice what the grammar changes.
@@ -38,7 +38,7 @@ export function GrammarParticleWorkshop({
       </div>
 
       <div className="grid md:grid-cols-[minmax(180px,0.7fr)_minmax(0,1.6fr)]">
-        <div className="flex gap-2 overflow-x-auto border-b border-ui-divider bg-ui-canvas p-3 md:flex-col md:border-b-0 md:border-r">
+        <div className="flex gap-2 overflow-x-auto border-b-2 border-ui-divider bg-ui-canvas p-3 md:flex-col md:border-b-0 md:border-r-2">
           {items.map((item) => {
             const isSelected = item.id === selected.id;
             return (

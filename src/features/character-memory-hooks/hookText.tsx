@@ -1,16 +1,36 @@
 import type { ReactNode } from 'react';
 
+/**
+ * Strips formulaic sound-component clauses (e.g. `, with 莫(cannot) as the sound component (mò -> mó).`
+ * or `, with 氐(dī) as the sound component (dī): 低(low).`) so the mnemonic story remains a
+ * clean, evocative narrative. Phonetic roles and sound shifts are already highlighted in the
+ * decomposition tree and sound family cards.
+ */
+export function cleanHookStory(text: string): string {
+  const hadTerminalPunctuation = /[.?!]$/.test(text.trim());
+  let cleaned = text
+    .replace(/[,;]\s*with\s+[^,;:.]*?\bas the sound component\b(?:\s*\([^)]*\))?[^:;.]*?:\s*/gi, ': ')
+    .replace(/[,;]?\s*with\s+[^,;:.]*?\bas the sound component\b(?:\s*\([^)]*\))?[^;.]*?([.?!]*)/gi, '$1')
+    .replace(/\s+([.?!])/g, '$1')
+    .trim();
+
+  if (hadTerminalPunctuation && !/[.?!]$/.test(cleaned) && cleaned.length > 0) {
+    cleaned += '.';
+  }
+  return cleaned;
+}
+
 /** Mnemonics may be stored as plain text or a JSONB object with a text field. */
 export function normalizeMnemonic(raw: unknown): string | null {
   if (typeof raw === 'string') {
-    const text = raw.trim();
+    const text = cleanHookStory(raw.trim());
     return text.length > 0 ? text : null;
   }
   if (raw && typeof raw === 'object') {
     const record = raw as Record<string, unknown>;
     for (const key of ['hook', 'mnemonic', 'story']) {
       const value = record[key];
-      if (typeof value === 'string' && value.trim().length > 0) return value.trim();
+      if (typeof value === 'string' && value.trim().length > 0) return cleanHookStory(value.trim());
     }
   }
   return null;
@@ -77,11 +97,12 @@ function hookTokenPattern(): RegExp {
 
 /** Splits a hook into plain-text runs, `字(label)` glosses and `(字)` references. */
 export function tokenizeHookText(text: string): HookTextSegment[] {
+  const sanitized = cleanHookStory(text);
   const raw: HookTextSegment[] = [];
   let lastIndex = 0;
-  for (const match of text.matchAll(hookTokenPattern())) {
+  for (const match of sanitized.matchAll(hookTokenPattern())) {
     const index = match.index ?? 0;
-    if (index > lastIndex) raw.push({ kind: 'text', text: text.slice(lastIndex, index) });
+    if (index > lastIndex) raw.push({ kind: 'text', text: sanitized.slice(lastIndex, index) });
     if (match[1]) {
       raw.push({ kind: 'token', glyph: match[1], label: match[2].trim() });
     } else if (match[3]) {
@@ -91,7 +112,7 @@ export function tokenizeHookText(text: string): HookTextSegment[] {
     }
     lastIndex = index + match[0].length;
   }
-  if (lastIndex < text.length) raw.push({ kind: 'text', text: text.slice(lastIndex) });
+  if (lastIndex < sanitized.length) raw.push({ kind: 'text', text: sanitized.slice(lastIndex) });
 
   // A glyph reference takes its emphasis from the English gloss just before it.
   const segments: HookTextSegment[] = [];

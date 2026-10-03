@@ -1,4 +1,5 @@
 import type { DBCharacterBreakdown } from '../../../../types/database';
+import type { SoundHookEntry } from '../../../../services/contentPacks';
 import { AppIcon, WorkspaceDetailShell } from '../../../../lib/widgets';
 import { numberToToneMarks } from '../../../../utils/pinyin';
 import { V3RuntimeTree } from './V3RuntimeTree';
@@ -6,11 +7,17 @@ import { V3RuntimeTree } from './V3RuntimeTree';
 export function V3TreeScreen({
   character,
   data,
+  sound,
+  accentHex,
+  edgeHex,
   onBack,
   onGlyphClick,
 }: {
   character: string;
   data: DBCharacterBreakdown | null;
+  sound?: SoundHookEntry | null;
+  accentHex?: string;
+  edgeHex?: string;
   onBack: () => void;
   onGlyphClick: (character: string) => void;
 }) {
@@ -24,7 +31,7 @@ export function V3TreeScreen({
       onBack={onBack}
       zIndexClassName="z-detail-raised"
       maxWidthClassName="max-w-[1040px]"
-      headerClassName="border-b border-ui-divider/70 bg-ui-practice-canvas/95 backdrop-blur-[2px]"
+      headerClassName="border-b-2 border-ui-divider bg-ui-practice-canvas/95 backdrop-blur-[2px]"
       contentInnerClassName="pb-20"
     >
       <div className="mx-auto flex w-full max-w-[920px] flex-col items-center">
@@ -48,7 +55,7 @@ export function V3TreeScreen({
             </div>
             <p className="text-[11px] font-bold text-ui-muted-strong">Use + to go deeper</p>
           </div>
-          <V3RuntimeTree character={character} onGlyphClick={onGlyphClick} mode="tree" showHeading={false} />
+          <V3RuntimeTree character={character} onGlyphClick={onGlyphClick} mode="tree" showHeading={false} soundGlyph={sound?.phonetic?.glyph} soundShift={sound?.phonetic?.shift} accentHex={accentHex} edgeHex={edgeHex} />
         </section>
       </div>
     </WorkspaceDetailShell>

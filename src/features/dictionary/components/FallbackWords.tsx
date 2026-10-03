@@ -12,7 +12,7 @@ export function FallbackWords({
 }) {
   return (
     <div className="flex flex-col gap-5">
-      <div className="flex flex-col gap-1.5 border-b border-ui-divider pb-5">
+      <div className="flex flex-col gap-1.5 border-b-2 border-ui-divider pb-5">
         <p className="text-lg font-extrabold leading-tight text-ui-ink">Read “{word}” as words</p>
         <p className="text-sm font-bold text-ui-muted-strong">
           Phrase has no single dictionary entry. Here are its useful word parts.
@@ -24,7 +24,7 @@ export function FallbackWords({
             key={`${part}-${idx}`}
             type="button"
             onClick={() => onOpenWord(part)}
-            className="grid w-full grid-cols-[minmax(72px,0.32fr)_minmax(0,1fr)] gap-4 border-t border-ui-divider bg-ui-surface p-4 text-left transition first:border-t-0 hover:bg-ui-hover focus-ring focus-visible:ring-inset"
+            className="grid w-full grid-cols-[minmax(72px,0.32fr)_minmax(0,1fr)] gap-4 border-t-2 border-ui-divider bg-ui-surface p-4 text-left transition first:border-t-0 hover:bg-ui-hover focus-ring focus-visible:ring-inset"
           >
             <div>
               <span className="font-chinese text-3xl font-black text-ui-ink-strong">{part}</span>

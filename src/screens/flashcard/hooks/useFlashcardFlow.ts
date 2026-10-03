@@ -128,11 +128,12 @@ export function useFlashcardFlow({
   const restartSession = useCallback(() => {
     stopFlow();
     resetAll();
+    useAppStore.getState().showFeedbackToast('Restarted');
   }, [resetAll, stopFlow]);
 
   const partSegments = useMemo(
-    () => (isShuffled || isReviewDeck || isLibraryDeck ? [] : buildPracticePartSegments(cards)),
-    [cards, isLibraryDeck, isReviewDeck, isShuffled]
+    () => (isReviewDeck || isLibraryDeck ? [] : buildPracticePartSegments(cards)),
+    [cards, isLibraryDeck, isReviewDeck]
   );
 
   const headerCurrentIndex = mode === 'list'

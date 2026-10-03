@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Flashcard } from '../data/flashcards';
 import { useAppStore } from '../store/useAppStore';
-import { shuffleItems } from '../utils/sessionOrder';
+import { reorderSessionOnShuffle } from '../utils/sessionOrder';
 import { queueMissedItem, computeCardSessionProgress, type CardSessionProgressInfo } from '../utils/mistakeQueue';
-import { getSessionStartIndex, planDeckAdoption } from '../utils/sessionProgress';
+import { getSessionStartIndex, planDeckAdoption, retainCurrentCardIndex } from '../utils/sessionProgress';
 import { SHARED_REVIEW_SESSION_KEY } from '../utils/lessonPartSelection';
 import { audioService } from '../services/audioService';
 
@@ -108,7 +108,9 @@ export function useCardSession(
 
     activeCardsRef.current = cards;
     setActiveCards(cards);
-    setIsShuffled(false);
+    if (keyChanged) {
+      setIsShuffled(false);
+    }
     canonicalOrderRef.current = cards;
     sessionInitializedRef.current = true;
     if (plan.clearPendingCard) pendingSessionCardIdRef.current = null;
@@ -228,17 +230,43 @@ export function useCardSession(
   }, []);
 
   const toggleShuffle = useCallback(() => {
-    firstAttemptMissedRef.current.clear();
     const nextShuffled = !isShuffled;
-    const nextCards = nextShuffled ? shuffleItems(canonicalOrderRef.current) : [...canonicalOrderRef.current];
+    const currentIdx = currentIndexRef.current;
+    const hasAnsweredCards = Object.keys(sessionResults).length > 0 || firstAttemptMissedRef.current.size > 0;
+
+    const nextCards = reorderSessionOnShuffle({
+      currentCards: activeCardsRef.current,
+      canonicalCards: canonicalOrderRef.current,
+      currentIndex: currentIdx,
+      nextShuffled,
+      hasAnsweredCards,
+    });
+
     activeCardsRef.current = nextCards;
     setActiveCards(nextCards);
-    setCurrentIndex(0);
-    setCompleted(false);
-    gradingCardKeyRef.current = null;
     setIsShuffled(nextShuffled);
-    onAnswerStateResetRef.current();
-  }, [isShuffled]);
+    gradingCardKeyRef.current = null;
+    useAppStore.getState().showFeedbackToast(nextShuffled ? 'Shuffled' : 'Unshuffled');
+
+    if (!nextShuffled) {
+      const nextIndex = currentIdx === 0 && !hasAnsweredCards
+        ? 0
+        : retainCurrentCardIndex(canonicalOrderRef.current, currentCardIdRef.current, currentIdx);
+      currentIndexRef.current = nextIndex;
+      setCurrentIndex(nextIndex);
+      if (currentIdx === 0 && !hasAnsweredCards) {
+        firstAttemptMissedRef.current.clear();
+        setCompleted(false);
+        onAnswerStateResetRef.current();
+      }
+    } else if (currentIdx === 0 && !hasAnsweredCards) {
+      firstAttemptMissedRef.current.clear();
+      currentIndexRef.current = 0;
+      setCurrentIndex(0);
+      setCompleted(false);
+      onAnswerStateResetRef.current();
+    }
+  }, [isShuffled, sessionResults]);
 
   const resetAll = useCallback(() => {
     firstAttemptMissedRef.current.clear();
@@ -285,6 +313,7 @@ export function useCardSession(
     activeCards,
     repeatMistakes,
     firstAttemptMissedRef.current,
+    isShuffled,
   );
 
   return {

@@ -62,8 +62,8 @@ export function WritingScreen({
   );
 
   const partSegments = React.useMemo(
-    () => (isShuffled || isReviewDeck || isLibraryDeck ? [] : buildPracticePartSegments(playlist)),
-    [isLibraryDeck, isReviewDeck, isShuffled, playlist]
+    () => (isReviewDeck || isLibraryDeck ? [] : buildPracticePartSegments(playlist)),
+    [isLibraryDeck, isReviewDeck, playlist]
   );
 
   usePracticeHeaderRegistration({

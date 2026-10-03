@@ -10,6 +10,15 @@ Record choices that should remain stable across tasks. Keep each entry short.
 - Reason:
 - Affects:
 
+### 2026-09-29 — Character breakdown: the sound piece is highlighted in the components block
+
+- Chosen:
+  - The phonetic piece now lives on its component: the tree tile matching the sound pack's `phonetic.glyph` carries the book accent (2px `edgeHex` border, soft `accentHex` wash, matching bottom depth) plus a "SOUND" micro-badge with the speaker icon, and its pinyin line shows the compact tone shift (`qīn→xīn`).
+  - Nested pieces auto-reveal once per character: `resolveSoundRevealPath` walks the runtime reverse index from the sound glyph to the character and `useRuntimeDecompositionTree.expand` opens the ancestors, so 師's 㠯 (inside 𠂤) shows bordered without manual digging. Applies to the summary row and the Component-tree screen.
+  - The standalone Sound card is retired (`SoundBlock`/`SoundStrip` deleted). Only the sound family survives, as `SoundFamilyStrip` in the summary card (accent-bordered tiles under a `Sound family` label). No phonetic and no family renders nothing — the 58% empty case is gone.
+- Reason: owner design review — a second tinted card under the Memory Hook competed with it, and sound is a property of one component, so it belongs on that component. 270/277 phonetic pieces are direct components; the other 7 (師 餐 弟 第 關 傷 南) sit one level deeper and are auto-revealed.
+- Affects: `src/features/character-breakdown/components/v3/{V3RuntimeTree,V3CharacterBreakdown,V3CharacterSummary,V3TreeScreen}.tsx`, `src/features/character-breakdown/components/breakdown/SingleBreakdownView.tsx`, `src/features/character-breakdown/hooks/useRuntimeDecompositionTree.ts`, `src/features/character-breakdown/utils/soundRevealPath.ts`, `src/features/character-memory-hooks/SoundFamilyStrip.tsx`, `tests/unit/characterBreakdownV3.test.ts`.
+
 ### 2026-09-26 — Reader redesign: left-anchored dialogue, balanced 72/28 layout, unified Study Guide
 
 - Chosen:

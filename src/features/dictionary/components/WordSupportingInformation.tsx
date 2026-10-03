@@ -93,7 +93,7 @@ export function WordSupportingInformation({
       {chars.length > 0 && (
         <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6">
           <SectionEyebrow title="Characters" count={chars.length} />
-          <div className="mt-1 divide-y divide-ui-divider/40">
+          <div className="mt-1 divide-y-2 divide-ui-divider">
             {charsLoading && charInfos.length === 0
               ? chars.map((char) => (
                   <ReferenceRow
@@ -138,7 +138,7 @@ export function WordSupportingInformation({
               ) : undefined
             }
           />
-          <div className="mt-1 divide-y divide-ui-divider/40">
+          <div className="mt-1 divide-y-2 divide-ui-divider">
             {isRelatedLoading ? (
               Array.from({ length: 4 }).map((_, idx) => (
                 <ReferenceRow

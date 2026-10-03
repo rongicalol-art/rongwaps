@@ -44,7 +44,7 @@ export function SavedWordsPreview({
       />
 
       {isLoading ? (
-        <div className="mt-1 divide-y divide-ui-divider/40 animate-in fade-in duration-200">
+        <div className="mt-1 animate-in fade-in duration-200">
           {Array.from({ length: 3 }).map((_, i) => (
             <div key={`saved-skeleton-${i}`} className="flex min-h-[54px] items-center gap-3 px-2 py-2">
               <Skeleton className="h-7 w-12 shrink-0 rounded-xs" />
@@ -56,7 +56,7 @@ export function SavedWordsPreview({
           ))}
         </div>
       ) : visibleItems.length > 0 ? (
-        <div className="mt-1 divide-y divide-ui-divider/40">
+        <div className="mt-1">
           {visibleItems.map((item) => (
             <ReferenceRow
               key={item.word}

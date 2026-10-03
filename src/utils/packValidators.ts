@@ -55,9 +55,28 @@ export type ContentPackKind =
   | 'course-examples'
   | 'memory-hooks'
   | 'sound-hooks'
+  | 'sound-families'
   | 'readings'
   | 'grammar'
   | 'dialogue-alignment';
+
+export interface SoundFamilyMember {
+  character: string;
+  pinyin: string;
+  meaning: string;
+}
+
+export interface SoundSeriesEntry {
+  glyph: string;
+  reading: string;
+  members: SoundFamilyMember[];
+}
+
+export interface SoundFamiliesPack {
+  schemaVersion: number;
+  count: number;
+  series: SoundSeriesEntry[];
+}
 
 const VALID_CONTENT_TYPES = new Set(['character', 'word', 'story']);
 
@@ -132,6 +151,15 @@ export function isValidSoundHookPack(pack: unknown, bookId: number, expectedCoun
     && Array.isArray(candidate.items)
     && candidate.items.length === candidate.count
     && candidate.items.every(isValidSoundHookItem);
+}
+
+export function isValidSoundFamiliesPack(pack: unknown): pack is SoundFamiliesPack {
+  if (!pack || typeof pack !== 'object') return false;
+  const candidate = pack as Partial<SoundFamiliesPack>;
+  return candidate.schemaVersion === 1
+    && Array.isArray(candidate.series)
+    && typeof candidate.count === 'number'
+    && candidate.series.length === candidate.count;
 }
 
 export function isValidReadingRecord(item: unknown): item is ReadingRecord {

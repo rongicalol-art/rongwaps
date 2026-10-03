@@ -18,6 +18,8 @@ export interface RuntimeDecompositionTreeState {
   nodes: Record<string, RuntimeTreeNodeState>;
   expanded: ReadonlySet<string>;
   toggle: (character: string) => void;
+  /** Idempotently reveals a node (adds to the expanded set and loads it). */
+  expand: (character: string) => void;
   retry: (character: string) => void;
 }
 
@@ -80,6 +82,17 @@ export function useRuntimeDecompositionTree(character: string): RuntimeDecomposi
     if (!nodes[target]) void loadNode(target);
   }, [loadNode, nodes]);
 
+  const expand = useCallback((target: string) => {
+    if (!target) return;
+    setExpanded((current) => {
+      if (current.has(target)) return current;
+      const next = new Set(current);
+      next.add(target);
+      return next;
+    });
+    if (!nodes[target]) void loadNode(target);
+  }, [loadNode, nodes]);
+
   const retry = useCallback((target: string) => {
     void loadNode(target);
   }, [loadNode]);
@@ -90,6 +103,7 @@ export function useRuntimeDecompositionTree(character: string): RuntimeDecomposi
     nodes,
     expanded,
     toggle,
+    expand,
     retry,
   };
 }

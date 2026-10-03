@@ -39,10 +39,11 @@ Auto-injected each session. Core rules terse; read linked docs only when task ne
 - Desktop Books keeps permanent side nav. Other workspaces may hide it + show quiet restore control. Mobile: closable drawer + compact `MainHeader`.
 - Full-screen study windows, drawers, settings, dictionary views, overlays stay inside desktop workspace, use shared `workspace-window` bounds; mobile may use full viewport.
 - Dialog sizing + tab stability: comfortable touch targets on mobile. Multi-tab modals + settings panels: segmented tabs embedded in header bar (no stacked chrome); stable container heights + internal scroll so tab switch causes no vertical layout shift.
+- **Header space utilization:** Screen headers (`ScreenHeader`, study windows, practice overlays, settings panels, detail shells) must utilize full horizontal space (`maxWidth="none"` default). Back/close actions anchor to the far left edge and utility actions anchor to the far right edge with standard window padding (`px-4 sm:px-6 lg:px-10`), never pinching header actions inward with arbitrary column constraints (`max-w-2xl`, `max-w-4xl`). Content beneath the header may use constrained reading widths (e.g. `max-w-4xl`, `max-w-[1100px]`), but the header bar itself spans edge-to-edge.
 
 ## Backend + server
 
-- Express backend in `server/`, media streaming endpoints (e.g. `/api/audio/*`). Backend strictly isolated from client React app in `src/`.
+- Express backend in `server/`, providing neural TTS synthesis and Jev grading endpoints. Static media streams directly from CDN edge. Backend strictly isolated from client React app in `src/`.
 
 ## Jev tooling (TypeSafe System One)
 

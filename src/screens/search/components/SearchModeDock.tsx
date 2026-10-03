@@ -1,7 +1,8 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import { AppIcon, FloatingDock, SegmentedControl } from '../../../lib/widgets';
 import { useDismiss } from '../../../hooks/useDismiss';
+import { useFloatingDockSleep } from '../../../hooks/useFloatingDockSleep';
 import { cn } from '../../../utils/cn';
 
 export type SearchMode = 'global' | 'curriculum';
@@ -26,6 +27,20 @@ export function SearchModeDock({
   const [isCurriculumMenuOpen, setIsCurriculumMenuOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const { isAsleep, dockProps, wake } = useFloatingDockSleep({
+    ref: containerRef,
+    isLockedAwake: isCurriculumMenuOpen,
+    onMouseLeave: () => setIsCurriculumMenuOpen(false),
+  });
+
+  const prevModeRef = useRef(mode);
+  useEffect(() => {
+    if (prevModeRef.current !== mode) {
+      prevModeRef.current = mode;
+      wake();
+    }
+  }, [mode, wake]);
+
   useDismiss({
     ref: containerRef,
     onDismiss: () => setIsCurriculumMenuOpen(false),
@@ -34,7 +49,17 @@ export function SearchModeDock({
 
   return (
     <FloatingDock.Root>
-      <div ref={containerRef} className="relative flex w-full max-w-[340px] items-center justify-center">
+      <div
+        ref={containerRef}
+        {...dockProps}
+        className={cn(
+          'pointer-events-auto relative flex w-full max-w-sm items-center justify-center',
+          'transition-[opacity,box-shadow]',
+          isAsleep
+            ? 'opacity-20 shadow-none duration-300 ease-in-out'
+            : 'opacity-100 duration-200 ease-out',
+        )}
+      >
         {/* Books Popover Anchored Above Curriculum Tab */}
         <FloatingDock.Popover
           open={isCurriculumMenuOpen}
@@ -47,7 +72,7 @@ export function SearchModeDock({
             aria-label="Filter curriculum books"
             className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-1.5"
           >
-            <div className="mb-1 flex items-center justify-between border-b border-ui-divider px-2.5 py-1">
+            <div className="mb-1 flex items-center justify-between border-b-2 border-ui-divider px-2.5 py-1">
               <span className="text-[11px] font-black uppercase tracking-wider text-ui-muted">
                 Books ({selectedBookIds.length}/4)
               </span>

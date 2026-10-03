@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { AppIcon, IconActionButton, ToggleSwitch } from '../../../lib/widgets';
 import { useDismiss } from '../../../hooks/useDismiss';
 import { useAppStore } from '../../../store/useAppStore';
+import { SAMPLE_BOOKS } from '../../../data/books';
 
 /**
  * Contextual display settings for the character-breakdown window. For now it
@@ -14,6 +15,8 @@ export function BreakdownSettingsPopover() {
   const containerRef = useRef<HTMLDivElement>(null);
   const hideExamplePinyin = useAppStore((state) => state.hideExamplePinyin);
   const updatePreferences = useAppStore((state) => state.updatePreferences);
+  const activeBookId = useAppStore((state) => state.activeBookId);
+  const activeBook = SAMPLE_BOOKS.find((b) => b.id === activeBookId) || SAMPLE_BOOKS[0];
 
   useDismiss({
     ref: containerRef,
@@ -26,7 +29,15 @@ export function BreakdownSettingsPopover() {
       <IconActionButton
         size="lg"
         onClick={() => setIsOpen((open) => !open)}
-        icon={<AppIcon name="settings" size={25} />}
+        className={isOpen ? 'bg-ui-hover' : undefined}
+        icon={(
+          <AppIcon
+            name="menu"
+            size={24}
+            color={activeBook.accentHex}
+            className={activeBook.accent}
+          />
+        )}
         label="Breakdown settings"
         aria-haspopup="dialog"
         aria-expanded={isOpen}

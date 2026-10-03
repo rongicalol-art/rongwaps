@@ -144,6 +144,7 @@ export function WordDetailView({
           variant="panel"
           tone="practice"
           onClose={onClose}
+          maxWidth="none"
           centerContent={
             <h1 className="w-full text-center text-xs sm:text-sm font-black uppercase tracking-wider text-ui-ink-strong">Word breakdown</h1>
           }

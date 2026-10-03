@@ -129,6 +129,10 @@ export function audioFileCacheRequest(fileName: string): Request {
 }
 
 export function publicAudioUrl(fileName: string): string | null {
+  const customCdn = viteEnv('VITE_AUDIO_BASE_URL');
+  if (customCdn && /^https?:\/\//.test(customCdn)) {
+    return customCdn.replace(/\/+$/, '') + '/' + fileName;
+  }
   const supabaseUrl = viteEnv('VITE_SUPABASE_URL');
   if (supabaseUrl && /^https?:\/\//.test(supabaseUrl) && !supabaseUrl.includes('your_')) {
     return supabaseUrl.replace(/\/+$/, '') + '/storage/v1/object/public/' + AUDIO_BUCKET + '/' + fileName;
@@ -154,9 +158,10 @@ export async function fetchAudioBlob(fileName: string): Promise<Blob> {
       }
     }
 
+    const directUrl = publicAudioUrl(fileName);
     const sources = [
+      directUrl,
       '/api/audio/' + fileName,
-      publicAudioUrl(fileName),
     ].filter((source): source is string => source !== null);
 
     let lastError: unknown;

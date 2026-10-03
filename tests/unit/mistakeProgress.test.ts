@@ -78,3 +78,18 @@ test('computeCardSessionProgress: empty cards handles cleanly', () => {
   assert.equal(emptyInfo.isRetry, false);
   assert.equal(emptyInfo.cleanupPhase, null);
 });
+
+test('computeCardSessionProgress: shuffled deck preserves session progress index instead of canonical index', () => {
+  const canonicalCards = [{ id: 'c1' }, { id: 'c2' }, { id: 'c3' }, { id: 'c4' }, { id: 'c5' }];
+  // Shuffled active cards where the 1st canonical card appears at index 3
+  const activeCards = [{ id: 'c3' }, { id: 'c5' }, { id: 'c2' }, { id: 'c1' }, { id: 'c4' }];
+  const missedCardIds = new Set<string>();
+
+  // At currentIndex 3 (card c1, which is canonically at index 0)
+  const infoShuffled = computeCardSessionProgress(3, 'c1', canonicalCards, activeCards, 'soon', missedCardIds, true);
+  // displayIndex MUST stay 3 (4th item in session), NOT drop to 0!
+  assert.equal(infoShuffled.displayIndex, 3);
+  assert.equal(infoShuffled.totalCount, 5);
+  assert.equal(infoShuffled.isRetry, false);
+});
+

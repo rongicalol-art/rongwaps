@@ -4,6 +4,7 @@ import { Skeleton } from '../../../../lib/widgets';
 import { useCharBreakdown } from '../../../../hooks/useCharBreakdown';
 import { useComponentVocabRelation } from '../../../../hooks/useComponentVocabRelation';
 import { numberToToneMarks } from '../../../../utils/pinyin';
+import { formatCompactMeaning } from '../../../../utils/dictionaryDefinitions';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
 
@@ -70,7 +71,7 @@ export const BreakdownComponentCard: React.FC<BreakdownComponentCardProps> = ({
       </span>
       <div className="mb-1 flex h-4 min-h-4 w-full items-center justify-center px-1 text-xs font-bold text-ui-ink">
         <span className="line-clamp-1 truncate text-center w-full">
-          {data ? (data.definition ? data.definition.split(';')[0] : ' ') : <Skeleton className="w-16 h-3 rounded-xs mx-auto" />}
+          {data ? (data.definition ? formatCompactMeaning(data.definition) : ' ') : <Skeleton className="w-16 h-3 rounded-xs mx-auto" />}
         </span>
       </div>
     </button>

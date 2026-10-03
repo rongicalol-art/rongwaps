@@ -102,7 +102,7 @@ export const DebugWindow = () => {
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-2 mb-6 border-b border-ui-divider pb-4">
+      <div className="flex flex-wrap gap-2 mb-6 border-b-2 border-ui-divider pb-4">
         <button 
           onClick={() => setActiveTab('logs')}
           className={`px-4 py-2 text-xs md:text-sm font-black uppercase tracking-wide rounded-control transition-[transform,box-shadow,background-color] select-none ${
@@ -260,7 +260,7 @@ export const DebugWindow = () => {
             ) : mnemonics.length > 0 ? (
               mnemonics.map((m) => (
                 <div key={m.character} className="border-b-[length:var(--depth-md)] border-ui-border p-5 rounded-feature flex flex-col bg-ui-surface transition-all">
-                  <div className="flex justify-between items-center mb-2 pb-2 border-b border-ui-divider">
+                  <div className="flex justify-between items-center mb-2 pb-2 border-b-2 border-ui-divider">
                     <span className="font-extrabold text-ui-ink text-2xl">{m.character}</span>
                     <span className="text-xs text-ui-muted">
                       {m.created_at ? new Date(m.created_at).toLocaleString() : 'Cached Global Memory'}
@@ -298,7 +298,7 @@ export const DebugWindow = () => {
 
         {activeTab === 'skeletons' && (
           <div className="h-full flex flex-col min-h-0">
-            <div className="flex flex-wrap gap-2 pb-4 border-b border-ui-divider mb-4 shrink-0">
+            <div className="flex flex-wrap gap-2 pb-4 border-b-2 border-ui-divider mb-4 shrink-0">
               {[
                 { id: 'quiz', label: 'Quiz (ScreenSkeleton)' },
                 { id: 'listening', label: 'Listening (ScreenSkeleton)' },

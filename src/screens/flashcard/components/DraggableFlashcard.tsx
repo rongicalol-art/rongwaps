@@ -233,7 +233,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
           className="relative w-full h-full [transform-style:preserve-3d]"
         >
           <motion.div
-            className="absolute inset-0 flex flex-col items-center justify-center rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface p-6 sm:p-8 [backface-visibility:hidden]"
+            className="absolute inset-0 flex flex-col items-center justify-center rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface p-6 sm:p-8 shadow-ambient-sm [backface-visibility:hidden]"
             style={{ opacity: frontOpacity, visibility: frontVisibility }}
           >
             <div className="flex max-w-full flex-row flex-wrap items-center justify-center">
@@ -266,7 +266,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
 
           <motion.div
             className={cn(
-              'absolute inset-0 flex flex-col rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface overflow-hidden [backface-visibility:hidden]',
+              'absolute inset-0 flex flex-col rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface overflow-hidden shadow-ambient-sm [backface-visibility:hidden]',
               showHook ? 'p-4 pb-4 sm:p-6 sm:pb-5' : 'p-6 pb-10 sm:p-8 sm:pb-10',
             )}
             style={{ opacity: backOpacity, rotateY: 180, visibility: backVisibility }}

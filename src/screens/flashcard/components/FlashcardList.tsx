@@ -1,92 +1,120 @@
-import { memo, useMemo } from 'react';
-import { LayoutGroup, motion, useReducedMotion } from 'motion/react';
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import type { Flashcard } from '../../../data/flashcards';
-import { ActionButton, AppIcon, PosBadge } from '../../../lib/widgets';
+import { AppIcon, PosBadge } from '../../../lib/widgets';
+import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { cn } from '../../../utils/cn';
 
 /**
  * Flashcard deck list mode.
  *
- * Minimal and intentional: the deck is grouped one column per part (Part 1,
- * Part 2, …), each introduced by a quiet uppercase label with a little
- * space. On wide screens the part columns sit side by side; on narrow
- * screens they simply stack (gap = the space between parts). Each part is
- * its own home-screen lesson chain — accent-edged connected blocks that
- * merge with spring layout animation; excluded rows sit apart, dimmed, and
- * break the chain. Rows are dictionary-style: vocab word, hairline divider,
- * pinyin + definition, and the book/lesson token plus the POS tag (reusing
- * `PosBadge`). No counters, no controls — the whole block is the toggle.
+ * Modeled after the home screen lesson chain (`LessonItem`):
+ * - Connected card blocks for enabled cards with the book's accent edge border
+ * - Excluded cards visibly disconnect into standalone rounded items
+ * - Responsive 2-column layout on tablet/desktop to utilize screen space
+ * - Card toggle container uses spring layout; no active border mutation
  */
 interface FlashcardListProps {
   /** Full deck (exclusions NOT applied) in canonical order. */
   cards: Flashcard[];
   excludedIds: ReadonlySet<string>;
   onToggleCard: (cardId: string) => void;
-  onResetExclusions?: () => void;
   accentColor: string;
   edgeHex: string;
+  onScrollVisibility?: (visible: boolean) => void;
 }
 
-type RowShape = 'single' | 'middle' | 'top' | 'bottom';
-
-const ROW_TRANSITION = {
+const SPRING_TRANSITION = {
   layout: { type: 'spring' as const, stiffness: 430, damping: 34 },
   scale: { type: 'spring' as const, stiffness: 500, damping: 28 },
 };
 
-function chainClasses(shape: RowShape, included: boolean): string {
-  if (!included) {
-    return 'mb-3 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface';
+function getCardContainerClasses(isSelected: boolean, isPrevSelected: boolean, isNextSelected: boolean) {
+  if (!isSelected) {
+    return {
+      containerClasses:
+        'mb-3 rounded-feature border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface/60 opacity-60 hover:opacity-85',
+      hasInnerDivider: false,
+    };
   }
-  switch (shape) {
-    case 'single':
-      return 'mb-3 rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface';
-    case 'top':
-      return 'mb-0 rounded-t-feature border-ui-border bg-ui-surface';
-    case 'bottom':
-      return 'mb-3 rounded-b-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface';
-    case 'middle':
-      return 'mb-0 border-ui-border bg-ui-surface';
+
+  if (!isPrevSelected && !isNextSelected) {
+    return {
+      containerClasses:
+        'mb-3 rounded-feature border-2 border-ui-border border-b-[length:var(--depth-lg)] bg-ui-surface shadow-ambient-sm hover:bg-ui-surface-hover',
+      hasInnerDivider: false,
+    };
   }
-}
 
-function rowShape(column: Flashcard[], index: number, excludedIds: ReadonlySet<string>): RowShape {
-  if (excludedIds.has(column[index].id)) return 'single';
-  const prevExcluded = index === 0 || excludedIds.has(column[index - 1].id);
-  const nextExcluded = index === column.length - 1 || excludedIds.has(column[index + 1].id);
-  if (prevExcluded && nextExcluded) return 'single';
-  if (!prevExcluded && !nextExcluded) return 'middle';
-  if (!prevExcluded) return 'bottom';
-  return 'top';
-}
+  if (!isPrevSelected && isNextSelected) {
+    return {
+      containerClasses:
+        'mb-0 rounded-t-feature border-2 border-ui-border border-b-0 bg-ui-surface hover:bg-ui-surface-hover',
+      hasInnerDivider: true,
+    };
+  }
 
-/** Book/lesson context token, styled to match the app's `PosBadge` geometry. */
-function BookToken({ bookId, lessonId, excluded }: { bookId: number; lessonId: number; excluded: boolean }) {
-  if (bookId <= 0 || lessonId <= 0) return null;
-  return (
-    <span
-      className={cn(
-        'shrink-0 select-none rounded-xs px-1.5 py-1 text-xs font-black uppercase leading-none tracking-wide',
-        excluded ? 'bg-ui-canvas text-ui-muted/60' : 'bg-ui-canvas text-ui-muted-strong',
-      )}
-    >
-      B{bookId} L{lessonId}
-    </span>
-  );
+  if (isPrevSelected && isNextSelected) {
+    return {
+      containerClasses:
+        'mb-0 border-x-2 border-y-0 border-ui-border bg-ui-surface hover:bg-ui-surface-hover',
+      hasInnerDivider: true,
+    };
+  }
+
+  // isPrevSelected && !isNextSelected
+  return {
+    containerClasses:
+      'mb-3 rounded-b-feature border-x-2 border-t-0 border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface shadow-ambient-sm hover:bg-ui-surface-hover',
+    hasInnerDivider: false,
+  };
 }
 
 export const FlashcardList = memo(function FlashcardList({
   cards,
   excludedIds,
   onToggleCard,
-  onResetExclusions,
   accentColor,
   edgeHex,
+  onScrollVisibility,
 }: FlashcardListProps) {
   const reduceMotion = useReducedMotion();
+  const isDesktop = useMediaQuery('(min-width: 768px)');
+  const [isDockVisible, setIsDockVisible] = useState(true);
+  const lastScrollTopRef = useRef(0);
 
-  // One column per part, in part order. Runs within each part are their own
-  // chain, so connected blocks never cross a part boundary.
+  const handleScroll = useCallback(
+    (e: React.UIEvent<HTMLDivElement>) => {
+      const currentScrollTop = e.currentTarget.scrollTop;
+      const delta = currentScrollTop - lastScrollTopRef.current;
+
+      // Keep dock visible when near top
+      if (currentScrollTop <= 15) {
+        setIsDockVisible(true);
+        onScrollVisibility?.(true);
+      } else if (delta > 8 && currentScrollTop > 40) {
+        // Scrolling down: hide dock to give space
+        setIsDockVisible(false);
+        onScrollVisibility?.(false);
+      } else if (delta < -8) {
+        // Scrolling up: bring dock back
+        setIsDockVisible(true);
+        onScrollVisibility?.(true);
+      }
+
+      lastScrollTopRef.current = currentScrollTop;
+    },
+    [onScrollVisibility],
+  );
+
+  // Restore dock when leaving list mode
+  useEffect(() => {
+    return () => {
+      onScrollVisibility?.(true);
+    };
+  }, [onScrollVisibility]);
+
+  // Group cards by part in canonical part order.
   const groups = useMemo(() => {
     const byPart = new Map<number, Flashcard[]>();
     for (const card of cards) {
@@ -99,6 +127,11 @@ export const FlashcardList = memo(function FlashcardList({
       .sort((a, b) => a[0] - b[0])
       .map(([partId, partCards]) => ({ partId, partCards }));
   }, [cards]);
+
+  const hasExplicitParts = useMemo(
+    () => cards.some((c) => typeof c.partId === 'number' && c.partId > 0),
+    [cards],
+  );
 
   if (cards.length === 0) {
     return (
@@ -116,156 +149,161 @@ export const FlashcardList = memo(function FlashcardList({
     );
   }
 
-  if (cards.length > 0 && excludedIds.size >= cards.length) {
-    return (
-      <div className="absolute inset-0 z-0 flex flex-col items-center justify-center gap-4 px-6 pb-24 text-center">
-        <span className="grid h-14 w-14 place-items-center rounded-2xl bg-ui-surface text-ui-muted-strong">
-          <AppIcon name="cards" size={28} />
-        </span>
-        <div className="max-w-sm">
-          <p className="text-lg font-extrabold text-ui-ink">All cards disabled</p>
-          <p className="mt-1 text-sm font-bold text-ui-muted-strong">
-            You've excluded every card in this deck. Reset the list or tap a card to study.
-          </p>
-          {onResetExclusions && (
-            <ActionButton
-              onClick={onResetExclusions}
-              size="md"
-              variant="secondary"
-              className="mt-4"
-            >
-              <span className="flex items-center gap-2">
-                <AppIcon name="restart" size={16} />
-                Reset list
-              </span>
-            </ActionButton>
+  const renderCardColumn = (columnCards: Flashcard[]) =>
+    columnCards.map((card, index) => {
+      const isSelected = !excludedIds.has(card.id);
+      const isPrevSelected = index > 0 && !excludedIds.has(columnCards[index - 1].id);
+      const isNextSelected =
+        index < columnCards.length - 1 && !excludedIds.has(columnCards[index + 1].id);
+
+      const { containerClasses, hasInnerDivider } = getCardContainerClasses(
+        isSelected,
+        isPrevSelected,
+        isNextSelected,
+      );
+
+      return (
+        <motion.div
+          key={card.id}
+          layout={!reduceMotion}
+          whileTap={reduceMotion ? undefined : { scale: 0.98 }}
+          transition={SPRING_TRANSITION}
+          style={isSelected ? { borderColor: edgeHex } : undefined}
+          className={cn(
+            'relative flex min-h-14 min-w-0 items-center overflow-hidden transition-colors duration-300',
+            containerClasses,
           )}
-        </div>
-      </div>
-    );
-  }
+        >
+          {hasInnerDivider && (
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute bottom-0 left-4 right-4 z-10 h-0.5 bg-ui-divider"
+            />
+          )}
 
-  const renderRows = (partId: number, column: Flashcard[]) => (
-    <ol className="flex flex-col gap-0">
-      {column.map((card, index) => {
-        const excluded = excludedIds.has(card.id);
-        const isFirst = index === 0;
-        const shape = rowShape(column, index, excludedIds);
-
-        return (
-          <li key={card.id}>
-            {/* `flex items-center` on the button mirrors the home lesson
-                container — without it the toggle would only stretch over its
-                content. The block is a column so the part label can live
-                inside the first card, at its top. */}
-            <motion.div
-              layout={!reduceMotion}
-              whileTap={reduceMotion ? undefined : { scale: 0.98 }}
-              transition={ROW_TRANSITION}
-              style={!excluded ? { borderColor: edgeHex } : undefined}
+          <button
+            type="button"
+            onClick={() => onToggleCard(card.id)}
+            aria-pressed={isSelected}
+            aria-label={isSelected ? `Exclude ${card.front}` : `Include ${card.front}`}
+            className="group flex min-w-0 flex-1 items-center gap-3.5 self-stretch px-4 py-3 text-left outline-none focus-ring sm:py-3.5"
+          >
+            <span
               className={cn(
-                'relative flex w-full flex-col items-stretch transition-colors duration-300 hover:bg-ui-surface-hover',
-                chainClasses(shape, !excluded),
+                'shrink-0 font-chinese text-2xl font-black leading-none transition-colors sm:text-3xl',
+                isSelected ? 'text-ui-ink' : 'text-ui-muted/60',
               )}
             >
-              {(shape === 'top' || shape === 'middle') && (
-                <span aria-hidden="true" className="absolute bottom-0 left-5 right-5 h-0.5 bg-ui-divider" />
-              )}
-              {isFirst && (
-                <span className={cn(
-                  'px-4 pt-3 pb-0.5 text-xs font-extrabold uppercase tracking-widest transition-colors',
-                  excluded ? 'text-ui-muted' : accentColor,
-                )}>
-                  Part {partId}
-                </span>
-              )}
-              <button
-                type="button"
-                onClick={() => onToggleCard(card.id)}
-                aria-pressed={!excluded}
-                aria-label={excluded ? `Include ${card.front}` : `Exclude ${card.front}`}
-                className="group flex min-w-0 flex-1 items-center gap-3.5 self-stretch rounded-[inherit] px-4 py-3 sm:py-3.5 text-left outline-none focus-ring"
-              >
-                <span className={cn(
-                  'shrink-0 font-chinese text-2xl font-black leading-none transition-colors sm:text-[28px]',
-                  excluded ? 'text-ui-muted/60' : 'text-ui-ink',
-                )}>
-                  {card.front}
-                </span>
+              {card.front}
+            </span>
 
-                <span aria-hidden="true" className="h-9 sm:h-10 w-px shrink-0 bg-ui-divider" />
+            <span aria-hidden="true" className="h-8 sm:h-9 w-px shrink-0 bg-ui-divider" />
 
-                <span className="min-w-0 flex-1">
-                  {card.pinyin && (
-                    <span className={cn(
-                      'block truncate text-xs font-extrabold leading-tight transition-colors sm:text-[13px]',
-                      excluded ? 'text-ui-muted' : 'text-ui-ink-strong',
-                    )}>
-                      {card.pinyin}
-                    </span>
+            <span className="min-w-0 flex-1">
+              {card.pinyin && (
+                <span
+                  className={cn(
+                    'block truncate text-xs font-extrabold leading-tight transition-colors sm:text-sm',
+                    isSelected ? 'text-ui-ink-strong' : 'text-ui-muted',
                   )}
-                  {card.back && (
-                    <span className={cn(
-                      'block truncate text-xs font-bold leading-snug transition-colors sm:text-[13px]',
-                      excluded ? 'text-ui-muted-strong/50' : 'text-ui-muted-strong',
-                    )}>
-                      {card.back}
-                    </span>
+                >
+                  {card.pinyin}
+                </span>
+              )}
+              {card.back && (
+                <span
+                  className={cn(
+                    'block truncate text-xs font-bold leading-snug transition-colors sm:text-sm',
+                    isSelected ? 'text-ui-muted-strong' : 'text-ui-muted-strong/50',
                   )}
+                >
+                  {card.back}
                 </span>
+              )}
+            </span>
 
-                <span className="flex shrink-0 items-center gap-1.5">
-                  <BookToken bookId={card.bookId} lessonId={card.lessonId} excluded={excluded} />
-                  <PosBadge pos={card.pos} className={excluded ? 'opacity-50' : undefined} />
-                </span>
-              </button>
-            </motion.div>
-          </li>
-        );
-      })}
-    </ol>
-  );
+            <span className="flex shrink-0 items-center pl-1">
+              <PosBadge pos={card.pos} className={!isSelected ? 'opacity-50' : undefined} />
+            </span>
+          </button>
+        </motion.div>
+      );
+    });
 
   return (
     <div className="absolute inset-0 z-0 flex flex-col">
-      {/* │ Top fade: standard sticky-header blur + gradient, sized to the
-          header band so content clears it without a big empty gap */}
+      {/* Top fade: standard sticky-header blur + gradient */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[68px] bg-gradient-to-b from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent backdrop-blur-[2px]"
+        className="pointer-events-none absolute inset-x-0 top-0 z-10 h-16 bg-gradient-to-b from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent backdrop-blur-[2px]"
       />
-      {/* │ Bottom fade: taller/stronger blend under the floating mode dock */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-40 bg-gradient-to-t from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent"
-      />
+      {/* Bottom fade: blend under the floating mode dock, hides when dock hides */}
+      <AnimatePresence initial={false}>
+        {isDockVisible && (
+          <motion.div
+            aria-hidden="true"
+            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 32 }}
+            animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 32 }}
+            transition={
+              reduceMotion
+                ? { duration: 0 }
+                : { type: 'spring', stiffness: 380, damping: 34, mass: 0.8 }
+            }
+            className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-40 bg-gradient-to-t from-ui-practice-canvas via-ui-practice-canvas/95 to-transparent"
+          />
+        )}
+      </AnimatePresence>
 
-      <div className="flex-1 overflow-y-auto overscroll-contain pb-dock-clearance">
-        <div className="mx-auto w-full max-w-[880px] px-4 pb-4 pt-[76px] md:px-6">
-          {excludedIds.size > 0 && onResetExclusions && (
-            <div className="mb-4 flex items-center justify-between rounded-control border border-ui-border bg-ui-surface/80 px-3.5 py-2 backdrop-blur-sm">
-              <span className="text-xs font-bold text-ui-muted-strong">
-                {cards.length - excludedIds.size} of {cards.length} cards included
-              </span>
-              <button
-                type="button"
-                onClick={onResetExclusions}
-                className="inline-flex items-center gap-1.5 text-xs font-black text-brand-primary hover:underline focus-ring"
-              >
-                <AppIcon name="restart" size={14} />
-                Reset list
-              </button>
-            </div>
-          )}
-          <LayoutGroup>
-            {/* Single column; each part is its own chain. The part label
-                lives inside the first block of each part. */}
-            {groups.map((group, groupIndex) => (
-              <div key={group.partId} className={cn('flex flex-col', groupIndex > 0 && 'mt-6')}>
-                {renderRows(group.partId, group.partCards)}
-              </div>
-            ))}
-          </LayoutGroup>
+      <div
+        onScroll={handleScroll}
+        className="flex-1 overflow-y-auto overscroll-contain pb-dock-clearance"
+      >
+        <div className="mx-auto w-full max-w-5xl px-4 pb-6 pt-20 sm:px-6 md:px-8 xl:max-w-6xl">
+          <div className="flex flex-col gap-6 sm:gap-8">
+            {groups.map((group) => {
+              const isMultiColumn = isDesktop && group.partCards.length > 5;
+              const midIndex = isMultiColumn
+                ? Math.ceil(group.partCards.length / 2)
+                : group.partCards.length;
+              const colA = isMultiColumn ? group.partCards.slice(0, midIndex) : group.partCards;
+              const colB = isMultiColumn ? group.partCards.slice(midIndex) : [];
+
+              return (
+                <section
+                  key={group.partId}
+                  aria-labelledby={`part-heading-${group.partId}`}
+                  className="flex flex-col gap-2.5"
+                >
+                  <div className="flex items-center justify-between px-1">
+                    <div className="flex items-center gap-2">
+                      <h2
+                        id={`part-heading-${group.partId}`}
+                        className={cn('text-xs font-black uppercase tracking-wider', accentColor)}
+                      >
+                        {hasExplicitParts ? `Part ${group.partId}` : 'Vocabulary'}
+                      </h2>
+                      <span className="text-xs font-bold text-ui-muted-strong">
+                        · {group.partCards.length}{' '}
+                        {group.partCards.length === 1 ? 'word' : 'words'}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex w-full flex-col gap-0 md:flex-row md:gap-4 lg:gap-6">
+                    <div className="flex min-w-0 flex-1 flex-col">
+                      {renderCardColumn(colA)}
+                    </div>
+                    {colB.length > 0 && (
+                      <div className="flex min-w-0 flex-1 flex-col">
+                        {renderCardColumn(colB)}
+                      </div>
+                    )}
+                  </div>
+                </section>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

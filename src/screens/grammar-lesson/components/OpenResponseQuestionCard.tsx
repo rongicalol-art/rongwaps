@@ -29,7 +29,7 @@ export function OpenResponseQuestionCard({
   );
 
   return (
-    <article className="border-b border-ui-divider bg-ui-surface px-2 py-5 last:border-b-0 sm:px-3 sm:py-7">
+    <article className="border-b-2 border-ui-divider bg-ui-surface px-2 py-5 last:border-b-0 sm:px-3 sm:py-7">
       <p className="mb-3 text-[11px] font-black text-brand-primary">Try {question.number}</p>
       <div className="flex flex-wrap items-center gap-x-2 gap-y-3 font-chinese text-base font-bold leading-[1.9] text-ui-ink-strong sm:text-lg">
         {question.segments.map((segment, index) => {

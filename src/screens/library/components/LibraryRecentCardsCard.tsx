@@ -24,7 +24,7 @@ export function LibraryRecentCardsCard({ items, onSelectWord }: LibraryRecentCar
       </div>
 
       {hasItems ? (
-        <div className="divide-y divide-ui-divider/60">
+        <div>
           {items.map((item) => (
             <div
               key={item.id}

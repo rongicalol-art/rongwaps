@@ -426,14 +426,23 @@ body {
   .bottom-dock-safe {
     bottom: var(--dock-bottom);
   }
+  .pb-dock-safe {
+    padding-bottom: var(--dock-bottom);
+  }
   @media (min-width: 640px) {
     .bottom-dock-safe {
       bottom: 1.25rem;
+    }
+    .pb-dock-safe {
+      padding-bottom: 1.25rem;
     }
   }
   @media (min-width: 768px) {
     .bottom-dock-safe {
       bottom: 1.5rem;
+    }
+    .pb-dock-safe {
+      padding-bottom: 1.5rem;
     }
   }
 

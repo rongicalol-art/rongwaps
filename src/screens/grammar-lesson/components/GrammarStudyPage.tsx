@@ -130,6 +130,7 @@ export function GrammarStudyPage({
                     patternColumns={section.patternColumns}
                     patternColumnDetails={section.patternColumnDetails}
                     patternRows={sectionPatternRows}
+                    patternAccentColumn={section.patternAccentColumn}
                     characterPreference={characterPreference}
                     showPinyin={showPinyin}
                     showTranslation={showTranslation}
@@ -157,6 +158,7 @@ export function GrammarStudyPage({
         <div className="mt-8 space-y-8 sm:mt-10 sm:space-y-10">
           <GrammarPatternSection
             page={page}
+            patternAccentColumn={page.patternAccentColumn}
             characterPreference={characterPreference}
             showPinyin={showPinyin}
             showTranslation={showTranslation}

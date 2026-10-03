@@ -1,6 +1,6 @@
 # 🗄️ Supabase Database Schema
 
-This document reflects the **live RongWaps Supabase schema after the 2026-08-27 data cleanup** (migration `20260827000000_data_cleanup.sql`). It is the single source of truth for the `public` schema; if the database drifts from this document, update the document.
+This document reflects the **live RongWaps Supabase schema after the 2026-10-03 content migration** (migration `20261003_prune_content_tables_and_search_rpc.sql`). All reference content (dictionary, vocabulary, character breakdowns, memory hooks) is now served 100% pack-first from static edge CDN and cached in local IndexedDB. The Supabase database contains strictly private user data.
 
 ---
 
@@ -24,7 +24,7 @@ User tables reference `auth.users.id` with cascade deletion.
         |             +----------------+     +-----------------+
 ```
 
-Reference content tables (`dictionary`, `character_breakdowns_v2`, `book_vocabulary`, `mnemonics`) are RLS-free, publicly readable, and **read pack-first from static JSON** (`public/data/...`) with the database as fallback — see [Fetch paths](#-fetch-paths).
+All reference content is static and offline-capable (see [Fetch paths](#-fetch-paths)). No reference content tables exist in Supabase.
 
 ---
 

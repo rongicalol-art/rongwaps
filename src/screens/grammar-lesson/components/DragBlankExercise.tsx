@@ -55,7 +55,7 @@ export function DragBlankExercise({
 
   return (
     <section aria-labelledby="exercise-heading" className={standalone ? '' : 'mt-10 border-t-2 border-ui-divider pt-8'}>
-      <div className="mb-7 flex items-start justify-between gap-4 border-b border-ui-divider pb-6">
+      <div className="mb-7 flex items-start justify-between gap-4 border-b-2 border-ui-divider pb-6">
         <div>
           <p className="mb-2 text-[11px] font-black uppercase tracking-[0.06em] text-feedback-warning">
             Build it
@@ -116,7 +116,7 @@ export function DragBlankExercise({
           />
         )}
 
-        <div className="mt-5 border-t border-ui-divider pt-5">
+        <div className="mt-5 border-t-2 border-ui-divider pt-5">
           {exercise.status === 'complete' && isLastQuestion && page.completionRecap && (
             <GrammarCompletionRecap
               recap={page.completionRecap}
@@ -144,7 +144,7 @@ export function DragBlankExercise({
               <div className="flex flex-col gap-4 rounded-control border-2 border-feedback-success bg-ui-surface p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5" role="status">
                 <div>
                   <p className="flex items-center gap-2 font-black text-feedback-success">
-                    <AppIcon name="check" size={21} /> Exercise complete
+                    <AppIcon name="statusCheck" size={22} className="shrink-0" /> Exercise complete
                   </p>
                   <p className="mt-1 text-xs font-bold text-feedback-success">{completionMessage}</p>
                 </div>
@@ -155,7 +155,7 @@ export function DragBlankExercise({
             ) : (
               <div className="flex flex-col gap-3 rounded-control bg-feedback-success-surface/60 p-4 sm:flex-row sm:items-center sm:justify-between" role="status">
                 <p className="flex items-center gap-2 text-sm font-black text-feedback-success">
-                  <AppIcon name="check" size={19} /> Question complete
+                  <AppIcon name="statusCheck" size={20} className="shrink-0" /> Question complete
                 </p>
                 <ActionButton onClick={advanceQuestion} className="sm:px-5">
                   Next question <AppIcon name="next" size={18} />

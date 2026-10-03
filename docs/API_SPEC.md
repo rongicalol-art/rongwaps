@@ -1,47 +1,23 @@
 # 🔌 Express API Specification
 
-The backend (`server/index.ts`) runs under Node.js + Express and serves two contracts: the media
-proxy that streams Supabase Storage audio to the browser, and the neural TTS synthesis + cache
-endpoints. In development it also mounts the Vite dev-server middleware; in production it serves
-the built `dist/` directory and falls back to `index.html` for app routes.
+The backend (`server/index.ts`) runs under Node.js + Express and provides neural TTS synthesis + caching endpoints, as well as AI grading services. Static audio assets stream directly from the CDN edge / bucket storage (`VITE_AUDIO_BASE_URL`), bypassing the application server. In development it also mounts the Vite dev-server middleware; in production it serves the built `dist/` directory and falls back to `index.html` for app routes.
 
 ## 🚦 Rate limits
 
 Every endpoint is rate limited per client IP. Exceeding a limit returns
-`429` with `{ "error": "Too many requests. Try again later." }` (audio proxy: its own message)
+`429` with `{ "error": "Too many requests. Try again later." }`
 plus the standard `RateLimit-*` headers.
 
 | Endpoint | Limiter | Window | Limit |
 | --- | --- | --- | --- |
-| `GET /api/audio/*` | `audioProxyLimiter` | 1 min | 1200 (cohort sessions + audio preloading) |
 | `POST /api/tts` | `paidApiLimiter` | 1 min | 10 (paid provider budget) |
 | `GET /api/tts-cache/:text` | `apiLimiter` | 1 min | 60 |
 | `GET /api/tts/:voice/*` | `apiLimiter` | 1 min | 60 |
+| `POST /api/jev/grade-answer` | `paidApiLimiter` | 1 min | 10 |
 
 ---
 
 ## 🎴 Endpoints
-
-### Audio Proxy
-Proxies audio files from Supabase storage to avoid Safari CORS issues with external media streaming.
-- **Method**: `GET`
-- **Path**: `/api/audio/*` (e.g. `/api/audio/hsk1/xiu.mp3`)
-- **Headers**: None required. `If-None-Match` revalidates against the ETag; `Range: bytes=<single
-  range>` streams a slice.
-- **Source**: Supabase Storage bucket `vocabulary-audio`.
-- **Caching**: in-process memory cache (1000 entries, oldest evicted first) plus in-flight request
-  deduplication; `Cache-Control: public, max-age=31536000, immutable` (files are content-stable) and
-  an ETag of `"<filename>-<byte length>"`.
-- **Responses**:
-  - `200 OK`: Audio binary payload with a content type derived from the extension (`audio/mpeg`,
-    `audio/wav`, `audio/ogg`, `audio/mp4`; `audio/mpeg` fallback), `Accept-Ranges: bytes`, `ETag`.
-  - `206 Partial Content`: Requested slice, with `Content-Range`.
-  - `304 Not Modified`: `If-None-Match` matched the ETag.
-  - `400 Bad Request`: Missing filename, or a filename containing `..`, a path separator, or any
-    character outside `[\w.-]`.
-  - `404 Not Found`: File does not exist in the storage bucket.
-  - `416 Range Not Satisfiable`: Malformed or unsatisfiable `Range` header.
-  - `500 Server Error`: Connection error.
 
 ### Neural TTS Synthesis
 Synthesizes Mandarin speech server-side, caches the MP3 in Supabase Storage, and streams it back.

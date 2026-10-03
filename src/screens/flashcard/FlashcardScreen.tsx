@@ -25,6 +25,7 @@ interface FlashcardScreenProps {
   onContinue?: () => void;
   continueLabel?: string;
   onNavigateToPractice?: () => void;
+  onScrollDockVisibility?: (visible: boolean) => void;
 }
 
 export function FlashcardScreen({
@@ -36,6 +37,7 @@ export function FlashcardScreen({
   onClose,
   onContinue,
   continueLabel,
+  onScrollDockVisibility,
 }: FlashcardScreenProps) {
   const activeBook = useMemo(
     () => SAMPLE_BOOKS.find((b) => b.id === activeBookId) || SAMPLE_BOOKS[0],
@@ -69,7 +71,7 @@ export function FlashcardScreen({
     error,
   } = useFlashcards(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
 
-  const { toggleCard, resetDeckExclusions } = useDeckExclusionActions(deckExclusionKey);
+  const { toggleCard } = useDeckExclusionActions(deckExclusionKey);
   const showPinyin = useAppStore((state) => state.showPinyin);
   const showTranslation = useAppStore((state) => state.showTranslation);
 
@@ -179,9 +181,9 @@ export function FlashcardScreen({
         cards={deckCards}
         excludedIds={excludedIds}
         onToggleCard={toggleCard}
-        onResetExclusions={resetDeckExclusions}
         accentColor={activeBook.accent}
         edgeHex={activeBook.edgeHex}
+        onScrollVisibility={onScrollDockVisibility}
       />
     );
   }

@@ -23,7 +23,7 @@ export function GrammarLabShell({
 }: GrammarLabShellProps) {
   return (
     <section
-      className={cn('border-t border-ui-divider py-8 sm:py-10', className)}
+      className={cn('border-t-2 border-ui-divider py-8 sm:py-10', className)}
       {...props}
     >
       <header className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">

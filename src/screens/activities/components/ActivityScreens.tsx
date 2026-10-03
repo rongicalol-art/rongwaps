@@ -35,6 +35,7 @@ interface ActivityScreensProps {
   onContinue?: () => void;
   continueLabel: string;
   onNavigateToPractice?: () => void;
+  onScrollDockVisibility?: (visible: boolean) => void;
 }
 
 /** The lazy-loaded practice screens, swapped by activity with slide transitions. */
@@ -53,6 +54,7 @@ export function ActivityScreens({
   onContinue,
   continueLabel,
   onNavigateToPractice,
+  onScrollDockVisibility,
 }: ActivityScreensProps) {
   return (
     <AnimatePresence custom={direction} mode="popLayout">
@@ -69,6 +71,7 @@ export function ActivityScreens({
               onContinue={onContinue}
               continueLabel={continueLabel}
               onNavigateToPractice={onNavigateToPractice}
+              onScrollDockVisibility={onScrollDockVisibility}
             />
           </Suspense>
         </AnimatedActivityScreen>

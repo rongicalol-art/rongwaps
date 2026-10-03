@@ -130,7 +130,7 @@ export const ReviewHubCard = memo(function ReviewHubCard({
         </div>
       ) : (
         <div className="mt-5 flex items-center gap-3 rounded-control border border-feedback-success-edge/30 bg-feedback-success-surface p-3.5 text-feedback-success-edge">
-          <AppIcon name="check" size={22} className="shrink-0" />
+          <AppIcon name="statusCheck" size={24} className="shrink-0" />
           <div className="min-w-0 text-left">
             <p className="text-sm font-black">All caught up for today!</p>
             <p className="text-xs font-bold text-feedback-success-edge/80">

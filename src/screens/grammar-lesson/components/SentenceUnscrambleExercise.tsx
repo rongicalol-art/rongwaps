@@ -53,7 +53,7 @@ export function SentenceUnscrambleExercise({
 
   return (
     <section aria-labelledby="unscramble-heading">
-      <div className="mb-7 flex items-start justify-between gap-4 border-b border-ui-divider pb-6">
+      <div className="mb-7 flex items-start justify-between gap-4 border-b-2 border-ui-divider pb-6">
         <div>
           <p className="mb-2 text-[11px] font-black uppercase tracking-[0.06em] text-feedback-warning">
             Build it
@@ -127,7 +127,7 @@ export function SentenceUnscrambleExercise({
             </div>
           )}
 
-          <div className="mt-5 flex min-h-12 flex-wrap gap-2 border-t border-ui-divider pt-4" aria-label="Scrambled tiles">
+          <div className="mt-5 flex min-h-12 flex-wrap gap-2 border-t-2 border-ui-divider pt-4" aria-label="Scrambled tiles">
             {exercise.availableTiles.map((tile) => (
               <ActionButton
                 key={tile.id}
@@ -164,7 +164,7 @@ export function SentenceUnscrambleExercise({
             <div className="flex flex-col gap-4 rounded-feature border-b-[length:var(--depth-md)] border-feedback-success bg-ui-surface p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
               <div>
                 <p className="flex items-center gap-2 font-black text-feedback-success">
-                  <AppIcon name="check" size={21} /> Exercise complete
+                  <AppIcon name="statusCheck" size={22} className="shrink-0" /> Exercise complete
                 </p>
                 <p className="mt-1 text-xs font-bold text-feedback-success">{completionMessage}</p>
               </div>

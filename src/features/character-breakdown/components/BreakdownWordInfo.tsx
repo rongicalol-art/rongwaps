@@ -10,6 +10,13 @@ import { ExtendedDefinitions } from './ExtendedDefinitions';
 import { SummaryQuickActions } from './SummaryQuickActions';
 import { UsedAsComponentSection } from './breakdown/UsedAsComponentSection';
 import { RelatedWordsSection } from './breakdown/RelatedWordsSection';
+import { useCharDictionaryEntry } from '../hooks/useCharDictionaryEntry';
+import {
+  sanitizeDictionaryDefinitions,
+  isPureVariantDefinition,
+  extractCedictReference,
+} from '../../../utils/dictionaryDefinitions';
+import { useAppStore } from '../../../store/useAppStore';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
 
@@ -48,6 +55,26 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
   isUsedAsLoading = false,
   isRelatedLoading = false,
 }) => {
+  const isReferenceDefinition = Boolean(
+    charData?.definition &&
+    (isPureVariantDefinition(charData.definition) || extractCedictReference(charData.definition)),
+  );
+  const dictEntries = useCharDictionaryEntry((!charData?.definition || isReferenceDefinition) ? activeChar : undefined);
+  const dictEntry = dictEntries[0];
+  const dictDef = Array.isArray(dictEntry?.definitions)
+    ? dictEntry.definitions[0]
+    : typeof dictEntry?.definitions === 'string'
+      ? dictEntry.definitions
+      : undefined;
+  const pinyin = charData?.pinyin?.[0] || charCardsInfo?.[0]?.pinyin || dictEntry?.pinyin?.[0];
+  const rawMeaning = (isReferenceDefinition && dictDef)
+    ? dictDef
+    : (charData?.definition || charCardsInfo?.[0]?.back || dictDef);
+  const characterPreference = useAppStore((state) => state.characterPreference);
+  const meaning = rawMeaning
+    ? sanitizeDictionaryDefinitions(rawMeaning, { preferredScript: characterPreference }).definitions[0] || rawMeaning
+    : undefined;
+
   return (
     <div className="flex h-full w-full flex-col gap-7">
       {/* Top Character Area */}
@@ -58,7 +85,7 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
            {/* Big Character focus */}
            <div className="flex flex-col items-center">
              <div className="mb-3 text-[14px] font-extrabold tracking-[0.2em] text-ui-muted sm:text-[16px]">
-               {charData?.pinyin?.[0] ? numberToToneMarks(charData.pinyin[0]) : ' '}
+               {pinyin ? numberToToneMarks(pinyin) : ' '}
              </div>
              <div className="mb-5">
                <StrokeOrderBox char={activeChar} size={140} accentHex={activeBook.accentHex || DESIGN_TOKENS.color.brand.primary} />
@@ -73,7 +100,7 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
                    Dictionary
                  </div>
                  <p className="w-full text-left text-[17px] font-bold leading-snug text-ui-ink sm:text-[19px]">
-                   {charData?.definition || charCardsInfo?.[0]?.back || 'Loading definition...'}
+                   {meaning || 'No definition recorded'}
                  </p>
              </div>
 
@@ -82,7 +109,7 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
                 if (!charCardsInfo || charCardsInfo.length === 0) return null;
 
                 return (
-                  <div className="flex w-full flex-col items-start gap-2 border-t border-ui-divider/70 pt-3 text-left">
+                  <div className="flex w-full flex-col items-start gap-2 border-t-2 border-ui-divider pt-3 text-left">
                      <div className="mb-1 text-[11px] font-extrabold uppercase tracking-widest text-ui-muted">
                        In Your Course
                      </div>

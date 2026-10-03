@@ -70,7 +70,7 @@ export function RelatedWordsListModal({ initialChar, relatedWords, activeBook, o
                                 setDictionaryWord(card.front);
                               }
                             }}
-                            className={`group flex w-full flex-row items-center gap-4 bg-ui-surface px-4 py-3 text-left transition-colors hover:bg-ui-surface-hover active:bg-ui-hover focus-ring focus-visible:ring-inset ${!isLast ? 'border-b border-ui-divider/70' : ''}`}
+                            className={`group flex w-full flex-row items-center gap-4 bg-ui-surface px-4 py-3 text-left transition-colors hover:bg-ui-surface-hover active:bg-ui-hover focus-ring focus-visible:ring-inset ${!isLast ? 'border-b-2 border-ui-divider' : ''}`}
                           >
                             <span className={`text-2xl sm:text-3xl leading-none font-chinese pt-1 ${activeBook.accent} transition-all shrink-0`}>
                               {card.front}

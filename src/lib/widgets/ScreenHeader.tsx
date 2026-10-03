@@ -14,7 +14,7 @@ import { visibleProgressWidth } from '../../utils/progress';
  * - `window` — the canonical sticky canvas fade for full-viewport study
  *             windows (Grammar, Reader, practice activities). Its row carries a
  *             small inner inset that matches those windows' content offsets.
- * - `panel` — the same fade with a flush row, for workspace-bounded detail
+ * - `panel` — the same fade and row padding, for workspace-bounded detail
  *             windows (word detail, character breakdown).
  * - `frosted` — tone-matched translucent bar with a backdrop blur, the
  *             universal 2px `ui-border` edge, and the standard window-header
@@ -90,7 +90,7 @@ export function ScreenHeader({
   rightAction,
   accentBgClassName = "bg-brand-primary",
   className = "",
-  maxWidth = '2xl',
+  maxWidth = 'none',
   progressSize = 'default',
   controlSize = 'lg',
   variant = 'bar',
@@ -311,8 +311,7 @@ export function ScreenHeader({
         )}
       >
         <header className={cn(
-          "relative z-10 w-full shrink-0 pointer-events-auto px-4 sm:px-6 lg:px-10",
-          variant === 'window' && "py-1",
+          "relative z-10 w-full shrink-0 pointer-events-auto px-4 py-1 sm:px-6 lg:px-10",
         )}>
           {headerRow}
         </header>

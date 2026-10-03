@@ -50,7 +50,7 @@ export function WritingDock({
                 }
                 className="flex shrink-0 items-center justify-start overflow-hidden"
               >
-                <div className="flex w-[48px] shrink-0 items-center justify-center pr-1.5">
+                <div className="flex w-12 shrink-0 items-center justify-center pr-1.5">
                   <WritingDockButton
                     icon="back"
                     label="Previous character"

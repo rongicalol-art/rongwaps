@@ -220,7 +220,7 @@ export function DialogBody({ className, children }: { className?: string; childr
 }
 
 export function DialogFooter({ className, children }: { className?: string; children: ReactNode }) {
-  return <div className={cn('pt-4 mt-2 border-t border-ui-divider/60 shrink-0', className)}>{children}</div>;
+  return <div className={cn('pt-4 mt-2 border-t-2 border-ui-divider shrink-0', className)}>{children}</div>;
 }
 
 export interface DialogProps {

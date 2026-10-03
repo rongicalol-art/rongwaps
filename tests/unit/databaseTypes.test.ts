@@ -21,10 +21,6 @@ const MIGRATIONS_DIR = resolve(process.cwd(), 'supabase', 'migrations');
 
 /** Tables the migrations leave in `public` (post-drops). Keep in sync with the migrations. */
 const EXPECTED_TABLES = [
-  'book_vocabulary',
-  'character_breakdowns_v2',
-  'dictionary',
-  'mnemonics',
   'user_card_progress',
   'user_daily_progress',
   'user_flashcards',
@@ -40,7 +36,6 @@ const EXPECTED_FUNCTIONS = [
   'handle_new_user',
   'replace_learned_cards',
   'reset_user_learning_progress',
-  'search_dictionary',
   'upsert_card_progress',
   'upsert_daily_progress',
 ] as const;

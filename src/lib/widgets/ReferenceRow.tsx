@@ -13,6 +13,7 @@ import { Skeleton } from './Skeleton';
 export function ReferenceRow({
   glyph,
   accentClassName,
+  glyphClassName,
   primary,
   secondary,
   loading = false,
@@ -22,6 +23,7 @@ export function ReferenceRow({
 }: {
   glyph: string;
   accentClassName?: string;
+  glyphClassName?: string;
   primary?: string;
   secondary?: string;
   loading?: boolean;
@@ -29,6 +31,9 @@ export function ReferenceRow({
   onClick: () => void;
   ariaLabel: string;
 }) {
+  const isSingleChar = Array.from(glyph).length <= 1;
+  const defaultWidthClass = isSingleChar ? 'w-8 min-w-8' : 'min-w-[3.75rem]';
+
   return (
     <button
       type="button"
@@ -37,7 +42,7 @@ export function ReferenceRow({
       className="group flex min-h-[54px] w-full items-center gap-3 rounded-compact px-2 py-2 text-left transition-colors hover:bg-ui-hover focus-visible:z-10 focus-ring"
     >
       <span
-        className={`min-w-[3.75rem] shrink-0 font-chinese text-2xl leading-none ${accentClassName ?? 'text-ui-ink-strong'}`}
+        className={`${glyphClassName ?? defaultWidthClass} shrink-0 font-chinese text-2xl leading-none ${accentClassName ?? 'text-ui-ink-strong'}`}
       >
         {glyph}
       </span>

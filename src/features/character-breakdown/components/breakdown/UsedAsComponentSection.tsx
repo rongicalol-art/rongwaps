@@ -55,7 +55,7 @@ export const UsedAsComponentSection: React.FC<UsedAsComponentSectionProps> = ({
           >
             <div className="flex w-full flex-col overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="flex w-full flex-row items-center gap-4 border-b border-ui-divider/70 bg-ui-surface px-4 py-3 last:border-0">
+                <div key={i} className="flex w-full flex-row items-center gap-4 border-b-2 border-ui-divider bg-ui-surface px-4 py-3 last:border-0">
                   <Skeleton className="w-[32px] h-[32px] rounded-compact shrink-0" />
                   <div className="flex flex-col flex-1 gap-1.5 justify-center min-w-0">
                     <div className="flex flex-row items-center justify-between gap-2 w-full">

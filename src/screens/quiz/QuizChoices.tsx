@@ -174,8 +174,8 @@ export const QuizChoices: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue,
   });
   const isNonCurriculum = sessionKey.includes('review') || sessionKey.includes('library');
   const partSegments = useMemo(
-    () => (isShuffled || isNonCurriculum ? [] : buildPracticePartSegments(activeCards)),
-    [activeCards, isNonCurriculum, isShuffled],
+    () => (isNonCurriculum ? [] : buildPracticePartSegments(activeCards)),
+    [activeCards, isNonCurriculum],
   );
 
   usePracticeHeaderRegistration({

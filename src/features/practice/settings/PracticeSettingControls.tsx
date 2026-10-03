@@ -41,7 +41,7 @@ export function SettingsControlList({ className, children }: React.HTMLAttribute
 }
 
 /** Base row: transparent on the surface card, kept apart by an inset bottom hairline. */
-const rowClassName = 'w-full border-b border-ui-divider/70 last:border-b-0';
+const rowClassName = 'w-full border-b-2 border-ui-divider last:border-b-0';
 
 export interface SettingsToggleRowProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   checked: boolean;
@@ -58,8 +58,8 @@ export function SettingsToggleRow({ checked, label, description, disabled, class
       disabled={disabled}
       className={cn(
         rowClassName,
-        'flex min-h-11 items-center justify-between gap-4 px-4 py-2 text-left transition-colors hover:bg-ui-surface-hover focus-ring-inline focus-visible:bg-ui-surface-hover focus-visible:ring-inset',
-        disabled && 'cursor-not-allowed opacity-50 hover:bg-ui-surface focus-visible:bg-ui-surface focus-visible:ring-0',
+        'flex min-h-12 items-center justify-between gap-4 rounded-control px-2 py-2.5 text-left transition-colors hover:bg-ui-hover/60 focus-ring-inline focus-visible:bg-ui-hover/60 focus-visible:ring-inset',
+        disabled && 'cursor-not-allowed opacity-50 hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0',
         className,
       )}
       {...props}

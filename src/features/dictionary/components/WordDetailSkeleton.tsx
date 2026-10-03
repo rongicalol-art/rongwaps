@@ -15,14 +15,14 @@ export function WordDetailSkeleton() {
         </div>
 
         {/* Quick Actions Skeleton */}
-        <div className="border-t border-ui-divider/70 px-4 py-3 sm:px-6 flex items-center gap-3">
+        <div className="border-t-2 border-ui-divider px-4 py-3 sm:px-6 flex items-center gap-3">
           <Skeleton className="h-10 w-10 rounded-full shrink-0" />
           <Skeleton className="h-10 w-10 rounded-full shrink-0" />
           <Skeleton className="h-10 w-10 rounded-full shrink-0" />
         </div>
 
         {/* Extended Definitions Skeleton */}
-        <div className="border-t border-ui-divider/70 px-4 py-4 sm:px-6 flex flex-col gap-2.5">
+        <div className="border-t-2 border-ui-divider px-4 py-4 sm:px-6 flex flex-col gap-2.5">
           <Skeleton className="h-4 w-32" />
           <Skeleton className="h-4 w-full max-w-xl" />
           <Skeleton className="h-4 w-2/3" />
@@ -55,7 +55,7 @@ export function WordDetailSkeleton() {
               <Skeleton className="h-5 w-4/5" />
               <Skeleton className="h-3.5 w-1/2" />
             </div>
-            <div className="flex flex-col gap-2 pt-2 border-t border-ui-divider/50">
+            <div className="flex flex-col gap-2 pt-2 border-t-2 border-ui-divider">
               <Skeleton className="h-5 w-3/4" />
               <Skeleton className="h-3.5 w-2/5" />
             </div>
@@ -67,7 +67,7 @@ export function WordDetailSkeleton() {
           {/* Characters Card Skeleton */}
           <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6 flex flex-col gap-3">
             <Skeleton className="h-4 w-24" />
-            <div className="mt-1 divide-y divide-ui-divider/40">
+            <div className="mt-1 divide-y-2 divide-ui-divider">
               {Array.from({ length: 2 }).map((_, i) => (
                 <div key={i} className="flex items-center gap-3.5 py-3">
                   <Skeleton className="h-10 w-10 rounded-compact shrink-0" />
@@ -83,7 +83,7 @@ export function WordDetailSkeleton() {
           {/* Related Words Card Skeleton */}
           <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6 flex flex-col gap-3">
             <Skeleton className="h-4 w-28" />
-            <div className="mt-1 divide-y divide-ui-divider/40">
+            <div className="mt-1 divide-y-2 divide-ui-divider">
               {Array.from({ length: 3 }).map((_, i) => (
                 <div key={i} className="flex items-center gap-3.5 py-3">
                   <Skeleton className="h-10 w-10 rounded-compact shrink-0" />

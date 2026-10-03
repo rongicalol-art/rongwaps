@@ -50,15 +50,7 @@ const paidApiLimiter = rateLimit({
   message: { error: "Too many requests. Try again later." },
 });
 
-const audioProxyLimiter = rateLimit({
-  windowMs: 60 * 1000,
-  limit: 1200, // High capacity for cohort study sessions & audio preloading (1200 req/min per IP)
-  standardHeaders: true,
-  legacyHeaders: false,
-  message: { error: "Too many audio requests. Try again later." },
-});
-
-// In-memory audio proxy cache for up to 1,000 files (~10-15 MB RAM)
+// In-memory TTS audio cache for up to 1,000 files (~10-15 MB RAM)
 interface CachedAudio {
   buffer: Buffer;
   contentType: string;
@@ -67,7 +59,6 @@ interface CachedAudio {
 
 const AUDIO_CACHE_MAX_ENTRIES = 1000;
 const audioMemoryCache = new Map<string, CachedAudio>();
-const audioInFlightFetches = new Map<string, Promise<CachedAudio | null>>();
 
 function setInAudioMemoryCache(key: string, item: CachedAudio) {
   if (audioMemoryCache.size >= AUDIO_CACHE_MAX_ENTRIES) {
@@ -137,76 +128,10 @@ function sendAudioBuffer(
   return res.send(buffer.subarray(start, end + 1));
 }
 
-// ─── Audio proxy endpoint (bypasses CORS for Safari) ──────────────────
-// GET /api/audio/:filename — downloads from Supabase Storage, caches in RAM, and streams to client
-app.get("/api/audio/*", audioProxyLimiter, async (req: express.Request, res: express.Response) => {
-  try {
-    const fileName = req.params[0];
-    if (!fileName) {
-      return res.status(400).json({ error: "Missing filename" });
-    }
-
-    // Path traversal protection: only allow safe filename characters and forbid ../ segments.
-    if (fileName.includes("..") || fileName.includes("/") || fileName.includes("\\") || !/^[\w.-]+$/.test(fileName)) {
-      return res.status(400).json({ error: "Invalid filename" });
-    }
-
-    // 1. Check in-memory cache
-    let cached = audioMemoryCache.get(fileName);
-
-    // 2. If not in cache, fetch with in-flight deduplication
-    if (!cached) {
-      let inFlight = audioInFlightFetches.get(fileName);
-      if (!inFlight) {
-        inFlight = (async () => {
-          try {
-            const { data, error } = await supabase.storage.from("vocabulary-audio").download(fileName);
-            if (error || !data) {
-              console.warn(`Audio proxy: file not found: ${fileName}`, error?.message);
-              return null;
-            }
-
-            const buffer = Buffer.from(await data.arrayBuffer());
-            const ext = fileName.split(".").pop()?.toLowerCase();
-            const mimeMap: Record<string, string> = {
-              mp3: "audio/mpeg",
-              wav: "audio/wav",
-              ogg: "audio/ogg",
-              m4a: "audio/mp4",
-            };
-            const contentType = mimeMap[ext || ""] || "audio/mpeg";
-            const etag = `"${fileName}-${buffer.length}"`;
-
-            const item: CachedAudio = { buffer, contentType, etag };
-            setInAudioMemoryCache(fileName, item);
-            return item;
-          } catch (fetchErr) {
-            console.error(`Audio proxy download error for ${fileName}:`, fetchErr);
-            return null;
-          } finally {
-            audioInFlightFetches.delete(fileName);
-          }
-        })();
-        audioInFlightFetches.set(fileName, inFlight);
-      }
-      cached = (await inFlight) || undefined;
-    }
-
-    if (!cached) {
-      return res.status(404).json({ error: "Audio file not found" });
-    }
-
-    sendAudioBuffer(req, res, cached.buffer, cached.contentType, cached.etag);
-  } catch (err: unknown) {
-    console.error("Audio proxy error:", err);
-    res.status(500).json({ error: "Failed to fetch audio" });
-  }
-});
-
 // ─── Neural TTS endpoint (Microsoft Edge Read Aloud) ──────────────────
 // POST /api/tts { text, voice? }
 // Synthesizes natural neural TTS server-side, caches MP3 in Supabase Storage,
-// and streams audio/mpeg back. Fallback: GET /api/audio/:cacheKey serves cache.
+// and streams audio/mpeg back. Fallback: GET /api/tts-cache/:text serves cache.
 
 const TTS_AUDIO_BUCKET = "vocabulary-audio";
 const TTS_CACHE_PREFIX = "tts/";

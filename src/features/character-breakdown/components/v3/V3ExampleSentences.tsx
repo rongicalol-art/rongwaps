@@ -47,17 +47,17 @@ export function V3ExampleSentences({ character }: { character: string }) {
             {visible.map((sentence, index) => (
               <li
                 key={`${sentence.chinese}-${index}`}
-                className={`flex flex-col gap-1 border-ui-divider py-3 first:pt-0 last:pb-0 ${index < visible.length - 1 ? 'border-b' : ''}`}
+                className={`flex flex-col gap-1 border-ui-divider py-3 first:pt-0 last:pb-0 ${index < visible.length - 1 ? 'border-b-2' : ''}`}
               >
-                <div className="flex items-baseline justify-between gap-3">
+                <div className="w-full flow-root">
+                  <span className="float-right ml-3 mb-1 inline-flex items-center gap-1 pt-1 text-[9px] font-extrabold text-ui-muted select-none">
+                    B{sentence.sourceBookId} · L{sentence.sourceLessonId}
+                  </span>
                   <SmartSentence
                     text={sentence.chinese}
                     highlightTerms={[character]}
                     className="font-chinese text-xl font-bold leading-snug text-ui-ink sm:text-2xl"
                   />
-                  <span className="shrink-0 text-[9px] font-extrabold text-ui-muted">
-                    B{sentence.sourceBookId} · L{sentence.sourceLessonId}
-                  </span>
                 </div>
                 {!hideExamplePinyin && (
                   <span className="text-[13px] font-extrabold leading-tight text-brand-primary sm:text-sm">

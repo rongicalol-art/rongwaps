@@ -1,8 +1,9 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { SAMPLE_BOOKS } from '../../../../data/books';
 import { Skeleton } from '../../../../lib/widgets';
 import { useCharBreakdownState } from '../../../../hooks/useCharBreakdown';
 import { numberToToneMarks } from '../../../../utils/pinyin';
+import { isPureVariantDefinition } from '../../../../utils/dictionaryDefinitions';
 import { CharacterGlyph } from './CharacterGlyph';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
@@ -25,16 +26,20 @@ export const UsedAsCompactItem: React.FC<UsedAsCompactItemProps> = ({
   const { data, isLoading } = useCharBreakdownState(c);
   const pinyin = data?.pinyin?.[0] ? numberToToneMarks(data.pinyin[0]) : '';
   const definition = data?.definition?.split(';')[0]?.trim() || '';
+
+  const itemBookAccent = activeBook.accent;
+
+  // Skip characters without definitions or characters that are pure variants
+  if (!isLoading && (!definition || isPureVariantDefinition(definition))) {
+    return null;
+  }
+
   const hasMetadata = Boolean(pinyin || definition);
-  
-  const itemBookAccent = useMemo(() => {
-    return activeBook.accent;
-  }, [activeBook]);
 
   return (
     <button
       onClick={() => setDictionaryWord(c)}
-      className={`group flex min-h-[68px] w-full flex-row items-center gap-4 bg-ui-surface px-4 py-3 transition-colors hover:bg-ui-surface-hover active:bg-ui-hover focus-ring focus-visible:ring-inset ${!isLast ? 'border-b border-ui-divider' : ''}`}
+      className={`group flex min-h-[68px] w-full flex-row items-center gap-4 bg-ui-surface px-4 py-3 transition-colors hover:bg-ui-surface-hover active:bg-ui-hover focus-ring focus-visible:ring-inset ${!isLast ? 'border-b-2 border-ui-divider' : ''}`}
     >
       <CharacterGlyph character={c} className={`shrink-0 text-2xl leading-none sm:text-3xl ${itemBookAccent}`} />
       <div className="flex min-w-0 flex-1 flex-col items-start justify-center overflow-hidden text-left">

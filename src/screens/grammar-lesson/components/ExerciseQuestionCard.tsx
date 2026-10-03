@@ -59,7 +59,7 @@ export function ExerciseQuestionCard({
 
   return (
     <article className={cn(
-      'border-b border-ui-divider bg-ui-surface px-2 py-5 last:border-b-0 sm:px-3 sm:py-7',
+      'border-b-2 border-ui-divider bg-ui-surface px-2 py-5 last:border-b-0 sm:px-3 sm:py-7',
       hasWrongAnswer && 'bg-feedback-danger-surface/35',
     )}>
       <p className="mb-3 text-[11px] font-black text-brand-primary">Try {question.number}</p>
@@ -122,7 +122,7 @@ export function ExerciseQuestionCard({
         })}
       </div>
 
-      <div className="mt-4 flex min-h-10 flex-wrap gap-2 border-t border-ui-divider pt-3" aria-label={`Answer tiles for question ${question.number}`}>
+      <div className="mt-4 flex min-h-10 flex-wrap gap-2 border-t-2 border-ui-divider pt-3" aria-label={`Answer tiles for question ${question.number}`}>
         {availableTiles.length > 0 ? availableTiles.map((tile) => {
           const isSelected = selectedTileId === tile.id;
           const tileText = textFor(tile.traditional, tile.simplified);

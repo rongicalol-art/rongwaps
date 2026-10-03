@@ -2,6 +2,7 @@ import { createContext, useRef, type ReactNode, type RefObject } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { cn } from '../../utils/cn';
 import { useDismiss } from '../../hooks/useDismiss';
+import { useFloatingDockSleep } from '../../hooks/useFloatingDockSleep';
 
 interface FloatingDockContextValue {
   visible: boolean;
@@ -39,13 +40,13 @@ export function FloatingDockRoot({
       <AnimatePresence>
         {visible && (
           <motion.div
-            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 24, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 16, scale: 0.985 }}
+            initial={reduceMotion ? { opacity: 0 } : { y: 96 }}
+            animate={reduceMotion ? { opacity: 1, y: 0 } : { y: 0 }}
+            exit={reduceMotion ? { opacity: 0 } : { y: 96 }}
             transition={
               reduceMotion
                 ? { duration: 0 }
-                : { type: 'spring', stiffness: 360, damping: 32, mass: 0.72 }
+                : { type: 'spring', stiffness: 380, damping: 34, mass: 0.8 }
             }
             className={cn(
               'pointer-events-none inset-x-0 bottom-dock-safe flex justify-center px-4',
@@ -65,18 +66,33 @@ export function FloatingDockRoot({
 export interface FloatingDockPillProps {
   maxWidth?: keyof typeof PILL_MAX_WIDTHS;
   className?: string;
+  sleepOnIdle?: boolean;
+  isLockedAwake?: boolean;
   children: ReactNode;
 }
 
 export function FloatingDockPill({
   maxWidth = 'md',
   className,
+  sleepOnIdle = true,
+  isLockedAwake = false,
   children,
 }: FloatingDockPillProps) {
+  const { dockRef, isAsleep, dockProps } = useFloatingDockSleep({
+    enabled: sleepOnIdle,
+    isLockedAwake,
+  });
+
   return (
     <div
+      ref={dockRef}
+      {...dockProps}
       className={cn(
         'pointer-events-auto relative flex w-full items-center justify-center rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-1.5 px-2.5 shadow-ambient-sm',
+        'transition-[opacity,box-shadow]',
+        isAsleep
+          ? 'opacity-20 shadow-none duration-300 ease-in-out'
+          : 'opacity-100 duration-200 ease-out',
         PILL_MAX_WIDTHS[maxWidth],
         className,
       )}

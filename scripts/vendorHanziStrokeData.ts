@@ -1,7 +1,5 @@
 import { mkdirSync, existsSync, copyFileSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { FLASHCARDS_DATA } from '../src/data/flashcards';
-
 const HANZI_RE = /[\u4E00-\u9FFF\u3400-\u4DBF\u{20000}-\u{2A6DF}]/u;
 const VOCAB_DIR = join(process.cwd(), 'public', 'data', 'vocabulary');
 const OUT_DIR = join(process.cwd(), 'public', 'hanzi-data');
@@ -25,23 +23,13 @@ function collectVocabularyChars(): Set<string> {
   return chars;
 }
 
-function collectFlashcardChars(): Set<string> {
-  const chars = new Set<string>();
-  for (const card of FLASHCARDS_DATA) {
-    for (const char of card.front) {
-      if (HANZI_RE.test(char)) chars.add(char);
-    }
-  }
-  return chars;
-}
-
 function main() {
   if (!existsSync(PACKAGE_DIR)) {
     console.error('hanzi-writer-data is not installed. Run: npm i -D hanzi-writer-data');
     process.exit(1);
   }
 
-  const chars = new Set<string>([...collectVocabularyChars(), ...collectFlashcardChars()]);
+  const chars = collectVocabularyChars();
   mkdirSync(OUT_DIR, { recursive: true });
 
   let vendored = 0;

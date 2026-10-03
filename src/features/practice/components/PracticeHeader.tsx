@@ -11,6 +11,7 @@ import type { PracticeSettingsScreenProps } from './PracticeSettingsScreen';
 import { PracticeSettingsScreen } from './PracticeSettingsScreen';
 import type { PracticeHeaderActions } from '../../../types/models';
 import { useAppStore } from '../../../store/useAppStore';
+import { SAMPLE_BOOKS } from '../../../data/books';
 
 interface PracticeHeaderProps
   extends Omit<ScreenHeaderProps, 'rightAction' | 'variant' | 'tone'>,
@@ -18,6 +19,7 @@ interface PracticeHeaderProps
   settings: Omit<PracticeSettingsScreenProps, 'isOpen' | 'onClose' | 'className'>;
   /** Flow (auto-advance) is only available in flashcards sessions. */
   showFlow?: boolean;
+  activeBookId?: number;
 }
 
 export function PracticeHeader({
@@ -31,12 +33,16 @@ export function PracticeHeader({
   showFlow = true,
   currentIndex,
   totalCount,
-  maxWidth = '2xl',
+  maxWidth = 'none',
+  activeBookId: propActiveBookId,
   ...props
 }: PracticeHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const setActivityOverlayOpen = useAppStore((state) => state.setActivityOverlayOpen);
+  const storeActiveBookId = useAppStore((state) => state.activeBookId);
+  const activeBookId = propActiveBookId ?? storeActiveBookId;
+  const activeBook = SAMPLE_BOOKS.find((b) => b.id === activeBookId) || SAMPLE_BOOKS[0];
 
   useEffect(() => {
     if (flowStatus === 'playing') setIsMenuOpen(false);
@@ -83,10 +89,16 @@ export function PracticeHeader({
                     size="lg"
                     label="Session controls"
                     title="Practice controls"
+                    className={isMenuOpen ? 'bg-ui-hover' : undefined}
                     icon={(
                       <>
                         {isFlowActive && <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-feedback-success ring-2 ring-ui-surface animate-pulse" />}
-                        <AppIcon name="settings" size={25} />
+                        <AppIcon
+                          name="menu"
+                          size={24}
+                          color={activeBook.accentHex}
+                          className={activeBook.accent}
+                        />
                       </>
                     )}
                   />
@@ -119,6 +131,7 @@ export function PracticeHeader({
                   onClick={() => {
                     setIsMenuOpen(false);
                     onRestartClick?.();
+                    useAppStore.getState().showFeedbackToast('Restarted');
                   }}
                 >
                   Restart

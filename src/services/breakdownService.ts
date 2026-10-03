@@ -1,17 +1,14 @@
 import { debugLogger } from '../utils/debugLogger';
-import { supabase } from './supabaseClient';
 import { DBCharacterBreakdown } from '../types/database';
 import { breakdownCache, AppCache } from '../utils/cache';
-import { timeDataRequest } from '../utils/requestTiming';
 import { fetchBreakdownsFromPacks, fetchUsedAsFromPacks } from './contentPacks';
-
-const BREAKDOWN_COLUMNS = 'character,radical,pinyin,definition,decomposition,components_historical';
+import { getDictionaryEntries, getDictionaryEntriesBatch } from './dictionaryService';
 
 const pendingRequests = new Map<string, Promise<DBCharacterBreakdown | null>>();
 
 /**
- * Fetches a character breakdown from Supabase, utilizing an in-memory cache
- * to prevent duplicate network calls.
+ * Fetches a character breakdown pack-first, utilizing an in-memory cache
+ * to prevent duplicate network calls. Falls back to dictionary entries.
  * 
  * @param character - A single Chinese character (e.g., '好')
  * @returns The breakdown data, or null if not found/error.
@@ -29,12 +26,9 @@ export async function getCharacterBreakdown(character: string): Promise<DBCharac
     return pendingRequests.get(character)!;
   }
 
-  // Resolve the promise with an async IIFE instead of an externally assigned
-  // `resolve` variable: the awaited work starts immediately, so callers that
-  // race into the `pendingRequests` branch above share this exact promise,
-  // while the map entry is registered before any `finally` can delete it.
   const fetchPromise = (async (): Promise<DBCharacterBreakdown | null> => {
     try {
+      // 3. Static breakdown pack (IndexedDB-cached, zero network)
       const packedResults = await fetchBreakdownsFromPacks([character]);
       const packedData = packedResults[character];
       if (packedData) {
@@ -42,33 +36,33 @@ export async function getCharacterBreakdown(character: string): Promise<DBCharac
         return packedData;
       }
 
-      // 3. Query Supabase
-      const { data, error } = await timeDataRequest(
-        'character breakdown',
-        () => supabase
-          .from('character_breakdowns_v2')
-          .select(BREAKDOWN_COLUMNS)
-          .eq('character', character)
-          .limit(1)
-          .single(),
-      );
-
-      if (error) {
-        if (error.code !== 'PGRST116') { // PGRST116 = No rows found (which is fine, not a critical error)
-          debugLogger.error('Supabase', `Supabase error fetching breakdown for ${character}:`, error);
+      // 4. Fall back to dictionary if character is missing from breakdown dataset
+      const dictEntries = await getDictionaryEntries(character);
+      if (dictEntries && dictEntries.length > 0) {
+        const dict = dictEntries[0];
+        const pinyin = dict.pinyin?.[0]?.trim();
+        const firstDef = Array.isArray(dict.definitions)
+          ? dict.definitions[0]
+          : typeof dict.definitions === 'string'
+            ? dict.definitions
+            : null;
+        if (pinyin || firstDef) {
+          const fallbackData: DBCharacterBreakdown = {
+            character,
+            radical: null,
+            pinyin: pinyin ? [pinyin] : null,
+            definition: firstDef || null,
+            decomposition: null,
+            components_historical: null,
+          };
+          breakdownCache.set(character, fallbackData);
+          return fallbackData;
         }
-        return null;
-      }
-
-      // 4. Cache and return
-      if (data) {
-        breakdownCache.set(character, data);
-        return data;
       }
 
       return null;
     } catch (err) {
-      debugLogger.error('Supabase', `Unexpected error fetching breakdown for ${character}:`, err);
+      debugLogger.warn('Cache', `Unexpected error fetching breakdown for ${character}:`, err);
       return null;
     } finally {
       pendingRequests.delete(character);
@@ -102,69 +96,13 @@ export async function getCharactersUsingComponent(component: string): Promise<st
       return characters;
     }
   } catch (err) {
-    debugLogger.warn('Supabase', 'Used-as pack lookup failed; falling back to Supabase:', err);
+    debugLogger.warn('Cache', 'Used-as pack lookup failed:', err);
   }
 
-  try {
-    const results = new Set<string>();
-    const visited = new Set<string>([component]);
-    let currentLevel = [component];
-
-    // Limit search depth to 1 to prevent excessive queries and slow load times.
-    for (let depth = 0; depth < 1; depth++) {
-      if (currentLevel.length === 0) break;
-
-      // Group into batches of 30 items to keep OR queries within standard limits
-      const batches: string[][] = [];
-      for (let i = 0; i < currentLevel.length; i += 30) {
-        batches.push(currentLevel.slice(i, i + 30));
-      }
-
-      const nextLevel: string[] = [];
-
-      for (const batch of batches) {
-        const orFilter = batch.map(c => `decomposition.like.%${c}%`).join(',');
-        
-        const { data, error } = await timeDataRequest(
-          `component usage (${batch.length} components)`,
-          () => supabase
-            .from('character_breakdowns_v2')
-            .select('character')
-            .or(orFilter)
-            .limit(2000),
-        );
-
-        if (error) {
-          debugLogger.error('Supabase', "Error in getCharactersUsingComponent batch:", error);
-          continue;
-        }
-
-        if (data) {
-          for (const row of data) {
-            const char = row.character;
-            if (!visited.has(char)) {
-              visited.add(char);
-              results.add(char);
-              nextLevel.push(char);
-            }
-          }
-        }
-      }
-
-      currentLevel = nextLevel;
-    }
-
-    const finalResults = Array.from(results);
-    usedAsCache.set(component, finalResults);
-    return finalResults;
-  } catch (err) {
-    debugLogger.error('Supabase', "Error in getCharactersUsingComponent recursive lookup:", err);
-    return [];
-  }
+  return [];
 }
 
 export async function getMultipleBreakdowns(characters: string[]): Promise<Record<string, DBCharacterBreakdown>> {
-
   const results: Record<string, DBCharacterBreakdown> = {};
   const missingSet = new Set<string>();
 
@@ -184,7 +122,7 @@ export async function getMultipleBreakdowns(characters: string[]): Promise<Recor
     return results; // Everything was cached
   }
 
-  // Fetch only the missing characters in concurrent chunks
+  // Fetch only the missing characters from static packs
   try {
     const packedResults = await fetchBreakdownsFromPacks(missingCharacters);
     for (const [character, breakdown] of Object.entries(packedResults)) {
@@ -192,42 +130,37 @@ export async function getMultipleBreakdowns(characters: string[]): Promise<Recor
       breakdownCache.set(character, breakdown);
     }
 
-    const databaseCharacters = missingCharacters.filter((character) => !packedResults[character]);
-    if (databaseCharacters.length === 0) return results;
-
-    const chunkSize = 100;
-    const fetchPromises = [];
-    
-    for (let i = 0; i < databaseCharacters.length; i += chunkSize) {
-      const chunk = databaseCharacters.slice(i, i + chunkSize);
-      fetchPromises.push(
-        timeDataRequest(
-          `breakdown batch (${chunk.length} characters)`,
-          () => supabase
-            .from('character_breakdowns_v2')
-            .select(BREAKDOWN_COLUMNS)
-            .in('character', chunk),
-        )
-      );
-    }
-    
-    const resultsArray = await Promise.all(fetchPromises);
-    
-    for (const res of resultsArray) {
-      if (res.error) {
-        debugLogger.error('Supabase', 'Error fetching multiple breakdowns chunk:', res.error);
-        continue;
-      }
-      if (res.data && Array.isArray(res.data)) {
-        res.data.forEach(item => {
-          const charData = item;
-          results[charData.character] = charData;
-          breakdownCache.set(charData.character, charData);
-        });
+    // Fall back to dictionary for any characters missing from breakdown dataset
+    const stillMissing = missingCharacters.filter((character) => !results[character]);
+    if (stillMissing.length > 0) {
+      try {
+        const dictEntries = await getDictionaryEntriesBatch(stillMissing);
+        for (const [char, dict] of dictEntries) {
+          const pinyin = dict.pinyin?.[0]?.trim();
+          const firstDef = Array.isArray(dict.definitions)
+            ? dict.definitions[0]
+            : typeof dict.definitions === 'string'
+              ? dict.definitions
+              : null;
+          if (pinyin || firstDef) {
+            const fallbackData: DBCharacterBreakdown = {
+              character: char,
+              radical: null,
+              pinyin: pinyin ? [pinyin] : null,
+              definition: firstDef || null,
+              decomposition: null,
+              components_historical: null,
+            };
+            results[char] = fallbackData;
+            breakdownCache.set(char, fallbackData);
+          }
+        }
+      } catch (err) {
+        debugLogger.warn('Cache', 'Dictionary fallback failed in getMultipleBreakdowns:', err);
       }
     }
   } catch (err) {
-    debugLogger.error('Supabase', 'Unexpected error fetching multiple breakdowns:', err);
+    debugLogger.warn('Cache', 'Unexpected error fetching multiple breakdowns:', err);
   }
 
   return results;

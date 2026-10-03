@@ -103,8 +103,8 @@ export function GrammarLessonScreen({
   const characterPreference = useAppStore((state) => state.characterPreference);
   const setCharacterPreference = useAppStore((state) => state.setCharacterPreference);
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
-  const showPinyin = useAppStore((state) => state.showPinyin);
-  const showTranslation = useAppStore((state) => state.showTranslation);
+  const [showPinyin, setShowPinyin] = useState(false);
+  const [showTranslation, setShowTranslation] = useState(true);
   const characterFont = useAppStore((state) => state.characterFont);
   const updatePreferences = useAppStore((state) => state.updatePreferences);
   const markPartStarted = useAppStore((state) => state.markPartStarted);
@@ -198,8 +198,8 @@ export function GrammarLessonScreen({
               showPinyin={showPinyin}
               showTranslation={showTranslation}
               onClose={closeLesson}
-              onTogglePinyin={() => updatePreferences({ showPinyin: !showPinyin })}
-              onToggleTranslation={() => updatePreferences({ showTranslation: !showTranslation })}
+              onTogglePinyin={() => setShowPinyin((prev) => !prev)}
+              onToggleTranslation={() => setShowTranslation((prev) => !prev)}
               onCharacterPreferenceChange={setCharacterPreference}
               onCharacterFontChange={(font) => updatePreferences({ characterFont: font })}
               currentStepIndex={currentStepIndex}

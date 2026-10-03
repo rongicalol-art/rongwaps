@@ -49,7 +49,7 @@ export function GrammarConfusionPanel({
             <div className="mt-4 flex flex-col gap-2.5">
               {/* Wrong form */}
               <div className="flex items-center gap-3 rounded-control bg-ui-canvas/60 px-4 py-3">
-                <AppIcon name="close" size={18} className="shrink-0 text-feedback-danger" />
+                <AppIcon name="statusCross" size={20} className="shrink-0" />
                 <span className="font-chinese text-lg font-black leading-tight text-ui-muted line-through decoration-feedback-danger/80 decoration-2 sm:text-xl">
                   {wrongText}
                 </span>
@@ -57,7 +57,7 @@ export function GrammarConfusionPanel({
 
               {/* Right form */}
               <div className="flex items-start gap-3 rounded-control bg-ui-canvas/60 px-4 py-3">
-                <AppIcon name="check" size={18} className="shrink-0 text-feedback-success-edge mt-0.5" />
+                <AppIcon name="statusCheck" size={20} className="shrink-0 mt-0.5" />
                 <div className="min-w-0 flex-1">
                   <InteractiveGrammarSentence
                     words={item.right.words ?? []}

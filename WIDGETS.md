@@ -41,9 +41,10 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
 
 ## Icons, flags, and branded presentation
 
-- **AppIcon** — semantic gateway to the approved Phosphor icon family. Add a stable semantic name here instead of importing a competing icon directly. Three glyphs are drawn in-house in the same soft voice (`audio`/`pronounce` speaker, gold-filled `hint` study bulb, blue-filled `settings`/`appSettings` gear) with baked brand colors — flat, no outlines, Duolingo-like, with no active-state recolor or chip. Everything else is Phosphor. Decorative by default (`aria-hidden`), because it sits beside visible text in nearly every call site; pass `title` or `aria-label` when the icon itself carries the meaning, which promotes it to an accessible `role="img"`.
+- **AppIcon** — semantic gateway to the approved Phosphor icon family. Add a stable semantic name here instead of importing a competing icon directly. In-house glyphs are drawn in the same soft voice: `audio`/`pronounce` speaker, gold-filled `hint` study bulb, blue-filled `settings`/`appSettings` gear, and Duolingo-style 3D status badges (`statusCheck`, `statusCross`, `statusShuffle`, `statusUnshuffled`, `statusRestart`) with baked semantic tokens — flat, smooth, rounded, with tactile bottom rims. Everything else is Phosphor. Decorative by default (`aria-hidden`), because it sits beside visible text in nearly every call site; pass `title` or `aria-label` when the icon itself carries the meaning, which promotes it to an accessible `role="img"`.
   ```tsx
   <AppIcon name="search" size={18} />
+  <AppIcon name="statusCheck" size={20} />
   <AppIcon name="lock" title="Locked" />
   ```
 - **BrandWordmark** — app wordmark lockup: the yellow 文 brand tile plus owner/subject wordmark text. Used by the shell side navigation and the full-screen sign-in window. Optionally override the display `name` or pass `collapsed` to render only the brand tile.
@@ -155,10 +156,10 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
   ```tsx
   <ErrorBoundary fallbackClassName="min-h-[100dvh] p-8"><App /></ErrorBoundary>
   ```
-- **FloatingDock** — canonical compound primitive for floating bottom docks (`FloatingDock.Root`, `FloatingDock.Pill`, `FloatingDock.Popover`). Provides spring entry/exit animations, safe-area offsets, width profiles (`sm` | `md` | `lg` | `xl`), and integrated outside-click/Escape dismissal for popovers via `useDismiss`.
+- **FloatingDock** — canonical compound primitive for floating bottom docks (`FloatingDock.Root`, `FloatingDock.Pill`, `FloatingDock.Popover`). Provides spring entry/exit animations, safe-area offsets, width profiles (`sm` | `md` | `lg` | `xl`), integrated outside-click/Escape dismissal for popovers via `useDismiss`, and desktop Ghost / Sleep mode (quiet 20% opacity fade on idle, instantaneous wake on hover, keyboard interaction/outside click sleep, and 100% full vibrancy on mobile/touch screens).
   ```tsx
   <FloatingDock.Root>
-    <FloatingDock.Pill maxWidth="md">
+    <FloatingDock.Pill maxWidth="md" sleepOnIdle>
       <SegmentedControl ... />
     </FloatingDock.Pill>
     <FloatingDock.Popover open={isOpen} onClose={() => setIsOpen(false)}>
@@ -242,7 +243,7 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
 > transparent; only full-screen windows and the shared sticky gradient fades
 > reference canvas tokens.
 
-- **ScreenHeader** — canonical study/window header with title, progress, close/back, optional `leftContent` for left-anchored titles, and composed center/right content. Segmented progress rails accept optional `progressAriaLabel` and `progressUnitLabel` through `PracticePartProgressRail` when a screen needs domain-specific accessibility copy. Pick the chrome with `variant`: `bar` (default, bordered surface bar for screens in normal workspace flow), `window` (the canonical sticky fade for full-viewport study windows — Grammar, practice), `panel` (the same fade with a flush row for workspace-bounded detail windows — word detail, character breakdown), or `frosted` (tone-matched translucent bar at the standard window-header height, with a backdrop blur and the universal 2px border edge — Reading Mode's header, overlaid on its scroller so content passes underneath without showing through). Fade/frost variants take `tone` (`canvas` | `practice`) so they blend into the canvas that owns the surface; never hand the fade recipe to `className` — the widget owns the recipe, the canvas owner owns the tone.
+- **ScreenHeader** — canonical study/window header with title, progress, close/back, optional `leftContent` for left-anchored titles, and composed center/right content. Segmented progress rails accept optional `progressAriaLabel` and `progressUnitLabel` through `PracticePartProgressRail` when a screen needs domain-specific accessibility copy. Pick the chrome with `variant`: `bar` (default, bordered surface bar for screens in normal workspace flow), `window` (the canonical sticky fade for full-viewport study windows — Grammar, practice), `panel` (the same fade and row padding for workspace-bounded detail windows — word detail, character breakdown), or `frosted` (tone-matched translucent bar at the standard window-header height, with a backdrop blur and the universal 2px border edge — Reading Mode's header, overlaid on its scroller so content passes underneath without showing through). Fade/frost variants take `tone` (`canvas` | `practice`) so they blend into the canvas that owns the surface; never hand the fade recipe to `className` — the widget owns the recipe, the canvas owner owns the tone. Header width defaults to `maxWidth="none"` so controls span edge-to-edge across the window bounds (`px-4 sm:px-6 lg:px-10`), matching the practice screen's space utilization.
   ```tsx
   <ScreenHeader title="Practice" progress={progress} onClose={onClose} />
   <ScreenHeader variant="panel" tone="practice" title="Study settings" onClose={onClose} />

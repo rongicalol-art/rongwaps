@@ -13,7 +13,7 @@ import {
   PiCaretDownBold,
   PiCaretRightBold,
   PiChartDonutFill,
-  PiCheckCircleFill,
+  PiCheckBold,
   PiClockFill,
   PiDeviceMobileBold,
   PiExportBold,
@@ -169,7 +169,12 @@ export type AppIconName =
   | 'grid'
   | 'quiz'
   | 'writing'
-  | 'book';
+  | 'book'
+  | 'statusCheck'
+  | 'statusCross'
+  | 'statusShuffle'
+  | 'statusUnshuffled'
+  | 'statusRestart';
 
 /**
  * Soft rounded speaker glyph used for every play/pronounce affordance.
@@ -239,6 +244,192 @@ const StudyGearIcon: IconType = ({ size = '1em', className, ...props }) => (
   />
 );
 
+/**
+ * Chunky Duolingo-style status check badge: solid green circle with a tactile 3D
+ * bottom edge and a bold, rounded white checkmark.
+ */
+const DuoStatusCheckIcon: IconType = ({ size = '1em', className, ...props }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    className={className}
+    {...props}
+  >
+    <circle cx="12" cy="13.2" r="9.5" fill="var(--color-feedback-success-edge)" />
+    <circle cx="12" cy="11.5" r="9.5" fill="var(--color-feedback-success)" />
+    <path
+      d="M8.2 11.5L10.8 14.1L15.8 9.1"
+      fill="none"
+      stroke="var(--color-ui-surface)"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+/**
+ * Chunky Duolingo-style status cross badge: solid red circle with a tactile 3D
+ * bottom edge and a bold, rounded white X.
+ */
+const DuoStatusCrossIcon: IconType = ({ size = '1em', className, ...props }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    className={className}
+    {...props}
+  >
+    <circle cx="12" cy="13.2" r="9.5" fill="var(--color-feedback-danger-edge)" />
+    <circle cx="12" cy="11.5" r="9.5" fill="var(--color-feedback-danger)" />
+    <path
+      d="M9.2 8.7L14.8 14.3M14.8 8.7L9.2 14.3"
+      fill="none"
+      stroke="var(--color-ui-surface)"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+/**
+ * Chunky Duolingo-style status shuffle badge: solid brand blue circle with a tactile
+ * 3D bottom edge and bold white shuffle arrows.
+ */
+const DuoStatusShuffleIcon: IconType = ({ size = '1em', className, ...props }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    className={className}
+    {...props}
+  >
+    <circle cx="12" cy="13.2" r="9.5" fill="var(--color-brand-primary-edge)" />
+    <circle cx="12" cy="11.5" r="9.5" fill="var(--color-brand-primary)" />
+    <path
+      d="M7.8 9.2h2c1.4 0 2.2 4.6 4.2 4.6h2.2"
+      fill="none"
+      stroke="var(--color-ui-surface)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M14.5 11.8L16.5 13.8L14.5 15.8"
+      fill="none"
+      stroke="var(--color-ui-surface)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M7.8 13.8h2c.8 0 1.5-1 2-2.3m.4-1c.5-1 1.2-1.3 1.8-1.3h2"
+      fill="none"
+      stroke="var(--color-ui-surface)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M14.5 7.2L16.5 9.2L14.5 11.2"
+      fill="none"
+      stroke="var(--color-ui-surface)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+/**
+ * Chunky status unshuffled badge: neutral surface circle with a tactile 3D
+ * bottom edge and bold white shuffle arrows.
+ */
+const DuoStatusUnshuffledIcon: IconType = ({ size = '1em', className, ...props }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    className={className}
+    {...props}
+  >
+    <circle cx="12" cy="13.2" r="9.5" fill="var(--color-ui-border)" />
+    <circle cx="12" cy="11.5" r="9.5" fill="var(--color-ui-muted)" />
+    <path
+      d="M7.8 9.2h2c1.4 0 2.2 4.6 4.2 4.6h2.2"
+      fill="none"
+      stroke="var(--color-ui-surface)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M14.5 11.8L16.5 13.8L14.5 15.8"
+      fill="none"
+      stroke="var(--color-ui-surface)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M7.8 13.8h2c.8 0 1.5-1 2-2.3m.4-1c.5-1 1.2-1.3 1.8-1.3h2"
+      fill="none"
+      stroke="var(--color-ui-surface)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M14.5 7.2L16.5 9.2L14.5 11.2"
+      fill="none"
+      stroke="var(--color-ui-surface)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+/**
+ * Chunky Duolingo-style status restart badge: solid brand blue circle with a tactile
+ * 3D bottom edge and a bold white counter-clockwise curved arrow.
+ */
+const DuoStatusRestartIcon: IconType = ({ size = '1em', className, ...props }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    className={className}
+    {...props}
+  >
+    <circle cx="12" cy="13.2" r="9.5" fill="var(--color-brand-primary-edge)" />
+    <circle cx="12" cy="11.5" r="9.5" fill="var(--color-brand-primary)" />
+    <path
+      d="M15.5 11.5A3.8 3.8 0 1 1 10.6 8.2"
+      fill="none"
+      stroke="var(--color-ui-surface)"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M11.6 6.3L9.6 8.2L11.6 10.1"
+      fill="none"
+      stroke="var(--color-ui-surface)"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 const ICONS: Record<AppIconName, IconType> = {
   add: PiPlusBold,
   analytics: PiChartBarFill,
@@ -250,7 +441,7 @@ const ICONS: Record<AppIconName, IconType> = {
   books: PiBooksBold,
   breakdown: PiPuzzlePieceFill,
   cards: PiCardsFill,
-  check: PiCheckCircleFill,
+  check: PiCheckBold,
   clock: PiClockFill,
   close: PiXBold,
   choices: PiListChecksBold,
@@ -328,6 +519,11 @@ const ICONS: Record<AppIconName, IconType> = {
   pencil: PiPencilFill,
   grid: PiSquaresFourFill,
   book: PiBookOpenFill,
+  statusCheck: DuoStatusCheckIcon,
+  statusCross: DuoStatusCrossIcon,
+  statusShuffle: DuoStatusShuffleIcon,
+  statusUnshuffled: DuoStatusUnshuffledIcon,
+  statusRestart: DuoStatusRestartIcon,
 };
 
 export interface AppIconProps extends IconBaseProps {

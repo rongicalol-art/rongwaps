@@ -5,9 +5,10 @@ import { getCharactersUsingComponent, getMultipleBreakdowns } from '../../../ser
 import { searchVocabulary, fetchVocabulary } from '../../../services/vocabularyService';
 import type { Flashcard } from '../../../data/flashcards';
 import { getDecompositionRuntimeService } from '../../character-decomposition';
-import { rankParentCharacters, partitionRankedParents, type UsedAsGroups } from '../utils/rankParentCharacters';
+import { rankParentCharacters, partitionRankedParents, buildCharacterCourseIndex, type UsedAsGroups } from '../utils/rankParentCharacters';
 import { searchDictionaryWordsContaining, type DictionaryContainingWord } from '../../../services/dictionaryService';
 import { mergeBreakdownWords } from '../utils/mergeBreakdownWords';
+import { isStandardHanzi } from '../../../utils/hanzi';
 
 const HANZI_RE = /[\u4E00-\u9FFF\u3400-\u4DBF\u2E80-\u2FDF\u{20000}-\u{2A6DF}\u{2A700}-\u{2B73F}\u{2B740}-\u{2B81F}\u{2B820}-\u{2CEAF}]/u;
 const NON_CHAR_RE = /[⿰⿱⿲⿳⿴⿵⿶⿷⿸⿹⿺⿻\s！？?]/;
@@ -49,6 +50,8 @@ export function useSingleBreakdown(word: string, initialCharIndex: number, activ
     };
   }, []);
 
+  const courseRank = useMemo(() => buildCharacterCourseIndex(courseVocab), [courseVocab]);
+
   // Active book first, then later books by number; non-course characters last.
   const usedAsGroups = useMemo<UsedAsGroups>(() => {
     if (usedAsComponents.length === 0 || courseVocab.length === 0) {
@@ -75,23 +78,24 @@ export function useSingleBreakdown(word: string, initialCharIndex: number, activ
         : getCharactersUsingComponent(activeChar);
 
       Promise.allSettled([
-        parentsRequest.then(async (charsList) => {
+        parentsRequest.then((charsList) => {
           if (!active) return;
-          try {
+          // Filter to standard characters (plus course characters)
+          const cleanChars = charsList.filter((c) => isStandardHanzi(c) || courseVocab.some((card) => card.front === c));
+          setUsedAsComponents(cleanChars);
+          setIsUsedAsLoading(false);
+
+          // Bounded background prefetch for top visible items only (never hundreds)
+          const topSlice = cleanChars.slice(0, 12);
+          if (topSlice.length > 0) {
             if (decompositionRuntime.runtime === 'v3') {
-              await decompositionRuntime.prefetch(charsList.slice(0, 6));
+              void decompositionRuntime.prefetch(topSlice);
             } else {
-              await getMultipleBreakdowns(charsList);
+              void getMultipleBreakdowns(topSlice);
             }
-          } catch (e) {
-            debugLogger.error('Supabase', "Error prefetching breakdowns in bulk:", e);
           }
-          if (active) {
-            setUsedAsComponents(charsList);
-            setIsUsedAsLoading(false);
-          }
-        }).catch(err => {
-          debugLogger.error('Supabase', "Error fetching used as components:", err);
+        }).catch((err) => {
+          debugLogger.error('Supabase', 'Error fetching used as components:', err);
           if (active) setIsUsedAsLoading(false);
         }),
         Promise.allSettled([
@@ -114,7 +118,7 @@ export function useSingleBreakdown(word: string, initialCharIndex: number, activ
     return () => {
       active = false;
     };
-  }, [word, activeChar, decompositionRuntime, activeBook.id]);
+  }, [word, activeChar, decompositionRuntime, activeBook.id, courseVocab]);
 
   // Pre-fetch sub-components
   useEffect(() => {
@@ -172,6 +176,7 @@ export function useSingleBreakdown(word: string, initialCharIndex: number, activ
     isRelatedLoading,
     breakdownCharIndex,
     setBreakdownCharIndex,
-    chars
+    chars,
+    courseRank,
   };
 }

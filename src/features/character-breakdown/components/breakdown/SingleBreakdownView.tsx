@@ -10,6 +10,7 @@ import { BreakdownSkeleton } from "../BreakdownSkeleton";
 import { BottomCharacterTabs } from "./BottomCharacterTabs";
 import { useSingleBreakdown } from "../../hooks/useSingleBreakdown";
 import { useAppStore } from "../../../../store/useAppStore";
+import { useSoundHook } from '../../../character-memory-hooks';
 import { SAMPLE_BOOKS } from '../../../../data/books';
 import { getDecompositionRuntimeService } from '../../../character-decomposition';
 import { V3CharacterBreakdown } from '../v3/V3CharacterBreakdown';
@@ -58,8 +59,10 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
     isRelatedLoading,
     breakdownCharIndex,
     setBreakdownCharIndex,
-    chars
+    chars,
+    courseRank,
   } = useSingleBreakdown(word, initialCharIndex, activeBook);
+  const { sound } = useSoundHook(activeChar, true);
   const decompositionRuntime = getDecompositionRuntimeService();
   const isV3Runtime = decompositionRuntime.runtime === 'v3';
 
@@ -89,6 +92,7 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
           tone="practice"
           onClose={onClose}
           onBack={onBack}
+          maxWidth="none"
           centerContent={<h1 className="w-full text-center text-xs sm:text-sm font-black uppercase tracking-wider text-ui-ink-strong">Character breakdown</h1>}
           rightAction={<BreakdownSettingsPopover />}
         />
@@ -123,6 +127,8 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
                     usedAsComponents={usedAsComponents}
                     usedAsGroups={usedAsGroups}
                     relatedWords={relatedWords}
+                    sound={sound}
+                    courseRank={courseRank}
                     setDictionaryWord={pushBreakdown}
                     openTree={() => setShowV3Tree(true)}
                     openUsedAsBreakdown={() => setShowUsedAsBreakdown(true)}
@@ -230,6 +236,9 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
             <V3TreeScreen
               character={activeChar}
               data={charData}
+              sound={sound}
+              accentHex={activeBook.accentHex}
+              edgeHex={activeBook.edgeHex}
               onBack={() => setShowV3Tree(false)}
               onGlyphClick={(target) => {
                 setShowV3Tree(false);

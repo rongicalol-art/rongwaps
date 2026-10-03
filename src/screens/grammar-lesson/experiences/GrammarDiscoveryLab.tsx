@@ -120,7 +120,7 @@ export function GrammarDiscoveryLab({
             className="text-ui-muted hover:text-brand-primary"
           />
         </div>
-        <p className="mt-5 border-t border-ui-divider pt-4 text-sm font-bold leading-6 text-ui-muted-strong"><GrammarFocusText text={selected.note} terms={focusTerms} contextTokens={contextTokens} characterPreference={characterPreference} onOpenWord={onOpenWord} /></p>
+        <p className="mt-5 border-t-2 border-ui-divider pt-4 text-sm font-bold leading-6 text-ui-muted-strong"><GrammarFocusText text={selected.note} terms={focusTerms} contextTokens={contextTokens} characterPreference={characterPreference} onOpenWord={onOpenWord} /></p>
       </div>
     </GrammarLabShell>
   );

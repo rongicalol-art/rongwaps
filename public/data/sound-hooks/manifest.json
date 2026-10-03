@@ -1,15 +1,36 @@
 {
   "schemaVersion": 1,
-  "version": "35e77cdb93983f5ee06d76100e3a37e42d2988a6adc95e2f23c2b08b432b2e41",
-  "generatedAt": "2026-09-22T05:30:14.647Z",
-  "totalCount": 656,
+  "version": "02beab88734c99a176a5e341b81a25ab6c24afda15a33e6d40ba0728a82ff714",
+  "generatedAt": "2026-10-03T06:35:02.469Z",
+  "totalCount": 1677,
   "books": [
     {
       "bookId": 1,
       "count": 656,
       "path": "/data/sound-hooks/book-1.json",
-      "sha256": "35e77cdb93983f5ee06d76100e3a37e42d2988a6adc95e2f23c2b08b432b2e41",
-      "bytes": 186809
+      "sha256": "02beab88734c99a176a5e341b81a25ab6c24afda15a33e6d40ba0728a82ff714",
+      "bytes": 500182
+    },
+    {
+      "bookId": 2,
+      "count": 401,
+      "path": "/data/sound-hooks/book-2.json",
+      "sha256": "b897876552db72d2915ffa4b945c831f44e491c4a086767d1aea0fdc7c210510",
+      "bytes": 293430
+    },
+    {
+      "bookId": 3,
+      "count": 323,
+      "path": "/data/sound-hooks/book-3.json",
+      "sha256": "070a4f7ec1feec73eb70c290fefc2d1669b6390d8f97f57adb8aecaa3b9ce9da",
+      "bytes": 254634
+    },
+    {
+      "bookId": 4,
+      "count": 297,
+      "path": "/data/sound-hooks/book-4.json",
+      "sha256": "69097815ce4b2d9b25f21a0a7c604ce40e3e985de03ebbbf63bab7d85abf9c77",
+      "bytes": 205793
     }
   ]
 }

@@ -6,3 +6,14 @@ const HANZI_RE =
 export function isHanziChar(char: string): boolean {
   return HANZI_RE.test(char);
 }
+
+/**
+ * Whether a character is in the standard CJK Unified Ideographs block
+ * (U+4E00 to U+9FFF), excluding rare extensions (Ext-A/B/C) and radical symbols.
+ */
+export function isStandardHanzi(char: string): boolean {
+  if (!char || Array.from(char).length !== 1) return false;
+  const code = char.codePointAt(0);
+  return code !== undefined && code >= 0x4e00 && code <= 0x9fff;
+}
+

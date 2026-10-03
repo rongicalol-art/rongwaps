@@ -104,7 +104,7 @@ export function SentenceSpine({
         </div>
 
         {showTranslation && (
-          <p className="ui-translation border-t border-ui-divider px-4 py-4 text-sm sm:px-6 sm:text-base">
+          <p className="ui-translation border-t-2 border-ui-divider px-4 py-4 text-sm sm:px-6 sm:text-base">
             {isNegative && spine.negativeEnglish ? spine.negativeEnglish : spine.positiveEnglish}
           </p>
         )}

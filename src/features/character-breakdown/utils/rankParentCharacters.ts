@@ -1,3 +1,5 @@
+import { isStandardHanzi } from '../../../utils/hanzi';
+
 export interface ParentCharacterCourseCard {
   front: string;
   bookId: number;
@@ -29,24 +31,37 @@ export function buildCharacterCourseIndex(
   return courseRank;
 }
 
+
 /**
  * Splits already-ranked parents into course characters (with their earliest
  * book/lesson) and non-course characters, preserving the incoming order so
  * active-book entries stay first and later books follow.
+ * Filters out rare extension characters and bounds non-course entries.
  */
 export function partitionRankedParents(
   parents: string[],
   courseCards: ParentCharacterCourseCard[],
+  options?: { filterRare?: boolean; maxOtherParents?: number },
 ): UsedAsGroups {
   const courseRank = buildCharacterCourseIndex(courseCards);
   const courseParents: Array<{ character: string; bookId: number; lessonId: number }> = [];
   const otherParents: string[] = [];
+  const filterRare = options?.filterRare ?? true;
+  const maxOther = options?.maxOtherParents ?? 35;
+
   for (const character of parents) {
     const rank = courseRank.get(character);
-    if (rank) courseParents.push({ character, ...rank });
-    else otherParents.push(character);
+    if (rank) {
+      courseParents.push({ character, ...rank });
+    } else {
+      if (filterRare && !isStandardHanzi(character)) continue;
+      otherParents.push(character);
+    }
   }
-  return { courseParents, otherParents };
+  return {
+    courseParents,
+    otherParents: otherParents.slice(0, maxOther),
+  };
 }
 
 export function rankParentCharacters(
