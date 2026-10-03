@@ -58,7 +58,8 @@ export type ContentPackKind =
   | 'sound-families'
   | 'readings'
   | 'grammar'
-  | 'dialogue-alignment';
+  | 'dialogue-alignment'
+  | 'strokes';
 
 export interface SoundFamilyMember {
   character: string;
@@ -206,6 +207,39 @@ export function isValidDialogueAlignmentPack(pack: unknown, bookId: number, expe
     && candidate.count === expectedCount
     && Boolean(candidate.items)
     && typeof candidate.items === 'object';
+}
+
+export interface StrokePackItem {
+  character: string;
+  strokes: string[];
+  medians: number[][][];
+  radStrokes?: number[];
+}
+
+export interface StrokePack {
+  schemaVersion: number;
+  shard: number;
+  count: number;
+  items: StrokePackItem[];
+}
+
+export function isValidStrokeItem(item: unknown): item is StrokePackItem {
+  if (!item || typeof item !== 'object') return false;
+  const candidate = item as Partial<StrokePackItem>;
+  return typeof candidate.character === 'string'
+    && Array.isArray(candidate.strokes)
+    && Array.isArray(candidate.medians);
+}
+
+export function isValidStrokePack(pack: unknown, shard: number, expectedCount: number): pack is StrokePack {
+  if (!pack || typeof pack !== 'object') return false;
+  const candidate = pack as Partial<StrokePack>;
+  return candidate.schemaVersion === 1
+    && candidate.shard === shard
+    && candidate.count === expectedCount
+    && Array.isArray(candidate.items)
+    && candidate.items.length === candidate.count
+    && candidate.items.every(isValidStrokeItem);
 }
 
 export function getBreakdownShard(character: string, shardCount: number): number {

@@ -1,11 +1,11 @@
 import type { CharacterJson } from 'hanzi-writer';
+import { lookupStrokeData } from './contentPacks';
 
 const jsonCache = new Map<string, unknown>();
 const jsonRequests = new Map<string, Promise<unknown>>();
 const hanziRequests = new Map<string, Promise<CharacterJson>>();
 
-const HANZI_DATA_SOURCES = [
-  '/hanzi-data',
+const HANZI_CDN_SOURCES = [
   'https://cdn.jsdelivr.net/npm/hanzi-writer-data@2.0.1',
   'https://unpkg.com/hanzi-writer-data@2.0.1',
   'https://raw.githubusercontent.com/chanind/hanzi-writer-data/master/data',
@@ -40,11 +40,20 @@ export function loadHanziCharacterData(character: string): Promise<CharacterJson
   const existing = hanziRequests.get(character);
   if (existing) return existing;
 
-  const encodedCharacter = encodeURIComponent(character);
   const request = (async () => {
+    // 1. Pack-first lookup: 100% offline-capable and IndexedDB-cached for course characters
+    try {
+      const packedData = await lookupStrokeData(character);
+      if (packedData) return packedData;
+    } catch {
+      // Fall through to global CDNs
+    }
+
+    // 2. Global CDNs fallback for general dictionary characters outside course vocabulary
+    const encodedCharacter = encodeURIComponent(character);
     let lastError: unknown;
 
-    for (const source of HANZI_DATA_SOURCES) {
+    for (const source of HANZI_CDN_SOURCES) {
       try {
         return await loadJsonAsset<CharacterJson>(`${source}/${encodedCharacter}.json`);
       } catch (error) {
@@ -61,3 +70,4 @@ export function loadHanziCharacterData(character: string): Promise<CharacterJson
   request.finally(() => hanziRequests.delete(character)).catch(() => {});
   return request;
 }
+

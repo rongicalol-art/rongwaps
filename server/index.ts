@@ -396,12 +396,11 @@ async function bootstrap() {
     const distPath = path.join(process.cwd(), "dist");
     // Cache policy (Cloudflare already applies brotli compression):
     //  - /assets/* are content-hashed by Vite -> cache forever.
-    //  - Versioned content packs (/data), stroke data (/hanzi-data) and the
-    //    dictionary trie are large and change only on deploys -> cache an
-    //    hour at browsers/edge; IndexedDB keys carry the real versioning.
+    //  - Versioned content packs (/data) and the dictionary trie are large
+    //    and change only on deploys -> cache an hour at browsers/edge;
+    //    IndexedDB keys carry the real versioning.
     //  - Everything else (index.html, manifest) stays revalidate-every-time.
     const distDataDir = path.join(distPath, "data");
-    const distHanziDir = path.join(distPath, "hanzi-data");
     const assetsMarker = `${path.sep}assets${path.sep}`;
     app.use(express.static(distPath, {
       setHeaders(res: express.Response, filePath: string) {
@@ -409,7 +408,6 @@ async function bootstrap() {
           res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
         } else if (
           filePath.startsWith(distDataDir)
-          || filePath.startsWith(distHanziDir)
           || path.basename(filePath) === "dictionary_trie.json"
         ) {
           res.setHeader("Cache-Control", "public, max-age=3600");

@@ -15,6 +15,8 @@ import {
   isValidReadingsPack,
   isValidGrammarPack,
   isValidDialogueAlignmentPack,
+  isValidStrokePack,
+  type StrokePack,
   packItemsToMnemonicMap,
   type SoundFamiliesPack,
 } from '../utils/packValidators';
@@ -205,5 +207,29 @@ export const PACK_CONFIGS: Record<ContentPackKind, PackConfig<unknown, unknown>>
     getParts: getBookParts,
     validatePack: (pack, part) => isValidDialogueAlignmentPack(pack, part.key, part.count),
     transform: (pack) => (pack as { items: unknown }).items,
+  },
+  strokes: {
+    namespace: 'strokes',
+    manifestPath: '/data/strokes/manifest.json',
+    manifestLabel: 'strokes manifest',
+    partPathPrefix: '/data/strokes/',
+    partCacheKeyKind: 'shard',
+    partLabel: (shard) => `strokes shard ${shard}`,
+    validateManifest: (m) => m.schemaVersion === 1 && typeof m.version === 'string' && m.shardStrategy === 'unicode-code-point-modulo' && (m.shardCount ?? 0) > 0 && (m.shards?.length ?? 0) === m.shardCount,
+    getParts: getShardParts,
+    validatePack: (pack, part, manifest) => {
+      if (!isValidStrokePack(pack, part.key, part.count)) return false;
+      return pack.items.every((item) => getBreakdownShard(item.character, manifest.shardCount!) === part.key);
+    },
+    transform: (pack) => new Map(
+      (pack as StrokePack).items.map((item) => [
+        item.character,
+        {
+          strokes: item.strokes,
+          medians: item.medians,
+          ...(item.radStrokes ? { radStrokes: item.radStrokes } : {}),
+        },
+      ]),
+    ),
   },
 };

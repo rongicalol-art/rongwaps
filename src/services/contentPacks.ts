@@ -1,4 +1,5 @@
 import { debugLogger } from '../utils/debugLogger';
+import type { CharacterJson } from 'hanzi-writer';
 import type { DBDictionaryRow, DBCharacterBreakdown, DBVocabularyRow } from '../types/database';
 import type { Flashcard } from '../data/flashcards';
 import type { CourseExampleRecord, ReadingRecord, InteractiveGrammarPart, DialogueAlignment } from '../types/models';
@@ -309,6 +310,20 @@ export async function fetchDialogueAlignmentPack(bookId: number): Promise<Record
     return await loadPack<Record<string, DialogueAlignment>>('dialogue-alignment', bookId);
   } catch (error) {
     debugLogger.warn('Cache', `Static dialogue alignment pack unavailable for book ${bookId}.`, error);
+    return null;
+  }
+}
+
+export async function lookupStrokeData(character: string): Promise<CharacterJson | null> {
+  try {
+    const manifest = await getPackManifest('strokes');
+    const shardCount = manifest.shardCount ?? 32;
+    const shard = getBreakdownShard(character, shardCount);
+    if (shard < 0) return null;
+    const map = await loadPack<Map<string, CharacterJson>>('strokes', shard);
+    return map?.get(character) ?? null;
+  } catch (error) {
+    debugLogger.warn('Cache', `Static strokes pack unavailable for ${character}.`, error);
     return null;
   }
 }

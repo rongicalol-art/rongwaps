@@ -150,7 +150,7 @@ Client code never talks to the database directly for reference content — it go
    - course vocabulary → `public/data/vocabulary/` book packs
    - course examples → `public/data/course-examples/`
    - memory hooks → `public/data/memory-hooks/` book packs (characters and words)
-   - stroke data → `public/hanzi-data/` (CDN fallback)
+   - stroke data → `public/data/strokes/` shards (CDN fallback)
 2. **Supabase fallback**: direct table queries or RPCs when packs are missing/unavailable.
 3. **In-memory caches** (`src/utils/cache.ts`) dedupe repeated lookups; `requestTiming` instruments data calls.
 

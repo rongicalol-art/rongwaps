@@ -60,14 +60,13 @@ const pwaPlugin = VitePWA({
   devOptions: { enabled: false },
   workbox: {
     // Precache only the app shell. Large authored data packs (public/data,
-    // public/videos, public/hanzi-data) already load offline through IndexedDB
+    // public/videos) already load offline through IndexedDB
     // (staticContentService) and the audio Cache Storage, and must not be
     // precached here.
     globPatterns: ['**/*.{js,css,html,svg,png,woff2,ico}'],
     globIgnores: [
       'data/**',
       'videos/**',
-      'hanzi-data/**',
       '**/sw.js',
       '**/workbox-*.js',
     ],
