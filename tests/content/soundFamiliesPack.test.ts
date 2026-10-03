@@ -77,3 +77,11 @@ test('Sound families pack: every member has valid character and pinyin', () => {
     }
   }
 });
+
+test('Sound families pack: semantic radicals do not contaminate phonetic series roots', () => {
+  const contaminatedRoots = ['木', '艹', '心', '扌', '氵', '口', '火', '土', '女', '言'];
+  for (const root of contaminatedRoots) {
+    const s = PACK.series.find((entry) => entry.glyph === root);
+    assert.equal(s, undefined, `Semantic radical ${root} must not act as a phonetic series root`);
+  }
+});

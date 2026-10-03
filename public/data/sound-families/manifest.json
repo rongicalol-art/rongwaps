@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "version": "2620d316cd87781dfc1dfde7072aaec211b35363eb27a66ca4bc4a60a91b76cb",
-  "generatedAt": "2026-10-03T06:35:02.453Z",
-  "totalCount": 1056,
+  "version": "518f793f6d0a406125513a63efb4d043f001ca9f24b54e2268b12136f62340e5",
+  "generatedAt": "2026-10-03T09:17:09.505Z",
+  "totalCount": 969,
   "parts": [
     {
       "key": 1,
-      "count": 1056,
+      "count": 969,
       "path": "/data/sound-families/series.json",
-      "sha256": "2620d316cd87781dfc1dfde7072aaec211b35363eb27a66ca4bc4a60a91b76cb",
-      "bytes": 886721
+      "sha256": "518f793f6d0a406125513a63efb4d043f001ca9f24b54e2268b12136f62340e5",
+      "bytes": 410358
     }
   ]
 }

@@ -31,6 +31,7 @@ mkdirSync(SOUND_FAMILIES_DIR, { recursive: true });
 interface BreakdownInfo {
   pinyin: string;
   definition: string;
+  radical: string;
   components: string[];
 }
 
@@ -39,12 +40,13 @@ for (let s = 0; s < 32; s++) {
   const file = resolve(ROOT, `public/data/breakdowns/shard-${String(s).padStart(2, '0')}.json`);
   if (!existsSync(file)) continue;
   const shard = JSON.parse(readFileSync(file, 'utf8')) as {
-    items: Array<{ character: string; pinyin?: string[]; definition?: string; components_historical?: string[] }>;
+    items: Array<{ character: string; pinyin?: string[]; definition?: string; radical?: string | null; components_historical?: string[] }>;
   };
   for (const it of shard.items) {
     breakdownMap.set(it.character, {
       pinyin: it.pinyin && it.pinyin.length > 0 ? it.pinyin[0] : '',
       definition: it.definition || '',
+      radical: it.radical || '',
       components: it.components_historical || [],
     });
   }
@@ -62,6 +64,7 @@ for (let b = 1; b <= 4; b++) {
       breakdownMap.set(it.traditional, {
         pinyin: it.pinyin,
         definition: it.meaning,
+        radical: '',
         components: [],
       });
     }
@@ -69,13 +72,13 @@ for (let b = 1; b <= 4; b++) {
 }
 
 if (!breakdownMap.has('嚐') || !breakdownMap.get('嚐')!.pinyin) {
-  breakdownMap.set('嚐', { pinyin: 'cháng', definition: 'to taste, to savor', components: ['口', '嘗'] });
+  breakdownMap.set('嚐', { pinyin: 'cháng', definition: 'to taste, to savor', radical: '口', components: ['口', '嘗'] });
 }
 if (!breakdownMap.has('溼') || !breakdownMap.get('溼')!.pinyin) {
-  breakdownMap.set('溼', { pinyin: 'shī', definition: 'wet, damp, humid', components: ['氵', '顯'] });
+  breakdownMap.set('溼', { pinyin: 'shī', definition: 'wet, damp, humid', radical: '氵', components: ['氵', '顯'] });
 }
 if (!breakdownMap.has('汙') || !breakdownMap.get('汙')!.pinyin) {
-  breakdownMap.set('汙', { pinyin: 'wū', definition: 'to pollute, to contaminate', components: ['氵', '于'] });
+  breakdownMap.set('汙', { pinyin: 'wū', definition: 'to pollute, to contaminate', radical: '氵', components: ['氵', '于'] });
 }
 
 interface LedgerEntry {
@@ -167,7 +170,10 @@ const COGNATE_INITIAL_GROUPS: Array<Set<string>> = [
 
 function areInitialsCognate(i1: string, i2: string): boolean {
   if (i1 === i2) return true;
-  if (!i1 || !i2) return false;
+  if (!i1 || !i2) {
+    const other = i1 || i2;
+    return other === 'y' || other === 'w' || other === 'h';
+  }
   for (const group of COGNATE_INITIAL_GROUPS) {
     if (group.has(i1) && group.has(i2)) return true;
   }
@@ -214,10 +220,7 @@ function isModernPhoneticallyPlausible(charPinyin: string, soundPinyin: string):
   if (!c.raw || !s.raw) return false;
   if (c.raw === s.raw) return true;
 
-  if (c.final === s.final) return true;
-  if (areInitialsCognate(c.initial, s.initial) && areFinalsCompatible(c.final, s.final)) return true;
-
-  return false;
+  return areInitialsCognate(c.initial, s.initial) && areFinalsCompatible(c.final, s.final);
 }
 
 // ---------------------------------------------------------------------------
@@ -299,11 +302,28 @@ for (const [simp, trad] of simpToTrad.entries()) {
 }
 
 // D. Filter automated sources by modern Mandarin phonetic plausibility
+const MAJOR_SEMANTIC_RADICALS = new Set([
+  '木', '水', '氵', '口', '手', '扌', '心', '忄', '言', '讠', '火', '灬',
+  '土', '日', '月', '女', '犭', '犬', '虫', '魚', '鱼', '鳥', '鸟', '貝', '贝',
+  '車', '车', '足', '目', '頁', '页', '食', '饣', '糸', '纟', '刀', '刂',
+  '阝', '广', '厂', '穴', '竹', '艹', '石', '禾', '米', '衣', '衤',
+]);
+
 const charToSound = new Map<string, string>();
 let automatedFiltered = 0;
 for (const [ch, sound] of rawCharToSound.entries()) {
   const charReading = breakdownMap.get(ch)?.pinyin;
   const soundReading = getGlyphReading(sound);
+  if (MAJOR_SEMANTIC_RADICALS.has(sound)) {
+    const c = parsePinyin(charReading || '');
+    const s = parsePinyin(soundReading);
+    if (c.raw && s.raw && c.raw === s.raw) {
+      charToSound.set(ch, sound);
+    } else {
+      automatedFiltered++;
+    }
+    continue;
+  }
   if (charReading && soundReading) {
     if (isModernPhoneticallyPlausible(charReading, soundReading)) {
       charToSound.set(ch, sound);
@@ -358,7 +378,7 @@ charToSound.set('感', '咸');
 const PRIMARY_PHONETIC_ROOTS = new Set([
   '家', '青', '馬', '包', '巴', '生', '乍', '門', '方', '白', '主', '中',
   '古', '工', '各', '成', '胡', '果', '合', '反', '相', '其', '艮', '吾',
-  '曼', '夬', '即', '咸', '化', '尼', '占', '它', '隹', '每', '东'
+  '曼', '夬', '即', '咸', '化', '尼', '占', '它', '隹', '每', '东',
 ]);
 for (const root of PRIMARY_PHONETIC_ROOTS) {
   charToSound.delete(root);
@@ -386,10 +406,12 @@ for (const root of PRIMARY_PHONETIC_ROOTS) {
 // and whose pronunciation is modern phonetically plausible!
 let breakdownEnriched = 0;
 for (const [root, chars] of soundToChars.entries()) {
+  if (MAJOR_SEMANTIC_RADICALS.has(root)) continue;
   const rootReading = getGlyphReading(root);
   if (!rootReading) continue;
   for (const [char, info] of breakdownMap.entries()) {
     if (char === root || chars.has(char) || PRIMARY_PHONETIC_ROOTS.has(char)) continue;
+    if (info.radical === root) continue;
     if (info.components.includes(root)) {
       if (isModernPhoneticallyPlausible(info.pinyin, rootReading)) {
         chars.add(char);
@@ -429,6 +451,7 @@ for (let b = 1; b <= 4; b++) {
 
 const seriesList: SoundSeries[] = [];
 for (const [glyph, chars] of soundToChars.entries()) {
+  if (MAJOR_SEMANTIC_RADICALS.has(glyph)) continue;
   const reading = getGlyphReading(glyph);
   if (!reading) continue;
   const members: FamilyMember[] = [];
@@ -463,7 +486,7 @@ const seriesPack = {
   series: seriesList,
 };
 
-const seriesJsonText = `${JSON.stringify(seriesPack, null, 2)}\n`;
+const seriesJsonText = `${JSON.stringify(seriesPack)}\n`;
 writeFileSync(resolve(SOUND_FAMILIES_DIR, 'series.json'), seriesJsonText);
 
 const seriesSha256 = createHash('sha256').update(seriesJsonText).digest('hex');
@@ -689,7 +712,7 @@ for (let b = 1; b <= 4; b++) {
     items: entries,
   };
 
-  const packText = `${JSON.stringify(pack, null, 2)}\n`;
+  const packText = `${JSON.stringify(pack)}\n`;
   const packPath = resolve(SOUND_HOOKS_DIR, `book-${b}.json`);
   writeFileSync(packPath, packText);
 
