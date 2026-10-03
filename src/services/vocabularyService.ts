@@ -1,5 +1,5 @@
 import { debugLogger } from '../utils/debugLogger';
-import { Flashcard, FLASHCARDS_DATA } from '../data/flashcards';
+import { Flashcard } from '../data/flashcards';
 import { vocabularyCache } from '../utils/cache';
 import { extractSearchVariants, sentenceMatchesForms } from '../utils/wordForms';
 import { stripPinyinTones } from '../utils/pinyinNormalize';
@@ -14,13 +14,6 @@ import { getSmartScore } from '../utils/vocabularySearchScoring';
 import { prepareVocabulary } from '../utils/vocabularyMapping';
 
 export { prepareVocabulary };
-
-function getFallbackFlashcards(bookId?: number, lessonId?: number): Flashcard[] {
-  let filtered = FLASHCARDS_DATA;
-  if (bookId) filtered = filtered.filter((c) => c.bookId === bookId);
-  if (lessonId) filtered = filtered.filter((c) => c.lessonId === lessonId);
-  return [...filtered].sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true, sensitivity: 'base' }));
-}
 
 export async function fetchVocabulary(bookId?: number, lessonId?: number): Promise<Flashcard[]> {
   const cacheKey = `vocab-${bookId || 'all'}-${lessonId || 'all'}`;
@@ -42,7 +35,7 @@ export async function fetchVocabulary(bookId?: number, lessonId?: number): Promi
       return null;
     },
     fromDb: async () => {
-      return getFallbackFlashcards(bookId, lessonId);
+      return [];
     },
   });
 }
@@ -65,10 +58,7 @@ export async function fetchVocabularyByIds(ids: string[]): Promise<Flashcard[] |
       return null;
     },
     fromDb: async () => {
-      const fallback = getFallbackFlashcards();
-      const idSet = new Set(uniqueIds);
-      const matches = fallback.filter((c) => idSet.has(c.id));
-      return matches.length > 0 ? matches : null;
+      return null;
     },
   });
 }

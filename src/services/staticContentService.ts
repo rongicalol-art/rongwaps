@@ -40,6 +40,23 @@ export async function fetchStaticJsonWithMetadata<T>(
     }
   }
 
+  if (typeof window === 'undefined') {
+    try {
+      const fsMod = 'node:fs';
+      const pathMod = 'node:path';
+      const fs = await import(/* @vite-ignore */ fsMod);
+      const nodePath = await import(/* @vite-ignore */ pathMod);
+      const diskPath = nodePath.resolve(process.cwd(), 'public', path.replace(/^\//, ''));
+      if (fs.existsSync(diskPath)) {
+        const text = fs.readFileSync(diskPath, 'utf8');
+        const data = JSON.parse(text) as T;
+        return { data, source: 'network' };
+      }
+    } catch {
+      // Fall through to standard fetch
+    }
+  }
+
   const response = await timeDataRequest(
     label,
     () => fetch(path, { cache: options.revalidate ? 'no-cache' : 'default' }),

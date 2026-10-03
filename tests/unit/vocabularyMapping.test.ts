@@ -41,3 +41,15 @@ test('vocabularyMapping: mapVocabularyRows and prepareVocabulary maps and filter
   assert.equal(filtered.length, 1);
   assert.equal(filtered[0].id, 'b1l01-01');
 });
+
+test('vocabularyMapping: resolves deterministic audio for course cards and respects empty audio', () => {
+  const rows = [
+    { id: 'B1L01-1-01', traditional: '你好' },
+    { id: 'B2L07-2-27', traditional: '阿里山小火車', audio: '' },
+    { id: 'custom-1', traditional: '測試', audio: 'custom.mp3' },
+  ];
+  const mapped = mapVocabularyRows(rows);
+  assert.equal(mapped[0].audio, 'modernchinese-B1L01-1-01.mp3');
+  assert.equal(mapped[1].audio, '');
+  assert.equal(mapped[2].audio, 'custom.mp3');
+});

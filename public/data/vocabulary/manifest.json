@@ -1,36 +1,36 @@
 {
   "schemaVersion": 1,
-  "version": "5d3a52fee0b78067",
-  "generatedAt": "2026-09-15T08:06:34.862Z",
+  "version": "13ee0abfdb19a1f3",
+  "generatedAt": "2026-10-03T09:24:56.947Z",
   "totalCount": 4061,
   "books": [
     {
       "bookId": 1,
       "count": 825,
       "path": "/data/vocabulary/book-1.json",
-      "sha256": "f39345975690b979d4b432ac60974d75f811b2addd94d2d1461262485bf9f46e",
-      "bytes": 169490
+      "sha256": "13ee0abfdb19a1f3c7b93a0e1b244d072b0d65bdb6396ef7384aef3989ff85e8",
+      "bytes": 137315
     },
     {
       "bookId": 2,
       "count": 964,
       "path": "/data/vocabulary/book-2.json",
-      "sha256": "b4f1a62294a283c1a665d9a137471f490d88acc9661596ca74eab49b9a691d52",
-      "bytes": 213182
+      "sha256": "2d6b9afcef2229e1d5cb115ac8d942a59c27db6ab3903755d61025b23e94a234",
+      "bytes": 175664
     },
     {
       "bookId": 3,
       "count": 1019,
       "path": "/data/vocabulary/book-3.json",
-      "sha256": "b00eb219e3c8239f95ff8f7a95a5038db9afc8753a8168f5f219498b3ca30697",
-      "bytes": 268354
+      "sha256": "7a2f9a99baa2fba169d49babf18987e6d93d39cb838b97aa8533f6005bbab4c4",
+      "bytes": 228730
     },
     {
       "bookId": 4,
       "count": 1253,
       "path": "/data/vocabulary/book-4.json",
-      "sha256": "c82b21b363982dc9557ca6ff6f8275499e6e99704a9008a54f02c904bbdd0a84",
-      "bytes": 326708
+      "sha256": "9a0f5df0925dce59f52465ddfbd7528b61ad91e50828407d3f2e58f454a5008b",
+      "bytes": 277841
     }
   ]
 }

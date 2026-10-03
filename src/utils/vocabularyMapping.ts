@@ -72,7 +72,9 @@ export function mapVocabularyRows(items: readonly unknown[]): Flashcard[] {
       simplified: item.simplified?.trim() || undefined,
       pinyin: (item.pinyin || item.pronunciation || '').trim(),
       pos: (item.pos || '').trim(),
-      audio: item.audio || item.audio_url || '',
+      audio: item.audio !== undefined
+        ? (item.audio || '')
+        : (item.audio_url || (rawId ? `modernchinese-${rawId}.mp3` : '')),
       notes: item.notes || item.note || '',
       examples: parseExamples(item.examples),
     };
