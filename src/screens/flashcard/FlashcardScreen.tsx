@@ -1,9 +1,10 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { EdgeNavButtons, ScreenSkeleton, ScreenLayout } from '../../lib/widgets';
 import { EmptyReviewState, LessonComplete } from '../../features/practice';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
+import { prefetchFlashcardExtras, useFlashcardExtras } from '../../features/flashcards';
 import { useFlashcards } from './hooks/useFlashcards';
 import { useFlashcardSwipe } from './hooks/useFlashcardSwipe';
 import { DraggableFlashcard } from './components/DraggableFlashcard';
@@ -101,6 +102,11 @@ export function FlashcardScreen({
     if (!isFlipped && currentCard && !autoPlayAudio) triggerManualReveal();
     setIsFlipped((prev) => !prev);
   }, [autoPlayAudio, currentCard, isFlipped, setIsFlipped, triggerManualReveal]);
+
+  const { isLoading: isContentLoading } = useFlashcardExtras(currentCard);
+  useEffect(() => {
+    if (!isContentLoading) prefetchFlashcardExtras(cards, currentIndex);
+  }, [isContentLoading, cards, currentIndex]);
 
   const { direction, triggerSwipeRate, triggerKeyboardRate, triggerNav } = useFlashcardSwipe(
     wrappedHandleNext,

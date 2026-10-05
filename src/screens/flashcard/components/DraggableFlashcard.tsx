@@ -1,24 +1,16 @@
 import React, { useEffect, useState, useRef } from 'react';
-import {
-  animate,
-  motion,
-  useIsPresent,
-  useMotionValue,
-  useReducedMotion,
-  useTransform,
-} from 'motion/react';
+import { motion, useIsPresent, useReducedMotion } from 'motion/react';
 import type { Flashcard } from '../../../data/flashcards';
 import {
   MemoryHookCharacter,
   shouldShowWordHook,
-  useMemoryHook,
-  wordMnemonicKey,
 } from '../../../features/character-memory-hooks';
 import { AppIcon } from '../../../lib/widgets';
 import type { RankedExample } from '../../../utils/courseExamples';
 import { cn } from '../../../utils/cn';
 import { isHanziChar } from '../../../utils/hanzi';
-import { FlashcardBackFace } from '../../../features/flashcards';
+import { FlashcardBackFace, useFlashcardExtras } from '../../../features/flashcards';
+import { useCardSwipe } from '../hooks/useCardSwipe';
 
 export interface DraggableFlashcardProps {
   card: Flashcard;
@@ -82,18 +74,16 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
   const isPresent = useIsPresent();
   const [isDragging, setIsDragging] = useState(false);
   const [isSwiped, setIsSwiped] = useState(false);
-  const isDraggingRef = useRef(false);
   const wasSwipedRef = useRef(false);
+  const swipeRef = useRef<HTMLDivElement>(null);
   const backScrollRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
 
   const isInteractive = isPresent && !isSwiped;
 
   const showWordHookChip = shouldShowWordHook(card.front);
-  const { hook: wordHook, loaded: wordHookLoaded } = useMemoryHook(
-    wordMnemonicKey(card.front),
-    Boolean(showWordHookChip && isFlipped),
-  );
+  const { extras } = useFlashcardExtras(card);
+  const wordHook = extras.wordHook;
   const [showHook, setShowHook] = useState(false);
 
   useEffect(() => {
@@ -101,7 +91,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
   }, [isFlipped, card.front]);
 
   const renderWordHookButton = () => {
-    if (!showWordHookChip || !wordHookLoaded || !wordHook) return null;
+    if (!showWordHookChip || !wordHook) return null;
 
     return (
       <button
@@ -129,38 +119,37 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
     );
   };
 
-  const dragX = useMotionValue(0);
-  const rotate = useTransform(dragX, [-240, 0, 240], [-12, 0, 12]);
-  const greenBorderOpacity = useTransform(dragX, [0, 80], [0, 0.35]);
-  const redBorderOpacity = useTransform(dragX, [-80, 0], [0.35, 0]);
-
   useEffect(() => {
     if (!isFlipped && backScrollRef.current) {
       backScrollRef.current.scrollTop = 0;
     }
   }, [isFlipped]);
 
-  const flipAngle = useMotionValue(0);
-  const frontOpacity = useTransform(flipAngle, [0, 80, 100, 180], [1, 1, 0, 0]);
-  const backOpacity = useTransform(flipAngle, [0, 80, 100, 180], [0, 0, 1, 1]);
-  const frontVisibility = useTransform(frontOpacity, (v) => (v > 0 ? 'visible' : 'hidden'));
-  const backVisibility = useTransform(backOpacity, (v) => (v > 0 ? 'visible' : 'hidden'));
-
-  useEffect(() => {
-    const controls = animate(flipAngle, isFlipped ? 180 : 0, {
-      duration: reduceMotion ? 0 : 0.42,
-      ease: [0.32, 0.72, 0, 1],
-    });
-    return () => controls.stop();
-  }, [flipAngle, isFlipped, reduceMotion]);
-
   const frontLength = card?.front?.length || 1;
 
-  const handleCardClick = (e: React.MouseEvent) => {
-    if (!isInteractive || isDraggingRef.current || wasSwipedRef.current) return;
-    if ((e.target as HTMLElement).closest('button')) return;
-    onCardTap();
-  };
+  const { bind } = useCardSwipe(swipeRef, {
+    enabled: isInteractive,
+    onDragChange: setIsDragging,
+    onTap: (target) => {
+      if (!isInteractive || wasSwipedRef.current) return;
+      if ((target as HTMLElement | null)?.closest('button')) return;
+      onCardTap();
+    },
+    onSwipe: (dir) => {
+      const accepted = dir < 0 ? triggerSwipeRate(1, 1) : triggerSwipeRate(3, -1);
+      if (accepted === false) return false;
+      wasSwipedRef.current = true;
+      setIsSwiped(true);
+      return true;
+    },
+  });
+
+  const flipTransition = reduceMotion ? 'none' : 'transform 110ms ease-in';
+  const faceStyle = (visible: boolean) => ({
+    transform: visible ? 'scaleX(1)' : 'scaleX(0)',
+    transition: flipTransition,
+    transitionDelay: visible && !reduceMotion ? '110ms' : '0ms',
+  });
 
   return (
     <motion.div
@@ -184,57 +173,16 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
         WebkitUserSelect: 'none',
       }}
     >
-      <motion.div
-        drag={isInteractive ? "x" : false}
-        dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={0.6}
-        dragTransition={{ bounceStiffness: 600, bounceDamping: 25 }}
-        onDragStart={() => {
-          if (!isInteractive) return;
-          isDraggingRef.current = true;
-          setIsDragging(true);
-        }}
-        onDragEnd={(_e, info) => {
-          setTimeout(() => {
-            isDraggingRef.current = false;
-            setIsDragging(false);
-          }, 60);
-          if (!isInteractive) return;
-
-          const { offset, velocity } = info;
-          const isFlick = Math.abs(offset.x) >= 40 && Math.abs(velocity.x) > 300;
-
-          if (offset.x < -80 || (offset.x < -40 && isFlick)) {
-            const accepted = triggerSwipeRate(1, 1);
-            if (accepted !== false) {
-              wasSwipedRef.current = true;
-              setIsSwiped(true);
-              animate(dragX, -220, { duration: 0.2, ease: 'easeOut' });
-            }
-          } else if (offset.x > 80 || (offset.x > 40 && isFlick)) {
-            const accepted = triggerSwipeRate(3, -1);
-            if (accepted !== false) {
-              wasSwipedRef.current = true;
-              setIsSwiped(true);
-              animate(dragX, 220, { duration: 0.2, ease: 'easeOut' });
-            }
-          }
-        }}
-        onClick={handleCardClick}
-        style={{
-          x: dragX,
-          rotate,
-          touchAction: isFlipped ? 'pan-y' : 'none',
-        }}
-        className="relative w-full h-full cursor-pointer transform-gpu [perspective:2000px]"
+      <div
+        ref={swipeRef}
+        {...bind}
+        style={{ touchAction: 'pan-y' }}
+        className="relative h-full w-full cursor-pointer transform-gpu"
       >
-        <motion.div
-          style={{ rotateY: flipAngle }}
-          className="relative w-full h-full [transform-style:preserve-3d]"
-        >
-          <motion.div
-            className="absolute inset-0 flex flex-col items-center justify-center rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface p-6 sm:p-8 shadow-ambient-sm [backface-visibility:hidden]"
-            style={{ opacity: frontOpacity, visibility: frontVisibility }}
+        <div className="relative h-full w-full">
+          <div
+            className="absolute inset-0 flex flex-col items-center justify-center rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface p-6 sm:p-8 shadow-ambient-sm"
+            style={faceStyle(!isFlipped)}
           >
             <div className="flex max-w-full flex-row flex-wrap items-center justify-center">
               {Array.from(card.front).map((char, i) => {
@@ -262,19 +210,18 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
                 );
               })}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
+          <div
             className={cn(
-              'absolute inset-0 flex flex-col rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface overflow-hidden shadow-ambient-sm [backface-visibility:hidden]',
+              'absolute inset-0 flex flex-col rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface overflow-hidden shadow-ambient-sm [contain:layout_paint]',
               showHook ? 'p-4 pb-4 sm:p-6 sm:pb-5' : 'p-6 pb-10 sm:p-8 sm:pb-10',
             )}
-            style={{ opacity: backOpacity, rotateY: 180, visibility: backVisibility }}
+            style={faceStyle(isFlipped)}
           >
             {renderWordHookButton()}
             <FlashcardBackFace
               card={card}
-              isFlipped={isFlipped}
               setActiveBreakdown={setActiveBreakdown}
               showPinyin={showPinyin}
               showTranslation={showTranslation}
@@ -284,14 +231,14 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
               scrollRef={backScrollRef}
               showHook={showHook}
               hook={wordHook}
-              hookLoaded={wordHookLoaded}
+              hookLoaded
             />
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
-        <motion.div aria-hidden className="pointer-events-none absolute inset-0 rounded-feature border-[6px] border-feedback-success" style={{ opacity: greenBorderOpacity }} />
-        <motion.div aria-hidden className="pointer-events-none absolute inset-0 rounded-feature border-[6px] border-feedback-danger" style={{ opacity: redBorderOpacity }} />
-      </motion.div>
+        <div aria-hidden className="pointer-events-none absolute inset-0 rounded-feature border-[6px] border-feedback-success opacity-[var(--rw-swipe-ok,0)]" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 rounded-feature border-[6px] border-feedback-danger opacity-[var(--rw-swipe-no,0)]" />
+      </div>
     </motion.div>
   );
 });

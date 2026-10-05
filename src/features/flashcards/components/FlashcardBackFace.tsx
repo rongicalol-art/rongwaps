@@ -9,11 +9,10 @@ import { formatPosLabel } from '../../../utils/posLabels';
 import { FlashcardExamples } from './FlashcardExamples';
 import { numberToToneMarks } from '../../../utils/pinyin';
 import { cn } from '../../../utils/cn';
-import { useCurriculumExamples } from '../hooks/useCurriculumExamples';
+import { useFlashcardExtras } from '../content/flashcardContent';
 
 export interface FlashcardBackFaceProps {
   card: Flashcard;
-  isFlipped?: boolean;
   setActiveBreakdown: (char: string, index?: number) => void;
   showPinyin?: boolean;
   showTranslation?: boolean;
@@ -29,7 +28,6 @@ export interface FlashcardBackFaceProps {
 
 export const FlashcardBackFace = ({
   card,
-  isFlipped = true,
   setActiveBreakdown,
   showPinyin = true,
   showTranslation = true,
@@ -42,8 +40,8 @@ export const FlashcardBackFace = ({
   hook,
   hookLoaded = false,
 }: FlashcardBackFaceProps) => {
-  const fetched = useCurriculumExamples(card, Boolean(isFlipped && !examples));
-  const resolvedExamples = examples ?? fetched.examples;
+  const fetched = useFlashcardExtras(card);
+  const resolvedExamples = examples ?? fetched.extras.examples;
   const resolvedLoading = isExamplesLoading ?? fetched.isLoading;
 
   const frontLength = card?.front?.length || 1;
@@ -77,7 +75,7 @@ export const FlashcardBackFace = ({
       tabIndex={0}
       aria-label="Flashcard answer and example sentences"
       onScroll={onScroll}
-      className="flex min-h-0 flex-1 flex-col items-center overflow-y-auto overscroll-contain pt-2 focus-ring sm:pt-3"
+      className="flex min-h-0 flex-1 flex-col items-center overflow-y-auto overscroll-contain touch-pan-y pt-2 focus-ring sm:pt-3"
     >
       <div
         className={cn(

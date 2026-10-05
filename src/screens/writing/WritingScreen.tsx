@@ -8,7 +8,7 @@ import { useWriting } from './hooks/useWriting';
 import { WritingDock } from './components/WritingDock';
 import { WritingQuizzingCanvas } from './components/WritingQuizzingCanvas';
 import { WritingCompletedCard } from './components/WritingCompletedCard';
-import { getCardWidth, useCurriculumExamples } from '../../features/flashcards';
+import { getCardWidth, useFlashcardExtras } from '../../features/flashcards';
 import { useAppStore } from '../../store/useAppStore';
 import { cn } from '../../utils/cn';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
@@ -56,10 +56,8 @@ export function WritingScreen({
   const showPinyin = useAppStore((state) => state.showPinyin);
   const showTranslation = useAppStore((state) => state.showTranslation);
   const isCardFinished = activeCharIndex >= chars.length && chars.length > 0;
-  const { examples: curriculumExamples, isLoading: areExamplesLoading } = useCurriculumExamples(
-    currentCard,
-    status === 'correct' || isCardFinished
-  );
+  const { extras, isLoading: areExamplesLoading } = useFlashcardExtras(currentCard);
+  const curriculumExamples = extras.examples;
 
   const partSegments = React.useMemo(
     () => (isReviewDeck || isLibraryDeck ? [] : buildPracticePartSegments(playlist)),

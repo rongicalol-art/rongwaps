@@ -6,4 +6,8 @@
 export { FlashcardBackFace } from './components/FlashcardBackFace';
 export type { FlashcardBackFaceProps } from './components/FlashcardBackFace';
 export { getCardWidth } from './utils/cardLayout';
-export { useCurriculumExamples } from './hooks/useCurriculumExamples';
+export {
+  prefetchFlashcardExtras,
+  preloadFlashcardContent,
+  useFlashcardExtras,
+} from './content/flashcardContent';

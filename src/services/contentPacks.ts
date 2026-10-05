@@ -176,7 +176,7 @@ export async function fetchDictionaryRowsFromPacks(words: string[]): Promise<Map
   return results;
 }
 
-export async function fetchCourseExampleCards(searchTerms: string[], pos?: string): Promise<Flashcard[]> {
+export async function fetchCourseExampleRecords(): Promise<CourseExampleRecord[]> {
   try {
     const manifest = await getPackManifest('course-examples');
     const packs = await loadAllParts<CourseExampleRecord[]>('course-examples');
@@ -184,11 +184,15 @@ export async function fetchCourseExampleCards(searchTerms: string[], pos?: strin
     if (records.length !== manifest.totalCount) {
       throw new Error('Course example manifest count does not match its packs');
     }
-    return recordsToExampleCards(records, searchTerms, pos);
+    return records;
   } catch (error) {
     debugLogger.warn('Cache', 'Static course examples unavailable; using vocabulary examples.', error);
     return [];
   }
+}
+
+export async function fetchCourseExampleCards(searchTerms: string[], pos?: string): Promise<Flashcard[]> {
+  return recordsToExampleCards(await fetchCourseExampleRecords(), searchTerms, pos);
 }
 
 let hookMapPromise: Promise<Map<string, string>> | null = null;
