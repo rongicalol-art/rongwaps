@@ -13,6 +13,7 @@ import {
   CUSTOM_CARDS_FOLDER_COLOR,
   FOLDER_COLOR_PALETTE,
   resolveFolderColor,
+  serializeFolderColor,
 } from '../../../utils/folderColors';
 
 const COLLECTIONS = [
@@ -203,15 +204,7 @@ export function useLibrary() {
     setIsCreatingFolder(true);
     const folderId = crypto.randomUUID();
     
-    const chosenColor = resolveFolderColor(selectedFolderColorId);
-    const folderColor = JSON.stringify({
-      colorId: chosenColor.id,
-      front: chosenColor.front,
-      back: chosenColor.back,
-      accentBg: chosenColor.accentBg,
-      accentBorder: chosenColor.accentBorder,
-      accent: chosenColor.accent,
-    });
+    const folderColor = serializeFolderColor(selectedFolderColorId);
 
     if (currentUser) {
       await flashcardService.createFolder(currentUser.id, {

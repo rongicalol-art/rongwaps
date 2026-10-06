@@ -173,3 +173,9 @@ export function resolveFolderColor(colorStr: string | undefined, index = 0): Fol
 
   return defaultFallback;
 }
+
+/** The persisted JSON string for a folder's chosen palette color. */
+export function serializeFolderColor(colorId: string): string {
+  const { id, front, back, accentBg, accentBorder, accent } = resolveFolderColor(colorId);
+  return JSON.stringify({ colorId: id, front, back, accentBg, accentBorder, accent });
+}

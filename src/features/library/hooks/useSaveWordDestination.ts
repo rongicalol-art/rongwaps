@@ -4,7 +4,7 @@ import { useAppStore } from '../../../store/useAppStore';
 import { flashcardService } from '../../../services/flashcardService';
 import { getDictionaryEntries } from '../../../services/dictionaryService';
 import { audioService } from '../../../services/audioService';
-import { resolveFolderColor } from '../../../utils/folderColors';
+import { serializeFolderColor } from '../../../utils/folderColors';
 import { useUserFlashcards } from './useUserFlashcards';
 import type { SaveWordTarget } from '../../../store/slices/librarySlice';
 import type { UserFlashcard } from '../../../types/models';
@@ -170,76 +170,7 @@ export function useSaveWordDestination(target: SaveWordTarget | null) {
     toggleFavoriteStore(headword);
   }, [headword, toggleFavoriteStore]);
 
-  const toggleFolder = useCallback(async (folderId: string) => {
-    if (!headword) return;
-
-    const existingCardId = savedFolderCardsMap.get(folderId);
-
-    if (existingCardId) {
-      // Remove from folder
-      if (currentUser) {
-        await flashcardService.deleteFlashcard(currentUser.id, existingCardId);
-      } else {
-        deleteLocalFlashcard(existingCardId);
-      }
-    } else {
-      // Add to folder
-      const newCard: UserFlashcard = {
-        id: crypto.randomUUID(),
-        userId: currentUser?.id || 'guest',
-        folderId,
-        simplified,
-        traditional: headword,
-        pinyin: resolvedMetadata?.pinyin || '',
-        translation: meaning,
-        createdAt: Date.now(),
-      };
-
-      if (currentUser) {
-        await flashcardService.createFlashcard(newCard);
-      } else {
-        addLocalFlashcard(newCard);
-      }
-
-      // Pre-warm neural audio
-      audioService.preloadNeural([headword]).catch(() => {});
-    }
-  }, [
-    headword,
-    simplified,
-    savedFolderCardsMap,
-    currentUser,
-    deleteLocalFlashcard,
-    addLocalFlashcard,
-    resolvedMetadata,
-    meaning,
-  ]);
-
-  const createFolderAndAdd = useCallback(async (name: string, colorId: string) => {
-    const trimmed = name.trim();
-    if (!trimmed || !headword) return;
-
-    const folderId = crypto.randomUUID();
-    const chosenColor = resolveFolderColor(colorId);
-    const folderColor = JSON.stringify({
-      colorId: chosenColor.id,
-      front: chosenColor.front,
-      back: chosenColor.back,
-      accentBg: chosenColor.accentBg,
-      accentBorder: chosenColor.accentBorder,
-      accent: chosenColor.accent,
-    });
-
-    if (currentUser) {
-      await flashcardService.createFolder(currentUser.id, {
-        id: folderId,
-        name: trimmed,
-        color: folderColor,
-      });
-    }
-    addCustomFolder(trimmed, folderColor, folderId);
-
-    // Immediately add the word to the new folder
+  const addCardToFolder = useCallback(async (folderId: string) => {
     const newCard: UserFlashcard = {
       id: crypto.randomUUID(),
       userId: currentUser?.id || 'guest',
@@ -257,8 +188,46 @@ export function useSaveWordDestination(target: SaveWordTarget | null) {
       addLocalFlashcard(newCard);
     }
 
+    // Pre-warm neural audio
     audioService.preloadNeural([headword]).catch(() => {});
-  }, [headword, simplified, currentUser, addCustomFolder, addLocalFlashcard, resolvedMetadata, meaning]);
+  }, [headword, simplified, currentUser, addLocalFlashcard, resolvedMetadata, meaning]);
+
+  const toggleFolder = useCallback(async (folderId: string) => {
+    if (!headword) return;
+
+    const existingCardId = savedFolderCardsMap.get(folderId);
+
+    if (existingCardId) {
+      // Remove from folder
+      if (currentUser) {
+        await flashcardService.deleteFlashcard(currentUser.id, existingCardId);
+      } else {
+        deleteLocalFlashcard(existingCardId);
+      }
+    } else {
+      await addCardToFolder(folderId);
+    }
+  }, [headword, savedFolderCardsMap, currentUser, deleteLocalFlashcard, addCardToFolder]);
+
+  const createFolderAndAdd = useCallback(async (name: string, colorId: string) => {
+    const trimmed = name.trim();
+    if (!trimmed || !headword) return;
+
+    const folderId = crypto.randomUUID();
+    const folderColor = serializeFolderColor(colorId);
+
+    if (currentUser) {
+      await flashcardService.createFolder(currentUser.id, {
+        id: folderId,
+        name: trimmed,
+        color: folderColor,
+      });
+    }
+    addCustomFolder(trimmed, folderColor, folderId);
+
+    // Immediately add the word to the new folder
+    await addCardToFolder(folderId);
+  }, [headword, currentUser, addCustomFolder, addCardToFolder]);
 
   return {
     headword,
