@@ -19,7 +19,31 @@ export interface PracticeFormatMenuProps {
   className?: string;
 }
 
-function formatLabel(type: QuizQuestionType | QuizChoiceType | ListeningChoiceType) {
+type FormatType = QuizQuestionType | QuizChoiceType | ListeningChoiceType;
+
+const FORMAT_OPTIONS = {
+  hanzi: { value: 'hanzi', label: 'Character', icon: <span className="font-chinese font-black text-sm">字</span> },
+  pinyin: { value: 'pinyin', label: 'Pinyin', icon: <span className="text-xs font-black">pīn</span> },
+  meaning: { value: 'meaning', label: 'Meaning', icon: <AppIcon name="dictionary" size={16} /> },
+} as const;
+
+const formatOptions = <T extends FormatType>(...types: T[]) => types.map((type) => FORMAT_OPTIONS[type]);
+
+const FormatField: React.FC<{ label: string; aside?: React.ReactNode; children: React.ReactNode }> = ({ label, aside, children }) => (
+  <div className="space-y-2">
+    {aside ? (
+      <div className="flex items-center justify-between">
+        <span className="block text-xs font-black uppercase tracking-wider text-ui-muted-strong">{label}</span>
+        {aside}
+      </div>
+    ) : (
+      <span className="block text-xs font-black uppercase tracking-wider text-ui-muted-strong">{label}</span>
+    )}
+    {children}
+  </div>
+);
+
+function formatLabel(type: FormatType) {
   switch (type) {
     case 'hanzi':
       return {
@@ -71,61 +95,14 @@ export function PracticeFormatMenu({ mode, className = '' }: PracticeFormatMenuP
     }
   };
 
-  const renderLivePreview = () => {
-    if (mode === 'listening') {
-      const choiceMeta = formatLabel(listeningChoiceType);
-      return (
-        <div className="mb-4 flex items-center justify-center gap-3 rounded-control border border-ui-border bg-ui-canvas/60 px-4 py-2.5">
-          <div className="flex items-center gap-1.5 text-xs font-black text-brand-primary">
-            <AppIcon name="audio" size={15} />
-            <span>Audio</span>
-          </div>
-          <span className="text-xs font-black text-ui-muted-strong">➔</span>
-          <div className="flex items-center gap-1.5 text-xs font-black text-ui-ink">
-            {choiceMeta.icon}
-            <span>{choiceMeta.text}</span>
-          </div>
-        </div>
-      );
-    }
-
-    if (mode === 'quiz-choices') {
-      const questionMeta = formatLabel(quizQuestionType);
-      const choiceMeta = formatLabel(quizChoiceType);
-      return (
-        <div className="mb-4 flex items-center justify-center gap-3 rounded-control border border-ui-border bg-ui-canvas/60 px-4 py-2.5">
-          <div className="flex items-center gap-1.5 text-xs font-black text-ui-ink">
-            {questionMeta.icon}
-            <span>{questionMeta.text}</span>
-          </div>
-          <span className="text-xs font-black text-ui-muted-strong">➔</span>
-          <div className="flex items-center gap-1.5 text-xs font-black text-ui-ink">
-            {choiceMeta.icon}
-            <span>{choiceMeta.text}</span>
-          </div>
-        </div>
-      );
-    }
-
-    if (mode === 'quiz-typing') {
-      const questionMeta = formatLabel(typingPromptType);
-      return (
-        <div className="mb-4 flex items-center justify-center gap-3 rounded-control border border-ui-border bg-ui-canvas/60 px-4 py-2.5">
-          <div className="flex items-center gap-1.5 text-xs font-black text-ui-ink">
-            {questionMeta.icon}
-            <span>{questionMeta.text}</span>
-          </div>
-          <span className="text-xs font-black text-ui-muted-strong">➔</span>
-          <div className="flex items-center gap-1.5 text-xs font-black text-brand-primary">
-            <AppIcon name="keyboard" size={15} />
-            <span>Typing</span>
-          </div>
-        </div>
-      );
-    }
-
-    return null;
-  };
+  const flow = (() => {
+    const meta = (type: FormatType) => ({ ...formatLabel(type), tone: 'text-ui-ink' });
+    const audio = { icon: <AppIcon name="audio" size={15} />, text: 'Audio', tone: 'text-brand-primary' };
+    const typing = { icon: <AppIcon name="keyboard" size={15} />, text: 'Typing', tone: 'text-brand-primary' };
+    if (mode === 'listening') return [audio, meta(listeningChoiceType)];
+    if (mode === 'quiz-choices') return [meta(quizQuestionType), meta(quizChoiceType)];
+    return [meta(typingPromptType), typing];
+  })();
 
   return (
     <>
@@ -150,95 +127,52 @@ export function PracticeFormatMenu({ mode, className = '' }: PracticeFormatMenuP
       >
         <div className="flex flex-col gap-5 py-1 text-left">
           {/* Live Flow Indicator */}
-          {renderLivePreview()}
+          <div className="mb-4 flex items-center justify-center gap-3 rounded-control border border-ui-border bg-ui-canvas/60 px-4 py-2.5">
+            {flow.map((step, i) => (
+              <React.Fragment key={step.text}>
+                {i > 0 && <span className="text-xs font-black text-ui-muted-strong">➔</span>}
+                <div className={`flex items-center gap-1.5 text-xs font-black ${step.tone}`}>
+                  {step.icon}
+                  <span>{step.text}</span>
+                </div>
+              </React.Fragment>
+            ))}
+          </div>
 
           {mode === 'quiz-choices' && (
             <>
-              <div className="space-y-2">
-                <span className="block text-xs font-black uppercase tracking-wider text-ui-muted-strong">
-                  Question Prompt
-                </span>
+              <FormatField label="Question Prompt">
                 <SegmentedControl<QuizQuestionType>
                   ariaLabel="Question prompt format"
                   value={quizQuestionType}
                   onChange={handleQuizQuestionChange}
                   className="min-h-12"
-                  options={[
-                    {
-                      value: 'hanzi',
-                      label: 'Character',
-                      icon: <span className="font-chinese font-black text-sm">字</span>,
-                    },
-                    {
-                      value: 'pinyin',
-                      label: 'Pinyin',
-                      icon: <span className="text-xs font-black">pīn</span>,
-                    },
-                    {
-                      value: 'meaning',
-                      label: 'Meaning',
-                      icon: <AppIcon name="dictionary" size={16} />,
-                    },
-                  ]}
+                  options={formatOptions('hanzi', 'pinyin', 'meaning')}
                 />
-              </div>
-
-              <div className="space-y-2">
-                <span className="block text-xs font-black uppercase tracking-wider text-ui-muted-strong">
-                  Answer Choices
-                </span>
+              </FormatField>
+              <FormatField label="Answer Choices">
                 <SegmentedControl<QuizChoiceType>
                   ariaLabel="Answer choices format"
                   value={quizChoiceType}
                   onChange={handleQuizChoiceChange}
                   className="min-h-12"
-                  options={[
-                    {
-                      value: 'meaning',
-                      label: 'Meaning',
-                      icon: <AppIcon name="dictionary" size={16} />,
-                    },
-                    {
-                      value: 'hanzi',
-                      label: 'Character',
-                      icon: <span className="font-chinese font-black text-sm">字</span>,
-                    },
-                    {
-                      value: 'pinyin',
-                      label: 'Pinyin',
-                      icon: <span className="text-xs font-black">pīn</span>,
-                    },
-                  ]}
+                  options={formatOptions('meaning', 'hanzi', 'pinyin')}
                 />
-              </div>
+              </FormatField>
             </>
           )}
 
           {mode === 'quiz-typing' && (
             <div className="space-y-3">
-              <div className="space-y-2">
-                <span className="block text-xs font-black uppercase tracking-wider text-ui-muted-strong">
-                  Question Prompt
-                </span>
+              <FormatField label="Question Prompt">
                 <SegmentedControl<TypingPromptType>
                   ariaLabel="Question prompt format"
                   value={typingPromptType}
                   onChange={(val) => updatePreferences({ typingPromptType: val })}
                   className="min-h-12"
-                  options={[
-                    {
-                      value: 'hanzi',
-                      label: 'Character',
-                      icon: <span className="font-chinese font-black text-sm">字</span>,
-                    },
-                    {
-                      value: 'meaning',
-                      label: 'Meaning',
-                      icon: <AppIcon name="dictionary" size={16} />,
-                    },
-                  ]}
+                  options={formatOptions('hanzi', 'meaning')}
                 />
-              </div>
+              </FormatField>
               <div className="flex items-center gap-2.5 rounded-control bg-ui-canvas/60 px-3.5 py-2.5 text-xs font-bold text-ui-muted-strong">
                 <AppIcon name="keyboard" size={16} className="shrink-0 text-ui-muted-strong" />
                 <span>Answers are entered as pinyin with tone marks or numbers.</span>
@@ -248,15 +182,14 @@ export function PracticeFormatMenu({ mode, className = '' }: PracticeFormatMenuP
 
           {mode === 'listening' && (
             <>
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="block text-xs font-black uppercase tracking-wider text-ui-muted-strong">
-                    Question Prompt
-                  </span>
+              <FormatField
+                label="Question Prompt"
+                aside={(
                   <span className="rounded-xs bg-ui-canvas px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-ui-muted-strong">
                     Audio Fixed
                   </span>
-                </div>
+                )}
+              >
                 <div className="flex items-center gap-3 rounded-feature border border-brand-primary/20 bg-brand-primary-soft/50 p-3">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-compact bg-brand-primary text-white shadow-ambient-xs">
                     <AppIcon name="audio" size={20} />
@@ -268,36 +201,16 @@ export function PracticeFormatMenu({ mode, className = '' }: PracticeFormatMenuP
                     </p>
                   </div>
                 </div>
-              </div>
-
-              <div className="space-y-2">
-                <span className="block text-xs font-black uppercase tracking-wider text-ui-muted-strong">
-                  Answer Choices
-                </span>
+              </FormatField>
+              <FormatField label="Answer Choices">
                 <SegmentedControl<ListeningChoiceType>
                   ariaLabel="Answer choices format"
                   value={listeningChoiceType}
                   onChange={(val) => updatePreferences({ listeningChoiceType: val })}
                   className="min-h-12"
-                  options={[
-                    {
-                      value: 'meaning',
-                      label: 'Meaning',
-                      icon: <AppIcon name="dictionary" size={16} />,
-                    },
-                    {
-                      value: 'hanzi',
-                      label: 'Character',
-                      icon: <span className="font-chinese font-black text-sm">字</span>,
-                    },
-                    {
-                      value: 'pinyin',
-                      label: 'Pinyin',
-                      icon: <span className="text-xs font-black">pīn</span>,
-                    },
-                  ]}
+                  options={formatOptions('meaning', 'hanzi', 'pinyin')}
                 />
-              </div>
+              </FormatField>
             </>
           )}
 
