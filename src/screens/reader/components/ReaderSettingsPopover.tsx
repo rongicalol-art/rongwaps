@@ -5,7 +5,7 @@ import {
   IconActionButton,
   SegmentedControl,
   SettingsDropdownPicker,
-  ToggleSwitch,
+  SwitchRow,
 } from '../../../lib/widgets';
 import { useDismiss } from '../../../hooks/useDismiss';
 import type { ReaderTextSize } from '../../../types/models';
@@ -109,39 +109,12 @@ export function ReaderSettingsPopover({
 
             {/* Reading Aids Toggles */}
             <div role="menu" aria-label="Reading aids" className="flex flex-col gap-1.5">
-              <button
-                type="button"
-                role="switch"
-                aria-checked={showMeaning}
-                onClick={onToggleMeaning}
-                className="flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold text-ui-ink-strong transition-colors outline-none hover:bg-ui-hover focus-ring"
-              >
-                <span>Translation</span>
-                <ToggleSwitch checked={showMeaning} />
-              </button>
+              <SwitchRow label="Translation" checked={showMeaning} onToggle={onToggleMeaning} />
 
-              <button
-                type="button"
-                role="switch"
-                aria-checked={showPinyin}
-                onClick={onTogglePinyin}
-                className="flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold text-ui-ink-strong transition-colors outline-none hover:bg-ui-hover focus-ring"
-              >
-                <span>Pinyin</span>
-                <ToggleSwitch checked={showPinyin} />
-              </button>
+              <SwitchRow label="Pinyin" checked={showPinyin} onToggle={onTogglePinyin} />
 
               {onToggleHoverDefinitions && (
-                <button
-                  type="button"
-                  role="switch"
-                  aria-checked={showHoverDefinitions}
-                  onClick={onToggleHoverDefinitions}
-                  className="flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold text-ui-ink-strong transition-colors outline-none hover:bg-ui-hover focus-ring"
-                >
-                  <span>Hover Definitions</span>
-                  <ToggleSwitch checked={showHoverDefinitions} />
-                </button>
+                <SwitchRow label="Hover Definitions" checked={showHoverDefinitions} onToggle={onToggleHoverDefinitions} />
               )}
             </div>
           </motion.div>

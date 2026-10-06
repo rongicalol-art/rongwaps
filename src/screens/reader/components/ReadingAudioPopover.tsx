@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { ToggleSwitch } from '../../../lib/widgets';
+import { SwitchRow } from '../../../lib/widgets';
 import { useDismiss } from '../../../hooks/useDismiss';
 import { cn } from '../../../utils/cn';
 
@@ -102,48 +102,12 @@ export function ReadingAudioPopover({
               </button>
 
               {onToggleLoop && (
-                <button
-                  type="button"
-                  role="switch"
-                  aria-checked={isLooping}
-                  onClick={onToggleLoop}
-                  className={cn(
-                    'flex min-h-11 w-full items-center justify-between rounded-compact px-4 py-2.5 text-sm font-extrabold transition-colors outline-none focus-ring',
-                    isLooping ? 'bg-brand-primary/10 text-brand-primary' : 'text-ui-ink-strong hover:bg-ui-hover'
-                  )}
-                >
-                  <span>Loop</span>
-                  <ToggleSwitch checked={isLooping} />
-                </button>
+                <SwitchRow label="Loop" checked={isLooping} onToggle={onToggleLoop} tinted className="px-4 py-2.5" />
               )}
 
-              <button
-                type="button"
-                role="switch"
-                aria-checked={showPinyin}
-                onClick={onTogglePinyin}
-                className={cn(
-                  'flex min-h-11 w-full items-center justify-between rounded-compact px-4 py-2.5 text-sm font-extrabold transition-colors outline-none focus-ring',
-                  showPinyin ? 'bg-brand-primary/10 text-brand-primary' : 'text-ui-ink-strong hover:bg-ui-hover'
-                )}
-              >
-                <span>Pinyin</span>
-                <ToggleSwitch checked={showPinyin} />
-              </button>
+              <SwitchRow label="Pinyin" checked={showPinyin} onToggle={onTogglePinyin} tinted className="px-4 py-2.5" />
 
-              <button
-                type="button"
-                role="switch"
-                aria-checked={showMeaning}
-                onClick={onToggleMeaning}
-                className={cn(
-                  'flex min-h-11 w-full items-center justify-between rounded-compact px-4 py-2.5 text-sm font-extrabold transition-colors outline-none focus-ring',
-                  showMeaning ? 'bg-brand-primary/10 text-brand-primary' : 'text-ui-ink-strong hover:bg-ui-hover'
-                )}
-              >
-                <span>Translation</span>
-                <ToggleSwitch checked={showMeaning} />
-              </button>
+              <SwitchRow label="Translation" checked={showMeaning} onToggle={onToggleMeaning} tinted className="px-4 py-2.5" />
             </div>
           </motion.div>
         )}

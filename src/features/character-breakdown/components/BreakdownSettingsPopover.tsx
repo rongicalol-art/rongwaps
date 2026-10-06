@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { AppIcon, IconActionButton, ToggleSwitch } from '../../../lib/widgets';
+import { AppIcon, IconActionButton, SwitchRow } from '../../../lib/widgets';
 import { useDismiss } from '../../../hooks/useDismiss';
 import { useAppStore } from '../../../store/useAppStore';
 import { SAMPLE_BOOKS } from '../../../data/books';
@@ -53,16 +53,7 @@ export function BreakdownSettingsPopover() {
             className="absolute right-0 top-full z-50 mt-2 w-64 popover-surface p-2.5 text-left sm:w-72"
           >
             <div role="menu" aria-label="Breakdown display" className="flex flex-col gap-1.5">
-              <button
-                type="button"
-                role="switch"
-                aria-checked={hideExamplePinyin}
-                onClick={() => updatePreferences({ hideExamplePinyin: !hideExamplePinyin })}
-                className="flex min-h-11 w-full items-center justify-between gap-3 rounded-compact px-3 py-2 text-sm font-extrabold text-ui-ink-strong transition-colors outline-none hover:bg-ui-hover focus-ring"
-              >
-                <span>Hide pinyin on example sentences</span>
-                <ToggleSwitch checked={hideExamplePinyin} />
-              </button>
+              <SwitchRow label="Hide pinyin on example sentences" checked={hideExamplePinyin} onToggle={() => updatePreferences({ hideExamplePinyin: !hideExamplePinyin })} />
             </div>
           </motion.div>
         )}

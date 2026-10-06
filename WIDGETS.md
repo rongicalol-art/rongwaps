@@ -38,6 +38,7 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
     <ToggleSwitch checked={on} />
   </button>
   ```
+- **SwitchRow** — full-width popover row (`label`, `checked`, `onToggle`, optional `tinted`) rendering a `role="switch"` button with a `ToggleSwitch`; exported from `ToggleSwitch.tsx`. Use it for every on/off row in popovers instead of hand-rolling the button.
 
 ## Icons, flags, and branded presentation
 

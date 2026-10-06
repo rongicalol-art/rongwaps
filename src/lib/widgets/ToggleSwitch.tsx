@@ -38,3 +38,32 @@ export function ToggleSwitch({ checked, className }: ToggleSwitchProps) {
     </span>
   );
 }
+
+export interface SwitchRowProps {
+  label: string;
+  checked: boolean;
+  onToggle: () => void;
+  /** Tint the whole row brand-colored while on. */
+  tinted?: boolean;
+  className?: string;
+}
+
+/** Full-width popover row: label on the left, `ToggleSwitch` on the right. */
+export function SwitchRow({ label, checked, onToggle, tinted, className }: SwitchRowProps) {
+  return (
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      onClick={onToggle}
+      className={cn(
+        'flex min-h-11 w-full items-center justify-between gap-3 rounded-compact px-3 py-2 text-sm font-extrabold transition-colors outline-none focus-ring',
+        tinted && checked ? 'bg-brand-primary/10 text-brand-primary' : 'text-ui-ink-strong hover:bg-ui-hover',
+        className,
+      )}
+    >
+      <span>{label}</span>
+      <ToggleSwitch checked={checked} />
+    </button>
+  );
+}

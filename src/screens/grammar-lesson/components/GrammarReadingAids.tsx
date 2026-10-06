@@ -1,6 +1,5 @@
-import { SegmentedControl, ToggleSwitch } from '../../../lib/widgets';
+import { SegmentedControl, SwitchRow } from '../../../lib/widgets';
 import type { CharacterFont } from '../../../store/useAppStore';
-import { cn } from '../../../utils/cn';
 
 interface GrammarReadingAidsProps {
   characterPreference: 'traditional' | 'simplified';
@@ -68,38 +67,10 @@ export function GrammarReadingAids({
         </span>
         <div role="menu" aria-label="Reading aids" className="flex flex-col gap-1.5">
           {/* Pinyin Toggle */}
-          <button
-            type="button"
-            role="switch"
-            aria-checked={showPinyin}
-            onClick={onTogglePinyin}
-            className={cn(
-              'flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold transition-colors outline-none focus-ring',
-              showPinyin
-                ? 'bg-brand-primary/10 text-brand-primary'
-                : 'text-ui-ink-strong hover:bg-ui-hover',
-            )}
-          >
-            <span>Pinyin</span>
-            <ToggleSwitch checked={showPinyin} />
-          </button>
+          <SwitchRow label="Pinyin" checked={showPinyin} onToggle={onTogglePinyin} tinted />
 
           {/* Translation Toggle */}
-          <button
-            type="button"
-            role="switch"
-            aria-checked={showTranslation}
-            onClick={onToggleTranslation}
-            className={cn(
-              'flex min-h-11 w-full items-center justify-between rounded-compact px-3 py-2 text-sm font-extrabold transition-colors outline-none focus-ring',
-              showTranslation
-                ? 'bg-brand-primary/10 text-brand-primary'
-                : 'text-ui-ink-strong hover:bg-ui-hover',
-            )}
-          >
-            <span>Translation</span>
-            <ToggleSwitch checked={showTranslation} />
-          </button>
+          <SwitchRow label="Translation" checked={showTranslation} onToggle={onToggleTranslation} tinted />
         </div>
       </div>
     </div>
