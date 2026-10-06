@@ -51,14 +51,3 @@ export async function fetchAllMnemonicsDebug(): Promise<{
     return [];
   }
 }
-
-export async function saveMnemonicToCache(cacheKey: string, mnemonic: string): Promise<void> {
-  mnemonicCache.set(cacheKey, mnemonic);
-}
-
-/** Check whether a key exists in the in-memory cache. */
-export function hasCachedMnemonic(cacheKey: string): boolean {
-  return mnemonicCache.has(cacheKey);
-}
-
-export { getCachedMnemonic as getMnemonic, saveMnemonicToCache as saveMnemonic };

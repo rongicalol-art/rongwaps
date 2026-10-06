@@ -189,10 +189,6 @@ export async function lookupPackMnemonic(cacheKey: string): Promise<string | nul
   return resolveMnemonicFromMap(map, cacheKey);
 }
 
-export function resetMemoryHookPackCache(): void {
-  hookMapPromise = null;
-}
-
 let levelIndexPromise: Promise<LevelIndex | null> | null = null;
 
 /** TOCFL character/word levels (TBCL scale, HSK gap fill); null when unavailable. */
