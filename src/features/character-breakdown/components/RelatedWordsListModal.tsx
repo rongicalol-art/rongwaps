@@ -1,5 +1,5 @@
 import React from 'react';
-import { EmptyState, LevelTag, ReferenceRow, SectionEyebrow, WorkspaceDetailShell } from '../../../lib/widgets';
+import { EmptyState, LevelTag, ReferenceRow, SectionEyebrow, DetailShell } from '../../../lib/widgets';
 import { RAIL_CARD_CLASSES } from './v3/railStyles';
 import { groupWordsByBook } from '../../../utils/wordOrdering';
 import { useLevels } from '../../../hooks/useLevels';
@@ -28,7 +28,7 @@ export function RelatedWordsListModal({ initialChar, relatedWords, activeBook, o
   );
 
   return (
-    <WorkspaceDetailShell
+    <DetailShell
       ariaLabel={`Words related to ${initialChar}`}
       title={`Related to “${initialChar}”`}
       onClose={onClose}
@@ -73,6 +73,6 @@ export function RelatedWordsListModal({ initialChar, relatedWords, activeBook, o
           );
         })
       )}
-    </WorkspaceDetailShell>
+    </DetailShell>
   );
 }

@@ -330,7 +330,3 @@ Dialog.Description = DialogDescription;
 Dialog.Close = DialogClose;
 Dialog.Body = DialogBody;
 Dialog.Footer = DialogFooter;
-
-// Alias ModalDialog to Dialog for 100% backward compatibility
-export const ModalDialog = Dialog;
-export type ModalDialogProps = DialogProps;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
   ActionButton,
   AppIcon,
-  BottomDrawer,
+  Drawer,
   SegmentedControl,
 } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
@@ -142,7 +142,7 @@ export function PracticeFormatMenu({ mode, className = '' }: PracticeFormatMenuP
         <AppIcon name="menu" size={22} />
       </button>
 
-      <BottomDrawer
+      <Drawer
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         title="Study Format"
@@ -313,7 +313,7 @@ export function PracticeFormatMenu({ mode, className = '' }: PracticeFormatMenuP
             </ActionButton>
           </div>
         </div>
-      </BottomDrawer>
+      </Drawer>
     </>
   );
 }

@@ -158,7 +158,6 @@ export interface DetailShellProps {
   children: ReactNode;
 }
 
-export type WorkspaceDetailShellProps = DetailShellProps;
 
 /**
  * Unified DetailShell component:
@@ -235,6 +234,3 @@ DetailShell.Root = DetailShellRoot;
 DetailShell.Scroller = DetailShellScroller;
 DetailShell.Content = DetailShellContent;
 DetailShell.Floating = DetailShellFloating;
-
-// Backward-compatible alias
-export const WorkspaceDetailShell = DetailShell;

@@ -97,9 +97,6 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
 export const STARRED_FOLDER_COLOR: FolderColorOption = FOLDER_COLOR_PALETTE.find(c => c.id === 'yellow')!;
 export const CUSTOM_CARDS_FOLDER_COLOR: FolderColorOption = FOLDER_COLOR_PALETTE.find(c => c.id === 'blue')!;
 
-// Options presented to the user when creating custom folders (all 8 palette choices)
-export const CUSTOM_FOLDER_OPTIONS = FOLDER_COLOR_PALETTE;
-
 export function getFolderColorOption(idOrColor?: string): FolderColorOption | undefined {
   if (!idOrColor) return undefined;
   const lower = idOrColor.toLowerCase();

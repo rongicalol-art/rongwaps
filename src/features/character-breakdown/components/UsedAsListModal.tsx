@@ -1,5 +1,5 @@
 import React from 'react';
-import { WorkspaceDetailShell } from '../../../lib/widgets';
+import { DetailShell } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { UsedAsCompactItem } from './breakdown/UsedAsCompactItem';
 import { SAMPLE_BOOKS } from '../../../data/books';
@@ -24,7 +24,7 @@ export function UsedAsListModal({ initialChar, usedAsComponents, activeBook, onC
   }, [usedAsComponents]);
 
   return (
-    <WorkspaceDetailShell
+    <DetailShell
       ariaLabel={`Characters containing ${initialChar}`}
       title={`Characters with ${initialChar}`}
       onClose={onClose}
@@ -78,6 +78,6 @@ export function UsedAsListModal({ initialChar, usedAsComponents, activeBook, onC
           </div>
         </div>
       )}
-    </WorkspaceDetailShell>
+    </DetailShell>
   );
 }

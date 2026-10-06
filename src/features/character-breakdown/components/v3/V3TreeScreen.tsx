@@ -1,6 +1,6 @@
 import type { DBCharacterBreakdown } from '../../../../types/database';
 import type { ResolvedSoundClue } from '../../hooks/useSoundClue';
-import { AppIcon, LevelTag, WorkspaceDetailShell } from '../../../../lib/widgets';
+import { AppIcon, LevelTag, DetailShell } from '../../../../lib/widgets';
 import { useLevel } from '../../../../hooks/useLevels';
 import { numberToToneMarks } from '../../../../utils/pinyin';
 import { V3RuntimeTree } from './V3RuntimeTree';
@@ -27,7 +27,7 @@ export function V3TreeScreen({
   const level = useLevel(character);
 
   return (
-    <WorkspaceDetailShell
+    <DetailShell
       ariaLabel={`Component tree for ${character}`}
       title="Component tree"
       onBack={onBack}
@@ -61,6 +61,6 @@ export function V3TreeScreen({
           <V3RuntimeTree character={character} onGlyphClick={onGlyphClick} mode="tree" showHeading={false} soundGlyph={soundClue?.treeGlyph} soundShift={soundClue?.treeShift} accentHex={accentHex} edgeHex={edgeHex} />
         </section>
       </div>
-    </WorkspaceDetailShell>
+    </DetailShell>
   );
 }

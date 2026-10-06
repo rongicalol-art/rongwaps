@@ -73,9 +73,9 @@ Overlay stacking has one owner: the `--z-index-*` scale in `src/index.css` `@the
 | `z-activity` | 200 | The activity modal shell (`ActivityModalWrapper`) |
 | `z-dock` | 250 | Floating docks and their scrims (`PracticeModeDock`, `SearchModeDock`, `WritingDock`, the mobile nav scrim) |
 | `z-overlay` | 300 | Overlay-host container inside an activity/column (`activity-overlays-root`, `character-breakdown-overlay-container`) |
-| `z-detail` | 400 | Workspace-bounded detail window (`WorkspaceDetailShell`) |
+| `z-detail` | 400 | Workspace-bounded detail window (`DetailShell`) |
 | `z-detail-raised` | 450 | Detail window stacked above another detail window (`V3TreeScreen`) |
-| `z-window` | 500 | Full-viewport study windows (`WorkspaceWindow`: `ReaderScreen`, `GrammarLessonScreen`, their loaders; Grammar renders after Reader so it stacks on top), full-screen loading (`LoadingScreen fullScreen`), drawer base layer (`BottomDrawer`) |
+| `z-window` | 500 | Full-viewport study windows (`WorkspaceWindow`: `ReaderScreen`, `GrammarLessonScreen`, their loaders; Grammar renders after Reader so it stacks on top), full-screen loading (`LoadingScreen fullScreen`), drawer base layer (`Drawer`) |
 | `z-window-detail` | 550 | A detail window over the workspace or a study window, still under the sidebar (`WorkspaceWindow layer="window-detail"`: `DictionaryDetailOverlay`, body-hosted `CharacterBreakdownOverlay`, `PracticeSettingsScreen`) |
 | `z-shell` | 600 | App chrome that outranks every window (sidebar and mobile nav panel in `LayoutShell`) and full-screen viewers that cover it (`BookPageViewer`, grammar book fallback) |
 | `z-drawer` | 650 | Reader study drawer (`ReaderStudyDrawer`) |
@@ -129,7 +129,7 @@ RongWaps supports both web and iOS standalone PWA (`viewport-fit=cover`). To avo
 | `.pb-dock-safe` | `padding-bottom: var(--dock-bottom)` (responsive: `sm:pb-5`, `md:pb-6`) | Bottom-anchored floating dock wrappers (`PracticeModeDock`). Ensures responsive bottom clearance while anchoring to viewport bottom. |
 | `.pb-dock-clearance` | `padding-bottom: var(--dock-clearance)` (responsive: `sm:pb-28`) | Scroll containers containing floating docks (`FlashcardScreen`, `FlashcardList`, `SearchScreen`, `LessonComplete`, `ScreenSkeleton`). Prevents last element from hiding behind dock. |
 | `.pb-sheet-safe` | `padding-bottom: var(--sheet-safe-pb)` | Docked sheets and sticky bottom footers (`FeedbackBottomBar`, `CurriculumLibrary`, `LibraryScreen`, `GrammarLessonScreen`, `BookViewerFooter`). |
-| `.pb-safe-area` | `padding-bottom: max(1rem, var(--safe-area-bottom))` | Scrollable drawer/sheet inner content (`BottomDrawer`, `ReaderStudyDrawer`). |
+| `.pb-safe-area` | `padding-bottom: max(1rem, var(--safe-area-bottom))` | Scrollable drawer/sheet inner content (`Drawer`, `ReaderStudyDrawer`). |
 | `.dock-pill` | `height: var(--dock-height); min-height: var(--dock-height)` | Fixed 60px height for all dock pills. |
 | `.btn-touch-primary` | `min-height: 52px; sm:min-height: 56px` | Touch-friendly primary action buttons (`Continue`, `Check`, `Start`, `Review`). |
 

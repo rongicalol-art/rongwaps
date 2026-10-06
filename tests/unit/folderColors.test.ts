@@ -2,7 +2,6 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   FOLDER_COLOR_PALETTE,
-  CUSTOM_FOLDER_OPTIONS,
   STARRED_FOLDER_COLOR,
   CUSTOM_CARDS_FOLDER_COLOR,
   getFolderColorOption,
@@ -11,7 +10,7 @@ import {
 
 test('palette has 8 distinct vibrant colors with front and back shades', () => {
   assert.equal(FOLDER_COLOR_PALETTE.length, 8);
-  assert.equal(CUSTOM_FOLDER_OPTIONS.length, 8);
+  assert.equal(FOLDER_COLOR_PALETTE.length, 8);
   const ids = new Set(FOLDER_COLOR_PALETTE.map((c) => c.id));
   assert.equal(ids.size, 8);
 

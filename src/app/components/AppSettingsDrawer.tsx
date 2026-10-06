@@ -1,6 +1,6 @@
 import { debugLogger } from '../../utils/debugLogger';
 import { useEffect, useState } from 'react';
-import { ActionButton, AppIcon, BottomDrawer, ConfirmationDialog, SegmentedControl } from '../../lib/widgets';
+import { ActionButton, AppIcon, Drawer, ConfirmationDialog, SegmentedControl } from '../../lib/widgets';
 import { isIosDevice, isStandaloneDisplay } from '../../utils/pwaInstall';
 
 export interface AppSettingsDrawerProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -54,7 +54,7 @@ export function AppSettingsDrawer({
 
   return (
     <>
-      <BottomDrawer isOpen={isOpen} onClose={onClose} title="Settings" ariaLabel="App settings">
+      <Drawer isOpen={isOpen} onClose={onClose} title="Settings" ariaLabel="App settings">
         <div className={`flex flex-col gap-6 pb-6 text-left ${className}`} {...props}>
           <div className="flex flex-col gap-3">
             <p className="text-xs font-extrabold uppercase tracking-wider text-ui-muted">Chinese Character Format</p>
@@ -156,7 +156,7 @@ export function AppSettingsDrawer({
             </ActionButton>
           </div>
         </div>
-      </BottomDrawer>
+      </Drawer>
 
       {isConfirmResetOpen && (
         <ConfirmationDialog

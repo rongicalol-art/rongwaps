@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 import { ActionButton, AppIcon, DropdownMenu, DropdownMenuItem, Drawer, FolderSvg } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { isTechnicalSense, useSaveWordDestination } from '../hooks/useSaveWordDestination';
-import { CUSTOM_FOLDER_OPTIONS, STARRED_FOLDER_COLOR, resolveFolderColor } from '../../../utils/folderColors';
+import { FOLDER_COLOR_PALETTE, STARRED_FOLDER_COLOR, resolveFolderColor } from '../../../utils/folderColors';
 import { cn } from '../../../utils/cn';
 
 export function SaveWordModal() {
@@ -32,7 +32,7 @@ export function SaveWordModal() {
   const [isWritingMeaning, setIsWritingMeaning] = useState(false);
   const [customMeaning, setCustomMeaning] = useState('');
   const [newFolderName, setNewFolderName] = useState('');
-  const [selectedColorId, setSelectedColorId] = useState<string>(CUSTOM_FOLDER_OPTIONS[0].id);
+  const [selectedColorId, setSelectedColorId] = useState<string>(FOLDER_COLOR_PALETTE[0].id);
   const [isSubmittingFolder, setIsSubmittingFolder] = useState(false);
 
   const newFolderColor = resolveFolderColor(selectedColorId);
@@ -217,7 +217,7 @@ export function SaveWordModal() {
                 className="w-full rounded-control border-2 border-ui-border bg-ui-surface px-3 py-2.5 text-sm font-bold text-ui-ink outline-none focus-ring"
               />
               <div className="flex flex-wrap items-center justify-center gap-3 py-1">
-                {CUSTOM_FOLDER_OPTIONS.map((c) => (
+                {FOLDER_COLOR_PALETTE.map((c) => (
                   <button
                     key={c.id}
                     type="button"

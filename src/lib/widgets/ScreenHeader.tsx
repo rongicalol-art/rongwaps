@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { cn } from '../../utils/cn';
 import { AppIcon } from './AppIcon';
 import { IconActionButton } from './IconActionButton';
-import { StudyPartProgressRail } from './PartProgressRail';
+import { StudyPartProgressRail } from './part-progress';
 import type { CourseLessonPartProgress, PartSegment } from '../../types/models';
 import { visibleProgressWidth } from '../../utils/progress';
 

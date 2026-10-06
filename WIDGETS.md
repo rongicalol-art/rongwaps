@@ -88,7 +88,7 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
   ```tsx
   <ActivityModalWrapper id="quiz" ariaLabel="Quiz" onClose={onClose}>{children}</ActivityModalWrapper>
   ```
-- **Dialog** (alias: **ModalDialog**) — unified modal pop-up window primitive supporting both single-tag invocation (`<Dialog isOpen={open} onClose={onClose} title="...">`) and compound customization (`Dialog.Root`, `Dialog.Backdrop`, `Dialog.Content`, `Dialog.Header`, `Dialog.Title`, `Dialog.Description`, `Dialog.Close`, `Dialog.Body`, `Dialog.Footer`). Provides automatic ARIA dialog attributes (`aria-labelledby`, `aria-describedby`), spring physics, tactile depth tiers (`sm` | `md` | `lg` | `xl`), focus trapping with `useModalFocus`, and portaling.
+- **Dialog** — unified modal pop-up window primitive supporting both single-tag invocation (`<Dialog isOpen={open} onClose={onClose} title="...">`) and compound customization (`Dialog.Root`, `Dialog.Backdrop`, `Dialog.Content`, `Dialog.Header`, `Dialog.Title`, `Dialog.Description`, `Dialog.Close`, `Dialog.Body`, `Dialog.Footer`). Provides automatic ARIA dialog attributes (`aria-labelledby`, `aria-describedby`), spring physics, tactile depth tiers (`sm` | `md` | `lg` | `xl`), focus trapping with `useModalFocus`, and portaling.
   ```tsx
   // Single-tag usage:
   <Dialog isOpen={open} onClose={onClose} title="Folder Details" size="sm">{children}</Dialog>
@@ -106,7 +106,7 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
     </Dialog.Content>
   </Dialog.Root>
   ```
-- **Drawer** (alias: **BottomDrawer**) — unified bottom sheet drawer primitive supporting both single-tag invocation (`<Drawer isOpen={open} onClose={onClose} title="...">`) and compound customization (`Drawer.Root`, `Drawer.Backdrop`, `Drawer.Content`, `Drawer.Handle`, `Drawer.Header`, `Drawer.StickyHeader`, `Drawer.Title`, `Drawer.Close`, `Drawer.Body`). Below `md` it is a bottom sheet with drag-to-dismiss; at `md+` it is a floating card centered in the workspace (no handle), or a right-docked panel (same depth-block look as the sidebar, no blur) with `mdPlacement="side"` (used by `StudyDrawer`). The scrim always covers the full viewport (sidebar dimmed too) while the card stays inside the workspace bounds. Also provides tone support (`surface` | `practice` | `canvas`), size presets (`sm` to `full`), and sticky gradient headers.
+- **Drawer** — unified bottom sheet drawer primitive supporting both single-tag invocation (`<Drawer isOpen={open} onClose={onClose} title="...">`) and compound customization (`Drawer.Root`, `Drawer.Backdrop`, `Drawer.Content`, `Drawer.Handle`, `Drawer.Header`, `Drawer.StickyHeader`, `Drawer.Title`, `Drawer.Close`, `Drawer.Body`). Below `md` it is a bottom sheet with drag-to-dismiss; at `md+` it is a floating card centered in the workspace (no handle), or a right-docked panel (same depth-block look as the sidebar, no blur) with `mdPlacement="side"` (used by `StudyDrawer`). The scrim always covers the full viewport (sidebar dimmed too) while the card stays inside the workspace bounds. Also provides tone support (`surface` | `practice` | `canvas`), size presets (`sm` to `full`), and sticky gradient headers.
   ```tsx
   // Single-tag usage:
   <Drawer isOpen={open} onClose={onClose} title="Examples">{children}</Drawer>
@@ -131,7 +131,7 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
   ```tsx
   <WorkspaceWindow ref={dialogRef} tone="practice" role="dialog" aria-modal="true" aria-label="Reading Mode">{content}</WorkspaceWindow>
   ```
-- **DetailShell** (alias: **WorkspaceDetailShell**) — unified workspace-bounded detail view primitive supporting both single-tag invocation (`<DetailShell ariaLabel="Word detail" onClose={onClose} title="Details">`) and compound customization (`DetailShell.Root`, `DetailShell.Scroller`, `DetailShell.Content`, `DetailShell.Floating`). Separates scroll mechanics, sticky headers, inner animated content, and floating overlay layers (bottom tabs, modals).
+- **DetailShell** — unified workspace-bounded detail view primitive supporting both single-tag invocation (`<DetailShell ariaLabel="Word detail" onClose={onClose} title="Details">`) and compound customization (`DetailShell.Root`, `DetailShell.Scroller`, `DetailShell.Content`, `DetailShell.Floating`). Separates scroll mechanics, sticky headers, inner animated content, and floating overlay layers (bottom tabs, modals).
   ```tsx
   // Single-tag usage:
   <DetailShell ariaLabel="Word detail" onClose={onClose} title="Breakdown">{content}</DetailShell>

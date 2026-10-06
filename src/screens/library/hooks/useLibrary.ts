@@ -11,7 +11,7 @@ import { UserFlashcard } from '../../../types/models';
 import {
   STARRED_FOLDER_COLOR,
   CUSTOM_CARDS_FOLDER_COLOR,
-  CUSTOM_FOLDER_OPTIONS,
+  FOLDER_COLOR_PALETTE,
   resolveFolderColor,
 } from '../../../utils/folderColors';
 
@@ -113,7 +113,7 @@ export function useLibrary() {
 
   const [showFolderModal, setShowFolderModal] = useState(false);
   const [newFolderName, setNewFolderName] = useState('');
-  const [selectedFolderColorId, setSelectedFolderColorId] = useState<string>(CUSTOM_FOLDER_OPTIONS[0].id);
+  const [selectedFolderColorId, setSelectedFolderColorId] = useState<string>(FOLDER_COLOR_PALETTE[0].id);
   const [isCreatingFolder, setIsCreatingFolder] = useState(false);
 
   const allCollections = useMemo(() => {

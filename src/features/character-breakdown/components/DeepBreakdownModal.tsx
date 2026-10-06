@@ -1,6 +1,6 @@
 import { CharacterBreakdown } from './CharacterBreakdown';
 import { SAMPLE_BOOKS } from '../../../data/books';
-import { WorkspaceDetailShell } from '../../../lib/widgets';
+import { DetailShell } from '../../../lib/widgets';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
 
@@ -13,7 +13,7 @@ interface DeepBreakdownModalProps {
 
 export function DeepBreakdownModal({ initialChar, onClose, onWordClick }: DeepBreakdownModalProps) {
   return (
-    <WorkspaceDetailShell
+    <DetailShell
       ariaLabel={`Component tree for ${initialChar}`}
       title="Component tree"
       onClose={onClose}
@@ -21,6 +21,6 @@ export function DeepBreakdownModal({ initialChar, onClose, onWordClick }: DeepBr
       contentInnerClassName="pb-24"
     >
       <CharacterBreakdown character={initialChar} selectedCharIndex={0} onWordClick={onWordClick} />
-    </WorkspaceDetailShell>
+    </DetailShell>
   );
 }

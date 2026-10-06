@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { ActionButton, AppIcon, Dialog, FolderSvg } from '../../lib/widgets';
 import { cn } from '../../utils/cn';
 import {
-  CUSTOM_FOLDER_OPTIONS,
+  FOLDER_COLOR_PALETTE,
   resolveFolderColor,
 } from '../../utils/folderColors';
 
@@ -80,7 +80,7 @@ export function FolderModal({
           aria-label="Select folder color"
           className="grid grid-cols-4 gap-2 sm:grid-cols-8"
         >
-          {CUSTOM_FOLDER_OPTIONS.map((color) => {
+          {FOLDER_COLOR_PALETTE.map((color) => {
             const isSelected = color.id === currentColor.id;
             return (
               <button

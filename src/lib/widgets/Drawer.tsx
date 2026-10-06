@@ -267,8 +267,6 @@ export function DrawerBody({ className, children }: { className?: string; childr
   );
 }
 
-export type BottomDrawerTone = DrawerTone;
-export type BottomDrawerSize = DrawerSize;
 export type BottomDrawerHeaderVariant = 'standard' | 'sticky-fade';
 export type BottomDrawerTitleVariant = 'standard' | 'eyebrow';
 
@@ -295,7 +293,6 @@ export interface DrawerProps {
   portalTarget?: HTMLElement | null;
 }
 
-export type BottomDrawerProps = DrawerProps;
 
 /**
  * Unified Drawer component: can be used as a simple single-tag drawer
@@ -389,6 +386,3 @@ Drawer.StickyHeader = DrawerStickyHeader;
 Drawer.Title = DrawerTitle;
 Drawer.Close = DrawerClose;
 Drawer.Body = DrawerBody;
-
-// Backward-compatible alias
-export const BottomDrawer = Drawer;

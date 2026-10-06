@@ -40,7 +40,7 @@ export * from './CircularProgress';
 export * from './CustomProgressBar';
 export * from './LoadingScreen';
 export * from './LottiePlayer';
-export * from './PartProgressRail';
+export * from './part-progress';
 export * from './ScreenSkeleton';
 export * from './Skeleton';
 
