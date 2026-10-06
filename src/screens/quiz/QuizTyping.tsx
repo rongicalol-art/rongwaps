@@ -1,27 +1,11 @@
-import React, { useMemo, useState } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { Flashcard } from '../../data/flashcards';
-import { SAMPLE_BOOKS } from '../../data/books';
-import { FeedbackBottomBar, LessonComplete, PracticeFormatMenu } from '../../features/practice';
-import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
-import { MemoryHookCharacter } from '../../features/character-memory-hooks';
 import { useQuizTyping } from './hooks/useQuiz';
-import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
-import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
+import { QuizHanziPrompt, QuizShell, type QuizModeProps } from './QuizShell';
 import { useAppStore, type TypingPromptType } from '../../store/useAppStore';
-import { buildPracticePartSegments } from '../../utils/practicePartSegments';
-import { isHanziChar } from '../../utils/hanzi';
 import { AppIcon } from '../../lib/widgets';
 import { numberToToneMarks } from '../../utils/pinyin';
-
-interface QuizModeProps {
-  cards: Flashcard[];
-  onEnd: () => void;
-  onContinue?: () => void;
-  continueLabel?: string;
-  activeBookId: number;
-  sessionKey: string;
-}
 
 interface QuizTypingCardProps {
   currentCard: Flashcard;
@@ -35,218 +19,95 @@ interface QuizTypingCardProps {
 
 const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
   currentCard, input, status, onInputChange, onSubmit, onOpenBreakdown, promptType
-}) => {
-  const frontLength = currentCard?.front?.length || 1;
-  const getFrontFontSize = (len: number) => {
-    if (len === 1) return 'text-[90px] sm:text-[120px]';
-    if (len === 2) return 'text-[70px] sm:text-[96px]';
-    if (len === 3) return 'text-[54px] sm:text-[72px]';
-    if (len === 4) return 'text-[44px] sm:text-[60px]';
-    if (len <= 6) return 'text-[36px] sm:text-[48px]';
-    return 'text-[28px] sm:text-[36px]';
-  };
+}) => (
+  <motion.div
+    initial={{ opacity: 0, y: 8 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.14, ease: 'easeOut' }}
+    className="flex w-full flex-col will-change-transform"
+  >
+    {promptType === 'meaning' ? (
+      <div className="flex w-full items-center justify-center pb-7 pt-8 px-4">
+        <span className="text-2xl sm:text-3xl font-extrabold text-ui-ink text-center leading-snug">
+          {currentCard.back}
+        </span>
+      </div>
+    ) : (
+      <QuizHanziPrompt front={currentCard.front} onOpenBreakdown={onOpenBreakdown} className="pb-7 pt-8" />
+    )}
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.14, ease: 'easeOut' }}
-      className="flex w-full flex-col will-change-transform"
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        onSubmit();
+      }}
+      className="w-full px-2"
     >
-      {promptType === 'meaning' ? (
-        <div className="flex w-full items-center justify-center pb-7 pt-8 px-4">
-          <span className="text-2xl sm:text-3xl font-extrabold text-ui-ink text-center leading-snug">
-            {currentCard.back}
-          </span>
-        </div>
-      ) : (
-        <div className="flex w-full flex-wrap items-center justify-center gap-x-1 pb-7 pt-8 px-4">
-          {Array.from(currentCard.front).map((char, i) =>
-            isHanziChar(char) ? (
-              <MemoryHookCharacter
-                key={i}
-                char={char}
-                label={`Open character breakdown for ${char}`}
-                onOpen={() => onOpenBreakdown(i)}
-                glyphClassName={`${getFrontFontSize(frontLength)} leading-tight text-ui-ink text-center`}
-                className="px-1.5 py-1"
-              />
-            ) : (
-              <span key={i} className={`${getFrontFontSize(frontLength)} font-chinese leading-tight text-ui-ink`}>
-                {char}
-              </span>
-            ),
-          )}
-        </div>
-      )}
+      <label htmlFor="quiz-pinyin-answer" className="mb-2 block text-sm font-extrabold text-ui-muted-strong">
+        Pinyin
+      </label>
+      <div className="relative">
+        <AppIcon
+          name="keyboard"
+          size={22}
+          className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-ui-muted"
+        />
+        <input
+          id="quiz-pinyin-answer"
+          type="text"
+          value={input}
+          onChange={(event) => onInputChange(event.target.value)}
+          onKeyDown={(event) => {
+            if (event.key !== 'Enter' || event.repeat || event.nativeEvent.isComposing) return;
+            event.preventDefault();
+            onSubmit();
+          }}
+          disabled={status !== 'idle'}
+          className={`w-full rounded-control border-b-[length:var(--depth-md)] bg-ui-surface py-5 pl-14 pr-5 text-left text-[21px] font-extrabold text-ui-ink outline-none transition-[border-color,background-color] placeholder:text-ui-muted focus-ring disabled:bg-ui-hover ${
+            status === 'correct'
+              ? 'border-feedback-success'
+              : status === 'wrong'
+                ? 'border-feedback-danger'
+                : 'border-ui-border focus:border-brand-primary'
+          }`}
+          placeholder="Type the pronunciation"
+          autoCapitalize="none"
+          autoComplete="off"
+          spellCheck={false}
+          autoFocus
+        />
+      </div>
+    </form>
+  </motion.div>
+);
 
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          onSubmit();
-        }}
-        className="w-full px-2"
-      >
-        <label htmlFor="quiz-pinyin-answer" className="mb-2 block text-sm font-extrabold text-ui-muted-strong">
-          Pinyin
-        </label>
-        <div className="relative">
-          <AppIcon
-            name="keyboard"
-            size={22}
-            className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-ui-muted"
-          />
-          <input
-            id="quiz-pinyin-answer"
-            type="text"
-            value={input}
-            onChange={(event) => onInputChange(event.target.value)}
-            onKeyDown={(event) => {
-              if (event.key !== 'Enter' || event.repeat || event.nativeEvent.isComposing) return;
-              event.preventDefault();
-              onSubmit();
-            }}
-            disabled={status !== 'idle'}
-            className={`w-full rounded-control border-b-[length:var(--depth-md)] bg-ui-surface py-5 pl-14 pr-5 text-left text-[21px] font-extrabold text-ui-ink outline-none transition-[border-color,background-color] placeholder:text-ui-muted focus-ring disabled:bg-ui-hover ${
-              status === 'correct'
-                ? 'border-feedback-success'
-                : status === 'wrong'
-                  ? 'border-feedback-danger'
-                  : 'border-ui-border focus:border-brand-primary'
-            }`}
-            placeholder="Type the pronunciation"
-            autoCapitalize="none"
-            autoComplete="off"
-            spellCheck={false}
-            autoFocus
-          />
-        </div>
-      </form>
-    </motion.div>
-  );
-};
-
-export const QuizTyping: React.FC<QuizModeProps> = ({ cards, onEnd, onContinue, continueLabel, activeBookId, sessionKey }) => {
-  const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
-  const [breakdownIndex, setBreakdownIndex] = useState(0);
-  const {
-    activeCards,
-    currentIndex,
-    currentCard,
-    input,
-    handleInputChange,
-    status,
-    handleCheck,
-    retryAnswer,
-    completed,
-    resetAll,
-    reviewUnlearned,
-    unlearnedCount,
-    learnedCount,
-    isShuffled,
-    toggleShuffle,
-    progressInfo,
-  } = useQuizTyping(cards, sessionKey);
-  const autoAdvanceCorrect = useAppStore((state) => state.autoAdvanceCorrect);
-  const autoAdvance = status === 'correct' ? autoAdvanceCorrect : false;
-
-  const handleTypingSubmit = () => {
-    if (status === 'wrong') {
-      retryAnswer();
-      return;
-    }
-    handleCheck();
-  };
-
-  usePracticeAnswerAutomation({
-    status,
-    onAdvance: handleCheck,
-    advanceWrong: false,
-    blocked: Boolean(activeBreakdown),
-  });
-  const isNonCurriculum = sessionKey.includes('review') || sessionKey.includes('library');
-  const partSegments = useMemo(
-    () => (isNonCurriculum ? [] : buildPracticePartSegments(activeCards)),
-    [activeCards, isNonCurriculum],
-  );
-  usePracticeHeaderRegistration({
-    currentIndex: progressInfo.displayIndex,
-    totalCount: progressInfo.totalCount,
-    showLightbulb: false,
-    partSegments,
-    isRetry: progressInfo.isRetry,
-    cleanupPhase: progressInfo.cleanupPhase,
-    onShuffleClick: toggleShuffle,
-    onRestartClick: resetAll,
-    isShuffled,
-  });
-
-  const activeBook = SAMPLE_BOOKS.find(b => b.id === activeBookId) || SAMPLE_BOOKS[0];
+export const QuizTyping: React.FC<QuizModeProps> = ({ cards, sessionKey, ...shell }) => {
+  const session = useQuizTyping(cards, sessionKey);
+  const { currentCard, input, handleInputChange, status, handleCheck, retryAnswer } = session;
   const typingPromptType = useAppStore((state) => state.typingPromptType);
 
-  if (completed) {
-    return (
-      <LessonComplete
-        learnedCount={learnedCount}
-        unlearnedCount={unlearnedCount}
-        onContinue={onContinue ?? onEnd}
-        continueLabel={onContinue ? continueLabel : undefined}
-        onReviewUnlearned={unlearnedCount > 0 ? reviewUnlearned : undefined}
-        onResetAll={resetAll}
-      />
-    );
-  }
-
-  if (!currentCard) return null;
-
   return (
-    <div className="relative flex-1 flex flex-col bg-transparent overflow-hidden text-ui-ink font-sans pt-[72px]">
-      <div className="flex-1 flex flex-col max-w-lg mx-auto w-full px-4 sm:px-6 pb-[240px] overscroll-none overflow-y-auto">
-        <div className="mt-4 flex w-full items-center gap-2.5 px-2">
-          <PracticeFormatMenu mode="quiz-typing" />
-          <h2 className="text-xl font-extrabold text-ui-ink sm:text-2xl">
-            Type the pinyin
-          </h2>
-        </div>
-
+    <QuizShell
+      {...shell}
+      sessionKey={sessionKey}
+      session={session}
+      mode="quiz-typing"
+      title="Type the pinyin"
+      status={status}
+      correctAnswer={numberToToneMarks(currentCard?.pinyin || '')}
+      isCheckDisabled={!input.trim()}
+    >
+      {({ openBreakdown }) => (
         <QuizTypingCard
-          key={`${currentIndex}:${currentCard.id}`}
           currentCard={currentCard}
           input={input}
           status={status}
           onInputChange={handleInputChange}
-          onSubmit={handleTypingSubmit}
-          onOpenBreakdown={(index) => {
-            setBreakdownIndex(index);
-            setActiveBreakdown(currentCard.front);
-          }}
+          onSubmit={status === 'wrong' ? retryAnswer : handleCheck}
+          onOpenBreakdown={openBreakdown}
           promptType={typingPromptType}
         />
-      </div>
-
-      <FeedbackBottomBar
-        status={status}
-        correctAnswer={numberToToneMarks(currentCard.pinyin || '')}
-        onContinue={status === 'correct' ? () => handleCheck() : retryAnswer}
-        showCheck={false}
-        isCheckDisabled={!input.trim()}
-        hideWhenAutoAdvance={autoAdvance && status !== 'idle'}
-        showContinueOnWrong
-        keyboardShortcutDisabled={Boolean(activeBreakdown)}
-        onBreakdown={() => {
-          setBreakdownIndex(0);
-          setActiveBreakdown(currentCard.front);
-        }}
-        activeBook={activeBook}
-      />
-
-      <CharacterBreakdownOverlay
-        activeBreakdown={activeBreakdown}
-        initialCharIndex={breakdownIndex}
-        onClose={() => setActiveBreakdown(null)}
-        activeBook={activeBook}
-      />
-
-    </div>
+      )}
+    </QuizShell>
   );
-}
+};
