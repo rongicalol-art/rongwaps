@@ -177,6 +177,13 @@ export type AppIconName =
   | 'statusUnshuffled'
   | 'statusRestart';
 
+/** 24×24 svg icon from children; size/className/rest props pass through. */
+const svgIcon = (children: React.ReactNode): IconType => ({ size = '1em', className, ...props }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={size} height={size} className={className} {...props}>
+    {children}
+  </svg>
+);
+
 /**
  * Soft rounded speaker glyph used for every play/pronounce affordance.
  * Phosphor's speaker reads too angular beside the app's rounded geometry, so
@@ -205,15 +212,8 @@ const SoftSpeakerIcon: IconType = ({ size = '1em', color = 'currentColor', class
  * Phosphor's monochrome outline bulb. Purely decorative — the
  * owning button carries the accessible label.
  */
-const StudyBulbIcon: IconType = ({ size = '1em', className, ...props }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    width={size}
-    height={size}
-    className={className}
-    {...props}
-  >
+const StudyBulbIcon = svgIcon(
+  <>
     <path
       d="M12 1.9c-4.25 0-7.6 3.2-7.6 7.2 0 2.6 1.2 4.55 2.7 6.25.75.85 1.1 1.5 1.15 2.45h7.5c.05-.95.4-1.6 1.15-2.45 1.5-1.7 2.7-3.65 2.7-6.25 0-4-3.35-7.2-7.6-7.2Z"
       fill="var(--color-feedback-warning)"
@@ -227,7 +227,7 @@ const StudyBulbIcon: IconType = ({ size = '1em', className, ...props }) => (
       fill="var(--color-feedback-warning-edge)"
     />
     <circle cx="9.4" cy="7.2" r="1.6" fill="var(--color-ui-surface)" opacity="0.9" />
-  </svg>
+  </>
 );
 
 /**
@@ -249,15 +249,8 @@ const StudyGearIcon: IconType = ({ size = '1em', className, ...props }) => (
  * Chunky Duolingo-style status check badge: solid green circle with a tactile 3D
  * bottom edge and a bold, rounded white checkmark.
  */
-const DuoStatusCheckIcon: IconType = ({ size = '1em', className, ...props }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    width={size}
-    height={size}
-    className={className}
-    {...props}
-  >
+const DuoStatusCheckIcon = svgIcon(
+  <>
     <circle cx="12" cy="13.2" r="9.5" fill="var(--color-feedback-success-edge)" />
     <circle cx="12" cy="11.5" r="9.5" fill="var(--color-feedback-success)" />
     <path
@@ -268,22 +261,15 @@ const DuoStatusCheckIcon: IconType = ({ size = '1em', className, ...props }) => 
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-  </svg>
+  </>
 );
 
 /**
  * Chunky Duolingo-style status cross badge: solid red circle with a tactile 3D
  * bottom edge and a bold, rounded white X.
  */
-const DuoStatusCrossIcon: IconType = ({ size = '1em', className, ...props }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    width={size}
-    height={size}
-    className={className}
-    {...props}
-  >
+const DuoStatusCrossIcon = svgIcon(
+  <>
     <circle cx="12" cy="13.2" r="9.5" fill="var(--color-feedback-danger-edge)" />
     <circle cx="12" cy="11.5" r="9.5" fill="var(--color-feedback-danger)" />
     <path
@@ -294,22 +280,15 @@ const DuoStatusCrossIcon: IconType = ({ size = '1em', className, ...props }) => 
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-  </svg>
+  </>
 );
 
 /**
  * Chunky Duolingo-style status shuffle badge: solid brand blue circle with a tactile
  * 3D bottom edge and bold white shuffle arrows.
  */
-const DuoStatusShuffleIcon: IconType = ({ size = '1em', className, ...props }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    width={size}
-    height={size}
-    className={className}
-    {...props}
-  >
+const DuoStatusShuffleIcon = svgIcon(
+  <>
     <circle cx="12" cy="13.2" r="9.5" fill="var(--color-brand-primary-edge)" />
     <circle cx="12" cy="11.5" r="9.5" fill="var(--color-brand-primary)" />
     <path
@@ -344,22 +323,15 @@ const DuoStatusShuffleIcon: IconType = ({ size = '1em', className, ...props }) =
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-  </svg>
+  </>
 );
 
 /**
  * Chunky status unshuffled badge: neutral surface circle with a tactile 3D
  * bottom edge and bold white shuffle arrows.
  */
-const DuoStatusUnshuffledIcon: IconType = ({ size = '1em', className, ...props }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    width={size}
-    height={size}
-    className={className}
-    {...props}
-  >
+const DuoStatusUnshuffledIcon = svgIcon(
+  <>
     <circle cx="12" cy="13.2" r="9.5" fill="var(--color-ui-border)" />
     <circle cx="12" cy="11.5" r="9.5" fill="var(--color-ui-muted)" />
     <path
@@ -394,22 +366,15 @@ const DuoStatusUnshuffledIcon: IconType = ({ size = '1em', className, ...props }
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-  </svg>
+  </>
 );
 
 /**
  * Chunky Duolingo-style status restart badge: solid brand blue circle with a tactile
  * 3D bottom edge and a bold white counter-clockwise curved arrow.
  */
-const DuoStatusRestartIcon: IconType = ({ size = '1em', className, ...props }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    width={size}
-    height={size}
-    className={className}
-    {...props}
-  >
+const DuoStatusRestartIcon = svgIcon(
+  <>
     <circle cx="12" cy="13.2" r="9.5" fill="var(--color-brand-primary-edge)" />
     <circle cx="12" cy="11.5" r="9.5" fill="var(--color-brand-primary)" />
     <path
@@ -428,7 +393,7 @@ const DuoStatusRestartIcon: IconType = ({ size = '1em', className, ...props }) =
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-  </svg>
+  </>
 );
 
 const ICONS: Record<AppIconName, IconType> = {
