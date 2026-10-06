@@ -67,10 +67,3 @@ export function buildOverlayParams(state: OverlayUrlState): string {
   if (state.activity) params.set('activity', state.activity);
   return params.size > 0 ? `?${params.toString()}` : '';
 }
-
-/** Canonical search string for the URL, from parsed params. */
-export function overlaySearchOf(state: OverlayUrlState): string {
-  return buildOverlayParams(state);
-}
-
-export const EMPTY_OVERLAY_URL_STATE = EMPTY;

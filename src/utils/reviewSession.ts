@@ -22,12 +22,6 @@ import type { SRSData } from './srsEngine';
 
 export const REVIEW_SESSION_CAP = 20;
 
-export interface ReviewSessionInput {
-  dueCards: Flashcard[];
-  srsData: Record<string, SRSData>;
-  cap?: number;
-}
-
 export function buildReviewSession(
   dueCards: Flashcard[],
   srsData: Record<string, SRSData>,

@@ -48,15 +48,6 @@ export interface DBDictionaryEntry {
   curriculum_level?: number | null;
 }
 
-// Maps to `mnemonics` table in Supabase
-export interface DBMnemonic {
-  id: string;
-  character: string;
-  mnemonic: string;
-  content_type: 'character' | 'word';
-  created_at: string;
-}
-
 /** A jsonb argument/result as PostgREST serializes it. */
 export type Json =
   | string

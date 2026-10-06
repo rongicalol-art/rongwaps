@@ -5,8 +5,6 @@ import type { PackPart } from '../services/packLoader';
 import { parseMembers, type PartMember, type PartsIndex } from './parts';
 import { parseReadings, type ReadingsIndex } from './pronunciation';
 
-export interface GenericManifestPart { key: number; path: string; count: number; }
-
 export interface GenericContentManifest {
   schemaVersion: number;
   version: string;

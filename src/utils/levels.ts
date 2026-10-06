@@ -33,11 +33,6 @@ export function officialLevel(resolved: ResolvedLevel | null | undefined): numbe
   return resolved && (resolved.source === 'tbcl' || resolved.source === 'hsk') ? resolved.level : undefined;
 }
 
-/** Wrap a raw TBCL level (e.g. from the sound-hook or readiness data) for `LevelTag`. */
-export function asTbcl(level: number | undefined): ResolvedLevel | null {
-  return level ? { level, source: 'tbcl' } : null;
-}
-
 const HAN = /\p{Script=Han}/u;
 /** Radical combining forms (亻 氵 宀 …): parts, not vocabulary, so never "rare". */
 const COMBINING_FORMS = new Set(Array.from('亻氵扌忄宀艹讠钅饣纟刂阝辶廴礻衤犭灬罒癶疒冖亠彳攵夂丬爫忄⺈⺊⺌⺍⺗⻊⻏⻖⺮⺶⺼⻌⻍⻎⺆⺄⺧⺈乚亅丿丶丨'));

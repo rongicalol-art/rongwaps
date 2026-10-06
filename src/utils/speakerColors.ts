@@ -1,5 +1,3 @@
-export type SpeakerGender = 'female' | 'male' | 'unknown';
-
 const FEMALE_NAMES = new Set(['宜文', '友美', '元真', '媽媽', '女店員', '老師']);
 const MALE_NAMES = new Set(['中明', '國安', '家樂', '醫生']);
 

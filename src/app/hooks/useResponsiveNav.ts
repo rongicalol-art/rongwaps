@@ -5,21 +5,12 @@ export const isDesktopViewport = () => (
   typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches
 );
 
-export const isTabletViewport = () => (
-  typeof window !== 'undefined' && window.matchMedia('(min-width: 768px) and (max-width: 1023px)').matches
-);
-
 export const isExpandedViewport = () => (
   typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches
 );
 
 export const DESKTOP_NAV_PREFERENCE_KEY = 'rongwaps:desktop-nav-open';
 export const SIDEBAR_COLLAPSED_PREFERENCE_KEY = 'rongwaps:sidebar-collapsed';
-
-export const getInitialNavOpen = () => {
-  if (!isDesktopViewport()) return false;
-  return readString(DESKTOP_NAV_PREFERENCE_KEY) !== 'false';
-};
 
 export const getInitialSidebarCollapsed = () => {
   if (typeof window === 'undefined') return false;

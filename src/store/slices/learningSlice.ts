@@ -5,7 +5,6 @@ import {
   createEmptySessionProgress,
 } from '../../utils/reviewProgress';
 import type {
-  PartSegment,
   PracticeHeaderActions,
   SessionProgress,
 } from '../../types/models';
@@ -156,14 +155,6 @@ export const LEARNING_ACCOUNT_SWITCH_DEFAULTS = {
   lastActivity: null,
   // Deck curation is user-scoped content: it must not leak across accounts.
   deckExclusions: {},
-};
-
-export type PracticeHeaderState = {
-  progress: number;
-  currentIndex: number;
-  totalCount: number;
-  showLightbulb: boolean;
-  partSegments: PartSegment[];
 };
 
 export type PracticeHeaderActionsState = PracticeHeaderActions;

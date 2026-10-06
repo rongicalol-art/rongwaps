@@ -1,7 +1,6 @@
 import React, { useEffect, useId, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { cn } from '../../utils/cn';
-import { AppIcon } from './AppIcon';
 
 export interface DropdownMenuTriggerProps {
   ref: React.Ref<HTMLButtonElement>;
@@ -228,9 +227,4 @@ export function DropdownMenuItem({
       <span className="min-w-0 flex-1 truncate">{children ?? label}</span>
     </button>
   );
-}
-
-/** Static icon helper for consistent menu item icon sizing. */
-export function DropdownMenuIcon({ name }: { name: Parameters<typeof AppIcon>[0]['name'] }) {
-  return <AppIcon name={name} size={22} />;
 }

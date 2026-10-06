@@ -17,12 +17,6 @@ export interface UserFolder {
   color: string;
 }
 
-export interface UserProgressData {
-  srsData: Record<string, unknown>;
-  learnedCards: string[];
-  lastActivity: string | null;
-}
-
 export type CourseLessonState = 'current' | 'completed' | 'available' | 'locked';
 
 export type LessonPartSelection = 'all' | number[];
@@ -88,23 +82,6 @@ export interface PracticeHeaderActions {
   flowStatus?: PracticeFlowStatus;
 }
 
-export interface FlashcardBase {
-  id: string;
-  simplified: string;
-  traditional?: string;
-  pinyin: string;
-  translation: string;
-  audio?: string;
-  decomposition?: string;
-  composition?: string;
-  radicals?: string;
-  notes?: string;
-  measure_words?: string[];
-  // related to curriculum
-  curriculum_lesson?: number;
-  curriculum_book?: number;
-}
-
 export interface DictionaryListEntry {
   id: number | string;
   simplified: string;
@@ -128,7 +105,6 @@ export interface DictionarySavedPreview {
 export type PracticeActivityType = 'flashcards' | 'listening' | 'quiz' | 'writing';
 export type QuizMode = 'choices' | 'typing';
 export type ActivityType = PracticeActivityType | 'flashcards-review' | 'flashcards-library' | 'create-card' | null;
-export type LastActivityType = PracticeActivityType | 'flashcards-review' | null;
 
 
 export * from './grammar';
@@ -233,14 +209,6 @@ export interface CourseExampleManifestBook {
   path: string;
   sha256: string;
   bytes: number;
-}
-
-export interface CourseExampleManifest {
-  schemaVersion: number;
-  version: string;
-  generatedAt: string;
-  totalCount: number;
-  books: CourseExampleManifestBook[];
 }
 
 /**
