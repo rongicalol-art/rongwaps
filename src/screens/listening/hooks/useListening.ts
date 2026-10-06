@@ -6,10 +6,7 @@ import { shuffleItems } from '../../../utils/sessionOrder';
 import { getDeckIdentityKey } from '../../../utils/lessonPartSelection';
 import { buildAttributeChoices, getCardChoiceTarget } from '../../../utils/meaningChoices';
 import { useCardSession } from '../../../hooks/useCardSession';
-
-// How many upcoming cards (without recorded audio) get neural TTS pre-warmed
-// so their first play uses the good voice instead of browser speech.
-const NEURAL_PRELOAD_AHEAD = 2;
+import { useNeuralPrewarm } from '../../../hooks/useSessionAudio';
 
 export function useListening(activeBookId: number, selectedLessons: number[], isLibraryDeck: boolean = false, isReviewDeck: boolean = false) {
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
@@ -114,19 +111,7 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
     return () => clearTimeout(t);
   }, [autoPlayAudio, currentIndex, playAudio, playlist.length, pronunciationRate, screenState]);
 
-  // Pre-warm neural TTS for upcoming cards without recorded audio so the
-  // first play of each card is the neural voice, not browser speech.
-  useEffect(() => {
-    if (playlist.length === 0) return;
-    const upcoming = playlist.slice(currentIndex, currentIndex + NEURAL_PRELOAD_AHEAD);
-    const fronts = upcoming
-      .filter((card) => !audioService.isAudioFileName(card.audio))
-      .map((card) => card.front?.trim())
-      .filter((text): text is string => Boolean(text));
-    if (fronts.length > 0) {
-      audioService.preloadNeural(fronts, undefined, { limit: NEURAL_PRELOAD_AHEAD }).catch(() => {});
-    }
-  }, [playlist, currentIndex]);
+  useNeuralPrewarm(playlist, currentIndex);
 
   const correctTarget = currentCard ? getCardChoiceTarget(currentCard, listeningChoiceType) : null;
   const isCorrect = selectedOption === correctTarget;

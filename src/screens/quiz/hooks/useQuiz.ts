@@ -7,6 +7,7 @@ import { useAppStore } from '../../../store/useAppStore';
 import { isPinyinAnswerAccepted } from '../../../utils/pinyinAnswer';
 import { buildAttributeChoices, getCardChoiceTarget } from '../../../utils/meaningChoices';
 import { useCardSession } from '../../../hooks/useCardSession';
+import { useDeckAudioLifecycle } from '../../../hooks/useSessionAudio';
 
 export function useQuizLoader(activeBookId: number, selectedLessons: number[], isLibraryDeck: boolean = false, isReviewDeck: boolean = false) {
   return useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
@@ -42,19 +43,7 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
   });
   const { activeCards, currentIndex, currentCard, completed } = session;
 
-  // Preload audio
-  useEffect(() => {
-    if (activeCards.length > 0) {
-      audioService.preload(activeCards.map(c => c.audio));
-    }
-  }, [activeCards]);
-
-  // Stop audio only when the session completes or unmounts — never when
-  // advancing to the next card, so the correct-answer pronunciation keeps
-  // ringing through the card transition.
-  useEffect(() => {
-    return () => audioService.stop();
-  }, [completed]);
+  useDeckAudioLifecycle(activeCards, completed);
 
   // Derive choices during the same render as the next card. Keeping these in an
   // effect briefly paired a new prompt with the previous prompt's answers,
@@ -184,23 +173,7 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
   });
   const { activeCards, currentIndex, currentCard, completed } = session;
 
-  // Preload audio
-  useEffect(() => {
-    if (activeCards.length > 0) {
-      audioService.preload(activeCards.map(c => c.audio));
-    }
-  }, [activeCards]);
-
-  // Stop audio only when the session completes or unmounts — never when
-  // advancing to the next card, so the correct-answer pronunciation keeps
-  // ringing through the card transition.
-  useEffect(() => {
-    return () => audioService.stop();
-  }, [completed]);
-
-  const handleInputChange = useCallback((value: string) => {
-    setInput(value);
-  }, []);
+  useDeckAudioLifecycle(activeCards, completed);
 
   const handleCheck = () => {
     if (!input.trim()) return;
@@ -233,26 +206,18 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
     setStatus('idle');
   }, [session]);
 
-  const resetAll = useCallback(() => {
-    session.resetAll();
-  }, [session]);
-
-  const reviewUnlearned = useCallback(() => {
-    session.reviewUnlearned();
-  }, [session]);
-
   return {
     activeCards,
     currentIndex,
     currentCard,
     input,
-    handleInputChange,
+    handleInputChange: setInput,
     status,
     handleCheck,
     retryAnswer,
     completed,
-    resetAll,
-    reviewUnlearned,
+    resetAll: session.resetAll,
+    reviewUnlearned: session.reviewUnlearned,
     unlearnedCount: session.unlearnedCount,
     learnedCount: session.learnedCount,
     isShuffled: session.isShuffled,

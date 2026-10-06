@@ -4,10 +4,7 @@ import { audioService } from '../../../services/audioService';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
 import { getDeckIdentityKey } from '../../../utils/lessonPartSelection';
 import { useCardSession } from '../../../hooks/useCardSession';
-
-// How many upcoming cards (without recorded audio) get neural TTS pre-warmed
-// so their first play uses the good voice instead of browser speech.
-const NEURAL_PRELOAD_AHEAD = 2;
+import { useNeuralPrewarm } from '../../../hooks/useSessionAudio';
 
 /**
  * Manages the character-writing quiz session.
@@ -113,19 +110,7 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
     }
   }, [autoPlayAudio, currentIndex, currentCard, pronunciationRate]);
 
-  // Pre-warm neural TTS for upcoming cards without recorded audio so the
-  // first play of each card is the neural voice, not browser speech.
-  useEffect(() => {
-    if (playlist.length === 0 || currentIndex < 0) return;
-    const upcoming = playlist.slice(currentIndex, currentIndex + NEURAL_PRELOAD_AHEAD);
-    const fronts = upcoming
-      .filter((card) => !audioService.isAudioFileName(card.audio))
-      .map((card) => card.front?.trim())
-      .filter((text): text is string => Boolean(text));
-    if (fronts.length > 0) {
-      audioService.preloadNeural(fronts, undefined, { limit: NEURAL_PRELOAD_AHEAD }).catch(() => {});
-    }
-  }, [playlist, currentIndex]);
+  useNeuralPrewarm(playlist, currentIndex);
 
   const handlePrev = useCallback(() => {
     if (currentIndex > 0) {
