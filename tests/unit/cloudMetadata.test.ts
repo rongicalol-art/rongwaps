@@ -100,9 +100,8 @@ test('guest folders migrate only on a first account switch', () => {
       prePullFolders: guestFolders,
       prePullFolderOwner: null,
       serverFolders: [],
-      tombstones: ['f2'],
     }),
-    [{ id: 'f1' }],
+    guestFolders,
   );
 
   assert.deepEqual(
@@ -111,7 +110,6 @@ test('guest folders migrate only on a first account switch', () => {
       prePullFolders: guestFolders,
       prePullFolderOwner: null,
       serverFolders: [],
-      tombstones: [],
     }),
     [],
   );
@@ -121,7 +119,6 @@ test('guest folders migrate only on a first account switch', () => {
       prePullFolders: guestFolders,
       prePullFolderOwner: 'other-user',
       serverFolders: [],
-      tombstones: [],
     }),
     [],
   );
@@ -131,7 +128,6 @@ test('guest folders migrate only on a first account switch', () => {
       prePullFolders: guestFolders,
       prePullFolderOwner: null,
       serverFolders: [{ id: 'server' }],
-      tombstones: [],
     }),
     [],
   );

@@ -5,6 +5,17 @@ export interface PlayRangeOptions {
   onTime?: (time: number) => void;
 }
 
+export function silenceAudio(audio: HTMLAudioElement): void {
+  audio.onended = null;
+  audio.onerror = null;
+  audio.ontimeupdate = null;
+  try {
+    audio.pause();
+  } catch (err) {
+    debugLogger.warn('Audio', 'Audio pause failed', err);
+  }
+}
+
 export function playHtmlAudio(
   audio: HTMLAudioElement,
   src: string,

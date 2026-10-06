@@ -3,6 +3,7 @@ import { useDeferredValue, useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { DAILY_CHARACTERS } from '../../data/dictionaryHome';
 import { useDictionarySearch } from '../../hooks/useDictionarySearch';
+import { useTocflReadiness } from '../../hooks/useTocflReadiness';
 import { StickyWorkspaceHeader, type StickyWorkspaceHeaderMenuToggle } from '../../lib/widgets';
 import { searchVocabulary } from '../../services/vocabularyService';
 import { useAppStore } from '../../store/useAppStore';
@@ -26,18 +27,23 @@ function DictionaryStickyHeader({
   onSearchChange: (value: string) => void;
   menuToggle?: StickyWorkspaceHeaderMenuToggle;
 }) {
+  const isSearching = searchQuery.trim().length > 0;
   return (
     <StickyWorkspaceHeader
-      title="Dictionary"
+      title={isSearching ? 'Search' : 'Dictionary'}
       align="left"
-      menuToggle={menuToggle}
+      menuToggle={isSearching ? undefined : menuToggle}
+      onBack={isSearching ? () => onSearchChange('') : undefined}
       searchValue={searchQuery}
       onSearchChange={onSearchChange}
-      searchPlaceholder="Search characters, pinyin, or English"
+      searchPlaceholder="Hanzi, pinyin, English"
       searchLabel="search dictionary"
     />
   );
 }
+
+/** Curriculum search covers every book. */
+const selectedBookIds = [1, 2, 3, 4];
 
 export function SearchScreen({ menuToggle }: SearchScreenProps) {
   const favorites = useAppStore((state) => state.favorites);
@@ -48,10 +54,11 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
   const setActiveTab = useAppStore((state) => state.setActiveTab);
 
   const [mode, setMode] = useState<SearchMode>('global');
-  const [selectedBookIds, setSelectedBookIds] = useState<number[]>([1, 2, 3, 4]);
   const [courseResults, setCourseResults] = useState<DictionaryListEntry[]>([]);
   const [isSearchingCourses, setIsSearchingCourses] = useState(false);
   const [courseSearchError, setCourseSearchError] = useState<string | null>(null);
+
+  const readiness = useTocflReadiness();
 
   const query = searchQuery.trim();
   const deferredQuery = useDeferredValue(query);
@@ -63,22 +70,6 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
     const dayNumber = Math.floor(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86_400_000);
     return DAILY_CHARACTERS[dayNumber % DAILY_CHARACTERS.length];
   }, []);
-
-  const handleToggleBook = (bookId: number) => {
-    setSelectedBookIds((prev) =>
-      prev.includes(bookId)
-        ? prev.filter((id) => id !== bookId)
-        : [...prev, bookId].sort((a, b) => a - b),
-    );
-  };
-
-  const handleSelectAllBooks = () => {
-    setSelectedBookIds([1, 2, 3, 4]);
-  };
-
-  const handleClearBooks = () => {
-    setSelectedBookIds([]);
-  };
 
   useEffect(() => {
     if (!deferredQuery) {
@@ -130,7 +121,7 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
       isCurrent = false;
       window.clearTimeout(timer);
     };
-  }, [deferredQuery, selectedBookIds]);
+  }, [deferredQuery]);
 
   const handleResultsSearch = (nextQuery: string) => {
     setSearchQuery(nextQuery);
@@ -140,6 +131,34 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
     setSearchQuery('');
     setActiveTab('library');
   };
+
+  // Hide the dock while scrolling down, bring it back on scroll up (same as the flashcard list).
+  const [isDockVisible, setIsDockVisible] = useState(true);
+  useEffect(() => {
+    setIsDockVisible(true);
+    if (!query) return;
+    let lastTop = 0;
+    const onScroll = (e: Event) => {
+      const el = e.target instanceof HTMLElement ? e.target : null;
+      if (!el) return;
+      const top = el.scrollTop;
+      const delta = top - lastTop;
+      if (top <= 15 || delta < -8) setIsDockVisible(true);
+      else if (delta > 8 && top > 40) setIsDockVisible(false);
+      lastTop = top;
+    };
+    document.addEventListener('scroll', onScroll, { capture: true, passive: true });
+    return () => document.removeEventListener('scroll', onScroll, { capture: true });
+  }, [query]);
+
+  useEffect(() => {
+    if (!query) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSearchQuery('');
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [query, setSearchQuery]);
 
   const activeResults = mode === 'global' ? dictionaryResults : courseResults;
   const activeError = mode === 'global' ? searchError : courseSearchError;
@@ -170,6 +189,7 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
               activeBookId={selectedBookIds[0] || activeBookId || 1}
               onOpenWord={setDictionaryWord}
               onViewSavedWords={handleViewSavedWords}
+              readiness={readiness}
             />
           </motion.div>
         ) : (
@@ -193,18 +213,32 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
-        {Boolean(query) && (
-          <SearchModeDock
-            mode={mode}
-            onChangeMode={setMode}
-            selectedBookIds={selectedBookIds}
-            onToggleBook={handleToggleBook}
-            onSelectAllBooks={handleSelectAllBooks}
-            onClearBooks={handleClearBooks}
+      {/* Zero-height sticky anchor: pins the dock to the scroller's bottom edge.
+          Negative offset cancels the workspace scroller's bottom padding (LayoutShell pb-12 md:pb-6). */}
+      <div className="pointer-events-none sticky -bottom-12 z-dock md:-bottom-6 h-0 w-full">
+        {Boolean(query) && !isDockVisible && (
+          <div
+            aria-hidden
+            onMouseEnter={() => setIsDockVisible(true)}
+            className="pointer-events-auto absolute inset-x-0 bottom-0 z-10 h-14"
           />
         )}
-      </AnimatePresence>
+        {Boolean(query) && isDockVisible && (
+          <div
+            aria-hidden
+            className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-ui-canvas via-ui-canvas/90 to-transparent"
+          />
+        )}
+        <AnimatePresence>
+          {Boolean(query) && (
+            <SearchModeDock
+              mode={mode}
+              visible={isDockVisible}
+              onChangeMode={setMode}
+            />
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

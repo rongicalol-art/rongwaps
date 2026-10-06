@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence, useDragControls, useReducedMotion, type DragControls } from 'motion/react';
 import { cn } from '../../utils/cn';
 import { useModalFocus } from '../../hooks/useModalFocus';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { AppIcon } from './AppIcon';
 import { IconActionButton } from './IconActionButton';
 
@@ -18,7 +19,7 @@ export const DRAWER_SIZE_CLASSES: Record<DrawerSize, string> = {
 };
 
 export const DRAWER_TONE_CONTAINER_CLASSES: Record<DrawerTone, string> = {
-  surface: 'bg-ui-surface border-t-2 border-x-2 border-ui-border rounded-t-modal',
+  surface: 'bg-ui-surface rounded-t-modal',
   practice: 'bg-ui-practice-canvas rounded-t-3xl',
   canvas: 'bg-ui-canvas rounded-t-3xl',
 };
@@ -44,6 +45,8 @@ export interface DrawerContentProps {
   size?: DrawerSize;
   heightClassName?: string;
   dragToDismiss?: boolean;
+  /** md+ presentation: centered `card` (default) or a right-docked `side` panel. */
+  mdPlacement?: 'card' | 'side';
   ariaLabel?: string;
   className?: string;
   children: ReactNode;
@@ -55,6 +58,7 @@ interface DrawerContextValue {
   dragControls: DragControls;
   titleId: string;
   tone: DrawerTone;
+  workspaceBound: boolean;
 }
 
 const DrawerContext = createContext<DrawerContextValue | null>(null);
@@ -86,16 +90,10 @@ export function DrawerRoot({
   );
 
   const output = (
-    <DrawerContext.Provider value={{ open, onClose: handleClose, dragControls, titleId, tone }}>
+    <DrawerContext.Provider value={{ open, onClose: handleClose, dragControls, titleId, tone, workspaceBound }}>
       <AnimatePresence>
         {open && (
-          <div
-            className={cn(
-              'fixed inset-0 pointer-events-none',
-              zIndexClassName,
-              workspaceBound && 'workspace-window'
-            )}
-          >
+          <div className={cn('fixed inset-0 pointer-events-none', zIndexClassName)}>
             {children}
           </div>
         )}
@@ -117,7 +115,7 @@ export function DrawerBackdrop({ className }: { className?: string }) {
       transition={{ duration: reduceMotion ? 0 : 0.18 }}
       onClick={onClose}
       className={cn(
-        'absolute inset-0 bg-ui-ink-strong/35 backdrop-blur-sm pointer-events-auto cursor-pointer',
+        'absolute inset-0 bg-ui-ink-strong/35 pointer-events-auto cursor-pointer',
         className
       )}
     />
@@ -128,46 +126,62 @@ export function DrawerContent({
   size = 'md',
   heightClassName = 'max-h-[85vh]',
   dragToDismiss = true,
+  mdPlacement = 'card',
   ariaLabel,
   className,
   children,
 }: DrawerContentProps) {
-  const { open, onClose, dragControls, titleId, tone } = useDrawerContext();
+  const { open, onClose, dragControls, titleId, tone, workspaceBound } = useDrawerContext();
+  const isCard = useMediaQuery('(min-width: 768px)');
+  const isSide = mdPlacement === 'side';
   const drawerRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const modalFocus = useModalFocus({ containerRef: drawerRef, isActive: open, onEscape: onClose });
 
   return (
-    <motion.div
-      ref={drawerRef}
-      role="dialog"
-      aria-modal="true"
-      aria-label={ariaLabel}
-      aria-labelledby={titleId}
-      tabIndex={-1}
-      onKeyDown={modalFocus.onKeyDown}
-      initial={reduceMotion ? { opacity: 0 } : { y: '100%' }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={reduceMotion ? { opacity: 0 } : { y: '100%' }}
-      transition={reduceMotion ? { duration: 0 } : { type: 'spring', damping: 28, stiffness: 320, mass: 0.8 }}
-      drag={dragToDismiss ? 'y' : false}
-      dragListener={false}
-      dragControls={dragControls}
-      dragConstraints={{ top: 0 }}
-      dragElastic={0.2}
-      onDragEnd={(_e, info) => {
-        if (info.offset.y > 100 || info.velocity.y > 500) onClose();
-      }}
+    <div
       className={cn(
-        'absolute bottom-0 left-0 right-0 shadow-ambient-lg flex flex-col pointer-events-auto overflow-hidden',
-        DRAWER_TONE_CONTAINER_CLASSES[tone],
-        DRAWER_SIZE_CLASSES[size],
-        heightClassName,
-        className
+        'pointer-events-none absolute inset-y-0 right-0 md:flex md:p-6',
+        isSide ? 'md:justify-end md:p-3' : 'md:items-center md:justify-center',
+        workspaceBound ? 'workspace-window' : 'left-0'
       )}
     >
-      {children}
-    </motion.div>
+      <motion.div
+        ref={drawerRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={ariaLabel}
+        aria-labelledby={titleId}
+        tabIndex={-1}
+        onKeyDown={modalFocus.onKeyDown}
+        initial={reduceMotion ? { opacity: 0 } : isCard ? (isSide ? { opacity: 0, x: 48 } : { opacity: 0, scale: 0.96, y: 12 }) : { y: '100%' }}
+        animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+        exit={reduceMotion ? { opacity: 0 } : isCard ? (isSide ? { opacity: 0, x: 32 } : { opacity: 0, scale: 0.97, y: 8 }) : { y: '100%' }}
+        transition={reduceMotion ? { duration: 0 } : { type: 'spring', damping: 28, stiffness: 320, mass: 0.8 }}
+        drag={dragToDismiss && !isCard ? 'y' : false}
+        dragListener={false}
+        dragControls={dragControls}
+        dragConstraints={{ top: 0 }}
+        dragElastic={0.2}
+        onDragEnd={(_e, info) => {
+          if (info.offset.y > 100 || info.velocity.y > 500) onClose();
+        }}
+        className={cn(
+          'absolute bottom-0 left-0 right-0 shadow-ambient-lg flex flex-col pointer-events-auto overflow-hidden',
+          DRAWER_TONE_CONTAINER_CLASSES[tone],
+          DRAWER_SIZE_CLASSES[size],
+          heightClassName,
+          // md+: floating card centered in the workspace instead of a bottom sheet.
+          'md:relative md:inset-auto md:rounded-modal md:border-0 md:border-b-[length:var(--depth-xl)] md:border-ui-border',
+          isSide
+            ? 'md:h-full md:max-h-full md:w-[26rem] md:max-w-full md:mx-0'
+            : 'md:h-auto md:max-h-[80vh] md:w-full',
+          className
+        )}
+      >
+        {children}
+      </motion.div>
+    </div>
   );
 }
 
@@ -175,7 +189,7 @@ export function DrawerHandle({ className }: { className?: string }) {
   const { dragControls } = useDrawerContext();
   return (
     <div
-      className={cn('w-full flex justify-center py-2 shrink-0 cursor-grab active:cursor-grabbing', className)}
+      className={cn('w-full flex justify-center py-2 shrink-0 cursor-grab active:cursor-grabbing md:hidden', className)}
       onPointerDown={(e) => dragControls.start(e)}
       style={{ touchAction: 'none' }}
     >
@@ -193,7 +207,7 @@ export function DrawerStickyHeader({ className, children }: { className?: string
   return (
     <div
       className={cn(
-        'sticky top-0 z-20 flex w-full shrink-0 flex-col pb-2 pt-2 backdrop-blur-[2px] bg-gradient-to-b',
+        'sticky top-0 z-20 flex w-full shrink-0 flex-col pb-2 pt-2 bg-gradient-to-b',
         DRAWER_TONE_STICKY_GRADIENTS[tone],
         className
       )}

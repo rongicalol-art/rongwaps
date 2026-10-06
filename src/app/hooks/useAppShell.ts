@@ -15,6 +15,9 @@ import { useReaderLauncher } from './useReaderLauncher';
 import { useReaderStepNavigation } from './useReaderStepNavigation';
 import { useResponsiveNav } from './useResponsiveNav';
 import { useWorkspaceRouting } from './useWorkspaceRouting';
+import { readBoolean, writeBoolean } from '../../utils/localStorage';
+
+const AUTH_PROMPT_DISMISSED_KEY = 'rongwaps:auth-prompt-dismissed';
 
 /**
  * AppShell composition root: every hook App.tsx used to call and thread by
@@ -31,7 +34,7 @@ export function useAppShell() {
   const { currentUser, isLoading } = useAuth();
   const navigation = useAppNavigation();
   const responsiveNav = useResponsiveNav();
-  const [isInitialAuthOpen, setIsInitialAuthOpen] = useState(true);
+  const [isInitialAuthOpen, setIsInitialAuthOpen] = useState(() => !readBoolean(AUTH_PROMPT_DISMISSED_KEY, false));
 
   const grammar = useGrammarLauncher({ onOpen: responsiveNav.collapseNav });
   const reader = useReaderLauncher({
@@ -184,7 +187,10 @@ export function useAppShell() {
       dictionaryWord: shellState.dictionaryWord,
       isOverlayActive,
       isAuthOpen: !currentUser && isInitialAuthOpen,
-      closeAuth: () => setIsInitialAuthOpen(false),
+      closeAuth: () => {
+        writeBoolean(AUTH_PROMPT_DISMISSED_KEY, true);
+        setIsInitialAuthOpen(false);
+      },
     },
   };
 }

@@ -50,14 +50,15 @@ settles a new rule.
 - The alignment checker skips multi-glyph tokens (`大家(everyone)`,
   `手機(cell phone)`) — those are word-level glosses, not component labels.
 
-## Sound lives in the Sound block
+## Sound lives in the parts index
 
 - Hooks carry meaning work only. Sound never appears in a hook: no pinyin, no
   "lends the sound", no sound shifts, no pronunciation notes.
-- The Sound block (`public/data/sound-hooks/`) holds pinyin, the phonetic
-  piece with its reading and tone shift, and the Book 1 sound family. It is
-  purely phonetic — no mnemonic, scene, or story.
-- The sound pass (`memory-hooks:sound:decide` → `memory-hooks:sound`) is
+- The parts index (`public/data/relations/parts.json`, `npm run relations:build`)
+  holds the character → phonetic part link and each part's graded sound
+  family; pinyin and the tone shift are derived at runtime. It is purely
+  phonetic — no mnemonic, scene, or story.
+- The sound pass (`memory-hooks:sound:decide`) is
   Jev-lean and decoupled from hook review:
   - Code accepts a unique full match (initial + final, tone ignored) with no
     API call; the rest go to one batched Jev pass (20 characters per request,
@@ -103,7 +104,8 @@ settles a new rule.
     export as `char-review-feedback.json`.
   - `applyCharReview.ts` applies the outcome, strips sound mechanically, and
     logs per-record decision sources to `review/char-decision-log-v1.json`.
-  - `memory-hooks:sound` (`buildSoundData.ts`) rebuilds the Sound pack.
+  - `buildSoundData.ts` writes the Book 1 sound scratch file only; the shipped
+    sound data is `relations:build`.
 - Human review: `npm run memory-hooks:review:page` writes
   `output/memory-hooks/review/hook-review.html` — every hook triaged
   high/medium/low with reasons, component breakdowns, and Agree/Change/Decline

@@ -62,7 +62,7 @@ export function ExerciseQuestionCard({
       'border-b-2 border-ui-divider bg-ui-surface px-2 py-5 last:border-b-0 sm:px-3 sm:py-7',
       hasWrongAnswer && 'bg-feedback-danger-surface/35',
     )}>
-      <p className="mb-3 text-[11px] font-black text-brand-primary">Try {question.number}</p>
+      <p className="mb-3 text-xs font-black text-brand-primary">Try {question.number}</p>
       <div className="flex flex-wrap items-center gap-x-1.5 gap-y-2.5 font-chinese text-base font-black leading-[1.9] text-ui-ink-strong sm:text-lg">
         {question.segments.map((segment, index) => {
           if (segment.type === 'text') {

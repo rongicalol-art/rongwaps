@@ -5,6 +5,7 @@ import {
   mapVocabularyRows,
   prepareVocabulary,
 } from '../../src/utils/vocabularyMapping';
+import { debugLogger } from '../../src/utils/debugLogger';
 
 test('vocabularyMapping: parseExamples parses string, json string, and array examples', () => {
   assert.deepEqual(parseExamples('Single sentence'), [{ chinese: 'Single sentence', pinyin: '', english: '' }]);
@@ -18,6 +19,17 @@ test('vocabularyMapping: parseExamples parses string, json string, and array exa
   );
   assert.deepEqual(parseExamples(null), []);
   assert.deepEqual(parseExamples(''), []);
+});
+
+test('vocabularyMapping: plain and empty example strings are normal data, not parse warnings', () => {
+  debugLogger.clear();
+  assert.deepEqual(parseExamples('我想先換衣服再去運動。'), [{ chinese: '我想先換衣服再去運動。', pinyin: '', english: '' }]);
+  assert.deepEqual(parseExamples('   '), []);
+  assert.deepEqual(debugLogger.getLogs(), []);
+
+  // A string that claims to be a serialized array but is broken still warns.
+  assert.deepEqual(parseExamples('[{"chinese": '), [{ chinese: '[{"chinese": ', pinyin: '', english: '' }]);
+  assert.equal(debugLogger.getLogs().length, 1);
 });
 
 test('vocabularyMapping: mapVocabularyRows and prepareVocabulary maps and filters', () => {

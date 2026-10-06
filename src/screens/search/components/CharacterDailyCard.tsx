@@ -1,5 +1,6 @@
 import { useRuntimeDecompositionTree } from '../../../features/character-breakdown';
-import { AppIcon, Skeleton } from '../../../lib/widgets';
+import { AppIcon, LevelTag, Skeleton } from '../../../lib/widgets';
+import { useLevel } from '../../../hooks/useLevels';
 import type { BeginnerDictionaryTerm } from '../../../data/dictionaryHome';
 
 interface CharacterDailyCardProps {
@@ -15,6 +16,7 @@ interface CharacterDailyCardProps {
 export function CharacterDailyCard({ word, onOpenWord }: CharacterDailyCardProps) {
   const openWord = () => onOpenWord(word.traditional);
   const { root } = useRuntimeDecompositionTree(word.traditional);
+  const level = useLevel(word.traditional);
 
   const isLoading = root.status === 'idle' || root.status === 'loading';
   const parts = (root.result?.children ?? []).filter(
@@ -61,6 +63,7 @@ export function CharacterDailyCard({ word, onOpenWord }: CharacterDailyCardProps
           <p className="mt-1.5 line-clamp-2 text-[18px] font-black leading-tight text-ui-ink sm:text-[20px]">
             {word.meaning}
           </p>
+          {level && <div className="mt-2"><LevelTag variant="chip" level={level} /></div>}
         </div>
 
         {showParts ? (

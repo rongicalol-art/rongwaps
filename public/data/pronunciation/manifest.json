@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "version": "97da936e880301f8",
+  "generatedAt": "2026-10-05T05:55:16.828Z",
+  "totalCount": 9879,
+  "shardCount": 1,
+  "shards": [
+    {
+      "shard": 0,
+      "count": 9879,
+      "path": "/data/pronunciation/pronunciation.json",
+      "sha256": "97da936e880301f8a9358aafa6a252b79dd408b7da80765899cfe95be4b70b77",
+      "bytes": 136978
+    }
+  ]
+}

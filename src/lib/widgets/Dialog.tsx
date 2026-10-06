@@ -111,7 +111,7 @@ export function DialogBackdrop({
       exit={{ opacity: 0 }}
       transition={{ duration: reduceMotion ? 0 : 0.16 }}
       onClick={closeOnClick ? onClose : undefined}
-      className={cn('absolute inset-0 bg-ui-ink-strong/40 backdrop-blur-sm cursor-pointer', className)}
+      className={cn('absolute inset-0 bg-ui-ink-strong/40 cursor-pointer', className)}
     />
   );
 }

@@ -46,7 +46,10 @@ function tokenizeTeachingText(
 
   while (index < text.length) {
     const contextualMatch = contextualWords.find((token) => text.startsWith(token.display, index));
-    if (contextualMatch) {
+    const focusMatch = orderedFocusTerms.find((term) => text.startsWith(term, index));
+    // A longer focus pattern (忙不忙) outranks a shorter word that merely starts it (忙),
+    // so the whole grammar unit highlights instead of its first piece.
+    if (contextualMatch && !(focusMatch && focusMatch.length > contextualMatch.display.length)) {
       displayTokens.push({
         key: `${index}-${contextualMatch.id}`,
         text: contextualMatch.display,
@@ -59,7 +62,6 @@ function tokenizeTeachingText(
       continue;
     }
 
-    const focusMatch = orderedFocusTerms.find((term) => text.startsWith(term, index));
     if (focusMatch) {
       displayTokens.push({
         key: `${index}-focus`,

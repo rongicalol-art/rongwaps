@@ -1,35 +1,35 @@
 import type { DBCharacterBreakdown } from '../../../../types/database';
 import type { Flashcard } from '../../../../data/flashcards';
 import type { SAMPLE_BOOKS } from '../../../../data/books';
-import type { SoundHookEntry } from '../../../../services/contentPacks';
 import { V3CharacterSummary } from './V3CharacterSummary';
 import { V3MemoryHook } from './V3MemoryHook';
 import { V3ExampleSentences } from './V3ExampleSentences';
 import { V3RuntimeTree } from './V3RuntimeTree';
 import { V3SupportingInformation, hasSupportingInfo } from './V3SupportingInformation';
-import type { UsedAsGroups } from '../../utils/rankParentCharacters';
+import type { BuiltWithMember, RankedSoundFamily } from '../../utils/rankBuiltWith';
+import type { ResolvedSoundClue } from '../../hooks/useSoundClue';
+import { usePrimaryReading } from '../../../../hooks/usePronunciation';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
 
 export function V3CharacterBreakdown({
-  activeChar, charData, charCardsInfo, activeBook, usedAsComponents, usedAsGroups, relatedWords,
-  sound, courseRank, setDictionaryWord, openTree, openUsedAsBreakdown, openRelatedBreakdown,
+  activeChar, charData, charCardsInfo, activeBook, builtWithMembers, soundFamily, relatedWords,
+  soundClue, setDictionaryWord, openTree, openRelatedBreakdown,
 }: {
   activeChar: string;
   charData: DBCharacterBreakdown | null;
   charCardsInfo: Flashcard[];
   activeBook: CourseBook;
-  usedAsComponents: string[];
-  usedAsGroups: UsedAsGroups;
+  builtWithMembers: BuiltWithMember[];
+  soundFamily: RankedSoundFamily | null;
   relatedWords: Flashcard[];
-  sound?: SoundHookEntry | null;
-  courseRank?: Map<string, { bookId: number; lessonId: number }>;
+  soundClue?: ResolvedSoundClue | null;
   setDictionaryWord: (word: string) => void;
   openTree: () => void;
-  openUsedAsBreakdown: () => void;
   openRelatedBreakdown: () => void;
 }) {
-  const hasSupporting = hasSupportingInfo(relatedWords, usedAsGroups, sound?.family);
+  const primaryPinyin = usePrimaryReading(activeChar, charData?.pinyin?.[0]);
+  const hasSupporting = hasSupportingInfo(relatedWords, builtWithMembers, soundFamily);
 
   return (
     <div className="flex w-full flex-col gap-6 lg:gap-10">
@@ -38,23 +38,19 @@ export function V3CharacterBreakdown({
         ? 'grid min-w-0 items-start gap-6 lg:grid-cols-[minmax(0,64fr)_minmax(19rem,36fr)] lg:gap-8'
         : 'flex min-w-0 flex-col gap-6 lg:gap-8'}>
         <div className="flex min-w-0 flex-col gap-6 lg:gap-8">
-          <V3RuntimeTree character={activeChar} onGlyphClick={setDictionaryWord} mode="summary" onSeeTree={openTree} soundGlyph={sound?.phonetic?.glyph} soundShift={sound?.phonetic?.shift} accentHex={activeBook.accentHex} edgeHex={activeBook.edgeHex} />
-          <V3MemoryHook character={activeChar} pinyin={charData?.pinyin?.[0] ?? undefined} />
+          <V3RuntimeTree character={activeChar} onGlyphClick={setDictionaryWord} mode="summary" onSeeTree={openTree} soundGlyph={soundClue?.treeGlyph} soundShift={soundClue?.treeShift} accentHex={activeBook.accentHex} edgeHex={activeBook.edgeHex} />
+          <V3MemoryHook character={activeChar} pinyin={primaryPinyin} />
           <V3ExampleSentences character={activeChar} />
         </div>
         {hasSupporting && (
           <aside aria-label="Character context" className="flex min-w-0 flex-col lg:sticky lg:top-4 lg:self-start">
             <V3SupportingInformation
               relatedWords={relatedWords}
-              usedAsComponents={usedAsComponents}
-              usedAsGroups={usedAsGroups}
-              soundFamily={sound?.family}
-              soundHook={sound}
+              builtWithMembers={builtWithMembers}
+              soundFamily={soundFamily}
               activeChar={activeChar}
-              courseRank={courseRank}
               activeBook={activeBook}
               setDictionaryWord={setDictionaryWord}
-              openUsedAsBreakdown={openUsedAsBreakdown}
               openRelatedBreakdown={openRelatedBreakdown}
             />
           </aside>

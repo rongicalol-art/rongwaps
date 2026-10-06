@@ -43,7 +43,7 @@ export function ExtendedDefinitions({ char, entries: entriesProp }: { char?: str
 
   if (entries.length === 0) return null;
 
-  const { definitions, measure_words: measureWords } = sanitized;
+  const { definitions, measure_words: measureWords, measure_word_details: measureDetails } = sanitized;
   const level = primary?.curriculum_level ?? null;
   const hasLevel = level !== null && level >= 1 && level <= 6;
 
@@ -90,19 +90,22 @@ export function ExtendedDefinitions({ char, entries: entriesProp }: { char?: str
                   </ul>
                 )}
 
-                {(measureWords.length > 0 || hasLevel) && (
-                  <div className="flex flex-wrap items-center gap-2">
-                    {measureWords.map((mw) => (
-                      <span key={mw} className="rounded-compact bg-ui-canvas px-2 py-0.5 font-chinese text-sm font-bold text-ui-ink-strong">
-                        {mw}
+                {measureWords.length > 0 && (
+                  <p className="inline-flex min-h-9 w-fit flex-wrap items-center gap-x-2 gap-y-1 rounded-control bg-ui-canvas px-3 py-1.5 text-sm text-ui-muted-strong sm:text-[15px]">
+                    <span className="text-[11px] font-black uppercase tracking-wider text-ui-muted sm:text-xs">Measure word</span>
+                    {measureDetails.map((mw, i) => (
+                      <span key={mw.char} className="inline-flex items-baseline gap-1 font-bold">
+                        {i > 0 && <span aria-hidden className="mr-1 text-ui-divider">·</span>}
+                        <span className="font-chinese text-ui-ink">{mw.char}</span>
+                        {mw.pinyin && <span>{mw.pinyin}</span>}
                       </span>
                     ))}
-                    {hasLevel && (
-                      <span className="rounded-compact bg-feedback-success-surface px-2 py-0.5 text-xs font-extrabold text-feedback-success">
-                        {CEFR[(level as number) - 1]}
-                      </span>
-                    )}
-                  </div>
+                  </p>
+                )}
+                {hasLevel && (
+                  <span className="w-fit rounded-compact bg-feedback-success-surface px-2 py-0.5 text-xs font-extrabold text-feedback-success">
+                    {CEFR[(level as number) - 1]}
+                  </span>
                 )}
               </div>
             </div>

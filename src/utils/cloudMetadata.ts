@@ -159,17 +159,15 @@ export function resolveCloudMetadataPatch(
  * Guest -> account migration: an account that has never stored folders
  * server-side adopts the pre-login local list — but only when that list was
  * never synced to any account on this device, so a stale server-derived list
- * can never be uploaded as if it were guest data. Tombstoned (deleted) guest
- * folders are not migrated.
+ * can never be uploaded as if it were guest data.
  */
 export function resolveGuestFolderMigration<T extends { id: string }>(input: {
   isAccountSwitch: boolean;
   prePullFolders: T[];
   prePullFolderOwner: string | null;
   serverFolders: T[];
-  tombstones: readonly string[];
 }): T[] {
-  const { isAccountSwitch, prePullFolders, prePullFolderOwner, serverFolders, tombstones } = input;
+  const { isAccountSwitch, prePullFolders, prePullFolderOwner, serverFolders } = input;
   if (
     !isAccountSwitch
     || serverFolders.length > 0
@@ -179,6 +177,5 @@ export function resolveGuestFolderMigration<T extends { id: string }>(input: {
     return [];
   }
 
-  const tombstoneSet = new Set(tombstones);
-  return prePullFolders.filter((folder) => !tombstoneSet.has(folder.id));
+  return prePullFolders;
 }

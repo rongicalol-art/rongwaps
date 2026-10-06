@@ -214,9 +214,8 @@ export function WritingScreen({
         </div>
       </ScreenLayout>
 
-      <AnimatePresence>
-        {!isCardFinished && (
-          <WritingDock
+      <WritingDock
+            visible={!isCardFinished}
             onRestartChar={restartCurrentChar}
             onPrevChar={handlePrevChar}
             canGoPrevChar={activeCharIndex > 0}
@@ -226,9 +225,7 @@ export function WritingScreen({
             onToggleOutline={toggleOutline}
             onExit={onClose}
             isAnimatingStrokes={isAnimatingStrokes}
-          />
-        )}
-      </AnimatePresence>
+      />
 
       <FeedbackBottomBar
         status={isCardFinished ? 'correct' : 'idle'}

@@ -9,19 +9,6 @@ import { useUserFlashcards } from './useUserFlashcards';
 import type { SaveWordTarget } from '../../../store/slices/librarySlice';
 import type { UserFlashcard } from '../../../types/models';
 
-function formatDefinitions(defs: string | string[] | Record<string, unknown> | null | undefined): string {
-  if (!defs) return '';
-  if (typeof defs === 'string') return defs;
-  if (Array.isArray(defs)) return defs.slice(0, 2).join(' · ');
-  if (typeof defs === 'object') {
-    return Object.values(defs)
-      .map((v) => String(v))
-      .slice(0, 2)
-      .join(' · ');
-  }
-  return '';
-}
-
 function formatPinyin(pinyin: string[] | string | null | undefined): string {
   if (!pinyin) return '';
   if (Array.isArray(pinyin)) return pinyin.join(' ');
@@ -29,6 +16,21 @@ function formatPinyin(pinyin: string[] | string | null | undefined): string {
 }
 
 const NO_FAVORITES: string[] = [];
+/** CEDICT classifier lines ("CL:個|个[ge4]") are not meanings. */
+const MEASURE_WORD_NOTE = /^CL:/;
+const SURNAME_SENSE = /^(surname|family name)\b/i;
+/** Dictionary shorthand a new learner should not have to decode. */
+const TECHNICAL_SENSE = /^(abbr\.|variant of|old variant|also written|also pr\.|see |same as|erhua|short for|Taiwan pr\.|used in|\(|-)|\[[^\]]*\d\]|\|/i;
+
+export function isTechnicalSense(sense: string): boolean {
+  return SURNAME_SENSE.test(sense) || TECHNICAL_SENSE.test(sense);
+}
+
+function listSenses(defs: string | string[] | Record<string, unknown> | null | undefined): string[] {
+  if (!defs) return [];
+  const raw = typeof defs === 'string' ? [defs] : Array.isArray(defs) ? defs : Object.values(defs).map(String);
+  return raw.map((d) => String(d).trim()).filter((d) => d && !MEASURE_WORD_NOTE.test(d));
+}
 
 export function useSaveWordDestination(target: SaveWordTarget | null) {
   const { currentUser } = useAuth();
@@ -44,6 +46,7 @@ export function useSaveWordDestination(target: SaveWordTarget | null) {
   const addCustomFolder = useAppStore((state) => state.addCustomFolder);
   const addLocalFlashcard = useAppStore((state) => state.addLocalFlashcard);
   const deleteLocalFlashcard = useAppStore((state) => state.deleteLocalFlashcard);
+  const updateLocalFlashcard = useAppStore((state) => state.updateLocalFlashcard);
 
   const flashcards = useUserFlashcards();
 
@@ -51,6 +54,10 @@ export function useSaveWordDestination(target: SaveWordTarget | null) {
     pinyin: string;
     definitions: string;
   } | null>(null);
+  /** Every sense the dictionary knows for this word, surnames last. */
+  const [dictionarySenses, setDictionarySenses] = useState<string[]>([]);
+  /** The senses the user wants saved; `null` until they change the default. */
+  const [pickedParts, setPickedParts] = useState<string[] | null>(null);
 
   const headword = target?.traditional || target?.word || '';
   const simplified = target?.simplified || target?.word || headword;
@@ -61,27 +68,41 @@ export function useSaveWordDestination(target: SaveWordTarget | null) {
 
     if (!target) {
       setResolvedMetadata(null);
+      setDictionarySenses([]);
+      setPickedParts(null);
       return;
     }
 
+    setPickedParts(null);
     const pinyinStr = formatPinyin(target.pinyin);
-    const defsStr = formatDefinitions(target.definitions);
+    const shownSenses = listSenses(target.definitions);
+    // What the screen showed wins; otherwise the first non-surname senses.
+    const defaultSenses = (list: string[]) => {
+      const common = list.filter((d) => !isTechnicalSense(d));
+      return (common.length ? common : list).slice(0, 2).join(' · ');
+    };
+    const shownDefs = shownSenses.length === 1 ? shownSenses[0] : defaultSenses(shownSenses);
 
-    if (pinyinStr && defsStr) {
-      setResolvedMetadata({ pinyin: pinyinStr, definitions: defsStr });
-      return;
+    if (pinyinStr && shownDefs) {
+      setResolvedMetadata({ pinyin: pinyinStr, definitions: shownDefs });
     }
 
     getDictionaryEntries(headword).then((entries) => {
       if (cancelled) return;
       const first = entries[0];
+      const all = entries.flatMap((entry) => listSenses(entry.definitions));
+      const unique = Array.from(new Set(all));
+      setDictionarySenses([
+        ...unique.filter((d) => !isTechnicalSense(d)),
+        ...unique.filter((d) => isTechnicalSense(d)),
+      ]);
       setResolvedMetadata({
         pinyin: pinyinStr || formatPinyin(first?.pinyin),
-        definitions: defsStr || formatDefinitions(first?.definitions),
+        definitions: shownDefs || defaultSenses(unique),
       });
     }).catch(() => {
       if (!cancelled) {
-        setResolvedMetadata({ pinyin: pinyinStr || '', definitions: defsStr || '' });
+        setResolvedMetadata({ pinyin: pinyinStr || '', definitions: shownDefs || '' });
       }
     });
 
@@ -95,10 +116,11 @@ export function useSaveWordDestination(target: SaveWordTarget | null) {
     return favorites.includes(headword) || (target?.word ? favorites.includes(target.word) : false);
   }, [favorites, headword, target?.word]);
 
-  // Map of folderId -> flashcardId for this word
-  const savedFolderCardsMap = useMemo(() => {
+  // Map of folderId -> flashcardId for this word, plus the meaning it was saved with.
+  const { savedFolderCardsMap, savedTranslation } = useMemo(() => {
     const map = new Map<string, string>();
-    if (!headword) return map;
+    let translation = '';
+    if (!headword) return { savedFolderCardsMap: map, savedTranslation: translation };
 
     for (const card of flashcards) {
       const match =
@@ -107,10 +129,41 @@ export function useSaveWordDestination(target: SaveWordTarget | null) {
         (target?.simplified && (card.simplified === target.simplified || card.traditional === target.simplified));
       if (match && card.folderId) {
         map.set(card.folderId, card.id);
+        if (!translation && card.translation) translation = card.translation;
       }
     }
-    return map;
+    return { savedFolderCardsMap: map, savedTranslation: translation };
   }, [flashcards, headword, target?.simplified]);
+
+  // The meaning that will be (or was) saved: the user's pick, else what the
+  // word is already saved with, else what the opening screen showed.
+  const defaultMeaning = savedTranslation || resolvedMetadata?.definitions || '';
+  const selectedSenses = pickedParts ?? (defaultMeaning ? [defaultMeaning] : []);
+  const meaning = selectedSenses.join('; ');
+  const senseOptions = useMemo(() => {
+    const seen = new Set<string>();
+    // The meaning the screen showed is always pickable, even when the word was saved earlier with another one.
+    return [resolvedMetadata?.definitions ?? '', defaultMeaning, ...dictionarySenses].filter((sense) => {
+      if (!sense || seen.has(sense)) return false;
+      seen.add(sense);
+      return true;
+    });
+  }, [resolvedMetadata?.definitions, defaultMeaning, dictionarySenses]);
+
+  const pickSense = useCallback((sense: string) => {
+    const next = [sense];
+    setPickedParts(next);
+
+    // Saved cards follow the pick, so what is stored is what was intended.
+    const translation = next.join('; ');
+    for (const cardId of savedFolderCardsMap.values()) {
+      if (currentUser) {
+        void flashcardService.updateFlashcardTranslation(currentUser.id, cardId, translation).catch(() => {});
+      } else {
+        updateLocalFlashcard(cardId, { translation });
+      }
+    }
+  }, [savedFolderCardsMap, currentUser, updateLocalFlashcard]);
 
   const toggleFavorite = useCallback(() => {
     if (!headword) return;
@@ -138,7 +191,7 @@ export function useSaveWordDestination(target: SaveWordTarget | null) {
         simplified,
         traditional: headword,
         pinyin: resolvedMetadata?.pinyin || '',
-        translation: resolvedMetadata?.definitions || '',
+        translation: meaning,
         createdAt: Date.now(),
       };
 
@@ -159,6 +212,7 @@ export function useSaveWordDestination(target: SaveWordTarget | null) {
     deleteLocalFlashcard,
     addLocalFlashcard,
     resolvedMetadata,
+    meaning,
   ]);
 
   const createFolderAndAdd = useCallback(async (name: string, colorId: string) => {
@@ -193,7 +247,7 @@ export function useSaveWordDestination(target: SaveWordTarget | null) {
       simplified,
       traditional: headword,
       pinyin: resolvedMetadata?.pinyin || '',
-      translation: resolvedMetadata?.definitions || '',
+      translation: meaning,
       createdAt: Date.now(),
     };
 
@@ -204,13 +258,16 @@ export function useSaveWordDestination(target: SaveWordTarget | null) {
     }
 
     audioService.preloadNeural([headword]).catch(() => {});
-  }, [headword, simplified, currentUser, addCustomFolder, addLocalFlashcard, resolvedMetadata]);
+  }, [headword, simplified, currentUser, addCustomFolder, addLocalFlashcard, resolvedMetadata, meaning]);
 
   return {
     headword,
     simplified,
     pinyin: resolvedMetadata?.pinyin || '',
-    definitions: resolvedMetadata?.definitions || '',
+    definitions: meaning,
+    senseOptions,
+    selectedSense: meaning,
+    pickSense,
     isFavorite,
     savedFolderCardsMap,
     customFolders,

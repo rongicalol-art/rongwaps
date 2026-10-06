@@ -55,7 +55,7 @@ export function SentenceUnscrambleExercise({
     <section aria-labelledby="unscramble-heading">
       <div className="mb-7 flex items-start justify-between gap-4 border-b-2 border-ui-divider pb-6">
         <div>
-          <p className="mb-2 text-[11px] font-black uppercase tracking-[0.06em] text-feedback-warning">
+          <p className="ui-eyebrow mb-2 text-feedback-warning">
             Build it
           </p>
           <h2 id="unscramble-heading" className="text-2xl font-black leading-tight text-ui-ink-strong sm:text-3xl">
@@ -186,7 +186,7 @@ export function SentenceUnscrambleExercise({
             </div>
           )}
         </div>
-        {page.exerciseNote && <p className="mt-4 text-center text-[11px] font-bold text-ui-muted-strong">{page.exerciseNote}</p>}
+        {page.exerciseNote && <p className="mt-4 text-center text-xs font-bold text-ui-muted-strong">{page.exerciseNote}</p>}
       </div>
     </section>
   );

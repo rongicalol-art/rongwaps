@@ -3,20 +3,16 @@ import type { User } from '@supabase/supabase-js';
 import { debugLogger } from '../utils/debugLogger';
 import { useAppStore } from '../store/useAppStore';
 import { userService } from '../services/userService';
-import { authService } from '../services/authService';
+import { flashcardService } from '../services/flashcardService';
 import type { SRSData } from '../utils/srsEngine';
 import {
   isSameFolderList,
   mergePulledSrsData,
-  pruneAcknowledgedTombstones,
-  type SyncedFolderSnapshot,
-  type SyncProgressCounters,
 } from '../utils/cloudSyncQueue';
 import {
   resolveCloudMetadataPatch,
   resolveGuestFolderMigration,
 } from '../utils/cloudMetadata';
-import { getProgressCounters } from '../utils/cloudSyncTransforms';
 
 export interface UseCloudSyncFetchOptions {
   currentUser: User | null;
@@ -24,9 +20,7 @@ export interface UseCloudSyncFetchOptions {
   lastSyncedSrsRef: MutableRefObject<Record<string, SRSData> | null>;
   lastPulledCursorRef: MutableRefObject<{ userId: string; cursor: string | null } | null>;
   lastSyncedLearnedRef: MutableRefObject<string[] | null>;
-  lastSyncedActivityRef: MutableRefObject<string | null>;
-  lastSyncedFoldersRef: MutableRefObject<SyncedFolderSnapshot[] | null>;
-  lastSyncedSessionRef: MutableRefObject<SyncProgressCounters>;
+  lastSyncedSettingsRef: MutableRefObject<Record<string, unknown> | null>;
   hasFetchedForUserRef: MutableRefObject<string | null>;
   activeUserIdRef: MutableRefObject<string | null>;
 }
@@ -37,9 +31,7 @@ export function useCloudSyncFetch({
   lastSyncedSrsRef,
   lastPulledCursorRef,
   lastSyncedLearnedRef,
-  lastSyncedActivityRef,
-  lastSyncedFoldersRef,
-  lastSyncedSessionRef,
+  lastSyncedSettingsRef,
   hasFetchedForUserRef,
   activeUserIdRef,
 }: UseCloudSyncFetchOptions) {
@@ -51,19 +43,14 @@ export function useCloudSyncFetch({
       setLastCloudUpdate,
       setSrsDataAndLearnedCards,
       setCustomFolders,
-      setDeletedFolderIds,
       setFoldersSyncedUserId,
     } = useAppStore.getState();
 
     try {
       setSyncStatus('syncing');
 
-      const activeUser = await authService.getCurrentUser() || currentUser;
-      const metadata = (activeUser.user_metadata || {}) as Record<string, unknown>;
-
       const prePullFolders = useAppStore.getState().customFolders;
       const prePullFolderOwner = useAppStore.getState().foldersSyncedUserId;
-      const prePullTombstones = useAppStore.getState().deletedFolderIds;
 
       const isAccountSwitch =
         (activeUserIdRef.current !== null && activeUserIdRef.current !== currentUser.id)
@@ -81,107 +68,88 @@ export function useCloudSyncFetch({
         && lastPulledCursorRef.current.userId === currentUser.id
         ? lastPulledCursorRef.current.cursor
         : null;
-      const cloudData = await userService.getProgress(
-        currentUser.id,
+      const cloudData = await userService.getSyncState(
         lastCursor ? { since: lastCursor } : undefined,
       );
       const srsAtPullStart = useAppStore.getState().srsData;
 
-      if (cloudData) {
-        const cloudTime = cloudData.lastUpdated ? new Date(cloudData.lastUpdated).getTime() : 0;
-        const localLastUpdate = useAppStore.getState().lastCloudUpdate;
-        const localTime = localLastUpdate ? new Date(localLastUpdate).getTime() : 0;
+      const cloudTime = cloudData.lastUpdated ? new Date(cloudData.lastUpdated).getTime() : 0;
+      const localLastUpdate = useAppStore.getState().lastCloudUpdate;
+      const localTime = localLastUpdate ? new Date(localLastUpdate).getTime() : 0;
 
-        if (isAccountSwitch || cloudData.hasCardDelta || cloudTime > localTime) {
-          const metadataIsNewer = isAccountSwitch || cloudTime > localTime;
+      if (isAccountSwitch || cloudData.hasDelta || cloudTime > localTime) {
+        const metadataIsNewer = isAccountSwitch || cloudTime > localTime;
 
-          if (metadataIsNewer) {
-            setLastCloudUpdate(cloudData.lastUpdated || null);
-            const local = useAppStore.getState();
-            const patch = resolveCloudMetadataPatch(
-              metadata,
-              {
-                activeBookId: local.activeBookId,
-                selectedLessonParts: local.selectedLessonParts,
-                sessionProgressIndex: local.sessionProgressIndex,
-              },
-              { isAccountSwitch },
-            );
-            if (Object.keys(patch).length > 0) {
-              useAppStore.setState(patch);
-            }
-          }
-
-          const localProgress = useAppStore.getState();
-          if (isAccountSwitch) {
-            setSrsDataAndLearnedCards(cloudData.srsData, cloudData.learnedCards);
-            lastSyncedSrsRef.current = cloudData.srsData;
-            lastSyncedLearnedRef.current = cloudData.learnedCards;
-            lastSyncedActivityRef.current = cloudData.lastActivity ?? null;
-          } else {
-            const { merged, baseline } = mergePulledSrsData({
-              priorBaseline: lastSyncedSrsRef.current,
-              atPullStart: srsAtPullStart,
-              current: localProgress.srsData,
-              cloud: cloudData.srsData,
-            });
-            setSrsDataAndLearnedCards(
-              merged,
-              Array.from(new Set([...localProgress.learnedCards, ...cloudData.learnedCards])),
-            );
-            lastSyncedSrsRef.current = baseline;
-          }
-        }
-      }
-
-      if (isAccountSwitch) {
-        lastSyncedSrsRef.current = cloudData?.srsData ?? null;
-        lastSyncedLearnedRef.current = cloudData?.learnedCards ?? null;
-        lastSyncedActivityRef.current = cloudData?.lastActivity ?? null;
-      }
-
-      const localFolders = useAppStore.getState().customFolders;
-      const localFoldersDirty =
-        lastSyncedFoldersRef.current !== null
-        && !isSameFolderList(lastSyncedFoldersRef.current, localFolders);
-
-      if (isAccountSwitch || !localFoldersDirty) {
-        const folders = await userService.getCustomFolders(currentUser.id);
-        setCustomFolders(folders);
-        lastSyncedFoldersRef.current = folders;
-
-        const migrated = resolveGuestFolderMigration({
-          isAccountSwitch,
-          prePullFolders,
-          prePullFolderOwner,
-          serverFolders: folders,
-          tombstones: prePullTombstones,
-        });
-        if (migrated.length > 0) {
-          await userService.syncCustomFolders(currentUser.id, migrated, []);
-          setCustomFolders(migrated);
-          lastSyncedFoldersRef.current = migrated;
-        }
-
-        if (!isAccountSwitch) {
-          const serverFolderIds = folders.map((folder) => folder.id);
-          const remaining = pruneAcknowledgedTombstones(
-            useAppStore.getState().deletedFolderIds,
-            serverFolderIds,
+        if (metadataIsNewer) {
+          setLastCloudUpdate(cloudData.lastUpdated || null);
+          const local = useAppStore.getState();
+          const patch = resolveCloudMetadataPatch(
+            cloudData.settings,
+            {
+              activeBookId: local.activeBookId,
+              selectedLessonParts: local.selectedLessonParts,
+              sessionProgressIndex: local.sessionProgressIndex,
+            },
+            { isAccountSwitch },
           );
-          setDeletedFolderIds(remaining);
+          if (Object.keys(patch).length > 0) {
+            useAppStore.setState(patch);
+          }
         }
 
+        const localProgress = useAppStore.getState();
+        if (isAccountSwitch) {
+          setSrsDataAndLearnedCards(cloudData.srsData, cloudData.learnedCards);
+          lastSyncedSrsRef.current = cloudData.srsData;
+        } else {
+          const { merged, baseline } = mergePulledSrsData({
+            priorBaseline: lastSyncedSrsRef.current,
+            atPullStart: srsAtPullStart,
+            current: localProgress.srsData,
+            cloud: cloudData.srsData,
+          });
+          setSrsDataAndLearnedCards(
+            merged,
+            Array.from(new Set([...localProgress.learnedCards, ...cloudData.learnedCards])),
+          );
+          lastSyncedSrsRef.current = baseline;
+        }
+      }
+
+      // Server truth for the learned set: on a switch the full pull, otherwise
+      // what was already known plus this pull. The next save then appends only
+      // ids beyond it instead of replacing the whole set.
+      lastSyncedLearnedRef.current = isAccountSwitch
+        ? cloudData.learnedCards
+        : Array.from(new Set([...(lastSyncedLearnedRef.current ?? []), ...cloudData.learnedCards]));
+      lastSyncedSettingsRef.current = cloudData.settings;
+
+      // Folder writes go straight through flashcardService, so the pull is
+      // the server truth. Guest folders created before the first sign-in are
+      // uploaded once.
+      const guestFolders = resolveGuestFolderMigration({
+        isAccountSwitch,
+        prePullFolders,
+        prePullFolderOwner,
+        serverFolders: cloudData.folders,
+      });
+      if (guestFolders.length > 0) {
+        await flashcardService.importFolders(currentUser.id, guestFolders);
+      }
+      const folders = guestFolders.length > 0 ? guestFolders : cloudData.folders;
+      if (!isSameFolderList(useAppStore.getState().customFolders, folders)) {
+        setCustomFolders(folders);
+      }
+      if (useAppStore.getState().foldersSyncedUserId !== currentUser.id) {
         setFoldersSyncedUserId(currentUser.id);
       }
 
-      lastSyncedSessionRef.current = getProgressCounters(useAppStore.getState());
       hasFetchedForUserRef.current = currentUser.id;
       activeUserIdRef.current = currentUser.id;
-      if (cloudData?.serverLastUpdated) {
+      if (cloudData.cursor) {
         lastPulledCursorRef.current = {
           userId: currentUser.id,
-          cursor: cloudData.serverLastUpdated,
+          cursor: cloudData.cursor,
         };
       }
       setSyncStatus('success');
@@ -196,10 +164,8 @@ export function useCloudSyncFetch({
     activeUserIdRef,
     hasFetchedForUserRef,
     lastPulledCursorRef,
-    lastSyncedActivityRef,
-    lastSyncedFoldersRef,
     lastSyncedLearnedRef,
-    lastSyncedSessionRef,
+    lastSyncedSettingsRef,
     lastSyncedSrsRef,
     persistedOwnerRef,
   ]);

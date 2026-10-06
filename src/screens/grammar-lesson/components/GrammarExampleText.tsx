@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import { AppIcon } from '../../../lib/widgets';
 import { LinkedTranslationText } from './LinkedTranslationText';
 import type { GrammarLessonText, GrammarWordToken } from '../../../types/models';
 import { GrammarText } from './GrammarText';
 import { InteractiveGrammarSentence } from './InteractiveGrammarSentence';
 import { splitDialogueText } from '../utils/grammarDialogueLayout';
-import { cn } from '../../../utils/cn';
 
 interface GrammarExampleTextProps {
   text: GrammarLessonText;
@@ -30,14 +28,18 @@ export function GrammarExampleText({
 
   if (!text.words) {
     return (
-      <GrammarText
-        text={text}
-        characterPreference={characterPreference}
-        showPinyin={showPinyin}
-        showTranslation={showTranslation}
-        contextTokens={contextTokens}
-        onOpenWord={onOpenWord}
-      />
+      <div className="flex items-start gap-1">
+        <div className="min-w-0">
+          <GrammarText
+            text={text}
+            characterPreference={characterPreference}
+            showPinyin={showPinyin}
+            showTranslation={showTranslation}
+            contextTokens={contextTokens}
+            onOpenWord={onOpenWord}
+          />
+        </div>
+      </div>
     );
   }
 
@@ -47,33 +49,23 @@ export function GrammarExampleText({
     return (
       <div className="space-y-3 sm:space-y-3.5">
         {dialogue.turns.map((turn, i) => (
-          <div key={i} className={cn('min-w-0', i > 0 && 'flex items-start gap-2 pt-1')}>
-            {i > 0 && (
-              <AppIcon
-                name="followUp"
-                size={18}
-                className="mt-1 shrink-0 text-ui-muted/60"
-              />
-            )}
-            <div className="flex-1 min-w-0">
-              <InteractiveGrammarSentence
-                words={turn.words}
-                characterPreference={characterPreference}
-                showPinyin={false}
-                focusTerms={focusTerms}
-                size="lg"
-                className="inline-flex flex-wrap gap-y-2"
-                activeAlignmentId={activeAlignmentId}
-                onActiveAlignmentChange={setActiveAlignmentId}
-                onOpenWord={onOpenWord}
-              />
-              {showPinyin && turn.pinyin && (
-                <p className="mt-1 text-[13px] font-bold leading-relaxed text-brand-primary sm:text-sm">
-                  {turn.pinyin}
-                </p>
-              )}
+          <div key={i} className="min-w-0">
+            <div className="min-w-0">
+              <div className="flex items-start gap-1">
+                <InteractiveGrammarSentence
+                  words={turn.words}
+                  characterPreference={characterPreference}
+                  showPinyin={showPinyin}
+                  focusTerms={focusTerms}
+                  size="lg"
+                  className="inline-flex min-w-0 flex-wrap gap-y-2"
+                  activeAlignmentId={activeAlignmentId}
+                  onActiveAlignmentChange={setActiveAlignmentId}
+                  onOpenWord={onOpenWord}
+                />
+              </div>
               {showTranslation && turn.english && (
-                <p className="ui-translation mt-1 text-[14px] sm:text-[15px]">
+                <p className="ui-translation mt-1 text-[15px] sm:text-base">
                   {turn.english}
                 </p>
               )}
@@ -86,31 +78,28 @@ export function GrammarExampleText({
 
   return (
     <>
-      <InteractiveGrammarSentence
-        words={text.words}
-        characterPreference={characterPreference}
-        showPinyin={false}
-        focusTerms={focusTerms}
-        size="lg"
-        className="gap-y-2"
-        activeAlignmentId={activeAlignmentId}
-        onActiveAlignmentChange={setActiveAlignmentId}
-        onOpenWord={onOpenWord}
-      />
-      {showPinyin && text.pinyin && (
-        <p className="mt-1 text-[13px] font-bold leading-relaxed text-brand-primary sm:text-sm">
-          {text.pinyin}
-        </p>
-      )}
+      <div className="flex items-start gap-1">
+        <InteractiveGrammarSentence
+          words={text.words}
+          characterPreference={characterPreference}
+          showPinyin={showPinyin}
+          focusTerms={focusTerms}
+          size="lg"
+          className="min-w-0 gap-y-2"
+          activeAlignmentId={activeAlignmentId}
+          onActiveAlignmentChange={setActiveAlignmentId}
+          onOpenWord={onOpenWord}
+        />
+      </div>
       {showTranslation && text.translationSegments ? (
         <LinkedTranslationText
           segments={text.translationSegments}
           activeAlignmentId={activeAlignmentId}
           onActiveAlignmentChange={setActiveAlignmentId}
-          className="mt-1.5"
+          className="mt-1"
         />
       ) : showTranslation && text.english ? (
-        <p className="ui-translation mt-1.5 text-[15px] sm:text-base">{text.english}</p>
+        <p className="ui-translation mt-1 text-[15px] sm:text-base">{text.english}</p>
       ) : null}
     </>
   );

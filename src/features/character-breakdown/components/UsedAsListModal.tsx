@@ -3,7 +3,8 @@ import { WorkspaceDetailShell } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
 import { UsedAsCompactItem } from './breakdown/UsedAsCompactItem';
 import { SAMPLE_BOOKS } from '../../../data/books';
-import { deriveUsedAsItems } from '../utils/deriveUsedAsItems';
+import { deriveUsedAsItems, groupUsedAsByBook } from '../utils/deriveUsedAsItems';
+import { useLevels } from '../../../hooks/useLevels';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
 
@@ -17,6 +18,7 @@ interface UsedAsListModalProps {
 
 export function UsedAsListModal({ initialChar, usedAsComponents, activeBook, onClose, onWordClick }: UsedAsListModalProps) {
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
+  const levels = useLevels();
   const { inCourseItems, outOfCourseItems } = React.useMemo(() => {
     return deriveUsedAsItems(usedAsComponents);
   }, [usedAsComponents]);
@@ -31,22 +33,11 @@ export function UsedAsListModal({ initialChar, usedAsComponents, activeBook, onC
     >
       {(() => {
         if (inCourseItems.length === 0) return null;
-        const groups: { [key: number]: typeof inCourseItems } = {};
-        inCourseItems.forEach(item => {
-          const bId = item.badgeInfo!.bookId;
-          if (!groups[bId]) groups[bId] = [];
-          groups[bId].push(item);
-        });
-        const sortedIds = Object.keys(groups).map(Number).sort((a, b) => {
-          if (a === activeBook.id) return -1;
-          if (b === activeBook.id) return 1;
-          return a - b;
-        });
+        const groups = groupUsedAsByBook(inCourseItems, { activeBookId: activeBook.id, levels });
 
         return (
           <div className="flex flex-col gap-5">
-            {sortedIds.map(bookId => {
-              const items = groups[bookId];
+            {groups.map(({ bookId, cards: items }) => {
               return (
                 <div key={bookId} className="flex w-full flex-col overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
                   {items.map((item, idx) => (

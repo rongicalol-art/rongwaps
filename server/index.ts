@@ -6,6 +6,7 @@ import { createServer as createViteServer } from "vite";
 import dotenv from "dotenv";
 import { MsEdgeTTS, OUTPUT_FORMAT } from "msedge-tts";
 import { supabase } from "./supabase.js";
+import { getTtsObject, putTtsObject } from "./ttsStore.js";
 import { gradeGrammarAnswer } from "./jevClient.js";
 
 // Load local server configuration.
@@ -130,10 +131,9 @@ function sendAudioBuffer(
 
 // ─── Neural TTS endpoint (Microsoft Edge Read Aloud) ──────────────────
 // POST /api/tts { text, voice? }
-// Synthesizes natural neural TTS server-side, caches MP3 in Supabase Storage,
+// Synthesizes natural neural TTS server-side, caches MP3 in R2 (Supabase Storage if R2 is unset),
 // and streams audio/mpeg back. Fallback: GET /api/tts-cache/:text serves cache.
 
-const TTS_AUDIO_BUCKET = "vocabulary-audio";
 const TTS_CACHE_PREFIX = "tts/";
 
 const TTS_VOICES: Record<string, { name: string; lang: string }> = {
@@ -230,9 +230,9 @@ async function getTtsAudio(text: string, voiceName: string): Promise<CachedAudio
   if (inMemory) return inMemory;
 
   // 1. Check cache
-  const { data, error } = await supabase.storage.from(TTS_AUDIO_BUCKET).download(key);
-  if (!error && data) {
-    const buffer = Buffer.from(await data.arrayBuffer());
+  const cachedBuffer = await getTtsObject(key);
+  if (cachedBuffer) {
+    const buffer = cachedBuffer;
     const etag = `"tts-${Buffer.from(key).toString("base64url")}-${buffer.length}"`;
     const item: CachedAudio = { buffer, contentType: "audio/mpeg", etag };
     setInAudioMemoryCache(cacheKey, item);
@@ -250,14 +250,7 @@ async function getTtsAudio(text: string, voiceName: string): Promise<CachedAudio
   const promise = (async () => {
     const audio = await synthesizeNeural(text, voiceName);
     // Best-effort cache write; never block playback on failure.
-    // Plain insert (no upsert): the storage INSERT policy allows anon writes
-    // under tts/. Note the anon UPDATE policy was removed in migration
-    // 20260816_security_hardening.sql, so upsert would 403 and the cache
-    // would never land — keep this as a plain INSERT.
-    await supabase.storage
-      .from(TTS_AUDIO_BUCKET)
-      .upload(key, audio, { contentType: "audio/mpeg" })
-      .catch((err: unknown) => console.warn("TTS cache upload failed:", err));
+    await putTtsObject(key, audio);
     return audio;
   })();
 
@@ -335,11 +328,10 @@ app.get("/api/tts-cache/:text", apiLimiter, async (req: express.Request, res: ex
     let cached = audioMemoryCache.get(cacheKey);
 
     if (!cached) {
-      const { data, error } = await supabase.storage.from(TTS_AUDIO_BUCKET).download(key);
-      if (error || !data) {
+      const buffer = await getTtsObject(key);
+      if (!buffer) {
         return res.status(404).json({ error: "TTS audio not cached" });
       }
-      const buffer = Buffer.from(await data.arrayBuffer());
       const etag = `"tts-${Buffer.from(key).toString("base64url")}-${buffer.length}"`;
       cached = { buffer, contentType: "audio/mpeg", etag };
       setInAudioMemoryCache(cacheKey, cached);
@@ -365,11 +357,10 @@ app.get("/api/tts/:voice/*", apiLimiter, async (req: express.Request, res: expre
 
     if (!cached) {
       const key = `${TTS_CACHE_PREFIX}${voice}/${fileTail}`;
-      const { data, error } = await supabase.storage.from(TTS_AUDIO_BUCKET).download(key);
-      if (error || !data) {
+      const buffer = await getTtsObject(key);
+      if (!buffer) {
         return res.status(404).json({ error: "TTS audio not found" });
       }
-      const buffer = Buffer.from(await data.arrayBuffer());
       const etag = `"tts-${voice}-${fileTail}-${buffer.length}"`;
       cached = { buffer, contentType: "audio/mpeg", etag };
       setInAudioMemoryCache(cacheKey, cached);

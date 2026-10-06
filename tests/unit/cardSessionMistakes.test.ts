@@ -15,21 +15,17 @@ function createMockCard(id: string, front: string = '你好'): Flashcard {
   };
 }
 
-test('normalizePronunciationRate simplifies speed values to 3 clean presets', () => {
-  // Slow range
+test('normalizePronunciationRate snaps speed values to the nearest of 4 presets', () => {
   assert.equal(normalizePronunciationRate(0.6), 0.75);
   assert.equal(normalizePronunciationRate(0.75), 0.75);
   assert.equal(normalizePronunciationRate(0.85), 0.75);
-
-  // Normal range
   assert.equal(normalizePronunciationRate(0.9), 1.0);
   assert.equal(normalizePronunciationRate(1.0), 1.0);
-  assert.equal(normalizePronunciationRate(1.1), 1.0);
-
-  // Fast range
-  assert.equal(normalizePronunciationRate(1.15), 1.25);
-  assert.equal(normalizePronunciationRate(1.25), 1.25);
-  assert.equal(normalizePronunciationRate(1.5), 1.25);
+  assert.equal(normalizePronunciationRate(1.25), 1.0);
+  assert.equal(normalizePronunciationRate(1.3), 1.5);
+  assert.equal(normalizePronunciationRate(1.5), 1.5);
+  assert.equal(normalizePronunciationRate(1.8), 2.0);
+  assert.equal(normalizePronunciationRate(3.0), 2.0);
 });
 
 test('first attempt mistake remains locked as unlearned despite immediate retry with correct answer', () => {

@@ -1,7 +1,7 @@
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence } from 'motion/react';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import { GrammarLessonScreen } from '../../screens/grammar-lesson';
-import { LoadingScreen } from '../../lib/widgets';
+import { LoadingScreen, WorkspaceWindow } from '../../lib/widgets';
 
 type GrammarLessonScreenProps = React.ComponentProps<typeof GrammarLessonScreen>;
 
@@ -33,17 +33,9 @@ export function GrammarWindow({
   return (
     <AnimatePresence mode="wait">
       {shouldRender && !part && (
-        <motion.div
-          key="grammar-loader"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.18, ease: 'easeOut' }}
-          className="fixed inset-0 z-window bg-ui-canvas"
-          style={{ paddingLeft: 'var(--workspace-nav-width, 0px)' }}
-        >
-          <LoadingScreen message="Loading grammar…" tone="canvas" windowOverlay />
-        </motion.div>
+        <WorkspaceWindow key="grammar-loader" tone="canvas">
+          <LoadingScreen message="Loading grammar…" tone="canvas" />
+        </WorkspaceWindow>
       )}
       {shouldRender && part && (
         <GrammarLessonScreen

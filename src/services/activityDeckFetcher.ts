@@ -1,7 +1,7 @@
 import type { Flashcard } from '../data/flashcards';
-import { fetchVocabulary, fetchVocabularyByIds, prepareVocabulary, getCourseVocabLookupMap } from './vocabularyService';
+import { fetchVocabulary, fetchVocabularyByIds, prepareVocabulary } from './vocabularyService';
+import { getCourseVocabLookupMap } from './courseVocabLookup';
 import { fetchAllVocabularyPacks } from './contentPacks';
-import { userService } from './userService';
 import { getDictionaryEntriesBatch } from './dictionaryService';
 import { buildReviewSession } from '../utils/reviewSession';
 import type { SRSData } from '../utils/srsEngine';
@@ -41,12 +41,8 @@ export async function loadReviewDeck(
     return resolveByIds(pinnedIds);
   }
 
-  const dueIds = await userService.getDueCardIds();
-  if (dueIds) {
-    const pool = await resolveByIds(dueIds);
-    return { cards: buildReviewSession(pool.cards, srsData), knownIds: pool.knownIds };
-  }
-
+  // Local SRS state is the freshest view: it includes reviews not yet saved,
+  // and incremental pulls already merge other devices' reviews.
   const localDueIds = deriveLocalDueCardIds(srsData);
   const pool = await resolveByIds(localDueIds);
   return { cards: buildReviewSession(pool.cards, srsData), knownIds: pool.knownIds };

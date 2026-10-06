@@ -39,9 +39,9 @@ export function useCardFlow({
   onFinishSetRef.current = onFinishSet;
   setIsFlippedRef.current = setIsFlipped;
 
+  // Pauses the flow state only; the clip already ringing is left to finish.
   const pauseFlow = useCallback(() => {
     setFlowStatus((status) => status === 'playing' ? 'paused' : status);
-    audioService.stop();
   }, []);
 
   const stopFlow = useCallback(() => {
@@ -123,9 +123,10 @@ export function useCardFlow({
     runFlowStep();
     return () => {
       cancelled = true;
-      audioService.stop();
     };
   }, [currentCard, currentIndex, flowBackDelayMs, flowFrontDelayMs, flowStatus, flowStep, pronunciationRate, speakDefinition, totalCount]);
+
+  useEffect(() => () => audioService.stop(), []);
 
   // Note: the flow deliberately does NOT pause when the document is hidden
   // (tab switch). Timers get throttled by the browser while hidden, so the

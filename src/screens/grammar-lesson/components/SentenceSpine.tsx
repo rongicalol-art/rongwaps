@@ -74,8 +74,8 @@ export function SentenceSpine({
         <div className="grid grid-cols-[minmax(0,0.8fr)_minmax(0,1.35fr)_minmax(0,1fr)] items-stretch text-center">
           {slots.map((slot, index) => (
             <div key={slot.role} className="relative min-w-0 border-l border-ui-divider px-2 py-5 first:border-l-0 sm:px-4 sm:py-6">
-              <span className="block text-[9px] font-black uppercase tracking-[0.08em] text-ui-muted sm:text-[10px]">{slot.role}</span>
-              <span className="mt-1 block text-[11px] font-black leading-tight text-ui-ink sm:text-xs">{slot.label}</span>
+              <span className="ui-eyebrow block text-ui-muted">{slot.role}</span>
+              <span className="mt-1 block text-xs font-black leading-tight text-ui-ink">{slot.label}</span>
               <div className="mt-4 flex min-h-8 items-center justify-center font-chinese text-[22px] font-black leading-tight text-ui-ink-strong sm:text-[28px]">
                 {index === 1 && spine.negation && isNegative && (
                   <ContextualChineseText
@@ -94,11 +94,11 @@ export function SentenceSpine({
                 />
               </div>
               {showPinyin && (
-                <p className="mt-1 text-[10px] font-extrabold leading-tight text-brand-primary sm:text-xs">
+                <p className="mt-1 text-xs font-extrabold leading-tight text-brand-primary">
                   {index === 1 && isNegative && spine.negation ? `${spine.negation.pinyin} ` : ''}{slot.pinyin}
                 </p>
               )}
-              <p className="ui-translation mt-1 text-[10px] leading-tight sm:text-xs">{slot.english}</p>
+              <p className="ui-translation mt-1 text-xs leading-tight">{slot.english}</p>
             </div>
           ))}
         </div>

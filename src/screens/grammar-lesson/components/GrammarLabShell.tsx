@@ -28,7 +28,7 @@ export function GrammarLabShell({
     >
       <header className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div className="max-w-3xl">
-          <p className="text-[11px] font-black uppercase tracking-[0.1em] text-brand-primary">
+          <p className="ui-eyebrow text-brand-primary">
             {eyebrow}
           </p>
           <h2 className="mt-1.5 text-[24px] font-black leading-[1.15] text-ui-ink-strong sm:text-[30px]">

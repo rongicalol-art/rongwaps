@@ -20,7 +20,7 @@ plus the standard `RateLimit-*` headers.
 ## 🎴 Endpoints
 
 ### Neural TTS Synthesis
-Synthesizes Mandarin speech server-side, caches the MP3 in Supabase Storage, and streams it back.
+Synthesizes Mandarin speech server-side, caches the MP3 in Cloudflare R2, and streams it back.
 The browser only uses this route for text with no recorded audio file.
 - **Method**: `POST`
 - **Path**: `/api/tts`
@@ -33,8 +33,9 @@ The browser only uses this route for text with no recorded audio file.
 - **Provider**: MiniMax Speech (`speech-02-hd`) for the mapped zh-CN voices when `MINIMAX_API_KEY` is
   set, with an automatic fallback to `msedge-tts` on any provider failure; zh-TW voices and
   unconfigured deployments always use `msedge-tts` (24 kHz, 48 kbps mono MP3, rate 0.9).
-- **Caching**: Supabase Storage bucket `vocabulary-audio` at
-  `tts/<voice>/<hex-encoded text>.mp3` (written with a plain insert, best effort — a failed cache
+- **Caching**: Cloudflare R2 bucket (`R2_BUCKET_NAME`) via `server/ttsStore.ts` (falls back to the
+  Supabase `vocabulary-audio` bucket when `R2_*` is unset) at
+  `tts/<voice>/<hex-encoded text>.mp3` (best effort — a failed cache
   write never blocks playback), fronted by the same memory cache and synthesis deduplication as the
   audio proxy. `Cache-Control: public, max-age=86400`.
 - **Responses**:
@@ -79,6 +80,7 @@ Direct read of a cached TTS file by its storage path, mirroring the object URL l
 | `MINIMAX_API_KEY` | Enables MiniMax Speech synthesis for the mapped zh-CN voices. |
 | `MINIMAX_BASE_URL` | MiniMax API base URL (default `https://api.minimax.io`). |
 | `MINIMAX_TTS_MODEL` | MiniMax model id (default `speech-02-hd`). |
+| `R2_ACCOUNT_ID` (or `R2_ENDPOINT`), `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME` | Cloudflare R2 TTS cache. Unset = Supabase Storage fallback. |
 
 Supabase credentials are read by the server-owned client in `server/supabase.ts`; the server never
 imports browser application code.

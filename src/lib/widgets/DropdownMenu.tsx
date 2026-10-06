@@ -169,8 +169,8 @@ export function DropdownMenu({
             exit={{ opacity: 0 }}
             transition={reduceMotion ? { duration: 0 } : { duration: 0.15, ease: 'easeOut' }}
             className={cn(
-              'absolute top-full z-50 rounded-control border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface',
-              'flex flex-col p-0.5',
+              'popover-surface absolute top-full z-50',
+              'flex flex-col overflow-hidden p-0',
               gapClassName,
               widthClassName,
               menuClassName,
@@ -214,11 +214,11 @@ export function DropdownMenuItem({
       role="menuitem"
       tabIndex={-1}
       className={cn(
-        'flex min-h-11 sm:min-h-12 w-full cursor-pointer select-none items-center gap-3 rounded-compact px-3.5 py-2.5 text-left text-sm sm:text-base font-extrabold text-ui-ink outline-none transition-[background-color,color,transform] duration-100',
+        'flex min-h-11 sm:min-h-12 w-full cursor-pointer select-none items-center gap-3 px-4 py-2.5 text-left text-sm sm:text-base font-extrabold text-ui-ink outline-none transition-[background-color,color,transform] duration-100',
         'focus-ring',
         active
           ? 'bg-brand-primary/10 text-brand-primary'
-          : 'hover:bg-ui-hover active:translate-y-[2px]',
+          : 'hover:bg-ui-hover active:bg-ui-divider',
         rowClassName,
         className,
       )}

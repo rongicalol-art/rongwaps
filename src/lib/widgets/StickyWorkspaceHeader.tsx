@@ -106,7 +106,7 @@ export function StickyWorkspaceHeader({
         <div
           className={`flex min-w-0 max-w-full items-center gap-2 ${
             align === 'left' ? 'justify-start' : 'justify-center'
-          }`}
+          } ${searchExpanded ? 'max-sm:invisible' : ''}`}
         >
           {leftSlot && <div className="shrink-0 text-ui-ink [&>svg]:h-6 [&>svg]:w-6">{leftSlot}</div>}
           <h1 className="truncate text-xl font-extrabold tracking-tight text-ui-ink sm:text-2xl md:text-[26px]">

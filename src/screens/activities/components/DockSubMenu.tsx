@@ -12,6 +12,8 @@ export interface DockSubMenuProps<T extends string> {
   selectedValue?: T | null;
   onSelect: (value: T) => void;
   label: string;
+  /** `top` opens above the button (horizontal dock); `left`/`right` open beside it (vertical dock). */
+  side?: 'top' | 'left' | 'right';
 }
 
 export function DockSubMenu<T extends string>({
@@ -23,8 +25,10 @@ export function DockSubMenu<T extends string>({
   selectedValue,
   onSelect,
   label,
+  side = 'top',
 }: DockSubMenuProps<T>) {
   const [menuLeft, setMenuLeft] = useState<number | null>(null);
+  const [menuTop, setMenuTop] = useState<number | null>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -36,6 +40,10 @@ export function DockSubMenu<T extends string>({
 
       const containerRect = containerRef.current.getBoundingClientRect();
       const buttonRect = targetButton.getBoundingClientRect();
+      if (side !== 'top') {
+        setMenuTop(buttonRect.top + buttonRect.height / 2 - containerRect.top);
+        return;
+      }
       const menuWidth = 240;
       const halfWidth = menuWidth / 2; // 120px
 
@@ -58,7 +66,7 @@ export function DockSubMenu<T extends string>({
     updatePosition();
     window.addEventListener('resize', updatePosition);
     return () => window.removeEventListener('resize', updatePosition);
-  }, [open, modeKey, containerRef]);
+  }, [open, modeKey, containerRef, side]);
 
   return (
     <AnimatePresence>
@@ -68,15 +76,22 @@ export function DockSubMenu<T extends string>({
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 4, scale: 0.98 }}
           transition={{ duration: 0.18, ease: [0.32, 0.72, 0, 1] }}
-          className="absolute bottom-full w-60 sm:w-64 pb-3 z-50 pointer-events-auto"
-          style={{
-            left: menuLeft !== null ? `${menuLeft}px` : 'calc(50% - 120px)',
-          }}
+          className={cn(
+            'absolute w-60 sm:w-64 z-50 pointer-events-auto',
+            side === 'left' && 'right-full -translate-y-1/2 pr-3',
+            side === 'right' && 'left-full -translate-y-1/2 pl-3',
+            side === 'top' && 'bottom-full pb-3',
+          )}
+          style={
+            side === 'top'
+              ? { left: menuLeft !== null ? `${menuLeft}px` : 'calc(50% - 120px)' }
+              : { top: menuTop !== null ? `${menuTop}px` : '50%' }
+          }
         >
           <div
             role="menu"
             aria-label={label}
-            className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-2 shadow-ambient-lg flex flex-col gap-1.5"
+            className="popover-surface p-2 flex flex-col gap-1.5"
           >
             {options.map((mode) => (
               <ActionButton

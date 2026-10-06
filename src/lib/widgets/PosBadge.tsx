@@ -11,12 +11,12 @@ import {
 } from '../../utils/posLabels';
 import { cn } from '../../utils/cn';
 
-/** Soft tint per word-class family; neutral for helpers. */
+/** Every word class reads neutral; the label carries the meaning, not the color. */
 const TAG_TONES: Record<PosCategory, string> = {
-  noun: 'bg-brand-primary/10',
-  verb: 'bg-brand-secondary/10',
-  stative: 'bg-feedback-success/10',
-  measure: 'bg-feedback-warning/10',
+  noun: 'bg-ui-canvas',
+  verb: 'bg-ui-canvas',
+  stative: 'bg-ui-canvas',
+  measure: 'bg-ui-canvas',
   adverb: 'bg-ui-canvas',
   function: 'bg-ui-canvas',
   phrase: 'bg-ui-canvas',
@@ -24,10 +24,10 @@ const TAG_TONES: Record<PosCategory, string> = {
 };
 
 const TOOLTIP_TONES: Record<PosCategory, string> = {
-  noun: 'border-brand-primary-edge shadow-[0_3px_0_var(--color-brand-primary-edge)]',
-  verb: 'border-brand-secondary-edge shadow-[0_3px_0_var(--color-brand-secondary-edge)]',
-  stative: 'border-feedback-success-edge shadow-[0_3px_0_var(--color-feedback-success-edge)]',
-  measure: 'border-feedback-warning-edge shadow-[0_3px_0_var(--color-feedback-warning-edge)]',
+  noun: 'border-ui-border shadow-[0_3px_0_var(--color-ui-border)]',
+  verb: 'border-ui-border shadow-[0_3px_0_var(--color-ui-border)]',
+  stative: 'border-ui-border shadow-[0_3px_0_var(--color-ui-border)]',
+  measure: 'border-ui-border shadow-[0_3px_0_var(--color-ui-border)]',
   adverb: 'border-ui-border shadow-[0_3px_0_var(--color-ui-border)]',
   function: 'border-ui-border shadow-[0_3px_0_var(--color-ui-border)]',
   phrase: 'border-ui-border shadow-[0_3px_0_var(--color-ui-border)]',
@@ -35,10 +35,10 @@ const TOOLTIP_TONES: Record<PosCategory, string> = {
 };
 
 const ARROW_TONES: Record<PosCategory, string> = {
-  noun: 'border-t-brand-primary-edge',
-  verb: 'border-t-brand-secondary-edge',
-  stative: 'border-t-feedback-success-edge',
-  measure: 'border-t-feedback-warning-edge',
+  noun: 'border-t-ui-border',
+  verb: 'border-t-ui-border',
+  stative: 'border-t-ui-border',
+  measure: 'border-t-ui-border',
   adverb: 'border-t-ui-border',
   function: 'border-t-ui-border',
   phrase: 'border-t-ui-border',
@@ -56,6 +56,8 @@ interface PosBadgeProps {
   characterPreference?: ScriptPreference;
   /** Optional custom label override (defaults to formatPosLabel(pos)). */
   label?: string;
+  /** `lg` is the roomy sentence-case tag used on flashcard faces. */
+  size?: 'md' | 'lg';
 }
 
 interface Anchor {
@@ -82,6 +84,7 @@ export function PosBadge({
   className = '',
   characterPreference = 'traditional',
   label: customLabel,
+  size = 'md',
 }: PosBadgeProps) {
   const label = customLabel ?? formatPosLabel(pos);
   const reduceMotion = useReducedMotion();
@@ -167,8 +170,10 @@ export function PosBadge({
         }}
         onPointerLeave={disarm}
         className={cn(
-          'inline-flex shrink-0 select-none cursor-help items-center rounded-xs px-1.5 py-1',
-          'text-xs font-black uppercase leading-none tracking-wide text-ui-ink-strong',
+          'inline-flex shrink-0 select-none cursor-help items-center text-ui-ink-strong font-black leading-none',
+          size === 'lg'
+            ? 'rounded-control px-3.5 py-2.5 text-sm tracking-normal'
+            : 'rounded-xs px-1.5 py-1 text-xs uppercase tracking-wide',
           'transition-colors',
           TAG_TONES[category],
           className,

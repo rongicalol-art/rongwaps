@@ -83,8 +83,8 @@ export const FavoriteButton = React.memo(function FavoriteButton({
         : cn(
             'rounded-control outline-none transition-colors focus-ring',
             isSaved
-              ? 'text-brand-secondary hover:text-brand-secondary'
-              : 'text-ui-muted hover:text-brand-secondary',
+              ? 'text-feedback-warning hover:text-feedback-warning-edge'
+              : 'text-ui-muted hover:text-feedback-warning',
           );
 
   const accessibleLabel = isSaved
@@ -107,7 +107,7 @@ export const FavoriteButton = React.memo(function FavoriteButton({
       <AppIcon
         name={isSaved ? 'bookmarkFilled' : 'bookmark'}
         size={iconSize}
-        className={isSaved ? 'text-brand-secondary' : undefined}
+        className={isSaved ? 'text-feedback-warning' : undefined}
       />
     </button>
   );

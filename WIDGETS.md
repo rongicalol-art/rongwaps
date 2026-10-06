@@ -106,7 +106,7 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
     </Dialog.Content>
   </Dialog.Root>
   ```
-- **Drawer** (alias: **BottomDrawer**) — unified bottom sheet drawer primitive supporting both single-tag invocation (`<Drawer isOpen={open} onClose={onClose} title="...">`) and compound customization (`Drawer.Root`, `Drawer.Backdrop`, `Drawer.Content`, `Drawer.Handle`, `Drawer.Header`, `Drawer.StickyHeader`, `Drawer.Title`, `Drawer.Close`, `Drawer.Body`). Provides gesture drag-to-dismiss, desktop workspace bounds, tone support (`surface` | `practice` | `canvas`), size presets (`sm` to `full`), and sticky gradient headers.
+- **Drawer** (alias: **BottomDrawer**) — unified bottom sheet drawer primitive supporting both single-tag invocation (`<Drawer isOpen={open} onClose={onClose} title="...">`) and compound customization (`Drawer.Root`, `Drawer.Backdrop`, `Drawer.Content`, `Drawer.Handle`, `Drawer.Header`, `Drawer.StickyHeader`, `Drawer.Title`, `Drawer.Close`, `Drawer.Body`). Below `md` it is a bottom sheet with drag-to-dismiss; at `md+` it is a floating card centered in the workspace (no handle), or a right-docked panel (same depth-block look as the sidebar, no blur) with `mdPlacement="side"` (used by `StudyDrawer`). The scrim always covers the full viewport (sidebar dimmed too) while the card stays inside the workspace bounds. Also provides tone support (`surface` | `practice` | `canvas`), size presets (`sm` to `full`), and sticky gradient headers.
   ```tsx
   // Single-tag usage:
   <Drawer isOpen={open} onClose={onClose} title="Examples">{children}</Drawer>
@@ -126,13 +126,18 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
     </Drawer.Content>
   </Drawer.Root>
   ```
+- **FolderSvg** — the Library folder glyph (back tab + front face) from `colorFront`/`colorBack`; `isStarred` adds the star, `hasPlus` makes the New Folder tile. Fills its parent (`h-full w-full`); size it with an `aspect-[25/21]` wrapper. Used by `FolderItem`, `FolderModal` and the Save Word panel.
+- **WorkspaceWindow** — the one frame for any surface that takes over the workspace (Reader, Grammar, their loaders, dictionary/breakdown details, practice settings). Paints the full viewport in its `tone` so nothing beneath peeks out behind the floating sidebar, and lays children out in the content box right of `--workspace-nav-width` (children may fill it with `absolute inset-0`). `layer`: `window` (study windows) or `window-detail` (a detail opened over a window). Fades in by default; pass motion props to override. Never hand-roll `fixed inset-0` + `paddingLeft: var(--workspace-nav-width)`.
+  ```tsx
+  <WorkspaceWindow ref={dialogRef} tone="practice" role="dialog" aria-modal="true" aria-label="Reading Mode">{content}</WorkspaceWindow>
+  ```
 - **DetailShell** (alias: **WorkspaceDetailShell**) — unified workspace-bounded detail view primitive supporting both single-tag invocation (`<DetailShell ariaLabel="Word detail" onClose={onClose} title="Details">`) and compound customization (`DetailShell.Root`, `DetailShell.Scroller`, `DetailShell.Content`, `DetailShell.Floating`). Separates scroll mechanics, sticky headers, inner animated content, and floating overlay layers (bottom tabs, modals).
   ```tsx
   // Single-tag usage:
   <DetailShell ariaLabel="Word detail" onClose={onClose} title="Breakdown">{content}</DetailShell>
 
   // Compound usage:
-  <DetailShell.Root ariaLabel="Character breakdown" tone="practice" workspaceOffset onEscape={onClose}>
+  <DetailShell.Root ariaLabel="Character breakdown" tone="practice" onEscape={onClose}>
     <DetailShell.Scroller ref={scrollRef} onScroll={handleScroll}>
       <ScreenHeader variant="panel" tone="practice" onClose={onClose} title="Breakdown" />
       <div className="mx-auto max-w-[1180px] p-6">{content}</div>
@@ -140,6 +145,7 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
     <DetailShell.Floating>{bottomTabs}</DetailShell.Floating>
   </DetailShell.Root>
   ```
+  Fills its nearest positioned host (`absolute inset-0`). `windowed` opens it as its own `WorkspaceWindow` (`z-window-detail`, portaled to the body) — e.g. `PracticeSettingsScreen`.
 - **ConfirmationDialog** — destructive confirmation modal built on `Dialog.*` with safe Cancel focus, Escape dismissal, focus restoration, optional icon, loading, and error message.
   ```tsx
   <ConfirmationDialog title="Reset progress" description="This cannot be undone." confirmLabel="Reset" onConfirm={reset} onCancel={close} />
@@ -148,7 +154,7 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
   ```tsx
   <DisclosureLine title="Interactive help">{help}</DisclosureLine>
   ```
-- **DropdownMenu** / **DropdownMenuItem** — keyboard-navigable menu with arrows, Enter, Space, Tab, Escape, outside-click dismissal, and viewport-safe alignment.
+- **DropdownMenu** / **DropdownMenuItem** — outlined, shadowless `popover-surface` menu (same class for every floating menu/popover: settings popovers, dock sub-menus; defined in `src/index.css`, never hand-roll it) with flat full-width rows; keyboard-navigable menu with arrows, Enter, Space, Tab, Escape, outside-click dismissal, and viewport-safe alignment.
   ```tsx
   <DropdownMenu label="Session controls" open={open} onOpenChange={setOpen} renderTrigger={renderTrigger} />
   ```
@@ -167,6 +173,7 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
     </FloatingDock.Popover>
   </FloatingDock.Root>
   ```
+  Practice dock placement is a persisted `dockStyle` preference (Study settings → Practice dock): `bottom-center` (default), `bottom-right`, `right-column`, `right-middle`, `top-right`, `left-column`. `getPracticeDockLayout` in `src/screens/activities/components/practiceDockLayout.ts` owns root classes, popover/tooltip side and window inset (header and content shrink like a side panel); vertical styles apply at `md+` only. A mode's own controls (writing: restart, stroke order, outline, exit) render inside this same dock through `PracticeDockSlotOutlet` / `WritingDock` portal, never as a second dock.
 - **StudyDrawer** — shared mobile study drawer shell (`lg`-hidden): bottom sheet with drag handle, eyebrow title, close control, and a scrollable body over the given `tone`. Use it for any companion panel that becomes a `StudySidePanel` column on desktop. Screens own the content.
   ```tsx
   <StudyDrawer isOpen={isOpen} onClose={close} title="Study Guide" ariaLabel="Study Guide" tone="practice">
@@ -279,6 +286,14 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
 - **ReferenceRow** — the single row anatomy for reference sheets (character breakdown, word detail): Chinese glyph left, pinyin over meaning right, optional trailing meta, and a `loading` skeleton state. Keeps every supporting-information rail on the same row rhythm; `accentClassName` tints the glyph with the active book accent.
   ```tsx
   <ReferenceRow glyph="東" accentClassName={activeBook.accent} primary="dōng" secondary="east" onClick={() => open('東')} ariaLabel="Open breakdown for 東" />
+  ```
+- **CharacterTile** — compact tappable tile for grids of related characters (Library "Learn next"): glyph, optional pinyin, and a `LevelTag`. `known` adds a success check, `upcoming` dims a later-book character, `active` rings it (e.g. now playing).
+  ```tsx
+  <CharacterTile glyph="騎" pinyin="qí" bookId={1} lessonId={6} known={knownChars.has('騎')} onClick={() => open('騎')} />
+  ```
+- **LevelTag** — where a character or word sits for the learner. `row` (trailing meta on reference rows) shows the course lesson `B1 · L3`, falling back to a small outlined TOCFL label (`Novice A1 A2 B1 B2 C1 C2`, from TBCL level 1–7; `Rare` for hanzi on neither TBCL nor New HSK, radical combining forms like 亻 stay blank) for non-course items; `level` is a `ResolvedLevel` from `resolveLevel`/`useLevel` (`src/utils/levels.ts`) — estimates render dimmed as `~B1` (the `chip` variant spells out `TOCFL ~B1 · estimated`, since row tooltips are hover-only) — callers that keep the book-accent dot render `LevelTag` as the no-lesson branch; `chip` shows `TOCFL A2` as a quiet secondary header chip. Lesson always wins: the app follows the book.
+  ```tsx
+  <LevelTag bookId={rank?.bookId} lessonId={rank?.lessonId} level={resolveLevel(char, levels)} />
   ```
 - **SmartSentence** — clickable Chinese sentence presentation for dictionary lookup. Use `highlightTerms` to emphasize the vocabulary currently being taught.
   ```tsx

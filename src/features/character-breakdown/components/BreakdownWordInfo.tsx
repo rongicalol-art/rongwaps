@@ -1,3 +1,4 @@
+import { LevelTag } from '../../../lib/widgets';
 import React from 'react';
 import { numberToToneMarks } from '../../../utils/pinyin';
 import { DESIGN_TOKENS } from '../../../data/designTokens';
@@ -80,7 +81,12 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
       {/* Top Character Area */}
       <section className="relative flex flex-col overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
 
-        <SummaryQuickActions char={activeChar} audioSrc={charData?.audio ?? undefined} />
+        <SummaryQuickActions
+          char={activeChar}
+          audioSrc={charData?.audio ?? undefined}
+          pinyin={pinyin ? numberToToneMarks(pinyin) : undefined}
+          meaning={meaning}
+        />
         <div className="p-6 md:p-8 flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 relative z-10 text-center sm:text-left">
            {/* Big Character focus */}
            <div className="flex flex-col items-center">
@@ -115,15 +121,9 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
                      </div>
                      <div className="flex flex-col gap-2 w-full text-left items-start">
                        {charCardsInfo.map((card, idx) => {
-                         const cardBook = SAMPLE_BOOKS.find(b => b.id === card.bookId) || activeBook;
                          return (
                            <div key={idx} className="flex flex-row gap-3 items-baseline text-left w-full justify-start">
-                              <span className="shrink-0 text-left text-[11px] font-bold tracking-widest text-ui-muted">
-                                <span className="flex items-center gap-1.5 py-0.5">
-                                  <span>B{card.bookId} · L{card.lessonId}</span>
-                                  <span className={`w-1.5 h-1.5 rounded-full ${cardBook.accentBg} shrink-0`} />
-                                </span>
-                              </span>
+                              <LevelTag bookId={card.bookId} lessonId={card.lessonId} />
                               <p className="break-words text-left text-[15px] font-bold leading-snug text-ui-ink sm:text-[16px]">
                                 {card.back}
                               </p>

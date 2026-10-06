@@ -29,9 +29,7 @@ export function ReaderStudyDrawer({
       isOpen={isOpen}
       onClose={onClose}
       ariaLabel="Study Guide"
-      title="Study Guide"
       tone="practice"
-      closeLabel="Close study guide"
     >
       <ReaderStudyPanel
         reading={reading}

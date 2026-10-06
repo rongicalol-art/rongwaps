@@ -20,7 +20,19 @@ export interface SegmentedControlProps<T extends string>
   ariaLabel: string;
   orientation?: 'horizontal' | 'vertical';
   layoutId?: string;
+  /** `soft` swaps the solid brand pill for a quiet neutral one (for full-colour icons). */
+  tone?: 'solid' | 'soft';
+  /** Icon-only options show their label in a tooltip on hover (hover-capable pointers only). */
+  hoverLabels?: boolean;
+  /** Side the hover label opens on. Defaults to `left` when vertical, otherwise `top`. */
+  tooltipSide?: 'top' | 'left' | 'right';
 }
+
+const tooltipPlacement = {
+  top: 'bottom-full left-1/2 mb-3 -translate-x-1/2',
+  left: 'right-full top-1/2 mr-3 -translate-y-1/2',
+  right: 'left-full top-1/2 ml-3 -translate-y-1/2',
+} as const;
 
 export function SegmentedControl<T extends string>({
   value,
@@ -29,6 +41,9 @@ export function SegmentedControl<T extends string>({
   ariaLabel,
   orientation = 'horizontal',
   layoutId: customLayoutId,
+  tone = 'solid',
+  hoverLabels = false,
+  tooltipSide,
   className,
   ...props
 }: SegmentedControlProps<T>) {
@@ -69,7 +84,7 @@ export function SegmentedControl<T extends string>({
               'group relative inline-flex h-10 min-w-0 flex-1 items-center justify-center rounded-control px-2 text-sm font-extrabold outline-none select-none transition-colors duration-150 focus-ring disabled:cursor-not-allowed disabled:text-ui-muted',
               orientation === 'vertical' && 'justify-start text-left',
               isSelected
-                ? 'text-white'
+                ? tone === 'soft' ? 'text-ui-ink-strong' : 'text-white'
                 : 'text-ui-muted-strong hover:bg-ui-surface hover:text-ui-ink-strong',
               buttonClassName,
             )}
@@ -87,7 +102,10 @@ export function SegmentedControl<T extends string>({
                         mass: 0.8,
                       }
                 }
-                className="absolute inset-0 rounded-control border-b-[length:var(--depth-sm)] border-brand-primary-edge bg-brand-primary shadow-ambient-sm"
+                className={cn(
+                  'absolute inset-0 rounded-control border-b-[length:var(--depth-sm)] border-brand-primary-edge bg-brand-primary shadow-ambient-sm',
+                  tone === 'soft' && 'border-ui-border bg-ui-hover shadow-none',
+                )}
               />
             )}
             <span className="relative z-10 flex items-center justify-center transition-transform duration-100 group-active:scale-95">
@@ -98,6 +116,18 @@ export function SegmentedControl<T extends string>({
                 <span className="sr-only">{option.label}</span>
               )}
             </span>
+            {hoverLabels && !showLabel && (
+              <span
+                role="tooltip"
+                className={cn(
+                  'pointer-events-none absolute z-50 hidden items-center whitespace-nowrap rounded-control',
+                  tooltipPlacement[tooltipSide ?? (orientation === 'vertical' ? 'left' : 'top')],
+                  'border-b-2 border-ui-border bg-ui-surface px-3 py-1.5 text-xs font-black uppercase tracking-wider text-ui-ink-strong shadow-md group-aria-expanded:!hidden [@media(hover:hover)]:group-hover:flex',
+                )}
+              >
+                {option.label}
+              </span>
+            )}
           </button>
         );
       })}

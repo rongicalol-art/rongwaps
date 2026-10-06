@@ -65,7 +65,7 @@ export const LINT_RULES: LintRule[] = [
     appliesTo: UI_SOURCES,
     trigger: /translate-y|border-b-0|--depth-|tactile|ActionButton/,
     instructions:
-      'Do the changed interactive/tactile elements follow the two-layer architecture? A tactile action pairs an immovable base layer (`absolute inset-x-0 bottom-0 top-[length:var(--depth-*)] rounded-[inherit]`) with a moving front surface (`relative mb-[length:var(--depth-*)] group-active:translate-y-[length:var(--depth-*)]`). Violations: `active:border-b-0`, translating the whole outer button container, or mutating the bottom border on press. If the diff touches no tactile/primary action element, the rule holds.',
+      'Do the changed interactive/tactile elements follow the two-layer architecture? A tactile action pairs an immovable base layer (`absolute inset-x-0 bottom-0 top-[length:var(--depth-md)] rounded-[inherit]`) with a moving front surface (`relative mb-[length:var(--depth-md)] group-active:translate-y-[length:var(--depth-md)]`). Violations: `active:border-b-0`, translating the whole outer button container, or mutating the bottom border on press. If the diff touches no tactile/primary action element, the rule holds.',
     trueCriteria: 'Changed tactile elements use the two-layer architecture, or none changed.',
     falseCriteria: 'Changed tactile elements break the stationary-base contract.',
     threshold: 0.35,

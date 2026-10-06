@@ -3,7 +3,8 @@ import { AnimatePresence, motion } from 'motion/react';
 import { SAMPLE_BOOKS } from '../../../../data/books';
 import { Skeleton } from '../../../../lib/widgets';
 import { UsedAsCompactItem } from './UsedAsCompactItem';
-import { deriveUsedAsItems } from '../../utils/deriveUsedAsItems';
+import { deriveUsedAsItems, groupUsedAsByBook } from '../../utils/deriveUsedAsItems';
+import { useLevels } from '../../../../hooks/useLevels';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
 
@@ -23,6 +24,7 @@ export const UsedAsComponentSection: React.FC<UsedAsComponentSectionProps> = ({
   openUsedAsBreakdown,
   isUsedAsLoading = false,
 }) => {
+  const levels = useLevels();
   const { inCourseItems, outOfCourseItems } = useMemo(
     () => deriveUsedAsItems(usedAsComponents),
     [usedAsComponents],
@@ -79,19 +81,17 @@ export const UsedAsComponentSection: React.FC<UsedAsComponentSectionProps> = ({
           >
             {(() => {
               if (inCourseItems.length === 0) return null;
-              const sliced = inCourseItems.slice(0, 5);
-              const groups: { [key: number]: typeof inCourseItems } = {};
-              sliced.forEach(item => {
-                const bId = item.badgeInfo!.bookId;
-                if (!groups[bId]) groups[bId] = [];
-                groups[bId].push(item);
+              // Order the whole list first so the 5 shown are the right 5.
+              let remaining = 5;
+              const groups = groupUsedAsByBook(inCourseItems, { activeBookId: activeBook.id, levels }).flatMap((group) => {
+                const cards = group.cards.slice(0, remaining);
+                remaining -= cards.length;
+                return cards.length > 0 ? [{ ...group, cards }] : [];
               });
-              const sortedIds = Object.keys(groups).map(Number).sort((a, b) => a - b);
 
               return (
                 <div className="flex flex-col gap-3">
-                  {sortedIds.map(bookId => {
-                    const items = groups[bookId];
+                  {groups.map(({ bookId, cards: items }) => {
                     return (
                       <div key={bookId} className="flex w-full flex-col overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
                         {items.map((item, idx) => (

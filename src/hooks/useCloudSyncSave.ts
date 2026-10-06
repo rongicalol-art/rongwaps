@@ -3,8 +3,6 @@ import type { User } from '@supabase/supabase-js';
 import { debugLogger } from '../utils/debugLogger';
 import { useAppStore } from '../store/useAppStore';
 import { userService } from '../services/userService';
-import { progressService } from '../services/progressService';
-import { authService } from '../services/authService';
 import type { SRSData } from '../utils/srsEngine';
 import {
   computeLearnedDelta,
@@ -12,18 +10,12 @@ import {
   createSingleFlightSaveCoordinator,
   getNextAutoSaveDelay,
   getNextCloudSyncBackoff,
-  getSessionProgressDelta,
-  hasSessionProgressDelta,
-  isSessionProgressReset,
-  isSameFolderList,
-  type SyncedFolderSnapshot,
-  type SyncProgressCounters,
 } from '../utils/cloudSyncQueue';
 import { getSelectedLessonIds } from '../utils/lessonPartSelection';
 import {
+  buildMetadataPayload,
   computeSrsDelta,
-  getDailyActivity,
-  getProgressCounters,
+  hasMetadataChanged,
   AUTO_SAVE_TRIGGER_SLICES,
   type CloudSaveSnapshot,
 } from '../utils/cloudSyncTransforms';
@@ -37,9 +29,7 @@ export interface UseCloudSyncSaveOptions {
   persistedOwnerRef: MutableRefObject<string | null>;
   lastSyncedSrsRef: MutableRefObject<Record<string, SRSData> | null>;
   lastSyncedLearnedRef: MutableRefObject<string[] | null>;
-  lastSyncedActivityRef: MutableRefObject<string | null>;
-  lastSyncedFoldersRef: MutableRefObject<SyncedFolderSnapshot[] | null>;
-  lastSyncedSessionRef: MutableRefObject<SyncProgressCounters>;
+  lastSyncedSettingsRef: MutableRefObject<Record<string, unknown> | null>;
   hasFetchedForUserRef: MutableRefObject<string | null>;
   fetchFromCloud: () => Promise<void>;
 }
@@ -49,9 +39,7 @@ export function useCloudSyncSave({
   persistedOwnerRef,
   lastSyncedSrsRef,
   lastSyncedLearnedRef,
-  lastSyncedActivityRef,
-  lastSyncedFoldersRef,
-  lastSyncedSessionRef,
+  lastSyncedSettingsRef,
   hasFetchedForUserRef,
   fetchFromCloud,
 }: UseCloudSyncSaveOptions) {
@@ -62,7 +50,7 @@ export function useCloudSyncSave({
   const autoSaveDirtySinceRef = useRef<number | null>(null);
 
   const performSave = useCallback(async (snapshot: CloudSaveSnapshot) => {
-    const { store, userId, userMetadata, deltaSrsData } = snapshot;
+    const { store, userId, deltaSrsData } = snapshot;
     if (persistedOwnerRef.current !== userId) {
       return;
     }
@@ -73,84 +61,23 @@ export function useCloudSyncSave({
     };
 
     const learnedDelta = computeLearnedDelta(lastSyncedLearnedRef.current, store.learnedCards);
-    let learnedSynced = false;
     if (learnedDelta.shrank || lastSyncedLearnedRef.current === null) {
-      await userService.syncMetadata(userId, {
-        learnedCards: store.learnedCards,
-        lastActivity: store.lastActivity,
-      });
-      learnedSynced = true;
+      await userService.replaceLearnedCards(store.learnedCards);
     } else if (learnedDelta.appended.length > 0) {
-      learnedSynced = await userService.appendLearnedCards(userId, learnedDelta.appended);
-      if (!learnedSynced) {
-        await userService.syncMetadata(userId, {
-          learnedCards: store.learnedCards,
-          lastActivity: store.lastActivity,
-        });
-      }
-    }
-
-    if (!learnedSynced && lastSyncedActivityRef.current !== store.lastActivity) {
-      await userService.syncLastActivity(userId, store.lastActivity);
+      await userService.appendLearnedCards(learnedDelta.appended);
     }
     lastSyncedLearnedRef.current = store.learnedCards;
-    lastSyncedActivityRef.current = store.lastActivity;
 
-    const selectedLessons = getSelectedLessonIds(store.selectedLessonParts, store.activeBookId);
-    const metadataChanged =
-      JSON.stringify(userMetadata.favorites) !== JSON.stringify(store.favorites) ||
-      userMetadata.activeBookId !== store.activeBookId ||
-      userMetadata.characterPreference !== store.characterPreference ||
-      JSON.stringify(userMetadata.sessionProgressIndex) !== JSON.stringify(store.sessionProgressIndex) ||
-      userMetadata.activeTab !== store.activeTab ||
-      userMetadata.activeActivity !== store.activeActivity ||
-      JSON.stringify(userMetadata.selectedLessons) !== JSON.stringify(selectedLessons) ||
-      JSON.stringify(userMetadata.selectedBooks) !== JSON.stringify(store.selectedBooks);
-
-    if (metadataChanged) {
-      await authService.updateUserMetadata({
-        favorites: store.favorites,
-        activeBookId: store.activeBookId,
-        characterPreference: store.characterPreference,
-        sessionProgressIndex: store.sessionProgressIndex,
-        activeTab: store.activeTab,
-        activeActivity: store.activeActivity,
-        selectedLessons,
-        selectedBooks: store.selectedBooks,
-      });
-    }
-
-    if (!isSameFolderList(lastSyncedFoldersRef.current, store.customFolders)) {
-      await userService.syncCustomFolders(
-        userId,
-        store.customFolders,
-        store.deletedFolderIds,
-      );
-      lastSyncedFoldersRef.current = [...store.customFolders];
-      useAppStore.getState().setFoldersSyncedUserId(userId);
-    }
-
-    const savedSession = lastSyncedSessionRef.current;
-    const snapshotSession = getProgressCounters(store);
-    const dailyDelta = getSessionProgressDelta(snapshotSession, savedSession);
-    if (hasSessionProgressDelta(dailyDelta)) {
-      await progressService.upsertDailyProgress(userId, {
-        cardsReviewed: dailyDelta.cardsReviewed,
-        cardsLearned: dailyDelta.cardsLearned,
-        activityType: getDailyActivity(store.lastActivity),
-        activityCount: dailyDelta.cardsReviewed,
-      });
-      lastSyncedSessionRef.current = snapshotSession;
-    } else if (isSessionProgressReset(snapshotSession, savedSession)) {
-      lastSyncedSessionRef.current = snapshotSession;
+    const settings = buildMetadataPayload(store);
+    if (hasMetadataChanged(lastSyncedSettingsRef.current, settings)) {
+      await userService.syncSettings(userId, settings);
+      lastSyncedSettingsRef.current = settings;
     }
 
     useAppStore.getState().setLastCloudUpdate(new Date().toISOString());
   }, [
-    lastSyncedActivityRef,
-    lastSyncedFoldersRef,
     lastSyncedLearnedRef,
-    lastSyncedSessionRef,
+    lastSyncedSettingsRef,
     lastSyncedSrsRef,
     persistedOwnerRef,
   ]);
@@ -176,7 +103,6 @@ export function useCloudSyncSave({
           }),
           value: {
             userId,
-            userMetadata: (currentUser.user_metadata || {}) as Record<string, unknown>,
             store,
             deltaSrsData: computeSrsDelta(lastSyncedSrsRef.current, store.srsData),
           },

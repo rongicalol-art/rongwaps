@@ -36,6 +36,8 @@ interface ActivityScreensProps {
   continueLabel: string;
   onNavigateToPractice?: () => void;
   onScrollDockVisibility?: (visible: boolean) => void;
+  /** Shrinks the screens so they clear a vertical practice dock. */
+  edgeInsetClassName?: string;
 }
 
 /** The lazy-loaded practice screens, swapped by activity with slide transitions. */
@@ -55,11 +57,12 @@ export function ActivityScreens({
   continueLabel,
   onNavigateToPractice,
   onScrollDockVisibility,
+  edgeInsetClassName,
 }: ActivityScreensProps) {
   return (
     <AnimatePresence custom={direction} mode="popLayout">
       {(activeActivity === 'flashcards' || activeActivity === 'flashcards-library' || activeActivity === 'flashcards-review') && (
-        <AnimatedActivityScreen activityKey="flashcards" direction={direction}>
+        <AnimatedActivityScreen activityKey="flashcards" direction={direction} className={edgeInsetClassName}>
           <Suspense fallback={null}>
             <FlashcardScreen
               activeBookId={activeBookId}
@@ -78,7 +81,7 @@ export function ActivityScreens({
       )}
 
       {activeActivity === 'listening' && (
-        <AnimatedActivityScreen activityKey="listening" direction={direction}>
+        <AnimatedActivityScreen activityKey="listening" direction={direction} className={edgeInsetClassName}>
           <Suspense fallback={null}>
             <ListeningScreen
               activeBookId={activeBookId}
@@ -94,7 +97,7 @@ export function ActivityScreens({
       )}
 
       {activeActivity === 'quiz' && (
-        <AnimatedActivityScreen activityKey="quiz" direction={direction}>
+        <AnimatedActivityScreen activityKey="quiz" direction={direction} className={edgeInsetClassName}>
           <Suspense fallback={null}>
             <QuizScreen
               activeBookId={activeBookId}

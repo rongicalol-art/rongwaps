@@ -61,8 +61,13 @@ export function PracticeHeader({
     onSettingsClick?.();
   };
 
+  const restart = () => {
+    onRestartClick?.();
+    useAppStore.getState().showFeedbackToast('Restarted');
+  };
+
   const isFlowActive = flowStatus === 'playing';
-  const hasSessionControls = Boolean(onSettingsClick || onShuffleClick || onFlowClick || onRestartClick);
+  const hasSessionControls = Boolean(onSettingsClick || onShuffleClick || onFlowClick);
   const flowLabel = isFlowActive ? 'Flow' : flowStatus === 'paused' ? 'Resume' : 'Flow';
 
   return (
@@ -75,8 +80,19 @@ export function PracticeHeader({
         currentIndex={currentIndex}
         totalCount={totalCount}
         progressSize="compact"
+        closeIconColor={activeBook.accentHex}
+        closeIconClassName={activeBook.accent}
         rightAction={
-          <div className="flex h-11 shrink-0 items-center gap-2 pointer-events-auto">
+          <div className="flex h-11 shrink-0 items-center pointer-events-auto">
+            {onRestartClick && (
+              <IconActionButton
+                size="lg"
+                label="Restart"
+                title="Restart"
+                onClick={restart}
+                icon={<AppIcon name="restart" size={22} color={activeBook.accentHex} className={activeBook.accent} />}
+              />
+            )}
             {hasSessionControls && (
               <DropdownMenu
                 label="Session controls"
@@ -127,17 +143,7 @@ export function PracticeHeader({
                   </DropdownMenuItem>
                 )}
                 <DropdownMenuItem
-                  icon={<AppIcon name="restart" size={19} />}
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    onRestartClick?.();
-                    useAppStore.getState().showFeedbackToast('Restarted');
-                  }}
-                >
-                  Restart
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  icon={<AppIcon name="settings" size={19} />}
+                  icon={<AppIcon name="gear" size={19} />}
                   onClick={openSettings}
                 >
                   Study settings

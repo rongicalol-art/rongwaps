@@ -30,6 +30,17 @@ class FlashcardService {
   private flashcardsChannel: RealtimeChannel | null = null;
   private foldersChannel: RealtimeChannel | null = null;
   private channelSeq = 0;
+  private refetchTimers = new Map<string, ReturnType<typeof setTimeout>>();
+
+  /** Coalesce a burst of realtime events (or write echoes) into one refetch. */
+  private scheduleRefetch(key: "flashcards" | "folders", run: () => void) {
+    const pending = this.refetchTimers.get(key);
+    if (pending) clearTimeout(pending);
+    this.refetchTimers.set(key, setTimeout(() => {
+      this.refetchTimers.delete(key);
+      run();
+    }, 300));
+  }
 
   private notifyFlashcards() {
     if (this.cachedFlashcards) {
@@ -142,10 +153,28 @@ class FlashcardService {
         }
         throw error;
       }
-
-      await this.refetchFlashcards(card.userId);
     } catch (e) {
       debugLogger.error('Supabase', "Error creating flashcard", e);
+      throw e;
+    }
+  }
+
+  async updateFlashcardTranslation(userId: string, cardId: string, translation: string) {
+    try {
+      if (this.cachedFlashcards) {
+        this.cachedFlashcards = this.cachedFlashcards.map((c) =>
+          c.id === cardId ? { ...c, translation } : c,
+        );
+        this.notifyFlashcards();
+      }
+
+      const { error } = await supabase
+        .from("user_flashcards")
+        .update({ translation })
+        .match({ id: cardId, user_id: userId });
+      if (error) throw error;
+    } catch (e) {
+      debugLogger.error('Supabase', "Error updating flashcard", e);
       throw e;
     }
   }
@@ -235,7 +264,7 @@ class FlashcardService {
 
     if (!this.flashcardsChannel) {
       this.flashcardsChannel = this.openRealtimeChannel("user_flashcards", userId, () => {
-        this.refetchFlashcards(userId);
+        this.scheduleRefetch("flashcards", () => void this.refetchFlashcards(userId));
       });
     }
 
@@ -274,11 +303,31 @@ class FlashcardService {
         }
         throw error;
       }
-
-      await this.refetchFolders(userId);
     } catch (e) {
       debugLogger.error('Supabase', "Error creating folder", e);
       throw e;
+    }
+  }
+
+  /**
+   * One-time guest -> account migration: upload the folders created before
+   * sign-in in a single upsert. Regular folder writes stay on
+   * createFolder/deleteFolder.
+   */
+  async importFolders(userId: string, folders: UserFolder[]) {
+    if (folders.length === 0) return;
+    const { error } = await supabase.from("user_folders").upsert(
+      folders.map((folder) => ({
+        id: folder.id,
+        user_id: userId,
+        name: folder.name,
+        color: folder.color,
+      })),
+      { onConflict: "id" },
+    );
+    if (error) {
+      debugLogger.error('Supabase', "Error importing guest folders", error);
+      throw error;
     }
   }
 
@@ -331,7 +380,7 @@ class FlashcardService {
 
     if (!this.foldersChannel) {
       this.foldersChannel = this.openRealtimeChannel("user_folders", userId, () => {
-        this.refetchFolders(userId);
+        this.scheduleRefetch("folders", () => void this.refetchFolders(userId));
       });
     }
 

@@ -3,6 +3,8 @@ import { getMultipleBreakdowns } from '../../../services/breakdownService';
 import { getDictionaryEntriesBatch } from '../../../services/dictionaryService';
 import type { DBDictionaryEntry } from '../../../types/database';
 import type { RuntimeTreeNodeState } from './useRuntimeDecompositionTree';
+import { usePronunciation } from '../../../hooks/usePronunciation';
+import { primaryReading } from '../../../utils/pronunciation';
 
 export interface RuntimeCharacterMetadata {
   pinyin?: string;
@@ -116,5 +118,14 @@ export function useRuntimeCharacterMetadata(
     };
   }, [characterKey, characters]);
 
-  return metadata;
+  // Pinyin is Taiwan-first (the course reading), not the breakdown record's.
+  const readings = usePronunciation();
+  return useMemo(() => {
+    if (!readings) return metadata;
+    const next = new Map<string, RuntimeCharacterMetadata>();
+    for (const [character, value] of metadata) {
+      next.set(character, { ...value, pinyin: primaryReading(character, readings, value.pinyin) });
+    }
+    return next;
+  }, [metadata, readings]);
 }

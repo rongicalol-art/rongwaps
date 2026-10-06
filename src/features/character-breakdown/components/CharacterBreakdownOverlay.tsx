@@ -4,6 +4,7 @@ import { useAppStore } from "../../../store/useAppStore";
 import { SingleBreakdownView } from "./breakdown/SingleBreakdownView";
 import { createPortal } from "react-dom";
 import { SAMPLE_BOOKS } from '../../../data/books';
+import { WorkspaceWindow } from '../../../lib/widgets';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
 
@@ -36,7 +37,14 @@ export function CharacterBreakdownOverlay({
     return () => setActivityOverlayOpen('character-breakdown', false);
   }, [activeBreakdown, initialCharIndex, setActivityOverlayOpen]);
 
+  const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
+  // Characters stack here; a multi-character word opens the dictionary's word
+  // breakdown window on top (this package can't import that view).
   const pushBreakdown = (word: string) => {
+    if (Array.from(word).length > 1) {
+      setDictionaryWord(word);
+      return;
+    }
     setBreakdownStack((prev) => [...prev, { word, index: 0 }]);
   };
 
@@ -50,40 +58,52 @@ export function CharacterBreakdownOverlay({
   }, []);
 
   const rootBreakdown = breakdownStack[0];
-  const workspaceOffset = portalNode?.id !== 'activity-overlays-root';
+  // Inside an activity the overlay fills the activity's own host; anywhere
+  // else it opens as a workspace window so it never misaligns with the sidebar.
+  const hostedInActivity = portalNode?.id === 'activity-overlays-root';
+
+  const views = rootBreakdown && (
+    <>
+      {/* Depth 0 View (Root) */}
+      <SingleBreakdownView
+        key={`depth-0-${rootBreakdown.word}`}
+        word={rootBreakdown.word}
+        initialCharIndex={rootBreakdown.index}
+        onClose={onClose}
+        activeBook={activeBook}
+        pushBreakdown={pushBreakdown}
+        depth={0}
+      />
+
+      {/* Stacked Views (Depth > 0) */}
+      <AnimatePresence>
+        {breakdownStack.slice(1).map((item, idx) => (
+          <SingleBreakdownView
+            key={`depth-${idx + 1}-${item.word}`}
+            word={item.word}
+            initialCharIndex={item.index}
+            onBack={popBreakdown}
+            activeBook={activeBook}
+            pushBreakdown={pushBreakdown}
+            depth={idx + 1}
+          />
+        ))}
+      </AnimatePresence>
+    </>
+  );
 
   const overlayContent = (
     <AnimatePresence>
       {activeBreakdown && rootBreakdown && (
-        <div id="character-breakdown-overlay-container" className="absolute inset-0 z-overlay w-full h-full pointer-events-none">
-          {/* Depth 0 View (Root) */}
-          <SingleBreakdownView
-            key={`depth-0-${rootBreakdown.word}`}
-            word={rootBreakdown.word}
-            initialCharIndex={rootBreakdown.index}
-            workspaceOffset={workspaceOffset}
-            onClose={onClose}
-            activeBook={activeBook}
-            pushBreakdown={pushBreakdown}
-            depth={0}
-          />
-
-          {/* Stacked Views (Depth > 0) */}
-          <AnimatePresence>
-            {breakdownStack.slice(1).map((item, idx) => (
-              <SingleBreakdownView
-                key={`depth-${idx + 1}-${item.word}`}
-                word={item.word}
-                initialCharIndex={item.index}
-                workspaceOffset={workspaceOffset}
-                onBack={popBreakdown}
-                activeBook={activeBook}
-                pushBreakdown={pushBreakdown}
-                depth={idx + 1}
-              />
-            ))}
-          </AnimatePresence>
-        </div>
+        hostedInActivity ? (
+          <div key="hosted" id="character-breakdown-overlay-container" className="absolute inset-0 z-overlay w-full h-full pointer-events-none">
+            {views}
+          </div>
+        ) : (
+          <WorkspaceWindow key="windowed" id="character-breakdown-overlay-container" layer="window-detail" tone="practice">
+            {views}
+          </WorkspaceWindow>
+        )
       )}
     </AnimatePresence>
   );

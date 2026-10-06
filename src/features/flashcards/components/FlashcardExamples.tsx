@@ -1,6 +1,6 @@
 import { memo, useEffect, useMemo, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { AppIcon, Skeleton, SmartSentence } from '../../../lib/widgets';
+import { AppIcon, Skeleton, SmartSentence, LevelTag } from '../../../lib/widgets';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import {
   groupRankedExamples,
@@ -54,7 +54,7 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
       <div className="w-full flow-root">
         {showMeta && (
           <span
-            className="float-right ml-3 mb-1 inline-flex items-center gap-1 pt-1 text-[10px] sm:text-[11px] font-extrabold tracking-wide text-ui-muted select-none"
+            className="float-right ml-3 mb-1 inline-flex items-center gap-1 pt-1 select-none"
             title={`Book ${example.sourceBookId}, Lesson ${example.sourceLessonId}${isTopPick ? ' · Top match' : ''}`}
           >
             {isTopPick && (
@@ -62,7 +62,7 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
                 <AppIcon name="star" size={11} />
               </span>
             )}
-            <span>B{example.sourceBookId} · L{example.sourceLessonId}</span>
+            <LevelTag bookId={example.sourceBookId} lessonId={example.sourceLessonId} />
           </span>
         )}
         <SmartSentence

@@ -1,6 +1,7 @@
 // Actions and selectors
 export * from './ActionButton';
 export * from './EdgeNavButtons';
+export * from './FolderSvg';
 export * from './IconActionButton';
 export * from './SegmentedControl';
 export * from './SettingsDropdownPicker';
@@ -20,6 +21,7 @@ export * from './VideoBackground';
 export * from './ActivityModalWrapper';
 export * from './ConfirmationDialog';
 export * from './DetailShell';
+export * from './WorkspaceWindow';
 export * from './Dialog';
 export * from './DisclosureLine';
 export * from './Drawer';
@@ -54,4 +56,6 @@ export * from './ExpandableSearch';
 export * from './PosBadge';
 export * from './ProgressMetricCard';
 export * from './ReferenceRow';
+export * from './LevelTag';
+export * from './CharacterTile';
 export * from './SmartSentence';

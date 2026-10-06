@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "version": "92339f3fbda56f75",
+  "generatedAt": "2026-10-05T03:32:53.147Z",
+  "totalCount": 21282,
+  "shardCount": 1,
+  "shards": [
+    {
+      "shard": 0,
+      "count": 21282,
+      "path": "/data/levels/levels.json",
+      "sha256": "92339f3fbda56f75992ad6cc92dbead9608a94f9c508a9f5a757c9256cb44ef4",
+      "bytes": 136733
+    }
+  ]
+}

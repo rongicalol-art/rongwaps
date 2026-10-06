@@ -30,9 +30,7 @@ export function GrammarConfusionDrawer({
       isOpen={isOpen}
       onClose={onClose}
       ariaLabel={confusion.title}
-      title={confusion.title}
       tone="canvas"
-      closeLabel="Close don't mix these up"
     >
       <GrammarConfusionPanel
         confusion={confusion}

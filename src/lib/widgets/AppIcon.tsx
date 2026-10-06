@@ -107,6 +107,7 @@ export type AppIconName =
   | 'flashcard'
   | 'flame'
   | 'folder'
+  | 'gear'
   | 'followUp'
   | 'forward'
   | 'grammar'
@@ -456,6 +457,7 @@ const ICONS: Record<AppIconName, IconType> = {
   flashcard: PiCardsFill,
   flame: PiFireFill,
   folder: PiFolderFill,
+  gear: PiGearSixFill,
   followUp: PiArrowBendDownRightBold,
   forward: PiArrowRightBold,
   grammar: PiBookBookmarkFill,

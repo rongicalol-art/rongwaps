@@ -8,31 +8,13 @@
 import type { SRSData } from './srsEngine';
 import { isSameSrsData } from './srsRowMapping';
 import { getSelectedLessonIds } from './lessonPartSelection';
-import type { SyncProgressCounters } from './cloudSyncQueue';
 import type { AppStoreData } from '../store/useAppStore';
+import type { LessonPartSelectionMap } from '../types/models';
 
 export interface CloudSaveSnapshot {
   userId: string;
-  userMetadata: Record<string, unknown>;
   store: AppStoreData;
   deltaSrsData: Record<string, SRSData>;
-}
-
-export function getProgressCounters(store: {
-  sessionProgress: { cardsReviewed: number; cardsLearned: number };
-}): SyncProgressCounters {
-  return {
-    cardsReviewed: store.sessionProgress.cardsReviewed,
-    cardsLearned: store.sessionProgress.cardsLearned,
-  };
-}
-
-export function getDailyActivity(
-  activity: string | null | undefined,
-): 'flashcards' | 'quiz' | 'listening' | 'writing' | undefined {
-  if (activity === 'flashcards' || activity === 'flashcards-review') return 'flashcards';
-  if (activity === 'quiz' || activity === 'listening' || activity === 'writing') return activity;
-  return undefined;
 }
 
 export function computeSrsDelta(
@@ -52,26 +34,36 @@ export function computeSrsDelta(
   return delta;
 }
 
-export interface CloudMetadataPayload {
+/**
+ * The synced preferences stored in `user_profiles.settings`. A type alias
+ * (not an interface) so it is assignable to the jsonb column type.
+ */
+export type CloudMetadataPayload = {
   favorites: string[];
   activeBookId: number;
   characterPreference: 'traditional' | 'simplified';
-  sessionProgressIndex: number;
+  sessionProgressIndex: Record<string, number>;
   activeTab: string;
-  activeActivity: string | null;
   selectedLessons: number[];
   selectedBooks: number[];
-}
+};
 
-import type { LessonPartSelectionMap } from '../types/models';
+const METADATA_KEYS = [
+  'favorites',
+  'activeBookId',
+  'characterPreference',
+  'sessionProgressIndex',
+  'activeTab',
+  'selectedLessons',
+  'selectedBooks',
+] as const satisfies readonly (keyof CloudMetadataPayload)[];
 
 export function buildMetadataPayload(store: {
   favorites: string[];
   activeBookId: number;
   characterPreference: 'traditional' | 'simplified';
-  sessionProgressIndex: number;
+  sessionProgressIndex: Record<string, number>;
   activeTab: string;
-  activeActivity: string | null;
   selectedLessonParts: LessonPartSelectionMap;
   selectedBooks: number[];
 }): CloudMetadataPayload {
@@ -81,40 +73,41 @@ export function buildMetadataPayload(store: {
     characterPreference: store.characterPreference,
     sessionProgressIndex: store.sessionProgressIndex,
     activeTab: store.activeTab,
-    activeActivity: store.activeActivity,
     selectedLessons: getSelectedLessonIds(store.selectedLessonParts, store.activeBookId),
     selectedBooks: store.selectedBooks,
   };
 }
 
+/** JSON with object keys sorted, so jsonb key order never reads as a change. */
+function stableJson(value: unknown): string | undefined {
+  return JSON.stringify(value, (_key, nested: unknown) => {
+    if (!nested || typeof nested !== 'object' || Array.isArray(nested)) return nested;
+    return Object.fromEntries(
+      Object.entries(nested).sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0)),
+    );
+  });
+}
+
+/**
+ * True when the payload differs from the last settings known to be on the
+ * server (the pulled or last-saved object). Null means nothing is known yet.
+ */
 export function hasMetadataChanged(
-  userMetadata: Record<string, unknown>,
+  synced: Record<string, unknown> | null,
   payload: CloudMetadataPayload,
 ): boolean {
-  return (
-    JSON.stringify(userMetadata.favorites) !== JSON.stringify(payload.favorites) ||
-    userMetadata.activeBookId !== payload.activeBookId ||
-    userMetadata.characterPreference !== payload.characterPreference ||
-    JSON.stringify(userMetadata.sessionProgressIndex) !== JSON.stringify(payload.sessionProgressIndex) ||
-    userMetadata.activeTab !== payload.activeTab ||
-    userMetadata.activeActivity !== payload.activeActivity ||
-    JSON.stringify(userMetadata.selectedLessons) !== JSON.stringify(payload.selectedLessons) ||
-    JSON.stringify(userMetadata.selectedBooks) !== JSON.stringify(payload.selectedBooks)
-  );
+  if (!synced) return true;
+  return METADATA_KEYS.some((key) => stableJson(synced[key]) !== stableJson(payload[key]));
 }
 
 export const AUTO_SAVE_TRIGGER_SLICES = [
-  'activeActivity',
   'activeBookId',
   'activeTab',
   'characterPreference',
-  'customFolders',
   'favorites',
-  'lastActivity',
   'learnedCards',
   'selectedBooks',
   'selectedLessonParts',
-  'sessionProgress',
   'sessionProgressIndex',
   'srsData',
 ] as const satisfies readonly (keyof AppStoreData)[];

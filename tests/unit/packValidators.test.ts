@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import {
   isValidMemoryHookItem,
   isValidMemoryHookPack,
-  isValidSoundHookItem,
-  isValidSoundHookPack,
+  isValidPartsPack,
+  partsPackToIndex,
   isValidReadingsPack,
   isValidGrammarPack,
   isValidDialogueAlignmentPack,
@@ -49,25 +49,26 @@ test('resolveMnemonicFromMap: resolves with word_ prefix fallback', () => {
   assert.equal(resolveMnemonicFromMap(map, '你好'), null);
 });
 
-test('isValidSoundHookItem & isValidSoundHookPack: validates phonetic piece and family', () => {
-  const validSound = {
-    id: '媽',
-    character: '媽',
-    meaning: 'mother',
-    pinyin: 'mā',
-    phonetic: { glyph: '馬', reading: 'mǎ', shift: 'exact' },
-    family: [{ character: '媽', pinyin: 'mā', reading: 'mā' }],
-    needsHuman: false,
-  };
-  assert.equal(isValidSoundHookItem(validSound), true);
-
-  const validPack = {
+test('isValidPartsPack & partsPackToIndex: validates counts and converts marks to grades', () => {
+  const pack = {
     schemaVersion: 1,
-    bookId: 1,
-    count: 1,
-    items: [validSound],
+    shard: 0,
+    count: 3,
+    parents: { '馬': '碼=嗎~騎' },
+    phonetic: { '嗎': '馬', '碼': '馬' },
   };
-  assert.equal(isValidSoundHookPack(validPack, 1, 1), true);
+  assert.equal(isValidPartsPack(pack, 3), true);
+  assert.equal(isValidPartsPack(pack, 4), false);
+  assert.equal(isValidPartsPack({ ...pack, schemaVersion: 2 }, 3), false);
+  assert.equal(isValidPartsPack({ ...pack, parents: { '馬': 7 } }, 3), false);
+
+  const index = partsPackToIndex(pack);
+  assert.deepEqual(index.parents.get('馬'), [
+    { character: '碼', grade: 'same' },
+    { character: '嗎', grade: 'tone' },
+    { character: '騎', grade: null },
+  ]);
+  assert.equal(index.phonetic.get('嗎'), '馬');
 });
 
 test('getBreakdownShard: computes modulo for unicode character', () => {

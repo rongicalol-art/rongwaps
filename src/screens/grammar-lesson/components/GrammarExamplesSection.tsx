@@ -3,6 +3,7 @@ import { audioService } from '../../../services/audioService';
 import type { GrammarLessonExample, GrammarWordToken, InteractiveGrammarPage } from '../../../types/models';
 import { getGrammarText } from './GrammarText';
 import { GrammarExampleText } from './GrammarExampleText';
+import { SAMPLE_BOOKS } from '../../../data/books';
 
 interface GrammarExamplesSectionProps {
   page: InteractiveGrammarPage;
@@ -36,40 +37,48 @@ export function GrammarExamplesSection({
 
   if (activeExamples.length === 0) return null;
 
-  return (
-    <section aria-label="Examples" className="rounded-feature bg-ui-surface">
-      <h3 className="px-4 pb-1 pt-4 text-sm font-black uppercase text-ui-ink-strong sm:px-5 sm:pt-5">
-        Examples
-      </h3>
-      {activeExamples.map((example, index) => (
-        <div
-          key={example.id}
-          className="flex items-start gap-3.5 px-4 pb-4 pt-3 sm:gap-4 sm:px-5 sm:pb-5 sm:pt-3.5"
-        >
-          {/* Audio Button */}
-          <IconActionButton
-            onClick={() => speakExample(index)}
-            size="sm"
-            variant="quiet"
-            icon={<AppIcon name="audio" size={20} />}
-            label={`Play example ${example.number ?? index + 1}`}
-            className="shrink-0 text-brand-primary hover:text-brand-primary/80 -ml-1 -mt-0.5"
-          />
+  const book = SAMPLE_BOOKS.find((b) => b.id === page.bookId) || SAMPLE_BOOKS[0];
 
-          {/* Sentence Content */}
-          <div className="flex-1 min-w-0 pt-0.5">
-            <GrammarExampleText
-              text={example.text}
-              characterPreference={characterPreference}
-              showPinyin={showPinyin}
-              showTranslation={showTranslation}
-              focusTerms={page.focusTerms}
-              contextTokens={contextTokens}
-              onOpenWord={onOpenWord}
+  // A neutral sibling of the pattern table: same frame, depth and header band, in grey.
+  return (
+    <section
+      aria-labelledby={`examples-${page.id}`}
+      className="overflow-hidden rounded-feature border-2 border-ui-border border-b-[length:var(--depth-lg)] bg-ui-surface"
+    >
+      <h2
+        id={`examples-${page.id}`}
+        className="flex items-center gap-1.5 border-b-2 border-ui-divider bg-ui-canvas px-5 py-3 text-[13px] font-black uppercase tracking-widest text-ui-muted-strong sm:px-6"
+      >
+        Examples
+        <span className="opacity-60 normal-case tracking-normal">{activeExamples.length}</span>
+      </h2>
+      {/* Same rhythm as the pattern table: full-width dividers, a quiet play icon in the gutter. */}
+      <ul className="divide-y-2 divide-ui-divider">
+        {activeExamples.map((example, index) => (
+          <li key={example.id} className="flex items-start gap-2 py-4 pl-3 pr-5 sm:pl-4 sm:pr-6">
+            <IconActionButton
+              onClick={() => speakExample(index)}
+              size="sm"
+              variant="quiet"
+              icon={<AppIcon name="audio" size={22} />}
+              label={`Play example ${example.number ?? index + 1}`}
+              style={{ color: book.theme.primary }}
+              className="-mt-0.5 hover:brightness-90"
             />
-          </div>
-        </div>
-      ))}
+            <div className="min-w-0 flex-1">
+              <GrammarExampleText
+                text={example.text}
+                characterPreference={characterPreference}
+                showPinyin={showPinyin}
+                showTranslation={showTranslation}
+                focusTerms={page.focusTerms}
+                contextTokens={contextTokens}
+                onOpenWord={onOpenWord}
+              />
+            </div>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

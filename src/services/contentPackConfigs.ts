@@ -3,22 +3,26 @@ import { DICTIONARY_SHARD_COUNT, getDictionaryShard } from '../utils/dictionaryS
 import {
   type ContentPackKind,
   type PackConfig,
-  type SoundHookEntry,
   type MemoryHookPack,
-  type SoundHookPack,
   getBookParts,
   getBreakdownShard,
   getShardParts,
   isValidMemoryHookPack,
-  isValidSoundHookPack,
-  isValidSoundFamiliesPack,
   isValidReadingsPack,
   isValidGrammarPack,
   isValidDialogueAlignmentPack,
   isValidStrokePack,
+  isValidLevelPack,
+  isValidPartsPack,
+  partsPackToIndex,
+  type PartsPack,
+  isValidPronunciationPack,
+  pronunciationPackToIndex,
+  type PronunciationPack,
+  levelPackToIndex,
+  type LevelPack,
   type StrokePack,
   packItemsToMnemonicMap,
-  type SoundFamiliesPack,
 } from '../utils/packValidators';
 
 export const PACK_CONFIGS: Record<ContentPackKind, PackConfig<unknown, unknown>> = {
@@ -122,56 +126,6 @@ export const PACK_CONFIGS: Record<ContentPackKind, PackConfig<unknown, unknown>>
     validatePack: (pack, part) => isValidMemoryHookPack(pack, part.key, part.count),
     transform: (pack) => packItemsToMnemonicMap((pack as MemoryHookPack).items),
   },
-  'sound-hooks': {
-    namespace: 'sound-hooks',
-    manifestPath: '/data/sound-hooks/manifest.json',
-    manifestLabel: 'sound hook manifest',
-    partPathPrefix: '/data/sound-hooks/',
-    partCacheKeyKind: 'book',
-    partLabel: (bookId) => `sound hook pack book ${bookId}`,
-    validateManifest: (m) => m.schemaVersion === 1 && typeof m.version === 'string' && (m.totalCount ?? 0) > 0 && Array.isArray(m.books) && m.books.reduce((t, b) => t + b.count, 0) === m.totalCount,
-    getParts: getBookParts,
-    validatePack: (pack, part) => isValidSoundHookPack(pack, part.key, part.count),
-    transform: (pack) => new Map<string, SoundHookEntry>(((pack as SoundHookPack).items).map((item: SoundHookEntry) => [item.character, item])),
-  },
-  'sound-families': {
-    namespace: 'sound-families',
-    manifestPath: '/data/sound-families/manifest.json',
-    manifestLabel: 'sound families manifest',
-    partPathPrefix: '/data/sound-families/',
-    partCacheKeyKind: 'part',
-    partLabel: (key) => `sound families pack part ${key}`,
-    validateManifest: (m) => {
-      const candidate = m as { schemaVersion?: number; version?: string; totalCount?: number; parts?: Array<{ key: number; path: string; count: number }> };
-      return candidate.schemaVersion === 1 && typeof candidate.version === 'string' && Array.isArray(candidate.parts) && (candidate.totalCount ?? 0) > 0;
-    },
-    getParts: (m) => ((m as unknown) as { parts: Array<{ key: number; path: string; count: number }> }).parts.map((p) => ({ key: p.key, path: p.path, count: p.count })),
-    validatePack: (pack) => isValidSoundFamiliesPack(pack),
-    transform: (pack) => {
-      const charMap = new Map<string, { glyph: string; reading: string; family: Array<{ character: string; pinyin: string; reading: string }> }>();
-      for (const s of (pack as SoundFamiliesPack).series) {
-        const fullFamily: Array<{ character: string; pinyin: string; reading: string }> = [
-          { character: s.glyph, pinyin: s.reading, reading: s.reading },
-          ...s.members.map((x) => ({ character: x.character, pinyin: x.pinyin, reading: s.reading })),
-        ];
-
-        // 1. Index the root glyph itself
-        const rootFamily = s.members
-          .map((x) => ({ character: x.character, pinyin: x.pinyin, reading: s.reading }))
-          .slice(0, 24);
-        charMap.set(s.glyph, { glyph: s.glyph, reading: s.reading, family: rootFamily });
-
-        // 2. Index each member in the series
-        for (const m of s.members) {
-          const family = fullFamily
-            .filter((x) => x.character !== m.character)
-            .slice(0, 24);
-          charMap.set(m.character, { glyph: s.glyph, reading: s.reading, family });
-        }
-      }
-      return charMap;
-    },
-  },
   readings: {
     namespace: 'readings',
     manifestPath: '/data/readings/manifest.json',
@@ -231,5 +185,41 @@ export const PACK_CONFIGS: Record<ContentPackKind, PackConfig<unknown, unknown>>
         },
       ]),
     ),
+  },
+  levels: {
+    namespace: 'levels',
+    manifestPath: '/data/levels/manifest.json',
+    manifestLabel: 'Levels manifest',
+    partPathPrefix: '/data/levels/',
+    partCacheKeyKind: 'shard',
+    partLabel: () => 'Levels pack',
+    validateManifest: (m) => m.schemaVersion === 1 && typeof m.version === 'string' && (m.shards?.length ?? 0) === 1,
+    getParts: getShardParts,
+    validatePack: (pack, part) => isValidLevelPack(pack, part.count),
+    transform: (pack) => levelPackToIndex(pack as LevelPack),
+  },
+  parts: {
+    namespace: 'parts',
+    manifestPath: '/data/relations/manifest.json',
+    manifestLabel: 'Parts manifest',
+    partPathPrefix: '/data/relations/',
+    partCacheKeyKind: 'shard',
+    partLabel: () => 'Parts index',
+    validateManifest: (m) => m.schemaVersion === 1 && typeof m.version === 'string' && (m.shards?.length ?? 0) === 1,
+    getParts: getShardParts,
+    validatePack: (pack, part) => isValidPartsPack(pack, part.count),
+    transform: (pack) => partsPackToIndex(pack as PartsPack),
+  },
+  pronunciation: {
+    namespace: 'pronunciation',
+    manifestPath: '/data/pronunciation/manifest.json',
+    manifestLabel: 'Pronunciation manifest',
+    partPathPrefix: '/data/pronunciation/',
+    partCacheKeyKind: 'shard',
+    partLabel: () => 'Pronunciation pack',
+    validateManifest: (m) => m.schemaVersion === 1 && typeof m.version === 'string' && (m.shards?.length ?? 0) === 1,
+    getParts: getShardParts,
+    validatePack: (pack, part) => isValidPronunciationPack(pack, part.count),
+    transform: (pack) => pronunciationPackToIndex(pack as PronunciationPack),
   },
 };

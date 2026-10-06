@@ -3,6 +3,7 @@ import { useMemo, useState } from 'react';
 import { useSmartChineseSegments } from '../hooks/useSmartChineseSegments';
 import type { GrammarWordToken } from '../../../types/models';
 import { cn } from '../../../utils/cn';
+import { getFocusTokenIds } from '../utils/grammarFocusTokens';
 
 interface InteractiveGrammarSentenceProps {
   words: GrammarWordToken[];
@@ -18,6 +19,8 @@ interface InteractiveGrammarSentenceProps {
   onOpenWord: (word: string) => void;
 }
 
+const NO_FOCUS_TERMS: string[] = [];
+
 const TEACHING_TEXT_SIZE_CLASSES = {
   lg: 'text-2xl',
   md: 'text-base sm:text-lg',
@@ -32,7 +35,7 @@ export function InteractiveGrammarSentence({
   tone = 'default',
   size = 'lg',
   className,
-  focusTerms = [],
+  focusTerms = NO_FOCUS_TERMS,
   activeAlignmentId = null,
   onActiveAlignmentChange,
   onOpenWord,
@@ -63,6 +66,11 @@ export function InteractiveGrammarSentence({
       : words;
   }, [characterPreference, smartSegments, words]);
 
+  const focusTokenIds = useMemo(
+    () => getFocusTokenIds(displayWords, focusTerms, characterPreference),
+    [characterPreference, displayWords, focusTerms],
+  );
+
   return (
     <div
       className={cn(
@@ -76,7 +84,7 @@ export function InteractiveGrammarSentence({
           ? word.simplified
           : word.traditional;
         const isOpen = previewWordId === word.id;
-        const isFocus = focusTerms.includes(text);
+        const isFocus = focusTokenIds.has(word.id);
         const isAligned = Boolean(word.alignmentId && word.alignmentId === activeAlignmentId);
         const tooltipId = `grammar-word-${word.id}`;
 

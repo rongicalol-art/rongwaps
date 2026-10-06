@@ -1,11 +1,6 @@
 import type { SRSData } from './srsEngine';
 import { isSameSrsData } from './srsRowMapping';
 
-export interface SyncProgressCounters {
-  cardsReviewed: number;
-  cardsLearned: number;
-}
-
 export interface CloudSyncFingerprintState {
   srsData: unknown;
   learnedCards: string[];
@@ -14,12 +9,8 @@ export interface CloudSyncFingerprintState {
   characterPreference: string;
   sessionProgressIndex: Record<string, number>;
   activeTab: string;
-  activeActivity: unknown;
   selectedLessons: number[];
   selectedBooks: number[];
-  customFolders: unknown[];
-  sessionProgress: SyncProgressCounters;
-  lastActivity: string | null;
 }
 
 interface FingerprintedSnapshot<T> {
@@ -44,15 +35,8 @@ export function createCloudSyncFingerprint(
     state.characterPreference,
     state.sessionProgressIndex,
     state.activeTab,
-    state.activeActivity,
     state.selectedLessons,
     state.selectedBooks,
-    state.customFolders,
-    [
-      state.sessionProgress.cardsReviewed,
-      state.sessionProgress.cardsLearned,
-    ],
-    state.lastActivity,
   ]);
 }
 
@@ -87,50 +71,6 @@ export function createSingleFlightSaveCoordinator<T>(
   };
 }
 
-function normalizedCounter(value: number): number {
-  return Number.isFinite(value) ? Math.max(0, value) : 0;
-}
-
-export function getSessionProgressDelta(
-  current: SyncProgressCounters,
-  lastSynced: SyncProgressCounters,
-): SyncProgressCounters {
-  // A manual progress reset lowers the local counters below the synced
-  // baseline. Re-baseline to zero so post-reset reviews are counted against
-  // the fresh counters instead of being shrunk by the stale baseline.
-  const synced = isSessionProgressReset(current, lastSynced)
-    ? { cardsReviewed: 0, cardsLearned: 0 }
-    : lastSynced;
-
-  const delta = (currentValue: number, syncedValue: number) => {
-    const normalizedCurrent = normalizedCounter(currentValue);
-    const normalizedSynced = normalizedCounter(syncedValue);
-    return normalizedCurrent >= normalizedSynced
-      ? normalizedCurrent - normalizedSynced
-      : normalizedCurrent;
-  };
-
-  return {
-    cardsReviewed: delta(current.cardsReviewed, synced.cardsReviewed),
-    cardsLearned: delta(current.cardsLearned, synced.cardsLearned),
-  };
-}
-
-export function hasSessionProgressDelta(delta: SyncProgressCounters): boolean {
-  return delta.cardsReviewed > 0 || delta.cardsLearned > 0;
-}
-
-/** True when the live counters dropped below the synced baseline (manual reset). */
-export function isSessionProgressReset(
-  current: SyncProgressCounters,
-  lastSynced: SyncProgressCounters,
-): boolean {
-  return (
-    current.cardsReviewed < lastSynced.cardsReviewed
-    || current.cardsLearned < lastSynced.cardsLearned
-  );
-}
-
 export interface SyncedFolderSnapshot {
   id: string;
   name: string;
@@ -157,9 +97,10 @@ export function computeLearnedDelta(
   if (!baseline) return { appended: [], shrank: false };
 
   const baselineSet = new Set(baseline);
+  const currentSet = new Set(current);
   const appended = current.filter((id) => !baselineSet.has(id));
   const shrank = current.length < baseline.length
-    || baseline.some((id) => !current.includes(id));
+    || baseline.some((id) => !currentSet.has(id));
   return { appended, shrank };
 }
 
@@ -179,51 +120,6 @@ export function isSameFolderList(
       && folder.color === other.color
     );
   });
-}
-
-export interface FolderSyncPlan {
-  /** Local folders to upsert — never a tombstoned (deleted) folder. */
-  toUpsert: SyncedFolderSnapshot[];
-  /** Remote ids to delete: deleted locally, or explicitly tombstoned. */
-  toDelete: string[];
-}
-
-/**
- * Plan a folder set-sync from the local list, the sticky delete tombstones,
- * and the server's current ids.
- *
- * Tombstones make deletes durable: a folder the user deleted stays deleted
- * even when a stale local copy (persisted IndexedDB state on another tab or
- * device, or a reload between the delete and the debounced save) still lists
- * it — the upsert must never re-create a tombstoned row, and the server row
- * keeps getting deleted until it is gone.
- */
-export function planFolderSync(
-  localFolders: SyncedFolderSnapshot[],
-  tombstoneIds: string[],
-  remoteIds: string[],
-): FolderSyncPlan {
-  const tombstones = new Set(tombstoneIds);
-  const localIds = new Set(localFolders.map((folder) => folder.id));
-  return {
-    toUpsert: localFolders.filter((folder) => !tombstones.has(folder.id)),
-    toDelete: remoteIds.filter(
-      (id) => !localIds.has(id) || tombstones.has(id),
-    ),
-  };
-}
-
-/**
- * Drop tombstones the server has acknowledged (the folder id no longer
- * exists remotely). Ids still present on the server are kept — their delete
- * is still pending and must be retried.
- */
-export function pruneAcknowledgedTombstones(
-  tombstoneIds: string[],
-  serverFolderIds: string[],
-): string[] {
-  const serverIds = new Set(serverFolderIds);
-  return tombstoneIds.filter((id) => serverIds.has(id));
 }
 
 export function getNextCloudSyncBackoff(

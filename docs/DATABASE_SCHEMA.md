@@ -1,6 +1,6 @@
 # 🗄️ Supabase Database Schema
 
-This document reflects the **live RongWaps Supabase schema after the 2026-10-03 content migration** (migration `20261003_prune_content_tables_and_search_rpc.sql`). All reference content (dictionary, vocabulary, character breakdowns, memory hooks) is now served 100% pack-first from static edge CDN and cached in local IndexedDB. The Supabase database contains strictly private user data.
+This document reflects the **live RongWaps Supabase schema after the 2026-10-06 user-data migrations** (`20261004`–`20261006`). All reference content (dictionary, vocabulary, character breakdowns, memory hooks) is served 100% pack-first from static edge CDN and cached in local IndexedDB (migration `20261003`). The Supabase database contains strictly private user data.
 
 ---
 
@@ -13,47 +13,42 @@ User tables reference `auth.users.id` with cascade deletion.
                   |    auth.users     |
                   +---------+---------+
                             |
-        +--------------------+--------------------+--------------------+
-        | (1:1)              | (1:N)              | (1:N)              | (1:N)
- +------v-------+    +-------v--------+   +-------v--------+    +-------v--------+
- | user_profiles |   | user_folders   |   | user_card_progress |  | user_daily_progress|
- +------+--------+    +-------+--------+   +-------------------+  +------------------+
-        |                     | (1:N)               | (1:N)
-        |             +-------v--------+     +-------v---------+
-        |             | user_flashcards|     | user_learned_cards|
-        |             +----------------+     +-----------------+
+        +-------------------+-------------------+--------------------+
+        | (1:1)             | (1:N)             | (1:N)              | (1:N)
+ +------v--------+  +-------v--------+  +-------v----------+  +------v-----------+
+ | user_profiles |  | user_folders   |  | user_card_progress|  | user_learned_cards|
+ +---------------+  +-------+--------+  +------------------+  +------------------+
+                            | (1:N)
+                    +-------v--------+
+                    | user_flashcards|
+                    +----------------+
 ```
-
-All reference content is static and offline-capable (see [Fetch paths](#-fetch-paths)). No reference content tables exist in Supabase.
 
 ---
 
 ## 📁 Table Definitions
 
 ### 1. `user_profiles`
-One row per user; profile info + learning metadata.
+One row per user; profile info + synced preferences.
 - **Columns**:
   - `id` (uuid, Primary Key) -> References `auth.users.id` on delete cascade
-  - `email` (text)
-  - `full_name` (text)
-  - `avatar_url` (text)
-  - `learned_cards` (text[] default `'{}'`) — legacy mirror of `user_learned_cards`, kept in sync by the learned-card RPCs during the client rollout (drop once every client is upgraded)
-  - `last_activity` (text) — migrated from the dropped `user_progress` table
-  - `updated_at` (timestamptz)
+  - `email` (text), `full_name` (text), `avatar_url` (text)
+  - `settings` (jsonb, default `{}`) — synced preferences: `favorites`, `activeBookId`, `characterPreference`, `sessionProgressIndex`, `activeTab`, `selectedLessons`, `selectedBooks`. Lives here rather than in auth `user_metadata` so it is not embedded in every access token. Shape owned by `CloudMetadataPayload` (`src/utils/cloudSyncTransforms.ts`).
+  - `updated_at` (timestamptz) — bumped when settings are written or progress is reset; the pull uses it to decide whether cloud settings are newer than local.
 - **RLS**:
   - Select: `auth.uid() = id` (owner only).
   - Insert/Update: `auth.uid() = id`.
-- **Notes**: Row is created by the `handle_new_user` trigger on signup. `userService.syncMetadata` upserts `learned_cards`/`last_activity` here.
+- **Notes**: Row is created by the `handle_new_user` trigger on `auth.users` signup (the trigger itself is created in `20261004`; the baseline does not dump `auth` objects). Email/name/avatar are copied once at signup and not refreshed — the client reads them from auth metadata. `userService.syncSettings` upserts `settings` here and creates the row if it is missing.
 
 ### 2. `user_folders`
 Custom folders created by users to group flashcards.
-- **Columns**: `id` (uuid PK), `user_id` (uuid FK), `name` (text), `color` (text), `created_at` (timestamptz)
+- **Columns**: `id` (uuid PK), `user_id` (uuid FK → `auth.users` on delete cascade), `name` (text), `color` (text), `created_at` (timestamptz)
 - **Indexes**: `idx_user_folders_user_id` on (`user_id`)
 - **RLS**: owner-only select/insert/update/delete.
 
 ### 3. `user_flashcards`
 Custom vocabulary cards inside a user's folders.
-- **Columns**: `id` (uuid PK), `user_id` (uuid FK), `folder_id` (uuid FK → `user_folders.id` on delete set null), `simplified` (text), `traditional` (text), `pinyin` (text), `translation` (text), `notes` (text), `measure_words` (text[]), `created_at` (bigint)
+- **Columns**: `id` (uuid PK), `user_id` (uuid FK → `auth.users` on delete cascade), `folder_id` (uuid FK → `user_folders.id` on delete set null), `simplified` (text), `traditional` (text), `pinyin` (text), `translation` (text), `notes` (text), `measure_words` (text[]), `created_at` (bigint, epoch ms)
 - **Indexes**: `idx_user_flashcards_user_id`, `idx_user_flashcards_folder_id`
 - **RLS**: owner-only. Realtime channel `public:user_flashcards` used by `flashcardService`.
 
@@ -62,96 +57,69 @@ Granular card-level SRS state (the single source of truth for SRS).
 - **Columns**:
   - `user_id` (uuid FK) / `card_id` (text) — composite Primary Key
   - `ease` (numeric default 2.5), `interval` (integer default 0), `repetitions` (integer default 0)
-  - `next_review_date` (timestamptz), `learning_step` (integer, nullable — intraday step index; added in `20260909_learning_step.sql`), `last_updated` (timestamptz)
-- **Indexes**: `idx_user_card_progress_user_due` on (`user_id`, `next_review_date`) — serves both `getProgress` (user prefix) and `get_due_card_ids` (user + due filter); the PK (`user_id`, `card_id`) covers id lookups. The redundant single-column `user_id` / `next_review_date` indexes were dropped in the 20260912 cleanup.
+  - `next_review_date` (timestamptz), `learning_step` (integer, nullable — intraday step index), `last_updated` (timestamptz)
+- **Indexes**: `idx_user_card_progress_user_updated` on (`user_id`, `last_updated`) — serves the incremental pull filter; the PK (`user_id`, `card_id`) covers id lookups.
 - **RLS**: owner-only.
-- **Notes**: Written via the `upsert_card_progress` RPC (batched); read by `userService.getProgress` and the `get_due_card_ids` RPC (review sessions). The old `user_progress` table (with a dead `srs_data` jsonb column) was dropped in the cleanup.
+- **Notes**: Written via the `upsert_card_progress` RPC (batched); read through `get_sync_state`. Due cards for review sessions are derived from local SRS state (`deriveLocalDueCardIds`).
 
-### 4b. `user_learned_cards`
-One row per learned card (per-card source of truth for `learnedCards`).
+### 5. `user_learned_cards`
+One row per learned card — the only store of `learnedCards`.
 - **Columns**:
   - `user_id` (uuid FK → `auth.users` on delete cascade) / `card_id` (text) — composite Primary Key
-  - `created_at` (timestamptz default now())
-- **Indexes**: `idx_user_learned_cards_created` on (`user_id`, `created_at`) — enables future incremental learned pulls
+  - `created_at` (timestamptz default now()) — the incremental-pull key
+- **Indexes**: `idx_user_learned_cards_created` on (`user_id`, `created_at`)
 - **RLS**: owner-only.
-- **Notes**: Backfilled from `user_profiles.learned_cards` at migration. Written via `append_learned_cards` / `replace_learned_cards` RPCs (which mirror to the legacy `user_profiles.learned_cards` array for pre-upgrade clients); read by `userService.getProgress`, which unions both sources during the rollout. Cleared by `reset_user_learning_progress`.
-
-### 5. `user_daily_progress`
-Daily XP/study totals; one row per user per date.
-- **Columns**:
-  - `user_id` (uuid FK) / `date` (text `YYYY-MM-DD`) — composite Primary Key
-  - `xp_earned`, `cards_reviewed`, `cards_learned`, `study_time_minutes` (integers)
-  - `activities_breakdown` (jsonb, `{"flashcards":0,"quiz":0,"listening":0,"writing":0}`)
-  - `created_at`, `updated_at`
-- **Indexes**: PK (`user_id`, `date`) — the redundant `idx_user_daily_progress_user_date` (same column pair) was dropped in the 20260912 cleanup
-- **RLS**: owner-only.
-- **Notes**: Written exclusively through the `upsert_daily_progress` RPC (atomic increment + breakdown merge).
-
-### 6. `dictionary`
-The canonical dictionary (~122k entries). Supersedes the dropped `global_dictionary` duplicate.
-- **Columns**: `id` (integer PK, sequence), `traditional` (text), `simplified` (text), `pinyin_numbered`, `pinyin_accented`, `pinyin_flat`, `pinyin_syllables` (text), `definitions` (jsonb), `english_tsvector` (generated `tsvector`), `frequency_score` (float8), `curriculum_level` (int default 99), `is_book_vocab` (bool), `created_at`
-- **Indexes**: btree on `simplified` and `traditional` (exact/prefix lookups), trigram GIN on `simplified`/`traditional`/`pinyin_flat`, GIN on `definitions`, GIN on `english_tsvector`
-- **RLS**: none — publicly readable reference data.
-- **Read path**: static shard packs (`public/data/dictionary/`, 64 shards) via IndexedDB first, then direct table queries; search goes through the `search_dictionary` RPC.
-
-### 7. `character_breakdowns_v2`
-Character decomposition data (~9.6k characters). The v1 `character_breakdowns` table was dropped.
-- **Columns**: `character` (text PK), `radical` (text), `pinyin` (text[]), `definition` (text), `decomposition` (text), `components_historical` (text[])
-- **Indexes**: trigram GIN on `decomposition` (component "used in" fallback)
-- **RLS**: none — publicly readable.
-- **Read path**: static shard packs (`public/data/breakdowns/`, 32 shards) first, then direct table queries. "Used in" lists resolve from the static inverted index (`public/data/breakdowns/used-as.json`) with the trgm-indexed query as fallback.
-
-### 8. `book_vocabulary`
-Curriculum vocabulary (~4k rows) used as the fallback source when static vocabulary packs are unavailable.
-- **Columns**: `id` (text PK), `traditional`, `simplified`, `pinyin`, `pos`, `meaning`, `examples`, `variants`, `audio`, `tags`
-- **RLS**: none — publicly readable.
-
-### 9. `mnemonics`
-Cache of AI-generated memory hooks (read-only from the learner app; generation was removed).
-- **Columns**: `id` (text PK, `word_{text}` or `{char}`), `character` (text), `mnemonic` (text), `content_type` (text), `created_at`
-- **Indexes**: `idx_mnemonics_character`, `idx_mnemonics_content_type`
-- **RLS**: public select; insert/update/delete restricted to `service_role`.
-- **Read path**: static pack (`public/data/memory-hooks/`) first via `lookupPackMnemonic`, then direct table queries.
-- **Notes**: `getCachedMnemonic` reads are micro-batched client-side (one `IN` query per burst instead of per-character round trips).
+- **Notes**: Written via `append_learned_cards` / `replace_learned_cards`; read through `get_sync_state`. Cleared by `reset_user_learning_progress`.
 
 ---
 
 ## ⚡ Stored Procedures (RPCs)
 
+All RPCs except the trigger are `SECURITY DEFINER`, filter by `auth.uid()`, and are executable by `authenticated` only.
+
 | RPC | Purpose | Notes |
 |---|---|---|
-| `search_dictionary(search_query text, result_limit int default 50)` | Scored dictionary search (hanzi/pinyin/english) | Hanzi queries use tiered exact→prefix→capped-substring matching; the legacy `search_dictionary(text)` ILIKE overload was dropped in the cleanup |
-| `upsert_card_progress(p_records jsonb)` | Batch upsert SRS card rows (security definer, fills `user_id` from JWT) | |
-| `get_due_card_ids()` | Due-card ids (`next_review_date <= now()`) for the caller, most-overdue first | Powers the review session (`userService.getDueCardIds`); client caps/prioritizes further (`src/utils/reviewSession.ts`, cap 20) and falls back to the local SRS filter if the RPC is absent |
-| `append_learned_cards(p_cards text[])` | Order-preserving dedupe-append of new learned-card ids into `user_learned_cards` + the legacy `user_profiles.learned_cards` array | The common sync path for first passes; full-array replaces stay on `syncMetadata` (first sync, reset/shrink, RPC fallback) |
-| `replace_learned_cards(p_cards text[])` | Full replace of `user_learned_cards` rows + the legacy profile array | First sync, shrink (progress reset), and the client's direct-upsert fallback |
-| `reset_user_learning_progress()` | Clears the caller's `user_card_progress`, `user_learned_cards`, and `learned_cards` | Added in the cleanup; clears the learned-card table since 20260911 |
-| `upsert_daily_progress(...)` | Single-statement daily-progress upsert + activity breakdown merge | Validates `p_user_id = auth.uid()`; the 20260913 rewrite removed the pre-SELECT (one table touch per call) |
-| `handle_new_user()` | Trigger on `auth.users` insert → creates `user_profiles` row | |
+| `get_sync_state(p_since timestamptz default null)` | The whole pull as one jsonb: `cards`, `learned`, `cursor`, `profile` (`updated_at`, `settings`), `folders` | Cards and learned ids are incremental from `p_since` (`>=`); `cursor` is the newest timestamp among returned rows. Used by `userService.getSyncState` |
+| `upsert_card_progress(p_records jsonb)` | Batch upsert SRS card rows (fills `user_id` from JWT) | |
+| `append_learned_cards(p_cards text[])` | Insert new learned-card ids (`ON CONFLICT DO NOTHING`) | The common sync path for first passes |
+| `replace_learned_cards(p_cards text[])` | Make the learned set exactly `p_cards`: delete ids that left, insert new ones | First sync and progress-reset shrink; surviving rows keep `created_at` |
+| `reset_user_learning_progress()` | Clears the caller's `user_card_progress` and `user_learned_cards` | Also bumps `user_profiles.updated_at` |
+| `handle_new_user()` | Trigger on `auth.users` insert → creates the `user_profiles` row | |
 
 ---
 
 ## 🔐 RLS & Grants Notes
 
-- All `user_*` tables have RLS enabled with owner-only policies; `anon` grants were revoked from user tables in the cleanup (RLS already denied reads; the grants were misleading).
-- `mnemonics` has RLS; content tables (`dictionary`, `character_breakdowns_v2`, `book_vocabulary`) are open reads.
-- Dropped in the cleanup (2026-08-27): `global_dictionary` (duplicate of `dictionary`), `character_breakdowns` (v1), `historical_dictionary` (empty), `personal_vocabulary` + `personal_vocab_folders` (never read by the app), `user_progress` (metadata migrated to `user_profiles`), `mnemonic_generation_queue` (no writers/workers anywhere in the codebase), the dead `user_profiles.personal_vocab_*` columns, and the legacy `search_dictionary(text)` overload.
+- All `user_*` tables have RLS enabled with owner-only policies; `anon` grants were revoked from user tables, and the user RPCs are not executable by `anon`/`PUBLIC`.
+- Removed over time: reference content tables (`dictionary`, `character_breakdowns_v2`, `book_vocabulary`, `mnemonics`) and `search_dictionary` (2026-10-03); `user_daily_progress` + `upsert_daily_progress` (nothing read them; XP/streaks were removed), `user_profiles.learned_cards` (legacy array mirror) and `user_profiles.last_activity` (never applied to client state) (2026-10-06); earlier cleanup (2026-08-27): `global_dictionary`, `character_breakdowns` (v1), `historical_dictionary`, `personal_vocabulary` + `personal_vocab_folders`, `user_progress`, `mnemonic_generation_queue`.
+- Synced preferences were moved out of auth `user_metadata` into `user_profiles.settings` (20261005 backfills, 20261006 strips them from `user_metadata`).
 
 ---
 
-## 🚚 Fetch Paths
+## 🔄 Sync paths
 
-Client code never talks to the database directly for reference content — it goes through `src/services/` which implement a **pack-first** strategy:
+`useCloudSyncFetch` pulls with **one** `get_sync_state` call (plus `since` for incremental pulls); `useCloudSyncSave` writes deltas: `upsert_card_progress` (changed cards), `append_learned_cards` / `replace_learned_cards`, and a `user_profiles` settings upsert when settings changed. Folders are written directly (and only) by `flashcardService` (create/delete, realtime-mirrored); the pull just reads them, and guest folders are uploaded once via `importFolders` on first sign-in.
 
-1. **Static packs** (`public/data/...`) fetched once and cached in IndexedDB (`staticContentService`, keyed by manifest version with stale-version pruning):
-   - dictionary lookups → `public/data/dictionary/` shards
-   - character breakdowns → `public/data/breakdowns/` shards
-   - breakdown "used in" lists → `public/data/breakdowns/used-as.json` (component → characters inverted index)
-   - course vocabulary → `public/data/vocabulary/` book packs
-   - course examples → `public/data/course-examples/`
-   - memory hooks → `public/data/memory-hooks/` book packs (characters and words)
-   - stroke data → `public/data/strokes/` shards (CDN fallback)
-2. **Supabase fallback**: direct table queries or RPCs when packs are missing/unavailable.
-3. **In-memory caches** (`src/utils/cache.ts`) dedupe repeated lookups; `requestTiming` instruments data calls.
+## 🚚 Fetch Paths (reference content)
 
-The former `public/dictionary_trie.json` (13 MB startup download) was removed in the cleanup; word validation and segmentation now resolve through pack-backed batch lookups instead.
+Client code never talks to the database for reference content — it goes through `src/services/` which resolve **pack-first** from static packs (`public/data/...`) cached in IndexedDB (`staticContentService`, keyed by manifest version with stale-version pruning):
+
+- dictionary lookups → `public/data/dictionary/` shards
+- character breakdowns → `public/data/breakdowns/` shards
+- course vocabulary → `public/data/vocabulary/` book packs
+- course examples → `public/data/course-examples/`
+- memory hooks → `public/data/memory-hooks/` book packs
+- parts index (breakdown "Sound family" + "Appears in" cards) → `public/data/relations/parts.json`, `parents` (part → characters built from it, sound-alikes first with `=` `~` `≈` grade marks) + `phonetic` (character → its sound part); learner pool = course ∪ levels, no pinyin/meaning/level in the pack — `npm run relations:build`
+- character pronunciation (Taiwan-first readings: course reading, then CC-CEDICT "Taiwan pr.", variants `~`, other readings with an example word) → `public/data/pronunciation/pronunciation.json` (`npm run pronunciation:build`; then `relations:build`, whose sound grades use every reading)
+- TOCFL character/word levels (TBCL 1–7 scale; HSK gap fill) → `public/data/levels/levels.json`, schema v2 (`npm run levels:build`)
+- stroke data → `public/data/strokes/` shards (CDN fallback)
+
+In-memory caches (`src/utils/cache.ts`) dedupe repeated lookups; `requestTiming` instruments data calls.
+
+## 🚀 Applying the 2026-10 migrations (order matters)
+
+Verified locally with `supabase db reset` (all migrations replay on a fresh Postgres) plus a signup and client-RPC run against the local stack.
+
+1. `20261004` (signup trigger + FK cascade) and `20261005` (additive: `settings`, `get_sync_state`) — safe any time; apply `20261005` **before** deploying the client.
+2. Deploy the client that calls `get_sync_state`.
+3. `20261006` (contract: drops the legacy array, `last_activity`, daily progress, strips `user_metadata`) — only after old tabs/PWAs have updated; an old client reads the dropped columns.

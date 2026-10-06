@@ -26,18 +26,14 @@ Framework: Node.js Native Test Runner (`node:test` + `node:assert/strict`) via `
 
 ### Tier 1: Feature & Contract Coverage
 - [x] **Dialogue Synchronization**: `lineIndexForTime`, `wordRangeForTime`, and `alignmentDuration` correctly identify active line indices and word boundaries.
-- [x] **Cloud Sync Queue Math**: `getSessionProgressDelta` computes strictly positive incremental deltas.
 - [x] **Single-Flight Save Coordinator**: Coalesces concurrent save requests to prevent duplicate network calls.
-- [x] **Folder Sync Planning**: Segregates local creations from tombstones and remote deletions.
 - [x] **Linguistic Metadata & POS Tagging**: Part-of-speech formatter expands labels (`Noun`, `Verb`, `Stative verb`) and maps to word categories (`noun`, `verb`).
 - [x] **Speaker Character Profiling**: Resolves character profiles and genders across Book 1 readings from `CHARACTER_PROFILES`.
 
 ### Tier 2: Boundary & Corner Cases
 - [x] **Empty & Out-of-Bounds Alignments**: Zero-length alignments, negative timestamps, and past-duration queries safely return `null`.
 - [x] **Rendered Text Length Mismatch**: `wordRangeForTime` gracefully suppresses highlights when traditional vs simplified rendered lengths diverge.
-- [x] **Corrupted Progress Deltas**: Progress counters clamped to current values without generating negative deltas.
 - [x] **Exponential Backoff & Rate Limiting**: Exponential backoff grows up to 60s cap; 429 HTTP responses receive immediate 15s penalty backoff.
-- [x] **Tombstone Pruning Edge Cases**: Correctly handles empty, disjoint, or overlapping tombstone arrays.
 - [x] **POS Formatter Fault Tolerance**: Gracefully handles whitespace, empty strings, compound tags (`N/V`), and unknown codes.
 - [x] **Pinyin Normalization Boundaries**: Normalizes tone numbers, tone marks, spacing, keyboard umlauts (`lv3`, `lu:3`, `lü`), and parenthesized variants (`shén(me)`).
 

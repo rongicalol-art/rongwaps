@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react';
 import { SAMPLE_BOOKS } from '../../../../data/books';
-import { Skeleton } from '../../../../lib/widgets';
+import { LevelTag, Skeleton } from '../../../../lib/widgets';
+import { useLevels } from '../../../../hooks/useLevels';
+import { resolveLevel } from '../../../../utils/levels';
 import { useCharBreakdown } from '../../../../hooks/useCharBreakdown';
 import { useComponentVocabRelation } from '../../../../hooks/useComponentVocabRelation';
 import { numberToToneMarks } from '../../../../utils/pinyin';
@@ -21,6 +23,7 @@ export const BreakdownComponentCard: React.FC<BreakdownComponentCardProps> = ({
   activeBook,
   setDictionaryWord
 }) => {
+  const levels = useLevels();
   const data = useCharBreakdown(c);
   const { exactVocab, usedInVocabs, hasRelation } = useComponentVocabRelation(c);
 
@@ -55,16 +58,7 @@ export const BreakdownComponentCard: React.FC<BreakdownComponentCardProps> = ({
             {data ? (data.pinyin?.[0] ? numberToToneMarks(data.pinyin[0]) : ' ') : <Skeleton className="w-8 h-3 rounded-xs" />}
           </span>
         </div>
-        {badgeInfo && (() => {
-          const bookInfo = SAMPLE_BOOKS.find(b => b.id === badgeInfo.bookId);
-          const dotColorClass = bookInfo ? bookInfo.accentBg : activeBook.accentBg;
-          return (
-            <span className="flex shrink-0 select-none items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-ui-muted opacity-80">
-              <span>B{badgeInfo.bookId} · L{badgeInfo.lessonId}</span>
-              <span className={`w-1.5 h-1.5 rounded-full ${dotColorClass} shrink-0`} />
-            </span>
-          );
-        })()}
+        {badgeInfo ? <LevelTag bookId={badgeInfo.bookId} lessonId={badgeInfo.lessonId} /> : <LevelTag level={resolveLevel(c, levels)} />}
       </div>
       <span className={`text-4xl sm:text-5xl leading-none font-chinese ${cardColors.textAccent} transition-all block mb-1`}>
         {c}

@@ -204,4 +204,3 @@ export async function fetchExamples(word: string, limit = 3): Promise<WordExampl
   return examples;
 }
 
-export { getCourseVocabLookupMap, findMatchingCourseVocab } from './courseVocabLookup';

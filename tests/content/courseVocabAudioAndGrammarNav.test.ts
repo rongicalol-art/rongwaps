@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { findMatchingCourseVocab, getCourseVocabLookupMap } from '../../src/services/vocabularyService';
+import { findMatchingCourseVocab, getCourseVocabLookupMap } from '../../src/services/courseVocabLookup';
 import { getTestGrammarPartsForLesson as getInteractiveGrammarPartsForLesson } from '../acceptance_helpers';
 
 test('getCourseVocabLookupMap builds an index of course vocabulary with audio files', async () => {

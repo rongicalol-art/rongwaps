@@ -6,29 +6,43 @@ import {
   extractCedictReference,
   formatCompactMeaning,
 } from '../../src/utils/dictionaryDefinitions';
+import { debugLogger } from '../../src/utils/debugLogger';
 
 test('serialized definition arrays render as learner-facing meanings', () => {
   assert.deepEqual(
     sanitizeDictionaryDefinitions('["hello; hi", "greetings"]'),
-    { definitions: ['hello; hi', 'greetings'], measure_words: [] },
+    { definitions: ['hello; hi', 'greetings'], measure_words: [], measure_word_details: [] },
   );
+});
+
+test('bracketed CEDICT reading lines stay plain text without a JSON parse warning', () => {
+  debugLogger.clear();
+  assert.deepEqual(
+    sanitizeDictionaryDefinitions(['new', '[xīn]: new, newly']),
+    { definitions: ['new', '[xīn]: new, newly'], measure_words: [], measure_word_details: [] },
+  );
+  assert.deepEqual(debugLogger.getLogs(), []);
 });
 
 test('definition cleanup extracts measure words and removes metadata', () => {
   assert.deepEqual(
     sanitizeDictionaryDefinitions(['book; CL:本[ben3]', 'book (coll.)']),
-    { definitions: ['book'], measure_words: ['本'] },
+    { definitions: ['book'], measure_words: ['本'], measure_word_details: [{ char: '本', pinyin: 'běn' }] },
   );
 });
 
 test('paren-wrapped classifiers are removed without leaving stray brackets', () => {
   assert.deepEqual(
     sanitizeDictionaryDefinitions(['dream (CL:場|场[chang2])']),
-    { definitions: ['dream'], measure_words: ['場'] },
+    { definitions: ['dream'], measure_words: ['場'], measure_word_details: [{ char: '場', pinyin: 'cháng' }] },
   );
   assert.deepEqual(
     sanitizeDictionaryDefinitions(['dream (CL:場|场[chang2], 场次)']),
-    { definitions: ['dream'], measure_words: ['場', '场次'] },
+    {
+      definitions: ['dream'],
+      measure_words: ['場', '场次'],
+      measure_word_details: [{ char: '場', pinyin: 'cháng' }, { char: '场次', pinyin: '' }],
+    },
   );
 });
 
@@ -50,7 +64,7 @@ test('unbalanced parentheses left by removals are tidied away', () => {
 
 test('a lone classifier string sanitizes to nothing instead of resurrecting', () => {
   const result = sanitizeDictionaryDefinitions('CL:個|个[ge4]');
-  assert.deepEqual(result, { definitions: [], measure_words: ['個'] });
+  assert.deepEqual(result, { definitions: [], measure_words: ['個'], measure_word_details: [{ char: '個', pinyin: 'gè' }] });
 });
 
 test('humanizeCedictMarkup formats traditional/simplified bracketed pinyin', () => {

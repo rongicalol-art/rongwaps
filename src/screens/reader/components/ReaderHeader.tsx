@@ -1,4 +1,4 @@
-import { AppIcon, IconActionButton, ScreenHeader } from '../../../lib/widgets';
+import { IconActionButton, ScreenHeader, PlayfulNavIcon } from '../../../lib/widgets';
 import type { ReaderTextSize, ReadingRecord } from '../../../types/models';
 import type { CharacterFont } from '../../../store/useAppStore';
 import { ReaderSettingsPopover } from './ReaderSettingsPopover';
@@ -125,7 +125,7 @@ export function ReaderHeader({
             <IconActionButton
               size="lg"
               onClick={onOpenStudyGuide}
-              icon={<AppIcon name="hint" size={25} />}
+              icon={<PlayfulNavIcon name="hint" className="h-7 w-7" />}
               label={isStudyGuideOpen ? 'Hide study guide' : 'Study guide'}
               title={isStudyGuideOpen ? 'Hide study guide' : 'Study guide'}
               aria-haspopup="dialog"

@@ -7,20 +7,19 @@
  * review questions); readings come from the component ledger only. Pieces
  * without a ledger reading are flagged for human review, never invented.
  *
- * Outputs:
+ * Output (gitignored scratch only):
  *   output/memory-hooks/book-1-sound-v1.json
- *   public/data/sound-hooks/book-1.json
- *   public/data/sound-hooks/manifest.json
+ *
+ * The runtime Sound clue no longer ships from here: the app reads the parts
+ * index (public/data/relations/parts.json, `npm run relations:build`).
  */
 
-import { createHash } from 'node:crypto';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const ROOT = resolve(import.meta.dirname, '../..');
 const OUTPUT_DIR = resolve(ROOT, 'output/memory-hooks');
 const REVIEW_DIR = resolve(OUTPUT_DIR, 'review');
-const PACK_DIR = resolve(ROOT, 'public/data/sound-hooks');
 
 interface V3Record {
   character: string;
@@ -65,7 +64,7 @@ function cleanReading(reading: string | undefined): string | null {
 }
 
 function main() {
-  mkdirSync(PACK_DIR, { recursive: true });
+  mkdirSync(OUTPUT_DIR, { recursive: true });
 
   const records = JSON.parse(
     readFileSync(resolve(OUTPUT_DIR, 'book-1-hooks-v3.json'), 'utf8'),
@@ -137,24 +136,7 @@ function main() {
     items: entries,
   };
   const packText = `${JSON.stringify(pack, null, 2)}\n`;
-  writeFileSync(resolve(PACK_DIR, 'book-1.json'), packText);
   writeFileSync(resolve(OUTPUT_DIR, 'book-1-sound-v1.json'), packText);
-
-  const sha256 = createHash('sha256').update(packText).digest('hex');
-  const manifest = {
-    schemaVersion: 1,
-    version: sha256,
-    generatedAt: pack.generatedAt,
-    totalCount: entries.length,
-    books: [{
-      bookId: 1,
-      count: entries.length,
-      path: '/data/sound-hooks/book-1.json',
-      sha256,
-      bytes: Buffer.byteLength(packText),
-    }],
-  };
-  writeFileSync(resolve(PACK_DIR, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);
 
   const withPhonetic = entries.filter((entry) => entry.phonetic).length;
   const needsHuman = entries.filter((entry) => entry.needsHuman).map((entry) => entry.character);
@@ -163,7 +145,7 @@ function main() {
   console.log(`  phonetic piece: ${withPhonetic} · pinyin only: ${entries.length - withPhonetic - needsHuman.length} · needs human: ${needsHuman.length}`);
   console.log(`  sound families: ${families.length} (${families.map((members) => members.map((member) => `${member.character}/${member.phonetic!.reading}`).join(' ')).slice(0, 6).join(' · ')}${families.length > 6 ? ' …' : ''})`);
   if (needsHuman.length > 0) console.log(`  needs-human: ${needsHuman.join(' ')}`);
-  console.log('Wrote public/data/sound-hooks/book-1.json + manifest.json');
+  console.log('Wrote output/memory-hooks/book-1-sound-v1.json');
 }
 
 main();

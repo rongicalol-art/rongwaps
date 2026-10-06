@@ -8,7 +8,6 @@ export interface SideNavProps {
   onSettingsClick: () => void;
   onToggleCollapse?: () => void;
   accentClass?: string;
-  buttonEdgeClass?: string;
   isCollapsed?: boolean;
   showCollapseButton?: boolean;
 }
@@ -30,6 +29,16 @@ export function navTabLabel(tab: SideNavProps['activeTab']): string {
   return NAV_TABS.find((entry) => entry.id === tab)?.label ?? '';
 }
 
+/** Sidebar geometry: the one source for the rail width and for the workspace
+ *  offset every window pads by. The desktop card floats `SIDE_NAV_GUTTER` from
+ *  the viewport edge and keeps the same gap to the workspace. */
+export const SIDE_NAV_WIDTH = { collapsed: 76, expanded: 256 } as const;
+export const SIDE_NAV_GUTTER = 16;
+
+export function sideNavWorkspaceOffset(isCollapsed: boolean): number {
+  return SIDE_NAV_GUTTER * 2 + (isCollapsed ? SIDE_NAV_WIDTH.collapsed : SIDE_NAV_WIDTH.expanded);
+}
+
 const PRACTICE_ACTIVITIES = new Set([
   'flashcards',
   'listening',
@@ -46,7 +55,6 @@ export const SideNav = memo(function SideNav({
   onSettingsClick,
   onToggleCollapse,
   accentClass = 'text-brand-primary',
-  buttonEdgeClass = 'border-brand-primary-edge',
   isCollapsed = false,
   showCollapseButton = false,
 }: SideNavProps) {
@@ -58,10 +66,9 @@ export const SideNav = memo(function SideNav({
     // canvas chip so they stay visible on the white bar.
     <nav
       aria-label="Main navigation"
-      className={`z-50 flex h-full shrink-0 flex-col bg-transparent pb-4 transition-[width,padding] duration-200 ${
-        isCollapsed
-          ? 'w-[76px] items-center px-2.5 pt-6'
-          : 'w-[256px] px-4 pt-7'
+      style={{ width: isCollapsed ? SIDE_NAV_WIDTH.collapsed : SIDE_NAV_WIDTH.expanded }}
+      className={`workspace-resize z-50 flex h-full shrink-0 flex-col bg-transparent pb-4 ${
+        isCollapsed ? 'items-center px-2.5 pt-6' : 'px-4 pt-7'
       }`}
     >
       <div className={`flex items-center ${isCollapsed ? 'mb-6 justify-center w-full' : showCollapseButton ? 'mb-7 justify-between gap-2 px-1' : 'mb-7 justify-start px-2'}`}>
@@ -113,13 +120,13 @@ export const SideNav = memo(function SideNav({
               type="button"
               onClick={() => onTabChange(tab.id)}
               aria-label={tab.label}
-              className={`group relative flex items-center rounded-feature border-b-4 focus-ring transition-[transform,background-color,border-color] duration-150 active:scale-[0.98] ${
+              className={`group relative flex items-center border-b-4 focus-ring transition-[transform,background-color,border-color] duration-150 active:scale-[0.98] ${
                 isCollapsed
-                  ? 'h-13 w-13 justify-center'
-                  : 'h-16 w-full px-1'
+                  ? 'h-13 w-13 justify-center rounded-control'
+                  : 'h-16 w-full rounded-feature px-1'
               } ${
                 isActuallyActive 
-                  ? `${buttonEdgeClass} bg-ui-canvas`
+                  ? 'border-transparent bg-ui-hover'
                   : 'border-transparent hover:bg-ui-hover'
               }`}
               aria-current={isActuallyActive ? 'page' : undefined}
@@ -176,7 +183,7 @@ export const SideNav = memo(function SideNav({
           aria-label="Open app settings"
           title={isCollapsed ? undefined : 'Settings'}
         >
-          <AppIcon name="appSettings" size={23} className="shrink-0" />
+          <PlayfulNavIcon name="settings" className="h-7 w-7" />
           {!isCollapsed && (
             <span className="text-sm font-black text-ui-ink-strong">Settings</span>
           )}

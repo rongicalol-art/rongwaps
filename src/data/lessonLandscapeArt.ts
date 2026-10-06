@@ -18,7 +18,7 @@ const lessonLandscapeFiles = [
 ] as const;
 
 export const INTRODUCTION_ART = new URL(
-  '../assets/lesson-landscapes/introduction-book.svg',
+  '../assets/icons/flat/lightning.svg',
   import.meta.url,
 ).href;
 

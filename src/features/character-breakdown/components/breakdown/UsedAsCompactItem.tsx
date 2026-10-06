@@ -1,6 +1,8 @@
 import React from 'react';
 import { SAMPLE_BOOKS } from '../../../../data/books';
-import { Skeleton } from '../../../../lib/widgets';
+import { LevelTag, Skeleton } from '../../../../lib/widgets';
+import { useLevels } from '../../../../hooks/useLevels';
+import { resolveLevel } from '../../../../utils/levels';
 import { useCharBreakdownState } from '../../../../hooks/useCharBreakdown';
 import { numberToToneMarks } from '../../../../utils/pinyin';
 import { isPureVariantDefinition } from '../../../../utils/dictionaryDefinitions';
@@ -23,6 +25,7 @@ export const UsedAsCompactItem: React.FC<UsedAsCompactItemProps> = ({
   isLast,
   badgeInfo
 }) => {
+  const levels = useLevels();
   const { data, isLoading } = useCharBreakdownState(c);
   const pinyin = data?.pinyin?.[0] ? numberToToneMarks(data.pinyin[0]) : '';
   const definition = data?.definition?.split(';')[0]?.trim() || '';
@@ -54,16 +57,7 @@ export const UsedAsCompactItem: React.FC<UsedAsCompactItemProps> = ({
               </>
             ) : null}
           </div>
-          {badgeInfo && (() => {
-            const bookInfo = SAMPLE_BOOKS.find(b => b.id === badgeInfo.bookId);
-            const dotColorClass = bookInfo ? bookInfo.accentBg : activeBook.accentBg;
-            return (
-              <span className="flex shrink-0 select-none items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-ui-muted opacity-80">
-                <span>B{badgeInfo.bookId} · L{badgeInfo.lessonId}</span>
-                <span className={`w-2 h-2 rounded-full ${dotColorClass} shrink-0`} />
-              </span>
-            );
-          })()}
+          {badgeInfo ? <LevelTag bookId={badgeInfo.bookId} lessonId={badgeInfo.lessonId} /> : <LevelTag level={resolveLevel(c, levels)} />}
         </div>
       </div>
     </button>

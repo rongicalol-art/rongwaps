@@ -18,6 +18,7 @@ import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useWorkspaceIsolation } from '../../hooks/useWorkspaceIsolation';
 import { isNarrativeReading } from './utils/narrativeParagraphs';
 import { ReadingBottomDock } from './components/ReadingBottomDock';
+import { WorkspaceWindow } from '../../lib/widgets';
 
 // Window shell (this module) stays eager so the Reader opens instantly with
 // its canvas tone + header; the heavy reading canvases stream in under a
@@ -226,15 +227,15 @@ export function ReaderScreen({
   };
 
   return (
-    <div
+    <WorkspaceWindow
       ref={dialogRef}
+      tone="practice"
       role="dialog"
       aria-modal="true"
       aria-label="Reading Mode"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="fixed inset-0 z-50 flex flex-col bg-ui-practice-canvas transition-[padding-left] duration-300 ease-out outline-none select-none"
-      style={{ paddingLeft: 'var(--workspace-nav-width, 0px)' }}
+      className="select-none"
       onMouseMove={(e) => {
         setIsDockVisible(e.clientY >= window.innerHeight - 90);
       }}
@@ -343,6 +344,6 @@ export function ReaderScreen({
         onLocateWord={handleLocateWord}
         onLocateGrammarPoint={handleLocateGrammarPoint}
       />
-    </div>
+    </WorkspaceWindow>
   );
 }

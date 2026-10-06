@@ -4,6 +4,7 @@ import { searchDictionaryWordsContaining, type DictionaryContainingWord } from '
 import { useCharBreakdown } from '../../../hooks/useCharBreakdown';
 import { numberToToneMarks } from '../../../utils/pinyin';
 import type { DBCharacterBreakdown } from '../../../types/database';
+import { usePrimaryReading } from '../../../hooks/usePronunciation';
 import type { WordExample } from '../../../types/models';
 
 const HANZI_RE = /[\u4E00-\u9FFF\u3400-\u4DBF]/u;
@@ -75,7 +76,7 @@ export function useCharacterDecomposition(
     return Array.from(data.decomposition).filter((c) => !NON_CHAR_RE.test(c) && c !== char);
   }, [data, char]);
 
-  const pinyin = data?.pinyin?.[0] ? numberToToneMarks(data.pinyin[0]) : '';
+  const pinyin = numberToToneMarks(usePrimaryReading(char, data?.pinyin?.[0]));
   const meaning = data?.definition || '';
 
   return { components, pinyin, meaning, data };

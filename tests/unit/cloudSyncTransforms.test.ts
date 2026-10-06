@@ -2,8 +2,6 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
   computeSrsDelta,
-  getProgressCounters,
-  getDailyActivity,
   buildMetadataPayload,
   hasMetadataChanged,
 } from '../../src/utils/cloudSyncTransforms';
@@ -44,31 +42,13 @@ test('cloudSyncTransforms: computeSrsDelta returns only modified and new cards',
   assert.equal(delta.card2.interval, 3);
 });
 
-test('cloudSyncTransforms: getProgressCounters extracts session counters', () => {
-  const counters = getProgressCounters({
-    sessionProgress: { cardsReviewed: 12, cardsLearned: 5 },
-  });
-  assert.deepEqual(counters, { cardsReviewed: 12, cardsLearned: 5 });
-});
-
-test('cloudSyncTransforms: getDailyActivity normalizes activity names', () => {
-  assert.equal(getDailyActivity('flashcards'), 'flashcards');
-  assert.equal(getDailyActivity('flashcards-review'), 'flashcards');
-  assert.equal(getDailyActivity('quiz'), 'quiz');
-  assert.equal(getDailyActivity('listening'), 'listening');
-  assert.equal(getDailyActivity('writing'), 'writing');
-  assert.equal(getDailyActivity(null), undefined);
-  assert.equal(getDailyActivity(undefined), undefined);
-});
-
 test('cloudSyncTransforms: buildMetadataPayload and hasMetadataChanged', () => {
   const storeState = {
     favorites: ['word1'],
     activeBookId: 1,
     characterPreference: 'traditional' as const,
-    sessionProgressIndex: 0,
-    activeTab: 'curriculum',
-    activeActivity: null,
+    sessionProgressIndex: { 'b1:l1': 3, 'b1:l2': 1 },
+    activeTab: 'library',
     selectedLessonParts: { '1:1': [1] },
     selectedBooks: [1],
   };
@@ -77,22 +57,19 @@ test('cloudSyncTransforms: buildMetadataPayload and hasMetadataChanged', () => {
   assert.deepEqual(payload.favorites, ['word1']);
   assert.deepEqual(payload.selectedLessons, [1]);
 
-  const unchangedUserMeta = {
+  // jsonb returns object keys in its own order; that must not read as a change.
+  const syncedSettings = {
     favorites: ['word1'],
     activeBookId: 1,
     characterPreference: 'traditional',
-    sessionProgressIndex: 0,
-    activeTab: 'curriculum',
-    activeActivity: null,
+    sessionProgressIndex: { 'b1:l2': 1, 'b1:l1': 3 },
+    activeTab: 'library',
     selectedLessons: [1],
     selectedBooks: [1],
   };
 
-  assert.equal(hasMetadataChanged(unchangedUserMeta, payload), false);
-
-  const changedUserMeta = {
-    ...unchangedUserMeta,
-    activeBookId: 2,
-  };
-  assert.equal(hasMetadataChanged(changedUserMeta, payload), true);
+  assert.equal(hasMetadataChanged(syncedSettings, payload), false);
+  assert.equal(hasMetadataChanged({ ...syncedSettings, activeBookId: 2 }, payload), true);
+  assert.equal(hasMetadataChanged({ ...syncedSettings, favorites: undefined }, payload), true);
+  assert.equal(hasMetadataChanged(null, payload), true);
 });

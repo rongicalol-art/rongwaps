@@ -48,8 +48,8 @@ export function ExpandableSearch({
     >
       <div
         className={`w-full min-w-[44px] relative flex items-center h-[44px] rounded-control overflow-hidden ${
-          isExpanded 
-            ? 'bg-ui-surface focus-within:bg-ui-surface focus-within:ring-4 focus-within:ring-brand-primary/20'
+          isExpanded
+            ? 'border-2 border-ui-border bg-ui-surface transition-colors focus-within:border-brand-primary'
             : 'bg-transparent transition-colors'
         }`}
       >

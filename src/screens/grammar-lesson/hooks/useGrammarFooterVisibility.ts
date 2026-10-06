@@ -35,15 +35,38 @@ export function useGrammarFooterVisibility(
     const main = mainRef.current;
     if (!main) return;
 
-    main.addEventListener('scroll', checkScrollPosition, { passive: true });
-    const observer = new ResizeObserver(() => checkScrollPosition());
-    observer.observe(main);
+    // Lesson content grows after mount (lazy sections, images), and growth inside
+    // the scroller doesn't resize the scroller itself, so watch its children too.
+    // Re-check on the next frame so a burst of changes costs one measurement.
+    let frame = 0;
+    const scheduleCheck = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        checkScrollPosition();
+      });
+    };
 
+    const resizeObserver = new ResizeObserver(scheduleCheck);
+    const observeChildren = () => {
+      resizeObserver.observe(main);
+      for (const child of Array.from(main.children)) resizeObserver.observe(child);
+    };
+    const mutationObserver = new MutationObserver(() => {
+      observeChildren();
+      scheduleCheck();
+    });
+
+    main.addEventListener('scroll', checkScrollPosition, { passive: true });
+    observeChildren();
+    mutationObserver.observe(main, { childList: true, subtree: true });
     checkScrollPosition();
 
     return () => {
+      if (frame) cancelAnimationFrame(frame);
       main.removeEventListener('scroll', checkScrollPosition);
-      observer.disconnect();
+      resizeObserver.disconnect();
+      mutationObserver.disconnect();
     };
   }, [mainRef, resetKey, checkScrollPosition]);
 

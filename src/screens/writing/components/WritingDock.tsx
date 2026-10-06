@@ -1,9 +1,13 @@
+import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import { FloatingDock } from '../../../lib/widgets';
+import { DOCK_SWAP, usePracticeDockSlot } from '../../../features/practice';
 import { cn } from '../../../utils/cn';
 import { WritingDockButton } from './WritingDockButton';
 
 export interface WritingDockProps {
+  /** Controls are shown while the card is being written; they leave when it finishes. */
+  visible: boolean;
   onRestartChar: () => void;
   onPrevChar?: () => void;
   canGoPrevChar?: boolean;
@@ -15,7 +19,13 @@ export interface WritingDockProps {
   isAnimatingStrokes?: boolean;
 }
 
+/**
+ * Writing controls. They render inside the shared practice dock (via its slot)
+ * rather than as a second dock, so they follow the dock's style, position and
+ * auto-hide.
+ */
 export function WritingDock({
+  visible,
   onRestartChar,
   onPrevChar,
   canGoPrevChar = false,
@@ -27,22 +37,52 @@ export function WritingDock({
   isAnimatingStrokes = false,
 }: WritingDockProps) {
   const reduceMotion = useReducedMotion();
+  const dockSlot = usePracticeDockSlot();
+  const setExclusive = dockSlot?.setExclusive;
 
-  return (
-    <FloatingDock.Root>
-      <FloatingDock.Pill maxWidth="md" className="p-0">
+  // While writing, these controls stand in for the dock's mode switcher.
+  useEffect(() => {
+    if (!setExclusive || !visible) return;
+    setExclusive(true);
+    return () => setExclusive(false);
+  }, [setExclusive, visible]);
+
+  if (!dockSlot?.slot) return null;
+  const isVertical = dockSlot.isVertical;
+
+  return createPortal(
+    <AnimatePresence>
+      {visible && (
+        <motion.div
+          key="writing-controls"
+          initial={{ opacity: 0, y: reduceMotion ? 0 : DOCK_SWAP.distance }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            // Wait for the mode switcher to slide away before rising in.
+            transition: { duration: DOCK_SWAP.enterSeconds, ease: DOCK_SWAP.ease, delay: DOCK_SWAP.exitSeconds },
+          }}
+          exit={{
+            opacity: 0,
+            y: reduceMotion ? 0 : DOCK_SWAP.distance,
+            transition: { duration: DOCK_SWAP.exitSeconds, ease: DOCK_SWAP.ease },
+          }}
+        >
         <nav
           aria-label="Writing mode controls"
-          className="flex w-full items-center justify-between gap-1 p-1.5 px-2.5"
+          className={cn(
+            'flex w-full items-center justify-between gap-1 rounded-feature border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface p-1.5 shadow-ambient-sm',
+            isVertical && 'flex-col',
+          )}
         >
           {/* Previous character (for multi-character words) */}
           <AnimatePresence initial={false}>
             {hasMultipleChars && (
               <motion.div
                 key="prev-char-container"
-                initial={reduceMotion ? { opacity: 0 } : { opacity: 0, width: 0 }}
-                animate={{ opacity: 1, width: 52 }}
-                exit={reduceMotion ? { opacity: 0 } : { opacity: 0, width: 0 }}
+                initial={reduceMotion ? { opacity: 0 } : { opacity: 0, ...(isVertical ? { height: 0 } : { width: 0 }) }}
+                animate={isVertical ? { opacity: 1, height: 48 } : { opacity: 1, width: 52 }}
+                exit={reduceMotion ? { opacity: 0 } : { opacity: 0, ...(isVertical ? { height: 0 } : { width: 0 }) }}
                 transition={
                   reduceMotion
                     ? { duration: 0 }
@@ -50,7 +90,7 @@ export function WritingDock({
                 }
                 className="flex shrink-0 items-center justify-start overflow-hidden"
               >
-                <div className="flex w-12 shrink-0 items-center justify-center pr-1.5">
+                <div className={cn('flex shrink-0 items-center justify-center', isVertical ? 'h-12 w-full pb-1.5' : 'w-12 pr-1.5')}>
                   <WritingDockButton
                     icon="back"
                     label="Previous character"
@@ -105,7 +145,9 @@ export function WritingDock({
             onClick={onExit}
           />
         </nav>
-      </FloatingDock.Pill>
-    </FloatingDock.Root>
+        </motion.div>
+      )}
+    </AnimatePresence>,
+    dockSlot.slot,
   );
 }

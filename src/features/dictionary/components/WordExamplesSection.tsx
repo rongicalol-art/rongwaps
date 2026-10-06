@@ -1,4 +1,4 @@
-import { AppIcon, SectionEyebrow, SmartSentence, Skeleton } from '../../../lib/widgets';
+import { AppIcon, SectionEyebrow, SmartSentence, Skeleton, LevelTag } from '../../../lib/widgets';
 import { audioService } from '../../../services/audioService';
 import { useAppStore } from '../../../store/useAppStore';
 import { numberToToneMarks } from '../../../utils/pinyin';
@@ -43,8 +43,6 @@ export function WordExamplesSection({
           </div>
         ) : (
           examples.map((ex, idx) => {
-            const book = SAMPLE_BOOKS.find((b) => b.id === ex.sourceBookId);
-            const dotClass = book?.accentBg ?? activeBook.accentBg;
             return (
               <div
                 key={`${ex.chinese}-${idx}`}
@@ -77,10 +75,7 @@ export function WordExamplesSection({
                     {ex.english}
                   </p>
                 )}
-                <span className="flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-widest text-ui-muted">
-                  <span>B{ex.sourceBookId} · L{ex.sourceLessonId}</span>
-                  <span className={`h-1.5 w-1.5 rounded-full ${dotClass}`} />
-                </span>
+                <span><LevelTag bookId={ex.sourceBookId} lessonId={ex.sourceLessonId} /></span>
               </div>
             );
           })

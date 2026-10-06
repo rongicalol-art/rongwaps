@@ -57,7 +57,7 @@ export function DragBlankExercise({
     <section aria-labelledby="exercise-heading" className={standalone ? '' : 'mt-10 border-t-2 border-ui-divider pt-8'}>
       <div className="mb-7 flex items-start justify-between gap-4 border-b-2 border-ui-divider pb-6">
         <div>
-          <p className="mb-2 text-[11px] font-black uppercase tracking-[0.06em] text-feedback-warning">
+          <p className="ui-eyebrow mb-2 text-feedback-warning">
             Build it
           </p>
           <h2 id="exercise-heading" className="text-2xl font-black leading-tight text-ui-ink-strong sm:text-3xl">
@@ -182,7 +182,7 @@ export function DragBlankExercise({
             </div>
           )}
         </div>
-        {page.exerciseNote && <p className="text-center text-[11px] font-bold text-ui-muted-strong">{page.exerciseNote}</p>}
+        {page.exerciseNote && <p className="text-center text-xs font-bold text-ui-muted-strong">{page.exerciseNote}</p>}
       </div>
     </section>
   );

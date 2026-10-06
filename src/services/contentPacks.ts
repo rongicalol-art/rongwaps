@@ -4,7 +4,6 @@ import type { DBDictionaryRow, DBCharacterBreakdown, DBVocabularyRow } from '../
 import type { Flashcard } from '../data/flashcards';
 import type { CourseExampleRecord, ReadingRecord, InteractiveGrammarPart, DialogueAlignment } from '../types/models';
 import { getDictionaryShard } from '../utils/dictionaryShard';
-import { fetchStaticJson, removeStaticJsonCache } from './staticContentService';
 import { createPackLoader, type PackLoader } from './packLoader';
 import {
   type ContentPackKind,
@@ -12,8 +11,10 @@ import {
   getBreakdownShard,
   recordsToExampleCards,
   resolveMnemonicFromMap,
-  type SoundHookEntry,
+  type LevelIndex,
 } from '../utils/packValidators';
+import type { PartsIndex } from '../utils/parts';
+import type { ReadingsIndex } from '../utils/pronunciation';
 import { PACK_CONFIGS } from './contentPackConfigs';
 
 export * from '../utils/packValidators';
@@ -116,39 +117,6 @@ export async function fetchBreakdownsFromPacks(characters: string[]): Promise<Re
   return results;
 }
 
-let usedAsCache: Record<string, string[]> | null = null;
-let usedAsPromise: Promise<Record<string, string[]> | null> | null = null;
-
-export async function fetchUsedAsFromPacks(): Promise<Record<string, string[]> | null> {
-  if (usedAsCache) return usedAsCache;
-  if (usedAsPromise) return usedAsPromise;
-
-  usedAsPromise = (async () => {
-    try {
-      const manifest = await getPackManifest('breakdowns');
-      const persistentKey = `breakdowns:${manifest.version}:used-as`;
-      const pack = await fetchStaticJson<{ schemaVersion: number; entries: Record<string, string[]> }>(
-        '/data/breakdowns/used-as.json',
-        'breakdown used-as index',
-        { persistentKey },
-      );
-      if (pack.schemaVersion !== 1 || !pack.entries || typeof pack.entries !== 'object') {
-        await removeStaticJsonCache(persistentKey);
-        return null;
-      }
-      usedAsCache = pack.entries;
-      return pack.entries;
-    } catch (error) {
-      debugLogger.warn('Cache', 'Static used-as index unavailable; using Supabase.', error);
-      return null;
-    } finally {
-      usedAsPromise = null;
-    }
-  })();
-
-  return usedAsPromise;
-}
-
 export async function fetchDictionaryRowsFromPacks(words: string[]): Promise<Map<string, DBDictionaryRow[]>> {
   const results = new Map<string, DBDictionaryRow[]>();
   try {
@@ -225,70 +193,40 @@ export function resetMemoryHookPackCache(): void {
   hookMapPromise = null;
 }
 
-let soundFamiliesMapPromise: Promise<Map<string, { glyph: string; reading: string; family: Array<{ character: string; pinyin: string; reading: string }> }>> | null = null;
+let levelIndexPromise: Promise<LevelIndex | null> | null = null;
 
-export async function lookupSoundFamily(character: string): Promise<{ glyph: string; reading: string; family: Array<{ character: string; pinyin: string; reading: string }> } | null> {
-  try {
-    soundFamiliesMapPromise ??= (async () => {
-      const parts = await loadAllParts<Map<string, { glyph: string; reading: string; family: Array<{ character: string; pinyin: string; reading: string }> }>>('sound-families');
-      const map = new Map<string, { glyph: string; reading: string; family: Array<{ character: string; pinyin: string; reading: string }> }>();
-      for (const part of parts) {
-        for (const [key, value] of part) map.set(key, value);
-      }
-      return map;
-    })();
-    const map = await soundFamiliesMapPromise;
-    return map.get(character) ?? null;
-  } catch (error) {
-    debugLogger.warn('Cache', 'Sound families pack unavailable.', error);
-    soundFamiliesMapPromise = null;
+/** TOCFL character/word levels (TBCL scale, HSK gap fill); null when unavailable. */
+export async function fetchLevelIndex(): Promise<LevelIndex | null> {
+  levelIndexPromise ??= loadPack<LevelIndex>('levels', 0).catch((error) => {
+    debugLogger.warn('Cache', 'Levels pack unavailable.', error);
+    levelIndexPromise = null;
     return null;
-  }
+  });
+  return levelIndexPromise;
 }
 
-export function resetSoundFamilyPackCache(): void {
-  soundFamiliesMapPromise = null;
-}
+let partsIndexPromise: Promise<PartsIndex | null> | null = null;
 
-let soundMapPromise: Promise<Map<string, SoundHookEntry>> | null = null;
-
-export async function lookupSoundHook(character: string): Promise<SoundHookEntry | null> {
-  try {
-    soundMapPromise ??= (async () => {
-      const parts = await loadAllParts<Map<string, SoundHookEntry>>('sound-hooks');
-      const map = new Map<string, SoundHookEntry>();
-      for (const part of parts) {
-        for (const [key, value] of part) map.set(key, value);
-      }
-      return map;
-    })();
-    const map = await soundMapPromise;
-    const entry = map.get(character);
-    if (entry) return entry;
-
-    // Fallback to global sound-families for general dictionary characters
-    const familyInfo = await lookupSoundFamily(character);
-    if (!familyInfo) return null;
-
-    return {
-      id: character,
-      character,
-      meaning: '',
-      pinyin: '',
-      phonetic: { glyph: familyInfo.glyph, reading: familyInfo.reading, shift: familyInfo.reading },
-      family: familyInfo.family,
-      needsHuman: false,
-    };
-  } catch (error) {
-    debugLogger.warn('Cache', 'Sound hook pack unavailable.', error);
-    soundMapPromise = null;
+/** Parts index (built-with relations + sound clues); loaded once, null when unavailable. */
+export async function fetchPartsIndex(): Promise<PartsIndex | null> {
+  partsIndexPromise ??= loadPack<PartsIndex>('parts', 0).catch((error) => {
+    debugLogger.warn('Cache', 'Parts index unavailable.', error);
+    partsIndexPromise = null;
     return null;
-  }
+  });
+  return partsIndexPromise;
 }
 
-export function resetSoundHookPackCache(): void {
-  soundMapPromise = null;
-  soundFamiliesMapPromise = null;
+let pronunciationPromise: Promise<ReadingsIndex | null> | null = null;
+
+/** Character readings, Taiwan-first; null when unavailable (screens fall back to breakdown pinyin). */
+export async function fetchPronunciationIndex(): Promise<ReadingsIndex | null> {
+  pronunciationPromise ??= loadPack<ReadingsIndex>('pronunciation', 0).catch((error) => {
+    debugLogger.warn('Cache', 'Pronunciation pack unavailable.', error);
+    pronunciationPromise = null;
+    return null;
+  });
+  return pronunciationPromise;
 }
 
 export async function fetchReadingsPack(bookId: number): Promise<ReadingRecord[] | null> {

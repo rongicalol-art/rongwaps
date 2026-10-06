@@ -3,8 +3,8 @@ import type { GrammarPatternRow, InteractiveGrammarPage } from '../../../types/m
 import { getPatternRowGroups, getPatternSectionLayout } from '../../../utils/grammarPatternLayout';
 import { isHanziChar } from '../../../utils/hanzi';
 import { cn } from '../../../utils/cn';
-import { InteractiveGrammarSentence } from './InteractiveGrammarSentence';
 import { SAMPLE_BOOKS } from '../../../data/books';
+import { InteractiveGrammarSentence } from './InteractiveGrammarSentence';
 
 interface GrammarPatternSectionProps {
   page: InteractiveGrammarPage;
@@ -17,6 +17,11 @@ interface GrammarPatternSectionProps {
   patternRows?: GrammarPatternRow[];
   patternAccentColumn?: number;
 }
+
+// Eased stops (not a straight ramp) so the shadow dissolves smoothly instead of ending in a hard edge.
+const EDGE_SHADOW_STOPS = [
+  [14, 0], [11, 12], [7.5, 28], [4, 48], [1.8, 68], [0.5, 86], [0, 100],
+].map(([alpha, at]) => `color-mix(in srgb, var(--color-ui-ink-strong) ${alpha}%, transparent) ${at}%`).join(', ');
 
 /**
  * A header title can mix English and Chinese (`Double 了`, `比 + B`). Chinese
@@ -60,9 +65,9 @@ export function GrammarPatternSection({
   patternColumnDetails,
   patternRows,
 }: GrammarPatternSectionProps) {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const headRef = useRef<HTMLTableSectionElement>(null);
+  const [edges, setEdges] = useState({ left: false, right: false, top: 0 });
   const activeColumns = patternColumns ?? page.patternColumns;
   const activeDetails = patternColumnDetails ?? page.patternColumnDetails;
   const activeRows = patternRows ?? page.patternRows;
@@ -75,59 +80,63 @@ export function GrammarPatternSection({
     sideColumnSizing: 'proportional',
   });
 
-  const updateScrollIndicators = useCallback(() => {
-    const el = scrollContainerRef.current;
+  // Soft side shadows hint that the table scrolls; they sit under the header and only
+  // show on a side that still has content beyond it.
+  const updateEdges = useCallback(() => {
+    const el = scrollRef.current;
     if (!el) return;
-    const { scrollLeft, scrollWidth, clientWidth } = el;
-    const maxScroll = scrollWidth - clientWidth;
-    setCanScrollLeft(scrollLeft > 4);
-    setCanScrollRight(maxScroll - scrollLeft > 4);
+    setEdges({
+      left: el.scrollLeft > 2,
+      right: el.scrollWidth - el.clientWidth - el.scrollLeft > 2,
+      top: headRef.current?.offsetHeight ?? 0,
+    });
   }, []);
 
   useEffect(() => {
-    updateScrollIndicators();
-    const el = scrollContainerRef.current;
+    updateEdges();
+    const el = scrollRef.current;
     if (!el) return;
-    const resizeObserver = new ResizeObserver(updateScrollIndicators);
-    resizeObserver.observe(el);
-    return () => resizeObserver.disconnect();
-  }, [updateScrollIndicators, page.id, activeRows, activeColumns]);
+    const observer = new ResizeObserver(updateEdges);
+    observer.observe(el);
+    if (el.firstElementChild) observer.observe(el.firstElementChild);
+    return () => observer.disconnect();
+  }, [updateEdges, page.id, activeRows, activeColumns, showPinyin, showTranslation]);
 
   if (activeRows.length === 0) return null;
 
-  const book = SAMPLE_BOOKS.find((b) => b.id === page.bookId) || SAMPLE_BOOKS[0];
   const columnCount = layout.sourceColumns.length;
+  const book = SAMPLE_BOOKS.find((b) => b.id === page.bookId) || SAMPLE_BOOKS[0];
+  // The frame colour also fills the container behind the white body, so antialiased
+  // corners blend into the border instead of showing a white fringe.
+  const frameStyle = { borderColor: book.theme.primaryEdge, backgroundColor: book.theme.primaryEdge };
+  // Same colour as the frame so the header reads as part of the border.
+  const headerStyle = { backgroundColor: book.theme.primaryEdge, borderColor: book.theme.primaryEdge };
   return (
     <section aria-label="Sentence pattern">
+      {/* One table at every width; on narrow screens it scrolls sideways like a native table. */}
       <div
+        style={frameStyle}
         className={cn(
-          'relative w-full overflow-hidden rounded-feature border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface shadow-xs',
+          'relative w-full overflow-hidden rounded-feature border-2 border-b-[length:var(--depth-lg)]',
         )}
       >
-        {/* Left scroll fade indicator */}
-        <div
-          aria-hidden="true"
-          className={cn(
-            'pointer-events-none absolute inset-y-0 left-0 z-10 w-6 bg-gradient-to-r from-ui-surface to-transparent transition-opacity duration-200',
-            canScrollLeft ? 'opacity-100' : 'opacity-0',
-          )}
-        />
-
-        {/* Right scroll fade indicator */}
-        <div
-          aria-hidden="true"
-          className={cn(
-            'pointer-events-none absolute inset-y-0 right-0 z-10 w-6 bg-gradient-to-l from-ui-surface to-transparent transition-opacity duration-200',
-            canScrollRight ? 'opacity-100' : 'opacity-0',
-          )}
-        />
-
         {/* Scrollable table container */}
-        <div
-          ref={scrollContainerRef}
-          onScroll={updateScrollIndicators}
-          className="overflow-x-auto scrollbar-none"
-        >
+        {(['left', 'right'] as const).map((side) => (
+          <div
+            key={side}
+            aria-hidden="true"
+            style={{
+              top: edges.top,
+              backgroundImage: `linear-gradient(${side === 'left' ? 'to right' : 'to left'}, ${EDGE_SHADOW_STOPS})`,
+            }}
+            className={cn(
+              'pointer-events-none absolute bottom-0 z-10 w-8 transition-opacity duration-200',
+              side === 'left' ? 'left-0' : 'right-0',
+              edges[side] ? 'opacity-100' : 'opacity-0',
+            )}
+          />
+        ))}
+        <div ref={scrollRef} onScroll={updateEdges} className="overflow-x-auto scrollbar-none">
           <table className="w-full min-w-full border-collapse table-auto text-left">
             <colgroup>
               {layout.sourceColumns.map((sourceIndex, colIndex) => {
@@ -140,11 +149,8 @@ export function GrammarPatternSection({
                 );
               })}
             </colgroup>
-            <thead>
-              <tr
-                className="border-b-2 border-ui-border bg-brand-primary-soft/40"
-                style={{ backgroundColor: book.theme.primarySoft }}
-              >
+            <thead ref={headRef}>
+              <tr style={headerStyle} className="border-b-2">
                 {layout.sourceColumns.map((sourceIndex) => {
                   const columnTitle = activeColumns[sourceIndex] ?? '';
                   const detail = activeDetails?.[sourceIndex];
@@ -153,10 +159,10 @@ export function GrammarPatternSection({
                     <th
                       key={`th-${sourceIndex}`}
                       scope="col"
-                      className="px-5 py-3.5 text-left font-black sm:px-6 sm:py-4"
+                      className="px-5 py-3 text-left font-black sm:px-6"
                     >
                       <span
-                        className="block whitespace-nowrap text-sm font-black leading-tight tracking-wide text-ui-ink-strong sm:text-base"
+                        className="ui-eyebrow block whitespace-nowrap text-white [&_.font-chinese]:text-base"
                         title={detail ? `${columnTitle} · ${detail}` : columnTitle}
                       >
                         <HeaderTitle text={columnTitle} />
@@ -166,16 +172,13 @@ export function GrammarPatternSection({
                 })}
               </tr>
             </thead>
-            <tbody>
+            <tbody className="bg-ui-surface">
               {activeRows.map((row, rowIndex) => {
                 const groups = getPatternRowGroups(row);
                 return (
                   <Fragment key={row.id}>
                     <tr
-                      className={cn(
-                        rowIndex > 0 && 'border-t-2 border-ui-divider',
-                        'transition-colors hover:bg-ui-hover/30',
-                      )}
+                      className={cn(rowIndex > 0 && 'border-t-2 border-ui-divider')}
                     >
                       {layout.sourceColumns.map((sourceIndex) => {
                         const group = groups[sourceIndex] ?? [];
@@ -184,7 +187,10 @@ export function GrammarPatternSection({
                           <td
                             key={`${row.id}-group-${sourceIndex}`}
                             aria-label={isEmpty ? 'Empty sentence slot' : undefined}
-                            className="px-5 py-3.5 align-middle sm:px-6 sm:py-4"
+                            className={cn(
+                              'px-5 pt-3 align-middle sm:px-6',
+                              showTranslation && row.english ? 'pb-1' : 'pb-3',
+                            )}
                           >
                             {isEmpty ? (
                               <span className="text-xs font-bold text-ui-muted/30 select-none" aria-hidden="true">—</span>
@@ -196,6 +202,7 @@ export function GrammarPatternSection({
                                 align="start"
                                 tone="default"
                                 size="lg"
+                                focusTerms={page.focusTerms}
                                 className="flex-nowrap whitespace-nowrap gap-x-0.5 gap-y-2"
                                 onOpenWord={onOpenWord}
                               />
@@ -210,12 +217,10 @@ export function GrammarPatternSection({
                       <tr className="bg-transparent">
                         <td
                           colSpan={columnCount}
-                          className="px-5 pb-3.5 -mt-1 pt-0 sm:px-6 sm:pb-4"
+                          className="px-5 pb-3 pt-0 sm:px-6"
                         >
                           <p className="sr-only">Meaning</p>
-                          <p className="ui-translation text-xs font-semibold text-ui-muted sm:text-sm pl-0.5">
-                            {row.english}
-                          </p>
+                          <p className="ui-translation max-w-md text-[15px] sm:text-base">{row.english}</p>
                         </td>
                       </tr>
                     )}

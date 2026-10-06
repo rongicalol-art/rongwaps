@@ -8,7 +8,6 @@ import {
   createSingleFlightSaveCoordinator,
   getNextAutoSaveDelay,
   getNextCloudSyncBackoff,
-  getSessionProgressDelta,
 } from '../../src/utils/cloudSyncQueue';
 import { alignRubyPinyin, splitPinyinWordToSyllables } from '../../src/utils/rubyPinyin';
 import { calculateNextReview, type SRSData } from '../../src/utils/srsEngine';
@@ -106,15 +105,11 @@ test('Tier 4: Scenario 2 - Multi-Card Flashcard Review, SRS Progression & Deboun
   assert.ok(cardB.interval > 1);
   assert.equal(cardB.repetition, 2);
 
-  // 4. Validate session delta
-  const delta = getSessionProgressDelta(session, { cardsReviewed: 0, cardsLearned: 0 });
-  assert.deepEqual(delta, { cardsReviewed: 2, cardsLearned: 1 });
-
-  // 5. Check auto-save debounce delay
+  // 4. Check auto-save debounce delay
   const delay = getNextAutoSaveDelay({ dirtySinceMs: Date.now() - 1000, nowMs: Date.now() });
   assert.equal(delay, 10000, 'Debounce should be 10s for fresh updates');
 
-  // 6. Save coordinator writes snapshot
+  // 5. Save coordinator writes snapshot
   let saved = false;
   const coordinator = createSingleFlightSaveCoordinator(
     () => ({ fingerprint: 'snap-1', value: { cards: { [cardA.cardId]: cardA, [cardB.cardId]: cardB }, session } }),

@@ -24,7 +24,7 @@ const ROOT = resolve(import.meta.dirname, '../..');
 const OUTPUT_DIR = resolve(ROOT, 'output/memory-hooks');
 const REVIEW_DIR = resolve(OUTPUT_DIR, 'review');
 const CACHE_PATH = resolve(REVIEW_DIR, 'sound-choice-cache-v1.json');
-const LEGACY_PACK_PATH = resolve(ROOT, 'public/data/sound-hooks/book-1.json');
+const PARTS_PACK_PATH = resolve(ROOT, 'public/data/relations/parts.json');
 
 const CONFIDENCE_FLOOR = 0.6;
 
@@ -116,12 +116,17 @@ function hashKey(record: V3Record, readingsByGlyph: Map<string, string[]>): stri
   return createHash('sha1').update(JSON.stringify({ pinyin: record.pinyin, components })).digest('hex');
 }
 
-function loadLegacy(): Map<string, { glyph: string; reading: string }> {
+/**
+ * Stability anchor: the phonetic part the committed parts index already
+ * records for a character (public/data/relations/parts.json `phonetic`), with
+ * its reading taken from the component ledger.
+ */
+function loadLegacy(ledgerByGlyph: Map<string, LedgerEntry>): Map<string, { glyph: string; reading: string }> {
   const legacy = new Map<string, { glyph: string; reading: string }>();
-  if (!existsSync(LEGACY_PACK_PATH)) return legacy;
-  const pack = readJson<{ items: Array<{ character: string; phonetic: { glyph: string; reading: string } | null }> }>(LEGACY_PACK_PATH);
-  for (const item of pack.items) {
-    if (item.phonetic) legacy.set(item.character, { glyph: item.phonetic.glyph, reading: item.phonetic.reading });
+  if (!existsSync(PARTS_PACK_PATH)) return legacy;
+  const pack = readJson<{ phonetic: Record<string, string> }>(PARTS_PACK_PATH);
+  for (const [character, glyph] of Object.entries(pack.phonetic)) {
+    legacy.set(character, { glyph, reading: componentReadings(ledgerByGlyph.get(glyph))[0] ?? '' });
   }
   return legacy;
 }
@@ -215,7 +220,7 @@ async function main() {
   const records = readJson<{ records: V3Record[] }>(resolve(OUTPUT_DIR, 'book-1-hooks-v3.json')).records;
   const ledger = readJson<{ entries: LedgerEntry[] }>(resolve(OUTPUT_DIR, 'component-ledger-v1.json')).entries;
   const ledgerByGlyph = new Map(ledger.map((entry) => [entry.glyph, entry]));
-  const legacy = loadLegacy();
+  const legacy = loadLegacy(ledgerByGlyph);
   const cache: CacheFile = existsSync(CACHE_PATH)
     ? readJson<CacheFile>(CACHE_PATH)
     : { schemaVersion: 1, model: options.model, entries: {} };

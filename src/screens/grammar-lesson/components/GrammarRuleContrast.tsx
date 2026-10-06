@@ -47,7 +47,7 @@ export function GrammarRuleContrast({
               )}
             >
               <p className={cn(
-                'flex items-center gap-2 text-xs font-black uppercase tracking-[0.04em]',
+                'ui-eyebrow flex items-center gap-2',
                 isCorrect ? 'text-feedback-success' : 'text-feedback-danger',
               )}>
                 <AppIcon name={isCorrect ? 'check' : 'error'} size={18} />

@@ -1,9 +1,9 @@
-import { memo } from 'react';
-import { SAMPLE_BOOKS } from '../../../data/books';
-import { PosBadge } from '../../../lib/widgets';
+import { memo, useMemo } from 'react';
+import { LevelTag, PosBadge } from '../../../lib/widgets';
+import { useLevels } from '../../../hooks/useLevels';
+import { resolveLevel } from '../../../utils/levels';
 import { FavoriteButton } from '../../../features/library';
 import type { DictionaryListEntry } from '../../../types/models';
-import { cn } from '../../../utils/cn';
 
 interface DictionaryCardProps {
   entry: DictionaryListEntry;
@@ -22,7 +22,8 @@ export const DictionaryCard = memo(function DictionaryCard({
   entry,
   onOpen,
 }: DictionaryCardProps) {
-  const book = entry.bookId ? SAMPLE_BOOKS.find((item) => item.id === entry.bookId) : null;
+  const levels = useLevels();
+  const level = useMemo(() => resolveLevel(entry.traditional, levels), [entry.traditional, levels]);
 
   return (
     <div
@@ -43,19 +44,19 @@ export const DictionaryCard = memo(function DictionaryCard({
             <span className="truncate text-xs font-extrabold text-ui-muted sm:text-sm">
               {entry.pinyin_accented || '\u00A0'}
             </span>
-            {entry.pos && <PosBadge pos={entry.pos} />}
-            {book && (
-              <span className="flex shrink-0 items-center gap-1.5 rounded-xs bg-ui-canvas px-2 py-0.5 text-xs font-bold text-ui-muted">
-                {book.label}{entry.lessonId ? ` · L${entry.lessonId}` : ''}
-                <span className={cn('h-1.5 w-1.5 shrink-0 rounded-full', book.accentBg)} />
-              </span>
-            )}
+            <LevelTag bookId={entry.bookId ?? undefined} lessonId={entry.lessonId ?? undefined} level={level} />
           </span>
           <span className="line-clamp-1 text-sm font-bold leading-snug text-ui-ink">
             {formatDefinitions(entry.definitions) || '\u00A0'}
           </span>
         </span>
       </button>
+
+      {entry.pos && (
+        <span className="shrink-0">
+          <PosBadge pos={entry.pos} />
+        </span>
+      )}
 
       <FavoriteButton
         word={entry.traditional}

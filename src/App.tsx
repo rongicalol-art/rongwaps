@@ -16,7 +16,6 @@ export default function App() {
         shell={{
           activeTab: nav.activeTab,
           activeActivity: overlays.isOverlayActive ? null : activity.activeActivity,
-          practiceCanvasOpen: Boolean(overlays.dictionaryWord),
           activeBook: activity.activeBook,
           isNavOpen: nav.isNavOpen,
           isCollapsed: nav.isCollapsed,

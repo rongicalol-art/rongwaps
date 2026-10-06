@@ -1,7 +1,7 @@
 import { debugLogger } from '../utils/debugLogger';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Flashcard } from '../data/flashcards';
-import { getCourseVocabLookupMap } from '../services/vocabularyService';
+import { getCourseVocabLookupMap } from '../services/courseVocabLookup';
 import { flashcardService } from '../services/flashcardService';
 import { useAppStore } from '../store/useAppStore';
 import { useAuth } from './useAuth';

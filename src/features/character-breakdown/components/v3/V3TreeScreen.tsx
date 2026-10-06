@@ -1,13 +1,14 @@
 import type { DBCharacterBreakdown } from '../../../../types/database';
-import type { SoundHookEntry } from '../../../../services/contentPacks';
-import { AppIcon, WorkspaceDetailShell } from '../../../../lib/widgets';
+import type { ResolvedSoundClue } from '../../hooks/useSoundClue';
+import { AppIcon, LevelTag, WorkspaceDetailShell } from '../../../../lib/widgets';
+import { useLevel } from '../../../../hooks/useLevels';
 import { numberToToneMarks } from '../../../../utils/pinyin';
 import { V3RuntimeTree } from './V3RuntimeTree';
 
 export function V3TreeScreen({
   character,
   data,
-  sound,
+  soundClue,
   accentHex,
   edgeHex,
   onBack,
@@ -15,7 +16,7 @@ export function V3TreeScreen({
 }: {
   character: string;
   data: DBCharacterBreakdown | null;
-  sound?: SoundHookEntry | null;
+  soundClue?: ResolvedSoundClue | null;
   accentHex?: string;
   edgeHex?: string;
   onBack: () => void;
@@ -23,6 +24,7 @@ export function V3TreeScreen({
 }) {
   const pinyin = data?.pinyin?.[0]?.trim();
   const meaning = data?.definition?.trim();
+  const level = useLevel(character);
 
   return (
     <WorkspaceDetailShell
@@ -41,6 +43,7 @@ export function V3TreeScreen({
             <span className="min-w-0 text-left">
               {pinyin && <span className="block text-sm font-black text-brand-primary">{numberToToneMarks(pinyin)}</span>}
               {meaning && <span className="block max-w-[18rem] truncate text-xs font-bold text-ui-muted-strong">{meaning}</span>}
+              {level && <span className="mt-1.5 block"><LevelTag variant="chip" level={level} /></span>}
             </span>
           )}
         </header>
@@ -55,7 +58,7 @@ export function V3TreeScreen({
             </div>
             <p className="text-[11px] font-bold text-ui-muted-strong">Use + to go deeper</p>
           </div>
-          <V3RuntimeTree character={character} onGlyphClick={onGlyphClick} mode="tree" showHeading={false} soundGlyph={sound?.phonetic?.glyph} soundShift={sound?.phonetic?.shift} accentHex={accentHex} edgeHex={edgeHex} />
+          <V3RuntimeTree character={character} onGlyphClick={onGlyphClick} mode="tree" showHeading={false} soundGlyph={soundClue?.treeGlyph} soundShift={soundClue?.treeShift} accentHex={accentHex} edgeHex={edgeHex} />
         </section>
       </div>
     </WorkspaceDetailShell>

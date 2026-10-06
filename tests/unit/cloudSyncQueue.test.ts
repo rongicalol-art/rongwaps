@@ -5,12 +5,8 @@ import {
   createSingleFlightSaveCoordinator,
   getNextAutoSaveDelay,
   getNextCloudSyncBackoff,
-  getSessionProgressDelta,
   isSameFolderList,
-  isSessionProgressReset,
   mergePulledSrsData,
-  planFolderSync,
-  pruneAcknowledgedTombstones,
 } from '../../src/utils/cloudSyncQueue';
 import type { SRSData } from '../../src/utils/srsEngine';
 
@@ -85,61 +81,6 @@ test('failed writes reject and remain eligible for retry', async () => {
   await assert.rejects(coordinator.request(), /offline/);
   await coordinator.request();
   assert.equal(attempts, 2);
-});
-
-test('session deltas include reviews and learned cards exactly once', () => {
-  assert.deepEqual(
-    getSessionProgressDelta(
-      { cardsReviewed: 4, cardsLearned: 2 },
-      { cardsReviewed: 1, cardsLearned: 1 },
-    ),
-    { cardsReviewed: 3, cardsLearned: 1 },
-  );
-
-  assert.deepEqual(
-    getSessionProgressDelta(
-      { cardsReviewed: 1, cardsLearned: 1 },
-      { cardsReviewed: 4, cardsLearned: 2 },
-    ),
-    { cardsReviewed: 1, cardsLearned: 1 },
-  );
-});
-
-test('a counter reset re-baselines so post-reset reviews count fully', () => {
-  // Manual progress reset cleared the counters, then 10 reviews happened:
-  // the stale synced baseline (50) must not shrink the delta to 10.
-  assert.deepEqual(
-    getSessionProgressDelta(
-      { cardsReviewed: 10, cardsLearned: 4 },
-      { cardsReviewed: 50, cardsLearned: 20 },
-    ),
-    { cardsReviewed: 10, cardsLearned: 4 },
-  );
-
-  // Only one counter regressed (the other still ahead of its baseline):
-  // the reset re-baselines both counters.
-  assert.deepEqual(
-    getSessionProgressDelta(
-      { cardsReviewed: 10, cardsLearned: 0 },
-      { cardsReviewed: 4, cardsLearned: 2 },
-    ),
-    { cardsReviewed: 10, cardsLearned: 0 },
-  );
-
-  assert.equal(
-    isSessionProgressReset(
-      { cardsReviewed: 0, cardsLearned: 0 },
-      { cardsReviewed: 50, cardsLearned: 20 },
-    ),
-    true,
-  );
-  assert.equal(
-    isSessionProgressReset(
-      { cardsReviewed: 60, cardsLearned: 20 },
-      { cardsReviewed: 50, cardsLearned: 20 },
-    ),
-    false,
-  );
 });
 
 test('backoff grows and rate limits start with a longer delay', () => {
@@ -275,42 +216,6 @@ test('unchanged-skip checks never skip after a null baseline or a real change', 
     false,
   );
   assert.equal(isSameFolderList([], [folder]), false);
-});
-
-test('folder sync plan never upserts tombstoned folders and deletes them remotely', () => {
-  const local = [
-    { id: 'f1', name: 'Verbs', color: '#fff' },
-    { id: 'f2', name: 'Food', color: '#000' },
-  ];
-  // f1 was deleted locally (tombstoned) but a stale remote row still exists;
-  // f3 exists only on the server (deleted from the local list).
-  const plan = planFolderSync(local, ['f1'], ['f1', 'f3']);
-
-  assert.deepEqual(plan.toUpsert, [local[1]]);
-  assert.deepEqual(plan.toDelete, ['f1', 'f3']);
-});
-
-test('folder sync plan keeps remote ids that still exist locally', () => {
-  const local = [{ id: 'f1', name: 'Verbs', color: '#fff' }];
-  const plan = planFolderSync(local, [], ['f1']);
-
-  assert.deepEqual(plan.toDelete, []);
-  assert.deepEqual(plan.toUpsert, local);
-});
-
-test('folder sync plan uploads new local folders and is empty for a clean sync', () => {
-  const local = [{ id: 'f1', name: 'Verbs', color: '#fff' }];
-  assert.deepEqual(planFolderSync(local, [], []).toUpsert, local);
-
-  const clean = planFolderSync(local, [], ['f1']);
-  assert.deepEqual(clean.toUpsert, local);
-  assert.deepEqual(clean.toDelete, []);
-});
-
-test('tombstone pruning keeps only ids still present on the server', () => {
-  assert.deepEqual(pruneAcknowledgedTombstones(['f1', 'f2', 'f3'], ['f1']), ['f1']);
-  assert.deepEqual(pruneAcknowledgedTombstones(['f1'], []), []);
-  assert.deepEqual(pruneAcknowledgedTombstones([], ['f1']), []);
 });
 
 test('learned delta appends only new ids, preserving current order', () => {

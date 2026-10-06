@@ -1,5 +1,3 @@
-import type { RefObject } from 'react';
-import { ActionButton, AppIcon } from '../../../lib/widgets';
 import type { InteractiveGrammarPage } from '../../../types/models';
 import { getGrammarTeachingTokens } from '../../../utils/grammarTeachingTokens';
 import { cn } from '../../../utils/cn';
@@ -14,8 +12,6 @@ interface GrammarStudyPageProps {
   showPinyin: boolean;
   showTranslation: boolean;
   onOpenWord: (word: string) => void;
-  onOpenBookPage?: () => void;
-  bookPageButtonRef?: RefObject<HTMLButtonElement | null>;
   hideHeader?: boolean;
 }
 
@@ -25,8 +21,6 @@ export function GrammarStudyPage({
   showPinyin,
   showTranslation,
   onOpenWord,
-  onOpenBookPage,
-  bookPageButtonRef,
   hideHeader = false,
 }: GrammarStudyPageProps) {
   const teachingTokens = getGrammarTeachingTokens(page);
@@ -54,25 +48,6 @@ export function GrammarStudyPage({
               characterPreference={characterPreference}
               onOpenWord={onOpenWord}
             />
-            {(page.bookPageAvailable ?? true) && onOpenBookPage && (
-              <ActionButton
-                ref={bookPageButtonRef}
-                variant="quiet"
-                size="sm"
-                className="ml-1.5 -my-2 inline-flex min-h-0 items-center gap-1 whitespace-nowrap rounded-compact px-1.5 py-2 align-middle text-[13px] leading-none text-ui-muted-strong hover:text-brand-primary sm:text-sm"
-                onClick={onOpenBookPage}
-                aria-label={
-                  page.printedPages.length === 1
-                    ? `View book page ${page.printedPages[0]}`
-                    : `View book pages ${page.printedPages[0]}–${page.printedPages.at(-1)}`
-                }
-              >
-                <AppIcon name="dictionary" size={14} />
-                {page.printedPages.length === 1
-                  ? `Page ${page.printedPages[0]}`
-                  : `Pages ${page.printedPages[0]}–${page.printedPages.at(-1)}`}
-              </ActionButton>
-            )}
           </p>
         </header>
       )}
@@ -94,7 +69,7 @@ export function GrammarStudyPage({
                 key={section.id}
                 className={cn(
                   'space-y-8 sm:space-y-10',
-                  idx > 0 && 'border-t-2 border-ui-border pt-10 sm:pt-12'
+                  idx > 0 && 'border-t-2 border-ui-divider pt-8 sm:pt-10'
                 )}
                 aria-labelledby={`subsection-heading-${section.id}`}
               >

@@ -17,7 +17,10 @@ export function splitPinyinWordToSyllables(word: string): string[] {
     return [...splitPinyinWordToSyllables(withoutR), 'r'];
   }
 
-  function solve(sub: string): string[] | null {
+  // `strict`: a non-initial syllable may not start with a vowel — standard
+  // orthography writes an apostrophe there (xī'ān), so "dàngāo" is dàn-gāo
+  // and "kěnéng" is kě-néng. Retried loosely for text that drops apostrophes.
+  function solve(sub: string, strict: boolean): string[] | null {
     if (!sub) return [];
 
     for (let len = Math.min(sub.length, 7); len >= 1; len--) {
@@ -27,16 +30,9 @@ export function splitPinyinWordToSyllables(word: string): string[] {
         const rest = sub.slice(len);
         if (!rest) return [candidate];
 
-        // Standard orthography rule: if candidate ends in 'n' (not 'ng') and rest starts with a/o/e without apostrophe,
-        // the 'n' is the initial of the next syllable (e.g. rè-nao, not rèn-ao).
-        if (candidate.toLowerCase().endsWith('n') && !candidate.toLowerCase().endsWith('ng')) {
-          const nextChar = rest[0]?.toLowerCase();
-          if (nextChar === 'a' || nextChar === 'o' || nextChar === 'e') {
-            continue;
-          }
-        }
+        if (strict && /^[aeiouüv]/.test(stripTones(rest[0]).toLowerCase())) continue;
 
-        const restSolution = solve(rest);
+        const restSolution = solve(rest, strict);
         if (restSolution !== null) {
           return [candidate, ...restSolution];
         }
@@ -45,7 +41,7 @@ export function splitPinyinWordToSyllables(word: string): string[] {
     return null;
   }
 
-  const res = solve(word);
+  const res = solve(word, true) ?? solve(word, false);
   return res ?? [word];
 }
 

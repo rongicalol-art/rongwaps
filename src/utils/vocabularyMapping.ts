@@ -30,15 +30,18 @@ export interface VocabularySourceRow extends Partial<Omit<DBVocabularyRow, 'exam
 
 export function parseExamples(value: unknown): Flashcard['examples'] {
   if (typeof value === 'string') {
+    const text = value.trim();
+    if (!text) return [];
+    const plain = [{ chinese: value, pinyin: '', english: '' }];
+    // Packs mix serialized arrays with plain sentences; only "[…" needs parsing.
+    if (!text.startsWith('[')) return plain;
     try {
-      const parsed: unknown = JSON.parse(value);
-      return Array.isArray(parsed)
-        ? parseExamples(parsed)
-        : [{ chinese: value, pinyin: '', english: '' }];
+      const parsed: unknown = JSON.parse(text);
+      return parseExamples(parsed);
     } catch (error) {
-      // Intentional fallback: plain text example string not formatted as JSON array
+      // Intentional fallback: starts with "[" but is not a valid JSON array
       debugLogger.warn('App', 'Vocabulary example unparseable as JSON; treated as plain text', error);
-      return value.trim() ? [{ chinese: value, pinyin: '', english: '' }] : [];
+      return plain;
     }
   }
   if (!Array.isArray(value)) return [];

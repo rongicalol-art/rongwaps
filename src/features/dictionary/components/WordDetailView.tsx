@@ -1,7 +1,8 @@
 import { debugLogger } from '../../../utils/debugLogger';
 import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { DetailShell, ScreenHeader } from '../../../lib/widgets';
+import { DetailShell, LevelTag, ScreenHeader } from '../../../lib/widgets';
+import { useLevel } from '../../../hooks/useLevels';
 import { useAppStore } from '../../../store/useAppStore';
 import { getDictionaryEntries } from '../../../services/dictionaryService';
 import { searchVocabulary } from '../../../services/vocabularyService';
@@ -11,7 +12,7 @@ import { numberToToneMarks } from '../../../utils/pinyin';
 import type { DBDictionaryEntry } from '../../../types/database';
 import type { Flashcard } from '../../../data/flashcards';
 import { SAMPLE_BOOKS } from '../../../data/books';
-import { ExtendedDefinitions, SummaryQuickActions } from '../../character-breakdown';
+import { ExtendedDefinitions, StrokeOrderBox, SummaryQuickActions } from '../../character-breakdown';
 import { MemoryHookBlock } from '../../character-memory-hooks';
 import { WordExamplesSection } from './WordExamplesSection';
 import { WordDecompositionStrip } from './WordDecompositionStrip';
@@ -25,16 +26,17 @@ const HANZI_RE = /[\u3400-\u9FFF]/u;
 
 interface WordDetailViewProps {
   word: string;
-  workspaceOffset?: boolean;
-  onClose: () => void;
+  onClose?: () => void;
+  /** Set when stacked over another view: shows a back arrow instead of close. */
+  onBack?: () => void;
   pushCharacter: (char: string) => void;
   depth: number;
 }
 
 export function WordDetailView({
   word,
-  workspaceOffset = true,
   onClose,
+  onBack,
   pushCharacter,
   depth,
 }: WordDetailViewProps) {
@@ -104,20 +106,15 @@ export function WordDetailView({
   }, [word]);
 
   const chars = Array.from(word);
-  // Keep multi-character words on a single row by scaling the glyph size to the
-  // word length (2-character words stay hero-sized; longer words shrink so the
-  // whole word reads left-to-right instead of stacking vertically).
-  const wordSizeClass =
-    chars.length <= 2
-      ? 'text-5xl sm:text-6xl'
-      : chars.length <= 4
-        ? 'text-4xl sm:text-5xl'
-        : 'text-3xl sm:text-4xl';
+  // Each character gets its own stroke-order box, shrinking with word length so
+  // the whole word stays on one row.
+  const strokeBoxSize = chars.length <= 1 ? 112 : chars.length === 2 ? 88 : chars.length <= 4 ? 56 : 44;
   const primary = entries[0];
   const primaryChar = primary?.traditional || word;
   const pinyin = primary?.pinyin?.[0] ? numberToToneMarks(primary.pinyin[0]) : '';
   const sanitized = useMemo(() => sanitizeDictionaryDefinitions(primary?.definitions), [primary]);
   const primaryCourseCard = inCourseWords[0] ?? undefined;
+  const level = useLevel(primaryChar);
 
   // Headline definition: the course book's own wording first; otherwise the
   // shortest dictionary meaning, which reads best as a quick summary.
@@ -129,21 +126,21 @@ export function WordDetailView({
     return lines.reduce((shortest, line) => (line.length < shortest.length ? line : shortest));
   }, [primaryCourseCard, sanitized]);
 
-  const hasSupporting = hasWordSupportingInfo(word, relatedWords, isExtrasLoading);
+  const hasSupporting = hasWordSupportingInfo(relatedWords, isExtrasLoading);
 
   return (
     <DetailShell.Root
       ariaLabel={`Word breakdown for ${word}`}
       tone="practice"
       style={{ zIndex: 300 + depth }}
-      workspaceOffset={workspaceOffset}
-      onEscape={onClose}
+      onEscape={onBack ?? onClose}
     >
       <DetailShell.Scroller>
         <ScreenHeader
           variant="panel"
           tone="practice"
           onClose={onClose}
+          onBack={onBack}
           maxWidth="none"
           centerContent={
             <h1 className="w-full text-center text-xs sm:text-sm font-black uppercase tracking-wider text-ui-ink-strong">Word breakdown</h1>
@@ -187,21 +184,23 @@ export function WordDetailView({
                 className="w-full flex flex-col gap-6"
               >
                 <header className="relative isolate min-w-0 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
-                  <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4 p-4 sm:gap-7 sm:p-6">
-                    <div className="flex min-w-0 items-baseline gap-x-1 font-chinese leading-tight text-ui-ink-strong">
+                  <div className={`grid items-center gap-4 p-4 sm:gap-7 sm:p-6 ${chars.length >= 3 ? 'grid-cols-1' : 'grid-cols-[auto_minmax(0,1fr)]'}`}>
+                    <div className={`flex min-w-0 flex-wrap items-center gap-2 font-chinese text-ui-ink-strong ${chars.length >= 3 ? 'pr-20' : ''}`}>
                       {chars.map((char, index) => (
-                        <button
-                          key={index}
-                          type="button"
-                          onClick={() => pushCharacter(char)}
-                          aria-label={`Open breakdown for ${char}`}
-                          className={`cursor-pointer whitespace-nowrap rounded-xs focus-ring transition-colors hover:text-brand-primary active:opacity-50 ${wordSizeClass}`}
-                        >
-                          {char}
-                        </button>
+                        HANZI_RE.test(char) ? (
+                          <StrokeOrderBox
+                            key={index}
+                            char={char}
+                            size={strokeBoxSize}
+                            accentHex={activeBook.accentHex}
+                            className="shrink-0 bg-ui-canvas/55"
+                          />
+                        ) : (
+                          <span key={index} className="text-3xl">{char}</span>
+                        )
                       ))}
                     </div>
-                    <div className="relative min-w-0 text-left">
+                    <div className="relative min-w-0 pr-20 text-left">
                       <div className="flex min-w-0 flex-wrap items-center gap-1.5">
                         {pinyin && (
                           <span className="truncate text-xl font-black text-brand-primary sm:text-2xl">{pinyin}</span>
@@ -212,12 +211,19 @@ export function WordDetailView({
                           {heroDefinition}
                         </p>
                       )}
-                      {primaryCourseCard && (
-                        <p className="mt-2 text-[10px] font-extrabold text-ui-muted">B{primaryCourseCard.bookId} · L{primaryCourseCard.lessonId}</p>
-                      )}
+                      {primaryCourseCard ? (
+                        <p className="mt-2"><LevelTag bookId={primaryCourseCard.bookId} lessonId={primaryCourseCard.lessonId} /></p>
+                      ) : level ? (
+                        <p className="mt-2"><LevelTag variant="chip" level={level} /></p>
+                      ) : null}
                     </div>
                   </div>
-                  <SummaryQuickActions char={primaryChar} audioSrc={primaryCourseCard?.audio} />
+                  <SummaryQuickActions
+                    char={primaryChar}
+                    audioSrc={primaryCourseCard?.audio}
+                    pinyin={pinyin || undefined}
+                    meaning={heroDefinition}
+                  />
 
                   <ExtendedDefinitions entries={entries} />
                 </header>
@@ -230,7 +236,7 @@ export function WordDetailView({
                   }
                 >
                   <div className="flex min-w-0 flex-col gap-6 lg:gap-8">
-                    <WordDecompositionStrip word={word} onOpenCharacter={pushCharacter} />
+                    <WordDecompositionStrip word={word} onOpenCharacter={pushCharacter} accentHex={activeBook.accentHex} edgeHex={activeBook.edgeHex} />
 
                     <MemoryHookBlock
                       cacheKey={`word_${word}`}
@@ -253,8 +259,6 @@ export function WordDetailView({
                       className="flex min-w-0 flex-col lg:sticky lg:top-4 lg:self-start"
                     >
                       <WordSupportingInformation
-                        word={word}
-                        pushCharacter={pushCharacter}
                         relatedWords={relatedWords}
                         isRelatedLoading={isExtrasLoading}
                         onOpenWord={setDictionaryWord}

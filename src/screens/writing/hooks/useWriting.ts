@@ -96,11 +96,11 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
 
   useEffect(() => {
     clearCharCompletionTimer();
-    return () => {
-      clearCharCompletionTimer();
-      audioService.stop();
-    };
+    return clearCharCompletionTimer;
   }, [clearCharCompletionTimer, currentCard?.id, screenState]);
+
+  // Audio rings out across card changes; stop only on exit or completion.
+  useEffect(() => () => audioService.stop(), [screenState]);
 
   const toggleShuffle = useCallback(() => {
     session.toggleShuffle();
@@ -109,7 +109,7 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
   // Play audio when the card changes
   useEffect(() => {
     if (autoPlayAudio && currentCard && currentIndex >= 0) {
-      audioService.play(currentCard.audio, pronunciationRate, currentCard.front);
+      audioService.play(currentCard.audio, pronunciationRate, currentCard.front, undefined, 0, { overlap: true });
     }
   }, [autoPlayAudio, currentIndex, currentCard, pronunciationRate]);
 

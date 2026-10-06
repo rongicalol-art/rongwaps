@@ -5,6 +5,22 @@ export type QuizQuestionType = 'hanzi' | 'pinyin' | 'meaning';
 export type QuizChoiceType = 'meaning' | 'hanzi' | 'pinyin';
 export type ListeningChoiceType = 'meaning' | 'hanzi' | 'pinyin';
 export type TypingPromptType = 'hanzi' | 'meaning';
+export type PracticeDockStyle =
+  | 'bottom-center'
+  | 'bottom-right'
+  | 'right-column'
+  | 'right-middle'
+  | 'top-right'
+  | 'left-column';
+
+export const PRACTICE_DOCK_STYLE_OPTIONS: ReadonlyArray<{ value: PracticeDockStyle; label: string }> = [
+  { value: 'bottom-center', label: 'Bottom center' },
+  { value: 'bottom-right', label: 'Bottom right' },
+  { value: 'right-column', label: 'Right column' },
+  { value: 'right-middle', label: 'Right middle' },
+  { value: 'top-right', label: 'Top right' },
+  { value: 'left-column', label: 'Left column' },
+];
 
 export interface PracticePreferences {
   preset: PracticePreset;
@@ -22,6 +38,7 @@ export interface PracticePreferences {
   replayAudioAfterAnswer: boolean;
   speakDefinition: boolean;
   showPinyin: boolean;
+  toneColors: boolean;
   showTranslation: boolean;
   hideExamplePinyin: boolean;
   characterFont: CharacterFont;
@@ -29,6 +46,9 @@ export interface PracticePreferences {
   quizChoiceType: QuizChoiceType;
   listeningChoiceType: ListeningChoiceType;
   typingPromptType: TypingPromptType;
+  dockStyle: PracticeDockStyle;
+  /** Fade the practice dock when idle. */
+  dockAutoHide: boolean;
 }
 
 type PaceTimings = Pick<
@@ -67,12 +87,13 @@ export const DEFAULT_PREFERENCES: PracticePreferences = {
   ...getPaceTimings(PRESET_PACE.balanced),
   autoAdvanceCorrect: true,
   autoAdvanceWrong: false,
-  repeatMistakes: 'soon',
+  repeatMistakes: 'off',
   pronunciationRate: 1,
   autoPlayAudio: true,
   replayAudioAfterAnswer: true,
   speakDefinition: true,
   showPinyin: true,
+  toneColors: true,
   showTranslation: true,
   hideExamplePinyin: true,
   characterFont: 'huninn',
@@ -80,6 +101,8 @@ export const DEFAULT_PREFERENCES: PracticePreferences = {
   quizChoiceType: 'meaning',
   listeningChoiceType: 'meaning',
   typingPromptType: 'hanzi',
+  dockStyle: 'bottom-center',
+  dockAutoHide: false,
 };
 
 export interface PracticePreferencesActions {
@@ -111,6 +134,7 @@ export const PRACTICE_PREFERENCES_PERSISTED_KEYS = [
   'replayAudioAfterAnswer',
   'speakDefinition',
   'showPinyin',
+  'toneColors',
   'showTranslation',
   'hideExamplePinyin',
   'characterFont',
@@ -118,6 +142,8 @@ export const PRACTICE_PREFERENCES_PERSISTED_KEYS = [
   'quizChoiceType',
   'listeningChoiceType',
   'typingPromptType',
+  'dockStyle',
+  'dockAutoHide',
 ] as const;
 
 export const PRACTICE_PREFERENCES_ACCOUNT_SWITCH_DEFAULTS = {};

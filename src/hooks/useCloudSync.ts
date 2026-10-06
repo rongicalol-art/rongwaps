@@ -2,11 +2,6 @@ import { useEffect, useRef } from 'react';
 import { useAuth } from './useAuth';
 import { useAppStore } from '../store/useAppStore';
 import type { SRSData } from '../utils/srsEngine';
-import type {
-  SyncedFolderSnapshot,
-  SyncProgressCounters,
-} from '../utils/cloudSyncQueue';
-import { getProgressCounters } from '../utils/cloudSyncTransforms';
 import { useCloudSyncFetch } from './useCloudSyncFetch';
 import { useCloudSyncSave } from './useCloudSyncSave';
 
@@ -27,12 +22,7 @@ export function useCloudSync() {
   const lastSyncedSrsRef = useRef<Record<string, SRSData> | null>(null);
   const lastPulledCursorRef = useRef<{ userId: string; cursor: string | null } | null>(null);
   const lastSyncedLearnedRef = useRef<string[] | null>(null);
-  const lastSyncedActivityRef = useRef<string | null>(null);
-  const lastSyncedFoldersRef = useRef<SyncedFolderSnapshot[] | null>(null);
-  const lastSyncedSessionRef = useRef<SyncProgressCounters>({
-    cardsReviewed: 0,
-    cardsLearned: 0,
-  });
+  const lastSyncedSettingsRef = useRef<Record<string, unknown> | null>(null);
 
   const { fetchFromCloud } = useCloudSyncFetch({
     currentUser,
@@ -40,9 +30,7 @@ export function useCloudSync() {
     lastSyncedSrsRef,
     lastPulledCursorRef,
     lastSyncedLearnedRef,
-    lastSyncedActivityRef,
-    lastSyncedFoldersRef,
-    lastSyncedSessionRef,
+    lastSyncedSettingsRef,
     hasFetchedForUserRef,
     activeUserIdRef,
   });
@@ -52,9 +40,7 @@ export function useCloudSync() {
     persistedOwnerRef,
     lastSyncedSrsRef,
     lastSyncedLearnedRef,
-    lastSyncedActivityRef,
-    lastSyncedFoldersRef,
-    lastSyncedSessionRef,
+    lastSyncedSettingsRef,
     hasFetchedForUserRef,
     fetchFromCloud,
   });
@@ -64,12 +50,10 @@ export function useCloudSync() {
       hasFetchedForUserRef.current = null;
       lastPulledCursorRef.current = null;
       lastSyncedLearnedRef.current = null;
-      lastSyncedActivityRef.current = null;
-      lastSyncedFoldersRef.current = null;
+      lastSyncedSettingsRef.current = null;
       return;
     }
     hasFetchedForUserRef.current = null;
-    lastSyncedSessionRef.current = getProgressCounters(useAppStore.getState());
     void fetchFromCloud();
   }, [currentUser, fetchFromCloud]);
 

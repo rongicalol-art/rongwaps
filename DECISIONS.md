@@ -10,14 +10,71 @@ Record choices that should remain stable across tasks. Keep each entry short.
 - Reason:
 - Affects:
 
+### 2026-10-05 — One pronunciation index: every reading, Taiwan-first
+
+- Chosen: `npm run pronunciation:build` builds `public/data/pronunciation/pronunciation.json` from CC-CEDICT (gitignored `output/pronunciation/cedict.txt`): every reading of ~9.9k characters, ordered course reading first, then a standalone "Taiwan pr." over the mainland reading (期 qí, also qī), then by how many (course, then TBCL/HSK-weighted) words use each reading. `~` marks same-meaning variants ("also pr.": 誰 shéi, also shuí); other readings carry a common example word (行 háng 銀行). Surname readings and pure "variant of" pointers (妳 nǎi) are dropped.
+- `src/utils/pronunciation.ts` is the single owner of which pinyin a character shows (`primaryReading`, `allReadings`, `soundPair`); breakdown `pinyin[0]` is only a fallback. Header shows "shéi · also shuí" — the other readings, pinyin only, up to three. The sound clue uses the closest-sounding pair (誰 ← 隹: "zhuī → shuí · usually read shéi"), and `relations:build` grades every character reading × part reading.
+- Reason: the breakdown and dictionary packs kept one reading per character (only 10 breakdown characters had more), often the mainland or a secondary one, so the app taught shuí while the course teaches shéi, and lost 行 háng, 長 zhǎng, 還 huán.
+- Not changed: single-character TTS still picks its own reading; the dictionary pack still has one entry per word (a CC-CEDICT rebuild would restore e.g. 長 zhǎng senses).
+- Affects: `scripts/pronunciation/buildPronunciation.ts`, `scripts/relations/buildParts.ts`, `public/data/pronunciation/`, `src/utils/{pronunciation,packValidators}.ts`, `src/services/{contentPacks,contentPackConfigs}.ts`, `src/hooks/usePronunciation.ts`, `src/features/character-breakdown/**` (summary header, sound clue, tree metadata, chips, memory hook), `src/features/dictionary/hooks/useWordExtras.ts`.
+
+### 2026-10-05 — Breakdown shard fixes go through an overrides file
+
+- Chosen: `scripts/content/breakdown-overrides.json` + `npm run breakdowns:patch` replace whole fields in the committed `public/data/breakdowns/` shards and rewrite the manifest (hashes + version). Readings follow the course books (Taiwan standard): 妳 nǐ, 髮 fǎ/fà, 髒 zāng, 長 cháng/zhǎng.
+- Reason: the shards' Supabase source table was removed on 2026-10-03, so no generator exists; hand-editing packs stays forbidden.
+- Affects: `scripts/content/{patchBreakdowns.ts,breakdown-overrides.json}`, `public/data/breakdowns/`.
+
+### 2026-10-05 — One parts index replaces the sound-hooks and used-as packs ("Built with" + "Sound clue")
+
+- Chosen:
+  - One relation pack, `public/data/relations/parts.json` (+ `manifest.json`), built by `npm run relations:build` (`scripts/relations/buildParts.ts`). `parents`: part → every pool character built from it (breakdown shards' `components_historical`, reversed), sound-alikes first (same, then tone, then close) then shape-only, each in pool rank order, with a grade mark: `=` same sound, `~` tone change, `≈` close, none = shape/meaning only. `phonetic`: character → the part that gives it its sound, only when the grade is same/tone/close. Replaces the `sound-hooks` and `used-as.json` packs (and the `phonetic:build`, `breakdowns:used-as`, `memory-hooks:sound` scripts); the earlier global `sound-families` pack stays removed for contamination — this keeps the pool scoping and the owner overrides (`noSound`, `blockMember`).
+  - Grades are marks, not duplicated families: the family exists once, on the part. No cap on parents (the old `MAX_FAMILY=6` / 15 limits are gone); the UI decides how many rows to show.
+  - Pool = course characters ∪ every character in `levels.json` (`tbcl` then `hsk` sections). Rank: course (book, lesson), then level, then list order (`scripts/lib/learnerPool.ts`).
+  - Nothing derivable ships: no pinyin, meaning, level or lesson in the pack. The app derives them at runtime from breakdown/vocabulary/levels data (`src/utils/parts.ts` owns the format and the relation rule: `builtWith`, `resolveSoundClue`; `useParts` loads it once). The tone shift (`mǎ → mā`) is computed in the UI from pinyin.
+  - Rail, top to bottom: **Sound family** (`soundFamily` in `src/utils/parts.ts`) — only about sound, built from the same reference rows as "In words" (glyph, pinyin over meaning, lesson or level): no explanatory text — the rows carry pinyin, meaning and lesson: for a character that borrows its sound, its sound part followed by the characters that borrow it too (馬, 碼, 螞, 媽, 罵); for a sound part, its borrowers; a character can show both (星 ← 生, 星 → 猩 腥 醒), or just the part when nothing else borrows it (輛 ← 兩). Order same sound → new tone → close, five rows, "See all". A part must lend to at least two characters to count as a family (`MIN_FAMILY_SIZE`; 大 → 馱 alone is an accident — 馱's own page still shows "Sounds like 大"). Then **Appears in N characters** (`AppearsInCard`) — every character built from it, sound-alikes included so the count is honest (青 → 8), as a glyph-only strip, course lesson → level; closed by default, always shown when three or fewer. Then **In words**. Meaning-part rows are dropped (the tree shows the parts). No known-character logic in the rail.
+  - Grading uses the part's main modern reading, so a family has one grade per member regardless of which character is open (polyphonic parts like 長 and 相 can differ from the old per-viewer grade).
+- Reason: two overlapping per-character datasets (884 KB + 35 KB, each family duplicated on the giver and every member, 41% of entries empty) became one 55 KB relation index; merging the cards removed the de-dupe rule between them.
+- Affects: `scripts/relations/buildParts.ts`, `scripts/phonetic/{soundGrade,soundMap}.ts`, `scripts/lib/learnerPool.ts`, `public/data/relations/`, `src/utils/{parts,packValidators}.ts`, `src/services/{contentPacks,contentPackConfigs,breakdownService}.ts`, `src/hooks/useParts.ts`, `src/features/character-breakdown/**` (v3 `SoundFamilyCard`, `SoundRow`, `AppearsInCard`), `tests/content/partsPack.test.ts`, `tests/unit/parts.test.ts`.
+
+### 2026-10-04 — Breakdown rail is the learner's map: known state, sound ladder, tile grids
+
+- Chosen:
+  - **In words** stays a list (words need meanings); course words from later books are dimmed (`ReferenceRow` `muted`). Dictionary-only suggestions rank by official level (never estimates) and drop vulgar / slang / neologism entries (`isNoisyDictionarySuggestion`, plus a short reviewed hide list for unlabelled transliterations such as 嗎哪).
+  - **Sound family** (see the 2026-10-05 parts-index entry) replaces the earlier ladder and tile grids; the known-state summary line and ✓ marks are gone from the rail (2026-10-05). The card has no play button (removed 2026-10-05); the tree and word rows already carry audio.
+  - The shared `CharacterTile` widget backs every character grid, including Library "Learn next".
+  - Unencoded tree pieces read "Picture part" (a quiet icon + label; the full "no meaning of its own — part of the drawing" is a tooltip) instead of "No glyph for this".
+- Reason: three identical row lists gave beginners no hierarchy, no sense of progress, and a long mobile scroll. Tiles fit twice the content, and hearing the sound family teaches the pattern.
+- Affects: `src/features/character-breakdown/components/v3/{V3SupportingInformation,SoundFamilyCard,SoundRow,AppearsInCard,railStyles,V3RuntimeTree}.tsx`, `src/lib/widgets/{CharacterTile,ReferenceRow}.tsx`, `src/screens/library/**`.
+
+### 2026-10-04 — TBCL levels: learner pool, level tags, TOCFL readiness
+
+- Chosen:
+  - TBCL (臺灣華語文能力基準, NAER — the standard TOCFL levels follow) is the level source. `npm run levels:build` imports `tbcl-chars.csv` + `tbcl.csv` (from github.com/ivankra/tocfl, placed in gitignored `output/levels/`) into the `tbcl` section of the committed pack `public/data/levels/levels.json`: 3,067 characters and 14,733 word forms, levels 1–7, with the `*` tier folded in. TOCFL bands: Novice/A1/A2 = A, B1/B2 = B, C1/C2 = C (`src/utils/levels.ts`).
+  - The learner pool (`scripts/lib/learnerPool.ts`) is course characters (1,677) plus levelled characters (TBCL; since 2026-10-05 also the HSK gap fill), replacing the frequency-based "common" tier.
+  - **The book stays primary.** Course items always show `B·L` and sort first. TBCL level shows only where there is no lesson (`Lv 4`), or as a quiet secondary header chip (`TOCFL C · Lv 6`). One widget owns this: `LevelTag`.
+  - "In words": course words first, then dictionary words by TBCL level; unleveled names and rare terms go last.
+  - Library gets a **TOCFL readiness** card (`computeTocflReadiness`). It counts TBCL characters known per band from passed course words and suggests what to learn next in the focus band, in book lesson order.
+- Reason: owner wants coverage beyond the book without the old rare/simplified noise, and learners need to know what matters and how close they are to TOCFL.
+- Affects: `scripts/levels/buildLevels.ts`, `scripts/lib/learnerPool.ts`, `src/utils/{packValidators,levels,tocflReadiness}.ts`, `src/services/contentPack{s,Configs}.ts` (`levels` pack), `src/hooks/useLevels.ts`, `src/lib/widgets/LevelTag.tsx`, `src/features/character-breakdown/**`, `src/screens/library/**`.
+
+### 2026-10-05 — Every character and word gets a TOCFL level (TBCL + HSK gap fill + estimate)
+- Chosen:
+  - One pack, `public/data/levels/levels.json` (schema v2), built by `npm run levels:build` from gitignored `output/levels/`. `tbcl` = official TBCL (github.com/ivankra/tocfl). `hsk` = New HSK 2025 (github.com/Punpuf/hsk-syllabus-vocabulary-parser words, github.com/krmanik/HSK-3.0 characters), only for forms TBCL lacks, with simplified forms mapped to traditional through the dictionary packs.
+  - All levels sit on the TBCL 1–7 scale. HSK is converted by overlap medians: 1→1, 2→2, 3→3, 4→4, 5→5, 6→5, 7-9→6.
+  - Labels fix an off-by-one: 1 Novice, 2 A1, 3 A2, 4 B1, 5 B2, 6 C1, 7 C2 (previously 1 was shown as A1). Bands: Novice/A1/A2 = A, B1/B2 = B, C1/C2 = C.
+  - Estimates are computed at runtime, never stored: a multi-character word whose characters all have levels gets max(char level) + 1 (cap 7), shown as `~B1`, dimmed. `resolveLevel` in `src/utils/levels.ts` is the single resolver (tbcl, then hsk, then normalized forms like `兔/兔子` and `梨（子）`, then characters, then estimate); `useLevel`/`useLevels` in `src/hooks/useLevels.ts` wrap it.
+  - TOCFL readiness reads only the `tbcl` section, so official stats are unchanged by the HSK gap fill. (The learner pool reads both sections since the 2026-10-05 parts-index entry.)
+- Reason: owner wants a level on every word and character shown, not only the TBCL-listed ones.
+- Affects: `scripts/levels/buildLevels.ts` (was `scripts/dictionary/importTbcl.ts`), `src/utils/{levels,packValidators}.ts`, `src/hooks/useLevels.ts`, `src/lib/widgets/LevelTag.tsx`, dictionary and breakdown level call sites.
+
 ### 2026-09-29 — Character breakdown: the sound piece is highlighted in the components block
 
 - Chosen:
-  - The phonetic piece now lives on its component: the tree tile matching the sound pack's `phonetic.glyph` carries the book accent (2px `edgeHex` border, soft `accentHex` wash, matching bottom depth) plus a "SOUND" micro-badge with the speaker icon, and its pinyin line shows the compact tone shift (`qīn→xīn`).
+  - The phonetic piece now lives on its component: the tree tile matching the parts index's phonetic part (`resolveSoundClue`) carries the book accent (2px `edgeHex` border, soft `accentHex` wash, matching bottom depth) plus a "SOUND" micro-badge with the speaker icon, and its pinyin line shows the compact tone shift (`qīn→xīn`).
   - Nested pieces auto-reveal once per character: `resolveSoundRevealPath` walks the runtime reverse index from the sound glyph to the character and `useRuntimeDecompositionTree.expand` opens the ancestors, so 師's 㠯 (inside 𠂤) shows bordered without manual digging. Applies to the summary row and the Component-tree screen.
-  - The standalone Sound card is retired (`SoundBlock`/`SoundStrip` deleted). Only the sound family survives, as `SoundFamilyStrip` in the summary card (accent-bordered tiles under a `Sound family` label). No phonetic and no family renders nothing — the 58% empty case is gone.
+  - The standalone Sound card is retired (`SoundBlock`/`SoundStrip` deleted). The sound family now lives in the rail's Sound family card (2026-10-05 parts-index entry). No phonetic part renders nothing.
 - Reason: owner design review — a second tinted card under the Memory Hook competed with it, and sound is a property of one component, so it belongs on that component. 270/277 phonetic pieces are direct components; the other 7 (師 餐 弟 第 關 傷 南) sit one level deeper and are auto-revealed.
-- Affects: `src/features/character-breakdown/components/v3/{V3RuntimeTree,V3CharacterBreakdown,V3CharacterSummary,V3TreeScreen}.tsx`, `src/features/character-breakdown/components/breakdown/SingleBreakdownView.tsx`, `src/features/character-breakdown/hooks/useRuntimeDecompositionTree.ts`, `src/features/character-breakdown/utils/soundRevealPath.ts`, `src/features/character-memory-hooks/SoundFamilyStrip.tsx`, `tests/unit/characterBreakdownV3.test.ts`.
+- Affects: `src/features/character-breakdown/components/v3/{V3RuntimeTree,V3CharacterBreakdown,V3CharacterSummary,V3TreeScreen}.tsx`, `src/features/character-breakdown/components/breakdown/SingleBreakdownView.tsx`, `src/features/character-breakdown/hooks/useRuntimeDecompositionTree.ts`, `src/features/character-breakdown/utils/soundRevealPath.ts`, `tests/unit/characterBreakdownV3.test.ts`.
 
 ### 2026-09-26 — Reader redesign: left-anchored dialogue, balanced 72/28 layout, unified Study Guide
 

@@ -39,7 +39,7 @@ export function ReferenceRow({
       type="button"
       onClick={onClick}
       aria-label={ariaLabel}
-      className="group flex min-h-[54px] w-full items-center gap-3 rounded-compact px-2 py-2 text-left transition-colors hover:bg-ui-hover focus-visible:z-10 focus-ring"
+      className={`group flex min-h-[54px] w-full items-center gap-3 rounded-compact px-2 py-2 text-left transition-colors hover:bg-ui-hover focus-visible:z-10 focus-ring`}
     >
       <span
         className={`${glyphClassName ?? defaultWidthClass} shrink-0 font-chinese text-2xl leading-none ${accentClassName ?? 'text-ui-ink-strong'}`}

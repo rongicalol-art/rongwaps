@@ -38,5 +38,5 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 
 ## Generated Artifacts & Scratch Policy
 
-- **Committed packs (`public/data/`)**: `course-examples/`, `decomposition/`, `dictionary/`, `memory-hooks/`, `sound-hooks/`, `vocabulary/`, strokes, with hash-versioned `manifest.json`. Regenerate via npm scripts; never hand-edit.
+- **Committed packs (`public/data/`)**: `course-examples/`, `decomposition/`, `dictionary/`, `memory-hooks/`, `relations/`, `vocabulary/`, strokes, with hash-versioned `manifest.json`. Regenerate via npm scripts; never hand-edit.
 - **Gitignored scratch**: `output/`, `.audit/`, `materials/`, `.agents/`, `dist/`, `.vite/`. Clean with `npm run clean:local`. Never depend on them in code.

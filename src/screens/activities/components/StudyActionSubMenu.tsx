@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'motion/react';
-import { ActionButton, AppIcon } from '../../../lib/widgets';
+import { ActionButton, PlayfulNavIcon } from '../../../lib/widgets';
 
 export interface StudyActionSubMenuProps {
   open: boolean;
@@ -7,6 +7,7 @@ export interface StudyActionSubMenuProps {
   onOpenGrammar?: () => void;
   onOpenReading?: () => void;
   onClose: () => void;
+  side?: 'top' | 'left' | 'right';
 }
 
 export function StudyActionSubMenu({
@@ -15,6 +16,7 @@ export function StudyActionSubMenu({
   onOpenGrammar,
   onOpenReading,
   onClose,
+  side = 'top',
 }: StudyActionSubMenuProps) {
   return (
     <AnimatePresence>
@@ -24,15 +26,23 @@ export function StudyActionSubMenu({
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 4, scale: 0.98 }}
           transition={{ duration: 0.18, ease: [0.32, 0.72, 0, 1] }}
-          className="absolute bottom-full pb-3 w-60 sm:w-64 z-50 pointer-events-auto"
-          style={{
-            left: left !== null ? `${left}px` : 'calc(50% - 120px)',
-          }}
+          className={
+            {
+              left: 'absolute right-full top-1/2 -translate-y-1/2 pr-3 w-60 sm:w-64 z-50 pointer-events-auto',
+              right: 'absolute left-full top-1/2 -translate-y-1/2 pl-3 w-60 sm:w-64 z-50 pointer-events-auto',
+              top: 'absolute bottom-full pb-3 w-60 sm:w-64 z-50 pointer-events-auto',
+            }[side]
+          }
+          style={
+            side === 'top'
+              ? { left: left !== null ? `${left}px` : 'calc(50% - 120px)' }
+              : undefined
+          }
         >
           <div
             role="menu"
             aria-label="Choose Grammar or Reading"
-            className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-2 shadow-ambient-lg flex flex-col gap-1.5"
+            className="popover-surface p-2 flex flex-col gap-1.5"
           >
             {onOpenGrammar && (
               <ActionButton
@@ -46,7 +56,7 @@ export function StudyActionSubMenu({
                   onOpenGrammar();
                 }}
               >
-                <AppIcon name="grammar" size={22} className="text-feedback-warning-edge shrink-0" />
+                <PlayfulNavIcon name="grammar" className="h-6 w-6" />
                 <span>Grammar</span>
               </ActionButton>
             )}
@@ -62,7 +72,7 @@ export function StudyActionSubMenu({
                   onOpenReading();
                 }}
               >
-                <AppIcon name="book" size={22} className="text-brand-primary shrink-0" />
+                <PlayfulNavIcon name="reading" className="h-6 w-6" />
                 <span>Reading</span>
               </ActionButton>
             )}

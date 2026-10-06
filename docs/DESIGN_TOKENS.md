@@ -15,7 +15,7 @@ Do not use arbitrary pixel values like `rounded-[14px]`. Use the semantic scale:
 
 ## 2. Depth (`--depth-*`)
 
-Used for the 3D bottom-edge tactile effect on buttons and cards via a two-layer stationary base architecture (`absolute inset-x-0 bottom-0 top-[length:var(--depth-*)]` base + `relative mb-[length:var(--depth-*)] group-active:translate-y-[length:var(--depth-*)]` front). The bottom border of the button remains 100% stationary on press (0.00px bottom border movement) and siblings underneath experience 0.00px layout shift. Never use `active:border-b-0` or translate the outer button container, which causes adjacent content to jump or plunges the bottom border below the baseline.
+Used for the 3D bottom-edge tactile effect on buttons and cards via a two-layer stationary base architecture (`absolute inset-x-0 bottom-0 top-[length:var(--depth-md)]` base + `relative mb-[length:var(--depth-md)] group-active:translate-y-[length:var(--depth-md)]` front). The bottom border of the button remains 100% stationary on press (0.00px bottom border movement) and siblings underneath experience 0.00px layout shift. Never use `active:border-b-0` or translate the outer button container, which causes adjacent content to jump or plunges the bottom border below the baseline.
 
 - `--depth-sm` (2px) — Quiet controls, small badges, tiles
 - `--depth-md` (4px) — Primary controls, choice options, small cards
@@ -46,6 +46,7 @@ Do not use hardcoded hex values (e.g. `#FFFFFF`, `#E5E5E5`). Use semantic tokens
 - **Text**: `text-ui-ink` (primary), `text-ui-ink-strong` (headings), `text-ui-muted` (secondary)
 - **Brand**: `brand-primary` (blue), `brand-secondary` (orange)
 - **Feedback**: `feedback-success` (green), `feedback-warning` (gold/yellow), `feedback-danger` (red)
+- **Pinyin tones**: `tone-1` (rose) · `tone-2` (amber) · `tone-3` (emerald) · `tone-4` (blue) · `tone-5` (neutral gray), each ≥4.5:1 on `ui-surface`. Text only, applied to a syllable and its character together; on the flashcard answer face each syllable is stacked over its own character so same-tone syllables stay distinguishable ("Tone colors" setting). Tones come from `src/utils/pinyinTones.ts`; never color characters the alignment can't pair.
 
 Each brand/feedback color has an `-edge` variant (for the tactile bottom border) and a `-surface` or `/10` variant for soft backgrounds.
 
@@ -74,10 +75,11 @@ Overlay stacking has one owner: the `--z-index-*` scale in `src/index.css` `@the
 | `z-overlay` | 300 | Overlay-host container inside an activity/column (`activity-overlays-root`, `character-breakdown-overlay-container`) |
 | `z-detail` | 400 | Workspace-bounded detail window (`WorkspaceDetailShell`) |
 | `z-detail-raised` | 450 | Detail window stacked above another detail window (`V3TreeScreen`) |
-| `z-window` | 500 | Full-viewport windows (`GrammarLessonScreen`), full-screen loading (`LoadingScreen fullScreen`), drawer base layer (`BottomDrawer`) |
+| `z-window` | 500 | Full-viewport study windows (`WorkspaceWindow`: `ReaderScreen`, `GrammarLessonScreen`, their loaders; Grammar renders after Reader so it stacks on top), full-screen loading (`LoadingScreen fullScreen`), drawer base layer (`BottomDrawer`) |
+| `z-window-detail` | 550 | A detail window over the workspace or a study window, still under the sidebar (`WorkspaceWindow layer="window-detail"`: `DictionaryDetailOverlay`, body-hosted `CharacterBreakdownOverlay`, `PracticeSettingsScreen`) |
 | `z-shell` | 600 | App chrome that outranks every window (sidebar and mobile nav panel in `LayoutShell`) and full-screen viewers that cover it (`BookPageViewer`, grammar book fallback) |
 | `z-drawer` | 650 | Reader study drawer (`ReaderStudyDrawer`) |
-| `z-dialog` | 700 | Dialogs and settings windows (`ConfirmationDialog`, `FolderModal`, `DictionaryDetailOverlay`, `PracticeSettingsScreen`) |
+| `z-dialog` | 700 | Dialogs and settings windows (`ConfirmationDialog`, `FolderModal`) |
 | `z-popover` | 800 | Hover/anchored popovers (`PosBadge`, `MemoryHookPopover`) |
 | `z-auth` | 900 | Sign-in window (`SignInWindow`) |
 | `z-devtools` | 1000 | Developer tools (`DebugToolsOverlay`) |
@@ -101,6 +103,7 @@ Typography rules maintain visual harmony across Latin UI text, Chinese glyphs, a
 - **Universal translation style (`.ui-translation`)**:
   - Translations (English glosses accompanying Chinese example sentences, patterns, and words) must use the `.ui-translation` utility class rather than one-off weights or tones.
   - `.ui-translation` sets `font-family: var(--font-sans)`, `font-weight: 700`, `color: var(--color-ui-muted-strong)`, and `line-height: 1.625` — the same bold voice as definitions and memory-hook body copy, in the shared muted gray token.
+- **Eyebrow label (`.ui-eyebrow`)**: 13px (same as `SectionEyebrow`), weight 900, 0.1em tracking, uppercase. Use it for every small label above a block (exercise cues, lab headers, spine roles); pair with a colour token only.
 - **Inline Chinese in prose (`.prose-chinese`)**:
   - Applied to prose containers whose inline Chinese must match the example-sentence scale (grammar explanations). It scales every `.font-chinese` descendant to `1.25em` (mobile) / `1.3333em` (sm+) — e.g. 16px prose → 20px characters, 18px prose → 24px characters — so characters do not read smaller than the bold Latin around them. Line boxes stay inside the prose leading (20px glyphs in `leading-7`, 24px in `sm:leading-8`).
   - Component-specific sizing (e.g. `text-xs`, `text-sm`, `text-base`) can be paired with `.ui-translation` to fit information density.

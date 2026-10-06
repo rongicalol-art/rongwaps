@@ -4,6 +4,7 @@ import { readBoolean, readString, writeBoolean, writeString } from '../../../uti
 
 /**
  * Reader display preferences (pinyin, meaning, hover definitions, text size).
+ * Defaults are characters only (no pinyin, no meaning) at the largest text size.
  *
  * All four are the same capability — "a reader display preference the learner
  * keeps across readings" — so they are persisted through one owner instead of
@@ -22,14 +23,14 @@ function isReaderTextSize(value: string | null): value is ReaderTextSize {
 }
 
 export function useReaderPreferences() {
-  const [showPinyin, setShowPinyin] = useState(() => readBoolean(STORAGE_KEYS.showPinyin, true));
+  const [showPinyin, setShowPinyin] = useState(() => readBoolean(STORAGE_KEYS.showPinyin, false));
   const [showMeaning, setShowMeaning] = useState(() => readBoolean(STORAGE_KEYS.showMeaning, false));
   const [showHoverDefinitions, setShowHoverDefinitions] = useState(
     () => readBoolean(STORAGE_KEYS.hoverDefinitions, true),
   );
   const [textSize, setTextSizeState] = useState<ReaderTextSize>(() => {
     const saved = readString(STORAGE_KEYS.textSize);
-    return isReaderTextSize(saved) ? saved : 'normal';
+    return isReaderTextSize(saved) ? saved : 'extra-large';
   });
 
   const toggleShowPinyin = useCallback(() => {

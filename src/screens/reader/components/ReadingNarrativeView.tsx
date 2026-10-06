@@ -11,7 +11,7 @@ import { overlapsAnyLocatedRange, type ReaderLocatedRange } from '../utils/reade
 import { ReaderWordTooltip } from './ReaderWordTooltip';
 import { ReaderChunk, NARRATIVE_CHUNK_APPEARANCE } from './ReaderChunk';
 import { audioService } from '../../../services/audioService';
-import { findMatchingCourseVocab } from '../../../services/vocabularyService';
+import { findMatchingCourseVocab } from '../../../services/courseVocabLookup';
 import { groupSentencesIntoParagraphs } from '../utils/narrativeParagraphs';
 import { SAMPLE_LESSONS } from '../../../data/books';
 import { getReadingIllustration } from '../../../data/readingIllustrations';

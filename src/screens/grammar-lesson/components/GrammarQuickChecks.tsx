@@ -38,7 +38,7 @@ export function GrammarQuickChecks({
             Pick the form that matches the situation.
           </p>
         </div>
-        <span className="shrink-0 rounded-full bg-ui-hover px-3 py-1 text-[11px] font-black text-ui-muted-strong">
+        <span className="shrink-0 rounded-full bg-ui-hover px-3 py-1 text-xs font-black text-ui-muted-strong">
           {hasChecked
             ? `${correctCount}/${checks.length} correct`
             : `${checks.length} ${checks.length === 1 ? 'check' : 'checks'}`}
@@ -59,7 +59,7 @@ export function GrammarQuickChecks({
             >
               <div className="grid items-center gap-4 md:grid-cols-[minmax(0,1fr)_auto]">
                 <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.05em] text-brand-primary">
+                  <p className="ui-eyebrow text-brand-primary">
                     Check {checkIndex + 1}
                   </p>
                   <p className="mt-1 text-xs font-bold leading-5 text-ui-muted-strong">{check.prompt}</p>

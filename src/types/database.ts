@@ -1,17 +1,3 @@
-// Maps to `user_daily_progress` table in Supabase
-export interface DBDailyProgress {
-  id: string;
-  user_id: string;
-  date: string; // YYYY-MM-DD
-  xp_earned: number;
-  cards_reviewed: number;
-  cards_learned: number;
-  study_time_minutes: number;
-  activities_breakdown: Record<string, number>;
-  created_at: string;
-  updated_at: string;
-}
-
 // Maps to `character_breakdowns_v2` table in Supabase
 export interface DBCharacterBreakdown {
   character: string;
@@ -80,6 +66,9 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[];
 
+/** `user_profiles.settings`: the synced preferences (see `CloudMetadataPayload`). */
+export type ProfileSettings = { [key: string]: Json | undefined };
+
 /**
  * The `public` schema as the Supabase client sees it, so `.from()`/`.rpc()`
  * results are typed instead of arriving as `any`-fielded rows.
@@ -132,42 +121,6 @@ export interface Database {
           next_review_date?: string | null;
           learning_step?: number | null;
           last_updated?: string | null;
-        };
-        Relationships: [];
-      };
-      user_daily_progress: {
-        Row: {
-          user_id: string;
-          date: string;
-          xp_earned: number;
-          cards_reviewed: number;
-          cards_learned: number;
-          study_time_minutes: number;
-          activities_breakdown: Record<string, number>;
-          created_at: string | null;
-          updated_at: string | null;
-        };
-        Insert: {
-          user_id: string;
-          date: string;
-          xp_earned?: number;
-          cards_reviewed?: number;
-          cards_learned?: number;
-          study_time_minutes?: number;
-          activities_breakdown?: Record<string, number>;
-          created_at?: string | null;
-          updated_at?: string | null;
-        };
-        Update: {
-          user_id?: string;
-          date?: string;
-          xp_earned?: number;
-          cards_reviewed?: number;
-          cards_learned?: number;
-          study_time_minutes?: number;
-          activities_breakdown?: Record<string, number>;
-          created_at?: string | null;
-          updated_at?: string | null;
         };
         Relationships: [];
       };
@@ -266,8 +219,7 @@ export interface Database {
           email: string | null;
           full_name: string | null;
           avatar_url: string | null;
-          learned_cards: string[];
-          last_activity: string | null;
+          settings: ProfileSettings;
           updated_at: string | null;
         };
         Insert: {
@@ -275,8 +227,7 @@ export interface Database {
           email?: string | null;
           full_name?: string | null;
           avatar_url?: string | null;
-          learned_cards?: string[];
-          last_activity?: string | null;
+          settings?: ProfileSettings;
           updated_at?: string | null;
         };
         Update: {
@@ -284,8 +235,7 @@ export interface Database {
           email?: string | null;
           full_name?: string | null;
           avatar_url?: string | null;
-          learned_cards?: string[];
-          last_activity?: string | null;
+          settings?: ProfileSettings;
           updated_at?: string | null;
         };
         Relationships: [];
@@ -297,22 +247,9 @@ export interface Database {
         Args: { p_records: Json };
         Returns: undefined;
       };
-      upsert_daily_progress: {
-        Args: {
-          p_user_id: string;
-          p_date: string;
-          p_xp_earned?: number;
-          p_cards_reviewed?: number;
-          p_cards_learned?: number;
-          p_study_time_minutes?: number;
-          p_activity_type?: string | null;
-          p_activity_count?: number;
-        };
-        Returns: undefined;
-      };
-      get_due_card_ids: {
-        Args: Record<PropertyKey, never>;
-        Returns: Array<{ card_id: string }>;
+      get_sync_state: {
+        Args: { p_since?: string | null };
+        Returns: Json;
       };
       append_learned_cards: {
         Args: { p_cards: string[] };

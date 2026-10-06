@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { AppIcon } from '../../../lib/widgets';
+import { PlayfulNavIcon } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 import { StudyActionSubMenu } from './StudyActionSubMenu';
 
@@ -11,6 +11,7 @@ interface PracticeStudyActionProps {
   onOpenGrammar?: () => void;
   onOpenReading?: () => void;
   hasFeedback?: boolean;
+  side?: 'top' | 'left' | 'right';
 }
 
 export function PracticeStudyAction({
@@ -20,6 +21,7 @@ export function PracticeStudyAction({
   onOpenGrammar,
   onOpenReading,
   hasFeedback,
+  side = 'top',
 }: PracticeStudyActionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [menuLeft, setMenuLeft] = useState<number | null>(null);
@@ -60,6 +62,7 @@ export function PracticeStudyAction({
       <StudyActionSubMenu
         open={isOpen && !hasFeedback}
         left={menuLeft}
+        side={side}
         onOpenGrammar={onOpenGrammar}
         onOpenReading={onOpenReading}
         onClose={onClose}
@@ -69,7 +72,6 @@ export function PracticeStudyAction({
         type="button"
         onClick={onToggle}
         aria-label="Study materials (grammar and reading)"
-        title="Study materials (grammar and reading)"
         aria-expanded={isOpen}
         aria-haspopup="menu"
         className={cn(
@@ -84,14 +86,27 @@ export function PracticeStudyAction({
             : 'hover:bg-ui-hover',
         )}
       >
-        <AppIcon
+        <PlayfulNavIcon
           name="grammar"
-          size={28}
           className={cn(
-            'h-7 w-7 text-feedback-warning-edge transition-transform duration-200',
+            'h-8 w-8 transition-transform duration-200',
             isOpen ? 'scale-95' : 'group-hover:scale-110 group-active:scale-95',
           )}
         />
+        <span
+          role="tooltip"
+          className={cn(
+            'pointer-events-none absolute z-50 hidden items-center',
+            {
+              left: 'right-full top-1/2 mr-3 -translate-y-1/2',
+              right: 'left-full top-1/2 ml-3 -translate-y-1/2',
+              top: 'bottom-full left-0 mb-3',
+            }[side],
+            'whitespace-nowrap rounded-control border-b-2 border-ui-border bg-ui-surface px-3 py-1.5 text-xs font-black uppercase tracking-wider text-ui-ink-strong shadow-md group-aria-expanded:!hidden [@media(hover:hover)]:group-hover:flex',
+          )}
+        >
+          Grammar &amp; Reading
+        </span>
       </button>
     </motion.div>
   );

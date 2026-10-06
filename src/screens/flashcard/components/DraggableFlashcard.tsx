@@ -10,6 +10,7 @@ import type { RankedExample } from '../../../utils/courseExamples';
 import { cn } from '../../../utils/cn';
 import { isHanziChar } from '../../../utils/hanzi';
 import { FlashcardBackFace, useFlashcardExtras } from '../../../features/flashcards';
+import { FavoriteButton } from '../../../features/library';
 import { useCardSwipe } from '../hooks/useCardSwipe';
 
 export interface DraggableFlashcardProps {
@@ -20,6 +21,7 @@ export interface DraggableFlashcardProps {
   triggerSwipeRate: (level: number, animDir?: number) => boolean | void;
   onCardTap: () => void;
   showPinyin?: boolean;
+  toneColors?: boolean;
   showTranslation?: boolean;
   examples?: RankedExample[];
   isExamplesLoading?: boolean;
@@ -51,12 +53,13 @@ const variants = {
 };
 
 function getFrontFontSize(len: number) {
-  if (len === 1) return 'text-[100px] sm:text-[130px] md:text-[150px] lg:text-[175px]';
-  if (len === 2) return 'text-[80px] sm:text-[100px] md:text-[120px] lg:text-[138px]';
-  if (len === 3) return 'text-[60px] sm:text-[76px] md:text-[90px] lg:text-[104px]';
-  if (len === 4) return 'text-[46px] sm:text-[60px] md:text-[72px] lg:text-[84px]';
-  if (len <= 6) return 'text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px]';
-  return 'text-[28px] sm:text-[36px] md:text-[42px] lg:text-[48px]';
+  // Sized from the card's own width (container query units), not breakpoints.
+  if (len === 1) return 'text-[length:clamp(88px,29cqw,220px)]';
+  if (len === 2) return 'text-[length:clamp(70px,23cqw,170px)]';
+  if (len === 3) return 'text-[length:clamp(52px,17cqw,128px)]';
+  if (len === 4) return 'text-[length:clamp(40px,14cqw,104px)]';
+  if (len <= 6) return 'text-[length:clamp(30px,10.5cqw,80px)]';
+  return 'text-[length:clamp(24px,8cqw,60px)]';
 }
 
 export const DraggableFlashcard = React.memo(function DraggableFlashcard({
@@ -67,6 +70,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
   triggerSwipeRate,
   onCardTap,
   showPinyin = true,
+  toneColors = false,
   showTranslation = true,
   examples,
   isExamplesLoading,
@@ -90,32 +94,47 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
     setShowHook(false);
   }, [isFlipped, card.front]);
 
-  const renderWordHookButton = () => {
-    if (!showWordHookChip || !wordHook) return null;
-
+  const renderCardActions = () => {
+    const hasHook = showWordHookChip && Boolean(wordHook);
     return (
-      <button
-        type="button"
-        aria-label={showHook ? `Hide memory hook for ${card.front}` : `Open memory hook for ${card.front}`}
-        aria-expanded={showHook}
+      <div
+        className="absolute right-4 top-4 z-10 flex items-center gap-2"
         onPointerDown={(event) => event.stopPropagation()}
-        onClick={(event) => {
-          event.stopPropagation();
-          if (isDragging) return;
-          setShowHook((prev) => {
-            if (backScrollRef.current) backScrollRef.current.scrollTop = 0;
-            return !prev;
-          });
-        }}
-        className={cn(
-          'absolute right-3.5 top-3.5 z-10 flex h-8 w-8 items-center justify-center rounded-full focus-ring active:scale-95',
-          showHook
-            ? 'bg-feedback-warning text-ui-ink-strong shadow-ambient-sm'
-            : 'text-ui-muted hover:bg-ui-hover hover:text-feedback-warning-edge active:bg-ui-divider',
-        )}
       >
-        <AppIcon name="hint" size={17} />
-      </button>
+        {hasHook && (
+          <button
+            type="button"
+            aria-label={showHook ? `Hide memory hook for ${card.front}` : `Open memory hook for ${card.front}`}
+            aria-expanded={showHook}
+            onClick={(event) => {
+              event.stopPropagation();
+              if (isDragging) return;
+              setShowHook((prev) => {
+                if (backScrollRef.current) backScrollRef.current.scrollTop = 0;
+                return !prev;
+              });
+            }}
+            className={cn(
+              'flex h-11 w-11 items-center justify-center rounded-control focus-ring active:scale-95',
+              showHook
+                ? 'bg-feedback-warning-surface ring-2 ring-feedback-warning'
+                : 'text-ui-muted hover:bg-ui-hover',
+            )}
+          >
+            <AppIcon name="hint" size={22} />
+          </button>
+        )}
+        <FavoriteButton
+          word={card.front}
+          traditional={card.traditional}
+          simplified={card.simplified}
+          pinyin={card.pinyin}
+          definitions={card.back}
+          size="lg"
+          variant="ghost"
+          className="h-11 w-11"
+        />
+      </div>
     );
   };
 
@@ -164,7 +183,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
         scale: { duration: reduceMotion ? 0 : 0.18, ease: [0.16, 1, 0.3, 1] },
       }}
       className={cn(
-        "absolute inset-x-0 mx-auto flex items-center justify-center transform-gpu will-change-transform w-[min(340px,calc(100vw-32px))] sm:w-[min(480px,calc(100vw-var(--workspace-nav-width,0px)-48px))] md:w-[min(540px,calc(100vw-var(--workspace-nav-width,0px)-48px))] lg:w-[min(620px,calc(100vw-var(--workspace-nav-width,0px)-64px))] max-w-[620px] h-[clamp(360px,48vh,420px)] sm:h-[clamp(420px,53vh,480px)] md:h-[clamp(450px,55vh,520px)] lg:h-[clamp(480px,58vh,560px)] select-none",
+        "absolute inset-x-0 mx-auto flex items-center justify-center transform-gpu will-change-transform w-[min(100cqw,760px,calc(100cqh*1.1))] h-[min(100cqh,calc(100cqw*1.3))] [container-type:size] select-none",
         isInteractive ? "pointer-events-auto" : "pointer-events-none",
       )}
       style={{
@@ -219,11 +238,12 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
             )}
             style={faceStyle(isFlipped)}
           >
-            {renderWordHookButton()}
+            {renderCardActions()}
             <FlashcardBackFace
               card={card}
               setActiveBreakdown={setActiveBreakdown}
               showPinyin={showPinyin}
+              toneColors={toneColors}
               showTranslation={showTranslation}
               examples={examples}
               isExamplesLoading={isExamplesLoading}

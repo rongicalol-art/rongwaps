@@ -22,7 +22,6 @@ const MIGRATIONS_DIR = resolve(process.cwd(), 'supabase', 'migrations');
 /** Tables the migrations leave in `public` (post-drops). Keep in sync with the migrations. */
 const EXPECTED_TABLES = [
   'user_card_progress',
-  'user_daily_progress',
   'user_flashcards',
   'user_folders',
   'user_learned_cards',
@@ -32,12 +31,11 @@ const EXPECTED_TABLES = [
 /** Functions the migrations leave in `public` (post-drops, overloads collapsed by name). */
 const EXPECTED_FUNCTIONS = [
   'append_learned_cards',
-  'get_due_card_ids',
+  'get_sync_state',
   'handle_new_user',
   'replace_learned_cards',
   'reset_user_learning_progress',
   'upsert_card_progress',
-  'upsert_daily_progress',
 ] as const;
 
 // Compile-time half: the literal lists must be exactly the Database keys, so a

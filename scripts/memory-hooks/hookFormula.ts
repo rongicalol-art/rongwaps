@@ -2,7 +2,7 @@
  * The memory-hook formula, prompt-ready — meaning-only era.
  *
  * Every generation, critic, and repair prompt embeds these rules. Sound work
- * lives in the Sound block (`public/data/sound-hooks/`), never in a hook.
+ * lives in the parts index (`public/data/relations/parts.json`), never in a hook.
  * See STYLE.md for the human version.
  */
 export const HOOK_FORMULA_RULES: string[] = [

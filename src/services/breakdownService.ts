@@ -1,7 +1,8 @@
 import { debugLogger } from '../utils/debugLogger';
 import { DBCharacterBreakdown } from '../types/database';
-import { breakdownCache, AppCache } from '../utils/cache';
-import { fetchBreakdownsFromPacks, fetchUsedAsFromPacks } from './contentPacks';
+import { breakdownCache } from '../utils/cache';
+import { fetchBreakdownsFromPacks, fetchPartsIndex } from './contentPacks';
+import { builtWith } from '../utils/parts';
 import { getDictionaryEntries, getDictionaryEntriesBatch } from './dictionaryService';
 
 const pendingRequests = new Map<string, Promise<DBCharacterBreakdown | null>>();
@@ -74,32 +75,14 @@ export async function getCharacterBreakdown(character: string): Promise<DBCharac
   return fetchPromise;
 }
 
-export const usedAsCache = new AppCache(500);
-
 /**
- * Fetches the characters that use a given component ("used in" lists).
- * Resolves pack-first from the static inverted index (instant, offline,
- * IndexedDB-cached); falls back to the database LIKE scan when packs are
- * unavailable.
+ * Characters built from a component ("used in" lists), from the static parts
+ * index (instant, offline, IndexedDB-cached). Sound-alikes come first; empty
+ * when the index is unavailable.
  */
 export async function getCharactersUsingComponent(component: string): Promise<string[]> {
-  if (usedAsCache.has(component)) {
-    return usedAsCache.get<string[]>(component) || [];
-  }
-
-  // Static inverted index (component -> characters) — zero network once cached.
-  try {
-    const index = await fetchUsedAsFromPacks();
-    if (index) {
-      const characters = index[component] || [];
-      usedAsCache.set(component, characters);
-      return characters;
-    }
-  } catch (err) {
-    debugLogger.warn('Cache', 'Used-as pack lookup failed:', err);
-  }
-
-  return [];
+  const index = await fetchPartsIndex();
+  return index ? builtWith(component, index).map((member) => member.character) : [];
 }
 
 export async function getMultipleBreakdowns(characters: string[]): Promise<Record<string, DBCharacterBreakdown>> {

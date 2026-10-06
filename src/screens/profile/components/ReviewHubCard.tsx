@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { ActionButton, AppIcon } from '../../../lib/widgets';
+import { ActionButton, AppIcon, PlayfulNavIcon } from '../../../lib/widgets';
 import { REVIEW_SESSION_CAP } from '../../../utils/reviewSession';
 import type { ReviewOverview } from '../../../utils/reviewOverview';
 
@@ -61,7 +61,7 @@ export const ReviewHubCard = memo(function ReviewHubCard({
       {/* Header with Title */}
       <div className="flex items-center gap-2.5">
         <div className="flex shrink-0 items-center justify-center text-brand-primary">
-          <AppIcon name="progress" size={24} />
+          <PlayfulNavIcon name="review" className="h-7 w-7" />
         </div>
         <h2 className="text-[17px] font-black leading-tight text-ui-ink-strong">
           Review

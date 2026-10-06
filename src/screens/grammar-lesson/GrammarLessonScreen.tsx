@@ -8,7 +8,7 @@ import type { InteractiveGrammarPart } from '../../types/models';
 import { cn } from '../../utils/cn';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useWorkspaceIsolation } from '../../hooks/useWorkspaceIsolation';
-import { StudySidePanel } from '../../lib/widgets';
+import { StudySidePanel, WorkspaceWindow } from '../../lib/widgets';
 import { GrammarLessonHeader } from './components/GrammarLessonHeader';
 import { GrammarConfusionDrawer } from './components/GrammarConfusionDrawer';
 import { GrammarConfusionPanel } from './components/GrammarConfusionPanel';
@@ -100,6 +100,12 @@ export function GrammarLessonScreen({
   });
 
   const hasConfusion = Boolean(page.confusion && page.confusion.items.length > 0);
+  const printedPages = page.printedPages;
+  const bookPageLabel = (page.bookPageAvailable ?? true) && printedPages.length > 0
+    ? printedPages.length === 1
+      ? `Book page ${printedPages[0]}`
+      : `Book pages ${printedPages[0]}–${printedPages.at(-1)}`
+    : null;
   const characterPreference = useAppStore((state) => state.characterPreference);
   const setCharacterPreference = useAppStore((state) => state.setCharacterPreference);
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
@@ -168,15 +174,15 @@ export function GrammarLessonScreen({
   }, [isBookOpen]);
 
   return (
-    <motion.div
+    <WorkspaceWindow
       ref={dialogRef}
       tabIndex={-1}
       initial={{ opacity: 0, y: '100%' }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: '100%' }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed inset-0 z-window flex flex-col overflow-hidden bg-ui-canvas outline-none transition-[padding-left] duration-300 ease-out"
-      style={{ paddingLeft: 'var(--workspace-nav-width)' }}
+      tone="canvas"
+      className="overflow-hidden"
       role="dialog"
       aria-modal="true"
       aria-label={`Lesson ${part.lessonId}, Part ${part.partId}: ${part.title}`}
@@ -192,7 +198,7 @@ export function GrammarLessonScreen({
             )}
           >
             <GrammarLessonHeader
-              title={`Part ${part.partId} - Grammar ${page.grammarNumber ?? (currentGrammarIndex + 1)}`}
+              title={`P${part.partId} · Grammar ${page.grammarNumber ?? (currentGrammarIndex + 1)}`}
               characterPreference={characterPreference}
               characterFont={characterFont}
               showPinyin={showPinyin}
@@ -209,6 +215,9 @@ export function GrammarLessonScreen({
               hasConfusion={hasConfusion}
               isConfusionOpen={isDesktop ? isSidePanelOpen : isConfusionOpen}
               onOpenConfusion={handleToggleConfusion}
+              bookPageLabel={bookPageLabel}
+              onOpenBookPage={() => setIsBookOpen(true)}
+              bookPageButtonRef={bookPageButtonRef}
             />
 
             <Suspense fallback={null}>
@@ -228,8 +237,6 @@ export function GrammarLessonScreen({
                         showPinyin={showPinyin}
                         showTranslation={showTranslation}
                         onOpenWord={setDictionaryWord}
-                        onOpenBookPage={() => setIsBookOpen(true)}
-                        bookPageButtonRef={bookPageButtonRef}
                       />
                     </motion.div>
                   </AnimatePresence>
@@ -287,6 +294,6 @@ export function GrammarLessonScreen({
           onOpenWord={setDictionaryWord}
         />
       )}
-    </motion.div>
+    </WorkspaceWindow>
   );
 }

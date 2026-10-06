@@ -1,126 +1,89 @@
 import { debugLogger } from '../utils/debugLogger';
 import { supabase } from './supabaseClient';
 import { SRSData } from '../utils/srsEngine';
-import { planFolderSync } from '../utils/cloudSyncQueue';
-import { rowToSrsData, srsDataToUpsert } from '../utils/srsRowMapping';
+import { rowToSrsData, srsDataToUpsert, type CardProgressRow } from '../utils/srsRowMapping';
+import type { CloudMetadataPayload } from '../utils/cloudSyncTransforms';
 
-export interface UserProgressData {
+export interface UserFolderRow {
+  id: string;
+  name: string;
+  color: string;
+}
+
+/** Wire shape of the `get_sync_state` RPC (see 20261005 migration). */
+interface SyncStateWire {
+  cards: CardProgressRow[] | null;
+  learned: string[] | null;
+  cursor: string | null;
+  profile: { updated_at: string | null; settings: Record<string, unknown> | null } | null;
+  folders: UserFolderRow[] | null;
+}
+
+export interface UserSyncState {
   srsData: Record<string, SRSData>;
   learnedCards: string[];
-  lastActivity: string | null;
+  /** Synced preferences from `user_profiles.settings`; empty for a new account. */
+  settings: Record<string, unknown>;
+  folders: UserFolderRow[];
+  /** Profile `updated_at`: last time settings were written from any device. */
   lastUpdated?: string;
   /**
-   * True when the card-progress query returned rows. Lets the caller merge
-   * even when the metadata row's updated_at is older — card updates don't
-   * touch user_progress.updated_at.
+   * True when the pull returned card or learned rows. Lets the caller merge
+   * even when the profile's updated_at is older — card updates don't touch it.
    */
-  hasCardDelta?: boolean;
+  hasDelta: boolean;
   /**
-   * Max last_updated across returned card rows — a server-derived watermark
-   * for incremental pulls. Undefined when no rows were returned.
+   * Newest timestamp among the returned rows — a server-derived watermark for
+   * incremental pulls. Undefined when no rows were returned.
    */
-  serverLastUpdated?: string;
+  cursor?: string;
+}
+
+/**
+ * Incremental pulls restart slightly before the cursor. A row stamped before
+ * the cursor can still become visible after a pull (its transaction committed
+ * late), and the cursor spans two tables; re-sending the last couple of
+ * seconds is cheap and idempotent for the merge.
+ */
+const PULL_OVERLAP_MS = 2_000;
+
+function overlapWindowStart(cursorIso: string): string {
+  const cursorMs = new Date(cursorIso).getTime();
+  return Number.isNaN(cursorMs) ? cursorIso : new Date(cursorMs - PULL_OVERLAP_MS).toISOString();
 }
 
 export const userService = {
-  // Fetch user progress from Supabase (card-level rows).
-  // Pass { since } to fetch only rows updated at/after that ISO timestamp
-  // (bounded incremental pull); omit for a full pull.
-  getProgress: async (
-    userId: string,
-    options?: { since?: string },
-  ): Promise<UserProgressData | null> => {
-    try {
-      // 1. Fetch from user_card_progress (granular table)
-      let query = supabase
-        .from('user_card_progress')
-        .select('card_id, ease, interval, repetitions, next_review_date, learning_step, last_updated')
-        .eq('user_id', userId);
-      if (options?.since) {
-        query = query.gte('last_updated', options.since);
-      }
-
-      // 2. Learned cards from the per-card table (source of truth).
-      //    Fails soft: before the learned_cards_table migration deploys the
-      //    query errors, and the legacy profile array is used instead.
-      const learnedRowsQuery = supabase
-        .from('user_learned_cards')
-        .select('card_id')
-        .eq('user_id', userId);
-
-      const [{ data: cardProgress, error: cardError }, learnedRows] = await Promise.all([
-        (async () => {
-          const { data, error } = await query;
-          return { data, error };
-        })(),
-        (async () => {
-          try {
-            const { data, error } = await learnedRowsQuery;
-            if (error) throw error;
-            return (data ?? [])
-              .map((row: { card_id: string }) => row.card_id)
-              .filter((id: unknown): id is string => typeof id === 'string');
-          } catch (e) {
-            debugLogger.warn('Supabase', 'user_learned_cards read failed, using legacy array:', e);
-            return null;
-          }
-        })(),
-      ]);
-
-      if (cardError) {
-        debugLogger.error('Supabase', "Error fetching card progress:", cardError);
-        throw cardError;
-      }
-
-      // 3. Metadata (last_activity) from the profile row
-      const { data: legacyRow, error: legacyError } = await supabase
-        .from('user_profiles')
-        .select('learned_cards, last_activity, updated_at')
-        .eq('id', userId)
-        .single();
-
-      if (legacyError && legacyError.code !== 'PGRST116') {
-        debugLogger.error('Supabase', "Error fetching legacy progress:", legacyError);
-        throw legacyError;
-      }
-
-      const legacyLearned = Array.isArray(legacyRow?.learned_cards)
-        ? (legacyRow?.learned_cards as unknown[]).filter((id): id is string => typeof id === 'string')
-        : [];
-      // Transitional read: union the table with the legacy array. The RPCs
-      // keep both in sync, but a legacy client (or the direct-upsert
-      // fallback while the RPC is missing) writes only the array, so the
-      // union is correct through the whole rollout. Once every client is
-      // upgraded the array can be dropped and this becomes a plain read.
-      const learnedCards = learnedRows !== null
-        ? Array.from(new Set([...learnedRows, ...legacyLearned]))
-        : legacyLearned;
-
-      // Convert card_progress rows back into SRSData map
-      const srsData: Record<string, SRSData> = {};
-      let serverLastUpdatedMs = 0;
-      if (cardProgress) {
-        for (const row of cardProgress) {
-          const rowTs = row.last_updated ? new Date(row.last_updated).getTime() : 0;
-          if (rowTs > serverLastUpdatedMs) serverLastUpdatedMs = rowTs;
-          srsData[row.card_id] = rowToSrsData(row);
-        }
-      }
-
-      return {
-        srsData,
-        learnedCards,
-        lastActivity: legacyRow?.last_activity || null,
-        lastUpdated: legacyRow?.updated_at || undefined,
-        hasCardDelta: Object.keys(srsData).length > 0,
-        serverLastUpdated: serverLastUpdatedMs > 0
-          ? new Date(serverLastUpdatedMs).toISOString()
-          : undefined,
-      };
-    } catch (e) {
-      debugLogger.error('Supabase', "Fetch exception:", e);
-      throw e;
+  // Everything the sync layer needs in one round trip: card rows, learned
+  // ids, profile settings and folders. Pass { since } to fetch only card and
+  // learned rows at/after that ISO timestamp (bounded incremental pull); omit
+  // for a full pull.
+  getSyncState: async (options?: { since?: string }): Promise<UserSyncState> => {
+    const { data, error } = await supabase.rpc('get_sync_state', {
+      p_since: options?.since ? overlapWindowStart(options.since) : null,
+    });
+    if (error) {
+      debugLogger.error('Supabase', 'Error fetching sync state:', error);
+      throw error;
     }
+
+    const wire = data as unknown as SyncStateWire;
+    const cards = wire.cards ?? [];
+    const learnedCards = (wire.learned ?? []).filter((id): id is string => typeof id === 'string');
+
+    const srsData: Record<string, SRSData> = {};
+    for (const row of cards) {
+      srsData[row.card_id] = rowToSrsData(row);
+    }
+
+    return {
+      srsData,
+      learnedCards,
+      settings: wire.profile?.settings ?? {},
+      folders: wire.folders ?? [],
+      lastUpdated: wire.profile?.updated_at ?? undefined,
+      hasDelta: cards.length > 0 || learnedCards.length > 0,
+      cursor: wire.cursor ?? undefined,
+    };
   },
 
   // Save granular card progress to user_card_progress table.
@@ -172,39 +135,39 @@ export const userService = {
     }
   },
 
-  // Full metadata replace (learned_cards, last_activity). The full-replace
-  // RPC keeps the per-card table and the legacy array consistent; when it is
-  // not deployed yet, the direct profile upsert still works (the table only
-  // catches up on the next append or replace RPC).
-  syncMetadata: async (
-    userId: string,
-    data: { learnedCards: string[]; lastActivity: string | null }
-  ) => {
-    try {
-      const { error: rpcError } = await supabase.rpc('replace_learned_cards', {
-        p_cards: data.learnedCards,
-      });
-      if (!rpcError) return;
-      debugLogger.warn('Supabase', 'replace_learned_cards RPC failed, falling back to direct upsert:', rpcError);
+  // Full replace of the learned set (first sync, or a progress reset that
+  // shrank it). The server keeps rows that survive, so only removed ids are
+  // deleted and new ones inserted.
+  replaceLearnedCards: async (cards: string[]): Promise<void> => {
+    const { error } = await supabase.rpc('replace_learned_cards', { p_cards: cards });
+    if (error) {
+      debugLogger.error('Supabase', 'replace_learned_cards failed:', error);
+      throw error;
+    }
+  },
 
-      const { error } = await supabase
-        .from('user_profiles')
-        .upsert(
-          {
-            id: userId,
-            learned_cards: data.learnedCards,
-            last_activity: data.lastActivity,
-            updated_at: new Date().toISOString(),
-          },
-          { onConflict: 'id' }
-        );
-      if (error) {
-        debugLogger.error('Supabase', "Error upserting learned cards:", error);
-        throw error;
-      }
-    } catch (e) {
-      debugLogger.error('Supabase', "Metadata sync exception:", e);
-      throw e;
+  // Append-only learned-card sync: new first passes are inserted server-side
+  // without re-uploading the whole list.
+  appendLearnedCards: async (cardIds: string[]): Promise<void> => {
+    const { error } = await supabase.rpc('append_learned_cards', { p_cards: cardIds });
+    if (error) {
+      debugLogger.error('Supabase', 'append_learned_cards failed:', error);
+      throw error;
+    }
+  },
+
+  // Persist the synced preferences on the profile row (not auth user_metadata,
+  // which is embedded in every access token).
+  syncSettings: async (userId: string, settings: CloudMetadataPayload): Promise<void> => {
+    const { error } = await supabase
+      .from('user_profiles')
+      .upsert(
+        { id: userId, settings, updated_at: new Date().toISOString() },
+        { onConflict: 'id' },
+      );
+    if (error) {
+      debugLogger.error('Supabase', 'Error syncing settings:', error);
+      throw error;
     }
   },
 
@@ -215,72 +178,6 @@ export const userService = {
     if (error) {
       debugLogger.error('Supabase', 'Learning progress reset failed:', error);
       throw error;
-    }
-  },
-
-  // Append-only learned-card sync via the `append_learned_cards` RPC: new
-  // first passes are added server-side without re-uploading the whole
-  // array. Returns false when the RPC is not deployed in the current
-  // environment so the caller can fall back to the full metadata write.
-  appendLearnedCards: async (userId: string, newCardIds: string[]): Promise<boolean> => {
-    if (newCardIds.length === 0) return true;
-    try {
-      const { error } = await supabase.rpc('append_learned_cards', {
-        p_cards: newCardIds,
-      });
-      if (error) {
-        debugLogger.warn('Supabase', 'append_learned_cards RPC failed:', error);
-        return false;
-      }
-      return true;
-    } catch (e) {
-      debugLogger.warn('Supabase', 'appendLearnedCards exception:', e);
-      return false;
-    }
-  },
-
-  // Save only last_activity — deliberately does not touch learned_cards, so
-  // an activity change never rewrites the (lifetime-growing) learned array.
-  syncLastActivity: async (userId: string, lastActivity: string | null) => {
-    try {
-      const { error } = await supabase
-        .from('user_profiles')
-        .upsert(
-          {
-            id: userId,
-            last_activity: lastActivity,
-            updated_at: new Date().toISOString(),
-          },
-          { onConflict: 'id' }
-        );
-      if (error) {
-        debugLogger.error('Supabase', 'Error syncing last activity:', error);
-        throw error;
-      }
-    } catch (e) {
-      debugLogger.error('Supabase', 'Last-activity sync exception:', e);
-      throw e;
-    }
-  },
-
-  // Due-card ids for the review session, straight from the server so reviews
-  // made on other devices count without waiting for the client pull. Returns
-  // null when the RPC is unavailable (not deployed / network error) and the
-  // caller falls back to the local SRS due filter.
-  getDueCardIds: async (): Promise<string[] | null> => {
-    try {
-      const { data, error } = await supabase.rpc('get_due_card_ids');
-      if (error) {
-        debugLogger.warn('Supabase', 'get_due_card_ids RPC failed, using local due filter:', error);
-        return null;
-      }
-      const ids = (data ?? [])
-        .map((row: { card_id: string }) => row.card_id)
-        .filter((id: unknown): id is string => typeof id === 'string');
-      return ids;
-    } catch (e) {
-      debugLogger.warn('Supabase', 'getDueCardIds exception:', e);
-      return null;
     }
   },
 
@@ -299,68 +196,6 @@ export const userService = {
       return data || [];
     } catch (e) {
       debugLogger.error('Supabase', "getCustomFolders exception:", e);
-      throw e;
-    }
-  },
-
-  // Sync custom folders for a user. `tombstoneIds` are sticky deletes: a
-  // tombstoned folder is never upserted and its server row is deleted, so a
-  // stale local list (another tab/device, or a reload between the delete and
-  // the debounced save) can never resurrect a deleted folder.
-  syncCustomFolders: async (
-    userId: string,
-    folders: { id: string; name: string; color: string }[],
-    tombstoneIds: string[] = [],
-  ): Promise<void> => {
-    try {
-      // Fetch remote ids first so the plan can split upserts from deletions.
-      const { data: remoteFolders, error: fetchError } = await supabase
-        .from('user_folders')
-        .select('id')
-        .eq('user_id', userId);
-
-      if (fetchError) {
-        debugLogger.error('Supabase', "Error fetching remote folders for reconciliation:", fetchError);
-        throw fetchError;
-      }
-
-      const plan = planFolderSync(
-        folders,
-        tombstoneIds,
-        (remoteFolders || []).map((row: { id: string }) => row.id),
-      );
-
-      if (plan.toUpsert.length > 0) {
-        const folderRows = plan.toUpsert.map(f => ({
-          id: f.id,
-          user_id: userId,
-          name: f.name,
-          color: f.color,
-        }));
-        const { error } = await supabase
-          .from('user_folders')
-          .upsert(folderRows, { onConflict: 'id' });
-
-        if (error) {
-          debugLogger.error('Supabase', "Error upserting custom folders:", error);
-          throw error;
-        }
-      }
-
-      if (plan.toDelete.length > 0) {
-        const { error: deleteError } = await supabase
-          .from('user_folders')
-          .delete()
-          .in('id', plan.toDelete)
-          .eq('user_id', userId);
-
-        if (deleteError) {
-          debugLogger.error('Supabase', "Error deleting stale folders:", deleteError);
-          throw deleteError;
-        }
-      }
-    } catch (e) {
-      debugLogger.error('Supabase', "syncCustomFolders exception:", e);
       throw e;
     }
   },

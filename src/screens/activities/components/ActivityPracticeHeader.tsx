@@ -3,6 +3,7 @@ import { PracticeHeader } from '../../../features/practice';
 import { useAppStore, selectPracticePreferences } from '../../../store/useAppStore';
 import type { ActivityType, CourseLessonPartProgress } from '../../../types/models';
 import type { FlashcardViewMode } from '../../flashcard';
+import { cn } from '../../../utils/cn';
 
 interface ActivityPracticeHeaderProps {
   resolvedActivity: ActivityType;
@@ -16,6 +17,8 @@ interface ActivityPracticeHeaderProps {
   onWritingClose: () => void;
   flashcardMode: FlashcardViewMode;
   activeBookId?: number;
+  /** Keeps the header clear of a vertical practice dock. */
+  insetClassName?: string;
 }
 
 export function ActivityPracticeHeader({
@@ -30,6 +33,7 @@ export function ActivityPracticeHeader({
   onWritingClose,
   flashcardMode,
   activeBookId,
+  insetClassName,
 }: ActivityPracticeHeaderProps) {
   const practiceHeader = useAppStore((state) => state.practiceHeader);
   const practiceHeaderActions = useAppStore((state) => state.practiceHeaderActions);
@@ -41,7 +45,7 @@ export function ActivityPracticeHeader({
   if (activeActivity === 'create-card') return null;
 
   return (
-    <div className={`absolute top-0 left-0 right-0 z-activity-header ${isOverlayOpen ? 'invisible' : ''}`}>
+    <div className={cn('absolute top-0 left-0 right-0 z-activity-header', isOverlayOpen && 'invisible', insetClassName)}>
       <PracticeHeader
         key={resolvedActivity}
         maxWidth="none"

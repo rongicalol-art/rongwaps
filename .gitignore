@@ -37,3 +37,6 @@ materials/
 .vite/
 .agents/
 .audit/
+
+# Claude Code local overrides
+.claude/settings.local.json

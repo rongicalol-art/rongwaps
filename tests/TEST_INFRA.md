@@ -58,7 +58,7 @@ This testing infrastructure is designed around five core tenets:
 - **Objective**: Verify pairwise combinations of subsystems operating together without data corruption or timing anomalies.
 - **Scope**:
   - **Audio Engine + Reader Dialogue Sync**: Official audio playback alignment with dialogue timestamp chunks (`getPhraseChunks`, ruby pinyin mapping).
-  - **SRS Engine + Cloud Sync Queue**: Card reviews -> session progress delta -> single-flight save coordinator -> tombstone pruning -> merge with remote snapshot.
+  - **SRS Engine + Cloud Sync Queue**: Card reviews -> single-flight save coordinator -> merge with remote snapshot.
   - **Widget Encapsulation + Presentation Container**: Props-down, events-up architecture in `SmartSentence` and `PosBadge` rendering within screen containers.
   - **Vocabulary Search + Character Decomposition**: Search query matching -> definition card retrieval -> stroke count & component lookup.
 

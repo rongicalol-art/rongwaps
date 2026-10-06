@@ -81,6 +81,7 @@ import {
   type QuizChoiceType,
   type ListeningChoiceType,
   type TypingPromptType,
+  type PracticeDockStyle,
   getPaceTimings,
   getPaceLabel,
   DEFAULT_PREFERENCES,
@@ -100,6 +101,7 @@ export type {
   QuizChoiceType,
   ListeningChoiceType,
   TypingPromptType,
+  PracticeDockStyle,
 };
 export {
   selectIsActivityOverlayOpen,
@@ -247,7 +249,6 @@ function derivePersistedState(state: AppState): Partial<AppState> {
 const PERSISTED_ARRAY_KEYS = [
   'favorites',
   'customFolders',
-  'deletedFolderIds',
   'localFlashcards',
   'learnedCards',
   'selectedBooks',

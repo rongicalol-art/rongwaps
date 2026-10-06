@@ -28,7 +28,6 @@ const EXPECTED_PERSISTED_KEYS = [
   'selectedBooks',
   'selectedLessonParts',
   'customFolders',
-  'deletedFolderIds',
   'foldersSyncedUserId',
   'libraryActiveFolder',
   'localFlashcards',
@@ -52,6 +51,7 @@ const EXPECTED_PERSISTED_KEYS = [
   'replayAudioAfterAnswer',
   'speakDefinition',
   'showPinyin',
+  'toneColors',
   'showTranslation',
   'hideExamplePinyin',
   'characterFont',
@@ -59,6 +59,8 @@ const EXPECTED_PERSISTED_KEYS = [
   'quizChoiceType',
   'listeningChoiceType',
   'typingPromptType',
+  'dockStyle',
+  'dockAutoHide',
 ].sort();
 
 test('persisted key set matches the declared slices contract exactly', () => {
@@ -75,7 +77,6 @@ const ACCOUNT_SWITCH_RESET_KEYS = [
   'learnedCards',
   'favorites',
   'customFolders',
-  'deletedFolderIds',
   'foldersSyncedUserId',
   'sessionProgress',
   'sessionProgressIndex',
@@ -118,7 +119,6 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
     customFolders: [{ id: 'f1', name: 'Mine', color: 'blue' }],
     libraryActiveFolder: 'f1',
     libraryActiveView: 'folder',
-    deletedFolderIds: ['f2'],
     foldersSyncedUserId: 'user-a',
     sessionProgress: { startTime: 1, cardsReviewed: 5, cardsLearned: 2 },
     sessionProgressIndex: { key: 3 },
@@ -155,7 +155,6 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
   assert.deepEqual(state.customFolders, []);
   assert.equal(state.libraryActiveFolder, 'all');
   assert.equal(state.libraryActiveView, 'home');
-  assert.deepEqual(state.deletedFolderIds, []);
   assert.equal(state.foldersSyncedUserId, null);
   assert.deepEqual(state.sessionProgress, createEmptySessionProgress());
   assert.deepEqual(state.sessionProgressIndex, {});

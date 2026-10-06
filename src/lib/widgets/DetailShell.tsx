@@ -4,15 +4,16 @@ import { motion, useReducedMotion } from 'motion/react';
 import { cn } from '../../utils/cn';
 import { useModalFocus } from '../../hooks/useModalFocus';
 import { ScreenHeader } from './ScreenHeader';
+import { WorkspaceWindow } from './WorkspaceWindow';
 
 export type DetailShellTone = 'practice' | 'canvas';
-export type DetailShellPosition = 'absolute' | 'fixed';
 
 export interface DetailShellRootProps {
   ariaLabel: string;
   tone?: DetailShellTone;
-  workspaceOffset?: boolean;
-  position?: DetailShellPosition;
+  /** Open as its own workspace window (`z-window-detail`, portaled to the
+   *  body) instead of filling the nearest positioned host. */
+  windowed?: boolean;
   zIndexClassName?: string;
   className?: string;
   style?: CSSProperties;
@@ -37,8 +38,7 @@ export interface DetailShellContentProps {
 export function DetailShellRoot({
   ariaLabel,
   tone = 'practice',
-  workspaceOffset = false,
-  position = 'absolute',
+  windowed = false,
   zIndexClassName = 'z-detail',
   className,
   style,
@@ -49,24 +49,34 @@ export function DetailShellRoot({
   const containerRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const modalFocus = useModalFocus({ containerRef, isActive: true, onEscape });
+  const dialogProps = {
+    ref: containerRef,
+    role: 'dialog',
+    'aria-modal': true,
+    'aria-label': ariaLabel,
+    tabIndex: -1,
+    onKeyDown: modalFocus.onKeyDown,
+  } as const;
+
+  if (windowed) {
+    const windowOutput = (
+      <WorkspaceWindow {...dialogProps} layer="window-detail" tone={tone} style={style} className={className}>
+        {children}
+      </WorkspaceWindow>
+    );
+    return typeof document !== 'undefined' ? createPortal(windowOutput, portalTarget || document.body) : windowOutput;
+  }
 
   const output = (
     <motion.div
-      ref={containerRef}
-      role="dialog"
-      aria-modal="true"
-      aria-label={ariaLabel}
-      tabIndex={-1}
-      onKeyDown={modalFocus.onKeyDown}
+      {...dialogProps}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: reduceMotion ? 0 : 0.18, ease: 'easeOut' }}
       style={style}
       className={cn(
-        'inset-0 flex h-full flex-col font-sans outline-none pointer-events-auto',
-        position === 'fixed' ? 'fixed' : 'absolute',
-        workspaceOffset ? 'workspace-window w-auto' : 'w-full',
+        'absolute inset-0 flex h-full w-full flex-col font-sans outline-none pointer-events-auto',
         tone === 'canvas' ? 'bg-ui-canvas' : 'bg-ui-practice-canvas',
         zIndexClassName,
         className
@@ -138,8 +148,7 @@ export interface DetailShellProps {
   maxWidthClassName?: string;
   headerMaxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'none';
   tone?: DetailShellTone;
-  workspaceOffset?: boolean;
-  position?: DetailShellPosition;
+  windowed?: boolean;
   style?: CSSProperties;
   scrollRef?: Ref<HTMLElement>;
   onScroll?: UIEventHandler<HTMLElement>;
@@ -171,8 +180,7 @@ export function DetailShell({
   maxWidthClassName = 'max-w-[1100px]',
   headerMaxWidth = 'none',
   tone = 'practice',
-  workspaceOffset = false,
-  position = 'absolute',
+  windowed = false,
   style,
   scrollRef,
   onScroll,
@@ -185,8 +193,7 @@ export function DetailShell({
     <DetailShellRoot
       ariaLabel={ariaLabel}
       tone={tone}
-      workspaceOffset={workspaceOffset}
-      position={position}
+      windowed={windowed}
       zIndexClassName={zIndexClassName}
       className={className}
       style={style}

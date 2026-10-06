@@ -12,7 +12,18 @@ const ICON_ACTION =
  * breakdown summary card. Plays the packaged recording when available,
  * falling back to neural TTS.
  */
-export function SummaryQuickActions({ char, audioSrc }: { char: string; audioSrc?: string | null }) {
+export function SummaryQuickActions({
+  char,
+  audioSrc,
+  pinyin: shownPinyin,
+  meaning: shownMeaning,
+}: {
+  char: string;
+  audioSrc?: string | null;
+  /** Reading and meaning the screen is showing, so Save keeps that sense instead of the first dictionary entry. */
+  pinyin?: string;
+  meaning?: string;
+}) {
   const entries = useCharDictionaryEntry(char);
   const characterPreference = useAppStore((state) => state.characterPreference);
 
@@ -48,8 +59,8 @@ export function SummaryQuickActions({ char, audioSrc }: { char: string; audioSrc
         word={headword}
         traditional={primary?.traditional}
         simplified={primary?.simplified}
-        pinyin={pinyinStr}
-        definitions={primary?.definitions}
+        pinyin={shownPinyin || pinyinStr}
+        definitions={shownMeaning || primary?.definitions}
         variant="ghost"
         size="md"
       />

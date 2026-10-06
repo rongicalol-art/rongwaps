@@ -1,14 +1,19 @@
 import { debugLogger } from '../../../utils/debugLogger';
 import { useState, useEffect, useMemo } from 'react';
 import { useCharBreakdown } from '../../../hooks/useCharBreakdown';
-import { getCharactersUsingComponent, getMultipleBreakdowns } from '../../../services/breakdownService';
+import { getMultipleBreakdowns } from '../../../services/breakdownService';
 import { searchVocabulary, fetchVocabulary } from '../../../services/vocabularyService';
 import type { Flashcard } from '../../../data/flashcards';
 import { getDecompositionRuntimeService } from '../../character-decomposition';
-import { rankParentCharacters, partitionRankedParents, buildCharacterCourseIndex, type UsedAsGroups } from '../utils/rankParentCharacters';
+import { buildCharacterCourseIndex } from '../utils/rankParentCharacters';
+import type { BuiltWithMember, RankedSoundFamily } from '../utils/rankBuiltWith';
 import { searchDictionaryWordsContaining, type DictionaryContainingWord } from '../../../services/dictionaryService';
 import { mergeBreakdownWords } from '../utils/mergeBreakdownWords';
-import { isStandardHanzi } from '../../../utils/hanzi';
+import { builtWith, soundFamily as resolveSoundFamily } from '../../../utils/parts';
+import { useParts } from '../../../hooks/useParts';
+import { useLevels } from '../../../hooks/useLevels';
+import { officialLevel, resolveLevel } from '../../../utils/levels';
+import { sortWords } from '../../../utils/wordOrdering';
 
 const HANZI_RE = /[\u4E00-\u9FFF\u3400-\u4DBF\u2E80-\u2FDF\u{20000}-\u{2A6DF}\u{2A700}-\u{2B73F}\u{2B740}-\u{2B81F}\u{2B820}-\u{2CEAF}]/u;
 const NON_CHAR_RE = /[⿰⿱⿲⿳⿴⿵⿶⿷⿸⿹⿺⿻\s！？?]/;
@@ -29,10 +34,8 @@ export function useSingleBreakdown(word: string, initialCharIndex: number, activ
   const charData = useCharBreakdown(activeChar);
   const decompositionRuntime = useMemo(() => getDecompositionRuntimeService(), []);
 
-  const [usedAsComponents, setUsedAsComponents] = useState<string[]>([]);
   const [allWords, setAllWords] = useState<Flashcard[]>([]);
   const [dictionaryWords, setDictionaryWords] = useState<DictionaryContainingWord[]>([]);
-  const [isUsedAsLoading, setIsUsedAsLoading] = useState(false);
   const [isRelatedLoading, setIsRelatedLoading] = useState(false);
 
   // Real course catalog (all books, cached) for ranking parent characters.
@@ -50,75 +53,50 @@ export function useSingleBreakdown(word: string, initialCharIndex: number, activ
     };
   }, []);
 
+  // "Built with": every pool character made from the active one, sound-alikes
+  // first (parts index), each tagged with its earliest course lesson.
+  const parts = useParts();
   const courseRank = useMemo(() => buildCharacterCourseIndex(courseVocab), [courseVocab]);
+  const builtWithMembers = useMemo<BuiltWithMember[]>(() => {
+    if (!parts || !activeChar) return [];
+    return builtWith(activeChar, parts).map((member) => ({ ...member, ...courseRank.get(member.character) }));
+  }, [parts, activeChar, courseRank]);
+  const usedAsComponents = useMemo(() => builtWithMembers.map((member) => member.character), [builtWithMembers]);
+  const isUsedAsLoading = parts === null;
 
-  // Active book first, then later books by number; non-course characters last.
-  const usedAsGroups = useMemo<UsedAsGroups>(() => {
-    if (usedAsComponents.length === 0 || courseVocab.length === 0) {
-      return { courseParents: [], otherParents: usedAsComponents };
-    }
-    const ranked = rankParentCharacters(usedAsComponents, courseVocab, activeBook.id);
-    return partitionRankedParents(ranked, courseVocab);
-  }, [usedAsComponents, courseVocab, activeBook.id]);
+  // Bounded background prefetch for the top visible items only (never hundreds).
+  useEffect(() => {
+    const topSlice = usedAsComponents.slice(0, 12);
+    if (topSlice.length === 0) return;
+    if (decompositionRuntime.runtime === 'v3') void decompositionRuntime.prefetch(topSlice);
+    else void getMultipleBreakdowns(topSlice);
+  }, [usedAsComponents, decompositionRuntime]);
 
   useEffect(() => {
     let active = true;
     if (word && activeChar) {
-      setIsUsedAsLoading(true);
       setIsRelatedLoading(true);
-      setUsedAsComponents([]);
       setAllWords([]);
       setDictionaryWords([]);
-
-      const parentsRequest = decompositionRuntime.runtime === 'v3'
-        ? decompositionRuntime.getParents(`g:${activeChar}`).then((result) => {
-            if (result.status === 'error') throw result.error ?? new Error(`Could not load characters containing ${activeChar}.`);
-            return result.status === 'found' ? result.parents : [];
-          })
-        : getCharactersUsingComponent(activeChar);
-
       Promise.allSettled([
-        parentsRequest.then((charsList) => {
-          if (!active) return;
-          // Filter to standard characters (plus course characters)
-          const cleanChars = charsList.filter((c) => isStandardHanzi(c) || courseVocab.some((card) => card.front === c));
-          setUsedAsComponents(cleanChars);
-          setIsUsedAsLoading(false);
-
-          // Bounded background prefetch for top visible items only (never hundreds)
-          const topSlice = cleanChars.slice(0, 12);
-          if (topSlice.length > 0) {
-            if (decompositionRuntime.runtime === 'v3') {
-              void decompositionRuntime.prefetch(topSlice);
-            } else {
-              void getMultipleBreakdowns(topSlice);
-            }
-          }
-        }).catch((err) => {
-          debugLogger.error('Supabase', 'Error fetching used as components:', err);
-          if (active) setIsUsedAsLoading(false);
-        }),
-        Promise.allSettled([
-          searchVocabulary(activeChar),
-          decompositionRuntime.runtime === 'v3'
-            ? searchDictionaryWordsContaining(activeChar)
-            : Promise.resolve([]),
-        ]).then(([courseResult, dictionaryResult]) => {
-          if (!active) return;
-          setAllWords(courseResult.status === 'fulfilled' ? courseResult.value : []);
-          setDictionaryWords(dictionaryResult.status === 'fulfilled' ? dictionaryResult.value : []);
-          setIsRelatedLoading(false);
-        })
-      ]);
+        searchVocabulary(activeChar),
+        decompositionRuntime.runtime === 'v3'
+          ? searchDictionaryWordsContaining(activeChar)
+          : Promise.resolve([]),
+      ]).then(([courseResult, dictionaryResult]) => {
+        if (!active) return;
+        setAllWords(courseResult.status === 'fulfilled' ? courseResult.value : []);
+        setDictionaryWords(dictionaryResult.status === 'fulfilled' ? dictionaryResult.value : []);
+        setIsRelatedLoading(false);
+      });
     } else {
-      setUsedAsComponents([]);
       setAllWords([]);
       setDictionaryWords([]);
     }
     return () => {
       active = false;
     };
-  }, [word, activeChar, decompositionRuntime, activeBook.id, courseVocab]);
+  }, [word, activeChar, decompositionRuntime, activeBook.id]);
 
   // Pre-fetch sub-components
   useEffect(() => {
@@ -141,28 +119,34 @@ export function useSingleBreakdown(word: string, initialCharIndex: number, activ
     );
   }, [charData, activeChar]);
 
+  // Sound family: the part this character borrows its sound from, and/or the
+  // characters that borrow its own sound — members tagged by course lesson.
+  const soundFamily = useMemo<RankedSoundFamily | null>(() => {
+    if (!parts || !activeChar) return null;
+    const family = resolveSoundFamily(activeChar, parts);
+    if (!family) return null;
+    const tag = (member: { character: string; grade: BuiltWithMember['grade'] }) => ({ ...member, ...courseRank.get(member.character) });
+    return {
+      from: family.from && { part: family.from.part, partRank: courseRank.get(family.from.part), grade: family.from.grade, siblings: family.from.siblings.map(tag) },
+      lends: family.lends.map(tag),
+    };
+  }, [parts, activeChar, courseRank]);
+
   const charCardsInfo = useMemo(() => {
     if (!activeChar) return [];
     return allWords.filter((c) => c.front === activeChar);
   }, [activeChar, allWords]);
 
+  const levels = useLevels();
   const relatedWords = useMemo(() => {
     if (!activeChar) return [];
     const allMatches = allWords.filter(
       (card) => card.front.includes(activeChar) && card.front !== activeChar,
     );
 
-    const bookId = activeBook?.id;
-    const sortedCourseWords = allMatches.sort((a, b) => {
-      if (bookId !== undefined && bookId !== null) {
-        if (a.bookId === bookId && b.bookId !== bookId) return -1;
-        if (a.bookId !== bookId && b.bookId === bookId) return 1;
-      }
-      if (a.bookId !== b.bookId) return a.bookId - b.bookId;
-      return a.lessonId - b.lessonId;
-    });
-    return mergeBreakdownWords(sortedCourseWords, dictionaryWords);
-  }, [activeChar, allWords, dictionaryWords, activeBook?.id]);
+    const sortedCourseWords = sortWords(allMatches, { activeBookId: activeBook?.id, levels });
+    return mergeBreakdownWords(sortedCourseWords, dictionaryWords, levels ? (w) => officialLevel(resolveLevel(w, levels)) : undefined);
+  }, [activeChar, allWords, dictionaryWords, activeBook?.id, levels]);
 
   return {
     activeChar,
@@ -170,13 +154,13 @@ export function useSingleBreakdown(word: string, initialCharIndex: number, activ
     charCardsInfo,
     components,
     usedAsComponents,
-    usedAsGroups,
+    builtWithMembers,
+    soundFamily,
     relatedWords,
     isUsedAsLoading,
     isRelatedLoading,
     breakdownCharIndex,
     setBreakdownCharIndex,
     chars,
-    courseRank,
   };
 }

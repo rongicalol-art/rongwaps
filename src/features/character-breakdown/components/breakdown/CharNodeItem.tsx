@@ -1,8 +1,9 @@
 import { useState, useMemo } from 'react';
-import { AppIcon } from '../../../../lib/widgets';
+import { AppIcon, LevelTag } from '../../../../lib/widgets';
+import { useLevels } from '../../../../hooks/useLevels';
+import { resolveLevel } from '../../../../utils/levels';
 import { motion, AnimatePresence } from 'motion/react';
 import { useAppStore } from '../../../../store/useAppStore';
-import { SAMPLE_BOOKS } from '../../../../data/books';
 import { numberToToneMarks } from '../../../../utils/pinyin';
 import { useComponentVocabRelation } from '../../../../hooks/useComponentVocabRelation';
 import { useCharBreakdown } from '../../../../hooks/useCharBreakdown';
@@ -25,9 +26,8 @@ export function CharNodeItem({
   accentTextClass = 'text-brand-secondary',
   onWordClick,
 }: CharNodeItemProps) {
+  const levels = useLevels();
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
-  const activeBookId = useAppStore((state) => state.activeBookId);
-  const activeBook = SAMPLE_BOOKS.find(b => b.id === activeBookId) || SAMPLE_BOOKS[0];
   const data = useCharBreakdown(char);
   const isUnknown = char === '？' || char === '?';
   const py = data?.pinyin?.[0] ? numberToToneMarks(data.pinyin[0]) : null;
@@ -107,30 +107,12 @@ export function CharNodeItem({
              {py ? (
                 <div className="flex items-center gap-2 mb-1 flex-wrap">
                   <span className="text-[13px] sm:text-[14px] font-black text-ui-ink tracking-widest leading-none">{py}</span>
-                  {badgeInfo && (() => {
-                    const bookInfo = SAMPLE_BOOKS.find(b => b.id === badgeInfo.bookId);
-                    const dotBg = bookInfo ? bookInfo.accentBg : activeBook.accentBg;
-                    return (
-                      <span className="shrink-0 flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-ui-muted tracking-widest uppercase opacity-80 select-none">
-                        <span>B{badgeInfo.bookId} · L{badgeInfo.lessonId}</span>
-                        <span className={`w-1.5 h-1.5 rounded-full ${dotBg} shrink-0`} />
-                      </span>
-                    );
-                  })()}
+                  {badgeInfo ? <LevelTag bookId={badgeInfo.bookId} lessonId={badgeInfo.lessonId} /> : <LevelTag level={resolveLevel(char, levels)} />}
                 </div>
               ) : (
                 <div className="flex items-center gap-2 mb-1 flex-wrap">
                   <span className="text-[13px] sm:text-[14px] font-black text-ui-muted tracking-widest leading-none">???</span>
-                  {badgeInfo && (() => {
-                    const bookInfo = SAMPLE_BOOKS.find(b => b.id === badgeInfo.bookId);
-                    const dotBg = bookInfo ? bookInfo.accentBg : activeBook.accentBg;
-                    return (
-                      <span className="shrink-0 flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-ui-muted tracking-widest uppercase opacity-80 select-none">
-                        <span>B{badgeInfo.bookId} · L{badgeInfo.lessonId}</span>
-                        <span className={`w-1.5 h-1.5 rounded-full ${dotBg} shrink-0`} />
-                      </span>
-                    );
-                  })()}
+                  {badgeInfo ? <LevelTag bookId={badgeInfo.bookId} lessonId={badgeInfo.lessonId} /> : <LevelTag level={resolveLevel(char, levels)} />}
                 </div>
               )}
               {def && <div className="text-[11px] sm:text-[12px] font-bold text-ui-muted uppercase truncate w-[130px] xs:w-[150px] sm:w-[180px] leading-tight">{def}</div>}

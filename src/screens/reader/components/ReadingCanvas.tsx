@@ -2,7 +2,7 @@ import { useCallback, useMemo, useRef, useEffect } from 'react';
 import type { DialogueAlignment, ReaderTextSize, ReadingRecord } from '../../../types/models';
 import { cn } from '../../../utils/cn';
 import { audioService } from '../../../services/audioService';
-import { findMatchingCourseVocab } from '../../../services/vocabularyService';
+import { findMatchingCourseVocab } from '../../../services/courseVocabLookup';
 import { useReaderWordInteractions } from '../hooks/useReaderWordInteractions';
 import { useReaderLocate } from '../hooks/useReaderLocate';
 import { useReaderDictionaryBatch } from '../hooks/useReaderDictionaryBatch';

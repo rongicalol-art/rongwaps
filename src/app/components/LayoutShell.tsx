@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { SideNav, navTabLabel, type SideNavProps } from './SideNav';
+import { SideNav, navTabLabel, sideNavWorkspaceOffset, SIDE_NAV_GUTTER, type SideNavProps } from './SideNav';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import { SAMPLE_BOOKS } from '../../data/books';
 
@@ -10,12 +10,6 @@ interface LayoutShellProps {
   children: React.ReactNode;
   activeTab: SideNavProps['activeTab'];
   activeActivity?: string | null;
-  /** True while an overlay window that only covers the workspace column (not
-   *  the whole viewport) sits on the practice canvas — e.g. the dictionary
-   *  detail overlay. The shell must match its tone so the lane beside the
-   *  sidebar never shows a different canvas. Reader/Grammar do NOT need this:
-   *  they paint their own full-viewport canvas. */
-  practiceCanvasOpen?: boolean;
   activeBook: CourseBook;
   isNavOpen: boolean;
   isCollapsed?: boolean;
@@ -43,17 +37,12 @@ export function LayoutShell({
   onSettingsClick,
   activityModals,
   isOverlayActive = false,
-  practiceCanvasOpen = false,
   showSidebarCollapse = false,
 }: LayoutShellProps) {
   useEffect(() => {
     const root = document.documentElement;
-    const desktopNavWidth = isDesktopOrTablet
-      ? isCollapsed
-        ? '108px'
-        : '288px'
-      : '0px';
-    root.style.setProperty('--workspace-desktop-nav-width', desktopNavWidth);
+    const desktopNavWidth = isDesktopOrTablet ? sideNavWorkspaceOffset(isCollapsed) : 0;
+    root.style.setProperty('--workspace-desktop-nav-width', `${desktopNavWidth}px`);
   }, [isDesktopOrTablet, isCollapsed]);
 
   // The shell owns the workspace view name; the study windows (reader, grammar)
@@ -62,15 +51,14 @@ export function LayoutShell({
 
   // This shell root is the ONLY owner of the workspace canvas tone. Every
   // child column (sidebar lane, content) is transparent and shows it through.
-  // Swap to the practice tone only when the open surface is practice-toned:
-  // a practice activity (activeActivity) or a column-only practice overlay
-  // (practiceCanvasOpen, e.g. dictionary detail). Reader/Grammar paint their
-  // own full-viewport canvas, so they never touch this swap. No color
-  // transition here: the swap applies instantly so nothing ever fades.
+  // Swap to the practice tone only while a practice activity is open. Windows
+  // (Reader, Grammar, dictionary/breakdown details) are `WorkspaceWindow`s that
+  // paint their own full-viewport canvas, so they never touch this swap. No
+  // color transition here: the swap applies instantly so nothing ever fades.
   return (
     <div
       className={`font-sans relative flex h-[100dvh] w-full overflow-hidden overscroll-none ${
-        activeActivity || practiceCanvasOpen ? 'bg-ui-practice-canvas' : 'bg-ui-canvas'
+        activeActivity ? 'bg-ui-practice-canvas' : 'bg-ui-canvas'
       }`}
     >
       {/* WCAG 2.4.1: the first tab stop skips the sidebar + workspace chrome.
@@ -92,9 +80,8 @@ export function LayoutShell({
       {/* Desktop / Tablet permanent floating sidebar (never hidden to 0px) */}
       <div className="hidden md:flex">
         <div
-          className={`absolute inset-y-4 left-4 z-shell flex shrink-0 flex-col rounded-modal border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface shadow-ambient-sm overflow-visible transition-[width] duration-200 ${
-            isCollapsed ? 'w-[76px]' : 'w-[256px]'
-          }`}
+          style={{ top: SIDE_NAV_GUTTER, bottom: SIDE_NAV_GUTTER, left: SIDE_NAV_GUTTER }}
+          className="absolute z-shell flex shrink-0 flex-col rounded-modal border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface shadow-ambient-sm overflow-visible"
         >
           <SideNav 
             activeTab={activeTab}
@@ -103,7 +90,6 @@ export function LayoutShell({
             onSettingsClick={onSettingsClick}
             onToggleCollapse={onToggleCollapse}
             accentClass={activeBook.accent}
-            buttonEdgeClass={activeBook.buttonEdge}
             isCollapsed={isCollapsed}
             showCollapseButton={showSidebarCollapse}
           />
@@ -141,7 +127,6 @@ export function LayoutShell({
                   setIsNavOpen(false);
                 }}
                 accentClass={activeBook.accent}
-                buttonEdgeClass={activeBook.buttonEdge}
                 isCollapsed={false}
               />
             </motion.div>
@@ -151,8 +136,7 @@ export function LayoutShell({
 
       <div
         data-workspace-content
-        className="absolute inset-y-0 right-0 z-10 flex flex-col overflow-hidden transition-[left] duration-300 ease-out"
-        style={{ left: 'var(--workspace-nav-width)' }}
+        className="workspace-window absolute inset-y-0 right-0 z-10 flex flex-col overflow-hidden"
       >
         <main
           id="main-content"

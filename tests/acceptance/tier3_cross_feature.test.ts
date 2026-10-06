@@ -6,7 +6,6 @@ import {
 } from '../../src/utils/dialogueSync';
 import {
   createSingleFlightSaveCoordinator,
-  getSessionProgressDelta,
   mergePulledSrsData,
 } from '../../src/utils/cloudSyncQueue';
 import { alignRubyPinyin, splitPinyinWordToSyllables } from '../../src/utils/rubyPinyin';
@@ -72,17 +71,10 @@ test('Tier 3: Cross-Feature - SRS Card Learning + Cloud Delta Reconciliation + S
     'c2': srs('c2', { interval: 1, repetition: 1, efactor: 2.5, nextReviewDate: 2000 }),
   };
 
-  const sessionStart = { cardsReviewed: 0, cardsLearned: 0 };
-  const sessionProgress = { cardsReviewed: 2, cardsLearned: 1 };
-
-  // 2. Calculate session delta
-  const delta = getSessionProgressDelta(sessionProgress, sessionStart);
-  assert.deepEqual(delta, { cardsReviewed: 2, cardsLearned: 1 });
-
-  // 3. Save through single-flight coordinator during concurrent attempts
-  const savedSnapshots: Array<{ cards: Record<string, SRSData>; progress: unknown }> = [];
+  // 2. Save through single-flight coordinator during concurrent attempts
+  const savedSnapshots: Array<{ cards: Record<string, SRSData> }> = [];
   const coordinator = createSingleFlightSaveCoordinator(
-    () => ({ fingerprint: 'f1', value: { cards: reviewedLocal, progress: delta } }),
+    () => ({ fingerprint: 'f1', value: { cards: reviewedLocal } }),
     async (snapshot) => {
       savedSnapshots.push(snapshot);
     },

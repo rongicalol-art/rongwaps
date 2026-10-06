@@ -86,6 +86,11 @@ export function useFloatingDockSleep({
       if (!enabledRef.current || isLockedAwakeRef.current) return;
 
       const commitSleep = () => {
+        // A menu may have opened while this delayed sleep was pending (the toggle click schedules it first).
+        if (isLockedAwakeRef.current) {
+          timerRef.current = null;
+          return;
+        }
         setIsAwake(false);
         onMouseLeaveRef.current?.();
         if (dockRef.current?.contains(document.activeElement)) {

@@ -67,25 +67,6 @@ export const authService = {
     return user ?? null;
   },
 
-  upsertProfile: async (user: User): Promise<void> => {
-    try {
-      if (!isSupabaseConfigured()) return;
-      const { error } = await supabase
-        .from('user_profiles')
-        .upsert({
-          id: user.id,
-          email: user.email,
-          full_name: user.user_metadata?.full_name || user.user_metadata?.name || null,
-          avatar_url: user.user_metadata?.avatar_url || user.user_metadata?.picture || null,
-          updated_at: new Date().toISOString(),
-        }, { onConflict: 'id' });
-      if (error) throw error;
-    } catch (error) {
-      debugLogger.error('Auth', "Failed to upsert profile:", error);
-      throw error;
-    }
-  },
-
   refreshSession: async (): Promise<void> => {
     try {
       if (!isSupabaseConfigured()) return;
@@ -93,21 +74,6 @@ export const authService = {
       if (error) throw error;
     } catch (error) {
       debugLogger.error('Auth', "Failed to refresh session:", error);
-      throw error;
-    }
-  },
-
-  /**
-   * Update user metadata in Supabase auth.
-   * Used by useCloudSync to persist preferences to user_metadata for cross-device sync.
-   */
-  updateUserMetadata: async (metadata: Record<string, unknown>): Promise<void> => {
-    try {
-      if (!isSupabaseConfigured()) return;
-      const { error } = await supabase.auth.updateUser({ data: metadata });
-      if (error) throw error;
-    } catch (error) {
-      debugLogger.error('Auth', "Failed to update user metadata:", error);
       throw error;
     }
   }

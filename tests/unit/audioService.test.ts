@@ -20,6 +20,7 @@ class FakeAudio {
   onerror: (() => void) | null = null;
   ontimeupdate: ((event: Event) => void) | null = null;
   pauseCount = 0;
+  paused = false;
 
   constructor() {
     FakeAudio.instances.push(this);
@@ -31,6 +32,7 @@ class FakeAudio {
 
   pause(): void {
     this.pauseCount += 1;
+    this.paused = true;
   }
 }
 
@@ -128,6 +130,24 @@ test('starting a new file resolves and stops the previous playback', async () =>
 
   service.stop();
   await secondPlayback;
+});
+
+test('overlap play lets the playing clip ring out on the spare element', async () => {
+  const service = new AudioService();
+  const first = FakeAudio.instances.at(-1)!;
+  service.initialize();
+  const spare = FakeAudio.instances.at(-1)!;
+  assert.notEqual(spare, first);
+  first.paused = false;
+  spare.paused = false;
+
+  void service.play('first.mp3', 1, '一', undefined, 0, { overlap: true });
+  const firstPauses = first.pauseCount;
+  assert.equal(service.getGlobalAudio(), spare, 'new clip moves to the spare element');
+  assert.equal(first.pauseCount, firstPauses, 'playing clip is not paused by overlap');
+
+  service.stop();
+  assert.equal(first.paused, true, 'stop() silences the tail too');
 });
 
 test('stopping speech resolves its playback promise', async () => {

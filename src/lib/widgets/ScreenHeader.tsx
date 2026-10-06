@@ -55,6 +55,9 @@ export interface ScreenHeaderProps {
   onClose?: () => void;
   onBack?: () => void;
   rightAction?: React.ReactNode;
+  /** Theme color for the close icon (defaults to the muted neutral). */
+  closeIconColor?: string;
+  closeIconClassName?: string;
   accentBgClassName?: string;
   className?: string;
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '4xl' | 'none';
@@ -88,6 +91,8 @@ export function ScreenHeader({
   onClose, 
   onBack, 
   rightAction,
+  closeIconColor,
+  closeIconClassName,
   accentBgClassName = "bg-brand-primary",
   className = "",
   maxWidth = 'none',
@@ -125,7 +130,7 @@ export function ScreenHeader({
             className="-ml-1"
             label="Close"
             size={controlMetrics.controlSize}
-            icon={<AppIcon name="close" size={controlMetrics.iconSize} />}
+            icon={<AppIcon name="close" size={controlMetrics.iconSize} color={closeIconColor} className={closeIconClassName} />}
           />
         ) : onBack ? (
           <IconActionButton

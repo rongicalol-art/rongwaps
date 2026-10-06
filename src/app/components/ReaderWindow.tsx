@@ -1,7 +1,7 @@
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence } from 'motion/react';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import { ReaderScreen } from '../../screens/reader';
-import { LoadingScreen } from '../../lib/widgets';
+import { LoadingScreen, WorkspaceWindow } from '../../lib/widgets';
 
 type ReaderScreenProps = React.ComponentProps<typeof ReaderScreen>;
 
@@ -28,17 +28,9 @@ export function ReaderWindow({ isOpen = false, readings, index, onNext, onPrevio
   return (
     <AnimatePresence mode="wait">
       {shouldRender && !activeReading && (
-        <motion.div
-          key="reader-loader"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.18, ease: 'easeOut' }}
-          className="fixed inset-0 z-window bg-ui-practice-canvas"
-          style={{ paddingLeft: 'var(--workspace-nav-width, 0px)' }}
-        >
-          <LoadingScreen message="Loading reading…" tone="practice" windowOverlay />
-        </motion.div>
+        <WorkspaceWindow key="reader-loader" tone="practice">
+          <LoadingScreen message="Loading reading…" tone="practice" />
+        </WorkspaceWindow>
       )}
       {shouldRender && activeReading && (
         <ReaderScreen

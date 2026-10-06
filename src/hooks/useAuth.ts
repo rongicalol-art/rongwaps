@@ -1,5 +1,4 @@
-import { debugLogger } from '../utils/debugLogger';
-import { useSyncExternalStore, useEffect, useState, useCallback } from 'react';
+import { useSyncExternalStore, useState, useCallback } from 'react';
 import { User } from '@supabase/supabase-js';
 import { authService } from '../services/authService';
 import { useAppStore, UserSnapshot } from '../store/useAppStore';
@@ -56,14 +55,6 @@ export function useAuth() {
   const storeUser = useAppStore((state) => state.currentUser);
   const initialLoading = useSyncExternalStore(subscribe, () => globalIsLoading);
   const [isAuthActionLoading, setIsAuthActionLoading] = useState(false);
-
-  useEffect(() => {
-    if (currentUser) {
-      authService.upsertProfile(currentUser).catch(err => {
-        debugLogger.warn('Auth', "Profile upsert failed (non-critical):", err);
-      });
-    }
-  }, [currentUser]);
 
   const loginWithGoogle = useCallback(async () => {
     setIsAuthActionLoading(true);

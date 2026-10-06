@@ -91,8 +91,8 @@ export function StudyPartProgressRail({
                   transition={interactionTransition}
                   aria-live="polite"
                   className={cn(
-                    "hidden min-w-14 shrink-0 whitespace-nowrap text-center text-sm font-extrabold sm:inline-flex sm:justify-center",
-                    isRetry ? "text-feedback-warning-edge tracking-wider" : "tabular-nums text-ui-muted"
+                    "hidden min-w-14 shrink-0 whitespace-nowrap text-center text-base font-black sm:inline-flex sm:justify-center",
+                    isRetry ? "text-feedback-warning-edge tracking-wider" : "tabular-nums text-ui-muted-strong"
                   )}
                 >
                   {isRetry ? 'Again' : `${Math.min(currentIndex + 1, totalCount)} / ${totalCount}`}

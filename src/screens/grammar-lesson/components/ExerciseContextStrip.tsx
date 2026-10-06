@@ -25,7 +25,7 @@ export function ExerciseContextStrip({ cues }: ExerciseContextStripProps) {
             useMobileRail && 'snap-start',
           )}
         >
-          <p className="text-[10px] font-black uppercase tracking-[0.08em] text-feedback-warning-edge">Book cue {index + 1}</p>
+          <p className="ui-eyebrow text-feedback-warning-edge">Book cue {index + 1}</p>
           <p className="mt-1 font-chinese text-lg font-black text-ui-ink-strong">{cue.label}</p>
           {cue.pinyin && <p className="text-xs font-bold text-brand-primary">{cue.pinyin}</p>}
           <p className="mt-1 text-xs font-bold leading-snug text-ui-muted-strong">{cue.detail}</p>

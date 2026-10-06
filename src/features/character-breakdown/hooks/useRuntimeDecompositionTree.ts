@@ -23,6 +23,24 @@ export interface RuntimeDecompositionTreeState {
   retry: (character: string) => void;
 }
 
+const HAN = /[\u3400-\u9FFF]/u;
+
+/** A multi-character word has no decomposition of its own: its "parts" are its characters. */
+function wordPartsResult(word: string): RuntimeDirectChildrenResult | null {
+  const chars = Array.from(word).filter((char) => HAN.test(char));
+  if (chars.length < 2) return null;
+  return {
+    status: 'found',
+    character: word,
+    children: chars.map((glyph) => ({
+      kind: 'glyph' as const,
+      key: glyph as RuntimeVisibleChild['key'],
+      glyph,
+      expansion: 'expandable' as const,
+    })),
+  };
+}
+
 function loadingState(): RuntimeTreeNodeState {
   return { status: 'loading' };
 }
@@ -47,6 +65,11 @@ export function useRuntimeDecompositionTree(character: string): RuntimeDecomposi
 
   const loadNode = useCallback(async (target: string) => {
     if (!target) return;
+    const wordParts = wordPartsResult(target);
+    if (wordParts) {
+      setNodes((current) => ({ ...current, [target]: resultState(wordParts) }));
+      return;
+    }
     const requestGeneration = generation.current;
     setNodes((current) => ({ ...current, [target]: loadingState() }));
     try {

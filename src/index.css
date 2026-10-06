@@ -95,7 +95,7 @@
 
   /* Soft off-white canvases keep white controls and cards visually distinct. */
   --color-ui-canvas: #f2f3f4;
-  --color-ui-practice-canvas: #e9eef1;
+  --color-ui-practice-canvas: #dfe5e9;
   --color-ui-surface: #ffffff;
   --color-ui-surface-hover: #fafafa;
   --color-ui-ink-strong: #2f3237;
@@ -130,6 +130,13 @@
   --color-feedback-danger-surface: #ffdfe0;
   --color-feedback-danger-edge: #ea2b2b;
   --color-feedback-danger-hover: #ff2b2b;
+
+  /* Pinyin tone colors (flashcard answer face). Each ≥4.5:1 on ui-surface. */
+  --color-tone-1: #e11d48;
+  --color-tone-2: #b45309;
+  --color-tone-3: #047857;
+  --color-tone-4: #0369a1;
+  --color-tone-5: #737373;
 
   --color-palette-purple: #ce82ff;
   --color-palette-purple-edge: #a855f7;
@@ -172,6 +179,7 @@
   --z-index-detail: 400;
   --z-index-detail-raised: 450;
   --z-index-window: 500;
+  --z-index-window-detail: 550;
   --z-index-shell: 600;
   --z-index-drawer: 650;
   --z-index-dialog: 700;
@@ -191,6 +199,7 @@
   --size-window-header: 71px;
   --workspace-desktop-nav-width: 288px;
   --workspace-nav-width: 0px;
+  --workspace-shift: 300ms ease-out;
 
   /* Universal Safe Area & Dock Layout Tokens */
   --safe-area-bottom: env(safe-area-inset-bottom, 0px);
@@ -350,9 +359,19 @@ body {
 }
 
 @layer utilities {
+  /* Everything that tracks the sidebar edge moves with one timing, so the
+     sidebar, the workspace column and open windows never drift apart. */
   .workspace-window {
     left: var(--workspace-nav-width) !important;
-    transition: left 300ms ease-out;
+    transition: left var(--workspace-shift);
+  }
+
+  .workspace-shift {
+    transition: padding-left var(--workspace-shift);
+  }
+
+  .workspace-resize {
+    transition: width var(--workspace-shift), padding var(--workspace-shift);
   }
 
   .window-header {
@@ -397,6 +416,12 @@ body {
     @apply outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/25;
   }
   
+  /* Universal floating-menu surface: dropdowns, settings popovers, dock sub-menus.
+     One outlined block with the tactile bottom edge; never hand-roll it. */
+  .popover-surface {
+    @apply rounded-feature border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface;
+  }
+
   /* Compact focus ring for inline tokens, small interactive text */
   .focus-ring-inline {
     @apply outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/30;
@@ -409,6 +434,17 @@ body {
     font-weight: 700;
     color: var(--color-ui-muted-strong);
     line-height: 1.625;
+  }
+
+  /* Small uppercase label above a block (section eyebrows, exercise cues).
+     One size, weight and tracking everywhere; colour stays with the caller. */
+  .ui-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    line-height: 1.25;
+    text-transform: uppercase;
   }
 
   /* Inline Chinese inside prose runs at the example-sentence scale so the

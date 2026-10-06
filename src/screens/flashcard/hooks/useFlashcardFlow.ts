@@ -118,7 +118,7 @@ export function useFlashcardFlow({
     if (flowStatus !== 'idle' || !isFlipped || !currentCard) return;
     if (!autoPlayAudio && !manualRevealAudioRef.current) return;
     manualRevealAudioRef.current = false;
-    audioService.play(currentCard.audio, pronunciationRate, currentCard.front);
+    audioService.play(currentCard.audio, pronunciationRate, currentCard.front, undefined, 0, { overlap: true });
   }, [autoPlayAudio, currentCard, flowStatus, isFlipped, pronunciationRate]);
 
   useEffect(() => {
@@ -158,7 +158,9 @@ export function useFlashcardFlow({
   });
 
   useEffect(() => {
-    if (activeBreakdown || mode === 'list') pauseFlow();
+    if (!activeBreakdown && mode !== 'list') return;
+    pauseFlow();
+    audioService.stop();
   }, [activeBreakdown, mode, pauseFlow]);
 
   useEffect(() => {

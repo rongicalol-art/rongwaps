@@ -3,6 +3,7 @@ import { AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
 import { useAppStore } from '../../../store/useAppStore';
 import { SAMPLE_BOOKS } from '../../../data/books';
+import { WorkspaceWindow } from '../../../lib/widgets';
 import { SingleBreakdownView } from '../../character-breakdown';
 import { WordDetailView } from './WordDetailView';
 
@@ -48,33 +49,23 @@ export function DictionaryDetailOverlay() {
     setStack((prev) => prev.slice(0, -1));
   };
 
-  const [portalNode, setPortalNode] = useState<HTMLElement | null>(null);
-  useEffect(() => {
-    setPortalNode(document.body);
-  }, []);
-
   const rootWord = stack[0];
-  const workspaceOffset = true;
   // Single characters open the shared breakdown screen (same as practice);
-  // multi-character words keep the full dictionary detail view.
-  const rootIsSingleChar =
-    !!rootWord &&
-    Array.from(rootWord.word).length === 1 &&
-    SINGLE_HANZI_RE.test(rootWord.word);
+  // multi-character words keep the full word breakdown view.
+  const isSingleChar = (word: string) => Array.from(word).length === 1 && SINGLE_HANZI_RE.test(word);
+  const rootIsSingleChar = !!rootWord && isSingleChar(rootWord.word);
 
   const overlayContent = (
     <AnimatePresence>
       {dictionaryWord && rootWord && (
-        <div
-          id="dictionary-detail-overlay-container"
-          className="fixed inset-0 z-dialog h-full w-full pointer-events-none"
-        >
+        // Its own window over the workspace or any open study window, so the
+        // tone behind the sidebar always matches and nothing beneath peeks out.
+        <WorkspaceWindow key="dictionary-detail" id="dictionary-detail-overlay-container" layer="window-detail" tone="practice">
           {rootIsSingleChar ? (
             <SingleBreakdownView
               key={`word-${rootWord.word}`}
               word={rootWord.word}
               initialCharIndex={0}
-              workspaceOffset={workspaceOffset}
               onClose={() => setDictionaryWord(null)}
               activeBook={activeBook}
               pushBreakdown={pushCharacter}
@@ -84,7 +75,6 @@ export function DictionaryDetailOverlay() {
             <WordDetailView
               key={`word-${rootWord.word}`}
               word={rootWord.word}
-              workspaceOffset={workspaceOffset}
               onClose={() => setDictionaryWord(null)}
               pushCharacter={pushCharacter}
               depth={0}
@@ -92,24 +82,33 @@ export function DictionaryDetailOverlay() {
           )}
 
           <AnimatePresence>
-            {stack.slice(1).map((item, idx) => (
-              <SingleBreakdownView
-                key={`char-${idx + 1}-${item.word}`}
-                word={item.word}
-                initialCharIndex={item.index}
-                workspaceOffset={workspaceOffset}
-                onBack={popCharacter}
-                activeBook={activeBook}
-                pushBreakdown={pushCharacter}
-                depth={idx + 1}
-              />
-            ))}
+            {stack.slice(1).map((item, idx) =>
+              isSingleChar(item.word) ? (
+                <SingleBreakdownView
+                  key={`char-${idx + 1}-${item.word}`}
+                  word={item.word}
+                  initialCharIndex={item.index}
+                  onBack={popCharacter}
+                  activeBook={activeBook}
+                  pushBreakdown={pushCharacter}
+                  depth={idx + 1}
+                />
+              ) : (
+                <WordDetailView
+                  key={`word-${idx + 1}-${item.word}`}
+                  word={item.word}
+                  onBack={popCharacter}
+                  pushCharacter={pushCharacter}
+                  depth={idx + 1}
+                />
+              ),
+            )}
           </AnimatePresence>
-        </div>
+        </WorkspaceWindow>
       )}
     </AnimatePresence>
   );
 
-  if (!portalNode) return overlayContent;
-  return createPortal(overlayContent, portalNode);
+  if (typeof document === 'undefined') return overlayContent;
+  return createPortal(overlayContent, document.body);
 }

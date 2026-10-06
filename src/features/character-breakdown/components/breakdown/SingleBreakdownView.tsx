@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { DetailShell, ScreenHeader } from "../../../../lib/widgets";
 import { BreakdownWordInfo } from "../BreakdownWordInfo";
@@ -7,10 +7,8 @@ import { DeepBreakdownModal } from "../DeepBreakdownModal";
 import { UsedAsListModal } from "../UsedAsListModal";
 import { RelatedWordsListModal } from "../RelatedWordsListModal";
 import { BreakdownSkeleton } from "../BreakdownSkeleton";
-import { BottomCharacterTabs } from "./BottomCharacterTabs";
 import { useSingleBreakdown } from "../../hooks/useSingleBreakdown";
-import { useAppStore } from "../../../../store/useAppStore";
-import { useSoundHook } from '../../../character-memory-hooks';
+import { useSoundClue } from '../../hooks/useSoundClue';
 import { SAMPLE_BOOKS } from '../../../../data/books';
 import { getDecompositionRuntimeService } from '../../../character-decomposition';
 import { V3CharacterBreakdown } from '../v3/V3CharacterBreakdown';
@@ -21,7 +19,6 @@ type CourseBook = (typeof SAMPLE_BOOKS)[number];
 interface SingleBreakdownViewProps {
   word: string;
   initialCharIndex: number;
-  workspaceOffset?: boolean;
   onBack?: () => void;
   onClose?: () => void;
   activeBook: CourseBook;
@@ -32,7 +29,6 @@ interface SingleBreakdownViewProps {
 export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
   word,
   initialCharIndex,
-  workspaceOffset = true,
   onBack,
   onClose,
   activeBook,
@@ -45,7 +41,6 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
   const [showUsedAsBreakdown, setShowUsedAsBreakdown] = useState(false);
   const [showRelatedBreakdown, setShowRelatedBreakdown] = useState(false);
   const [showV3Tree, setShowV3Tree] = useState(false);
-  const [showCharacterTabs, setShowCharacterTabs] = useState(false);
   
   const {
     activeChar,
@@ -53,47 +48,37 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
     charCardsInfo,
     components,
     usedAsComponents,
-    usedAsGroups,
+    builtWithMembers,
+    soundFamily,
     relatedWords,
     isUsedAsLoading,
     isRelatedLoading,
-    breakdownCharIndex,
     setBreakdownCharIndex,
     chars,
-    courseRank,
   } = useSingleBreakdown(word, initialCharIndex, activeBook);
-  const { sound } = useSoundHook(activeChar, true);
+  const soundClue = useSoundClue(activeChar, charData?.pinyin?.[0]);
   const decompositionRuntime = getDecompositionRuntimeService();
   const isV3Runtime = decompositionRuntime.runtime === 'v3';
-
-  const updateCharacterTabsVisibility = useCallback(() => {
-    const scroller = scrollRef.current;
-    if (!scroller) return;
-    const remaining = scroller.scrollHeight - scroller.scrollTop - scroller.clientHeight;
-    setShowCharacterTabs(remaining <= 56);
-  }, []);
-
-  useEffect(() => {
-    const frame = window.requestAnimationFrame(updateCharacterTabsVisibility);
-    return () => window.cancelAnimationFrame(frame);
-  }, [activeChar, charData, relatedWords.length, usedAsComponents.length, updateCharacterTabsVisibility]);
 
   return (
     <DetailShell.Root
       ariaLabel={`Character breakdown for ${word}`}
       tone="practice"
       style={{ zIndex: 300 + depth }}
-      workspaceOffset={workspaceOffset}
       onEscape={onBack ?? onClose}
     >
-      <DetailShell.Scroller ref={scrollRef} onScroll={updateCharacterTabsVisibility}>
+      <DetailShell.Scroller ref={scrollRef}>
         <ScreenHeader
           variant="panel"
           tone="practice"
           onClose={onClose}
           onBack={onBack}
           maxWidth="none"
-          centerContent={<h1 className="w-full text-center text-xs sm:text-sm font-black uppercase tracking-wider text-ui-ink-strong">Character breakdown</h1>}
+          centerContent={
+            <h1 className="w-full text-center text-xs sm:text-sm font-black uppercase tracking-wider text-ui-ink-strong">
+              Character breakdown
+            </h1>
+          }
           rightAction={<BreakdownSettingsPopover />}
         />
         <div className="relative mx-auto flex min-h-full w-full max-w-[1180px] flex-col gap-6 px-4 py-4 pb-12 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
@@ -124,14 +109,12 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
                     charData={charData}
                     charCardsInfo={charCardsInfo}
                     activeBook={activeBook}
-                    usedAsComponents={usedAsComponents}
-                    usedAsGroups={usedAsGroups}
+                    builtWithMembers={builtWithMembers}
+                    soundFamily={soundFamily}
                     relatedWords={relatedWords}
-                    sound={sound}
-                    courseRank={courseRank}
+                    soundClue={soundClue}
                     setDictionaryWord={pushBreakdown}
                     openTree={() => setShowV3Tree(true)}
-                    openUsedAsBreakdown={() => setShowUsedAsBreakdown(true)}
                     openRelatedBreakdown={() => setShowRelatedBreakdown(true)}
                   />
                 ) : (
@@ -156,33 +139,10 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
               </motion.div>
             )}
           </AnimatePresence>
-          <div className="h-28 shrink-0 pointer-events-none" />
         </div>
       </DetailShell.Scroller>
 
       <DetailShell.Floating>
-        {/* Bottom Fade Gradient Overlay */}
-        {chars.length > 1 && showCharacterTabs && (
-          <div 
-            className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none z-10"
-            style={{
-              background: 'linear-gradient(to top, var(--color-ui-practice-canvas) 0%, color-mix(in srgb, var(--color-ui-practice-canvas) 82%, transparent) 50%, transparent 100%)'
-            }}
-          />
-        )}
-
-        {/* Bottom Tabs for Characters */}
-        <AnimatePresence>
-          {showCharacterTabs && (
-            <BottomCharacterTabs
-              chars={chars}
-              selectedIndex={breakdownCharIndex}
-              onChange={setBreakdownCharIndex}
-              activeBook={activeBook}
-              layoutIdPrefix={`breakdown-${depth}-${word}`}
-            />
-          )}
-        </AnimatePresence>
 
         {/* Deep Breakdown Modal */}
         <AnimatePresence>
@@ -224,7 +184,7 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
               activeBook={activeBook}
               onClose={() => setShowRelatedBreakdown(false)}
               onWordClick={(w) => {
-                useAppStore.getState().setDictionaryWord(w);
+                pushBreakdown(w);
                 setShowRelatedBreakdown(false);
               }}
             />
@@ -236,7 +196,7 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
             <V3TreeScreen
               character={activeChar}
               data={charData}
-              sound={sound}
+              soundClue={soundClue}
               accentHex={activeBook.accentHex}
               edgeHex={activeBook.edgeHex}
               onBack={() => setShowV3Tree(false)}

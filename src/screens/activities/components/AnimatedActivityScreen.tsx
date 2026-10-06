@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'motion/react';
 import type { ReactNode } from 'react';
+import { cn } from '../../../utils/cn';
 
 const SLIDE_VARIANTS = {
   initial: (direction: number) => ({
@@ -35,6 +36,7 @@ interface AnimatedActivityScreenProps {
   children: ReactNode;
   direction: number;
   useSlide?: boolean;
+  className?: string;
 }
 
 export function AnimatedActivityScreen({
@@ -42,6 +44,7 @@ export function AnimatedActivityScreen({
   children,
   direction,
   useSlide = true,
+  className,
 }: AnimatedActivityScreenProps) {
   const reduceMotion = useReducedMotion();
 
@@ -54,7 +57,7 @@ export function AnimatedActivityScreen({
       animate="animate"
       exit="exit"
       transition={useSlide && !reduceMotion ? undefined : { duration: reduceMotion ? 0 : 0.2 }}
-      className="absolute inset-0 h-full w-full"
+      className={cn('absolute inset-0', className)}
     >
       {children}
     </motion.div>

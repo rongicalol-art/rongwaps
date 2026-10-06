@@ -1,10 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type RefObject } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import {
-  AppIcon,
-  IconActionButton,
-  ScreenHeader,
-} from '../../../lib/widgets';
+import { AppIcon, IconActionButton, ScreenHeader, PlayfulNavIcon } from '../../../lib/widgets';
 import { GrammarReadingAids } from './GrammarReadingAids';
 import type { CharacterFont } from '../../../store/useAppStore';
 
@@ -26,6 +22,10 @@ interface GrammarLessonHeaderProps {
   onToggleTranslation: () => void;
   onCharacterPreferenceChange: (preference: 'traditional' | 'simplified') => void;
   onCharacterFontChange: (font: CharacterFont) => void;
+  /** Label for the printed-book page(s) this grammar point covers; null hides the button. */
+  bookPageLabel?: string | null;
+  onOpenBookPage?: () => void;
+  bookPageButtonRef?: RefObject<HTMLButtonElement | null>;
 }
 
 export function GrammarLessonHeader({
@@ -44,6 +44,9 @@ export function GrammarLessonHeader({
   onToggleTranslation,
   onCharacterPreferenceChange,
   onCharacterFontChange,
+  bookPageLabel = null,
+  onOpenBookPage,
+  bookPageButtonRef,
 }: GrammarLessonHeaderProps) {
   const [isAidsOpen, setIsAidsOpen] = useState(false);
   const aidsRef = useRef<HTMLDivElement>(null);
@@ -75,6 +78,16 @@ export function GrammarLessonHeader({
       controlSize="lg"
       rightAction={
         <div className="flex items-center gap-2">
+          {bookPageLabel && onOpenBookPage && (
+            <IconActionButton
+              ref={bookPageButtonRef}
+              size="lg"
+              onClick={onOpenBookPage}
+              icon={<PlayfulNavIcon name="reference" className="h-7 w-7" />}
+              label={bookPageLabel}
+              title={bookPageLabel}
+            />
+          )}
           {hasConfusion && onOpenConfusion && (
             <IconActionButton
               size="lg"
@@ -106,7 +119,7 @@ export function GrammarLessonHeader({
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 4, scale: 0.98 }}
                     transition={{ duration: 0.16, ease: [0.32, 0.72, 0, 1] }}
-                    className="absolute right-0 top-full z-50 mt-2 w-64 sm:w-72 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-2.5 shadow-ambient-lg text-left"
+                    className="absolute right-0 top-full z-50 mt-2 w-64 sm:w-72 popover-surface p-2.5 text-left"
                   >
                     <GrammarReadingAids
                       characterPreference={characterPreference}

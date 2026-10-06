@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { AppIcon, ActionButton } from '../../../lib/widgets';
+import { AppIcon, ActionButton, PlayfulNavIcon } from '../../../lib/widgets';
 import { FolderItem } from './FolderItem';
 import { LibraryRecentCardsCard, type RecentItem } from './LibraryRecentCardsCard';
 import { LibraryStatsCard } from './LibraryStatsCard';
@@ -46,7 +46,7 @@ export function LibraryHomeView({
         <section className="min-h-[300px] rounded-feature bg-ui-surface p-4 sm:p-6 border-b-[length:var(--depth-md)] border-ui-border">
           <div className="mb-5 flex items-center justify-between gap-4 px-1">
               <div className="flex items-center gap-2.5">
-                <AppIcon name="folder" size={20} className="text-feedback-warning-edge" />
+                <PlayfulNavIcon name="library" className="h-6 w-6" />
                 <h2 className="text-[17px] font-black text-ui-ink-strong">Folders</h2>
               </div>
               <span className="text-[12px] font-extrabold text-ui-muted">

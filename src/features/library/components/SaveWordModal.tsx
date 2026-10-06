@@ -1,9 +1,10 @@
 import { debugLogger } from '../../../utils/debugLogger';
 import { useState, useRef, useEffect } from 'react';
-import { ActionButton, AppIcon, Dialog } from '../../../lib/widgets';
+import { motion } from 'motion/react';
+import { ActionButton, AppIcon, DropdownMenu, DropdownMenuItem, Drawer, FolderSvg } from '../../../lib/widgets';
 import { useAppStore } from '../../../store/useAppStore';
-import { useSaveWordDestination } from '../hooks/useSaveWordDestination';
-import { CUSTOM_FOLDER_OPTIONS, resolveFolderColor } from '../../../utils/folderColors';
+import { isTechnicalSense, useSaveWordDestination } from '../hooks/useSaveWordDestination';
+import { CUSTOM_FOLDER_OPTIONS, STARRED_FOLDER_COLOR, resolveFolderColor } from '../../../utils/folderColors';
 import { cn } from '../../../utils/cn';
 
 export function SaveWordModal() {
@@ -15,7 +16,9 @@ export function SaveWordModal() {
   const {
     headword,
     pinyin,
-    definitions,
+    senseOptions,
+    selectedSense,
+    pickSense,
     isFavorite,
     savedFolderCardsMap,
     customFolders,
@@ -25,13 +28,21 @@ export function SaveWordModal() {
   } = useSaveWordDestination(saveWordTarget);
 
   const [isCreatingFolder, setIsCreatingFolder] = useState(false);
+  const [isMeaningOpen, setIsMeaningOpen] = useState(false);
+  const [isWritingMeaning, setIsWritingMeaning] = useState(false);
+  const [customMeaning, setCustomMeaning] = useState('');
   const [newFolderName, setNewFolderName] = useState('');
   const [selectedColorId, setSelectedColorId] = useState<string>(CUSTOM_FOLDER_OPTIONS[0].id);
   const [isSubmittingFolder, setIsSubmittingFolder] = useState(false);
 
+  const newFolderColor = resolveFolderColor(selectedColorId);
+  const savedCount = (isFavorite ? 1 : 0) + savedFolderCardsMap.size;
+
   const newFolderInputRef = useRef<HTMLInputElement>(null);
 
   const handleClose = () => {
+    setIsWritingMeaning(false);
+    setCustomMeaning('');
     setIsCreatingFolder(false);
     setNewFolderName('');
     setSaveWordTarget(null);
@@ -60,205 +71,214 @@ export function SaveWordModal() {
   };
 
   return (
-    <Dialog.Root open={isOpen} onClose={handleClose} zIndexClassName="z-window">
-      <Dialog.Backdrop />
-      <Dialog.Content size="md" depth="md">
-        <Dialog.Header>
-          <Dialog.Title>Save Word</Dialog.Title>
-          <Dialog.Close label="Close save dialog" />
-        </Dialog.Header>
-        <Dialog.Body>
-      {/* Word Preview Banner */}
-      <div className="mb-4 flex items-center gap-3.5 rounded-control bg-ui-canvas p-3 border border-ui-border/60 shrink-0">
-        <span className="font-chinese text-2xl font-bold leading-none text-ui-ink-strong shrink-0">
-          {headword}
-        </span>
-        <div className="min-w-0 flex-1">
-          {pinyin && (
-            <p className="text-xs font-black text-brand-primary truncate">{pinyin}</p>
-          )}
-          {definitions && (
-            <p className="text-xs font-bold text-ui-muted-strong truncate mt-0.5">
-              {definitions}
-            </p>
-          )}
-        </div>
-      </div>
-
-      {/* Scrollable Destination List */}
-      <div className="flex-1 overflow-y-auto pr-1 -mr-1 space-y-2.5 min-h-[140px] max-h-[46vh] overscroll-contain">
-        <p className="text-[11px] font-black uppercase tracking-wider text-ui-muted-strong px-0.5">
-          Save to
-        </p>
-
-        {/* 1. Favorites (Starred Words) */}
-        <button
-          type="button"
-          role="checkbox"
-          aria-checked={isFavorite}
-          onClick={toggleFavorite}
-          className={cn(
-            'w-full flex items-center justify-between p-3 rounded-control border text-left transition-all outline-none focus-ring',
-            isFavorite
-              ? 'bg-feedback-warning-subtle/30 border-feedback-warning/50 shadow-sm'
-              : 'bg-ui-surface border-ui-border hover:bg-ui-hover',
-          )}
-        >
-          <div className="flex items-center gap-3 min-w-0 pr-2">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-feedback-warning/15 text-feedback-warning-edge">
-              <AppIcon name="bookmarkFilled" size={18} />
-            </div>
-            <div className="min-w-0">
-              <p className="text-sm font-extrabold text-ui-ink-strong leading-snug">
-                Favorites
-              </p>
-              <p className="text-xs font-bold text-ui-muted-strong truncate">
-                Quick-access starred words
-              </p>
-            </div>
-          </div>
-
-          <div
-            className={cn(
-              'flex h-6 w-6 shrink-0 items-center justify-center rounded-full transition-colors',
-              isFavorite
-                ? 'bg-feedback-warning text-white shadow-sm'
-                : 'border-2 border-ui-border text-transparent',
-            )}
-          >
-            <AppIcon name="check" size={14} />
-          </div>
-        </button>
-
-        {/* 2. Custom Folders */}
-        {customFolders.map((folder, idx) => {
-          const folderColor = resolveFolderColor(folder.color, idx);
-          const isInFolder = savedFolderCardsMap.has(folder.id);
-
-          return (
-            <button
-              key={folder.id}
-              type="button"
-              role="checkbox"
-              aria-checked={isInFolder}
-              onClick={() => void toggleFolder(folder.id)}
-              className={cn(
-                'w-full flex items-center justify-between p-3 rounded-control border text-left transition-all outline-none focus-ring',
-                isInFolder
-                  ? 'bg-brand-primary-soft/30 border-brand-primary/50 shadow-sm'
-                  : 'bg-ui-surface border-ui-border hover:bg-ui-hover',
-              )}
-            >
-              <div className="flex items-center gap-3 min-w-0 pr-2">
-                <div
-                  className={cn(
-                    'flex h-9 w-9 shrink-0 items-center justify-center rounded-full',
-                    folderColor.lightBg,
-                    folderColor.accent,
+    <Drawer.Root open={isOpen} onClose={handleClose} tone="surface">
+      <Drawer.Backdrop />
+      <Drawer.Content size="md" mdPlacement="side" ariaLabel="Save word" heightClassName="max-h-[85vh]">
+        <Drawer.StickyHeader>
+          <Drawer.Handle className="pb-2" />
+        </Drawer.StickyHeader>
+        <Drawer.Body className="px-4 sm:px-6 flex flex-col">
+          {(() => {
+            const content = (
+              <>
+                <span className="font-chinese text-3xl font-bold leading-none text-ui-ink-strong shrink-0">
+                  {headword}
+                </span>
+                <span className="min-w-0 flex-1 text-left">
+                  {pinyin && <span className="block text-sm font-black text-brand-primary">{pinyin}</span>}
+                  {selectedSense && (
+                    <span className="mt-0.5 line-clamp-2 block text-sm font-bold leading-snug text-ui-ink">
+                      {selectedSense}
+                    </span>
+                  )}
+                </span>
+              </>
+            );
+            if ((senseOptions.length === 0 && !selectedSense) || isCreatingFolder) {
+              return (
+                <div className="mb-4 flex shrink-0 items-center gap-3.5 rounded-control bg-ui-canvas p-3.5">
+                  {content}
+                </div>
+              );
+            }
+            if (isWritingMeaning) {
+              const commit = () => {
+                const trimmed = customMeaning.trim();
+                if (trimmed) pickSense(trimmed);
+                setIsWritingMeaning(false);
+              };
+              return (
+                <div className="mb-4 flex shrink-0 items-center gap-3.5 rounded-control border-2 border-brand-primary border-b-[length:var(--depth-md)] bg-ui-surface p-3.5">
+                  <span className="font-chinese text-3xl font-bold leading-none text-ui-ink-strong shrink-0">
+                    {headword}
+                  </span>
+                  <span className="min-w-0 flex-1 text-left">
+                    {pinyin && <span className="block text-sm font-black text-brand-primary">{pinyin}</span>}
+                    <input
+                      autoFocus
+                      type="text"
+                      aria-label="Your own meaning"
+                      placeholder="Type your own meaning"
+                      value={customMeaning}
+                      onChange={(e) => setCustomMeaning(e.target.value)}
+                      onBlur={commit}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') e.currentTarget.blur();
+                        if (e.key === 'Escape') {
+                          setCustomMeaning('');
+                          e.currentTarget.blur();
+                        }
+                      }}
+                      className="mt-0.5 block w-full bg-transparent text-sm font-bold leading-snug text-ui-ink outline-none placeholder:text-ui-muted"
+                    />
+                  </span>
+                </div>
+              );
+            }
+            return (
+              <div className="mb-4 shrink-0">
+                <DropdownMenu
+                  label="Meaning to save"
+                  open={isMeaningOpen}
+                  onOpenChange={setIsMeaningOpen}
+                  align="start"
+                  widthClassName="w-full"
+                  menuClassName="max-h-[60vh] overflow-y-auto"
+                  renderTrigger={(triggerProps) => (
+                    <button
+                      {...triggerProps}
+                      aria-label="Choose meaning to save"
+                      className="flex w-full items-center gap-3.5 rounded-control border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface p-3.5 outline-none transition-[background-color] hover:bg-ui-hover focus-ring active:scale-[0.99]"
+                    >
+                      {content}
+                      <motion.span
+                        aria-hidden="true"
+                        animate={{ rotate: isMeaningOpen ? 180 : 0 }}
+                        transition={{ duration: 0.15, ease: 'easeOut' }}
+                        className="shrink-0 text-ui-muted"
+                      >
+                        <AppIcon name="dropdown" size={18} />
+                      </motion.span>
+                    </button>
                   )}
                 >
-                  <AppIcon name="folder" size={18} />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-sm font-extrabold text-ui-ink-strong truncate leading-snug">
-                    {folder.name}
-                  </p>
-                  <p className="text-xs font-bold text-ui-muted-strong truncate">
-                    Custom folder
-                  </p>
-                </div>
+                  <DropdownMenuItem
+                    icon={<AppIcon name="pencil" size={18} />}
+                    onClick={() => {
+                      setIsMeaningOpen(false);
+                      setCustomMeaning('');
+                      setIsWritingMeaning(true);
+                    }}
+                  >
+                    Write your own
+                  </DropdownMenuItem>
+                  {senseOptions.map((sense) => (
+                    <DropdownMenuItem
+                      key={sense}
+                      active={sense === selectedSense}
+                      onClick={() => {
+                        setIsMeaningOpen(false);
+                        pickSense(sense);
+                      }}
+                    >
+                      <span
+                        className={cn(
+                          'line-clamp-2 block whitespace-normal leading-snug',
+                          isTechnicalSense(sense) && sense !== selectedSense && 'font-semibold text-ui-muted',
+                        )}
+                      >
+                        {sense}
+                      </span>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenu>
               </div>
+            );
+          })()}
 
-              <div
-                className={cn(
-                  'flex h-6 w-6 shrink-0 items-center justify-center rounded-full transition-colors',
-                  isInFolder
-                    ? 'bg-brand-primary text-white shadow-sm'
-                    : 'border-2 border-ui-border text-transparent',
-                )}
-              >
-                <AppIcon name="check" size={14} />
+          {isCreatingFolder ? (
+            <div className="flex flex-col items-center gap-4 pb-2">
+              <div className="relative aspect-[25/21] w-28">
+                <FolderSvg colorFront={newFolderColor.front} colorBack={newFolderColor.back} />
               </div>
-            </button>
-          );
-        })}
-
-        {/* 3. Inline Create Folder Form */}
-        {isCreatingFolder ? (
-          <div className="rounded-control border border-brand-primary/40 bg-brand-primary/5 p-3.5 space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-black uppercase tracking-wider text-brand-primary">
-                New Folder
-              </span>
-              <button
-                type="button"
-                onClick={() => setIsCreatingFolder(false)}
-                className="text-xs font-bold text-ui-muted hover:text-ui-ink"
-              >
-                Cancel
-              </button>
-            </div>
-
-            <input
-              ref={newFolderInputRef}
-              type="text"
-              aria-label="Folder name"
-              placeholder="Folder name (e.g. HSK 2, Travel)"
-              value={newFolderName}
-              onChange={(e) => setNewFolderName(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' && newFolderName.trim() && !isSubmittingFolder) {
-                  e.preventDefault();
-                  void handleCreateAndAdd();
-                }
-              }}
-              className="w-full rounded-control border border-ui-border bg-ui-surface px-3 py-2 text-sm font-semibold text-ui-ink outline-none focus-ring"
-            />
-
-            {/* Color Swatches */}
-            <div className="flex items-center gap-2 overflow-x-auto py-1">
-              {CUSTOM_FOLDER_OPTIONS.map((c) => {
-                const isSelected = selectedColorId === c.id;
-                return (
+              <input
+                ref={newFolderInputRef}
+                type="text"
+                aria-label="Folder name"
+                placeholder="Folder name (e.g. HSK 2, Travel)"
+                value={newFolderName}
+                onChange={(e) => setNewFolderName(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && newFolderName.trim() && !isSubmittingFolder) {
+                    e.preventDefault();
+                    void handleCreateAndAdd();
+                  }
+                }}
+                className="w-full rounded-control border-2 border-ui-border bg-ui-surface px-3 py-2.5 text-sm font-bold text-ui-ink outline-none focus-ring"
+              />
+              <div className="flex flex-wrap items-center justify-center gap-3 py-1">
+                {CUSTOM_FOLDER_OPTIONS.map((c) => (
                   <button
                     key={c.id}
                     type="button"
                     title={c.name}
+                    aria-label={c.name}
                     onClick={() => setSelectedColorId(c.id)}
                     className={cn(
-                      'h-7 w-7 rounded-full shrink-0 transition-transform active:scale-90',
-                      isSelected && 'ring-2 ring-brand-primary ring-offset-2 scale-110',
+                      'h-7 w-7 shrink-0 rounded-full transition-transform active:scale-90 focus-ring',
+                      selectedColorId === c.id && 'ring-2 ring-brand-primary ring-offset-2 scale-110',
                     )}
                     style={{ backgroundColor: c.front }}
                   />
-                );
-              })}
+                ))}
+              </div>
+              <div className="flex w-full gap-2">
+                <ActionButton variant="secondary" fullWidth onClick={() => setIsCreatingFolder(false)}>
+                  Cancel
+                </ActionButton>
+                <ActionButton
+                  variant="primary"
+                  fullWidth
+                  disabled={!newFolderName.trim() || isSubmittingFolder}
+                  onClick={() => void handleCreateAndAdd()}
+                >
+                  {isSubmittingFolder ? 'Creating...' : 'Create & Add'}
+                </ActionButton>
+              </div>
             </div>
-
-            <div className="flex justify-end gap-2 pt-1">
-              <ActionButton
-                variant="primary"
-                size="sm"
-                disabled={!newFolderName.trim() || isSubmittingFolder}
-                onClick={() => void handleCreateAndAdd()}
-              >
-                {isSubmittingFolder ? 'Creating...' : 'Create & Add'}
-              </ActionButton>
-            </div>
-          </div>
-        ) : (
-          <button
-            type="button"
-            onClick={() => setIsCreatingFolder(true)}
-            className="w-full flex items-center justify-center gap-2 p-3 rounded-control border border-dashed border-ui-border hover:border-brand-primary hover:bg-brand-primary/5 text-ui-muted hover:text-brand-primary text-sm font-bold transition-colors outline-none focus-ring"
-          >
-            <AppIcon name="plus" size={16} />
-            <span>New folder</span>
-          </button>
-        )}
-      </div>
-        </Dialog.Body>
-        <Dialog.Footer>
+          ) : (
+            <>
+              <p className="mb-2 px-0.5 text-[11px] font-black uppercase tracking-wider text-ui-muted-strong">
+                {savedCount > 0 ? `Saved in ${savedCount} ${savedCount === 1 ? 'folder' : 'folders'}` : 'Save to'}
+              </p>
+              <div className="grid grid-cols-2 gap-x-3 gap-y-4 pb-2">
+                <FolderTile
+                  title="Starred Words"
+                  front={STARRED_FOLDER_COLOR.front}
+                  back={STARRED_FOLDER_COLOR.back}
+                  isStarred
+                  isSaved={isFavorite}
+                  onToggle={toggleFavorite}
+                />
+                {customFolders.map((folder, idx) => {
+                  const color = resolveFolderColor(folder.color, idx);
+                  return (
+                    <FolderTile
+                      key={folder.id}
+                      title={folder.name}
+                      front={color.front}
+                      back={color.back}
+                      isSaved={savedFolderCardsMap.has(folder.id)}
+                      onToggle={() => void toggleFolder(folder.id)}
+                    />
+                  );
+                })}
+                <FolderTile title="New Folder" front="#E8EDF2" back="#D0D8E0" isNew onToggle={() => setIsCreatingFolder(true)} />
+              </div>
+            </>
+          )}
+        </Drawer.Body>
+        <div className={cn("shrink-0 px-4 pt-3 pb-4 sm:px-6", isCreatingFolder && "hidden")}>
           <ActionButton
             variant="primary"
             fullWidth
@@ -267,8 +287,53 @@ export function SaveWordModal() {
           >
             Done
           </ActionButton>
-        </Dialog.Footer>
-      </Dialog.Content>
-    </Dialog.Root>
+        </div>
+      </Drawer.Content>
+    </Drawer.Root>
+  );
+}
+
+function FolderTile({
+  title,
+  front,
+  back,
+  isStarred,
+  isNew,
+  isSaved,
+  onToggle,
+}: {
+  title: string;
+  front: string;
+  back: string;
+  isStarred?: boolean;
+  isNew?: boolean;
+  isSaved?: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      role={isNew ? undefined : 'checkbox'}
+      aria-checked={isNew ? undefined : Boolean(isSaved)}
+      onClick={onToggle}
+      className="group flex cursor-pointer select-none flex-col items-center gap-1.5 rounded-control px-1 py-2 outline-none transition-colors hover:bg-ui-hover focus-ring"
+    >
+      <div className="relative aspect-[25/21] w-full max-w-[120px] transition-transform duration-200 group-hover:-translate-y-0.5 group-active:scale-95 motion-reduce:transition-none">
+        <FolderSvg colorFront={front} colorBack={back} isStarred={isStarred} hasPlus={isNew} />
+        {isSaved && (
+          <span className="absolute -right-1.5 -top-1.5 flex h-7 w-7 items-center justify-center rounded-full bg-brand-primary text-white shadow-ambient-sm">
+            <AppIcon name="check" size={16} />
+          </span>
+        )}
+      </div>
+      <span
+        className={cn(
+          'line-clamp-2 w-full px-1 text-center text-[14px] font-black',
+          isSaved ? 'text-brand-primary' : 'text-ui-ink-strong',
+        )}
+      >
+        {title}
+      </span>
+    </button>
   );
 }

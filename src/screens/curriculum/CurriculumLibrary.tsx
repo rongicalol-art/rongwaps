@@ -224,6 +224,9 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
               >
                 <AppIcon name="play" size={20} />
                 <span>Start</span>
+                <span className="font-bold opacity-80">
+                  · {selectedLessonCount} {selectedLessonCount === 1 ? 'lesson' : 'lessons'}
+                </span>
               </ActionButton>
             </div>
           </motion.div>

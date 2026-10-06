@@ -3,6 +3,7 @@ import type { PracticePreferences } from '../../../store/useAppStore';
 import { cn } from '../../../utils/cn';
 import { DetailShell, ScreenHeader, SettingsDropdownPicker } from '../../../lib/widgets';
 import { SettingsToggleRow } from '../settings/PracticeSettingControls';
+import { PRACTICE_DOCK_STYLE_OPTIONS } from '../../../store/slices/practicePreferencesSlice';
 import { CharacterAppearanceSection } from '../settings/CharacterAppearanceSection';
 
 export interface PracticeSettingsScreenProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -14,37 +15,46 @@ export interface PracticeSettingsScreenProps extends React.HTMLAttributes<HTMLDi
   onCharacterPreferenceChange: (preference: 'traditional' | 'simplified') => void;
 }
 
+const SPEED_PRESETS = [0.75, 1.0, 1.5, 2.0] as const;
+
+/** Snaps any stored rate to the nearest preset (ties go to the slower one). */
 export function normalizePronunciationRate(rate: number): number {
-  if (rate <= 0.85) return 0.75;
-  if (rate >= 1.15) return 1.25;
-  return 1.0;
+  return SPEED_PRESETS.reduce((best, preset) =>
+    Math.abs(preset - rate) < Math.abs(best - rate) ? preset : best,
+  );
 }
 
 type BooleanPreferenceKey =
   | 'showPinyin'
+  | 'toneColors'
   | 'hideExamplePinyin'
   | 'showTranslation'
   | 'autoPlayAudio'
   | 'speakDefinition'
   | 'replayAudioAfterAnswer'
   | 'autoAdvanceCorrect'
-  | 'autoAdvanceWrong';
+  | 'autoAdvanceWrong'
+  | 'dockAutoHide';
 
 const SPEED_OPTIONS: Array<{ value: number; label: string }> = [
   { value: 0.75, label: 'Slow (0.75x)' },
   { value: 1.0, label: 'Normal (1.0x)' },
-  { value: 1.25, label: 'Fast (1.25x)' },
+  { value: 1.5, label: 'Fast (1.5x)' },
+  { value: 2.0, label: 'Fastest (2.0x)' },
 ];
 
+// Slowest first.
 const FLIP_DELAY_OPTIONS = [
-  { value: '500', label: 'Fast' },
-  { value: '1200', label: 'Normal' },
   { value: '2000', label: 'Slow' },
+  { value: '1200', label: 'Normal' },
+  { value: '500', label: 'Fast' },
+  { value: '200', label: 'Fastest' },
 ];
 const NEXT_CARD_DELAY_OPTIONS = [
-  { value: '1000', label: 'Fast' },
-  { value: '2000', label: 'Normal' },
   { value: '3000', label: 'Slow' },
+  { value: '2000', label: 'Normal' },
+  { value: '1000', label: 'Fast' },
+  { value: '300', label: 'Fastest' },
 ];
 
 function SettingsPageSection({
@@ -86,10 +96,7 @@ export function PracticeSettingsScreen({
     <DetailShell.Root
       ariaLabel="Practice settings"
       tone="practice"
-      position="fixed"
-      workspaceOffset={true}
-      zIndexClassName="z-dialog"
-      portalTarget={typeof document !== 'undefined' ? document.body : null}
+      windowed
       onEscape={onClose}
     >
       <DetailShell.Scroller className="overscroll-contain">
@@ -117,6 +124,12 @@ export function PracticeSettingsScreen({
                 checked={preferences.showPinyin}
                 onClick={toggle('showPinyin')}
                 label="Pinyin"
+                className="border-b-0"
+              />
+              <SettingsToggleRow
+                checked={preferences.toneColors}
+                onClick={toggle('toneColors')}
+                label="Tone colors"
                 className="border-b-0"
               />
               <SettingsToggleRow
@@ -198,6 +211,24 @@ export function PracticeSettingsScreen({
                   onChange={(value) => onPreferencesChange({ flowBackDelayMs: Number(value) })}
                 />
               </div>
+            </SettingsPageSection>
+
+            <SettingsPageSection title="Practice dock">
+              <div className="px-2">
+                <SettingsDropdownPicker
+                  label="Dock style"
+                  ariaLabel="Practice dock style"
+                  value={preferences.dockStyle}
+                  options={PRACTICE_DOCK_STYLE_OPTIONS.map(({ value, label }) => ({ value, label }))}
+                  onChange={(value) => onPreferencesChange({ dockStyle: value as PracticePreferences['dockStyle'] })}
+                />
+              </div>
+              <SettingsToggleRow
+                checked={preferences.dockAutoHide}
+                onClick={toggle('dockAutoHide')}
+                label="Auto Hide"
+                className="border-b-0"
+              />
             </SettingsPageSection>
 
             <SettingsPageSection title="Mistake repeats">

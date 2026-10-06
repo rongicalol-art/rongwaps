@@ -1,6 +1,7 @@
 import type { Flashcard } from '../../../data/flashcards';
 import { vocabularyCache } from '../../../utils/cache';
 import { isStandardHanzi } from '../../../utils/hanzi';
+import { groupWordsByBook, type WordOrderContext } from '../../../utils/wordOrdering';
 
 export interface UsedAsGroupItem {
   char: string;
@@ -55,16 +56,19 @@ export function deriveUsedAsItems(usedAsComponents: string[]): {
     .filter(item => item.badgeInfo === null && isStandardHanzi(item.char))
     .slice(0, 35);
 
-  // Sort course items by book and lesson
-  inCourse.sort((a, b) => {
-    if (a.badgeInfo!.bookId !== b.badgeInfo!.bookId) {
-      return a.badgeInfo!.bookId - b.badgeInfo!.bookId;
-    }
-    return a.badgeInfo!.lessonId - b.badgeInfo!.lessonId;
-  });
-
   return {
     inCourseItems: inCourse,
     outOfCourseItems: outOfCourse,
   };
+}
+
+type InCourseItem = UsedAsGroupItem & { badgeInfo: NonNullable<UsedAsGroupItem['badgeInfo']> };
+const asWord = (item: InCourseItem) => ({ ...item, front: item.char, ...item.badgeInfo });
+
+/** In-course used-as items grouped in the shared word order (current book, then 1-4, easiest first). */
+export function groupUsedAsByBook(items: UsedAsGroupItem[], context: WordOrderContext) {
+  return groupWordsByBook(
+    items.filter((item): item is InCourseItem => item.badgeInfo !== null).map(asWord),
+    context,
+  );
 }

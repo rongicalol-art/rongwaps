@@ -1,3 +1,4 @@
+import type { MouseEvent } from 'react';
 import { cn } from '../../utils/cn';
 
 export interface EdgeNavButtonsProps {
@@ -37,6 +38,8 @@ export function EdgeNavButtons({
 }: EdgeNavButtonsProps) {
   const widthClass =
     width === 'edge' ? 'w-[20%] max-w-[130px] cursor-pointer' : 'w-1/2';
+  // Pointer-only zones are aria-hidden; a click must not leave focus on them.
+  const keepFocusOff = (e: MouseEvent<HTMLButtonElement>) => e.preventDefault();
 
   return (
     <>
@@ -46,6 +49,7 @@ export function EdgeNavButtons({
         aria-hidden="true"
         aria-label={previousLabel}
         disabled={!canNavigatePrevious || !onPrevious}
+        onMouseDown={keepFocusOff}
         onClick={(e) => {
           e.stopPropagation();
           onPrevious?.();
@@ -64,6 +68,7 @@ export function EdgeNavButtons({
         aria-hidden="true"
         aria-label={nextLabel}
         disabled={!canNavigateNext || !onNext}
+        onMouseDown={keepFocusOff}
         onClick={(e) => {
           e.stopPropagation();
           onNext?.();

@@ -74,6 +74,7 @@ export function FlashcardScreen({
 
   const { toggleCard } = useDeckExclusionActions(deckExclusionKey);
   const showPinyin = useAppStore((state) => state.showPinyin);
+  const toneColors = useAppStore((state) => state.toneColors);
   const showTranslation = useAppStore((state) => state.showTranslation);
 
   const { wrappedHandleNext, pauseFlow, triggerManualReveal, autoPlayAudio } = useFlashcardFlow({
@@ -214,7 +215,7 @@ export function FlashcardScreen({
         className="pointer-events-none relative flex h-full max-w-[760px] flex-col items-center justify-center pb-dock-clearance pt-2"
       >
         <div className="pointer-events-none flex flex-1 w-full flex-col items-center justify-center">
-          <div className="pointer-events-none relative z-10 mx-auto flex h-full max-h-[min(520px,calc(100dvh-170px))] w-full max-w-[680px] flex-col items-center justify-center px-4">
+          <div className="pointer-events-none relative z-10 mx-auto flex h-full max-h-[min(680px,calc(100dvh-170px))] w-full max-w-[824px] flex-col items-center justify-center px-4 py-3 sm:px-8 sm:py-6 [container-type:size]">
             <AnimatePresence initial={false} custom={direction}>
               {currentCard && (
                 <DraggableFlashcard
@@ -225,6 +226,7 @@ export function FlashcardScreen({
                   setActiveBreakdown={setActiveBreakdown}
                   triggerSwipeRate={triggerSwipeRate}
                   showPinyin={showPinyin}
+                  toneColors={toneColors}
                   showTranslation={showTranslation}
                   onCardTap={handleCardTap}
                 />

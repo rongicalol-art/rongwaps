@@ -1,5 +1,8 @@
 import { numberToToneMarks } from '../../../utils/pinyin';
 import type { DBDictionaryEntry } from '../../../types/database';
+import { LevelTag } from '../../../lib/widgets';
+import { useLevels } from '../../../hooks/useLevels';
+import { resolveLevel } from '../../../utils/levels';
 
 export function FallbackWords({
   word,
@@ -10,6 +13,7 @@ export function FallbackWords({
   fallbackWords: Array<{ word: string; entries: DBDictionaryEntry[] }>;
   onOpenWord: (word: string) => void;
 }) {
+  const levels = useLevels();
   return (
     <div className="flex flex-col gap-5">
       <div className="flex flex-col gap-1.5 border-b-2 border-ui-divider pb-5">
@@ -28,12 +32,13 @@ export function FallbackWords({
           >
             <div>
               <span className="font-chinese text-3xl font-black text-ui-ink-strong">{part}</span>
-              <div className="mt-1 flex flex-wrap gap-1.5">
+              <div className="mt-1 flex flex-wrap items-center gap-1.5">
                 {(partEntries[0].pinyin || []).slice(0, 2).map((py, i) => (
                   <span key={i} className="text-xs font-bold text-brand-primary">
                     {numberToToneMarks(py)}
                   </span>
                 ))}
+                <LevelTag level={resolveLevel(part, levels)} />
               </div>
             </div>
             <ul className="space-y-1">

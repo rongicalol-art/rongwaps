@@ -66,9 +66,10 @@ function LessonItemBase({
         disabled={isLocked}
         onClick={() => onToggle(lesson.id)}
         aria-pressed={isSelected}
-        className="group flex min-w-0 flex-1 items-center gap-4 self-stretch p-4 text-left outline-none transition-colors hover:bg-ui-hover focus-ring disabled:cursor-not-allowed"
+        aria-label={`${lesson.label}: ${englishTitle}${isLocked ? ' (locked)' : ''}`}
+        className="group flex min-w-0 flex-1 items-center gap-3 self-stretch p-3 text-left sm:gap-4 sm:p-4 outline-none transition-colors hover:bg-ui-hover focus-ring disabled:cursor-not-allowed"
       >
-        <span className="relative flex h-14 w-14 shrink-0 items-center justify-center">
+        <span className="relative flex h-12 w-12 shrink-0 sm:h-14 sm:w-14 items-center justify-center">
           <img
             src={landscapeSrc}
             alt=""
@@ -88,12 +89,12 @@ function LessonItemBase({
         </span>
 
         <span className="min-w-0 flex-1">
-          <span className={`mb-0.5 block text-xs font-extrabold uppercase tracking-widest transition-colors ${
+          <span className={`mb-0.5 block whitespace-nowrap text-xs font-extrabold uppercase tracking-wider transition-colors sm:tracking-widest ${
             isSelected ? accentColor : 'text-ui-muted'
           }`}>
             {lesson.label}
           </span>
-          <span className={`block truncate text-lg font-extrabold transition-colors ${
+          <span className={`block line-clamp-2 text-base font-extrabold leading-tight transition-colors sm:text-lg ${
             isSelected ? 'text-ui-ink' : 'text-ui-muted group-hover:text-ui-ink'
           }`}>
             {englishTitle}
@@ -109,7 +110,7 @@ function LessonItemBase({
             disabled={isLocked}
             onClick={() => onOpenGrammar(grammarPartId)}
             aria-label={`Open grammar for ${englishTitle}`}
-            className={`flex w-[3.75rem] shrink-0 items-center justify-center outline-none transition-[background-color,transform] duration-150 focus-ring focus-visible:ring-inset active:scale-95 disabled:active:scale-100 ${
+            className={`flex w-12 shrink-0 sm:w-[3.75rem] items-center justify-center outline-none transition-[background-color,transform] duration-150 focus-ring focus-visible:ring-inset active:scale-95 disabled:active:scale-100 ${
               isLocked
                 ? 'cursor-not-allowed text-ui-muted'
                 : isSelected

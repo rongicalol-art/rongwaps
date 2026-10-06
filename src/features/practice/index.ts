@@ -1,6 +1,7 @@
 export { PracticeHeader } from './components/PracticeHeader';
 export { PracticeSettingsScreen } from './components/PracticeSettingsScreen';
 export { EmptyReviewState } from './components/EmptyReviewState';
+export { DOCK_SWAP, PracticeDockSlotOutlet, PracticeDockSlotProvider, usePracticeDockSlot } from './components/PracticeDockSlot';
 export { FeedbackBottomBar } from './components/FeedbackBottomBar';
 export { LessonComplete } from './components/LessonComplete';
 export { PracticeChoiceButton } from './components/PracticeChoiceButton';

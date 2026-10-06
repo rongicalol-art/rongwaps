@@ -67,15 +67,8 @@ export function AppOverlays({
 }: AppOverlaysProps) {
   return (
     <>
-      <GrammarWindow
-        isOpen={isGrammarOpen}
-        part={grammarPart}
-        initialPageId={grammarPageId}
-        onClose={onCloseGrammar}
-        onProceedToReading={onProceedToReading}
-        onNavigatePart={onNavigateGrammarPart}
-      />
-
+      {/* Reader and Grammar share the `z-window` rung; Grammar renders after
+          the Reader so a grammar part opened from a reading sits on top. */}
       <ReaderWindow
         isOpen={isReaderOpen}
         readings={readings}
@@ -84,6 +77,15 @@ export function AppOverlays({
         onPrevious={onReaderPrevious}
         onClose={onCloseReader}
         onOpenGrammarPart={onOpenGrammarPart}
+      />
+
+      <GrammarWindow
+        isOpen={isGrammarOpen}
+        part={grammarPart}
+        initialPageId={grammarPageId}
+        onClose={onCloseGrammar}
+        onProceedToReading={onProceedToReading}
+        onNavigatePart={onNavigateGrammarPart}
       />
 
       <DictionaryDetailOverlay />

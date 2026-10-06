@@ -7,8 +7,6 @@ import {
 } from '../../src/utils/dialogueSync';
 import {
   getNextCloudSyncBackoff,
-  getSessionProgressDelta,
-  pruneAcknowledgedTombstones,
 } from '../../src/utils/cloudSyncQueue';
 import {
   formatPosLabel,
@@ -62,15 +60,6 @@ test('Tier 2: Dialogue Sync Boundaries - Word range safely handles mismatched re
   assert.equal(wordRangeForTime(mockAlignment, 99, 1.0, '這是一個測試'), null);
 });
 
-test('Tier 2: Cloud Sync Boundaries - Negative progress deltas are clamped to current values', () => {
-  // If local counter was reset or corrupted, deltas should fall back to current values without going negative
-  const current = { cardsReviewed: 2, cardsLearned: 1 };
-  const previousCorrupted = { cardsReviewed: 20, cardsLearned: 5 };
-
-  const delta = getSessionProgressDelta(current, previousCorrupted);
-  assert.deepEqual(delta, { cardsReviewed: 2, cardsLearned: 1 });
-});
-
 test('Tier 2: Cloud Sync Boundaries - Backoff calculation caps delay and penalizes rate limiting', () => {
   // Fresh failure
   const delay1 = getNextCloudSyncBackoff(0, new Error('network down'));
@@ -83,13 +72,6 @@ test('Tier 2: Cloud Sync Boundaries - Backoff calculation caps delay and penaliz
   // Growing backoff capped at 60s
   const delayCapped = getNextCloudSyncBackoff(50000, new Error('network down'));
   assert.equal(delayCapped, 60000);
-});
-
-test('Tier 2: Cloud Sync Boundaries - Tombstone pruning handles empty and disjoint lists', () => {
-  assert.deepEqual(pruneAcknowledgedTombstones([], []), []);
-  assert.deepEqual(pruneAcknowledgedTombstones(['t1', 't2'], []), []);
-  assert.deepEqual(pruneAcknowledgedTombstones([], ['t1']), []);
-  assert.deepEqual(pruneAcknowledgedTombstones(['t1'], ['t1']), ['t1']);
 });
 
 test('Tier 2: Linguistic Boundaries - POS formatting handles unknown, compound, and whitespace inputs', () => {

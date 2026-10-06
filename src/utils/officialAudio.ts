@@ -3,9 +3,9 @@
  *
  * The publisher's official MP3s are named `B1-LL-P-T.mp3` (lesson-part-track),
  * which maps 1:1 onto the app's `audioReference` strings (e.g. `01-1-3` →
- * `B1-01-1-3.mp3`). Book 1's tracks are hosted in the `vocabulary-audio`
- * Supabase bucket, so they stream through the existing durable-cache → public
- * URL → /api/audio proxy chain and degrade to TTS like any other audio file.
+ * `B1-01-1-3.mp3`). Book 1's tracks are hosted in the Cloudflare R2 bucket
+ * behind VITE_AUDIO_BASE_URL, so they stream through the existing durable-cache →
+ * public URL chain and degrade to TTS like any other audio file.
  *
  * Books 2–4 official audio is not hosted yet; `officialAudioFileName` returns
  * null for them so callers fall back to TTS automatically.

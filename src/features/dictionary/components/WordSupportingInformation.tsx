@@ -1,126 +1,57 @@
-import { useState, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { ReferenceRow, SectionEyebrow } from '../../../lib/widgets';
-import { getDictionaryEntries } from '../../../services/dictionaryService';
-import { sanitizeDictionaryDefinitions } from '../../../utils/dictionaryDefinitions';
+import { CourseOrLevelTag } from './CourseOrLevelTag';
 import { numberToToneMarks } from '../../../utils/pinyin';
 import type { SAMPLE_BOOKS } from '../../../data/books';
 import type { WordRelatedWord } from '../hooks/useWordExtras';
+import { useLevels } from '../../../hooks/useLevels';
+import { levelRank } from '../../../utils/wordOrdering';
 
-const HANZI_RE = /[\u3400-\u9FFF]/u;
 const SEE_ALL_CLASSES =
   'min-h-9 shrink-0 rounded-compact px-2.5 text-xs font-extrabold text-brand-primary transition-colors hover:bg-brand-primary/10 focus-ring';
 const DEFAULT_VISIBLE_RELATED = 5;
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
 
-interface CharacterInfo {
-  char: string;
-  pinyin: string;
-  meaning: string;
-}
-
 export function hasWordSupportingInfo(
-  word: string,
   relatedWords: WordRelatedWord[],
   isRelatedLoading: boolean,
 ): boolean {
-  const chars = Array.from(word).filter((char) => HANZI_RE.test(char));
-  return chars.length > 0 || isRelatedLoading || relatedWords.length > 0;
+  return isRelatedLoading || relatedWords.length > 0;
 }
 
 export function WordSupportingInformation({
-  word,
-  pushCharacter,
   relatedWords,
   isRelatedLoading,
   onOpenWord,
   activeBook,
 }: {
-  word: string;
-  pushCharacter: (char: string) => void;
   relatedWords: WordRelatedWord[];
   isRelatedLoading: boolean;
   onOpenWord: (word: string) => void;
   activeBook: CourseBook;
 }) {
-  const chars = Array.from(word).filter((char) => HANZI_RE.test(char));
-  const [charInfos, setCharInfos] = useState<CharacterInfo[]>([]);
-  const [charsLoading, setCharsLoading] = useState(false);
   const [showAllRelated, setShowAllRelated] = useState(false);
-
-  useEffect(() => {
-    let active = true;
-    setCharsLoading(true);
-    Promise.all(chars.map(async (char) => ({ char, entries: await getDictionaryEntries(char) })))
-      .then((resolved) => {
-        if (!active) return;
-        setCharInfos(
-          resolved.map(({ char, entries }) => {
-            const entry = entries[0];
-            const defs = sanitizeDictionaryDefinitions(entry?.definitions).definitions;
-            return {
-              char,
-              pinyin: entry?.pinyin?.[0] ? numberToToneMarks(entry.pinyin[0]) : '',
-              meaning: defs[0] || '',
-            };
-          }),
-        );
-        setCharsLoading(false);
-      })
-      .catch(() => {
-        if (active) {
-          setCharInfos([]);
-          setCharsLoading(false);
-        }
-      });
-    return () => {
-      active = false;
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [word]);
+  const levels = useLevels();
+  // Easiest first; unleveled words keep their order after.
+  const orderedRelated = useMemo(
+    () => relatedWords
+      .map((item, index) => ({ item, index, level: levelRank(item.word, levels) }))
+      .sort((a, b) => a.level - b.level || a.index - b.index)
+      .map(({ item }) => item),
+    [relatedWords, levels],
+  );
 
   const visibleRelated = showAllRelated
-    ? relatedWords
-    : relatedWords.slice(0, DEFAULT_VISIBLE_RELATED);
+    ? orderedRelated
+    : orderedRelated.slice(0, DEFAULT_VISIBLE_RELATED);
 
-  if (!hasWordSupportingInfo(word, relatedWords, isRelatedLoading)) {
+  if (!hasWordSupportingInfo(relatedWords, isRelatedLoading)) {
     return null;
   }
 
   return (
     <section className="flex min-w-0 flex-col gap-4" aria-label="Word context">
-      {/* Characters Card */}
-      {chars.length > 0 && (
-        <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6">
-          <SectionEyebrow title="Characters" count={chars.length} />
-          <div className="mt-1 divide-y-2 divide-ui-divider">
-            {charsLoading && charInfos.length === 0
-              ? chars.map((char) => (
-                  <ReferenceRow
-                    key={char}
-                    glyph={char}
-                    accentClassName={activeBook.accent}
-                    loading
-                    onClick={() => pushCharacter(char)}
-                    ariaLabel={`Open breakdown for ${char}`}
-                  />
-                ))
-              : charInfos.map((info) => (
-                  <ReferenceRow
-                    key={info.char}
-                    glyph={info.char}
-                    accentClassName={activeBook.accent}
-                    primary={info.pinyin}
-                    secondary={info.meaning}
-                    onClick={() => pushCharacter(info.char)}
-                    ariaLabel={`Open breakdown for ${info.char}`}
-                  />
-                ))}
-          </div>
-        </div>
-      )}
-
-      {/* Related Words Card */}
       {(isRelatedLoading || relatedWords.length > 0) && (
         <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6">
           <SectionEyebrow
@@ -157,6 +88,7 @@ export function WordSupportingInformation({
                   accentClassName={activeBook.accent}
                   primary={item.pinyin ? numberToToneMarks(item.pinyin) : undefined}
                   secondary={item.definition}
+                  trailing={<CourseOrLevelTag text={item.word} />}
                   onClick={() => onOpenWord(item.word)}
                   ariaLabel={`Open breakdown for ${item.word}`}
                 />

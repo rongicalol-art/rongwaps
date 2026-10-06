@@ -31,23 +31,17 @@ export interface LibraryState {
   addCustomFolder: (name: string, color: string, id?: string) => void;
   deleteCustomFolder: (id: string) => void;
   /**
-   * Sticky delete tombstones: ids of folders the user deleted. Persisted so
-   * a stale local folder list (another tab/device, or a reload between the
-   * delete and the debounced save) can never resurrect the row via upsert.
-   */
-  deletedFolderIds: string[];
-  setDeletedFolderIds: (ids: string[]) => void;
-  /**
-   * Id of the user the current folder list was last synced to/pulled from on
-   * this device. Null until folders have ever been synced for an account —
-   * the guest -> account migration only runs for lists that were never
-   * synced, so a stale server-derived list is never uploaded as guest data.
+   * Id of the user the current folder list was last pulled from on this
+   * device. Null until folders have ever been pulled for an account — the
+   * guest -> account migration only runs for lists that were never synced,
+   * so a stale server-derived list is never uploaded as guest data.
    */
   foldersSyncedUserId: string | null;
   setFoldersSyncedUserId: (userId: string | null) => void;
   localFlashcards: UserFlashcard[];
   addLocalFlashcard: (card: UserFlashcard) => void;
   deleteLocalFlashcard: (id: string) => void;
+  updateLocalFlashcard: (id: string, patch: Partial<UserFlashcard>) => void;
 }
 
 type SetState = (partial: Partial<LibraryState> | ((state: LibraryState) => Partial<LibraryState>)) => void;
@@ -73,18 +67,17 @@ export function createLibrarySlice(set: SetState): LibraryState {
     setLibraryActiveView: (view) => set({ libraryActiveView: view }),
     customFolders: [],
     setCustomFolders: (folders) => set({ customFolders: folders }),
-    addCustomFolder: (name, color, id) => set((s) => ({
-      customFolders: [...s.customFolders, { id: id || crypto.randomUUID(), name, color }],
-    })),
+    // Idempotent by id: a signed-in create is mirrored here by the folder
+    // subscription as well as by the creating screen.
+    addCustomFolder: (name, color, id) => set((s) => {
+      const folderId = id || crypto.randomUUID();
+      return s.customFolders.some((f) => f.id === folderId)
+        ? {}
+        : { customFolders: [...s.customFolders, { id: folderId, name, color }] };
+    }),
     deleteCustomFolder: (id) => set((s) => ({
       customFolders: s.customFolders.filter(f => f.id !== id),
-      // Tombstone the deletion so no stale local list can re-upload it.
-      deletedFolderIds: s.deletedFolderIds.includes(id)
-        ? s.deletedFolderIds
-        : [...s.deletedFolderIds, id],
     })),
-    deletedFolderIds: [],
-    setDeletedFolderIds: (ids) => set({ deletedFolderIds: ids }),
     foldersSyncedUserId: null,
     setFoldersSyncedUserId: (userId) => set({ foldersSyncedUserId: userId }),
     localFlashcards: [],
@@ -94,6 +87,9 @@ export function createLibrarySlice(set: SetState): LibraryState {
     deleteLocalFlashcard: (id) => set((s) => ({
       localFlashcards: s.localFlashcards.filter(c => c.id !== id),
     })),
+    updateLocalFlashcard: (id, patch) => set((s) => ({
+      localFlashcards: s.localFlashcards.map(c => (c.id === id ? { ...c, ...patch } : c)),
+    })),
   };
 }
 
@@ -101,7 +97,6 @@ export function createLibrarySlice(set: SetState): LibraryState {
 export const LIBRARY_PERSISTED_KEYS = [
   'favorites',
   'customFolders',
-  'deletedFolderIds',
   'foldersSyncedUserId',
   'localFlashcards',
   'libraryActiveFolder',
@@ -111,7 +106,6 @@ export const LIBRARY_PERSISTED_KEYS = [
 export const LIBRARY_ACCOUNT_SWITCH_DEFAULTS = {
   favorites: [],
   customFolders: [],
-  deletedFolderIds: [],
   foldersSyncedUserId: null,
   // The library view points at account-scoped folders. `customFolders` is
   // cleared above, so keeping the pointer would leave the library pinned to a

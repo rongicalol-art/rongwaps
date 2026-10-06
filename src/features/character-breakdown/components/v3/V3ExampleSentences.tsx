@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { SectionEyebrow, Skeleton, SmartSentence } from '../../../../lib/widgets';
+import { SectionEyebrow, Skeleton, SmartSentence, LevelTag } from '../../../../lib/widgets';
 import { numberToToneMarks } from '../../../../utils/pinyin';
 import { useAppStore } from '../../../../store/useAppStore';
 import { useCharExampleSentences } from '../../hooks/useCharExampleSentences';
@@ -50,9 +50,7 @@ export function V3ExampleSentences({ character }: { character: string }) {
                 className={`flex flex-col gap-1 border-ui-divider py-3 first:pt-0 last:pb-0 ${index < visible.length - 1 ? 'border-b-2' : ''}`}
               >
                 <div className="w-full flow-root">
-                  <span className="float-right ml-3 mb-1 inline-flex items-center gap-1 pt-1 text-[9px] font-extrabold text-ui-muted select-none">
-                    B{sentence.sourceBookId} · L{sentence.sourceLessonId}
-                  </span>
+                  <span className="float-right ml-3 mb-1 pt-1"><LevelTag bookId={sentence.sourceBookId} lessonId={sentence.sourceLessonId} /></span>
                   <SmartSentence
                     text={sentence.chinese}
                     highlightTerms={[character]}

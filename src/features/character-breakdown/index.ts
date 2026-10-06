@@ -8,5 +8,6 @@ export {
   getDecompositionRuntimeService,
 } from '../character-decomposition';
 export { ExtendedDefinitions } from './components/ExtendedDefinitions';
+export { StrokeOrderBox } from './components/StrokeOrderBox';
 export { SummaryQuickActions } from './components/SummaryQuickActions';
 export { useRuntimeDecompositionTree } from './hooks/useRuntimeDecompositionTree';

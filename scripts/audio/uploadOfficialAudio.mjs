@@ -1,37 +1,39 @@
 /**
- * Upload the re-encoded official 時代華語 Book 1 audio to Supabase Storage.
+ * Upload the re-encoded official 時代華語 Book 1 audio to Cloudflare R2.
  *
- * Files land in the existing public `vocabulary-audio` bucket (same bucket
- * the vocabulary/tts audio uses), so the client's durable-cache → public URL
- * → /api/audio proxy chain serves them with zero server changes.
+ * Files land in the R2 bucket served at VITE_AUDIO_BASE_URL, so the client
+ * streams them straight from the CDN.
  *
  * Usage:
- *   SUPABASE_URL=... SUPABASE_SERVICE_ROLE_KEY=... \
+ *   R2_ACCOUNT_ID=... R2_ACCESS_KEY_ID=... R2_SECRET_ACCESS_KEY=... \
+ *   R2_BUCKET_NAME=... VITE_AUDIO_BASE_URL=... \
  *     node scripts/audio/uploadOfficialAudio.mjs [--dry-run]
  *
  * Source files: output/official-audio/book1/*.mp3 (see downloadOfficialAudio.mjs).
  */
-import { createClient } from '@supabase/supabase-js';
+import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 
 const SOURCE_DIR = 'output/official-audio/book1';
-const BUCKET = 'vocabulary-audio';
 const CONCURRENCY = 4;
 const DRY_RUN = process.argv.includes('--dry-run');
 
-const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
-const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const { R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, VITE_AUDIO_BASE_URL } = process.env;
+const BUCKET = process.env.R2_BUCKET_NAME || 'rongwaps-audio';
+const endpoint = process.env.R2_ENDPOINT
+  || (R2_ACCOUNT_ID ? `https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com` : '');
 
-if (!supabaseUrl || !serviceRoleKey) {
-  console.error(
-    'Missing credentials. Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY '
-    + '(the service-role key, not the anon key) before running.',
-  );
+if (!endpoint || !R2_ACCESS_KEY_ID || !R2_SECRET_ACCESS_KEY) {
+  console.error('Missing R2 credentials. Set R2_ACCOUNT_ID, R2_ACCESS_KEY_ID and R2_SECRET_ACCESS_KEY.');
   process.exit(1);
 }
 
-const supabase = createClient(supabaseUrl, serviceRoleKey);
+const s3 = new S3Client({
+  region: 'auto',
+  endpoint,
+  credentials: { accessKeyId: R2_ACCESS_KEY_ID, secretAccessKey: R2_SECRET_ACCESS_KEY },
+});
 
 const files = (await readdir(SOURCE_DIR)).filter((name) => name.endsWith('.mp3')).sort();
 if (files.length === 0) {
@@ -59,15 +61,15 @@ async function worker() {
       continue;
     }
 
-    const { error } = await supabase.storage
-      .from(BUCKET)
-      .upload(file, body, { contentType: 'audio/mpeg', upsert: true });
-    if (error) {
-      failures.push({ file, error: error.message });
-      console.error(`FAIL ${file}: ${error.message}`);
-    } else {
+    try {
+      await s3.send(new PutObjectCommand({
+        Bucket: BUCKET, Key: file, Body: body, ContentType: 'audio/mpeg',
+      }));
       uploaded += 1;
       console.log(`ok   ${file} (${size} bytes)`);
+    } catch (error) {
+      failures.push({ file, error: error.message });
+      console.error(`FAIL ${file}: ${error.message}`);
     }
   }
 }
@@ -77,11 +79,11 @@ await Promise.all(Array.from({ length: CONCURRENCY }, worker));
 console.log(`\n${uploaded}/${files.length} uploaded to ${BUCKET}.`);
 
 // Verify a sample of what the public client path would serve.
-if (!DRY_RUN && uploaded === files.length) {
+if (!DRY_RUN && uploaded === files.length && VITE_AUDIO_BASE_URL) {
+  const base = VITE_AUDIO_BASE_URL.replace(/\/+$/, '');
   const samples = files.filter((file) => /-1-1\.mp3$/.test(file)).slice(0, 3);
   for (const file of samples) {
-    const { data } = supabase.storage.from(BUCKET).getPublicUrl(file);
-    const response = await fetch(data.publicUrl, { method: 'HEAD' });
+    const response = await fetch(`${base}/${file}`, { method: 'HEAD' });
     console.log(`verify ${file} -> ${response.status} ${response.headers.get('content-type')}`);
   }
 }

@@ -3,7 +3,8 @@ import test from 'node:test';
 import { presentRuntimeChild, usesShapeFallback } from '../../src/features/character-breakdown/components/v3/runtimeTreeView';
 import { preferCharacterMetadata } from '../../src/features/character-breakdown/hooks/useRuntimeCharacterMetadata';
 import { projectLegacyDecomposition } from '../../src/features/character-decomposition/legacyProjection';
-import { rankParentCharacters } from '../../src/features/character-breakdown/utils/rankParentCharacters';
+import { groupByGrade, rankBuiltWith } from '../../src/features/character-breakdown/utils/rankBuiltWith';
+import { formatSoundShift } from '../../src/features/character-breakdown/utils/soundShift';
 import { mergeBreakdownWords } from '../../src/features/character-breakdown/utils/mergeBreakdownWords';
 import { resolveSoundRevealPath } from '../../src/features/character-breakdown/utils/soundRevealPath';
 import { hasSupportingInfo } from '../../src/features/character-breakdown/components/v3/V3SupportingInformation';
@@ -47,15 +48,28 @@ test('encoded supplementary-plane glyphs never fall back to the Shape marker', (
   assert.equal(usesShapeFallback(unencoded), true);
 });
 
-test('V3 reverse parents keep full membership while ranking course characters first', () => {
-  assert.deepEqual(
-    rankParentCharacters(
-      ['㽇', '䁷', '學', '嶨'],
-      [{ front: '學', bookId: 1, lessonId: 6 }],
-      1,
-    ),
-    ['學', '㽇', '䁷', '嶨'],
-  );
+test('built-with rows split sound-alikes from shape-only and rank course, then level', () => {
+  const members = [
+    { character: '騙', grade: null },
+    { character: '罵', grade: 'tone' as const, bookId: 3, lessonId: 2 },
+    { character: '媽', grade: 'tone' as const, bookId: 1, lessonId: 1 },
+    { character: '碼', grade: 'same' as const },
+    { character: '嗎', grade: 'tone' as const, bookId: 1, lessonId: 4 },
+    { character: '驢', grade: null, bookId: 2, lessonId: 1 },
+  ];
+  const levels: Record<string, number> = { '碼': 3, '騙': 6 };
+  const { alike, shape } = rankBuiltWith(members, (character) => levels[character]);
+  // Course by lesson, then the uncoursed one.
+  assert.deepEqual(alike.map((member) => member.character), ['媽', '嗎', '罵', '碼']);
+  assert.deepEqual(shape.map((member) => member.character), ['驢', '騙']);
+});
+
+test('sound shift shows the reading change, or one reading when they match', () => {
+  assert.equal(formatSoundShift('mǎ', 'mā'), 'mǎ → mā');
+  assert.equal(formatSoundShift('ma3', 'ma1'), 'mǎ → mā');
+  assert.equal(formatSoundShift('qīng', 'qīng'), 'qīng');
+  assert.equal(formatSoundShift('mǎ', undefined), 'mǎ');
+  assert.equal(formatSoundShift(undefined, 'mā'), undefined);
 });
 
 test('breakdown words keep course entries first and add deduplicated dictionary coverage', () => {
@@ -209,13 +223,27 @@ test('sound reveal path stays empty for missing glyphs and cycles', async () => 
   );
 });
 
-test('hasSupportingInfo returns true when sound family has members even if words/parents are empty', () => {
-  assert.equal(
-    hasSupportingInfo([], { courseParents: [], otherParents: [] }, [{ character: '冻', pinyin: 'dòng', reading: 'dōng' }]),
-    true,
-  );
-  assert.equal(
-    hasSupportingInfo([], { courseParents: [], otherParents: [] }, []),
-    false,
-  );
+test('hasSupportingInfo is true for words, used-in characters or a sound family', () => {
+  assert.equal(hasSupportingInfo([], [], { lends: [{ character: '媽', grade: 'tone' }] }), true);
+  assert.equal(hasSupportingInfo([], [{ character: '騎', grade: null }], null), true);
+  assert.equal(hasSupportingInfo([], [], null), false);
+});
+
+test('groupByGrade splits sound-alikes into same, tone and close, dropping empty grades', () => {
+  const groups = groupByGrade([
+    { character: '罵', grade: 'tone' as const },
+    { character: '碼', grade: 'same' as const },
+    { character: '騎', grade: null },
+  ], () => undefined);
+  assert.deepEqual(groups.map(({ grade, members }) => [grade, members.map((member) => member.character)]), [['same', ['碼']], ['tone', ['罵']]]);
+});
+
+test('breakdown words drop vulgar, slang, neologism and hidden dictionary entries', () => {
+  const dictionary = [
+    { word: '你媽', traditional: '你媽', simplified: '你妈', pinyin: 'nǐ mā', definition: '(interjection) fuck you' },
+    { word: '約嗎', traditional: '約嗎', simplified: '约吗', pinyin: 'yuē ma', definition: '(neologism, attested by 2014) Are you interested?' },
+    { word: '嗎哪', traditional: '嗎哪', simplified: '吗哪', pinyin: 'mǎ nǎ', definition: 'manna (Israelite food)' },
+    { word: '亂', traditional: '亂', simplified: '乱', pinyin: 'luàn', definition: 'in confusion or disorder' },
+  ];
+  assert.deepEqual(mergeBreakdownWords([], dictionary).map(({ front }) => front), ['亂']);
 });

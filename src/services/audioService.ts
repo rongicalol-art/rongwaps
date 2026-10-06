@@ -14,6 +14,7 @@ import {
 import {
   playHtmlAudio,
   playRangeOnAudioElement,
+  silenceAudio,
   type PlayRangeOptions,
 } from './audio/playbackEngine';
 
@@ -28,6 +29,7 @@ export class AudioService {
   private objectUrls: Map<string, string> = new Map();
   private blobPromises: Map<string, Promise<string>> = new Map();
   private globalAudio: HTMLAudioElement | null = null;
+  private spareAudio: HTMLAudioElement | null = null; // pre-unlocked; hosts the next overlapped clip
 
   private isInitialized = false;
   private currentSource: AudioBufferSourceNode | null = null;
@@ -62,10 +64,12 @@ export class AudioService {
     if (this.audioContext && this.audioContext.state === 'suspended') {
       try { this.audioContext.resume().catch(() => {}); } catch (e) { debugLogger.warn('Audio', 'AudioContext resume failed', e); }
     }
-    if (this.globalAudio) {
+    if (this.globalAudio && typeof Audio !== 'undefined') this.spareAudio ??= new Audio();
+    for (const audio of [this.globalAudio, this.spareAudio]) {
+      if (!audio) continue;
       try {
-        this.globalAudio.src = 'data:audio/mp3;base64,//OkwAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAB//OkwAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAB//OkwAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAB';
-        this.globalAudio.play()?.catch(() => {});
+        audio.src = 'data:audio/mp3;base64,//OkwAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAB//OkwAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAB//OkwAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAB';
+        audio.play()?.catch(() => {});
       } catch (e) { debugLogger.warn('Audio', 'Silent unlock play failed', e); }
     }
     if (typeof window !== 'undefined' && window.speechSynthesis) {
@@ -180,7 +184,24 @@ export class AudioService {
     });
   }
 
+  // With `overlap`, a playing clip rings out on its element while the new one uses the spare.
+  private beginPlayback(overlap: boolean): void {
+    const { globalAudio: tail, spareAudio: spare } = this;
+    if (!overlap || !tail || !spare || this.rangeRafHandle !== null || this.currentSource || this.currentUtterance) {
+      this.pause();
+      return;
+    }
+    if (!tail.paused && !tail.ended) {
+      silenceAudio(spare);
+      [this.globalAudio, this.spareAudio] = [spare, tail];
+    }
+    this.activeBlobAudio = null;
+    this.activePlaybackFinish?.();
+    this.activePlaybackFinish = null;
+  }
+
   public pause(): void {
+    if (this.spareAudio) silenceAudio(this.spareAudio);
     if (this.rangeRafHandle !== null) {
       try { cancelAnimationFrame(this.rangeRafHandle); } catch (e) { debugLogger.warn('Audio', 'cancelAnimationFrame failed', e); }
       this.rangeRafHandle = null;
@@ -261,8 +282,9 @@ export class AudioService {
     textFallback?: string,
     preferredVoice?: string,
     startTime = 0,
+    options?: { overlap?: boolean },
   ): Promise<void> {
-    this.pause();
+    this.beginPlayback(options?.overlap === true);
     const textToSpeak = textFallback
       || (audioFileName && !this.isAudioFileName(audioFileName) ? audioFileName : undefined);
 
@@ -361,19 +383,14 @@ export class AudioService {
 
   public setPlaybackRate(rate: number): void {
     const validRate = rate > 0 ? rate : 1;
-    if (this.globalAudio) {
-      this.globalAudio.preservesPitch = true;
-      (this.globalAudio as unknown as { mozPreservesPitch?: boolean }).mozPreservesPitch = true;
-      (this.globalAudio as unknown as { webkitPreservesPitch?: boolean }).webkitPreservesPitch = true;
-      this.globalAudio.defaultPlaybackRate = validRate;
-      this.globalAudio.playbackRate = validRate;
-    }
-    if (this.activeBlobAudio) {
-      this.activeBlobAudio.preservesPitch = true;
-      (this.activeBlobAudio as unknown as { mozPreservesPitch?: boolean }).mozPreservesPitch = true;
-      (this.activeBlobAudio as unknown as { webkitPreservesPitch?: boolean }).webkitPreservesPitch = true;
-      this.activeBlobAudio.defaultPlaybackRate = validRate;
-      this.activeBlobAudio.playbackRate = validRate;
+    for (const audio of [this.globalAudio, this.activeBlobAudio]) {
+      if (!audio) continue;
+      const pitchAudio = audio as unknown as Record<string, boolean>;
+      audio.preservesPitch = true;
+      pitchAudio.mozPreservesPitch = true;
+      pitchAudio.webkitPreservesPitch = true;
+      audio.defaultPlaybackRate = validRate;
+      audio.playbackRate = validRate;
     }
   }
 }

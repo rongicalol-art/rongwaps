@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "version": "v1a0fd3c7caa",
-  "generatedAt": "2026-08-27T13:49:43.296Z",
+  "version": "v1b430aed518",
+  "generatedAt": "2026-10-06T01:27:03.881Z",
   "totalCount": 9581,
   "shardCount": 32,
   "shardStrategy": "unicode-code-point-modulo",
@@ -108,8 +108,8 @@
       "shard": 14,
       "count": 295,
       "path": "/data/breakdowns/shard-14.json",
-      "sha256": "9adc3343ee81438640ec16866797eddc7da15d45bd2369e9f340641b86696219",
-      "bytes": 48266
+      "sha256": "7c3827d25d2e6fb7f2632bbdf7be841d448ed6afab76b0ab0960643dec47f894",
+      "bytes": 48272
     },
     {
       "shard": 15,
@@ -136,15 +136,15 @@
       "shard": 18,
       "count": 304,
       "path": "/data/breakdowns/shard-18.json",
-      "sha256": "07a0f773e39b0ee08b880189bdc6160c266bd087bd07698089558a9c554406d0",
+      "sha256": "5304136888bde9b9b8188cdb87d649c54c41f2e9fb5baff8252d12b8cde6f5e6",
       "bytes": 50291
     },
     {
       "shard": 19,
       "count": 293,
       "path": "/data/breakdowns/shard-19.json",
-      "sha256": "0a352a717f3a699d25c2cfad684a0c1e536420c0e2e6dc837cdf26302dc15312",
-      "bytes": 47789
+      "sha256": "bf6b837dce31813363fbbfa4e24cc6a9cb8950066e2cb4bc7db2fc71e658ec51",
+      "bytes": 47788
     },
     {
       "shard": 20,
@@ -164,15 +164,15 @@
       "shard": 22,
       "count": 273,
       "path": "/data/breakdowns/shard-22.json",
-      "sha256": "dd198934a5e4344ed4f767affedf336106afd5e8ff83f45e351fe474d52affd5",
+      "sha256": "15c354c8296ecaf27698c1480ed89d9b45f848d5f23dd77505b75c03195da27d",
       "bytes": 44848
     },
     {
       "shard": 23,
       "count": 286,
       "path": "/data/breakdowns/shard-23.json",
-      "sha256": "cefb4b2a4dc4fea55b0dd0bb0a9cb89a9a7ba026b7e2d9eda9524ed1299c617f",
-      "bytes": 46898
+      "sha256": "8350f09942b0bcd6cea2c5a84861ed106cb714fa2861d6d40ab22d7cb860edd0",
+      "bytes": 46907
     },
     {
       "shard": 24,

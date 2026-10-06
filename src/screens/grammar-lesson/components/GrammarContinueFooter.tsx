@@ -35,21 +35,20 @@ export function GrammarContinueFooter({
           className="pointer-events-none absolute bottom-0 inset-x-0 z-30"
         >
           <div className="bg-gradient-to-t from-ui-canvas via-ui-canvas/95 to-transparent pb-sheet-safe pt-6 sm:pt-8 pointer-events-none">
-            <div className="mx-auto w-full max-w-5xl xl:max-w-6xl px-4 sm:px-6 flex items-center gap-4 pointer-events-auto">
-              {previousPage && (
-                <div className="shrink-0">
+            <div className="mx-auto w-full max-w-5xl xl:max-w-6xl px-4 sm:px-6 pointer-events-auto">
+              <div className="mx-auto flex w-full max-w-3xl items-stretch gap-3 sm:max-w-4xl">
+                {previousPage && (
                   <ActionButton
-                    variant="quiet"
+                    variant="secondary"
                     size="lg"
                     onClick={onBack}
-                    className="px-4 text-ui-muted-strong uppercase tracking-wider font-extrabold sm:min-w-28"
+                    aria-label="Back"
+                    title="Back"
+                    className="shrink-0"
                   >
-                    <AppIcon name="back" size={18} />
-                    Back
+                    <AppIcon name="back" size={22} />
                   </ActionButton>
-                </div>
-              )}
-              <div className="ml-auto flex-1 sm:flex-none w-full sm:w-52 lg:w-56">
+                )}
                 <ActionButton
                   variant="primary"
                   size="lg"

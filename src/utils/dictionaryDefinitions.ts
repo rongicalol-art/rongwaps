@@ -1,9 +1,17 @@
 import { debugLogger } from './debugLogger';
 import { numberToToneMarks } from './pinyin';
 
+export interface MeasureWordDetail {
+  char: string;
+  /** Tone-marked reading from the CEDICT bracket (men2 → mén); empty when absent. */
+  pinyin: string;
+}
+
 export interface SanitizedDefinitions {
   definitions: string[];
   measure_words: string[];
+  /** Same measure words with their readings, for display. */
+  measure_word_details: MeasureWordDetail[];
 }
 
 export interface SanitizeDefinitionsOptions {
@@ -88,6 +96,11 @@ function formatClassifier(value: string, preferredScript?: 'traditional' | 'simp
   return chosen.replace(/\[[^\]]*\]/g, '').trim();
 }
 
+function classifierPinyin(value: string): string {
+  const match = /\[([^\]]*)\]/.exec(value);
+  return match ? numberToToneMarks(match[1].trim()) : '';
+}
+
 /** Removes parentheses left unbalanced by metadata removal. */
 function tidyUnbalancedParens(text: string): string {
   let openCount = 0;
@@ -108,10 +121,16 @@ function tidyUnbalancedParens(text: string): string {
   return out;
 }
 
+/**
+ * Start of a serialized JSON array/object. A bare leading bracket isn't
+ * enough: CEDICT reading lines like "[xīn]: new, newly" are plain text.
+ */
+const ENCODED_DEFINITIONS_START = /^(?:\[\s*["{[\]]|\{\s*["}])/;
+
 function parseEncodedDefinitions(value: unknown): unknown {
   if (typeof value !== 'string') return value;
   const trimmed = value.trim();
-  if (!trimmed.startsWith('[') && !trimmed.startsWith('{')) return value;
+  if (!ENCODED_DEFINITIONS_START.test(trimmed)) return value;
 
   try {
     return JSON.parse(trimmed);
@@ -140,6 +159,7 @@ export function sanitizeDictionaryDefinitions(
 ): SanitizedDefinitions {
   const parsed = definitionStrings(value);
   const measureWords: string[] = [];
+  const measureDetails: MeasureWordDetail[] = [];
 
   let clean = parsed.map((definition) => {
     let text = definition;
@@ -150,7 +170,10 @@ export function sanitizeDictionaryDefinitions(
       const raw = wrapped ?? bare ?? '';
       raw.split(',').forEach((part) => {
         const formatted = formatClassifier(part, options.preferredScript);
-        if (formatted) measureWords.push(formatted);
+        if (formatted) {
+          measureWords.push(formatted);
+          measureDetails.push({ char: formatted, pinyin: classifierPinyin(part) });
+        }
       });
       return '';
     });
@@ -190,7 +213,32 @@ export function sanitizeDictionaryDefinitions(
   return {
     definitions: clean,
     measure_words: Array.from(new Set(measureWords)),
+    measure_word_details: measureDetails.filter(
+      (detail, index) => measureDetails.findIndex((other) => other.char === detail.char) === index,
+    ),
   };
+}
+
+/** Leading CEDICT labels that mark a sense as vulgar, slang or a fad coinage. */
+const NOISY_LABEL_RE = /^\s*(?:\([^)]*\)\s*)*\([^)]*\b(?:vulgar|slang|neologism|derog\w*|offensive|obscene|pejorative)\b[^)]*\)/i;
+const PROFANITY_RE = /\b(?:fuck\w*|shit\w*|bitch\w*|cunt|dick|asshole)\b/i;
+
+/**
+ * Unlabelled transliterations CC-CEDICT gives no tag for, so no rule can
+ * catch them (嗎哪 "manna"). Add owner-reviewed words here.
+ */
+const HIDDEN_SUGGESTIONS = new Set(['嗎哪']);
+
+/**
+ * True for a dictionary word a learner should not be offered as a "word with
+ * this character": its leading label marks it vulgar, slang or a neologism,
+ * it is explicit profanity, or it is on the reviewed hide list. Only meant for
+ * dictionary-only suggestions; course words are never filtered.
+ */
+export function isNoisyDictionarySuggestion(word: string, definition: string | null | undefined): boolean {
+  if (HIDDEN_SUGGESTIONS.has(word)) return true;
+  if (!definition) return false;
+  return NOISY_LABEL_RE.test(definition) || PROFANITY_RE.test(definition);
 }
 
 /** Checks whether a definition is purely a variant / archaic pointer without distinct gloss. */

@@ -7,7 +7,7 @@ const key = process.env.VITE_SUPABASE_ANON_KEY || '';
 const sb = createClient(url, key);
 
 // Check which tables exist
-const tables = ['book_vocab', 'vocabulary', 'flashcards', 'cards', 'words', 'lessons', 'books', 'mnemonics', 'user_profiles', 'user_progress', 'user_card_progress', 'user_folders', 'daily_progress'];
+const tables = ['user_profiles', 'user_card_progress', 'user_learned_cards', 'user_folders', 'user_flashcards'];
 
 for (const t of tables) {
   try {

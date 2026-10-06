@@ -1,7 +1,6 @@
 import { useRef } from 'react';
-import { ActionButton, AppIcon, Dialog } from '../../lib/widgets';
+import { ActionButton, AppIcon, Dialog, FolderSvg } from '../../lib/widgets';
 import { cn } from '../../utils/cn';
-import { FolderSvg } from './components/FolderItem';
 import {
   CUSTOM_FOLDER_OPTIONS,
   resolveFolderColor,

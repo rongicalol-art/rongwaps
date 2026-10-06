@@ -3,6 +3,8 @@ import type { DictionarySavedPreview } from '../../../types/models';
 import { BookWordRail } from './BookWordRail';
 import { CharacterDailyCard } from './CharacterDailyCard';
 import { SavedWordsPreview } from './SavedWordsPreview';
+import { TocflReadinessCard } from './TocflReadinessCard';
+import type { TocflReadiness } from '../../../utils/tocflReadiness';
 
 interface DictionaryHomeProps {
   savedWords: DictionarySavedPreview[];
@@ -11,6 +13,7 @@ interface DictionaryHomeProps {
   activeBookId: number;
   onOpenWord: (word: string) => void;
   onViewSavedWords: () => void;
+  readiness: TocflReadiness | null;
 }
 
 export function DictionaryHome({
@@ -20,6 +23,7 @@ export function DictionaryHome({
   activeBookId,
   onOpenWord,
   onViewSavedWords,
+  readiness,
 }: DictionaryHomeProps) {
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-5 px-4 pb-32 pt-0 md:gap-7 md:px-8 md:pb-20">
@@ -32,6 +36,8 @@ export function DictionaryHome({
           onViewAll={onViewSavedWords}
         />
       </div>
+
+      <TocflReadinessCard readiness={readiness} />
 
       <BookWordRail bookId={activeBookId} onOpenWord={onOpenWord} />
     </div>

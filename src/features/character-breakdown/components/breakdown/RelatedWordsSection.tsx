@@ -1,9 +1,12 @@
 import React, { useMemo } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { SAMPLE_BOOKS } from '../../../../data/books';
-import { Skeleton } from '../../../../lib/widgets';
+import { LevelTag, Skeleton } from '../../../../lib/widgets';
+import { useLevels } from '../../../../hooks/useLevels';
+import { resolveLevel } from '../../../../utils/levels';
 import { numberToToneMarks } from '../../../../utils/pinyin';
 import { useAppStore } from '../../../../store/useAppStore';
+import { groupWordsByBook } from '../../../../utils/wordOrdering';
 import type { Flashcard } from '../../../../data/flashcards';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
@@ -24,26 +27,14 @@ export const RelatedWordsSection: React.FC<RelatedWordsSectionProps> = ({
   openRelatedBreakdown,
   isRelatedLoading = false,
 }) => {
+  const levels = useLevels();
   const { relatedGroups, totalRelatedCount, hasMore } = useMemo(() => {
-    // Show related words from ALL books, sorted by book priority (current book first)
-    const groupsMap: { [key: number]: Flashcard[] } = {};
-    relatedWords.forEach(card => {
-      if (!groupsMap[card.bookId]) {
-        groupsMap[card.bookId] = [];
-      }
-      groupsMap[card.bookId].push(card);
-    });
-    // Sort book IDs: current book first, then others descending
-    const sortedBookIds = Object.keys(groupsMap).map(Number).sort((a, b) => {
-      if (a === activeBook.id) return -1;
-      if (b === activeBook.id) return 1;
-      return b - a;
-    });
+    // Related words from ALL books: current book first, then 1-4, dictionary last.
+    const ordered = groupWordsByBook(relatedWords, { activeBookId: activeBook.id, levels });
     // Limit total related words in compact view
     const groupsList: { bookId: number; cards: Flashcard[] }[] = [];
     let count = 0;
-    for (const bookId of sortedBookIds) {
-      const cards = groupsMap[bookId];
+    for (const { bookId, cards } of ordered) {
       if (count >= MAX_RELATED_IN_COMPACT) break;
       const remaining = MAX_RELATED_IN_COMPACT - count;
       const sliced = cards.slice(0, remaining);
@@ -55,7 +46,7 @@ export const RelatedWordsSection: React.FC<RelatedWordsSectionProps> = ({
       totalRelatedCount: count,
       hasMore: relatedWords.length > MAX_RELATED_IN_COMPACT
     };
-  }, [relatedWords, activeBook.id]);
+  }, [relatedWords, activeBook.id, levels]);
 
   if (!isRelatedLoading && totalRelatedCount === 0) return null;
 
@@ -127,16 +118,7 @@ export const RelatedWordsSection: React.FC<RelatedWordsSectionProps> = ({
                             <span className="h-5 flex-1 truncate text-left text-xs font-bold tracking-widest text-ui-muted sm:text-sm">
                               {numberToToneMarks(card.pinyin)}
                             </span>
-                            {(() => {
-                              const cardBook = SAMPLE_BOOKS.find(b => b.id === card.bookId);
-                              const dotColorClass = cardBook ? cardBook.accentBg : activeBook.accentBg;
-                              return (
-                                <span className="flex shrink-0 select-none items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-ui-muted opacity-80">
-                                  <span>B{card.bookId} · L{card.lessonId}</span>
-                                  <span className={`w-2 h-2 rounded-full ${dotColorClass} shrink-0`} />
-                                </span>
-                              );
-                            })()}
+                            {card.bookId <= 0 ? <LevelTag level={resolveLevel(card.front, levels)} /> : <LevelTag bookId={card.bookId} lessonId={card.lessonId} />}
                           </div>
                           <span className="mt-0.5 h-[20px] w-full truncate text-[13px] font-bold text-ui-ink sm:text-[14px]">
                             {card.back}
