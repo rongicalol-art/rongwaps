@@ -89,6 +89,8 @@ All RPCs except the trigger are `SECURITY DEFINER`, filter by `auth.uid()`, and 
 | `append_learned_cards(p_cards text[])` | Insert new learned-card ids (`ON CONFLICT DO NOTHING`) | Max 500 ids per call (client chunks). The common sync path for first passes |
 | `replace_learned_cards(p_cards text[])` | Make the learned set exactly `p_cards`: delete ids that left, insert new ones | First sync and progress-reset shrink; surviving rows keep `created_at`. Max 20000 ids (it carries the whole set) |
 | `reset_user_learning_progress()` | Clears the caller's `user_card_progress` and `user_learned_cards` | Sets `user_profiles.progress_reset_at` (the reset epoch) and `updated_at`; creates the profile row if missing |
+| `export_my_data()` | The caller's own data as one jsonb: `exported_at`, `profile`, `folders`, `flashcards`, `card_progress`, `learned_cards` | Backs "Download my data" in Settings (`userService.exportMyData`) |
+| `delete_my_account()` | Deletes the caller's `auth.users` row; every user table cascades from it | Raises when unauthenticated. Backs "Delete account" in Settings (`userService.deleteMyAccount`); the client then signs out locally and clears the persisted store. Added in `20261007130000` |
 | `handle_new_user()` | Trigger on `auth.users` insert → creates the `user_profiles` row | Not executable by `anon`/`authenticated` |
 | `enforce_user_flashcard_cap()` | Trigger: 5000 `user_flashcards` rows per user | `SECURITY DEFINER` |
 | `touch_user_profile_updated_at()` | Trigger: server-stamps `user_profiles.updated_at` | |
@@ -132,6 +134,7 @@ In-memory caches (`src/utils/cache.ts`) dedupe repeated lookups; `requestTiming`
 Verified locally with `supabase db reset` (all migrations replay on a fresh Postgres) plus a signup and client-RPC run against the local stack.
 
 0. `20261007120000` (hardening, abuse limits, `reviewed_at` LWW, reset epoch, server-stamped `updated_at`) is additive and backwards compatible in both directions: apply it before or after the client that sends `reviewed_at` / reads `progress_reset_at` (until it is applied the client simply gets no LWW protection and no reset epoch). Existing rows are untouched (constraints are `NOT VALID`; `reviewed_at` is backfilled from `last_updated`).
+0b. `20261007130000` (`delete_my_account`, `export_my_data`) is purely additive (two new functions); apply it before shipping the client that shows the Settings "Account" section, otherwise those buttons surface an error.
 1. `20261004` (signup trigger + FK cascade) and `20261005` (additive: `settings`, `get_sync_state`) — safe any time; apply `20261005` **before** deploying the client.
 2. Deploy the client that calls `get_sync_state`.
 3. `20261006` (contract: drops the legacy array, `last_activity`, daily progress, strips `user_metadata`) — only after old tabs/PWAs have updated; an old client reads the dropped columns.

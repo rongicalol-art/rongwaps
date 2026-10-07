@@ -1,10 +1,22 @@
+import { useLocation } from 'react-router';
 import { LoadingScreen } from './lib/widgets';
 import { AppWorkspace } from './app/components/AppWorkspace';
 import { AppOverlays } from './app/components/AppOverlays';
 import { PwaUpdatePrompt } from './app/components/PwaUpdatePrompt';
 import { useAppShell } from './app/hooks/useAppShell';
+import { legalPageFromPathname } from './app/routes';
+import { LegalScreen } from './screens/legal';
 
+/**
+ * Public legal pages render on their own, outside the shell: no sign-in, sync,
+ * or side nav runs for them. Everything else is the workspace.
+ */
 export default function App() {
+  const legalPage = legalPageFromPathname(useLocation().pathname);
+  return legalPage ? <LegalScreen page={legalPage} /> : <AppShell />;
+}
+
+function AppShell() {
   const { isLoading, nav, reader, grammar, activity, settings, overlays } = useAppShell();
 
   if (isLoading) {

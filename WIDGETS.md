@@ -147,7 +147,7 @@ Shared widgets accept data and callbacks through props. They do not fetch remote
   </DetailShell.Root>
   ```
   Fills its nearest positioned host (`absolute inset-0`). `windowed` opens it as its own `WorkspaceWindow` (`z-window-detail`, portaled to the body) — e.g. `PracticeSettingsScreen`.
-- **ConfirmationDialog** — destructive confirmation modal built on `Dialog.*` with safe Cancel focus, Escape dismissal, focus restoration, optional icon, loading, and error message.
+- **ConfirmationDialog** — destructive confirmation modal built on `Dialog.*` with safe Cancel focus, Escape dismissal, focus restoration, optional icon, loading, and error message. Optional `children` render under the description (e.g. a type-to-confirm input) and `confirmDisabled` holds Confirm until that safeguard is met.
   ```tsx
   <ConfirmationDialog title="Reset progress" description="This cannot be undone." confirmLabel="Reset" onConfirm={reset} onCancel={close} />
   ```

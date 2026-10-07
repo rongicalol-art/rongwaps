@@ -31,7 +31,9 @@ const EXPECTED_TABLES = [
 /** Functions the migrations leave in `public` (post-drops, overloads collapsed by name). */
 const EXPECTED_FUNCTIONS = [
   'append_learned_cards',
+  'delete_my_account',
   'enforce_user_flashcard_cap',
+  'export_my_data',
   'get_sync_state',
   'handle_new_user',
   'replace_learned_cards',

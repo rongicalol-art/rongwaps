@@ -7,6 +7,10 @@ import { cn } from '../../utils/cn';
 export interface ConfirmationDialogProps {
   cancelLabel?: string;
   confirmLabel: string;
+  /** Keeps Confirm inactive until an extra safeguard (e.g. a typed phrase) is met. */
+  confirmDisabled?: boolean;
+  /** Extra content under the description, e.g. a type-to-confirm field. */
+  children?: ReactNode;
   confirmLoadingLabel?: string;
   description: ReactNode;
   errorMessage?: string | null;
@@ -20,7 +24,9 @@ export interface ConfirmationDialogProps {
 
 export function ConfirmationDialog({
   cancelLabel = 'Cancel',
+  children,
   className,
+  confirmDisabled = false,
   confirmLabel,
   confirmLoadingLabel = 'Please wait...',
   description,
@@ -54,6 +60,7 @@ export function ConfirmationDialog({
         <Dialog.Description className="mt-2 text-sm font-bold leading-relaxed text-ui-muted-strong text-center mb-0">
           {description}
         </Dialog.Description>
+        {children}
         {errorMessage && (
           <p id={errorId} role="alert" className="mt-3 rounded-compact bg-feedback-danger/10 px-3 py-2 text-sm font-bold text-feedback-danger-edge">
             {errorMessage}
@@ -67,6 +74,7 @@ export function ConfirmationDialog({
             variant="danger"
             fullWidth
             loading={isConfirming}
+            disabled={confirmDisabled}
             loadingLabel={confirmLoadingLabel}
             onClick={onConfirm}
           >

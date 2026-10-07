@@ -260,6 +260,14 @@ export interface Database {
         Args: Record<PropertyKey, never>;
         Returns: undefined;
       };
+      delete_my_account: {
+        Args: Record<PropertyKey, never>;
+        Returns: undefined;
+      };
+      export_my_data: {
+        Args: Record<PropertyKey, never>;
+        Returns: Json;
+      };
       handle_new_user: {
         Args: Record<PropertyKey, never>;
         Returns: unknown;

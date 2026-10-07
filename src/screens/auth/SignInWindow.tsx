@@ -1,6 +1,8 @@
 import { debugLogger } from '../../utils/debugLogger';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router';
 import { useAuth } from '../../hooks/useAuth';
+import { LEGAL_ROUTES } from '../../app/routes';
 import {
   ActionButton,
   AppIcon,
@@ -144,6 +146,13 @@ export function SignInWindow({ onClose }: SignInWindowProps = {}) {
                 </ActionButton>
               )}
             </div>
+
+            <p className="mt-5 text-center text-xs font-bold leading-relaxed text-ui-muted-strong">
+              By creating an account you agree to the{' '}
+              <Link to={LEGAL_ROUTES.terms} className="rounded-xs font-extrabold text-brand-primary hover:underline focus-ring-inline">Terms</Link>
+              {' '}and{' '}
+              <Link to={LEGAL_ROUTES.privacy} className="rounded-xs font-extrabold text-brand-primary hover:underline focus-ring-inline">Privacy Policy</Link>.
+            </p>
           </div>
 
           {/* Quiet footer note */}

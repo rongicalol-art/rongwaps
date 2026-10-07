@@ -3,6 +3,7 @@ import { supabase } from './supabaseClient';
 import { SRSData } from '../utils/srsEngine';
 import { rowToSrsData, srsDataToUpsert, type CardProgressRow } from '../utils/srsRowMapping';
 import type { CloudMetadataPayload } from '../utils/cloudSyncTransforms';
+import type { Json } from '../types/database';
 
 export interface UserFolderRow {
   id: string;
@@ -234,6 +235,27 @@ export const userService = {
     } catch (e) {
       debugLogger.error('Supabase', "getCustomFolders exception:", e);
       throw e;
+    }
+  },
+
+  // Everything stored about the signed-in user (profile, folders, custom
+  // cards, SRS progress, learned ids) as one JSON object for download.
+  exportMyData: async (): Promise<Json> => {
+    const { data, error } = await supabase.rpc('export_my_data');
+    if (error) {
+      debugLogger.error('Supabase', 'exportMyData failed:', error);
+      throw error;
+    }
+    return data;
+  },
+
+  // Permanently deletes the signed-in user's account and, by cascade, all
+  // their rows. The caller must sign out locally afterwards.
+  deleteMyAccount: async (): Promise<void> => {
+    const { error } = await supabase.rpc('delete_my_account');
+    if (error) {
+      debugLogger.error('Supabase', 'deleteMyAccount failed:', error);
+      throw error;
     }
   },
 };

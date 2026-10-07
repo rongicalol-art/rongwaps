@@ -30,10 +30,11 @@ export const authService = {
     }
   },
 
-  logout: async (): Promise<void> => {
+  /** `local` only drops this device's session (no server call), e.g. after the account is deleted. */
+  logout: async (scope: 'global' | 'local' = 'global'): Promise<void> => {
     try {
       if (!isSupabaseConfigured()) return;
-      const { error } = await supabase.auth.signOut();
+      const { error } = await supabase.auth.signOut({ scope });
       if (error) throw error;
     } catch (error) {
       debugLogger.error('Auth', "Logout failed", error);

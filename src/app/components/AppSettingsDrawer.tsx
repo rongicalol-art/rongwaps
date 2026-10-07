@@ -2,6 +2,7 @@ import { debugLogger } from '../../utils/debugLogger';
 import { useEffect, useState } from 'react';
 import { ActionButton, AppIcon, Drawer, ConfirmationDialog, SegmentedControl } from '../../lib/widgets';
 import { isIosDevice, isStandaloneDisplay } from '../../utils/pwaInstall';
+import { SettingsAccountSection } from './SettingsAccountSection';
 
 export interface AppSettingsDrawerProps extends React.HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;
@@ -140,6 +141,8 @@ export function AppSettingsDrawer({
               </div>
             )}
           </div>
+
+          <SettingsAccountSection onNavigate={onClose} />
 
           <div className="h-[3px] w-full bg-ui-canvas" />
 

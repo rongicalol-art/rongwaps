@@ -3,6 +3,7 @@ import {
   PiArrowBendDownRightBold,
   PiArrowLeftBold,
   PiArrowRightBold,
+  PiDownloadSimpleBold,
   PiChartBarFill,
   PiBookmarkSimpleBold,
   PiBookmarkSimpleFill,
@@ -94,6 +95,7 @@ export type AppIconName =
   | 'cards'
   | 'check'
   | 'clock'
+  | 'download'
   | 'close'
   | 'choices'
   | 'deviceMobile'
@@ -409,6 +411,7 @@ const ICONS: Record<AppIconName, IconType> = {
   cards: PiCardsFill,
   check: PiCheckBold,
   clock: PiClockFill,
+  download: PiDownloadSimpleBold,
   close: PiXBold,
   choices: PiListChecksBold,
   deviceMobile: PiDeviceMobileBold,

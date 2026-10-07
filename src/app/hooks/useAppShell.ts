@@ -17,7 +17,7 @@ import { useResponsiveNav } from './useResponsiveNav';
 import { useWorkspaceRouting } from './useWorkspaceRouting';
 import { readBoolean, writeBoolean } from '../../utils/localStorage';
 
-const AUTH_PROMPT_DISMISSED_KEY = 'rongwaps:auth-prompt-dismissed';
+export const AUTH_PROMPT_DISMISSED_KEY = 'rongwaps:auth-prompt-dismissed';
 
 /**
  * AppShell composition root: every hook App.tsx used to call and thread by
