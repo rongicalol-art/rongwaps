@@ -9,6 +9,7 @@ import {
   ScreenHeader,
 } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
+import { contentUrl } from '../../../services/staticContentService';
 import { useModalFocus } from '../../../hooks/useModalFocus';
 import { useBookViewerHistory } from '../hooks/useBookViewerHistory';
 import { useBookViewerPinchPan } from '../hooks/useBookViewerPinchPan';
@@ -29,7 +30,7 @@ interface BookPageViewerProps {
 }
 
 function bookPageImageUrl(bookId: number, page: number) {
-  return `/data/book-pages/modern-chinese-${bookId}/page-${String(page).padStart(3, '0')}.webp`;
+  return contentUrl(`/data/book-pages/modern-chinese-${bookId}/page-${String(page).padStart(3, '0')}.webp`);
 }
 
 /**

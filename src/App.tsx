@@ -1,6 +1,7 @@
 import { LoadingScreen } from './lib/widgets';
 import { AppWorkspace } from './app/components/AppWorkspace';
 import { AppOverlays } from './app/components/AppOverlays';
+import { PwaUpdatePrompt } from './app/components/PwaUpdatePrompt';
 import { useAppShell } from './app/hooks/useAppShell';
 
 export default function App() {
@@ -74,6 +75,8 @@ export default function App() {
         isAuthOpen={overlays.isAuthOpen}
         onCloseAuth={overlays.closeAuth}
       />
+
+      <PwaUpdatePrompt />
     </>
   );
 }

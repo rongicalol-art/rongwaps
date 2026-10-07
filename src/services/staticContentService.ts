@@ -16,6 +16,17 @@ export interface StaticJsonFetchMetadata<T> {
 const CACHE_PREFIX = 'rongwaps-content:';
 const prunedVersions = new Set<string>();
 
+const CONTENT_BASE_URL = (import.meta.env?.VITE_CONTENT_BASE_URL || '/data').replace(/\/+$/, '');
+
+/**
+ * Single owner of where `/data/...` content is served from. Logical paths stay
+ * `/data/...` (manifests, cache keys); only the outgoing URL honours
+ * `VITE_CONTENT_BASE_URL` (e.g. a CDN origin). Defaults to same-origin `/data`.
+ */
+export function contentUrl(path: string): string {
+  return path.startsWith('/data/') ? `${CONTENT_BASE_URL}${path.slice('/data'.length)}` : path;
+}
+
 function canUsePersistentCache(): boolean {
   return typeof indexedDB !== 'undefined';
 }
@@ -59,7 +70,7 @@ export async function fetchStaticJsonWithMetadata<T>(
 
   const response = await timeDataRequest(
     label,
-    () => fetch(path, { cache: options.revalidate ? 'no-cache' : 'default' }),
+    () => fetch(contentUrl(path), { cache: options.revalidate ? 'no-cache' : 'default' }),
   );
   const contentType = response.headers.get('content-type');
 

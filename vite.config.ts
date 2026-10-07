@@ -53,8 +53,11 @@ const pwaPlugin = VitePWA({
   // Reuse the existing hand-written public/manifest.json; do not generate a
   // second manifest from the plugin.
   manifest: false,
-  registerType: 'autoUpdate',
-  injectRegister: 'auto',
+  // 'prompt': a new service worker waits until the user taps Refresh
+  // (src/app/components/PwaUpdatePrompt.tsx) instead of swapping mid-session.
+  registerType: 'prompt',
+  // Registration goes through virtual:pwa-register/react (single path).
+  injectRegister: false,
   strategies: 'generateSW',
   includeAssets: ['icons/*'],
   devOptions: { enabled: false },
@@ -67,16 +70,30 @@ const pwaPlugin = VitePWA({
     globIgnores: [
       'data/**',
       'videos/**',
+      // Large CJK fonts (MBs each) are runtime-cached on first use (see the
+      // /fonts rule below) so first install does not pull ~16 MB over mobile
+      // data. Only the small UI/extras fonts stay in the precache.
+      'fonts/edukai.woff2',
+      'fonts/lxgw-wenkai.woff2',
+      'fonts/rounded-sc.woff2',
+      'fonts/huninn.woff2',
       '**/sw.js',
       '**/workbox-*.js',
     ],
-    // Run the app shell (including the local TW-EduKai Chinese font) fully
-    // offline; it must be in the precache even though it is larger than the
-    // 2 MiB default.
-    maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
     navigateFallback: '/index.html',
     navigateFallbackDenylist: [/^\/api\//],
     runtimeCaching: [
+      {
+        // Self-hosted fonts excluded from the precache above: cached on first
+        // fetch, then served from cache for a year.
+        urlPattern: ({ url }) => url.pathname.startsWith('/fonts/') && url.pathname.endsWith('.woff2'),
+        handler: 'CacheFirst',
+        options: {
+          cacheName: 'fonts',
+          expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 365 },
+          cacheableResponse: { statuses: [0, 200] },
+        },
+      },
       {
         // LXGW WenKai TC (Chinese fallback behind the local TW-EduKai) is the
         // only remaining remote font. Cache it stale-while-revalidate.
