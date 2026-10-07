@@ -178,7 +178,7 @@ export async function fetchNeuralBlob(text: string, voice: string | undefined): 
     try {
       token = await authService.getAccessToken();
     } catch (err) {
-      // Graceful degradation: auth token unavailable; guest TTS fallback
+      // Graceful degradation: auth token unavailable; browser-speech fallback
       debugLogger.warn('Audio', 'authService.getAccessToken failed for neural TTS', err);
       token = null;
     }

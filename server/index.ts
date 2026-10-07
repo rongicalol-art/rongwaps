@@ -257,8 +257,8 @@ async function getTtsAudio(text: string, voiceName: string): Promise<CachedAudio
 }
 
 // Require a valid Supabase session on paid synthesis endpoints so anonymous
-// callers cannot burn the TTS provider budget (Azure/Edge). Guests keep
-// browser-speech fallback; only authenticated users get neural audio.
+// callers cannot burn the TTS provider budget (Azure/Edge). Only
+// authenticated users get neural audio.
 async function requireAuth(req: express.Request, res: express.Response, next: express.NextFunction) {
   const authHeader = req.headers.authorization;
   const token = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;

@@ -4,8 +4,6 @@ import { userService } from '../../services/userService';
 import { useAppStore } from '../../store/useAppStore';
 import { downloadJsonFile } from '../../utils/downloadFile';
 import { debugLogger } from '../../utils/debugLogger';
-import { remove } from '../../utils/localStorage';
-import { AUTH_PROMPT_DISMISSED_KEY } from './useAppShell';
 
 /** Local calendar date as YYYY-MM-DD (en-CA), so the filename matches the user's day. */
 function localDateStamp(): string {
@@ -24,7 +22,7 @@ export function useAccountActions() {
 
   /**
    * Deletes the account server-side, then drops everything cached for it on
-   * this device and reloads into the first-run sign-in. The reload also
+   * this device and reloads into the sign-in screen. The reload also
    * discards in-memory sync state that still points at the deleted user.
    */
   const deleteAccount = useCallback(async () => {
@@ -39,7 +37,6 @@ export function useAccountActions() {
 
     useAppStore.getState().resetAccountScopedState();
     useAppStore.setState({ lastActiveUserId: null, localFlashcards: [], progressResetSeen: {}, currentUser: null });
-    remove(AUTH_PROMPT_DISMISSED_KEY);
     await useAppStore.persist.clearStorage();
     window.location.replace('/');
   }, []);

@@ -25,7 +25,7 @@ The browser only uses this route for text with no recorded audio file.
 - **Method**: `POST`
 - **Path**: `/api/tts`
 - **Headers**: `Content-Type: application/json`, and `Authorization: Bearer <supabase access token>`
-  (**required** — anonymous callers get `401`; guests fall back to browser speech synthesis).
+  (**required** — anonymous callers get `401`; the client falls back to browser speech synthesis).
 - **Body**: `{ "text": string, "voice"?: string }`. Text is trimmed and truncated to 500 characters.
   `voice` defaults to `zh-CN-XiaoxiaoNeural`; an unknown voice also falls back to that default. The
   accepted client voice names are `zh-CN-XiaoxiaoNeural`, `zh-CN-YunxiNeural`,

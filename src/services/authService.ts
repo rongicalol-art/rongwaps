@@ -5,7 +5,7 @@ import { User } from '@supabase/supabase-js';
 const missingSupabaseMessage = 'Supabase is not configured for this local environment.';
 
 export const authService = {
-  /** Access token for authenticated API calls, or null for guests. */
+  /** Access token for authenticated API calls, or null when signed out. */
   getAccessToken: async (): Promise<string | null> => {
     if (!isSupabaseConfigured()) return null;
     const { data } = await supabase.auth.getSession();

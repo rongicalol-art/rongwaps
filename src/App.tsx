@@ -5,6 +5,7 @@ import { AppOverlays } from './app/components/AppOverlays';
 import { PwaUpdatePrompt } from './app/components/PwaUpdatePrompt';
 import { useAppShell } from './app/hooks/useAppShell';
 import { legalPageFromPathname } from './app/routes';
+import { SignInWindow } from './screens/auth';
 import { LegalScreen } from './screens/legal';
 
 /**
@@ -17,10 +18,16 @@ export default function App() {
 }
 
 function AppShell() {
-  const { isLoading, nav, reader, grammar, activity, settings, overlays } = useAppShell();
+  const { isLoading, isSignedOut, nav, reader, grammar, activity, settings, overlays } = useAppShell();
 
   if (isLoading) {
     return <LoadingScreen message="Loading RongWaps…" fullScreen tone="canvas" />;
+  }
+
+  // Accounts are required: signed out, the only thing on screen is the
+  // (non-dismissable) sign-in window.
+  if (isSignedOut) {
+    return <SignInWindow />;
   }
 
   return (
@@ -84,8 +91,6 @@ function AppShell() {
         characterPreference={settings.characterPreference}
         onCharacterPreferenceChange={settings.setCharacterPreference}
         onResetProgress={settings.onResetProgress}
-        isAuthOpen={overlays.isAuthOpen}
-        onCloseAuth={overlays.closeAuth}
       />
 
       <PwaUpdatePrompt />

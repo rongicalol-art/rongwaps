@@ -8,7 +8,6 @@ import {
   StickyWorkspaceHeader,
   type StickyWorkspaceHeaderMenuToggle,
 } from '../../lib/widgets';
-import { SignInWindow } from '../auth';
 import { ProfileHeroCard } from './components/ProfileHeroCard';
 import { ReviewHubCard } from './components/ReviewHubCard';
 import { LearningStatsGrid } from './components/LearningStatsGrid';
@@ -38,7 +37,6 @@ export function ProfileScreen({
   const navigate = useNavigate();
   const { currentUser, isLoading: isAuthLoading, logout, isAuthActionLoading } = useAuth();
   const overview = useReviewOverview();
-  const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [accountError, setAccountError] = useState<string | null>(null);
 
   // App store selectors: subscribe to primitive lengths to avoid re-rendering on element updates
@@ -114,7 +112,6 @@ export function ProfileScreen({
               {/* 1. Identity & Cloud Sync */}
               <ProfileHeroCard
                 currentUser={currentUser}
-                onOpenSignIn={() => setIsAuthOpen(true)}
                 onSignOut={handleSignOut}
                 isSigningOut={isAuthActionLoading}
                 onOpenSettings={() => setIsSettingsOpen(true)}
@@ -142,10 +139,6 @@ export function ProfileScreen({
           )}
         </AnimatePresence>
       </div>
-
-      <AnimatePresence>
-        {isAuthOpen && <SignInWindow onClose={() => setIsAuthOpen(false)} />}
-      </AnimatePresence>
     </div>
   );
 }

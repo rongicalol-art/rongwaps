@@ -131,12 +131,12 @@ test('client service sends the bearer token and parses the grading result', asyn
   assert.equal((calls[0].init?.headers as Record<string, string>).Authorization, 'Bearer token-123');
 });
 
-test('client service degrades to null for guests and failures', async () => {
-  const guest = await gradeFromClient(
+test('client service degrades to null without a token and on failures', async () => {
+  const noToken = await gradeFromClient(
     { reference: 'a', answer: 'b' },
     { getToken: async () => null, fetchImpl: (async () => jsonResponse({})) as typeof fetch },
   );
-  assert.equal(guest, null);
+  assert.equal(noToken, null);
 
   const rateLimited = await gradeFromClient(
     { reference: 'a', answer: 'b' },

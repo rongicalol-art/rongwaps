@@ -4,7 +4,6 @@ import type { SyncStatus, UserSnapshot } from '../../../store/useAppStore';
 
 interface ProfileHeroCardProps {
   currentUser: UserSnapshot | null;
-  onOpenSignIn: () => void;
   /**
    * Sign-out handler. The screen catches the rejection and reports it through
    * `accountError`, so the returned promise may reject.
@@ -22,22 +21,20 @@ interface ProfileHeroCardProps {
 
 /**
  * Elevated learner hero card. Displays avatar, name, handle, cloud sync status,
- * and sign-in / backup actions.
+ * and the sign-out action.
  */
 export const ProfileHeroCard = memo(function ProfileHeroCard({
   currentUser,
-  onOpenSignIn,
   onSignOut,
   isSigningOut,
   syncStatus,
   syncError,
   accountError,
 }: ProfileHeroCardProps) {
-  const isSignedIn = Boolean(currentUser);
   const avatarUrl = currentUser?.avatarUrl || currentUser?.avatar_url;
   const emailPrefix = currentUser?.email ? currentUser.email.split('@')[0] : null;
   const displayName =
-    currentUser?.fullName || currentUser?.name || emailPrefix || 'Guest Learner';
+    currentUser?.fullName || currentUser?.name || emailPrefix || 'Learner';
   const handle = emailPrefix ? `@${emailPrefix}` : null;
   // `syncError` is also written by non-sync failures (e.g. a folder delete that
   // the server rejected), so it outranks the status flag when deciding the pill.
@@ -60,54 +57,34 @@ export const ProfileHeroCard = memo(function ProfileHeroCard({
             <h1 className="truncate text-lg font-black tracking-tight text-ui-ink-strong sm:text-xl">
               {displayName}
             </h1>
-            {isSignedIn ? (
-              <>
-                <div className="mt-0.5 flex items-center gap-2 text-xs font-bold text-ui-muted">
-                  {handle && <span className="truncate">{handle}</span>}
-                  <SyncStatusPill hasIssue={hasSyncIssue} isSyncing={syncStatus === 'syncing'} />
-                </div>
-                {(accountError || syncError) && (
-                  <div
-                    role="alert"
-                    className="mt-1.5 flex flex-col gap-1 text-xs font-bold leading-snug text-feedback-danger-edge"
-                  >
-                    {accountError && <p>{accountError}</p>}
-                    {syncError && <p>{syncError}</p>}
-                  </div>
-                )}
-              </>
-            ) : (
-              <p className="mt-0.5 truncate text-xs font-bold text-ui-muted sm:text-sm">
-                Sync progress & unlock features
-              </p>
+            <div className="mt-0.5 flex items-center gap-2 text-xs font-bold text-ui-muted">
+              {handle && <span className="truncate">{handle}</span>}
+              <SyncStatusPill hasIssue={hasSyncIssue} isSyncing={syncStatus === 'syncing'} />
+            </div>
+            {(accountError || syncError) && (
+              <div
+                role="alert"
+                className="mt-1.5 flex flex-col gap-1 text-xs font-bold leading-snug text-feedback-danger-edge"
+              >
+                {accountError && <p>{accountError}</p>}
+                {syncError && <p>{syncError}</p>}
+              </div>
             )}
           </div>
         </div>
 
         {/* Right: Primary account action */}
         <div className="shrink-0">
-          {isSignedIn ? (
-            <ActionButton
-              variant="quiet"
-              size="sm"
-              onClick={onSignOut}
-              disabled={isSigningOut}
-              className="font-black uppercase tracking-wider text-ui-muted-strong hover:text-feedback-danger"
-            >
-              <AppIcon name="signOut" size={16} />
-              <span>Sign out</span>
-            </ActionButton>
-          ) : (
-            <ActionButton
-              variant="primary"
-              size="sm"
-              onClick={onOpenSignIn}
-              className="font-black uppercase tracking-wider"
-            >
-              <AppIcon name="signIn" size={16} />
-              <span>Sign in</span>
-            </ActionButton>
-          )}
+          <ActionButton
+            variant="quiet"
+            size="sm"
+            onClick={onSignOut}
+            disabled={isSigningOut}
+            className="font-black uppercase tracking-wider text-ui-muted-strong hover:text-feedback-danger"
+          >
+            <AppIcon name="signOut" size={16} />
+            <span>Sign out</span>
+          </ActionButton>
         </div>
       </div>
     </section>

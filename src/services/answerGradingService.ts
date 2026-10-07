@@ -3,7 +3,7 @@ import { logFallback } from './errors';
 
 /**
  * Semantic grading for free-text answers, backed by the server's Jev endpoint.
- * Returns null on any failure (unconfigured server, guest session, network,
+ * Returns null on any failure (unconfigured server, signed-out session, network,
  * rate limit, timeout) so callers keep their exact-match fallback.
  */
 

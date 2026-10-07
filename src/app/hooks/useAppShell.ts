@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useAppNavigation } from '../../hooks/useAppNavigation.tsx';
 import { useAudioUnlock } from '../../hooks/useAudioUnlock';
 import { useCharacterFont } from '../../hooks/useCharacterFont';
@@ -15,15 +14,11 @@ import { useReaderLauncher } from './useReaderLauncher';
 import { useReaderStepNavigation } from './useReaderStepNavigation';
 import { useResponsiveNav } from './useResponsiveNav';
 import { useWorkspaceRouting } from './useWorkspaceRouting';
-import { readBoolean, writeBoolean } from '../../utils/localStorage';
-
-export const AUTH_PROMPT_DISMISSED_KEY = 'rongwaps:auth-prompt-dismissed';
 
 /**
  * AppShell composition root: every hook App.tsx used to call and thread by
  * hand, returned as named groups (nav, reader, grammar, activity, settings,
- * sync, overlays). Pure wiring — no state of its own beyond the first-run
- * sign-in flag.
+ * sync, overlays). Pure wiring — no state of its own.
  */
 export function useAppShell() {
   useAudioUnlock();
@@ -34,7 +29,6 @@ export function useAppShell() {
   const { currentUser, isLoading } = useAuth();
   const navigation = useAppNavigation();
   const responsiveNav = useResponsiveNav();
-  const [isInitialAuthOpen, setIsInitialAuthOpen] = useState(() => !readBoolean(AUTH_PROMPT_DISMISSED_KEY, false));
 
   const grammar = useGrammarLauncher({ onOpen: responsiveNav.collapseNav });
   const reader = useReaderLauncher({
@@ -133,6 +127,7 @@ export function useAppShell() {
 
   return {
     isLoading,
+    isSignedOut: !currentUser,
     nav: {
       activeTab: navigation.activeTab,
       activeBookId: shellState.activeBookId,
@@ -186,11 +181,6 @@ export function useAppShell() {
     overlays: {
       dictionaryWord: shellState.dictionaryWord,
       isOverlayActive,
-      isAuthOpen: !currentUser && isInitialAuthOpen,
-      closeAuth: () => {
-        writeBoolean(AUTH_PROMPT_DISMISSED_KEY, true);
-        setIsInitialAuthOpen(false);
-      },
     },
   };
 }

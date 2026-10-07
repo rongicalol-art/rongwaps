@@ -1,12 +1,10 @@
 import React from 'react';
-import { AnimatePresence } from 'motion/react';
 import { AppSettingsDrawer } from './AppSettingsDrawer';
 import { GrammarWindow } from './GrammarWindow';
 import { ReaderWindow } from './ReaderWindow';
 import { DebugToolsOverlay } from './DebugToolsOverlay';
 import { DictionaryDetailOverlay } from '../../features/dictionary';
 import { SaveWordModal } from '../../features/library';
-import { SignInWindow } from '../../screens/auth';
 
 type GrammarWindowProps = React.ComponentProps<typeof GrammarWindow>;
 type ReaderWindowProps = React.ComponentProps<typeof ReaderWindow>;
@@ -33,15 +31,12 @@ interface AppOverlaysProps {
   characterPreference: AppSettingsDrawerProps['characterPreference'];
   onCharacterPreferenceChange: AppSettingsDrawerProps['onCharacterPreferenceChange'];
   onResetProgress: AppSettingsDrawerProps['onResetProgress'];
-
-  isAuthOpen: boolean;
-  onCloseAuth: () => void;
 }
 
 /**
  * Every window and overlay that lives outside the workspace shell: grammar
- * and reader study windows, dictionary/save-word overlays, settings, the
- * first-run sign-in, and dev tools.
+ * and reader study windows, dictionary/save-word overlays, settings, and
+ * dev tools.
  */
 export function AppOverlays({
   isGrammarOpen,
@@ -62,8 +57,6 @@ export function AppOverlays({
   characterPreference,
   onCharacterPreferenceChange,
   onResetProgress,
-  isAuthOpen,
-  onCloseAuth,
 }: AppOverlaysProps) {
   return (
     <>
@@ -97,10 +90,6 @@ export function AppOverlays({
         onCharacterPreferenceChange={onCharacterPreferenceChange}
         onResetProgress={onResetProgress}
       />
-
-      <AnimatePresence>
-        {isAuthOpen && <SignInWindow onClose={onCloseAuth} />}
-      </AnimatePresence>
 
       <DebugToolsOverlay />
     </>

@@ -1,5 +1,5 @@
 import { debugLogger } from '../../utils/debugLogger';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router';
 import { useAuth } from '../../hooks/useAuth';
 import { LEGAL_ROUTES } from '../../app/routes';
@@ -8,27 +8,17 @@ import {
   AppIcon,
   BrandWordmark,
   Dialog,
-  IconActionButton,
   VideoBackground,
 } from '../../lib/widgets';
 
-interface SignInWindowProps {
-  onClose?: () => void;
-}
-
 /**
- * Split-screen sign-in window with video background.
- * Supports signing in with Google or continuing as guest.
+ * Split-screen sign-in window with video background. Accounts are required,
+ * so it cannot be dismissed; it unmounts when a session appears.
  */
-export function SignInWindow({ onClose }: SignInWindowProps = {}) {
-  const { currentUser, loginWithGoogle, isLoading } = useAuth();
+export function SignInWindow() {
+  const { loginWithGoogle, isLoading } = useAuth();
   const [authError, setAuthError] = useState<string | null>(null);
   const [isSigningIn, setIsSigningIn] = useState(false);
-
-  // Auto-close as soon as a session appears if onClose callback was provided.
-  useEffect(() => {
-    if (currentUser && onClose) onClose();
-  }, [currentUser, onClose]);
 
   const handleGoogleLogin = async () => {
     setAuthError(null);
@@ -48,17 +38,13 @@ export function SignInWindow({ onClose }: SignInWindowProps = {}) {
   };
 
   return (
-    <Dialog.Root
-      open={true}
-      onClose={onClose}
-      zIndexClassName="z-auth"
-    >
-      <Dialog.Backdrop closeOnClick={!isSigningIn && Boolean(onClose)} />
+    <Dialog.Root open={true} zIndexClassName="z-auth">
+      <Dialog.Backdrop closeOnClick={false} />
       <Dialog.Content
         size="3xl"
         depth="xl"
         ariaLabel="Sign in"
-        closeOnEscape={!isSigningIn && Boolean(onClose)}
+        closeOnEscape={false}
         className="p-0 overflow-hidden rounded-feature md:min-h-[460px] max-h-none"
       >
       <div className="relative flex w-full flex-col overflow-hidden md:flex-row md:min-h-[460px]">
@@ -91,18 +77,6 @@ export function SignInWindow({ onClose }: SignInWindowProps = {}) {
 
         {/* Right column: Clean Sign In form */}
         <div className="relative flex flex-1 flex-col justify-between bg-ui-surface p-6 sm:p-8 md:p-10">
-          {/* Close button in top-right */}
-          <div className="flex justify-end">
-            {onClose && (
-              <IconActionButton
-                onClick={onClose}
-                label="Close sign in"
-                icon={<AppIcon name="close" size={20} />}
-                className="h-9 w-9 shrink-0 rounded-full hover:bg-ui-hover"
-              />
-            )}
-          </div>
-
           {/* Centered Sign In form */}
           <div className="my-auto mx-auto w-full max-w-sm py-2">
             <h1 className="text-2xl font-black tracking-tight text-ui-ink-strong md:text-3xl">
@@ -133,18 +107,6 @@ export function SignInWindow({ onClose }: SignInWindowProps = {}) {
                 <AppIcon name="signIn" size={20} />
                 Continue with Google
               </ActionButton>
-
-              {onClose && (
-                <ActionButton
-                  variant="quiet"
-                  size="md"
-                  onClick={onClose}
-                  disabled={isSigningIn}
-                  className="text-ui-muted-strong hover:text-ui-ink"
-                >
-                  Continue as guest
-                </ActionButton>
-              )}
             </div>
 
             <p className="mt-5 text-center text-xs font-bold leading-relaxed text-ui-muted-strong">
@@ -157,7 +119,7 @@ export function SignInWindow({ onClose }: SignInWindowProps = {}) {
 
           {/* Quiet footer note */}
           <p className="mt-auto pt-4 text-center text-xs font-bold text-ui-muted-strong">
-            Free forever. Learning works with or without an account.
+            Free during beta
           </p>
         </div>
       </div>
