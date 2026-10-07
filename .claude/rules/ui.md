@@ -8,7 +8,7 @@ paths:
 ---
 # UI rules
 
-Full token scale: `docs/DESIGN_TOKENS.md`. Widget catalog: `WIDGETS.md`. Design work: `rongwaps-ui-director` skill.
+Full token scale: `docs/DESIGN_TOKENS.md`. Widget catalog: `docs/WIDGETS.md`. Design work: `rongwaps-ui-director` skill.
 
 ## Look (owner preferences — repeated corrections, treat as law)
 - Premium-playful, Duolingo-like hierarchy. Clean, minimal, easy to read. Remove clutter and redundant labels before adding anything.

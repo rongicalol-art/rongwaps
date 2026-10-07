@@ -49,7 +49,7 @@ test('every resolved reading track is present in the hosted manifest', () => {
   const manifest = readJson<{
     count: number;
     files: Array<{ file: string }>;
-  }>('docs/audio_manifest_book1.json');
+  }>('content/audio/audio_manifest_book1.json');
   const hosted = new Set(manifest.files.map((entry) => entry.file));
   const readings = ALL_READINGS;
   const missing = readings

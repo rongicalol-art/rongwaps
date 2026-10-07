@@ -1,4 +1,4 @@
-# 🧧 RongWaps — Playful Chinese (TOCFL/HSK) Study Tool
+# 🧧 Ron's Mandarin — Playful Chinese (TOCFL/HSK) Study Tool
 
 > A playful, interactive Chinese learning application featuring Duolingo-style aesthetics, spaced repetition study (SRS), and character decomposition trees.
 

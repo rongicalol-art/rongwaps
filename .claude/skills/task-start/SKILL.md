@@ -1,6 +1,6 @@
 ---
 name: task-start
-description: Start any non-trivial RongWaps task (new feature, redesign, multi-file change, content work, "make a plan", "suggest"). Sets the plan-first flow and keeps context reads minimal.
+description: Start any non-trivial Ron's Mandarin task (new feature, redesign, multi-file change, content work, "make a plan", "suggest"). Sets the plan-first flow and keeps context reads minimal.
 ---
 
 # Task start

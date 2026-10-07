@@ -1,6 +1,6 @@
-# RongWaps Design Tokens
+# Ron's Mandarin Design Tokens
 
-This document outlines the standard tokens and utility classes for UI consistency across RongWaps. Tokens are defined in `src/index.css` (`@theme` block) and bridged to TypeScript via `src/data/designTokens.ts`.
+This document outlines the standard tokens and utility classes for UI consistency across Ron's Mandarin. Tokens are defined in `src/index.css` (`@theme` block) and bridged to TypeScript via `src/data/designTokens.ts`.
 
 ## 1. Border Radius (`rounded-*`)
 
@@ -111,7 +111,7 @@ Typography rules maintain visual harmony across Latin UI text, Chinese glyphs, a
 
 ## 9. Safe Area & Dock Layout Tokens
 
-RongWaps supports both web and iOS standalone PWA (`viewport-fit=cover`). To avoid arbitrary pixel values and hardcoded `env(safe-area-inset-bottom)` math scattered across components, layout dimensions and safe-area offsets are centralized in `src/index.css`.
+Ron's Mandarin supports both web and iOS standalone PWA (`viewport-fit=cover`). To avoid arbitrary pixel values and hardcoded `env(safe-area-inset-bottom)` math scattered across components, layout dimensions and safe-area offsets are centralized in `src/index.css`.
 
 ### Custom Properties (`:root`)
 

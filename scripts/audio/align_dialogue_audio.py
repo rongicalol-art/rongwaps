@@ -14,7 +14,7 @@ per-word alignments relative to the trimmed file.
 Usage: output/venv/bin/python scripts/audio/align_dialogue_audio.py [READING_ID ...]
 Writes: src/data/dialogueAlignment.ts (alignment data),
         output/official-audio/book1/*.mp3 (re-trimmed tracks),
-        docs/audio_manifest_book1.json (updated sizes/hashes).
+        content/audio/audio_manifest_book1.json (updated sizes/hashes).
 """
 import json
 import math
@@ -32,8 +32,8 @@ from pywhispercpp.model import Model
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 READINGS = json.loads((ROOT / 'output/readings.json').read_text())
-INDEX = json.loads((ROOT / 'docs/audio_index_book1.json').read_text())
-MANIFEST_PATH = ROOT / 'docs' / 'audio_manifest_book1.json'
+INDEX = json.loads((ROOT / 'content/audio/audio_index_book1.json').read_text())
+MANIFEST_PATH = ROOT / 'content' / 'audio' / 'audio_manifest_book1.json'
 AUDIO_DIR = ROOT / 'output' / 'official-audio' / 'book1'
 MODELS_DIR = ROOT / 'output' / 'whisper-models'
 OUT_FILE = ROOT / 'content' / 'dialogueAlignment.json'

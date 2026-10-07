@@ -1,4 +1,4 @@
-# RongWaps System Architecture
+# Ron's Mandarin System Architecture
 
 This document describes the current application structure and the boundaries the widget refactor is establishing. The refactor is intentionally incremental: existing screen slices remain valid, while domain UI is moved out of the global widget library only when ownership is clear.
 
@@ -73,7 +73,7 @@ These checks guard import direction; they do not replace ownership review or the
 
 - small, prop-driven primitives such as `ActionButton`, `IconActionButton`, `SegmentedControl`, `AppIcon`, `Skeleton`, and `CountryFlag`;
 - stable presentation patterns demonstrably used by multiple features, such as dialogs, drawers, headers, progress, and workspace shells;
-- only components listed in the public `WIDGETS.md` catalog and exported from the shared barrel.
+- only components listed in the public `WIDGETS.md` (this folder) catalog and exported from the shared barrel.
 
 A component starts feature-local. Promote it to shared widgets only after real cross-feature reuse or when it is an obvious app-wide primitive. Shared widgets should accept data and callbacks through props and should not acquire product-domain state merely to make reuse convenient.
 
@@ -110,7 +110,7 @@ Design values are centralized in `src/data/designTokens.ts` and the semantic CSS
 
 Functional icons go through the semantic `AppIcon` gateway. Motion uses the project's current `motion/react` integration; transitions remain close to the interaction they describe and must respect reduced-motion preferences.
 
-RongWaps is mobile-first and uses one workspace scroll container owned by the shell `main`. Shared layout patterns must preserve the sticky workspace header, workspace-bounded desktop overlays, keyboard focus, accessible labels, loading/empty/error states, and long-text behavior.
+Ron's Mandarin is mobile-first and uses one workspace scroll container owned by the shell `main`. Shared layout patterns must preserve the sticky workspace header, workspace-bounded desktop overlays, keyboard focus, accessible labels, loading/empty/error states, and long-text behavior.
 
 ## Refactor guardrails
 

@@ -26,7 +26,7 @@ READINGS = json.loads((ROOT / 'output' / 'readings.json').read_text())
 AUDIO_DIR = ROOT / 'output' / 'official-audio' / 'book1'
 OUT_FILE = ROOT / 'content' / 'dialogueAlignment.json'
 REPORT = ROOT / 'output' / 'mms_alignment_report.json'
-MANIFEST_PATH = ROOT / 'docs' / 'audio_manifest_book1.json'
+MANIFEST_PATH = ROOT / 'content' / 'audio' / 'audio_manifest_book1.json'
 
 CN_DIGITS = '零一二三四五六七八九'
 PINYIN_VARIANTS = {

@@ -3,12 +3,12 @@
 > **Status: complete (2026-09-16).** 641/656 Book 1 characters ship curated V2
 > hooks (563 scene, 76 sound, 2 reviewed shape-only — 也/己, nothing showable);
 > the remaining 15 are the documented atomic no-hooks keeping their v3 shape
-> hooks. Final pack sha256 `59d3d08caa3b…`, all gates green. See DECISIONS.md —
+> hooks. Final pack sha256 `59d3d08caa3b…`, all gates green. See docs/DECISIONS.md —
 > "Memory-hook quality…" and the batch 7–15 bullets — for the canonical record.
 > The process below is kept for reruns or future books.
 
 Committed handoff for continuing the Book 1 V2 memory-hook rollout. Read this
-first, then the DECISIONS.md entry "2026-09-15 — Memory-hook quality…" (canonical
+first, then the docs/DECISIONS.md entry "2026-09-15 — Memory-hook quality…" (canonical
 record, rollout bullets describe every batch).
 
 ## Goal / definition of done

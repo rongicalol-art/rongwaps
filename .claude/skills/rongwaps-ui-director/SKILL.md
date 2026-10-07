@@ -1,19 +1,19 @@
 ---
 name: rongwaps-ui-director
-description: Direct and review UI work for the RongWaps Chinese-learning web app. Use for screen design, redesigns, component styling, icon or illustration choices, responsive polish, visual audits, and any request to make RongWaps feel more premium, playful, cohesive, or intentional.
+description: Direct and review UI work for the Ron's Mandarin Chinese-learning web app. Use for screen design, redesigns, component styling, icon or illustration choices, responsive polish, visual audits, and any request to make Ron's Mandarin feel more premium, playful, cohesive, or intentional.
 ---
 
-# RongWaps UI Director
+# Ron's Mandarin UI Director
 
 Create a coherent premium-playful learning product, not a collection of individually cute screens. Preserve the app's tactile personality while making hierarchy, spacing, iconography, and illustration feel authored as one system.
 
 ## Start With Context
 
-1. Read `.claude/rules/ui.md` (auto-loads), `WIDGETS.md`, and relevant screen/widget files.
+1. Read `.claude/rules/ui.md` (auto-loads), `docs/WIDGETS.md`, and relevant screen/widget files.
 2. Inspect the existing screen in a browser before redesigning it.
 3. Reuse existing widgets and feature boundaries before creating components.
 4. Read [visual-system.md](references/visual-system.md) when choosing colors, depth, icons, mascots, typography, or motion.
-5. Treat `src/data/designTokens.ts` + the CSS variables in `src/index.css` as the single source of truth for color, depth, and radius. Never hardcode neutral hex values; use the `ui-*`/`brand-*`/`feedback-*` tokens. For prior design decisions, check `DECISIONS.md`.
+5. Treat `src/data/designTokens.ts` + the CSS variables in `src/index.css` as the single source of truth for color, depth, and radius. Never hardcode neutral hex values; use the `ui-*`/`brand-*`/`feedback-*` tokens. For prior design decisions, check `docs/DECISIONS.md`.
 
 ## Design Workflow
 
@@ -23,7 +23,7 @@ Create a coherent premium-playful learning product, not a collection of individu
 2. Identify one primary action and no more than two secondary actions.
 3. Establish hierarchy using layout and type before adding decoration.
 4. Use Phosphor icons through the semantic app icon layer for functional controls.
-5. Use original RongWaps mascot assets only for navigation, celebration, empty states, and teaching moments.
+5. Use original Ron's Mandarin mascot assets only for navigation, celebration, empty states, and teaching moments.
 6. Implement one complete screen or flow at a time.
 7. Verify desktop and mobile screenshots, interaction states, loading, empty, error, and long-text behavior.
 
@@ -58,4 +58,4 @@ Create a coherent premium-playful learning product, not a collection of individu
 - Top-level workspace headers use the canonical gradient-fade sticky treatment at ALL breakpoints: `sticky top-0 z-40 bg-gradient-to-b from-ui-canvas via-ui-canvas/95 to-transparent backdrop-blur-[2px]`.
 - Typecheck and production build pass.
 - Browser review covers at least 390x844 and 1440x1000 for substantial UI work.
-- Update `WIDGETS.md` for reusable widgets and update project documentation for new conventions.
+- Update `docs/WIDGETS.md` for reusable widgets and update project documentation for new conventions.

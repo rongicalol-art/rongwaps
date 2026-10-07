@@ -85,7 +85,7 @@ Record choices that should remain stable across tasks. Keep each entry short.
   - Unified Study Guide into one quiet, neutral reference panel: removed the yellow alert outline from Grammar and the asymmetric blue outline from Vocabulary; standardized Characters, Grammar, and Vocabulary cards to neutral `rounded-2xl bg-ui-surface border-2 border-ui-border border-b-[length:var(--depth-md)] shadow-xs` with matching collapsible headers and quiet `›` row markers.
   - Top bar upgraded to use `ScreenHeader` with left-anchored lesson title (`← LESSON X · PART Y`), line progress counter (`3 / 8 lines`), and right-anchored tools (💡 study guide toggle and ⚙ reader settings).
 - Reason: user design review — right study guide panel was competing heavily with dialogue, yellow outline looked like an alert state, dialogue zig-zag made reading jumpy, and bubble gutters were oversized.
-- Affects: `src/lib/widgets/{ScreenHeader,StudySidePanel}.tsx`, `src/screens/reader/ReaderScreen.tsx`, `src/screens/reader/components/{ReaderHeader,ReadingCanvas,ReadingNarrativeView,ReaderDialogueLine,ReaderCompanionSpeakersCard,ReaderCompanionGrammarCard,ReaderCompanionGrammarRow,ReaderCompanionVocabCard,ReaderCompanionVocabRow}.tsx`, `WIDGETS.md`.
+- Affects: `src/lib/widgets/{ScreenHeader,StudySidePanel}.tsx`, `src/screens/reader/ReaderScreen.tsx`, `src/screens/reader/components/{ReaderHeader,ReadingCanvas,ReadingNarrativeView,ReaderDialogueLine,ReaderCompanionSpeakersCard,ReaderCompanionGrammarCard,ReaderCompanionGrammarRow,ReaderCompanionVocabCard,ReaderCompanionVocabRow}.tsx`, `docs/WIDGETS.md`.
 
 ### 2026-09-23 — Course examples: verified Lesson 1–6 dialogues + separable verb-object matching
 
@@ -144,7 +144,7 @@ Record choices that should remain stable across tasks. Keep each entry short.
   - Because baked icons ignore `currentColor`, these buttons carry no active-state recolor or chip at all — open/disabled state rides on `aria-expanded`, the panel itself, and the flow-active dot; the disabled "coming soon" gear on Add Card mutes with `opacity-40`.
   - `StickyWorkspaceHeader`'s menu toggle now uses `menu` instead of `settings` — it opens nav, not settings.
 - Reason: the owner wanted the study-guide bulb and settings gear to read as colorful Duolingo-style marks (yellow vanished against the practice canvas), applied as universal logos rather than reader-only.
-- Affects: `src/lib/widgets/{AppIcon,StickyWorkspaceHeader}.tsx`, `src/screens/reader/components/ReaderSettingsPopover.tsx`, `src/features/character-breakdown/components/BreakdownSettingsPopover.tsx`, `src/features/practice/components/PracticeHeader.tsx`, `src/screens/add-card/AddCardScreen.tsx`, `WIDGETS.md`.
+- Affects: `src/lib/widgets/{AppIcon,StickyWorkspaceHeader}.tsx`, `src/screens/reader/components/ReaderSettingsPopover.tsx`, `src/features/character-breakdown/components/BreakdownSettingsPopover.tsx`, `src/features/practice/components/PracticeHeader.tsx`, `src/screens/add-card/AddCardScreen.tsx`, `docs/WIDGETS.md`.
 
 ### 2026-09-22 — Reading Mode gets a frosted header type
 
@@ -154,6 +154,6 @@ Record choices that should remain stable across tasks. Keep each entry short.
   - Reading Mode overlays it on the reading column (`absolute top-0`), so scrolled content passes under the blurred bar without showing through. Both reading canvases pad their top clear of it (`pt-[calc(5.5rem+env(safe-area-inset-top,0px))] sm:pt-[6.5rem]`).
   - Because the bar lives in the reading column, its border line stops at the Study Guide panel on desktop and runs full width on phone/tablet. Grammar keeps the canonical sticky fade. `getLessonTitles` / `getReaderHeaderTitles` stay — `ReadingNarrativeView` still renders the titles inside the reading.
 - Reason: the owner asked Reading Mode for a transparent-looking header at the default header height that hides the content beneath it, with a universal border line that is cut off at the side panels on desktop and full width on mobile/tablet, no shadow, and the lesson/part title (not the logo) in the center.
-- Affects: `src/lib/widgets/ScreenHeader.tsx`, `src/screens/reader/ReaderScreen.tsx`, `src/screens/reader/components/{ReaderHeader,ReadingCanvas,ReadingNarrativeView}.tsx`, `WIDGETS.md`.
+- Affects: `src/lib/widgets/ScreenHeader.tsx`, `src/screens/reader/ReaderScreen.tsx`, `src/screens/reader/components/{ReaderHeader,ReadingCanvas,ReadingNarrativeView}.tsx`, `docs/WIDGETS.md`.
 
 Older entries (2026-09-21 and earlier): `docs/archive/DECISIONS_ARCHIVE.md`.

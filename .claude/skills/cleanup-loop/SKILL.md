@@ -1,6 +1,6 @@
 ---
 name: cleanup-loop
-description: Autonomous code-reduction loop for RongWaps — finds the best ways to DELETE lines (duplication, dead code, over-engineering, UI inconsistencies solved by reuse) and lands ONE verified, net-negative commit per iteration. Run as `/loop /cleanup-loop`; continues until the owner says "done".
+description: Autonomous code-reduction loop for Ron's Mandarin — finds the best ways to DELETE lines (duplication, dead code, over-engineering, UI inconsistencies solved by reuse) and lands ONE verified, net-negative commit per iteration. Run as `/loop /cleanup-loop`; continues until the owner says "done".
 ---
 
 # Cleanup loop
@@ -45,7 +45,7 @@ Skip items marked `needs-owner`. If an item has failed verification twice, mark 
 Each pass adds findings to the backlog as one line: `- [ ] [pass] ~-N path:line — problem → intended fix` (N = estimated net lines removed; skip findings that don't remove lines unless they are real bugs). Dedupe against existing lines. Cap 15 new items per pass; keep the best ones.
 
 ### A. UI static scan (grep, scoped to `src/screens src/features src/lib/widgets src/app`)
-Load `.claude/rules/ui.md` and `WIDGETS.md` first. Look for:
+Load `.claude/rules/ui.md` and `docs/WIDGETS.md` first. Look for:
 - Hex / rgb colors in classNames or style props: `#[0-9a-fA-F]{3,8}\b`, `rgb\(`, `style=\{\{[^}]*color`
 - Arbitrary Tailwind values: `-\[[0-9.]+(px|rem)\]`, `text-\[`, `font-\[`
 - Hardcoded font families outside `index.css`
@@ -88,7 +88,7 @@ Read `docs/ARCHITECTURE.md` first. Look for:
 - Extracting/splitting is allowed only when it is the vehicle for removing duplication and the commit is still net-negative.
 - Refactors must be behavior-preserving. If a refactor touches > 8 files, split it across iterations (each one green and net-negative on its own).
 - Before committing: `git add` the touched files, run `git diff --cached --shortstat`. If insertions ≥ deletions (and it isn't a bug fix) → rethink or abandon the item.
-- Update `docs/ARCHITECTURE.md` / `WIDGETS.md` when a move or new widget changes what they describe. Docs describe what EXISTS.
+- Update `docs/ARCHITECTURE.md` / `docs/WIDGETS.md` when a move or new widget changes what they describe. Docs describe what EXISTS.
 
 **Never autonomous → add to "Needs owner" with a one-paragraph proposal instead:**
 new dependency · Supabase schema/RPC change · `public/data/` packs or pack generators · deleting a user-facing feature/screen/route · changing visible product behavior or copy beyond fixing an obvious bug · design changes that are a matter of taste (not a rule violation) · weakening a lint/jev rule · touching `.env*`, keys, `scripts/.config.json`.

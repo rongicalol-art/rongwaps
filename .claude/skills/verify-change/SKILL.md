@@ -1,6 +1,6 @@
 ---
 name: verify-change
-description: Run the RongWaps verification gate scoped to what changed. Use before declaring any src/, server/, tests/, content or UI change done.
+description: Run the Ron's Mandarin verification gate scoped to what changed. Use before declaring any src/, server/, tests/, content or UI change done.
 ---
 
 # Verify change

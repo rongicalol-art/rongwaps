@@ -1,4 +1,4 @@
-# RongWaps — agent instructions
+# Ron's Mandarin (repo: rongwaps) — agent instructions
 
 Chinese-learning PWA. React 19 + Vite + Zustand + Tailwind 4 + Express (`server/`) + Supabase. Core rules only; details load on demand (see Routing).
 
@@ -27,8 +27,19 @@ Use the `verify-change` skill.
 - Never read, print or commit `.env*`, `.batch_key_env`, `.openrouter_key`, `scripts/.config.json`. Service-role and API keys are server/script-side only, never in `src/`.
 - Never hand-edit `public/data/` packs; regenerate via npm scripts and commit manifests with them.
 - `output/`, `.audit/`, `materials/`, `.agents/` are gitignored scratch. Never depend on them in code.
-- Docs describe what EXISTS. Update `WIDGETS.md` when adding a shared widget.
+- Docs describe what EXISTS. Update `docs/WIDGETS.md` when adding a shared widget.
 - Smallest change that meets the requirement. Reuse widgets/tokens before adding new ones. Name the duplication before adding an abstraction.
+
+## Repo map (what ships vs what doesn't)
+
+- `src/` client → `dist/` (ships) · `server/` Express API → `dist-server/` (ships; never imports `src/` except types)
+- `public/` static assets (ships). `public/data/` is GENERATED from `content/` + scripts — never hand-edit
+- `content/` authored source for packs (grammar, readings, dialogue alignment, `audio/` index+manifest)
+- `scripts/` content/audio pipelines, dev-only; never imported by `src/` or `server/`
+- `supabase/migrations/` DB schema, applied with `supabase db push`
+- `tests/` · `docs/` (`docs/INDEX.md` routes) · `.claude/` agent rules/skills
+- `worker/index.js` unused Cloudflare static-asset worker stub (nothing references it)
+- Gitignored local scratch: `materials/` `output/` `.audit/` `.agents/`
 
 ## Architecture (binding)
 
@@ -52,6 +63,6 @@ Path-scoped rules in `.claude/rules/` load automatically when you touch matching
 | Screen/component design, redesign, visual audit | `rongwaps-ui-director` skill |
 | Start non-trivial work | `task-start` skill |
 | Finish any change | `verify-change` skill |
-| Grammar lessons | `docs/GRAMMAR_LESSON_TEMPLATE.md`, `DECISIONS.md` |
+| Grammar lessons | `docs/GRAMMAR_LESSON_TEMPLATE.md`, `docs/DECISIONS.md` |
 | Data model / Supabase | `docs/DATABASE_SCHEMA.md` |
 | Server / TTS / Jev grading | `docs/API_SPEC.md` |

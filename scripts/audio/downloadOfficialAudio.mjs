@@ -2,11 +2,11 @@
  * Download the official 時代華語 Book 1 audio and re-encode it for app hosting.
  *
  * Source: the publisher's public Google Drive folders (indexed in
- * docs/audio_index_book1.json — see docs/OFFICIAL_AUDIO_SOURCES.md).
+ * content/audio/audio_index_book1.json — see docs/OFFICIAL_AUDIO_SOURCES.md).
  * Output: output/official-audio/book1/<B1-LL-P-T.mp3>, re-encoded to 96 kbps
  * mono MP3 (the originals are ~320 kbps stereo speech; 96 kbps mono is
  * indistinguishable for Mandarin dialogue and ~70% smaller), plus a manifest
- * with hashes/sizes/durations at docs/audio_manifest_book1.json.
+ * with hashes/sizes/durations at content/audio/audio_manifest_book1.json.
  *
  * Usage: node scripts/audio/downloadOfficialAudio.mjs
  * Requires: ffmpeg + ffprobe on PATH.
@@ -20,9 +20,9 @@ import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
 
-const INDEX_PATH = 'docs/audio_index_book1.json';
+const INDEX_PATH = 'content/audio/audio_index_book1.json';
 const OUT_DIR = 'output/official-audio/book1';
-const MANIFEST_PATH = 'docs/audio_manifest_book1.json';
+const MANIFEST_PATH = 'content/audio/audio_manifest_book1.json';
 const CONCURRENCY = 4;
 const MAX_RETRIES = 2;
 const MIN_DURATION_SEC = 3;

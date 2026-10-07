@@ -1,4 +1,4 @@
-# RongWaps — Claude Code instructions
+# Ron's Mandarin (repo: rongwaps) — Claude Code instructions
 
 @AGENTS.md
 

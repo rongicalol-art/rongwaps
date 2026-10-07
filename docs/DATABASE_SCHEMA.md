@@ -1,6 +1,6 @@
 # 🗄️ Supabase Database Schema
 
-This document reflects the **live RongWaps Supabase schema after the 2026-10 user-data migrations** (`20261004`–`20261007140000`). All reference content (dictionary, vocabulary, character breakdowns, memory hooks) is served 100% pack-first from static edge CDN and cached in local IndexedDB (migration `20261003`). The Supabase database contains strictly private user data.
+This document reflects the **live Ron's Mandarin Supabase schema after the 2026-10 user-data migrations** (`20261004`–`20261007140000`). All reference content (dictionary, vocabulary, character breakdowns, memory hooks) is served 100% pack-first from static edge CDN and cached in local IndexedDB (migration `20261003`). The Supabase database contains strictly private user data.
 
 ---
 

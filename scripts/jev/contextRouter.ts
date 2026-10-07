@@ -36,7 +36,7 @@ import { truncate, type AskJevFn } from './lintRules';
 const ROOT = resolve(import.meta.dirname, '../..');
 const DEFAULT_OUT = resolve(ROOT, 'output/jev/context/latest');
 
-const ROOT_DOCS = ['AGENTS.md', 'WIDGETS.md', 'DECISIONS.md', 'README.md'];
+const ROOT_DOCS = ['AGENTS.md', 'README.md'];
 const CANDIDATE_DIRS = ['src', 'scripts', 'server', 'tests', 'docs'];
 const IGNORED_DIRS = new Set(['node_modules', 'dist', '.git', 'output', 'public', '.vite', 'tmp', '.agents', '__pycache__']);
 const ALLOWED_EXTENSIONS = new Set(['.ts', '.tsx', '.md']);

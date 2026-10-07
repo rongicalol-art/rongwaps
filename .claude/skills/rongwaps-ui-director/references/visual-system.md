@@ -1,10 +1,10 @@
-# RongWaps Visual System
+# Ron's Mandarin Visual System
 
 > **Source of truth:** `src/data/designTokens.ts` and the CSS variables in `src/index.css`. Always use the token identifiers below (or the `ui-*`/`brand-*`/`feedback-*` Tailwind classes) in code — never hardcode hex values for neutrals. Adjust neutral contrast centrally only.
 
 ## Personality
 
-RongWaps is an encouraging Chinese-learning companion: curious, tactile, bright, and capable. Premium means deliberate hierarchy, coherent assets, and polished states, not muted colors or decorative complexity.
+Ron's Mandarin is an encouraging Chinese-learning companion: curious, tactile, bright, and capable. Premium means deliberate hierarchy, coherent assets, and polished states, not muted colors or decorative complexity.
 
 ## Core Palette (real tokens)
 
@@ -88,12 +88,12 @@ Course accents may vary, but neutral UI should remain stable across courses.
 
 ## Illustration
 
-- Original RongWaps characters share rounded geometry, crisp flat fills, tiny expressive faces, and one learning prop.
+- Original Ron's Mandarin characters share rounded geometry, crisp flat fills, tiny expressive faces, and one learning prop.
 - Use blue, coral/orange, yellow, green, and dark ink across the family.
 - Avoid references to existing entertainment characters.
 - No text or logos inside generated illustrations.
 - Prefer transparent or clean isolated assets that remain readable at 40-96px.
-- Current Adventure Time SVGs are temporary; replace with licensed/original RongWaps art before public launch.
+- Current Adventure Time SVGs are temporary; replace with licensed/original Ron's Mandarin art before public launch.
 
 ## Review Questions
 
