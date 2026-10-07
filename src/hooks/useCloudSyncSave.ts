@@ -3,9 +3,8 @@ import type { User } from '@supabase/supabase-js';
 import { debugLogger } from '../utils/debugLogger';
 import { useAppStore } from '../store/useAppStore';
 import { userService } from '../services/userService';
-import type { SRSData } from '../utils/srsEngine';
 import {
-  computeLearnedDelta,
+  checkpointForUser,
   createCloudSyncFingerprint,
   createSingleFlightSaveCoordinator,
   getNextAutoSaveDelay,
@@ -27,8 +26,6 @@ interface SaveCoordinator {
 export interface UseCloudSyncSaveOptions {
   currentUser: User | null;
   persistedOwnerRef: MutableRefObject<string | null>;
-  lastSyncedSrsRef: MutableRefObject<Record<string, SRSData> | null>;
-  lastSyncedLearnedRef: MutableRefObject<string[] | null>;
   lastSyncedSettingsRef: MutableRefObject<Record<string, unknown> | null>;
   hasFetchedForUserRef: MutableRefObject<string | null>;
   fetchFromCloud: () => Promise<void>;
@@ -37,8 +34,6 @@ export interface UseCloudSyncSaveOptions {
 export function useCloudSyncSave({
   currentUser,
   persistedOwnerRef,
-  lastSyncedSrsRef,
-  lastSyncedLearnedRef,
   lastSyncedSettingsRef,
   hasFetchedForUserRef,
   fetchFromCloud,
@@ -54,19 +49,15 @@ export function useCloudSyncSave({
     if (persistedOwnerRef.current !== userId) {
       return;
     }
-    await userService.syncCardProgress(userId, deltaSrsData);
-    lastSyncedSrsRef.current = {
-      ...(lastSyncedSrsRef.current ?? {}),
-      ...deltaSrsData,
-    };
-
-    const learnedDelta = computeLearnedDelta(lastSyncedLearnedRef.current, store.learnedCards);
-    if (learnedDelta.shrank || lastSyncedLearnedRef.current === null) {
-      await userService.replaceLearnedCards(store.learnedCards);
-    } else if (learnedDelta.appended.length > 0) {
-      await userService.appendLearnedCards(learnedDelta.appended);
+    await userService.syncCardProgress(deltaSrsData, store.learnedCards);
+    // Re-read: a pull may have advanced the checkpoint while this save ran.
+    const checkpoint = checkpointForUser(useAppStore.getState().syncCheckpoint, userId);
+    if (checkpoint) {
+      useAppStore.getState().setSyncCheckpoint({
+        ...checkpoint,
+        srs: { ...checkpoint.srs, ...deltaSrsData },
+      });
     }
-    lastSyncedLearnedRef.current = store.learnedCards;
 
     const settings = buildMetadataPayload(store);
     if (hasMetadataChanged(lastSyncedSettingsRef.current, settings)) {
@@ -76,12 +67,7 @@ export function useCloudSyncSave({
       // profile's (server-stamped) updated_at to decide whose settings are newer.
       if (serverUpdatedAt) useAppStore.getState().setLastCloudUpdate(serverUpdatedAt);
     }
-  }, [
-    lastSyncedLearnedRef,
-    lastSyncedSettingsRef,
-    lastSyncedSrsRef,
-    persistedOwnerRef,
-  ]);
+  }, [lastSyncedSettingsRef, persistedOwnerRef]);
 
   performSaveRef.current = performSave;
 
@@ -105,13 +91,16 @@ export function useCloudSyncSave({
           value: {
             userId,
             store,
-            deltaSrsData: computeSrsDelta(lastSyncedSrsRef.current, store.srsData),
+            deltaSrsData: computeSrsDelta(
+              checkpointForUser(store.syncCheckpoint, userId)?.srs ?? null,
+              store.srsData,
+            ),
           },
         };
       },
       (snapshot) => performSaveRef.current(snapshot),
     );
-  }, [currentUser, hasFetchedForUserRef, lastSyncedSrsRef]);
+  }, [currentUser, hasFetchedForUserRef]);
 
   const requestSave = useCallback(async () => {
     if (!currentUser || !coordinatorRef.current) return;

@@ -1,5 +1,6 @@
 import type { SRSData } from './srsEngine';
 import { isSameSrsData } from './srsRowMapping';
+import type { SyncCheckpoint } from '../store/slices/syncSlice';
 
 export interface CloudSyncFingerprintState {
   srsData: unknown;
@@ -73,31 +74,19 @@ export interface SyncedFolderSnapshot {
   color: string;
 }
 
-export interface LearnedCardsDelta {
-  /** Ids present in the current list but not in the synced baseline, in
-   * current-list order. */
-  appended: string[];
-  /** True when the current list lost baseline ids (progress reset) — the
-   * caller must fall back to a full replace instead of an append. */
-  shrank: boolean;
-}
-
 /**
- * Compute the append-only delta between the last synced learned-cards list
- * and the current one. A first-ever sync (null baseline) is a full replace.
+ * The persisted pull checkpoint when it belongs to this user and is
+ * well-formed (IndexedDB is untrusted input); otherwise null, which makes the
+ * next pull a full one with no upload baseline.
  */
-export function computeLearnedDelta(
-  baseline: string[] | null,
-  current: string[],
-): LearnedCardsDelta {
-  if (!baseline) return { appended: [], shrank: false };
-
-  const baselineSet = new Set(baseline);
-  const currentSet = new Set(current);
-  const appended = current.filter((id) => !baselineSet.has(id));
-  const shrank = current.length < baseline.length
-    || baseline.some((id) => !currentSet.has(id));
-  return { appended, shrank };
+export function checkpointForUser(
+  checkpoint: SyncCheckpoint | null | undefined,
+  userId: string,
+): SyncCheckpoint | null {
+  const valid = checkpoint?.userId === userId
+    && typeof checkpoint.srs === 'object'
+    && checkpoint.srs !== null;
+  return valid ? checkpoint : null;
 }
 
 /** True when the folder list is identical (id + name + color, order matters). */

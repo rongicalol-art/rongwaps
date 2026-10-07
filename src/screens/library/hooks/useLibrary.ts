@@ -94,7 +94,7 @@ export function useLibrary() {
       } catch (err) {
         debugLogger.error('Supabase', "Failed to delete folder in Supabase:", err);
         try {
-          const serverFolders = await userService.getCustomFolders(currentUser.id);
+          const serverFolders = await userService.getFolders();
           useAppStore.getState().setCustomFolders(serverFolders);
           useAppStore.getState().setSyncError(
             "Couldn't delete the folder — check your connection and try again.",
@@ -148,23 +148,10 @@ export function useLibrary() {
 
   useEffect(() => {
     if (currentUser) {
-      // Guard the listener inputs: a malformed payload must not poison the
-      // grid or the folder list.
-      const unsubscribeCards = flashcardService.subscribeToUserFlashcards(currentUser.id, (cards) => {
+      // Guard the listener input: a malformed payload must not poison the grid.
+      return flashcardService.subscribeToUserFlashcards(currentUser.id, (cards) => {
         setCustomFlashcards(Array.isArray(cards) ? cards : []);
       });
-
-      const unsubscribeFolders = flashcardService.subscribeToFolders(currentUser.id, (folders) => {
-        if (Array.isArray(folders)) {
-          const { setCustomFolders } = useAppStore.getState();
-          setCustomFolders(folders);
-        }
-      });
-      
-      return () => {
-        unsubscribeCards();
-        unsubscribeFolders();
-      };
     } else {
       setCustomFlashcards(localFlashcards);
     }
@@ -212,9 +199,8 @@ export function useLibrary() {
         name: newFolderName.trim(),
         color: folderColor
       });
-    } else {
-      addCustomFolder(newFolderName.trim(), folderColor, folderId);
     }
+    addCustomFolder(newFolderName.trim(), folderColor, folderId);
     
     setShowFolderModal(false);
     setIsCreatingFolder(false);

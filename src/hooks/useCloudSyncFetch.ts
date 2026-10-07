@@ -1,12 +1,13 @@
 import { useCallback, type MutableRefObject } from 'react';
 import type { User } from '@supabase/supabase-js';
+import type { SRSData } from '../utils/srsEngine';
 import { debugLogger } from '../utils/debugLogger';
 import { useAppStore } from '../store/useAppStore';
 import { userService } from '../services/userService';
 import { flashcardService } from '../services/flashcardService';
-import type { SRSData } from '../utils/srsEngine';
 import {
   applyProgressResetEpoch,
+  checkpointForUser,
   isSameFolderList,
   mergePulledSrsData,
 } from '../utils/cloudSyncQueue';
@@ -18,9 +19,6 @@ import {
 export interface UseCloudSyncFetchOptions {
   currentUser: User | null;
   persistedOwnerRef: MutableRefObject<string | null>;
-  lastSyncedSrsRef: MutableRefObject<Record<string, SRSData> | null>;
-  lastPulledCursorRef: MutableRefObject<{ userId: string; cursor: string | null } | null>;
-  lastSyncedLearnedRef: MutableRefObject<string[] | null>;
   lastSyncedSettingsRef: MutableRefObject<Record<string, unknown> | null>;
   hasFetchedForUserRef: MutableRefObject<string | null>;
   activeUserIdRef: MutableRefObject<string | null>;
@@ -29,9 +27,6 @@ export interface UseCloudSyncFetchOptions {
 export function useCloudSyncFetch({
   currentUser,
   persistedOwnerRef,
-  lastSyncedSrsRef,
-  lastPulledCursorRef,
-  lastSyncedLearnedRef,
   lastSyncedSettingsRef,
   hasFetchedForUserRef,
   activeUserIdRef,
@@ -43,6 +38,7 @@ export function useCloudSyncFetch({
       setSyncError,
       setLastCloudUpdate,
       setSrsDataAndLearnedCards,
+      setSyncCheckpoint,
       setCustomFolders,
       setFoldersSyncedUserId,
     } = useAppStore.getState();
@@ -57,18 +53,13 @@ export function useCloudSyncFetch({
         (activeUserIdRef.current !== null && activeUserIdRef.current !== currentUser.id)
         || (persistedOwnerRef.current !== null && persistedOwnerRef.current !== currentUser.id);
 
-      if (isAccountSwitch) {
-        lastPulledCursorRef.current = null;
-        useAppStore.getState().resetAccountScopedState();
-      }
+      // Clears the persisted checkpoint too, so a switch is always a full pull.
+      if (isAccountSwitch) useAppStore.getState().resetAccountScopedState();
 
       useAppStore.setState({ lastActiveUserId: currentUser.id });
       persistedOwnerRef.current = currentUser.id;
 
-      const lastCursor = lastPulledCursorRef.current
-        && lastPulledCursorRef.current.userId === currentUser.id
-        ? lastPulledCursorRef.current.cursor
-        : null;
+      const lastCursor = checkpointForUser(useAppStore.getState().syncCheckpoint, currentUser.id)?.cursor ?? null;
       let cloudData = await userService.getSyncState(
         lastCursor ? { since: lastCursor } : undefined,
       );
@@ -87,8 +78,8 @@ export function useCloudSyncFetch({
         });
       if (epoch?.wiped) {
         setSrsDataAndLearnedCards(epoch.srsData, epoch.learnedCards);
-        lastSyncedSrsRef.current = {};
-        lastSyncedLearnedRef.current = [];
+        // Nothing local is known to be on the server any more.
+        setSyncCheckpoint({ userId: currentUser.id, cursor: null, srs: {} });
         // An incremental pull omits rows older than the cursor, which the wipe
         // just dropped locally: refetch everything.
         if (lastCursor) cloudData = await userService.getSyncState();
@@ -98,6 +89,7 @@ export function useCloudSyncFetch({
         useAppStore.getState().setProgressResetSeen(currentUser.id, resetToRemember);
       }
       const srsAtPullStart = useAppStore.getState().srsData;
+      let baselineAfterPull: Record<string, SRSData> | null = null;
 
       const cloudTime = cloudData.lastUpdated ? new Date(cloudData.lastUpdated).getTime() : 0;
       const localLastUpdate = useAppStore.getState().lastCloudUpdate;
@@ -125,10 +117,10 @@ export function useCloudSyncFetch({
         const localProgress = useAppStore.getState();
         if (isAccountSwitch) {
           setSrsDataAndLearnedCards(cloudData.srsData, cloudData.learnedCards);
-          lastSyncedSrsRef.current = cloudData.srsData;
+          baselineAfterPull = cloudData.srsData;
         } else {
           const { merged, baseline } = mergePulledSrsData({
-            priorBaseline: lastSyncedSrsRef.current,
+            priorBaseline: checkpointForUser(localProgress.syncCheckpoint, currentUser.id)?.srs ?? null,
             atPullStart: srsAtPullStart,
             current: localProgress.srsData,
             cloud: cloudData.srsData,
@@ -137,16 +129,10 @@ export function useCloudSyncFetch({
             merged,
             Array.from(new Set([...localProgress.learnedCards, ...cloudData.learnedCards])),
           );
-          lastSyncedSrsRef.current = baseline;
+          baselineAfterPull = baseline;
         }
       }
 
-      // Server truth for the learned set: on a switch the full pull, otherwise
-      // what was already known plus this pull. The next save then appends only
-      // ids beyond it instead of replacing the whole set.
-      lastSyncedLearnedRef.current = isAccountSwitch
-        ? cloudData.learnedCards
-        : Array.from(new Set([...(lastSyncedLearnedRef.current ?? []), ...cloudData.learnedCards]));
       lastSyncedSettingsRef.current = cloudData.settings;
 
       // Folder writes go straight through flashcardService, so the pull is
@@ -171,12 +157,14 @@ export function useCloudSyncFetch({
 
       hasFetchedForUserRef.current = currentUser.id;
       activeUserIdRef.current = currentUser.id;
-      if (cloudData.cursor) {
-        lastPulledCursorRef.current = {
-          userId: currentUser.id,
-          cursor: cloudData.cursor,
-        };
-      }
+      // Remember where this pull left off (cursor + upload baseline); persisted,
+      // so a cold load pulls only what changed since.
+      const checkpoint = checkpointForUser(useAppStore.getState().syncCheckpoint, currentUser.id);
+      setSyncCheckpoint({
+        userId: currentUser.id,
+        cursor: cloudData.cursor ?? checkpoint?.cursor ?? null,
+        srs: baselineAfterPull ?? checkpoint?.srs ?? {},
+      });
       setSyncStatus('success');
       setSyncError(null);
     } catch (error: unknown) {
@@ -188,10 +176,7 @@ export function useCloudSyncFetch({
     currentUser,
     activeUserIdRef,
     hasFetchedForUserRef,
-    lastPulledCursorRef,
-    lastSyncedLearnedRef,
     lastSyncedSettingsRef,
-    lastSyncedSrsRef,
     persistedOwnerRef,
   ]);
 

@@ -24,19 +24,16 @@ const EXPECTED_TABLES = [
   'user_card_progress',
   'user_flashcards',
   'user_folders',
-  'user_learned_cards',
   'user_profiles',
 ] as const;
 
 /** Functions the migrations leave in `public` (post-drops, overloads collapsed by name). */
 const EXPECTED_FUNCTIONS = [
-  'append_learned_cards',
   'delete_my_account',
   'enforce_user_flashcard_cap',
   'export_my_data',
   'get_sync_state',
   'handle_new_user',
-  'replace_learned_cards',
   'reset_user_learning_progress',
   'touch_user_profile_updated_at',
   'upsert_card_progress',

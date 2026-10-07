@@ -1,7 +1,7 @@
 import { debugLogger } from '../utils/debugLogger';
 import { supabase } from './supabaseClient';
 import { SRSData } from '../utils/srsEngine';
-import { rowToSrsData, srsDataToUpsert, type CardProgressRow } from '../utils/srsRowMapping';
+import { rowsToProgress, srsDataToUpsert, type CardProgressRow } from '../utils/srsRowMapping';
 import type { CloudMetadataPayload } from '../utils/cloudSyncTransforms';
 import type { Json } from '../types/database';
 
@@ -14,7 +14,6 @@ export interface UserFolderRow {
 /** Wire shape of the `get_sync_state` RPC (see 20261005 migration). */
 interface SyncStateWire {
   cards: CardProgressRow[] | null;
-  learned: string[] | null;
   cursor: string | null;
   profile: {
     updated_at: string | null;
@@ -36,13 +35,13 @@ export interface UserSyncState {
   /** Epoch of the last server-side progress reset; undefined if never reset. */
   progressResetAt?: string;
   /**
-   * True when the pull returned card or learned rows. Lets the caller merge
-   * even when the profile's updated_at is older — card updates don't touch it.
+   * True when the pull returned card rows. Lets the caller merge even when
+   * the profile's updated_at is older — card updates don't touch it.
    */
   hasDelta: boolean;
   /**
-   * Newest timestamp among the returned rows — a server-derived watermark for
-   * incremental pulls. Undefined when no rows were returned.
+   * Newest `last_updated` among the returned cards — a server-derived
+   * watermark for incremental pulls. Undefined when no rows were returned.
    */
   cursor?: string;
 }
@@ -50,12 +49,12 @@ export interface UserSyncState {
 /**
  * Incremental pulls restart slightly before the cursor. A row stamped before
  * the cursor can still become visible after a pull (its transaction committed
- * late), and the cursor spans two tables; re-sending the last couple of
- * seconds is cheap and idempotent for the merge.
+ * late), and re-sending the last couple of seconds is cheap and idempotent for the
+ * merge.
  */
 const PULL_OVERLAP_MS = 2_000;
 
-/** Largest array the card/learned RPCs accept per call (enforced server-side). */
+/** Largest array the card RPC accepts per call (enforced server-side). */
 const RPC_BATCH_SIZE = 500;
 
 /** A `since` past every row, so a pull returns only the profile. */
@@ -67,10 +66,10 @@ function overlapWindowStart(cursorIso: string): string {
 }
 
 export const userService = {
-  // Everything the sync layer needs in one round trip: card rows, learned
-  // ids, profile settings and folders. Pass { since } to fetch only card and
-  // learned rows at/after that ISO timestamp (bounded incremental pull); omit
-  // for a full pull.
+  // Everything the sync layer needs in one round trip: card rows (learned
+  // flags included), profile settings and folders. Pass { since } to fetch
+  // only card rows at/after that ISO timestamp (bounded incremental pull);
+  // omit for a full pull.
   getSyncState: async (options?: { since?: string }): Promise<UserSyncState> => {
     const { data, error } = await supabase.rpc('get_sync_state', {
       p_since: options?.since ? overlapWindowStart(options.since) : null,
@@ -82,12 +81,7 @@ export const userService = {
 
     const wire = data as unknown as SyncStateWire;
     const cards = wire.cards ?? [];
-    const learnedCards = (wire.learned ?? []).filter((id): id is string => typeof id === 'string');
-
-    const srsData: Record<string, SRSData> = {};
-    for (const row of cards) {
-      srsData[row.card_id] = rowToSrsData(row);
-    }
+    const { srsData, learnedCards } = rowsToProgress(cards);
 
     return {
       srsData,
@@ -96,80 +90,26 @@ export const userService = {
       folders: wire.folders ?? [],
       lastUpdated: wire.profile?.updated_at ?? undefined,
       progressResetAt: wire.profile?.progress_reset_at ?? undefined,
-      hasDelta: cards.length > 0 || learnedCards.length > 0,
+      hasDelta: cards.length > 0,
       cursor: wire.cursor ?? undefined,
     };
   },
 
-  // Save granular card progress to user_card_progress table.
-  // Prefers the batch RPC (one round-trip, server fills user_id and
-  // last_updated from the JWT); falls back to direct upserts if the RPC
-  // is not deployed in the current environment.
-  syncCardProgress: async (userId: string, srsData: Record<string, SRSData>) => {
-    try {
-      const upserts = Object.entries(srsData).map(([card_id, data]) => srsDataToUpsert(data, card_id));
-      const rows = upserts.map((upsert) => ({
-        user_id: userId,
-        ...upsert,
-        last_updated: new Date().toISOString(),
-      }));
-
-      if (rows.length === 0) return;
-
-      // RPC path, chunked to stay under PostgREST payload limits.
-      let rpcOk = true;
-      for (let i = 0; i < upserts.length; i += RPC_BATCH_SIZE) {
-        const batch = upserts.slice(i, i + RPC_BATCH_SIZE);
-        const { error: rpcError } = await supabase.rpc('upsert_card_progress', {
-          p_records: batch,
-        });
-        if (rpcError) {
-          debugLogger.warn('Supabase', 'upsert_card_progress RPC failed, falling back to batch upsert:', rpcError);
-          rpcOk = false;
-          break;
-        }
-      }
-      if (rpcOk) return;
-
-      // Fallback: direct upserts in batches of 100 to avoid payload limits.
-      const batchSize = 100;
-      for (let i = 0; i < rows.length; i += batchSize) {
-        const batch = rows.slice(i, i + batchSize);
-        const { error } = await supabase
-          .from('user_card_progress')
-          .upsert(batch, { onConflict: 'user_id,card_id'});
-        if (error) {
-          debugLogger.error('Supabase', "Error upserting card progress batch:", error);
-          throw error;
-        }
-      }
-    } catch (e) {
-      debugLogger.error('Supabase', "Card progress sync exception:", e);
-      throw e;
-    }
-  },
-
-  // Full replace of the learned set (first sync, or a progress reset that
-  // shrank it). The server keeps rows that survive, so only removed ids are
-  // deleted and new ones inserted.
-  replaceLearnedCards: async (cards: string[]): Promise<void> => {
-    const { error } = await supabase.rpc('replace_learned_cards', { p_cards: cards });
-    if (error) {
-      debugLogger.error('Supabase', 'replace_learned_cards failed:', error);
-      throw error;
-    }
-  },
-
-  // Append-only learned-card sync: new first passes are inserted server-side
-  // without re-uploading the whole list.
-  // Chunked to the server's per-call limit.
-  appendLearnedCards: async (cardIds: string[]): Promise<void> => {
-    for (let i = 0; i < cardIds.length; i += RPC_BATCH_SIZE) {
-      const { error } = await supabase.rpc('append_learned_cards', {
-        p_cards: cardIds.slice(i, i + RPC_BATCH_SIZE),
+  // Save granular card progress through the batch RPC (server fills user_id
+  // and last_updated from the JWT; last write wins by review time). Cards in
+  // `learnedCards` carry `learned_at`. Errors propagate: the caller keeps the
+  // changes dirty and retries.
+  syncCardProgress: async (srsData: Record<string, SRSData>, learnedCards: string[]) => {
+    const learned = new Set(learnedCards);
+    const upserts = Object.entries(srsData).map(
+      ([cardId, data]) => srsDataToUpsert(data, cardId, learned.has(cardId)),
+    );
+    for (let i = 0; i < upserts.length; i += RPC_BATCH_SIZE) {
+      const { error } = await supabase.rpc('upsert_card_progress', {
+        p_records: upserts.slice(i, i + RPC_BATCH_SIZE),
       });
       if (error) {
-        debugLogger.error('Supabase', 'append_learned_cards failed:', error);
+        debugLogger.error('Supabase', 'upsert_card_progress failed:', error);
         throw error;
       }
     }
@@ -219,27 +159,12 @@ export const userService = {
     return state.progressResetAt ?? null;
   },
 
-  // Fetch custom folders for a user
-  getCustomFolders: async (userId: string): Promise<{ id: string; name: string; color: string }[]> => {
-    try {
-      const { data, error } = await supabase
-        .from('user_folders')
-        .select('id, name, color')
-        .eq('user_id', userId);
-
-      if (error) {
-        debugLogger.warn('Supabase', "Failed to fetch user folders:", error.message);
-        throw error;
-      }
-      return data || [];
-    } catch (e) {
-      debugLogger.error('Supabase', "getCustomFolders exception:", e);
-      throw e;
-    }
-  },
+  // The server's current folder list (profile-only pull; no card rows).
+  getFolders: async (): Promise<UserFolderRow[]> =>
+    (await userService.getSyncState({ since: PROFILE_ONLY_SINCE })).folders,
 
   // Everything stored about the signed-in user (profile, folders, custom
-  // cards, SRS progress, learned ids) as one JSON object for download.
+  // cards, SRS progress incl. learned flags) as one JSON object for download.
   exportMyData: async (): Promise<Json> => {
     const { data, error } = await supabase.rpc('export_my_data');
     if (error) {

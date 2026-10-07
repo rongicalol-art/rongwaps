@@ -69,6 +69,8 @@ export function useAuth() {
     setIsAuthActionLoading(true);
     try {
       await authService.logout();
+      // The next sign-in starts from a full pull; the baseline is not trusted across sessions.
+      useAppStore.getState().setSyncCheckpoint(null);
     } finally {
       setIsAuthActionLoading(false);
     }

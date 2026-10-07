@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
   applyProgressResetEpoch,
-  computeLearnedDelta,
+  checkpointForUser,
   createSingleFlightSaveCoordinator,
   getNextAutoSaveDelay,
   getNextCloudSyncBackoff,
@@ -347,36 +347,15 @@ test('unchanged-skip checks never skip after a null baseline or a real change', 
   assert.equal(isSameFolderList([], [folder]), false);
 });
 
-test('learned delta appends only new ids, preserving current order', () => {
-  assert.deepEqual(
-    computeLearnedDelta(['a', 'b'], ['a', 'b', 'c', 'd']),
-    { appended: ['c', 'd'], shrank: false },
-  );
-});
-
-test('learned delta flags a shrink (progress reset) for full replace', () => {
-  assert.deepEqual(
-    computeLearnedDelta(['a', 'b', 'c'], ['a']),
-    { appended: [], shrank: true },
-  );
-
-  // Reset + new first passes in the same window: still a full replace.
-  assert.deepEqual(
-    computeLearnedDelta(['a', 'b'], ['c', 'd']),
-    { appended: ['c', 'd'], shrank: true },
-  );
-});
-
-test('learned delta treats a first-ever sync (null baseline) as full replace', () => {
-  assert.deepEqual(
-    computeLearnedDelta(null, ['a', 'b']),
-    { appended: [], shrank: false },
-  );
-});
-
-test('learned delta is empty when nothing changed', () => {
-  assert.deepEqual(
-    computeLearnedDelta(['a', 'b'], ['a', 'b']),
-    { appended: [], shrank: false },
+test('checkpointForUser returns only a well-formed checkpoint owned by that user', () => {
+  const checkpoint = { userId: 'u1', cursor: '2026-01-01T00:00:00.000Z', srs: {} };
+  assert.equal(checkpointForUser(checkpoint, 'u1'), checkpoint);
+  assert.equal(checkpointForUser(checkpoint, 'u2'), null);
+  assert.equal(checkpointForUser(null, 'u1'), null);
+  assert.equal(checkpointForUser(undefined, 'u1'), null);
+  // IndexedDB is untrusted: a checkpoint without a baseline map is ignored.
+  assert.equal(
+    checkpointForUser({ userId: 'u1', cursor: null, srs: null } as unknown as typeof checkpoint, 'u1'),
+    null,
   );
 });

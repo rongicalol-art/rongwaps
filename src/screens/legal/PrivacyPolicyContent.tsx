@@ -21,7 +21,8 @@ export function PrivacyPolicyContent() {
           items={[
             <>
               <strong>Account:</strong> your email address, plus your name and profile picture from your
-              Google account. Sign-in goes through Google and Supabase; we never see your Google password.
+              Google account, kept only in your sign-in record. Sign-in goes through Google and Supabase; we
+              never see your Google password.
             </>,
             <>
               <strong>Learning data:</strong> which cards you have learned, their review schedule, and your

@@ -1,10 +1,14 @@
 import type { SRSData } from './srsEngine';
 
 /**
- * The single canonical mapping between client SRSData and
- * `user_card_progress` database rows. Every service and sync path converts
- * through this module — adding an SRS field means changing this file (plus
- * its migration), not several services.
+ * The single canonical mapping between client progress (SRSData +
+ * `learnedCards`) and `user_card_progress` database rows. Every service and
+ * sync path converts through this module — adding an SRS field means changing
+ * this file (plus its migration), not several services.
+ *
+ * Learned is a column (`learned_at`): `rowsToProgress` folds it into the store's
+ * `learnedCards`, `srsDataToUpsert` sends it with the card's record. A row with
+ * no `next_review_date` carries no SRS state (learned, never scheduled).
  */
 
 /** Card-level columns of `user_card_progress` as Supabase returns them. */
@@ -17,10 +21,12 @@ export interface CardProgressRow {
   learning_step: number | null;
   /** Review time (last-write-wins key); null on rows that predate the column. */
   reviewed_at?: string | null;
+  /** When the card was first learned; null/absent while it is not. */
+  learned_at?: string | null;
 }
 
 /**
- * Per-card payload for the `upsert_card_progress` RPC and direct upserts.
+ * Per-card payload for the `upsert_card_progress` RPC.
  *
  * A type alias rather than an interface on purpose: the RPC argument is jsonb
  * (`Json`), and only object *type aliases* receive TypeScript's implicit index
@@ -36,9 +42,15 @@ export type CardProgressUpsert = {
   learning_step: number | null;
   /** Omitted when the card has no recorded review time; the server then stamps now(). */
   reviewed_at?: string;
+  /** Present when the card is learned; the server keeps the earliest value and never clears it. */
+  learned_at?: string;
 };
 
-export function srsDataToUpsert(data: SRSData, cardId: string): CardProgressUpsert {
+export function srsDataToUpsert(
+  data: SRSData,
+  cardId: string,
+  learned = false,
+): CardProgressUpsert {
   return {
     card_id: cardId,
     ease: data.efactor,
@@ -49,7 +61,24 @@ export function srsDataToUpsert(data: SRSData, cardId: string): CardProgressUpse
     ...(data.lastReviewedAt != null
       ? { reviewed_at: new Date(data.lastReviewedAt).toISOString() }
       : {}),
+    ...(learned
+      ? { learned_at: new Date(data.lastReviewedAt ?? Date.now()).toISOString() }
+      : {}),
   };
+}
+
+/** Split pulled rows into SRS state and the learned id list. */
+export function rowsToProgress(rows: CardProgressRow[]): {
+  srsData: Record<string, SRSData>;
+  learnedCards: string[];
+} {
+  const srsData: Record<string, SRSData> = {};
+  const learnedCards: string[] = [];
+  for (const row of rows) {
+    if (row.next_review_date) srsData[row.card_id] = rowToSrsData(row);
+    if (row.learned_at) learnedCards.push(row.card_id);
+  }
+  return { srsData, learnedCards };
 }
 
 export function rowToSrsData(row: CardProgressRowLike): SRSData {

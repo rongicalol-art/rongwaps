@@ -93,6 +93,7 @@ export interface Database {
           learning_step: number | null;
           last_updated: string | null;
           reviewed_at: string | null;
+          learned_at: string | null;
         };
         Insert: {
           user_id: string;
@@ -104,6 +105,7 @@ export interface Database {
           learning_step?: number | null;
           last_updated?: string | null;
           reviewed_at?: string | null;
+          learned_at?: string | null;
         };
         Update: {
           user_id?: string;
@@ -115,6 +117,7 @@ export interface Database {
           learning_step?: number | null;
           last_updated?: string | null;
           reviewed_at?: string | null;
+          learned_at?: string | null;
         };
         Relationships: [];
       };
@@ -189,48 +192,21 @@ export interface Database {
         };
         Relationships: [];
       };
-      user_learned_cards: {
-        Row: {
-          user_id: string;
-          card_id: string;
-          created_at: string;
-        };
-        Insert: {
-          user_id: string;
-          card_id: string;
-          created_at?: string;
-        };
-        Update: {
-          user_id?: string;
-          card_id?: string;
-          created_at?: string;
-        };
-        Relationships: [];
-      };
       user_profiles: {
         Row: {
           id: string;
-          email: string | null;
-          full_name: string | null;
-          avatar_url: string | null;
           settings: ProfileSettings;
           updated_at: string | null;
           progress_reset_at: string | null;
         };
         Insert: {
           id: string;
-          email?: string | null;
-          full_name?: string | null;
-          avatar_url?: string | null;
           settings?: ProfileSettings;
           updated_at?: string | null;
           progress_reset_at?: string | null;
         };
         Update: {
           id?: string;
-          email?: string | null;
-          full_name?: string | null;
-          avatar_url?: string | null;
           settings?: ProfileSettings;
           updated_at?: string | null;
           progress_reset_at?: string | null;
@@ -247,14 +223,6 @@ export interface Database {
       get_sync_state: {
         Args: { p_since?: string | null };
         Returns: Json;
-      };
-      append_learned_cards: {
-        Args: { p_cards: string[] };
-        Returns: undefined;
-      };
-      replace_learned_cards: {
-        Args: { p_cards: string[] };
-        Returns: undefined;
       };
       reset_user_learning_progress: {
         Args: Record<PropertyKey, never>;

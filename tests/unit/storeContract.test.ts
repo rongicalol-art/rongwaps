@@ -22,6 +22,7 @@ const EXPECTED_PERSISTED_KEYS = [
   'sessionProgressIndex',
   'deckExclusions',
   'progressResetSeen',
+  'syncCheckpoint',
   'activeTab',
   'activeActivity',
   'activeQuizMode',
@@ -94,6 +95,8 @@ const ACCOUNT_SWITCH_RESET_KEYS = [
   // its message must not follow the previous account into the new one.
   'syncStatus',
   'syncError',
+  // The pull cursor + upload baseline of the previous account.
+  'syncCheckpoint',
   // Library view pointers into account-scoped folders: clearing the folder
   // list without them pins the library to a folder that no longer exists.
   'libraryActiveFolder',
@@ -129,6 +132,7 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
     activeActivity: 'quiz',
     lastActivity: 'quiz',
     lastCloudUpdate: '2026-01-01T00:00:00.000Z',
+    syncCheckpoint: { userId: 'user-a', cursor: '2026-01-01T00:00:00.000Z', srs: {} },
     activeReviewSessionCards: ['card_a'],
     syncStatus: 'error',
     syncError: "Couldn't save your progress.",
@@ -165,6 +169,7 @@ test('resetAccountScopedState clears account-scoped state and nothing else', () 
   assert.equal(state.activeActivity, null);
   assert.equal(state.lastActivity, null);
   assert.equal(state.lastCloudUpdate, null);
+  assert.equal(state.syncCheckpoint, null);
   assert.deepEqual(state.activeReviewSessionCards, null);
   assert.equal(state.syncStatus, 'idle');
   assert.equal(state.syncError, null);

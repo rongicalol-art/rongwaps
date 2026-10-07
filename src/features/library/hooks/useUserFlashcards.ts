@@ -6,7 +6,7 @@ import type { UserFlashcard } from '../../../types/models';
 
 /**
  * Shared hook to access user flashcards reactively across any screen or modal,
- * handling guest storage and authenticated Supabase real-time sync.
+ * handling guest storage and authenticated Supabase cards (refetched when the tab becomes visible).
  */
 export function useUserFlashcards(): UserFlashcard[] {
   const { currentUser } = useAuth();

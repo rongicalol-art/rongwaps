@@ -1,7 +1,12 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { SRSData } from '../../src/utils/srsEngine';
-import { isSameSrsData, rowToSrsData, srsDataToUpsert } from '../../src/utils/srsRowMapping';
+import {
+  isSameSrsData,
+  rowsToProgress,
+  rowToSrsData,
+  srsDataToUpsert,
+} from '../../src/utils/srsRowMapping';
 
 const graduated: SRSData = {
   cardId: 'word_你好',
@@ -152,4 +157,56 @@ test('reviewed_at round-trips through the row mapping', () => {
 
 test('isSameSrsData ignores lastReviewedAt: only scheduling fields make a card dirty', () => {
   assert.ok(isSameSrsData(graduated, { ...graduated, lastReviewedAt: 123 }));
+});
+
+test('srsDataToUpsert sends learned_at only for learned cards (review time, else now)', () => {
+  assert.equal('learned_at' in srsDataToUpsert(graduated, graduated.cardId), false);
+  assert.equal('learned_at' in srsDataToUpsert(graduated, graduated.cardId, false), false);
+
+  const reviewed: SRSData = { ...graduated, lastReviewedAt: 1757400000000 };
+  assert.equal(
+    srsDataToUpsert(reviewed, reviewed.cardId, true).learned_at,
+    new Date(1757400000000).toISOString(),
+  );
+
+  const before = Date.now();
+  const unreviewed = srsDataToUpsert(graduated, graduated.cardId, true).learned_at;
+  assert.ok(unreviewed && new Date(unreviewed).getTime() >= before);
+});
+
+test('rowsToProgress turns learned_at into learned ids and keeps SRS state', () => {
+  const base = { ease: 2.5, interval: 3, repetitions: 2, learning_step: null };
+  const next = new Date(graduated.nextReviewDate).toISOString();
+  const { srsData, learnedCards } = rowsToProgress([
+    { ...base, card_id: 'learned', next_review_date: next, learned_at: '2026-10-01T00:00:00.000Z' },
+    { ...base, card_id: 'started', next_review_date: next, learned_at: null },
+    { ...base, card_id: 'legacy', next_review_date: next },
+  ]);
+  assert.deepEqual(learnedCards, ['learned']);
+  assert.deepEqual(Object.keys(srsData).sort(), ['learned', 'legacy', 'started']);
+});
+
+test('a learned row without next_review_date is learned but has no SRS state (never due)', () => {
+  const { srsData, learnedCards } = rowsToProgress([
+    {
+      card_id: 'placeholder',
+      ease: 2.5,
+      interval: 0,
+      repetitions: 0,
+      next_review_date: null,
+      learning_step: null,
+      reviewed_at: null,
+      learned_at: '2026-10-01T00:00:00.000Z',
+    },
+  ]);
+  assert.deepEqual(learnedCards, ['placeholder']);
+  assert.deepEqual(srsData, {});
+});
+
+test('learned state round-trips: upsert record -> row -> progress', () => {
+  const reviewed: SRSData = { ...graduated, lastReviewedAt: 1757400000000 };
+  const upsert = srsDataToUpsert(reviewed, reviewed.cardId, true);
+  const { srsData, learnedCards } = rowsToProgress([{ ...upsert, learned_at: upsert.learned_at }]);
+  assert.deepEqual(learnedCards, [reviewed.cardId]);
+  assert.deepEqual(srsData[reviewed.cardId], reviewed);
 });
