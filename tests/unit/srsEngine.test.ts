@@ -7,7 +7,7 @@ import {
   LEARNING_STEPS_MINUTES,
   MAX_INTERVAL_DAYS,
   type SRSData,
-} from '../../src/utils/srsEngine';
+} from '../../src/utils/srs/srsEngine';
 
 const NOW = 1_700_000_000_000;
 const MINUTE = 60 * 1000;

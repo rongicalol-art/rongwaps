@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readJson } from '../acceptance_helpers';
-import { cleanVocabText } from '../../src/utils/vocabCleaner';
+import { cleanVocabText } from '../../src/utils/vocabulary/vocabCleaner';
 import { tokenizeHookText } from '../../src/features/character-memory-hooks/hookText';
 import {
   packItemsToMnemonicMap,

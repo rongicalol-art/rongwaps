@@ -7,8 +7,8 @@ import {
   lineIndexForTime,
   wordRangeForTime,
   splitChunksIntoSentences,
-} from '../../src/utils/dialogueSync';
-import { getWordChunks } from '../../src/utils/rubyPinyin';
+} from '../../src/utils/lesson/dialogueSync';
+import { getWordChunks } from '../../src/utils/pinyin/rubyPinyin';
 import type { DialogueAlignment } from '../../src/types/models';
 
 const alignment: DialogueAlignment = {

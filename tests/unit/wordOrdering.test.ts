@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { bookRank, groupWordsByBook, sortWords } from '../../src/utils/wordOrdering';
+import { bookRank, groupWordsByBook, sortWords } from '../../src/utils/vocabulary/wordOrdering';
 import type { LevelIndex } from '../../src/utils/packValidators';
 
 const levels = {

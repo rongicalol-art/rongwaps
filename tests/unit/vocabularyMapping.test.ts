@@ -4,8 +4,8 @@ import {
   parseExamples,
   mapVocabularyRows,
   prepareVocabulary,
-} from '../../src/utils/vocabularyMapping';
-import { debugLogger } from '../../src/utils/debugLogger';
+} from '../../src/utils/vocabulary/vocabularyMapping';
+import { debugLogger } from '../../src/utils/debug/debugLogger';
 
 test('vocabularyMapping: parseExamples parses string, json string, and array examples', () => {
   assert.deepEqual(parseExamples('Single sentence'), [{ chinese: 'Single sentence', pinyin: '', english: '' }]);

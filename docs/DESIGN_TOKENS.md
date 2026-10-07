@@ -46,7 +46,7 @@ Do not use hardcoded hex values (e.g. `#FFFFFF`, `#E5E5E5`). Use semantic tokens
 - **Text**: `text-ui-ink` (primary), `text-ui-ink-strong` (headings), `text-ui-muted` (secondary)
 - **Brand**: `brand-primary` (blue), `brand-secondary` (orange)
 - **Feedback**: `feedback-success` (green), `feedback-warning` (gold/yellow), `feedback-danger` (red)
-- **Pinyin tones**: `tone-1` (rose) · `tone-2` (amber) · `tone-3` (emerald) · `tone-4` (blue) · `tone-5` (neutral gray), each ≥4.5:1 on `ui-surface`. Text only, applied to a syllable and its character together; on the flashcard answer face each syllable is stacked over its own character so same-tone syllables stay distinguishable ("Tone colors" setting). Tones come from `src/utils/pinyinTones.ts`; never color characters the alignment can't pair.
+- **Pinyin tones**: `tone-1` (rose) · `tone-2` (amber) · `tone-3` (emerald) · `tone-4` (blue) · `tone-5` (neutral gray), each ≥4.5:1 on `ui-surface`. Text only, applied to a syllable and its character together; on the flashcard answer face each syllable is stacked over its own character so same-tone syllables stay distinguishable ("Tone colors" setting). Tones come from `src/utils/pinyin/pinyinTones.ts`; never color characters the alignment can't pair.
 
 Each brand/feedback color has an `-edge` variant (for the tactile bottom border) and a `-surface` or `/10` variant for soft backgrounds.
 

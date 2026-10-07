@@ -1,8 +1,8 @@
-import { debugLogger } from '../utils/debugLogger';
+import { debugLogger } from '../utils/debug/debugLogger';
 import { DBCharacterBreakdown } from '../types/database';
 import { breakdownCache } from '../utils/cache';
 import { fetchBreakdownsFromPacks, fetchPartsIndex } from './contentPacks';
-import { builtWith } from '../utils/parts';
+import { builtWith } from '../utils/characters/parts';
 import { getDictionaryEntries, getDictionaryEntriesBatch } from './dictionaryService';
 
 const pendingRequests = new Map<string, Promise<DBCharacterBreakdown | null>>();

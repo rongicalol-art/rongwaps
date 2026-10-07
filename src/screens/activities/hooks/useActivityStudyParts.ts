@@ -3,12 +3,12 @@ import type { ActivityType, CourseLessonPartProgress } from '../../../types/mode
 import { useAppStore } from '../../../store/useAppStore';
 import { vocabularyCache } from '../../../utils/cache';
 import { fetchVocabulary } from '../../../services/vocabularyService';
-import { aggregateLessonPartProgress } from '../../../utils/lessonPartProgress';
+import { aggregateLessonPartProgress } from '../../../utils/lesson/lessonPartProgress';
 import {
   getCurriculumSessionKey,
   getLessonSelectionKey,
   normalizePartSelection,
-} from '../../../utils/lessonPartSelection';
+} from '../../../utils/lesson/lessonPartSelection';
 import {
   getInteractiveGrammarManifestForLesson,
   type GrammarManifestPart,

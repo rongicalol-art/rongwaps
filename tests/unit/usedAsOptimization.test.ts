@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { isStandardHanzi } from '../../src/utils/hanzi';
-import { isPureVariantDefinition } from '../../src/utils/dictionaryDefinitions';
+import { isStandardHanzi } from '../../src/utils/characters/hanzi';
+import { isPureVariantDefinition } from '../../src/utils/vocabulary/dictionaryDefinitions';
 import { deriveUsedAsItems } from '../../src/features/character-breakdown/utils/deriveUsedAsItems';
 
 test('isStandardHanzi accepts CJK Unified Ideographs and rejects rare extensions', () => {

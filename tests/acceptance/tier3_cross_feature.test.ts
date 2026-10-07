@@ -3,14 +3,14 @@ import test from 'node:test';
 import {
   lineIndexForTime,
   wordRangeForTime,
-} from '../../src/utils/dialogueSync';
+} from '../../src/utils/lesson/dialogueSync';
 import {
   createSingleFlightSaveCoordinator,
   mergePulledSrsData,
-} from '../../src/utils/cloudSyncQueue';
-import { alignRubyPinyin, splitPinyinWordToSyllables } from '../../src/utils/rubyPinyin';
-import { getDialogueSpeakerColorMap } from '../../src/utils/speakerColors';
-import type { SRSData } from '../../src/utils/srsEngine';
+} from '../../src/utils/sync/cloudSyncQueue';
+import { alignRubyPinyin, splitPinyinWordToSyllables } from '../../src/utils/pinyin/rubyPinyin';
+import { getDialogueSpeakerColorMap } from '../../src/utils/lesson/speakerColors';
+import type { SRSData } from '../../src/utils/srs/srsEngine';
 
 function srs(cardId: string, overrides: Partial<SRSData> = {}): SRSData {
   return { cardId, interval: 1, repetition: 1, efactor: 2.5, nextReviewDate: 1000, ...overrides };

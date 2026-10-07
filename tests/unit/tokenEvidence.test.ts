@@ -5,7 +5,7 @@ import {
   matchTokenEvidence,
   USAGE_TOKEN_SEPARATOR as SEP,
   type TokenEvidence,
-} from '../../src/utils/tokenEvidence';
+} from '../../src/utils/grammar/tokenEvidence';
 
 const inOrder = (tokens: string[], maxGap = 3): TokenEvidence => ({ kind: 'inOrder', tokens, maxGap });
 const regex = (source: string): TokenEvidence => ({ kind: 'regex', source });

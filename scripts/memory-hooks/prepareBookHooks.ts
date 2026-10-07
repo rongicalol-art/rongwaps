@@ -60,7 +60,7 @@ function isHan(character: string): boolean {
   return /\p{Script=Han}/u.test(character);
 }
 
-/** Mirrors `cleanVocabText` in src/utils/vocabCleaner.ts. */
+/** Mirrors `cleanVocabText` in src/utils/vocabulary/vocabCleaner.ts. */
 function cleanVocabText(text: string): string {
   let cleaned = text.trim().replace(/\(.*?\)/g, '').replace(/[（）]/g, '');
   const slashIndex = cleaned.indexOf('/');

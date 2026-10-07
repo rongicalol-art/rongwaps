@@ -12,7 +12,7 @@ import { getCardWidth, useFlashcardExtras } from '../../features/flashcards';
 import { useAppStore } from '../../store/useAppStore';
 import { cn } from '../../utils/cn';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
-import { buildPracticePartSegments } from '../../utils/practicePartSegments';
+import { buildPracticePartSegments } from '../../utils/lesson/practicePartSegments';
 
 interface WritingScreenProps {
   activeBookId: number;

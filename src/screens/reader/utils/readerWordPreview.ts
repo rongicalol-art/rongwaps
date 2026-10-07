@@ -1,5 +1,5 @@
 import type { DBDictionaryEntry } from '../../../types/database';
-import { sanitizeDictionaryDefinitions } from '../../../utils/dictionaryDefinitions';
+import { sanitizeDictionaryDefinitions } from '../../../utils/vocabulary/dictionaryDefinitions';
 
 export interface ReaderWordPreview {
   word: string;
@@ -13,7 +13,7 @@ export interface ReaderWordPreview {
 
 const CHINESE_CHARACTER_REGEX = /[\u3400-\u9FFF]/;
 
-import { getWordChunks } from '../../../utils/rubyPinyin';
+import { getWordChunks } from '../../../utils/pinyin/rubyPinyin';
 
 /**
  * Extracts unique Chinese words/tokens from reading paragraphs to enable

@@ -9,9 +9,9 @@ import { ListeningOptions } from './ListeningOptions';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
 import { useAppStore, type ListeningChoiceType } from '../../store/useAppStore';
-import { buildPracticePartSegments } from '../../utils/practicePartSegments';
+import { buildPracticePartSegments } from '../../utils/lesson/practicePartSegments';
 import { useNumberKeySelection } from '../../hooks/useNumberKeySelection';
-import { getCardChoiceTarget } from '../../utils/meaningChoices';
+import { getCardChoiceTarget } from '../../utils/vocabulary/meaningChoices';
 
 interface ListeningScreenProps {
   activeBookId?: number;

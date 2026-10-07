@@ -1,7 +1,7 @@
-import { debugLogger } from '../../utils/debugLogger';
+import { debugLogger } from '../../utils/debug/debugLogger';
 import { useEffect, useState } from 'react';
 import { ActionButton, AppIcon, Drawer, ConfirmationDialog, SegmentedControl } from '../../lib/widgets';
-import { isIosDevice, isStandaloneDisplay } from '../../utils/pwaInstall';
+import { isIosDevice, isStandaloneDisplay } from '../../utils/browser/pwaInstall';
 import { SettingsAccountSection } from './SettingsAccountSection';
 
 export interface AppSettingsDrawerProps extends React.HTMLAttributes<HTMLDivElement> {

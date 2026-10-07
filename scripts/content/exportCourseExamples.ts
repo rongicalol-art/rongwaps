@@ -6,7 +6,7 @@ import type {
   CourseExamplePack,
   CourseExampleRecord,
 } from '../../src/types/models';
-import { parseVocabularyId } from '../../src/utils/vocabularyId';
+import { parseVocabularyId } from '../../src/utils/vocabulary/vocabularyId';
 
 const SCHEMA_VERSION = 1;
 const BOOK_ID = 1;

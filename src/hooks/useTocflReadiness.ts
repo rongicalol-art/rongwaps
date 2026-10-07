@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useLevels } from './useLevels';
 import { useKnownCharacters } from './useKnownCharacters';
-import { computeTocflReadiness, type TocflReadiness } from '../utils/tocflReadiness';
+import { computeTocflReadiness, type TocflReadiness } from '../utils/lesson/tocflReadiness';
 
 /** TOCFL readiness from passed course words; null until vocabulary and level data loads. */
 export function useTocflReadiness(): TocflReadiness | null {

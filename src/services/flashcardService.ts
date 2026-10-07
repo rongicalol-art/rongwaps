@@ -1,4 +1,4 @@
-import { debugLogger } from '../utils/debugLogger';
+import { debugLogger } from '../utils/debug/debugLogger';
 import { supabase } from "./supabaseClient";
 import { UserFlashcard, UserFolder } from "../types/models";
 

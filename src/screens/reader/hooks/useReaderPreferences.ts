@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import type { ReaderTextSize } from '../../../types/models';
-import { readBoolean, readString, writeBoolean, writeString } from '../../../utils/localStorage';
+import { readBoolean, readString, writeBoolean, writeString } from '../../../utils/browser/localStorage';
 
 /**
  * Reader display preferences (pinyin, meaning, hover definitions, text size).

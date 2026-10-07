@@ -1,4 +1,4 @@
-import { debugLogger } from '../../../utils/debugLogger';
+import { debugLogger } from '../../../utils/debug/debugLogger';
 import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { DetailShell, LevelTag, ScreenHeader } from '../../../lib/widgets';
@@ -6,9 +6,9 @@ import { useLevel } from '../../../hooks/useLevels';
 import { useAppStore } from '../../../store/useAppStore';
 import { getDictionaryEntries } from '../../../services/dictionaryService';
 import { searchVocabulary } from '../../../services/vocabularyService';
-import { cleanVocabText } from '../../../utils/vocabCleaner';
-import { sanitizeDictionaryDefinitions } from '../../../utils/dictionaryDefinitions';
-import { numberToToneMarks } from '../../../utils/pinyin';
+import { cleanVocabText } from '../../../utils/vocabulary/vocabCleaner';
+import { sanitizeDictionaryDefinitions } from '../../../utils/vocabulary/dictionaryDefinitions';
+import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import type { DBDictionaryEntry } from '../../../types/database';
 import type { Flashcard } from '../../../data/flashcards';
 import { SAMPLE_BOOKS } from '../../../data/books';

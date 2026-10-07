@@ -5,7 +5,7 @@ import { AppIcon } from './AppIcon';
 import { IconActionButton } from './IconActionButton';
 import { StudyPartProgressRail } from './part-progress';
 import type { CourseLessonPartProgress, PartSegment } from '../../types/models';
-import { visibleProgressWidth } from '../../utils/progress';
+import { visibleProgressWidth } from '../../utils/srs/progress';
 
 /**
  * Chrome treatments for `ScreenHeader`:

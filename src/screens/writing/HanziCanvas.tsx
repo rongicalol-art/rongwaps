@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useCallback, useState } from 'react';
 import type HanziWriterType from 'hanzi-writer';
 import { DESIGN_TOKENS } from '../../data/designTokens';
 import { loadHanziCharacterData } from '../../services/contentAssetService';
-import { resolveDesignTokenColor } from '../../utils/resolveDesignTokenColor';
+import { resolveDesignTokenColor } from '../../utils/browser/resolveDesignTokenColor';
 
 type HanziWriterModule = typeof HanziWriterType;
 type HanziWriterInstance = ReturnType<HanziWriterModule['create']>;

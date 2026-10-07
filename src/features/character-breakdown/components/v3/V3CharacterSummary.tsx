@@ -1,6 +1,6 @@
 import type { Flashcard } from '../../../../data/flashcards';
 import type { DBCharacterBreakdown } from '../../../../types/database';
-import { numberToToneMarks } from '../../../../utils/pinyin';
+import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
 import { StrokeOrderBox } from '../StrokeOrderBox';
 import { ExtendedDefinitions } from '../ExtendedDefinitions';
 import { SummaryQuickActions } from '../SummaryQuickActions';
@@ -9,7 +9,7 @@ import {
   sanitizeDictionaryDefinitions,
   isPureVariantDefinition,
   extractCedictReference,
-} from '../../../../utils/dictionaryDefinitions';
+} from '../../../../utils/vocabulary/dictionaryDefinitions';
 import { useAppStore } from '../../../../store/useAppStore';
 import { LevelTag } from '../../../../lib/widgets';
 import { usePrimaryReading, useReadings } from '../../../../hooks/usePronunciation';

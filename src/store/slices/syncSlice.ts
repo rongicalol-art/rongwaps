@@ -1,4 +1,4 @@
-import type { SRSData } from '../../utils/srsEngine';
+import type { SRSData } from '../../utils/srs/srsEngine';
 
 /**
  * Where the last successful pull for one user left off: the server cursor and

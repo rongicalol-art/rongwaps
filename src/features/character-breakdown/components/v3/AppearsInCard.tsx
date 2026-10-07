@@ -2,8 +2,8 @@ import { useMemo, useState } from 'react';
 import { AppIcon, SectionEyebrow } from '../../../../lib/widgets';
 import { useCharBreakdownState } from '../../../../hooks/useCharBreakdown';
 import { useLevels } from '../../../../hooks/useLevels';
-import { isPureVariantDefinition } from '../../../../utils/dictionaryDefinitions';
-import { resolveLevel } from '../../../../utils/levels';
+import { isPureVariantDefinition } from '../../../../utils/vocabulary/dictionaryDefinitions';
+import { resolveLevel } from '../../../../utils/lesson/levels';
 import { rankBuiltWith, type BuiltWithMember } from '../../utils/rankBuiltWith';
 import { RAIL_CARD_CLASSES, SEE_ALL_CLASSES } from './railStyles';
 

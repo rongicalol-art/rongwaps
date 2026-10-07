@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { ActionButton, AppIcon, PlayfulNavIcon } from '../../../lib/widgets';
-import { REVIEW_SESSION_CAP } from '../../../utils/reviewSession';
-import type { ReviewOverview } from '../../../utils/reviewOverview';
+import { REVIEW_SESSION_CAP } from '../../../utils/srs/reviewSession';
+import type { ReviewOverview } from '../../../utils/srs/reviewOverview';
 
 interface ReviewHubCardProps {
   overview: ReviewOverview;

@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 import { createClient } from '@supabase/supabase-js';
 import * as dotenv from 'dotenv';
 import type { DBDictionaryRow } from '../../src/types/database';
-import { DICTIONARY_SHARD_COUNT, getDictionaryShard } from '../../src/utils/dictionaryShard';
+import { DICTIONARY_SHARD_COUNT, getDictionaryShard } from '../../src/utils/vocabulary/dictionaryShard';
 
 dotenv.config({ path: resolve(process.cwd(), '.env') });
 

@@ -1,6 +1,6 @@
 import { del, get, keys, set } from 'idb-keyval';
-import { timeDataRequest } from '../utils/requestTiming';
-import { debugLogger } from '../utils/debugLogger';
+import { timeDataRequest } from '../utils/debug/requestTiming';
+import { debugLogger } from '../utils/debug/debugLogger';
 import { NetworkError, PackMissError } from './errors';
 
 interface StaticJsonOptions {

@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { LESSON_LANDSCAPE_ART } from '../../data/lessonLandscapeArt';
 import { AppIcon } from '../../lib/widgets';
 import type { CourseLessonProgress } from '../../types/models';
-import { getEnglishLessonTitle } from '../../utils/lessonTitle';
+import { getEnglishLessonTitle } from '../../utils/lesson/lessonTitle';
 
 interface LessonItemProps {
   lesson: CourseLessonProgress;

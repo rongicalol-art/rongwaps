@@ -1,4 +1,4 @@
-import { debugLogger } from '../../../utils/debugLogger';
+import { debugLogger } from '../../../utils/debug/debugLogger';
 import { useState, useEffect, useMemo } from 'react';
 import { useCharBreakdown } from '../../../hooks/useCharBreakdown';
 import { getMultipleBreakdowns } from '../../../services/breakdownService';
@@ -9,11 +9,11 @@ import { buildCharacterCourseIndex } from '../utils/rankParentCharacters';
 import type { BuiltWithMember, RankedSoundFamily } from '../utils/rankBuiltWith';
 import { searchDictionaryWordsContaining, type DictionaryContainingWord } from '../../../services/dictionaryService';
 import { mergeBreakdownWords } from '../utils/mergeBreakdownWords';
-import { builtWith, soundFamily as resolveSoundFamily } from '../../../utils/parts';
+import { builtWith, soundFamily as resolveSoundFamily } from '../../../utils/characters/parts';
 import { useParts } from '../../../hooks/useParts';
 import { useLevels } from '../../../hooks/useLevels';
-import { officialLevel, resolveLevel } from '../../../utils/levels';
-import { sortWords } from '../../../utils/wordOrdering';
+import { officialLevel, resolveLevel } from '../../../utils/lesson/levels';
+import { sortWords } from '../../../utils/vocabulary/wordOrdering';
 
 const HANZI_RE = /[\u4E00-\u9FFF\u3400-\u4DBF\u2E80-\u2FDF\u{20000}-\u{2A6DF}\u{2A700}-\u{2B73F}\u{2B740}-\u{2B81F}\u{2B820}-\u{2CEAF}]/u;
 const NON_CHAR_RE = /[⿰⿱⿲⿳⿴⿵⿶⿷⿸⿹⿺⿻\s！？?]/;

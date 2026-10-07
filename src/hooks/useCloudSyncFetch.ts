@@ -1,7 +1,7 @@
 import { useCallback, type MutableRefObject } from 'react';
 import type { User } from '@supabase/supabase-js';
-import type { SRSData } from '../utils/srsEngine';
-import { debugLogger } from '../utils/debugLogger';
+import type { SRSData } from '../utils/srs/srsEngine';
+import { debugLogger } from '../utils/debug/debugLogger';
 import { useAppStore } from '../store/useAppStore';
 import { userService } from '../services/userService';
 import { flashcardService } from '../services/flashcardService';
@@ -10,11 +10,11 @@ import {
   checkpointForUser,
   isSameFolderList,
   mergePulledSrsData,
-} from '../utils/cloudSyncQueue';
+} from '../utils/sync/cloudSyncQueue';
 import {
   resolveCloudMetadataPatch,
   resolveGuestFolderMigration,
-} from '../utils/cloudMetadata';
+} from '../utils/sync/cloudMetadata';
 
 export interface UseCloudSyncFetchOptions {
   currentUser: User | null;

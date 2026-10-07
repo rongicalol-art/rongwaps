@@ -1,4 +1,4 @@
-import { debugLogger } from '../../utils/debugLogger';
+import { debugLogger } from '../../utils/debug/debugLogger';
 import { authService } from '../authService';
 import { resolveRequestUrl } from './audioCache';
 

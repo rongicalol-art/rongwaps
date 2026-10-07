@@ -7,7 +7,7 @@ import {
 } from '../acceptance_helpers';
 import type { Flashcard } from '../../src/data/flashcards';
 import type { ReadingRecord } from '../../src/types/models';
-import { parseVocabularyId } from '../../src/utils/vocabularyId';
+import { parseVocabularyId } from '../../src/utils/vocabulary/vocabularyId';
 import { buildReaderStudyTargets } from '../../src/screens/reader/utils/readerStudyTargets';
 
 interface VocabularyRow {

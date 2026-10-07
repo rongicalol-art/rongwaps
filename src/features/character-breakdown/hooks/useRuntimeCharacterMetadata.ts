@@ -4,7 +4,7 @@ import { getDictionaryEntriesBatch } from '../../../services/dictionaryService';
 import type { DBDictionaryEntry } from '../../../types/database';
 import type { RuntimeTreeNodeState } from './useRuntimeDecompositionTree';
 import { usePronunciation } from '../../../hooks/usePronunciation';
-import { primaryReading } from '../../../utils/pronunciation';
+import { primaryReading } from '../../../utils/pinyin/pronunciation';
 
 export interface RuntimeCharacterMetadata {
   pinyin?: string;

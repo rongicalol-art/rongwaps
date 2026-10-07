@@ -8,7 +8,7 @@ import {
   getPosChineseTerm,
   getPosExplanation,
   type ScriptPreference,
-} from '../../utils/posLabels';
+} from '../../utils/vocabulary/posLabels';
 import { cn } from '../../utils/cn';
 
 /** Every word class reads neutral; the label carries the meaning, not the color. */

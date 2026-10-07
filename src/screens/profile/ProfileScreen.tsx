@@ -1,4 +1,4 @@
-import { debugLogger } from '../../utils/debugLogger';
+import { debugLogger } from '../../utils/debug/debugLogger';
 import React, { useState, useCallback } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useNavigate } from 'react-router';

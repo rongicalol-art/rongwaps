@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import type { ReaderStudyTargetWord } from '../utils/readerStudyTargets';
 import { AppIcon, PosBadge } from '../../../lib/widgets';
-import { formatPosLabel } from '../../../utils/posLabels';
+import { formatPosLabel } from '../../../utils/vocabulary/posLabels';
 import { cn } from '../../../utils/cn';
 import { useLongPress } from '../../../hooks/useLongPress';
 import type { ReaderLocateMode } from '../utils/readerLocate';

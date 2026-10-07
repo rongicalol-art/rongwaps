@@ -3,14 +3,14 @@ import { fetchVocabulary, fetchVocabularyByIds, prepareVocabulary } from './voca
 import { getCourseVocabLookupMap } from './courseVocabLookup';
 import { fetchAllVocabularyPacks } from './contentPacks';
 import { getDictionaryEntriesBatch } from './dictionaryService';
-import { buildReviewSession } from '../utils/reviewSession';
-import type { SRSData } from '../utils/srsEngine';
+import { buildReviewSession } from '../utils/srs/reviewSession';
+import type { SRSData } from '../utils/srs/srsEngine';
 import type { LessonPartSelectionMap } from '../types/models';
 import {
   mapStarredEntriesToFlashcards,
   filterCurriculumCards,
   deriveLocalDueCardIds,
-} from '../utils/activityDataDerivations';
+} from '../utils/vocabulary/activityDataDerivations';
 
 export async function loadReviewDeck(
   srsData: Record<string, SRSData>,

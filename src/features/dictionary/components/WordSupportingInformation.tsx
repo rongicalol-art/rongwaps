@@ -1,11 +1,11 @@
 import { useState, useMemo } from 'react';
 import { ReferenceRow, SectionEyebrow } from '../../../lib/widgets';
 import { CourseOrLevelTag } from './CourseOrLevelTag';
-import { numberToToneMarks } from '../../../utils/pinyin';
+import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import type { SAMPLE_BOOKS } from '../../../data/books';
 import type { WordRelatedWord } from '../hooks/useWordExtras';
 import { useLevels } from '../../../hooks/useLevels';
-import { levelRank } from '../../../utils/wordOrdering';
+import { levelRank } from '../../../utils/vocabulary/wordOrdering';
 
 const SEE_ALL_CLASSES =
   'min-h-9 shrink-0 rounded-compact px-2.5 text-xs font-extrabold text-brand-primary transition-colors hover:bg-brand-primary/10 focus-ring';

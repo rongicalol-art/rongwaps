@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { validateInteractiveLessons } from '../../src/utils/validateInteractiveLessons';
+import { validateInteractiveLessons } from '../../src/utils/grammar/validateInteractiveLessons';
 import type { InteractiveGrammarPart, ReadingRecord } from '../../src/types/models';
 
 const ROOT = process.cwd();

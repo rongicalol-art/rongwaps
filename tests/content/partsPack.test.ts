@@ -5,7 +5,7 @@ import { readJson, readSource } from '../acceptance_helpers';
 import { compareByPoolRank, loadLearnerPool } from '../../scripts/lib/learnerPool';
 import { PACK_CONFIGS } from '../../src/services/contentPackConfigs';
 import type { GenericContentManifest, PartsPack } from '../../src/services/contentPacks';
-import { builtWith, GRADE_ORDER, resolveSoundClue, type PartsIndex } from '../../src/utils/parts';
+import { builtWith, GRADE_ORDER, resolveSoundClue, type PartsIndex } from '../../src/utils/characters/parts';
 
 const MANIFEST = readJson<GenericContentManifest>('public/data/relations/manifest.json');
 const TEXT = readSource('public/data/relations/parts.json');

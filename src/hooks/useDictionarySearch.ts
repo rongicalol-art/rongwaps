@@ -1,7 +1,7 @@
-import { debugLogger } from '../utils/debugLogger';
+import { debugLogger } from '../utils/debug/debugLogger';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { executeRemoteSearch } from '../services/dictionaryService';
-import { sanitizeDictionaryDefinitions } from '../utils/dictionaryDefinitions';
+import { sanitizeDictionaryDefinitions } from '../utils/vocabulary/dictionaryDefinitions';
 
 export interface SearchResult {
   id: number;

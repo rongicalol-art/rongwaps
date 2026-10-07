@@ -1,4 +1,4 @@
-import { debugLogger } from '../../../utils/debugLogger';
+import { debugLogger } from '../../../utils/debug/debugLogger';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { InteractiveGrammarPart, ReadingRecord } from '../../../types/models';
 import { fetchVocabulary } from '../../../services/vocabularyService';

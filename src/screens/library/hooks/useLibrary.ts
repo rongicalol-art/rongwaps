@@ -1,4 +1,4 @@
-import { debugLogger } from '../../../utils/debugLogger';
+import { debugLogger } from '../../../utils/debug/debugLogger';
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { AppIcon } from '../../../lib/widgets';
 import { useAuth } from '../../../hooks/useAuth';

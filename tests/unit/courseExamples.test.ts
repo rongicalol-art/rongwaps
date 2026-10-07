@@ -4,9 +4,9 @@ import type { Flashcard } from '../../src/data/flashcards';
 import {
   findSmartExamplesForWord,
   groupRankedExamples,
-} from '../../src/utils/courseExamples';
-import { extractSearchVariants, extractWordVariants } from '../../src/utils/wordForms';
-import { isExampleSourceAvailable } from '../../src/utils/curriculumPosition';
+} from '../../src/utils/vocabulary/courseExamples';
+import { extractSearchVariants, extractWordVariants } from '../../src/utils/vocabulary/wordForms';
+import { isExampleSourceAvailable } from '../../src/utils/lesson/curriculumPosition';
 
 const target: Flashcard = {
   id: 'B1L03-2-04',

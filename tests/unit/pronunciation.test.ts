@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { allReadings, formatReadings, parseReadings, primaryReading, soundPair, type ReadingsIndex } from '../../src/utils/pronunciation';
+import { allReadings, formatReadings, parseReadings, primaryReading, soundPair, type ReadingsIndex } from '../../src/utils/pinyin/pronunciation';
 
 test('parseReadings reads primary, variant (~) and other readings with examples; formatReadings inverts it', () => {
   const value = 'xíng|háng:銀行|shuí~';

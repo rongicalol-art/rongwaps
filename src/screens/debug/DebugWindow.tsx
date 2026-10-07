@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchAllMnemonicsDebug, clearAllMnemonics } from '../../services/mnemonicCache';
-import { debugLogger, DebugLog } from '../../utils/debugLogger';
+import { debugLogger, DebugLog } from '../../utils/debug/debugLogger';
 
 import { ScreenSkeleton } from '../../lib/widgets';
 import { WordDetailSkeleton } from '../../features/dictionary';

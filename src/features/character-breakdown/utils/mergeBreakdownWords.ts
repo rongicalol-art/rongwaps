@@ -1,6 +1,6 @@
 import type { Flashcard } from '../../../data/flashcards';
 import type { DictionaryContainingWord } from '../../../services/dictionaryService';
-import { isNoisyDictionarySuggestion } from '../../../utils/dictionaryDefinitions';
+import { isNoisyDictionarySuggestion } from '../../../utils/vocabulary/dictionaryDefinitions';
 
 /**
  * Course words first (as given), then dictionary words. When `wordLevel` is

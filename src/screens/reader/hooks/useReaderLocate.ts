@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
 import type { ReadingRecord } from '../../../types/models';
-import type { PhraseChunk } from '../../../utils/rubyPinyin';
+import type { PhraseChunk } from '../../../utils/pinyin/rubyPinyin';
 import {
   chunksForOccurrence,
   findVocabularyOccurrences,
   tokenizeReading,
   type ReadingScript,
-} from '../../../utils/vocabularyMatching';
+} from '../../../utils/vocabulary/vocabularyMatching';
 import type { ReaderStudyTargetWord } from '../utils/readerStudyTargets';
 
 export interface ReaderLocateResult {

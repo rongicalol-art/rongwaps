@@ -2,7 +2,7 @@
  * @fileoverview Failure policy, custom error classes, and fallback logging.
  */
 
-import { debugLogger, type DebugCategory } from '../utils/debugLogger';
+import { debugLogger, type DebugCategory } from '../utils/debug/debugLogger';
 
 export class PackMissError extends Error {
   readonly packName: string;

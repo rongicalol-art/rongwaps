@@ -1,7 +1,7 @@
-import { debugLogger } from '../utils/debugLogger';
+import { debugLogger } from '../utils/debug/debugLogger';
 import { DBDictionaryEntry, DBDictionaryEntryRow } from '../types/database';
 import { dictionaryCache, dictionarySearchCache } from '../utils/cache';
-import { sanitizeDictionaryDefinitions, extractCedictReference } from '../utils/dictionaryDefinitions';
+import { sanitizeDictionaryDefinitions, extractCedictReference } from '../utils/vocabulary/dictionaryDefinitions';
 import { fetchDictionaryRowsFromPacks } from './contentPacks';
 import { searchDictionaryOffline } from './dictionarySearchService';
 

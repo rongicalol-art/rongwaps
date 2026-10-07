@@ -8,18 +8,18 @@ import {
   detectGrammarUsage,
   segmentReadingSentences,
   type GrammarUsageStatus,
-} from '../../../utils/grammarUsage';
-import { findGrammarPartForReading } from '../../../utils/readingContext';
+} from '../../../utils/grammar/grammarUsage';
+import { findGrammarPartForReading } from '../../../utils/lesson/readingContext';
 import type { ReaderLocatedRange } from './readerLocate';
 import {
   findVocabularyOccurrences,
   tokenizeReading,
   vocabularyTermVariants,
-} from '../../../utils/vocabularyMatching';
+} from '../../../utils/vocabulary/vocabularyMatching';
 import {
   resolveVocabularySense,
   type VocabularySenseResolution,
-} from '../../../utils/vocabularySense';
+} from '../../../utils/vocabulary/vocabularySense';
 
 /**
  * Resolves what the reader's Study Guide should call "this reading's" grammar

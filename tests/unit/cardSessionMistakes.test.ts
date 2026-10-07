@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { Flashcard } from '../../src/data/flashcards';
 import { normalizePronunciationRate } from '../../src/features/practice/components/PracticeSettingsScreen';
-import { queueMissedItem } from '../../src/utils/mistakeQueue';
+import { queueMissedItem } from '../../src/utils/srs/mistakeQueue';
 
 function createMockCard(id: string, front: string = '你好'): Flashcard {
   return {

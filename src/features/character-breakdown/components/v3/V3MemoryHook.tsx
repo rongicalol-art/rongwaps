@@ -1,5 +1,5 @@
 import { MemoryHookBlock } from '../../../character-memory-hooks';
-import { numberToToneMarks } from '../../../../utils/pinyin';
+import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
 import { CharacterGlyph } from '../breakdown/CharacterGlyph';
 
 /**

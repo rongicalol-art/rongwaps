@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { computeCardSessionProgress } from '../../src/utils/mistakeQueue';
+import { computeCardSessionProgress } from '../../src/utils/srs/mistakeQueue';
 
 test('computeCardSessionProgress: standard deck without mistakes', () => {
   const canonicalCards = [{ id: 'c1' }, { id: 'c2' }, { id: 'c3' }];

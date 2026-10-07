@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import type { ReviewProgressState } from '../../src/utils/reviewProgress';
+import type { ReviewProgressState } from '../../src/utils/srs/reviewProgress';
 import {
   applyCardReview,
   createClearedReviewProgress,
-} from '../../src/utils/reviewProgress';
+} from '../../src/utils/srs/reviewProgress';
 
 function createState(overrides: Partial<ReviewProgressState> = {}): ReviewProgressState {
   return {

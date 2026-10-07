@@ -3,7 +3,7 @@ import { readJson } from '../acceptance_helpers';
 import test from 'node:test';
 import { recordsToExampleCards } from '../../src/services/contentPacks';
 import type { CourseExamplePack, CourseExampleRecord } from '../../src/types/models';
-import { findSmartExamplesForWord } from '../../src/utils/courseExamples';
+import { findSmartExamplesForWord } from '../../src/utils/vocabulary/courseExamples';
 
 const records: CourseExampleRecord[] = [
   {

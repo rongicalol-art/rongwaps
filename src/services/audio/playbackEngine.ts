@@ -1,4 +1,4 @@
-import { debugLogger } from '../../utils/debugLogger';
+import { debugLogger } from '../../utils/debug/debugLogger';
 
 export interface PlayRangeOptions {
   rate?: number;

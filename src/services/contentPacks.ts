@@ -1,9 +1,9 @@
-import { debugLogger } from '../utils/debugLogger';
+import { debugLogger } from '../utils/debug/debugLogger';
 import type { CharacterJson } from 'hanzi-writer';
 import type { DBDictionaryRow, DBCharacterBreakdown, DBVocabularyRow } from '../types/database';
 import type { Flashcard } from '../data/flashcards';
 import type { CourseExampleRecord, ReadingRecord, InteractiveGrammarPart, DialogueAlignment } from '../types/models';
-import { getDictionaryShard } from '../utils/dictionaryShard';
+import { getDictionaryShard } from '../utils/vocabulary/dictionaryShard';
 import { createPackLoader, type PackLoader } from './packLoader';
 import {
   type ContentPackKind,
@@ -13,8 +13,8 @@ import {
   resolveMnemonicFromMap,
   type LevelIndex,
 } from '../utils/packValidators';
-import type { PartsIndex } from '../utils/parts';
-import type { ReadingsIndex } from '../utils/pronunciation';
+import type { PartsIndex } from '../utils/characters/parts';
+import type { ReadingsIndex } from '../utils/pinyin/pronunciation';
 import { PACK_CONFIGS } from './contentPackConfigs';
 
 export * from '../utils/packValidators';

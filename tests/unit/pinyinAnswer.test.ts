@@ -4,7 +4,7 @@ import {
   getPinyinAnswerVariants,
   isPinyinAnswerAccepted,
   normalizePinyinAnswer,
-} from '../../src/utils/pinyinAnswer';
+} from '../../src/utils/pinyin/pinyinAnswer';
 
 test('pinyin matching ignores tones, numbers, spacing, and punctuation', () => {
   assert.equal(normalizePinyinAnswer('Nǐ hǎo!'), 'nihao');

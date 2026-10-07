@@ -1,13 +1,13 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { TEST_INTERACTIVE_GRAMMAR_PARTS as INTERACTIVE_GRAMMAR_PARTS } from '../acceptance_helpers';
-import { findNeighbourGrammarPart } from '../../src/utils/readingContext';
+import { findNeighbourGrammarPart } from '../../src/utils/lesson/readingContext';
 import type { InteractiveGrammarPage, InteractiveGrammarPart } from '../../src/types/models';
 import {
   getPatternSectionLayout,
   grammarHeaderWeight,
   grammarHeaderWordCount,
-} from '../../src/utils/grammarPatternLayout';
+} from '../../src/utils/grammar/grammarPatternLayout';
 
 /**
  * Pattern-table headers are authored to read as a short 1-3 word title on one

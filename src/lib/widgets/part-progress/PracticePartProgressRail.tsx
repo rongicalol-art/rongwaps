@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import type { PartSegment } from '../../../types/models';
 import { cn } from '../../../utils/cn';
-import { visibleProgressWidth } from '../../../utils/progress';
+import { visibleProgressWidth } from '../../../utils/srs/progress';
 import { PROGRESS_SPRING, segmentFill } from './partProgressSprings';
 
 export interface PracticePartProgressRailProps {

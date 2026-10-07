@@ -1,8 +1,8 @@
 import { useState, useCallback, useEffect } from 'react';
 import type { ReadingRecord } from '../../types/models';
 import { useAppStore } from '../../store/useAppStore';
-import { getSelectedLessonIds } from '../../utils/lessonPartSelection';
-import { resolveActiveReadingIndex, findReadingIndexForPart } from '../../utils/readingContext';
+import { getSelectedLessonIds } from '../../utils/lesson/lessonPartSelection';
+import { resolveActiveReadingIndex, findReadingIndexForPart } from '../../utils/lesson/readingContext';
 import { fetchReadingsPack, fetchDialogueAlignmentPack } from '../../services/contentPacks';
 
 export async function loadReadings(bookId: number): Promise<ReadingRecord[]> {

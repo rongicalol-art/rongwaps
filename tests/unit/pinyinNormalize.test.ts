@@ -4,7 +4,7 @@ import {
   expandOptionalGroups,
   expandSlashAndOptionalVariants,
   stripPinyinTones,
-} from '../../src/utils/pinyinNormalize';
+} from '../../src/utils/pinyin/pinyinNormalize';
 
 test('stripPinyinTones folds tones, numbers, umlauts, and separators', () => {
   assert.equal(stripPinyinTones('Nǐ hǎo!'), 'nihao');

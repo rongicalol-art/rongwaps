@@ -8,7 +8,7 @@ import {
   writeBoolean,
   writeJSON,
   writeString,
-} from '../../src/utils/localStorage';
+} from '../../src/utils/browser/localStorage';
 
 // Mock in-memory storage for node environment
 const store = new Map<string, string>();

@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { cn } from '../../../utils/cn';
-import type { PhraseChunk } from '../../../utils/rubyPinyin';
+import type { PhraseChunk } from '../../../utils/pinyin/rubyPinyin';
 import type { ReaderTextSize } from '../../../types/models';
 import type { useReaderWordInteractions } from '../hooks/useReaderWordInteractions';
 import type { ReaderLocatedRange } from '../utils/readerLocate';

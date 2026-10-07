@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { ReadingRecord, InteractiveGrammarPart } from '../src/types/models';
-import { validateInteractiveLessons as validateCore } from '../src/utils/validateInteractiveLessons';
+import { validateInteractiveLessons as validateCore } from '../src/utils/grammar/validateInteractiveLessons';
 
 export const PROJECT_ROOT = fileURLToPath(new URL('..', import.meta.url));
 

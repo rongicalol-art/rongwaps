@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import { useAppStore } from '../../../store/useAppStore';
 import { audioService } from '../../../services/audioService';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
-import { getDeckIdentityKey } from '../../../utils/lessonPartSelection';
+import { getDeckIdentityKey } from '../../../utils/lesson/lessonPartSelection';
 import { useCardSession } from '../../../hooks/useCardSession';
 import { useNeuralPrewarm } from '../../../hooks/useSessionAudio';
 

@@ -2,14 +2,14 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readJson, TEST_ALL_READINGS as ALL_READINGS } from '../acceptance_helpers';
 import type { ReadingRecord } from '../../src/types/models';
-import { parseVocabularyId } from '../../src/utils/vocabularyId';
+import { parseVocabularyId } from '../../src/utils/vocabulary/vocabularyId';
 import {
   chunksForOccurrence,
   findVocabularyOccurrences,
   tokenizeReading,
   vocabularyTermVariants,
   type VocabularyOccurrence,
-} from '../../src/utils/vocabularyMatching';
+} from '../../src/utils/vocabulary/vocabularyMatching';
 
 interface VocabularyRow {
   id: string;

@@ -20,9 +20,9 @@
 import { create } from 'zustand';
 import { persist, type PersistStorage } from 'zustand/middleware';
 import { get, set, del } from 'idb-keyval';
-import { debugLogger } from '../utils/debugLogger';
-import { migrateLegacyLessonSelection } from '../utils/lessonPartSelection';
-import { migrateLegacyStores } from '../utils/legacyStoreMigration';
+import { debugLogger } from '../utils/debug/debugLogger';
+import { migrateLegacyLessonSelection } from '../utils/lesson/lessonPartSelection';
+import { migrateLegacyStores } from '../utils/sync/legacyStoreMigration';
 import {
   createAuthSlice,
   AUTH_PERSISTED_KEYS,

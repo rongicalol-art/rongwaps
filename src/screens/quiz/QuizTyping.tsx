@@ -5,7 +5,7 @@ import { useQuizTyping } from './hooks/useQuiz';
 import { QuizHanziPrompt, QuizShell, type QuizModeProps } from './QuizShell';
 import { useAppStore, type TypingPromptType } from '../../store/useAppStore';
 import { AppIcon } from '../../lib/widgets';
-import { numberToToneMarks } from '../../utils/pinyin';
+import { numberToToneMarks } from '../../utils/pinyin/pinyin';
 
 interface QuizTypingCardProps {
   currentCard: Flashcard;

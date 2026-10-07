@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { resolveActiveReadingIndex, findReadingIndexForPart } from '../../src/utils/readingContext';
+import { resolveActiveReadingIndex, findReadingIndexForPart } from '../../src/utils/lesson/readingContext';
 import type { ReadingRecord } from '../../src/types/models';
 
 const mockReadings: ReadingRecord[] = [
@@ -159,7 +159,7 @@ test('findReadingIndexForPart maps Part 3 to Dialogue 3 when present', () => {
 });
 
 test('getCharacterForSpeaker identifies all curriculum dialogue participants to prevent vocab pollution', async () => {
-  const { getCharacterForSpeaker } = await import('../../src/utils/speakerCharacters');
+  const { getCharacterForSpeaker } = await import('../../src/utils/lesson/speakerCharacters');
   const names = ['李中明', '中明', '王宜文', '宜文', '小林友美', '友美', '馬國安', '國安', '陳元真', '元真', '高家樂', '家樂', '媽媽', '老師'];
   for (const name of names) {
     const char = getCharacterForSpeaker(name);

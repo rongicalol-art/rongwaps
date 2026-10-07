@@ -1,4 +1,4 @@
-import { debugLogger } from '../../../utils/debugLogger';
+import { debugLogger } from '../../../utils/debug/debugLogger';
 import { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import { useAppStore } from '../../../store/useAppStore';
@@ -10,7 +10,7 @@ type ViewState = 'front' | 'back';
 type Direction = 'fwd' | 'back' | 'none';
 
 import { resolveFolderColor } from '../../../utils/folderColors';
-import { meaningText } from '../../../utils/dictionaryDefinitions';
+import { meaningText } from '../../../utils/vocabulary/dictionaryDefinitions';
 
 export function useAddCard(onClose: () => void) {
   const { currentUser } = useAuth();

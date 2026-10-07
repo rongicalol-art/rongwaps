@@ -1,8 +1,8 @@
-import { numberToToneMarks } from '../../../utils/pinyin';
+import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import type { DBDictionaryEntry } from '../../../types/database';
 import { LevelTag } from '../../../lib/widgets';
 import { useLevels } from '../../../hooks/useLevels';
-import { resolveLevel } from '../../../utils/levels';
+import { resolveLevel } from '../../../utils/lesson/levels';
 
 export function FallbackWords({
   word,

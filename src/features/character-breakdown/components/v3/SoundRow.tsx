@@ -2,9 +2,9 @@ import { LevelTag, ReferenceRow } from '../../../../lib/widgets';
 import { useCharBreakdownState } from '../../../../hooks/useCharBreakdown';
 import { useLevels } from '../../../../hooks/useLevels';
 import { usePrimaryReading } from '../../../../hooks/usePronunciation';
-import { isPureVariantDefinition } from '../../../../utils/dictionaryDefinitions';
-import { resolveLevel } from '../../../../utils/levels';
-import { numberToToneMarks } from '../../../../utils/pinyin';
+import { isPureVariantDefinition } from '../../../../utils/vocabulary/dictionaryDefinitions';
+import { resolveLevel } from '../../../../utils/lesson/levels';
+import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
 import type { BuiltWithMember } from '../../utils/rankBuiltWith';
 
 /** A sound-alike as a standard reference row (glyph, pinyin over meaning, lesson or level); pure variants hidden. */

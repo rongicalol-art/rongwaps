@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { alignRubyPinyin, getPhraseChunks, getWordChunks, splitPinyinWordToSyllables } from '../../src/utils/rubyPinyin.js';
+import { alignRubyPinyin, getPhraseChunks, getWordChunks, splitPinyinWordToSyllables } from '../../src/utils/pinyin/rubyPinyin.js';
 
 test('splitPinyinWordToSyllables splits compound words', () => {
   assert.deepEqual(splitPinyinWordToSyllables('piàoliàng'), ['piào', 'liàng']);

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { getDictionaryEntriesBatch } from '../../../services/dictionaryService';
-import { debugLogger } from '../../../utils/debugLogger';
+import { debugLogger } from '../../../utils/debug/debugLogger';
 
 export interface SmartChineseSegment {
   segment: string;

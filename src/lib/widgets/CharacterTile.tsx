@@ -1,4 +1,4 @@
-import type { ResolvedLevel } from '../../utils/levels';
+import type { ResolvedLevel } from '../../utils/lesson/levels';
 import { AppIcon } from './AppIcon';
 import { LevelTag } from './LevelTag';
 

@@ -1,5 +1,5 @@
-import type { SoundGrade } from '../../../utils/parts';
-import { bookRank } from '../../../utils/wordOrdering';
+import type { SoundGrade } from '../../../utils/characters/parts';
+import { bookRank } from '../../../utils/vocabulary/wordOrdering';
 
 /** A character built from the active part, with where the learner meets it. */
 export interface BuiltWithMember {

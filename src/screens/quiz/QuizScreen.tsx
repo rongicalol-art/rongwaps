@@ -4,7 +4,7 @@ import { ScreenSkeleton } from '../../lib/widgets';
 import { QuizChoices } from './QuizChoices';
 import { QuizTyping } from './QuizTyping';
 import { useAppStore } from '../../store/useAppStore';
-import { getDeckIdentityKey } from '../../utils/lessonPartSelection';
+import { getDeckIdentityKey } from '../../utils/lesson/lessonPartSelection';
 import type { QuizMode } from '../../types/models';
 
 interface QuizScreenProps {

@@ -1,5 +1,5 @@
 import { AppIcon } from '../../../lib/widgets';
-import { FOCUS_THRESHOLD, type TocflBand, type TocflReadiness } from '../../../utils/tocflReadiness';
+import { FOCUS_THRESHOLD, type TocflBand, type TocflReadiness } from '../../../utils/lesson/tocflReadiness';
 
 const BAND_NAME: Record<TocflBand, string> = {
   A: 'Novice–Beginner',

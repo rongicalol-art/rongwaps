@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { Flashcard } from '../../src/data/flashcards';
-import { isSameDeckOrder, planDeckAdoption } from '../../src/utils/sessionProgress';
+import { isSameDeckOrder, planDeckAdoption } from '../../src/utils/srs/sessionProgress';
 
 const card = (id: string): Flashcard => ({ id, bookId: 1, lessonId: 1, front: id, back: '' });
 

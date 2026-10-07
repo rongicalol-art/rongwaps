@@ -1,8 +1,8 @@
 import type { DialogueAlignment, ReadingParagraph, ReadingRecord } from '../../../types/models';
-import { getWordChunks, type PhraseChunk } from '../../../utils/rubyPinyin';
-import { getDialogueSpeakerColorMap, getSpeakerDotColor } from '../../../utils/speakerColors';
-import { getCharacterForSpeaker } from '../../../utils/speakerCharacters';
-import { splitChunksIntoSentences, type DialogueSentenceItem } from '../../../utils/dialogueSync';
+import { getWordChunks, type PhraseChunk } from '../../../utils/pinyin/rubyPinyin';
+import { getDialogueSpeakerColorMap, getSpeakerDotColor } from '../../../utils/lesson/speakerColors';
+import { getCharacterForSpeaker } from '../../../utils/lesson/speakerCharacters';
+import { splitChunksIntoSentences, type DialogueSentenceItem } from '../../../utils/lesson/dialogueSync';
 import { overlapsAnyLocatedRange, type ReaderLocatedRange } from './readerLocate';
 
 /** Speakers that always sit on the left in two-person dialogues. */

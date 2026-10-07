@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { readString, writeString } from '../../utils/localStorage';
+import { readString, writeString } from '../../utils/browser/localStorage';
 
 export const isDesktopViewport = () => (
   typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches

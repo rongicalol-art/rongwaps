@@ -11,8 +11,8 @@ import {
   detectGrammarUsage,
   segmentReadingSentences,
   type GrammarUsageStatus,
-} from '../../src/utils/grammarUsage';
-import { findGrammarPartForReading, findNextGrammarPartForReading } from '../../src/utils/readingContext';
+} from '../../src/utils/grammar/grammarUsage';
+import { findGrammarPartForReading, findNextGrammarPartForReading } from '../../src/utils/lesson/readingContext';
 
 const BOOK_ID = 1;
 const bookParts = INTERACTIVE_GRAMMAR_PARTS.filter((part) => part.bookId === BOOK_ID);

@@ -1,7 +1,7 @@
 import { PracticeChoiceButton, type PracticeChoiceState } from '../../features/practice';
 import type { Flashcard } from '../../data/flashcards';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { getCardChoiceTarget } from '../../utils/meaningChoices';
+import { getCardChoiceTarget } from '../../utils/vocabulary/meaningChoices';
 import type { ListeningChoiceType } from '../../store/useAppStore';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];

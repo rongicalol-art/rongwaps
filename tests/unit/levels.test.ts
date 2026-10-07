@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { resolveLevel, tocflBand, tocflLabel } from '../../src/utils/levels';
+import { resolveLevel, tocflBand, tocflLabel } from '../../src/utils/lesson/levels';
 import type { LevelIndex } from '../../src/utils/packValidators';
 
 const index: LevelIndex = {

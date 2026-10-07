@@ -14,7 +14,7 @@
  * The one hard rule for authors: never let a badge claim something the text
  * does not show. When in doubt, mark the page undetectable and explain why.
  */
-import { USAGE_TOKEN_SEPARATOR, type TokenEvidence, type TokenEvidenceGuards } from '../utils/tokenEvidence';
+import { USAGE_TOKEN_SEPARATOR, type TokenEvidence, type TokenEvidenceGuards } from '../utils/grammar/tokenEvidence';
 
 export { USAGE_TOKEN_SEPARATOR };
 

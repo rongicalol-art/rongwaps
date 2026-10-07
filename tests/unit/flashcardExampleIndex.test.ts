@@ -2,9 +2,9 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { readFileSync } from 'node:fs';
 import { buildExampleIndex } from '../../src/features/flashcards/content/exampleIndex';
-import { findSmartExamplesForWord } from '../../src/utils/courseExamples';
+import { findSmartExamplesForWord } from '../../src/utils/vocabulary/courseExamples';
 import { recordsToExampleCards } from '../../src/utils/packValidators';
-import { extractSearchVariants } from '../../src/utils/wordForms';
+import { extractSearchVariants } from '../../src/utils/vocabulary/wordForms';
 import type { Flashcard } from '../../src/data/flashcards';
 
 const records = JSON.parse(readFileSync('public/data/course-examples/book-1.json', 'utf8')).records;

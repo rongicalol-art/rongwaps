@@ -3,10 +3,10 @@ import { audioService } from '../../../services/audioService';
 import { useAppStore } from '../../../store/useAppStore';
 import { useCardFlow } from './useCardFlow';
 import { usePracticeHeaderRegistration } from '../../../hooks/usePracticeHeaderRegistration';
-import { buildPracticePartSegments } from '../../../utils/practicePartSegments';
+import { buildPracticePartSegments } from '../../../utils/lesson/practicePartSegments';
 import type { Flashcard } from '../../../data/flashcards';
 
-import type { CardSessionProgressInfo } from '../../../utils/mistakeQueue';
+import type { CardSessionProgressInfo } from '../../../utils/srs/mistakeQueue';
 
 interface UseFlashcardFlowProps {
   cards: Flashcard[];

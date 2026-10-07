@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { AppIcon } from '../../../lib/widgets';
 import { getCachedMnemonic } from '../../../services/mnemonicCache';
-import { numberToToneMarks } from '../../../utils/pinyin';
+import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { normalizeMnemonic, renderHookText } from '../../character-memory-hooks';
 
 /**

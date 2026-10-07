@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
 import { useAuth } from '../../hooks/useAuth';
-import { debugLogger } from '../../utils/debugLogger';
+import { debugLogger } from '../../utils/debug/debugLogger';
 import { ActionButton, AlertBanner, AppIcon, ConfirmationDialog } from '../../lib/widgets';
 import { useAccountActions } from '../hooks/useAccountActions';
 import { LEGAL_ROUTES } from '../routes';

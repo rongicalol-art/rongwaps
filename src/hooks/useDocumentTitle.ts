@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { documentTitleFor } from '../utils/documentTitle';
+import { documentTitleFor } from '../utils/browser/documentTitle';
 
 /**
  * Titles the current view and hands the title back when the view closes.
@@ -13,7 +13,7 @@ import { documentTitleFor } from '../utils/documentTitle';
  * what was there before (the captured `previous`), because the shell's effect
  * does not re-run just because a window closed.
  *
- * See `src/utils/documentTitle.ts` for why this exists (WCAG 2.4.2).
+ * See `src/utils/browser/documentTitle.ts` for why this exists (WCAG 2.4.2).
  */
 export function useDocumentTitle(view: string | null | undefined) {
   useEffect(() => {

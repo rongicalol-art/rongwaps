@@ -6,8 +6,8 @@ import {
   extractCedictReference,
   formatCompactMeaning,
   meaningText,
-} from '../../src/utils/dictionaryDefinitions';
-import { debugLogger } from '../../src/utils/debugLogger';
+} from '../../src/utils/vocabulary/dictionaryDefinitions';
+import { debugLogger } from '../../src/utils/debug/debugLogger';
 
 test('serialized definition arrays render as learner-facing meanings', () => {
   assert.deepEqual(

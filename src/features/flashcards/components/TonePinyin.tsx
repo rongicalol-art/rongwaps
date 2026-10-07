@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import { segmentPinyinTones, type PinyinTone } from '../../../utils/pinyinTones';
-import { numberToToneMarks } from '../../../utils/pinyin';
+import { segmentPinyinTones, type PinyinTone } from '../../../utils/pinyin/pinyinTones';
+import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 
 /** Tone → text color. Shared by the pinyin row and the matching characters. */
 export const TONE_TEXT_CLASS: Record<PinyinTone, string> = {

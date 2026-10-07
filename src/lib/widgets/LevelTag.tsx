@@ -1,4 +1,4 @@
-import { tocflLabel, type ResolvedLevel } from '../../utils/levels';
+import { tocflLabel, type ResolvedLevel } from '../../utils/lesson/levels';
 
 /** The one badge look: soft grey pill, same as the header chip, in every list. */
 const PILL_CLASSES = 'inline-flex shrink-0 whitespace-nowrap items-center rounded-xs bg-ui-hover px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-ui-muted';

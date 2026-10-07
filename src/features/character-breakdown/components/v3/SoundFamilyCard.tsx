@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { SectionEyebrow } from '../../../../lib/widgets';
 import { useLevels } from '../../../../hooks/useLevels';
-import { resolveLevel } from '../../../../utils/levels';
+import { resolveLevel } from '../../../../utils/lesson/levels';
 import { groupByGrade, type BuiltWithMember, type RankedSoundFamily } from '../../utils/rankBuiltWith';
 import { RAIL_CARD_CLASSES, SEE_ALL_CLASSES } from './railStyles';
 import { SoundRow } from './SoundRow';

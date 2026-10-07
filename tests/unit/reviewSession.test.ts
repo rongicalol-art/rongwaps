@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { Flashcard } from '../../src/data/flashcards';
-import { buildReviewSession, REVIEW_SESSION_CAP } from '../../src/utils/reviewSession';
-import type { SRSData } from '../../src/utils/srsEngine';
+import { buildReviewSession, REVIEW_SESSION_CAP } from '../../src/utils/srs/reviewSession';
+import type { SRSData } from '../../src/utils/srs/srsEngine';
 
 function card(id: string): Flashcard {
   return {

@@ -4,8 +4,8 @@ import {
   computeReviewOverview,
   isSrsDue,
   SOLID_REPETITION_THRESHOLD,
-} from '../../src/utils/reviewOverview';
-import type { SRSData } from '../../src/utils/srsEngine';
+} from '../../src/utils/srs/reviewOverview';
+import type { SRSData } from '../../src/utils/srs/srsEngine';
 
 function srs(overrides: Partial<SRSData> = {}): SRSData {
   return {

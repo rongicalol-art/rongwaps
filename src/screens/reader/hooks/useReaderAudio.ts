@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { DialogueAlignment, ReadingRecord } from '../../../types/models';
 import { audioService } from '../../../services/audioService';
-import { debugLogger } from '../../../utils/debugLogger';
+import { debugLogger } from '../../../utils/debug/debugLogger';
 import { useAppStore } from '../../../store/useAppStore';
 import {
   alignmentDuration,
   lineIndexForTime,
-} from '../../../utils/dialogueSync';
-import { officialAudioFileName } from '../../../utils/officialAudio';
+} from '../../../utils/lesson/dialogueSync';
+import { officialAudioFileName } from '../../../utils/lesson/officialAudio';
 
 export interface UseReaderAudioOptions {
   reading: ReadingRecord;

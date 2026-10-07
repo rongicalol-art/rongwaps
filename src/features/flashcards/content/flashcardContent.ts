@@ -2,8 +2,8 @@ import { useEffect, useMemo, useSyncExternalStore } from 'react';
 import type { Flashcard } from '../../../data/flashcards';
 import { fetchCourseExampleRecords, fetchMemoryHooksMap, resolveMnemonicFromMap } from '../../../services/contentPacks';
 import { fetchVocabulary } from '../../../services/vocabularyService';
-import type { RankedExample } from '../../../utils/courseExamples';
-import { debugLogger } from '../../../utils/debugLogger';
+import type { RankedExample } from '../../../utils/vocabulary/courseExamples';
+import { debugLogger } from '../../../utils/debug/debugLogger';
 import { normalizeMnemonic, wordMnemonicKey } from '../../character-memory-hooks';
 import { buildExampleIndex, type ExampleIndex } from './exampleIndex';
 

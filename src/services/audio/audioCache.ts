@@ -1,4 +1,4 @@
-import { debugLogger } from '../../utils/debugLogger';
+import { debugLogger } from '../../utils/debug/debugLogger';
 import { del, get, keys, set } from 'idb-keyval';
 
 export const AUDIO_BUCKET = 'vocabulary-audio';

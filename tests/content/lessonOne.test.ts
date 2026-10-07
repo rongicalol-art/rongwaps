@@ -4,17 +4,17 @@ import { getTestGrammarPartsForLesson } from '../acceptance_helpers';
 import {
   evaluateGrammarPlacements,
   findCanonicalTile,
-} from '../../src/utils/grammarExercise';
+} from '../../src/utils/grammar/grammarExercise';
 import {
   buildGrammarPartSegments,
   continueGrammarLesson,
   selectGrammar,
-} from '../../src/utils/grammarLessonFlow';
+} from '../../src/utils/grammar/grammarLessonFlow';
 import {
   appendUniqueId,
   getGrammarPathStatus,
   getReadingPathStatus,
-} from '../../src/utils/lessonProgress';
+} from '../../src/utils/lesson/lessonProgress';
 
 const lessonOneParts = getTestGrammarPartsForLesson(1, 1);
 const [LESSON_ONE_PART_ONE] = lessonOneParts;

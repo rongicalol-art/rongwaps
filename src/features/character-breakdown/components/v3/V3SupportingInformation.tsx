@@ -1,9 +1,9 @@
 import type { Flashcard } from '../../../../data/flashcards';
 import type { SAMPLE_BOOKS } from '../../../../data/books';
-import { numberToToneMarks } from '../../../../utils/pinyin';
+import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
 import { LevelTag, ReferenceRow, SectionEyebrow } from '../../../../lib/widgets';
 import { useLevels } from '../../../../hooks/useLevels';
-import { resolveLevel } from '../../../../utils/levels';
+import { resolveLevel } from '../../../../utils/lesson/levels';
 import type { BuiltWithMember, RankedSoundFamily } from '../../utils/rankBuiltWith';
 import { AppearsInCard } from './AppearsInCard';
 import { SoundFamilyCard } from './SoundFamilyCard';

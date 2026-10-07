@@ -1,5 +1,5 @@
 import { AppIcon, ReferenceRow, SectionEyebrow, Skeleton } from '../../../lib/widgets';
-import { numberToToneMarks } from '../../../utils/pinyin';
+import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import type { DictionarySavedPreview } from '../../../types/models';
 
 const SEE_ALL_CLASSES =

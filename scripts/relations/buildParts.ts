@@ -16,7 +16,7 @@
  * No pinyin, meaning, level or lesson ships: the app derives them at runtime.
  * Scope is the learner pool (scripts/lib/learnerPool.ts: course ∪ levels).
  * Sound grading: scripts/phonetic/soundGrade.ts; phonetic map + owner
- * overrides: scripts/phonetic/soundMap.ts. Format: src/utils/parts.ts.
+ * overrides: scripts/phonetic/soundMap.ts. Format: src/utils/characters/parts.ts.
  */
 
 import { createHash } from 'node:crypto';
@@ -25,8 +25,8 @@ import { resolve } from 'node:path';
 import { compareByPoolRank, loadLearnerPool } from '../lib/learnerPool';
 import { gradeSound, type SoundMatch } from '../phonetic/soundGrade';
 import { loadPhoneticParts } from '../phonetic/soundMap';
-import { formatMembers, GRADE_ORDER, type PartMember, type SoundGrade } from '../../src/utils/parts';
-import { parseReadings } from '../../src/utils/pronunciation';
+import { formatMembers, GRADE_ORDER, type PartMember, type SoundGrade } from '../../src/utils/characters/parts';
+import { parseReadings } from '../../src/utils/pinyin/pronunciation';
 
 const ROOT = resolve(import.meta.dirname, '../..');
 const OUT_DIR = resolve(ROOT, 'public/data/relations');

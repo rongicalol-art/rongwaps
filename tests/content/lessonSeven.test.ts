@@ -4,7 +4,7 @@ import {
   LESSON_SEVEN_PART_ONE,
   LESSON_SEVEN_PART_TWO,
 } from '../../src/data/grammar/lessonSeven';
-import { evaluateGrammarPlacements, findCanonicalTile } from '../../src/utils/grammarExercise';
+import { evaluateGrammarPlacements, findCanonicalTile } from '../../src/utils/grammar/grammarExercise';
 import { validateInteractiveLessons } from '../acceptance_helpers';
 
 const parts = [LESSON_SEVEN_PART_ONE, LESSON_SEVEN_PART_TWO];

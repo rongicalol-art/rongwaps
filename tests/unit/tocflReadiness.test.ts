@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { computeTocflReadiness } from '../../src/utils/tocflReadiness';
+import { computeTocflReadiness } from '../../src/utils/lesson/tocflReadiness';
 
 const tbcl = new Map([['我', 1], ['你', 1], ['好', 1], ['媽', 2], ['學', 4], ['駕', 6]]);
 const course = [

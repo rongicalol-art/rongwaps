@@ -1,8 +1,8 @@
-import { debugLogger } from '../utils/debugLogger';
+import { debugLogger } from '../utils/debug/debugLogger';
 import { Flashcard } from '../data/flashcards';
 import { vocabularyCache } from '../utils/cache';
-import { extractSearchVariants, sentenceMatchesForms } from '../utils/wordForms';
-import { stripPinyinTones } from '../utils/pinyinNormalize';
+import { extractSearchVariants, sentenceMatchesForms } from '../utils/vocabulary/wordForms';
+import { stripPinyinTones } from '../utils/pinyin/pinyinNormalize';
 import {
   fetchVocabularyPack,
   fetchAllVocabularyPacks,
@@ -10,8 +10,8 @@ import {
 } from './contentPacks';
 import type { WordExample } from '../types/models';
 import { withPackFirstLookup } from './packFirstLookup';
-import { getSmartScore } from '../utils/vocabularySearchScoring';
-import { prepareVocabulary } from '../utils/vocabularyMapping';
+import { getSmartScore } from '../utils/vocabulary/vocabularySearchScoring';
+import { prepareVocabulary } from '../utils/vocabulary/vocabularyMapping';
 
 export { prepareVocabulary };
 

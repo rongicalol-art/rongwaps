@@ -4,7 +4,7 @@ import test from 'node:test';
 import { readJson, readSource } from '../acceptance_helpers';
 import { PACK_CONFIGS } from '../../src/services/contentPackConfigs';
 import type { GenericContentManifest, PronunciationPack } from '../../src/services/contentPacks';
-import type { ReadingsIndex } from '../../src/utils/pronunciation';
+import type { ReadingsIndex } from '../../src/utils/pinyin/pronunciation';
 
 test('pronunciation pack: manifest matches and readings are Taiwan-first', () => {
   const manifest = readJson<GenericContentManifest>('public/data/pronunciation/manifest.json');

@@ -6,7 +6,7 @@ import {
   TEST_INTERACTIVE_GRAMMAR_PARTS as INTERACTIVE_GRAMMAR_PARTS,
 } from '../acceptance_helpers';
 import { VOCABULARY_SENSE_RULES } from '../../src/data/vocabularySenseRules';
-import { parseVocabularyId } from '../../src/utils/vocabularyId';
+import { parseVocabularyId } from '../../src/utils/vocabulary/vocabularyId';
 import { buildReaderStudyTargets } from '../../src/screens/reader/utils/readerStudyTargets';
 
 interface VocabularyRow {

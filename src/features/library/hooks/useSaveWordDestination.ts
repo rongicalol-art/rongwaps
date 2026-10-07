@@ -5,7 +5,7 @@ import { flashcardService } from '../../../services/flashcardService';
 import { getDictionaryEntries } from '../../../services/dictionaryService';
 import { audioService } from '../../../services/audioService';
 import { serializeFolderColor } from '../../../utils/folderColors';
-import { definitionStrings } from '../../../utils/dictionaryDefinitions';
+import { definitionStrings } from '../../../utils/vocabulary/dictionaryDefinitions';
 import { useUserFlashcards } from './useUserFlashcards';
 import type { SaveWordTarget } from '../../../store/slices/librarySlice';
 import type { UserFlashcard } from '../../../types/models';

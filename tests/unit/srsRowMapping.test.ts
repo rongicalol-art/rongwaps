@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import type { SRSData } from '../../src/utils/srsEngine';
+import type { SRSData } from '../../src/utils/srs/srsEngine';
 import {
   isSameSrsData,
   rowsToProgress,
   rowToSrsData,
   srsDataToUpsert,
-} from '../../src/utils/srsRowMapping';
+} from '../../src/utils/srs/srsRowMapping';
 
 const graduated: SRSData = {
   cardId: 'word_你好',

@@ -5,8 +5,8 @@ import {
   filterDeckByExclusions,
   isCardIdExcluded,
   pruneExcludedIds,
-} from '../../src/utils/deckExclusions';
-import { getDeckIdentityKey } from '../../src/utils/lessonPartSelection';
+} from '../../src/utils/srs/deckExclusions';
+import { getDeckIdentityKey } from '../../src/utils/lesson/lessonPartSelection';
 import { useAppStore } from '../../src/store/useAppStore';
 
 function card(id: string): Flashcard {

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { builtWith, formatMembers, parseMembers, soundFamily, resolveSoundClue, soundAlikes, type PartsIndex } from '../../src/utils/parts';
+import { builtWith, formatMembers, parseMembers, soundFamily, resolveSoundClue, soundAlikes, type PartsIndex } from '../../src/utils/characters/parts';
 
 const index: PartsIndex = {
   parents: new Map([

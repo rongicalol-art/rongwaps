@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import type { RuntimeTreeNode } from '../../src/features/character-decomposition/runtimePack';
 import { tokenizeHookText, type HookTextSegment } from '../../src/features/character-memory-hooks/hookText';
-import { getDictionaryShard } from '../../src/utils/dictionaryShard';
+import { getDictionaryShard } from '../../src/utils/vocabulary/dictionaryShard';
 import {
   buildTaughtSenses,
   findAlignmentFindings,

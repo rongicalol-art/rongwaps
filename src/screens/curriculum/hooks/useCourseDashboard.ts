@@ -5,8 +5,8 @@ import { getInteractiveGrammarManifestForLesson } from '../../../data/interactiv
 import { fetchVocabulary } from '../../../services/vocabularyService';
 import { useAppStore } from '../../../store/useAppStore';
 import type { CourseDashboardProgress, LessonPartSelectionMap } from '../../../types/models';
-import { getLessonSelectionKey } from '../../../utils/lessonPartSelection';
-import { aggregateLessonPartProgress } from '../../../utils/lessonPartProgress';
+import { getLessonSelectionKey } from '../../../utils/lesson/lessonPartSelection';
+import { aggregateLessonPartProgress } from '../../../utils/lesson/lessonPartProgress';
 
 interface UseCourseDashboardOptions {
   activeBookId: number;

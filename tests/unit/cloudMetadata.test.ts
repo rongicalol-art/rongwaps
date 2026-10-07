@@ -3,7 +3,7 @@ import test from 'node:test';
 import {
   resolveCloudMetadataPatch,
   resolveGuestFolderMigration,
-} from '../../src/utils/cloudMetadata';
+} from '../../src/utils/sync/cloudMetadata';
 
 const LOCAL = {
   activeBookId: 2,

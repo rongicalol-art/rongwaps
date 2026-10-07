@@ -1,8 +1,8 @@
 import { useMemo, useRef, useEffect } from 'react';
 import type { DialogueAlignment, ReaderTextSize, ReadingRecord } from '../../../types/models';
 import { cn } from '../../../utils/cn';
-import { getWordChunks } from '../../../utils/rubyPinyin';
-import { splitChunksIntoSentences } from '../../../utils/dialogueSync';
+import { getWordChunks } from '../../../utils/pinyin/rubyPinyin';
+import { splitChunksIntoSentences } from '../../../utils/lesson/dialogueSync';
 import { useReaderWordInteractions } from '../hooks/useReaderWordInteractions';
 import { useReaderLocate } from '../hooks/useReaderLocate';
 import { useReaderDictionaryBatch } from '../hooks/useReaderDictionaryBatch';

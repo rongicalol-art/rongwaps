@@ -4,8 +4,8 @@ import {
   computeSrsDelta,
   buildMetadataPayload,
   hasMetadataChanged,
-} from '../../src/utils/cloudSyncTransforms';
-import type { SRSData } from '../../src/utils/srsEngine';
+} from '../../src/utils/sync/cloudSyncTransforms';
+import type { SRSData } from '../../src/utils/srs/srsEngine';
 
 const baseCard: SRSData = {
   cardId: 'card1',

@@ -1,7 +1,7 @@
 import type { Flashcard } from '../../../data/flashcards';
 import { vocabularyCache } from '../../../utils/cache';
-import { isStandardHanzi } from '../../../utils/hanzi';
-import { groupWordsByBook, type WordOrderContext } from '../../../utils/wordOrdering';
+import { isStandardHanzi } from '../../../utils/characters/hanzi';
+import { groupWordsByBook, type WordOrderContext } from '../../../utils/vocabulary/wordOrdering';
 
 export interface UsedAsGroupItem {
   char: string;

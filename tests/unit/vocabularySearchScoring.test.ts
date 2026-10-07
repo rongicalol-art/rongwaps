@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { getSmartScore } from '../../src/utils/vocabularySearchScoring';
+import { getSmartScore } from '../../src/utils/vocabulary/vocabularySearchScoring';
 import type { Flashcard } from '../../src/data/flashcards';
 
 const mockCard: Flashcard = {

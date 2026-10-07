@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { reorderSessionOnShuffle } from '../../src/utils/sessionOrder';
+import { reorderSessionOnShuffle } from '../../src/utils/srs/sessionOrder';
 
 interface MockCard {
   id: string;

@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { DICTIONARY_SHARD_COUNT } from '../../src/utils/dictionaryShard';
+import { DICTIONARY_SHARD_COUNT } from '../../src/utils/vocabulary/dictionaryShard';
 
 const DIRECTORY = resolve(process.cwd(), 'public/data/dictionary');
 

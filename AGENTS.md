@@ -46,13 +46,14 @@ Use the `verify-change` skill.
 1. New cross-screen state → matching `src/store/slices/` slice with persistence class declared.
 2. Pack-first content → `createPackLoader`; no new `*PackService`.
 3. Card-session mechanics live in `useCardSession`; activities own only answer UX.
-4. SRSData ↔ DB row conversion only in `src/utils/srsRowMapping.ts`.
+4. SRSData ↔ DB row conversion only in `src/utils/srs/srsRowMapping.ts`.
 5. One owner file per business rule; never duplicated across UI and services.
 6. `server/` never imports browser app code (types only shared). Client never imports Supabase/fetch outside `src/services/`.
 7. Authored content must not need new engine code unless it is a genuinely new behavior type.
 8. Dev-only tooling behind `import.meta.env.DEV`.
 9. Screens are small containers: hooks/state → derived data → UI. `App.tsx` = routing + shell only.
 10. Shared UI used by 2+ features → `src/lib/widgets/`; feature-only UI beside its screen.
+11. Folder split: `screens/<name>/` = route-level slice (own components/hooks/utils; sibling screens only via `index.ts`) · `features/<name>/` = cross-screen domain package (hooks + components + content, public `index.ts`) · `lib/widgets/` = generic UI, no screen/feature imports · `app/` = shell wiring (routes, overlays, launchers) · `hooks/` = app-wide hooks no single screen owns · `utils/<domain>/` = pure helpers, grouped by domain (pinyin, grammar, lesson, srs, sync, vocabulary, characters, browser, debug).
 
 ## Routing — read only what the task needs
 

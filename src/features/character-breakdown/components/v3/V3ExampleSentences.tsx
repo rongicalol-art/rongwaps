@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { SectionEyebrow, Skeleton, SmartSentence, LevelTag } from '../../../../lib/widgets';
-import { numberToToneMarks } from '../../../../utils/pinyin';
+import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
 import { useAppStore } from '../../../../store/useAppStore';
 import { useCharExampleSentences } from '../../hooks/useCharExampleSentences';
 

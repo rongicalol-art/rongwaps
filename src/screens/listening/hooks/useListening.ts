@@ -2,9 +2,9 @@ import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { audioService } from '../../../services/audioService';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
 import { useAppStore } from '../../../store/useAppStore';
-import { shuffleItems } from '../../../utils/sessionOrder';
-import { getDeckIdentityKey } from '../../../utils/lessonPartSelection';
-import { buildAttributeChoices, getCardChoiceTarget } from '../../../utils/meaningChoices';
+import { shuffleItems } from '../../../utils/srs/sessionOrder';
+import { getDeckIdentityKey } from '../../../utils/lesson/lessonPartSelection';
+import { buildAttributeChoices, getCardChoiceTarget } from '../../../utils/vocabulary/meaningChoices';
 import { useCardSession } from '../../../hooks/useCardSession';
 import { useNeuralPrewarm } from '../../../hooks/useSessionAudio';
 

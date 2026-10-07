@@ -5,7 +5,7 @@ import {
   PERSISTED_KEYS,
   useAppStore,
 } from '../../src/store/useAppStore';
-import { createEmptySessionProgress } from '../../src/utils/reviewProgress';
+import { createEmptySessionProgress } from '../../src/utils/srs/reviewProgress';
 
 /**
  * The store's persistence contract. The legacy store persisted exactly these

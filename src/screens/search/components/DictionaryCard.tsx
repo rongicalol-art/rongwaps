@@ -1,7 +1,7 @@
 import { memo, useMemo } from 'react';
 import { LevelTag, PosBadge } from '../../../lib/widgets';
 import { useLevels } from '../../../hooks/useLevels';
-import { resolveLevel } from '../../../utils/levels';
+import { resolveLevel } from '../../../utils/lesson/levels';
 import { FavoriteButton } from '../../../features/library';
 import type { DictionaryListEntry } from '../../../types/models';
 

@@ -2,8 +2,8 @@ import { useMemo } from 'react';
 import { useCharBreakdownState } from '../../../hooks/useCharBreakdown';
 import { useParts } from '../../../hooks/useParts';
 import { usePronunciation } from '../../../hooks/usePronunciation';
-import { resolveSoundClue, type SoundClue } from '../../../utils/parts';
-import { allReadings, soundPair } from '../../../utils/pronunciation';
+import { resolveSoundClue, type SoundClue } from '../../../utils/characters/parts';
+import { allReadings, soundPair } from '../../../utils/pinyin/pronunciation';
 import { formatSoundShift } from '../utils/soundShift';
 
 /**

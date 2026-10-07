@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { resolveLevel } from '../../src/utils/levels';
+import { resolveLevel } from '../../src/utils/lesson/levels';
 import type { LevelIndex } from '../../src/utils/packValidators';
 
 /**
@@ -18,7 +18,7 @@ import type { LevelIndex } from '../../src/utils/packValidators';
  * to traditional via the dictionary packs.
  *
  * All inputs live in gitignored output/levels/. Estimates are never stored;
- * src/utils/levels.ts computes them at runtime.
+ * src/utils/lesson/levels.ts computes them at runtime.
  */
 const ROOT = resolve(import.meta.dirname, '../..');
 const INPUT_DIR = resolve(ROOT, 'output/levels');

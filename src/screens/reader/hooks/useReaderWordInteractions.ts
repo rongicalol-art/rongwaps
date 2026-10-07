@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
-import type { PhraseChunk } from '../../../utils/rubyPinyin';
+import type { PhraseChunk } from '../../../utils/pinyin/rubyPinyin';
 import { useAppStore } from '../../../store/useAppStore';
 import type { AnchorRect } from '../utils/readerTooltipPosition';
 

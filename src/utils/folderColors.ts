@@ -1,4 +1,4 @@
-import { debugLogger } from './debugLogger';
+import { debugLogger } from './debug/debugLogger';
 
 export interface FolderColorOption {
   id: string;

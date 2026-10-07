@@ -1,4 +1,4 @@
-import { debugLogger } from '../../../utils/debugLogger';
+import { debugLogger } from '../../../utils/debug/debugLogger';
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import type { DBDictionaryEntry } from '../../../types/database';
 import type { ReadingRecord } from '../../../types/models';

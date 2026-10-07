@@ -1,6 +1,6 @@
 import { useMemo, useSyncExternalStore } from 'react';
 import { fetchLevelIndex, type LevelIndex } from '../services/contentPacks';
-import { resolveLevel, type ResolvedLevel } from '../utils/levels';
+import { resolveLevel, type ResolvedLevel } from '../utils/lesson/levels';
 
 let index: LevelIndex | null = null;
 let requested = false;

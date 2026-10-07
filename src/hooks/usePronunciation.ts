@@ -1,6 +1,6 @@
 import { useMemo, useSyncExternalStore } from 'react';
 import { fetchPronunciationIndex } from '../services/contentPacks';
-import { allReadings, primaryReading, type Reading, type ReadingsIndex } from '../utils/pronunciation';
+import { allReadings, primaryReading, type Reading, type ReadingsIndex } from '../utils/pinyin/pronunciation';
 
 let index: ReadingsIndex | null = null;
 let requested = false;

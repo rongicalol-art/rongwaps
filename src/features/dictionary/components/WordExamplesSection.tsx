@@ -1,7 +1,7 @@
 import { AppIcon, SectionEyebrow, SmartSentence, Skeleton, LevelTag } from '../../../lib/widgets';
 import { audioService } from '../../../services/audioService';
 import { useAppStore } from '../../../store/useAppStore';
-import { numberToToneMarks } from '../../../utils/pinyin';
+import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import type { WordExample } from '../../../types/models';
 

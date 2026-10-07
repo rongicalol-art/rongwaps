@@ -6,9 +6,9 @@ import {
   shouldShowWordHook,
 } from '../../../features/character-memory-hooks';
 import { AppIcon } from '../../../lib/widgets';
-import type { RankedExample } from '../../../utils/courseExamples';
+import type { RankedExample } from '../../../utils/vocabulary/courseExamples';
 import { cn } from '../../../utils/cn';
-import { isHanziChar } from '../../../utils/hanzi';
+import { isHanziChar } from '../../../utils/characters/hanzi';
 import { FlashcardBackFace, useFlashcardExtras } from '../../../features/flashcards';
 import { FavoriteButton } from '../../../features/library';
 import { useCardSwipe } from '../hooks/useCardSwipe';

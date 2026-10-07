@@ -1,4 +1,4 @@
-import { debugLogger } from '../utils/debugLogger';
+import { debugLogger } from '../utils/debug/debugLogger';
 export { AUDIO_BUCKET } from './audio/audioCache';
 import {
   cacheObjectUrl,

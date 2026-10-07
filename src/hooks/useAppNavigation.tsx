@@ -4,7 +4,7 @@ import {
   getLessonSelectionKey,
   getSelectedLessonIds,
   normalizePartSelection,
-} from '../utils/lessonPartSelection';
+} from '../utils/lesson/lessonPartSelection';
 import type { ActivityType } from '../types/models';
 
 export type TabType = 'path' | 'search' | 'library' | 'profile';

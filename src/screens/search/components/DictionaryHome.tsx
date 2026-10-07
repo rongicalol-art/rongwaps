@@ -4,7 +4,7 @@ import { BookWordRail } from './BookWordRail';
 import { CharacterDailyCard } from './CharacterDailyCard';
 import { SavedWordsPreview } from './SavedWordsPreview';
 import { TocflReadinessCard } from './TocflReadinessCard';
-import type { TocflReadiness } from '../../../utils/tocflReadiness';
+import type { TocflReadiness } from '../../../utils/lesson/tocflReadiness';
 
 interface DictionaryHomeProps {
   savedWords: DictionarySavedPreview[];

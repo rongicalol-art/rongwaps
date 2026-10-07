@@ -1,9 +1,9 @@
-import type { SRSData, Quality } from '../../utils/srsEngine';
+import type { SRSData, Quality } from '../../utils/srs/srsEngine';
 import {
   applyCardReview,
   createClearedReviewProgress,
   createEmptySessionProgress,
-} from '../../utils/reviewProgress';
+} from '../../utils/srs/reviewProgress';
 import type {
   PracticeHeaderActions,
   SessionProgress,

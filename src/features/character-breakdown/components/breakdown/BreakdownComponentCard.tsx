@@ -2,11 +2,11 @@ import React, { useMemo } from 'react';
 import { SAMPLE_BOOKS } from '../../../../data/books';
 import { LevelTag, Skeleton } from '../../../../lib/widgets';
 import { useLevels } from '../../../../hooks/useLevels';
-import { resolveLevel } from '../../../../utils/levels';
+import { resolveLevel } from '../../../../utils/lesson/levels';
 import { useCharBreakdown } from '../../../../hooks/useCharBreakdown';
 import { useComponentVocabRelation } from '../../../../hooks/useComponentVocabRelation';
-import { numberToToneMarks } from '../../../../utils/pinyin';
-import { formatCompactMeaning } from '../../../../utils/dictionaryDefinitions';
+import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
+import { formatCompactMeaning } from '../../../../utils/vocabulary/dictionaryDefinitions';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
 

@@ -12,14 +12,14 @@ import {
   normalizeIdsExpression,
   parseIdsExpression,
   type IdsOperandAdapter,
-} from '../../src/utils/idsParser';
+} from '../../src/utils/characters/idsParser';
 import {
   collectLearnerCards,
   getDecompositionLookupKey,
   getVisibleCardChildren,
   projectLearnerDecomposition,
   resolveExplorableCharacterTree,
-} from '../../src/utils/idsLearnerProjection';
+} from '../../src/utils/characters/idsLearnerProjection';
 import {
   CJKVI_OPERAND_ADAPTER,
   MAKE_ME_A_HANZI_OPERAND_ADAPTER,

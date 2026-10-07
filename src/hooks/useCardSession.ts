@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Flashcard } from '../data/flashcards';
 import { useAppStore } from '../store/useAppStore';
-import { reorderSessionOnShuffle } from '../utils/sessionOrder';
-import { queueMissedItem, computeCardSessionProgress, type CardSessionProgressInfo } from '../utils/mistakeQueue';
-import { getSessionStartIndex, planDeckAdoption, retainCurrentCardIndex } from '../utils/sessionProgress';
-import { SHARED_REVIEW_SESSION_KEY } from '../utils/lessonPartSelection';
+import { reorderSessionOnShuffle } from '../utils/srs/sessionOrder';
+import { queueMissedItem, computeCardSessionProgress, type CardSessionProgressInfo } from '../utils/srs/mistakeQueue';
+import { getSessionStartIndex, planDeckAdoption, retainCurrentCardIndex } from '../utils/srs/sessionProgress';
+import { SHARED_REVIEW_SESSION_KEY } from '../utils/lesson/lessonPartSelection';
 import { audioService } from '../services/audioService';
 
 /**

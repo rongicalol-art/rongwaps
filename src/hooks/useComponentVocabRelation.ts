@@ -1,4 +1,4 @@
-import { debugLogger } from '../utils/debugLogger';
+import { debugLogger } from '../utils/debug/debugLogger';
 import { useState, useEffect } from 'react';
 import { searchVocabulary } from '../services/vocabularyService';
 import type { Flashcard } from '../data/flashcards';

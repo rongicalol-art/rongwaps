@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef } from 'react';
 import type { PartSegment, PracticeHeaderActions } from '../types/models';
 import { useAppStore } from '../store/useAppStore';
-import { currentItemProgress } from '../utils/progress';
+import { currentItemProgress } from '../utils/srs/progress';
 
 interface PracticeHeaderRegistration extends PracticeHeaderActions {
   currentIndex: number;

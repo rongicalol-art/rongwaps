@@ -5,7 +5,7 @@ import {
   getDisplayText,
   getPatternColumnWeights,
   getPatternSectionLayout,
-} from '../../src/utils/grammarPatternLayout';
+} from '../../src/utils/grammar/grammarPatternLayout';
 
 /** Counts tracks in a `grid-template-columns` value (each track contains one `minmax(`/`fit-content(`/`1fr`). */
 function gridTemplateTrackCount(template: string): number {

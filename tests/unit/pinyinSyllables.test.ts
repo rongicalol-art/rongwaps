@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { splitPinyinWordToSyllables, splitPinyinToSyllables } from '../../src/utils/pinyinSyllables';
+import { splitPinyinWordToSyllables, splitPinyinToSyllables } from '../../src/utils/pinyin/pinyinSyllables';
 
 test('splitPinyinWordToSyllables: splits compound words accurately', () => {
   assert.deepEqual(splitPinyinWordToSyllables('kuànián'), ['kuà', 'nián']);

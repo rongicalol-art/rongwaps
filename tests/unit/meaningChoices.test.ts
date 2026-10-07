@@ -4,7 +4,7 @@ import {
   buildMeaningChoices,
   buildAttributeChoices,
   normalizeMeaning,
-} from '../../src/utils/meaningChoices';
+} from '../../src/utils/vocabulary/meaningChoices';
 
 const cards = [
   { id: 'correct', back: "o'clock" },

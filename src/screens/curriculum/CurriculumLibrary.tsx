@@ -12,7 +12,7 @@ import {
 } from '../../lib/widgets';
 import { useAppStore } from '../../store/useAppStore';
 import { useAuth } from '../../hooks/useAuth';
-import { reconcilePartSelectionsForBook } from '../../utils/lessonPartSelection';
+import { reconcilePartSelectionsForBook } from '../../utils/lesson/lessonPartSelection';
 import { BookCarousel } from './BookCarousel';
 import { LessonItem } from './LessonItem';
 import { StarterLesson } from './StarterLesson';

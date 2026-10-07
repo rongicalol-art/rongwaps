@@ -6,11 +6,11 @@ import {
   mapCustomCardsToFlashcards,
   filterCurriculumCards,
   deriveLocalDueCardIds,
-} from '../../src/utils/activityDataDerivations';
+} from '../../src/utils/vocabulary/activityDataDerivations';
 import type { Flashcard } from '../../src/data/flashcards';
 import type { DBDictionaryEntry } from '../../src/types/database';
 import type { UserFlashcard } from '../../src/types/models';
-import type { SRSData } from '../../src/utils/srsEngine';
+import type { SRSData } from '../../src/utils/srs/srsEngine';
 
 test('isSameCards: correctly compares flashcard arrays by identity and ids', () => {
   const c1: Flashcard = { id: '1', bookId: 1, lessonId: 1, front: '你好', back: 'hello', pinyin: 'nǐ hǎo', audio: '', notes: '' };

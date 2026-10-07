@@ -44,7 +44,7 @@ function argumentValue(flag: string, fallback: string): string {
   return index > -1 ? process.argv[index + 1] : fallback;
 }
 
-/** Mirrors `cleanVocabText` in src/utils/vocabCleaner.ts. */
+/** Mirrors `cleanVocabText` in src/utils/vocabulary/vocabCleaner.ts. */
 function cleanVocabText(text: string): string {
   let cleaned = text.trim().replace(/\(.*?\)/g, '').replace(/[（）]/g, '');
   const slashIndex = cleaned.indexOf('/');

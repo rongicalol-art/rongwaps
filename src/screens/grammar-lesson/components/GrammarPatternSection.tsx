@@ -1,7 +1,7 @@
 import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import type { GrammarPatternRow, InteractiveGrammarPage } from '../../../types/models';
-import { getPatternRowGroups, getPatternSectionLayout } from '../../../utils/grammarPatternLayout';
-import { isHanziChar } from '../../../utils/hanzi';
+import { getPatternRowGroups, getPatternSectionLayout } from '../../../utils/grammar/grammarPatternLayout';
+import { isHanziChar } from '../../../utils/characters/hanzi';
 import { cn } from '../../../utils/cn';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import { InteractiveGrammarSentence } from './InteractiveGrammarSentence';

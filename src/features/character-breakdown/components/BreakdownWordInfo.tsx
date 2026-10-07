@@ -1,6 +1,6 @@
 import { LevelTag } from '../../../lib/widgets';
 import React from 'react';
-import { numberToToneMarks } from '../../../utils/pinyin';
+import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { DESIGN_TOKENS } from '../../../data/designTokens';
 import { StrokeOrderBox } from './StrokeOrderBox';
 import { SAMPLE_BOOKS } from '../../../data/books';
@@ -16,7 +16,7 @@ import {
   sanitizeDictionaryDefinitions,
   isPureVariantDefinition,
   extractCedictReference,
-} from '../../../utils/dictionaryDefinitions';
+} from '../../../utils/vocabulary/dictionaryDefinitions';
 import { useAppStore } from '../../../store/useAppStore';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];

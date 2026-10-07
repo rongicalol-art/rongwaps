@@ -4,7 +4,7 @@ import {
   STRICT_IDS_OPERAND_ADAPTER,
   normalizeIdsExpression,
   type IdsOperandAdapter,
-} from '../../../src/utils/idsParser';
+} from '../../../src/utils/characters/idsParser';
 import type { AdaptedDecompositionRecord, SourceDiagnostic } from './types';
 
 const CJKVI_UNENCODED_MARKERS = new Map<string, number>([

@@ -1,6 +1,6 @@
 import { useSyncExternalStore } from 'react';
 import { fetchPartsIndex } from '../services/contentPacks';
-import type { PartsIndex } from '../utils/parts';
+import type { PartsIndex } from '../utils/characters/parts';
 
 let index: PartsIndex | null = null;
 let requested = false;

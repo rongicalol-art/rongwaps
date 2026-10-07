@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from 'react';
 import { cn } from '../../../utils/cn';
-import { debugLogger } from '../../../utils/debugLogger';
+import { debugLogger } from '../../../utils/debug/debugLogger';
 
 interface AudioScrubberTrackProps {
   currentTime: number;

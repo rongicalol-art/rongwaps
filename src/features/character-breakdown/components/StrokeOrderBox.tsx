@@ -1,10 +1,10 @@
-import { debugLogger } from '../../../utils/debugLogger';
+import { debugLogger } from '../../../utils/debug/debugLogger';
 import React, { useRef, useEffect, useState } from 'react';
 import type HanziWriterType from 'hanzi-writer';
 import { useReducedMotion } from 'motion/react';
 import { DESIGN_TOKENS } from '../../../data/designTokens';
 import { loadHanziCharacterData } from '../../../services/contentAssetService';
-import { resolveDesignTokenColor } from '../../../utils/resolveDesignTokenColor';
+import { resolveDesignTokenColor } from '../../../utils/browser/resolveDesignTokenColor';
 
 type HanziWriterModule = typeof HanziWriterType;
 type HanziWriterInstance = ReturnType<HanziWriterModule['create']>;

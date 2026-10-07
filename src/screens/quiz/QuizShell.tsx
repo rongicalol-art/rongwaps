@@ -7,8 +7,8 @@ import { MemoryHookCharacter } from '../../features/character-memory-hooks';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
 import { useAppStore } from '../../store/useAppStore';
-import { buildPracticePartSegments } from '../../utils/practicePartSegments';
-import { isHanziChar } from '../../utils/hanzi';
+import { buildPracticePartSegments } from '../../utils/lesson/practicePartSegments';
+import { isHanziChar } from '../../utils/characters/hanzi';
 import type { useQuizChoices } from './hooks/useQuiz';
 
 export interface QuizModeProps {

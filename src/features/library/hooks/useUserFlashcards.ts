@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import { useAppStore } from '../../../store/useAppStore';
 import { flashcardService } from '../../../services/flashcardService';
-import { meaningText } from '../../../utils/dictionaryDefinitions';
+import { meaningText } from '../../../utils/vocabulary/dictionaryDefinitions';
 import type { UserFlashcard } from '../../../types/models';
 
 /**

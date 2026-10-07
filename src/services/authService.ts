@@ -1,4 +1,4 @@
-import { debugLogger } from '../utils/debugLogger';
+import { debugLogger } from '../utils/debug/debugLogger';
 import { isSupabaseConfigured, supabase } from './supabaseClient';
 import { User } from '@supabase/supabase-js';
 

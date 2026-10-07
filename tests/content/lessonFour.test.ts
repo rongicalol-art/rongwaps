@@ -5,7 +5,7 @@ import { LESSON_FOUR_PART_TWO } from '../../src/data/grammar/lessonFourPartTwo';
 import {
   evaluateGrammarPlacements,
   findCanonicalTile,
-} from '../../src/utils/grammarExercise';
+} from '../../src/utils/grammar/grammarExercise';
 import { validateInteractiveLessons } from '../acceptance_helpers';
 
 const lessonFourParts = [LESSON_FOUR_PART_ONE, LESSON_FOUR_PART_TWO];

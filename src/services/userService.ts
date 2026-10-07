@@ -1,8 +1,8 @@
-import { debugLogger } from '../utils/debugLogger';
+import { debugLogger } from '../utils/debug/debugLogger';
 import { supabase } from './supabaseClient';
-import { SRSData } from '../utils/srsEngine';
-import { rowsToProgress, srsDataToUpsert, type CardProgressRow } from '../utils/srsRowMapping';
-import type { CloudMetadataPayload } from '../utils/cloudSyncTransforms';
+import { SRSData } from '../utils/srs/srsEngine';
+import { rowsToProgress, srsDataToUpsert, type CardProgressRow } from '../utils/srs/srsRowMapping';
+import type { CloudMetadataPayload } from '../utils/sync/cloudSyncTransforms';
 import type { Json } from '../types/database';
 
 export interface UserFolderRow {

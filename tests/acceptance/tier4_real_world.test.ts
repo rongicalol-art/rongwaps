@@ -3,14 +3,14 @@ import test from 'node:test';
 import {
   lineIndexForTime,
   wordRangeForTime,
-} from '../../src/utils/dialogueSync';
+} from '../../src/utils/lesson/dialogueSync';
 import {
   createSingleFlightSaveCoordinator,
   getNextAutoSaveDelay,
   getNextCloudSyncBackoff,
-} from '../../src/utils/cloudSyncQueue';
-import { alignRubyPinyin, splitPinyinWordToSyllables } from '../../src/utils/rubyPinyin';
-import { calculateNextReview, type SRSData } from '../../src/utils/srsEngine';
+} from '../../src/utils/sync/cloudSyncQueue';
+import { alignRubyPinyin, splitPinyinWordToSyllables } from '../../src/utils/pinyin/rubyPinyin';
+import { calculateNextReview, type SRSData } from '../../src/utils/srs/srsEngine';
 
 function createCard(id: string, overrides: Partial<SRSData> = {}): SRSData {
   return {

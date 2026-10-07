@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import { sanitizeDictionaryDefinitions } from '../../../utils/dictionaryDefinitions';
+import { sanitizeDictionaryDefinitions } from '../../../utils/vocabulary/dictionaryDefinitions';
 import { useAppStore } from '../../../store/useAppStore';
 import { useCharDictionaryEntry } from '../hooks/useCharDictionaryEntry';
 import type { DBDictionaryEntry } from '../../../types/database';

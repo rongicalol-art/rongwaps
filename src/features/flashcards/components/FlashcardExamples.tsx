@@ -5,8 +5,8 @@ import { SAMPLE_BOOKS } from '../../../data/books';
 import {
   groupRankedExamples,
   type RankedExample,
-} from '../../../utils/courseExamples';
-import { numberToToneMarks } from '../../../utils/pinyin';
+} from '../../../utils/vocabulary/courseExamples';
+import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { useAppStore } from '../../../store/useAppStore';
 import { cn } from '../../../utils/cn';
 

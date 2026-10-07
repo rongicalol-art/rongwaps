@@ -3,7 +3,7 @@
  */
 
 import type { Flashcard } from '../data/flashcards';
-import { cleanVocabText } from '../utils/vocabCleaner';
+import { cleanVocabText } from '../utils/vocabulary/vocabCleaner';
 import { fetchVocabulary } from './vocabularyService';
 
 let courseVocabByWordMap: Map<string, Flashcard> | null = null;

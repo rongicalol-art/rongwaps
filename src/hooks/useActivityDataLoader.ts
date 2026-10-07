@@ -1,17 +1,17 @@
-import { debugLogger } from '../utils/debugLogger';
+import { debugLogger } from '../utils/debug/debugLogger';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Flashcard } from '../data/flashcards';
 import { getCourseVocabLookupMap } from '../services/courseVocabLookup';
 import { flashcardService } from '../services/flashcardService';
 import { useAppStore } from '../store/useAppStore';
 import { useAuth } from './useAuth';
-import { getDeckIdentityKey } from '../utils/lessonPartSelection';
-import { filterDeckByExclusions, pruneExcludedIds } from '../utils/deckExclusions';
+import { getDeckIdentityKey } from '../utils/lesson/lessonPartSelection';
+import { filterDeckByExclusions, pruneExcludedIds } from '../utils/srs/deckExclusions';
 import { audioService } from '../services/audioService';
 import {
   isSameCards,
   mapCustomCardsToFlashcards,
-} from '../utils/activityDataDerivations';
+} from '../utils/vocabulary/activityDataDerivations';
 import {
   loadReviewDeck,
   fetchStarredDeckData,

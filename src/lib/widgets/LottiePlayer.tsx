@@ -1,4 +1,4 @@
-import { debugLogger } from '../../utils/debugLogger';
+import { debugLogger } from '../../utils/debug/debugLogger';
 import React, { lazy, Suspense, useState, useEffect } from 'react';
 import type { LottieComponentProps } from 'lottie-react';
 

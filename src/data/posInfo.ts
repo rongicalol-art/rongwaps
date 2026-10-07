@@ -5,7 +5,7 @@
  * "Modern Chinese" set, e.g. `N`, `Vs`, `V-sep`). This module is the single
  * source of truth for the learner-facing label, the color category, the
  * hover explanation, and the Chinese term for each tag. Pure lookup helpers
- * live in `src/utils/posLabels.ts`.
+ * live in `src/utils/vocabulary/posLabels.ts`.
  *
  * Chinese example tokens inside explanations are marked as `{zh:key}` and
  * resolved per script preference via `zhTokens` (see `getPosExplanation`).

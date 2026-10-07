@@ -21,7 +21,7 @@ import {
   LESSON_FOURTEEN_PART_TWO,
 } from '../../src/data/grammar/lessonFourteen';
 import type { InteractiveGrammarPart } from '../../src/types/models';
-import { evaluateGrammarPlacements, findCanonicalTile } from '../../src/utils/grammarExercise';
+import { evaluateGrammarPlacements, findCanonicalTile } from '../../src/utils/grammar/grammarExercise';
 import { validateInteractiveLessons } from '../acceptance_helpers';
 
 const lessons: Array<{

@@ -2,7 +2,7 @@ import type { DBCharacterBreakdown } from '../../../../types/database';
 import type { ResolvedSoundClue } from '../../hooks/useSoundClue';
 import { AppIcon, LevelTag, DetailShell } from '../../../../lib/widgets';
 import { useLevel } from '../../../../hooks/useLevels';
-import { numberToToneMarks } from '../../../../utils/pinyin';
+import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
 import { V3RuntimeTree } from './V3RuntimeTree';
 
 export function V3TreeScreen({

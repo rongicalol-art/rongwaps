@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useAppStore } from '../../../store/useAppStore';
 import type { InteractiveGrammarPart } from '../../../types/models';
-import { continueGrammarLesson } from '../../../utils/grammarLessonFlow';
+import { continueGrammarLesson } from '../../../utils/grammar/grammarLessonFlow';
 
 interface UseGrammarLessonPageOptions {
   part: InteractiveGrammarPart;

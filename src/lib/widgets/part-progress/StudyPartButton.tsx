@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'motion/react';
 import { useLongPress } from '../../../hooks/useLongPress';
 import { cn } from '../../../utils/cn';
-import { visibleProgressWidth } from '../../../utils/progress';
+import { visibleProgressWidth } from '../../../utils/srs/progress';
 import type { RailMotionTransition } from './partProgressSprings';
 
 export interface StudyPartButtonProps {

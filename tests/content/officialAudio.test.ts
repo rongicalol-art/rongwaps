@@ -4,7 +4,7 @@ import test from 'node:test';
 import {
   OFFICIAL_BOOK_AUDIO_ENABLED,
   officialAudioFileName,
-} from '../../src/utils/officialAudio';
+} from '../../src/utils/lesson/officialAudio';
 import { readJson, TEST_ALL_READINGS as ALL_READINGS } from '../acceptance_helpers';
 
 test('resolves Book 1 audio references to official track file names', () => {

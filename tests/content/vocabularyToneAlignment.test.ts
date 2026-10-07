@@ -2,11 +2,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { mapVocabularyRows } from '../../src/utils/vocabularyMapping';
-import { alignWordSyllables, segmentPinyinTones } from '../../src/utils/pinyinTones';
+import { mapVocabularyRows } from '../../src/utils/vocabulary/vocabularyMapping';
+import { alignWordSyllables, segmentPinyinTones } from '../../src/utils/pinyin/pinyinTones';
 import { stripTones } from '../../src/data/pinyinTables';
-import { splitPinyinToSyllables } from '../../src/utils/pinyinSyllables';
-import { isHanziChar } from '../../src/utils/hanzi';
+import { splitPinyinToSyllables } from '../../src/utils/pinyin/pinyinSyllables';
+import { isHanziChar } from '../../src/utils/characters/hanzi';
 
 const DATA = path.resolve('public/data');
 

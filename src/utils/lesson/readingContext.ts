@@ -1,0 +1,131 @@
+import type { InteractiveGrammarPart, LessonPartSelectionMap, ReadingRecord } from '../../types/models';
+import { getLessonSelectionKey } from './lessonPartSelection';
+
+export interface ResolveReadingTargetParams {
+  bookId: number;
+  selectedLessons: number[];
+  selectedLessonParts: LessonPartSelectionMap;
+  readings: ReadingRecord[];
+}
+
+/**
+ * Resolves the reading index corresponding to the user's active curriculum state.
+ * If the user is on Part 2, Dialogue 2 will be targeted.
+ * Otherwise (Part 1, Part 3, 'all', or unselected), Dialogue 1 is targeted.
+ */
+export function resolveActiveReadingIndex({
+  bookId,
+  selectedLessons,
+  selectedLessonParts,
+  readings,
+}: ResolveReadingTargetParams): number {
+  if (!readings || readings.length === 0) return 0;
+
+  const bookReadings = readings.filter((r) => r.bookId === bookId);
+  const targetReadings = bookReadings.length > 0 ? bookReadings : readings;
+
+  // Determine target lesson
+  const availableLessonIds = new Set(targetReadings.map((r) => r.lessonId));
+  const activeLessonId = selectedLessons.find((id) => availableLessonIds.has(id))
+    ?? targetReadings[0]?.lessonId
+    ?? 1;
+
+  // Determine target dialogue (Part 3 -> Dialogue 3, Part 2 -> Dialogue 2, otherwise Dialogue 1)
+  const partSelection = selectedLessonParts[getLessonSelectionKey(bookId, activeLessonId)];
+  const isPart3 = Array.isArray(partSelection) && partSelection.includes(3) && !partSelection.includes(1) && !partSelection.includes(2);
+  const isPart2 = Array.isArray(partSelection) && partSelection.includes(2) && !partSelection.includes(1);
+  const targetDialogueNumber = isPart3 ? 3 : isPart2 ? 2 : 1;
+
+  // Find exact reading match
+  const exactIndex = readings.findIndex(
+    (r) => r.bookId === bookId && r.lessonId === activeLessonId && r.dialogueNumber === targetDialogueNumber,
+  );
+  if (exactIndex !== -1) return exactIndex;
+
+  // Fallback to any dialogue of the active lesson
+  const lessonFallbackIndex = readings.findIndex(
+    (r) => r.bookId === bookId && r.lessonId === activeLessonId,
+  );
+  if (lessonFallbackIndex !== -1) return lessonFallbackIndex;
+
+  return 0;
+}
+
+/**
+ * Resolves the reading index for a specific lesson part (dialogue).
+ * Part 1 -> Dialogue 1, Part 2 -> Dialogue 2, Part 3 -> Dialogue 3.
+ * Falls back gracefully to any dialogue in the lesson, then in the book, then 0.
+ */
+export function findReadingIndexForPart(
+  readings: ReadingRecord[],
+  bookId: number,
+  lessonId: number,
+  partId: number,
+): number {
+  if (!readings || readings.length === 0) return 0;
+
+  const targetDialogueNumber = partId === 3 ? 3 : partId === 2 ? 2 : 1;
+  const exactIndex = readings.findIndex(
+    (r) => r.bookId === bookId && r.lessonId === lessonId && r.dialogueNumber === targetDialogueNumber,
+  );
+  if (exactIndex !== -1) return exactIndex;
+
+  const lessonFallbackIndex = readings.findIndex(
+    (r) => r.bookId === bookId && r.lessonId === lessonId,
+  );
+  if (lessonFallbackIndex !== -1) return lessonFallbackIndex;
+
+  const bookFallbackIndex = readings.findIndex((r) => r.bookId === bookId);
+  if (bookFallbackIndex !== -1) return bookFallbackIndex;
+
+  return 0;
+}
+
+/** The course part whose printed dialogue is this reading. */
+export function findGrammarPartForReading(
+  reading: ReadingRecord,
+  parts: readonly InteractiveGrammarPart[],
+): InteractiveGrammarPart | null {
+  const lessonParts = parts.filter(
+    (part) => part.bookId === reading.bookId && part.lessonId === reading.lessonId,
+  );
+  if (lessonParts.length === 0) return null;
+
+  const byAudio = lessonParts.find(
+    (part) => Boolean(reading.audioReference) && part.dialogue?.audioReference === reading.audioReference,
+  );
+  if (byAudio) return byAudio;
+
+  const readingPages = new Set(reading.printedPages);
+  const byPages = lessonParts.find(
+    (part) => (part.dialogue?.printedPages ?? []).some((page) => readingPages.has(page)),
+  );
+  if (byPages) return byPages;
+
+  return lessonParts.find((part) => part.partId === reading.dialogueNumber) ?? null;
+}
+
+export function findNeighbourGrammarPart(
+  partId: string,
+  direction: 'next' | 'previous',
+  parts: readonly InteractiveGrammarPart[],
+): InteractiveGrammarPart | null {
+  const index = parts.findIndex((part) => part.id === partId);
+  if (index === -1) return null;
+  const neighbourIndex = direction === 'next' ? index + 1 : index - 1;
+  return parts[neighbourIndex] ?? null;
+}
+
+/**
+ * The next grammar part after this reading's part in book order, or null when
+ * the reading has no part (essays) or its part is the last one. Drives the
+ * lesson path: a part's reading continues into the next part's grammar.
+ */
+export function findNextGrammarPartForReading(
+  reading: ReadingRecord,
+  parts: readonly InteractiveGrammarPart[],
+): InteractiveGrammarPart | null {
+  const part = findGrammarPartForReading(reading, parts);
+  return part ? findNeighbourGrammarPart(part.id, 'next', parts) : null;
+}
+

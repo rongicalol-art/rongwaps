@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { numberToToneMarks } from '../../../utils/pinyin';
+import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { useAppStore } from '../../../store/useAppStore';
 import { ActionButton, AppIcon, IconActionButton } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';

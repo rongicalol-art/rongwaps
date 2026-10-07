@@ -1,5 +1,5 @@
 import type { InteractiveGrammarPage } from '../../../types/models';
-import { getGrammarTeachingTokens } from '../../../utils/grammarTeachingTokens';
+import { getGrammarTeachingTokens } from '../../../utils/grammar/grammarTeachingTokens';
 import { cn } from '../../../utils/cn';
 import { GrammarExamplesSection } from './GrammarExamplesSection';
 

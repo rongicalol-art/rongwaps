@@ -12,11 +12,11 @@ import {
 import {
   evaluateGrammarPlacements,
   findCanonicalTile,
-} from '../../src/utils/grammarExercise';
+} from '../../src/utils/grammar/grammarExercise';
 import {
   READING_LESSON_MIN,
   READING_LESSON_MAX,
-} from '../../src/utils/validateInteractiveLessons';
+} from '../../src/utils/grammar/validateInteractiveLessons';
 import {
   TEST_ALL_READINGS as ALL_READINGS,
   validateInteractiveLessons,

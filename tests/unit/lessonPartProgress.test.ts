@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { Flashcard } from '../../src/data/flashcards';
-import { aggregateLessonPartProgress } from '../../src/utils/lessonPartProgress';
+import { aggregateLessonPartProgress } from '../../src/utils/lesson/lessonPartProgress';
 
 function card(id: string, partId?: number): Flashcard {
   return {

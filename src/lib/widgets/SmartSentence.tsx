@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from 'react';
 import { cn } from '../../utils/cn';
-import { debugLogger } from '../../utils/debugLogger';
+import { debugLogger } from '../../utils/debug/debugLogger';
 
 export interface SmartSentenceProps {
   text: string;

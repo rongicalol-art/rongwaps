@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { APP_NAME, documentTitleFor } from '../../src/utils/documentTitle';
+import { APP_NAME, documentTitleFor } from '../../src/utils/browser/documentTitle';
 
 test('document title composes view name with the app name', () => {
   assert.equal(documentTitleFor('Books'), "Books · Ron's Mandarin");

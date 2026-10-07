@@ -4,10 +4,10 @@ import {
   isCardInPartSelection,
   normalizePartSelection,
   reconcilePartSelectionsForBook,
-} from '../../src/utils/lessonPartSelection';
-import { buildPracticePartSegments } from '../../src/utils/practicePartSegments';
-import { getSessionStartIndex, retainCurrentCardIndex } from '../../src/utils/sessionProgress';
-import { parseVocabularyId } from '../../src/utils/vocabularyId';
+} from '../../src/utils/lesson/lessonPartSelection';
+import { buildPracticePartSegments } from '../../src/utils/lesson/practicePartSegments';
+import { getSessionStartIndex, retainCurrentCardIndex } from '../../src/utils/srs/sessionProgress';
+import { parseVocabularyId } from '../../src/utils/vocabulary/vocabularyId';
 
 test('vocabulary IDs preserve book, lesson, and part identity', () => {
   assert.deepEqual(parseVocabularyId('B1L01-2-04'), {

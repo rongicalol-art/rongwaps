@@ -4,7 +4,7 @@ import {
   migrateLegacyStores,
   LEGACY_GRAMMAR_STORE_KEY,
   LEGACY_PRACTICE_PREFERENCES_KEY,
-} from '../../src/utils/legacyStoreMigration';
+} from '../../src/utils/sync/legacyStoreMigration';
 import { getPaceTimings } from '../../src/store/slices/practicePreferencesSlice';
 
 test('migrateLegacyStores: loads legacy grammar progress payload', () => {

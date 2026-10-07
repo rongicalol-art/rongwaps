@@ -2,8 +2,8 @@ import { useCallback } from 'react';
 import { authService } from '../../services/authService';
 import { userService } from '../../services/userService';
 import { useAppStore } from '../../store/useAppStore';
-import { downloadJsonFile } from '../../utils/downloadFile';
-import { debugLogger } from '../../utils/debugLogger';
+import { downloadJsonFile } from '../../utils/browser/downloadFile';
+import { debugLogger } from '../../utils/debug/debugLogger';
 
 /** Local calendar date as YYYY-MM-DD (en-CA), so the filename matches the user's day. */
 function localDateStamp(): string {

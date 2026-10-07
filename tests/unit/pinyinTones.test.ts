@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { alignWordSyllables, getPinyinTone, segmentPinyinTones } from '../../src/utils/pinyinTones';
-import { splitPinyinWordToSyllables } from '../../src/utils/pinyinSyllables';
+import { alignWordSyllables, getPinyinTone, segmentPinyinTones } from '../../src/utils/pinyin/pinyinTones';
+import { splitPinyinWordToSyllables } from '../../src/utils/pinyin/pinyinSyllables';
 
 test('getPinyinTone: reads the tone mark, unmarked is neutral', () => {
   assert.equal(getPinyinTone('zhī'), 1);

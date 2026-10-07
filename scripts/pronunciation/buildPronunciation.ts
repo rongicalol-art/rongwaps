@@ -1,8 +1,8 @@
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { numberToToneMarks } from '../../src/utils/pinyin';
-import { formatReadings, type Reading } from '../../src/utils/pronunciation';
+import { numberToToneMarks } from '../../src/utils/pinyin/pinyin';
+import { formatReadings, type Reading } from '../../src/utils/pinyin/pronunciation';
 
 /**
  * `npm run pronunciation:build` — every reading of every character the app shows,

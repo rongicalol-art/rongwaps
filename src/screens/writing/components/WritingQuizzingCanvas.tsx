@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { cn } from '../../../utils/cn';
 import { SingleChar } from '../HanziCanvas';
-import { numberToToneMarks } from '../../../utils/pinyin';
+import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import type { Flashcard } from '../../../data/flashcards';
 

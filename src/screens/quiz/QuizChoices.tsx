@@ -7,7 +7,7 @@ import { useQuizChoices } from './hooks/useQuiz';
 import { QuizHanziPrompt, QuizShell, type QuizModeProps } from './QuizShell';
 import { useAppStore, type QuizQuestionType, type QuizChoiceType } from '../../store/useAppStore';
 import { useNumberKeySelection } from '../../hooks/useNumberKeySelection';
-import { getCardChoiceTarget } from '../../utils/meaningChoices';
+import { getCardChoiceTarget } from '../../utils/vocabulary/meaningChoices';
 
 interface QuizChoicesCardProps {
   currentCard: Flashcard;

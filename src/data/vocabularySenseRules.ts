@@ -5,7 +5,7 @@
  *
  * Each entry answers one question: does *this* taught sense occur in a reading?
  * Evidence is matched on the reader's own word segmentation through the shared
- * token-evidence matcher (`src/utils/tokenEvidence.ts`), sentence by sentence,
+ * token-evidence matcher (`src/utils/grammar/tokenEvidence.ts`), sentence by sentence,
  * never on substrings. A sense that cannot be told apart from its sibling
  * declares `undetectable` with the reason, exactly like the grammar usage
  * rules, so the reader can say "sense unclear here" instead of guessing.
@@ -14,7 +14,7 @@
  * `meaning` mirror the pack row for the learner-facing note and are
  * cross-checked against the pack by `tests/vocabularySense.test.ts`.
  */
-import { USAGE_TOKEN_SEPARATOR, type TokenEvidence } from '../utils/tokenEvidence';
+import { USAGE_TOKEN_SEPARATOR, type TokenEvidence } from '../utils/grammar/tokenEvidence';
 
 const SEP = USAGE_TOKEN_SEPARATOR;
 /** Numbers, including the packed multi-character forms the segmenter produces (十五, 三十). */

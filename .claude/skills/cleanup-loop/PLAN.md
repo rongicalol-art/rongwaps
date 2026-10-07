@@ -46,7 +46,7 @@ Work the waves in order. Each `- [ ]` is one iteration (one commit) unless it sa
 
 ## Wave 4 — Over-engineering pass (free audit)
 
-Then switch to the skill's normal audit rotation (§2), reading the largest `src/` files for code to delete: needless `useEffect`/`useMemo`/`useCallback`, prop-forwarding wrappers, one-caller helpers, nested ternaries, defensive checks the types already guarantee. Start with: `src/services/flashcardService.ts`, `src/services/audioService.ts`, `src/lib/widgets/Drawer.tsx`, `src/screens/reader/components/ReadingNarrativeView.tsx`, `src/services/audio/speechEngine.ts`, `src/utils/packValidators.ts`, `src/screens/activities/ActivityModals.tsx`, `src/utils/validateInteractiveLessons.ts`, `src/screens/reader/ReaderScreen.tsx`.
+Then switch to the skill's normal audit rotation (§2), reading the largest `src/` files for code to delete: needless `useEffect`/`useMemo`/`useCallback`, prop-forwarding wrappers, one-caller helpers, nested ternaries, defensive checks the types already guarantee. Start with: `src/services/flashcardService.ts`, `src/services/audioService.ts`, `src/lib/widgets/Drawer.tsx`, `src/screens/reader/components/ReadingNarrativeView.tsx`, `src/services/audio/speechEngine.ts`, `src/utils/packValidators.ts`, `src/screens/activities/ActivityModals.tsx`, `src/utils/grammar/validateInteractiveLessons.ts`, `src/screens/reader/ReaderScreen.tsx`.
 
 ## Needs owner (do NOT do — pre-filed)
 

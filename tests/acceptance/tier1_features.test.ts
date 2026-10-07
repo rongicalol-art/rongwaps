@@ -4,16 +4,16 @@ import {
   alignmentDuration,
   lineIndexForTime,
   wordRangeForTime,
-} from '../../src/utils/dialogueSync';
+} from '../../src/utils/lesson/dialogueSync';
 import {
   createSingleFlightSaveCoordinator,
-} from '../../src/utils/cloudSyncQueue';
+} from '../../src/utils/sync/cloudSyncQueue';
 import {
   formatPosLabel,
   getPosCategory,
   getPosExplanation,
-} from '../../src/utils/posLabels';
-import { CHARACTER_PROFILES, getCharacterForSpeaker } from '../../src/utils/speakerCharacters';
+} from '../../src/utils/vocabulary/posLabels';
+import { CHARACTER_PROFILES, getCharacterForSpeaker } from '../../src/utils/lesson/speakerCharacters';
 
 test('Tier 1: Cloud Sync - Single-flight save coordinator executes cleanly and returns result', async () => {
   let executedCount = 0;

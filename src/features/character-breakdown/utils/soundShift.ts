@@ -1,4 +1,4 @@
-import { numberToToneMarks } from '../../../utils/pinyin';
+import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 
 /**
  * The reading shift of a sound clue: `mǎ → mā` when the character reads

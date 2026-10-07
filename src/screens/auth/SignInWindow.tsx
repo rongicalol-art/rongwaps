@@ -1,4 +1,4 @@
-import { debugLogger } from '../../utils/debugLogger';
+import { debugLogger } from '../../utils/debug/debugLogger';
 import { useState } from 'react';
 import { Link } from 'react-router';
 import { useAuth } from '../../hooks/useAuth';

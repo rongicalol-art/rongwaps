@@ -8,9 +8,9 @@ import {
   getNextCloudSyncBackoff,
   isSameFolderList,
   mergePulledSrsData,
-} from '../../src/utils/cloudSyncQueue';
-import type { SRSData } from '../../src/utils/srsEngine';
-import { computeSrsDelta } from '../../src/utils/cloudSyncTransforms';
+} from '../../src/utils/sync/cloudSyncQueue';
+import type { SRSData } from '../../src/utils/srs/srsEngine';
+import { computeSrsDelta } from '../../src/utils/sync/cloudSyncTransforms';
 
 function deferred() {
   let resolve!: () => void;

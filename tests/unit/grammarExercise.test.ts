@@ -5,7 +5,7 @@ import {
   collectPendingTextBlanks,
   evaluateGrammarTextResponses,
   normalizeGrammarTextAnswer,
-} from '../../src/utils/grammarExercise';
+} from '../../src/utils/grammar/grammarExercise';
 
 const question: GrammarExerciseQuestion = {
   id: 'text-question',

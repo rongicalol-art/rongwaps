@@ -2,10 +2,10 @@ import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { Flashcard } from '../../../data/flashcards';
 import { audioService } from '../../../services/audioService';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
-import { shuffleItems } from '../../../utils/sessionOrder';
+import { shuffleItems } from '../../../utils/srs/sessionOrder';
 import { useAppStore } from '../../../store/useAppStore';
-import { isPinyinAnswerAccepted } from '../../../utils/pinyinAnswer';
-import { buildAttributeChoices, getCardChoiceTarget } from '../../../utils/meaningChoices';
+import { isPinyinAnswerAccepted } from '../../../utils/pinyin/pinyinAnswer';
+import { buildAttributeChoices, getCardChoiceTarget } from '../../../utils/vocabulary/meaningChoices';
 import { useCardSession } from '../../../hooks/useCardSession';
 import { useDeckAudioLifecycle } from '../../../hooks/useSessionAudio';
 

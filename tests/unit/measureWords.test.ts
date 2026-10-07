@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { splitCourseMeasureWords } from '../../src/utils/measureWords';
+import { splitCourseMeasureWords } from '../../src/utils/vocabulary/measureWords';
 
 test('splitCourseMeasureWords: pulls measure words out of the gloss', () => {
   assert.deepEqual(splitCourseMeasureWords('newspaper (M: 份 fèn)'), {

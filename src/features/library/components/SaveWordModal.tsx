@@ -1,4 +1,4 @@
-import { debugLogger } from '../../../utils/debugLogger';
+import { debugLogger } from '../../../utils/debug/debugLogger';
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ActionButton, AppIcon, DropdownMenu, DropdownMenuItem, Drawer, FolderSvg } from '../../../lib/widgets';

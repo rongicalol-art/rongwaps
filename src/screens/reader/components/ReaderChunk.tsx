@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import type { ReaderTextSize } from '../../../types/models';
-import type { PhraseChunk } from '../../../utils/rubyPinyin';
+import type { PhraseChunk } from '../../../utils/pinyin/rubyPinyin';
 import { cn } from '../../../utils/cn';
 import { useAppStore } from '../../../store/useAppStore';
 import type {

@@ -1,5 +1,5 @@
 import type { DBCharacterBreakdown } from '../types/database';
-import { DICTIONARY_SHARD_COUNT, getDictionaryShard } from '../utils/dictionaryShard';
+import { DICTIONARY_SHARD_COUNT, getDictionaryShard } from '../utils/vocabulary/dictionaryShard';
 import {
   type ContentPackKind,
   type PackConfig,

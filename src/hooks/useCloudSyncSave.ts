@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, type MutableRefObject } from 'react';
 import type { User } from '@supabase/supabase-js';
-import { debugLogger } from '../utils/debugLogger';
+import { debugLogger } from '../utils/debug/debugLogger';
 import { useAppStore } from '../store/useAppStore';
 import { userService } from '../services/userService';
 import {
@@ -9,15 +9,15 @@ import {
   createSingleFlightSaveCoordinator,
   getNextAutoSaveDelay,
   getNextCloudSyncBackoff,
-} from '../utils/cloudSyncQueue';
-import { getSelectedLessonIds } from '../utils/lessonPartSelection';
+} from '../utils/sync/cloudSyncQueue';
+import { getSelectedLessonIds } from '../utils/lesson/lessonPartSelection';
 import {
   buildMetadataPayload,
   computeSrsDelta,
   hasMetadataChanged,
   AUTO_SAVE_TRIGGER_SLICES,
   type CloudSaveSnapshot,
-} from '../utils/cloudSyncTransforms';
+} from '../utils/sync/cloudSyncTransforms';
 
 interface SaveCoordinator {
   request: () => Promise<void>;

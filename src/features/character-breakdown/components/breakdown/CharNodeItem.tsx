@@ -1,10 +1,10 @@
 import { useState, useMemo } from 'react';
 import { AppIcon, LevelTag } from '../../../../lib/widgets';
 import { useLevels } from '../../../../hooks/useLevels';
-import { resolveLevel } from '../../../../utils/levels';
+import { resolveLevel } from '../../../../utils/lesson/levels';
 import { motion, AnimatePresence } from 'motion/react';
 import { useAppStore } from '../../../../store/useAppStore';
-import { numberToToneMarks } from '../../../../utils/pinyin';
+import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
 import { useComponentVocabRelation } from '../../../../hooks/useComponentVocabRelation';
 import { useCharBreakdown } from '../../../../hooks/useCharBreakdown';
 import { projectLegacyDecomposition } from '../../../character-decomposition';

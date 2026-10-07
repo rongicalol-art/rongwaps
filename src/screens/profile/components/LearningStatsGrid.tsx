@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { ProgressMetricCard } from '../../../lib/widgets';
-import type { ReviewOverview } from '../../../utils/reviewOverview';
+import type { ReviewOverview } from '../../../utils/srs/reviewOverview';
 
 interface LearningStatsGridProps {
   overview: ReviewOverview;

@@ -1,8 +1,8 @@
 import type { Flashcard } from '../../../data/flashcards';
 import type { CourseExampleRecord } from '../../../types/models';
-import { findSmartExamplesForWord, type RankedExample } from '../../../utils/courseExamples';
+import { findSmartExamplesForWord, type RankedExample } from '../../../utils/vocabulary/courseExamples';
 import { recordsToExampleCards } from '../../../utils/packValidators';
-import { extractSearchVariants, sentenceMatchesForms } from '../../../utils/wordForms';
+import { extractSearchVariants, sentenceMatchesForms } from '../../../utils/vocabulary/wordForms';
 
 type Postings = Map<string, number[]>;
 

@@ -3,10 +3,10 @@ import { AnimatePresence, motion } from 'motion/react';
 import { SAMPLE_BOOKS } from '../../../../data/books';
 import { LevelTag, Skeleton } from '../../../../lib/widgets';
 import { useLevels } from '../../../../hooks/useLevels';
-import { resolveLevel } from '../../../../utils/levels';
-import { numberToToneMarks } from '../../../../utils/pinyin';
+import { resolveLevel } from '../../../../utils/lesson/levels';
+import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
 import { useAppStore } from '../../../../store/useAppStore';
-import { groupWordsByBook } from '../../../../utils/wordOrdering';
+import { groupWordsByBook } from '../../../../utils/vocabulary/wordOrdering';
 import type { Flashcard } from '../../../../data/flashcards';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];

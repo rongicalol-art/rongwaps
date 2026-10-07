@@ -7,7 +7,7 @@ import { useActivityDataLoader } from '../../hooks/useActivityDataLoader';
 import { getPracticeLoadingMessage, preloadPracticeChunks, preloadRemainingPracticeChunks } from '../../utils/practiceLoader';
 import type { ActivityType } from '../../types/models';
 import { SAMPLE_BOOKS } from '../../data/books';
-import { getDeckIdentityKey } from '../../utils/lessonPartSelection';
+import { getDeckIdentityKey } from '../../utils/lesson/lessonPartSelection';
 import { PracticeModeDock, PRACTICE_ACTIVITIES } from './components/PracticeModeDock';
 import { ActivityPracticeHeader } from './components/ActivityPracticeHeader';
 import { PracticeDockSlotProvider } from '../../features/practice';

@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useAppStore } from '../../../store/useAppStore';
-import { computeReviewOverview, type ReviewOverview } from '../../../utils/reviewOverview';
+import { computeReviewOverview, type ReviewOverview } from '../../../utils/srs/reviewOverview';
 
 /**
  * Live Profile overview derived purely from local SRS state. Pure and fast

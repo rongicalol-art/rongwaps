@@ -1,12 +1,12 @@
 import React from 'react';
 import { EmptyState, LevelTag, ReferenceRow, SectionEyebrow, DetailShell } from '../../../lib/widgets';
 import { RAIL_CARD_CLASSES } from './v3/railStyles';
-import { groupWordsByBook } from '../../../utils/wordOrdering';
+import { groupWordsByBook } from '../../../utils/vocabulary/wordOrdering';
 import { useLevels } from '../../../hooks/useLevels';
-import { resolveLevel } from '../../../utils/levels';
+import { resolveLevel } from '../../../utils/lesson/levels';
 import { useAppStore } from '../../../store/useAppStore';
 import { SAMPLE_BOOKS } from '../../../data/books';
-import { numberToToneMarks } from '../../../utils/pinyin';
+import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import type { Flashcard } from '../../../data/flashcards';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];

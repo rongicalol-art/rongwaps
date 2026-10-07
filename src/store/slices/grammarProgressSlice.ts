@@ -1,4 +1,4 @@
-import { appendUniqueId } from '../../utils/lessonProgress';
+import { appendUniqueId } from '../../utils/lesson/lessonProgress';
 
 export interface GrammarProgressState {
   startedPartIds: string[];

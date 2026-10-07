@@ -5,7 +5,7 @@ import {
   getSelectedLessonIds,
   lessonsToPartSelection,
   migrateLegacyLessonSelection,
-} from '../../src/utils/lessonPartSelection';
+} from '../../src/utils/lesson/lessonPartSelection';
 
 test('lessonsToPartSelection keys lessons under the given book with part 1', () => {
   assert.deepEqual(lessonsToPartSelection(2, [3, 1]), { '2:3': [1], '2:1': [1] });

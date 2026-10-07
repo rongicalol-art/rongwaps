@@ -1,9 +1,9 @@
 import type { Flashcard } from '../data/flashcards';
 import type { CourseExampleRecord, ReadingRecord, InteractiveGrammarPart } from '../types/models';
-import { sentenceMatchesForms } from './wordForms';
+import { sentenceMatchesForms } from './vocabulary/wordForms';
 import type { PackPart } from '../services/packLoader';
-import { parseMembers, type PartMember, type PartsIndex } from './parts';
-import { parseReadings, type ReadingsIndex } from './pronunciation';
+import { parseMembers, type PartMember, type PartsIndex } from './characters/parts';
+import { parseReadings, type ReadingsIndex } from './pinyin/pronunciation';
 
 export interface GenericContentManifest {
   schemaVersion: number;
@@ -220,7 +220,7 @@ export function levelPackToIndex(pack: LevelPack): LevelIndex {
 
 /**
  * Parts index (public/data/relations/parts.json): part → characters built from
- * it, and character → the part it sounds like. See src/utils/parts.ts.
+ * it, and character → the part it sounds like. See src/utils/characters/parts.ts.
  */
 export interface PartsPack {
   schemaVersion: number;
@@ -331,7 +331,7 @@ export function recordsToExampleCards(
 
 /**
  * Pronunciation pack (public/data/pronunciation/pronunciation.json): character →
- * its readings, Taiwan-first. See src/utils/pronunciation.ts.
+ * its readings, Taiwan-first. See src/utils/pinyin/pronunciation.ts.
  */
 export interface PronunciationPack {
   schemaVersion: number;

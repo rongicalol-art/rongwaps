@@ -1,4 +1,4 @@
-import { debugLogger } from '../../../utils/debugLogger';
+import { debugLogger } from '../../../utils/debug/debugLogger';
 import { useEffect, useMemo, useState } from 'react';
 import {
   BEGINNER_DICTIONARY_TERMS,

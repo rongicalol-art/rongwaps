@@ -136,7 +136,7 @@ export default [
   },
   {
     files: ['src/**/*.{ts,tsx}'],
-    ignores: ['src/utils/debugLogger.ts', 'src/lib/widgets/ErrorBoundary.tsx'],
+    ignores: ['src/utils/debug/debugLogger.ts', 'src/lib/widgets/ErrorBoundary.tsx'],
     rules: {
       'no-console': 'error',
     },

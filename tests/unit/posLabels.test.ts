@@ -5,7 +5,7 @@ import {
   getPosCategory,
   getPosChineseTerm,
   getPosExplanation,
-} from '../../src/utils/posLabels';
+} from '../../src/utils/vocabulary/posLabels';
 
 test('formatPosLabel expands common part-of-speech tags', () => {
   assert.equal(formatPosLabel('N'), 'Noun');

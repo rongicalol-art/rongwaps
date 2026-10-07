@@ -4,18 +4,18 @@ import {
   alignmentDuration,
   lineIndexForTime,
   wordRangeForTime,
-} from '../../src/utils/dialogueSync';
+} from '../../src/utils/lesson/dialogueSync';
 import {
   getNextCloudSyncBackoff,
-} from '../../src/utils/cloudSyncQueue';
+} from '../../src/utils/sync/cloudSyncQueue';
 import {
   formatPosLabel,
   getPosCategory,
-} from '../../src/utils/posLabels';
+} from '../../src/utils/vocabulary/posLabels';
 import {
   isPinyinAnswerAccepted,
   normalizePinyinAnswer,
-} from '../../src/utils/pinyinAnswer';
+} from '../../src/utils/pinyin/pinyinAnswer';
 
 test('Tier 2: Dialogue Sync Boundaries - Empty and zero-length alignments return null safely', () => {
   const emptyAlignment = { audioFile: '', lessonId: 1, dialogueNumber: 1, trimSec: 0, lines: [] };

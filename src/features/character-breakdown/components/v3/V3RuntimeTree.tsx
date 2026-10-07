@@ -1,8 +1,8 @@
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { useEffect, useRef, type ReactNode } from 'react';
 import { AppIcon, SectionEyebrow, Skeleton } from '../../../../lib/widgets';
-import { numberToToneMarks } from '../../../../utils/pinyin';
-import { formatCompactMeaning } from '../../../../utils/dictionaryDefinitions';
+import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
+import { formatCompactMeaning } from '../../../../utils/vocabulary/dictionaryDefinitions';
 import type { RuntimeVisibleChild } from '../../../character-decomposition';
 import { useRuntimeCharacterMetadata, type RuntimeCharacterMetadata } from '../../hooks/useRuntimeCharacterMetadata';
 import { useRuntimeDecompositionTree, type RuntimeTreeNodeState } from '../../hooks/useRuntimeDecompositionTree';

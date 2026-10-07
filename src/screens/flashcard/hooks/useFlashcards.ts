@@ -3,7 +3,7 @@ import { useAppStore } from '../../../store/useAppStore';
 import { audioService } from '../../../services/audioService';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
 import { useCardSession, type CardSessionQuality } from '../../../hooks/useCardSession';
-import { getDeckIdentityKey } from '../../../utils/lessonPartSelection';
+import { getDeckIdentityKey } from '../../../utils/lesson/lessonPartSelection';
 
 // How many upcoming cards to pre-warm neural TTS for, so flip-triggered
 // playback is instant instead of waiting a server synthesis round-trip.
