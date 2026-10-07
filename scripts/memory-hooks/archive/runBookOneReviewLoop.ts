@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 import { runSimplicityReview } from './reviewBookOneSimplicity';
 import { remakeBookOne } from './remakeBookOneHooks';
 
-const ROOT = resolve(import.meta.dirname, '../..');
+const ROOT = resolve(import.meta.dirname, '../../..');
 
 function main(): void {
   console.log('===============================================================');
@@ -38,7 +38,7 @@ function main(): void {
 
   // Step 5: Coverage & Component Order
   console.log('\n[STEP 5] Checking component coverage and breakdown order...');
-  const coverageOutput = execSync('npm run memory-hooks:check -- --all', { cwd: ROOT, encoding: 'utf8' });
+  const coverageOutput = execSync('npm run hooks:check -- --all', { cwd: ROOT, encoding: 'utf8' });
   console.log('  ' + coverageOutput.trim().split('\n').slice(-1)[0]);
 
   const orderOutput = execSync('npx tsx scripts/memory-hooks/checkComponentOrder.ts --book 1', { cwd: ROOT, encoding: 'utf8' });

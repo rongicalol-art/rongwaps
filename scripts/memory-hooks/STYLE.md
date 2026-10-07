@@ -58,7 +58,7 @@ settles a new rule.
   holds the character → phonetic part link and each part's graded sound
   family; pinyin and the tone shift are derived at runtime. It is purely
   phonetic — no mnemonic, scene, or story.
-- The sound pass (`memory-hooks:sound:decide`) is
+- The sound pass (`hooks sound-decide`) is
   Jev-lean and decoupled from hook review:
   - Code accepts a unique full match (initial + final, tone ignored) with no
     API call; the rest go to one batched Jev pass (20 characters per request,
@@ -92,21 +92,21 @@ settles a new rule.
 - Before shipping: `strictHookAudit.ts`, `checkHookQuality.ts --all`,
   `checkComponentLabelAlignment.ts`, and `tests/content/memoryHook*.test.ts`.
 - Meaning-only review round (2026-09-22):
-  - `memory-hooks:ledger` builds the component ledger (`component-ledger-v1.json`);
+  - `hooks ledger` builds the component ledger (`component-ledger-v1.json`);
     `component-ledger-overrides-v1.json` holds curated corrections (archaic
     pieces carry a sourceRef).
-  - `memory-hooks:jev:all` judges every character hook with TypeSafe Jev
+  - `hooks jev-all` judges every character hook with TypeSafe Jev
     (thresholds in `review/typesafe-thresholds-v1.json`, calibrated on
     `review/gold-set-v1.json`).
-  - `memory-hooks:triage` writes `review/char-triage-v1.json`;
-    `memory-hooks:repair` rewrites flagged hooks and re-verifies them.
-  - `memory-hooks:review:chars` writes `review/char-review.html`; decisions
+  - `hooks triage` writes `review/char-triage-v1.json`;
+    `hooks repair` rewrites flagged hooks and re-verifies them.
+  - `hooks review-chars` writes `review/char-review.html`; decisions
     export as `char-review-feedback.json`.
   - `applyCharReview.ts` applies the outcome, strips sound mechanically, and
     logs per-record decision sources to `review/char-decision-log-v1.json`.
   - `buildSoundData.ts` writes the Book 1 sound scratch file only; the shipped
     sound data is `relations:build`.
-- Human review: `npm run memory-hooks:review:page` writes
+- Human review: `npm run hooks review-page` writes
   `output/memory-hooks/review/hook-review.html` — every hook triaged
   high/medium/low with reasons, component breakdowns, and Agree/Change/Decline
   feedback exporting as JSON for the next decisions pass.
@@ -118,7 +118,7 @@ settles a new rule.
   prose follow the tree order). Never jump backwards — e.g. 服 must start with
   `月(moon)`, then `卩(seal)`, then `又(again)`.
 - Enforced by `scripts/memory-hooks/checkComponentOrder.ts`
-  (`memory-hooks:check:order`, `--strict` exits non-zero) and surfaced as a
+  (`hooks check-order`, `--strict` exits non-zero) and surfaced as a
   `⚠ order` chip on the review page. Repeated components count once.
 - Doubled words (弟弟, 謝謝 …) mention their character once and say "said
   twice"; that is the accepted pattern.

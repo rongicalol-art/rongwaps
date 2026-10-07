@@ -35,5 +35,5 @@ tests/
 - `static_data` — `content/dialogueAlignment.json` and `content/grammar/*.json` are valid and loadable.
 - `code_quality` — line caps (`App.tsx` < 250, `audioService.ts` < 400, `models.ts` < 300), widgets import nothing from services/store, no Node built-ins in `src/`.
 - `server`, `build_runtime` — `server/index.ts` layout and script targets; build and dev entry points.
-- `memory_hooks` — pack manifest hash/count, emphasis on every hook, word hooks name characters in order, character hooks follow breakdown order (`tests/fixtures/memory-hook-decomposition-trees.json`, regenerate with `memory-hooks:snapshot:order`), retired phrasings stay gone.
+- `memory_hooks` — pack manifest hash/count, emphasis on every hook, word hooks name characters in order, character hooks follow breakdown order (`tests/fixtures/memory-hook-decomposition-trees.json`, regenerate with `hooks snapshot-order`), retired phrasings stay gone.
 - `tier1_features` (happy-path contracts), `tier2_boundaries` (empty/zero/metacharacter/limit cases, POS and pinyin normalization), `tier3_cross_feature` (audio + reader sync, SRS + cloud sync queue, widgets in containers), `tier4_real_world` (reading with synced audio, multi-card SRS session with debounced sync, hanzi writing restart, offline recovery).

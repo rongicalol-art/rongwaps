@@ -21,7 +21,7 @@ Secrets: `scripts/.config.json` and `.env*` are never read by agents or committe
 Provider config lives in `.env.memory-hooks.local` (`MEMORY_HOOK_PROVIDER=opencode-go`,
 model, concurrency). The key is read from `~/.local/share/opencode/auth.json`.
 
-Run order (all via `npx tsx <script>` or the matching `npm run memory-hooks:*`):
+Run order (all via `npx tsx <script>` or the matching `npm run hooks -- <sub>` (see `memory-hooks/README.md`)):
 
 1. Inventory and plans: `prepareBookOneEvaluationBatch.ts` (pilot stage `archive/prepareBookOnePilot.ts`; other finished experiments live in `memory-hooks/archive/`, see its README)
    → `output/memory-hooks/book-1-inventory.json`, `book-1-plans.json`.
@@ -31,21 +31,21 @@ Run order (all via `npx tsx <script>` or the matching `npm run memory-hooks:*`):
    characters, `generateWordHooks.ts --execute` for words.
 4. Review: `prepareHookReview.ts` → edit → `applyHookReview.ts`;
    character hooks use decisions files with `applyCharacterReview.ts --decisions …`.
-5. Audits: `auditMeanings.ts`, `strictHookAudit.ts`, `checkHookQuality.ts` (`memory-hooks:check`),
-   `checkComponentLabelAlignment.ts` (`memory-hooks:check:labels`) for
+5. Audits: `auditMeanings.ts`, `strictHookAudit.ts`, `checkHookQuality.ts` (`hooks check`),
+   `checkComponentLabelAlignment.ts` (`hooks check-labels`) for
    labels that differ from a glyph's taught meaning, and
-   `checkComponentOrder.ts` (`memory-hooks:check:order`) for hooks that
+   `checkComponentOrder.ts` (`hooks check-order`) for hooks that
    mention components out of breakdown order.
 6. Ship: `exportHookPack.ts` writes `public/data/memory-hooks/book-1.json` +
    `manifest.json` (hash version). Guarded by `tests/content/memoryHook*.test.ts`.
-7. Human review surface: `buildHookReviewPage.ts` (`memory-hooks:review:page`)
+7. Human review surface: `buildHookReviewPage.ts` (`hooks review-page`)
    emits `output/memory-hooks/review/hook-review.html` — a standalone page with
    before/after hooks, confidence tags, app-style component breakdowns, and
    keep/change/revert comments exporting as JSON for the next decision pass.
 8. Acceptance coverage: `tests/acceptance/memory_hooks.test.ts` runs the
    pack integrity, emphasis, word/character order, and retired-phrasing checks
    in CI from committed data. After a decomposition-pack update, refresh its
-   fixture with `memory-hooks:snapshot:order`.
+   fixture with `hooks snapshot-order`.
 
 Keep artifacts in `output/` (gitignored); only packs under `public/data/` and
 tests are committed.

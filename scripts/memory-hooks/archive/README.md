@@ -21,3 +21,7 @@ To run one: `npx tsx scripts/memory-hooks/archive/<name>.ts`. To restore it, `gi
 - `prepareCharacterMeaningProfilePreview.ts`
 - `previewCanonicalMeaningCleanup.ts`
 - `reviewConstructionMeaningLayer.ts`
+
+Book-1 simplicity loop (archived 2026-10, Book 1 rollout complete; Book N uses `hooks gates` / `hooks run`). Hard-coded to `book-1-*` artifacts:
+
+- `reviewBookOneSimplicity.ts`, `remakeBookOneHooks.ts`, `runBookOneReviewLoop.ts` (run the last; it imports the other two)

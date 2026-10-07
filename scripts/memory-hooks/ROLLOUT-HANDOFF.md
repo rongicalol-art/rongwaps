@@ -46,24 +46,24 @@ const remaining = generic.plans.filter(p => p.status === 'eligible').map(p => p.
 console.log(remaining.join(' '));
 "
 # take the next 47, then:
-npm run memory-hooks:prepare:batch -- --batch book-1-v2-rollout-07 --characters "<47 chars>"
+npm run hooks -- prepare-batch --batch book-1-v2-rollout-07 --characters "<47 chars>"
 # read every frame (target token included), hand-draft the 47 hooks into
 # output/memory-hooks/book-1-v2-rollout-07-curated-drafts-v1.json (clone rollout-06's schema:
 # character/hook/ahaConnection/describedParts), then iterate:
-npm run memory-hooks:validate:batch-drafts -- --batch book-1-v2-rollout-07
+npm run hooks -- validate-batch-drafts --batch book-1-v2-rollout-07
 # seed empty candidates/validation JSONs (copy the rollout-04 pattern), then:
-npm run memory-hooks:apply:batch-drafts -- --batch book-1-v2-rollout-07
-npm run memory-hooks:apply:pack -- --batch book-1-v2-rollout-07
-npm run memory-hooks:export
+npm run hooks -- apply-batch-drafts --batch book-1-v2-rollout-07
+npm run hooks -- apply-pack --batch book-1-v2-rollout-07
+npm run hooks:export
 # gates:
 npx tsx scripts/memory-hooks/strictHookAudit.ts            # 0 violations
-npm run memory-hooks:check -- --all                         # 0 errors
+npm run hooks:check -- --all                         # 0 errors
 npx tsx --test tests/content/memoryHookPack.test.ts                 # 5/5
 npm test && npm run typecheck && npm run lint               # 502/0, clean, clean
 # append a DECISIONS bullet for the batch, commit (pack + scripts + DECISIONS).
 ```
 
-If `prepare` (not `prepare:batch`) ever runs, it RESETS reviewer meanings —
+If `prepare` (not `prepare-batch`) ever runs, it RESETS reviewer meanings —
 re-apply them immediately with:
 
 ```bash
@@ -106,12 +106,12 @@ npx tsx scripts/memory-hooks/applyMeaningAudit.ts --apply --characters \
 - **Template words inside tokens** ("make", "combine") trip the style gate —
   fix the reviewed label instead (e.g. 做→do, 并→merge recorded in
   `scripts/memory-hooks/book-1-reviewed-component-labels-v1.json`, applied via
-  `curate:freeze` → `prepare` → re-apply meanings).
+  `curate-freeze` → `prepare` → re-apply meanings).
 - **Runtime allographs** the checker knows by glyph: 𠂉 ("lying person", e.g.
   午 每 旅), 𠂊 (curated alternatives "claw"/"bent hand", 色), 𠂒 (aliased to
   儿; the pack merge carried it). Describe them with their label words.
 - **Coverage checker runs on merged records**: after `apply:pack`, run
-  `memory-hooks:check -- --all`; failures are usually a runtime part whose
+  `hooks:check -- --all`; failures are usually a runtime part whose
   reviewed label words are missing from the hook.
 - **describedParts word-matching** is substring-with-word-boundary: "offering"
   matches "offerings"; "half" does NOT match "halves".
@@ -147,7 +147,7 @@ npx tsx scripts/memory-hooks/applyMeaningAudit.ts --apply --characters \
 
 ```bash
 npx tsx scripts/memory-hooks/strictHookAudit.ts    # must be 0
-npm run memory-hooks:check -- --all                 # must be 0 errors
+npm run hooks:check -- --all                 # must be 0 errors
 npx tsx --test tests/content/memoryHookPack.test.ts         # 5/5
 npm test                                            # 502 pass, 0 fail
 npm run typecheck && npm run lint                   # clean

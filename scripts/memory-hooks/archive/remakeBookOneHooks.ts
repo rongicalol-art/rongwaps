@@ -2,7 +2,7 @@ import { execSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const ROOT = resolve(import.meta.dirname, '../..');
+const ROOT = resolve(import.meta.dirname, '../../..');
 const OUTPUT_DIR = resolve(ROOT, 'output/memory-hooks');
 
 // Specifically crafted beginner-friendly hooks for characters that were overly long,

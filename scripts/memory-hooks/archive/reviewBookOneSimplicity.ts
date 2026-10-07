@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const ROOT = resolve(import.meta.dirname, '../..');
+const ROOT = resolve(import.meta.dirname, '../../..');
 const OUTPUT_DIR = resolve(ROOT, 'output/memory-hooks');
 
 export interface SimplicityFinding {

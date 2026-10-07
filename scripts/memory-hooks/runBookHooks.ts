@@ -140,12 +140,12 @@ function main(): void {
       `- auto-ship: ${autoShip ? 'enabled' : 'disabled'}`,
       `- clean ids (auto-shippable): ${ids.length}`,
       `- gate report: output/memory-hooks/${stem}-gate-report.json`,
-      `- review page: npm run memory-hooks:review:page -- --book ${bookId}`,
+      `- review page: npm run hooks:review -- --book ${bookId}`,
       '',
       '## Morning checklist',
       '1. Open the review page and walk Medium/Low items.',
       '2. Export feedback JSON and hand it over for a decisions pass.',
-      '3. Re-export the pack (`memory-hooks:export` with --book) after fixes.',
+      '3. Re-export the pack (`hooks:export` with --book) after fixes.',
       '',
     ];
     writeFileSync(resolve(OUTPUT_DIR, `${stem}-run-report.md`), reportLines.join('\n'));

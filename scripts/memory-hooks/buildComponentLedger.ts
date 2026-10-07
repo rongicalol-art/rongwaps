@@ -261,7 +261,7 @@ function main() {
     '',
     `Generated ${ledger.generatedAt} · ${ledger.count} glyphs · ${ledger.completeCount} complete · ${gaps.length} need confirmation`,
     '',
-    'Confirm or correct each entry, then re-run `memory-hooks:ledger`.',
+    'Confirm or correct each entry, then re-run `npm run hooks -- ledger`.',
     'For archaic pieces without a dictionary entry, add a documented sense with its source (example: 啚 → 鄙, mean/low/rustic).',
     '',
   ];
