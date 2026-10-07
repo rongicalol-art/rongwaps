@@ -2,7 +2,6 @@ import express from "express";
 import compression from "compression";
 import rateLimit from "express-rate-limit";
 import path from "path";
-import { createServer as createViteServer } from "vite";
 import dotenv from "dotenv";
 import { MsEdgeTTS, OUTPUT_FORMAT } from "msedge-tts";
 import { supabase } from "./supabase.js";
@@ -30,9 +29,29 @@ const MINIMAX_VOICE_MAP: Record<string, string> = {
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
+// The production bundle is built with NODE_ENV defined to "production".
+const isProd = process.env.NODE_ENV === "production";
 
+// Behind Render's/Cloudflare's proxy so req.ip (rate limits) is the client.
+if (isProd) app.set("trust proxy", Number(process.env.TRUST_PROXY ?? 1));
+
+process.on("unhandledRejection", (reason) => {
+  console.error("Unhandled rejection:", reason);
+});
+
+app.use((_req, res, next) => {
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.setHeader("X-Frame-Options", "DENY");
+  if (isProd) res.setHeader("Strict-Transport-Security", "max-age=31536000");
+  next();
+});
 app.use(compression());
-app.use(express.json());
+app.use(express.json({ limit: "16kb" }));
+
+app.get("/healthz", (_req, res) => {
+  res.json({ ok: true });
+});
 
 // ─── Rate limiting (abuse protection for paid/rate-limited APIs) ──────
 const apiLimiter = rateLimit({
@@ -43,13 +62,43 @@ const apiLimiter = rateLimit({
   message: { error: "Too many requests. Try again later." },
 });
 
-const paidApiLimiter = rateLimit({
+// Per-user limits for paid endpoints. Run after requireAuth, which stashes the
+// user id on res.locals, so one account cannot burn the budget from many IPs.
+const userLimiter = (limit: number) => rateLimit({
   windowMs: 60 * 1000,
-  limit: 10, // Edge TTS synthesis is rate-limited separately.
+  limit,
+  keyGenerator: (_req, res) => String(res.locals.userId),
   standardHeaders: true,
   legacyHeaders: false,
   message: { error: "Too many requests. Try again later." },
 });
+
+// Daily per-user cap. Counters are in-memory, so they are per instance and
+// reset on restart/deploy; a hard budget needs a shared store.
+function dailyCap(limit: number): express.RequestHandler {
+  const counts = new Map<string, number>();
+  let day = "";
+  return (_req, res, next) => {
+    const today = new Date().toISOString().slice(0, 10);
+    if (today !== day) {
+      day = today;
+      counts.clear();
+    }
+    const userId = String(res.locals.userId);
+    const used = (counts.get(userId) ?? 0) + 1;
+    if (used > limit) {
+      res.status(429).json({ error: "Daily limit reached. Try again tomorrow." });
+      return;
+    }
+    counts.set(userId, used);
+    next();
+  };
+}
+
+const ttsUserLimiter = userLimiter(30);
+const jevUserLimiter = userLimiter(10);
+const ttsDailyCap = dailyCap(Number(process.env.TTS_DAILY_LIMIT) || 600);
+const jevDailyCap = dailyCap(Number(process.env.JEV_DAILY_LIMIT) || 200);
 
 // In-memory TTS audio cache for up to 1,000 files (~10-15 MB RAM)
 interface CachedAudio {
@@ -269,23 +318,29 @@ async function getTtsAudio(text: string, voiceName: string): Promise<CachedAudio
 // Require a valid Supabase session on paid synthesis endpoints so anonymous
 // callers cannot burn the TTS provider budget (MiniMax/Edge). Guests keep
 // browser-speech fallback; only authenticated users get neural audio.
-async function requireAuth(req: express.Request, res: express.Response): Promise<boolean> {
+async function requireAuth(req: express.Request, res: express.Response, next: express.NextFunction) {
   const authHeader = req.headers.authorization;
   const token = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
   if (!token) {
     res.status(401).json({ error: "Unauthorized" });
-    return false;
+    return;
   }
-  const { data: { user }, error } = await supabase.auth.getUser(token);
-  if (error || !user) {
-    res.status(401).json({ error: "Unauthorized" });
-    return false;
+  try {
+    const { data: { user }, error } = await supabase.auth.getUser(token);
+    if (error || !user) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+    }
+    res.locals.userId = user.id;
+  } catch (err: unknown) {
+    console.error("Auth check failed:", err);
+    res.status(503).json({ error: "Authentication unavailable right now." });
+    return;
   }
-  return true;
+  next();
 }
 
-app.post("/api/tts", paidApiLimiter, async (req: express.Request, res: express.Response) => {
-  if (!(await requireAuth(req, res))) return;
+app.post("/api/tts", apiLimiter, requireAuth, ttsUserLimiter, ttsDailyCap, async (req: express.Request, res: express.Response) => {
   try {
     const { text, voice } = req.body as { text?: string; voice?: string };
     const cleanText = sanitizeTtsText(text || "");
@@ -296,7 +351,7 @@ app.post("/api/tts", paidApiLimiter, async (req: express.Request, res: express.R
     const voiceName = voice && TTS_VOICES[voice] ? voice : "zh-CN-XiaoxiaoNeural";
     const cachedAudio = await getTtsAudio(cleanText, voiceName);
 
-    sendAudioBuffer(req, res, cachedAudio.buffer, cachedAudio.contentType, cachedAudio.etag, "public, max-age=86400");
+    sendAudioBuffer(req, res, cachedAudio.buffer, cachedAudio.contentType, cachedAudio.etag, "private, max-age=86400");
   } catch (err: unknown) {
     console.error("Neural TTS error:", err);
     res.status(502).json({ error: "Neural TTS unavailable right now." });
@@ -305,14 +360,17 @@ app.post("/api/tts", paidApiLimiter, async (req: express.Request, res: express.R
 
 // POST /api/jev/grade-answer — semantic grading for free-text answers.
 // 503 when TYPESAFE_API_KEY is unset, so clients fall back to exact matching.
-app.post("/api/jev/grade-answer", paidApiLimiter, async (req: express.Request, res: express.Response) => {
-  if (!(await requireAuth(req, res))) return;
-  const outcome = await gradeGrammarAnswer(req.body);
-  if (outcome.status === 200) {
-    res.json(outcome.result);
-    return;
+app.post("/api/jev/grade-answer", apiLimiter, requireAuth, jevUserLimiter, jevDailyCap, async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  try {
+    const outcome = await gradeGrammarAnswer(req.body);
+    if (outcome.status === 200) {
+      res.json(outcome.result);
+      return;
+    }
+    res.status(outcome.status).json({ error: outcome.error });
+  } catch (err: unknown) {
+    next(err);
   }
-  res.status(outcome.status).json({ error: outcome.error });
 });
 
 // GET /api/tts-cache/:text — serve cached TTS MP3 by text, or 404 (client synthesizes on miss)
@@ -349,8 +407,9 @@ app.get("/api/tts/:voice/*", apiLimiter, async (req: express.Request, res: expre
   try {
     const voice = req.params.voice;
     const fileTail = req.params[0];
-    if (!fileTail) {
-      return res.status(400).json({ error: "Missing filename" });
+    // Keys are `tts/<voice>/<hex(text)>.mp3` (see ttsCacheKey).
+    if (!voice || !TTS_VOICES[voice] || !fileTail || !/^[a-f0-9]+\.mp3$/.test(fileTail)) {
+      return res.status(400).json({ error: "Invalid voice or filename" });
     }
     const cacheKey = `tts:${voice}:${fileTail}`;
     let cached = audioMemoryCache.get(cacheKey);
@@ -373,10 +432,15 @@ app.get("/api/tts/:voice/*", apiLimiter, async (req: express.Request, res: expre
   }
 });
 
+app.use("/api", (_req: express.Request, res: express.Response) => {
+  res.status(404).json({ error: "Not found" });
+});
+
 // Bootstrap Vite middleware in Development OR serve Static Files in Production
 async function bootstrap() {
-  if (process.env.NODE_ENV !== "production") {
+  if (!isProd) {
     console.log("Bootstrap: Initializing Vite dev-server middleware...");
+    const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
       server: { middlewareMode: true, allowedHosts: true },
       appType: "spa",
@@ -390,12 +454,18 @@ async function bootstrap() {
     //  - Versioned content packs (/data) and the dictionary trie are large
     //    and change only on deploys -> cache an hour at browsers/edge;
     //    IndexedDB keys carry the real versioning.
-    //  - Everything else (index.html, manifest) stays revalidate-every-time.
+    //  - Everything else stays revalidate-every-time; the shell files
+    //    (index.html, service worker, manifest) are forced to no-cache.
     const distDataDir = path.join(distPath, "data");
+    const revalidatedFiles = new Set([
+      "index.html", "sw.js", "registerSW.js", "manifest.json", "manifest.webmanifest",
+    ]);
     const assetsMarker = `${path.sep}assets${path.sep}`;
     app.use(express.static(distPath, {
       setHeaders(res: express.Response, filePath: string) {
-        if (filePath.includes(assetsMarker)) {
+        if (revalidatedFiles.has(path.basename(filePath))) {
+          res.setHeader("Cache-Control", "no-cache");
+        } else if (filePath.includes(assetsMarker)) {
           res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
         } else if (
           filePath.startsWith(distDataDir)
@@ -405,10 +475,31 @@ async function bootstrap() {
         }
       },
     }));
+    // Only extensionless navigation gets the SPA shell; missing files 404.
     app.get("*", (req: express.Request, res: express.Response) => {
+      if (req.path.startsWith("/data/") || path.extname(req.path)) {
+        res.status(404).json({ error: "Not found" });
+        return;
+      }
+      res.setHeader("Cache-Control", "no-cache");
       res.sendFile(path.join(distPath, "index.html"));
     });
   }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars -- Express needs the 4-arg signature.
+  app.use((err: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
+    console.error("Unhandled request error:", err);
+    if (res.headersSent) {
+      res.end();
+      return;
+    }
+    const status = (err as { status?: number }).status;
+    if (status && status >= 400 && status < 500) {
+      res.status(status).json({ error: "Bad request" });
+      return;
+    }
+    res.status(500).json({ error: "Internal server error" });
+  });
 
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server is running at http://localhost:${PORT}`);

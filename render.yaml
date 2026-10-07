@@ -2,15 +2,25 @@ services:
   - type: web
     name: rongwaps
     env: node
-    buildCommand: npm install && npm run build
-    startCommand: npm start
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: node dist-server/server.js
     envVars:
       - key: NODE_ENV
         value: production
-      - key: GEMINI_API_KEY
+      - key: MINIMAX_API_KEY
+        sync: false
+      - key: TYPESAFE_API_KEY
+        sync: false
+      - key: R2_ACCOUNT_ID
+        sync: false
+      - key: R2_ACCESS_KEY_ID
+        sync: false
+      - key: R2_SECRET_ACCESS_KEY
+        sync: false
+      - key: R2_BUCKET_NAME
         sync: false
       - key: VITE_SUPABASE_URL
         sync: false
       - key: VITE_SUPABASE_ANON_KEY
         sync: false
-    healthCheckPath: /
+    healthCheckPath: /healthz

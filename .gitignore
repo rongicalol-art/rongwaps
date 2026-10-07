@@ -20,6 +20,7 @@
 .vscode/
 coverage/
 dist/
+dist-server/
 ids.txt
 node_modules/
 output/
