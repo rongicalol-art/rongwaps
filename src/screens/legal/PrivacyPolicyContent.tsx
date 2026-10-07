@@ -11,7 +11,7 @@ export function PrivacyPolicyContent() {
     <>
       <LegalSection title="Who we are">
         <LegalParagraph>
-          RongWaps is a Chinese-learning web app, currently in open beta. This policy explains what
+          Ron&apos;s Mandarin is a Chinese-learning web app, currently in open beta. This policy explains what
           data it handles and why. Questions or requests: <ContactLink />.
         </LegalParagraph>
       </LegalSection>
@@ -116,7 +116,7 @@ export function PrivacyPolicyContent() {
 
       <LegalSection title="Children">
         <LegalParagraph>
-          RongWaps is not directed at children under 13 and we do not knowingly collect their data. If you
+          Ron&apos;s Mandarin is not directed at children under 13 and we do not knowingly collect their data. If you
           believe a child has given us data, email us and we will delete it.
         </LegalParagraph>
       </LegalSection>

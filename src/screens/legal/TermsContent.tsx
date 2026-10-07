@@ -7,7 +7,7 @@ export function TermsContent() {
     <>
       <LegalSection title="Agreement">
         <LegalParagraph>
-          By creating an account or using RongWaps you agree to these terms and to our{' '}
+          By creating an account or using Ron&apos;s Mandarin you agree to these terms and to our{' '}
           <Link to={LEGAL_ROUTES.privacy} className={legalLinkClass}>Privacy Policy</Link>. If you do not
           agree, please do not use the app.
         </LegalParagraph>
@@ -15,7 +15,7 @@ export function TermsContent() {
 
       <LegalSection title="Beta service">
         <LegalParagraph>
-          RongWaps is in open beta and provided &quot;as is&quot; and &quot;as available&quot;. Features can
+          Ron&apos;s Mandarin is in open beta and provided &quot;as is&quot; and &quot;as available&quot;. Features can
           change or break, content can contain mistakes, and the service may be interrupted or reset. We give
           no warranty that it will be error-free, always available, or fit for a particular purpose.
         </LegalParagraph>
@@ -59,21 +59,21 @@ export function TermsContent() {
       <LegalSection title="Ending your access">
         <LegalParagraph>
           We may suspend or end accounts that break these terms or put the service at risk, and we may end the
-          beta or the service with reasonable notice. You can stop using RongWaps and delete your account at
+          beta or the service with reasonable notice. You can stop using Ron&apos;s Mandarin and delete your account at
           any time.
         </LegalParagraph>
       </LegalSection>
 
       <LegalSection title="Paid plans">
         <LegalParagraph>
-          RongWaps is free during the beta. We may introduce paid plans later; they would come with separate
+          Ron&apos;s Mandarin is free during the beta. We may introduce paid plans later; they would come with separate
           terms that you would need to accept.
         </LegalParagraph>
       </LegalSection>
 
       <LegalSection title="Limit of liability">
         <LegalParagraph>
-          To the extent the law allows, RongWaps and its operator are not liable for indirect or consequential
+          To the extent the law allows, Ron&apos;s Mandarin and its operator are not liable for indirect or consequential
           losses, lost progress or data, or for results you get from your studies. Back up what matters to you
           with the in-app data download.
         </LegalParagraph>

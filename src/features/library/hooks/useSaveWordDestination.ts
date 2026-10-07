@@ -5,6 +5,7 @@ import { flashcardService } from '../../../services/flashcardService';
 import { getDictionaryEntries } from '../../../services/dictionaryService';
 import { audioService } from '../../../services/audioService';
 import { serializeFolderColor } from '../../../utils/folderColors';
+import { definitionStrings } from '../../../utils/dictionaryDefinitions';
 import { useUserFlashcards } from './useUserFlashcards';
 import type { SaveWordTarget } from '../../../store/slices/librarySlice';
 import type { UserFlashcard } from '../../../types/models';
@@ -28,8 +29,8 @@ export function isTechnicalSense(sense: string): boolean {
 
 function listSenses(defs: string | string[] | Record<string, unknown> | null | undefined): string[] {
   if (!defs) return [];
-  const raw = typeof defs === 'string' ? [defs] : Array.isArray(defs) ? defs : Object.values(defs).map(String);
-  return raw.map((d) => String(d).trim()).filter((d) => d && !MEASURE_WORD_NOTE.test(d));
+  const raw = typeof defs === 'object' && !Array.isArray(defs) ? Object.values(defs) : defs;
+  return definitionStrings(raw).map((d) => String(d).trim()).filter((d) => d && !MEASURE_WORD_NOTE.test(d));
 }
 
 export function useSaveWordDestination(target: SaveWordTarget | null) {

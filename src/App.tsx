@@ -21,7 +21,7 @@ function AppShell() {
   const { isLoading, isSignedOut, nav, reader, grammar, activity, settings, overlays } = useAppShell();
 
   if (isLoading) {
-    return <LoadingScreen message="Loading RongWaps…" fullScreen tone="canvas" />;
+    return <LoadingScreen message="Loading Ron's Mandarin…" fullScreen tone="canvas" />;
   }
 
   // Accounts are required: signed out, the only thing on screen is the

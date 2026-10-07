@@ -135,13 +135,18 @@ function parseEncodedDefinitions(value: unknown): unknown {
   try {
     return JSON.parse(trimmed);
   } catch (error) {
+    // Truncated or malformed array text: salvage its quoted items, never show raw JSON.
+    if (trimmed.startsWith('[')) {
+      const items = Array.from(trimmed.matchAll(/"((?:[^"\\]|\\.)*)(?:"|$)/g), (m) => m[1].replace(/(?:\.{2,}|…)$/, '').trim());
+      if (items.some(Boolean)) return items.filter(Boolean);
+    }
     // Intentional fallback: unparseable string is treated as plain text definition
     debugLogger.warn('App', 'Encoded dictionary definitions unparseable; treated as plain text', error);
     return value;
   }
 }
 
-function definitionStrings(value: unknown): string[] {
+export function definitionStrings(value: unknown): string[] {
   const parsed = parseEncodedDefinitions(value);
   if (Array.isArray(parsed)) {
     return parsed.flatMap((item) => definitionStrings(item));
@@ -151,6 +156,11 @@ function definitionStrings(value: unknown): string[] {
     return Object.values(parsed).flatMap((item) => definitionStrings(item));
   }
   return typeof parsed === 'string' ? [parsed] : [];
+}
+
+/** Readable single-line meaning for storage: items joined with "; ", never JSON. */
+export function meaningText(value: unknown): string {
+  return definitionStrings(value).map((item) => item.trim()).filter(Boolean).join('; ');
 }
 
 export function sanitizeDictionaryDefinitions(

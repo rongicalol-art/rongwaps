@@ -101,7 +101,7 @@ export function AppSettingsDrawer({
                       {isIos ? 'Use Full-Screen (Hide Safari Bar)' : 'Install Web App'}
                     </p>
                     <p className="text-xs font-bold text-ui-muted-strong">
-                      Run RongWaps like a native app without the address bar.
+                      Run Ron&apos;s Mandarin like a native app without the address bar.
                     </p>
                   </div>
                 </div>

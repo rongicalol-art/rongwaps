@@ -10,6 +10,7 @@ type ViewState = 'front' | 'back';
 type Direction = 'fwd' | 'back' | 'none';
 
 import { resolveFolderColor } from '../../../utils/folderColors';
+import { meaningText } from '../../../utils/dictionaryDefinitions';
 
 export function useAddCard(onClose: () => void) {
   const { currentUser } = useAuth();
@@ -127,7 +128,7 @@ export function useAddCard(onClose: () => void) {
         simplified: cardData.front.trim(),
         traditional: cardData.front.trim(),
         pinyin: cardData.pinyin.trim(),
-        translation: cardData.meaning.trim(),
+        translation: meaningText(cardData.meaning),
         measure_words: cardData.measureWords && cardData.measureWords.length > 0 ? cardData.measureWords : undefined,
         createdAt: Date.now()
       };

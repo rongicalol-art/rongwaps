@@ -1,6 +1,6 @@
 {
-  "name": "RongWaps — Playful Chinese Study",
-  "short_name": "RongWaps",
+  "name": "Ron's Mandarin — Playful Chinese Study",
+  "short_name": "Ron's Mandarin",
   "description": "A playful Mandarin study tool with flashcards, character breakdowns, AI mnemonics, and spaced repetition.",
   "start_url": "/",
   "display": "standalone",
@@ -20,7 +20,7 @@
       "purpose": "any"
     },
     {
-      "src": "/icons/icon-512x512.png",
+      "src": "/icons/icon-maskable-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

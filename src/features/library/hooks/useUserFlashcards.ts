@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import { useAppStore } from '../../../store/useAppStore';
 import { flashcardService } from '../../../services/flashcardService';
+import { meaningText } from '../../../utils/dictionaryDefinitions';
 import type { UserFlashcard } from '../../../types/models';
 
 /**
@@ -33,5 +34,9 @@ export function useUserFlashcards(): UserFlashcard[] {
     };
   }, [currentUser, localFlashcards]);
 
-  return cards;
+  // Cards saved before the encoder fix may hold a JSON-array string as their translation.
+  return useMemo(
+    () => cards.map((card) => (card.translation?.startsWith('["') ? { ...card, translation: meaningText(card.translation) } : card)),
+    [cards],
+  );
 }

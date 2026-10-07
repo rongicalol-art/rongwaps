@@ -5,6 +5,7 @@ import {
   humanizeCedictMarkup,
   extractCedictReference,
   formatCompactMeaning,
+  meaningText,
 } from '../../src/utils/dictionaryDefinitions';
 import { debugLogger } from '../../src/utils/debugLogger';
 
@@ -130,3 +131,13 @@ test('formatCompactMeaning extracts concise meaning without mid-word truncation'
 });
 
 
+
+test('meaningText joins senses with "; " and never returns serialized JSON', () => {
+  assert.equal(meaningText(['hello', 'hi']), 'hello; hi');
+  assert.equal(meaningText('["hello; hi", "greetings"]'), 'hello; hi; greetings');
+  assert.equal(
+    meaningText('["no matter what or how","regardless of whether......'),
+    'no matter what or how; regardless of whether',
+  );
+  assert.equal(meaningText('plain meaning'), 'plain meaning');
+});

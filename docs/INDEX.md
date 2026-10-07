@@ -29,6 +29,7 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 - `API_SPEC.md` — Express API: CDN media streaming, TTS synthesis/cache endpoints, semantic grading.
 - `GRAMMAR_LESSON_TEMPLATE.md` — interactive grammar lesson spec and data contracts.
 - `COURSE_EXAMPLES.md` — course example sentence packs, runtime matching, OCR export workflow, coverage audit.
+- `DEPLOY.md` — deploy checklist: env var names, Supabase dashboard steps, smoke test.
 
 ## Reference & Archive (not routed by default)
 
