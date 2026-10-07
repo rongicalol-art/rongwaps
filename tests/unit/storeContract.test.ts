@@ -21,6 +21,7 @@ const EXPECTED_PERSISTED_KEYS = [
   'learnedCards',
   'sessionProgressIndex',
   'deckExclusions',
+  'progressResetSeen',
   'activeTab',
   'activeActivity',
   'activeQuizMode',

@@ -6,6 +6,7 @@ import { userService } from '../services/userService';
 import { flashcardService } from '../services/flashcardService';
 import type { SRSData } from '../utils/srsEngine';
 import {
+  applyProgressResetEpoch,
   isSameFolderList,
   mergePulledSrsData,
 } from '../utils/cloudSyncQueue';
@@ -68,9 +69,34 @@ export function useCloudSyncFetch({
         && lastPulledCursorRef.current.userId === currentUser.id
         ? lastPulledCursorRef.current.cursor
         : null;
-      const cloudData = await userService.getSyncState(
+      let cloudData = await userService.getSyncState(
         lastCursor ? { since: lastCursor } : undefined,
       );
+
+      // A reset performed on another device wipes this device's progress
+      // BEFORE it is merged or pushed; otherwise the stale local copy would be
+      // re-uploaded and resurrect what the reset deleted.
+      const seenReset = useAppStore.getState().progressResetSeen[currentUser.id];
+      const epoch = isAccountSwitch
+        ? null
+        : applyProgressResetEpoch({
+          srsData: useAppStore.getState().srsData,
+          learnedCards: useAppStore.getState().learnedCards,
+          cloudResetAt: cloudData.progressResetAt,
+          seenResetAt: seenReset,
+        });
+      if (epoch?.wiped) {
+        setSrsDataAndLearnedCards(epoch.srsData, epoch.learnedCards);
+        lastSyncedSrsRef.current = {};
+        lastSyncedLearnedRef.current = [];
+        // An incremental pull omits rows older than the cursor, which the wipe
+        // just dropped locally: refetch everything.
+        if (lastCursor) cloudData = await userService.getSyncState();
+      }
+      const resetToRemember = epoch ? epoch.seenResetAt : cloudData.progressResetAt;
+      if (resetToRemember && resetToRemember !== seenReset) {
+        useAppStore.getState().setProgressResetSeen(currentUser.id, resetToRemember);
+      }
       const srsAtPullStart = useAppStore.getState().srsData;
 
       const cloudTime = cloudData.lastUpdated ? new Date(cloudData.lastUpdated).getTime() : 0;
@@ -88,7 +114,6 @@ export function useCloudSyncFetch({
             {
               activeBookId: local.activeBookId,
               selectedLessonParts: local.selectedLessonParts,
-              sessionProgressIndex: local.sessionProgressIndex,
             },
             { isAccountSwitch },
           );

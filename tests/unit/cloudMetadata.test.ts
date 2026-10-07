@@ -8,7 +8,6 @@ import {
 const LOCAL = {
   activeBookId: 2,
   selectedLessonParts: { '2:1': [1], '3:1': [2] },
-  sessionProgressIndex: { shared_deck_2_1: 4 },
 };
 
 test('a card-delta pull with no cloud metadata leaves local state untouched', () => {
@@ -23,7 +22,6 @@ test('present cloud metadata patches local state on a normal pull', () => {
       favorites: ['a'],
       activeBookId: 3,
       characterPreference: 'simplified',
-      activeTab: 'library',
       selectedBooks: [3],
     },
     LOCAL,
@@ -34,7 +32,6 @@ test('present cloud metadata patches local state on a normal pull', () => {
     favorites: ['a'],
     activeBookId: 3,
     characterPreference: 'simplified',
-    activeTab: 'library',
     selectedBooks: [3],
   });
 });
@@ -53,18 +50,14 @@ test('legacy flat lesson list converts to the active book parts map', () => {
   });
 });
 
-test('session index merge keeps cloud values only when strictly ahead', () => {
+test('device-local keys left in old profile rows are ignored', () => {
   const patch = resolveCloudMetadataPatch(
-    { sessionProgressIndex: { shared_deck_2_1: 4, shared_deck_2_2: 9, new_key: 3 } },
+    { activeTab: 'library', sessionProgressIndex: { shared_deck_2_1: 9 } },
     LOCAL,
     { isAccountSwitch: false },
   );
 
-  // Keys absent locally stay cleared: an explicit local clear must not be
-  // resurrected by the cloud copy.
-  assert.deepEqual(patch.sessionProgressIndex, {
-    shared_deck_2_1: 4,
-  });
+  assert.deepEqual(patch, {});
 });
 
 test('account switch resets missing fields to fresh-account defaults', () => {
@@ -74,21 +67,9 @@ test('account switch resets missing fields to fresh-account defaults', () => {
     favorites: [],
     activeBookId: 1,
     characterPreference: 'traditional',
-    activeTab: 'path',
     selectedLessonParts: { '2:1': [1], '3:1': [2] },
     selectedBooks: [],
-    sessionProgressIndex: {},
   });
-});
-
-test('account switch replaces the session index instead of merging', () => {
-  const patch = resolveCloudMetadataPatch(
-    { sessionProgressIndex: { shared_deck_2_1: 1 } },
-    LOCAL,
-    { isAccountSwitch: true },
-  );
-
-  assert.deepEqual(patch.sessionProgressIndex, { shared_deck_2_1: 1 });
 });
 
 test('guest folders migrate only on a first account switch', () => {

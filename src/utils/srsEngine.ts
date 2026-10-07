@@ -33,7 +33,16 @@ export interface SRSData {
    * is graduated into the review phase and uses `interval` (in days).
    */
   learningStep?: number;
+  /**
+   * Epoch ms of the review that produced this state. Cloud sync resolves
+   * cross-device conflicts by it (newest review wins). Absent on cards stored
+   * before it existed.
+   */
+  lastReviewedAt?: number;
 }
+
+/** Hard ceiling for review intervals (100 years); also the database CHECK bound. */
+export const MAX_INTERVAL_DAYS = 36500;
 
 /**
  * Intraday learning-step schedule (minutes). New/failed cards re-appear after
@@ -149,11 +158,16 @@ export function calculateNextReview(current: SRSData | undefined, cardId: string
   if (efactor < 1.3) efactor = 1.3;
   if (efactor > 3.0) efactor = 3.0;
 
+  // Repeated practice of already-scheduled cards compounds the interval; keep
+  // it inside the range the database accepts.
+  if (interval > MAX_INTERVAL_DAYS) interval = MAX_INTERVAL_DAYS;
+
   // Learning phase schedules in minutes; review phase lands on the day's
   // rollover boundary (day-granular scheduling).
+  const reviewedAt = Date.now();
   const nextReviewDate = inLearning
-    ? Date.now() + interval * 60 * 1000
-    : dayBoundaryDueTimestamp(interval);
+    ? reviewedAt + interval * 60 * 1000
+    : dayBoundaryDueTimestamp(interval, reviewedAt);
 
   return {
     cardId,
@@ -162,5 +176,6 @@ export function calculateNextReview(current: SRSData | undefined, cardId: string
     efactor,
     nextReviewDate,
     learningStep,
+    lastReviewedAt: reviewedAt,
   };
 }

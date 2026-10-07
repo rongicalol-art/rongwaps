@@ -263,6 +263,7 @@ const PERSISTED_RECORD_KEYS = [
   'srsData',
   'sessionProgressIndex',
   'deckExclusions',
+  'progressResetSeen',
 ] as const;
 
 function sanitizePersistedState(state: Record<string, unknown>): Record<string, unknown> {

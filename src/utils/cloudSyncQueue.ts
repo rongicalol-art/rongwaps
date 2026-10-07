@@ -7,8 +7,6 @@ export interface CloudSyncFingerprintState {
   favorites: string[];
   activeBookId: number;
   characterPreference: string;
-  sessionProgressIndex: Record<string, number>;
-  activeTab: string;
   selectedLessons: number[];
   selectedBooks: number[];
 }
@@ -33,8 +31,6 @@ export function createCloudSyncFingerprint(
     state.favorites,
     state.activeBookId,
     state.characterPreference,
-    state.sessionProgressIndex,
-    state.activeTab,
     state.selectedLessons,
     state.selectedBooks,
   ]);
@@ -172,6 +168,11 @@ export function getNextAutoSaveDelay(input: AutoSaveDelayInput): number {
   return Math.max(backoffMs, eagerDelayMs);
 }
 
+/** Review time that orders two versions of a card; 0 when unknown. */
+function reviewTime(card: SRSData): number {
+  return card.lastReviewedAt ?? 0;
+}
+
 export interface PulledSrsMergeInput {
   /**
    * Last SRS state known to be persisted on the server (the delta baseline)
@@ -200,8 +201,9 @@ export interface PulledSrsMergeResult {
  * The old merge (`{...local, ...cloud}`) let stale server rows overwrite
  * locally newer reviews AND folded those stale values into the delta baseline,
  * so the lost review was never re-uploaded either. Now:
- * - merged: keys the user changed during the pull window keep their local value;
- *   everything else follows the server.
+ * - merged: per card, the newest review wins (`lastReviewedAt`; ties and
+ *   unknown times follow the server). Keys the user changed during the pull
+ *   window keep their local value regardless.
  * - baseline: prior known-synced state overlaid with pulled rows only — never
  *   with unsent local values — so locally-changed keys stay "dirty" and the
  *   next save uploads them.
@@ -220,13 +222,64 @@ export function mergePulledSrsData(
     if (!isSameSrsData(atPullStart[key], value)) locallyChangedKeys.add(key);
   }
 
-  // Start from local state (keeps brand-new local cards), overlay server rows,
-  // then restore locally-changed keys so stale cloud rows cannot clobber them.
-  const merged: Record<string, SRSData> = { ...current, ...cloud };
+  // Start from local state (keeps brand-new local cards), overlay server rows
+  // unless the local review is strictly newer, then restore locally-changed
+  // keys so stale cloud rows cannot clobber them. A kept-local card differs
+  // from the baseline (which holds the cloud row), so the next save re-pushes it.
+  const merged: Record<string, SRSData> = { ...current };
+  for (const [key, cloudCard] of Object.entries(cloud)) {
+    const local = current[key];
+    merged[key] = local && reviewTime(local) > reviewTime(cloudCard) ? local : cloudCard;
+  }
   for (const key of locallyChangedKeys) {
     const value = current[key];
     if (value) merged[key] = value;
   }
 
   return { merged, baseline };
+}
+
+export interface ProgressResetInput {
+  srsData: Record<string, SRSData>;
+  learnedCards: string[];
+  /** `user_profiles.progress_reset_at` from the pull; null when never reset. */
+  cloudResetAt: string | null | undefined;
+  /** Last reset epoch this device applied for the signed-in user. */
+  seenResetAt: string | undefined;
+}
+
+export interface ProgressResetResult {
+  /** True when local progress was cleared because a newer reset exists. */
+  wiped: boolean;
+  srsData: Record<string, SRSData>;
+  learnedCards: string[];
+  /** Epoch to remember for this user (unchanged when no newer reset). */
+  seenResetAt: string | undefined;
+}
+
+/**
+ * Decide whether a reset performed elsewhere must wipe this device's progress.
+ *
+ * Deleting server rows does not propagate through the incremental pull, so a
+ * device that never saw the reset would re-upload its stale progress. The
+ * server stamps a reset epoch; when it is newer than the one this device last
+ * applied, local progress from before it is dropped BEFORE merging or pushing.
+ * Cards reviewed after the epoch (by their own timestamp) are new progress, not
+ * stale, and stay along with their learned flag.
+ */
+export function applyProgressResetEpoch(input: ProgressResetInput): ProgressResetResult {
+  const { srsData, learnedCards, cloudResetAt, seenResetAt } = input;
+  const cloudMs = cloudResetAt ? new Date(cloudResetAt).getTime() : NaN;
+  const seenMs = seenResetAt ? new Date(seenResetAt).getTime() : NaN;
+  const unchanged: ProgressResetResult = { wiped: false, srsData, learnedCards, seenResetAt };
+
+  if (!cloudResetAt || !Number.isFinite(cloudMs)) return unchanged;
+  if (Number.isFinite(seenMs) && cloudMs <= seenMs) return unchanged;
+
+  const keptSrs: Record<string, SRSData> = {};
+  for (const [key, card] of Object.entries(srsData)) {
+    if (reviewTime(card) > cloudMs) keptSrs[key] = card;
+  }
+  const keptLearned = learnedCards.filter((id) => id in keptSrs);
+  return { wiped: true, srsData: keptSrs, learnedCards: keptLearned, seenResetAt: cloudResetAt };
 }

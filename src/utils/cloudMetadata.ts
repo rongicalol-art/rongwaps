@@ -4,31 +4,30 @@ import { lessonsToPartSelection } from './lessonPartSelection';
 /**
  * Owner of the "apply pulled cloud metadata to local state" rules.
  *
- * Metadata (favorites, selection, session resume points) is only overwritten
+ * Metadata (favorites, selection) is only overwritten
  * from the cloud when the cloud is at least as new as local state, or on an
  * account switch — a plain card-delta pull must not clobber local changes
  * that are still inside the debounced save window. Account switches are
  * authoritative: missing cloud fields fall back to fresh-account defaults
  * instead of leaking the previous user's local values.
+ *
+ * Active tab and session resume points are device-local and no longer synced;
+ * keys left in older profile rows are ignored.
  */
 
 export type CharacterPreference = 'traditional' | 'simplified';
-export type ActiveTab = 'path' | 'search' | 'library' | 'profile';
 
 export interface CloudMetadataLocalState {
   activeBookId: number;
   selectedLessonParts: LessonPartSelectionMap;
-  sessionProgressIndex: Record<string, number>;
 }
 
 export interface CloudMetadataPatch {
   favorites?: string[];
   activeBookId?: number;
   characterPreference?: CharacterPreference;
-  activeTab?: ActiveTab;
   selectedLessonParts?: LessonPartSelectionMap;
   selectedBooks?: number[];
-  sessionProgressIndex?: Record<string, number>;
 }
 
 export function stringArray(value: unknown): string[] | null {
@@ -43,20 +42,8 @@ export function numberArray(value: unknown): number[] | null {
     : null;
 }
 
-export function numberRecord(value: unknown): Record<string, number> | null {
-  if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
-  const entries = Object.entries(value);
-  return entries.every(([, item]) => typeof item === 'number')
-    ? Object.fromEntries(entries) as Record<string, number>
-    : null;
-}
-
 function isCharacterPreference(value: unknown): value is CharacterPreference {
   return value === 'traditional' || value === 'simplified';
-}
-
-function isActiveTab(value: unknown): value is ActiveTab {
-  return value === 'path' || value === 'search' || value === 'library' || value === 'profile';
 }
 
 /**
@@ -70,26 +57,6 @@ function nextActiveBookId(
 ): number {
   if (typeof metadata.activeBookId === 'number') return metadata.activeBookId;
   return isAccountSwitch ? 1 : local.activeBookId;
-}
-
-/**
- * Merge cloud session resume points into the local map. Cloud wins only when
- * it is strictly ahead: an explicit local clear (key absent locally but
- * present in cloud) keeps the local view — the next save removes it
- * server-side too.
- */
-function mergedSessionProgressIndex(
-  localIndex: Record<string, number>,
-  cloudIndex: Record<string, number>,
-): Record<string, number> {
-  const merged = { ...localIndex };
-  for (const [key, cloudValue] of Object.entries(cloudIndex)) {
-    const localValue = localIndex[key];
-    if (localValue !== undefined && cloudValue > localValue) {
-      merged[key] = cloudValue;
-    }
-  }
-  return merged;
 }
 
 export function resolveCloudMetadataPatch(
@@ -116,12 +83,6 @@ export function resolveCloudMetadataPatch(
     patch.characterPreference = 'traditional';
   }
 
-  if (isActiveTab(metadata.activeTab)) {
-    patch.activeTab = metadata.activeTab;
-  } else if (isAccountSwitch) {
-    patch.activeTab = 'path';
-  }
-
   const lessons = numberArray(metadata.selectedLessons);
   if (lessons || isAccountSwitch) {
     // Cloud lesson selections arrive as the legacy flat list; they convert
@@ -141,15 +102,6 @@ export function resolveCloudMetadataPatch(
   const selectedBooks = numberArray(metadata.selectedBooks);
   if (selectedBooks || isAccountSwitch) {
     patch.selectedBooks = selectedBooks ?? [];
-  }
-
-  const sessionProgressIndex = numberRecord(metadata.sessionProgressIndex);
-  if (sessionProgressIndex) {
-    patch.sessionProgressIndex = isAccountSwitch
-      ? sessionProgressIndex
-      : mergedSessionProgressIndex(local.sessionProgressIndex, sessionProgressIndex);
-  } else if (isAccountSwitch) {
-    patch.sessionProgressIndex = {};
   }
 
   return patch;

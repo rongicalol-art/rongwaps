@@ -3,7 +3,7 @@ import { useAppStore } from '../store/useAppStore';
 import { userService } from '../services/userService';
 
 interface UseResetProgressOptions {
-  currentUser: unknown;
+  currentUser: { id: string } | null;
   onActivityCleared: () => void;
   onGrammarCleared: () => void;
 }
@@ -56,7 +56,12 @@ export function useResetProgress({
     appState.resetGrammarProgress();
 
     try {
-      if (currentUser) await userService.resetLearningProgress();
+      if (currentUser) {
+        // Remember the reset epoch so this device does not wipe itself again
+        // when the next pull reports the reset it just performed.
+        const resetAt = await userService.resetLearningProgress();
+        if (resetAt) useAppStore.getState().setProgressResetSeen(currentUser.id, resetAt);
+      }
       onActivityCleared();
       onGrammarCleared();
     } catch (error) {

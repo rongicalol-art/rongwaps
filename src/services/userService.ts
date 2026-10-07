@@ -15,7 +15,12 @@ interface SyncStateWire {
   cards: CardProgressRow[] | null;
   learned: string[] | null;
   cursor: string | null;
-  profile: { updated_at: string | null; settings: Record<string, unknown> | null } | null;
+  profile: {
+    updated_at: string | null;
+    settings: Record<string, unknown> | null;
+    /** Absent until the 20261007 migration is applied. */
+    progress_reset_at?: string | null;
+  } | null;
   folders: UserFolderRow[] | null;
 }
 
@@ -27,6 +32,8 @@ export interface UserSyncState {
   folders: UserFolderRow[];
   /** Profile `updated_at`: last time settings were written from any device. */
   lastUpdated?: string;
+  /** Epoch of the last server-side progress reset; undefined if never reset. */
+  progressResetAt?: string;
   /**
    * True when the pull returned card or learned rows. Lets the caller merge
    * even when the profile's updated_at is older — card updates don't touch it.
@@ -46,6 +53,12 @@ export interface UserSyncState {
  * seconds is cheap and idempotent for the merge.
  */
 const PULL_OVERLAP_MS = 2_000;
+
+/** Largest array the card/learned RPCs accept per call (enforced server-side). */
+const RPC_BATCH_SIZE = 500;
+
+/** A `since` past every row, so a pull returns only the profile. */
+const PROFILE_ONLY_SINCE = '9999-01-01T00:00:00.000Z';
 
 function overlapWindowStart(cursorIso: string): string {
   const cursorMs = new Date(cursorIso).getTime();
@@ -81,6 +94,7 @@ export const userService = {
       settings: wire.profile?.settings ?? {},
       folders: wire.folders ?? [],
       lastUpdated: wire.profile?.updated_at ?? undefined,
+      progressResetAt: wire.profile?.progress_reset_at ?? undefined,
       hasDelta: cards.length > 0 || learnedCards.length > 0,
       cursor: wire.cursor ?? undefined,
     };
@@ -102,10 +116,9 @@ export const userService = {
       if (rows.length === 0) return;
 
       // RPC path, chunked to stay under PostgREST payload limits.
-      const rpcBatchSize = 500;
       let rpcOk = true;
-      for (let i = 0; i < upserts.length; i += rpcBatchSize) {
-        const batch = upserts.slice(i, i + rpcBatchSize);
+      for (let i = 0; i < upserts.length; i += RPC_BATCH_SIZE) {
+        const batch = upserts.slice(i, i + RPC_BATCH_SIZE);
         const { error: rpcError } = await supabase.rpc('upsert_card_progress', {
           p_records: batch,
         });
@@ -148,37 +161,61 @@ export const userService = {
 
   // Append-only learned-card sync: new first passes are inserted server-side
   // without re-uploading the whole list.
+  // Chunked to the server's per-call limit.
   appendLearnedCards: async (cardIds: string[]): Promise<void> => {
-    const { error } = await supabase.rpc('append_learned_cards', { p_cards: cardIds });
-    if (error) {
-      debugLogger.error('Supabase', 'append_learned_cards failed:', error);
-      throw error;
+    for (let i = 0; i < cardIds.length; i += RPC_BATCH_SIZE) {
+      const { error } = await supabase.rpc('append_learned_cards', {
+        p_cards: cardIds.slice(i, i + RPC_BATCH_SIZE),
+      });
+      if (error) {
+        debugLogger.error('Supabase', 'append_learned_cards failed:', error);
+        throw error;
+      }
     }
   },
 
   // Persist the synced preferences on the profile row (not auth user_metadata,
-  // which is embedded in every access token).
-  syncSettings: async (userId: string, settings: CloudMetadataPayload): Promise<void> => {
-    const { error } = await supabase
+  // which is embedded in every access token). Returns the server-stamped
+  // `updated_at` (a trigger overwrites the client value; the client one only
+  // matters before that migration is applied).
+  syncSettings: async (userId: string, settings: CloudMetadataPayload): Promise<string | null> => {
+    const { data, error } = await supabase
       .from('user_profiles')
       .upsert(
         { id: userId, settings, updated_at: new Date().toISOString() },
         { onConflict: 'id' },
-      );
+      )
+      .select('updated_at')
+      .maybeSingle();
     if (error) {
       debugLogger.error('Supabase', 'Error syncing settings:', error);
       throw error;
     }
+    return data?.updated_at ?? null;
   },
 
   // Delete only learning progress. Saved words, custom folders, and custom cards
-  // deliberately remain intact.
-  resetLearningProgress: async (): Promise<void> => {
+  // deliberately remain intact. Resolves to the reset epoch the server stamped
+  // (null if it cannot be read back — the next pull then applies it instead).
+  resetLearningProgress: async (): Promise<string | null> => {
     const { error } = await supabase.rpc('reset_user_learning_progress');
     if (error) {
       debugLogger.error('Supabase', 'Learning progress reset failed:', error);
       throw error;
     }
+    try {
+      return await userService.getProgressResetAt();
+    } catch (readError) {
+      debugLogger.warn('Supabase', 'Could not read back the progress reset epoch:', readError);
+      return null;
+    }
+  },
+
+  // The server's current reset epoch (profile-only pull). The resetting device
+  // records it so it does not wipe its own fresh state on the next pull.
+  getProgressResetAt: async (): Promise<string | null> => {
+    const state = await userService.getSyncState({ since: PROFILE_ONLY_SINCE });
+    return state.progressResetAt ?? null;
   },
 
   // Fetch custom folders for a user

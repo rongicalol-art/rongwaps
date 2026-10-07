@@ -47,8 +47,6 @@ test('cloudSyncTransforms: buildMetadataPayload and hasMetadataChanged', () => {
     favorites: ['word1'],
     activeBookId: 1,
     characterPreference: 'traditional' as const,
-    sessionProgressIndex: { 'b1:l1': 3, 'b1:l2': 1 },
-    activeTab: 'library',
     selectedLessonParts: { '1:1': [1] },
     selectedBooks: [1],
   };
@@ -56,14 +54,17 @@ test('cloudSyncTransforms: buildMetadataPayload and hasMetadataChanged', () => {
   const payload = buildMetadataPayload(storeState);
   assert.deepEqual(payload.favorites, ['word1']);
   assert.deepEqual(payload.selectedLessons, [1]);
+  // Device-local UI state is not part of the synced payload.
+  assert.equal('activeTab' in payload, false);
+  assert.equal('sessionProgressIndex' in payload, false);
 
-  // jsonb returns object keys in its own order; that must not read as a change.
+  // Keys left in older rows (device-local ones) never read as a change.
   const syncedSettings = {
+    activeTab: 'library',
+    sessionProgressIndex: { 'b1:l2': 1 },
     favorites: ['word1'],
     activeBookId: 1,
     characterPreference: 'traditional',
-    sessionProgressIndex: { 'b1:l2': 1, 'b1:l1': 3 },
-    activeTab: 'library',
     selectedLessons: [1],
     selectedBooks: [1],
   };

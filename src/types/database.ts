@@ -92,6 +92,7 @@ export interface Database {
           next_review_date: string | null;
           learning_step: number | null;
           last_updated: string | null;
+          reviewed_at: string | null;
         };
         Insert: {
           user_id: string;
@@ -102,6 +103,7 @@ export interface Database {
           next_review_date?: string | null;
           learning_step?: number | null;
           last_updated?: string | null;
+          reviewed_at?: string | null;
         };
         Update: {
           user_id?: string;
@@ -112,6 +114,7 @@ export interface Database {
           next_review_date?: string | null;
           learning_step?: number | null;
           last_updated?: string | null;
+          reviewed_at?: string | null;
         };
         Relationships: [];
       };
@@ -212,6 +215,7 @@ export interface Database {
           avatar_url: string | null;
           settings: ProfileSettings;
           updated_at: string | null;
+          progress_reset_at: string | null;
         };
         Insert: {
           id: string;
@@ -220,6 +224,7 @@ export interface Database {
           avatar_url?: string | null;
           settings?: ProfileSettings;
           updated_at?: string | null;
+          progress_reset_at?: string | null;
         };
         Update: {
           id?: string;
@@ -228,6 +233,7 @@ export interface Database {
           avatar_url?: string | null;
           settings?: ProfileSettings;
           updated_at?: string | null;
+          progress_reset_at?: string | null;
         };
         Relationships: [];
       };
@@ -255,6 +261,14 @@ export interface Database {
         Returns: undefined;
       };
       handle_new_user: {
+        Args: Record<PropertyKey, never>;
+        Returns: unknown;
+      };
+      enforce_user_flashcard_cap: {
+        Args: Record<PropertyKey, never>;
+        Returns: unknown;
+      };
+      touch_user_profile_updated_at: {
         Args: Record<PropertyKey, never>;
         Returns: unknown;
       };

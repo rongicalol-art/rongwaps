@@ -37,13 +37,15 @@ export function computeSrsDelta(
 /**
  * The synced preferences stored in `user_profiles.settings`. A type alias
  * (not an interface) so it is assignable to the jsonb column type.
+ *
+ * Device-local UI state (active tab, per-deck resume points) is deliberately
+ * not synced: it changed on every tap/swipe, forcing a settings write per
+ * session step. Old rows may still carry those keys; they are ignored on read.
  */
 export type CloudMetadataPayload = {
   favorites: string[];
   activeBookId: number;
   characterPreference: 'traditional' | 'simplified';
-  sessionProgressIndex: Record<string, number>;
-  activeTab: string;
   selectedLessons: number[];
   selectedBooks: number[];
 };
@@ -52,8 +54,6 @@ const METADATA_KEYS = [
   'favorites',
   'activeBookId',
   'characterPreference',
-  'sessionProgressIndex',
-  'activeTab',
   'selectedLessons',
   'selectedBooks',
 ] as const satisfies readonly (keyof CloudMetadataPayload)[];
@@ -62,8 +62,6 @@ export function buildMetadataPayload(store: {
   favorites: string[];
   activeBookId: number;
   characterPreference: 'traditional' | 'simplified';
-  sessionProgressIndex: Record<string, number>;
-  activeTab: string;
   selectedLessonParts: LessonPartSelectionMap;
   selectedBooks: number[];
 }): CloudMetadataPayload {
@@ -71,8 +69,6 @@ export function buildMetadataPayload(store: {
     favorites: store.favorites,
     activeBookId: store.activeBookId,
     characterPreference: store.characterPreference,
-    sessionProgressIndex: store.sessionProgressIndex,
-    activeTab: store.activeTab,
     selectedLessons: getSelectedLessonIds(store.selectedLessonParts, store.activeBookId),
     selectedBooks: store.selectedBooks,
   };
@@ -102,12 +98,10 @@ export function hasMetadataChanged(
 
 export const AUTO_SAVE_TRIGGER_SLICES = [
   'activeBookId',
-  'activeTab',
   'characterPreference',
   'favorites',
   'learnedCards',
   'selectedBooks',
   'selectedLessonParts',
-  'sessionProgressIndex',
   'srsData',
 ] as const satisfies readonly (keyof AppStoreData)[];

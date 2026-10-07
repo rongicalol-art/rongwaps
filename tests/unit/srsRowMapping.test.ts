@@ -107,3 +107,49 @@ test('isSameSrsData treats a missing learning step and null as equal', () => {
   assert.ok(!isSameSrsData(graduated, { ...graduated, learningStep: 0 }));
   assert.ok(!isSameSrsData(learning, { ...learning, learningStep: 2 }));
 });
+
+test('srsDataToUpsert sends reviewed_at only when the card has a review time', () => {
+  assert.equal('reviewed_at' in srsDataToUpsert(graduated, graduated.cardId), false);
+
+  const reviewed: SRSData = { ...graduated, lastReviewedAt: 1757400000000 };
+  assert.equal(
+    srsDataToUpsert(reviewed, reviewed.cardId).reviewed_at,
+    new Date(1757400000000).toISOString(),
+  );
+});
+
+test('rowToSrsData maps reviewed_at to lastReviewedAt and tolerates its absence', () => {
+  const base = {
+    card_id: 'c',
+    ease: 2.5,
+    interval: 1,
+    repetitions: 1,
+    next_review_date: new Date(0).toISOString(),
+    learning_step: null,
+  };
+  const withTime = rowToSrsData({ ...base, reviewed_at: new Date(1757400000000).toISOString() });
+  assert.equal(withTime.lastReviewedAt, 1757400000000);
+
+  for (const reviewed_at of [null, undefined, 'garbage']) {
+    assert.equal('lastReviewedAt' in rowToSrsData({ ...base, reviewed_at }), false);
+  }
+});
+
+test('reviewed_at round-trips through the row mapping', () => {
+  const reviewed: SRSData = { ...learning, lastReviewedAt: 1757400123456 };
+  const upsert = srsDataToUpsert(reviewed, reviewed.cardId);
+  const roundTripped = rowToSrsData({
+    card_id: upsert.card_id,
+    ease: upsert.ease,
+    interval: upsert.interval,
+    repetitions: upsert.repetitions,
+    next_review_date: upsert.next_review_date,
+    learning_step: upsert.learning_step,
+    reviewed_at: upsert.reviewed_at,
+  });
+  assert.deepEqual(roundTripped, reviewed);
+});
+
+test('isSameSrsData ignores lastReviewedAt: only scheduling fields make a card dirty', () => {
+  assert.ok(isSameSrsData(graduated, { ...graduated, lastReviewedAt: 123 }));
+});

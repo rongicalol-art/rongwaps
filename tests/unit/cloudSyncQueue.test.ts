@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
+  applyProgressResetEpoch,
   computeLearnedDelta,
   createSingleFlightSaveCoordinator,
   getNextAutoSaveDelay,
@@ -9,6 +10,7 @@ import {
   mergePulledSrsData,
 } from '../../src/utils/cloudSyncQueue';
 import type { SRSData } from '../../src/utils/srsEngine';
+import { computeSrsDelta } from '../../src/utils/cloudSyncTransforms';
 
 function deferred() {
   let resolve!: () => void;
@@ -198,6 +200,133 @@ test('pulled merge preserves prior baseline rows an incremental pull omitted', (
 
   assert.equal(baseline['b2l1-9'], PULL_MERGE_CASES.untouchedServerCard);
   assert.equal(baseline['b1l1-1']?.nextReviewDate, 9000);
+});
+
+test('pulled merge keeps a locally newer review over an older cloud row and re-pushes it', () => {
+  const staleSynced = srs('c1', { efactor: 2.3, interval: 1, lastReviewedAt: 1_000 });
+  const localNewer = srs('c1', { efactor: 2.6, interval: 4, lastReviewedAt: 5_000 });
+  const cloudOlder = srs('c1', { efactor: 2.4, interval: 2, lastReviewedAt: 3_000 });
+  const { merged, baseline } = mergePulledSrsData({
+    priorBaseline: { c1: staleSynced },
+    // Not changed during the pull window: only the review-time rule can keep it.
+    atPullStart: { c1: localNewer },
+    current: { c1: localNewer },
+    cloud: { c1: cloudOlder },
+  });
+
+  assert.deepEqual(merged.c1, localNewer);
+  assert.deepEqual(baseline.c1, cloudOlder);
+  // The kept-local card differs from the baseline, so the next save uploads it.
+  assert.deepEqual(Object.keys(computeSrsDelta(baseline, merged)), ['c1']);
+});
+
+test('pulled merge takes the cloud row when it is newer, equal or untimed', () => {
+  const cases: Array<[string, number | undefined, number | undefined]> = [
+    ['newer cloud', 1_000, 2_000],
+    ['equal times', 2_000, 2_000],
+    ['local without a review time', undefined, 2_000],
+    ['neither has a review time', undefined, undefined],
+  ];
+  for (const [label, localTime, cloudTime] of cases) {
+    const local = srs('c1', { efactor: 2.2, lastReviewedAt: localTime });
+    const cloud = srs('c1', { efactor: 2.9, lastReviewedAt: cloudTime });
+    const { merged } = mergePulledSrsData({
+      priorBaseline: { c1: local },
+      atPullStart: { c1: local },
+      current: { c1: local },
+      cloud: { c1: cloud },
+    });
+    assert.deepEqual(merged.c1, cloud, label);
+  }
+});
+
+test('pulled merge decides per card, not per pull', () => {
+  const { merged } = mergePulledSrsData({
+    priorBaseline: {},
+    atPullStart: {
+      a: srs('a', { lastReviewedAt: 9_000 }),
+      b: srs('b', { lastReviewedAt: 1_000 }),
+    },
+    current: {
+      a: srs('a', { lastReviewedAt: 9_000 }),
+      b: srs('b', { lastReviewedAt: 1_000 }),
+    },
+    cloud: {
+      a: srs('a', { efactor: 2.1, lastReviewedAt: 2_000 }),
+      b: srs('b', { efactor: 2.1, lastReviewedAt: 6_000 }),
+    },
+  });
+
+  assert.equal(merged.a?.lastReviewedAt, 9_000);
+  assert.equal(merged.b?.efactor, 2.1);
+});
+
+const RESET_AT = '2026-10-07T00:00:00.000Z';
+const RESET_MS = new Date(RESET_AT).getTime();
+
+test('reset epoch: no cloud reset leaves local progress alone', () => {
+  const srsData = { c1: srs('c1', { lastReviewedAt: 1 }) };
+  for (const cloudResetAt of [null, undefined, 'not a date']) {
+    const result = applyProgressResetEpoch({
+      srsData, learnedCards: ['c1'], cloudResetAt, seenResetAt: undefined,
+    });
+    assert.equal(result.wiped, false);
+    assert.equal(result.srsData, srsData);
+    assert.deepEqual(result.learnedCards, ['c1']);
+  }
+});
+
+test('reset epoch: a reset newer than the one seen wipes pre-reset progress', () => {
+  const result = applyProgressResetEpoch({
+    srsData: {
+      stale: srs('stale', { lastReviewedAt: RESET_MS - 1_000 }),
+      legacy: srs('legacy'),
+    },
+    learnedCards: ['stale', 'legacy'],
+    cloudResetAt: RESET_AT,
+    seenResetAt: '2026-09-01T00:00:00.000Z',
+  });
+
+  assert.equal(result.wiped, true);
+  assert.deepEqual(result.srsData, {});
+  assert.deepEqual(result.learnedCards, []);
+  assert.equal(result.seenResetAt, RESET_AT);
+});
+
+test('reset epoch: a device that never recorded an epoch is wiped too', () => {
+  const result = applyProgressResetEpoch({
+    srsData: { c1: srs('c1', { lastReviewedAt: RESET_MS - 1 }) },
+    learnedCards: ['c1'],
+    cloudResetAt: RESET_AT,
+    seenResetAt: undefined,
+  });
+  assert.equal(result.wiped, true);
+  assert.deepEqual(result.srsData, {});
+});
+
+test('reset epoch: the same or an older reset is a no-op (the resetting device)', () => {
+  const srsData = { c1: srs('c1', { lastReviewedAt: RESET_MS + 5_000 }) };
+  for (const seenResetAt of [RESET_AT, '2026-10-08T00:00:00.000Z']) {
+    const result = applyProgressResetEpoch({
+      srsData, learnedCards: ['c1'], cloudResetAt: RESET_AT, seenResetAt,
+    });
+    assert.equal(result.wiped, false);
+    assert.equal(result.srsData, srsData);
+    assert.equal(result.seenResetAt, seenResetAt);
+  }
+});
+
+test('reset epoch: progress reviewed after the reset survives the wipe', () => {
+  const fresh = srs('fresh', { lastReviewedAt: RESET_MS + 60_000 });
+  const result = applyProgressResetEpoch({
+    srsData: { fresh, stale: srs('stale', { lastReviewedAt: RESET_MS - 60_000 }) },
+    learnedCards: ['fresh', 'stale', 'orphan'],
+    cloudResetAt: RESET_AT,
+    seenResetAt: undefined,
+  });
+
+  assert.deepEqual(result.srsData, { fresh });
+  assert.deepEqual(result.learnedCards, ['fresh']);
 });
 
 test('unchanged-skip checks never skip after a null baseline or a real change', () => {

@@ -5,6 +5,7 @@ import {
   dayBoundaryDueTimestamp,
   fuzzInterval,
   LEARNING_STEPS_MINUTES,
+  MAX_INTERVAL_DAYS,
   type SRSData,
 } from '../../src/utils/srsEngine';
 
@@ -128,5 +129,23 @@ test('review-phase nextReviewDate uses the day boundary, learning steps stay min
       4,
     );
     assert.equal(learning.nextReviewDate, NOW + LEARNING_STEPS_MINUTES[1] * MINUTE);
+  });
+});
+
+test('every review stamps lastReviewedAt (the cloud last-write-wins key)', () => {
+  withNow(() => {
+    assert.equal(calculateNextReview(undefined, 'card-1', 4).lastReviewedAt, NOW);
+    assert.equal(calculateNextReview(srs({ interval: 3, repetition: 2 }), 'card-1', 0).lastReviewedAt, NOW);
+  });
+});
+
+test('compounding practice never exceeds the database interval ceiling', () => {
+  withNow(() => {
+    const next = calculateNextReview(
+      srs({ interval: MAX_INTERVAL_DAYS, repetition: 20, efactor: 3 }),
+      'card-1',
+      5,
+    );
+    assert.equal(next.interval, MAX_INTERVAL_DAYS);
   });
 });

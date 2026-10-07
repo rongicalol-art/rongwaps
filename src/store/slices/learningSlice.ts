@@ -15,6 +15,13 @@ export interface LearningState {
   learnedCards: string[];
   setSrsDataAndLearnedCards: (srs: Record<string, SRSData>, learned: string[]) => void;
   markCardReviewed: (cardId: string, quality: Quality) => void;
+  /**
+   * Per-user reset epoch last applied on this device (user id -> ISO time of
+   * `user_profiles.progress_reset_at`). Keyed by user so it survives account
+   * switches; compared on every pull to wipe progress reset on another device.
+   */
+  progressResetSeen: Record<string, string>;
+  setProgressResetSeen: (userId: string, resetAt: string) => void;
 
   // Session Progress
   sessionProgress: SessionProgress;
@@ -50,6 +57,7 @@ export interface LearningState {
 
 interface LearningSetState {
   srsData: Record<string, SRSData>;
+  progressResetSeen: Record<string, string>;
   learnedCards: string[];
   sessionProgress: SessionProgress;
   lastActivity: LearningState['lastActivity'];
@@ -70,6 +78,12 @@ export function createLearningSlice(set: SetState): LearningState {
     setSrsDataAndLearnedCards: (srs, learned) => set({ srsData: srs, learnedCards: learned }),
     markCardReviewed: (cardId, quality) => set((state) => (
       applyCardReview(state, cardId, quality)
+    )),
+    progressResetSeen: {},
+    setProgressResetSeen: (userId, resetAt) => set((s) => (
+      s.progressResetSeen[userId] === resetAt
+        ? {}
+        : { progressResetSeen: { ...s.progressResetSeen, [userId]: resetAt } }
     )),
 
     sessionProgress: createEmptySessionProgress(),
@@ -144,6 +158,7 @@ export const LEARNING_PERSISTED_KEYS = [
   'learnedCards',
   'sessionProgressIndex',
   'deckExclusions',
+  'progressResetSeen',
 ] as const;
 
 /** Keys this domain clears when the signed-in account changes. */

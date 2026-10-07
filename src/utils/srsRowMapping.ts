@@ -15,6 +15,8 @@ export interface CardProgressRow {
   repetitions: number | null;
   next_review_date: string | null;
   learning_step: number | null;
+  /** Review time (last-write-wins key); null on rows that predate the column. */
+  reviewed_at?: string | null;
 }
 
 /**
@@ -32,6 +34,8 @@ export type CardProgressUpsert = {
   repetitions: number;
   next_review_date: string;
   learning_step: number | null;
+  /** Omitted when the card has no recorded review time; the server then stamps now(). */
+  reviewed_at?: string;
 };
 
 export function srsDataToUpsert(data: SRSData, cardId: string): CardProgressUpsert {
@@ -42,6 +46,9 @@ export function srsDataToUpsert(data: SRSData, cardId: string): CardProgressUpse
     repetitions: data.repetition,
     next_review_date: new Date(data.nextReviewDate).toISOString(),
     learning_step: data.learningStep ?? null,
+    ...(data.lastReviewedAt != null
+      ? { reviewed_at: new Date(data.lastReviewedAt).toISOString() }
+      : {}),
   };
 }
 
@@ -49,6 +56,8 @@ export function rowToSrsData(row: CardProgressRowLike): SRSData {
   const nextReviewMs = row.next_review_date
     ? new Date(row.next_review_date).getTime()
     : Date.now();
+  const parsedReviewedAt = row.reviewed_at ? new Date(row.reviewed_at).getTime() : NaN;
+  const reviewedAtMs = Number.isFinite(parsedReviewedAt) ? parsedReviewedAt : null;
   return {
     cardId: row.card_id,
     efactor: Number(row.ease),
@@ -56,6 +65,7 @@ export function rowToSrsData(row: CardProgressRowLike): SRSData {
     repetition: row.repetitions ?? 0,
     nextReviewDate: nextReviewMs,
     ...(row.learning_step != null ? { learningStep: row.learning_step } : {}),
+    ...(reviewedAtMs != null ? { lastReviewedAt: reviewedAtMs } : {}),
   };
 }
 
@@ -67,6 +77,7 @@ interface CardProgressRowLike {
   repetitions: number | null;
   next_review_date: string | null;
   learning_step: number | null;
+  reviewed_at?: string | null;
 }
 
 /**
@@ -75,6 +86,11 @@ interface CardProgressRowLike {
  * (never synced) counts as different from any present record. Keep in
  * lockstep with `srsDataToUpsert`/`rowToSrsData`: a new persisted field must
  * be added to all three.
+ *
+ * `lastReviewedAt` is deliberately NOT compared: it is metadata for conflict
+ * resolution, and a card whose scheduling fields match the baseline has
+ * nothing to upload (comparing it would re-push cards the server clamped or
+ * restamped, forever).
  */
 export function isSameSrsData(a: SRSData | undefined, b: SRSData | undefined): boolean {
   if (a === b) return true;

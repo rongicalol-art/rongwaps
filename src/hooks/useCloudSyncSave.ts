@@ -70,11 +70,12 @@ export function useCloudSyncSave({
 
     const settings = buildMetadataPayload(store);
     if (hasMetadataChanged(lastSyncedSettingsRef.current, settings)) {
-      await userService.syncSettings(userId, settings);
+      const serverUpdatedAt = await userService.syncSettings(userId, settings);
       lastSyncedSettingsRef.current = settings;
+      // Server time, never this device's clock: the pull compares it with the
+      // profile's (server-stamped) updated_at to decide whose settings are newer.
+      if (serverUpdatedAt) useAppStore.getState().setLastCloudUpdate(serverUpdatedAt);
     }
-
-    useAppStore.getState().setLastCloudUpdate(new Date().toISOString());
   }, [
     lastSyncedLearnedRef,
     lastSyncedSettingsRef,
