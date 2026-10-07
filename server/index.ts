@@ -7,25 +7,10 @@ import { MsEdgeTTS, OUTPUT_FORMAT } from "msedge-tts";
 import { supabase } from "./supabase.js";
 import { getTtsObject, putTtsObject } from "./ttsStore.js";
 import { gradeGrammarAnswer } from "./jevClient.js";
+import { isAzureTtsConfigured, synthesizeAzure } from "./azureTts.js";
 
 // Load local server configuration.
 dotenv.config();
-
-// ─── TTS provider configuration ─────────────────────────────────────
-// MiniMax Speech (https://platform.minimax.io) — high-quality Mandarin
-// TTS. Used when MINIMAX_API_KEY is set; otherwise the built-in
-// msedge-tts (Microsoft Edge Read Aloud) voices are used unchanged.
-const MINIMAX_API_KEY = process.env.MINIMAX_API_KEY || "";
-const MINIMAX_BASE_URL = (process.env.MINIMAX_BASE_URL || "https://api.minimax.io").replace(/\/+$/, "");
-const MINIMAX_TTS_MODEL = process.env.MINIMAX_TTS_MODEL || "speech-02-hd";
-
-// Client-facing voice names (TTS_VOICES) → MiniMax system voice IDs.
-// Only zh-CN voices are mapped: MiniMax has no Taiwanese (zh-TW) voices,
-// so zh-TW requests continue to use msedge-tts.
-const MINIMAX_VOICE_MAP: Record<string, string> = {
-  "zh-CN-XiaoxiaoNeural": "female-tianmei", // warm, clear female
-  "zh-CN-YunxiNeural": "male-qn-qingse",    // young, energetic male
-};
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
@@ -178,7 +163,7 @@ function sendAudioBuffer(
   return res.send(buffer.subarray(start, end + 1));
 }
 
-// ─── Neural TTS endpoint (Microsoft Edge Read Aloud) ──────────────────
+// ─── Neural TTS endpoint (Azure AI Speech, msedge-tts fallback) ──────────────────
 // POST /api/tts { text, voice? }
 // Synthesizes natural neural TTS server-side, caches MP3 in R2 (Supabase Storage if R2 is unset),
 // and streams audio/mpeg back. Fallback: GET /api/tts-cache/:text serves cache.
@@ -200,63 +185,19 @@ function ttsCacheKey(text: string, voiceName: string): string {
 const ttsInFlight = new Map<string, Promise<Buffer>>();
 
 function sanitizeTtsText(text: string): string {
-  // Guard against length abuse; msedge-tts requires SSML-safe text.
+  // Guard against length abuse; SSML escaping happens in the providers.
   return text.trim().slice(0, 500);
 }
 
-async function synthesizeMiniMax(text: string, voiceName: string): Promise<Buffer> {
-  // POST /v1/t2a_v2 — synchronous synthesis, hex-encoded MP3 in the
-  // response body. See https://platform.minimax.io/docs/api-reference/speech-t2a-http
-  const voiceId = MINIMAX_VOICE_MAP[voiceName] || MINIMAX_VOICE_MAP["zh-CN-XiaoxiaoNeural"]!;
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 30_000);
-  try {
-    const response = await fetch(`${MINIMAX_BASE_URL}/v1/t2a_v2`, {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${MINIMAX_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: MINIMAX_TTS_MODEL,
-        text,
-        stream: false,
-        language_boost: "auto",
-        output_format: "hex",
-        voice_setting: { voice_id: voiceId, speed: 1, vol: 1, pitch: 0 },
-        audio_setting: { sample_rate: 32000, bitrate: 128000, format: "mp3", channel: 1 },
-      }),
-      signal: controller.signal,
-    });
-    if (!response.ok) {
-      throw new Error(`MiniMax TTS HTTP ${response.status}`);
-    }
-    const payload = await response.json() as {
-      data?: { audio?: string; status?: number };
-      base_resp?: { status_code?: number; status_msg?: string };
-    };
-    if (payload.base_resp && payload.base_resp.status_code !== 0) {
-      throw new Error(`MiniMax TTS API error ${payload.base_resp.status_code}: ${payload.base_resp.status_msg}`);
-    }
-    const hexAudio = payload.data?.audio;
-    if (!hexAudio) {
-      throw new Error("MiniMax TTS returned no audio");
-    }
-    return Buffer.from(hexAudio, "hex");
-  } finally {
-    clearTimeout(timeout);
-  }
-}
-
 async function synthesizeNeural(text: string, voiceName: string): Promise<Buffer> {
-  // Preferred provider: MiniMax Speech for zh-CN voices when configured.
-  // Falls back to msedge-tts on any failure so playback never breaks.
-  if (MINIMAX_API_KEY && voiceName in MINIMAX_VOICE_MAP) {
+  // Preferred provider: Azure AI Speech when configured. Falls back to
+  // msedge-tts on any failure so playback never breaks.
+  if (isAzureTtsConfigured()) {
     try {
-      return await synthesizeMiniMax(text, voiceName);
+      return await synthesizeAzure(text, voiceName);
     } catch (error) {
       console.warn(
-        `MiniMax TTS failed (${voiceName}); falling back to msedge-tts:`,
+        `Azure TTS failed (${voiceName}); falling back to msedge-tts:`,
         (error as Error).message,
       );
     }
@@ -316,7 +257,7 @@ async function getTtsAudio(text: string, voiceName: string): Promise<CachedAudio
 }
 
 // Require a valid Supabase session on paid synthesis endpoints so anonymous
-// callers cannot burn the TTS provider budget (MiniMax/Edge). Guests keep
+// callers cannot burn the TTS provider budget (Azure/Edge). Guests keep
 // browser-speech fallback; only authenticated users get neural audio.
 async function requireAuth(req: express.Request, res: express.Response, next: express.NextFunction) {
   const authHeader = req.headers.authorization;

@@ -7,8 +7,10 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: MINIMAX_API_KEY
+      - key: AZURE_SPEECH_KEY
         sync: false
+      - key: AZURE_SPEECH_REGION
+        value: southeastasia
       - key: TYPESAFE_API_KEY
         sync: false
       - key: R2_ACCOUNT_ID
