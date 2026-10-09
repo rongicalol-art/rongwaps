@@ -1,40 +1,29 @@
-import React, { lazy, Suspense, memo, useMemo, useCallback } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
+import React, { memo, useMemo, useCallback } from 'react';
 import { ErrorBoundary, LoadingScreen } from '../../lib/widgets';
+import { useOpenPhase } from '../../hooks/useOpenPhase';
+import { getTabScreen, useTabScreenReady } from './tabScreenRegistry';
 import { useAppStore } from '../../store/useAppStore';
 import type { ActivityType } from '../../types/models';
 import type { TabRoute } from '../routes';
+import type { GrammarReadingTarget } from '../hooks/useAppShellActions';
 
-// Single source for tab chunks: React.lazy consumes the same loaders that
-// prefetchTabScreen calls on navigation, so the browser dedupes the import
-// and warm tabs open instantly (no loading fallback at all).
-const TAB_LOADERS = {
-  path: () => import('../../screens/curriculum'),
-  search: () => import('../../screens/search'),
-  library: () => import('../../screens/library'),
-  profile: () => import('../../screens/profile'),
+const TAB_LOADING_MESSAGE: Record<string, string> = {
+  path: 'Loading lessons…',
+  library: 'Loading library…',
+  search: 'Loading dictionary…',
+  profile: 'Loading profile…',
 };
-
-export function prefetchTabScreen(tab: string) {
-  const loader = TAB_LOADERS[tab as keyof typeof TAB_LOADERS];
-  if (loader) void loader();
-}
-
-const CurriculumLibrary = lazy(() => TAB_LOADERS.path().then((m) => ({ default: m.CurriculumLibrary })));
-const ProfileScreen = lazy(() => TAB_LOADERS.profile().then((m) => ({ default: m.ProfileScreen })));
-const SearchScreen = lazy(() => TAB_LOADERS.search().then((m) => ({ default: m.SearchScreen })));
-const LibraryScreen = lazy(() => TAB_LOADERS.library().then((m) => ({ default: m.LibraryScreen })));
 
 interface TabScreensProps {
   activeTab: string;
   activeBookId: number;
   setActiveBookId: (id: number) => void;
-  selectedLessons: number[];
-  toggleLesson: (lessonId: number) => void;
+  startPartPractice: (lessonId: number, partId: number, activity: ActivityType) => void;
   startPathPractice: () => void;
   setActiveTab: (tab: TabRoute) => void;
   setActiveActivity: (activity: ActivityType) => void;
   onOpenGrammarPart: (partId: string, pageId?: string | null) => void;
+  onOpenReadingPart: (target: GrammarReadingTarget) => void;
   onToggleNav: () => void;
 }
 
@@ -42,14 +31,21 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
   activeTab,
   activeBookId,
   setActiveBookId,
-  selectedLessons,
-  toggleLesson,
+  startPartPractice,
   startPathPractice,
   setActiveTab,
   setActiveActivity,
   onOpenGrammarPart,
+  onOpenReadingPart,
   onToggleNav,
 }) {
+  // One open rule for every tab: hold, then one loader >= 450ms, then the screen (chunk already loaded).
+  const phase = useOpenPhase(useTabScreenReady(activeTab), undefined, activeTab);
+  const CurriculumLibrary = getTabScreen('path');
+  const SearchScreen = getTabScreen('search');
+  const LibraryScreen = getTabScreen('library');
+  const ProfileScreen = getTabScreen('profile');
+
   const menuToggle = useMemo(
     () => ({ onClick: onToggleNav, label: 'Menu' }),
     [onToggleNav],
@@ -78,93 +74,47 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
     useAppStore.getState().setLibraryActiveFolder('favorites');
     setActiveTab('library');
   }, [setActiveTab]);
+  if (phase === 'hold') return null;
+  if (phase === 'loading') return <LoadingScreen message={TAB_LOADING_MESSAGE[activeTab] ?? 'Loading…'} />;
+
   return (
-    <AnimatePresence mode="wait">
-      {activeTab === 'path' && (
-        <motion.div
-          key="path"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.15 }}
-          className="flex w-full shrink-0 flex-col"
-        >
-          <ErrorBoundary>
-            <Suspense fallback={<LoadingScreen message="Loading lessons…" />}>
-              <CurriculumLibrary
-                activeBookId={activeBookId}
-                onActiveBookChange={setActiveBookId}
-                selectedLessons={selectedLessons}
-                onToggleLesson={toggleLesson}
-                onStartPractice={startPathPractice}
-                onOpenGrammarPart={onOpenGrammarPart}
-                onProfileClick={handleProfileClick}
-                menuToggle={menuToggle}
-              />
-            </Suspense>
-          </ErrorBoundary>
-        </motion.div>
-      )}
-
-      {activeTab === 'library' && (
-        <motion.div
-          key="library"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.15 }}
-          className="flex-1 flex flex-col w-full"
-        >
-          <ErrorBoundary>
-            <Suspense fallback={<LoadingScreen message="Loading library…" />}>
-              <LibraryScreen
-                onAddCard={handleAddCard}
-                onPlayFlashcards={handlePlayFlashcards}
-                menuToggle={menuToggle}
-              />
-            </Suspense>
-          </ErrorBoundary>
-        </motion.div>
-      )}
-
-      {activeTab === 'search' && (
-        <motion.div
-          key="search"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.15 }}
-          className="flex-1 flex flex-col w-full"
-        >
-          <ErrorBoundary>
-            <Suspense fallback={<LoadingScreen message="Loading dictionary…" />}>
-              <SearchScreen menuToggle={menuToggle} />
-            </Suspense>
-          </ErrorBoundary>
-        </motion.div>
-      )}
-
-      {activeTab === 'profile' && (
-        <motion.div
-          key="profile"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.15 }}
-          className="flex-1 flex flex-col w-full"
-        >
-          <ErrorBoundary>
-            <Suspense fallback={<LoadingScreen message="Loading profile…" />}>
-              <ProfileScreen
-                onStartReview={handleStartReview}
-                menuToggle={menuToggle}
-                onNavigateToFavorites={handleNavigateToFavorites}
-                onCreateCustomCard={handleAddCard}
-              />
-            </Suspense>
-          </ErrorBoundary>
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <div
+      key={activeTab}
+      className={`flex w-full flex-col animate-in fade-in duration-150 ${activeTab === 'path' ? 'shrink-0' : 'flex-1'}`}
+    >
+      <ErrorBoundary>
+        {activeTab === 'path' && CurriculumLibrary && (
+          <CurriculumLibrary
+            activeBookId={activeBookId}
+            onActiveBookChange={setActiveBookId}
+            onStartPartPractice={startPartPractice}
+            onStartPathPractice={startPathPractice}
+            onOpenGrammarPart={onOpenGrammarPart}
+            onOpenReadingPart={onOpenReadingPart}
+            onProfileClick={handleProfileClick}
+            menuToggle={menuToggle}
+          />
+        )}
+        {activeTab === 'library' && LibraryScreen && (
+          <LibraryScreen
+            onAddCard={handleAddCard}
+            onPlayFlashcards={handlePlayFlashcards}
+            menuToggle={menuToggle}
+            onProfileClick={handleProfileClick}
+          />
+        )}
+        {activeTab === 'search' && SearchScreen && (
+          <SearchScreen menuToggle={menuToggle} onProfileClick={handleProfileClick} />
+        )}
+        {activeTab === 'profile' && ProfileScreen && (
+          <ProfileScreen
+            onStartReview={handleStartReview}
+            menuToggle={menuToggle}
+            onNavigateToFavorites={handleNavigateToFavorites}
+            onCreateCustomCard={handleAddCard}
+          />
+        )}
+      </ErrorBoundary>
+    </div>
   );
 });

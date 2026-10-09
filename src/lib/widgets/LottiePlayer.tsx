@@ -1,8 +1,25 @@
 import { debugLogger } from '../../utils/debug/debugLogger';
-import React, { lazy, Suspense, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import type { ComponentType } from 'react';
 import type { LottieComponentProps } from 'lottie-react';
 
-const Lottie = lazy(() => import('lottie-react'));
+// The lottie-react chunk and each animation's JSON are cached at module level so a
+// remounted player renders its animation on the first frame. Until they are loaded the
+// player is an empty box of its final size: no spinner, nothing to swap out.
+let LottieComponent: ComponentType<LottieComponentProps> | null = null;
+let lottieLoad: Promise<void> | null = null;
+const animationCache = new Map<() => Promise<unknown>, unknown>();
+
+/** Fetches the lottie-react chunk; safe to call early (idle after boot) and repeatedly. */
+export function preloadLottie(): Promise<void> {
+  lottieLoad ??= import('lottie-react').then((m) => { LottieComponent = m.default as ComponentType<LottieComponentProps>; });
+  return lottieLoad;
+}
+
+/** Warms a `loadAnimationData` loader's JSON into the player cache. */
+export function preloadAnimation(load: () => Promise<unknown>): Promise<void> {
+  return load().then((data) => { animationCache.set(load, data); });
+}
 
 type LottieAnimationData = LottieComponentProps['animationData'];
 
@@ -37,8 +54,11 @@ export const LottiePlayer: React.FC<LottiePlayerProps> = ({
   style,
   ...props 
 }) => {
-  const [data, setData] = useState<LottieAnimationData>(animationData);
-  const [loading, setLoading] = useState<boolean>(!animationData && (!!src || !!loadAnimationData));
+  const cached = loadAnimationData ? (animationCache.get(loadAnimationData) as LottieAnimationData | undefined) : undefined;
+  const [data, setData] = useState<LottieAnimationData>(animationData ?? cached);
+  const [loading, setLoading] = useState<boolean>(!animationData && !cached && (!!src || !!loadAnimationData));
+  const [, setLottieReady] = useState(LottieComponent !== null);
+  useEffect(() => { if (!LottieComponent) void preloadLottie().then(() => setLottieReady(true)); }, []);
   const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
@@ -70,6 +90,7 @@ export const LottiePlayer: React.FC<LottiePlayerProps> = ({
           return;
         }
         if (!isCurrent) return;
+        if (loadAnimationData) animationCache.set(loadAnimationData, json);
         setData(json);
         setLoading(false);
       } catch (err) {
@@ -85,15 +106,8 @@ export const LottiePlayer: React.FC<LottiePlayerProps> = ({
     };
   }, [src, animationData, loadAnimationData]);
 
-  if (loading) {
-    return (
-      <div 
-        style={{ width, height, ...style }} 
-        className="flex items-center justify-center"
-      >
-        <div className="h-12 w-12 rounded-full border-3 border-brand-primary/20 border-t-brand-primary animate-spin" />
-      </div>
-    );
+  if (loading || (!data && !error)) {
+    return <div style={{ width, height, ...style }} />;
   }
 
   if (error || !data) {
@@ -109,15 +123,7 @@ export const LottiePlayer: React.FC<LottiePlayerProps> = ({
 
   return (
     <div style={{ width, height, ...style }} className="flex justify-center items-center">
-      <Suspense
-        fallback={
-          <div className="flex h-full w-full items-center justify-center">
-            <div className="h-12 w-12 rounded-full border-3 border-brand-primary/20 border-t-brand-primary animate-spin" />
-          </div>
-        }
-      >
-        <Lottie animationData={data} {...props} style={{ width: '100%', height: '100%' }} />
-      </Suspense>
+      {LottieComponent && <LottieComponent animationData={data} {...props} style={{ width: '100%', height: '100%' }} />}
     </div>
   );
 };

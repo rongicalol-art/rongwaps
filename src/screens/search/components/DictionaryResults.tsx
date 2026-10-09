@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'motion/react';
 import type { DictionaryListEntry } from '../../../types/models';
 import { DictionaryCard } from './DictionaryCard';
-import type { SearchMode } from './SearchModeDock';
+import type { SearchMode } from './DictionarySearchBar';
 import { AlertBanner, EmptyState, Skeleton } from '../../../lib/widgets';
 
 interface DictionaryResultsProps {
@@ -11,6 +11,8 @@ interface DictionaryResultsProps {
   favorites?: string[];
   isLoading: boolean;
   error: string | null;
+  /** Filters are narrowing the list, so an empty list says so. */
+  isFiltered?: boolean;
   onOpenWord: (word: string) => void;
   onToggleFavorite?: (word: string) => void;
 }
@@ -21,6 +23,7 @@ export function DictionaryResults({
   results,
   isLoading,
   error,
+  isFiltered = false,
   onOpenWord,
 }: DictionaryResultsProps) {
 
@@ -37,20 +40,18 @@ export function DictionaryResults({
           iconColor="text-ui-muted"
           title={`No match for “${query}”`}
           description={
-            mode === 'curriculum'
-              ? 'Try enabling more books in the bottom dock or switch to Global search.'
-              : 'Try searching characters, pinyin, or English.'
+            isFiltered
+              ? 'No results match these filters. Clear them to see everything.'
+              : mode === 'curriculum'
+              ? 'Try the pinyin without tones, or switch to All words.'
+              : 'Try the pinyin without tones, or an English word.'
           }
-          className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface"
         />
       )}
 
       {(isLoading || results.length > 0) && (
-        <section
-          aria-label="Search results"
-          className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface px-5 sm:px-6"
-        >
-          <div className="flex flex-col [&>*+*]:border-t-2 [&>*+*]:border-ui-divider">
+        <section aria-label="Search results">
+          <div className="flex flex-col">
             <AnimatePresence mode="wait">
               {isLoading && results.length === 0 ? (
                 <motion.div
@@ -59,10 +60,10 @@ export function DictionaryResults({
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.16, ease: 'easeOut' }}
-                  className="flex flex-col [&>*+*]:border-t-2 [&>*+*]:border-ui-divider"
+                  className="flex min-h-[70dvh] flex-col"
                 >
                   {Array.from({ length: 6 }, (_, index) => (
-                    <div key={index} className="flex w-full items-center gap-3 py-3.5 sm:gap-4">
+                    <div key={index} className="flex w-full items-center gap-4 border-b-2 border-ui-divider px-1 py-3.5 last:border-b-0">
                       {/* Character Box */}
                       <Skeleton className="h-8 w-12 sm:w-14 shrink-0 rounded-xs" />
                       {/* Middle lines */}
@@ -86,7 +87,7 @@ export function DictionaryResults({
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex flex-col [&>*+*]:border-t-2 [&>*+*]:border-ui-divider"
+                  className="flex flex-col"
                 >
                   {results.slice(0, 50).map((entry) => (
                     <DictionaryCard

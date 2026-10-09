@@ -8,7 +8,7 @@
  * the stylesheet `:root` values, so `bg-brand-primary` and friends pick
  * up the book color without any per-component plumbing.
  */
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import type { SAMPLE_BOOKS } from '../data/books';
 
 export type BookTheme = (typeof SAMPLE_BOOKS)[number]['theme'];
@@ -24,7 +24,8 @@ const THEME_CSS_VARS: Record<keyof BookTheme, string> = {
 };
 
 export function useBookTheme(theme: BookTheme): void {
-  useEffect(() => {
+  // Layout effect: the book colours land before the first paint, never a frame later.
+  useLayoutEffect(() => {
     const root = document.documentElement;
     (Object.keys(THEME_CSS_VARS) as (keyof BookTheme)[]).forEach((key) => {
       root.style.setProperty(THEME_CSS_VARS[key], theme[key]);

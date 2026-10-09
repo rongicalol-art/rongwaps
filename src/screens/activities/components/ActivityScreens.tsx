@@ -1,24 +1,11 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { AnimatePresence } from 'motion/react';
 import { AnimatedActivityScreen } from './AnimatedActivityScreen';
 import { AddCardScreen } from '../../add-card';
 import type { ActivityType } from '../../../types/models';
-import type { FlashcardViewMode } from '../../flashcard';
+import { getPracticeScreen } from '../practiceScreens';
 
-const FlashcardScreen = lazy(() => (
-  import('../../flashcard').then((module) => ({ default: module.FlashcardScreen }))
-));
-const ListeningScreen = lazy(() => (
-  import('../../listening').then((module) => ({ default: module.ListeningScreen }))
-));
-const QuizScreen = lazy(() => (
-  import('../../quiz').then((module) => ({ default: module.QuizScreen }))
-));
-const WritingScreen = lazy(() => (
-  import('../../writing').then((module) => ({ default: module.WritingScreen }))
-));
-
-type QuizScreenProps = React.ComponentProps<typeof QuizScreen>;
+type QuizScreenProps = React.ComponentProps<NonNullable<ReturnType<typeof getPracticeScreen<'quiz'>>>>;
 
 interface ActivityScreensProps {
   activeActivity: ActivityType;
@@ -27,20 +14,22 @@ interface ActivityScreensProps {
   isReviewMode: boolean;
   isLibraryMode: boolean;
   activeQuizMode: QuizScreenProps['mode'] | null;
-  flashcardMode: FlashcardViewMode;
   direction: number;
   onClose: () => void;
   onWritingClose: () => void;
   onCreateCardClose: () => void;
   onContinue?: () => void;
   continueLabel: string;
-  onNavigateToPractice?: () => void;
-  onScrollDockVisibility?: (visible: boolean) => void;
+  onStartQuiz: () => void;
   /** Shrinks the screens so they clear a vertical practice dock. */
   edgeInsetClassName?: string;
 }
 
-/** The lazy-loaded practice screens, swapped by activity with slide transitions. */
+/**
+ * The practice screens, swapped by activity with slide transitions. The modal only mounts this
+ * once every screen it needs is loaded (`usePracticeScreenReady`), so nothing here suspends.
+ * `initial={false}`: the first screen is part of the window's open motion, not its own.
+ */
 export function ActivityScreens({
   activeActivity,
   activeBookId,
@@ -48,84 +37,77 @@ export function ActivityScreens({
   isReviewMode,
   isLibraryMode,
   activeQuizMode,
-  flashcardMode,
   direction,
   onClose,
   onWritingClose,
   onCreateCardClose,
   onContinue,
   continueLabel,
-  onNavigateToPractice,
-  onScrollDockVisibility,
+  onStartQuiz,
   edgeInsetClassName,
 }: ActivityScreensProps) {
+  const FlashcardScreen = getPracticeScreen('flashcards');
+  const ListeningScreen = getPracticeScreen('listening');
+  const QuizScreen = getPracticeScreen('quiz');
+  const WritingScreen = getPracticeScreen('writing');
+
   return (
-    <AnimatePresence custom={direction} mode="popLayout">
-      {(activeActivity === 'flashcards' || activeActivity === 'flashcards-library' || activeActivity === 'flashcards-review') && (
+    <AnimatePresence custom={direction} mode="popLayout" initial={false}>
+      {(activeActivity === 'flashcards' || activeActivity === 'flashcards-library' || activeActivity === 'flashcards-review') && FlashcardScreen && (
         <AnimatedActivityScreen activityKey="flashcards" direction={direction} className={edgeInsetClassName}>
-          <Suspense fallback={null}>
-            <FlashcardScreen
-              activeBookId={activeBookId}
-              selectedLessons={selectedLessons}
-              isReviewDeck={isReviewMode || activeActivity === 'flashcards-review'}
-              isLibraryDeck={activeActivity === 'flashcards-library' || isLibraryMode}
-              mode={flashcardMode}
-              onClose={onClose}
-              onContinue={onContinue}
-              continueLabel={continueLabel}
-              onNavigateToPractice={onNavigateToPractice}
-              onScrollDockVisibility={onScrollDockVisibility}
-            />
-          </Suspense>
+          <FlashcardScreen
+            activeBookId={activeBookId}
+            selectedLessons={selectedLessons}
+            isReviewDeck={isReviewMode || activeActivity === 'flashcards-review'}
+            isLibraryDeck={activeActivity === 'flashcards-library' || isLibraryMode}
+            onClose={onClose}
+            onContinue={onContinue}
+            continueLabel={continueLabel}
+            onStartQuiz={onStartQuiz}
+          />
         </AnimatedActivityScreen>
       )}
 
-      {activeActivity === 'listening' && (
+      {activeActivity === 'listening' && ListeningScreen && (
         <AnimatedActivityScreen activityKey="listening" direction={direction} className={edgeInsetClassName}>
-          <Suspense fallback={null}>
-            <ListeningScreen
-              activeBookId={activeBookId}
-              selectedLessons={selectedLessons}
-              isReviewDeck={isReviewMode}
-              isLibraryDeck={isLibraryMode}
-              onClose={onClose}
-              onContinue={onContinue}
-              continueLabel={continueLabel}
-            />
-          </Suspense>
+          <ListeningScreen
+            activeBookId={activeBookId}
+            selectedLessons={selectedLessons}
+            isReviewDeck={isReviewMode}
+            isLibraryDeck={isLibraryMode}
+            onClose={onClose}
+            onContinue={onContinue}
+            continueLabel={continueLabel}
+          />
         </AnimatedActivityScreen>
       )}
 
-      {activeActivity === 'quiz' && (
+      {activeActivity === 'quiz' && QuizScreen && (
         <AnimatedActivityScreen activityKey="quiz" direction={direction} className={edgeInsetClassName}>
-          <Suspense fallback={null}>
-            <QuizScreen
-              activeBookId={activeBookId}
-              selectedLessons={selectedLessons}
-              isReviewDeck={isReviewMode}
-              isLibraryDeck={isLibraryMode}
-              mode={activeQuizMode ?? 'choices'}
-              onClose={onClose}
-              onContinue={onContinue}
-              continueLabel={continueLabel}
-            />
-          </Suspense>
+          <QuizScreen
+            activeBookId={activeBookId}
+            selectedLessons={selectedLessons}
+            isReviewDeck={isReviewMode}
+            isLibraryDeck={isLibraryMode}
+            mode={activeQuizMode ?? 'choices'}
+            onClose={onClose}
+            onContinue={onContinue}
+            continueLabel={continueLabel}
+          />
         </AnimatedActivityScreen>
       )}
 
-      {activeActivity === 'writing' && (
+      {activeActivity === 'writing' && WritingScreen && (
         <AnimatedActivityScreen activityKey="writing" direction={direction}>
-          <Suspense fallback={null}>
-            <WritingScreen
-              activeBookId={activeBookId}
-              selectedLessons={selectedLessons}
-              isReviewDeck={isReviewMode}
-              isLibraryDeck={isLibraryMode}
-              onClose={onWritingClose}
-              onContinue={onContinue}
-              continueLabel={continueLabel}
-            />
-          </Suspense>
+          <WritingScreen
+            activeBookId={activeBookId}
+            selectedLessons={selectedLessons}
+            isReviewDeck={isReviewMode}
+            isLibraryDeck={isLibraryMode}
+            onClose={onWritingClose}
+            onContinue={onContinue}
+            continueLabel={continueLabel}
+          />
         </AnimatedActivityScreen>
       )}
 

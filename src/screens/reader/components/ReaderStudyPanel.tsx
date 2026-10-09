@@ -37,12 +37,16 @@ export const ReaderStudyPanel = React.memo(function ReaderStudyPanel({
     lessonWords,
     usingLessonFallback,
     isLoading,
+    isReady,
     vocabError,
     refetch,
   } = useReaderStudyData({ reading });
 
+  // Nothing renders until both sources settle, so cards never push each other down as data lands.
+  if (!isReady) return <div className="min-h-0" />;
+
   return (
-    <div className="flex flex-col gap-3 min-h-0">
+    <div className="flex flex-col gap-3 min-h-0 animate-in fade-in duration-200">
       {/* Bento Card 1: Grammar in this Dialogue */}
       <ReaderCompanionGrammarCard
         grammarPoints={grammarPoints}

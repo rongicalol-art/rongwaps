@@ -14,9 +14,18 @@ export interface SearchResult {
   total_score: number;
 }
 
+/** Recent results by normalized query: reopening the tab (or retyping) paints instantly instead of waiting out debounce + RPC. */
+const resultCache = new Map<string, SearchResult[]>();
+const RESULT_CACHE_LIMIT = 40;
+
+function cacheKey(query: string): string {
+  return query.trim().toLowerCase();
+}
+
 export function useDictionarySearch(externalQuery: string) {
-  const [results, setResults] = useState<SearchResult[]>([]);
-  const [isSearching, setIsSearching] = useState(false);
+  const initialCached = resultCache.get(cacheKey(externalQuery));
+  const [results, setResults] = useState<SearchResult[]>(initialCached ?? []);
+  const [isSearching, setIsSearching] = useState(!initialCached && Boolean(externalQuery.trim()));
   const [searchError, setSearchError] = useState<string | null>(null);
   const searchIdRef = useRef(0);
 
@@ -47,6 +56,8 @@ export function useDictionarySearch(externalQuery: string) {
             measure_words: sanitized.measure_words
           };
         });
+        resultCache.set(queryNormalized, cleanedData);
+        if (resultCache.size > RESULT_CACHE_LIMIT) resultCache.delete(resultCache.keys().next().value as string);
         setResults(cleanedData);
       } else {
         setResults([]);
@@ -63,6 +74,14 @@ export function useDictionarySearch(externalQuery: string) {
 
   // Debounce remote execution
   useEffect(() => {
+    const cached = resultCache.get(cacheKey(externalQuery));
+    if (cached) {
+      searchIdRef.current += 1;
+      setResults(cached);
+      setSearchError(null);
+      setIsSearching(false);
+      return;
+    }
     if (externalQuery.trim()) {
       setIsSearching(true);
     } else {

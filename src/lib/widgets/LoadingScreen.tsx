@@ -1,11 +1,17 @@
 import React from 'react';
-import { LottiePlayer } from './LottiePlayer';
+import { LottiePlayer, preloadAnimation, preloadLottie } from './LottiePlayer';
 
 // The branded loader animation is 108 KB of JSON; loading it on demand keeps it
 // out of the entry chunk (every route pays for this widget's chunk). Module-level
 // loader keeps a stable identity for LottiePlayer.
 const loadSandyLoadingAnimation = () =>
   import('../../assets/animations/sandy-loading.json').then((m) => m.default);
+
+/** Warm the loader's animation + player so the first loader ever shown has no swap. Call at idle after boot. */
+export function preloadLoadingScreen(): void {
+  void preloadLottie();
+  void preloadAnimation(loadSandyLoadingAnimation);
+}
 
 interface LoadingScreenProps {
   message?: string;
@@ -46,7 +52,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
           height={180} 
           loop={true} 
         />
-        <p className="mt-2 text-ui-muted-strong font-black tracking-widest text-xs uppercase animate-pulse">
+        <p className="mt-2 text-ui-muted-strong font-black tracking-widest text-xs uppercase">
           {message}
         </p>
       </div>

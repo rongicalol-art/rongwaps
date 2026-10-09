@@ -1,120 +1,95 @@
+import { useState } from 'react';
 import { AppIcon } from '../../../lib/widgets';
-import { FOCUS_THRESHOLD, type TocflBand, type TocflReadiness } from '../../../utils/lesson/tocflReadiness';
+import { cn } from '../../../utils/cn';
+import { type TocflBand, type TocflReadiness } from '../../../utils/lesson/tocflReadiness';
 
+/** Official TOCFL band names. */
 const BAND_NAME: Record<TocflBand, string> = {
-  A: 'Novice–Beginner',
-  B: 'Basic–Intermediate',
-  C: 'Advanced–Fluent',
+  A: 'Beginner',
+  B: 'Intermediate',
+  C: 'Advanced',
 };
 
-const RING_RADIUS = 42;
-const RING_LENGTH = 2 * Math.PI * RING_RADIUS;
-const GOAL_PERCENT = Math.round(FOCUS_THRESHOLD * 100);
-
 const percentOf = (known: number, total: number) => (total > 0 ? Math.round((known / total) * 100) : 0);
+
+/** Chunky progress bar with a soft highlight stripe, like the practice progress. */
+function Bar({ percent, slim = false, label }: { percent: number; slim?: boolean; label: string }) {
+  return (
+    <div
+      role="progressbar"
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-valuenow={percent}
+      aria-label={label}
+      className={cn('overflow-hidden rounded-full bg-brand-primary-track', slim ? 'h-2.5' : 'h-4')}
+    >
+      <div
+        className="relative h-full min-w-[var(--bar-min)] rounded-full bg-brand-primary transition-[width] duration-[600ms] ease-[cubic-bezier(0.3,1.2,0.5,1)]"
+        style={{ width: `${percent}%`, ['--bar-min' as string]: slim ? '0px' : '16px' }}
+      >
+        {!slim && <span aria-hidden className="absolute inset-x-1.5 top-[3px] h-1 rounded-full bg-white/35" />}
+      </div>
+    </div>
+  );
+}
 
 interface TocflReadinessCardProps {
   readiness: TocflReadiness | null;
 }
 
 /**
- * TOCFL readiness: one hero for the band to work on (percent ring plus how many
- * characters remain to the goal) and quiet progress for the other bands.
- * Counts TBCL characters found in words the learner has passed.
+ * TOCFL readiness as one slim row: the band to work on, a chunky bar and what
+ * is left to the goal. Tap to open the other bands.
  */
 export function TocflReadinessCard({ readiness }: TocflReadinessCardProps) {
+  const [open, setOpen] = useState(false);
   const focus = readiness?.bands.find((b) => b.band === readiness.focusBand);
   const others = readiness?.bands.filter((b) => b.band !== readiness.focusBand) ?? [];
-  const focusPercent = focus ? percentOf(focus.known, focus.total) : 0;
+
+  if (!readiness || !focus) {
+    return <div className="h-20 animate-pulse rounded-feature bg-ui-hover" aria-hidden />;
+  }
+
+  const toGo = readiness.focusToGo;
+  const nextBand = readiness.bands[readiness.bands.findIndex((b) => b.band === readiness.focusBand) + 1]?.band;
+  const focusPercent = percentOf(focus.known, focus.total);
 
   return (
-    <section
-      aria-label="TOCFL readiness"
-      className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-5 sm:p-6"
-    >
-      <div className="mb-4 flex items-center gap-2.5">
-        <AppIcon name="target" size={19} className="text-brand-secondary" />
-        <h2 className="text-base font-black text-ui-ink-strong">TOCFL readiness</h2>
-      </div>
+    <section aria-label="TOCFL readiness" className="min-w-0">
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-expanded={open}
+        className="block w-full rounded-control text-left focus-ring"
+      >
+        <span className="flex items-baseline justify-between gap-3">
+          <span className="text-[17px] font-black text-ui-ink-strong">Band {readiness.focusBand} · {BAND_NAME[readiness.focusBand]}</span>
+          <span className="text-sm font-extrabold tabular-nums text-ui-muted">{focus.known} of {focus.total} characters</span>
+        </span>
+        <span className="mt-2.5 block">
+          <Bar percent={focusPercent} label={`Band ${readiness.focusBand}: ${focus.known} of ${focus.total} characters known`} />
+        </span>
+        <span className="mt-2 flex items-center justify-between text-sm font-extrabold text-ui-muted">
+          <span>{toGo > 0 ? `${toGo} more to reach ${nextBand ? `Band ${nextBand}` : 'the goal'}` : nextBand ? `Ready for Band ${nextBand}` : 'Band complete'}</span>
+          <AppIcon name="expand" size={18} className={cn('transition-transform duration-300', open && 'rotate-180')} />
+        </span>
+      </button>
 
-      {!readiness || !focus ? (
-        <div className="h-28 animate-pulse rounded-compact bg-ui-canvas" aria-hidden />
-      ) : (
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-center sm:gap-7">
-          <div className="flex items-center gap-4 sm:gap-5">
-            <div className="relative h-24 w-24 shrink-0">
-              <svg viewBox="0 0 100 100" className="h-full w-full -rotate-90" aria-hidden>
-                <circle cx="50" cy="50" r={RING_RADIUS} fill="none" strokeWidth="10" className="stroke-brand-primary-track" />
-                <circle
-                  cx="50"
-                  cy="50"
-                  r={RING_RADIUS}
-                  fill="none"
-                  strokeWidth="10"
-                  strokeLinecap="round"
-                  className="stroke-brand-primary"
-                  strokeDasharray={RING_LENGTH}
-                  strokeDashoffset={RING_LENGTH * (1 - focusPercent / 100)}
-                />
-              </svg>
-              <span className="absolute inset-0 flex items-center justify-center text-xl font-black text-ui-ink-strong">
-                {focusPercent}%
-              </span>
-            </div>
-            <div className="min-w-0 sm:hidden">
-              <FocusText band={readiness.focusBand} known={focus.known} total={focus.total} toGo={readiness.focusToGo} />
-            </div>
-          </div>
-
-          <div className="min-w-0">
-            <div className="hidden sm:block">
-              <FocusText band={readiness.focusBand} known={focus.known} total={focus.total} toGo={readiness.focusToGo} />
-            </div>
-            <ul className="mt-4 space-y-2.5 sm:mt-4">
-              {others.map(({ band, known, total }) => (
-                <li key={band}>
-                  <div className="flex items-baseline justify-between gap-2 text-xs font-extrabold text-ui-muted">
-                    <span className="truncate">Band {band} · {BAND_NAME[band]}</span>
-                    <span className="shrink-0 text-ui-muted-strong" title={`${known} of ${total} characters`}>
-                      {percentOf(known, total)}%
-                    </span>
-                  </div>
-                  <div
-                    className="mt-1 h-1.5 overflow-hidden rounded-full bg-brand-primary-track"
-                    role="progressbar"
-                    aria-valuemin={0}
-                    aria-valuemax={total}
-                    aria-valuenow={known}
-                    aria-label={`Band ${band}: ${known} of ${total} characters known`}
-                  >
-                    <div className="h-full rounded-full bg-brand-primary/45" style={{ width: `${percentOf(known, total)}%` }} />
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <div className={cn('grid transition-[grid-template-rows] duration-[360ms] ease-[cubic-bezier(0.2,0.9,0.3,1)]', open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]')}>
+        <div className="overflow-hidden">
+          <ul className="space-y-3 pt-3">
+            {others.map(({ band, known, total }) => (
+              <li key={band}>
+                <div className="flex items-baseline justify-between gap-2 text-sm font-extrabold text-ui-ink">
+                  <span className="truncate">Band {band} · {BAND_NAME[band]}</span>
+                  <span className="shrink-0 text-ui-muted" title={`${known} of ${total} characters`}>{percentOf(known, total)}%</span>
+                </div>
+                <div className="mt-1.5"><Bar slim percent={percentOf(known, total)} label={`Band ${band}: ${known} of ${total} characters known`} /></div>
+              </li>
+            ))}
+          </ul>
         </div>
-      )}
-
-      <p className="mt-4 text-[11px] font-semibold leading-snug text-ui-muted">
-        Characters from words you've passed, against the TBCL list TOCFL follows.
-      </p>
+      </div>
     </section>
-  );
-}
-
-function FocusText({ band, known, total, toGo }: { band: TocflBand; known: number; total: number; toGo: number }) {
-  return (
-    <>
-      <p className="text-sm font-black text-ui-ink-strong">
-        Band {band} · {BAND_NAME[band]}
-      </p>
-      <p className="mt-0.5 text-xs font-bold text-ui-muted">
-        {known} of {total} characters
-      </p>
-      <p className="mt-2 inline-flex rounded-xs bg-ui-hover px-2 py-1 text-xs font-extrabold text-ui-ink">
-        {toGo > 0 ? `${toGo} more to reach ${GOAL_PERCENT}%` : `${GOAL_PERCENT}% reached`}
-      </p>
-    </>
   );
 }

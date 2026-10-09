@@ -7,9 +7,21 @@ interface UseFocusModeSidebarOptions {
   activeGrammarPartId: string | null;
   dictionaryWord: string | null;
   activeActivity: string | null;
+  isLessonWindowOpen: boolean;
   isOverlayActive: boolean;
   collapseNav: () => void;
   restoreBaseNavPreference: () => void;
+}
+
+/**
+ * Opening or closing a window must not slide the workspace underneath it (that was ~30 frames
+ * of layout shift). The content column and rail swap instantly while this flag is set
+ * (layout-property animation = a shift on every frame); the user's own collapse button never sets it.
+ */
+function snapWorkspaceLayout() {
+  const root = document.documentElement;
+  root.dataset.navSnap = '';
+  window.setTimeout(() => { delete root.dataset.navSnap; }, 400);
 }
 
 /**
@@ -24,6 +36,7 @@ export function useFocusModeSidebar({
   activeGrammarPartId,
   dictionaryWord,
   activeActivity,
+  isLessonWindowOpen,
   isOverlayActive,
   collapseNav,
   restoreBaseNavPreference,
@@ -36,13 +49,17 @@ export function useFocusModeSidebar({
         ? `dictionary:${dictionaryWord}`
         : activeActivity
           ? `activity:${activeActivity}`
-          : null;
+          : isLessonWindowOpen
+            ? 'lesson'
+            : null;
 
   const prevFocusModeKeyRef = useRef<string | null>(null);
 
   useEffect(() => {
     const prevKey = prevFocusModeKeyRef.current;
     prevFocusModeKeyRef.current = activeFocusModeKey;
+
+    if (activeFocusModeKey !== prevKey) snapWorkspaceLayout();
 
     if (activeFocusModeKey !== null) {
       // 1. Entering a focus mode (from null)

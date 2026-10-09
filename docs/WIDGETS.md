@@ -35,6 +35,7 @@
 | CountryFlag | `CountryFlag.tsx` | Vector flag by `code` (`GB` `ID` `JP` `US`); no emoji flags. |
 | PlayfulNavIcon | `PlayfulNavIcon.tsx` | Nav illustration: `books` `dictionary` `library` `profile` `favorite`. |
 | UserAvatar | `UserAvatar.tsx` | Avatar with fallback; `sm`-`xl`, `ring`. |
+| ProfileAvatarButton | `ProfileAvatarButton.tsx` | Signed-in avatar button for `StickyWorkspaceHeader` `rightContent` (Books / Library / Dictionary). |
 | RongWapsCharacterPortrait | `RongWapsCharacterPortrait.tsx` | 1:1 character bust; requires `character` + `label`. |
 | PosBadge | `PosBadge.tsx` | Part-of-speech tag with hover explainer; renders nothing without `pos`. |
 
@@ -45,7 +46,7 @@
 | ActivityModalWrapper | `ActivityModalWrapper.tsx` | Workspace-bounded activity dialog; requires `id`, `ariaLabel`, `onClose`. |
 | Dialog | `Dialog.tsx` | Modal primitive; `Dialog.Root/Backdrop/Content/Header/Title/Description/Close/Body/Footer`; `size` and `depth` tiers, focus trap, portal. |
 | Drawer | `Drawer.tsx` | Bottom sheet below `md` (drag-dismiss), floating card at `md+`, or right dock via `mdPlacement="side"`; `tone` `surface`/`practice`/`canvas`; `Drawer.Root/Backdrop/Content/Handle/Header/StickyHeader/Title/Close/Body`. |
-| WorkspaceWindow | `WorkspaceWindow.tsx` | Frame for any surface taking over the workspace (Reader, Grammar, details, settings). `tone`; `layer` `window`/`window-detail`. |
+| WorkspaceWindow | `WorkspaceWindow.tsx` | Frame for any surface taking over the workspace (Reader, Grammar, details, settings). `tone`; `layer` `overlay`/`window`/`window-detail`. Open/close motion comes from `windowMotion.ts` (`sheet`/`focus`/`pop`/`rise`; `rise` is a 260ms expo-out tween, no spring). The frame owns the open motion: content inside mounts without its own entrance, defaulted by layer; never pass raw motion props. |
 | DetailShell | `DetailShell.tsx` | Workspace-bounded detail view; `.Root/.Scroller/.Content/.Floating`. `windowed` opens it as its own `WorkspaceWindow`. |
 | ConfirmationDialog | `ConfirmationDialog.tsx` | Destructive confirm on `Dialog`; focus starts on Cancel; `children` + `confirmDisabled` for type-to-confirm. |
 | DisclosureLine | `DisclosureLine.tsx` | Closed-by-default `<details>` row. |
@@ -67,9 +68,8 @@
 | StudyPartProgressRail | `part-progress/StudyPartProgressRail.tsx` | Study variant of the rail. |
 | SelectablePartProgressRail | `part-progress/SelectablePartProgressRail.tsx` | Clickable-segment variant. |
 | StudyPartButton | `part-progress/StudyPartButton.tsx` | Segment button used by the study rails. |
-| LoadingScreen | `LoadingScreen.tsx` | `fullScreen`, `inline`, `tone` (`canvas`/`practice`) must match the surface being preloaded. |
-| LottiePlayer | `LottiePlayer.tsx` | Branded motion only. Prefer `loadAnimationData` (lazy import) over `animationData`; `src` for remote. |
-| ScreenSkeleton | `ScreenSkeleton.tsx` | Activity skeleton (`type`); assumes practice header mounted. |
+| LoadingScreen | `LoadingScreen.tsx` | THE loader (no other variant): `fullScreen`, `inline`, `tone` (`canvas`/`practice`) must match the surface being preloaded. Never mount it directly on open: gate with `useOpenPhase` (hold 150ms, then one loader >= 450ms). `preloadLoadingScreen()` warms it at idle (App). |
+| LottiePlayer | `LottiePlayer.tsx` | Branded motion only. Prefer `loadAnimationData` (lazy import) over `animationData`; `src` for remote. Until loaded it is an empty box of its final size (no spinner); JSON + lottie-react are cached at module level (`preloadLottie`/`preloadAnimation`). |
 | Skeleton | `Skeleton.tsx` | Generic placeholder. |
 
 ## Headers and shells

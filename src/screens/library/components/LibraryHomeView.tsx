@@ -1,8 +1,7 @@
 import type { ReactNode } from 'react';
-import { AppIcon, ActionButton, PlayfulNavIcon } from '../../../lib/widgets';
+import { ActionButton, SectionEyebrow } from '../../../lib/widgets';
 import { FolderItem } from './FolderItem';
-import { LibraryRecentCardsCard, type RecentItem } from './LibraryRecentCardsCard';
-import { LibraryStatsCard } from './LibraryStatsCard';
+import { LibraryRecentChips, type RecentItem } from './LibraryRecentChips';
 
 interface LibraryCollectionSummary {
   id: string;
@@ -25,6 +24,7 @@ interface LibraryHomeViewProps {
   onSelectWord?: (word: string) => void;
 }
 
+/** Library home: your folders straight on the page, one line of totals, recently added words. */
 export function LibraryHomeView({
   collections,
   recentItems = [],
@@ -39,60 +39,50 @@ export function LibraryHomeView({
   const visibleCollections = normalizedSearch
     ? collections.filter((collection) => (collection.title ?? '').toLowerCase().includes(normalizedSearch))
     : collections;
+  const totalCards = collections.reduce((sum, collection) => sum + (collection.count || 0), 0);
 
   return (
-    <div className="flex flex-col gap-7">
-      <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(260px,0.78fr)]">
-        <section className="min-h-[300px] rounded-feature bg-ui-surface p-4 sm:p-6 border-b-[length:var(--depth-md)] border-ui-border">
-          <div className="mb-5 flex items-center justify-between gap-4 px-1">
-              <div className="flex items-center gap-2.5">
-                <PlayfulNavIcon name="library" className="h-6 w-6" />
-                <h2 className="text-[17px] font-black text-ui-ink-strong">Folders</h2>
-              </div>
-              <span className="text-[12px] font-extrabold text-ui-muted">
-                {collections.length} {collections.length === 1 ? 'Folder' : 'Folders'}
-              </span>
-            </div>
+    <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,2.2fr)_minmax(260px,1fr)] lg:gap-8">
+      <section
+        aria-label="Folders"
+        className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6"
+      >
+        <SectionEyebrow
+          title="Folders"
+          action={(
+            <span className="text-[13px] font-extrabold text-ui-muted">
+              {totalCards} {totalCards === 1 ? 'card' : 'cards'} in {collections.length} {collections.length === 1 ? 'folder' : 'folders'}
+            </span>
+          )}
+        />
 
-            {visibleCollections.length > 0 ? (
-              <div className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3">
-                {visibleCollections.map((collection) => (
-                  <FolderItem
-                    key={collection.id}
-                    {...collection}
-                    onSelect={() => onSelectCollection(collection.id)}
-                    onDeleteRequest={() => onDeleteFolder(collection.id, collection.title)}
-                  />
-                ))}
-                {!normalizedSearch && (
-                  <FolderItem id="new-folder" title="New Folder" isNewButton onSelect={onCreateFolder} />
-                )}
-              </div>
-            ) : (
-              <div className="flex min-h-[220px] flex-col items-center justify-center rounded-feature bg-ui-surface px-6 text-center">
-                <AppIcon name="folder" size={40} className="mb-3 text-ui-muted" />
-                <p className="text-[16px] font-black text-ui-ink">No matching folder</p>
-                <ActionButton
-                  variant="secondary"
-                  size="sm"
-                  onClick={() => onSearchChange('')}
-                  className="mt-4"
-                >
-                  Clear search
-                </ActionButton>
-              </div>
+        {visibleCollections.length > 0 ? (
+          <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-5 sm:grid-cols-3 sm:gap-x-4 sm:gap-y-6">
+            {visibleCollections.map((collection) => (
+              <FolderItem
+                key={collection.id}
+                {...collection}
+                onSelect={() => onSelectCollection(collection.id)}
+                onDeleteRequest={() => onDeleteFolder(collection.id, collection.title)}
+              />
+            ))}
+            {!normalizedSearch && (
+              <FolderItem id="new-folder" title="New folder" isNewButton onSelect={onCreateFolder} />
             )}
-        </section>
+          </div>
+        ) : (
+          <div className="flex min-h-[200px] flex-col items-center justify-center px-6 text-center">
+            <p className="text-[17px] font-black text-ui-ink-strong">No matching folder</p>
+            <ActionButton variant="secondary" size="sm" onClick={() => onSearchChange('')} className="mt-4">
+              Clear search
+            </ActionButton>
+          </div>
+        )}
+      </section>
 
-        <aside className="space-y-6 lg:sticky lg:top-6">
-          <LibraryRecentCardsCard
-            items={recentItems}
-            onSelectWord={onSelectWord}
-          />
-          <LibraryStatsCard collections={collections} />
-        </aside>
-      </div>
+      <aside className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6 lg:sticky-rail">
+        <LibraryRecentChips items={recentItems} onSelectWord={onSelectWord} />
+      </aside>
     </div>
   );
 }
-

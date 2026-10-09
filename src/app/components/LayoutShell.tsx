@@ -109,10 +109,10 @@ export function LayoutShell({
               onClick={() => setIsNavOpen(false)}
             />
             <motion.div
-              initial={{ width: 0, opacity: 0 }}
-              animate={{ width: "auto", opacity: 1 }}
-              exit={{ width: 0, opacity: 0 }}
-              transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+              initial={{ x: '-110%', opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: '-110%', opacity: 0 }}
+              transition={{ duration: 0.26, ease: [0.16, 1, 0.3, 1] }}
               className="absolute inset-y-3 left-3 z-shell flex shrink-0 flex-col overflow-hidden rounded-modal border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface shadow-ambient-sm md:hidden"
             >
               <SideNav 

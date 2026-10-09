@@ -1,6 +1,8 @@
 import { AnimatePresence } from 'motion/react';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import { GrammarLessonScreen } from '../../screens/grammar-lesson';
+import { useOpenPhase } from '../../hooks/useOpenPhase';
+import { useReplacesLoader } from '../hooks/useReplacesLoader';
 import { LoadingScreen, WorkspaceWindow } from '../../lib/widgets';
 
 type GrammarLessonScreenProps = React.ComponentProps<typeof GrammarLessonScreen>;
@@ -29,16 +31,19 @@ export function GrammarWindow({
   useDocumentTitle(part?.title ?? null);
 
   const shouldRender = isOpen || Boolean(part);
+  const phase = useOpenPhase(Boolean(part), undefined, shouldRender ? 'open' : 'closed');
+  const cameFromLoader = useReplacesLoader(phase === 'loading', shouldRender);
 
   return (
-    <AnimatePresence mode="wait">
-      {shouldRender && !part && (
+    <AnimatePresence>
+      {shouldRender && phase === 'loading' && (
         <WorkspaceWindow key="grammar-loader" tone="canvas">
           <LoadingScreen message="Loading grammar…" tone="canvas" />
         </WorkspaceWindow>
       )}
-      {shouldRender && part && (
+      {shouldRender && phase === 'ready' && part && (
         <GrammarLessonScreen
+          animateIn={!cameFromLoader}
           key={part.id}
           part={part}
           initialPageId={initialPageId}

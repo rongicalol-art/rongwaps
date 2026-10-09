@@ -2,7 +2,6 @@ import { useShallow } from 'zustand/react/shallow';
 import { PracticeHeader } from '../../../features/practice';
 import { useAppStore, selectPracticePreferences } from '../../../store/useAppStore';
 import type { ActivityType, CourseLessonPartProgress } from '../../../types/models';
-import type { FlashcardViewMode } from '../../flashcard';
 import { cn } from '../../../utils/cn';
 
 interface ActivityPracticeHeaderProps {
@@ -15,7 +14,6 @@ interface ActivityPracticeHeaderProps {
   onToggleStudyPart: (partId: number) => void;
   onClose: () => void;
   onWritingClose: () => void;
-  flashcardMode: FlashcardViewMode;
   activeBookId?: number;
   /** Keeps the header clear of a vertical practice dock. */
   insetClassName?: string;
@@ -31,7 +29,6 @@ export function ActivityPracticeHeader({
   onToggleStudyPart,
   onClose,
   onWritingClose,
-  flashcardMode,
   activeBookId,
   insetClassName,
 }: ActivityPracticeHeaderProps) {
@@ -44,10 +41,15 @@ export function ActivityPracticeHeader({
 
   if (activeActivity === 'create-card') return null;
 
+  // Flashcards and quiz stay on one part: no part rail to switch mid-round. Flashcards get quiet muted controls.
+  const isFlashcards = resolvedActivity === 'flashcards';
+  const isPartFocused = isFlashcards || resolvedActivity === 'quiz';
+
   return (
     <div className={cn('absolute top-0 left-0 right-0 z-activity-header', isOverlayOpen && 'invisible', insetClassName)}>
       <PracticeHeader
-        key={resolvedActivity}
+        // Remounts once the screen has registered its counts, so the progress rail starts at its value instead of animating from 0.
+        key={`${resolvedActivity}:${practiceHeader.totalCount > 0 ? 'registered' : 'pending'}`}
         maxWidth="none"
         onClose={activeActivity === 'writing' ? onWritingClose : onClose}
         progress={practiceHeader.progress}
@@ -56,7 +58,7 @@ export function ActivityPracticeHeader({
         isRetry={practiceHeader.isRetry}
         cleanupPhase={practiceHeader.cleanupPhase}
         partSegments={practiceHeader.partSegments}
-        studyParts={studyParts}
+        studyParts={isPartFocused ? [] : studyParts}
         onSelectStudyPart={onSelectStudyPart}
         onToggleStudyPart={onToggleStudyPart}
         accentBgClassName={accentBgClassName}
@@ -67,7 +69,8 @@ export function ActivityPracticeHeader({
         onRestartClick={practiceHeaderActions.onRestartClick}
         isShuffled={practiceHeaderActions.isShuffled}
         flowStatus={practiceHeaderActions.flowStatus}
-        showFlow={resolvedActivity === 'flashcards' && flashcardMode === 'cards'}
+        showFlow={isFlashcards}
+        quietControls={isFlashcards}
         settings={{
           preferences: practicePreferences,
           onPreferencesChange: updatePracticePreferences,

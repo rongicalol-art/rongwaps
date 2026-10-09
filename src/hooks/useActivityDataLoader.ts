@@ -116,7 +116,8 @@ export function useActivityDataLoader(
     let isMounted = true;
 
     async function loadData() {
-      setIsLoading(true);
+      // Stale-while-revalidate: a cached deck (e.g. loaded by the practice modal) stays visible, no loading flip.
+      if (!activityDeckCache.has(deckExclusionKey)) setIsLoading(true);
       setError(null);
       const { favorites, srsData } = useAppStore.getState();
 

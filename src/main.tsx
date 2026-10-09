@@ -4,6 +4,11 @@ import {BrowserRouter} from 'react-router';
 import App from './App.tsx';
 import {ErrorBoundary} from './lib/widgets';
 import './index.css';
+import { warmChineseFont } from './utils/browser/fontWarmup';
+import { startLayoutShiftMonitor } from './utils/debug/layoutShiftMonitor';
+
+if (import.meta.env.DEV) startLayoutShiftMonitor();
+warmChineseFont();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

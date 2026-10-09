@@ -21,6 +21,7 @@ export function useReaderStudyData({ reading }: UseReaderStudyDataOptions) {
   const [vocabulary, setVocabulary] = useState<Flashcard[]>([]);
   const [parts, setParts] = useState<InteractiveGrammarPart[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isGrammarLoading, setIsGrammarLoading] = useState(true);
   const [vocabError, setVocabError] = useState<string | null>(null);
   // Bumped by the card's retry control to re-run the vocabulary load.
   const [reloadToken, setReloadToken] = useState(0);
@@ -55,6 +56,7 @@ export function useReaderStudyData({ reading }: UseReaderStudyDataOptions) {
 
   useEffect(() => {
     let cancelled = false;
+    setIsGrammarLoading(true);
     void fetchGrammarPack(reading.bookId)
       .then((grammarParts) => {
         if (cancelled) return;
@@ -70,6 +72,9 @@ export function useReaderStudyData({ reading }: UseReaderStudyDataOptions) {
         // and the likely cause is a lazy-chunk load failure (e.g. a deploy that
         // invalidated this chunk while the reader was open).
         debugLogger.error('App', 'Failed to load grammar points for the reader study panel:', error);
+      })
+      .finally(() => {
+        if (!cancelled) setIsGrammarLoading(false);
       });
 
     return () => {
@@ -91,6 +96,8 @@ export function useReaderStudyData({ reading }: UseReaderStudyDataOptions) {
     lessonWords,
     usingLessonFallback,
     isLoading,
+    /** Vocabulary and grammar have both settled: the panel renders once, at its final size. */
+    isReady: !isLoading && !isGrammarLoading,
     vocabError,
     refetch,
   };

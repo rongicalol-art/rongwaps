@@ -1,53 +1,46 @@
 import { debugLogger } from '../../utils/debug/debugLogger';
 import { useDeferredValue, useEffect, useMemo, useState } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
 import { DAILY_CHARACTERS } from '../../data/dictionaryHome';
 import { useDictionarySearch } from '../../hooks/useDictionarySearch';
 import { useTocflReadiness } from '../../hooks/useTocflReadiness';
-import { StickyWorkspaceHeader, type StickyWorkspaceHeaderMenuToggle } from '../../lib/widgets';
+import { AppFooter } from '../../app/components/AppFooter';
+import { ProfileAvatarButton, StickyWorkspaceHeader, type StickyWorkspaceHeaderMenuToggle } from '../../lib/widgets';
 import { searchVocabulary } from '../../services/vocabularyService';
 import { useAppStore } from '../../store/useAppStore';
 import type { DictionaryListEntry } from '../../types/models';
-import { DictionaryHome } from './components/DictionaryHome';
+import { DictionaryAside } from './components/DictionaryAside';
 import { DictionaryResults } from './components/DictionaryResults';
-import { SearchModeDock, type SearchMode } from './components/SearchModeDock';
+import { DictionarySearchBar, type SearchMode } from './components/DictionarySearchBar';
+import { NO_SEARCH_FILTERS, SearchFilterMenu, type SearchFilters } from './components/SearchFilterMenu';
+import { useLevels } from '../../hooks/useLevels';
+import { resolveLevel, tocflLabel } from '../../utils/lesson/levels';
 import { useSavedDictionaryPreview } from './hooks/useSavedDictionaryPreview';
 
 interface SearchScreenProps {
   /** Mobile hamburger shown overlaid left in the sticky header (Dictionary). */
   menuToggle?: StickyWorkspaceHeaderMenuToggle;
+  onProfileClick?: () => void;
 }
 
-function DictionaryStickyHeader({
-  searchQuery,
-  onSearchChange,
-  menuToggle,
-}: {
-  searchQuery: string;
-  onSearchChange: (value: string) => void;
-  menuToggle?: StickyWorkspaceHeaderMenuToggle;
-}) {
-  const isSearching = searchQuery.trim().length > 0;
+function DictionaryStickyHeader({ menuToggle, onProfileClick }: SearchScreenProps) {
   return (
     <StickyWorkspaceHeader
-      title={isSearching ? 'Search' : 'Dictionary'}
-      align="left"
-      menuToggle={isSearching ? undefined : menuToggle}
-      onBack={isSearching ? () => onSearchChange('') : undefined}
-      searchValue={searchQuery}
-      onSearchChange={onSearchChange}
-      searchPlaceholder="Hanzi, pinyin, English"
-      searchLabel="search dictionary"
+      title="Dictionary"
+      menuToggle={menuToggle}
+      rightContent={onProfileClick ? <ProfileAvatarButton onClick={onProfileClick} /> : undefined}
     />
   );
 }
 
+/** With an empty search box the list shows this search, so the page is never blank. */
+const DEFAULT_QUERY = 'hi';
+const LEVEL_ORDER = ['Novice', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'Rare'];
+
 /** Curriculum search covers every book. */
 const selectedBookIds = [1, 2, 3, 4];
 
-export function SearchScreen({ menuToggle }: SearchScreenProps) {
+export function SearchScreen({ menuToggle, onProfileClick }: SearchScreenProps) {
   const favorites = useAppStore((state) => state.favorites);
-  const activeBookId = useAppStore((state) => state.activeBookId);
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
   const searchQuery = useAppStore((state) => state.searchQuery);
   const setSearchQuery = useAppStore((state) => state.setSearchQuery);
@@ -61,7 +54,8 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
   const readiness = useTocflReadiness();
 
   const query = searchQuery.trim();
-  const deferredQuery = useDeferredValue(query);
+  const searchTerm = query || DEFAULT_QUERY;
+  const deferredQuery = useDeferredValue(searchTerm);
   const { results: dictionaryResults, isSearching, searchError } = useDictionarySearch(deferredQuery);
   const { items: savedWords, isLoading: isLoadingSavedWords } = useSavedDictionaryPreview(favorites);
 
@@ -132,112 +126,94 @@ export function SearchScreen({ menuToggle }: SearchScreenProps) {
     setActiveTab('library');
   };
 
-  // Hide the dock while scrolling down, bring it back on scroll up (same as the flashcard list).
-  const [isDockVisible, setIsDockVisible] = useState(true);
-  useEffect(() => {
-    setIsDockVisible(true);
-    if (!query) return;
-    let lastTop = 0;
-    const onScroll = (e: Event) => {
-      const el = e.target instanceof HTMLElement ? e.target : null;
-      if (!el) return;
-      const top = el.scrollTop;
-      const delta = top - lastTop;
-      if (top <= 15 || delta < -8) setIsDockVisible(true);
-      else if (delta > 8 && top > 40) setIsDockVisible(false);
-      lastTop = top;
-    };
-    document.addEventListener('scroll', onScroll, { capture: true, passive: true });
-    return () => document.removeEventListener('scroll', onScroll, { capture: true });
-  }, [query]);
-
-  useEffect(() => {
-    if (!query) return;
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSearchQuery('');
-    };
-    window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
-  }, [query, setSearchQuery]);
-
   const activeResults = mode === 'global' ? dictionaryResults : courseResults;
+
+  // Filters narrow the current results by word type and level; they reset with the query or scope.
+  const levels = useLevels();
+  const [filters, setFilters] = useState<SearchFilters>(NO_SEARCH_FILTERS);
+  const hasQuery = query.length > 0;
+  useEffect(() => {
+    setFilters(NO_SEARCH_FILTERS);
+  }, [mode, hasQuery]);
+  const resultMeta = useMemo(
+    () => activeResults.map((entry) => {
+      const resolved = resolveLevel(entry.traditional, levels);
+      return { entry, bookId: 'bookId' in entry ? entry.bookId ?? null : null, lessonId: 'lessonId' in entry ? entry.lessonId ?? null : null, level: resolved ? tocflLabel(resolved.level) : null };
+    }),
+    [activeResults, levels],
+  );
+  const bookOptions = useMemo(
+    () => [...new Set(resultMeta.map(({ bookId }) => bookId).filter((id): id is number => id !== null))].sort((a, b) => a - b),
+    [resultMeta],
+  );
+  const lessonOptions = useMemo(
+    () => [...new Set(resultMeta.filter(({ bookId }) => bookId === filters.bookId).map(({ lessonId }) => lessonId).filter((id): id is number => id !== null))].sort((a, b) => a - b),
+    [resultMeta, filters.bookId],
+  );
+  const levelOptions = useMemo(() => {
+    const present = new Set(resultMeta.map(({ level }) => level));
+    return LEVEL_ORDER.filter((level) => present.has(level));
+  }, [resultMeta]);
+  const filteredResults = useMemo(
+    () => resultMeta
+      .filter(({ level, bookId, lessonId }) => (!filters.level || level === filters.level)
+        && (filters.bookId === null || bookId === filters.bookId)
+        && (filters.lessonId === null || lessonId === filters.lessonId))
+      .map(({ entry }) => entry),
+    [resultMeta, filters],
+  );
+  const isFiltered = Object.values(filters).some((filter) => filter !== null);
   const activeError = mode === 'global' ? searchError : courseSearchError;
-  const isLoading = query !== deferredQuery || (mode === 'global' ? isSearching : isSearchingCourses);
+  const isLoading = searchTerm !== deferredQuery || (mode === 'global' ? isSearching : isSearchingCourses);
+  const resultSummary = !isLoading && filteredResults.length > 0
+    ? (filteredResults.length > 50 ? 'Top 50 results' : `${filteredResults.length} ${filteredResults.length === 1 ? 'result' : 'results'}`)
+    : undefined;
 
   return (
     <div className="relative flex w-full flex-1 flex-col text-ui-ink">
-      <DictionaryStickyHeader
-        searchQuery={searchQuery}
-        onSearchChange={handleResultsSearch}
-        menuToggle={menuToggle}
-      />
+      <DictionaryStickyHeader menuToggle={menuToggle} onProfileClick={onProfileClick} />
 
-      <AnimatePresence mode="wait" initial={false}>
-        {!query ? (
-          <motion.div
-            key="dictionary-home"
-            className="flex min-h-full w-full flex-col"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.18 }}
-          >
-            <DictionaryHome
-              savedWords={savedWords}
-              isLoadingSavedWords={isLoadingSavedWords}
-              characterOfTheDay={characterOfTheDay}
-              activeBookId={selectedBookIds[0] || activeBookId || 1}
-              onOpenWord={setDictionaryWord}
-              onViewSavedWords={handleViewSavedWords}
-              readiness={readiness}
-            />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="dictionary-results"
-            className="mx-auto flex min-h-full w-full max-w-4xl flex-col gap-4 px-4 pb-dock-clearance pt-0 md:px-8"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.18 }}
-          >
-            <DictionaryResults
-              mode={mode}
-              query={query}
-              results={activeResults}
-              isLoading={isLoading}
-              error={activeError}
-              onOpenWord={setDictionaryWord}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-x-10 gap-y-7 px-4 pb-32 md:px-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:pb-20">
+        <div className="order-1 min-w-0 lg:col-start-1 lg:row-start-1">
+          <DictionarySearchBar
+            value={searchQuery}
+            onChange={handleResultsSearch}
+            mode={mode}
+            onModeChange={setMode}
+            summary={resultSummary}
+            filterSlot={(
+              <SearchFilterMenu levelOptions={levelOptions} bookOptions={mode === 'curriculum' ? bookOptions : []} lessonOptions={lessonOptions} value={filters} onChange={setFilters} />
+            )}
+          />
+        </div>
 
-      {/* Zero-height sticky anchor: pins the dock to the scroller's bottom edge.
-          Negative offset cancels the workspace scroller's bottom padding (LayoutShell pb-12 md:pb-6). */}
-      <div className="pointer-events-none sticky -bottom-12 z-dock md:-bottom-6 h-0 w-full">
-        {Boolean(query) && !isDockVisible && (
-          <div
-            aria-hidden
-            onMouseEnter={() => setIsDockVisible(true)}
-            className="pointer-events-auto absolute inset-x-0 bottom-0 z-10 h-14"
+        <aside
+          aria-label="Today and progress"
+          className={`order-2 min-w-0 lg:self-start lg:sticky-rail lg:col-start-2 lg:row-span-2 lg:row-start-1 ${query ? 'hidden lg:block' : ''}`}
+        >
+          <DictionaryAside
+            savedWords={savedWords}
+            isLoadingSavedWords={isLoadingSavedWords}
+            characterOfTheDay={characterOfTheDay}
+            onOpenWord={setDictionaryWord}
+            onViewSavedWords={handleViewSavedWords}
+            readiness={readiness}
           />
-        )}
-        {Boolean(query) && isDockVisible && (
-          <div
-            aria-hidden
-            className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-ui-canvas via-ui-canvas/90 to-transparent"
+        </aside>
+
+        <div className="order-3 min-w-0 lg:col-start-1 lg:row-start-2">
+          <DictionaryResults
+            mode={mode}
+            query={searchTerm}
+            results={filteredResults}
+            isFiltered={isFiltered}
+            isLoading={isLoading}
+            error={activeError}
+            onOpenWord={setDictionaryWord}
           />
-        )}
-        <AnimatePresence>
-          {Boolean(query) && (
-            <SearchModeDock
-              mode={mode}
-              visible={isDockVisible}
-              onChangeMode={setMode}
-            />
-          )}
-        </AnimatePresence>
+        </div>
+
+        <AppFooter className="order-4 pt-6 lg:hidden" />
       </div>
     </div>
   );

@@ -4,7 +4,8 @@ import { ActivityModalWrapper, AppIcon, type AppIconName, LoadingScreen } from '
 import { useAppStore, selectIsActivityOverlayOpen } from '../../store/useAppStore';
 import { cn } from '../../utils/cn';
 import { useActivityDataLoader } from '../../hooks/useActivityDataLoader';
-import { getPracticeLoadingMessage, preloadPracticeChunks, preloadRemainingPracticeChunks } from '../../utils/practiceLoader';
+import { getPracticeLoadingMessage, preloadRemainingPracticeChunks } from '../../utils/practiceLoader';
+import { useFontGate, useOpenPhase } from '../../hooks/useOpenPhase';
 import type { ActivityType } from '../../types/models';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { getDeckIdentityKey } from '../../utils/lesson/lessonPartSelection';
@@ -13,8 +14,7 @@ import { ActivityPracticeHeader } from './components/ActivityPracticeHeader';
 import { PracticeDockSlotProvider } from '../../features/practice';
 import { ActivityScreens } from './components/ActivityScreens';
 import { usePracticeDockLayout } from './components/practiceDockLayout';
-import { useActivityStudyParts } from './hooks';
-import type { FlashcardViewMode } from '../flashcard';
+import { useActivityStudyParts, usePracticeScreenReady } from './hooks';
 
 interface ActivityModalsProps {
   activeActivity: ActivityType;
@@ -28,7 +28,6 @@ interface ActivityModalsProps {
    * shell's overlays are not activity state and do not belong in the store.
    */
   isShellOverlayOpen: boolean;
-  onNavigateToPractice?: () => void;
   onOpenGrammarPart?: (partId: string, pageId?: string) => void;
   onOpenReading?: () => void;
 }
@@ -40,7 +39,6 @@ export function ActivityModals({
   selectedLessons,
   isLibraryMode = false,
   isShellOverlayOpen,
-  onNavigateToPractice,
   onOpenGrammarPart,
   onOpenReading,
 }: ActivityModalsProps) {
@@ -65,28 +63,25 @@ export function ActivityModals({
     isLibraryMode || activeActivity === 'flashcards-library',
   );
 
-  const [loadedChunks, setLoadedChunks] = useState<Set<ActivityType>>(() => new Set());
-
-  useEffect(() => {
-    if (!resolvedActivity || resolvedActivity === 'create-card') return;
-    if (loadedChunks.has(resolvedActivity)) return;
-
-    let cancelled = false;
-    void preloadPracticeChunks(resolvedActivity).then(() => {
-      if (!cancelled) {
-        setLoadedChunks((prev) => new Set(prev).add(resolvedActivity));
-      }
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [resolvedActivity, loadedChunks]);
-
-  const isChunkReady = Boolean(resolvedActivity && loadedChunks.has(resolvedActivity));
-  const isDeckReady = !isLoadingDeck && (
-    isReviewMode || activeActivity === 'flashcards-review' || deckCards.length > 0
+  // ONE readiness owner for opening a practice session: screen chunk + deck (+ future gates such
+  // as fonts). Warm or fast opens go straight to content; slow ones show one loader >= 450ms.
+  const isChunkReady = usePracticeScreenReady(resolvedActivity);
+  // The first cards' characters: their font slices must be loaded so no glyph swaps after reveal.
+  const firstCardsText = isLoadingDeck ? '' : deckCards.slice(0, 6).map((card) => card.front).join('');
+  const fontGate = useFontGate(firstCardsText);
+  const phase = useOpenPhase(
+    activeActivity === 'create-card' || (isChunkReady && !isLoadingDeck),
+    fontGate,
+    activeActivity ? 'open' : 'closed',
   );
-  const isSessionLoading = isPracticeSession && (!isChunkReady || !isDeckReady);
+  const hasRevealed = useRef(false);
+  const hadLoader = useRef(false);
+  if (phase === 'loading') hadLoader.current = true;
+  if (phase === 'ready') hasRevealed.current = true;
+  if (!activeActivity) { hasRevealed.current = false; hadLoader.current = false; }
+  // Switching modes inside a session never falls back to a loader or a blank frame.
+  const showContent = phase === 'ready' || hasRevealed.current;
+  const isSessionLoading = isPracticeSession && !showContent;
 
   useEffect(() => {
     if (isPracticeSession && !isLoadingDeck) {
@@ -94,7 +89,12 @@ export function ActivityModals({
     }
   }, [isPracticeSession, isLoadingDeck]);
 
+  // Flashcards and quiz are focused sessions on one lesson part: no mode dock. Independent
+  // study (several lessons picked on Books) keeps the dock so every mode is one tap away.
+  const isIndependentStudy = selectedLessons.length > 1 && !isReviewMode && !isLibraryMode;
+  const hasDock = isIndependentStudy || (resolvedActivity !== 'flashcards' && resolvedActivity !== 'quiz');
   const showDock = Boolean(
+    hasDock &&
     resolvedActivity &&
     validModes.some((mode) => mode === resolvedActivity) &&
     !isOverlayOpen &&
@@ -110,15 +110,8 @@ export function ActivityModals({
   const activeQuizMode = useAppStore(state => state.activeQuizMode);
   const setActiveQuizMode = useAppStore(state => state.setActiveQuizMode);
 
-  // Cards vs List view for the flashcards deck. Resets to Cards on close so
-  // the next session opens in the default study view.
-  const [flashcardMode, setFlashcardMode] = useState<FlashcardViewMode>('cards');
-  const [isDockScrollVisible, setIsDockScrollVisible] = useState(true);
-
-  useEffect(() => {
-    if (!activeActivity) setFlashcardMode('cards');
-    setIsDockScrollVisible(true);
-  }, [activeActivity, flashcardMode]);
+  const insetClassName = hasDock ? dockLayout.insetClassName : '';
+  const edgeInsetClassName = hasDock ? dockLayout.edgeInsetClassName : '';
 
   const previousActivityRef = useRef<ActivityType>(null);
   useEffect(() => {
@@ -193,117 +186,91 @@ export function ActivityModals({
       <AnimatePresence>
         {activeActivity && (
           <ActivityModalWrapper id="global-activity-modal" ariaLabel={activityLabel} onClose={handleClose}>
-            <AnimatePresence mode="wait">
-              {isSessionLoading ? (
+            <AnimatePresence>
+              {phase === 'loading' && !showContent && (
                 <motion.div
-                  key="lesson-loader"
+                  key="loader"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.18, ease: 'easeOut' }}
-                  className="absolute inset-0 z-activity flex flex-col items-center justify-center bg-ui-practice-canvas"
+                  className="absolute inset-0 z-activity bg-ui-practice-canvas"
                 >
                   <LoadingScreen
                     message={getPracticeLoadingMessage(activeActivity, isReviewMode, isLibraryMode)}
                     tone="practice"
                   />
                 </motion.div>
-              ) : (
-                <motion.div
-                  key="lesson-loaded"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className={cn('relative flex flex-1 flex-col overflow-hidden', dockLayout.insetClassName)}
-                >
-                  <PracticeDockSlotProvider isVertical={dockLayout.isVertical}>
-                    <ActivityPracticeHeader
-                      resolvedActivity={resolvedActivity}
-                      activeActivity={activeActivity}
-                      isOverlayOpen={isOverlayOpen}
-                      accentBgClassName={activeBook.accentBg}
-                      activeBookId={activeBookId}
-                      studyParts={visibleStudyParts}
-                      onSelectStudyPart={selectStudyPart}
-                      onToggleStudyPart={toggleStudyPart}
-                      onClose={handleClose}
-                      onWritingClose={handleWritingClose}
-                      flashcardMode={flashcardMode}
-                      insetClassName={dockLayout.edgeInsetClassName}
-                    />
-
-                    <ActivityScreens
-                      activeActivity={activeActivity}
-                      activeBookId={activeBookId}
-                      selectedLessons={selectedLessons}
-                      isReviewMode={isReviewMode}
-                      isLibraryMode={isLibraryMode}
-                      activeQuizMode={activeQuizMode}
-                      flashcardMode={flashcardMode}
-                      direction={direction}
-                      onClose={handleClose}
-                      onWritingClose={handleWritingClose}
-                      onCreateCardClose={() => setActiveActivity(null)}
-                      onContinue={onPartContinue}
-                      continueLabel={partContinueLabel}
-                      onNavigateToPractice={onNavigateToPractice}
-                      onScrollDockVisibility={flashcardMode === 'list' ? setIsDockScrollVisible : undefined}
-                      edgeInsetClassName={dockLayout.edgeInsetClassName}
-                    />
-
-                    {/* Floating Pill Dock for Modes */}
-                    <AnimatePresence>
-                      {showDock && !isDockScrollVisible && (
-                        <div
-                          key="dock-reveal-zone"
-                          aria-hidden
-                          onMouseEnter={() => setIsDockScrollVisible(true)}
-                          className={cn('absolute z-dock', dockLayout.revealZoneClassName)}
-                        />
-                      )}
-                      {showDock && (
-                        <PracticeModeDock
-                          value={resolvedActivity as (typeof PRACTICE_ACTIVITIES)[number]['id']}
-                          quizMode={activeQuizMode}
-                          flashcardMode={flashcardMode}
-                          visible={isDockScrollVisible}
-                          layout={dockLayout}
-                          autoHide={dockAutoHide}
-                          onSelectFlashcardMode={(mode) => {
-                            if (isLibraryMode) {
-                              setActiveActivity('flashcards-library');
-                            } else if (isReviewMode) {
-                              setActiveActivity('flashcards-review');
-                            } else {
-                              setActiveActivity('flashcards');
-                            }
-                            setFlashcardMode(mode);
-                          }}
-                          onOpenGrammar={practiceGrammarPart && onOpenGrammarPart
-                            ? () => onOpenGrammarPart(practiceGrammarPart.id)
-                            : undefined}
-                          onOpenReading={onOpenReading}
-                          onSelectQuizMode={(mode) => {
-                            setActiveQuizMode(mode);
-                            setActiveActivity('quiz');
-                          }}
-                          onChange={(nextActivity) => {
-                            if (isLibraryMode && nextActivity === 'flashcards') {
-                              setActiveActivity('flashcards-library');
-                            } else if (isReviewMode && nextActivity === 'flashcards') {
-                              setActiveActivity('flashcards-review');
-                            } else {
-                              setActiveActivity(nextActivity);
-                            }
-                          }}
-                        />
-                      )}
-                    </AnimatePresence>
-                  </PracticeDockSlotProvider>
-                </motion.div>
               )}
             </AnimatePresence>
+            {showContent && (
+              <div
+                data-dock-bottom={isIndependentStudy && !dockLayout.isVertical ? '' : undefined}
+                className={cn('relative flex flex-1 flex-col overflow-hidden', hadLoader.current && 'animate-in fade-in duration-200', insetClassName)}
+              >
+              <PracticeDockSlotProvider isVertical={dockLayout.isVertical}>
+                <ActivityPracticeHeader
+                  resolvedActivity={resolvedActivity}
+                  activeActivity={activeActivity}
+                  isOverlayOpen={isOverlayOpen}
+                  accentBgClassName={activeBook.accentBg}
+                  activeBookId={activeBookId}
+                  studyParts={visibleStudyParts}
+                  onSelectStudyPart={selectStudyPart}
+                  onToggleStudyPart={toggleStudyPart}
+                  onClose={handleClose}
+                  onWritingClose={handleWritingClose}
+                  insetClassName={edgeInsetClassName}
+                />
+
+                <ActivityScreens
+                  activeActivity={activeActivity}
+                  activeBookId={activeBookId}
+                  selectedLessons={selectedLessons}
+                  isReviewMode={isReviewMode}
+                  isLibraryMode={isLibraryMode}
+                  activeQuizMode={activeQuizMode}
+                  direction={direction}
+                  onClose={handleClose}
+                  onWritingClose={handleWritingClose}
+                  onCreateCardClose={() => setActiveActivity(null)}
+                  onContinue={onPartContinue}
+                  continueLabel={partContinueLabel}
+                  onStartQuiz={() => setActiveActivity('quiz')}
+                  edgeInsetClassName={edgeInsetClassName}
+                />
+
+                {/* Floating Pill Dock for Modes */}
+                <AnimatePresence>
+                  {showDock && (
+                    <PracticeModeDock
+                      value={resolvedActivity as (typeof PRACTICE_ACTIVITIES)[number]['id']}
+                      quizMode={activeQuizMode}
+                      layout={dockLayout}
+                      autoHide={dockAutoHide}
+                      onOpenGrammar={practiceGrammarPart && onOpenGrammarPart
+                        ? () => onOpenGrammarPart(practiceGrammarPart.id)
+                        : undefined}
+                      onOpenReading={onOpenReading}
+                      onSelectQuizMode={(mode) => {
+                        setActiveQuizMode(mode);
+                        setActiveActivity('quiz');
+                      }}
+                      onChange={(nextActivity) => {
+                        if (isLibraryMode && nextActivity === 'flashcards') {
+                          setActiveActivity('flashcards-library');
+                        } else if (isReviewMode && nextActivity === 'flashcards') {
+                          setActiveActivity('flashcards-review');
+                        } else {
+                          setActiveActivity(nextActivity);
+                        }
+                      }}
+                    />
+                  )}
+                </AnimatePresence>
+              </PracticeDockSlotProvider>
+              </div>
+            )}
 
             {/* Simple, non-distracting confirmation toast matching RongWaps tactile tokens */}
             <AnimatePresence>

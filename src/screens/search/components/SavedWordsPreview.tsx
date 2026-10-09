@@ -1,10 +1,7 @@
-import { AppIcon, ReferenceRow, SectionEyebrow, Skeleton } from '../../../lib/widgets';
-import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
+import { SectionEyebrow, Skeleton } from '../../../lib/widgets';
 import type { DictionarySavedPreview } from '../../../types/models';
 
-const SEE_ALL_CLASSES =
-  'min-h-9 shrink-0 rounded-compact px-2.5 text-xs font-extrabold text-brand-primary transition-colors hover:bg-brand-primary/10 focus-ring';
-const MAX_PREVIEW_ITEMS = 4;
+const MAX_PREVIEW_ITEMS = 8;
 
 interface SavedWordsPreviewProps {
   items: DictionarySavedPreview[];
@@ -14,64 +11,47 @@ interface SavedWordsPreviewProps {
   onViewAll: () => void;
 }
 
-export function SavedWordsPreview({
-  items,
-  isLoading,
-  totalCount,
-  onOpenWord,
-  onViewAll,
-}: SavedWordsPreviewProps) {
+/** Saved words as small pressable chips in one fixed-height row (scrolls sideways) so the section never changes height when words arrive; an empty list is one quiet line. */
+export function SavedWordsPreview({ items, isLoading, totalCount, onOpenWord, onViewAll }: SavedWordsPreviewProps) {
   const visibleItems = items.slice(0, MAX_PREVIEW_ITEMS);
   const displayCount = totalCount ?? (items.length > 0 ? items.length : undefined);
 
   return (
-    <section className="flex h-full min-w-0 flex-col rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6">
+    <section aria-label="Saved words" className="min-w-0">
       <SectionEyebrow
         title="Saved"
         count={displayCount}
-        icon={<AppIcon name="bookmark" className="text-feedback-warning-edge" size={16} />}
-        action={
-          items.length > 0 && (
-            <button
-              type="button"
-              onClick={onViewAll}
-              className={SEE_ALL_CLASSES}
-            >
-              See all
-            </button>
-          )
-        }
+        action={items.length > visibleItems.length && (
+          <button
+            type="button"
+            onClick={onViewAll}
+            className="min-h-9 shrink-0 rounded-compact px-2.5 text-sm font-extrabold text-brand-primary transition-colors hover:bg-brand-primary/10 focus-ring"
+          >
+            See all
+          </button>
+        )}
       />
-
       {isLoading ? (
-        <div className="mt-1 animate-in fade-in duration-200">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <div key={`saved-skeleton-${i}`} className="flex min-h-[54px] items-center gap-3 px-2 py-2">
-              <Skeleton className="h-7 w-12 shrink-0 rounded-xs" />
-              <div className="min-w-0 flex-1">
-                <Skeleton className="h-3 w-14 rounded-xs" />
-                <Skeleton className="mt-1.5 h-3.5 w-3/4 max-w-[12rem] rounded-xs" />
-              </div>
-            </div>
-          ))}
+        <div className="flex h-12 gap-2">
+          {Array.from({ length: 3 }).map((_, index) => <Skeleton key={index} className="h-12 w-24 rounded-control" />)}
         </div>
       ) : visibleItems.length > 0 ? (
-        <div className="mt-1">
+        <div className="flex h-12 gap-2 overflow-x-auto">
           {visibleItems.map((item) => (
-            <ReferenceRow
+            <button
               key={item.word}
-              glyph={item.traditional || item.word}
-              primary={numberToToneMarks(item.pinyin)}
-              secondary={item.meaning || 'Saved word'}
+              type="button"
               onClick={() => onOpenWord(item.word)}
-              ariaLabel={`Open ${item.traditional || item.word}`}
-            />
+              aria-label={`Open ${item.traditional || item.word}`}
+              className="flex h-12 shrink-0 items-baseline gap-2 rounded-control border-2 border-b-4 border-ui-divider bg-ui-surface px-3 py-1.5 transition-transform active:translate-y-0.5 active:border-b-2 focus-ring"
+            >
+              <span className="font-chinese text-2xl leading-none text-ui-ink-strong">{item.traditional || item.word}</span>
+              <span className="max-w-[9rem] truncate text-[13px] font-extrabold text-ui-muted">{(item.meaning || '').split(';')[0]}</span>
+            </button>
           ))}
         </div>
       ) : (
-        <div className="mt-3 flex min-h-[120px] flex-1 items-center justify-center rounded-control bg-ui-canvas/40 px-4 text-center">
-          <p className="text-sm font-bold text-ui-muted-strong">Saved words appear here.</p>
-        </div>
+        <p className="flex h-12 items-center text-[15px] font-bold text-ui-muted">Tap the bookmark on any word to keep it here.</p>
       )}
     </section>
   );

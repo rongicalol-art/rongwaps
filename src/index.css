@@ -58,59 +58,67 @@
   --font-chinese: var(--font-chinese-huninn);
 
   /* Soft off-white canvases keep white controls and cards visually distinct. */
-  --color-ui-canvas: #f2f3f4;
-  --color-ui-practice-canvas: #dfe5e9;
-  --color-ui-surface: #ffffff;
-  --color-ui-surface-hover: #fafafa;
-  --color-ui-ink-strong: #2f3237;
-  --color-ui-ink: #4b4b4b;
+  --color-ui-canvas: #f3f2f0;
+  --color-ui-practice-canvas: var(--color-ui-canvas);
+  --color-ui-surface: #fcfcfb;
+  --color-ui-surface-hover: #f8f7f5;
+  --color-ui-ink-strong: #34312d;
+  --color-ui-ink: #4a4743;
   --color-ui-muted-strong: #777777;
-  --color-ui-muted: #8c959b;
-  --color-ui-border: #c3c8cc;
-  --color-ui-divider: #d6dade;
-  --color-ui-hover: #f0f2f3;
+  --color-ui-muted: #8f8b86;
+  --color-ui-border: #cbc8c3;
+  --color-ui-divider: #dedbd6;
+  --color-ui-hover: #efedea;
 
-  --color-brand-primary: #0284c7;
-  --color-brand-primary-edge: #0369a1;
-  --color-brand-primary-deep: #075985;
-  --color-brand-primary-soft: #f0f9ff;
-  --color-brand-primary-soft-edge: #bae6fd;
-  --color-brand-primary-track: #c7d9e5;
-  --color-brand-secondary: #ea580c;
-  --color-brand-secondary-edge: #c2410c;
-  --color-brand-secondary-soft: #fff7ed;
+  --color-brand-primary: #3a7ca5;
+  --color-brand-primary-edge: #2c6385;
+  --color-brand-primary-deep: #1f4d6b;
+  --color-brand-primary-soft: #f2f6f8;
+  --color-brand-primary-soft-edge: #c3d7e3;
+  --color-brand-primary-track: #d3dbe0;
+  --color-brand-secondary: #d4793a;
+  --color-brand-secondary-edge: #b05f27;
+  --color-brand-secondary-soft: #fbf5ef;
   --color-brand-disabled: var(--color-ui-border);
   --color-brand-disabled-edge: var(--color-ui-muted);
   --color-brand-text-secondary: var(--color-ui-muted);
 
-  --color-feedback-success: #58cc02;
-  --color-feedback-success-edge: #58a700;
-  --color-feedback-success-hover: #46a302;
-  --color-feedback-success-surface: #d7ffb8;
-  --color-feedback-warning: #ffc800;
-  --color-feedback-warning-edge: #e0a900;
-  --color-feedback-warning-surface: #fff9e8;
-  --color-feedback-danger: #ff4b4b;
-  --color-feedback-danger-surface: #ffdfe0;
-  --color-feedback-danger-edge: #ea2b2b;
-  --color-feedback-danger-hover: #ff2b2b;
+  --color-feedback-success: #4f9f2a;
+  --color-feedback-success-edge: #3f8420;
+  --color-feedback-success-hover: #458d26;
+  --color-feedback-success-surface: #e1f0d4;
+  --color-feedback-warning: #fbbf24;
+  --color-feedback-warning-edge: #d99a0b;
+  --color-feedback-warning-surface: #fff4d6;
+  --color-feedback-warning-ink: #8a5a00;
+  /* Review passes: muted honey, deliberately calmer than feedback-warning. */
+  --color-review-bar: #dcae4f;
+  --color-review-track: #ece3cf;
+  --color-review-line: #e2d1a4;
+  --color-review-soft: #ecc873;
+  --color-review-soft-edge: #c99b3f;
+  --color-review-ink: #8a6a2a;
+  --color-feedback-danger: #d9605a;
+  --color-feedback-danger-surface: #f8e1df;
+  --color-feedback-danger-edge: #b84842;
+  --color-feedback-danger-hover: #c9524c;
 
   /* Pinyin tone colors (flashcard answer face). Each ≥4.5:1 on ui-surface. */
   --color-tone-1: #e11d48;
   --color-tone-2: #b45309;
   --color-tone-3: #047857;
-  --color-tone-4: #0369a1;
+  --color-tone-4: #2c6385;
   --color-tone-5: #737373;
 
-  --color-palette-purple: #ce82ff;
-  --color-palette-purple-edge: #a855f7;
-  --color-palette-purple-soft: #fbf5ff;
-  --color-palette-teal: #00cd9c;
-  --color-palette-teal-edge: #00a880;
-  --color-palette-teal-soft: #f0fdf9;
-  --color-palette-pink: #ff64b4;
-  --color-palette-pink-edge: #e04090;
-  --color-palette-pink-soft: #fdf2f8;
+  --color-palette-purple: #b58ad6;
+  --color-palette-purple-edge: #9568b8;
+  --color-palette-purple-soft: #f7f3fa;
+  --color-palette-teal: #3fb59a;
+  --color-palette-teal-edge: #2f9580;
+  --color-palette-teal-soft: #eff8f5;
+  --color-palette-pink: #db74a6;
+  --color-palette-pink-edge: #bc5688;
+  --color-palette-pink-soft: #fbf1f6;
 
   --radius-xs: 8px;
   --radius-sm: 12px;
@@ -322,6 +330,24 @@ body {
   );
 }
 
+/* Flashcard answer: parts rise in one after another once the word has settled. Opt-in via [data-reveal]. */
+[data-reveal] .rw-rise { opacity: 0; transform: translateY(14px); transition: opacity 260ms ease-out, transform 420ms cubic-bezier(0.2, 0.9, 0.3, 1); }
+[data-reveal='true'] .rw-rise { opacity: 1; transform: none; }
+[data-reveal='true'] .rw-rise-1 { transition-delay: 110ms; }
+[data-reveal='true'] .rw-rise-2 { transition-delay: 180ms; }
+[data-reveal='true'] .rw-rise-3 { transition-delay: 250ms; }
+@media (prefers-reduced-motion: reduce) { [data-reveal] .rw-rise { transition-duration: 1ms; transition-delay: 0ms; } }
+
+/* Independent study keeps the mode dock at the bottom: the flashcard answer bar sits above it. */
+[data-dock-bottom] .rw-answer-bar { padding-bottom: var(--dock-clearance); }
+
+/* Side rails in two-column screens stick just below the sticky header, never behind it. */
+@utility sticky-rail {
+  position: sticky;
+  top: calc(var(--size-window-header) + 1rem);
+  align-self: flex-start;
+}
+
 @layer utilities {
   /* Everything that tracks the sidebar edge moves with one timing, so the
      sidebar, the workspace column and open windows never drift apart. */
@@ -332,6 +358,13 @@ body {
 
   .workspace-shift {
     transition: padding-left var(--workspace-shift);
+  }
+
+  /* Set by useFocusModeSidebar while a window opens/closes: the content column and rail swap instantly. */
+  html[data-nav-snap] .workspace-window,
+  html[data-nav-snap] .workspace-shift,
+  html[data-nav-snap] .workspace-resize {
+    transition: none !important;
   }
 
   .workspace-resize {
@@ -523,4 +556,23 @@ body {
   .spring-transition {
     transition: none;
   }
+}
+
+/* Review intro: the header counter appears when the count badge lands on it. */
+[data-review-intro] [data-practice-counter] {
+  opacity: 0;
+}
+
+/* Review passes tint the whole app warm; registered so the swap fades instead of snapping. */
+@property --color-ui-canvas { syntax: '<color>'; inherits: true; initial-value: #f3f2f0; }
+@property --color-ui-practice-canvas { syntax: '<color>'; inherits: true; initial-value: #f3f2f0; }
+@property --color-ui-divider { syntax: '<color>'; inherits: true; initial-value: #dedbd6; }
+:root {
+  transition: --color-ui-canvas 500ms ease, --color-ui-practice-canvas 500ms ease, --color-ui-divider 500ms ease;
+}
+:root[data-practice-tone="review"] {
+  --color-ui-canvas: #f4efe6;
+  /* !important: useBookTheme writes the book's practice canvas inline on <html>. */
+  --color-ui-practice-canvas: #f4efe6 !important;
+  --color-ui-divider: #e6dcc6;
 }

@@ -1,6 +1,8 @@
 import { AnimatePresence } from 'motion/react';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import { ReaderScreen } from '../../screens/reader';
+import { useFontGate, useOpenPhase } from '../../hooks/useOpenPhase';
+import { useReplacesLoader } from '../hooks/useReplacesLoader';
 import { LoadingScreen, WorkspaceWindow } from '../../lib/widgets';
 
 type ReaderScreenProps = React.ComponentProps<typeof ReaderScreen>;
@@ -24,16 +26,22 @@ export function ReaderWindow({ isOpen = false, readings, index, onNext, onPrevio
 
   const activeReading = index !== null && readings[index] ? readings[index] : null;
   const shouldRender = isOpen || Boolean(activeReading);
+  const readingText = activeReading
+    ? activeReading.title + activeReading.paragraphs.map((p) => p.traditional + p.simplified).join('')
+    : '';
+  const phase = useOpenPhase(Boolean(activeReading), useFontGate(readingText), shouldRender ? 'open' : 'closed');
+  const cameFromLoader = useReplacesLoader(phase === 'loading', shouldRender);
 
   return (
-    <AnimatePresence mode="wait">
-      {shouldRender && !activeReading && (
+    <AnimatePresence>
+      {shouldRender && phase === 'loading' && (
         <WorkspaceWindow key="reader-loader" tone="practice">
           <LoadingScreen message="Loading reading…" tone="practice" />
         </WorkspaceWindow>
       )}
-      {shouldRender && activeReading && (
+      {shouldRender && phase === 'ready' && activeReading && (
         <ReaderScreen
+          animateIn={!cameFromLoader}
           key="reader-screen"
           readings={readings}
           index={index!}

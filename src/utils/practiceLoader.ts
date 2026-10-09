@@ -1,42 +1,21 @@
 import type { ActivityType } from '../types/models';
 import { loadActivityDeck } from '../hooks/useActivityDataLoader';
+import { loadPracticeScreen, practiceScreenKey } from '../screens/activities/practiceScreens';
 
-/**
- * Preloads the chunk for the given activity (and ActivityModals shell)
- * so that when the study window opens, the JavaScript bundle is ready.
- */
+/** Fetches the activity-screen chunk (the modal shell itself is eager). Resolves once it can render synchronously. */
 export async function preloadPracticeChunks(activity?: ActivityType | null): Promise<void> {
-  const promises: Promise<unknown>[] = [
-    import('../screens/activities/ActivityModals'),
-  ];
-
-  if (!activity || activity === 'flashcards' || activity === 'flashcards-review' || activity === 'flashcards-library') {
-    promises.push(import('../screens/flashcard'));
-  } else if (activity === 'quiz') {
-    promises.push(import('../screens/quiz'));
-  } else if (activity === 'listening') {
-    promises.push(import('../screens/listening'));
-  } else if (activity === 'writing') {
-    promises.push(import('../screens/writing'));
-  }
-
-  await Promise.all(promises);
+  await loadPracticeScreen(practiceScreenKey(activity ?? 'flashcards') ?? 'flashcards');
 }
 
-/**
- * In idle time, preloads the remaining practice activity chunks so
- * mode switching in PracticeModeDock is instantaneous with zero stutter.
- */
+/** In idle time, preloads the remaining activity chunks so mode switching in the dock is instant. */
 export function preloadRemainingPracticeChunks(): void {
   if (typeof window === 'undefined') return;
-
   const run = () => {
-    void import('../screens/flashcard');
-    void import('../screens/quiz');
-    void import('../screens/listening');
-    void import('../screens/writing');
+    void loadPracticeScreen('flashcards');
+    void loadPracticeScreen('quiz');
+    void loadPracticeScreen('listening');
+    void loadPracticeScreen('writing');
   };
-
   if ('requestIdleCallback' in window) {
     window.requestIdleCallback(run, { timeout: 2000 });
   } else {
@@ -44,7 +23,7 @@ export function preloadRemainingPracticeChunks(): void {
   }
 }
 
-export interface LoadPracticeSessionOptions {
+export interface PracticeIntent {
   activeBookId: number;
   selectedLessons: number[];
   activity: ActivityType;
@@ -53,37 +32,26 @@ export interface LoadPracticeSessionOptions {
 }
 
 /**
- * Pipelined session loader that fetches the activity code chunks,
- * lesson card data, and audio pre-warming concurrently.
+ * Prefetch on intent (lesson window shown, pointerdown on Start): the screen chunk and the
+ * deck land in the same caches the modal reads, so the real open is warm.
  */
-export async function loadPracticeSession(options: LoadPracticeSessionOptions): Promise<void> {
-  await Promise.all([
-    preloadPracticeChunks(options.activity),
-    loadActivityDeck({
-      activeBookId: options.activeBookId,
-      selectedLessons: options.selectedLessons,
-      isReviewDeck: options.isReviewMode || options.activity === 'flashcards-review',
-      isLibraryDeck: options.isLibraryMode || options.activity === 'flashcards-library',
-    }),
-  ]);
-
-  // Once active session is ready, schedule pre-warming for remaining modes
-  preloadRemainingPracticeChunks();
+export function prefetchPractice(intent: PracticeIntent): Promise<unknown> {
+  return Promise.all([
+    preloadPracticeChunks(intent.activity),
+    // Review and library decks depend on live state (SRS, folders); only curriculum decks are prefetched.
+    intent.isReviewMode || intent.isLibraryMode || intent.activity === 'flashcards-review' || intent.activity === 'flashcards-library'
+      ? undefined
+      : loadActivityDeck({ activeBookId: intent.activeBookId, selectedLessons: intent.selectedLessons }),
+  ]).catch(() => undefined);
 }
 
-/**
- * Returns the appropriate message for the loading screen.
- */
+/** Loader message for the practice modal. */
 export function getPracticeLoadingMessage(
   activity: ActivityType | null,
   isReviewMode = false,
   isLibraryMode = false,
 ): string {
-  if (isReviewMode || activity === 'flashcards-review') {
-    return 'Loading review…';
-  }
-  if (isLibraryMode || activity === 'flashcards-library') {
-    return 'Loading deck…';
-  }
+  if (isReviewMode || activity === 'flashcards-review') return 'Loading review…';
+  if (isLibraryMode || activity === 'flashcards-library') return 'Loading deck…';
   return 'Loading lesson…';
 }

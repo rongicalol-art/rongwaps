@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useLayoutEffect, useRef } from 'react';
 import type { PartSegment, PracticeHeaderActions } from '../types/models';
 import { useAppStore } from '../store/useAppStore';
 import { currentItemProgress } from '../utils/srs/progress';
@@ -10,6 +10,8 @@ interface PracticeHeaderRegistration extends PracticeHeaderActions {
   partSegments?: PartSegment[];
   isRetry?: boolean;
   cleanupPhase?: { currentIndex: number; totalCount: number } | null;
+  /** Close button only: no progress bar, counter or session controls (completion screens). */
+  minimal?: boolean;
 }
 
 export function usePracticeHeaderRegistration({
@@ -19,6 +21,7 @@ export function usePracticeHeaderRegistration({
   partSegments = [],
   isRetry,
   cleanupPhase,
+  minimal = false,
   ...actions
 }: PracticeHeaderRegistration) {
   const setPracticeHeader = useAppStore((state) => state.setPracticeHeader);
@@ -32,25 +35,26 @@ export function usePracticeHeaderRegistration({
   const callFlow = useCallback(() => actionsRef.current.onFlowClick?.(), []);
   const callRestart = useCallback(() => actionsRef.current.onRestartClick?.(), []);
 
-  const hasLightbulbAction = Boolean(actions.onLightbulbClick);
-  const hasSettingsAction = Boolean(actions.onSettingsClick);
-  const hasShuffleAction = Boolean(actions.onShuffleClick);
-  const hasFlowAction = Boolean(actions.onFlowClick);
-  const hasRestartAction = Boolean(actions.onRestartClick);
+  const hasLightbulbAction = !minimal && Boolean(actions.onLightbulbClick);
+  const hasSettingsAction = !minimal && Boolean(actions.onSettingsClick);
+  const hasShuffleAction = !minimal && Boolean(actions.onShuffleClick);
+  const hasFlowAction = !minimal && Boolean(actions.onFlowClick);
+  const hasRestartAction = !minimal && Boolean(actions.onRestartClick);
 
-  useEffect(() => {
+  // Layout effects flush their store update before paint: the header never shows "close only" first.
+  useLayoutEffect(() => {
     setPracticeHeader({
-      progress: currentItemProgress(currentIndex, totalCount),
-      currentIndex,
-      totalCount,
+      progress: minimal ? undefined : currentItemProgress(currentIndex, totalCount),
+      currentIndex: minimal ? 0 : currentIndex,
+      totalCount: minimal ? 0 : totalCount,
       showLightbulb,
       partSegments,
       isRetry,
       cleanupPhase,
     });
-  }, [cleanupPhase, currentIndex, isRetry, partSegments, setPracticeHeader, showLightbulb, totalCount]);
+  }, [cleanupPhase, currentIndex, isRetry, minimal, partSegments, setPracticeHeader, showLightbulb, totalCount]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setPracticeHeaderActions({
       onLightbulbClick: hasLightbulbAction ? callLightbulb : undefined,
       onSettingsClick: hasSettingsAction ? callSettings : undefined,
@@ -76,5 +80,5 @@ export function usePracticeHeaderRegistration({
     setPracticeHeaderActions,
   ]);
 
-  useEffect(() => () => setPracticeHeaderActions({}), [setPracticeHeaderActions]);
+  useLayoutEffect(() => () => setPracticeHeaderActions({}), [setPracticeHeaderActions]);
 }
