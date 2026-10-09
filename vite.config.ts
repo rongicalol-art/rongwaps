@@ -70,13 +70,11 @@ const pwaPlugin = VitePWA({
     globIgnores: [
       'data/**',
       'videos/**',
-      // Large CJK fonts (MBs each) are runtime-cached on first use (see the
-      // /fonts rule below) so first install does not pull ~16 MB over mobile
-      // data. Only the small UI/extras fonts stay in the precache.
-      'fonts/edukai.woff2',
-      'fonts/lxgw-wenkai.woff2',
-      'fonts/rounded-sc.woff2',
-      'fonts/huninn.woff2',
+      // Chinese font slices (public/fonts/<family>/<family>.<n>.woff2): only the first
+      // core slice (.0) is precached; the rest are
+      // runtime-cached on first use (see the /fonts rule below).
+      'fonts/*/*.[1-9].woff2',
+      'fonts/*/*.[1-9][0-9].woff2',
       '**/sw.js',
       '**/workbox-*.js',
     ],
@@ -90,7 +88,7 @@ const pwaPlugin = VitePWA({
         handler: 'CacheFirst',
         options: {
           cacheName: 'fonts',
-          expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 365 },
+          expiration: { maxEntries: 150, maxAgeSeconds: 60 * 60 * 24 * 365 },
           cacheableResponse: { statuses: [0, 200] },
         },
       },

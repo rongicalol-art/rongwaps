@@ -1,33 +1,10 @@
 @import "tailwindcss";
+@import "./styles/fonts.generated.css";
 
-@font-face {
-  font-family: 'TW-EduKai';
-  src: url('/fonts/edukai.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* LXGW WenKai Medium (OFL 1.1) — KaiTi calligraphy face with balanced medium weight
-   for Simplified Chinese. */
-@font-face {
-  font-family: 'LXGW-WenKai';
-  src: url('/fonts/lxgw-wenkai.woff2') format('woff2');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Resource Han Rounded / 思源圆体 (OFL 1.1) — rounded Simplified Chinese face,
-   subset to course glyphs, matching Huninn's rounded visual weight. */
-@font-face {
-  font-family: 'Rounded-SC';
-  src: url('/fonts/rounded-sc.woff2') format('woff2');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
+/* Chinese faces (Huninn, Rounded-SC, TW-EduKai, LXGW-WenKai) are split into
+   unicode-range slices by scripts/fonts/split-chinese-fonts.py (`npm run fonts:split`)
+   into src/styles/fonts.generated.css. Slice 0 = course glyphs. Weight synthesis is
+   disabled for Huninn/Kai (see the `data-character-font` rule below). */
 /* Supplementary glyphs for component tokens and decomposition parts that
    TW-EduKai does not cover (radicals, rare variants, CJK Ext-A/B), subset
    from Noto Sans CJK TC and Plangothic (both SIL OFL 1.1; see
@@ -56,19 +33,6 @@
   font-family: 'Nunito';
   src: url('/fonts/nunito.woff2') format('woff2');
   font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* jf open 粉圓 / Huninn (OFL 1.1) — rounded Traditional Chinese face, subset to
-   the course's glyphs. Single 400 weight; weight synthesis is disabled while it
-   is active (see the `data-character-font` rule below), because faked bold
-   merges the strokes of dense glyphs (臺, 灣) into a blob. Loaded only while the
-   "Rounded" character font is selected. */
-@font-face {
-  font-family: 'Huninn';
-  src: url('/fonts/huninn.woff2') format('woff2');
-  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }

@@ -10,6 +10,7 @@ None of this code ships to learners. Run via the matching `npm run …` alias or
 | `strokes/` | stroke-order data vendoring + pack build |
 | `audio/` | official audio download/upload/R2 sync, dialogue alignment (Python) |
 | `assets/` | font vendoring, video optimizing |
+| `fonts/` | `split-chinese-fonts.py` (`npm run fonts:split`): slices `content/fonts/*.woff2` into unicode-range woff2 under `public/fonts/<family>/` + `src/styles/fonts.generated.css`; rerun after content changes |
 | `memory-hooks/` | hook-generation pipeline (finished experiments in `archive/`); `phonetic/`, `jev/` hold sound-hook and Jev tooling |
 | `dev/` | one-off helpers (`listTables.mjs`, `ui_sweep.py`) |
 | `lib/` | shared script helpers |

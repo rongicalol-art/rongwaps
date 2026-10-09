@@ -4,7 +4,7 @@ import { join } from 'node:path';
 
 /**
  * Vendors the rounded Traditional Chinese face (jf open 粉圓 / Huninn, OFL 1.1)
- * as `public/fonts/huninn.woff2`.
+ * as `content/fonts/huninn.woff2`.
  *
  * The subset is built from every CJK character the app actually ships (content
  * packs, lesson data, and UI copy), so the offline bundle stays around ~1.7 MB
@@ -18,7 +18,7 @@ const HUNINN_VERSION = '2.1';
 const HUNINN_URL = `https://github.com/justfont/open-huninn-font/releases/download/v${HUNINN_VERSION}/jf-openhuninn-${HUNINN_VERSION}.ttf`;
 const CACHE_DIR = join(process.cwd(), 'output', 'fonts');
 const CACHE_TTF = join(CACHE_DIR, `jf-openhuninn-${HUNINN_VERSION}.ttf`);
-const OUT_DIR = join(process.cwd(), 'public', 'fonts');
+const OUT_DIR = join(process.cwd(), 'content', 'fonts');
 const OUT_FILE = join(OUT_DIR, 'huninn.woff2');
 const UNICODES_FILE = join(CACHE_DIR, 'huninn-unicodes.txt');
 
