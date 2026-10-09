@@ -102,7 +102,7 @@ function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, re
       : 'min-w-[140px] max-w-[240px] flex-1 basis-0 sm:min-w-[168px]';
   const summaryCardClass = depth > 0
     ? 'flex min-h-[64px] items-center rounded-compact px-3 py-2 shadow-[0_var(--depth-sm)_0_var(--color-ui-border)] active:translate-y-[length:var(--depth-sm)] active:shadow-none'
-    : 'flex min-h-[74px] items-center px-3.5 py-2.5 shadow-[0_var(--depth-md)_0_var(--color-ui-border)] active:translate-y-[length:var(--depth-md)] active:shadow-none';
+    : 'flex items-center px-4 py-2.5 shadow-[0_var(--depth-lg)_0_var(--color-ui-border)] active:translate-y-[length:var(--depth-lg)] active:shadow-none';
 
   return (
     <div className={`relative ${mode === 'summary' ? 'min-w-0' : treeWidthClass}`}>
@@ -121,23 +121,31 @@ function RuntimeTreeNode({ child, nodes, expanded, metadata, ancestry, depth, re
                     <span className="text-xs font-extrabold text-ui-muted-strong">Shape</span>
                   </>
                 ) : (
-                  <>
-                    <CharacterGlyph character={presentation.title} className={`flex shrink-0 items-center justify-center leading-none text-ui-ink-strong ${depth > 0 ? 'w-10 text-[30px]' : 'w-11 text-[34px]'}`} />
-                    <span className="flex min-w-0 flex-1 flex-col justify-center gap-0.5">
-                      {primaryLine && (
-                        <span className={`break-words text-xs font-extrabold text-brand-primary leading-tight ${canExpand ? 'pr-6' : ''}`}>
-                          {isSound ? `Sound · ${primaryLine}` : primaryLine}
-                        </span>
-                      )}
-                      {presentation.meaning ? (
+                  depth > 0 ? (
+                    <>
+                      <CharacterGlyph character={presentation.title} className="flex w-10 shrink-0 items-center justify-center text-[30px] leading-none text-ui-ink-strong" />
+                      <span className="flex min-w-0 flex-1 flex-col justify-center gap-0.5">
+                        {primaryLine && (
+                          <span className={`break-words text-xs font-extrabold text-brand-primary leading-tight ${canExpand ? 'pr-6' : ''}`}>
+                            {isSound ? `Sound · ${primaryLine}` : primaryLine}
+                          </span>
+                        )}
                         <span className="line-clamp-2 text-[11px] font-bold leading-snug text-ui-muted-strong">
-                          {formatCompactMeaning(presentation.meaning)}
+                          {presentation.meaning ? formatCompactMeaning(presentation.meaning) : 'No meaning recorded'}
                         </span>
-                      ) : (
-                        <span className="text-[11px] font-bold leading-snug text-ui-muted-strong">No meaning recorded</span>
-                      )}
+                      </span>
+                    </>
+                  ) : (
+                    <span className="flex min-w-0 flex-1 flex-col gap-0.5">
+                      <CharacterGlyph character={presentation.title} className="block text-[36px] leading-[1.05] text-ui-ink-strong" />
+                      <span className={`break-words text-sm font-extrabold leading-snug text-ui-ink-strong ${canExpand ? 'pr-6' : ''}`}>
+                        {primaryLine && <span className="text-brand-primary">{primaryLine}</span>}
+                        {primaryLine && presentation.meaning && ' · '}
+                        {presentation.meaning ? formatCompactMeaning(presentation.meaning) : !primaryLine && 'No meaning recorded'}
+                      </span>
+                      {isSound && <span className="text-[11px] font-black uppercase tracking-widest text-ui-muted">Sound</span>}
                     </span>
-                  </>
+                  )
                 )}
               </div>
             ) : (
@@ -235,7 +243,7 @@ export function V3RuntimeTree({ character, onGlyphClick, mode = 'summary', onSee
       {showHeading && <SectionEyebrow
         id="v3-decomposition-heading"
         title="Breakdown"
-        className="mb-3"
+        className="mb-1"
         action={children && children.length > 0 && onSeeTree ? (
           <button type="button" onClick={onSeeTree} className="flex min-h-9 shrink-0 items-center gap-1.5 rounded-compact px-2.5 text-xs font-extrabold text-brand-primary transition-colors hover:bg-brand-primary/10 focus-ring"><AppIcon name="breakdown" size={16} />See tree</button>
         ) : undefined}

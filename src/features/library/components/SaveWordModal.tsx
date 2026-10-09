@@ -253,7 +253,7 @@ export function SaveWordModal() {
               </p>
               <div className="grid grid-cols-2 gap-x-3 gap-y-4 pb-2">
                 <FolderTile
-                  title="Starred Words"
+                  title="Saved words"
                   front={STARRED_FOLDER_COLOR.front}
                   back={STARRED_FOLDER_COLOR.back}
                   isStarred

@@ -19,7 +19,7 @@ import {
 const COLLECTIONS = [
   {
     id: 'starred',
-    title: 'Starred Words',
+    title: 'Saved words',
     label: 'Dictionary Favorites',
     icon: React.createElement(AppIcon, { name: 'bookmarkFilled', size: 36, className: STARRED_FOLDER_COLOR.accent }),
     accentBg: STARRED_FOLDER_COLOR.accentBg,
@@ -32,7 +32,7 @@ const COLLECTIONS = [
   },
   {
     id: 'custom',
-    title: 'Custom Cards',
+    title: 'Custom cards',
     label: 'Smart Flashcards',
     icon: React.createElement(AppIcon, { name: 'folder', size: 36, className: CUSTOM_CARDS_FOLDER_COLOR.accent }),
     accentBg: CUSTOM_CARDS_FOLDER_COLOR.accentBg,
@@ -262,6 +262,66 @@ export function useLibrary() {
   const activeCollection = (allCollections && allCollections.find(c => c.id === libraryActiveFolder)) || (allCollections && allCollections[0]) || COLLECTIONS[0];
   const items = libraryActiveFolder === 'starred' ? filteredStarred : filteredCustom;
 
+  // Select mode: tick several cards, then remove or move them together.
+  const updateLocalFlashcard = useAppStore((state) => state.updateLocalFlashcard);
+  const [isSelecting, setIsSelecting] = useState(false);
+  const [selectedKeys, setSelectedKeys] = useState<ReadonlySet<string>>(() => new Set());
+  const [bulkRemoveOpen, setBulkRemoveOpen] = useState(false);
+  const [moveOpen, setMoveOpen] = useState(false);
+
+  const getItemKey = useCallback(
+    (item: DBDictionaryEntry | UserFlashcard) => (
+      libraryActiveFolder === 'starred' ? (item as DBDictionaryEntry).traditional : (item as UserFlashcard).id
+    ),
+    [libraryActiveFolder],
+  );
+  const exitSelecting = useCallback(() => {
+    setIsSelecting(false);
+    setSelectedKeys(new Set());
+  }, []);
+  const toggleSelected = useCallback((key: string) => {
+    setSelectedKeys((previous) => {
+      const next = new Set(previous);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+  }, []);
+  const selectAll = () => setSelectedKeys(new Set(items.map(getItemKey)));
+
+  // A different folder or the home view starts without a selection.
+  useEffect(() => {
+    exitSelecting();
+  }, [libraryActiveFolder, activeView, exitSelecting]);
+
+  const confirmBulkRemove = async () => {
+    const keys = [...selectedKeys];
+    setBulkRemoveOpen(false);
+    exitSelecting();
+    if (libraryActiveFolder === 'starred') {
+      keys.forEach((word) => toggleFavorite(word));
+    } else if (currentUser) {
+      await Promise.allSettled(keys.map((id) => flashcardService.deleteFlashcard(currentUser.id, id)));
+    } else {
+      keys.forEach((id) => deleteLocalFlashcard(id));
+    }
+  };
+
+  const moveSelectedTo = async (folderId: string) => {
+    const ids = [...selectedKeys];
+    setMoveOpen(false);
+    exitSelecting();
+    if (currentUser) {
+      try {
+        await flashcardService.moveFlashcards(currentUser.id, ids, folderId);
+      } catch {
+        useAppStore.getState().setSyncError("Couldn't move the cards — check your connection and try again.");
+      }
+    } else {
+      ids.forEach((id) => updateLocalFlashcard(id, { folderId }));
+    }
+  };
+
   const recentItems = useMemo(() => {
     const custom = customFlashcards.map(c => ({
       id: c.id,
@@ -309,6 +369,19 @@ export function useLibrary() {
     items,
     recentItems,
     activeView,
-    setActiveView
+    setActiveView,
+    isSelecting,
+    setIsSelecting,
+    exitSelecting,
+    selectedKeys,
+    toggleSelected,
+    selectAll,
+    getItemKey,
+    bulkRemoveOpen,
+    setBulkRemoveOpen,
+    confirmBulkRemove,
+    moveOpen,
+    setMoveOpen,
+    moveSelectedTo,
   };
 }

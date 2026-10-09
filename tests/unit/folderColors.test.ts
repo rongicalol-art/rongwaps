@@ -25,19 +25,19 @@ test('palette has 8 distinct vibrant colors with front and back shades', () => {
 
 test('starred and custom cards canonical folder colors are defined', () => {
   assert.equal(STARRED_FOLDER_COLOR.id, 'yellow');
-  assert.equal(STARRED_FOLDER_COLOR.front, '#FFC800');
-  assert.equal(STARRED_FOLDER_COLOR.back, '#E0A900');
+  assert.equal(STARRED_FOLDER_COLOR.front, '#E3B23C');
+  assert.equal(STARRED_FOLDER_COLOR.back, '#C4952A');
 
   assert.equal(CUSTOM_CARDS_FOLDER_COLOR.id, 'blue');
-  assert.equal(CUSTOM_CARDS_FOLDER_COLOR.front, '#0284C7');
-  assert.equal(CUSTOM_CARDS_FOLDER_COLOR.back, '#0369A1');
+  assert.equal(CUSTOM_CARDS_FOLDER_COLOR.front, '#3A7CA5');
+  assert.equal(CUSTOM_CARDS_FOLDER_COLOR.back, '#2C6385');
 });
 
 test('getFolderColorOption finds color by id or hex case-insensitively', () => {
   const purple = getFolderColorOption('purple');
   assert.equal(purple?.id, 'purple');
 
-  const greenByHex = getFolderColorOption('#58CC02');
+  const greenByHex = getFolderColorOption('#4F9F2A');
   assert.equal(greenByHex?.id, 'green');
 
   assert.equal(getFolderColorOption('nonexistent'), undefined);
@@ -47,24 +47,24 @@ test('getFolderColorOption finds color by id or hex case-insensitively', () => {
 test('resolveFolderColor resolves direct palette ids', () => {
   const coral = resolveFolderColor('coral');
   assert.equal(coral.id, 'coral');
-  assert.equal(coral.front, '#FF4B4B');
+  assert.equal(coral.front, '#D9605A');
 });
 
 test('resolveFolderColor resolves JSON color objects with colorId', () => {
   const jsonColor = JSON.stringify({
     colorId: 'teal',
-    front: '#00CD9C',
-    back: '#00A880',
+    front: '#3FB59A',
+    back: '#2F9580',
   });
   const resolved = resolveFolderColor(jsonColor);
   assert.equal(resolved.id, 'teal');
-  assert.equal(resolved.front, '#00CD9C');
+  assert.equal(resolved.front, '#3FB59A');
 });
 
 test('resolveFolderColor resolves JSON with front and back hexes', () => {
   const customJson = JSON.stringify({
-    front: '#FF64B4',
-    back: '#E04090',
+    front: '#DB74A6',
+    back: '#BC5688',
   });
   const resolved = resolveFolderColor(customJson);
   assert.equal(resolved.id, 'pink');

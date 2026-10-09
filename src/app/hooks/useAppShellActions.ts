@@ -1,13 +1,12 @@
 import { useCallback } from 'react';
-import { useNavigate } from 'react-router';
 import type { ActivityType } from '../../hooks/useAppNavigation.tsx';
 import { useAppStore } from '../../store/useAppStore';
-import { TAB_ROUTES } from '../routes';
 
 interface UseAppShellActionsOptions {
   activeBookId: number;
   collapseNav: () => void;
   setActiveActivity: (activity: ActivityType) => void;
+  startPartPractice: (lessonId: number, partId: number, activity: ActivityType) => void;
   startPathPractice: () => void;
   openReader: (bookId: number) => Promise<void> | void;
   openReaderForPart: (bookId: number, lessonId: number, partId: number) => Promise<void> | void;
@@ -34,6 +33,7 @@ export function useAppShellActions({
   activeBookId,
   collapseNav,
   setActiveActivity,
+  startPartPractice,
   startPathPractice,
   openReader,
   openReaderForPart,
@@ -44,14 +44,17 @@ export function useAppShellActions({
   setIsNavOpen,
   isDesktop,
 }: UseAppShellActionsOptions) {
-  const navigate = useNavigate();
-
   const handleSetActiveActivity = useCallback((activity: ActivityType) => {
     if (activity) {
       collapseNav();
     }
     setActiveActivity(activity);
   }, [collapseNav, setActiveActivity]);
+
+  const handleStartPartPractice = useCallback((lessonId: number, partId: number, activity: ActivityType) => {
+    collapseNav();
+    startPartPractice(lessonId, partId, activity);
+  }, [collapseNav, startPartPractice]);
 
   const handleStartPathPractice = useCallback(() => {
     collapseNav();
@@ -89,11 +92,6 @@ export function useAppShellActions({
     void openReaderForPart(target.bookId, target.lessonId, target.partId);
   }, [collapseNav, openReaderForPart, setActiveGrammarPartId, setActiveGrammarPageId]);
 
-  const handleNavigateToPractice = useCallback(() => {
-    navigate(TAB_ROUTES.path);
-    setActiveActivity(null);
-  }, [navigate, setActiveActivity]);
-
   const handleSettingsClick = useCallback(() => {
     setIsSettingsOpen(true);
     if (!isDesktop()) setIsNavOpen(false);
@@ -101,13 +99,13 @@ export function useAppShellActions({
 
   return {
     handleSetActiveActivity,
+    handleStartPartPractice,
     handleStartPathPractice,
     handleOpenReading,
     handleOpenGrammarPart,
     handleCloseGrammar,
     handleCloseReader,
     handleProceedToReading,
-    handleNavigateToPractice,
     handleSettingsClick,
   };
 }

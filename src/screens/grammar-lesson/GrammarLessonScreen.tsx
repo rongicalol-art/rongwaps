@@ -33,6 +33,8 @@ interface GrammarLessonScreenProps {
   onNavigatePart?: (partId: string) => void;
   initialPageId?: string;
   initialGrammarIndex?: number;
+  /** False when this screen replaces its own loader on the same canvas. */
+  animateIn?: boolean;
 }
 
 /** Mounts only once the lazy study page chunk has resolved; the shell uses it
@@ -58,6 +60,7 @@ export function GrammarLessonScreen({
   onNavigatePart,
   initialPageId,
   initialGrammarIndex,
+  animateIn = true,
 }: GrammarLessonScreenProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLElement>(null);
@@ -177,10 +180,7 @@ export function GrammarLessonScreen({
     <WorkspaceWindow
       ref={dialogRef}
       tabIndex={-1}
-      initial={{ opacity: 0, y: '100%' }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: '100%' }}
-      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      animateIn={animateIn}
       tone="canvas"
       className="overflow-hidden"
       role="dialog"

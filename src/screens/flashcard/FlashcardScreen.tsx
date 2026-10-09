@@ -1,32 +1,31 @@
-import { useCallback, useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence } from 'motion/react';
-import { EdgeNavButtons, ScreenSkeleton, ScreenLayout } from '../../lib/widgets';
-import { EmptyReviewState, LessonComplete } from '../../features/practice';
+import { EdgeNavButtons } from '../../lib/widgets';
+import { EmptyReviewState } from '../../features/practice';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
 import { prefetchFlashcardExtras, useFlashcardExtras } from '../../features/flashcards';
 import { useFlashcards } from './hooks/useFlashcards';
 import { useFlashcardSwipe } from './hooks/useFlashcardSwipe';
 import { DraggableFlashcard } from './components/DraggableFlashcard';
-import { FlashcardList } from './components/FlashcardList';
+import { FlashcardAnswerBar } from './components/FlashcardAnswerBar';
+import { DeckComplete } from './components/DeckComplete';
+import { ReviewDealIntro } from './components/ReviewDealIntro';
+import { cn } from '../../utils/cn';
 import { useAppStore } from '../../store/useAppStore';
-import { useDeckExclusionActions } from '../../hooks/useDeckExclusionActions';
 import { useFlashcardKeyboardShortcuts } from './hooks/useFlashcardKeyboardShortcuts';
 import { useFlashcardFlow } from './hooks/useFlashcardFlow';
-
-export type FlashcardViewMode = 'cards' | 'list';
 
 interface FlashcardScreenProps {
   activeBookId: number;
   selectedLessons?: number[];
   isReviewDeck?: boolean;
   isLibraryDeck?: boolean;
-  mode?: FlashcardViewMode;
   onClose?: () => void;
   onContinue?: () => void;
   continueLabel?: string;
-  onNavigateToPractice?: () => void;
-  onScrollDockVisibility?: (visible: boolean) => void;
+  /** Quizzes the same words; offered at the end of a round. */
+  onStartQuiz?: () => void;
 }
 
 export function FlashcardScreen({
@@ -34,11 +33,10 @@ export function FlashcardScreen({
   selectedLessons = [],
   isReviewDeck = false,
   isLibraryDeck = false,
-  mode = 'cards',
   onClose,
   onContinue,
   continueLabel,
-  onScrollDockVisibility,
+  onStartQuiz,
 }: FlashcardScreenProps) {
   const activeBook = useMemo(
     () => SAMPLE_BOOKS.find((b) => b.id === activeBookId) || SAMPLE_BOOKS[0],
@@ -47,7 +45,7 @@ export function FlashcardScreen({
 
   const {
     cards,
-    deckCards,
+    missedCards,
     currentCard,
     currentIndex,
     maxVisitedIndex,
@@ -59,30 +57,86 @@ export function FlashcardScreen({
     setActiveBreakdown,
     handleNavigate,
     handleNext,
-    resetAll,
+    resetAll: resetDeck,
     reviewUnlearned,
-    unlearnedCount,
     learnedCount,
     isShuffled,
     toggleShuffle,
     progressInfo,
-    deckExclusionKey,
-    excludedIds,
     isLoading,
     error,
   } = useFlashcards(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
 
-  const { toggleCard } = useDeckExclusionActions(deckExclusionKey);
   const showPinyin = useAppStore((state) => state.showPinyin);
   const toneColors = useAppStore((state) => state.toneColors);
   const showTranslation = useAppStore((state) => state.showTranslation);
 
+  // Missed cards come back automatically: after the first pass, then again until a pass has no misses.
+  const [reviewPass, setReviewPass] = useState(0);
+  const [introActive, setIntroActive] = useState(false);
+  /** The first review card has landed: the real deck is shown while the overlay finishes. */
+  const [introLanded, setIntroLanded] = useState(false);
+  const [dealStarted, setDealStarted] = useState(false);
+  /** Size of the pass that just ended: the header shows that finished deck during the intro. */
+  const [finishedPassSize, setFinishedPassSize] = useState(0);
+  const firstPassRef = useRef<{ total: number; correct: number } | null>(null);
+  const startedAtRef = useRef<number | null>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const isReviewPass = reviewPass > 0;
+  const missedCount = missedCards.length;
+
+  useEffect(() => {
+    if (currentCard && startedAtRef.current === null) startedAtRef.current = Date.now();
+  }, [currentCard]);
+
+  useEffect(() => {
+    if (!completed || missedCount === 0) return;
+    firstPassRef.current ??= { total: cards.length, correct: learnedCount };
+    reviewUnlearned();
+    setReviewPass((pass) => pass + 1);
+    setFinishedPassSize(cards.length);
+    setDealStarted(false);
+    setIntroLanded(false);
+    setIntroActive(true);
+  }, [cards.length, completed, learnedCount, missedCount, reviewUnlearned]);
+
+  const resetAll = useCallback(() => {
+    firstPassRef.current = null;
+    startedAtRef.current = null;
+    setReviewPass(0);
+    setIntroActive(false);
+    resetDeck();
+  }, [resetDeck]);
+
+  const isDeckDone = completed && missedCount === 0;
+
+  // The whole app turns warm for review passes (the intro included).
+  useEffect(() => {
+    if (!isReviewPass || isDeckDone) return undefined;
+    const root = document.documentElement;
+    root.dataset.practiceTone = 'review';
+    return () => { delete root.dataset.practiceTone; };
+  }, [isDeckDone, isReviewPass]);
+
+  const reviewProgress = useMemo(
+    () => (isReviewPass && introActive && !dealStarted && finishedPassSize > 0
+      ? { displayIndex: finishedPassSize - 1, totalCount: finishedPassSize, isRetry: false, cleanupPhase: null }
+      : isReviewPass && !isDeckDone
+      ? {
+        displayIndex: currentIndex,
+        totalCount: cards.length,
+        isRetry: false,
+        cleanupPhase: { currentIndex, totalCount: cards.length },
+      }
+      : progressInfo),
+    [cards.length, currentIndex, dealStarted, finishedPassSize, introActive, isDeckDone, isReviewPass, progressInfo],
+  );
+
   const { wrappedHandleNext, pauseFlow, triggerManualReveal, autoPlayAudio } = useFlashcardFlow({
     cards,
-    deckCards,
     currentCard,
     currentIndex,
-    progressInfo,
+    progressInfo: reviewProgress,
     isFlipped,
     setIsFlipped,
     handleNavigate,
@@ -93,8 +147,9 @@ export function FlashcardScreen({
     isReviewDeck,
     isLibraryDeck,
     activeBreakdown,
-    mode,
     completed,
+    isReviewPass,
+    isDeckDone,
     onContinue,
     continueLabel,
   });
@@ -117,7 +172,7 @@ export function FlashcardScreen({
 
   useFlashcardKeyboardShortcuts({
     completed,
-    mode,
+    isIntroActive: introActive,
     activeBreakdown,
     currentIndex,
     maxVisitedIndex,
@@ -132,13 +187,9 @@ export function FlashcardScreen({
     onManualRevealAudio: triggerManualReveal,
   });
 
-  if (isLoading && cards.length === 0) return <ScreenSkeleton type="flashcard" />;
+  if (isLoading && cards.length === 0) return null;
 
-  if (
-    error ||
-    (cards.length === 0 && !completed && mode === 'cards') ||
-    (!currentCard && !isLoading && mode === 'cards')
-  ) {
+  if (error || (cards.length === 0 && !completed) || (!currentCard && !isLoading)) {
     const emptyTitle = error
       ? 'Something went wrong'
       : cards.length === 0
@@ -165,15 +216,18 @@ export function FlashcardScreen({
     );
   }
 
-  if (completed) {
+  if (isDeckDone) {
+    const first = firstPassRef.current ?? { total: cards.length, correct: learnedCount };
+    const seconds = Math.max(1, Math.round((Date.now() - (startedAtRef.current ?? Date.now())) / 1000));
+    const quiz = onStartQuiz;
     return (
-      <LessonComplete
-        learnedCount={learnedCount}
-        unlearnedCount={unlearnedCount}
-        onContinue={onContinue ?? onClose}
-        continueLabel={onContinue ? continueLabel : undefined}
-        onReviewUnlearned={unlearnedCount > 0 ? reviewUnlearned : undefined}
-        onResetAll={resetAll}
+      <DeckComplete
+        wordCount={first.total}
+        firstTryPct={Math.round((first.correct / Math.max(1, first.total)) * 100)}
+        seconds={seconds}
+        isPerfect={first.correct === first.total}
+        actionLabel={quiz ? 'Test me' : 'Continue'}
+        onContinue={quiz ?? onContinue ?? onClose ?? (() => {})}
       />
     );
   }
@@ -182,23 +236,12 @@ export function FlashcardScreen({
   const canNavigateNext =
     (!isReviewDeck || currentIndex < maxVisitedIndex) && currentIndex < cards.length;
 
-  if (mode === 'list') {
-    return (
-      <FlashcardList
-        cards={deckCards}
-        excludedIds={excludedIds}
-        onToggleCard={toggleCard}
-        accentColor={activeBook.accent}
-        edgeHex={activeBook.edgeHex}
-        onScrollVisibility={onScrollDockVisibility}
-      />
-    );
-  }
-
   return (
     <div
       id="flashcards-screen-root"
-      className="absolute inset-0 flex h-full w-full flex-col overflow-hidden overscroll-none bg-transparent pt-[72px]"
+      className={cn(
+        'absolute inset-0 flex h-full w-full flex-col overflow-hidden overscroll-none bg-transparent pt-[72px]',
+      )}
       onPointerDownCapture={pauseFlow}
     >
       <EdgeNavButtons
@@ -210,13 +253,18 @@ export function FlashcardScreen({
         nextLabel="Next flashcard"
       />
 
-      <ScreenLayout
-        maxWidth="none"
-        className="pointer-events-none relative flex h-full max-w-[760px] flex-col items-center justify-center pb-dock-clearance pt-2"
-      >
-        <div className="pointer-events-none flex flex-1 w-full flex-col items-center justify-center">
-          <div className="pointer-events-none relative z-10 mx-auto flex h-full max-h-[min(680px,calc(100dvh-170px))] w-full max-w-[824px] flex-col items-center justify-center px-4 py-3 sm:px-8 sm:py-6 [container-type:size]">
-            <AnimatePresence initial={false} custom={direction}>
+      <div ref={stageRef} className="relative flex min-h-0 w-full flex-1 flex-col border-t-2 border-ui-divider">
+        <div aria-hidden className="absolute inset-0 z-0 flex">
+          <div className="h-full w-1/2" onClick={() => canNavigatePrevious && triggerNav(-1)} />
+          <div className="h-full w-1/2" onClick={() => canNavigateNext && triggerNav(1)} />
+        </div>
+        <div data-fc-cardarea className={cn(
+            'pointer-events-none relative mx-auto flex min-h-0 w-full max-w-2xl flex-1 flex-col justify-center px-4 py-5 sm:px-8 xl:max-w-3xl 2xl:max-w-4xl',
+            introActive && !introLanded && 'opacity-0',
+          )}
+        >
+          <div className="pointer-events-none relative z-10 h-[min(clamp(26rem,62dvh,40rem),100%)] min-h-0 w-full shrink [container-type:size]">
+            <AnimatePresence initial={false} mode="wait" custom={direction}>
               {currentCard && (
                 <DraggableFlashcard
                   key={`${currentCard.id}-${currentIndex}`}
@@ -229,12 +277,32 @@ export function FlashcardScreen({
                   toneColors={toneColors}
                   showTranslation={showTranslation}
                   onCardTap={handleCardTap}
+                  tone={isReviewPass ? 'review' : 'default'}
                 />
               )}
             </AnimatePresence>
           </div>
         </div>
-      </ScreenLayout>
+        <FlashcardAnswerBar
+          tone={isReviewPass ? 'review' : 'default'}
+          concealed={introActive && !introLanded}
+          isFlipped={isFlipped}
+          onFlip={handleCardTap}
+          onAgain={() => triggerKeyboardRate(1, 1)}
+          onGotIt={() => triggerKeyboardRate(3, -1)}
+        />
+        {introActive && (
+          <ReviewDealIntro
+            key={reviewPass}
+            cards={cards}
+            pass={reviewPass}
+            stageRef={stageRef}
+            onLanded={() => setIntroLanded(true)}
+            onDone={() => setIntroActive(false)}
+            onDealStart={() => setDealStarted(true)}
+          />
+        )}
+      </div>
 
       <CharacterBreakdownOverlay
         activeBreakdown={activeBreakdown}

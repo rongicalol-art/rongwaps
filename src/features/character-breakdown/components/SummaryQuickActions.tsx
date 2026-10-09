@@ -5,7 +5,7 @@ import { useCharDictionaryEntry } from '../hooks/useCharDictionaryEntry';
 import { FavoriteButton } from '../../library';
 
 const ICON_ACTION =
-  'flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors focus-ring';
+  'flex h-10 w-10 shrink-0 items-center justify-center rounded-compact transition-colors focus-ring';
 
 /**
  * Always-visible audio + save controls pinned to the top-right of the
@@ -17,12 +17,15 @@ export function SummaryQuickActions({
   audioSrc,
   pinyin: shownPinyin,
   meaning: shownMeaning,
+  className = 'absolute right-3 top-3 z-10 flex items-center gap-2 sm:right-5 sm:top-5',
 }: {
   char: string;
   audioSrc?: string | null;
   /** Reading and meaning the screen is showing, so Save keeps that sense instead of the first dictionary entry. */
   pinyin?: string;
   meaning?: string;
+  /** Placement; defaults to pinned top-right of a card. */
+  className?: string;
 }) {
   const entries = useCharDictionaryEntry(char);
   const characterPreference = useAppStore((state) => state.characterPreference);
@@ -46,14 +49,14 @@ export function SummaryQuickActions({
     : undefined;
 
   return (
-    <div className="absolute right-3 top-3 z-10 flex items-center gap-2 sm:right-5 sm:top-5">
+    <div className={className}>
       <button
         type="button"
         aria-label={`Hear pronunciation of ${headword}`}
         onClick={play}
-        className={`${ICON_ACTION} text-ui-muted transition-colors hover:text-brand-primary active:scale-95`}
+        className={`${ICON_ACTION} text-ui-muted-strong transition-colors hover:bg-ui-hover hover:text-brand-primary active:scale-95`}
       >
-        <AppIcon name="pronounce" size={18} />
+        <AppIcon name="pronounce" size={22} />
       </button>
       <FavoriteButton
         word={headword}
@@ -62,7 +65,8 @@ export function SummaryQuickActions({
         pinyin={shownPinyin || pinyinStr}
         definitions={shownMeaning || primary?.definitions}
         variant="ghost"
-        size="md"
+        size="lg"
+        className="h-10 w-10 text-ui-muted-strong"
       />
     </div>
   );

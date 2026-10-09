@@ -14,9 +14,13 @@ interface SpellCardProps {
   /** Stable, item-based handler — see the `memo` comparator below. */
   onOpen: (item: LibraryCardItem) => void;
   index: number;
+  /** Select mode: the card toggles instead of opening, and shows a tick. */
+  selecting?: boolean;
+  selected?: boolean;
+  onToggleSelect?: (item: LibraryCardItem) => void;
 }
 
-function SpellCardBase({ item, activeTab, onRemove, onOpen, index }: SpellCardProps) {
+function SpellCardBase({ item, activeTab, onRemove, onOpen, index, selecting = false, selected = false, onToggleSelect }: SpellCardProps) {
   const isStarred = activeTab === 'starred';
   const simplified = item.simplified;
   // Runtime guard: malformed cloud/persisted cards may lack both fields, and
@@ -50,26 +54,36 @@ function SpellCardBase({ item, activeTab, onRemove, onOpen, index }: SpellCardPr
       transition={{ delay: Math.min(index * 0.04, 0.2), duration: 0.2 }}
       className="group relative h-full select-none rounded-feature"
     >
-      <article className="relative flex h-full flex-col overflow-hidden rounded-feature border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface transition-[transform,background-color,border-color] duration-150 hover:bg-ui-hover active:scale-[0.98]">
+      <article className={`relative flex h-full flex-col overflow-hidden rounded-feature border-2 border-b-[length:var(--depth-md)] transition-[transform,background-color,border-color] duration-150 active:scale-[0.98] ${selected ? 'border-brand-primary bg-brand-primary-soft' : 'border-ui-border bg-ui-surface hover:bg-ui-hover'}`}>
         <button
           type="button"
-          onClick={() => onOpen(item)}
-          aria-label={`Open ${traditional}`}
+          onClick={() => (selecting ? onToggleSelect?.(item) : onOpen(item))}
+          aria-pressed={selecting ? selected : undefined}
+          aria-label={selecting ? `Select ${traditional}` : `Open ${traditional}`}
           className="absolute inset-0 z-0 h-full w-full cursor-pointer rounded-feature outline-none focus-ring"
         />
 
-        <button
-          type="button"
-          onClick={(e) => { e.stopPropagation(); onRemove(item); }}
-          aria-label={isStarred ? `Remove ${traditional} from saved words` : `Delete ${traditional}`}
-          className={`absolute top-2 right-2 w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all active:scale-90 z-10 ${
-            isStarred
-              ? 'text-feedback-warning-edge hover:bg-feedback-warning/10'
-              : 'text-ui-muted hover:bg-feedback-danger/10 hover:text-feedback-danger'
-          }`}
-        >
-          <AppIcon name={isStarred ? 'bookmarkFilled' : 'trash'} size={isStarred ? 18 : 16} />
-        </button>
+        {selecting ? (
+          <span
+            aria-hidden
+            className={`pointer-events-none absolute left-2.5 top-2.5 z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 transition-colors ${selected ? 'border-brand-primary bg-brand-primary text-white' : 'border-ui-divider bg-ui-surface'}`}
+          >
+            {selected && <AppIcon name="check" size={14} />}
+          </span>
+        ) : (
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); onRemove(item); }}
+            aria-label={isStarred ? `Remove ${traditional} from saved words` : `Delete ${traditional}`}
+            className={`absolute top-2 right-2 w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all active:scale-90 z-10 ${
+              isStarred
+                ? 'text-feedback-warning-edge hover:bg-feedback-warning/10'
+                : 'text-ui-muted hover:bg-feedback-danger/10 hover:text-feedback-danger'
+            }`}
+          >
+            <AppIcon name={isStarred ? 'bookmarkFilled' : 'trash'} size={isStarred ? 18 : 16} />
+          </button>
+        )}
 
         <div className="pointer-events-none relative z-0 flex flex-1 flex-col items-center justify-center px-4 py-6">
           <span
@@ -107,4 +121,7 @@ export const SpellCard = memo(SpellCardBase, (prev, next) => (
   && prev.activeTab === next.activeTab
   && prev.onRemove === next.onRemove
   && prev.onOpen === next.onOpen
+  && prev.selecting === next.selecting
+  && prev.selected === next.selected
+  && prev.onToggleSelect === next.onToggleSelect
 ));

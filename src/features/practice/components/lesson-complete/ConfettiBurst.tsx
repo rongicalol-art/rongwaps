@@ -12,17 +12,17 @@ interface ConfettiParticle {
 }
 
 const CONFETTI_PIECES: ConfettiParticle[] = [
-  { id: 1, x: -115, y: -80, rotation: 45, color: '#0284c7', size: 8, delay: 0.04, shape: 'rect' },
+  { id: 1, x: -115, y: -80, rotation: 45, color: '#3a7ca5', size: 8, delay: 0.04, shape: 'rect' },
   { id: 2, x: 115, y: -75, rotation: -30, color: '#ea580c', size: 9, delay: 0.08, shape: 'circle' },
   { id: 3, x: -85, y: -140, rotation: 60, color: '#58cc02', size: 8, delay: 0.12, shape: 'rect' },
   { id: 4, x: 90, y: -130, rotation: -45, color: '#ffc800', size: 9, delay: 0.06, shape: 'rect' },
   { id: 5, x: -135, y: 15, rotation: 25, color: '#ff4b4b', size: 7, delay: 0.14, shape: 'circle' },
-  { id: 6, x: 135, y: 20, rotation: -20, color: '#0284c7', size: 8, delay: 0.1, shape: 'rect' },
+  { id: 6, x: 135, y: 20, rotation: -20, color: '#3a7ca5', size: 8, delay: 0.1, shape: 'rect' },
   { id: 7, x: -50, y: -160, rotation: 80, color: '#ea580c', size: 8, delay: 0.15, shape: 'circle' },
   { id: 8, x: 55, y: -155, rotation: -60, color: '#58cc02', size: 9, delay: 0.09, shape: 'rect' },
   { id: 9, x: -125, y: 90, rotation: 35, color: '#ffc800', size: 7, delay: 0.17, shape: 'rect' },
   { id: 10, x: 120, y: 95, rotation: -40, color: '#58cc02', size: 8, delay: 0.13, shape: 'circle' },
-  { id: 11, x: -25, y: -175, rotation: 15, color: '#0284c7', size: 8, delay: 0.11, shape: 'rect' },
+  { id: 11, x: -25, y: -175, rotation: 15, color: '#3a7ca5', size: 8, delay: 0.11, shape: 'rect' },
   { id: 12, x: 30, y: -170, rotation: -10, color: '#ea580c', size: 8, delay: 0.12, shape: 'rect' },
 ];
 

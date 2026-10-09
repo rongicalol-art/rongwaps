@@ -25,6 +25,9 @@ export interface UiState {
   setIsSettingsOpen: (open: boolean) => void;
 
   // UI State
+  /** True while the Books lesson window is open (collapses the sidebar like other focus modes). Not persisted. */
+  isLessonWindowOpen: boolean;
+  setIsLessonWindowOpen: (open: boolean) => void;
   isSearchOpen: boolean;
   setIsSearchOpen: (open: boolean) => void;
   activityOverlaySources: ActivityOverlaySource[];
@@ -44,7 +47,7 @@ export interface UiState {
   librarySearchQuery: string;
   setLibrarySearchQuery: (query: string) => void;
   practiceHeader: {
-    progress: number;
+    progress?: number;
     currentIndex: number;
     totalCount: number;
     showLightbulb: boolean;
@@ -70,6 +73,8 @@ export function createUiSlice(set: SetState): UiState {
     isSettingsOpen: false,
     setIsSettingsOpen: (open) => set({ isSettingsOpen: open }),
 
+    isLessonWindowOpen: false,
+    setIsLessonWindowOpen: (open) => set({ isLessonWindowOpen: open }),
     isSearchOpen: false,
     setIsSearchOpen: (open) => set({ isSearchOpen: open }),
     activityOverlaySources: [],

@@ -55,6 +55,7 @@ export function useAppNavigation() {
     setActiveTab(tab);
   }, [setActiveTab]);
 
+  /** Opens the last-used activity (flashcards by default) on the lessons already selected. */
   const startPathPractice = useCallback(() => {
     clearReviewContext();
     const fallbackActivity = lastActivity === 'flashcards-review'
@@ -64,13 +65,17 @@ export function useAppNavigation() {
     handleSetActiveActivity(fallbackActivity as ActivityType);
   }, [clearReviewContext, handleSetActiveActivity, lastActivity]);
 
-  const toggleLesson = useCallback((id: number, availablePartIds: number[] = [1]) => {
-    const next = { ...selectedLessonParts };
-    const key = getLessonSelectionKey(activeBookId, id);
-    if (next[key]) delete next[key];
-    else next[key] = [availablePartIds[0] ?? 1];
+  /** Scopes the active book's selection to one lesson part, then opens an activity on it. */
+  const startPartPractice = useCallback((lessonId: number, partId: number, activity: ActivityType) => {
+    const bookPrefix = `${activeBookId}:`;
+    const next = Object.fromEntries(
+      Object.entries(selectedLessonParts).filter(([key]) => !key.startsWith(bookPrefix)),
+    );
+    next[getLessonSelectionKey(activeBookId, lessonId)] = [partId];
     setSelectedLessonParts(next);
-  }, [activeBookId, selectedLessonParts, setSelectedLessonParts]);
+    clearReviewContext();
+    handleSetActiveActivity(activity);
+  }, [activeBookId, clearReviewContext, handleSetActiveActivity, selectedLessonParts, setSelectedLessonParts]);
 
   const toggleLessonPart = useCallback((lessonId: number, partId: number, availablePartIds: number[]) => {
     const next = { ...selectedLessonParts };
@@ -100,10 +105,10 @@ export function useAppNavigation() {
     activeActivity,
     setActiveActivity: handleSetActiveActivity,
     selectedLessons,
-    toggleLesson,
     toggleLessonPart,
     selectedBooks,
     toggleBook,
-    startPathPractice
+    startPartPractice,
+    startPathPractice,
   };
 }

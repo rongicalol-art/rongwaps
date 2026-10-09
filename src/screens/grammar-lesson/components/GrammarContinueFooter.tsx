@@ -36,7 +36,7 @@ export function GrammarContinueFooter({
         >
           <div className="bg-gradient-to-t from-ui-canvas via-ui-canvas/95 to-transparent pb-sheet-safe pt-6 sm:pt-8 pointer-events-none">
             <div className="mx-auto w-full max-w-5xl xl:max-w-6xl px-4 sm:px-6 pointer-events-auto">
-              <div className="mx-auto flex w-full max-w-3xl items-stretch gap-3 sm:max-w-4xl">
+              <div className="mx-auto flex w-full max-w-md items-stretch gap-3">
                 {previousPage && (
                   <ActionButton
                     variant="secondary"
@@ -55,9 +55,9 @@ export function GrammarContinueFooter({
                   fullWidth
                   onClick={onContinue}
                   aria-label={isLastPage ? 'Proceed to Reading' : 'Continue'}
-                  className="btn-touch-primary text-base font-black uppercase tracking-wider"
+                  className="btn-touch-primary"
                 >
-                  {isLastPage ? 'Read' : 'Next'}
+                  <span className="text-[17px] font-black">{isLastPage ? 'Read' : 'Next'}</span>
                 </ActionButton>
               </div>
             </div>

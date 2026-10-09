@@ -100,7 +100,7 @@ export function FolderItem({
         className,
       )}
     >
-      <div className="relative aspect-[25/21] w-full max-w-[132px] transition-transform duration-200 group-hover:-translate-y-1 group-active:translate-y-0 group-active:scale-95 sm:max-w-[146px]">
+      <div className="relative aspect-[25/21] w-full max-w-[150px] transition-transform duration-200 group-hover:-translate-y-1 group-active:translate-y-0 group-active:scale-95 lg:max-w-[168px]">
         <FolderSvg
           colorFront={frontColor}
           colorBack={backColor}
@@ -109,11 +109,11 @@ export function FolderItem({
         />
       </div>
       <div className="flex flex-col items-center gap-0.5">
-        <span className="block w-full max-w-[150px] line-clamp-2 px-1 text-center text-[14px] font-black text-ui-ink-strong sm:max-w-[158px]">
+        <span className="block w-full max-w-[170px] line-clamp-2 px-1 text-center text-base font-black leading-tight text-ui-ink-strong">
           {title}
         </span>
         {!isNewButton && count !== undefined && (
-          <span className="text-[12px] font-bold text-ui-muted">
+          <span className="text-[13px] font-extrabold text-ui-muted">
             {count} {count === 1 ? 'card' : 'cards'}
           </span>
         )}

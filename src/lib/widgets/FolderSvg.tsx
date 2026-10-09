@@ -16,27 +16,17 @@ export function FolderSvg({
 }) {
   return (
     <svg viewBox="0 0 100 84" className={cn("h-full w-full", className)} fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M8 0 h 14 c 2 0 4 1 5 3 l 3 7 c 1.5 3.5 3.5 6 6 6 h 52 c 6.6 0 12 5.4 12 12 v 44 c 0 6.6 -5.4 12 -12 12 h -76 c -6.6 0 -12 -5.4 -12 -12 v -64 c 0 -4.4 3.6 -8 8 -8 z"
-        fill={colorBack}
-      />
-      <path
-        d="M0 32 c 0 -6.6 5.4 -12 12 -12 h 76 c 6.6 0 12 5.4 12 12 v 40 c 0 6.6 -5.4 12 -12 12 h -76 c -6.6 0 -12 -5.4 -12 -12 z"
-        fill={colorBack}
-      />
-      <path
-        d="M0 28 c 0 -6.6 5.4 -12 12 -12 h 76 c 6.6 0 12 5.4 12 12 v 40 c 0 6.6 -5.4 12 -12 12 h -76 c -6.6 0 -12 -5.4 -12 -12 z"
-        fill={colorFront}
-      />
+      <path d="M2 12Q2 2 12 2H28Q34 2 37 9Q39 14 45 14H90Q98 14 98 22V72Q98 82 88 82H12Q2 82 2 72Z" fill={colorBack} />
+      <path d="M2 26Q2 17 11 17H89Q98 17 98 26V68Q98 77 89 77H11Q2 77 2 68Z" fill={colorFront} />
       {isStarred && (
         <path
-          d="M50 34l4.1 8.3 9.2 1.3-6.7 6.5 1.6 9.2-8.2-4.3-8.2 4.3 1.6-9.2-6.7-6.5 9.2-1.3z"
+          d="M50 32l5.4 11 12 1.7-8.7 8.5 2.1 12L50 59.4 39.2 65.2l2.1-12-8.7-8.5 12-1.7z"
           fill="#FFFFFF"
-          opacity="0.32"
+          opacity="0.38"
         />
       )}
       {hasPlus && (
-        <path d="M50 38v20m-10-10h20" stroke="#7BA3B5" strokeWidth="6" strokeLinecap="round" />
+        <path d="M50 34v26M37 47h26" stroke="#86A3B5" strokeWidth="7" strokeLinecap="round" />
       )}
     </svg>
   );

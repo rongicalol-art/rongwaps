@@ -1,9 +1,8 @@
 import { useMemo, useState } from 'react';
-import { SectionEyebrow } from '../../../../lib/widgets';
 import { useLevels } from '../../../../hooks/useLevels';
 import { resolveLevel } from '../../../../utils/lesson/levels';
 import { groupByGrade, type BuiltWithMember, type RankedSoundFamily } from '../../utils/rankBuiltWith';
-import { RAIL_CARD_CLASSES, SEE_ALL_CLASSES } from './railStyles';
+import { ShowMoreButton } from './ShowMoreButton';
 import { SoundRow } from './SoundRow';
 
 const COLLAPSED_ROWS = 5;
@@ -18,10 +17,9 @@ const EXPANDED_ROWS = 40;
  * rows carry pinyin, meaning and lesson. Order: same sound, new tone, close.
  * Every character built from the part (shape included) lives in `AppearsInCard`.
  */
-export function SoundFamilyCard({ family, accentClassName, activeBookId, onOpen }: {
+export function SoundFamilyCard({ family, activeBookId, onOpen }: {
   family: RankedSoundFamily;
   activeBookId?: number;
-  accentClassName: string;
   onOpen: (character: string) => void;
 }) {
   const levels = useLevels();
@@ -48,24 +46,20 @@ export function SoundFamilyCard({ family, accentClassName, activeBookId, onOpen 
   const shownFrom = take([...partRow, ...siblings]);
   const shownLends = take(lends);
   const rows = (members: BuiltWithMember[]) => members.map((member) => (
-    <SoundRow key={member.character} member={member} accentClassName={accentClassName} onOpen={onOpen} />
+    <SoundRow key={member.character} member={member} onOpen={onOpen} />
   ));
 
   return (
-    <div className={RAIL_CARD_CLASSES}>
-      <SectionEyebrow title="Sound family" />
-
-      {shownFrom.length > 0 && <div className="mt-1">{rows(shownFrom)}</div>}
+    <div className="min-w-0">
+      {shownFrom.length > 0 && <div>{rows(shownFrom)}</div>}
 
       {/* No heading: under "Sound family" the rows are the characters that sound like this one. */}
       {lends.length > 0 && (
-        <div className={from ? 'mt-2 border-t-2 border-ui-divider pt-2' : 'mt-1'}>{rows(shownLends)}</div>
+        <div className={from ? 'mt-2 border-t-2 border-ui-divider pt-2' : undefined}>{rows(shownLends)}</div>
       )}
 
       {total > COLLAPSED_ROWS && (
-        <button type="button" onClick={() => setExpanded((value) => !value)} aria-expanded={expanded} className={`mt-2 ${SEE_ALL_CLASSES}`}>
-          {expanded ? 'Show less' : `See all ${total}`}
-        </button>
+        <ShowMoreButton label={expanded ? 'Show less' : `See all ${total}`} expanded={expanded} onClick={() => setExpanded((value) => !value)} />
       )}
     </div>
   );

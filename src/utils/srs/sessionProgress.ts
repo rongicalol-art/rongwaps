@@ -19,6 +19,27 @@ export function getSessionStartIndex(
   return savedIndex;
 }
 
+/**
+ * Rebuilds a saved shuffled order against the deck the loader offers now.
+ * Null when the deck changed since it was saved (a card added or removed), so
+ * the session falls back to the natural order instead of a half-matching one.
+ */
+export function restoreCardOrder<T extends { id: string }>(
+  cards: readonly T[],
+  savedIds: readonly string[] | undefined,
+): T[] | null {
+  if (!savedIds || savedIds.length === 0 || cards.length === 0) return null;
+  const byId = new Map(cards.map((card) => [card.id, card]));
+  const ordered: T[] = [];
+  for (const id of savedIds) {
+    const card = byId.get(id);
+    if (!card) return null;
+    ordered.push(card);
+  }
+  const saved = new Set(savedIds);
+  return cards.every((card) => saved.has(card.id)) ? ordered : null;
+}
+
 export function retainCurrentCardIndex(
   nextCards: Flashcard[],
   currentCardId: string | null,

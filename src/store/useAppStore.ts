@@ -262,6 +262,7 @@ const PERSISTED_RECORD_KEYS = [
   'selectedLessonParts',
   'srsData',
   'sessionProgressIndex',
+  'sessionCardOrder',
   'deckExclusions',
   'progressResetSeen',
 ] as const;

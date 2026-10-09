@@ -36,9 +36,11 @@ export interface FlashcardBackFaceProps {
   showHook?: boolean;
   hook?: string | null;
   hookLoaded?: boolean;
+  /** Word in plain ink; flipping it off eases the word into its tone colour. */
+  wordInk?: boolean;
 }
 
-export const FlashcardBackFace = ({
+export const FlashcardBackFace = React.memo(function FlashcardBackFace({
   card,
   setActiveBreakdown,
   showPinyin = true,
@@ -52,7 +54,8 @@ export const FlashcardBackFace = ({
   showHook = false,
   hook,
   hookLoaded = false,
-}: FlashcardBackFaceProps) => {
+  wordInk = false,
+}: FlashcardBackFaceProps) {
   const fetched = useFlashcardExtras(card);
   const resolvedExamples = examples ?? fetched.extras.examples;
   const resolvedLoading = isExamplesLoading ?? fetched.isLoading;
@@ -78,7 +81,7 @@ export const FlashcardBackFace = ({
   );
   const stacked = showPinyin && syllables !== null;
   const pinyinTextClass = cn(
-    'font-bold tracking-wide text-ui-ink',
+    'font-extrabold tracking-wide text-ui-ink',
     showHook ? 'text-[13px] sm:text-[15px]' : 'text-[17px] sm:text-[19px] lg:text-[21px]',
   );
 
@@ -114,23 +117,24 @@ export const FlashcardBackFace = ({
       >
         <div className="my-auto flex w-full flex-col items-center">
           {showPinyin && !stacked && (
-            <span className={cn(pinyinTextClass, 'text-center', showHook ? 'mb-1' : 'mb-2')}>
+            <span className={cn(pinyinTextClass, 'rw-rise rw-rise-1 text-center', showHook ? 'mb-1' : 'mb-2')}>
               <TonePinyin pinyin={card.pinyin ?? ''} colored={toneColors} />
             </span>
           )}
 
           <div
+            data-fc-word
             className={cn(
               'flex flex-row justify-center flex-wrap',
               stacked ? 'items-end gap-x-1' : 'items-center',
-              showHook ? 'mb-1' : 'mb-2',
+              showHook ? 'mb-1' : 'mb-3',
             )}
           >
             {Array.from(card.front).map((char, i) => {
               const isHanzi = isHanziChar(char);
               const hanziIndex = Array.from(card.front).slice(0, i).filter(isHanziChar).length;
               const syllable = syllables?.[i];
-              const toneClass = toneColors && syllable ? TONE_TEXT_CLASS[syllable.tone] : 'text-ui-ink';
+              const toneClass = toneColors && syllable && !wordInk ? TONE_TEXT_CLASS[syllable.tone] : 'text-ui-ink';
 
               const glyph = isHanzi ? (
                 <MemoryHookCharacter
@@ -138,12 +142,12 @@ export const FlashcardBackFace = ({
                   label={`Open character breakdown for ${char}`}
                   tooltipDisabled={isDragging}
                   onOpen={() => setActiveBreakdown(card.front, hanziIndex)}
-                  glyphClassName={cn(getBackFrontFontSize(frontLength), 'block leading-none tracking-normal text-center', toneClass)}
+                  glyphClassName={cn(getBackFrontFontSize(frontLength), 'block leading-none tracking-normal text-center transition-colors duration-500', toneClass)}
                   className="rounded-control px-1 py-1"
                 />
               ) : (
                 <span
-                  className={`${getBackFrontFontSize(frontLength)} px-1 text-ui-muted leading-none font-chinese text-center mt-2`}
+                  className={cn(getBackFrontFontSize(frontLength), 'px-1 text-ui-muted leading-none font-chinese text-center mt-2')}
                 >
                   {char}
                 </span>
@@ -152,7 +156,7 @@ export const FlashcardBackFace = ({
               if (!stacked) return <React.Fragment key={i}>{glyph}</React.Fragment>;
               return (
                 <div key={i} className="flex flex-col items-center">
-                  <span className={cn(pinyinTextClass, 'whitespace-nowrap', syllable && toneClass)} aria-hidden={!syllable}>
+                  <span className={cn(pinyinTextClass, 'rw-rise rw-rise-1 whitespace-nowrap', syllable && toneClass)} aria-hidden={!syllable}>
                     {syllable?.text ?? '\u00A0'}
                   </span>
                   {glyph}
@@ -163,7 +167,7 @@ export const FlashcardBackFace = ({
           {hasDefinition && (
             <h2
               className={cn(
-                'w-full shrink-0 break-words px-2 text-center text-ui-ink',
+                'rw-rise rw-rise-2 w-full shrink-0 break-words px-2 text-center text-ui-ink',
                 showHook
                   ? 'mt-0.5 text-[15px] sm:text-[17px] font-bold leading-snug'
                   : cn(
@@ -172,7 +176,7 @@ export const FlashcardBackFace = ({
                         : primaryMeaning.length > 20
                         ? 'text-[length:clamp(18px,5cqw,32px)]'
                         : 'text-[length:clamp(22px,6.2cqw,44px)]',
-                      'mt-2 font-extrabold leading-tight',
+                      'font-black leading-tight',
                     ),
               )}
             >
@@ -180,11 +184,11 @@ export const FlashcardBackFace = ({
             </h2>
           )}
           {hasDefinition && (formatPosLabel(card.pos) || measureWords.length > 0) && (
-            <div className={cn('flex flex-wrap items-center justify-center gap-2', showHook ? 'mt-1.5' : 'mt-3')}>
+            <div className={cn('rw-rise rw-rise-3 flex flex-wrap items-center justify-center gap-2', showHook ? 'mt-1.5' : 'mt-3')}>
               {formatPosLabel(card.pos) && <PosBadge
                   pos={card.pos}
                   size="lg"
-                  className="min-h-9 px-3 py-1.5 text-[11px] uppercase tracking-wider text-ui-muted sm:text-xs"
+                  className="min-h-9 px-3 py-1.5 text-[11px] font-black uppercase tracking-widest text-ui-muted sm:text-xs"
                 />}
               {measureWords.length > 0 && (
             <p
@@ -206,7 +210,7 @@ export const FlashcardBackFace = ({
             </div>
           )}
           {hasDefinition && moreSenses.length > 0 && !showHook && (
-            <div className="mt-3 flex w-full flex-col items-center gap-2" onPointerDown={(event) => event.stopPropagation()}>
+            <div className="rw-rise rw-rise-3 mt-3 flex w-full flex-col items-center gap-2" onPointerDown={(event) => event.stopPropagation()}>
               <button
                 type="button"
                 aria-expanded={showMoreSenses}
@@ -229,7 +233,7 @@ export const FlashcardBackFace = ({
           )}
 
           {showHook && hookLoaded && hook && (
-            <div className="w-full max-w-md sm:max-w-lg pt-2 sm:pt-2.5 pb-0.5 flex flex-col items-center">
+            <div className="rw-rise rw-rise-3 w-full max-w-md sm:max-w-lg pt-2 sm:pt-2.5 pb-0.5 flex flex-col items-center">
               <div className="relative w-full rounded-feature border-2 border-feedback-warning-edge border-b-[length:var(--depth-md)] bg-feedback-warning-surface px-3.5 py-3 sm:px-4.5 sm:py-3.5 text-left shadow-ambient-sm">
                 <div className="flex items-center gap-1.5 mb-1.5">
                   <AppIcon name="sparkles" size={12} className="text-feedback-warning-edge" />
@@ -247,14 +251,16 @@ export const FlashcardBackFace = ({
       </div>
 
       {hasExampleContent && (
-        <FlashcardExamples
-          searchTerms={searchTerms}
-          examples={resolvedExamples}
-          isLoading={resolvedLoading}
-          showPinyin={showPinyin}
-          showTranslation={showTranslation}
-        />
+        <div className="rw-rise rw-rise-3 w-full shrink-0">
+          <FlashcardExamples
+            searchTerms={searchTerms}
+            examples={resolvedExamples}
+            isLoading={resolvedLoading}
+            showPinyin={showPinyin}
+            showTranslation={showTranslation}
+          />
+        </div>
       )}
     </div>
   );
-};
+});

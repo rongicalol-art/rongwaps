@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
 import type { Flashcard } from '../../../data/flashcards';
-import type { FlashcardViewMode } from '../FlashcardScreen';
 
 export interface UseFlashcardKeyboardShortcutsOptions {
   completed: boolean;
-  mode: FlashcardViewMode;
+  /** The review deal intro owns the keyboard (Space / Enter deal it). */
+  isIntroActive?: boolean;
   activeBreakdown: string | null;
   currentIndex: number;
   maxVisitedIndex: number;
@@ -21,7 +21,7 @@ export interface UseFlashcardKeyboardShortcutsOptions {
 
 export function useFlashcardKeyboardShortcuts({
   completed,
-  mode,
+  isIntroActive = false,
   activeBreakdown,
   currentIndex,
   maxVisitedIndex,
@@ -41,7 +41,7 @@ export function useFlashcardKeyboardShortcuts({
   const currentCardRef = useRef(currentCard);
   const isReviewDeckRef = useRef(isReviewDeck);
   const completedRef = useRef(completed);
-  const modeRef = useRef(mode);
+  const introRef = useRef(isIntroActive);
 
   currentIndexRef.current = currentIndex;
   cardsLengthRef.current = cardsLength;
@@ -49,11 +49,11 @@ export function useFlashcardKeyboardShortcuts({
   currentCardRef.current = currentCard;
   isReviewDeckRef.current = isReviewDeck;
   completedRef.current = completed;
-  modeRef.current = mode;
+  introRef.current = isIntroActive;
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (completedRef.current || modeRef.current === 'list') return;
+      if (completedRef.current || introRef.current) return;
       if (document.querySelector('[role="dialog"][aria-label^="Lesson "]')) return;
       if (
         document.activeElement instanceof HTMLInputElement ||
@@ -63,7 +63,7 @@ export function useFlashcardKeyboardShortcuts({
       if (activeBreakdown) return;
       if (e.repeat && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
 
-      if (['ArrowLeft', 'ArrowRight', ' ', 'm', 'M', 'n', 'N'].includes(e.key)) {
+      if (['ArrowLeft', 'ArrowRight', ' ', '1', '2'].includes(e.key)) {
         pauseFlow();
       }
 
@@ -86,12 +86,12 @@ export function useFlashcardKeyboardShortcuts({
           }
           return next;
         });
-      } else if (e.key === 'm' || e.key === 'M') {
-        if (!card) return;
-        triggerKeyboardRate(3, -1);
-      } else if (e.key === 'n' || e.key === 'N') {
-        if (!card) return;
-        triggerKeyboardRate(1, 1);
+      } else if (e.key === '1') {
+        // Again
+        if (card) triggerKeyboardRate(1, 1);
+      } else if (e.key === '2') {
+        // Got it
+        if (card) triggerKeyboardRate(3, -1);
       }
     };
 

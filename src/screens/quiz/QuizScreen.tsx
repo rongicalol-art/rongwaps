@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useQuizLoader } from './hooks/useQuiz';
-import { ScreenSkeleton } from '../../lib/widgets';
 import { QuizChoices } from './QuizChoices';
 import { QuizTyping } from './QuizTyping';
 import { useAppStore } from '../../store/useAppStore';
@@ -42,7 +41,7 @@ export function QuizScreen({
   });
 
   if (isLoading) {
-    return <ScreenSkeleton type="quiz" />;
+    return null;
   }
 
   return (

@@ -1,4 +1,5 @@
-import { LevelTag, ReferenceRow } from '../../../../lib/widgets';
+import { LevelTag } from '../../../../lib/widgets';
+import { BreakdownRow } from './BreakdownRow';
 import { useCharBreakdownState } from '../../../../hooks/useCharBreakdown';
 import { useLevels } from '../../../../hooks/useLevels';
 import { usePrimaryReading } from '../../../../hooks/usePronunciation';
@@ -8,9 +9,8 @@ import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
 import type { BuiltWithMember } from '../../utils/rankBuiltWith';
 
 /** A sound-alike as a standard reference row (glyph, pinyin over meaning, lesson or level); pure variants hidden. */
-export function SoundRow({ member, accentClassName, onOpen }: {
+export function SoundRow({ member, onOpen }: {
   member: BuiltWithMember;
-  accentClassName: string;
   onOpen: (character: string) => void;
 }) {
   const levels = useLevels();
@@ -19,11 +19,10 @@ export function SoundRow({ member, accentClassName, onOpen }: {
   const gloss = data?.definition?.split(';')[0]?.trim() || '';
   if (!isLoading && gloss && isPureVariantDefinition(gloss)) return null;
   return (
-    <ReferenceRow
+    <BreakdownRow
       glyph={member.character}
-      accentClassName={accentClassName}
-      primary={pinyin}
-      secondary={gloss}
+      pinyin={pinyin}
+      meaning={gloss}
       loading={isLoading}
       onClick={() => onOpen(member.character)}
       ariaLabel={`Open ${member.character}${gloss ? `, ${gloss}` : ''}`}

@@ -12,6 +12,13 @@ Chinese-learning PWA. React 19 + Vite + Zustand + Tailwind 4 + Express (`server/
 - **Plans must be self-contained** (files, steps, acceptance) — the owner often hands them to another model to execute.
 - Handoff file for a fresh session only when asked: concise, current task only.
 
+## Model use (token cost)
+
+- Default Sonnet. Small tweaks/bugs stay inline in one session; never switch models mid-session (cache is per model, the switch re-reads all context uncached).
+- Design/plan on Opus or Fable. Execution: spawn a Sonnet subagent with a self-contained brief (files, steps, acceptance checks). The planner trusts the result, checks only verify output (typecheck/lint/test), and does not re-read the diff.
+- Broad multi-file searches → Haiku subagent. Single-file or single-grep lookups → inline, no subagent.
+- Fresh session per task.
+
 ## Commands
 
 `npm run dev` (http://localhost:3000) · `typecheck` · `lint` · `test` · `jev:lint` · `content:validate` · `build`

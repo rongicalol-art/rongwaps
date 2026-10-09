@@ -35,7 +35,10 @@ export interface LearningState {
 
   // Session Progress Index
   sessionProgressIndex: Record<string, number>;
-  setSessionProgressIndex: (key: string, index: number) => void;
+  /** Card ids in the order a shuffled session was left in; absent when the deck is in its natural order. */
+  sessionCardOrder: Record<string, string[]>;
+  /** Saves where a session stopped; pass the card order only when it is shuffled. */
+  setSessionProgressIndex: (key: string, index: number, cardOrder?: string[] | null) => void;
   clearSessionProgressIndex: (key: string) => void;
 
   // Deck Exclusions
@@ -62,6 +65,7 @@ interface LearningSetState {
   sessionProgress: SessionProgress;
   lastActivity: LearningState['lastActivity'];
   sessionProgressIndex: Record<string, number>;
+  sessionCardOrder: Record<string, string[]>;
   deckExclusions: Record<string, string[]>;
   // Cross-domain flags cleared by the manual progress reset.
   isReviewMode: boolean;
@@ -103,13 +107,22 @@ export function createLearningSlice(set: SetState): LearningState {
     setLastActivity: (activity) => set({ lastActivity: activity }),
 
     sessionProgressIndex: {},
-    setSessionProgressIndex: (key, index) => set((s) => ({
-      sessionProgressIndex: { ...s.sessionProgressIndex, [key]: index },
-    })),
+    sessionCardOrder: {},
+    setSessionProgressIndex: (key, index, cardOrder = null) => set((s) => {
+      const nextOrder = { ...s.sessionCardOrder };
+      if (cardOrder) nextOrder[key] = cardOrder;
+      else delete nextOrder[key];
+      return {
+        sessionProgressIndex: { ...s.sessionProgressIndex, [key]: index },
+        sessionCardOrder: nextOrder,
+      };
+    }),
     clearSessionProgressIndex: (key) => set((s) => {
       const nextProgress = { ...s.sessionProgressIndex };
+      const nextOrder = { ...s.sessionCardOrder };
       delete nextProgress[key];
-      return { sessionProgressIndex: nextProgress };
+      delete nextOrder[key];
+      return { sessionProgressIndex: nextProgress, sessionCardOrder: nextOrder };
     }),
 
     deckExclusions: {},
@@ -157,6 +170,7 @@ export const LEARNING_PERSISTED_KEYS = [
   'srsData',
   'learnedCards',
   'sessionProgressIndex',
+  'sessionCardOrder',
   'deckExclusions',
   'progressResetSeen',
 ] as const;
@@ -167,6 +181,7 @@ export const LEARNING_ACCOUNT_SWITCH_DEFAULTS = {
   learnedCards: [],
   sessionProgress: createEmptySessionProgress(),
   sessionProgressIndex: {},
+  sessionCardOrder: {},
   lastActivity: null,
   // Deck curation is user-scoped content: it must not leak across accounts.
   deckExclusions: {},

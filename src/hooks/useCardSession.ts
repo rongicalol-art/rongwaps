@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Flashcard } from '../data/flashcards';
 import { useAppStore } from '../store/useAppStore';
-import { reorderSessionOnShuffle } from '../utils/srs/sessionOrder';
+import { shuffleItems } from '../utils/srs/sessionOrder';
 import { queueMissedItem, computeCardSessionProgress, type CardSessionProgressInfo } from '../utils/srs/mistakeQueue';
-import { getSessionStartIndex, planDeckAdoption, retainCurrentCardIndex } from '../utils/srs/sessionProgress';
+import { getSessionStartIndex, planDeckAdoption, restoreCardOrder } from '../utils/srs/sessionProgress';
 import { SHARED_REVIEW_SESSION_KEY } from '../utils/lesson/lessonPartSelection';
 import { audioService } from '../services/audioService';
 
@@ -38,7 +38,6 @@ export function useCardSession(
 ) {
   const { onSessionReset, onAnswerStateReset } = options;
   const markCardReviewed = useAppStore((state) => state.markCardReviewed);
-  const setSessionProgressIndex = useAppStore((state) => state.setSessionProgressIndex);
   const clearSessionProgressIndex = useAppStore((state) => state.clearSessionProgressIndex);
   const repeatMistakes = useAppStore((state) => state.repeatMistakes);
 
@@ -49,9 +48,14 @@ export function useCardSession(
   ));
   const [sessionResults, setSessionResults] = useState<Record<string, number>>({});
   const [completed, setCompleted] = useState(false);
+  // A finished session must reopen at card 1: the unmount/debounced saves skip it.
+  const completedRef = useRef(false);
+  completedRef.current = completed;
 
   const activeCardsRef = useRef<Flashcard[]>(cards);
   const canonicalOrderRef = useRef<Flashcard[]>(cards);
+  const isShuffledRef = useRef(isShuffled);
+  isShuffledRef.current = isShuffled;
   const sessionKeyRef = useRef(sessionKey);
   const sessionInitializedRef = useRef(false);
   const pendingSessionCardIdRef = useRef<string | null>(null);
@@ -68,11 +72,21 @@ export function useCardSession(
   onSessionResetRef.current = onSessionReset;
   onAnswerStateResetRef.current = onAnswerStateReset;
 
+  // Where the session stopped, plus the card order when it was shuffled, so leaving and
+  // coming back resumes on the same card in the same order.
+  const persistProgress = useCallback((key: string) => {
+    useAppStore.getState().setSessionProgressIndex(
+      key,
+      currentIndexRef.current,
+      isShuffledRef.current ? activeCardsRef.current.map((card) => card.id) : null,
+    );
+  }, []);
+
   useEffect(() => {
     const keyChanged = sessionKeyRef.current !== sessionKey;
     if (keyChanged) {
-      if (sessionInitializedRef.current && canonicalOrderRef.current.length > 0) {
-        useAppStore.getState().setSessionProgressIndex(sessionKeyRef.current, currentIndexRef.current);
+      if (sessionInitializedRef.current && !completedRef.current && canonicalOrderRef.current.length > 0) {
+        persistProgress(sessionKeyRef.current);
       }
       firstAttemptMissedRef.current.clear();
       pendingSessionCardIdRef.current = currentCardIdRef.current;
@@ -90,6 +104,7 @@ export function useCardSession(
       onSessionResetRef.current();
     }
 
+    const wasInitialized = sessionInitializedRef.current;
     const plan = planDeckAdoption({
       cards,
       keyChanged,
@@ -106,16 +121,26 @@ export function useCardSession(
     });
     if (plan.action !== 'adopt') return;
 
-    activeCardsRef.current = cards;
-    setActiveCards(cards);
-    if (keyChanged) {
-      setIsShuffled(false);
+    // A fresh open (not a carried-over card) resumes the shuffled order it was left in.
+    const pendingId = pendingSessionCardIdRef.current;
+    const carriesCard = Boolean(pendingId && cards.some((card) => card.id === pendingId));
+    const restored = !wasInitialized && !carriesCard
+      ? restoreCardOrder(cards, useAppStore.getState().sessionCardOrder[sessionKey])
+      : null;
+    const nextCards = restored ?? cards;
+
+    activeCardsRef.current = nextCards;
+    setActiveCards(nextCards);
+    if (keyChanged || restored) {
+      setIsShuffled(Boolean(restored));
     }
     canonicalOrderRef.current = cards;
     sessionInitializedRef.current = true;
     if (plan.clearPendingCard) pendingSessionCardIdRef.current = null;
-    setCurrentIndex(plan.index);
-  }, [cards, sessionKey]);
+    setCurrentIndex(restored
+      ? getSessionStartIndex(useAppStore.getState().sessionProgressIndex, sessionKey, nextCards.length)
+      : plan.index);
+  }, [cards, sessionKey, persistProgress]);
 
   useEffect(() => {
     if (activeCards.length > 0 && currentIndex >= activeCards.length) {
@@ -125,21 +150,19 @@ export function useCardSession(
 
   // Save progress (debounced to avoid massive re-renders)
   useEffect(() => {
-    if (!sessionInitializedRef.current || activeCards.length === 0) return;
-    const timeoutId = setTimeout(() => {
-      setSessionProgressIndex(sessionKey, currentIndex);
-    }, 3000);
+    if (!sessionInitializedRef.current || activeCards.length === 0 || completed) return;
+    const timeoutId = setTimeout(() => persistProgress(sessionKey), 3000);
     return () => clearTimeout(timeoutId);
-  }, [activeCards.length, currentIndex, sessionKey, setSessionProgressIndex]);
+  }, [activeCards, completed, currentIndex, isShuffled, sessionKey, persistProgress]);
 
   // Save on unmount
   useEffect(() => {
     return () => {
-      if (sessionInitializedRef.current && canonicalOrderRef.current.length > 0) {
-        useAppStore.getState().setSessionProgressIndex(sessionKeyRef.current, currentIndexRef.current);
+      if (sessionInitializedRef.current && !completedRef.current && canonicalOrderRef.current.length > 0) {
+        persistProgress(sessionKeyRef.current);
       }
     };
-  }, []);
+  }, [persistProgress]);
 
   // Preload upcoming audio for next 3 cards during idle time
   useEffect(() => {
@@ -229,44 +252,25 @@ export function useCardSession(
     setCurrentIndex(target);
   }, []);
 
+  /** Shuffling (or unshuffling) deals the whole deck again, so the round starts over from card 1. */
   const toggleShuffle = useCallback(() => {
     const nextShuffled = !isShuffled;
-    const currentIdx = currentIndexRef.current;
-    const hasAnsweredCards = Object.keys(sessionResults).length > 0 || firstAttemptMissedRef.current.size > 0;
+    const nextCards = nextShuffled ? shuffleItems(canonicalOrderRef.current) : [...canonicalOrderRef.current];
 
-    const nextCards = reorderSessionOnShuffle({
-      currentCards: activeCardsRef.current,
-      canonicalCards: canonicalOrderRef.current,
-      currentIndex: currentIdx,
-      nextShuffled,
-      hasAnsweredCards,
-    });
-
+    firstAttemptMissedRef.current.clear();
     activeCardsRef.current = nextCards;
     setActiveCards(nextCards);
     setIsShuffled(nextShuffled);
+    isShuffledRef.current = nextShuffled;
+    currentIndexRef.current = 0;
+    currentCardIdRef.current = nextCards[0]?.id ?? null;
+    setCurrentIndex(0);
+    setCompleted(false);
+    setSessionResults({});
     gradingCardKeyRef.current = null;
     useAppStore.getState().showFeedbackToast(nextShuffled ? 'Shuffled' : 'Unshuffled');
-
-    if (!nextShuffled) {
-      const nextIndex = currentIdx === 0 && !hasAnsweredCards
-        ? 0
-        : retainCurrentCardIndex(canonicalOrderRef.current, currentCardIdRef.current, currentIdx);
-      currentIndexRef.current = nextIndex;
-      setCurrentIndex(nextIndex);
-      if (currentIdx === 0 && !hasAnsweredCards) {
-        firstAttemptMissedRef.current.clear();
-        setCompleted(false);
-        onAnswerStateResetRef.current();
-      }
-    } else if (currentIdx === 0 && !hasAnsweredCards) {
-      firstAttemptMissedRef.current.clear();
-      currentIndexRef.current = 0;
-      setCurrentIndex(0);
-      setCompleted(false);
-      onAnswerStateResetRef.current();
-    }
-  }, [isShuffled, sessionResults]);
+    onAnswerStateResetRef.current();
+  }, [isShuffled]);
 
   const resetAll = useCallback(() => {
     firstAttemptMissedRef.current.clear();

@@ -1,6 +1,5 @@
 import { useRuntimeDecompositionTree } from '../../../features/character-breakdown';
-import { AppIcon, LevelTag, Skeleton } from '../../../lib/widgets';
-import { useLevel } from '../../../hooks/useLevels';
+import { Skeleton } from '../../../lib/widgets';
 import type { BeginnerDictionaryTerm } from '../../../data/dictionaryHome';
 
 interface CharacterDailyCardProps {
@@ -16,7 +15,6 @@ interface CharacterDailyCardProps {
 export function CharacterDailyCard({ word, onOpenWord }: CharacterDailyCardProps) {
   const openWord = () => onOpenWord(word.traditional);
   const { root } = useRuntimeDecompositionTree(word.traditional);
-  const level = useLevel(word.traditional);
 
   const isLoading = root.status === 'idle' || root.status === 'loading';
   const parts = (root.result?.children ?? []).filter(
@@ -27,43 +25,29 @@ export function CharacterDailyCard({ word, onOpenWord }: CharacterDailyCardProps
   return (
     <button
       type="button"
-      className="group flex h-full min-h-[220px] w-full cursor-pointer items-stretch overflow-hidden rounded-feature bg-ui-surface text-left transition-[background-color,transform] duration-150 hover:bg-ui-hover focus-ring active:scale-[0.99]"
+      className="group flex w-full cursor-pointer items-stretch overflow-hidden rounded-feature bg-ui-surface text-left transition-transform duration-100 focus-ring active:scale-[0.99]"
       onClick={openWord}
       aria-label={`Open character of the day: ${word.traditional}`}
     >
-      <div className="relative flex w-[34%] shrink-0 flex-col justify-between border-b-[length:var(--depth-md)] border-brand-primary-edge bg-brand-primary px-4 py-4 sm:w-[30%] sm:px-6 sm:py-5">
-        <div
-          aria-hidden="true"
-          className="absolute -right-8 -top-10 h-28 w-28 rounded-full border-[18px] border-white/20"
-        />
-        <span className="relative w-fit rounded-sm bg-white/85 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-brand-primary-deep">
-          Today
-        </span>
-        <span className="relative font-chinese text-[58px] font-bold leading-none text-white sm:text-[88px]">
+      <div className="relative flex w-28 shrink-0 items-center justify-center border-b-[length:var(--depth-lg)] border-brand-primary-edge bg-brand-primary">
+        <span className="relative font-chinese text-[64px] leading-none text-white">
           {word.traditional}
         </span>
       </div>
 
-      <div className="flex min-w-0 flex-1 flex-col justify-between border-b-[length:var(--depth-md)] border-ui-border px-5 py-4 sm:px-7 sm:py-5">
-        <div className="flex items-center justify-between gap-2">
-          <span className="truncate text-[10px] font-black uppercase tracking-wider text-brand-primary-deep">
-            Character of the day
-          </span>
-          <AppIcon
-            name="forward"
-            size={18}
-            className="shrink-0 text-ui-muted transition-transform group-hover:translate-x-1"
-          />
-        </div>
+      <div className="flex min-w-0 flex-1 flex-col justify-center gap-1 border-b-[length:var(--depth-lg)] border-ui-divider px-4 py-4">
+        <span className="truncate text-[11px] font-black uppercase tracking-widest text-brand-primary-deep">
+          Character of the day
+        </span>
 
-        <div className="min-w-0 py-1">
-          <p className="truncate text-[16px] font-black leading-none text-brand-primary sm:text-[18px]">
+        <div className="min-w-0">
+          <p className="truncate text-xl font-black leading-tight text-brand-primary">
             {word.pinyin}
           </p>
-          <p className="mt-1.5 line-clamp-2 text-[18px] font-black leading-tight text-ui-ink sm:text-[20px]">
+          <p className="line-clamp-2 text-xl font-black leading-tight text-ui-ink-strong">
             {word.meaning}
           </p>
-          {level && <div className="mt-2"><LevelTag variant="chip" level={level} /></div>}
+          
         </div>
 
         {showParts ? (

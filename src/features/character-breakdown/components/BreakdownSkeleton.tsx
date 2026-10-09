@@ -66,8 +66,8 @@ export const BreakdownSkeleton: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Sidebar on Desktop matching V3SupportingInformation */}
-        <aside aria-label="Character context" className="flex min-w-0 flex-col gap-4 lg:sticky lg:top-4 lg:self-start">
+        {/* Right Sidebar on Desktop matching the breakdown tabs */}
+        <aside aria-label="Character context" className="flex min-w-0 flex-col gap-4 lg:sticky-rail">
           <div className="min-w-0 rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-6 flex flex-col gap-3">
             <Skeleton className="h-4 w-28" />
             <div className="mt-1 divide-y-2 divide-ui-divider">

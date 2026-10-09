@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { FeedbackBottomBar, LessonComplete, PracticeFormatMenu } from '../../features/practice';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
-import { ActionButton, AppIcon, ScreenSkeleton, ScreenLayout } from '../../lib/widgets';
+import { ActionButton, AppIcon, ScreenLayout } from '../../lib/widgets';
 import { useListening } from './hooks/useListening';
 import { AudioControls } from './AudioControls';
 import { ListeningOptions } from './ListeningOptions';
@@ -91,7 +91,7 @@ export function ListeningScreen({ activeBookId = 1, selectedLessons = [], isLibr
   });
 
   if (isLoading) {
-    return <ScreenSkeleton type="listening" />;
+    return null;
   }
 
   if (screenState === 'complete') {

@@ -29,6 +29,7 @@ import {
   PiLightbulbBold,
   PiListChecksBold,
   PiListBold,
+  PiDotsThreeVerticalBold,
   PiLockKeyFill,
   PiMagnifyingGlassBold,
   PiBookBookmarkFill,
@@ -72,6 +73,7 @@ import {
   PiTextAaBold,
   PiHouseBold,
   PiQuestionBold,
+  PiQuestionFill,
   PiRulerBold,
   PiLeafFill,
   PiPlantFill,
@@ -119,6 +121,7 @@ export type AppIconName =
   | 'lock'
   | 'level'
   | 'menu'
+  | 'more'
   | 'minus'
   | 'pause'
   | 'play'
@@ -171,6 +174,7 @@ export type AppIconName =
   | 'pencil'
   | 'grid'
   | 'quiz'
+  | 'quizMark'
   | 'writing'
   | 'book'
   | 'statusCheck'
@@ -435,6 +439,7 @@ const ICONS: Record<AppIconName, IconType> = {
   lock: PiLockKeyFill,
   level: PiGraduationCapFill,
   menu: PiListBold,
+  more: PiDotsThreeVerticalBold,
   minus: PiMinusBold,
   pause: PiPauseFill,
   play: PiPlayFill,
@@ -444,6 +449,7 @@ const ICONS: Record<AppIconName, IconType> = {
   practice: PiPaintBrushFill,
   plus: PiPlusBold,
   quiz: PiLightningFill,
+  quizMark: PiQuestionFill,
   writing: PiPaintBrushFill,
   search: PiMagnifyingGlassBold,
   sidebarToggle: PiSidebarSimpleBold,

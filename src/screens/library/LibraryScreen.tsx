@@ -4,7 +4,9 @@ import { cn } from '../../utils/cn';
 import {
   ActionButton,
   AppIcon,
+  ConfirmationDialog,
   EmptyState,
+  ProfileAvatarButton,
   StickyWorkspaceHeader,
   type StickyWorkspaceHeaderMenuToggle,
 } from '../../lib/widgets';
@@ -15,6 +17,9 @@ import { DeleteFolderModal } from './DeleteFolderModal';
 import { LibrarySkeleton } from './components/LibrarySkeleton';
 import { LibraryCardGrid } from './components/LibraryCardGrid';
 import { LibraryHomeView } from './components/LibraryHomeView';
+import { LibrarySearchField } from './components/LibrarySearchField';
+import { AppFooter } from '../../app/components/AppFooter';
+import { MoveCardsDialog } from './MoveCardsDialog';
 import type { DBDictionaryEntry } from '../../types/database';
 import type { UserFlashcard } from '../../types/models';
 
@@ -23,9 +28,10 @@ interface LibraryScreenProps {
   onPlayFlashcards?: () => void;
   /** Mobile hamburger shown overlaid left in the sticky header (Library home). */
   menuToggle?: StickyWorkspaceHeaderMenuToggle;
+  onProfileClick?: () => void;
 }
 
-export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: LibraryScreenProps) {
+export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle, onProfileClick }: LibraryScreenProps) {
   const {
     toggleFavorite,
     setDictionaryWord,
@@ -55,6 +61,16 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
     recentItems,
     activeView,
     setActiveView,
+    isSelecting,
+    selectedKeys,
+    toggleSelected,
+    getItemKey,
+    bulkRemoveOpen,
+    setBulkRemoveOpen,
+    confirmBulkRemove,
+    moveOpen,
+    setMoveOpen,
+    moveSelectedTo,
   } = useLibrary();
 
   const isStarred = libraryActiveFolder === 'starred';
@@ -83,7 +99,6 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
     <div className="relative flex flex-1 w-full flex-col text-ui-ink">
       <StickyWorkspaceHeader
         title={activeView === 'folder' ? (activeCollection.title ?? 'Folder') : 'Library'}
-        align="left"
         menuToggle={activeView === 'home' ? menuToggle : undefined}
         leftSlot={activeView === 'folder' ? activeCollection.icon : undefined}
         rightContent={
@@ -94,6 +109,8 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
             >
               {totalCount} {totalCount === 1 ? 'card' : 'cards'}
             </span>
+          ) : onProfileClick ? (
+            <ProfileAvatarButton onClick={onProfileClick} />
           ) : undefined
         }
         onBack={
@@ -105,24 +122,21 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
             : undefined
         }
         backLabel="Back to Library"
-        searchValue={searchQuery}
-        onSearchChange={setSearchQuery}
-        searchPlaceholder={
-          activeView === 'folder'
-            ? `Search ${activeCollection.title ?? 'Folder'}…`
-            : 'Search folders…'
-        }
-        searchLabel={
-          activeView === 'folder'
-            ? `search ${activeCollection.title ?? 'Folder'} folder`
-            : 'search Library'
-        }
       />
+
+      <div className="mx-auto w-full max-w-5xl px-4 pb-5 md:px-8">
+        <LibrarySearchField
+          value={searchQuery}
+          onChange={setSearchQuery}
+          placeholder={activeView === 'folder' ? `Search ${activeCollection.title ?? 'folder'}` : 'Search folders'}
+          label={activeView === 'folder' ? `Search ${activeCollection.title ?? 'folder'}` : 'Search the library'}
+        />
+      </div>
 
       {activeView === 'home' && (
         <motion.div
           key="home-view"
-          className="mx-auto flex min-h-full w-full max-w-6xl flex-col px-4 pb-32 pt-0 md:px-8 sm:pb-24"
+          className="mx-auto flex min-h-full w-full max-w-5xl flex-col px-4 pb-32 pt-0 md:px-8 sm:pb-24"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.15 }}
@@ -144,6 +158,7 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
             }}
             onSelectWord={setDictionaryWord}
           />
+          <AppFooter className="mt-auto pt-12" />
         </motion.div>
       )}
 
@@ -215,6 +230,10 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
                 onAddCard={onAddCard}
                 onRemoveCard={handleRemoveCard}
                 onOpenCard={handleOpenCard}
+                isSelecting={isSelecting}
+                selectedKeys={selectedKeys}
+                getItemKey={getItemKey}
+                onToggleSelect={(card) => toggleSelected(getItemKey(card))}
               />
             )}
           </AnimatePresence>
@@ -242,13 +261,52 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
         confirmDeleteFolder={confirmDeleteFolder}
       />
 
-      {activeView === 'folder' && onPlayFlashcards && (
+      {bulkRemoveOpen && (
+        <ConfirmationDialog
+          title={`Remove ${selectedKeys.size} ${selectedKeys.size === 1 ? 'card' : 'cards'}?`}
+          description={isStarred ? 'They will leave your saved words.' : 'This action cannot be undone.'}
+          confirmLabel="Remove"
+          confirmLoadingLabel="Removing..."
+          cancelLabel="Cancel"
+          onConfirm={confirmBulkRemove}
+          onCancel={() => setBulkRemoveOpen(false)}
+        />
+      )}
+      <MoveCardsDialog
+        open={moveOpen}
+        selectedCount={selectedKeys.size}
+        folders={allCollections.filter((collection) => collection.id !== 'starred' && collection.id !== libraryActiveFolder)}
+        onMove={(folderId) => void moveSelectedTo(folderId)}
+        onClose={() => setMoveOpen(false)}
+      />
+
+      {activeView === 'folder' && isSelecting && (
         <div className="workspace-window pointer-events-none fixed bottom-0 right-0 z-50 bg-gradient-to-t from-ui-canvas via-ui-canvas/95 to-transparent pb-sheet-safe pt-10">
-          <div className="mx-auto w-full max-w-2xl px-4 md:px-6">
+          <div className="mx-auto w-full max-w-md px-4 md:px-6">
+            {selectedKeys.size === 0 ? (
+              <p className="pointer-events-auto pb-3 text-center text-[15px] font-extrabold text-ui-muted">Tap cards to select them</p>
+            ) : (
+              <div className="pointer-events-auto flex gap-3">
+                {!isStarred && (
+                  <ActionButton variant="secondary" size="lg" fullWidth onClick={() => setMoveOpen(true)} edgeColor="var(--color-ui-divider)" className="!border-ui-divider">
+                    <span className="text-[17px] font-black">Move {selectedKeys.size}</span>
+                  </ActionButton>
+                )}
+                <ActionButton variant="danger" size="lg" fullWidth onClick={() => setBulkRemoveOpen(true)}>
+                  <span className="text-[17px] font-black">Remove {selectedKeys.size}</span>
+                </ActionButton>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {activeView === 'folder' && !isSelecting && onPlayFlashcards && activeCollection.count > 0 && (
+        <div className="workspace-window pointer-events-none fixed bottom-0 right-0 z-50 bg-gradient-to-t from-ui-canvas via-ui-canvas/95 to-transparent pb-sheet-safe pt-10">
+          <div className="mx-auto w-full max-w-md px-4 md:px-6">
             <ActionButton
               size="lg"
               fullWidth
-              disabled={activeCollection.count === 0}
               onClick={() => {
                 setSearchQuery('');
                 onPlayFlashcards();
@@ -261,7 +319,7 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle }: Libra
               )}
             >
               <AppIcon name="play" size={20} />
-              <span>Start</span>
+              <span>Study {activeCollection.count} {activeCollection.count === 1 ? 'card' : 'cards'}</span>
             </ActionButton>
           </div>
         </div>

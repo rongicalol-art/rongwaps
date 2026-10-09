@@ -1,8 +1,10 @@
 import type { Flashcard } from '../../../../data/flashcards';
 import type { DBCharacterBreakdown } from '../../../../types/database';
 import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
-import { StrokeOrderBox } from '../StrokeOrderBox';
-import { ExtendedDefinitions } from '../ExtendedDefinitions';
+import { CharacterHeroPanel } from './CharacterHeroPanel';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { useEffect, useState } from 'react';
+import { ExtendedDefinitionsPanel, MoreDefinitionsToggle, useExtendedDefinitions } from '../ExtendedDefinitions';
 import { SummaryQuickActions } from '../SummaryQuickActions';
 import { useCharDictionaryEntry } from '../../hooks/useCharDictionaryEntry';
 import {
@@ -52,13 +54,18 @@ export function V3CharacterSummary({
     ? sanitizeDictionaryDefinitions(rawMeaning, { preferredScript: characterPreference }).definitions[0] || rawMeaning
     : undefined;
 
+  const more = useExtendedDefinitions(character);
+  const [moreOpen, setMoreOpen] = useState(false);
+  const reduceMotion = useReducedMotion();
+  useEffect(() => setMoreOpen(false), [character]);
+
   return (
-    <header className="relative isolate min-w-0 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
-      <div className="grid grid-cols-[112px_minmax(0,1fr)] items-center gap-4 p-4 sm:gap-7 sm:p-6 lg:gap-8">
-        <StrokeOrderBox char={character} size={112} accentHex={accentHex} className="shrink-0 bg-ui-canvas/55" />
-        <div className="relative min-w-0 text-left">
+    <header className="min-w-0">
+      <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4 sm:gap-6">
+        <CharacterHeroPanel character={character} accentHex={accentHex} />
+        <div className="flex min-w-0 flex-col gap-1.5 text-left">
           <div className="flex min-w-0 flex-wrap items-center gap-1.5">
-            {pinyin && <span className="truncate text-xl font-black text-brand-primary sm:text-2xl">{numberToToneMarks(pinyin)}</span>}
+            {pinyin && <span className="truncate text-[26px] font-black leading-tight text-brand-primary">{numberToToneMarks(pinyin)}</span>}
             {otherReadings.length > 0 && (
               <span className="text-xs font-bold text-ui-muted sm:text-sm">
                 also{' '}
@@ -71,22 +78,42 @@ export function V3CharacterSummary({
               </span>
             )}
           </div>
-          {meaning && <p className="mt-1 line-clamp-2 max-w-2xl text-sm font-bold leading-snug text-ui-ink sm:text-lg">{meaning}</p>}
+          {meaning && (
+            <div className="flex min-w-0 items-start gap-1">
+              <p className="line-clamp-2 min-w-0 max-w-2xl text-[22px] font-black leading-tight text-ui-ink-strong">{meaning}</p>
+              {more?.hasExtra && <MoreDefinitionsToggle open={moreOpen} onToggle={() => setMoreOpen((value) => !value)} count={more.hasExtraDefinitions ? more.definitions.length - 1 : undefined} />}
+            </div>
+          )}
+            <AnimatePresence initial={false}>
+              {moreOpen && more && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: reduceMotion ? 0 : 0.2, ease: 'easeOut' }}
+                  className="overflow-hidden"
+                >
+                  <div className="pt-2">
+                    <ExtendedDefinitionsPanel data={more} />
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           {(courseCard || level) && (
-            <div className="mt-2 flex flex-wrap items-center gap-2">
-              {courseCard && <LevelTag bookId={courseCard.bookId} lessonId={courseCard.lessonId} />}
+            <div className="flex flex-wrap items-center gap-2">
+              {courseCard && <LevelTag long bookId={courseCard.bookId} lessonId={courseCard.lessonId} />}
               <LevelTag variant="chip" level={level} />
             </div>
           )}
+          <SummaryQuickActions
+            className="-ml-2 mt-0.5 flex items-center gap-1"
+            char={character}
+            audioSrc={data?.audio ?? undefined}
+            pinyin={pinyin ? numberToToneMarks(pinyin) : undefined}
+            meaning={meaning}
+          />
         </div>
       </div>
-      <SummaryQuickActions
-        char={character}
-        audioSrc={data?.audio ?? undefined}
-        pinyin={pinyin ? numberToToneMarks(pinyin) : undefined}
-        meaning={meaning}
-      />
-      <ExtendedDefinitions key={character} char={character} />
     </header>
   );
 }

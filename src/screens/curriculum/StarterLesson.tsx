@@ -1,59 +1,24 @@
 import type { CourseLessonProgress } from '../../types/models';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { INTRODUCTION_ART } from '../../data/lessonLandscapeArt';
+import { LessonItem } from './LessonItem';
 
 type CourseBook = (typeof SAMPLE_BOOKS)[number];
 
 interface StarterLessonProps {
   starterLesson: CourseLessonProgress;
   activeBook: CourseBook;
-  isSelected: boolean;
-  onToggleLesson: (id: number) => void;
+  onOpen: (id: number) => void;
 }
 
-export function StarterLesson({ starterLesson, activeBook, isSelected, onToggleLesson }: StarterLessonProps) {
+/** The Introduction is a lesson row like the rest, with its own label and art. */
+export function StarterLesson({ starterLesson, activeBook, onOpen }: StarterLessonProps) {
   if (activeBook.id !== 1 || !starterLesson) return null;
 
   return (
-    <div className="mb-8 w-full max-w-[400px]">
-      <button
-        type="button"
-        onClick={() => onToggleLesson(starterLesson.id)}
-        aria-pressed={isSelected}
-        style={isSelected ? { borderColor: activeBook.edgeHex } : undefined}
-        className={`group flex w-full cursor-pointer items-center justify-between rounded-feature border-2 border-ui-border bg-ui-surface p-4 text-left outline-none transition-all duration-200 focus-ring ${
-          isSelected
-            ? 'border-b-[length:var(--depth-lg)]'
-            : 'border-b-[length:var(--depth-md)] hover:bg-ui-hover'
-        }`}
-      >
-        <div className="flex items-center gap-4">
-          <div className="flex h-14 w-14 shrink-0 items-center justify-center">
-            <img
-              src={INTRODUCTION_ART}
-              alt=""
-              className="h-full w-full object-contain"
-            />
-          </div>
-          <div>
-            <p
-              className={`text-xs font-black uppercase tracking-wider mb-0.5 transition-colors duration-300 ${
-                isSelected ? activeBook.accent : 'text-ui-muted'
-              }`}
-            >
-              Introduction
-            </p>
-            <h2
-              className={`text-lg font-black truncate transition-colors duration-300 ${
-                isSelected ? 'text-ui-ink' : 'text-ui-muted'
-              }`}
-            >
-              {starterLesson.title}
-            </h2>
-          </div>
-        </div>
-      </button>
-      <div className="mx-auto mt-2 h-8 w-1 rounded-full bg-ui-border" />
+    <div className="w-full max-w-[400px]">
+      <LessonItem lesson={{ ...starterLesson, label: 'Introduction' }} onOpen={onOpen} art={INTRODUCTION_ART} />
+      <div className="mx-auto mb-5 h-6 w-1 rounded-full bg-ui-border" />
     </div>
   );
 }

@@ -7,7 +7,6 @@ import { groupByGrade, rankBuiltWith } from '../../src/features/character-breakd
 import { formatSoundShift } from '../../src/features/character-breakdown/utils/soundShift';
 import { mergeBreakdownWords } from '../../src/features/character-breakdown/utils/mergeBreakdownWords';
 import { resolveSoundRevealPath } from '../../src/features/character-breakdown/utils/soundRevealPath';
-import { hasSupportingInfo } from '../../src/features/character-breakdown/components/v3/V3SupportingInformation';
 import type { DBDictionaryEntry } from '../../src/types/database';
 
 // The dictionary service maps rows with string-array definitions at runtime.
@@ -221,12 +220,6 @@ test('sound reveal path stays empty for missing glyphs and cycles', async () => 
     }),
     [],
   );
-});
-
-test('hasSupportingInfo is true for words, used-in characters or a sound family', () => {
-  assert.equal(hasSupportingInfo([], [], { lends: [{ character: '媽', grade: 'tone' }] }), true);
-  assert.equal(hasSupportingInfo([], [{ character: '騎', grade: null }], null), true);
-  assert.equal(hasSupportingInfo([], [], null), false);
 });
 
 test('groupByGrade splits sound-alikes into same, tone and close, dropping empty grades', () => {

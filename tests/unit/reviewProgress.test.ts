@@ -94,5 +94,6 @@ test('reset clears local SRS and session progress', () => {
       startTime: null,
     },
     sessionProgressIndex: {},
+    sessionCardOrder: {},
   });
 });

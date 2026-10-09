@@ -75,13 +75,13 @@ export const SingleBreakdownView: React.FC<SingleBreakdownViewProps> = ({
           onBack={onBack}
           maxWidth="none"
           centerContent={
-            <h1 className="w-full text-center text-xs sm:text-sm font-black uppercase tracking-wider text-ui-ink-strong">
+            <h1 className="w-full text-center text-base sm:text-lg font-black uppercase tracking-wider text-ui-ink-strong">
               Character breakdown
             </h1>
           }
           rightAction={<BreakdownSettingsPopover />}
         />
-        <div className="relative mx-auto flex min-h-full w-full max-w-[1180px] flex-col gap-6 px-4 py-4 pb-12 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
+        <div className="relative mx-auto flex min-h-full w-full max-w-[1180px] flex-col gap-6 px-4 py-3 pb-12 sm:px-5 sm:py-4 lg:px-6 lg:py-5">
           <AnimatePresence mode="wait">
             {!charData && !isV3Runtime ? (
               <motion.div

@@ -5,7 +5,6 @@ import { useDismiss } from '../../../hooks/useDismiss';
 import { useFloatingDockSleep } from '../../../hooks/useFloatingDockSleep';
 import { cn } from '../../../utils/cn';
 import type { QuizMode } from '../../../types/models';
-import type { FlashcardViewMode } from '../../flashcard';
 import { DockSubMenu } from './DockSubMenu';
 import { DOCK_SWAP, PracticeDockSlotOutlet, usePracticeDockSlot } from '../../../features/practice';
 import { PracticeStudyAction } from './PracticeStudyAction';
@@ -21,15 +20,13 @@ export const PRACTICE_ACTIVITIES = [
 export type PracticeActivityId = (typeof PRACTICE_ACTIVITIES)[number]['id'];
 
 /** The single anchored sub-menu the dock can have open at a time. */
-type DockMenu = 'quiz' | 'flashcards' | 'study';
+type DockMenu = 'quiz' | 'study';
 
 export interface PracticeModeDockProps {
   onChange: (activity: PracticeActivityId) => void;
   onOpenGrammar?: () => void;
   onOpenReading?: () => void;
   onSelectQuizMode: (mode: QuizMode) => void;
-  onSelectFlashcardMode?: (mode: FlashcardViewMode) => void;
-  flashcardMode?: FlashcardViewMode;
   quizMode?: QuizMode | null;
   value: PracticeActivityId;
   visible?: boolean;
@@ -43,18 +40,11 @@ const QUIZ_MODES = [
   { value: 'typing', label: 'Type', icon: 'typeText' },
 ] as const;
 
-const FLASHCARD_MODES = [
-  { value: 'cards', label: 'Cards', icon: 'cards' },
-  { value: 'list', label: 'List', icon: 'choices' },
-] as const;
-
 export function PracticeModeDock({
   onChange,
   onOpenGrammar,
   onOpenReading,
   onSelectQuizMode,
-  onSelectFlashcardMode,
-  flashcardMode = 'cards',
   quizMode,
   value,
   visible = true,
@@ -144,17 +134,6 @@ export function PracticeModeDock({
                 selectedValue={quizMode}
                 onSelect={onSelectQuizMode}
               />
-              <DockSubMenu<FlashcardViewMode>
-                open={openMenu === 'flashcards'}
-                onClose={() => setOpenMenu(null)}
-                modeKey="flashcards"
-                side={side}
-                containerRef={modesContainerRef}
-                label="Choose flashcards view"
-                options={FLASHCARD_MODES}
-                selectedValue={flashcardMode}
-                onSelect={(mode) => onSelectFlashcardMode?.(mode)}
-              />
               <SegmentedControl<PracticeActivityId>
                 value={value}
                 ariaLabel="Practice mode"
@@ -165,7 +144,7 @@ export function PracticeModeDock({
                 tooltipSide={side}
                 className={cn('w-full rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface shadow-ambient-sm', isVertical ? 'p-1.5' : 'h-full p-1.5 px-2.5')}
                 options={PRACTICE_ACTIVITIES.map((activity) => {
-                  const isSubMenu = activity.id === 'quiz' || activity.id === 'flashcards';
+                  const isSubMenu = activity.id === 'quiz';
                   const isMenuOpen = openMenu === activity.id;
                   return {
                     value: activity.id,
@@ -191,9 +170,8 @@ export function PracticeModeDock({
                   };
                 })}
                 onChange={(activity) => {
-                  const isSubMenu = activity === 'quiz' || activity === 'flashcards';
-                  if (isSubMenu && value === activity) {
-                    setOpenMenu((current) => (current === activity ? null : activity));
+                  if (activity === 'quiz' && value === activity) {
+                    setOpenMenu((current) => (current === 'quiz' ? null : 'quiz'));
                     return;
                   }
                   setOpenMenu(null);

@@ -18,6 +18,7 @@ export type ReviewProgressUpdate = Pick<
 
 export interface ClearedReviewProgress extends ReviewProgressUpdate {
   sessionProgressIndex: Record<string, number>;
+  sessionCardOrder: Record<string, string[]>;
 }
 
 export function createEmptySessionProgress(): SessionProgress {
@@ -62,5 +63,6 @@ export function createClearedReviewProgress(): ClearedReviewProgress {
     learnedCards: [],
     sessionProgress: createEmptySessionProgress(),
     sessionProgressIndex: {},
+    sessionCardOrder: {},
   };
 }

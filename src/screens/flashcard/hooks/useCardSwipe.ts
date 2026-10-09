@@ -6,7 +6,7 @@ const COMMIT_PX = 80;
 const FLICK_PX = 40;
 const FLICK_VELOCITY = 0.3; // px/ms
 const MAX_TAP_MS = 600;
-const EXIT_PX = 220;
+const EXIT_PX = 320;
 
 interface UseCardSwipeOptions {
   enabled: boolean;
@@ -38,14 +38,14 @@ export function useCardSwipe(ref: RefObject<HTMLElement | null>, opts: UseCardSw
   const paint = useCallback((dx: number) => {
     const el = ref.current;
     if (!el) return;
-    el.style.transform = dx === 0 ? '' : `translate3d(${dx}px,0,0) rotate(${dx * 0.05}deg)`;
+    el.style.transform = dx === 0 ? '' : `translate3d(${dx}px,0,0) rotate(${dx * 0.04}deg)`;
     el.style.setProperty('--rw-swipe-ok', String(Math.min(Math.max(dx, 0) / COMMIT_PX, 1) * 0.35));
     el.style.setProperty('--rw-swipe-no', String(Math.min(Math.max(-dx, 0) / COMMIT_PX, 1) * 0.35));
   }, [ref]);
 
-  const settle = useCallback((dx: number, ms: number) => {
+  const settle = useCallback((dx: number, ms: number, springBack = false) => {
     const el = ref.current;
-    if (el) el.style.transition = `transform ${ms}ms cubic-bezier(0.2, 0.8, 0.2, 1)`;
+    if (el) el.style.transition = `transform ${ms}ms ${springBack ? 'cubic-bezier(0.34, 1.45, 0.64, 1)' : 'cubic-bezier(0.3, 0.6, 0.5, 1)'}`;
     paint(dx);
   }, [ref, paint]);
 
@@ -101,11 +101,11 @@ export function useCardSwipe(ref: RefObject<HTMLElement | null>, opts: UseCardSw
     if (Math.abs(dx) >= COMMIT_PX || flick) {
       const dir = dx < 0 ? -1 : 1;
       if (optsRef.current.onSwipe(dir)) {
-        settle(dir * EXIT_PX, 200);
+        settle(dir * EXIT_PX, 240);
         return;
       }
     }
-    settle(0, 220);
+    settle(0, 320, true);
   }, [settle]);
 
   return {

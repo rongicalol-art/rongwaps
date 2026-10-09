@@ -154,6 +154,32 @@ class FlashcardService {
     }
   }
 
+  /** Moves cards into a folder (`custom` is the built-in Custom cards folder). */
+  async moveFlashcards(userId: string, cardIds: string[], folderId: string) {
+    if (cardIds.length === 0) return;
+    const ids = new Set(cardIds);
+    try {
+      if (this.cachedFlashcards) {
+        this.cachedFlashcards = this.cachedFlashcards.map((c) => (ids.has(c.id) ? { ...c, folderId } : c));
+        this.notifyFlashcards();
+      }
+
+      const { error } = await supabase
+        .from("user_flashcards")
+        .update({ folder_id: folderId === "custom" ? null : folderId })
+        .eq("user_id", userId)
+        .in("id", cardIds);
+
+      if (error) {
+        await this.refetchFlashcards(userId);
+        throw error;
+      }
+    } catch (e) {
+      debugLogger.error('Supabase', "Error moving flashcards", e);
+      throw e;
+    }
+  }
+
   subscribeToUserFlashcards(userId: string, onUpdate: FlashcardListener) {
     this.flashcardListeners.add(onUpdate);
 

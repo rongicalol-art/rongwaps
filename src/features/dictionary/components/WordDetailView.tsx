@@ -1,7 +1,7 @@
 import { debugLogger } from '../../../utils/debug/debugLogger';
 import { useEffect, useMemo, useState } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
-import { DetailShell, LevelTag, ScreenHeader } from '../../../lib/widgets';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { DetailShell, ScreenHeader } from '../../../lib/widgets';
 import { useLevel } from '../../../hooks/useLevels';
 import { useAppStore } from '../../../store/useAppStore';
 import { getDictionaryEntries } from '../../../services/dictionaryService';
@@ -12,11 +12,12 @@ import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
 import type { DBDictionaryEntry } from '../../../types/database';
 import type { Flashcard } from '../../../data/flashcards';
 import { SAMPLE_BOOKS } from '../../../data/books';
-import { ExtendedDefinitions, StrokeOrderBox, SummaryQuickActions } from '../../character-breakdown';
+import { BreakdownTabs, type BreakdownTab } from '../../character-breakdown';
 import { MemoryHookBlock } from '../../character-memory-hooks';
 import { WordExamplesSection } from './WordExamplesSection';
 import { WordDecompositionStrip } from './WordDecompositionStrip';
-import { WordSupportingInformation, hasWordSupportingInfo } from './WordSupportingInformation';
+import { WordHero } from './WordHero';
+import { WordRelatedList } from './WordRelatedList';
 import { WordDetailSkeleton } from './WordDetailSkeleton';
 import { FallbackWords } from './FallbackWords';
 import { NotFound } from './NotFound';
@@ -105,10 +106,6 @@ export function WordDetailView({
     };
   }, [word]);
 
-  const chars = Array.from(word);
-  // Each character gets its own stroke-order box, shrinking with word length so
-  // the whole word stays on one row.
-  const strokeBoxSize = chars.length <= 1 ? 112 : chars.length === 2 ? 88 : chars.length <= 4 ? 56 : 44;
   const primary = entries[0];
   const primaryChar = primary?.traditional || word;
   const pinyin = primary?.pinyin?.[0] ? numberToToneMarks(primary.pinyin[0]) : '';
@@ -126,7 +123,14 @@ export function WordDetailView({
     return lines.reduce((shortest, line) => (line.length < shortest.length ? line : shortest));
   }, [primaryCourseCard, sanitized]);
 
-  const hasSupporting = hasWordSupportingInfo(relatedWords, isExtrasLoading);
+  const reduceMotion = useReducedMotion();
+  type WordTab = 'related' | 'examples';
+  const tabs: BreakdownTab<WordTab>[] = [];
+  if (isExtrasLoading || relatedWords.length > 0) tabs.push({ id: 'related', label: 'Related words', count: isExtrasLoading ? undefined : relatedWords.length });
+  if (isExtrasLoading || examples.length > 0) tabs.push({ id: 'examples', label: 'Examples', count: isExtrasLoading ? undefined : examples.length });
+  const [tab, setTab] = useState<WordTab | null>(null);
+  useEffect(() => setTab(null), [word]);
+  const activeTab = tabs.find((item) => item.id === tab)?.id ?? tabs[0]?.id;
 
   return (
     <DetailShell.Root
@@ -143,10 +147,10 @@ export function WordDetailView({
           onBack={onBack}
           maxWidth="none"
           centerContent={
-            <h1 className="w-full text-center text-xs sm:text-sm font-black uppercase tracking-wider text-ui-ink-strong">Word breakdown</h1>
+            <h1 className="w-full text-center text-base sm:text-lg font-black uppercase tracking-wider text-ui-ink-strong">Word breakdown</h1>
           }
         />
-        <div className="relative mx-auto flex min-h-full w-full max-w-[1180px] flex-col gap-6 px-4 py-4 pb-12 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
+        <div className="relative mx-auto flex min-h-full w-full max-w-[800px] flex-col gap-6 px-4 py-4 pb-12 sm:px-6 sm:py-6">
           <AnimatePresence mode="wait">
             {loading ? (
               <motion.div
@@ -181,92 +185,50 @@ export function WordDetailView({
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="w-full flex flex-col gap-6"
+                className="flex w-full flex-col gap-7"
               >
-                <header className="relative isolate min-w-0 overflow-hidden rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface">
-                  <div className={`grid items-center gap-4 p-4 sm:gap-7 sm:p-6 ${chars.length >= 3 ? 'grid-cols-1' : 'grid-cols-[auto_minmax(0,1fr)]'}`}>
-                    <div className={`flex min-w-0 flex-wrap items-center gap-2 font-chinese text-ui-ink-strong ${chars.length >= 3 ? 'pr-20' : ''}`}>
-                      {chars.map((char, index) => (
-                        HANZI_RE.test(char) ? (
-                          <StrokeOrderBox
-                            key={index}
-                            char={char}
-                            size={strokeBoxSize}
-                            accentHex={activeBook.accentHex}
-                            className="shrink-0 bg-ui-canvas/55"
-                          />
-                        ) : (
-                          <span key={index} className="text-3xl">{char}</span>
-                        )
-                      ))}
-                    </div>
-                    <div className="relative min-w-0 pr-20 text-left">
-                      <div className="flex min-w-0 flex-wrap items-center gap-1.5">
-                        {pinyin && (
-                          <span className="truncate text-xl font-black text-brand-primary sm:text-2xl">{pinyin}</span>
-                        )}
-                      </div>
-                      {heroDefinition && (
-                        <p className="mt-1 line-clamp-2 max-w-2xl text-sm font-bold leading-snug text-ui-ink sm:text-lg">
-                          {heroDefinition}
-                        </p>
-                      )}
-                      {primaryCourseCard ? (
-                        <p className="mt-2"><LevelTag bookId={primaryCourseCard.bookId} lessonId={primaryCourseCard.lessonId} /></p>
-                      ) : level ? (
-                        <p className="mt-2"><LevelTag variant="chip" level={level} /></p>
-                      ) : null}
-                    </div>
-                  </div>
-                  <SummaryQuickActions
-                    char={primaryChar}
-                    audioSrc={primaryCourseCard?.audio}
-                    pinyin={pinyin || undefined}
-                    meaning={heroDefinition}
-                  />
+                <WordHero
+                  word={word}
+                  accentHex={activeBook.accentHex}
+                  pinyin={pinyin}
+                  meaning={heroDefinition}
+                  entries={entries}
+                  courseCard={primaryCourseCard}
+                  level={level}
+                  primaryChar={primaryChar}
+                />
 
-                  <ExtendedDefinitions entries={entries} />
-                </header>
+                <WordDecompositionStrip word={word} onOpenCharacter={pushCharacter} accentHex={activeBook.accentHex} edgeHex={activeBook.edgeHex} />
 
-                <div
-                  className={
-                    hasSupporting
-                      ? 'grid min-w-0 items-start gap-6 lg:grid-cols-[minmax(0,64fr)_minmax(19rem,36fr)] lg:gap-8'
-                      : 'flex min-w-0 flex-col gap-6 lg:gap-8'
-                  }
-                >
-                  <div className="flex min-w-0 flex-col gap-6 lg:gap-8">
-                    <WordDecompositionStrip word={word} onOpenCharacter={pushCharacter} accentHex={activeBook.accentHex} edgeHex={activeBook.edgeHex} />
+                <MemoryHookBlock
+                  cacheKey={`word_${word}`}
+                  word={word}
+                  pinyin={pinyin || undefined}
+                  emptyText={<>No memory hook for this word yet.</>}
+                />
 
-                    <MemoryHookBlock
-                      cacheKey={`word_${word}`}
-                      word={word}
-                      pinyin={pinyin || undefined}
-                      emptyText={<>No memory hook for this word yet.</>}
-                    />
-
-                    <WordExamplesSection
-                      examples={examples}
-                      isLoading={isExtrasLoading}
-                      word={word}
-                      activeBook={activeBook}
-                    />
-                  </div>
-
-                  {hasSupporting && (
-                    <aside
-                      aria-label="Word context"
-                      className="flex min-w-0 flex-col lg:sticky lg:top-4 lg:self-start"
+                {activeTab && (
+                  <div className="flex min-w-0 flex-col gap-3">
+                    <BreakdownTabs tabs={tabs} active={activeTab} onChange={setTab} />
+                    <motion.div
+                      key={`${word}-${activeTab}`}
+                      role="tabpanel"
+                      id={`breakdown-panel-${activeTab}`}
+                      aria-labelledby={`breakdown-tab-${activeTab}`}
+                      initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: reduceMotion ? 0 : 0.42, ease: [0.2, 0.9, 0.3, 1] }}
+                      className="min-w-0"
                     >
-                      <WordSupportingInformation
-                        relatedWords={relatedWords}
-                        isRelatedLoading={isExtrasLoading}
-                        onOpenWord={setDictionaryWord}
-                        activeBook={activeBook}
-                      />
-                    </aside>
-                  )}
-                </div>
+                      {activeTab === 'related' && (
+                        <WordRelatedList word={word} relatedWords={relatedWords} isLoading={isExtrasLoading} onOpenWord={setDictionaryWord} />
+                      )}
+                      {activeTab === 'examples' && (
+                        <WordExamplesSection examples={examples} isLoading={isExtrasLoading} word={word} />
+                      )}
+                    </motion.div>
+                  </div>
+                )}
               </motion.div>
             )}
           </AnimatePresence>

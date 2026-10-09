@@ -56,7 +56,7 @@ const sizeConfig: Record<ActionButtonSize, {
     depressedClass: 'translate-y-[length:var(--depth-md)]',
   },
   lg: {
-    outerRadius: 'rounded-feature text-base',
+    outerRadius: 'rounded-control text-base',
     innerPadding: 'min-h-13 px-5 py-3',
     depthOffset: 'top-[length:var(--depth-lg)]',
     marginClass: 'mb-[length:var(--depth-lg)]',

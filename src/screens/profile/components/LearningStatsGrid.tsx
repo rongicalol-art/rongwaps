@@ -1,76 +1,53 @@
-import React, { memo } from 'react';
-import { ProgressMetricCard } from '../../../lib/widgets';
-import type { ReviewOverview } from '../../../utils/srs/reviewOverview';
+import { memo } from 'react';
+import { AppIcon, type AppIconName } from '../../../lib/widgets';
+
+interface CollectionTileProps {
+  icon: AppIconName;
+  iconClassName: string;
+  value: number;
+  label: string;
+  onClick?: () => void;
+}
+
+/** A pressable collection tile: icon chip, big number, quiet label. */
+function CollectionTile({ icon, iconClassName, value, label, onClick }: CollectionTileProps) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={!onClick}
+      className="flex min-w-0 flex-col gap-2 rounded-feature border-2 border-b-[length:var(--depth-lg)] border-ui-divider bg-ui-surface px-4 py-3.5 text-left transition-transform active:translate-y-0.5 active:border-b-[length:var(--depth-sm)] focus-ring disabled:cursor-default"
+    >
+      <span className={`flex h-10 w-10 items-center justify-center rounded-control ${iconClassName}`}>
+        <AppIcon name={icon} size={22} />
+      </span>
+      <span className="text-[28px] font-black leading-none tabular-nums text-ui-ink-strong">{value}</span>
+      <span className="text-xs font-black uppercase tracking-widest text-ui-muted">{label}</span>
+    </button>
+  );
+}
 
 interface LearningStatsGridProps {
-  overview: ReviewOverview;
   favoriteCount: number;
-  customFoldersCount?: number;
   localCardsCount: number;
   onNavigateToFavorites?: () => void;
   onCreateCustomCard?: () => void;
 }
 
-/**
- * Responsive 2x2 grid of learner statistics, retention metrics, and interactive quick actions.
- */
+/** Collections you own: favorites and custom cards. Learning numbers live in the review card. */
 export const LearningStatsGrid = memo(function LearningStatsGrid({
-  overview,
   favoriteCount,
   localCardsCount,
   onNavigateToFavorites,
   onCreateCustomCard,
 }: LearningStatsGridProps) {
-  const { solid, learning } = overview.stages;
-
   return (
-    <section>
-      <h2 className="mb-2.5 text-left text-xs font-black uppercase tracking-wider text-ui-muted-strong sm:mb-3">
-        Stats
-      </h2>
-      <div className="grid grid-cols-2 gap-2.5 sm:gap-4">
-        <ProgressMetricCard
-          label="Solid"
-          value={solid}
-          icon="trophy"
-          accentClassName="text-feedback-success"
-        />
-        <ProgressMetricCard
-          label="Learning"
-          value={learning}
-          icon="cards"
-          accentClassName="text-brand-primary"
-        />
-        <ProgressMetricCard
-          label="Favorites"
-          value={favoriteCount}
-          icon="bookmarkFilled"
-          accentClassName="text-feedback-warning-edge"
-          interactive={Boolean(onNavigateToFavorites)}
-          onClick={onNavigateToFavorites}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              onNavigateToFavorites?.();
-            }
-          }}
-        />
-        <ProgressMetricCard
-          label="Custom Cards"
-          value={localCardsCount}
-          icon="folder"
-          accentClassName="text-brand-secondary-edge"
-          interactive={Boolean(onCreateCustomCard)}
-          onClick={onCreateCustomCard}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              onCreateCustomCard?.();
-            }
-          }}
-        />
+    <section aria-label="Your collections" className="min-w-0">
+      <h2 className="mb-2 text-xs font-black uppercase tracking-widest text-ui-muted">Your collections</h2>
+      <div className="grid grid-cols-2 gap-3">
+        <CollectionTile icon="bookmarkFilled" iconClassName="bg-feedback-warning-surface text-feedback-warning-edge" value={favoriteCount} label="Favorites" onClick={onNavigateToFavorites} />
+        <CollectionTile icon="folder" iconClassName="bg-brand-primary-soft text-brand-primary" value={localCardsCount} label="Custom cards" onClick={onCreateCustomCard} />
       </div>
     </section>
   );
 });
-

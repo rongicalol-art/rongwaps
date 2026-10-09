@@ -15,8 +15,8 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
   {
     id: 'blue',
     name: 'Sky Blue',
-    front: '#0284C7',
-    back: '#0369A1',
+    front: '#3A7CA5',
+    back: '#2C6385',
     accent: 'text-brand-primary',
     accentBg: 'bg-brand-primary',
     accentBorder: 'border-brand-primary-edge',
@@ -25,8 +25,8 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
   {
     id: 'purple',
     name: 'Royal Purple',
-    front: '#CE82FF',
-    back: '#A855F7',
+    front: '#B58AD6',
+    back: '#9568B8',
     accent: 'text-palette-purple-edge',
     accentBg: 'bg-palette-purple',
     accentBorder: 'border-palette-purple-edge',
@@ -35,8 +35,8 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
   {
     id: 'green',
     name: 'Fresh Green',
-    front: '#58CC02',
-    back: '#46A302',
+    front: '#4F9F2A',
+    back: '#3F8420',
     accent: 'text-feedback-success',
     accentBg: 'bg-feedback-success',
     accentBorder: 'border-feedback-success-edge',
@@ -45,8 +45,8 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
   {
     id: 'orange',
     name: 'Tangerine',
-    front: '#EA580C',
-    back: '#C2410C',
+    front: '#D4793A',
+    back: '#B05F27',
     accent: 'text-brand-secondary',
     accentBg: 'bg-brand-secondary',
     accentBorder: 'border-brand-secondary-edge',
@@ -55,8 +55,8 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
   {
     id: 'coral',
     name: 'Coral Red',
-    front: '#FF4B4B',
-    back: '#EA2B2B',
+    front: '#D9605A',
+    back: '#B84842',
     accent: 'text-feedback-danger',
     accentBg: 'bg-feedback-danger',
     accentBorder: 'border-feedback-danger-edge',
@@ -65,8 +65,8 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
   {
     id: 'teal',
     name: 'Mint Teal',
-    front: '#00CD9C',
-    back: '#00A880',
+    front: '#3FB59A',
+    back: '#2F9580',
     accent: 'text-palette-teal-edge',
     accentBg: 'bg-palette-teal',
     accentBorder: 'border-palette-teal-edge',
@@ -75,8 +75,8 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
   {
     id: 'yellow',
     name: 'Amber Gold',
-    front: '#FFC800',
-    back: '#E0A900',
+    front: '#E3B23C',
+    back: '#C4952A',
     accent: 'text-feedback-warning-edge',
     accentBg: 'bg-feedback-warning',
     accentBorder: 'border-feedback-warning-edge',
@@ -85,8 +85,8 @@ export const FOLDER_COLOR_PALETTE: FolderColorOption[] = [
   {
     id: 'pink',
     name: 'Blush Pink',
-    front: '#FF64B4',
-    back: '#E04090',
+    front: '#DB74A6',
+    back: '#BC5688',
     accent: 'text-palette-pink-edge',
     accentBg: 'bg-palette-pink',
     accentBorder: 'border-palette-pink-edge',
@@ -165,7 +165,7 @@ export function resolveFolderColor(colorStr: string | undefined, index = 0): Fol
     debugLogger.warn('App', 'Folder color value is not a JSON object; continuing with string match', error);
   }
 
-  // 3. Hex code match (e.g. '#CE82FF')
+  // 3. Hex code match (e.g. '#B58AD6')
   if (colorStr.startsWith('#')) {
     const byHex = getFolderColorOption(colorStr);
     if (byHex) return byHex;

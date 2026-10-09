@@ -11,6 +11,10 @@ interface LibraryCardGridProps {
   onAddCard?: () => void;
   onRemoveCard: (card: DBDictionaryEntry | UserFlashcard) => void;
   onOpenCard: (card: DBDictionaryEntry | UserFlashcard) => void;
+  isSelecting?: boolean;
+  selectedKeys?: ReadonlySet<string>;
+  getItemKey?: (card: DBDictionaryEntry | UserFlashcard) => string;
+  onToggleSelect?: (card: DBDictionaryEntry | UserFlashcard) => void;
 }
 
 export function LibraryCardGrid({
@@ -20,6 +24,10 @@ export function LibraryCardGrid({
   onAddCard,
   onRemoveCard,
   onOpenCard,
+  isSelecting = false,
+  selectedKeys,
+  getItemKey,
+  onToggleSelect,
 }: LibraryCardGridProps) {
   return (
     <motion.div
@@ -31,7 +39,7 @@ export function LibraryCardGrid({
       className="w-full"
     >
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-        {!isStarred && onAddCard && (
+        {!isStarred && onAddCard && !isSelecting && (
           <motion.button
             whileTap={{ scale: 0.96 }}
             onClick={onAddCard}
@@ -55,6 +63,9 @@ export function LibraryCardGrid({
               index={idx}
               onRemove={onRemoveCard}
               onOpen={onOpenCard}
+              selecting={isSelecting}
+              selected={Boolean(selectedKeys && getItemKey && selectedKeys.has(getItemKey(item)))}
+              onToggleSelect={onToggleSelect}
             />
           );
         })}

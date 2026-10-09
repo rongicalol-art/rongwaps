@@ -1,127 +1,145 @@
-import { memo } from 'react';
+import { memo, useRef } from 'react';
 import { motion } from 'motion/react';
-import { LESSON_LANDSCAPE_ART } from '../../data/lessonLandscapeArt';
 import { AppIcon } from '../../lib/widgets';
+import { cn } from '../../utils/cn';
 import type { CourseLessonProgress } from '../../types/models';
+import { LESSON_LANDSCAPE_ART } from '../../data/lessonLandscapeArt';
 import { getEnglishLessonTitle } from '../../utils/lesson/lessonTitle';
+
+const LONG_PRESS_MS = 450;
+const LONG_PRESS_SLOP_PX = 8;
 
 interface LessonItemProps {
   lesson: CourseLessonProgress;
-  isSelected: boolean;
-  isPrevSelected: boolean;
-  isNextSelected: boolean;
-  onToggle: (id: number) => void;
-  accentColor: string;
-  edgeHex: string;
-  /** Manifest id of the lesson's first grammar part; hides the panel when absent. */
-  grammarPartId?: string;
-  onOpenGrammar?: (partId: string) => void;
+  onOpen: (id: number) => void;
+  /** Artwork override (the Introduction has its own); defaults to the lesson's landscape. */
+  art?: string;
+  /** Long press: start picking lessons with this one selected. Omit to disable selecting. */
+  onLongPress?: (id: number) => void;
+  /** While picking, a tap toggles the lesson instead of opening it. */
+  isSelecting?: boolean;
+  isSelected?: boolean;
+  isPrevSelected?: boolean;
+  isNextSelected?: boolean;
+  onToggle?: (id: number) => void;
+}
+
+/** Selected neighbours fuse into one block: only the outer corners and the last row's edge stay. */
+function containerShape(isSelected: boolean, isPrev: boolean, isNext: boolean) {
+  if (!isSelected) return 'mb-3 rounded-control border-b-[length:var(--depth-lg)]';
+  if (!isPrev && !isNext) return 'mb-3 rounded-control border-b-[length:var(--depth-lg)]';
+  if (!isPrev) return 'mb-0 rounded-t-control border-b-0';
+  if (isNext) return 'mb-0 border-y-0';
+  return 'mb-3 rounded-b-control border-t-0 border-b-[length:var(--depth-lg)]';
 }
 
 function LessonItemBase({
   lesson,
-  isSelected,
-  isPrevSelected,
-  isNextSelected,
+  onOpen,
+  art,
+  onLongPress,
+  isSelecting = false,
+  isSelected = false,
+  isPrevSelected = false,
+  isNextSelected = false,
   onToggle,
-  accentColor,
-  edgeHex,
-  grammarPartId,
-  onOpenGrammar,
 }: LessonItemProps) {
   const isLocked = lesson.state === 'locked';
-  const landscapeSrc = LESSON_LANDSCAPE_ART[lesson.id];
   const englishTitle = getEnglishLessonTitle(lesson.title);
-  let containerClasses = 'mb-3 rounded-feature border-2 border-ui-border border-b-[length:var(--depth-md)] bg-ui-surface';
-  let innerDivider = null;
 
-  if (isSelected) {
-    if (!isPrevSelected && !isNextSelected) {
-      containerClasses = 'mb-3 rounded-feature border-2 border-ui-border border-b-[length:var(--depth-lg)] bg-ui-surface';
-    } else if (!isPrevSelected && isNextSelected) {
-      containerClasses = 'mb-0 rounded-t-feature border-2 border-ui-border border-b-0 bg-ui-surface';
-      innerDivider = <div className="absolute bottom-0 left-6 right-16 h-0.5" style={{ background: `linear-gradient(to right, ${edgeHex}, transparent)` }} />;
-    } else if (isPrevSelected && isNextSelected) {
-      containerClasses = 'mb-0 border-x-2 border-y-0 border-ui-border bg-ui-surface';
-      innerDivider = <div className="absolute bottom-0 left-6 right-16 h-0.5" style={{ background: `linear-gradient(to right, ${edgeHex}, transparent)` }} />;
-    } else {
-      containerClasses = 'mb-3 rounded-b-feature border-x-2 border-t-0 border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface';
+  const pressTimer = useRef<number | null>(null);
+  const pressOrigin = useRef<{ x: number; y: number } | null>(null);
+  const longPressed = useRef(false);
+  const cancelPress = () => {
+    if (pressTimer.current !== null) window.clearTimeout(pressTimer.current);
+    pressTimer.current = null;
+  };
+
+  const handlePointerDown = (event: React.PointerEvent) => {
+    longPressed.current = false;
+    if (isLocked || isSelecting || !onLongPress) return;
+    pressOrigin.current = { x: event.clientX, y: event.clientY };
+    pressTimer.current = window.setTimeout(() => {
+      longPressed.current = true;
+      pressTimer.current = null;
+      navigator.vibrate?.(12);
+      onLongPress(lesson.id);
+    }, LONG_PRESS_MS);
+  };
+  const handlePointerMove = (event: React.PointerEvent) => {
+    const origin = pressOrigin.current;
+    if (!origin || pressTimer.current === null) return;
+    if (Math.hypot(event.clientX - origin.x, event.clientY - origin.y) > LONG_PRESS_SLOP_PX) cancelPress();
+  };
+  const handleClick = () => {
+    // The release that ends a long press must not also open the lesson.
+    if (longPressed.current) {
+      longPressed.current = false;
+      return;
     }
-  }
+    if (isSelecting && onToggle) onToggle(lesson.id);
+    else onOpen(lesson.id);
+  };
 
   return (
     <motion.div
-      layout
+      layout={Boolean(onLongPress)}
       whileTap={isLocked ? undefined : { scale: 0.98 }}
       transition={{
         layout: { type: 'spring', stiffness: 430, damping: 34 },
         scale: { type: 'spring', stiffness: 500, damping: 28 },
       }}
-      style={isSelected ? { borderColor: edgeHex } : undefined}
-      className={`relative flex min-h-20 min-w-0 items-center overflow-hidden transition-colors duration-300 ${containerClasses}`}
+      className={cn(
+        'relative min-w-0 overflow-hidden border-2 bg-ui-surface transition-colors duration-200',
+        containerShape(isSelected, isPrevSelected, isNextSelected),
+        isSelected ? 'border-brand-primary' : 'border-ui-border',
+        isSelected && 'bg-brand-primary-soft',
+      )}
     >
-      {innerDivider}
+      {isSelected && isNextSelected && (
+        <span aria-hidden className="absolute bottom-0 left-6 right-16 h-0.5 bg-brand-primary-edge" />
+      )}
       <button
         type="button"
         disabled={isLocked}
-        onClick={() => onToggle(lesson.id)}
-        aria-pressed={isSelected}
+        onClick={handleClick}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={cancelPress}
+        onPointerCancel={cancelPress}
+        onPointerLeave={cancelPress}
+        onContextMenu={(event) => onLongPress && event.preventDefault()}
+        aria-pressed={isSelecting ? isSelected : undefined}
         aria-label={`${lesson.label}: ${englishTitle}${isLocked ? ' (locked)' : ''}`}
-        className="group flex min-w-0 flex-1 items-center gap-3 self-stretch p-3 text-left sm:gap-4 sm:p-4 outline-none transition-colors hover:bg-ui-hover focus-ring disabled:cursor-not-allowed"
+        style={{ WebkitTouchCallout: 'none' }}
+        className="group flex w-full min-w-0 select-none items-center gap-3.5 p-3.5 text-left outline-none transition-colors hover:bg-ui-hover focus-ring disabled:cursor-not-allowed"
       >
-        <span className="relative flex h-12 w-12 shrink-0 sm:h-14 sm:w-14 items-center justify-center">
+        <span className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-compact bg-ui-surface">
           <img
-            src={landscapeSrc}
+            src={art ?? LESSON_LANDSCAPE_ART[lesson.id]}
             alt=""
-            className={`h-full w-full object-contain transition-[filter,transform,opacity] duration-300 ${
-              isLocked
-                ? 'opacity-35 grayscale'
-                : isSelected
-                  ? 'scale-[1.03] brightness-[0.9] contrast-[1.08] saturate-[1.18]'
-                  : ''
-            }`}
+            draggable={false}
+            className={cn('h-full w-full object-contain p-1', isLocked && 'opacity-35 grayscale')}
           />
           {isLocked && (
-            <span className="absolute grid h-7 w-7 place-items-center rounded-full bg-ui-surface text-ui-muted border-b-[length:var(--depth-sm)] border-ui-border">
-              <AppIcon name="lock" size={16} />
+            <span className="absolute grid h-6 w-6 place-items-center rounded-full bg-ui-surface text-ui-muted">
+              <AppIcon name="lock" size={14} />
             </span>
           )}
         </span>
 
         <span className="min-w-0 flex-1">
-          <span className={`mb-0.5 block whitespace-nowrap text-xs font-extrabold uppercase tracking-wider transition-colors sm:tracking-widest ${
-            isSelected ? accentColor : 'text-ui-muted'
-          }`}>
+          <span className="block whitespace-nowrap text-xs font-extrabold uppercase tracking-widest text-ui-muted">
             {lesson.label}
           </span>
-          <span className={`block line-clamp-2 text-base font-extrabold leading-tight transition-colors sm:text-lg ${
-            isSelected ? 'text-ui-ink' : 'text-ui-muted group-hover:text-ui-ink'
-          }`}>
+          <span className={cn(
+            'block line-clamp-2 text-lg font-black leading-tight',
+            isSelected ? 'text-ui-ink-strong' : 'text-ui-muted-strong',
+          )}>
             {englishTitle}
           </span>
         </span>
       </button>
-
-      {grammarPartId && onOpenGrammar && (
-        <div className="flex self-stretch items-stretch">
-          <div className="my-3 w-0.5 shrink-0 bg-ui-divider" />
-          <button
-            type="button"
-            disabled={isLocked}
-            onClick={() => onOpenGrammar(grammarPartId)}
-            aria-label={`Open grammar for ${englishTitle}`}
-            className={`flex w-12 shrink-0 sm:w-[3.75rem] items-center justify-center outline-none transition-[background-color,transform] duration-150 focus-ring focus-visible:ring-inset active:scale-95 disabled:active:scale-100 ${
-              isLocked
-                ? 'cursor-not-allowed text-ui-muted'
-                : isSelected
-                  ? 'text-ui-ink hover:bg-brand-primary/12 active:bg-brand-primary/20'
-                  : 'text-ui-muted hover:bg-brand-primary/12 active:bg-brand-primary/20'
-            }`}
-          >
-            <AppIcon name="grammar" size={26} />
-          </button>
-        </div>
-      )}
     </motion.div>
   );
 }

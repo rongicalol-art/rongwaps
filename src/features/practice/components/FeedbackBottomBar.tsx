@@ -138,7 +138,7 @@ export function FeedbackBottomBar({
           >
             <div
               className={cn(
-                'mx-auto flex w-full flex-col gap-3.5 px-4 pb-4 pt-4 sm:gap-4 sm:pb-6 sm:pt-5 md:gap-5',
+                'mx-auto flex w-full flex-col gap-3.5 px-4 pt-4 sm:gap-4 sm:pt-5 md:gap-5',
                 // Desktop: floating rounded tactile island card
                 'md:pointer-events-auto md:max-w-xl md:rounded-feature md:border-2 md:border-b-[length:var(--depth-lg)] md:shadow-ambient-lg md:p-6',
                 !isChecked

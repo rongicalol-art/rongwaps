@@ -10,8 +10,6 @@ export interface PracticeDockLayout {
   rootClassName: string;
   /** Classes for the practice window itself (drops the bottom-dock clearance). */
   insetClassName: string;
-  /** Invisible edge strip that brings back a scroll-hidden dock on hover. */
-  revealZoneClassName: string;
   /** Shrinks the absolutely positioned header and screens so they clear a vertical dock. */
   edgeInsetClassName: string;
 }
@@ -40,7 +38,6 @@ export function getPracticeDockLayout(style: PracticeDockStyle, isWide: boolean)
     return { isVertical, side: 'top', rootClassName: horizontalRoot,
       insetClassName: '',
       edgeInsetClassName: '',
-      revealZoneClassName: 'inset-x-0 bottom-0 h-14',
     };
   }
   if (style === 'left-column') {
@@ -50,7 +47,6 @@ export function getPracticeDockLayout(style: PracticeDockStyle, isWide: boolean)
       rootClassName: 'right-auto left-4 justify-start px-0 lg:left-6',
       insetClassName: VERTICAL_INSET_CLASS,
       edgeInsetClassName: 'md:left-20',
-      revealZoneClassName: 'inset-y-0 left-0 w-20',
     };
   }
   return {
@@ -66,7 +62,6 @@ export function getPracticeDockLayout(style: PracticeDockStyle, isWide: boolean)
       .join(' '),
     insetClassName: VERTICAL_INSET_CLASS,
     edgeInsetClassName: 'md:right-20',
-    revealZoneClassName: 'inset-y-0 right-0 w-20',
   };
 }
 

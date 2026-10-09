@@ -1,16 +1,10 @@
-import React, { memo } from 'react';
-import { ActionButton, AppIcon, UserAvatar } from '../../../lib/widgets';
+import { memo } from 'react';
+import { AppIcon, UserAvatar } from '../../../lib/widgets';
 import type { SyncStatus, UserSnapshot } from '../../../store/useAppStore';
+import { cn } from '../../../utils/cn';
 
 interface ProfileHeroCardProps {
   currentUser: UserSnapshot | null;
-  /**
-   * Sign-out handler. The screen catches the rejection and reports it through
-   * `accountError`, so the returned promise may reject.
-   */
-  onSignOut: () => void | Promise<void>;
-  isSigningOut: boolean;
-  onOpenSettings?: () => void;
   /** Cloud-sync state of the signed-in account. */
   syncStatus: SyncStatus;
   /** User-facing message from the last failed cloud operation, if any. */
@@ -20,107 +14,58 @@ interface ProfileHeroCardProps {
 }
 
 /**
- * Elevated learner hero card. Displays avatar, name, handle, cloud sync status,
- * and the sign-out action.
+ * Identity row: a large avatar, the name, the handle and a quiet sync dot. No
+ * card around it; failures show as one alert underneath.
  */
 export const ProfileHeroCard = memo(function ProfileHeroCard({
   currentUser,
-  onSignOut,
-  isSigningOut,
   syncStatus,
   syncError,
   accountError,
 }: ProfileHeroCardProps) {
   const avatarUrl = currentUser?.avatarUrl || currentUser?.avatar_url;
   const emailPrefix = currentUser?.email ? currentUser.email.split('@')[0] : null;
-  const displayName =
-    currentUser?.fullName || currentUser?.name || emailPrefix || 'Learner';
+  const displayName = currentUser?.fullName || currentUser?.name || emailPrefix || 'Learner';
   const handle = emailPrefix ? `@${emailPrefix}` : null;
   // `syncError` is also written by non-sync failures (e.g. a folder delete that
-  // the server rejected), so it outranks the status flag when deciding the pill.
+  // the server rejected), so it outranks the status flag when deciding the state.
   const hasSyncIssue = Boolean(syncError) || syncStatus === 'error';
+  const isSyncing = syncStatus === 'syncing';
 
   return (
-    <section className="relative w-full rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-4 sm:p-5">
-      <div className="flex items-center justify-between gap-3 sm:gap-4">
-        {/* Left: Avatar + Identity info */}
-        <div className="flex min-w-0 items-center gap-3 sm:gap-3.5">
-          <UserAvatar
-            src={avatarUrl}
-            alt={displayName}
-            size="xl"
-            ring
-            className="bg-brand-primary/10"
-          />
-
-          <div className="min-w-0 text-left">
-            <h1 className="truncate text-lg font-black tracking-tight text-ui-ink-strong sm:text-xl">
-              {displayName}
-            </h1>
-            <div className="mt-0.5 flex items-center gap-2 text-xs font-bold text-ui-muted">
-              {handle && <span className="truncate">{handle}</span>}
-              <SyncStatusPill hasIssue={hasSyncIssue} isSyncing={syncStatus === 'syncing'} />
-            </div>
-            {(accountError || syncError) && (
-              <div
-                role="alert"
-                className="mt-1.5 flex flex-col gap-1 text-xs font-bold leading-snug text-feedback-danger-edge"
-              >
-                {accountError && <p>{accountError}</p>}
-                {syncError && <p>{syncError}</p>}
-              </div>
-            )}
+    <section className="flex flex-col gap-3">
+      <div className="flex items-center gap-4">
+        <UserAvatar src={avatarUrl} alt={displayName} size="xl" ring className="h-16 w-16 shrink-0 bg-brand-primary/10" />
+        <div className="min-w-0 text-left">
+          <h1 className="truncate text-[22px] font-black leading-tight text-ui-ink-strong">{displayName}</h1>
+          <div className="mt-1 flex items-center gap-2 text-sm font-extrabold text-ui-muted">
+            {handle && <span className="truncate">{handle}</span>}
+            <span
+              className={cn(
+                'inline-flex items-center gap-1.5 text-xs font-black',
+                hasSyncIssue ? 'text-feedback-danger-edge' : isSyncing ? 'text-ui-muted-strong' : 'text-feedback-success-edge',
+              )}
+            >
+              {hasSyncIssue ? (
+                <AppIcon name="error" size={13} />
+              ) : (
+                <span
+                  aria-hidden
+                  className={cn('h-2 w-2 rounded-full', isSyncing ? 'bg-ui-muted motion-safe:animate-pulse' : 'bg-feedback-success')}
+                />
+              )}
+              {hasSyncIssue ? 'Sync issue' : isSyncing ? 'Syncing' : 'Synced'}
+            </span>
           </div>
         </div>
-
-        {/* Right: Primary account action */}
-        <div className="shrink-0">
-          <ActionButton
-            variant="quiet"
-            size="sm"
-            onClick={onSignOut}
-            disabled={isSigningOut}
-            className="font-black uppercase tracking-wider text-ui-muted-strong hover:text-feedback-danger"
-          >
-            <AppIcon name="signOut" size={16} />
-            <span>Sign out</span>
-          </ActionButton>
-        </div>
       </div>
+
+      {(accountError || syncError) && (
+        <div role="alert" className="flex flex-col gap-1 rounded-control bg-feedback-danger-surface px-3.5 py-3 text-sm font-extrabold leading-snug text-feedback-danger-edge">
+          {accountError && <p>{accountError}</p>}
+          {syncError && <p>{syncError}</p>}
+        </div>
+      )}
     </section>
   );
 });
-
-/**
- * Cloud-sync pill. Reports what the store actually knows: a failed sync is
- * never labelled "Synced", and a save in flight is visible while it runs.
- */
-function SyncStatusPill({ hasIssue, isSyncing }: { hasIssue: boolean; isSyncing: boolean }) {
-  if (hasIssue) {
-    return (
-      <span className="inline-flex items-center gap-1 rounded-full bg-feedback-danger-surface px-2 py-0.5 text-[11px] font-black text-feedback-danger-edge">
-        <AppIcon name="error" size={12} />
-        Sync issue
-      </span>
-    );
-  }
-
-  if (isSyncing) {
-    return (
-      <span className="inline-flex items-center gap-1 rounded-full border border-ui-border bg-ui-canvas px-2 py-0.5 text-[11px] font-black text-ui-muted-strong">
-        <span className="h-1.5 w-1.5 rounded-full bg-ui-muted motion-safe:animate-pulse" />
-        Syncing
-      </span>
-    );
-  }
-
-  return (
-    <span className="inline-flex items-center gap-1 rounded-full bg-feedback-success-surface px-2 py-0.5 text-[11px] font-black text-feedback-success-edge">
-      <span className="relative flex h-1.5 w-1.5">
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-feedback-success opacity-75" />
-        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-feedback-success" />
-      </span>
-      Synced
-    </span>
-  );
-}

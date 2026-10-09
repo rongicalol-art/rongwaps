@@ -7,7 +7,15 @@ export {
   createDecompositionRuntimeService,
   getDecompositionRuntimeService,
 } from '../character-decomposition';
-export { ExtendedDefinitions } from './components/ExtendedDefinitions';
+export {
+  ExtendedDefinitions,
+  ExtendedDefinitionsPanel,
+  MoreDefinitionsToggle,
+  useExtendedDefinitions,
+} from './components/ExtendedDefinitions';
+export { BreakdownTabs, type BreakdownTab } from './components/v3/BreakdownTabs';
+export { BreakdownRow } from './components/v3/BreakdownRow';
+export { ShowMoreButton } from './components/v3/ShowMoreButton';
 export { StrokeOrderBox } from './components/StrokeOrderBox';
 export { SummaryQuickActions } from './components/SummaryQuickActions';
 export { useRuntimeDecompositionTree } from './hooks/useRuntimeDecompositionTree';

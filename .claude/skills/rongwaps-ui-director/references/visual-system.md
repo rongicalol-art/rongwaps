@@ -10,9 +10,9 @@ Ron's Mandarin is an encouraging Chinese-learning companion: curious, tactile, b
 
 | Semantic role | Token | Value |
 | --- | --- | --- |
-| Canvas | `--color-ui-canvas` | `#f2f3f4` |
-| Practice canvas | `--color-ui-practice-canvas` | `#e9eef1` |
-| Surface | `--color-ui-surface` | `#ffffff` |
+| Canvas | `--color-ui-canvas` | `#f3f2f0` |
+| Practice canvas | `--color-ui-practice-canvas` | `#f3f2f0` (same as canvas) |
+| Surface | `--color-ui-surface` | `#fcfcfb` |
 | Surface hover | `--color-ui-surface-hover` | `#fafafa` |
 | Ink strong | `--color-ui-ink-strong` | `#2f3237` |
 | Ink | `--color-ui-ink` | `#4b4b4b` |
@@ -33,15 +33,15 @@ Ron's Mandarin is an encouraging Chinese-learning companion: curious, tactile, b
 
 | Feedback role | Token | Value |
 | --- | --- | --- |
-| Success | `--color-feedback-success` | `#58cc02` |
-| Success edge | `--color-feedback-success-edge` | `#58a700` |
-| Success hover | `--color-feedback-success-hover` | `#46a302` |
-| Success surface | `--color-feedback-success-surface` | `#d7ffb8` |
-| Warning (energy yellow) | `--color-feedback-warning` | `#ffc800` |
-| Warning edge | `--color-feedback-warning-edge` | `#e0a900` |
-| Danger | `--color-feedback-danger` | `#ff4b4b` |
-| Danger edge | `--color-feedback-danger-edge` | `#ea2b2b` |
-| Danger hover | `--color-feedback-danger-hover` | `#ff2b2b` |
+| Success | `--color-feedback-success` | `#4f9f2a` |
+| Success edge | `--color-feedback-success-edge` | `#3f8420` |
+| Success hover | `--color-feedback-success-hover` | `#458d26` |
+| Success surface | `--color-feedback-success-surface` | `#e1f0d4` |
+| Warning (energy yellow) | `--color-feedback-warning` | `#fbbf24` |
+| Warning edge | `--color-feedback-warning-edge` | `#d99a0b` |
+| Danger | `--color-feedback-danger` | `#d9605a` |
+| Danger edge | `--color-feedback-danger-edge` | `#b84842` |
+| Danger hover | `--color-feedback-danger-hover` | `#c9524c` |
 | Danger surface | `--color-feedback-danger-surface` | `#ffdfe0` |
 
 Course accents may vary, but neutral UI should remain stable across courses.

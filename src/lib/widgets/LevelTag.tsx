@@ -1,7 +1,7 @@
 import { tocflLabel, type ResolvedLevel } from '../../utils/lesson/levels';
 
 /** The one badge look: soft grey pill, same as the header chip, in every list. */
-const PILL_CLASSES = 'inline-flex shrink-0 whitespace-nowrap items-center rounded-xs bg-ui-hover px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-ui-muted';
+const PILL_CLASSES = 'inline-flex shrink-0 whitespace-nowrap items-center rounded-compact bg-ui-hover px-2 py-1 text-xs font-black leading-none tracking-wide text-ui-muted-strong';
 
 /**
  * Where a character or word sits for the learner. The course lesson is the
@@ -18,11 +18,14 @@ export function LevelTag({
   lessonId,
   level,
   variant = 'row',
+  long = false,
 }: {
   bookId?: number;
   lessonId?: number;
   level?: ResolvedLevel | null;
   variant?: 'row' | 'chip';
+  /** Spell the lesson out (`Book 1 · Lesson 3`) for headers; rows keep `Bk1 · L3`. */
+  long?: boolean;
 }) {
   const estimate = level?.source === 'estimate';
   const muted = estimate || level?.source === 'rare';
@@ -34,14 +37,14 @@ export function LevelTag({
         title={titleFor(level)}
         className={PILL_CLASSES}
       >
-        {level.source === 'rare' ? 'Rare · beyond TOCFL lists' : <>TOCFL {label}{estimate && <span className="normal-case"> · estimated</span>}</>}
+        {level.source === 'rare' ? 'Rare · beyond TOCFL lists' : <>{label}{estimate && ' · estimated'}</>}
       </span>
     );
   }
   if (bookId !== undefined) {
     return (
-      <span title={`Book ${bookId}, Lesson ${lessonId}`} className={PILL_CLASSES.replace('uppercase', 'normal-case')}>
-        Bk{bookId} · L{lessonId}
+      <span title={`Book ${bookId}, Lesson ${lessonId}`} className={PILL_CLASSES}>
+        {long ? `Book ${bookId} · Lesson ${lessonId}` : `Bk${bookId} · L${lessonId}`}
       </span>
     );
   }

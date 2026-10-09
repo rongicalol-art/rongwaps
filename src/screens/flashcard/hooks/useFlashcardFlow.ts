@@ -10,7 +10,6 @@ import type { CardSessionProgressInfo } from '../../../utils/srs/mistakeQueue';
 
 interface UseFlashcardFlowProps {
   cards: Flashcard[];
-  deckCards: Flashcard[];
   currentCard: Flashcard | null;
   currentIndex: number;
   progressInfo?: CardSessionProgressInfo;
@@ -24,15 +23,17 @@ interface UseFlashcardFlowProps {
   isReviewDeck: boolean;
   isLibraryDeck: boolean;
   activeBreakdown: unknown;
-  mode: string;
   completed: boolean;
+  /** Missed cards coming back: the header shows its plain amber counter, not the part rail. */
+  isReviewPass?: boolean;
+  /** Deck finished: the header keeps only its close button. */
+  isDeckDone?: boolean;
   onContinue?: () => void;
   continueLabel?: string;
 }
 
 export function useFlashcardFlow({
   cards,
-  deckCards,
   currentCard,
   currentIndex,
   progressInfo,
@@ -46,8 +47,9 @@ export function useFlashcardFlow({
   isReviewDeck,
   isLibraryDeck,
   activeBreakdown,
-  mode,
   completed,
+  isReviewPass = false,
+  isDeckDone = false,
   onContinue,
   continueLabel,
 }: UseFlashcardFlowProps) {
@@ -132,16 +134,12 @@ export function useFlashcardFlow({
   }, [resetAll, stopFlow]);
 
   const partSegments = useMemo(
-    () => (isReviewDeck || isLibraryDeck ? [] : buildPracticePartSegments(cards)),
-    [cards, isLibraryDeck, isReviewDeck]
+    () => (isReviewDeck || isLibraryDeck || isReviewPass ? [] : buildPracticePartSegments(cards)),
+    [cards, isLibraryDeck, isReviewDeck, isReviewPass]
   );
 
-  const headerCurrentIndex = mode === 'list'
-    ? Math.max(cards.length - 1, -1)
-    : (progressInfo?.displayIndex ?? currentIndex);
-  const headerTotalCount = mode === 'list'
-    ? deckCards.length
-    : (progressInfo?.totalCount ?? cards.length);
+  const headerCurrentIndex = progressInfo?.displayIndex ?? currentIndex;
+  const headerTotalCount = progressInfo?.totalCount ?? cards.length;
 
   usePracticeHeaderRegistration({
     currentIndex: headerCurrentIndex,
@@ -150,6 +148,7 @@ export function useFlashcardFlow({
     partSegments,
     isRetry: progressInfo?.isRetry,
     cleanupPhase: progressInfo?.cleanupPhase,
+    minimal: isDeckDone,
     onShuffleClick: toggleShuffle,
     onFlowClick: toggleFlow,
     onRestartClick: restartSession,
@@ -158,10 +157,10 @@ export function useFlashcardFlow({
   });
 
   useEffect(() => {
-    if (!activeBreakdown && mode !== 'list') return;
+    if (!activeBreakdown) return;
     pauseFlow();
     audioService.stop();
-  }, [activeBreakdown, mode, pauseFlow]);
+  }, [activeBreakdown, pauseFlow]);
 
   useEffect(() => {
     if (!completed) return;

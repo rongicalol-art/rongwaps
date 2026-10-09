@@ -4,6 +4,7 @@ import { useCharacterFont } from '../../hooks/useCharacterFont';
 import { useCloudSync } from '../../hooks/useCloudSync';
 import { useAuth } from '../../hooks/useAuth';
 import { useResetProgress } from '../../hooks/useResetProgress';
+import { useAppStore } from '../../store/useAppStore';
 import { useActiveBook } from './useActiveBook';
 import { useAppShellActions } from './useAppShellActions';
 import { useAppShellState } from './useAppShellState';
@@ -50,6 +51,7 @@ export function useAppShell() {
     activeBookId: activeBook.id,
     collapseNav: responsiveNav.collapseNav,
     setActiveActivity: navigation.setActiveActivity,
+    startPartPractice: navigation.startPartPractice,
     startPathPractice: navigation.startPathPractice,
     openReader: reader.openReader,
     openReaderForPart: reader.openReaderForPart,
@@ -76,6 +78,8 @@ export function useAppShell() {
     navigation.activeActivity || isReaderOpen || isGrammarOpen || (navigation.activeTab === 'library' && shellState.isLibraryFolderView)
   );
 
+  const isLessonWindowOpen = useAppStore((state) => state.isLessonWindowOpen);
+
   useFocusModeSidebar({
     isReaderOpen,
     activeReadingIndex: reader.activeReadingIndex,
@@ -83,6 +87,7 @@ export function useAppShell() {
     activeGrammarPartId: grammar.activeGrammarPartId,
     dictionaryWord: shellState.dictionaryWord,
     activeActivity: navigation.activeActivity,
+    isLessonWindowOpen,
     isOverlayActive,
     collapseNav: responsiveNav.collapseNav,
     restoreBaseNavPreference: responsiveNav.restoreBaseNavPreference,
@@ -127,7 +132,8 @@ export function useAppShell() {
 
   return {
     isLoading,
-    isSignedOut: !currentUser,
+    // Dev: skip the sign-in gate so local previews work signed out (cloud sync stays off).
+    isSignedOut: !currentUser && !import.meta.env.DEV,
     nav: {
       activeTab: navigation.activeTab,
       activeBookId: shellState.activeBookId,
@@ -163,10 +169,9 @@ export function useAppShell() {
       activeActivity: navigation.activeActivity,
       activeBook,
       selectedLessons: navigation.selectedLessons,
-      toggleLesson: navigation.toggleLesson,
       onSetActiveActivity: actions.handleSetActiveActivity,
+      onStartPartPractice: actions.handleStartPartPractice,
       onStartPathPractice: actions.handleStartPathPractice,
-      onNavigateToPractice: actions.handleNavigateToPractice,
       onOpenReading: actions.handleOpenReading,
     },
     settings: {

@@ -3,7 +3,7 @@ import { cn } from '../../utils/cn';
 
 export type PlayfulNavIconName =
   | 'books' | 'dictionary' | 'library' | 'profile' | 'favorite'
-  | 'flashcards' | 'quiz' | 'listening' | 'writing' | 'global' | 'curriculum' | 'grammar' | 'hint' | 'reading' | 'reference' | 'reward' | 'review' | 'settings';
+  | 'flashcards' | 'quiz' | 'listening' | 'writing' | 'global' | 'curriculum' | 'grammar' | 'grammarBook' | 'hint' | 'reading' | 'reference' | 'reward' | 'review' | 'settings';
 
 interface PlayfulNavIconProps extends ImgHTMLAttributes<HTMLImageElement> {
   name: PlayfulNavIconName;
@@ -22,6 +22,7 @@ const navIconSrc: Record<PlayfulNavIconName, string> = {
   global: new URL('../../assets/icons/flat/globe.svg', import.meta.url).href,
   curriculum: new URL('../../assets/icons/flat/book.svg', import.meta.url).href,
   grammar: new URL('../../assets/icons/flat/light-bulb.svg', import.meta.url).href,
+  grammarBook: new URL('../../assets/icons/flat/book-bookmark.svg', import.meta.url).href,
   hint: new URL('../../assets/icons/flat/light-bulb.svg', import.meta.url).href,
   reading: new URL('../../assets/icons/flat/bubbles-alt.svg', import.meta.url).href,
   reference: new URL('../../assets/icons/flat/book.svg', import.meta.url).href,

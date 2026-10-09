@@ -15,6 +15,7 @@ export * from './CountryFlag';
 export * from './PlayfulNavIcon';
 export * from './RongWapsCharacterPortrait';
 export * from './UserAvatar';
+export * from './ProfileAvatarButton';
 export * from './VideoBackground';
 
 // Dialogs, drawers, docks, menus, and accessibility boundaries
@@ -41,7 +42,6 @@ export * from './CustomProgressBar';
 export * from './LoadingScreen';
 export * from './LottiePlayer';
 export * from './part-progress';
-export * from './ScreenSkeleton';
 export * from './Skeleton';
 
 // Generic headers and workspace shells

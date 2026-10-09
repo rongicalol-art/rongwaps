@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { fetchAllMnemonicsDebug, clearAllMnemonics } from '../../services/mnemonicCache';
 import { debugLogger, DebugLog } from '../../utils/debug/debugLogger';
 
-import { ScreenSkeleton } from '../../lib/widgets';
 import { WordDetailSkeleton } from '../../features/dictionary';
 import { BreakdownSkeleton } from '../../features/character-breakdown';
 import { CurriculumSkeleton } from '../curriculum';
@@ -13,7 +12,7 @@ const icons = import.meta.glob('/src/assets/icons/*.svg', { query: '?raw', impor
 
 export const DebugWindow = () => {
   const [activeTab, setActiveTab] = useState<'icons' | 'mnemonics' | 'logs' | 'skeletons'>('logs');
-  const [selectedSkeleton, setSelectedSkeleton] = useState<string>('quiz');
+  const [selectedSkeleton, setSelectedSkeleton] = useState<string>('dictionary');
   const [mnemonics, setMnemonics] = useState<Awaited<ReturnType<typeof fetchAllMnemonicsDebug>>>([]);
   const [loading, setLoading] = useState(false);
   const [logs, setLogs] = useState<DebugLog[]>([]);
@@ -300,10 +299,6 @@ export const DebugWindow = () => {
           <div className="h-full flex flex-col min-h-0">
             <div className="flex flex-wrap gap-2 pb-4 border-b-2 border-ui-divider mb-4 shrink-0">
               {[
-                { id: 'quiz', label: 'Quiz (ScreenSkeleton)' },
-                { id: 'listening', label: 'Listening (ScreenSkeleton)' },
-                { id: 'flashcard', label: 'Flashcard (ScreenSkeleton)' },
-                { id: 'writing', label: 'Writing (ScreenSkeleton)' },
                 { id: 'dictionary', label: 'Word Detail (WordDetailSkeleton)' },
                 { id: 'breakdown', label: 'Character Breakdown (BreakdownSkeleton)' },
                 { id: 'curriculum', label: 'Curriculum (CurriculumSkeleton)' },
@@ -325,26 +320,6 @@ export const DebugWindow = () => {
             </div>
 
             <div className="flex-1 overflow-y-auto relative rounded-feature border border-ui-divider bg-ui-canvas p-6 min-h-[500px]">
-              {selectedSkeleton === 'quiz' && (
-                <div className="relative h-[650px] w-full max-w-2xl mx-auto overflow-hidden border border-ui-border rounded-feature bg-ui-canvas">
-                  <ScreenSkeleton type="quiz" />
-                </div>
-              )}
-              {selectedSkeleton === 'listening' && (
-                <div className="relative h-[650px] w-full max-w-2xl mx-auto overflow-hidden border border-ui-border rounded-feature bg-ui-canvas">
-                  <ScreenSkeleton type="listening" />
-                </div>
-              )}
-              {selectedSkeleton === 'flashcard' && (
-                <div className="relative h-[650px] w-full max-w-2xl mx-auto overflow-hidden border border-ui-border rounded-feature bg-ui-canvas">
-                  <ScreenSkeleton type="flashcard" />
-                </div>
-              )}
-              {selectedSkeleton === 'writing' && (
-                <div className="relative h-[650px] w-full max-w-2xl mx-auto overflow-hidden border border-ui-border rounded-feature bg-ui-canvas">
-                  <ScreenSkeleton type="writing" />
-                </div>
-              )}
               {selectedSkeleton === 'dictionary' && (
                 <div className="w-full max-w-4xl mx-auto">
                   <WordDetailSkeleton />

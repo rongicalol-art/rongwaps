@@ -20,6 +20,8 @@ interface PracticeHeaderProps
   /** Flow (auto-advance) is only available in flashcards sessions. */
   showFlow?: boolean;
   activeBookId?: number;
+  /** Close / menu icons in the muted neutral instead of the book accent. */
+  quietControls?: boolean;
 }
 
 export function PracticeHeader({
@@ -35,6 +37,7 @@ export function PracticeHeader({
   totalCount,
   maxWidth = 'none',
   activeBookId: propActiveBookId,
+  quietControls = false,
   ...props
 }: PracticeHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -66,8 +69,10 @@ export function PracticeHeader({
     useAppStore.getState().showFeedbackToast('Restarted');
   };
 
+  const iconColor = quietControls ? undefined : activeBook.accentHex;
+  const iconClassName = quietControls ? 'text-ui-muted' : activeBook.accent;
   const isFlowActive = flowStatus === 'playing';
-  const hasSessionControls = Boolean(onSettingsClick || onShuffleClick || onFlowClick);
+  const hasSessionControls = Boolean(onSettingsClick || onShuffleClick || onFlowClick || onRestartClick);
   const flowLabel = isFlowActive ? 'Flow' : flowStatus === 'paused' ? 'Resume' : 'Flow';
 
   return (
@@ -80,19 +85,10 @@ export function PracticeHeader({
         currentIndex={currentIndex}
         totalCount={totalCount}
         progressSize="compact"
-        closeIconColor={activeBook.accentHex}
-        closeIconClassName={activeBook.accent}
+        closeIconColor={iconColor}
+        closeIconClassName={iconClassName}
         rightAction={
           <div className="flex h-11 shrink-0 items-center pointer-events-auto">
-            {onRestartClick && (
-              <IconActionButton
-                size="lg"
-                label="Restart"
-                title="Restart"
-                onClick={restart}
-                icon={<AppIcon name="restart" size={22} color={activeBook.accentHex} className={activeBook.accent} />}
-              />
-            )}
             {hasSessionControls && (
               <DropdownMenu
                 label="Session controls"
@@ -112,8 +108,8 @@ export function PracticeHeader({
                         <AppIcon
                           name="menu"
                           size={24}
-                          color={activeBook.accentHex}
-                          className={activeBook.accent}
+                          color={iconColor}
+                          className={iconClassName}
                         />
                       </>
                     )}
@@ -140,6 +136,17 @@ export function PracticeHeader({
                     }}
                   >
                     {flowLabel}
+                  </DropdownMenuItem>
+                )}
+                {onRestartClick && (
+                  <DropdownMenuItem
+                    icon={<AppIcon name="restart" size={19} />}
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      restart();
+                    }}
+                  >
+                    Restart
                   </DropdownMenuItem>
                 )}
                 <DropdownMenuItem

@@ -1,11 +1,13 @@
 import { forwardRef, type ReactNode } from 'react';
 import { motion, useReducedMotion, type HTMLMotionProps } from 'motion/react';
 import { cn } from '../../utils/cn';
+import { getWindowMotion, type WindowMotionStyle } from './windowMotion';
 
 export type WorkspaceWindowTone = 'canvas' | 'practice';
-/** `window`: study windows (Reader, Grammar). `window-detail`: a detail that
- *  opens over a window (dictionary word, character breakdown, settings). */
-export type WorkspaceWindowLayer = 'window' | 'window-detail';
+/** `overlay`: a hub page the study windows open over (lesson window). `window`:
+ *  study windows (Reader, Grammar). `window-detail`: a detail that opens over a
+ *  window (dictionary word, character breakdown, settings). */
+export type WorkspaceWindowLayer = 'overlay' | 'window' | 'window-detail';
 
 const TONE_CLASS: Record<WorkspaceWindowTone, string> = {
   canvas: 'bg-ui-canvas',
@@ -13,13 +15,26 @@ const TONE_CLASS: Record<WorkspaceWindowTone, string> = {
 };
 
 const LAYER_CLASS: Record<WorkspaceWindowLayer, string> = {
+  overlay: 'z-overlay',
   window: 'z-window',
   'window-detail': 'z-window-detail',
 };
 
-export interface WorkspaceWindowProps extends Omit<HTMLMotionProps<'div'>, 'children'> {
+/** Open/close motion each layer uses unless a window picks another style. */
+const LAYER_MOTION: Record<WorkspaceWindowLayer, WindowMotionStyle> = {
+  overlay: 'sheet',
+  window: 'focus',
+  'window-detail': 'pop',
+};
+
+export interface WorkspaceWindowProps
+  extends Omit<HTMLMotionProps<'div'>, 'children' | 'initial' | 'animate' | 'exit' | 'transition'> {
   tone?: WorkspaceWindowTone;
   layer?: WorkspaceWindowLayer;
+  /** Defaults by layer (see `windowMotion.ts`). */
+  motionStyle?: WindowMotionStyle;
+  /** False skips the enter animation, e.g. a screen replacing its own loader on the same canvas. */
+  animateIn?: boolean;
   /** Classes for the content box (the area right of the sidebar). */
   contentClassName?: string;
   children: ReactNode;
@@ -37,26 +52,24 @@ export const WorkspaceWindow = forwardRef<HTMLDivElement, WorkspaceWindowProps>(
   {
     tone = 'canvas',
     layer = 'window',
+    motionStyle = LAYER_MOTION[layer],
+    animateIn = true,
     className,
     contentClassName,
     style,
-    initial,
-    animate,
-    exit,
-    transition,
     children,
     ...rest
   },
   ref,
 ) {
-  const reduceMotion = useReducedMotion();
+  const motionSpec = getWindowMotion(motionStyle, useReducedMotion());
   return (
     <motion.div
       ref={ref}
-      initial={initial ?? { opacity: 0 }}
-      animate={animate ?? { opacity: 1 }}
-      exit={exit ?? { opacity: 0 }}
-      transition={transition ?? { duration: reduceMotion ? 0 : 0.18, ease: 'easeOut' }}
+      initial={animateIn ? motionSpec.initial : false}
+      animate={motionSpec.animate}
+      exit={motionSpec.exit}
+      transition={motionSpec.transition}
       {...rest}
       style={{ paddingLeft: 'var(--workspace-nav-width)', ...style }}
       className={cn(

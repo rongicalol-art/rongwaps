@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { useAppStore } from '../../store/useAppStore';
-import { prefetchTabScreen } from '../components/TabScreens';
+import { prefetchTabScreen } from '../components/tabScreenRegistry';
 import { TAB_ROUTES, tabFromPathname, type TabRoute } from '../routes';
 import type { useAppNavigation } from '../../hooks/useAppNavigation';
 import type { useResponsiveNav } from './useResponsiveNav';

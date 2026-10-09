@@ -1,10 +1,7 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
 import { motion, useIsPresent, useReducedMotion } from 'motion/react';
 import type { Flashcard } from '../../../data/flashcards';
-import {
-  MemoryHookCharacter,
-  shouldShowWordHook,
-} from '../../../features/character-memory-hooks';
+import { shouldShowWordHook } from '../../../features/character-memory-hooks';
 import { AppIcon } from '../../../lib/widgets';
 import type { RankedExample } from '../../../utils/vocabulary/courseExamples';
 import { cn } from '../../../utils/cn';
@@ -12,6 +9,7 @@ import { isHanziChar } from '../../../utils/characters/hanzi';
 import { FlashcardBackFace, useFlashcardExtras } from '../../../features/flashcards';
 import { FavoriteButton } from '../../../features/library';
 import { useCardSwipe } from '../hooks/useCardSwipe';
+import { CARD_BOX_CLASS, CARD_SURFACE_CLASS, REVIEW_CARD_CLASS, SETTLE_EASE, SETTLE_MS, questionWordPx } from '../flashcardMotion';
 
 export interface DraggableFlashcardProps {
   card: Flashcard;
@@ -25,41 +23,57 @@ export interface DraggableFlashcardProps {
   showTranslation?: boolean;
   examples?: RankedExample[];
   isExamplesLoading?: boolean;
+  /** `review` wears the amber edge used while missed cards come back. */
+  tone?: 'default' | 'review';
 }
 
-// direction: 1 = exit left, -1 = exit right
+// direction: 1 = exit left, -1 = exit right. The next card rises into place once this one has left.
 const variants = {
-  enter: (direction: number) => ({
-    zIndex: 10,
-    x: direction > 0 ? 80 : -80,
-    opacity: 0,
-    scale: 0.965,
-    pointerEvents: 'auto' as const,
-  }),
-  center: {
-    zIndex: 10,
-    x: 0,
-    opacity: 1,
-    scale: 1,
-    pointerEvents: 'auto' as const,
-  },
+  enter: { zIndex: 10, x: 0, y: 14, opacity: 0, scale: 0.965, pointerEvents: 'auto' as const },
+  center: { zIndex: 10, x: 0, y: 0, opacity: 1, scale: 1, pointerEvents: 'auto' as const },
   exit: (direction: number) => ({
     zIndex: 0,
-    x: direction < 0 ? 100 : -100,
+    x: direction < 0 ? 160 : -160,
+    rotate: direction < 0 ? 4 : -4,
     opacity: 0,
-    scale: 0.975,
     pointerEvents: 'none' as const,
   }),
 };
 
-function getFrontFontSize(len: number) {
-  // Sized from the card's own width (container query units), not breakpoints.
-  if (len === 1) return 'text-[length:clamp(88px,29cqw,220px)]';
-  if (len === 2) return 'text-[length:clamp(70px,23cqw,170px)]';
-  if (len === 3) return 'text-[length:clamp(52px,17cqw,128px)]';
-  if (len === 4) return 'text-[length:clamp(40px,14cqw,104px)]';
-  if (len <= 6) return 'text-[length:clamp(30px,10.5cqw,80px)]';
-  return 'text-[length:clamp(24px,8cqw,60px)]';
+/** Centre and font size of the card's word (the `data-fc-word` block), in the surface's own (unscaled) coordinates. */
+function measureWord(root: HTMLElement | null, surface: HTMLElement) {
+  if (!root) return null;
+  const base = surface.getBoundingClientRect();
+  const k = base.width / surface.offsetWidth || 1;
+  let left = Infinity;
+  let top = Infinity;
+  let right = -Infinity;
+  let bottom = -Infinity;
+  let font = 0;
+  // Only the word itself: the answer side also holds Chinese example sentences.
+  root.querySelector('[data-fc-word]')?.querySelectorAll<HTMLElement>('*').forEach((el) => {
+    if (el.childElementCount > 0 || !isHanziChar(el.textContent?.trim() ?? '')) return;
+    const r = el.getBoundingClientRect();
+    left = Math.min(left, r.left);
+    top = Math.min(top, r.top);
+    right = Math.max(right, r.right);
+    bottom = Math.max(bottom, r.bottom);
+    font ||= parseFloat(getComputedStyle(el).fontSize);
+  });
+  return font ? { cx: ((left + right) / 2 - base.left) / k, cy: ((top + bottom) / 2 - base.top) / k, font } : null;
+}
+
+/** The card's own border (same widths and radius) tints green or red as it is dragged toward Got it (ok) or Hard (no). */
+function SwipeVerdict({ side }: { side: 'ok' | 'no' }) {
+  const ok = side === 'ok';
+  const v = ok ? '--rw-swipe-ok' : '--rw-swipe-no';
+  return (
+    <div
+      aria-hidden
+      className={cn('pointer-events-none absolute inset-0 rounded-feature border-[3px] border-b-[length:var(--depth-xl)]', ok ? 'border-feedback-success' : 'border-feedback-danger')}
+      style={{ opacity: `calc(var(${v}, 0) * 2.8)` }}
+    />
+  );
 }
 
 export const DraggableFlashcard = React.memo(function DraggableFlashcard({
@@ -74,6 +88,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
   showTranslation = true,
   examples,
   isExamplesLoading,
+  tone = 'default',
 }: DraggableFlashcardProps) {
   const isPresent = useIsPresent();
   const [isDragging, setIsDragging] = useState(false);
@@ -98,7 +113,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
     const hasHook = showWordHookChip && Boolean(wordHook);
     return (
       <div
-        className="absolute right-4 top-4 z-10 flex items-center gap-2"
+        className="rw-rise rw-rise-1 absolute right-3 top-3 z-10 flex items-center gap-0.5"
         onPointerDown={(event) => event.stopPropagation()}
       >
         {hasHook && (
@@ -115,13 +130,13 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
               });
             }}
             className={cn(
-              'flex h-11 w-11 items-center justify-center rounded-control focus-ring active:scale-95',
+              'flex h-10 w-10 items-center justify-center rounded-compact focus-ring active:scale-95',
               showHook
                 ? 'bg-feedback-warning-surface ring-2 ring-feedback-warning'
                 : 'text-ui-muted hover:bg-ui-hover',
             )}
           >
-            <AppIcon name="hint" size={22} />
+            <AppIcon name="hint" size={22} className={showHook ? undefined : 'grayscale'} />
           </button>
         )}
         <FavoriteButton
@@ -132,19 +147,11 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
           definitions={card.back}
           size="lg"
           variant="ghost"
-          className="h-11 w-11"
+          className="h-10 w-10 text-ui-muted"
         />
       </div>
     );
   };
-
-  useEffect(() => {
-    if (!isFlipped && backScrollRef.current) {
-      backScrollRef.current.scrollTop = 0;
-    }
-  }, [isFlipped]);
-
-  const frontLength = card?.front?.length || 1;
 
   const { bind } = useCardSwipe(swipeRef, {
     enabled: isInteractive,
@@ -163,27 +170,96 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
     },
   });
 
-  const flipTransition = reduceMotion ? 'none' : 'transform 110ms ease-in';
-  const faceStyle = (visible: boolean) => ({
-    transform: visible ? 'scaleX(1)' : 'scaleX(0)',
-    transition: flipTransition,
-    transitionDelay: visible && !reduceMotion ? '110ms' : '0ms',
-  });
+  // Settle: the card holds ONE word, the answer's own. Before the flip it is posed big and centred with the
+  // rest hidden; flipping animates it to its natural place (and back), so it scrolls with its content.
+  const surfaceRef = useRef<HTMLDivElement>(null);
+  const backRef = useRef<HTMLDivElement>(null);
+  const wordAnimRef = useRef<Animation | null>(null);
+  const didMountRef = useRef(false);
+  // Reset on unmount so StrictMode's dev-only remount does not play the first-pose settle animation.
+  useEffect(() => () => { didMountRef.current = false; }, []);
+
+  /** Rest = the word where the answer lays it out. Pose = where it sits on the question side. */
+  const readWordPose = () => {
+    const surface = surfaceRef.current;
+    const word = backRef.current?.querySelector<HTMLElement>('[data-fc-word]');
+    if (!surface || !word) return null;
+    wordAnimRef.current?.cancel();
+    word.style.transform = 'none';
+    const rest = measureWord(backRef.current, surface);
+    if (!rest) return null;
+    const base = surface.getBoundingClientRect();
+    const k = base.width / surface.offsetWidth || 1;
+    const box = word.getBoundingClientRect();
+    const origin = `${rest.cx - (box.left - base.left) / k}px ${rest.cy - (box.top - base.top) / k}px`;
+    const poseX = surface.clientLeft + surface.clientWidth / 2;
+    const poseY = surface.clientTop + surface.clientHeight / 2;
+    const scale = questionWordPx(Array.from(card.front).length, surface.offsetWidth) / rest.font;
+    return { word, origin, pose: `translate(${poseX - rest.cx}px, ${poseY - rest.cy}px) scale(${scale})` };
+  };
+
+  useLayoutEffect(() => {
+    // Rewind the answer before measuring: a scrolled word would be posed at the wrong spot on the question side.
+    if (!isFlipped && backScrollRef.current) backScrollRef.current.scrollTop = 0;
+    const layout = readWordPose();
+    const mounted = didMountRef.current;
+    didMountRef.current = true;
+    if (!layout) return undefined;
+    const { word, origin, pose } = layout;
+    const rest = { transformOrigin: origin, transform: 'none' };
+    const away = { transformOrigin: origin, transform: pose };
+    const options = { duration: SETTLE_MS, easing: SETTLE_EASE };
+    word.style.transformOrigin = origin;
+    if (isFlipped) {
+      word.style.transform = '';
+      if (mounted && !reduceMotion) wordAnimRef.current = word.animate([away, rest], options);
+    } else {
+      word.style.transform = pose;
+      if (mounted && !reduceMotion) wordAnimRef.current = word.animate([rest, away], options);
+    }
+    return () => wordAnimRef.current?.cancel();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- re-run on flip or card change only; readWordPose reads refs
+  }, [isFlipped, card.front, reduceMotion]);
+
+  // Keep the question pose right when the card is resized.
+  useEffect(() => {
+    const surface = surfaceRef.current;
+    if (!surface || typeof ResizeObserver === 'undefined') return undefined;
+    // observe() reports once on subscribe: only a real size change may re-pose, and never mid-animation.
+    let width = surface.offsetWidth;
+    let height = surface.offsetHeight;
+    const observer = new ResizeObserver(() => {
+      if (surface.offsetWidth === width && surface.offsetHeight === height) return;
+      width = surface.offsetWidth;
+      height = surface.offsetHeight;
+      if (isFlipped || wordAnimRef.current?.playState === 'running') return;
+      const layout = readWordPose();
+      if (!layout) return;
+      layout.word.style.transformOrigin = layout.origin;
+      layout.word.style.transform = layout.pose;
+    });
+    observer.observe(surface);
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- observer only needs the flip state
+  }, [isFlipped]);
 
   return (
     <motion.div
+      data-fc-card={card.id}
       custom={direction}
       variants={variants}
       initial="enter"
       animate="center"
       exit="exit"
       transition={{
-        x: { duration: reduceMotion ? 0 : 0.18, ease: [0.16, 1, 0.3, 1] },
-        opacity: { duration: reduceMotion ? 0 : 0.15, ease: 'easeOut' },
-        scale: { duration: reduceMotion ? 0 : 0.18, ease: [0.16, 1, 0.3, 1] },
+        y: { duration: reduceMotion ? 0 : 0.42, ease: [0.2, 0.9, 0.3, 1.08] },
+        scale: { duration: reduceMotion ? 0 : 0.42, ease: [0.2, 0.9, 0.3, 1.08] },
+        x: { duration: reduceMotion ? 0 : 0.24, ease: [0.45, 0, 0.8, 0.55] },
+        rotate: { duration: reduceMotion ? 0 : 0.24, ease: [0.45, 0, 0.8, 0.55] },
+        opacity: { duration: reduceMotion ? 0 : 0.24, ease: 'easeOut' },
       }}
       className={cn(
-        "absolute inset-x-0 mx-auto flex items-center justify-center transform-gpu will-change-transform w-[min(100cqw,760px,calc(100cqh*1.1))] h-[min(100cqh,calc(100cqw*1.3))] [container-type:size] select-none",
+        CARD_BOX_CLASS, "flex items-center justify-center transform-gpu [container-type:size] select-none",
         isInteractive ? "pointer-events-auto" : "pointer-events-none",
       )}
       style={{
@@ -196,47 +272,17 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
         ref={swipeRef}
         {...bind}
         style={{ touchAction: 'pan-y' }}
-        className="relative h-full w-full cursor-pointer transform-gpu"
+        className="relative h-full w-full cursor-pointer transform-gpu origin-[50%_115%]"
       >
-        <div className="relative h-full w-full">
+        <div ref={surfaceRef} data-fc-surface className={cn(CARD_SURFACE_CLASS, tone === 'review' && REVIEW_CARD_CLASS, 'relative h-full w-full overflow-hidden')}>
           <div
-            className="absolute inset-0 flex flex-col items-center justify-center rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface p-6 sm:p-8 shadow-ambient-sm"
-            style={faceStyle(!isFlipped)}
-          >
-            <div className="flex max-w-full flex-row flex-wrap items-center justify-center">
-              {Array.from(card.front).map((char, i) => {
-                const isHanzi = isHanziChar(char);
-                const hanziIndex = Array.from(card.front).slice(0, i).filter(isHanziChar).length;
-                if (!isHanzi) {
-                  return (
-                    <span key={i} className={`${getFrontFontSize(frontLength)} px-1 sm:px-2 py-4 sm:py-6 text-ui-muted leading-[1.1] font-chinese text-center mt-2`}>
-                      {char}
-                    </span>
-                  );
-                }
-                return (
-                  <MemoryHookCharacter
-                    key={i}
-                    char={char}
-                    label={`Open character breakdown for ${char}`}
-                    tooltipDisabled={isDragging}
-                    onOpen={() => {
-                      if (!isDragging) setActiveBreakdown(card.front, hanziIndex);
-                    }}
-                    glyphClassName={`${getFrontFontSize(frontLength)} block leading-[1.1] text-ui-ink tracking-normal text-center`}
-                    className="flex flex-col items-center justify-center rounded-feature px-1 sm:px-2 py-4 sm:py-6"
-                  />
-                );
-              })}
-            </div>
-          </div>
-
-          <div
+            ref={backRef}
+            data-reveal={isFlipped}
             className={cn(
-              'absolute inset-0 flex flex-col rounded-feature border-b-[length:var(--depth-lg)] border-ui-border bg-ui-surface overflow-hidden shadow-ambient-sm [contain:layout_paint]',
-              showHook ? 'p-4 pb-4 sm:p-6 sm:pb-5' : 'p-6 pb-10 sm:p-8 sm:pb-10',
+              'absolute inset-0 flex flex-col',
+              showHook ? 'p-4 pb-4 sm:p-6 sm:pb-5' : 'p-6 pb-5 sm:p-8 sm:pb-6',
+              isFlipped ? 'pointer-events-auto' : 'pointer-events-none [&_[data-fc-word]]:pointer-events-auto',
             )}
-            style={faceStyle(isFlipped)}
           >
             {renderCardActions()}
             <FlashcardBackFace
@@ -252,12 +298,13 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
               showHook={showHook}
               hook={wordHook}
               hookLoaded
+              wordInk={!isFlipped}
             />
           </div>
         </div>
 
-        <div aria-hidden className="pointer-events-none absolute inset-0 rounded-feature border-[6px] border-feedback-success opacity-[var(--rw-swipe-ok,0)]" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 rounded-feature border-[6px] border-feedback-danger opacity-[var(--rw-swipe-no,0)]" />
+        <SwipeVerdict side="ok" />
+        <SwipeVerdict side="no" />
       </div>
     </motion.div>
   );

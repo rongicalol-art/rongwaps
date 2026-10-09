@@ -39,7 +39,7 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     isLibraryDeck,
   });
 
-  const { cards: loadedCards, deckCards, isLoading, error, deckExclusionKey, excludedIds } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
+  const { cards: loadedCards, isLoading, error, deckExclusionKey } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
 
   const [isFlipped, setIsFlipped] = useState(false);
   const [activeBreakdown, setActiveBreakdownState] = useState<string | null>(null);
@@ -128,9 +128,15 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     session.reviewUnlearned();
   }, [session]);
 
+  // Cards rated Again this round (SRS quality 1-2), for the round-done chips.
+  const missedCards = activeCards.filter((card) => {
+    const quality = session.sessionResults[card.id];
+    return quality === 1 || quality === 2;
+  });
+
   return {
     cards: activeCards,
-    deckCards,
+    missedCards,
     currentCard,
     currentIndex,
     maxVisitedIndex,
@@ -149,8 +155,6 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     isShuffled: session.isShuffled,
     toggleShuffle: session.toggleShuffle,
     progressInfo: session.progressInfo,
-    deckExclusionKey,
-    excludedIds,
     isLoading,
     error,
   };

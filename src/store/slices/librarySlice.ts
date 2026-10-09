@@ -1,3 +1,4 @@
+import { BEGINNER_DICTIONARY_TERMS } from '../../data/dictionaryHome';
 import type { UserFlashcard } from '../../types/models';
 
 export interface SaveWordTarget {
@@ -54,7 +55,8 @@ export function createLibrarySlice(set: SetState): LibraryState {
     saveWordTarget: null,
     setSaveWordTarget: (target) => set({ saveWordTarget: target }),
 
-    favorites: [],
+    // New installs start with the five starter words saved, the same for everyone.
+    favorites: BEGINNER_DICTIONARY_TERMS.map((term) => term.traditional),
     toggleFavorite: (word) => set((state) => ({
       favorites: state.favorites.includes(word)
         ? state.favorites.filter(w => w !== word)

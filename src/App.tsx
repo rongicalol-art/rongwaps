@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { useLocation } from 'react-router';
-import { LoadingScreen } from './lib/widgets';
+import { LoadingScreen, preloadLoadingScreen } from './lib/widgets';
 import { AppWorkspace } from './app/components/AppWorkspace';
+import { prefetchTabScreen } from './app/components/tabScreenRegistry';
 import { AppOverlays } from './app/components/AppOverlays';
 import { PwaUpdatePrompt } from './app/components/PwaUpdatePrompt';
 import { useAppShell } from './app/hooks/useAppShell';
@@ -18,6 +20,15 @@ export default function App() {
 }
 
 function AppShell() {
+  // Loader animation + player at idle: the first loader the user ever sees has no spinner/animation swap.
+  useEffect(() => {
+    const idle = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 200));
+    idle(() => {
+      preloadLoadingScreen();
+      (['path', 'search', 'library', 'profile'] as const).forEach(prefetchTabScreen);
+    });
+  }, []);
+
   const { isLoading, isSignedOut, nav, reader, grammar, activity, settings, overlays } = useAppShell();
 
   if (isLoading) {
@@ -54,7 +65,6 @@ function AppShell() {
           selectedLessons: activity.selectedLessons,
           isLibraryMode: nav.activeTab === 'library',
           isShellOverlayOpen: overlays.isOverlayActive,
-          onNavigateToPractice: activity.onNavigateToPractice,
           onOpenGrammarPart: grammar.onOpenPart,
           onOpenReading: activity.onOpenReading,
         }}
@@ -62,12 +72,12 @@ function AppShell() {
           activeTab: nav.activeTab,
           activeBookId: nav.activeBookId,
           setActiveBookId: nav.setActiveBookId,
-          selectedLessons: activity.selectedLessons,
-          toggleLesson: activity.toggleLesson,
+          startPartPractice: activity.onStartPartPractice,
           startPathPractice: activity.onStartPathPractice,
           setActiveTab: nav.handleTabChange,
           setActiveActivity: activity.onSetActiveActivity,
           onOpenGrammarPart: grammar.onOpenPart,
+          onOpenReadingPart: grammar.onProceedToReading,
           onToggleNav: nav.handleNavToggle,
         }}
       />

@@ -12,6 +12,7 @@ import { ProfileHeroCard } from './components/ProfileHeroCard';
 import { ReviewHubCard } from './components/ReviewHubCard';
 import { LearningStatsGrid } from './components/LearningStatsGrid';
 import { ProfileSkeleton } from './components/ProfileSkeleton';
+import { SignOutButton } from './components/SignOutButton';
 import { useReviewOverview } from './hooks/useReviewOverview';
 
 interface ProfileScreenProps {
@@ -44,7 +45,6 @@ export function ProfileScreen({
   const localCardsCount = useAppStore((state) => state.localFlashcards.length);
   const syncStatus = useAppStore((state) => state.syncStatus);
   const syncError = useAppStore((state) => state.syncError);
-  const setIsSettingsOpen = useAppStore((state) => state.setIsSettingsOpen);
 
   const handleNavigateToPath = useCallback(() => {
     if (onNavigateToPath) {
@@ -85,9 +85,9 @@ export function ProfileScreen({
 
   return (
     <div className="relative flex w-full flex-1 flex-col text-ui-ink">
-      <StickyWorkspaceHeader title="Profile" align="left" menuToggle={menuToggle} />
+      <StickyWorkspaceHeader title="Profile" menuToggle={menuToggle} />
 
-      <div className="mx-auto flex min-h-full w-full max-w-xl flex-col gap-6 px-4 pb-32 pt-2 sm:gap-7 sm:px-6 md:pb-24 lg:max-w-2xl">
+      <div className="mx-auto flex min-h-full w-full max-w-xl flex-col gap-6 px-4 pb-32 pt-2 sm:px-6 md:pb-24 lg:max-w-4xl">
         <AnimatePresence mode="wait">
           {isAuthLoading ? (
             <motion.div
@@ -109,32 +109,28 @@ export function ProfileScreen({
               transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="w-full flex flex-col gap-6"
             >
-              {/* 1. Identity & Cloud Sync */}
               <ProfileHeroCard
                 currentUser={currentUser}
-                onSignOut={handleSignOut}
-                isSigningOut={isAuthActionLoading}
-                onOpenSettings={() => setIsSettingsOpen(true)}
                 syncStatus={syncStatus}
                 syncError={syncError}
                 accountError={accountError}
               />
 
-              {/* 2. Spaced Repetition Review */}
-              <ReviewHubCard
-                overview={overview}
-                onStartReview={onStartReview}
-                onNavigateToPath={handleNavigateToPath}
-              />
+              <div className="grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:items-start lg:gap-7">
+                <ReviewHubCard
+                  overview={overview}
+                  onStartReview={onStartReview}
+                  onNavigateToPath={handleNavigateToPath}
+                />
+                <LearningStatsGrid
+                  favoriteCount={favoriteCount}
+                  localCardsCount={localCardsCount}
+                  onNavigateToFavorites={handleNavigateToFavorites}
+                  onCreateCustomCard={handleCreateCustomCard}
+                />
+              </div>
 
-              {/* 3. Collections & Quick Access */}
-              <LearningStatsGrid
-                overview={overview}
-                favoriteCount={favoriteCount}
-                localCardsCount={localCardsCount}
-                onNavigateToFavorites={handleNavigateToFavorites}
-                onCreateCustomCard={handleCreateCustomCard}
-              />
+              <SignOutButton onSignOut={handleSignOut} isSigningOut={isAuthActionLoading} />
             </motion.div>
           )}
         </AnimatePresence>

@@ -1,9 +1,8 @@
 import { useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { AppIcon, IconActionButton, SwitchRow } from '../../../lib/widgets';
+import { IconActionButton, SwitchRow } from '../../../lib/widgets';
 import { useDismiss } from '../../../hooks/useDismiss';
 import { useAppStore } from '../../../store/useAppStore';
-import { SAMPLE_BOOKS } from '../../../data/books';
 
 /**
  * Contextual display settings for the character-breakdown window. For now it
@@ -15,8 +14,6 @@ export function BreakdownSettingsPopover() {
   const containerRef = useRef<HTMLDivElement>(null);
   const hideExamplePinyin = useAppStore((state) => state.hideExamplePinyin);
   const updatePreferences = useAppStore((state) => state.updatePreferences);
-  const activeBookId = useAppStore((state) => state.activeBookId);
-  const activeBook = SAMPLE_BOOKS.find((b) => b.id === activeBookId) || SAMPLE_BOOKS[0];
 
   useDismiss({
     ref: containerRef,
@@ -29,14 +26,13 @@ export function BreakdownSettingsPopover() {
       <IconActionButton
         size="lg"
         onClick={() => setIsOpen((open) => !open)}
-        className={isOpen ? 'bg-ui-hover' : undefined}
+        className={isOpen ? 'h-10 w-10 bg-ui-hover' : 'h-10 w-10'}
         icon={(
-          <AppIcon
-            name="menu"
-            size={24}
-            color={activeBook.accentHex}
-            className={activeBook.accent}
-          />
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="text-ui-muted">
+            <circle cx="12" cy="5" r="1.9" />
+            <circle cx="12" cy="12" r="1.9" />
+            <circle cx="12" cy="19" r="1.9" />
+          </svg>
         )}
         label="Breakdown settings"
         aria-haspopup="dialog"

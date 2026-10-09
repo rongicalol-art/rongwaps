@@ -28,6 +28,7 @@ export function useResetProgress({
       learnedCards: appState.learnedCards,
       sessionProgress: appState.sessionProgress,
       sessionProgressIndex: appState.sessionProgressIndex,
+      sessionCardOrder: appState.sessionCardOrder,
       lastActivity: appState.lastActivity,
       isReviewMode: appState.isReviewMode,
       activeReviewSessionCards: appState.activeReviewSessionCards,

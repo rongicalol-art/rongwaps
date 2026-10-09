@@ -3,7 +3,7 @@ import { AnimatePresence, useReducedMotion } from 'motion/react';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { FeedbackBottomBar, LessonComplete } from '../../features/practice';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
-import { ActionButton, EdgeNavButtons, EmptyState, ScreenLayout, ScreenSkeleton } from '../../lib/widgets';
+import { ActionButton, EdgeNavButtons, EmptyState, ScreenLayout } from '../../lib/widgets';
 import { useWriting } from './hooks/useWriting';
 import { WritingDock } from './components/WritingDock';
 import { WritingQuizzingCanvas } from './components/WritingQuizzingCanvas';
@@ -104,7 +104,7 @@ export function WritingScreen({
     [currentIndex, handleNext, handlePrev, playlist.length]
   );
 
-  if (isLoading) return <ScreenSkeleton type="writing" />;
+  if (isLoading) return null;
 
   const activeBook = SAMPLE_BOOKS.find((b) => b.id === activeBookId) || SAMPLE_BOOKS[0];
 

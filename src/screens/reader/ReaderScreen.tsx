@@ -43,6 +43,8 @@ interface ReaderScreenProps {
   onPrevious: () => void;
   onClose: () => void;
   onOpenGrammarPart?: (partId: string, pageId?: string) => void;
+  /** False when this screen replaces its own loader on the same canvas. */
+  animateIn?: boolean;
 }
 
 /** Mounts only once the lazy reading-content chunk has resolved; the shell
@@ -67,6 +69,7 @@ export function ReaderScreen({
   onPrevious,
   onClose,
   onOpenGrammarPart,
+  animateIn = true,
 }: ReaderScreenProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLElement>(null);
@@ -230,6 +233,7 @@ export function ReaderScreen({
     <WorkspaceWindow
       ref={dialogRef}
       tone="practice"
+      animateIn={animateIn}
       role="dialog"
       aria-modal="true"
       aria-label="Reading Mode"
