@@ -8,20 +8,20 @@
     "lessonTitleEnglish": "Let’s Play Tennis This Weekend!",
     "grammarNumber": 1,
     "titleTraditional": "會 + 學會的技能",
-    "titleEnglish": "Switch On a Learned Skill",
+    "titleEnglish": "Express a Learned Ability with 會",
     "learnerPromise": "Say what someone knows—or does not know—how to do.",
     "printedPages": [
       135,
       136
     ],
     "audioReference": "06-1-3",
-    "explanation": "Use 會 before a verb for acquired skills (\"know how to\"): 會說中文. Negate with 不會. It refers to learned ability, not future events.",
+    "explanation": "Use 會 before an action to say you know how to do it. Put 不 before 會 to say you do not know how. Here, 會 means having the ability, not the future.",
     "focusTerms": [
       "會",
       "会",
       "不會",
       "不会",
-      "技能"
+      "不"
     ],
     "teachingGlossary": [
       {
@@ -72,7 +72,7 @@
         "id": "b1l06-g01-glossary-8",
         "traditional": "國安",
         "simplified": "国安",
-        "pinyin": "Guo'ān",
+        "pinyin": "Guó'ān",
         "meaning": "Guoan"
       },
       {
@@ -1497,7 +1497,7 @@
     "lessonTitleEnglish": "Let’s Play Tennis This Weekend!",
     "grammarNumber": 2,
     "titleTraditional": "動作 + 得 + 表現",
-    "titleEnglish": "Attach a Performance Meter",
+    "titleEnglish": "Describe How Well You Do an Action with 得",
     "learnerPromise": "Describe how well, fast, slowly, much, or happily an action is done.",
     "printedPages": [
       136,
@@ -1507,13 +1507,14 @@
       140
     ],
     "audioReference": "06-1-3",
-    "explanation": "得 joins an action to a report about it, like 跑得很快. Keep the action word right before 得. For a two-part activity like 跑步 or 打網球, repeat the action word (跑步跑得很快) or move the thing forward (網球打得很好), so the action word still touches 得.",
+    "explanation": "Use 得 after a verb to describe how well you do it: 跑得很快. If there is an object, repeat the verb (跑步跑得很快) or say the object first (網球打得很好).",
     "focusTerms": [
-      "動作",
-      "动作",
       "得",
-      "表現",
-      "表现"
+      "跑得很快",
+      "跑步",
+      "打網球",
+      "跑步跑得很快",
+      "網球打得很好"
     ],
     "teachingGlossary": [
       {
@@ -1564,7 +1565,7 @@
         "id": "b1l06-g02-glossary-8",
         "traditional": "國安",
         "simplified": "国安",
-        "pinyin": "Guo'ān",
+        "pinyin": "Guó'ān",
         "meaning": "Guoan"
       },
       {
@@ -2529,8 +2530,205 @@
         }
       },
       {
-        "id": "g2-e2",
+        "id": "b1l06-g2-e6",
         "number": 2,
+        "text": {
+          "traditional": "我每天都睡得很好。",
+          "simplified": "我每天都睡得很好。",
+          "pinyin": "Wǒ měitiān dōu shuì de hěn hǎo.",
+          "english": "I sleep very well every day.",
+          "words": [
+            {
+              "id": "b1l06-g2-e6-word-1",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me"
+            },
+            {
+              "id": "b1l06-g2-e6-word-2",
+              "traditional": "每天",
+              "pinyin": "měitiān",
+              "meaning": "every day"
+            },
+            {
+              "id": "b1l06-g2-e6-word-3",
+              "traditional": "都",
+              "pinyin": "dōu",
+              "meaning": "always; all"
+            },
+            {
+              "id": "b1l06-g2-e6-word-4",
+              "traditional": "睡",
+              "pinyin": "shuì",
+              "meaning": "sleep"
+            },
+            {
+              "id": "b1l06-g2-e6-word-5",
+              "traditional": "得",
+              "pinyin": "de",
+              "meaning": "shows how an action is done"
+            },
+            {
+              "id": "b1l06-g2-e6-word-6",
+              "traditional": "很好",
+              "pinyin": "hěn hǎo",
+              "meaning": "very well",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "b1l06-g2-e7",
+        "number": 3,
+        "text": {
+          "traditional": "我哥哥走得好快，我妹妹走得好慢。",
+          "simplified": "我哥哥走得好快，我妹妹走得好慢。",
+          "pinyin": "Wǒ gēge zǒu de hǎo kuài, wǒ mèimei zǒu de hǎo màn.",
+          "english": "My older brother walks really fast, and my younger sister walks really slowly.",
+          "words": [
+            {
+              "id": "b1l06-g2-e7-word-1",
+              "traditional": "我哥哥",
+              "pinyin": "wǒ gēge",
+              "meaning": "my older brother"
+            },
+            {
+              "id": "b1l06-g2-e7-word-2",
+              "traditional": "走",
+              "pinyin": "zǒu",
+              "meaning": "walk"
+            },
+            {
+              "id": "b1l06-g2-e7-word-3",
+              "traditional": "得",
+              "pinyin": "de",
+              "meaning": "shows how an action is done"
+            },
+            {
+              "id": "b1l06-g2-e7-word-4",
+              "traditional": "好快",
+              "pinyin": "hǎo kuài",
+              "meaning": "really fast"
+            },
+            {
+              "id": "b1l06-g2-e7-word-5",
+              "traditional": "我妹妹",
+              "pinyin": "wǒ mèimei",
+              "meaning": "my younger sister",
+              "prefix": "，"
+            },
+            {
+              "id": "b1l06-g2-e7-word-6",
+              "traditional": "走",
+              "pinyin": "zǒu",
+              "meaning": "walk"
+            },
+            {
+              "id": "b1l06-g2-e7-word-7",
+              "traditional": "得",
+              "pinyin": "de",
+              "meaning": "shows how an action is done"
+            },
+            {
+              "id": "b1l06-g2-e7-word-8",
+              "traditional": "好慢",
+              "pinyin": "hǎo màn",
+              "meaning": "really slowly",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "b1l06-g2-e8",
+        "number": 4,
+        "text": {
+          "traditional": "A：你跑步跑得快嗎？ B：我跑步跑得很快。",
+          "simplified": "A：你跑步跑得快吗？ B：我跑步跑得很快。",
+          "pinyin": "A: Nǐ pǎobù pǎo de kuài ma? B: Wǒ pǎobù pǎo de hěn kuài.",
+          "english": "A: Do you run fast? B: I run very fast.",
+          "words": [
+            {
+              "id": "b1l06-g2-e8-word-1",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l06-g2-e8-word-2",
+              "traditional": "跑步",
+              "pinyin": "pǎobù",
+              "meaning": "to run"
+            },
+            {
+              "id": "b1l06-g2-e8-word-3",
+              "traditional": "跑",
+              "pinyin": "pǎo",
+              "meaning": "run"
+            },
+            {
+              "id": "b1l06-g2-e8-word-4",
+              "traditional": "得",
+              "pinyin": "de",
+              "meaning": "shows how an action is done"
+            },
+            {
+              "id": "b1l06-g2-e8-word-5",
+              "traditional": "快",
+              "pinyin": "kuài",
+              "meaning": "fast"
+            },
+            {
+              "id": "b1l06-g2-e8-word-6",
+              "traditional": "嗎",
+              "pinyin": "ma",
+              "meaning": "yes/no question ending",
+              "suffix": "？",
+              "simplified": "吗"
+            },
+            {
+              "id": "b1l06-g2-e8-word-7",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me",
+              "prefix": "B："
+            },
+            {
+              "id": "b1l06-g2-e8-word-8",
+              "traditional": "跑步",
+              "pinyin": "pǎobù",
+              "meaning": "to run"
+            },
+            {
+              "id": "b1l06-g2-e8-word-9",
+              "traditional": "跑",
+              "pinyin": "pǎo",
+              "meaning": "run"
+            },
+            {
+              "id": "b1l06-g2-e8-word-10",
+              "traditional": "得",
+              "pinyin": "de",
+              "meaning": "shows how an action is done"
+            },
+            {
+              "id": "b1l06-g2-e8-word-11",
+              "traditional": "很快",
+              "pinyin": "hěn kuài",
+              "meaning": "very fast",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "g2-e2",
+        "number": 5,
         "text": {
           "traditional": "A：你游泳游得怎麼樣？ B：我游泳游得不太好。",
           "simplified": "A：你游泳游得怎么样？ B：我游泳游得不太好。",
@@ -2605,19 +2803,177 @@
         }
       },
       {
-        "id": "g2-e3",
-        "number": 3,
+        "id": "b1l06-g2-e9",
+        "number": 6,
         "text": {
-          "traditional": "A：他的網球打得怎麼樣？ B：他的網球打得不錯。",
-          "simplified": "A：他的网球打得怎么样？ B：他的网球打得不错。",
-          "pinyin": "A: Tā de wǎngqiú dǎ de zěnmeyàng? B: Tā de wǎngqiú dǎ de búcuò.",
+          "traditional": "A：你騎腳踏車騎得快不快？ B：我騎腳踏車騎得很慢。",
+          "simplified": "A：你骑脚踏车骑得快不快？ B：我骑脚踏车骑得很慢。",
+          "pinyin": "A: Nǐ qí jiǎotàchē qí de kuài bú kuài? B: Wǒ qí jiǎotàchē qí de hěn màn.",
+          "english": "A: Do you ride a bicycle fast? B: I ride a bicycle very slowly.",
+          "words": [
+            {
+              "id": "b1l06-g2-e9-word-1",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l06-g2-e9-word-2",
+              "traditional": "騎腳踏車",
+              "simplified": "骑脚踏车",
+              "pinyin": "qí jiǎotàchē",
+              "meaning": "ride a bicycle"
+            },
+            {
+              "id": "b1l06-g2-e9-word-3",
+              "traditional": "騎",
+              "pinyin": "qí",
+              "meaning": "ride",
+              "simplified": "骑"
+            },
+            {
+              "id": "b1l06-g2-e9-word-4",
+              "traditional": "得",
+              "pinyin": "de",
+              "meaning": "shows how an action is done"
+            },
+            {
+              "id": "b1l06-g2-e9-word-5",
+              "traditional": "快不快",
+              "pinyin": "kuài bú kuài",
+              "meaning": "fast or not"
+            },
+            {
+              "id": "b1l06-g2-e9-word-6",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me",
+              "prefix": "？ B："
+            },
+            {
+              "id": "b1l06-g2-e9-word-7",
+              "traditional": "騎腳踏車",
+              "simplified": "骑脚踏车",
+              "pinyin": "qí jiǎotàchē",
+              "meaning": "ride a bicycle"
+            },
+            {
+              "id": "b1l06-g2-e9-word-8",
+              "traditional": "騎",
+              "pinyin": "qí",
+              "meaning": "ride",
+              "simplified": "骑"
+            },
+            {
+              "id": "b1l06-g2-e9-word-9",
+              "traditional": "得",
+              "pinyin": "de",
+              "meaning": "shows how an action is done"
+            },
+            {
+              "id": "b1l06-g2-e9-word-10",
+              "traditional": "很慢",
+              "pinyin": "hěn màn",
+              "meaning": "very slowly",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "b1l06-g2-e10",
+        "number": 7,
+        "text": {
+          "traditional": "A：你哥哥書看得快不快？ B：他書看得很快。",
+          "simplified": "A：你哥哥书看得快不快？ B：他书看得很快。",
+          "pinyin": "A: Nǐ gēge shū kàn de kuài bú kuài? B: Tā shū kàn de hěn kuài.",
+          "english": "A: Does your older brother read books fast? B: He reads books very fast.",
+          "words": [
+            {
+              "id": "b1l06-g2-e10-word-1",
+              "traditional": "你哥哥",
+              "pinyin": "nǐ gēge",
+              "meaning": "your older brother",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l06-g2-e10-word-2",
+              "traditional": "書",
+              "simplified": "书",
+              "pinyin": "shū",
+              "meaning": "book"
+            },
+            {
+              "id": "b1l06-g2-e10-word-3",
+              "traditional": "看",
+              "pinyin": "kàn",
+              "meaning": "read"
+            },
+            {
+              "id": "b1l06-g2-e10-word-4",
+              "traditional": "得",
+              "pinyin": "de",
+              "meaning": "shows how an action is done"
+            },
+            {
+              "id": "b1l06-g2-e10-word-5",
+              "traditional": "快不快",
+              "pinyin": "kuài bú kuài",
+              "meaning": "fast or not"
+            },
+            {
+              "id": "b1l06-g2-e10-word-6",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he",
+              "prefix": "？ B："
+            },
+            {
+              "id": "b1l06-g2-e10-word-7",
+              "traditional": "書",
+              "simplified": "书",
+              "pinyin": "shū",
+              "meaning": "book"
+            },
+            {
+              "id": "b1l06-g2-e10-word-8",
+              "traditional": "看",
+              "pinyin": "kàn",
+              "meaning": "read"
+            },
+            {
+              "id": "b1l06-g2-e10-word-9",
+              "traditional": "得",
+              "pinyin": "de",
+              "meaning": "shows how an action is done"
+            },
+            {
+              "id": "b1l06-g2-e10-word-10",
+              "traditional": "很快",
+              "pinyin": "hěn kuài",
+              "meaning": "very fast",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "g2-e3",
+        "number": 8,
+        "text": {
+          "traditional": "A：他網球打得怎麼樣？ B：他網球打得不錯。",
+          "simplified": "A：他网球打得怎么样？ B：他网球打得不错。",
+          "pinyin": "A: Tā wǎngqiú dǎ de zěnmeyàng? B: Tā wǎngqiú dǎ de búcuò.",
           "english": "A: How well does he play tennis? B: Pretty well.",
           "words": [
             {
               "id": "b1l06-g2-e3-word-1",
-              "traditional": "他的",
-              "pinyin": "tā de",
-              "meaning": "his",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he",
               "prefix": "A："
             },
             {
@@ -2648,9 +3004,9 @@
             },
             {
               "id": "b1l06-g2-e3-word-6",
-              "traditional": "他的",
-              "pinyin": "tā de",
-              "meaning": "his",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he",
               "prefix": "？ B："
             },
             {
@@ -2684,8 +3040,326 @@
         }
       },
       {
+        "id": "b1l06-g2-e11",
+        "number": 9,
+        "text": {
+          "traditional": "A：你們飯吃得多不多？ B：我飯吃得不多，他吃得很多。",
+          "simplified": "A：你们饭吃得多不多？ B：我饭吃得不多，他吃得很多。",
+          "pinyin": "A: Nǐmen fàn chī de duō bù duō? B: Wǒ fàn chī de bù duō, tā chī de hěn duō.",
+          "english": "A: Do you all eat a lot? B: I do not eat much; he eats a lot.",
+          "words": [
+            {
+              "id": "b1l06-g2-e11-word-1",
+              "traditional": "你們",
+              "simplified": "你们",
+              "pinyin": "nǐmen",
+              "meaning": "you all",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l06-g2-e11-word-2",
+              "traditional": "飯",
+              "simplified": "饭",
+              "pinyin": "fàn",
+              "meaning": "meal; food"
+            },
+            {
+              "id": "b1l06-g2-e11-word-3",
+              "traditional": "吃",
+              "pinyin": "chī",
+              "meaning": "eat"
+            },
+            {
+              "id": "b1l06-g2-e11-word-4",
+              "traditional": "得",
+              "pinyin": "de",
+              "meaning": "shows how an action is done"
+            },
+            {
+              "id": "b1l06-g2-e11-word-5",
+              "traditional": "多不多",
+              "pinyin": "duō bù duō",
+              "meaning": "much or not"
+            },
+            {
+              "id": "b1l06-g2-e11-word-6",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me",
+              "prefix": "？ B："
+            },
+            {
+              "id": "b1l06-g2-e11-word-7",
+              "traditional": "飯",
+              "simplified": "饭",
+              "pinyin": "fàn",
+              "meaning": "meal; food"
+            },
+            {
+              "id": "b1l06-g2-e11-word-8",
+              "traditional": "吃",
+              "pinyin": "chī",
+              "meaning": "eat"
+            },
+            {
+              "id": "b1l06-g2-e11-word-9",
+              "traditional": "得",
+              "pinyin": "de",
+              "meaning": "shows how an action is done"
+            },
+            {
+              "id": "b1l06-g2-e11-word-10",
+              "traditional": "不多",
+              "pinyin": "bù duō",
+              "meaning": "not much"
+            },
+            {
+              "id": "b1l06-g2-e11-word-11",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he",
+              "prefix": "，"
+            },
+            {
+              "id": "b1l06-g2-e11-word-12",
+              "traditional": "吃",
+              "pinyin": "chī",
+              "meaning": "eat"
+            },
+            {
+              "id": "b1l06-g2-e11-word-13",
+              "traditional": "得",
+              "pinyin": "de",
+              "meaning": "shows how an action is done"
+            },
+            {
+              "id": "b1l06-g2-e11-word-14",
+              "traditional": "很多",
+              "pinyin": "hěn duō",
+              "meaning": "very much",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "b1l06-g2-e12",
+        "number": 10,
+        "text": {
+          "traditional": "A：你的飯做得好不好？ B：我的飯做得不太好。",
+          "simplified": "A：你的饭做得好不好？ B：我的饭做得不太好。",
+          "pinyin": "A: Nǐ de fàn zuò de hǎo bù hǎo? B: Wǒ de fàn zuò de bú tài hǎo.",
+          "english": "A: Is your cooking good? B: My cooking is not very good.",
+          "words": [
+            {
+              "id": "b1l06-g2-e12-word-1",
+              "traditional": "你的飯",
+              "simplified": "你的饭",
+              "pinyin": "nǐ de fàn",
+              "meaning": "your cooking",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l06-g2-e12-word-2",
+              "traditional": "做",
+              "pinyin": "zuò",
+              "meaning": "make; cook"
+            },
+            {
+              "id": "b1l06-g2-e12-word-3",
+              "traditional": "得",
+              "pinyin": "de",
+              "meaning": "shows how an action is done"
+            },
+            {
+              "id": "b1l06-g2-e12-word-4",
+              "traditional": "好不好",
+              "pinyin": "hǎo bù hǎo",
+              "meaning": "good or not"
+            },
+            {
+              "id": "b1l06-g2-e12-word-5",
+              "traditional": "我的飯",
+              "simplified": "我的饭",
+              "pinyin": "wǒ de fàn",
+              "meaning": "my cooking",
+              "prefix": "？ B："
+            },
+            {
+              "id": "b1l06-g2-e12-word-6",
+              "traditional": "做",
+              "pinyin": "zuò",
+              "meaning": "make; cook"
+            },
+            {
+              "id": "b1l06-g2-e12-word-7",
+              "traditional": "得",
+              "pinyin": "de",
+              "meaning": "shows how an action is done"
+            },
+            {
+              "id": "b1l06-g2-e12-word-8",
+              "traditional": "不太好",
+              "pinyin": "bú tài hǎo",
+              "meaning": "not very well",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "b1l06-g2-e13",
+        "number": 11,
+        "text": {
+          "traditional": "A：你弟弟的足球踢得好嗎？ B：我弟弟的足球踢得很好。",
+          "simplified": "A：你弟弟的足球踢得好吗？ B：我弟弟的足球踢得很好。",
+          "pinyin": "A: Nǐ dìdi de zúqiú tī de hǎo ma? B: Wǒ dìdi de zúqiú tī de hěn hǎo.",
+          "english": "A: Does your younger brother play soccer well? B: My younger brother plays soccer very well.",
+          "words": [
+            {
+              "id": "b1l06-g2-e13-word-1",
+              "traditional": "你弟弟的足球",
+              "pinyin": "nǐ dìdi de zúqiú",
+              "meaning": "your younger brother's soccer",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l06-g2-e13-word-2",
+              "traditional": "踢",
+              "pinyin": "tī",
+              "meaning": "kick; play with the foot"
+            },
+            {
+              "id": "b1l06-g2-e13-word-3",
+              "traditional": "得",
+              "pinyin": "de",
+              "meaning": "shows how an action is done"
+            },
+            {
+              "id": "b1l06-g2-e13-word-4",
+              "traditional": "好",
+              "pinyin": "hǎo",
+              "meaning": "well"
+            },
+            {
+              "id": "b1l06-g2-e13-word-5",
+              "traditional": "嗎",
+              "pinyin": "ma",
+              "meaning": "yes/no question ending",
+              "suffix": "？",
+              "simplified": "吗"
+            },
+            {
+              "id": "b1l06-g2-e13-word-6",
+              "traditional": "我弟弟的足球",
+              "pinyin": "wǒ dìdi de zúqiú",
+              "meaning": "my younger brother's soccer",
+              "prefix": "B："
+            },
+            {
+              "id": "b1l06-g2-e13-word-7",
+              "traditional": "踢",
+              "pinyin": "tī",
+              "meaning": "kick; play with the foot"
+            },
+            {
+              "id": "b1l06-g2-e13-word-8",
+              "traditional": "得",
+              "pinyin": "de",
+              "meaning": "shows how an action is done"
+            },
+            {
+              "id": "b1l06-g2-e13-word-9",
+              "traditional": "很好",
+              "pinyin": "hěn hǎo",
+              "meaning": "very well",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "b1l06-g2-e14",
+        "number": 12,
+        "text": {
+          "traditional": "A：她的腳踏車騎得快嗎？ B：她的腳踏車騎得不快。",
+          "simplified": "A：她的脚踏车骑得快吗？ B：她的脚踏车骑得不快。",
+          "pinyin": "A: Tā de jiǎotàchē qí de kuài ma? B: Tā de jiǎotàchē qí de bú kuài.",
+          "english": "A: Does she ride her bicycle fast? B: She does not ride her bicycle fast.",
+          "words": [
+            {
+              "id": "b1l06-g2-e14-word-1",
+              "traditional": "她的腳踏車",
+              "simplified": "她的脚踏车",
+              "pinyin": "tā de jiǎotàchē",
+              "meaning": "her bicycle",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l06-g2-e14-word-2",
+              "traditional": "騎",
+              "pinyin": "qí",
+              "meaning": "ride",
+              "simplified": "骑"
+            },
+            {
+              "id": "b1l06-g2-e14-word-3",
+              "traditional": "得",
+              "pinyin": "de",
+              "meaning": "shows how an action is done"
+            },
+            {
+              "id": "b1l06-g2-e14-word-4",
+              "traditional": "快",
+              "pinyin": "kuài",
+              "meaning": "fast"
+            },
+            {
+              "id": "b1l06-g2-e14-word-5",
+              "traditional": "嗎",
+              "pinyin": "ma",
+              "meaning": "yes/no question ending",
+              "suffix": "？",
+              "simplified": "吗"
+            },
+            {
+              "id": "b1l06-g2-e14-word-6",
+              "traditional": "她的腳踏車",
+              "simplified": "她的脚踏车",
+              "pinyin": "tā de jiǎotàchē",
+              "meaning": "her bicycle",
+              "prefix": "B："
+            },
+            {
+              "id": "b1l06-g2-e14-word-7",
+              "traditional": "騎",
+              "pinyin": "qí",
+              "meaning": "ride",
+              "simplified": "骑"
+            },
+            {
+              "id": "b1l06-g2-e14-word-8",
+              "traditional": "得",
+              "pinyin": "de",
+              "meaning": "shows how an action is done"
+            },
+            {
+              "id": "b1l06-g2-e14-word-9",
+              "traditional": "不快",
+              "pinyin": "bú kuài",
+              "meaning": "not fast",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
         "id": "g2-e4",
-        "number": 4,
+        "number": 13,
         "teachingNote": "Say the whole activity 吃飯, then repeat 吃 before 得.",
         "text": {
           "traditional": "我妹妹吃飯吃得很慢。",
@@ -2736,7 +3410,7 @@
       },
       {
         "id": "g2-e5",
-        "number": 5,
+        "number": 14,
         "teachingNote": "Move the thing 牛肉麵 forward; 做 stays right before 得.",
         "text": {
           "traditional": "他的牛肉麵做得很不錯。",
@@ -3432,7 +4106,9 @@
           }
         ],
         "exampleIds": [
-          "g2-e1"
+          "g2-e1",
+          "b1l06-g2-e6",
+          "b1l06-g2-e7"
         ]
       },
       {
@@ -3474,7 +4150,8 @@
                   "id": "g2-s2-eat-meal",
                   "traditional": "吃飯",
                   "pinyin": "chīfàn",
-                  "meaning": "eat a meal"
+                  "meaning": "eat a meal",
+                  "simplified": "吃饭"
                 }
               ],
               [
@@ -3524,7 +4201,8 @@
                   "id": "g2-s2-talk",
                   "traditional": "說話",
                   "pinyin": "shuōhuà",
-                  "meaning": "speak; talk"
+                  "meaning": "speak; talk",
+                  "simplified": "说话"
                 }
               ],
               [
@@ -3532,7 +4210,8 @@
                   "id": "g2-s2-speak",
                   "traditional": "說",
                   "pinyin": "shuō",
-                  "meaning": "speak; say"
+                  "meaning": "speak; say",
+                  "simplified": "说"
                 }
               ],
               [
@@ -3557,7 +4236,9 @@
           }
         ],
         "exampleIds": [
+          "b1l06-g2-e8",
           "g2-e2",
+          "b1l06-g2-e9",
           "g2-e4"
         ]
       },
@@ -3600,7 +4281,8 @@
                   "id": "g2-s3-rice",
                   "traditional": "飯",
                   "pinyin": "fàn",
-                  "meaning": "rice; meal"
+                  "meaning": "rice; meal",
+                  "simplified": "饭"
                 }
               ],
               [
@@ -3658,7 +4340,8 @@
                   "id": "g2-s3-speak",
                   "traditional": "說",
                   "pinyin": "shuō",
-                  "meaning": "speak; say"
+                  "meaning": "speak; say",
+                  "simplified": "说"
                 }
               ],
               [
@@ -3675,14 +4358,19 @@
                   "traditional": "很不錯",
                   "pinyin": "hěn búcuò",
                   "meaning": "very good",
-                  "suffix": "。"
+                  "suffix": "。",
+                  "simplified": "很不错"
                 }
               ]
             ],
             "english": "My younger sister speaks Chinese very well."
           }
         ],
-        "exampleIds": []
+        "exampleIds": [
+          "b1l06-g2-e10",
+          "g2-e3",
+          "b1l06-g2-e11"
+        ]
       },
       {
         "id": "b1l06-g02-sec-4",
@@ -3780,7 +4468,8 @@
                   "traditional": "很不錯",
                   "pinyin": "hěn búcuò",
                   "meaning": "very good",
-                  "suffix": "。"
+                  "suffix": "。",
+                  "simplified": "很不错"
                 }
               ]
             ],
@@ -3788,7 +4477,9 @@
           }
         ],
         "exampleIds": [
-          "g2-e3",
+          "b1l06-g2-e12",
+          "b1l06-g2-e13",
+          "b1l06-g2-e14",
           "g2-e5"
         ]
       }
@@ -3810,20 +4501,20 @@
         "lessonTitleEnglish": "Let’s Play Tennis This Weekend!",
         "grammarNumber": 1,
         "titleTraditional": "會 + 學會的技能",
-        "titleEnglish": "Switch On a Learned Skill",
+        "titleEnglish": "Express a Learned Ability with 會",
         "learnerPromise": "Say what someone knows—or does not know—how to do.",
         "printedPages": [
           135,
           136
         ],
         "audioReference": "06-1-3",
-        "explanation": "Use 會 before a learned or practiced skill. Put 不 before 會 for a missing skill. Here, 會 means “know how to”, not a future prediction.",
+        "explanation": "Use 會 before an action to say you know how to do it. Put 不 before 會 to say you do not know how. Here, 會 means having the ability, not the future.",
         "focusTerms": [
           "會",
           "会",
           "不會",
           "不会",
-          "技能"
+          "不"
         ],
         "teachingGlossary": [
           {
@@ -3874,7 +4565,7 @@
             "id": "b1l06-g01-glossary-8",
             "traditional": "國安",
             "simplified": "国安",
-            "pinyin": "Guo'ān",
+            "pinyin": "Guó'ān",
             "meaning": "Guoan"
           },
           {
@@ -5299,7 +5990,7 @@
         "lessonTitleEnglish": "Let’s Play Tennis This Weekend!",
         "grammarNumber": 2,
         "titleTraditional": "動作 + 得 + 表現",
-        "titleEnglish": "Attach a Performance Meter",
+        "titleEnglish": "Describe How Well You Do an Action with 得",
         "learnerPromise": "Describe how well, fast, slowly, much, or happily an action is done.",
         "printedPages": [
           136,
@@ -5309,13 +6000,14 @@
           140
         ],
         "audioReference": "06-1-3",
-        "explanation": "得 joins an action to a report about it, like 跑得很快. Keep the action word right before 得. For a two-part activity like 跑步 or 打網球, repeat the action word (跑步跑得很快) or move the thing forward (網球打得很好), so the action word still touches 得.",
+        "explanation": "Use 得 after a verb to describe how well you do it: 跑得很快. If there is an object, repeat the verb (跑步跑得很快) or say the object first (網球打得很好).",
         "focusTerms": [
-          "動作",
-          "动作",
           "得",
-          "表現",
-          "表现"
+          "跑得很快",
+          "跑步",
+          "打網球",
+          "跑步跑得很快",
+          "網球打得很好"
         ],
         "teachingGlossary": [
           {
@@ -5366,7 +6058,7 @@
             "id": "b1l06-g02-glossary-8",
             "traditional": "國安",
             "simplified": "国安",
-            "pinyin": "Guo'ān",
+            "pinyin": "Guó'ān",
             "meaning": "Guoan"
           },
           {
@@ -6331,8 +7023,205 @@
             }
           },
           {
-            "id": "g2-e2",
+            "id": "b1l06-g2-e6",
             "number": 2,
+            "text": {
+              "traditional": "我每天都睡得很好。",
+              "simplified": "我每天都睡得很好。",
+              "pinyin": "Wǒ měitiān dōu shuì de hěn hǎo.",
+              "english": "I sleep very well every day.",
+              "words": [
+                {
+                  "id": "b1l06-g2-e6-word-1",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                },
+                {
+                  "id": "b1l06-g2-e6-word-2",
+                  "traditional": "每天",
+                  "pinyin": "měitiān",
+                  "meaning": "every day"
+                },
+                {
+                  "id": "b1l06-g2-e6-word-3",
+                  "traditional": "都",
+                  "pinyin": "dōu",
+                  "meaning": "always; all"
+                },
+                {
+                  "id": "b1l06-g2-e6-word-4",
+                  "traditional": "睡",
+                  "pinyin": "shuì",
+                  "meaning": "sleep"
+                },
+                {
+                  "id": "b1l06-g2-e6-word-5",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "shows how an action is done"
+                },
+                {
+                  "id": "b1l06-g2-e6-word-6",
+                  "traditional": "很好",
+                  "pinyin": "hěn hǎo",
+                  "meaning": "very well",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "b1l06-g2-e7",
+            "number": 3,
+            "text": {
+              "traditional": "我哥哥走得好快，我妹妹走得好慢。",
+              "simplified": "我哥哥走得好快，我妹妹走得好慢。",
+              "pinyin": "Wǒ gēge zǒu de hǎo kuài, wǒ mèimei zǒu de hǎo màn.",
+              "english": "My older brother walks really fast, and my younger sister walks really slowly.",
+              "words": [
+                {
+                  "id": "b1l06-g2-e7-word-1",
+                  "traditional": "我哥哥",
+                  "pinyin": "wǒ gēge",
+                  "meaning": "my older brother"
+                },
+                {
+                  "id": "b1l06-g2-e7-word-2",
+                  "traditional": "走",
+                  "pinyin": "zǒu",
+                  "meaning": "walk"
+                },
+                {
+                  "id": "b1l06-g2-e7-word-3",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "shows how an action is done"
+                },
+                {
+                  "id": "b1l06-g2-e7-word-4",
+                  "traditional": "好快",
+                  "pinyin": "hǎo kuài",
+                  "meaning": "really fast"
+                },
+                {
+                  "id": "b1l06-g2-e7-word-5",
+                  "traditional": "我妹妹",
+                  "pinyin": "wǒ mèimei",
+                  "meaning": "my younger sister",
+                  "prefix": "，"
+                },
+                {
+                  "id": "b1l06-g2-e7-word-6",
+                  "traditional": "走",
+                  "pinyin": "zǒu",
+                  "meaning": "walk"
+                },
+                {
+                  "id": "b1l06-g2-e7-word-7",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "shows how an action is done"
+                },
+                {
+                  "id": "b1l06-g2-e7-word-8",
+                  "traditional": "好慢",
+                  "pinyin": "hǎo màn",
+                  "meaning": "really slowly",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "b1l06-g2-e8",
+            "number": 4,
+            "text": {
+              "traditional": "A：你跑步跑得快嗎？ B：我跑步跑得很快。",
+              "simplified": "A：你跑步跑得快吗？ B：我跑步跑得很快。",
+              "pinyin": "A: Nǐ pǎobù pǎo de kuài ma? B: Wǒ pǎobù pǎo de hěn kuài.",
+              "english": "A: Do you run fast? B: I run very fast.",
+              "words": [
+                {
+                  "id": "b1l06-g2-e8-word-1",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l06-g2-e8-word-2",
+                  "traditional": "跑步",
+                  "pinyin": "pǎobù",
+                  "meaning": "to run"
+                },
+                {
+                  "id": "b1l06-g2-e8-word-3",
+                  "traditional": "跑",
+                  "pinyin": "pǎo",
+                  "meaning": "run"
+                },
+                {
+                  "id": "b1l06-g2-e8-word-4",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "shows how an action is done"
+                },
+                {
+                  "id": "b1l06-g2-e8-word-5",
+                  "traditional": "快",
+                  "pinyin": "kuài",
+                  "meaning": "fast"
+                },
+                {
+                  "id": "b1l06-g2-e8-word-6",
+                  "traditional": "嗎",
+                  "pinyin": "ma",
+                  "meaning": "yes/no question ending",
+                  "suffix": "？",
+                  "simplified": "吗"
+                },
+                {
+                  "id": "b1l06-g2-e8-word-7",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me",
+                  "prefix": "B："
+                },
+                {
+                  "id": "b1l06-g2-e8-word-8",
+                  "traditional": "跑步",
+                  "pinyin": "pǎobù",
+                  "meaning": "to run"
+                },
+                {
+                  "id": "b1l06-g2-e8-word-9",
+                  "traditional": "跑",
+                  "pinyin": "pǎo",
+                  "meaning": "run"
+                },
+                {
+                  "id": "b1l06-g2-e8-word-10",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "shows how an action is done"
+                },
+                {
+                  "id": "b1l06-g2-e8-word-11",
+                  "traditional": "很快",
+                  "pinyin": "hěn kuài",
+                  "meaning": "very fast",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "g2-e2",
+            "number": 5,
             "text": {
               "traditional": "A：你游泳游得怎麼樣？ B：我游泳游得不太好。",
               "simplified": "A：你游泳游得怎么样？ B：我游泳游得不太好。",
@@ -6407,19 +7296,177 @@
             }
           },
           {
-            "id": "g2-e3",
-            "number": 3,
+            "id": "b1l06-g2-e9",
+            "number": 6,
             "text": {
-              "traditional": "A：他的網球打得怎麼樣？ B：他的網球打得不錯。",
-              "simplified": "A：他的网球打得怎么样？ B：他的网球打得不错。",
-              "pinyin": "A: Tā de wǎngqiú dǎ de zěnmeyàng? B: Tā de wǎngqiú dǎ de búcuò.",
+              "traditional": "A：你騎腳踏車騎得快不快？ B：我騎腳踏車騎得很慢。",
+              "simplified": "A：你骑脚踏车骑得快不快？ B：我骑脚踏车骑得很慢。",
+              "pinyin": "A: Nǐ qí jiǎotàchē qí de kuài bú kuài? B: Wǒ qí jiǎotàchē qí de hěn màn.",
+              "english": "A: Do you ride a bicycle fast? B: I ride a bicycle very slowly.",
+              "words": [
+                {
+                  "id": "b1l06-g2-e9-word-1",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l06-g2-e9-word-2",
+                  "traditional": "騎腳踏車",
+                  "simplified": "骑脚踏车",
+                  "pinyin": "qí jiǎotàchē",
+                  "meaning": "ride a bicycle"
+                },
+                {
+                  "id": "b1l06-g2-e9-word-3",
+                  "traditional": "騎",
+                  "pinyin": "qí",
+                  "meaning": "ride",
+                  "simplified": "骑"
+                },
+                {
+                  "id": "b1l06-g2-e9-word-4",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "shows how an action is done"
+                },
+                {
+                  "id": "b1l06-g2-e9-word-5",
+                  "traditional": "快不快",
+                  "pinyin": "kuài bú kuài",
+                  "meaning": "fast or not"
+                },
+                {
+                  "id": "b1l06-g2-e9-word-6",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me",
+                  "prefix": "？ B："
+                },
+                {
+                  "id": "b1l06-g2-e9-word-7",
+                  "traditional": "騎腳踏車",
+                  "simplified": "骑脚踏车",
+                  "pinyin": "qí jiǎotàchē",
+                  "meaning": "ride a bicycle"
+                },
+                {
+                  "id": "b1l06-g2-e9-word-8",
+                  "traditional": "騎",
+                  "pinyin": "qí",
+                  "meaning": "ride",
+                  "simplified": "骑"
+                },
+                {
+                  "id": "b1l06-g2-e9-word-9",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "shows how an action is done"
+                },
+                {
+                  "id": "b1l06-g2-e9-word-10",
+                  "traditional": "很慢",
+                  "pinyin": "hěn màn",
+                  "meaning": "very slowly",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "b1l06-g2-e10",
+            "number": 7,
+            "text": {
+              "traditional": "A：你哥哥書看得快不快？ B：他書看得很快。",
+              "simplified": "A：你哥哥书看得快不快？ B：他书看得很快。",
+              "pinyin": "A: Nǐ gēge shū kàn de kuài bú kuài? B: Tā shū kàn de hěn kuài.",
+              "english": "A: Does your older brother read books fast? B: He reads books very fast.",
+              "words": [
+                {
+                  "id": "b1l06-g2-e10-word-1",
+                  "traditional": "你哥哥",
+                  "pinyin": "nǐ gēge",
+                  "meaning": "your older brother",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l06-g2-e10-word-2",
+                  "traditional": "書",
+                  "simplified": "书",
+                  "pinyin": "shū",
+                  "meaning": "book"
+                },
+                {
+                  "id": "b1l06-g2-e10-word-3",
+                  "traditional": "看",
+                  "pinyin": "kàn",
+                  "meaning": "read"
+                },
+                {
+                  "id": "b1l06-g2-e10-word-4",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "shows how an action is done"
+                },
+                {
+                  "id": "b1l06-g2-e10-word-5",
+                  "traditional": "快不快",
+                  "pinyin": "kuài bú kuài",
+                  "meaning": "fast or not"
+                },
+                {
+                  "id": "b1l06-g2-e10-word-6",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he",
+                  "prefix": "？ B："
+                },
+                {
+                  "id": "b1l06-g2-e10-word-7",
+                  "traditional": "書",
+                  "simplified": "书",
+                  "pinyin": "shū",
+                  "meaning": "book"
+                },
+                {
+                  "id": "b1l06-g2-e10-word-8",
+                  "traditional": "看",
+                  "pinyin": "kàn",
+                  "meaning": "read"
+                },
+                {
+                  "id": "b1l06-g2-e10-word-9",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "shows how an action is done"
+                },
+                {
+                  "id": "b1l06-g2-e10-word-10",
+                  "traditional": "很快",
+                  "pinyin": "hěn kuài",
+                  "meaning": "very fast",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "g2-e3",
+            "number": 8,
+            "text": {
+              "traditional": "A：他網球打得怎麼樣？ B：他網球打得不錯。",
+              "simplified": "A：他网球打得怎么样？ B：他网球打得不错。",
+              "pinyin": "A: Tā wǎngqiú dǎ de zěnmeyàng? B: Tā wǎngqiú dǎ de búcuò.",
               "english": "A: How well does he play tennis? B: Pretty well.",
               "words": [
                 {
                   "id": "b1l06-g2-e3-word-1",
-                  "traditional": "他的",
-                  "pinyin": "tā de",
-                  "meaning": "his",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he",
                   "prefix": "A："
                 },
                 {
@@ -6450,9 +7497,9 @@
                 },
                 {
                   "id": "b1l06-g2-e3-word-6",
-                  "traditional": "他的",
-                  "pinyin": "tā de",
-                  "meaning": "his",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he",
                   "prefix": "？ B："
                 },
                 {
@@ -6486,8 +7533,326 @@
             }
           },
           {
+            "id": "b1l06-g2-e11",
+            "number": 9,
+            "text": {
+              "traditional": "A：你們飯吃得多不多？ B：我飯吃得不多，他吃得很多。",
+              "simplified": "A：你们饭吃得多不多？ B：我饭吃得不多，他吃得很多。",
+              "pinyin": "A: Nǐmen fàn chī de duō bù duō? B: Wǒ fàn chī de bù duō, tā chī de hěn duō.",
+              "english": "A: Do you all eat a lot? B: I do not eat much; he eats a lot.",
+              "words": [
+                {
+                  "id": "b1l06-g2-e11-word-1",
+                  "traditional": "你們",
+                  "simplified": "你们",
+                  "pinyin": "nǐmen",
+                  "meaning": "you all",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l06-g2-e11-word-2",
+                  "traditional": "飯",
+                  "simplified": "饭",
+                  "pinyin": "fàn",
+                  "meaning": "meal; food"
+                },
+                {
+                  "id": "b1l06-g2-e11-word-3",
+                  "traditional": "吃",
+                  "pinyin": "chī",
+                  "meaning": "eat"
+                },
+                {
+                  "id": "b1l06-g2-e11-word-4",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "shows how an action is done"
+                },
+                {
+                  "id": "b1l06-g2-e11-word-5",
+                  "traditional": "多不多",
+                  "pinyin": "duō bù duō",
+                  "meaning": "much or not"
+                },
+                {
+                  "id": "b1l06-g2-e11-word-6",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me",
+                  "prefix": "？ B："
+                },
+                {
+                  "id": "b1l06-g2-e11-word-7",
+                  "traditional": "飯",
+                  "simplified": "饭",
+                  "pinyin": "fàn",
+                  "meaning": "meal; food"
+                },
+                {
+                  "id": "b1l06-g2-e11-word-8",
+                  "traditional": "吃",
+                  "pinyin": "chī",
+                  "meaning": "eat"
+                },
+                {
+                  "id": "b1l06-g2-e11-word-9",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "shows how an action is done"
+                },
+                {
+                  "id": "b1l06-g2-e11-word-10",
+                  "traditional": "不多",
+                  "pinyin": "bù duō",
+                  "meaning": "not much"
+                },
+                {
+                  "id": "b1l06-g2-e11-word-11",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he",
+                  "prefix": "，"
+                },
+                {
+                  "id": "b1l06-g2-e11-word-12",
+                  "traditional": "吃",
+                  "pinyin": "chī",
+                  "meaning": "eat"
+                },
+                {
+                  "id": "b1l06-g2-e11-word-13",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "shows how an action is done"
+                },
+                {
+                  "id": "b1l06-g2-e11-word-14",
+                  "traditional": "很多",
+                  "pinyin": "hěn duō",
+                  "meaning": "very much",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "b1l06-g2-e12",
+            "number": 10,
+            "text": {
+              "traditional": "A：你的飯做得好不好？ B：我的飯做得不太好。",
+              "simplified": "A：你的饭做得好不好？ B：我的饭做得不太好。",
+              "pinyin": "A: Nǐ de fàn zuò de hǎo bù hǎo? B: Wǒ de fàn zuò de bú tài hǎo.",
+              "english": "A: Is your cooking good? B: My cooking is not very good.",
+              "words": [
+                {
+                  "id": "b1l06-g2-e12-word-1",
+                  "traditional": "你的飯",
+                  "simplified": "你的饭",
+                  "pinyin": "nǐ de fàn",
+                  "meaning": "your cooking",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l06-g2-e12-word-2",
+                  "traditional": "做",
+                  "pinyin": "zuò",
+                  "meaning": "make; cook"
+                },
+                {
+                  "id": "b1l06-g2-e12-word-3",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "shows how an action is done"
+                },
+                {
+                  "id": "b1l06-g2-e12-word-4",
+                  "traditional": "好不好",
+                  "pinyin": "hǎo bù hǎo",
+                  "meaning": "good or not"
+                },
+                {
+                  "id": "b1l06-g2-e12-word-5",
+                  "traditional": "我的飯",
+                  "simplified": "我的饭",
+                  "pinyin": "wǒ de fàn",
+                  "meaning": "my cooking",
+                  "prefix": "？ B："
+                },
+                {
+                  "id": "b1l06-g2-e12-word-6",
+                  "traditional": "做",
+                  "pinyin": "zuò",
+                  "meaning": "make; cook"
+                },
+                {
+                  "id": "b1l06-g2-e12-word-7",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "shows how an action is done"
+                },
+                {
+                  "id": "b1l06-g2-e12-word-8",
+                  "traditional": "不太好",
+                  "pinyin": "bú tài hǎo",
+                  "meaning": "not very well",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "b1l06-g2-e13",
+            "number": 11,
+            "text": {
+              "traditional": "A：你弟弟的足球踢得好嗎？ B：我弟弟的足球踢得很好。",
+              "simplified": "A：你弟弟的足球踢得好吗？ B：我弟弟的足球踢得很好。",
+              "pinyin": "A: Nǐ dìdi de zúqiú tī de hǎo ma? B: Wǒ dìdi de zúqiú tī de hěn hǎo.",
+              "english": "A: Does your younger brother play soccer well? B: My younger brother plays soccer very well.",
+              "words": [
+                {
+                  "id": "b1l06-g2-e13-word-1",
+                  "traditional": "你弟弟的足球",
+                  "pinyin": "nǐ dìdi de zúqiú",
+                  "meaning": "your younger brother's soccer",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l06-g2-e13-word-2",
+                  "traditional": "踢",
+                  "pinyin": "tī",
+                  "meaning": "kick; play with the foot"
+                },
+                {
+                  "id": "b1l06-g2-e13-word-3",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "shows how an action is done"
+                },
+                {
+                  "id": "b1l06-g2-e13-word-4",
+                  "traditional": "好",
+                  "pinyin": "hǎo",
+                  "meaning": "well"
+                },
+                {
+                  "id": "b1l06-g2-e13-word-5",
+                  "traditional": "嗎",
+                  "pinyin": "ma",
+                  "meaning": "yes/no question ending",
+                  "suffix": "？",
+                  "simplified": "吗"
+                },
+                {
+                  "id": "b1l06-g2-e13-word-6",
+                  "traditional": "我弟弟的足球",
+                  "pinyin": "wǒ dìdi de zúqiú",
+                  "meaning": "my younger brother's soccer",
+                  "prefix": "B："
+                },
+                {
+                  "id": "b1l06-g2-e13-word-7",
+                  "traditional": "踢",
+                  "pinyin": "tī",
+                  "meaning": "kick; play with the foot"
+                },
+                {
+                  "id": "b1l06-g2-e13-word-8",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "shows how an action is done"
+                },
+                {
+                  "id": "b1l06-g2-e13-word-9",
+                  "traditional": "很好",
+                  "pinyin": "hěn hǎo",
+                  "meaning": "very well",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "b1l06-g2-e14",
+            "number": 12,
+            "text": {
+              "traditional": "A：她的腳踏車騎得快嗎？ B：她的腳踏車騎得不快。",
+              "simplified": "A：她的脚踏车骑得快吗？ B：她的脚踏车骑得不快。",
+              "pinyin": "A: Tā de jiǎotàchē qí de kuài ma? B: Tā de jiǎotàchē qí de bú kuài.",
+              "english": "A: Does she ride her bicycle fast? B: She does not ride her bicycle fast.",
+              "words": [
+                {
+                  "id": "b1l06-g2-e14-word-1",
+                  "traditional": "她的腳踏車",
+                  "simplified": "她的脚踏车",
+                  "pinyin": "tā de jiǎotàchē",
+                  "meaning": "her bicycle",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l06-g2-e14-word-2",
+                  "traditional": "騎",
+                  "pinyin": "qí",
+                  "meaning": "ride",
+                  "simplified": "骑"
+                },
+                {
+                  "id": "b1l06-g2-e14-word-3",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "shows how an action is done"
+                },
+                {
+                  "id": "b1l06-g2-e14-word-4",
+                  "traditional": "快",
+                  "pinyin": "kuài",
+                  "meaning": "fast"
+                },
+                {
+                  "id": "b1l06-g2-e14-word-5",
+                  "traditional": "嗎",
+                  "pinyin": "ma",
+                  "meaning": "yes/no question ending",
+                  "suffix": "？",
+                  "simplified": "吗"
+                },
+                {
+                  "id": "b1l06-g2-e14-word-6",
+                  "traditional": "她的腳踏車",
+                  "simplified": "她的脚踏车",
+                  "pinyin": "tā de jiǎotàchē",
+                  "meaning": "her bicycle",
+                  "prefix": "B："
+                },
+                {
+                  "id": "b1l06-g2-e14-word-7",
+                  "traditional": "騎",
+                  "pinyin": "qí",
+                  "meaning": "ride",
+                  "simplified": "骑"
+                },
+                {
+                  "id": "b1l06-g2-e14-word-8",
+                  "traditional": "得",
+                  "pinyin": "de",
+                  "meaning": "shows how an action is done"
+                },
+                {
+                  "id": "b1l06-g2-e14-word-9",
+                  "traditional": "不快",
+                  "pinyin": "bú kuài",
+                  "meaning": "not fast",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
             "id": "g2-e4",
-            "number": 4,
+            "number": 13,
             "teachingNote": "Say the whole activity 吃飯, then repeat 吃 before 得.",
             "text": {
               "traditional": "我妹妹吃飯吃得很慢。",
@@ -6538,7 +7903,7 @@
           },
           {
             "id": "g2-e5",
-            "number": 5,
+            "number": 14,
             "teachingNote": "Move the thing 牛肉麵 forward; 做 stays right before 得.",
             "text": {
               "traditional": "他的牛肉麵做得很不錯。",
@@ -7234,7 +8599,9 @@
               }
             ],
             "exampleIds": [
-              "g2-e1"
+              "g2-e1",
+              "b1l06-g2-e6",
+              "b1l06-g2-e7"
             ]
           },
           {
@@ -7276,7 +8643,8 @@
                       "id": "g2-s2-eat-meal",
                       "traditional": "吃飯",
                       "pinyin": "chīfàn",
-                      "meaning": "eat a meal"
+                      "meaning": "eat a meal",
+                      "simplified": "吃饭"
                     }
                   ],
                   [
@@ -7326,7 +8694,8 @@
                       "id": "g2-s2-talk",
                       "traditional": "說話",
                       "pinyin": "shuōhuà",
-                      "meaning": "speak; talk"
+                      "meaning": "speak; talk",
+                      "simplified": "说话"
                     }
                   ],
                   [
@@ -7334,7 +8703,8 @@
                       "id": "g2-s2-speak",
                       "traditional": "說",
                       "pinyin": "shuō",
-                      "meaning": "speak; say"
+                      "meaning": "speak; say",
+                      "simplified": "说"
                     }
                   ],
                   [
@@ -7359,7 +8729,9 @@
               }
             ],
             "exampleIds": [
+              "b1l06-g2-e8",
               "g2-e2",
+              "b1l06-g2-e9",
               "g2-e4"
             ]
           },
@@ -7402,7 +8774,8 @@
                       "id": "g2-s3-rice",
                       "traditional": "飯",
                       "pinyin": "fàn",
-                      "meaning": "rice; meal"
+                      "meaning": "rice; meal",
+                      "simplified": "饭"
                     }
                   ],
                   [
@@ -7460,7 +8833,8 @@
                       "id": "g2-s3-speak",
                       "traditional": "說",
                       "pinyin": "shuō",
-                      "meaning": "speak; say"
+                      "meaning": "speak; say",
+                      "simplified": "说"
                     }
                   ],
                   [
@@ -7477,14 +8851,19 @@
                       "traditional": "很不錯",
                       "pinyin": "hěn búcuò",
                       "meaning": "very good",
-                      "suffix": "。"
+                      "suffix": "。",
+                      "simplified": "很不错"
                     }
                   ]
                 ],
                 "english": "My younger sister speaks Chinese very well."
               }
             ],
-            "exampleIds": []
+            "exampleIds": [
+              "b1l06-g2-e10",
+              "g2-e3",
+              "b1l06-g2-e11"
+            ]
           },
           {
             "id": "b1l06-g02-sec-4",
@@ -7582,7 +8961,8 @@
                       "traditional": "很不錯",
                       "pinyin": "hěn búcuò",
                       "meaning": "very good",
-                      "suffix": "。"
+                      "suffix": "。",
+                      "simplified": "很不错"
                     }
                   ]
                 ],
@@ -7590,7 +8970,9 @@
               }
             ],
             "exampleIds": [
-              "g2-e3",
+              "b1l06-g2-e12",
+              "b1l06-g2-e13",
+              "b1l06-g2-e14",
               "g2-e5"
             ]
           }
@@ -7758,7 +9140,8 @@
                 "traditional": "妳",
                 "pinyin": "nǐ",
                 "meaning": "you",
-                "prefix": "，"
+                "prefix": "，",
+                "simplified": "你"
               },
               {
                 "id": "b1l06-d1-l2-word-6",
@@ -7985,7 +9368,8 @@
                 "id": "b1l06-d1-l6-word-4",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you"
+                "meaning": "you",
+                "simplified": "你"
               },
               {
                 "id": "b1l06-d1-l6-word-5",

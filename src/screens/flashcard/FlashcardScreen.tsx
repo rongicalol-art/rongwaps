@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence } from 'motion/react';
+import type { Flashcard } from '../../data/flashcards';
 import { EdgeNavButtons } from '../../lib/widgets';
-import { EmptyReviewState } from '../../features/practice';
+import { EmptyReviewState, SessionComplete, type SessionStats } from '../../features/practice';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
 import { prefetchFlashcardExtras, useFlashcardExtras } from '../../features/flashcards';
@@ -9,9 +10,11 @@ import { useFlashcards } from './hooks/useFlashcards';
 import { useFlashcardSwipe } from './hooks/useFlashcardSwipe';
 import { DraggableFlashcard } from './components/DraggableFlashcard';
 import { FlashcardAnswerBar } from './components/FlashcardAnswerBar';
-import { DeckComplete } from './components/DeckComplete';
+import { CardsDone } from './components/CardsDone';
+import type { QuizTypeId } from '../../utils/vocabulary/quizDirector';
 import { ReviewDealIntro } from './components/ReviewDealIntro';
 import { cn } from '../../utils/cn';
+import { useReviewTone } from '../../hooks/useReviewTone';
 import { useAppStore } from '../../store/useAppStore';
 import { useFlashcardKeyboardShortcuts } from './hooks/useFlashcardKeyboardShortcuts';
 import { useFlashcardFlow } from './hooks/useFlashcardFlow';
@@ -24,8 +27,20 @@ interface FlashcardScreenProps {
   onClose?: () => void;
   onContinue?: () => void;
   continueLabel?: string;
-  /** Quizzes the same words; offered at the end of a round. */
-  onStartQuiz?: () => void;
+  /** Quizzes the same words; offered at the end of a round. `types` is the Cards done pick ([] = Mixed). */
+  onStartQuiz?: (types: QuizTypeId[], stats: SessionStats) => void;
+  /** Cards done shows this word first in its sheet. */
+  quizFirstId?: string;
+  /** The lesson's full deck; used when the first pass isn't in memory (a session reopened mid-review). */
+  sessionDeck?: Flashcard[];
+}
+
+/** Up to six words for the Cards done sheet: the quiz's first word, then deck order; the answered card is always last. */
+function sheetCards(deck: Flashcard[], last: Flashcard, firstId?: string) {
+  const others = deck.filter((card) => card.id !== last.id);
+  const first = others.find((card) => card.id === firstId);
+  const picked = first ? [first, ...others.filter((card) => card !== first)] : others;
+  return [...picked.slice(0, 5), last];
 }
 
 export function FlashcardScreen({
@@ -37,6 +52,8 @@ export function FlashcardScreen({
   onContinue,
   continueLabel,
   onStartQuiz,
+  quizFirstId,
+  sessionDeck,
 }: FlashcardScreenProps) {
   const activeBook = useMemo(
     () => SAMPLE_BOOKS.find((b) => b.id === activeBookId) || SAMPLE_BOOKS[0],
@@ -52,12 +69,15 @@ export function FlashcardScreen({
     isFlipped,
     setIsFlipped,
     completed,
+    resumedReview,
     activeBreakdown,
     activeBreakdownIndex,
     setActiveBreakdown,
     handleNavigate,
     handleNext,
     resetAll: resetDeck,
+    restartSession: restartDeckSession,
+    practiceCards,
     reviewUnlearned,
     learnedCount,
     isShuffled,
@@ -70,6 +90,7 @@ export function FlashcardScreen({
   const showPinyin = useAppStore((state) => state.showPinyin);
   const toneColors = useAppStore((state) => state.toneColors);
   const showTranslation = useAppStore((state) => state.showTranslation);
+  const simpleDefinitions = useAppStore((state) => state.simpleDefinitions);
 
   // Missed cards come back automatically: after the first pass, then again until a pass has no misses.
   const [reviewPass, setReviewPass] = useState(0);
@@ -79,11 +100,23 @@ export function FlashcardScreen({
   const [dealStarted, setDealStarted] = useState(false);
   /** Size of the pass that just ended: the header shows that finished deck during the intro. */
   const [finishedPassSize, setFinishedPassSize] = useState(0);
-  const firstPassRef = useRef<{ total: number; correct: number } | null>(null);
+  const [finishedPassCards, setFinishedPassCards] = useState<Flashcard[]>([]);
+  /** The first review's missed tiles are highlighted: the app turns honey from here. */
+  const [introToned, setIntroToned] = useState(false);
+  const firstPassRef = useRef<{ total: number; correct: number; cards: Flashcard[]; missedCards: Flashcard[] } | null>(null);
+  /** The honey tone has drained after the last card: Cards done releases it as the card lands in the sheet. */
+  const [toneReleased, setToneReleased] = useState(false);
+  /** Whether the last card was showing its answer when the deck ended: Cards done keeps it that way. */
+  const lastFlippedRef = useRef(false);
   const startedAtRef = useRef<number | null>(null);
   const stageRef = useRef<HTMLDivElement>(null);
-  const isReviewPass = reviewPass > 0;
+  // A session reopened inside an unfinished review keeps the review look from the first frame.
+  const isReviewPass = reviewPass > 0 || resumedReview;
   const missedCount = missedCards.length;
+
+  useEffect(() => {
+    if (resumedReview) setReviewPass((pass) => pass || 1);
+  }, [resumedReview]);
 
   useEffect(() => {
     if (currentCard && startedAtRef.current === null) startedAtRef.current = Date.now();
@@ -91,32 +124,42 @@ export function FlashcardScreen({
 
   useEffect(() => {
     if (!completed || missedCount === 0) return;
-    firstPassRef.current ??= { total: cards.length, correct: learnedCount };
+    firstPassRef.current ??= { total: cards.length, correct: learnedCount, cards, missedCards };
     reviewUnlearned();
     setReviewPass((pass) => pass + 1);
     setFinishedPassSize(cards.length);
+    setFinishedPassCards(cards);
+    setIntroToned(false);
     setDealStarted(false);
     setIntroLanded(false);
     setIntroActive(true);
-  }, [cards.length, completed, learnedCount, missedCount, reviewUnlearned]);
+  }, [cards, completed, learnedCount, missedCards, missedCount, reviewUnlearned]);
 
   const resetAll = useCallback(() => {
     firstPassRef.current = null;
     startedAtRef.current = null;
+    setToneReleased(false);
     setReviewPass(0);
     setIntroActive(false);
     resetDeck();
   }, [resetDeck]);
 
-  const isDeckDone = completed && missedCount === 0;
+  const studyAllAgain = useCallback(() => {
+    firstPassRef.current = null;
+    startedAtRef.current = null;
+    setToneReleased(false);
+    setReviewPass(0);
+    setIntroActive(false);
+    restartDeckSession();
+  }, [restartDeckSession]);
 
-  // The whole app turns warm for review passes (the intro included).
-  useEffect(() => {
-    if (!isReviewPass || isDeckDone) return undefined;
-    const root = document.documentElement;
-    root.dataset.practiceTone = 'review';
-    return () => { delete root.dataset.practiceTone; };
-  }, [isDeckDone, isReviewPass]);
+  const isDeckDone = completed && missedCount === 0;
+  /** A quiz follows: the last card shrinks into the Cards done sheet instead of the screen swapping. */
+  const cardsDone = isDeckDone && Boolean(onStartQuiz);
+  if (!isDeckDone) lastFlippedRef.current = isFlipped;
+
+  // The whole app turns warm for review passes (the intro included); after the last card it drains with Cards done.
+  useReviewTone(isReviewPass && !(isDeckDone && (toneReleased || !cardsDone)) && !(introActive && reviewPass === 1 && !introToned));
 
   const reviewProgress = useMemo(
     () => (isReviewPass && introActive && !dealStarted && finishedPassSize > 0
@@ -170,6 +213,22 @@ export function FlashcardScreen({
     currentIndex,
   );
 
+  const [showHook, setShowHook] = useState(false);
+
+  useEffect(() => {
+    setShowHook(false);
+  }, [currentIndex, isFlipped]);
+
+  const handleToggleHook = useCallback(() => {
+    if (!isFlipped) {
+      if (currentCard && !autoPlayAudio) triggerManualReveal();
+      setIsFlipped(true);
+      setShowHook(true);
+    } else {
+      setShowHook((prev) => !prev);
+    }
+  }, [autoPlayAudio, currentCard, isFlipped, setIsFlipped, triggerManualReveal]);
+
   useFlashcardKeyboardShortcuts({
     completed,
     isIntroActive: introActive,
@@ -185,6 +244,7 @@ export function FlashcardScreen({
     triggerKeyboardRate,
     setIsFlipped,
     onManualRevealAudio: triggerManualReveal,
+    onToggleHint: handleToggleHook,
   });
 
   if (isLoading && cards.length === 0) return null;
@@ -216,25 +276,39 @@ export function FlashcardScreen({
     );
   }
 
-  if (isDeckDone) {
-    const first = firstPassRef.current ?? { total: cards.length, correct: learnedCount };
-    const seconds = Math.max(1, Math.round((Date.now() - (startedAtRef.current ?? Date.now())) / 1000));
-    const quiz = onStartQuiz;
+  // The round's distinct words: the whole deck of the first pass (a review pass holds only the missed ones).
+  const deckCards = isDeckDone
+    ? Array.from(new Map((firstPassRef.current?.cards ?? (sessionDeck?.length ? sessionDeck : cards)).map((card) => [card.id, card])).values())
+    : [];
+  const first = firstPassRef.current ?? { total: cards.length, correct: learnedCount, missedCards: [] as Flashcard[] };
+  const sessionStats = (): SessionStats => {
+    return {
+      words: deckCards.map((card) => card.front),
+      firstTryPct: Math.round((first.correct / Math.max(1, first.total)) * 100),
+      startedAt: startedAtRef.current ?? Date.now(),
+    };
+  };
+
+  if (isDeckDone && !onStartQuiz) {
+    const stats = sessionStats();
     return (
-      <DeckComplete
-        wordCount={first.total}
-        firstTryPct={Math.round((first.correct / Math.max(1, first.total)) * 100)}
-        seconds={seconds}
-        isPerfect={first.correct === first.total}
-        actionLabel={quiz ? 'Test me' : 'Continue'}
-        onContinue={quiz ?? onContinue ?? onClose ?? (() => {})}
+      <SessionComplete
+        words={stats.words}
+        pct={stats.firstTryPct}
+        pctLabel="First try"
+        seconds={Math.max(1, Math.round((Date.now() - stats.startedAt) / 1000))}
+        onContinue={onContinue ?? onClose ?? (() => {})}
+        onReviewMissed={first.missedCards.length > 0 ? () => practiceCards(first.missedCards) : undefined}
+        missedCount={first.missedCards.length}
+        onStudyAllAgain={studyAllAgain}
       />
     );
   }
 
-  const canNavigatePrevious = currentIndex > 0;
+  const shownFlipped = cardsDone ? lastFlippedRef.current : isFlipped;
+  const canNavigatePrevious = !cardsDone && currentIndex > 0;
   const canNavigateNext =
-    (!isReviewDeck || currentIndex < maxVisitedIndex) && currentIndex < cards.length;
+    !cardsDone && (!isReviewDeck || currentIndex < maxVisitedIndex) && currentIndex < cards.length;
 
   return (
     <div
@@ -253,7 +327,7 @@ export function FlashcardScreen({
         nextLabel="Next flashcard"
       />
 
-      <div ref={stageRef} className="relative flex min-h-0 w-full flex-1 flex-col border-t-2 border-ui-divider">
+      <div ref={stageRef} className={cn('relative flex min-h-0 w-full flex-1 flex-col border-t-2 transition-colors duration-300', cardsDone ? 'border-transparent' : 'border-ui-divider')}>
         <div aria-hidden className="absolute inset-0 z-0 flex">
           <div className="h-full w-1/2" onClick={() => canNavigatePrevious && triggerNav(-1)} />
           <div className="h-full w-1/2" onClick={() => canNavigateNext && triggerNav(1)} />
@@ -264,38 +338,57 @@ export function FlashcardScreen({
           )}
         >
           <div className="pointer-events-none relative z-10 h-[min(clamp(26rem,62dvh,40rem),100%)] min-h-0 w-full shrink [container-type:size]">
-            <AnimatePresence initial={false} mode="wait" custom={direction}>
+            {/* Not mode="wait": the next card must mount even if a quick tap interrupts the previous exit (a stalled exit left no live card). */}
+            <AnimatePresence initial={false} custom={direction}>
               {currentCard && (
                 <DraggableFlashcard
                   key={`${currentCard.id}-${currentIndex}`}
                   card={currentCard}
                   direction={direction}
-                  isFlipped={isFlipped}
+                  isFlipped={shownFlipped}
                   setActiveBreakdown={setActiveBreakdown}
                   triggerSwipeRate={triggerSwipeRate}
                   showPinyin={showPinyin}
                   toneColors={toneColors}
                   showTranslation={showTranslation}
+                  simpleDefinitions={simpleDefinitions}
+                  showHook={showHook}
+                  onToggleHook={handleToggleHook}
                   onCardTap={handleCardTap}
-                  tone={isReviewPass ? 'review' : 'default'}
                 />
               )}
             </AnimatePresence>
           </div>
         </div>
         <FlashcardAnswerBar
-          tone={isReviewPass ? 'review' : 'default'}
-          concealed={introActive && !introLanded}
-          isFlipped={isFlipped}
+          concealed={(introActive && !introLanded) || cardsDone}
+          isFlipped={shownFlipped}
           onFlip={handleCardTap}
-          onAgain={() => triggerKeyboardRate(1, 1)}
+          onHard={() => triggerKeyboardRate(1, 1)}
+          onUnsure={() => triggerKeyboardRate(2, 1)}
           onGotIt={() => triggerKeyboardRate(3, -1)}
         />
+        {cardsDone && currentCard && onStartQuiz && (
+          <CardsDone
+            cards={sheetCards(deckCards, currentCard, quizFirstId)}
+            deck={deckCards}
+            wordCount={deckCards.length}
+            stageRef={stageRef}
+            onTone={() => setToneReleased(true)}
+            onStart={(types) => onStartQuiz(types, sessionStats())}
+            onReviewAgain={() => firstPassRef.current?.missedCards.length
+              ? practiceCards(firstPassRef.current.missedCards)
+              : studyAllAgain()}
+            missedCount={firstPassRef.current?.missedCards.length ?? 0}
+          />
+        )}
         {introActive && (
           <ReviewDealIntro
             key={reviewPass}
             cards={cards}
+            passCards={finishedPassCards}
             pass={reviewPass}
+            onHighlight={() => setIntroToned(true)}
             stageRef={stageRef}
             onLanded={() => setIntroLanded(true)}
             onDone={() => setIntroActive(false)}

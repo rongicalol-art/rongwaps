@@ -15,7 +15,7 @@
       260
     ],
     "audioReference": "11-2-3",
-    "explanation": "Put 給 before the person, then say the action. The action goes to that person.",
+    "explanation": "Put 給 before the person, then say the action. The action goes to that person. 給 can mean “to” or “for” the person.",
     "lessonWorld": {
       "kind": "chat",
       "eyebrow": "Outgoing message",
@@ -464,7 +464,7 @@
         "id": "b1l11-g05-glossary-67",
         "traditional": "誰",
         "simplified": "谁",
-        "pinyin": "shuí",
+        "pinyin": "shéi",
         "meaning": "who"
       },
       {
@@ -897,6 +897,12 @@
             "traditional": "我",
             "pinyin": "wǒ",
             "meaning": "I; me"
+          },
+          {
+            "id": "l11g5-p1-s2",
+            "traditional": "想",
+            "pinyin": "xiǎng",
+            "meaning": "want to"
           }
         ],
         "grammar": [
@@ -909,22 +915,22 @@
           },
           {
             "id": "l11g5-p1-g2",
-            "traditional": "朋友",
-            "pinyin": "péngyǒu",
-            "meaning": "friend"
+            "traditional": "她",
+            "pinyin": "tā",
+            "meaning": "her"
           }
         ],
         "complement": [
           {
             "id": "l11g5-p1-c1",
-            "traditional": "寫卡片",
-            "simplified": "写卡片",
-            "pinyin": "xiě kǎpiàn",
-            "meaning": "write a card",
+            "traditional": "寫信",
+            "simplified": "写信",
+            "pinyin": "xiě xìn",
+            "meaning": "write a letter",
             "suffix": "。"
           }
         ],
-        "english": "I write a card to my friend."
+        "english": "I want to write her a letter."
       },
       {
         "id": "l11g5-p2",
@@ -939,16 +945,23 @@
         "grammar": [
           {
             "id": "l11g5-p2-g1",
-            "traditional": "給",
-            "simplified": "给",
-            "pinyin": "gěi",
-            "meaning": "to; for (a person)"
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi",
+            "meaning": "did not"
           },
           {
             "id": "l11g5-p2-g2",
+            "traditional": "給",
+            "simplified": "给",
+            "pinyin": "gěi",
+            "meaning": "to (a person)"
+          },
+          {
+            "id": "l11g5-p2-g3",
             "traditional": "我",
             "pinyin": "wǒ",
-            "meaning": "I; me"
+            "meaning": "me"
           }
         ],
         "complement": [
@@ -957,56 +970,11 @@
             "traditional": "打電話",
             "simplified": "打电话",
             "pinyin": "dǎ diànhuà",
-            "meaning": "make a phone call",
+            "meaning": "call",
             "suffix": "。"
           }
         ],
-        "english": "My older brother calls me."
-      },
-      {
-        "id": "l11g5-p3",
-        "subject": [
-          {
-            "id": "l11g5-p3-s1",
-            "traditional": "媽媽",
-            "simplified": "妈妈",
-            "pinyin": "māma",
-            "meaning": "mother"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "l11g5-p3-g1",
-            "traditional": "給",
-            "simplified": "给",
-            "pinyin": "gěi",
-            "meaning": "to; for (a person)"
-          },
-          {
-            "id": "l11g5-p3-g2",
-            "traditional": "我",
-            "pinyin": "wǒ",
-            "meaning": "I; me"
-          }
-        ],
-        "complement": [
-          {
-            "id": "l11g5-p3-c1",
-            "traditional": "買",
-            "simplified": "买",
-            "pinyin": "mǎi",
-            "meaning": "buy"
-          },
-          {
-            "id": "l11g5-p3-c2",
-            "traditional": "禮物",
-            "simplified": "礼物",
-            "pinyin": "lǐwù",
-            "meaning": "gift",
-            "suffix": "。"
-          }
-        ],
-        "english": "Mom buys a gift for me."
+        "english": "My older brother did not call me."
       }
     ],
     "confusion": {
@@ -1186,45 +1154,53 @@
       {
         "id": "l11g5-e1",
         "number": 1,
-        "teachingNote": "她 gets the letter.",
+        "teachingNote": "我 gets the ice cream.",
         "text": {
-          "traditional": "我想給她寫信。",
-          "simplified": "我想给她写信。",
-          "pinyin": "Wǒ xiǎng gěi tā xiě xìn.",
-          "english": "I want to write her a letter.",
+          "traditional": "媽媽給我買了我最愛吃的冰淇淋。",
+          "simplified": "妈妈给我买了我最爱吃的冰淇淋。",
+          "pinyin": "Māma gěi wǒ mǎi le wǒ zuì ài chī de bīngqílín.",
+          "english": "Mom bought me my favorite ice cream.",
           "words": [
             {
-              "id": "l11g5-e1-word-1",
-              "traditional": "我",
-              "pinyin": "wǒ",
-              "meaning": "I; me"
+              "id": "l11g5-e1-w1",
+              "traditional": "媽媽",
+              "simplified": "妈妈",
+              "pinyin": "māma",
+              "meaning": "mom"
             },
             {
-              "id": "l11g5-e1-word-2",
-              "traditional": "想",
-              "pinyin": "xiǎng",
-              "meaning": "want to; think"
-            },
-            {
-              "id": "l11g5-e1-word-3",
+              "id": "l11g5-e1-w2",
               "traditional": "給",
               "simplified": "给",
               "pinyin": "gěi",
-              "meaning": "to; for (a person)"
+              "meaning": "for (a person)"
             },
             {
-              "id": "l11g5-e1-word-4",
-              "traditional": "她",
-              "pinyin": "tā",
-              "meaning": "she; her"
+              "id": "l11g5-e1-w3",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "me"
             },
             {
-              "id": "l11g5-e1-word-5",
-              "traditional": "寫",
-              "simplified": "写",
-              "pinyin": "xiě",
-              "meaning": "write",
-              "suffix": "信。"
+              "id": "l11g5-e1-w4",
+              "traditional": "買了",
+              "simplified": "买了",
+              "pinyin": "mǎi le",
+              "meaning": "bought"
+            },
+            {
+              "id": "l11g5-e1-w5",
+              "traditional": "我最愛吃的",
+              "simplified": "我最爱吃的",
+              "pinyin": "wǒ zuì ài chī de",
+              "meaning": "my favorite"
+            },
+            {
+              "id": "l11g5-e1-w6",
+              "traditional": "冰淇淋",
+              "pinyin": "bīngqílín",
+              "meaning": "ice cream",
+              "suffix": "。"
             }
           ]
         }
@@ -1232,45 +1208,72 @@
       {
         "id": "l11g5-e2",
         "number": 2,
-        "teachingNote": "Even after 沒, 給 stays before the person.",
+        "teachingNote": "The letter goes to the boyfriend: 給 + person + action.",
         "text": {
-          "traditional": "哥哥沒給我打電話。",
-          "simplified": "哥哥没给我打电话。",
-          "pinyin": "Gēge méi gěi wǒ dǎ diànhuà.",
-          "english": "My older brother did not call me.",
+          "traditional": "A：你在做什麼？ B：我在給我男朋友寫信。",
+          "simplified": "A：你在做什么？ B：我在给我男朋友写信。",
+          "pinyin": "A: Nǐ zài zuò shénme? B: Wǒ zài gěi wǒ nánpéngyǒu xiě xìn.",
+          "english": "A: What are you doing? B: I am writing a letter to my boyfriend.",
           "words": [
             {
-              "id": "l11g5-e2-word-1",
-              "traditional": "哥哥",
-              "pinyin": "gēge",
-              "meaning": "older brother"
+              "id": "l11g5-e2-w1",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you",
+              "prefix": "A："
             },
             {
-              "id": "l11g5-e2-word-2",
-              "traditional": "沒",
-              "simplified": "没",
-              "pinyin": "méi",
-              "meaning": "did not; have not"
+              "id": "l11g5-e2-w2",
+              "traditional": "在",
+              "pinyin": "zài",
+              "meaning": "is (doing)"
             },
             {
-              "id": "l11g5-e2-word-3",
+              "id": "l11g5-e2-w3",
+              "traditional": "做",
+              "pinyin": "zuò",
+              "meaning": "do"
+            },
+            {
+              "id": "l11g5-e2-w4",
+              "traditional": "什麼",
+              "simplified": "什么",
+              "pinyin": "shénme",
+              "meaning": "what",
+              "suffix": "？"
+            },
+            {
+              "id": "l11g5-e2-w5",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me",
+              "prefix": "B："
+            },
+            {
+              "id": "l11g5-e2-w6",
+              "traditional": "在",
+              "pinyin": "zài",
+              "meaning": "is (doing)"
+            },
+            {
+              "id": "l11g5-e2-w7",
               "traditional": "給",
               "simplified": "给",
               "pinyin": "gěi",
-              "meaning": "to; for (a person)"
+              "meaning": "to (a person)"
             },
             {
-              "id": "l11g5-e2-word-4",
-              "traditional": "我",
-              "pinyin": "wǒ",
-              "meaning": "I; me"
+              "id": "l11g5-e2-w8",
+              "traditional": "我男朋友",
+              "pinyin": "wǒ nánpéngyǒu",
+              "meaning": "my boyfriend"
             },
             {
-              "id": "l11g5-e2-word-5",
-              "traditional": "打電話",
-              "simplified": "打电话",
-              "pinyin": "dǎ diànhuà",
-              "meaning": "make a phone call",
+              "id": "l11g5-e2-w9",
+              "traditional": "寫信",
+              "simplified": "写信",
+              "pinyin": "xiě xìn",
+              "meaning": "write a letter",
               "suffix": "。"
             }
           ]
@@ -1279,46 +1282,83 @@
       {
         "id": "l11g5-e3",
         "number": 3,
-        "teachingNote": "我 gets the ice cream.",
+        "teachingNote": "You can use 還沒 and 給 together.",
         "text": {
-          "traditional": "媽媽給我買了冰淇淋。",
-          "simplified": "妈妈给我买了冰淇淋。",
-          "pinyin": "Māma gěi wǒ mǎi le bīngqílín.",
-          "english": "Mom bought me ice cream.",
+          "traditional": "A：你還沒給哥哥寫生日卡片嗎？ B：還沒，我今天晚上會寫。",
+          "simplified": "A：你还没给哥哥写生日卡片吗？ B：还没，我今天晚上会写。",
+          "pinyin": "A: Nǐ hái méi gěi gēge xiě shēngrì kǎpiàn ma? B: Hái méi, wǒ jīntiān wǎnshang huì xiě.",
+          "english": "A: Have you not written your older brother a birthday card yet? B: Not yet; I will write it tonight.",
           "words": [
             {
-              "id": "l11g5-e3-word-1",
-              "traditional": "媽媽",
-              "simplified": "妈妈",
-              "pinyin": "māma",
-              "meaning": "mother"
+              "id": "l11g5-e3-w1",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you",
+              "prefix": "A："
             },
             {
-              "id": "l11g5-e3-word-2",
+              "id": "l11g5-e3-w2",
+              "traditional": "還沒",
+              "simplified": "还没",
+              "pinyin": "hái méi",
+              "meaning": "not yet"
+            },
+            {
+              "id": "l11g5-e3-w3",
               "traditional": "給",
               "simplified": "给",
               "pinyin": "gěi",
-              "meaning": "to; for (a person)"
+              "meaning": "to (a person)"
             },
             {
-              "id": "l11g5-e3-word-3",
-              "traditional": "我",
-              "pinyin": "wǒ",
-              "meaning": "I; me"
+              "id": "l11g5-e3-w4",
+              "traditional": "哥哥",
+              "pinyin": "gēge",
+              "meaning": "older brother"
             },
             {
-              "id": "l11g5-e3-word-4",
-              "traditional": "買",
-              "simplified": "买",
-              "pinyin": "mǎi",
-              "meaning": "buy"
+              "id": "l11g5-e3-w5",
+              "traditional": "寫",
+              "pinyin": "xiě",
+              "meaning": "write",
+              "simplified": "写"
             },
             {
-              "id": "l11g5-e3-word-5",
-              "traditional": "了",
-              "pinyin": "le",
-              "meaning": "shows an action is finished",
-              "suffix": "冰淇淋。"
+              "id": "l11g5-e3-w6",
+              "traditional": "生日卡片",
+              "pinyin": "shēngrì kǎpiàn",
+              "meaning": "birthday card"
+            },
+            {
+              "id": "l11g5-e3-w7",
+              "traditional": "嗎",
+              "simplified": "吗",
+              "pinyin": "ma",
+              "meaning": "yes/no question ending",
+              "suffix": "？"
+            },
+            {
+              "id": "l11g5-e3-w8",
+              "traditional": "還沒",
+              "simplified": "还没",
+              "pinyin": "hái méi",
+              "meaning": "not yet",
+              "prefix": "B：",
+              "suffix": "，"
+            },
+            {
+              "id": "l11g5-e3-w9",
+              "traditional": "我今天晚上",
+              "pinyin": "wǒ jīntiān wǎnshang",
+              "meaning": "I tonight"
+            },
+            {
+              "id": "l11g5-e3-w10",
+              "traditional": "會寫",
+              "simplified": "会写",
+              "pinyin": "huì xiě",
+              "meaning": "will write",
+              "suffix": "。"
             }
           ]
         }
@@ -1326,63 +1366,95 @@
       {
         "id": "l11g5-e4",
         "number": 4,
-        "teachingNote": "You can use 還沒 and 給 together.",
+        "teachingNote": "她 gets the letter.",
         "text": {
-          "traditional": "你還沒給哥哥寫生日卡片嗎？",
-          "simplified": "你还没给哥哥写生日卡片吗？",
-          "pinyin": "Nǐ hái méi gěi gēge xiě shēngrì kǎpiàn ma?",
-          "english": "Have you not written your brother a birthday card yet?",
+          "traditional": "我想給她寫信。",
+          "simplified": "我想给她写信。",
+          "pinyin": "Wǒ xiǎng gěi tā xiě xìn.",
+          "english": "I want to write her a letter.",
           "words": [
             {
-              "id": "l11g5-e4-word-1",
-              "traditional": "你",
-              "pinyin": "nǐ",
-              "meaning": "you"
+              "id": "l11g5-e4-w1",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me"
             },
             {
-              "id": "l11g5-e4-word-2",
-              "traditional": "還沒",
-              "simplified": "还没",
-              "pinyin": "hái méi",
-              "meaning": "not yet"
+              "id": "l11g5-e4-w2",
+              "traditional": "想",
+              "pinyin": "xiǎng",
+              "meaning": "want to"
             },
             {
-              "id": "l11g5-e4-word-3",
+              "id": "l11g5-e4-w3",
               "traditional": "給",
               "simplified": "给",
               "pinyin": "gěi",
-              "meaning": "to; for (a person)"
+              "meaning": "to (a person)"
             },
             {
-              "id": "l11g5-e4-word-4",
+              "id": "l11g5-e4-w4",
+              "traditional": "她",
+              "pinyin": "tā",
+              "meaning": "her"
+            },
+            {
+              "id": "l11g5-e4-w5",
+              "traditional": "寫信",
+              "simplified": "写信",
+              "pinyin": "xiě xìn",
+              "meaning": "write a letter",
+              "suffix": "。"
+            }
+          ]
+        }
+      },
+      {
+        "id": "l11g5-e5",
+        "number": 5,
+        "text": {
+          "traditional": "哥哥沒給我打電話。",
+          "simplified": "哥哥没给我打电话。",
+          "pinyin": "Gēge méi gěi wǒ dǎ diànhuà.",
+          "english": "My older brother did not call me.",
+          "words": [
+            {
+              "id": "l11g5-e5-w1",
               "traditional": "哥哥",
               "pinyin": "gēge",
               "meaning": "older brother"
             },
             {
-              "id": "l11g5-e4-word-5",
-              "traditional": "寫",
-              "simplified": "写",
-              "pinyin": "xiě",
-              "meaning": "write"
+              "id": "l11g5-e5-w2",
+              "traditional": "沒",
+              "simplified": "没",
+              "pinyin": "méi",
+              "meaning": "did not"
             },
             {
-              "id": "l11g5-e4-word-6",
-              "traditional": "卡片",
-              "pinyin": "kǎpiàn",
-              "meaning": "card",
-              "prefix": "生日"
+              "id": "l11g5-e5-w3",
+              "traditional": "給",
+              "simplified": "给",
+              "pinyin": "gěi",
+              "meaning": "to (a person)"
             },
             {
-              "id": "l11g5-e4-word-7",
-              "traditional": "嗎",
-              "simplified": "吗",
-              "pinyin": "ma",
-              "meaning": "question ending word",
-              "suffix": "？"
+              "id": "l11g5-e5-w4",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "me"
+            },
+            {
+              "id": "l11g5-e5-w5",
+              "traditional": "打電話",
+              "simplified": "打电话",
+              "pinyin": "dǎ diànhuà",
+              "meaning": "call",
+              "suffix": "。"
             }
           ]
-        }
+        },
+        "teachingNote": "Even after 沒, 給 stays before the person."
       }
     ],
     "exerciseTitle": "Choose who gets it",
@@ -1509,7 +1581,8 @@
         "correctFeedback": "媽媽 is the person who gets it.",
         "repairFeedback": "Put 給 before 媽媽."
       }
-    ]
+    ],
+    "exerciseNote": "The book completes three dialogues with 給 on printed page 260 and gives no answer key; these model answers follow the printed prompts."
   },
   "LESSON_ELEVEN_GRAMMAR_FOUR": {
     "bookId": 1,
@@ -1528,7 +1601,7 @@
       259
     ],
     "audioReference": "11-2-3",
-    "explanation": "先 starts the first action. 等 names what you wait for. 再 starts the later action.",
+    "explanation": "先 starts the first action. 等 names what you wait for. 再 starts the later action. With 再 alone, the action is not happening now — it waits for a later time. With 等, the second action waits until the first one happens.",
     "lessonWorld": {
       "kind": "chat",
       "eyebrow": "Next message",
@@ -1979,7 +2052,7 @@
         "id": "b1l11-g04-glossary-67",
         "traditional": "誰",
         "simplified": "谁",
-        "pinyin": "shuí",
+        "pinyin": "shéi",
         "meaning": "who"
       },
       {
@@ -2409,128 +2482,105 @@
         "subject": [
           {
             "id": "l11g4-p1-s1",
-            "traditional": "先",
-            "pinyin": "xiān",
-            "meaning": "first"
-          },
-          {
-            "id": "l11g4-p1-s2",
-            "traditional": "做功課",
-            "simplified": "做功课",
-            "pinyin": "zuò gōngkè",
-            "meaning": "do homework"
+            "traditional": "沒有時間了",
+            "pinyin": "méiyǒu shíjiān le",
+            "meaning": "there is no time left",
+            "suffix": "，",
+            "simplified": "没有時間了"
           }
         ],
         "grammar": [
           {
             "id": "l11g4-p1-g1",
-            "traditional": "等",
-            "pinyin": "děng",
-            "meaning": "wait until"
+            "traditional": "我明天",
+            "pinyin": "wǒ míngtiān",
+            "meaning": "I tomorrow"
           },
           {
             "id": "l11g4-p1-g2",
-            "traditional": "爸爸",
-            "pinyin": "bàba",
-            "meaning": "father"
-          },
-          {
-            "id": "l11g4-p1-g3",
-            "traditional": "回家",
-            "pinyin": "huí jiā",
-            "meaning": "return home"
+            "traditional": "再",
+            "pinyin": "zài",
+            "meaning": "then; not until later"
           }
         ],
         "complement": [
           {
             "id": "l11g4-p1-c1",
-            "traditional": "再",
-            "pinyin": "zài",
-            "meaning": "then; after that"
-          },
-          {
-            "id": "l11g4-p1-c2",
-            "traditional": "吃飯",
-            "simplified": "吃饭",
-            "pinyin": "chīfàn",
-            "meaning": "eat a meal",
+            "traditional": "告訴你",
+            "simplified": "告诉你",
+            "pinyin": "gàosù nǐ",
+            "meaning": "tell you",
             "suffix": "。"
           }
         ],
-        "english": "Do homework first; wait for Dad; then eat."
+        "english": "I am running out of time; I will let you know tomorrow then."
       },
       {
         "id": "l11g4-p2",
         "subject": [
           {
             "id": "l11g4-p2-s1",
-            "traditional": "先",
-            "pinyin": "xiān",
-            "meaning": "first"
-          },
-          {
-            "id": "l11g4-p2-s2",
-            "traditional": "練習",
-            "simplified": "练习",
-            "pinyin": "liànxí",
-            "meaning": "practice"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "l11g4-p2-g1",
             "traditional": "等",
             "pinyin": "děng",
             "meaning": "wait until"
           },
           {
-            "id": "l11g4-p2-g2",
-            "traditional": "老師",
-            "simplified": "老师",
-            "pinyin": "lǎoshī",
-            "meaning": "teacher"
+            "id": "l11g4-p2-s2",
+            "traditional": "她起床了",
+            "pinyin": "tā qǐchuáng le",
+            "meaning": "she gets up",
+            "suffix": "，"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l11g4-p2-g1",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
           },
           {
-            "id": "l11g4-p2-g3",
-            "traditional": "來",
-            "simplified": "来",
-            "pinyin": "lái",
-            "meaning": "come"
+            "id": "l11g4-p2-g2",
+            "traditional": "再",
+            "pinyin": "zài",
+            "meaning": "then"
           }
         ],
         "complement": [
           {
             "id": "l11g4-p2-c1",
-            "traditional": "再",
-            "pinyin": "zài",
-            "meaning": "then; after that"
-          },
-          {
-            "id": "l11g4-p2-c2",
-            "traditional": "上課",
-            "simplified": "上课",
-            "pinyin": "shàngkè",
-            "meaning": "attend class",
+            "traditional": "跟她說",
+            "simplified": "跟她说",
+            "pinyin": "gēn tā shuō",
+            "meaning": "talk to her",
             "suffix": "。"
           }
         ],
-        "english": "Practice first; wait for the teacher; then start class."
+        "english": "Wait till she wakes up, then you can tell her."
       },
       {
         "id": "l11g4-p3",
         "subject": [
           {
             "id": "l11g4-p3-s1",
+            "traditional": "你們",
+            "simplified": "你们",
+            "pinyin": "nǐmen",
+            "meaning": "you all"
+          },
+          {
+            "id": "l11g4-p3-s2",
             "traditional": "先",
             "pinyin": "xiān",
             "meaning": "first"
           },
           {
-            "id": "l11g4-p3-s2",
-            "traditional": "決定",
-            "simplified": "决定",
-            "pinyin": "juédìng",
-            "meaning": "decide"
+            "id": "l11g4-p3-s3",
+            "traditional": "練習",
+            "simplified": "练习",
+            "pinyin": "liànxí",
+            "meaning": "practice",
+            "suffix": "，"
           }
         ],
         "grammar": [
@@ -2542,9 +2592,11 @@
           },
           {
             "id": "l11g4-p3-g2",
-            "traditional": "朋友",
-            "pinyin": "péngyǒu",
-            "meaning": "friend"
+            "traditional": "老師來了",
+            "simplified": "老师来了",
+            "pinyin": "lǎoshī lái le",
+            "meaning": "the teacher comes",
+            "suffix": "，"
           }
         ],
         "complement": [
@@ -2552,18 +2604,88 @@
             "id": "l11g4-p3-c1",
             "traditional": "再",
             "pinyin": "zài",
-            "meaning": "then; after that"
+            "meaning": "then"
           },
           {
             "id": "l11g4-p3-c2",
-            "traditional": "打電話",
-            "simplified": "打电话",
-            "pinyin": "dǎ diànhuà",
-            "meaning": "make a phone call",
+            "traditional": "上課",
+            "simplified": "上课",
+            "pinyin": "shàngkè",
+            "meaning": "start class",
             "suffix": "。"
           }
         ],
-        "english": "Decide first; wait for the friend; then call."
+        "english": "Practice first; when the teacher comes, then class starts."
+      },
+      {
+        "id": "l11g4-p4",
+        "subject": [
+          {
+            "id": "l11g4-p4-s1",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          },
+          {
+            "id": "l11g4-p4-s2",
+            "traditional": "先",
+            "pinyin": "xiān",
+            "meaning": "first"
+          },
+          {
+            "id": "l11g4-p4-s3",
+            "traditional": "做功課",
+            "simplified": "做功课",
+            "pinyin": "zuò gōngkè",
+            "meaning": "do homework",
+            "suffix": "，"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l11g4-p4-g1",
+            "traditional": "等",
+            "pinyin": "děng",
+            "meaning": "wait until"
+          },
+          {
+            "id": "l11g4-p4-g2",
+            "traditional": "爸爸回家了",
+            "pinyin": "bàba huí jiā le",
+            "meaning": "Dad comes home",
+            "suffix": "，"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l11g4-p4-c1",
+            "traditional": "我們",
+            "simplified": "我们",
+            "pinyin": "wǒmen",
+            "meaning": "we"
+          },
+          {
+            "id": "l11g4-p4-c2",
+            "traditional": "再",
+            "pinyin": "zài",
+            "meaning": "then"
+          },
+          {
+            "id": "l11g4-p4-c3",
+            "traditional": "一起",
+            "pinyin": "yìqǐ",
+            "meaning": "together"
+          },
+          {
+            "id": "l11g4-p4-c4",
+            "traditional": "吃晚飯",
+            "simplified": "吃晚饭",
+            "pinyin": "chī wǎnfàn",
+            "meaning": "eat dinner",
+            "suffix": "。"
+          }
+        ],
+        "english": "Do your homework first; when Dad comes home, we will have dinner together."
       }
     ],
     "confusion": {
@@ -2612,7 +2734,8 @@
                 "traditional": "電視",
                 "pinyin": "diànshì",
                 "meaning": "television",
-                "suffix": "。"
+                "suffix": "。",
+                "simplified": "电视"
               }
             ]
           }
@@ -2753,10 +2876,10 @@
         "number": 1,
         "teachingNote": "The first step is left out; the wait is named.",
         "text": {
-          "traditional": "等她睡醒了，再跟她說。",
-          "simplified": "等她睡醒了，再跟她说。",
-          "pinyin": "Děng tā shuìxǐng le, zài gēn tā shuō.",
-          "english": "Wait until she wakes, then tell her.",
+          "traditional": "等她起床了，你再跟她說。",
+          "simplified": "等她起床了，你再跟她说。",
+          "pinyin": "Děng tā qǐchuáng le, nǐ zài gēn tā shuō.",
+          "english": "Wait until she wakes up, then you can tell her.",
           "words": [
             {
               "id": "l11g4-e1-word-1",
@@ -2775,14 +2898,20 @@
               "traditional": "了",
               "pinyin": "le",
               "meaning": "shows an action is finished",
-              "prefix": "睡醒"
+              "prefix": "起床",
+              "suffix": "，"
+            },
+            {
+              "id": "l11g4-e1-w-you",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you"
             },
             {
               "id": "l11g4-e1-word-4",
               "traditional": "再",
               "pinyin": "zài",
-              "meaning": "then; after that",
-              "prefix": "，"
+              "meaning": "then; after that"
             },
             {
               "id": "l11g4-e1-word-5",
@@ -2812,17 +2941,23 @@
         "number": 2,
         "teachingNote": "What you wait for comes after 等.",
         "text": {
-          "traditional": "天氣太冷了，等車來了，我們再出去。",
-          "simplified": "天气太冷了，等车来了，我们再出去。",
-          "pinyin": "Tiānqì tài lěng le, děng chē lái le, wǒmen zài chūqù.",
-          "english": "It is too cold; wait for the car, then go outside.",
+          "traditional": "天氣太冷了，等車來了，我們再去外面。",
+          "simplified": "天气太冷了，等车来了，我们再去外面。",
+          "pinyin": "Tiānqì tài lěng le, děng chē lái le, wǒmen zài qù wàimiàn.",
+          "english": "It is too cold; wait for the car, then go back outside.",
           "words": [
+            {
+              "id": "l11g4-e2-weather",
+              "traditional": "天氣",
+              "simplified": "天气",
+              "pinyin": "tiānqì",
+              "meaning": "weather"
+            },
             {
               "id": "l11g4-e2-word-1",
               "traditional": "太",
               "pinyin": "tài",
-              "meaning": "too; very",
-              "prefix": "天氣"
+              "meaning": "too; very"
             },
             {
               "id": "l11g4-e2-word-2",
@@ -2839,12 +2974,18 @@
               "prefix": "，"
             },
             {
+              "id": "l11g4-e2-come-bus",
+              "traditional": "車",
+              "simplified": "车",
+              "pinyin": "chē",
+              "meaning": "bus"
+            },
+            {
               "id": "l11g4-e2-word-4",
               "traditional": "來",
               "simplified": "来",
               "pinyin": "lái",
-              "meaning": "come",
-              "prefix": "車"
+              "meaning": "come"
             },
             {
               "id": "l11g4-e2-word-5",
@@ -2871,8 +3012,7 @@
               "traditional": "去",
               "pinyin": "qù",
               "meaning": "go",
-              "prefix": "出",
-              "suffix": "。"
+              "suffix": "外面。"
             }
           ]
         }
@@ -2942,8 +3082,15 @@
               "id": "l11g4-e3-word-9",
               "traditional": "吃",
               "pinyin": "chī",
-              "meaning": "eat",
-              "suffix": "晚飯。"
+              "meaning": "eat"
+            },
+            {
+              "id": "l11g4-e3-dinner",
+              "traditional": "晚飯",
+              "simplified": "晚饭",
+              "pinyin": "wǎnfàn",
+              "meaning": "dinner",
+              "suffix": "。"
             }
           ]
         }
@@ -2953,11 +3100,19 @@
         "number": 4,
         "teachingNote": "A fun example from the book.",
         "text": {
-          "traditional": "我們先吃冰淇淋，等不熱了，再去海邊玩。",
-          "simplified": "我们先吃冰淇淋，等不热了，再去海边玩。",
-          "pinyin": "Wǒmen xiān chī bīngqílín, děng bú rè le, zài qù hǎibiān wán.",
-          "english": "Let us eat ice cream first, wait until it is cooler, then go to the beach.",
+          "traditional": "對啊，我們先去吃冰淇淋，等不熱了，再去海邊玩，好不好？",
+          "simplified": "对啊，我们先去吃冰淇淋，等不热了，再去海边玩，好不好？",
+          "pinyin": "Duì a, wǒmen xiān qù chī bīngqílín, děng bú rè le, zài qù hǎibiān wán, hǎo bù hǎo?",
+          "english": "Right — let us go eat ice cream first, and when it is not so hot, then go play at the beach, okay?",
           "words": [
+            {
+              "id": "l11g4-e4-yes",
+              "traditional": "對啊",
+              "simplified": "对啊",
+              "pinyin": "duì a",
+              "meaning": "right",
+              "suffix": "，"
+            },
             {
               "id": "l11g4-e4-word-1",
               "traditional": "我們",
@@ -2970,6 +3125,12 @@
               "traditional": "先",
               "pinyin": "xiān",
               "meaning": "first"
+            },
+            {
+              "id": "l11g4-e4-w-qu",
+              "traditional": "去",
+              "pinyin": "qù",
+              "meaning": "go"
             },
             {
               "id": "l11g4-e4-word-3",
@@ -2987,15 +3148,21 @@
             {
               "id": "l11g4-e4-word-5",
               "traditional": "不",
-              "pinyin": "bù",
+              "pinyin": "bú",
               "meaning": "not"
+            },
+            {
+              "id": "l11g4-e4-hot",
+              "traditional": "熱",
+              "simplified": "热",
+              "pinyin": "rè",
+              "meaning": "hot"
             },
             {
               "id": "l11g4-e4-word-6",
               "traditional": "了",
               "pinyin": "le",
-              "meaning": "shows an action is finished",
-              "prefix": "熱"
+              "meaning": "shows an action is finished"
             },
             {
               "id": "l11g4-e4-word-7",
@@ -3008,11 +3175,385 @@
               "id": "l11g4-e4-word-8",
               "traditional": "去",
               "pinyin": "qù",
-              "meaning": "go",
-              "suffix": "海邊玩。"
+              "meaning": "go"
+            },
+            {
+              "id": "l11g4-e4-w-wan",
+              "traditional": "海邊玩",
+              "simplified": "海边玩",
+              "pinyin": "hǎibiān wán",
+              "meaning": "play at the beach",
+              "suffix": "，"
+            },
+            {
+              "id": "l11g4-e4-tail",
+              "traditional": "好不好",
+              "pinyin": "hǎo bù hǎo",
+              "meaning": "okay?",
+              "suffix": "？"
             }
           ]
         }
+      },
+      {
+        "id": "l11g4-e5",
+        "number": 5,
+        "text": {
+          "traditional": "這家餐廳今天人太多了，我們以後再來吧。",
+          "simplified": "这家餐厅今天人太多了，我们以后再来吧。",
+          "pinyin": "Zhè jiā cāntīng jīntiān rén tài duō le, wǒmen yǐhòu zài lái ba.",
+          "english": "This restaurant has too many people today; let us come again another time.",
+          "words": [
+            {
+              "id": "l11g4-e5-w1",
+              "traditional": "這家餐廳",
+              "simplified": "这家餐厅",
+              "pinyin": "zhè jiā cāntīng",
+              "meaning": "this restaurant"
+            },
+            {
+              "id": "l11g4-e5-w2",
+              "traditional": "今天",
+              "pinyin": "jīntiān",
+              "meaning": "today"
+            },
+            {
+              "id": "l11g4-e5-w3",
+              "traditional": "人太多了",
+              "pinyin": "rén tài duō le",
+              "meaning": "too many people",
+              "suffix": "，"
+            },
+            {
+              "id": "l11g4-e5-w4",
+              "traditional": "我們",
+              "simplified": "我们",
+              "pinyin": "wǒmen",
+              "meaning": "we"
+            },
+            {
+              "id": "l11g4-e5-w5",
+              "traditional": "以後",
+              "simplified": "以后",
+              "pinyin": "yǐhòu",
+              "meaning": "another time; later"
+            },
+            {
+              "id": "l11g4-e5-w6",
+              "traditional": "再來吧",
+              "simplified": "再来吧",
+              "pinyin": "zài lái ba",
+              "meaning": "come again",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l11g4-e6",
+        "number": 6,
+        "text": {
+          "traditional": "A：爸爸，這個句子是什麼意思？ B：我現在沒空，晚上再告訴你。",
+          "simplified": "A：爸爸，这个句子是什么意思？ B：我现在没空，晚上再告诉你。",
+          "pinyin": "A: Bàba, zhège jùzi shì shénme yìsi? B: Wǒ xiànzài méi kòng, wǎnshang zài gàosù nǐ.",
+          "english": "A: Dad, what does this sentence mean? B: I have no time now; I will tell you tonight.",
+          "words": [
+            {
+              "id": "l11g4-e6-w1",
+              "traditional": "這個句子",
+              "simplified": "这个句子",
+              "pinyin": "zhège jùzi",
+              "meaning": "this sentence",
+              "prefix": "A：爸爸，"
+            },
+            {
+              "id": "l11g4-e6-w2",
+              "traditional": "是什麼意思",
+              "simplified": "是什么意思",
+              "pinyin": "shì shénme yìsi",
+              "meaning": "means what",
+              "suffix": "？"
+            },
+            {
+              "id": "l11g4-e6-w3",
+              "traditional": "我現在沒空",
+              "simplified": "我现在没空",
+              "pinyin": "wǒ xiànzài méi kòng",
+              "meaning": "I have no time now",
+              "prefix": "B：",
+              "suffix": "，"
+            },
+            {
+              "id": "l11g4-e6-w4",
+              "traditional": "晚上",
+              "pinyin": "wǎnshang",
+              "meaning": "tonight"
+            },
+            {
+              "id": "l11g4-e6-w5",
+              "traditional": "再告訴你",
+              "simplified": "再告诉你",
+              "pinyin": "zài gàosù nǐ",
+              "meaning": "tell you then",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l11g4-e7",
+        "number": 7,
+        "text": {
+          "traditional": "A：你要不要跟我一起去打球？ B：我今天有一點兒累，我們週末再去吧。",
+          "simplified": "A：你要不要跟我一起去打球？ B：我今天有一点儿累，我们周末再去吧。",
+          "pinyin": "A: Nǐ yào bú yào gēn wǒ yìqǐ qù dǎqiú? B: Wǒ jīntiān yǒu yìdiǎnr lèi, wǒmen zhōumò zài qù ba.",
+          "english": "A: Do you want to play ball with me? B: I am a little tired today; let us go on the weekend.",
+          "words": [
+            {
+              "id": "l11g4-e7-w1",
+              "traditional": "你要不要",
+              "pinyin": "nǐ yào bú yào",
+              "meaning": "do you want to",
+              "prefix": "A："
+            },
+            {
+              "id": "l11g4-e7-w2",
+              "traditional": "跟我",
+              "pinyin": "gēn wǒ",
+              "meaning": "with me"
+            },
+            {
+              "id": "l11g4-e7-w3",
+              "traditional": "一起去打球",
+              "pinyin": "yìqǐ qù dǎqiú",
+              "meaning": "go play ball together",
+              "suffix": "？"
+            },
+            {
+              "id": "l11g4-e7-w4",
+              "traditional": "我今天",
+              "pinyin": "wǒ jīntiān",
+              "meaning": "I today",
+              "prefix": "B："
+            },
+            {
+              "id": "l11g4-e7-w5",
+              "traditional": "有一點兒累",
+              "simplified": "有一点儿累",
+              "pinyin": "yǒu yìdiǎnr lèi",
+              "meaning": "am a little tired",
+              "suffix": "，"
+            },
+            {
+              "id": "l11g4-e7-w6",
+              "traditional": "我們",
+              "simplified": "我们",
+              "pinyin": "wǒmen",
+              "meaning": "we"
+            },
+            {
+              "id": "l11g4-e7-w7",
+              "traditional": "週末",
+              "simplified": "周末",
+              "pinyin": "zhōumò",
+              "meaning": "weekend"
+            },
+            {
+              "id": "l11g4-e7-w8",
+              "traditional": "再去吧",
+              "pinyin": "zài qù ba",
+              "meaning": "go then",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l11g4-e8",
+        "number": 8,
+        "text": {
+          "traditional": "等我先生也喝了，我們再決定買不買。",
+          "simplified": "等我先生也喝了，我们再决定买不买。",
+          "pinyin": "Děng wǒ xiānsheng yě hē le, wǒmen zài juédìng mǎi bù mǎi.",
+          "english": "Wait until my husband has also drunk some; then we will decide whether to buy it.",
+          "words": [
+            {
+              "id": "l11g4-e8-w1",
+              "traditional": "等我先生",
+              "pinyin": "děng wǒ xiānsheng",
+              "meaning": "wait until my husband"
+            },
+            {
+              "id": "l11g4-e8-w2",
+              "traditional": "也喝了",
+              "pinyin": "yě hē le",
+              "meaning": "has also drunk",
+              "suffix": "，"
+            },
+            {
+              "id": "l11g4-e8-w3",
+              "traditional": "我們",
+              "simplified": "我们",
+              "pinyin": "wǒmen",
+              "meaning": "we"
+            },
+            {
+              "id": "l11g4-e8-w4",
+              "traditional": "再決定",
+              "simplified": "再决定",
+              "pinyin": "zài juédìng",
+              "meaning": "decide then"
+            },
+            {
+              "id": "l11g4-e8-w5",
+              "traditional": "買不買",
+              "simplified": "买不买",
+              "pinyin": "mǎi bù mǎi",
+              "meaning": "whether to buy",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l11g4-e9",
+        "number": 9,
+        "text": {
+          "traditional": "等下了課再教你，好不好？",
+          "simplified": "等下了课再教你，好不好？",
+          "pinyin": "Děng xià le kè zài jiāo nǐ, hǎo bù hǎo?",
+          "english": "Wait until class is over and then I will teach you, okay?",
+          "words": [
+            {
+              "id": "l11g4-e9-w1",
+              "traditional": "等下了課",
+              "simplified": "等下了课",
+              "pinyin": "děng xià le kè",
+              "meaning": "wait until class is over"
+            },
+            {
+              "id": "l11g4-e9-w2",
+              "traditional": "再教你",
+              "pinyin": "zài jiāo nǐ",
+              "meaning": "teach you then",
+              "suffix": "，"
+            },
+            {
+              "id": "l11g4-e9-w3",
+              "traditional": "好不好",
+              "pinyin": "hǎo bù hǎo",
+              "meaning": "okay?",
+              "suffix": "？"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l11g4-e10",
+        "number": 10,
+        "text": {
+          "traditional": "現在去吃飯的人太多了，我想先寫功課，等人少了再去吃。",
+          "simplified": "现在去吃饭的人太多了，我想先写功课，等人少了再去吃。",
+          "pinyin": "Xiànzài qù chīfàn de rén tài duō le, wǒ xiǎng xiān xiě gōngkè, děng rén shǎo le zài qù chī.",
+          "english": "Too many people are eating now; I want to do my homework first, and go eat when there are fewer people.",
+          "words": [
+            {
+              "id": "l11g4-e10-w1",
+              "traditional": "現在去吃飯的人",
+              "simplified": "现在去吃饭的人",
+              "pinyin": "xiànzài qù chīfàn de rén",
+              "meaning": "the people eating now"
+            },
+            {
+              "id": "l11g4-e10-w2",
+              "traditional": "太多了",
+              "pinyin": "tài duō le",
+              "meaning": "too many",
+              "suffix": "，"
+            },
+            {
+              "id": "l11g4-e10-w3",
+              "traditional": "我想",
+              "pinyin": "wǒ xiǎng",
+              "meaning": "I want to"
+            },
+            {
+              "id": "l11g4-e10-w4",
+              "traditional": "先寫功課",
+              "simplified": "先写功课",
+              "pinyin": "xiān xiě gōngkè",
+              "meaning": "do homework first",
+              "suffix": "，"
+            },
+            {
+              "id": "l11g4-e10-w5",
+              "traditional": "等人少了",
+              "pinyin": "děng rén shǎo le",
+              "meaning": "wait until there are fewer people"
+            },
+            {
+              "id": "l11g4-e10-w6",
+              "traditional": "再去吃",
+              "pinyin": "zài qù chī",
+              "meaning": "go eat then",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l11g4-e11",
+        "number": 11,
+        "text": {
+          "traditional": "我要先去朋友家，等百貨公司開了，再去買衣服。",
+          "simplified": "我要先去朋友家，等百货公司开了，再去买衣服。",
+          "pinyin": "Wǒ yào xiān qù péngyǒu jiā, děng bǎihuò gōngsī kāi le, zài qù mǎi yīfu.",
+          "english": "I will go to my friend’s place first; when the department store opens, I will go buy clothes.",
+          "words": [
+            {
+              "id": "l11g4-e11-w1",
+              "traditional": "我要",
+              "pinyin": "wǒ yào",
+              "meaning": "I want to"
+            },
+            {
+              "id": "l11g4-e11-w2",
+              "traditional": "先去朋友家",
+              "pinyin": "xiān qù péngyǒu jiā",
+              "meaning": "go to my friend’s place first",
+              "suffix": "，"
+            },
+            {
+              "id": "l11g4-e11-w3",
+              "traditional": "等百貨公司開了",
+              "simplified": "等百货公司开了",
+              "pinyin": "děng bǎihuò gōngsī kāi le",
+              "meaning": "wait until the department store opens",
+              "suffix": "，"
+            },
+            {
+              "id": "l11g4-e11-w4",
+              "traditional": "再去",
+              "pinyin": "zài qù",
+              "meaning": "go then"
+            },
+            {
+              "id": "l11g4-e11-w5",
+              "traditional": "買衣服",
+              "simplified": "买衣服",
+              "pinyin": "mǎi yīfu",
+              "meaning": "buy clothes",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
       }
     ],
     "exerciseTitle": "Restore the timeline",
@@ -3135,7 +3676,8 @@
         "correctFeedback": "The call happens after the decision.",
         "repairFeedback": "Use 再 for the later action."
       }
-    ]
+    ],
+    "exerciseNote": "The book completes five sentences with 先……，等……，再…… on printed page 259 and gives no answer key; these model answers follow the printed prompts."
   },
   "LESSON_ELEVEN_GRAMMAR_ONE": {
     "bookId": 1,
@@ -3153,7 +3695,7 @@
       248
     ],
     "audioReference": "11-1-3",
-    "explanation": "Put 了 after the action to show completion. With amounts, one 了 means finished and stopped. Two 了's (one after the action, one at the end) mean reached so far and continuing.",
+    "explanation": "Put 了 right after a verb to mark a completed action. With amounts, one 了 means the action stopped there; adding a second 了 at the end means the action probably continues.",
     "lessonWorld": {
       "kind": "chat",
       "eyebrow": "Missing message",
@@ -3602,7 +4144,7 @@
         "id": "b1l11-g01-glossary-67",
         "traditional": "誰",
         "simplified": "谁",
-        "pinyin": "shuí",
+        "pinyin": "shéi",
         "meaning": "who"
       },
       {
@@ -4747,15 +5289,16 @@
                   "id": "l11g1-s1-r1-already",
                   "traditional": "已經",
                   "pinyin": "yǐjīng",
-                  "meaning": "already"
+                  "meaning": "already",
+                  "simplified": "已经"
                 }
               ],
               [
                 {
                   "id": "l11g1-s1-r1-come",
-                  "traditional": "來",
-                  "pinyin": "lái",
-                  "meaning": "come"
+                  "traditional": "到",
+                  "pinyin": "dào",
+                  "meaning": "arrive"
                 }
               ],
               [
@@ -4781,7 +5324,8 @@
                   "id": "l11g1-s1-r2-we",
                   "traditional": "我們",
                   "pinyin": "wǒmen",
-                  "meaning": "we; us"
+                  "meaning": "we; us",
+                  "simplified": "我们"
                 }
               ],
               [
@@ -4797,7 +5341,8 @@
                   "id": "l11g1-s1-r2-meet",
                   "traditional": "見面",
                   "pinyin": "jiànmiàn",
-                  "meaning": "meet"
+                  "meaning": "meet",
+                  "simplified": "见面"
                 }
               ],
               [
@@ -4829,7 +5374,7 @@
         "id": "b1l11-g01-sec-2",
         "sectionNumber": 2,
         "title": "Counting Amounts: One 了 vs Two 了's",
-        "explanation": "One 了 marks an action finished in the past (drank two cups). Two 了's mark an amount reached so far that may continue (already drank two cups and counting).",
+        "explanation": "One 了 means the action finished in the past (“I drank two cups yesterday”). Two 了's mean you reached that number so far and might do more (“I have already drunk two cups, and want another”).",
         "patternColumns": [
           "Subject",
           "Time word",
@@ -4874,7 +5419,8 @@
                   "traditional": "兩杯咖啡",
                   "pinyin": "liǎng bēi kāfēi",
                   "meaning": "two cups of coffee",
-                  "suffix": "。"
+                  "suffix": "。",
+                  "simplified": "两杯咖啡"
                 }
               ],
               []
@@ -4900,7 +5446,8 @@
                   "id": "l11g1-s2-r2-already",
                   "traditional": "已經",
                   "pinyin": "yǐjīng",
-                  "meaning": "already"
+                  "meaning": "already",
+                  "simplified": "已经"
                 }
               ],
               [
@@ -4916,7 +5463,8 @@
                   "id": "l11g1-s2-r2-coffee",
                   "traditional": "兩杯咖啡",
                   "pinyin": "liǎng bēi kāfēi",
-                  "meaning": "two cups of coffee"
+                  "meaning": "two cups of coffee",
+                  "simplified": "两杯咖啡"
                 }
               ],
               [
@@ -4945,7 +5493,8 @@
           "final 了"
         ]
       }
-    ]
+    ],
+    "exerciseNote": "The book completes five dialogues with 了 on printed page 248 and gives no answer key; these model answers follow the printed prompts."
   },
   "LESSON_ELEVEN_GRAMMAR_THREE": {
     "bookId": 1,
@@ -4956,14 +5505,14 @@
     "partId": 1,
     "grammarNumber": 3,
     "titleTraditional": "把聚光燈放在過去的細節上",
-    "titleEnglish": "Spotlight One Detail with 是…的",
+    "titleEnglish": "Emphasize One Past Detail with 是…的",
     "learnerPromise": "Point out when, where, how, or with whom something happened.",
     "printedPages": [
       251,
       252
     ],
     "audioReference": "11-1-3",
-    "explanation": "The event is already known. 是…的 puts the spotlight on one detail: when, where, how, or with whom it happened.",
+    "explanation": "When the past event is already known, use 是…的 to highlight one specific detail: when, where, how, or with whom it happened. 是 is optional in a positive sentence, but it cannot be dropped in a negative sentence.",
     "lessonWorld": {
       "kind": "chat",
       "eyebrow": "Recovered clue",
@@ -5413,7 +5962,7 @@
         "id": "b1l11-g03-glossary-67",
         "traditional": "誰",
         "simplified": "谁",
-        "pinyin": "shuí",
+        "pinyin": "shéi",
         "meaning": "who"
       },
       {
@@ -5843,9 +6392,10 @@
         "subject": [
           {
             "id": "l11g3-p1-s1",
-            "traditional": "他",
-            "pinyin": "tā",
-            "meaning": "he; him"
+            "traditional": "他們",
+            "pinyin": "tāmen",
+            "meaning": "they",
+            "simplified": "他们"
           }
         ],
         "grammar": [
@@ -5878,17 +6428,17 @@
             "suffix": "。"
           }
         ],
-        "english": "He returned home yesterday."
+        "english": "They returned home yesterday."
       },
       {
         "id": "l11g3-p2",
         "subject": [
           {
             "id": "l11g3-p2-s1",
-            "traditional": "我們",
-            "simplified": "我们",
-            "pinyin": "wǒmen",
-            "meaning": "we; us"
+            "traditional": "我",
+            "simplified": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
           }
         ],
         "grammar": [
@@ -5912,17 +6462,23 @@
             "traditional": "認識",
             "simplified": "认识",
             "pinyin": "rènshi",
-            "meaning": "meet; get to know"
+            "meaning": "know; meet"
           },
           {
             "id": "l11g3-p2-c2",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "him"
+          },
+          {
+            "id": "l11g3-p2-c3",
             "traditional": "的",
             "pinyin": "de",
-            "meaning": "shows belonging (like “of”)",
+            "meaning": "the detail (是……的)",
             "suffix": "。"
           }
         ],
-        "english": "We met online."
+        "english": "I met him online."
       },
       {
         "id": "l11g3-p3",
@@ -5964,13 +6520,113 @@
           },
           {
             "id": "l11g3-p3-c2",
+            "traditional": "買",
+            "simplified": "买",
+            "pinyin": "mǎi",
+            "meaning": "buy"
+          },
+          {
+            "id": "l11g3-p3-c3",
+            "traditional": "（東西）",
+            "simplified": "（东西）",
+            "pinyin": "(dōngxi)",
+            "meaning": "things"
+          },
+          {
+            "id": "l11g3-p3-c4",
             "traditional": "的",
             "pinyin": "de",
-            "meaning": "shows belonging (like “of”)",
+            "meaning": "the detail (是……的)",
             "suffix": "。"
           }
         ],
-        "english": "I went with a classmate."
+        "english": "I went shopping with a classmate."
+      },
+      {
+        "id": "l11g3-p4",
+        "subject": [
+          {
+            "id": "l11g3-p4-s",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l11g3-p4-be",
+            "traditional": "是",
+            "pinyin": "shì",
+            "meaning": "be (is; are)"
+          },
+          {
+            "id": "l11g3-p4-where",
+            "traditional": "從哪裡",
+            "simplified": "从哪里",
+            "pinyin": "cóng nǎlǐ",
+            "meaning": "from where"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l11g3-p4-come",
+            "traditional": "來",
+            "simplified": "来",
+            "pinyin": "lái",
+            "meaning": "come"
+          },
+          {
+            "id": "l11g3-p4-de",
+            "traditional": "的",
+            "pinyin": "de",
+            "meaning": "the detail (是……的)",
+            "suffix": "？"
+          }
+        ],
+        "english": "Where did you come from?"
+      },
+      {
+        "id": "l11g3-p5",
+        "subject": [
+          {
+            "id": "l11g3-p5-s",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l11g3-p5-be",
+            "traditional": "是",
+            "pinyin": "shì",
+            "meaning": "be (is; are)"
+          },
+          {
+            "id": "l11g3-p5-school",
+            "traditional": "從學校",
+            "simplified": "从学校",
+            "pinyin": "cóng xuéxiào",
+            "meaning": "from school"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l11g3-p5-come",
+            "traditional": "來",
+            "simplified": "来",
+            "pinyin": "lái",
+            "meaning": "come"
+          },
+          {
+            "id": "l11g3-p5-de",
+            "traditional": "的",
+            "pinyin": "de",
+            "meaning": "the detail (是……的)",
+            "suffix": "。"
+          }
+        ],
+        "english": "It was school where I came from."
       }
     ],
     "confusion": {
@@ -6172,8 +6828,8 @@
         "number": 1,
         "teachingNote": "Inquiring about arrival time.",
         "text": {
-          "traditional": "A: 他已經到學校了。\nB: 他是幾點到的？\nA: 他是三點三十分到的。",
-          "simplified": "A: 他已经到学校了。\nB: 他是几点到的？\nA: 他是三点三十分到的。",
+          "traditional": "A：他已經到學校了。\nB：他是幾點到的？\nA：他是三點三十分到的。",
+          "simplified": "A：他已经到学校了。\nB：他是几点到的？\nA：他是三点三十分到的。",
           "pinyin": "A: Tā yǐjīng dào xuéxiào le.\nB: Tā shì jǐ diǎn dào de?\nA: Tā shì sān diǎn sānshí fēn dào de.",
           "english": "A: He has already arrived at school.\nB: What time did he arrive?\nA: He arrived at 3:30.",
           "words": [
@@ -6182,7 +6838,7 @@
               "traditional": "他",
               "pinyin": "tā",
               "meaning": "he; him",
-              "prefix": "A: "
+              "prefix": "A："
             },
             {
               "id": "l11g3-e1-w2",
@@ -6216,7 +6872,7 @@
               "traditional": "他",
               "pinyin": "tā",
               "meaning": "he; him",
-              "prefix": "B: "
+              "prefix": "B："
             },
             {
               "id": "l11g3-e1-w7",
@@ -6249,7 +6905,7 @@
               "traditional": "他",
               "pinyin": "tā",
               "meaning": "he; him",
-              "prefix": "A: "
+              "prefix": "A："
             },
             {
               "id": "l11g3-e1-w12",
@@ -6285,8 +6941,8 @@
         "number": 2,
         "teachingNote": "Inquiring about method of transportation.",
         "text": {
-          "traditional": "A: 張先生來了。\nB: 他是開車來的嗎？\nA: 不是，他是走路來的。",
-          "simplified": "A: 张先生来了。\nB: 他是开车来的吗？\nA: 不是，他是走路来的。",
+          "traditional": "A：張先生來了。\nB：他是開車來的嗎？\nA：不是，他是走路來的。",
+          "simplified": "A：张先生来了。\nB：他是开车来的吗？\nA：不是，他是走路来的。",
           "pinyin": "A: Zhāng xiānsheng lái le.\nB: Tā shì kāichē lái de ma?\nA: Bú shì, tā shì zǒulù lái de.",
           "english": "A: Mr. Zhang has arrived.\nB: Did he come by driving?\nA: No, he came on foot.",
           "words": [
@@ -6296,7 +6952,7 @@
               "simplified": "张先生",
               "pinyin": "Zhāng xiānsheng",
               "meaning": "Mr. Zhang",
-              "prefix": "A: "
+              "prefix": "A："
             },
             {
               "id": "l11g3-e2-w2",
@@ -6317,7 +6973,7 @@
               "traditional": "他",
               "pinyin": "tā",
               "meaning": "he; him",
-              "prefix": "B: "
+              "prefix": "B："
             },
             {
               "id": "l11g3-e2-w5",
@@ -6358,7 +7014,7 @@
               "traditional": "不是",
               "pinyin": "bú shì",
               "meaning": "no; is not",
-              "prefix": "A: ",
+              "prefix": "A：",
               "suffix": "，"
             },
             {
@@ -6401,8 +7057,8 @@
         "number": 3,
         "teachingNote": "Inquiring about where an action took place.",
         "text": {
-          "traditional": "A: 你的中文說得真好，你是在哪裡學的？\nB: 我在台灣學的。",
-          "simplified": "A: 你的中文说得真好，你是在哪里学的？\nB: 我在台湾学的。",
+          "traditional": "A：你的中文說得真好，你是在哪裡學的？\nB：我在台灣學的。",
+          "simplified": "A：你的中文说得真好，你是在哪里学的？\nB：我在台湾学的。",
           "pinyin": "A: Nǐ de Zhōngwén shuō de zhēn hǎo, nǐ shì zài nǎlǐ xué de?\nB: Wǒ zài Táiwān xué de.",
           "english": "A: Your Chinese is really good! Where did you learn it?\nB: I learned it in Taiwan.",
           "words": [
@@ -6411,7 +7067,7 @@
               "traditional": "你的",
               "pinyin": "nǐ de",
               "meaning": "your",
-              "prefix": "A: "
+              "prefix": "A："
             },
             {
               "id": "l11g3-e3-w2",
@@ -6477,7 +7133,7 @@
               "traditional": "我",
               "pinyin": "wǒ",
               "meaning": "I; me",
-              "prefix": "B: "
+              "prefix": "B："
             },
             {
               "id": "l11g3-e3-w12",
@@ -6508,8 +7164,8 @@
         "number": 4,
         "teachingNote": "Inquiring about who did the action.",
         "text": {
-          "traditional": "A: 你知道她的手機號碼嗎？是誰告訴你的？\nB: 是她媽媽告訴我的。",
-          "simplified": "A: 你知道她的手机号码吗？是谁告诉你的？\nB: 是她妈妈告诉我的。",
+          "traditional": "A：你知道她的手機號碼嗎？是誰告訴你的？\nB：是她媽媽告訴我的。",
+          "simplified": "A：你知道她的手机号码吗？是谁告诉你的？\nB：是她妈妈告诉我的。",
           "pinyin": "A: Nǐ zhīdào tā de shǒujī hàomǎ ma? Shì shéi gàosù nǐ de?\nB: Shì tā māma gàosù wǒ de.",
           "english": "A: Do you know her cell phone number? Who told you?\nB: Her mother told me.",
           "words": [
@@ -6518,7 +7174,7 @@
               "traditional": "你",
               "pinyin": "nǐ",
               "meaning": "you",
-              "prefix": "A: "
+              "prefix": "A："
             },
             {
               "id": "l11g3-e4-w2",
@@ -6585,7 +7241,7 @@
               "traditional": "是",
               "pinyin": "shì",
               "meaning": "be (is; are)",
-              "prefix": "B: "
+              "prefix": "B："
             },
             {
               "id": "l11g3-e4-w12",
@@ -6817,7 +7473,8 @@
         "correctFeedback": "The place comes before 認識.",
         "repairFeedback": "Put the place before the event."
       }
-    ]
+    ],
+    "exerciseNote": "The book completes three dialogues with 是……的 on printed pages 251–252 and gives no answer key; these model answers follow the printed prompts."
   },
   "LESSON_ELEVEN_GRAMMAR_TWO": {
     "bookId": 1,
@@ -6835,7 +7492,7 @@
       250
     ],
     "audioReference": "11-1-3",
-    "explanation": "Use 沒 to state an action did not happen in the past. Use 還沒 (\"not yet\") when an action hasn't happened but is expected.",
+    "explanation": "To say someone did not do an action in the past, use 沒 instead of 不. When an action hasn’t happened yet but you expect to do it later, use 還沒.",
     "lessonWorld": {
       "kind": "chat",
       "eyebrow": "Missing message",
@@ -6849,7 +7506,8 @@
     },
     "focusTerms": [
       "沒",
-      "還沒"
+      "還沒",
+      "不"
     ],
     "teachingGlossary": [
       {
@@ -7285,7 +7943,7 @@
         "id": "b1l11-g02-glossary-67",
         "traditional": "誰",
         "simplified": "谁",
-        "pinyin": "shuí",
+        "pinyin": "shéi",
         "meaning": "who"
       },
       {
@@ -7735,7 +8393,8 @@
             "traditional": "來",
             "pinyin": "lái",
             "meaning": "come",
-            "suffix": "。"
+            "suffix": "。",
+            "simplified": "来"
           }
         ],
         "english": "He did not come yesterday."
@@ -7941,8 +8600,8 @@
         "id": "g2-example-1",
         "number": 1,
         "text": {
-          "traditional": "A: 他昨天來了嗎？ B: 他昨天沒來。",
-          "simplified": "A: 他昨天来了吗？ B: 他昨天没来。",
+          "traditional": "A：他昨天來了嗎？ B：他昨天沒來。",
+          "simplified": "A：他昨天来了吗？ B：他昨天没来。",
           "pinyin": "A: Tā zuótiān lái le ma? B: Tā zuótiān méi lái.",
           "english": "A: Did he come yesterday? B: He didn't come yesterday.",
           "words": [
@@ -7952,13 +8611,15 @@
               "simplified": "他昨天来了吗",
               "pinyin": "tā zuótiān lái le ma",
               "meaning": "did he come yesterday",
-              "suffix": "？"
+              "suffix": "？",
+              "prefix": "A："
             },
             {
               "id": "b1l11-g2-e1-w2",
               "traditional": "他昨天",
               "pinyin": "tā zuótiān",
-              "meaning": "he yesterday"
+              "meaning": "he yesterday",
+              "prefix": "B："
             },
             {
               "id": "b1l11-g2-e1-w3",
@@ -7975,8 +8636,8 @@
         "id": "g2-example-2",
         "number": 2,
         "text": {
-          "traditional": "A: 他看書了沒有？ B: 他沒看書。",
-          "simplified": "A: 他看书了没有？ B: 他没看书。",
+          "traditional": "A：他看書了沒有？ B：他沒看書。",
+          "simplified": "A：他看书了没有？ B：他没看书。",
           "pinyin": "A: Tā kànshū le méiyǒu? B: Tā méi kànshū.",
           "english": "A: Did he read the book? B: He didn't read the book.",
           "words": [
@@ -7986,7 +8647,8 @@
               "simplified": "他看书了没有",
               "pinyin": "tā kànshū le méiyǒu",
               "meaning": "did he read book",
-              "suffix": "？"
+              "suffix": "？",
+              "prefix": "A："
             },
             {
               "id": "b1l11-g2-e2-w2",
@@ -7994,7 +8656,8 @@
               "simplified": "他没看书",
               "pinyin": "tā méi kànshū",
               "meaning": "he did not read book",
-              "suffix": "。"
+              "suffix": "。",
+              "prefix": "B："
             }
           ]
         }
@@ -8003,8 +8666,8 @@
         "id": "g2-example-3",
         "number": 3,
         "text": {
-          "traditional": "A: 爸爸喝咖啡了沒？ B: 爸爸沒喝咖啡。",
-          "simplified": "A: 爸爸喝咖啡了没？ B: 爸爸没喝咖啡。",
+          "traditional": "A：爸爸喝咖啡了沒？ B：爸爸沒喝咖啡。",
+          "simplified": "A：爸爸喝咖啡了没？ B：爸爸没喝咖啡。",
           "pinyin": "A: Bàba hē kāfēi le méi? B: Bàba méi hē kāfēi.",
           "english": "A: Did dad drink coffee? B: Dad didn't drink coffee.",
           "words": [
@@ -8014,7 +8677,8 @@
               "simplified": "爸爸喝咖啡了没",
               "pinyin": "bàba hē kāfēi le méi",
               "meaning": "did dad drink coffee",
-              "suffix": "？"
+              "suffix": "？",
+              "prefix": "A："
             },
             {
               "id": "b1l11-g2-e3-w2",
@@ -8022,7 +8686,8 @@
               "simplified": "爸爸没喝咖啡",
               "pinyin": "bàba méi hē kāfēi",
               "meaning": "dad did not drink coffee",
-              "suffix": "。"
+              "suffix": "。",
+              "prefix": "B："
             }
           ]
         }
@@ -8031,17 +8696,26 @@
         "id": "g2-example-4",
         "number": 4,
         "text": {
-          "traditional": "A: 老師要你看的書，你看了嗎？ B: 還沒看，我這幾天很忙。",
-          "simplified": "A: 老师要你看的书，你看了吗？ B: 还没看，我这几天很忙。",
+          "traditional": "A：老師要你看的書，你看了嗎？ B：還沒看，我這幾天很忙。",
+          "simplified": "A：老师要你看的书，你看了吗？ B：还没看，我这几天很忙。",
           "pinyin": "A: Lǎoshī yào nǐ kàn de shū, nǐ kàn le ma? B: Hái méi kàn, wǒ zhè jǐ tiān hěn máng.",
           "english": "A: Did you read the book the teacher asked you to read? B: Not yet; I have been very busy these days.",
           "words": [
+            {
+              "id": "b1l11-g2-e4-w0",
+              "traditional": "老師要你看的書",
+              "simplified": "老师要你看的书",
+              "pinyin": "lǎoshī yào nǐ kàn de shū",
+              "meaning": "the book the teacher wanted you to read",
+              "prefix": "A：",
+              "suffix": "，"
+            },
             {
               "id": "b1l11-g2-e4-w1",
               "traditional": "你看了嗎",
               "simplified": "你看了吗",
               "pinyin": "nǐ kàn le ma",
-              "meaning": "did you read",
+              "meaning": "have you read it?",
               "suffix": "？"
             },
             {
@@ -8049,7 +8723,8 @@
               "traditional": "還沒看",
               "simplified": "还没看",
               "pinyin": "hái méi kàn",
-              "meaning": "haven't read yet",
+              "meaning": "not yet",
+              "prefix": "B：",
               "suffix": "，"
             },
             {
@@ -8057,7 +8732,7 @@
               "traditional": "我這幾天很忙",
               "simplified": "我这几天很忙",
               "pinyin": "wǒ zhè jǐ tiān hěn máng",
-              "meaning": "I am busy these days",
+              "meaning": "I have been busy these days",
               "suffix": "。"
             }
           ]
@@ -8067,17 +8742,26 @@
         "id": "g2-example-5",
         "number": 5,
         "text": {
-          "traditional": "A: 你今天去看醫生了，那你吃藥了沒有？ B: 還沒吃，現在要吃了。",
-          "simplified": "A: 你今天去看医生了，那你吃药了没有？ B: 还没吃，现在要吃了。",
+          "traditional": "A：你今天去看醫生了，那你吃藥了沒有？ B：還沒吃，現在要吃了。",
+          "simplified": "A：你今天去看医生了，那你吃药了没有？ B：还没吃，现在要吃了。",
           "pinyin": "A: Nǐ jīntiān qù kàn yīshēng le, nà nǐ chīyào le méiyǒu? B: Hái méi chī, xiànzài yào chī le.",
           "english": "A: You went to see the doctor today, so did you take your medicine? B: Not yet, but I'm going to take it now.",
           "words": [
             {
+              "id": "b1l11-g2-e5-w0",
+              "traditional": "你今天去看醫生了",
+              "simplified": "你今天去看医生了",
+              "pinyin": "nǐ jīntiān qù kàn yīshēng le",
+              "meaning": "you went to the doctor today",
+              "prefix": "A：",
+              "suffix": "，"
+            },
+            {
               "id": "b1l11-g2-e5-w1",
-              "traditional": "吃藥了沒有",
-              "simplified": "吃药了没有",
-              "pinyin": "chīyào le méiyǒu",
-              "meaning": "took medicine yet",
+              "traditional": "那你吃藥了沒有",
+              "simplified": "那你吃药了没有",
+              "pinyin": "nà nǐ chī yào le méiyǒu",
+              "meaning": "so have you taken the medicine?",
               "suffix": "？"
             },
             {
@@ -8085,7 +8769,8 @@
               "traditional": "還沒吃",
               "simplified": "还没吃",
               "pinyin": "hái méi chī",
-              "meaning": "haven't taken yet",
+              "meaning": "not yet",
+              "prefix": "B：",
               "suffix": "，"
             },
             {
@@ -8093,7 +8778,7 @@
               "traditional": "現在要吃了",
               "simplified": "现在要吃了",
               "pinyin": "xiànzài yào chī le",
-              "meaning": "going to take now",
+              "meaning": "I am going to take it now",
               "suffix": "。"
             }
           ]
@@ -8103,8 +8788,8 @@
         "id": "g2-example-6",
         "number": 6,
         "text": {
-          "traditional": "A: 我們都還沒寫功課，他寫了沒？ B: 我不知道，也許也還沒寫。",
-          "simplified": "A: 我们都还没写功课，他写了没？ B: 我不知道，也许也还没写。",
+          "traditional": "A：我們都還沒寫功課，他寫了沒？ B：我不知道，也許也還沒寫。",
+          "simplified": "A：我们都还没写功课，他写了没？ B：我不知道，也许也还没写。",
           "pinyin": "A: Wǒmen dōu hái méi xiě gōngkè, tā xiě le méi? B: Wǒ bù zhīdào, yěxǔ yě hái méi xiě.",
           "english": "A: None of us have done our homework yet; has he done his? B: I don't know, maybe he hasn't done it either.",
           "words": [
@@ -8114,7 +8799,7 @@
               "simplified": "我们都还没",
               "pinyin": "wǒmen dōu hái méi",
               "meaning": "none of us yet",
-              "prefix": "A: "
+              "prefix": "A："
             },
             {
               "id": "l11g2-e6-w2",
@@ -8137,7 +8822,7 @@
               "traditional": "我不知道",
               "pinyin": "wǒ bù zhīdào",
               "meaning": "I don't know",
-              "prefix": "B: ",
+              "prefix": "B：",
               "suffix": "，"
             },
             {
@@ -8306,7 +8991,7 @@
           {
             "id": "l11g2-q4-tile2",
             "traditional": "不看了",
-            "pinyin": "bù kàn le",
+            "pinyin": "bú kàn le",
             "meaning": "won't read anymore"
           }
         ],
@@ -8397,7 +9082,7 @@
         "id": "b1l11-g02-sec-1",
         "sectionNumber": 1,
         "title": "Did Not Happen (沒 + Action)",
-        "explanation": "Use 沒 before an action to say it did not happen (never use 不 or 了). To ask if someone did it yet, add 了沒 at the end.",
+        "explanation": "Use 沒 before the action to say someone didn’t do it. Never use 不 or 了 here: say “he didn’t come” or “Dad didn’t drink coffee.” To ask if someone did it, add 了沒 at the end.",
         "patternColumns": [
           "Subject",
           "沒",
@@ -8417,21 +9102,96 @@
             "grammar": [
               {
                 "id": "l11g2-s1-r1-g",
-                "traditional": "昨天沒",
-                "simplified": "昨天没",
-                "pinyin": "zuótiān méi",
-                "meaning": "yesterday did not"
+                "traditional": "沒",
+                "simplified": "没",
+                "pinyin": "méi",
+                "meaning": "did not (past)"
               }
             ],
             "complement": [
               {
-                "id": "l11g2-s1-r1-c",
-                "traditional": "來",
-                "pinyin": "lái",
-                "meaning": "come"
+                "id": "l11g2-s1-r1-v",
+                "traditional": "喝咖啡",
+                "pinyin": "hē kāfēi",
+                "meaning": "drink coffee",
+                "suffix": "。"
               }
             ],
-            "english": "He did not come yesterday."
+            "english": "He did not drink coffee."
+          },
+          {
+            "id": "l11g2-s1-r2",
+            "subject": [
+              {
+                "id": "l11g2-s1-r2-s",
+                "traditional": "你",
+                "pinyin": "nǐ",
+                "meaning": "you"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l11g2-s1-r2-v",
+                "traditional": "吃早飯",
+                "simplified": "吃早饭",
+                "pinyin": "chī zǎofàn",
+                "meaning": "eat breakfast"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l11g2-s1-r2-le",
+                "traditional": "了",
+                "pinyin": "le",
+                "meaning": "marks a completed action"
+              },
+              {
+                "id": "l11g2-s1-r2-ma",
+                "traditional": "嗎",
+                "simplified": "吗",
+                "pinyin": "ma",
+                "meaning": "yes/no question ending",
+                "suffix": "？"
+              }
+            ],
+            "english": "Did you eat breakfast?"
+          },
+          {
+            "id": "l11g2-s1-r3",
+            "subject": [
+              {
+                "id": "l11g2-s1-r3-s",
+                "traditional": "你",
+                "pinyin": "nǐ",
+                "meaning": "you"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l11g2-s1-r3-v",
+                "traditional": "寫功課",
+                "simplified": "写功课",
+                "pinyin": "xiě gōngkè",
+                "meaning": "do homework"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l11g2-s1-r3-le",
+                "traditional": "了",
+                "pinyin": "le",
+                "meaning": "marks a completed action"
+              },
+              {
+                "id": "l11g2-s1-r3-mo",
+                "traditional": "沒（有）",
+                "simplified": "没（有）",
+                "pinyin": "méi (yǒu)",
+                "meaning": "or not",
+                "suffix": "？"
+              }
+            ],
+            "english": "Have you done your homework or not?"
           }
         ],
         "exampleIds": [
@@ -8488,7 +9248,8 @@
           "g2-example-6"
         ]
       }
-    ]
+    ],
+    "exerciseNote": "The book chooses 沒 / 沒有 / 還沒 in four blanks on printed page 250; these rebuilt items keep the printed answers."
   },
   "LESSON_ELEVEN_PART_ONE": {
     "id": "B1L11-P01-D01",
@@ -8513,7 +9274,7 @@
           248
         ],
         "audioReference": "11-1-3",
-        "explanation": "Put 了 after the action word to show it is finished. When talking about amounts (like “two cups” or “ten pages”), a single 了 means you stopped there, while two 了’s mean you reached that amount so far and may keep going.",
+        "explanation": "Put 了 right after a verb to mark a completed action. With amounts, one 了 means the action stopped there; adding a second 了 at the end means the action probably continues.",
         "lessonWorld": {
           "kind": "chat",
           "eyebrow": "Missing message",
@@ -8962,7 +9723,7 @@
             "id": "b1l11-g01-glossary-67",
             "traditional": "誰",
             "simplified": "谁",
-            "pinyin": "shuí",
+            "pinyin": "shéi",
             "meaning": "who"
           },
           {
@@ -10107,15 +10868,16 @@
                       "id": "l11g1-s1-r1-already",
                       "traditional": "已經",
                       "pinyin": "yǐjīng",
-                      "meaning": "already"
+                      "meaning": "already",
+                      "simplified": "已经"
                     }
                   ],
                   [
                     {
                       "id": "l11g1-s1-r1-come",
-                      "traditional": "來",
-                      "pinyin": "lái",
-                      "meaning": "come"
+                      "traditional": "到",
+                      "pinyin": "dào",
+                      "meaning": "arrive"
                     }
                   ],
                   [
@@ -10141,7 +10903,8 @@
                       "id": "l11g1-s1-r2-we",
                       "traditional": "我們",
                       "pinyin": "wǒmen",
-                      "meaning": "we; us"
+                      "meaning": "we; us",
+                      "simplified": "我们"
                     }
                   ],
                   [
@@ -10157,7 +10920,8 @@
                       "id": "l11g1-s1-r2-meet",
                       "traditional": "見面",
                       "pinyin": "jiànmiàn",
-                      "meaning": "meet"
+                      "meaning": "meet",
+                      "simplified": "见面"
                     }
                   ],
                   [
@@ -10234,7 +10998,8 @@
                       "traditional": "兩杯咖啡",
                       "pinyin": "liǎng bēi kāfēi",
                       "meaning": "two cups of coffee",
-                      "suffix": "。"
+                      "suffix": "。",
+                      "simplified": "两杯咖啡"
                     }
                   ],
                   []
@@ -10260,7 +11025,8 @@
                       "id": "l11g1-s2-r2-already",
                       "traditional": "已經",
                       "pinyin": "yǐjīng",
-                      "meaning": "already"
+                      "meaning": "already",
+                      "simplified": "已经"
                     }
                   ],
                   [
@@ -10276,7 +11042,8 @@
                       "id": "l11g1-s2-r2-coffee",
                       "traditional": "兩杯咖啡",
                       "pinyin": "liǎng bēi kāfēi",
-                      "meaning": "two cups of coffee"
+                      "meaning": "two cups of coffee",
+                      "simplified": "两杯咖啡"
                     }
                   ],
                   [
@@ -10305,7 +11072,8 @@
               "final 了"
             ]
           }
-        ]
+        ],
+        "exerciseNote": "The book completes five dialogues with 了 on printed page 248 and gives no answer key; these model answers follow the printed prompts."
       },
       {
         "bookId": 1,
@@ -10337,7 +11105,8 @@
         },
         "focusTerms": [
           "沒",
-          "還沒"
+          "還沒",
+          "不"
         ],
         "teachingGlossary": [
           {
@@ -10773,7 +11542,7 @@
             "id": "b1l11-g02-glossary-67",
             "traditional": "誰",
             "simplified": "谁",
-            "pinyin": "shuí",
+            "pinyin": "shéi",
             "meaning": "who"
           },
           {
@@ -11223,7 +11992,8 @@
                 "traditional": "來",
                 "pinyin": "lái",
                 "meaning": "come",
-                "suffix": "。"
+                "suffix": "。",
+                "simplified": "来"
               }
             ],
             "english": "He did not come yesterday."
@@ -11429,8 +12199,8 @@
             "id": "g2-example-1",
             "number": 1,
             "text": {
-              "traditional": "A: 他昨天來了嗎？ B: 他昨天沒來。",
-              "simplified": "A: 他昨天来了吗？ B: 他昨天没来。",
+              "traditional": "A：他昨天來了嗎？ B：他昨天沒來。",
+              "simplified": "A：他昨天来了吗？ B：他昨天没来。",
               "pinyin": "A: Tā zuótiān lái le ma? B: Tā zuótiān méi lái.",
               "english": "A: Did he come yesterday? B: He didn't come yesterday.",
               "words": [
@@ -11440,13 +12210,15 @@
                   "simplified": "他昨天来了吗",
                   "pinyin": "tā zuótiān lái le ma",
                   "meaning": "did he come yesterday",
-                  "suffix": "？"
+                  "suffix": "？",
+                  "prefix": "A："
                 },
                 {
                   "id": "b1l11-g2-e1-w2",
                   "traditional": "他昨天",
                   "pinyin": "tā zuótiān",
-                  "meaning": "he yesterday"
+                  "meaning": "he yesterday",
+                  "prefix": "B："
                 },
                 {
                   "id": "b1l11-g2-e1-w3",
@@ -11463,8 +12235,8 @@
             "id": "g2-example-2",
             "number": 2,
             "text": {
-              "traditional": "A: 他看書了沒有？ B: 他沒看書。",
-              "simplified": "A: 他看书了没有？ B: 他没看书。",
+              "traditional": "A：他看書了沒有？ B：他沒看書。",
+              "simplified": "A：他看书了没有？ B：他没看书。",
               "pinyin": "A: Tā kànshū le méiyǒu? B: Tā méi kànshū.",
               "english": "A: Did he read the book? B: He didn't read the book.",
               "words": [
@@ -11474,7 +12246,8 @@
                   "simplified": "他看书了没有",
                   "pinyin": "tā kànshū le méiyǒu",
                   "meaning": "did he read book",
-                  "suffix": "？"
+                  "suffix": "？",
+                  "prefix": "A："
                 },
                 {
                   "id": "b1l11-g2-e2-w2",
@@ -11482,7 +12255,8 @@
                   "simplified": "他没看书",
                   "pinyin": "tā méi kànshū",
                   "meaning": "he did not read book",
-                  "suffix": "。"
+                  "suffix": "。",
+                  "prefix": "B："
                 }
               ]
             }
@@ -11491,8 +12265,8 @@
             "id": "g2-example-3",
             "number": 3,
             "text": {
-              "traditional": "A: 爸爸喝咖啡了沒？ B: 爸爸沒喝咖啡。",
-              "simplified": "A: 爸爸喝咖啡了没？ B: 爸爸没喝咖啡。",
+              "traditional": "A：爸爸喝咖啡了沒？ B：爸爸沒喝咖啡。",
+              "simplified": "A：爸爸喝咖啡了没？ B：爸爸没喝咖啡。",
               "pinyin": "A: Bàba hē kāfēi le méi? B: Bàba méi hē kāfēi.",
               "english": "A: Did dad drink coffee? B: Dad didn't drink coffee.",
               "words": [
@@ -11502,7 +12276,8 @@
                   "simplified": "爸爸喝咖啡了没",
                   "pinyin": "bàba hē kāfēi le méi",
                   "meaning": "did dad drink coffee",
-                  "suffix": "？"
+                  "suffix": "？",
+                  "prefix": "A："
                 },
                 {
                   "id": "b1l11-g2-e3-w2",
@@ -11510,7 +12285,8 @@
                   "simplified": "爸爸没喝咖啡",
                   "pinyin": "bàba méi hē kāfēi",
                   "meaning": "dad did not drink coffee",
-                  "suffix": "。"
+                  "suffix": "。",
+                  "prefix": "B："
                 }
               ]
             }
@@ -11519,17 +12295,26 @@
             "id": "g2-example-4",
             "number": 4,
             "text": {
-              "traditional": "A: 老師要你看的書，你看了嗎？ B: 還沒看，我這幾天很忙。",
-              "simplified": "A: 老师要你看的书，你看了吗？ B: 还没看，我这几天很忙。",
+              "traditional": "A：老師要你看的書，你看了嗎？ B：還沒看，我這幾天很忙。",
+              "simplified": "A：老师要你看的书，你看了吗？ B：还没看，我这几天很忙。",
               "pinyin": "A: Lǎoshī yào nǐ kàn de shū, nǐ kàn le ma? B: Hái méi kàn, wǒ zhè jǐ tiān hěn máng.",
               "english": "A: Did you read the book the teacher asked you to read? B: Not yet; I have been very busy these days.",
               "words": [
+                {
+                  "id": "b1l11-g2-e4-w0",
+                  "traditional": "老師要你看的書",
+                  "simplified": "老师要你看的书",
+                  "pinyin": "lǎoshī yào nǐ kàn de shū",
+                  "meaning": "the book the teacher wanted you to read",
+                  "prefix": "A：",
+                  "suffix": "，"
+                },
                 {
                   "id": "b1l11-g2-e4-w1",
                   "traditional": "你看了嗎",
                   "simplified": "你看了吗",
                   "pinyin": "nǐ kàn le ma",
-                  "meaning": "did you read",
+                  "meaning": "have you read it?",
                   "suffix": "？"
                 },
                 {
@@ -11537,7 +12322,8 @@
                   "traditional": "還沒看",
                   "simplified": "还没看",
                   "pinyin": "hái méi kàn",
-                  "meaning": "haven't read yet",
+                  "meaning": "not yet",
+                  "prefix": "B：",
                   "suffix": "，"
                 },
                 {
@@ -11545,7 +12331,7 @@
                   "traditional": "我這幾天很忙",
                   "simplified": "我这几天很忙",
                   "pinyin": "wǒ zhè jǐ tiān hěn máng",
-                  "meaning": "I am busy these days",
+                  "meaning": "I have been busy these days",
                   "suffix": "。"
                 }
               ]
@@ -11555,17 +12341,26 @@
             "id": "g2-example-5",
             "number": 5,
             "text": {
-              "traditional": "A: 你今天去看醫生了，那你吃藥了沒有？ B: 還沒吃，現在要吃了。",
-              "simplified": "A: 你今天去看医生了，那你吃药了没有？ B: 还没吃，现在要吃了。",
+              "traditional": "A：你今天去看醫生了，那你吃藥了沒有？ B：還沒吃，現在要吃了。",
+              "simplified": "A：你今天去看医生了，那你吃药了没有？ B：还没吃，现在要吃了。",
               "pinyin": "A: Nǐ jīntiān qù kàn yīshēng le, nà nǐ chīyào le méiyǒu? B: Hái méi chī, xiànzài yào chī le.",
               "english": "A: You went to see the doctor today, so did you take your medicine? B: Not yet, but I'm going to take it now.",
               "words": [
                 {
+                  "id": "b1l11-g2-e5-w0",
+                  "traditional": "你今天去看醫生了",
+                  "simplified": "你今天去看医生了",
+                  "pinyin": "nǐ jīntiān qù kàn yīshēng le",
+                  "meaning": "you went to the doctor today",
+                  "prefix": "A：",
+                  "suffix": "，"
+                },
+                {
                   "id": "b1l11-g2-e5-w1",
-                  "traditional": "吃藥了沒有",
-                  "simplified": "吃药了没有",
-                  "pinyin": "chīyào le méiyǒu",
-                  "meaning": "took medicine yet",
+                  "traditional": "那你吃藥了沒有",
+                  "simplified": "那你吃药了没有",
+                  "pinyin": "nà nǐ chī yào le méiyǒu",
+                  "meaning": "so have you taken the medicine?",
                   "suffix": "？"
                 },
                 {
@@ -11573,7 +12368,8 @@
                   "traditional": "還沒吃",
                   "simplified": "还没吃",
                   "pinyin": "hái méi chī",
-                  "meaning": "haven't taken yet",
+                  "meaning": "not yet",
+                  "prefix": "B：",
                   "suffix": "，"
                 },
                 {
@@ -11581,7 +12377,7 @@
                   "traditional": "現在要吃了",
                   "simplified": "现在要吃了",
                   "pinyin": "xiànzài yào chī le",
-                  "meaning": "going to take now",
+                  "meaning": "I am going to take it now",
                   "suffix": "。"
                 }
               ]
@@ -11591,8 +12387,8 @@
             "id": "g2-example-6",
             "number": 6,
             "text": {
-              "traditional": "A: 我們都還沒寫功課，他寫了沒？ B: 我不知道，也許也還沒寫。",
-              "simplified": "A: 我们都还没写功课，他写了没？ B: 我不知道，也许也还没写。",
+              "traditional": "A：我們都還沒寫功課，他寫了沒？ B：我不知道，也許也還沒寫。",
+              "simplified": "A：我们都还没写功课，他写了没？ B：我不知道，也许也还没写。",
               "pinyin": "A: Wǒmen dōu hái méi xiě gōngkè, tā xiě le méi? B: Wǒ bù zhīdào, yěxǔ yě hái méi xiě.",
               "english": "A: None of us have done our homework yet; has he done his? B: I don't know, maybe he hasn't done it either.",
               "words": [
@@ -11602,7 +12398,7 @@
                   "simplified": "我们都还没",
                   "pinyin": "wǒmen dōu hái méi",
                   "meaning": "none of us yet",
-                  "prefix": "A: "
+                  "prefix": "A："
                 },
                 {
                   "id": "l11g2-e6-w2",
@@ -11625,7 +12421,7 @@
                   "traditional": "我不知道",
                   "pinyin": "wǒ bù zhīdào",
                   "meaning": "I don't know",
-                  "prefix": "B: ",
+                  "prefix": "B：",
                   "suffix": "，"
                 },
                 {
@@ -11794,7 +12590,7 @@
               {
                 "id": "l11g2-q4-tile2",
                 "traditional": "不看了",
-                "pinyin": "bù kàn le",
+                "pinyin": "bú kàn le",
                 "meaning": "won't read anymore"
               }
             ],
@@ -11905,21 +12701,96 @@
                 "grammar": [
                   {
                     "id": "l11g2-s1-r1-g",
-                    "traditional": "昨天沒",
-                    "simplified": "昨天没",
-                    "pinyin": "zuótiān méi",
-                    "meaning": "yesterday did not"
+                    "traditional": "沒",
+                    "simplified": "没",
+                    "pinyin": "méi",
+                    "meaning": "did not (past)"
                   }
                 ],
                 "complement": [
                   {
-                    "id": "l11g2-s1-r1-c",
-                    "traditional": "來",
-                    "pinyin": "lái",
-                    "meaning": "come"
+                    "id": "l11g2-s1-r1-v",
+                    "traditional": "喝咖啡",
+                    "pinyin": "hē kāfēi",
+                    "meaning": "drink coffee",
+                    "suffix": "。"
                   }
                 ],
-                "english": "He did not come yesterday."
+                "english": "He did not drink coffee."
+              },
+              {
+                "id": "l11g2-s1-r2",
+                "subject": [
+                  {
+                    "id": "l11g2-s1-r2-s",
+                    "traditional": "你",
+                    "pinyin": "nǐ",
+                    "meaning": "you"
+                  }
+                ],
+                "grammar": [
+                  {
+                    "id": "l11g2-s1-r2-v",
+                    "traditional": "吃早飯",
+                    "simplified": "吃早饭",
+                    "pinyin": "chī zǎofàn",
+                    "meaning": "eat breakfast"
+                  }
+                ],
+                "complement": [
+                  {
+                    "id": "l11g2-s1-r2-le",
+                    "traditional": "了",
+                    "pinyin": "le",
+                    "meaning": "marks a completed action"
+                  },
+                  {
+                    "id": "l11g2-s1-r2-ma",
+                    "traditional": "嗎",
+                    "simplified": "吗",
+                    "pinyin": "ma",
+                    "meaning": "yes/no question ending",
+                    "suffix": "？"
+                  }
+                ],
+                "english": "Did you eat breakfast?"
+              },
+              {
+                "id": "l11g2-s1-r3",
+                "subject": [
+                  {
+                    "id": "l11g2-s1-r3-s",
+                    "traditional": "你",
+                    "pinyin": "nǐ",
+                    "meaning": "you"
+                  }
+                ],
+                "grammar": [
+                  {
+                    "id": "l11g2-s1-r3-v",
+                    "traditional": "寫功課",
+                    "simplified": "写功课",
+                    "pinyin": "xiě gōngkè",
+                    "meaning": "do homework"
+                  }
+                ],
+                "complement": [
+                  {
+                    "id": "l11g2-s1-r3-le",
+                    "traditional": "了",
+                    "pinyin": "le",
+                    "meaning": "marks a completed action"
+                  },
+                  {
+                    "id": "l11g2-s1-r3-mo",
+                    "traditional": "沒（有）",
+                    "simplified": "没（有）",
+                    "pinyin": "méi (yǒu)",
+                    "meaning": "or not",
+                    "suffix": "？"
+                  }
+                ],
+                "english": "Have you done your homework or not?"
               }
             ],
             "exampleIds": [
@@ -11976,7 +12847,8 @@
               "g2-example-6"
             ]
           }
-        ]
+        ],
+        "exerciseNote": "The book chooses 沒 / 沒有 / 還沒 in four blanks on printed page 250; these rebuilt items keep the printed answers."
       },
       {
         "bookId": 1,
@@ -11987,14 +12859,14 @@
         "partId": 1,
         "grammarNumber": 3,
         "titleTraditional": "把聚光燈放在過去的細節上",
-        "titleEnglish": "Spotlight One Detail with 是…的",
+        "titleEnglish": "Emphasize One Past Detail with 是…的",
         "learnerPromise": "Point out when, where, how, or with whom something happened.",
         "printedPages": [
           251,
           252
         ],
         "audioReference": "11-1-3",
-        "explanation": "The event is already known. 是…的 puts the spotlight on one detail: when, where, how, or with whom it happened.",
+        "explanation": "When the past event is already known, use 是…的 to highlight one specific detail: when, where, how, or with whom it happened. 是 is optional in a positive sentence, but it cannot be dropped in a negative sentence.",
         "lessonWorld": {
           "kind": "chat",
           "eyebrow": "Recovered clue",
@@ -12444,7 +13316,7 @@
             "id": "b1l11-g03-glossary-67",
             "traditional": "誰",
             "simplified": "谁",
-            "pinyin": "shuí",
+            "pinyin": "shéi",
             "meaning": "who"
           },
           {
@@ -12874,9 +13746,10 @@
             "subject": [
               {
                 "id": "l11g3-p1-s1",
-                "traditional": "他",
-                "pinyin": "tā",
-                "meaning": "he; him"
+                "traditional": "他們",
+                "pinyin": "tāmen",
+                "meaning": "they",
+                "simplified": "他们"
               }
             ],
             "grammar": [
@@ -12909,17 +13782,17 @@
                 "suffix": "。"
               }
             ],
-            "english": "He returned home yesterday."
+            "english": "They returned home yesterday."
           },
           {
             "id": "l11g3-p2",
             "subject": [
               {
                 "id": "l11g3-p2-s1",
-                "traditional": "我們",
-                "simplified": "我们",
-                "pinyin": "wǒmen",
-                "meaning": "we; us"
+                "traditional": "我",
+                "simplified": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
               }
             ],
             "grammar": [
@@ -12943,17 +13816,23 @@
                 "traditional": "認識",
                 "simplified": "认识",
                 "pinyin": "rènshi",
-                "meaning": "meet; get to know"
+                "meaning": "know; meet"
               },
               {
                 "id": "l11g3-p2-c2",
+                "traditional": "他",
+                "pinyin": "tā",
+                "meaning": "him"
+              },
+              {
+                "id": "l11g3-p2-c3",
                 "traditional": "的",
                 "pinyin": "de",
-                "meaning": "shows belonging (like “of”)",
+                "meaning": "the detail (是……的)",
                 "suffix": "。"
               }
             ],
-            "english": "We met online."
+            "english": "I met him online."
           },
           {
             "id": "l11g3-p3",
@@ -12995,13 +13874,113 @@
               },
               {
                 "id": "l11g3-p3-c2",
+                "traditional": "買",
+                "simplified": "买",
+                "pinyin": "mǎi",
+                "meaning": "buy"
+              },
+              {
+                "id": "l11g3-p3-c3",
+                "traditional": "（東西）",
+                "simplified": "（东西）",
+                "pinyin": "(dōngxi)",
+                "meaning": "things"
+              },
+              {
+                "id": "l11g3-p3-c4",
                 "traditional": "的",
                 "pinyin": "de",
-                "meaning": "shows belonging (like “of”)",
+                "meaning": "the detail (是……的)",
                 "suffix": "。"
               }
             ],
-            "english": "I went with a classmate."
+            "english": "I went shopping with a classmate."
+          },
+          {
+            "id": "l11g3-p4",
+            "subject": [
+              {
+                "id": "l11g3-p4-s",
+                "traditional": "你",
+                "pinyin": "nǐ",
+                "meaning": "you"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l11g3-p4-be",
+                "traditional": "是",
+                "pinyin": "shì",
+                "meaning": "be (is; are)"
+              },
+              {
+                "id": "l11g3-p4-where",
+                "traditional": "從哪裡",
+                "simplified": "从哪里",
+                "pinyin": "cóng nǎlǐ",
+                "meaning": "from where"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l11g3-p4-come",
+                "traditional": "來",
+                "simplified": "来",
+                "pinyin": "lái",
+                "meaning": "come"
+              },
+              {
+                "id": "l11g3-p4-de",
+                "traditional": "的",
+                "pinyin": "de",
+                "meaning": "the detail (是……的)",
+                "suffix": "？"
+              }
+            ],
+            "english": "Where did you come from?"
+          },
+          {
+            "id": "l11g3-p5",
+            "subject": [
+              {
+                "id": "l11g3-p5-s",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l11g3-p5-be",
+                "traditional": "是",
+                "pinyin": "shì",
+                "meaning": "be (is; are)"
+              },
+              {
+                "id": "l11g3-p5-school",
+                "traditional": "從學校",
+                "simplified": "从学校",
+                "pinyin": "cóng xuéxiào",
+                "meaning": "from school"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l11g3-p5-come",
+                "traditional": "來",
+                "simplified": "来",
+                "pinyin": "lái",
+                "meaning": "come"
+              },
+              {
+                "id": "l11g3-p5-de",
+                "traditional": "的",
+                "pinyin": "de",
+                "meaning": "the detail (是……的)",
+                "suffix": "。"
+              }
+            ],
+            "english": "It was school where I came from."
           }
         ],
         "confusion": {
@@ -13203,8 +14182,8 @@
             "number": 1,
             "teachingNote": "Inquiring about arrival time.",
             "text": {
-              "traditional": "A: 他已經到學校了。\nB: 他是幾點到的？\nA: 他是三點三十分到的。",
-              "simplified": "A: 他已经到学校了。\nB: 他是几点到的？\nA: 他是三点三十分到的。",
+              "traditional": "A：他已經到學校了。\nB：他是幾點到的？\nA：他是三點三十分到的。",
+              "simplified": "A：他已经到学校了。\nB：他是几点到的？\nA：他是三点三十分到的。",
               "pinyin": "A: Tā yǐjīng dào xuéxiào le.\nB: Tā shì jǐ diǎn dào de?\nA: Tā shì sān diǎn sānshí fēn dào de.",
               "english": "A: He has already arrived at school.\nB: What time did he arrive?\nA: He arrived at 3:30.",
               "words": [
@@ -13213,7 +14192,7 @@
                   "traditional": "他",
                   "pinyin": "tā",
                   "meaning": "he; him",
-                  "prefix": "A: "
+                  "prefix": "A："
                 },
                 {
                   "id": "l11g3-e1-w2",
@@ -13247,7 +14226,7 @@
                   "traditional": "他",
                   "pinyin": "tā",
                   "meaning": "he; him",
-                  "prefix": "B: "
+                  "prefix": "B："
                 },
                 {
                   "id": "l11g3-e1-w7",
@@ -13280,7 +14259,7 @@
                   "traditional": "他",
                   "pinyin": "tā",
                   "meaning": "he; him",
-                  "prefix": "A: "
+                  "prefix": "A："
                 },
                 {
                   "id": "l11g3-e1-w12",
@@ -13316,8 +14295,8 @@
             "number": 2,
             "teachingNote": "Inquiring about method of transportation.",
             "text": {
-              "traditional": "A: 張先生來了。\nB: 他是開車來的嗎？\nA: 不是，他是走路來的。",
-              "simplified": "A: 张先生来了。\nB: 他是开车来的吗？\nA: 不是，他是走路来的。",
+              "traditional": "A：張先生來了。\nB：他是開車來的嗎？\nA：不是，他是走路來的。",
+              "simplified": "A：张先生来了。\nB：他是开车来的吗？\nA：不是，他是走路来的。",
               "pinyin": "A: Zhāng xiānsheng lái le.\nB: Tā shì kāichē lái de ma?\nA: Bú shì, tā shì zǒulù lái de.",
               "english": "A: Mr. Zhang has arrived.\nB: Did he come by driving?\nA: No, he came on foot.",
               "words": [
@@ -13327,7 +14306,7 @@
                   "simplified": "张先生",
                   "pinyin": "Zhāng xiānsheng",
                   "meaning": "Mr. Zhang",
-                  "prefix": "A: "
+                  "prefix": "A："
                 },
                 {
                   "id": "l11g3-e2-w2",
@@ -13348,7 +14327,7 @@
                   "traditional": "他",
                   "pinyin": "tā",
                   "meaning": "he; him",
-                  "prefix": "B: "
+                  "prefix": "B："
                 },
                 {
                   "id": "l11g3-e2-w5",
@@ -13389,7 +14368,7 @@
                   "traditional": "不是",
                   "pinyin": "bú shì",
                   "meaning": "no; is not",
-                  "prefix": "A: ",
+                  "prefix": "A：",
                   "suffix": "，"
                 },
                 {
@@ -13432,8 +14411,8 @@
             "number": 3,
             "teachingNote": "Inquiring about where an action took place.",
             "text": {
-              "traditional": "A: 你的中文說得真好，你是在哪裡學的？\nB: 我在台灣學的。",
-              "simplified": "A: 你的中文说得真好，你是在哪里学的？\nB: 我在台湾学的。",
+              "traditional": "A：你的中文說得真好，你是在哪裡學的？\nB：我在台灣學的。",
+              "simplified": "A：你的中文说得真好，你是在哪里学的？\nB：我在台湾学的。",
               "pinyin": "A: Nǐ de Zhōngwén shuō de zhēn hǎo, nǐ shì zài nǎlǐ xué de?\nB: Wǒ zài Táiwān xué de.",
               "english": "A: Your Chinese is really good! Where did you learn it?\nB: I learned it in Taiwan.",
               "words": [
@@ -13442,7 +14421,7 @@
                   "traditional": "你的",
                   "pinyin": "nǐ de",
                   "meaning": "your",
-                  "prefix": "A: "
+                  "prefix": "A："
                 },
                 {
                   "id": "l11g3-e3-w2",
@@ -13508,7 +14487,7 @@
                   "traditional": "我",
                   "pinyin": "wǒ",
                   "meaning": "I; me",
-                  "prefix": "B: "
+                  "prefix": "B："
                 },
                 {
                   "id": "l11g3-e3-w12",
@@ -13539,8 +14518,8 @@
             "number": 4,
             "teachingNote": "Inquiring about who did the action.",
             "text": {
-              "traditional": "A: 你知道她的手機號碼嗎？是誰告訴你的？\nB: 是她媽媽告訴我的。",
-              "simplified": "A: 你知道她的手机号码吗？是谁告诉你的？\nB: 是她妈妈告诉我的。",
+              "traditional": "A：你知道她的手機號碼嗎？是誰告訴你的？\nB：是她媽媽告訴我的。",
+              "simplified": "A：你知道她的手机号码吗？是谁告诉你的？\nB：是她妈妈告诉我的。",
               "pinyin": "A: Nǐ zhīdào tā de shǒujī hàomǎ ma? Shì shéi gàosù nǐ de?\nB: Shì tā māma gàosù wǒ de.",
               "english": "A: Do you know her cell phone number? Who told you?\nB: Her mother told me.",
               "words": [
@@ -13549,7 +14528,7 @@
                   "traditional": "你",
                   "pinyin": "nǐ",
                   "meaning": "you",
-                  "prefix": "A: "
+                  "prefix": "A："
                 },
                 {
                   "id": "l11g3-e4-w2",
@@ -13616,7 +14595,7 @@
                   "traditional": "是",
                   "pinyin": "shì",
                   "meaning": "be (is; are)",
-                  "prefix": "B: "
+                  "prefix": "B："
                 },
                 {
                   "id": "l11g3-e4-w12",
@@ -13848,7 +14827,8 @@
             "correctFeedback": "The place comes before 認識.",
             "repairFeedback": "Put the place before the event."
           }
-        ]
+        ],
+        "exerciseNote": "The book completes three dialogues with 是……的 on printed pages 251–252 and gives no answer key; these model answers follow the printed prompts."
       }
     ],
     "dialogue": {
@@ -13906,7 +14886,8 @@
                 "id": "l11d1-1-word-5",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you"
+                "meaning": "you",
+                "simplified": "你"
               },
               {
                 "id": "l11d1-1-word-6",
@@ -14058,7 +15039,8 @@
                 "traditional": "妳",
                 "pinyin": "nǐ",
                 "meaning": "you",
-                "prefix": "。"
+                "prefix": "。",
+                "simplified": "你"
               },
               {
                 "id": "l11d1-4-word-5",
@@ -14528,7 +15510,8 @@
                 "id": "l11d1-9-word-1",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you"
+                "meaning": "you",
+                "simplified": "你"
               },
               {
                 "id": "l11d1-9-word-2",
@@ -14541,7 +15524,8 @@
                 "traditional": "妳",
                 "pinyin": "nǐ",
                 "meaning": "you",
-                "prefix": "？"
+                "prefix": "？",
+                "simplified": "你"
               },
               {
                 "id": "l11d1-9-word-4",
@@ -14652,7 +15636,7 @@
           259
         ],
         "audioReference": "11-2-3",
-        "explanation": "先 starts the first action. 等 names what you wait for. 再 starts the later action.",
+        "explanation": "先 starts the first action. 等 names what you wait for. 再 starts the later action. With 再 alone, the action is not happening now — it waits for a later time. With 等, the second action waits until the first one happens.",
         "lessonWorld": {
           "kind": "chat",
           "eyebrow": "Next message",
@@ -15103,7 +16087,7 @@
             "id": "b1l11-g04-glossary-67",
             "traditional": "誰",
             "simplified": "谁",
-            "pinyin": "shuí",
+            "pinyin": "shéi",
             "meaning": "who"
           },
           {
@@ -15533,128 +16517,105 @@
             "subject": [
               {
                 "id": "l11g4-p1-s1",
-                "traditional": "先",
-                "pinyin": "xiān",
-                "meaning": "first"
-              },
-              {
-                "id": "l11g4-p1-s2",
-                "traditional": "做功課",
-                "simplified": "做功课",
-                "pinyin": "zuò gōngkè",
-                "meaning": "do homework"
+                "traditional": "沒有時間了",
+                "pinyin": "méiyǒu shíjiān le",
+                "meaning": "there is no time left",
+                "suffix": "，",
+                "simplified": "没有時間了"
               }
             ],
             "grammar": [
               {
                 "id": "l11g4-p1-g1",
-                "traditional": "等",
-                "pinyin": "děng",
-                "meaning": "wait until"
+                "traditional": "我明天",
+                "pinyin": "wǒ míngtiān",
+                "meaning": "I tomorrow"
               },
               {
                 "id": "l11g4-p1-g2",
-                "traditional": "爸爸",
-                "pinyin": "bàba",
-                "meaning": "father"
-              },
-              {
-                "id": "l11g4-p1-g3",
-                "traditional": "回家",
-                "pinyin": "huí jiā",
-                "meaning": "return home"
+                "traditional": "再",
+                "pinyin": "zài",
+                "meaning": "then; not until later"
               }
             ],
             "complement": [
               {
                 "id": "l11g4-p1-c1",
-                "traditional": "再",
-                "pinyin": "zài",
-                "meaning": "then; after that"
-              },
-              {
-                "id": "l11g4-p1-c2",
-                "traditional": "吃飯",
-                "simplified": "吃饭",
-                "pinyin": "chīfàn",
-                "meaning": "eat a meal",
+                "traditional": "告訴你",
+                "simplified": "告诉你",
+                "pinyin": "gàosù nǐ",
+                "meaning": "tell you",
                 "suffix": "。"
               }
             ],
-            "english": "Do homework first; wait for Dad; then eat."
+            "english": "I am running out of time; I will let you know tomorrow then."
           },
           {
             "id": "l11g4-p2",
             "subject": [
               {
                 "id": "l11g4-p2-s1",
-                "traditional": "先",
-                "pinyin": "xiān",
-                "meaning": "first"
-              },
-              {
-                "id": "l11g4-p2-s2",
-                "traditional": "練習",
-                "simplified": "练习",
-                "pinyin": "liànxí",
-                "meaning": "practice"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "l11g4-p2-g1",
                 "traditional": "等",
                 "pinyin": "děng",
                 "meaning": "wait until"
               },
               {
-                "id": "l11g4-p2-g2",
-                "traditional": "老師",
-                "simplified": "老师",
-                "pinyin": "lǎoshī",
-                "meaning": "teacher"
+                "id": "l11g4-p2-s2",
+                "traditional": "她起床了",
+                "pinyin": "tā qǐchuáng le",
+                "meaning": "she gets up",
+                "suffix": "，"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l11g4-p2-g1",
+                "traditional": "你",
+                "pinyin": "nǐ",
+                "meaning": "you"
               },
               {
-                "id": "l11g4-p2-g3",
-                "traditional": "來",
-                "simplified": "来",
-                "pinyin": "lái",
-                "meaning": "come"
+                "id": "l11g4-p2-g2",
+                "traditional": "再",
+                "pinyin": "zài",
+                "meaning": "then"
               }
             ],
             "complement": [
               {
                 "id": "l11g4-p2-c1",
-                "traditional": "再",
-                "pinyin": "zài",
-                "meaning": "then; after that"
-              },
-              {
-                "id": "l11g4-p2-c2",
-                "traditional": "上課",
-                "simplified": "上课",
-                "pinyin": "shàngkè",
-                "meaning": "attend class",
+                "traditional": "跟她說",
+                "simplified": "跟她说",
+                "pinyin": "gēn tā shuō",
+                "meaning": "talk to her",
                 "suffix": "。"
               }
             ],
-            "english": "Practice first; wait for the teacher; then start class."
+            "english": "Wait till she wakes up, then you can tell her."
           },
           {
             "id": "l11g4-p3",
             "subject": [
               {
                 "id": "l11g4-p3-s1",
+                "traditional": "你們",
+                "simplified": "你们",
+                "pinyin": "nǐmen",
+                "meaning": "you all"
+              },
+              {
+                "id": "l11g4-p3-s2",
                 "traditional": "先",
                 "pinyin": "xiān",
                 "meaning": "first"
               },
               {
-                "id": "l11g4-p3-s2",
-                "traditional": "決定",
-                "simplified": "决定",
-                "pinyin": "juédìng",
-                "meaning": "decide"
+                "id": "l11g4-p3-s3",
+                "traditional": "練習",
+                "simplified": "练习",
+                "pinyin": "liànxí",
+                "meaning": "practice",
+                "suffix": "，"
               }
             ],
             "grammar": [
@@ -15666,9 +16627,11 @@
               },
               {
                 "id": "l11g4-p3-g2",
-                "traditional": "朋友",
-                "pinyin": "péngyǒu",
-                "meaning": "friend"
+                "traditional": "老師來了",
+                "simplified": "老师来了",
+                "pinyin": "lǎoshī lái le",
+                "meaning": "the teacher comes",
+                "suffix": "，"
               }
             ],
             "complement": [
@@ -15676,18 +16639,88 @@
                 "id": "l11g4-p3-c1",
                 "traditional": "再",
                 "pinyin": "zài",
-                "meaning": "then; after that"
+                "meaning": "then"
               },
               {
                 "id": "l11g4-p3-c2",
-                "traditional": "打電話",
-                "simplified": "打电话",
-                "pinyin": "dǎ diànhuà",
-                "meaning": "make a phone call",
+                "traditional": "上課",
+                "simplified": "上课",
+                "pinyin": "shàngkè",
+                "meaning": "start class",
                 "suffix": "。"
               }
             ],
-            "english": "Decide first; wait for the friend; then call."
+            "english": "Practice first; when the teacher comes, then class starts."
+          },
+          {
+            "id": "l11g4-p4",
+            "subject": [
+              {
+                "id": "l11g4-p4-s1",
+                "traditional": "你",
+                "pinyin": "nǐ",
+                "meaning": "you"
+              },
+              {
+                "id": "l11g4-p4-s2",
+                "traditional": "先",
+                "pinyin": "xiān",
+                "meaning": "first"
+              },
+              {
+                "id": "l11g4-p4-s3",
+                "traditional": "做功課",
+                "simplified": "做功课",
+                "pinyin": "zuò gōngkè",
+                "meaning": "do homework",
+                "suffix": "，"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l11g4-p4-g1",
+                "traditional": "等",
+                "pinyin": "děng",
+                "meaning": "wait until"
+              },
+              {
+                "id": "l11g4-p4-g2",
+                "traditional": "爸爸回家了",
+                "pinyin": "bàba huí jiā le",
+                "meaning": "Dad comes home",
+                "suffix": "，"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l11g4-p4-c1",
+                "traditional": "我們",
+                "simplified": "我们",
+                "pinyin": "wǒmen",
+                "meaning": "we"
+              },
+              {
+                "id": "l11g4-p4-c2",
+                "traditional": "再",
+                "pinyin": "zài",
+                "meaning": "then"
+              },
+              {
+                "id": "l11g4-p4-c3",
+                "traditional": "一起",
+                "pinyin": "yìqǐ",
+                "meaning": "together"
+              },
+              {
+                "id": "l11g4-p4-c4",
+                "traditional": "吃晚飯",
+                "simplified": "吃晚饭",
+                "pinyin": "chī wǎnfàn",
+                "meaning": "eat dinner",
+                "suffix": "。"
+              }
+            ],
+            "english": "Do your homework first; when Dad comes home, we will have dinner together."
           }
         ],
         "confusion": {
@@ -15736,7 +16769,8 @@
                     "traditional": "電視",
                     "pinyin": "diànshì",
                     "meaning": "television",
-                    "suffix": "。"
+                    "suffix": "。",
+                    "simplified": "电视"
                   }
                 ]
               }
@@ -15877,10 +16911,10 @@
             "number": 1,
             "teachingNote": "The first step is left out; the wait is named.",
             "text": {
-              "traditional": "等她睡醒了，再跟她說。",
-              "simplified": "等她睡醒了，再跟她说。",
-              "pinyin": "Děng tā shuìxǐng le, zài gēn tā shuō.",
-              "english": "Wait until she wakes, then tell her.",
+              "traditional": "等她起床了，你再跟她說。",
+              "simplified": "等她起床了，你再跟她说。",
+              "pinyin": "Děng tā qǐchuáng le, nǐ zài gēn tā shuō.",
+              "english": "Wait until she wakes up, then you can tell her.",
               "words": [
                 {
                   "id": "l11g4-e1-word-1",
@@ -15899,14 +16933,20 @@
                   "traditional": "了",
                   "pinyin": "le",
                   "meaning": "shows an action is finished",
-                  "prefix": "睡醒"
+                  "prefix": "起床",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l11g4-e1-w-you",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you"
                 },
                 {
                   "id": "l11g4-e1-word-4",
                   "traditional": "再",
                   "pinyin": "zài",
-                  "meaning": "then; after that",
-                  "prefix": "，"
+                  "meaning": "then; after that"
                 },
                 {
                   "id": "l11g4-e1-word-5",
@@ -15936,17 +16976,23 @@
             "number": 2,
             "teachingNote": "What you wait for comes after 等.",
             "text": {
-              "traditional": "天氣太冷了，等車來了，我們再出去。",
-              "simplified": "天气太冷了，等车来了，我们再出去。",
-              "pinyin": "Tiānqì tài lěng le, děng chē lái le, wǒmen zài chūqù.",
-              "english": "It is too cold; wait for the car, then go outside.",
+              "traditional": "天氣太冷了，等車來了，我們再去外面。",
+              "simplified": "天气太冷了，等车来了，我们再去外面。",
+              "pinyin": "Tiānqì tài lěng le, děng chē lái le, wǒmen zài qù wàimiàn.",
+              "english": "It is too cold; wait for the car, then go back outside.",
               "words": [
+                {
+                  "id": "l11g4-e2-weather",
+                  "traditional": "天氣",
+                  "simplified": "天气",
+                  "pinyin": "tiānqì",
+                  "meaning": "weather"
+                },
                 {
                   "id": "l11g4-e2-word-1",
                   "traditional": "太",
                   "pinyin": "tài",
-                  "meaning": "too; very",
-                  "prefix": "天氣"
+                  "meaning": "too; very"
                 },
                 {
                   "id": "l11g4-e2-word-2",
@@ -15963,12 +17009,18 @@
                   "prefix": "，"
                 },
                 {
+                  "id": "l11g4-e2-come-bus",
+                  "traditional": "車",
+                  "simplified": "车",
+                  "pinyin": "chē",
+                  "meaning": "bus"
+                },
+                {
                   "id": "l11g4-e2-word-4",
                   "traditional": "來",
                   "simplified": "来",
                   "pinyin": "lái",
-                  "meaning": "come",
-                  "prefix": "車"
+                  "meaning": "come"
                 },
                 {
                   "id": "l11g4-e2-word-5",
@@ -15995,8 +17047,7 @@
                   "traditional": "去",
                   "pinyin": "qù",
                   "meaning": "go",
-                  "prefix": "出",
-                  "suffix": "。"
+                  "suffix": "外面。"
                 }
               ]
             }
@@ -16066,8 +17117,15 @@
                   "id": "l11g4-e3-word-9",
                   "traditional": "吃",
                   "pinyin": "chī",
-                  "meaning": "eat",
-                  "suffix": "晚飯。"
+                  "meaning": "eat"
+                },
+                {
+                  "id": "l11g4-e3-dinner",
+                  "traditional": "晚飯",
+                  "simplified": "晚饭",
+                  "pinyin": "wǎnfàn",
+                  "meaning": "dinner",
+                  "suffix": "。"
                 }
               ]
             }
@@ -16077,11 +17135,19 @@
             "number": 4,
             "teachingNote": "A fun example from the book.",
             "text": {
-              "traditional": "我們先吃冰淇淋，等不熱了，再去海邊玩。",
-              "simplified": "我们先吃冰淇淋，等不热了，再去海边玩。",
-              "pinyin": "Wǒmen xiān chī bīngqílín, děng bú rè le, zài qù hǎibiān wán.",
-              "english": "Let us eat ice cream first, wait until it is cooler, then go to the beach.",
+              "traditional": "對啊，我們先去吃冰淇淋，等不熱了，再去海邊玩，好不好？",
+              "simplified": "对啊，我们先去吃冰淇淋，等不热了，再去海边玩，好不好？",
+              "pinyin": "Duì a, wǒmen xiān qù chī bīngqílín, děng bú rè le, zài qù hǎibiān wán, hǎo bù hǎo?",
+              "english": "Right — let us go eat ice cream first, and when it is not so hot, then go play at the beach, okay?",
               "words": [
+                {
+                  "id": "l11g4-e4-yes",
+                  "traditional": "對啊",
+                  "simplified": "对啊",
+                  "pinyin": "duì a",
+                  "meaning": "right",
+                  "suffix": "，"
+                },
                 {
                   "id": "l11g4-e4-word-1",
                   "traditional": "我們",
@@ -16094,6 +17160,12 @@
                   "traditional": "先",
                   "pinyin": "xiān",
                   "meaning": "first"
+                },
+                {
+                  "id": "l11g4-e4-w-qu",
+                  "traditional": "去",
+                  "pinyin": "qù",
+                  "meaning": "go"
                 },
                 {
                   "id": "l11g4-e4-word-3",
@@ -16111,15 +17183,21 @@
                 {
                   "id": "l11g4-e4-word-5",
                   "traditional": "不",
-                  "pinyin": "bù",
+                  "pinyin": "bú",
                   "meaning": "not"
+                },
+                {
+                  "id": "l11g4-e4-hot",
+                  "traditional": "熱",
+                  "simplified": "热",
+                  "pinyin": "rè",
+                  "meaning": "hot"
                 },
                 {
                   "id": "l11g4-e4-word-6",
                   "traditional": "了",
                   "pinyin": "le",
-                  "meaning": "shows an action is finished",
-                  "prefix": "熱"
+                  "meaning": "shows an action is finished"
                 },
                 {
                   "id": "l11g4-e4-word-7",
@@ -16132,11 +17210,385 @@
                   "id": "l11g4-e4-word-8",
                   "traditional": "去",
                   "pinyin": "qù",
-                  "meaning": "go",
-                  "suffix": "海邊玩。"
+                  "meaning": "go"
+                },
+                {
+                  "id": "l11g4-e4-w-wan",
+                  "traditional": "海邊玩",
+                  "simplified": "海边玩",
+                  "pinyin": "hǎibiān wán",
+                  "meaning": "play at the beach",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l11g4-e4-tail",
+                  "traditional": "好不好",
+                  "pinyin": "hǎo bù hǎo",
+                  "meaning": "okay?",
+                  "suffix": "？"
                 }
               ]
             }
+          },
+          {
+            "id": "l11g4-e5",
+            "number": 5,
+            "text": {
+              "traditional": "這家餐廳今天人太多了，我們以後再來吧。",
+              "simplified": "这家餐厅今天人太多了，我们以后再来吧。",
+              "pinyin": "Zhè jiā cāntīng jīntiān rén tài duō le, wǒmen yǐhòu zài lái ba.",
+              "english": "This restaurant has too many people today; let us come again another time.",
+              "words": [
+                {
+                  "id": "l11g4-e5-w1",
+                  "traditional": "這家餐廳",
+                  "simplified": "这家餐厅",
+                  "pinyin": "zhè jiā cāntīng",
+                  "meaning": "this restaurant"
+                },
+                {
+                  "id": "l11g4-e5-w2",
+                  "traditional": "今天",
+                  "pinyin": "jīntiān",
+                  "meaning": "today"
+                },
+                {
+                  "id": "l11g4-e5-w3",
+                  "traditional": "人太多了",
+                  "pinyin": "rén tài duō le",
+                  "meaning": "too many people",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l11g4-e5-w4",
+                  "traditional": "我們",
+                  "simplified": "我们",
+                  "pinyin": "wǒmen",
+                  "meaning": "we"
+                },
+                {
+                  "id": "l11g4-e5-w5",
+                  "traditional": "以後",
+                  "simplified": "以后",
+                  "pinyin": "yǐhòu",
+                  "meaning": "another time; later"
+                },
+                {
+                  "id": "l11g4-e5-w6",
+                  "traditional": "再來吧",
+                  "simplified": "再来吧",
+                  "pinyin": "zài lái ba",
+                  "meaning": "come again",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l11g4-e6",
+            "number": 6,
+            "text": {
+              "traditional": "A：爸爸，這個句子是什麼意思？ B：我現在沒空，晚上再告訴你。",
+              "simplified": "A：爸爸，这个句子是什么意思？ B：我现在没空，晚上再告诉你。",
+              "pinyin": "A: Bàba, zhège jùzi shì shénme yìsi? B: Wǒ xiànzài méi kòng, wǎnshang zài gàosù nǐ.",
+              "english": "A: Dad, what does this sentence mean? B: I have no time now; I will tell you tonight.",
+              "words": [
+                {
+                  "id": "l11g4-e6-w1",
+                  "traditional": "這個句子",
+                  "simplified": "这个句子",
+                  "pinyin": "zhège jùzi",
+                  "meaning": "this sentence",
+                  "prefix": "A：爸爸，"
+                },
+                {
+                  "id": "l11g4-e6-w2",
+                  "traditional": "是什麼意思",
+                  "simplified": "是什么意思",
+                  "pinyin": "shì shénme yìsi",
+                  "meaning": "means what",
+                  "suffix": "？"
+                },
+                {
+                  "id": "l11g4-e6-w3",
+                  "traditional": "我現在沒空",
+                  "simplified": "我现在没空",
+                  "pinyin": "wǒ xiànzài méi kòng",
+                  "meaning": "I have no time now",
+                  "prefix": "B：",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l11g4-e6-w4",
+                  "traditional": "晚上",
+                  "pinyin": "wǎnshang",
+                  "meaning": "tonight"
+                },
+                {
+                  "id": "l11g4-e6-w5",
+                  "traditional": "再告訴你",
+                  "simplified": "再告诉你",
+                  "pinyin": "zài gàosù nǐ",
+                  "meaning": "tell you then",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l11g4-e7",
+            "number": 7,
+            "text": {
+              "traditional": "A：你要不要跟我一起去打球？ B：我今天有一點兒累，我們週末再去吧。",
+              "simplified": "A：你要不要跟我一起去打球？ B：我今天有一点儿累，我们周末再去吧。",
+              "pinyin": "A: Nǐ yào bú yào gēn wǒ yìqǐ qù dǎqiú? B: Wǒ jīntiān yǒu yìdiǎnr lèi, wǒmen zhōumò zài qù ba.",
+              "english": "A: Do you want to play ball with me? B: I am a little tired today; let us go on the weekend.",
+              "words": [
+                {
+                  "id": "l11g4-e7-w1",
+                  "traditional": "你要不要",
+                  "pinyin": "nǐ yào bú yào",
+                  "meaning": "do you want to",
+                  "prefix": "A："
+                },
+                {
+                  "id": "l11g4-e7-w2",
+                  "traditional": "跟我",
+                  "pinyin": "gēn wǒ",
+                  "meaning": "with me"
+                },
+                {
+                  "id": "l11g4-e7-w3",
+                  "traditional": "一起去打球",
+                  "pinyin": "yìqǐ qù dǎqiú",
+                  "meaning": "go play ball together",
+                  "suffix": "？"
+                },
+                {
+                  "id": "l11g4-e7-w4",
+                  "traditional": "我今天",
+                  "pinyin": "wǒ jīntiān",
+                  "meaning": "I today",
+                  "prefix": "B："
+                },
+                {
+                  "id": "l11g4-e7-w5",
+                  "traditional": "有一點兒累",
+                  "simplified": "有一点儿累",
+                  "pinyin": "yǒu yìdiǎnr lèi",
+                  "meaning": "am a little tired",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l11g4-e7-w6",
+                  "traditional": "我們",
+                  "simplified": "我们",
+                  "pinyin": "wǒmen",
+                  "meaning": "we"
+                },
+                {
+                  "id": "l11g4-e7-w7",
+                  "traditional": "週末",
+                  "simplified": "周末",
+                  "pinyin": "zhōumò",
+                  "meaning": "weekend"
+                },
+                {
+                  "id": "l11g4-e7-w8",
+                  "traditional": "再去吧",
+                  "pinyin": "zài qù ba",
+                  "meaning": "go then",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l11g4-e8",
+            "number": 8,
+            "text": {
+              "traditional": "等我先生也喝了，我們再決定買不買。",
+              "simplified": "等我先生也喝了，我们再决定买不买。",
+              "pinyin": "Děng wǒ xiānsheng yě hē le, wǒmen zài juédìng mǎi bù mǎi.",
+              "english": "Wait until my husband has also drunk some; then we will decide whether to buy it.",
+              "words": [
+                {
+                  "id": "l11g4-e8-w1",
+                  "traditional": "等我先生",
+                  "pinyin": "děng wǒ xiānsheng",
+                  "meaning": "wait until my husband"
+                },
+                {
+                  "id": "l11g4-e8-w2",
+                  "traditional": "也喝了",
+                  "pinyin": "yě hē le",
+                  "meaning": "has also drunk",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l11g4-e8-w3",
+                  "traditional": "我們",
+                  "simplified": "我们",
+                  "pinyin": "wǒmen",
+                  "meaning": "we"
+                },
+                {
+                  "id": "l11g4-e8-w4",
+                  "traditional": "再決定",
+                  "simplified": "再决定",
+                  "pinyin": "zài juédìng",
+                  "meaning": "decide then"
+                },
+                {
+                  "id": "l11g4-e8-w5",
+                  "traditional": "買不買",
+                  "simplified": "买不买",
+                  "pinyin": "mǎi bù mǎi",
+                  "meaning": "whether to buy",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l11g4-e9",
+            "number": 9,
+            "text": {
+              "traditional": "等下了課再教你，好不好？",
+              "simplified": "等下了课再教你，好不好？",
+              "pinyin": "Děng xià le kè zài jiāo nǐ, hǎo bù hǎo?",
+              "english": "Wait until class is over and then I will teach you, okay?",
+              "words": [
+                {
+                  "id": "l11g4-e9-w1",
+                  "traditional": "等下了課",
+                  "simplified": "等下了课",
+                  "pinyin": "děng xià le kè",
+                  "meaning": "wait until class is over"
+                },
+                {
+                  "id": "l11g4-e9-w2",
+                  "traditional": "再教你",
+                  "pinyin": "zài jiāo nǐ",
+                  "meaning": "teach you then",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l11g4-e9-w3",
+                  "traditional": "好不好",
+                  "pinyin": "hǎo bù hǎo",
+                  "meaning": "okay?",
+                  "suffix": "？"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l11g4-e10",
+            "number": 10,
+            "text": {
+              "traditional": "現在去吃飯的人太多了，我想先寫功課，等人少了再去吃。",
+              "simplified": "现在去吃饭的人太多了，我想先写功课，等人少了再去吃。",
+              "pinyin": "Xiànzài qù chīfàn de rén tài duō le, wǒ xiǎng xiān xiě gōngkè, děng rén shǎo le zài qù chī.",
+              "english": "Too many people are eating now; I want to do my homework first, and go eat when there are fewer people.",
+              "words": [
+                {
+                  "id": "l11g4-e10-w1",
+                  "traditional": "現在去吃飯的人",
+                  "simplified": "现在去吃饭的人",
+                  "pinyin": "xiànzài qù chīfàn de rén",
+                  "meaning": "the people eating now"
+                },
+                {
+                  "id": "l11g4-e10-w2",
+                  "traditional": "太多了",
+                  "pinyin": "tài duō le",
+                  "meaning": "too many",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l11g4-e10-w3",
+                  "traditional": "我想",
+                  "pinyin": "wǒ xiǎng",
+                  "meaning": "I want to"
+                },
+                {
+                  "id": "l11g4-e10-w4",
+                  "traditional": "先寫功課",
+                  "simplified": "先写功课",
+                  "pinyin": "xiān xiě gōngkè",
+                  "meaning": "do homework first",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l11g4-e10-w5",
+                  "traditional": "等人少了",
+                  "pinyin": "děng rén shǎo le",
+                  "meaning": "wait until there are fewer people"
+                },
+                {
+                  "id": "l11g4-e10-w6",
+                  "traditional": "再去吃",
+                  "pinyin": "zài qù chī",
+                  "meaning": "go eat then",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l11g4-e11",
+            "number": 11,
+            "text": {
+              "traditional": "我要先去朋友家，等百貨公司開了，再去買衣服。",
+              "simplified": "我要先去朋友家，等百货公司开了，再去买衣服。",
+              "pinyin": "Wǒ yào xiān qù péngyǒu jiā, děng bǎihuò gōngsī kāi le, zài qù mǎi yīfu.",
+              "english": "I will go to my friend’s place first; when the department store opens, I will go buy clothes.",
+              "words": [
+                {
+                  "id": "l11g4-e11-w1",
+                  "traditional": "我要",
+                  "pinyin": "wǒ yào",
+                  "meaning": "I want to"
+                },
+                {
+                  "id": "l11g4-e11-w2",
+                  "traditional": "先去朋友家",
+                  "pinyin": "xiān qù péngyǒu jiā",
+                  "meaning": "go to my friend’s place first",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l11g4-e11-w3",
+                  "traditional": "等百貨公司開了",
+                  "simplified": "等百货公司开了",
+                  "pinyin": "děng bǎihuò gōngsī kāi le",
+                  "meaning": "wait until the department store opens",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l11g4-e11-w4",
+                  "traditional": "再去",
+                  "pinyin": "zài qù",
+                  "meaning": "go then"
+                },
+                {
+                  "id": "l11g4-e11-w5",
+                  "traditional": "買衣服",
+                  "simplified": "买衣服",
+                  "pinyin": "mǎi yīfu",
+                  "meaning": "buy clothes",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
           }
         ],
         "exerciseTitle": "Restore the timeline",
@@ -16259,7 +17711,8 @@
             "correctFeedback": "The call happens after the decision.",
             "repairFeedback": "Use 再 for the later action."
           }
-        ]
+        ],
+        "exerciseNote": "The book completes five sentences with 先……，等……，再…… on printed page 259 and gives no answer key; these model answers follow the printed prompts."
       },
       {
         "bookId": 1,
@@ -16277,7 +17730,7 @@
           260
         ],
         "audioReference": "11-2-3",
-        "explanation": "Put 給 before the person, then say the action. The action goes to that person.",
+        "explanation": "Put 給 before the person, then say the action. The action goes to that person. 給 can mean “to” or “for” the person.",
         "lessonWorld": {
           "kind": "chat",
           "eyebrow": "Outgoing message",
@@ -16726,7 +18179,7 @@
             "id": "b1l11-g05-glossary-67",
             "traditional": "誰",
             "simplified": "谁",
-            "pinyin": "shuí",
+            "pinyin": "shéi",
             "meaning": "who"
           },
           {
@@ -17159,6 +18612,12 @@
                 "traditional": "我",
                 "pinyin": "wǒ",
                 "meaning": "I; me"
+              },
+              {
+                "id": "l11g5-p1-s2",
+                "traditional": "想",
+                "pinyin": "xiǎng",
+                "meaning": "want to"
               }
             ],
             "grammar": [
@@ -17171,22 +18630,22 @@
               },
               {
                 "id": "l11g5-p1-g2",
-                "traditional": "朋友",
-                "pinyin": "péngyǒu",
-                "meaning": "friend"
+                "traditional": "她",
+                "pinyin": "tā",
+                "meaning": "her"
               }
             ],
             "complement": [
               {
                 "id": "l11g5-p1-c1",
-                "traditional": "寫卡片",
-                "simplified": "写卡片",
-                "pinyin": "xiě kǎpiàn",
-                "meaning": "write a card",
+                "traditional": "寫信",
+                "simplified": "写信",
+                "pinyin": "xiě xìn",
+                "meaning": "write a letter",
                 "suffix": "。"
               }
             ],
-            "english": "I write a card to my friend."
+            "english": "I want to write her a letter."
           },
           {
             "id": "l11g5-p2",
@@ -17201,16 +18660,23 @@
             "grammar": [
               {
                 "id": "l11g5-p2-g1",
-                "traditional": "給",
-                "simplified": "给",
-                "pinyin": "gěi",
-                "meaning": "to; for (a person)"
+                "traditional": "沒",
+                "simplified": "没",
+                "pinyin": "méi",
+                "meaning": "did not"
               },
               {
                 "id": "l11g5-p2-g2",
+                "traditional": "給",
+                "simplified": "给",
+                "pinyin": "gěi",
+                "meaning": "to (a person)"
+              },
+              {
+                "id": "l11g5-p2-g3",
                 "traditional": "我",
                 "pinyin": "wǒ",
-                "meaning": "I; me"
+                "meaning": "me"
               }
             ],
             "complement": [
@@ -17219,56 +18685,11 @@
                 "traditional": "打電話",
                 "simplified": "打电话",
                 "pinyin": "dǎ diànhuà",
-                "meaning": "make a phone call",
+                "meaning": "call",
                 "suffix": "。"
               }
             ],
-            "english": "My older brother calls me."
-          },
-          {
-            "id": "l11g5-p3",
-            "subject": [
-              {
-                "id": "l11g5-p3-s1",
-                "traditional": "媽媽",
-                "simplified": "妈妈",
-                "pinyin": "māma",
-                "meaning": "mother"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "l11g5-p3-g1",
-                "traditional": "給",
-                "simplified": "给",
-                "pinyin": "gěi",
-                "meaning": "to; for (a person)"
-              },
-              {
-                "id": "l11g5-p3-g2",
-                "traditional": "我",
-                "pinyin": "wǒ",
-                "meaning": "I; me"
-              }
-            ],
-            "complement": [
-              {
-                "id": "l11g5-p3-c1",
-                "traditional": "買",
-                "simplified": "买",
-                "pinyin": "mǎi",
-                "meaning": "buy"
-              },
-              {
-                "id": "l11g5-p3-c2",
-                "traditional": "禮物",
-                "simplified": "礼物",
-                "pinyin": "lǐwù",
-                "meaning": "gift",
-                "suffix": "。"
-              }
-            ],
-            "english": "Mom buys a gift for me."
+            "english": "My older brother did not call me."
           }
         ],
         "confusion": {
@@ -17448,45 +18869,53 @@
           {
             "id": "l11g5-e1",
             "number": 1,
-            "teachingNote": "她 gets the letter.",
+            "teachingNote": "我 gets the ice cream.",
             "text": {
-              "traditional": "我想給她寫信。",
-              "simplified": "我想给她写信。",
-              "pinyin": "Wǒ xiǎng gěi tā xiě xìn.",
-              "english": "I want to write her a letter.",
+              "traditional": "媽媽給我買了我最愛吃的冰淇淋。",
+              "simplified": "妈妈给我买了我最爱吃的冰淇淋。",
+              "pinyin": "Māma gěi wǒ mǎi le wǒ zuì ài chī de bīngqílín.",
+              "english": "Mom bought me my favorite ice cream.",
               "words": [
                 {
-                  "id": "l11g5-e1-word-1",
-                  "traditional": "我",
-                  "pinyin": "wǒ",
-                  "meaning": "I; me"
+                  "id": "l11g5-e1-w1",
+                  "traditional": "媽媽",
+                  "simplified": "妈妈",
+                  "pinyin": "māma",
+                  "meaning": "mom"
                 },
                 {
-                  "id": "l11g5-e1-word-2",
-                  "traditional": "想",
-                  "pinyin": "xiǎng",
-                  "meaning": "want to; think"
-                },
-                {
-                  "id": "l11g5-e1-word-3",
+                  "id": "l11g5-e1-w2",
                   "traditional": "給",
                   "simplified": "给",
                   "pinyin": "gěi",
-                  "meaning": "to; for (a person)"
+                  "meaning": "for (a person)"
                 },
                 {
-                  "id": "l11g5-e1-word-4",
-                  "traditional": "她",
-                  "pinyin": "tā",
-                  "meaning": "she; her"
+                  "id": "l11g5-e1-w3",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "me"
                 },
                 {
-                  "id": "l11g5-e1-word-5",
-                  "traditional": "寫",
-                  "simplified": "写",
-                  "pinyin": "xiě",
-                  "meaning": "write",
-                  "suffix": "信。"
+                  "id": "l11g5-e1-w4",
+                  "traditional": "買了",
+                  "simplified": "买了",
+                  "pinyin": "mǎi le",
+                  "meaning": "bought"
+                },
+                {
+                  "id": "l11g5-e1-w5",
+                  "traditional": "我最愛吃的",
+                  "simplified": "我最爱吃的",
+                  "pinyin": "wǒ zuì ài chī de",
+                  "meaning": "my favorite"
+                },
+                {
+                  "id": "l11g5-e1-w6",
+                  "traditional": "冰淇淋",
+                  "pinyin": "bīngqílín",
+                  "meaning": "ice cream",
+                  "suffix": "。"
                 }
               ]
             }
@@ -17494,45 +18923,72 @@
           {
             "id": "l11g5-e2",
             "number": 2,
-            "teachingNote": "Even after 沒, 給 stays before the person.",
+            "teachingNote": "The letter goes to the boyfriend: 給 + person + action.",
             "text": {
-              "traditional": "哥哥沒給我打電話。",
-              "simplified": "哥哥没给我打电话。",
-              "pinyin": "Gēge méi gěi wǒ dǎ diànhuà.",
-              "english": "My older brother did not call me.",
+              "traditional": "A：你在做什麼？ B：我在給我男朋友寫信。",
+              "simplified": "A：你在做什么？ B：我在给我男朋友写信。",
+              "pinyin": "A: Nǐ zài zuò shénme? B: Wǒ zài gěi wǒ nánpéngyǒu xiě xìn.",
+              "english": "A: What are you doing? B: I am writing a letter to my boyfriend.",
               "words": [
                 {
-                  "id": "l11g5-e2-word-1",
-                  "traditional": "哥哥",
-                  "pinyin": "gēge",
-                  "meaning": "older brother"
+                  "id": "l11g5-e2-w1",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you",
+                  "prefix": "A："
                 },
                 {
-                  "id": "l11g5-e2-word-2",
-                  "traditional": "沒",
-                  "simplified": "没",
-                  "pinyin": "méi",
-                  "meaning": "did not; have not"
+                  "id": "l11g5-e2-w2",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "is (doing)"
                 },
                 {
-                  "id": "l11g5-e2-word-3",
+                  "id": "l11g5-e2-w3",
+                  "traditional": "做",
+                  "pinyin": "zuò",
+                  "meaning": "do"
+                },
+                {
+                  "id": "l11g5-e2-w4",
+                  "traditional": "什麼",
+                  "simplified": "什么",
+                  "pinyin": "shénme",
+                  "meaning": "what",
+                  "suffix": "？"
+                },
+                {
+                  "id": "l11g5-e2-w5",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me",
+                  "prefix": "B："
+                },
+                {
+                  "id": "l11g5-e2-w6",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "is (doing)"
+                },
+                {
+                  "id": "l11g5-e2-w7",
                   "traditional": "給",
                   "simplified": "给",
                   "pinyin": "gěi",
-                  "meaning": "to; for (a person)"
+                  "meaning": "to (a person)"
                 },
                 {
-                  "id": "l11g5-e2-word-4",
-                  "traditional": "我",
-                  "pinyin": "wǒ",
-                  "meaning": "I; me"
+                  "id": "l11g5-e2-w8",
+                  "traditional": "我男朋友",
+                  "pinyin": "wǒ nánpéngyǒu",
+                  "meaning": "my boyfriend"
                 },
                 {
-                  "id": "l11g5-e2-word-5",
-                  "traditional": "打電話",
-                  "simplified": "打电话",
-                  "pinyin": "dǎ diànhuà",
-                  "meaning": "make a phone call",
+                  "id": "l11g5-e2-w9",
+                  "traditional": "寫信",
+                  "simplified": "写信",
+                  "pinyin": "xiě xìn",
+                  "meaning": "write a letter",
                   "suffix": "。"
                 }
               ]
@@ -17541,46 +18997,83 @@
           {
             "id": "l11g5-e3",
             "number": 3,
-            "teachingNote": "我 gets the ice cream.",
+            "teachingNote": "You can use 還沒 and 給 together.",
             "text": {
-              "traditional": "媽媽給我買了冰淇淋。",
-              "simplified": "妈妈给我买了冰淇淋。",
-              "pinyin": "Māma gěi wǒ mǎi le bīngqílín.",
-              "english": "Mom bought me ice cream.",
+              "traditional": "A：你還沒給哥哥寫生日卡片嗎？ B：還沒，我今天晚上會寫。",
+              "simplified": "A：你还没给哥哥写生日卡片吗？ B：还没，我今天晚上会写。",
+              "pinyin": "A: Nǐ hái méi gěi gēge xiě shēngrì kǎpiàn ma? B: Hái méi, wǒ jīntiān wǎnshang huì xiě.",
+              "english": "A: Have you not written your older brother a birthday card yet? B: Not yet; I will write it tonight.",
               "words": [
                 {
-                  "id": "l11g5-e3-word-1",
-                  "traditional": "媽媽",
-                  "simplified": "妈妈",
-                  "pinyin": "māma",
-                  "meaning": "mother"
+                  "id": "l11g5-e3-w1",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you",
+                  "prefix": "A："
                 },
                 {
-                  "id": "l11g5-e3-word-2",
+                  "id": "l11g5-e3-w2",
+                  "traditional": "還沒",
+                  "simplified": "还没",
+                  "pinyin": "hái méi",
+                  "meaning": "not yet"
+                },
+                {
+                  "id": "l11g5-e3-w3",
                   "traditional": "給",
                   "simplified": "给",
                   "pinyin": "gěi",
-                  "meaning": "to; for (a person)"
+                  "meaning": "to (a person)"
                 },
                 {
-                  "id": "l11g5-e3-word-3",
-                  "traditional": "我",
-                  "pinyin": "wǒ",
-                  "meaning": "I; me"
+                  "id": "l11g5-e3-w4",
+                  "traditional": "哥哥",
+                  "pinyin": "gēge",
+                  "meaning": "older brother"
                 },
                 {
-                  "id": "l11g5-e3-word-4",
-                  "traditional": "買",
-                  "simplified": "买",
-                  "pinyin": "mǎi",
-                  "meaning": "buy"
+                  "id": "l11g5-e3-w5",
+                  "traditional": "寫",
+                  "pinyin": "xiě",
+                  "meaning": "write",
+                  "simplified": "写"
                 },
                 {
-                  "id": "l11g5-e3-word-5",
-                  "traditional": "了",
-                  "pinyin": "le",
-                  "meaning": "shows an action is finished",
-                  "suffix": "冰淇淋。"
+                  "id": "l11g5-e3-w6",
+                  "traditional": "生日卡片",
+                  "pinyin": "shēngrì kǎpiàn",
+                  "meaning": "birthday card"
+                },
+                {
+                  "id": "l11g5-e3-w7",
+                  "traditional": "嗎",
+                  "simplified": "吗",
+                  "pinyin": "ma",
+                  "meaning": "yes/no question ending",
+                  "suffix": "？"
+                },
+                {
+                  "id": "l11g5-e3-w8",
+                  "traditional": "還沒",
+                  "simplified": "还没",
+                  "pinyin": "hái méi",
+                  "meaning": "not yet",
+                  "prefix": "B：",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l11g5-e3-w9",
+                  "traditional": "我今天晚上",
+                  "pinyin": "wǒ jīntiān wǎnshang",
+                  "meaning": "I tonight"
+                },
+                {
+                  "id": "l11g5-e3-w10",
+                  "traditional": "會寫",
+                  "simplified": "会写",
+                  "pinyin": "huì xiě",
+                  "meaning": "will write",
+                  "suffix": "。"
                 }
               ]
             }
@@ -17588,63 +19081,95 @@
           {
             "id": "l11g5-e4",
             "number": 4,
-            "teachingNote": "You can use 還沒 and 給 together.",
+            "teachingNote": "她 gets the letter.",
             "text": {
-              "traditional": "你還沒給哥哥寫生日卡片嗎？",
-              "simplified": "你还没给哥哥写生日卡片吗？",
-              "pinyin": "Nǐ hái méi gěi gēge xiě shēngrì kǎpiàn ma?",
-              "english": "Have you not written your brother a birthday card yet?",
+              "traditional": "我想給她寫信。",
+              "simplified": "我想给她写信。",
+              "pinyin": "Wǒ xiǎng gěi tā xiě xìn.",
+              "english": "I want to write her a letter.",
               "words": [
                 {
-                  "id": "l11g5-e4-word-1",
-                  "traditional": "你",
-                  "pinyin": "nǐ",
-                  "meaning": "you"
+                  "id": "l11g5-e4-w1",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
                 },
                 {
-                  "id": "l11g5-e4-word-2",
-                  "traditional": "還沒",
-                  "simplified": "还没",
-                  "pinyin": "hái méi",
-                  "meaning": "not yet"
+                  "id": "l11g5-e4-w2",
+                  "traditional": "想",
+                  "pinyin": "xiǎng",
+                  "meaning": "want to"
                 },
                 {
-                  "id": "l11g5-e4-word-3",
+                  "id": "l11g5-e4-w3",
                   "traditional": "給",
                   "simplified": "给",
                   "pinyin": "gěi",
-                  "meaning": "to; for (a person)"
+                  "meaning": "to (a person)"
                 },
                 {
-                  "id": "l11g5-e4-word-4",
+                  "id": "l11g5-e4-w4",
+                  "traditional": "她",
+                  "pinyin": "tā",
+                  "meaning": "her"
+                },
+                {
+                  "id": "l11g5-e4-w5",
+                  "traditional": "寫信",
+                  "simplified": "写信",
+                  "pinyin": "xiě xìn",
+                  "meaning": "write a letter",
+                  "suffix": "。"
+                }
+              ]
+            }
+          },
+          {
+            "id": "l11g5-e5",
+            "number": 5,
+            "text": {
+              "traditional": "哥哥沒給我打電話。",
+              "simplified": "哥哥没给我打电话。",
+              "pinyin": "Gēge méi gěi wǒ dǎ diànhuà.",
+              "english": "My older brother did not call me.",
+              "words": [
+                {
+                  "id": "l11g5-e5-w1",
                   "traditional": "哥哥",
                   "pinyin": "gēge",
                   "meaning": "older brother"
                 },
                 {
-                  "id": "l11g5-e4-word-5",
-                  "traditional": "寫",
-                  "simplified": "写",
-                  "pinyin": "xiě",
-                  "meaning": "write"
+                  "id": "l11g5-e5-w2",
+                  "traditional": "沒",
+                  "simplified": "没",
+                  "pinyin": "méi",
+                  "meaning": "did not"
                 },
                 {
-                  "id": "l11g5-e4-word-6",
-                  "traditional": "卡片",
-                  "pinyin": "kǎpiàn",
-                  "meaning": "card",
-                  "prefix": "生日"
+                  "id": "l11g5-e5-w3",
+                  "traditional": "給",
+                  "simplified": "给",
+                  "pinyin": "gěi",
+                  "meaning": "to (a person)"
                 },
                 {
-                  "id": "l11g5-e4-word-7",
-                  "traditional": "嗎",
-                  "simplified": "吗",
-                  "pinyin": "ma",
-                  "meaning": "question ending word",
-                  "suffix": "？"
+                  "id": "l11g5-e5-w4",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "me"
+                },
+                {
+                  "id": "l11g5-e5-w5",
+                  "traditional": "打電話",
+                  "simplified": "打电话",
+                  "pinyin": "dǎ diànhuà",
+                  "meaning": "call",
+                  "suffix": "。"
                 }
               ]
-            }
+            },
+            "teachingNote": "Even after 沒, 給 stays before the person."
           }
         ],
         "exerciseTitle": "Choose who gets it",
@@ -17771,7 +19296,8 @@
             "correctFeedback": "媽媽 is the person who gets it.",
             "repairFeedback": "Put 給 before 媽媽."
           }
-        ]
+        ],
+        "exerciseNote": "The book completes three dialogues with 給 on printed page 260 and gives no answer key; these model answers follow the printed prompts."
       }
     ],
     "dialogue": {
@@ -17802,7 +19328,8 @@
                 "id": "l11d2-1-word-1",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you"
+                "meaning": "you",
+                "simplified": "你"
               },
               {
                 "id": "l11d2-1-word-2",
@@ -17935,7 +19462,8 @@
                 "id": "l11d2-3-word-1",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you"
+                "meaning": "you",
+                "simplified": "你"
               },
               {
                 "id": "l11d2-3-word-2",
@@ -18069,7 +19597,8 @@
                 "id": "l11d2-5-word-1",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you"
+                "meaning": "you",
+                "simplified": "你"
               },
               {
                 "id": "l11d2-5-word-2",
@@ -18121,7 +19650,8 @@
                 "id": "l11d2-5-word-9",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you"
+                "meaning": "you",
+                "simplified": "你"
               },
               {
                 "id": "l11d2-5-word-10",
@@ -18178,7 +19708,8 @@
                 "id": "l11d2-6-word-5",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you"
+                "meaning": "you",
+                "simplified": "你"
               },
               {
                 "id": "l11d2-6-word-6",
@@ -18230,7 +19761,8 @@
                 "traditional": "妳",
                 "pinyin": "nǐ",
                 "meaning": "you",
-                "prefix": "。"
+                "prefix": "。",
+                "simplified": "你"
               },
               {
                 "id": "l11d2-7-word-3",
@@ -18323,7 +19855,8 @@
                 "id": "l11d2-8-word-6",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you"
+                "meaning": "you",
+                "simplified": "你"
               },
               {
                 "id": "l11d2-8-word-7",
@@ -18458,7 +19991,8 @@
                 "id": "l11d2-9-word-11",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you"
+                "meaning": "you",
+                "simplified": "你"
               },
               {
                 "id": "l11d2-9-word-12",

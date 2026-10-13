@@ -18,7 +18,7 @@ interface TabScreensProps {
   activeTab: string;
   activeBookId: number;
   setActiveBookId: (id: number) => void;
-  startPartPractice: (lessonId: number, partId: number, activity: ActivityType) => void;
+  startPartPractice: (lessonId: number, partId: number | number[], activity: ActivityType) => void;
   startPathPractice: () => void;
   setActiveTab: (tab: TabRoute) => void;
   setActiveActivity: (activity: ActivityType) => void;
@@ -39,7 +39,7 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
   onOpenReadingPart,
   onToggleNav,
 }) {
-  // One open rule for every tab: hold, then one loader >= 450ms, then the screen (chunk already loaded).
+  // One open rule for every tab: hold, then one loader only while waiting, then the screen (chunk already loaded).
   const phase = useOpenPhase(useTabScreenReady(activeTab), undefined, activeTab);
   const CurriculumLibrary = getTabScreen('path');
   const SearchScreen = getTabScreen('search');

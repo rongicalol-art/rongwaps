@@ -7,11 +7,12 @@ import { useActivityDataLoader } from '../../hooks/useActivityDataLoader';
 import { getPracticeLoadingMessage, preloadRemainingPracticeChunks } from '../../utils/practiceLoader';
 import { useFontGate, useOpenPhase } from '../../hooks/useOpenPhase';
 import type { ActivityType } from '../../types/models';
+import type { QuizTypeId } from '../../utils/vocabulary/quizDirector';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { getDeckIdentityKey } from '../../utils/lesson/lessonPartSelection';
 import { PracticeModeDock, PRACTICE_ACTIVITIES } from './components/PracticeModeDock';
 import { ActivityPracticeHeader } from './components/ActivityPracticeHeader';
-import { PracticeDockSlotProvider } from '../../features/practice';
+import { PracticeDockSlotProvider, type SessionStats } from '../../features/practice';
 import { ActivityScreens } from './components/ActivityScreens';
 import { usePracticeDockLayout } from './components/practiceDockLayout';
 import { useActivityStudyParts, usePracticeScreenReady } from './hooks';
@@ -64,7 +65,7 @@ export function ActivityModals({
   );
 
   // ONE readiness owner for opening a practice session: screen chunk + deck (+ future gates such
-  // as fonts). Warm or fast opens go straight to content; slow ones show one loader >= 450ms.
+  // as fonts). Warm or fast opens go straight to content; slow ones show one loader only while waiting.
   const isChunkReady = usePracticeScreenReady(resolvedActivity);
   // The first cards' characters: their font slices must be loaded so no glyph swaps after reveal.
   const firstCardsText = isLoadingDeck ? '' : deckCards.slice(0, 6).map((card) => card.front).join('');
@@ -105,6 +106,11 @@ export function ActivityModals({
   const activeBook = SAMPLE_BOOKS.find(b => b.id === activeBookId) || SAMPLE_BOOKS[0];
 
   const [prevTask, setPrevTask] = useState<ActivityType>(null);
+  // Cards done's shuffled top card and the round's stats; live only while the quiz they lead into is the activity.
+  const [quizTypes, setQuizTypes] = useState<QuizTypeId[] | null>(null);
+  const [sessionStats, setSessionStats] = useState<SessionStats | null>(null);
+  if (quizTypes && activeActivity !== 'quiz') setQuizTypes(null);
+  if (sessionStats && activeActivity !== 'quiz') setSessionStats(null);
   const dockAutoHide = useAppStore(state => state.dockAutoHide);
   const dockLayout = usePracticeDockLayout(useAppStore(state => state.dockStyle));
   const activeQuizMode = useAppStore(state => state.activeQuizMode);
@@ -236,7 +242,15 @@ export function ActivityModals({
                   onCreateCardClose={() => setActiveActivity(null)}
                   onContinue={onPartContinue}
                   continueLabel={partContinueLabel}
-                  onStartQuiz={() => setActiveActivity('quiz')}
+                  quizFirstId={deckCards[0]?.id}
+                  sessionDeck={deckCards}
+                  quizTypes={quizTypes}
+                  sessionStats={sessionStats}
+                  onStartQuiz={(types, stats) => {
+                    setQuizTypes(types);
+                    setSessionStats(stats);
+                    setActiveActivity('quiz');
+                  }}
                   edgeInsetClassName={edgeInsetClassName}
                 />
 

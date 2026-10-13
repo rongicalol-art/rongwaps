@@ -289,11 +289,11 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle, onProfi
               <div className="pointer-events-auto flex gap-3">
                 {!isStarred && (
                   <ActionButton variant="secondary" size="lg" fullWidth onClick={() => setMoveOpen(true)} edgeColor="var(--color-ui-divider)" className="!border-ui-divider">
-                    <span className="text-[17px] font-black">Move {selectedKeys.size}</span>
+                    <span>Move {selectedKeys.size}</span>
                   </ActionButton>
                 )}
                 <ActionButton variant="danger" size="lg" fullWidth onClick={() => setBulkRemoveOpen(true)}>
-                  <span className="text-[17px] font-black">Remove {selectedKeys.size}</span>
+                  <span>Remove {selectedKeys.size}</span>
                 </ActionButton>
               </div>
             )}

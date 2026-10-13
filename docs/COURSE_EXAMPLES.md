@@ -6,7 +6,7 @@ English meaning, curriculum location, source card, and extraction provenance.
 
 ## Runtime behavior
 
-- `courseExamplePackService.ts` loads and validates the manifest and book packs.
+- `contentPacks.ts` uses `createPackLoader` and the course-example pack configuration to load and validate the manifest and book packs.
 - `vocabularyService.ts` prefers a matching rich static record, then falls back to
   Supabase or the vocabulary pack's Chinese-only example text.
 - `courseExamples.ts` ranks the candidates against the learner's current Book,
@@ -66,15 +66,27 @@ pack preserves that source association, while runtime lookup shows the sentence
 only for words that actually occur in it. A source-verified sentence from the same
 Part's Reading supplies the term-specific example for 夏天.
 
-The importer also publishes pinyin-verified dialogue lines (every lesson up to 14
+The importer also publishes pinyin-verified dialogue lines (every lesson up to 15
 whose OCR section carries a verification flag) and, for Lessons 7–10, aligned
 Reading sentences as Part-scoped examples. Context extraction accepts either
 lesson-wide pinyin verification or the narrower dialogue-and-Reading verification
-flag. Raw OCR pinyin is never published for unverified sections.
+flag. Source records after Lesson 15 are excluded from this Book 1 export. Raw OCR
+pinyin is never published for unverified sections.
+
+Lesson 15's Dialogue 1 and Dialogue 2 pinyin are verified against textbook scans on
+pages 344 and 351. The available Lesson 11–14 scans do not print sentence-level
+pinyin, so their unverified dialogue sections remain unpublished.
 
 The OCR source and review report are local generated inputs and are intentionally
 ignored by Git. The generated manifest and per-book packs under `public/data/` are
 the production artifacts and must be committed.
+
+Before publishing changed source content, run `npm run course-examples:preview`
+and `npm run jev:qa:course`. The preview uses the same importer and guards but
+writes only `output/course-examples/book-1-preview.json`. Jev checks additions and
+edits relative to the published pack and writes a source-linked review queue;
+it never edits pinyin or verifies a scan. Inspect flagged records against the
+source before exporting. Commands and limitations: `TESTING.md`.
 
 ## Adding another book
 

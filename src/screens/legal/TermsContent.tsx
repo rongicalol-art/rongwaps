@@ -48,6 +48,27 @@ export function TermsContent() {
         </LegalParagraph>
       </LegalSection>
 
+      <LegalSection title="Pronunciation audio credits">
+        <LegalParagraph>
+          Additional character pronunciation recordings: Taiwan Ministry of Digital Affairs, 2025,{' '}
+          <a href="https://www.cns11643.gov.tw" className={legalLinkClass}>CNS11643 Chinese Standard Interchange Code — audio files</a>.{' '}
+          These recordings are released under the{' '}
+          <a href="https://data.gov.tw/license" className={legalLinkClass}>Open Government Data License, version 1.0</a>{' '}
+          and may be reused under its terms. Original neutral-tone WAVs were transcoded to MP3. The app&apos;s usage restrictions do not override that license.
+        </LegalParagraph>
+        <LegalParagraph>
+          Supplemental 團圓 pronunciation: Yue Tan / Shtooka Project, 2009, via{' '}
+          <a href="https://commons.wikimedia.org/wiki/File:Zh-tu%C3%A1nyu%C3%A1n.ogg" className={legalLinkClass}>Wikimedia Commons</a>,{' '}
+          licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/us/" className={legalLinkClass}>CC BY-SA 3.0 US</a>.
+          The original Ogg was transcoded to MP3; the recording remains available under that license.
+        </LegalParagraph>
+        <LegalParagraph>
+          Six supplemental word recordings were generated locally with the preset Vivian voice from{' '}
+          <a href="https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice" className={legalLinkClass}>Qwen3-TTS</a>,{' '}
+          whose model is released under Apache 2.0. No textbook recording was replaced or used for voice cloning.
+        </LegalParagraph>
+      </LegalSection>
+
       <LegalSection title="Fair-use limits">
         <LegalParagraph>
           Neural audio and AI answer grading cost us money per use, so they have per-minute and daily limits

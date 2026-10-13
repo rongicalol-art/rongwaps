@@ -4,10 +4,12 @@ export { EmptyReviewState } from './components/EmptyReviewState';
 export { DOCK_SWAP, PracticeDockSlotOutlet, PracticeDockSlotProvider, usePracticeDockSlot } from './components/PracticeDockSlot';
 export { FeedbackBottomBar } from './components/FeedbackBottomBar';
 export { LessonComplete } from './components/LessonComplete';
-export { PracticeChoiceButton } from './components/PracticeChoiceButton';
+export { SessionComplete } from './components/SessionComplete';
+export { PracticeChoiceButton, getPracticeChoiceState } from './components/PracticeChoiceButton';
 export { BreakdownExpandPanel } from './components/BreakdownExpandPanel';
 export { PracticeFormatMenu } from './components/PracticeFormatMenu';
 
+export type { SessionCompleteProps, SessionStats } from './components/SessionComplete';
 export type { PracticeSettingsScreenProps } from './components/PracticeSettingsScreen';
 export type { FeedbackBottomBarProps } from './components/FeedbackBottomBar';
 export type { PracticeChoiceState } from './components/PracticeChoiceButton';

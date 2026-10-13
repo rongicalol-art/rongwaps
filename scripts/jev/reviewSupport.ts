@@ -6,6 +6,12 @@
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
+import { createHash } from 'node:crypto';
+
+/** Reuse a judgment only while its evidence, questions, and requested model match. */
+export function reviewFingerprint(state: unknown, questions: unknown, model: string): string {
+  return createHash('sha256').update(JSON.stringify({ state, questions, model })).digest('hex');
+}
 
 export function readJson<T>(path: string): T {
   return JSON.parse(readFileSync(path, 'utf8')) as T;

@@ -83,7 +83,7 @@ export function useCardFlow({
       if (cancelled) return;
 
       await Promise.race([
-        audioService.play(currentCard.audio, pronunciationRate, currentCard.front),
+        audioService.playCard(currentCard, pronunciationRate),
         wait(2800),
       ]);
       audioService.stop();

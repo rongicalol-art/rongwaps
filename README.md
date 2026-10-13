@@ -12,7 +12,7 @@
   - 🎴 **Flashcards**: Drag-to-swipe card review with stroke order animations.
   - ✍️ **Writing Mode**: Active canvas writing integration.
   - 👂 **Listening Mode**: Audio playback and comprehension checks.
-  - 🧠 **Quiz Mode**: Interactive multiple-choice testing.
+  - 🧠 **Quiz Mode**: Mixed vocab quiz: pair and sound match, pick the meaning, listening, pick the character, true or false, build the word; every question tests meaning, misses return in a review round.
 - **Cloud Sync**: Automated synchronization of local study progress with Supabase.
 - **Responsive Layout**: Designed with a custom 3D tactile interface and playful CSS animations.
 

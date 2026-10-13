@@ -4,12 +4,15 @@ interface UseNumberKeySelectionOptions<T> {
   items: readonly T[];
   onSelect: (item: T) => void;
   disabled?: boolean;
+  /** DEV-only shortcut for submitting this question's correct answer. */
+  onDebugAnswer?: () => void;
 }
 
 export function useNumberKeySelection<T>({
   items,
   onSelect,
   disabled = false,
+  onDebugAnswer,
 }: UseNumberKeySelectionOptions<T>) {
   useEffect(() => {
     if (disabled) return;
@@ -34,6 +37,14 @@ export function useNumberKeySelection<T>({
       ) {
         return;
       }
+      // The DEV preview window can sit over a live quiz; never affect the quiz underneath it.
+      if (document.querySelector('.z-devtools')) return;
+
+      if (import.meta.env.DEV && event.key.toLowerCase() === 'l' && onDebugAnswer) {
+        event.preventDefault();
+        onDebugAnswer();
+        return;
+      }
 
       const shortcutNumber = Number(event.key);
       const itemIndex = shortcutNumber - 1;
@@ -51,5 +62,5 @@ export function useNumberKeySelection<T>({
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [disabled, items, onSelect]);
+  }, [disabled, items, onDebugAnswer, onSelect]);
 }

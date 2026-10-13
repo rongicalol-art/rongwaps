@@ -11,6 +11,7 @@ import { LessonActions, ModeButtons } from './ModePanel';
 import { LessonPicture } from './LessonPicture';
 import { PartTabs } from './PartTabs';
 import {
+  getAggregatedPart,
   getDefaultMode,
   getFirstOpenPartId,
   isModeAvailable,
@@ -32,7 +33,7 @@ interface LessonWindowProps {
   isHidden: boolean;
   onPartChange: (partId: number) => void;
   onClose: () => void;
-  onStartPractice: (lessonId: number, partId: number, activity: ActivityType) => void;
+  onStartPractice: (lessonId: number, partId: number | number[], activity: ActivityType) => void;
   onOpenGrammarPart: (manifestId: string) => void;
   onOpenReadingPart: (target: { bookId: number; lessonId: number; partId: number }) => void;
 }
@@ -86,8 +87,20 @@ function LessonBody({
   const resolvedPartId = partId !== null && parts.some((part) => part.id === partId)
     ? partId
     : getFirstOpenPartId(parts);
-  const activeIndex = Math.max(0, parts.findIndex((part) => part.id === resolvedPartId));
-  const part = parts[activeIndex];
+
+  const [selectedPartIds, setSelectedPartIds] = useState<number[]>(() => (
+    resolvedPartId !== null ? [resolvedPartId] : []
+  ));
+
+  useEffect(() => {
+    if (resolvedPartId !== null && selectedPartIds.length <= 1 && !selectedPartIds.includes(resolvedPartId)) {
+      setSelectedPartIds([resolvedPartId]);
+    }
+  }, [resolvedPartId, selectedPartIds]);
+
+  const activeIndex = Math.max(0, parts.findIndex((p) => p.id === (selectedPartIds[0] ?? resolvedPartId)));
+  const selectedParts = parts.filter((p) => selectedPartIds.includes(p.id));
+  const activePart = selectedParts.length > 0 ? getAggregatedPart(selectedParts) : parts[activeIndex];
 
   useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {
@@ -97,37 +110,60 @@ function LessonBody({
       const dialogs = document.querySelectorAll('[aria-modal="true"]');
       if (!dialogs[dialogs.length - 1]?.contains(rootRef.current)) return;
       const next = parts[activeIndex + (event.key === 'ArrowLeft' ? -1 : 1)];
-      if (next) onPartChange(next.id);
+      if (next) {
+        setSelectedPartIds([next.id]);
+        onPartChange(next.id);
+      }
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
   }, [activeIndex, onPartChange, parts]);
 
-  if (!part) return null;
+  if (!activePart) return null;
 
-  const stored = modes[part.id];
-  const mode = stored && isModeAvailable(part, stored) ? stored : getDefaultMode(part);
+  const stored = modes[activePart.id];
+  const mode = stored && isModeAvailable(activePart, stored) ? stored : getDefaultMode(activePart);
 
   const handleStart = () => {
-    if (mode === 'vocab') onStartPractice(lesson.id, part.id, 'flashcards');
-    else if (mode === 'grammar' && part.grammar) onOpenGrammarPart(part.grammar.manifestId);
-    else onOpenReadingPart({ bookId, lessonId: lesson.id, partId: part.id });
+    const practiceTarget = selectedPartIds.length > 1 ? selectedPartIds : activePart.id;
+    if (mode === 'vocab') onStartPractice(lesson.id, practiceTarget, 'flashcards');
+    else if (mode === 'grammar' && activePart.grammar) onOpenGrammarPart(activePart.grammar.manifestId);
+    else onOpenReadingPart({ bookId, lessonId: lesson.id, partId: selectedPartIds[0] ?? activePart.id });
   };
   const swipe = (step: 1 | -1) => {
     const next = parts[activeIndex + step];
-    if (next) onPartChange(next.id);
+    if (next) {
+      setSelectedPartIds([next.id]);
+      onPartChange(next.id);
+    }
   };
-  const changePart = (index: number) => onPartChange(parts[index].id);
+  const handleSelectPart = (id: number) => {
+    setSelectedPartIds([id]);
+    onPartChange(id);
+  };
+  const handleTogglePart = (id: number) => {
+    setSelectedPartIds((prev) => {
+      if (prev.includes(id)) {
+        if (prev.length <= 1) return prev;
+        const next = prev.filter((p) => p !== id);
+        onPartChange(next[0]);
+        return next;
+      }
+      return [...prev, id].sort((a, b) => a - b);
+    });
+  };
 
   const modeButtons = (
-    <ModeButtons part={part} selected={mode} large={isDesktop} onSelect={(next) => onModeChange(part.id, next)} />
+    <ModeButtons part={activePart} selected={mode} large={isDesktop} onSelect={(next) => onModeChange(activePart.id, next)} />
   );
   const actions = (
     <LessonActions
-      mode={mode}
-      canQuiz={part.vocab.total > 0}
+      canQuiz={activePart.vocab.total > 0}
       onStart={handleStart}
-      onQuiz={() => onStartPractice(lesson.id, part.id, 'quiz')}
+      onQuiz={() => {
+        const practiceTarget = selectedPartIds.length > 1 ? selectedPartIds : activePart.id;
+        onStartPractice(lesson.id, practiceTarget, 'quiz');
+      }}
     />
   );
 
@@ -154,7 +190,13 @@ function LessonBody({
           <div className="flex flex-col">
             {backButton}
             <LessonPicture src={imageSrc} isIcon={!isIllustration} onSwipe={swipe} className="rounded-modal" />
-            <PartTabs parts={parts} activeIndex={activeIndex} onChange={changePart} className="mt-3.5" />
+            <PartTabs
+              parts={parts}
+              selectedPartIds={selectedPartIds}
+              onSelectPart={handleSelectPart}
+              onTogglePart={handleTogglePart}
+              className="mt-3.5"
+            />
           </div>
           <div className="mt-12 flex flex-col">
             <LessonTitle lesson={lesson} isDesktop />
@@ -174,7 +216,13 @@ function LessonBody({
             {backButton}
             <LessonPicture src={imageSrc} isIcon={!isIllustration} onSwipe={swipe} className="max-h-[38vh] rounded-modal" />
           </div>
-          <PartTabs parts={parts} activeIndex={activeIndex} onChange={changePart} className="mx-4 mt-2" />
+          <PartTabs
+            parts={parts}
+            selectedPartIds={selectedPartIds}
+            onSelectPart={handleSelectPart}
+            onTogglePart={handleTogglePart}
+            className="mx-4 mt-2"
+          />
           <div className="px-4 pt-4"><LessonTitle lesson={lesson} isDesktop={false} /></div>
           <div className="px-4 pb-3 pt-3">{modeButtons}</div>
         </div>

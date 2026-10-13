@@ -1,20 +1,21 @@
 import { AppIcon } from '../../../lib/widgets';
 import { audioService } from '../../../services/audioService';
-import { useAppStore } from '../../../store/useAppStore';
 import { useCharDictionaryEntry } from '../hooks/useCharDictionaryEntry';
 import { FavoriteButton } from '../../library';
+import { useEffect, useRef, useState } from 'react';
+import { findMatchingCourseRecording, findCharacterCourseContext } from '../../../services/courseVocabLookup';
+import { usePrimaryReading } from '../../../hooks/usePronunciation';
+import { getCharacterAudio } from '../../../services/pronunciationAudio';
 
 const ICON_ACTION =
   'flex h-10 w-10 shrink-0 items-center justify-center rounded-compact transition-colors focus-ring';
 
 /**
  * Always-visible audio + save controls pinned to the top-right of the
- * breakdown summary card. Plays the packaged recording when available,
- * falling back to neural TTS.
+ * breakdown summary card. Only plays recordings matching the displayed reading.
  */
 export function SummaryQuickActions({
   char,
-  audioSrc,
   pinyin: shownPinyin,
   meaning: shownMeaning,
   className = 'absolute right-3 top-3 z-10 flex items-center gap-2 sm:right-5 sm:top-5',
@@ -28,18 +29,42 @@ export function SummaryQuickActions({
   className?: string;
 }) {
   const entries = useCharDictionaryEntry(char);
-  const characterPreference = useAppStore((state) => state.characterPreference);
 
   const primary = entries[0];
   const headword = primary?.traditional || char;
-  const voice = characterPreference === 'traditional' ? 'zh-TW-HsiaoChenNeural' : 'zh-CN-XiaoxiaoNeural';
+  const indexedReading = usePrimaryReading(char, primary?.pinyin?.[0]);
+  const reading = shownPinyin || indexedReading;
+  const [message, setMessage] = useState('');
+  const [recording, setRecording] = useState<{ key: string; audio?: string; contextWord?: string } | null>(null);
+  const recordingKey = `${headword}|${reading}`;
+  const requestId = useRef(0);
+  useEffect(() => {
+    const counter = requestId;
+    const request = ++counter.current;
+    setMessage('');
+    void findMatchingCourseRecording(headword, reading).catch(() => undefined).then(async (course) => {
+      if (course?.audio && audioService.isAudioFileName(course.audio)) return { audio: course.audio };
+      if (counter.current !== request) return undefined;
+      const audio = await getCharacterAudio(headword, reading).catch(() => undefined);
+      if (audio) return { audio };
+      if (counter.current !== request) return undefined;
+      const context = await findCharacterCourseContext(headword, reading);
+      return context ? { audio: context.audio, contextWord: context.front } : undefined;
+    }).catch(() => undefined).then((result) => {
+      if (counter.current === request) setRecording({ key: recordingKey, ...result });
+    });
+    return () => { counter.current++; };
+  }, [headword, reading, recordingKey]);
 
   const play = () => {
-    if (audioSrc) {
-      audioService.play(audioSrc).catch(() => audioService.speakNeural(headword, voice).catch(() => {}));
-    } else {
-      audioService.speakNeural(headword, voice).catch(() => {});
-    }
+    if (recording?.key !== recordingKey || !recording.audio) return;
+    const request = ++requestId.current;
+    audioService.stop();
+    setMessage('');
+    const unavailable = () => {
+      if (requestId.current === request) setMessage('Recording unavailable for this reading.');
+    };
+    void audioService.play(recording.audio, 1, undefined, undefined, 0, { fallback: 'none', onUnavailable: unavailable }).catch(unavailable);
   };
 
   const pinyinStr = primary?.pinyin
@@ -50,14 +75,16 @@ export function SummaryQuickActions({
 
   return (
     <div className={className}>
-      <button
+      {recording?.key === recordingKey && recording.audio ? <button
         type="button"
-        aria-label={`Hear pronunciation of ${headword}`}
+        aria-label={recording.contextWord ? `Hear ${headword} in ${recording.contextWord}` : `Hear pronunciation of ${headword}`}
         onClick={play}
-        className={`${ICON_ACTION} text-ui-muted-strong transition-colors hover:bg-ui-hover hover:text-brand-primary active:scale-95`}
+        className={`${recording.contextWord ? 'flex h-10 items-center gap-1 rounded-compact px-2 focus-ring' : ICON_ACTION} text-ui-muted-strong transition-colors hover:bg-ui-hover hover:text-brand-primary active:scale-95`}
       >
         <AppIcon name="pronounce" size={22} />
-      </button>
+        {recording.contextWord && <span className="text-sm">Hear {recording.contextWord}</span>}
+      </button> : <span role="status" className="text-xs text-ui-muted-strong">{recording?.key === recordingKey ? 'No audio' : 'Checking audio…'}</span>}
+      {message && <span role="status" className="text-xs text-ui-muted-strong">{message}</span>}
       <FavoriteButton
         word={headword}
         traditional={primary?.traditional}

@@ -9,7 +9,7 @@ import { isHanziChar } from '../../../utils/characters/hanzi';
 import { FlashcardBackFace, useFlashcardExtras } from '../../../features/flashcards';
 import { FavoriteButton } from '../../../features/library';
 import { useCardSwipe } from '../hooks/useCardSwipe';
-import { CARD_BOX_CLASS, CARD_SURFACE_CLASS, REVIEW_CARD_CLASS, SETTLE_EASE, SETTLE_MS, questionWordPx } from '../flashcardMotion';
+import { CARD_BOX_CLASS, CARD_SURFACE_CLASS, SETTLE_EASE, SETTLE_MS, questionWordPx } from '../flashcardMotion';
 
 export interface DraggableFlashcardProps {
   card: Flashcard;
@@ -21,10 +21,11 @@ export interface DraggableFlashcardProps {
   showPinyin?: boolean;
   toneColors?: boolean;
   showTranslation?: boolean;
+  simpleDefinitions?: boolean;
   examples?: RankedExample[];
   isExamplesLoading?: boolean;
-  /** `review` wears the amber edge used while missed cards come back. */
-  tone?: 'default' | 'review';
+  showHook?: boolean;
+  onToggleHook?: () => void;
 }
 
 // direction: 1 = exit left, -1 = exit right. The next card rises into place once this one has left.
@@ -86,9 +87,11 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
   showPinyin = true,
   toneColors = false,
   showTranslation = true,
+  simpleDefinitions,
   examples,
   isExamplesLoading,
-  tone = 'default',
+  showHook: controlledShowHook,
+  onToggleHook,
 }: DraggableFlashcardProps) {
   const isPresent = useIsPresent();
   const [isDragging, setIsDragging] = useState(false);
@@ -103,11 +106,32 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
   const showWordHookChip = shouldShowWordHook(card.front);
   const { extras } = useFlashcardExtras(card);
   const wordHook = extras.wordHook;
-  const [showHook, setShowHook] = useState(false);
+  const [internalShowHook, setInternalShowHook] = useState(false);
+  const showHook = controlledShowHook !== undefined ? controlledShowHook : internalShowHook;
+  // The hint only belongs to the answer side. Hide it synchronously on the
+  // front so the word-pose measurement never uses the compact hint layout.
+  const isHookOpen = showHook && isFlipped;
 
   useEffect(() => {
-    setShowHook(false);
-  }, [isFlipped, card.front]);
+    if (controlledShowHook === undefined) {
+      setInternalShowHook(false);
+    }
+  }, [isFlipped, card.front, controlledShowHook]);
+
+  useEffect(() => {
+    if (showHook && backScrollRef.current) {
+      backScrollRef.current.scrollTop = 0;
+    }
+  }, [showHook]);
+
+  const handleToggleHook = () => {
+    if (backScrollRef.current) backScrollRef.current.scrollTop = 0;
+    if (onToggleHook) {
+      onToggleHook();
+    } else {
+      setInternalShowHook((prev) => !prev);
+    }
+  };
 
   const renderCardActions = () => {
     const hasHook = showWordHookChip && Boolean(wordHook);
@@ -119,24 +143,20 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
         {hasHook && (
           <button
             type="button"
-            aria-label={showHook ? `Hide memory hook for ${card.front}` : `Open memory hook for ${card.front}`}
-            aria-expanded={showHook}
+            aria-label={isHookOpen ? `Hide memory hook for ${card.front}` : `Open memory hook for ${card.front}`}
+            aria-expanded={isHookOpen}
             onClick={(event) => {
               event.stopPropagation();
               if (isDragging) return;
-              setShowHook((prev) => {
-                if (backScrollRef.current) backScrollRef.current.scrollTop = 0;
-                return !prev;
-              });
+              handleToggleHook();
             }}
             className={cn(
-              'flex h-10 w-10 items-center justify-center rounded-compact focus-ring active:scale-95',
-              showHook
-                ? 'bg-feedback-warning-surface ring-2 ring-feedback-warning'
-                : 'text-ui-muted hover:bg-ui-hover',
+              'flex h-10 w-10 items-center justify-center rounded-compact focus-ring hover:bg-ui-hover active:scale-95',
+              isHookOpen ? 'text-feedback-warning hover:text-feedback-warning-edge' : 'text-ui-muted',
             )}
           >
-            <AppIcon name="hint" size={22} className={showHook ? undefined : 'grayscale'} />
+            {/* Same outline-to-filled language as the bookmark beside it. */}
+            <AppIcon name={isHookOpen ? 'lightbulbFilled' : 'lightbulb'} size={22} />
           </button>
         )}
         <FavoriteButton
@@ -147,7 +167,7 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
           definitions={card.back}
           size="lg"
           variant="ghost"
-          className="h-10 w-10 text-ui-muted"
+          className="h-10 w-10 rounded-compact text-ui-muted hover:bg-ui-hover hover:text-ui-muted active:scale-95"
         />
       </div>
     );
@@ -239,7 +259,30 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
       layout.word.style.transform = layout.pose;
     });
     observer.observe(surface);
-    return () => observer.disconnect();
+
+    // The word's resting place on the answer side moves when that side's content changes (examples, hook and
+    // fonts arrive after the first paint, e.g. when a lesson has just opened): re-pose so the question side
+    // stays centred, not left where the first measurement put it.
+    let frame = 0;
+    const repose = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        if (isFlipped || wordAnimRef.current?.playState === 'running') return;
+        const layout = readWordPose();
+        if (!layout) return;
+        layout.word.style.transformOrigin = layout.origin;
+        layout.word.style.transform = layout.pose;
+      });
+    };
+    const back = backRef.current;
+    const mutations = back && typeof MutationObserver !== 'undefined' ? new MutationObserver(repose) : null;
+    if (back) mutations?.observe(back, { childList: true, subtree: true, characterData: true });
+    document.fonts?.ready.then(repose, () => {});
+    return () => {
+      cancelAnimationFrame(frame);
+      mutations?.disconnect();
+      observer.disconnect();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps -- observer only needs the flip state
   }, [isFlipped]);
 
@@ -252,11 +295,11 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
       animate="center"
       exit="exit"
       transition={{
-        y: { duration: reduceMotion ? 0 : 0.42, ease: [0.2, 0.9, 0.3, 1.08] },
-        scale: { duration: reduceMotion ? 0 : 0.42, ease: [0.2, 0.9, 0.3, 1.08] },
-        x: { duration: reduceMotion ? 0 : 0.24, ease: [0.45, 0, 0.8, 0.55] },
-        rotate: { duration: reduceMotion ? 0 : 0.24, ease: [0.45, 0, 0.8, 0.55] },
-        opacity: { duration: reduceMotion ? 0 : 0.24, ease: 'easeOut' },
+        y: { duration: reduceMotion ? 0 : 0.26, ease: [0.2, 0.9, 0.3, 1.08] },
+        scale: { duration: reduceMotion ? 0 : 0.26, ease: [0.2, 0.9, 0.3, 1.08] },
+        x: { duration: reduceMotion ? 0 : 0.14, ease: [0.45, 0, 0.8, 0.55] },
+        rotate: { duration: reduceMotion ? 0 : 0.14, ease: [0.45, 0, 0.8, 0.55] },
+        opacity: { duration: reduceMotion ? 0 : 0.14, ease: 'easeOut' },
       }}
       className={cn(
         CARD_BOX_CLASS, "flex items-center justify-center transform-gpu [container-type:size] select-none",
@@ -274,13 +317,13 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
         style={{ touchAction: 'pan-y' }}
         className="relative h-full w-full cursor-pointer transform-gpu origin-[50%_115%]"
       >
-        <div ref={surfaceRef} data-fc-surface className={cn(CARD_SURFACE_CLASS, tone === 'review' && REVIEW_CARD_CLASS, 'relative h-full w-full overflow-hidden')}>
+        <div ref={surfaceRef} data-fc-surface className={cn(CARD_SURFACE_CLASS, 'relative h-full w-full overflow-hidden')}>
           <div
             ref={backRef}
             data-reveal={isFlipped}
             className={cn(
               'absolute inset-0 flex flex-col',
-              showHook ? 'p-4 pb-4 sm:p-6 sm:pb-5' : 'p-6 pb-5 sm:p-8 sm:pb-6',
+              isHookOpen ? 'p-4 pb-4 sm:p-6 sm:pb-5' : 'p-6 pb-5 sm:p-8 sm:pb-6',
               isFlipped ? 'pointer-events-auto' : 'pointer-events-none [&_[data-fc-word]]:pointer-events-auto',
             )}
           >
@@ -291,11 +334,12 @@ export const DraggableFlashcard = React.memo(function DraggableFlashcard({
               showPinyin={showPinyin}
               toneColors={toneColors}
               showTranslation={showTranslation}
+              simpleDefinitions={simpleDefinitions}
               examples={examples}
               isExamplesLoading={isExamplesLoading}
               isDragging={isDragging}
               scrollRef={backScrollRef}
-              showHook={showHook}
+              showHook={isHookOpen}
               hook={wordHook}
               hookLoaded
               wordInk={!isFlipped}

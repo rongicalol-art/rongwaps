@@ -71,12 +71,6 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
   const { activeCards: cards, currentIndex, currentCard, completed } = session;
   const screenState: 'playing' | 'complete' = completed ? 'complete' : 'playing';
 
-  // Warm the deck's recorded audio once its cards arrive.
-  useEffect(() => {
-    if (cards.length === 0) return;
-    audioService.preload(cards.map(c => c.audio));
-  }, [cards]);
-
   useEffect(() => {
     const updateSize = () => {
       const maxWidth = window.innerWidth - 64;
@@ -106,7 +100,7 @@ export function useWriting(activeBookId: number, selectedLessons: number[], onCl
   // Play audio when the card changes
   useEffect(() => {
     if (autoPlayAudio && currentCard && currentIndex >= 0) {
-      audioService.play(currentCard.audio, pronunciationRate, currentCard.front, undefined, 0, { overlap: true });
+      audioService.playCard(currentCard, pronunciationRate, { overlap: true });
     }
   }, [autoPlayAudio, currentIndex, currentCard, pronunciationRate]);
 

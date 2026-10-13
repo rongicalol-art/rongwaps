@@ -76,6 +76,8 @@
   --color-brand-primary-soft: #f2f6f8;
   --color-brand-primary-soft-edge: #c3d7e3;
   --color-brand-primary-track: #d3dbe0;
+  --color-brand-primary-wash: #e4edf3;
+  --color-brand-on-primary: #ffffff;
   --color-brand-secondary: #d4793a;
   --color-brand-secondary-edge: #b05f27;
   --color-brand-secondary-soft: #fbf5ef;
@@ -91,13 +93,6 @@
   --color-feedback-warning-edge: #d99a0b;
   --color-feedback-warning-surface: #fff4d6;
   --color-feedback-warning-ink: #8a5a00;
-  /* Review passes: muted honey, deliberately calmer than feedback-warning. */
-  --color-review-bar: #dcae4f;
-  --color-review-track: #ece3cf;
-  --color-review-line: #e2d1a4;
-  --color-review-soft: #ecc873;
-  --color-review-soft-edge: #c99b3f;
-  --color-review-ink: #8a6a2a;
   --color-feedback-danger: #d9605a;
   --color-feedback-danger-surface: #f8e1df;
   --color-feedback-danger-edge: #b84842;
@@ -171,7 +166,7 @@
   --size-window-header: 71px;
   --workspace-desktop-nav-width: 288px;
   --workspace-nav-width: 0px;
-  --workspace-shift: 300ms ease-out;
+  --workspace-shift: 0ms;
 
   /* Universal Safe Area & Dock Layout Tokens */
   --safe-area-bottom: env(safe-area-inset-bottom, 0px);
@@ -517,6 +512,30 @@ body {
 }
 
 /* Card Maker Animations */
+/* Answer feedback on a choice: the right one lifts and settles, the wrong one gives a quick shake. */
+@keyframes rw-choice-lift { 0% { transform: translateY(0); } 40% { transform: translateY(-4px); } 100% { transform: translateY(0); } }
+@keyframes rw-choice-shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-3px); } 55% { transform: translateX(3px); } 80% { transform: translateX(-1.5px); } }
+.rw-choice-correct { animation: rw-choice-lift 320ms cubic-bezier(.16, 1, .3, 1); }
+.rw-choice-wrong { animation: rw-choice-shake 260ms ease-out; }
+@media (prefers-reduced-motion: reduce) { .rw-choice-correct, .rw-choice-wrong { animation: none; } }
+/* Quiz picker: a static hand of cards, with a small spread on hover. */
+.rw-deck-card { position: absolute; bottom: 2px; left: 50%; transform-origin: 50% 100%; transition: transform 450ms cubic-bezier(.34, 1.32, .64, 1); }
+.rw-deck-left { transform: translateX(calc(-50% - 27px)) rotate(-11deg); }
+.rw-deck-right { transform: translateX(calc(-50% + 27px)) rotate(11deg); }
+.rw-deck-front { transform: translate(-50%, -6px); }
+.group:hover .rw-deck-left { transform: translate(calc(-50% - 32px), -2px) rotate(-15deg); }
+.group:hover .rw-deck-right { transform: translate(calc(-50% + 32px), -2px) rotate(15deg); }
+.group:hover .rw-deck-front { transform: translate(-50%, -9px); }
+@media (prefers-reduced-motion: reduce) {
+  .rw-deck-card { transition: none; }
+  .rw-deck-card > span { animation: none; }
+}
+
+/* Sound-match tile: its wave bars bounce while that tile's audio plays. */
+@keyframes rw-wave { from { transform: scaleY(.35); } to { transform: scaleY(1); } }
+.rw-wave-playing > span { animation: rw-wave 480ms ease-in-out infinite alternate; }
+@media (prefers-reduced-motion: reduce) { .rw-wave-playing > span { animation: none; } }
+
 @keyframes slideInFwd {
   0% { transform: translateX(50px) scale(0.95); opacity: 0; }
   100% { transform: translateX(0) scale(1); opacity: 1; }
@@ -532,14 +551,14 @@ body {
 
 .anim-fwd { animation: slideInFwd 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
 .anim-back { animation: slideInBack 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-.anim-float { animation: float 3s ease-in-out infinite; }
+.anim-float { animation: none; }
 .spring-transition { transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
 @keyframes teaser-marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
-.anim-teaser-marquee { animation: teaser-marquee 6s linear infinite; }
+.anim-teaser-marquee { animation: none; }
 
 @keyframes shimmer {
   0% { transform: translateX(-100%); }
@@ -558,21 +577,52 @@ body {
   }
 }
 
-/* Review intro: the header counter appears when the count badge lands on it. */
-[data-review-intro] [data-practice-counter] {
-  opacity: 0;
-}
-
-/* Review passes tint the whole app warm; registered so the swap fades instead of snapping. */
+/* Tones: a tone is a complete colour-role set (canvas, text, lines, accent) swapped on <html>.
+   Books write theirs inline (useBookTheme, from src/data/books.ts); `data-tone="review"` is the
+   honey tone for review passes (useReviewTone). The !important beats the book's inline values.
+   Registered so any swap fades instead of snapping. Components only use the role tokens. */
 @property --color-ui-canvas { syntax: '<color>'; inherits: true; initial-value: #f3f2f0; }
 @property --color-ui-practice-canvas { syntax: '<color>'; inherits: true; initial-value: #f3f2f0; }
+@property --color-ui-ink-strong { syntax: '<color>'; inherits: true; initial-value: #34312d; }
+@property --color-ui-ink { syntax: '<color>'; inherits: true; initial-value: #4a4743; }
+@property --color-ui-muted-strong { syntax: '<color>'; inherits: true; initial-value: #777777; }
+@property --color-ui-muted { syntax: '<color>'; inherits: true; initial-value: #8f8b86; }
+@property --color-ui-border { syntax: '<color>'; inherits: true; initial-value: #cbc8c3; }
 @property --color-ui-divider { syntax: '<color>'; inherits: true; initial-value: #dedbd6; }
+@property --color-brand-primary { syntax: '<color>'; inherits: true; initial-value: #3a7ca5; }
+@property --color-brand-primary-edge { syntax: '<color>'; inherits: true; initial-value: #2c6385; }
+@property --color-brand-primary-deep { syntax: '<color>'; inherits: true; initial-value: #1f4d6b; }
+@property --color-brand-primary-soft { syntax: '<color>'; inherits: true; initial-value: #f2f6f8; }
+@property --color-brand-primary-soft-edge { syntax: '<color>'; inherits: true; initial-value: #c3d7e3; }
+@property --color-brand-primary-track { syntax: '<color>'; inherits: true; initial-value: #d3dbe0; }
+@property --color-brand-primary-wash { syntax: '<color>'; inherits: true; initial-value: #e4edf3; }
+@property --color-brand-on-primary { syntax: '<color>'; inherits: true; initial-value: #ffffff; }
 :root {
-  transition: --color-ui-canvas 500ms ease, --color-ui-practice-canvas 500ms ease, --color-ui-divider 500ms ease;
+  transition:
+    --color-ui-canvas 500ms ease, --color-ui-practice-canvas 500ms ease,
+    --color-ui-ink-strong 500ms ease, --color-ui-ink 500ms ease,
+    --color-ui-muted-strong 500ms ease, --color-ui-muted 500ms ease,
+    --color-ui-border 500ms ease, --color-ui-divider 500ms ease,
+    --color-brand-primary 500ms ease, --color-brand-primary-edge 500ms ease,
+    --color-brand-primary-deep 500ms ease, --color-brand-primary-soft 500ms ease,
+    --color-brand-primary-soft-edge 500ms ease, --color-brand-primary-track 500ms ease,
+    --color-brand-primary-wash 500ms ease, --color-brand-on-primary 500ms ease;
 }
-:root[data-practice-tone="review"] {
-  --color-ui-canvas: #f4efe6;
-  /* !important: useBookTheme writes the book's practice canvas inline on <html>. */
+:root[data-tone="review"] {
+  --color-ui-canvas: #f4efe6 !important;
   --color-ui-practice-canvas: #f4efe6 !important;
-  --color-ui-divider: #e6dcc6;
+  --color-ui-ink-strong: #4f3d18 !important;
+  --color-ui-ink: #6b5222 !important;
+  --color-ui-muted-strong: #85703f !important;
+  --color-ui-muted: #9a8556 !important;
+  --color-ui-border: #d6c28a !important;
+  --color-ui-divider: #e2d1a4 !important;
+  --color-brand-primary: #dcae4f !important;
+  --color-brand-primary-edge: #c99b3f !important;
+  --color-brand-primary-deep: #8a6a2a !important;
+  --color-brand-primary-soft: #f8f1e0 !important;
+  --color-brand-primary-soft-edge: #e2d1a4 !important;
+  --color-brand-primary-track: #ece3cf !important;
+  --color-brand-primary-wash: #f6ecd2 !important;
+  --color-brand-on-primary: #4f3d18 !important;
 }

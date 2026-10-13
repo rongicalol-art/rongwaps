@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 import { useAppStore } from '../../../store/useAppStore';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import { WorkspaceWindow } from '../../../lib/widgets';
-import { SingleBreakdownView } from '../../character-breakdown';
+import { SingleBreakdownView, useBreakdownBackHandler } from '../../character-breakdown';
 import { WordDetailView } from './WordDetailView';
 
 const SINGLE_HANZI_RE = /^[\u3400-\u9FFF]$/u;
@@ -49,6 +49,13 @@ export function DictionaryDetailOverlay() {
     setStack((prev) => prev.slice(0, -1));
   };
 
+  const { handleUiBack, handleUiClose } = useBreakdownBackHandler({
+    isOpen: Boolean(dictionaryWord),
+    depth: stack.length,
+    onPop: popCharacter,
+    onClose: () => setDictionaryWord(null),
+  });
+
   const rootWord = stack[0];
   // Single characters open the shared breakdown screen (same as practice);
   // multi-character words keep the full word breakdown view.
@@ -66,7 +73,7 @@ export function DictionaryDetailOverlay() {
               key={`word-${rootWord.word}`}
               word={rootWord.word}
               initialCharIndex={0}
-              onClose={() => setDictionaryWord(null)}
+              onClose={handleUiClose}
               activeBook={activeBook}
               pushBreakdown={pushCharacter}
               depth={0}
@@ -75,7 +82,7 @@ export function DictionaryDetailOverlay() {
             <WordDetailView
               key={`word-${rootWord.word}`}
               word={rootWord.word}
-              onClose={() => setDictionaryWord(null)}
+              onClose={handleUiClose}
               pushCharacter={pushCharacter}
               depth={0}
             />
@@ -88,7 +95,7 @@ export function DictionaryDetailOverlay() {
                   key={`char-${idx + 1}-${item.word}`}
                   word={item.word}
                   initialCharIndex={item.index}
-                  onBack={popCharacter}
+                  onBack={handleUiBack}
                   activeBook={activeBook}
                   pushBreakdown={pushCharacter}
                   depth={idx + 1}
@@ -97,7 +104,7 @@ export function DictionaryDetailOverlay() {
                 <WordDetailView
                   key={`word-${idx + 1}-${item.word}`}
                   word={item.word}
-                  onBack={popCharacter}
+                  onBack={handleUiBack}
                   pushCharacter={pushCharacter}
                   depth={idx + 1}
                 />

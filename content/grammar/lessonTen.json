@@ -14,7 +14,7 @@
       237
     ],
     "audioReference": "10-2-3",
-    "explanation": "如果 or 要是 opens the condition. 就 clearly points to the result that follows.",
+    "explanation": "如果 or 要是 opens the condition. 就 clearly points to the result that follows. If both parts have the same subject, you can leave the second one out.",
     "lessonWorld": {
       "kind": "care",
       "eyebrow": "Care message",
@@ -797,8 +797,8 @@
     "pattern": "如果／要是 + condition， 就 + result",
     "patternColumns": [
       "Condition",
-      "Result",
-      "Then"
+      "Then",
+      "Result"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -806,121 +806,69 @@
         "id": "l10g5-p1",
         "subject": [
           {
-            "id": "l10g5-p1-s1",
-            "traditional": "如果",
-            "pinyin": "rúguǒ",
-            "meaning": "if"
+            "id": "l10g5-p1-if",
+            "traditional": "要是他",
+            "pinyin": "yàoshi tā",
+            "meaning": "if he"
           },
           {
-            "id": "l10g5-p1-s2",
-            "traditional": "發燒",
-            "simplified": "发烧",
-            "pinyin": "fāshāo",
-            "meaning": "have a fever"
+            "id": "l10g5-p1-not",
+            "traditional": "不去",
+            "pinyin": "bú qù",
+            "meaning": "does not go",
+            "suffix": "，"
           }
         ],
         "grammar": [
           {
-            "id": "l10g5-p1-g1",
-            "traditional": "就",
-            "pinyin": "jiù",
-            "meaning": "then; marks the result"
+            "id": "l10g5-p1-then",
+            "traditional": "我們就",
+            "pinyin": "wǒmen jiù",
+            "meaning": "we then",
+            "simplified": "我们就"
           }
         ],
         "complement": [
           {
-            "id": "l10g5-p1-c1",
-            "traditional": "吃",
-            "pinyin": "chī",
-            "meaning": "eat; take medicine"
-          },
-          {
-            "id": "l10g5-p1-c2",
-            "traditional": "藥",
-            "simplified": "药",
-            "pinyin": "yào",
-            "meaning": "medicine",
+            "id": "l10g5-p1-notgo",
+            "traditional": "不要去了",
+            "pinyin": "bú yào qù le",
+            "meaning": "should not go anymore",
             "suffix": "。"
           }
         ],
-        "english": "If you have a fever, then take medicine."
+        "english": "If he does not go, we will not go either."
       },
       {
         "id": "l10g5-p2",
         "subject": [
           {
-            "id": "l10g5-p2-s1",
-            "traditional": "如果",
-            "pinyin": "rúguǒ",
-            "meaning": "if"
-          },
-          {
-            "id": "l10g5-p2-s2",
-            "traditional": "不舒服",
-            "pinyin": "bù shūfu",
-            "meaning": "feel unwell"
+            "id": "l10g5-p2-if",
+            "traditional": "如果你想吃",
+            "pinyin": "rúguǒ nǐ xiǎng chī",
+            "meaning": "if you want to eat",
+            "suffix": "，"
           }
         ],
         "grammar": [
           {
-            "id": "l10g5-p2-g1",
+            "id": "l10g5-p2-then",
             "traditional": "就",
             "pinyin": "jiù",
-            "meaning": "then; marks the result"
+            "meaning": "then"
           }
         ],
         "complement": [
           {
-            "id": "l10g5-p2-c1",
-            "traditional": "看醫生",
-            "simplified": "看医生",
-            "pinyin": "kàn yīshēng",
-            "meaning": "see a doctor",
-            "suffix": "。"
+            "id": "l10g5-p2-eat",
+            "traditional": "多吃一點吧",
+            "simplified": "多吃一点吧",
+            "pinyin": "duō chī yìdiǎn ba",
+            "meaning": "eat a bit more",
+            "suffix": "！"
           }
         ],
-        "english": "If you feel unwell, then see a doctor."
-      },
-      {
-        "id": "l10g5-p3",
-        "subject": [
-          {
-            "id": "l10g5-p3-s1",
-            "traditional": "要是",
-            "pinyin": "yàoshi",
-            "meaning": "if"
-          },
-          {
-            "id": "l10g5-p3-s2",
-            "traditional": "他",
-            "pinyin": "tā",
-            "meaning": "he; him"
-          },
-          {
-            "id": "l10g5-p3-s3",
-            "traditional": "不舒服",
-            "pinyin": "bù shūfu",
-            "meaning": "feel unwell"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "l10g5-p3-g1",
-            "traditional": "就",
-            "pinyin": "jiù",
-            "meaning": "then; marks the result"
-          }
-        ],
-        "complement": [
-          {
-            "id": "l10g5-p3-c1",
-            "traditional": "休息",
-            "pinyin": "xiūxi",
-            "meaning": "rest",
-            "suffix": "。"
-          }
-        ],
-        "english": "If he feels unwell, then he rests."
+        "english": "If you want to eat, eat a bit more!"
       }
     ],
     "confusion": {
@@ -1276,11 +1224,17 @@
               "meaning": "one; a"
             },
             {
+              "id": "l10g5-e2-a-bit",
+              "traditional": "點",
+              "simplified": "点",
+              "pinyin": "diǎn",
+              "meaning": "a bit"
+            },
+            {
               "id": "l10g5-e2-word-9",
               "traditional": "吧",
               "pinyin": "ba",
               "meaning": "ending word: a suggestion",
-              "prefix": "點",
               "suffix": "！"
             }
           ]
@@ -1427,6 +1381,151 @@
             }
           ]
         }
+      },
+      {
+        "id": "l10g5-e5",
+        "number": 5,
+        "text": {
+          "traditional": "要是我有車，就可以開車去上課。",
+          "simplified": "要是我有车，就可以开车去上课。",
+          "pinyin": "Yàoshi wǒ yǒu chē, jiù kěyǐ kāichē qù shàngkè.",
+          "english": "If I had a car, I could drive to class.",
+          "words": [
+            {
+              "id": "l10g5-e5-word-1",
+              "traditional": "要是",
+              "pinyin": "yàoshi",
+              "meaning": "if"
+            },
+            {
+              "id": "l10g5-e5-word-2",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me"
+            },
+            {
+              "id": "l10g5-e5-word-3",
+              "traditional": "有車",
+              "simplified": "有车",
+              "pinyin": "yǒu chē",
+              "meaning": "have a car",
+              "suffix": "，"
+            },
+            {
+              "id": "l10g5-e5-word-4",
+              "traditional": "就可以",
+              "pinyin": "jiù kěyǐ",
+              "meaning": "then could"
+            },
+            {
+              "id": "l10g5-e5-word-5",
+              "traditional": "開車",
+              "simplified": "开车",
+              "pinyin": "kāichē",
+              "meaning": "drive"
+            },
+            {
+              "id": "l10g5-e5-word-6",
+              "traditional": "去",
+              "pinyin": "qù",
+              "meaning": "go"
+            },
+            {
+              "id": "l10g5-e5-word-7",
+              "traditional": "上課",
+              "simplified": "上课",
+              "pinyin": "shàngkè",
+              "meaning": "attend class",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l10g5-e6",
+        "number": 6,
+        "text": {
+          "traditional": "如果明天要來的人很多，我就多買一點兒飲料跟蛋糕。",
+          "simplified": "如果明天要来的人很多，我就多买一点儿饮料跟蛋糕。",
+          "pinyin": "Rúguǒ míngtiān yào lái de rén hěn duō, wǒ jiù duō mǎi yìdiǎnr yǐnliào gēn dàngāo.",
+          "english": "If many people are coming tomorrow, I will buy more drinks and cake.",
+          "words": [
+            {
+              "id": "l10g5-e6-word-1",
+              "traditional": "如果",
+              "pinyin": "rúguǒ",
+              "meaning": "if"
+            },
+            {
+              "id": "l10g5-e6-word-2",
+              "traditional": "明天",
+              "pinyin": "míngtiān",
+              "meaning": "tomorrow"
+            },
+            {
+              "id": "l10g5-e6-word-3",
+              "traditional": "要來的人",
+              "simplified": "要来的人",
+              "pinyin": "yào lái de rén",
+              "meaning": "the people who will come"
+            },
+            {
+              "id": "l10g5-e6-word-4",
+              "traditional": "很多",
+              "pinyin": "hěn duō",
+              "meaning": "many",
+              "suffix": "，"
+            },
+            {
+              "id": "l10g5-e6-word-5",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me"
+            },
+            {
+              "id": "l10g5-e6-word-6",
+              "traditional": "就",
+              "pinyin": "jiù",
+              "meaning": "then"
+            },
+            {
+              "id": "l10g5-e6-word-7",
+              "traditional": "多買",
+              "simplified": "多买",
+              "pinyin": "duō mǎi",
+              "meaning": "buy more"
+            },
+            {
+              "id": "l10g5-e6-word-8",
+              "traditional": "一點兒",
+              "simplified": "一点儿",
+              "pinyin": "yìdiǎnr",
+              "meaning": "a little"
+            },
+            {
+              "id": "l10g5-e6-word-9",
+              "traditional": "飲料",
+              "simplified": "饮料",
+              "pinyin": "yǐnliào",
+              "meaning": "drinks"
+            },
+            {
+              "id": "l10g5-e6-word-10",
+              "traditional": "跟",
+              "pinyin": "gēn",
+              "meaning": "and"
+            },
+            {
+              "id": "l10g5-e6-word-11",
+              "traditional": "蛋糕",
+              "pinyin": "dàngāo",
+              "meaning": "cake",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
       }
     ],
     "exerciseTitle": "Connect the condition and result",
@@ -1538,19 +1637,22 @@
             "id": "l10g5-q3-tile1",
             "traditional": "就多休息",
             "pinyin": "jiù duō xiūxi",
-            "meaning": "then rest more"
+            "meaning": "then rest more",
+            "simplified": "就多休息"
           },
           {
             "id": "l10g5-q3-tile2",
             "traditional": "多就休息",
             "pinyin": "duō jiù xiūxi",
-            "meaning": "reversed result order"
+            "meaning": "reversed result order",
+            "simplified": "多就休息"
           }
         ],
         "correctFeedback": "就 opens the result; 多 adjusts 休息.",
         "repairFeedback": "Build 就 + 多 + action."
       }
-    ]
+    ],
+    "exerciseNote": "The book answers three questions with 要是/如果……，就…… on printed page 237 and gives no answer key; these model answers follow the printed prompts."
   },
   "LESSON_TEN_GRAMMAR_FOUR": {
     "bookId": 1,
@@ -2700,7 +2802,8 @@
               "id": "l10g4-e1-word-6",
               "traditional": "幫",
               "pinyin": "bāng",
-              "meaning": "help; for"
+              "meaning": "help; for",
+              "simplified": "帮"
             },
             {
               "id": "l10g4-e1-word-7",
@@ -2713,7 +2816,8 @@
               "traditional": "買",
               "pinyin": "mǎi",
               "meaning": "buy",
-              "suffix": "。"
+              "suffix": "。",
+              "simplified": "买"
             }
           ]
         }
@@ -2723,58 +2827,132 @@
         "number": 2,
         "teachingNote": "Ask about an expected future.",
         "text": {
-          "traditional": "國安明天會來學校考試嗎？",
-          "simplified": "国安明天会来学校考试吗？",
-          "pinyin": "Guó’ān míngtiān huì lái xuéxiào kǎoshì ma?",
-          "english": "Will Guoan come to school for the exam tomorrow?",
+          "traditional": "A：國安生病了，明天會來學校考試嗎？ B：我也不知道。今天下午我們一起去看他吧！",
+          "simplified": "A：国安生病了，明天会来学校考试吗？ B：我也不知道。今天下午我们一起去看他吧！",
+          "pinyin": "A: Guó’ān shēngbìng le, míngtiān huì lái xuéxiào kǎoshì ma? B: Wǒ yě bù zhīdào. Jīntiān xiàwǔ wǒmen yìqǐ qù kàn tā ba!",
+          "english": "A: Guoan is sick. Will he come to school for the exam tomorrow? B: I do not know either. Let us go visit him this afternoon!",
           "words": [
             {
               "id": "l10g4-e2-word-1",
               "traditional": "國安",
-              "simplified": "国安",
               "pinyin": "Guó’ān",
-              "meaning": "Guoan"
+              "meaning": "Guoan",
+              "prefix": "A：",
+              "simplified": "国安"
             },
             {
               "id": "l10g4-e2-word-2",
+              "traditional": "生病了",
+              "simplified": "生病了",
+              "pinyin": "shēngbìng le",
+              "meaning": "is sick",
+              "suffix": "，"
+            },
+            {
+              "id": "l10g4-e2-word-3",
               "traditional": "明天",
               "pinyin": "míngtiān",
               "meaning": "tomorrow"
             },
             {
-              "id": "l10g4-e2-word-3",
+              "id": "l10g4-e2-word-4",
               "traditional": "會",
-              "simplified": "会",
               "pinyin": "huì",
-              "meaning": "will; know how to"
+              "meaning": "will",
+              "simplified": "会"
             },
             {
-              "id": "l10g4-e2-word-4",
+              "id": "l10g4-e2-word-5",
               "traditional": "來",
               "simplified": "来",
               "pinyin": "lái",
               "meaning": "come"
             },
             {
-              "id": "l10g4-e2-word-5",
+              "id": "l10g4-e2-word-6",
               "traditional": "學校",
               "simplified": "学校",
               "pinyin": "xuéxiào",
               "meaning": "school"
             },
             {
-              "id": "l10g4-e2-word-6",
+              "id": "l10g4-e2-word-7",
               "traditional": "考試",
               "simplified": "考试",
               "pinyin": "kǎoshì",
-              "meaning": "exam; test"
+              "meaning": "take an exam"
             },
             {
-              "id": "l10g4-e2-word-7",
+              "id": "l10g4-e2-word-8",
               "traditional": "嗎",
               "pinyin": "ma",
-              "meaning": "question ending",
-              "suffix": "？"
+              "meaning": "yes/no question ending",
+              "suffix": "？",
+              "simplified": "吗"
+            },
+            {
+              "id": "l10g4-e2-word-9",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me",
+              "prefix": "B："
+            },
+            {
+              "id": "l10g4-e2-word-10",
+              "traditional": "也",
+              "pinyin": "yě",
+              "meaning": "also"
+            },
+            {
+              "id": "l10g4-e2-word-11",
+              "traditional": "不知道",
+              "pinyin": "bù zhīdào",
+              "meaning": "do not know",
+              "suffix": "。"
+            },
+            {
+              "id": "l10g4-e2-word-12",
+              "traditional": "今天下午",
+              "pinyin": "jīntiān xiàwǔ",
+              "meaning": "this afternoon"
+            },
+            {
+              "id": "l10g4-e2-word-13",
+              "traditional": "我們",
+              "simplified": "我们",
+              "pinyin": "wǒmen",
+              "meaning": "we"
+            },
+            {
+              "id": "l10g4-e2-word-14",
+              "traditional": "一起",
+              "pinyin": "yìqǐ",
+              "meaning": "together"
+            },
+            {
+              "id": "l10g4-e2-word-15",
+              "traditional": "去",
+              "pinyin": "qù",
+              "meaning": "go"
+            },
+            {
+              "id": "l10g4-e2-word-16",
+              "traditional": "看",
+              "pinyin": "kàn",
+              "meaning": "visit"
+            },
+            {
+              "id": "l10g4-e2-word-17",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "him"
+            },
+            {
+              "id": "l10g4-e2-word-18",
+              "traditional": "吧",
+              "pinyin": "ba",
+              "meaning": "suggestion ending",
+              "suffix": "！"
             }
           ]
         }
@@ -2807,7 +2985,8 @@
               "id": "l10g4-e3-word-3",
               "traditional": "給",
               "pinyin": "gěi",
-              "meaning": "give"
+              "meaning": "give",
+              "simplified": "给"
             },
             {
               "id": "l10g4-e3-word-4",
@@ -2907,6 +3086,117 @@
             }
           ]
         }
+      },
+      {
+        "id": "l10g4-e5",
+        "number": 5,
+        "text": {
+          "traditional": "A：你明天要記得帶毛筆來學校。 B：好，我會帶毛筆來。",
+          "simplified": "A：你明天要记得带毛笔来学校。 B：好，我会带毛笔来。",
+          "pinyin": "A: Nǐ míngtiān yào jìde dài máobǐ lái xuéxiào. B: Hǎo, wǒ huì dài máobǐ lái.",
+          "english": "A: Remember to bring your brush to school tomorrow. B: Okay, I will bring my brush.",
+          "words": [
+            {
+              "id": "l10g4-e5-word-1",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you",
+              "prefix": "A："
+            },
+            {
+              "id": "l10g4-e5-word-2",
+              "traditional": "明天",
+              "pinyin": "míngtiān",
+              "meaning": "tomorrow"
+            },
+            {
+              "id": "l10g4-e5-word-3",
+              "traditional": "要",
+              "pinyin": "yào",
+              "meaning": "need to"
+            },
+            {
+              "id": "l10g4-e5-word-4",
+              "traditional": "記得",
+              "simplified": "记得",
+              "pinyin": "jìde",
+              "meaning": "remember"
+            },
+            {
+              "id": "l10g4-e5-word-5",
+              "traditional": "帶",
+              "simplified": "带",
+              "pinyin": "dài",
+              "meaning": "bring"
+            },
+            {
+              "id": "l10g4-e5-word-6",
+              "traditional": "毛筆",
+              "simplified": "毛笔",
+              "pinyin": "máobǐ",
+              "meaning": "writing brush"
+            },
+            {
+              "id": "l10g4-e5-word-7",
+              "traditional": "來",
+              "simplified": "来",
+              "pinyin": "lái",
+              "meaning": "come"
+            },
+            {
+              "id": "l10g4-e5-word-8",
+              "traditional": "學校",
+              "simplified": "学校",
+              "pinyin": "xuéxiào",
+              "meaning": "school",
+              "suffix": "。"
+            },
+            {
+              "id": "l10g4-e5-word-9",
+              "traditional": "好",
+              "pinyin": "hǎo",
+              "meaning": "okay",
+              "prefix": "B：",
+              "suffix": "，"
+            },
+            {
+              "id": "l10g4-e5-word-10",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me"
+            },
+            {
+              "id": "l10g4-e5-word-11",
+              "traditional": "會",
+              "pinyin": "huì",
+              "meaning": "will",
+              "simplified": "会"
+            },
+            {
+              "id": "l10g4-e5-word-12",
+              "traditional": "帶",
+              "simplified": "带",
+              "pinyin": "dài",
+              "meaning": "bring"
+            },
+            {
+              "id": "l10g4-e5-word-13",
+              "traditional": "毛筆",
+              "simplified": "毛笔",
+              "pinyin": "máobǐ",
+              "meaning": "writing brush"
+            },
+            {
+              "id": "l10g4-e5-word-14",
+              "traditional": "來",
+              "simplified": "来",
+              "pinyin": "lái",
+              "meaning": "come",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
       }
     ],
     "exerciseTitle": "Place the future signal",
@@ -3033,7 +3323,8 @@
         "correctFeedback": "會 starts the full future action.",
         "repairFeedback": "Use 會 + 帶水果."
       }
-    ]
+    ],
+    "exerciseNote": "The book answers three questions with 會 on printed page 236; these model answers follow the printed pictures."
   },
   "LESSON_TEN_GRAMMAR_ONE": {
     "bookId": 1,
@@ -3051,7 +3342,7 @@
       227
     ],
     "audioReference": "10-1-3",
-    "explanation": "跟 connects you with another person: do things together (\"with\"), speak or ask (\"to\"), or learn and borrow (\"from\").",
+    "explanation": "跟 connects you with another person. Use it to do things together (“with”), to talk or ask (“to”), or to learn or borrow (“from”). If you need a helping verb or an adverb, put it before 跟.",
     "lessonWorld": {
       "kind": "care",
       "eyebrow": "Care message",
@@ -4272,7 +4563,8 @@
               "traditional": "去機場",
               "simplified": "去机场",
               "pinyin": "qù jīchǎng",
-              "meaning": "going to airport"
+              "meaning": "going to airport",
+              "prefix": "：「"
             },
             {
               "id": "b1l10-g1-e5-w4",
@@ -4280,7 +4572,7 @@
               "simplified": "1,200 块钱",
               "pinyin": "1,200 kuài qián",
               "meaning": "1,200 dollars",
-              "suffix": "。"
+              "suffix": "。」"
             }
           ]
         }
@@ -4325,10 +4617,10 @@
         "number": 7,
         "teachingNote": "跟...學 means to learn from someone.",
         "text": {
-          "traditional": "我跟沈老師學書法。",
-          "simplified": "我跟沈老师学书法。",
-          "pinyin": "Wǒ gēn Shěn lǎoshī xué shūfǎ.",
-          "english": "I learn calligraphy from Teacher Shen.",
+          "traditional": "我跟李老師學書法。",
+          "simplified": "我跟李老师学书法。",
+          "pinyin": "Wǒ gēn Lǐ lǎoshī xué shūfǎ.",
+          "english": "I learn calligraphy from Teacher Li.",
           "words": [
             {
               "id": "b1l10-g1-e7-w1",
@@ -4338,10 +4630,10 @@
             },
             {
               "id": "b1l10-g1-e7-w2",
-              "traditional": "跟沈老師",
-              "simplified": "跟沈老师",
-              "pinyin": "gēn Shěn lǎoshī",
-              "meaning": "from Teacher Shen"
+              "traditional": "跟李老師",
+              "simplified": "跟李老师",
+              "pinyin": "gēn Lǐ lǎoshī",
+              "meaning": "from Teacher Li"
             },
             {
               "id": "b1l10-g1-e7-w3",
@@ -4789,7 +5081,7 @@
         "id": "b1l10-g01-sec-3",
         "sectionNumber": 3,
         "title": "Learning or Getting from Someone (From)",
-        "explanation": "Put 跟 before the person you learn or receive something from, like “learn calligraphy from Teacher Shen” or “borrow money from a friend.”",
+        "explanation": "Put 跟 before the person you learn or receive something from, like “learn calligraphy from Teacher Li” or “borrow money from a friend.”",
         "patternColumns": [
           "Subject",
           "跟 + Person",
@@ -4833,7 +5125,8 @@
           "g1-example-9"
         ]
       }
-    ]
+    ],
+    "exerciseNote": "The book describes four pictures with 跟 on printed page 227; these written answers follow the printed scenes."
   },
   "LESSON_TEN_GRAMMAR_THREE": {
     "bookId": 1,
@@ -5637,6 +5930,33 @@
     "patternAccentColumn": 0,
     "patternRows": [
       {
+        "id": "l10g3-r0",
+        "subject": [],
+        "grammar": [],
+        "complement": [],
+        "columns": [
+          [
+            {
+              "id": "l10g3-r0-more",
+              "traditional": "多",
+              "pinyin": "duō",
+              "meaning": "more"
+            }
+          ],
+          [
+            {
+              "id": "l10g3-r0-exercise",
+              "traditional": "運動",
+              "simplified": "运动",
+              "pinyin": "yùndòng",
+              "meaning": "exercise",
+              "suffix": "。"
+            }
+          ]
+        ],
+        "english": "Exercise more."
+      },
+      {
         "id": "l10g3-r1",
         "subject": [],
         "grammar": [],
@@ -5708,7 +6028,8 @@
               "traditional": "看手機",
               "pinyin": "kàn shǒujī",
               "meaning": "look at the phone",
-              "suffix": "。"
+              "suffix": "。",
+              "simplified": "看手机"
             }
           ]
         ],
@@ -6032,7 +6353,7 @@
         "text": {
           "traditional": "生病的時候要多休息。",
           "simplified": "生病的时候要多休息。",
-          "pinyin": "Shēngbìng de shíhou yào duō xiūxi.",
+          "pinyin": "Shēngbìng de shíhòu yào duō xiūxi.",
           "english": "When sick, rest more.",
           "words": [
             {
@@ -6048,11 +6369,17 @@
               "meaning": "links a description to a noun"
             },
             {
+              "id": "l10g3-e3-time",
+              "traditional": "時候",
+              "simplified": "时候",
+              "pinyin": "shíhou",
+              "meaning": "time"
+            },
+            {
               "id": "l10g3-e3-word-3",
               "traditional": "要",
               "pinyin": "yào",
-              "meaning": "need to; want to",
-              "prefix": "時候"
+              "meaning": "need to; want to"
             },
             {
               "id": "l10g3-e3-word-4",
@@ -6303,7 +6630,8 @@
     "patternColumnDetails": [
       "more or less",
       "verb phrase"
-    ]
+    ],
+    "exerciseNote": "The book completes three sentences with 多/少 on printed page 231 and gives no answer key; these model answers follow the printed pictures."
   },
   "LESSON_TEN_GRAMMAR_TWO": {
     "bookId": 1,
@@ -6314,7 +6642,7 @@
     "partId": 1,
     "grammarNumber": 2,
     "titleTraditional": "的修飾名詞子句",
-    "titleEnglish": "Noun Modified by a Clause with 的",
+    "titleEnglish": "Describe a Noun with an Action or Phrase Using 的",
     "learnerPromise": "Identify a person or thing by describing it first.",
     "printedPages": [
       228,
@@ -6322,7 +6650,7 @@
       230
     ],
     "audioReference": "10-1-3",
-    "explanation": "Descriptions always precede the noun: Description + 的 + Noun. To point out someone specific, place 這 (\"this\") or 那 (\"that\") right after 的.",
+    "explanation": "Put your whole description first, add 的, then name the person or thing: Description + 的 + Noun. To point out someone specific, add 這 (this) or 那 (that) right after 的.",
     "lessonWorld": {
       "kind": "care",
       "eyebrow": "Waiting room",
@@ -6335,7 +6663,9 @@
       "english": "Find the person who has a cold."
     },
     "focusTerms": [
-      "的"
+      "的",
+      "這",
+      "那"
     ],
     "teachingGlossary": [
       {
@@ -7188,14 +7518,14 @@
         "complement": [
           {
             "id": "l10g2-p3-c1",
-            "traditional": "那位醫生",
-            "simplified": "那位医生",
-            "pinyin": "nà wèi yīshēng",
-            "meaning": "that doctor",
+            "traditional": "這位醫生",
+            "simplified": "这位医生",
+            "pinyin": "zhè wèi yīshēng",
+            "meaning": "this doctor",
             "suffix": "。"
           }
         ],
-        "english": "That doctor wearing a mask."
+        "english": "This doctor wearing a mask."
       }
     ],
     "confusion": {
@@ -7299,7 +7629,8 @@
                 "id": "l10g2-c3-word-2",
                 "traditional": "給",
                 "pinyin": "gěi",
-                "meaning": "give"
+                "meaning": "give",
+                "simplified": "给"
               },
               {
                 "id": "l10g2-c3-word-3",
@@ -7369,51 +7700,44 @@
       {
         "id": "l10g2-e1",
         "number": 1,
-        "teachingNote": "The modifying clause 我寫 precedes the modified noun 字.",
+        "teachingNote": "The modifying clause 媽媽買 comes before 的 and the noun 蘋果 closes the phrase.",
         "text": {
-          "traditional": "我寫的字太小了，老師看不懂。",
-          "simplified": "我写的字太小了，老师看不懂。",
-          "pinyin": "Wǒ xiě de zì tài xiǎo le, lǎoshī kànbudǒng.",
-          "english": "The characters I wrote are too small; the teacher cannot read them.",
+          "traditional": "媽媽買的蘋果非常好吃。",
+          "simplified": "妈妈买的苹果非常好吃。",
+          "pinyin": "Māma mǎi de píngguǒ fēicháng hǎochī.",
+          "english": "The apple Mom bought is very delicious.",
           "words": [
             {
-              "id": "l10g2-e1-w1",
-              "traditional": "我寫",
-              "simplified": "我写",
-              "pinyin": "wǒ xiě",
-              "meaning": "I wrote"
+              "id": "l10g2-e1-n1",
+              "traditional": "媽媽買",
+              "simplified": "妈妈买",
+              "pinyin": "māma mǎi",
+              "meaning": "Mom bought"
             },
             {
-              "id": "l10g2-e1-w2",
+              "id": "l10g2-e1-n2",
               "traditional": "的",
               "pinyin": "de",
               "meaning": "modifying particle"
             },
             {
-              "id": "l10g2-e1-w3",
-              "traditional": "字",
-              "pinyin": "zì",
-              "meaning": "characters"
+              "id": "l10g2-e1-n3",
+              "traditional": "蘋果",
+              "simplified": "苹果",
+              "pinyin": "píngguǒ",
+              "meaning": "apple"
             },
             {
-              "id": "l10g2-e1-w4",
-              "traditional": "太小了",
-              "pinyin": "tài xiǎo le",
-              "meaning": "too small",
-              "suffix": "，"
+              "id": "l10g2-e1-n4",
+              "traditional": "非常",
+              "pinyin": "fēicháng",
+              "meaning": "very"
             },
             {
-              "id": "l10g2-e1-w5",
-              "traditional": "老師",
-              "simplified": "老师",
-              "pinyin": "lǎoshī",
-              "meaning": "teacher"
-            },
-            {
-              "id": "l10g2-e1-w6",
-              "traditional": "看不懂",
-              "pinyin": "kànbudǒng",
-              "meaning": "cannot understand by reading",
+              "id": "l10g2-e1-n5",
+              "traditional": "好吃",
+              "pinyin": "hǎochī",
+              "meaning": "delicious",
               "suffix": "。"
             }
           ]
@@ -7667,10 +7991,10 @@
         "number": 7,
         "teachingNote": "Clause 我太太買 precedes 的那件衣服 (Dem + M + N).",
         "text": {
-          "traditional": "我太太買的那件衣服好看。",
-          "simplified": "我太太买的那件衣服好看。",
-          "pinyin": "Wǒ tàitai mǎi de nà jiàn yīfu hǎokàn.",
-          "english": "That piece of clothing my wife bought looks good.",
+          "traditional": "我太太買的那件衣服好貴！",
+          "simplified": "我太太买的那件衣服好贵！",
+          "pinyin": "Wǒ tàitai mǎi de nà jiàn yīfu hǎoguì!",
+          "english": "That piece of clothing my wife bought is so expensive!",
           "words": [
             {
               "id": "l10g2-e7-w1",
@@ -7693,10 +8017,11 @@
             },
             {
               "id": "l10g2-e7-w4",
-              "traditional": "好看",
-              "pinyin": "hǎokàn",
-              "meaning": "good-looking",
-              "suffix": "。"
+              "traditional": "好貴",
+              "pinyin": "hǎoguì",
+              "meaning": "so expensive",
+              "suffix": "！",
+              "simplified": "好贵"
             }
           ]
         }
@@ -7749,7 +8074,7 @@
         "text": {
           "traditional": "在跳舞的那些學生都是我的朋友。",
           "simplified": "在跳舞的那些学生都是我的朋友。",
-          "pinyin": "Zài tiàowǔ de nàxiē xuésheng dōu shì wǒ de péngyǒu.",
+          "pinyin": "Zài tiàowǔ de nàxiē xuéshēng dōu shì wǒ de péngyǒu.",
           "english": "Those students who are dancing are all my friends.",
           "words": [
             {
@@ -7768,7 +8093,7 @@
               "id": "l10g2-e9-w3",
               "traditional": "那些學生",
               "simplified": "那些学生",
-              "pinyin": "nàxiē xuésheng",
+              "pinyin": "nàxiē xuéshēng",
               "meaning": "those students"
             },
             {
@@ -8117,9 +8442,10 @@
               [
                 {
                   "id": "l10g2-s3-r1-that",
-                  "traditional": "那位",
-                  "pinyin": "nà wèi",
-                  "meaning": "that (person)"
+                  "traditional": "這位",
+                  "pinyin": "zhè wèi",
+                  "meaning": "this",
+                  "simplified": "这位"
                 }
               ],
               [
@@ -8128,11 +8454,56 @@
                   "traditional": "醫生",
                   "pinyin": "yīshēng",
                   "meaning": "doctor",
+                  "suffix": "。",
+                  "simplified": "医生"
+                }
+              ]
+            ],
+            "english": "This doctor wearing a mask"
+          },
+          {
+            "id": "l10g2-s3-r2",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "l10g2-s3-r2-wrote",
+                  "traditional": "他寫",
+                  "simplified": "他写",
+                  "pinyin": "tā xiě",
+                  "meaning": "he wrote"
+                }
+              ],
+              [
+                {
+                  "id": "l10g2-s3-r2-de",
+                  "traditional": "的",
+                  "pinyin": "de",
+                  "meaning": "modifying particle"
+                }
+              ],
+              [
+                {
+                  "id": "l10g2-s3-r2-these",
+                  "traditional": "這幾個",
+                  "simplified": "这几个",
+                  "pinyin": "zhè jǐ ge",
+                  "meaning": "these few"
+                }
+              ],
+              [
+                {
+                  "id": "l10g2-s3-r2-chars",
+                  "traditional": "字",
+                  "pinyin": "zì",
+                  "meaning": "characters",
                   "suffix": "。"
                 }
               ]
             ],
-            "english": "That doctor wearing a mask."
+            "english": "These few characters he wrote"
           }
         ],
         "exampleIds": [
@@ -8143,11 +8514,12 @@
         "patternColumnDetails": [
           "description",
           "marker",
-          "that + measure word",
+          "this + measure word",
           "person or thing"
         ]
       }
-    ]
+    ],
+    "exerciseNote": "The book answers nine questions with 的 on printed pages 228–230 and gives no answer key; these built answers follow the printed pictures."
   },
   "LESSON_TEN_PART_ONE": {
     "id": "B1L10-P01-D01",
@@ -8172,7 +8544,7 @@
           227
         ],
         "audioReference": "10-1-3",
-        "explanation": "跟 connects you with another person. Use it to do things together (“with”), to talk or ask (“to”), or to learn or borrow (“from”).",
+        "explanation": "跟 connects you with another person. Use it to do things together (“with”), to talk or ask (“to”), or to learn or borrow (“from”). If you need a helping verb or an adverb, put it before 跟.",
         "lessonWorld": {
           "kind": "care",
           "eyebrow": "Care message",
@@ -9393,7 +9765,8 @@
                   "traditional": "去機場",
                   "simplified": "去机场",
                   "pinyin": "qù jīchǎng",
-                  "meaning": "going to airport"
+                  "meaning": "going to airport",
+                  "prefix": "：「"
                 },
                 {
                   "id": "b1l10-g1-e5-w4",
@@ -9401,7 +9774,7 @@
                   "simplified": "1,200 块钱",
                   "pinyin": "1,200 kuài qián",
                   "meaning": "1,200 dollars",
-                  "suffix": "。"
+                  "suffix": "。」"
                 }
               ]
             }
@@ -9446,10 +9819,10 @@
             "number": 7,
             "teachingNote": "跟...學 means to learn from someone.",
             "text": {
-              "traditional": "我跟沈老師學書法。",
-              "simplified": "我跟沈老师学书法。",
-              "pinyin": "Wǒ gēn Shěn lǎoshī xué shūfǎ.",
-              "english": "I learn calligraphy from Teacher Shen.",
+              "traditional": "我跟李老師學書法。",
+              "simplified": "我跟李老师学书法。",
+              "pinyin": "Wǒ gēn Lǐ lǎoshī xué shūfǎ.",
+              "english": "I learn calligraphy from Teacher Li.",
               "words": [
                 {
                   "id": "b1l10-g1-e7-w1",
@@ -9459,10 +9832,10 @@
                 },
                 {
                   "id": "b1l10-g1-e7-w2",
-                  "traditional": "跟沈老師",
-                  "simplified": "跟沈老师",
-                  "pinyin": "gēn Shěn lǎoshī",
-                  "meaning": "from Teacher Shen"
+                  "traditional": "跟李老師",
+                  "simplified": "跟李老师",
+                  "pinyin": "gēn Lǐ lǎoshī",
+                  "meaning": "from Teacher Li"
                 },
                 {
                   "id": "b1l10-g1-e7-w3",
@@ -9910,7 +10283,7 @@
             "id": "b1l10-g01-sec-3",
             "sectionNumber": 3,
             "title": "Learning or Getting from Someone (From)",
-            "explanation": "Put 跟 before the person you learn or receive something from, like “learn calligraphy from Teacher Shen” or “borrow money from a friend.”",
+            "explanation": "Put 跟 before the person you learn or receive something from, like “learn calligraphy from Teacher Li” or “borrow money from a friend.”",
             "patternColumns": [
               "Subject",
               "跟 + Person",
@@ -9954,7 +10327,8 @@
               "g1-example-9"
             ]
           }
-        ]
+        ],
+        "exerciseNote": "The book describes four pictures with 跟 on printed page 227; these written answers follow the printed scenes."
       },
       {
         "bookId": 1,
@@ -9965,7 +10339,7 @@
         "partId": 1,
         "grammarNumber": 2,
         "titleTraditional": "的修飾名詞子句",
-        "titleEnglish": "Noun Modified by a Clause with 的",
+        "titleEnglish": "Describe a Noun with an Action or Phrase Using 的",
         "learnerPromise": "Identify a person or thing by describing it first.",
         "printedPages": [
           228,
@@ -9973,7 +10347,7 @@
           230
         ],
         "audioReference": "10-1-3",
-        "explanation": "Put your description first, add 的, and then say the person or thing you mean: Description + 的 + Noun. If you want to point out someone specific, add “this” or “that” right after 的.",
+        "explanation": "Put your whole description first, add 的, then name the person or thing: Description + 的 + Noun. To point out someone specific, add 這 (this) or 那 (that) right after 的.",
         "lessonWorld": {
           "kind": "care",
           "eyebrow": "Waiting room",
@@ -9986,7 +10360,9 @@
           "english": "Find the person who has a cold."
         },
         "focusTerms": [
-          "的"
+          "的",
+          "這",
+          "那"
         ],
         "teachingGlossary": [
           {
@@ -10839,14 +11215,14 @@
             "complement": [
               {
                 "id": "l10g2-p3-c1",
-                "traditional": "那位醫生",
-                "simplified": "那位医生",
-                "pinyin": "nà wèi yīshēng",
-                "meaning": "that doctor",
+                "traditional": "這位醫生",
+                "simplified": "这位医生",
+                "pinyin": "zhè wèi yīshēng",
+                "meaning": "this doctor",
                 "suffix": "。"
               }
             ],
-            "english": "That doctor wearing a mask."
+            "english": "This doctor wearing a mask."
           }
         ],
         "confusion": {
@@ -10950,7 +11326,8 @@
                     "id": "l10g2-c3-word-2",
                     "traditional": "給",
                     "pinyin": "gěi",
-                    "meaning": "give"
+                    "meaning": "give",
+                    "simplified": "给"
                   },
                   {
                     "id": "l10g2-c3-word-3",
@@ -11020,51 +11397,44 @@
           {
             "id": "l10g2-e1",
             "number": 1,
-            "teachingNote": "The modifying clause 我寫 precedes the modified noun 字.",
+            "teachingNote": "The modifying clause 媽媽買 comes before 的 and the noun 蘋果 closes the phrase.",
             "text": {
-              "traditional": "我寫的字太小了，老師看不懂。",
-              "simplified": "我写的字太小了，老师看不懂。",
-              "pinyin": "Wǒ xiě de zì tài xiǎo le, lǎoshī kànbudǒng.",
-              "english": "The characters I wrote are too small; the teacher cannot read them.",
+              "traditional": "媽媽買的蘋果非常好吃。",
+              "simplified": "妈妈买的苹果非常好吃。",
+              "pinyin": "Māma mǎi de píngguǒ fēicháng hǎochī.",
+              "english": "The apple Mom bought is very delicious.",
               "words": [
                 {
-                  "id": "l10g2-e1-w1",
-                  "traditional": "我寫",
-                  "simplified": "我写",
-                  "pinyin": "wǒ xiě",
-                  "meaning": "I wrote"
+                  "id": "l10g2-e1-n1",
+                  "traditional": "媽媽買",
+                  "simplified": "妈妈买",
+                  "pinyin": "māma mǎi",
+                  "meaning": "Mom bought"
                 },
                 {
-                  "id": "l10g2-e1-w2",
+                  "id": "l10g2-e1-n2",
                   "traditional": "的",
                   "pinyin": "de",
                   "meaning": "modifying particle"
                 },
                 {
-                  "id": "l10g2-e1-w3",
-                  "traditional": "字",
-                  "pinyin": "zì",
-                  "meaning": "characters"
+                  "id": "l10g2-e1-n3",
+                  "traditional": "蘋果",
+                  "simplified": "苹果",
+                  "pinyin": "píngguǒ",
+                  "meaning": "apple"
                 },
                 {
-                  "id": "l10g2-e1-w4",
-                  "traditional": "太小了",
-                  "pinyin": "tài xiǎo le",
-                  "meaning": "too small",
-                  "suffix": "，"
+                  "id": "l10g2-e1-n4",
+                  "traditional": "非常",
+                  "pinyin": "fēicháng",
+                  "meaning": "very"
                 },
                 {
-                  "id": "l10g2-e1-w5",
-                  "traditional": "老師",
-                  "simplified": "老师",
-                  "pinyin": "lǎoshī",
-                  "meaning": "teacher"
-                },
-                {
-                  "id": "l10g2-e1-w6",
-                  "traditional": "看不懂",
-                  "pinyin": "kànbudǒng",
-                  "meaning": "cannot understand by reading",
+                  "id": "l10g2-e1-n5",
+                  "traditional": "好吃",
+                  "pinyin": "hǎochī",
+                  "meaning": "delicious",
                   "suffix": "。"
                 }
               ]
@@ -11318,10 +11688,10 @@
             "number": 7,
             "teachingNote": "Clause 我太太買 precedes 的那件衣服 (Dem + M + N).",
             "text": {
-              "traditional": "我太太買的那件衣服好看。",
-              "simplified": "我太太买的那件衣服好看。",
-              "pinyin": "Wǒ tàitai mǎi de nà jiàn yīfu hǎokàn.",
-              "english": "That piece of clothing my wife bought looks good.",
+              "traditional": "我太太買的那件衣服好貴！",
+              "simplified": "我太太买的那件衣服好贵！",
+              "pinyin": "Wǒ tàitai mǎi de nà jiàn yīfu hǎoguì!",
+              "english": "That piece of clothing my wife bought is so expensive!",
               "words": [
                 {
                   "id": "l10g2-e7-w1",
@@ -11344,10 +11714,11 @@
                 },
                 {
                   "id": "l10g2-e7-w4",
-                  "traditional": "好看",
-                  "pinyin": "hǎokàn",
-                  "meaning": "good-looking",
-                  "suffix": "。"
+                  "traditional": "好貴",
+                  "pinyin": "hǎoguì",
+                  "meaning": "so expensive",
+                  "suffix": "！",
+                  "simplified": "好贵"
                 }
               ]
             }
@@ -11400,7 +11771,7 @@
             "text": {
               "traditional": "在跳舞的那些學生都是我的朋友。",
               "simplified": "在跳舞的那些学生都是我的朋友。",
-              "pinyin": "Zài tiàowǔ de nàxiē xuésheng dōu shì wǒ de péngyǒu.",
+              "pinyin": "Zài tiàowǔ de nàxiē xuéshēng dōu shì wǒ de péngyǒu.",
               "english": "Those students who are dancing are all my friends.",
               "words": [
                 {
@@ -11419,7 +11790,7 @@
                   "id": "l10g2-e9-w3",
                   "traditional": "那些學生",
                   "simplified": "那些学生",
-                  "pinyin": "nàxiē xuésheng",
+                  "pinyin": "nàxiē xuéshēng",
                   "meaning": "those students"
                 },
                 {
@@ -11768,9 +12139,10 @@
                   [
                     {
                       "id": "l10g2-s3-r1-that",
-                      "traditional": "那位",
-                      "pinyin": "nà wèi",
-                      "meaning": "that (person)"
+                      "traditional": "這位",
+                      "pinyin": "zhè wèi",
+                      "meaning": "this",
+                      "simplified": "这位"
                     }
                   ],
                   [
@@ -11779,11 +12151,56 @@
                       "traditional": "醫生",
                       "pinyin": "yīshēng",
                       "meaning": "doctor",
+                      "suffix": "。",
+                      "simplified": "医生"
+                    }
+                  ]
+                ],
+                "english": "This doctor wearing a mask"
+              },
+              {
+                "id": "l10g2-s3-r2",
+                "subject": [],
+                "grammar": [],
+                "complement": [],
+                "columns": [
+                  [
+                    {
+                      "id": "l10g2-s3-r2-wrote",
+                      "traditional": "他寫",
+                      "simplified": "他写",
+                      "pinyin": "tā xiě",
+                      "meaning": "he wrote"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l10g2-s3-r2-de",
+                      "traditional": "的",
+                      "pinyin": "de",
+                      "meaning": "modifying particle"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l10g2-s3-r2-these",
+                      "traditional": "這幾個",
+                      "simplified": "这几个",
+                      "pinyin": "zhè jǐ ge",
+                      "meaning": "these few"
+                    }
+                  ],
+                  [
+                    {
+                      "id": "l10g2-s3-r2-chars",
+                      "traditional": "字",
+                      "pinyin": "zì",
+                      "meaning": "characters",
                       "suffix": "。"
                     }
                   ]
                 ],
-                "english": "That doctor wearing a mask."
+                "english": "These few characters he wrote"
               }
             ],
             "exampleIds": [
@@ -11794,11 +12211,12 @@
             "patternColumnDetails": [
               "description",
               "marker",
-              "that + measure word",
+              "this + measure word",
               "person or thing"
             ]
           }
-        ]
+        ],
+        "exerciseNote": "The book answers nine questions with 的 on printed pages 228–230 and gives no answer key; these built answers follow the printed pictures."
       },
       {
         "bookId": 1,
@@ -12602,6 +13020,33 @@
         "patternAccentColumn": 0,
         "patternRows": [
           {
+            "id": "l10g3-r0",
+            "subject": [],
+            "grammar": [],
+            "complement": [],
+            "columns": [
+              [
+                {
+                  "id": "l10g3-r0-more",
+                  "traditional": "多",
+                  "pinyin": "duō",
+                  "meaning": "more"
+                }
+              ],
+              [
+                {
+                  "id": "l10g3-r0-exercise",
+                  "traditional": "運動",
+                  "simplified": "运动",
+                  "pinyin": "yùndòng",
+                  "meaning": "exercise",
+                  "suffix": "。"
+                }
+              ]
+            ],
+            "english": "Exercise more."
+          },
+          {
             "id": "l10g3-r1",
             "subject": [],
             "grammar": [],
@@ -12673,7 +13118,8 @@
                   "traditional": "看手機",
                   "pinyin": "kàn shǒujī",
                   "meaning": "look at the phone",
-                  "suffix": "。"
+                  "suffix": "。",
+                  "simplified": "看手机"
                 }
               ]
             ],
@@ -12997,7 +13443,7 @@
             "text": {
               "traditional": "生病的時候要多休息。",
               "simplified": "生病的时候要多休息。",
-              "pinyin": "Shēngbìng de shíhou yào duō xiūxi.",
+              "pinyin": "Shēngbìng de shíhòu yào duō xiūxi.",
               "english": "When sick, rest more.",
               "words": [
                 {
@@ -13013,11 +13459,17 @@
                   "meaning": "links a description to a noun"
                 },
                 {
+                  "id": "l10g3-e3-time",
+                  "traditional": "時候",
+                  "simplified": "时候",
+                  "pinyin": "shíhou",
+                  "meaning": "time"
+                },
+                {
                   "id": "l10g3-e3-word-3",
                   "traditional": "要",
                   "pinyin": "yào",
-                  "meaning": "need to; want to",
-                  "prefix": "時候"
+                  "meaning": "need to; want to"
                 },
                 {
                   "id": "l10g3-e3-word-4",
@@ -13268,7 +13720,8 @@
         "patternColumnDetails": [
           "more or less",
           "verb phrase"
-        ]
+        ],
+        "exerciseNote": "The book completes three sentences with 多/少 on printed page 231 and gives no answer key; these model answers follow the printed pictures."
       }
     ],
     "dialogue": {
@@ -13792,11 +14245,18 @@
             "english": "You are right. I should pay more attention to it.",
             "words": [
               {
+                "id": "l10d1-7-right",
+                "traditional": "對",
+                "simplified": "对",
+                "pinyin": "duì",
+                "meaning": "right",
+                "suffix": "，"
+              },
+              {
                 "id": "l10d1-7-word-1",
                 "traditional": "我",
                 "pinyin": "wǒ",
-                "meaning": "I; me",
-                "prefix": "對，"
+                "meaning": "I; me"
               },
               {
                 "id": "l10d1-7-word-2",
@@ -13847,7 +14307,8 @@
                 "id": "l10d1-8-word-1",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you"
+                "meaning": "you",
+                "simplified": "你"
               },
               {
                 "id": "l10d1-8-word-2",
@@ -15202,7 +15663,8 @@
                   "id": "l10g4-e1-word-6",
                   "traditional": "幫",
                   "pinyin": "bāng",
-                  "meaning": "help; for"
+                  "meaning": "help; for",
+                  "simplified": "帮"
                 },
                 {
                   "id": "l10g4-e1-word-7",
@@ -15215,7 +15677,8 @@
                   "traditional": "買",
                   "pinyin": "mǎi",
                   "meaning": "buy",
-                  "suffix": "。"
+                  "suffix": "。",
+                  "simplified": "买"
                 }
               ]
             }
@@ -15225,58 +15688,132 @@
             "number": 2,
             "teachingNote": "Ask about an expected future.",
             "text": {
-              "traditional": "國安明天會來學校考試嗎？",
-              "simplified": "国安明天会来学校考试吗？",
-              "pinyin": "Guó’ān míngtiān huì lái xuéxiào kǎoshì ma?",
-              "english": "Will Guoan come to school for the exam tomorrow?",
+              "traditional": "A：國安生病了，明天會來學校考試嗎？ B：我也不知道。今天下午我們一起去看他吧！",
+              "simplified": "A：国安生病了，明天会来学校考试吗？ B：我也不知道。今天下午我们一起去看他吧！",
+              "pinyin": "A: Guó’ān shēngbìng le, míngtiān huì lái xuéxiào kǎoshì ma? B: Wǒ yě bù zhīdào. Jīntiān xiàwǔ wǒmen yìqǐ qù kàn tā ba!",
+              "english": "A: Guoan is sick. Will he come to school for the exam tomorrow? B: I do not know either. Let us go visit him this afternoon!",
               "words": [
                 {
                   "id": "l10g4-e2-word-1",
                   "traditional": "國安",
-                  "simplified": "国安",
                   "pinyin": "Guó’ān",
-                  "meaning": "Guoan"
+                  "meaning": "Guoan",
+                  "prefix": "A：",
+                  "simplified": "国安"
                 },
                 {
                   "id": "l10g4-e2-word-2",
+                  "traditional": "生病了",
+                  "simplified": "生病了",
+                  "pinyin": "shēngbìng le",
+                  "meaning": "is sick",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l10g4-e2-word-3",
                   "traditional": "明天",
                   "pinyin": "míngtiān",
                   "meaning": "tomorrow"
                 },
                 {
-                  "id": "l10g4-e2-word-3",
+                  "id": "l10g4-e2-word-4",
                   "traditional": "會",
-                  "simplified": "会",
                   "pinyin": "huì",
-                  "meaning": "will; know how to"
+                  "meaning": "will",
+                  "simplified": "会"
                 },
                 {
-                  "id": "l10g4-e2-word-4",
+                  "id": "l10g4-e2-word-5",
                   "traditional": "來",
                   "simplified": "来",
                   "pinyin": "lái",
                   "meaning": "come"
                 },
                 {
-                  "id": "l10g4-e2-word-5",
+                  "id": "l10g4-e2-word-6",
                   "traditional": "學校",
                   "simplified": "学校",
                   "pinyin": "xuéxiào",
                   "meaning": "school"
                 },
                 {
-                  "id": "l10g4-e2-word-6",
+                  "id": "l10g4-e2-word-7",
                   "traditional": "考試",
                   "simplified": "考试",
                   "pinyin": "kǎoshì",
-                  "meaning": "exam; test"
+                  "meaning": "take an exam"
                 },
                 {
-                  "id": "l10g4-e2-word-7",
+                  "id": "l10g4-e2-word-8",
                   "traditional": "嗎",
                   "pinyin": "ma",
-                  "meaning": "question ending",
-                  "suffix": "？"
+                  "meaning": "yes/no question ending",
+                  "suffix": "？",
+                  "simplified": "吗"
+                },
+                {
+                  "id": "l10g4-e2-word-9",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me",
+                  "prefix": "B："
+                },
+                {
+                  "id": "l10g4-e2-word-10",
+                  "traditional": "也",
+                  "pinyin": "yě",
+                  "meaning": "also"
+                },
+                {
+                  "id": "l10g4-e2-word-11",
+                  "traditional": "不知道",
+                  "pinyin": "bù zhīdào",
+                  "meaning": "do not know",
+                  "suffix": "。"
+                },
+                {
+                  "id": "l10g4-e2-word-12",
+                  "traditional": "今天下午",
+                  "pinyin": "jīntiān xiàwǔ",
+                  "meaning": "this afternoon"
+                },
+                {
+                  "id": "l10g4-e2-word-13",
+                  "traditional": "我們",
+                  "simplified": "我们",
+                  "pinyin": "wǒmen",
+                  "meaning": "we"
+                },
+                {
+                  "id": "l10g4-e2-word-14",
+                  "traditional": "一起",
+                  "pinyin": "yìqǐ",
+                  "meaning": "together"
+                },
+                {
+                  "id": "l10g4-e2-word-15",
+                  "traditional": "去",
+                  "pinyin": "qù",
+                  "meaning": "go"
+                },
+                {
+                  "id": "l10g4-e2-word-16",
+                  "traditional": "看",
+                  "pinyin": "kàn",
+                  "meaning": "visit"
+                },
+                {
+                  "id": "l10g4-e2-word-17",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "him"
+                },
+                {
+                  "id": "l10g4-e2-word-18",
+                  "traditional": "吧",
+                  "pinyin": "ba",
+                  "meaning": "suggestion ending",
+                  "suffix": "！"
                 }
               ]
             }
@@ -15309,7 +15846,8 @@
                   "id": "l10g4-e3-word-3",
                   "traditional": "給",
                   "pinyin": "gěi",
-                  "meaning": "give"
+                  "meaning": "give",
+                  "simplified": "给"
                 },
                 {
                   "id": "l10g4-e3-word-4",
@@ -15409,6 +15947,117 @@
                 }
               ]
             }
+          },
+          {
+            "id": "l10g4-e5",
+            "number": 5,
+            "text": {
+              "traditional": "A：你明天要記得帶毛筆來學校。 B：好，我會帶毛筆來。",
+              "simplified": "A：你明天要记得带毛笔来学校。 B：好，我会带毛笔来。",
+              "pinyin": "A: Nǐ míngtiān yào jìde dài máobǐ lái xuéxiào. B: Hǎo, wǒ huì dài máobǐ lái.",
+              "english": "A: Remember to bring your brush to school tomorrow. B: Okay, I will bring my brush.",
+              "words": [
+                {
+                  "id": "l10g4-e5-word-1",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you",
+                  "prefix": "A："
+                },
+                {
+                  "id": "l10g4-e5-word-2",
+                  "traditional": "明天",
+                  "pinyin": "míngtiān",
+                  "meaning": "tomorrow"
+                },
+                {
+                  "id": "l10g4-e5-word-3",
+                  "traditional": "要",
+                  "pinyin": "yào",
+                  "meaning": "need to"
+                },
+                {
+                  "id": "l10g4-e5-word-4",
+                  "traditional": "記得",
+                  "simplified": "记得",
+                  "pinyin": "jìde",
+                  "meaning": "remember"
+                },
+                {
+                  "id": "l10g4-e5-word-5",
+                  "traditional": "帶",
+                  "simplified": "带",
+                  "pinyin": "dài",
+                  "meaning": "bring"
+                },
+                {
+                  "id": "l10g4-e5-word-6",
+                  "traditional": "毛筆",
+                  "simplified": "毛笔",
+                  "pinyin": "máobǐ",
+                  "meaning": "writing brush"
+                },
+                {
+                  "id": "l10g4-e5-word-7",
+                  "traditional": "來",
+                  "simplified": "来",
+                  "pinyin": "lái",
+                  "meaning": "come"
+                },
+                {
+                  "id": "l10g4-e5-word-8",
+                  "traditional": "學校",
+                  "simplified": "学校",
+                  "pinyin": "xuéxiào",
+                  "meaning": "school",
+                  "suffix": "。"
+                },
+                {
+                  "id": "l10g4-e5-word-9",
+                  "traditional": "好",
+                  "pinyin": "hǎo",
+                  "meaning": "okay",
+                  "prefix": "B：",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l10g4-e5-word-10",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                },
+                {
+                  "id": "l10g4-e5-word-11",
+                  "traditional": "會",
+                  "pinyin": "huì",
+                  "meaning": "will",
+                  "simplified": "会"
+                },
+                {
+                  "id": "l10g4-e5-word-12",
+                  "traditional": "帶",
+                  "simplified": "带",
+                  "pinyin": "dài",
+                  "meaning": "bring"
+                },
+                {
+                  "id": "l10g4-e5-word-13",
+                  "traditional": "毛筆",
+                  "simplified": "毛笔",
+                  "pinyin": "máobǐ",
+                  "meaning": "writing brush"
+                },
+                {
+                  "id": "l10g4-e5-word-14",
+                  "traditional": "來",
+                  "simplified": "来",
+                  "pinyin": "lái",
+                  "meaning": "come",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
           }
         ],
         "exerciseTitle": "Place the future signal",
@@ -15535,7 +16184,8 @@
             "correctFeedback": "會 starts the full future action.",
             "repairFeedback": "Use 會 + 帶水果."
           }
-        ]
+        ],
+        "exerciseNote": "The book answers three questions with 會 on printed page 236; these model answers follow the printed pictures."
       },
       {
         "bookId": 1,
@@ -15552,7 +16202,7 @@
           237
         ],
         "audioReference": "10-2-3",
-        "explanation": "如果 or 要是 opens the condition. 就 clearly points to the result that follows.",
+        "explanation": "如果 or 要是 opens the condition. 就 clearly points to the result that follows. If both parts have the same subject, you can leave the second one out.",
         "lessonWorld": {
           "kind": "care",
           "eyebrow": "Care message",
@@ -16335,8 +16985,8 @@
         "pattern": "如果／要是 + condition， 就 + result",
         "patternColumns": [
           "Condition",
-          "Result",
-          "Then"
+          "Then",
+          "Result"
         ],
         "patternAccentColumn": 1,
         "patternRows": [
@@ -16344,121 +16994,69 @@
             "id": "l10g5-p1",
             "subject": [
               {
-                "id": "l10g5-p1-s1",
-                "traditional": "如果",
-                "pinyin": "rúguǒ",
-                "meaning": "if"
+                "id": "l10g5-p1-if",
+                "traditional": "要是他",
+                "pinyin": "yàoshi tā",
+                "meaning": "if he"
               },
               {
-                "id": "l10g5-p1-s2",
-                "traditional": "發燒",
-                "simplified": "发烧",
-                "pinyin": "fāshāo",
-                "meaning": "have a fever"
+                "id": "l10g5-p1-not",
+                "traditional": "不去",
+                "pinyin": "bú qù",
+                "meaning": "does not go",
+                "suffix": "，"
               }
             ],
             "grammar": [
               {
-                "id": "l10g5-p1-g1",
-                "traditional": "就",
-                "pinyin": "jiù",
-                "meaning": "then; marks the result"
+                "id": "l10g5-p1-then",
+                "traditional": "我們就",
+                "pinyin": "wǒmen jiù",
+                "meaning": "we then",
+                "simplified": "我们就"
               }
             ],
             "complement": [
               {
-                "id": "l10g5-p1-c1",
-                "traditional": "吃",
-                "pinyin": "chī",
-                "meaning": "eat; take medicine"
-              },
-              {
-                "id": "l10g5-p1-c2",
-                "traditional": "藥",
-                "simplified": "药",
-                "pinyin": "yào",
-                "meaning": "medicine",
+                "id": "l10g5-p1-notgo",
+                "traditional": "不要去了",
+                "pinyin": "bú yào qù le",
+                "meaning": "should not go anymore",
                 "suffix": "。"
               }
             ],
-            "english": "If you have a fever, then take medicine."
+            "english": "If he does not go, we will not go either."
           },
           {
             "id": "l10g5-p2",
             "subject": [
               {
-                "id": "l10g5-p2-s1",
-                "traditional": "如果",
-                "pinyin": "rúguǒ",
-                "meaning": "if"
-              },
-              {
-                "id": "l10g5-p2-s2",
-                "traditional": "不舒服",
-                "pinyin": "bù shūfu",
-                "meaning": "feel unwell"
+                "id": "l10g5-p2-if",
+                "traditional": "如果你想吃",
+                "pinyin": "rúguǒ nǐ xiǎng chī",
+                "meaning": "if you want to eat",
+                "suffix": "，"
               }
             ],
             "grammar": [
               {
-                "id": "l10g5-p2-g1",
+                "id": "l10g5-p2-then",
                 "traditional": "就",
                 "pinyin": "jiù",
-                "meaning": "then; marks the result"
+                "meaning": "then"
               }
             ],
             "complement": [
               {
-                "id": "l10g5-p2-c1",
-                "traditional": "看醫生",
-                "simplified": "看医生",
-                "pinyin": "kàn yīshēng",
-                "meaning": "see a doctor",
-                "suffix": "。"
+                "id": "l10g5-p2-eat",
+                "traditional": "多吃一點吧",
+                "simplified": "多吃一点吧",
+                "pinyin": "duō chī yìdiǎn ba",
+                "meaning": "eat a bit more",
+                "suffix": "！"
               }
             ],
-            "english": "If you feel unwell, then see a doctor."
-          },
-          {
-            "id": "l10g5-p3",
-            "subject": [
-              {
-                "id": "l10g5-p3-s1",
-                "traditional": "要是",
-                "pinyin": "yàoshi",
-                "meaning": "if"
-              },
-              {
-                "id": "l10g5-p3-s2",
-                "traditional": "他",
-                "pinyin": "tā",
-                "meaning": "he; him"
-              },
-              {
-                "id": "l10g5-p3-s3",
-                "traditional": "不舒服",
-                "pinyin": "bù shūfu",
-                "meaning": "feel unwell"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "l10g5-p3-g1",
-                "traditional": "就",
-                "pinyin": "jiù",
-                "meaning": "then; marks the result"
-              }
-            ],
-            "complement": [
-              {
-                "id": "l10g5-p3-c1",
-                "traditional": "休息",
-                "pinyin": "xiūxi",
-                "meaning": "rest",
-                "suffix": "。"
-              }
-            ],
-            "english": "If he feels unwell, then he rests."
+            "english": "If you want to eat, eat a bit more!"
           }
         ],
         "confusion": {
@@ -16814,11 +17412,17 @@
                   "meaning": "one; a"
                 },
                 {
+                  "id": "l10g5-e2-a-bit",
+                  "traditional": "點",
+                  "simplified": "点",
+                  "pinyin": "diǎn",
+                  "meaning": "a bit"
+                },
+                {
                   "id": "l10g5-e2-word-9",
                   "traditional": "吧",
                   "pinyin": "ba",
                   "meaning": "ending word: a suggestion",
-                  "prefix": "點",
                   "suffix": "！"
                 }
               ]
@@ -16965,6 +17569,151 @@
                 }
               ]
             }
+          },
+          {
+            "id": "l10g5-e5",
+            "number": 5,
+            "text": {
+              "traditional": "要是我有車，就可以開車去上課。",
+              "simplified": "要是我有车，就可以开车去上课。",
+              "pinyin": "Yàoshi wǒ yǒu chē, jiù kěyǐ kāichē qù shàngkè.",
+              "english": "If I had a car, I could drive to class.",
+              "words": [
+                {
+                  "id": "l10g5-e5-word-1",
+                  "traditional": "要是",
+                  "pinyin": "yàoshi",
+                  "meaning": "if"
+                },
+                {
+                  "id": "l10g5-e5-word-2",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                },
+                {
+                  "id": "l10g5-e5-word-3",
+                  "traditional": "有車",
+                  "simplified": "有车",
+                  "pinyin": "yǒu chē",
+                  "meaning": "have a car",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l10g5-e5-word-4",
+                  "traditional": "就可以",
+                  "pinyin": "jiù kěyǐ",
+                  "meaning": "then could"
+                },
+                {
+                  "id": "l10g5-e5-word-5",
+                  "traditional": "開車",
+                  "simplified": "开车",
+                  "pinyin": "kāichē",
+                  "meaning": "drive"
+                },
+                {
+                  "id": "l10g5-e5-word-6",
+                  "traditional": "去",
+                  "pinyin": "qù",
+                  "meaning": "go"
+                },
+                {
+                  "id": "l10g5-e5-word-7",
+                  "traditional": "上課",
+                  "simplified": "上课",
+                  "pinyin": "shàngkè",
+                  "meaning": "attend class",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l10g5-e6",
+            "number": 6,
+            "text": {
+              "traditional": "如果明天要來的人很多，我就多買一點兒飲料跟蛋糕。",
+              "simplified": "如果明天要来的人很多，我就多买一点儿饮料跟蛋糕。",
+              "pinyin": "Rúguǒ míngtiān yào lái de rén hěn duō, wǒ jiù duō mǎi yìdiǎnr yǐnliào gēn dàngāo.",
+              "english": "If many people are coming tomorrow, I will buy more drinks and cake.",
+              "words": [
+                {
+                  "id": "l10g5-e6-word-1",
+                  "traditional": "如果",
+                  "pinyin": "rúguǒ",
+                  "meaning": "if"
+                },
+                {
+                  "id": "l10g5-e6-word-2",
+                  "traditional": "明天",
+                  "pinyin": "míngtiān",
+                  "meaning": "tomorrow"
+                },
+                {
+                  "id": "l10g5-e6-word-3",
+                  "traditional": "要來的人",
+                  "simplified": "要来的人",
+                  "pinyin": "yào lái de rén",
+                  "meaning": "the people who will come"
+                },
+                {
+                  "id": "l10g5-e6-word-4",
+                  "traditional": "很多",
+                  "pinyin": "hěn duō",
+                  "meaning": "many",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l10g5-e6-word-5",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                },
+                {
+                  "id": "l10g5-e6-word-6",
+                  "traditional": "就",
+                  "pinyin": "jiù",
+                  "meaning": "then"
+                },
+                {
+                  "id": "l10g5-e6-word-7",
+                  "traditional": "多買",
+                  "simplified": "多买",
+                  "pinyin": "duō mǎi",
+                  "meaning": "buy more"
+                },
+                {
+                  "id": "l10g5-e6-word-8",
+                  "traditional": "一點兒",
+                  "simplified": "一点儿",
+                  "pinyin": "yìdiǎnr",
+                  "meaning": "a little"
+                },
+                {
+                  "id": "l10g5-e6-word-9",
+                  "traditional": "飲料",
+                  "simplified": "饮料",
+                  "pinyin": "yǐnliào",
+                  "meaning": "drinks"
+                },
+                {
+                  "id": "l10g5-e6-word-10",
+                  "traditional": "跟",
+                  "pinyin": "gēn",
+                  "meaning": "and"
+                },
+                {
+                  "id": "l10g5-e6-word-11",
+                  "traditional": "蛋糕",
+                  "pinyin": "dàngāo",
+                  "meaning": "cake",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
           }
         ],
         "exerciseTitle": "Connect the condition and result",
@@ -17076,19 +17825,22 @@
                 "id": "l10g5-q3-tile1",
                 "traditional": "就多休息",
                 "pinyin": "jiù duō xiūxi",
-                "meaning": "then rest more"
+                "meaning": "then rest more",
+                "simplified": "就多休息"
               },
               {
                 "id": "l10g5-q3-tile2",
                 "traditional": "多就休息",
                 "pinyin": "duō jiù xiūxi",
-                "meaning": "reversed result order"
+                "meaning": "reversed result order",
+                "simplified": "多就休息"
               }
             ],
             "correctFeedback": "就 opens the result; 多 adjusts 休息.",
             "repairFeedback": "Build 就 + 多 + action."
           }
-        ]
+        ],
+        "exerciseNote": "The book answers three questions with 要是/如果……，就…… on printed page 237 and gives no answer key; these model answers follow the printed prompts."
       }
     ],
     "dialogue": {
@@ -17125,7 +17877,8 @@
                 "id": "l10d2-1-word-2",
                 "traditional": "覺得",
                 "pinyin": "juéde",
-                "meaning": "feel; think"
+                "meaning": "feel; think",
+                "simplified": "觉得"
               },
               {
                 "id": "l10d2-1-word-3",
@@ -17281,11 +18034,17 @@
             "english": "Right! I heard that many students from my school have a cold and fever.",
             "words": [
               {
+                "id": "l10d2-4-right",
+                "traditional": "對",
+                "simplified": "对",
+                "pinyin": "duì",
+                "meaning": "right"
+              },
+              {
                 "id": "l10d2-4-word-1",
                 "traditional": "啊",
                 "pinyin": "a",
-                "meaning": "friendly ending sound",
-                "prefix": "對"
+                "meaning": "friendly ending sound"
               },
               {
                 "id": "l10d2-4-word-2",
@@ -17472,7 +18231,8 @@
                 "traditional": "嗎",
                 "pinyin": "ma",
                 "meaning": "question ending",
-                "suffix": "？"
+                "suffix": "？",
+                "simplified": "吗"
               }
             ]
           }
@@ -17575,7 +18335,8 @@
                 "traditional": "嗎",
                 "pinyin": "ma",
                 "meaning": "question ending",
-                "suffix": "？"
+                "suffix": "？",
+                "simplified": "吗"
               }
             ]
           }
@@ -17606,7 +18367,8 @@
                 "id": "l10d2-9-word-3",
                 "traditional": "給",
                 "pinyin": "gěi",
-                "meaning": "give"
+                "meaning": "give",
+                "simplified": "给"
               },
               {
                 "id": "l10d2-9-word-4",
@@ -17656,7 +18418,8 @@
                 "id": "l10d2-9-word-11",
                 "traditional": "記得",
                 "pinyin": "jìde",
-                "meaning": "remember"
+                "meaning": "remember",
+                "simplified": "记得"
               },
               {
                 "id": "l10d2-9-word-12",
@@ -17747,7 +18510,8 @@
                 "traditional": "謝謝",
                 "pinyin": "xièxie",
                 "meaning": "thank you",
-                "prefix": "，"
+                "prefix": "，",
+                "simplified": "谢谢"
               },
               {
                 "id": "l10d2-10-word-3",

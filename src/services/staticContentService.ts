@@ -6,6 +6,8 @@ import { NetworkError, PackMissError } from './errors';
 interface StaticJsonOptions {
   persistentKey?: string;
   revalidate?: boolean;
+  fallbackToPersistent?: boolean;
+  validate?: (data: unknown) => boolean;
 }
 
 export interface StaticJsonFetchMetadata<T> {
@@ -41,10 +43,14 @@ export async function fetchStaticJsonWithMetadata<T>(
   options: StaticJsonOptions = {},
 ): Promise<StaticJsonFetchMetadata<T>> {
   const cacheKey = options.persistentKey ? toCacheKey(options.persistentKey) : null;
+  let fallback: T | undefined;
   if (cacheKey && canUsePersistentCache()) {
     try {
       const cached = await get<T>(cacheKey);
-      if (cached !== undefined) return { data: cached, source: 'persistent-cache' };
+      if (cached !== undefined && (!options.validate || options.validate(cached))) {
+        if (!options.fallbackToPersistent) return { data: cached, source: 'persistent-cache' };
+        fallback = cached;
+      }
     } catch (error) {
       // Graceful degradation: IndexedDB blocked; network loading remains available
       debugLogger.warn('Cache', `Persistent cache read failed for "${cacheKey}"`, error);
@@ -61,6 +67,7 @@ export async function fetchStaticJsonWithMetadata<T>(
       if (fs.existsSync(diskPath)) {
         const text = fs.readFileSync(diskPath, 'utf8');
         const data = JSON.parse(text) as T;
+        if (options.validate && !options.validate(data)) throw new Error(`${path} failed validation`);
         return { data, source: 'network' };
       }
     } catch {
@@ -68,23 +75,31 @@ export async function fetchStaticJsonWithMetadata<T>(
     }
   }
 
-  const response = await timeDataRequest(
-    label,
-    () => fetch(contentUrl(path), { cache: options.revalidate ? 'no-cache' : 'default' }),
-  );
+  let response: Response;
+  try {
+    response = await timeDataRequest(label, () => fetch(contentUrl(path), { cache: options.revalidate ? 'no-cache' : 'default' }));
+  } catch (error) {
+    if (fallback !== undefined) return { data: fallback, source: 'persistent-cache' };
+    throw error;
+  }
   const contentType = response.headers.get('content-type');
 
   if (!response.ok) {
+    if (fallback !== undefined) return { data: fallback, source: 'persistent-cache' };
     if (response.status === 404) {
       throw new PackMissError(label, `${path} returned 404`);
     }
     throw new NetworkError(`${path} returned ${response.status}`, response.status);
   }
-  if (!contentType?.includes('application/json')) {
-    throw new Error(`${path} did not return JSON`);
+  let data: T;
+  try {
+    if (!contentType?.includes('application/json')) throw new Error(`${path} did not return JSON`);
+    data = await response.json() as T;
+    if (options.validate && !options.validate(data)) throw new Error(`${path} failed validation`);
+  } catch (error) {
+    if (fallback !== undefined) return { data: fallback, source: 'persistent-cache' };
+    throw error;
   }
-
-  const data = await response.json() as T;
 
   if (cacheKey && canUsePersistentCache()) {
     try {

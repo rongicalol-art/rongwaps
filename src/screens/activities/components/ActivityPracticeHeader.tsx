@@ -3,6 +3,7 @@ import { PracticeHeader } from '../../../features/practice';
 import { useAppStore, selectPracticePreferences } from '../../../store/useAppStore';
 import type { ActivityType, CourseLessonPartProgress } from '../../../types/models';
 import { cn } from '../../../utils/cn';
+import { useReviewTone } from '../../../hooks/useReviewTone';
 
 interface ActivityPracticeHeaderProps {
   resolvedActivity: ActivityType;
@@ -38,6 +39,8 @@ export function ActivityPracticeHeader({
   const setCharacterPreference = useAppStore((state) => state.setCharacterPreference);
   const practicePreferences = useAppStore(useShallow(selectPracticePreferences));
   const updatePracticePreferences = useAppStore((state) => state.updatePreferences);
+
+  useReviewTone(Boolean(practiceHeader.cleanupPhase));
 
   if (activeActivity === 'create-card') return null;
 

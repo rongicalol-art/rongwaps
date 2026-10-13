@@ -308,7 +308,10 @@ export function recordsToExampleCards(
 
   matching.forEach((r) => {
     const existing = cards.get(r.sourceCardId);
-    const example = { chinese: r.traditional, pinyin: r.pinyin, english: r.english };
+    // Ids ending -E##/-R## are sentences written for the word; -D## are dialogue lines
+    // the importer hung on the part's first card.
+    const fromText = !/-[ER]\d+$/.test(r.id);
+    const example = { chinese: r.traditional, pinyin: r.pinyin, english: r.english, ...(fromText ? { fromText } : {}) };
     if (existing) {
       if (!existing.examples?.some((item) => item.chinese === example.chinese)) {
         existing.examples?.push(example);

@@ -16,7 +16,7 @@
       321
     ],
     "audioReference": "14-1-3",
-    "explanation": "Express completed duration with Verb + 了 + Time Duration. Past time words like 昨天 or 去年 confirm the action is finished.",
+    "explanation": "This sentence tells how long an action lasted. The action is already finished. A time word like 昨天 (yesterday) or 去年 (last year) shows that the story is closed. The action is over — it does not continue now.",
     "lessonWorld": {
       "kind": "countdown",
       "eyebrow": "Last New Year",
@@ -29,7 +29,9 @@
       "english": "Last year I stood there for the whole night."
     },
     "focusTerms": [
-      "了"
+      "了",
+      "昨天",
+      "去年"
     ],
     "teachingGlossary": [
       {
@@ -647,7 +649,7 @@
         "id": "b1l14-g01-glossary-97",
         "traditional": "喜歡",
         "simplified": "喜欢",
-        "pinyin": "xǐhuan",
+        "pinyin": "xǐhuān",
         "meaning": "like"
       },
       {
@@ -1285,7 +1287,7 @@
             "id": "l14g1-p1-g2",
             "traditional": "了",
             "pinyin": "le",
-            "meaning": "ending word: something is done or has changed"
+            "meaning": "marks the completed action"
           }
         ],
         "complement": [
@@ -1305,6 +1307,55 @@
         "subject": [
           {
             "id": "l14g1-p2-s1",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "he"
+          },
+          {
+            "id": "l14g1-p2-s2",
+            "traditional": "昨天",
+            "pinyin": "zuótiān",
+            "meaning": "yesterday"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l14g1-p2-g1",
+            "traditional": "上課",
+            "simplified": "上课",
+            "pinyin": "shàngkè",
+            "meaning": "attend class"
+          },
+          {
+            "id": "l14g1-p2-g2",
+            "traditional": "上",
+            "pinyin": "shàng",
+            "meaning": "attend (repeated verb)"
+          },
+          {
+            "id": "l14g1-p2-g3",
+            "traditional": "了",
+            "pinyin": "le",
+            "meaning": "marks the completed action"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l14g1-p2-c1",
+            "traditional": "五個小時",
+            "simplified": "五个小时",
+            "pinyin": "wǔ ge xiǎoshí",
+            "meaning": "five hours",
+            "suffix": "。"
+          }
+        ],
+        "english": "He attended class for five hours yesterday."
+      },
+      {
+        "id": "l14g1-p3",
+        "subject": [
+          {
+            "id": "l14g1-p3-s1",
             "traditional": "我",
             "pinyin": "wǒ",
             "meaning": "I; me"
@@ -1312,66 +1363,126 @@
         ],
         "grammar": [
           {
-            "id": "l14g1-p2-g1",
+            "id": "l14g1-p3-g1",
+            "traditional": "學中文",
+            "simplified": "学中文",
+            "pinyin": "xué Zhōngwén",
+            "meaning": "study Chinese"
+          },
+          {
+            "id": "l14g1-p3-g2",
+            "traditional": "學",
+            "simplified": "学",
+            "pinyin": "xué",
+            "meaning": "study (repeated verb)"
+          },
+          {
+            "id": "l14g1-p3-g3",
+            "traditional": "了",
+            "pinyin": "le",
+            "meaning": "marks the completed action"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l14g1-p3-c1",
+            "traditional": "三年",
+            "pinyin": "sān nián",
+            "meaning": "three years",
+            "suffix": "。"
+          }
+        ],
+        "english": "I studied Chinese for three years."
+      },
+      {
+        "id": "l14g1-p4",
+        "subject": [
+          {
+            "id": "l14g1-p4-s1",
+            "traditional": "我們",
+            "simplified": "我们",
+            "pinyin": "wǒmen",
+            "meaning": "we"
+          },
+          {
+            "id": "l14g1-p4-s2",
+            "traditional": "昨天",
+            "pinyin": "zuótiān",
+            "meaning": "yesterday"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l14g1-p4-g1",
+            "traditional": "唱",
+            "pinyin": "chàng",
+            "meaning": "sing"
+          },
+          {
+            "id": "l14g1-p4-g2",
+            "traditional": "了",
+            "pinyin": "le",
+            "meaning": "marks the completed action"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l14g1-p4-c1",
+            "traditional": "三個小時",
+            "simplified": "三个小时",
+            "pinyin": "sān ge xiǎoshí",
+            "meaning": "three hours"
+          },
+          {
+            "id": "l14g1-p4-c2",
+            "traditional": "的",
+            "pinyin": "de",
+            "meaning": "links the duration to the noun"
+          },
+          {
+            "id": "l14g1-p4-c3",
+            "traditional": "歌",
+            "pinyin": "gē",
+            "meaning": "songs",
+            "suffix": "。"
+          }
+        ],
+        "english": "We sang songs for three hours yesterday."
+      },
+      {
+        "id": "l14g1-p5",
+        "subject": [
+          {
+            "id": "l14g1-p5-s1",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l14g1-p5-g1",
             "traditional": "住",
             "pinyin": "zhù",
             "meaning": "live; stay"
           },
           {
-            "id": "l14g1-p2-g2",
+            "id": "l14g1-p5-g2",
             "traditional": "了",
             "pinyin": "le",
-            "meaning": "ending word: something is done or has changed"
+            "meaning": "marks the completed action"
           }
         ],
         "complement": [
           {
-            "id": "l14g1-p2-c1",
+            "id": "l14g1-p5-c1",
             "traditional": "半年",
             "pinyin": "bànnián",
             "meaning": "half a year",
             "suffix": "。"
           }
         ],
-        "english": "I lived there for half a year."
-      },
-      {
-        "id": "l14g1-p3",
-        "subject": [
-          {
-            "id": "l14g1-p3-s1",
-            "traditional": "我們",
-            "simplified": "我们",
-            "pinyin": "wǒmen",
-            "meaning": "we; us"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "l14g1-p3-g1",
-            "traditional": "打籃球",
-            "simplified": "打篮球",
-            "pinyin": "dǎ lánqiú",
-            "meaning": "play basketball"
-          },
-          {
-            "id": "l14g1-p3-g2",
-            "traditional": "了",
-            "pinyin": "le",
-            "meaning": "ending word: something is done or has changed"
-          }
-        ],
-        "complement": [
-          {
-            "id": "l14g1-p3-c1",
-            "traditional": "兩個小時",
-            "simplified": "两个小时",
-            "pinyin": "liǎng ge xiǎoshí",
-            "meaning": "two hours",
-            "suffix": "。"
-          }
-        ],
-        "english": "We played basketball for two hours."
+        "english": "I stayed for half a year."
       }
     ],
     "confusion": {
@@ -1592,8 +1703,8 @@
         "number": 2,
         "teachingNote": "In dialogues, single 了 confirms the completed duration explaining current fatigue.",
         "text": {
-          "traditional": "A: 你們為什麼都很累？ B: 因為我們昨天都工作了十個小時，所以今天都很累。",
-          "simplified": "A: 你们为什么都很累？ B: 因为我们昨天都工作了十个小时，所以今天都很累。",
+          "traditional": "A：你們為什麼都很累？ B：因為我們昨天都工作了十個小時，所以今天都很累。",
+          "simplified": "A：你们为什么都很累？ B：因为我们昨天都工作了十个小时，所以今天都很累。",
           "pinyin": "A: Nǐmen wèishénme dōu hěn lèi? B: Yīnwèi wǒmen zuótiān dōu gōngzuò le shí ge xiǎoshí, suǒyǐ jīntiān dōu hěn lèi.",
           "english": "A: Why are you all so tired? B: Because we all worked for ten hours yesterday, so today we are all very tired.",
           "words": [
@@ -1603,7 +1714,7 @@
               "simplified": "你们",
               "pinyin": "nǐmen",
               "meaning": "you all",
-              "prefix": "A: "
+              "prefix": "A："
             },
             {
               "id": "l14g1-e2-w2",
@@ -1625,7 +1736,7 @@
               "simplified": "因为",
               "pinyin": "yīnwèi",
               "meaning": "because",
-              "prefix": "B: "
+              "prefix": "B："
             },
             {
               "id": "l14g1-e2-w5",
@@ -1681,8 +1792,8 @@
         "number": 3,
         "teachingNote": "玩了十多天 indicates completed duration of vacation.",
         "text": {
-          "traditional": "A: 我聽說上個月你去美國了。 B: 是啊，我在美國玩了十多天，上個週末回來的。",
-          "simplified": "A: 我听说上个月你去美国了。 B: 是啊，我在美国玩了十多天，上个周末回来的。",
+          "traditional": "A：我聽說上個月你去美國了。 B：是啊，我在美國玩了十多天，上個週末回來的。",
+          "simplified": "A：我听说上个月你去美国了。 B：是啊，我在美国玩了十多天，上个周末回来的。",
           "pinyin": "A: Wǒ tīngshuō shàng ge yuè nǐ qù Měiguó le. B: Shì a, wǒ zài Měiguó wán le shí duō tiān, shàng ge zhōumò huílái de.",
           "english": "A: I heard you went to the US last month. B: Yes, I had fun in the US for more than ten days, and came back last weekend.",
           "words": [
@@ -1692,7 +1803,7 @@
               "simplified": "我听说",
               "pinyin": "wǒ tīngshuō",
               "meaning": "I heard that",
-              "prefix": "A: "
+              "prefix": "A："
             },
             {
               "id": "l14g1-e3-w2",
@@ -1714,7 +1825,7 @@
               "traditional": "是啊",
               "pinyin": "shì a",
               "meaning": "yes",
-              "prefix": "B: ",
+              "prefix": "B：",
               "suffix": "，"
             },
             {
@@ -1760,6 +1871,363 @@
             }
           ]
         }
+      },
+      {
+        "id": "l14g1-e4",
+        "number": 4,
+        "text": {
+          "traditional": "今天有考試，所以我昨天晚上看書看了兩個小時。",
+          "simplified": "今天有考试，所以我昨天晚上看书看了两个小时。",
+          "pinyin": "Jīntiān yǒu kǎoshì, suǒyǐ wǒ zuótiān wǎnshang kàn shū kàn le liǎng ge xiǎoshí.",
+          "english": "There is an exam today, so I read for two hours last night.",
+          "words": [
+            {
+              "id": "l14g1-e4-w-s1",
+              "traditional": "今天有考試",
+              "simplified": "今天有考试",
+              "pinyin": "jīntiān yǒu kǎoshì",
+              "meaning": "there is an exam today",
+              "suffix": "，"
+            },
+            {
+              "id": "l14g1-e4-w-s2",
+              "traditional": "所以",
+              "pinyin": "suǒyǐ",
+              "meaning": "so"
+            },
+            {
+              "id": "l14g1-e4-w-s3",
+              "traditional": "我昨天晚上",
+              "pinyin": "wǒ zuótiān wǎnshang",
+              "meaning": "I last night"
+            },
+            {
+              "id": "l14g1-e4-w-s4",
+              "traditional": "看書",
+              "simplified": "看书",
+              "pinyin": "kàn shū",
+              "meaning": "read books"
+            },
+            {
+              "id": "l14g1-e4-w-s5",
+              "traditional": "看",
+              "pinyin": "kàn",
+              "meaning": "read (repeated verb)"
+            },
+            {
+              "id": "l14g1-e4-w-s6",
+              "traditional": "了",
+              "pinyin": "le",
+              "meaning": "marks the completed action"
+            },
+            {
+              "id": "l14g1-e4-w-s7",
+              "traditional": "兩個小時",
+              "simplified": "两个小时",
+              "pinyin": "liǎng ge xiǎoshí",
+              "meaning": "two hours",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l14g1-e5",
+        "number": 5,
+        "text": {
+          "traditional": "我在英國住了三年，學英文學了一年半。",
+          "simplified": "我在英国住了三年，学英文学了一年半。",
+          "pinyin": "Wǒ zài Yīngguó zhù le sān nián, xué Yīngwén xué le yì nián bàn.",
+          "english": "I lived in the UK for three years and studied English for a year and a half.",
+          "words": [
+            {
+              "id": "l14g1-e5-w-s1",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me"
+            },
+            {
+              "id": "l14g1-e5-w-s2",
+              "traditional": "在英國",
+              "simplified": "在英国",
+              "pinyin": "zài Yīngguó",
+              "meaning": "in the UK"
+            },
+            {
+              "id": "l14g1-e5-w-s3",
+              "traditional": "住了",
+              "pinyin": "zhù le",
+              "meaning": "lived"
+            },
+            {
+              "id": "l14g1-e5-w-s4",
+              "traditional": "三年",
+              "pinyin": "sān nián",
+              "meaning": "three years",
+              "suffix": "，"
+            },
+            {
+              "id": "l14g1-e5-w-s5",
+              "traditional": "學英文",
+              "simplified": "学英文",
+              "pinyin": "xué Yīngwén",
+              "meaning": "study English"
+            },
+            {
+              "id": "l14g1-e5-w-s6",
+              "traditional": "學",
+              "simplified": "学",
+              "pinyin": "xué",
+              "meaning": "study (repeated verb)"
+            },
+            {
+              "id": "l14g1-e5-w-s7",
+              "traditional": "了",
+              "pinyin": "le",
+              "meaning": "marks the completed action"
+            },
+            {
+              "id": "l14g1-e5-w-s8",
+              "traditional": "一年半",
+              "pinyin": "yì nián bàn",
+              "meaning": "a year and a half",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l14g1-e6",
+        "number": 6,
+        "text": {
+          "traditional": "昨天是小李的生日，我們一起去唱歌唱了一晚。",
+          "simplified": "昨天是小李的生日，我们一起去唱歌唱了一晚。",
+          "pinyin": "Zuótiān shì Xiǎo Lǐ de shēngrì, wǒmen yìqǐ qù chànggē chàng le yì wǎn.",
+          "english": "Yesterday was Xiao Li’s birthday; we went singing together all evening.",
+          "words": [
+            {
+              "id": "l14g1-e6-w-s1",
+              "traditional": "昨天",
+              "pinyin": "zuótiān",
+              "meaning": "yesterday"
+            },
+            {
+              "id": "l14g1-e6-w-s2",
+              "traditional": "是",
+              "pinyin": "shì",
+              "meaning": "was"
+            },
+            {
+              "id": "l14g1-e6-w-s3",
+              "traditional": "小李的生日",
+              "pinyin": "Xiǎo Lǐ de shēngrì",
+              "meaning": "Xiao Li’s birthday",
+              "suffix": "，"
+            },
+            {
+              "id": "l14g1-e6-w-s4",
+              "traditional": "我們",
+              "simplified": "我们",
+              "pinyin": "wǒmen",
+              "meaning": "we"
+            },
+            {
+              "id": "l14g1-e6-w-s5",
+              "traditional": "一起去",
+              "pinyin": "yìqǐ qù",
+              "meaning": "go together"
+            },
+            {
+              "id": "l14g1-e6-w-s6",
+              "traditional": "唱歌",
+              "pinyin": "chànggē",
+              "meaning": "sing"
+            },
+            {
+              "id": "l14g1-e6-w-s7",
+              "traditional": "唱",
+              "pinyin": "chàng",
+              "meaning": "sing (repeated verb)"
+            },
+            {
+              "id": "l14g1-e6-w-s8",
+              "traditional": "了",
+              "pinyin": "le",
+              "meaning": "marks the completed action"
+            },
+            {
+              "id": "l14g1-e6-w-s8b",
+              "traditional": "一晚",
+              "pinyin": "yì wǎn",
+              "meaning": "all evening",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l14g1-e7",
+        "number": 7,
+        "text": {
+          "traditional": "我昨天打了兩個小時的籃球。",
+          "simplified": "我昨天打了两个小时的篮球。",
+          "pinyin": "Wǒ zuótiān dǎ le liǎng ge xiǎoshí de lánqiú.",
+          "english": "I played basketball for two hours yesterday.",
+          "words": [
+            {
+              "id": "l14g1-e7-w-s1",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me"
+            },
+            {
+              "id": "l14g1-e7-w-s2",
+              "traditional": "昨天",
+              "pinyin": "zuótiān",
+              "meaning": "yesterday"
+            },
+            {
+              "id": "l14g1-e7-w-s3",
+              "traditional": "打了",
+              "pinyin": "dǎ le",
+              "meaning": "played"
+            },
+            {
+              "id": "l14g1-e7-w-s4",
+              "traditional": "兩個小時",
+              "simplified": "两个小时",
+              "pinyin": "liǎng ge xiǎoshí",
+              "meaning": "two hours"
+            },
+            {
+              "id": "l14g1-e7-w-s5",
+              "traditional": "的",
+              "pinyin": "de",
+              "meaning": "links the duration to the noun"
+            },
+            {
+              "id": "l14g1-e7-w-s6",
+              "traditional": "籃球",
+              "simplified": "篮球",
+              "pinyin": "lánqiú",
+              "meaning": "basketball",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l14g1-e8",
+        "number": 8,
+        "text": {
+          "traditional": "他小的時候在美國學了一年的中文。",
+          "simplified": "他小的时候在美国学了一年的中文。",
+          "pinyin": "Tā xiǎo de shíhòu zài Měiguó xué le yì nián de Zhōngwén.",
+          "english": "When he was little, he studied Chinese in the US for a year.",
+          "words": [
+            {
+              "id": "l14g1-e8-w-s1",
+              "traditional": "他小的時候",
+              "simplified": "他小的时候",
+              "pinyin": "tā xiǎo de shíhòu",
+              "meaning": "when he was little"
+            },
+            {
+              "id": "l14g1-e8-w-s2",
+              "traditional": "在美國",
+              "simplified": "在美国",
+              "pinyin": "zài Měiguó",
+              "meaning": "in the US"
+            },
+            {
+              "id": "l14g1-e8-w-s3",
+              "traditional": "學了",
+              "simplified": "学了",
+              "pinyin": "xué le",
+              "meaning": "studied"
+            },
+            {
+              "id": "l14g1-e8-w-s4",
+              "traditional": "一年的",
+              "pinyin": "yì nián de",
+              "meaning": "one year of"
+            },
+            {
+              "id": "l14g1-e8-w-s5",
+              "traditional": "中文",
+              "pinyin": "Zhōngwén",
+              "meaning": "Chinese",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l14g1-e9",
+        "number": 9,
+        "text": {
+          "traditional": "我們上個週末在學校附近騎了兩個小時的腳踏車。",
+          "simplified": "我们上个周末在学校附近骑了两个小时的脚踏车。",
+          "pinyin": "Wǒmen shàng ge zhōumò zài xuéxiào fùjìn qí le liǎng ge xiǎoshí de jiǎotàchē.",
+          "english": "Last weekend we rode bicycles near the school for two hours.",
+          "words": [
+            {
+              "id": "l14g1-e9-w-s1",
+              "traditional": "我們",
+              "simplified": "我们",
+              "pinyin": "wǒmen",
+              "meaning": "we"
+            },
+            {
+              "id": "l14g1-e9-w-s2",
+              "traditional": "上個週末",
+              "simplified": "上个周末",
+              "pinyin": "shàng ge zhōumò",
+              "meaning": "last weekend"
+            },
+            {
+              "id": "l14g1-e9-w-s3",
+              "traditional": "在學校附近",
+              "simplified": "在学校附近",
+              "pinyin": "zài xuéxiào fùjìn",
+              "meaning": "near school"
+            },
+            {
+              "id": "l14g1-e9-w-s4",
+              "traditional": "騎了",
+              "simplified": "骑了",
+              "pinyin": "qí le",
+              "meaning": "rode"
+            },
+            {
+              "id": "l14g1-e9-w-s5",
+              "traditional": "兩個小時",
+              "simplified": "两个小时",
+              "pinyin": "liǎng ge xiǎoshí",
+              "meaning": "two hours"
+            },
+            {
+              "id": "l14g1-e9-w-s6",
+              "traditional": "的",
+              "pinyin": "de",
+              "meaning": "links the duration to the noun"
+            },
+            {
+              "id": "l14g1-e9-w-s7",
+              "traditional": "腳踏車",
+              "simplified": "脚踏车",
+              "pinyin": "jiǎotàchē",
+              "meaning": "bicycle",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
       }
     ],
     "exerciseTitle": "Close the memory timeline",
@@ -1883,7 +2351,8 @@
         "correctFeedback": "Yesterday shows the session is finished.",
         "repairFeedback": "Use action + 了 + time length."
       }
-    ]
+    ],
+    "exerciseNote": "The book answers three questions and describes six pictures with single-了 durations on printed pages 319–321; these model answers follow the printed items."
   },
   "LESSON_FOURTEEN_GRAMMAR_THREE": {
     "bookId": 1,
@@ -1902,7 +2371,7 @@
       333
     ],
     "audioReference": "14-2-3",
-    "explanation": "Compare two things with A + 比 + B + Adjective (這件比那件貴). Add any specific difference amount at the end.",
+    "explanation": "Put the thing you are describing before 比 and the thing you compare it with after 比. Always finish with a describing word, or with a real difference like 兩歲 or 五公分. 多了／得多 shows a big difference; 一點兒 shows a small one.",
     "lessonWorld": {
       "kind": "countdown",
       "eyebrow": "New Year opinion wall",
@@ -2533,7 +3002,7 @@
         "id": "b1l14-g03-glossary-97",
         "traditional": "喜歡",
         "simplified": "喜欢",
-        "pinyin": "xǐhuan",
+        "pinyin": "xǐhuān",
         "meaning": "like"
       },
       {
@@ -3214,13 +3683,13 @@
         "complement": [
           {
             "id": "l14g3-p2-c1",
-            "traditional": "快",
-            "pinyin": "kuài",
-            "meaning": "fast",
+            "traditional": "快多了",
+            "pinyin": "kuài duō le",
+            "meaning": "much faster",
             "suffix": "。"
           }
         ],
-        "english": "Flying is faster than taking a train."
+        "english": "Flying is much faster than taking a train."
       },
       {
         "id": "l14g3-p3",
@@ -3262,6 +3731,271 @@
           }
         ],
         "english": "This year is much more interesting than before."
+      },
+      {
+        "id": "l14g3-p4",
+        "subject": [
+          {
+            "id": "l14g3-p4-s1",
+            "traditional": "這件衣服",
+            "pinyin": "zhè jiàn yīfu",
+            "meaning": "this item of clothing",
+            "simplified": "这件衣服"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l14g3-p4-g1",
+            "traditional": "比",
+            "pinyin": "bǐ",
+            "meaning": "compared with"
+          },
+          {
+            "id": "l14g3-p4-g2",
+            "traditional": "那件衣服",
+            "pinyin": "nà jiàn yīfu",
+            "meaning": "that item of clothing"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l14g3-p4-c1",
+            "traditional": "長",
+            "pinyin": "cháng",
+            "meaning": "long",
+            "simplified": "长"
+          },
+          {
+            "id": "l14g3-p4-c2",
+            "traditional": "一點兒",
+            "simplified": "一点儿",
+            "pinyin": "yìdiǎnr",
+            "meaning": "a little",
+            "suffix": "。"
+          }
+        ],
+        "english": "This piece of clothing is a little longer than that one."
+      },
+      {
+        "id": "l14g3-p5",
+        "subject": [
+          {
+            "id": "l14g3-p5-s1",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "he"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l14g3-p5-g1",
+            "traditional": "比",
+            "pinyin": "bǐ",
+            "meaning": "compared with"
+          },
+          {
+            "id": "l14g3-p5-g2",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "me"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l14g3-p5-c1",
+            "traditional": "大",
+            "pinyin": "dà",
+            "meaning": "older"
+          },
+          {
+            "id": "l14g3-p5-c2",
+            "traditional": "兩歲",
+            "simplified": "两岁",
+            "pinyin": "liǎng suì",
+            "meaning": "two years",
+            "suffix": "。"
+          }
+        ],
+        "english": "He is two years older than me."
+      },
+      {
+        "id": "l14g3-p6",
+        "subject": [
+          {
+            "id": "l14g3-p6-subj-1",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          },
+          {
+            "id": "l14g3-p6-subj-2",
+            "traditional": "來得",
+            "simplified": "来得",
+            "pinyin": "lái de",
+            "meaning": "come (V + 得)"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l14g3-p6-gram-1",
+            "traditional": "比",
+            "pinyin": "bǐ",
+            "meaning": "compared with"
+          },
+          {
+            "id": "l14g3-p6-gram-2",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "me"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l14g3-p6-comp-1",
+            "traditional": "早",
+            "pinyin": "zǎo",
+            "meaning": "early",
+            "suffix": "。"
+          }
+        ],
+        "english": "You come earlier than I do."
+      },
+      {
+        "id": "l14g3-p7",
+        "subject": [
+          {
+            "id": "l14g3-p7-subj-1",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "he"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l14g3-p7-gram-1",
+            "traditional": "比",
+            "pinyin": "bǐ",
+            "meaning": "compared with"
+          },
+          {
+            "id": "l14g3-p7-gram-2",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "me"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l14g3-p7-comp-1",
+            "traditional": "走得",
+            "pinyin": "zǒu de",
+            "meaning": "walk (V + 得)"
+          },
+          {
+            "id": "l14g3-p7-comp-2",
+            "traditional": "快",
+            "pinyin": "kuài",
+            "meaning": "fast",
+            "suffix": "。"
+          }
+        ],
+        "english": "He walks faster than I do."
+      },
+      {
+        "id": "l14g3-p8",
+        "subject": [
+          {
+            "id": "l14g3-p8-subj-1",
+            "traditional": "姊姊",
+            "pinyin": "jiějie",
+            "meaning": "older sister"
+          },
+          {
+            "id": "l14g3-p8-subj-2",
+            "traditional": "唱歌",
+            "pinyin": "chànggē",
+            "meaning": "sing"
+          },
+          {
+            "id": "l14g3-p8-subj-3",
+            "traditional": "唱得",
+            "pinyin": "chàng de",
+            "meaning": "sing (repeated verb + 得)"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l14g3-p8-gram-1",
+            "traditional": "比",
+            "pinyin": "bǐ",
+            "meaning": "compared with"
+          },
+          {
+            "id": "l14g3-p8-gram-2",
+            "traditional": "妹妹",
+            "pinyin": "mèimei",
+            "meaning": "younger sister"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l14g3-p8-comp-1",
+            "traditional": "好",
+            "pinyin": "hǎo",
+            "meaning": "better",
+            "suffix": "。"
+          }
+        ],
+        "english": "My older sister sings better than my younger sister."
+      },
+      {
+        "id": "l14g3-p9",
+        "subject": [
+          {
+            "id": "l14g3-p9-subj-1",
+            "traditional": "爸爸",
+            "pinyin": "bàba",
+            "meaning": "dad"
+          },
+          {
+            "id": "l14g3-p9-subj-2",
+            "traditional": "開車",
+            "simplified": "开车",
+            "pinyin": "kāichē",
+            "meaning": "drive"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l14g3-p9-gram-1",
+            "traditional": "比",
+            "pinyin": "bǐ",
+            "meaning": "compared with"
+          },
+          {
+            "id": "l14g3-p9-gram-2",
+            "traditional": "哥哥",
+            "pinyin": "gēge",
+            "meaning": "older brother"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l14g3-p9-comp-1",
+            "traditional": "開得",
+            "simplified": "开得",
+            "pinyin": "kāi de",
+            "meaning": "drive (repeated verb + 得)"
+          },
+          {
+            "id": "l14g3-p9-comp-2",
+            "traditional": "好",
+            "pinyin": "hǎo",
+            "meaning": "better",
+            "suffix": "。"
+          }
+        ],
+        "english": "Dad drives better than my older brother."
       }
     ],
     "confusion": {
@@ -3447,7 +4181,7 @@
     },
     "ruleContrast": {
       "title": "Do not add 很 to the comparison",
-      "description": "比 already makes the comparison. Add 一點 or 多了 to show how big the difference is.",
+      "description": "比 already makes the comparison. Add 一點兒 for a small difference and 多了／得多 for a big one.",
       "examples": [
         {
           "id": "l14g3-c1",
@@ -3558,13 +4292,19 @@
               "prefix": "件"
             },
             {
+              "id": "l14g3-e2-long",
+              "traditional": "長",
+              "simplified": "长",
+              "pinyin": "cháng",
+              "meaning": "long"
+            },
+            {
               "id": "l14g3-e2-word-6",
-              "traditional": "一點",
-              "simplified": "一点",
-              "pinyin": "yìdiǎn",
+              "traditional": "一點兒",
+              "simplified": "一点儿",
+              "pinyin": "yìdiǎnr",
               "meaning": "a little",
-              "prefix": "長",
-              "suffix": "兒。"
+              "suffix": "。"
             }
           ]
         }
@@ -3620,38 +4360,78 @@
         "number": 4,
         "teachingNote": "An exact difference follows the quality.",
         "text": {
-          "traditional": "我弟弟比我高五公分。",
-          "simplified": "我弟弟比我高五公分。",
-          "pinyin": "Wǒ dìdi bǐ wǒ gāo wǔ gōngfēn.",
-          "english": "My younger brother is five centimeters taller than me.",
+          "traditional": "A：你哥哥比你高嗎？ B：不，我哥哥比我矮五公分。",
+          "simplified": "A：你哥哥比你高吗？ B：不，我哥哥比我矮五公分。",
+          "pinyin": "A: Nǐ gēge bǐ nǐ gāo ma? B: Bù, wǒ gēge bǐ wǒ ǎi wǔ gōngfēn.",
+          "english": "A: Is your older brother taller than you? B: No, my older brother is five centimeters shorter than me.",
           "words": [
             {
-              "id": "l14g3-e4-word-1",
-              "traditional": "我",
-              "pinyin": "wǒ",
-              "meaning": "I; me"
+              "id": "l14g3-e4-w1",
+              "traditional": "你哥哥",
+              "pinyin": "nǐ gēge",
+              "meaning": "your older brother",
+              "prefix": "A："
             },
             {
-              "id": "l14g3-e4-word-2",
+              "id": "l14g3-e4-w2",
               "traditional": "比",
               "pinyin": "bǐ",
-              "meaning": "compared with",
-              "prefix": "弟弟"
+              "meaning": "compared with"
             },
             {
-              "id": "l14g3-e4-word-3",
-              "traditional": "我",
-              "pinyin": "wǒ",
-              "meaning": "I; me"
+              "id": "l14g3-e4-w3",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you"
             },
             {
-              "id": "l14g3-e4-word-4",
+              "id": "l14g3-e4-w4",
               "traditional": "高",
               "pinyin": "gāo",
               "meaning": "tall"
             },
             {
-              "id": "l14g3-e4-word-5",
+              "id": "l14g3-e4-w5",
+              "traditional": "嗎",
+              "pinyin": "ma",
+              "meaning": "yes/no question ending",
+              "suffix": "？",
+              "simplified": "吗"
+            },
+            {
+              "id": "l14g3-e4-w6",
+              "traditional": "不",
+              "pinyin": "bù",
+              "meaning": "no",
+              "prefix": "B：",
+              "suffix": "，"
+            },
+            {
+              "id": "l14g3-e4-w7",
+              "traditional": "我哥哥",
+              "pinyin": "wǒ gēge",
+              "meaning": "my older brother"
+            },
+            {
+              "id": "l14g3-e4-w8",
+              "traditional": "比",
+              "pinyin": "bǐ",
+              "meaning": "compared with"
+            },
+            {
+              "id": "l14g3-e4-w9",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "me"
+            },
+            {
+              "id": "l14g3-e4-w10",
+              "traditional": "矮",
+              "pinyin": "ǎi",
+              "meaning": "short"
+            },
+            {
+              "id": "l14g3-e4-w11",
               "traditional": "五公分",
               "pinyin": "wǔ gōngfēn",
               "meaning": "five centimeters",
@@ -3659,6 +4439,278 @@
             }
           ]
         }
+      },
+      {
+        "id": "l14g3-e5",
+        "number": 5,
+        "text": {
+          "traditional": "我覺得學中文比學科學容易多了。",
+          "simplified": "我觉得学中文比学科学容易多了。",
+          "pinyin": "Wǒ juéde xué Zhōngwén bǐ xué kēxué róngyì duō le.",
+          "english": "I think studying Chinese is much easier than studying science.",
+          "words": [
+            {
+              "id": "l14g3-e5-w1",
+              "traditional": "我覺得",
+              "simplified": "我觉得",
+              "pinyin": "wǒ juéde",
+              "meaning": "I think"
+            },
+            {
+              "id": "l14g3-e5-w2",
+              "traditional": "學中文",
+              "simplified": "学中文",
+              "pinyin": "xué Zhōngwén",
+              "meaning": "study Chinese"
+            },
+            {
+              "id": "l14g3-e5-w3",
+              "traditional": "比",
+              "pinyin": "bǐ",
+              "meaning": "compared with"
+            },
+            {
+              "id": "l14g3-e5-w4",
+              "traditional": "學科學",
+              "simplified": "学科学",
+              "pinyin": "xué kēxué",
+              "meaning": "study science"
+            },
+            {
+              "id": "l14g3-e5-w5",
+              "traditional": "容易",
+              "pinyin": "róngyì",
+              "meaning": "easy"
+            },
+            {
+              "id": "l14g3-e5-w6",
+              "traditional": "多了",
+              "pinyin": "duō le",
+              "meaning": "much more",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l14g3-e6",
+        "number": 6,
+        "text": {
+          "traditional": "我覺得外面的餐廳做的菜比學校的好吃。",
+          "simplified": "我觉得外面的餐厅做的菜比学校的好吃。",
+          "pinyin": "Wǒ juéde wàimiàn de cāntīng zuò de cài bǐ xuéxiào de hǎochī.",
+          "english": "I think the food made by restaurants outside is tastier than the school’s.",
+          "words": [
+            {
+              "id": "l14g3-e6-w1",
+              "traditional": "我覺得",
+              "simplified": "我觉得",
+              "pinyin": "wǒ juéde",
+              "meaning": "I think"
+            },
+            {
+              "id": "l14g3-e6-w2",
+              "traditional": "外面的餐廳做的菜",
+              "simplified": "外面的餐厅做的菜",
+              "pinyin": "wàimiàn de cāntīng zuò de cài",
+              "meaning": "food made by restaurants outside"
+            },
+            {
+              "id": "l14g3-e6-w3",
+              "traditional": "比",
+              "pinyin": "bǐ",
+              "meaning": "compared with"
+            },
+            {
+              "id": "l14g3-e6-w4",
+              "traditional": "學校的",
+              "simplified": "学校的",
+              "pinyin": "xuéxiào de",
+              "meaning": "the school’s"
+            },
+            {
+              "id": "l14g3-e6-w5",
+              "traditional": "好吃",
+              "pinyin": "hǎochī",
+              "meaning": "tasty",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l14g3-e7",
+        "number": 7,
+        "text": {
+          "traditional": "他比我高，可是跑得比我慢。",
+          "simplified": "他比我高，可是跑得比我慢。",
+          "pinyin": "Tā bǐ wǒ gāo, kěshì pǎo de bǐ wǒ màn.",
+          "english": "He is taller than me, but he runs slower than me.",
+          "words": [
+            {
+              "id": "l14g3-e7-w1",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he"
+            },
+            {
+              "id": "l14g3-e7-w2",
+              "traditional": "比",
+              "pinyin": "bǐ",
+              "meaning": "compared with"
+            },
+            {
+              "id": "l14g3-e7-w3",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "me"
+            },
+            {
+              "id": "l14g3-e7-w4",
+              "traditional": "高",
+              "pinyin": "gāo",
+              "meaning": "tall",
+              "suffix": "，"
+            },
+            {
+              "id": "l14g3-e7-w5",
+              "traditional": "可是",
+              "pinyin": "kěshì",
+              "meaning": "but"
+            },
+            {
+              "id": "l14g3-e7-w6",
+              "traditional": "跑得",
+              "pinyin": "pǎo de",
+              "meaning": "run (V + 得)"
+            },
+            {
+              "id": "l14g3-e7-w7",
+              "traditional": "比",
+              "pinyin": "bǐ",
+              "meaning": "compared with"
+            },
+            {
+              "id": "l14g3-e7-w8",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "me"
+            },
+            {
+              "id": "l14g3-e7-w9",
+              "traditional": "慢",
+              "pinyin": "màn",
+              "meaning": "slow",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l14g3-e8",
+        "number": 8,
+        "text": {
+          "traditional": "我弟弟說英文說得比我好。",
+          "simplified": "我弟弟说英文说得比我好。",
+          "pinyin": "Wǒ dìdi shuō Yīngwén shuō de bǐ wǒ hǎo.",
+          "english": "My younger brother speaks English better than I do.",
+          "words": [
+            {
+              "id": "l14g3-e8-w1",
+              "traditional": "我弟弟",
+              "pinyin": "wǒ dìdi",
+              "meaning": "my younger brother"
+            },
+            {
+              "id": "l14g3-e8-w2",
+              "traditional": "說英文",
+              "simplified": "说英文",
+              "pinyin": "shuō Yīngwén",
+              "meaning": "speak English"
+            },
+            {
+              "id": "l14g3-e8-w3",
+              "traditional": "說得",
+              "pinyin": "shuō de",
+              "meaning": "speak (repeated verb + 得)",
+              "simplified": "说得"
+            },
+            {
+              "id": "l14g3-e8-w4",
+              "traditional": "比",
+              "pinyin": "bǐ",
+              "meaning": "compared with"
+            },
+            {
+              "id": "l14g3-e8-w5",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "me"
+            },
+            {
+              "id": "l14g3-e8-w6",
+              "traditional": "好",
+              "pinyin": "hǎo",
+              "meaning": "better",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l14g3-e9",
+        "number": 9,
+        "text": {
+          "traditional": "我媽媽做菜比我爸爸做得好。",
+          "simplified": "我妈妈做菜比我爸爸做得好。",
+          "pinyin": "Wǒ māma zuò cài bǐ wǒ bàba zuò de hǎo.",
+          "english": "My mom cooks better than my dad.",
+          "words": [
+            {
+              "id": "l14g3-e9-w1",
+              "traditional": "我媽媽",
+              "simplified": "我妈妈",
+              "pinyin": "wǒ māma",
+              "meaning": "my mom"
+            },
+            {
+              "id": "l14g3-e9-w2",
+              "traditional": "做菜",
+              "pinyin": "zuò cài",
+              "meaning": "cook"
+            },
+            {
+              "id": "l14g3-e9-w3",
+              "traditional": "比",
+              "pinyin": "bǐ",
+              "meaning": "compared with"
+            },
+            {
+              "id": "l14g3-e9-w4",
+              "traditional": "我爸爸",
+              "pinyin": "wǒ bàba",
+              "meaning": "my dad"
+            },
+            {
+              "id": "l14g3-e9-w5",
+              "traditional": "做得",
+              "pinyin": "zuò de",
+              "meaning": "cook (repeated verb + 得)"
+            },
+            {
+              "id": "l14g3-e9-w6",
+              "traditional": "好",
+              "pinyin": "hǎo",
+              "meaning": "better",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
       }
     ],
     "exerciseTitle": "Build the comparison",
@@ -3782,7 +4834,8 @@
         "correctFeedback": "The whole second activity follows 比.",
         "repairFeedback": "Keep both activities intact."
       }
-    ]
+    ],
+    "exerciseNote": "The book answers six questions with 比 on printed pages 332–333; these model answers follow the printed information."
   },
   "LESSON_FOURTEEN_GRAMMAR_TWO": {
     "bookId": 1,
@@ -3801,7 +4854,7 @@
       324
     ],
     "audioReference": "14-1-3",
-    "explanation": "The first 了 follows the action. The final 了 shows that the time reaches now.",
+    "explanation": "The first 了 follows the action. The final 了 shows that the time reaches now — the action probably continues. Do not put both 了 before the time word.",
     "lessonWorld": {
       "kind": "countdown",
       "eyebrow": "This New Year",
@@ -4432,7 +5485,7 @@
         "id": "b1l14-g02-glossary-97",
         "traditional": "喜歡",
         "simplified": "喜欢",
-        "pinyin": "xǐhuan",
+        "pinyin": "xǐhuān",
         "meaning": "like"
       },
       {
@@ -5088,7 +6141,7 @@
             "suffix": "。"
           }
         ],
-        "english": "I have lived here for half a year."
+        "english": "I have lived for half a year."
       },
       {
         "id": "l14g2-p2",
@@ -5140,40 +6193,109 @@
             "traditional": "我們",
             "simplified": "我们",
             "pinyin": "wǒmen",
-            "meaning": "we; us"
+            "meaning": "we"
           }
         ],
         "grammar": [
           {
+            "id": "l14g2-p3-g0",
+            "traditional": "已經",
+            "simplified": "已经",
+            "pinyin": "yǐjīng",
+            "meaning": "already"
+          },
+          {
             "id": "l14g2-p3-g1",
-            "traditional": "踢足球",
-            "pinyin": "tī zúqiú",
-            "meaning": "play soccer"
-          },
-          {
-            "id": "l14g2-p3-g2",
-            "traditional": "了",
-            "pinyin": "le",
-            "meaning": "ending word: something is done or has changed"
-          },
-          {
-            "id": "l14g2-p3-g3",
-            "traditional": "一個小時",
-            "simplified": "一个小时",
-            "pinyin": "yí ge xiǎoshí",
-            "meaning": "one hour"
+            "traditional": "踢了",
+            "pinyin": "tī le",
+            "meaning": "have played"
           }
         ],
         "complement": [
           {
             "id": "l14g2-p3-c1",
+            "traditional": "一個小時",
+            "simplified": "一个小时",
+            "pinyin": "yí ge xiǎoshí",
+            "meaning": "one hour"
+          },
+          {
+            "id": "l14g2-p3-c2",
+            "traditional": "的",
+            "pinyin": "de",
+            "meaning": "links the duration to the noun"
+          },
+          {
+            "id": "l14g2-p3-c3",
+            "traditional": "足球",
+            "pinyin": "zúqiú",
+            "meaning": "soccer"
+          },
+          {
+            "id": "l14g2-p3-c4",
             "traditional": "了",
             "pinyin": "le",
-            "meaning": "ending word: something is done or has changed",
+            "meaning": "shows the time reaches now",
             "suffix": "。"
           }
         ],
-        "english": "We have played soccer for an hour."
+        "english": "We have played soccer for an hour now."
+      },
+      {
+        "id": "l14g2-p4",
+        "subject": [
+          {
+            "id": "l14g2-p4-s1",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "he"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l14g2-p4-g0",
+            "traditional": "已經",
+            "simplified": "已经",
+            "pinyin": "yǐjīng",
+            "meaning": "already"
+          },
+          {
+            "id": "l14g2-p4-g1",
+            "traditional": "上課",
+            "simplified": "上课",
+            "pinyin": "shàngkè",
+            "meaning": "attend class"
+          },
+          {
+            "id": "l14g2-p4-g2",
+            "traditional": "上",
+            "pinyin": "shàng",
+            "meaning": "attend (repeated verb)"
+          },
+          {
+            "id": "l14g2-p4-g3",
+            "traditional": "了",
+            "pinyin": "le",
+            "meaning": "marks the completed action"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l14g2-p4-c1",
+            "traditional": "五個小時",
+            "simplified": "五个小时",
+            "pinyin": "wǔ ge xiǎoshí",
+            "meaning": "five hours"
+          },
+          {
+            "id": "l14g2-p4-c2",
+            "traditional": "了",
+            "pinyin": "le",
+            "meaning": "shows the time reaches now",
+            "suffix": "。"
+          }
+        ],
+        "english": "He has already attended class for five hours now."
       }
     ],
     "confusion": {
@@ -5352,7 +6474,7 @@
     },
     "ruleContrast": {
       "title": "Choose by context, not by counting 了",
-      "description": "The one-了 sentence is not wrong by itself. The two-了 form directly shows that the action is still going on.",
+      "description": "Choose by context, not by counting 了. The one-了 sentence says the period is over; the two-了 form shows the time reaching now (and probably continuing).",
       "examples": [
         {
           "id": "l14g2-c1",
@@ -5360,7 +6482,7 @@
           "label": "Reports a period",
           "traditional": "我在台灣住了半年。",
           "simplified": "我在台湾住了半年。",
-          "explanation": "This tells about a six-month stay. The rest of the story decides whether it continues."
+          "explanation": "This tells about a six-month stay that is over — it does not continue now."
         },
         {
           "id": "l14g2-c2",
@@ -5443,11 +6565,17 @@
               "meaning": "he; him"
             },
             {
+              "id": "l14g2-e2-already",
+              "traditional": "已經",
+              "simplified": "已经",
+              "pinyin": "yǐjīng",
+              "meaning": "already"
+            },
+            {
               "id": "l14g2-e2-word-2",
               "traditional": "睡",
               "pinyin": "shuì",
-              "meaning": "sleep",
-              "prefix": "已經"
+              "meaning": "sleep"
             },
             {
               "id": "l14g2-e2-word-3",
@@ -5569,11 +6697,17 @@
               "meaning": "we; us"
             },
             {
+              "id": "l14g2-e4-played",
+              "traditional": "已經踢",
+              "simplified": "已经踢",
+              "pinyin": "yǐjīng tī",
+              "meaning": "have played"
+            },
+            {
               "id": "l14g2-e4-word-2",
               "traditional": "了",
               "pinyin": "le",
-              "meaning": "ending word: something is done or has changed",
-              "prefix": "已經踢"
+              "meaning": "ending word: something is done or has changed"
             },
             {
               "id": "l14g2-e4-word-3",
@@ -5611,6 +6745,387 @@
             }
           ]
         }
+      },
+      {
+        "id": "l14g2-e5",
+        "number": 5,
+        "text": {
+          "traditional": "我跑了一個小時了，覺得又熱又渴。",
+          "simplified": "我跑了一个小时了，觉得又热又渴。",
+          "pinyin": "Wǒ pǎo le yí ge xiǎoshí le, juéde yòu rè yòu kě.",
+          "english": "I have been running for an hour; I feel hot and thirsty.",
+          "words": [
+            {
+              "id": "l14g2-e5-w-s1",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me"
+            },
+            {
+              "id": "l14g2-e5-w-s2",
+              "traditional": "跑了",
+              "pinyin": "pǎo le",
+              "meaning": "have run"
+            },
+            {
+              "id": "l14g2-e5-w-s3",
+              "traditional": "一個小時",
+              "simplified": "一个小时",
+              "pinyin": "yí ge xiǎoshí",
+              "meaning": "one hour"
+            },
+            {
+              "id": "l14g2-e5-w-s4",
+              "traditional": "了",
+              "pinyin": "le",
+              "meaning": "shows the time reaches now",
+              "suffix": "，"
+            },
+            {
+              "id": "l14g2-e5-w-s5",
+              "traditional": "覺得",
+              "simplified": "觉得",
+              "pinyin": "juéde",
+              "meaning": "feel"
+            },
+            {
+              "id": "l14g2-e5-w-s6",
+              "traditional": "又熱又渴",
+              "simplified": "又热又渴",
+              "pinyin": "yòu rè yòu kě",
+              "meaning": "both hot and thirsty",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l14g2-e6",
+        "number": 6,
+        "text": {
+          "traditional": "我已經看書看了兩個小時了，想休息了。",
+          "simplified": "我已经看书看了两个小时了，想休息了。",
+          "pinyin": "Wǒ yǐjīng kàn shū kàn le liǎng ge xiǎoshí le, xiǎng xiūxi le.",
+          "english": "I have been reading for two hours; I want to rest.",
+          "words": [
+            {
+              "id": "l14g2-e6-w-s1",
+              "traditional": "我已經",
+              "simplified": "我已经",
+              "pinyin": "wǒ yǐjīng",
+              "meaning": "I already"
+            },
+            {
+              "id": "l14g2-e6-w-s2",
+              "traditional": "看書",
+              "simplified": "看书",
+              "pinyin": "kàn shū",
+              "meaning": "read books"
+            },
+            {
+              "id": "l14g2-e6-w-s3",
+              "traditional": "看",
+              "pinyin": "kàn",
+              "meaning": "read (repeated verb)"
+            },
+            {
+              "id": "l14g2-e6-w-s4",
+              "traditional": "了",
+              "pinyin": "le",
+              "meaning": "marks the completed action"
+            },
+            {
+              "id": "l14g2-e6-w-s5",
+              "traditional": "兩個小時",
+              "simplified": "两个小时",
+              "pinyin": "liǎng ge xiǎoshí",
+              "meaning": "two hours"
+            },
+            {
+              "id": "l14g2-e6-w-s6",
+              "traditional": "了",
+              "pinyin": "le",
+              "meaning": "shows the time reaches now",
+              "suffix": "，"
+            },
+            {
+              "id": "l14g2-e6-w-s7",
+              "traditional": "想休息了",
+              "pinyin": "xiǎng xiūxi le",
+              "meaning": "want to rest now",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l14g2-e7",
+        "number": 7,
+        "text": {
+          "traditional": "媽媽和王太太聊天聊了一個小時了。",
+          "simplified": "妈妈和王太太聊天聊了一个小时了。",
+          "pinyin": "Māma hé Wáng tàitai liáotiān liáo le yí ge xiǎoshí le.",
+          "english": "Mom and Mrs. Wang have been chatting for an hour now.",
+          "words": [
+            {
+              "id": "l14g2-e7-w-s1",
+              "traditional": "媽媽",
+              "simplified": "妈妈",
+              "pinyin": "māma",
+              "meaning": "mom"
+            },
+            {
+              "id": "l14g2-e7-w-s2",
+              "traditional": "和",
+              "pinyin": "hé",
+              "meaning": "and"
+            },
+            {
+              "id": "l14g2-e7-w-s3",
+              "traditional": "王太太",
+              "pinyin": "Wáng tàitai",
+              "meaning": "Mrs. Wang"
+            },
+            {
+              "id": "l14g2-e7-w-s4",
+              "traditional": "聊天",
+              "pinyin": "liáotiān",
+              "meaning": "chat"
+            },
+            {
+              "id": "l14g2-e7-w-s5",
+              "traditional": "聊",
+              "pinyin": "liáo",
+              "meaning": "chat (repeated verb)"
+            },
+            {
+              "id": "l14g2-e7-w-s6",
+              "traditional": "了",
+              "pinyin": "le",
+              "meaning": "marks the completed action"
+            },
+            {
+              "id": "l14g2-e7-w-s7",
+              "traditional": "一個小時",
+              "simplified": "一个小时",
+              "pinyin": "yí ge xiǎoshí",
+              "meaning": "one hour"
+            },
+            {
+              "id": "l14g2-e7-w-s8",
+              "traditional": "了",
+              "pinyin": "le",
+              "meaning": "shows the time reaches now",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l14g2-e8",
+        "number": 8,
+        "text": {
+          "traditional": "他學中文學了兩年了，可是說得不太好。",
+          "simplified": "他学中文学了两年了，可是说得不太好。",
+          "pinyin": "Tā xué Zhōngwén xué le liǎng nián le, kěshì shuō de bú tài hǎo.",
+          "english": "He has been studying Chinese for two years, but he does not speak very well.",
+          "words": [
+            {
+              "id": "l14g2-e8-w-s1",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he"
+            },
+            {
+              "id": "l14g2-e8-w-s2",
+              "traditional": "學中文",
+              "simplified": "学中文",
+              "pinyin": "xué Zhōngwén",
+              "meaning": "study Chinese"
+            },
+            {
+              "id": "l14g2-e8-w-s3",
+              "traditional": "學",
+              "simplified": "学",
+              "pinyin": "xué",
+              "meaning": "study (repeated verb)"
+            },
+            {
+              "id": "l14g2-e8-w-s4",
+              "traditional": "了",
+              "pinyin": "le",
+              "meaning": "marks the completed action"
+            },
+            {
+              "id": "l14g2-e8-w-s5",
+              "traditional": "兩年",
+              "simplified": "两年",
+              "pinyin": "liǎng nián",
+              "meaning": "two years"
+            },
+            {
+              "id": "l14g2-e8-w-s6",
+              "traditional": "了",
+              "pinyin": "le",
+              "meaning": "shows the time reaches now",
+              "suffix": "，"
+            },
+            {
+              "id": "l14g2-e8-w-s7",
+              "traditional": "可是",
+              "pinyin": "kěshì",
+              "meaning": "but"
+            },
+            {
+              "id": "l14g2-e8-w-s8",
+              "traditional": "說得不太好",
+              "pinyin": "shuō de bú tài hǎo",
+              "meaning": "does not speak very well",
+              "suffix": "。",
+              "simplified": "说得不太好"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l14g2-e9",
+        "number": 9,
+        "text": {
+          "traditional": "老師教了一天的書了，現在一定很累吧？",
+          "simplified": "老师教了一天的书了，现在一定很累吧？",
+          "pinyin": "Lǎoshī jiāo le yì tiān de shū le, xiànzài yídìng hěn lèi ba?",
+          "english": "The teacher has taught all day; she must be very tired now.",
+          "words": [
+            {
+              "id": "l14g2-e9-w-s1",
+              "traditional": "老師",
+              "simplified": "老师",
+              "pinyin": "lǎoshī",
+              "meaning": "teacher"
+            },
+            {
+              "id": "l14g2-e9-w-s2",
+              "traditional": "教了",
+              "pinyin": "jiāo le",
+              "meaning": "has taught"
+            },
+            {
+              "id": "l14g2-e9-w-s3",
+              "traditional": "一天的",
+              "pinyin": "yì tiān de",
+              "meaning": "one day of"
+            },
+            {
+              "id": "l14g2-e9-w-s4",
+              "traditional": "書",
+              "simplified": "书",
+              "pinyin": "shū",
+              "meaning": "books; lessons"
+            },
+            {
+              "id": "l14g2-e9-w-s5",
+              "traditional": "了",
+              "pinyin": "le",
+              "meaning": "shows the time reaches now",
+              "suffix": "，"
+            },
+            {
+              "id": "l14g2-e9-w-s6",
+              "traditional": "現在",
+              "simplified": "现在",
+              "pinyin": "xiànzài",
+              "meaning": "now"
+            },
+            {
+              "id": "l14g2-e9-w-s7",
+              "traditional": "一定很累吧",
+              "pinyin": "yídìng hěn lèi ba",
+              "meaning": "must be very tired",
+              "suffix": "？"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l14g2-e10",
+        "number": 10,
+        "text": {
+          "traditional": "台北 101 真遠，我們已經坐了一個小時的公車了，還沒到。",
+          "simplified": "台北 101 真远，我们已经坐了一个小时的公车了，还没到。",
+          "pinyin": "Táiběi 101 zhēn yuǎn, wǒmen yǐjīng zuò le yí ge xiǎoshí de gōngchē le, hái méi dào.",
+          "english": "Taipei 101 is really far; we have been on the bus for an hour and still have not arrived.",
+          "words": [
+            {
+              "id": "l14g2-e10-w-s1",
+              "traditional": "台北 101",
+              "simplified": "台北 101",
+              "pinyin": "Táiběi 101",
+              "meaning": "Taipei 101"
+            },
+            {
+              "id": "l14g2-e10-w-s2",
+              "traditional": "真遠",
+              "simplified": "真远",
+              "pinyin": "zhēn yuǎn",
+              "meaning": "really far",
+              "suffix": "，"
+            },
+            {
+              "id": "l14g2-e10-w-s3",
+              "traditional": "我們已經",
+              "simplified": "我们已经",
+              "pinyin": "wǒmen yǐjīng",
+              "meaning": "we already"
+            },
+            {
+              "id": "l14g2-e10-w-s4",
+              "traditional": "坐了",
+              "pinyin": "zuò le",
+              "meaning": "have ridden"
+            },
+            {
+              "id": "l14g2-e10-w-s5",
+              "traditional": "一個小時",
+              "simplified": "一个小时",
+              "pinyin": "yí ge xiǎoshí",
+              "meaning": "one hour"
+            },
+            {
+              "id": "l14g2-e10-w-s6",
+              "traditional": "的",
+              "pinyin": "de",
+              "meaning": "links the duration to the noun"
+            },
+            {
+              "id": "l14g2-e10-w-s7",
+              "traditional": "公車",
+              "simplified": "公车",
+              "pinyin": "gōngchē",
+              "meaning": "bus"
+            },
+            {
+              "id": "l14g2-e10-w-s8",
+              "traditional": "了",
+              "pinyin": "le",
+              "meaning": "shows the time reaches now",
+              "suffix": "，"
+            },
+            {
+              "id": "l14g2-e10-w-s9",
+              "traditional": "還沒到",
+              "simplified": "还没到",
+              "pinyin": "hái méi dào",
+              "meaning": "still have not arrived",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
       }
     ],
     "exerciseTitle": "Touch the NOW point",
@@ -5736,7 +7251,8 @@
         "correctFeedback": "The time already spent is a reason to rest now.",
         "repairFeedback": "Use action + 了 + time + 了."
       }
-    ]
+    ],
+    "exerciseNote": "The book answers three questions and describes six timed pictures with double 了 on printed pages 322–324; these model answers follow the printed items."
   },
   "LESSON_FOURTEEN_PART_ONE": {
     "id": "B1L14-P01-D01",
@@ -5762,7 +7278,7 @@
           321
         ],
         "audioReference": "14-1-3",
-        "explanation": "This sentence tells how long an action lasted. The action is already finished. A time word like 昨天 (yesterday) or 去年 (last year) shows that the story is closed.",
+        "explanation": "This sentence tells how long an action lasted. The action is already finished. A time word like 昨天 (yesterday) or 去年 (last year) shows that the story is closed. The action is over — it does not continue now.",
         "lessonWorld": {
           "kind": "countdown",
           "eyebrow": "Last New Year",
@@ -5775,7 +7291,9 @@
           "english": "Last year I stood there for the whole night."
         },
         "focusTerms": [
-          "了"
+          "了",
+          "昨天",
+          "去年"
         ],
         "teachingGlossary": [
           {
@@ -6393,7 +7911,7 @@
             "id": "b1l14-g01-glossary-97",
             "traditional": "喜歡",
             "simplified": "喜欢",
-            "pinyin": "xǐhuan",
+            "pinyin": "xǐhuān",
             "meaning": "like"
           },
           {
@@ -7031,7 +8549,7 @@
                 "id": "l14g1-p1-g2",
                 "traditional": "了",
                 "pinyin": "le",
-                "meaning": "ending word: something is done or has changed"
+                "meaning": "marks the completed action"
               }
             ],
             "complement": [
@@ -7051,6 +8569,55 @@
             "subject": [
               {
                 "id": "l14g1-p2-s1",
+                "traditional": "他",
+                "pinyin": "tā",
+                "meaning": "he"
+              },
+              {
+                "id": "l14g1-p2-s2",
+                "traditional": "昨天",
+                "pinyin": "zuótiān",
+                "meaning": "yesterday"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l14g1-p2-g1",
+                "traditional": "上課",
+                "simplified": "上课",
+                "pinyin": "shàngkè",
+                "meaning": "attend class"
+              },
+              {
+                "id": "l14g1-p2-g2",
+                "traditional": "上",
+                "pinyin": "shàng",
+                "meaning": "attend (repeated verb)"
+              },
+              {
+                "id": "l14g1-p2-g3",
+                "traditional": "了",
+                "pinyin": "le",
+                "meaning": "marks the completed action"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l14g1-p2-c1",
+                "traditional": "五個小時",
+                "simplified": "五个小时",
+                "pinyin": "wǔ ge xiǎoshí",
+                "meaning": "five hours",
+                "suffix": "。"
+              }
+            ],
+            "english": "He attended class for five hours yesterday."
+          },
+          {
+            "id": "l14g1-p3",
+            "subject": [
+              {
+                "id": "l14g1-p3-s1",
                 "traditional": "我",
                 "pinyin": "wǒ",
                 "meaning": "I; me"
@@ -7058,66 +8625,126 @@
             ],
             "grammar": [
               {
-                "id": "l14g1-p2-g1",
+                "id": "l14g1-p3-g1",
+                "traditional": "學中文",
+                "simplified": "学中文",
+                "pinyin": "xué Zhōngwén",
+                "meaning": "study Chinese"
+              },
+              {
+                "id": "l14g1-p3-g2",
+                "traditional": "學",
+                "simplified": "学",
+                "pinyin": "xué",
+                "meaning": "study (repeated verb)"
+              },
+              {
+                "id": "l14g1-p3-g3",
+                "traditional": "了",
+                "pinyin": "le",
+                "meaning": "marks the completed action"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l14g1-p3-c1",
+                "traditional": "三年",
+                "pinyin": "sān nián",
+                "meaning": "three years",
+                "suffix": "。"
+              }
+            ],
+            "english": "I studied Chinese for three years."
+          },
+          {
+            "id": "l14g1-p4",
+            "subject": [
+              {
+                "id": "l14g1-p4-s1",
+                "traditional": "我們",
+                "simplified": "我们",
+                "pinyin": "wǒmen",
+                "meaning": "we"
+              },
+              {
+                "id": "l14g1-p4-s2",
+                "traditional": "昨天",
+                "pinyin": "zuótiān",
+                "meaning": "yesterday"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l14g1-p4-g1",
+                "traditional": "唱",
+                "pinyin": "chàng",
+                "meaning": "sing"
+              },
+              {
+                "id": "l14g1-p4-g2",
+                "traditional": "了",
+                "pinyin": "le",
+                "meaning": "marks the completed action"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l14g1-p4-c1",
+                "traditional": "三個小時",
+                "simplified": "三个小时",
+                "pinyin": "sān ge xiǎoshí",
+                "meaning": "three hours"
+              },
+              {
+                "id": "l14g1-p4-c2",
+                "traditional": "的",
+                "pinyin": "de",
+                "meaning": "links the duration to the noun"
+              },
+              {
+                "id": "l14g1-p4-c3",
+                "traditional": "歌",
+                "pinyin": "gē",
+                "meaning": "songs",
+                "suffix": "。"
+              }
+            ],
+            "english": "We sang songs for three hours yesterday."
+          },
+          {
+            "id": "l14g1-p5",
+            "subject": [
+              {
+                "id": "l14g1-p5-s1",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l14g1-p5-g1",
                 "traditional": "住",
                 "pinyin": "zhù",
                 "meaning": "live; stay"
               },
               {
-                "id": "l14g1-p2-g2",
+                "id": "l14g1-p5-g2",
                 "traditional": "了",
                 "pinyin": "le",
-                "meaning": "ending word: something is done or has changed"
+                "meaning": "marks the completed action"
               }
             ],
             "complement": [
               {
-                "id": "l14g1-p2-c1",
+                "id": "l14g1-p5-c1",
                 "traditional": "半年",
                 "pinyin": "bànnián",
                 "meaning": "half a year",
                 "suffix": "。"
               }
             ],
-            "english": "I lived there for half a year."
-          },
-          {
-            "id": "l14g1-p3",
-            "subject": [
-              {
-                "id": "l14g1-p3-s1",
-                "traditional": "我們",
-                "simplified": "我们",
-                "pinyin": "wǒmen",
-                "meaning": "we; us"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "l14g1-p3-g1",
-                "traditional": "打籃球",
-                "simplified": "打篮球",
-                "pinyin": "dǎ lánqiú",
-                "meaning": "play basketball"
-              },
-              {
-                "id": "l14g1-p3-g2",
-                "traditional": "了",
-                "pinyin": "le",
-                "meaning": "ending word: something is done or has changed"
-              }
-            ],
-            "complement": [
-              {
-                "id": "l14g1-p3-c1",
-                "traditional": "兩個小時",
-                "simplified": "两个小时",
-                "pinyin": "liǎng ge xiǎoshí",
-                "meaning": "two hours",
-                "suffix": "。"
-              }
-            ],
-            "english": "We played basketball for two hours."
+            "english": "I stayed for half a year."
           }
         ],
         "confusion": {
@@ -7338,8 +8965,8 @@
             "number": 2,
             "teachingNote": "In dialogues, single 了 confirms the completed duration explaining current fatigue.",
             "text": {
-              "traditional": "A: 你們為什麼都很累？ B: 因為我們昨天都工作了十個小時，所以今天都很累。",
-              "simplified": "A: 你们为什么都很累？ B: 因为我们昨天都工作了十个小时，所以今天都很累。",
+              "traditional": "A：你們為什麼都很累？ B：因為我們昨天都工作了十個小時，所以今天都很累。",
+              "simplified": "A：你们为什么都很累？ B：因为我们昨天都工作了十个小时，所以今天都很累。",
               "pinyin": "A: Nǐmen wèishénme dōu hěn lèi? B: Yīnwèi wǒmen zuótiān dōu gōngzuò le shí ge xiǎoshí, suǒyǐ jīntiān dōu hěn lèi.",
               "english": "A: Why are you all so tired? B: Because we all worked for ten hours yesterday, so today we are all very tired.",
               "words": [
@@ -7349,7 +8976,7 @@
                   "simplified": "你们",
                   "pinyin": "nǐmen",
                   "meaning": "you all",
-                  "prefix": "A: "
+                  "prefix": "A："
                 },
                 {
                   "id": "l14g1-e2-w2",
@@ -7371,7 +8998,7 @@
                   "simplified": "因为",
                   "pinyin": "yīnwèi",
                   "meaning": "because",
-                  "prefix": "B: "
+                  "prefix": "B："
                 },
                 {
                   "id": "l14g1-e2-w5",
@@ -7427,8 +9054,8 @@
             "number": 3,
             "teachingNote": "玩了十多天 indicates completed duration of vacation.",
             "text": {
-              "traditional": "A: 我聽說上個月你去美國了。 B: 是啊，我在美國玩了十多天，上個週末回來的。",
-              "simplified": "A: 我听说上个月你去美国了。 B: 是啊，我在美国玩了十多天，上个周末回来的。",
+              "traditional": "A：我聽說上個月你去美國了。 B：是啊，我在美國玩了十多天，上個週末回來的。",
+              "simplified": "A：我听说上个月你去美国了。 B：是啊，我在美国玩了十多天，上个周末回来的。",
               "pinyin": "A: Wǒ tīngshuō shàng ge yuè nǐ qù Měiguó le. B: Shì a, wǒ zài Měiguó wán le shí duō tiān, shàng ge zhōumò huílái de.",
               "english": "A: I heard you went to the US last month. B: Yes, I had fun in the US for more than ten days, and came back last weekend.",
               "words": [
@@ -7438,7 +9065,7 @@
                   "simplified": "我听说",
                   "pinyin": "wǒ tīngshuō",
                   "meaning": "I heard that",
-                  "prefix": "A: "
+                  "prefix": "A："
                 },
                 {
                   "id": "l14g1-e3-w2",
@@ -7460,7 +9087,7 @@
                   "traditional": "是啊",
                   "pinyin": "shì a",
                   "meaning": "yes",
-                  "prefix": "B: ",
+                  "prefix": "B：",
                   "suffix": "，"
                 },
                 {
@@ -7506,6 +9133,363 @@
                 }
               ]
             }
+          },
+          {
+            "id": "l14g1-e4",
+            "number": 4,
+            "text": {
+              "traditional": "今天有考試，所以我昨天晚上看書看了兩個小時。",
+              "simplified": "今天有考试，所以我昨天晚上看书看了两个小时。",
+              "pinyin": "Jīntiān yǒu kǎoshì, suǒyǐ wǒ zuótiān wǎnshang kàn shū kàn le liǎng ge xiǎoshí.",
+              "english": "There is an exam today, so I read for two hours last night.",
+              "words": [
+                {
+                  "id": "l14g1-e4-w-s1",
+                  "traditional": "今天有考試",
+                  "simplified": "今天有考试",
+                  "pinyin": "jīntiān yǒu kǎoshì",
+                  "meaning": "there is an exam today",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l14g1-e4-w-s2",
+                  "traditional": "所以",
+                  "pinyin": "suǒyǐ",
+                  "meaning": "so"
+                },
+                {
+                  "id": "l14g1-e4-w-s3",
+                  "traditional": "我昨天晚上",
+                  "pinyin": "wǒ zuótiān wǎnshang",
+                  "meaning": "I last night"
+                },
+                {
+                  "id": "l14g1-e4-w-s4",
+                  "traditional": "看書",
+                  "simplified": "看书",
+                  "pinyin": "kàn shū",
+                  "meaning": "read books"
+                },
+                {
+                  "id": "l14g1-e4-w-s5",
+                  "traditional": "看",
+                  "pinyin": "kàn",
+                  "meaning": "read (repeated verb)"
+                },
+                {
+                  "id": "l14g1-e4-w-s6",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "marks the completed action"
+                },
+                {
+                  "id": "l14g1-e4-w-s7",
+                  "traditional": "兩個小時",
+                  "simplified": "两个小时",
+                  "pinyin": "liǎng ge xiǎoshí",
+                  "meaning": "two hours",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l14g1-e5",
+            "number": 5,
+            "text": {
+              "traditional": "我在英國住了三年，學英文學了一年半。",
+              "simplified": "我在英国住了三年，学英文学了一年半。",
+              "pinyin": "Wǒ zài Yīngguó zhù le sān nián, xué Yīngwén xué le yì nián bàn.",
+              "english": "I lived in the UK for three years and studied English for a year and a half.",
+              "words": [
+                {
+                  "id": "l14g1-e5-w-s1",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                },
+                {
+                  "id": "l14g1-e5-w-s2",
+                  "traditional": "在英國",
+                  "simplified": "在英国",
+                  "pinyin": "zài Yīngguó",
+                  "meaning": "in the UK"
+                },
+                {
+                  "id": "l14g1-e5-w-s3",
+                  "traditional": "住了",
+                  "pinyin": "zhù le",
+                  "meaning": "lived"
+                },
+                {
+                  "id": "l14g1-e5-w-s4",
+                  "traditional": "三年",
+                  "pinyin": "sān nián",
+                  "meaning": "three years",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l14g1-e5-w-s5",
+                  "traditional": "學英文",
+                  "simplified": "学英文",
+                  "pinyin": "xué Yīngwén",
+                  "meaning": "study English"
+                },
+                {
+                  "id": "l14g1-e5-w-s6",
+                  "traditional": "學",
+                  "simplified": "学",
+                  "pinyin": "xué",
+                  "meaning": "study (repeated verb)"
+                },
+                {
+                  "id": "l14g1-e5-w-s7",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "marks the completed action"
+                },
+                {
+                  "id": "l14g1-e5-w-s8",
+                  "traditional": "一年半",
+                  "pinyin": "yì nián bàn",
+                  "meaning": "a year and a half",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l14g1-e6",
+            "number": 6,
+            "text": {
+              "traditional": "昨天是小李的生日，我們一起去唱歌唱了一晚。",
+              "simplified": "昨天是小李的生日，我们一起去唱歌唱了一晚。",
+              "pinyin": "Zuótiān shì Xiǎo Lǐ de shēngrì, wǒmen yìqǐ qù chànggē chàng le yì wǎn.",
+              "english": "Yesterday was Xiao Li’s birthday; we went singing together all evening.",
+              "words": [
+                {
+                  "id": "l14g1-e6-w-s1",
+                  "traditional": "昨天",
+                  "pinyin": "zuótiān",
+                  "meaning": "yesterday"
+                },
+                {
+                  "id": "l14g1-e6-w-s2",
+                  "traditional": "是",
+                  "pinyin": "shì",
+                  "meaning": "was"
+                },
+                {
+                  "id": "l14g1-e6-w-s3",
+                  "traditional": "小李的生日",
+                  "pinyin": "Xiǎo Lǐ de shēngrì",
+                  "meaning": "Xiao Li’s birthday",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l14g1-e6-w-s4",
+                  "traditional": "我們",
+                  "simplified": "我们",
+                  "pinyin": "wǒmen",
+                  "meaning": "we"
+                },
+                {
+                  "id": "l14g1-e6-w-s5",
+                  "traditional": "一起去",
+                  "pinyin": "yìqǐ qù",
+                  "meaning": "go together"
+                },
+                {
+                  "id": "l14g1-e6-w-s6",
+                  "traditional": "唱歌",
+                  "pinyin": "chànggē",
+                  "meaning": "sing"
+                },
+                {
+                  "id": "l14g1-e6-w-s7",
+                  "traditional": "唱",
+                  "pinyin": "chàng",
+                  "meaning": "sing (repeated verb)"
+                },
+                {
+                  "id": "l14g1-e6-w-s8",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "marks the completed action"
+                },
+                {
+                  "id": "l14g1-e6-w-s8b",
+                  "traditional": "一晚",
+                  "pinyin": "yì wǎn",
+                  "meaning": "all evening",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l14g1-e7",
+            "number": 7,
+            "text": {
+              "traditional": "我昨天打了兩個小時的籃球。",
+              "simplified": "我昨天打了两个小时的篮球。",
+              "pinyin": "Wǒ zuótiān dǎ le liǎng ge xiǎoshí de lánqiú.",
+              "english": "I played basketball for two hours yesterday.",
+              "words": [
+                {
+                  "id": "l14g1-e7-w-s1",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                },
+                {
+                  "id": "l14g1-e7-w-s2",
+                  "traditional": "昨天",
+                  "pinyin": "zuótiān",
+                  "meaning": "yesterday"
+                },
+                {
+                  "id": "l14g1-e7-w-s3",
+                  "traditional": "打了",
+                  "pinyin": "dǎ le",
+                  "meaning": "played"
+                },
+                {
+                  "id": "l14g1-e7-w-s4",
+                  "traditional": "兩個小時",
+                  "simplified": "两个小时",
+                  "pinyin": "liǎng ge xiǎoshí",
+                  "meaning": "two hours"
+                },
+                {
+                  "id": "l14g1-e7-w-s5",
+                  "traditional": "的",
+                  "pinyin": "de",
+                  "meaning": "links the duration to the noun"
+                },
+                {
+                  "id": "l14g1-e7-w-s6",
+                  "traditional": "籃球",
+                  "simplified": "篮球",
+                  "pinyin": "lánqiú",
+                  "meaning": "basketball",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l14g1-e8",
+            "number": 8,
+            "text": {
+              "traditional": "他小的時候在美國學了一年的中文。",
+              "simplified": "他小的时候在美国学了一年的中文。",
+              "pinyin": "Tā xiǎo de shíhòu zài Měiguó xué le yì nián de Zhōngwén.",
+              "english": "When he was little, he studied Chinese in the US for a year.",
+              "words": [
+                {
+                  "id": "l14g1-e8-w-s1",
+                  "traditional": "他小的時候",
+                  "simplified": "他小的时候",
+                  "pinyin": "tā xiǎo de shíhòu",
+                  "meaning": "when he was little"
+                },
+                {
+                  "id": "l14g1-e8-w-s2",
+                  "traditional": "在美國",
+                  "simplified": "在美国",
+                  "pinyin": "zài Měiguó",
+                  "meaning": "in the US"
+                },
+                {
+                  "id": "l14g1-e8-w-s3",
+                  "traditional": "學了",
+                  "simplified": "学了",
+                  "pinyin": "xué le",
+                  "meaning": "studied"
+                },
+                {
+                  "id": "l14g1-e8-w-s4",
+                  "traditional": "一年的",
+                  "pinyin": "yì nián de",
+                  "meaning": "one year of"
+                },
+                {
+                  "id": "l14g1-e8-w-s5",
+                  "traditional": "中文",
+                  "pinyin": "Zhōngwén",
+                  "meaning": "Chinese",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l14g1-e9",
+            "number": 9,
+            "text": {
+              "traditional": "我們上個週末在學校附近騎了兩個小時的腳踏車。",
+              "simplified": "我们上个周末在学校附近骑了两个小时的脚踏车。",
+              "pinyin": "Wǒmen shàng ge zhōumò zài xuéxiào fùjìn qí le liǎng ge xiǎoshí de jiǎotàchē.",
+              "english": "Last weekend we rode bicycles near the school for two hours.",
+              "words": [
+                {
+                  "id": "l14g1-e9-w-s1",
+                  "traditional": "我們",
+                  "simplified": "我们",
+                  "pinyin": "wǒmen",
+                  "meaning": "we"
+                },
+                {
+                  "id": "l14g1-e9-w-s2",
+                  "traditional": "上個週末",
+                  "simplified": "上个周末",
+                  "pinyin": "shàng ge zhōumò",
+                  "meaning": "last weekend"
+                },
+                {
+                  "id": "l14g1-e9-w-s3",
+                  "traditional": "在學校附近",
+                  "simplified": "在学校附近",
+                  "pinyin": "zài xuéxiào fùjìn",
+                  "meaning": "near school"
+                },
+                {
+                  "id": "l14g1-e9-w-s4",
+                  "traditional": "騎了",
+                  "simplified": "骑了",
+                  "pinyin": "qí le",
+                  "meaning": "rode"
+                },
+                {
+                  "id": "l14g1-e9-w-s5",
+                  "traditional": "兩個小時",
+                  "simplified": "两个小时",
+                  "pinyin": "liǎng ge xiǎoshí",
+                  "meaning": "two hours"
+                },
+                {
+                  "id": "l14g1-e9-w-s6",
+                  "traditional": "的",
+                  "pinyin": "de",
+                  "meaning": "links the duration to the noun"
+                },
+                {
+                  "id": "l14g1-e9-w-s7",
+                  "traditional": "腳踏車",
+                  "simplified": "脚踏车",
+                  "pinyin": "jiǎotàchē",
+                  "meaning": "bicycle",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
           }
         ],
         "exerciseTitle": "Close the memory timeline",
@@ -7629,7 +9613,8 @@
             "correctFeedback": "Yesterday shows the session is finished.",
             "repairFeedback": "Use action + 了 + time length."
           }
-        ]
+        ],
+        "exerciseNote": "The book answers three questions and describes six pictures with single-了 durations on printed pages 319–321; these model answers follow the printed items."
       },
       {
         "bookId": 1,
@@ -7648,7 +9633,7 @@
           324
         ],
         "audioReference": "14-1-3",
-        "explanation": "The first 了 follows the action. The final 了 shows that the time reaches now.",
+        "explanation": "The first 了 follows the action. The final 了 shows that the time reaches now — the action probably continues. Do not put both 了 before the time word.",
         "lessonWorld": {
           "kind": "countdown",
           "eyebrow": "This New Year",
@@ -8279,7 +10264,7 @@
             "id": "b1l14-g02-glossary-97",
             "traditional": "喜歡",
             "simplified": "喜欢",
-            "pinyin": "xǐhuan",
+            "pinyin": "xǐhuān",
             "meaning": "like"
           },
           {
@@ -8935,7 +10920,7 @@
                 "suffix": "。"
               }
             ],
-            "english": "I have lived here for half a year."
+            "english": "I have lived for half a year."
           },
           {
             "id": "l14g2-p2",
@@ -8987,40 +10972,109 @@
                 "traditional": "我們",
                 "simplified": "我们",
                 "pinyin": "wǒmen",
-                "meaning": "we; us"
+                "meaning": "we"
               }
             ],
             "grammar": [
               {
+                "id": "l14g2-p3-g0",
+                "traditional": "已經",
+                "simplified": "已经",
+                "pinyin": "yǐjīng",
+                "meaning": "already"
+              },
+              {
                 "id": "l14g2-p3-g1",
-                "traditional": "踢足球",
-                "pinyin": "tī zúqiú",
-                "meaning": "play soccer"
-              },
-              {
-                "id": "l14g2-p3-g2",
-                "traditional": "了",
-                "pinyin": "le",
-                "meaning": "ending word: something is done or has changed"
-              },
-              {
-                "id": "l14g2-p3-g3",
-                "traditional": "一個小時",
-                "simplified": "一个小时",
-                "pinyin": "yí ge xiǎoshí",
-                "meaning": "one hour"
+                "traditional": "踢了",
+                "pinyin": "tī le",
+                "meaning": "have played"
               }
             ],
             "complement": [
               {
                 "id": "l14g2-p3-c1",
+                "traditional": "一個小時",
+                "simplified": "一个小时",
+                "pinyin": "yí ge xiǎoshí",
+                "meaning": "one hour"
+              },
+              {
+                "id": "l14g2-p3-c2",
+                "traditional": "的",
+                "pinyin": "de",
+                "meaning": "links the duration to the noun"
+              },
+              {
+                "id": "l14g2-p3-c3",
+                "traditional": "足球",
+                "pinyin": "zúqiú",
+                "meaning": "soccer"
+              },
+              {
+                "id": "l14g2-p3-c4",
                 "traditional": "了",
                 "pinyin": "le",
-                "meaning": "ending word: something is done or has changed",
+                "meaning": "shows the time reaches now",
                 "suffix": "。"
               }
             ],
-            "english": "We have played soccer for an hour."
+            "english": "We have played soccer for an hour now."
+          },
+          {
+            "id": "l14g2-p4",
+            "subject": [
+              {
+                "id": "l14g2-p4-s1",
+                "traditional": "他",
+                "pinyin": "tā",
+                "meaning": "he"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l14g2-p4-g0",
+                "traditional": "已經",
+                "simplified": "已经",
+                "pinyin": "yǐjīng",
+                "meaning": "already"
+              },
+              {
+                "id": "l14g2-p4-g1",
+                "traditional": "上課",
+                "simplified": "上课",
+                "pinyin": "shàngkè",
+                "meaning": "attend class"
+              },
+              {
+                "id": "l14g2-p4-g2",
+                "traditional": "上",
+                "pinyin": "shàng",
+                "meaning": "attend (repeated verb)"
+              },
+              {
+                "id": "l14g2-p4-g3",
+                "traditional": "了",
+                "pinyin": "le",
+                "meaning": "marks the completed action"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l14g2-p4-c1",
+                "traditional": "五個小時",
+                "simplified": "五个小时",
+                "pinyin": "wǔ ge xiǎoshí",
+                "meaning": "five hours"
+              },
+              {
+                "id": "l14g2-p4-c2",
+                "traditional": "了",
+                "pinyin": "le",
+                "meaning": "shows the time reaches now",
+                "suffix": "。"
+              }
+            ],
+            "english": "He has already attended class for five hours now."
           }
         ],
         "confusion": {
@@ -9199,7 +11253,7 @@
         },
         "ruleContrast": {
           "title": "Choose by context, not by counting 了",
-          "description": "The one-了 sentence is not wrong by itself. The two-了 form directly shows that the action is still going on.",
+          "description": "Choose by context, not by counting 了. The one-了 sentence says the period is over; the two-了 form shows the time reaching now (and probably continuing).",
           "examples": [
             {
               "id": "l14g2-c1",
@@ -9207,7 +11261,7 @@
               "label": "Reports a period",
               "traditional": "我在台灣住了半年。",
               "simplified": "我在台湾住了半年。",
-              "explanation": "This tells about a six-month stay. The rest of the story decides whether it continues."
+              "explanation": "This tells about a six-month stay that is over — it does not continue now."
             },
             {
               "id": "l14g2-c2",
@@ -9290,11 +11344,17 @@
                   "meaning": "he; him"
                 },
                 {
+                  "id": "l14g2-e2-already",
+                  "traditional": "已經",
+                  "simplified": "已经",
+                  "pinyin": "yǐjīng",
+                  "meaning": "already"
+                },
+                {
                   "id": "l14g2-e2-word-2",
                   "traditional": "睡",
                   "pinyin": "shuì",
-                  "meaning": "sleep",
-                  "prefix": "已經"
+                  "meaning": "sleep"
                 },
                 {
                   "id": "l14g2-e2-word-3",
@@ -9416,11 +11476,17 @@
                   "meaning": "we; us"
                 },
                 {
+                  "id": "l14g2-e4-played",
+                  "traditional": "已經踢",
+                  "simplified": "已经踢",
+                  "pinyin": "yǐjīng tī",
+                  "meaning": "have played"
+                },
+                {
                   "id": "l14g2-e4-word-2",
                   "traditional": "了",
                   "pinyin": "le",
-                  "meaning": "ending word: something is done or has changed",
-                  "prefix": "已經踢"
+                  "meaning": "ending word: something is done or has changed"
                 },
                 {
                   "id": "l14g2-e4-word-3",
@@ -9458,6 +11524,387 @@
                 }
               ]
             }
+          },
+          {
+            "id": "l14g2-e5",
+            "number": 5,
+            "text": {
+              "traditional": "我跑了一個小時了，覺得又熱又渴。",
+              "simplified": "我跑了一个小时了，觉得又热又渴。",
+              "pinyin": "Wǒ pǎo le yí ge xiǎoshí le, juéde yòu rè yòu kě.",
+              "english": "I have been running for an hour; I feel hot and thirsty.",
+              "words": [
+                {
+                  "id": "l14g2-e5-w-s1",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                },
+                {
+                  "id": "l14g2-e5-w-s2",
+                  "traditional": "跑了",
+                  "pinyin": "pǎo le",
+                  "meaning": "have run"
+                },
+                {
+                  "id": "l14g2-e5-w-s3",
+                  "traditional": "一個小時",
+                  "simplified": "一个小时",
+                  "pinyin": "yí ge xiǎoshí",
+                  "meaning": "one hour"
+                },
+                {
+                  "id": "l14g2-e5-w-s4",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "shows the time reaches now",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l14g2-e5-w-s5",
+                  "traditional": "覺得",
+                  "simplified": "觉得",
+                  "pinyin": "juéde",
+                  "meaning": "feel"
+                },
+                {
+                  "id": "l14g2-e5-w-s6",
+                  "traditional": "又熱又渴",
+                  "simplified": "又热又渴",
+                  "pinyin": "yòu rè yòu kě",
+                  "meaning": "both hot and thirsty",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l14g2-e6",
+            "number": 6,
+            "text": {
+              "traditional": "我已經看書看了兩個小時了，想休息了。",
+              "simplified": "我已经看书看了两个小时了，想休息了。",
+              "pinyin": "Wǒ yǐjīng kàn shū kàn le liǎng ge xiǎoshí le, xiǎng xiūxi le.",
+              "english": "I have been reading for two hours; I want to rest.",
+              "words": [
+                {
+                  "id": "l14g2-e6-w-s1",
+                  "traditional": "我已經",
+                  "simplified": "我已经",
+                  "pinyin": "wǒ yǐjīng",
+                  "meaning": "I already"
+                },
+                {
+                  "id": "l14g2-e6-w-s2",
+                  "traditional": "看書",
+                  "simplified": "看书",
+                  "pinyin": "kàn shū",
+                  "meaning": "read books"
+                },
+                {
+                  "id": "l14g2-e6-w-s3",
+                  "traditional": "看",
+                  "pinyin": "kàn",
+                  "meaning": "read (repeated verb)"
+                },
+                {
+                  "id": "l14g2-e6-w-s4",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "marks the completed action"
+                },
+                {
+                  "id": "l14g2-e6-w-s5",
+                  "traditional": "兩個小時",
+                  "simplified": "两个小时",
+                  "pinyin": "liǎng ge xiǎoshí",
+                  "meaning": "two hours"
+                },
+                {
+                  "id": "l14g2-e6-w-s6",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "shows the time reaches now",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l14g2-e6-w-s7",
+                  "traditional": "想休息了",
+                  "pinyin": "xiǎng xiūxi le",
+                  "meaning": "want to rest now",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l14g2-e7",
+            "number": 7,
+            "text": {
+              "traditional": "媽媽和王太太聊天聊了一個小時了。",
+              "simplified": "妈妈和王太太聊天聊了一个小时了。",
+              "pinyin": "Māma hé Wáng tàitai liáotiān liáo le yí ge xiǎoshí le.",
+              "english": "Mom and Mrs. Wang have been chatting for an hour now.",
+              "words": [
+                {
+                  "id": "l14g2-e7-w-s1",
+                  "traditional": "媽媽",
+                  "simplified": "妈妈",
+                  "pinyin": "māma",
+                  "meaning": "mom"
+                },
+                {
+                  "id": "l14g2-e7-w-s2",
+                  "traditional": "和",
+                  "pinyin": "hé",
+                  "meaning": "and"
+                },
+                {
+                  "id": "l14g2-e7-w-s3",
+                  "traditional": "王太太",
+                  "pinyin": "Wáng tàitai",
+                  "meaning": "Mrs. Wang"
+                },
+                {
+                  "id": "l14g2-e7-w-s4",
+                  "traditional": "聊天",
+                  "pinyin": "liáotiān",
+                  "meaning": "chat"
+                },
+                {
+                  "id": "l14g2-e7-w-s5",
+                  "traditional": "聊",
+                  "pinyin": "liáo",
+                  "meaning": "chat (repeated verb)"
+                },
+                {
+                  "id": "l14g2-e7-w-s6",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "marks the completed action"
+                },
+                {
+                  "id": "l14g2-e7-w-s7",
+                  "traditional": "一個小時",
+                  "simplified": "一个小时",
+                  "pinyin": "yí ge xiǎoshí",
+                  "meaning": "one hour"
+                },
+                {
+                  "id": "l14g2-e7-w-s8",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "shows the time reaches now",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l14g2-e8",
+            "number": 8,
+            "text": {
+              "traditional": "他學中文學了兩年了，可是說得不太好。",
+              "simplified": "他学中文学了两年了，可是说得不太好。",
+              "pinyin": "Tā xué Zhōngwén xué le liǎng nián le, kěshì shuō de bú tài hǎo.",
+              "english": "He has been studying Chinese for two years, but he does not speak very well.",
+              "words": [
+                {
+                  "id": "l14g2-e8-w-s1",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                },
+                {
+                  "id": "l14g2-e8-w-s2",
+                  "traditional": "學中文",
+                  "simplified": "学中文",
+                  "pinyin": "xué Zhōngwén",
+                  "meaning": "study Chinese"
+                },
+                {
+                  "id": "l14g2-e8-w-s3",
+                  "traditional": "學",
+                  "simplified": "学",
+                  "pinyin": "xué",
+                  "meaning": "study (repeated verb)"
+                },
+                {
+                  "id": "l14g2-e8-w-s4",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "marks the completed action"
+                },
+                {
+                  "id": "l14g2-e8-w-s5",
+                  "traditional": "兩年",
+                  "simplified": "两年",
+                  "pinyin": "liǎng nián",
+                  "meaning": "two years"
+                },
+                {
+                  "id": "l14g2-e8-w-s6",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "shows the time reaches now",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l14g2-e8-w-s7",
+                  "traditional": "可是",
+                  "pinyin": "kěshì",
+                  "meaning": "but"
+                },
+                {
+                  "id": "l14g2-e8-w-s8",
+                  "traditional": "說得不太好",
+                  "pinyin": "shuō de bú tài hǎo",
+                  "meaning": "does not speak very well",
+                  "suffix": "。",
+                  "simplified": "说得不太好"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l14g2-e9",
+            "number": 9,
+            "text": {
+              "traditional": "老師教了一天的書了，現在一定很累吧？",
+              "simplified": "老师教了一天的书了，现在一定很累吧？",
+              "pinyin": "Lǎoshī jiāo le yì tiān de shū le, xiànzài yídìng hěn lèi ba?",
+              "english": "The teacher has taught all day; she must be very tired now.",
+              "words": [
+                {
+                  "id": "l14g2-e9-w-s1",
+                  "traditional": "老師",
+                  "simplified": "老师",
+                  "pinyin": "lǎoshī",
+                  "meaning": "teacher"
+                },
+                {
+                  "id": "l14g2-e9-w-s2",
+                  "traditional": "教了",
+                  "pinyin": "jiāo le",
+                  "meaning": "has taught"
+                },
+                {
+                  "id": "l14g2-e9-w-s3",
+                  "traditional": "一天的",
+                  "pinyin": "yì tiān de",
+                  "meaning": "one day of"
+                },
+                {
+                  "id": "l14g2-e9-w-s4",
+                  "traditional": "書",
+                  "simplified": "书",
+                  "pinyin": "shū",
+                  "meaning": "books; lessons"
+                },
+                {
+                  "id": "l14g2-e9-w-s5",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "shows the time reaches now",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l14g2-e9-w-s6",
+                  "traditional": "現在",
+                  "simplified": "现在",
+                  "pinyin": "xiànzài",
+                  "meaning": "now"
+                },
+                {
+                  "id": "l14g2-e9-w-s7",
+                  "traditional": "一定很累吧",
+                  "pinyin": "yídìng hěn lèi ba",
+                  "meaning": "must be very tired",
+                  "suffix": "？"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l14g2-e10",
+            "number": 10,
+            "text": {
+              "traditional": "台北 101 真遠，我們已經坐了一個小時的公車了，還沒到。",
+              "simplified": "台北 101 真远，我们已经坐了一个小时的公车了，还没到。",
+              "pinyin": "Táiběi 101 zhēn yuǎn, wǒmen yǐjīng zuò le yí ge xiǎoshí de gōngchē le, hái méi dào.",
+              "english": "Taipei 101 is really far; we have been on the bus for an hour and still have not arrived.",
+              "words": [
+                {
+                  "id": "l14g2-e10-w-s1",
+                  "traditional": "台北 101",
+                  "simplified": "台北 101",
+                  "pinyin": "Táiběi 101",
+                  "meaning": "Taipei 101"
+                },
+                {
+                  "id": "l14g2-e10-w-s2",
+                  "traditional": "真遠",
+                  "simplified": "真远",
+                  "pinyin": "zhēn yuǎn",
+                  "meaning": "really far",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l14g2-e10-w-s3",
+                  "traditional": "我們已經",
+                  "simplified": "我们已经",
+                  "pinyin": "wǒmen yǐjīng",
+                  "meaning": "we already"
+                },
+                {
+                  "id": "l14g2-e10-w-s4",
+                  "traditional": "坐了",
+                  "pinyin": "zuò le",
+                  "meaning": "have ridden"
+                },
+                {
+                  "id": "l14g2-e10-w-s5",
+                  "traditional": "一個小時",
+                  "simplified": "一个小时",
+                  "pinyin": "yí ge xiǎoshí",
+                  "meaning": "one hour"
+                },
+                {
+                  "id": "l14g2-e10-w-s6",
+                  "traditional": "的",
+                  "pinyin": "de",
+                  "meaning": "links the duration to the noun"
+                },
+                {
+                  "id": "l14g2-e10-w-s7",
+                  "traditional": "公車",
+                  "simplified": "公车",
+                  "pinyin": "gōngchē",
+                  "meaning": "bus"
+                },
+                {
+                  "id": "l14g2-e10-w-s8",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "shows the time reaches now",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l14g2-e10-w-s9",
+                  "traditional": "還沒到",
+                  "simplified": "还没到",
+                  "pinyin": "hái méi dào",
+                  "meaning": "still have not arrived",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
           }
         ],
         "exerciseTitle": "Touch the NOW point",
@@ -9583,7 +12030,8 @@
             "correctFeedback": "The time already spent is a reason to rest now.",
             "repairFeedback": "Use action + 了 + time + 了."
           }
-        ]
+        ],
+        "exerciseNote": "The book answers three questions and describes six timed pictures with double 了 on printed pages 322–324; these model answers follow the printed items."
       }
     ],
     "dialogue": {
@@ -9894,7 +12342,7 @@
           "text": {
             "traditional": "十二月三十一號的晚上，很多城市都有跨年晚會，我最喜歡的是台北101的演唱會，有很多表演，又熱鬧又好看。",
             "simplified": "十二月三十一号的晚上，很多城市都有跨年晚会，我最喜欢的是台北101的演唱会，有很多表演，又热闹又好看。",
-            "pinyin": "Shí’èr yuè sānshíyī hào de wǎnshang, hěn duō chéngshì dōu yǒu kuànián wǎnhuì, wǒ zuì xǐhuan de shì Táiběi 101 de yǎnchànghuì, yǒu hěn duō biǎoyǎn, yòu rènao yòu hǎokàn.",
+            "pinyin": "Shí’èr yuè sānshíyī hào de wǎnshang, hěn duō chéngshì dōu yǒu kuànián wǎnhuì, wǒ zuì xǐhuān de shì Táiběi 101 de yǎnchànghuì, yǒu hěn duō biǎoyǎn, yòu rènao yòu hǎokàn.",
             "english": "Many cities in Taiwan hold New Year’s Eve celebration events on the evening of December 31st. My favorite is the concert at Taipei 101. There are plenty of performances. It’s bustling and enjoyable.",
             "words": [
               {
@@ -9977,7 +12425,7 @@
                 "id": "l14d1-3-word-13",
                 "traditional": "喜歡",
                 "simplified": "喜欢",
-                "pinyin": "xǐhuan",
+                "pinyin": "xǐhuān",
                 "meaning": "like"
               },
               {
@@ -10615,7 +13063,8 @@
                 "traditional": "請",
                 "pinyin": "qǐng",
                 "meaning": "please",
-                "prefix": "，"
+                "prefix": "，",
+                "simplified": "请"
               },
               {
                 "id": "l14d1-8-word-3",
@@ -10813,7 +13262,7 @@
           333
         ],
         "audioReference": "14-2-3",
-        "explanation": "Put the thing you are describing before 比. Put the thing you compare it with after 比. End with the describing word or the difference.",
+        "explanation": "Put the thing you are describing before 比 and the thing you compare it with after 比. Always finish with a describing word, or with a real difference like 兩歲 or 五公分. 多了／得多 shows a big difference; 一點兒 shows a small one.",
         "lessonWorld": {
           "kind": "countdown",
           "eyebrow": "New Year opinion wall",
@@ -11444,7 +13893,7 @@
             "id": "b1l14-g03-glossary-97",
             "traditional": "喜歡",
             "simplified": "喜欢",
-            "pinyin": "xǐhuan",
+            "pinyin": "xǐhuān",
             "meaning": "like"
           },
           {
@@ -12125,13 +14574,13 @@
             "complement": [
               {
                 "id": "l14g3-p2-c1",
-                "traditional": "快",
-                "pinyin": "kuài",
-                "meaning": "fast",
+                "traditional": "快多了",
+                "pinyin": "kuài duō le",
+                "meaning": "much faster",
                 "suffix": "。"
               }
             ],
-            "english": "Flying is faster than taking a train."
+            "english": "Flying is much faster than taking a train."
           },
           {
             "id": "l14g3-p3",
@@ -12173,6 +14622,271 @@
               }
             ],
             "english": "This year is much more interesting than before."
+          },
+          {
+            "id": "l14g3-p4",
+            "subject": [
+              {
+                "id": "l14g3-p4-s1",
+                "traditional": "這件衣服",
+                "pinyin": "zhè jiàn yīfu",
+                "meaning": "this item of clothing",
+                "simplified": "这件衣服"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l14g3-p4-g1",
+                "traditional": "比",
+                "pinyin": "bǐ",
+                "meaning": "compared with"
+              },
+              {
+                "id": "l14g3-p4-g2",
+                "traditional": "那件衣服",
+                "pinyin": "nà jiàn yīfu",
+                "meaning": "that item of clothing"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l14g3-p4-c1",
+                "traditional": "長",
+                "pinyin": "cháng",
+                "meaning": "long",
+                "simplified": "长"
+              },
+              {
+                "id": "l14g3-p4-c2",
+                "traditional": "一點兒",
+                "simplified": "一点儿",
+                "pinyin": "yìdiǎnr",
+                "meaning": "a little",
+                "suffix": "。"
+              }
+            ],
+            "english": "This piece of clothing is a little longer than that one."
+          },
+          {
+            "id": "l14g3-p5",
+            "subject": [
+              {
+                "id": "l14g3-p5-s1",
+                "traditional": "他",
+                "pinyin": "tā",
+                "meaning": "he"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l14g3-p5-g1",
+                "traditional": "比",
+                "pinyin": "bǐ",
+                "meaning": "compared with"
+              },
+              {
+                "id": "l14g3-p5-g2",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "me"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l14g3-p5-c1",
+                "traditional": "大",
+                "pinyin": "dà",
+                "meaning": "older"
+              },
+              {
+                "id": "l14g3-p5-c2",
+                "traditional": "兩歲",
+                "simplified": "两岁",
+                "pinyin": "liǎng suì",
+                "meaning": "two years",
+                "suffix": "。"
+              }
+            ],
+            "english": "He is two years older than me."
+          },
+          {
+            "id": "l14g3-p6",
+            "subject": [
+              {
+                "id": "l14g3-p6-subj-1",
+                "traditional": "你",
+                "pinyin": "nǐ",
+                "meaning": "you"
+              },
+              {
+                "id": "l14g3-p6-subj-2",
+                "traditional": "來得",
+                "simplified": "来得",
+                "pinyin": "lái de",
+                "meaning": "come (V + 得)"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l14g3-p6-gram-1",
+                "traditional": "比",
+                "pinyin": "bǐ",
+                "meaning": "compared with"
+              },
+              {
+                "id": "l14g3-p6-gram-2",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "me"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l14g3-p6-comp-1",
+                "traditional": "早",
+                "pinyin": "zǎo",
+                "meaning": "early",
+                "suffix": "。"
+              }
+            ],
+            "english": "You come earlier than I do."
+          },
+          {
+            "id": "l14g3-p7",
+            "subject": [
+              {
+                "id": "l14g3-p7-subj-1",
+                "traditional": "他",
+                "pinyin": "tā",
+                "meaning": "he"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l14g3-p7-gram-1",
+                "traditional": "比",
+                "pinyin": "bǐ",
+                "meaning": "compared with"
+              },
+              {
+                "id": "l14g3-p7-gram-2",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "me"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l14g3-p7-comp-1",
+                "traditional": "走得",
+                "pinyin": "zǒu de",
+                "meaning": "walk (V + 得)"
+              },
+              {
+                "id": "l14g3-p7-comp-2",
+                "traditional": "快",
+                "pinyin": "kuài",
+                "meaning": "fast",
+                "suffix": "。"
+              }
+            ],
+            "english": "He walks faster than I do."
+          },
+          {
+            "id": "l14g3-p8",
+            "subject": [
+              {
+                "id": "l14g3-p8-subj-1",
+                "traditional": "姊姊",
+                "pinyin": "jiějie",
+                "meaning": "older sister"
+              },
+              {
+                "id": "l14g3-p8-subj-2",
+                "traditional": "唱歌",
+                "pinyin": "chànggē",
+                "meaning": "sing"
+              },
+              {
+                "id": "l14g3-p8-subj-3",
+                "traditional": "唱得",
+                "pinyin": "chàng de",
+                "meaning": "sing (repeated verb + 得)"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l14g3-p8-gram-1",
+                "traditional": "比",
+                "pinyin": "bǐ",
+                "meaning": "compared with"
+              },
+              {
+                "id": "l14g3-p8-gram-2",
+                "traditional": "妹妹",
+                "pinyin": "mèimei",
+                "meaning": "younger sister"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l14g3-p8-comp-1",
+                "traditional": "好",
+                "pinyin": "hǎo",
+                "meaning": "better",
+                "suffix": "。"
+              }
+            ],
+            "english": "My older sister sings better than my younger sister."
+          },
+          {
+            "id": "l14g3-p9",
+            "subject": [
+              {
+                "id": "l14g3-p9-subj-1",
+                "traditional": "爸爸",
+                "pinyin": "bàba",
+                "meaning": "dad"
+              },
+              {
+                "id": "l14g3-p9-subj-2",
+                "traditional": "開車",
+                "simplified": "开车",
+                "pinyin": "kāichē",
+                "meaning": "drive"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l14g3-p9-gram-1",
+                "traditional": "比",
+                "pinyin": "bǐ",
+                "meaning": "compared with"
+              },
+              {
+                "id": "l14g3-p9-gram-2",
+                "traditional": "哥哥",
+                "pinyin": "gēge",
+                "meaning": "older brother"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l14g3-p9-comp-1",
+                "traditional": "開得",
+                "simplified": "开得",
+                "pinyin": "kāi de",
+                "meaning": "drive (repeated verb + 得)"
+              },
+              {
+                "id": "l14g3-p9-comp-2",
+                "traditional": "好",
+                "pinyin": "hǎo",
+                "meaning": "better",
+                "suffix": "。"
+              }
+            ],
+            "english": "Dad drives better than my older brother."
           }
         ],
         "confusion": {
@@ -12358,7 +15072,7 @@
         },
         "ruleContrast": {
           "title": "Do not add 很 to the comparison",
-          "description": "比 already makes the comparison. Add 一點 or 多了 to show how big the difference is.",
+          "description": "比 already makes the comparison. Add 一點兒 for a small difference and 多了／得多 for a big one.",
           "examples": [
             {
               "id": "l14g3-c1",
@@ -12469,13 +15183,19 @@
                   "prefix": "件"
                 },
                 {
+                  "id": "l14g3-e2-long",
+                  "traditional": "長",
+                  "simplified": "长",
+                  "pinyin": "cháng",
+                  "meaning": "long"
+                },
+                {
                   "id": "l14g3-e2-word-6",
-                  "traditional": "一點",
-                  "simplified": "一点",
-                  "pinyin": "yìdiǎn",
+                  "traditional": "一點兒",
+                  "simplified": "一点儿",
+                  "pinyin": "yìdiǎnr",
                   "meaning": "a little",
-                  "prefix": "長",
-                  "suffix": "兒。"
+                  "suffix": "。"
                 }
               ]
             }
@@ -12531,38 +15251,78 @@
             "number": 4,
             "teachingNote": "An exact difference follows the quality.",
             "text": {
-              "traditional": "我弟弟比我高五公分。",
-              "simplified": "我弟弟比我高五公分。",
-              "pinyin": "Wǒ dìdi bǐ wǒ gāo wǔ gōngfēn.",
-              "english": "My younger brother is five centimeters taller than me.",
+              "traditional": "A：你哥哥比你高嗎？ B：不，我哥哥比我矮五公分。",
+              "simplified": "A：你哥哥比你高吗？ B：不，我哥哥比我矮五公分。",
+              "pinyin": "A: Nǐ gēge bǐ nǐ gāo ma? B: Bù, wǒ gēge bǐ wǒ ǎi wǔ gōngfēn.",
+              "english": "A: Is your older brother taller than you? B: No, my older brother is five centimeters shorter than me.",
               "words": [
                 {
-                  "id": "l14g3-e4-word-1",
-                  "traditional": "我",
-                  "pinyin": "wǒ",
-                  "meaning": "I; me"
+                  "id": "l14g3-e4-w1",
+                  "traditional": "你哥哥",
+                  "pinyin": "nǐ gēge",
+                  "meaning": "your older brother",
+                  "prefix": "A："
                 },
                 {
-                  "id": "l14g3-e4-word-2",
+                  "id": "l14g3-e4-w2",
                   "traditional": "比",
                   "pinyin": "bǐ",
-                  "meaning": "compared with",
-                  "prefix": "弟弟"
+                  "meaning": "compared with"
                 },
                 {
-                  "id": "l14g3-e4-word-3",
-                  "traditional": "我",
-                  "pinyin": "wǒ",
-                  "meaning": "I; me"
+                  "id": "l14g3-e4-w3",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you"
                 },
                 {
-                  "id": "l14g3-e4-word-4",
+                  "id": "l14g3-e4-w4",
                   "traditional": "高",
                   "pinyin": "gāo",
                   "meaning": "tall"
                 },
                 {
-                  "id": "l14g3-e4-word-5",
+                  "id": "l14g3-e4-w5",
+                  "traditional": "嗎",
+                  "pinyin": "ma",
+                  "meaning": "yes/no question ending",
+                  "suffix": "？",
+                  "simplified": "吗"
+                },
+                {
+                  "id": "l14g3-e4-w6",
+                  "traditional": "不",
+                  "pinyin": "bù",
+                  "meaning": "no",
+                  "prefix": "B：",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l14g3-e4-w7",
+                  "traditional": "我哥哥",
+                  "pinyin": "wǒ gēge",
+                  "meaning": "my older brother"
+                },
+                {
+                  "id": "l14g3-e4-w8",
+                  "traditional": "比",
+                  "pinyin": "bǐ",
+                  "meaning": "compared with"
+                },
+                {
+                  "id": "l14g3-e4-w9",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "me"
+                },
+                {
+                  "id": "l14g3-e4-w10",
+                  "traditional": "矮",
+                  "pinyin": "ǎi",
+                  "meaning": "short"
+                },
+                {
+                  "id": "l14g3-e4-w11",
                   "traditional": "五公分",
                   "pinyin": "wǔ gōngfēn",
                   "meaning": "five centimeters",
@@ -12570,6 +15330,278 @@
                 }
               ]
             }
+          },
+          {
+            "id": "l14g3-e5",
+            "number": 5,
+            "text": {
+              "traditional": "我覺得學中文比學科學容易多了。",
+              "simplified": "我觉得学中文比学科学容易多了。",
+              "pinyin": "Wǒ juéde xué Zhōngwén bǐ xué kēxué róngyì duō le.",
+              "english": "I think studying Chinese is much easier than studying science.",
+              "words": [
+                {
+                  "id": "l14g3-e5-w1",
+                  "traditional": "我覺得",
+                  "simplified": "我觉得",
+                  "pinyin": "wǒ juéde",
+                  "meaning": "I think"
+                },
+                {
+                  "id": "l14g3-e5-w2",
+                  "traditional": "學中文",
+                  "simplified": "学中文",
+                  "pinyin": "xué Zhōngwén",
+                  "meaning": "study Chinese"
+                },
+                {
+                  "id": "l14g3-e5-w3",
+                  "traditional": "比",
+                  "pinyin": "bǐ",
+                  "meaning": "compared with"
+                },
+                {
+                  "id": "l14g3-e5-w4",
+                  "traditional": "學科學",
+                  "simplified": "学科学",
+                  "pinyin": "xué kēxué",
+                  "meaning": "study science"
+                },
+                {
+                  "id": "l14g3-e5-w5",
+                  "traditional": "容易",
+                  "pinyin": "róngyì",
+                  "meaning": "easy"
+                },
+                {
+                  "id": "l14g3-e5-w6",
+                  "traditional": "多了",
+                  "pinyin": "duō le",
+                  "meaning": "much more",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l14g3-e6",
+            "number": 6,
+            "text": {
+              "traditional": "我覺得外面的餐廳做的菜比學校的好吃。",
+              "simplified": "我觉得外面的餐厅做的菜比学校的好吃。",
+              "pinyin": "Wǒ juéde wàimiàn de cāntīng zuò de cài bǐ xuéxiào de hǎochī.",
+              "english": "I think the food made by restaurants outside is tastier than the school’s.",
+              "words": [
+                {
+                  "id": "l14g3-e6-w1",
+                  "traditional": "我覺得",
+                  "simplified": "我觉得",
+                  "pinyin": "wǒ juéde",
+                  "meaning": "I think"
+                },
+                {
+                  "id": "l14g3-e6-w2",
+                  "traditional": "外面的餐廳做的菜",
+                  "simplified": "外面的餐厅做的菜",
+                  "pinyin": "wàimiàn de cāntīng zuò de cài",
+                  "meaning": "food made by restaurants outside"
+                },
+                {
+                  "id": "l14g3-e6-w3",
+                  "traditional": "比",
+                  "pinyin": "bǐ",
+                  "meaning": "compared with"
+                },
+                {
+                  "id": "l14g3-e6-w4",
+                  "traditional": "學校的",
+                  "simplified": "学校的",
+                  "pinyin": "xuéxiào de",
+                  "meaning": "the school’s"
+                },
+                {
+                  "id": "l14g3-e6-w5",
+                  "traditional": "好吃",
+                  "pinyin": "hǎochī",
+                  "meaning": "tasty",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l14g3-e7",
+            "number": 7,
+            "text": {
+              "traditional": "他比我高，可是跑得比我慢。",
+              "simplified": "他比我高，可是跑得比我慢。",
+              "pinyin": "Tā bǐ wǒ gāo, kěshì pǎo de bǐ wǒ màn.",
+              "english": "He is taller than me, but he runs slower than me.",
+              "words": [
+                {
+                  "id": "l14g3-e7-w1",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                },
+                {
+                  "id": "l14g3-e7-w2",
+                  "traditional": "比",
+                  "pinyin": "bǐ",
+                  "meaning": "compared with"
+                },
+                {
+                  "id": "l14g3-e7-w3",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "me"
+                },
+                {
+                  "id": "l14g3-e7-w4",
+                  "traditional": "高",
+                  "pinyin": "gāo",
+                  "meaning": "tall",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l14g3-e7-w5",
+                  "traditional": "可是",
+                  "pinyin": "kěshì",
+                  "meaning": "but"
+                },
+                {
+                  "id": "l14g3-e7-w6",
+                  "traditional": "跑得",
+                  "pinyin": "pǎo de",
+                  "meaning": "run (V + 得)"
+                },
+                {
+                  "id": "l14g3-e7-w7",
+                  "traditional": "比",
+                  "pinyin": "bǐ",
+                  "meaning": "compared with"
+                },
+                {
+                  "id": "l14g3-e7-w8",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "me"
+                },
+                {
+                  "id": "l14g3-e7-w9",
+                  "traditional": "慢",
+                  "pinyin": "màn",
+                  "meaning": "slow",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l14g3-e8",
+            "number": 8,
+            "text": {
+              "traditional": "我弟弟說英文說得比我好。",
+              "simplified": "我弟弟说英文说得比我好。",
+              "pinyin": "Wǒ dìdi shuō Yīngwén shuō de bǐ wǒ hǎo.",
+              "english": "My younger brother speaks English better than I do.",
+              "words": [
+                {
+                  "id": "l14g3-e8-w1",
+                  "traditional": "我弟弟",
+                  "pinyin": "wǒ dìdi",
+                  "meaning": "my younger brother"
+                },
+                {
+                  "id": "l14g3-e8-w2",
+                  "traditional": "說英文",
+                  "simplified": "说英文",
+                  "pinyin": "shuō Yīngwén",
+                  "meaning": "speak English"
+                },
+                {
+                  "id": "l14g3-e8-w3",
+                  "traditional": "說得",
+                  "pinyin": "shuō de",
+                  "meaning": "speak (repeated verb + 得)",
+                  "simplified": "说得"
+                },
+                {
+                  "id": "l14g3-e8-w4",
+                  "traditional": "比",
+                  "pinyin": "bǐ",
+                  "meaning": "compared with"
+                },
+                {
+                  "id": "l14g3-e8-w5",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "me"
+                },
+                {
+                  "id": "l14g3-e8-w6",
+                  "traditional": "好",
+                  "pinyin": "hǎo",
+                  "meaning": "better",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l14g3-e9",
+            "number": 9,
+            "text": {
+              "traditional": "我媽媽做菜比我爸爸做得好。",
+              "simplified": "我妈妈做菜比我爸爸做得好。",
+              "pinyin": "Wǒ māma zuò cài bǐ wǒ bàba zuò de hǎo.",
+              "english": "My mom cooks better than my dad.",
+              "words": [
+                {
+                  "id": "l14g3-e9-w1",
+                  "traditional": "我媽媽",
+                  "simplified": "我妈妈",
+                  "pinyin": "wǒ māma",
+                  "meaning": "my mom"
+                },
+                {
+                  "id": "l14g3-e9-w2",
+                  "traditional": "做菜",
+                  "pinyin": "zuò cài",
+                  "meaning": "cook"
+                },
+                {
+                  "id": "l14g3-e9-w3",
+                  "traditional": "比",
+                  "pinyin": "bǐ",
+                  "meaning": "compared with"
+                },
+                {
+                  "id": "l14g3-e9-w4",
+                  "traditional": "我爸爸",
+                  "pinyin": "wǒ bàba",
+                  "meaning": "my dad"
+                },
+                {
+                  "id": "l14g3-e9-w5",
+                  "traditional": "做得",
+                  "pinyin": "zuò de",
+                  "meaning": "cook (repeated verb + 得)"
+                },
+                {
+                  "id": "l14g3-e9-w6",
+                  "traditional": "好",
+                  "pinyin": "hǎo",
+                  "meaning": "better",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
           }
         ],
         "exerciseTitle": "Build the comparison",
@@ -12693,7 +15725,8 @@
             "correctFeedback": "The whole second activity follows 比.",
             "repairFeedback": "Keep both activities intact."
           }
-        ]
+        ],
+        "exerciseNote": "The book answers six questions with 比 on printed pages 332–333; these model answers follow the printed information."
       }
     ],
     "dialogue": {
@@ -12738,7 +15771,8 @@
                 "traditional": "請",
                 "pinyin": "qǐng",
                 "meaning": "please",
-                "prefix": "，"
+                "prefix": "，",
+                "simplified": "请"
               },
               {
                 "id": "l14d2-1-word-4",
@@ -12772,7 +15806,8 @@
                 "traditional": "妳",
                 "pinyin": "nǐ",
                 "meaning": "you (for a woman)",
-                "prefix": "！"
+                "prefix": "！",
+                "simplified": "你"
               },
               {
                 "id": "l14d2-2-word-3",
@@ -12860,7 +15895,7 @@
           "text": {
             "traditional": "我跟友美買了幾瓶酒，也帶了大家都喜歡的餃子、包子和牛肉湯。",
             "simplified": "我跟友美买了几瓶酒，也带了大家都喜欢的饺子、包子和牛肉汤。",
-            "pinyin": "Wǒ gēn Yǒuměi mǎi le jǐ píng jiǔ, yě dài le dàjiā dōu xǐhuan de jiǎozi, bāozi hé niúròu tāng.",
+            "pinyin": "Wǒ gēn Yǒuměi mǎi le jǐ píng jiǔ, yě dài le dàjiā dōu xǐhuān de jiǎozi, bāozi hé niúròu tāng.",
             "english": "Youmei and I bought a few bottles of wine and the food everyone likes: dumplings, baozi, and beef soup.",
             "words": [
               {
@@ -12949,7 +15984,7 @@
                 "id": "l14d2-3-word-14",
                 "traditional": "喜歡",
                 "simplified": "喜欢",
-                "pinyin": "xǐhuan",
+                "pinyin": "xǐhuān",
                 "meaning": "like"
               },
               {
@@ -13123,7 +16158,7 @@
           "text": {
             "traditional": "我買了珍珠奶茶，希望大家會喜歡。",
             "simplified": "我买了珍珠奶茶，希望大家会喜欢。",
-            "pinyin": "Wǒ mǎi le zhēnzhū nǎichá, xīwàng dàjiā huì xǐhuan.",
+            "pinyin": "Wǒ mǎi le zhēnzhū nǎichá, xīwàng dàjiā huì xǐhuān.",
             "english": "I bought some pearl milk tea. I hope you will all like it.",
             "words": [
               {
@@ -13175,7 +16210,7 @@
                 "id": "l14d2-6-word-8",
                 "traditional": "喜歡",
                 "simplified": "喜欢",
-                "pinyin": "xǐhuan",
+                "pinyin": "xǐhuān",
                 "meaning": "like",
                 "suffix": "。"
               }
@@ -13243,7 +16278,8 @@
                 "traditional": "請",
                 "pinyin": "qǐng",
                 "meaning": "please",
-                "prefix": "，"
+                "prefix": "，",
+                "simplified": "请"
               },
               {
                 "id": "l14d2-7-word-9",
@@ -13279,7 +16315,7 @@
           "text": {
             "traditional": "老師，跨年的時候，如果不想去看演唱會，還有別的活動嗎？",
             "simplified": "老师，跨年的时候，如果不想去看演唱会，还有别的活动吗？",
-            "pinyin": "Lǎoshī, kuànián de shíhou, rúguǒ bù xiǎng qù kàn yǎnchànghuì, hái yǒu bié de huódòng ma?",
+            "pinyin": "Lǎoshī, kuànián de shíhòu, rúguǒ bù xiǎng qù kàn yǎnchànghuì, hái yǒu bié de huódòng ma?",
             "english": "Teacher, are there any other activities you can do if you don’t want to see the concert during the New Year’s Eve celebration?",
             "words": [
               {
@@ -13392,7 +16428,7 @@
           "text": {
             "traditional": "有啊！我小的時候在山上住了七、八年，每一年的第一天，我都跟家人一起看日出。",
             "simplified": "有啊！我小的时候在山上住了七、八年，每一年的第一天，我都跟家人一起看日出。",
-            "pinyin": "Yǒu a! Wǒ xiǎo de shíhou zài shān shàng zhù le qī, bā nián, měi yì nián de dì yī tiān, wǒ dōu gēn jiārén yìqǐ kàn rìchū.",
+            "pinyin": "Yǒu a! Wǒ xiǎo de shíhòu zài shān shàng zhù le qī, bā nián, měi yì nián de dì yī tiān, wǒ dōu gēn jiārén yìqǐ kàn rìchū.",
             "english": "Yes! When I was little, I lived in the mountains for seven or eight years. Every first day of the year, I went to see the sunrise with my family.",
             "words": [
               {
@@ -13554,7 +16590,7 @@
           "text": {
             "traditional": "跨年的時候，英國的教堂有很多活動，也有人去聽音樂會。",
             "simplified": "跨年的时候，英国的教堂有很多活动，也有人去听音乐会。",
-            "pinyin": "Kuànián de shíhou, Yīngguó de jiàotáng yǒu hěn duō huódòng, yě yǒu rén qù tīng yīnyuèhuì.",
+            "pinyin": "Kuànián de shíhòu, Yīngguó de jiàotáng yǒu hěn duō huódòng, yě yǒu rén qù tīng yīnyuèhuì.",
             "english": "There are many activities in British churches on New Year’s Eve. Some people also go to concerts.",
             "words": [
               {
@@ -13664,7 +16700,7 @@
           "text": {
             "traditional": "在日本，跨年的時候，很多人在家跟家人一起看電視。但是我喜歡和朋友一起跨年，比在家看電視有趣。",
             "simplified": "在日本，跨年的时候，很多人在家跟家人一起看电视。但是我喜欢和朋友一起跨年，比在家看电视有趣。",
-            "pinyin": "Zài Rìběn, kuànián de shíhou, hěn duō rén zài jiā gēn jiārén yìqǐ kàn diànshì. Dànshì wǒ xǐhuan hé péngyǒu yìqǐ kuànián, bǐ zài jiā kàn diànshì yǒuqù.",
+            "pinyin": "Zài Rìběn, kuànián de shíhòu, hěn duō rén zài jiā gēn jiārén yìqǐ kàn diànshì. Dànshì wǒ xǐhuān hé péngyǒu yìqǐ kuànián, bǐ zài jiā kàn diànshì yǒuqù.",
             "english": "In Japan, many people stay at home and watch TV with their families on New Year’s Eve. But I like to celebrate New Year’s Eve with friends. It’s more fun than watching TV at home.",
             "words": [
               {
@@ -13766,7 +16802,7 @@
                 "id": "l14d2-11-word-16",
                 "traditional": "喜歡",
                 "simplified": "喜欢",
-                "pinyin": "xǐhuan",
+                "pinyin": "xǐhuān",
                 "meaning": "like"
               },
               {
@@ -13835,7 +16871,7 @@
           "text": {
             "traditional": "我也喜歡跟朋友一起跨年，而且今年比以前有意思多了，因為在台灣跟你們一起玩，覺得很特別。",
             "simplified": "我也喜欢跟朋友一起跨年，而且今年比以前有意思多了，因为在台湾跟你们一起玩，觉得很特别。",
-            "pinyin": "Wǒ yě xǐhuan gēn péngyǒu yìqǐ kuànián, érqiě jīnnián bǐ yǐqián yǒuyìsi duō le, yīnwèi zài Táiwān gēn nǐmen yìqǐ wán, juéde hěn tèbié.",
+            "pinyin": "Wǒ yě xǐhuān gēn péngyǒu yìqǐ kuànián, érqiě jīnnián bǐ yǐqián yǒuyìsi duō le, yīnwèi zài Táiwān gēn nǐmen yìqǐ wán, juéde hěn tèbié.",
             "english": "I also like to celebrate it with friends. And this year is much more interesting than before, because I am here in Taiwan and get to spend time with you. I think it is a special experience.",
             "words": [
               {
@@ -13854,7 +16890,7 @@
                 "id": "l14d2-12-word-3",
                 "traditional": "喜歡",
                 "simplified": "喜欢",
-                "pinyin": "xǐhuan",
+                "pinyin": "xǐhuān",
                 "meaning": "like"
               },
               {

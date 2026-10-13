@@ -3,7 +3,6 @@ import { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import { useAppStore } from '../../../store/useAppStore';
 import { flashcardService } from '../../../services/flashcardService';
-import { audioService } from '../../../services/audioService';
 import { useDictionarySearch, SearchResult } from '../../../hooks/useDictionarySearch';
 
 type ViewState = 'front' | 'back';
@@ -144,8 +143,6 @@ export function useAddCard(onClose: () => void) {
           } else {
             addLocalFlashcard(newCard);
           }
-          // Pre-warm neural TTS for the new word so first playback is instant.
-          audioService.preloadNeural([cardData.front.trim()]).catch(() => {});
         } catch (e) {
           debugLogger.error('Supabase', "Failed to save flashcard asynchronously:", e);
         }

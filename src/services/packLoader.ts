@@ -36,6 +36,8 @@ export interface PackLoaderOptions<TManifest, TPack, TLoaded> {
   namespace: string;
   manifestPath: string;
   manifestLabel: string;
+  /** Network-first manifest with last-known metadata available offline. Opt-in. */
+  persistManifest?: boolean;
   /** Feature-owned manifest schema gate. Return false to reject. */
   validateManifest: (manifest: TManifest) => boolean;
   /** Maps a validated manifest to its loadable parts. */
@@ -77,7 +79,8 @@ export function createPackLoader<TManifest, TPack, TLoaded>(
     manifestPromise = fetchStaticJson<TManifest>(
       manifestPath,
       manifestLabel,
-      { revalidate: true },
+      { revalidate: true, ...(options.persistManifest ? { persistentKey: `${namespace}-manifest`, fallbackToPersistent: true,
+        validate: (data: unknown) => validateManifest(data as TManifest) } : {}) },
     ).then((manifest) => {
       if (!validateManifest(manifest)) {
         throw new Error(`Unsupported ${namespace} manifest`);

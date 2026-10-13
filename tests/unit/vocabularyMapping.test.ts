@@ -65,3 +65,16 @@ test('vocabularyMapping: resolves deterministic audio for course cards and respe
   assert.equal(mapped[1].audio, '');
   assert.equal(mapped[2].audio, 'custom.mp3');
 });
+
+test('vocabularyMapping: maps simple definition field when present', () => {
+  const rows = [
+    { id: 'B1L01-1-01', traditional: '好', meaning: 'fine; good; well; nice; ok', simple: 'good' },
+    { id: 'B1L01-1-02', traditional: '學生', meaning: 'student' },
+  ];
+  const mapped = mapVocabularyRows(rows);
+  assert.equal(mapped[0].back, 'fine; good; well; nice; ok');
+  assert.equal(mapped[0].simple, 'good');
+  assert.equal(mapped[1].back, 'student');
+  assert.equal(mapped[1].simple, undefined);
+});
+

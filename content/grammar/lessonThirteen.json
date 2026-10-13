@@ -16,7 +16,7 @@
       306
     ],
     "audioReference": "13-2-3",
-    "explanation": "Duration follows the verb. For verb-object pairs, either repeat the verb (學中文學了三年) or place duration + 的 before the noun (學了三年的中文).",
+    "explanation": "Duration follows the action. With some activities that pair an action word with a thing, Chinese repeats the action word or uses duration + 的 before the thing.",
     "lessonWorld": {
       "kind": "route",
       "eyebrow": "Museum visit",
@@ -30,7 +30,8 @@
     },
     "focusTerms": [
       "分鐘",
-      "小時"
+      "小時",
+      "的"
     ],
     "teachingGlossary": [
       {
@@ -683,7 +684,7 @@
       {
         "id": "b1l13-g05-glossary-99",
         "traditional": "的時候",
-        "pinyin": "de shíhou",
+        "pinyin": "de shíhòu",
         "meaning": "when (at the time)"
       },
       {
@@ -959,7 +960,7 @@
         "id": "b1l13-g05-glossary-142",
         "traditional": "喜歡",
         "simplified": "喜欢",
-        "pinyin": "xǐhuan",
+        "pinyin": "xǐhuān",
         "meaning": "like"
       },
       {
@@ -1522,10 +1523,16 @@
         "id": "l13g5-p2",
         "subject": [
           {
+            "id": "l13g5-p2-s0",
+            "traditional": "我每天",
+            "pinyin": "wǒ měitiān",
+            "meaning": "I every day"
+          },
+          {
             "id": "l13g5-p2-s1",
-            "traditional": "跑步",
-            "pinyin": "pǎobù",
-            "meaning": "run"
+            "traditional": "跑步跑",
+            "pinyin": "pǎobù pǎo",
+            "meaning": "run (repeated verb + 跑)"
           }
         ],
         "grammar": [],
@@ -1539,7 +1546,37 @@
             "suffix": "。"
           }
         ],
-        "english": "Run for thirty minutes."
+        "english": "I run for thirty minutes every day."
+      },
+      {
+        "id": "l13g5-p2b",
+        "subject": [
+          {
+            "id": "l13g5-p2b-s0",
+            "traditional": "我每天",
+            "pinyin": "wǒ měitiān",
+            "meaning": "I every day"
+          },
+          {
+            "id": "l13g5-p2b-s1",
+            "traditional": "睡覺睡",
+            "simplified": "睡觉睡",
+            "pinyin": "shuìjiào shuì",
+            "meaning": "sleep (repeated verb + 睡)"
+          }
+        ],
+        "grammar": [],
+        "complement": [
+          {
+            "id": "l13g5-p2b-c1",
+            "traditional": "七個小時",
+            "simplified": "七个小时",
+            "pinyin": "qī ge xiǎoshí",
+            "meaning": "seven hours",
+            "suffix": "。"
+          }
+        ],
+        "english": "I sleep for seven hours every day."
       },
       {
         "id": "l13g5-p3",
@@ -1571,6 +1608,35 @@
           }
         ],
         "english": "Attend class for three hours."
+      },
+      {
+        "id": "l13g5-p4",
+        "subject": [
+          {
+            "id": "l13g5-p4-s0",
+            "traditional": "我每天",
+            "pinyin": "wǒ měitiān",
+            "meaning": "I every day"
+          },
+          {
+            "id": "l13g5-p4-s1",
+            "traditional": "睡",
+            "pinyin": "shuì",
+            "meaning": "sleep"
+          }
+        ],
+        "grammar": [],
+        "complement": [
+          {
+            "id": "l13g5-p4-c1",
+            "traditional": "七個小時的覺",
+            "simplified": "七个小时的觉",
+            "pinyin": "qī ge xiǎoshí de jiào",
+            "meaning": "seven hours of sleep",
+            "suffix": "。"
+          }
+        ],
+        "english": "I sleep seven hours every day."
       }
     ],
     "confusion": {
@@ -1896,10 +1962,10 @@
         "number": 4,
         "teachingNote": "Duration + 的 appears before the thing.",
         "text": {
-          "traditional": "我明天要開六個小時的車。",
-          "simplified": "我明天要开六个小时的车。",
-          "pinyin": "Wǒ míngtiān yào kāi liù ge xiǎoshí de chē.",
-          "english": "I will drive for six hours tomorrow.",
+          "traditional": "我明天要開六個小時的車，我想先去睡覺。",
+          "simplified": "我明天要开六个小时的车，我想先去睡觉。",
+          "pinyin": "Wǒ míngtiān yào kāi liù ge xiǎoshí de chē, wǒ xiǎng xiān qù shuìjiào.",
+          "english": "I have to drive six hours tomorrow; I want to go to sleep first.",
           "words": [
             {
               "id": "l13g5-e4-word-1",
@@ -1945,10 +2011,359 @@
               "simplified": "车",
               "pinyin": "chē",
               "meaning": "car",
+              "suffix": "，"
+            },
+            {
+              "id": "l13g5-e4-tail",
+              "traditional": "我想先去睡覺",
+              "simplified": "我想先去睡觉",
+              "pinyin": "wǒ xiǎng xiān qù shuìjiào",
+              "meaning": "I want to sleep first",
               "suffix": "。"
             }
           ]
         }
+      },
+      {
+        "id": "l13g5-e5",
+        "number": 5,
+        "text": {
+          "traditional": "我們從學校走十分鐘，就可以到那家銀行了。",
+          "simplified": "我们从学校走十分钟，就可以到那家银行了。",
+          "pinyin": "Wǒmen cóng xuéxiào zǒu shí fēnzhōng, jiù kěyǐ dào nà jiā yínháng le.",
+          "english": "If we walk ten minutes from school, we can get to that bank.",
+          "words": [
+            {
+              "id": "l13g5-e5-w1",
+              "traditional": "我們",
+              "simplified": "我们",
+              "pinyin": "wǒmen",
+              "meaning": "we"
+            },
+            {
+              "id": "l13g5-e5-w2",
+              "traditional": "從學校",
+              "simplified": "从学校",
+              "pinyin": "cóng xuéxiào",
+              "meaning": "from school"
+            },
+            {
+              "id": "l13g5-e5-w3",
+              "traditional": "走",
+              "pinyin": "zǒu",
+              "meaning": "walk"
+            },
+            {
+              "id": "l13g5-e5-w4",
+              "traditional": "十分鐘",
+              "simplified": "十分钟",
+              "pinyin": "shí fēnzhōng",
+              "meaning": "ten minutes",
+              "suffix": "，"
+            },
+            {
+              "id": "l13g5-e5-w5",
+              "traditional": "就可以",
+              "pinyin": "jiù kěyǐ",
+              "meaning": "then can"
+            },
+            {
+              "id": "l13g5-e5-w6",
+              "traditional": "到",
+              "pinyin": "dào",
+              "meaning": "arrive at"
+            },
+            {
+              "id": "l13g5-e5-w7",
+              "traditional": "那家銀行",
+              "simplified": "那家银行",
+              "pinyin": "nà jiā yínháng",
+              "meaning": "that bank"
+            },
+            {
+              "id": "l13g5-e5-w8",
+              "traditional": "了",
+              "pinyin": "le",
+              "meaning": "marks the change",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l13g5-e6",
+        "number": 6,
+        "text": {
+          "traditional": "不好意思，請您再等兩分鐘，李先生很快就來了。",
+          "simplified": "不好意思，请您再等两分钟，李先生很快就来了。",
+          "pinyin": "Bù hǎoyìsi, qǐng nín zài děng liǎng fēnzhōng, Lǐ xiānsheng hěn kuài jiù lái le.",
+          "english": "Sorry, please wait two more minutes; Mr. Li will be here very soon.",
+          "words": [
+            {
+              "id": "l13g5-e6-w1",
+              "traditional": "不好意思",
+              "pinyin": "bù hǎoyìsi",
+              "meaning": "sorry",
+              "suffix": "，"
+            },
+            {
+              "id": "l13g5-e6-w2",
+              "traditional": "請您",
+              "simplified": "请您",
+              "pinyin": "qǐng nín",
+              "meaning": "please (polite)"
+            },
+            {
+              "id": "l13g5-e6-w3",
+              "traditional": "再等",
+              "pinyin": "zài děng",
+              "meaning": "wait another"
+            },
+            {
+              "id": "l13g5-e6-w4",
+              "traditional": "兩分鐘",
+              "simplified": "两分钟",
+              "pinyin": "liǎng fēnzhōng",
+              "meaning": "two minutes",
+              "suffix": "，"
+            },
+            {
+              "id": "l13g5-e6-w5",
+              "traditional": "李先生",
+              "pinyin": "Lǐ xiānsheng",
+              "meaning": "Mr. Li"
+            },
+            {
+              "id": "l13g5-e6-w6",
+              "traditional": "很快就來了",
+              "simplified": "很快就来了",
+              "pinyin": "hěn kuài jiù lái le",
+              "meaning": "will come very soon",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l13g5-e7",
+        "number": 7,
+        "text": {
+          "traditional": "A：你明天要上課上幾個鐘頭？ B：我明天要上課上三個鐘頭。",
+          "simplified": "A：你明天要上课上几个钟头？ B：我明天要上课上三个钟头。",
+          "pinyin": "A: Nǐ míngtiān yào shàngkè shàng jǐ ge zhōngtóu? B: Wǒ míngtiān yào shàngkè shàng sān ge zhōngtóu.",
+          "english": "A: How many hours of class do you have tomorrow? B: I have three hours of class tomorrow.",
+          "words": [
+            {
+              "id": "l13g5-e7-w1",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you",
+              "prefix": "A："
+            },
+            {
+              "id": "l13g5-e7-w2",
+              "traditional": "明天",
+              "pinyin": "míngtiān",
+              "meaning": "tomorrow"
+            },
+            {
+              "id": "l13g5-e7-w3",
+              "traditional": "要上課上",
+              "simplified": "要上课上",
+              "pinyin": "yào shàngkè shàng",
+              "meaning": "will attend class (repeated verb)"
+            },
+            {
+              "id": "l13g5-e7-w4",
+              "traditional": "幾個鐘頭",
+              "simplified": "几个钟头",
+              "pinyin": "jǐ ge zhōngtóu",
+              "meaning": "how many hours",
+              "suffix": "？"
+            },
+            {
+              "id": "l13g5-e7-w5",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me",
+              "prefix": "B："
+            },
+            {
+              "id": "l13g5-e7-w6",
+              "traditional": "明天",
+              "pinyin": "míngtiān",
+              "meaning": "tomorrow"
+            },
+            {
+              "id": "l13g5-e7-w7",
+              "traditional": "要上課上",
+              "simplified": "要上课上",
+              "pinyin": "yào shàngkè shàng",
+              "meaning": "will attend class (repeated verb)"
+            },
+            {
+              "id": "l13g5-e7-w8",
+              "traditional": "三個鐘頭",
+              "simplified": "三个钟头",
+              "pinyin": "sān ge zhōngtóu",
+              "meaning": "three hours",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l13g5-e8",
+        "number": 8,
+        "text": {
+          "traditional": "A：我弟弟很愛玩手機，每天差不多玩五個小時。 B：玩五個小時的手機！時間太長了！",
+          "simplified": "A：我弟弟很爱玩手机，每天差不多玩五个小时。 B：玩五个小时的手机！时间太长了！",
+          "pinyin": "A: Wǒ dìdi hěn ài wán shǒujī, měitiān chàbuduō wán wǔ ge xiǎoshí. B: Wán wǔ ge xiǎoshí de shǒujī! Shíjiān tài cháng le!",
+          "english": "A: My younger brother loves playing on his phone; he plays about five hours a day. B: Five hours of phone! That is too long!",
+          "words": [
+            {
+              "id": "l13g5-e8-w1",
+              "traditional": "我弟弟",
+              "pinyin": "wǒ dìdi",
+              "meaning": "my younger brother",
+              "prefix": "A："
+            },
+            {
+              "id": "l13g5-e8-w2",
+              "traditional": "很愛玩手機",
+              "simplified": "很爱玩手机",
+              "pinyin": "hěn ài wán shǒujī",
+              "meaning": "loves playing on his phone",
+              "suffix": "，"
+            },
+            {
+              "id": "l13g5-e8-w3",
+              "traditional": "每天差不多",
+              "pinyin": "měitiān chàbuduō",
+              "meaning": "about every day"
+            },
+            {
+              "id": "l13g5-e8-w4",
+              "traditional": "玩",
+              "pinyin": "wán",
+              "meaning": "play"
+            },
+            {
+              "id": "l13g5-e8-w5",
+              "traditional": "五個小時",
+              "simplified": "五个小时",
+              "pinyin": "wǔ ge xiǎoshí",
+              "meaning": "five hours",
+              "suffix": "。"
+            },
+            {
+              "id": "l13g5-e8-w6",
+              "traditional": "玩五個小時的手機",
+              "simplified": "玩五个小时的手机",
+              "pinyin": "wán wǔ ge xiǎoshí de shǒujī",
+              "meaning": "five hours of phone",
+              "prefix": "B：",
+              "suffix": "！"
+            },
+            {
+              "id": "l13g5-e8-w7",
+              "traditional": "時間太長了",
+              "simplified": "时间太长了",
+              "pinyin": "shíjiān tài cháng le",
+              "meaning": "that is too long",
+              "suffix": "！"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l13g5-e9",
+        "number": 9,
+        "text": {
+          "traditional": "A：聽說那個博物館不太遠，只要坐五分鐘的捷運。 B：是啊，如果你想走路去也可以，走二十分鐘的路就到了。",
+          "simplified": "A：听说那个博物馆不太远，只要坐五分钟的捷运。 B：是啊，如果你想走路去也可以，走二十分钟的路就到了。",
+          "pinyin": "A: Tīngshuō nàge bówùguǎn bú tài yuǎn, zhǐyào zuò wǔ fēnzhōng de jiéyùn. B: Shì a, rúguǒ nǐ xiǎng zǒulù qù yě kěyǐ, zǒu èrshí fēnzhōng de lù jiù dào le.",
+          "english": "A: I hear that museum is not far; it is only a five-minute MRT ride. B: Yes, if you want to walk, you can too — a twenty-minute walk and you are there.",
+          "words": [
+            {
+              "id": "l13g5-e9-w1",
+              "traditional": "聽說",
+              "simplified": "听说",
+              "pinyin": "tīngshuō",
+              "meaning": "I hear",
+              "prefix": "A："
+            },
+            {
+              "id": "l13g5-e9-w2",
+              "traditional": "那個博物館",
+              "simplified": "那个博物馆",
+              "pinyin": "nàge bówùguǎn",
+              "meaning": "that museum"
+            },
+            {
+              "id": "l13g5-e9-w3",
+              "traditional": "不太遠",
+              "simplified": "不太远",
+              "pinyin": "bú tài yuǎn",
+              "meaning": "not too far",
+              "suffix": "，"
+            },
+            {
+              "id": "l13g5-e9-w4",
+              "traditional": "只要",
+              "pinyin": "zhǐyào",
+              "meaning": "only need to"
+            },
+            {
+              "id": "l13g5-e9-w5",
+              "traditional": "坐五分鐘的捷運",
+              "simplified": "坐五分钟的捷运",
+              "pinyin": "zuò wǔ fēnzhōng de jiéyùn",
+              "meaning": "a five-minute MRT ride",
+              "suffix": "。"
+            },
+            {
+              "id": "l13g5-e9-w6",
+              "traditional": "是啊",
+              "pinyin": "shì a",
+              "meaning": "yes",
+              "prefix": "B：",
+              "suffix": "，"
+            },
+            {
+              "id": "l13g5-e9-w7",
+              "traditional": "如果你想走路去",
+              "pinyin": "rúguǒ nǐ xiǎng zǒulù qù",
+              "meaning": "if you want to walk"
+            },
+            {
+              "id": "l13g5-e9-w8",
+              "traditional": "也可以",
+              "pinyin": "yě kěyǐ",
+              "meaning": "that is fine too",
+              "suffix": "，"
+            },
+            {
+              "id": "l13g5-e9-w9",
+              "traditional": "走二十分鐘的路",
+              "simplified": "走二十分钟的路",
+              "pinyin": "zǒu èrshí fēnzhōng de lù",
+              "meaning": "a twenty-minute walk"
+            },
+            {
+              "id": "l13g5-e9-w10",
+              "traditional": "就到了",
+              "pinyin": "jiù dào le",
+              "meaning": "you are there",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
       }
     ],
     "exerciseTitle": "Attach the clock",
@@ -2075,7 +2490,8 @@
         "correctFeedback": "Duration + 的 appears before 中文.",
         "repairFeedback": "Use 學 + duration + 的 + thing."
       }
-    ]
+    ],
+    "exerciseNote": "The book rearranges and rewrites sentences with time-duration on printed pages 304 and 306 and gives no answer key; these model answers follow the printed patterns."
   },
   "LESSON_THIRTEEN_GRAMMAR_FOUR": {
     "bookId": 1,
@@ -2760,7 +3176,7 @@
       {
         "id": "b1l13-g04-glossary-99",
         "traditional": "的時候",
-        "pinyin": "de shíhou",
+        "pinyin": "de shíhòu",
         "meaning": "when (at the time)"
       },
       {
@@ -3036,7 +3452,7 @@
         "id": "b1l13-g04-glossary-142",
         "traditional": "喜歡",
         "simplified": "喜欢",
-        "pinyin": "xǐhuan",
+        "pinyin": "xǐhuān",
         "meaning": "like"
       },
       {
@@ -3688,41 +4104,48 @@
       "items": [
         {
           "id": "l13g4-confusion-jiu-vs-jiuyao",
-          "question": "I want to say the doors are about to open. 就 or 就要?",
-          "answer": "就要. 要 carries the “about to” idea; 就 alone means “as early as” or “then.”",
-          "wrongTraditional": "博物館就開門了。",
-          "wrongSimplified": "博物馆就开门了。",
+          "question": "The film is about to start. Do I need 了 at the end?",
+          "answer": "Yes. 就要／快要 + event + 了 keeps 了 at the very end: 電影馬上就要開始了。 With a time word like 馬上, 電影馬上就開始了。 is also fine.",
+          "wrongTraditional": "電影馬上就要開始。",
+          "wrongSimplified": "电影马上就要开始。",
           "right": {
-            "traditional": "博物館就要開門了。",
-            "simplified": "博物馆就要开门了。",
-            "pinyin": "Bówùguǎn jiù yào kāimén le.",
-            "english": "The museum is about to open.",
+            "traditional": "電影馬上就要開始了。",
+            "simplified": "电影马上就要开始了。",
+            "pinyin": "Diànyǐng mǎshàng jiù yào kāishǐ le.",
+            "english": "The film is about to start.",
             "words": [
               {
-                "id": "l13g4-conf1-word-1",
-                "traditional": "博物館",
-                "simplified": "博物馆",
-                "pinyin": "bówùguǎn",
-                "meaning": "museum"
+                "id": "l13g4-c1-w1",
+                "traditional": "電影",
+                "simplified": "电影",
+                "pinyin": "diànyǐng",
+                "meaning": "movie"
               },
               {
-                "id": "l13g4-conf1-word-2",
+                "id": "l13g4-c1-w2",
+                "traditional": "馬上",
+                "simplified": "马上",
+                "pinyin": "mǎshàng",
+                "meaning": "right away"
+              },
+              {
+                "id": "l13g4-c1-w3",
                 "traditional": "就要",
                 "pinyin": "jiù yào",
                 "meaning": "about to"
               },
               {
-                "id": "l13g4-conf1-word-3",
-                "traditional": "開門",
-                "simplified": "开门",
-                "pinyin": "kāimén",
-                "meaning": "open the doors"
+                "id": "l13g4-c1-w4",
+                "traditional": "開始",
+                "simplified": "开始",
+                "pinyin": "kāishǐ",
+                "meaning": "start"
               },
               {
-                "id": "l13g4-conf1-word-4",
+                "id": "l13g4-c1-w5",
                 "traditional": "了",
                 "pinyin": "le",
-                "meaning": "change or imminent-event marker",
+                "meaning": "marks the coming change",
                 "suffix": "。"
               }
             ]
@@ -4039,7 +4462,8 @@
               "id": "l13g4-e3-word-8",
               "traditional": "還沒",
               "pinyin": "hái méi",
-              "meaning": "still not"
+              "meaning": "still not",
+              "simplified": "还没"
             },
             {
               "id": "l13g4-e3-word-9",
@@ -4259,7 +4683,8 @@
         "correctFeedback": "快要 comes before the approaching arrival.",
         "repairFeedback": "Use 快要 + event + 了."
       }
-    ]
+    ],
+    "exerciseNote": "The book completes three sentences with 就（要）……了 on printed page 303 and gives no answer key; these model answers follow the printed cues."
   },
   "LESSON_THIRTEEN_GRAMMAR_ONE": {
     "bookId": 1,
@@ -4290,7 +4715,8 @@
     },
     "focusTerms": [
       "看看",
-      "看一看"
+      "看一看",
+      "一"
     ],
     "teachingGlossary": [
       {
@@ -4943,7 +5369,7 @@
       {
         "id": "b1l13-g01-glossary-99",
         "traditional": "的時候",
-        "pinyin": "de shíhou",
+        "pinyin": "de shíhòu",
         "meaning": "when (at the time)"
       },
       {
@@ -5219,7 +5645,7 @@
         "id": "b1l13-g01-glossary-142",
         "traditional": "喜歡",
         "simplified": "喜欢",
-        "pinyin": "xǐhuan",
+        "pinyin": "xǐhuān",
         "meaning": "like"
       },
       {
@@ -5793,6 +6219,12 @@
             "traditional": "我",
             "pinyin": "wǒ",
             "meaning": "I; me"
+          },
+          {
+            "id": "l13g1-p2-s1b",
+            "traditional": "今天不想出去，只想在家",
+            "pinyin": "jīntiān bù xiǎng chūqù, zhǐ xiǎng zài jiā",
+            "meaning": "do not want to go out today; only want to stay home"
           }
         ],
         "grammar": [
@@ -5814,7 +6246,7 @@
             "suffix": "。"
           }
         ],
-        "english": "I listen to some music."
+        "english": "I do not want to go out today. I just want to listen to music at home."
       },
       {
         "id": "l13g1-p3",
@@ -5837,6 +6269,36 @@
         ],
         "complement": [],
         "english": "We chat for a bit."
+      },
+      {
+        "id": "l13g1-p4",
+        "subject": [
+          {
+            "id": "l13g1-p4-s1",
+            "traditional": "聽說他的新房子很漂亮，",
+            "simplified": "听说他的新房子很漂亮，",
+            "pinyin": "tīngshuō tā de xīn fángzi hěn piàoliang",
+            "meaning": "I hear his new house is very pretty"
+          },
+          {
+            "id": "l13g1-p4-s2",
+            "traditional": "我想去",
+            "pinyin": "wǒ xiǎng qù",
+            "meaning": "I want to go"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l13g1-p4-g1",
+            "traditional": "看一看",
+            "simplified": "看一看",
+            "pinyin": "kàn yí kàn",
+            "meaning": "have a look",
+            "suffix": "。"
+          }
+        ],
+        "complement": [],
+        "english": "I have heard that his new house is very pretty; I want to have a look."
       }
     ],
     "confusion": {
@@ -6414,7 +6876,8 @@
         "correctFeedback": "聊聊天 softens the invitation.",
         "repairFeedback": "Use the casual repeated action."
       }
-    ]
+    ],
+    "exerciseNote": "The book completes three dialogues with reduplicated actions on printed page 295 and gives no answer key; these model answers follow the printed prompts."
   },
   "LESSON_THIRTEEN_GRAMMAR_THREE": {
     "bookId": 1,
@@ -6424,14 +6887,14 @@
     "id": "B1L13-G03-P297",
     "partId": 1,
     "grammarNumber": 3,
-    "titleTraditional": "看懂就帶來的「早」和「結果」",
+    "titleTraditional": "「就」的早與結果",
     "titleEnglish": "Read the Time and Result Meanings of 就",
     "learnerPromise": "Recognize something early or a result that follows.",
     "printedPages": [
       297
     ],
     "audioReference": "13-1-3",
-    "explanation": "In a time scene, 就 can mean earlier than expected. After an instruction or condition, 就 can introduce the result.",
+    "explanation": "In a time scene, 就 can mean earlier than expected. After an instruction or condition, 就 can introduce the result. 就 can also show that something is easy to complete or likely to happen — 往前走，就可以看到那家店了。",
     "lessonWorld": {
       "kind": "route",
       "eyebrow": "Phone journey",
@@ -7097,7 +7560,7 @@
       {
         "id": "b1l13-g03-glossary-99",
         "traditional": "的時候",
-        "pinyin": "de shíhou",
+        "pinyin": "de shíhòu",
         "meaning": "when (at the time)"
       },
       {
@@ -7373,7 +7836,7 @@
         "id": "b1l13-g03-glossary-142",
         "traditional": "喜歡",
         "simplified": "喜欢",
-        "pinyin": "xǐhuan",
+        "pinyin": "xǐhuān",
         "meaning": "like"
       },
       {
@@ -7913,6 +8376,13 @@
         "id": "l13g3-p1",
         "subject": [
           {
+            "id": "l13g3-p1-s0",
+            "traditional": "九點開始上班，可是我每天都",
+            "simplified": "九点开始上班，可是我每天都",
+            "pinyin": "jiǔ diǎn kāishǐ shàngbān, kěshì wǒ měitiān dōu",
+            "meaning": "work starts at nine, but I every day"
+          },
+          {
             "id": "l13g3-p1-s1",
             "traditional": "八點半",
             "simplified": "八点半",
@@ -7931,13 +8401,14 @@
         "complement": [
           {
             "id": "l13g3-p1-c1",
-            "traditional": "到",
-            "pinyin": "dào",
-            "meaning": "arrive",
+            "traditional": "到公司了",
+            "simplified": "到公司了",
+            "pinyin": "dào gōngsī le",
+            "meaning": "arrive at the company",
             "suffix": "。"
           }
         ],
-        "english": "Arrive as early as 8:30."
+        "english": "Work starts at nine, but I arrive at the company at eight thirty every day."
       },
       {
         "id": "l13g3-p2",
@@ -8605,7 +9076,8 @@
         "correctFeedback": "就 introduces the result of checking.",
         "repairFeedback": "Place 就 before the result action."
       }
-    ]
+    ],
+    "exerciseNote": "The book completes three dialogues with 就 on printed page 297 and gives no answer key; these model answers follow the printed prompts and cues."
   },
   "LESSON_THIRTEEN_GRAMMAR_TWO": {
     "bookId": 1,
@@ -9289,7 +9761,7 @@
       {
         "id": "b1l13-g02-glossary-99",
         "traditional": "的時候",
-        "pinyin": "de shíhou",
+        "pinyin": "de shíhòu",
         "meaning": "when (at the time)"
       },
       {
@@ -9565,7 +10037,7 @@
         "id": "b1l13-g02-glossary-142",
         "traditional": "喜歡",
         "simplified": "喜欢",
-        "pinyin": "xǐhuan",
+        "pinyin": "xǐhuān",
         "meaning": "like"
       },
       {
@@ -10137,13 +10609,13 @@
         "complement": [
           {
             "id": "l13g2-p1-c1",
-            "traditional": "走",
-            "pinyin": "zǒu",
-            "meaning": "walk",
+            "traditional": "看",
+            "pinyin": "kàn",
+            "meaning": "look",
             "suffix": "。"
           }
         ],
-        "english": "Walk from here toward the entrance."
+        "english": "Look from here toward the doorway."
       },
       {
         "id": "l13g2-p2",
@@ -10230,6 +10702,49 @@
           }
         ],
         "english": "Look forward from here."
+      },
+      {
+        "id": "l13g2-p4",
+        "subject": [
+          {
+            "id": "l13g2-p4-cong",
+            "traditional": "從",
+            "simplified": "从",
+            "pinyin": "cóng",
+            "meaning": "from; starting point"
+          },
+          {
+            "id": "l13g2-p4-left",
+            "traditional": "左",
+            "pinyin": "zuǒ",
+            "meaning": "left"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l13g2-p4-wang",
+            "traditional": "往",
+            "pinyin": "wǎng",
+            "meaning": "toward"
+          },
+          {
+            "id": "l13g2-p4-right",
+            "traditional": "右",
+            "pinyin": "yòu",
+            "meaning": "right"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l13g2-p4-write",
+            "traditional": "寫",
+            "pinyin": "xiě",
+            "meaning": "write",
+            "suffix": "。",
+            "simplified": "写"
+          }
+        ],
+        "english": "Write from the left to the right."
       }
     ],
     "confusion": {
@@ -10869,7 +11384,8 @@
         "correctFeedback": "Left is the start; right is the direction.",
         "repairFeedback": "Use 從左往右."
       }
-    ]
+    ],
+    "exerciseNote": "The book describes three printed pictures with 從……往…… on page 296 and gives no answer key; these written answers follow the printed scenes."
   },
   "LESSON_THIRTEEN_PART_ONE": {
     "id": "B1L13-P01-D01",
@@ -10907,7 +11423,8 @@
         },
         "focusTerms": [
           "看看",
-          "看一看"
+          "看一看",
+          "一"
         ],
         "teachingGlossary": [
           {
@@ -11560,7 +12077,7 @@
           {
             "id": "b1l13-g01-glossary-99",
             "traditional": "的時候",
-            "pinyin": "de shíhou",
+            "pinyin": "de shíhòu",
             "meaning": "when (at the time)"
           },
           {
@@ -11836,7 +12353,7 @@
             "id": "b1l13-g01-glossary-142",
             "traditional": "喜歡",
             "simplified": "喜欢",
-            "pinyin": "xǐhuan",
+            "pinyin": "xǐhuān",
             "meaning": "like"
           },
           {
@@ -12410,6 +12927,12 @@
                 "traditional": "我",
                 "pinyin": "wǒ",
                 "meaning": "I; me"
+              },
+              {
+                "id": "l13g1-p2-s1b",
+                "traditional": "今天不想出去，只想在家",
+                "pinyin": "jīntiān bù xiǎng chūqù, zhǐ xiǎng zài jiā",
+                "meaning": "do not want to go out today; only want to stay home"
               }
             ],
             "grammar": [
@@ -12431,7 +12954,7 @@
                 "suffix": "。"
               }
             ],
-            "english": "I listen to some music."
+            "english": "I do not want to go out today. I just want to listen to music at home."
           },
           {
             "id": "l13g1-p3",
@@ -12454,6 +12977,36 @@
             ],
             "complement": [],
             "english": "We chat for a bit."
+          },
+          {
+            "id": "l13g1-p4",
+            "subject": [
+              {
+                "id": "l13g1-p4-s1",
+                "traditional": "聽說他的新房子很漂亮，",
+                "simplified": "听说他的新房子很漂亮，",
+                "pinyin": "tīngshuō tā de xīn fángzi hěn piàoliang",
+                "meaning": "I hear his new house is very pretty"
+              },
+              {
+                "id": "l13g1-p4-s2",
+                "traditional": "我想去",
+                "pinyin": "wǒ xiǎng qù",
+                "meaning": "I want to go"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l13g1-p4-g1",
+                "traditional": "看一看",
+                "simplified": "看一看",
+                "pinyin": "kàn yí kàn",
+                "meaning": "have a look",
+                "suffix": "。"
+              }
+            ],
+            "complement": [],
+            "english": "I have heard that his new house is very pretty; I want to have a look."
           }
         ],
         "confusion": {
@@ -13031,7 +13584,8 @@
             "correctFeedback": "聊聊天 softens the invitation.",
             "repairFeedback": "Use the casual repeated action."
           }
-        ]
+        ],
+        "exerciseNote": "The book completes three dialogues with reduplicated actions on printed page 295 and gives no answer key; these model answers follow the printed prompts."
       },
       {
         "bookId": 1,
@@ -13715,7 +14269,7 @@
           {
             "id": "b1l13-g02-glossary-99",
             "traditional": "的時候",
-            "pinyin": "de shíhou",
+            "pinyin": "de shíhòu",
             "meaning": "when (at the time)"
           },
           {
@@ -13991,7 +14545,7 @@
             "id": "b1l13-g02-glossary-142",
             "traditional": "喜歡",
             "simplified": "喜欢",
-            "pinyin": "xǐhuan",
+            "pinyin": "xǐhuān",
             "meaning": "like"
           },
           {
@@ -14563,13 +15117,13 @@
             "complement": [
               {
                 "id": "l13g2-p1-c1",
-                "traditional": "走",
-                "pinyin": "zǒu",
-                "meaning": "walk",
+                "traditional": "看",
+                "pinyin": "kàn",
+                "meaning": "look",
                 "suffix": "。"
               }
             ],
-            "english": "Walk from here toward the entrance."
+            "english": "Look from here toward the doorway."
           },
           {
             "id": "l13g2-p2",
@@ -14656,6 +15210,49 @@
               }
             ],
             "english": "Look forward from here."
+          },
+          {
+            "id": "l13g2-p4",
+            "subject": [
+              {
+                "id": "l13g2-p4-cong",
+                "traditional": "從",
+                "simplified": "从",
+                "pinyin": "cóng",
+                "meaning": "from; starting point"
+              },
+              {
+                "id": "l13g2-p4-left",
+                "traditional": "左",
+                "pinyin": "zuǒ",
+                "meaning": "left"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l13g2-p4-wang",
+                "traditional": "往",
+                "pinyin": "wǎng",
+                "meaning": "toward"
+              },
+              {
+                "id": "l13g2-p4-right",
+                "traditional": "右",
+                "pinyin": "yòu",
+                "meaning": "right"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l13g2-p4-write",
+                "traditional": "寫",
+                "pinyin": "xiě",
+                "meaning": "write",
+                "suffix": "。",
+                "simplified": "写"
+              }
+            ],
+            "english": "Write from the left to the right."
           }
         ],
         "confusion": {
@@ -15295,7 +15892,8 @@
             "correctFeedback": "Left is the start; right is the direction.",
             "repairFeedback": "Use 從左往右."
           }
-        ]
+        ],
+        "exerciseNote": "The book describes three printed pictures with 從……往…… on page 296 and gives no answer key; these written answers follow the printed scenes."
       },
       {
         "bookId": 1,
@@ -15305,14 +15903,14 @@
         "id": "B1L13-G03-P297",
         "partId": 1,
         "grammarNumber": 3,
-        "titleTraditional": "看懂就帶來的「早」和「結果」",
+        "titleTraditional": "「就」的早與結果",
         "titleEnglish": "Read the Time and Result Meanings of 就",
         "learnerPromise": "Recognize something early or a result that follows.",
         "printedPages": [
           297
         ],
         "audioReference": "13-1-3",
-        "explanation": "In a time scene, 就 can mean earlier than expected. After an instruction or condition, 就 can introduce the result.",
+        "explanation": "In a time scene, 就 can mean earlier than expected. After an instruction or condition, 就 can introduce the result. 就 can also show that something is easy to complete or likely to happen — 往前走，就可以看到那家店了。",
         "lessonWorld": {
           "kind": "route",
           "eyebrow": "Phone journey",
@@ -15978,7 +16576,7 @@
           {
             "id": "b1l13-g03-glossary-99",
             "traditional": "的時候",
-            "pinyin": "de shíhou",
+            "pinyin": "de shíhòu",
             "meaning": "when (at the time)"
           },
           {
@@ -16254,7 +16852,7 @@
             "id": "b1l13-g03-glossary-142",
             "traditional": "喜歡",
             "simplified": "喜欢",
-            "pinyin": "xǐhuan",
+            "pinyin": "xǐhuān",
             "meaning": "like"
           },
           {
@@ -16794,6 +17392,13 @@
             "id": "l13g3-p1",
             "subject": [
               {
+                "id": "l13g3-p1-s0",
+                "traditional": "九點開始上班，可是我每天都",
+                "simplified": "九点开始上班，可是我每天都",
+                "pinyin": "jiǔ diǎn kāishǐ shàngbān, kěshì wǒ měitiān dōu",
+                "meaning": "work starts at nine, but I every day"
+              },
+              {
                 "id": "l13g3-p1-s1",
                 "traditional": "八點半",
                 "simplified": "八点半",
@@ -16812,13 +17417,14 @@
             "complement": [
               {
                 "id": "l13g3-p1-c1",
-                "traditional": "到",
-                "pinyin": "dào",
-                "meaning": "arrive",
+                "traditional": "到公司了",
+                "simplified": "到公司了",
+                "pinyin": "dào gōngsī le",
+                "meaning": "arrive at the company",
                 "suffix": "。"
               }
             ],
-            "english": "Arrive as early as 8:30."
+            "english": "Work starts at nine, but I arrive at the company at eight thirty every day."
           },
           {
             "id": "l13g3-p2",
@@ -17486,7 +18092,8 @@
             "correctFeedback": "就 introduces the result of checking.",
             "repairFeedback": "Place 就 before the result action."
           }
-        ]
+        ],
+        "exerciseNote": "The book completes three dialogues with 就 on printed page 297 and gives no answer key; these model answers follow the printed prompts and cues."
       }
     ],
     "dialogue": {
@@ -17647,7 +18254,7 @@
               {
                 "id": "l13d1-2-word-5",
                 "traditional": "網路",
-                "simplified": "网络",
+                "simplified": "网路",
                 "pinyin": "wǎnglù",
                 "meaning": "internet"
               },
@@ -17751,12 +18358,19 @@
                 "meaning": "website address"
               },
               {
+                "id": "l13d1-3-sat",
+                "traditional": "下禮拜六",
+                "simplified": "下礼拜六",
+                "pinyin": "xià lǐbài liù",
+                "meaning": "next Saturday",
+                "prefix": "。"
+              },
+              {
                 "id": "l13d1-3-word-4",
                 "traditional": "老師",
                 "simplified": "老师",
                 "pinyin": "lǎoshī",
-                "meaning": "teacher",
-                "prefix": "。下禮拜六"
+                "meaning": "teacher"
               },
               {
                 "id": "l13d1-3-word-5",
@@ -17788,7 +18402,8 @@
                 "id": "l13d1-3-word-9",
                 "traditional": "參觀",
                 "pinyin": "cānguān",
-                "meaning": "visit"
+                "meaning": "visit",
+                "simplified": "参观"
               },
               {
                 "id": "l13d1-3-word-10",
@@ -18154,7 +18769,7 @@
           "text": {
             "traditional": "我們上個星期六去運動的時候，我到得太晚，真不好意思。下個星期我一定會準時。",
             "simplified": "我们上个星期六去运动的时候，我到得太晚，真不好意思。下个星期我一定会准时。",
-            "pinyin": "Wǒmen shàng ge xīngqīliù qù yùndòng de shíhou, wǒ dào de tài wǎn, zhēn bù hǎoyìsi. Xià ge xīngqī wǒ yídìng huì zhǔnshí.",
+            "pinyin": "Wǒmen shàng ge xīngqīliù qù yùndòng de shíhòu, wǒ dào de tài wǎn, zhēn bù hǎoyìsi. Xià ge xīngqī wǒ yídìng huì zhǔnshí.",
             "english": "I am sorry for being late when we went exercising last Saturday. I’ll definitely be on time next week.",
             "words": [
               {
@@ -18187,8 +18802,9 @@
               {
                 "id": "l13d1-8-word-5",
                 "traditional": "的時候",
-                "pinyin": "de shíhou",
-                "meaning": "when (at the time)"
+                "pinyin": "de shíhòu",
+                "meaning": "when (at the time)",
+                "simplified": "的时候"
               },
               {
                 "id": "l13d1-8-word-6",
@@ -18978,7 +19594,7 @@
           {
             "id": "b1l13-g04-glossary-99",
             "traditional": "的時候",
-            "pinyin": "de shíhou",
+            "pinyin": "de shíhòu",
             "meaning": "when (at the time)"
           },
           {
@@ -19254,7 +19870,7 @@
             "id": "b1l13-g04-glossary-142",
             "traditional": "喜歡",
             "simplified": "喜欢",
-            "pinyin": "xǐhuan",
+            "pinyin": "xǐhuān",
             "meaning": "like"
           },
           {
@@ -19906,41 +20522,48 @@
           "items": [
             {
               "id": "l13g4-confusion-jiu-vs-jiuyao",
-              "question": "I want to say the doors are about to open. 就 or 就要?",
-              "answer": "就要. 要 carries the “about to” idea; 就 alone means “as early as” or “then.”",
-              "wrongTraditional": "博物館就開門了。",
-              "wrongSimplified": "博物馆就开门了。",
+              "question": "The film is about to start. Do I need 了 at the end?",
+              "answer": "Yes. 就要／快要 + event + 了 keeps 了 at the very end: 電影馬上就要開始了。 With a time word like 馬上, 電影馬上就開始了。 is also fine.",
+              "wrongTraditional": "電影馬上就要開始。",
+              "wrongSimplified": "电影马上就要开始。",
               "right": {
-                "traditional": "博物館就要開門了。",
-                "simplified": "博物馆就要开门了。",
-                "pinyin": "Bówùguǎn jiù yào kāimén le.",
-                "english": "The museum is about to open.",
+                "traditional": "電影馬上就要開始了。",
+                "simplified": "电影马上就要开始了。",
+                "pinyin": "Diànyǐng mǎshàng jiù yào kāishǐ le.",
+                "english": "The film is about to start.",
                 "words": [
                   {
-                    "id": "l13g4-conf1-word-1",
-                    "traditional": "博物館",
-                    "simplified": "博物馆",
-                    "pinyin": "bówùguǎn",
-                    "meaning": "museum"
+                    "id": "l13g4-c1-w1",
+                    "traditional": "電影",
+                    "simplified": "电影",
+                    "pinyin": "diànyǐng",
+                    "meaning": "movie"
                   },
                   {
-                    "id": "l13g4-conf1-word-2",
+                    "id": "l13g4-c1-w2",
+                    "traditional": "馬上",
+                    "simplified": "马上",
+                    "pinyin": "mǎshàng",
+                    "meaning": "right away"
+                  },
+                  {
+                    "id": "l13g4-c1-w3",
                     "traditional": "就要",
                     "pinyin": "jiù yào",
                     "meaning": "about to"
                   },
                   {
-                    "id": "l13g4-conf1-word-3",
-                    "traditional": "開門",
-                    "simplified": "开门",
-                    "pinyin": "kāimén",
-                    "meaning": "open the doors"
+                    "id": "l13g4-c1-w4",
+                    "traditional": "開始",
+                    "simplified": "开始",
+                    "pinyin": "kāishǐ",
+                    "meaning": "start"
                   },
                   {
-                    "id": "l13g4-conf1-word-4",
+                    "id": "l13g4-c1-w5",
                     "traditional": "了",
                     "pinyin": "le",
-                    "meaning": "change or imminent-event marker",
+                    "meaning": "marks the coming change",
                     "suffix": "。"
                   }
                 ]
@@ -20257,7 +20880,8 @@
                   "id": "l13g4-e3-word-8",
                   "traditional": "還沒",
                   "pinyin": "hái méi",
-                  "meaning": "still not"
+                  "meaning": "still not",
+                  "simplified": "还没"
                 },
                 {
                   "id": "l13g4-e3-word-9",
@@ -20477,7 +21101,8 @@
             "correctFeedback": "快要 comes before the approaching arrival.",
             "repairFeedback": "Use 快要 + event + 了."
           }
-        ]
+        ],
+        "exerciseNote": "The book completes three sentences with 就（要）……了 on printed page 303 and gives no answer key; these model answers follow the printed cues."
       },
       {
         "bookId": 1,
@@ -20510,7 +21135,8 @@
         },
         "focusTerms": [
           "分鐘",
-          "小時"
+          "小時",
+          "的"
         ],
         "teachingGlossary": [
           {
@@ -21163,7 +21789,7 @@
           {
             "id": "b1l13-g05-glossary-99",
             "traditional": "的時候",
-            "pinyin": "de shíhou",
+            "pinyin": "de shíhòu",
             "meaning": "when (at the time)"
           },
           {
@@ -21439,7 +22065,7 @@
             "id": "b1l13-g05-glossary-142",
             "traditional": "喜歡",
             "simplified": "喜欢",
-            "pinyin": "xǐhuan",
+            "pinyin": "xǐhuān",
             "meaning": "like"
           },
           {
@@ -22002,10 +22628,16 @@
             "id": "l13g5-p2",
             "subject": [
               {
+                "id": "l13g5-p2-s0",
+                "traditional": "我每天",
+                "pinyin": "wǒ měitiān",
+                "meaning": "I every day"
+              },
+              {
                 "id": "l13g5-p2-s1",
-                "traditional": "跑步",
-                "pinyin": "pǎobù",
-                "meaning": "run"
+                "traditional": "跑步跑",
+                "pinyin": "pǎobù pǎo",
+                "meaning": "run (repeated verb + 跑)"
               }
             ],
             "grammar": [],
@@ -22019,7 +22651,37 @@
                 "suffix": "。"
               }
             ],
-            "english": "Run for thirty minutes."
+            "english": "I run for thirty minutes every day."
+          },
+          {
+            "id": "l13g5-p2b",
+            "subject": [
+              {
+                "id": "l13g5-p2b-s0",
+                "traditional": "我每天",
+                "pinyin": "wǒ měitiān",
+                "meaning": "I every day"
+              },
+              {
+                "id": "l13g5-p2b-s1",
+                "traditional": "睡覺睡",
+                "simplified": "睡觉睡",
+                "pinyin": "shuìjiào shuì",
+                "meaning": "sleep (repeated verb + 睡)"
+              }
+            ],
+            "grammar": [],
+            "complement": [
+              {
+                "id": "l13g5-p2b-c1",
+                "traditional": "七個小時",
+                "simplified": "七个小时",
+                "pinyin": "qī ge xiǎoshí",
+                "meaning": "seven hours",
+                "suffix": "。"
+              }
+            ],
+            "english": "I sleep for seven hours every day."
           },
           {
             "id": "l13g5-p3",
@@ -22051,6 +22713,35 @@
               }
             ],
             "english": "Attend class for three hours."
+          },
+          {
+            "id": "l13g5-p4",
+            "subject": [
+              {
+                "id": "l13g5-p4-s0",
+                "traditional": "我每天",
+                "pinyin": "wǒ měitiān",
+                "meaning": "I every day"
+              },
+              {
+                "id": "l13g5-p4-s1",
+                "traditional": "睡",
+                "pinyin": "shuì",
+                "meaning": "sleep"
+              }
+            ],
+            "grammar": [],
+            "complement": [
+              {
+                "id": "l13g5-p4-c1",
+                "traditional": "七個小時的覺",
+                "simplified": "七个小时的觉",
+                "pinyin": "qī ge xiǎoshí de jiào",
+                "meaning": "seven hours of sleep",
+                "suffix": "。"
+              }
+            ],
+            "english": "I sleep seven hours every day."
           }
         ],
         "confusion": {
@@ -22376,10 +23067,10 @@
             "number": 4,
             "teachingNote": "Duration + 的 appears before the thing.",
             "text": {
-              "traditional": "我明天要開六個小時的車。",
-              "simplified": "我明天要开六个小时的车。",
-              "pinyin": "Wǒ míngtiān yào kāi liù ge xiǎoshí de chē.",
-              "english": "I will drive for six hours tomorrow.",
+              "traditional": "我明天要開六個小時的車，我想先去睡覺。",
+              "simplified": "我明天要开六个小时的车，我想先去睡觉。",
+              "pinyin": "Wǒ míngtiān yào kāi liù ge xiǎoshí de chē, wǒ xiǎng xiān qù shuìjiào.",
+              "english": "I have to drive six hours tomorrow; I want to go to sleep first.",
               "words": [
                 {
                   "id": "l13g5-e4-word-1",
@@ -22425,10 +23116,359 @@
                   "simplified": "车",
                   "pinyin": "chē",
                   "meaning": "car",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l13g5-e4-tail",
+                  "traditional": "我想先去睡覺",
+                  "simplified": "我想先去睡觉",
+                  "pinyin": "wǒ xiǎng xiān qù shuìjiào",
+                  "meaning": "I want to sleep first",
                   "suffix": "。"
                 }
               ]
             }
+          },
+          {
+            "id": "l13g5-e5",
+            "number": 5,
+            "text": {
+              "traditional": "我們從學校走十分鐘，就可以到那家銀行了。",
+              "simplified": "我们从学校走十分钟，就可以到那家银行了。",
+              "pinyin": "Wǒmen cóng xuéxiào zǒu shí fēnzhōng, jiù kěyǐ dào nà jiā yínháng le.",
+              "english": "If we walk ten minutes from school, we can get to that bank.",
+              "words": [
+                {
+                  "id": "l13g5-e5-w1",
+                  "traditional": "我們",
+                  "simplified": "我们",
+                  "pinyin": "wǒmen",
+                  "meaning": "we"
+                },
+                {
+                  "id": "l13g5-e5-w2",
+                  "traditional": "從學校",
+                  "simplified": "从学校",
+                  "pinyin": "cóng xuéxiào",
+                  "meaning": "from school"
+                },
+                {
+                  "id": "l13g5-e5-w3",
+                  "traditional": "走",
+                  "pinyin": "zǒu",
+                  "meaning": "walk"
+                },
+                {
+                  "id": "l13g5-e5-w4",
+                  "traditional": "十分鐘",
+                  "simplified": "十分钟",
+                  "pinyin": "shí fēnzhōng",
+                  "meaning": "ten minutes",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l13g5-e5-w5",
+                  "traditional": "就可以",
+                  "pinyin": "jiù kěyǐ",
+                  "meaning": "then can"
+                },
+                {
+                  "id": "l13g5-e5-w6",
+                  "traditional": "到",
+                  "pinyin": "dào",
+                  "meaning": "arrive at"
+                },
+                {
+                  "id": "l13g5-e5-w7",
+                  "traditional": "那家銀行",
+                  "simplified": "那家银行",
+                  "pinyin": "nà jiā yínháng",
+                  "meaning": "that bank"
+                },
+                {
+                  "id": "l13g5-e5-w8",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "marks the change",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l13g5-e6",
+            "number": 6,
+            "text": {
+              "traditional": "不好意思，請您再等兩分鐘，李先生很快就來了。",
+              "simplified": "不好意思，请您再等两分钟，李先生很快就来了。",
+              "pinyin": "Bù hǎoyìsi, qǐng nín zài děng liǎng fēnzhōng, Lǐ xiānsheng hěn kuài jiù lái le.",
+              "english": "Sorry, please wait two more minutes; Mr. Li will be here very soon.",
+              "words": [
+                {
+                  "id": "l13g5-e6-w1",
+                  "traditional": "不好意思",
+                  "pinyin": "bù hǎoyìsi",
+                  "meaning": "sorry",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l13g5-e6-w2",
+                  "traditional": "請您",
+                  "simplified": "请您",
+                  "pinyin": "qǐng nín",
+                  "meaning": "please (polite)"
+                },
+                {
+                  "id": "l13g5-e6-w3",
+                  "traditional": "再等",
+                  "pinyin": "zài děng",
+                  "meaning": "wait another"
+                },
+                {
+                  "id": "l13g5-e6-w4",
+                  "traditional": "兩分鐘",
+                  "simplified": "两分钟",
+                  "pinyin": "liǎng fēnzhōng",
+                  "meaning": "two minutes",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l13g5-e6-w5",
+                  "traditional": "李先生",
+                  "pinyin": "Lǐ xiānsheng",
+                  "meaning": "Mr. Li"
+                },
+                {
+                  "id": "l13g5-e6-w6",
+                  "traditional": "很快就來了",
+                  "simplified": "很快就来了",
+                  "pinyin": "hěn kuài jiù lái le",
+                  "meaning": "will come very soon",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l13g5-e7",
+            "number": 7,
+            "text": {
+              "traditional": "A：你明天要上課上幾個鐘頭？ B：我明天要上課上三個鐘頭。",
+              "simplified": "A：你明天要上课上几个钟头？ B：我明天要上课上三个钟头。",
+              "pinyin": "A: Nǐ míngtiān yào shàngkè shàng jǐ ge zhōngtóu? B: Wǒ míngtiān yào shàngkè shàng sān ge zhōngtóu.",
+              "english": "A: How many hours of class do you have tomorrow? B: I have three hours of class tomorrow.",
+              "words": [
+                {
+                  "id": "l13g5-e7-w1",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you",
+                  "prefix": "A："
+                },
+                {
+                  "id": "l13g5-e7-w2",
+                  "traditional": "明天",
+                  "pinyin": "míngtiān",
+                  "meaning": "tomorrow"
+                },
+                {
+                  "id": "l13g5-e7-w3",
+                  "traditional": "要上課上",
+                  "simplified": "要上课上",
+                  "pinyin": "yào shàngkè shàng",
+                  "meaning": "will attend class (repeated verb)"
+                },
+                {
+                  "id": "l13g5-e7-w4",
+                  "traditional": "幾個鐘頭",
+                  "simplified": "几个钟头",
+                  "pinyin": "jǐ ge zhōngtóu",
+                  "meaning": "how many hours",
+                  "suffix": "？"
+                },
+                {
+                  "id": "l13g5-e7-w5",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me",
+                  "prefix": "B："
+                },
+                {
+                  "id": "l13g5-e7-w6",
+                  "traditional": "明天",
+                  "pinyin": "míngtiān",
+                  "meaning": "tomorrow"
+                },
+                {
+                  "id": "l13g5-e7-w7",
+                  "traditional": "要上課上",
+                  "simplified": "要上课上",
+                  "pinyin": "yào shàngkè shàng",
+                  "meaning": "will attend class (repeated verb)"
+                },
+                {
+                  "id": "l13g5-e7-w8",
+                  "traditional": "三個鐘頭",
+                  "simplified": "三个钟头",
+                  "pinyin": "sān ge zhōngtóu",
+                  "meaning": "three hours",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l13g5-e8",
+            "number": 8,
+            "text": {
+              "traditional": "A：我弟弟很愛玩手機，每天差不多玩五個小時。 B：玩五個小時的手機！時間太長了！",
+              "simplified": "A：我弟弟很爱玩手机，每天差不多玩五个小时。 B：玩五个小时的手机！时间太长了！",
+              "pinyin": "A: Wǒ dìdi hěn ài wán shǒujī, měitiān chàbuduō wán wǔ ge xiǎoshí. B: Wán wǔ ge xiǎoshí de shǒujī! Shíjiān tài cháng le!",
+              "english": "A: My younger brother loves playing on his phone; he plays about five hours a day. B: Five hours of phone! That is too long!",
+              "words": [
+                {
+                  "id": "l13g5-e8-w1",
+                  "traditional": "我弟弟",
+                  "pinyin": "wǒ dìdi",
+                  "meaning": "my younger brother",
+                  "prefix": "A："
+                },
+                {
+                  "id": "l13g5-e8-w2",
+                  "traditional": "很愛玩手機",
+                  "simplified": "很爱玩手机",
+                  "pinyin": "hěn ài wán shǒujī",
+                  "meaning": "loves playing on his phone",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l13g5-e8-w3",
+                  "traditional": "每天差不多",
+                  "pinyin": "měitiān chàbuduō",
+                  "meaning": "about every day"
+                },
+                {
+                  "id": "l13g5-e8-w4",
+                  "traditional": "玩",
+                  "pinyin": "wán",
+                  "meaning": "play"
+                },
+                {
+                  "id": "l13g5-e8-w5",
+                  "traditional": "五個小時",
+                  "simplified": "五个小时",
+                  "pinyin": "wǔ ge xiǎoshí",
+                  "meaning": "five hours",
+                  "suffix": "。"
+                },
+                {
+                  "id": "l13g5-e8-w6",
+                  "traditional": "玩五個小時的手機",
+                  "simplified": "玩五个小时的手机",
+                  "pinyin": "wán wǔ ge xiǎoshí de shǒujī",
+                  "meaning": "five hours of phone",
+                  "prefix": "B：",
+                  "suffix": "！"
+                },
+                {
+                  "id": "l13g5-e8-w7",
+                  "traditional": "時間太長了",
+                  "simplified": "时间太长了",
+                  "pinyin": "shíjiān tài cháng le",
+                  "meaning": "that is too long",
+                  "suffix": "！"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l13g5-e9",
+            "number": 9,
+            "text": {
+              "traditional": "A：聽說那個博物館不太遠，只要坐五分鐘的捷運。 B：是啊，如果你想走路去也可以，走二十分鐘的路就到了。",
+              "simplified": "A：听说那个博物馆不太远，只要坐五分钟的捷运。 B：是啊，如果你想走路去也可以，走二十分钟的路就到了。",
+              "pinyin": "A: Tīngshuō nàge bówùguǎn bú tài yuǎn, zhǐyào zuò wǔ fēnzhōng de jiéyùn. B: Shì a, rúguǒ nǐ xiǎng zǒulù qù yě kěyǐ, zǒu èrshí fēnzhōng de lù jiù dào le.",
+              "english": "A: I hear that museum is not far; it is only a five-minute MRT ride. B: Yes, if you want to walk, you can too — a twenty-minute walk and you are there.",
+              "words": [
+                {
+                  "id": "l13g5-e9-w1",
+                  "traditional": "聽說",
+                  "simplified": "听说",
+                  "pinyin": "tīngshuō",
+                  "meaning": "I hear",
+                  "prefix": "A："
+                },
+                {
+                  "id": "l13g5-e9-w2",
+                  "traditional": "那個博物館",
+                  "simplified": "那个博物馆",
+                  "pinyin": "nàge bówùguǎn",
+                  "meaning": "that museum"
+                },
+                {
+                  "id": "l13g5-e9-w3",
+                  "traditional": "不太遠",
+                  "simplified": "不太远",
+                  "pinyin": "bú tài yuǎn",
+                  "meaning": "not too far",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l13g5-e9-w4",
+                  "traditional": "只要",
+                  "pinyin": "zhǐyào",
+                  "meaning": "only need to"
+                },
+                {
+                  "id": "l13g5-e9-w5",
+                  "traditional": "坐五分鐘的捷運",
+                  "simplified": "坐五分钟的捷运",
+                  "pinyin": "zuò wǔ fēnzhōng de jiéyùn",
+                  "meaning": "a five-minute MRT ride",
+                  "suffix": "。"
+                },
+                {
+                  "id": "l13g5-e9-w6",
+                  "traditional": "是啊",
+                  "pinyin": "shì a",
+                  "meaning": "yes",
+                  "prefix": "B：",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l13g5-e9-w7",
+                  "traditional": "如果你想走路去",
+                  "pinyin": "rúguǒ nǐ xiǎng zǒulù qù",
+                  "meaning": "if you want to walk"
+                },
+                {
+                  "id": "l13g5-e9-w8",
+                  "traditional": "也可以",
+                  "pinyin": "yě kěyǐ",
+                  "meaning": "that is fine too",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l13g5-e9-w9",
+                  "traditional": "走二十分鐘的路",
+                  "simplified": "走二十分钟的路",
+                  "pinyin": "zǒu èrshí fēnzhōng de lù",
+                  "meaning": "a twenty-minute walk"
+                },
+                {
+                  "id": "l13g5-e9-w10",
+                  "traditional": "就到了",
+                  "pinyin": "jiù dào le",
+                  "meaning": "you are there",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
           }
         ],
         "exerciseTitle": "Attach the clock",
@@ -22555,7 +23595,8 @@
             "correctFeedback": "Duration + 的 appears before 中文.",
             "repairFeedback": "Use 學 + duration + 的 + thing."
           }
-        ]
+        ],
+        "exerciseNote": "The book rearranges and rewrites sentences with time-duration on printed pages 304 and 306 and gives no answer key; these model answers follow the printed patterns."
       }
     ],
     "dialogue": {
@@ -22910,7 +23951,8 @@
                 "id": "l13d2-5-word-4",
                 "traditional": "參觀",
                 "pinyin": "cānguān",
-                "meaning": "visit"
+                "meaning": "visit",
+                "simplified": "参观"
               },
               {
                 "id": "l13d2-5-word-5",
@@ -23196,7 +24238,7 @@
           "text": {
             "traditional": "我知道你非常喜歡歷史，我想你今天一定會很開心。",
             "simplified": "我知道你非常喜欢历史，我想你今天一定会很开心。",
-            "pinyin": "Wǒ zhīdào nǐ fēicháng xǐhuan lìshǐ, wǒ xiǎng nǐ jīntiān yídìng huì hěn kāixīn.",
+            "pinyin": "Wǒ zhīdào nǐ fēicháng xǐhuān lìshǐ, wǒ xiǎng nǐ jīntiān yídìng huì hěn kāixīn.",
             "english": "I know you like history very much. I think you’ll enjoy it a lot today.",
             "words": [
               {
@@ -23227,7 +24269,7 @@
                 "id": "l13d2-7-word-5",
                 "traditional": "喜歡",
                 "simplified": "喜欢",
-                "pinyin": "xǐhuan",
+                "pinyin": "xǐhuān",
                 "meaning": "like"
               },
               {
@@ -23611,7 +24653,8 @@
                 "id": "l13d2-12-word-4",
                 "traditional": "參觀",
                 "pinyin": "cānguān",
-                "meaning": "visit"
+                "meaning": "visit",
+                "simplified": "参观"
               },
               {
                 "id": "l13d2-12-word-5",

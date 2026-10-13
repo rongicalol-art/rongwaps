@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { AnimatePresence } from "motion/react";
 import { useAppStore } from "../../../store/useAppStore";
 import { SingleBreakdownView } from "./breakdown/SingleBreakdownView";
+import { useBreakdownBackHandler } from "../hooks/useBreakdownBackHandler";
 import { createPortal } from "react-dom";
 import { SAMPLE_BOOKS } from '../../../data/books';
 import { WorkspaceWindow } from '../../../lib/widgets';
@@ -52,6 +53,13 @@ export function CharacterBreakdownOverlay({
     setBreakdownStack((prev) => prev.slice(0, -1));
   };
 
+  const { handleUiBack, handleUiClose } = useBreakdownBackHandler({
+    isOpen: Boolean(activeBreakdown),
+    depth: breakdownStack.length,
+    onPop: popBreakdown,
+    onClose,
+  });
+
   const [portalNode, setPortalNode] = useState<HTMLElement | null>(null);
   useEffect(() => {
     setPortalNode(document.getElementById("activity-overlays-root") || document.body);
@@ -69,7 +77,7 @@ export function CharacterBreakdownOverlay({
         key={`depth-0-${rootBreakdown.word}`}
         word={rootBreakdown.word}
         initialCharIndex={rootBreakdown.index}
-        onClose={onClose}
+        onClose={handleUiClose}
         activeBook={activeBook}
         pushBreakdown={pushBreakdown}
         depth={0}
@@ -82,7 +90,7 @@ export function CharacterBreakdownOverlay({
             key={`depth-${idx + 1}-${item.word}`}
             word={item.word}
             initialCharIndex={item.index}
-            onBack={popBreakdown}
+            onBack={handleUiBack}
             activeBook={activeBook}
             pushBreakdown={pushBreakdown}
             depth={idx + 1}

@@ -16,14 +16,8 @@
       97
     ],
     "audioReference": "04-1-3",
-    "explanation": "Move a known topic to the front of the sentence for emphasis: Topic, then comment. When listing multiple items up front, use 都 (\"all\") before the verb.",
+    "explanation": "Move a known topic to the front of the sentence. Pause, then say what happens to it. When naming several items up front, use 都 for \"all of them\".",
     "focusTerms": [
-      "話題",
-      "话题",
-      "主語",
-      "主语",
-      "動作",
-      "动作",
       "都"
     ],
     "teachingGlossary": [
@@ -953,6 +947,92 @@
             }
           ]
         }
+      },
+      {
+        "id": "g1-example-4",
+        "number": 4,
+        "text": {
+          "traditional": "A：你想吃哪種蛋糕？ B：這兩種蛋糕，我都不想吃。",
+          "simplified": "A：你想吃哪种蛋糕？ B：这两种蛋糕，我都不想吃。",
+          "pinyin": "A: Nǐ xiǎng chī nǎ zhǒng dàngāo? B: Zhè liǎng zhǒng dàngāo, wǒ dōu bù xiǎng chī.",
+          "english": "A: Which kind of cake do you want to eat? B: I do not want to eat either of these two.",
+          "words": [
+            {
+              "id": "b1l04-g1-e4-word-1",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l04-g1-e4-word-2",
+              "traditional": "想",
+              "pinyin": "xiǎng",
+              "meaning": "want to"
+            },
+            {
+              "id": "b1l04-g1-e4-word-3",
+              "traditional": "吃",
+              "pinyin": "chī",
+              "meaning": "eat"
+            },
+            {
+              "id": "b1l04-g1-e4-word-4",
+              "traditional": "哪種",
+              "simplified": "哪种",
+              "pinyin": "nǎ zhǒng",
+              "meaning": "which kind"
+            },
+            {
+              "id": "b1l04-g1-e4-word-5",
+              "traditional": "蛋糕",
+              "pinyin": "dàngāo",
+              "meaning": "cake",
+              "suffix": "？"
+            },
+            {
+              "id": "b1l04-g1-e4-word-6",
+              "traditional": "這兩種",
+              "simplified": "这两种",
+              "pinyin": "zhè liǎng zhǒng",
+              "meaning": "these two kinds",
+              "prefix": "B："
+            },
+            {
+              "id": "b1l04-g1-e4-word-7",
+              "traditional": "蛋糕",
+              "pinyin": "dàngāo",
+              "meaning": "cake",
+              "suffix": "，"
+            },
+            {
+              "id": "b1l04-g1-e4-word-8",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me"
+            },
+            {
+              "id": "b1l04-g1-e4-word-9",
+              "traditional": "都",
+              "pinyin": "dōu",
+              "meaning": "both; all"
+            },
+            {
+              "id": "b1l04-g1-e4-word-10",
+              "traditional": "不想",
+              "pinyin": "bù xiǎng",
+              "meaning": "do not want to"
+            },
+            {
+              "id": "b1l04-g1-e4-word-11",
+              "traditional": "吃",
+              "pinyin": "chī",
+              "meaning": "eat",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
       }
     ],
     "exerciseTitle": "Put the thing in the spotlight",
@@ -971,7 +1051,7 @@
         "id": "g1-cue-gifts",
         "label": "Choice cue",
         "pinyin": "dà de · xiǎo de",
-        "detail": "The printed exercise uses gift pictures to show several gifts at the start."
+        "detail": "The book’s example 3 shows gift boxes in two sizes to choose from."
       }
     ],
     "questions": [
@@ -1354,7 +1434,8 @@
           }
         ],
         "exampleIds": [
-          "g1-example-3"
+          "g1-example-3",
+          "g1-example-4"
         ]
       }
     ]
@@ -1375,12 +1456,10 @@
       99
     ],
     "audioReference": "04-1-3",
-    "explanation": "Express extremes with 太 + Adjective + 了. It can mean excessive (\"too expensive\") or enthusiastic (\"so good!\").",
+    "explanation": "Wrap a description with 太 before it and 了 after it. The frame can mean “too,” or an enthusiastic “so” or “really,” depending on context.",
     "focusTerms": [
       "太",
       "了",
-      "情況",
-      "情况",
       "熱",
       "热",
       "累",
@@ -2055,10 +2134,9 @@
         "grammar": [
           {
             "id": "g3-p2-hot",
-            "traditional": "熱",
-            "simplified": "热",
-            "pinyin": "rè",
-            "meaning": "hot"
+            "traditional": "大",
+            "pinyin": "dà",
+            "meaning": "big"
           }
         ],
         "complement": [
@@ -2070,36 +2148,7 @@
             "suffix": "！"
           }
         ],
-        "english": "It is too hot!"
-      },
-      {
-        "id": "g3-pattern-3",
-        "subject": [
-          {
-            "id": "g3-p3-too",
-            "traditional": "太",
-            "pinyin": "tài",
-            "meaning": "too; extremely"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "g3-p3-delicious",
-            "traditional": "好吃",
-            "pinyin": "hǎochī",
-            "meaning": "delicious"
-          }
-        ],
-        "complement": [
-          {
-            "id": "g3-p3-le",
-            "traditional": "了",
-            "pinyin": "le",
-            "meaning": "marks a new or strong situation",
-            "suffix": "！"
-          }
-        ],
-        "english": "It is so delicious!"
+        "english": "It is so big!"
       }
     ],
     "confusion": {
@@ -2502,7 +2551,7 @@
           },
           {
             "type": "text",
-            "traditional": "！"
+            "traditional": "。"
           }
         ],
         "tiles": [
@@ -2635,13 +2684,9 @@
       98
     ],
     "audioReference": "04-1-3",
-    "explanation": "Put 也 (\"also / too\") before the verb or adjective to show that another person or item matches the situation just mentioned.",
+    "explanation": "State the first situation first. In the next clause, put 也 before the repeated action or description to show that another person or thing matches it.",
     "focusTerms": [
-      "也",
-      "第二個",
-      "第二个",
-      "相同情況",
-      "相同情况"
+      "也"
     ],
     "teachingGlossary": [
       {
@@ -3888,7 +3933,8 @@
                   "traditional": "很可愛",
                   "pinyin": "hěn kě’ài",
                   "meaning": "very cute",
-                  "suffix": "。"
+                  "suffix": "。",
+                  "simplified": "很可爱"
                 }
               ]
             ],
@@ -3914,7 +3960,8 @@
                   "traditional": "買書",
                   "pinyin": "mǎi shū",
                   "meaning": "buy a book",
-                  "suffix": "，"
+                  "suffix": "，",
+                  "simplified": "买书"
                 }
               ],
               [
@@ -3931,7 +3978,8 @@
                   "traditional": "買筆",
                   "pinyin": "mǎi bǐ",
                   "meaning": "buy a pen",
-                  "suffix": "。"
+                  "suffix": "。",
+                  "simplified": "买笔"
                 }
               ]
             ],
@@ -3972,8 +4020,9 @@
                 {
                   "id": "g2-s2a-this-pen",
                   "traditional": "這枝筆",
-                  "pinyin": "zhè zhī qiānbǐ",
-                  "meaning": "this pen"
+                  "pinyin": "zhè zhī bǐ",
+                  "meaning": "this pen",
+                  "simplified": "这枝笔"
                 }
               ],
               [
@@ -3989,8 +4038,9 @@
                 {
                   "id": "g2-s2a-that-pen",
                   "traditional": "那枝筆",
-                  "pinyin": "nà zhī qiānbǐ",
-                  "meaning": "that pen"
+                  "pinyin": "nà zhī bǐ",
+                  "meaning": "that pen",
+                  "simplified": "那枝笔"
                 }
               ],
               [
@@ -4033,7 +4083,8 @@
                   "traditional": "買書",
                   "pinyin": "mǎi shū",
                   "meaning": "buy a book",
-                  "suffix": "，"
+                  "suffix": "，",
+                  "simplified": "买书"
                 }
               ],
               [
@@ -4058,7 +4109,8 @@
                   "traditional": "買書",
                   "pinyin": "mǎi shū",
                   "meaning": "buy a book",
-                  "suffix": "。"
+                  "suffix": "。",
+                  "simplified": "买书"
                 }
               ]
             ],
@@ -4096,14 +4148,8 @@
           97
         ],
         "audioReference": "04-1-3",
-        "explanation": "Chinese can move a known thing to the front of the sentence. Pause, then say what the person does with it or how they feel about it. With several things up front, 都 means \"all of them\".",
+        "explanation": "Move a known topic to the front of the sentence. Pause, then say what happens to it. When naming several items up front, use 都 for \"all of them\".",
         "focusTerms": [
-          "話題",
-          "话题",
-          "主語",
-          "主语",
-          "動作",
-          "动作",
           "都"
         ],
         "teachingGlossary": [
@@ -5033,6 +5079,92 @@
                 }
               ]
             }
+          },
+          {
+            "id": "g1-example-4",
+            "number": 4,
+            "text": {
+              "traditional": "A：你想吃哪種蛋糕？ B：這兩種蛋糕，我都不想吃。",
+              "simplified": "A：你想吃哪种蛋糕？ B：这两种蛋糕，我都不想吃。",
+              "pinyin": "A: Nǐ xiǎng chī nǎ zhǒng dàngāo? B: Zhè liǎng zhǒng dàngāo, wǒ dōu bù xiǎng chī.",
+              "english": "A: Which kind of cake do you want to eat? B: I do not want to eat either of these two.",
+              "words": [
+                {
+                  "id": "b1l04-g1-e4-word-1",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l04-g1-e4-word-2",
+                  "traditional": "想",
+                  "pinyin": "xiǎng",
+                  "meaning": "want to"
+                },
+                {
+                  "id": "b1l04-g1-e4-word-3",
+                  "traditional": "吃",
+                  "pinyin": "chī",
+                  "meaning": "eat"
+                },
+                {
+                  "id": "b1l04-g1-e4-word-4",
+                  "traditional": "哪種",
+                  "simplified": "哪种",
+                  "pinyin": "nǎ zhǒng",
+                  "meaning": "which kind"
+                },
+                {
+                  "id": "b1l04-g1-e4-word-5",
+                  "traditional": "蛋糕",
+                  "pinyin": "dàngāo",
+                  "meaning": "cake",
+                  "suffix": "？"
+                },
+                {
+                  "id": "b1l04-g1-e4-word-6",
+                  "traditional": "這兩種",
+                  "simplified": "这两种",
+                  "pinyin": "zhè liǎng zhǒng",
+                  "meaning": "these two kinds",
+                  "prefix": "B："
+                },
+                {
+                  "id": "b1l04-g1-e4-word-7",
+                  "traditional": "蛋糕",
+                  "pinyin": "dàngāo",
+                  "meaning": "cake",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b1l04-g1-e4-word-8",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                },
+                {
+                  "id": "b1l04-g1-e4-word-9",
+                  "traditional": "都",
+                  "pinyin": "dōu",
+                  "meaning": "both; all"
+                },
+                {
+                  "id": "b1l04-g1-e4-word-10",
+                  "traditional": "不想",
+                  "pinyin": "bù xiǎng",
+                  "meaning": "do not want to"
+                },
+                {
+                  "id": "b1l04-g1-e4-word-11",
+                  "traditional": "吃",
+                  "pinyin": "chī",
+                  "meaning": "eat",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
           }
         ],
         "exerciseTitle": "Put the thing in the spotlight",
@@ -5051,7 +5183,7 @@
             "id": "g1-cue-gifts",
             "label": "Choice cue",
             "pinyin": "dà de · xiǎo de",
-            "detail": "The printed exercise uses gift pictures to show several gifts at the start."
+            "detail": "The book’s example 3 shows gift boxes in two sizes to choose from."
           }
         ],
         "questions": [
@@ -5434,7 +5566,8 @@
               }
             ],
             "exampleIds": [
-              "g1-example-3"
+              "g1-example-3",
+              "g1-example-4"
             ]
           }
         ]
@@ -5455,13 +5588,9 @@
           98
         ],
         "audioReference": "04-1-3",
-        "explanation": "First say one situation. In the next part of the sentence, put 也 before the repeated action or description. 也 tells the listener that another person or thing matches what was already said.",
+        "explanation": "State the first situation first. In the next clause, put 也 before the repeated action or description to show that another person or thing matches it.",
         "focusTerms": [
-          "也",
-          "第二個",
-          "第二个",
-          "相同情況",
-          "相同情况"
+          "也"
         ],
         "teachingGlossary": [
           {
@@ -6708,7 +6837,8 @@
                       "traditional": "很可愛",
                       "pinyin": "hěn kě’ài",
                       "meaning": "very cute",
-                      "suffix": "。"
+                      "suffix": "。",
+                      "simplified": "很可爱"
                     }
                   ]
                 ],
@@ -6734,7 +6864,8 @@
                       "traditional": "買書",
                       "pinyin": "mǎi shū",
                       "meaning": "buy a book",
-                      "suffix": "，"
+                      "suffix": "，",
+                      "simplified": "买书"
                     }
                   ],
                   [
@@ -6751,7 +6882,8 @@
                       "traditional": "買筆",
                       "pinyin": "mǎi bǐ",
                       "meaning": "buy a pen",
-                      "suffix": "。"
+                      "suffix": "。",
+                      "simplified": "买笔"
                     }
                   ]
                 ],
@@ -6792,8 +6924,9 @@
                     {
                       "id": "g2-s2a-this-pen",
                       "traditional": "這枝筆",
-                      "pinyin": "zhè zhī qiānbǐ",
-                      "meaning": "this pen"
+                      "pinyin": "zhè zhī bǐ",
+                      "meaning": "this pen",
+                      "simplified": "这枝笔"
                     }
                   ],
                   [
@@ -6809,8 +6942,9 @@
                     {
                       "id": "g2-s2a-that-pen",
                       "traditional": "那枝筆",
-                      "pinyin": "nà zhī qiānbǐ",
-                      "meaning": "that pen"
+                      "pinyin": "nà zhī bǐ",
+                      "meaning": "that pen",
+                      "simplified": "那枝笔"
                     }
                   ],
                   [
@@ -6853,7 +6987,8 @@
                       "traditional": "買書",
                       "pinyin": "mǎi shū",
                       "meaning": "buy a book",
-                      "suffix": "，"
+                      "suffix": "，",
+                      "simplified": "买书"
                     }
                   ],
                   [
@@ -6878,7 +7013,8 @@
                       "traditional": "買書",
                       "pinyin": "mǎi shū",
                       "meaning": "buy a book",
-                      "suffix": "。"
+                      "suffix": "。",
+                      "simplified": "买书"
                     }
                   ]
                 ],
@@ -6912,8 +7048,6 @@
         "focusTerms": [
           "太",
           "了",
-          "情況",
-          "情况",
           "熱",
           "热",
           "累",
@@ -7588,10 +7722,9 @@
             "grammar": [
               {
                 "id": "g3-p2-hot",
-                "traditional": "熱",
-                "simplified": "热",
-                "pinyin": "rè",
-                "meaning": "hot"
+                "traditional": "大",
+                "pinyin": "dà",
+                "meaning": "big"
               }
             ],
             "complement": [
@@ -7603,36 +7736,7 @@
                 "suffix": "！"
               }
             ],
-            "english": "It is too hot!"
-          },
-          {
-            "id": "g3-pattern-3",
-            "subject": [
-              {
-                "id": "g3-p3-too",
-                "traditional": "太",
-                "pinyin": "tài",
-                "meaning": "too; extremely"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "g3-p3-delicious",
-                "traditional": "好吃",
-                "pinyin": "hǎochī",
-                "meaning": "delicious"
-              }
-            ],
-            "complement": [
-              {
-                "id": "g3-p3-le",
-                "traditional": "了",
-                "pinyin": "le",
-                "meaning": "marks a new or strong situation",
-                "suffix": "！"
-              }
-            ],
-            "english": "It is so delicious!"
+            "english": "It is so big!"
           }
         ],
         "confusion": {
@@ -8035,7 +8139,7 @@
               },
               {
                 "type": "text",
-                "traditional": "！"
+                "traditional": "。"
               }
             ],
             "tiles": [

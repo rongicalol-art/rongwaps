@@ -17,6 +17,7 @@ export interface UseFlashcardKeyboardShortcutsOptions {
   triggerKeyboardRate: (level: number, dir: number) => void;
   setIsFlipped: (value: boolean | ((prev: boolean) => boolean)) => void;
   onManualRevealAudio: () => void;
+  onToggleHint?: () => void;
 }
 
 export function useFlashcardKeyboardShortcuts({
@@ -34,6 +35,7 @@ export function useFlashcardKeyboardShortcuts({
   triggerKeyboardRate,
   setIsFlipped,
   onManualRevealAudio,
+  onToggleHint,
 }: UseFlashcardKeyboardShortcutsOptions) {
   const currentIndexRef = useRef(currentIndex);
   const cardsLengthRef = useRef(cardsLength);
@@ -42,6 +44,7 @@ export function useFlashcardKeyboardShortcuts({
   const isReviewDeckRef = useRef(isReviewDeck);
   const completedRef = useRef(completed);
   const introRef = useRef(isIntroActive);
+  const onToggleHintRef = useRef(onToggleHint);
 
   currentIndexRef.current = currentIndex;
   cardsLengthRef.current = cardsLength;
@@ -50,6 +53,7 @@ export function useFlashcardKeyboardShortcuts({
   isReviewDeckRef.current = isReviewDeck;
   completedRef.current = completed;
   introRef.current = isIntroActive;
+  onToggleHintRef.current = onToggleHint;
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -63,7 +67,7 @@ export function useFlashcardKeyboardShortcuts({
       if (activeBreakdown) return;
       if (e.repeat && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
 
-      if (['ArrowLeft', 'ArrowRight', ' ', '1', '2'].includes(e.key)) {
+      if (['ArrowLeft', 'ArrowRight', ' ', '1', '2', '3'].includes(e.key) || e.key === 'h' || e.key === 'H') {
         pauseFlow();
       }
 
@@ -86,10 +90,16 @@ export function useFlashcardKeyboardShortcuts({
           }
           return next;
         });
+      } else if (e.key === 'h' || e.key === 'H') {
+        e.preventDefault();
+        onToggleHintRef.current?.();
       } else if (e.key === '1') {
-        // Again
+        // Hard
         if (card) triggerKeyboardRate(1, 1);
       } else if (e.key === '2') {
+        // Unsure
+        if (card) triggerKeyboardRate(2, 1);
+      } else if (e.key === '3') {
         // Got it
         if (card) triggerKeyboardRate(3, -1);
       }

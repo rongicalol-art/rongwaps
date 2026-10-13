@@ -65,13 +65,14 @@ export function useAppNavigation() {
     handleSetActiveActivity(fallbackActivity as ActivityType);
   }, [clearReviewContext, handleSetActiveActivity, lastActivity]);
 
-  /** Scopes the active book's selection to one lesson part, then opens an activity on it. */
-  const startPartPractice = useCallback((lessonId: number, partId: number, activity: ActivityType) => {
+  /** Scopes the active book's selection to one or more lesson parts, then opens an activity on it. */
+  const startPartPractice = useCallback((lessonId: number, partId: number | number[], activity: ActivityType) => {
     const bookPrefix = `${activeBookId}:`;
     const next = Object.fromEntries(
       Object.entries(selectedLessonParts).filter(([key]) => !key.startsWith(bookPrefix)),
     );
-    next[getLessonSelectionKey(activeBookId, lessonId)] = [partId];
+    const partIds = Array.isArray(partId) ? partId : [partId];
+    next[getLessonSelectionKey(activeBookId, lessonId)] = partIds;
     setSelectedLessonParts(next);
     clearReviewContext();
     handleSetActiveActivity(activity);

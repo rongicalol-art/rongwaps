@@ -19,3 +19,4 @@ export { ShowMoreButton } from './components/v3/ShowMoreButton';
 export { StrokeOrderBox } from './components/StrokeOrderBox';
 export { SummaryQuickActions } from './components/SummaryQuickActions';
 export { useRuntimeDecompositionTree } from './hooks/useRuntimeDecompositionTree';
+export { useBreakdownBackHandler } from './hooks/useBreakdownBackHandler';

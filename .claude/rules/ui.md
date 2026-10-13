@@ -22,7 +22,9 @@ Full token scale: `docs/DESIGN_TOKENS.md`. Widget catalog: `docs/WIDGETS.md`. De
 
 ## Components
 - Reuse before new: `ActionButton`, `IconActionButton`, `SegmentedControl`, `AppIcon` (Phosphor only), `CountryFlag` (no flag emoji). One dominant primary action per surface; utility actions quiet.
-- Tokens only: `ui-*`, `brand-*`, `feedback-*`. No hex, no arbitrary pixel values, no hardcoded font families (`font-sans` UI, `font-chinese` glyphs). Focus via `.focus-ring` / `.focus-ring-inline`.
+- Tokens only: `ui-*`, `brand-*`, `feedback-*`. No hex, no hardcoded font families (`font-sans` UI, `font-chinese` glyphs). Prefer the spacing/radius scale; arbitrary pixel values only for component geometry no token covers (card heights, tile sizes) — never for colour, type, or radius. Focus via `.focus-ring` / `.focus-ring-inline`.
+- No bordered box inside a bordered container; plain text hierarchy inside. Key hints use `KeyChip` (square, after the label, label stays centred).
+- Animations: Tailwind v4 `translate-*` sets the CSS `translate` property; never animate `transform` translate on an element that has those classes. Verify UI in the DEV debug window (Ctrl+Shift+0 → UI Previews), never by answering on the owner's real deck.
 - Tactile depth: primary/direct actions only. Two-layer stationary base (immovable base layer + moving front surface); never mutate `border-b` on active or translate the whole container. No tactile buttons inside tactile containers; no depth on plain page sections.
 - Keep a11y labels, reduced motion, loading/empty/error states, long-text behavior.
 - Shared widgets own no fetching or global state; feature components may own hooks/services.

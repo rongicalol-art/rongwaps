@@ -12,7 +12,7 @@ export function useNeuralPrewarm(playlist: Flashcard[], currentIndex: number) {
     if (playlist.length === 0 || currentIndex < 0) return;
     const fronts = playlist
       .slice(currentIndex, currentIndex + NEURAL_PRELOAD_AHEAD)
-      .filter((card) => !audioService.isAudioFileName(card.audio))
+      .filter((card) => card.source !== 'dictionary' && !audioService.isAudioFileName(card.audio))
       .map((card) => card.front?.trim())
       .filter((text): text is string => Boolean(text));
     if (fronts.length > 0) {
@@ -21,15 +21,7 @@ export function useNeuralPrewarm(playlist: Flashcard[], currentIndex: number) {
   }, [playlist, currentIndex]);
 }
 
-/**
- * Preload the deck's recorded audio and stop playback only when the session
- * completes or unmounts — never on card advance, so the correct-answer
- * pronunciation keeps ringing through the transition.
- */
-export function useDeckAudioLifecycle(activeCards: Flashcard[], completed: boolean) {
-  useEffect(() => {
-    if (activeCards.length > 0) audioService.preload(activeCards.map((c) => c.audio));
-  }, [activeCards]);
-
+/** Stop session audio on completion or unmount, without interrupting card transitions. */
+export function useAudioSessionLifecycle(completed: boolean) {
   useEffect(() => () => audioService.stop(), [completed]);
 }

@@ -81,7 +81,7 @@ test('group examples remain stored but do not surface for a word absent from the
 test('generated Book 1 pack selects term-specific examples from grouped textbook content', () => {
   const pack = readJson<CourseExamplePack>('public/data/course-examples/book-1.json');
 
-  assert.equal(pack.count, 356);
+  assert.equal(pack.count, 378);
   const cupSources = recordsToExampleCards(pack.records, ['杯子']);
   const cupExamples = findSmartExamplesForWord(cupSources, '杯子', 'B1L04-2-04');
   assert.deepEqual(cupExamples.map((example) => example.chinese), ['這個杯子一百多塊錢。']);
@@ -97,7 +97,7 @@ test('generated Book 1 pack selects term-specific examples from grouped textbook
   assert.deepEqual(summerExamples.map((example) => example.rank), [1, 5]);
 });
 
-test('pack publishes only pinyin-verified dialogue and reading sources', () => {
+test('pack publishes only pinyin-verified dialogue and reading sources through the current lesson cap', () => {
   const pack = readJson<CourseExamplePack>('public/data/course-examples/book-1.json');
 
   assert.ok(pack.records.some((record) => record.sourceOcrId === 'B1L01-D01-L01'));
@@ -106,9 +106,14 @@ test('pack publishes only pinyin-verified dialogue and reading sources', () => {
   assert.ok(pack.records.some((record) => record.sourceOcrId === 'B1L09-RDG01'));
   assert.ok(pack.records.some((record) => record.sourceOcrId === 'B1L10-D01-L01'));
   assert.ok(pack.records.some((record) => record.sourceOcrId === 'B1L10-RDG01'));
-  assert.equal(pack.records.some((record) => (
-    record.lessonId >= 11 && /-D\d|RDG/.test(record.sourceOcrId)
-  )), false);
+  assert.equal(pack.records.find((record) => record.sourceOcrId === 'B1L15-D01-L01')?.pinyin,
+    'Wǒmen xià ge xīngqí yào xué dì shíwǔ kè, wǒ gāngcái xiān kàn le yìdiǎnr, shū shàng yǒu hěn duō zhǒng dòngwù, wǒ juéde hěn yǒuyìsi.');
+  assert.equal(pack.records.find((record) => record.sourceOcrId === 'B1L15-D01-L01')?.printedPage, 344);
+  assert.equal(pack.records.find((record) => record.sourceOcrId === 'B1L15-D02-L10')?.pinyin,
+    'Wǒ zhōumò hái yào gōngzuò, dǎsuàn yí xiàbān jiù qù kàn dēnghuì. Wǒmen kěyǐ yuē Yǒuměi yìqǐ qù.');
+  assert.equal(pack.records.find((record) => record.sourceOcrId === 'B1L15-D02-L10')?.printedPage, 351);
+  assert.ok(pack.records.some((record) => record.sourceOcrId === 'B1L15-D02-L01'));
+  assert.ok(pack.records.every((record) => record.lessonId <= 15), 'Lesson 16 and later must not enter the Book 1 pack');
 });
 
 test('separable verb-object words match their split usage in a sentence', () => {
@@ -154,4 +159,3 @@ test('progressive example disclosure budgets 3 initial items and reports hidden 
   const expanded = mockRankedExamples;
   assert.equal(expanded.length, 8);
 });
-

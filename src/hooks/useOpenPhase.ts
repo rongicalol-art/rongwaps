@@ -25,7 +25,7 @@ export function useFontGate(text: string): readonly ReadyGate[] {
 
 /**
  * The single "open when ready" rule: hold briefly, then at most one loader shown
- * for a minimum time, then content (see `utils/browser/openPhase`).
+ * only while waiting, then content (see `utils/browser/openPhase`).
  * `ready` true at first render yields 'ready' synchronously: no hold frame, no effect round-trip.
  * `resetKey` starts a fresh open (e.g. a different window target).
  */
@@ -37,15 +37,13 @@ export function useOpenPhase(ready: boolean, gates: readonly ReadyGate[] = NO_GA
   const stage = state.key === resetKey ? state.stage : 'hold';
 
   const startedAt = useRef(0);
-  const loaderAt = useRef(0);
   useEffect(() => { startedAt.current = performance.now(); }, [resetKey]);
-  useEffect(() => { if (stage === 'loader') loaderAt.current = performance.now(); }, [stage]);
 
   useEffect(() => {
     const now = performance.now();
-    const delay = nextStageDelay(effectiveReady, stage, now - loaderAt.current, now - startedAt.current);
+    const delay = nextStageDelay(effectiveReady, stage, now - startedAt.current);
     if (delay === null) return;
-    const timer = setTimeout(() => setState({ key: resetKey, stage: stage === 'hold' ? 'loader' : 'served' }), delay);
+    const timer = setTimeout(() => setState({ key: resetKey, stage: 'loader' }), delay);
     return () => clearTimeout(timer);
   }, [effectiveReady, stage, resetKey]);
 

@@ -1,8 +1,7 @@
-import { motion } from 'motion/react';
 import type { PartSegment } from '../../../types/models';
 import { cn } from '../../../utils/cn';
 import { visibleProgressWidth } from '../../../utils/srs/progress';
-import { PROGRESS_SPRING, segmentFill } from './partProgressSprings';
+import { segmentFill } from './partProgressSprings';
 
 export interface PracticePartProgressRailProps {
   segments: PartSegment[];
@@ -39,16 +38,14 @@ export function PracticePartProgressRail({
             className="relative h-5 w-full min-w-12 overflow-hidden rounded-full bg-brand-primary-track"
             title={`${segment.label}: ${segment.cardCount} ${unitLabel}`}
           >
-            <motion.div
-              className="relative h-full min-w-0 overflow-hidden rounded-full bg-brand-primary will-change-[width]"
-              initial={false}
-              animate={{ width: visibleProgressWidth(progressPercent) }}
-              transition={PROGRESS_SPRING}
+            <div
+              className="relative h-full min-w-0 overflow-hidden rounded-full bg-brand-primary"
+              style={{ width: visibleProgressWidth(progressPercent) }}
             >
               {progressPercent > 0 && (
                 <span className="pointer-events-none absolute left-2 right-2 top-1 h-1.5 rounded-full bg-white/30" />
               )}
-            </motion.div>
+            </div>
           </div>
         );
       })}

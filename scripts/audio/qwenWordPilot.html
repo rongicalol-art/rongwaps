@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book audio pilot · Ron's Mandarin</title>
+<style>
+:root { /* REPO_TOKENS */ }
+* { box-sizing:border-box }
+body { margin:0; background:var(--color-ui-canvas); color:var(--color-ui-ink-strong); font:16px/1.5 system-ui,sans-serif }
+main { max-width:760px; margin:auto; padding:28px 20px 60px }
+h1 { font-size:28px; margin:0 0 8px } p { margin:0 0 20px; color:var(--color-ui-muted-strong) }
+article { padding:22px 0; border-top:1px solid var(--color-ui-divider) }
+h2 { margin:0; font-size:30px } .meaning { color:var(--color-ui-muted-strong); margin:0 0 12px }
+.actions { display:flex; gap:10px; flex-wrap:wrap }
+button, select { font:inherit; border:2px solid var(--color-ui-border); border-bottom-width:var(--depth-md); border-radius:var(--radius-sm); padding:10px 14px; background:var(--color-ui-surface); color:var(--color-ui-ink-strong) }
+button { cursor:pointer; touch-action:manipulation; min-height:56px }
+button:active { transform:translateY(2px); border-bottom-width:2px }
+button:focus-visible, select:focus-visible, input:focus-visible { outline:3px solid var(--color-brand-primary); outline-offset:3px }
+.whole { border-color:var(--color-brand-primary-edge); color:var(--color-brand-primary-deep) }
+.glyph { display:block; font-size:26px; line-height:1.15 } .reading { display:block; font-size:14px }
+details { margin-top:14px; color:var(--color-ui-muted-strong) } summary { cursor:pointer }
+label { display:block; margin-top:12px } input[type=range] { width:100%; accent-color:var(--color-brand-primary) }
+.review { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px } .review select { flex:1; min-width:160px; max-width:100% }
+#message { min-height:24px; color:var(--color-brand-primary-deep); position:sticky; bottom:0; background:var(--color-ui-canvas); margin:0; padding:8px 0 }
+@media(prefers-reduced-motion:reduce) { button:active { transform:none } }
+</style>
+<main><h1>Listen to the word. Then its parts.</h1>
+<p>Book 1 · Qwen Vivian. Compare each character with the complete word. These clips need pronunciation review.</p>
+<div id="words"></div><button id="export" hidden>Download my review</button><p id="message" role="status" aria-live="polite"></p></main>
+<script>
+const ctx = new (window.AudioContext || window.webkitAudioContext)();
+const buffers = new Map(), pending = new Map();
+let active, serial = 0;
+const message = document.querySelector('#message');
+async function play(word, range) {
+  const ticket = ++serial;
+  active?.stop(); active = null;
+  try {
+    await ctx.resume();
+    if (!buffers.has(word.file)) {
+      if (!pending.has(word.file)) pending.set(word.file, (async () => {
+        const response = await fetch(word.file);
+        if (!response.ok) throw new Error('Audio could not load');
+        const buffer = await ctx.decodeAudioData(await response.arrayBuffer());
+        buffers.set(word.file, buffer);
+      })().finally(() => pending.delete(word.file)));
+      await pending.get(word.file);
+    }
+    if (ticket !== serial) return;
+    const source = ctx.createBufferSource();
+    source.buffer = buffers.get(word.file); source.connect(ctx.destination); active = source;
+    source.onended = () => { if (active === source) active = null; };
+    if (range) source.start(0, range.start, range.end - range.start); else source.start();
+    message.textContent = range ? `${range.char} in ${word.text}` : word.text;
+  } catch (error) { if (ticket === serial) message.textContent = error.message; }
+}
+function button(label, callback, className='') {
+  const b = document.createElement('button'); b.type='button'; b.textContent=label;
+  b.className=className; b.onclick=callback; return b;
+}
+let storageKey;
+let saved = {};
+let manifest;
+function save() {
+  const review = Object.fromEntries(manifest.words.map(w => [w.id, {
+    sha256:w.sha256, result:w.review, chars:w.chars.map(c => ({char:c.char,pinyin:c.pinyin,start:c.start,end:c.end}))
+  }]));
+  try { localStorage.setItem(storageKey, JSON.stringify(review)); } catch { /* Local storage is optional. */ }
+}
+fetch('manifest.json').then(r => { if (!r.ok) throw new Error('Pilot could not load'); return r.json(); }).then(data => {
+  manifest=data;
+  storageKey = data.purpose === 'character-gaps' ? 'rons-mandarin-wordbuild-character-review-v1'
+    : data.purpose === 'book-gaps' ? 'rons-mandarin-qwen-book-gaps-review-v1' : 'rons-mandarin-qwen-pilot-review-v1';
+  try { saved = JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch { /* Review still exports if storage is unavailable. */ }
+  if (data.purpose === 'book-gaps') {
+    document.querySelector('h1').textContent='Review the missing book audio.';
+    document.querySelector('main > p').textContent='Six whole-word candidates · Qwen Vivian. Check every tone, especially neutral 瑰、娘、家. Displayed pinyin is the intended reading, not verified output. Nothing is published to the app.';
+  }
+  if (data.purpose === 'character-gaps') {
+    document.querySelector('h1').textContent='Check the character clips.';
+    document.querySelector('main > p').textContent='Compare each proposed character cut with its complete recording. Check the sound, neutral tone and clipped edges. Adjust cuts if needed, then download your review. Erhua (兒/儿 in 一點兒) stays in the whole word. These candidates are not published.';
+  }
+  for (const word of data.words) {
+    const prior = saved[word.id]; word.review = prior?.sha256 === word.sha256 ? prior.result : 'Not reviewed';
+    const article = document.createElement('article'), title=document.createElement('h2'), meaning=document.createElement('p');
+    title.textContent=word.text; meaning.textContent=`${word.pinyin} · ${word.meaning}${word.candidateNote ? ' · ' + word.candidateNote : ''}`; meaning.className='meaning';
+    const actions=document.createElement('div'); actions.className='actions';
+    actions.append(button('▶ Whole word', () => play(word), 'whole'));
+    word.chars.forEach((char,i) => {
+      const old = prior?.sha256 === word.sha256 ? prior.chars?.[i] : null;
+      if (old && Number.isFinite(old.start) && Number.isFinite(old.end) && old.start >= 0 && old.start < old.end && old.end <= word.duration) Object.assign(char,{start:old.start,end:old.end});
+      const b=button('',()=>play(word,char)); b.setAttribute('aria-label',`Play ${char.char}, ${char.pinyin}, in ${word.text}`);
+      const glyph=document.createElement('span'), reading=document.createElement('span'); glyph.className='glyph'; reading.className='reading';
+      glyph.textContent=char.char; reading.textContent=char.pinyin; b.append(glyph,reading); actions.append(b);
+    });
+    const review=document.createElement('div'); review.className='review';
+    const select=document.createElement('select'); select.setAttribute('aria-label',`Review ${word.text}`);
+    ['Not reviewed','Sounds right','Wrong pronunciation',data.purpose === 'book-gaps' ? 'Audio sounds clipped' : 'Cut sounds clipped'].forEach(value => select.add(new Option(value,value)));
+    select.value=word.review; select.onchange=()=>{ word.review=select.value; save(); }; review.append(select);
+    const details=document.createElement('details'), summary=document.createElement('summary'); summary.textContent='Adjust character cuts'; details.append(summary);
+    word.chars.forEach(char => {
+      for (const edge of ['start','end']) {
+        const label=document.createElement('label'), text=document.createElement('span'), input=document.createElement('input');
+        input.type='range'; input.min=0; input.max=word.duration; input.step=0.01; input.value=char[edge];
+        const update=()=>text.textContent=`${char.char} ${edge}: ${char[edge].toFixed(2)}s`; update();
+        input.oninput=()=>{ const value=Number(input.value); if (edge==='start' ? value >= char.end : value <= char.start) {input.value=char[edge]; return;} char[edge]=value; update(); save(); };
+        label.append(text,input); details.append(label);
+      }
+    });
+    article.append(title,meaning,actions,review);
+    if (word.chars.length) article.append(details);
+    document.querySelector('#words').append(article);
+  }
+  const exportButton=document.querySelector('#export'); exportButton.hidden=false;
+  exportButton.onclick=()=>{
+    save(); const url=URL.createObjectURL(new Blob([JSON.stringify({model:data.model,voice:data.voice,words:data.words},null,2)],{type:'application/json'}));
+    const link=document.createElement('a'); link.href=url; link.download='qwen-word-review.json'; link.click(); setTimeout(()=>URL.revokeObjectURL(url),1000);
+  };
+}).catch(error=>message.textContent=error.message);
+</script>
+</html>

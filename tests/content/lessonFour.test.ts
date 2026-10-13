@@ -18,7 +18,7 @@ test('Lesson 4 has five ordered grammar points and all 19 source prompts', () =>
   assert.equal(lessonFourPages.reduce((count, page) => count + page.questions.length, 0), 19);
   // The number-system page ships no example cards: its table carries every
   // reading (the printed page has no numbered examples there either).
-  assert.ok(lessonFourPages.every((page) => page.examples.length === 3 || page.numberLab));
+  assert.ok(lessonFourPages.every((page) => page.examples.length >= 3 || page.numberLab));
   assert.ok(lessonFourPages.every((page) => page.discoveryLab || page.numberLab));
 });
 
@@ -30,6 +30,7 @@ test('Lesson 4 number grammar uses the place-value staircase', () => {
     '2,005',
     '90,500',
     '3,050,000',
+    '90,000,000',
   ]);
   assert.ok(numberPage.numberLab.choices.some((choice) => choice.traditional.includes('零')));
 });

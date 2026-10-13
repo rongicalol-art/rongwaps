@@ -27,6 +27,7 @@ import {
   PiEyeSlashBold,
   PiKeyboardBold,
   PiLightbulbBold,
+  PiLightbulbFill,
   PiListChecksBold,
   PiListBold,
   PiDotsThreeVerticalBold,
@@ -117,6 +118,7 @@ export type AppIconName =
   | 'grammar'
   | 'lightbulb'
   | 'hint'
+  | 'lightbulbFilled'
   | 'keyboard'
   | 'lock'
   | 'level'
@@ -177,6 +179,8 @@ export type AppIconName =
   | 'quizMark'
   | 'writing'
   | 'book'
+  | 'answerYes'
+  | 'answerNo'
   | 'statusCheck'
   | 'statusCross'
   | 'statusShuffle'
@@ -249,6 +253,14 @@ const StudyGearIcon: IconType = ({ size = '1em', className, ...props }) => (
     {...props}
     color="var(--color-brand-primary)"
   />
+);
+
+/** Chunky, round-capped answer glyphs (Duolingo weight) in currentColor: true-or-false Yes / No. */
+const AnswerYesIcon = svgIcon(
+  <path d="M5 12.6L9.8 17.2L19 7.4" fill="none" stroke="currentColor" strokeWidth="3.6" strokeLinecap="round" strokeLinejoin="round" />
+);
+const AnswerNoIcon = svgIcon(
+  <path d="M6.5 6.5L17.5 17.5M17.5 6.5L6.5 17.5" fill="none" stroke="currentColor" strokeWidth="3.6" strokeLinecap="round" strokeLinejoin="round" />
 );
 
 /**
@@ -434,6 +446,7 @@ const ICONS: Record<AppIconName, IconType> = {
   forward: PiArrowRightBold,
   grammar: PiBookBookmarkFill,
   lightbulb: PiLightbulbBold,
+  lightbulbFilled: PiLightbulbFill,
   hint: StudyBulbIcon,
   keyboard: PiKeyboardBold,
   lock: PiLockKeyFill,
@@ -495,6 +508,8 @@ const ICONS: Record<AppIconName, IconType> = {
   pencil: PiPencilFill,
   grid: PiSquaresFourFill,
   book: PiBookOpenFill,
+  answerYes: AnswerYesIcon,
+  answerNo: AnswerNoIcon,
   statusCheck: DuoStatusCheckIcon,
   statusCross: DuoStatusCrossIcon,
   statusShuffle: DuoStatusShuffleIcon,

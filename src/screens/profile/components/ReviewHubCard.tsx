@@ -40,7 +40,7 @@ export const ReviewHubCard = memo(function ReviewHubCard({ overview, onStartRevi
         {onNavigateToPath && (
           <div className="mt-5 w-full">
             <ActionButton variant="primary" size="lg" fullWidth onClick={onNavigateToPath}>
-              <span className="text-[17px] font-black">Go to the course path</span>
+              <span>Go to the course path</span>
             </ActionButton>
           </div>
         )}
@@ -95,7 +95,7 @@ export const ReviewHubCard = memo(function ReviewHubCard({ overview, onStartRevi
       {dueCount > 0 && (
         <ActionButton variant="primary" size="lg" fullWidth onClick={onStartReview}>
           <AppIcon name="play" size={20} />
-          <span className="text-[17px] font-black">Review {sessionBatchSize} {sessionBatchSize === 1 ? 'word' : 'words'}</span>
+          <span>Review {sessionBatchSize} {sessionBatchSize === 1 ? 'word' : 'words'}</span>
         </ActionButton>
       )}
     </section>

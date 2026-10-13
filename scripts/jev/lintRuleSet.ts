@@ -31,7 +31,7 @@ export const LINT_RULES: LintRule[] = [
     appliesTo: UI_SOURCES,
     trigger: /#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\(|\bcolor-mix\(/,
     instructions:
-      'Does the code changed in `file.diff` avoid introducing hardcoded colors? Hardcoded colors are literal hex codes, rgb()/hsl() values, or Tailwind arbitrary values such as `bg-[#fff]`. The project rule is semantic tokens only (`ui-*`, `brand-*`, `feedback-*`; see docs/DESIGN_TOKENS.md). Existing hardcoded colors that the changed lines do not touch are not violations.',
+      'Does the code changed in `file.diff` consume semantic color tokens (`ui-*`, `brand-*`, `feedback-*`, `tone-*`) rather than hardcoded colors? Component literals such as hex, rgb()/hsl(), and `bg-[#fff]` violate the rule. `var(--color-*)` and color-mix() derived only from semantic tokens are token usage. Literal palette definitions belong only to the canonical token definitions in src/index.css and src/data/designTokens.ts; this exception never permits component colors. Untouched existing colors are not violations.',
     trueCriteria: 'The changed lines introduce no hardcoded color.',
     falseCriteria: 'The changed lines add or move a hardcoded color into scope.',
     threshold: 0.35,
@@ -65,7 +65,7 @@ export const LINT_RULES: LintRule[] = [
     appliesTo: UI_SOURCES,
     trigger: /translate-y|border-b-0|--depth-|tactile|ActionButton/,
     instructions:
-      'Do the changed interactive/tactile elements follow the two-layer architecture? A tactile action pairs an immovable base layer (`absolute inset-x-0 bottom-0 top-[length:var(--depth-md)] rounded-[inherit]`) with a moving front surface (`relative mb-[length:var(--depth-md)] group-active:translate-y-[length:var(--depth-md)]`). Violations: `active:border-b-0`, translating the whole outer button container, or mutating the bottom border on press. If the diff touches no tactile/primary action element, the rule holds.',
+      'Do the changed interactive/tactile elements follow the two-layer architecture? A tactile action pairs an immovable base with a moving front surface using the same --depth-sm/md/lg/xl token for base offset, front margin, and pressed translation. Reusing ActionButton preserves this contract. Violations: `active:border-b-0`, translating the whole outer button container, or mutating the bottom border on press. Ordinary motion outside a tactile control is not a violation. If the diff touches no tactile/primary action element, the rule holds.',
     trueCriteria: 'Changed tactile elements use the two-layer architecture, or none changed.',
     falseCriteria: 'Changed tactile elements break the stationary-base contract.',
     threshold: 0.35,
@@ -83,27 +83,28 @@ export const LINT_RULES: LintRule[] = [
   },
   {
     id: 'no-direct-data-access',
-    title: 'No direct data access in screens/widgets',
+    title: 'External data access belongs in services',
     appliesTo: [
       'src/screens/**/*.ts',
       'src/screens/**/*.tsx',
       'src/lib/widgets/**/*.ts',
       'src/lib/widgets/**/*.tsx',
+      'src/{app,features,hooks,store,utils,data}/**/*.{ts,tsx}',
     ],
-    trigger: /supabase|createClient|fetch\(|axios|from ['"][^'"]*services\//,
+    trigger: /supabase|createClient|fetch\s*\(|axios|from ['"][^'"]*services\//,
     instructions:
-      'Do the screens and shared widgets changed in `file.diff` avoid direct data access? These layers must not import Supabase clients, call `fetch`, or reach into `src/services/*`; fetching belongs in services called by hooks (features may own feature hooks/services). Importing types or pure utilities is fine.',
+      'Does changed browser code keep external fetching and Supabase clients inside src/services/? Screens and shared widgets must use hooks instead of calling/importing data services directly. Hooks and feature logic may call services, but must not call fetch/axios or import Supabase clients themselves. Importing types or pure utilities is fine. If the file belongs to a feature-owned service, the project AGENTS.md still requires external fetching in src/services/. Judge introduced data access only.',
     trueCriteria: 'Changed screens/widgets contain no direct data access.',
     falseCriteria: 'Changed screens/widgets fetch or import data clients directly.',
     threshold: 0.4,
   },
   {
     id: 'no-hardcoded-font',
-    title: 'Fonts through font-sans / font-chinese',
+    title: 'Fonts through project tokens',
     appliesTo: UI_SOURCES,
     trigger: /font-\[|fontFamily|font-family/,
     instructions:
-      'Does the changed code use `font-sans` for UI copy and `font-chinese` for Chinese glyphs instead of hardcoded font families? Inline `fontFamily`, `font-family`, or `font-[...]` arbitrary families are violations.',
+      'Does changed code use project font tokens instead of literal font families? font-sans, font-chinese, font-chinese-sans, font-kaiti, font-chinese-huninn, and font-family/fontFamily values referring to var(--font-*) are valid token usage. Font stack definitions in src/index.css and font-face declarations in src/styles/fonts.generated.css define the tokens/assets and are valid there. Literal font families in components remain violations.',
     trueCriteria: 'Changed code uses the project font utilities.',
     falseCriteria: 'Changed code hardcodes a font family.',
     threshold: 0.35,

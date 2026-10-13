@@ -77,10 +77,12 @@ import {
   type PracticePreset,
   type MistakeRepeat,
   type CharacterFont,
+  type QuizFormatPreference,
   type QuizQuestionType,
   type QuizChoiceType,
   type ListeningChoiceType,
   type TypingPromptType,
+  type MatchPairType,
   type PracticeDockStyle,
   getPaceTimings,
   getPaceLabel,
@@ -97,10 +99,12 @@ export type {
   PracticePreset,
   MistakeRepeat,
   CharacterFont,
+  QuizFormatPreference,
   QuizQuestionType,
   QuizChoiceType,
   ListeningChoiceType,
   TypingPromptType,
+  MatchPairType,
   PracticeDockStyle,
 };
 export {
@@ -265,6 +269,7 @@ const PERSISTED_RECORD_KEYS = [
   'sessionCardOrder',
   'deckExclusions',
   'progressResetSeen',
+  'wordConfusions',
 ] as const;
 
 function sanitizePersistedState(state: Record<string, unknown>): Record<string, unknown> {

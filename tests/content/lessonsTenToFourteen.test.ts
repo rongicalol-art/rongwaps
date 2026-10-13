@@ -143,10 +143,10 @@ test('Lesson 11 Grammar 3 and Lesson 13 Grammar 2 faithfully match textbook sour
   const l11p1g3 = LESSON_ELEVEN_PART_ONE.grammarPages[2];
   assert.equal(l11p1g3.id, 'B1L11-G03-P251');
   assert.equal(l11p1g3.examples.length, 5, 'L11 G3 should have 5 authentic textbook examples');
-  assert.ok(l11p1g3.examples[0].text.traditional.startsWith('A: 他已經到學校了。'), 'L11 G3 example 1 matches scan');
-  assert.ok(l11p1g3.examples[1].text.traditional.startsWith('A: 張先生來了。'), 'L11 G3 example 2 matches scan');
-  assert.ok(l11p1g3.examples[2].text.traditional.startsWith('A: 你的中文說得真好'), 'L11 G3 example 3 matches scan');
-  assert.ok(l11p1g3.examples[3].text.traditional.startsWith('A: 你知道她的手機號碼嗎？'), 'L11 G3 example 4 matches scan');
+  assert.ok(l11p1g3.examples[0].text.traditional.startsWith('A：他已經到學校了。'), 'L11 G3 example 1 matches scan');
+  assert.ok(l11p1g3.examples[1].text.traditional.startsWith('A：張先生來了。'), 'L11 G3 example 2 matches scan');
+  assert.ok(l11p1g3.examples[2].text.traditional.startsWith('A：你的中文說得真好'), 'L11 G3 example 3 matches scan');
+  assert.ok(l11p1g3.examples[3].text.traditional.startsWith('A：你知道她的手機號碼嗎？'), 'L11 G3 example 4 matches scan');
   assert.equal(l11p1g3.examples[4].text.traditional, '他是昨天晚上到的，不是今天早上到的。', 'L11 G3 example 5 matches scan');
 
   const l13p1 = LESSON_THIRTEEN_PART_ONE.grammarPages[1];

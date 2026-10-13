@@ -1,18 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useAppStore } from '../../../store/useAppStore';
-import { audioService } from '../../../services/audioService';
 import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
 import { useCardSession, type CardSessionQuality } from '../../../hooks/useCardSession';
 import { getDeckIdentityKey } from '../../../utils/lesson/lessonPartSelection';
 
-// How many upcoming cards to pre-warm neural TTS for, so flip-triggered
-// playback is instant instead of waiting a server synthesis round-trip.
-const WARM_AHEAD_COUNT = 1;
-
 /**
- * UI rating level (1-4) → SRS quality (1-5). The UI skips quality 3
- * (difficult) for simplicity — users pick Hard(1), Bad(2), Good(3), Easy(4)
- * which maps to SRS 1, 2, 4, 5.
+ * UI rating level (1-3) → SRS quality (1-5). The UI skips quality 3
+ * (difficult) — Hard and Unsure map to SRS 1 and 2; Got it maps to 4.
  */
 function levelToQuality(level: number): CardSessionQuality {
   if (level === 1) return 1;
@@ -66,33 +60,6 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     setMaxVisitedIndex((previous) => Math.max(previous, currentIndex));
   }, [currentIndex]);
 
-  // Rolling lookahead: preload recorded audio for the next stretch and
-  // pre-warm neural TTS for cards without recorded audio. Debounced so rapid
-  // card navigation never contends with card transitions or the main thread.
-  useEffect(() => {
-    if (activeCards.length === 0) return;
-    const timer = window.setTimeout(() => {
-      const upcomingAudio = activeCards
-        .slice(currentIndex + 1, currentIndex + 5)
-        .map((card) => card.audio)
-        .filter((audio): audio is string => Boolean(audio));
-      if (upcomingAudio.length > 0) {
-        void audioService.preload(upcomingAudio).catch(() => {});
-      }
-
-      const warm = activeCards
-        .slice(currentIndex + 1, currentIndex + 1 + WARM_AHEAD_COUNT)
-        .filter((card) => !audioService.isAudioFileName(card.audio))
-        .map((card) => card.front.trim())
-        .filter(Boolean);
-      if (warm.length > 0) {
-        void audioService.preloadNeural(warm).catch(() => {});
-      }
-    }, 600);
-
-    return () => window.clearTimeout(timer);
-  }, [currentIndex, activeCards]);
-
   const setActiveBreakdown = useCallback((text: string | null, index: number = 0) => {
     setActiveBreakdownState(text);
     setActiveBreakdownIndex(index);
@@ -129,10 +96,10 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
   }, [session]);
 
   // Cards rated Again this round (SRS quality 1-2), for the round-done chips.
-  const missedCards = activeCards.filter((card) => {
+  const missedCards = Array.from(new Map(activeCards.filter((card) => {
     const quality = session.sessionResults[card.id];
     return quality === 1 || quality === 2;
-  });
+  }).map((card) => [card.id, card])).values());
 
   return {
     cards: activeCards,
@@ -143,12 +110,15 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
     isFlipped,
     setIsFlipped,
     completed,
+    resumedReview: session.resumedReview,
     activeBreakdown,
     activeBreakdownIndex,
     setActiveBreakdown,
     handleNavigate,
     handleNext,
     resetAll,
+    restartSession: session.resetAll,
+    practiceCards: session.practiceCards,
     reviewUnlearned,
     unlearnedCount: session.unlearnedCount,
     learnedCount: session.learnedCount,

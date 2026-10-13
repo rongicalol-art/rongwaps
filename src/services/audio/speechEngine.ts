@@ -1,12 +1,25 @@
 import { debugLogger } from '../../utils/debug/debugLogger';
 import { authService } from '../authService';
-import { resolveRequestUrl } from './audioCache';
+import { isUsableAudioBlob, resolveRequestUrl } from './audioCache';
+import { playHtmlAudio, silenceAudio } from './playbackEngine';
 
 let speechVoicesCache: SpeechSynthesisVoice[] | null = null;
 let speechVoicesPromise: Promise<SpeechSynthesisVoice[]> | null = null;
 let neuralCacheInstance: Cache | null = null;
 
 const neuralFetches: Map<string, Promise<Blob | null>> = new Map();
+let neuralRetryAfter = 0;
+const blobCleanups = new WeakMap<HTMLAudioElement, () => void>();
+const speechCleanups = new WeakMap<SpeechSynthesisUtterance, () => void>();
+
+export function releaseSpeechUtterance(utterance: SpeechSynthesisUtterance): void {
+  speechCleanups.get(utterance)?.();
+}
+
+/** Release interrupted neural clips as well as clips that finish normally. */
+export function releaseBlobAudio(audio: HTMLAudioElement): void {
+  blobCleanups.get(audio)?.();
+}
 
 export function wait(ms: number): Promise<void> {
   return new Promise((resolve) => {
@@ -114,6 +127,7 @@ export async function getNeuralCache(): Promise<Cache | null> {
   try {
     if (typeof caches !== 'undefined') {
       neuralCacheInstance = await caches.open('rongwaps-tts-v1');
+      void pruneNeuralCache(neuralCacheInstance).catch(() => {});
     }
   } catch (err) {
     // Graceful degradation: caches unavailable in private browsing mode
@@ -126,53 +140,88 @@ export async function getNeuralCache(): Promise<Cache | null> {
 export function ttsCacheRequest(text: string, voice: string | undefined): Request {
   const voiceName = voice || 'zh-CN-XiaoxiaoNeural';
   return new Request(
-    resolveRequestUrl(`/api/tts-cache/${encodeURIComponent(text)}?voice=${voiceName}`),
+    resolveRequestUrl(`/api/tts-cache/${encodeURIComponent(text)}?voice=${encodeURIComponent(voiceName)}`),
     { method: 'GET' },
   );
 }
 
 export function putNeuralCache(cacheRequest: Request, blob: Blob): void {
   void getNeuralCache()
-    .then((cache) => (
-      cache
-        ? cache.put(cacheRequest, new Response(blob, { headers: { 'Content-Type': 'audio/mpeg' } }))
-        : undefined
-    ))
+    .then(async (cache) => {
+      if (!cache || !isUsableAudioBlob(blob) || blob.size > 25 * 1024 * 1024) return;
+      await cache.put(cacheRequest, new Response(blob, { headers: { 'Content-Type': 'audio/mpeg', 'Content-Length': String(blob.size) } }));
+      await pruneNeuralCache(cache);
+    })
     .catch(() => {});
 }
 
-export async function fetchTtsCacheEndpoint(text: string, voice: string | undefined): Promise<Blob | null> {
+/** FIFO bounds; old cache entries without size headers are measured once. */
+export async function pruneNeuralCache(cache: Cache): Promise<void> {
+  const requests = await cache.keys();
+  const sizes: number[] = [];
+  for (const request of requests) {
+    const response = await cache.match(request);
+    sizes.push(Number(response?.headers.get('Content-Length')) || (response ? (await response.blob()).size : 0));
+  }
+  let total = sizes.reduce((sum, size) => sum + size, 0);
+  for (let i = 0; i < requests.length && (requests.length - i > 100 || total > 25 * 1024 * 1024); i++) {
+    await cache.delete(requests[i]);
+    total -= sizes[i];
+  }
+}
+
+export async function fetchTtsCacheEndpoint(text: string, voice: string | undefined, signal?: AbortSignal): Promise<Blob | null> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10_000);
   try {
     const voiceName = voice || 'zh-CN-XiaoxiaoNeural';
     const response = await fetch(
       resolveRequestUrl(`/api/tts-cache/${encodeURIComponent(text)}?voice=${encodeURIComponent(voiceName)}`),
+      { signal: signal ?? controller.signal },
     );
+    if ([429, 502, 503].includes(response.status)) neuralRetryAfter = Date.now() + 30_000;
     if (!response.ok) return null;
     const blob = await response.blob();
+    if (!isUsableAudioBlob(blob)) return null;
     putNeuralCache(ttsCacheRequest(text, voice), blob);
     return blob;
   } catch (err) {
     // Graceful degradation: TTS cache endpoint fetch failed; caller tries on-demand generation
     debugLogger.warn('Audio', 'fetchTtsCacheEndpoint request failed', err);
     return null;
+  } finally {
+    clearTimeout(timeout);
   }
 }
 
 export async function fetchNeuralBlob(text: string, voice: string | undefined): Promise<Blob | null> {
+  text = text.trim();
+  // Preserve long readings with browser speech rather than silently truncating them.
+  if (!text || Array.from(text).length > 500) return null;
   const key = `${voice || 'zh-CN-XiaoxiaoNeural'}|${text}`;
   const inFlight = neuralFetches.get(key);
   if (inFlight) return inFlight;
 
-  const promise = (async (): Promise<Blob | null> => {
+  const controller = new AbortController();
+  let timeout: ReturnType<typeof setTimeout>;
+  const deadline = new Promise<null>((resolve) => {
+    timeout = setTimeout(() => { controller.abort(); resolve(null); }, 10_000);
+  });
+  const work = (async (): Promise<Blob | null> => {
     const cache = await getNeuralCache();
     const cacheReq = ttsCacheRequest(text, voice);
     if (cache) {
       const cached = await cache.match(cacheReq).catch(() => null);
-      if (cached) return await cached.blob();
+      if (cached) {
+        const blob = await cached.blob();
+        if (isUsableAudioBlob(blob)) return blob;
+      }
     }
 
-    const serverCached = await fetchTtsCacheEndpoint(text, voice);
+    if (Date.now() < neuralRetryAfter) return null;
+    const serverCached = await fetchTtsCacheEndpoint(text, voice, controller.signal);
     if (serverCached) return serverCached;
+    if (controller.signal.aborted || Date.now() < neuralRetryAfter) return null;
 
     let token: string | null;
     try {
@@ -182,21 +231,21 @@ export async function fetchNeuralBlob(text: string, voice: string | undefined): 
       debugLogger.warn('Audio', 'authService.getAccessToken failed for neural TTS', err);
       token = null;
     }
-    if (!token) return null;
+    if (!token || controller.signal.aborted) return null;
     try {
-      const response = await fetch('/api/tts', {
+      const response = await fetch(resolveRequestUrl('/api/tts'), {
         method: 'POST',
+        signal: controller.signal,
         headers: {
           'Content-Type': 'application/json',
           ...(token ? { Authorization: `Bearer ${token}` } : {}),
         },
         body: JSON.stringify({ text, voice }),
       });
-      if (response.status === 429) {
-        return await fetchTtsCacheEndpoint(text, voice);
-      }
+      if ([429, 502, 503].includes(response.status)) neuralRetryAfter = Date.now() + 30_000;
       if (!response.ok) return null;
       const blob = await response.blob();
+      if (!isUsableAudioBlob(blob)) return null;
       putNeuralCache(cacheReq, blob);
       return blob;
     } catch (err) {
@@ -206,10 +255,12 @@ export async function fetchNeuralBlob(text: string, voice: string | undefined): 
     }
   })();
 
+  const promise = Promise.race([work, deadline]);
   neuralFetches.set(key, promise);
   try {
     return await promise;
   } finally {
+    clearTimeout(timeout!);
     if (neuralFetches.get(key) === promise) {
       neuralFetches.delete(key);
     }
@@ -223,10 +274,7 @@ export async function preloadNeuralTexts(
 ): Promise<void> {
   if (!texts || texts.length === 0) return;
   const limit = options?.limit ?? texts.length;
-  const queue = texts
-    .map((text) => text?.trim())
-    .filter((text): text is string => Boolean(text))
-    .slice(0, limit);
+  const queue = [...new Set(texts.map((text) => text?.trim()).filter(Boolean))].slice(0, limit);
   if (queue.length === 0) return;
 
   const MAX_CONCURRENT_TTS_PRELOAD = 2;
@@ -247,24 +295,30 @@ export function playBlobAudio(
   finish: () => void,
   fallback: () => void,
   onActiveAudio?: (audio: HTMLAudioElement | null) => void,
+  unlockedAudio?: HTMLAudioElement,
 ): HTMLAudioElement {
   const objectUrl = URL.createObjectURL(blob);
-  const audio = new Audio(objectUrl);
-  onActiveAudio?.(audio);
-  audio.playbackRate = playbackRate > 0 ? playbackRate : 1;
+  let audio: HTMLAudioElement;
+  try { audio = unlockedAudio ?? new Audio(); } catch (error) { URL.revokeObjectURL(objectUrl); throw error; }
+  let released = false;
+  let stopPlayback = () => {};
   const cleanup = () => {
+    if (released) return;
+    released = true;
+    stopPlayback();
+    blobCleanups.delete(audio);
+    silenceAudio(audio);
     onActiveAudio?.(null);
     URL.revokeObjectURL(objectUrl);
   };
-  audio.onended = () => {
+  blobCleanups.set(audio, cleanup);
+  onActiveAudio?.(audio);
+  stopPlayback = playHtmlAudio(audio, objectUrl, playbackRate, () => {
+    if (released) return;
     cleanup();
     finish();
-  };
-  audio.onerror = () => {
-    cleanup();
-    fallback();
-  };
-  audio.play().catch(() => {
+  }, () => {
+    if (released) return;
     cleanup();
     fallback();
   });
@@ -279,6 +333,7 @@ export function playNeuralAudio(
   finish: () => void,
   fallbackToBrowserSpeech: () => void,
   onActiveAudio?: (audio: HTMLAudioElement | null) => void,
+  unlockedAudio?: HTMLAudioElement,
 ): void {
   let fallbackStarted = false;
   const fallback = () => {
@@ -286,30 +341,13 @@ export function playNeuralAudio(
     fallbackStarted = true;
     fallbackToBrowserSpeech();
   };
-
   (async () => {
-    const cache = await getNeuralCache();
-    const cacheReq = ttsCacheRequest(text, voice);
-    if (cache) {
-      const cached = await cache.match(cacheReq).catch(() => null);
-      if (cached) {
-        if (!isPlaybackActive()) return;
-        playBlobAudio(await cached.blob(), playbackRate, finish, fallback, onActiveAudio);
-        return;
-      }
-    }
-
-    const blob = await Promise.race([
-      fetchNeuralBlob(text, voice),
-      wait(2500).then(() => null),
-    ]);
+    // Include local cache reads in the playback deadline as well as network requests.
+    const blob = await Promise.race([fetchNeuralBlob(text, voice), wait(2500).then(() => null)]);
     if (!isPlaybackActive()) return;
-    if (blob) {
-      playBlobAudio(blob, playbackRate, finish, fallback, onActiveAudio);
-    } else {
-      fallback();
-    }
-  })();
+    if (blob) playBlobAudio(blob, playbackRate, finish, fallback, onActiveAudio, unlockedAudio);
+    else fallback();
+  })().catch(fallback);
 }
 
 export async function speakUtterance(
@@ -325,11 +363,13 @@ export async function speakUtterance(
     finish();
     return;
   }
+  let utterance: SpeechSynthesisUtterance | null = null;
   try {
-    const utterance = new SpeechSynthesisUtterance(text);
+    utterance = new SpeechSynthesisUtterance(text);
+    const activeUtterance = utterance;
     onUtteranceChange(utterance);
     utterance.lang = language;
-    utterance.rate = rate;
+    utterance.rate = Number.isFinite(rate) && rate > 0 ? Math.min(10, Math.max(0.1, rate)) : 1;
 
     const voices = await ensureSpeechVoices();
     if (!isPlaybackActive(utterance)) return;
@@ -341,11 +381,34 @@ export async function speakUtterance(
       return;
     }
     utterance.voice = voice;
+    const cleanup = () => {
+      clearTimeout(startupTimer);
+      clearTimeout(lifetimeTimer);
+      activeUtterance.onstart = null;
+      activeUtterance.onend = null;
+      activeUtterance.onerror = null;
+      speechCleanups.delete(activeUtterance);
+    };
+    const timeout = () => {
+      if (!isPlaybackActive(activeUtterance)) { cleanup(); return; }
+      cleanup();
+      onUtteranceChange(null);
+      try { window.speechSynthesis.cancel(); } finally { finish(); }
+    };
+    speechCleanups.set(utterance, cleanup);
+    const startupTimer = setTimeout(timeout, 2500);
+    // Generous speech-length allowance; a broken voice must not hold auto-flow forever.
+    const lifetimeTimer = setTimeout(timeout, Math.max(10_000, Array.from(text).length * 1000 / utterance.rate));
+    utterance.onstart = () => clearTimeout(startupTimer);
     utterance.onend = () => {
+      if (!isPlaybackActive(activeUtterance)) return;
+      cleanup();
       onUtteranceChange(null);
       finish();
     };
     utterance.onerror = (error) => {
+      if (!isPlaybackActive(activeUtterance)) return;
+      cleanup();
       onUtteranceChange(null);
       debugLogger.warn('Audio', 'SpeechSynthesis error:', error);
       finish();
@@ -353,6 +416,7 @@ export async function speakUtterance(
     window.speechSynthesis.speak(utterance);
     kickstartSpeech();
   } catch (error) {
+    if (utterance) releaseSpeechUtterance(utterance);
     onUtteranceChange(null);
     debugLogger.warn('Audio', 'SpeechSynthesis playback failed:', error);
     finish();

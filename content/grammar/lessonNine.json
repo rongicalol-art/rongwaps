@@ -15,11 +15,12 @@
       217
     ],
     "audioReference": "09-2-3",
-    "explanation": "Put 比較 before an adjective for \"comparatively / more\" when comparing to known context. For actions, use Verb + 得 + 比較 + Adjective.",
+    "explanation": "Put 比較 before a quality when the other side is already known from context. For actions, use 得 to join the action to the quality: 跑得比較快.",
     "focusTerms": [
       "比較",
       "比较",
-      "得"
+      "得",
+      "跑得比較快"
     ],
     "teachingGlossary": [
       {
@@ -1616,9 +1617,9 @@
         "number": 3,
         "teachingNote": "Two people compared in the question.",
         "text": {
-          "traditional": "A：誰比較瘦？B：姊姊比較瘦。妹妹比較胖。",
-          "simplified": "A：谁比较瘦？B：姐姐比较瘦。妹妹比较胖。",
-          "pinyin": "A: Shéi bǐjiào shòu? B: Jiějie bǐjiào shòu. Mèimei bǐjiào pàng.",
+          "traditional": "A：誰比較瘦？ B：姊姊比較瘦，妹妹比較胖。",
+          "simplified": "A：谁比较瘦？ B：姊姊比较瘦，妹妹比较胖。",
+          "pinyin": "A: Shéi bǐjiào shòu? B: Jiějie bǐjiào shòu, mèimei bǐjiào pàng.",
           "english": "A: Who is thinner? B: Older sister is thinner; younger sister is heavier.",
           "words": [
             {
@@ -1667,7 +1668,7 @@
               "traditional": "妹妹",
               "pinyin": "mèimei",
               "meaning": "younger sister",
-              "prefix": "。"
+              "prefix": "，"
             },
             {
               "id": "l9g5-e3-word-8",
@@ -1691,46 +1692,85 @@
         "number": 4,
         "teachingNote": "Two transport choices are known.",
         "text": {
-          "traditional": "我覺得坐飛機比較舒服。",
-          "simplified": "我觉得坐飞机比较舒服。",
-          "pinyin": "Wǒ juéde zuò fēijī bǐjiào shūfu.",
-          "english": "I think flying is more comfortable.",
+          "traditional": "A：坐飛機比較舒服，還是坐車比較舒服？ B：我覺得坐飛機比較舒服。",
+          "simplified": "A：坐飞机比较舒服，还是坐车比较舒服？ B：我觉得坐飞机比较舒服。",
+          "pinyin": "A: Zuò fēijī bǐjiào shūfu, háishì zuò chē bǐjiào shūfu? B: Wǒ juéde zuò fēijī bǐjiào shūfu.",
+          "english": "A: Is flying more comfortable, or is taking a car more comfortable? B: I think flying is more comfortable.",
           "words": [
             {
               "id": "l9g5-e4-word-1",
-              "traditional": "我",
-              "pinyin": "wǒ",
-              "meaning": "I; me"
+              "traditional": "坐飛機",
+              "simplified": "坐飞机",
+              "pinyin": "zuò fēijī",
+              "meaning": "fly; take a plane",
+              "prefix": "A："
             },
             {
               "id": "l9g5-e4-word-2",
-              "traditional": "覺得",
-              "simplified": "觉得",
-              "pinyin": "juéde",
-              "meaning": "feel; think"
-            },
-            {
-              "id": "l9g5-e4-word-3",
-              "traditional": "坐",
-              "pinyin": "zuò",
-              "meaning": "sit; take transport"
-            },
-            {
-              "id": "l9g5-e4-word-4",
-              "traditional": "飛機",
-              "simplified": "飞机",
-              "pinyin": "fēijī",
-              "meaning": "airplane"
-            },
-            {
-              "id": "l9g5-e4-word-5",
               "traditional": "比較",
               "simplified": "比较",
               "pinyin": "bǐjiào",
-              "meaning": "relatively; more, with a known comparison"
+              "meaning": "comparatively"
+            },
+            {
+              "id": "l9g5-e4-word-3",
+              "traditional": "舒服",
+              "pinyin": "shūfu",
+              "meaning": "comfortable",
+              "suffix": "，"
+            },
+            {
+              "id": "l9g5-e4-word-4",
+              "traditional": "還是",
+              "simplified": "还是",
+              "pinyin": "háishì",
+              "meaning": "or (in a question)"
+            },
+            {
+              "id": "l9g5-e4-word-5",
+              "traditional": "坐車",
+              "simplified": "坐车",
+              "pinyin": "zuò chē",
+              "meaning": "take a car"
             },
             {
               "id": "l9g5-e4-word-6",
+              "traditional": "比較",
+              "simplified": "比较",
+              "pinyin": "bǐjiào",
+              "meaning": "comparatively"
+            },
+            {
+              "id": "l9g5-e4-word-7",
+              "traditional": "舒服",
+              "pinyin": "shūfu",
+              "meaning": "comfortable",
+              "suffix": "？"
+            },
+            {
+              "id": "l9g5-e4-word-8",
+              "traditional": "我覺得",
+              "simplified": "我觉得",
+              "pinyin": "wǒ juéde",
+              "meaning": "I think",
+              "prefix": "B："
+            },
+            {
+              "id": "l9g5-e4-word-9",
+              "traditional": "坐飛機",
+              "simplified": "坐飞机",
+              "pinyin": "zuò fēijī",
+              "meaning": "taking a plane"
+            },
+            {
+              "id": "l9g5-e4-word-10",
+              "traditional": "比較",
+              "simplified": "比较",
+              "pinyin": "bǐjiào",
+              "meaning": "comparatively"
+            },
+            {
+              "id": "l9g5-e4-word-11",
               "traditional": "舒服",
               "pinyin": "shūfu",
               "meaning": "comfortable",
@@ -1804,6 +1844,98 @@
             }
           ]
         }
+      },
+      {
+        "id": "l9g5-e6",
+        "number": 6,
+        "text": {
+          "traditional": "A：你們兩個人，誰唱歌唱得比較好聽？ B：我覺得他唱得比較好聽。",
+          "simplified": "A：你们两个人，谁唱歌唱得比较好听？ B：我觉得他唱得比较好听。",
+          "pinyin": "A: Nǐmen liǎng ge rén, shéi chànggē chàng de bǐjiào hǎotīng? B: Wǒ juéde tā chàng de bǐjiào hǎotīng.",
+          "english": "A: Between you two, who sings better? B: I think he sings better.",
+          "words": [
+            {
+              "id": "l9g5-e6-word-1",
+              "traditional": "你們",
+              "simplified": "你们",
+              "pinyin": "nǐmen",
+              "meaning": "you all",
+              "prefix": "A："
+            },
+            {
+              "id": "l9g5-e6-word-2",
+              "traditional": "兩個人",
+              "simplified": "两个人",
+              "pinyin": "liǎng ge rén",
+              "meaning": "two people",
+              "suffix": "，"
+            },
+            {
+              "id": "l9g5-e6-word-3",
+              "traditional": "誰",
+              "simplified": "谁",
+              "pinyin": "shéi",
+              "meaning": "who"
+            },
+            {
+              "id": "l9g5-e6-word-4",
+              "traditional": "唱歌唱得",
+              "pinyin": "chànggē chàng de",
+              "meaning": "sing (repeated verb + 得)"
+            },
+            {
+              "id": "l9g5-e6-word-5",
+              "traditional": "比較",
+              "simplified": "比较",
+              "pinyin": "bǐjiào",
+              "meaning": "comparatively"
+            },
+            {
+              "id": "l9g5-e6-word-6",
+              "traditional": "好聽",
+              "simplified": "好听",
+              "pinyin": "hǎotīng",
+              "meaning": "pleasant to hear",
+              "suffix": "？"
+            },
+            {
+              "id": "l9g5-e6-word-7",
+              "traditional": "我覺得",
+              "simplified": "我觉得",
+              "pinyin": "wǒ juéde",
+              "meaning": "I think",
+              "prefix": "B："
+            },
+            {
+              "id": "l9g5-e6-word-8",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he"
+            },
+            {
+              "id": "l9g5-e6-word-9",
+              "traditional": "唱得",
+              "pinyin": "chàng de",
+              "meaning": "sings"
+            },
+            {
+              "id": "l9g5-e6-word-10",
+              "traditional": "比較",
+              "simplified": "比较",
+              "pinyin": "bǐjiào",
+              "meaning": "comparatively"
+            },
+            {
+              "id": "l9g5-e6-word-11",
+              "traditional": "好聽",
+              "simplified": "好听",
+              "pinyin": "hǎotīng",
+              "meaning": "better",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
       }
     ],
     "exerciseTitle": "Find the stronger side",
@@ -1948,7 +2080,8 @@
         "correctFeedback": "Both items are known, so 比較好看 selects the stronger side.",
         "repairFeedback": "You do not need 比 or 是."
       }
-    ]
+    ],
+    "exerciseNote": "The book answers three questions with 比較 on printed pages 216–217 and gives no answer key; these model answers follow the printed pictures."
   },
   "LESSON_NINE_GRAMMAR_FOUR": {
     "bookId": 1,
@@ -1967,7 +2100,7 @@
       215
     ],
     "audioReference": "09-2-3",
-    "explanation": "Use 能 (\"can\") and 不能 (\"cannot\") for situational ability: physical capability, rules/permission, or scheduling availability.",
+    "explanation": "Use 能 or 不能 to talk about what you can or cannot do: whether your body is able to do it, whether rules allow it, or whether your schedule makes it possible.",
     "focusTerms": [
       "能",
       "不能",
@@ -3159,31 +3292,30 @@
         "subject": [
           {
             "id": "l9g4-p1-s1",
-            "traditional": "他受傷了",
-            "simplified": "他受伤了",
-            "pinyin": "tā shòushāng le",
-            "meaning": "he is injured"
+            "traditional": "他受傷了，現在",
+            "simplified": "他受伤了，现在",
+            "pinyin": "tā shòushāng le, xiànzài",
+            "meaning": "he is injured; right now"
           }
         ],
         "grammar": [
           {
             "id": "l9g4-p1-g1",
-            "traditional": "不能",
-            "simplified": "不能",
-            "pinyin": "bù néng",
-            "meaning": "cannot"
+            "traditional": "只能走，不能",
+            "pinyin": "zhǐ néng zǒu, bù néng",
+            "meaning": "can only walk, cannot"
           }
         ],
         "complement": [
           {
             "id": "l9g4-p1-c1",
-            "traditional": "走路",
-            "pinyin": "zǒulù",
-            "meaning": "walk",
+            "traditional": "跑",
+            "pinyin": "pǎo",
+            "meaning": "run",
             "suffix": "。"
           }
         ],
-        "english": "He is injured; he cannot walk right now."
+        "english": "He is injured; he can only walk, not run."
       },
       {
         "id": "l9g4-p2",
@@ -3325,15 +3457,15 @@
         },
         {
           "id": "l9g4-confusion-negation-pair",
-          "question": "Phones are not allowed in class. Do I say 不能看手機 or 不可以看手機?",
-          "answer": "不能看手機. Each little helping word takes its own \"not\": 能 → 不能, 可以 → 不可以. A rule closes the action, so use 不能.",
-          "wrongTraditional": "不可以看手機。",
-          "wrongSimplified": "不可以看手机。",
+          "question": "Phones are not allowed in class. Can I say 沒能看手機 for the rule?",
+          "answer": "No. 沒能 means you did not get a chance. A rule uses 不能 or 不可以 — for permission, 能 can be replaced with 可以, and permission questions and negatives often use 可以.",
+          "wrongTraditional": "上課時間沒能看手機。",
+          "wrongSimplified": "上课时间没能看手机。",
           "right": {
             "traditional": "上課時間我們不能看手機。",
             "simplified": "上课时间我们不能看手机。",
             "pinyin": "Shàngkè shíjiān wǒmen bù néng kàn shǒujī.",
-            "english": "We cannot look at phones during class.",
+            "english": "We cannot look at our phones during class.",
             "words": [
               {
                 "id": "l9g4-confusion-negation-pair-word-1",
@@ -3367,7 +3499,8 @@
                 "traditional": "看手機",
                 "pinyin": "kàn shǒujī",
                 "meaning": "look at a phone",
-                "suffix": "。"
+                "suffix": "。",
+                "simplified": "看手机"
               }
             ]
           }
@@ -3687,8 +3820,8 @@
         "id": "g4-example-5",
         "number": 5,
         "text": {
-          "traditional": "A: 在捷運上能吃東西嗎？ B: 不可以吃東西。",
-          "simplified": "A: 在捷运上能吃东西吗？ B: 不可以吃东西。",
+          "traditional": "A：在捷運上能吃東西嗎？ B：不可以吃東西。",
+          "simplified": "A：在捷运上能吃东西吗？ B：不可以吃东西。",
           "pinyin": "A: Zài jiéyùn shàng néng chī dōngxi ma? B: Bù kěyǐ chī dōngxi.",
           "english": "A: Can you eat food on the MRT? B: You cannot eat food.",
           "words": [
@@ -3698,7 +3831,7 @@
               "simplified": "在捷运上",
               "pinyin": "zài jiéyùn shàng",
               "meaning": "on the MRT",
-              "prefix": "A: "
+              "prefix": "A："
             },
             {
               "id": "b1l09-g4-e5-w2",
@@ -3713,7 +3846,7 @@
               "traditional": "不可以",
               "pinyin": "bù kěyǐ",
               "meaning": "cannot",
-              "prefix": "B: "
+              "prefix": "B："
             },
             {
               "id": "b1l09-g4-e5-w4",
@@ -3730,8 +3863,8 @@
         "id": "g4-example-6",
         "number": 6,
         "text": {
-          "traditional": "A: 我能在這裡用電腦嗎？ B: 可以，沒問題。",
-          "simplified": "A: 我能在这里用电脑吗？ B: 可以，没问题。",
+          "traditional": "A：我能在這裡用電腦嗎？ B：可以，沒問題。",
+          "simplified": "A：我能在这里用电脑吗？ B：可以，没问题。",
           "pinyin": "A: Wǒ néng zài zhèlǐ yòng diànnǎo ma? B: Kěyǐ, méi wèntí.",
           "english": "A: Can I use a computer here? B: Yes, no problem.",
           "words": [
@@ -3740,7 +3873,7 @@
               "traditional": "我能",
               "pinyin": "wǒ néng",
               "meaning": "can I",
-              "prefix": "A: "
+              "prefix": "A："
             },
             {
               "id": "b1l09-g4-e6-w2",
@@ -3762,7 +3895,7 @@
               "traditional": "可以",
               "pinyin": "kěyǐ",
               "meaning": "yes/can",
-              "prefix": "B: ",
+              "prefix": "B：",
               "suffix": "，"
             },
             {
@@ -3820,8 +3953,8 @@
         "id": "g4-example-8",
         "number": 8,
         "text": {
-          "traditional": "A: 那個地方很遠，我們十點鐘能到嗎？ B: 沒問題，坐捷運很快。",
-          "simplified": "A: 那个地方很远，我们十点钟能到吗？ B: 没问题，坐捷运很快。",
+          "traditional": "A：那個地方很遠，我們十點鐘能到嗎？ B：沒問題，坐捷運很快。",
+          "simplified": "A：那个地方很远，我们十点钟能到吗？ B：没问题，坐捷运很快。",
           "pinyin": "A: Nàge dìfāng hěn yuǎn, wǒmen shí diǎn zhōng néng dào ma? B: Méi wèntí, zuò jiéyùn hěn kuài.",
           "english": "A: That place is very far, can we arrive by ten o'clock? B: No problem, taking the MRT is very fast.",
           "words": [
@@ -3831,7 +3964,7 @@
               "simplified": "那个地方很远",
               "pinyin": "nàge dìfāng hěn yuǎn",
               "meaning": "that place is far",
-              "prefix": "A: ",
+              "prefix": "A：",
               "suffix": "，"
             },
             {
@@ -3862,7 +3995,7 @@
               "simplified": "没问题",
               "pinyin": "méi wèntí",
               "meaning": "no problem",
-              "prefix": "B: ",
+              "prefix": "B：",
               "suffix": "，"
             },
             {
@@ -3886,8 +4019,8 @@
         "id": "g4-example-9",
         "number": 9,
         "text": {
-          "traditional": "A: 明天他能來嗎？ B: 他不能來，因為他女朋友的媽媽要請他吃飯。",
-          "simplified": "A: 明天他能来吗？ B: 他不能来，因为他女朋友的妈妈要请他吃饭。",
+          "traditional": "A：明天他能來嗎？ B：他不能來，因為他女朋友的媽媽要請他吃飯。",
+          "simplified": "A：明天他能来吗？ B：他不能来，因为他女朋友的妈妈要请他吃饭。",
           "pinyin": "A: Míngtiān tā néng lái ma? B: Tā bù néng lái, yīnwèi tā nǚpéngyǒu de māma yào qǐng tā chīfàn.",
           "english": "A: Can he come tomorrow? B: He cannot come, because his girlfriend's mother invited him to dinner.",
           "words": [
@@ -3896,7 +4029,7 @@
               "traditional": "明天",
               "pinyin": "míngtiān",
               "meaning": "tomorrow",
-              "prefix": "A: "
+              "prefix": "A："
             },
             {
               "id": "b1l09-g4-e9-w2",
@@ -3912,7 +4045,7 @@
               "simplified": "他不能来",
               "pinyin": "tā bù néng lái",
               "meaning": "he cannot come",
-              "prefix": "B: ",
+              "prefix": "B：",
               "suffix": "，"
             },
             {
@@ -3957,9 +4090,9 @@
           {
             "type": "blank",
             "id": "l9g4-q1-blank",
-            "answer": "不能走路",
-            "answerSimplified": "不能走路",
-            "hint": "Express physical inability due to injury."
+            "answer": "不能跑",
+            "answerSimplified": "不能跑",
+            "hint": "The book shows he can still walk, but cannot run."
           },
           {
             "type": "text",
@@ -3969,10 +4102,10 @@
         "tiles": [
           {
             "id": "l9g4-q1-tile1",
-            "traditional": "不能走路",
-            "simplified": "不能走路",
-            "pinyin": "bù néng zǒulù",
-            "meaning": "cannot walk"
+            "traditional": "不能跑",
+            "simplified": "不能跑",
+            "pinyin": "bù néng pǎo",
+            "meaning": "cannot run"
           },
           {
             "id": "l9g4-q1-tile2",
@@ -3981,8 +4114,8 @@
             "meaning": "often runs"
           }
         ],
-        "correctFeedback": "不能走路 reflects an impairment of physical capability.",
-        "repairFeedback": "Use 不能走路."
+        "correctFeedback": "不能跑 matches the book’s 他現在只能走，不能跑。",
+        "repairFeedback": "Use 不能跑."
       },
       {
         "id": "l9g4-q2",
@@ -4198,30 +4331,31 @@
             "id": "l9g4-s1-r1",
             "subject": [
               {
-                "id": "l9g4-s1-r1-s",
-                "traditional": "他受傷了",
-                "simplified": "他受伤了",
-                "pinyin": "tā shòushāng le",
-                "meaning": "he is injured"
+                "id": "l9g4-s1-r1-s1",
+                "traditional": "他受傷了，現在",
+                "simplified": "他受伤了，现在",
+                "pinyin": "tā shòushāng le, xiànzài",
+                "meaning": "he is injured; right now"
               }
             ],
             "grammar": [
               {
-                "id": "l9g4-s1-r1-g",
-                "traditional": "不能",
-                "pinyin": "bù néng",
-                "meaning": "cannot"
+                "id": "l9g4-s1-r1-g1",
+                "traditional": "只能走，不能",
+                "pinyin": "zhǐ néng zǒu, bù néng",
+                "meaning": "can only walk, cannot"
               }
             ],
             "complement": [
               {
-                "id": "l9g4-s1-r1-c",
-                "traditional": "走路",
-                "pinyin": "zǒulù",
-                "meaning": "walk"
+                "id": "l9g4-s1-r1-c1",
+                "traditional": "跑",
+                "pinyin": "pǎo",
+                "meaning": "run",
+                "suffix": "。"
               }
             ],
-            "english": "He is injured; he cannot walk now."
+            "english": "He is injured; he can only walk, not run."
           }
         ],
         "exampleIds": [
@@ -4326,7 +4460,8 @@
           "g4-example-9"
         ]
       }
-    ]
+    ],
+    "exerciseNote": "The book answers nine questions with 不能 across printed pages 213–215; these picture answers follow the printed real conditions."
   },
   "LESSON_NINE_GRAMMAR_ONE": {
     "bookId": 1,
@@ -4344,11 +4479,13 @@
       206
     ],
     "audioReference": "09-1-3",
-    "explanation": "Put 在 before a verb to mark ongoing action: 在 + Verb (他在上課 = He is having class). Before places, 在 means \"at / in\".",
+    "explanation": "Put 在 right before an action to show it is happening now: 他在上課. When 在 comes before a place, as in 他在教室, it means “at” or “in” instead.",
     "focusTerms": [
       "在",
       "現在",
-      "现在"
+      "现在",
+      "他在上課",
+      "他在教室"
     ],
     "teachingGlossary": [
       {
@@ -6041,6 +6178,67 @@
             }
           ]
         }
+      },
+      {
+        "id": "l9g1-e6",
+        "number": 6,
+        "text": {
+          "traditional": "A：你哥哥在做什麼？ B：他在運動。",
+          "simplified": "A：你哥哥在做什么？ B：他在运动。",
+          "pinyin": "A: Nǐ gēge zài zuò shénme? B: Tā zài yùndòng.",
+          "english": "A: What is your older brother doing? B: He is exercising.",
+          "words": [
+            {
+              "id": "l9g1-e6-word-1",
+              "traditional": "你哥哥",
+              "pinyin": "nǐ gēge",
+              "meaning": "your older brother",
+              "prefix": "A："
+            },
+            {
+              "id": "l9g1-e6-word-2",
+              "traditional": "在",
+              "pinyin": "zài",
+              "meaning": "is (doing)"
+            },
+            {
+              "id": "l9g1-e6-word-3",
+              "traditional": "做",
+              "pinyin": "zuò",
+              "meaning": "do"
+            },
+            {
+              "id": "l9g1-e6-word-4",
+              "traditional": "什麼",
+              "simplified": "什么",
+              "pinyin": "shénme",
+              "meaning": "what",
+              "suffix": "？"
+            },
+            {
+              "id": "l9g1-e6-word-5",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he",
+              "prefix": "B："
+            },
+            {
+              "id": "l9g1-e6-word-6",
+              "traditional": "在",
+              "pinyin": "zài",
+              "meaning": "is (doing)"
+            },
+            {
+              "id": "l9g1-e6-word-7",
+              "traditional": "運動",
+              "simplified": "运动",
+              "pinyin": "yùndòng",
+              "meaning": "exercise",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
       }
     ],
     "exerciseTitle": "Catch the live action",
@@ -6185,7 +6383,8 @@
         "correctFeedback": "在 goes before the whole action 上書法課.",
         "repairFeedback": "Keep 上書法課 together."
       }
-    ]
+    ],
+    "exerciseNote": "The book completes three dialogues with 在 on printed pages 205–206 and gives no answer key; these model answers follow the printed pictures."
   },
   "LESSON_NINE_GRAMMAR_THREE": {
     "bookId": 1,
@@ -6203,7 +6402,7 @@
       208
     ],
     "audioReference": "09-1-3",
-    "explanation": "Order actions with 先 (\"first\") and 再 (\"then\"): 先 + Action 1, 再 + Action 2. If subjects differ, name each person before their action.",
+    "explanation": "Put 先 before the first action and 再 before the next. If one person does both actions, say that person once. If people take turns, name each person before their action.",
     "focusTerms": [
       "先",
       "再"
@@ -7391,6 +7590,12 @@
         "id": "l9g3-p1",
         "subject": [
           {
+            "id": "l9g3-p1-he",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "he"
+          },
+          {
             "id": "l9g3-first1",
             "traditional": "先",
             "pinyin": "xiān",
@@ -7401,7 +7606,8 @@
             "traditional": "打網球",
             "simplified": "打网球",
             "pinyin": "dǎ wǎngqiú",
-            "meaning": "play tennis"
+            "meaning": "play tennis",
+            "suffix": "，"
           }
         ],
         "grammar": [
@@ -7420,42 +7626,54 @@
           }
         ],
         "complement": [],
-        "english": "First play tennis, then swim."
+        "english": "He plays tennis first, then swims."
       },
       {
         "id": "l9g3-p2",
         "subject": [
           {
-            "id": "l9g3-first2",
+            "id": "l9g3-p2-sister",
+            "traditional": "姐姐",
+            "pinyin": "jiějie",
+            "meaning": "older sister"
+          },
+          {
+            "id": "l9g3-p2-first",
             "traditional": "先",
             "pinyin": "xiān",
             "meaning": "first; before another action"
           },
           {
-            "id": "l9g3-mrt",
-            "traditional": "坐捷運",
-            "pinyin": "zuò jiéyùn",
-            "meaning": "take the MRT"
+            "id": "l9g3-p2-sing",
+            "traditional": "唱",
+            "pinyin": "chàng",
+            "meaning": "sing",
+            "suffix": "，"
           }
         ],
         "grammar": [
           {
-            "id": "l9g3-then2",
+            "id": "l9g3-p2-younger",
+            "traditional": "妹妹",
+            "pinyin": "mèimei",
+            "meaning": "younger sister"
+          },
+          {
+            "id": "l9g3-p2-then",
             "traditional": "再",
             "pinyin": "zài",
             "meaning": "then; after the first action"
           },
           {
-            "id": "l9g3-bus",
-            "traditional": "坐公車",
-            "simplified": "坐公车",
-            "pinyin": "zuò gōngchē",
-            "meaning": "take the bus",
+            "id": "l9g3-p2-sing2",
+            "traditional": "唱",
+            "pinyin": "chàng",
+            "meaning": "sing",
             "suffix": "。"
           }
         ],
         "complement": [],
-        "english": "First take the MRT, then take a bus."
+        "english": "My older sister sings first, then my younger sister sings."
       },
       {
         "id": "l9g3-p3",
@@ -7626,7 +7844,8 @@
                 "id": "l9g3-confusion-action-again-word-4",
                 "traditional": "坐捷運",
                 "pinyin": "zuò jiéyùn",
-                "meaning": "take the MRT"
+                "meaning": "take the MRT",
+                "simplified": "坐捷运"
               },
               {
                 "id": "l9g3-confusion-action-again-word-5",
@@ -7691,10 +7910,11 @@
           "label": "Take turns",
           "first": "姐姐唱歌",
           "then": "妹妹唱",
-          "traditional": "姐姐先唱歌，妹妹再唱。",
-          "pinyin": "Jiějie xiān chànggē, mèimei zài chàng.",
+          "traditional": "姐姐先唱，妹妹再唱。",
+          "pinyin": "Jiějie xiān chàng, mèimei zài chàng.",
           "english": "Older sister sings first, then younger sister sings.",
-          "note": "Two people take turns, so both are named."
+          "note": "Two people take turns, so both are named.",
+          "simplified": "姐姐先唱，妹妹再唱。"
         }
       ],
       "takeaway": "先 is step 1. 再 is step 2. Keep each word right before its action."
@@ -7751,9 +7971,9 @@
         "number": 2,
         "teachingNote": "Two people take turns.",
         "text": {
-          "traditional": "姐姐先唱歌，妹妹再唱。",
-          "simplified": "姐姐先唱歌，妹妹再唱。",
-          "pinyin": "Jiějie xiān chànggē, mèimei zài chàng.",
+          "traditional": "姐姐先唱，妹妹再唱。",
+          "simplified": "姐姐先唱，妹妹再唱。",
+          "pinyin": "Jiějie xiān chàng, mèimei zài chàng.",
           "english": "Older sister sings first, then younger sister sings.",
           "words": [
             {
@@ -7770,8 +7990,8 @@
             },
             {
               "id": "l9g3-e2-word-3",
-              "traditional": "唱歌",
-              "pinyin": "chànggē",
+              "traditional": "唱",
+              "pinyin": "chàng",
               "meaning": "sing"
             },
             {
@@ -7829,7 +8049,8 @@
               "id": "l9g3-e3-word-4",
               "traditional": "坐捷運",
               "pinyin": "zuò jiéyùn",
-              "meaning": "take the MRT"
+              "meaning": "take the MRT",
+              "simplified": "坐捷运"
             },
             {
               "id": "l9g3-e3-word-5",
@@ -7965,6 +8186,144 @@
             }
           ]
         }
+      },
+      {
+        "id": "l9g3-e6",
+        "number": 6,
+        "text": {
+          "traditional": "A：你們兩個人，誰先說？ B：他先說，我再說。",
+          "simplified": "A：你们两个人，谁先说？ B：他先说，我再说。",
+          "pinyin": "A: Nǐmen liǎng ge rén, shéi xiān shuō? B: Tā xiān shuō, wǒ zài shuō.",
+          "english": "A: You two, who speaks first? B: He speaks first, then I speak.",
+          "words": [
+            {
+              "id": "l9g3-e6-word-1",
+              "traditional": "你們",
+              "simplified": "你们",
+              "pinyin": "nǐmen",
+              "meaning": "you all",
+              "prefix": "A："
+            },
+            {
+              "id": "l9g3-e6-word-2",
+              "traditional": "兩個人",
+              "simplified": "两个人",
+              "pinyin": "liǎng ge rén",
+              "meaning": "two people",
+              "suffix": "，"
+            },
+            {
+              "id": "l9g3-e6-word-3",
+              "traditional": "誰",
+              "simplified": "谁",
+              "pinyin": "shéi",
+              "meaning": "who"
+            },
+            {
+              "id": "l9g3-e6-word-4",
+              "traditional": "先說",
+              "pinyin": "xiān shuō",
+              "meaning": "speak first",
+              "suffix": "？",
+              "simplified": "先说"
+            },
+            {
+              "id": "l9g3-e6-word-5",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he",
+              "prefix": "B："
+            },
+            {
+              "id": "l9g3-e6-word-6",
+              "traditional": "先說",
+              "pinyin": "xiān shuō",
+              "meaning": "speaks first",
+              "simplified": "先说"
+            },
+            {
+              "id": "l9g3-e6-word-7",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me",
+              "prefix": "，"
+            },
+            {
+              "id": "l9g3-e6-word-8",
+              "traditional": "再說",
+              "pinyin": "zài shuō",
+              "meaning": "then I speak",
+              "suffix": "。",
+              "simplified": "再说"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l9g3-e7",
+        "number": 7,
+        "text": {
+          "traditional": "我想先去百貨公司買東西，再去朋友家。",
+          "simplified": "我想先去百货公司买东西，再去朋友家。",
+          "pinyin": "Wǒ xiǎng xiān qù bǎihuò gōngsī mǎi dōngxi, zài qù péngyǒu jiā.",
+          "english": "I want to go to the department store first to shop, then go to my friend’s place.",
+          "words": [
+            {
+              "id": "l9g3-e7-word-1",
+              "traditional": "我想",
+              "pinyin": "wǒ xiǎng",
+              "meaning": "I want to"
+            },
+            {
+              "id": "l9g3-e7-word-2",
+              "traditional": "先",
+              "pinyin": "xiān",
+              "meaning": "first"
+            },
+            {
+              "id": "l9g3-e7-word-3",
+              "traditional": "去",
+              "pinyin": "qù",
+              "meaning": "go"
+            },
+            {
+              "id": "l9g3-e7-word-4",
+              "traditional": "百貨公司",
+              "simplified": "百货公司",
+              "pinyin": "bǎihuò gōngsī",
+              "meaning": "department store"
+            },
+            {
+              "id": "l9g3-e7-word-5",
+              "traditional": "買東西",
+              "simplified": "买东西",
+              "pinyin": "mǎi dōngxi",
+              "meaning": "shop for things",
+              "suffix": "，"
+            },
+            {
+              "id": "l9g3-e7-word-6",
+              "traditional": "再",
+              "pinyin": "zài",
+              "meaning": "then"
+            },
+            {
+              "id": "l9g3-e7-word-7",
+              "traditional": "去",
+              "pinyin": "qù",
+              "meaning": "go"
+            },
+            {
+              "id": "l9g3-e7-word-8",
+              "traditional": "朋友家",
+              "pinyin": "péngyǒu jiā",
+              "meaning": "friend’s place",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
       }
     ],
     "exerciseTitle": "Build the route",
@@ -8071,7 +8430,7 @@
           {
             "type": "blank",
             "id": "l9g3-q3-blank",
-            "answer": "姐姐先唱歌，妹妹再唱",
+            "answer": "姐姐先唱，妹妹再唱",
             "hint": "Use person + 先/再 + action."
           },
           {
@@ -8082,8 +8441,8 @@
         "tiles": [
           {
             "id": "l9g3-q3-1",
-            "traditional": "姐姐先唱歌，妹妹再唱",
-            "pinyin": "jiějie xiān chànggē, mèimei zài chàng",
+            "traditional": "姐姐先唱，妹妹再唱",
+            "pinyin": "jiějie xiān chàng, mèimei zài chàng",
             "meaning": "older sister first, younger sister next"
           },
           {
@@ -8102,7 +8461,8 @@
         "correctFeedback": "Each person is named before their word 先 or 再.",
         "repairFeedback": "Use person + 先/再 + action."
       }
-    ]
+    ],
+    "exerciseNote": "The book completes three dialogues with 先……再…… on printed page 208 and gives no answer key; these model answers follow the printed pictures."
   },
   "LESSON_NINE_GRAMMAR_TWO": {
     "bookId": 1,
@@ -8120,7 +8480,7 @@
       207
     ],
     "audioReference": "09-1-3",
-    "explanation": "Set a time range with 從 (\"from\") and 到 (\"to\"): 從 + Start Time + 到 + End Time (hours, days, dates, or years).",
+    "explanation": "Use 從 before the start time and 到 before the end time. The two words work like matching pins. The range can be hours, days, dates, months, or years.",
     "focusTerms": [
       "從",
       "从",
@@ -9854,10 +10214,10 @@
         "number": 4,
         "teachingNote": "Busy the whole day.",
         "text": {
-          "traditional": "我明天從早上到晚上都沒有空。",
-          "simplified": "我明天从早上到晚上都没有空。",
-          "pinyin": "Wǒ míngtiān cóng zǎoshang dào wǎnshang dōu méi yǒukòng.",
-          "english": "Tomorrow I am not free from morning to evening.",
+          "traditional": "我明天從早上到晚上都沒有空，後天可以嗎？",
+          "simplified": "我明天从早上到晚上都没有空，后天可以吗？",
+          "pinyin": "Wǒ míngtiān cóng zǎoshang dào wǎnshang dōu méiyǒu kòng, hòutiān kěyǐ ma?",
+          "english": "I have no free time from morning to night tomorrow; how about the day after tomorrow?",
           "words": [
             {
               "id": "l9g2-e4-word-1",
@@ -9907,8 +10267,16 @@
               "traditional": "沒有空",
               "simplified": "没有空",
               "pinyin": "méi yǒukòng",
-              "meaning": "not available",
-              "suffix": "。"
+              "meaning": "not available"
+            },
+            {
+              "id": "l9g2-e4-word-tail",
+              "traditional": "後天可以嗎",
+              "simplified": "后天可以吗",
+              "pinyin": "hòutiān kěyǐ ma",
+              "meaning": "how about the day after tomorrow?",
+              "prefix": "，",
+              "suffix": "？"
             }
           ]
         }
@@ -10121,7 +10489,8 @@
         "correctFeedback": "The day runs from morning to evening.",
         "repairFeedback": "Follow real time order."
       }
-    ]
+    ],
+    "exerciseNote": "The book completes three dialogues with 從……到…… on printed page 207 and gives no answer key; these written answers follow the printed date and time ranges."
   },
   "LESSON_NINE_PART_ONE": {
     "id": "B1L09-P01-D01",
@@ -10150,7 +10519,9 @@
         "focusTerms": [
           "在",
           "現在",
-          "现在"
+          "现在",
+          "他在上課",
+          "他在教室"
         ],
         "teachingGlossary": [
           {
@@ -11843,6 +12214,67 @@
                 }
               ]
             }
+          },
+          {
+            "id": "l9g1-e6",
+            "number": 6,
+            "text": {
+              "traditional": "A：你哥哥在做什麼？ B：他在運動。",
+              "simplified": "A：你哥哥在做什么？ B：他在运动。",
+              "pinyin": "A: Nǐ gēge zài zuò shénme? B: Tā zài yùndòng.",
+              "english": "A: What is your older brother doing? B: He is exercising.",
+              "words": [
+                {
+                  "id": "l9g1-e6-word-1",
+                  "traditional": "你哥哥",
+                  "pinyin": "nǐ gēge",
+                  "meaning": "your older brother",
+                  "prefix": "A："
+                },
+                {
+                  "id": "l9g1-e6-word-2",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "is (doing)"
+                },
+                {
+                  "id": "l9g1-e6-word-3",
+                  "traditional": "做",
+                  "pinyin": "zuò",
+                  "meaning": "do"
+                },
+                {
+                  "id": "l9g1-e6-word-4",
+                  "traditional": "什麼",
+                  "simplified": "什么",
+                  "pinyin": "shénme",
+                  "meaning": "what",
+                  "suffix": "？"
+                },
+                {
+                  "id": "l9g1-e6-word-5",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he",
+                  "prefix": "B："
+                },
+                {
+                  "id": "l9g1-e6-word-6",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "is (doing)"
+                },
+                {
+                  "id": "l9g1-e6-word-7",
+                  "traditional": "運動",
+                  "simplified": "运动",
+                  "pinyin": "yùndòng",
+                  "meaning": "exercise",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
           }
         ],
         "exerciseTitle": "Catch the live action",
@@ -11987,7 +12419,8 @@
             "correctFeedback": "在 goes before the whole action 上書法課.",
             "repairFeedback": "Keep 上書法課 together."
           }
-        ]
+        ],
+        "exerciseNote": "The book completes three dialogues with 在 on printed pages 205–206 and gives no answer key; these model answers follow the printed pictures."
       },
       {
         "bookId": 1,
@@ -13739,10 +14172,10 @@
             "number": 4,
             "teachingNote": "Busy the whole day.",
             "text": {
-              "traditional": "我明天從早上到晚上都沒有空。",
-              "simplified": "我明天从早上到晚上都没有空。",
-              "pinyin": "Wǒ míngtiān cóng zǎoshang dào wǎnshang dōu méi yǒukòng.",
-              "english": "Tomorrow I am not free from morning to evening.",
+              "traditional": "我明天從早上到晚上都沒有空，後天可以嗎？",
+              "simplified": "我明天从早上到晚上都没有空，后天可以吗？",
+              "pinyin": "Wǒ míngtiān cóng zǎoshang dào wǎnshang dōu méiyǒu kòng, hòutiān kěyǐ ma?",
+              "english": "I have no free time from morning to night tomorrow; how about the day after tomorrow?",
               "words": [
                 {
                   "id": "l9g2-e4-word-1",
@@ -13792,8 +14225,16 @@
                   "traditional": "沒有空",
                   "simplified": "没有空",
                   "pinyin": "méi yǒukòng",
-                  "meaning": "not available",
-                  "suffix": "。"
+                  "meaning": "not available"
+                },
+                {
+                  "id": "l9g2-e4-word-tail",
+                  "traditional": "後天可以嗎",
+                  "simplified": "后天可以吗",
+                  "pinyin": "hòutiān kěyǐ ma",
+                  "meaning": "how about the day after tomorrow?",
+                  "prefix": "，",
+                  "suffix": "？"
                 }
               ]
             }
@@ -14006,7 +14447,8 @@
             "correctFeedback": "The day runs from morning to evening.",
             "repairFeedback": "Follow real time order."
           }
-        ]
+        ],
+        "exerciseNote": "The book completes three dialogues with 從……到…… on printed page 207 and gives no answer key; these written answers follow the printed date and time ranges."
       },
       {
         "bookId": 1,
@@ -15212,6 +15654,12 @@
             "id": "l9g3-p1",
             "subject": [
               {
+                "id": "l9g3-p1-he",
+                "traditional": "他",
+                "pinyin": "tā",
+                "meaning": "he"
+              },
+              {
                 "id": "l9g3-first1",
                 "traditional": "先",
                 "pinyin": "xiān",
@@ -15222,7 +15670,8 @@
                 "traditional": "打網球",
                 "simplified": "打网球",
                 "pinyin": "dǎ wǎngqiú",
-                "meaning": "play tennis"
+                "meaning": "play tennis",
+                "suffix": "，"
               }
             ],
             "grammar": [
@@ -15241,42 +15690,54 @@
               }
             ],
             "complement": [],
-            "english": "First play tennis, then swim."
+            "english": "He plays tennis first, then swims."
           },
           {
             "id": "l9g3-p2",
             "subject": [
               {
-                "id": "l9g3-first2",
+                "id": "l9g3-p2-sister",
+                "traditional": "姐姐",
+                "pinyin": "jiějie",
+                "meaning": "older sister"
+              },
+              {
+                "id": "l9g3-p2-first",
                 "traditional": "先",
                 "pinyin": "xiān",
                 "meaning": "first; before another action"
               },
               {
-                "id": "l9g3-mrt",
-                "traditional": "坐捷運",
-                "pinyin": "zuò jiéyùn",
-                "meaning": "take the MRT"
+                "id": "l9g3-p2-sing",
+                "traditional": "唱",
+                "pinyin": "chàng",
+                "meaning": "sing",
+                "suffix": "，"
               }
             ],
             "grammar": [
               {
-                "id": "l9g3-then2",
+                "id": "l9g3-p2-younger",
+                "traditional": "妹妹",
+                "pinyin": "mèimei",
+                "meaning": "younger sister"
+              },
+              {
+                "id": "l9g3-p2-then",
                 "traditional": "再",
                 "pinyin": "zài",
                 "meaning": "then; after the first action"
               },
               {
-                "id": "l9g3-bus",
-                "traditional": "坐公車",
-                "simplified": "坐公车",
-                "pinyin": "zuò gōngchē",
-                "meaning": "take the bus",
+                "id": "l9g3-p2-sing2",
+                "traditional": "唱",
+                "pinyin": "chàng",
+                "meaning": "sing",
                 "suffix": "。"
               }
             ],
             "complement": [],
-            "english": "First take the MRT, then take a bus."
+            "english": "My older sister sings first, then my younger sister sings."
           },
           {
             "id": "l9g3-p3",
@@ -15447,7 +15908,8 @@
                     "id": "l9g3-confusion-action-again-word-4",
                     "traditional": "坐捷運",
                     "pinyin": "zuò jiéyùn",
-                    "meaning": "take the MRT"
+                    "meaning": "take the MRT",
+                    "simplified": "坐捷运"
                   },
                   {
                     "id": "l9g3-confusion-action-again-word-5",
@@ -15512,10 +15974,11 @@
               "label": "Take turns",
               "first": "姐姐唱歌",
               "then": "妹妹唱",
-              "traditional": "姐姐先唱歌，妹妹再唱。",
-              "pinyin": "Jiějie xiān chànggē, mèimei zài chàng.",
+              "traditional": "姐姐先唱，妹妹再唱。",
+              "pinyin": "Jiějie xiān chàng, mèimei zài chàng.",
               "english": "Older sister sings first, then younger sister sings.",
-              "note": "Two people take turns, so both are named."
+              "note": "Two people take turns, so both are named.",
+              "simplified": "姐姐先唱，妹妹再唱。"
             }
           ],
           "takeaway": "先 is step 1. 再 is step 2. Keep each word right before its action."
@@ -15572,9 +16035,9 @@
             "number": 2,
             "teachingNote": "Two people take turns.",
             "text": {
-              "traditional": "姐姐先唱歌，妹妹再唱。",
-              "simplified": "姐姐先唱歌，妹妹再唱。",
-              "pinyin": "Jiějie xiān chànggē, mèimei zài chàng.",
+              "traditional": "姐姐先唱，妹妹再唱。",
+              "simplified": "姐姐先唱，妹妹再唱。",
+              "pinyin": "Jiějie xiān chàng, mèimei zài chàng.",
               "english": "Older sister sings first, then younger sister sings.",
               "words": [
                 {
@@ -15591,8 +16054,8 @@
                 },
                 {
                   "id": "l9g3-e2-word-3",
-                  "traditional": "唱歌",
-                  "pinyin": "chànggē",
+                  "traditional": "唱",
+                  "pinyin": "chàng",
                   "meaning": "sing"
                 },
                 {
@@ -15650,7 +16113,8 @@
                   "id": "l9g3-e3-word-4",
                   "traditional": "坐捷運",
                   "pinyin": "zuò jiéyùn",
-                  "meaning": "take the MRT"
+                  "meaning": "take the MRT",
+                  "simplified": "坐捷运"
                 },
                 {
                   "id": "l9g3-e3-word-5",
@@ -15786,6 +16250,144 @@
                 }
               ]
             }
+          },
+          {
+            "id": "l9g3-e6",
+            "number": 6,
+            "text": {
+              "traditional": "A：你們兩個人，誰先說？ B：他先說，我再說。",
+              "simplified": "A：你们两个人，谁先说？ B：他先说，我再说。",
+              "pinyin": "A: Nǐmen liǎng ge rén, shéi xiān shuō? B: Tā xiān shuō, wǒ zài shuō.",
+              "english": "A: You two, who speaks first? B: He speaks first, then I speak.",
+              "words": [
+                {
+                  "id": "l9g3-e6-word-1",
+                  "traditional": "你們",
+                  "simplified": "你们",
+                  "pinyin": "nǐmen",
+                  "meaning": "you all",
+                  "prefix": "A："
+                },
+                {
+                  "id": "l9g3-e6-word-2",
+                  "traditional": "兩個人",
+                  "simplified": "两个人",
+                  "pinyin": "liǎng ge rén",
+                  "meaning": "two people",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l9g3-e6-word-3",
+                  "traditional": "誰",
+                  "simplified": "谁",
+                  "pinyin": "shéi",
+                  "meaning": "who"
+                },
+                {
+                  "id": "l9g3-e6-word-4",
+                  "traditional": "先說",
+                  "pinyin": "xiān shuō",
+                  "meaning": "speak first",
+                  "suffix": "？",
+                  "simplified": "先说"
+                },
+                {
+                  "id": "l9g3-e6-word-5",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he",
+                  "prefix": "B："
+                },
+                {
+                  "id": "l9g3-e6-word-6",
+                  "traditional": "先說",
+                  "pinyin": "xiān shuō",
+                  "meaning": "speaks first",
+                  "simplified": "先说"
+                },
+                {
+                  "id": "l9g3-e6-word-7",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me",
+                  "prefix": "，"
+                },
+                {
+                  "id": "l9g3-e6-word-8",
+                  "traditional": "再說",
+                  "pinyin": "zài shuō",
+                  "meaning": "then I speak",
+                  "suffix": "。",
+                  "simplified": "再说"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l9g3-e7",
+            "number": 7,
+            "text": {
+              "traditional": "我想先去百貨公司買東西，再去朋友家。",
+              "simplified": "我想先去百货公司买东西，再去朋友家。",
+              "pinyin": "Wǒ xiǎng xiān qù bǎihuò gōngsī mǎi dōngxi, zài qù péngyǒu jiā.",
+              "english": "I want to go to the department store first to shop, then go to my friend’s place.",
+              "words": [
+                {
+                  "id": "l9g3-e7-word-1",
+                  "traditional": "我想",
+                  "pinyin": "wǒ xiǎng",
+                  "meaning": "I want to"
+                },
+                {
+                  "id": "l9g3-e7-word-2",
+                  "traditional": "先",
+                  "pinyin": "xiān",
+                  "meaning": "first"
+                },
+                {
+                  "id": "l9g3-e7-word-3",
+                  "traditional": "去",
+                  "pinyin": "qù",
+                  "meaning": "go"
+                },
+                {
+                  "id": "l9g3-e7-word-4",
+                  "traditional": "百貨公司",
+                  "simplified": "百货公司",
+                  "pinyin": "bǎihuò gōngsī",
+                  "meaning": "department store"
+                },
+                {
+                  "id": "l9g3-e7-word-5",
+                  "traditional": "買東西",
+                  "simplified": "买东西",
+                  "pinyin": "mǎi dōngxi",
+                  "meaning": "shop for things",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l9g3-e7-word-6",
+                  "traditional": "再",
+                  "pinyin": "zài",
+                  "meaning": "then"
+                },
+                {
+                  "id": "l9g3-e7-word-7",
+                  "traditional": "去",
+                  "pinyin": "qù",
+                  "meaning": "go"
+                },
+                {
+                  "id": "l9g3-e7-word-8",
+                  "traditional": "朋友家",
+                  "pinyin": "péngyǒu jiā",
+                  "meaning": "friend’s place",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
           }
         ],
         "exerciseTitle": "Build the route",
@@ -15892,7 +16494,7 @@
               {
                 "type": "blank",
                 "id": "l9g3-q3-blank",
-                "answer": "姐姐先唱歌，妹妹再唱",
+                "answer": "姐姐先唱，妹妹再唱",
                 "hint": "Use person + 先/再 + action."
               },
               {
@@ -15903,8 +16505,8 @@
             "tiles": [
               {
                 "id": "l9g3-q3-1",
-                "traditional": "姐姐先唱歌，妹妹再唱",
-                "pinyin": "jiějie xiān chànggē, mèimei zài chàng",
+                "traditional": "姐姐先唱，妹妹再唱",
+                "pinyin": "jiějie xiān chàng, mèimei zài chàng",
                 "meaning": "older sister first, younger sister next"
               },
               {
@@ -15923,7 +16525,8 @@
             "correctFeedback": "Each person is named before their word 先 or 再.",
             "repairFeedback": "Use person + 先/再 + action."
           }
-        ]
+        ],
+        "exerciseNote": "The book completes three dialogues with 先……再…… on printed page 208 and gives no answer key; these model answers follow the printed pictures."
       }
     ],
     "dialogue": {
@@ -16000,7 +16603,8 @@
                 "traditional": "妳",
                 "pinyin": "nǐ",
                 "meaning": "you",
-                "prefix": "，"
+                "prefix": "，",
+                "simplified": "你"
               },
               {
                 "id": "l9d1-1-word-9",
@@ -17733,31 +18337,30 @@
             "subject": [
               {
                 "id": "l9g4-p1-s1",
-                "traditional": "他受傷了",
-                "simplified": "他受伤了",
-                "pinyin": "tā shòushāng le",
-                "meaning": "he is injured"
+                "traditional": "他受傷了，現在",
+                "simplified": "他受伤了，现在",
+                "pinyin": "tā shòushāng le, xiànzài",
+                "meaning": "he is injured; right now"
               }
             ],
             "grammar": [
               {
                 "id": "l9g4-p1-g1",
-                "traditional": "不能",
-                "simplified": "不能",
-                "pinyin": "bù néng",
-                "meaning": "cannot"
+                "traditional": "只能走，不能",
+                "pinyin": "zhǐ néng zǒu, bù néng",
+                "meaning": "can only walk, cannot"
               }
             ],
             "complement": [
               {
                 "id": "l9g4-p1-c1",
-                "traditional": "走路",
-                "pinyin": "zǒulù",
-                "meaning": "walk",
+                "traditional": "跑",
+                "pinyin": "pǎo",
+                "meaning": "run",
                 "suffix": "。"
               }
             ],
-            "english": "He is injured; he cannot walk right now."
+            "english": "He is injured; he can only walk, not run."
           },
           {
             "id": "l9g4-p2",
@@ -17899,15 +18502,15 @@
             },
             {
               "id": "l9g4-confusion-negation-pair",
-              "question": "Phones are not allowed in class. Do I say 不能看手機 or 不可以看手機?",
-              "answer": "不能看手機. Each little helping word takes its own \"not\": 能 → 不能, 可以 → 不可以. A rule closes the action, so use 不能.",
-              "wrongTraditional": "不可以看手機。",
-              "wrongSimplified": "不可以看手机。",
+              "question": "Phones are not allowed in class. Can I say 沒能看手機 for the rule?",
+              "answer": "No. 沒能 means you did not get a chance. A rule uses 不能 or 不可以 — for permission, 能 can be replaced with 可以, and permission questions and negatives often use 可以.",
+              "wrongTraditional": "上課時間沒能看手機。",
+              "wrongSimplified": "上课时间没能看手机。",
               "right": {
                 "traditional": "上課時間我們不能看手機。",
                 "simplified": "上课时间我们不能看手机。",
                 "pinyin": "Shàngkè shíjiān wǒmen bù néng kàn shǒujī.",
-                "english": "We cannot look at phones during class.",
+                "english": "We cannot look at our phones during class.",
                 "words": [
                   {
                     "id": "l9g4-confusion-negation-pair-word-1",
@@ -17941,7 +18544,8 @@
                     "traditional": "看手機",
                     "pinyin": "kàn shǒujī",
                     "meaning": "look at a phone",
-                    "suffix": "。"
+                    "suffix": "。",
+                    "simplified": "看手机"
                   }
                 ]
               }
@@ -18261,8 +18865,8 @@
             "id": "g4-example-5",
             "number": 5,
             "text": {
-              "traditional": "A: 在捷運上能吃東西嗎？ B: 不可以吃東西。",
-              "simplified": "A: 在捷运上能吃东西吗？ B: 不可以吃东西。",
+              "traditional": "A：在捷運上能吃東西嗎？ B：不可以吃東西。",
+              "simplified": "A：在捷运上能吃东西吗？ B：不可以吃东西。",
               "pinyin": "A: Zài jiéyùn shàng néng chī dōngxi ma? B: Bù kěyǐ chī dōngxi.",
               "english": "A: Can you eat food on the MRT? B: You cannot eat food.",
               "words": [
@@ -18272,7 +18876,7 @@
                   "simplified": "在捷运上",
                   "pinyin": "zài jiéyùn shàng",
                   "meaning": "on the MRT",
-                  "prefix": "A: "
+                  "prefix": "A："
                 },
                 {
                   "id": "b1l09-g4-e5-w2",
@@ -18287,7 +18891,7 @@
                   "traditional": "不可以",
                   "pinyin": "bù kěyǐ",
                   "meaning": "cannot",
-                  "prefix": "B: "
+                  "prefix": "B："
                 },
                 {
                   "id": "b1l09-g4-e5-w4",
@@ -18304,8 +18908,8 @@
             "id": "g4-example-6",
             "number": 6,
             "text": {
-              "traditional": "A: 我能在這裡用電腦嗎？ B: 可以，沒問題。",
-              "simplified": "A: 我能在这里用电脑吗？ B: 可以，没问题。",
+              "traditional": "A：我能在這裡用電腦嗎？ B：可以，沒問題。",
+              "simplified": "A：我能在这里用电脑吗？ B：可以，没问题。",
               "pinyin": "A: Wǒ néng zài zhèlǐ yòng diànnǎo ma? B: Kěyǐ, méi wèntí.",
               "english": "A: Can I use a computer here? B: Yes, no problem.",
               "words": [
@@ -18314,7 +18918,7 @@
                   "traditional": "我能",
                   "pinyin": "wǒ néng",
                   "meaning": "can I",
-                  "prefix": "A: "
+                  "prefix": "A："
                 },
                 {
                   "id": "b1l09-g4-e6-w2",
@@ -18336,7 +18940,7 @@
                   "traditional": "可以",
                   "pinyin": "kěyǐ",
                   "meaning": "yes/can",
-                  "prefix": "B: ",
+                  "prefix": "B：",
                   "suffix": "，"
                 },
                 {
@@ -18394,8 +18998,8 @@
             "id": "g4-example-8",
             "number": 8,
             "text": {
-              "traditional": "A: 那個地方很遠，我們十點鐘能到嗎？ B: 沒問題，坐捷運很快。",
-              "simplified": "A: 那个地方很远，我们十点钟能到吗？ B: 没问题，坐捷运很快。",
+              "traditional": "A：那個地方很遠，我們十點鐘能到嗎？ B：沒問題，坐捷運很快。",
+              "simplified": "A：那个地方很远，我们十点钟能到吗？ B：没问题，坐捷运很快。",
               "pinyin": "A: Nàge dìfāng hěn yuǎn, wǒmen shí diǎn zhōng néng dào ma? B: Méi wèntí, zuò jiéyùn hěn kuài.",
               "english": "A: That place is very far, can we arrive by ten o'clock? B: No problem, taking the MRT is very fast.",
               "words": [
@@ -18405,7 +19009,7 @@
                   "simplified": "那个地方很远",
                   "pinyin": "nàge dìfāng hěn yuǎn",
                   "meaning": "that place is far",
-                  "prefix": "A: ",
+                  "prefix": "A：",
                   "suffix": "，"
                 },
                 {
@@ -18436,7 +19040,7 @@
                   "simplified": "没问题",
                   "pinyin": "méi wèntí",
                   "meaning": "no problem",
-                  "prefix": "B: ",
+                  "prefix": "B：",
                   "suffix": "，"
                 },
                 {
@@ -18460,8 +19064,8 @@
             "id": "g4-example-9",
             "number": 9,
             "text": {
-              "traditional": "A: 明天他能來嗎？ B: 他不能來，因為他女朋友的媽媽要請他吃飯。",
-              "simplified": "A: 明天他能来吗？ B: 他不能来，因为他女朋友的妈妈要请他吃饭。",
+              "traditional": "A：明天他能來嗎？ B：他不能來，因為他女朋友的媽媽要請他吃飯。",
+              "simplified": "A：明天他能来吗？ B：他不能来，因为他女朋友的妈妈要请他吃饭。",
               "pinyin": "A: Míngtiān tā néng lái ma? B: Tā bù néng lái, yīnwèi tā nǚpéngyǒu de māma yào qǐng tā chīfàn.",
               "english": "A: Can he come tomorrow? B: He cannot come, because his girlfriend's mother invited him to dinner.",
               "words": [
@@ -18470,7 +19074,7 @@
                   "traditional": "明天",
                   "pinyin": "míngtiān",
                   "meaning": "tomorrow",
-                  "prefix": "A: "
+                  "prefix": "A："
                 },
                 {
                   "id": "b1l09-g4-e9-w2",
@@ -18486,7 +19090,7 @@
                   "simplified": "他不能来",
                   "pinyin": "tā bù néng lái",
                   "meaning": "he cannot come",
-                  "prefix": "B: ",
+                  "prefix": "B：",
                   "suffix": "，"
                 },
                 {
@@ -18531,9 +19135,9 @@
               {
                 "type": "blank",
                 "id": "l9g4-q1-blank",
-                "answer": "不能走路",
-                "answerSimplified": "不能走路",
-                "hint": "Express physical inability due to injury."
+                "answer": "不能跑",
+                "answerSimplified": "不能跑",
+                "hint": "The book shows he can still walk, but cannot run."
               },
               {
                 "type": "text",
@@ -18543,10 +19147,10 @@
             "tiles": [
               {
                 "id": "l9g4-q1-tile1",
-                "traditional": "不能走路",
-                "simplified": "不能走路",
-                "pinyin": "bù néng zǒulù",
-                "meaning": "cannot walk"
+                "traditional": "不能跑",
+                "simplified": "不能跑",
+                "pinyin": "bù néng pǎo",
+                "meaning": "cannot run"
               },
               {
                 "id": "l9g4-q1-tile2",
@@ -18555,8 +19159,8 @@
                 "meaning": "often runs"
               }
             ],
-            "correctFeedback": "不能走路 reflects an impairment of physical capability.",
-            "repairFeedback": "Use 不能走路."
+            "correctFeedback": "不能跑 matches the book’s 他現在只能走，不能跑。",
+            "repairFeedback": "Use 不能跑."
           },
           {
             "id": "l9g4-q2",
@@ -18772,30 +19376,31 @@
                 "id": "l9g4-s1-r1",
                 "subject": [
                   {
-                    "id": "l9g4-s1-r1-s",
-                    "traditional": "他受傷了",
-                    "simplified": "他受伤了",
-                    "pinyin": "tā shòushāng le",
-                    "meaning": "he is injured"
+                    "id": "l9g4-s1-r1-s1",
+                    "traditional": "他受傷了，現在",
+                    "simplified": "他受伤了，现在",
+                    "pinyin": "tā shòushāng le, xiànzài",
+                    "meaning": "he is injured; right now"
                   }
                 ],
                 "grammar": [
                   {
-                    "id": "l9g4-s1-r1-g",
-                    "traditional": "不能",
-                    "pinyin": "bù néng",
-                    "meaning": "cannot"
+                    "id": "l9g4-s1-r1-g1",
+                    "traditional": "只能走，不能",
+                    "pinyin": "zhǐ néng zǒu, bù néng",
+                    "meaning": "can only walk, cannot"
                   }
                 ],
                 "complement": [
                   {
-                    "id": "l9g4-s1-r1-c",
-                    "traditional": "走路",
-                    "pinyin": "zǒulù",
-                    "meaning": "walk"
+                    "id": "l9g4-s1-r1-c1",
+                    "traditional": "跑",
+                    "pinyin": "pǎo",
+                    "meaning": "run",
+                    "suffix": "。"
                   }
                 ],
-                "english": "He is injured; he cannot walk now."
+                "english": "He is injured; he can only walk, not run."
               }
             ],
             "exampleIds": [
@@ -18900,7 +19505,8 @@
               "g4-example-9"
             ]
           }
-        ]
+        ],
+        "exerciseNote": "The book answers nine questions with 不能 across printed pages 213–215; these picture answers follow the printed real conditions."
       },
       {
         "bookId": 1,
@@ -18922,7 +19528,8 @@
         "focusTerms": [
           "比較",
           "比较",
-          "得"
+          "得",
+          "跑得比較快"
         ],
         "teachingGlossary": [
           {
@@ -20519,9 +21126,9 @@
             "number": 3,
             "teachingNote": "Two people compared in the question.",
             "text": {
-              "traditional": "A：誰比較瘦？B：姊姊比較瘦。妹妹比較胖。",
-              "simplified": "A：谁比较瘦？B：姐姐比较瘦。妹妹比较胖。",
-              "pinyin": "A: Shéi bǐjiào shòu? B: Jiějie bǐjiào shòu. Mèimei bǐjiào pàng.",
+              "traditional": "A：誰比較瘦？ B：姊姊比較瘦，妹妹比較胖。",
+              "simplified": "A：谁比较瘦？ B：姊姊比较瘦，妹妹比较胖。",
+              "pinyin": "A: Shéi bǐjiào shòu? B: Jiějie bǐjiào shòu, mèimei bǐjiào pàng.",
               "english": "A: Who is thinner? B: Older sister is thinner; younger sister is heavier.",
               "words": [
                 {
@@ -20570,7 +21177,7 @@
                   "traditional": "妹妹",
                   "pinyin": "mèimei",
                   "meaning": "younger sister",
-                  "prefix": "。"
+                  "prefix": "，"
                 },
                 {
                   "id": "l9g5-e3-word-8",
@@ -20594,46 +21201,85 @@
             "number": 4,
             "teachingNote": "Two transport choices are known.",
             "text": {
-              "traditional": "我覺得坐飛機比較舒服。",
-              "simplified": "我觉得坐飞机比较舒服。",
-              "pinyin": "Wǒ juéde zuò fēijī bǐjiào shūfu.",
-              "english": "I think flying is more comfortable.",
+              "traditional": "A：坐飛機比較舒服，還是坐車比較舒服？ B：我覺得坐飛機比較舒服。",
+              "simplified": "A：坐飞机比较舒服，还是坐车比较舒服？ B：我觉得坐飞机比较舒服。",
+              "pinyin": "A: Zuò fēijī bǐjiào shūfu, háishì zuò chē bǐjiào shūfu? B: Wǒ juéde zuò fēijī bǐjiào shūfu.",
+              "english": "A: Is flying more comfortable, or is taking a car more comfortable? B: I think flying is more comfortable.",
               "words": [
                 {
                   "id": "l9g5-e4-word-1",
-                  "traditional": "我",
-                  "pinyin": "wǒ",
-                  "meaning": "I; me"
+                  "traditional": "坐飛機",
+                  "simplified": "坐飞机",
+                  "pinyin": "zuò fēijī",
+                  "meaning": "fly; take a plane",
+                  "prefix": "A："
                 },
                 {
                   "id": "l9g5-e4-word-2",
-                  "traditional": "覺得",
-                  "simplified": "觉得",
-                  "pinyin": "juéde",
-                  "meaning": "feel; think"
-                },
-                {
-                  "id": "l9g5-e4-word-3",
-                  "traditional": "坐",
-                  "pinyin": "zuò",
-                  "meaning": "sit; take transport"
-                },
-                {
-                  "id": "l9g5-e4-word-4",
-                  "traditional": "飛機",
-                  "simplified": "飞机",
-                  "pinyin": "fēijī",
-                  "meaning": "airplane"
-                },
-                {
-                  "id": "l9g5-e4-word-5",
                   "traditional": "比較",
                   "simplified": "比较",
                   "pinyin": "bǐjiào",
-                  "meaning": "relatively; more, with a known comparison"
+                  "meaning": "comparatively"
+                },
+                {
+                  "id": "l9g5-e4-word-3",
+                  "traditional": "舒服",
+                  "pinyin": "shūfu",
+                  "meaning": "comfortable",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l9g5-e4-word-4",
+                  "traditional": "還是",
+                  "simplified": "还是",
+                  "pinyin": "háishì",
+                  "meaning": "or (in a question)"
+                },
+                {
+                  "id": "l9g5-e4-word-5",
+                  "traditional": "坐車",
+                  "simplified": "坐车",
+                  "pinyin": "zuò chē",
+                  "meaning": "take a car"
                 },
                 {
                   "id": "l9g5-e4-word-6",
+                  "traditional": "比較",
+                  "simplified": "比较",
+                  "pinyin": "bǐjiào",
+                  "meaning": "comparatively"
+                },
+                {
+                  "id": "l9g5-e4-word-7",
+                  "traditional": "舒服",
+                  "pinyin": "shūfu",
+                  "meaning": "comfortable",
+                  "suffix": "？"
+                },
+                {
+                  "id": "l9g5-e4-word-8",
+                  "traditional": "我覺得",
+                  "simplified": "我觉得",
+                  "pinyin": "wǒ juéde",
+                  "meaning": "I think",
+                  "prefix": "B："
+                },
+                {
+                  "id": "l9g5-e4-word-9",
+                  "traditional": "坐飛機",
+                  "simplified": "坐飞机",
+                  "pinyin": "zuò fēijī",
+                  "meaning": "taking a plane"
+                },
+                {
+                  "id": "l9g5-e4-word-10",
+                  "traditional": "比較",
+                  "simplified": "比较",
+                  "pinyin": "bǐjiào",
+                  "meaning": "comparatively"
+                },
+                {
+                  "id": "l9g5-e4-word-11",
                   "traditional": "舒服",
                   "pinyin": "shūfu",
                   "meaning": "comfortable",
@@ -20707,6 +21353,98 @@
                 }
               ]
             }
+          },
+          {
+            "id": "l9g5-e6",
+            "number": 6,
+            "text": {
+              "traditional": "A：你們兩個人，誰唱歌唱得比較好聽？ B：我覺得他唱得比較好聽。",
+              "simplified": "A：你们两个人，谁唱歌唱得比较好听？ B：我觉得他唱得比较好听。",
+              "pinyin": "A: Nǐmen liǎng ge rén, shéi chànggē chàng de bǐjiào hǎotīng? B: Wǒ juéde tā chàng de bǐjiào hǎotīng.",
+              "english": "A: Between you two, who sings better? B: I think he sings better.",
+              "words": [
+                {
+                  "id": "l9g5-e6-word-1",
+                  "traditional": "你們",
+                  "simplified": "你们",
+                  "pinyin": "nǐmen",
+                  "meaning": "you all",
+                  "prefix": "A："
+                },
+                {
+                  "id": "l9g5-e6-word-2",
+                  "traditional": "兩個人",
+                  "simplified": "两个人",
+                  "pinyin": "liǎng ge rén",
+                  "meaning": "two people",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l9g5-e6-word-3",
+                  "traditional": "誰",
+                  "simplified": "谁",
+                  "pinyin": "shéi",
+                  "meaning": "who"
+                },
+                {
+                  "id": "l9g5-e6-word-4",
+                  "traditional": "唱歌唱得",
+                  "pinyin": "chànggē chàng de",
+                  "meaning": "sing (repeated verb + 得)"
+                },
+                {
+                  "id": "l9g5-e6-word-5",
+                  "traditional": "比較",
+                  "simplified": "比较",
+                  "pinyin": "bǐjiào",
+                  "meaning": "comparatively"
+                },
+                {
+                  "id": "l9g5-e6-word-6",
+                  "traditional": "好聽",
+                  "simplified": "好听",
+                  "pinyin": "hǎotīng",
+                  "meaning": "pleasant to hear",
+                  "suffix": "？"
+                },
+                {
+                  "id": "l9g5-e6-word-7",
+                  "traditional": "我覺得",
+                  "simplified": "我觉得",
+                  "pinyin": "wǒ juéde",
+                  "meaning": "I think",
+                  "prefix": "B："
+                },
+                {
+                  "id": "l9g5-e6-word-8",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                },
+                {
+                  "id": "l9g5-e6-word-9",
+                  "traditional": "唱得",
+                  "pinyin": "chàng de",
+                  "meaning": "sings"
+                },
+                {
+                  "id": "l9g5-e6-word-10",
+                  "traditional": "比較",
+                  "simplified": "比较",
+                  "pinyin": "bǐjiào",
+                  "meaning": "comparatively"
+                },
+                {
+                  "id": "l9g5-e6-word-11",
+                  "traditional": "好聽",
+                  "simplified": "好听",
+                  "pinyin": "hǎotīng",
+                  "meaning": "better",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
           }
         ],
         "exerciseTitle": "Find the stronger side",
@@ -20851,7 +21589,8 @@
             "correctFeedback": "Both items are known, so 比較好看 selects the stronger side.",
             "repairFeedback": "You do not need 比 or 是."
           }
-        ]
+        ],
+        "exerciseNote": "The book answers three questions with 比較 on printed pages 216–217 and gives no answer key; these model answers follow the printed pictures."
       }
     ],
     "dialogue": {

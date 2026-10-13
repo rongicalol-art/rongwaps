@@ -19,7 +19,7 @@ export function CustomProgressBar({
     <div className={`flex items-center gap-3 w-full ${className}`}>
       <div className={`${size === 'sm' ? 'h-2.5' : 'h-4'} w-full bg-brand-primary-track rounded-full flex-1 relative overflow-hidden`}>
         <div 
-          className={`h-full ${accentClassName} rounded-full transition-all duration-500 ease-out relative`}
+          className={`h-full ${accentClassName} rounded-full relative`}
           style={{ width: `${clampedProgress}%`, minWidth: clampedProgress > 0 ? '24px' : '0px' }}
         >
           {clampedProgress > 0 && (

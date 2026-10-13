@@ -47,7 +47,7 @@ export function useReaderAudio({
     [alignment],
   );
 
-  const canKaraoke = Boolean(alignment && bookAudioFileName);
+  const canKaraoke = audioMode === 'book' && Boolean(alignment && bookAudioFileName);
 
   const fullText = useMemo(
     () => reading.paragraphs
@@ -56,13 +56,6 @@ export function useReaderAudio({
     [characterPreference, reading.paragraphs],
   );
 
-  // Warm dialogue track in advance
-  useEffect(() => {
-    if (bookAudioFileName) {
-      void audioService.preload([bookAudioFileName]);
-    }
-  }, [bookAudioFileName]);
-
   // Reset audio on reading switch
   useEffect(() => {
     playbackTokenRef.current += 1;
@@ -70,7 +63,7 @@ export function useReaderAudio({
     setPlaying(false);
     setCurrentTime(0);
     currentTimeRef.current = 0;
-  }, [reading.id]);
+  }, [reading.id, audioMode, characterPreference]);
 
   // Clean up on unmount
   useEffect(() => {
@@ -81,9 +74,9 @@ export function useReaderAudio({
   }, []);
 
   const activeLineIndex = useMemo(() => {
-    if (!alignment || (!playing && currentTime === 0)) return null;
+    if (!canKaraoke || !alignment || (!playing && currentTime === 0)) return null;
     return lineIndexForTime(alignment, currentTime);
-  }, [alignment, playing, currentTime]);
+  }, [alignment, canKaraoke, playing, currentTime]);
 
   const playRange = useCallback((startSec: number, endSec: number) => {
     if (!bookAudioFileName) return;
@@ -93,8 +86,10 @@ export function useReaderAudio({
     setCurrentTime(startSec);
     currentTimeRef.current = startSec;
 
+    let finished = false;
     void audioService.playRange(bookAudioFileName, startSec, endSec, {
       rate: playbackSpeedRef.current,
+      onComplete: () => { finished = true; },
       onTime: (time) => {
         if (playbackTokenRef.current === token) {
           setPlaying(true);
@@ -104,10 +99,11 @@ export function useReaderAudio({
       },
     }).then(() => {
       if (playbackTokenRef.current === token) {
-        if (isLoopingRef.current) {
+        if (isLoopingRef.current && finished) {
           playRange(startSec, endSec);
         } else {
           setPlaying(false);
+          if (!finished) return;
           if (totalDuration > 0 && endSec >= totalDuration - 0.25) {
             setCurrentTime(0);
             currentTimeRef.current = 0;
@@ -147,11 +143,12 @@ export function useReaderAudio({
       return;
     }
 
+    const token = ++playbackTokenRef.current;
     if (audioMode === 'tts' || !bookAudioFileName) {
       const locale = characterPreference === 'simplified' ? 'zh-CN' : 'zh-TW';
       setPlaying(true);
       void audioService.speakText(fullText, locale, 0.84 * playbackSpeedRef.current).then(() => {
-        setPlaying(false);
+        if (playbackTokenRef.current === token) setPlaying(false);
       });
       return;
     }
@@ -170,7 +167,7 @@ export function useReaderAudio({
         undefined,
         current,
       ).then(() => {
-        setPlaying(false);
+        if (playbackTokenRef.current === token) setPlaying(false);
       });
     }
   }, [playing, pause, audioMode, bookAudioFileName, characterPreference, fullText, alignment, totalDuration, playRange]);
@@ -178,7 +175,7 @@ export function useReaderAudio({
   const playLine = useCallback((lineIndex: number) => {
     const line = alignment?.lines[lineIndex];
     const lineHasAlignment = Boolean(
-      line && !line.unmatched && line.end > line.start && bookAudioFileName,
+      audioMode === 'book' && line && !line.unmatched && line.end > line.start && bookAudioFileName,
     );
 
     if (!lineHasAlignment) {
@@ -190,9 +187,10 @@ export function useReaderAudio({
       if (paragraph) {
         const text = characterPreference === 'simplified' ? paragraph.simplified : paragraph.traditional;
         const locale = characterPreference === 'simplified' ? 'zh-CN' : 'zh-TW';
+        const token = ++playbackTokenRef.current;
         setPlaying(true);
         void audioService.speakText(text, locale, 0.84 * playbackSpeedRef.current).then(() => {
-          setPlaying(false);
+          if (playbackTokenRef.current === token) setPlaying(false);
         });
       }
       return;
@@ -201,7 +199,7 @@ export function useReaderAudio({
     // Play from this line through the rest of the reading — audio must keep
     // flowing past the line boundary instead of stopping at it.
     playRange(line!.start, totalDuration);
-  }, [alignment, bookAudioFileName, characterPreference, playRange, totalDuration, reading.paragraphs]);
+  }, [alignment, audioMode, bookAudioFileName, characterPreference, playRange, totalDuration, reading.paragraphs]);
 
   const seekTo = useCallback((timeSec: number) => {
     const clamped = Math.max(0, Math.min(timeSec, totalDuration));

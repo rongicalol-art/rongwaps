@@ -29,7 +29,7 @@ export function SelectionDock({ count, accentBgClassName, edgeHex, disabled, onS
               size="lg"
               edgeColor="var(--color-ui-divider)"
               onClick={onCancel}
-              className="pointer-events-auto min-h-14 !border-ui-divider px-5 text-[17px]"
+              className="pointer-events-auto min-h-14 !border-ui-divider px-5"
             >
               Cancel
             </ActionButton>

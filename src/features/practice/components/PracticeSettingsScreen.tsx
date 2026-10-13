@@ -29,6 +29,7 @@ type BooleanPreferenceKey =
   | 'toneColors'
   | 'hideExamplePinyin'
   | 'showTranslation'
+  | 'simpleDefinitions'
   | 'autoPlayAudio'
   | 'speakDefinition'
   | 'replayAudioAfterAnswer'
@@ -144,9 +145,22 @@ export function PracticeSettingsScreen({
                 label="English meaning"
                 className="border-b-0"
               />
+              <SettingsToggleRow
+                checked={preferences.simpleDefinitions}
+                onClick={toggle('simpleDefinitions')}
+                label="Simple definitions"
+                description="Short, 1-line definitions without synonyms"
+                className="border-b-0"
+              />
             </SettingsPageSection>
 
             <SettingsPageSection title="Quiz">
+              <SettingsToggleRow
+                checked={preferences.quizFormat === 'mixed'}
+                onClick={() => onPreferencesChange({ quizFormat: preferences.quizFormat === 'mixed' ? 'fixed' : 'mixed' })}
+                label="Mix question types"
+                className="border-b-0"
+              />
               <SettingsToggleRow
                 checked={preferences.autoAdvanceCorrect}
                 onClick={toggle('autoAdvanceCorrect')}

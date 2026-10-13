@@ -117,7 +117,6 @@ export function ScreenHeader({
   };
   const usesStudyPartRail = studyParts.length > 1 && onSelectStudyPart !== undefined && onToggleStudyPart !== undefined && partSegments.length > 0;
   const hasCenteredContent = progress === undefined && !eyebrow && (centerContent !== undefined || Boolean(title));
-  const effectiveAccentBg = cleanupPhase ? 'bg-review-bar' : accentBgClassName;
   const effectiveTotalCount = cleanupPhase ? cleanupPhase.totalCount : totalCount;
   const effectiveCurrentIndex = cleanupPhase ? cleanupPhase.currentIndex : currentIndex;
 
@@ -186,9 +185,10 @@ export function ScreenHeader({
                   className="w-full"
                 />
               ) : (
-                <div className={cn("relative h-5 w-full overflow-hidden rounded-full transition-colors duration-[400ms]", cleanupPhase ? "bg-review-track" : "bg-brand-primary-track")}>
+                <div className={cn("relative h-5 w-full overflow-hidden rounded-full transition-colors duration-[400ms]", "bg-brand-primary-track")}>
                   <motion.div
-                    className={`absolute bottom-0 left-0 top-0 min-w-0 overflow-hidden rounded-full transition-colors duration-[400ms] ${effectiveAccentBg} will-change-[width]`}
+                    data-practice-progress-fill
+                    className={`absolute bottom-0 left-0 top-0 min-w-0 overflow-hidden rounded-full transition-colors duration-[400ms] ${accentBgClassName} will-change-[width]`}
                     initial={false}
                     animate={{ width: visibleProgressWidth(progress) }}
                     transition={{ type: 'spring', stiffness: 280, damping: 32, mass: 0.7 }}
@@ -222,7 +222,7 @@ export function ScreenHeader({
       <div className={cn("relative z-20 flex shrink-0 items-center gap-2", controlMetrics.containerHeightClassName)}>
         {!usesStudyPartRail && (
           cleanupPhase ? (
-            <span data-practice-counter className="text-base font-black tabular-nums tracking-wide text-review-ink">
+            <span data-practice-counter className="text-base font-black tabular-nums tracking-wide text-brand-primary-deep">
               {cleanupPhase.currentIndex + 1} / {cleanupPhase.totalCount}
             </span>
           ) : isRetry ? (

@@ -26,6 +26,7 @@ export interface VocabularySourceRow extends Partial<Omit<DBVocabularyRow, 'exam
   notes?: string;
   note?: string;
   pos?: string;
+  simple?: string;
 }
 
 export function parseExamples(value: unknown): Flashcard['examples'] {
@@ -71,6 +72,7 @@ export function mapVocabularyRows(items: readonly unknown[]): Flashcard[] {
       partId: location?.partId || item.part_id || item.partId || 1,
       front: cleanVocabText(item.traditional || item.simplified || item.character || item.hanzi || item.word || ''),
       back: (item.meaning || item.english || item.definition || '').trim(),
+      simple: item.simple?.trim() || undefined,
       traditional: item.traditional?.trim() || undefined,
       simplified: item.simplified?.trim() || undefined,
       pinyin: (item.pinyin || item.pronunciation || '').trim(),

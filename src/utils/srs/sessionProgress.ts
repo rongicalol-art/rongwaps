@@ -1,5 +1,28 @@
 import type { Flashcard } from '../../data/flashcards';
 
+/** `sessionCardOrder` key holding the missed-card ids of a flashcard review pass left unfinished. */
+export const reviewSessionKey = (sessionKey: string) => `${sessionKey}#review`;
+
+/**
+ * The review list a session was left in: the saved missed ids, in order, taken from the deck the loader
+ * offers now. Null when nothing was saved or a saved card is gone (the deck changed), so the session
+ * opens the full deck instead of a half-matching review.
+ */
+export function restoreReviewCards<T extends { id: string }>(
+  cards: readonly T[],
+  savedIds: readonly string[] | undefined,
+): T[] | null {
+  if (!savedIds || savedIds.length === 0 || savedIds.length >= cards.length) return null;
+  const byId = new Map(cards.map((card) => [card.id, card]));
+  const ordered: T[] = [];
+  for (const id of savedIds) {
+    const card = byId.get(id);
+    if (!card) return null;
+    ordered.push(card);
+  }
+  return ordered;
+}
+
 export function getSessionStartIndex(
   sessionProgressIndex: Record<string, number>,
   sessionKey: string,

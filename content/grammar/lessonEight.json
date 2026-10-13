@@ -1018,10 +1018,10 @@
         "subject": [
           {
             "id": "l8g5-time1",
-            "traditional": "九點",
-            "simplified": "九点",
-            "pinyin": "jiǔ diǎn",
-            "meaning": "nine o’clock"
+            "traditional": "百貨公司",
+            "simplified": "百货公司",
+            "pinyin": "bǎihuò gōngsī",
+            "meaning": "department store"
           }
         ],
         "grammar": [
@@ -1048,7 +1048,7 @@
             "suffix": "。"
           }
         ],
-        "english": "It is nine; it is about to close."
+        "english": "The department store is about to close."
       },
       {
         "id": "l8g5-p2",
@@ -1262,10 +1262,10 @@
       "subject": {
         "role": "NOW",
         "label": "current clue",
-        "traditional": "九點了",
-        "simplified": "九点了",
-        "pinyin": "jiǔ diǎn le",
-        "english": "it is nine now"
+        "traditional": "百貨公司",
+        "simplified": "百货公司",
+        "pinyin": "bǎihuò gōngsī",
+        "english": "the department store"
       },
       "verb": {
         "role": "SOON",
@@ -1282,7 +1282,7 @@
         "pinyin": "guān le",
         "english": "close"
       },
-      "positiveEnglish": "It is nine; the department store is about to close.",
+      "positiveEnglish": "The department store is about to close.",
       "notes": [
         "The event has not happened yet.",
         "This pattern needs 了 at the end.",
@@ -1491,11 +1491,17 @@
               "meaning": "now"
             },
             {
+              "id": "l8g5-e4-time",
+              "traditional": "八點五十分",
+              "simplified": "八点五十分",
+              "pinyin": "bā diǎn wǔshí fēn",
+              "meaning": "eight fifty"
+            },
+            {
               "id": "l8g5-e4-word-2",
               "traditional": "了",
               "pinyin": "le",
-              "meaning": "ending word: a change is new or coming",
-              "prefix": "八點五十分"
+              "meaning": "ending word: a change is new or coming"
             },
             {
               "id": "l8g5-e4-word-3",
@@ -1736,7 +1742,8 @@
         "correctFeedback": "要 + event + 了 is the shorter “about to” form.",
         "repairFeedback": "Keep 了 at the end, after the whole event."
       }
-    ]
+    ],
+    "exerciseNote": "The book completes three picture sentences on printed pages 195–196 and gives no answer key; these model answers use the printed pictures."
   },
   "LESSON_EIGHT_GRAMMAR_FOUR": {
     "bookId": 1,
@@ -1759,7 +1766,8 @@
       "穿",
       "吃",
       "喝",
-      "找"
+      "找",
+      "穿穿看"
     ],
     "teachingGlossary": [
       {
@@ -2879,7 +2887,8 @@
                 "id": "l8g4-confusion-kan-end-word-4",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you"
+                "meaning": "you",
+                "simplified": "你"
               },
               {
                 "id": "l8g4-confusion-kan-end-word-5",
@@ -3175,18 +3184,17 @@
             },
             {
               "id": "l8g4-e2-word-2",
-              "traditional": "這",
-              "simplified": "这",
-              "pinyin": "zhè",
-              "meaning": "this",
-              "prefix": "說"
+              "traditional": "說",
+              "simplified": "说",
+              "pinyin": "shuō",
+              "meaning": "say (聽說 = hear it said)"
             },
             {
               "id": "l8g4-e2-word-3",
-              "traditional": "裡",
-              "simplified": "里",
-              "pinyin": "lǐ",
-              "meaning": "inside"
+              "traditional": "這裡",
+              "simplified": "这里",
+              "pinyin": "zhèlǐ",
+              "meaning": "here"
             },
             {
               "id": "l8g4-e2-word-4",
@@ -3247,16 +3255,18 @@
         "number": 3,
         "teachingNote": "Try a new place to search.",
         "text": {
-          "traditional": "不在我這裡，你去客廳找找看。",
-          "simplified": "不在这里，你去客厅找找看。",
-          "pinyin": "Bú zài wǒ zhèlǐ, nǐ qù kètīng zhǎozhao kàn.",
-          "english": "It is not at my place; go look in the living room.",
+          "traditional": "A：我的錢包在你那裡嗎？ B：不在我這裡，你去客廳找找看。",
+          "simplified": "A：我的钱包在你那里吗？ B：不在我这里，你去客厅找找看。",
+          "pinyin": "A: Wǒ de qiánbāo zài nǐ nàlǐ ma? B: Bú zài wǒ zhèlǐ, nǐ qù kètīng zhǎozhao kàn.",
+          "english": "A: Is my wallet at your place? B: It is not at my place; go look in the living room.",
           "words": [
             {
               "id": "l8g4-e3-word-1",
-              "traditional": "不",
-              "pinyin": "bù",
-              "meaning": "not"
+              "traditional": "我的錢包",
+              "simplified": "我的钱包",
+              "pinyin": "wǒ de qiánbāo",
+              "meaning": "my wallet",
+              "prefix": "A："
             },
             {
               "id": "l8g4-e3-word-2",
@@ -3266,55 +3276,82 @@
             },
             {
               "id": "l8g4-e3-word-3",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you"
+            },
+            {
+              "id": "l8g4-e3-word-4",
+              "traditional": "那裡",
+              "simplified": "那里",
+              "pinyin": "nàlǐ",
+              "meaning": "there"
+            },
+            {
+              "id": "l8g4-e3-word-5",
+              "traditional": "嗎",
+              "pinyin": "ma",
+              "meaning": "yes/no question ending",
+              "suffix": "？",
+              "simplified": "吗"
+            },
+            {
+              "id": "l8g4-e3-word-6",
+              "traditional": "不",
+              "pinyin": "bú",
+              "meaning": "not",
+              "prefix": "B："
+            },
+            {
+              "id": "l8g4-e3-word-7",
+              "traditional": "在",
+              "pinyin": "zài",
+              "meaning": "at; located at"
+            },
+            {
+              "id": "l8g4-e3-word-8",
               "traditional": "我",
               "pinyin": "wǒ",
               "meaning": "I; me"
             },
             {
-              "id": "l8g4-e3-word-4",
-              "traditional": "這",
-              "simplified": "这",
-              "pinyin": "zhè",
-              "meaning": "this"
+              "id": "l8g4-e3-word-9",
+              "traditional": "這裡",
+              "simplified": "这里",
+              "pinyin": "zhèlǐ",
+              "meaning": "here"
             },
             {
-              "id": "l8g4-e3-word-5",
-              "traditional": "裡",
-              "simplified": "里",
-              "pinyin": "lǐ",
-              "meaning": "inside"
-            },
-            {
-              "id": "l8g4-e3-word-6",
+              "id": "l8g4-e3-word-10",
               "traditional": "你",
               "pinyin": "nǐ",
               "meaning": "you",
               "prefix": "，"
             },
             {
-              "id": "l8g4-e3-word-7",
+              "id": "l8g4-e3-word-11",
               "traditional": "去",
               "pinyin": "qù",
               "meaning": "go"
             },
             {
-              "id": "l8g4-e3-word-8",
+              "id": "l8g4-e3-word-12",
               "traditional": "客廳",
               "simplified": "客厅",
               "pinyin": "kètīng",
               "meaning": "living room"
             },
             {
-              "id": "l8g4-e3-word-9",
+              "id": "l8g4-e3-word-13",
               "traditional": "找找",
               "pinyin": "zhǎozhao",
               "meaning": "try looking"
             },
             {
-              "id": "l8g4-e3-word-10",
+              "id": "l8g4-e3-word-14",
               "traditional": "看",
               "pinyin": "kàn",
-              "meaning": "look; see",
+              "meaning": "and see",
               "suffix": "。"
             }
           ]
@@ -3367,7 +3404,8 @@
               "traditional": "妳",
               "pinyin": "nǐ",
               "meaning": "you",
-              "prefix": "，"
+              "prefix": "，",
+              "simplified": "你"
             },
             {
               "id": "l8g4-e4-word-7",
@@ -3525,7 +3563,8 @@
         "correctFeedback": "找找看 means try the search and see.",
         "repairFeedback": "Repeat 找 before 看."
       }
-    ]
+    ],
+    "exerciseNote": "The book completes three dialogues on printed page 194 and gives no answer key; these model answers follow the 看 \"try and see\" pattern."
   },
   "LESSON_EIGHT_GRAMMAR_ONE": {
     "bookId": 1,
@@ -4923,7 +4962,7 @@
         "text": {
           "traditional": "這件衣服的顏色很好看，我很喜歡。",
           "simplified": "这件衣服的颜色很好看，我很喜欢。",
-          "pinyin": "Zhè jiàn yīfú de yánsè hěn hǎokàn, wǒ hěn xǐhuān.",
+          "pinyin": "Zhè jiàn yīfu de yánsè hěn hǎokàn, wǒ hěn xǐhuān.",
           "english": "The color of this clothing looks very good; I like it very much.",
           "words": [
             {
@@ -4987,7 +5026,8 @@
               "simplified": "好吗",
               "pinyin": "hǎo ma",
               "meaning": "okay?",
-              "suffix": "？"
+              "suffix": "？",
+              "prefix": "，"
             }
           ]
         }
@@ -5379,32 +5419,188 @@
         "id": "b1l08-g01-sec-1",
         "sectionNumber": 1,
         "title": "Pleasant or Unpleasant (Delicious, Pretty, Nice to Hear)",
-        "explanation": "Prefix verbs with 好 for pleasant sensory experiences (好吃 delicious, 好看 pretty) and 難 for unpleasant ones (難喝 bad-tasting, 難看 ugly).",
+        "explanation": "Put 好 before words like “eat,” “drink,” “look,” or “hear” when something is enjoyable (好吃 delicious, 好看 pretty). Use 難 when it is unpleasant (難喝 bad-tasting, 難看 ugly).",
         "patternColumns": [
           "好 · 難",
           "Sense verb"
         ],
         "patternRows": [
           {
-            "id": "l8g1-s1-r1",
+            "id": "g1-s1-r1",
             "subject": [
               {
-                "id": "l8g1-s1-r1-s",
+                "id": "g1-s1-r1-prefix",
                 "traditional": "好",
                 "pinyin": "hǎo",
-                "meaning": "good"
+                "meaning": "good to; easy to"
               }
             ],
-            "grammar": [
+            "grammar": [],
+            "complement": [
               {
-                "id": "l8g1-s1-r1-g",
+                "id": "g1-s1-r1-verb",
                 "traditional": "吃",
                 "pinyin": "chī",
-                "meaning": "eat"
+                "meaning": "delicious to eat"
               }
             ],
-            "complement": [],
-            "english": "delicious to eat"
+            "english": "好吃 — delicious to eat"
+          },
+          {
+            "id": "g1-s1-r2",
+            "subject": [
+              {
+                "id": "g1-s1-r2-prefix",
+                "traditional": "難",
+                "pinyin": "nán",
+                "meaning": "hard to",
+                "simplified": "难"
+              }
+            ],
+            "grammar": [],
+            "complement": [
+              {
+                "id": "g1-s1-r2-verb",
+                "traditional": "吃",
+                "simplified": "吃",
+                "pinyin": "chī",
+                "meaning": "unpalatable; tastes bad"
+              }
+            ],
+            "english": "難吃 — unpalatable; tastes bad"
+          },
+          {
+            "id": "g1-s1-r3",
+            "subject": [
+              {
+                "id": "g1-s1-r3-prefix",
+                "traditional": "好",
+                "pinyin": "hǎo",
+                "meaning": "good to; easy to"
+              }
+            ],
+            "grammar": [],
+            "complement": [
+              {
+                "id": "g1-s1-r3-verb",
+                "traditional": "喝",
+                "pinyin": "hē",
+                "meaning": "tasty; good to drink"
+              }
+            ],
+            "english": "好喝 — tasty; good to drink"
+          },
+          {
+            "id": "g1-s1-r4",
+            "subject": [
+              {
+                "id": "g1-s1-r4-prefix",
+                "traditional": "難",
+                "pinyin": "nán",
+                "meaning": "hard to",
+                "simplified": "难"
+              }
+            ],
+            "grammar": [],
+            "complement": [
+              {
+                "id": "g1-s1-r4-verb",
+                "traditional": "喝",
+                "simplified": "喝",
+                "pinyin": "hē",
+                "meaning": "tastes bad; unpleasing to drink"
+              }
+            ],
+            "english": "難喝 — tastes bad; unpleasing to drink"
+          },
+          {
+            "id": "g1-s1-r5",
+            "subject": [
+              {
+                "id": "g1-s1-r5-prefix",
+                "traditional": "好",
+                "pinyin": "hǎo",
+                "meaning": "good to; easy to"
+              }
+            ],
+            "grammar": [],
+            "complement": [
+              {
+                "id": "g1-s1-r5-verb",
+                "traditional": "看",
+                "pinyin": "kàn",
+                "meaning": "pleasant to look at; good-looking"
+              }
+            ],
+            "english": "好看 — pleasant to look at; good-looking"
+          },
+          {
+            "id": "g1-s1-r6",
+            "subject": [
+              {
+                "id": "g1-s1-r6-prefix",
+                "traditional": "難",
+                "pinyin": "nán",
+                "meaning": "hard to",
+                "simplified": "难"
+              }
+            ],
+            "grammar": [],
+            "complement": [
+              {
+                "id": "g1-s1-r6-verb",
+                "traditional": "看",
+                "simplified": "看",
+                "pinyin": "kàn",
+                "meaning": "ugly; unpleasant to look at"
+              }
+            ],
+            "english": "難看 — ugly; unpleasant to look at"
+          },
+          {
+            "id": "g1-s1-r7",
+            "subject": [
+              {
+                "id": "g1-s1-r7-prefix",
+                "traditional": "好",
+                "pinyin": "hǎo",
+                "meaning": "good to; easy to"
+              }
+            ],
+            "grammar": [],
+            "complement": [
+              {
+                "id": "g1-s1-r7-verb",
+                "traditional": "聽",
+                "simplified": "听",
+                "pinyin": "tīng",
+                "meaning": "nice to hear"
+              }
+            ],
+            "english": "好聽 — nice to hear"
+          },
+          {
+            "id": "g1-s1-r8",
+            "subject": [
+              {
+                "id": "g1-s1-r8-prefix",
+                "traditional": "難",
+                "pinyin": "nán",
+                "meaning": "hard to",
+                "simplified": "难"
+              }
+            ],
+            "grammar": [],
+            "complement": [
+              {
+                "id": "g1-s1-r8-verb",
+                "traditional": "聽",
+                "simplified": "听",
+                "pinyin": "tīng",
+                "meaning": "unpleasant to hear"
+              }
+            ],
+            "english": "難聽 — unpleasant to hear"
           }
         ],
         "exampleIds": [
@@ -5425,25 +5621,180 @@
         ],
         "patternRows": [
           {
-            "id": "l8g1-s2-r1",
+            "id": "g1-s2-r1",
             "subject": [
               {
-                "id": "l8g1-s2-r1-s",
+                "id": "g1-s2-r1-prefix",
                 "traditional": "好",
                 "pinyin": "hǎo",
-                "meaning": "easy"
+                "meaning": "good to; easy to"
               }
             ],
-            "grammar": [
+            "grammar": [],
+            "complement": [
               {
-                "id": "l8g1-s2-r1-g",
+                "id": "g1-s2-r1-verb",
                 "traditional": "唱",
                 "pinyin": "chàng",
-                "meaning": "sing"
+                "meaning": "easy to sing"
               }
             ],
-            "complement": [],
-            "english": "easy to sing"
+            "english": "好唱 — easy to sing"
+          },
+          {
+            "id": "g1-s2-r2",
+            "subject": [
+              {
+                "id": "g1-s2-r2-prefix",
+                "traditional": "難",
+                "pinyin": "nán",
+                "meaning": "hard to",
+                "simplified": "难"
+              }
+            ],
+            "grammar": [],
+            "complement": [
+              {
+                "id": "g1-s2-r2-verb",
+                "traditional": "唱",
+                "pinyin": "chàng",
+                "meaning": "hard to sing"
+              }
+            ],
+            "english": "難唱 — hard to sing"
+          },
+          {
+            "id": "g1-s2-r3",
+            "subject": [
+              {
+                "id": "g1-s2-r3-prefix",
+                "traditional": "好",
+                "pinyin": "hǎo",
+                "meaning": "good to; easy to"
+              }
+            ],
+            "grammar": [],
+            "complement": [
+              {
+                "id": "g1-s2-r3-verb",
+                "traditional": "學",
+                "simplified": "学",
+                "pinyin": "xué",
+                "meaning": "easy to learn"
+              }
+            ],
+            "english": "好學 — easy to learn"
+          },
+          {
+            "id": "g1-s2-r4",
+            "subject": [
+              {
+                "id": "g1-s2-r4-prefix",
+                "traditional": "難",
+                "pinyin": "nán",
+                "meaning": "hard to",
+                "simplified": "难"
+              }
+            ],
+            "grammar": [],
+            "complement": [
+              {
+                "id": "g1-s2-r4-verb",
+                "traditional": "學",
+                "simplified": "学",
+                "pinyin": "xué",
+                "meaning": "hard to learn"
+              }
+            ],
+            "english": "難學 — hard to learn"
+          },
+          {
+            "id": "g1-s2-r5",
+            "subject": [
+              {
+                "id": "g1-s2-r5-prefix",
+                "traditional": "好",
+                "pinyin": "hǎo",
+                "meaning": "good to; easy to"
+              }
+            ],
+            "grammar": [],
+            "complement": [
+              {
+                "id": "g1-s2-r5-verb",
+                "traditional": "找",
+                "pinyin": "zhǎo",
+                "meaning": "easy to find"
+              }
+            ],
+            "english": "好找 — easy to find"
+          },
+          {
+            "id": "g1-s2-r6",
+            "subject": [
+              {
+                "id": "g1-s2-r6-prefix",
+                "traditional": "難",
+                "pinyin": "nán",
+                "meaning": "hard to",
+                "simplified": "难"
+              }
+            ],
+            "grammar": [],
+            "complement": [
+              {
+                "id": "g1-s2-r6-verb",
+                "traditional": "找",
+                "pinyin": "zhǎo",
+                "meaning": "hard to find"
+              }
+            ],
+            "english": "難找 — hard to find"
+          },
+          {
+            "id": "g1-s2-r7",
+            "subject": [
+              {
+                "id": "g1-s2-r7-prefix",
+                "traditional": "好",
+                "pinyin": "hǎo",
+                "meaning": "good to; easy to"
+              }
+            ],
+            "grammar": [],
+            "complement": [
+              {
+                "id": "g1-s2-r7-verb",
+                "traditional": "騎",
+                "simplified": "骑",
+                "pinyin": "qí",
+                "meaning": "easy to ride"
+              }
+            ],
+            "english": "好騎 — easy to ride"
+          },
+          {
+            "id": "g1-s2-r8",
+            "subject": [
+              {
+                "id": "g1-s2-r8-prefix",
+                "traditional": "難",
+                "pinyin": "nán",
+                "meaning": "hard to",
+                "simplified": "难"
+              }
+            ],
+            "grammar": [],
+            "complement": [
+              {
+                "id": "g1-s2-r8-verb",
+                "traditional": "騎",
+                "simplified": "骑",
+                "pinyin": "qí",
+                "meaning": "hard to ride"
+              }
+            ],
+            "english": "難騎 — hard to ride"
           }
         ],
         "exampleIds": [
@@ -5453,7 +5804,8 @@
           "g1-example-8"
         ]
       }
-    ]
+    ],
+    "exerciseNote": "The book lists each 好/難 pair with one printed sentence on page 185 and leaves the exercise open; these model sentences use the printed pairs."
   },
   "LESSON_EIGHT_GRAMMAR_THREE": {
     "bookId": 1,
@@ -7397,7 +7749,8 @@
         "correctFeedback": "With no prior clue, 嗎 is the neutral choice.",
         "repairFeedback": "Use 嗎 when you genuinely do not know."
       }
-    ]
+    ],
+    "exerciseNote": "The book completes three dialogues on printed page 193 and gives no answer key; the example 4 exchange is extra practice."
   },
   "LESSON_EIGHT_GRAMMAR_TWO": {
     "bookId": 1,
@@ -7415,7 +7768,7 @@
       187
     ],
     "audioReference": "08-1-3",
-    "explanation": "Connect cause and effect with 因為 + Reason, 所以 + Result. State the reason first, then the result.",
+    "explanation": "因為 starts the reason. 所以 starts the result. Say the reason first, then the result. Quick speech may leave one out, but you can keep both.",
     "focusTerms": [
       "因為",
       "因为",
@@ -8523,43 +8876,69 @@
           "wrongTraditional": "所以很多人買。",
           "wrongSimplified": "所以很多人买。",
           "right": {
-            "traditional": "因為好看，所以很多人買。",
-            "simplified": "因为好看，所以很多人买。",
-            "pinyin": "Yīnwèi hǎokàn, suǒyǐ hěn duō rén mǎi.",
-            "english": "Because it looks good, many people buy it.",
+            "traditional": "因為這個牌子很有名，衣服也很好看，所以很多人喜歡。",
+            "simplified": "因为这个牌子很有名，衣服也很好看，所以很多人喜欢。",
+            "pinyin": "Yīnwèi zhège páizi hěn yǒumíng, yīfu yě hěn hǎokàn, suǒyǐ hěn duō rén xǐhuān.",
+            "english": "Because this brand is famous and the clothes look good, many people like it.",
             "words": [
               {
-                "id": "l8g2-confusion-suoyi-start-word-1",
+                "id": "l8g2-confusion-suoyi-start-w1",
                 "traditional": "因為",
                 "simplified": "因为",
                 "pinyin": "yīnwèi",
-                "meaning": "because; starts the reason"
+                "meaning": "because"
               },
               {
-                "id": "l8g2-confusion-suoyi-start-word-2",
-                "traditional": "好看",
-                "pinyin": "hǎokàn",
-                "meaning": "nice to look at; good-looking"
+                "id": "l8g2-confusion-suoyi-start-w2",
+                "traditional": "這個牌子",
+                "simplified": "这个牌子",
+                "pinyin": "zhège páizi",
+                "meaning": "this brand"
               },
               {
-                "id": "l8g2-confusion-suoyi-start-word-3",
+                "id": "l8g2-confusion-suoyi-start-w3",
+                "traditional": "很有名",
+                "pinyin": "hěn yǒumíng",
+                "meaning": "very famous",
+                "suffix": "，"
+              },
+              {
+                "id": "l8g2-confusion-suoyi-start-w4",
+                "traditional": "衣服",
+                "pinyin": "yīfu",
+                "meaning": "clothes"
+              },
+              {
+                "id": "l8g2-confusion-suoyi-start-w5",
+                "traditional": "也",
+                "pinyin": "yě",
+                "meaning": "also"
+              },
+              {
+                "id": "l8g2-confusion-suoyi-start-w6",
+                "traditional": "很好看",
+                "pinyin": "hěn hǎokàn",
+                "meaning": "looks good",
+                "suffix": "，"
+              },
+              {
+                "id": "l8g2-confusion-suoyi-start-w7",
                 "traditional": "所以",
                 "pinyin": "suǒyǐ",
-                "meaning": "so; starts the result",
-                "prefix": "，"
+                "meaning": "so"
               },
               {
-                "id": "l8g2-confusion-suoyi-start-word-4",
+                "id": "l8g2-confusion-suoyi-start-w8",
                 "traditional": "很多人",
                 "pinyin": "hěn duō rén",
                 "meaning": "many people"
               },
               {
-                "id": "l8g2-confusion-suoyi-start-word-5",
-                "traditional": "買",
-                "simplified": "买",
-                "pinyin": "mǎi",
-                "meaning": "buy",
+                "id": "l8g2-confusion-suoyi-start-w9",
+                "traditional": "喜歡",
+                "simplified": "喜欢",
+                "pinyin": "xǐhuān",
+                "meaning": "like",
                 "suffix": "。"
               }
             ]
@@ -8615,7 +8994,7 @@
           "right": {
             "traditional": "因為鞋子太小，所以不買。",
             "simplified": "因为鞋子太小，所以不买。",
-            "pinyin": "Yīnwèi xiézi tài xiǎo, suǒyǐ bú mǎi.",
+            "pinyin": "Yīnwèi xiézi tài xiǎo, suǒyǐ bù mǎi.",
             "english": "Because the shoes are too small, I will not buy them.",
             "words": [
               {
@@ -8690,12 +9069,12 @@
       "object": {
         "role": "RESULT",
         "label": "what follows",
-        "traditional": "很多人買",
-        "simplified": "很多人买",
-        "pinyin": "hěn duō rén mǎi",
-        "english": "many people buy it"
+        "traditional": "很多人喜歡",
+        "simplified": "很多人喜欢",
+        "pinyin": "hěn duō rén xǐhuān",
+        "english": "many people like it"
       },
-      "positiveEnglish": "Because this brand is famous, many people buy it.",
+      "positiveEnglish": "Because this brand is famous, many people like it.",
       "notes": [
         "因為 answers 為什麼.",
         "所以 points to the result that follows.",
@@ -8708,8 +9087,8 @@
         "number": 1,
         "teachingNote": "因為 states the cause, and 所以 gives the result in a conversational answer.",
         "text": {
-          "traditional": "A: 你為什麼不想走路到學校去？ B: 因為學校很遠，所以我不想走路到學校去。",
-          "simplified": "A: 你为什么不想走路到学校去？ B: 因为学校很远，所以我不想走路到学校去。",
+          "traditional": "A：你為什麼不想走路到學校去？ B：因為學校很遠，所以我不想走路到學校去。",
+          "simplified": "A：你为什么不想走路到学校去？ B：因为学校很远，所以我不想走路到学校去。",
           "pinyin": "A: Nǐ wèishénme bù xiǎng zǒulù dào xuéxiào qù? B: Yīnwèi xuéxiào hěn yuǎn, suǒyǐ wǒ bù xiǎng zǒulù dào xuéxiào qù.",
           "english": "A: Why don't you want to walk to school? B: Because school is very far, so I don't want to walk to school.",
           "words": [
@@ -8719,7 +9098,7 @@
               "simplified": "你为什么",
               "pinyin": "nǐ wèishénme",
               "meaning": "why do you",
-              "prefix": "A: "
+              "prefix": "A："
             },
             {
               "id": "l8g2-e1-w2",
@@ -8741,7 +9120,7 @@
               "simplified": "因为",
               "pinyin": "yīnwèi",
               "meaning": "because",
-              "prefix": "B: "
+              "prefix": "B："
             },
             {
               "id": "l8g2-e1-w5",
@@ -8779,8 +9158,8 @@
         "number": 2,
         "teachingNote": "因為他很累 gives the reason his friend stayed home.",
         "text": {
-          "traditional": "A: 為什麼你的朋友不跟你來？ B: 因為他很累，所以他要在家休息。",
-          "simplified": "A: 为什么你的朋友不跟你来？ B: 因为他很累，所以他要在家休息。",
+          "traditional": "A：為什麼你的朋友不跟你來？ B：因為他很累，所以他要在家休息。",
+          "simplified": "A：为什么你的朋友不跟你来？ B：因为他很累，所以他要在家休息。",
           "pinyin": "A: Wèishénme nǐ de péngyǒu bù gēn nǐ lái? B: Yīnwèi tā hěn lèi, suǒyǐ tā yào zài jiā xiūxi.",
           "english": "A: Why didn't your friend come with you? B: Because he is very tired, so he needs to rest at home.",
           "words": [
@@ -8790,7 +9169,7 @@
               "simplified": "为什么",
               "pinyin": "wèishénme",
               "meaning": "why",
-              "prefix": "A: "
+              "prefix": "A："
             },
             {
               "id": "l8g2-e2-w2",
@@ -8812,7 +9191,7 @@
               "simplified": "因为",
               "pinyin": "yīnwèi",
               "meaning": "because",
-              "prefix": "B: "
+              "prefix": "B："
             },
             {
               "id": "l8g2-e2-w5",
@@ -8842,8 +9221,8 @@
         "number": 3,
         "teachingNote": "The brother's birthday creates the necessity to buy a gift.",
         "text": {
-          "traditional": "A: 你為什麼今天一定要去百貨公司？ B: 因為明天是我弟弟的生日，所以我要去買他的生日禮物。",
-          "simplified": "A: 你为什么今天一定要去百货公司？ B: 因为明天是我弟弟的生日，所以我要去买他的生日礼物。",
+          "traditional": "A：你為什麼今天一定要去百貨公司？ B：因為明天是我弟弟的生日，所以我要去買他的生日禮物。",
+          "simplified": "A：你为什么今天一定要去百货公司？ B：因为明天是我弟弟的生日，所以我要去买他的生日礼物。",
           "pinyin": "A: Nǐ wèishénme jīntiān yídìng yào qù bǎihuò gōngsī? B: Yīnwèi míngtiān shì wǒ dìdi de shēngrì, suǒyǐ wǒ yào qù mǎi tā de shēngrì lǐwù.",
           "english": "A: Why do you definitely have to go to the department store today? B: Because tomorrow is my younger brother's birthday, so I must go buy his birthday gift.",
           "words": [
@@ -8853,7 +9232,7 @@
               "simplified": "你为什么",
               "pinyin": "nǐ wèishénme",
               "meaning": "why do you",
-              "prefix": "A: "
+              "prefix": "A："
             },
             {
               "id": "l8g2-e3-w2",
@@ -8881,7 +9260,7 @@
               "simplified": "因为",
               "pinyin": "yīnwèi",
               "meaning": "because",
-              "prefix": "B: "
+              "prefix": "B："
             },
             {
               "id": "l8g2-e3-w6",
@@ -9039,7 +9418,8 @@
         "correctFeedback": "The clothing problem causes the decision.",
         "repairFeedback": "Put the real cause after 因為."
       }
-    ]
+    ],
+    "exerciseNote": "The book completes three dialogues on printed page 187 and gives no answer key; these model answers follow the printed pictures."
   },
   "LESSON_EIGHT_PART_ONE": {
     "id": "B1L08-P01-D01",
@@ -10444,7 +10824,7 @@
             "text": {
               "traditional": "這件衣服的顏色很好看，我很喜歡。",
               "simplified": "这件衣服的颜色很好看，我很喜欢。",
-              "pinyin": "Zhè jiàn yīfú de yánsè hěn hǎokàn, wǒ hěn xǐhuān.",
+              "pinyin": "Zhè jiàn yīfu de yánsè hěn hǎokàn, wǒ hěn xǐhuān.",
               "english": "The color of this clothing looks very good; I like it very much.",
               "words": [
                 {
@@ -10508,7 +10888,8 @@
                   "simplified": "好吗",
                   "pinyin": "hǎo ma",
                   "meaning": "okay?",
-                  "suffix": "？"
+                  "suffix": "？",
+                  "prefix": "，"
                 }
               ]
             }
@@ -10907,25 +11288,181 @@
             ],
             "patternRows": [
               {
-                "id": "l8g1-s1-r1",
+                "id": "g1-s1-r1",
                 "subject": [
                   {
-                    "id": "l8g1-s1-r1-s",
+                    "id": "g1-s1-r1-prefix",
                     "traditional": "好",
                     "pinyin": "hǎo",
-                    "meaning": "good"
+                    "meaning": "good to; easy to"
                   }
                 ],
-                "grammar": [
+                "grammar": [],
+                "complement": [
                   {
-                    "id": "l8g1-s1-r1-g",
+                    "id": "g1-s1-r1-verb",
                     "traditional": "吃",
                     "pinyin": "chī",
-                    "meaning": "eat"
+                    "meaning": "delicious to eat"
                   }
                 ],
-                "complement": [],
-                "english": "delicious to eat"
+                "english": "好吃 — delicious to eat"
+              },
+              {
+                "id": "g1-s1-r2",
+                "subject": [
+                  {
+                    "id": "g1-s1-r2-prefix",
+                    "traditional": "難",
+                    "pinyin": "nán",
+                    "meaning": "hard to",
+                    "simplified": "难"
+                  }
+                ],
+                "grammar": [],
+                "complement": [
+                  {
+                    "id": "g1-s1-r2-verb",
+                    "traditional": "吃",
+                    "simplified": "吃",
+                    "pinyin": "chī",
+                    "meaning": "unpalatable; tastes bad"
+                  }
+                ],
+                "english": "難吃 — unpalatable; tastes bad"
+              },
+              {
+                "id": "g1-s1-r3",
+                "subject": [
+                  {
+                    "id": "g1-s1-r3-prefix",
+                    "traditional": "好",
+                    "pinyin": "hǎo",
+                    "meaning": "good to; easy to"
+                  }
+                ],
+                "grammar": [],
+                "complement": [
+                  {
+                    "id": "g1-s1-r3-verb",
+                    "traditional": "喝",
+                    "pinyin": "hē",
+                    "meaning": "tasty; good to drink"
+                  }
+                ],
+                "english": "好喝 — tasty; good to drink"
+              },
+              {
+                "id": "g1-s1-r4",
+                "subject": [
+                  {
+                    "id": "g1-s1-r4-prefix",
+                    "traditional": "難",
+                    "pinyin": "nán",
+                    "meaning": "hard to",
+                    "simplified": "难"
+                  }
+                ],
+                "grammar": [],
+                "complement": [
+                  {
+                    "id": "g1-s1-r4-verb",
+                    "traditional": "喝",
+                    "simplified": "喝",
+                    "pinyin": "hē",
+                    "meaning": "tastes bad; unpleasing to drink"
+                  }
+                ],
+                "english": "難喝 — tastes bad; unpleasing to drink"
+              },
+              {
+                "id": "g1-s1-r5",
+                "subject": [
+                  {
+                    "id": "g1-s1-r5-prefix",
+                    "traditional": "好",
+                    "pinyin": "hǎo",
+                    "meaning": "good to; easy to"
+                  }
+                ],
+                "grammar": [],
+                "complement": [
+                  {
+                    "id": "g1-s1-r5-verb",
+                    "traditional": "看",
+                    "pinyin": "kàn",
+                    "meaning": "pleasant to look at; good-looking"
+                  }
+                ],
+                "english": "好看 — pleasant to look at; good-looking"
+              },
+              {
+                "id": "g1-s1-r6",
+                "subject": [
+                  {
+                    "id": "g1-s1-r6-prefix",
+                    "traditional": "難",
+                    "pinyin": "nán",
+                    "meaning": "hard to",
+                    "simplified": "难"
+                  }
+                ],
+                "grammar": [],
+                "complement": [
+                  {
+                    "id": "g1-s1-r6-verb",
+                    "traditional": "看",
+                    "simplified": "看",
+                    "pinyin": "kàn",
+                    "meaning": "ugly; unpleasant to look at"
+                  }
+                ],
+                "english": "難看 — ugly; unpleasant to look at"
+              },
+              {
+                "id": "g1-s1-r7",
+                "subject": [
+                  {
+                    "id": "g1-s1-r7-prefix",
+                    "traditional": "好",
+                    "pinyin": "hǎo",
+                    "meaning": "good to; easy to"
+                  }
+                ],
+                "grammar": [],
+                "complement": [
+                  {
+                    "id": "g1-s1-r7-verb",
+                    "traditional": "聽",
+                    "simplified": "听",
+                    "pinyin": "tīng",
+                    "meaning": "nice to hear"
+                  }
+                ],
+                "english": "好聽 — nice to hear"
+              },
+              {
+                "id": "g1-s1-r8",
+                "subject": [
+                  {
+                    "id": "g1-s1-r8-prefix",
+                    "traditional": "難",
+                    "pinyin": "nán",
+                    "meaning": "hard to",
+                    "simplified": "难"
+                  }
+                ],
+                "grammar": [],
+                "complement": [
+                  {
+                    "id": "g1-s1-r8-verb",
+                    "traditional": "聽",
+                    "simplified": "听",
+                    "pinyin": "tīng",
+                    "meaning": "unpleasant to hear"
+                  }
+                ],
+                "english": "難聽 — unpleasant to hear"
               }
             ],
             "exampleIds": [
@@ -10946,25 +11483,180 @@
             ],
             "patternRows": [
               {
-                "id": "l8g1-s2-r1",
+                "id": "g1-s2-r1",
                 "subject": [
                   {
-                    "id": "l8g1-s2-r1-s",
+                    "id": "g1-s2-r1-prefix",
                     "traditional": "好",
                     "pinyin": "hǎo",
-                    "meaning": "easy"
+                    "meaning": "good to; easy to"
                   }
                 ],
-                "grammar": [
+                "grammar": [],
+                "complement": [
                   {
-                    "id": "l8g1-s2-r1-g",
+                    "id": "g1-s2-r1-verb",
                     "traditional": "唱",
                     "pinyin": "chàng",
-                    "meaning": "sing"
+                    "meaning": "easy to sing"
                   }
                 ],
-                "complement": [],
-                "english": "easy to sing"
+                "english": "好唱 — easy to sing"
+              },
+              {
+                "id": "g1-s2-r2",
+                "subject": [
+                  {
+                    "id": "g1-s2-r2-prefix",
+                    "traditional": "難",
+                    "pinyin": "nán",
+                    "meaning": "hard to",
+                    "simplified": "难"
+                  }
+                ],
+                "grammar": [],
+                "complement": [
+                  {
+                    "id": "g1-s2-r2-verb",
+                    "traditional": "唱",
+                    "pinyin": "chàng",
+                    "meaning": "hard to sing"
+                  }
+                ],
+                "english": "難唱 — hard to sing"
+              },
+              {
+                "id": "g1-s2-r3",
+                "subject": [
+                  {
+                    "id": "g1-s2-r3-prefix",
+                    "traditional": "好",
+                    "pinyin": "hǎo",
+                    "meaning": "good to; easy to"
+                  }
+                ],
+                "grammar": [],
+                "complement": [
+                  {
+                    "id": "g1-s2-r3-verb",
+                    "traditional": "學",
+                    "simplified": "学",
+                    "pinyin": "xué",
+                    "meaning": "easy to learn"
+                  }
+                ],
+                "english": "好學 — easy to learn"
+              },
+              {
+                "id": "g1-s2-r4",
+                "subject": [
+                  {
+                    "id": "g1-s2-r4-prefix",
+                    "traditional": "難",
+                    "pinyin": "nán",
+                    "meaning": "hard to",
+                    "simplified": "难"
+                  }
+                ],
+                "grammar": [],
+                "complement": [
+                  {
+                    "id": "g1-s2-r4-verb",
+                    "traditional": "學",
+                    "simplified": "学",
+                    "pinyin": "xué",
+                    "meaning": "hard to learn"
+                  }
+                ],
+                "english": "難學 — hard to learn"
+              },
+              {
+                "id": "g1-s2-r5",
+                "subject": [
+                  {
+                    "id": "g1-s2-r5-prefix",
+                    "traditional": "好",
+                    "pinyin": "hǎo",
+                    "meaning": "good to; easy to"
+                  }
+                ],
+                "grammar": [],
+                "complement": [
+                  {
+                    "id": "g1-s2-r5-verb",
+                    "traditional": "找",
+                    "pinyin": "zhǎo",
+                    "meaning": "easy to find"
+                  }
+                ],
+                "english": "好找 — easy to find"
+              },
+              {
+                "id": "g1-s2-r6",
+                "subject": [
+                  {
+                    "id": "g1-s2-r6-prefix",
+                    "traditional": "難",
+                    "pinyin": "nán",
+                    "meaning": "hard to",
+                    "simplified": "难"
+                  }
+                ],
+                "grammar": [],
+                "complement": [
+                  {
+                    "id": "g1-s2-r6-verb",
+                    "traditional": "找",
+                    "pinyin": "zhǎo",
+                    "meaning": "hard to find"
+                  }
+                ],
+                "english": "難找 — hard to find"
+              },
+              {
+                "id": "g1-s2-r7",
+                "subject": [
+                  {
+                    "id": "g1-s2-r7-prefix",
+                    "traditional": "好",
+                    "pinyin": "hǎo",
+                    "meaning": "good to; easy to"
+                  }
+                ],
+                "grammar": [],
+                "complement": [
+                  {
+                    "id": "g1-s2-r7-verb",
+                    "traditional": "騎",
+                    "simplified": "骑",
+                    "pinyin": "qí",
+                    "meaning": "easy to ride"
+                  }
+                ],
+                "english": "好騎 — easy to ride"
+              },
+              {
+                "id": "g1-s2-r8",
+                "subject": [
+                  {
+                    "id": "g1-s2-r8-prefix",
+                    "traditional": "難",
+                    "pinyin": "nán",
+                    "meaning": "hard to",
+                    "simplified": "难"
+                  }
+                ],
+                "grammar": [],
+                "complement": [
+                  {
+                    "id": "g1-s2-r8-verb",
+                    "traditional": "騎",
+                    "simplified": "骑",
+                    "pinyin": "qí",
+                    "meaning": "hard to ride"
+                  }
+                ],
+                "english": "難騎 — hard to ride"
               }
             ],
             "exampleIds": [
@@ -10974,7 +11666,8 @@
               "g1-example-8"
             ]
           }
-        ]
+        ],
+        "exerciseNote": "The book lists each 好/難 pair with one printed sentence on page 185 and leaves the exercise open; these model sentences use the printed pairs."
       },
       {
         "bookId": 1,
@@ -12100,43 +12793,69 @@
               "wrongTraditional": "所以很多人買。",
               "wrongSimplified": "所以很多人买。",
               "right": {
-                "traditional": "因為好看，所以很多人買。",
-                "simplified": "因为好看，所以很多人买。",
-                "pinyin": "Yīnwèi hǎokàn, suǒyǐ hěn duō rén mǎi.",
-                "english": "Because it looks good, many people buy it.",
+                "traditional": "因為這個牌子很有名，衣服也很好看，所以很多人喜歡。",
+                "simplified": "因为这个牌子很有名，衣服也很好看，所以很多人喜欢。",
+                "pinyin": "Yīnwèi zhège páizi hěn yǒumíng, yīfu yě hěn hǎokàn, suǒyǐ hěn duō rén xǐhuān.",
+                "english": "Because this brand is famous and the clothes look good, many people like it.",
                 "words": [
                   {
-                    "id": "l8g2-confusion-suoyi-start-word-1",
+                    "id": "l8g2-confusion-suoyi-start-w1",
                     "traditional": "因為",
                     "simplified": "因为",
                     "pinyin": "yīnwèi",
-                    "meaning": "because; starts the reason"
+                    "meaning": "because"
                   },
                   {
-                    "id": "l8g2-confusion-suoyi-start-word-2",
-                    "traditional": "好看",
-                    "pinyin": "hǎokàn",
-                    "meaning": "nice to look at; good-looking"
+                    "id": "l8g2-confusion-suoyi-start-w2",
+                    "traditional": "這個牌子",
+                    "simplified": "这个牌子",
+                    "pinyin": "zhège páizi",
+                    "meaning": "this brand"
                   },
                   {
-                    "id": "l8g2-confusion-suoyi-start-word-3",
+                    "id": "l8g2-confusion-suoyi-start-w3",
+                    "traditional": "很有名",
+                    "pinyin": "hěn yǒumíng",
+                    "meaning": "very famous",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "l8g2-confusion-suoyi-start-w4",
+                    "traditional": "衣服",
+                    "pinyin": "yīfu",
+                    "meaning": "clothes"
+                  },
+                  {
+                    "id": "l8g2-confusion-suoyi-start-w5",
+                    "traditional": "也",
+                    "pinyin": "yě",
+                    "meaning": "also"
+                  },
+                  {
+                    "id": "l8g2-confusion-suoyi-start-w6",
+                    "traditional": "很好看",
+                    "pinyin": "hěn hǎokàn",
+                    "meaning": "looks good",
+                    "suffix": "，"
+                  },
+                  {
+                    "id": "l8g2-confusion-suoyi-start-w7",
                     "traditional": "所以",
                     "pinyin": "suǒyǐ",
-                    "meaning": "so; starts the result",
-                    "prefix": "，"
+                    "meaning": "so"
                   },
                   {
-                    "id": "l8g2-confusion-suoyi-start-word-4",
+                    "id": "l8g2-confusion-suoyi-start-w8",
                     "traditional": "很多人",
                     "pinyin": "hěn duō rén",
                     "meaning": "many people"
                   },
                   {
-                    "id": "l8g2-confusion-suoyi-start-word-5",
-                    "traditional": "買",
-                    "simplified": "买",
-                    "pinyin": "mǎi",
-                    "meaning": "buy",
+                    "id": "l8g2-confusion-suoyi-start-w9",
+                    "traditional": "喜歡",
+                    "simplified": "喜欢",
+                    "pinyin": "xǐhuān",
+                    "meaning": "like",
                     "suffix": "。"
                   }
                 ]
@@ -12192,7 +12911,7 @@
               "right": {
                 "traditional": "因為鞋子太小，所以不買。",
                 "simplified": "因为鞋子太小，所以不买。",
-                "pinyin": "Yīnwèi xiézi tài xiǎo, suǒyǐ bú mǎi.",
+                "pinyin": "Yīnwèi xiézi tài xiǎo, suǒyǐ bù mǎi.",
                 "english": "Because the shoes are too small, I will not buy them.",
                 "words": [
                   {
@@ -12267,12 +12986,12 @@
           "object": {
             "role": "RESULT",
             "label": "what follows",
-            "traditional": "很多人買",
-            "simplified": "很多人买",
-            "pinyin": "hěn duō rén mǎi",
-            "english": "many people buy it"
+            "traditional": "很多人喜歡",
+            "simplified": "很多人喜欢",
+            "pinyin": "hěn duō rén xǐhuān",
+            "english": "many people like it"
           },
-          "positiveEnglish": "Because this brand is famous, many people buy it.",
+          "positiveEnglish": "Because this brand is famous, many people like it.",
           "notes": [
             "因為 answers 為什麼.",
             "所以 points to the result that follows.",
@@ -12285,8 +13004,8 @@
             "number": 1,
             "teachingNote": "因為 states the cause, and 所以 gives the result in a conversational answer.",
             "text": {
-              "traditional": "A: 你為什麼不想走路到學校去？ B: 因為學校很遠，所以我不想走路到學校去。",
-              "simplified": "A: 你为什么不想走路到学校去？ B: 因为学校很远，所以我不想走路到学校去。",
+              "traditional": "A：你為什麼不想走路到學校去？ B：因為學校很遠，所以我不想走路到學校去。",
+              "simplified": "A：你为什么不想走路到学校去？ B：因为学校很远，所以我不想走路到学校去。",
               "pinyin": "A: Nǐ wèishénme bù xiǎng zǒulù dào xuéxiào qù? B: Yīnwèi xuéxiào hěn yuǎn, suǒyǐ wǒ bù xiǎng zǒulù dào xuéxiào qù.",
               "english": "A: Why don't you want to walk to school? B: Because school is very far, so I don't want to walk to school.",
               "words": [
@@ -12296,7 +13015,7 @@
                   "simplified": "你为什么",
                   "pinyin": "nǐ wèishénme",
                   "meaning": "why do you",
-                  "prefix": "A: "
+                  "prefix": "A："
                 },
                 {
                   "id": "l8g2-e1-w2",
@@ -12318,7 +13037,7 @@
                   "simplified": "因为",
                   "pinyin": "yīnwèi",
                   "meaning": "because",
-                  "prefix": "B: "
+                  "prefix": "B："
                 },
                 {
                   "id": "l8g2-e1-w5",
@@ -12356,8 +13075,8 @@
             "number": 2,
             "teachingNote": "因為他很累 gives the reason his friend stayed home.",
             "text": {
-              "traditional": "A: 為什麼你的朋友不跟你來？ B: 因為他很累，所以他要在家休息。",
-              "simplified": "A: 为什么你的朋友不跟你来？ B: 因为他很累，所以他要在家休息。",
+              "traditional": "A：為什麼你的朋友不跟你來？ B：因為他很累，所以他要在家休息。",
+              "simplified": "A：为什么你的朋友不跟你来？ B：因为他很累，所以他要在家休息。",
               "pinyin": "A: Wèishénme nǐ de péngyǒu bù gēn nǐ lái? B: Yīnwèi tā hěn lèi, suǒyǐ tā yào zài jiā xiūxi.",
               "english": "A: Why didn't your friend come with you? B: Because he is very tired, so he needs to rest at home.",
               "words": [
@@ -12367,7 +13086,7 @@
                   "simplified": "为什么",
                   "pinyin": "wèishénme",
                   "meaning": "why",
-                  "prefix": "A: "
+                  "prefix": "A："
                 },
                 {
                   "id": "l8g2-e2-w2",
@@ -12389,7 +13108,7 @@
                   "simplified": "因为",
                   "pinyin": "yīnwèi",
                   "meaning": "because",
-                  "prefix": "B: "
+                  "prefix": "B："
                 },
                 {
                   "id": "l8g2-e2-w5",
@@ -12419,8 +13138,8 @@
             "number": 3,
             "teachingNote": "The brother's birthday creates the necessity to buy a gift.",
             "text": {
-              "traditional": "A: 你為什麼今天一定要去百貨公司？ B: 因為明天是我弟弟的生日，所以我要去買他的生日禮物。",
-              "simplified": "A: 你为什么今天一定要去百货公司？ B: 因为明天是我弟弟的生日，所以我要去买他的生日礼物。",
+              "traditional": "A：你為什麼今天一定要去百貨公司？ B：因為明天是我弟弟的生日，所以我要去買他的生日禮物。",
+              "simplified": "A：你为什么今天一定要去百货公司？ B：因为明天是我弟弟的生日，所以我要去买他的生日礼物。",
               "pinyin": "A: Nǐ wèishénme jīntiān yídìng yào qù bǎihuò gōngsī? B: Yīnwèi míngtiān shì wǒ dìdi de shēngrì, suǒyǐ wǒ yào qù mǎi tā de shēngrì lǐwù.",
               "english": "A: Why do you definitely have to go to the department store today? B: Because tomorrow is my younger brother's birthday, so I must go buy his birthday gift.",
               "words": [
@@ -12430,7 +13149,7 @@
                   "simplified": "你为什么",
                   "pinyin": "nǐ wèishénme",
                   "meaning": "why do you",
-                  "prefix": "A: "
+                  "prefix": "A："
                 },
                 {
                   "id": "l8g2-e3-w2",
@@ -12458,7 +13177,7 @@
                   "simplified": "因为",
                   "pinyin": "yīnwèi",
                   "meaning": "because",
-                  "prefix": "B: "
+                  "prefix": "B："
                 },
                 {
                   "id": "l8g2-e3-w6",
@@ -12616,7 +13335,8 @@
             "correctFeedback": "The clothing problem causes the decision.",
             "repairFeedback": "Put the real cause after 因為."
           }
-        ]
+        ],
+        "exerciseNote": "The book completes three dialogues on printed page 187 and gives no answer key; these model answers follow the printed pictures."
       }
     ],
     "dialogue": {
@@ -12654,7 +13374,8 @@
                 "traditional": "妳",
                 "pinyin": "nǐ",
                 "meaning": "you",
-                "prefix": "，"
+                "prefix": "，",
+                "simplified": "你"
               },
               {
                 "id": "l8d1-1-word-3",
@@ -12723,12 +13444,19 @@
             "english": "Thanks, this is my birthday gift from last year.",
             "words": [
               {
+                "id": "l8d1-2-thanks",
+                "traditional": "謝謝",
+                "simplified": "谢谢",
+                "pinyin": "xièxie",
+                "meaning": "thanks",
+                "suffix": "，"
+              },
+              {
                 "id": "l8d1-2-word-1",
                 "traditional": "這",
                 "simplified": "这",
                 "pinyin": "zhè",
-                "meaning": "this",
-                "prefix": "謝謝，"
+                "meaning": "this"
               },
               {
                 "id": "l8d1-2-word-2",
@@ -12788,19 +13516,31 @@
                 "meaning": "listen; hear"
               },
               {
+                "id": "l8d1-3-say",
+                "traditional": "說",
+                "simplified": "说",
+                "pinyin": "shuō",
+                "meaning": "say"
+              },
+              {
                 "id": "l8d1-3-word-2",
                 "traditional": "這",
                 "simplified": "这",
                 "pinyin": "zhè",
-                "meaning": "this",
-                "prefix": "說"
+                "meaning": "this"
+              },
+              {
+                "id": "l8d1-3-ge",
+                "traditional": "個",
+                "simplified": "个",
+                "pinyin": "ge",
+                "meaning": "measure word"
               },
               {
                 "id": "l8d1-3-word-3",
                 "traditional": "牌子",
                 "pinyin": "páizi",
-                "meaning": "brand",
-                "prefix": "個"
+                "meaning": "brand"
               },
               {
                 "id": "l8d1-3-word-4",
@@ -12883,11 +13623,17 @@
                 "meaning": "this"
               },
               {
+                "id": "l8d1-4-ge",
+                "traditional": "個",
+                "simplified": "个",
+                "pinyin": "ge",
+                "meaning": "measure word"
+              },
+              {
                 "id": "l8d1-4-word-4",
                 "traditional": "牌子",
                 "pinyin": "páizi",
-                "meaning": "brand",
-                "prefix": "個"
+                "meaning": "brand"
               },
               {
                 "id": "l8d1-4-word-5",
@@ -12989,7 +13735,8 @@
                 "id": "l8d1-5-word-1",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you"
+                "meaning": "you",
+                "simplified": "你"
               },
               {
                 "id": "l8d1-5-word-2",
@@ -13031,11 +13778,17 @@
                 "meaning": "this"
               },
               {
+                "id": "l8d1-5-ge",
+                "traditional": "個",
+                "simplified": "个",
+                "pinyin": "ge",
+                "meaning": "measure word"
+              },
+              {
                 "id": "l8d1-5-word-8",
                 "traditional": "牌子",
                 "pinyin": "páizi",
-                "meaning": "brand",
-                "prefix": "個"
+                "meaning": "brand"
               },
               {
                 "id": "l8d1-5-word-9",
@@ -13251,7 +14004,8 @@
                 "id": "l8d1-8-word-1",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you"
+                "meaning": "you",
+                "simplified": "你"
               },
               {
                 "id": "l8d1-8-word-2",
@@ -13309,7 +14063,8 @@
                 "id": "l8d1-8-word-10",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you"
+                "meaning": "you",
+                "simplified": "你"
               },
               {
                 "id": "l8d1-8-word-11",
@@ -15406,7 +16161,8 @@
             "correctFeedback": "With no prior clue, 嗎 is the neutral choice.",
             "repairFeedback": "Use 嗎 when you genuinely do not know."
           }
-        ]
+        ],
+        "exerciseNote": "The book completes three dialogues on printed page 193 and gives no answer key; the example 4 exchange is extra practice."
       },
       {
         "bookId": 1,
@@ -15429,7 +16185,8 @@
           "穿",
           "吃",
           "喝",
-          "找"
+          "找",
+          "穿穿看"
         ],
         "teachingGlossary": [
           {
@@ -16549,7 +17306,8 @@
                     "id": "l8g4-confusion-kan-end-word-4",
                     "traditional": "妳",
                     "pinyin": "nǐ",
-                    "meaning": "you"
+                    "meaning": "you",
+                    "simplified": "你"
                   },
                   {
                     "id": "l8g4-confusion-kan-end-word-5",
@@ -16845,18 +17603,17 @@
                 },
                 {
                   "id": "l8g4-e2-word-2",
-                  "traditional": "這",
-                  "simplified": "这",
-                  "pinyin": "zhè",
-                  "meaning": "this",
-                  "prefix": "說"
+                  "traditional": "說",
+                  "simplified": "说",
+                  "pinyin": "shuō",
+                  "meaning": "say (聽說 = hear it said)"
                 },
                 {
                   "id": "l8g4-e2-word-3",
-                  "traditional": "裡",
-                  "simplified": "里",
-                  "pinyin": "lǐ",
-                  "meaning": "inside"
+                  "traditional": "這裡",
+                  "simplified": "这里",
+                  "pinyin": "zhèlǐ",
+                  "meaning": "here"
                 },
                 {
                   "id": "l8g4-e2-word-4",
@@ -16917,16 +17674,18 @@
             "number": 3,
             "teachingNote": "Try a new place to search.",
             "text": {
-              "traditional": "不在我這裡，你去客廳找找看。",
-              "simplified": "不在这里，你去客厅找找看。",
-              "pinyin": "Bú zài wǒ zhèlǐ, nǐ qù kètīng zhǎozhao kàn.",
-              "english": "It is not at my place; go look in the living room.",
+              "traditional": "A：我的錢包在你那裡嗎？ B：不在我這裡，你去客廳找找看。",
+              "simplified": "A：我的钱包在你那里吗？ B：不在我这里，你去客厅找找看。",
+              "pinyin": "A: Wǒ de qiánbāo zài nǐ nàlǐ ma? B: Bú zài wǒ zhèlǐ, nǐ qù kètīng zhǎozhao kàn.",
+              "english": "A: Is my wallet at your place? B: It is not at my place; go look in the living room.",
               "words": [
                 {
                   "id": "l8g4-e3-word-1",
-                  "traditional": "不",
-                  "pinyin": "bù",
-                  "meaning": "not"
+                  "traditional": "我的錢包",
+                  "simplified": "我的钱包",
+                  "pinyin": "wǒ de qiánbāo",
+                  "meaning": "my wallet",
+                  "prefix": "A："
                 },
                 {
                   "id": "l8g4-e3-word-2",
@@ -16936,55 +17695,82 @@
                 },
                 {
                   "id": "l8g4-e3-word-3",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you"
+                },
+                {
+                  "id": "l8g4-e3-word-4",
+                  "traditional": "那裡",
+                  "simplified": "那里",
+                  "pinyin": "nàlǐ",
+                  "meaning": "there"
+                },
+                {
+                  "id": "l8g4-e3-word-5",
+                  "traditional": "嗎",
+                  "pinyin": "ma",
+                  "meaning": "yes/no question ending",
+                  "suffix": "？",
+                  "simplified": "吗"
+                },
+                {
+                  "id": "l8g4-e3-word-6",
+                  "traditional": "不",
+                  "pinyin": "bú",
+                  "meaning": "not",
+                  "prefix": "B："
+                },
+                {
+                  "id": "l8g4-e3-word-7",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "at; located at"
+                },
+                {
+                  "id": "l8g4-e3-word-8",
                   "traditional": "我",
                   "pinyin": "wǒ",
                   "meaning": "I; me"
                 },
                 {
-                  "id": "l8g4-e3-word-4",
-                  "traditional": "這",
-                  "simplified": "这",
-                  "pinyin": "zhè",
-                  "meaning": "this"
+                  "id": "l8g4-e3-word-9",
+                  "traditional": "這裡",
+                  "simplified": "这里",
+                  "pinyin": "zhèlǐ",
+                  "meaning": "here"
                 },
                 {
-                  "id": "l8g4-e3-word-5",
-                  "traditional": "裡",
-                  "simplified": "里",
-                  "pinyin": "lǐ",
-                  "meaning": "inside"
-                },
-                {
-                  "id": "l8g4-e3-word-6",
+                  "id": "l8g4-e3-word-10",
                   "traditional": "你",
                   "pinyin": "nǐ",
                   "meaning": "you",
                   "prefix": "，"
                 },
                 {
-                  "id": "l8g4-e3-word-7",
+                  "id": "l8g4-e3-word-11",
                   "traditional": "去",
                   "pinyin": "qù",
                   "meaning": "go"
                 },
                 {
-                  "id": "l8g4-e3-word-8",
+                  "id": "l8g4-e3-word-12",
                   "traditional": "客廳",
                   "simplified": "客厅",
                   "pinyin": "kètīng",
                   "meaning": "living room"
                 },
                 {
-                  "id": "l8g4-e3-word-9",
+                  "id": "l8g4-e3-word-13",
                   "traditional": "找找",
                   "pinyin": "zhǎozhao",
                   "meaning": "try looking"
                 },
                 {
-                  "id": "l8g4-e3-word-10",
+                  "id": "l8g4-e3-word-14",
                   "traditional": "看",
                   "pinyin": "kàn",
-                  "meaning": "look; see",
+                  "meaning": "and see",
                   "suffix": "。"
                 }
               ]
@@ -17037,7 +17823,8 @@
                   "traditional": "妳",
                   "pinyin": "nǐ",
                   "meaning": "you",
-                  "prefix": "，"
+                  "prefix": "，",
+                  "simplified": "你"
                 },
                 {
                   "id": "l8g4-e4-word-7",
@@ -17195,7 +17982,8 @@
             "correctFeedback": "找找看 means try the search and see.",
             "repairFeedback": "Repeat 找 before 看."
           }
-        ]
+        ],
+        "exerciseNote": "The book completes three dialogues on printed page 194 and gives no answer key; these model answers follow the 看 \"try and see\" pattern."
       },
       {
         "bookId": 1,
@@ -18216,10 +19004,10 @@
             "subject": [
               {
                 "id": "l8g5-time1",
-                "traditional": "九點",
-                "simplified": "九点",
-                "pinyin": "jiǔ diǎn",
-                "meaning": "nine o’clock"
+                "traditional": "百貨公司",
+                "simplified": "百货公司",
+                "pinyin": "bǎihuò gōngsī",
+                "meaning": "department store"
               }
             ],
             "grammar": [
@@ -18246,7 +19034,7 @@
                 "suffix": "。"
               }
             ],
-            "english": "It is nine; it is about to close."
+            "english": "The department store is about to close."
           },
           {
             "id": "l8g5-p2",
@@ -18460,10 +19248,10 @@
           "subject": {
             "role": "NOW",
             "label": "current clue",
-            "traditional": "九點了",
-            "simplified": "九点了",
-            "pinyin": "jiǔ diǎn le",
-            "english": "it is nine now"
+            "traditional": "百貨公司",
+            "simplified": "百货公司",
+            "pinyin": "bǎihuò gōngsī",
+            "english": "the department store"
           },
           "verb": {
             "role": "SOON",
@@ -18480,7 +19268,7 @@
             "pinyin": "guān le",
             "english": "close"
           },
-          "positiveEnglish": "It is nine; the department store is about to close.",
+          "positiveEnglish": "The department store is about to close.",
           "notes": [
             "The event has not happened yet.",
             "This pattern needs 了 at the end.",
@@ -18689,11 +19477,17 @@
                   "meaning": "now"
                 },
                 {
+                  "id": "l8g5-e4-time",
+                  "traditional": "八點五十分",
+                  "simplified": "八点五十分",
+                  "pinyin": "bā diǎn wǔshí fēn",
+                  "meaning": "eight fifty"
+                },
+                {
                   "id": "l8g5-e4-word-2",
                   "traditional": "了",
                   "pinyin": "le",
-                  "meaning": "ending word: a change is new or coming",
-                  "prefix": "八點五十分"
+                  "meaning": "ending word: a change is new or coming"
                 },
                 {
                   "id": "l8g5-e4-word-3",
@@ -18934,7 +19728,8 @@
             "correctFeedback": "要 + event + 了 is the shorter “about to” form.",
             "repairFeedback": "Keep 了 at the end, after the whole event."
           }
-        ]
+        ],
+        "exerciseNote": "The book completes three picture sentences on printed pages 195–196 and gives no answer key; these model answers use the printed pictures."
       }
     ],
     "dialogue": {
@@ -18966,7 +19761,8 @@
                 "id": "l8d2-1-word-1",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you"
+                "meaning": "you",
+                "simplified": "你"
               },
               {
                 "id": "l8d2-1-word-2",
@@ -19063,11 +19859,17 @@
                 "meaning": "measure word for long thin things"
               },
               {
+                "id": "l8d2-2-blue",
+                "traditional": "藍",
+                "simplified": "蓝",
+                "pinyin": "lán",
+                "meaning": "blue"
+              },
+              {
                 "id": "l8d2-2-word-5",
                 "traditional": "的",
                 "pinyin": "de",
-                "meaning": "linking word; can stand for the noun",
-                "prefix": "藍"
+                "meaning": "linking word; can stand for the noun"
               },
               {
                 "id": "l8d2-2-word-6",
@@ -19153,12 +19955,18 @@
                 "meaning": "this"
               },
               {
+                "id": "l8d2-3-liang",
+                "traditional": "兩",
+                "simplified": "两",
+                "pinyin": "liǎng",
+                "meaning": "two"
+              },
+              {
                 "id": "l8d2-3-word-2",
                 "traditional": "條",
                 "simplified": "条",
                 "pinyin": "tiáo",
-                "meaning": "measure word for long thin things",
-                "prefix": "兩"
+                "meaning": "measure word for long thin things"
               },
               {
                 "id": "l8d2-3-word-3",
@@ -19207,15 +20015,23 @@
                 "id": "l8d2-4-word-1",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you"
+                "meaning": "you",
+                "simplified": "你"
               },
               {
                 "id": "l8d2-4-word-2",
                 "traditional": "覺得",
                 "simplified": "觉得",
                 "pinyin": "juéde",
-                "meaning": "feel; think",
-                "suffix": "怎麼樣？"
+                "meaning": "feel; think"
+              },
+              {
+                "id": "l8d2-4-zenme",
+                "traditional": "怎麼樣",
+                "simplified": "怎么样",
+                "pinyin": "zěnme yàng",
+                "meaning": "how about",
+                "suffix": "？"
               }
             ]
           }
@@ -19307,12 +20123,18 @@
                 "meaning": "can; may"
               },
               {
+                "id": "l8d2-6-next",
+                "traditional": "下個",
+                "simplified": "下个",
+                "pinyin": "xià ge",
+                "meaning": "next"
+              },
+              {
                 "id": "l8d2-6-word-4",
                 "traditional": "週末",
                 "simplified": "周末",
                 "pinyin": "zhōumò",
-                "meaning": "weekend",
-                "prefix": "下個"
+                "meaning": "weekend"
               },
               {
                 "id": "l8d2-6-word-5",
@@ -19346,7 +20168,8 @@
                 "traditional": "妳",
                 "pinyin": "nǐ",
                 "meaning": "you",
-                "prefix": "，"
+                "prefix": "，",
+                "simplified": "你"
               },
               {
                 "id": "l8d2-6-word-10",

@@ -12,12 +12,14 @@ Chinese-learning PWA. React 19 + Vite + Zustand + Tailwind 4 + Express (`server/
 - **Plans must be self-contained** (files, steps, acceptance) — the owner often hands them to another model to execute.
 - Handoff file for a fresh session only when asked: concise, current task only.
 
-## Model use (token cost)
+## Session context and execution
 
-- Default Sonnet. Small tweaks/bugs stay inline in one session; never switch models mid-session (cache is per model, the switch re-reads all context uncached).
-- Design/plan on Opus or Fable. Execution: spawn a Sonnet subagent with a self-contained brief (files, steps, acceptance checks). The planner trusts the result, checks only verify output (typecheck/lint/test), and does not re-read the diff.
-- Broad multi-file searches → Haiku subagent. Single-file or single-grep lookups → inline, no subagent.
-- Fresh session per task.
+- **Owner taste and working style: read `.claude/OWNER_PREFERENCES.md` before any UI, design, motion or copy work.** It is the full, tool-neutral brief (any AI).
+- Work inline. Do not spawn subagents unless the owner explicitly asks.
+- Skills: `.claude/skills/` is the source of truth. Codex reads mirrored copies in `.agents/skills/` (local, gitignored, may lag); when they differ, the `.claude/` version wins. `.agents/portable-memory.md` is optional local context: verify its claims against current code.
+- Design/motion: plan, then a clickable prototype, then the owner's pick, then build (see the UI director skill).
+- **Never test on the owner's real progress** (answering quiz/flashcards writes SRS and syncs). Check UI in the DEV debug window: Ctrl+Shift+0 → **UI Previews** (quiz question types, feedback bar, Session complete with fake words). Ask before anything that records progress.
+- `.agents/` and the other gitignored scratch folders never feed shipped code.
 
 ## Commands
 
@@ -26,6 +28,7 @@ Chinese-learning PWA. React 19 + Vite + Zustand + Tailwind 4 + Express (`server/
 **Verify once at the end of a task, scoped to what changed** — not after every edit:
 - `src/` `server/` `tests/` → typecheck, lint, test, `jev:lint`
 - lesson/grammar content → `content:validate`
+- course examples → `course-examples:preview`, `jev:qa:course`, source review, then export + coverage/tests; see `docs/TESTING.md`. Jev judgments never authorize invented pinyin or verification flags.
 - UI → also check mobile (390 wide) and desktop (1440 wide); Safari + Chrome quirks matter (touchpad, audio).
 Use the `verify-change` skill.
 
@@ -64,11 +67,11 @@ Use the `verify-change` skill.
 
 ## Routing — read only what the task needs
 
-Path-scoped rules in `.claude/rules/` load automatically when you touch matching files. Task → doc map: `docs/INDEX.md`. Do not read `docs/archive/` or `docs/reference/` unless the task names them.
+Before editing, read matching path-scoped rules in `.claude/rules/`; Codex must not assume Claude automatically loads them. UI: `ui.md`; stores/services/hooks/utils/types: `state-services.md`; server/grading: `server-jev.md`; scripts/packs/data: `content-pipelines.md`. Task → doc map: `docs/INDEX.md`. Do not read `docs/archive/` or `docs/reference/` unless the task names them.
 
 | Task | Skill / doc |
 | --- | --- |
-| Screen/component design, redesign, visual audit | `rongwaps-ui-director` skill |
+| Screen/component design, redesign, visual audit | `.claude/OWNER_PREFERENCES.md`, then `rongwaps-ui-director` skill |
 | Start non-trivial work | `task-start` skill |
 | Finish any change | `verify-change` skill |
 | Grammar lessons | `docs/GRAMMAR_LESSON_TEMPLATE.md`, `docs/DECISIONS.md` |

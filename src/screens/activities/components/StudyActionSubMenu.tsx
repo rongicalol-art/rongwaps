@@ -50,7 +50,7 @@ export function StudyActionSubMenu({
                 variant="quiet"
                 size="md"
                 fullWidth
-                className="justify-start gap-3 px-4 py-2.5 text-left text-sm sm:text-base font-extrabold text-ui-ink-strong hover:text-feedback-warning-edge"
+                className="justify-start gap-3 px-4 py-2.5 text-left text-sm sm:text-base font-extrabold normal-case tracking-normal text-ui-ink-strong hover:text-feedback-warning-edge"
                 onClick={() => {
                   onClose();
                   onOpenGrammar();
@@ -66,7 +66,7 @@ export function StudyActionSubMenu({
                 variant="quiet"
                 size="md"
                 fullWidth
-                className="justify-start gap-3 px-4 py-2.5 text-left text-sm sm:text-base font-extrabold text-ui-ink-strong hover:text-brand-primary"
+                className="justify-start gap-3 px-4 py-2.5 text-left text-sm sm:text-base font-extrabold normal-case tracking-normal text-ui-ink-strong hover:text-brand-primary"
                 onClick={() => {
                   onClose();
                   onOpenReading();

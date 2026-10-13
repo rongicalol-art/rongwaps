@@ -3,7 +3,6 @@ import { useAuth } from '../../../hooks/useAuth';
 import { useAppStore } from '../../../store/useAppStore';
 import { flashcardService } from '../../../services/flashcardService';
 import { getDictionaryEntries } from '../../../services/dictionaryService';
-import { audioService } from '../../../services/audioService';
 import { serializeFolderColor } from '../../../utils/folderColors';
 import { definitionStrings } from '../../../utils/vocabulary/dictionaryDefinitions';
 import { useUserFlashcards } from './useUserFlashcards';
@@ -189,8 +188,6 @@ export function useSaveWordDestination(target: SaveWordTarget | null) {
       addLocalFlashcard(newCard);
     }
 
-    // Pre-warm neural audio
-    audioService.preloadNeural([headword]).catch(() => {});
   }, [headword, simplified, currentUser, addLocalFlashcard, resolvedMetadata, meaning]);
 
   const toggleFolder = useCallback(async (folderId: string) => {

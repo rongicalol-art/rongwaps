@@ -7,7 +7,6 @@ import { MsEdgeTTS, OUTPUT_FORMAT } from "msedge-tts";
 import { supabase } from "./supabase.js";
 import { getTtsObject, putTtsObject } from "./ttsStore.js";
 import { gradeGrammarAnswer } from "./jevClient.js";
-import { isAzureTtsConfigured, synthesizeAzure } from "./azureTts.js";
 
 // Load local server configuration.
 dotenv.config();
@@ -85,7 +84,7 @@ const jevUserLimiter = userLimiter(10);
 const ttsDailyCap = dailyCap(Number(process.env.TTS_DAILY_LIMIT) || 600);
 const jevDailyCap = dailyCap(Number(process.env.JEV_DAILY_LIMIT) || 200);
 
-// In-memory TTS audio cache for up to 1,000 files (~10-15 MB RAM)
+// In-memory TTS audio cache, bounded by 1,000 files and 32 MiB.
 interface CachedAudio {
   buffer: Buffer;
   contentType: string;
@@ -93,19 +92,23 @@ interface CachedAudio {
 }
 
 const AUDIO_CACHE_MAX_ENTRIES = 1000;
+const AUDIO_CACHE_MAX_BYTES = 32 * 1024 * 1024;
 const audioMemoryCache = new Map<string, CachedAudio>();
 
 function setInAudioMemoryCache(key: string, item: CachedAudio) {
-  if (audioMemoryCache.size >= AUDIO_CACHE_MAX_ENTRIES) {
-    const oldestKey = audioMemoryCache.keys().next().value;
-    if (oldestKey !== undefined) {
-      audioMemoryCache.delete(oldestKey);
-    }
-  }
+  if (item.buffer.length > AUDIO_CACHE_MAX_BYTES) return;
+  audioMemoryCache.delete(key);
   audioMemoryCache.set(key, item);
+  let bytes = [...audioMemoryCache.values()].reduce((sum, audio) => sum + audio.buffer.length, 0);
+  while (audioMemoryCache.size > AUDIO_CACHE_MAX_ENTRIES || bytes > AUDIO_CACHE_MAX_BYTES) {
+    const oldestKey = audioMemoryCache.keys().next().value;
+    if (oldestKey === undefined) break;
+    bytes -= audioMemoryCache.get(oldestKey)!.buffer.length;
+    audioMemoryCache.delete(oldestKey);
+  }
 }
 
-function sendAudioBuffer(
+export function sendAudioBuffer(
   req: express.Request,
   res: express.Response,
   buffer: Buffer,
@@ -113,16 +116,12 @@ function sendAudioBuffer(
   etag: string,
   cacheControl: string = "public, max-age=31536000, immutable",
 ) {
-  // HTTP 304 Not Modified validation
-  if (req.headers["if-none-match"] === etag) {
-    return res.status(304).end();
-  }
-
   res.setHeader("Accept-Ranges", "bytes");
   res.setHeader("ETag", etag);
   res.setHeader("Cache-Control", cacheControl);
 
-  const range = req.headers.range;
+  if (req.headers["if-none-match"]?.split(',').some((tag) => tag.trim() === '*' || tag.trim().replace(/^W\//, '') === etag)) return res.status(304).end();
+  const range = !req.headers["if-range"] || req.headers["if-range"] === etag ? req.headers.range : undefined;
   if (!range) {
     res.setHeader("Content-Type", contentType);
     res.setHeader("Content-Length", buffer.length);
@@ -141,14 +140,15 @@ function sendAudioBuffer(
 
   if (start === undefined && end !== undefined) {
     // Suffix range: bytes=-500 (last 500 bytes)
-    start = buffer.length - end;
+    start = Math.max(0, buffer.length - end);
     end = buffer.length - 1;
   } else if (start !== undefined && end === undefined) {
     // Open range: bytes=500-
     end = buffer.length - 1;
   }
 
-  if (start === undefined || end === undefined || start >= buffer.length || end < start || start < 0) {
+  if (start === undefined || end === undefined || !Number.isSafeInteger(start) || !Number.isSafeInteger(end)
+    || (!match[1] && Number(match[2]) === 0) || start >= buffer.length || end < start || start < 0) {
     res.setHeader("Content-Range", `bytes */${buffer.length}`);
     return res.status(416).end();
   }
@@ -163,7 +163,7 @@ function sendAudioBuffer(
   return res.send(buffer.subarray(start, end + 1));
 }
 
-// ─── Neural TTS endpoint (Azure AI Speech, msedge-tts fallback) ──────────────────
+// ─── Neural TTS endpoint (msedge-tts) ───────────────────────────────────────────
 // POST /api/tts { text, voice? }
 // Synthesizes natural neural TTS server-side, caches MP3 in R2 (Supabase Storage if R2 is unset),
 // and streams audio/mpeg back. Fallback: GET /api/tts-cache/:text serves cache.
@@ -186,78 +186,83 @@ const ttsInFlight = new Map<string, Promise<Buffer>>();
 
 function sanitizeTtsText(text: string): string {
   // Guard against length abuse; SSML escaping happens in the providers.
-  return text.trim().slice(0, 500);
+  return Array.from(text.trim()).slice(0, 500).join('');
 }
 
-async function synthesizeNeural(text: string, voiceName: string): Promise<Buffer> {
-  // Preferred provider: Azure AI Speech when configured. Falls back to
-  // msedge-tts on any failure so playback never breaks.
-  if (isAzureTtsConfigured()) {
-    try {
-      return await synthesizeAzure(text, voiceName);
-    } catch (error) {
-      console.warn(
-        `Azure TTS failed (${voiceName}); falling back to msedge-tts:`,
-        (error as Error).message,
-      );
-    }
-  }
-  const voice = TTS_VOICES[voiceName] || TTS_VOICES["zh-CN-XiaoxiaoNeural"]!;
+export async function synthesizeNeural(text: string, voiceName: string): Promise<Buffer> {
+  const voice = Object.hasOwn(TTS_VOICES, voiceName) ? TTS_VOICES[voiceName] : TTS_VOICES["zh-CN-XiaoxiaoNeural"]!;
   const tts = new MsEdgeTTS();
-  await tts.setMetadata(voice.name, OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
-  const { audioStream } = await tts.toStream(text, { rate: 0.9 });
-  const chunks: Buffer[] = [];
-  for await (const chunk of audioStream) {
-    chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
+  let stream: ReturnType<MsEdgeTTS['toStream']>['audioStream'] | undefined;
+  let expired = false;
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  try {
+    const deadline = new Promise<never>((_resolve, reject) => {
+      timer = setTimeout(() => {
+        expired = true;
+        const error = new Error('TTS synthesis timed out');
+        stream?.destroy(error);
+        reject(error);
+      }, 15_000);
+    });
+    const work = (async () => {
+      await tts.setMetadata(voice.name, OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
+      if (expired) throw new Error('TTS synthesis timed out');
+      // msedge-tts accepts SSML. This API accepts plain text only.
+      const escaped = text.replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' })[char]!);
+      ({ audioStream: stream } = tts.toStream(escaped, { rate: 0.9 }));
+      const chunks: Buffer[] = [];
+      let bytes = 0;
+      for await (const chunk of stream) {
+        const buffer = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
+        bytes += buffer.length;
+        if (bytes > 4 * 1024 * 1024) throw new Error('TTS output exceeds limit');
+        chunks.push(buffer);
+      }
+      if (!bytes) throw new Error('TTS returned empty audio');
+      return Buffer.concat(chunks);
+    })();
+    return await Promise.race([work, deadline]);
+  } finally {
+    clearTimeout(timer);
+    stream?.destroy();
+    try { tts.close(); } catch { /* provider connection may already be closed */ }
   }
-  return Buffer.concat(chunks);
 }
 
-async function getTtsAudio(text: string, voiceName: string): Promise<CachedAudio> {
+export async function getTtsAudio(text: string, voiceName: string): Promise<CachedAudio> {
   const key = ttsCacheKey(text, voiceName);
-  const cacheKey = `tts-key:${key}`;
-  const inMemory = audioMemoryCache.get(cacheKey);
-  if (inMemory) return inMemory;
-
-  // 1. Check cache
-  const cachedBuffer = await getTtsObject(key);
-  if (cachedBuffer) {
-    const buffer = cachedBuffer;
-    const etag = `"tts-${Buffer.from(key).toString("base64url")}-${buffer.length}"`;
-    const item: CachedAudio = { buffer, contentType: "audio/mpeg", etag };
-    setInAudioMemoryCache(cacheKey, item);
-    return item;
+  const inMemory = audioMemoryCache.get(key);
+  if (inMemory) {
+    audioMemoryCache.delete(key);
+    audioMemoryCache.set(key, inMemory);
+    return inMemory;
   }
-
-  // 2. Dedupe concurrent synthesis
-  const existing = ttsInFlight.get(key);
-  if (existing) {
-    const buffer = await existing;
-    const etag = `"tts-${Buffer.from(key).toString("base64url")}-${buffer.length}"`;
-    return { buffer, contentType: "audio/mpeg", etag };
+  let promise = ttsInFlight.get(key);
+  if (!promise) {
+    if (ttsInFlight.size >= 4) throw new Error('TTS concurrency limit reached');
+    promise = (async () => {
+      const cached = await getTtsObject(key);
+      if (cached?.length) return cached;
+      const audio = await synthesizeNeural(text, voiceName);
+      // Persistence is best effort and must not hold up the response.
+      void putTtsObject(key, audio);
+      return audio;
+    })();
+    ttsInFlight.set(key, promise);
   }
-
-  const promise = (async () => {
-    const audio = await synthesizeNeural(text, voiceName);
-    // Best-effort cache write; never block playback on failure.
-    await putTtsObject(key, audio);
-    return audio;
-  })();
-
-  ttsInFlight.set(key, promise);
   try {
     const buffer = await promise;
     const etag = `"tts-${Buffer.from(key).toString("base64url")}-${buffer.length}"`;
     const item: CachedAudio = { buffer, contentType: "audio/mpeg", etag };
-    setInAudioMemoryCache(cacheKey, item);
+    setInAudioMemoryCache(key, item);
     return item;
   } finally {
-    ttsInFlight.delete(key);
+    if (ttsInFlight.get(key) === promise) ttsInFlight.delete(key);
   }
 }
 
-// Require a valid Supabase session on paid synthesis endpoints so anonymous
-// callers cannot burn the TTS provider budget (Azure/Edge). Only
+// Require a valid Supabase session on synthesis endpoints so anonymous
+// callers cannot consume unlimited TTS resources. Only
 // authenticated users get neural audio.
 async function requireAuth(req: express.Request, res: express.Response, next: express.NextFunction) {
   const authHeader = req.headers.authorization;
@@ -283,13 +288,16 @@ async function requireAuth(req: express.Request, res: express.Response, next: ex
 
 app.post("/api/tts", apiLimiter, requireAuth, ttsUserLimiter, ttsDailyCap, async (req: express.Request, res: express.Response) => {
   try {
-    const { text, voice } = req.body as { text?: string; voice?: string };
-    const cleanText = sanitizeTtsText(text || "");
+    const { text, voice } = (req.body ?? {}) as { text?: unknown; voice?: unknown };
+    if (typeof text !== 'string' || (voice !== undefined && typeof voice !== 'string')) {
+      return res.status(400).json({ error: "Invalid text or voice" });
+    }
+    const cleanText = sanitizeTtsText(text);
     if (!cleanText) {
       return res.status(400).json({ error: "Missing or empty 'text'" });
     }
 
-    const voiceName = voice && TTS_VOICES[voice] ? voice : "zh-CN-XiaoxiaoNeural";
+    const voiceName = typeof voice === 'string' && Object.hasOwn(TTS_VOICES, voice) ? voice : "zh-CN-XiaoxiaoNeural";
     const cachedAudio = await getTtsAudio(cleanText, voiceName);
 
     sendAudioBuffer(req, res, cachedAudio.buffer, cachedAudio.contentType, cachedAudio.etag, "private, max-age=86400");
@@ -317,18 +325,18 @@ app.post("/api/jev/grade-answer", apiLimiter, requireAuth, jevUserLimiter, jevDa
 // GET /api/tts-cache/:text — serve cached TTS MP3 by text, or 404 (client synthesizes on miss)
 app.get("/api/tts-cache/:text", apiLimiter, async (req: express.Request, res: express.Response) => {
   try {
-    const text = decodeURIComponent(req.params.text || "").trim();
-    const voice = (req.query.voice as string) || "zh-CN-XiaoxiaoNeural";
-    if (!text || !TTS_VOICES[voice]) {
+    const text = sanitizeTtsText(req.params.text || "");
+    const voice = req.query.voice ?? "zh-CN-XiaoxiaoNeural";
+    if (!text || typeof voice !== 'string' || !Object.hasOwn(TTS_VOICES, voice)) {
       return res.status(400).json({ error: "Invalid text or voice" });
     }
     const key = ttsCacheKey(text, voice);
-    const cacheKey = `tts-key:${key}`;
+    const cacheKey = key;
     let cached = audioMemoryCache.get(cacheKey);
 
     if (!cached) {
       const buffer = await getTtsObject(key);
-      if (!buffer) {
+      if (!buffer?.length) {
         return res.status(404).json({ error: "TTS audio not cached" });
       }
       const etag = `"tts-${Buffer.from(key).toString("base64url")}-${buffer.length}"`;
@@ -349,16 +357,15 @@ app.get("/api/tts/:voice/*", apiLimiter, async (req: express.Request, res: expre
     const voice = req.params.voice;
     const fileTail = req.params[0];
     // Keys are `tts/<voice>/<hex(text)>.mp3` (see ttsCacheKey).
-    if (!voice || !TTS_VOICES[voice] || !fileTail || !/^[a-f0-9]+\.mp3$/.test(fileTail)) {
+    if (!voice || !Object.hasOwn(TTS_VOICES, voice) || !fileTail || !/^(?:[a-f0-9]{2}){1,2000}\.mp3$/.test(fileTail)) {
       return res.status(400).json({ error: "Invalid voice or filename" });
     }
-    const cacheKey = `tts:${voice}:${fileTail}`;
+    const cacheKey = `${TTS_CACHE_PREFIX}${voice}/${fileTail}`;
     let cached = audioMemoryCache.get(cacheKey);
 
     if (!cached) {
-      const key = `${TTS_CACHE_PREFIX}${voice}/${fileTail}`;
-      const buffer = await getTtsObject(key);
-      if (!buffer) {
+      const buffer = await getTtsObject(cacheKey);
+      if (!buffer?.length) {
         return res.status(404).json({ error: "TTS audio not found" });
       }
       const etag = `"tts-${voice}-${fileTail}-${buffer.length}"`;
@@ -447,7 +454,10 @@ async function bootstrap() {
   });
 }
 
-bootstrap().catch((err) => {
-  console.error("Failed to start full-stack server:", err);
-  process.exit(1);
-});
+if (process.env.NODE_ENV !== 'test') {
+  void bootstrap().catch((err) => {
+    console.error("Failed to start full-stack server:", err);
+    process.exit(1);
+  });
+}
+export { app };

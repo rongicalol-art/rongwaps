@@ -1,11 +1,15 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { Flashcard } from '../../data/flashcards';
 import { useQuizTyping } from './hooks/useQuiz';
 import { QuizHanziPrompt, QuizShell, type QuizModeProps } from './QuizShell';
 import { useAppStore, type TypingPromptType } from '../../store/useAppStore';
 import { AppIcon } from '../../lib/widgets';
 import { numberToToneMarks } from '../../utils/pinyin/pinyin';
+import { useNumberKeySelection } from '../../hooks/useNumberKeySelection';
+
+const NO_NUMBER_OPTIONS: readonly number[] = [];
+const ignoreNumberSelection = () => {};
 
 interface QuizTypingCardProps {
   currentCard: Flashcard;
@@ -19,9 +23,12 @@ interface QuizTypingCardProps {
 
 const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
   currentCard, input, status, onInputChange, onSubmit, onOpenBreakdown, promptType
-}) => (
+}) => {
+  const reduceMotion = useReducedMotion();
+  const simpleDefinitions = useAppStore((state) => state.simpleDefinitions);
+  return (
   <motion.div
-    initial={{ opacity: 0, y: 8 }}
+    initial={reduceMotion ? false : { opacity: 0, y: 8 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.14, ease: 'easeOut' }}
     className="flex w-full flex-col will-change-transform"
@@ -29,7 +36,7 @@ const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
     {promptType === 'meaning' ? (
       <div className="flex w-full items-center justify-center pb-7 pt-8 px-4">
         <span className="text-2xl sm:text-3xl font-extrabold text-ui-ink text-center leading-snug">
-          {currentCard.back}
+          {(simpleDefinitions && currentCard.simple) ? currentCard.simple : currentCard.back}
         </span>
       </div>
     ) : (
@@ -79,12 +86,25 @@ const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
       </div>
     </form>
   </motion.div>
-);
+  );
+};
 
 export const QuizTyping: React.FC<QuizModeProps> = ({ cards, sessionKey, ...shell }) => {
   const session = useQuizTyping(cards, sessionKey);
-  const { currentCard, input, handleInputChange, status, handleCheck, retryAnswer } = session;
+  const { currentCard, input, handleInputChange, status, handleCheck } = session;
   const typingPromptType = useAppStore((state) => state.typingPromptType);
+  const simpleDefinitions = useAppStore((state) => state.simpleDefinitions);
+  useNumberKeySelection({
+    items: NO_NUMBER_OPTIONS,
+    onSelect: ignoreNumberSelection,
+    disabled: status !== 'idle',
+    onDebugAnswer: () => {
+      const answer = currentCard.pinyin;
+      if (!answer) return;
+      handleInputChange(answer);
+      handleCheck(answer);
+    },
+  });
 
   return (
     <QuizShell
@@ -95,6 +115,7 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, sessionKey, ...shel
       title="Type the pinyin"
       status={status}
       correctAnswer={numberToToneMarks(currentCard?.pinyin || '')}
+      word={currentCard ? { hanzi: currentCard.front, pinyin: currentCard.pinyin, meaning: currentCard.back, simple: simpleDefinitions ? currentCard.simple : undefined } : undefined}
       isCheckDisabled={!input.trim()}
     >
       {({ openBreakdown }) => (
@@ -103,7 +124,7 @@ export const QuizTyping: React.FC<QuizModeProps> = ({ cards, sessionKey, ...shel
           input={input}
           status={status}
           onInputChange={handleInputChange}
-          onSubmit={status === 'wrong' ? retryAnswer : handleCheck}
+          onSubmit={handleCheck}
           onOpenBreakdown={openBreakdown}
           promptType={typingPromptType}
         />

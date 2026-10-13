@@ -1,16 +1,14 @@
-import { memo, useEffect, useMemo, useState } from 'react';
+import { memo, useMemo } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { AppIcon, Skeleton, SmartSentence, LevelTag } from '../../../lib/widgets';
+import { Skeleton, SmartSentence, LevelTag } from '../../../lib/widgets';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import {
   groupRankedExamples,
   type RankedExample,
 } from '../../../utils/vocabulary/courseExamples';
 import { numberToToneMarks } from '../../../utils/pinyin/pinyin';
-import { useAppStore } from '../../../store/useAppStore';
 import { cn } from '../../../utils/cn';
-
-const INITIAL_VISIBLE_COUNT = 3;
+import { useAppStore } from '../../../store/useAppStore';
 
 interface FlashcardExamplesProps {
   /** Every search form (both scripts, fully expanded, longest-first). */
@@ -19,6 +17,8 @@ interface FlashcardExamplesProps {
   isLoading: boolean;
   showPinyin: boolean;
   showTranslation: boolean;
+  /** Tighter top margin when rendered inside the hero area. */
+  compact?: boolean;
 }
 
 interface FlashcardExampleRowProps {
@@ -28,8 +28,8 @@ interface FlashcardExampleRowProps {
   showTranslation: boolean;
   /** Book/location meta line; hidden inside the compact top-match frame. */
   showMeta?: boolean;
-  /** Marks the exact-match sentence with a small star on the right. */
-  isTopPick?: boolean;
+  /** Hero layout: centered, location caption above the sentence. */
+  centered?: boolean;
   /** Bottom divider for list rows; top-match rows inside the card stay clean. */
   divider?: boolean;
   className?: string;
@@ -41,43 +41,38 @@ const FlashcardExampleRow = memo(function FlashcardExampleRow({
   showPinyin,
   showTranslation,
   showMeta = true,
-  isTopPick = false,
+  centered = false,
   divider = false,
   className = '',
 }: FlashcardExampleRowProps) {
   return (
     <li
-      className={`flex min-w-0 flex-col gap-1.5 sm:gap-2 [content-visibility:auto] [contain-intrinsic-size:0_110px] ${
+      className={`flex min-w-0 flex-col gap-1.5 sm:gap-2 ${centered ? '' : '[content-visibility:auto] [contain-intrinsic-size:0_110px]'} ${
         divider ? 'border-b-2 border-ui-divider' : ''
       } ${className}`}
     >
-      <div className="w-full flow-root">
+      <div className={centered ? 'w-full' : 'w-full flow-root'}>
         {showMeta && (
           <span
-            className="float-right ml-3 mb-1 inline-flex items-center gap-1 pt-1 select-none"
-            title={`Book ${example.sourceBookId}, Lesson ${example.sourceLessonId}${isTopPick ? ' · Top match' : ''}`}
+            className={centered ? 'mb-2 flex justify-center select-none' : 'float-right ml-3 mb-1 inline-flex items-center gap-1 pt-1 select-none'}
+            title={`Book ${example.sourceBookId}, Lesson ${example.sourceLessonId}`}
           >
-            {isTopPick && (
-              <span role="img" aria-label="Top match" className="shrink-0 text-brand-primary">
-                <AppIcon name="star" size={11} />
-              </span>
-            )}
             <LevelTag bookId={example.sourceBookId} lessonId={example.sourceLessonId} />
           </span>
         )}
         <SmartSentence
           text={example.chinese}
           highlightTerms={highlightTerms}
-          className="font-chinese text-[18px] sm:text-[20px] md:text-[22px] font-bold leading-relaxed text-ui-ink-strong"
+          className={cn('font-chinese font-bold leading-relaxed text-ui-ink-strong', centered ? 'text-[17px] sm:text-[18px]' : 'text-[18px] sm:text-[20px] md:text-[22px]')}
         />
       </div>
       {showPinyin && example.pinyin && (
-        <p className="text-sm sm:text-[15px] font-semibold tracking-wide leading-snug text-ui-muted-strong">
+        <p className={cn('font-semibold tracking-wide leading-snug text-ui-muted-strong', centered ? 'text-[13px]' : 'text-sm sm:text-[15px]')}>
           {numberToToneMarks(example.pinyin)}
         </p>
       )}
       {showTranslation && example.english && (
-        <p className="ui-translation text-sm sm:text-[15px]">
+        <p className={cn('ui-translation', centered ? 'text-[13px]' : 'text-sm sm:text-[15px]')}>
           {example.english}
         </p>
       )}
@@ -107,9 +102,8 @@ function FlashcardExamplesLoading() {
  * breakdowns with quiet B# · L# metadata, grouped by book (order itself carries
  * the ranking).
  *
- * For performance, only a curated initial budget (up to 3 sentences) is mounted
- * initially. An expandable toggle allows revealing the full set on demand without
- * bogging down the initial card flip animation.
+ * The back face renders the primary sentence in the hero area and the rest
+ * below the fold, so everything else is reached by scrolling.
  */
 export const FlashcardExamples = memo(function FlashcardExamples({
   searchTerms,
@@ -117,17 +111,11 @@ export const FlashcardExamples = memo(function FlashcardExamples({
   isLoading,
   showPinyin,
   showTranslation,
+  compact = false,
 }: FlashcardExamplesProps) {
   const reduceMotion = useReducedMotion();
   const hideExamplePinyin = useAppStore((state) => state.hideExamplePinyin);
   const showExamplePinyin = showPinyin && !hideExamplePinyin;
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  // Collapse back to initial budget when switching to a different card's examples
-  useEffect(() => {
-    setIsExpanded(false);
-  }, [examples]);
-
   const { topMatch, bookBlocks } = useMemo(() => {
     const groups = groupRankedExamples(examples);
     const top = groups.find((group) => group.id === 'current-match')?.examples ?? [];
@@ -146,40 +134,8 @@ export const FlashcardExamples = memo(function FlashcardExamples({
     };
   }, [examples]);
 
-  const { visibleTopMatch, visibleBookBlocks, totalRows, hasHidden } = useMemo(() => {
-    const total = topMatch.length + bookBlocks.reduce((sum, [, list]) => sum + list.length, 0);
-    if (isExpanded || total <= INITIAL_VISIBLE_COUNT) {
-      return {
-        visibleTopMatch: topMatch,
-        visibleBookBlocks: bookBlocks,
-        totalRows: total,
-        hasHidden: total > INITIAL_VISIBLE_COUNT,
-      };
-    }
-
-    let remainingBudget = INITIAL_VISIBLE_COUNT;
-    const slicedTop = topMatch.slice(0, remainingBudget);
-    remainingBudget -= slicedTop.length;
-
-    const slicedBlocks: Array<[number, RankedExample[]]> = [];
-    if (remainingBudget > 0) {
-      for (const [bookId, list] of bookBlocks) {
-        if (remainingBudget <= 0) break;
-        const take = list.slice(0, remainingBudget);
-        if (take.length > 0) {
-          slicedBlocks.push([bookId, take]);
-          remainingBudget -= take.length;
-        }
-      }
-    }
-
-    return {
-      visibleTopMatch: slicedTop,
-      visibleBookBlocks: slicedBlocks,
-      totalRows: total,
-      hasHidden: true,
-    };
-  }, [bookBlocks, isExpanded, topMatch]);
+  const visibleTopMatch = topMatch;
+  const visibleBookBlocks = bookBlocks;
 
   if (isLoading) return <FlashcardExamplesLoading />;
   if (topMatch.length === 0 && bookBlocks.length === 0) return null;
@@ -198,7 +154,10 @@ export const FlashcardExamples = memo(function FlashcardExamples({
   let rowIndex = 0;
 
   return (
-    <div className="mt-4 flex w-full flex-col pb-4" aria-label="Example sentences">
+    <div className={compact ? 'mt-4 flex w-full max-w-md flex-col rounded-feature bg-ui-canvas py-3' : 'flex w-full flex-col pb-4'} aria-label="Example sentences">
+      {compact && (
+        <span className="px-4 pb-1 text-[10px] font-black uppercase tracking-widest text-ui-muted sm:px-6">Example</span>
+      )}
       {visibleTopMatch.length > 0 && (
         <motion.section {...blockEntrance(0)} aria-label="Top match" className="w-full">
           <ul className="flex w-full flex-col">
@@ -212,9 +171,10 @@ export const FlashcardExamples = memo(function FlashcardExamples({
                   highlightTerms={searchTerms}
                   showPinyin={showExamplePinyin}
                   showTranslation={showTranslation}
-                  isTopPick
-                  divider={divider}
-                  className="px-6 py-4 sm:px-8 sm:py-4.5"
+                  divider={divider && !compact}
+                  centered={compact}
+                  showMeta={!compact}
+                  className={compact ? 'px-4 sm:px-6' : 'px-6 py-4 sm:px-8 sm:py-4.5'}
                 />
               );
             })}
@@ -242,8 +202,10 @@ export const FlashcardExamples = memo(function FlashcardExamples({
                     highlightTerms={searchTerms}
                     showPinyin={showExamplePinyin}
                     showTranslation={showTranslation}
-                    divider={divider}
-                    className="px-6 py-4 sm:px-8 sm:py-4.5"
+                    divider={divider && !compact}
+                    centered={compact}
+                  showMeta={!compact}
+                    className={compact ? 'px-4 sm:px-6' : 'px-6 py-4 sm:px-8 sm:py-4.5'}
                   />
                 );
               })}
@@ -252,23 +214,6 @@ export const FlashcardExamples = memo(function FlashcardExamples({
         );
       })}
 
-      {hasHidden && (
-        <div className="mt-3 flex w-full justify-center px-6 sm:px-8">
-          <button
-            type="button"
-            onClick={() => setIsExpanded((prev) => !prev)}
-            aria-expanded={isExpanded}
-            className="group flex min-h-9 items-center justify-center gap-1.5 rounded-compact px-3.5 py-1.5 text-xs font-extrabold text-brand-primary transition-colors hover:bg-brand-primary/10 focus-ring"
-          >
-            <span>{isExpanded ? 'Show fewer' : `Show all ${totalRows} examples`}</span>
-            <AppIcon
-              name="expand"
-              size={14}
-              className={cn('transition-transform duration-200', isExpanded && 'rotate-180')}
-            />
-          </button>
-        </div>
-      )}
     </div>
   );
 });

@@ -14,11 +14,12 @@
       172
     ],
     "audioReference": "07-2-3",
-    "explanation": "Use 又…又… to pair two qualities true at the same time: 又 + Adjective + 又 + Adjective (又快又方便). Both sides describe the same subject.",
+    "explanation": "Put 又 before each quality: 又快又方便. Both sides describe the same subject at the same time and match in grammatical form.",
     "focusTerms": [
       "又",
       "方便",
-      "舒服"
+      "舒服",
+      "又快又方便"
     ],
     "teachingGlossary": [
       {
@@ -877,10 +878,10 @@
         "subject": [
           {
             "id": "l7g5-mrt",
-            "traditional": "捷運",
-            "simplified": "捷运",
-            "pinyin": "jiéyùn",
-            "meaning": "MRT; metro"
+            "traditional": "台北的捷運",
+            "simplified": "台北的捷运",
+            "pinyin": "Táiběi de jiéyùn",
+            "meaning": "Taipei MRT"
           }
         ],
         "grammar": [
@@ -912,91 +913,50 @@
             "suffix": "。"
           }
         ],
-        "english": "The MRT is both fast and convenient."
+        "english": "Taipei MRT is both fast and convenient."
       },
       {
         "id": "l7g5-p2",
         "subject": [
           {
-            "id": "l7g5-taxi",
-            "traditional": "計程車",
-            "simplified": "计程车",
-            "pinyin": "jìchéngchē",
-            "meaning": "taxi"
-          }
-        ],
-        "grammar": [
-          {
-            "id": "l7g5-you3",
-            "traditional": "又",
-            "pinyin": "yòu",
-            "meaning": "both; also"
-          },
-          {
-            "id": "l7g5-fast2",
-            "traditional": "快",
-            "pinyin": "kuài",
-            "meaning": "fast"
-          }
-        ],
-        "complement": [
-          {
-            "id": "l7g5-you4",
-            "traditional": "又",
-            "pinyin": "yòu",
-            "meaning": "both; also"
-          },
-          {
-            "id": "l7g5-comfort",
-            "traditional": "舒服",
-            "pinyin": "shūfu",
-            "meaning": "comfortable",
-            "suffix": "。"
-          }
-        ],
-        "english": "A taxi is both fast and comfortable."
-      },
-      {
-        "id": "l7g5-p3",
-        "subject": [
-          {
-            "id": "l7g5-she",
-            "traditional": "她",
+            "id": "l7g5-p2-subject",
+            "traditional": "他",
             "pinyin": "tā",
-            "meaning": "she; her"
+            "meaning": "he"
           }
         ],
         "grammar": [
           {
-            "id": "l7g5-you5",
+            "id": "l7g5-p2-you",
             "traditional": "又",
             "pinyin": "yòu",
             "meaning": "both; also"
           },
           {
-            "id": "l7g5-cute",
-            "traditional": "可愛",
-            "simplified": "可爱",
-            "pinyin": "kě’ài",
-            "meaning": "cute"
+            "id": "l7g5-p2-sing",
+            "traditional": "會唱歌",
+            "simplified": "会唱歌",
+            "pinyin": "huì chànggē",
+            "meaning": "can sing"
           }
         ],
         "complement": [
           {
-            "id": "l7g5-you6",
+            "id": "l7g5-p2-you2",
             "traditional": "又",
             "pinyin": "yòu",
             "meaning": "both; also"
           },
           {
-            "id": "l7g5-pretty",
-            "traditional": "漂亮",
-            "pinyin": "piàoliang",
-            "meaning": "beautiful",
+            "id": "l7g5-p2-paint",
+            "traditional": "會畫畫",
+            "simplified": "会画画",
+            "pinyin": "huì huàhuà",
+            "meaning": "can paint",
             "suffix": "。"
           }
         ],
-        "english": "She is both cute and pretty."
+        "english": "He can both sing and paint."
       }
     ],
     "confusion": {
@@ -1202,109 +1162,327 @@
         "id": "l7g5-e1",
         "number": 1,
         "text": {
-          "traditional": "這家飯店又便宜又舒服。",
-          "simplified": "这家饭店又便宜又舒服。",
-          "pinyin": "Zhè jiā fàndiàn yòu piányi yòu shūfu.",
-          "english": "This hotel is inexpensive and comfortable.",
+          "traditional": "我同學的妹妹又可愛又漂亮。",
+          "simplified": "我同学的妹妹又可爱又漂亮。",
+          "pinyin": "Wǒ tóngxué de mèimei yòu kě’ài yòu piàoliang.",
+          "english": "My classmate’s younger sister is both cute and pretty.",
           "words": [
             {
               "id": "l7g5-e1-word-1",
-              "traditional": "這家",
-              "simplified": "这家",
-              "pinyin": "zhè jiā",
-              "meaning": "this (shop or hotel)"
+              "traditional": "我同學的妹妹",
+              "simplified": "我同学的妹妹",
+              "pinyin": "wǒ tóngxué de mèimei",
+              "meaning": "my classmate’s younger sister"
             },
             {
               "id": "l7g5-e1-word-2",
-              "traditional": "飯店",
-              "simplified": "饭店",
-              "pinyin": "fàndiàn",
-              "meaning": "hotel"
+              "traditional": "又",
+              "pinyin": "yòu",
+              "meaning": "both"
             },
             {
               "id": "l7g5-e1-word-3",
-              "traditional": "又",
-              "pinyin": "yòu",
-              "meaning": "both; also"
+              "traditional": "可愛",
+              "simplified": "可爱",
+              "pinyin": "kě’ài",
+              "meaning": "cute"
             },
             {
               "id": "l7g5-e1-word-4",
-              "traditional": "便宜",
-              "pinyin": "piányi",
-              "meaning": "inexpensive"
+              "traditional": "又",
+              "pinyin": "yòu",
+              "meaning": "and"
             },
             {
               "id": "l7g5-e1-word-5",
-              "traditional": "又",
-              "pinyin": "yòu",
-              "meaning": "both; also"
+              "traditional": "漂亮",
+              "pinyin": "piàoliang",
+              "meaning": "pretty",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l7g5-e2",
+        "number": 2,
+        "text": {
+          "traditional": "我現在又餓又渴，想喝一點兒茶、吃一點兒飯。",
+          "simplified": "我现在又饿又渴，想喝一点儿茶、吃一点儿饭。",
+          "pinyin": "Wǒ xiànzài yòu è yòu kě, xiǎng hē yìdiǎnr chá, chī yìdiǎnr fàn.",
+          "english": "I am both hungry and thirsty right now; I want to drink some tea and eat a little rice.",
+          "words": [
+            {
+              "id": "l7g5-e2-word-1",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me"
             },
             {
-              "id": "l7g5-e1-word-6",
+              "id": "l7g5-e2-word-2",
+              "traditional": "現在",
+              "simplified": "现在",
+              "pinyin": "xiànzài",
+              "meaning": "now"
+            },
+            {
+              "id": "l7g5-e2-word-3",
+              "traditional": "又",
+              "pinyin": "yòu",
+              "meaning": "both"
+            },
+            {
+              "id": "l7g5-e2-word-4",
+              "traditional": "餓",
+              "simplified": "饿",
+              "pinyin": "è",
+              "meaning": "hungry"
+            },
+            {
+              "id": "l7g5-e2-word-5",
+              "traditional": "又",
+              "pinyin": "yòu",
+              "meaning": "and"
+            },
+            {
+              "id": "l7g5-e2-word-6",
+              "traditional": "渴",
+              "pinyin": "kě",
+              "meaning": "thirsty",
+              "suffix": "，"
+            },
+            {
+              "id": "l7g5-e2-word-7",
+              "traditional": "想喝",
+              "pinyin": "xiǎng hē",
+              "meaning": "want to drink"
+            },
+            {
+              "id": "l7g5-e2-word-8",
+              "traditional": "一點兒",
+              "simplified": "一点儿",
+              "pinyin": "yìdiǎnr",
+              "meaning": "a little"
+            },
+            {
+              "id": "l7g5-e2-word-9",
+              "traditional": "茶",
+              "pinyin": "chá",
+              "meaning": "tea",
+              "suffix": "、"
+            },
+            {
+              "id": "l7g5-e2-word-10",
+              "traditional": "吃",
+              "pinyin": "chī",
+              "meaning": "eat"
+            },
+            {
+              "id": "l7g5-e2-word-11",
+              "traditional": "一點兒",
+              "simplified": "一点儿",
+              "pinyin": "yìdiǎnr",
+              "meaning": "a little"
+            },
+            {
+              "id": "l7g5-e2-word-12",
+              "traditional": "飯",
+              "simplified": "饭",
+              "pinyin": "fàn",
+              "meaning": "rice; meal",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l7g5-e3",
+        "number": 3,
+        "text": {
+          "traditional": "他又想去日本，又想去韓國，不知道應該先去哪國。",
+          "simplified": "他又想去日本，又想去韩国，不知道应该先去哪国。",
+          "pinyin": "Tā yòu xiǎng qù Rìběn, yòu xiǎng qù Hánguó, bù zhīdào yīnggāi xiān qù nǎ guó.",
+          "english": "He wants to go to Japan and also wants to go to Korea; he does not know which country to visit first.",
+          "words": [
+            {
+              "id": "l7g5-e3-word-1",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he"
+            },
+            {
+              "id": "l7g5-e3-word-2",
+              "traditional": "又",
+              "pinyin": "yòu",
+              "meaning": "both"
+            },
+            {
+              "id": "l7g5-e3-word-3",
+              "traditional": "想去",
+              "pinyin": "xiǎng qù",
+              "meaning": "want to go to"
+            },
+            {
+              "id": "l7g5-e3-word-4",
+              "traditional": "日本",
+              "pinyin": "Rìběn",
+              "meaning": "Japan",
+              "suffix": "，"
+            },
+            {
+              "id": "l7g5-e3-word-5",
+              "traditional": "又",
+              "pinyin": "yòu",
+              "meaning": "and"
+            },
+            {
+              "id": "l7g5-e3-word-6",
+              "traditional": "想去",
+              "pinyin": "xiǎng qù",
+              "meaning": "want to go to"
+            },
+            {
+              "id": "l7g5-e3-word-7",
+              "traditional": "韓國",
+              "simplified": "韩国",
+              "pinyin": "Hánguó",
+              "meaning": "Korea",
+              "suffix": "，"
+            },
+            {
+              "id": "l7g5-e3-word-8",
+              "traditional": "不知道",
+              "pinyin": "bù zhīdào",
+              "meaning": "do not know"
+            },
+            {
+              "id": "l7g5-e3-word-9",
+              "traditional": "應該",
+              "simplified": "应该",
+              "pinyin": "yīnggāi",
+              "meaning": "should"
+            },
+            {
+              "id": "l7g5-e3-word-10",
+              "traditional": "先去",
+              "pinyin": "xiān qù",
+              "meaning": "go first"
+            },
+            {
+              "id": "l7g5-e3-word-11",
+              "traditional": "哪國",
+              "simplified": "哪国",
+              "pinyin": "nǎ guó",
+              "meaning": "which country",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l7g5-e4",
+        "number": 4,
+        "text": {
+          "traditional": "這家飯店又便宜又舒服。",
+          "simplified": "这家饭店又便宜又舒服。",
+          "pinyin": "Zhè jiā fàndiàn yòu piányi yòu shūfu.",
+          "english": "This hotel is both cheap and comfortable.",
+          "words": [
+            {
+              "id": "l7g5-e4-word-1",
+              "traditional": "這家飯店",
+              "simplified": "这家饭店",
+              "pinyin": "zhè jiā fàndiàn",
+              "meaning": "this hotel"
+            },
+            {
+              "id": "l7g5-e4-word-2",
+              "traditional": "又",
+              "pinyin": "yòu",
+              "meaning": "both"
+            },
+            {
+              "id": "l7g5-e4-word-3",
+              "traditional": "便宜",
+              "pinyin": "piányi",
+              "meaning": "cheap"
+            },
+            {
+              "id": "l7g5-e4-word-4",
+              "traditional": "又",
+              "pinyin": "yòu",
+              "meaning": "and"
+            },
+            {
+              "id": "l7g5-e4-word-5",
               "traditional": "舒服",
               "pinyin": "shūfu",
               "meaning": "comfortable",
               "suffix": "。"
             }
           ]
-        }
+        },
+        "teachingNote": null
       },
       {
-        "id": "l7g5-e2",
-        "number": 2,
+        "id": "l7g5-e5",
+        "number": 5,
         "text": {
           "traditional": "坐計程車又快又方便，可是比較貴。",
           "simplified": "坐计程车又快又方便，可是比较贵。",
           "pinyin": "Zuò jìchéngchē yòu kuài yòu fāngbiàn, kěshì bǐjiào guì.",
-          "english": "Taking a taxi is fast and convenient, but more expensive.",
+          "english": "Taking a taxi is both fast and convenient, but it is more expensive.",
           "words": [
             {
-              "id": "l7g5-e2-word-1",
+              "id": "l7g5-e5-word-1",
               "traditional": "坐計程車",
               "simplified": "坐计程车",
               "pinyin": "zuò jìchéngchē",
               "meaning": "take a taxi"
             },
             {
-              "id": "l7g5-e2-word-2",
+              "id": "l7g5-e5-word-2",
               "traditional": "又",
               "pinyin": "yòu",
-              "meaning": "both; also"
+              "meaning": "both"
             },
             {
-              "id": "l7g5-e2-word-3",
+              "id": "l7g5-e5-word-3",
               "traditional": "快",
               "pinyin": "kuài",
               "meaning": "fast"
             },
             {
-              "id": "l7g5-e2-word-4",
+              "id": "l7g5-e5-word-4",
               "traditional": "又",
               "pinyin": "yòu",
-              "meaning": "both; also"
+              "meaning": "and"
             },
             {
-              "id": "l7g5-e2-word-5",
+              "id": "l7g5-e5-word-5",
               "traditional": "方便",
               "pinyin": "fāngbiàn",
-              "meaning": "convenient"
+              "meaning": "convenient",
+              "suffix": "，"
             },
             {
-              "id": "l7g5-e2-word-6",
+              "id": "l7g5-e5-word-6",
               "traditional": "可是",
               "pinyin": "kěshì",
-              "meaning": "but",
-              "prefix": "，"
+              "meaning": "but"
             },
             {
-              "id": "l7g5-e2-word-7",
+              "id": "l7g5-e5-word-7",
               "traditional": "比較",
               "simplified": "比较",
               "pinyin": "bǐjiào",
-              "meaning": "more"
+              "meaning": "comparatively"
             },
             {
-              "id": "l7g5-e2-word-8",
+              "id": "l7g5-e5-word-8",
               "traditional": "貴",
               "simplified": "贵",
               "pinyin": "guì",
@@ -1312,11 +1490,12 @@
               "suffix": "。"
             }
           ]
-        }
+        },
+        "teachingNote": null
       },
       {
-        "id": "l7g5-e3",
-        "number": 3,
+        "id": "l7g5-e6",
+        "number": 6,
         "text": {
           "traditional": "元真又會唱歌又會跳舞。",
           "simplified": "元真又会唱歌又会跳舞。",
@@ -1324,121 +1503,41 @@
           "english": "Yuanzhen can both sing and dance.",
           "words": [
             {
-              "id": "l7g5-e3-word-1",
+              "id": "l7g5-e6-word-1",
               "traditional": "元真",
               "pinyin": "Yuánzhēn",
               "meaning": "Yuanzhen"
             },
             {
-              "id": "l7g5-e3-word-2",
+              "id": "l7g5-e6-word-2",
               "traditional": "又",
               "pinyin": "yòu",
-              "meaning": "both; also"
+              "meaning": "both"
             },
             {
-              "id": "l7g5-e3-word-3",
-              "traditional": "會",
-              "simplified": "会",
-              "pinyin": "huì",
-              "meaning": "can; know how to"
+              "id": "l7g5-e6-word-3",
+              "traditional": "會唱歌",
+              "simplified": "会唱歌",
+              "pinyin": "huì chànggē",
+              "meaning": "can sing"
             },
             {
-              "id": "l7g5-e3-word-4",
-              "traditional": "唱歌",
-              "pinyin": "chànggē",
-              "meaning": "sing"
-            },
-            {
-              "id": "l7g5-e3-word-5",
+              "id": "l7g5-e6-word-4",
               "traditional": "又",
               "pinyin": "yòu",
-              "meaning": "both; also"
+              "meaning": "and"
             },
             {
-              "id": "l7g5-e3-word-6",
-              "traditional": "會",
-              "simplified": "会",
-              "pinyin": "huì",
-              "meaning": "can; know how to"
-            },
-            {
-              "id": "l7g5-e3-word-7",
-              "traditional": "跳舞",
-              "pinyin": "tiàowǔ",
-              "meaning": "dance",
+              "id": "l7g5-e6-word-5",
+              "traditional": "會跳舞",
+              "simplified": "会跳舞",
+              "pinyin": "huì tiàowǔ",
+              "meaning": "can dance",
               "suffix": "。"
             }
           ]
-        }
-      },
-      {
-        "id": "l7g5-e4",
-        "number": 4,
-        "text": {
-          "traditional": "我現在又累又渴，想先休息。",
-          "simplified": "我现在又累又渴，想先休息。",
-          "pinyin": "Wǒ xiànzài yòu lèi yòu kě, xiǎng xiān xiūxí.",
-          "english": "I am tired and thirsty now and want to rest first.",
-          "words": [
-            {
-              "id": "l7g5-e4-word-1",
-              "traditional": "我",
-              "pinyin": "wǒ",
-              "meaning": "I; me"
-            },
-            {
-              "id": "l7g5-e4-word-2",
-              "traditional": "現在",
-              "simplified": "现在",
-              "pinyin": "xiànzài",
-              "meaning": "now"
-            },
-            {
-              "id": "l7g5-e4-word-3",
-              "traditional": "又",
-              "pinyin": "yòu",
-              "meaning": "both; also"
-            },
-            {
-              "id": "l7g5-e4-word-4",
-              "traditional": "累",
-              "pinyin": "lèi",
-              "meaning": "tired"
-            },
-            {
-              "id": "l7g5-e4-word-5",
-              "traditional": "又",
-              "pinyin": "yòu",
-              "meaning": "both; also"
-            },
-            {
-              "id": "l7g5-e4-word-6",
-              "traditional": "渴",
-              "pinyin": "kě",
-              "meaning": "thirsty"
-            },
-            {
-              "id": "l7g5-e4-word-7",
-              "traditional": "想",
-              "pinyin": "xiǎng",
-              "meaning": "think; want",
-              "prefix": "，"
-            },
-            {
-              "id": "l7g5-e4-word-8",
-              "traditional": "先",
-              "pinyin": "xiān",
-              "meaning": "first"
-            },
-            {
-              "id": "l7g5-e4-word-9",
-              "traditional": "休息",
-              "pinyin": "xiūxi",
-              "meaning": "rest",
-              "suffix": "。"
-            }
-          ]
-        }
+        },
+        "teachingNote": null
       }
     ],
     "exerciseTitle": "Balance the pair",
@@ -1574,7 +1673,8 @@
         "correctFeedback": "Both new body states are true together.",
         "repairFeedback": "Use one 又 before 餓 and one before 渴."
       }
-    ]
+    ],
+    "exerciseNote": "The book completes three sentences with 又……又…… on printed page 172; these model answers follow the same pattern."
   },
   "LESSON_SEVEN_GRAMMAR_FOUR": {
     "bookId": 1,
@@ -1593,8 +1693,6 @@
     "audioReference": "07-2-3",
     "explanation": "In Chinese, you can say the activity first, then say what you think about it. Think: activity → your comment.",
     "focusTerms": [
-      "活動",
-      "活动",
       "方便",
       "太慢"
     ],
@@ -2460,20 +2558,21 @@
               "id": "l7g4-r1-mrt",
               "traditional": "坐捷運",
               "pinyin": "zuò jiéyùn",
-              "meaning": "take the MRT"
+              "meaning": "take the MRT",
+              "simplified": "坐捷运"
             }
           ],
           [
             {
               "id": "l7g4-r1-convenient",
-              "traditional": "方便",
-              "pinyin": "fāngbiàn",
-              "meaning": "convenient",
+              "traditional": "很方便",
+              "pinyin": "hěn fāngbiàn",
+              "meaning": "very convenient",
               "suffix": "。"
             }
           ]
         ],
-        "english": "Taking the MRT is convenient."
+        "english": "Taking the MRT is very convenient."
       },
       {
         "id": "l7g4-r2",
@@ -2483,49 +2582,25 @@
         "columns": [
           [
             {
-              "id": "l7g4-r2-walk",
-              "traditional": "走路去",
-              "pinyin": "zǒulù qù",
-              "meaning": "walk there"
+              "id": "l7g4-r2-football",
+              "traditional": "踢足球",
+              "pinyin": "tī zúqiú",
+              "meaning": "play soccer",
+              "suffix": "，"
             }
           ],
           [
             {
-              "id": "l7g4-r2-slow",
-              "traditional": "太慢",
-              "pinyin": "tài màn",
-              "meaning": "too slow",
+              "id": "l7g4-r2-like",
+              "traditional": "我們都很喜歡",
+              "simplified": "我们都很喜欢",
+              "pinyin": "wǒmen dōu hěn xǐhuān",
+              "meaning": "we all like it very much",
               "suffix": "。"
             }
           ]
         ],
-        "english": "Walking there is too slow."
-      },
-      {
-        "id": "l7g4-r3",
-        "subject": [],
-        "grammar": [],
-        "complement": [],
-        "columns": [
-          [
-            {
-              "id": "l7g4-r3-sports",
-              "traditional": "跑步游泳",
-              "pinyin": "pǎobù yóuyǒng",
-              "meaning": "run and swim"
-            }
-          ],
-          [
-            {
-              "id": "l7g4-r3-both",
-              "traditional": "都喜歡",
-              "pinyin": "dōu xǐhuān",
-              "meaning": "like both",
-              "suffix": "。"
-            }
-          ]
-        ],
-        "english": "I like both running and swimming."
+        "english": "Playing soccer, we all like (it) very much."
       }
     ],
     "confusion": {
@@ -2702,201 +2777,213 @@
         "id": "l7g4-e1",
         "number": 1,
         "text": {
-          "traditional": "坐公車很便宜，可是有一點慢。",
-          "simplified": "坐公车很便宜，可是有一点慢。",
-          "pinyin": "Zuò gōngchē hěn piányi, kěshì yǒu yìdiǎn màn.",
-          "english": "Taking the bus is inexpensive, but a little slow.",
+          "traditional": "走路去太慢了！",
+          "simplified": "走路去太慢了！",
+          "pinyin": "Zǒulù qù tài màn le!",
+          "english": "Walking there is too slow!",
           "words": [
             {
               "id": "l7g4-e1-word-1",
-              "traditional": "坐公車",
-              "simplified": "坐公车",
-              "pinyin": "zuò gōngchē",
-              "meaning": "take a bus"
+              "traditional": "走路",
+              "pinyin": "zǒulù",
+              "meaning": "walk; on foot"
             },
             {
               "id": "l7g4-e1-word-2",
-              "traditional": "很",
-              "pinyin": "hěn",
-              "meaning": "very"
+              "traditional": "去",
+              "pinyin": "qù",
+              "meaning": "go"
             },
             {
               "id": "l7g4-e1-word-3",
-              "traditional": "便宜",
-              "pinyin": "piányi",
-              "meaning": "inexpensive"
-            },
-            {
-              "id": "l7g4-e1-word-4",
-              "traditional": "可是",
-              "pinyin": "kěshì",
-              "meaning": "but",
-              "prefix": "，"
-            },
-            {
-              "id": "l7g4-e1-word-5",
-              "traditional": "有",
-              "pinyin": "yǒu",
-              "meaning": "have; there is"
-            },
-            {
-              "id": "l7g4-e1-word-6",
-              "traditional": "一點",
-              "simplified": "一点",
-              "pinyin": "yìdiǎn",
-              "meaning": "a little"
-            },
-            {
-              "id": "l7g4-e1-word-7",
-              "traditional": "慢",
-              "pinyin": "màn",
-              "meaning": "slow",
-              "suffix": "。"
-            }
-          ]
-        }
-      },
-      {
-        "id": "l7g4-e2",
-        "number": 2,
-        "text": {
-          "traditional": "走路去太慢了，我們坐捷運吧。",
-          "simplified": "走路去太慢了，我们坐捷运吧。",
-          "pinyin": "Zǒulù qù tài màn le, wǒmen zuò jiéyùn ba.",
-          "english": "Walking is too slow; let’s take the MRT.",
-          "words": [
-            {
-              "id": "l7g4-e2-word-1",
-              "traditional": "走路去",
-              "pinyin": "zǒulù qù",
-              "meaning": "go on foot"
-            },
-            {
-              "id": "l7g4-e2-word-2",
               "traditional": "太慢",
               "pinyin": "tài màn",
               "meaning": "too slow"
             },
             {
-              "id": "l7g4-e2-word-3",
+              "id": "l7g4-e1-word-4",
               "traditional": "了",
               "pinyin": "le",
-              "meaning": "signals a new situation"
-            },
-            {
-              "id": "l7g4-e2-word-4",
-              "traditional": "我們",
-              "simplified": "我们",
-              "pinyin": "wǒmen",
-              "meaning": "we; us",
-              "prefix": "，"
-            },
-            {
-              "id": "l7g4-e2-word-5",
-              "traditional": "坐捷運",
-              "simplified": "坐捷运",
-              "pinyin": "zuò jiéyùn",
-              "meaning": "take the MRT"
-            },
-            {
-              "id": "l7g4-e2-word-6",
-              "traditional": "吧",
-              "pinyin": "ba",
-              "meaning": "suggestion word at the end",
-              "suffix": "。"
+              "meaning": "marks a strong feeling",
+              "suffix": "！"
             }
           ]
-        }
+        },
+        "teachingNote": null
       },
       {
-        "id": "l7g4-e3",
-        "number": 3,
+        "id": "l7g4-e2",
+        "number": 2,
         "text": {
-          "traditional": "唱歌、跳舞，她都喜歡。",
-          "simplified": "唱歌、跳舞，她都喜欢。",
-          "pinyin": "Chànggē, tiàowǔ, tā dōu xǐhuān.",
-          "english": "Singing and dancing—she likes both.",
+          "traditional": "唱歌、跳舞都很有趣。",
+          "simplified": "唱歌、跳舞都很有趣。",
+          "pinyin": "Chànggē, tiàowǔ dōu hěn yǒuqù.",
+          "english": "Singing and dancing are both very interesting.",
           "words": [
             {
-              "id": "l7g4-e3-word-1",
+              "id": "l7g4-e2-word-1",
               "traditional": "唱歌",
               "pinyin": "chànggē",
               "meaning": "sing"
             },
             {
-              "id": "l7g4-e3-word-2",
+              "id": "l7g4-e2-word-2",
               "traditional": "跳舞",
               "pinyin": "tiàowǔ",
               "meaning": "dance",
               "prefix": "、"
             },
             {
-              "id": "l7g4-e3-word-3",
-              "traditional": "她",
-              "pinyin": "tā",
-              "meaning": "she; her",
-              "prefix": "，"
+              "id": "l7g4-e2-word-3",
+              "traditional": "都",
+              "pinyin": "dōu",
+              "meaning": "both"
             },
             {
-              "id": "l7g4-e3-word-4",
-              "traditional": "都喜歡",
-              "simplified": "都喜欢",
-              "pinyin": "dōu xǐhuān",
-              "meaning": "like all of them",
+              "id": "l7g4-e2-word-4",
+              "traditional": "很有趣",
+              "pinyin": "hěn yǒuqù",
+              "meaning": "very interesting",
               "suffix": "。"
             }
           ]
-        }
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l7g4-e3",
+        "number": 3,
+        "text": {
+          "traditional": "跑步、游泳、打網球，我都喜歡。",
+          "simplified": "跑步、游泳、打网球，我都喜欢。",
+          "pinyin": "Pǎobù, yóuyǒng, dǎ wǎngqiú, wǒ dōu xǐhuān.",
+          "english": "Running, swimming, and playing tennis — I like them all.",
+          "words": [
+            {
+              "id": "l7g4-e3-word-1",
+              "traditional": "跑步",
+              "pinyin": "pǎobù",
+              "meaning": "run"
+            },
+            {
+              "id": "l7g4-e3-word-2",
+              "traditional": "游泳",
+              "pinyin": "yóuyǒng",
+              "meaning": "swim",
+              "prefix": "、"
+            },
+            {
+              "id": "l7g4-e3-word-3",
+              "traditional": "打網球",
+              "simplified": "打网球",
+              "pinyin": "dǎ wǎngqiú",
+              "meaning": "play tennis",
+              "prefix": "、"
+            },
+            {
+              "id": "l7g4-e3-word-4",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me",
+              "prefix": "，"
+            },
+            {
+              "id": "l7g4-e3-word-5",
+              "traditional": "都",
+              "pinyin": "dōu",
+              "meaning": "all"
+            },
+            {
+              "id": "l7g4-e3-word-6",
+              "traditional": "喜歡",
+              "simplified": "喜欢",
+              "pinyin": "xǐhuān",
+              "meaning": "like",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
       },
       {
         "id": "l7g4-e4",
         "number": 4,
         "text": {
-          "traditional": "住在學校附近很方便。",
-          "simplified": "住在学校附近很方便。",
-          "pinyin": "Zhù zài xuéxiào fùjìn hěn fāngbiàn.",
-          "english": "Living near school is convenient.",
+          "traditional": "坐公車很便宜，可是有一點慢。",
+          "simplified": "坐公车很便宜，可是有一点慢。",
+          "pinyin": "Zuò gōngchē hěn piányi, kěshì yǒu yìdiǎn màn.",
+          "english": "Taking the bus is cheap, but it is a little slow.",
           "words": [
             {
               "id": "l7g4-e4-word-1",
-              "traditional": "住",
-              "pinyin": "zhù",
-              "meaning": "live; stay"
+              "traditional": "坐公車",
+              "simplified": "坐公车",
+              "pinyin": "zuò gōngchē",
+              "meaning": "take the bus"
             },
             {
               "id": "l7g4-e4-word-2",
-              "traditional": "在",
-              "pinyin": "zài",
-              "meaning": "at; in"
+              "traditional": "很便宜",
+              "pinyin": "hěn piányi",
+              "meaning": "very cheap"
             },
             {
               "id": "l7g4-e4-word-3",
-              "traditional": "學校",
-              "simplified": "学校",
-              "pinyin": "xuéxiào",
-              "meaning": "school"
+              "traditional": "可是",
+              "pinyin": "kěshì",
+              "meaning": "but",
+              "prefix": "，"
             },
             {
               "id": "l7g4-e4-word-4",
-              "traditional": "附近",
-              "pinyin": "fùjìn",
-              "meaning": "nearby area"
+              "traditional": "有一點",
+              "simplified": "有一点",
+              "pinyin": "yǒu yìdiǎn",
+              "meaning": "a little"
             },
             {
               "id": "l7g4-e4-word-5",
-              "traditional": "很",
-              "pinyin": "hěn",
-              "meaning": "very"
-            },
-            {
-              "id": "l7g4-e4-word-6",
-              "traditional": "方便",
-              "pinyin": "fāngbiàn",
-              "meaning": "convenient",
+              "traditional": "慢",
+              "pinyin": "màn",
+              "meaning": "slow",
               "suffix": "。"
             }
           ]
-        }
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l7g4-e5",
+        "number": 5,
+        "text": {
+          "traditional": "住在學校附近很方便。",
+          "simplified": "住在学校附近很方便。",
+          "pinyin": "Zhù zài xuéxiào fùjìn hěn fāngbiàn.",
+          "english": "Living near school is very convenient.",
+          "words": [
+            {
+              "id": "l7g4-e5-word-1",
+              "traditional": "住在",
+              "pinyin": "zhù zài",
+              "meaning": "live at"
+            },
+            {
+              "id": "l7g4-e5-word-2",
+              "traditional": "學校附近",
+              "simplified": "学校附近",
+              "pinyin": "xuéxiào fùjìn",
+              "meaning": "near school"
+            },
+            {
+              "id": "l7g4-e5-word-3",
+              "traditional": "很方便",
+              "pinyin": "hěn fāngbiàn",
+              "meaning": "very convenient",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
       }
     ],
     "exerciseTitle": "Put the topic on stage",
@@ -3028,7 +3115,8 @@
     "patternColumnDetails": [
       "what you do",
       "how it is"
-    ]
+    ],
+    "exerciseNote": "The book completes three sentences on printed page 171; these model answers use the same activity-first pattern."
   },
   "LESSON_SEVEN_GRAMMAR_ONE": {
     "bookId": 1,
@@ -3046,7 +3134,7 @@
       163
     ],
     "audioReference": "07-1-3",
-    "explanation": "Express routes with 從 + Start + 到 + Destination + 來/去. Add an optional purpose at the end (從家到學校去上課).",
+    "explanation": "從 marks the starting point. 到 marks the destination. Put each place right after its marker, then finish with 來 or 去.",
     "focusTerms": [
       "從",
       "从",
@@ -3901,9 +3989,9 @@
     ],
     "pattern": "Person + 從 + start + 到 + destination + 來/去 + purpose",
     "patternColumns": [
-      "從 + start",
-      "到 + end",
-      "Purpose"
+      "Who",
+      "從 · 到",
+      "Place + 來／去"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -3911,154 +3999,118 @@
         "id": "l7g1-p1",
         "subject": [
           {
-            "id": "l7g1-from",
-            "traditional": "從",
-            "simplified": "从",
-            "pinyin": "cóng",
-            "meaning": "from; starting at"
-          },
-          {
-            "id": "l7g1-school",
-            "traditional": "學校",
-            "simplified": "学校",
-            "pinyin": "xuéxiào",
-            "meaning": "school"
+            "id": "l7g1-p1-subject",
+            "traditional": "他",
+            "pinyin": "tā",
+            "meaning": "he"
           }
         ],
         "grammar": [
           {
-            "id": "l7g1-to",
-            "traditional": "到",
-            "pinyin": "dào",
-            "meaning": "to; arrive at"
-          },
-          {
-            "id": "l7g1-shop",
-            "traditional": "飲料店",
-            "simplified": "饮料店",
-            "pinyin": "yǐnliào diàn",
-            "meaning": "drink shop"
+            "id": "l7g1-p1-marker",
+            "traditional": "從",
+            "simplified": "从",
+            "pinyin": "cóng",
+            "meaning": "from"
           }
         ],
         "complement": [
           {
-            "id": "l7g1-go",
-            "traditional": "去",
-            "pinyin": "qù",
-            "meaning": "go"
+            "id": "l7g1-p1-school",
+            "traditional": "學校",
+            "simplified": "学校",
+            "pinyin": "xuéxiào",
+            "meaning": "school"
           },
           {
-            "id": "l7g1-buy",
-            "traditional": "買東西",
-            "simplified": "买东西",
-            "pinyin": "mǎi dōngxi",
-            "meaning": "buy things",
+            "id": "l7g1-p1-come",
+            "traditional": "來",
+            "simplified": "来",
+            "pinyin": "lái",
+            "meaning": "come",
             "suffix": "。"
           }
         ],
-        "english": "Go from school to the drink shop to buy something."
+        "english": "He comes from the school."
       },
       {
         "id": "l7g1-p2",
         "subject": [
           {
-            "id": "l7g1-from2",
-            "traditional": "從",
-            "simplified": "从",
-            "pinyin": "cóng",
-            "meaning": "from; starting at"
-          },
-          {
-            "id": "l7g1-hotel",
-            "traditional": "旅館",
-            "simplified": "旅馆",
-            "pinyin": "lǚguǎn",
-            "meaning": "hotel; inn"
+            "id": "l7g1-p2-subject",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
           }
         ],
         "grammar": [
           {
-            "id": "l7g1-to2",
+            "id": "l7g1-p2-marker",
             "traditional": "到",
             "pinyin": "dào",
             "meaning": "to; arrive at"
-          },
-          {
-            "id": "l7g1-home",
-            "traditional": "家",
-            "pinyin": "jiā",
-            "meaning": "home"
           }
         ],
         "complement": [
           {
-            "id": "l7g1-come",
-            "traditional": "來",
-            "simplified": "来",
-            "pinyin": "lái",
-            "meaning": "come"
+            "id": "l7g1-p2-home",
+            "traditional": "他家",
+            "pinyin": "tā jiā",
+            "meaning": "his place"
           },
           {
-            "id": "l7g1-eat",
-            "traditional": "吃飯",
-            "simplified": "吃饭",
-            "pinyin": "chīfàn",
-            "meaning": "eat a meal",
+            "id": "l7g1-p2-go",
+            "traditional": "去",
+            "pinyin": "qù",
+            "meaning": "go",
             "suffix": "。"
           }
         ],
-        "english": "Come from the hotel to my home to eat."
+        "english": "I went to his place."
       },
       {
         "id": "l7g1-p3",
         "subject": [
           {
-            "id": "l7g1-from3",
-            "traditional": "從",
-            "simplified": "从",
-            "pinyin": "cóng",
-            "meaning": "from; starting at"
-          },
-          {
-            "id": "l7g1-korea",
-            "traditional": "韓國",
-            "simplified": "韩国",
-            "pinyin": "Hánguó",
-            "meaning": "Korea"
+            "id": "l7g1-p3-subject",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
           }
         ],
         "grammar": [
           {
-            "id": "l7g1-to3",
-            "traditional": "到",
-            "pinyin": "dào",
-            "meaning": "to; arrive at"
-          },
-          {
-            "id": "l7g1-taiwan",
-            "traditional": "臺灣",
-            "simplified": "台湾",
-            "pinyin": "Táiwān",
-            "meaning": "Taiwan"
+            "id": "l7g1-p3-marker",
+            "traditional": "從我家到",
+            "simplified": "从我家到",
+            "pinyin": "cóng wǒ jiā dào",
+            "meaning": "from my home to"
           }
         ],
         "complement": [
           {
-            "id": "l7g1-come3",
-            "traditional": "來",
-            "simplified": "来",
-            "pinyin": "lái",
-            "meaning": "come"
+            "id": "l7g1-p3-school",
+            "traditional": "學校",
+            "simplified": "学校",
+            "pinyin": "xuéxiào",
+            "meaning": "school"
           },
           {
-            "id": "l7g1-visit",
-            "traditional": "看朋友",
-            "pinyin": "kàn péngyǒu",
-            "meaning": "visit a friend",
+            "id": "l7g1-p3-go",
+            "traditional": "去",
+            "pinyin": "qù",
+            "meaning": "go"
+          },
+          {
+            "id": "l7g1-p3-class",
+            "traditional": "上課",
+            "simplified": "上课",
+            "pinyin": "shàngkè",
+            "meaning": "attend class",
             "suffix": "。"
           }
         ],
-        "english": "Come from Korea to Taiwan to visit a friend."
+        "english": "I go to school from my home for class."
       }
     ],
     "confusion": {
@@ -4385,12 +4437,11 @@
       {
         "id": "l7g1-e2",
         "number": 2,
-        "teachingNote": "Ask for the missing destination.",
         "text": {
-          "traditional": "A：你到哪裡去？ B：我到朋友家去。",
-          "simplified": "A：你到哪里去？ B：我到朋友家去。",
-          "pinyin": "A: Nǐ dào nǎlǐ qù? B: Wǒ dào péngyǒu jiā qù.",
-          "english": "A: Where are you going? B: To my friend’s home.",
+          "traditional": "A：你到哪裡去？ B：我到咖啡廳去。",
+          "simplified": "A：你到哪里去？ B：我到咖啡厅去。",
+          "pinyin": "A: Nǐ dào nǎlǐ qù? B: Wǒ dào kāfēitīng qù.",
+          "english": "A: Where are you going? B: I am going to the café.",
           "words": [
             {
               "id": "l7g1-e2-word-1",
@@ -4416,14 +4467,15 @@
               "id": "l7g1-e2-word-4",
               "traditional": "去",
               "pinyin": "qù",
-              "meaning": "go"
+              "meaning": "go",
+              "suffix": "？"
             },
             {
               "id": "l7g1-e2-word-5",
               "traditional": "我",
               "pinyin": "wǒ",
               "meaning": "I; me",
-              "prefix": "？ B："
+              "prefix": "B："
             },
             {
               "id": "l7g1-e2-word-6",
@@ -4433,9 +4485,10 @@
             },
             {
               "id": "l7g1-e2-word-7",
-              "traditional": "朋友家",
-              "pinyin": "péngyǒu jiā",
-              "meaning": "friend’s home"
+              "traditional": "咖啡廳",
+              "simplified": "咖啡厅",
+              "pinyin": "kāfēitīng",
+              "meaning": "café"
             },
             {
               "id": "l7g1-e2-word-8",
@@ -4450,58 +4503,97 @@
       {
         "id": "l7g1-e3",
         "number": 3,
-        "teachingNote": "Add a purpose after 去.",
         "text": {
-          "traditional": "我們從學校到超市去買東西。",
-          "simplified": "我们从学校到超市去买东西。",
-          "pinyin": "Wǒmen cóng xuéxiào dào chāoshì qù mǎi dōngxi.",
-          "english": "We go from school to the supermarket to shop.",
+          "traditional": "A：他到圖書館去嗎？ B：他不到圖書館去，他到朋友家去。",
+          "simplified": "A：他到图书馆去吗？ B：他不到图书馆去，他到朋友家去。",
+          "pinyin": "A: Tā dào túshūguǎn qù ma? B: Tā bú dào túshūguǎn qù, tā dào péngyǒu jiā qù.",
+          "english": "A: Is he going to the library? B: He is not going to the library; he is going to his friend’s place.",
           "words": [
             {
               "id": "l7g1-e3-word-1",
-              "traditional": "我們",
-              "simplified": "我们",
-              "pinyin": "wǒmen",
-              "meaning": "we; us"
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he",
+              "prefix": "A："
             },
             {
               "id": "l7g1-e3-word-2",
-              "traditional": "從",
-              "simplified": "从",
-              "pinyin": "cóng",
-              "meaning": "from; starting at"
-            },
-            {
-              "id": "l7g1-e3-word-3",
-              "traditional": "學校",
-              "simplified": "学校",
-              "pinyin": "xuéxiào",
-              "meaning": "school"
-            },
-            {
-              "id": "l7g1-e3-word-4",
               "traditional": "到",
               "pinyin": "dào",
               "meaning": "to; arrive at"
             },
             {
-              "id": "l7g1-e3-word-5",
-              "traditional": "超市",
-              "pinyin": "chāoshì",
-              "meaning": "supermarket"
+              "id": "l7g1-e3-word-3",
+              "traditional": "圖書館",
+              "simplified": "图书馆",
+              "pinyin": "túshūguǎn",
+              "meaning": "library"
             },
             {
-              "id": "l7g1-e3-word-6",
+              "id": "l7g1-e3-word-4",
               "traditional": "去",
               "pinyin": "qù",
               "meaning": "go"
             },
             {
+              "id": "l7g1-e3-word-5",
+              "traditional": "嗎",
+              "pinyin": "ma",
+              "meaning": "yes/no question ending",
+              "suffix": "？",
+              "simplified": "吗"
+            },
+            {
+              "id": "l7g1-e3-word-6",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he",
+              "prefix": "B："
+            },
+            {
               "id": "l7g1-e3-word-7",
-              "traditional": "買東西",
-              "simplified": "买东西",
-              "pinyin": "mǎi dōngxi",
-              "meaning": "buy things",
+              "traditional": "不到",
+              "simplified": "不到",
+              "pinyin": "bú dào",
+              "meaning": "does not go to"
+            },
+            {
+              "id": "l7g1-e3-word-8",
+              "traditional": "圖書館",
+              "simplified": "图书馆",
+              "pinyin": "túshūguǎn",
+              "meaning": "library"
+            },
+            {
+              "id": "l7g1-e3-word-9",
+              "traditional": "去",
+              "pinyin": "qù",
+              "meaning": "go",
+              "suffix": "，"
+            },
+            {
+              "id": "l7g1-e3-word-10",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he"
+            },
+            {
+              "id": "l7g1-e3-word-11",
+              "traditional": "到",
+              "pinyin": "dào",
+              "meaning": "to; arrive at"
+            },
+            {
+              "id": "l7g1-e3-word-12",
+              "traditional": "朋友家",
+              "pinyin": "péngyǒu jiā",
+              "meaning": "friend’s place"
+            },
+            {
+              "id": "l7g1-e3-word-13",
+              "traditional": "去",
+              "pinyin": "qù",
+              "meaning": "go",
               "suffix": "。"
             }
           ]
@@ -4510,66 +4602,53 @@
       {
         "id": "l7g1-e4",
         "number": 4,
-        "teachingNote": "Use 來 for motion toward here.",
         "text": {
-          "traditional": "他明天從飯店到我家來吃飯。",
-          "simplified": "他明天从饭店到我家来吃饭。",
-          "pinyin": "Tā míngtiān cóng fàndiàn dào wǒ jiā lái chīfàn.",
-          "english": "Tomorrow he will come from the hotel to my home for dinner.",
+          "traditional": "他從旅館到我家來吃飯。",
+          "simplified": "他从旅馆到我家来吃饭。",
+          "pinyin": "Tā cóng lǚguǎn dào wǒ jiā lái chīfàn.",
+          "english": "He came from the hotel to my home to eat.",
           "words": [
             {
               "id": "l7g1-e4-word-1",
               "traditional": "他",
               "pinyin": "tā",
-              "meaning": "he; him"
+              "meaning": "he"
             },
             {
               "id": "l7g1-e4-word-2",
-              "traditional": "明天",
-              "pinyin": "míngtiān",
-              "meaning": "tomorrow"
-            },
-            {
-              "id": "l7g1-e4-word-3",
               "traditional": "從",
               "simplified": "从",
               "pinyin": "cóng",
-              "meaning": "from; starting at"
+              "meaning": "from"
             },
             {
-              "id": "l7g1-e4-word-4",
-              "traditional": "飯店",
-              "simplified": "饭店",
-              "pinyin": "fàndiàn",
+              "id": "l7g1-e4-word-3",
+              "traditional": "旅館",
+              "simplified": "旅馆",
+              "pinyin": "lǚguǎn",
               "meaning": "hotel"
             },
             {
-              "id": "l7g1-e4-word-5",
+              "id": "l7g1-e4-word-4",
               "traditional": "到",
               "pinyin": "dào",
               "meaning": "to; arrive at"
             },
             {
+              "id": "l7g1-e4-word-5",
+              "traditional": "我家",
+              "pinyin": "wǒ jiā",
+              "meaning": "my home"
+            },
+            {
               "id": "l7g1-e4-word-6",
-              "traditional": "我",
-              "pinyin": "wǒ",
-              "meaning": "I; me"
-            },
-            {
-              "id": "l7g1-e4-word-7",
-              "traditional": "家",
-              "pinyin": "jiā",
-              "meaning": "home"
-            },
-            {
-              "id": "l7g1-e4-word-8",
               "traditional": "來",
               "simplified": "来",
               "pinyin": "lái",
               "meaning": "come"
             },
             {
-              "id": "l7g1-e4-word-9",
+              "id": "l7g1-e4-word-7",
               "traditional": "吃飯",
               "simplified": "吃饭",
               "pinyin": "chīfàn",
@@ -4578,6 +4657,144 @@
             }
           ]
         }
+      },
+      {
+        "id": "l7g1-e5",
+        "number": 5,
+        "text": {
+          "traditional": "他從學校到飲料店去買珍珠奶茶。",
+          "simplified": "他从学校到饮料店去买珍珠奶茶。",
+          "pinyin": "Tā cóng xuéxiào dào yǐnliàodiàn qù mǎi zhēnzhū nǎichá.",
+          "english": "He goes from school to the drink shop to buy pearl milk tea.",
+          "words": [
+            {
+              "id": "l7g1-e5-word-1",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he"
+            },
+            {
+              "id": "l7g1-e5-word-2",
+              "traditional": "從",
+              "simplified": "从",
+              "pinyin": "cóng",
+              "meaning": "from"
+            },
+            {
+              "id": "l7g1-e5-word-3",
+              "traditional": "學校",
+              "simplified": "学校",
+              "pinyin": "xuéxiào",
+              "meaning": "school"
+            },
+            {
+              "id": "l7g1-e5-word-4",
+              "traditional": "到",
+              "pinyin": "dào",
+              "meaning": "to; arrive at"
+            },
+            {
+              "id": "l7g1-e5-word-5",
+              "traditional": "飲料店",
+              "simplified": "饮料店",
+              "pinyin": "yǐnliàodiàn",
+              "meaning": "drink shop"
+            },
+            {
+              "id": "l7g1-e5-word-6",
+              "traditional": "去",
+              "pinyin": "qù",
+              "meaning": "go"
+            },
+            {
+              "id": "l7g1-e5-word-7",
+              "traditional": "買",
+              "simplified": "买",
+              "pinyin": "mǎi",
+              "meaning": "buy"
+            },
+            {
+              "id": "l7g1-e5-word-8",
+              "traditional": "珍珠奶茶",
+              "pinyin": "zhēnzhū nǎichá",
+              "meaning": "pearl milk tea",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l7g1-e6",
+        "number": 6,
+        "text": {
+          "traditional": "他今天從韓國到台灣來看朋友。",
+          "simplified": "他今天从韩国到台湾来看朋友。",
+          "pinyin": "Tā jīntiān cóng Hánguó dào Táiwān lái kàn péngyǒu.",
+          "english": "He came from Korea to Taiwan today to visit a friend.",
+          "words": [
+            {
+              "id": "l7g1-e6-word-1",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he"
+            },
+            {
+              "id": "l7g1-e6-word-2",
+              "traditional": "今天",
+              "pinyin": "jīntiān",
+              "meaning": "today"
+            },
+            {
+              "id": "l7g1-e6-word-3",
+              "traditional": "從",
+              "simplified": "从",
+              "pinyin": "cóng",
+              "meaning": "from"
+            },
+            {
+              "id": "l7g1-e6-word-4",
+              "traditional": "韓國",
+              "simplified": "韩国",
+              "pinyin": "Hánguó",
+              "meaning": "Korea"
+            },
+            {
+              "id": "l7g1-e6-word-5",
+              "traditional": "到",
+              "pinyin": "dào",
+              "meaning": "to; arrive at"
+            },
+            {
+              "id": "l7g1-e6-word-6",
+              "traditional": "台灣",
+              "simplified": "台湾",
+              "pinyin": "Táiwān",
+              "meaning": "Taiwan"
+            },
+            {
+              "id": "l7g1-e6-word-7",
+              "traditional": "來",
+              "simplified": "来",
+              "pinyin": "lái",
+              "meaning": "come"
+            },
+            {
+              "id": "l7g1-e6-word-8",
+              "traditional": "看",
+              "pinyin": "kàn",
+              "meaning": "visit; look at"
+            },
+            {
+              "id": "l7g1-e6-word-9",
+              "traditional": "朋友",
+              "pinyin": "péngyǒu",
+              "meaning": "friend",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
       }
     ],
     "exerciseTitle": "Pin the route",
@@ -4713,7 +4930,13 @@
         "correctFeedback": "The post office is the destination and 寄信 is the purpose.",
         "repairFeedback": "Destination comes after 到; purpose comes after 去."
       }
-    ]
+    ],
+    "patternColumnDetails": [
+      "S",
+      "from / to",
+      "來 or 去 + purpose"
+    ],
+    "exerciseNote": "The book asks you to describe three printed pictures on page 163 and gives no answer key. These model sentences follow the same 從……到……來／去 pattern."
   },
   "LESSON_SEVEN_GRAMMAR_THREE": {
     "bookId": 1,
@@ -4731,7 +4954,7 @@
       166
     ],
     "audioReference": "07-1-3",
-    "explanation": "Put 了 at the end of a sentence to signal a change of state: something is true now that was not before. It highlights a new situation, not past tense.",
+    "explanation": "Put 了 at the end of a sentence when a new situation begins: it was not true before, but now it is. Sentence-final 了 marks change, not past tense.",
     "focusTerms": [
       "了",
       "現在",
@@ -5583,9 +5806,9 @@
     ],
     "pattern": "New situation + 了",
     "patternColumns": [
-      "Before",
+      "Subject",
       "Change",
-      "Now"
+      "了"
     ],
     "patternAccentColumn": 1,
     "patternRows": [
@@ -5593,92 +5816,93 @@
         "id": "l7g3-p1",
         "subject": [
           {
-            "id": "l7g3-before1",
-            "traditional": "不想走",
-            "pinyin": "bù xiǎng zǒu",
-            "meaning": "do not want to walk"
+            "id": "l7g3-p1-subject",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
           }
         ],
         "grammar": [
           {
-            "id": "l7g3-state1",
-            "traditional": "累",
-            "pinyin": "lèi",
-            "meaning": "tired"
+            "id": "l7g3-p1-hungry",
+            "traditional": "餓",
+            "simplified": "饿",
+            "pinyin": "è",
+            "meaning": "hungry"
           }
         ],
         "complement": [
           {
-            "id": "l7g3-le1",
+            "id": "l7g3-p1-le",
             "traditional": "了",
             "pinyin": "le",
-            "meaning": "signals a new situation",
+            "meaning": "marks a new situation",
             "suffix": "。"
           }
         ],
-        "english": "I have become tired."
+        "english": "I am hungry now."
       },
       {
         "id": "l7g3-p2",
         "subject": [
           {
-            "id": "l7g3-before2",
-            "traditional": "現在",
-            "simplified": "现在",
-            "pinyin": "xiànzài",
-            "meaning": "now"
+            "id": "l7g3-p2-subject",
+            "traditional": "公車",
+            "simplified": "公车",
+            "pinyin": "gōngchē",
+            "meaning": "bus"
           }
         ],
         "grammar": [
           {
-            "id": "l7g3-time",
-            "traditional": "十點",
-            "simplified": "十点",
-            "pinyin": "shí diǎn",
-            "meaning": "ten o’clock"
+            "id": "l7g3-p2-come",
+            "traditional": "來",
+            "simplified": "来",
+            "pinyin": "lái",
+            "meaning": "come"
           }
         ],
         "complement": [
           {
-            "id": "l7g3-le2",
+            "id": "l7g3-p2-le",
             "traditional": "了",
             "pinyin": "le",
-            "meaning": "signals a new situation",
+            "meaning": "marks a new situation",
             "suffix": "。"
           }
         ],
-        "english": "It is ten o’clock now."
+        "english": "The bus is coming."
       },
       {
         "id": "l7g3-p3",
         "subject": [
           {
-            "id": "l7g3-before3",
-            "traditional": "公車來",
-            "simplified": "公车来",
-            "pinyin": "gōngchē lái",
-            "meaning": "the bus comes"
+            "id": "l7g3-p3-subject",
+            "traditional": "我們",
+            "simplified": "我们",
+            "pinyin": "wǒmen",
+            "meaning": "we"
           }
         ],
         "grammar": [
           {
-            "id": "l7g3-board",
+            "id": "l7g3-p3-board",
             "traditional": "可以上車",
             "simplified": "可以上车",
             "pinyin": "kěyǐ shàngchē",
-            "meaning": "can get on now"
+            "meaning": "can get on"
           }
         ],
         "complement": [
           {
-            "id": "l7g3-le3",
+            "id": "l7g3-p3-le",
             "traditional": "了",
             "pinyin": "le",
-            "meaning": "signals a new situation",
+            "meaning": "marks a new situation",
             "suffix": "。"
           }
         ],
-        "english": "The bus is here; we can board now."
+        "english": "We can get on the bus now."
       }
     ],
     "confusion": {
@@ -5847,10 +6071,10 @@
         "id": "l7g3-e1",
         "number": 1,
         "text": {
-          "traditional": "我累了，不想走了。",
-          "simplified": "我累了，不想走了。",
-          "pinyin": "Wǒ lèi le, bù xiǎng zǒu le.",
-          "english": "I’m tired now and no longer want to walk.",
+          "traditional": "我餓了，想吃一點東西。",
+          "simplified": "我饿了，想吃一点东西。",
+          "pinyin": "Wǒ è le, xiǎng chī yìdiǎn dōngxi.",
+          "english": "I am hungry; I want to eat something.",
           "words": [
             {
               "id": "l7g3-e1-word-1",
@@ -5860,196 +6084,392 @@
             },
             {
               "id": "l7g3-e1-word-2",
-              "traditional": "累",
-              "pinyin": "lèi",
-              "meaning": "tired"
+              "traditional": "餓",
+              "simplified": "饿",
+              "pinyin": "è",
+              "meaning": "hungry"
             },
             {
               "id": "l7g3-e1-word-3",
               "traditional": "了",
               "pinyin": "le",
-              "meaning": "signals a new situation"
+              "meaning": "marks a new situation",
+              "suffix": "，"
             },
             {
               "id": "l7g3-e1-word-4",
-              "traditional": "不想走",
-              "pinyin": "bù xiǎng zǒu",
-              "meaning": "do not want to walk",
-              "prefix": "，"
+              "traditional": "想吃",
+              "pinyin": "xiǎng chī",
+              "meaning": "want to eat"
             },
             {
               "id": "l7g3-e1-word-5",
-              "traditional": "了",
-              "pinyin": "le",
-              "meaning": "signals a new situation",
+              "traditional": "一點",
+              "simplified": "一点",
+              "pinyin": "yìdiǎn",
+              "meaning": "a little"
+            },
+            {
+              "id": "l7g3-e1-word-6",
+              "traditional": "東西",
+              "simplified": "东西",
+              "pinyin": "dōngxi",
+              "meaning": "thing",
               "suffix": "。"
             }
           ]
-        }
+        },
+        "teachingNote": null
       },
       {
         "id": "l7g3-e2",
         "number": 2,
         "text": {
-          "traditional": "公車來了，我們可以上車了。",
-          "simplified": "公车来了，我们可以上车了。",
-          "pinyin": "Gōngchē lái le, wǒmen kěyǐ shàngchē le.",
-          "english": "The bus is here; now we can board.",
+          "traditional": "孩子都累了，我們一起休息吧！",
+          "simplified": "孩子都累了，我们一起休息吧！",
+          "pinyin": "Háizi dōu lèi le, wǒmen yìqǐ xiūxi ba!",
+          "english": "The children are all tired; let us take a rest together!",
           "words": [
             {
               "id": "l7g3-e2-word-1",
-              "traditional": "公車來",
-              "simplified": "公车来",
-              "pinyin": "gōngchē lái",
-              "meaning": "the bus comes"
+              "traditional": "孩子",
+              "pinyin": "háizi",
+              "meaning": "child"
             },
             {
               "id": "l7g3-e2-word-2",
-              "traditional": "了",
-              "pinyin": "le",
-              "meaning": "signals a new situation"
+              "traditional": "都",
+              "pinyin": "dōu",
+              "meaning": "all"
             },
             {
               "id": "l7g3-e2-word-3",
-              "traditional": "我們",
-              "simplified": "我们",
-              "pinyin": "wǒmen",
-              "meaning": "we; us",
-              "prefix": "，"
+              "traditional": "累了",
+              "pinyin": "lèi le",
+              "meaning": "are tired",
+              "suffix": "，"
             },
             {
               "id": "l7g3-e2-word-4",
-              "traditional": "可以上車",
-              "simplified": "可以上车",
-              "pinyin": "kěyǐ shàngchē",
-              "meaning": "can get on now"
+              "traditional": "我們",
+              "simplified": "我们",
+              "pinyin": "wǒmen",
+              "meaning": "we"
             },
             {
               "id": "l7g3-e2-word-5",
-              "traditional": "了",
-              "pinyin": "le",
-              "meaning": "signals a new situation",
-              "suffix": "。"
+              "traditional": "一起",
+              "pinyin": "yìqǐ",
+              "meaning": "together"
+            },
+            {
+              "id": "l7g3-e2-word-6",
+              "traditional": "休息",
+              "pinyin": "xiūxi",
+              "meaning": "rest"
+            },
+            {
+              "id": "l7g3-e2-word-7",
+              "traditional": "吧",
+              "pinyin": "ba",
+              "meaning": "suggestion ending",
+              "suffix": "！"
             }
           ]
-        }
+        },
+        "teachingNote": null
       },
       {
         "id": "l7g3-e3",
         "number": 3,
         "text": {
-          "traditional": "現在十點了，我們先回家吧。",
-          "simplified": "现在十点了，我们先回家吧。",
-          "pinyin": "Xiànzài shí diǎn le, wǒmen xiān huí jiā ba.",
-          "english": "It’s ten now; let’s go home first.",
+          "traditional": "啊！現在十點了！我的錶慢了。",
+          "simplified": "啊！现在十点了！我的表慢了。",
+          "pinyin": "A! Xiànzài shí diǎn le! Wǒ de biǎo màn le.",
+          "english": "Oh! It is ten o’clock now! My watch is slow.",
           "words": [
             {
               "id": "l7g3-e3-word-1",
+              "traditional": "啊",
+              "pinyin": "a",
+              "meaning": "oh",
+              "suffix": "！"
+            },
+            {
+              "id": "l7g3-e3-word-2",
               "traditional": "現在",
               "simplified": "现在",
               "pinyin": "xiànzài",
               "meaning": "now"
             },
             {
-              "id": "l7g3-e3-word-2",
+              "id": "l7g3-e3-word-3",
               "traditional": "十點",
               "simplified": "十点",
               "pinyin": "shí diǎn",
               "meaning": "ten o’clock"
             },
             {
-              "id": "l7g3-e3-word-3",
+              "id": "l7g3-e3-word-4",
               "traditional": "了",
               "pinyin": "le",
-              "meaning": "signals a new situation"
-            },
-            {
-              "id": "l7g3-e3-word-4",
-              "traditional": "我們",
-              "simplified": "我们",
-              "pinyin": "wǒmen",
-              "meaning": "we; us",
-              "prefix": "，"
+              "meaning": "marks a new situation",
+              "suffix": "！"
             },
             {
               "id": "l7g3-e3-word-5",
-              "traditional": "先",
-              "pinyin": "xiān",
-              "meaning": "first"
+              "traditional": "我的錶",
+              "simplified": "我的表",
+              "pinyin": "wǒ de biǎo",
+              "meaning": "my watch"
             },
             {
               "id": "l7g3-e3-word-6",
-              "traditional": "回家",
-              "pinyin": "huí jiā",
-              "meaning": "go home"
+              "traditional": "慢",
+              "pinyin": "màn",
+              "meaning": "slow"
             },
             {
               "id": "l7g3-e3-word-7",
-              "traditional": "吧",
-              "pinyin": "ba",
-              "meaning": "suggestion word at the end",
+              "traditional": "了",
+              "pinyin": "le",
+              "meaning": "marks a new situation",
               "suffix": "。"
             }
           ]
-        }
+        },
+        "teachingNote": null
       },
       {
         "id": "l7g3-e4",
         "number": 4,
         "text": {
-          "traditional": "她渴了，想先買飲料。",
-          "simplified": "她渴了，想先买饮料。",
-          "pinyin": "Tā kě le, xiǎng xiān mǎi yǐnliào.",
-          "english": "She has become thirsty and wants to buy a drink first.",
+          "traditional": "你十五歲了，應該學做飯了。",
+          "simplified": "你十五岁了，应该学做饭了。",
+          "pinyin": "Nǐ shíwǔ suì le, yīnggāi xué zuòfàn le.",
+          "english": "You are fifteen now; you should learn to cook.",
           "words": [
             {
               "id": "l7g3-e4-word-1",
-              "traditional": "她",
-              "pinyin": "tā",
-              "meaning": "she; her"
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you"
             },
             {
               "id": "l7g3-e4-word-2",
-              "traditional": "渴",
-              "pinyin": "kě",
-              "meaning": "thirsty"
+              "traditional": "十五歲",
+              "simplified": "十五岁",
+              "pinyin": "shíwǔ suì",
+              "meaning": "fifteen years old"
             },
             {
               "id": "l7g3-e4-word-3",
               "traditional": "了",
               "pinyin": "le",
-              "meaning": "signals a new situation"
+              "meaning": "marks a new situation",
+              "suffix": "，"
             },
             {
               "id": "l7g3-e4-word-4",
-              "traditional": "想",
-              "pinyin": "xiǎng",
-              "meaning": "think; want",
-              "prefix": "，"
+              "traditional": "應該",
+              "simplified": "应该",
+              "pinyin": "yīnggāi",
+              "meaning": "should"
             },
             {
               "id": "l7g3-e4-word-5",
-              "traditional": "先",
-              "pinyin": "xiān",
-              "meaning": "first"
+              "traditional": "學",
+              "simplified": "学",
+              "pinyin": "xué",
+              "meaning": "learn"
             },
             {
               "id": "l7g3-e4-word-6",
-              "traditional": "買",
-              "simplified": "买",
-              "pinyin": "mǎi",
-              "meaning": "buy"
+              "traditional": "做飯",
+              "simplified": "做饭",
+              "pinyin": "zuòfàn",
+              "meaning": "cook"
             },
             {
               "id": "l7g3-e4-word-7",
-              "traditional": "飲料",
-              "simplified": "饮料",
-              "pinyin": "yǐnliào",
-              "meaning": "drink",
+              "traditional": "了",
+              "pinyin": "le",
+              "meaning": "marks a new situation",
               "suffix": "。"
             }
           ]
-        }
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l7g3-e5",
+        "number": 5,
+        "text": {
+          "traditional": "上課了，老師來了，我們不可以玩手機了。",
+          "simplified": "上课了，老师来了，我们不可以玩手机了。",
+          "pinyin": "Shàngkè le, lǎoshī lái le, wǒmen bù kěyǐ wán shǒujī le.",
+          "english": "Class has started and the teacher is here; we cannot play on our phones anymore.",
+          "words": [
+            {
+              "id": "l7g3-e5-word-1",
+              "traditional": "上課",
+              "simplified": "上课",
+              "pinyin": "shàngkè",
+              "meaning": "attend class"
+            },
+            {
+              "id": "l7g3-e5-word-2",
+              "traditional": "了",
+              "pinyin": "le",
+              "meaning": "marks a new situation",
+              "suffix": "，"
+            },
+            {
+              "id": "l7g3-e5-word-3",
+              "traditional": "老師",
+              "simplified": "老师",
+              "pinyin": "lǎoshī",
+              "meaning": "teacher"
+            },
+            {
+              "id": "l7g3-e5-word-4",
+              "traditional": "來",
+              "simplified": "来",
+              "pinyin": "lái",
+              "meaning": "come"
+            },
+            {
+              "id": "l7g3-e5-word-5",
+              "traditional": "了",
+              "pinyin": "le",
+              "meaning": "marks a new situation",
+              "suffix": "，"
+            },
+            {
+              "id": "l7g3-e5-word-6",
+              "traditional": "我們",
+              "simplified": "我们",
+              "pinyin": "wǒmen",
+              "meaning": "we"
+            },
+            {
+              "id": "l7g3-e5-word-7",
+              "traditional": "不可以",
+              "pinyin": "bù kěyǐ",
+              "meaning": "may not"
+            },
+            {
+              "id": "l7g3-e5-word-8",
+              "traditional": "玩",
+              "pinyin": "wán",
+              "meaning": "play"
+            },
+            {
+              "id": "l7g3-e5-word-9",
+              "traditional": "手機",
+              "simplified": "手机",
+              "pinyin": "shǒujī",
+              "meaning": "cell phone"
+            },
+            {
+              "id": "l7g3-e5-word-10",
+              "traditional": "了",
+              "pinyin": "le",
+              "meaning": "marks a new situation",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l7g3-e6",
+        "number": 6,
+        "text": {
+          "traditional": "A：請你明天早上九點來。 B：好，我知道了，謝謝。",
+          "simplified": "A：请你明天早上九点来。 B：好，我知道了，谢谢。",
+          "pinyin": "A: Qǐng nǐ míngtiān zǎoshang jiǔ diǎn lái. B: Hǎo, wǒ zhīdào le, xièxie.",
+          "english": "A: Please come at nine tomorrow morning. B: Okay, I know. Thank you.",
+          "words": [
+            {
+              "id": "l7g3-e6-word-1",
+              "traditional": "請",
+              "simplified": "请",
+              "pinyin": "qǐng",
+              "meaning": "please",
+              "prefix": "A："
+            },
+            {
+              "id": "l7g3-e6-word-2",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you"
+            },
+            {
+              "id": "l7g3-e6-word-3",
+              "traditional": "明天",
+              "pinyin": "míngtiān",
+              "meaning": "tomorrow"
+            },
+            {
+              "id": "l7g3-e6-word-4",
+              "traditional": "早上",
+              "pinyin": "zǎoshang",
+              "meaning": "morning"
+            },
+            {
+              "id": "l7g3-e6-word-5",
+              "traditional": "九點",
+              "simplified": "九点",
+              "pinyin": "jiǔ diǎn",
+              "meaning": "nine o’clock"
+            },
+            {
+              "id": "l7g3-e6-word-6",
+              "traditional": "來",
+              "simplified": "来",
+              "pinyin": "lái",
+              "meaning": "come",
+              "suffix": "。"
+            },
+            {
+              "id": "l7g3-e6-word-7",
+              "traditional": "好",
+              "pinyin": "hǎo",
+              "meaning": "okay",
+              "prefix": "B：",
+              "suffix": "，"
+            },
+            {
+              "id": "l7g3-e6-word-8",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me"
+            },
+            {
+              "id": "l7g3-e6-word-9",
+              "traditional": "知道",
+              "pinyin": "zhīdào",
+              "meaning": "know"
+            },
+            {
+              "id": "l7g3-e6-word-10",
+              "traditional": "了",
+              "pinyin": "le",
+              "meaning": "marks a new situation",
+              "suffix": "，"
+            },
+            {
+              "id": "l7g3-e6-word-11",
+              "traditional": "謝謝",
+              "simplified": "谢谢",
+              "pinyin": "xièxie",
+              "meaning": "thank you",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
       }
     ],
     "exerciseTitle": "Spot the new situation",
@@ -6177,7 +6597,13 @@
         "correctFeedback": "The clock has reached ten.",
         "repairFeedback": "Place 了 after the newly reached time."
       }
-    ]
+    ],
+    "patternColumnDetails": [
+      "S",
+      "Vs / (Vaux)V",
+      "ending"
+    ],
+    "exerciseNote": "The book completes three sentences on printed page 166 and gives no answer key; these follow the 了-as-change pattern."
   },
   "LESSON_SEVEN_GRAMMAR_TWO": {
     "bookId": 1,
@@ -6202,7 +6628,9 @@
       "走路",
       "去",
       "來",
-      "来"
+      "来",
+      "騎腳踏車",
+      "到"
     ],
     "teachingGlossary": [
       {
@@ -7057,6 +7485,66 @@
     "patternAccentColumn": 1,
     "patternRows": [
       {
+        "id": "l7g2-p0a",
+        "subject": [
+          {
+            "id": "l7g2-p0a-subject",
+            "traditional": "你",
+            "pinyin": "nǐ",
+            "meaning": "you"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l7g2-p0a-how",
+            "traditional": "怎麼",
+            "simplified": "怎么",
+            "pinyin": "zěnme",
+            "meaning": "how"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l7g2-p0a-go",
+            "traditional": "去",
+            "pinyin": "qù",
+            "meaning": "go",
+            "suffix": "？"
+          }
+        ],
+        "english": "How do you get there?"
+      },
+      {
+        "id": "l7g2-p0b",
+        "subject": [
+          {
+            "id": "l7g2-p0b-subject",
+            "traditional": "我",
+            "pinyin": "wǒ",
+            "meaning": "I; me"
+          }
+        ],
+        "grammar": [
+          {
+            "id": "l7g2-p0b-bus",
+            "traditional": "坐公車",
+            "simplified": "坐公车",
+            "pinyin": "zuò gōngchē",
+            "meaning": "take the bus"
+          }
+        ],
+        "complement": [
+          {
+            "id": "l7g2-p0b-go",
+            "traditional": "去",
+            "pinyin": "qù",
+            "meaning": "go",
+            "suffix": "。"
+          }
+        ],
+        "english": "I get there by bus."
+      },
+      {
         "id": "l7g2-p1",
         "subject": [
           {
@@ -7077,14 +7565,20 @@
         ],
         "complement": [
           {
-            "id": "l7g2-school",
+            "id": "l7g2-p1-dao",
+            "traditional": "到",
+            "pinyin": "dào",
+            "meaning": "to; arrive at"
+          },
+          {
+            "id": "l7g2-p1-place",
             "traditional": "學校",
             "simplified": "学校",
             "pinyin": "xuéxiào",
             "meaning": "school"
           },
           {
-            "id": "l7g2-go",
+            "id": "l7g2-p1-go",
             "traditional": "去",
             "pinyin": "qù",
             "meaning": "go",
@@ -7114,14 +7608,20 @@
         ],
         "complement": [
           {
-            "id": "l7g2-post",
+            "id": "l7g2-p2-dao",
+            "traditional": "到",
+            "pinyin": "dào",
+            "meaning": "to; arrive at"
+          },
+          {
+            "id": "l7g2-p2-place",
             "traditional": "郵局",
             "simplified": "邮局",
             "pinyin": "yóujú",
             "meaning": "post office"
           },
           {
-            "id": "l7g2-go2",
+            "id": "l7g2-p2-go",
             "traditional": "去",
             "pinyin": "qù",
             "meaning": "go",
@@ -7151,14 +7651,20 @@
         ],
         "complement": [
           {
-            "id": "l7g2-hotel",
+            "id": "l7g2-p3-dao",
+            "traditional": "到",
+            "pinyin": "dào",
+            "meaning": "to; arrive at"
+          },
+          {
+            "id": "l7g2-p3-place",
             "traditional": "飯店",
             "simplified": "饭店",
             "pinyin": "fàndiàn",
             "meaning": "hotel"
           },
           {
-            "id": "l7g2-come",
+            "id": "l7g2-p3-come",
             "traditional": "來",
             "simplified": "来",
             "pinyin": "lái",
@@ -7354,17 +7860,17 @@
         "id": "l7g2-e1",
         "number": 1,
         "text": {
-          "traditional": "A：你們怎麼去？ B：我們坐公車去。",
-          "simplified": "A：你们怎么去？ B：我们坐公车去。",
-          "pinyin": "A: Nǐmen zěnme qù? B: Wǒmen zuò gōngchē qù.",
-          "english": "A: How are you going? B: By bus.",
+          "traditional": "A：你們怎麼來？ B：我們騎腳踏車來。",
+          "simplified": "A：你们怎么来？ B：我们骑脚踏车来。",
+          "pinyin": "A: Nǐmen zěnme lái? B: Wǒmen qí jiǎotàchē lái.",
+          "english": "A: How are you all coming? B: We are coming by bicycle.",
           "words": [
             {
               "id": "l7g2-e1-word-1",
               "traditional": "你們",
               "simplified": "你们",
               "pinyin": "nǐmen",
-              "meaning": "you (plural)",
+              "meaning": "you all",
               "prefix": "A："
             },
             {
@@ -7372,129 +7878,163 @@
               "traditional": "怎麼",
               "simplified": "怎么",
               "pinyin": "zěnme",
-              "meaning": "how; by what method"
+              "meaning": "how"
             },
             {
               "id": "l7g2-e1-word-3",
-              "traditional": "去",
-              "pinyin": "qù",
-              "meaning": "go"
+              "traditional": "來",
+              "simplified": "来",
+              "pinyin": "lái",
+              "meaning": "come",
+              "suffix": "？"
             },
             {
               "id": "l7g2-e1-word-4",
               "traditional": "我們",
               "simplified": "我们",
               "pinyin": "wǒmen",
-              "meaning": "we; us",
-              "prefix": "？ B："
+              "meaning": "we",
+              "prefix": "B："
             },
             {
               "id": "l7g2-e1-word-5",
-              "traditional": "坐公車",
-              "simplified": "坐公车",
-              "pinyin": "zuò gōngchē",
-              "meaning": "take a bus"
+              "traditional": "騎腳踏車",
+              "simplified": "骑脚踏车",
+              "pinyin": "qí jiǎotàchē",
+              "meaning": "ride a bicycle"
             },
             {
               "id": "l7g2-e1-word-6",
+              "traditional": "來",
+              "simplified": "来",
+              "pinyin": "lái",
+              "meaning": "come",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "l7g2-e2",
+        "number": 2,
+        "text": {
+          "traditional": "A：你要走路去嗎？ B：我不要走路去，我要坐捷運去。",
+          "simplified": "A：你要走路去吗？ B：我不要走路去，我要坐捷运去。",
+          "pinyin": "A: Nǐ yào zǒulù qù ma? B: Wǒ bú yào zǒulù qù, wǒ yào zuò jiéyùn qù.",
+          "english": "A: Are you going to walk? B: I am not going to walk; I am going by MRT.",
+          "words": [
+            {
+              "id": "l7g2-e2-word-1",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you",
+              "prefix": "A："
+            },
+            {
+              "id": "l7g2-e2-word-2",
+              "traditional": "要",
+              "pinyin": "yào",
+              "meaning": "want to"
+            },
+            {
+              "id": "l7g2-e2-word-3",
+              "traditional": "走路",
+              "pinyin": "zǒulù",
+              "meaning": "walk; on foot"
+            },
+            {
+              "id": "l7g2-e2-word-4",
+              "traditional": "去",
+              "pinyin": "qù",
+              "meaning": "go"
+            },
+            {
+              "id": "l7g2-e2-word-5",
+              "traditional": "嗎",
+              "pinyin": "ma",
+              "meaning": "yes/no question ending",
+              "suffix": "？",
+              "simplified": "吗"
+            },
+            {
+              "id": "l7g2-e2-word-6",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me",
+              "prefix": "B："
+            },
+            {
+              "id": "l7g2-e2-word-7",
+              "traditional": "不要",
+              "pinyin": "bú yào",
+              "meaning": "do not want to"
+            },
+            {
+              "id": "l7g2-e2-word-8",
+              "traditional": "走路",
+              "pinyin": "zǒulù",
+              "meaning": "walk; on foot"
+            },
+            {
+              "id": "l7g2-e2-word-9",
+              "traditional": "去",
+              "pinyin": "qù",
+              "meaning": "go",
+              "suffix": "，"
+            },
+            {
+              "id": "l7g2-e2-word-10",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me"
+            },
+            {
+              "id": "l7g2-e2-word-11",
+              "traditional": "要",
+              "pinyin": "yào",
+              "meaning": "want to"
+            },
+            {
+              "id": "l7g2-e2-word-12",
+              "traditional": "坐捷運",
+              "simplified": "坐捷运",
+              "pinyin": "zuò jiéyùn",
+              "meaning": "take the MRT"
+            },
+            {
+              "id": "l7g2-e2-word-13",
               "traditional": "去",
               "pinyin": "qù",
               "meaning": "go",
               "suffix": "。"
             }
           ]
-        }
-      },
-      {
-        "id": "l7g2-e2",
-        "number": 2,
-        "text": {
-          "traditional": "A：飯店遠不遠？ B：不遠，我們走路去。",
-          "simplified": "A：饭店远不远？ B：不远，我们走路去。",
-          "pinyin": "A: Fàndiàn yuǎn bù yuǎn? B: Bù yuǎn, wǒmen zǒulù qù.",
-          "english": "A: Is the hotel far? B: No, let’s walk.",
-          "words": [
-            {
-              "id": "l7g2-e2-word-1",
-              "traditional": "飯店",
-              "simplified": "饭店",
-              "pinyin": "fàndiàn",
-              "meaning": "hotel",
-              "prefix": "A："
-            },
-            {
-              "id": "l7g2-e2-word-2",
-              "traditional": "遠",
-              "simplified": "远",
-              "pinyin": "yuǎn",
-              "meaning": "far"
-            },
-            {
-              "id": "l7g2-e2-word-3",
-              "traditional": "不",
-              "pinyin": "bù",
-              "meaning": "not"
-            },
-            {
-              "id": "l7g2-e2-word-4",
-              "traditional": "遠",
-              "simplified": "远",
-              "pinyin": "yuǎn",
-              "meaning": "far"
-            },
-            {
-              "id": "l7g2-e2-word-5",
-              "traditional": "不",
-              "pinyin": "bù",
-              "meaning": "not",
-              "prefix": "？ B："
-            },
-            {
-              "id": "l7g2-e2-word-6",
-              "traditional": "遠",
-              "simplified": "远",
-              "pinyin": "yuǎn",
-              "meaning": "far"
-            },
-            {
-              "id": "l7g2-e2-word-7",
-              "traditional": "我們",
-              "simplified": "我们",
-              "pinyin": "wǒmen",
-              "meaning": "we; us",
-              "prefix": "，"
-            },
-            {
-              "id": "l7g2-e2-word-8",
-              "traditional": "走路去",
-              "pinyin": "zǒulù qù",
-              "meaning": "go on foot",
-              "suffix": "。"
-            }
-          ]
-        }
+        },
+        "teachingNote": null
       },
       {
         "id": "l7g2-e3",
         "number": 3,
         "text": {
-          "traditional": "她坐計程車到機場去。",
-          "simplified": "她坐计程车到机场去。",
-          "pinyin": "Tā zuò jìchéngchē dào jīchǎng qù.",
-          "english": "She takes a taxi to the airport.",
+          "traditional": "A：他坐公車到學校去嗎？ B：不，他坐計程車到學校去。",
+          "simplified": "A：他坐公车到学校去吗？ B：不，他坐计程车到学校去。",
+          "pinyin": "A: Tā zuò gōngchē dào xuéxiào qù ma? B: Bù, tā zuò jìchéngchē dào xuéxiào qù.",
+          "english": "A: Is he taking the bus to school? B: No, he is taking a taxi to school.",
           "words": [
             {
               "id": "l7g2-e3-word-1",
-              "traditional": "她",
+              "traditional": "他",
               "pinyin": "tā",
-              "meaning": "she; her"
+              "meaning": "he",
+              "prefix": "A："
             },
             {
               "id": "l7g2-e3-word-2",
-              "traditional": "坐計程車",
-              "simplified": "坐计程车",
-              "pinyin": "zuò jìchéngchē",
-              "meaning": "take a taxi"
+              "traditional": "坐公車",
+              "simplified": "坐公车",
+              "pinyin": "zuò gōngchē",
+              "meaning": "take the bus"
             },
             {
               "id": "l7g2-e3-word-3",
@@ -7504,75 +8044,69 @@
             },
             {
               "id": "l7g2-e3-word-4",
-              "traditional": "機場",
-              "simplified": "机场",
-              "pinyin": "jīchǎng",
-              "meaning": "airport"
+              "traditional": "學校",
+              "simplified": "学校",
+              "pinyin": "xuéxiào",
+              "meaning": "school"
             },
             {
               "id": "l7g2-e3-word-5",
+              "traditional": "去",
+              "pinyin": "qù",
+              "meaning": "go"
+            },
+            {
+              "id": "l7g2-e3-word-6",
+              "traditional": "嗎",
+              "pinyin": "ma",
+              "meaning": "yes/no question ending",
+              "suffix": "？",
+              "simplified": "吗"
+            },
+            {
+              "id": "l7g2-e3-word-7",
+              "traditional": "不",
+              "pinyin": "bù",
+              "meaning": "no",
+              "prefix": "B：",
+              "suffix": "，"
+            },
+            {
+              "id": "l7g2-e3-word-8",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he"
+            },
+            {
+              "id": "l7g2-e3-word-9",
+              "traditional": "坐計程車",
+              "simplified": "坐计程车",
+              "pinyin": "zuò jìchéngchē",
+              "meaning": "take a taxi"
+            },
+            {
+              "id": "l7g2-e3-word-10",
+              "traditional": "到",
+              "pinyin": "dào",
+              "meaning": "to; arrive at"
+            },
+            {
+              "id": "l7g2-e3-word-11",
+              "traditional": "學校",
+              "simplified": "学校",
+              "pinyin": "xuéxiào",
+              "meaning": "school"
+            },
+            {
+              "id": "l7g2-e3-word-12",
               "traditional": "去",
               "pinyin": "qù",
               "meaning": "go",
               "suffix": "。"
             }
           ]
-        }
-      },
-      {
-        "id": "l7g2-e4",
-        "number": 4,
-        "text": {
-          "traditional": "A：友美怎麼來？ B：她騎腳踏車來。",
-          "simplified": "A：友美怎么来？ B：她骑脚踏车来。",
-          "pinyin": "A: Yǒuměi zěnme lái? B: Tā qí jiǎotàchē lái.",
-          "english": "A: How is Youmei coming? B: By bicycle.",
-          "words": [
-            {
-              "id": "l7g2-e4-word-1",
-              "traditional": "友美",
-              "pinyin": "Yǒuměi",
-              "meaning": "Youmei",
-              "prefix": "A："
-            },
-            {
-              "id": "l7g2-e4-word-2",
-              "traditional": "怎麼",
-              "simplified": "怎么",
-              "pinyin": "zěnme",
-              "meaning": "how; by what method"
-            },
-            {
-              "id": "l7g2-e4-word-3",
-              "traditional": "來",
-              "simplified": "来",
-              "pinyin": "lái",
-              "meaning": "come"
-            },
-            {
-              "id": "l7g2-e4-word-4",
-              "traditional": "她",
-              "pinyin": "tā",
-              "meaning": "she; her",
-              "prefix": "？ B："
-            },
-            {
-              "id": "l7g2-e4-word-5",
-              "traditional": "騎腳踏車",
-              "simplified": "骑脚踏车",
-              "pinyin": "qí jiǎotàchē",
-              "meaning": "ride a bicycle"
-            },
-            {
-              "id": "l7g2-e4-word-6",
-              "traditional": "來",
-              "simplified": "来",
-              "pinyin": "lái",
-              "meaning": "come",
-              "suffix": "。"
-            }
-          ]
-        }
+        },
+        "teachingNote": null
       }
     ],
     "exerciseTitle": "Pick the travel block",
@@ -7708,7 +8242,8 @@
         "correctFeedback": "Method, destination, then direction form one clean route.",
         "repairFeedback": "Build 坐計程車 + 到機場 + 去."
       }
-    ]
+    ],
+    "exerciseNote": "The book asks you to rearrange three printed sentences on page 164; these dialogues carry the same 怎麼 / 坐……去 pattern and print no answer key."
   },
   "LESSON_SEVEN_PART_ONE": {
     "id": "B1L07-P01-D01",
@@ -7733,7 +8268,7 @@
           163
         ],
         "audioReference": "07-1-3",
-        "explanation": "從 is the start pin. 到 is the destination pin. Put each place right after its pin. Finish with 來 or 去. You can add the purpose (the why) at the end.",
+        "explanation": "從 marks the starting point. 到 marks the destination. Put each place right after its marker, then finish with 來 or 去.",
         "focusTerms": [
           "從",
           "从",
@@ -8588,9 +9123,9 @@
         ],
         "pattern": "Person + 從 + start + 到 + destination + 來/去 + purpose",
         "patternColumns": [
-          "從 + start",
-          "到 + end",
-          "Purpose"
+          "Who",
+          "從 · 到",
+          "Place + 來／去"
         ],
         "patternAccentColumn": 1,
         "patternRows": [
@@ -8598,154 +9133,118 @@
             "id": "l7g1-p1",
             "subject": [
               {
-                "id": "l7g1-from",
-                "traditional": "從",
-                "simplified": "从",
-                "pinyin": "cóng",
-                "meaning": "from; starting at"
-              },
-              {
-                "id": "l7g1-school",
-                "traditional": "學校",
-                "simplified": "学校",
-                "pinyin": "xuéxiào",
-                "meaning": "school"
+                "id": "l7g1-p1-subject",
+                "traditional": "他",
+                "pinyin": "tā",
+                "meaning": "he"
               }
             ],
             "grammar": [
               {
-                "id": "l7g1-to",
-                "traditional": "到",
-                "pinyin": "dào",
-                "meaning": "to; arrive at"
-              },
-              {
-                "id": "l7g1-shop",
-                "traditional": "飲料店",
-                "simplified": "饮料店",
-                "pinyin": "yǐnliào diàn",
-                "meaning": "drink shop"
+                "id": "l7g1-p1-marker",
+                "traditional": "從",
+                "simplified": "从",
+                "pinyin": "cóng",
+                "meaning": "from"
               }
             ],
             "complement": [
               {
-                "id": "l7g1-go",
-                "traditional": "去",
-                "pinyin": "qù",
-                "meaning": "go"
+                "id": "l7g1-p1-school",
+                "traditional": "學校",
+                "simplified": "学校",
+                "pinyin": "xuéxiào",
+                "meaning": "school"
               },
               {
-                "id": "l7g1-buy",
-                "traditional": "買東西",
-                "simplified": "买东西",
-                "pinyin": "mǎi dōngxi",
-                "meaning": "buy things",
+                "id": "l7g1-p1-come",
+                "traditional": "來",
+                "simplified": "来",
+                "pinyin": "lái",
+                "meaning": "come",
                 "suffix": "。"
               }
             ],
-            "english": "Go from school to the drink shop to buy something."
+            "english": "He comes from the school."
           },
           {
             "id": "l7g1-p2",
             "subject": [
               {
-                "id": "l7g1-from2",
-                "traditional": "從",
-                "simplified": "从",
-                "pinyin": "cóng",
-                "meaning": "from; starting at"
-              },
-              {
-                "id": "l7g1-hotel",
-                "traditional": "旅館",
-                "simplified": "旅馆",
-                "pinyin": "lǚguǎn",
-                "meaning": "hotel; inn"
+                "id": "l7g1-p2-subject",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
               }
             ],
             "grammar": [
               {
-                "id": "l7g1-to2",
+                "id": "l7g1-p2-marker",
                 "traditional": "到",
                 "pinyin": "dào",
                 "meaning": "to; arrive at"
-              },
-              {
-                "id": "l7g1-home",
-                "traditional": "家",
-                "pinyin": "jiā",
-                "meaning": "home"
               }
             ],
             "complement": [
               {
-                "id": "l7g1-come",
-                "traditional": "來",
-                "simplified": "来",
-                "pinyin": "lái",
-                "meaning": "come"
+                "id": "l7g1-p2-home",
+                "traditional": "他家",
+                "pinyin": "tā jiā",
+                "meaning": "his place"
               },
               {
-                "id": "l7g1-eat",
-                "traditional": "吃飯",
-                "simplified": "吃饭",
-                "pinyin": "chīfàn",
-                "meaning": "eat a meal",
+                "id": "l7g1-p2-go",
+                "traditional": "去",
+                "pinyin": "qù",
+                "meaning": "go",
                 "suffix": "。"
               }
             ],
-            "english": "Come from the hotel to my home to eat."
+            "english": "I went to his place."
           },
           {
             "id": "l7g1-p3",
             "subject": [
               {
-                "id": "l7g1-from3",
-                "traditional": "從",
-                "simplified": "从",
-                "pinyin": "cóng",
-                "meaning": "from; starting at"
-              },
-              {
-                "id": "l7g1-korea",
-                "traditional": "韓國",
-                "simplified": "韩国",
-                "pinyin": "Hánguó",
-                "meaning": "Korea"
+                "id": "l7g1-p3-subject",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
               }
             ],
             "grammar": [
               {
-                "id": "l7g1-to3",
-                "traditional": "到",
-                "pinyin": "dào",
-                "meaning": "to; arrive at"
-              },
-              {
-                "id": "l7g1-taiwan",
-                "traditional": "臺灣",
-                "simplified": "台湾",
-                "pinyin": "Táiwān",
-                "meaning": "Taiwan"
+                "id": "l7g1-p3-marker",
+                "traditional": "從我家到",
+                "simplified": "从我家到",
+                "pinyin": "cóng wǒ jiā dào",
+                "meaning": "from my home to"
               }
             ],
             "complement": [
               {
-                "id": "l7g1-come3",
-                "traditional": "來",
-                "simplified": "来",
-                "pinyin": "lái",
-                "meaning": "come"
+                "id": "l7g1-p3-school",
+                "traditional": "學校",
+                "simplified": "学校",
+                "pinyin": "xuéxiào",
+                "meaning": "school"
               },
               {
-                "id": "l7g1-visit",
-                "traditional": "看朋友",
-                "pinyin": "kàn péngyǒu",
-                "meaning": "visit a friend",
+                "id": "l7g1-p3-go",
+                "traditional": "去",
+                "pinyin": "qù",
+                "meaning": "go"
+              },
+              {
+                "id": "l7g1-p3-class",
+                "traditional": "上課",
+                "simplified": "上课",
+                "pinyin": "shàngkè",
+                "meaning": "attend class",
                 "suffix": "。"
               }
             ],
-            "english": "Come from Korea to Taiwan to visit a friend."
+            "english": "I go to school from my home for class."
           }
         ],
         "confusion": {
@@ -9072,12 +9571,11 @@
           {
             "id": "l7g1-e2",
             "number": 2,
-            "teachingNote": "Ask for the missing destination.",
             "text": {
-              "traditional": "A：你到哪裡去？ B：我到朋友家去。",
-              "simplified": "A：你到哪里去？ B：我到朋友家去。",
-              "pinyin": "A: Nǐ dào nǎlǐ qù? B: Wǒ dào péngyǒu jiā qù.",
-              "english": "A: Where are you going? B: To my friend’s home.",
+              "traditional": "A：你到哪裡去？ B：我到咖啡廳去。",
+              "simplified": "A：你到哪里去？ B：我到咖啡厅去。",
+              "pinyin": "A: Nǐ dào nǎlǐ qù? B: Wǒ dào kāfēitīng qù.",
+              "english": "A: Where are you going? B: I am going to the café.",
               "words": [
                 {
                   "id": "l7g1-e2-word-1",
@@ -9103,14 +9601,15 @@
                   "id": "l7g1-e2-word-4",
                   "traditional": "去",
                   "pinyin": "qù",
-                  "meaning": "go"
+                  "meaning": "go",
+                  "suffix": "？"
                 },
                 {
                   "id": "l7g1-e2-word-5",
                   "traditional": "我",
                   "pinyin": "wǒ",
                   "meaning": "I; me",
-                  "prefix": "？ B："
+                  "prefix": "B："
                 },
                 {
                   "id": "l7g1-e2-word-6",
@@ -9120,9 +9619,10 @@
                 },
                 {
                   "id": "l7g1-e2-word-7",
-                  "traditional": "朋友家",
-                  "pinyin": "péngyǒu jiā",
-                  "meaning": "friend’s home"
+                  "traditional": "咖啡廳",
+                  "simplified": "咖啡厅",
+                  "pinyin": "kāfēitīng",
+                  "meaning": "café"
                 },
                 {
                   "id": "l7g1-e2-word-8",
@@ -9137,58 +9637,97 @@
           {
             "id": "l7g1-e3",
             "number": 3,
-            "teachingNote": "Add a purpose after 去.",
             "text": {
-              "traditional": "我們從學校到超市去買東西。",
-              "simplified": "我们从学校到超市去买东西。",
-              "pinyin": "Wǒmen cóng xuéxiào dào chāoshì qù mǎi dōngxi.",
-              "english": "We go from school to the supermarket to shop.",
+              "traditional": "A：他到圖書館去嗎？ B：他不到圖書館去，他到朋友家去。",
+              "simplified": "A：他到图书馆去吗？ B：他不到图书馆去，他到朋友家去。",
+              "pinyin": "A: Tā dào túshūguǎn qù ma? B: Tā bú dào túshūguǎn qù, tā dào péngyǒu jiā qù.",
+              "english": "A: Is he going to the library? B: He is not going to the library; he is going to his friend’s place.",
               "words": [
                 {
                   "id": "l7g1-e3-word-1",
-                  "traditional": "我們",
-                  "simplified": "我们",
-                  "pinyin": "wǒmen",
-                  "meaning": "we; us"
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he",
+                  "prefix": "A："
                 },
                 {
                   "id": "l7g1-e3-word-2",
-                  "traditional": "從",
-                  "simplified": "从",
-                  "pinyin": "cóng",
-                  "meaning": "from; starting at"
-                },
-                {
-                  "id": "l7g1-e3-word-3",
-                  "traditional": "學校",
-                  "simplified": "学校",
-                  "pinyin": "xuéxiào",
-                  "meaning": "school"
-                },
-                {
-                  "id": "l7g1-e3-word-4",
                   "traditional": "到",
                   "pinyin": "dào",
                   "meaning": "to; arrive at"
                 },
                 {
-                  "id": "l7g1-e3-word-5",
-                  "traditional": "超市",
-                  "pinyin": "chāoshì",
-                  "meaning": "supermarket"
+                  "id": "l7g1-e3-word-3",
+                  "traditional": "圖書館",
+                  "simplified": "图书馆",
+                  "pinyin": "túshūguǎn",
+                  "meaning": "library"
                 },
                 {
-                  "id": "l7g1-e3-word-6",
+                  "id": "l7g1-e3-word-4",
                   "traditional": "去",
                   "pinyin": "qù",
                   "meaning": "go"
                 },
                 {
+                  "id": "l7g1-e3-word-5",
+                  "traditional": "嗎",
+                  "pinyin": "ma",
+                  "meaning": "yes/no question ending",
+                  "suffix": "？",
+                  "simplified": "吗"
+                },
+                {
+                  "id": "l7g1-e3-word-6",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he",
+                  "prefix": "B："
+                },
+                {
                   "id": "l7g1-e3-word-7",
-                  "traditional": "買東西",
-                  "simplified": "买东西",
-                  "pinyin": "mǎi dōngxi",
-                  "meaning": "buy things",
+                  "traditional": "不到",
+                  "simplified": "不到",
+                  "pinyin": "bú dào",
+                  "meaning": "does not go to"
+                },
+                {
+                  "id": "l7g1-e3-word-8",
+                  "traditional": "圖書館",
+                  "simplified": "图书馆",
+                  "pinyin": "túshūguǎn",
+                  "meaning": "library"
+                },
+                {
+                  "id": "l7g1-e3-word-9",
+                  "traditional": "去",
+                  "pinyin": "qù",
+                  "meaning": "go",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l7g1-e3-word-10",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                },
+                {
+                  "id": "l7g1-e3-word-11",
+                  "traditional": "到",
+                  "pinyin": "dào",
+                  "meaning": "to; arrive at"
+                },
+                {
+                  "id": "l7g1-e3-word-12",
+                  "traditional": "朋友家",
+                  "pinyin": "péngyǒu jiā",
+                  "meaning": "friend’s place"
+                },
+                {
+                  "id": "l7g1-e3-word-13",
+                  "traditional": "去",
+                  "pinyin": "qù",
+                  "meaning": "go",
                   "suffix": "。"
                 }
               ]
@@ -9197,66 +9736,53 @@
           {
             "id": "l7g1-e4",
             "number": 4,
-            "teachingNote": "Use 來 for motion toward here.",
             "text": {
-              "traditional": "他明天從飯店到我家來吃飯。",
-              "simplified": "他明天从饭店到我家来吃饭。",
-              "pinyin": "Tā míngtiān cóng fàndiàn dào wǒ jiā lái chīfàn.",
-              "english": "Tomorrow he will come from the hotel to my home for dinner.",
+              "traditional": "他從旅館到我家來吃飯。",
+              "simplified": "他从旅馆到我家来吃饭。",
+              "pinyin": "Tā cóng lǚguǎn dào wǒ jiā lái chīfàn.",
+              "english": "He came from the hotel to my home to eat.",
               "words": [
                 {
                   "id": "l7g1-e4-word-1",
                   "traditional": "他",
                   "pinyin": "tā",
-                  "meaning": "he; him"
+                  "meaning": "he"
                 },
                 {
                   "id": "l7g1-e4-word-2",
-                  "traditional": "明天",
-                  "pinyin": "míngtiān",
-                  "meaning": "tomorrow"
-                },
-                {
-                  "id": "l7g1-e4-word-3",
                   "traditional": "從",
                   "simplified": "从",
                   "pinyin": "cóng",
-                  "meaning": "from; starting at"
+                  "meaning": "from"
                 },
                 {
-                  "id": "l7g1-e4-word-4",
-                  "traditional": "飯店",
-                  "simplified": "饭店",
-                  "pinyin": "fàndiàn",
+                  "id": "l7g1-e4-word-3",
+                  "traditional": "旅館",
+                  "simplified": "旅馆",
+                  "pinyin": "lǚguǎn",
                   "meaning": "hotel"
                 },
                 {
-                  "id": "l7g1-e4-word-5",
+                  "id": "l7g1-e4-word-4",
                   "traditional": "到",
                   "pinyin": "dào",
                   "meaning": "to; arrive at"
                 },
                 {
+                  "id": "l7g1-e4-word-5",
+                  "traditional": "我家",
+                  "pinyin": "wǒ jiā",
+                  "meaning": "my home"
+                },
+                {
                   "id": "l7g1-e4-word-6",
-                  "traditional": "我",
-                  "pinyin": "wǒ",
-                  "meaning": "I; me"
-                },
-                {
-                  "id": "l7g1-e4-word-7",
-                  "traditional": "家",
-                  "pinyin": "jiā",
-                  "meaning": "home"
-                },
-                {
-                  "id": "l7g1-e4-word-8",
                   "traditional": "來",
                   "simplified": "来",
                   "pinyin": "lái",
                   "meaning": "come"
                 },
                 {
-                  "id": "l7g1-e4-word-9",
+                  "id": "l7g1-e4-word-7",
                   "traditional": "吃飯",
                   "simplified": "吃饭",
                   "pinyin": "chīfàn",
@@ -9265,6 +9791,144 @@
                 }
               ]
             }
+          },
+          {
+            "id": "l7g1-e5",
+            "number": 5,
+            "text": {
+              "traditional": "他從學校到飲料店去買珍珠奶茶。",
+              "simplified": "他从学校到饮料店去买珍珠奶茶。",
+              "pinyin": "Tā cóng xuéxiào dào yǐnliàodiàn qù mǎi zhēnzhū nǎichá.",
+              "english": "He goes from school to the drink shop to buy pearl milk tea.",
+              "words": [
+                {
+                  "id": "l7g1-e5-word-1",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                },
+                {
+                  "id": "l7g1-e5-word-2",
+                  "traditional": "從",
+                  "simplified": "从",
+                  "pinyin": "cóng",
+                  "meaning": "from"
+                },
+                {
+                  "id": "l7g1-e5-word-3",
+                  "traditional": "學校",
+                  "simplified": "学校",
+                  "pinyin": "xuéxiào",
+                  "meaning": "school"
+                },
+                {
+                  "id": "l7g1-e5-word-4",
+                  "traditional": "到",
+                  "pinyin": "dào",
+                  "meaning": "to; arrive at"
+                },
+                {
+                  "id": "l7g1-e5-word-5",
+                  "traditional": "飲料店",
+                  "simplified": "饮料店",
+                  "pinyin": "yǐnliàodiàn",
+                  "meaning": "drink shop"
+                },
+                {
+                  "id": "l7g1-e5-word-6",
+                  "traditional": "去",
+                  "pinyin": "qù",
+                  "meaning": "go"
+                },
+                {
+                  "id": "l7g1-e5-word-7",
+                  "traditional": "買",
+                  "simplified": "买",
+                  "pinyin": "mǎi",
+                  "meaning": "buy"
+                },
+                {
+                  "id": "l7g1-e5-word-8",
+                  "traditional": "珍珠奶茶",
+                  "pinyin": "zhēnzhū nǎichá",
+                  "meaning": "pearl milk tea",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l7g1-e6",
+            "number": 6,
+            "text": {
+              "traditional": "他今天從韓國到台灣來看朋友。",
+              "simplified": "他今天从韩国到台湾来看朋友。",
+              "pinyin": "Tā jīntiān cóng Hánguó dào Táiwān lái kàn péngyǒu.",
+              "english": "He came from Korea to Taiwan today to visit a friend.",
+              "words": [
+                {
+                  "id": "l7g1-e6-word-1",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                },
+                {
+                  "id": "l7g1-e6-word-2",
+                  "traditional": "今天",
+                  "pinyin": "jīntiān",
+                  "meaning": "today"
+                },
+                {
+                  "id": "l7g1-e6-word-3",
+                  "traditional": "從",
+                  "simplified": "从",
+                  "pinyin": "cóng",
+                  "meaning": "from"
+                },
+                {
+                  "id": "l7g1-e6-word-4",
+                  "traditional": "韓國",
+                  "simplified": "韩国",
+                  "pinyin": "Hánguó",
+                  "meaning": "Korea"
+                },
+                {
+                  "id": "l7g1-e6-word-5",
+                  "traditional": "到",
+                  "pinyin": "dào",
+                  "meaning": "to; arrive at"
+                },
+                {
+                  "id": "l7g1-e6-word-6",
+                  "traditional": "台灣",
+                  "simplified": "台湾",
+                  "pinyin": "Táiwān",
+                  "meaning": "Taiwan"
+                },
+                {
+                  "id": "l7g1-e6-word-7",
+                  "traditional": "來",
+                  "simplified": "来",
+                  "pinyin": "lái",
+                  "meaning": "come"
+                },
+                {
+                  "id": "l7g1-e6-word-8",
+                  "traditional": "看",
+                  "pinyin": "kàn",
+                  "meaning": "visit; look at"
+                },
+                {
+                  "id": "l7g1-e6-word-9",
+                  "traditional": "朋友",
+                  "pinyin": "péngyǒu",
+                  "meaning": "friend",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
           }
         ],
         "exerciseTitle": "Pin the route",
@@ -9400,7 +10064,13 @@
             "correctFeedback": "The post office is the destination and 寄信 is the purpose.",
             "repairFeedback": "Destination comes after 到; purpose comes after 去."
           }
-        ]
+        ],
+        "patternColumnDetails": [
+          "S",
+          "from / to",
+          "來 or 去 + purpose"
+        ],
+        "exerciseNote": "The book asks you to describe three printed pictures on page 163 and gives no answer key. These model sentences follow the same 從……到……來／去 pattern."
       },
       {
         "bookId": 1,
@@ -9425,7 +10095,9 @@
           "走路",
           "去",
           "來",
-          "来"
+          "来",
+          "騎腳踏車",
+          "到"
         ],
         "teachingGlossary": [
           {
@@ -10280,6 +10952,66 @@
         "patternAccentColumn": 1,
         "patternRows": [
           {
+            "id": "l7g2-p0a",
+            "subject": [
+              {
+                "id": "l7g2-p0a-subject",
+                "traditional": "你",
+                "pinyin": "nǐ",
+                "meaning": "you"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l7g2-p0a-how",
+                "traditional": "怎麼",
+                "simplified": "怎么",
+                "pinyin": "zěnme",
+                "meaning": "how"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l7g2-p0a-go",
+                "traditional": "去",
+                "pinyin": "qù",
+                "meaning": "go",
+                "suffix": "？"
+              }
+            ],
+            "english": "How do you get there?"
+          },
+          {
+            "id": "l7g2-p0b",
+            "subject": [
+              {
+                "id": "l7g2-p0b-subject",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
+              }
+            ],
+            "grammar": [
+              {
+                "id": "l7g2-p0b-bus",
+                "traditional": "坐公車",
+                "simplified": "坐公车",
+                "pinyin": "zuò gōngchē",
+                "meaning": "take the bus"
+              }
+            ],
+            "complement": [
+              {
+                "id": "l7g2-p0b-go",
+                "traditional": "去",
+                "pinyin": "qù",
+                "meaning": "go",
+                "suffix": "。"
+              }
+            ],
+            "english": "I get there by bus."
+          },
+          {
             "id": "l7g2-p1",
             "subject": [
               {
@@ -10300,14 +11032,20 @@
             ],
             "complement": [
               {
-                "id": "l7g2-school",
+                "id": "l7g2-p1-dao",
+                "traditional": "到",
+                "pinyin": "dào",
+                "meaning": "to; arrive at"
+              },
+              {
+                "id": "l7g2-p1-place",
                 "traditional": "學校",
                 "simplified": "学校",
                 "pinyin": "xuéxiào",
                 "meaning": "school"
               },
               {
-                "id": "l7g2-go",
+                "id": "l7g2-p1-go",
                 "traditional": "去",
                 "pinyin": "qù",
                 "meaning": "go",
@@ -10337,14 +11075,20 @@
             ],
             "complement": [
               {
-                "id": "l7g2-post",
+                "id": "l7g2-p2-dao",
+                "traditional": "到",
+                "pinyin": "dào",
+                "meaning": "to; arrive at"
+              },
+              {
+                "id": "l7g2-p2-place",
                 "traditional": "郵局",
                 "simplified": "邮局",
                 "pinyin": "yóujú",
                 "meaning": "post office"
               },
               {
-                "id": "l7g2-go2",
+                "id": "l7g2-p2-go",
                 "traditional": "去",
                 "pinyin": "qù",
                 "meaning": "go",
@@ -10374,14 +11118,20 @@
             ],
             "complement": [
               {
-                "id": "l7g2-hotel",
+                "id": "l7g2-p3-dao",
+                "traditional": "到",
+                "pinyin": "dào",
+                "meaning": "to; arrive at"
+              },
+              {
+                "id": "l7g2-p3-place",
                 "traditional": "飯店",
                 "simplified": "饭店",
                 "pinyin": "fàndiàn",
                 "meaning": "hotel"
               },
               {
-                "id": "l7g2-come",
+                "id": "l7g2-p3-come",
                 "traditional": "來",
                 "simplified": "来",
                 "pinyin": "lái",
@@ -10577,17 +11327,17 @@
             "id": "l7g2-e1",
             "number": 1,
             "text": {
-              "traditional": "A：你們怎麼去？ B：我們坐公車去。",
-              "simplified": "A：你们怎么去？ B：我们坐公车去。",
-              "pinyin": "A: Nǐmen zěnme qù? B: Wǒmen zuò gōngchē qù.",
-              "english": "A: How are you going? B: By bus.",
+              "traditional": "A：你們怎麼來？ B：我們騎腳踏車來。",
+              "simplified": "A：你们怎么来？ B：我们骑脚踏车来。",
+              "pinyin": "A: Nǐmen zěnme lái? B: Wǒmen qí jiǎotàchē lái.",
+              "english": "A: How are you all coming? B: We are coming by bicycle.",
               "words": [
                 {
                   "id": "l7g2-e1-word-1",
                   "traditional": "你們",
                   "simplified": "你们",
                   "pinyin": "nǐmen",
-                  "meaning": "you (plural)",
+                  "meaning": "you all",
                   "prefix": "A："
                 },
                 {
@@ -10595,129 +11345,163 @@
                   "traditional": "怎麼",
                   "simplified": "怎么",
                   "pinyin": "zěnme",
-                  "meaning": "how; by what method"
+                  "meaning": "how"
                 },
                 {
                   "id": "l7g2-e1-word-3",
-                  "traditional": "去",
-                  "pinyin": "qù",
-                  "meaning": "go"
+                  "traditional": "來",
+                  "simplified": "来",
+                  "pinyin": "lái",
+                  "meaning": "come",
+                  "suffix": "？"
                 },
                 {
                   "id": "l7g2-e1-word-4",
                   "traditional": "我們",
                   "simplified": "我们",
                   "pinyin": "wǒmen",
-                  "meaning": "we; us",
-                  "prefix": "？ B："
+                  "meaning": "we",
+                  "prefix": "B："
                 },
                 {
                   "id": "l7g2-e1-word-5",
-                  "traditional": "坐公車",
-                  "simplified": "坐公车",
-                  "pinyin": "zuò gōngchē",
-                  "meaning": "take a bus"
+                  "traditional": "騎腳踏車",
+                  "simplified": "骑脚踏车",
+                  "pinyin": "qí jiǎotàchē",
+                  "meaning": "ride a bicycle"
                 },
                 {
                   "id": "l7g2-e1-word-6",
+                  "traditional": "來",
+                  "simplified": "来",
+                  "pinyin": "lái",
+                  "meaning": "come",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l7g2-e2",
+            "number": 2,
+            "text": {
+              "traditional": "A：你要走路去嗎？ B：我不要走路去，我要坐捷運去。",
+              "simplified": "A：你要走路去吗？ B：我不要走路去，我要坐捷运去。",
+              "pinyin": "A: Nǐ yào zǒulù qù ma? B: Wǒ bú yào zǒulù qù, wǒ yào zuò jiéyùn qù.",
+              "english": "A: Are you going to walk? B: I am not going to walk; I am going by MRT.",
+              "words": [
+                {
+                  "id": "l7g2-e2-word-1",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you",
+                  "prefix": "A："
+                },
+                {
+                  "id": "l7g2-e2-word-2",
+                  "traditional": "要",
+                  "pinyin": "yào",
+                  "meaning": "want to"
+                },
+                {
+                  "id": "l7g2-e2-word-3",
+                  "traditional": "走路",
+                  "pinyin": "zǒulù",
+                  "meaning": "walk; on foot"
+                },
+                {
+                  "id": "l7g2-e2-word-4",
+                  "traditional": "去",
+                  "pinyin": "qù",
+                  "meaning": "go"
+                },
+                {
+                  "id": "l7g2-e2-word-5",
+                  "traditional": "嗎",
+                  "pinyin": "ma",
+                  "meaning": "yes/no question ending",
+                  "suffix": "？",
+                  "simplified": "吗"
+                },
+                {
+                  "id": "l7g2-e2-word-6",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me",
+                  "prefix": "B："
+                },
+                {
+                  "id": "l7g2-e2-word-7",
+                  "traditional": "不要",
+                  "pinyin": "bú yào",
+                  "meaning": "do not want to"
+                },
+                {
+                  "id": "l7g2-e2-word-8",
+                  "traditional": "走路",
+                  "pinyin": "zǒulù",
+                  "meaning": "walk; on foot"
+                },
+                {
+                  "id": "l7g2-e2-word-9",
+                  "traditional": "去",
+                  "pinyin": "qù",
+                  "meaning": "go",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l7g2-e2-word-10",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                },
+                {
+                  "id": "l7g2-e2-word-11",
+                  "traditional": "要",
+                  "pinyin": "yào",
+                  "meaning": "want to"
+                },
+                {
+                  "id": "l7g2-e2-word-12",
+                  "traditional": "坐捷運",
+                  "simplified": "坐捷运",
+                  "pinyin": "zuò jiéyùn",
+                  "meaning": "take the MRT"
+                },
+                {
+                  "id": "l7g2-e2-word-13",
                   "traditional": "去",
                   "pinyin": "qù",
                   "meaning": "go",
                   "suffix": "。"
                 }
               ]
-            }
-          },
-          {
-            "id": "l7g2-e2",
-            "number": 2,
-            "text": {
-              "traditional": "A：飯店遠不遠？ B：不遠，我們走路去。",
-              "simplified": "A：饭店远不远？ B：不远，我们走路去。",
-              "pinyin": "A: Fàndiàn yuǎn bù yuǎn? B: Bù yuǎn, wǒmen zǒulù qù.",
-              "english": "A: Is the hotel far? B: No, let’s walk.",
-              "words": [
-                {
-                  "id": "l7g2-e2-word-1",
-                  "traditional": "飯店",
-                  "simplified": "饭店",
-                  "pinyin": "fàndiàn",
-                  "meaning": "hotel",
-                  "prefix": "A："
-                },
-                {
-                  "id": "l7g2-e2-word-2",
-                  "traditional": "遠",
-                  "simplified": "远",
-                  "pinyin": "yuǎn",
-                  "meaning": "far"
-                },
-                {
-                  "id": "l7g2-e2-word-3",
-                  "traditional": "不",
-                  "pinyin": "bù",
-                  "meaning": "not"
-                },
-                {
-                  "id": "l7g2-e2-word-4",
-                  "traditional": "遠",
-                  "simplified": "远",
-                  "pinyin": "yuǎn",
-                  "meaning": "far"
-                },
-                {
-                  "id": "l7g2-e2-word-5",
-                  "traditional": "不",
-                  "pinyin": "bù",
-                  "meaning": "not",
-                  "prefix": "？ B："
-                },
-                {
-                  "id": "l7g2-e2-word-6",
-                  "traditional": "遠",
-                  "simplified": "远",
-                  "pinyin": "yuǎn",
-                  "meaning": "far"
-                },
-                {
-                  "id": "l7g2-e2-word-7",
-                  "traditional": "我們",
-                  "simplified": "我们",
-                  "pinyin": "wǒmen",
-                  "meaning": "we; us",
-                  "prefix": "，"
-                },
-                {
-                  "id": "l7g2-e2-word-8",
-                  "traditional": "走路去",
-                  "pinyin": "zǒulù qù",
-                  "meaning": "go on foot",
-                  "suffix": "。"
-                }
-              ]
-            }
+            },
+            "teachingNote": null
           },
           {
             "id": "l7g2-e3",
             "number": 3,
             "text": {
-              "traditional": "她坐計程車到機場去。",
-              "simplified": "她坐计程车到机场去。",
-              "pinyin": "Tā zuò jìchéngchē dào jīchǎng qù.",
-              "english": "She takes a taxi to the airport.",
+              "traditional": "A：他坐公車到學校去嗎？ B：不，他坐計程車到學校去。",
+              "simplified": "A：他坐公车到学校去吗？ B：不，他坐计程车到学校去。",
+              "pinyin": "A: Tā zuò gōngchē dào xuéxiào qù ma? B: Bù, tā zuò jìchéngchē dào xuéxiào qù.",
+              "english": "A: Is he taking the bus to school? B: No, he is taking a taxi to school.",
               "words": [
                 {
                   "id": "l7g2-e3-word-1",
-                  "traditional": "她",
+                  "traditional": "他",
                   "pinyin": "tā",
-                  "meaning": "she; her"
+                  "meaning": "he",
+                  "prefix": "A："
                 },
                 {
                   "id": "l7g2-e3-word-2",
-                  "traditional": "坐計程車",
-                  "simplified": "坐计程车",
-                  "pinyin": "zuò jìchéngchē",
-                  "meaning": "take a taxi"
+                  "traditional": "坐公車",
+                  "simplified": "坐公车",
+                  "pinyin": "zuò gōngchē",
+                  "meaning": "take the bus"
                 },
                 {
                   "id": "l7g2-e3-word-3",
@@ -10727,75 +11511,69 @@
                 },
                 {
                   "id": "l7g2-e3-word-4",
-                  "traditional": "機場",
-                  "simplified": "机场",
-                  "pinyin": "jīchǎng",
-                  "meaning": "airport"
+                  "traditional": "學校",
+                  "simplified": "学校",
+                  "pinyin": "xuéxiào",
+                  "meaning": "school"
                 },
                 {
                   "id": "l7g2-e3-word-5",
+                  "traditional": "去",
+                  "pinyin": "qù",
+                  "meaning": "go"
+                },
+                {
+                  "id": "l7g2-e3-word-6",
+                  "traditional": "嗎",
+                  "pinyin": "ma",
+                  "meaning": "yes/no question ending",
+                  "suffix": "？",
+                  "simplified": "吗"
+                },
+                {
+                  "id": "l7g2-e3-word-7",
+                  "traditional": "不",
+                  "pinyin": "bù",
+                  "meaning": "no",
+                  "prefix": "B：",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l7g2-e3-word-8",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                },
+                {
+                  "id": "l7g2-e3-word-9",
+                  "traditional": "坐計程車",
+                  "simplified": "坐计程车",
+                  "pinyin": "zuò jìchéngchē",
+                  "meaning": "take a taxi"
+                },
+                {
+                  "id": "l7g2-e3-word-10",
+                  "traditional": "到",
+                  "pinyin": "dào",
+                  "meaning": "to; arrive at"
+                },
+                {
+                  "id": "l7g2-e3-word-11",
+                  "traditional": "學校",
+                  "simplified": "学校",
+                  "pinyin": "xuéxiào",
+                  "meaning": "school"
+                },
+                {
+                  "id": "l7g2-e3-word-12",
                   "traditional": "去",
                   "pinyin": "qù",
                   "meaning": "go",
                   "suffix": "。"
                 }
               ]
-            }
-          },
-          {
-            "id": "l7g2-e4",
-            "number": 4,
-            "text": {
-              "traditional": "A：友美怎麼來？ B：她騎腳踏車來。",
-              "simplified": "A：友美怎么来？ B：她骑脚踏车来。",
-              "pinyin": "A: Yǒuměi zěnme lái? B: Tā qí jiǎotàchē lái.",
-              "english": "A: How is Youmei coming? B: By bicycle.",
-              "words": [
-                {
-                  "id": "l7g2-e4-word-1",
-                  "traditional": "友美",
-                  "pinyin": "Yǒuměi",
-                  "meaning": "Youmei",
-                  "prefix": "A："
-                },
-                {
-                  "id": "l7g2-e4-word-2",
-                  "traditional": "怎麼",
-                  "simplified": "怎么",
-                  "pinyin": "zěnme",
-                  "meaning": "how; by what method"
-                },
-                {
-                  "id": "l7g2-e4-word-3",
-                  "traditional": "來",
-                  "simplified": "来",
-                  "pinyin": "lái",
-                  "meaning": "come"
-                },
-                {
-                  "id": "l7g2-e4-word-4",
-                  "traditional": "她",
-                  "pinyin": "tā",
-                  "meaning": "she; her",
-                  "prefix": "？ B："
-                },
-                {
-                  "id": "l7g2-e4-word-5",
-                  "traditional": "騎腳踏車",
-                  "simplified": "骑脚踏车",
-                  "pinyin": "qí jiǎotàchē",
-                  "meaning": "ride a bicycle"
-                },
-                {
-                  "id": "l7g2-e4-word-6",
-                  "traditional": "來",
-                  "simplified": "来",
-                  "pinyin": "lái",
-                  "meaning": "come",
-                  "suffix": "。"
-                }
-              ]
-            }
+            },
+            "teachingNote": null
           }
         ],
         "exerciseTitle": "Pick the travel block",
@@ -10931,7 +11709,8 @@
             "correctFeedback": "Method, destination, then direction form one clean route.",
             "repairFeedback": "Build 坐計程車 + 到機場 + 去."
           }
-        ]
+        ],
+        "exerciseNote": "The book asks you to rearrange three printed sentences on page 164; these dialogues carry the same 怎麼 / 坐……去 pattern and print no answer key."
       },
       {
         "bookId": 1,
@@ -10949,7 +11728,7 @@
           166
         ],
         "audioReference": "07-1-3",
-        "explanation": "Put 了 at the end of the sentence when something new happens. Before, it was not true; now it is. 了 can come after a feeling, a time, an arrival, or a new chance to act. 了 does not mean \"past time\".",
+        "explanation": "Put 了 at the end of a sentence when a new situation begins: it was not true before, but now it is. Sentence-final 了 marks change, not past tense.",
         "focusTerms": [
           "了",
           "現在",
@@ -11801,9 +12580,9 @@
         ],
         "pattern": "New situation + 了",
         "patternColumns": [
-          "Before",
+          "Subject",
           "Change",
-          "Now"
+          "了"
         ],
         "patternAccentColumn": 1,
         "patternRows": [
@@ -11811,92 +12590,93 @@
             "id": "l7g3-p1",
             "subject": [
               {
-                "id": "l7g3-before1",
-                "traditional": "不想走",
-                "pinyin": "bù xiǎng zǒu",
-                "meaning": "do not want to walk"
+                "id": "l7g3-p1-subject",
+                "traditional": "我",
+                "pinyin": "wǒ",
+                "meaning": "I; me"
               }
             ],
             "grammar": [
               {
-                "id": "l7g3-state1",
-                "traditional": "累",
-                "pinyin": "lèi",
-                "meaning": "tired"
+                "id": "l7g3-p1-hungry",
+                "traditional": "餓",
+                "simplified": "饿",
+                "pinyin": "è",
+                "meaning": "hungry"
               }
             ],
             "complement": [
               {
-                "id": "l7g3-le1",
+                "id": "l7g3-p1-le",
                 "traditional": "了",
                 "pinyin": "le",
-                "meaning": "signals a new situation",
+                "meaning": "marks a new situation",
                 "suffix": "。"
               }
             ],
-            "english": "I have become tired."
+            "english": "I am hungry now."
           },
           {
             "id": "l7g3-p2",
             "subject": [
               {
-                "id": "l7g3-before2",
-                "traditional": "現在",
-                "simplified": "现在",
-                "pinyin": "xiànzài",
-                "meaning": "now"
+                "id": "l7g3-p2-subject",
+                "traditional": "公車",
+                "simplified": "公车",
+                "pinyin": "gōngchē",
+                "meaning": "bus"
               }
             ],
             "grammar": [
               {
-                "id": "l7g3-time",
-                "traditional": "十點",
-                "simplified": "十点",
-                "pinyin": "shí diǎn",
-                "meaning": "ten o’clock"
+                "id": "l7g3-p2-come",
+                "traditional": "來",
+                "simplified": "来",
+                "pinyin": "lái",
+                "meaning": "come"
               }
             ],
             "complement": [
               {
-                "id": "l7g3-le2",
+                "id": "l7g3-p2-le",
                 "traditional": "了",
                 "pinyin": "le",
-                "meaning": "signals a new situation",
+                "meaning": "marks a new situation",
                 "suffix": "。"
               }
             ],
-            "english": "It is ten o’clock now."
+            "english": "The bus is coming."
           },
           {
             "id": "l7g3-p3",
             "subject": [
               {
-                "id": "l7g3-before3",
-                "traditional": "公車來",
-                "simplified": "公车来",
-                "pinyin": "gōngchē lái",
-                "meaning": "the bus comes"
+                "id": "l7g3-p3-subject",
+                "traditional": "我們",
+                "simplified": "我们",
+                "pinyin": "wǒmen",
+                "meaning": "we"
               }
             ],
             "grammar": [
               {
-                "id": "l7g3-board",
+                "id": "l7g3-p3-board",
                 "traditional": "可以上車",
                 "simplified": "可以上车",
                 "pinyin": "kěyǐ shàngchē",
-                "meaning": "can get on now"
+                "meaning": "can get on"
               }
             ],
             "complement": [
               {
-                "id": "l7g3-le3",
+                "id": "l7g3-p3-le",
                 "traditional": "了",
                 "pinyin": "le",
-                "meaning": "signals a new situation",
+                "meaning": "marks a new situation",
                 "suffix": "。"
               }
             ],
-            "english": "The bus is here; we can board now."
+            "english": "We can get on the bus now."
           }
         ],
         "confusion": {
@@ -12065,10 +12845,10 @@
             "id": "l7g3-e1",
             "number": 1,
             "text": {
-              "traditional": "我累了，不想走了。",
-              "simplified": "我累了，不想走了。",
-              "pinyin": "Wǒ lèi le, bù xiǎng zǒu le.",
-              "english": "I’m tired now and no longer want to walk.",
+              "traditional": "我餓了，想吃一點東西。",
+              "simplified": "我饿了，想吃一点东西。",
+              "pinyin": "Wǒ è le, xiǎng chī yìdiǎn dōngxi.",
+              "english": "I am hungry; I want to eat something.",
               "words": [
                 {
                   "id": "l7g3-e1-word-1",
@@ -12078,196 +12858,392 @@
                 },
                 {
                   "id": "l7g3-e1-word-2",
-                  "traditional": "累",
-                  "pinyin": "lèi",
-                  "meaning": "tired"
+                  "traditional": "餓",
+                  "simplified": "饿",
+                  "pinyin": "è",
+                  "meaning": "hungry"
                 },
                 {
                   "id": "l7g3-e1-word-3",
                   "traditional": "了",
                   "pinyin": "le",
-                  "meaning": "signals a new situation"
+                  "meaning": "marks a new situation",
+                  "suffix": "，"
                 },
                 {
                   "id": "l7g3-e1-word-4",
-                  "traditional": "不想走",
-                  "pinyin": "bù xiǎng zǒu",
-                  "meaning": "do not want to walk",
-                  "prefix": "，"
+                  "traditional": "想吃",
+                  "pinyin": "xiǎng chī",
+                  "meaning": "want to eat"
                 },
                 {
                   "id": "l7g3-e1-word-5",
-                  "traditional": "了",
-                  "pinyin": "le",
-                  "meaning": "signals a new situation",
+                  "traditional": "一點",
+                  "simplified": "一点",
+                  "pinyin": "yìdiǎn",
+                  "meaning": "a little"
+                },
+                {
+                  "id": "l7g3-e1-word-6",
+                  "traditional": "東西",
+                  "simplified": "东西",
+                  "pinyin": "dōngxi",
+                  "meaning": "thing",
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "teachingNote": null
           },
           {
             "id": "l7g3-e2",
             "number": 2,
             "text": {
-              "traditional": "公車來了，我們可以上車了。",
-              "simplified": "公车来了，我们可以上车了。",
-              "pinyin": "Gōngchē lái le, wǒmen kěyǐ shàngchē le.",
-              "english": "The bus is here; now we can board.",
+              "traditional": "孩子都累了，我們一起休息吧！",
+              "simplified": "孩子都累了，我们一起休息吧！",
+              "pinyin": "Háizi dōu lèi le, wǒmen yìqǐ xiūxi ba!",
+              "english": "The children are all tired; let us take a rest together!",
               "words": [
                 {
                   "id": "l7g3-e2-word-1",
-                  "traditional": "公車來",
-                  "simplified": "公车来",
-                  "pinyin": "gōngchē lái",
-                  "meaning": "the bus comes"
+                  "traditional": "孩子",
+                  "pinyin": "háizi",
+                  "meaning": "child"
                 },
                 {
                   "id": "l7g3-e2-word-2",
-                  "traditional": "了",
-                  "pinyin": "le",
-                  "meaning": "signals a new situation"
+                  "traditional": "都",
+                  "pinyin": "dōu",
+                  "meaning": "all"
                 },
                 {
                   "id": "l7g3-e2-word-3",
-                  "traditional": "我們",
-                  "simplified": "我们",
-                  "pinyin": "wǒmen",
-                  "meaning": "we; us",
-                  "prefix": "，"
+                  "traditional": "累了",
+                  "pinyin": "lèi le",
+                  "meaning": "are tired",
+                  "suffix": "，"
                 },
                 {
                   "id": "l7g3-e2-word-4",
-                  "traditional": "可以上車",
-                  "simplified": "可以上车",
-                  "pinyin": "kěyǐ shàngchē",
-                  "meaning": "can get on now"
+                  "traditional": "我們",
+                  "simplified": "我们",
+                  "pinyin": "wǒmen",
+                  "meaning": "we"
                 },
                 {
                   "id": "l7g3-e2-word-5",
-                  "traditional": "了",
-                  "pinyin": "le",
-                  "meaning": "signals a new situation",
-                  "suffix": "。"
+                  "traditional": "一起",
+                  "pinyin": "yìqǐ",
+                  "meaning": "together"
+                },
+                {
+                  "id": "l7g3-e2-word-6",
+                  "traditional": "休息",
+                  "pinyin": "xiūxi",
+                  "meaning": "rest"
+                },
+                {
+                  "id": "l7g3-e2-word-7",
+                  "traditional": "吧",
+                  "pinyin": "ba",
+                  "meaning": "suggestion ending",
+                  "suffix": "！"
                 }
               ]
-            }
+            },
+            "teachingNote": null
           },
           {
             "id": "l7g3-e3",
             "number": 3,
             "text": {
-              "traditional": "現在十點了，我們先回家吧。",
-              "simplified": "现在十点了，我们先回家吧。",
-              "pinyin": "Xiànzài shí diǎn le, wǒmen xiān huí jiā ba.",
-              "english": "It’s ten now; let’s go home first.",
+              "traditional": "啊！現在十點了！我的錶慢了。",
+              "simplified": "啊！现在十点了！我的表慢了。",
+              "pinyin": "A! Xiànzài shí diǎn le! Wǒ de biǎo màn le.",
+              "english": "Oh! It is ten o’clock now! My watch is slow.",
               "words": [
                 {
                   "id": "l7g3-e3-word-1",
+                  "traditional": "啊",
+                  "pinyin": "a",
+                  "meaning": "oh",
+                  "suffix": "！"
+                },
+                {
+                  "id": "l7g3-e3-word-2",
                   "traditional": "現在",
                   "simplified": "现在",
                   "pinyin": "xiànzài",
                   "meaning": "now"
                 },
                 {
-                  "id": "l7g3-e3-word-2",
+                  "id": "l7g3-e3-word-3",
                   "traditional": "十點",
                   "simplified": "十点",
                   "pinyin": "shí diǎn",
                   "meaning": "ten o’clock"
                 },
                 {
-                  "id": "l7g3-e3-word-3",
+                  "id": "l7g3-e3-word-4",
                   "traditional": "了",
                   "pinyin": "le",
-                  "meaning": "signals a new situation"
-                },
-                {
-                  "id": "l7g3-e3-word-4",
-                  "traditional": "我們",
-                  "simplified": "我们",
-                  "pinyin": "wǒmen",
-                  "meaning": "we; us",
-                  "prefix": "，"
+                  "meaning": "marks a new situation",
+                  "suffix": "！"
                 },
                 {
                   "id": "l7g3-e3-word-5",
-                  "traditional": "先",
-                  "pinyin": "xiān",
-                  "meaning": "first"
+                  "traditional": "我的錶",
+                  "simplified": "我的表",
+                  "pinyin": "wǒ de biǎo",
+                  "meaning": "my watch"
                 },
                 {
                   "id": "l7g3-e3-word-6",
-                  "traditional": "回家",
-                  "pinyin": "huí jiā",
-                  "meaning": "go home"
+                  "traditional": "慢",
+                  "pinyin": "màn",
+                  "meaning": "slow"
                 },
                 {
                   "id": "l7g3-e3-word-7",
-                  "traditional": "吧",
-                  "pinyin": "ba",
-                  "meaning": "suggestion word at the end",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "marks a new situation",
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "teachingNote": null
           },
           {
             "id": "l7g3-e4",
             "number": 4,
             "text": {
-              "traditional": "她渴了，想先買飲料。",
-              "simplified": "她渴了，想先买饮料。",
-              "pinyin": "Tā kě le, xiǎng xiān mǎi yǐnliào.",
-              "english": "She has become thirsty and wants to buy a drink first.",
+              "traditional": "你十五歲了，應該學做飯了。",
+              "simplified": "你十五岁了，应该学做饭了。",
+              "pinyin": "Nǐ shíwǔ suì le, yīnggāi xué zuòfàn le.",
+              "english": "You are fifteen now; you should learn to cook.",
               "words": [
                 {
                   "id": "l7g3-e4-word-1",
-                  "traditional": "她",
-                  "pinyin": "tā",
-                  "meaning": "she; her"
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you"
                 },
                 {
                   "id": "l7g3-e4-word-2",
-                  "traditional": "渴",
-                  "pinyin": "kě",
-                  "meaning": "thirsty"
+                  "traditional": "十五歲",
+                  "simplified": "十五岁",
+                  "pinyin": "shíwǔ suì",
+                  "meaning": "fifteen years old"
                 },
                 {
                   "id": "l7g3-e4-word-3",
                   "traditional": "了",
                   "pinyin": "le",
-                  "meaning": "signals a new situation"
+                  "meaning": "marks a new situation",
+                  "suffix": "，"
                 },
                 {
                   "id": "l7g3-e4-word-4",
-                  "traditional": "想",
-                  "pinyin": "xiǎng",
-                  "meaning": "think; want",
-                  "prefix": "，"
+                  "traditional": "應該",
+                  "simplified": "应该",
+                  "pinyin": "yīnggāi",
+                  "meaning": "should"
                 },
                 {
                   "id": "l7g3-e4-word-5",
-                  "traditional": "先",
-                  "pinyin": "xiān",
-                  "meaning": "first"
+                  "traditional": "學",
+                  "simplified": "学",
+                  "pinyin": "xué",
+                  "meaning": "learn"
                 },
                 {
                   "id": "l7g3-e4-word-6",
-                  "traditional": "買",
-                  "simplified": "买",
-                  "pinyin": "mǎi",
-                  "meaning": "buy"
+                  "traditional": "做飯",
+                  "simplified": "做饭",
+                  "pinyin": "zuòfàn",
+                  "meaning": "cook"
                 },
                 {
                   "id": "l7g3-e4-word-7",
-                  "traditional": "飲料",
-                  "simplified": "饮料",
-                  "pinyin": "yǐnliào",
-                  "meaning": "drink",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "marks a new situation",
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l7g3-e5",
+            "number": 5,
+            "text": {
+              "traditional": "上課了，老師來了，我們不可以玩手機了。",
+              "simplified": "上课了，老师来了，我们不可以玩手机了。",
+              "pinyin": "Shàngkè le, lǎoshī lái le, wǒmen bù kěyǐ wán shǒujī le.",
+              "english": "Class has started and the teacher is here; we cannot play on our phones anymore.",
+              "words": [
+                {
+                  "id": "l7g3-e5-word-1",
+                  "traditional": "上課",
+                  "simplified": "上课",
+                  "pinyin": "shàngkè",
+                  "meaning": "attend class"
+                },
+                {
+                  "id": "l7g3-e5-word-2",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "marks a new situation",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l7g3-e5-word-3",
+                  "traditional": "老師",
+                  "simplified": "老师",
+                  "pinyin": "lǎoshī",
+                  "meaning": "teacher"
+                },
+                {
+                  "id": "l7g3-e5-word-4",
+                  "traditional": "來",
+                  "simplified": "来",
+                  "pinyin": "lái",
+                  "meaning": "come"
+                },
+                {
+                  "id": "l7g3-e5-word-5",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "marks a new situation",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l7g3-e5-word-6",
+                  "traditional": "我們",
+                  "simplified": "我们",
+                  "pinyin": "wǒmen",
+                  "meaning": "we"
+                },
+                {
+                  "id": "l7g3-e5-word-7",
+                  "traditional": "不可以",
+                  "pinyin": "bù kěyǐ",
+                  "meaning": "may not"
+                },
+                {
+                  "id": "l7g3-e5-word-8",
+                  "traditional": "玩",
+                  "pinyin": "wán",
+                  "meaning": "play"
+                },
+                {
+                  "id": "l7g3-e5-word-9",
+                  "traditional": "手機",
+                  "simplified": "手机",
+                  "pinyin": "shǒujī",
+                  "meaning": "cell phone"
+                },
+                {
+                  "id": "l7g3-e5-word-10",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "marks a new situation",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l7g3-e6",
+            "number": 6,
+            "text": {
+              "traditional": "A：請你明天早上九點來。 B：好，我知道了，謝謝。",
+              "simplified": "A：请你明天早上九点来。 B：好，我知道了，谢谢。",
+              "pinyin": "A: Qǐng nǐ míngtiān zǎoshang jiǔ diǎn lái. B: Hǎo, wǒ zhīdào le, xièxie.",
+              "english": "A: Please come at nine tomorrow morning. B: Okay, I know. Thank you.",
+              "words": [
+                {
+                  "id": "l7g3-e6-word-1",
+                  "traditional": "請",
+                  "simplified": "请",
+                  "pinyin": "qǐng",
+                  "meaning": "please",
+                  "prefix": "A："
+                },
+                {
+                  "id": "l7g3-e6-word-2",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you"
+                },
+                {
+                  "id": "l7g3-e6-word-3",
+                  "traditional": "明天",
+                  "pinyin": "míngtiān",
+                  "meaning": "tomorrow"
+                },
+                {
+                  "id": "l7g3-e6-word-4",
+                  "traditional": "早上",
+                  "pinyin": "zǎoshang",
+                  "meaning": "morning"
+                },
+                {
+                  "id": "l7g3-e6-word-5",
+                  "traditional": "九點",
+                  "simplified": "九点",
+                  "pinyin": "jiǔ diǎn",
+                  "meaning": "nine o’clock"
+                },
+                {
+                  "id": "l7g3-e6-word-6",
+                  "traditional": "來",
+                  "simplified": "来",
+                  "pinyin": "lái",
+                  "meaning": "come",
+                  "suffix": "。"
+                },
+                {
+                  "id": "l7g3-e6-word-7",
+                  "traditional": "好",
+                  "pinyin": "hǎo",
+                  "meaning": "okay",
+                  "prefix": "B：",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l7g3-e6-word-8",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                },
+                {
+                  "id": "l7g3-e6-word-9",
+                  "traditional": "知道",
+                  "pinyin": "zhīdào",
+                  "meaning": "know"
+                },
+                {
+                  "id": "l7g3-e6-word-10",
+                  "traditional": "了",
+                  "pinyin": "le",
+                  "meaning": "marks a new situation",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l7g3-e6-word-11",
+                  "traditional": "謝謝",
+                  "simplified": "谢谢",
+                  "pinyin": "xièxie",
+                  "meaning": "thank you",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
           }
         ],
         "exerciseTitle": "Spot the new situation",
@@ -12395,7 +13371,13 @@
             "correctFeedback": "The clock has reached ten.",
             "repairFeedback": "Place 了 after the newly reached time."
           }
-        ]
+        ],
+        "patternColumnDetails": [
+          "S",
+          "Vs / (Vaux)V",
+          "ending"
+        ],
+        "exerciseNote": "The book completes three sentences on printed page 166 and gives no answer key; these follow the 了-as-change pattern."
       }
     ],
     "dialogue": {
@@ -12467,7 +13449,8 @@
                 "id": "l7d1-1-word-7",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you (for a woman)"
+                "meaning": "you (for a woman)",
+                "simplified": "你"
               },
               {
                 "id": "l7d1-1-word-8",
@@ -12782,7 +13765,8 @@
                 "traditional": "妳",
                 "pinyin": "nǐ",
                 "meaning": "you (for a woman)",
-                "prefix": "，"
+                "prefix": "，",
+                "simplified": "你"
               },
               {
                 "id": "l7d1-5-word-8",
@@ -12997,8 +13981,6 @@
         "audioReference": "07-2-3",
         "explanation": "In Chinese, you can say the activity first, then say what you think about it. Think: activity → your comment.",
         "focusTerms": [
-          "活動",
-          "活动",
           "方便",
           "太慢"
         ],
@@ -13864,20 +14846,21 @@
                   "id": "l7g4-r1-mrt",
                   "traditional": "坐捷運",
                   "pinyin": "zuò jiéyùn",
-                  "meaning": "take the MRT"
+                  "meaning": "take the MRT",
+                  "simplified": "坐捷运"
                 }
               ],
               [
                 {
                   "id": "l7g4-r1-convenient",
-                  "traditional": "方便",
-                  "pinyin": "fāngbiàn",
-                  "meaning": "convenient",
+                  "traditional": "很方便",
+                  "pinyin": "hěn fāngbiàn",
+                  "meaning": "very convenient",
                   "suffix": "。"
                 }
               ]
             ],
-            "english": "Taking the MRT is convenient."
+            "english": "Taking the MRT is very convenient."
           },
           {
             "id": "l7g4-r2",
@@ -13887,49 +14870,25 @@
             "columns": [
               [
                 {
-                  "id": "l7g4-r2-walk",
-                  "traditional": "走路去",
-                  "pinyin": "zǒulù qù",
-                  "meaning": "walk there"
+                  "id": "l7g4-r2-football",
+                  "traditional": "踢足球",
+                  "pinyin": "tī zúqiú",
+                  "meaning": "play soccer",
+                  "suffix": "，"
                 }
               ],
               [
                 {
-                  "id": "l7g4-r2-slow",
-                  "traditional": "太慢",
-                  "pinyin": "tài màn",
-                  "meaning": "too slow",
+                  "id": "l7g4-r2-like",
+                  "traditional": "我們都很喜歡",
+                  "simplified": "我们都很喜欢",
+                  "pinyin": "wǒmen dōu hěn xǐhuān",
+                  "meaning": "we all like it very much",
                   "suffix": "。"
                 }
               ]
             ],
-            "english": "Walking there is too slow."
-          },
-          {
-            "id": "l7g4-r3",
-            "subject": [],
-            "grammar": [],
-            "complement": [],
-            "columns": [
-              [
-                {
-                  "id": "l7g4-r3-sports",
-                  "traditional": "跑步游泳",
-                  "pinyin": "pǎobù yóuyǒng",
-                  "meaning": "run and swim"
-                }
-              ],
-              [
-                {
-                  "id": "l7g4-r3-both",
-                  "traditional": "都喜歡",
-                  "pinyin": "dōu xǐhuān",
-                  "meaning": "like both",
-                  "suffix": "。"
-                }
-              ]
-            ],
-            "english": "I like both running and swimming."
+            "english": "Playing soccer, we all like (it) very much."
           }
         ],
         "confusion": {
@@ -14106,201 +15065,213 @@
             "id": "l7g4-e1",
             "number": 1,
             "text": {
-              "traditional": "坐公車很便宜，可是有一點慢。",
-              "simplified": "坐公车很便宜，可是有一点慢。",
-              "pinyin": "Zuò gōngchē hěn piányi, kěshì yǒu yìdiǎn màn.",
-              "english": "Taking the bus is inexpensive, but a little slow.",
+              "traditional": "走路去太慢了！",
+              "simplified": "走路去太慢了！",
+              "pinyin": "Zǒulù qù tài màn le!",
+              "english": "Walking there is too slow!",
               "words": [
                 {
                   "id": "l7g4-e1-word-1",
-                  "traditional": "坐公車",
-                  "simplified": "坐公车",
-                  "pinyin": "zuò gōngchē",
-                  "meaning": "take a bus"
+                  "traditional": "走路",
+                  "pinyin": "zǒulù",
+                  "meaning": "walk; on foot"
                 },
                 {
                   "id": "l7g4-e1-word-2",
-                  "traditional": "很",
-                  "pinyin": "hěn",
-                  "meaning": "very"
+                  "traditional": "去",
+                  "pinyin": "qù",
+                  "meaning": "go"
                 },
                 {
                   "id": "l7g4-e1-word-3",
-                  "traditional": "便宜",
-                  "pinyin": "piányi",
-                  "meaning": "inexpensive"
-                },
-                {
-                  "id": "l7g4-e1-word-4",
-                  "traditional": "可是",
-                  "pinyin": "kěshì",
-                  "meaning": "but",
-                  "prefix": "，"
-                },
-                {
-                  "id": "l7g4-e1-word-5",
-                  "traditional": "有",
-                  "pinyin": "yǒu",
-                  "meaning": "have; there is"
-                },
-                {
-                  "id": "l7g4-e1-word-6",
-                  "traditional": "一點",
-                  "simplified": "一点",
-                  "pinyin": "yìdiǎn",
-                  "meaning": "a little"
-                },
-                {
-                  "id": "l7g4-e1-word-7",
-                  "traditional": "慢",
-                  "pinyin": "màn",
-                  "meaning": "slow",
-                  "suffix": "。"
-                }
-              ]
-            }
-          },
-          {
-            "id": "l7g4-e2",
-            "number": 2,
-            "text": {
-              "traditional": "走路去太慢了，我們坐捷運吧。",
-              "simplified": "走路去太慢了，我们坐捷运吧。",
-              "pinyin": "Zǒulù qù tài màn le, wǒmen zuò jiéyùn ba.",
-              "english": "Walking is too slow; let’s take the MRT.",
-              "words": [
-                {
-                  "id": "l7g4-e2-word-1",
-                  "traditional": "走路去",
-                  "pinyin": "zǒulù qù",
-                  "meaning": "go on foot"
-                },
-                {
-                  "id": "l7g4-e2-word-2",
                   "traditional": "太慢",
                   "pinyin": "tài màn",
                   "meaning": "too slow"
                 },
                 {
-                  "id": "l7g4-e2-word-3",
+                  "id": "l7g4-e1-word-4",
                   "traditional": "了",
                   "pinyin": "le",
-                  "meaning": "signals a new situation"
-                },
-                {
-                  "id": "l7g4-e2-word-4",
-                  "traditional": "我們",
-                  "simplified": "我们",
-                  "pinyin": "wǒmen",
-                  "meaning": "we; us",
-                  "prefix": "，"
-                },
-                {
-                  "id": "l7g4-e2-word-5",
-                  "traditional": "坐捷運",
-                  "simplified": "坐捷运",
-                  "pinyin": "zuò jiéyùn",
-                  "meaning": "take the MRT"
-                },
-                {
-                  "id": "l7g4-e2-word-6",
-                  "traditional": "吧",
-                  "pinyin": "ba",
-                  "meaning": "suggestion word at the end",
-                  "suffix": "。"
+                  "meaning": "marks a strong feeling",
+                  "suffix": "！"
                 }
               ]
-            }
+            },
+            "teachingNote": null
           },
           {
-            "id": "l7g4-e3",
-            "number": 3,
+            "id": "l7g4-e2",
+            "number": 2,
             "text": {
-              "traditional": "唱歌、跳舞，她都喜歡。",
-              "simplified": "唱歌、跳舞，她都喜欢。",
-              "pinyin": "Chànggē, tiàowǔ, tā dōu xǐhuān.",
-              "english": "Singing and dancing—she likes both.",
+              "traditional": "唱歌、跳舞都很有趣。",
+              "simplified": "唱歌、跳舞都很有趣。",
+              "pinyin": "Chànggē, tiàowǔ dōu hěn yǒuqù.",
+              "english": "Singing and dancing are both very interesting.",
               "words": [
                 {
-                  "id": "l7g4-e3-word-1",
+                  "id": "l7g4-e2-word-1",
                   "traditional": "唱歌",
                   "pinyin": "chànggē",
                   "meaning": "sing"
                 },
                 {
-                  "id": "l7g4-e3-word-2",
+                  "id": "l7g4-e2-word-2",
                   "traditional": "跳舞",
                   "pinyin": "tiàowǔ",
                   "meaning": "dance",
                   "prefix": "、"
                 },
                 {
-                  "id": "l7g4-e3-word-3",
-                  "traditional": "她",
-                  "pinyin": "tā",
-                  "meaning": "she; her",
-                  "prefix": "，"
+                  "id": "l7g4-e2-word-3",
+                  "traditional": "都",
+                  "pinyin": "dōu",
+                  "meaning": "both"
                 },
                 {
-                  "id": "l7g4-e3-word-4",
-                  "traditional": "都喜歡",
-                  "simplified": "都喜欢",
-                  "pinyin": "dōu xǐhuān",
-                  "meaning": "like all of them",
+                  "id": "l7g4-e2-word-4",
+                  "traditional": "很有趣",
+                  "pinyin": "hěn yǒuqù",
+                  "meaning": "very interesting",
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l7g4-e3",
+            "number": 3,
+            "text": {
+              "traditional": "跑步、游泳、打網球，我都喜歡。",
+              "simplified": "跑步、游泳、打网球，我都喜欢。",
+              "pinyin": "Pǎobù, yóuyǒng, dǎ wǎngqiú, wǒ dōu xǐhuān.",
+              "english": "Running, swimming, and playing tennis — I like them all.",
+              "words": [
+                {
+                  "id": "l7g4-e3-word-1",
+                  "traditional": "跑步",
+                  "pinyin": "pǎobù",
+                  "meaning": "run"
+                },
+                {
+                  "id": "l7g4-e3-word-2",
+                  "traditional": "游泳",
+                  "pinyin": "yóuyǒng",
+                  "meaning": "swim",
+                  "prefix": "、"
+                },
+                {
+                  "id": "l7g4-e3-word-3",
+                  "traditional": "打網球",
+                  "simplified": "打网球",
+                  "pinyin": "dǎ wǎngqiú",
+                  "meaning": "play tennis",
+                  "prefix": "、"
+                },
+                {
+                  "id": "l7g4-e3-word-4",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me",
+                  "prefix": "，"
+                },
+                {
+                  "id": "l7g4-e3-word-5",
+                  "traditional": "都",
+                  "pinyin": "dōu",
+                  "meaning": "all"
+                },
+                {
+                  "id": "l7g4-e3-word-6",
+                  "traditional": "喜歡",
+                  "simplified": "喜欢",
+                  "pinyin": "xǐhuān",
+                  "meaning": "like",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
           },
           {
             "id": "l7g4-e4",
             "number": 4,
             "text": {
-              "traditional": "住在學校附近很方便。",
-              "simplified": "住在学校附近很方便。",
-              "pinyin": "Zhù zài xuéxiào fùjìn hěn fāngbiàn.",
-              "english": "Living near school is convenient.",
+              "traditional": "坐公車很便宜，可是有一點慢。",
+              "simplified": "坐公车很便宜，可是有一点慢。",
+              "pinyin": "Zuò gōngchē hěn piányi, kěshì yǒu yìdiǎn màn.",
+              "english": "Taking the bus is cheap, but it is a little slow.",
               "words": [
                 {
                   "id": "l7g4-e4-word-1",
-                  "traditional": "住",
-                  "pinyin": "zhù",
-                  "meaning": "live; stay"
+                  "traditional": "坐公車",
+                  "simplified": "坐公车",
+                  "pinyin": "zuò gōngchē",
+                  "meaning": "take the bus"
                 },
                 {
                   "id": "l7g4-e4-word-2",
-                  "traditional": "在",
-                  "pinyin": "zài",
-                  "meaning": "at; in"
+                  "traditional": "很便宜",
+                  "pinyin": "hěn piányi",
+                  "meaning": "very cheap"
                 },
                 {
                   "id": "l7g4-e4-word-3",
-                  "traditional": "學校",
-                  "simplified": "学校",
-                  "pinyin": "xuéxiào",
-                  "meaning": "school"
+                  "traditional": "可是",
+                  "pinyin": "kěshì",
+                  "meaning": "but",
+                  "prefix": "，"
                 },
                 {
                   "id": "l7g4-e4-word-4",
-                  "traditional": "附近",
-                  "pinyin": "fùjìn",
-                  "meaning": "nearby area"
+                  "traditional": "有一點",
+                  "simplified": "有一点",
+                  "pinyin": "yǒu yìdiǎn",
+                  "meaning": "a little"
                 },
                 {
                   "id": "l7g4-e4-word-5",
-                  "traditional": "很",
-                  "pinyin": "hěn",
-                  "meaning": "very"
-                },
-                {
-                  "id": "l7g4-e4-word-6",
-                  "traditional": "方便",
-                  "pinyin": "fāngbiàn",
-                  "meaning": "convenient",
+                  "traditional": "慢",
+                  "pinyin": "màn",
+                  "meaning": "slow",
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l7g4-e5",
+            "number": 5,
+            "text": {
+              "traditional": "住在學校附近很方便。",
+              "simplified": "住在学校附近很方便。",
+              "pinyin": "Zhù zài xuéxiào fùjìn hěn fāngbiàn.",
+              "english": "Living near school is very convenient.",
+              "words": [
+                {
+                  "id": "l7g4-e5-word-1",
+                  "traditional": "住在",
+                  "pinyin": "zhù zài",
+                  "meaning": "live at"
+                },
+                {
+                  "id": "l7g4-e5-word-2",
+                  "traditional": "學校附近",
+                  "simplified": "学校附近",
+                  "pinyin": "xuéxiào fùjìn",
+                  "meaning": "near school"
+                },
+                {
+                  "id": "l7g4-e5-word-3",
+                  "traditional": "很方便",
+                  "pinyin": "hěn fāngbiàn",
+                  "meaning": "very convenient",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
           }
         ],
         "exerciseTitle": "Put the topic on stage",
@@ -14432,7 +15403,8 @@
         "patternColumnDetails": [
           "what you do",
           "how it is"
-        ]
+        ],
+        "exerciseNote": "The book completes three sentences on printed page 171; these model answers use the same activity-first pattern."
       },
       {
         "bookId": 1,
@@ -14449,11 +15421,12 @@
           172
         ],
         "audioReference": "07-2-3",
-        "explanation": "Put 又 before each quality: 又快又方便. Both sides describe the same person or thing, and they match in shape. Use 又…又… for two qualities that are true at the same time — not for two things.",
+        "explanation": "Put 又 before each quality: 又快又方便. Both sides describe the same subject at the same time and match in grammatical form.",
         "focusTerms": [
           "又",
           "方便",
-          "舒服"
+          "舒服",
+          "又快又方便"
         ],
         "teachingGlossary": [
           {
@@ -15312,10 +16285,10 @@
             "subject": [
               {
                 "id": "l7g5-mrt",
-                "traditional": "捷運",
-                "simplified": "捷运",
-                "pinyin": "jiéyùn",
-                "meaning": "MRT; metro"
+                "traditional": "台北的捷運",
+                "simplified": "台北的捷运",
+                "pinyin": "Táiběi de jiéyùn",
+                "meaning": "Taipei MRT"
               }
             ],
             "grammar": [
@@ -15347,91 +16320,50 @@
                 "suffix": "。"
               }
             ],
-            "english": "The MRT is both fast and convenient."
+            "english": "Taipei MRT is both fast and convenient."
           },
           {
             "id": "l7g5-p2",
             "subject": [
               {
-                "id": "l7g5-taxi",
-                "traditional": "計程車",
-                "simplified": "计程车",
-                "pinyin": "jìchéngchē",
-                "meaning": "taxi"
-              }
-            ],
-            "grammar": [
-              {
-                "id": "l7g5-you3",
-                "traditional": "又",
-                "pinyin": "yòu",
-                "meaning": "both; also"
-              },
-              {
-                "id": "l7g5-fast2",
-                "traditional": "快",
-                "pinyin": "kuài",
-                "meaning": "fast"
-              }
-            ],
-            "complement": [
-              {
-                "id": "l7g5-you4",
-                "traditional": "又",
-                "pinyin": "yòu",
-                "meaning": "both; also"
-              },
-              {
-                "id": "l7g5-comfort",
-                "traditional": "舒服",
-                "pinyin": "shūfu",
-                "meaning": "comfortable",
-                "suffix": "。"
-              }
-            ],
-            "english": "A taxi is both fast and comfortable."
-          },
-          {
-            "id": "l7g5-p3",
-            "subject": [
-              {
-                "id": "l7g5-she",
-                "traditional": "她",
+                "id": "l7g5-p2-subject",
+                "traditional": "他",
                 "pinyin": "tā",
-                "meaning": "she; her"
+                "meaning": "he"
               }
             ],
             "grammar": [
               {
-                "id": "l7g5-you5",
+                "id": "l7g5-p2-you",
                 "traditional": "又",
                 "pinyin": "yòu",
                 "meaning": "both; also"
               },
               {
-                "id": "l7g5-cute",
-                "traditional": "可愛",
-                "simplified": "可爱",
-                "pinyin": "kě’ài",
-                "meaning": "cute"
+                "id": "l7g5-p2-sing",
+                "traditional": "會唱歌",
+                "simplified": "会唱歌",
+                "pinyin": "huì chànggē",
+                "meaning": "can sing"
               }
             ],
             "complement": [
               {
-                "id": "l7g5-you6",
+                "id": "l7g5-p2-you2",
                 "traditional": "又",
                 "pinyin": "yòu",
                 "meaning": "both; also"
               },
               {
-                "id": "l7g5-pretty",
-                "traditional": "漂亮",
-                "pinyin": "piàoliang",
-                "meaning": "beautiful",
+                "id": "l7g5-p2-paint",
+                "traditional": "會畫畫",
+                "simplified": "会画画",
+                "pinyin": "huì huàhuà",
+                "meaning": "can paint",
                 "suffix": "。"
               }
             ],
-            "english": "She is both cute and pretty."
+            "english": "He can both sing and paint."
           }
         ],
         "confusion": {
@@ -15637,109 +16569,327 @@
             "id": "l7g5-e1",
             "number": 1,
             "text": {
-              "traditional": "這家飯店又便宜又舒服。",
-              "simplified": "这家饭店又便宜又舒服。",
-              "pinyin": "Zhè jiā fàndiàn yòu piányi yòu shūfu.",
-              "english": "This hotel is inexpensive and comfortable.",
+              "traditional": "我同學的妹妹又可愛又漂亮。",
+              "simplified": "我同学的妹妹又可爱又漂亮。",
+              "pinyin": "Wǒ tóngxué de mèimei yòu kě’ài yòu piàoliang.",
+              "english": "My classmate’s younger sister is both cute and pretty.",
               "words": [
                 {
                   "id": "l7g5-e1-word-1",
-                  "traditional": "這家",
-                  "simplified": "这家",
-                  "pinyin": "zhè jiā",
-                  "meaning": "this (shop or hotel)"
+                  "traditional": "我同學的妹妹",
+                  "simplified": "我同学的妹妹",
+                  "pinyin": "wǒ tóngxué de mèimei",
+                  "meaning": "my classmate’s younger sister"
                 },
                 {
                   "id": "l7g5-e1-word-2",
-                  "traditional": "飯店",
-                  "simplified": "饭店",
-                  "pinyin": "fàndiàn",
-                  "meaning": "hotel"
+                  "traditional": "又",
+                  "pinyin": "yòu",
+                  "meaning": "both"
                 },
                 {
                   "id": "l7g5-e1-word-3",
-                  "traditional": "又",
-                  "pinyin": "yòu",
-                  "meaning": "both; also"
+                  "traditional": "可愛",
+                  "simplified": "可爱",
+                  "pinyin": "kě’ài",
+                  "meaning": "cute"
                 },
                 {
                   "id": "l7g5-e1-word-4",
-                  "traditional": "便宜",
-                  "pinyin": "piányi",
-                  "meaning": "inexpensive"
+                  "traditional": "又",
+                  "pinyin": "yòu",
+                  "meaning": "and"
                 },
                 {
                   "id": "l7g5-e1-word-5",
-                  "traditional": "又",
-                  "pinyin": "yòu",
-                  "meaning": "both; also"
+                  "traditional": "漂亮",
+                  "pinyin": "piàoliang",
+                  "meaning": "pretty",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l7g5-e2",
+            "number": 2,
+            "text": {
+              "traditional": "我現在又餓又渴，想喝一點兒茶、吃一點兒飯。",
+              "simplified": "我现在又饿又渴，想喝一点儿茶、吃一点儿饭。",
+              "pinyin": "Wǒ xiànzài yòu è yòu kě, xiǎng hē yìdiǎnr chá, chī yìdiǎnr fàn.",
+              "english": "I am both hungry and thirsty right now; I want to drink some tea and eat a little rice.",
+              "words": [
+                {
+                  "id": "l7g5-e2-word-1",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
                 },
                 {
-                  "id": "l7g5-e1-word-6",
+                  "id": "l7g5-e2-word-2",
+                  "traditional": "現在",
+                  "simplified": "现在",
+                  "pinyin": "xiànzài",
+                  "meaning": "now"
+                },
+                {
+                  "id": "l7g5-e2-word-3",
+                  "traditional": "又",
+                  "pinyin": "yòu",
+                  "meaning": "both"
+                },
+                {
+                  "id": "l7g5-e2-word-4",
+                  "traditional": "餓",
+                  "simplified": "饿",
+                  "pinyin": "è",
+                  "meaning": "hungry"
+                },
+                {
+                  "id": "l7g5-e2-word-5",
+                  "traditional": "又",
+                  "pinyin": "yòu",
+                  "meaning": "and"
+                },
+                {
+                  "id": "l7g5-e2-word-6",
+                  "traditional": "渴",
+                  "pinyin": "kě",
+                  "meaning": "thirsty",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l7g5-e2-word-7",
+                  "traditional": "想喝",
+                  "pinyin": "xiǎng hē",
+                  "meaning": "want to drink"
+                },
+                {
+                  "id": "l7g5-e2-word-8",
+                  "traditional": "一點兒",
+                  "simplified": "一点儿",
+                  "pinyin": "yìdiǎnr",
+                  "meaning": "a little"
+                },
+                {
+                  "id": "l7g5-e2-word-9",
+                  "traditional": "茶",
+                  "pinyin": "chá",
+                  "meaning": "tea",
+                  "suffix": "、"
+                },
+                {
+                  "id": "l7g5-e2-word-10",
+                  "traditional": "吃",
+                  "pinyin": "chī",
+                  "meaning": "eat"
+                },
+                {
+                  "id": "l7g5-e2-word-11",
+                  "traditional": "一點兒",
+                  "simplified": "一点儿",
+                  "pinyin": "yìdiǎnr",
+                  "meaning": "a little"
+                },
+                {
+                  "id": "l7g5-e2-word-12",
+                  "traditional": "飯",
+                  "simplified": "饭",
+                  "pinyin": "fàn",
+                  "meaning": "rice; meal",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l7g5-e3",
+            "number": 3,
+            "text": {
+              "traditional": "他又想去日本，又想去韓國，不知道應該先去哪國。",
+              "simplified": "他又想去日本，又想去韩国，不知道应该先去哪国。",
+              "pinyin": "Tā yòu xiǎng qù Rìběn, yòu xiǎng qù Hánguó, bù zhīdào yīnggāi xiān qù nǎ guó.",
+              "english": "He wants to go to Japan and also wants to go to Korea; he does not know which country to visit first.",
+              "words": [
+                {
+                  "id": "l7g5-e3-word-1",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                },
+                {
+                  "id": "l7g5-e3-word-2",
+                  "traditional": "又",
+                  "pinyin": "yòu",
+                  "meaning": "both"
+                },
+                {
+                  "id": "l7g5-e3-word-3",
+                  "traditional": "想去",
+                  "pinyin": "xiǎng qù",
+                  "meaning": "want to go to"
+                },
+                {
+                  "id": "l7g5-e3-word-4",
+                  "traditional": "日本",
+                  "pinyin": "Rìběn",
+                  "meaning": "Japan",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l7g5-e3-word-5",
+                  "traditional": "又",
+                  "pinyin": "yòu",
+                  "meaning": "and"
+                },
+                {
+                  "id": "l7g5-e3-word-6",
+                  "traditional": "想去",
+                  "pinyin": "xiǎng qù",
+                  "meaning": "want to go to"
+                },
+                {
+                  "id": "l7g5-e3-word-7",
+                  "traditional": "韓國",
+                  "simplified": "韩国",
+                  "pinyin": "Hánguó",
+                  "meaning": "Korea",
+                  "suffix": "，"
+                },
+                {
+                  "id": "l7g5-e3-word-8",
+                  "traditional": "不知道",
+                  "pinyin": "bù zhīdào",
+                  "meaning": "do not know"
+                },
+                {
+                  "id": "l7g5-e3-word-9",
+                  "traditional": "應該",
+                  "simplified": "应该",
+                  "pinyin": "yīnggāi",
+                  "meaning": "should"
+                },
+                {
+                  "id": "l7g5-e3-word-10",
+                  "traditional": "先去",
+                  "pinyin": "xiān qù",
+                  "meaning": "go first"
+                },
+                {
+                  "id": "l7g5-e3-word-11",
+                  "traditional": "哪國",
+                  "simplified": "哪国",
+                  "pinyin": "nǎ guó",
+                  "meaning": "which country",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "l7g5-e4",
+            "number": 4,
+            "text": {
+              "traditional": "這家飯店又便宜又舒服。",
+              "simplified": "这家饭店又便宜又舒服。",
+              "pinyin": "Zhè jiā fàndiàn yòu piányi yòu shūfu.",
+              "english": "This hotel is both cheap and comfortable.",
+              "words": [
+                {
+                  "id": "l7g5-e4-word-1",
+                  "traditional": "這家飯店",
+                  "simplified": "这家饭店",
+                  "pinyin": "zhè jiā fàndiàn",
+                  "meaning": "this hotel"
+                },
+                {
+                  "id": "l7g5-e4-word-2",
+                  "traditional": "又",
+                  "pinyin": "yòu",
+                  "meaning": "both"
+                },
+                {
+                  "id": "l7g5-e4-word-3",
+                  "traditional": "便宜",
+                  "pinyin": "piányi",
+                  "meaning": "cheap"
+                },
+                {
+                  "id": "l7g5-e4-word-4",
+                  "traditional": "又",
+                  "pinyin": "yòu",
+                  "meaning": "and"
+                },
+                {
+                  "id": "l7g5-e4-word-5",
                   "traditional": "舒服",
                   "pinyin": "shūfu",
                   "meaning": "comfortable",
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "teachingNote": null
           },
           {
-            "id": "l7g5-e2",
-            "number": 2,
+            "id": "l7g5-e5",
+            "number": 5,
             "text": {
               "traditional": "坐計程車又快又方便，可是比較貴。",
               "simplified": "坐计程车又快又方便，可是比较贵。",
               "pinyin": "Zuò jìchéngchē yòu kuài yòu fāngbiàn, kěshì bǐjiào guì.",
-              "english": "Taking a taxi is fast and convenient, but more expensive.",
+              "english": "Taking a taxi is both fast and convenient, but it is more expensive.",
               "words": [
                 {
-                  "id": "l7g5-e2-word-1",
+                  "id": "l7g5-e5-word-1",
                   "traditional": "坐計程車",
                   "simplified": "坐计程车",
                   "pinyin": "zuò jìchéngchē",
                   "meaning": "take a taxi"
                 },
                 {
-                  "id": "l7g5-e2-word-2",
+                  "id": "l7g5-e5-word-2",
                   "traditional": "又",
                   "pinyin": "yòu",
-                  "meaning": "both; also"
+                  "meaning": "both"
                 },
                 {
-                  "id": "l7g5-e2-word-3",
+                  "id": "l7g5-e5-word-3",
                   "traditional": "快",
                   "pinyin": "kuài",
                   "meaning": "fast"
                 },
                 {
-                  "id": "l7g5-e2-word-4",
+                  "id": "l7g5-e5-word-4",
                   "traditional": "又",
                   "pinyin": "yòu",
-                  "meaning": "both; also"
+                  "meaning": "and"
                 },
                 {
-                  "id": "l7g5-e2-word-5",
+                  "id": "l7g5-e5-word-5",
                   "traditional": "方便",
                   "pinyin": "fāngbiàn",
-                  "meaning": "convenient"
+                  "meaning": "convenient",
+                  "suffix": "，"
                 },
                 {
-                  "id": "l7g5-e2-word-6",
+                  "id": "l7g5-e5-word-6",
                   "traditional": "可是",
                   "pinyin": "kěshì",
-                  "meaning": "but",
-                  "prefix": "，"
+                  "meaning": "but"
                 },
                 {
-                  "id": "l7g5-e2-word-7",
+                  "id": "l7g5-e5-word-7",
                   "traditional": "比較",
                   "simplified": "比较",
                   "pinyin": "bǐjiào",
-                  "meaning": "more"
+                  "meaning": "comparatively"
                 },
                 {
-                  "id": "l7g5-e2-word-8",
+                  "id": "l7g5-e5-word-8",
                   "traditional": "貴",
                   "simplified": "贵",
                   "pinyin": "guì",
@@ -15747,11 +16897,12 @@
                   "suffix": "。"
                 }
               ]
-            }
+            },
+            "teachingNote": null
           },
           {
-            "id": "l7g5-e3",
-            "number": 3,
+            "id": "l7g5-e6",
+            "number": 6,
             "text": {
               "traditional": "元真又會唱歌又會跳舞。",
               "simplified": "元真又会唱歌又会跳舞。",
@@ -15759,121 +16910,41 @@
               "english": "Yuanzhen can both sing and dance.",
               "words": [
                 {
-                  "id": "l7g5-e3-word-1",
+                  "id": "l7g5-e6-word-1",
                   "traditional": "元真",
                   "pinyin": "Yuánzhēn",
                   "meaning": "Yuanzhen"
                 },
                 {
-                  "id": "l7g5-e3-word-2",
+                  "id": "l7g5-e6-word-2",
                   "traditional": "又",
                   "pinyin": "yòu",
-                  "meaning": "both; also"
+                  "meaning": "both"
                 },
                 {
-                  "id": "l7g5-e3-word-3",
-                  "traditional": "會",
-                  "simplified": "会",
-                  "pinyin": "huì",
-                  "meaning": "can; know how to"
+                  "id": "l7g5-e6-word-3",
+                  "traditional": "會唱歌",
+                  "simplified": "会唱歌",
+                  "pinyin": "huì chànggē",
+                  "meaning": "can sing"
                 },
                 {
-                  "id": "l7g5-e3-word-4",
-                  "traditional": "唱歌",
-                  "pinyin": "chànggē",
-                  "meaning": "sing"
-                },
-                {
-                  "id": "l7g5-e3-word-5",
+                  "id": "l7g5-e6-word-4",
                   "traditional": "又",
                   "pinyin": "yòu",
-                  "meaning": "both; also"
+                  "meaning": "and"
                 },
                 {
-                  "id": "l7g5-e3-word-6",
-                  "traditional": "會",
-                  "simplified": "会",
-                  "pinyin": "huì",
-                  "meaning": "can; know how to"
-                },
-                {
-                  "id": "l7g5-e3-word-7",
-                  "traditional": "跳舞",
-                  "pinyin": "tiàowǔ",
-                  "meaning": "dance",
+                  "id": "l7g5-e6-word-5",
+                  "traditional": "會跳舞",
+                  "simplified": "会跳舞",
+                  "pinyin": "huì tiàowǔ",
+                  "meaning": "can dance",
                   "suffix": "。"
                 }
               ]
-            }
-          },
-          {
-            "id": "l7g5-e4",
-            "number": 4,
-            "text": {
-              "traditional": "我現在又累又渴，想先休息。",
-              "simplified": "我现在又累又渴，想先休息。",
-              "pinyin": "Wǒ xiànzài yòu lèi yòu kě, xiǎng xiān xiūxí.",
-              "english": "I am tired and thirsty now and want to rest first.",
-              "words": [
-                {
-                  "id": "l7g5-e4-word-1",
-                  "traditional": "我",
-                  "pinyin": "wǒ",
-                  "meaning": "I; me"
-                },
-                {
-                  "id": "l7g5-e4-word-2",
-                  "traditional": "現在",
-                  "simplified": "现在",
-                  "pinyin": "xiànzài",
-                  "meaning": "now"
-                },
-                {
-                  "id": "l7g5-e4-word-3",
-                  "traditional": "又",
-                  "pinyin": "yòu",
-                  "meaning": "both; also"
-                },
-                {
-                  "id": "l7g5-e4-word-4",
-                  "traditional": "累",
-                  "pinyin": "lèi",
-                  "meaning": "tired"
-                },
-                {
-                  "id": "l7g5-e4-word-5",
-                  "traditional": "又",
-                  "pinyin": "yòu",
-                  "meaning": "both; also"
-                },
-                {
-                  "id": "l7g5-e4-word-6",
-                  "traditional": "渴",
-                  "pinyin": "kě",
-                  "meaning": "thirsty"
-                },
-                {
-                  "id": "l7g5-e4-word-7",
-                  "traditional": "想",
-                  "pinyin": "xiǎng",
-                  "meaning": "think; want",
-                  "prefix": "，"
-                },
-                {
-                  "id": "l7g5-e4-word-8",
-                  "traditional": "先",
-                  "pinyin": "xiān",
-                  "meaning": "first"
-                },
-                {
-                  "id": "l7g5-e4-word-9",
-                  "traditional": "休息",
-                  "pinyin": "xiūxi",
-                  "meaning": "rest",
-                  "suffix": "。"
-                }
-              ]
-            }
+            },
+            "teachingNote": null
           }
         ],
         "exerciseTitle": "Balance the pair",
@@ -16009,7 +17080,8 @@
             "correctFeedback": "Both new body states are true together.",
             "repairFeedback": "Use one 又 before 餓 and one before 渴."
           }
-        ]
+        ],
+        "exerciseNote": "The book completes three sentences with 又……又…… on printed page 172; these model answers follow the same pattern."
       }
     ],
     "dialogue": {
@@ -16047,7 +17119,8 @@
                 "traditional": "妳",
                 "pinyin": "nǐ",
                 "meaning": "you (for a woman)",
-                "prefix": "，"
+                "prefix": "，",
+                "simplified": "你"
               },
               {
                 "id": "l7d2-1-word-3",
@@ -16368,7 +17441,8 @@
                 "id": "l7d2-5-word-1",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you (for a woman)"
+                "meaning": "you (for a woman)",
+                "simplified": "你"
               },
               {
                 "id": "l7d2-5-word-2",

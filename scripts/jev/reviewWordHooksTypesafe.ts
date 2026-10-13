@@ -18,7 +18,7 @@
  *   --out P           raw answers JSON (default output/jev/word-hooks/raw-v1.json)
  *   --dry             print the first request state without calling Jev
  *
- * Reruns resume by skipping words already present in the raw file.
+ * Reruns reuse answers only when the evidence, questions, and model match.
  */
 
 import { existsSync } from 'node:fs';
@@ -26,7 +26,7 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { noul, score, type Questions } from '@typesafe-ai/sdk';
 import { askJev, JEV_DEFAULT_MODEL, noulValue, scoreValue, type RawAnswers } from './client';
-import { readJson, readRawItems, runPool, writeJson } from './reviewSupport';
+import { readJson, readRawItems, reviewFingerprint, runPool, writeJson } from './reviewSupport';
 
 const ROOT = resolve(import.meta.dirname, '../..');
 const DEFAULT_INPUT = resolve(ROOT, 'output/memory-hooks/book-1-word-hooks-v1.json');
@@ -57,6 +57,7 @@ export const DEFAULT_WORD_THRESHOLDS: WordThresholds = {
 
 export interface WordReviewItem {
   word: string;
+  fingerprint?: string;
   state: WordState;
   answers: RawAnswers;
   resolvedModel?: string;
@@ -184,9 +185,10 @@ export async function main(argv: string[] = process.argv): Promise<void> {
   const records = readJson<{ records: WordRecord[] }>(options.input).records;
   const selected = selectWords(records, options);
   const existing = readRawItems<WordReviewItem>(options.out);
-  const done = new Set(existing.map((item) => item.word));
-  const pending = selected.filter((record) => !done.has(record.word));
-  console.log(`Jev word review: ${selected.length} words · ${done.size} already done · ${pending.length} to run`);
+  const resultsByWord = new Map(existing.map((item) => [item.word, item]));
+  const pending = selected.filter((record) => resultsByWord.get(record.word)?.fingerprint
+    !== reviewFingerprint(buildWordState(record), buildWordQuestions(), JEV_DEFAULT_MODEL));
+  console.log(`Jev word review: ${selected.length} words · ${selected.length - pending.length} current · ${pending.length} to run`);
 
   if (options.dry) {
     const first = pending[0];
@@ -202,22 +204,22 @@ export async function main(argv: string[] = process.argv): Promise<void> {
     return;
   }
 
-  const results: WordReviewItem[] = [...existing];
   let completed = 0;
   await runPool(pending, options.concurrency, async (record) => {
     const state = buildWordState(record);
     const result = await askJev(state, buildWordQuestions());
     const answers = result.answers as unknown as RawAnswers;
-    results.push({ word: record.word, state, answers, resolvedModel: result.model, at: new Date().toISOString() });
+    resultsByWord.set(record.word, { word: record.word, fingerprint: reviewFingerprint(state, buildWordQuestions(), JEV_DEFAULT_MODEL), state, answers, resolvedModel: result.model, at: new Date().toISOString() });
     completed += 1;
     if (completed % 10 === 0 || completed === pending.length) {
       const { pass, failed } = wordVerdict(answers, thresholds);
-      writeJson(options.out, { schemaVersion: 1, thresholds, items: results });
+      writeJson(options.out, { schemaVersion: 1, thresholds, items: [...resultsByWord.values()] });
       console.log(`[${completed}/${pending.length}] ${record.word} ${pass ? 'pass' : `FAIL (${failed.join(', ')})`}`);
     }
   });
 
-  writeJson(options.out, { schemaVersion: 1, thresholds, items: results });
+  const results = selected.map((record) => resultsByWord.get(record.word)!);
+  writeJson(options.out, { schemaVersion: 1, thresholds, items: [...resultsByWord.values()] });
   const passCount = results.filter((item) => wordVerdict(item.answers, thresholds).pass).length;
   console.log(`Done: ${passCount}/${results.length} pass at current thresholds`);
   console.log(`Wrote ${options.out}`);

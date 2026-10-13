@@ -2,6 +2,7 @@ import type { HTMLAttributes } from 'react';
 import type { GrammarWordToken } from '../../../types/models';
 import { cn } from '../../../utils/cn';
 import { ContextualChineseText } from '../../../lib/widgets';
+import { getGrammarSemanticRole, getSemanticRoleClasses } from '../../../utils/grammar/grammarSemanticRoles';
 
 export interface GrammarFocusTextProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'children'> {
   text: string;
@@ -45,17 +46,23 @@ export function GrammarFocusText({
 
   return (
     <span className={className} {...props}>
-      {parts.map((part, index) => focusSet.has(part) ? (
-        <mark
-          key={`${part}-${index}`}
-          className={cn(
-            'box-decoration-clone font-black text-brand-primary',
-            CJK_REGEX.test(part) ? 'font-chinese' : 'font-sans',
-          )}
-        >
-          {part}
-        </mark>
-      ) : part)}
+      {parts.map((part, index) => {
+        if (!focusSet.has(part)) return part;
+        const role = getGrammarSemanticRole(part);
+        const colorClass = getSemanticRoleClasses(role);
+        return (
+          <mark
+            key={`${part}-${index}`}
+            className={cn(
+              'box-decoration-clone font-black',
+              colorClass,
+              CJK_REGEX.test(part) ? 'font-chinese' : 'font-sans',
+            )}
+          >
+            {part}
+          </mark>
+        );
+      })}
     </span>
   );
 }

@@ -44,11 +44,20 @@ Do not use hardcoded hex values (e.g. `#FFFFFF`, `#E5E5E5`). Use semantic tokens
 - **Backgrounds**: `bg-ui-canvas`, `bg-ui-practice-canvas`, `bg-ui-reader-canvas` (clean warm paper for reader), `bg-ui-surface` (white)
 - **Borders/Lines**: `border-ui-border`, `border-ui-divider`
 - **Text**: `text-ui-ink` (primary), `text-ui-ink-strong` (headings), `text-ui-muted` (secondary)
-- **Brand**: `brand-primary` (blue), `brand-secondary` (orange)
+- **Brand**: `brand-primary` (the active tone's accent: blue in Book 1, orange in Book 2…; see §5a), `brand-secondary` (fixed orange)
 - **Feedback**: `feedback-success` (green), `feedback-warning` (gold/yellow), `feedback-danger` (red)
 - **Pinyin tones**: `tone-1` (rose) · `tone-2` (amber) · `tone-3` (emerald) · `tone-4` (blue) · `tone-5` (neutral gray), each ≥4.5:1 on `ui-surface`. Text only, applied to a syllable and its character together; on the flashcard answer face each syllable is stacked over its own character so same-tone syllables stay distinguishable ("Tone colors" setting). Tones come from `src/utils/pinyin/pinyinTones.ts`; never color characters the alignment can't pair.
 
 Each brand/feedback color has an `-edge` variant (for the tactile bottom border) and a `-surface` or `/10` variant for soft backgrounds.
+
+## 5a. Tones (one switch recolours the whole app)
+
+A **tone** is a complete colour-role set. Components use only role tokens and never branch on which tone is active.
+
+- **Roles**: `ui-canvas`/`ui-practice-canvas`, `ui-ink-strong`, `ui-ink`, `ui-muted-strong`, `ui-muted`, `ui-border`, `ui-divider`, `brand-primary` + `-edge`/`-deep`/`-soft`/`-soft-edge`/`-track`/`-wash`, and `brand-on-primary` (text on a primary fill; white, dark in Review).
+- **Books**: each book's `theme` in `src/data/books.ts` is its tone; `useBookTheme` writes it inline on `<html>`. Book 1 keeps the neutral grays; Books 2–4 tint text and lines faintly toward their hue. `book.accent|accentBg|bg|buttonEdge|accentHex` are derived from the tokens, never from per-book hexes.
+- **Review**: `data-tone="review"` (claimed through `useReviewTone`, ref-counted) swaps the roles to honey: bar amber, text a dark amber, lines and canvas warm. Defined once in the `:root[data-tone="review"]` block of `src/index.css` (`!important` beats the book's inline values).
+- **Adding a tone/role**: add it to `BookTheme`, the `THEME_CSS_VARS` map, the `@property` list and review block in `index.css`. Pinyin tone colours and feedback green/red are outside the tone layer.
 
 ## 6. Canvas ownership (one page background)
 

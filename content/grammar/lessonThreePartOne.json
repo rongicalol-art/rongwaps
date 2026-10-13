@@ -15,14 +15,8 @@
       74
     ],
     "audioReference": "03-1-3",
-    "explanation": "Place a measure word between a number and noun (Number + MW + Noun: 一個, 兩本書). Always use 兩 instead of 二 before a measure word.",
+    "explanation": "Chinese needs a measure word between a number and noun: 個 for general nouns, 本 for books, and 朵 for flowers. Before a measure word, say 兩 for “two,” not 二.",
     "focusTerms": [
-      "數字",
-      "数字",
-      "量詞",
-      "量词",
-      "名詞",
-      "名词",
       "個",
       "个",
       "本",
@@ -30,7 +24,8 @@
       "兩",
       "两",
       "幾",
-      "几"
+      "几",
+      "二"
     ],
     "teachingGlossary": [
       {
@@ -1073,14 +1068,7 @@
     "audioReference": "03-1-3",
     "explanation": "After 送, say the receiver first and the gift second: 送 + person + gift. Unlike English, Chinese adds no “to” before the receiver.",
     "focusTerms": [
-      "送",
-      "人",
-      "禮物",
-      "礼物",
-      "誰",
-      "谁",
-      "什麼",
-      "什么"
+      "送"
     ],
     "teachingGlossary": [
       {
@@ -1517,7 +1505,8 @@
             "traditional": "禮物",
             "simplified": "礼物",
             "pinyin": "lǐwù",
-            "meaning": "gift"
+            "meaning": "gift",
+            "suffix": "。"
           }
         ],
         "english": "Mom gave me a gift."
@@ -1557,7 +1546,8 @@
             "id": "g2-p2-flower",
             "traditional": "花",
             "pinyin": "huā",
-            "meaning": "flower; flowers"
+            "meaning": "flower; flowers",
+            "suffix": "。"
           }
         ],
         "english": "I would like to give her flowers."
@@ -2275,12 +2265,6 @@
         "audioReference": "03-1-3",
         "explanation": "Chinese needs a measure word between a number and noun: 個 for general nouns, 本 for books, and 朵 for flowers. Before a measure word, say 兩 for “two,” not 二.",
         "focusTerms": [
-          "數字",
-          "数字",
-          "量詞",
-          "量词",
-          "名詞",
-          "名词",
           "個",
           "个",
           "本",
@@ -2288,7 +2272,8 @@
           "兩",
           "两",
           "幾",
-          "几"
+          "几",
+          "二"
         ],
         "teachingGlossary": [
           {
@@ -3331,14 +3316,7 @@
         "audioReference": "03-1-3",
         "explanation": "After 送, say the receiver first and the gift second: 送 + person + gift. Unlike English, Chinese adds no “to” before the receiver.",
         "focusTerms": [
-          "送",
-          "人",
-          "禮物",
-          "礼物",
-          "誰",
-          "谁",
-          "什麼",
-          "什么"
+          "送"
         ],
         "teachingGlossary": [
           {
@@ -3775,7 +3753,8 @@
                 "traditional": "禮物",
                 "simplified": "礼物",
                 "pinyin": "lǐwù",
-                "meaning": "gift"
+                "meaning": "gift",
+                "suffix": "。"
               }
             ],
             "english": "Mom gave me a gift."
@@ -3815,7 +3794,8 @@
                 "id": "g2-p2-flower",
                 "traditional": "花",
                 "pinyin": "huā",
-                "meaning": "flower; flowers"
+                "meaning": "flower; flowers",
+                "suffix": "。"
               }
             ],
             "english": "I would like to give her flowers."
@@ -4628,7 +4608,8 @@
                 "id": "b1l03-d1-l2-word-1",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you"
+                "meaning": "you",
+                "simplified": "你"
               },
               {
                 "id": "b1l03-d1-l2-word-2",

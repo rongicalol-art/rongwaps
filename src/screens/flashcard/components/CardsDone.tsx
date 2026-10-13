@@ -1,0 +1,368 @@
+import { useEffect, useLayoutEffect, useRef, useState, type RefObject } from 'react';
+import { useReducedMotion } from 'motion/react';
+import type { LottieRefCurrentProps } from 'lottie-react';
+import type { Flashcard } from '../../../data/flashcards';
+import { ActionButton, LottiePlayer } from '../../../lib/widgets';
+import { cn } from '../../../utils/cn';
+import type { QuizTypeId } from '../../../utils/vocabulary/quizDirector';
+import { QuizTypePicker, type QuizPickerEntrance } from './QuizTypePicker';
+import { CARD_SURFACE_CLASS, EASE_OUT, TILE_BORDER, TILE_RADIUS, TILE_RATIO, fitFont, questionWordPx } from '../flashcardMotion';
+
+// Module-level so the player keeps one stable loader identity (same trophy as the review intro).
+const loadTrophy = () => import('../../../assets/animations/review-trophy.json').then((m) => m.default);
+const TROPHY_LAST_FRAME = 70;
+
+/** One easing for the whole glide of the last card into its place in the sheet. */
+const SMOOTH = 'cubic-bezier(.22,1,.36,1)';
+const GLIDE_MS = 640;
+/** The real card clears its answer (pinyin, meaning, examples) before the shrink. */
+const CLEAR_MS = 180;
+const RISE = [{ opacity: 0, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }];
+const LEAVE_EASE = 'cubic-bezier(.4,0,1,1)';
+
+interface CardsDoneProps {
+  /** Up to six sheet tiles; the last one is the card that was just answered (its tile is fed by the real card). */
+  cards: Flashcard[];
+  /** The session's whole deck: the picker offers only the types its words can take. */
+  deck: Flashcard[];
+  /** Words in the session (the subtitle). */
+  wordCount: number;
+  /** The flashcard stage (card area + answer bar); the answered card and answer bar are read from it. */
+  stageRef: RefObject<HTMLElement | null>;
+  /** The honey tone can drain now. */
+  onTone: () => void;
+  /** The quiz was picked on the picker Start quiz opens: [] = Mixed. */
+  onStart: (types: QuizTypeId[]) => void;
+  /** Practice only the first-pass misses when there are any. */
+  onReviewAgain: () => void;
+  missedCount?: number;
+}
+
+/**
+ * The bridge between the cards and the quiz. The last answered card shrinks into the sheet, the other words
+ * are set down around it. Start quiz clears the sheet and turns into the quiz picker (`QuizTypePicker`).
+ */
+export function CardsDone({ cards, deck, wordCount, stageRef, onTone, onStart, onReviewAgain, missedCount = 0 }: CardsDoneProps) {
+  const reduceMotion = Boolean(useReducedMotion());
+  const rootRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const slotRef = useRef<HTMLDivElement>(null);
+  const layerRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLDivElement>(null);
+  const trophyWrapRef = useRef<HTMLDivElement>(null);
+  const trophyRef = useRef<LottieRefCurrentProps>(null);
+  /** Set once it is time for the trophy to play, so a late-loading animation still plays. */
+  const trophyDue = useRef(false);
+  const startRef = useRef<() => void>(() => {});
+  const onToneRef = useRef(onTone);
+  onToneRef.current = onTone;
+  const startedRef = useRef(false);
+  /** Start quiz opened the picker: it morphs out of the button (no entrance with reduced motion). */
+  const [picker, setPicker] = useState<QuizPickerEntrance | null>(null);
+  const pickerStartRef = useRef<() => void>(() => {});
+
+  useLayoutEffect(() => {
+    const root = rootRef.current;
+    const text = textRef.current;
+    const slot = slotRef.current;
+    const layer = layerRef.current;
+    const btnWrap = buttonRef.current;
+    const trophyWrap = trophyWrapRef.current;
+    const stage = stageRef.current;
+    if (!root || !text || !trophyWrap || !slot || !layer || !btnWrap || !stage) return undefined;
+
+    const timers: number[] = [];
+    const anims: Animation[] = [];
+    const restore: Array<() => void> = [];
+    const at = (ms: number, fn: () => void) => { timers.push(window.setTimeout(fn, ms)); };
+    const A = (el: Element, keyframes: Keyframe[], options: KeyframeAnimationOptions) => {
+      const anim = el.animate(keyframes, { fill: 'both', ...options });
+      anims.push(anim);
+      return anim;
+    };
+
+    const count = cards.length;
+    const lastIdx = count - 1;
+    const lastCard = cards[lastIdx];
+    const rootRect = root.getBoundingClientRect();
+
+    // ---- sheet geometry: one row on wide screens (width is plentiful), a grid on phones; tiles shrink to fit,
+    // so nothing crowds the button ----
+    const wide = window.innerWidth >= 1024;
+    const slots = count;
+    const baseTw = wide ? 136 : 92;
+    const gap = wide ? 28 : 14;
+    const baseFont = wide ? 42 : 28;
+    const cols = wide ? slots : Math.min(3, slots);
+    const rows = Math.ceil(slots / cols);
+    // On desktop the two buttons sit in the group under the sheet (2 × h-14 + gaps).
+    const fitH = (slot.parentElement?.clientHeight ?? Infinity) - text.offsetHeight - 48 - (wide ? 290 : 0);
+    const fitW = slot.clientWidth - 32;
+    const tw = Math.max(48, Math.min(baseTw, (fitW - (cols - 1) * gap) / cols, (fitH - (rows - 1) * gap) / rows / TILE_RATIO));
+    const th = tw * TILE_RATIO;
+    slot.style.height = `${rows * th + (rows - 1) * gap}px`;
+    const slotRect = slot.getBoundingClientRect();
+    const slotLeft = slotRect.left + slotRect.width / 2 - rootRect.left;
+    const slotTop = slotRect.top - rootRect.top;
+    const tileEls = Array.from(layer.children) as HTMLElement[];
+    const wordOf = (el: HTMLElement) => el.querySelector<HTMLElement>('[data-clone-word]');
+    const tileFont = (i: number) => fitFont(cards[i].front, tw, (baseFont * tw) / baseTw);
+    tileEls.forEach((el, i) => {
+      const row = Math.floor(i / cols);
+      const inRow = Math.min(cols, slots - row * cols);
+      const rowW = inRow * tw + (inRow - 1) * gap;
+      const word = wordOf(el);
+      if (word) word.style.fontSize = `${tileFont(i)}px`;
+      Object.assign(el.style, {
+        left: `${slotLeft - rowW / 2 + (i % cols) * (tw + gap)}px`,
+        top: `${slotTop + row * (th + gap)}px`,
+        width: `${tw}px`,
+        height: `${th}px`,
+      });
+    });
+    const [title, subtitle] = Array.from(text.querySelectorAll<HTMLElement>('h2, p'));
+    const morphEl = tileEls[lastIdx];
+    const morphWord = wordOf(morphEl);
+
+    // ---- the answered card: its box, borders and word, read once (it stays in place under this overlay) ----
+    const box = Array.from(stage.querySelectorAll<HTMLElement>('[data-fc-card]')).find((el) => el.dataset.fcCard === lastCard.id) ?? null;
+    const surface = box?.querySelector<HTMLElement>('[data-fc-surface]') ?? null;
+    const cardArea = stage.querySelector<HTMLElement>('[data-fc-cardarea]');
+    const barInner = stage.querySelector<HTMLElement>(wide ? '.rw-answer-bar' : '.rw-answer-bar > div');
+    let real: {
+      left: number; top: number; width: number; height: number; font: number; gapEm: number;
+      shift: string; border: string; radius: string; displaced: boolean;
+    } | null = null;
+    if (box && surface) {
+      const r = box.getBoundingClientRect();
+      const sr = surface.getBoundingClientRect();
+      const identity = getComputedStyle(box).transform;
+      const settled = identity === 'none' || identity === 'matrix(1, 0, 0, 1, 0, 0)';
+      const container = box.offsetParent as HTMLElement | null;
+      const cr = container?.getBoundingClientRect();
+      const width = box.offsetWidth;
+      const height = box.offsetHeight;
+      const left = settled || !cr ? r.left : cr.left + box.offsetLeft;
+      const top = settled || !cr ? r.top : cr.top + box.offsetTop;
+      let l = Infinity; let t = Infinity; let rt = -Infinity; let bm = -Infinity; let font = 0;
+      Array.from(box.querySelectorAll<HTMLElement>('[data-fc-word] *')).forEach((el) => {
+        if (el.childElementCount > 0 || !/[㐀-鿿]/.test(el.textContent ?? '')) return;
+        const q = el.getBoundingClientRect();
+        l = Math.min(l, q.left); t = Math.min(t, q.top); rt = Math.max(rt, q.right); bm = Math.max(bm, q.bottom);
+        font ||= q.height;
+      });
+      const hasWord = Number.isFinite(l) && font > 0;
+      const chars = Array.from(lastCard.front).length;
+      const endFont = hasWord ? font : questionWordPx(chars, width);
+      const cs = getComputedStyle(surface);
+      const [bl, br, bt, bb] = [cs.borderLeftWidth, cs.borderRightWidth, cs.borderTopWidth, cs.borderBottomWidth].map(parseFloat);
+      // Where the tile's flex-centred word would sit, vs where the real word is (relative to the card).
+      const natCx = width / 2 + (bl - br) / 2;
+      const natCy = height / 2 + (bt - bb) / 2;
+      const wordCx = hasWord ? (l + rt) / 2 - sr.left : natCx;
+      const wordCy = hasWord ? (t + bm) / 2 - sr.top : natCy;
+      real = {
+        left: left - rootRect.left, top: top - rootRect.top, width, height, font: endFont,
+        gapEm: hasWord && chars > 1 ? Math.max(0, (rt - l - chars * endFont) / (chars - 1) / endFont) : 0,
+        shift: `translate(${wordCx - natCx}px,${wordCy - natCy}px)`,
+        border: `${cs.borderTopWidth} ${cs.borderRightWidth} ${cs.borderBottomWidth} ${cs.borderLeftWidth}`,
+        radius: cs.borderTopLeftRadius,
+        // A card that was swiped away is no longer where its box is: its tile fades in instead of replacing it.
+        displaced: Math.abs(sr.left - r.left) > 3 || Math.abs(sr.top - r.top) > 3,
+      };
+    }
+
+    let ready = false;
+    let started = false;
+    const hideRealCard = () => {
+      if (cardArea) {
+        cardArea.style.opacity = '0';
+        restore.push(() => { cardArea.style.opacity = ''; });
+      }
+    };
+
+    if (reduceMotion) {
+      [trophyWrap, title, subtitle, btnWrap, ...tileEls].forEach((el) => { el.style.opacity = '1'; });
+      trophyRef.current?.goToAndStop(TROPHY_LAST_FRAME, true);
+      if (barInner) {
+        barInner.style.opacity = '0';
+        restore.push(() => { barInner.style.opacity = ''; });
+      }
+      hideRealCard();
+      morphEl.querySelector<HTMLElement>('[data-tile-pinyin]')?.style.setProperty('opacity', '1');
+      onToneRef.current();
+      ready = true;
+      startRef.current = () => {
+        if (started) return;
+        started = true;
+        startedRef.current = true;
+        [text, layer, btnWrap].forEach((el) => { el.style.visibility = 'hidden'; });
+        startRef.current = () => pickerStartRef.current();
+        setPicker({ kind: 'none' });
+      };
+    } else {
+      const start = real ? CLEAR_MS : 0;
+      if (barInner) A(barInner, [{ opacity: 1 }, { opacity: 0 }], { duration: 160, easing: 'ease-out' });
+      if (box && real) {
+        box.querySelectorAll<HTMLElement>('.rw-rise').forEach((el) => A(el, [{ opacity: 1 }, { opacity: 0 }], { duration: CLEAR_MS, easing: 'ease-out' }));
+      }
+      // The other tiles are set down around it.
+      const others = tileEls.filter((_, i) => !(real && i === lastIdx));
+      others.forEach((el, k) => A(el, RISE, { delay: start + 300 + k * 55, duration: 460, easing: EASE_OUT }));
+      // The trophy marks the checkpoint: it rises as the last card settles and plays once.
+      A(trophyWrap, RISE, { delay: start + 300, duration: 560, easing: EASE_OUT });
+      at(start + 300, () => { trophyDue.current = true; trophyRef.current?.goToAndPlay(0, true); });
+      A(title, RISE, { delay: start + 380, duration: 560, easing: EASE_OUT });
+      A(subtitle, RISE, { delay: start + 460, duration: 560, easing: EASE_OUT });
+      A(btnWrap, RISE, { delay: start + 640, duration: 560, easing: EASE_OUT });
+      at(start + 640 + 560, () => { ready = true; });
+
+      if (real) {
+        const r = real;
+        at(start, () => {
+          // The tile takes the card's place exactly, the real card goes, and the box glides into the sheet.
+          const finalBox = {
+            left: morphEl.style.left, top: morphEl.style.top, width: morphEl.style.width, height: morphEl.style.height,
+          };
+          morphEl.style.opacity = '1';
+          hideRealCard();
+          if (r.displaced) A(morphEl, [{ opacity: 0 }, { opacity: 1 }], { duration: 200, easing: 'ease-out' });
+          A(morphEl, [
+            { left: `${r.left}px`, top: `${r.top}px`, width: `${r.width}px`, height: `${r.height}px`, borderRadius: r.radius, borderWidth: r.border },
+            { ...finalBox, borderRadius: TILE_RADIUS, borderWidth: TILE_BORDER },
+          ], { duration: GLIDE_MS, easing: SMOOTH });
+          if (morphWord) {
+            A(morphWord, [
+              { fontSize: `${r.font}px`, columnGap: `${r.gapEm}em`, transform: r.shift },
+              { fontSize: `${tileFont(lastIdx)}px`, columnGap: '0em', transform: 'translate(0px,0px)' },
+            ], { duration: GLIDE_MS, easing: SMOOTH });
+          }
+          // A small settle as it lands, like a card set down on the table.
+          A(morphEl, [{ translate: '0 0' }, { translate: '0 3px' }, { translate: '0 0' }], {
+            delay: GLIDE_MS - 60, duration: 220, easing: 'ease-out', composite: 'add', fill: 'none',
+          });
+          const py = morphEl.querySelector('[data-tile-pinyin]');
+          if (py) A(py, [{ opacity: 0 }, { opacity: 1 }], { delay: GLIDE_MS - 160, duration: 260, easing: 'ease-out' });
+          at(30, () => onToneRef.current());
+        });
+      } else {
+        // Whatever card is on the stage (not the one that was answered) must not sit behind the sheet.
+        if (cardArea) A(cardArea, [{ opacity: 1 }, { opacity: 0 }], { duration: 200, easing: 'ease-out' });
+        morphEl.querySelector<HTMLElement>('[data-tile-pinyin]')?.style.setProperty('opacity', '1');
+        onToneRef.current();
+      }
+
+      // ---- Start quiz: the sheet and text leave, and the button becomes the picker's Mixed card ----
+      startRef.current = () => {
+        if (!ready || started) return;
+        started = true;
+        startedRef.current = true;
+        (document.activeElement as HTMLElement | null)?.blur?.();
+        btnWrap.style.pointerEvents = 'none';
+        [trophyWrap, title, subtitle, btnWrap].forEach((el) => el.getAnimations().forEach((a) => a.cancel()));
+        [trophyWrap, title, subtitle].forEach((el, i) => A(
+          el,
+          [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(-12px)' }],
+          { delay: i * 30, duration: 220, easing: LEAVE_EASE },
+        ));
+        A(layer, [{ opacity: 1 }, { opacity: 0 }], { duration: 200, easing: 'ease-out' });
+        const button = btnWrap.querySelector('button');
+        const r = (button ?? btnWrap).getBoundingClientRect();
+        // The picker's ghost takes over the button from this frame.
+        btnWrap.style.opacity = '0';
+        startRef.current = () => pickerStartRef.current();
+        setPicker({ kind: 'morph', look: 'button', from: { left: r.left, top: r.top, width: r.width, height: r.height } });
+      };
+    }
+
+    return () => {
+      timers.forEach((id) => window.clearTimeout(id));
+      anims.forEach((a) => a.cancel());
+      restore.forEach((fn) => fn());
+      startRef.current = () => {};
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- the bridge is built once per mount
+  }, []);
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key !== ' ' && event.key !== 'Enter') return;
+      event.preventDefault();
+      event.stopPropagation();
+      if (!event.repeat) startRef.current();
+    };
+    window.addEventListener('keydown', onKey, true);
+    return () => window.removeEventListener('keydown', onKey, true);
+  }, []);
+
+  const trophySize = typeof window !== 'undefined' && window.innerWidth >= 1024 ? 130 : 96;
+  const subtitle = wordCount === 1 ? 'Quiz yourself on this word' : `Quiz yourself on these ${wordCount} words`;
+
+  return (
+    <div
+      ref={rootRef}
+      role="status"
+      aria-label={`Cards done. ${subtitle}.`}
+      tabIndex={-1}
+      className="absolute inset-0 z-30 flex flex-col items-center outline-none"
+    >
+      {/* Centred in the space above the button, so the sheet never crowds it. */}
+      <div className="flex min-h-0 w-full flex-1 flex-col items-center justify-center">
+        <div ref={textRef} className="flex flex-col items-center">
+          <div ref={trophyWrapRef} className="-mb-2" style={{ opacity: 0 }}>
+            <LottiePlayer
+              loadAnimationData={loadTrophy}
+              loop={false}
+              autoplay={false}
+              lottieRef={trophyRef}
+              onDOMLoaded={() => {
+                if (reduceMotion) trophyRef.current?.goToAndStop(TROPHY_LAST_FRAME, true);
+                else if (trophyDue.current) trophyRef.current?.goToAndPlay(0, true);
+              }}
+              width={trophySize}
+              height={trophySize}
+            />
+          </div>
+          <h2 className="text-[28px] font-black text-ui-ink-strong" style={{ opacity: 0 }}>Cards done</h2>
+          <p className="mt-3 text-base font-bold text-ui-muted-strong" style={{ opacity: 0 }}>{subtitle}</p>
+        </div>
+        <div ref={slotRef} aria-hidden className="mt-8 w-full lg:mt-12" />
+        {/* Phones: where the answer bar's buttons were. Desktop: in the group, right under the sheet. */}
+        <div ref={buttonRef} className="absolute inset-x-0 bottom-0 px-4 pb-sheet-safe pt-4 sm:px-8 lg:static lg:mt-20 lg:w-full lg:p-0" style={{ opacity: 0 }}>
+          <div className="mx-auto w-full max-w-md lg:max-w-xs">
+            <ActionButton size="lg" fullWidth onClick={() => startRef.current()}>
+              <span>Start quiz</span>
+            </ActionButton>
+            <div className="mt-3 w-full">
+              <ActionButton variant="secondary" size="lg" fullWidth className="!text-ui-ink" onClick={() => { if (!startedRef.current) onReviewAgain(); }}>
+                {missedCount > 0 ? `Review ${missedCount} missed` : 'Study all again'}
+              </ActionButton>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden className="w-full shrink-0 pb-sheet-safe pt-4 lg:hidden"><div className="h-32" /></div>
+      <div ref={layerRef} aria-hidden className="pointer-events-none absolute inset-0">
+        {cards.map((card) => (
+          <div
+            key={card.id}
+            className={cn(CARD_SURFACE_CLASS, 'absolute flex items-center justify-center will-change-transform')}
+            style={{ opacity: 0, borderWidth: TILE_BORDER, borderRadius: TILE_RADIUS }}
+          >
+            <span className="font-chinese flex leading-none text-ui-ink" data-clone-word>
+              {Array.from(card.front).map((ch, c) => <span key={c}>{ch}</span>)}
+            </span>
+          </div>
+        ))}
+      </div>
+      {picker && (
+        <QuizTypePicker
+          entrance={picker}
+          deck={deck}
+          onStart={onStart}
+          startRef={pickerStartRef}
+        />
+      )}
+    </div>
+  );
+}

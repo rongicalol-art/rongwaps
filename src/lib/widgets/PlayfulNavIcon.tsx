@@ -3,7 +3,8 @@ import { cn } from '../../utils/cn';
 
 export type PlayfulNavIconName =
   | 'books' | 'dictionary' | 'library' | 'profile' | 'favorite'
-  | 'flashcards' | 'quiz' | 'listening' | 'writing' | 'global' | 'curriculum' | 'grammar' | 'grammarBook' | 'hint' | 'reading' | 'reference' | 'reward' | 'review' | 'settings';
+  | 'flashcards' | 'quiz' | 'listening' | 'writing' | 'global' | 'curriculum' | 'grammar' | 'grammarBook' | 'hint' | 'reading' | 'reference' | 'reward' | 'review' | 'settings'
+  | 'meaning' | 'characters' | 'trueFalse' | 'build';
 
 interface PlayfulNavIconProps extends ImgHTMLAttributes<HTMLImageElement> {
   name: PlayfulNavIconName;
@@ -29,6 +30,10 @@ const navIconSrc: Record<PlayfulNavIconName, string> = {
   reward: new URL('../../assets/icons/flat/star.svg', import.meta.url).href,
   review: new URL('../../assets/icons/flat/dashboard.svg', import.meta.url).href,
   settings: new URL('../../assets/icons/flat/cog.svg', import.meta.url).href,
+  meaning: new URL('../../assets/icons/flat/tag.svg', import.meta.url).href,
+  characters: new URL('../../assets/icons/flat/stamp.svg', import.meta.url).href,
+  trueFalse: new URL('../../assets/icons/flat/sign-check.svg', import.meta.url).href,
+  build: new URL('../../assets/icons/flat/brick.svg', import.meta.url).href,
 };
 
 export function PlayfulNavIcon({ name, className, alt = '', ...props }: PlayfulNavIconProps) {

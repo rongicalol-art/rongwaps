@@ -25,6 +25,9 @@ const MANIFEST = readJson<{
   totalCount: number;
   books: Array<{ bookId: number; count: number; path: string; sha256: string; bytes: number }>;
 }>('public/data/vocabulary/manifest.json');
+const AUDIO_SUPPLEMENTS = readJson<{
+  recordings: Array<{ id: string; audio: string }>;
+}>('content/audio/book_audio_supplements.json');
 
 const HAN = /\p{Script=Han}/u;
 const PINYIN_CHARSET = /^[\p{Script=Latin}\s/()?,、…0-9'’-]*$/u;
@@ -60,7 +63,8 @@ test('vocabulary rows keep id, audio, and part-of-speech shape', () => {
     const { pack } = loadPack(book);
     for (const row of pack.items) {
       assert.match(row.id, /^B\dL\d{2}-\d-\d{2}$/, `bad id ${row.id}`);
-      assert.ok(!row.audio || row.audio === `modernchinese-${row.id}.mp3`, `${row.id} audio: ${row.audio}`);
+      const supplement = AUDIO_SUPPLEMENTS.recordings.find((recording) => recording.id === row.id);
+      assert.ok(!row.audio || row.audio === `modernchinese-${row.id}.mp3` || row.audio === supplement?.audio, `${row.id} audio: ${row.audio}`);
       assert.ok(row.pos && row.pos.split('/').every((atom) => POS_ATOMS.has(atom)), `${row.id} pos: ${row.pos}`);
     }
   }

@@ -107,7 +107,7 @@
       55
     ],
     "audioReference": "02-1-3",
-    "explanation": "Dates and clock times put numbers first: 五月十六號, 九點二十分. Weekdays flip this: 星期 comes first, then the number (星期四), with no measure word.",
+    "explanation": "Dates and clock times put the number before the unit: 五月十六號, 九點二十分. Weekdays go the opposite way: say 星期 first, then the number: 星期四.",
     "focusTerms": [
       "月",
       "號",
@@ -117,7 +117,12 @@
       "点",
       "分",
       "幾",
-      "几"
+      "几",
+      "五",
+      "十六",
+      "九",
+      "二十",
+      "四"
     ],
     "teachingGlossary": [
       {
@@ -1412,7 +1417,8 @@
                 "id": "g3-confusion-3-word-3",
                 "traditional": "課",
                 "pinyin": "kè",
-                "meaning": "class"
+                "meaning": "class",
+                "simplified": "课"
               },
               {
                 "id": "g3-confusion-3-word-4",
@@ -1566,7 +1572,8 @@
               "id": "g3-e3-word-4",
               "traditional": "課",
               "pinyin": "kè",
-              "meaning": "class"
+              "meaning": "class",
+              "simplified": "课"
             },
             {
               "id": "g3-e3-word-5",
@@ -1605,7 +1612,8 @@
               "traditional": "課",
               "pinyin": "kè",
               "meaning": "class",
-              "suffix": "。"
+              "suffix": "。",
+              "simplified": "课"
             }
           ]
         }
@@ -1803,8 +1811,6 @@
     "audioReference": "02-1-3",
     "explanation": "Put the time after the person or topic but before the action. Think: who, when, then what happens.",
     "focusTerms": [
-      "時間",
-      "動作",
       "今天",
       "幾點",
       "几点",
@@ -2052,7 +2058,8 @@
             "traditional": "課",
             "pinyin": "kè",
             "meaning": "class",
-            "suffix": "。"
+            "suffix": "。",
+            "simplified": "课"
           }
         ],
         "english": "He does not have class today."
@@ -2176,7 +2183,8 @@
                 "traditional": "課",
                 "pinyin": "kè",
                 "meaning": "class",
-                "suffix": "。"
+                "suffix": "。",
+                "simplified": "课"
               }
             ]
           }
@@ -2298,7 +2306,8 @@
               "traditional": "課",
               "pinyin": "kè",
               "meaning": "class",
-              "suffix": "。"
+              "suffix": "。",
+              "simplified": "课"
             }
           ]
         }
@@ -2586,7 +2595,7 @@
           55
         ],
         "audioReference": "02-1-3",
-        "explanation": "Dates and clock times put the number first: 五月十六號, 九點二十分. Weekdays are the other way around: 星期 comes first, then the number, as in 星期四. So the weekday row has no first number and no measure word at the end.",
+        "explanation": "Dates and clock times put the number before the unit: 五月十六號, 九點二十分. Weekdays go the opposite way: say 星期 first, then the number: 星期四.",
         "focusTerms": [
           "月",
           "號",
@@ -2596,7 +2605,12 @@
           "点",
           "分",
           "幾",
-          "几"
+          "几",
+          "五",
+          "十六",
+          "九",
+          "二十",
+          "四"
         ],
         "teachingGlossary": [
           {
@@ -3479,8 +3493,6 @@
         "audioReference": "02-1-3",
         "explanation": "Put the time after the person or topic but before the action. Think: who, when, then what happens.",
         "focusTerms": [
-          "時間",
-          "動作",
           "今天",
           "幾點",
           "几点",
@@ -3728,7 +3740,8 @@
                 "traditional": "課",
                 "pinyin": "kè",
                 "meaning": "class",
-                "suffix": "。"
+                "suffix": "。",
+                "simplified": "课"
               }
             ],
             "english": "He does not have class today."
@@ -3852,7 +3865,8 @@
                     "traditional": "課",
                     "pinyin": "kè",
                     "meaning": "class",
-                    "suffix": "。"
+                    "suffix": "。",
+                    "simplified": "课"
                   }
                 ]
               }
@@ -3974,7 +3988,8 @@
                   "traditional": "課",
                   "pinyin": "kè",
                   "meaning": "class",
-                  "suffix": "。"
+                  "suffix": "。",
+                  "simplified": "课"
                 }
               ]
             }
@@ -4668,7 +4683,8 @@
                     "id": "g3-confusion-3-word-3",
                     "traditional": "課",
                     "pinyin": "kè",
-                    "meaning": "class"
+                    "meaning": "class",
+                    "simplified": "课"
                   },
                   {
                     "id": "g3-confusion-3-word-4",
@@ -4822,7 +4838,8 @@
                   "id": "g3-e3-word-4",
                   "traditional": "課",
                   "pinyin": "kè",
-                  "meaning": "class"
+                  "meaning": "class",
+                  "simplified": "课"
                 },
                 {
                   "id": "g3-e3-word-5",
@@ -4861,7 +4878,8 @@
                   "traditional": "課",
                   "pinyin": "kè",
                   "meaning": "class",
-                  "suffix": "。"
+                  "suffix": "。",
+                  "simplified": "课"
                 }
               ]
             }

@@ -11,7 +11,7 @@ interface SavedWordsPreviewProps {
   onViewAll: () => void;
 }
 
-/** Saved words as small pressable chips in one fixed-height row (scrolls sideways) so the section never changes height when words arrive; an empty list is one quiet line. */
+/** Saved words wrap into the available width so the last item is never clipped off-screen. */
 export function SavedWordsPreview({ items, isLoading, totalCount, onOpenWord, onViewAll }: SavedWordsPreviewProps) {
   const visibleItems = items.slice(0, MAX_PREVIEW_ITEMS);
   const displayCount = totalCount ?? (items.length > 0 ? items.length : undefined);
@@ -32,11 +32,11 @@ export function SavedWordsPreview({ items, isLoading, totalCount, onOpenWord, on
         )}
       />
       {isLoading ? (
-        <div className="flex h-12 gap-2">
+        <div className="flex min-h-12 flex-wrap gap-2">
           {Array.from({ length: 3 }).map((_, index) => <Skeleton key={index} className="h-12 w-24 rounded-control" />)}
         </div>
       ) : visibleItems.length > 0 ? (
-        <div className="flex h-12 gap-2 overflow-x-auto">
+        <div className="flex min-h-12 flex-wrap gap-2">
           {visibleItems.map((item) => (
             <button
               key={item.word}
@@ -51,7 +51,7 @@ export function SavedWordsPreview({ items, isLoading, totalCount, onOpenWord, on
           ))}
         </div>
       ) : (
-        <p className="flex h-12 items-center text-[15px] font-bold text-ui-muted">Tap the bookmark on any word to keep it here.</p>
+        <p className="flex min-h-12 items-center text-[15px] font-bold text-ui-muted">Tap the bookmark on any word to keep it here.</p>
       )}
     </section>
   );

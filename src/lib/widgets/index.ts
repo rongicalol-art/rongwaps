@@ -3,6 +3,7 @@ export * from './ActionButton';
 export * from './EdgeNavButtons';
 export * from './FolderSvg';
 export * from './IconActionButton';
+export * from './KeyChip';
 export * from './SegmentedControl';
 export * from './SettingsDropdownPicker';
 export * from './ToggleSwitch';

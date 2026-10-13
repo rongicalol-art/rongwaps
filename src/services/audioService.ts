@@ -2,14 +2,23 @@ import { debugLogger } from '../utils/debug/debugLogger';
 export { AUDIO_BUCKET } from './audio/audioCache';
 import {
   cacheObjectUrl,
+  audioBlobCachedAt,
+  getCachedObjectUrl,
   fetchAudioBlob,
   preloadAudioFiles,
+  publicAudioUrl,
+  readCachedAudioBlob,
+  MAX_AUDIO_MEMORY_BYTES,
+  type AudioPreloadProgress,
 } from './audio/audioCache';
 import {
   ensureSpeechVoices,
   playNeuralAudio,
   preloadNeuralTexts,
   speakUtterance,
+  releaseBlobAudio,
+  releaseSpeechUtterance,
+  wait,
 } from './audio/speechEngine';
 import {
   playHtmlAudio,
@@ -17,38 +26,22 @@ import {
   silenceAudio,
   type PlayRangeOptions,
 } from './audio/playbackEngine';
+import type { Flashcard } from '../data/flashcards';
+import { getCharacterAudio } from './pronunciationAudio';
 
-type WindowWithWebkitAudioContext = Window & {
-  webkitAudioContext?: typeof AudioContext;
-};
-
+type PlayOptions = { overlap?: boolean; fallback?: 'none'; onUnavailable?: () => void };
 export class AudioService {
-  private audioContext: AudioContext | null = null;
-  private buffers: Map<string, AudioBuffer> = new Map();
-  private fetchPromises: Map<string, Promise<AudioBuffer>> = new Map();
   private objectUrls: Map<string, string> = new Map();
-  private blobPromises: Map<string, Promise<string>> = new Map();
   private globalAudio: HTMLAudioElement | null = null;
   private spareAudio: HTMLAudioElement | null = null; // pre-unlocked; hosts the next overlapped clip
-
   private isInitialized = false;
-  private currentSource: AudioBufferSourceNode | null = null;
   private rangeRafHandle: number | null = null;
   private currentUtterance: SpeechSynthesisUtterance | null = null;
   private activePlaybackFinish: (() => void) | null = null;
+  private activePlaybackCleanup: (() => void) | null = null;
   private activeBlobAudio: HTMLAudioElement | null = null;
-
   constructor() {
     if (typeof window !== 'undefined') {
-      const AudioContextClass = window.AudioContext
-        || (window as WindowWithWebkitAudioContext).webkitAudioContext;
-      if (AudioContextClass) {
-        try {
-          this.audioContext = new AudioContextClass();
-        } catch (error) {
-          debugLogger.warn('Audio', 'Web Audio initialization failed; using HTML audio fallback', error);
-        }
-      }
       if (typeof Audio !== 'undefined') {
         try {
           this.globalAudio = new Audio();
@@ -58,15 +51,13 @@ export class AudioService {
       }
     }
   }
-
   public initialize(): void {
     if (this.isInitialized) return;
-    if (this.audioContext && this.audioContext.state === 'suspended') {
-      try { this.audioContext.resume().catch(() => {}); } catch (e) { debugLogger.warn('Audio', 'AudioContext resume failed', e); }
-    }
-    if (this.globalAudio && typeof Audio !== 'undefined') this.spareAudio ??= new Audio();
+    try { if (this.globalAudio && typeof Audio !== 'undefined') this.spareAudio ??= new Audio(); }
+    catch (error) { debugLogger.warn('Audio', 'Spare audio initialization failed', error); }
     for (const audio of [this.globalAudio, this.spareAudio]) {
       if (!audio) continue;
+      if (audio === this.globalAudio && this.activePlaybackFinish) continue;
       try {
         audio.src = 'data:audio/mp3;base64,//OkwAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAB//OkwAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAB//OkwAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAB';
         audio.play()?.catch(() => {});
@@ -81,40 +72,22 @@ export class AudioService {
     } catch (e) { debugLogger.warn('Audio', 'Storage persist request failed', e); }
     this.isInitialized = true;
   }
-
-  private async getAudioObjectUrl(fileName: string): Promise<string> {
-    const existing = this.objectUrls.get(fileName);
-    if (existing) return existing;
-    const inflight = this.blobPromises.get(fileName);
-    if (inflight) return inflight;
-
-    const promise = (async () => {
-      const blob = await fetchAudioBlob(fileName);
-      const objectUrl = URL.createObjectURL(blob);
-      cacheObjectUrl(this.objectUrls, fileName, objectUrl);
-      return objectUrl;
-    })();
-
-    this.blobPromises.set(fileName, promise);
-    try {
-      return await promise;
-    } finally {
-      this.blobPromises.delete(fileName);
-    }
+  private async getAudioObjectUrl(fileName: string, signal?: AbortSignal): Promise<string> {
+    const existing = getCachedObjectUrl(this.objectUrls, fileName);
+    if (existing) { cacheObjectUrl(this.objectUrls, fileName, existing); return existing; }
+    const blob = await fetchAudioBlob(fileName, signal);
+    signal?.throwIfAborted();
+    const shared = this.objectUrls.get(fileName);
+    if (shared) return shared;
+    if (blob.size > MAX_AUDIO_MEMORY_BYTES) throw new Error('Audio exceeds memory preload limit');
+    const objectUrl = URL.createObjectURL(blob);
+    cacheObjectUrl(this.objectUrls, fileName, objectUrl, blob.size, audioBlobCachedAt(blob));
+    return objectUrl;
   }
-
-  public async preload(audioFileNames: (string | undefined)[]): Promise<void> {
-    return preloadAudioFiles(
-      audioFileNames,
-      this.audioContext,
-      this.buffers,
-      this.fetchPromises,
-      this.objectUrls,
-      this.blobPromises,
-      (fileName) => this.getAudioObjectUrl(fileName),
-    );
+  public async preload(audioFileNames: (string | undefined)[], signal?: AbortSignal, onProgress?: (progress: AudioPreloadProgress) => void): Promise<void> {
+    return preloadAudioFiles(audioFileNames, this.objectUrls,
+      (fileName) => this.getAudioObjectUrl(fileName, signal), signal, onProgress);
   }
-
   private trackPlayback(resolve: () => void): () => void {
     let settled = false;
     const finish = () => {
@@ -128,7 +101,6 @@ export class AudioService {
     this.activePlaybackFinish = finish;
     return finish;
   }
-
   private startSpeech(
     text: string,
     language: string,
@@ -146,7 +118,6 @@ export class AudioService {
       preferAnyChineseVoice,
     );
   }
-
   public speakTTS(text: string, rate = 1.0): Promise<void> {
     this.stop();
     return new Promise((resolve) => {
@@ -154,7 +125,6 @@ export class AudioService {
       void this.startSpeech(text, 'zh-CN', rate, finish, true);
     });
   }
-
   public speakNeural(text: string, voice?: string): Promise<void> {
     this.stop();
     return new Promise((resolve) => {
@@ -167,15 +137,14 @@ export class AudioService {
         () => this.activePlaybackFinish === finish,
         finish,
         () => void this.startSpeech(text, language, 0.86, finish, true),
-        (audio) => { this.activeBlobAudio = audio; },
+        (audio) => { if (this.activePlaybackFinish === finish) this.activeBlobAudio = audio; },
+        this.globalAudio ?? undefined,
       );
     });
   }
-
   public async preloadNeural(texts: string[], voice?: string, options?: { limit?: number }): Promise<void> {
     return preloadNeuralTexts(texts, voice, options);
   }
-
   public speakText(text: string, language = 'zh-CN', rate = 1.0): Promise<void> {
     this.stop();
     return new Promise((resolve) => {
@@ -183,11 +152,10 @@ export class AudioService {
       void this.startSpeech(text, language, rate, finish);
     });
   }
-
   // With `overlap`, a playing clip rings out on its element while the new one uses the spare.
   private beginPlayback(overlap: boolean): void {
     const { globalAudio: tail, spareAudio: spare } = this;
-    if (!overlap || !tail || !spare || this.rangeRafHandle !== null || this.currentSource || this.currentUtterance) {
+    if (!overlap || !tail || !spare || this.rangeRafHandle !== null || this.currentUtterance || this.activeBlobAudio) {
       this.pause();
       return;
     }
@@ -195,25 +163,20 @@ export class AudioService {
       silenceAudio(spare);
       [this.globalAudio, this.spareAudio] = [spare, tail];
     }
+    this.activePlaybackCleanup?.();
+    this.activePlaybackCleanup = null;
     this.activeBlobAudio = null;
     this.activePlaybackFinish?.();
     this.activePlaybackFinish = null;
   }
-
   public pause(): void {
+    this.activePlaybackCleanup?.();
+    this.activePlaybackCleanup = null;
     if (this.spareAudio) silenceAudio(this.spareAudio);
     if (this.rangeRafHandle !== null) {
       try { cancelAnimationFrame(this.rangeRafHandle); } catch (e) { debugLogger.warn('Audio', 'cancelAnimationFrame failed', e); }
       this.rangeRafHandle = null;
     }
-    const source = this.currentSource;
-    this.currentSource = null;
-    if (source) {
-      source.onended = null;
-      try { source.stop(); } catch (e) { debugLogger.warn('Audio', 'AudioBufferSourceNode stop failed', e); }
-      try { source.disconnect(); } catch (e) { debugLogger.warn('Audio', 'AudioBufferSourceNode disconnect failed', e); }
-    }
-
     if (this.globalAudio) {
       this.globalAudio.onended = null;
       this.globalAudio.onerror = null;
@@ -222,16 +185,17 @@ export class AudioService {
         this.globalAudio.pause();
       } catch (e) { debugLogger.warn('Audio', 'Global audio pause failed', e); }
     }
-
     const blobAudio = this.activeBlobAudio;
     this.activeBlobAudio = null;
     if (blobAudio) {
+      releaseBlobAudio(blobAudio);
       blobAudio.onended = null;
       blobAudio.onerror = null;
       try { blobAudio.pause(); } catch (e) { debugLogger.warn('Audio', 'Blob audio pause failed', e); }
     }
 
     if (this.currentUtterance) {
+      releaseSpeechUtterance(this.currentUtterance);
       this.currentUtterance.onend = null;
       this.currentUtterance.onerror = null;
       this.currentUtterance = null;
@@ -253,27 +217,16 @@ export class AudioService {
       } catch (e) { debugLogger.warn('Audio', 'Reset currentTime failed', e); }
     }
   }
-
   public getGlobalAudio(): HTMLAudioElement | null {
     return this.globalAudio;
   }
-
   public getCurrentTime(): number {
-    if (this.globalAudio) {
-      return this.globalAudio.currentTime;
-    }
-    return 0;
+    return this.globalAudio?.currentTime ?? 0;
   }
 
   public isAudioFileName(filename?: string): boolean {
     if (!filename) return false;
-    const lowercase = filename.toLowerCase();
-    return lowercase.endsWith('.mp3')
-      || lowercase.endsWith('.wav')
-      || lowercase.endsWith('.ogg')
-      || lowercase.endsWith('.m4a')
-      || lowercase.startsWith('http://')
-      || lowercase.startsWith('https://');
+    return /\.(mp3|wav|ogg|m4a)(?:$|[?#])|^https?:\/\//i.test(filename);
   }
 
   public play(
@@ -282,7 +235,7 @@ export class AudioService {
     textFallback?: string,
     preferredVoice?: string,
     startTime = 0,
-    options?: { overlap?: boolean },
+    options?: PlayOptions,
   ): Promise<void> {
     this.beginPlayback(options?.overlap === true);
     const textToSpeak = textFallback
@@ -291,6 +244,12 @@ export class AudioService {
     return new Promise((resolve) => {
       const finish = this.trackPlayback(resolve);
       const startSpeechFallback = () => {
+        if (this.activePlaybackFinish !== finish) return;
+        if (options?.fallback === 'none') {
+          options.onUnavailable?.();
+          finish();
+          return;
+        }
         if (textToSpeak) {
           const fallbackVoice = preferredVoice || 'zh-CN-XiaoxiaoNeural';
           const fallbackLocale = fallbackVoice.startsWith('zh-TW') ? 'zh-TW' : 'zh-CN';
@@ -300,8 +259,9 @@ export class AudioService {
             playbackRate,
             () => this.activePlaybackFinish === finish,
             finish,
-            () => void this.startSpeech(textToSpeak, fallbackLocale, 0.86, finish, true),
-            (audio) => { this.activeBlobAudio = audio; },
+            () => void this.startSpeech(textToSpeak, fallbackLocale, 0.86 * playbackRate, finish, true),
+            (audio) => { if (this.activePlaybackFinish === finish) this.activeBlobAudio = audio; },
+            this.globalAudio ?? undefined,
           );
         } else {
           finish();
@@ -320,26 +280,47 @@ export class AudioService {
       }
 
       let fallbackStarted = false;
-      const handleAudioFailure = () => {
+      const handleAudioFailure = (error?: unknown) => {
         if (fallbackStarted || this.activePlaybackFinish !== finish) return;
         fallbackStarted = true;
-        try { audio.pause(); } catch (e) { debugLogger.warn('Audio', 'Pause on audio failure failed', e); }
-        startSpeechFallback();
+        try {
+          audio.pause();
+          audio.src = '';
+          audio.load?.();
+        } catch (e) { debugLogger.warn('Audio', 'Pause on audio failure failed', e); }
+        if (options?.fallback !== 'none' && error instanceof Error && error.name === 'TimeoutError' && textToSpeak) {
+          const locale = (preferredVoice || '').startsWith('zh-TW') ? 'zh-TW' : 'zh-CN';
+          void this.startSpeech(textToSpeak, locale, 0.86 * playbackRate, finish, true);
+        } else startSpeechFallback();
       };
 
-      const isRemoteUrl = /^https?:\/\//i.test(audioFileName);
-      if (isRemoteUrl) {
-        playHtmlAudio(audio, audioFileName, playbackRate, finish, handleAudioFailure, startTime);
-      } else {
-        const existingUrl = this.objectUrls.get(audioFileName);
-        if (existingUrl) {
-          playHtmlAudio(audio, existingUrl, playbackRate, finish, handleAudioFailure, startTime);
-        } else {
-          this.getAudioObjectUrl(audioFileName)
-            .then((url) => playHtmlAudio(audio, url, playbackRate, finish, handleAudioFailure, startTime))
-            .catch(handleAudioFailure);
-        }
-      }
+      const playUrl = (url: string) => {
+        if (this.activePlaybackFinish !== finish) return;
+        this.activePlaybackCleanup = playHtmlAudio(audio, url, playbackRate, () => {
+          // Cache explicitly completed recordings without delaying first sound.
+          if (typeof caches !== 'undefined') void fetchAudioBlob(audioFileName).catch(() => {});
+          finish();
+        }, handleAudioFailure, startTime);
+      };
+      this.playRecordedSource(audioFileName, playUrl, finish, handleAudioFailure);
+    });
+  }
+
+  /** Reading-checked dictionary/custom cards must never guess their reading with TTS. */
+  public playCard(card: Pick<Flashcard, 'audio' | 'front' | 'source'> & { pinyin?: string }, rate = 1, options?: PlayOptions): Promise<void> {
+    if (card.source === 'dictionary' && !this.isAudioFileName(card.audio) && /^[\u3400-\u9fff]$/u.test(card.front) && card.pinyin) {
+      this.beginPlayback(options?.overlap === true);
+      return new Promise((resolve) => {
+        const finish = this.trackPlayback(resolve);
+        void Promise.race([getCharacterAudio(card.front, card.pinyin), wait(2500).then(() => undefined)]).then((audio) => {
+          if (this.activePlaybackFinish !== finish) return;
+          this.activePlaybackFinish = null; // Transfer cancellation ownership to recorded playback.
+          void this.play(audio, rate, undefined, undefined, 0, { ...options, fallback: 'none' }).then(finish, finish);
+        }, () => { if (this.activePlaybackFinish === finish) { options?.onUnavailable?.(); finish(); } });
+      });
+    }
+    return this.play(card.audio, rate, card.front, undefined, 0, {
+      ...options, ...(card.source === 'dictionary' ? { fallback: 'none' as const } : {}),
     });
   }
 
@@ -354,35 +335,47 @@ export class AudioService {
       const finish = this.trackPlayback(resolve);
       const audio = this.globalAudio;
       if (!audio) {
+        options?.onUnavailable?.();
         finish();
         return;
       }
 
       const runRange = (src: string) => {
-        playRangeOnAudioElement(
-          audio,
-          src,
-          startSec,
-          endSec,
-          options,
-          finish,
-          (handle) => { this.rangeRafHandle = handle; },
-        );
+        if (this.activePlaybackFinish !== finish) return;
+        this.activePlaybackCleanup = playRangeOnAudioElement(audio, src, startSec, endSec, options, (ended) => {
+          if (ended) {
+            options?.onComplete?.();
+            if (typeof caches !== 'undefined') void fetchAudioBlob(audioFileName).catch(() => {});
+          }
+          finish();
+        }, (handle) => { this.rangeRafHandle = handle; });
       };
 
-      const existingUrl = this.objectUrls.get(audioFileName);
-      if (existingUrl) {
-        runRange(existingUrl);
-      } else {
-        this.getAudioObjectUrl(audioFileName)
-          .then(runRange)
-          .catch(() => finish());
-      }
+      this.playRecordedSource(audioFileName, runRange, finish, () => { options?.onUnavailable?.(); finish(); });
     });
   }
 
+  /** One source policy for whole words and reader ranges; cold files keep streaming. */
+  private playRecordedSource(fileName: string, run: (src: string) => void, finish: () => void, fail: (error?: unknown) => void): void {
+    const existing = getCachedObjectUrl(this.objectUrls, fileName);
+    if (existing) { cacheObjectUrl(this.objectUrls, fileName, existing); run(existing); return; }
+    const stream = publicAudioUrl(fileName);
+    if (typeof caches !== 'undefined') {
+      void readCachedAudioBlob(fileName).then((blob) => {
+        if (this.activePlaybackFinish !== finish) return;
+        if (blob && blob.size <= MAX_AUDIO_MEMORY_BYTES) {
+          const url = URL.createObjectURL(blob);
+          cacheObjectUrl(this.objectUrls, fileName, url, blob.size, audioBlobCachedAt(blob));
+          run(url);
+        } else if (stream) run(stream);
+        else fail();
+      }).catch(fail);
+    } else if (stream) run(stream);
+    else void this.getAudioObjectUrl(fileName).then(run).catch(fail);
+  }
+
   public setPlaybackRate(rate: number): void {
-    const validRate = rate > 0 ? rate : 1;
+    const validRate = Number.isFinite(rate) && rate > 0 ? rate : 1;
     for (const audio of [this.globalAudio, this.activeBlobAudio]) {
       if (!audio) continue;
       const pitchAudio = audio as unknown as Record<string, boolean>;

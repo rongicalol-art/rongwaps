@@ -187,21 +187,7 @@ export function SearchScreen({ menuToggle, onProfileClick }: SearchScreenProps) 
           />
         </div>
 
-        <aside
-          aria-label="Today and progress"
-          className={`order-2 min-w-0 lg:self-start lg:sticky-rail lg:col-start-2 lg:row-span-2 lg:row-start-1 ${query ? 'hidden lg:block' : ''}`}
-        >
-          <DictionaryAside
-            savedWords={savedWords}
-            isLoadingSavedWords={isLoadingSavedWords}
-            characterOfTheDay={characterOfTheDay}
-            onOpenWord={setDictionaryWord}
-            onViewSavedWords={handleViewSavedWords}
-            readiness={readiness}
-          />
-        </aside>
-
-        <div className="order-3 min-w-0 lg:col-start-1 lg:row-start-2">
+        <div className="order-2 min-w-0 lg:col-start-1 lg:row-start-2">
           <DictionaryResults
             mode={mode}
             query={searchTerm}
@@ -212,6 +198,20 @@ export function SearchScreen({ menuToggle, onProfileClick }: SearchScreenProps) 
             onOpenWord={setDictionaryWord}
           />
         </div>
+
+        <aside
+          aria-label="Today and progress"
+          className={`order-3 min-w-0 lg:self-start lg:sticky-rail lg:col-start-2 lg:row-span-2 lg:row-start-1 ${query ? 'hidden lg:block' : ''}`}
+        >
+          <DictionaryAside
+            savedWords={savedWords}
+            isLoadingSavedWords={isLoadingSavedWords}
+            characterOfTheDay={characterOfTheDay}
+            onOpenWord={setDictionaryWord}
+            onViewSavedWords={handleViewSavedWords}
+            readiness={readiness}
+          />
+        </aside>
 
         <AppFooter className="order-4 pt-6 lg:hidden" />
       </div>

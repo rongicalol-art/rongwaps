@@ -6,6 +6,8 @@ export interface Flashcard {
   partId?: number;
   front: string;
   back: string;
+  /** Concise single-sense definition without synonym padding. */
+  simple?: string;
   /** Raw traditional form as authored (may contain / alternatives and （） optionals). */
   traditional?: string;
   /** Raw simplified form as authored (may contain / alternatives and （） optionals). */
@@ -19,6 +21,8 @@ export interface Flashcard {
     chinese: string;
     pinyin: string;
     english: string;
+    /** Line from a textbook dialogue/reading rather than a sentence written for this word. */
+    fromText?: boolean;
   }[];
 }
 

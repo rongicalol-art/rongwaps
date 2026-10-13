@@ -3,18 +3,21 @@ import { audioService } from '../services/audioService';
 
 export function useAudioUnlock() {
   useEffect(() => {
-    // Unlock audio context on iOS on first user interaction
+    // Run before click handlers start playback on the reused iOS audio elements.
     const unlockAudio = () => {
       audioService.initialize();
-      document.removeEventListener('click', unlockAudio);
-      document.removeEventListener('touchend', unlockAudio);
+      document.removeEventListener('click', unlockAudio, true);
+      document.removeEventListener('touchend', unlockAudio, true);
+      document.removeEventListener('keydown', unlockAudio, true);
     };
-    document.addEventListener('click', unlockAudio);
-    document.addEventListener('touchend', unlockAudio);
+    document.addEventListener('click', unlockAudio, true);
+    document.addEventListener('touchend', unlockAudio, true);
+    document.addEventListener('keydown', unlockAudio, true);
     
     return () => {
-      document.removeEventListener('click', unlockAudio);
-      document.removeEventListener('touchend', unlockAudio);
+      document.removeEventListener('click', unlockAudio, true);
+      document.removeEventListener('touchend', unlockAudio, true);
+      document.removeEventListener('keydown', unlockAudio, true);
     };
   }, []);
 }

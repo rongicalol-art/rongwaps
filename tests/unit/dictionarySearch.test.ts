@@ -49,3 +49,44 @@ test('searchDictionaryOffline gracefully handles empty queries in any environmen
   const empty = await searchDictionaryOffline('');
   assert.deepEqual(empty, []);
 });
+
+test('short English queries find meanings rather than substrings or dictionary notes', () => {
+  const greetings = searchInIndex(index, 'hi', 10);
+  assert.ok(greetings.slice(0, 2).some((word) => word.simplified === '你好'));
+  assert.ok(greetings.slice(0, 2).some((word) => word.simplified === '嗨'));
+  assert.ok(!greetings.some((word) => ['昰', '他', '这', '妳', '中国'].includes(word.simplified)));
+  assert.equal(searchInIndex(index, 'tea', 10)[0].simplified, '茶');
+});
+
+test('tone marks, tone numbers and separators find the same pinyin word', () => {
+  for (const query of ['nihao', 'ni hao', 'nǐ hǎo', 'ni3 hao3', "ni'hao", ' NǏ  HǍO ']) {
+    assert.equal(searchInIndex(index, query, 10)[0]?.simplified, '你好', query);
+  }
+  for (const query of ['學', '学']) {
+    assert.equal(searchInIndex(index, query, 10)[0]?.simplified, '学', query);
+  }
+});
+
+test('relevance outranks frequency and duplicate entries keep the best meaning', () => {
+  const entries: CompactSearchEntry[] = [
+    [1, '甲', '', 'jiǎ', 'jia', ['the teacher arrived'], 100],
+    [2, '乙', '', 'yǐ', 'yi', ['(noun) teacher; instructor'], 0],
+    [3, '丙', '', 'bǐng', 'bing', ['a teacher at school'], 50],
+    [4, '丙', '', 'bǐng', 'bing', ['teacher'], 0],
+  ];
+  assert.deepEqual(searchInIndex(entries, 'teacher').map((word) => word.id), [2, 4, 1]);
+});
+
+test('single-word typos are a fallback, never padding for a strong match', () => {
+  const entries: CompactSearchEntry[] = [
+    [1, '老師', '', 'lǎo shī', 'laoshi', ['teacher'], 20],
+    [2, '教', '', 'jiào', 'jiao', ['teach'], 100],
+  ];
+  for (const query of ['techer', 'teachre', 'teachex', 'teacherr', 'laoshj']) {
+    assert.equal(searchInIndex(entries, query)[0]?.id, 1, query);
+  }
+  assert.deepEqual(searchInIndex(entries, 'teach').map((word) => word.id), [2, 1]);
+  assert.deepEqual(searchInIndex(entries, 'hi'), []);
+  assert.doesNotThrow(() => searchInIndex(entries, '['));
+  assert.deepEqual(searchInIndex(entries, 'teacher', 0), []);
+});

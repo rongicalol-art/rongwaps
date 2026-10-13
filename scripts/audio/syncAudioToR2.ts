@@ -93,7 +93,9 @@ async function listAllSupabaseFiles(supabase: SupabaseClient<any, any, any>): Pr
     if (error) throw error;
     if (!data || data.length === 0) break;
     for (const item of data) {
-      if (item.name && !item.name.startsWith('.')) {
+      // This migration covers root-level recordings; Storage folders have no id.
+      // Treating a folder such as `tts` as a file creates a false missing-object report.
+      if (item.id && item.name && !item.name.startsWith('.')) {
         files.push(item.name);
       }
     }

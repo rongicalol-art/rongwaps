@@ -1,10 +1,11 @@
 import { debugLogger } from '../../utils/debug/debugLogger';
-import { del, get, keys, set } from 'idb-keyval';
+import { del, get, getMany, set } from 'idb-keyval';
 
 export const AUDIO_BUCKET = 'vocabulary-audio';
 
-/** Cap on in-memory decoded buffers and object URLs per map (FIFO/LRU count). */
+/** Caps on retained recording object URLs per map. */
 export const MAX_AUDIO_CACHE = 100;
+export const MAX_AUDIO_MEMORY_BYTES = 25 * 1024 * 1024;
 
 /**
  * Cap on persistent Cache Storage bytes. Evicted least-recently-used first.
@@ -15,6 +16,7 @@ export const MAX_AUDIO_CACHE_BYTES = 150 * 1024 * 1024;
 
 /** IndexedDB meta namespace for the LRU byte index. */
 const AUDIO_META_PREFIX = 'rongwaps-audio-meta:';
+const IMMUTABLE_AUDIO_FILE = /-[a-f0-9]{12}\.mp3(?:$|[?#])/;
 
 interface AudioMeta {
   size: number;
@@ -52,6 +54,7 @@ function metaKey(fileName: string): string {
 }
 
 export async function touchAudioMeta(fileName: string, size?: number): Promise<void> {
+  if (typeof indexedDB === 'undefined') return;
   const key = metaKey(fileName);
   try {
     const existing = await get<AudioMeta>(key);
@@ -81,29 +84,27 @@ export async function pruneAudioCacheToLimit(): Promise<void> {
   const cache = await getAudioFileCache();
   if (!cache) return;
   try {
-    if (typeof indexedDB === 'undefined') return;
-    const allKeys = await keys();
-    let total = 0;
-    const indexed: { fileName: string; size: number; lastAccessed: number }[] = [];
-    for (const key of allKeys) {
-      if (typeof key !== 'string' || !key.startsWith(AUDIO_META_PREFIX)) continue;
-      const meta = await get<AudioMeta>(key);
-      if (!meta) continue;
-      const fileName = key.slice(AUDIO_META_PREFIX.length);
-      indexed.push({ fileName, size: meta.size, lastAccessed: meta.lastAccessed });
-      total += meta.size;
+    const requests = await cache.keys();
+    const names = requests.map((request) => decodeURIComponent(new URL(request.url).pathname.slice('/api/audio/'.length)));
+    // Count the actual cache, including legacy entries and writes whose IDB metadata failed.
+    const metadata = typeof indexedDB === 'undefined' ? []
+      : await getMany<AudioMeta>(names.map(metaKey)).catch(() => []);
+    const indexed: Array<{ request: Request; fileName: string; size: number; lastAccessed: number }> = [];
+    for (const [i, request] of requests.entries()) {
+      const response = await cache.match(request);
+      const size = Number(response?.headers.get('Content-Length')) || (response ? (await response.blob()).size : 0);
+      indexed.push({ request, fileName: names[i], size, lastAccessed: metadata[i]?.lastAccessed ?? 0 });
     }
-    if (total <= MAX_AUDIO_CACHE_BYTES) return;
-
+    let total = indexed.reduce((sum, entry) => sum + entry.size, 0);
     indexed.sort((a, b) => a.lastAccessed - b.lastAccessed);
     for (const entry of indexed) {
       if (total <= MAX_AUDIO_CACHE_BYTES) break;
-      await cache.delete(audioFileCacheRequest(entry.fileName)).catch(() => {});
-      await removeAudioMeta(entry.fileName);
-      total -= entry.size;
+      if (await cache.delete(entry.request)) {
+        total -= entry.size;
+        if (typeof indexedDB !== 'undefined') await removeAudioMeta(entry.fileName);
+      }
     }
   } catch (error) {
-    // Graceful degradation: cache pruning failed; never fail playback
     debugLogger.warn('Audio', 'Audio cache pruning failed', error);
   }
 }
@@ -125,75 +126,125 @@ export function resolveRequestUrl(path: string): string {
 }
 
 export function audioFileCacheRequest(fileName: string): Request {
-  return new Request(resolveRequestUrl('/api/audio/' + fileName));
+  // Use a same-origin synthetic key for Cache Storage. Absolute and signed
+  // URLs are encoded as data so their query strings cannot change the key.
+  return new Request(resolveRequestUrl('/api/audio/' + encodeURIComponent(fileName)));
 }
 
 export function publicAudioUrl(fileName: string): string | null {
+  // Card data may contain a complete public URL, including a temporary or
+  // signed HTTPS link. Preserve it as-is instead of prefixing the CDN domain.
+  if (/^https?:\/\//i.test(fileName)) return fileName;
+
+  const encodedPath = fileName.split('/').map(encodeURIComponent).join('/');
   const customCdn = viteEnv('VITE_AUDIO_BASE_URL');
   if (customCdn && /^https?:\/\//.test(customCdn)) {
-    return customCdn.replace(/\/+$/, '') + '/' + fileName;
+    return customCdn.replace(/\/+$/, '') + '/' + encodedPath;
   }
   const supabaseUrl = viteEnv('VITE_SUPABASE_URL');
   if (supabaseUrl && /^https?:\/\//.test(supabaseUrl) && !supabaseUrl.includes('your_')) {
-    return supabaseUrl.replace(/\/+$/, '') + '/storage/v1/object/public/' + AUDIO_BUCKET + '/' + fileName;
+    return supabaseUrl.replace(/\/+$/, '') + '/storage/v1/object/public/' + AUDIO_BUCKET + '/' + encodedPath;
   }
   return null;
 }
 
-const inFlightBlobFetches = new Map<string, Promise<Blob>>();
+const blobCachedAt = new WeakMap<Blob, number>();
+export const audioBlobCachedAt = (blob: Blob): number => blobCachedAt.get(blob) ?? Date.now();
 
-export async function fetchAudioBlob(fileName: string): Promise<Blob> {
-  const existing = inFlightBlobFetches.get(fileName);
-  if (existing) return existing;
+const inFlightBlobFetches = new Map<string, {
+  promise: Promise<Blob>; controller: AbortController; users: number; settled: boolean;
+}>();
 
-  const promise = (async () => {
-    const cache = await getAudioFileCache();
-    const cacheRequest = audioFileCacheRequest(fileName);
+/** Reject error pages and empty files before they can poison either audio cache. */
+export function isUsableAudioBlob(blob: Blob): boolean {
+  return blob.size > 0 && (!blob.type || /^(audio\/|application\/(octet-stream|ogg)(?:;|$))/i.test(blob.type));
+}
 
-    if (cache) {
-      const cached = await cache.match(cacheRequest).catch(() => null);
-      if (cached) {
-        void touchAudioMeta(fileName);
-        return await cached.blob();
-      }
-    }
-
-    const directUrl = publicAudioUrl(fileName);
-    const sources = [
-      directUrl,
-      '/api/audio/' + fileName,
-    ].filter((source): source is string => source !== null);
-
-    let lastError: unknown;
-    for (const source of sources) {
-      try {
-        const response = await fetch(source);
-        if (!response.ok) throw new Error('Failed to fetch audio: ' + response.statusText);
-        const blob = await response.blob();
-        if (cache) {
-          cache
-            .put(cacheRequest, new Response(blob, { headers: { 'Content-Type': 'audio/mpeg' } }))
-            .then(() => touchAudioMeta(fileName, blob.size))
-            .then(() => schedulePruneAudioCache())
-            .catch(() => {});
-        }
-        return blob;
-      } catch (error) {
-        lastError = error;
-      }
-    }
-
-    throw lastError instanceof Error
-      ? lastError
-      : new Error('Failed to fetch audio: ' + fileName);
+/** Cache-only lookup: a miss must keep first playback streaming from the CDN. */
+export async function readCachedAudioBlob(fileName: string, allowStale = true): Promise<Blob | null> {
+  let timer: ReturnType<typeof setTimeout>;
+  const deadline = new Promise<null>((resolve) => { timer = setTimeout(() => resolve(null), 1000); });
+  const read = (async () => {
+    try {
+      const cache = await getAudioFileCache();
+      const response = await cache?.match(audioFileCacheRequest(fileName));
+      if (!response) return null;
+      const savedAt = Number(response.headers?.get('X-Audio-Cached-At'));
+      const immutable = IMMUTABLE_AUDIO_FILE.test(fileName);
+      if (!allowStale && !immutable && typeof navigator !== 'undefined' && navigator.onLine === true
+        && (!savedAt || Date.now() - savedAt > 86400_000)) return null;
+      const blob = await response.blob();
+      if (!isUsableAudioBlob(blob)) return null;
+      blobCachedAt.set(blob, savedAt);
+      void touchAudioMeta(fileName, blob.size);
+      return blob;
+    } catch { return null; }
   })();
+  try { return await Promise.race([read, deadline]); } finally { clearTimeout(timer!); }
+}
 
-  inFlightBlobFetches.set(fileName, promise);
-  try {
-    return await promise;
-  } finally {
-    inFlightBlobFetches.delete(fileName);
+export async function fetchAudioBlob(fileName: string, signal?: AbortSignal): Promise<Blob> {
+  if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
+  let flight = inFlightBlobFetches.get(fileName);
+  if (!flight) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
+    const aborted = new Promise<never>((_resolve, reject) => {
+      controller.signal.addEventListener('abort', () => reject(new DOMException('Aborted', 'AbortError')), { once: true });
+    });
+    const work = (async () => {
+      const cached = await readCachedAudioBlob(fileName, false);
+      if (cached) return cached;
+      controller.signal.throwIfAborted();
+      const directUrl = publicAudioUrl(fileName);
+      if (!directUrl) throw new Error('No public audio URL configured');
+      // A streaming response in the HTTP cache may lack CORS headers.
+      const response = await fetch(directUrl, { signal: controller.signal, cache: 'reload' });
+      if (!response.ok || response.status === 206) throw new Error(`Failed to fetch complete audio: ${response.status}`);
+      if (Number(response.headers.get('Content-Length')) > MAX_AUDIO_MEMORY_BYTES) throw new Error('Recording exceeds download limit');
+      const blob = await response.blob();
+      if (!isUsableAudioBlob(blob) || blob.size > MAX_AUDIO_MEMORY_BYTES) throw new Error('Invalid audio response');
+      blobCachedAt.set(blob, Date.now());
+      void getAudioFileCache().then((cache) => {
+        if (!cache) return;
+        return cache.put(audioFileCacheRequest(fileName), new Response(blob, { headers: {
+          'Content-Type': blob.type || 'audio/mpeg', 'Content-Length': String(blob.size), 'X-Audio-Cached-At': String(Date.now()),
+        } })).then(() => touchAudioMeta(fileName, blob.size)).then(schedulePruneAudioCache);
+      }).catch(() => {});
+      return blob;
+    })();
+    const promise = Promise.race([work, aborted]);
+    flight = { promise, controller, users: 0, settled: false };
+    const created = flight;
+    inFlightBlobFetches.set(fileName, created);
+    const done = () => {
+      clearTimeout(timeout);
+      created.settled = true;
+      if (inFlightBlobFetches.get(fileName) === created) inFlightBlobFetches.delete(fileName);
+    };
+    void promise.then(done, done);
   }
+  const shared = flight;
+  shared.users++;
+  // Each caller owns its cancellation; cancel the transport only when nobody still needs it.
+  return new Promise<Blob>((resolve, reject) => {
+    let settled = false;
+    const release = () => {
+      if (settled) return false;
+      settled = true;
+      signal?.removeEventListener('abort', abort);
+      shared.users--;
+      if (!shared.users && !shared.settled) {
+        if (inFlightBlobFetches.get(fileName) === shared) inFlightBlobFetches.delete(fileName);
+        shared.controller.abort();
+      }
+      return true;
+    };
+    const abort = () => { if (release()) reject(new DOMException('Aborted', 'AbortError')); };
+    signal?.addEventListener('abort', abort, { once: true });
+    shared.promise.then((blob) => { if (release()) resolve(blob); }, (error) => { if (release()) reject(error); });
+    if (signal?.aborted) abort();
+  });
 }
 
 /**
@@ -207,50 +258,76 @@ function setLru<T>(map: Map<string, T>, key: string, value: T): T {
   return value;
 }
 
+const objectUrlSizes = new WeakMap<Map<string, string>, Map<string, { size: number; createdAt: number }>>();
+
+export function getCachedObjectUrl(objectUrls: Map<string, string>, fileName: string): string | undefined {
+  const url = objectUrls.get(fileName);
+  const metadata = objectUrlSizes.get(objectUrls);
+  const entry = metadata?.get(fileName);
+  if (url && entry && !IMMUTABLE_AUDIO_FILE.test(fileName) && typeof navigator !== 'undefined'
+    && navigator.onLine === true && Date.now() - entry.createdAt > 86400_000) {
+    URL.revokeObjectURL(url);
+    objectUrls.delete(fileName);
+    metadata?.delete(fileName);
+    return undefined;
+  }
+  return url;
+}
+
 export function cacheObjectUrl(
   objectUrls: Map<string, string>,
   fileName: string,
   objectUrl: string,
+  size?: number,
+  cachedAt = Date.now(),
 ): void {
+  const sizes = objectUrlSizes.get(objectUrls) || new Map<string, { size: number; createdAt: number }>();
+  objectUrlSizes.set(objectUrls, sizes);
   const oldUrl = objectUrls.get(fileName);
+  const previous = sizes.get(fileName);
+  sizes.set(fileName, { size: size ?? previous?.size ?? 0, createdAt: oldUrl === objectUrl ? previous?.createdAt ?? cachedAt : cachedAt });
   setLru(objectUrls, fileName, objectUrl);
   if (oldUrl !== undefined && oldUrl !== objectUrl) URL.revokeObjectURL(oldUrl);
-  while (objectUrls.size > MAX_AUDIO_CACHE) {
+  let total = [...sizes.values()].reduce((sum, entry) => sum + entry.size, 0);
+  while (objectUrls.size > MAX_AUDIO_CACHE || (total > MAX_AUDIO_MEMORY_BYTES && objectUrls.size > 1)) {
     const oldest = objectUrls.keys().next().value;
     if (oldest === undefined) break;
     URL.revokeObjectURL(objectUrls.get(oldest)!);
     objectUrls.delete(oldest);
+    total -= sizes.get(oldest)?.size || 0;
+    sizes.delete(oldest);
   }
 }
 
+export interface AudioPreloadProgress { ready: number; failed: number; total: number; blocked?: boolean }
+
 export async function preloadAudioFiles(
   audioFileNames: (string | undefined)[],
-  audioContext: AudioContext | null,
-  buffers: Map<string, AudioBuffer>,
-  fetchPromises: Map<string, Promise<AudioBuffer>>,
   objectUrls: Map<string, string>,
-  blobPromises: Map<string, Promise<string>>,
   getAudioObjectUrl: (fileName: string) => Promise<string>,
+  signal?: AbortSignal,
+  onProgress?: (progress: AudioPreloadProgress) => void,
 ): Promise<void> {
   if (typeof window === 'undefined') return;
-  const validNames = audioFileNames.filter(Boolean) as string[];
+  const validNames = [...new Set(audioFileNames.filter((name) => name && /\.(mp3|wav|ogg|m4a)(?:$|[?#])|^https?:\/\//i.test(name)))] as string[];
   const queue = [...validNames];
+  const progress: AudioPreloadProgress = { ready: 0, failed: 0, total: queue.length };
+  onProgress?.({ ...progress });
 
   const processNext = async (): Promise<void> => {
-    if (queue.length === 0) return;
+    if (queue.length === 0 || signal?.aborted) return;
     const fileName = queue.shift()!;
     try {
-      if (!objectUrls.has(fileName) && !blobPromises.has(fileName)) {
-        const promise = getAudioObjectUrl(fileName);
-        blobPromises.set(fileName, promise);
-        try { await promise; } finally { blobPromises.delete(fileName); }
-      }
+      if (!getCachedObjectUrl(objectUrls, fileName)) await getAudioObjectUrl(fileName);
+      if (!signal?.aborted) progress.ready++;
     } catch (error) {
-      debugLogger.warn('Audio', 'Failed to preload audio', { fileName, error });
-      blobPromises.delete(fileName);
+      if (!signal?.aborted) { progress.failed++; debugLogger.warn('Audio', 'Failed to preload audio', { fileName: fileName.split('?')[0], error }); }
+      // fetch TypeError means transport/CORS failure, not a missing recording.
+      if (!signal?.aborted && (error instanceof TypeError || (error instanceof Error && error.name === 'AbortError'))) { progress.blocked = true; queue.length = 0; }
     }
+    if (!signal?.aborted) onProgress?.({ ...progress });
     await processNext();
   };
 
-  await Promise.all(Array.from({ length: Math.min(4, queue.length) }, () => processNext()));
+  await processNext();
 }

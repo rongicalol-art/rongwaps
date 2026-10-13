@@ -15,10 +15,9 @@
       117
     ],
     "audioReference": "05-1-3",
-    "explanation": "State location with Subject + 在 / 不在 + Place (他在學校). This pattern answers \"Where is someone/something?\".",
+    "explanation": "Use 在 to say where someone or something is. Put the person or thing first, then 在 or 不在, then the place. 在 (or 不在) always comes before the place word.",
     "focusTerms": [
       "在",
-      "地方",
       "不在",
       "哪裡",
       "哪里"
@@ -1314,8 +1313,6 @@
     "audioReference": "05-1-3",
     "explanation": "Put 吧 at the end of a suggestion. It turns “do this” into a friendly “let’s do this”. Offer the solution, then close with 吧.",
     "focusTerms": [
-      "建議",
-      "建议",
       "吧"
     ],
     "teachingGlossary": [
@@ -2433,7 +2430,8 @@
               "id": "b1l05-g3-e2-word-14",
               "traditional": "妳",
               "pinyin": "nǐ",
-              "meaning": "you"
+              "meaning": "you",
+              "simplified": "你"
             },
             {
               "id": "b1l05-g3-e2-word-15",
@@ -2720,10 +2718,7 @@
     "audioReference": "05-1-3",
     "explanation": "When you talk about an action, put 在 + place right before that action. Think: person → place → what happens.",
     "focusTerms": [
-      "在",
-      "地方",
-      "動作",
-      "动作"
+      "在"
     ],
     "teachingGlossary": [
       {
@@ -4075,10 +4070,9 @@
           117
         ],
         "audioReference": "05-1-3",
-        "explanation": "Use 在 to say where someone or something is. Put the person or thing first, then 在 or 不在, then the place. This form only answers “Where?”",
+        "explanation": "Use 在 to say where someone or something is. Put the person or thing first, then 在 or 不在, then the place. 在 (or 不在) always comes before the place word.",
         "focusTerms": [
           "在",
-          "地方",
           "不在",
           "哪裡",
           "哪里"
@@ -5374,10 +5368,7 @@
         "audioReference": "05-1-3",
         "explanation": "When you talk about an action, put 在 + place right before that action. Think: person → place → what happens.",
         "focusTerms": [
-          "在",
-          "地方",
-          "動作",
-          "动作"
+          "在"
         ],
         "teachingGlossary": [
           {
@@ -6723,8 +6714,6 @@
         "audioReference": "05-1-3",
         "explanation": "Put 吧 at the end of a suggestion. It turns “do this” into a friendly “let’s do this”. Offer the solution, then close with 吧.",
         "focusTerms": [
-          "建議",
-          "建议",
           "吧"
         ],
         "teachingGlossary": [
@@ -7842,7 +7831,8 @@
                   "id": "b1l05-g3-e2-word-14",
                   "traditional": "妳",
                   "pinyin": "nǐ",
-                  "meaning": "you"
+                  "meaning": "you",
+                  "simplified": "你"
                 },
                 {
                   "id": "b1l05-g3-e2-word-15",
@@ -8147,7 +8137,8 @@
                 "traditional": "妳",
                 "pinyin": "nǐ",
                 "meaning": "you",
-                "prefix": "，"
+                "prefix": "，",
+                "simplified": "你"
               },
               {
                 "id": "b1l05-d1-l1-word-3",
@@ -8244,7 +8235,8 @@
                 "id": "b1l05-d1-l3-word-1",
                 "traditional": "妳",
                 "pinyin": "nǐ",
-                "meaning": "you"
+                "meaning": "you",
+                "simplified": "你"
               },
               {
                 "id": "b1l05-d1-l3-word-2",

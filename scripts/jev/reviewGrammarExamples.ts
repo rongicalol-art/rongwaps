@@ -17,7 +17,7 @@
  *   --out P           raw answers JSON (default output/jev/grammar/raw-v1.json)
  *   --dry             print the first request state without calling Jev
  *
- * Reruns resume by skipping example keys already present in the raw file.
+ * Reruns reuse answers only when the evidence, questions, and model match.
  */
 
 import { existsSync, readdirSync } from 'node:fs';
@@ -25,7 +25,7 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { noul, score, type Questions } from '@typesafe-ai/sdk';
 import { askJev, JEV_DEFAULT_MODEL, noulValue, scoreValue, type RawAnswers } from './client';
-import { readJson, readRawItems, runPool, writeJson } from './reviewSupport';
+import { readJson, readRawItems, reviewFingerprint, runPool, writeJson } from './reviewSupport';
 
 const ROOT = resolve(import.meta.dirname, '../..');
 const CONTENT_DIR = resolve(ROOT, 'content/grammar');
@@ -68,6 +68,7 @@ export const DEFAULT_GRAMMAR_THRESHOLDS: GrammarThresholds = {
 
 export interface GrammarReviewItem {
   key: string;
+  fingerprint?: string;
   state: GrammarState;
   answers: RawAnswers;
   resolvedModel?: string;
@@ -147,10 +148,10 @@ export function buildGrammarQuestions(state: GrammarState): Questions {
       },
     ),
     chinese_natural: noul(
-      'Is `example.traditional` natural, idiomatic Chinese for a learner at this lesson level, and does it clearly contain `lesson.pattern`?',
+      'Is `example.traditional` natural, idiomatic Taiwan Mandarin? Judge naturalness only; grammar-pattern fit is a separate question. No curriculum inventory is supplied, so do not infer which vocabulary the learner has studied.',
       {
-        true: 'The Chinese is natural and demonstrates the pattern.',
-        false: 'The Chinese is awkward or does not clearly show the pattern.',
+        true: 'The Chinese is natural Taiwan Mandarin.',
+        false: 'The Chinese is awkward or unidiomatic.',
       },
     ),
     pattern_fit: score(
@@ -165,7 +166,7 @@ export function buildGrammarQuestions(state: GrammarState): Questions {
   };
   if (state.example.pinyin) {
     questions.pinyin_correct = noul(
-      'Does `example.pinyin` match `example.traditional` (tones, syllables, spacing) with no missing or extra syllables?',
+      'Does `example.pinyin` accurately represent `example.traditional`? Accept standard Taiwan Mandarin readings, neutral tones, erhua, citation-tone or spoken sandhi conventions for 一/不, and reasonable word spacing. Flag incorrect readings, tones, or missing/extra syllables. This linguistic judgment does not verify a textbook scan.',
       {
         true: 'Pinyin matches the Chinese exactly.',
         false: 'Pinyin has tone, syllable, or spacing errors.',
@@ -230,9 +231,12 @@ export async function main(argv: string[] = process.argv): Promise<void> {
 
   const selected = selectGrammarCandidates(options);
   const existing = readRawItems<GrammarReviewItem>(options.out);
-  const done = new Set(existing.map((item) => item.key));
-  const pending = selected.filter((candidate) => !done.has(candidate.key));
-  console.log(`Jev grammar review: ${selected.length} examples · ${done.size} already done · ${pending.length} to run`);
+  const resultsByKey = new Map(existing.map((item) => [item.key, item]));
+  const pending = selected.filter((candidate) => {
+    const state = buildGrammarState(candidate);
+    return resultsByKey.get(candidate.key)?.fingerprint !== reviewFingerprint(state, buildGrammarQuestions(state), JEV_DEFAULT_MODEL);
+  });
+  console.log(`Jev grammar review: ${selected.length} examples · ${selected.length - pending.length} current · ${pending.length} to run`);
 
   if (options.dry) {
     const first = pending[0];
@@ -245,22 +249,22 @@ export async function main(argv: string[] = process.argv): Promise<void> {
     return;
   }
 
-  const results: GrammarReviewItem[] = [...existing];
   let completed = 0;
   await runPool(pending, options.concurrency, async (candidate) => {
     const state = buildGrammarState(candidate);
     const result = await askJev(state, buildGrammarQuestions(state));
     const answers = result.answers as unknown as RawAnswers;
-    results.push({ key: candidate.key, state, answers, resolvedModel: result.model, at: new Date().toISOString() });
+    resultsByKey.set(candidate.key, { key: candidate.key, fingerprint: reviewFingerprint(state, buildGrammarQuestions(state), JEV_DEFAULT_MODEL), state, answers, resolvedModel: result.model, at: new Date().toISOString() });
     completed += 1;
     if (completed % 10 === 0 || completed === pending.length) {
       const { pass, failed } = grammarVerdict(answers, state, thresholds);
-      writeJson(options.out, { schemaVersion: 1, thresholds, items: results });
+      writeJson(options.out, { schemaVersion: 1, thresholds, items: [...resultsByKey.values()] });
       console.log(`[${completed}/${pending.length}] ${candidate.key} ${pass ? 'pass' : `FAIL (${failed.join(', ')})`}`);
     }
   });
 
-  writeJson(options.out, { schemaVersion: 1, thresholds, items: results });
+  const results = selected.map((candidate) => resultsByKey.get(candidate.key)!);
+  writeJson(options.out, { schemaVersion: 1, thresholds, items: [...resultsByKey.values()] });
   const passCount = results.filter((item) => grammarVerdict(item.answers, item.state, thresholds).pass).length;
   console.log(`Done: ${passCount}/${results.length} pass at current thresholds`);
   console.log(`Wrote ${options.out}`);

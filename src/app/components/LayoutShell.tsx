@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
 import { SideNav, navTabLabel, sideNavWorkspaceOffset, SIDE_NAV_GUTTER, type SideNavProps } from './SideNav';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import { SAMPLE_BOOKS } from '../../data/books';
@@ -83,10 +82,10 @@ export function LayoutShell({
           style={{ top: SIDE_NAV_GUTTER, bottom: SIDE_NAV_GUTTER, left: SIDE_NAV_GUTTER }}
           className="absolute z-shell flex shrink-0 flex-col rounded-modal border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface shadow-ambient-sm overflow-visible"
         >
-          <SideNav 
+          <SideNav
             activeTab={activeTab}
             activeActivity={activeActivity}
-            onTabChange={onTabChange} 
+            onTabChange={onTabChange}
             onSettingsClick={onSettingsClick}
             onToggleCollapse={onToggleCollapse}
             accentClass={activeBook.accent}
@@ -97,42 +96,32 @@ export function LayoutShell({
       </div>
 
       {/* Mobile drawer (< 768px) */}
-      <AnimatePresence>
-        {!isDesktopOrTablet && isNavOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="absolute inset-0 bg-ui-ink-strong/20 z-dock md:hidden"
-              onClick={() => setIsNavOpen(false)}
+      {!isDesktopOrTablet && isNavOpen && (
+        <>
+          <div
+            className="absolute inset-0 bg-ui-ink-strong/20 z-dock md:hidden"
+            onClick={() => setIsNavOpen(false)}
+          />
+          <div
+            className="absolute inset-y-3 left-3 z-shell flex shrink-0 flex-col overflow-hidden rounded-modal border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface shadow-ambient-sm md:hidden"
+          >
+            <SideNav
+              activeTab={activeTab}
+              activeActivity={activeActivity}
+              onTabChange={(tab) => {
+                onTabChange(tab);
+                setIsNavOpen(false);
+              }}
+              onSettingsClick={() => {
+                onSettingsClick();
+                setIsNavOpen(false);
+              }}
+              accentClass={activeBook.accent}
+              isCollapsed={false}
             />
-            <motion.div
-              initial={{ x: '-110%', opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: '-110%', opacity: 0 }}
-              transition={{ duration: 0.26, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute inset-y-3 left-3 z-shell flex shrink-0 flex-col overflow-hidden rounded-modal border-b-[length:var(--depth-xl)] border-ui-border bg-ui-surface shadow-ambient-sm md:hidden"
-            >
-              <SideNav 
-                activeTab={activeTab}
-                activeActivity={activeActivity}
-                onTabChange={(tab) => {
-                  onTabChange(tab);
-                  setIsNavOpen(false);
-                }} 
-                onSettingsClick={() => {
-                  onSettingsClick();
-                  setIsNavOpen(false);
-                }}
-                accentClass={activeBook.accent}
-                isCollapsed={false}
-              />
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+          </div>
+        </>
+      )}
 
       <div
         data-workspace-content

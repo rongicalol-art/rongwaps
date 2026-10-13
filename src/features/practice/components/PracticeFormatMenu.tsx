@@ -8,14 +8,17 @@ import {
 import { cn } from '../../../utils/cn';
 import {
   useAppStore,
+  type QuizFormatPreference,
   type QuizQuestionType,
   type QuizChoiceType,
   type ListeningChoiceType,
   type TypingPromptType,
+  type MatchPairType,
 } from '../../../store/useAppStore';
 
 export interface PracticeFormatMenuProps {
   mode: 'quiz-choices' | 'listening' | 'quiz-typing';
+  isMatchPair?: boolean;
   className?: string;
 }
 
@@ -68,13 +71,15 @@ function formatLabel(type: FormatType) {
  * Features a soft frosted backdrop, tactile drawer container,
  * live question/answer preview flow, and rich character & icon selectors.
  */
-export function PracticeFormatMenu({ mode, className = '' }: PracticeFormatMenuProps) {
+export function PracticeFormatMenu({ mode, isMatchPair = false, className = '' }: PracticeFormatMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const quizFormat = useAppStore((state) => state.quizFormat);
   const quizQuestionType = useAppStore((state) => state.quizQuestionType);
   const quizChoiceType = useAppStore((state) => state.quizChoiceType);
   const listeningChoiceType = useAppStore((state) => state.listeningChoiceType);
   const typingPromptType = useAppStore((state) => state.typingPromptType);
+  const matchPairType = useAppStore((state) => state.matchPairType);
   const updatePreferences = useAppStore((state) => state.updatePreferences);
 
   const handleQuizQuestionChange = (newQuestion: QuizQuestionType) => {
@@ -99,8 +104,16 @@ export function PracticeFormatMenu({ mode, className = '' }: PracticeFormatMenuP
     const meta = (type: FormatType) => ({ ...formatLabel(type), tone: 'text-ui-ink' });
     const audio = { icon: <AppIcon name="audio" size={15} />, text: 'Audio', tone: 'text-brand-primary' };
     const typing = { icon: <AppIcon name="keyboard" size={15} />, text: 'Typing', tone: 'text-brand-primary' };
+    if (isMatchPair) {
+      const leftStep = matchPairType === 'audio'
+        ? audio
+        : matchPairType === 'characters'
+        ? meta('hanzi')
+        : { icon: <AppIcon name="cards" size={15} />, text: 'Mixed', tone: 'text-brand-primary' };
+      return [leftStep, meta('meaning')];
+    }
     if (mode === 'listening') return [audio, meta(listeningChoiceType)];
-    if (mode === 'quiz-choices') return [meta(quizQuestionType), meta(quizChoiceType)];
+    if (mode === 'quiz-choices') return quizFormat === 'mixed' ? [] : [meta(quizQuestionType), meta(quizChoiceType)];
     return [meta(typingPromptType), typing];
   })();
 
@@ -112,7 +125,7 @@ export function PracticeFormatMenu({ mode, className = '' }: PracticeFormatMenuP
         aria-label="Study format options"
         title="Study format options"
         className={cn(
-          'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-control text-ui-muted-strong transition-colors hover:bg-ui-hover hover:text-ui-ink active:text-ui-ink focus-ring',
+          'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-control bg-transparent text-ui-muted transition-colors hover:text-ui-ink-strong active:text-ui-ink-strong focus-ring',
           className,
         )}
       >
@@ -127,6 +140,7 @@ export function PracticeFormatMenu({ mode, className = '' }: PracticeFormatMenuP
       >
         <div className="flex flex-col gap-5 py-1 text-left">
           {/* Live Flow Indicator */}
+          {flow.length > 0 && (
           <div className="mb-4 flex items-center justify-center gap-3 rounded-control border border-ui-border bg-ui-canvas/60 px-4 py-2.5">
             {flow.map((step, i) => (
               <React.Fragment key={step.text}>
@@ -138,8 +152,40 @@ export function PracticeFormatMenu({ mode, className = '' }: PracticeFormatMenuP
               </React.Fragment>
             ))}
           </div>
+          )}
 
-          {mode === 'quiz-choices' && (
+          {isMatchPair && (
+            <FormatField label="Match Pairs">
+              <SegmentedControl<MatchPairType>
+                ariaLabel="Match pairs format"
+                value={matchPairType}
+                onChange={(val) => updatePreferences({ matchPairType: val })}
+                className="min-h-12"
+                options={[
+                  { value: 'characters', label: 'Characters', icon: <span className="font-chinese font-black text-sm">字</span> },
+                  { value: 'audio', label: 'Audio', icon: <AppIcon name="audio" size={16} /> },
+                  { value: 'mixed', label: 'Mixed', icon: <AppIcon name="cards" size={16} /> },
+                ]}
+              />
+            </FormatField>
+          )}
+
+          {!isMatchPair && mode === 'quiz-choices' && (
+            <FormatField label="Quiz Style">
+              <SegmentedControl<QuizFormatPreference>
+                ariaLabel="Quiz style"
+                value={quizFormat}
+                onChange={(val) => updatePreferences({ quizFormat: val })}
+                className="min-h-12"
+                options={[
+                  { value: 'mixed', label: 'Mixed' },
+                  { value: 'fixed', label: 'Fixed' },
+                ]}
+              />
+            </FormatField>
+          )}
+
+          {!isMatchPair && mode === 'quiz-choices' && quizFormat === 'fixed' && (
             <>
               <FormatField label="Question Prompt">
                 <SegmentedControl<QuizQuestionType>

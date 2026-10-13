@@ -101,7 +101,7 @@ export function DockSubMenu<T extends string>({
                 size="md"
                 fullWidth
                 className={cn(
-                  'justify-start gap-3 px-4 py-2.5 text-left text-sm sm:text-base font-extrabold',
+                  'justify-start gap-3 px-4 py-2.5 text-left text-sm sm:text-base font-extrabold normal-case tracking-normal',
                   selectedValue === mode.value
                     ? 'text-brand-primary hover:text-brand-primary'
                     : 'text-ui-ink-strong',

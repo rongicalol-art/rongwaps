@@ -57,7 +57,7 @@ export function GrammarContinueFooter({
                   aria-label={isLastPage ? 'Proceed to Reading' : 'Continue'}
                   className="btn-touch-primary"
                 >
-                  <span className="text-[17px] font-black">{isLastPage ? 'Read' : 'Next'}</span>
+                  <span>{isLastPage ? 'Read' : 'Next'}</span>
                 </ActionButton>
               </div>
             </div>

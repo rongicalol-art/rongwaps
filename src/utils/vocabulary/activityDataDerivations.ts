@@ -4,6 +4,7 @@ import type { LessonPartSelectionMap, UserFlashcard } from '../../types/models';
 import { isCardInPartSelection } from '../lesson/lessonPartSelection';
 import type { SRSData } from '../srs/srsEngine';
 import { isSrsDue } from '../srs/reviewOverview';
+import { findReadingMatch } from '../pinyin/pronunciationMatching';
 
 export function isSameCards(a: Flashcard[], b: Flashcard[]): boolean {
   if (a === b) return true;
@@ -28,6 +29,7 @@ export function mapStarredEntriesToFlashcards(
         vocabMap.get(entry.traditional) ||
         vocabMap.get(entry.simplified) ||
         vocabMap.get(word);
+      const recording = findReadingMatch(vocabMap, [entry.traditional, entry.simplified, word], entry.pinyin?.join(', '));
 
       results.push({
         id,
@@ -40,7 +42,8 @@ export function mapStarredEntriesToFlashcards(
             : Object.values(entry.definitions).join(' • ')
           : '',
         pinyin: entry.pinyin ? entry.pinyin.join(', ') : (courseMatch?.pinyin || ''),
-        audio: courseMatch?.audio || '',
+        audio: recording?.audio || '',
+        source: 'dictionary',
         notes: '',
       });
     }
@@ -65,6 +68,7 @@ export function mapCustomCardsToFlashcards(
     const courseMatch =
       vocabMap.get(c.traditional || '') ||
       vocabMap.get(c.simplified || '');
+    const recording = findReadingMatch(vocabMap, [c.traditional || '', c.simplified], c.pinyin);
     return {
       id: `custom-${c.id}`,
       bookId: courseMatch?.bookId || 0,
@@ -72,7 +76,8 @@ export function mapCustomCardsToFlashcards(
       front: c.traditional || c.simplified,
       back: c.translation,
       pinyin: c.pinyin || courseMatch?.pinyin || '',
-      audio: courseMatch?.audio || '',
+      audio: recording?.audio || '',
+      source: 'dictionary',
       notes: c.notes || '',
     };
   });

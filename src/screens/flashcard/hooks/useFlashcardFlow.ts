@@ -120,7 +120,7 @@ export function useFlashcardFlow({
     if (flowStatus !== 'idle' || !isFlipped || !currentCard) return;
     if (!autoPlayAudio && !manualRevealAudioRef.current) return;
     manualRevealAudioRef.current = false;
-    audioService.play(currentCard.audio, pronunciationRate, currentCard.front, undefined, 0, { overlap: true });
+    audioService.playCard(currentCard, pronunciationRate, { overlap: true });
   }, [autoPlayAudio, currentCard, flowStatus, isFlipped, pronunciationRate]);
 
   useEffect(() => {

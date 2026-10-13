@@ -1,0 +1,4 @@
+mlx-audio==0.5.8
+soundfile==0.14.0
+torch==2.8.0
+torchaudio==2.8.0

@@ -89,6 +89,14 @@ test('truncate caps long text and marks the cut', () => {
   assert.match(capped, /^x{10}\n…\[truncated 40 chars\]$/);
 });
 
+test('semantic data-access review covers hooks/features but leaves services to their own layer', () => {
+  const diff = '+const result = await fetch (url);';
+  for (const path of ['src/hooks/useData.ts', 'src/features/practice/hooks/useData.ts', 'src/utils/data.ts']) {
+    assert.ok(selectRules(path, diff).some((rule) => rule.id === 'no-direct-data-access'));
+  }
+  assert.deepEqual(selectRules('src/services/data.ts', diff), []);
+});
+
 test('buildState caps the diff and drops oversized content', () => {
   const small = buildState('src/a.ts', 'diff', 'const a = 1;');
   assert.equal(small.file.content, 'const a = 1;');

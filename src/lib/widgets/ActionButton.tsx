@@ -7,6 +7,8 @@ export type ActionButtonSize = 'sm' | 'md' | 'lg';
 export interface ActionButtonProps extends ComponentProps<'button'> {
   variant?: ActionButtonVariant;
   size?: ActionButtonSize;
+  /** Outer corner radius: 'control' (16px, default) or 'feature' (24px) for large media tiles. */
+  radius?: 'control' | 'feature';
   fullWidth?: boolean;
   loading?: boolean;
   loadingLabel?: string;
@@ -23,9 +25,9 @@ const edgeVariantClasses: Record<ActionButtonVariant, string> = {
 };
 
 const surfaceVariantClasses: Record<ActionButtonVariant, string> = {
-  primary: 'bg-brand-primary text-white hover:brightness-105',
-  secondary: 'border-2 border-ui-border bg-ui-surface text-ui-ink-strong hover:bg-ui-hover',
-  quiet: 'bg-transparent text-ui-muted-strong hover:bg-ui-hover hover:text-ui-ink-strong active:bg-ui-divider',
+  primary: 'bg-brand-primary text-brand-on-primary hover:brightness-105',
+  secondary: 'border-2 border-[var(--btn-edge,var(--color-ui-border))] bg-ui-surface text-brand-primary-deep hover:bg-ui-hover',
+  quiet: 'bg-transparent text-brand-primary-deep hover:bg-brand-primary-soft active:bg-brand-primary-wash',
   danger: 'bg-feedback-danger text-white hover:brightness-105',
   success: 'bg-feedback-success text-white hover:brightness-105',
   warning: 'bg-feedback-warning text-ui-ink-strong hover:brightness-105',
@@ -68,6 +70,7 @@ const sizeConfig: Record<ActionButtonSize, {
 export const ActionButton = forwardRef<HTMLButtonElement, ActionButtonProps>(function ActionButton({
   variant = 'primary',
   size = 'md',
+  radius,
   fullWidth = false,
   loading = false,
   loadingLabel = 'Loading',
@@ -96,6 +99,7 @@ export const ActionButton = forwardRef<HTMLButtonElement, ActionButtonProps>(fun
   ) : children;
 
   const sizeSpec = sizeConfig[size];
+  const outerRadiusClass = radius === 'feature' ? 'rounded-feature' : sizeSpec.outerRadius;
 
   if (variant === 'quiet') {
     return (
@@ -106,11 +110,11 @@ export const ActionButton = forwardRef<HTMLButtonElement, ActionButtonProps>(fun
         aria-busy={loading || undefined}
         style={buttonStyle}
         className={cn(
-          'inline-flex items-center justify-center gap-2 font-extrabold outline-none select-none transition-colors duration-100 focus-ring',
-          'bg-transparent text-ui-muted-strong hover:bg-ui-hover hover:text-ui-ink-strong active:bg-ui-divider',
+          'inline-flex items-center justify-center gap-2 font-black uppercase tracking-wider outline-none select-none transition-colors duration-100 focus-ring',
+          surfaceVariantClasses.quiet,
           'disabled:pointer-events-none disabled:cursor-not-allowed !disabled:text-ui-muted',
           sizeSpec.innerPadding,
-          sizeSpec.outerRadius,
+          outerRadiusClass,
           fullWidth && 'w-full',
           className,
         )}
@@ -134,7 +138,7 @@ export const ActionButton = forwardRef<HTMLButtonElement, ActionButtonProps>(fun
       className={cn(
         'group relative inline-flex items-stretch justify-center p-0 border-none bg-transparent outline-none select-none focus-ring',
         'disabled:pointer-events-none disabled:cursor-not-allowed',
-        sizeSpec.outerRadius,
+        outerRadiusClass,
         isFullWidth ? 'w-full' : isAutoWidth ? 'w-auto' : undefined,
       )}
       {...props}
@@ -154,7 +158,7 @@ export const ActionButton = forwardRef<HTMLButtonElement, ActionButtonProps>(fun
       {/* Moving Front Surface (Pushes down towards baseline on active; inert when disabled) */}
       <span
         className={cn(
-          'relative flex w-full items-center justify-center gap-2 font-extrabold rounded-[inherit]',
+          'relative flex w-full items-center justify-center gap-2 font-black uppercase tracking-wider rounded-[inherit]',
           'transition-[transform,background-color,border-color,color,filter] duration-150 ease-out',
           sizeSpec.marginClass,
           sizeSpec.innerPadding,

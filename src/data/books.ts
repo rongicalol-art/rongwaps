@@ -1,10 +1,11 @@
 /**
  * Course book catalog.
  *
- * Each book declares its identity plus a single `theme` object; every legacy
- * class/hex field (bg, accentBgLight, lightBg, accentHex, ...) is derived
- * below so a color change only ever touches one place. The derived shape is
- * what the UI consumes — do not add per-book duplicate fields back.
+ * Each book declares its identity plus a single `theme` tone: accent family,
+ * text, line and canvas roles. `useBookTheme` writes it onto the global CSS
+ * tokens, and the legacy class/hex fields below are derived from the tokens
+ * (never from per-book hexes), so a book or the review tone recolours every
+ * consumer. Do not add per-book duplicate fields back.
  */
 
 interface BookTheme {
@@ -14,7 +15,15 @@ interface BookTheme {
   primarySoft: string;
   primarySoftEdge: string;
   primaryTrack: string;
+  /** Selected-choice / deck wash behind accent text. */
+  primaryWash: string;
   practiceCanvas: string;
+  inkStrong: string;
+  ink: string;
+  mutedStrong: string;
+  muted: string;
+  border: string;
+  divider: string;
 }
 
 interface BookMeta {
@@ -27,66 +36,28 @@ interface BookMeta {
   status: 'active' | 'unlocked' | 'locked';
 }
 
-interface BookColors {
-  /** Book's soft background tint (used as page/deck wash). */
-  softBg: string;
-  /** Tailwind accent token when one exists; hex fallback otherwise. */
-  accentToken?: 'brand-primary' | 'brand-secondary' | 'feedback-success';
-  /** Border-edge class token override (defaults to the edge hex). */
-  edgeToken?: string;
-  theme: BookTheme;
-  neutral: {
-    bg: string;
-    border: string;
-    text: string;
-    muted: string;
-  };
-}
-
 type CourseBook = BookMeta & {
   bg: string;
   accent: string;
   accentBg: string;
   accentBorder: string;
-  accentBgLight: string;
-  ring: string;
-  lightBg: string;
-  gradientFrom: string;
-  gradientTo: string;
   accentHex: string;
   edgeHex: string;
   buttonEdge: string;
-  patternOpacity: number;
-  neutralBg: string;
-  neutralBorder: string;
-  neutralText: string;
-  neutralMuted: string;
   theme: BookTheme;
 };
 
-function buildBook(meta: BookMeta, colors: BookColors): CourseBook {
-  const accentInner = colors.accentToken ?? `[${colors.theme.primary}]`;
-  const edgeInner = colors.edgeToken ?? `[${colors.theme.primaryEdge}]`;
+function buildBook(meta: BookMeta, theme: BookTheme): CourseBook {
   return {
     ...meta,
-    bg: `bg-[${colors.softBg}]`,
-    accent: `text-${accentInner}`,
-    accentBg: `bg-${accentInner}`,
-    accentBorder: `border-${accentInner}`,
-    accentBgLight: `bg-[${colors.softBg}]`,
-    ring: `ring-${accentInner}/40`,
-    lightBg: `bg-[${colors.softBg}]`,
-    gradientFrom: colors.softBg,
-    gradientTo: '#ffffff',
-    accentHex: colors.theme.primary,
-    edgeHex: colors.theme.primaryEdge,
-    buttonEdge: `border-${edgeInner}`,
-    patternOpacity: 0.1,
-    neutralBg: colors.neutral.bg,
-    neutralBorder: colors.neutral.border,
-    neutralText: colors.neutral.text,
-    neutralMuted: colors.neutral.muted,
-    theme: colors.theme,
+    bg: 'bg-brand-primary-wash',
+    accent: 'text-brand-primary',
+    accentBg: 'bg-brand-primary',
+    accentBorder: 'border-brand-primary',
+    accentHex: 'var(--color-brand-primary)',
+    edgeHex: 'var(--color-brand-primary-edge)',
+    buttonEdge: 'border-brand-primary-edge',
+    theme,
   };
 }
 
@@ -94,69 +65,77 @@ export const SAMPLE_BOOKS: CourseBook[] = [
   buildBook(
     { id: 1, label: 'Book 1', title: 'Modern Chinese 1', subtitle: '時代華語 1', level: 'A1', progress: 0, status: 'active' },
     {
-      softBg: '#E4EDF3',
-      accentToken: 'brand-primary',
-      edgeToken: 'brand-primary-edge',
-      theme: {
-        primary: '#3A7CA5',
-        primaryEdge: '#2C6385',
-        primaryDeep: '#1F4D6B',
-        primarySoft: '#F2F6F8',
-        primarySoftEdge: '#C3D7E3',
-        primaryTrack: '#D3DBE0',
-        practiceCanvas: '#F3F2F0',
-      },
-      neutral: { bg: '#F4F7F9', border: '#E3E8EB', text: '#4A4E52', muted: '#A8AEB3' },
+      primary: '#3A7CA5',
+      primaryEdge: '#2C6385',
+      primaryDeep: '#1F4D6B',
+      primarySoft: '#F2F6F8',
+      primarySoftEdge: '#C3D7E3',
+      primaryTrack: '#D3DBE0',
+      primaryWash: '#E4EDF3',
+      practiceCanvas: '#F3F2F0',
+      inkStrong: '#34312D',
+      ink: '#4A4743',
+      mutedStrong: '#777777',
+      muted: '#8F8B86',
+      border: '#CBC8C3',
+      divider: '#DEDBD6',
     },
   ),
   buildBook(
     { id: 2, label: 'Book 2', title: 'Modern Chinese 2', subtitle: '時代華語 2', level: 'A2', progress: 0, status: 'unlocked' },
     {
-      softBg: '#F7E8D8',
-      accentToken: 'brand-secondary',
-      theme: {
-        primary: '#D4793A',
-        primaryEdge: '#B05F27',
-        primaryDeep: '#8A4A1E',
-        primarySoft: '#FBF5EF',
-        primarySoftEdge: '#EBCFB5',
-        primaryTrack: '#E3D9CE',
-        practiceCanvas: '#F3F2F0',
-      },
-      neutral: { bg: '#FCF8F4', border: '#ECE5DE', text: '#4D4A46', muted: '#B1AA9F' },
+      primary: '#D4793A',
+      primaryEdge: '#B05F27',
+      primaryDeep: '#8A4A1E',
+      primarySoft: '#FBF5EF',
+      primarySoftEdge: '#EBCFB5',
+      primaryTrack: '#E3D9CE',
+      primaryWash: '#F7E8D8',
+      practiceCanvas: '#F3F2F0',
+      inkStrong: '#3A302A',
+      ink: '#54483F',
+      mutedStrong: '#7D7268',
+      muted: '#968B80',
+      border: '#D1C7BB',
+      divider: '#E3DACF',
     },
   ),
   buildBook(
     { id: 3, label: 'Book 3', title: 'Modern Chinese 3', subtitle: '時代華語 3', level: 'B1', progress: 0, status: 'unlocked' },
     {
-      softBg: '#F6EDE5',
-      theme: {
-        primary: '#A0522D',
-        primaryEdge: '#8B4513',
-        primaryDeep: '#6E3510',
-        primarySoft: '#FBF7F3',
-        primarySoftEdge: '#E6D3C5',
-        primaryTrack: '#DDD3CB',
-        practiceCanvas: '#F3F2F0',
-      },
-      neutral: { bg: '#FCF8F5', border: '#EBE5E0', text: '#4D4845', muted: '#B1A8A2' },
+      primary: '#A0522D',
+      primaryEdge: '#8B4513',
+      primaryDeep: '#6E3510',
+      primarySoft: '#FBF7F3',
+      primarySoftEdge: '#E6D3C5',
+      primaryTrack: '#DDD3CB',
+      primaryWash: '#F6EDE5',
+      practiceCanvas: '#F3F2F0',
+      inkStrong: '#37302B',
+      ink: '#4F4640',
+      mutedStrong: '#7A7068',
+      muted: '#93887F',
+      border: '#CFC5BC',
+      divider: '#E0D8D0',
     },
   ),
   buildBook(
     { id: 4, label: 'Book 4', title: 'Modern Chinese 4', subtitle: '時代華語 4', level: 'B2', progress: 0, status: 'unlocked' },
     {
-      softBg: '#EDF9E2',
-      accentToken: 'feedback-success',
-      theme: {
-        primary: '#4F9F2A',
-        primaryEdge: '#3F8420',
-        primaryDeep: '#2C5F16',
-        primarySoft: '#F6FAF3',
-        primarySoftEdge: '#C9E4B4',
-        primaryTrack: '#CED9C7',
-        practiceCanvas: '#F3F2F0',
-      },
-      neutral: { bg: '#F6FAF2', border: '#E2EADF', text: '#484D45', muted: '#A9B3A5' },
+      primary: '#4F9F2A',
+      primaryEdge: '#3F8420',
+      primaryDeep: '#2C5F16',
+      primarySoft: '#F6FAF3',
+      primarySoftEdge: '#C9E4B4',
+      primaryTrack: '#CED9C7',
+      primaryWash: '#EDF9E2',
+      practiceCanvas: '#F3F2F0',
+      inkStrong: '#2F352C',
+      ink: '#454B41',
+      mutedStrong: '#70776B',
+      muted: '#8A9185',
+      border: '#C6CDC0',
+      divider: '#DBE0D6',
     },
   ),
 ];

@@ -24,7 +24,7 @@ function PartButton({
       type="button"
       aria-pressed={selected}
       className={cn(
-        'group relative min-h-[56px] min-w-[84px] flex-1 overflow-hidden rounded-control border-2 px-3 py-2 text-left transition-all duration-150 font-sans focus-ring',
+        'group relative min-h-[56px] min-w-[84px] flex-1 overflow-hidden rounded-control border-2 px-3 py-2 text-left transition-[color,background-color,border-color,transform] duration-150 motion-reduce:transition-none font-sans focus-ring',
         selected
           ? 'border-brand-primary-edge bg-brand-primary-soft text-ui-ink-strong shadow-[0_4px_14px] shadow-brand-primary/15'
           : 'border-ui-border bg-ui-canvas text-ui-muted hover:bg-ui-surface-hover',
@@ -36,7 +36,7 @@ function PartButton({
       <span
         aria-hidden="true"
         className={cn(
-          'absolute inset-y-0 left-0 transition-all duration-500',
+          'absolute inset-y-0 left-0',
           selected ? 'bg-brand-primary/18' : 'bg-brand-primary-track/40',
         )}
         style={{ width: `${progress}%` }}

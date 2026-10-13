@@ -38,11 +38,12 @@ test('example availability follows Book, Lesson, Part order', () => {
   assert.equal(isExampleSourceAvailable(target.id, source('B2L01-1-01', 2, 1, 1)), false);
 });
 
-test('smart examples include the whole course; later sources rank as Other', () => {
+test('smart examples include the whole course; target card is Rank 1, others rank by curriculum proximity', () => {
   const cards = [
     source('B1L02-1-01', 1, 2, 1),
     source('B1L03-1-01', 1, 3, 1),
-    source('B1L03-2-09', 1, 3, 2),
+    source('B1L03-2-04', 1, 3, 2), // target itself -> rank 1
+    source('B1L03-2-09', 1, 3, 2), // same part, different card -> rank 2
     source('B1L03-3-01', 1, 3, 3),
     source('B1L04-1-01', 1, 4, 1),
     source('B2L01-1-01', 2, 1, 1),
@@ -52,7 +53,8 @@ test('smart examples include the whole course; later sources rank as Other', () 
 
   const examples = findSmartExamplesForWord(cards, target.front, target.id);
   assert.deepEqual(examples.map((example) => example.sourceCardId), [
-    'B1L03-2-09', // rank 1 — same-Part block anchor
+    'B1L03-2-04', // rank 1 — exact target card (Top match)
+    'B1L03-2-09', // rank 2 — same-Part neighbor
     'B1L03-1-01', // rank 3 — same lesson, earlier Part
     'B1L03-3-01', // rank 3 — same lesson, later Part
     'B1L02-1-01', // rank 4 — previous lesson
@@ -61,21 +63,22 @@ test('smart examples include the whole course; later sources rank as Other', () 
     'B3L01-1-01',
     'B4L01-1-01',
   ]);
-  assert.deepEqual(examples.map((example) => example.rank), [1, 3, 3, 4, 5, 5, 5, 5]);
+  assert.deepEqual(examples.map((example) => example.rank), [1, 2, 3, 3, 4, 5, 5, 5, 5]);
   assert.ok(examples.some((example) => example.sourceBookId === 4), 'book 4 examples are included');
 });
 
-test('filtered source pools still identify the current same-Part anchor', () => {
-  const anchor = {
+test('same-part cards without matching target card rank as Rank 2, not Rank 1', () => {
+  const neighbor = {
     ...source('B1L01-1-02', 1, 1, 1),
     front: '同學',
     examples: [{ chinese: '他是新同學。', pinyin: 'Tā shì xīn tóngxué.', english: 'He is the new classmate.' }],
   };
 
-  const examples = findSmartExamplesForWord([anchor], '新', 'B1L01-1-01');
+  // Target B1L01-1-01 (新) does not own this sentence, so neighbor is rank 2 (This lesson)
+  const examples = findSmartExamplesForWord([neighbor], '新', 'B1L01-1-01');
 
   assert.equal(examples[0]?.sourceCardId, 'B1L01-1-02');
-  assert.equal(examples[0]?.rank, 1);
+  assert.equal(examples[0]?.rank, 2);
 });
 
 test('cards without a trustworthy curriculum id do not receive course examples', () => {
@@ -159,7 +162,7 @@ test('longest form present wins within a rank group', () => {
   );
 });
 
-test('Lesson 15 and 16 block anchor sets resolve Rank 1 for target cards without their own sentence', () => {
+test('Lesson 15 and 16 sets resolve Rank 2 for target cards without their own sentence', () => {
   const l15Target: Flashcard = {
     id: 'B1L15-1-01',
     bookId: 1,
@@ -169,7 +172,7 @@ test('Lesson 15 and 16 block anchor sets resolve Rank 1 for target cards without
     back: '',
     examples: [],
   };
-  const l15Anchor: Flashcard = {
+  const l15Neighbor: Flashcard = {
     id: 'B1L15-1-02',
     bookId: 1,
     lessonId: 15,
@@ -196,9 +199,9 @@ test('Lesson 15 and 16 block anchor sets resolve Rank 1 for target cards without
     }],
   };
 
-  const rankedL15 = findSmartExamplesForWord([l15Target, l15Anchor, l15Other], '生肖', l15Target.id);
+  const rankedL15 = findSmartExamplesForWord([l15Target, l15Neighbor, l15Other], '生肖', l15Target.id);
   assert.equal(rankedL15[0]?.sourceCardId, 'B1L15-1-02');
-  assert.equal(rankedL15[0]?.rank, 1);
+  assert.equal(rankedL15[0]?.rank, 2);
   assert.equal(rankedL15[1]?.sourceCardId, 'B1L15-1-10');
   assert.equal(rankedL15[1]?.rank, 2);
 
@@ -212,7 +215,7 @@ test('Lesson 15 and 16 block anchor sets resolve Rank 1 for target cards without
     back: '',
     examples: [],
   };
-  const l16Anchor: Flashcard = {
+  const l16Neighbor: Flashcard = {
     id: 'B1L16-1-06',
     bookId: 1,
     lessonId: 16,
@@ -226,8 +229,8 @@ test('Lesson 15 and 16 block anchor sets resolve Rank 1 for target cards without
     }],
   };
 
-  const rankedL16 = findSmartExamplesForWord([l16Target, l16Anchor], '這次', l16Target.id);
+  const rankedL16 = findSmartExamplesForWord([l16Target, l16Neighbor], '這次', l16Target.id);
   assert.equal(rankedL16[0]?.sourceCardId, 'B1L16-1-06');
-  assert.equal(rankedL16[0]?.rank, 1);
+  assert.equal(rankedL16[0]?.rank, 2);
 });
 

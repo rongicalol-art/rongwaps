@@ -1,7 +1,6 @@
 import type { Flashcard } from '../../data/flashcards';
 import { extractSearchVariants, sentenceMatchesForms } from './wordForms';
 import {
-  getAnchorCardIdForTarget,
   getCardPosition,
   getIdPosition,
   isExampleSourceAvailable,
@@ -89,9 +88,8 @@ export function findSmartExamplesForWord(
   if (!targetContext || variantList.length === 0) return [];
 
   const targetIndex = FLASHCARDS_DATA.findIndex(c => c.id === targetCardId);
-  const anchorCardId = getAnchorCardIdForTarget(FLASHCARDS_DATA, targetCardId, targetContext);
 
-  const results: (RankedExample & { _sourceIndex: number; _matchLength: number })[] = [];
+  const results: (RankedExample & { _sourceIndex: number; _matchLength: number; _fromText: boolean })[] = [];
 
   FLASHCARDS_DATA.forEach((sourceCard, sourceIndex) => {
     if (!sourceCard.examples || sourceCard.examples.length === 0) return;
@@ -110,29 +108,28 @@ export function findSmartExamplesForWord(
     // The whole course (books 1–4) is fair game: sources from the learner's
     // current or earlier curriculum rank as "previous", anything not yet
     // studied ranks as "other" instead of being dropped.
-    let rank = isExampleSourceAvailable(targetCardId, sourceCard) ? 4 : 5;
-
-    if (anchorCardId && sourceCard.id === anchorCardId) {
-      rank = 1; // 🥇 Same Block (The exact anchor)
-    } else if (
-      sourceContext.bookId === targetContext.bookId &&
-      sourceContext.lessonId === targetContext.lessonId &&
-      sourceContext.partId === targetContext.partId
-    ) {
-      rank = 2; // 🥈 Same Lesson Part, Different Block
-    } else if (
+    const baseRank = isExampleSourceAvailable(targetCardId, sourceCard) ? 4 : 5;
+    const sameCard = sourceCard.id === targetCardId;
+    const sameLesson = (
       sourceContext.bookId === targetContext.bookId &&
       sourceContext.lessonId === targetContext.lessonId
-    ) {
-      rank = 3; // 🥉 Same Lesson, Different Part
-    } else if (
+    );
+    const sameParts = sameLesson && sourceContext.partId === targetContext.partId;
+    const earlierLesson = (
       sourceContext.bookId < targetContext.bookId ||
       (sourceContext.bookId === targetContext.bookId && sourceContext.lessonId < targetContext.lessonId)
-    ) {
-      rank = 4; // 🏅 Previous Lessons
-    }
+    );
 
     matchingExamples.forEach(ex => {
+      const fromText = ex.fromText === true;
+      let rank = baseRank;
+      // 🥇 Top match only for a sentence written for this very word; textbook
+      // dialogue lines merely attached to the card never count.
+      if (sameCard && !fromText) rank = 1;
+      else if (sameParts) rank = 2; // 🥈 Same Lesson Part
+      else if (sameLesson) rank = 3; // 🥉 Same Lesson, Different Part
+      else if (earlierLesson) rank = 4; // 🏅 Previous Lessons
+
       // First hit in longest-first order is the most specific form present.
       const matchLength = variantList.find(v => ex.chinese.includes(v))?.length ?? 0;
       results.push({
@@ -147,6 +144,7 @@ export function findSmartExamplesForWord(
         rank,
         _sourceIndex: sourceIndex,
         _matchLength: matchLength,
+        _fromText: fromText,
       });
     });
   });
@@ -161,6 +159,10 @@ export function findSmartExamplesForWord(
 
     const lengthDelta = b._matchLength - a._matchLength;
     if (lengthDelta !== 0) return lengthDelta;
+
+    // Sentences written for a word beat dialogue lines; then the shorter one is simpler.
+    if (a._fromText !== b._fromText) return a._fromText ? 1 : -1;
+    if (a.rank <= 3 && a.chinese.length !== b.chinese.length) return a.chinese.length - b.chinese.length;
 
     if (a.rank === 2) {
       // Rank 2: Same Lesson Part, Different Block

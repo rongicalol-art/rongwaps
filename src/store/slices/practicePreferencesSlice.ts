@@ -1,10 +1,12 @@
 export type PracticePreset = 'comfortable' | 'balanced' | 'sprint' | 'custom';
 export type MistakeRepeat = 'off' | 'soon' | 'end';
 export type CharacterFont = 'huninn' | 'kai';
+export type QuizFormatPreference = 'mixed' | 'fixed';
 export type QuizQuestionType = 'hanzi' | 'pinyin' | 'meaning';
 export type QuizChoiceType = 'meaning' | 'hanzi' | 'pinyin';
 export type ListeningChoiceType = 'meaning' | 'hanzi' | 'pinyin';
 export type TypingPromptType = 'hanzi' | 'meaning';
+export type MatchPairType = 'characters' | 'audio' | 'mixed';
 export type PracticeDockStyle =
   | 'bottom-center'
   | 'bottom-right'
@@ -40,12 +42,16 @@ export interface PracticePreferences {
   showPinyin: boolean;
   toneColors: boolean;
   showTranslation: boolean;
+  simpleDefinitions: boolean;
   hideExamplePinyin: boolean;
   characterFont: CharacterFont;
+  /** Mixed: the director varies the vocab quiz. Fixed: the chosen question and choice formats. */
+  quizFormat: QuizFormatPreference;
   quizQuestionType: QuizQuestionType;
   quizChoiceType: QuizChoiceType;
   listeningChoiceType: ListeningChoiceType;
   typingPromptType: TypingPromptType;
+  matchPairType: MatchPairType;
   dockStyle: PracticeDockStyle;
   /** Fade the practice dock when idle. */
   dockAutoHide: boolean;
@@ -95,12 +101,15 @@ export const DEFAULT_PREFERENCES: PracticePreferences = {
   showPinyin: true,
   toneColors: true,
   showTranslation: true,
+  simpleDefinitions: false,
   hideExamplePinyin: true,
   characterFont: 'huninn',
+  quizFormat: 'mixed',
   quizQuestionType: 'hanzi',
   quizChoiceType: 'meaning',
   listeningChoiceType: 'meaning',
   typingPromptType: 'hanzi',
+  matchPairType: 'mixed',
   dockStyle: 'bottom-center',
   dockAutoHide: false,
 };
@@ -136,12 +145,15 @@ export const PRACTICE_PREFERENCES_PERSISTED_KEYS = [
   'showPinyin',
   'toneColors',
   'showTranslation',
+  'simpleDefinitions',
   'hideExamplePinyin',
   'characterFont',
+  'quizFormat',
   'quizQuestionType',
   'quizChoiceType',
   'listeningChoiceType',
   'typingPromptType',
+  'matchPairType',
   'dockStyle',
   'dockAutoHide',
 ] as const;
@@ -160,6 +172,9 @@ export function normalizePracticePreferences(persisted: unknown): PracticePrefer
   }
   if ((preferences.characterFont as string) === 'sans') {
     preferences.characterFont = 'huninn';
+  }
+  if (preferences.quizFormat !== 'mixed' && preferences.quizFormat !== 'fixed') {
+    preferences.quizFormat = DEFAULT_PREFERENCES.quizFormat;
   }
   const pace = typeof preferences.pace === 'number' ? preferences.pace : DEFAULT_PREFERENCES.pace;
   return {

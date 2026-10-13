@@ -1,15 +1,19 @@
-import React, { Fragment, useMemo, useState } from 'react';
+import { useReducedMotion } from 'motion/react';
+import React, { Fragment, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { AppIcon } from '../../lib/widgets';
 import { SAMPLE_BOOKS } from '../../data/books';
 import type { Flashcard } from '../../data/flashcards';
-import { FeedbackBottomBar, LessonComplete, PracticeFormatMenu } from '../../features/practice';
+import { FeedbackBottomBar, PracticeFormatMenu, SessionComplete, type SessionStats } from '../../features/practice';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
 import { MemoryHookCharacter } from '../../features/character-memory-hooks';
 import { usePracticeHeaderRegistration } from '../../hooks/usePracticeHeaderRegistration';
 import { usePracticeAnswerAutomation } from '../../hooks/usePracticeAnswerAutomation';
+import { useReviewTone } from '../../hooks/useReviewTone';
 import { useAppStore } from '../../store/useAppStore';
 import { buildPracticePartSegments } from '../../utils/lesson/practicePartSegments';
 import { isHanziChar } from '../../utils/characters/hanzi';
-import type { useQuizChoices } from './hooks/useQuiz';
+import { ReviewDealIntro } from '../flashcard';
+import { fadeOutGhost, landQuizLaunch, riseIn, type QuizHandoff } from './quizShuffle';
 
 export interface QuizModeProps {
   cards: Flashcard[];
@@ -18,21 +22,38 @@ export interface QuizModeProps {
   continueLabel?: string;
   activeBookId: number;
   sessionKey: string;
+  /** The flashcard round before this quiz (Cards done → quiz): Session complete reports the whole session. */
+  sessionStats?: SessionStats | null;
 }
 
-type QuizSession = Pick<
-  ReturnType<typeof useQuizChoices>,
-  | 'activeCards' | 'currentIndex' | 'currentCard' | 'completed' | 'handleCheck' | 'retryAnswer'
-  | 'resetAll' | 'reviewUnlearned' | 'unlearnedCount' | 'learnedCount' | 'isShuffled' | 'toggleShuffle' | 'progressInfo'
->;
+/** What the shell needs from a quiz mode's session (choices and mixed both provide it). */
+interface QuizSession {
+  activeCards: Flashcard[];
+  currentIndex: number;
+  /** Words already done inside the current question (matched pairs): the progress bar moves with each one. */
+  inBeatDone?: number;
+  currentCard: Flashcard;
+  completed: boolean;
+  handleCheck: () => void;
+  answerAudioPlaying?: boolean;
+  resumedReview: boolean;
+  resetAll: () => void;
+  reviewUnlearned: () => void;
+  practiceCards: (cards: Flashcard[]) => void;
+  missedCards: Flashcard[];
+  unlearnedCount: number;
+  learnedCount: number;
+  isShuffled: boolean;
+  toggleShuffle: () => void;
+}
 
 const getFrontFontSize = (len: number) => {
-  if (len === 1) return 'text-[90px] sm:text-[120px]';
-  if (len === 2) return 'text-[70px] sm:text-[96px]';
-  if (len === 3) return 'text-[54px] sm:text-[72px]';
-  if (len === 4) return 'text-[44px] sm:text-[60px]';
-  if (len <= 6) return 'text-[36px] sm:text-[48px]';
-  return 'text-[28px] sm:text-[36px]';
+  if (len === 1) return 'text-7xl sm:text-8xl';
+  if (len === 2) return 'text-6xl sm:text-7xl';
+  if (len === 3) return 'text-5xl sm:text-6xl';
+  if (len === 4) return 'text-4xl sm:text-5xl';
+  if (len <= 6) return 'text-3xl sm:text-4xl';
+  return 'text-2xl sm:text-3xl';
 };
 
 /** The card front as tappable hanzi that open the character breakdown. */
@@ -41,7 +62,7 @@ export const QuizHanziPrompt: React.FC<{ front: string; onOpenBreakdown: (index:
 }) => {
   const size = getFrontFontSize(front.length || 1);
   return (
-    <div className={`flex w-full flex-wrap items-center justify-center gap-x-1 px-4 ${className}`}>
+    <div data-quiz-word className={`flex w-full flex-wrap items-center justify-center gap-x-1 px-4 ${className}`}>
       {Array.from(front).map((char, i) =>
         isHanziChar(char) ? (
           <MemoryHookCharacter
@@ -71,46 +92,181 @@ interface QuizShellProps extends Omit<QuizModeProps, 'cards'> {
   status: 'idle' | 'correct' | 'wrong';
   correctAnswer: string;
   pinyin?: string;
+  /** The answered word shown with feedback so its replay stays visually attached to it. */
+  word?: { hanzi: string; pinyin?: string; meaning: string; simple?: string };
   isCheckDisabled: boolean;
-  children: (ctx: { openBreakdown: (index: number) => void; breakdownOpen: boolean }) => React.ReactNode;
+  /** The question needs an explicit Check (build the word): the bar shows it once `isCheckDisabled` clears. */
+  onCheck?: () => void;
+  /** Title row rises in (first question after the Cards done shuffle). */
+  rise?: boolean;
+  /** No character breakdown in the feedback bar (a match round covers several words). */
+  hideBreakdown?: boolean;
+  /** Whether the current question is a tap-to-pair exercise. */
+  isMatchPair?: boolean;
+  /** Keep the feedback bar up (no auto-advance) while a follow-up is open. */
+  holdAutoAdvance?: boolean;
+  /** The mode lands the review intro's ghost card on its prompt (choices); otherwise the ghost just fades. */
+  landsReviewGhost?: boolean;
+  children: (ctx: {
+    openBreakdown: (index: number) => void;
+    breakdownOpen: boolean;
+    /** In a review pass: the intro's ghost card, only for the pass's first question (null otherwise). */
+    reviewHandoff: QuizHandoff | null;
+    /** True from the first review pass on (the first-pass handoff no longer applies). */
+    isReviewPass: boolean;
+  }) => React.ReactNode;
 }
 
 /** Shared quiz chrome: header registration, completion, title, feedback bar and breakdown overlay. */
 export const QuizShell: React.FC<QuizShellProps> = ({
-  session, mode, title, wide, status, correctAnswer, pinyin, isCheckDisabled, children,
-  activeBookId, sessionKey, onEnd, onContinue, continueLabel,
+  session, mode, title, wide, status, correctAnswer, pinyin, word, isCheckDisabled, onCheck, rise, hideBreakdown, isMatchPair = false, holdAutoAdvance, landsReviewGhost, children,
+  activeBookId, sessionKey, onEnd, onContinue, sessionStats,
 }) => {
   const [activeBreakdown, setActiveBreakdown] = useState<string | null>(null);
   const [breakdownIndex, setBreakdownIndex] = useState(0);
   const {
-    activeCards, currentIndex, currentCard, completed, handleCheck, retryAnswer, resetAll,
-    reviewUnlearned, unlearnedCount, learnedCount, isShuffled, toggleShuffle, progressInfo,
+    activeCards, currentIndex, currentCard, completed, handleCheck, resumedReview, resetAll, reviewUnlearned, practiceCards, missedCards,
+    unlearnedCount, learnedCount, isShuffled, toggleShuffle, answerAudioPlaying = false,
   } = session;
   const autoAdvanceCorrect = useAppStore((state) => state.autoAdvanceCorrect);
-  const autoAdvance = status === 'correct' && autoAdvanceCorrect;
+  const quizFormat = useAppStore((state) => state.quizFormat);
+  const [advanceAfterAudio, setAdvanceAfterAudio] = useState(false);
+  const advance = useCallback(() => {
+    if (answerAudioPlaying) {
+      setAdvanceAfterAudio(true);
+      return;
+    }
+    setAdvanceAfterAudio(false);
+    handleCheck();
+  }, [answerAudioPlaying, handleCheck]);
+  useEffect(() => {
+    if (!advanceAfterAudio || answerAudioPlaying) return;
+    setAdvanceAfterAudio(false);
+    handleCheck();
+  }, [advanceAfterAudio, answerAudioPlaying, handleCheck]);
+
+  const autoAdvance = status === 'correct' && autoAdvanceCorrect && !holdAutoAdvance && !answerAudioPlaying && !advanceAfterAudio;
 
   usePracticeAnswerAutomation({
     status,
-    onAdvance: handleCheck,
+    onAdvance: advance,
     advanceWrong: false,
-    blocked: Boolean(activeBreakdown),
+    blocked: Boolean(activeBreakdown) || Boolean(holdAutoAdvance) || answerAudioPlaying || advanceAfterAudio,
   });
   const isNonCurriculum = sessionKey.includes('review') || sessionKey.includes('library');
   const partSegments = useMemo(
     () => (isNonCurriculum ? [] : buildPracticePartSegments(activeCards)),
     [activeCards, isNonCurriculum],
   );
+
+  // Missed words come back together as a review round after the pass (the intro between), until a pass has no misses.
+  const [reviewPass, setReviewPass] = useState(0);
+  const [introActive, setIntroActive] = useState(false);
+  const [dealStarted, setDealStarted] = useState(false);
+  /** The first review pass's missed tiles are highlighted: the app turns honey from here. */
+  const [introToned, setIntroToned] = useState(false);
+  /** Size of the pass that just ended: the header shows that finished pass during the intro. */
+  const [finishedPass, setFinishedPass] = useState<Flashcard[]>([]);
+  /** The intro handed over (ghost undefined with reduced motion): the review's first question enters. */
+  const [entrance, setEntrance] = useState<{ ghost: QuizHandoff | null } | null>(null);
+  const firstPassRef = useRef<{ total: number; correct: number; cards: Flashcard[]; missedCards: Flashcard[] } | null>(null);
+  /** Answers right in a row; displayed above the answer bar. */
+  const [streak, setStreak] = useState(0);
+  const streakRef = useRef<HTMLSpanElement>(null);
+  const previousStreak = useRef(0);
+  const reduceMotion = useReducedMotion();
+  useEffect(() => {
+    const increased = streak >= 5 && streak > previousStreak.current;
+    previousStreak.current = streak;
+    if (!increased || reduceMotion) return;
+    const pulse = streakRef.current?.animate(
+      [{ transform: 'scale(1)' }, { transform: 'scale(1.08)' }, { transform: 'scale(1)' }],
+      { duration: 180, easing: 'ease-out' },
+    );
+    return () => pulse?.cancel();
+  }, [reduceMotion, streak]);
+  useEffect(() => {
+    if (status === 'correct') setStreak((value) => value + 1);
+    else if (status === 'wrong') setStreak(0);
+  }, [status]);
+  const isReviewPass = reviewPass > 0 || resumedReview;
+  const isDone = completed && unlearnedCount === 0;
+
+  useEffect(() => {
+    if (resumedReview) setReviewPass((pass) => pass || 1);
+  }, [resumedReview]);
+
+
+  useEffect(() => {
+    if (!completed || unlearnedCount === 0) return;
+    firstPassRef.current ??= { total: activeCards.length, correct: learnedCount, cards: activeCards, missedCards };
+    reviewUnlearned();
+    setReviewPass((pass) => pass + 1);
+    setFinishedPass(activeCards);
+    setIntroToned(false);
+    setDealStarted(false);
+    setEntrance(null);
+    setIntroActive(true);
+  }, [activeCards, completed, learnedCount, missedCards, reviewUnlearned, unlearnedCount]);
+
+  const restart = useCallback(() => {
+    firstPassRef.current = null;
+    finishedAtRef.current = null;
+    startedAtRef.current = Date.now();
+    setStreak(0);
+    setReviewPass(0);
+    setIntroActive(false);
+    setEntrance(null);
+    resetAll();
+  }, [resetAll]);
+
+  useReviewTone(isReviewPass && !isDone && !(introActive && reviewPass === 1 && !introToned));
+
+  const shownIndex = currentIndex + (session.inBeatDone ?? 0);
+  const progress = useMemo(
+    () => (isReviewPass && introActive && !dealStarted && finishedPass.length > 0
+      ? { displayIndex: finishedPass.length - 1, totalCount: finishedPass.length, cleanupPhase: null }
+      : isReviewPass && !isDone
+      ? { displayIndex: shownIndex, totalCount: activeCards.length, cleanupPhase: { currentIndex: shownIndex, totalCount: activeCards.length } }
+      : { displayIndex: Math.min(shownIndex, Math.max(0, activeCards.length - 1)), totalCount: activeCards.length, cleanupPhase: null }),
+    [activeCards.length, shownIndex, dealStarted, finishedPass.length, introActive, isDone, isReviewPass],
+  );
   usePracticeHeaderRegistration({
-    currentIndex: progressInfo.displayIndex,
-    totalCount: progressInfo.totalCount,
+    currentIndex: progress.displayIndex,
+    totalCount: progress.totalCount,
     showLightbulb: false,
     partSegments,
-    isRetry: progressInfo.isRetry,
-    cleanupPhase: progressInfo.cleanupPhase,
-    onShuffleClick: toggleShuffle,
-    onRestartClick: resetAll,
+    cleanupPhase: progress.cleanupPhase,
+    // The deck is fixed while the review intro plays.
+    onShuffleClick: () => { if (!introActive) toggleShuffle(); },
+    onRestartClick: restart,
     isShuffled,
   });
+
+  // Session complete reports the whole session: from the first flashcard when this quiz follows one.
+  const startedAtRef = useRef(Date.now());
+  const finishedAtRef = useRef<number | null>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const questionRef = useRef<HTMLDivElement>(null);
+  const risenFor = useRef<unknown>(null);
+  const hasCard = Boolean(currentCard);
+  const showContent = !introActive || Boolean(entrance);
+  const riseKey = entrance ?? (rise ? 'first' : null);
+  useLayoutEffect(() => {
+    if (!riseKey || risenFor.current === riseKey || !titleRef.current) return;
+    risenFor.current = riseKey;
+    if (riseKey === 'first' && questionRef.current && landQuizLaunch(questionRef.current)) return;
+    riseIn(titleRef.current, 120, 12);
+  }, [riseKey, hasCard, showContent]);
+
+  // The intro's ghost card is landed on the review's first question; modes without a landing fade it.
+  const reviewHandoff = landsReviewGhost && currentIndex === 0 ? entrance?.ghost ?? null : null;
+  useEffect(() => {
+    if (entrance?.ghost && !landsReviewGhost) fadeOutGhost(entrance.ghost.ghost);
+  }, [entrance, landsReviewGhost]);
+  const entranceRef = useRef(entrance);
+  entranceRef.current = entrance;
+  useEffect(() => () => { entranceRef.current?.ghost?.ghost.remove(); }, []);
 
   const activeBook = SAMPLE_BOOKS.find((b) => b.id === activeBookId) || SAMPLE_BOOKS[0];
   const openBreakdown = (index: number) => {
@@ -118,45 +274,92 @@ export const QuizShell: React.FC<QuizShellProps> = ({
     setActiveBreakdown(currentCard.front);
   };
 
-  if (completed) {
+  if (isDone) {
+    finishedAtRef.current ??= Date.now();
+    // Quiz % is the first pass's: a review round doesn't change it.
+    const first = firstPassRef.current ?? { total: learnedCount, correct: learnedCount, cards: activeCards, missedCards: [] };
+    const words = sessionStats?.words ?? Array.from(new Set(first.cards.map((card) => card.front)));
     return (
-      <LessonComplete
-        learnedCount={learnedCount}
-        unlearnedCount={unlearnedCount}
+      <SessionComplete
+        words={words}
+        pct={Math.round((first.correct / Math.max(1, first.total)) * 100)}
+        pctLabel="Quiz"
+        seconds={Math.max(1, Math.round((finishedAtRef.current - (sessionStats?.startedAt ?? startedAtRef.current)) / 1000))}
         onContinue={onContinue ?? onEnd}
-        continueLabel={onContinue ? continueLabel : undefined}
-        onReviewUnlearned={unlearnedCount > 0 ? reviewUnlearned : undefined}
-        onResetAll={resetAll}
+        onReviewMissed={first.missedCards.length > 0 ? () => practiceCards(first.missedCards) : undefined}
+        missedCount={first.missedCards.length}
+        onStudyAllAgain={restart}
       />
     );
   }
 
-  if (!currentCard) return null;
+  // `completed` with misses is one transient render: the review starts in the effect above.
+  if (completed || (!currentCard && !introActive)) return null;
 
   return (
     <div className="relative flex-1 flex flex-col bg-transparent overflow-hidden text-ui-ink font-sans pt-[72px]">
-      <div className={`flex-1 flex flex-col ${wide ? 'max-w-xl' : 'max-w-lg'} mx-auto w-full px-4 sm:px-6 pb-[240px] overscroll-none overflow-y-auto`}>
-        <div className="mt-4 flex w-full items-center gap-2.5 px-2">
-          <PracticeFormatMenu mode={mode} />
-          <h2 className={`text-xl font-extrabold text-ui-ink ${wide ? 'sm:text-[26px]' : 'sm:text-2xl'}`}>{title}</h2>
-        </div>
+      <div className={`flex-1 flex flex-col ${wide ? 'max-w-xl md:max-w-[640px]' : 'max-w-lg'} mx-auto w-full px-4 sm:px-6 pb-[260px] md:pb-[250px] lg:pb-[150px] overscroll-none overflow-y-auto`}>
+        {/* One exercise group: instruction aligned with the card, then the answers. */}
+        {showContent && currentCard && (
+          <div ref={questionRef} className="my-auto flex w-full flex-col items-center gap-5 pt-4">
+            <div ref={titleRef} className="relative flex w-full items-center justify-center">
+              {(isMatchPair || !(mode === 'quiz-choices' && quizFormat === 'mixed')) && (
+                <div className="absolute left-0">
+                  <PracticeFormatMenu mode={mode} isMatchPair={isMatchPair} />
+                </div>
+              )}
+              <h2 className="text-balance text-center text-2xl font-black leading-tight text-ui-ink-strong md:text-3xl px-9">{title}</h2>
+            </div>
 
-        <Fragment key={`${currentIndex}:${currentCard.id}`}>
-          {children({ openBreakdown, breakdownOpen: Boolean(activeBreakdown) })}
-        </Fragment>
+            <Fragment key={`${currentIndex}:${currentCard.id}`}>
+              {children({ openBreakdown, breakdownOpen: Boolean(activeBreakdown), reviewHandoff, isReviewPass })}
+            </Fragment>
+          </div>
+        )}
+      </div>
+
+      {introActive && (
+        <div className="absolute inset-x-0 bottom-0 top-[72px] z-30">
+          <ReviewDealIntro
+            key={reviewPass}
+            landing="ghost"
+            cards={activeCards}
+            passCards={finishedPass}
+            pass={reviewPass}
+            onHighlight={() => setIntroToned(true)}
+            onDealStart={() => setDealStarted(true)}
+            onHandoff={(ghost) => setEntrance({ ghost: ghost ?? null })}
+            onDone={() => setIntroActive(false)}
+          />
+        </div>
+      )}
+
+      <div
+        aria-hidden={introActive || streak < 5}
+        className={`pointer-events-none absolute inset-x-0 bottom-64 z-20 px-4 md:bottom-64 sm:px-6 lg:bottom-40 ${introActive || streak < 5 ? 'invisible' : ''}`}
+      >
+        <div className={`mx-auto flex w-full ${wide ? 'max-w-xl md:max-w-[640px]' : 'max-w-lg'} justify-end`}>
+          <span aria-label={`${streak} correct answers in a row`} className="inline-flex items-center gap-1 text-sm font-black text-ui-muted-strong tabular-nums">
+            <AppIcon name="flame" size={18} className="text-brand-primary" />
+            <span ref={streakRef} className="inline-block">{streak}</span>
+          </span>
+        </div>
       </div>
 
       <FeedbackBottomBar
         status={status}
         correctAnswer={correctAnswer}
         pinyin={pinyin}
-        onContinue={status === 'correct' ? () => handleCheck() : retryAnswer}
-        showCheck={false}
+        word={word}
+        onContinue={advance}
+        continueLoading={advanceAfterAudio}
+        onCheck={onCheck}
+        showCheck={Boolean(onCheck)}
         isCheckDisabled={isCheckDisabled}
         hideWhenAutoAdvance={autoAdvance}
         showContinueOnWrong
         keyboardShortcutDisabled={Boolean(activeBreakdown)}
-        onBreakdown={() => openBreakdown(0)}
+        onBreakdown={hideBreakdown ? undefined : () => openBreakdown(0)}
         activeBook={activeBook}
       />
 

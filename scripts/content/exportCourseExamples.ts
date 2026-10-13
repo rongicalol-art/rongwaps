@@ -10,6 +10,7 @@ import { parseVocabularyId } from '../../src/utils/vocabulary/vocabularyId';
 
 const SCHEMA_VERSION = 1;
 const BOOK_ID = 1;
+const MAX_SOURCE_LESSON_ID = 15;
 const OCR_ROOT = resolve(process.cwd(), 'output/ocr/modern_chinese_1');
 const VOCABULARY_PACK_PATH = resolve(process.cwd(), 'public/data/vocabulary/book-1.json');
 const OUTPUT_DIRECTORY = resolve(process.cwd(), 'public/data/course-examples');
@@ -251,9 +252,10 @@ function buildContextRecord(
 }
 
 /**
- * Verified dialogue lines (Lessons 1–14) and aligned Reading sentences
+ * Verified dialogue lines (Lessons 1–15) and aligned Reading sentences
  * (Lessons 7–10, the ones with an English-group mapping) become Part-scoped
- * examples. Every line must come from a pinyin-verified section.
+ * examples. Every line must come from a pinyin-verified section. Lesson 16+
+ * source records are kept out of this Book 1 export.
  */
 function createVerifiedContextExamples(
   lessons: OcrLesson[],
@@ -262,7 +264,7 @@ function createVerifiedContextExamples(
   const records: CourseExampleRecord[] = [];
 
   lessons.filter((lesson) => (
-    lesson.lessonId <= 14
+    lesson.lessonId <= MAX_SOURCE_LESSON_ID
     && (
       lesson.verification?.checklist?.pinyinToneMarksPreservedAsPrinted === true
       || lesson.verification?.checklist?.dialogueAndReadingPinyinVerified === true
@@ -378,7 +380,7 @@ async function main() {
   const records: CourseExampleRecord[] = [];
   const rejected: RejectedEntry[] = [];
 
-  lessons.forEach((lesson) => {
+  lessons.filter((lesson) => lesson.lessonId <= MAX_SOURCE_LESSON_ID).forEach((lesson) => {
     (lesson.vocabulary || []).forEach((entry) => {
       const examples = (entry.examples || []).filter((example) => (
         example.traditional?.trim() && example.pinyin?.trim() && example.english?.trim()
@@ -469,6 +471,14 @@ async function main() {
     rejectedEntryCount: rejected.length,
     rejected,
   };
+
+  if (process.argv.includes('--preview')) {
+    await mkdir(REPORT_DIRECTORY, { recursive: true });
+    const previewPath = resolve(REPORT_DIRECTORY, 'book-1-preview.json');
+    await writeFile(previewPath, packContent, 'utf8');
+    console.log(`Previewed ${records.length} Book 1 course examples: ${previewPath}`);
+    return;
+  }
 
   await Promise.all([
     mkdir(OUTPUT_DIRECTORY, { recursive: true }),

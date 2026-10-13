@@ -7,11 +7,13 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 | Task | Read |
 | --- | --- |
 | Any code change | `../AGENTS.md`, relevant feature code |
+| UI, design, motion, copy (any AI) | `../.claude/OWNER_PREFERENCES.md` first |
 | Shared UI / reusable widgets | `WIDGETS.md`, `DESIGN_TOKENS.md`, `src/lib/widgets/` |
 | UI styling & tokens | `DESIGN_TOKENS.md`, `src/index.css` |
 | Grammar lessons | `GRAMMAR_LESSON_TEMPLATE.md`, `DECISIONS.md`, `src/screens/grammar-lesson/` |
 | Data model or Supabase RPC | `DATABASE_SCHEMA.md`, `src/services/`, `src/types/database.ts` |
-| Flashcard examples & matching | `COURSE_EXAMPLES.md`, `src/services/courseExamplePackService.ts` |
+| Flashcard examples & matching | `COURSE_EXAMPLES.md`, `src/services/contentPacks.ts` |
+| Jev tooling / semantic review | `TESTING.md`, `scripts/jev/` |
 | Server, TTS, grading | `API_SPEC.md`, `server/` |
 | Audio & karaoke alignment | `reference/OFFICIAL_AUDIO_SOURCES.md`, `API_SPEC.md`, `src/services/audioService.ts` |
 | Character/scene art prompts | `reference/VISUAL_PROMPTS.md` |
@@ -21,6 +23,7 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 ## Active Docs
 
 - `../README.md` — project overview and local development.
+- `../.claude/OWNER_PREFERENCES.md` — the owner's taste, learning rules and working style; tool-neutral brief for any AI.
 - `DECISIONS.md` — recent architectural, interaction and design decisions that must stay stable.
 - `WIDGETS.md` — public shared widget catalog mirroring `src/lib/widgets/index.ts`.
 - `ARCHITECTURE.md` — source layout, module boundaries, ESLint import restrictions, component ownership.
@@ -30,7 +33,7 @@ Single routing table. Read only the row that matches the task. `../AGENTS.md` (c
 - `GRAMMAR_LESSON_TEMPLATE.md` — interactive grammar lesson spec and data contracts.
 - `COURSE_EXAMPLES.md` — course example sentence packs, runtime matching, OCR export workflow, coverage audit.
 - `../content/audio/` — official audio index and manifest (book 1), read by `scripts/audio/` and `tests/content/officialAudio.test.ts`.
-- `TESTING.md` — test commands, layout, and what each acceptance suite enforces.
+- `TESTING.md` — test commands, acceptance suites, and Jev semantic/content review workflow.
 - `DEPLOY.md` — deploy checklist: env var names, Supabase dashboard steps, smoke test.
 
 ## Reference & Archive (not routed by default)

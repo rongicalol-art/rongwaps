@@ -15,8 +15,9 @@
 
 | Widget | File | Purpose / notes |
 | --- | --- | --- |
-| ActionButton | `ActionButton.tsx` | Text action: `primary` `secondary` `quiet` `danger` `success` `warning`; `sm`/`md`/`lg`, `fullWidth`, `loading`, `edgeColor`. One dominant action per surface. |
+| ActionButton | `ActionButton.tsx` | Text action: `primary` `secondary` `quiet` `danger` `success` `warning`; `sm`/`md`/`lg`, `radius` (`control` default, `feature` for 24px media tiles), `fullWidth`, `loading`, `edgeColor`. One dominant action per surface. Labels default to ALL CAPS (`font-black uppercase tracking-wider`, set by the widget); call sites may opt out with `normal-case tracking-normal` for compact icon+word buttons (e.g. the quiz's Slow button). `secondary` and `quiet` labels take the book accent (`brand-primary-deep`), `quiet` has no box or depth. |
 | IconActionButton | `IconActionButton.tsx` | Icon utility button; `icon` and `label` required (label = accessible name + tooltip). |
+| KeyChip | `KeyChip.tsx` | Keyboard hint hanging after a button label (`Space`, `1`); place inside a `relative` label span; shown only on precise pointers, never touch; `visible={false}` removes it. |
 | EdgeNavButtons | `EdgeNavButtons.tsx` | Invisible left/right tap zones for card/writing screens; `half` or `edge` mode. |
 | SegmentedControl | `SegmentedControl.tsx` | Exclusive mode picker; requires `value`, `options`, `onChange`, `ariaLabel`. |
 | SettingsDropdownPicker | `SettingsDropdownPicker.tsx` | Labelled tactile select for settings; snaps stored numeric values to nearest option. |
@@ -33,7 +34,7 @@
 | CloudPuff | `CloudPuff.tsx` | Decorative cloud silhouette (`aria-hidden` container). |
 | VideoBackground | `VideoBackground.tsx` | Looping decorative video with poster; needs `posterSrc` + `webmSrc`/`mp4Src`; honors reduced motion. |
 | CountryFlag | `CountryFlag.tsx` | Vector flag by `code` (`GB` `ID` `JP` `US`); no emoji flags. |
-| PlayfulNavIcon | `PlayfulNavIcon.tsx` | Nav illustration: `books` `dictionary` `library` `profile` `favorite`. |
+| PlayfulNavIcon | `PlayfulNavIcon.tsx` | Flat illustration icon: nav (`books` `dictionary` `library` `profile` `favorite`, …) and quiz types (`meaning` `listening` `characters` `quiz` `trueFalse` `build`). |
 | UserAvatar | `UserAvatar.tsx` | Avatar with fallback; `sm`-`xl`, `ring`. |
 | ProfileAvatarButton | `ProfileAvatarButton.tsx` | Signed-in avatar button for `StickyWorkspaceHeader` `rightContent` (Books / Library / Dictionary). |
 | RongWapsCharacterPortrait | `RongWapsCharacterPortrait.tsx` | 1:1 character bust; requires `character` + `label`. |
@@ -46,7 +47,7 @@
 | ActivityModalWrapper | `ActivityModalWrapper.tsx` | Workspace-bounded activity dialog; requires `id`, `ariaLabel`, `onClose`. |
 | Dialog | `Dialog.tsx` | Modal primitive; `Dialog.Root/Backdrop/Content/Header/Title/Description/Close/Body/Footer`; `size` and `depth` tiers, focus trap, portal. |
 | Drawer | `Drawer.tsx` | Bottom sheet below `md` (drag-dismiss), floating card at `md+`, or right dock via `mdPlacement="side"`; `tone` `surface`/`practice`/`canvas`; `Drawer.Root/Backdrop/Content/Handle/Header/StickyHeader/Title/Close/Body`. |
-| WorkspaceWindow | `WorkspaceWindow.tsx` | Frame for any surface taking over the workspace (Reader, Grammar, details, settings). `tone`; `layer` `overlay`/`window`/`window-detail`. Open/close motion comes from `windowMotion.ts` (`sheet`/`focus`/`pop`/`rise`; `rise` is a 260ms expo-out tween, no spring). The frame owns the open motion: content inside mounts without its own entrance, defaulted by layer; never pass raw motion props. |
+| WorkspaceWindow | `WorkspaceWindow.tsx` | Frame for any surface taking over the workspace (Reader, Grammar, details, settings). `tone`; `layer` `overlay`/`window`/`window-detail`. Open/close motion comes from `windowMotion.ts` (`sheet`/`focus`/`pop`/`rise` all use a 120ms fade; reduced motion is instant). The frame owns the open motion: content inside mounts without its own entrance, defaulted by layer; never pass raw motion props. |
 | DetailShell | `DetailShell.tsx` | Workspace-bounded detail view; `.Root/.Scroller/.Content/.Floating`. `windowed` opens it as its own `WorkspaceWindow`. |
 | ConfirmationDialog | `ConfirmationDialog.tsx` | Destructive confirm on `Dialog`; focus starts on Cancel; `children` + `confirmDisabled` for type-to-confirm. |
 | DisclosureLine | `DisclosureLine.tsx` | Closed-by-default `<details>` row. |
@@ -68,7 +69,7 @@
 | StudyPartProgressRail | `part-progress/StudyPartProgressRail.tsx` | Study variant of the rail. |
 | SelectablePartProgressRail | `part-progress/SelectablePartProgressRail.tsx` | Clickable-segment variant. |
 | StudyPartButton | `part-progress/StudyPartButton.tsx` | Segment button used by the study rails. |
-| LoadingScreen | `LoadingScreen.tsx` | THE loader (no other variant): `fullScreen`, `inline`, `tone` (`canvas`/`practice`) must match the surface being preloaded. Never mount it directly on open: gate with `useOpenPhase` (hold 150ms, then one loader >= 450ms). `preloadLoadingScreen()` warms it at idle (App). |
+| LoadingScreen | `LoadingScreen.tsx` | THE loader (no other variant): `fullScreen`, `inline`, `tone` (`canvas`/`practice`) must match the surface being preloaded. Never mount it directly on open: gate with `useOpenPhase` (hold 150ms before showing a loader; content appears immediately when ready). `preloadLoadingScreen()` warms it at idle (App). |
 | LottiePlayer | `LottiePlayer.tsx` | Branded motion only. Prefer `loadAnimationData` (lazy import) over `animationData`; `src` for remote. Until loaded it is an empty box of its final size (no spinner); JSON + lottie-react are cached at module level (`preloadLottie`/`preloadAnimation`). |
 | Skeleton | `Skeleton.tsx` | Generic placeholder. |
 

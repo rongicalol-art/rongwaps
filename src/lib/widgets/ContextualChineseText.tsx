@@ -1,6 +1,12 @@
 import type { HTMLAttributes } from 'react';
 import type { GrammarWordToken } from '../../types/models';
 import { cn } from '../../utils/cn';
+import {
+  getGrammarSemanticRole,
+  getSemanticRoleClasses,
+  getSemanticRoleSoftBgClasses,
+  type GrammarSemanticRole,
+} from '../../utils/grammar/grammarSemanticRoles';
 
 interface DisplayToken {
   key: string;
@@ -9,6 +15,7 @@ interface DisplayToken {
   meaning?: string;
   interactive: boolean;
   focused: boolean;
+  role?: GrammarSemanticRole;
 }
 
 export interface ContextualChineseTextProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'children'> {
@@ -50,13 +57,15 @@ function tokenizeTeachingText(
     // A longer focus pattern (忙不忙) outranks a shorter word that merely starts it (忙),
     // so the whole grammar unit highlights instead of its first piece.
     if (contextualMatch && !(focusMatch && focusMatch.length > contextualMatch.display.length)) {
+      const isFocused = focusTerms.includes(contextualMatch.display);
       displayTokens.push({
         key: `${index}-${contextualMatch.id}`,
         text: contextualMatch.display,
         pinyin: contextualMatch.pinyin,
         meaning: contextualMatch.meaning,
         interactive: true,
-        focused: focusTerms.includes(contextualMatch.display),
+        focused: isFocused,
+        role: isFocused ? getGrammarSemanticRole(contextualMatch.display) : undefined,
       });
       index += contextualMatch.display.length;
       continue;
@@ -68,6 +77,7 @@ function tokenizeTeachingText(
         text: focusMatch,
         interactive: CHINESE_CHARACTER.test(focusMatch),
         focused: true,
+        role: getGrammarSemanticRole(focusMatch),
       });
       index += focusMatch.length;
       continue;
@@ -78,11 +88,13 @@ function tokenizeTeachingText(
       let end = index + 1;
       while (end < text.length && CHINESE_CHARACTER.test(text[end])) end += 1;
       const word = text.slice(index, end);
+      const isFocused = focusTerms.includes(word);
       displayTokens.push({
         key: `${index}-${word}`,
         text: word,
         interactive: true,
-        focused: focusTerms.includes(word),
+        focused: isFocused,
+        role: isFocused ? getGrammarSemanticRole(word) : undefined,
       });
       index = end;
       continue;
@@ -95,11 +107,14 @@ function tokenizeTeachingText(
       && !contextualWords.some((token) => text.startsWith(token.display, end))
       && !orderedFocusTerms.some((term) => text.startsWith(term, end))
     ) end += 1;
+    const copyText = text.slice(index, end);
+    const isFocused = focusTerms.some((term) => copyText.includes(term));
     displayTokens.push({
       key: `${index}-copy`,
-      text: text.slice(index, end),
+      text: copyText,
       interactive: false,
-      focused: focusTerms.some((term) => text.slice(index, end).includes(term)),
+      focused: isFocused,
+      role: isFocused ? getGrammarSemanticRole(copyText) : undefined,
     });
     index = end;
   }
@@ -120,43 +135,51 @@ export function ContextualChineseText({
 
   return (
     <span className={className} {...props}>
-      {displayTokens.map((token) => token.interactive ? (
-        <span key={token.key} className="group relative inline-block">
-          <button
-            type="button"
-            onClick={(event) => {
-              event.stopPropagation();
-              onOpenWord(token.text);
-            }}
-            aria-label={token.meaning
-              ? `${token.text}: ${token.pinyin ? `${token.pinyin}, ` : ''}${token.meaning}`
-              : `Open ${token.text} in the dictionary`}
-            className={cn(
-              '-mx-0.5 rounded-xs px-0.5 font-chinese text-inherit transition-colors hover:bg-brand-primary-soft focus-ring-inline focus-visible:bg-brand-primary-soft active:bg-brand-primary-soft',
-              token.focused && 'font-chinese font-black text-brand-primary',
+      {displayTokens.map((token) => {
+        const role = token.role ?? 'target';
+        const colorClass = token.focused ? getSemanticRoleClasses(role) : undefined;
+        const softBgClass = token.focused ? getSemanticRoleSoftBgClasses(role) : 'hover:bg-brand-primary-soft focus-visible:bg-brand-primary-soft active:bg-brand-primary-soft';
+
+        return token.interactive ? (
+          <span key={token.key} className="group relative inline-block">
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                onOpenWord(token.text);
+              }}
+              aria-label={token.meaning
+                ? `${token.text}: ${token.pinyin ? `${token.pinyin}, ` : ''}${token.meaning}`
+                : `Open ${token.text} in the dictionary`}
+              className={cn(
+                '-mx-0.5 rounded-xs px-0.5 font-chinese text-inherit transition-colors focus-ring-inline',
+                softBgClass,
+                token.focused && 'font-chinese font-black',
+                colorClass,
+              )}
+            >
+              {token.text}
+            </button>
+            {token.meaning && (
+              <span
+                role="tooltip"
+                className="pointer-events-none absolute bottom-[calc(100%+8px)] left-1/2 z-50 hidden w-max min-w-[112px] max-w-[190px] -translate-x-1/2 rounded-sm border-b-2 border-ui-border bg-ui-ink-strong px-3 py-2 text-center font-sans group-hover:block group-focus-within:block"
+              >
+                {token.pinyin && <span className="block text-xs font-black text-brand-primary/70">{token.pinyin}</span>}
+                <span className="mt-0.5 block text-xs font-bold leading-snug text-white">{token.meaning}</span>
+                <span className="absolute left-1/2 top-full h-0 w-0 -translate-x-1/2 border-x-[6px] border-t-[6px] border-x-transparent border-t-ui-ink-strong" />
+              </span>
             )}
+          </span>
+        ) : (
+          <span
+            key={token.key}
+            className={token.focused ? (CHINESE_CHARACTER.test(token.text) ? cn('font-chinese font-black', colorClass) : cn('font-sans font-black', colorClass)) : undefined}
           >
             {token.text}
-          </button>
-          {token.meaning && (
-            <span
-              role="tooltip"
-              className="pointer-events-none absolute bottom-[calc(100%+8px)] left-1/2 z-50 hidden w-max min-w-[112px] max-w-[190px] -translate-x-1/2 rounded-sm border-b-2 border-ui-border bg-ui-ink-strong px-3 py-2 text-center font-sans group-hover:block group-focus-within:block"
-            >
-              {token.pinyin && <span className="block text-xs font-black text-brand-primary/70">{token.pinyin}</span>}
-              <span className="mt-0.5 block text-xs font-bold leading-snug text-white">{token.meaning}</span>
-              <span className="absolute left-1/2 top-full h-0 w-0 -translate-x-1/2 border-x-[6px] border-t-[6px] border-x-transparent border-t-ui-ink-strong" />
-            </span>
-          )}
-        </span>
-      ) : (
-        <span
-          key={token.key}
-          className={token.focused ? (CHINESE_CHARACTER.test(token.text) ? 'font-chinese font-black text-brand-primary' : 'font-sans font-black text-brand-primary') : undefined}
-        >
-          {token.text}
-        </span>
-      ))}
+          </span>
+        );
+      })}
     </span>
   );
 }

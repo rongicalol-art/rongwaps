@@ -8,22 +8,19 @@
     "lessonTitleEnglish": "Let’s Play Tennis This Weekend!",
     "grammarNumber": 4,
     "titleTraditional": "可以：建議與允許",
-    "titleEnglish": "Read the Green Light",
+    "titleEnglish": "Ask and Give Permission with 可以",
     "learnerPromise": "Offer a possible solution or ask whether an action is permitted.",
     "printedPages": [
       147,
       148
     ],
     "audioReference": "06-2-3",
-    "explanation": "可以 can suggest a possible solution or give permission. Ask with 可以…嗎 or 可不可以; answer permission questions with 可以 or 不可以.",
+    "explanation": "Use 可以 to ask for permission or suggest a solution. Ask with 可以…嗎 or 可不可以. Answer with 可以 to allow it, or 不可以 to say no.",
     "focusTerms": [
       "可以",
-      "建議",
-      "建议",
-      "允許",
-      "允许",
       "不可以",
-      "可不可以"
+      "可不可以",
+      "嗎"
     ],
     "teachingGlossary": [
       {
@@ -75,7 +72,7 @@
         "id": "b1l06-g04-glossary-8",
         "traditional": "國安",
         "simplified": "国安",
-        "pinyin": "Guo'ān",
+        "pinyin": "Guó'ān",
         "meaning": "Guoan"
       },
       {
@@ -1134,8 +1131,202 @@
         }
       },
       {
-        "id": "g4-e2",
+        "id": "b1l06-g4-e4",
         "number": 2,
+        "text": {
+          "traditional": "A：我不知道要送媽媽什麼禮物。 B：你可以送她一件紅色的新衣服。",
+          "simplified": "A：我不知道要送妈妈什么礼物。 B：你可以送她一件红色的新衣服。",
+          "pinyin": "A: Wǒ bù zhīdào yào sòng māma shénme lǐwù. B: Nǐ kěyǐ sòng tā yí jiàn hóngsè de xīn yīfu.",
+          "english": "A: I do not know what gift to give Mom. B: You can give her a new red item of clothing.",
+          "words": [
+            {
+              "id": "b1l06-g4-e4-word-1",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l06-g4-e4-word-2",
+              "traditional": "不知道",
+              "pinyin": "bù zhīdào",
+              "meaning": "do not know"
+            },
+            {
+              "id": "b1l06-g4-e4-word-3",
+              "traditional": "要",
+              "pinyin": "yào",
+              "meaning": "want to"
+            },
+            {
+              "id": "b1l06-g4-e4-word-4",
+              "traditional": "送",
+              "pinyin": "sòng",
+              "meaning": "give"
+            },
+            {
+              "id": "b1l06-g4-e4-word-5",
+              "traditional": "媽媽",
+              "simplified": "妈妈",
+              "pinyin": "māma",
+              "meaning": "mom"
+            },
+            {
+              "id": "b1l06-g4-e4-word-6",
+              "traditional": "什麼",
+              "simplified": "什么",
+              "pinyin": "shénme",
+              "meaning": "what"
+            },
+            {
+              "id": "b1l06-g4-e4-word-7",
+              "traditional": "禮物",
+              "simplified": "礼物",
+              "pinyin": "lǐwù",
+              "meaning": "gift",
+              "suffix": "。"
+            },
+            {
+              "id": "b1l06-g4-e4-word-8",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you",
+              "prefix": "B："
+            },
+            {
+              "id": "b1l06-g4-e4-word-9",
+              "traditional": "可以",
+              "pinyin": "kěyǐ",
+              "meaning": "can"
+            },
+            {
+              "id": "b1l06-g4-e4-word-10",
+              "traditional": "送",
+              "pinyin": "sòng",
+              "meaning": "give"
+            },
+            {
+              "id": "b1l06-g4-e4-word-11",
+              "traditional": "她",
+              "pinyin": "tā",
+              "meaning": "her"
+            },
+            {
+              "id": "b1l06-g4-e4-word-12",
+              "traditional": "一件",
+              "pinyin": "yí jiàn",
+              "meaning": "one (item)"
+            },
+            {
+              "id": "b1l06-g4-e4-word-13",
+              "traditional": "紅色的",
+              "simplified": "红色的",
+              "pinyin": "hóngsè de",
+              "meaning": "red"
+            },
+            {
+              "id": "b1l06-g4-e4-word-14",
+              "traditional": "新衣服",
+              "pinyin": "xīn yīfu",
+              "meaning": "new clothes",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "b1l06-g4-e5",
+        "number": 3,
+        "text": {
+          "traditional": "A：你想要點什麼？ B：這裡的珍珠奶茶很好喝，我們可以點（珍珠奶茶）。",
+          "simplified": "A：你想要点什么？ B：这里的珍珠奶茶很好喝，我们可以点（珍珠奶茶）。",
+          "pinyin": "A: Nǐ xiǎng yào diǎn shénme? B: Zhèlǐ de zhēnzhū nǎichá hěn hǎo hē, wǒmen kěyǐ diǎn (zhēnzhū nǎichá).",
+          "english": "A: What would you like to order? B: The pearl milk tea here is very good; we can order it.",
+          "words": [
+            {
+              "id": "b1l06-g4-e5-word-1",
+              "traditional": "你",
+              "pinyin": "nǐ",
+              "meaning": "you",
+              "prefix": "A："
+            },
+            {
+              "id": "b1l06-g4-e5-word-2",
+              "traditional": "想要",
+              "pinyin": "xiǎng yào",
+              "meaning": "would like"
+            },
+            {
+              "id": "b1l06-g4-e5-word-3",
+              "traditional": "點",
+              "simplified": "点",
+              "pinyin": "diǎn",
+              "meaning": "order"
+            },
+            {
+              "id": "b1l06-g4-e5-word-4",
+              "traditional": "什麼",
+              "simplified": "什么",
+              "pinyin": "shénme",
+              "meaning": "what",
+              "suffix": "？"
+            },
+            {
+              "id": "b1l06-g4-e5-word-5",
+              "traditional": "這裡的",
+              "simplified": "这里的",
+              "pinyin": "zhèlǐ de",
+              "meaning": "here at this place",
+              "prefix": "B："
+            },
+            {
+              "id": "b1l06-g4-e5-word-6",
+              "traditional": "珍珠奶茶",
+              "pinyin": "zhēnzhū nǎichá",
+              "meaning": "pearl milk tea"
+            },
+            {
+              "id": "b1l06-g4-e5-word-7",
+              "traditional": "很好喝",
+              "pinyin": "hěn hǎo hē",
+              "meaning": "tastes very good"
+            },
+            {
+              "id": "b1l06-g4-e5-word-8",
+              "traditional": "我們",
+              "simplified": "我们",
+              "pinyin": "wǒmen",
+              "meaning": "we",
+              "prefix": "，"
+            },
+            {
+              "id": "b1l06-g4-e5-word-9",
+              "traditional": "可以",
+              "pinyin": "kěyǐ",
+              "meaning": "can"
+            },
+            {
+              "id": "b1l06-g4-e5-word-10",
+              "traditional": "點",
+              "simplified": "点",
+              "pinyin": "diǎn",
+              "meaning": "order"
+            },
+            {
+              "id": "b1l06-g4-e5-word-11",
+              "traditional": "（珍珠奶茶）",
+              "pinyin": "(zhēnzhū nǎichá)",
+              "meaning": "pearl milk tea",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "g4-e2",
+        "number": 4,
         "text": {
           "traditional": "A：媽媽，我可以吃冰淇淋嗎？ B：太冷了，不可以。",
           "simplified": "A：妈妈，我可以吃冰淇淋吗？ B：太冷了，不可以。",
@@ -1213,8 +1404,78 @@
         }
       },
       {
+        "id": "b1l06-g4-e6",
+        "number": 5,
+        "text": {
+          "traditional": "A：老師，我現在可以去洗手間嗎？ B：可以。",
+          "simplified": "A：老师，我现在可以去洗手间吗？ B：可以。",
+          "pinyin": "A: Lǎoshī, wǒ xiànzài kěyǐ qù xǐshǒujiān ma? B: Kěyǐ.",
+          "english": "A: Teacher, may I go to the restroom now? B: Yes.",
+          "words": [
+            {
+              "id": "b1l06-g4-e6-word-1",
+              "traditional": "老師",
+              "simplified": "老师",
+              "pinyin": "lǎoshī",
+              "meaning": "teacher",
+              "prefix": "A：",
+              "suffix": "，"
+            },
+            {
+              "id": "b1l06-g4-e6-word-2",
+              "traditional": "我",
+              "pinyin": "wǒ",
+              "meaning": "I; me"
+            },
+            {
+              "id": "b1l06-g4-e6-word-3",
+              "traditional": "現在",
+              "simplified": "现在",
+              "pinyin": "xiànzài",
+              "meaning": "now"
+            },
+            {
+              "id": "b1l06-g4-e6-word-4",
+              "traditional": "可以",
+              "pinyin": "kěyǐ",
+              "meaning": "can"
+            },
+            {
+              "id": "b1l06-g4-e6-word-5",
+              "traditional": "去",
+              "pinyin": "qù",
+              "meaning": "go"
+            },
+            {
+              "id": "b1l06-g4-e6-word-6",
+              "traditional": "洗手間",
+              "simplified": "洗手间",
+              "pinyin": "xǐshǒujiān",
+              "meaning": "restroom"
+            },
+            {
+              "id": "b1l06-g4-e6-word-7",
+              "traditional": "嗎",
+              "pinyin": "ma",
+              "meaning": "yes/no question ending",
+              "suffix": "？",
+              "simplified": "吗"
+            },
+            {
+              "id": "b1l06-g4-e6-word-8",
+              "traditional": "可以",
+              "pinyin": "kěyǐ",
+              "meaning": "yes; may",
+              "prefix": "B：",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
         "id": "g4-e3",
-        "number": 3,
+        "number": 6,
         "text": {
           "traditional": "A：我們可不可以在捷運上吃東西？ B：不可以，也不可以喝飲料。",
           "simplified": "A：我们可不可以在捷运上吃东西？ B：不可以，也不可以喝饮料。",
@@ -1645,14 +1906,16 @@
                   "id": "g4-s1-order",
                   "traditional": "點",
                   "pinyin": "diǎn",
-                  "meaning": "order"
+                  "meaning": "order",
+                  "simplified": "点"
                 },
                 {
                   "id": "g4-s1-tea",
                   "traditional": "一杯熱茶",
                   "pinyin": "yì bēi rè chá",
                   "meaning": "one cup of hot tea",
-                  "suffix": "。"
+                  "suffix": "。",
+                  "simplified": "一杯热茶"
                 }
               ]
             ],
@@ -1709,7 +1972,8 @@
                   "id": "g4-s1-we",
                   "traditional": "我們",
                   "pinyin": "wǒmen",
-                  "meaning": "we; us"
+                  "meaning": "we; us",
+                  "simplified": "我们"
                 }
               ],
               [
@@ -1725,7 +1989,8 @@
                   "id": "g4-s1-order-2",
                   "traditional": "點",
                   "pinyin": "diǎn",
-                  "meaning": "order"
+                  "meaning": "order",
+                  "simplified": "点"
                 },
                 {
                   "id": "g4-s1-bubble-tea",
@@ -1741,7 +2006,9 @@
           }
         ],
         "exampleIds": [
-          "g4-e1"
+          "g4-e1",
+          "b1l06-g4-e4",
+          "b1l06-g4-e5"
         ]
       },
       {
@@ -1800,7 +2067,8 @@
                   "traditional": "嗎",
                   "pinyin": "ma",
                   "meaning": "yes/no question ending",
-                  "suffix": "？"
+                  "suffix": "？",
+                  "simplified": "吗"
                 }
               ]
             ],
@@ -1833,14 +2101,16 @@
                   "id": "g4-s2-restroom",
                   "traditional": "去洗手間",
                   "pinyin": "qù xǐshǒujiān",
-                  "meaning": "go to the restroom"
+                  "meaning": "go to the restroom",
+                  "simplified": "去洗手间"
                 },
                 {
                   "id": "g4-s2-ma-2",
                   "traditional": "嗎",
                   "pinyin": "ma",
                   "meaning": "yes/no question ending",
-                  "suffix": "？"
+                  "suffix": "？",
+                  "simplified": "吗"
                 }
               ]
             ],
@@ -1857,7 +2127,8 @@
                   "id": "g4-s2-we",
                   "traditional": "我們",
                   "pinyin": "wǒmen",
-                  "meaning": "we; us"
+                  "meaning": "we; us",
+                  "simplified": "我们"
                 }
               ],
               [
@@ -1880,7 +2151,8 @@
                   "traditional": "嗎",
                   "pinyin": "ma",
                   "meaning": "yes/no question ending",
-                  "suffix": "？"
+                  "suffix": "？",
+                  "simplified": "吗"
                 }
               ]
             ],
@@ -1889,6 +2161,7 @@
         ],
         "exampleIds": [
           "g4-e2",
+          "b1l06-g4-e6",
           "g4-e3"
         ]
       }
@@ -1903,20 +2176,19 @@
     "lessonTitleEnglish": "Let’s Play Tennis This Weekend!",
     "grammarNumber": 3,
     "titleTraditional": "有（一）點（兒）+ 狀態",
-    "titleEnglish": "Turn the Warning Dial Slightly",
+    "titleEnglish": "Say “A Little” with 有一點兒",
     "learnerPromise": "Describe a small, often inconvenient degree: a little tired, cold, or small.",
     "printedPages": [
       146
     ],
     "audioReference": "06-2-3",
-    "explanation": "Put 有一點兒 / 有點兒 before an adjective to mean \"a little / somewhat\". It usually describes slightly negative or unpleasant qualities.",
+    "explanation": "Put 有一點兒 (or 有點兒) before a describing word to mean “a little.” Use it when something is slightly unpleasant or problematic. Never put 很 after it.",
     "focusTerms": [
       "有一點兒",
       "有一点儿",
       "有點兒",
       "有点儿",
-      "狀態",
-      "状态"
+      "很"
     ],
     "teachingGlossary": [
       {
@@ -1968,7 +2240,7 @@
         "id": "b1l06-g03-glossary-8",
         "traditional": "國安",
         "simplified": "国安",
-        "pinyin": "Guo'ān",
+        "pinyin": "Guó'ān",
         "meaning": "Guoan"
       },
       {
@@ -3519,20 +3791,19 @@
         "lessonTitleEnglish": "Let’s Play Tennis This Weekend!",
         "grammarNumber": 3,
         "titleTraditional": "有（一）點（兒）+ 狀態",
-        "titleEnglish": "Turn the Warning Dial Slightly",
+        "titleEnglish": "Say “A Little” with 有一點兒",
         "learnerPromise": "Describe a small, often inconvenient degree: a little tired, cold, or small.",
         "printedPages": [
           146
         ],
         "audioReference": "06-2-3",
-        "explanation": "Put 有一點兒 or 有點兒 right before a describing word to mean “a little.” It often softens a problem or an unwanted feeling. Do not add 很 after it.",
+        "explanation": "Put 有一點兒 (or 有點兒) before a describing word to mean “a little.” Use it when something is slightly unpleasant or problematic. Never put 很 after it.",
         "focusTerms": [
           "有一點兒",
           "有一点儿",
           "有點兒",
           "有点儿",
-          "狀態",
-          "状态"
+          "很"
         ],
         "teachingGlossary": [
           {
@@ -3584,7 +3855,7 @@
             "id": "b1l06-g03-glossary-8",
             "traditional": "國安",
             "simplified": "国安",
-            "pinyin": "Guo'ān",
+            "pinyin": "Guó'ān",
             "meaning": "Guoan"
           },
           {
@@ -5128,22 +5399,19 @@
         "lessonTitleEnglish": "Let’s Play Tennis This Weekend!",
         "grammarNumber": 4,
         "titleTraditional": "可以：建議與允許",
-        "titleEnglish": "Read the Green Light",
+        "titleEnglish": "Ask and Give Permission with 可以",
         "learnerPromise": "Offer a possible solution or ask whether an action is permitted.",
         "printedPages": [
           147,
           148
         ],
         "audioReference": "06-2-3",
-        "explanation": "可以 can suggest a possible solution or give permission. Ask with 可以…嗎 or 可不可以; answer permission questions with 可以 or 不可以.",
+        "explanation": "Use 可以 to ask for permission or suggest a solution. Ask with 可以…嗎 or 可不可以. Answer with 可以 to allow it, or 不可以 to say no.",
         "focusTerms": [
           "可以",
-          "建議",
-          "建议",
-          "允許",
-          "允许",
           "不可以",
-          "可不可以"
+          "可不可以",
+          "嗎"
         ],
         "teachingGlossary": [
           {
@@ -5195,7 +5463,7 @@
             "id": "b1l06-g04-glossary-8",
             "traditional": "國安",
             "simplified": "国安",
-            "pinyin": "Guo'ān",
+            "pinyin": "Guó'ān",
             "meaning": "Guoan"
           },
           {
@@ -6254,8 +6522,202 @@
             }
           },
           {
-            "id": "g4-e2",
+            "id": "b1l06-g4-e4",
             "number": 2,
+            "text": {
+              "traditional": "A：我不知道要送媽媽什麼禮物。 B：你可以送她一件紅色的新衣服。",
+              "simplified": "A：我不知道要送妈妈什么礼物。 B：你可以送她一件红色的新衣服。",
+              "pinyin": "A: Wǒ bù zhīdào yào sòng māma shénme lǐwù. B: Nǐ kěyǐ sòng tā yí jiàn hóngsè de xīn yīfu.",
+              "english": "A: I do not know what gift to give Mom. B: You can give her a new red item of clothing.",
+              "words": [
+                {
+                  "id": "b1l06-g4-e4-word-1",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l06-g4-e4-word-2",
+                  "traditional": "不知道",
+                  "pinyin": "bù zhīdào",
+                  "meaning": "do not know"
+                },
+                {
+                  "id": "b1l06-g4-e4-word-3",
+                  "traditional": "要",
+                  "pinyin": "yào",
+                  "meaning": "want to"
+                },
+                {
+                  "id": "b1l06-g4-e4-word-4",
+                  "traditional": "送",
+                  "pinyin": "sòng",
+                  "meaning": "give"
+                },
+                {
+                  "id": "b1l06-g4-e4-word-5",
+                  "traditional": "媽媽",
+                  "simplified": "妈妈",
+                  "pinyin": "māma",
+                  "meaning": "mom"
+                },
+                {
+                  "id": "b1l06-g4-e4-word-6",
+                  "traditional": "什麼",
+                  "simplified": "什么",
+                  "pinyin": "shénme",
+                  "meaning": "what"
+                },
+                {
+                  "id": "b1l06-g4-e4-word-7",
+                  "traditional": "禮物",
+                  "simplified": "礼物",
+                  "pinyin": "lǐwù",
+                  "meaning": "gift",
+                  "suffix": "。"
+                },
+                {
+                  "id": "b1l06-g4-e4-word-8",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you",
+                  "prefix": "B："
+                },
+                {
+                  "id": "b1l06-g4-e4-word-9",
+                  "traditional": "可以",
+                  "pinyin": "kěyǐ",
+                  "meaning": "can"
+                },
+                {
+                  "id": "b1l06-g4-e4-word-10",
+                  "traditional": "送",
+                  "pinyin": "sòng",
+                  "meaning": "give"
+                },
+                {
+                  "id": "b1l06-g4-e4-word-11",
+                  "traditional": "她",
+                  "pinyin": "tā",
+                  "meaning": "her"
+                },
+                {
+                  "id": "b1l06-g4-e4-word-12",
+                  "traditional": "一件",
+                  "pinyin": "yí jiàn",
+                  "meaning": "one (item)"
+                },
+                {
+                  "id": "b1l06-g4-e4-word-13",
+                  "traditional": "紅色的",
+                  "simplified": "红色的",
+                  "pinyin": "hóngsè de",
+                  "meaning": "red"
+                },
+                {
+                  "id": "b1l06-g4-e4-word-14",
+                  "traditional": "新衣服",
+                  "pinyin": "xīn yīfu",
+                  "meaning": "new clothes",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "b1l06-g4-e5",
+            "number": 3,
+            "text": {
+              "traditional": "A：你想要點什麼？ B：這裡的珍珠奶茶很好喝，我們可以點（珍珠奶茶）。",
+              "simplified": "A：你想要点什么？ B：这里的珍珠奶茶很好喝，我们可以点（珍珠奶茶）。",
+              "pinyin": "A: Nǐ xiǎng yào diǎn shénme? B: Zhèlǐ de zhēnzhū nǎichá hěn hǎo hē, wǒmen kěyǐ diǎn (zhēnzhū nǎichá).",
+              "english": "A: What would you like to order? B: The pearl milk tea here is very good; we can order it.",
+              "words": [
+                {
+                  "id": "b1l06-g4-e5-word-1",
+                  "traditional": "你",
+                  "pinyin": "nǐ",
+                  "meaning": "you",
+                  "prefix": "A："
+                },
+                {
+                  "id": "b1l06-g4-e5-word-2",
+                  "traditional": "想要",
+                  "pinyin": "xiǎng yào",
+                  "meaning": "would like"
+                },
+                {
+                  "id": "b1l06-g4-e5-word-3",
+                  "traditional": "點",
+                  "simplified": "点",
+                  "pinyin": "diǎn",
+                  "meaning": "order"
+                },
+                {
+                  "id": "b1l06-g4-e5-word-4",
+                  "traditional": "什麼",
+                  "simplified": "什么",
+                  "pinyin": "shénme",
+                  "meaning": "what",
+                  "suffix": "？"
+                },
+                {
+                  "id": "b1l06-g4-e5-word-5",
+                  "traditional": "這裡的",
+                  "simplified": "这里的",
+                  "pinyin": "zhèlǐ de",
+                  "meaning": "here at this place",
+                  "prefix": "B："
+                },
+                {
+                  "id": "b1l06-g4-e5-word-6",
+                  "traditional": "珍珠奶茶",
+                  "pinyin": "zhēnzhū nǎichá",
+                  "meaning": "pearl milk tea"
+                },
+                {
+                  "id": "b1l06-g4-e5-word-7",
+                  "traditional": "很好喝",
+                  "pinyin": "hěn hǎo hē",
+                  "meaning": "tastes very good"
+                },
+                {
+                  "id": "b1l06-g4-e5-word-8",
+                  "traditional": "我們",
+                  "simplified": "我们",
+                  "pinyin": "wǒmen",
+                  "meaning": "we",
+                  "prefix": "，"
+                },
+                {
+                  "id": "b1l06-g4-e5-word-9",
+                  "traditional": "可以",
+                  "pinyin": "kěyǐ",
+                  "meaning": "can"
+                },
+                {
+                  "id": "b1l06-g4-e5-word-10",
+                  "traditional": "點",
+                  "simplified": "点",
+                  "pinyin": "diǎn",
+                  "meaning": "order"
+                },
+                {
+                  "id": "b1l06-g4-e5-word-11",
+                  "traditional": "（珍珠奶茶）",
+                  "pinyin": "(zhēnzhū nǎichá)",
+                  "meaning": "pearl milk tea",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "g4-e2",
+            "number": 4,
             "text": {
               "traditional": "A：媽媽，我可以吃冰淇淋嗎？ B：太冷了，不可以。",
               "simplified": "A：妈妈，我可以吃冰淇淋吗？ B：太冷了，不可以。",
@@ -6333,8 +6795,78 @@
             }
           },
           {
+            "id": "b1l06-g4-e6",
+            "number": 5,
+            "text": {
+              "traditional": "A：老師，我現在可以去洗手間嗎？ B：可以。",
+              "simplified": "A：老师，我现在可以去洗手间吗？ B：可以。",
+              "pinyin": "A: Lǎoshī, wǒ xiànzài kěyǐ qù xǐshǒujiān ma? B: Kěyǐ.",
+              "english": "A: Teacher, may I go to the restroom now? B: Yes.",
+              "words": [
+                {
+                  "id": "b1l06-g4-e6-word-1",
+                  "traditional": "老師",
+                  "simplified": "老师",
+                  "pinyin": "lǎoshī",
+                  "meaning": "teacher",
+                  "prefix": "A：",
+                  "suffix": "，"
+                },
+                {
+                  "id": "b1l06-g4-e6-word-2",
+                  "traditional": "我",
+                  "pinyin": "wǒ",
+                  "meaning": "I; me"
+                },
+                {
+                  "id": "b1l06-g4-e6-word-3",
+                  "traditional": "現在",
+                  "simplified": "现在",
+                  "pinyin": "xiànzài",
+                  "meaning": "now"
+                },
+                {
+                  "id": "b1l06-g4-e6-word-4",
+                  "traditional": "可以",
+                  "pinyin": "kěyǐ",
+                  "meaning": "can"
+                },
+                {
+                  "id": "b1l06-g4-e6-word-5",
+                  "traditional": "去",
+                  "pinyin": "qù",
+                  "meaning": "go"
+                },
+                {
+                  "id": "b1l06-g4-e6-word-6",
+                  "traditional": "洗手間",
+                  "simplified": "洗手间",
+                  "pinyin": "xǐshǒujiān",
+                  "meaning": "restroom"
+                },
+                {
+                  "id": "b1l06-g4-e6-word-7",
+                  "traditional": "嗎",
+                  "pinyin": "ma",
+                  "meaning": "yes/no question ending",
+                  "suffix": "？",
+                  "simplified": "吗"
+                },
+                {
+                  "id": "b1l06-g4-e6-word-8",
+                  "traditional": "可以",
+                  "pinyin": "kěyǐ",
+                  "meaning": "yes; may",
+                  "prefix": "B：",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
             "id": "g4-e3",
-            "number": 3,
+            "number": 6,
             "text": {
               "traditional": "A：我們可不可以在捷運上吃東西？ B：不可以，也不可以喝飲料。",
               "simplified": "A：我们可不可以在捷运上吃东西？ B：不可以，也不可以喝饮料。",
@@ -6765,14 +7297,16 @@
                       "id": "g4-s1-order",
                       "traditional": "點",
                       "pinyin": "diǎn",
-                      "meaning": "order"
+                      "meaning": "order",
+                      "simplified": "点"
                     },
                     {
                       "id": "g4-s1-tea",
                       "traditional": "一杯熱茶",
                       "pinyin": "yì bēi rè chá",
                       "meaning": "one cup of hot tea",
-                      "suffix": "。"
+                      "suffix": "。",
+                      "simplified": "一杯热茶"
                     }
                   ]
                 ],
@@ -6829,7 +7363,8 @@
                       "id": "g4-s1-we",
                       "traditional": "我們",
                       "pinyin": "wǒmen",
-                      "meaning": "we; us"
+                      "meaning": "we; us",
+                      "simplified": "我们"
                     }
                   ],
                   [
@@ -6845,7 +7380,8 @@
                       "id": "g4-s1-order-2",
                       "traditional": "點",
                       "pinyin": "diǎn",
-                      "meaning": "order"
+                      "meaning": "order",
+                      "simplified": "点"
                     },
                     {
                       "id": "g4-s1-bubble-tea",
@@ -6861,7 +7397,9 @@
               }
             ],
             "exampleIds": [
-              "g4-e1"
+              "g4-e1",
+              "b1l06-g4-e4",
+              "b1l06-g4-e5"
             ]
           },
           {
@@ -6920,7 +7458,8 @@
                       "traditional": "嗎",
                       "pinyin": "ma",
                       "meaning": "yes/no question ending",
-                      "suffix": "？"
+                      "suffix": "？",
+                      "simplified": "吗"
                     }
                   ]
                 ],
@@ -6953,14 +7492,16 @@
                       "id": "g4-s2-restroom",
                       "traditional": "去洗手間",
                       "pinyin": "qù xǐshǒujiān",
-                      "meaning": "go to the restroom"
+                      "meaning": "go to the restroom",
+                      "simplified": "去洗手间"
                     },
                     {
                       "id": "g4-s2-ma-2",
                       "traditional": "嗎",
                       "pinyin": "ma",
                       "meaning": "yes/no question ending",
-                      "suffix": "？"
+                      "suffix": "？",
+                      "simplified": "吗"
                     }
                   ]
                 ],
@@ -6977,7 +7518,8 @@
                       "id": "g4-s2-we",
                       "traditional": "我們",
                       "pinyin": "wǒmen",
-                      "meaning": "we; us"
+                      "meaning": "we; us",
+                      "simplified": "我们"
                     }
                   ],
                   [
@@ -7000,7 +7542,8 @@
                       "traditional": "嗎",
                       "pinyin": "ma",
                       "meaning": "yes/no question ending",
-                      "suffix": "？"
+                      "suffix": "？",
+                      "simplified": "吗"
                     }
                   ]
                 ],
@@ -7009,6 +7552,7 @@
             ],
             "exampleIds": [
               "g4-e2",
+              "b1l06-g4-e6",
               "g4-e3"
             ]
           }

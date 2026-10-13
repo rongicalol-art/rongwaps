@@ -4,6 +4,11 @@ import { useSmartChineseSegments } from '../hooks/useSmartChineseSegments';
 import type { GrammarWordToken } from '../../../types/models';
 import { cn } from '../../../utils/cn';
 import { getFocusTokenIds } from '../utils/grammarFocusTokens';
+import {
+  getGrammarSemanticRole,
+  getSemanticRoleClasses,
+  getSemanticRoleSoftBgClasses,
+} from '../../../utils/grammar/grammarSemanticRoles';
 
 interface InteractiveGrammarSentenceProps {
   words: GrammarWordToken[];
@@ -85,6 +90,9 @@ export function InteractiveGrammarSentence({
           : word.traditional;
         const isOpen = previewWordId === word.id;
         const isFocus = focusTokenIds.has(word.id);
+        const role = isFocus ? getGrammarSemanticRole(text) : undefined;
+        const roleColorClass = role ? getSemanticRoleClasses(role) : undefined;
+        const roleSoftBgClass = role ? getSemanticRoleSoftBgClasses(role) : 'hover:bg-brand-primary-soft focus-visible:bg-brand-primary-soft active:bg-brand-primary-soft';
         const isAligned = Boolean(word.alignmentId && word.alignmentId === activeAlignmentId);
         const tooltipId = `grammar-word-${word.id}`;
 
@@ -123,10 +131,11 @@ export function InteractiveGrammarSentence({
                 aria-describedby={isOpen ? tooltipId : undefined}
                 aria-label={`${text}: ${word.pinyin}, ${word.meaning}`}
                 className={cn(
-                  '-mx-0.5 rounded-xs px-0.5 font-chinese font-black leading-tight transition-colors hover:bg-brand-primary-soft focus-ring-inline focus-visible:bg-brand-primary-soft active:bg-brand-primary-soft',
+                  '-mx-0.5 rounded-xs px-0.5 font-chinese font-black leading-tight transition-colors focus-ring-inline',
                   teachingTextSizeClass,
+                  roleSoftBgClass,
                   isFocus
-                    ? 'text-brand-primary font-black'
+                    ? cn(roleColorClass, 'font-black')
                     : tone === 'accent' ? 'text-brand-primary' : 'text-ui-ink-strong',
                   isOpen && 'bg-brand-primary-soft',
                   isAligned && 'bg-brand-primary text-ui-surface hover:bg-brand-primary focus-visible:bg-brand-primary',
@@ -142,7 +151,7 @@ export function InteractiveGrammarSentence({
             </span>
 
             {showPinyin && (
-              <span className="mx-0.5 mt-1 whitespace-nowrap text-[11px] font-extrabold leading-none text-brand-primary sm:text-xs">
+              <span className={cn('mx-0.5 mt-1 whitespace-nowrap text-[11px] font-extrabold leading-none sm:text-xs', isFocus && roleColorClass ? roleColorClass : 'text-brand-primary')}>
                 {word.pinyin}
               </span>
             )}

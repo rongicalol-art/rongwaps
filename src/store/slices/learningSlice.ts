@@ -1,4 +1,5 @@
 import type { SRSData, Quality } from '../../utils/srs/srsEngine';
+import { reviewSessionKey } from '../../utils/srs/sessionProgress';
 import {
   applyCardReview,
   createClearedReviewProgress,
@@ -22,6 +23,9 @@ export interface LearningState {
    */
   progressResetSeen: Record<string, string>;
   setProgressResetSeen: (userId: string, resetAt: string) => void;
+  /** Words the learner mixed up, both ways (card id -> up to 3 recent card ids): the quiz offers them as wrong choices. */
+  wordConfusions: Record<string, string[]>;
+  recordConfusion: (cardId: string, confusedWithId: string) => void;
 
   // Session Progress
   sessionProgress: SessionProgress;
@@ -37,8 +41,12 @@ export interface LearningState {
   sessionProgressIndex: Record<string, number>;
   /** Card ids in the order a shuffled session was left in; absent when the deck is in its natural order. */
   sessionCardOrder: Record<string, string[]>;
-  /** Saves where a session stopped; pass the card order only when it is shuffled. */
-  setSessionProgressIndex: (key: string, index: number, cardOrder?: string[] | null) => void;
+  /**
+   * Saves where a session stopped; pass the card order only when it is shuffled, and
+   * `reviewIds` (the missed cards, in order) only while a flashcard review pass is running.
+   * Review ids live in `sessionCardOrder` under `reviewSessionKey(key)`.
+   */
+  setSessionProgressIndex: (key: string, index: number, cardOrder?: string[] | null, reviewIds?: string[] | null) => void;
   clearSessionProgressIndex: (key: string) => void;
 
   // Deck Exclusions
@@ -61,6 +69,7 @@ export interface LearningState {
 interface LearningSetState {
   srsData: Record<string, SRSData>;
   progressResetSeen: Record<string, string>;
+  wordConfusions: Record<string, string[]>;
   learnedCards: string[];
   sessionProgress: SessionProgress;
   lastActivity: LearningState['lastActivity'];
@@ -89,6 +98,14 @@ export function createLearningSlice(set: SetState): LearningState {
         ? {}
         : { progressResetSeen: { ...s.progressResetSeen, [userId]: resetAt } }
     )),
+    wordConfusions: {},
+    recordConfusion: (cardId, confusedWithId) => set((s) => {
+      if (cardId === confusedWithId) return {};
+      const add = (id: string, other: string) => [other, ...(s.wordConfusions[id] ?? []).filter((x) => x !== other)].slice(0, 3);
+      return {
+        wordConfusions: { ...s.wordConfusions, [cardId]: add(cardId, confusedWithId), [confusedWithId]: add(confusedWithId, cardId) },
+      };
+    }),
 
     sessionProgress: createEmptySessionProgress(),
     startSession: () => set((s) => ({
@@ -108,10 +125,12 @@ export function createLearningSlice(set: SetState): LearningState {
 
     sessionProgressIndex: {},
     sessionCardOrder: {},
-    setSessionProgressIndex: (key, index, cardOrder = null) => set((s) => {
+    setSessionProgressIndex: (key, index, cardOrder = null, reviewIds = null) => set((s) => {
       const nextOrder = { ...s.sessionCardOrder };
       if (cardOrder) nextOrder[key] = cardOrder;
       else delete nextOrder[key];
+      if (reviewIds) nextOrder[reviewSessionKey(key)] = reviewIds;
+      else delete nextOrder[reviewSessionKey(key)];
       return {
         sessionProgressIndex: { ...s.sessionProgressIndex, [key]: index },
         sessionCardOrder: nextOrder,
@@ -122,6 +141,7 @@ export function createLearningSlice(set: SetState): LearningState {
       const nextOrder = { ...s.sessionCardOrder };
       delete nextProgress[key];
       delete nextOrder[key];
+      delete nextOrder[reviewSessionKey(key)];
       return { sessionProgressIndex: nextProgress, sessionCardOrder: nextOrder };
     }),
 
@@ -157,6 +177,7 @@ export function createLearningSlice(set: SetState): LearningState {
 
     resetProgress: () => set({
       ...createClearedReviewProgress(),
+      wordConfusions: {},
       lastActivity: null,
       isReviewMode: false,
       activeReviewSessionCards: null,
@@ -173,6 +194,7 @@ export const LEARNING_PERSISTED_KEYS = [
   'sessionCardOrder',
   'deckExclusions',
   'progressResetSeen',
+  'wordConfusions',
 ] as const;
 
 /** Keys this domain clears when the signed-in account changes. */
@@ -185,6 +207,7 @@ export const LEARNING_ACCOUNT_SWITCH_DEFAULTS = {
   lastActivity: null,
   // Deck curation is user-scoped content: it must not leak across accounts.
   deckExclusions: {},
+  wordConfusions: {},
 };
 
 export type PracticeHeaderActionsState = PracticeHeaderActions;

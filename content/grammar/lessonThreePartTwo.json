@@ -17,12 +17,7 @@
     "audioReference": "03-2-3",
     "explanation": "Name the whole group first, then put 都 before what the group does or is like. 都 looks back and means “both” or “all.”",
     "focusTerms": [
-      "都",
-      "一組",
-      "一组",
-      "動作",
-      "动作",
-      "描述"
+      "都"
     ],
     "teachingGlossary": [
       {
@@ -1302,12 +1297,9 @@
       84
     ],
     "audioReference": "03-2-3",
-    "explanation": "Use 的 to connect descriptions to nouns: Description + 的 + Noun. Skip 的 with common single-syllable adjectives (新書). When the noun is clear, drop it and end on 的.",
+    "explanation": "Use 的 to link a describing word to a noun. With short one-syllable words, you can usually skip 的. If the topic is already clear, drop the noun and keep just 的.",
     "focusTerms": [
-      "描述",
       "的",
-      "名詞",
-      "名词",
       "大的",
       "小的",
       "新的",
@@ -2604,7 +2596,7 @@
         "text": {
           "traditional": "A：你要買哪件衣服？ B：我要買便宜的，不要買貴的。",
           "simplified": "A：你要买哪件衣服？ B：我要买便宜的，不要买贵的。",
-          "pinyin": "A: Nǐ yào mǎi nǎ jiàn yīfu? B: Wǒ yào mǎi piányi de, bú yào mǎi guì de.",
+          "pinyin": "A: Nǐ yào mǎi nǎ jiàn yīfu? B: Wǒ yào mǎi piányí de, bú yào mǎi guì de.",
           "english": "A: Which piece of clothing do you want to buy? B: I want to buy the cheap one, not the expensive one.",
           "words": [
             {
@@ -2717,7 +2709,8 @@
               "traditional": "妳",
               "pinyin": "nǐ",
               "meaning": "you",
-              "prefix": "A："
+              "prefix": "A：",
+              "simplified": "你"
             },
             {
               "id": "b1l03-g4-e9-w2",
@@ -3265,7 +3258,7 @@
                 "id": "l3g4-s1-r1-s",
                 "traditional": "便宜",
                 "simplified": "便宜",
-                "pinyin": "piányi",
+                "pinyin": "piányí",
                 "meaning": "cheap"
               }
             ],
@@ -3515,7 +3508,7 @@
     "lessonTitle": "買生日禮物",
     "lessonTitleEnglish": "Buying Birthday Gifts",
     "grammarNumber": 3,
-    "titleTraditional": "這／那／哪 + 數量 + 名詞",
+    "titleTraditional": "這／那／哪 + 數字 + 量詞 + 名詞",
     "titleEnglish": "Point to This, That, or Which Thing",
     "learnerPromise": "Point to things that are near or far, or ask which one someone means.",
     "printedPages": [
@@ -3529,12 +3522,9 @@
       "这",
       "那",
       "哪",
-      "數量",
-      "数量",
-      "名詞",
-      "名词",
       "兩",
-      "两"
+      "两",
+      "一"
     ],
     "teachingGlossary": [
       {
@@ -4873,7 +4863,7 @@
         "lessonTitle": "買生日禮物",
         "lessonTitleEnglish": "Buying Birthday Gifts",
         "grammarNumber": 3,
-        "titleTraditional": "這／那／哪 + 數量 + 名詞",
+        "titleTraditional": "這／那／哪 + 數字 + 量詞 + 名詞",
         "titleEnglish": "Point to This, That, or Which Thing",
         "learnerPromise": "Point to things that are near or far, or ask which one someone means.",
         "printedPages": [
@@ -4887,12 +4877,9 @@
           "这",
           "那",
           "哪",
-          "數量",
-          "数量",
-          "名詞",
-          "名词",
           "兩",
-          "两"
+          "两",
+          "一"
         ],
         "teachingGlossary": [
           {
@@ -6233,12 +6220,9 @@
           84
         ],
         "audioReference": "03-2-3",
-        "explanation": "Use 的 to link a describing word to a noun. With short one-syllable words, you can usually skip 的. If what you are talking about is already clear, you can drop the noun and just leave 的.",
+        "explanation": "Use 的 to link a describing word to a noun. With short one-syllable words, you can usually skip 的. If the topic is already clear, drop the noun and keep just 的.",
         "focusTerms": [
-          "描述",
           "的",
-          "名詞",
-          "名词",
           "大的",
           "小的",
           "新的",
@@ -7535,7 +7519,7 @@
             "text": {
               "traditional": "A：你要買哪件衣服？ B：我要買便宜的，不要買貴的。",
               "simplified": "A：你要买哪件衣服？ B：我要买便宜的，不要买贵的。",
-              "pinyin": "A: Nǐ yào mǎi nǎ jiàn yīfu? B: Wǒ yào mǎi piányi de, bú yào mǎi guì de.",
+              "pinyin": "A: Nǐ yào mǎi nǎ jiàn yīfu? B: Wǒ yào mǎi piányí de, bú yào mǎi guì de.",
               "english": "A: Which piece of clothing do you want to buy? B: I want to buy the cheap one, not the expensive one.",
               "words": [
                 {
@@ -7648,7 +7632,8 @@
                   "traditional": "妳",
                   "pinyin": "nǐ",
                   "meaning": "you",
-                  "prefix": "A："
+                  "prefix": "A：",
+                  "simplified": "你"
                 },
                 {
                   "id": "b1l03-g4-e9-w2",
@@ -8196,7 +8181,7 @@
                     "id": "l3g4-s1-r1-s",
                     "traditional": "便宜",
                     "simplified": "便宜",
-                    "pinyin": "piányi",
+                    "pinyin": "piányí",
                     "meaning": "cheap"
                   }
                 ],
@@ -8456,12 +8441,7 @@
         "audioReference": "03-2-3",
         "explanation": "Name the whole group first, then put 都 before what the group does or is like. 都 looks back and means “both” or “all.”",
         "focusTerms": [
-          "都",
-          "一組",
-          "一组",
-          "動作",
-          "动作",
-          "描述"
+          "都"
         ],
         "teachingGlossary": [
           {
@@ -9931,7 +9911,8 @@
                 "traditional": "妳",
                 "pinyin": "nǐ",
                 "meaning": "you",
-                "prefix": "！"
+                "prefix": "！",
+                "simplified": "你"
               },
               {
                 "id": "b1l03-d2-l4-word-5",

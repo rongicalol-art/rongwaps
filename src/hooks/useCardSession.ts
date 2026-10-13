@@ -3,7 +3,7 @@ import type { Flashcard } from '../data/flashcards';
 import { useAppStore } from '../store/useAppStore';
 import { shuffleItems } from '../utils/srs/sessionOrder';
 import { queueMissedItem, computeCardSessionProgress, type CardSessionProgressInfo } from '../utils/srs/mistakeQueue';
-import { getSessionStartIndex, planDeckAdoption, restoreCardOrder } from '../utils/srs/sessionProgress';
+import { getSessionStartIndex, planDeckAdoption, restoreCardOrder, restoreReviewCards, retainCurrentCardIndex, reviewSessionKey } from '../utils/srs/sessionProgress';
 import { SHARED_REVIEW_SESSION_KEY } from '../utils/lesson/lessonPartSelection';
 import { audioService } from '../services/audioService';
 
@@ -27,6 +27,8 @@ import { audioService } from '../services/audioService';
 export interface UseCardSessionOptions {
   onSessionReset: () => void;
   onAnswerStateReset: () => void;
+  /** Re-queue a missed card inside the pass per the "repeat mistakes" setting (default). The quiz turns it off: its misses come back as a review round. */
+  requeueMissed?: boolean;
 }
 
 export type CardSessionQuality = 1 | 2 | 3 | 4 | 5;
@@ -36,10 +38,11 @@ export function useCardSession(
   sessionKey: string,
   options: UseCardSessionOptions,
 ) {
-  const { onSessionReset, onAnswerStateReset } = options;
+  const { onSessionReset, onAnswerStateReset, requeueMissed = true } = options;
   const markCardReviewed = useAppStore((state) => state.markCardReviewed);
   const clearSessionProgressIndex = useAppStore((state) => state.clearSessionProgressIndex);
-  const repeatMistakes = useAppStore((state) => state.repeatMistakes);
+  const repeatMistakesSetting = useAppStore((state) => state.repeatMistakes);
+  const repeatMistakes = requeueMissed ? repeatMistakesSetting : 'off';
 
   const [activeCards, setActiveCards] = useState<Flashcard[]>(cards);
   const [isShuffled, setIsShuffled] = useState(false);
@@ -47,13 +50,21 @@ export function useCardSession(
     useAppStore.getState().sessionProgressIndex[sessionKey] || 0
   ));
   const [sessionResults, setSessionResults] = useState<Record<string, number>>({});
+  /** A manual replay of missed cards is practice only; it must not rewrite SRS history. */
+  const practiceOnlyRef = useRef(false);
   const [completed, setCompleted] = useState(false);
+  /** The session reopened inside an unfinished flashcard review pass (activeCards is the missed list). */
+  const [resumedReview, setResumedReview] = useState(false);
+  /** activeCards is a review subset of the deck: saved so quitting mid-review can resume it. */
+  const reviewSubsetRef = useRef(false);
   // A finished session must reopen at card 1: the unmount/debounced saves skip it.
   const completedRef = useRef(false);
   completedRef.current = completed;
 
   const activeCardsRef = useRef<Flashcard[]>(cards);
   const canonicalOrderRef = useRef<Flashcard[]>(cards);
+  /** The whole deck the loader last offered; during a review pass canonicalOrderRef holds only the missed subset. */
+  const fullDeckRef = useRef<Flashcard[]>(cards);
   const isShuffledRef = useRef(isShuffled);
   isShuffledRef.current = isShuffled;
   const sessionKeyRef = useRef(sessionKey);
@@ -79,6 +90,7 @@ export function useCardSession(
       key,
       currentIndexRef.current,
       isShuffledRef.current ? activeCardsRef.current.map((card) => card.id) : null,
+      reviewSubsetRef.current ? canonicalOrderRef.current.map((card) => card.id) : null,
     );
   }, []);
 
@@ -89,16 +101,20 @@ export function useCardSession(
         persistProgress(sessionKeyRef.current);
       }
       firstAttemptMissedRef.current.clear();
+      practiceOnlyRef.current = false;
       pendingSessionCardIdRef.current = currentCardIdRef.current;
       sessionKeyRef.current = sessionKey;
       sessionInitializedRef.current = false;
       currentCardIdRef.current = null;
       canonicalOrderRef.current = [];
+      fullDeckRef.current = [];
       activeCardsRef.current = [];
       setActiveCards([]);
       setIsShuffled(false);
       setCurrentIndex(0);
       setCompleted(false);
+      setResumedReview(false);
+      reviewSubsetRef.current = false;
       setSessionResults({});
       gradingCardKeyRef.current = null;
       onSessionResetRef.current();
@@ -111,7 +127,7 @@ export function useCardSession(
       sessionInitialized: sessionInitializedRef.current,
       pendingCardId: pendingSessionCardIdRef.current,
       currentCardId: currentCardIdRef.current,
-      canonicalOrder: canonicalOrderRef.current,
+      canonicalOrder: fullDeckRef.current,
       savedIndex: getSessionStartIndex(
         useAppStore.getState().sessionProgressIndex,
         sessionKey,
@@ -127,18 +143,38 @@ export function useCardSession(
     const restored = !wasInitialized && !carriesCard
       ? restoreCardOrder(cards, useAppStore.getState().sessionCardOrder[sessionKey])
       : null;
-    const nextCards = restored ?? cards;
+    // Quit mid-review: reopen the missed list at the card it was left on, not the whole deck.
+    const reviewCards = !wasInitialized && !carriesCard
+      ? restoreReviewCards(cards, useAppStore.getState().sessionCardOrder[reviewSessionKey(sessionKey)])
+      : null;
+    // A deck reload (cached then fresh cards) mid-review keeps the review subset instead of widening to the whole deck.
+    const keptReview = wasInitialized && reviewSubsetRef.current && !reviewCards
+      ? (() => {
+        const ids = new Set(canonicalOrderRef.current.map((card) => card.id));
+        const subset = cards.filter((card) => ids.has(card.id));
+        return subset.length > 0 && subset.length < cards.length ? subset : null;
+      })()
+      : null;
+    const nextCards = reviewCards ?? keptReview ?? restored ?? cards;
 
     activeCardsRef.current = nextCards;
     setActiveCards(nextCards);
     if (keyChanged || restored) {
       setIsShuffled(Boolean(restored));
     }
-    canonicalOrderRef.current = cards;
+    if (reviewCards) {
+      reviewSubsetRef.current = true;
+      setResumedReview(true);
+    }
+    if (wasInitialized && reviewSubsetRef.current && !keptReview) reviewSubsetRef.current = false;
+    canonicalOrderRef.current = reviewCards ?? keptReview ?? cards;
+    fullDeckRef.current = cards;
     sessionInitializedRef.current = true;
     if (plan.clearPendingCard) pendingSessionCardIdRef.current = null;
-    setCurrentIndex(restored
+    setCurrentIndex(restored || reviewCards
       ? getSessionStartIndex(useAppStore.getState().sessionProgressIndex, sessionKey, nextCards.length)
+      : keptReview
+      ? retainCurrentCardIndex(keptReview, currentCardIdRef.current, currentIndexRef.current)
       : plan.index);
   }, [cards, sessionKey, persistProgress]);
 
@@ -164,19 +200,21 @@ export function useCardSession(
     };
   }, [persistProgress]);
 
-  // Preload upcoming audio for next 3 cards during idle time
+  // Preload only the next two cards during idle time so slow connections stay free
+  // for the audio currently playing.
   useEffect(() => {
     if (!activeCards || activeCards.length === 0) return;
     const upcomingAudios = activeCards
-      .slice(currentIndex + 1, currentIndex + 4)
+      .slice(currentIndex + 1, currentIndex + 3)
       .map((c) => c.audio)
       .filter((a): a is string => Boolean(a));
     if (upcomingAudios.length === 0) return;
 
+    const controller = new AbortController();
     const timeoutId = window.setTimeout(() => {
-      void audioService.preload(upcomingAudios);
+      void audioService.preload(upcomingAudios, controller.signal);
     }, 500);
-    return () => window.clearTimeout(timeoutId);
+    return () => { window.clearTimeout(timeoutId); controller.abort(); };
   }, [activeCards, currentIndex]);
 
   const currentCard = activeCards[currentIndex];
@@ -195,6 +233,7 @@ export function useCardSession(
 
   /** Records the result, feeds the mistake queue, and updates session tallies. */
   const recordAnswer = useCallback((card: Flashcard, quality: CardSessionQuality) => {
+    if (practiceOnlyRef.current) return;
     const wasMissed = firstAttemptMissedRef.current.has(card.id);
 
     if (quality <= 2) {
@@ -273,10 +312,12 @@ export function useCardSession(
   }, [isShuffled]);
 
   const resetAll = useCallback(() => {
+    practiceOnlyRef.current = false;
     firstAttemptMissedRef.current.clear();
     activeCardsRef.current = cards;
     setActiveCards(cards);
     canonicalOrderRef.current = cards;
+    reviewSubsetRef.current = false;
     setIsShuffled(false);
     setCurrentIndex(0);
     setCompleted(false);
@@ -285,7 +326,27 @@ export function useCardSession(
     onAnswerStateResetRef.current();
   }, [cards]);
 
+  /** Starts a focused practice run without clearing progress or recording another SRS grade. */
+  const practiceCards = useCallback((subset: Flashcard[]) => {
+    const uniqueCards = Array.from(new Map(subset.map((card) => [card.id, card])).values());
+    if (uniqueCards.length === 0) return;
+    practiceOnlyRef.current = true;
+    firstAttemptMissedRef.current.clear();
+    activeCardsRef.current = uniqueCards;
+    setActiveCards(uniqueCards);
+    canonicalOrderRef.current = uniqueCards;
+    reviewSubsetRef.current = false;
+    setIsShuffled(false);
+    setCurrentIndex(0);
+    setCompleted(false);
+    setSessionResults({});
+    gradingCardKeyRef.current = null;
+    clearSessionProgressIndex(sessionKey);
+    onAnswerStateResetRef.current();
+  }, [clearSessionProgressIndex, sessionKey]);
+
   const reviewUnlearned = useCallback(() => {
+    practiceOnlyRef.current = false;
     firstAttemptMissedRef.current.clear();
     const unlearnedIds = Object.entries(sessionResults)
       .filter(([, quality]) => quality === 1 || quality === 2)
@@ -299,6 +360,7 @@ export function useCardSession(
     activeCardsRef.current = unlearnedCards;
     setActiveCards(unlearnedCards);
     canonicalOrderRef.current = unlearnedCards;
+    reviewSubsetRef.current = true;
     setIsShuffled(false);
     setCurrentIndex(0);
     setCompleted(false);
@@ -327,6 +389,7 @@ export function useCardSession(
     currentCard,
     sessionResults,
     completed,
+    resumedReview,
     beginGrading,
     clearGrading,
     recordAnswer,
@@ -334,6 +397,7 @@ export function useCardSession(
     moveTo,
     toggleShuffle,
     resetAll,
+    practiceCards,
     reviewUnlearned,
     unlearnedCount,
     learnedCount,

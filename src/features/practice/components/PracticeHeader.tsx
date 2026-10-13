@@ -44,6 +44,9 @@ export function PracticeHeader({
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const setActivityOverlayOpen = useAppStore((state) => state.setActivityOverlayOpen);
   const storeActiveBookId = useAppStore((state) => state.activeBookId);
+  const simpleDefinitions = useAppStore((state) => state.simpleDefinitions);
+  const updatePracticePreferences = useAppStore((state) => state.updatePracticePreferences);
+  const showFeedbackToast = useAppStore((state) => state.showFeedbackToast);
   const activeBookId = propActiveBookId ?? storeActiveBookId;
   const activeBook = SAMPLE_BOOKS.find((b) => b.id === activeBookId) || SAMPLE_BOOKS[0];
 
@@ -149,6 +152,18 @@ export function PracticeHeader({
                     Restart
                   </DropdownMenuItem>
                 )}
+                <DropdownMenuItem
+                  icon={<AppIcon name="sparkles" size={19} />}
+                  active={Boolean(simpleDefinitions)}
+                  onClick={() => {
+                    const next = !simpleDefinitions;
+                    updatePracticePreferences({ simpleDefinitions: next });
+                    showFeedbackToast(next ? 'Simple definitions on' : 'Full definitions on');
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  Simple definitions
+                </DropdownMenuItem>
                 <DropdownMenuItem
                   icon={<AppIcon name="gear" size={19} />}
                   onClick={openSettings}

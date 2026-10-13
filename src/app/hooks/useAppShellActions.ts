@@ -6,7 +6,7 @@ interface UseAppShellActionsOptions {
   activeBookId: number;
   collapseNav: () => void;
   setActiveActivity: (activity: ActivityType) => void;
-  startPartPractice: (lessonId: number, partId: number, activity: ActivityType) => void;
+  startPartPractice: (lessonId: number, partId: number | number[], activity: ActivityType) => void;
   startPathPractice: () => void;
   openReader: (bookId: number) => Promise<void> | void;
   openReaderForPart: (bookId: number, lessonId: number, partId: number) => Promise<void> | void;
@@ -51,7 +51,7 @@ export function useAppShellActions({
     setActiveActivity(activity);
   }, [collapseNav, setActiveActivity]);
 
-  const handleStartPartPractice = useCallback((lessonId: number, partId: number, activity: ActivityType) => {
+  const handleStartPartPractice = useCallback((lessonId: number, partId: number | number[], activity: ActivityType) => {
     collapseNav();
     startPartPractice(lessonId, partId, activity);
   }, [collapseNav, startPartPractice]);

@@ -99,7 +99,7 @@ test('Lesson 15 Parts 1, 2, and 3 have exported textbook page assets', () => {
   assert.equal(LESSON_FIFTEEN_PART_ONE.grammarPages[0].bookPageAvailable, true);
   assert.deepEqual(LESSON_FIFTEEN_PART_ONE.grammarPages[0].printedPages, [347, 348]);
   assert.equal(LESSON_FIFTEEN_PART_TWO.grammarPages[0].bookPageAvailable, true);
-  assert.deepEqual(LESSON_FIFTEEN_PART_TWO.grammarPages[0].printedPages, [354]);
+  assert.deepEqual(LESSON_FIFTEEN_PART_TWO.grammarPages[0].printedPages, [353, 354]);
   assert.equal(LESSON_FIFTEEN_PART_THREE.grammarPages[0].bookPageAvailable, true);
   assert.deepEqual(LESSON_FIFTEEN_PART_THREE.grammarPages[0].printedPages, [349]);
 });

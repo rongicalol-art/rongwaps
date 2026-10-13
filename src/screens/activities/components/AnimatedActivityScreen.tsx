@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'motion/react';
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import { cn } from '../../../utils/cn';
 
 const SLIDE_VARIANTS = {
@@ -16,7 +16,8 @@ const SLIDE_VARIANTS = {
     zIndex: 5,
     transition: { type: 'spring' as const, stiffness: 380, damping: 38, mass: 0.82 },
   },
-  exit: (direction: number) => ({
+  // 'instant' (Cards done -> quiz): the outgoing screen is already empty, so it just goes.
+  exit: (direction: number | 'instant') => direction === 'instant' ? { opacity: 0, transition: { duration: 0 } } : ({
     x: direction > 0 ? -22 : 22,
     opacity: 0,
     scale: 0.992,
@@ -37,6 +38,10 @@ interface AnimatedActivityScreenProps {
   direction: number;
   useSlide?: boolean;
   className?: string;
+  /** Activity key the session opened with: that screen's first mount has no entrance. */
+  skipEnter?: string | null;
+  /** Enter with no motion (the previous screen leaves instantly too; see ActivityScreens). */
+  instant?: boolean;
 }
 
 export function AnimatedActivityScreen({
@@ -45,7 +50,11 @@ export function AnimatedActivityScreen({
   direction,
   useSlide = true,
   className,
+  skipEnter = null,
+  instant = false,
 }: AnimatedActivityScreenProps) {
+  // Read once at mount.
+  const [enterInstantly] = useState(instant || skipEnter === activityKey);
   const reduceMotion = useReducedMotion();
 
   return (
@@ -53,7 +62,7 @@ export function AnimatedActivityScreen({
       key={activityKey}
       custom={useSlide && !reduceMotion ? direction : undefined}
       variants={useSlide && !reduceMotion ? SLIDE_VARIANTS : FADE_VARIANTS}
-      initial="initial"
+      initial={enterInstantly ? false : 'initial'}
       animate="animate"
       exit="exit"
       transition={useSlide && !reduceMotion ? undefined : { duration: reduceMotion ? 0 : 0.2 }}

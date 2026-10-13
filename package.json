@@ -20,11 +20,14 @@
     "test": "ACCEPTANCE_STRICT=true tsx --test tests/*.test.ts tests/unit/*.test.ts tests/content/*.test.ts tests/pipeline/*.test.ts",
     "content:export": "tsx scripts/content/exportAuthoredContent.ts",
     "content:validate": "tsx scripts/content/validateLessons.ts",
+    "vocab:simple": "tsx scripts/content/applySimpleDefinitions.ts",
+    "vocab:simple:lint": "tsx scripts/content/lintSimpleDefinitions.ts",
     "stroke-data:vendor": "tsx scripts/strokes/vendorHanziStrokeData.ts",
     "audio:sync:r2": "tsx scripts/audio/syncAudioToR2.ts",
     "font:huninn:vendor": "tsx scripts/assets/vendorHuninn.ts",
     "font:vendor": "tsx scripts/assets/vendorFonts.ts",
     "course-examples:export": "tsx scripts/content/exportCourseExamples.ts",
+    "course-examples:preview": "tsx scripts/content/exportCourseExamples.ts --preview",
     "course-examples:coverage": "tsx scripts/content/reportCourseExampleCoverage.ts",
     "decomposition:pack": "tsx scripts/character-decomposition/buildDecompositionRuntimePacks.ts",
     "decomposition:pack:full": "DECOMPOSITION_RUNTIME_PACK_FULL_COVERAGE=true tsx scripts/character-decomposition/buildDecompositionRuntimePacks.ts",
@@ -52,7 +55,8 @@
     "jev:verify": "tsx scripts/jev/verifyHandoff.ts",
     "jev:context": "tsx scripts/jev/contextRouter.ts",
     "jev:qa:words": "tsx scripts/jev/reviewWordHooksTypesafe.ts",
-    "jev:qa:grammar": "tsx scripts/jev/reviewGrammarExamples.ts"
+    "jev:qa:grammar": "tsx scripts/jev/reviewGrammarExamples.ts",
+    "jev:qa:course": "tsx scripts/jev/reviewCourseExamples.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1146.0",

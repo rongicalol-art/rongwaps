@@ -1,12 +1,12 @@
 /**
- * @fileoverview Applies the active book's accent palette to the global
- * `brand-*` CSS custom properties so every screen themed with semantic
- * tokens follows the book's color (blue / orange / brown / green).
+ * @fileoverview Applies the active book's tone (accent family + text, line and
+ * canvas roles) to the global CSS custom properties, so every screen themed
+ * with semantic tokens (`bg-brand-primary`, `text-ui-ink`, `border-ui-divider`)
+ * follows the book without any per-component plumbing.
  *
- * The tokens are declared in `src/index.css` @theme and overridden at
- * runtime on `document.documentElement`; inline styles always win over
- * the stylesheet `:root` values, so `bg-brand-primary` and friends pick
- * up the book color without any per-component plumbing.
+ * The tokens are declared in `src/index.css` @theme and overridden at runtime
+ * on `document.documentElement`; inline styles beat the stylesheet `:root`
+ * values. The review tone (`data-tone="review"`) wins over these via !important.
  */
 import { useLayoutEffect } from 'react';
 import type { SAMPLE_BOOKS } from '../data/books';
@@ -20,7 +20,14 @@ const THEME_CSS_VARS: Record<keyof BookTheme, string> = {
   primarySoft: '--color-brand-primary-soft',
   primarySoftEdge: '--color-brand-primary-soft-edge',
   primaryTrack: '--color-brand-primary-track',
+  primaryWash: '--color-brand-primary-wash',
   practiceCanvas: '--color-ui-practice-canvas',
+  inkStrong: '--color-ui-ink-strong',
+  ink: '--color-ui-ink',
+  mutedStrong: '--color-ui-muted-strong',
+  muted: '--color-ui-muted',
+  border: '--color-ui-border',
+  divider: '--color-ui-divider',
 };
 
 export function useBookTheme(theme: BookTheme): void {

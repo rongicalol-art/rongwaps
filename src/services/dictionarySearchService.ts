@@ -1,3 +1,5 @@
+import { stripPinyinTones } from '../utils/pinyin/pinyinNormalize';
+import { escapeRegExp } from '../utils/escapeRegExp';
 import { debugLogger } from '../utils/debug/debugLogger';
 import { fetchStaticJson } from './staticContentService';
 import { fetchDictionaryRowsFromPacks } from './contentPacks';
@@ -44,7 +46,21 @@ async function getSearchIndex(): Promise<CompactSearchEntry[] | null> {
   return searchIndexPromise;
 }
 
-const HANZI_REGEX = /[\u4e00-\u9fa5]/;
+const HANZI_REGEX = /\p{Script=Han}/u;
+
+// ponytail: one typo in a single word only; broaden only with real failed queries.
+function isOneTypo(a: string, b: string): boolean {
+  if (Math.abs(a.length - b.length) > 1) return false;
+  let i = 0;
+  while (i < Math.min(a.length, b.length) && a[i] === b[i]) i++;
+  if (a.length === b.length) {
+    return a.slice(i + 1) === b.slice(i + 1)
+      || (a[i] === b[i + 1] && a[i + 1] === b[i] && a.slice(i + 2) === b.slice(i + 2));
+  }
+  return a.length > b.length
+    ? a.slice(i + 1) === b.slice(i)
+    : a.slice(i) === b.slice(i + 1);
+}
 
 export function searchInIndex(
   index: CompactSearchEntry[] | null,
@@ -52,86 +68,80 @@ export function searchInIndex(
   resultLimit = 30,
 ): SearchResult[] {
   const query = searchQuery.trim();
-  if (!query || !index) return [];
+  if (!query || !index || resultLimit <= 0) return [];
 
-  const queryLower = query.toLowerCase();
+  const queryLower = query.toLowerCase().replace(/\s+/g, ' ');
   const isHanzi = HANZI_REGEX.test(query);
-  const queryFlat = queryLower.replace(/[\s']/g, '');
-
+  const queryFlat = stripPinyinTones(query);
+  const englishWord = new RegExp(`(?:^|[^a-z])${escapeRegExp(queryLower)}(?=$|[^a-z])`);
+  const allowTypo = !isHanzi && /^[a-z]{5,}$/.test(queryLower);
   const matches: SearchResult[] = [];
-  const seenWords = new Set<string>();
 
-  for (let i = 0; i < index.length; i++) {
-    const [id, s, t, py, flat, defs, freq] = index[i];
+  for (const [id, s, t, py, flat, defs, freq] of index) {
     const trad = t || s;
-
-    if (seenWords.has(s) || (t && seenWords.has(t))) continue;
-
-    let matchType: 'exact' | 'prefix' | 'partial' | null = null;
-    let weight = 0;
+    let matchType: SearchResult['match_type'] = 'partial';
+    let tier = 0;
 
     if (isHanzi) {
       if (s === query || trad === query) {
         matchType = 'exact';
-        weight = 1.0;
+        tier = 5;
       } else if (s.startsWith(query) || trad.startsWith(query)) {
         matchType = 'prefix';
-        weight = 0.8;
+        tier = 3;
       } else if (s.includes(query) || trad.includes(query)) {
-        matchType = 'partial';
-        weight = 0.5;
+        tier = 2;
       }
     } else {
-      // ASCII: Pinyin or English
-      const pinyinFlat = flat || '';
-      if (pinyinFlat === queryFlat) {
+      if (queryFlat && flat === queryFlat) {
         matchType = 'exact';
-        weight = 1.0;
-      } else if (pinyinFlat.startsWith(queryFlat)) {
+        tier = 5;
+      } else if (queryFlat && flat.startsWith(queryFlat)) {
         matchType = 'prefix';
-        weight = 0.8;
-      } else {
-        // Check definitions for English keyword
-        for (let d = 0; d < defs.length; d++) {
-          const defLower = defs[d].toLowerCase();
-          if (defLower === queryLower) {
-            matchType = 'exact';
-            weight = 0.9;
-            break;
-          }
-          if (defLower.includes(queryLower)) {
-            matchType = 'partial';
-            weight = 0.5;
-            break;
-          }
-        }
+        tier = 3;
       }
+
+      for (const definition of defs) {
+        // Search meanings, not CEDICT pronunciation references or usage notes.
+        if (/^(?:old |archaic )?variant of\b/i.test(definition)) continue;
+        const glosses = definition.toLowerCase()
+          .replace(/\[[^\]]*\]|\([^)]*\)/g, ' ')
+          .split(/[;,]/)
+          .map((gloss) => gloss.replace(/^(?:to |an? |the )/, '').replace(/[^a-z0-9' -]/g, ' ').trim().replace(/\s+/g, ' '));
+        const englishTier = glosses.some((gloss) => gloss === queryLower) ? 5
+          : glosses.some((gloss) => englishWord.test(gloss)) ? 4
+          : queryLower.length >= 3 && glosses.some((gloss) => gloss.split(' ').some((word) => word.startsWith(queryLower))) ? 3
+          : 0;
+        if (englishTier > tier) {
+          tier = englishTier;
+          matchType = tier === 5 ? 'exact' : tier === 3 ? 'prefix' : 'partial';
+        }
+        if (!tier && allowTypo && glosses.some((gloss) => gloss.split(' ').some((word) => isOneTypo(queryLower, word)))) tier = 1;
+      }
+      if (!tier && allowTypo && isOneTypo(queryFlat, flat)) tier = 1;
     }
 
-    if (matchType !== null) {
-      seenWords.add(s);
-      if (t) seenWords.add(t);
+    if (tier) {
       const sanitized = sanitizeDictionaryDefinitions(defs);
-      const totalScore = (weight * 100) + freq;
       matches.push({
-        id,
-        simplified: s,
-        traditional: trad,
-        pinyin_accented: py,
-        definitions: sanitized.definitions,
-        measure_words: sanitized.measure_words,
+        id, simplified: s, traditional: trad, pinyin_accented: py,
+        definitions: sanitized.definitions, measure_words: sanitized.measure_words,
         match_type: matchType,
-        total_score: totalScore,
+        // Frequency is a tie-breaker, never a substitute for relevance.
+        total_score: tier * 1000 + Math.max(0, Math.min(100, freq)),
       });
     }
   }
 
-  matches.sort((a, b) => {
-    if (b.total_score !== a.total_score) return b.total_score - a.total_score;
-    return a.simplified.length - b.simplified.length;
-  });
-
-  return matches.slice(0, resultLimit);
+  matches.sort((a, b) => b.total_score - a.total_score || a.simplified.length - b.simplified.length);
+  const hasStrongMatches = matches.some((match) => match.total_score >= 2000);
+  const seenWords = new Set<string>();
+  return matches.filter((match) => {
+    if ((hasStrongMatches && match.total_score < 2000) || seenWords.has(match.simplified) || seenWords.has(match.traditional)) return false;
+    seenWords.add(match.simplified);
+    seenWords.add(match.traditional);
+    return true;
+  }).slice(0, resultLimit);
 }
 
 export async function searchDictionaryOffline(

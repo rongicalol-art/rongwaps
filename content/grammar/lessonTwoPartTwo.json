@@ -110,10 +110,7 @@
       "喜歡",
       "喜欢",
       "愛",
-      "爱",
-      "想法",
-      "動作",
-      "动作"
+      "爱"
     ],
     "teachingGlossary": [
       {
@@ -442,8 +439,15 @@
             "id": "g5-p3-home",
             "traditional": "家",
             "pinyin": "jiā",
-            "meaning": "home; house",
-            "suffix": "嗎？"
+            "meaning": "home; house"
+          },
+          {
+            "id": "g5-p3-home-ma",
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma",
+            "meaning": "yes/no question ending",
+            "suffix": "？"
           }
         ],
         "english": "Do you want to go to the teacher’s home?"
@@ -730,7 +734,7 @@
     "exerciseTitle": "Keep 要, 喜歡, 愛 before the action",
     "exercisePreview": "Choose a complete personal response to each source question.",
     "exerciseInstruction": "Keep 要, 喜歡, or 愛 before the action it describes.",
-    "exerciseNote": "These questions are about you. A yes answer and a no answer are both correct.",
+    "exerciseNote": "Question 3 asks what you love to drink; questions 1–2 can be answered yes or no. The book prints no answer key.",
     "exerciseResponseMode": "text",
     "questions": [
       {
@@ -902,11 +906,11 @@
       60
     ],
     "audioReference": "02-2-3",
-    "explanation": "Show possession with Owner + 的 + Item (我的手機). You can omit 的 with close family and relationships (我媽媽).",
+    "explanation": "Put 的 between an owner and the thing that belongs to them. With close family, you can often drop 的: 我媽媽. But keep 的 with things like phones: 我的手機.",
     "focusTerms": [
       "的",
-      "名詞",
-      "名词"
+      "我媽媽",
+      "我的手機"
     ],
     "teachingGlossary": [
       {
@@ -1689,7 +1693,7 @@
       62
     ],
     "audioReference": "02-2-3",
-    "explanation": "Form questions by pairing affirmative and negative forms: Verb-不-Verb (吃不吃, 忙不忙) or 有沒有. Do not add 嗎 at the end.",
+    "explanation": "Repeat the key doing or describing word around 不: 忙不忙, 吃不吃, 要不要. With 有, use 有沒有. This pattern already makes a question, so do not add 嗎.",
     "focusTerms": [
       "忙不忙",
       "吃不吃",
@@ -1699,7 +1703,9 @@
       "喜不喜歡",
       "喜不喜欢",
       "嗎",
-      "吗"
+      "吗",
+      "不",
+      "有"
     ],
     "teachingGlossary": [
       {
@@ -2309,7 +2315,7 @@
     "exerciseTitle": "Build the positive-negative question",
     "exercisePreview": "Complete the questions with the matching repeated form.",
     "exerciseInstruction": "Choose the pair that matches the answer or picture cue. Do not add 嗎.",
-    "exerciseNote": "Question 1 uses the hot-weather picture in the book and the word 熱. These are example answers.",
+    "exerciseNote": "The printed replies decide each pair: 熱不熱 / 喜不喜歡 / 要不要去他家. The book prints no answer key.",
     "exerciseCues": [
       {
         "id": "g6-hot-cue",
@@ -2482,8 +2488,8 @@
         "explanation": "Put 的 between an owner and the thing that belongs to them. With close family, you can often drop 的: 我媽媽. But keep 的 with things like phones: 我的手機.",
         "focusTerms": [
           "的",
-          "名詞",
-          "名词"
+          "我媽媽",
+          "我的手機"
         ],
         "teachingGlossary": [
           {
@@ -3272,10 +3278,7 @@
           "喜歡",
           "喜欢",
           "愛",
-          "爱",
-          "想法",
-          "動作",
-          "动作"
+          "爱"
         ],
         "teachingGlossary": [
           {
@@ -3604,8 +3607,15 @@
                 "id": "g5-p3-home",
                 "traditional": "家",
                 "pinyin": "jiā",
-                "meaning": "home; house",
-                "suffix": "嗎？"
+                "meaning": "home; house"
+              },
+              {
+                "id": "g5-p3-home-ma",
+                "traditional": "嗎",
+                "simplified": "吗",
+                "pinyin": "ma",
+                "meaning": "yes/no question ending",
+                "suffix": "？"
               }
             ],
             "english": "Do you want to go to the teacher’s home?"
@@ -3892,7 +3902,7 @@
         "exerciseTitle": "Keep 要, 喜歡, 愛 before the action",
         "exercisePreview": "Choose a complete personal response to each source question.",
         "exerciseInstruction": "Keep 要, 喜歡, or 愛 before the action it describes.",
-        "exerciseNote": "These questions are about you. A yes answer and a no answer are both correct.",
+        "exerciseNote": "Question 3 asks what you love to drink; questions 1–2 can be answered yes or no. The book prints no answer key.",
         "exerciseResponseMode": "text",
         "questions": [
           {
@@ -4074,7 +4084,9 @@
           "喜不喜歡",
           "喜不喜欢",
           "嗎",
-          "吗"
+          "吗",
+          "不",
+          "有"
         ],
         "teachingGlossary": [
           {
@@ -4684,7 +4696,7 @@
         "exerciseTitle": "Build the positive-negative question",
         "exercisePreview": "Complete the questions with the matching repeated form.",
         "exerciseInstruction": "Choose the pair that matches the answer or picture cue. Do not add 嗎.",
-        "exerciseNote": "Question 1 uses the hot-weather picture in the book and the word 熱. These are example answers.",
+        "exerciseNote": "The printed replies decide each pair: 熱不熱 / 喜不喜歡 / 要不要去他家. The book prints no answer key.",
         "exerciseCues": [
           {
             "id": "g6-hot-cue",

@@ -7,7 +7,7 @@ import { useAppStore } from '../../../store/useAppStore';
 import { isPinyinAnswerAccepted } from '../../../utils/pinyin/pinyinAnswer';
 import { buildAttributeChoices, getCardChoiceTarget } from '../../../utils/vocabulary/meaningChoices';
 import { useCardSession } from '../../../hooks/useCardSession';
-import { useDeckAudioLifecycle } from '../../../hooks/useSessionAudio';
+import { useAudioSessionLifecycle } from '../../../hooks/useSessionAudio';
 
 export function useQuizLoader(activeBookId: number, selectedLessons: number[], isLibraryDeck: boolean = false, isReviewDeck: boolean = false) {
   return useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
@@ -28,9 +28,12 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
 
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isChecked, setIsChecked] = useState(false);
+  const [answerAudioPlaying, setAnswerAudioPlaying] = useState(false);
+  const answerAudioPlayId = useRef(0);
   const currentCardChoicesRef = useRef<{ cardId: string; choiceType: string; options: Flashcard[] } | null>(null);
 
   const session = useCardSession(cards, sessionKey, {
+    requeueMissed: false,
     onSessionReset: () => {
       currentCardChoicesRef.current = null;
       setSelectedOption(null);
@@ -43,7 +46,7 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
   });
   const { activeCards, currentIndex, currentCard, completed } = session;
 
-  useDeckAudioLifecycle(activeCards, completed);
+  useAudioSessionLifecycle(completed);
 
   // Derive choices during the same render as the next card. Keeping these in an
   // effect briefly paired a new prompt with the previous prompt's answers,
@@ -79,7 +82,12 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
     setIsChecked(true);
     const correct = option === getCardChoiceTarget(currentCard, quizChoiceType);
     if (correct && replayAudioAfterAnswer) {
-      audioService.play(currentCard.audio, pronunciationRate, currentCard.front);
+      const playId = ++answerAudioPlayId.current;
+      setAnswerAudioPlaying(true);
+      const finish = () => {
+        if (answerAudioPlayId.current === playId) setAnswerAudioPlaying(false);
+      };
+      void audioService.playCard(currentCard, pronunciationRate).then(finish, finish);
     }
     session.recordAnswer(currentCard, correct ? 4 : 2);
   }, [currentCard, pronunciationRate, quizChoiceType, replayAudioAfterAnswer, session]);
@@ -88,7 +96,6 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
     if (!selectedOption) return;
 
     if (isChecked) {
-      if (!isCorrect) return;
       setIsChecked(false); // Reset before moving to next card
       setSelectedOption(null);
       session.advanceOrComplete();
@@ -96,13 +103,6 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
       recordChoiceAnswer(selectedOption);
     }
   };
-
-  const retryAnswer = useCallback(() => {
-    if (!isChecked || isCorrect) return;
-    session.clearGrading();
-    setIsChecked(false);
-    setSelectedOption(null);
-  }, [isChecked, isCorrect, session]);
 
   const toggleShuffle = useCallback(() => {
     currentCardChoicesRef.current = null;
@@ -129,10 +129,13 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
     handleSelect: recordChoiceAnswer,
     isChecked,
     isCorrect,
+    answerAudioPlaying,
     handleCheck,
-    retryAnswer,
     completed,
+    resumedReview: session.resumedReview,
     resetAll,
+    practiceCards: session.practiceCards,
+    missedCards: activeCards.filter((card) => session.sessionResults[card.id] === 1 || session.sessionResults[card.id] === 2),
     reviewUnlearned,
     unlearnedCount: session.unlearnedCount,
     learnedCount: session.learnedCount,
@@ -160,8 +163,11 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
 
   const [input, setInput] = useState('');
   const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle');
+  const [answerAudioPlaying, setAnswerAudioPlaying] = useState(false);
+  const answerAudioPlayId = useRef(0);
 
   const session = useCardSession(cards, sessionKey, {
+    requeueMissed: false,
     onSessionReset: () => {
       setInput('');
       setStatus('idle');
@@ -173,12 +179,12 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
   });
   const { activeCards, currentIndex, currentCard, completed } = session;
 
-  useDeckAudioLifecycle(activeCards, completed);
+  useAudioSessionLifecycle(completed);
 
-  const handleCheck = () => {
-    if (!input.trim()) return;
+  const handleCheck = (answerValue = input) => {
+    if (!answerValue.trim()) return;
 
-    if (status === 'correct') {
+    if (status !== 'idle') {
       const outcome = session.advanceOrComplete();
       if (outcome === 'advanced') {
         session.clearGrading();
@@ -191,20 +197,19 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
     if (!currentCard) return;
     if (!session.beginGrading()) return;
 
-    const isCorrect = isPinyinAnswerAccepted(input, currentCard.pinyin);
+    const isCorrect = isPinyinAnswerAccepted(answerValue, currentCard.pinyin);
     if (isCorrect && replayAudioAfterAnswer) {
-      audioService.play(currentCard.audio, pronunciationRate, currentCard.front);
+      const playId = ++answerAudioPlayId.current;
+      setAnswerAudioPlaying(true);
+      const finish = () => {
+        if (answerAudioPlayId.current === playId) setAnswerAudioPlaying(false);
+      };
+      void audioService.playCard(currentCard, pronunciationRate).then(finish, finish);
     }
 
     setStatus(isCorrect ? 'correct' : 'wrong');
     session.recordAnswer(currentCard, isCorrect ? 4 : 2);
   };
-
-  const retryAnswer = useCallback(() => {
-    session.clearGrading();
-    setInput('');
-    setStatus('idle');
-  }, [session]);
 
   return {
     activeCards,
@@ -213,10 +218,13 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
     input,
     handleInputChange: setInput,
     status,
+    answerAudioPlaying,
     handleCheck,
-    retryAnswer,
     completed,
+    resumedReview: session.resumedReview,
     resetAll: session.resetAll,
+    practiceCards: session.practiceCards,
+    missedCards: activeCards.filter((card) => session.sessionResults[card.id] === 1 || session.sessionResults[card.id] === 2),
     reviewUnlearned: session.reviewUnlearned,
     unlearnedCount: session.unlearnedCount,
     learnedCount: session.learnedCount,

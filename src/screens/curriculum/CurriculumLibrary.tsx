@@ -23,8 +23,8 @@ import { LessonWindow, type LessonWindowTarget } from './lesson-window/LessonWin
 interface CurriculumLibraryProps {
   activeBookId?: number;
   onActiveBookChange?: (id: number) => void;
-  /** Scopes practice to one lesson part and opens the activity. */
-  onStartPartPractice?: (lessonId: number, partId: number, activity: ActivityType) => void;
+  /** Scopes practice to one or more lesson parts and opens the activity. */
+  onStartPartPractice?: (lessonId: number, partId: number | number[], activity: ActivityType) => void;
   /** Opens the last-used activity on the lessons selected in the store (independent study). */
   onStartPathPractice?: () => void;
   /** Opens the grammar window for a manifest part id. */
@@ -224,7 +224,11 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
         isHidden={hasActiveActivity}
         onPartChange={handlePartChange}
         onClose={handleCloseLesson}
-        onStartPractice={(lessonId, partId, activity) => onStartPartPractice?.(lessonId, partId, activity)}
+        onStartPractice={(lessonId, partId, activity) => {
+          const firstPartId = Array.isArray(partId) ? partId[0] ?? null : partId;
+          setLessonWindow((current) => (current ? { ...current, lessonId, partId: firstPartId } : { lessonId, partId: firstPartId }));
+          onStartPartPractice?.(lessonId, partId, activity);
+        }}
         onOpenGrammarPart={(partId) => onOpenGrammarPart?.(partId)}
         onOpenReadingPart={(target) => onOpenReadingPart?.(target)}
       />

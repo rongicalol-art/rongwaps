@@ -24,6 +24,7 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
   });
 
   const { cards: loadedCards, isLoading } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
+  const audibleCards = useMemo(() => loadedCards.filter((card) => card.source !== 'dictionary' || audioService.isAudioFileName(card.audio)), [loadedCards]);
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -37,7 +38,7 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
     setSelectedOption(null);
   }, []);
 
-  const session = useCardSession(loadedCards, sessionKey, {
+  const session = useCardSession(audibleCards, sessionKey, {
     onSessionReset: () => {
       currentCardChoicesRef.current = null;
       playbackRequestRef.current += 1;
@@ -97,7 +98,7 @@ export function useListening(activeBookId: number, selectedLessons: number[], is
     const requestId = playbackRequestRef.current + 1;
     playbackRequestRef.current = requestId;
     setIsPlaying(true);
-    await audioService.play(currentCard.audio, rate, currentCard.front);
+    await audioService.playCard(currentCard, rate);
     if (isMountedRef.current && playbackRequestRef.current === requestId) {
       setIsPlaying(false);
     }

@@ -16,12 +16,10 @@
     "audioReference": "05-2-3",
     "explanation": "Say the place first, then 有, then the thing that is there. Use 沒有—not 不有—to say something is not there.",
     "focusTerms": [
-      "地方",
       "有",
       "沒有",
       "没有",
-      "東西",
-      "东西"
+      "不有"
     ],
     "teachingGlossary": [
       {
@@ -604,14 +602,14 @@
         "id": "b1l05-g05-glossary-90",
         "traditional": "學生",
         "simplified": "学生",
-        "pinyin": "xuésheng",
+        "pinyin": "xuéshēng",
         "meaning": "student; students"
       },
       {
         "id": "b1l05-g05-glossary-91",
         "traditional": "一千個學生",
         "simplified": "一千个学生",
-        "pinyin": "yìqiān ge xuésheng",
+        "pinyin": "yìqiān ge xuéshēng",
         "meaning": "one thousand students"
       },
       {
@@ -1301,19 +1299,19 @@
           {
             "id": "g5-q1-correct",
             "traditional": "我們學校有一千個學生",
-            "pinyin": "wǒmen xuéxiào yǒu yìqiān ge xuésheng",
+            "pinyin": "wǒmen xuéxiào yǒu yìqiān ge xuéshēng",
             "meaning": "our school has one thousand students"
           },
           {
             "id": "g5-q1-d1",
             "traditional": "一千個學生有我們學校",
-            "pinyin": "yìqiān ge xuésheng yǒu wǒmen xuéxiào",
+            "pinyin": "yìqiān ge xuéshēng yǒu wǒmen xuéxiào",
             "meaning": "reversed order"
           },
           {
             "id": "g5-q1-d2",
             "traditional": "我們學校在一千個學生",
-            "pinyin": "wǒmen xuéxiào zài yìqiān ge xuésheng",
+            "pinyin": "wǒmen xuéxiào zài yìqiān ge xuéshēng",
             "meaning": "uses 在 instead of 有"
           }
         ],
@@ -1422,18 +1420,17 @@
       125
     ],
     "audioReference": "05-2-3",
-    "explanation": "Form locations with Reference Object + Position Word (桌子上面, 房間裡面, 學校旁邊). Together they act as a single place name.",
+    "explanation": "A direction word needs an anchor word. Say the thing first, then add 上面, 下面, 裡面, 外面, 旁邊, 前面, or 後面. Together they make one place name.",
     "focusTerms": [
-      "名詞",
-      "名词",
-      "方位詞",
-      "方位词",
       "上面",
       "下面",
       "裡面",
       "里面",
       "旁邊",
-      "旁边"
+      "旁边",
+      "外面",
+      "前面",
+      "後面"
     ],
     "teachingGlossary": [
       {
@@ -2016,14 +2013,14 @@
         "id": "b1l05-g04-glossary-90",
         "traditional": "學生",
         "simplified": "学生",
-        "pinyin": "xuésheng",
+        "pinyin": "xuéshēng",
         "meaning": "student; students"
       },
       {
         "id": "b1l05-g04-glossary-91",
         "traditional": "一千個學生",
         "simplified": "一千个学生",
-        "pinyin": "yìqiān ge xuésheng",
+        "pinyin": "yìqiān ge xuéshēng",
         "meaning": "one thousand students"
       },
       {
@@ -2601,6 +2598,128 @@
             }
           ]
         }
+      },
+      {
+        "id": "b1l05-g4-e4",
+        "number": 4,
+        "text": {
+          "traditional": "他在房間裡睡覺。",
+          "simplified": "他在房间里睡觉。",
+          "pinyin": "Tā zài fángjiān lǐ shuìjiào.",
+          "english": "He is sleeping in his room.",
+          "words": [
+            {
+              "id": "b1l05-g4-e4-word-1",
+              "traditional": "他",
+              "pinyin": "tā",
+              "meaning": "he"
+            },
+            {
+              "id": "b1l05-g4-e4-word-2",
+              "traditional": "在",
+              "pinyin": "zài",
+              "meaning": "be located; at"
+            },
+            {
+              "id": "b1l05-g4-e4-word-3",
+              "traditional": "房間裡",
+              "simplified": "房间里",
+              "pinyin": "fángjiān lǐ",
+              "meaning": "inside the room"
+            },
+            {
+              "id": "b1l05-g4-e4-word-4",
+              "traditional": "睡覺",
+              "simplified": "睡觉",
+              "pinyin": "shuìjiào",
+              "meaning": "sleep",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "b1l05-g4-e5",
+        "number": 5,
+        "text": {
+          "traditional": "那個孩子在媽媽旁邊看書。",
+          "simplified": "那个孩子在妈妈旁边看书。",
+          "pinyin": "Nà ge háizi zài māma pángbiān kànshū.",
+          "english": "That child is reading next to his mother.",
+          "words": [
+            {
+              "id": "b1l05-g4-e5-word-1",
+              "traditional": "那個孩子",
+              "simplified": "那个孩子",
+              "pinyin": "nà ge háizi",
+              "meaning": "that child"
+            },
+            {
+              "id": "b1l05-g4-e5-word-2",
+              "traditional": "在",
+              "pinyin": "zài",
+              "meaning": "be located; at"
+            },
+            {
+              "id": "b1l05-g4-e5-word-3",
+              "traditional": "媽媽旁邊",
+              "simplified": "妈妈旁边",
+              "pinyin": "māma pángbiān",
+              "meaning": "next to mom"
+            },
+            {
+              "id": "b1l05-g4-e5-word-4",
+              "traditional": "看書",
+              "simplified": "看书",
+              "pinyin": "kànshū",
+              "meaning": "read a book",
+              "suffix": "。"
+            }
+          ]
+        },
+        "teachingNote": null
+      },
+      {
+        "id": "b1l05-g4-e6",
+        "number": 6,
+        "text": {
+          "traditional": "他們在圖書館外面做什麼？",
+          "simplified": "他们在图书馆外面做什么？",
+          "pinyin": "Tāmen zài túshūguǎn wàimiàn zuò shénme?",
+          "english": "What are they doing outside the library?",
+          "words": [
+            {
+              "id": "b1l05-g4-e6-word-1",
+              "traditional": "他們",
+              "simplified": "他们",
+              "pinyin": "tāmen",
+              "meaning": "they"
+            },
+            {
+              "id": "b1l05-g4-e6-word-2",
+              "traditional": "在",
+              "pinyin": "zài",
+              "meaning": "be located; at"
+            },
+            {
+              "id": "b1l05-g4-e6-word-3",
+              "traditional": "圖書館外面",
+              "simplified": "图书馆外面",
+              "pinyin": "túshūguǎn wàimiàn",
+              "meaning": "outside the library"
+            },
+            {
+              "id": "b1l05-g4-e6-word-4",
+              "traditional": "做什麼",
+              "simplified": "做什么",
+              "pinyin": "zuò shénme",
+              "meaning": "do what",
+              "suffix": "？"
+            }
+          ]
+        },
+        "teachingNote": null
       }
     ],
     "exerciseTitle": "Build the location",
@@ -2876,10 +2995,10 @@
               [
                 {
                   "id": "g4-p2-restaurant",
-                  "traditional": "餐廳",
-                  "simplified": "餐厅",
-                  "pinyin": "cāntīng",
-                  "meaning": "restaurant"
+                  "traditional": "那家餐廳",
+                  "simplified": "那家餐厅",
+                  "pinyin": "nà jiā cāntīng",
+                  "meaning": "that restaurant"
                 }
               ],
               [
@@ -2946,7 +3065,8 @@
                   "id": "g4-s2-mom",
                   "traditional": "媽媽",
                   "pinyin": "māma",
-                  "meaning": "mom"
+                  "meaning": "mom",
+                  "simplified": "妈妈"
                 }
               ],
               [
@@ -2962,13 +3082,15 @@
                   "id": "g4-s2-kitchen",
                   "traditional": "廚房",
                   "pinyin": "chúfáng",
-                  "meaning": "kitchen"
+                  "meaning": "kitchen",
+                  "simplified": "厨房"
                 },
                 {
                   "id": "g4-s2-inside",
                   "traditional": "裡面",
                   "pinyin": "lǐmiàn",
-                  "meaning": "inside"
+                  "meaning": "inside",
+                  "simplified": "里面"
                 }
               ],
               [
@@ -2977,7 +3099,8 @@
                   "traditional": "做飯",
                   "pinyin": "zuòfàn",
                   "meaning": "cook",
-                  "suffix": "。"
+                  "suffix": "。",
+                  "simplified": "做饭"
                 }
               ]
             ],
@@ -2994,7 +3117,8 @@
                   "id": "g4-s2-they",
                   "traditional": "他們",
                   "pinyin": "tāmen",
-                  "meaning": "they; them"
+                  "meaning": "they; them",
+                  "simplified": "他们"
                 }
               ],
               [
@@ -3010,7 +3134,8 @@
                   "id": "g4-s2-school",
                   "traditional": "學校",
                   "pinyin": "xuéxiào",
-                  "meaning": "school"
+                  "meaning": "school",
+                  "simplified": "学校"
                 },
                 {
                   "id": "g4-s2-front",
@@ -3032,7 +3157,11 @@
             "english": "They are hanging out in front of the school."
           }
         ],
-        "exampleIds": []
+        "exampleIds": [
+          "b1l05-g4-e4",
+          "b1l05-g4-e5",
+          "b1l05-g4-e6"
+        ]
       }
     ]
   },
@@ -3061,16 +3190,15 @@
         "audioReference": "05-2-3",
         "explanation": "A direction word needs an anchor word. Say the thing first, then add 上面, 下面, 裡面, 外面, 旁邊, 前面, or 後面. Together they make one place name.",
         "focusTerms": [
-          "名詞",
-          "名词",
-          "方位詞",
-          "方位词",
           "上面",
           "下面",
           "裡面",
           "里面",
           "旁邊",
-          "旁边"
+          "旁边",
+          "外面",
+          "前面",
+          "後面"
         ],
         "teachingGlossary": [
           {
@@ -3653,14 +3781,14 @@
             "id": "b1l05-g04-glossary-90",
             "traditional": "學生",
             "simplified": "学生",
-            "pinyin": "xuésheng",
+            "pinyin": "xuéshēng",
             "meaning": "student; students"
           },
           {
             "id": "b1l05-g04-glossary-91",
             "traditional": "一千個學生",
             "simplified": "一千个学生",
-            "pinyin": "yìqiān ge xuésheng",
+            "pinyin": "yìqiān ge xuéshēng",
             "meaning": "one thousand students"
           },
           {
@@ -4238,6 +4366,128 @@
                 }
               ]
             }
+          },
+          {
+            "id": "b1l05-g4-e4",
+            "number": 4,
+            "text": {
+              "traditional": "他在房間裡睡覺。",
+              "simplified": "他在房间里睡觉。",
+              "pinyin": "Tā zài fángjiān lǐ shuìjiào.",
+              "english": "He is sleeping in his room.",
+              "words": [
+                {
+                  "id": "b1l05-g4-e4-word-1",
+                  "traditional": "他",
+                  "pinyin": "tā",
+                  "meaning": "he"
+                },
+                {
+                  "id": "b1l05-g4-e4-word-2",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "be located; at"
+                },
+                {
+                  "id": "b1l05-g4-e4-word-3",
+                  "traditional": "房間裡",
+                  "simplified": "房间里",
+                  "pinyin": "fángjiān lǐ",
+                  "meaning": "inside the room"
+                },
+                {
+                  "id": "b1l05-g4-e4-word-4",
+                  "traditional": "睡覺",
+                  "simplified": "睡觉",
+                  "pinyin": "shuìjiào",
+                  "meaning": "sleep",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "b1l05-g4-e5",
+            "number": 5,
+            "text": {
+              "traditional": "那個孩子在媽媽旁邊看書。",
+              "simplified": "那个孩子在妈妈旁边看书。",
+              "pinyin": "Nà ge háizi zài māma pángbiān kànshū.",
+              "english": "That child is reading next to his mother.",
+              "words": [
+                {
+                  "id": "b1l05-g4-e5-word-1",
+                  "traditional": "那個孩子",
+                  "simplified": "那个孩子",
+                  "pinyin": "nà ge háizi",
+                  "meaning": "that child"
+                },
+                {
+                  "id": "b1l05-g4-e5-word-2",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "be located; at"
+                },
+                {
+                  "id": "b1l05-g4-e5-word-3",
+                  "traditional": "媽媽旁邊",
+                  "simplified": "妈妈旁边",
+                  "pinyin": "māma pángbiān",
+                  "meaning": "next to mom"
+                },
+                {
+                  "id": "b1l05-g4-e5-word-4",
+                  "traditional": "看書",
+                  "simplified": "看书",
+                  "pinyin": "kànshū",
+                  "meaning": "read a book",
+                  "suffix": "。"
+                }
+              ]
+            },
+            "teachingNote": null
+          },
+          {
+            "id": "b1l05-g4-e6",
+            "number": 6,
+            "text": {
+              "traditional": "他們在圖書館外面做什麼？",
+              "simplified": "他们在图书馆外面做什么？",
+              "pinyin": "Tāmen zài túshūguǎn wàimiàn zuò shénme?",
+              "english": "What are they doing outside the library?",
+              "words": [
+                {
+                  "id": "b1l05-g4-e6-word-1",
+                  "traditional": "他們",
+                  "simplified": "他们",
+                  "pinyin": "tāmen",
+                  "meaning": "they"
+                },
+                {
+                  "id": "b1l05-g4-e6-word-2",
+                  "traditional": "在",
+                  "pinyin": "zài",
+                  "meaning": "be located; at"
+                },
+                {
+                  "id": "b1l05-g4-e6-word-3",
+                  "traditional": "圖書館外面",
+                  "simplified": "图书馆外面",
+                  "pinyin": "túshūguǎn wàimiàn",
+                  "meaning": "outside the library"
+                },
+                {
+                  "id": "b1l05-g4-e6-word-4",
+                  "traditional": "做什麼",
+                  "simplified": "做什么",
+                  "pinyin": "zuò shénme",
+                  "meaning": "do what",
+                  "suffix": "？"
+                }
+              ]
+            },
+            "teachingNote": null
           }
         ],
         "exerciseTitle": "Build the location",
@@ -4513,10 +4763,10 @@
                   [
                     {
                       "id": "g4-p2-restaurant",
-                      "traditional": "餐廳",
-                      "simplified": "餐厅",
-                      "pinyin": "cāntīng",
-                      "meaning": "restaurant"
+                      "traditional": "那家餐廳",
+                      "simplified": "那家餐厅",
+                      "pinyin": "nà jiā cāntīng",
+                      "meaning": "that restaurant"
                     }
                   ],
                   [
@@ -4583,7 +4833,8 @@
                       "id": "g4-s2-mom",
                       "traditional": "媽媽",
                       "pinyin": "māma",
-                      "meaning": "mom"
+                      "meaning": "mom",
+                      "simplified": "妈妈"
                     }
                   ],
                   [
@@ -4599,13 +4850,15 @@
                       "id": "g4-s2-kitchen",
                       "traditional": "廚房",
                       "pinyin": "chúfáng",
-                      "meaning": "kitchen"
+                      "meaning": "kitchen",
+                      "simplified": "厨房"
                     },
                     {
                       "id": "g4-s2-inside",
                       "traditional": "裡面",
                       "pinyin": "lǐmiàn",
-                      "meaning": "inside"
+                      "meaning": "inside",
+                      "simplified": "里面"
                     }
                   ],
                   [
@@ -4614,7 +4867,8 @@
                       "traditional": "做飯",
                       "pinyin": "zuòfàn",
                       "meaning": "cook",
-                      "suffix": "。"
+                      "suffix": "。",
+                      "simplified": "做饭"
                     }
                   ]
                 ],
@@ -4631,7 +4885,8 @@
                       "id": "g4-s2-they",
                       "traditional": "他們",
                       "pinyin": "tāmen",
-                      "meaning": "they; them"
+                      "meaning": "they; them",
+                      "simplified": "他们"
                     }
                   ],
                   [
@@ -4647,7 +4902,8 @@
                       "id": "g4-s2-school",
                       "traditional": "學校",
                       "pinyin": "xuéxiào",
-                      "meaning": "school"
+                      "meaning": "school",
+                      "simplified": "学校"
                     },
                     {
                       "id": "g4-s2-front",
@@ -4669,7 +4925,11 @@
                 "english": "They are hanging out in front of the school."
               }
             ],
-            "exampleIds": []
+            "exampleIds": [
+              "b1l05-g4-e4",
+              "b1l05-g4-e5",
+              "b1l05-g4-e6"
+            ]
           }
         ]
       },
@@ -4690,12 +4950,10 @@
         "audioReference": "05-2-3",
         "explanation": "Say the place first, then 有, then the thing that is there. Use 沒有—not 不有—to say something is not there.",
         "focusTerms": [
-          "地方",
           "有",
           "沒有",
           "没有",
-          "東西",
-          "东西"
+          "不有"
         ],
         "teachingGlossary": [
           {
@@ -5278,14 +5536,14 @@
             "id": "b1l05-g05-glossary-90",
             "traditional": "學生",
             "simplified": "学生",
-            "pinyin": "xuésheng",
+            "pinyin": "xuéshēng",
             "meaning": "student; students"
           },
           {
             "id": "b1l05-g05-glossary-91",
             "traditional": "一千個學生",
             "simplified": "一千个学生",
-            "pinyin": "yìqiān ge xuésheng",
+            "pinyin": "yìqiān ge xuéshēng",
             "meaning": "one thousand students"
           },
           {
@@ -5975,19 +6233,19 @@
               {
                 "id": "g5-q1-correct",
                 "traditional": "我們學校有一千個學生",
-                "pinyin": "wǒmen xuéxiào yǒu yìqiān ge xuésheng",
+                "pinyin": "wǒmen xuéxiào yǒu yìqiān ge xuéshēng",
                 "meaning": "our school has one thousand students"
               },
               {
                 "id": "g5-q1-d1",
                 "traditional": "一千個學生有我們學校",
-                "pinyin": "yìqiān ge xuésheng yǒu wǒmen xuéxiào",
+                "pinyin": "yìqiān ge xuéshēng yǒu wǒmen xuéxiào",
                 "meaning": "reversed order"
               },
               {
                 "id": "g5-q1-d2",
                 "traditional": "我們學校在一千個學生",
-                "pinyin": "wǒmen xuéxiào zài yìqiān ge xuésheng",
+                "pinyin": "wǒmen xuéxiào zài yìqiān ge xuéshēng",
                 "meaning": "uses 在 instead of 有"
               }
             ],
@@ -6436,7 +6694,8 @@
                 "traditional": "妳",
                 "pinyin": "nǐ",
                 "meaning": "you",
-                "prefix": "，"
+                "prefix": "，",
+                "simplified": "你"
               },
               {
                 "id": "b1l05-d2-l5-word-9",

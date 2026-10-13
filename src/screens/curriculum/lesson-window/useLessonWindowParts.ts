@@ -43,14 +43,52 @@ export function getFirstOpenPartId(parts: LessonWindowPart[]): number | null {
   return (parts.find((part) => !part.isDone) ?? parts[0])?.id ?? null;
 }
 
-/** What the part teaches: its authored pattern citations, e.g. "很／不 describe someone +2". */
+/** Merges multiple parts into a unified composite part for aggregated study. */
+export function getAggregatedPart(selectedParts: LessonWindowPart[]): LessonWindowPart {
+  if (selectedParts.length === 1) return selectedParts[0];
+
+  const vocabDone = selectedParts.reduce((sum, p) => sum + p.vocab.done, 0);
+  const vocabTotal = selectedParts.reduce((sum, p) => sum + p.vocab.total, 0);
+
+  const grammarParts = selectedParts.filter((p) => p.grammar !== null);
+  const grammarTotal = grammarParts.reduce((sum, p) => sum + (p.grammar?.total ?? 0), 0);
+  const grammarDone = grammarParts.reduce((sum, p) => sum + (p.grammar?.done ?? 0), 0);
+
+  const firstGrammar = grammarParts[0]?.grammar;
+  const grammar = firstGrammar
+    ? {
+      manifestId: firstGrammar.manifestId,
+      label: grammarParts.length === 1 ? firstGrammar.label : `${grammarTotal} ${grammarTotal === 1 ? 'pattern' : 'patterns'}`,
+      total: grammarTotal,
+      done: grammarDone,
+    }
+    : null;
+
+  const readingLabel = selectedParts
+    .map((p) => p.readingLabel.split(' · ')[0])
+    .filter(Boolean)
+    .join(' + ');
+
+  return {
+    id: selectedParts[0]?.id ?? 1,
+    readingLabel,
+    vocab: { done: vocabDone, total: vocabTotal },
+    grammar,
+    hasReading: selectedParts.some((p) => p.hasReading),
+    isDone: selectedParts.every((p) => p.isDone),
+  };
+}
+
+/** What the part teaches: its authored pattern citation, with an explicit count when there are several. */
 function grammarLabel(pageIds: string[]): string {
   const citations = pageIds.flatMap((id) => {
     const entry = GRAMMAR_USAGE_RULES[id];
     const text = entry?.detected?.citation ?? entry?.undetectable;
     return text ? [text] : [];
   });
-  return citations.length ? `${citations[0]}${citations.length > 1 ? ` +${citations.length - 1}` : ''}` : `${pageIds.length} ${pageIds.length === 1 ? 'pattern' : 'patterns'}`;
+  return citations.length
+    ? `${citations[0]}${pageIds.length > 1 ? ` · ${pageIds.length} patterns` : ''}`
+    : `${pageIds.length} ${pageIds.length === 1 ? 'pattern' : 'patterns'}`;
 }
 
 function settingEnglish(setting: string) {

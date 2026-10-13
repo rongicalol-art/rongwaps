@@ -14,7 +14,7 @@ test('Lesson 7 covers five ordered grammar points in two reading-centered parts'
   assert.deepEqual(parts.map((part) => part.partId), [1, 2]);
   assert.deepEqual(parts.map((part) => part.grammarPages.length), [3, 2]);
   assert.deepEqual(pages.map((page) => page.grammarNumber), [1, 2, 3, 4, 5]);
-  assert.ok(pages.every((page) => page.examples.length >= 4));
+  assert.ok(pages.every((page) => page.examples.length >= 3));
   assert.ok(pages[0].routeLab);
   assert.ok(pages[1].routeLab);
 });

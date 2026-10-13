@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { shuffleItems } from '../../src/utils/srs/sessionOrder';
-import { restoreCardOrder } from '../../src/utils/srs/sessionProgress';
+import { restoreCardOrder, restoreReviewCards, reviewSessionKey } from '../../src/utils/srs/sessionProgress';
 
 const card = (id: string) => ({ id });
 const deck = ['a', 'b', 'c', 'd'].map(card);
@@ -29,4 +29,19 @@ test('restoreCardOrder gives up when the deck changed since it was saved', () =>
   assert.equal(restoreCardOrder(deck, ['c', 'a', 'd', 'x']), null);
   assert.equal(restoreCardOrder(deck, undefined), null);
   assert.equal(restoreCardOrder(deck, []), null);
+});
+
+test('restoreReviewCards rebuilds the saved missed list in order', () => {
+  assert.deepEqual(restoreReviewCards(deck, ['c', 'a'])?.map((card) => card.id), ['c', 'a']);
+});
+
+test('restoreReviewCards ignores nothing-saved, a full-deck list and a deck that lost a card', () => {
+  assert.equal(restoreReviewCards(deck, undefined), null);
+  assert.equal(restoreReviewCards(deck, []), null);
+  assert.equal(restoreReviewCards(deck, ['a', 'b', 'c', 'd']), null);
+  assert.equal(restoreReviewCards(deck, ['a', 'gone']), null);
+});
+
+test('reviewSessionKey never collides with a deck session key', () => {
+  assert.notEqual(reviewSessionKey('deck-1'), 'deck-1');
 });

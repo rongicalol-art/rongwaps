@@ -7,11 +7,12 @@ import { BreakdownSkeleton } from '../../features/character-breakdown';
 import { CurriculumSkeleton } from '../curriculum';
 import { LibrarySkeleton } from '../library';
 import { ProfileSkeleton } from '../profile';
+import { QuizPreview } from '../quiz';
 
 const icons = import.meta.glob('/src/assets/icons/*.svg', { query: '?raw', import: 'default', eager: true });
 
 export const DebugWindow = () => {
-  const [activeTab, setActiveTab] = useState<'icons' | 'mnemonics' | 'logs' | 'skeletons'>('logs');
+  const [activeTab, setActiveTab] = useState<'icons' | 'mnemonics' | 'logs' | 'skeletons' | 'previews'>('logs');
   const [selectedSkeleton, setSelectedSkeleton] = useState<string>('dictionary');
   const [mnemonics, setMnemonics] = useState<Awaited<ReturnType<typeof fetchAllMnemonicsDebug>>>([]);
   const [loading, setLoading] = useState(false);
@@ -141,6 +142,16 @@ export const DebugWindow = () => {
           }`}
         >
           Skeletons Preview
+        </button>
+        <button 
+          onClick={() => setActiveTab('previews')}
+          className={`px-4 py-2 text-xs md:text-sm font-black uppercase tracking-wide rounded-control transition-[transform,box-shadow,background-color] select-none ${
+            activeTab === 'previews' 
+              ? 'bg-feedback-success text-white shadow-[0_var(--depth-sm)_0_var(--color-feedback-success-edge)] active:shadow-none active:translate-y-[length:var(--depth-sm)]' 
+              : 'bg-ui-surface text-ui-ink border border-ui-divider hover:bg-ui-hover'
+          }`}
+        >
+          UI Previews
         </button>
       </div>
 
@@ -292,6 +303,12 @@ export const DebugWindow = () => {
                 </div>
               ))}
             </div>
+          </div>
+        )}
+
+        {activeTab === 'previews' && (
+          <div className="h-full overflow-y-auto pb-6">
+            <QuizPreview />
           </div>
         )}
 

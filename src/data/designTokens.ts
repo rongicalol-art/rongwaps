@@ -29,14 +29,6 @@ export const DESIGN_TOKENS = {
       disabledEdge: 'var(--color-brand-disabled-edge)',
       textSecondary: 'var(--color-brand-text-secondary)',
     },
-    review: {
-      bar: 'var(--color-review-bar)',
-      track: 'var(--color-review-track)',
-      line: 'var(--color-review-line)',
-      soft: 'var(--color-review-soft)',
-      softEdge: 'var(--color-review-soft-edge)',
-      ink: 'var(--color-review-ink)',
-    },
     feedback: {
       success: 'var(--color-feedback-success)',
       successEdge: 'var(--color-feedback-success-edge)',
