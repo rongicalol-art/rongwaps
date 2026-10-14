@@ -12,7 +12,7 @@ export function restoreReviewCards<T extends { id: string }>(
   cards: readonly T[],
   savedIds: readonly string[] | undefined,
 ): T[] | null {
-  if (!savedIds || savedIds.length === 0 || savedIds.length >= cards.length) return null;
+  if (!savedIds || savedIds.length === 0 || savedIds.length > cards.length || new Set(savedIds).size !== savedIds.length) return null;
   const byId = new Map(cards.map((card) => [card.id, card]));
   const ordered: T[] = [];
   for (const id of savedIds) {

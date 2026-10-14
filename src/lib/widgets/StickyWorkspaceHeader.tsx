@@ -70,7 +70,7 @@ export function StickyWorkspaceHeader({
 
   return (
     <div
-      className={`sticky top-0 z-40 flex w-full origin-top flex-col items-center bg-gradient-to-b from-ui-canvas via-ui-canvas/95 to-transparent pb-1 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] backdrop-blur-[2px] md:pb-2 md:pt-2 ${className}`}
+      className={`sticky top-0 z-40 flex w-full origin-top flex-col items-center bg-gradient-to-b from-ui-canvas via-ui-canvas/95 to-transparent pb-1 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] md:pb-2 md:pt-2 ${className}`}
     >
       <div
         className={`relative z-20 flex h-14 w-full flex-col ${rowPaddingClass} ${

@@ -22,6 +22,7 @@ export * from './VideoBackground';
 // Dialogs, drawers, docks, menus, and accessibility boundaries
 export * from './ActivityModalWrapper';
 export * from './ConfirmationDialog';
+export * from './ResumeDialog';
 export * from './DetailShell';
 export * from './WorkspaceWindow';
 export * from './Dialog';

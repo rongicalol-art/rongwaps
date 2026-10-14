@@ -39,10 +39,13 @@ export function VideoBackground({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const reduceMotion = useReducedMotion();
+  // Touch devices keep the same artwork without continuous full-screen decoding.
+  const [touchDevice] = useState(() => window.matchMedia('(pointer: coarse)').matches);
+  const still = reduceMotion || touchDevice;
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || reduceMotion) return;
+    if (!video || still) return;
 
     // Handle tab visibility changes to save battery & CPU
     const handleVisibilityChange = () => {
@@ -71,7 +74,7 @@ export function VideoBackground({
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
-  }, [reduceMotion]);
+  }, [still]);
 
   return (
     <div
@@ -88,7 +91,7 @@ export function VideoBackground({
       />
 
       {/* 2. Looping Video element (crossfades in when ready & motion allowed) */}
-      {!reduceMotion && (mp4Src || webmSrc) && (
+      {!still && (mp4Src || webmSrc) && (
         <video
           ref={videoRef}
           autoPlay

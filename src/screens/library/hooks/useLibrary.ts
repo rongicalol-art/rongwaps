@@ -2,6 +2,7 @@ import { debugLogger } from '../../../utils/debug/debugLogger';
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { AppIcon } from '../../../lib/widgets';
 import { useAuth } from '../../../hooks/useAuth';
+import { useUserFlashcards } from '../../../features/library';
 import { useAppStore } from '../../../store/useAppStore';
 import { flashcardService } from '../../../services/flashcardService';
 import { userService } from '../../../services/userService';
@@ -47,7 +48,6 @@ const COLLECTIONS = [
 
 /** Stable empties so a malformed persisted value does not churn identities. */
 const NO_FAVORITES: string[] = [];
-const NO_CARDS: UserFlashcard[] = [];
 
 export function useLibrary() {
   const { currentUser } = useAuth();
@@ -67,8 +67,6 @@ export function useLibrary() {
   );
   const addCustomFolder = useAppStore((state) => state.addCustomFolder);
   const deleteCustomFolder = useAppStore((state) => state.deleteCustomFolder);
-  const localFlashcardsRaw = useAppStore((state) => state.localFlashcards);
-  const localFlashcards = Array.isArray(localFlashcardsRaw) ? localFlashcardsRaw : NO_CARDS;
   const deleteLocalFlashcard = useAppStore((state) => state.deleteLocalFlashcard);
   const setLibraryActiveView = useAppStore((state) => state.setLibraryActiveView);
   // The folder view is store-backed so the header's back action and this screen
@@ -108,7 +106,7 @@ export function useLibrary() {
     }
   };
   
-  const [customFlashcards, setCustomFlashcards] = useState<UserFlashcard[]>([]);
+  const customFlashcards = useUserFlashcards();
   const [favoriteResults, setFavoriteResults] = useState<DBDictionaryEntry[]>([]);
   const [isLoadingFavs, setIsLoadingFavs] = useState(false);
 
@@ -145,17 +143,6 @@ export function useLibrary() {
       ...dynFolders
     ];
   }, [customFolders, favorites.length, customFlashcards]);
-
-  useEffect(() => {
-    if (currentUser) {
-      // Guard the listener input: a malformed payload must not poison the grid.
-      return flashcardService.subscribeToUserFlashcards(currentUser.id, (cards) => {
-        setCustomFlashcards(Array.isArray(cards) ? cards : []);
-      });
-    } else {
-      setCustomFlashcards(localFlashcards);
-    }
-  }, [currentUser, localFlashcards]);
 
   useEffect(() => {
     let cancelled = false;

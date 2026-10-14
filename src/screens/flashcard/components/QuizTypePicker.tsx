@@ -1,10 +1,10 @@
+import { rectMorphFrames } from '../../../utils/browser/rectMorph';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type MutableRefObject } from 'react';
 import { ActionButton, PlayfulNavIcon, type PlayfulNavIconName } from '../../../lib/widgets';
-import { PracticeChoiceButton } from '../../../features/practice';
+import { PracticeChoiceButton, beginQuizLaunch } from '../../../features/practice';
 import type { Flashcard } from '../../../data/flashcards';
 import { availableQuizTypes, type QuizTypeId } from '../../../utils/vocabulary/quizDirector';
 import { cn } from '../../../utils/cn';
-import { beginQuizLaunch } from '../../quiz';
 import { EASE_OUT } from '../flashcardMotion';
 
 const TYPES: ReadonlyArray<{ id: QuizTypeId; label: string; icon: PlayfulNavIconName }> = [
@@ -173,6 +173,7 @@ export function QuizTypePicker({ entrance, deck, onStart, startRef }: QuizTypePi
     };
 
     let ghost: HTMLElement | null = null;
+    let ghostLabel: HTMLElement | null = null;
     if (entrance.kind === 'morph') {
       // The button you pressed becomes the Mixed card: same box, rising to its spot, softening to the selected look.
       const { look } = entrance;
@@ -191,7 +192,9 @@ export function QuizTypePicker({ entrance, deck, onStart, startRef }: QuizTypePi
       if (look === 'button') {
         label.textContent = 'Start quiz';
         label.className = 'text-base font-black uppercase tracking-wider text-brand-on-primary';
-        el.appendChild(label);
+        ghostLabel = label;
+        Object.assign(label.style, { position: 'absolute', left: `${from.left + from.width / 2}px`, top: `${from.top + from.height / 2}px`, zIndex: '21', whiteSpace: 'nowrap', transform: 'translate(-50%,-50%)' });
+        root.appendChild(label);
       }
       root.appendChild(el);
       // The dock's quiz button is a soft tile already: it only grows and takes the accent edge.
@@ -204,18 +207,24 @@ export function QuizTypePicker({ entrance, deck, onStart, startRef }: QuizTypePi
           backgroundColor: color('--color-brand-primary-soft'), borderColor: color('--color-brand-primary'),
           borderWidth: '2px', borderBottomWidth: '2px', borderBottomColor: color('--color-brand-primary'),
         };
-      anims.push(el.animate([
-        { left: `${from.left}px`, top: `${from.top}px`, width: `${from.width}px`, height: `${from.height}px`, ...start },
-        {
-          left: `${to.left}px`, top: `${to.top}px`, width: `${to.width}px`, height: `${to.height}px`,
-          backgroundColor: color('--color-brand-primary-soft'), borderColor: color('--color-brand-primary'),
-          borderWidth: '2px', borderBottomWidth: 'calc(2px + var(--depth-md))', borderBottomColor: color('--color-brand-primary'),
-        },
-      ], { duration: MORPH_MS, easing: EASE_OUT, fill: 'forwards' }));
-      anims.push(label.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 140, fill: 'forwards' }));
+      Object.assign(el.style, {
+        left: `${to.left}px`, top: `${to.top}px`, width: `${to.width}px`, height: `${to.height}px`,
+        backgroundColor: color('--color-brand-primary-soft'), borderColor: color('--color-brand-primary'),
+        borderWidth: '2px', borderBottomWidth: 'calc(2px + var(--depth-md))', transformOrigin: 'top left',
+      });
+      const oldPaint = document.createElement('div');
+      Object.assign(oldPaint.style, { position: 'absolute', inset: '0', borderStyle: 'solid', borderRadius: 'inherit', ...start });
+      el.appendChild(oldPaint);
+      anims.push(oldPaint.animate([{ opacity: 1 }, { opacity: 0 }], { duration: MORPH_MS, easing: EASE_OUT, fill: 'forwards' }));
+      anims.push(el.animate(rectMorphFrames(from, to), { duration: MORPH_MS, easing: EASE_OUT, fill: 'forwards' }));
+      anims.push(label.animate([
+        { opacity: 1, transform: 'translate(-50%,-50%)' },
+        { opacity: 0, transform: `translate(-50%,-50%) translate(${to.left + to.width / 2 - from.left - from.width / 2}px,${to.top + to.height / 2 - from.top - from.height / 2}px)` },
+      ], { duration: 140, fill: 'forwards' }));
       timers.push(window.setTimeout(() => {
         hero.style.visibility = '';
         el.remove();
+        ghostLabel?.remove();
         reveal();
       }, MORPH_MS));
     } else {
@@ -232,6 +241,7 @@ export function QuizTypePicker({ entrance, deck, onStart, startRef }: QuizTypePi
       timers.forEach(window.clearTimeout);
       anims.forEach((anim) => anim.cancel());
       ghost?.remove();
+      ghostLabel?.remove();
       hero.style.visibility = '';
       [title, dock].forEach((el) => { el.style.opacity = ''; });
       tiles.forEach((tile) => { tile.style.transform = ''; tile.style.visibility = ''; });
@@ -277,7 +287,11 @@ export function QuizTypePicker({ entrance, deck, onStart, startRef }: QuizTypePi
               >
                 {/* Icons share one line across the grid; a two-line label grows down, never pushes its icon. */}
                 <span className="flex h-[92px] flex-col items-center gap-2 pt-[13px] lg:h-[100px]">
-                  <PlayfulNavIcon name={type.icon} className="h-10 w-10 lg:h-12 lg:w-12" />
+                  {type.id === 'hanzi' ? (
+                    <span aria-hidden className="flex h-10 w-10 items-center justify-center font-chinese text-4xl font-bold leading-none text-ui-ink-strong lg:h-12 lg:w-12 lg:text-5xl">字</span>
+                  ) : (
+                    <PlayfulNavIcon name={type.icon} className="h-10 w-10 lg:h-12 lg:w-12" />
+                  )}
                   <span className="text-[15px] font-black leading-tight">{type.label}</span>
                 </span>
               </PracticeChoiceButton>

@@ -52,7 +52,6 @@ function subscribe(callback: () => void) {
 
 export function useAuth() {
   const currentUser = useSyncExternalStore(subscribe, () => globalUser);
-  const storeUser = useAppStore((state) => state.currentUser);
   const initialLoading = useSyncExternalStore(subscribe, () => globalIsLoading);
   const [isAuthActionLoading, setIsAuthActionLoading] = useState(false);
 
@@ -76,22 +75,11 @@ export function useAuth() {
     }
   }, []);
 
-  const refreshSession = useCallback(async () => {
-    setIsAuthActionLoading(true);
-    try {
-      await authService.refreshSession();
-    } finally {
-      setIsAuthActionLoading(false);
-    }
-  }, []);
-
   return {
     currentUser,
-    userSnapshot: storeUser,
     isLoading: initialLoading,
     isAuthActionLoading,
     loginWithGoogle,
     logout,
-    refreshSession,
   };
 }

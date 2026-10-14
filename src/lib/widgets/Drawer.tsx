@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useId, useRef, useState, type ReactNode } from 'react';
+import { createContext, useContext, useId, useRef, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence, useDragControls, useReducedMotion, type DragControls } from 'motion/react';
 import { cn } from '../../utils/cn';
@@ -32,8 +32,7 @@ export const DRAWER_TONE_STICKY_GRADIENTS: Record<DrawerTone, string> = {
 
 export interface DrawerRootProps {
   open: boolean;
-  onOpenChange?: (open: boolean) => void;
-  onClose?: () => void;
+  onClose: () => void;
   tone?: DrawerTone;
   workspaceBound?: boolean;
   zIndexClassName?: string;
@@ -71,7 +70,6 @@ function useDrawerContext() {
 
 export function DrawerRoot({
   open,
-  onOpenChange,
   onClose,
   tone = 'surface',
   workspaceBound = true,
@@ -81,16 +79,12 @@ export function DrawerRoot({
 }: DrawerRootProps) {
   const dragControls = useDragControls();
   const titleId = useId();
-  const handleClose = () => {
-    onOpenChange?.(false);
-    onClose?.();
-  };
   const [portalNode] = useState<HTMLElement | null>(() =>
     typeof document !== 'undefined' ? (portalTarget ?? document.body) : null
   );
 
   const output = (
-    <DrawerContext.Provider value={{ open, onClose: handleClose, dragControls, titleId, tone, workspaceBound }}>
+    <DrawerContext.Provider value={{ open, onClose, dragControls, titleId, tone, workspaceBound }}>
       <AnimatePresence>
         {open && (
           <div className={cn('fixed inset-0 pointer-events-none', zIndexClassName)}>
@@ -198,10 +192,6 @@ export function DrawerHandle({ className }: { className?: string }) {
   );
 }
 
-export function DrawerHeader({ className, children }: { className?: string; children: ReactNode }) {
-  return <div className={cn('flex items-center justify-between px-6 pb-4 shrink-0', className)}>{children}</div>;
-}
-
 export function DrawerStickyHeader({ className, children }: { className?: string; children: ReactNode }) {
   const { tone } = useDrawerContext();
   return (
@@ -218,21 +208,15 @@ export function DrawerStickyHeader({ className, children }: { className?: string
 }
 
 export function DrawerTitle({
-  variant = 'standard',
   className,
   children,
 }: {
-  variant?: 'standard' | 'eyebrow';
   className?: string;
   children: ReactNode;
 }) {
   const { titleId } = useDrawerContext();
-  const base =
-    variant === 'eyebrow'
-      ? 'text-xs font-black uppercase tracking-wider text-ui-ink-strong'
-      : 'text-xl font-extrabold text-ui-ink tracking-normal';
   return (
-    <h2 id={titleId} className={cn(base, className)}>
+    <h2 id={titleId} className={cn('text-xl font-extrabold text-ui-ink tracking-normal', className)}>
       {children}
     </h2>
   );
@@ -241,11 +225,9 @@ export function DrawerTitle({
 export function DrawerClose({
   label = 'Close drawer',
   className,
-  onClick,
 }: {
   label?: string;
   className?: string;
-  onClick?: () => void;
 }) {
   const { onClose } = useDrawerContext();
   return (
@@ -253,7 +235,7 @@ export function DrawerClose({
       icon={<AppIcon name="close" size={20} />}
       label={label}
       size="md"
-      onClick={onClick ?? onClose}
+      onClick={onClose}
       className={className}
     />
   );
@@ -267,12 +249,8 @@ export function DrawerBody({ className, children }: { className?: string; childr
   );
 }
 
-export type BottomDrawerHeaderVariant = 'standard' | 'sticky-fade';
-export type BottomDrawerTitleVariant = 'standard' | 'eyebrow';
-
 export interface DrawerProps {
-  isOpen?: boolean;
-  open?: boolean;
+  isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
   className?: string;
@@ -283,8 +261,6 @@ export interface DrawerProps {
   workspaceBound?: boolean;
   tone?: DrawerTone;
   size?: DrawerSize;
-  headerVariant?: BottomDrawerHeaderVariant;
-  titleVariant?: BottomDrawerTitleVariant;
   heightClassName?: string;
   closeLabel?: string;
   showCloseButton?: boolean;
@@ -302,7 +278,6 @@ export interface DrawerProps {
  */
 export function Drawer({
   isOpen,
-  open,
   onClose,
   children,
   className,
@@ -313,8 +288,6 @@ export function Drawer({
   workspaceBound = true,
   tone = 'surface',
   size = 'md',
-  headerVariant = 'standard',
-  titleVariant = 'standard',
   heightClassName = 'max-h-[85vh]',
   closeLabel = 'Close drawer',
   showCloseButton = true,
@@ -322,14 +295,11 @@ export function Drawer({
   zIndexClassName = 'z-drawer',
   portalTarget,
 }: DrawerProps) {
-  const isVisible = isOpen ?? open ?? false;
-  const isStickyFade = headerVariant === 'sticky-fade';
   const hasHeader = Boolean(title || showCloseButton);
-  const HeaderContainer = isStickyFade ? DrawerStickyHeader : React.Fragment;
 
   return (
     <DrawerRoot
-      open={isVisible}
+      open={isOpen}
       onClose={onClose}
       tone={tone}
       workspaceBound={workspaceBound}
@@ -350,25 +320,25 @@ export function Drawer({
           </div>
         )}
 
-        <HeaderContainer>
-          <DrawerHandle className={isStickyFade ? 'pb-2' : 'pt-4 pb-2'} />
+        <>
+          <DrawerHandle className="pt-4 pb-2" />
           {hasHeader && (
-            <div className={cn('flex items-center justify-between', isStickyFade ? 'px-4 sm:px-6' : 'px-6 pb-4')}>
+            <div className="flex items-center justify-between px-6 pb-4">
               {title &&
                 (typeof title === 'string' ? (
-                  <DrawerTitle variant={titleVariant}>{title}</DrawerTitle>
+                  <DrawerTitle>{title}</DrawerTitle>
                 ) : (
                   title
                 ))}
               {showCloseButton && (
                 <DrawerClose
                   label={closeLabel}
-                  className={isStickyFade ? undefined : 'h-11 w-11 rounded-full'}
+                  className="h-11 w-11 rounded-full"
                 />
               )}
             </div>
           )}
-        </HeaderContainer>
+        </>
 
         <DrawerBody className={cn(contentClassName)}>{children}</DrawerBody>
       </DrawerContent>
@@ -381,7 +351,6 @@ Drawer.Root = DrawerRoot;
 Drawer.Backdrop = DrawerBackdrop;
 Drawer.Content = DrawerContent;
 Drawer.Handle = DrawerHandle;
-Drawer.Header = DrawerHeader;
 Drawer.StickyHeader = DrawerStickyHeader;
 Drawer.Title = DrawerTitle;
 Drawer.Close = DrawerClose;

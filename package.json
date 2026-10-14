@@ -56,7 +56,11 @@
     "jev:context": "tsx scripts/jev/contextRouter.ts",
     "jev:qa:words": "tsx scripts/jev/reviewWordHooksTypesafe.ts",
     "jev:qa:grammar": "tsx scripts/jev/reviewGrammarExamples.ts",
-    "jev:qa:course": "tsx scripts/jev/reviewCourseExamples.ts"
+    "jev:qa:course": "tsx scripts/jev/reviewCourseExamples.ts",
+    "flashcard-extras:export": "tsx scripts/performance/exportFlashcardExtras.ts",
+    "predev": "npm run flashcard-extras:export",
+    "prebuild": "npm run flashcard-extras:export",
+    "perf:check": "tsx scripts/performance/checkBudget.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1146.0",
@@ -76,6 +80,7 @@
     "react-icons": "^5.6.0",
     "react-router": "^8.3.1",
     "tailwind-merge": "^3.5.0",
+    "web-vitals": "^6.2.3",
     "zustand": "^5.0.13"
   },
   "devDependencies": {

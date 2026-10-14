@@ -5,6 +5,7 @@ export { DOCK_SWAP, PracticeDockSlotOutlet, PracticeDockSlotProvider, usePractic
 export { FeedbackBottomBar } from './components/FeedbackBottomBar';
 export { LessonComplete } from './components/LessonComplete';
 export { SessionComplete } from './components/SessionComplete';
+export { ResumeLaunch } from './components/ResumeLaunch';
 export { PracticeChoiceButton, getPracticeChoiceState } from './components/PracticeChoiceButton';
 export { BreakdownExpandPanel } from './components/BreakdownExpandPanel';
 export { PracticeFormatMenu } from './components/PracticeFormatMenu';
@@ -14,3 +15,5 @@ export type { PracticeSettingsScreenProps } from './components/PracticeSettingsS
 export type { FeedbackBottomBarProps } from './components/FeedbackBottomBar';
 export type { PracticeChoiceState } from './components/PracticeChoiceButton';
 export type { BreakdownExpandPanelProps } from './components/BreakdownExpandPanel';
+
+export { beginQuizLaunch, cancelQuizLaunch } from './quizLaunch';

@@ -579,8 +579,8 @@ body {
 
 /* Tones: a tone is a complete colour-role set (canvas, text, lines, accent) swapped on <html>.
    Books write theirs inline (useBookTheme, from src/data/books.ts); `data-tone="review"` is the
-   honey tone for review passes (useReviewTone). The !important beats the book's inline values.
-   Registered so any swap fades instead of snapping. Components only use the role tokens. */
+   honey tone for review passes (useReviewTone; on any element it warms just that subtree). The !important beats the book's inline values.
+   Registered color roles; components only use these tokens. */
 @property --color-ui-canvas { syntax: '<color>'; inherits: true; initial-value: #f3f2f0; }
 @property --color-ui-practice-canvas { syntax: '<color>'; inherits: true; initial-value: #f3f2f0; }
 @property --color-ui-ink-strong { syntax: '<color>'; inherits: true; initial-value: #34312d; }
@@ -597,18 +597,22 @@ body {
 @property --color-brand-primary-track { syntax: '<color>'; inherits: true; initial-value: #d3dbe0; }
 @property --color-brand-primary-wash { syntax: '<color>'; inherits: true; initial-value: #e4edf3; }
 @property --color-brand-on-primary { syntax: '<color>'; inherits: true; initial-value: #ffffff; }
-:root {
-  transition:
-    --color-ui-canvas 500ms ease, --color-ui-practice-canvas 500ms ease,
-    --color-ui-ink-strong 500ms ease, --color-ui-ink 500ms ease,
-    --color-ui-muted-strong 500ms ease, --color-ui-muted 500ms ease,
-    --color-ui-border 500ms ease, --color-ui-divider 500ms ease,
-    --color-brand-primary 500ms ease, --color-brand-primary-edge 500ms ease,
-    --color-brand-primary-deep 500ms ease, --color-brand-primary-soft 500ms ease,
-    --color-brand-primary-soft-edge 500ms ease, --color-brand-primary-track 500ms ease,
-    --color-brand-primary-wash 500ms ease, --color-brand-on-primary 500ms ease;
+/* Inherited token interpolation invalidates every themed descendant each frame.
+   Apply the honey palette once; the review objects own the visible motion. */
+.review-tone-transition::view-transition-old(root),
+.review-tone-transition::view-transition-new(root) {
+  animation-duration: 260ms;
+  animation-timing-function: ease-in-out;
 }
-:root[data-tone="review"] {
+.review-tone-transition::view-transition {
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .review-tone-transition::view-transition-old(root),
+  .review-tone-transition::view-transition-new(root) { animation: none; }
+}
+:root[data-tone="review"],
+[data-tone="review"] {
   --color-ui-canvas: #f4efe6 !important;
   --color-ui-practice-canvas: #f4efe6 !important;
   --color-ui-ink-strong: #4f3d18 !important;

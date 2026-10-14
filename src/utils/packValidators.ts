@@ -30,6 +30,7 @@ export interface MemoryHookPack {
 }
 
 export type ContentPackKind =
+  | 'flashcard-extras'
   | 'vocabulary'
   | 'breakdowns'
   | 'dictionary'
@@ -281,6 +282,8 @@ export const getShardParts = (m: GenericContentManifest): PackPart[] => (m.shard
 }));
 
 export interface PackConfig<TPack, TLoaded> {
+  persistManifest?: boolean;
+  maxCachedParts?: number;
   namespace: string;
   manifestPath: string;
   manifestLabel: string;

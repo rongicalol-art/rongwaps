@@ -54,7 +54,7 @@ export function CharacterDailyCard({ word, onOpenWord }: CharacterDailyCardProps
           <div className="flex min-w-0 flex-wrap items-center gap-1.5" aria-label={`Made of ${parts.slice(0, 4).map((part) => part.glyph).join(' ')}`}>
             <span className="text-xs font-extrabold text-ui-muted">Made of</span>
             {parts.slice(0, 4).map((part, index) => (
-              <span key={part.key} className="flex items-center gap-1.5">
+              <span key={`${part.key}-${index}`} className="flex items-center gap-1.5">
                 {index > 0 && <span className="text-xs font-black text-ui-muted">+</span>}
                 <span className="flex h-8 min-w-8 items-center justify-center rounded-sm bg-brand-primary-soft px-1.5 font-chinese text-xl font-bold leading-none text-brand-primary-deep">
                   {part.glyph}

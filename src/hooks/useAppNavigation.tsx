@@ -6,6 +6,7 @@ import {
   normalizePartSelection,
 } from '../utils/lesson/lessonPartSelection';
 import type { ActivityType } from '../types/models';
+import { useResumeLaunch } from './useResumeLaunch';
 
 export type TabType = 'path' | 'search' | 'library' | 'profile';
 export type { ActivityType } from '../types/models';
@@ -39,12 +40,18 @@ export function useAppNavigation() {
     }
   }, []);
 
-  const handleSetActiveActivity = useCallback((activity: ActivityType) => {
+  const openActivity = useCallback((activity: ActivityType) => {
     setActiveActivity(activity);
     if (activity && activity !== 'flashcards-library' && activity !== 'create-card' && activity !== 'flashcards-review') {
       setLastActivity(activity);
     }
   }, [setActiveActivity, setLastActivity]);
+
+  const resumeLaunch = useResumeLaunch(openActivity);
+  const { intercept } = resumeLaunch;
+  const handleSetActiveActivity = useCallback((activity: ActivityType) => {
+    if (!intercept(activity)) openActivity(activity);
+  }, [intercept, openActivity]);
 
   const clearReviewContext = useCallback(() => {
     useAppStore.getState().setIsReviewMode(false);
@@ -111,5 +118,6 @@ export function useAppNavigation() {
     toggleBook,
     startPartPractice,
     startPathPractice,
+    resumeLaunch,
   };
 }

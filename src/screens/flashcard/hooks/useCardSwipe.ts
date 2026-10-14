@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import type { PointerEvent as ReactPointerEvent, RefObject } from 'react';
 
 const AXIS_LOCK_PX = 8;
@@ -34,6 +34,8 @@ export function useCardSwipe(ref: RefObject<HTMLElement | null>, opts: UseCardSw
   const optsRef = useRef(opts);
   optsRef.current = opts;
   const gesture = useRef<Gesture | null>(null);
+  const paintFrame = useRef<number | null>(null);
+  const pendingDx = useRef(0);
 
   const paint = useCallback((dx: number) => {
     const el = ref.current;
@@ -43,11 +45,29 @@ export function useCardSwipe(ref: RefObject<HTMLElement | null>, opts: UseCardSw
     el.style.setProperty('--rw-swipe-no', String(Math.min(Math.max(-dx, 0) / COMMIT_PX, 1) * 0.35));
   }, [ref]);
 
+  const cancelPaint = useCallback(() => {
+    if (paintFrame.current === null) return;
+    cancelAnimationFrame(paintFrame.current);
+    paintFrame.current = null;
+  }, []);
+
+  const schedulePaint = useCallback((dx: number) => {
+    pendingDx.current = dx;
+    if (paintFrame.current !== null) return;
+    paintFrame.current = requestAnimationFrame(() => {
+      paintFrame.current = null;
+      paint(pendingDx.current);
+    });
+  }, [paint]);
+
   const settle = useCallback((dx: number, ms: number, springBack = false) => {
+    cancelPaint();
     const el = ref.current;
     if (el) el.style.transition = `transform ${ms}ms ${springBack ? 'cubic-bezier(0.34, 1.45, 0.64, 1)' : 'cubic-bezier(0.3, 0.6, 0.5, 1)'}`;
     paint(dx);
-  }, [ref, paint]);
+  }, [cancelPaint, ref, paint]);
+
+  useEffect(() => cancelPaint, [cancelPaint]);
 
   const reset = useCallback(() => {
     const g = gesture.current;
@@ -80,8 +100,8 @@ export function useCardSwipe(ref: RefObject<HTMLElement | null>, opts: UseCardSw
       optsRef.current.onDragChange?.(true);
     }
     g.dx = dx;
-    paint(dx);
-  }, [ref, paint]);
+    schedulePaint(dx);
+  }, [ref, schedulePaint]);
 
   const onPointerUp = useCallback((e: ReactPointerEvent<HTMLElement>) => {
     const g = gesture.current;

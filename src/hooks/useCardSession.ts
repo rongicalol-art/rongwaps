@@ -152,7 +152,7 @@ export function useCardSession(
       ? (() => {
         const ids = new Set(canonicalOrderRef.current.map((card) => card.id));
         const subset = cards.filter((card) => ids.has(card.id));
-        return subset.length > 0 && subset.length < cards.length ? subset : null;
+        return subset.length > 0 ? subset : null;
       })()
       : null;
     const nextCards = reviewCards ?? keptReview ?? restored ?? cards;
@@ -187,6 +187,8 @@ export function useCardSession(
   // Save progress (debounced to avoid massive re-renders)
   useEffect(() => {
     if (!sessionInitializedRef.current || activeCards.length === 0 || completed) return;
+    // Save the first question/review immediately, including a quick exit before the debounce fires.
+    if (currentIndex === 0) { persistProgress(sessionKey); return; }
     const timeoutId = setTimeout(() => persistProgress(sessionKey), 3000);
     return () => clearTimeout(timeoutId);
   }, [activeCards, completed, currentIndex, isShuffled, sessionKey, persistProgress]);

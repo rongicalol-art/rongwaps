@@ -1,11 +1,14 @@
+import { lazy, Suspense } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
-import { ReaderScreen } from '../../screens/reader';
+import type { ReaderScreen as ReaderScreenType } from '../../screens/reader';
 import { useFontGate, useOpenPhase } from '../../hooks/useOpenPhase';
 import { useReplacesLoader } from '../hooks/useReplacesLoader';
 import { LoadingScreen, WorkspaceWindow } from '../../lib/widgets';
 
-type ReaderScreenProps = React.ComponentProps<typeof ReaderScreen>;
+const ReaderScreen = lazy(() => import('../../screens/reader').then((m) => ({ default: m.ReaderScreen })));
+
+type ReaderScreenProps = React.ComponentProps<typeof ReaderScreenType>;
 
 interface ReaderWindowProps {
   isOpen?: boolean;
@@ -40,16 +43,18 @@ export function ReaderWindow({ isOpen = false, readings, index, onNext, onPrevio
         </WorkspaceWindow>
       )}
       {shouldRender && phase === 'ready' && activeReading && (
-        <ReaderScreen
-          animateIn={!cameFromLoader}
-          key="reader-screen"
-          readings={readings}
-          index={index!}
-          onNext={onNext}
-          onPrevious={onPrevious}
-          onClose={onClose}
-          onOpenGrammarPart={onOpenGrammarPart}
-        />
+        <Suspense key="reader-screen" fallback={<WorkspaceWindow tone="practice"><LoadingScreen message="Loading reading…" tone="practice" /></WorkspaceWindow>}>
+          <ReaderScreen
+            animateIn={!cameFromLoader}
+            key="reader-screen"
+            readings={readings}
+            index={index!}
+            onNext={onNext}
+            onPrevious={onPrevious}
+            onClose={onClose}
+            onOpenGrammarPart={onOpenGrammarPart}
+          />
+        </Suspense>
       )}
     </AnimatePresence>
   );

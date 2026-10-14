@@ -181,9 +181,11 @@ export class AudioService {
       this.globalAudio.onended = null;
       this.globalAudio.onerror = null;
       this.globalAudio.ontimeupdate = null;
-      try {
-        this.globalAudio.pause();
-      } catch (e) { debugLogger.warn('Audio', 'Global audio pause failed', e); }
+      if (!this.globalAudio.paused) {
+        try {
+          this.globalAudio.pause();
+        } catch (e) { debugLogger.warn('Audio', 'Global audio pause failed', e); }
+      }
     }
     const blobAudio = this.activeBlobAudio;
     this.activeBlobAudio = null;
@@ -191,7 +193,9 @@ export class AudioService {
       releaseBlobAudio(blobAudio);
       blobAudio.onended = null;
       blobAudio.onerror = null;
-      try { blobAudio.pause(); } catch (e) { debugLogger.warn('Audio', 'Blob audio pause failed', e); }
+      if (!blobAudio.paused) {
+        try { blobAudio.pause(); } catch (e) { debugLogger.warn('Audio', 'Blob audio pause failed', e); }
+      }
     }
 
     if (this.currentUtterance) {
@@ -199,9 +203,9 @@ export class AudioService {
       this.currentUtterance.onend = null;
       this.currentUtterance.onerror = null;
       this.currentUtterance = null;
-    }
-    if (typeof window !== 'undefined') {
-      try { window.speechSynthesis?.cancel(); } catch (e) { debugLogger.warn('Audio', 'SpeechSynthesis cancel failed', e); }
+      if (typeof window !== 'undefined') {
+        try { window.speechSynthesis?.cancel(); } catch (e) { debugLogger.warn('Audio', 'SpeechSynthesis cancel failed', e); }
+      }
     }
 
     const finish = this.activePlaybackFinish;
@@ -213,7 +217,7 @@ export class AudioService {
     this.pause();
     if (this.globalAudio) {
       try {
-        this.globalAudio.currentTime = 0;
+        if (this.globalAudio.currentTime !== 0) this.globalAudio.currentTime = 0;
       } catch (e) { debugLogger.warn('Audio', 'Reset currentTime failed', e); }
     }
   }

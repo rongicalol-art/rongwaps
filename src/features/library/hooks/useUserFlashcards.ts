@@ -5,18 +5,18 @@ import { flashcardService } from '../../../services/flashcardService';
 import { meaningText } from '../../../utils/vocabulary/dictionaryDefinitions';
 import type { UserFlashcard } from '../../../types/models';
 
+const NO_CARDS: UserFlashcard[] = [];
+
 /**
  * Shared hook to access user flashcards reactively across any screen or modal,
  * handling guest storage and authenticated Supabase cards (refetched when the tab becomes visible).
  */
 export function useUserFlashcards(): UserFlashcard[] {
   const { currentUser } = useAuth();
-  const localFlashcards = useAppStore((state) => state.localFlashcards);
+  const localFlashcards = useAppStore((state) => Array.isArray(state.localFlashcards) ? state.localFlashcards : NO_CARDS);
   const [cards, setCards] = useState<UserFlashcard[]>(() => {
-    if (currentUser) {
-      return flashcardService.getCachedFlashcards() || [];
-    }
-    return localFlashcards;
+    const cached = currentUser ? flashcardService.getCachedFlashcards() : localFlashcards;
+    return Array.isArray(cached) ? cached : NO_CARDS;
   });
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export function useUserFlashcards(): UserFlashcard[] {
     }
 
     const unsubscribe = flashcardService.subscribeToUserFlashcards(currentUser.id, (updated) => {
-      setCards(updated);
+      setCards(Array.isArray(updated) ? updated : NO_CARDS);
     });
 
     return () => {

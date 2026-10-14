@@ -1,6 +1,4 @@
-import { useReducedMotion } from 'motion/react';
 import React, { Fragment, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { AppIcon } from '../../lib/widgets';
 import { SAMPLE_BOOKS } from '../../data/books';
 import type { Flashcard } from '../../data/flashcards';
 import { FeedbackBottomBar, PracticeFormatMenu, SessionComplete, type SessionStats } from '../../features/practice';
@@ -170,25 +168,6 @@ export const QuizShell: React.FC<QuizShellProps> = ({
   /** The intro handed over (ghost undefined with reduced motion): the review's first question enters. */
   const [entrance, setEntrance] = useState<{ ghost: QuizHandoff | null } | null>(null);
   const firstPassRef = useRef<{ total: number; correct: number; cards: Flashcard[]; missedCards: Flashcard[] } | null>(null);
-  /** Answers right in a row; displayed above the answer bar. */
-  const [streak, setStreak] = useState(0);
-  const streakRef = useRef<HTMLSpanElement>(null);
-  const previousStreak = useRef(0);
-  const reduceMotion = useReducedMotion();
-  useEffect(() => {
-    const increased = streak >= 5 && streak > previousStreak.current;
-    previousStreak.current = streak;
-    if (!increased || reduceMotion) return;
-    const pulse = streakRef.current?.animate(
-      [{ transform: 'scale(1)' }, { transform: 'scale(1.08)' }, { transform: 'scale(1)' }],
-      { duration: 180, easing: 'ease-out' },
-    );
-    return () => pulse?.cancel();
-  }, [reduceMotion, streak]);
-  useEffect(() => {
-    if (status === 'correct') setStreak((value) => value + 1);
-    else if (status === 'wrong') setStreak(0);
-  }, [status]);
   const isReviewPass = reviewPass > 0 || resumedReview;
   const isDone = completed && unlearnedCount === 0;
 
@@ -197,7 +176,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
   }, [resumedReview]);
 
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!completed || unlearnedCount === 0) return;
     firstPassRef.current ??= { total: activeCards.length, correct: learnedCount, cards: activeCards, missedCards };
     reviewUnlearned();
@@ -213,7 +192,6 @@ export const QuizShell: React.FC<QuizShellProps> = ({
     firstPassRef.current = null;
     finishedAtRef.current = null;
     startedAtRef.current = Date.now();
-    setStreak(0);
     setReviewPass(0);
     setIntroActive(false);
     setEntrance(null);
@@ -251,13 +229,21 @@ export const QuizShell: React.FC<QuizShellProps> = ({
   const risenFor = useRef<unknown>(null);
   const hasCard = Boolean(currentCard);
   const showContent = !introActive || Boolean(entrance);
+  // Mixed rounds can reorder their beats: the actual first question leads the sheet.
+  const reviewIntroCards = useMemo(() => introActive && currentCard
+    ? [currentCard, ...activeCards.filter((card) => card.id !== currentCard.id)]
+    : activeCards, [activeCards, currentCard, introActive]);
   const riseKey = entrance ?? (rise ? 'first' : null);
   useLayoutEffect(() => {
     if (!riseKey || risenFor.current === riseKey || !titleRef.current) return;
     risenFor.current = riseKey;
+    if (entrance && !landsReviewGhost && questionRef.current) {
+      riseIn(questionRef.current, 220, 8, 260);
+      return;
+    }
     if (riseKey === 'first' && questionRef.current && landQuizLaunch(questionRef.current)) return;
-    riseIn(titleRef.current, 120, 12);
-  }, [riseKey, hasCard, showContent]);
+    riseIn(titleRef.current, entrance ? 240 : 120, entrance ? 8 : 12, entrance ? 220 : 480);
+  }, [riseKey, hasCard, showContent, entrance, landsReviewGhost]);
 
   // The intro's ghost card is landed on the review's first question; modes without a landing fade it.
   const reviewHandoff = landsReviewGhost && currentIndex === 0 ? entrance?.ghost ?? null : null;
@@ -302,13 +288,11 @@ export const QuizShell: React.FC<QuizShellProps> = ({
         {/* One exercise group: instruction aligned with the card, then the answers. */}
         {showContent && currentCard && (
           <div ref={questionRef} className="my-auto flex w-full flex-col items-center gap-5 pt-4">
-            <div ref={titleRef} className="relative flex w-full items-center justify-center">
+            <div ref={titleRef} className="flex w-full items-center justify-center gap-3">
               {(isMatchPair || !(mode === 'quiz-choices' && quizFormat === 'mixed')) && (
-                <div className="absolute left-0">
-                  <PracticeFormatMenu mode={mode} isMatchPair={isMatchPair} />
-                </div>
+                <PracticeFormatMenu mode={mode} isMatchPair={isMatchPair} />
               )}
-              <h2 className="text-balance text-center text-2xl font-black leading-tight text-ui-ink-strong md:text-3xl px-9">{title}</h2>
+              <h2 className="text-balance text-center text-2xl font-black leading-tight text-ui-ink-strong md:text-3xl">{title}</h2>
             </div>
 
             <Fragment key={`${currentIndex}:${currentCard.id}`}>
@@ -323,7 +307,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
           <ReviewDealIntro
             key={reviewPass}
             landing="ghost"
-            cards={activeCards}
+            cards={reviewIntroCards}
             passCards={finishedPass}
             pass={reviewPass}
             onHighlight={() => setIntroToned(true)}
@@ -333,18 +317,6 @@ export const QuizShell: React.FC<QuizShellProps> = ({
           />
         </div>
       )}
-
-      <div
-        aria-hidden={introActive || streak < 5}
-        className={`pointer-events-none absolute inset-x-0 bottom-64 z-20 px-4 md:bottom-64 sm:px-6 lg:bottom-40 ${introActive || streak < 5 ? 'invisible' : ''}`}
-      >
-        <div className={`mx-auto flex w-full ${wide ? 'max-w-xl md:max-w-[640px]' : 'max-w-lg'} justify-end`}>
-          <span aria-label={`${streak} correct answers in a row`} className="inline-flex items-center gap-1 text-sm font-black text-ui-muted-strong tabular-nums">
-            <AppIcon name="flame" size={18} className="text-brand-primary" />
-            <span ref={streakRef} className="inline-block">{streak}</span>
-          </span>
-        </div>
-      </div>
 
       <FeedbackBottomBar
         status={status}

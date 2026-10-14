@@ -1,9 +1,10 @@
+import { useQuizAnswerAudio } from './useQuizAnswerAudio';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { Flashcard } from '../../../data/flashcards';
-import { audioService } from '../../../services/audioService';
 import { useAppStore } from '../../../store/useAppStore';
 import { useCardSession } from '../../../hooks/useCardSession';
 import { useAudioSessionLifecycle } from '../../../hooks/useSessionAudio';
+import { quizSnapshotKey } from '../../../utils/srs/resumeState';
 import { planQuizRound, parseMeasureWord, wordsForQuizTypes, type QuizBeat, type QuizTypeId } from '../../../utils/vocabulary/quizDirector';
 
 type BeatStatus = 'idle' | 'correct' | 'wrong';
@@ -13,21 +14,20 @@ interface RoundSnapshot {
   nonce: string;
 }
 
-const snapshotKey = (sessionKey: string) => `rw-quiz-round:${sessionKey}`;
 
 /** The round's seed, frozen at its start so a reload resumes the same plan. */
 function readSnapshot(sessionKey: string): RoundSnapshot {
   try {
-    const saved = JSON.parse(window.sessionStorage.getItem(snapshotKey(sessionKey)) ?? 'null') as RoundSnapshot | null;
+    const saved = JSON.parse(window.sessionStorage.getItem(quizSnapshotKey(sessionKey)) ?? 'null') as RoundSnapshot | null;
     if (saved?.nonce) return saved;
   } catch { /* storage unavailable: the plan just isn't resumable */ }
   const fresh: RoundSnapshot = { nonce: Math.random().toString(36).slice(2, 10) };
-  try { window.sessionStorage.setItem(snapshotKey(sessionKey), JSON.stringify(fresh)); } catch { /* ignore */ }
+  try { window.sessionStorage.setItem(quizSnapshotKey(sessionKey), JSON.stringify(fresh)); } catch { /* ignore */ }
   return fresh;
 }
 
 function clearSnapshot(sessionKey: string) {
-  try { window.sessionStorage.removeItem(snapshotKey(sessionKey)); } catch { /* ignore */ }
+  try { window.sessionStorage.removeItem(quizSnapshotKey(sessionKey)); } catch { /* ignore */ }
 }
 
 /**
@@ -35,18 +35,15 @@ function clearSnapshot(sessionKey: string) {
  * `useCardSession` still counts words, so a beat's words advance together.
  */
 export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: readonly QuizTypeId[]) {
-  const pronunciationRate = useAppStore((state) => state.pronunciationRate);
-  const replayAudioAfterAnswer = useAppStore((state) => state.replayAudioAfterAnswer);
   const matchPairType = useAppStore((state) => state.matchPairType);
 
   const [status, setStatus] = useState<BeatStatus>('idle');
-  const [answerAudioPlaying, setAnswerAudioPlaying] = useState(false);
+  const { answerAudioPlaying, playWord } = useQuizAnswerAudio();
   const [missedLabel, setMissedLabel] = useState('');
   const [followUp, setFollowUp] = useState<FollowUpState>('closed');
   const [inBeatDone, setInBeatDone] = useState(0);
   const [pass, setPass] = useState(0);
   const measureUsed = useRef(false);
-  const answerAudioPlayId = useRef(0);
   const matchRef = useRef<{ done: Set<string>; missed: Flashcard[] }>({ done: new Set(), missed: [] });
   const snapshotRef = useRef<{ key: string; value: RoundSnapshot } | null>(null);
 
@@ -109,17 +106,6 @@ export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: rea
   const currentCard = beat?.cards[0] as Flashcard;
   const beatEnd = beat ? starts[beatIndex] + beat.cards.length : 0;
 
-  /** Every answer, right or wrong, ends on the word's sound. */
-  const playWord = useCallback((card: Flashcard) => {
-    if (!replayAudioAfterAnswer) return;
-    const playId = ++answerAudioPlayId.current;
-    setAnswerAudioPlaying(true);
-    const finish = () => {
-      if (answerAudioPlayId.current === playId) setAnswerAudioPlaying(false);
-    };
-    void audioService.playCard(card, pronunciationRate).then(finish, finish);
-  }, [pronunciationRate, replayAudioAfterAnswer]);
-
   /** One question, one word: records once and shows the feedback bar. A wrong pick is remembered as a mix-up. */
   const resolveSingle = useCallback((correct: boolean, confusedWithId?: string) => {
     if (!beat || beat.cards.length !== 1 || !session.beginGrading()) return;
@@ -142,13 +128,14 @@ export function useQuizMixed(cards: Flashcard[], sessionKey: string, types?: rea
     match.done.add(card.id);
     // Each matched pair moves the bar; Continue's advance lands on the same count.
     setInBeatDone(match.done.size);
-    playWord(card);
+    // PairMatch plays the word when its left tile is selected. Replaying it here
+    // interrupts the clip that is already playing when the right tile matches.
     if (!firstTry) match.missed.push(card);
     session.recordAnswer(card, firstTry ? 4 : 2);
     if (match.done.size < beat.cards.length) return;
     setMissedLabel(match.missed.map((c) => `${c.front} ${c.back}`).join('  ·  '));
     setStatus(match.missed.length === 0 ? 'correct' : 'wrong');
-  }, [beat, playWord, session]);
+  }, [beat, session]);
 
   /** A wrong match pair: the two words were mixed up. */
   const resolveMismatch = useCallback((cardId: string, otherId: string) => {

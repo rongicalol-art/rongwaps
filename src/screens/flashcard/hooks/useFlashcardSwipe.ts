@@ -62,19 +62,6 @@ export function useFlashcardSwipe(
     });
   }, []);
 
-  /** Rate a card via keyboard with an explicit travel direction. */
-  const triggerKeyboardRate = useCallback((level: number, animDir: number): boolean => {
-    if (currentIndex !== undefined && lastRatedIndexRef.current === currentIndex) return false;
-    if (ratePendingRef.current) return false;
-    ratePendingRef.current = true;
-    lastRatedIndexRef.current = currentIndex ?? null;
-    setDirection(animDir);
-    handleNextRef.current(level);
-    if (unlockTimeoutRef.current !== null) window.clearTimeout(unlockTimeoutRef.current);
-    unlockTimeoutRef.current = window.setTimeout(unlockRating, 60);
-    return true;
-  }, [currentIndex, unlockRating]);
-
   useEffect(() => () => {
     if (unlockTimeoutRef.current !== null) window.clearTimeout(unlockTimeoutRef.current);
   }, []);
@@ -82,7 +69,7 @@ export function useFlashcardSwipe(
   return {
     direction,
     triggerSwipeRate,
-    triggerKeyboardRate,
+    triggerKeyboardRate: triggerSwipeRate,
     triggerNav,
   };
 }

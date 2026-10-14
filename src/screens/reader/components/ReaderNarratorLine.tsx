@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { cn } from '../../../utils/cn';
 import type { ReaderTextSize } from '../../../types/models';
 import type { ReaderLocatedRange } from '../utils/readerLocate';
@@ -27,14 +27,15 @@ export function ReaderNarratorLine({
   onPlayLine,
   onLineRef,
 }: ReaderNarratorLineProps) {
+  const reduceMotion = useReducedMotion();
   const { index, paragraph, sentences, sentenceRanges } = line;
 
   return (
     <motion.div
       ref={(node) => onLineRef(index, node)}
-      initial={{ opacity: 0, y: 6 }}
+      initial={reduceMotion ? false : { opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.02 }}
+      transition={reduceMotion ? { duration: 0 } : { delay: index * 0.02 }}
       className="flex w-full justify-center my-1"
     >
       <div

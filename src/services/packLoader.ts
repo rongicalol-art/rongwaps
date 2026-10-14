@@ -51,6 +51,8 @@ export interface PackLoaderOptions<TManifest, TPack, TLoaded> {
   /** Optional post-validation mapping (e.g. index items by key). */
   transform?: (pack: TPack) => TLoaded;
   partLabel: (key: number) => string;
+  /** Limit decoded resident shards for large, individually requested datasets. */
+  maxCachedParts?: number;
 }
 
 export function createPackLoader<TManifest, TPack, TLoaded>(
@@ -109,12 +111,17 @@ export function createPackLoader<TManifest, TPack, TLoaded>(
 
     const loaded = transform(pack);
     partCache.set(key, loaded);
+    while (partCache.size > Math.max(1, options.maxCachedParts ?? Infinity)) partCache.delete(partCache.keys().next().value!);
     return loaded;
   }
 
   function loadPart(key: number): Promise<TLoaded | null> {
     const cached = partCache.get(key);
-    if (cached) return Promise.resolve(cached);
+    if (cached) {
+      partCache.delete(key);
+      partCache.set(key, cached);
+      return Promise.resolve(cached);
+    }
 
     const pending = pendingParts.get(key);
     if (pending) return pending;

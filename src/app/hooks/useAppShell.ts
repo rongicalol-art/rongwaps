@@ -173,6 +173,7 @@ export function useAppShell() {
       onStartPartPractice: actions.handleStartPartPractice,
       onStartPathPractice: actions.handleStartPathPractice,
       onOpenReading: actions.handleOpenReading,
+      resumeLaunch: navigation.resumeLaunch,
     },
     settings: {
       isOpen: shellState.isSettingsOpen,

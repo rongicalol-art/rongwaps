@@ -49,7 +49,7 @@ const ListenPrompt: React.FC<{ card: Flashcard }> = ({ card }) => {
         onClick={() => { void audioService.playCard(card, rate); }}
         className="h-32 w-32 !p-0 md:h-36 md:w-36"
       >
-        <AppIcon name="audio" size={64} />
+        <AppIcon name="audio" size={64} className="text-brand-primary-soft" />
       </ActionButton>
     </div>
   );
@@ -111,7 +111,7 @@ export const PickOne: React.FC<PickOneProps> = ({
       initial={handoff || reduceMotion ? false : { opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.14, ease: 'easeOut' }}
-      className="flex w-full flex-col gap-4 will-change-transform"
+      className="flex w-full flex-col gap-4"
     >
       {prompt === 'audio' ? <ListenPrompt card={card} /> : (
         <div

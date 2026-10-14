@@ -1,0 +1,1806 @@
+{
+  "schemaVersion": 1,
+  "version": "2605b9e32cee4168",
+  "sourceVersions": {
+    "vocabulary": "11565d8b7fa4e6d8",
+    "course-examples": "436b21669b739b92",
+    "memory-hooks": "623f40ffe3a19728e6f685cee26bb4977b163fc12695b44c21a27e38d0b29384"
+  },
+  "totalCount": 8641,
+  "shardCount": 256,
+  "shardStrategy": "card-signature-hash-modulo",
+  "shards": [
+    {
+      "shard": 0,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-0.json",
+      "sha256": "a4c74707808bb9294ee2c4b16e003fadf73a18f9692558b6440b675a904fda50",
+      "bytes": 41027
+    },
+    {
+      "shard": 1,
+      "count": 33,
+      "path": "/data/flashcard-extras/shard-1.json",
+      "sha256": "c527178c77255fe051ccc83c533514fb59f92d109d8a9f1b6e5330b699f399a9",
+      "bytes": 43914
+    },
+    {
+      "shard": 2,
+      "count": 37,
+      "path": "/data/flashcard-extras/shard-2.json",
+      "sha256": "c60ae045b922f4e9d7d68ec8ddd89b354bdf97186db8e5ed04666f6884311973",
+      "bytes": 47736
+    },
+    {
+      "shard": 3,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-3.json",
+      "sha256": "5716b36958b62ea08a1b1eacb9832700857a85ef2fd113a9ee183f12d1b09343",
+      "bytes": 27572
+    },
+    {
+      "shard": 4,
+      "count": 33,
+      "path": "/data/flashcard-extras/shard-4.json",
+      "sha256": "411e12f4c4c9efef889ed09a730ce0cd6fde2fdca142a61708ce739cd83e276a",
+      "bytes": 50220
+    },
+    {
+      "shard": 5,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-5.json",
+      "sha256": "7da0e461ca0085715c0ce098731e713a84e78260456e66dab69cdb0f7df1753b",
+      "bytes": 48141
+    },
+    {
+      "shard": 6,
+      "count": 25,
+      "path": "/data/flashcard-extras/shard-6.json",
+      "sha256": "7823f0e06e470c3518603ebd2d4b6df118945ae28d64baef65d4c3dd3a7a3f7a",
+      "bytes": 24090
+    },
+    {
+      "shard": 7,
+      "count": 42,
+      "path": "/data/flashcard-extras/shard-7.json",
+      "sha256": "ef64d1de2994f9d8dd68c9a782873fdb1f53dfdd9dfa0460440fc95ae57ec8ac",
+      "bytes": 52429
+    },
+    {
+      "shard": 8,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-8.json",
+      "sha256": "5429fc9f137cbd4aa62144c36b1ac476c8eeb489d0a9e7abe3708ce225af7d1f",
+      "bytes": 40359
+    },
+    {
+      "shard": 9,
+      "count": 39,
+      "path": "/data/flashcard-extras/shard-9.json",
+      "sha256": "8b4e7cd41563bb25b7167f15597c7d2640181a42731837ff92843827f3ab120f",
+      "bytes": 92347
+    },
+    {
+      "shard": 10,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-10.json",
+      "sha256": "5950a85831b224ce6910c732ab8369e6d0d87b5997b0c7d14eec7735cb6151bb",
+      "bytes": 48615
+    },
+    {
+      "shard": 11,
+      "count": 37,
+      "path": "/data/flashcard-extras/shard-11.json",
+      "sha256": "58fe92621d89814b456db9a025b4acc93f2d0896e468c776ff697db5484129ac",
+      "bytes": 37478
+    },
+    {
+      "shard": 12,
+      "count": 26,
+      "path": "/data/flashcard-extras/shard-12.json",
+      "sha256": "7e1d4812757ce0a3d8393477c5a8741493a9b23220cf3fdfbb9bb34905333a73",
+      "bytes": 58182
+    },
+    {
+      "shard": 13,
+      "count": 23,
+      "path": "/data/flashcard-extras/shard-13.json",
+      "sha256": "bc714d808994d8a7947846022fc9c62118109a2135eb8f67af3a133f5bab23e2",
+      "bytes": 29720
+    },
+    {
+      "shard": 14,
+      "count": 37,
+      "path": "/data/flashcard-extras/shard-14.json",
+      "sha256": "af46448d7ce7a944c3779630e3f61dc53d0ca7ca7d6cc5a090ea9c819c667c66",
+      "bytes": 45168
+    },
+    {
+      "shard": 15,
+      "count": 39,
+      "path": "/data/flashcard-extras/shard-15.json",
+      "sha256": "21b3b8563d23957eb3103f46ce3e991f759ad5ce660dc86a121909147e15b7cb",
+      "bytes": 101229
+    },
+    {
+      "shard": 16,
+      "count": 48,
+      "path": "/data/flashcard-extras/shard-16.json",
+      "sha256": "f6303ef93a6fbf6cd1c90d6d7b213e8a3bc782701fead205094254b83ec760b6",
+      "bytes": 95231
+    },
+    {
+      "shard": 17,
+      "count": 28,
+      "path": "/data/flashcard-extras/shard-17.json",
+      "sha256": "6efa896338c731daac6439ce65a4245ff099074c158972f8c8fb332bcd07a218",
+      "bytes": 33384
+    },
+    {
+      "shard": 18,
+      "count": 41,
+      "path": "/data/flashcard-extras/shard-18.json",
+      "sha256": "bcc8c6c98da55d3cd2b4c3a370bfaf37a7dbdd3fb75677c993ffea9b98b51154",
+      "bytes": 64678
+    },
+    {
+      "shard": 19,
+      "count": 40,
+      "path": "/data/flashcard-extras/shard-19.json",
+      "sha256": "adca44691a61f5160d0f065ed3e327ece02800b22d1b65a38fceb2fd30e9e92f",
+      "bytes": 43223
+    },
+    {
+      "shard": 20,
+      "count": 41,
+      "path": "/data/flashcard-extras/shard-20.json",
+      "sha256": "7d253a53e6d7ef918319e4327af80e6736c42178128180da00ee4f6734fa5cbd",
+      "bytes": 38522
+    },
+    {
+      "shard": 21,
+      "count": 37,
+      "path": "/data/flashcard-extras/shard-21.json",
+      "sha256": "e8b0cf371a143fbdc034a69f8f9bc370287283fa4f4f11e5f14221e23abb5df0",
+      "bytes": 59639
+    },
+    {
+      "shard": 22,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-22.json",
+      "sha256": "cfda0424712717ccc3bf482df1f25e6f19ecb061fe5d8de557020795aa8e17e2",
+      "bytes": 35609
+    },
+    {
+      "shard": 23,
+      "count": 30,
+      "path": "/data/flashcard-extras/shard-23.json",
+      "sha256": "bd82d7889d8b24290c6479830b026d8773e735e657ccea0410a3f310c16a5834",
+      "bytes": 41912
+    },
+    {
+      "shard": 24,
+      "count": 30,
+      "path": "/data/flashcard-extras/shard-24.json",
+      "sha256": "6943dab12b7e5d64e7f25f87372bd8ec92ff622aa2c7b64b4167d4d91ab90b43",
+      "bytes": 41629
+    },
+    {
+      "shard": 25,
+      "count": 40,
+      "path": "/data/flashcard-extras/shard-25.json",
+      "sha256": "007b825607169fb93136574c1b56e98ca2d9cbd09f369ab94e2563014a40d1a7",
+      "bytes": 35907
+    },
+    {
+      "shard": 26,
+      "count": 38,
+      "path": "/data/flashcard-extras/shard-26.json",
+      "sha256": "0b4047809777f19bbc6598e82659b127948eaf05040fe80f7e13f748dd9e61dd",
+      "bytes": 68856
+    },
+    {
+      "shard": 27,
+      "count": 23,
+      "path": "/data/flashcard-extras/shard-27.json",
+      "sha256": "0aeb2b9f99ab5db3b9c61e1d658b4da86413f42cb1913ba4604c6f433e427fa4",
+      "bytes": 50855
+    },
+    {
+      "shard": 28,
+      "count": 28,
+      "path": "/data/flashcard-extras/shard-28.json",
+      "sha256": "2fafbe9798d7dc36cb8bff647016a186bd5b8ac4514681f98dd2c142ca48c6b8",
+      "bytes": 54081
+    },
+    {
+      "shard": 29,
+      "count": 35,
+      "path": "/data/flashcard-extras/shard-29.json",
+      "sha256": "e65fbba9259f56c86ce05552b59b2584eb3818ccc1fc5dd38b1c10d300b82057",
+      "bytes": 71376
+    },
+    {
+      "shard": 30,
+      "count": 28,
+      "path": "/data/flashcard-extras/shard-30.json",
+      "sha256": "d4f8be913b3b078fa7cdd32f66fb15bbe5ff8988541ab15e1e685a7754dcf3b6",
+      "bytes": 17464
+    },
+    {
+      "shard": 31,
+      "count": 41,
+      "path": "/data/flashcard-extras/shard-31.json",
+      "sha256": "4c67e18376f8837621cbdba4e5f4b8059ec336e976bcd53a30d1bea7e0475f32",
+      "bytes": 52186
+    },
+    {
+      "shard": 32,
+      "count": 29,
+      "path": "/data/flashcard-extras/shard-32.json",
+      "sha256": "cbcd36e153deafb40d69af75803c3d9f8beda1f22f99c3497df9069d46cf760a",
+      "bytes": 55630
+    },
+    {
+      "shard": 33,
+      "count": 42,
+      "path": "/data/flashcard-extras/shard-33.json",
+      "sha256": "b555bdc56103c8c8ba09970b6b885eb89c8f2c507864e2f3c8f5b40db393a48e",
+      "bytes": 85936
+    },
+    {
+      "shard": 34,
+      "count": 36,
+      "path": "/data/flashcard-extras/shard-34.json",
+      "sha256": "dc4812f95bf49bc33d21022eca3de1bef5917eaaed7c7b04ca02e2b627f50a79",
+      "bytes": 70071
+    },
+    {
+      "shard": 35,
+      "count": 24,
+      "path": "/data/flashcard-extras/shard-35.json",
+      "sha256": "8713ca3f9dabad3bf9847051cc4691a4d7beef43a3477a651474740c278bd4d8",
+      "bytes": 35280
+    },
+    {
+      "shard": 36,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-36.json",
+      "sha256": "4858538a623aa343c029356ad3917a0a7c853c8fcd1369f0489aea137e97ecfe",
+      "bytes": 57011
+    },
+    {
+      "shard": 37,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-37.json",
+      "sha256": "bde59e06ffd0745734eb19963194d18b693b895e131ca9497d061c23de709030",
+      "bytes": 28508
+    },
+    {
+      "shard": 38,
+      "count": 34,
+      "path": "/data/flashcard-extras/shard-38.json",
+      "sha256": "1ed1d297837bbf9da5ced6ca86f9767ba9805c86a149f7e9bd2c1d41bb82753b",
+      "bytes": 45974
+    },
+    {
+      "shard": 39,
+      "count": 34,
+      "path": "/data/flashcard-extras/shard-39.json",
+      "sha256": "0aa306ffe6de0849ccd3796352b2b958232adacb63f5cb26e7fd5b22ce0e4e8a",
+      "bytes": 32939
+    },
+    {
+      "shard": 40,
+      "count": 44,
+      "path": "/data/flashcard-extras/shard-40.json",
+      "sha256": "8a1b3688570f9c2f19107590f675a57fe44cf2ac2f11cf203dc335023edb0fb9",
+      "bytes": 47116
+    },
+    {
+      "shard": 41,
+      "count": 35,
+      "path": "/data/flashcard-extras/shard-41.json",
+      "sha256": "89d17c9853695ee50405f7122e7a64901bdb7fd6abab9e3a9b7aa0c3ef708682",
+      "bytes": 52498
+    },
+    {
+      "shard": 42,
+      "count": 22,
+      "path": "/data/flashcard-extras/shard-42.json",
+      "sha256": "4ac8b1788202bc20318181416e9ec64fbfe2d391f023795d4b9a46cd96d0c253",
+      "bytes": 33239
+    },
+    {
+      "shard": 43,
+      "count": 38,
+      "path": "/data/flashcard-extras/shard-43.json",
+      "sha256": "e63fb112388254a7a625ee6e352e74752abf0caa19285e9e7d6eed7a4f2d8767",
+      "bytes": 30655
+    },
+    {
+      "shard": 44,
+      "count": 29,
+      "path": "/data/flashcard-extras/shard-44.json",
+      "sha256": "2fe817e287e45cdafa2e991033ec2bd89afed043e63379420e9442ffe0fbd96c",
+      "bytes": 22004
+    },
+    {
+      "shard": 45,
+      "count": 42,
+      "path": "/data/flashcard-extras/shard-45.json",
+      "sha256": "aac737f09bec255b00e74240a8dd267313e28563cbec080f8507d76b027fb68e",
+      "bytes": 50264
+    },
+    {
+      "shard": 46,
+      "count": 40,
+      "path": "/data/flashcard-extras/shard-46.json",
+      "sha256": "f09c46edaa220eaa15e1f76ca1d86ac3b55312dd32d79e3dafa0c8f1022f0964",
+      "bytes": 85922
+    },
+    {
+      "shard": 47,
+      "count": 30,
+      "path": "/data/flashcard-extras/shard-47.json",
+      "sha256": "9fc03faab6dd5484e00f51ee81e0ab20eed24ab06eeb33bb53d2d62c87382c9c",
+      "bytes": 66216
+    },
+    {
+      "shard": 48,
+      "count": 34,
+      "path": "/data/flashcard-extras/shard-48.json",
+      "sha256": "f2ad0e71b00d196b9337fbeec55c839e537fa008f295608605ff719227639cf5",
+      "bytes": 53552
+    },
+    {
+      "shard": 49,
+      "count": 29,
+      "path": "/data/flashcard-extras/shard-49.json",
+      "sha256": "74ee374d102449adb888079bb040b24e731b2c707852904b2455c09df80b7526",
+      "bytes": 31151
+    },
+    {
+      "shard": 50,
+      "count": 25,
+      "path": "/data/flashcard-extras/shard-50.json",
+      "sha256": "ae39efb287e7cb2184561cd0c5ada12567ad159f059994fc5b2c024b440ef94f",
+      "bytes": 26670
+    },
+    {
+      "shard": 51,
+      "count": 28,
+      "path": "/data/flashcard-extras/shard-51.json",
+      "sha256": "239358255462de0dbb6cae212d7f434f2b47a49af2f51ccf7877b60bc5c37d68",
+      "bytes": 48734
+    },
+    {
+      "shard": 52,
+      "count": 38,
+      "path": "/data/flashcard-extras/shard-52.json",
+      "sha256": "da4d4f7d1b70c06b493899f84865682884446a863b5bbfa049655e1d39e33932",
+      "bytes": 55343
+    },
+    {
+      "shard": 53,
+      "count": 28,
+      "path": "/data/flashcard-extras/shard-53.json",
+      "sha256": "bf40eb93371bc4efc008f7cdfc62481601c53a396afb60b95cf5b91c5befbd71",
+      "bytes": 58204
+    },
+    {
+      "shard": 54,
+      "count": 35,
+      "path": "/data/flashcard-extras/shard-54.json",
+      "sha256": "55075871f04bd1fa41a72c29c9af43bc2fb20253a7970450449ceefde233bc7c",
+      "bytes": 49034
+    },
+    {
+      "shard": 55,
+      "count": 44,
+      "path": "/data/flashcard-extras/shard-55.json",
+      "sha256": "e2d153d1011c4fd1490b8efdee1ac2f47707fb833ae06800efc00a9cccc47b08",
+      "bytes": 83350
+    },
+    {
+      "shard": 56,
+      "count": 36,
+      "path": "/data/flashcard-extras/shard-56.json",
+      "sha256": "339fd8c4103f59b43ecdbca8c98fc0fc6854e9984de9a6534c3ec149d2f77d57",
+      "bytes": 71637
+    },
+    {
+      "shard": 57,
+      "count": 34,
+      "path": "/data/flashcard-extras/shard-57.json",
+      "sha256": "feb52349aab26065f61ceba2b42334116e4fc7d73659440d13872d19439f1a5b",
+      "bytes": 46798
+    },
+    {
+      "shard": 58,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-58.json",
+      "sha256": "7a1052213fc05560327f09153757cad18bc0ad181b6fd82d5a4132a3cbdfa03e",
+      "bytes": 26620
+    },
+    {
+      "shard": 59,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-59.json",
+      "sha256": "a51d098d7e74628787742dde5634a99c05bd600d01cc05c0788aa84362f58350",
+      "bytes": 81696
+    },
+    {
+      "shard": 60,
+      "count": 43,
+      "path": "/data/flashcard-extras/shard-60.json",
+      "sha256": "d7c74172ac2738a7d839f5c7d1385ed80f877cd2b9db09691d7392dec415e388",
+      "bytes": 45041
+    },
+    {
+      "shard": 61,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-61.json",
+      "sha256": "b747a83d12fec4699c11db816a30c3ee30cc257478dfdb98ff3d1a4aee1f46bf",
+      "bytes": 31066
+    },
+    {
+      "shard": 62,
+      "count": 26,
+      "path": "/data/flashcard-extras/shard-62.json",
+      "sha256": "1c9968706192f2629d8c9e13f910a3b6dade26b99067685e98a3a4a7e3c6d0cb",
+      "bytes": 32793
+    },
+    {
+      "shard": 63,
+      "count": 37,
+      "path": "/data/flashcard-extras/shard-63.json",
+      "sha256": "2191e948e373f5847e10c98a91e70c5f0acc16bc873efa355df3409f13668a49",
+      "bytes": 118653
+    },
+    {
+      "shard": 64,
+      "count": 29,
+      "path": "/data/flashcard-extras/shard-64.json",
+      "sha256": "ae08f256d42a1e8e5840dbe6f2b1dbe310b5062fe214e0b0156301695c8726d3",
+      "bytes": 26264
+    },
+    {
+      "shard": 65,
+      "count": 37,
+      "path": "/data/flashcard-extras/shard-65.json",
+      "sha256": "e5dec65cc66db1f938a6360d191314e24f00fc5958300b04aeccaea5c3370b30",
+      "bytes": 51107
+    },
+    {
+      "shard": 66,
+      "count": 33,
+      "path": "/data/flashcard-extras/shard-66.json",
+      "sha256": "a256ada415f35c477f3a66c6b847c23e798af137f63f440bccfb32186c1afc54",
+      "bytes": 57423
+    },
+    {
+      "shard": 67,
+      "count": 28,
+      "path": "/data/flashcard-extras/shard-67.json",
+      "sha256": "ba0890bd35d03cc3ccd6cf3c2afb6f99a0a4aef23cab5e57f2fb599deb13dd82",
+      "bytes": 29411
+    },
+    {
+      "shard": 68,
+      "count": 24,
+      "path": "/data/flashcard-extras/shard-68.json",
+      "sha256": "c7d030306ba04f6a29e27eef293b0ffc545a62b04eae35d091d80ca8dafd2417",
+      "bytes": 26145
+    },
+    {
+      "shard": 69,
+      "count": 34,
+      "path": "/data/flashcard-extras/shard-69.json",
+      "sha256": "9dccf9b43662610d89205315daeeaee9f65f542be13353d3c515653579ae5216",
+      "bytes": 53404
+    },
+    {
+      "shard": 70,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-70.json",
+      "sha256": "bda8364d66bb2795560ee969fe9d633dc7791c7dde7e54e94c0a218f38bd77d6",
+      "bytes": 24623
+    },
+    {
+      "shard": 71,
+      "count": 29,
+      "path": "/data/flashcard-extras/shard-71.json",
+      "sha256": "295a216f51d3babf2457fce3287bcedff2b8ef027981d6790bbf39e9b355d569",
+      "bytes": 27171
+    },
+    {
+      "shard": 72,
+      "count": 30,
+      "path": "/data/flashcard-extras/shard-72.json",
+      "sha256": "c8872c58e67f1891461b8341987f42dc696ac02743d4bcae6670b7add2e85618",
+      "bytes": 38652
+    },
+    {
+      "shard": 73,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-73.json",
+      "sha256": "d123e1cd75d8603b265a0a7e6697ba5326e9912d3b70bada7c54f6d3ebb44280",
+      "bytes": 48278
+    },
+    {
+      "shard": 74,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-74.json",
+      "sha256": "f122c84538cc1b95abc2ecfd72a8650226f9152bc2a646133d90c3815ee9fe53",
+      "bytes": 37908
+    },
+    {
+      "shard": 75,
+      "count": 38,
+      "path": "/data/flashcard-extras/shard-75.json",
+      "sha256": "6d2584e9d451e211af5d819b9edf42e0ba08f19e47e8fc2215573976481638cd",
+      "bytes": 33438
+    },
+    {
+      "shard": 76,
+      "count": 30,
+      "path": "/data/flashcard-extras/shard-76.json",
+      "sha256": "95a89bc8dc63fb0d52d2f6d81588672b163e379c76ccf866c42165f4b5665d70",
+      "bytes": 34739
+    },
+    {
+      "shard": 77,
+      "count": 29,
+      "path": "/data/flashcard-extras/shard-77.json",
+      "sha256": "b6b5cb7b035dfe85745cb725a282953c381fda15d80ed676f8d1e2aa074eedce",
+      "bytes": 37724
+    },
+    {
+      "shard": 78,
+      "count": 45,
+      "path": "/data/flashcard-extras/shard-78.json",
+      "sha256": "b30bec9b3b96a46c1835dd81ca2bd76a565e308efe4dac776244c2ee16812c51",
+      "bytes": 81672
+    },
+    {
+      "shard": 79,
+      "count": 40,
+      "path": "/data/flashcard-extras/shard-79.json",
+      "sha256": "3af876ddc6be668b0aac7022feada7cefdc797c4dab45bcd62a71a086d22f75e",
+      "bytes": 57758
+    },
+    {
+      "shard": 80,
+      "count": 37,
+      "path": "/data/flashcard-extras/shard-80.json",
+      "sha256": "9947f804acb23eb245b7c62c2c85637be3ff7418d35816de975b0a25ecc7f947",
+      "bytes": 56704
+    },
+    {
+      "shard": 81,
+      "count": 35,
+      "path": "/data/flashcard-extras/shard-81.json",
+      "sha256": "4eacf0f96463fe26fb09c175d508a8f97183dcbe581e23b68c9722f6d88ba17a",
+      "bytes": 79358
+    },
+    {
+      "shard": 82,
+      "count": 33,
+      "path": "/data/flashcard-extras/shard-82.json",
+      "sha256": "218089173d433ece760feb2145c82c6b7c1ba5291955ef814ae1c67c96b99beb",
+      "bytes": 50354
+    },
+    {
+      "shard": 83,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-83.json",
+      "sha256": "b4ce2b4b4dc6077ab015538ab6fe4b70fc1d99f10ba8dc6064935f5880807529",
+      "bytes": 35484
+    },
+    {
+      "shard": 84,
+      "count": 25,
+      "path": "/data/flashcard-extras/shard-84.json",
+      "sha256": "3d83bb0f6b33e256595a538356a1a3a8dc0ec29a817ee9dd3bf660c4a3fc263d",
+      "bytes": 61233
+    },
+    {
+      "shard": 85,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-85.json",
+      "sha256": "15f1a4380b0d6ca566a8af7b22df47916fd5a8b772d16969dc4331c8222f9581",
+      "bytes": 71498
+    },
+    {
+      "shard": 86,
+      "count": 30,
+      "path": "/data/flashcard-extras/shard-86.json",
+      "sha256": "ea4e9ac7d64266c32a57e81d7eeb294390cef0826b3ba08cda9a3408ec69023a",
+      "bytes": 25365
+    },
+    {
+      "shard": 87,
+      "count": 45,
+      "path": "/data/flashcard-extras/shard-87.json",
+      "sha256": "5f27ad5bfb21e84e4682571fc4b157552b64e0cd44be36ac758238363d44264a",
+      "bytes": 52828
+    },
+    {
+      "shard": 88,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-88.json",
+      "sha256": "d84b321e330682699f2277e3290df79495cb6c6c3e9feeff88a6e29726b8a731",
+      "bytes": 43812
+    },
+    {
+      "shard": 89,
+      "count": 39,
+      "path": "/data/flashcard-extras/shard-89.json",
+      "sha256": "f83783ae060f83b228ec5a3768440cb5c0128dee6e3a364446fa381cb296fae4",
+      "bytes": 54551
+    },
+    {
+      "shard": 90,
+      "count": 37,
+      "path": "/data/flashcard-extras/shard-90.json",
+      "sha256": "1112515c6a8996d6c5388c5ec2dc778a1660d39cc60213fdb677acd888d898c3",
+      "bytes": 53410
+    },
+    {
+      "shard": 91,
+      "count": 28,
+      "path": "/data/flashcard-extras/shard-91.json",
+      "sha256": "dad93538416344ca3717565a4f977810ba31caeaa57343f233d0be59d95ba927",
+      "bytes": 35846
+    },
+    {
+      "shard": 92,
+      "count": 40,
+      "path": "/data/flashcard-extras/shard-92.json",
+      "sha256": "10c33a2e19a70418eaca83b06d94c7d88b6e82af3af6369930850ac4c45cf814",
+      "bytes": 42033
+    },
+    {
+      "shard": 93,
+      "count": 43,
+      "path": "/data/flashcard-extras/shard-93.json",
+      "sha256": "cb7be5144304bff4b34beb844d2529e45d130401c31ea7ecacda3771be7e5ee1",
+      "bytes": 115233
+    },
+    {
+      "shard": 94,
+      "count": 27,
+      "path": "/data/flashcard-extras/shard-94.json",
+      "sha256": "8aeba0cde692ff2043e2a8b476908861dac54d138b8d785187f4078e60f791f8",
+      "bytes": 26973
+    },
+    {
+      "shard": 95,
+      "count": 35,
+      "path": "/data/flashcard-extras/shard-95.json",
+      "sha256": "e24fad99c1fb5bb9bf898c1671499d17e75c777f3fe57a1d8b687bbed4fe0229",
+      "bytes": 54243
+    },
+    {
+      "shard": 96,
+      "count": 30,
+      "path": "/data/flashcard-extras/shard-96.json",
+      "sha256": "f9c6683c4167f8befe3cc8054d0ed3e39d32985c1a2892d88d09d07b5ebe2f67",
+      "bytes": 72314
+    },
+    {
+      "shard": 97,
+      "count": 33,
+      "path": "/data/flashcard-extras/shard-97.json",
+      "sha256": "536fdde0f29dbe397abf697bb5ecbbe6e43e128bad9b3063364e145e43a32207",
+      "bytes": 42367
+    },
+    {
+      "shard": 98,
+      "count": 33,
+      "path": "/data/flashcard-extras/shard-98.json",
+      "sha256": "6fc677135fe913252537e9625652eee61581b59e8faefab86556bd4efc6de8ef",
+      "bytes": 78249
+    },
+    {
+      "shard": 99,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-99.json",
+      "sha256": "5442531a9797d266d4ec607c8b363147525078a65772e578b37279e86aefc3e5",
+      "bytes": 27666
+    },
+    {
+      "shard": 100,
+      "count": 29,
+      "path": "/data/flashcard-extras/shard-100.json",
+      "sha256": "86ce0c165d80ef17a46625dfa35965c9dc60cfe528d95d09067f750516d2e0b8",
+      "bytes": 47175
+    },
+    {
+      "shard": 101,
+      "count": 29,
+      "path": "/data/flashcard-extras/shard-101.json",
+      "sha256": "22fdb01679718f4df59347d7a0052728eaca0169c1145c1e4ccf9177ad04b034",
+      "bytes": 25999
+    },
+    {
+      "shard": 102,
+      "count": 26,
+      "path": "/data/flashcard-extras/shard-102.json",
+      "sha256": "f5a402bae3081cf0707bfc26ceb8b4d85c20d36c44d6330c8568e94d84ea738d",
+      "bytes": 27423
+    },
+    {
+      "shard": 103,
+      "count": 27,
+      "path": "/data/flashcard-extras/shard-103.json",
+      "sha256": "ea88bee80adfafb614bedf3450de0d92840d1ec93ef93e2056c7e8b48e271539",
+      "bytes": 25545
+    },
+    {
+      "shard": 104,
+      "count": 33,
+      "path": "/data/flashcard-extras/shard-104.json",
+      "sha256": "28d93ce7b4688f336d9176b43b35e955ca2ce4096117fe972936784534a7c45a",
+      "bytes": 57406
+    },
+    {
+      "shard": 105,
+      "count": 41,
+      "path": "/data/flashcard-extras/shard-105.json",
+      "sha256": "277eb11c16261b2a478e8c1c825d07854cc4255cfa1d4914bc5c431770f156bb",
+      "bytes": 80078
+    },
+    {
+      "shard": 106,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-106.json",
+      "sha256": "679a5ed02e7b49b88e0323fa5dc817ce11d8c14636d88b9be2c97a3057605306",
+      "bytes": 47267
+    },
+    {
+      "shard": 107,
+      "count": 37,
+      "path": "/data/flashcard-extras/shard-107.json",
+      "sha256": "c24e958eaf59e1e261ab6e28b977b233e8ee2c4ca073424d9c8140342f507f9a",
+      "bytes": 35879
+    },
+    {
+      "shard": 108,
+      "count": 41,
+      "path": "/data/flashcard-extras/shard-108.json",
+      "sha256": "7c51591d8185f4b931763af10ee8da1f5581ce4bd25d3df3ab2ec36f3af1396e",
+      "bytes": 66608
+    },
+    {
+      "shard": 109,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-109.json",
+      "sha256": "582bb72965ac77102c440d955446a74fbb56af57a3d9fb4bf99ab1ba2cfc5e0a",
+      "bytes": 52479
+    },
+    {
+      "shard": 110,
+      "count": 44,
+      "path": "/data/flashcard-extras/shard-110.json",
+      "sha256": "ae66166d882cffa78b0f1f2fe3601277e67a0edc698f1d3a173dbac6f41b2561",
+      "bytes": 123230
+    },
+    {
+      "shard": 111,
+      "count": 34,
+      "path": "/data/flashcard-extras/shard-111.json",
+      "sha256": "a59fb56cf9c8b4a8b2e7521dfab8d95ff36b4fc8fbe5b073fc14ccb1eb6fd134",
+      "bytes": 55592
+    },
+    {
+      "shard": 112,
+      "count": 29,
+      "path": "/data/flashcard-extras/shard-112.json",
+      "sha256": "ef50f97356227381e2a30ea290010413db3c1a6c9d9a6503b8c05fd8edc8b483",
+      "bytes": 34081
+    },
+    {
+      "shard": 113,
+      "count": 30,
+      "path": "/data/flashcard-extras/shard-113.json",
+      "sha256": "a4bc36d43003c45c9994ea4205c8b7a843ae3f049992e848ffe01dab957f8131",
+      "bytes": 35014
+    },
+    {
+      "shard": 114,
+      "count": 38,
+      "path": "/data/flashcard-extras/shard-114.json",
+      "sha256": "591fff1d1dc4352d9fc91812fa44254b18edc3a200371334d64d21684f858046",
+      "bytes": 72180
+    },
+    {
+      "shard": 115,
+      "count": 37,
+      "path": "/data/flashcard-extras/shard-115.json",
+      "sha256": "6d336ecb637fbb0b8b02a204821e91dcb166cfc53d7b8185a6047dc4b4b4feeb",
+      "bytes": 64627
+    },
+    {
+      "shard": 116,
+      "count": 41,
+      "path": "/data/flashcard-extras/shard-116.json",
+      "sha256": "fa374d5b2a92197c54f21d5f2b8e67493adde9fecb2dfdf73622f8d200d7f3f0",
+      "bytes": 49964
+    },
+    {
+      "shard": 117,
+      "count": 37,
+      "path": "/data/flashcard-extras/shard-117.json",
+      "sha256": "cdcc20b8a3dc74366073fa3a23ff3625bd228b2b2acd6d1f62097231ec9620c9",
+      "bytes": 39283
+    },
+    {
+      "shard": 118,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-118.json",
+      "sha256": "e2095084e5ab2d87408f93456ed6d58b891039ec723a59b80559577249412e8d",
+      "bytes": 61001
+    },
+    {
+      "shard": 119,
+      "count": 43,
+      "path": "/data/flashcard-extras/shard-119.json",
+      "sha256": "890a3cbb0ceedbbe6bf6121551f05f53902de8537c27b7b40ab1148f2dd5f9de",
+      "bytes": 69705
+    },
+    {
+      "shard": 120,
+      "count": 28,
+      "path": "/data/flashcard-extras/shard-120.json",
+      "sha256": "833ab5845b90509437793e765f503fb1b50784e4278d514cb1310dfc93d0db84",
+      "bytes": 66718
+    },
+    {
+      "shard": 121,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-121.json",
+      "sha256": "005e2f1c55d943dd953342e96a99534c1464fea93766b15e1636ec616f1f8954",
+      "bytes": 67884
+    },
+    {
+      "shard": 122,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-122.json",
+      "sha256": "c61b5a0279bb0d0f7454f6a0b12c220ba925376dafd4cf2335ee9f652b31bc77",
+      "bytes": 65722
+    },
+    {
+      "shard": 123,
+      "count": 28,
+      "path": "/data/flashcard-extras/shard-123.json",
+      "sha256": "07339d365e3085800a699b3ab1b19a2c2d7a07532536f977f3e4a7852ab94d54",
+      "bytes": 31459
+    },
+    {
+      "shard": 124,
+      "count": 30,
+      "path": "/data/flashcard-extras/shard-124.json",
+      "sha256": "e47cef620dd2dccfe9346c5cd3e21c3a84354f8fc3764d86e172ef4891bc8056",
+      "bytes": 52006
+    },
+    {
+      "shard": 125,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-125.json",
+      "sha256": "193424c1aa20331f2f414214ffc8e51c3c1c447b627e912eb27dafb983406239",
+      "bytes": 26020
+    },
+    {
+      "shard": 126,
+      "count": 27,
+      "path": "/data/flashcard-extras/shard-126.json",
+      "sha256": "febffa312ea99145b70c426a0db9cfa23daa8d768ef709f628fdaa9e82e8ce82",
+      "bytes": 32444
+    },
+    {
+      "shard": 127,
+      "count": 34,
+      "path": "/data/flashcard-extras/shard-127.json",
+      "sha256": "6a51ef1e78b9fb7342176d8e39ff5e6dd1f31cbab5e9b11a6551f98ae94ad9eb",
+      "bytes": 38662
+    },
+    {
+      "shard": 128,
+      "count": 38,
+      "path": "/data/flashcard-extras/shard-128.json",
+      "sha256": "b9cbf5aa27c9b37de2357bd467fa6397f787509fb280099a92b511f5b9a1a488",
+      "bytes": 50011
+    },
+    {
+      "shard": 129,
+      "count": 40,
+      "path": "/data/flashcard-extras/shard-129.json",
+      "sha256": "46c221989a98cd27ec3d613445cae07a7454808f3c7924fa1f2171adc5abd199",
+      "bytes": 82652
+    },
+    {
+      "shard": 130,
+      "count": 34,
+      "path": "/data/flashcard-extras/shard-130.json",
+      "sha256": "47c9b5a8583e48b4e2af8a9885e5d04ab3b41a1f2a1f5a584d4b29b678b5ef6a",
+      "bytes": 49322
+    },
+    {
+      "shard": 131,
+      "count": 38,
+      "path": "/data/flashcard-extras/shard-131.json",
+      "sha256": "0df48c4dcd590fe67fd511b22aa9eceea08cae12adbfb4a8c2b7c0327ee300ed",
+      "bytes": 57081
+    },
+    {
+      "shard": 132,
+      "count": 33,
+      "path": "/data/flashcard-extras/shard-132.json",
+      "sha256": "41c0e350534a857a20bdd6a285587e50e2fff5d8d35d8a4bb3f2e7496bdeb2fa",
+      "bytes": 44408
+    },
+    {
+      "shard": 133,
+      "count": 33,
+      "path": "/data/flashcard-extras/shard-133.json",
+      "sha256": "e91d89f6016871ce9999e3b993f2520bd2ae3a8696aae4adfa1034baa7b58aca",
+      "bytes": 42239
+    },
+    {
+      "shard": 134,
+      "count": 21,
+      "path": "/data/flashcard-extras/shard-134.json",
+      "sha256": "6b2a0205041624e82a1ceb9c8a7e8632376f0b1045c44e90a1d6ea1abab60f00",
+      "bytes": 16831
+    },
+    {
+      "shard": 135,
+      "count": 34,
+      "path": "/data/flashcard-extras/shard-135.json",
+      "sha256": "25e871733f769b6433b6d7ee27f942b7b462e55f8f3c4278ec8ef444c914112d",
+      "bytes": 38977
+    },
+    {
+      "shard": 136,
+      "count": 29,
+      "path": "/data/flashcard-extras/shard-136.json",
+      "sha256": "b75b381d04216d348e55f84114d9eecc3fe88695a2ae4fbb3c70a421d8296612",
+      "bytes": 46652
+    },
+    {
+      "shard": 137,
+      "count": 37,
+      "path": "/data/flashcard-extras/shard-137.json",
+      "sha256": "9ce7c4a0eef28b6b81d68e51324de1cea16a2a280b356cbaa3efd2433dbbb139",
+      "bytes": 61409
+    },
+    {
+      "shard": 138,
+      "count": 40,
+      "path": "/data/flashcard-extras/shard-138.json",
+      "sha256": "ef9419e05e94da78d7d798c82c7476ce0bc0b3bd8c9bf4839f7250409bf3e34e",
+      "bytes": 46168
+    },
+    {
+      "shard": 139,
+      "count": 42,
+      "path": "/data/flashcard-extras/shard-139.json",
+      "sha256": "88a2452d67c2f500a76c82357f4dbfc94d242638c1fc8ab47e9eb06ad9c94997",
+      "bytes": 88049
+    },
+    {
+      "shard": 140,
+      "count": 46,
+      "path": "/data/flashcard-extras/shard-140.json",
+      "sha256": "59af0c18c8a8961f79752d4b4f0c3093cc201a03e725f0db901f62a01430c061",
+      "bytes": 47452
+    },
+    {
+      "shard": 141,
+      "count": 43,
+      "path": "/data/flashcard-extras/shard-141.json",
+      "sha256": "4c9e1288da2ee6439942f136d4be9206dbe0e7a2a1cb823f4137ad9bf87cddd4",
+      "bytes": 51834
+    },
+    {
+      "shard": 142,
+      "count": 28,
+      "path": "/data/flashcard-extras/shard-142.json",
+      "sha256": "86d3c5b071543b1fe42dce5e8e7a47786e9911e531a900938b504da822847ce8",
+      "bytes": 90645
+    },
+    {
+      "shard": 143,
+      "count": 42,
+      "path": "/data/flashcard-extras/shard-143.json",
+      "sha256": "740517235f8c09885cfc887e4438f2bb9cced08fcbefabe2c82d041056cbdd58",
+      "bytes": 41123
+    },
+    {
+      "shard": 144,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-144.json",
+      "sha256": "f39e43c0538ea1c7182f70e7a1b9415daac99ff67d8e9f55ec7f50b1e89ce3d5",
+      "bytes": 36161
+    },
+    {
+      "shard": 145,
+      "count": 36,
+      "path": "/data/flashcard-extras/shard-145.json",
+      "sha256": "18bcea97948c7bafe4db5a679d5a9dcff2afe7a704f217b7daf7055216ce999f",
+      "bytes": 34862
+    },
+    {
+      "shard": 146,
+      "count": 25,
+      "path": "/data/flashcard-extras/shard-146.json",
+      "sha256": "93f5639c7973fdffb4207a85cea78ba2ae578aa831c3e9d68e779d2670b4032f",
+      "bytes": 52406
+    },
+    {
+      "shard": 147,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-147.json",
+      "sha256": "8e8e18c5a4f0d15c8d6e0a097354cab02c77b9c3e4ac2e66ac57541bc80d76cd",
+      "bytes": 36184
+    },
+    {
+      "shard": 148,
+      "count": 27,
+      "path": "/data/flashcard-extras/shard-148.json",
+      "sha256": "1b96c40130c0708d3b3579d7978286bca3fef1aac0777ed69d62767989103e9a",
+      "bytes": 41136
+    },
+    {
+      "shard": 149,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-149.json",
+      "sha256": "6bf6107e0bde7f834af04bede92ddac72fda098119b473b7e3b17e29b3dcbe03",
+      "bytes": 56552
+    },
+    {
+      "shard": 150,
+      "count": 38,
+      "path": "/data/flashcard-extras/shard-150.json",
+      "sha256": "fab05f46296099cf12d1efc78b0e22e08112d62658f09d469d4aa20c6fa8fc96",
+      "bytes": 34228
+    },
+    {
+      "shard": 151,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-151.json",
+      "sha256": "961fd80260dcc4b0a9fe4a5ab4281272d1f76bb424c854e78878b64691ed4272",
+      "bytes": 28322
+    },
+    {
+      "shard": 152,
+      "count": 33,
+      "path": "/data/flashcard-extras/shard-152.json",
+      "sha256": "7e3b893f48c20c3179d73da7cf1cfdd0e824d114925c9b6361f545302743989a",
+      "bytes": 56811
+    },
+    {
+      "shard": 153,
+      "count": 24,
+      "path": "/data/flashcard-extras/shard-153.json",
+      "sha256": "b379408839aa75f693d83d4c2f26ab01447e368f872f92715b68d4c521869209",
+      "bytes": 26417
+    },
+    {
+      "shard": 154,
+      "count": 26,
+      "path": "/data/flashcard-extras/shard-154.json",
+      "sha256": "63de5761d71847de17b9c3665cc3d4a192f1dc45f6430eb9710e21311243dd27",
+      "bytes": 33434
+    },
+    {
+      "shard": 155,
+      "count": 39,
+      "path": "/data/flashcard-extras/shard-155.json",
+      "sha256": "0652aad402659f9d660a751d1a4f3b7c3f6c6570ba9fa232f0fe51ee536f5402",
+      "bytes": 33537
+    },
+    {
+      "shard": 156,
+      "count": 38,
+      "path": "/data/flashcard-extras/shard-156.json",
+      "sha256": "9de68690c93b144dbb3e655a330239988dae15e5e33ae0b1e280cac2de98528b",
+      "bytes": 56136
+    },
+    {
+      "shard": 157,
+      "count": 36,
+      "path": "/data/flashcard-extras/shard-157.json",
+      "sha256": "868d0f6a1d65fd6f7d93d4562ccca7362197a70d13ebed19f253b4edbe146f91",
+      "bytes": 32629
+    },
+    {
+      "shard": 158,
+      "count": 41,
+      "path": "/data/flashcard-extras/shard-158.json",
+      "sha256": "602a970f8308d407893562bd9c52a4f397627d9d223cb75d68544c7beb1a9ce2",
+      "bytes": 62133
+    },
+    {
+      "shard": 159,
+      "count": 50,
+      "path": "/data/flashcard-extras/shard-159.json",
+      "sha256": "2f9d5dfa8a498a781925f76b2f69de6ed3f707d38f44bc51b20b96a5998dd9b9",
+      "bytes": 60136
+    },
+    {
+      "shard": 160,
+      "count": 33,
+      "path": "/data/flashcard-extras/shard-160.json",
+      "sha256": "56f3b811f1a47ba32a51493ea7116e4d8f57fce285dcb969e96ae21665d9aa11",
+      "bytes": 39188
+    },
+    {
+      "shard": 161,
+      "count": 37,
+      "path": "/data/flashcard-extras/shard-161.json",
+      "sha256": "3e27eda2a4cdddc4dc20ac1f29ec4701b4eeac2cd3741eaaf07c274f5e4d3a5c",
+      "bytes": 66773
+    },
+    {
+      "shard": 162,
+      "count": 39,
+      "path": "/data/flashcard-extras/shard-162.json",
+      "sha256": "196c0ff62e4cbec9e98e60c8c53b4c29f8c4ea2d1c7a687ee499dae737bf9bf1",
+      "bytes": 38414
+    },
+    {
+      "shard": 163,
+      "count": 40,
+      "path": "/data/flashcard-extras/shard-163.json",
+      "sha256": "47ea4b71be4442845aba51483be0e91072fc94513cc2951bdab281aae3c0a613",
+      "bytes": 48020
+    },
+    {
+      "shard": 164,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-164.json",
+      "sha256": "f42c7b198470f82a234e5804bc6126caf38035bfb3ab2cbe9e3b241aa34d714e",
+      "bytes": 23360
+    },
+    {
+      "shard": 165,
+      "count": 19,
+      "path": "/data/flashcard-extras/shard-165.json",
+      "sha256": "7fc337a427f0c1d8689126ddc48c536b7140eab099cc63d3fb76fa428177b408",
+      "bytes": 33795
+    },
+    {
+      "shard": 166,
+      "count": 40,
+      "path": "/data/flashcard-extras/shard-166.json",
+      "sha256": "2a0d8c44039a5660d6951044f2e56c02ba861f8f259f404662996ea23a705e5e",
+      "bytes": 59785
+    },
+    {
+      "shard": 167,
+      "count": 25,
+      "path": "/data/flashcard-extras/shard-167.json",
+      "sha256": "200927b55a673fb4b694917c87e60e8b05183af659e9ce1e61c379ec4e0a1bdb",
+      "bytes": 29955
+    },
+    {
+      "shard": 168,
+      "count": 34,
+      "path": "/data/flashcard-extras/shard-168.json",
+      "sha256": "fe02aecc9323aea228d3b01e050a53fe5c741a7e59d0d70f68aff3220fb0bcb1",
+      "bytes": 40781
+    },
+    {
+      "shard": 169,
+      "count": 36,
+      "path": "/data/flashcard-extras/shard-169.json",
+      "sha256": "e64683ba8a6f792fee009cc51bc9d91afd2095217e2de1cb31754b136a5de01e",
+      "bytes": 81480
+    },
+    {
+      "shard": 170,
+      "count": 35,
+      "path": "/data/flashcard-extras/shard-170.json",
+      "sha256": "aa239813c90fbcd0694e94a443366662c0cd0bc14d83487aa2dc98d389b5cfac",
+      "bytes": 65361
+    },
+    {
+      "shard": 171,
+      "count": 40,
+      "path": "/data/flashcard-extras/shard-171.json",
+      "sha256": "46717e3e826787c9e535d2cc77829627cd605e0a393542876581a6aeefcc78a7",
+      "bytes": 47664
+    },
+    {
+      "shard": 172,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-172.json",
+      "sha256": "8d77ee026864cee9ca7366897b4649267f70d67ececb9a287c2a481517e7de6a",
+      "bytes": 51051
+    },
+    {
+      "shard": 173,
+      "count": 39,
+      "path": "/data/flashcard-extras/shard-173.json",
+      "sha256": "4dced961d37485a4753ed6654d8801fff1ee5f813edf97a5b842307acb8a5854",
+      "bytes": 48155
+    },
+    {
+      "shard": 174,
+      "count": 42,
+      "path": "/data/flashcard-extras/shard-174.json",
+      "sha256": "507c58e4b5d307dde1c2a928eac6f69e92e032e775e0558e9fe1a5c505114500",
+      "bytes": 66924
+    },
+    {
+      "shard": 175,
+      "count": 42,
+      "path": "/data/flashcard-extras/shard-175.json",
+      "sha256": "ac689f4dc44eff24082ba2185c001d3345ef6d2496afc0be4d4cb8d8da2353b0",
+      "bytes": 43110
+    },
+    {
+      "shard": 176,
+      "count": 26,
+      "path": "/data/flashcard-extras/shard-176.json",
+      "sha256": "71e6a494318bb129f620484ef02fb8d22eda8bdae3fd7d8d3c2fee398effd2a7",
+      "bytes": 59328
+    },
+    {
+      "shard": 177,
+      "count": 29,
+      "path": "/data/flashcard-extras/shard-177.json",
+      "sha256": "c21f11320363452a5420cd4815ac8519bea2a1d719811a92d8367918621ca124",
+      "bytes": 39040
+    },
+    {
+      "shard": 178,
+      "count": 37,
+      "path": "/data/flashcard-extras/shard-178.json",
+      "sha256": "fb120a0558c3fed904fff9bbc39afdd9d320710d03c5b1bbfdd05a7647ddada4",
+      "bytes": 69600
+    },
+    {
+      "shard": 179,
+      "count": 30,
+      "path": "/data/flashcard-extras/shard-179.json",
+      "sha256": "b315feb38267b7a666e46a5d71867ac922736ac4f781d2e9c621dc812a24a5e4",
+      "bytes": 23941
+    },
+    {
+      "shard": 180,
+      "count": 40,
+      "path": "/data/flashcard-extras/shard-180.json",
+      "sha256": "1cbf5faf0505b1ddb48edde84836c8dabda646b20a50750c0fc47f9f38d87663",
+      "bytes": 68526
+    },
+    {
+      "shard": 181,
+      "count": 34,
+      "path": "/data/flashcard-extras/shard-181.json",
+      "sha256": "a8711a0481145558a33db180c27b95ed67fb7ccd4f6423f55174b5b8d4c9cb1a",
+      "bytes": 46811
+    },
+    {
+      "shard": 182,
+      "count": 36,
+      "path": "/data/flashcard-extras/shard-182.json",
+      "sha256": "3b78526edd6e4050f22854460ee13a03154281768f98663272ae42633dc6c99f",
+      "bytes": 80530
+    },
+    {
+      "shard": 183,
+      "count": 33,
+      "path": "/data/flashcard-extras/shard-183.json",
+      "sha256": "af1a39a0e6da4e5fbfdecb82f9742b0e7bbb4f772b9b0fcdbc2529ac9fb62fe5",
+      "bytes": 57670
+    },
+    {
+      "shard": 184,
+      "count": 37,
+      "path": "/data/flashcard-extras/shard-184.json",
+      "sha256": "d720476e2514d091db3d0527c48e2402a7a02bc4e2e77813b7492ee20f748803",
+      "bytes": 53536
+    },
+    {
+      "shard": 185,
+      "count": 30,
+      "path": "/data/flashcard-extras/shard-185.json",
+      "sha256": "480bf61fb171cb4e22acfb3aa866503dda2c2a7e242040f3aa26eb2d3c4df3a8",
+      "bytes": 42009
+    },
+    {
+      "shard": 186,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-186.json",
+      "sha256": "641f581ee28a64f39c650739b8b85b194f148ff87d416968041c6293fbadf04f",
+      "bytes": 68997
+    },
+    {
+      "shard": 187,
+      "count": 34,
+      "path": "/data/flashcard-extras/shard-187.json",
+      "sha256": "3f2d10367c79ef2e6f4246fcf65a0285c161d40ad183c175689fceae226168f9",
+      "bytes": 77498
+    },
+    {
+      "shard": 188,
+      "count": 35,
+      "path": "/data/flashcard-extras/shard-188.json",
+      "sha256": "8591f497ef62154dbd2c6f460dc40571f86bd6921bf75547d6b51f41eaf63453",
+      "bytes": 37944
+    },
+    {
+      "shard": 189,
+      "count": 41,
+      "path": "/data/flashcard-extras/shard-189.json",
+      "sha256": "4482820fdc02ff53269f838bf7ed1bbb8392cec3aa6abb045e4037241204d68c",
+      "bytes": 59715
+    },
+    {
+      "shard": 190,
+      "count": 33,
+      "path": "/data/flashcard-extras/shard-190.json",
+      "sha256": "c8f98508782570546fde1f05ba00dbc9ef5d4c7251abb9e530ade967021a11b3",
+      "bytes": 19878
+    },
+    {
+      "shard": 191,
+      "count": 46,
+      "path": "/data/flashcard-extras/shard-191.json",
+      "sha256": "041e871d4ce040d7cf230e6acbd6677d5789fa36534ae38634dcb8636386a8a3",
+      "bytes": 53844
+    },
+    {
+      "shard": 192,
+      "count": 38,
+      "path": "/data/flashcard-extras/shard-192.json",
+      "sha256": "cdfbaaae2ff3112a3266e8255cbeef60a54be2dd3b448a0694611a80b21e5dab",
+      "bytes": 35559
+    },
+    {
+      "shard": 193,
+      "count": 30,
+      "path": "/data/flashcard-extras/shard-193.json",
+      "sha256": "92ee21a58337ef910e5c53475b49e5fbd4e0afa0c51c20cbca9b65a9f1a30db0",
+      "bytes": 20987
+    },
+    {
+      "shard": 194,
+      "count": 40,
+      "path": "/data/flashcard-extras/shard-194.json",
+      "sha256": "d52eff4daf485ccf6ae31805ee81899375006b03510907fce5f8035d6605cf6c",
+      "bytes": 41165
+    },
+    {
+      "shard": 195,
+      "count": 34,
+      "path": "/data/flashcard-extras/shard-195.json",
+      "sha256": "81d87548bf4d5d3dede0d68ed7b17781ab103c19076b9bca7839381bd5e420e8",
+      "bytes": 84132
+    },
+    {
+      "shard": 196,
+      "count": 26,
+      "path": "/data/flashcard-extras/shard-196.json",
+      "sha256": "0773a376664d20f366992cb97a956d594c80e9aa910695209ca169b63f5406e6",
+      "bytes": 62354
+    },
+    {
+      "shard": 197,
+      "count": 23,
+      "path": "/data/flashcard-extras/shard-197.json",
+      "sha256": "62ae98ff798291c26d9b836ef0b476d3f0a16ae2d6786298fa28799ac9f2e4e7",
+      "bytes": 10167
+    },
+    {
+      "shard": 198,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-198.json",
+      "sha256": "235f0860f18142a5ed6f02c47b858215dd52bf2363f2add775b291c9055168f0",
+      "bytes": 34546
+    },
+    {
+      "shard": 199,
+      "count": 33,
+      "path": "/data/flashcard-extras/shard-199.json",
+      "sha256": "fe57a6f0e03c2bae9ad5d78427d3fa589e44278f987bb6dd1698910b074ef884",
+      "bytes": 45552
+    },
+    {
+      "shard": 200,
+      "count": 37,
+      "path": "/data/flashcard-extras/shard-200.json",
+      "sha256": "813a3de738e634cd6c769da9402cac7dbe2db17264b4047d3304f3b245ca9181",
+      "bytes": 70672
+    },
+    {
+      "shard": 201,
+      "count": 25,
+      "path": "/data/flashcard-extras/shard-201.json",
+      "sha256": "b2eea47e6841bd93bf7cd700d69a08cd0a7b080bac83a660b44504f324202599",
+      "bytes": 16589
+    },
+    {
+      "shard": 202,
+      "count": 33,
+      "path": "/data/flashcard-extras/shard-202.json",
+      "sha256": "0159450ace99cfed4a69e555cdd936796d06f19c922ad7d70d25b1b9e85b0d43",
+      "bytes": 49441
+    },
+    {
+      "shard": 203,
+      "count": 28,
+      "path": "/data/flashcard-extras/shard-203.json",
+      "sha256": "1ec0734aac4a9b545fb23a8dd3662a3f6980b6e251b3d2bfda05b47ffb1e07fe",
+      "bytes": 46129
+    },
+    {
+      "shard": 204,
+      "count": 42,
+      "path": "/data/flashcard-extras/shard-204.json",
+      "sha256": "2e4b1ba270cf0152dd6f20e53410e199c604465dac34751728c90ecb20dfed57",
+      "bytes": 73858
+    },
+    {
+      "shard": 205,
+      "count": 33,
+      "path": "/data/flashcard-extras/shard-205.json",
+      "sha256": "a30f7de6655f06b44c3a0b867508ea678fdd03ae43fc8284d4d908fb4c8b5627",
+      "bytes": 50775
+    },
+    {
+      "shard": 206,
+      "count": 35,
+      "path": "/data/flashcard-extras/shard-206.json",
+      "sha256": "03f9109d863d0beee1610d0bacefb2ef8f89952dbd87770867932a287c984c9a",
+      "bytes": 76960
+    },
+    {
+      "shard": 207,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-207.json",
+      "sha256": "0cd4c5e8897e1de7b0bff3d83ff1c2fe5efbd0fea05af5311ebdbbf75a450ca5",
+      "bytes": 54847
+    },
+    {
+      "shard": 208,
+      "count": 23,
+      "path": "/data/flashcard-extras/shard-208.json",
+      "sha256": "4f359f4f96d5dc7ce111e0039d9654e767ba2d0261715ef460092278b068cdea",
+      "bytes": 71851
+    },
+    {
+      "shard": 209,
+      "count": 34,
+      "path": "/data/flashcard-extras/shard-209.json",
+      "sha256": "b5128c3acfba3b08b3c5ae52fcdf4f03f2c46e245d2b7fd5f3896afe38eb8ae7",
+      "bytes": 61083
+    },
+    {
+      "shard": 210,
+      "count": 22,
+      "path": "/data/flashcard-extras/shard-210.json",
+      "sha256": "7e34ce7a8fceb61becf880b4d08affeb1c02c231194f7afc93d38e37c12f36d6",
+      "bytes": 43272
+    },
+    {
+      "shard": 211,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-211.json",
+      "sha256": "8b871faa7a45c6fa348896828b3c3aae3bfab2b240821f6de35910500c354f23",
+      "bytes": 39400
+    },
+    {
+      "shard": 212,
+      "count": 40,
+      "path": "/data/flashcard-extras/shard-212.json",
+      "sha256": "492d335a3040b77a0be3418be8f28b73455cb8e534d676d34879b58f308520f3",
+      "bytes": 57916
+    },
+    {
+      "shard": 213,
+      "count": 39,
+      "path": "/data/flashcard-extras/shard-213.json",
+      "sha256": "b7a1218b72b4a1c11e5123945d9c625b41bbfd75ff3b784465f42543add0ed22",
+      "bytes": 76065
+    },
+    {
+      "shard": 214,
+      "count": 41,
+      "path": "/data/flashcard-extras/shard-214.json",
+      "sha256": "8679052afa2962c29f47306f984b640adb6be8c9c743878abedb9925d51f0e34",
+      "bytes": 56905
+    },
+    {
+      "shard": 215,
+      "count": 34,
+      "path": "/data/flashcard-extras/shard-215.json",
+      "sha256": "f722114a129e52e9d28aa568ae9cbd917e4b41e37e77fb555fb2bc3c74350607",
+      "bytes": 54630
+    },
+    {
+      "shard": 216,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-216.json",
+      "sha256": "e6a6907b9d72aba519a1bd311d3f04b78ab7913b8444ba2fb85abe746efe570d",
+      "bytes": 74391
+    },
+    {
+      "shard": 217,
+      "count": 35,
+      "path": "/data/flashcard-extras/shard-217.json",
+      "sha256": "aee518c1bc999aca425805b647c4d885ec409e12d1c0cf8857cb966212da556d",
+      "bytes": 48766
+    },
+    {
+      "shard": 218,
+      "count": 29,
+      "path": "/data/flashcard-extras/shard-218.json",
+      "sha256": "2176cfcb3596306b151fe465f924b32fe5d1739f58155b9c91b4122092f282f3",
+      "bytes": 62947
+    },
+    {
+      "shard": 219,
+      "count": 27,
+      "path": "/data/flashcard-extras/shard-219.json",
+      "sha256": "73480660098ed7292359448f5374d9c4d605588d074738b45c337ad56889e310",
+      "bytes": 66678
+    },
+    {
+      "shard": 220,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-220.json",
+      "sha256": "a8f39652f2df9492cfd84e62a80303d815aebd8167ea528a2b9633a47dd8514a",
+      "bytes": 77743
+    },
+    {
+      "shard": 221,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-221.json",
+      "sha256": "12a42abacbef2e38ef9a06b11d557e357b40398e33c54a9d99ae84cf4d425644",
+      "bytes": 84564
+    },
+    {
+      "shard": 222,
+      "count": 27,
+      "path": "/data/flashcard-extras/shard-222.json",
+      "sha256": "61182d920ee98057ac4e750e0b65f5681b6d24e220c1a0d90be7902436e570b0",
+      "bytes": 28803
+    },
+    {
+      "shard": 223,
+      "count": 38,
+      "path": "/data/flashcard-extras/shard-223.json",
+      "sha256": "6f590f56493365e757c2ef6c2ee9ee1425d9faec9a80c5e465ce0ddb43989277",
+      "bytes": 39939
+    },
+    {
+      "shard": 224,
+      "count": 39,
+      "path": "/data/flashcard-extras/shard-224.json",
+      "sha256": "fd0c77decbfc0f65181102b37f146edcb17d251be419a630000626092e959e55",
+      "bytes": 71383
+    },
+    {
+      "shard": 225,
+      "count": 35,
+      "path": "/data/flashcard-extras/shard-225.json",
+      "sha256": "20cdfcb0330391a82408f5f2985c7292520ac3f0e22b67cee813b5f63a631cac",
+      "bytes": 41784
+    },
+    {
+      "shard": 226,
+      "count": 44,
+      "path": "/data/flashcard-extras/shard-226.json",
+      "sha256": "47ec147690bbecb9f0a1a0a35008c2f579689c9d24659800c56f690ef6767efd",
+      "bytes": 58021
+    },
+    {
+      "shard": 227,
+      "count": 41,
+      "path": "/data/flashcard-extras/shard-227.json",
+      "sha256": "5f26e26d5d0b9ef9f830fb38eafff60fe00dd0627425f697b14296e0cbb6c4e9",
+      "bytes": 51630
+    },
+    {
+      "shard": 228,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-228.json",
+      "sha256": "929e4df087cc1d79105b2080cb173c32a788cb3b9f493633b966ba63077b67b4",
+      "bytes": 62257
+    },
+    {
+      "shard": 229,
+      "count": 27,
+      "path": "/data/flashcard-extras/shard-229.json",
+      "sha256": "03baae47bfbecefd00dfb819554c42d7bd04e7ac5d756d958b83715b33bcd20c",
+      "bytes": 32162
+    },
+    {
+      "shard": 230,
+      "count": 30,
+      "path": "/data/flashcard-extras/shard-230.json",
+      "sha256": "feb255d14bdfef10638bcf791373d897120a41aac3bb141398ac4435555e3309",
+      "bytes": 50245
+    },
+    {
+      "shard": 231,
+      "count": 41,
+      "path": "/data/flashcard-extras/shard-231.json",
+      "sha256": "047ce96ca62b06af238335a6713953f40e7c19bc68c870aeb2b7ee93a4ab7c09",
+      "bytes": 85355
+    },
+    {
+      "shard": 232,
+      "count": 23,
+      "path": "/data/flashcard-extras/shard-232.json",
+      "sha256": "41087face977d584f3730de0a56fe0bef50b1cf7a0cdd3bb7e6b3743ae8cc7e4",
+      "bytes": 32772
+    },
+    {
+      "shard": 233,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-233.json",
+      "sha256": "1fdb96dc1162a9eb30b069e8818cecc81af6bc25f226ab6e0a15c0508d1ff7de",
+      "bytes": 33075
+    },
+    {
+      "shard": 234,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-234.json",
+      "sha256": "6ea7bb42af81cace275253d169bb2937b0d3fc4566f974781d39e91cf8d86b21",
+      "bytes": 84773
+    },
+    {
+      "shard": 235,
+      "count": 38,
+      "path": "/data/flashcard-extras/shard-235.json",
+      "sha256": "af2073fd615a93321f197d72d9a348daacc3fbb58ca4e4e597369a3af3dc0cfd",
+      "bytes": 66218
+    },
+    {
+      "shard": 236,
+      "count": 33,
+      "path": "/data/flashcard-extras/shard-236.json",
+      "sha256": "dd972e3de03c3c7b8690ee0ea72a0af7cadb43e649e2b565ba252c01f22aa59c",
+      "bytes": 38643
+    },
+    {
+      "shard": 237,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-237.json",
+      "sha256": "ad35075a8d0379d2e56e16b163be1bb37b41a3701bca56b8b6da20344acf6309",
+      "bytes": 28562
+    },
+    {
+      "shard": 238,
+      "count": 35,
+      "path": "/data/flashcard-extras/shard-238.json",
+      "sha256": "80e918e8d890355e834f30b0513415e077ac32d315f4bf9b99037ef8289dd30b",
+      "bytes": 56433
+    },
+    {
+      "shard": 239,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-239.json",
+      "sha256": "612349d08251fc691dde902eca4d87a1ab43dc506c66762e14dda64d34cb641f",
+      "bytes": 35510
+    },
+    {
+      "shard": 240,
+      "count": 37,
+      "path": "/data/flashcard-extras/shard-240.json",
+      "sha256": "98ee2a1b03de51c2a399cac4228c602e77ecf0e628987a702c2299e3fd172698",
+      "bytes": 63656
+    },
+    {
+      "shard": 241,
+      "count": 37,
+      "path": "/data/flashcard-extras/shard-241.json",
+      "sha256": "6ef6f6f2805dfab1fca20019814d81dedbb930835a15a642462c3b92e226dc8f",
+      "bytes": 25019
+    },
+    {
+      "shard": 242,
+      "count": 24,
+      "path": "/data/flashcard-extras/shard-242.json",
+      "sha256": "d3a183e9a23b1d13b8011cbd57975537d2b56329b61f9cab588ec9b535daedca",
+      "bytes": 34850
+    },
+    {
+      "shard": 243,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-243.json",
+      "sha256": "29233fe9801b0b940435d87c1d9927727ac93d0f3cea4500e377c7f18a08bed0",
+      "bytes": 50095
+    },
+    {
+      "shard": 244,
+      "count": 30,
+      "path": "/data/flashcard-extras/shard-244.json",
+      "sha256": "07d8f27450327c49bae9716ea60726926d24580273478b97016fe9978ad5f9cd",
+      "bytes": 43110
+    },
+    {
+      "shard": 245,
+      "count": 42,
+      "path": "/data/flashcard-extras/shard-245.json",
+      "sha256": "83f4da1f15d031737a92aa03c5d8e63e92bbb554314892bde200d89cf21603ce",
+      "bytes": 27851
+    },
+    {
+      "shard": 246,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-246.json",
+      "sha256": "860742196990a24199a24c3652d4d06502394ba5151fd36095bef326c2c65dfc",
+      "bytes": 35248
+    },
+    {
+      "shard": 247,
+      "count": 37,
+      "path": "/data/flashcard-extras/shard-247.json",
+      "sha256": "28892417de03ebb734974afa8c3b4099b66ef662233ee960c6d6e0790a0ad0b9",
+      "bytes": 52985
+    },
+    {
+      "shard": 248,
+      "count": 36,
+      "path": "/data/flashcard-extras/shard-248.json",
+      "sha256": "3c9b33cf12aaa0b7c1618944d36253bd4fb6779392f87446f6ab7f003674074a",
+      "bytes": 32709
+    },
+    {
+      "shard": 249,
+      "count": 44,
+      "path": "/data/flashcard-extras/shard-249.json",
+      "sha256": "895cff9894722fc60c799bf7cbcbbca8980e1757d22c95d63ee38428f7ec8b94",
+      "bytes": 65827
+    },
+    {
+      "shard": 250,
+      "count": 30,
+      "path": "/data/flashcard-extras/shard-250.json",
+      "sha256": "50c382b24273f5e05130c4cb4f8b11e3176e872bec616d8849baf8cfba7dc726",
+      "bytes": 35377
+    },
+    {
+      "shard": 251,
+      "count": 33,
+      "path": "/data/flashcard-extras/shard-251.json",
+      "sha256": "195c857fb3ab226812f21ba6ea005d75fbf03bec7697ffbb91e88b0ab9850346",
+      "bytes": 48378
+    },
+    {
+      "shard": 252,
+      "count": 31,
+      "path": "/data/flashcard-extras/shard-252.json",
+      "sha256": "e45f6bd47f354de2208b120c9f8d421e08c9bed06e3abc64da1daf401229f560",
+      "bytes": 43075
+    },
+    {
+      "shard": 253,
+      "count": 27,
+      "path": "/data/flashcard-extras/shard-253.json",
+      "sha256": "a58d060de0673dea72fd2a625cfb9d8069a7c29894d1202803af4d5d9b6392ca",
+      "bytes": 66668
+    },
+    {
+      "shard": 254,
+      "count": 32,
+      "path": "/data/flashcard-extras/shard-254.json",
+      "sha256": "47991686c7e1c86a6752f366e8fc8ca3102a06b24324e9eaf520e051aebeb8a1",
+      "bytes": 50619
+    },
+    {
+      "shard": 255,
+      "count": 36,
+      "path": "/data/flashcard-extras/shard-255.json",
+      "sha256": "9b7331c3b32856d8017f6a3975c4b70b9afa09853e281b6693fa1e83826f7f27",
+      "bytes": 60090
+    }
+  ]
+}

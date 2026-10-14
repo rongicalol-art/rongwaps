@@ -26,14 +26,20 @@ export function FlashcardAnswerBar({ isFlipped, onFlip, onHard, onUnsure, onGotI
       return undefined;
     }
     setHintsVisible(true);
+    if (concealed) return undefined;
+
+    // Count only visible time, and don't restart the hint if the learner flips quickly.
+    hintsSeen[phase] = true;
     const timer = window.setTimeout(() => {
-      hintsSeen[phase] = true;
       setHintsVisible(false);
     }, HINT_MS);
     return () => window.clearTimeout(timer);
-  }, [isFlipped]);
+  }, [concealed, isFlipped]);
 
-  const hintedLabelClass = cn('relative motion-safe:transition-transform duration-200', hintsVisible && 'pointer-fine:-translate-x-3');
+  const hintedLabelClass = cn(
+    'relative motion-safe:transition-transform duration-200',
+    hintsVisible && 'pointer-fine:-translate-x-3',
+  );
 
   return (
     <div className={cn('rw-answer-bar pointer-events-auto w-full shrink-0 border-t-2 border-ui-divider px-4 pb-sheet-safe pt-4 sm:px-8', 'bg-ui-practice-canvas transition-opacity duration-200', concealed && 'pointer-events-none opacity-0')}>

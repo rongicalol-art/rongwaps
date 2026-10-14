@@ -22,20 +22,29 @@ interface CachedDeckEntry {
   cards: Flashcard[];
   knownIds: Set<string> | null;
   timestamp: number;
+  userId: string | null;
+  source?: object;
 }
 
 const activityDeckCache = new Map<string, CachedDeckEntry>();
+const pendingDecks = new Map<string, {
+  source?: object;
+  userId: string | null;
+  promise: Promise<{ cards: Flashcard[]; knownIds: Set<string> | null }>;
+}>();
 
 export function getCachedActivityDeck(key: string): CachedDeckEntry | undefined {
-  return activityDeckCache.get(key);
+  const cached = activityDeckCache.get(key);
+  return cached?.userId === (useAppStore.getState().currentUser?.id ?? null) ? cached : undefined;
 }
 
-export function setCachedActivityDeck(key: string, entry: { cards: Flashcard[]; knownIds: Set<string> | null }) {
-  activityDeckCache.set(key, { ...entry, timestamp: Date.now() });
+export function setCachedActivityDeck(key: string, entry: { cards: Flashcard[]; knownIds: Set<string> | null; source?: object }) {
+  activityDeckCache.set(key, { ...entry, userId: useAppStore.getState().currentUser?.id ?? null, timestamp: Date.now() });
 }
 
 export function clearActivityDeckCache() {
   activityDeckCache.clear();
+  pendingDecks.clear();
 }
 
 function preloadDeckAudio(cards: Flashcard[]): void {
@@ -63,6 +72,7 @@ export function useActivityDataLoader(
   const setDeckExclusions = useAppStore((state) => state.setDeckExclusions);
   const { currentUser } = useAuth();
   const currentUserId = currentUser?.id ?? null;
+  const starredFavorites = useAppStore((state) => isLibraryDeck && libraryActiveFolder === 'starred' ? state.favorites : null);
 
   const stableSelectedLessonsKey = useMemo(() => (selectedLessons || []).join(','), [selectedLessons]);
 
@@ -75,7 +85,7 @@ export function useActivityDataLoader(
     isLibraryDeck,
   }), [activeBookId, isLibraryDeck, isReviewDeck, libraryActiveFolder, selectedLessonParts, selectedLessons]);
 
-  const cachedEntry = activityDeckCache.get(deckExclusionKey);
+  const cachedEntry = getCachedActivityDeck(deckExclusionKey);
   const [cards, setCards] = useState<Flashcard[]>(() => cachedEntry?.cards ?? []);
   const [isLoading, setIsLoading] = useState(() => !cachedEntry);
   const [error, setError] = useState<string | null>(null);
@@ -83,7 +93,7 @@ export function useActivityDataLoader(
   const [currentKey, setCurrentKey] = useState(deckExclusionKey);
   if (currentKey !== deckExclusionKey) {
     setCurrentKey(deckExclusionKey);
-    const nextCached = activityDeckCache.get(deckExclusionKey);
+    const nextCached = getCachedActivityDeck(deckExclusionKey);
     setCards(nextCached?.cards ?? []);
     setIsLoading(!nextCached);
     setError(null);
@@ -117,37 +127,10 @@ export function useActivityDataLoader(
 
     async function loadData() {
       // Stale-while-revalidate: a cached deck (e.g. loaded by the practice modal) stays visible, no loading flip.
-      if (!activityDeckCache.has(deckExclusionKey)) setIsLoading(true);
+      if (!getCachedActivityDeck(deckExclusionKey)) setIsLoading(true);
       setError(null);
-      const { favorites, srsData } = useAppStore.getState();
-
-      if (isLibraryDeck) {
-        if (libraryActiveFolder === 'starred') {
-          if (favorites.length === 0) {
-            if (isMounted) {
-              knownIdsRef.current = null;
-              setCards([]);
-              setIsLoading(false);
-            }
-            return;
-          }
-          try {
-            const { cards: results, knownIds } = await fetchStarredDeckData(favorites);
-            if (isMounted) {
-              knownIdsRef.current = { key: deckExclusionKey, ids: knownIds };
-              setCachedActivityDeck(deckExclusionKey, { cards: results, knownIds });
-              setCards((prev) => (isSameCards(prev, results) ? prev : results));
-              setIsLoading(false);
-            }
-          } catch (err) {
-            debugLogger.error('App', 'useActivityDataLoader: failed to load starred favorites:', err);
-            if (isMounted) {
-              setError(err instanceof Error ? err.message : 'Failed to load starred words');
-              setCards([]);
-              setIsLoading(false);
-            }
-          }
-        } else if (currentUserId) {
+      if (isLibraryDeck && libraryActiveFolder !== 'starred') {
+        if (currentUserId) {
           const subHolder: { current?: () => void } = {};
           subHolder.current = flashcardService.subscribeToUserFlashcards(currentUserId, (customCards) => {
             if (!isMounted) {
@@ -180,35 +163,21 @@ export function useActivityDataLoader(
       }
 
       try {
-        let filtered: Flashcard[];
-        let knownIds: Set<string> | null;
-
-        if (isReviewDeck) {
-          const { activeReviewSessionCards, setActiveReviewSessionCards } = useAppStore.getState();
-          const review = await loadReviewDeck(srsData, activeReviewSessionCards);
-          filtered = review.cards;
-          knownIds = review.knownIds;
-          if (!activeReviewSessionCards) {
-            setActiveReviewSessionCards(filtered.map((c) => c.id));
-          }
-        } else {
-          const parsedLessons = stableSelectedLessonsKey ? stableSelectedLessonsKey.split(',').map(Number) : [];
-          const currentLessonParts = useAppStore.getState().selectedLessonParts;
-          const result = await fetchCurriculumDeckData(activeBookId, parsedLessons, currentLessonParts);
-          filtered = result.cards;
-          knownIds = result.knownIds;
-        }
-
+        const result = await loadActivityDeck({
+          activeBookId,
+          selectedLessons: stableSelectedLessonsKey ? stableSelectedLessonsKey.split(',').map(Number) : [],
+          isReviewDeck,
+          isLibraryDeck,
+        });
         if (isMounted) {
-          knownIdsRef.current = { key: deckExclusionKey, ids: knownIds };
-          setCachedActivityDeck(deckExclusionKey, { cards: filtered, knownIds });
-          setCards((prev) => (isSameCards(prev, filtered) ? prev : filtered));
-          preloadDeckAudio(filtered);
+          knownIdsRef.current = { key: deckExclusionKey, ids: result.knownIds };
+          setCards((prev) => (isSameCards(prev, result.deckCards) ? prev : result.deckCards));
         }
       } catch (err) {
         debugLogger.error('App', 'useActivityDataLoader failed:', err);
         if (isMounted) {
           setError(err instanceof Error ? err.message : 'Failed to load cards');
+          if (isLibraryDeck) setCards([]);
         }
       } finally {
         if (isMounted) {
@@ -223,11 +192,12 @@ export function useActivityDataLoader(
       isMounted = false;
       if (unsubscribe && typeof unsubscribe === 'function') unsubscribe();
     };
-  }, [activeBookId, stableSelectedLessonsKey, isReviewDeck, isLibraryDeck, libraryActiveFolder, currentUserId, deckExclusionKey]);
+  }, [activeBookId, stableSelectedLessonsKey, isReviewDeck, isLibraryDeck, libraryActiveFolder, currentUserId, deckExclusionKey, starredFavorites]);
 
   return { cards: visibleCards, deckCards: cards, isLoading, error, deckExclusionKey, excludedIds };
 }
 
+/** Shared by mounted activities and intent prefetch; one request per unchanged source. */
 export async function loadActivityDeck({
   activeBookId,
   selectedLessons,
@@ -238,61 +208,55 @@ export async function loadActivityDeck({
   selectedLessons: number[];
   isReviewDeck?: boolean;
   isLibraryDeck?: boolean;
-}): Promise<{ cards: Flashcard[]; deckCards: Flashcard[]; excludedIds: Set<string> }> {
+}): Promise<{ cards: Flashcard[]; deckCards: Flashcard[]; knownIds: Set<string> | null; excludedIds: Set<string> }> {
   const store = useAppStore.getState();
-  const libraryActiveFolder = store.libraryActiveFolder;
-  const selectedLessonParts = store.selectedLessonParts;
-  const deckExclusions = store.deckExclusions;
-
+  const userId = store.currentUser?.id ?? null;
+  // Pinned review ids define a fixed session; a fresh review depends on today's SRS.
+  const source = isLibraryDeck ? store.favorites : isReviewDeck ? store.activeReviewSessionCards ?? store.srsData : undefined;
   const deckExclusionKey = getDeckIdentityKey({
     activeBookId,
-    selectedLessons: selectedLessons || [],
-    selectedLessonParts,
-    libraryActiveFolder,
+    selectedLessons,
+    selectedLessonParts: store.selectedLessonParts,
+    libraryActiveFolder: store.libraryActiveFolder,
     isReviewDeck,
     isLibraryDeck,
   });
+  const cached = getCachedActivityDeck(deckExclusionKey);
+  const pending = pendingDecks.get(deckExclusionKey);
+  let result: { cards: Flashcard[]; knownIds: Set<string> | null };
 
-  const cached = activityDeckCache.get(deckExclusionKey);
-  const excludedIds = new Set(deckExclusions[deckExclusionKey] ?? []);
-
-  if (cached && Date.now() - cached.timestamp < 60_000) {
-    return {
-      cards: filterDeckByExclusions(cached.cards, excludedIds),
-      deckCards: cached.cards,
-      excludedIds,
-    };
-  }
-
-  let cards: Flashcard[] = [];
-  let knownIds: Set<string> | null = null;
-
-  if (isLibraryDeck) {
-    if (libraryActiveFolder === 'starred') {
-      const result = await fetchStarredDeckData(store.favorites);
-      cards = result.cards;
-      knownIds = result.knownIds;
-    }
-  } else if (isReviewDeck) {
-    const { activeReviewSessionCards, setActiveReviewSessionCards, srsData } = store;
-    const review = await loadReviewDeck(srsData, activeReviewSessionCards);
-    cards = review.cards;
-    knownIds = review.knownIds;
-    if (!activeReviewSessionCards) {
-      setActiveReviewSessionCards(cards.map((c) => c.id));
-    }
+  if (cached && cached.source === source && Date.now() - cached.timestamp < 60_000) {
+    result = cached;
+  } else if (pending && pending.userId === userId && pending.source === source) {
+    result = await pending.promise;
   } else {
-    const result = await fetchCurriculumDeckData(activeBookId, selectedLessons || [], selectedLessonParts);
-    cards = result.cards;
-    knownIds = result.knownIds;
+    const request: Promise<{ cards: Flashcard[]; knownIds: Set<string> | null }> = Promise.resolve().then(async () => {
+      const loaded = await (isLibraryDeck
+        ? store.libraryActiveFolder === 'starred' ? fetchStarredDeckData(store.favorites) : Promise.resolve({ cards: [], knownIds: null })
+        : isReviewDeck ? loadReviewDeck(store.srsData, store.activeReviewSessionCards)
+        : fetchCurriculumDeckData(activeBookId, selectedLessons, store.selectedLessonParts));
+      const latest = useAppStore.getState();
+      const latestSource = isLibraryDeck ? latest.favorites : isReviewDeck ? latest.activeReviewSessionCards ?? latest.srsData : undefined;
+      // A cleared cache, switched account or changed source must not receive an old result.
+      if (pendingDecks.get(deckExclusionKey)?.promise === request
+        && (latest.currentUser?.id ?? null) === userId && latestSource === source) {
+        if (isReviewDeck && !isLibraryDeck && !store.activeReviewSessionCards) {
+          latest.setActiveReviewSessionCards(loaded.cards.map((card) => card.id));
+        }
+        setCachedActivityDeck(deckExclusionKey, {
+          ...loaded,
+          source: isReviewDeck && !isLibraryDeck ? useAppStore.getState().activeReviewSessionCards ?? undefined : source,
+        });
+        preloadDeckAudio(loaded.cards);
+      }
+      return loaded;
+    }).finally(() => {
+      if (pendingDecks.get(deckExclusionKey)?.promise === request) pendingDecks.delete(deckExclusionKey);
+    });
+    pendingDecks.set(deckExclusionKey, { source, userId, promise: request });
+    result = await request;
   }
 
-  setCachedActivityDeck(deckExclusionKey, { cards, knownIds });
-  preloadDeckAudio(cards);
-
-  return {
-    cards: filterDeckByExclusions(cards, excludedIds),
-    deckCards: cards,
-    excludedIds,
-  };
+  const excludedIds = new Set(useAppStore.getState().deckExclusions[deckExclusionKey] ?? []);
+  return { cards: filterDeckByExclusions(result.cards, excludedIds), deckCards: result.cards, knownIds: result.knownIds, excludedIds };
 }

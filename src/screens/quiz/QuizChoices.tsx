@@ -50,7 +50,7 @@ const QuizChoicesCard: React.FC<QuizChoicesCardProps> = ({
       initial={handoff || reduceMotion ? false : { opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.14, ease: 'easeOut' }}
-      className="flex w-full flex-col gap-5 will-change-transform"
+      className="flex w-full flex-col gap-5"
     >
       {/* The word lives on a flashcard-style card: the shuffle's top card lands on it. */}
       <div

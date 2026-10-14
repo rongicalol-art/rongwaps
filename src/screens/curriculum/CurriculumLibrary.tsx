@@ -147,7 +147,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     // scroll briefly before it pins at top:0, which reads as unintentional.
     // The header sits flush against the scroll container top, like Library.
     <div className="relative w-full">
-      <div className="flex w-full animate-in flex-col pb-12 duration-500 fade-in zoom-in-[0.98]">
+      <div className="flex w-full flex-col pb-12">
         <StickyWorkspaceHeader
           title={activeBook.title}
           menuToggle={menuToggle}

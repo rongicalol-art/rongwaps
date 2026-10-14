@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { ActivityModalWrapper, AppIcon, type AppIconName, LoadingScreen } from '../../lib/widgets';
+import { peekQuizTypes, stashQuizTypes } from '../../utils/srs/resumeState';
 import { useAppStore, selectIsActivityOverlayOpen } from '../../store/useAppStore';
 import { cn } from '../../utils/cn';
 import { useActivityDataLoader } from '../../hooks/useActivityDataLoader';
@@ -84,16 +85,15 @@ export function ActivityModals({
   const showContent = phase === 'ready' || hasRevealed.current;
   const isSessionLoading = isPracticeSession && !showContent;
 
-  useEffect(() => {
-    if (isPracticeSession && !isLoadingDeck) {
-      preloadRemainingPracticeChunks();
-    }
-  }, [isPracticeSession, isLoadingDeck]);
-
   // Flashcards and quiz are focused sessions on one lesson part: no mode dock. Independent
   // study (several lessons picked on Books) keeps the dock so every mode is one tap away.
   const isIndependentStudy = selectedLessons.length > 1 && !isReviewMode && !isLibraryMode;
   const hasDock = isIndependentStudy || (resolvedActivity !== 'flashcards' && resolvedActivity !== 'quiz');
+  useEffect(() => {
+    if (isPracticeSession && !isLoadingDeck) {
+      return preloadRemainingPracticeChunks(resolvedActivity, hasDock);
+    }
+  }, [isPracticeSession, isLoadingDeck, resolvedActivity, hasDock]);
   const showDock = Boolean(
     hasDock &&
     resolvedActivity &&
@@ -109,7 +109,14 @@ export function ActivityModals({
   // Cards done's shuffled top card and the round's stats; live only while the quiz they lead into is the activity.
   const [quizTypes, setQuizTypes] = useState<QuizTypeId[] | null>(null);
   const [sessionStats, setSessionStats] = useState<SessionStats | null>(null);
+  // Continue on a saved quiz arrives with the types it was left in (skips the picker).
+  if (!quizTypes && activeActivity === 'quiz') {
+    const resumed = peekQuizTypes();
+    if (resumed) setQuizTypes(resumed);
+  }
   if (quizTypes && activeActivity !== 'quiz') setQuizTypes(null);
+  // The stash is for one launch: gone once the quiz took it (or the window closed).
+  useEffect(() => { if (!activeActivity || quizTypes) stashQuizTypes(null); }, [activeActivity, quizTypes]);
   if (sessionStats && activeActivity !== 'quiz') setSessionStats(null);
   const dockAutoHide = useAppStore(state => state.dockAutoHide);
   const dockLayout = usePracticeDockLayout(useAppStore(state => state.dockStyle));

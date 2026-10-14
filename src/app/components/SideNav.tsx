@@ -132,7 +132,7 @@ export const SideNav = memo(function SideNav({
               aria-current={isActuallyActive ? 'page' : undefined}
             >
               <div
-                className={`relative z-10 flex shrink-0 items-center justify-center transition-transform group-hover:scale-105 ${
+                className={`relative z-10 flex shrink-0 items-center justify-center ${
                   isCollapsed ? 'w-auto' : 'w-[60px]'
                 }`}
               >

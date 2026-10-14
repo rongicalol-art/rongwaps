@@ -1,26 +1,30 @@
 import type { ActivityType } from '../types/models';
 import { loadActivityDeck } from '../hooks/useActivityDataLoader';
-import { loadPracticeScreen, practiceScreenKey } from '../screens/activities/practiceScreens';
+import { loadPracticeScreen, practiceScreenKey, type PracticeScreenKey } from '../screens/activities/practiceScreens';
 
 /** Fetches the activity-screen chunk (the modal shell itself is eager). Resolves once it can render synchronously. */
 export async function preloadPracticeChunks(activity?: ActivityType | null): Promise<void> {
   await loadPracticeScreen(practiceScreenKey(activity ?? 'flashcards') ?? 'flashcards');
 }
 
-/** In idle time, preloads the remaining activity chunks so mode switching in the dock is instant. */
-export function preloadRemainingPracticeChunks(): void {
-  if (typeof window === 'undefined') return;
+/** Warm only reachable modes; cleanup cancels work if the session closes first. */
+export function preloadRemainingPracticeChunks(activity: ActivityType, hasDock: boolean): (() => void) | undefined {
+  if (typeof window === 'undefined' || !activity) return;
+  const current = practiceScreenKey(activity);
+  const modes: PracticeScreenKey[] = hasDock ? ['flashcards', 'quiz', 'listening', 'writing']
+    : current === 'flashcards' ? ['quiz'] : [];
+  if (modes.length === 0) return;
   const run = () => {
-    void loadPracticeScreen('flashcards');
-    void loadPracticeScreen('quiz');
-    void loadPracticeScreen('listening');
-    void loadPracticeScreen('writing');
+    if (!document.hidden) for (const mode of modes) {
+      if (mode !== current) void loadPracticeScreen(mode).catch(() => {});
+    }
   };
-  if ('requestIdleCallback' in window) {
-    window.requestIdleCallback(run, { timeout: 2000 });
-  } else {
-    setTimeout(run, 150);
+  if (window.requestIdleCallback && window.cancelIdleCallback) {
+    const id = window.requestIdleCallback(run, { timeout: 2000 });
+    return () => window.cancelIdleCallback(id);
   }
+  const id = window.setTimeout(run, 150);
+  return () => window.clearTimeout(id);
 }
 
 export interface PracticeIntent {

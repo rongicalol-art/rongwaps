@@ -1,11 +1,14 @@
+import { lazy, Suspense } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
-import { GrammarLessonScreen } from '../../screens/grammar-lesson';
+import type { GrammarLessonScreen as GrammarLessonScreenType } from '../../screens/grammar-lesson';
 import { useOpenPhase } from '../../hooks/useOpenPhase';
 import { useReplacesLoader } from '../hooks/useReplacesLoader';
 import { LoadingScreen, WorkspaceWindow } from '../../lib/widgets';
 
-type GrammarLessonScreenProps = React.ComponentProps<typeof GrammarLessonScreen>;
+const GrammarLessonScreen = lazy(() => import('../../screens/grammar-lesson').then((m) => ({ default: m.GrammarLessonScreen })));
+
+type GrammarLessonScreenProps = React.ComponentProps<typeof GrammarLessonScreenType>;
 
 interface GrammarWindowProps {
   isOpen?: boolean;
@@ -42,15 +45,16 @@ export function GrammarWindow({
         </WorkspaceWindow>
       )}
       {shouldRender && phase === 'ready' && part && (
-        <GrammarLessonScreen
-          animateIn={!cameFromLoader}
-          key={part.id}
-          part={part}
-          initialPageId={initialPageId}
-          onClose={onClose}
-          onProceedToReading={onProceedToReading}
-          onNavigatePart={onNavigatePart}
-        />
+        <Suspense key={part.id} fallback={<WorkspaceWindow tone="canvas"><LoadingScreen message="Loading grammar…" tone="canvas" /></WorkspaceWindow>}>
+          <GrammarLessonScreen
+            animateIn={!cameFromLoader}
+            part={part}
+            initialPageId={initialPageId}
+            onClose={onClose}
+            onProceedToReading={onProceedToReading}
+            onNavigatePart={onNavigatePart}
+          />
+        </Suspense>
       )}
     </AnimatePresence>
   );

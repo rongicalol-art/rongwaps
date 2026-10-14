@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { cn } from '../../../utils/cn';
 import type { PhraseChunk } from '../../../utils/pinyin/rubyPinyin';
 import type { ReaderTextSize } from '../../../types/models';
@@ -57,6 +57,7 @@ export function ReaderDialogueLine({
   wordInteractions,
   onLineRef,
 }: ReaderDialogueLineProps) {
+  const reduceMotion = useReducedMotion();
   const { index, paragraph, speakerDotColor, speakerChar, avatarInitial, sentences, sentenceRanges, isRightAligned } = line;
   const {
     holdingChunkKey,
@@ -72,9 +73,9 @@ export function ReaderDialogueLine({
   return (
     <motion.div
       ref={(node) => onLineRef(index, node)}
-      initial={{ opacity: 0, y: 6 }}
+      initial={reduceMotion ? false : { opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.02 }}
+      transition={reduceMotion ? { duration: 0 } : { delay: index * 0.02 }}
       className={cn(
         'flex w-full items-start gap-2.5 sm:gap-3.5',
         isRightAligned ? 'flex-row-reverse' : 'justify-start',

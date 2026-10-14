@@ -88,7 +88,7 @@ export function WritingDockButton({
         <AppIcon
           name={icon}
           size={24}
-          className={cn('h-6 w-6 transition-transform group-hover:scale-105', iconClassName)}
+          className={cn('h-6 w-6', iconClassName)}
         />
         <span className="sr-only">{label}</span>
       </span>

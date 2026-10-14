@@ -1,3 +1,4 @@
+import { rectMorphFrames } from '../../../utils/browser/rectMorph';
 import { useEffect, useLayoutEffect, useRef, useState, type RefObject } from 'react';
 import { useReducedMotion } from 'motion/react';
 import type { LottieRefCurrentProps } from 'lottie-react';
@@ -131,7 +132,7 @@ export function CardsDone({ cards, deck, wordCount, stageRef, onTone, onStart, o
     const barInner = stage.querySelector<HTMLElement>(wide ? '.rw-answer-bar' : '.rw-answer-bar > div');
     let real: {
       left: number; top: number; width: number; height: number; font: number; gapEm: number;
-      shift: string; border: string; radius: string; displaced: boolean;
+      wordCx: number; wordCy: number; shift: string; border: string; radius: string; displaced: boolean;
     } | null = null;
     if (box && surface) {
       const r = box.getBoundingClientRect();
@@ -164,6 +165,7 @@ export function CardsDone({ cards, deck, wordCount, stageRef, onTone, onStart, o
       real = {
         left: left - rootRect.left, top: top - rootRect.top, width, height, font: endFont,
         gapEm: hasWord && chars > 1 ? Math.max(0, (rt - l - chars * endFont) / (chars - 1) / endFont) : 0,
+        wordCx, wordCy,
         shift: `translate(${wordCx - natCx}px,${wordCy - natCy}px)`,
         border: `${cs.borderTopWidth} ${cs.borderRightWidth} ${cs.borderBottomWidth} ${cs.borderLeftWidth}`,
         radius: cs.borderTopLeftRadius,
@@ -206,9 +208,9 @@ export function CardsDone({ cards, deck, wordCount, stageRef, onTone, onStart, o
       if (box && real) {
         box.querySelectorAll<HTMLElement>('.rw-rise').forEach((el) => A(el, [{ opacity: 1 }, { opacity: 0 }], { duration: CLEAR_MS, easing: 'ease-out' }));
       }
-      // The other tiles are set down around it.
+      // The other tiles settle with the leading card, rather than waiting in a queue.
       const others = tileEls.filter((_, i) => !(real && i === lastIdx));
-      others.forEach((el, k) => A(el, RISE, { delay: start + 300 + k * 55, duration: 460, easing: EASE_OUT }));
+      others.forEach((el) => A(el, RISE, { delay: start, duration: GLIDE_MS, easing: EASE_OUT }));
       // The trophy marks the checkpoint: it rises as the last card settles and plays once.
       A(trophyWrap, RISE, { delay: start + 300, duration: 560, easing: EASE_OUT });
       at(start + 300, () => { trophyDue.current = true; trophyRef.current?.goToAndPlay(0, true); });
@@ -227,15 +229,26 @@ export function CardsDone({ cards, deck, wordCount, stageRef, onTone, onStart, o
           morphEl.style.opacity = '1';
           hideRealCard();
           if (r.displaced) A(morphEl, [{ opacity: 0 }, { opacity: 1 }], { duration: 200, easing: 'ease-out' });
-          A(morphEl, [
-            { left: `${r.left}px`, top: `${r.top}px`, width: `${r.width}px`, height: `${r.height}px`, borderRadius: r.radius, borderWidth: r.border },
-            { ...finalBox, borderRadius: TILE_RADIUS, borderWidth: TILE_BORDER },
-          ], { duration: GLIDE_MS, easing: SMOOTH });
+          const to = { left: parseFloat(finalBox.left), top: parseFloat(finalBox.top), width: parseFloat(finalBox.width), height: parseFloat(finalBox.height) };
+          morphEl.style.transformOrigin = 'top left';
+          A(morphEl, rectMorphFrames(r, to), { duration: GLIDE_MS, easing: SMOOTH });
           if (morphWord) {
-            A(morphWord, [
-              { fontSize: `${r.font}px`, columnGap: `${r.gapEm}em`, transform: r.shift },
-              { fontSize: `${tileFont(lastIdx)}px`, columnGap: '0em', transform: 'translate(0px,0px)' },
+            const word = morphWord.cloneNode(true) as HTMLElement;
+            const x = to.left + to.width / 2;
+            const y = to.top + to.height / 2 - 1;
+            Object.assign(word.style, {
+              position: 'absolute', left: `${x}px`, top: `${y}px`, width: 'max-content',
+              fontSize: `${tileFont(lastIdx)}px`, columnGap: '0em', zIndex: '21', transformOrigin: 'center',
+            });
+            morphWord.style.visibility = 'hidden';
+            layer.appendChild(word);
+            const restoreWord = () => { word.remove(); morphWord.style.visibility = ''; };
+            restore.push(restoreWord);
+            A(word, [
+              { transform: `translate(-50%,-50%) translate(${r.left + r.wordCx - x}px,${r.top + r.wordCy - y}px) scale(${r.font / tileFont(lastIdx)})` },
+              { transform: 'translate(-50%,-50%)' },
             ], { duration: GLIDE_MS, easing: SMOOTH });
+            at(GLIDE_MS, restoreWord);
           }
           // A small settle as it lands, like a card set down on the table.
           A(morphEl, [{ translate: '0 0' }, { translate: '0 3px' }, { translate: '0 0' }], {
@@ -333,9 +346,9 @@ export function CardsDone({ cards, deck, wordCount, stageRef, onTone, onStart, o
             <ActionButton size="lg" fullWidth onClick={() => startRef.current()}>
               <span>Start quiz</span>
             </ActionButton>
-            <div className="mt-3 w-full">
-              <ActionButton variant="secondary" size="lg" fullWidth className="!text-ui-ink" onClick={() => { if (!startedRef.current) onReviewAgain(); }}>
-                {missedCount > 0 ? `Review ${missedCount} missed` : 'Study all again'}
+            <div className="mt-2 w-full">
+              <ActionButton variant="secondary" size="lg" fullWidth edgeColor="var(--color-ui-border)" className="!bg-ui-surface !text-ui-muted-strong hover:!bg-ui-hover uppercase tracking-normal" onClick={() => { if (!startedRef.current) onReviewAgain(); }}>
+                {missedCount > 0 ? `Review missed (${missedCount})` : 'Study all again'}
               </ActionButton>
             </div>
           </div>
@@ -346,7 +359,7 @@ export function CardsDone({ cards, deck, wordCount, stageRef, onTone, onStart, o
         {cards.map((card) => (
           <div
             key={card.id}
-            className={cn(CARD_SURFACE_CLASS, 'absolute flex items-center justify-center will-change-transform')}
+            className={cn(CARD_SURFACE_CLASS, 'absolute flex items-center justify-center')}
             style={{ opacity: 0, borderWidth: TILE_BORDER, borderRadius: TILE_RADIUS }}
           >
             <span className="font-chinese flex leading-none text-ui-ink" data-clone-word>

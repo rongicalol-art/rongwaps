@@ -1,11 +1,11 @@
-import React from 'react';
-import { motion } from 'motion/react';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, useReducedMotion, useSpring, useTransform } from 'motion/react';
 import { cn } from '../../utils/cn';
 import { AppIcon } from './AppIcon';
 import { IconActionButton } from './IconActionButton';
 import { StudyPartProgressRail } from './part-progress';
 import type { CourseLessonPartProgress, PartSegment } from '../../types/models';
-import { visibleProgressWidth } from '../../utils/srs/progress';
+import { visibleProgressScale } from '../../utils/srs/progress';
 
 /**
  * Chrome treatments for `ScreenHeader`:
@@ -33,8 +33,8 @@ const FADE_TONE_CLASSES: Record<ScreenHeaderTone, string> = {
 };
 
 const FROST_TONE_CLASSES: Record<ScreenHeaderTone, string> = {
-  canvas: 'bg-ui-canvas/95',
-  practice: 'bg-ui-practice-canvas/95',
+  canvas: 'bg-ui-canvas',
+  practice: 'bg-ui-practice-canvas',
 };
 
 export interface ScreenHeaderProps {
@@ -116,9 +116,31 @@ export function ScreenHeader({
     none: 'max-w-none',
   };
   const usesStudyPartRail = studyParts.length > 1 && onSelectStudyPart !== undefined && onToggleStudyPart !== undefined && partSegments.length > 0;
+  const progressRailRef = useRef<HTMLDivElement>(null);
+  const [progressRailWidth, setProgressRailWidth] = useState(0);
+  const reduceMotion = useReducedMotion();
+  const hasAnimatedProgress = progress !== undefined && !usesStudyPartRail;
+  useEffect(() => {
+    const rail = progressRailRef.current;
+    if (!hasAnimatedProgress || !rail) return;
+    const measure = () => setProgressRailWidth(rail.clientWidth);
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(rail);
+    return () => observer.disconnect();
+  }, [hasAnimatedProgress]);
   const hasCenteredContent = progress === undefined && !eyebrow && (centerContent !== undefined || Boolean(title));
   const effectiveTotalCount = cleanupPhase ? cleanupPhase.totalCount : totalCount;
   const effectiveCurrentIndex = cleanupPhase ? cleanupPhase.currentIndex : currentIndex;
+  const progressScale = visibleProgressScale(progress ?? 0, progressRailWidth);
+  // Slide a full-size pill behind the track's mask: its round end never gets squashed.
+  const progressLength = useSpring(progressScale * progressRailWidth, { stiffness: 280, damping: 32, mass: 0.7 });
+  useEffect(() => {
+    const length = progressScale * progressRailWidth;
+    if (reduceMotion) progressLength.jump(length);
+    else progressLength.set(length);
+  }, [progressLength, progressScale, progressRailWidth, reduceMotion]);
+  const progressOffset = useTransform(() => progressLength.get() - progressRailWidth);
 
   const headerRow = (
     <div className={cn("relative w-full flex items-center justify-between mx-auto", maxWidthClasses[maxWidth])}>
@@ -185,18 +207,15 @@ export function ScreenHeader({
                   className="w-full"
                 />
               ) : (
-                <div className={cn("relative h-5 w-full overflow-hidden rounded-full transition-colors duration-[400ms]", "bg-brand-primary-track")}>
+                <div ref={progressRailRef} role="progressbar" aria-label="Study progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(Math.max(0, Math.min(100, progress)))} className="relative h-5 w-full overflow-hidden rounded-full bg-brand-primary-track">
                   <motion.div
                     data-practice-progress-fill
-                    className={`absolute bottom-0 left-0 top-0 min-w-0 overflow-hidden rounded-full transition-colors duration-[400ms] ${accentBgClassName} will-change-[width]`}
-                    initial={false}
-                    animate={{ width: visibleProgressWidth(progress) }}
-                    transition={{ type: 'spring', stiffness: 280, damping: 32, mass: 0.7 }}
-                  >
-                    {progress > 0 && (
-                      <div className="absolute left-2 right-2 top-1 h-1.5 rounded-full bg-white/30" />
-                    )}
-                  </motion.div>
+                    className={`absolute inset-0 rounded-full ${accentBgClassName}`}
+                    style={{ x: progressOffset }}
+                  />
+                  <div aria-hidden className="absolute inset-x-2 top-1 h-1.5 overflow-hidden rounded-full">
+                    <motion.div data-practice-progress-highlight className="absolute inset-0 rounded-full bg-white/30" style={{ x: progressOffset }} />
+                  </div>
                 </div>
               )}
               {showPercentage && (
@@ -255,7 +274,7 @@ export function ScreenHeader({
     return (
       <div
         className={cn(
-          'flex w-full origin-top flex-col items-center justify-center border-b-2 border-ui-border pt-[env(safe-area-inset-top,0px)] backdrop-blur-md',
+          'flex w-full origin-top flex-col items-center justify-center border-b-2 border-ui-border pt-[env(safe-area-inset-top,0px)] ',
           'min-h-[calc(var(--size-window-header)+env(safe-area-inset-top,0px))]',
           FROST_TONE_CLASSES[tone],
           className,
@@ -276,7 +295,7 @@ export function ScreenHeader({
     return (
       <div
         className={cn(
-          "sticky top-0 z-30 flex w-full origin-top flex-col items-center pb-2 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] backdrop-blur-[2px]",
+          "sticky top-0 z-30 flex w-full origin-top flex-col items-center pb-2 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] ",
           "bg-gradient-to-b to-transparent",
           FADE_TONE_CLASSES[tone],
           className,

@@ -19,6 +19,8 @@ interface PracticeChoiceButtonProps extends ButtonHTMLAttributes<HTMLButtonEleme
   compact?: boolean;
   children: ReactNode;
   state?: PracticeChoiceState;
+  idleClassName?: string;
+  idleEdgeColor?: string;
   selectedClassName?: string;
   selectedEdgeColor?: string;
 }
@@ -52,6 +54,8 @@ export function PracticeChoiceButton({
   compact = false,
   children,
   state = 'idle',
+  idleClassName,
+  idleEdgeColor,
   selectedClassName,
   selectedEdgeColor,
   className,
@@ -61,6 +65,8 @@ export function PracticeChoiceButton({
   const isRaised = state === 'idle' || state === 'selected';
   const edgeColor = state === 'selected'
     ? selectedEdgeColor ?? DESIGN_TOKENS.color.brand.primary
+    : state === 'idle'
+      ? idleEdgeColor ?? DESIGN_TOKENS.color.border
     : DESIGN_TOKENS.color.border;
 
   return (
@@ -94,6 +100,7 @@ export function PracticeChoiceButton({
           compact ? 'justify-center px-3 py-4' : 'px-6 py-4',
           'transition-[transform,background-color,border-color,color] duration-75',
           surfaceClasses[state],
+          state === 'idle' && idleClassName,
           state === 'selected' && selectedClassName,
         )}
       >

@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
-import { useQuizLoader } from './hooks/useQuiz';
+import { useActivityDataLoader } from '../../hooks/useActivityDataLoader';
 import { QuizChoices } from './QuizChoices';
 import { cancelQuizLaunch } from './quizShuffle';
 import { QuizMixed } from './QuizMixed';
 import { QuizTyping } from './QuizTyping';
 import { useAppStore } from '../../store/useAppStore';
 import { getDeckIdentityKey } from '../../utils/lesson/lessonPartSelection';
+import { quizSessionKey } from '../../utils/srs/resumeState';
 import type { QuizMode } from '../../types/models';
 import type { SessionStats } from '../../features/practice';
 import type { QuizTypeId } from '../../utils/vocabulary/quizDirector';
@@ -39,7 +40,7 @@ export function QuizScreen({
   quizTypes = null,
   sessionStats = null,
 }: QuizScreenProps) {
-  const { cards, isLoading } = useQuizLoader(activeBookId, selectedLessons, isLibraryDeck, isReviewDeck);
+  const { cards, isLoading } = useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
   const libraryActiveFolder = useAppStore((state) => state.libraryActiveFolder);
   const launchCleanup = useRef<number | undefined>(undefined);
   useEffect(() => {
@@ -68,8 +69,9 @@ export function QuizScreen({
     isReviewDeck,
     isLibraryDeck,
   });
-  // Each pick keeps its own progress; Mixed keeps the deck's plain key.
-  const mixedKey = picked?.length ? `${sessionKey}|types:${picked.join('+')}` : sessionKey;
+  // The quiz never shares the flashcards' saved place: its own key, and each pick keeps its own progress.
+  const quizKey = quizSessionKey(sessionKey);
+  const mixedKey = picked?.length ? `${sessionKey}|types:${picked.join('+')}` : quizKey;
   const mixed = mode === 'choices' && quizFormat === 'mixed';
 
 
@@ -114,7 +116,7 @@ export function QuizScreen({
               <QuizChoices
                 activeBookId={activeBookId}
                 cards={cards}
-                sessionKey={sessionKey}
+                sessionKey={quizKey}
                 sessionStats={sessionStats}
                 onEnd={onClose || (() => {})}
                 onContinue={onContinue}

@@ -153,7 +153,7 @@ export function PracticeModeDock({
                     icon: (
                       <PlayfulNavIcon
                         name={activity.icon}
-                        className="h-7 w-7 transition-transform group-hover:scale-105"
+                        className="h-7 w-7"
                       />
                     ),
                     buttonProps: {

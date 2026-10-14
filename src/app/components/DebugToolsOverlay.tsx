@@ -16,7 +16,7 @@ export function DebugToolsOverlay() {
     if (!import.meta.env.DEV) return;
     const handleKeyDown = (event: KeyboardEvent) => {
       if (document.activeElement?.tagName === 'INPUT' || document.activeElement?.tagName === 'TEXTAREA') return;
-      if (event.key === '0' && event.ctrlKey && event.shiftKey) {
+      if ((event.key === '0' || event.code === 'Digit0') && event.ctrlKey && event.shiftKey) {
         setShowDebugWindow((previous) => !previous);
       }
     };

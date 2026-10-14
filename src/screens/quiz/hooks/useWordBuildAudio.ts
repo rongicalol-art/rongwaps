@@ -57,11 +57,12 @@ export function useWordBuildAudio(card: Flashcard, tiles: string[], enabled: boo
 
   const playTile = (char: string) => {
     const audio = tileAudio?.key === audioKey ? tileAudio.clips.get(char) : undefined;
+    const request = ++audioRequest.current;
     if (!audio) {
+      if (tilePlaying.current) { tilePlaying.current = false; audioService.stop(); }
       if (tileAudio?.key !== audioKey && wordBuildTileReading(card, char, readings)) setAudioError('Audio is loading…');
       return;
     }
-    const request = ++audioRequest.current;
     tilePlaying.current = true;
     const unavailable = () => { if (audioRequest.current === request) setAudioError('Recording unavailable.'); };
     void audioService.play(audio, pronunciationRate, undefined, undefined, 0, {

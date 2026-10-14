@@ -31,7 +31,7 @@ const QuizTypingCard: React.FC<QuizTypingCardProps> = ({
     initial={reduceMotion ? false : { opacity: 0, y: 8 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.14, ease: 'easeOut' }}
-    className="flex w-full flex-col will-change-transform"
+    className="flex w-full flex-col"
   >
     {promptType === 'meaning' ? (
       <div className="flex w-full items-center justify-center pb-7 pt-8 px-4">

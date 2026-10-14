@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { LoadingScreen, preloadLoadingScreen } from './lib/widgets';
 import { AppWorkspace } from './app/components/AppWorkspace';
-import { prefetchTabScreen } from './app/components/tabScreenRegistry';
 import { AppOverlays } from './app/components/AppOverlays';
 import { PwaUpdatePrompt } from './app/components/PwaUpdatePrompt';
+import { ResumeLaunch } from './features/practice';
 import { useAppShell } from './app/hooks/useAppShell';
 import { legalPageFromPathname } from './app/routes';
 import { SignInWindow } from './screens/auth';
@@ -25,7 +25,7 @@ function AppShell() {
     const idle = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 200));
     idle(() => {
       preloadLoadingScreen();
-      (['path', 'search', 'library', 'profile'] as const).forEach(prefetchTabScreen);
+      void import('./services/performanceMetrics').then((m) => m.startVitalsMonitoring());
     });
   }, []);
 
@@ -102,6 +102,15 @@ function AppShell() {
         onCharacterPreferenceChange={settings.setCharacterPreference}
         onResetProgress={settings.onResetProgress}
       />
+
+      {activity.resumeLaunch.pending && (
+        <ResumeLaunch
+          pending={activity.resumeLaunch.pending}
+          onContinue={activity.resumeLaunch.onContinue}
+          onStartOver={activity.resumeLaunch.onStartOver}
+          onClose={activity.resumeLaunch.onClose}
+        />
+      )}
 
       <PwaUpdatePrompt />
     </>

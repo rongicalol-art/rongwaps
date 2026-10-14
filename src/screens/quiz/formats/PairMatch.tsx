@@ -25,7 +25,6 @@ interface PairMatchProps {
 
 type Side = 'left' | 'right';
 const WRONG_FLASH_MS = 420;
-const PLAYING_MS = 900;
 const NO_NUMBER_OPTIONS: readonly number[] = [];
 const ignoreNumberSelection = () => {};
 
@@ -76,21 +75,30 @@ export const PairMatch: React.FC<PairMatchProps> = ({ variant, cards, meanings, 
   const [matched, setMatched] = useState<ReadonlySet<string>>(new Set());
   const [flash, setFlash] = useState<{ left: string; right: string } | null>(null);
   const [playingId, setPlayingId] = useState<string | null>(null);
-  const playTimer = useRef<number | undefined>(undefined);
+  const activeAudio = useRef<{ id: string; request: number } | null>(null);
+  const audioRequest = useRef(0);
   const touched = useRef(new Set<string>());
   const timer = useRef<number | undefined>(undefined);
   useEffect(() => () => {
     window.clearTimeout(timer.current);
-    window.clearTimeout(playTimer.current);
+    audioRequest.current++;
+    activeAudio.current = null;
   }, []);
 
   const tap = (side: Side, card: Flashcard) => {
     if (flash || matched.has(card.id)) return;
     if (side === 'left') {
-      void audioService.playCard(card, rate);
-      setPlayingId(card.id);
-      window.clearTimeout(playTimer.current);
-      playTimer.current = window.setTimeout(() => setPlayingId(null), PLAYING_MS);
+      if (activeAudio.current?.id !== card.id) {
+        const request = ++audioRequest.current;
+        activeAudio.current = { id: card.id, request };
+        setPlayingId(card.id);
+        const finish = () => {
+          if (activeAudio.current?.request !== request) return;
+          activeAudio.current = null;
+          setPlayingId(null);
+        };
+        void audioService.playCard(card, rate).then(finish, finish);
+      }
     }
     if (!picked || picked.side === side) {
       setPicked(picked && picked.side === side && picked.id === card.id ? null : { side, id: card.id });

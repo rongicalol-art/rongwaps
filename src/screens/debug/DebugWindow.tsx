@@ -1,3 +1,4 @@
+import { PerformancePanel } from './PerformancePanel';
 import React, { useEffect, useState } from 'react';
 import { fetchAllMnemonicsDebug, clearAllMnemonics } from '../../services/mnemonicCache';
 import { debugLogger, DebugLog } from '../../utils/debug/debugLogger';
@@ -12,7 +13,7 @@ import { QuizPreview } from '../quiz';
 const icons = import.meta.glob('/src/assets/icons/*.svg', { query: '?raw', import: 'default', eager: true });
 
 export const DebugWindow = () => {
-  const [activeTab, setActiveTab] = useState<'icons' | 'mnemonics' | 'logs' | 'skeletons' | 'previews'>('logs');
+  const [activeTab, setActiveTab] = useState<'icons' | 'mnemonics' | 'logs' | 'skeletons' | 'previews' | 'performance'>('logs');
   const [selectedSkeleton, setSelectedSkeleton] = useState<string>('dictionary');
   const [mnemonics, setMnemonics] = useState<Awaited<ReturnType<typeof fetchAllMnemonicsDebug>>>([]);
   const [loading, setLoading] = useState(false);
@@ -153,6 +154,7 @@ export const DebugWindow = () => {
         >
           UI Previews
         </button>
+          <button type="button" onClick={() => setActiveTab('performance')} className="rounded-control border-2 border-ui-border bg-ui-surface px-3 py-2 font-bold focus-ring">Performance</button>
       </div>
 
       <div className="flex-1 overflow-hidden min-h-0">
@@ -306,6 +308,7 @@ export const DebugWindow = () => {
           </div>
         )}
 
+        {activeTab === 'performance' && <PerformancePanel />}
         {activeTab === 'previews' && (
           <div className="h-full overflow-y-auto pb-6">
             <QuizPreview />

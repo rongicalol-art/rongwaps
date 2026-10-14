@@ -1,5 +1,5 @@
 import type { Flashcard } from '../data/flashcards';
-import { fetchVocabulary, fetchVocabularyByIds, prepareVocabulary } from './vocabularyService';
+import { fetchVocabulary, prepareVocabulary } from './vocabularyService';
 import { getCourseVocabLookupMap } from './courseVocabLookup';
 import { fetchAllVocabularyPacks } from './contentPacks';
 import { getDictionaryEntriesBatch } from './dictionaryService';
@@ -19,21 +19,10 @@ export async function loadReviewDeck(
   const resolveByIds = async (ids: string[]): Promise<{ cards: Flashcard[]; knownIds: Set<string> | null }> => {
     const idSet = new Set(ids);
     const packedRows = await fetchAllVocabularyPacks();
-    if (packedRows) {
-      const allCards = prepareVocabulary(packedRows);
-      return {
-        cards: allCards.filter((card) => idSet.has(card.id)),
-        knownIds: new Set(packedRows.map((row) => String(row.id))),
-      };
-    }
-    const rowsById = await fetchVocabularyByIds(ids);
-    if (rowsById) {
-      return { cards: rowsById, knownIds: null };
-    }
-    const data = await fetchVocabulary();
     return {
-      cards: data.filter((card) => idSet.has(card.id)),
-      knownIds: new Set(data.map((card) => card.id)),
+      cards: packedRows ? prepareVocabulary(packedRows.filter((row) => idSet.has(String(row.id)))) : [],
+      // Exclusion pruning needs the full catalog, even when today's review is small.
+      knownIds: packedRows ? new Set(packedRows.map((row) => String(row.id))) : null,
     };
   };
 

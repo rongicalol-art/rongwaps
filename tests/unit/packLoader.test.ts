@@ -208,3 +208,21 @@ test('pack loader rejects when the manifest fails feature validation', async () 
     await assert.rejects(() => loader.loadPart(1), /Unsupported test manifest/);
   });
 });
+
+test('bounded shard cache releases old parts and retains the most recently used part', async () => {
+  const manifest = { ...validManifest, parts: [...validManifest.parts, { key: 3, count: 1, path: '/data/test/part-3.json' }] };
+  const stub = createFetchStub(new Map<string, () => unknown>([
+    ['/data/test/manifest.json', () => manifest],
+    ['/data/test/part-1.json', packBody(1, 2)], ['/data/test/part-2.json', packBody(2, 1)], ['/data/test/part-3.json', packBody(3, 1)],
+  ]));
+  await withFetch(stub.fetch, async () => {
+    const loader = createTestLoader({ maxCachedParts: 2 });
+    await loader.loadPart(1); await loader.loadPart(2);
+    await loader.loadPart(1); // now part 2 is the least recently used
+    await loader.loadPart(3);
+    await loader.loadPart(1);
+    await loader.loadPart(2);
+    assert.equal(stub.calls.filter((call) => call.url.endsWith('part-1.json')).length, 1);
+    assert.equal(stub.calls.filter((call) => call.url.endsWith('part-2.json')).length, 2);
+  });
+});

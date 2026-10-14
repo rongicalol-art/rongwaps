@@ -1,17 +1,12 @@
+import { useQuizAnswerAudio } from './useQuizAnswerAudio';
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { Flashcard } from '../../../data/flashcards';
-import { audioService } from '../../../services/audioService';
-import { useActivityDataLoader } from '../../../hooks/useActivityDataLoader';
 import { shuffleItems } from '../../../utils/srs/sessionOrder';
 import { useAppStore } from '../../../store/useAppStore';
 import { isPinyinAnswerAccepted } from '../../../utils/pinyin/pinyinAnswer';
 import { buildAttributeChoices, getCardChoiceTarget } from '../../../utils/vocabulary/meaningChoices';
 import { useCardSession } from '../../../hooks/useCardSession';
 import { useAudioSessionLifecycle } from '../../../hooks/useSessionAudio';
-
-export function useQuizLoader(activeBookId: number, selectedLessons: number[], isLibraryDeck: boolean = false, isReviewDeck: boolean = false) {
-  return useActivityDataLoader(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
-}
 
 /**
  * Manages a multiple-choice quiz session.
@@ -22,14 +17,11 @@ export function useQuizLoader(activeBookId: number, selectedLessons: number[], i
  *   Second click → advance to the next card (or complete the session)
  */
 export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
-  const pronunciationRate = useAppStore((state) => state.pronunciationRate);
-  const replayAudioAfterAnswer = useAppStore((state) => state.replayAudioAfterAnswer);
   const quizChoiceType = useAppStore((state) => state.quizChoiceType);
 
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isChecked, setIsChecked] = useState(false);
-  const [answerAudioPlaying, setAnswerAudioPlaying] = useState(false);
-  const answerAudioPlayId = useRef(0);
+  const { answerAudioPlaying, playWord } = useQuizAnswerAudio();
   const currentCardChoicesRef = useRef<{ cardId: string; choiceType: string; options: Flashcard[] } | null>(null);
 
   const session = useCardSession(cards, sessionKey, {
@@ -81,16 +73,9 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
     setSelectedOption(option);
     setIsChecked(true);
     const correct = option === getCardChoiceTarget(currentCard, quizChoiceType);
-    if (correct && replayAudioAfterAnswer) {
-      const playId = ++answerAudioPlayId.current;
-      setAnswerAudioPlaying(true);
-      const finish = () => {
-        if (answerAudioPlayId.current === playId) setAnswerAudioPlaying(false);
-      };
-      void audioService.playCard(currentCard, pronunciationRate).then(finish, finish);
-    }
+    if (correct) playWord(currentCard);
     session.recordAnswer(currentCard, correct ? 4 : 2);
-  }, [currentCard, pronunciationRate, quizChoiceType, replayAudioAfterAnswer, session]);
+  }, [currentCard, playWord, quizChoiceType, session]);
 
   const handleCheck = () => {
     if (!selectedOption) return;
@@ -158,13 +143,10 @@ export function useQuizChoices(cards: Flashcard[], sessionKey: string) {
  *   Second click → advance to the next card (or complete the session)
  */
 export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
-  const pronunciationRate = useAppStore((state) => state.pronunciationRate);
-  const replayAudioAfterAnswer = useAppStore((state) => state.replayAudioAfterAnswer);
 
   const [input, setInput] = useState('');
   const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle');
-  const [answerAudioPlaying, setAnswerAudioPlaying] = useState(false);
-  const answerAudioPlayId = useRef(0);
+  const { answerAudioPlaying, playWord } = useQuizAnswerAudio();
 
   const session = useCardSession(cards, sessionKey, {
     requeueMissed: false,
@@ -198,14 +180,7 @@ export function useQuizTyping(cards: Flashcard[], sessionKey: string) {
     if (!session.beginGrading()) return;
 
     const isCorrect = isPinyinAnswerAccepted(answerValue, currentCard.pinyin);
-    if (isCorrect && replayAudioAfterAnswer) {
-      const playId = ++answerAudioPlayId.current;
-      setAnswerAudioPlaying(true);
-      const finish = () => {
-        if (answerAudioPlayId.current === playId) setAnswerAudioPlaying(false);
-      };
-      void audioService.playCard(currentCard, pronunciationRate).then(finish, finish);
-    }
+    if (isCorrect) playWord(currentCard);
 
     setStatus(isCorrect ? 'correct' : 'wrong');
     session.recordAnswer(currentCard, isCorrect ? 4 : 2);

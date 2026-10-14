@@ -42,7 +42,7 @@ const INK: Record<PracticeChoiceState, string> = {
  * meaning that was shown is struck through.
  */
 export const TrueFalseFlip: React.FC<TrueFalseFlipProps> = ({
-  card, shown, isChecked, onAnswer, onOpenBreakdown, breakdownOpen, activeBook, handoff,
+  card, shown, isChecked, onAnswer, onOpenBreakdown, breakdownOpen, handoff,
 }) => {
   const [answer, setAnswer] = useState<YesNo | null>(null);
   const simpleDefinitions = useAppStore((state) => state.simpleDefinitions);
@@ -53,8 +53,6 @@ export const TrueFalseFlip: React.FC<TrueFalseFlipProps> = ({
   useAudioOnMount(card, !isChecked && !breakdownOpen && !landing);
   const shownIsRight = shown.id === card.id;
   const struck = isChecked && !shownIsRight;
-  const selectedClassName = `${activeBook.bg} ${activeBook.accentBorder} ${activeBook.accent}`;
-
   const choose = (value: YesNo) => {
     if (answer || isChecked) return;
     setAnswer(value);
@@ -72,7 +70,7 @@ export const TrueFalseFlip: React.FC<TrueFalseFlipProps> = ({
       initial={handoff || reduceMotion ? false : { opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.14, ease: 'easeOut' }}
-      className="flex w-full flex-col gap-4 will-change-transform"
+      className="flex w-full flex-col gap-4"
     >
       <div
         ref={promptRef}
@@ -90,6 +88,11 @@ export const TrueFalseFlip: React.FC<TrueFalseFlipProps> = ({
       <div ref={gridRef} className={cn('grid w-full grid-cols-2 gap-3', landing && 'pointer-events-none')}>
         {ANSWERS.map((value) => {
           const state = getPracticeChoiceState(answer === value, isChecked, (value === 'yes') === shownIsRight);
+          const isYes = value === 'yes';
+          const answerColor = isYes ? 'text-feedback-success-edge/80' : 'text-feedback-danger-edge/80';
+          const answerEdge = isYes
+            ? 'color-mix(in srgb, var(--color-feedback-success-edge) 50%, var(--color-ui-border))'
+            : 'color-mix(in srgb, var(--color-feedback-danger-edge) 50%, var(--color-ui-border))';
           return (
             <PracticeChoiceButton
               key={value}
@@ -98,10 +101,16 @@ export const TrueFalseFlip: React.FC<TrueFalseFlipProps> = ({
               disabled={isChecked}
               onClick={() => choose(value)}
               aria-label={value === 'yes' ? 'Yes, it means this' : 'No, it does not'}
-              selectedClassName={selectedClassName}
-              selectedEdgeColor={activeBook.accentHex}
+              idleClassName={`border-current ${answerColor}`}
+              idleEdgeColor={answerEdge}
+              selectedClassName={`border-current !bg-ui-surface ${answerColor}`}
+              selectedEdgeColor={answerEdge}
             >
-              <span className={cn('flex items-center justify-center gap-2.5 py-1 font-black', INK[state])}>
+              <span className={cn(
+                'flex items-center justify-center gap-2.5 py-1 font-black',
+                INK[state],
+                (state === 'idle' || state === 'selected') && answerColor,
+              )}>
                 <AppIcon name={value === 'yes' ? 'answerYes' : 'answerNo'} size={26} />
                 {value === 'yes' ? 'Yes' : 'No'}
               </span>

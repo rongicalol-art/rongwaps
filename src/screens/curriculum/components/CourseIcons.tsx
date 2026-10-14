@@ -1,4 +1,6 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback, useEffect, useRef } from 'react';
+import { useReducedMotion } from 'motion/react';
+import type { LottieRefCurrentProps } from 'lottie-react';
 import { LottiePlayer } from '../../../lib/widgets';
 
 // Branded book animations load on demand: the JSON files are 87–176 KB each
@@ -13,13 +15,30 @@ const loadBook2Animation = () =>
 const loadBook3Animation = () =>
   import('../../../assets/animations/book 3 logo.json').then((m) => m.default);
 
-export const CourseIcon = memo(({ id, className = '' }: { id: number; className?: string }) => {
+export const CourseIcon = memo(({ id, className = '', active = true }: { id: number; className?: string; active?: boolean }) => {
+  const lottieRef = useRef<LottieRefCurrentProps>(null);
+  const reduceMotion = useReducedMotion();
+  const finishWithoutMotion = useCallback(() => {
+    if (!reduceMotion) return;
+    const totalFrames = lottieRef.current?.animationItem?.totalFrames;
+    if (totalFrames && totalFrames > 0) lottieRef.current?.goToAndStop(totalFrames - 1, true);
+  }, [reduceMotion]);
+  useEffect(finishWithoutMotion, [finishWithoutMotion]);
+
   switch (id) {
     case 1:
       // Book 1 - Sleeping Lottie
       return (
         <div className={className}>
-          <LottiePlayer loadAnimationData={loadSleepingAnimation} loop={true} />
+          <LottiePlayer
+            key={String(active)}
+            loadAnimationData={loadSleepingAnimation}
+            loop={false}
+            autoplay={active}
+            replayOnVisible={active}
+            lottieRef={lottieRef}
+            onDOMLoaded={finishWithoutMotion}
+          />
         </div>
       );
     case 2:
@@ -27,7 +46,15 @@ export const CourseIcon = memo(({ id, className = '' }: { id: number; className?
       return (
         <div className={`${className} flex items-center justify-center`}>
           <div className="w-[95%] h-[95%] transform -translate-y-2 scale-100">
-            <LottiePlayer loadAnimationData={loadBook2Animation} loop={true} />
+            <LottiePlayer
+              key={String(active)}
+              loadAnimationData={loadBook2Animation}
+              loop={false}
+              autoplay={active}
+              replayOnVisible={active}
+              lottieRef={lottieRef}
+              onDOMLoaded={finishWithoutMotion}
+            />
           </div>
         </div>
       );
@@ -36,7 +63,15 @@ export const CourseIcon = memo(({ id, className = '' }: { id: number; className?
       return (
         <div className={`${className} flex items-center justify-center`}>
           <div className="w-[70%] h-[70%]">
-            <LottiePlayer loadAnimationData={loadBook3Animation} loop={true} />
+            <LottiePlayer
+              key={String(active)}
+              loadAnimationData={loadBook3Animation}
+              loop={false}
+              autoplay={active}
+              replayOnVisible={active}
+              lottieRef={lottieRef}
+              onDOMLoaded={finishWithoutMotion}
+            />
           </div>
         </div>
       );
@@ -45,7 +80,15 @@ export const CourseIcon = memo(({ id, className = '' }: { id: number; className?
       return (
         <div className={`${className} flex items-center justify-center`}>
           <div className="w-[85%] h-[85%]">
-            <LottiePlayer loadAnimationData={loadSandyLoadingAnimation} loop={true} />
+            <LottiePlayer
+              key={String(active)}
+              loadAnimationData={loadSandyLoadingAnimation}
+              loop={false}
+              autoplay={active}
+              replayOnVisible={active}
+              lottieRef={lottieRef}
+              onDOMLoaded={finishWithoutMotion}
+            />
           </div>
         </div>
       );

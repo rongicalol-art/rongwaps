@@ -1,3 +1,6 @@
+import { rectMorphFrames } from '../../utils/browser/rectMorph';
+import { cancelQuizLaunch } from '../../features/practice';
+export { beginQuizLaunch, cancelQuizLaunch } from '../../features/practice';
 import { useLayoutEffect, useRef, useState, type RefObject } from 'react';
 
 /** The top card of the Cards done shuffle (a fixed clone in document.body), handed to the first quiz question. */
@@ -10,9 +13,9 @@ export interface QuizHandoff {
 
 const GLIDE_MS = 640;
 const GLIDE_EASE = 'cubic-bezier(.22,1,.36,1)';
-const CHOICES_DELAY_MS = 120;
-const CHOICES_STAGGER_MS = 60;
-const CHOICES_MS = 480;
+const REVIEW_GLIDE_MS = 420;
+const REVIEW_ANSWERS_DELAY_MS = 220;
+const REVIEW_ANSWERS_MS = 260;
 const RISE_EASE = 'cubic-bezier(.16,1,.3,1)';
 
 const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -20,6 +23,7 @@ const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: r
 /** Fades the ghost out and removes it (fallback when there is nothing to land on). */
 export function fadeOutGhost(ghost: HTMLElement) {
   if (!ghost.isConnected) return;
+  if (prefersReducedMotion()) { ghost.remove(); return; }
   const anim = ghost.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 200, fill: 'forwards' });
   anim.finished.then(() => ghost.remove(), () => ghost.remove());
 }
@@ -49,17 +53,19 @@ function runLanding(
 ) {
   const anims: Animation[] = [];
   const timers: number[] = [];
+  let wordClone: HTMLElement | null = null;
+  let incomingClone: HTMLElement | null = null;
   const abort = () => {
     timers.forEach(window.clearTimeout);
     anims.forEach((a) => a.cancel());
     if (prompt) prompt.style.opacity = '';
     ghost.remove();
+    wordClone?.remove();
+    incomingClone?.remove();
   };
 
-  const glyphs = prompt ? promptGlyphs(prompt) : [];
   const ghostWord = ghost.querySelector<HTMLElement>('[data-clone-word]');
-  const sameWord = glyphs.map((g) => g.textContent).join('') === Array.from(front).join('');
-  if (!ghost.isConnected || prefersReducedMotion() || !prompt || !ghostWord || glyphs.length === 0 || !sameWord) {
+  if (!ghost.isConnected || prefersReducedMotion() || !prompt || !ghostWord) {
     if (ghost.isConnected) fadeOutGhost(ghost);
     riseIn(grid, 0, 8, 140);
     if (prompt) riseIn(prompt, 0, 8, 140);
@@ -67,50 +73,75 @@ function runLanding(
     return abort;
   }
 
-  // The real card waits (invisible, in place) until the ghost has become it.
-  prompt.style.opacity = '0';
-  const rects = glyphs.map((g) => g.getBoundingClientRect());
-  const left = Math.min(...rects.map((r) => r.left));
-  const right = Math.max(...rects.map((r) => r.right));
-  const font = parseFloat(getComputedStyle(glyphs[0]).fontSize);
-  const chars = glyphs.length;
-  // Gap between the real glyphs (em), so the ghost word is spaced exactly like the prompt.
-  const gapEm = chars > 1 && font > 0 ? Math.max(0, ((right - left) - chars * font) / (chars - 1) / font) : 0;
+  // Read the settled destination before creating or styling any animation layers.
+  const from = ghost.getBoundingClientRect();
   const to = prompt.getBoundingClientRect();
+  if (!to.width || !to.height) { fadeOutGhost(ghost); onDone(); return abort; }
   const ps = getComputedStyle(prompt);
-  const gs = getComputedStyle(ghost);
-  const wordNow = getComputedStyle(ghostWord);
-  const widths = (c: CSSStyleDeclaration) => `${c.borderTopWidth} ${c.borderRightWidth} ${c.borderBottomWidth} ${c.borderLeftWidth}`;
+  const wordFrom = ghostWord.getBoundingClientRect();
+  const startFont = parseFloat(getComputedStyle(ghostWord).fontSize);
+  const glyphs = promptGlyphs(prompt);
+  const sameWord = glyphs.length > 0 && glyphs.map((g) => g.textContent).join('') === front;
+  const rects = sameWord ? glyphs.map((g) => g.getBoundingClientRect()) : [];
+  const font = sameWord ? parseFloat(getComputedStyle(glyphs[0]).fontSize) : startFont;
+  const left = sameWord ? Math.min(...rects.map((r) => r.left)) : to.left;
+  const right = sameWord ? Math.max(...rects.map((r) => r.right)) : to.right;
+  const wordToX = (left + right) / 2;
+  const wordToY = sameWord
+    ? (Math.min(...rects.map((r) => r.top)) + Math.max(...rects.map((r) => r.bottom))) / 2
+    : to.top + to.height / 2;
+  const gapEm = sameWord && glyphs.length > 1 && font > 0
+    ? Math.max(0, ((right - left) - glyphs.length * font) / (glyphs.length - 1) / font) : 0;
 
-  const play = (el: Element, keyframes: Keyframe[], options: KeyframeAnimationOptions) => {
-    const a = el.animate(keyframes, { fill: 'both', ...options });
-    anims.push(a);
-    return a;
-  };
-  const glide = play(ghost, [
-    { left: gs.left, top: gs.top, width: gs.width, height: gs.height, borderWidth: widths(gs), borderRadius: gs.borderTopLeftRadius },
-    { left: `${to.left}px`, top: `${to.top}px`, width: `${to.width}px`, height: `${to.height}px`, borderWidth: widths(ps), borderRadius: ps.borderTopLeftRadius },
-  ], { duration: GLIDE_MS, easing: GLIDE_EASE });
-  play(ghostWord, [
-    { fontSize: wordNow.fontSize, columnGap: '0em' },
-    { fontSize: `${font}px`, columnGap: `${gapEm}em` },
-  ], { duration: GLIDE_MS, easing: GLIDE_EASE });
-
-  // Answers rise from where the deck was.
-  const choices = Array.from(grid.children) as HTMLElement[];
-  choices.forEach((c, i) => {
-    anims.push(c.animate(
-      [{ opacity: 0, transform: 'translateY(30px)' }, { opacity: 1, transform: 'none' }],
-      { delay: CHOICES_DELAY_MS + i * CHOICES_STAGGER_MS, duration: CHOICES_MS, easing: RISE_EASE, fill: 'backwards' },
-    ));
+  wordClone = ghostWord.cloneNode(true) as HTMLElement;
+  Object.assign(wordClone.style, {
+    position: 'fixed', left: `${wordToX}px`, top: `${wordToY}px`, width: 'max-content',
+    fontSize: `${font}px`, columnGap: `${gapEm}em`, margin: '0',
+    pointerEvents: 'none', zIndex: ghost.style.zIndex || '9999', transformOrigin: 'center',
   });
+  wordClone.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(wordClone);
+  ghostWord.style.visibility = 'hidden';
+  ghost.inert = true;
+  Object.assign(ghost.style, {
+    left: `${to.left}px`, top: `${to.top}px`, width: `${to.width}px`, height: `${to.height}px`,
+    borderWidth: `${ps.borderTopWidth} ${ps.borderRightWidth} ${ps.borderBottomWidth} ${ps.borderLeftWidth}`,
+    borderRadius: ps.borderTopLeftRadius, transformOrigin: 'top left',
+  });
+  prompt.style.opacity = '0';
+  const play = (el: Element, frames: Keyframe[], options: KeyframeAnimationOptions = {}) => {
+    const animation = el.animate(frames, { duration: REVIEW_GLIDE_MS, easing: GLIDE_EASE, fill: 'both', ...options });
+    anims.push(animation);
+  };
+  play(ghost, rectMorphFrames(from, to));
+  play(wordClone, [
+    { transform: `translate(-50%,-50%) translate(${wordFrom.left + wordFrom.width / 2 - wordToX}px,${wordFrom.top + wordFrom.height / 2 - wordToY}px) scale(${startFont / font})` },
+    { transform: 'translate(-50%,-50%)' },
+  ]);
 
-  glide.finished.then(() => {
-    // The real prompt replaces the ghost in the same frame.
+  if (!sameWord) {
+    // Crossfade content on the same paper, never a second bordered card.
+    incomingClone = prompt.cloneNode(true) as HTMLElement;
+    incomingClone.inert = true;
+    incomingClone.setAttribute('aria-hidden', 'true');
+    Object.assign(incomingClone.style, {
+      position: 'fixed', left: `${to.left}px`, top: `${to.top}px`, width: `${to.width}px`, height: `${to.height}px`,
+      margin: '0', background: 'transparent', borderColor: 'transparent', boxShadow: 'none',
+      opacity: '1', transform: 'none', pointerEvents: 'none', zIndex: ghost.style.zIndex || '9999',
+    });
+    document.body.appendChild(incomingClone);
+    play(wordClone, [{ opacity: 1 }, { opacity: 0 }], { delay: 160, duration: 180, easing: 'linear' });
+    play(incomingClone, [{ opacity: 0 }, { opacity: 1 }], { delay: 220, duration: 200, easing: 'linear', fill: 'backwards' });
+  }
+
+  // One answer group, one motion clock: no per-button stagger or repeated layout.
+  play(grid, [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }],
+    { delay: REVIEW_ANSWERS_DELAY_MS, duration: REVIEW_ANSWERS_MS, fill: 'backwards' });
+  timers.push(window.setTimeout(() => {
     prompt.style.opacity = '';
-    ghost.remove();
-  }, () => {});
-  timers.push(window.setTimeout(onDone, Math.max(GLIDE_MS, CHOICES_DELAY_MS + Math.max(0, choices.length - 1) * CHOICES_STAGGER_MS + CHOICES_MS)));
+    ghost.remove(); wordClone?.remove(); incomingClone?.remove();
+  }, REVIEW_GLIDE_MS));
+  timers.push(window.setTimeout(onDone, REVIEW_ANSWERS_DELAY_MS + REVIEW_ANSWERS_MS));
   return abort;
 }
 
@@ -143,31 +174,6 @@ export function useQuizShuffle(
   return busy;
 }
 
-/** Keep the chosen picker card on screen while the first question and its audio prepare. */
-export function beginQuizLaunch(picker: HTMLElement, selected: HTMLElement) {
-  cancelQuizLaunch();
-  if (prefersReducedMotion()) return;
-  selected.setAttribute('data-quiz-launch-card', '');
-  const snapshot = picker.cloneNode(true) as HTMLElement;
-  selected.removeAttribute('data-quiz-launch-card');
-  const rect = picker.getBoundingClientRect();
-  snapshot.setAttribute('data-quiz-launch', '');
-  snapshot.setAttribute('aria-hidden', 'true');
-  snapshot.inert = true;
-  Object.assign(snapshot.style, {
-    position: 'fixed', inset: 'auto', left: `${rect.left}px`, top: `${rect.top}px`,
-    width: `${rect.width}px`, height: `${rect.height}px`, margin: '0',
-    background: 'var(--color-ui-canvas)', pointerEvents: 'none', zIndex: '100',
-  });
-  document.body.appendChild(snapshot);
-  // A failed load exposes the normal retry/skip screen rather than covering it indefinitely.
-  window.setTimeout(() => snapshot.remove(), 8000);
-}
-
-export function cancelQuizLaunch() {
-  document.querySelectorAll('[data-quiz-launch]').forEach((element) => element.remove());
-}
-
 /** The selected card grows into the first prompt; answers arrive after the card begins landing. */
 export function landQuizLaunch(question: HTMLElement): boolean {
   const snapshot = document.querySelector<HTMLElement>('[data-quiz-launch]');
@@ -189,8 +195,6 @@ export function landQuizLaunch(question: HTMLElement): boolean {
     to.y -= matrix.m42;
   }
   const surface = prompt.cloneNode(true) as HTMLElement;
-  const selectedStyle = getComputedStyle(selected);
-  const promptStyle = getComputedStyle(prompt);
   surface.setAttribute('data-quiz-launch', '');
   surface.setAttribute('aria-hidden', 'true');
   surface.inert = true;
@@ -200,23 +204,35 @@ export function landQuizLaunch(question: HTMLElement): boolean {
     pointerEvents: 'none', zIndex: '101', overflow: 'hidden',
   });
   selected.style.visibility = 'hidden';
-  // Change the art into the actual character, tile or speaker while the card is moving.
+  // Paper, incoming content and outgoing art are separate layers. Glyphs scale
+  // uniformly while the paper changes aspect ratio; no layout per frame.
+  const contentLayer = surface.cloneNode(true) as HTMLElement;
+  Object.assign(surface.style, { left: `${to.left}px`, top: `${to.top}px`, width: `${to.width}px`, height: `${to.height}px`, padding: '0', transformOrigin: 'top left' });
+  surface.replaceChildren();
+  Object.assign(contentLayer.style, {
+    left: `${to.left}px`, top: `${to.top}px`, width: `${to.width}px`, height: `${to.height}px`,
+    borderColor: 'transparent', background: 'none', overflow: 'visible', transformOrigin: 'center',
+  });
+  const dx = from.left + from.width / 2 - to.left - to.width / 2;
+  const dy = from.top + from.height / 2 - to.top - to.height / 2;
+  contentLayer.animate([
+    { transform: `translate(${dx}px,${dy}px) scale(${Math.min(from.width / to.width, from.height / to.height)})` },
+    { transform: 'none' },
+  ], { duration: GLIDE_MS, easing: GLIDE_EASE, fill: 'backwards' });
+  contentLayer.animate([{ opacity: 0 }, { opacity: 1 }], { delay: 60, duration: 180, fill: 'backwards' });
   const oldArt = selected.cloneNode(true) as HTMLElement;
-  Object.assign(oldArt.style, { position: 'absolute', inset: '0', width: '100%', height: '100%', visibility: 'visible', margin: '0' });
-  const content = Array.from(surface.children) as HTMLElement[];
-  content.forEach((element) => element.animate([{ opacity: 0 }, { opacity: 1 }], { delay: 60, duration: 180, fill: 'backwards' }));
-  surface.appendChild(oldArt);
-  oldArt.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 180, fill: 'forwards' });
-  document.body.appendChild(surface);
-  const animation = surface.animate([
-    { left: `${from.left}px`, top: `${from.top}px`, width: `${from.width}px`, height: `${from.height}px`, borderRadius: selectedStyle.borderRadius },
-    { left: `${to.left}px`, top: `${to.top}px`, width: `${to.width}px`, height: `${to.height}px`, borderRadius: promptStyle.borderRadius },
-  ], { duration: GLIDE_MS, easing: GLIDE_EASE, fill: 'forwards' });
+  Object.assign(oldArt.style, { position: 'fixed', inset: 'auto', left: `${from.left}px`, top: `${from.top}px`, width: `${from.width}px`, height: `${from.height}px`, visibility: 'visible', margin: '0', pointerEvents: 'none', zIndex: '102', transformOrigin: 'center' });
+  oldArt.setAttribute('data-quiz-launch', '');
+  oldArt.setAttribute('aria-hidden', 'true');
+  oldArt.inert = true;
+  oldArt.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: `translate(${-dx}px,${-dy}px)` }], { duration: 180, fill: 'forwards' });
+  document.body.append(surface, contentLayer, oldArt);
+  const animation = surface.animate(rectMorphFrames(from, to), { duration: GLIDE_MS, easing: GLIDE_EASE, fill: 'forwards' });
   const outgoing = snapshot.animate([
     { opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(-16px)' },
   ], { duration: 240, easing: GLIDE_EASE, fill: 'forwards' });
   outgoing.finished.then(() => snapshot.remove(), () => snapshot.remove());
-  surface.animate([{ opacity: 1 }, { opacity: 0 }], { delay: 420, duration: 220, fill: 'forwards' });
+  [surface, contentLayer].forEach((layer) => layer.animate([{ opacity: 1 }, { opacity: 0 }], { delay: 420, duration: 220, fill: 'forwards' }));
   question.animate([{ opacity: 0 }, { opacity: 1 }], { delay: 360, duration: 280, fill: 'backwards', easing: 'ease-out' });
   const answers = Array.from(question.querySelectorAll<HTMLElement>('button')).filter((element) => element !== prompt && !prompt.contains(element));
   answers.forEach((choice, index) => {
@@ -234,9 +250,13 @@ export function landQuizLaunch(question: HTMLElement): boolean {
     question.inert = false;
     window.removeEventListener('keydown', blockedKeys, true);
     surface.remove();
+    contentLayer.remove();
+    oldArt.remove();
   };
   animation.finished.then(() => {
     surface.remove();
+    contentLayer.remove();
+    oldArt.remove();
     window.setTimeout(finish, Math.max(0, 440 + Math.max(0, answers.length - 1) * 45 + 320 - GLIDE_MS));
   }, finish);
   return true;

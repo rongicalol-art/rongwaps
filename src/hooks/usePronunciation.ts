@@ -1,29 +1,13 @@
+import { createStaticIndex } from './createStaticIndex';
 import { useMemo, useSyncExternalStore } from 'react';
 import { fetchPronunciationIndex } from '../services/contentPacks';
 import { allReadings, primaryReading, type Reading, type ReadingsIndex } from '../utils/pinyin/pronunciation';
 
-let index: ReadingsIndex | null = null;
-let requested = false;
-const listeners = new Set<() => void>();
-
-function subscribe(listener: () => void): () => void {
-  listeners.add(listener);
-  if (!requested) {
-    requested = true;
-    void fetchPronunciationIndex().then((loaded) => {
-      if (!loaded) return;
-      index = loaded;
-      listeners.forEach((notify) => notify());
-    });
-  }
-  return () => listeners.delete(listener);
-}
-
-const getSnapshot = () => index;
+const index = createStaticIndex(fetchPronunciationIndex);
 
 /** Character readings index (Taiwan-first); null until loaded or when unavailable. */
 export function usePronunciation(): ReadingsIndex | null {
-  return useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
+  return useSyncExternalStore(index.subscribe, index.getSnapshot, index.getSnapshot);
 }
 
 /** The pinyin to show for a character; `fallback` (e.g. breakdown pinyin) until the index loads. */

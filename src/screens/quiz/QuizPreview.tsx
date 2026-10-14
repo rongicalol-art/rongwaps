@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { landQuizLaunch } from './quizShuffle';
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { Flashcard } from '../../data/flashcards';
 import { SAMPLE_BOOKS } from '../../data/books';
@@ -10,7 +11,11 @@ import { PairMatch } from './formats/PairMatch';
 import { PickOne, type PickChoice, type PickPrompt } from './formats/PickOne';
 import { TrueFalseFlip } from './formats/TrueFalseFlip';
 import { WordBuild } from './formats/WordBuild';
-import { CardsDone } from '../flashcard';
+import { CardsDone, ReviewDealIntro, CARD_SURFACE_CLASS } from '../flashcard';
+import { QuizShell } from './QuizShell';
+import { useReviewTone } from '../../hooks/useReviewTone';
+import { ResumeDialog, ScreenHeader } from '../../lib/widgets';
+import { RESUME_ICON, resumeCopy, resumeDetail, resumeProgress, type ResumeState } from '../../utils/srs/resumeState';
 
 /**
  * DEV-only gallery (debug window, Ctrl+Shift+0): Cards done and the quiz picker, every quiz question type, the feedback bar and Session complete,
@@ -31,8 +36,10 @@ const WORDS = [
 const [TEACHER, STUDENT, PRETTY, FRIEND, BOOK, CHINA, TAIWAN, EVERYONE] = WORDS;
 const SESSION_WORDS = ['新', '同學', '她', '誰', '叫', '漂亮', '英國', '中國', '臺灣', '什麼', '名字', '姓', '老師', '你好', '我', '你', '他', '是', '很'];
 
-type PreviewKey = 'cards-done' | 'pick-meaning' | 'listen' | 'pick-hanzi' | 'true-false' | 'pair-match' | 'sound-match' | 'word-build' | 'measure' | 'match-miss' | 'end-perfect' | 'end-missed';
+type PreviewKey = 'quiz-review' | 'review-deal' | 'cards-done' | 'pick-meaning' | 'listen' | 'pick-hanzi' | 'true-false' | 'pair-match' | 'sound-match' | 'word-build' | 'measure' | 'match-miss' | 'end-perfect' | 'end-missed' | 'resume-cards' | 'resume-review' | 'resume-quiz';
 const PREVIEWS: Array<{ key: PreviewKey; label: string }> = [
+  { key: 'quiz-review', label: 'Quiz → review quiz' },
+  { key: 'review-deal', label: 'Review → card' },
   { key: 'cards-done', label: 'Cards done → pick a quiz' },
   { key: 'pick-meaning', label: 'Pick the meaning' },
   { key: 'listen', label: 'Listen' },
@@ -45,6 +52,9 @@ const PREVIEWS: Array<{ key: PreviewKey; label: string }> = [
   { key: 'match-miss', label: 'Bar: match missed' },
   { key: 'end-perfect', label: 'End: perfect' },
   { key: 'end-missed', label: 'End: 95%' },
+  { key: 'resume-cards', label: 'Resume: cards' },
+  { key: 'resume-review', label: 'Resume: review' },
+  { key: 'resume-quiz', label: 'Resume: quiz' },
 ];
 const PICK: Partial<Record<PreviewKey, { card: Flashcard; options: Flashcard[]; prompt: PickPrompt; choice: PickChoice }>> = {
   'pick-meaning': { card: PRETTY, options: [FRIEND, PRETTY, TEACHER], prompt: 'hanzi', choice: 'meaning' },
@@ -61,7 +71,19 @@ const PreviewStage: React.FC<{ previewKey: PreviewKey }> = ({ previewKey }) => {
   const noop = () => {};
   const isChecked = status !== 'idle';
 
+  if (previewKey === 'quiz-review') return <QuizReviewPreview />;
+
+  if (previewKey === 'review-deal') return <ReviewDealPreview />;
+
   if (previewKey === 'cards-done') return <CardsDonePreview />;
+
+  if (previewKey.startsWith('resume-')) {
+    const state: ResumeState = previewKey === 'resume-review'
+      ? { kind: 'review', mode: 'flashcards', position: 2, left: 5, keys: [] }
+      : { kind: previewKey === 'resume-quiz' ? 'quiz' : 'cards', mode: previewKey === 'resume-quiz' ? 'quiz' : 'flashcards', position: 12, keys: [] };
+    const copy = resumeCopy(state);
+    return <ResumeDialog title={copy.title} detail={resumeDetail(state, 19)} continueLabel={copy.continueLabel} startOverLabel={state.mode === 'quiz' ? 'Restart quiz' : 'Study again'} icon={RESUME_ICON[state.kind]} tone={state.kind === 'review' ? 'review' : undefined} progress={resumeProgress(state, 19)} onContinue={noop} onStartOver={noop} onClose={noop} zIndexClassName="z-devtools" />;
+  }
 
   if (previewKey === 'end-perfect' || previewKey === 'end-missed') {
     return (
@@ -144,6 +166,61 @@ const PreviewStage: React.FC<{ previewKey: PreviewKey }> = ({ previewKey }) => {
   );
 };
 
+/** A fake card landing: exercises the real review choreography without SRS or sync. */
+/** Runs the real shell's missed-pass lifecycle without grading, audio or SRS writes. */
+const QuizReviewPreview: React.FC = () => {
+  const [phase, setPhase] = useState<'answer' | 'complete' | 'review'>('answer');
+  const [open, setOpen] = useState(true);
+  const beginReview = useCallback(() => setPhase('review'), []);
+  const noop = () => {};
+  const review = phase === 'review';
+  const card = review ? PRETTY : EVERYONE;
+  if (!open) return null;
+  return createPortal(
+    <div className="fixed inset-0 z-[2000] flex flex-col bg-ui-practice-canvas">
+      <div className="absolute inset-x-0 top-0 z-40"><ScreenHeader progress={review ? 50 : 100} currentIndex={review ? 0 : 7} totalCount={review ? 2 : 8} variant="window" tone="practice" onClose={() => setOpen(false)} /></div>
+      <QuizShell activeBookId={1} sessionKey="preview-review" onEnd={noop} mode="quiz-choices" title={review ? 'Select the character' : 'Select the meaning'} wide
+        status={review ? 'idle' : 'wrong'} correctAnswer={card.back} isCheckDisabled={false} landsReviewGhost
+        session={{ activeCards: review ? [TEACHER, PRETTY] : WORDS, currentIndex: review ? 0 : 7, currentCard: card,
+          completed: phase === 'complete', handleCheck: () => setPhase('complete'), resumedReview: false,
+          resetAll: () => setPhase('answer'), reviewUnlearned: beginReview, practiceCards: noop,
+          missedCards: [TEACHER, PRETTY], unlearnedCount: 2, learnedCount: review ? 0 : 6, isShuffled: false, toggleShuffle: noop }}>
+        {({ reviewHandoff }) => <PickOne card={card} options={[FRIEND, card, CHINA]} prompt={review ? 'meaning' : 'hanzi'} choice={review ? 'hanzi' : 'meaning'}
+          isChecked={!review} onAnswer={noop} onOpenBreakdown={noop} breakdownOpen={false} activeBook={SAMPLE_BOOKS[0]} handoff={reviewHandoff} />}
+      </QuizShell>
+    </div>, document.body,
+  );
+};
+
+const ReviewDealPreview: React.FC = () => {
+  const stageRef = useRef<HTMLDivElement>(null);
+  const [staged, setStaged] = useState(false);
+  const [honey, setHoney] = useState(false);
+  const [landed, setLanded] = useState(false);
+  const [done, setDone] = useState(false);
+  const [dealing, setDealing] = useState(false);
+  const [open, setOpen] = useState(true);
+  useReviewTone(honey && open);
+  useEffect(() => setStaged(true), []);
+  if (!open) return null;
+  return createPortal(
+    <div ref={stageRef} className="fixed inset-0 z-[10000] bg-ui-practice-canvas">
+      <ScreenHeader progress={dealing ? 20 : 100} currentIndex={0} totalCount={5} variant="window" tone="practice" onClose={() => setOpen(false)} className="z-40" />
+      <div data-fc-cardarea className="absolute inset-x-4 bottom-28 top-24" style={{ opacity: landed ? 1 : 0 }}>
+        <div data-fc-card={TEACHER.id} className="absolute inset-0">
+          <div data-fc-surface className={cn(CARD_SURFACE_CLASS, 'absolute inset-0 flex items-center justify-center')}>
+            <div data-fc-word className="font-chinese flex text-7xl text-ui-ink"><span>老</span><span>師</span></div>
+          </div>
+        </div>
+      </div>
+      <div className="rw-answer-bar absolute inset-x-0 bottom-0 flex justify-center gap-6 py-8 text-ui-ink" style={{ opacity: landed ? 1 : 0 }}>Again · Got it</div>
+      {staged && !done && <div className="absolute inset-x-0 bottom-0 top-20"><ReviewDealIntro cards={[TEACHER, PRETTY]} passCards={WORDS} pass={1} stageRef={stageRef}
+        onHighlight={() => setHoney(true)} onDealStart={() => setDealing(true)} onLanded={() => setLanded(true)} onDone={() => setDone(true)} /></div>}
+    </div>,
+    document.body,
+  );
+};
+
 /** One Cards done run: it reads the stage when it mounts, so it mounts once the stage is in the DOM. */
 const CardsDoneRun: React.FC<{ onStart: (types: string[]) => void }> = ({ onStart }) => {
   const stageRef = useRef<HTMLDivElement>(null);
@@ -152,6 +229,13 @@ const CardsDoneRun: React.FC<{ onStart: (types: string[]) => void }> = ({ onStar
   return (
     <div ref={stageRef} className="absolute inset-0 pt-[72px]">
       <div className="relative h-full">
+        <div data-fc-cardarea className="absolute inset-x-4 bottom-28 top-0 mx-auto max-w-3xl">
+          <div data-fc-card={CHINA.id} className="absolute inset-0">
+            <div data-fc-surface className={cn(CARD_SURFACE_CLASS, 'absolute inset-0 flex items-center justify-center')}>
+              <div data-fc-word className="font-chinese flex text-7xl text-ui-ink"><span>中</span><span>國</span></div>
+            </div>
+          </div>
+        </div>
         {staged && (
           <CardsDone
             cards={WORDS.slice(0, 6)}
@@ -168,6 +252,16 @@ const CardsDoneRun: React.FC<{ onStart: (types: string[]) => void }> = ({ onStar
   );
 };
 
+/** Exercise the actual picker-to-question landing without any learning writes. */
+const QuizLaunchPreview: React.FC = () => {
+  const root = useRef<HTMLDivElement>(null);
+  const started = useRef(false);
+  useLayoutEffect(() => {
+    if (!started.current && root.current) { started.current = true; landQuizLaunch(root.current); }
+  }, []);
+  return <div ref={root} className="absolute inset-0"><PreviewStage previewKey="pick-meaning" /></div>;
+};
+
 /** Cards done and the quiz picker, full-window so the phone and desktop layouts are real; Start shows the pick. */
 const CardsDonePreview: React.FC = () => {
   const [picked, setPicked] = useState<string | null>(null);
@@ -181,7 +275,7 @@ const CardsDonePreview: React.FC = () => {
         <button type="button" onClick={() => setOpen(false)} className="rounded-control border-2 border-ui-border bg-ui-surface px-3 py-1.5 text-sm font-extrabold focus-ring">Close</button>
       </div>
       {picked !== null ? (
-        <div className="absolute inset-0 flex items-center justify-center text-lg font-black text-ui-ink-strong">Start: {picked || 'Mixed'}</div>
+        <QuizLaunchPreview />
       ) : (
         <CardsDoneRun key={run} onStart={(types) => setPicked(types.join(', '))} />
       )}

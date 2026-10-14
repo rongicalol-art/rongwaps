@@ -1,3 +1,4 @@
+import { FLASHCARD_EXTRAS_SHARDS, flashcardExtrasShard, isValidFlashcardExtrasRow, type FlashcardExtrasRow } from '../utils/vocabulary/flashcardExtrasPack';
 import type { DBCharacterBreakdown } from '../types/database';
 import { DICTIONARY_SHARD_COUNT, getDictionaryShard } from '../utils/vocabulary/dictionaryShard';
 import {
@@ -26,6 +27,20 @@ import {
 } from '../utils/packValidators';
 
 export const PACK_CONFIGS: Record<ContentPackKind, PackConfig<unknown, unknown>> = {
+  'flashcard-extras': {
+    namespace: 'flashcard-extras', manifestPath: '/data/flashcard-extras/manifest.json', manifestLabel: 'Flashcard extras manifest',
+    partPathPrefix: '/data/flashcard-extras/', partCacheKeyKind: 'shard', persistManifest: true, maxCachedParts: 16,
+    partLabel: (shard) => `Flashcard extras shard ${shard}`,
+    validateManifest: (m) => m.schemaVersion === 1 && typeof m.version === 'string' && m.shardCount === FLASHCARD_EXTRAS_SHARDS && m.shards?.length === FLASHCARD_EXTRAS_SHARDS && m.shardStrategy === 'card-signature-hash-modulo',
+    getParts: getShardParts,
+    validatePack: (pack, part) => {
+      const p = pack as { schemaVersion?: number; shard?: number; count?: number; items?: FlashcardExtrasRow[] };
+      return p.schemaVersion === 1 && p.shard === part.key && p.count === part.count && Array.isArray(p.items) && p.items.length === part.count
+        && new Set(p.items.map((row) => row?.key)).size === part.count
+        && p.items.every((row) => isValidFlashcardExtrasRow(row) && flashcardExtrasShard(row.key) === part.key);
+    },
+    transform: (pack) => new Map((pack as { items: FlashcardExtrasRow[] }).items.map(({ key, ...extras }) => [key, extras])),
+  },
   vocabulary: {
     namespace: 'vocabulary',
     manifestPath: '/data/vocabulary/manifest.json',

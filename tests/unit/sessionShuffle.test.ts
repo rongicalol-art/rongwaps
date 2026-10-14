@@ -35,10 +35,15 @@ test('restoreReviewCards rebuilds the saved missed list in order', () => {
   assert.deepEqual(restoreReviewCards(deck, ['c', 'a'])?.map((card) => card.id), ['c', 'a']);
 });
 
-test('restoreReviewCards ignores nothing-saved, a full-deck list and a deck that lost a card', () => {
+test('restoreReviewCards keeps a full-deck review when every card was missed', () => {
+  assert.deepEqual(restoreReviewCards(deck, ['d', 'c', 'b', 'a'])?.map((card) => card.id), ['d', 'c', 'b', 'a']);
+});
+
+test('restoreReviewCards rejects missing, duplicate and invalid saved cards', () => {
   assert.equal(restoreReviewCards(deck, undefined), null);
   assert.equal(restoreReviewCards(deck, []), null);
-  assert.equal(restoreReviewCards(deck, ['a', 'b', 'c', 'd']), null);
+  assert.equal(restoreReviewCards(deck, ['a', 'a']), null);
+  assert.equal(restoreReviewCards(deck, ['a', 'b', 'c', 'd', 'x']), null);
   assert.equal(restoreReviewCards(deck, ['a', 'gone']), null);
 });
 

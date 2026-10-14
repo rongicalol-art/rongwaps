@@ -48,7 +48,6 @@ Use the `verify-change` skill.
 - `scripts/` content/audio pipelines, dev-only; never imported by `src/` or `server/`
 - `supabase/migrations/` DB schema, applied with `supabase db push`
 - `tests/` · `docs/` (`docs/INDEX.md` routes) · `.claude/` agent rules/skills
-- `worker/index.js` unused Cloudflare static-asset worker stub (nothing references it)
 - Gitignored local scratch: `materials/` `output/` `.audit/` `.agents/`
 
 ## Architecture (binding)

@@ -53,16 +53,17 @@ interface StatTileProps {
   shown: number;
   format: (value: number) => string;
   frameClass: string;
+  /** Colours the value and its icon in the tile's own edge colour. */
   inkClass: string;
   bodyRef?: Ref<HTMLSpanElement>;
 }
 
-/** Coloured frame, white label band, white body with the value (and a shine that sweeps once it lands). */
+/** Solid colored frame, white label, white body with the value (and a shine that sweeps once it lands). */
 function StatTile({ label, icon, shown, format, frameClass, inkClass, bodyRef }: StatTileProps) {
   return (
     <div className={`origin-bottom rounded-sm border-b-4 p-0.5 ${frameClass}`}>
       <span className="block py-1 text-center text-[11px] font-black uppercase tracking-[0.09em] text-white">{label}</span>
-      <span ref={bodyRef} className={`relative flex h-13 items-center justify-center gap-1.5 overflow-hidden rounded-[10px] bg-white md:h-14 ${inkClass}`}>
+      <span ref={bodyRef} className={`relative flex h-13 items-center justify-center gap-1.5 overflow-hidden rounded-[10px] bg-ui-surface md:h-14 ${inkClass}`}>
         <AppIcon name={icon} size={20} className="shrink-0" />
         <b className="inline-block text-[22px] font-black tabular-nums md:text-[24px]">{format(shown)}</b>
         <span
@@ -215,10 +216,14 @@ export function SessionComplete({ words, pct, pctLabel, seconds, onContinue, onR
     // Accuracy and time count once their tiles have landed, then settle.
     const countUp = (end: number, delay: number, set: (v: number) => void, tile: HTMLElement | undefined) => at(delay, () => {
       const t0 = performance.now();
+      let lastPaint = -Infinity;
       const step = (now: number) => {
         if (dead) return;
         const p = Math.min(1, (now - t0) / 700);
-        set(Math.round(end * (1 - (1 - p) ** 3)));
+        if (now - lastPaint >= 50 || p === 1) {
+          lastPaint = now;
+          set(Math.round(end * (1 - (1 - p) ** 3)));
+        }
         if (p < 1) frames.add(requestAnimationFrame(step));
         else settle(tile);
       };
@@ -313,15 +318,15 @@ export function SessionComplete({ words, pct, pctLabel, seconds, onContinue, onR
       <div ref={tilesRef} className="relative z-10 mt-7 grid w-full max-w-[360px] grid-cols-3 gap-3 md:mt-8 md:max-w-[440px] md:gap-4">
         <StatTile
           label="Words" icon="cards" shown={wordsShown} format={String} bodyRef={wordsBodyRef}
-          frameClass="bg-brand-primary border-brand-primary-edge" inkClass="text-brand-primary-edge"
+          frameClass="border-brand-primary-edge bg-brand-primary" inkClass="text-brand-primary-edge"
         />
         <StatTile
           label={pctLabel} icon="target" shown={pctShown} format={(v) => `${v}%`}
-          frameClass="bg-feedback-success border-feedback-success-edge" inkClass="text-feedback-success-edge"
+          frameClass="border-feedback-success-edge bg-feedback-success" inkClass="text-feedback-success-edge"
         />
         <StatTile
           label="Time" icon="clock" shown={secondsShown} format={formatTime}
-          frameClass="bg-palette-purple border-palette-purple-edge" inkClass="text-palette-purple-edge"
+          frameClass="border-palette-purple-edge bg-palette-purple" inkClass="text-palette-purple-edge"
         />
       </div>
 
@@ -330,14 +335,14 @@ export function SessionComplete({ words, pct, pctLabel, seconds, onContinue, onR
         <ActionButton size="lg" fullWidth onClick={onContinue}>
           <span>Continue</span>
         </ActionButton>
-        <div className="mt-3 flex w-full flex-col gap-3">
+        <div className="mt-2 flex w-full flex-col gap-1">
           {onReviewMissed && (
-            <ActionButton variant="secondary" size="lg" fullWidth className="!text-ui-ink" onClick={onReviewMissed}>
-              Review {missedCount} missed
+            <ActionButton variant="secondary" size="lg" fullWidth edgeColor="var(--color-ui-border)" className="!bg-ui-surface !text-ui-muted-strong hover:!bg-ui-hover uppercase tracking-normal" onClick={onReviewMissed}>
+              Review missed ({missedCount})
             </ActionButton>
           )}
           {onStudyAllAgain && (
-            <ActionButton variant="secondary" size="lg" fullWidth className="!text-ui-ink" onClick={onStudyAllAgain}>
+            <ActionButton variant="secondary" size="lg" fullWidth edgeColor="var(--color-ui-border)" className="!bg-ui-surface !text-ui-muted-strong hover:!bg-ui-hover uppercase tracking-normal" onClick={onStudyAllAgain}>
               Study all again
             </ActionButton>
           )}

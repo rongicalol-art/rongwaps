@@ -50,6 +50,8 @@ function LessonItemBase({
   const pressTimer = useRef<number | null>(null);
   const pressOrigin = useRef<{ x: number; y: number } | null>(null);
   const longPressed = useRef(false);
+  const imageLoaded = useRef(false);
+  const openWhenLoaded = useRef(false);
   const cancelPress = () => {
     if (pressTimer.current !== null) window.clearTimeout(pressTimer.current);
     pressTimer.current = null;
@@ -78,7 +80,8 @@ function LessonItemBase({
       return;
     }
     if (isSelecting && onToggle) onToggle(lesson.id);
-    else onOpen(lesson.id);
+    else if (imageLoaded.current) onOpen(lesson.id);
+    else openWhenLoaded.current = true;
   };
 
   return (
@@ -119,6 +122,14 @@ function LessonItemBase({
             src={art ?? LESSON_LANDSCAPE_ART[lesson.id]}
             alt=""
             draggable={false}
+            onLoad={() => {
+              imageLoaded.current = true;
+              if (openWhenLoaded.current) {
+                openWhenLoaded.current = false;
+                onOpen(lesson.id);
+              }
+            }}
+            onError={() => { openWhenLoaded.current = false; }}
             className={cn('h-full w-full object-contain p-1', isLocked && 'opacity-35 grayscale')}
           />
           {isLocked && (

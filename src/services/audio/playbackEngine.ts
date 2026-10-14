@@ -76,7 +76,7 @@ export function silenceAudio(audio: HTMLAudioElement): void {
   audio.onerror = null;
   audio.ontimeupdate = null;
   try {
-    audio.pause();
+    if (!audio.paused) audio.pause();
   } catch (err) {
     debugLogger.warn('Audio', 'Audio pause failed', err);
   }
@@ -219,12 +219,13 @@ export function playRangeOnAudioElement(
   }
 
   let lastReportedTime = -1;
-  let lastReportedTimestamp = 0;
+  let lastReportedTimestamp = -Infinity;
 
   const reportTime = (time: number) => {
     const now = typeof performance !== 'undefined' ? performance.now() : Date.now();
-    // Report only if time shifted significantly (>40ms) or at least 50ms passed, to avoid 60fps React render storms
-    if (Math.abs(time - lastReportedTime) >= 0.04 || now - lastReportedTimestamp >= 50) {
+    // Keep exact range-end checks on every frame, but publish React time at most
+    // ten times per second. A seek is reported immediately.
+    if (Math.abs(time - lastReportedTime) >= 0.5 || (time !== lastReportedTime && now - lastReportedTimestamp >= 100)) {
       lastReportedTime = time;
       lastReportedTimestamp = now;
       onTime?.(time);

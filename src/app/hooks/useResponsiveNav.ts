@@ -22,7 +22,7 @@ export const getInitialSidebarCollapsed = () => {
   if (saved !== null) {
     return saved === 'true';
   }
-  return false;
+  return true;
 };
 
 export function useResponsiveNav() {
@@ -49,7 +49,7 @@ export function useResponsiveNav() {
       setIsCollapsed(true);
     } else {
       const saved = readString(SIDEBAR_COLLAPSED_PREFERENCE_KEY);
-      setIsCollapsed(saved === 'true');
+      setIsCollapsed(saved !== 'false');
     }
   }, []);
 
@@ -83,7 +83,7 @@ export function useResponsiveNav() {
         } else if (!prevExpanded && isExp) {
           // Restored to large desktop: restore large-screen state
           const saved = readString(SIDEBAR_COLLAPSED_PREFERENCE_KEY);
-          setIsCollapsed(saved === 'true');
+          setIsCollapsed(saved !== 'false');
         }
         prevExpanded = isExp;
       }

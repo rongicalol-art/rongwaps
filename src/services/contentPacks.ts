@@ -1,3 +1,4 @@
+import { flashcardExtrasKey, flashcardExtrasShard, type FlashcardExtras } from '../utils/vocabulary/flashcardExtrasPack';
 import { debugLogger } from '../utils/debug/debugLogger';
 import type { CharacterJson } from 'hanzi-writer';
 import type { DBDictionaryRow, DBCharacterBreakdown, DBVocabularyRow } from '../types/database';
@@ -44,11 +45,23 @@ export async function getPackManifest(kind: ContentPackKind): Promise<GenericCon
   return getLoader(kind).manifest();
 }
 
+/** One small shard replaces whole-corpus indexing for unchanged course cards. */
+export async function fetchPackedFlashcardExtras(card: Flashcard): Promise<FlashcardExtras | null | undefined> {
+  const key = flashcardExtrasKey(card);
+  try {
+    const pack = await loadPack<Map<string, FlashcardExtras>>('flashcard-extras', flashcardExtrasShard(key));
+    return pack?.get(key) ?? null;
+  } catch (error) {
+    debugLogger.warn('Cache', 'Flashcard extras unavailable; using live lookup.', error);
+    return undefined;
+  }
+}
+
 export async function fetchVocabularyPack(bookId: number): Promise<DBVocabularyRow[] | null> {
   try {
     return await loadPack<DBVocabularyRow[]>('vocabulary', bookId);
   } catch (error) {
-    debugLogger.warn('Cache', `Static vocabulary pack unavailable for book ${bookId}; using Supabase.`, error);
+    debugLogger.warn('Cache', `Static vocabulary pack unavailable for book ${bookId}.`, error);
     return null;
   }
 }
@@ -76,7 +89,7 @@ export function fetchAllVocabularyPacks(): Promise<DBVocabularyRow[] | null> {
       allVocabRowsCache = rows;
       return rows;
     } catch (error) {
-      debugLogger.warn('Cache', 'Complete static vocabulary dataset unavailable; using Supabase.', error);
+      debugLogger.warn('Cache', 'Complete static vocabulary dataset unavailable.', error);
       return null;
     } finally {
       allVocabRowsPromise = null;

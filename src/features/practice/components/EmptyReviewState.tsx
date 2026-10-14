@@ -13,7 +13,7 @@ export function EmptyReviewState({ onClose, accentBg, buttonEdge, title = "You'r
     // No canvas fill here: this always renders inside the practice modal
     // wrapper, which already paints bg-ui-practice-canvas behind it.
     <div className="absolute inset-0 w-full h-full flex flex-col justify-center items-center overflow-hidden overscroll-none">
-      <div className="px-6 py-12 flex flex-col items-center justify-center text-center animate-in zoom-in-95 duration-500">
+      <div className="px-6 py-12 flex flex-col items-center justify-center text-center">
         <div className="w-24 h-24 rounded-full bg-ui-surface shadow-ambient-md border border-ui-border flex items-center justify-center mb-6 text-brand-secondary">
           <PlayfulNavIcon name="reward" className="h-12 w-12" />
         </div>

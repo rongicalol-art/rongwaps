@@ -62,20 +62,4 @@ export const authService = {
     };
   },
 
-  getCurrentUser: async (): Promise<User | null> => {
-    if (!isSupabaseConfigured()) return null;
-    const { data: { user } } = await supabase.auth.getUser();
-    return user ?? null;
-  },
-
-  refreshSession: async (): Promise<void> => {
-    try {
-      if (!isSupabaseConfigured()) return;
-      const { error } = await supabase.auth.refreshSession();
-      if (error) throw error;
-    } catch (error) {
-      debugLogger.error('Auth', "Failed to refresh session:", error);
-      throw error;
-    }
-  }
 };

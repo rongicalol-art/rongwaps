@@ -11,3 +11,10 @@ export function visibleProgressWidth(progress: number, minimumWidth = 28) {
   const remainingMinimum = minimumWidth * (1 - clampedProgress / 100);
   return `calc(${clampedProgress}% + ${remainingMinimum.toFixed(3)}px)`;
 }
+
+/** Same minimum visible width as visibleProgressWidth, expressed as a compositor scale. */
+export function visibleProgressScale(progress: number, trackWidth: number, minimumWidth = 28): number {
+  const fraction = Math.min(100, Math.max(0, Number.isFinite(progress) ? progress : 0)) / 100;
+  if (fraction === 0 || trackWidth <= 0) return fraction;
+  return Math.min(1, fraction + minimumWidth * (1 - fraction) / trackWidth);
+}

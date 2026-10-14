@@ -51,7 +51,6 @@ export const WordBuild: React.FC<WordBuildProps> = ({
     if (isChecked || breakdownOpen || slots.includes(tile)) return;
     const empty = slots.indexOf(null);
     if (empty < 0) return;
-    cancelTileAudio();
     clearAudioError();
     playTile(tiles[tile]);
     setSlots((previous) => previous.map((slot, i) => (i === empty ? tile : slot)));
@@ -114,22 +113,22 @@ export const WordBuild: React.FC<WordBuildProps> = ({
               >
                 {filled && (
                   // Same layoutId as its tray tile: the tile flies into the slot and back.
-                  <motion.button
-                    layoutId={tileId(tile)}
-                    transition={move}
-                    type="button"
-                    onClick={() => clear(i)}
-                    disabled={isChecked}
-                    aria-label={`Remove ${tiles[tile]}`}
-                    className={cn(
-                      'flex h-full w-full items-center justify-center rounded-control border-2 border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface font-chinese text-4xl font-bold text-ui-ink-strong focus-ring',
-                      isChecked && (right
-                        ? 'border-feedback-success bg-feedback-success-surface'
-                        : 'border-feedback-danger bg-feedback-danger-surface'),
-                    )}
-                  >
-                    {tiles[tile]}
-                  </motion.button>
+                  <motion.div layoutId={tileId(tile)} transition={move} className="h-full w-full">
+                    <button
+                      type="button"
+                      onClick={() => clear(i)}
+                      disabled={isChecked}
+                      aria-label={`Remove ${tiles[tile]}`}
+                      className={cn(
+                        'flex h-full w-full items-center justify-center rounded-control border-2 border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface font-chinese text-4xl font-bold text-ui-ink-strong focus-ring',
+                        isChecked && (right
+                          ? 'border-feedback-success bg-feedback-success-surface'
+                          : 'border-feedback-danger bg-feedback-danger-surface'),
+                      )}
+                    >
+                      {tiles[tile]}
+                    </button>
+                  </motion.div>
                 )}
               </div>
             );

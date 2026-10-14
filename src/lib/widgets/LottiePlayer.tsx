@@ -1,7 +1,8 @@
 import { debugLogger } from '../../utils/debug/debugLogger';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useReducedMotion } from 'motion/react';
 import type { ComponentType } from 'react';
-import type { LottieComponentProps } from 'lottie-react';
+import type { LottieComponentProps, LottieRefCurrentProps } from 'lottie-react';
 
 // The lottie-react chunk and each animation's JSON are cached at module level so a
 // remounted player renders its animation on the first frame. Until they are loaded the
@@ -41,6 +42,8 @@ export interface LottiePlayerProps extends Omit<LottieComponentProps, 'animation
    * gets a new identity each render and reloads the animation.
    */
   loadAnimationData?: () => Promise<LottieAnimationData>;
+  /** Restart a completed one-shot animation when it becomes visible again. */
+  replayOnVisible?: boolean;
   width?: number | string;
   height?: number | string;
 }
@@ -49,6 +52,7 @@ export const LottiePlayer: React.FC<LottiePlayerProps> = ({
   animationData, 
   src, 
   loadAnimationData,
+  replayOnVisible = false,
   width = '100%', 
   height = '100%',
   style,
@@ -57,9 +61,56 @@ export const LottiePlayer: React.FC<LottiePlayerProps> = ({
   const cached = loadAnimationData ? (animationCache.get(loadAnimationData) as LottieAnimationData | undefined) : undefined;
   const [data, setData] = useState<LottieAnimationData>(animationData ?? cached);
   const [loading, setLoading] = useState<boolean>(!animationData && !cached && (!!src || !!loadAnimationData));
-  const [, setLottieReady] = useState(LottieComponent !== null);
+  const [lottieReady, setLottieReady] = useState(LottieComponent !== null);
   useEffect(() => { if (!LottieComponent) void preloadLottie().then(() => setLottieReady(true)); }, []);
   const [error, setError] = useState<boolean>(false);
+  const hostRef = useRef<HTMLDivElement>(null);
+  const internalRef = useRef<LottieRefCurrentProps>(null);
+  const playerRef = props.lottieRef ?? internalRef;
+  const reduceMotion = useReducedMotion();
+  const syncPlaybackRef = useRef<() => void>(() => {});
+  const completedRef = useRef(false);
+
+  useEffect(() => {
+    const host = hostRef.current;
+    if (!host || loading || !lottieReady) return;
+    // Treat the initial state as visible. Safari can deliver DOMLoaded before
+    // the first IntersectionObserver callback; starting false pauses autoplay
+    // in that window and can leave one-shot animations frozen on frame zero.
+    let inView = true;
+    let hasObserved = false;
+    let resume = false;
+    const sync = () => {
+      const player = playerRef.current;
+      if (!player?.animationItem) return;
+      if (document.hidden || !inView || reduceMotion) {
+        resume ||= !player.animationItem.isPaused;
+        player.pause();
+      } else if (resume) {
+        resume = false;
+        player.play();
+      }
+    };
+    syncPlaybackRef.current = sync;
+    const observer = typeof IntersectionObserver === 'undefined' ? null : new IntersectionObserver(([entry]) => {
+      const nextInView = entry.isIntersecting && entry.intersectionRatio > 0;
+      if (hasObserved && !inView && nextInView && replayOnVisible && completedRef.current && !reduceMotion) {
+        completedRef.current = false;
+        resume = false;
+        playerRef.current?.goToAndPlay(0, true);
+      }
+      inView = nextInView;
+      hasObserved = true;
+      sync();
+    });
+    observer?.observe(host);
+    document.addEventListener('visibilitychange', sync);
+    return () => {
+      observer?.disconnect();
+      document.removeEventListener('visibilitychange', sync);
+      syncPlaybackRef.current = () => {};
+    };
+  }, [data, loading, lottieReady, playerRef, reduceMotion, replayOnVisible]);
 
   useEffect(() => {
     // If the data object itself updates, update state
@@ -67,6 +118,14 @@ export const LottiePlayer: React.FC<LottiePlayerProps> = ({
       setData(animationData);
       setError(false);
       setLoading(false);
+      return;
+    }
+
+    // Cached remounts keep their artwork on screen without a loading-state swap.
+    if (!src && loadAnimationData && animationCache.has(loadAnimationData)) {
+      setData(animationCache.get(loadAnimationData));
+      setLoading(false);
+      setError(false);
       return;
     }
 
@@ -85,7 +144,7 @@ export const LottiePlayer: React.FC<LottiePlayerProps> = ({
           if (!res.ok) throw new Error(`Asset request failed (${res.status})`);
           json = (await res.json()) as LottieAnimationData;
         } else if (loadAnimationData) {
-          json = await loadAnimationData();
+          json = animationCache.get(loadAnimationData) ?? await loadAnimationData();
         } else {
           return;
         }
@@ -122,8 +181,18 @@ export const LottiePlayer: React.FC<LottiePlayerProps> = ({
   }
 
   return (
-    <div style={{ width, height, ...style }} className="flex justify-center items-center">
-      {LottieComponent && <LottieComponent animationData={data} {...props} style={{ width: '100%', height: '100%' }} />}
+    <div ref={hostRef} style={{ width, height, ...style }} className="flex justify-center items-center">
+      {LottieComponent && <LottieComponent animationData={data} {...props} lottieRef={playerRef}
+        onComplete={(event) => {
+          completedRef.current = true;
+          props.onComplete?.(event);
+        }}
+        onDOMLoaded={(event) => {
+          completedRef.current = false;
+          playerRef.current?.setSubframe(false);
+          props.onDOMLoaded?.(event);
+          syncPlaybackRef.current();
+        }} style={{ width: '100%', height: '100%' }} />}
     </div>
   );
 };

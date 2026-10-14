@@ -54,11 +54,15 @@ export const LessonComplete = ({
     const startTime = performance.now();
 
     let frameId: number;
+    let lastPaint = -Infinity;
     const step = (now: number) => {
       const elapsed = now - startTime;
       const progress = Math.min(1, elapsed / duration);
       const eased = 1 - Math.pow(1 - progress, 3);
-      setAnimatedPct(Math.round(eased * displayPct));
+      if (now - lastPaint >= 50 || progress === 1) {
+        lastPaint = now;
+        setAnimatedPct(Math.round(eased * displayPct));
+      }
       if (progress < 1) {
         frameId = requestAnimationFrame(step);
       }
@@ -75,7 +79,7 @@ export const LessonComplete = ({
   }, [displayPct, reduceMotion]);
 
   return (
-    <div className="absolute inset-0 z-content flex h-full w-full items-center justify-center overflow-y-auto overscroll-contain bg-ui-practice-canvas/80 backdrop-blur-sm px-4 pt-14 pb-dock-clearance sm:px-6 sm:pt-16">
+    <div className="absolute inset-0 z-content flex h-full w-full items-center justify-center overflow-y-auto overscroll-contain bg-ui-practice-canvas px-4 pt-14 pb-dock-clearance sm:px-6 sm:pt-16">
       <motion.main
         aria-labelledby="lesson-complete-title"
         initial={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: 14 }}

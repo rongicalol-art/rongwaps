@@ -7,7 +7,6 @@ import {
   isJevConfigured,
   parseGradeRequest,
 } from '../../server/jevClient';
-import { gradeGrammarAnswer as gradeFromClient } from '../../src/services/answerGradingService';
 
 const GOOD_BODY = { reference: '我在家。', answer: '我在家' };
 
@@ -112,49 +111,4 @@ test('isJevConfigured only accepts a non-empty key', () => {
   assert.equal(isJevConfigured({}), false);
   assert.equal(isJevConfigured({ TYPESAFE_API_KEY: '   ' }), false);
   assert.equal(isJevConfigured({ TYPESAFE_API_KEY: 'key' }), true);
-});
-
-test('client service sends the bearer token and parses the grading result', async () => {
-  const calls: Array<{ url: string; init?: RequestInit }> = [];
-  const result = await gradeFromClient(
-    { reference: '我在家。', answer: '我在家' },
-    {
-      getToken: async () => 'token-123',
-      fetchImpl: (async (url: string, init?: RequestInit) => {
-        calls.push({ url, init });
-        return jsonResponse({ pass: true, checks: { meaning: 0.9, grammar: 0.8, natural: 0.7 }, model: 'jev-1.13.0' });
-      }) as typeof fetch,
-    },
-  );
-  assert.equal(result?.pass, true);
-  assert.equal(calls[0].url, '/api/jev/grade-answer');
-  assert.equal((calls[0].init?.headers as Record<string, string>).Authorization, 'Bearer token-123');
-});
-
-test('client service degrades to null without a token and on failures', async () => {
-  const noToken = await gradeFromClient(
-    { reference: 'a', answer: 'b' },
-    { getToken: async () => null, fetchImpl: (async () => jsonResponse({})) as typeof fetch },
-  );
-  assert.equal(noToken, null);
-
-  const rateLimited = await gradeFromClient(
-    { reference: 'a', answer: 'b' },
-    {
-      getToken: async () => 'token',
-      fetchImpl: (async () => jsonResponse({ error: 'slow down' }, 429)) as typeof fetch,
-    },
-  );
-  assert.equal(rateLimited, null);
-
-  const offline = await gradeFromClient(
-    { reference: 'a', answer: 'b' },
-    {
-      getToken: async () => 'token',
-      fetchImpl: (async () => {
-        throw new Error('offline');
-      }) as typeof fetch,
-    },
-  );
-  assert.equal(offline, null);
 });

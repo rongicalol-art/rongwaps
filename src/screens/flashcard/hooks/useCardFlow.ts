@@ -92,11 +92,7 @@ export function useCardFlow({
       if (cancelled) return;
 
       if (speakDefinition && currentCard.back) {
-        await Promise.race([
-          audioService.speakText(currentCard.back, 'en-US', Math.min(pronunciationRate, 1.1)),
-          wait(3000),
-        ]);
-        audioService.stop();
+        await audioService.speakText(currentCard.back, 'en-US', Math.min(pronunciationRate, 1.1));
       }
       if (cancelled) return;
       await wait(flowBackDelayMs);

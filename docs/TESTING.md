@@ -138,3 +138,19 @@ The shared client uses the installed TypeSafe SDK and a pinned model by default.
 Model probabilities guide review, while code decides the workflow. API shape and
 question design references: [JavaScript SDK](https://docs.typesafe.ai/sdk/javascript)
 and [Noul guidance](https://docs.typesafe.ai/primitives/noul).
+
+# Performance regression checks
+
+`npm run build && npm run perf:check` enforces main entry ≤350 kB, initial entry plus module preloads ≤1000 kB, and critical CSS ≤500 kB. These are project regression limits, not universal website standards. Review the change rather than raising budgets to hide regressions.
+
+The build and dev preflight generate `public/data/flashcard-extras` through `npm run flashcard-extras:export`. These derivative packs preserve the existing whole-course example ranking and normalized memory hooks. Source content stays authoritative. The parity test compares every course card in both scripts and every word hook with live lookup results, checks source versions, and rejects large shards. Do not hand-edit generated packs. Regenerate after vocabulary, course example or memory-hook exports.
+
+Course cards and saved-word hooks load a single signature shard. Altered course cards and unavailable generated packs retain a lazy live fallback. Decoded shards are bounded to 16; resolved card lookups to 128 inactive entries, while mounted cards are retained. Versioned IndexedDB keys preserve offline behavior and prune stale packs.
+
+The derived lookup dataset duplicates resolved examples across card signatures: about 12.9 MB across all 256 shards, versus 1.58 MB of old source packs. It is excluded from whole-app precaching and only requested shards are downloaded. This trades total offline storage over a long study history for smaller immediate loads and removal of runtime whole-corpus indexing; the in-memory limits do not cap current-version IndexedDB storage.
+
+Core Web Vitals are collected locally after boot using Google's `web-vitals` package. Only values and ratings remain in memory. No metric identifiers, entries, account information, persistence or network reporting are collected.
+
+For a safe visual benchmark, open Ctrl+Shift+0 → Performance, select the actual display refresh rate and record 8 seconds. Switch to UI Previews, replay Cards done → quiz and Review → card, then return to Performance and refresh. These previews use fake cards and do not record learning progress. A recording stops when the tab becomes hidden. rAF cadence is a main-thread scheduling signal, not GPU presentation FPS. Long Animation Frames expose blocking and forced synchronous layout where supported; browsers without it use Long Tasks, without claiming forced-layout data.
+
+The proposed runtime gate is p95 rAF gap ≤1.5 display intervals with zero gaps over 50 ms. It is an explicit project target, not a claimed Duolingo standard. Aborted or empty recordings cannot pass. Run against a production build on the target Android device for release evidence; desktop/dev results are only smoke checks. Check startup, audio reading, transitions, idle behavior, and a sustained study session. Physical CPU/GPU load, power and thermal behavior need device traces; no browser JavaScript CPU-percentage estimate is presented.

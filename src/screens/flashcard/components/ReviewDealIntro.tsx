@@ -16,8 +16,6 @@ const TUCK_EASE = 'cubic-bezier(.22,1,.36,1)';
 const TUCK_MS = 780;
 const MAX_TILES = 6;
 const MAX_MISSED_TILES = 3;
-/** A flat honey lip under a lifted (missed) tile, no blur. */
-const LIP = '0 4px 0 color-mix(in srgb, var(--color-brand-primary) 38%, var(--color-ui-surface))';
 interface ReviewDealIntroProps {
   /** The review deck; the first card is the first review card. */
   cards: Flashcard[];
@@ -96,7 +94,8 @@ export function ReviewDealIntro({ cards, passCards, pass, landing = 'card', stag
     const trophyWrap = trophyWrapRef.current;
     const hint = hintRef.current;
     // The header progress fill doubles as the intro's timer (a story bar).
-    const storyFill = document.querySelector<HTMLElement>('[data-practice-progress-fill]');
+    const storyFill = stageRef?.current?.querySelector<HTMLElement>('[data-practice-progress-fill]') ?? document.querySelector<HTMLElement>('[data-practice-progress-fill]');
+    const storyHighlight = storyFill?.parentElement?.querySelector<HTMLElement>('[data-practice-progress-highlight]');
     const slot = slotRef.current;
     const layer = layerRef.current;
     const ghostMode = landing === 'ghost';
@@ -113,6 +112,7 @@ export function ReviewDealIntro({ cards, passCards, pass, landing = 'card', stag
 
     const timers: number[] = [];
     const anims: Animation[] = [];
+    const clones: HTMLElement[] = [];
     // Animations on the real screen (answer bar) that must outlive the overlay; only a real abort cancels them.
     const keep: Animation[] = [];
     const at = (ms: number, fn: () => void) => { timers.push(window.setTimeout(fn, ms)); };
@@ -232,21 +232,20 @@ export function ReviewDealIntro({ cards, passCards, pass, landing = 'card', stag
       [title, subtitle].forEach((el) => { (el as HTMLElement).style.opacity = '1'; });
       tileEls.forEach((el, i) => {
         el.style.opacity = tiles[i].miss ? '1' : '0.32';
-        if (tiles[i].miss) { el.style.transform = 'translateY(-6px)'; el.style.boxShadow = LIP; }
+        if (tiles[i].miss) el.style.transform = 'translateY(-6px)';
       });
       trophyRef.current?.goToAndStop(TROPHY_LAST_FRAME, true);
       if (hint) hint.style.opacity = '1';
       highlight();
-      const fade = (el: Element | null | undefined, from: number, to: number) =>
-        el && A(el, [{ opacity: from }, { opacity: to }], { duration: 300, easing: 'ease-out' });
       const go = () => {
         if (dealt) return;
         dealt = true;
-        fade(root, 1, 0);
-        fade(cardArea, 0, 1);
-        fade(answerBar, 0, 1);
+        onDealStartRef.current();
+        root.style.opacity = '0';
+        if (cardArea) cardArea.style.opacity = '1';
+        if (answerBar) answerBar.style.opacity = '1';
         if (ghostMode) onHandoffRef.current?.(undefined);
-        at(320, finish);
+        finish();
       };
       dealRef.current = go;
       at(1200, go);
@@ -261,7 +260,11 @@ export function ReviewDealIntro({ cards, passCards, pass, landing = 'card', stag
       const TUCK_AT = HIGHLIGHT_AT + 1400;
       // Story bar: the header bar fills like a story until the intro moves on by itself; a quiet line says a tap
       // (or Space) starts now. On the deal the bar is released and springs to the review's own progress.
-      if (storyFill) A(storyFill, [{ width: '0%' }, { width: '100%' }], { duration: TUCK_AT - 520, delay: 520, easing: 'linear' });
+      if (storyFill) {
+        const frames = [{ transform: `translateX(${-storyFill.offsetWidth}px)` }, { transform: 'translateX(0px)' }];
+        A(storyFill, frames, { duration: TUCK_AT - 520, delay: 520, easing: 'linear' });
+        if (storyHighlight) A(storyHighlight, frames, { duration: TUCK_AT - 520, delay: 520, easing: 'linear' });
+      }
       if (hint) {
         A(hint, [{ opacity: 0 }, { opacity: 1 }], { duration: 400, delay: 520, easing: 'ease-out' });
         at(920, () => A(hint, [{ opacity: 1 }, { opacity: 0.45 }, { opacity: 1 }], { duration: 2200, iterations: Infinity, easing: 'ease-in-out' }));
@@ -269,11 +272,9 @@ export function ReviewDealIntro({ cards, passCards, pass, landing = 'card', stag
       at(HIGHLIGHT_AT, () => {
         highlight();
         knownEls.forEach((el) => A(el, [{ opacity: 1 }, { opacity: 0.32 }], { duration: 480, easing: 'ease-out' }));
-        missEls.forEach((el) => A(
-          el,
-          [{ transform: 'none', boxShadow: '0 0 0 0 transparent' }, { transform: 'translateY(-6px)', boxShadow: LIP }],
-          { duration: 560, delay: 100, easing: EASE_OUT },
-        ));
+        missEls.forEach((el) => {
+          A(el, [{ transform: 'none' }, { transform: 'translateY(-6px)' }], { duration: 560, delay: 100, easing: EASE_OUT });
+        });
         A(subtitle, rise, { duration: 600, delay: 160, easing: EASE_OUT });
       });
 
@@ -290,26 +291,39 @@ export function ReviewDealIntro({ cards, passCards, pass, landing = 'card', stag
         const snap = new Map<Element, ReturnType<typeof cur>>();
         [trophyWrap, title, subtitle, ...tileEls, ...(hint ? [hint] : [])].forEach((el) => snap.set(el, cur(el)));
         // The ghost starts exactly where the lifted tile stands.
-        const liftedRect = ghostMode ? morphEl?.getBoundingClientRect() : undefined;
+        const liftedRect = morphEl?.getBoundingClientRect();
+        const tileRects = new Map(tileEls.map((el) => [el, el.getBoundingClientRect()]));
         anims.forEach((a) => a.cancel());
         anims.length = 0;
         const base = (el: Element) => { const t = snap.get(el)!.transform; return t === 'none' ? '' : `${t} `; };
 
-        [trophyWrap, title, subtitle].forEach((el, i) => A(
-          el,
-          [{ opacity: snap.get(el)!.opacity, transform: base(el) + 'translateY(0px)' }, { opacity: 0, transform: base(el) + 'translateY(-10px)' }],
-          { duration: 340, delay: i * 30, easing: 'ease-out' },
-        ));
+        [trophyWrap, title, subtitle].forEach((el, i) => {
+          A(el, [{ transform: base(el) }, { transform: base(el) + (ghostMode ? 'translateY(-12px)' : 'translateY(-28px) scale(.96)') }],
+            { duration: ghostMode ? 240 : 500, delay: ghostMode ? 0 : i * 35, easing: TUCK_EASE });
+          // Opacity has its own clock: the fast movement easing must not erase the text at the start.
+          A(el, [{ opacity: snap.get(el)!.opacity }, { opacity: snap.get(el)!.opacity, offset: 0.25 }, { opacity: 0 }],
+            { duration: ghostMode ? 240 : 500, delay: ghostMode ? 0 : i * 35, easing: 'linear' });
+        });
         if (hint) A(hint, [{ opacity: snap.get(hint)!.opacity }, { opacity: 0 }], { duration: 200, easing: 'ease-out' });
         tileEls.forEach((el) => {
           if (el === morphEl) return;
           const known = knownEls.includes(el);
-          const sc = known ? 0.94 : 0.9;
+          // The sheet gathers toward the leading tile, which stays above it.
+          // Hold the starting opacity briefly so the movement can be read.
+          const rect = tileRects.get(el)!;
+          const travel = ghostMode ? 0.12 : 0.28;
+          const dx = liftedRect ? (liftedRect.left - rect.left) * travel : 0;
+          const dy = liftedRect ? (liftedRect.top - rect.top) * travel : -16;
           A(
             el,
-            [{ opacity: snap.get(el)!.opacity, transform: `${base(el)}scale(1)` }, { opacity: 0, transform: `${base(el)}scale(${sc})` }],
-            { duration: known ? 320 : 200, easing: 'ease-out' },
+            [
+              { transform: base(el) },
+              { transform: `${base(el)}translate(${dx}px,${dy}px) scale(${ghostMode ? 0.96 : known ? 0.88 : 0.92})` },
+            ],
+            { duration: ghostMode ? 280 : 480, easing: TUCK_EASE },
           );
+          A(el, [{ opacity: snap.get(el)!.opacity }, { opacity: snap.get(el)!.opacity, offset: 0.25 }, { opacity: 0 }],
+            { duration: ghostMode ? 220 : 480, easing: 'linear' });
         });
 
         if (ghostMode) {
@@ -330,41 +344,43 @@ export function ReviewDealIntro({ cards, passCards, pass, landing = 'card', stag
           } else {
             onHandoffRef.current?.(undefined);
           }
-          at(380, finish);
+          at(320, finish);
           return;
         }
 
         const real = measureReal();
-        // One glide in which the tile's own box, radius, borders and word size morph into the real card:
-        // text is never stretched.
+        // Lay out the landing once. The paper and the word travel independently:
+        // only transforms change per frame, so Chinese glyphs keep their proportions.
         const endFont = real.font > 0 ? real.font : realFont();
-        // Gap between the real glyphs (em), so the tile word is spaced exactly like the real one.
         const chars = Array.from(cards[0].front).length;
         const gapEm = endFont > 0 && chars > 1 ? Math.max(0, (real.wordW - chars * endFont) / (chars - 1) / endFont) : 0;
-        const bw = (cs ? [cs.borderLeftWidth, cs.borderRightWidth, cs.borderTopWidth, cs.borderBottomWidth] : ['2px', '2px', '2px', '6px']).map(parseFloat);
-        // Where the tile's flex-centred word would end up, vs where the real word really is.
-        const natCx = real.width / 2 + (bw[0] - bw[1]) / 2;
-        const natCy = real.height / 2 + (bw[2] - bw[3]) / 2;
-        const shift = `translate(${real.wordCx - natCx}px,${real.wordCy - natCy}px)`;
-        if (morphEl) {
-          morphEl.style.zIndex = '20';
-          morphEl.style.willChange = 'auto';
-          const s0 = snap.get(morphEl)!;
+        if (morphEl && liftedRect) {
+          const fromLeft = liftedRect.left - rootRect.left;
+          const fromTop = liftedRect.top - rootRect.top;
+          const word = morphWord?.cloneNode(true) as HTMLElement | undefined;
+          if (word) {
+            clones.push(word);
+            const wordX = real.left + real.wordCx;
+            const wordY = real.top + real.wordCy;
+            Object.assign(word.style, {
+              position: 'absolute', left: `${wordX}px`, top: `${wordY}px`,
+              width: 'max-content', fontSize: `${endFont}px`, columnGap: `${gapEm}em`,
+              zIndex: '21', transformOrigin: 'center',
+            });
+            layer.appendChild(word);
+            morphWord!.style.visibility = 'hidden';
+            A(word, [
+              { transform: `translate(-50%,-50%) translate(${fromLeft + liftedRect.width / 2 - wordX}px,${fromTop + liftedRect.height / 2 - wordY}px) scale(${morphFont / endFont})` },
+              { transform: 'translate(-50%,-50%)' },
+            ], { duration: TUCK_MS, easing: TUCK_EASE });
+          }
+          Object.assign(morphEl.style, {
+            left: `${real.left}px`, top: `${real.top}px`, width: `${real.width}px`, height: `${real.height}px`,
+            borderRadius: endRadius, borderWidth: endBorder, boxShadow: 'none', zIndex: '20', transformOrigin: 'top left',
+          });
           A(morphEl, [
-            {
-              left: morphEl.style.left, top: morphEl.style.top, width: `${tw}px`, height: `${th}px`,
-              borderRadius: TILE_RADIUS, borderWidth: TILE_BORDER, transform: s0.transform, boxShadow: s0.boxShadow, opacity: s0.opacity,
-            },
-            {
-              left: `${real.left}px`, top: `${real.top}px`, width: `${real.width}px`, height: `${real.height}px`,
-              borderRadius: endRadius, borderWidth: endBorder, transform: 'none', boxShadow: '0 0 0 0 transparent', opacity: 1,
-            },
-          ], { duration: TUCK_MS, easing: TUCK_EASE });
-        }
-        if (morphWord) {
-          A(morphWord, [
-            { fontSize: `${morphFont}px`, columnGap: '0em', transform: 'translate(0px,0px)' },
-            { fontSize: `${endFont}px`, columnGap: `${gapEm}em`, transform: shift },
+            { transform: `translate(${fromLeft - real.left}px,${fromTop - real.top}px) scale(${liftedRect.width / real.width},${liftedRect.height / real.height})`, opacity: snap.get(morphEl)!.opacity },
+            { transform: 'none', opacity: 1 },
           ], { duration: TUCK_MS, easing: TUCK_EASE });
         }
         if (answerBar) {
@@ -382,6 +398,7 @@ export function ReviewDealIntro({ cards, passCards, pass, landing = 'card', stag
     return () => {
       timers.forEach((id) => window.clearTimeout(id));
       anims.forEach((a) => a.cancel());
+      clones.forEach((clone) => clone.remove());
       // A finished intro lets the answer bar finish rising on its own; an aborted one drops it.
       if (!finished) keep.forEach((a) => a.cancel());
       dealRef.current = () => {};
@@ -398,6 +415,7 @@ export function ReviewDealIntro({ cards, passCards, pass, landing = 'card', stag
       if (event.key !== ' ' && event.key !== 'Enter') return;
       event.preventDefault();
       event.stopPropagation();
+      event.stopImmediatePropagation();
       dealRef.current();
     };
     window.addEventListener('keydown', onKey, true);
@@ -447,7 +465,7 @@ export function ReviewDealIntro({ cards, passCards, pass, landing = 'card', stag
         {tiles.map(({ card }) => (
           <div
             key={card.id}
-            className={cn(CARD_SURFACE_CLASS, 'absolute flex items-center justify-center will-change-transform')}
+            className={cn(CARD_SURFACE_CLASS, 'absolute flex items-center justify-center')}
             style={{ opacity: 0, borderWidth: TILE_BORDER, borderRadius: TILE_RADIUS }}
           >
             <span

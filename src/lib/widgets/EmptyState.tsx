@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import { motion } from 'motion/react';
 import { AppIcon, type AppIconName } from './AppIcon';
 import { cn } from '../../utils/cn';
 
@@ -35,10 +34,7 @@ export function EmptyState({
   const isIconName = typeof icon === 'string';
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ type: 'spring', stiffness: 320, damping: 26 }}
+    <div
       className={cn(
         'flex flex-col items-center justify-center text-center',
         compact ? 'px-4 py-8' : 'px-6 py-14',
@@ -84,6 +80,6 @@ export function EmptyState({
       )}
 
       {action && <div className="mt-1 flex items-center justify-center">{action}</div>}
-    </motion.div>
+    </div>
   );
 }

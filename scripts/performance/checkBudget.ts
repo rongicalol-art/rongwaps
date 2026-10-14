@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import { readFile, stat } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = fileURLToPath(new URL('../../', import.meta.url));
+const html = await readFile(resolve(root, 'dist/index.html'), 'utf8');
+const entry = html.match(/<script[^>]+src="([^" ]+\.js)"/)?.[1];
+assert.ok(entry, 'Build the production app before checking budgets.');
+const preload = [...html.matchAll(/<link[^>]+rel="modulepreload"[^>]+href="([^"]+)"/g)].map((match) => match[1]);
+const files = [...new Set([entry, ...preload])];
+const sizes = await Promise.all(files.map(async (path) => ({ path, bytes: (await stat(resolve(root, `dist${path}`))).size })));
+const total = sizes.reduce((sum, item) => sum + item.bytes, 0);
+assert.ok(sizes[0].bytes <= 350_000, `Main entry exceeds 350 kB: ${sizes[0].bytes}`);
+assert.ok(total <= 1_000_000, `Initial JS exceeds 1000 kB: ${total}`);
+const style = html.match(/<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"/)?.[1];
+assert.ok(style);
+const css = (await stat(resolve(root, `dist${style}`))).size;
+assert.ok(css <= 500_000, `Critical CSS exceeds 500 kB: ${css}`);
+console.log(JSON.stringify({ mainEntryBytes: sizes[0].bytes, initialJsBytes: total, criticalCssBytes: css, budgets: 'pass' }, null, 2));

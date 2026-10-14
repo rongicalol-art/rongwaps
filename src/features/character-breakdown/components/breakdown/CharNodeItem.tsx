@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { AppIcon, LevelTag } from '../../../../lib/widgets';
 import { useLevels } from '../../../../hooks/useLevels';
 import { resolveLevel } from '../../../../utils/lesson/levels';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { useAppStore } from '../../../../store/useAppStore';
 import { numberToToneMarks } from '../../../../utils/pinyin/pinyin';
 import { useComponentVocabRelation } from '../../../../hooks/useComponentVocabRelation';
@@ -26,6 +26,7 @@ export function CharNodeItem({
   accentTextClass = 'text-brand-secondary',
   onWordClick,
 }: CharNodeItemProps) {
+  const reduceMotion = useReducedMotion();
   const levels = useLevels();
   const setDictionaryWord = useAppStore((state) => state.setDictionaryWord);
   const data = useCharBreakdown(char);
@@ -138,10 +139,10 @@ export function CharNodeItem({
       <AnimatePresence initial={false}>
         {hasChildren && isExpanded && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
+            initial={reduceMotion ? { opacity: 1 } : { height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            exit={reduceMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
+            transition={{ duration: reduceMotion ? 0 : 0.25, ease: 'easeInOut' }}
             className="flex flex-col w-full origin-top relative overflow-hidden"
           >
              <div className="w-full h-[2px] bg-ui-divider" />

@@ -1,11 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
 import { useAppStore } from '../../../store/useAppStore';
 import { SAMPLE_BOOKS } from '../../../data/books';
 import { WorkspaceWindow } from '../../../lib/widgets';
-import { SingleBreakdownView, useBreakdownBackHandler } from '../../character-breakdown';
-import { WordDetailView } from './WordDetailView';
+import { useBreakdownBackHandler } from '../../character-breakdown';
+import { WordDetailSkeleton } from './WordDetailSkeleton';
+
+const SingleBreakdownView = lazy(() => import('../../character-breakdown').then((m) => ({ default: m.SingleBreakdownView })));
+const WordDetailView = lazy(() => import('./WordDetailView').then((m) => ({ default: m.WordDetailView })));
 
 const SINGLE_HANZI_RE = /^[\u3400-\u9FFF]$/u;
 
@@ -68,49 +71,51 @@ export function DictionaryDetailOverlay() {
         // Its own window over the workspace or any open study window, so the
         // tone behind the sidebar always matches and nothing beneath peeks out.
         <WorkspaceWindow key="dictionary-detail" id="dictionary-detail-overlay-container" layer="window-detail" tone="practice">
-          {rootIsSingleChar ? (
-            <SingleBreakdownView
-              key={`word-${rootWord.word}`}
-              word={rootWord.word}
-              initialCharIndex={0}
-              onClose={handleUiClose}
-              activeBook={activeBook}
-              pushBreakdown={pushCharacter}
-              depth={0}
-            />
-          ) : (
-            <WordDetailView
-              key={`word-${rootWord.word}`}
-              word={rootWord.word}
-              onClose={handleUiClose}
-              pushCharacter={pushCharacter}
-              depth={0}
-            />
-          )}
-
-          <AnimatePresence>
-            {stack.slice(1).map((item, idx) =>
-              isSingleChar(item.word) ? (
-                <SingleBreakdownView
-                  key={`char-${idx + 1}-${item.word}`}
-                  word={item.word}
-                  initialCharIndex={item.index}
-                  onBack={handleUiBack}
-                  activeBook={activeBook}
-                  pushBreakdown={pushCharacter}
-                  depth={idx + 1}
-                />
-              ) : (
-                <WordDetailView
-                  key={`word-${idx + 1}-${item.word}`}
-                  word={item.word}
-                  onBack={handleUiBack}
-                  pushCharacter={pushCharacter}
-                  depth={idx + 1}
-                />
-              ),
+          <Suspense fallback={<WordDetailSkeleton />}>
+            {rootIsSingleChar ? (
+              <SingleBreakdownView
+                key={`word-${rootWord.word}`}
+                word={rootWord.word}
+                initialCharIndex={0}
+                onClose={handleUiClose}
+                activeBook={activeBook}
+                pushBreakdown={pushCharacter}
+                depth={0}
+              />
+            ) : (
+              <WordDetailView
+                key={`word-${rootWord.word}`}
+                word={rootWord.word}
+                onClose={handleUiClose}
+                pushCharacter={pushCharacter}
+                depth={0}
+              />
             )}
-          </AnimatePresence>
+
+            <AnimatePresence>
+              {stack.slice(1).map((item, idx) =>
+                isSingleChar(item.word) ? (
+                  <SingleBreakdownView
+                    key={`char-${idx + 1}-${item.word}`}
+                    word={item.word}
+                    initialCharIndex={item.index}
+                    onBack={handleUiBack}
+                    activeBook={activeBook}
+                    pushBreakdown={pushCharacter}
+                    depth={idx + 1}
+                  />
+                ) : (
+                  <WordDetailView
+                    key={`word-${idx + 1}-${item.word}`}
+                    word={item.word}
+                    onBack={handleUiBack}
+                    pushCharacter={pushCharacter}
+                    depth={idx + 1}
+                  />
+                ),
+              )}
+            </AnimatePresence>
+          </Suspense>
         </WorkspaceWindow>
       )}
     </AnimatePresence>
