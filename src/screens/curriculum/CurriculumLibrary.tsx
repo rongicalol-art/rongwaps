@@ -83,7 +83,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     if (isLoading || error || hasActiveActivity) return;
 
     const availablePartsByLesson = Object.fromEntries(
-      progress.lessons.map((lesson) => [lesson.id, lesson.parts.map((part) => part.id)]),
+      progress.lessons.map((lesson) => [lesson.id, lesson.state === 'locked' ? [] : lesson.parts.map((part) => part.id)]),
     );
     setSelectedLessonParts((current) => (
       reconcilePartSelectionsForBook(current, activeBookId, availablePartsByLesson)
@@ -191,6 +191,10 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
                     activeBook={activeBook}
                     onOpen={handleOpenLesson}
                   />
+                )}
+
+                {activeBook.status === 'locked' && (
+                  <p className="py-10 text-lg font-black text-ui-muted">Coming soon</p>
                 )}
 
                 <div className="flex w-full flex-col gap-4 lg:flex-row lg:gap-6">

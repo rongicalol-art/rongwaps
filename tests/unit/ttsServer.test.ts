@@ -136,6 +136,32 @@ test('cache endpoint accepts literal percent text and rejects prototype voices',
   }
 });
 
+test('retired grading API returns 404 without contacting auth or grading providers', async (context) => {
+  const server = app.listen(0, '127.0.0.1');
+  await new Promise<void>((resolve) => server.once('listening', resolve));
+  const address = server.address();
+  assert.ok(address && typeof address !== 'string');
+  const base = `http://127.0.0.1:${address.port}`;
+  const networkFetch = globalThis.fetch;
+  context.mock.method(globalThis, 'fetch', (input: RequestInfo | URL, init?: RequestInit) => {
+    assert.equal(new URL(String(input)).origin, base, 'Retired endpoint must never call an external service');
+    return networkFetch(input, init);
+  });
+  try {
+    for (const authorization of [undefined, 'Bearer retired-endpoint-fixture']) {
+      const headers = new Headers({ 'Content-Type': 'application/json' });
+      if (authorization) headers.set('Authorization', authorization);
+      const response = await fetch(`${base}/api/jev/grade-answer`, {
+        method: 'POST', headers, body: JSON.stringify({ reference: '我在家。', answer: '我在家' }),
+      });
+      assert.equal(response.status, 404);
+      assert.deepEqual(await response.json(), { error: 'Not found' });
+    }
+  } finally {
+    await new Promise<void>((resolve, reject) => server.close((error) => error ? reject(error) : resolve()));
+  }
+});
+
 test('a hung storage body releases the read after five seconds even if the transport ignores abort', async (context) => {
   const { getTtsObject } = await import('../../server/ttsStore');
   const oldSend = S3Client.prototype.send;

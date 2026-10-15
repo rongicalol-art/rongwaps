@@ -45,7 +45,7 @@ export function PrivacyPolicyContent() {
 
       <LegalSection title="How we use it">
         <LegalParagraph>
-          To run your account, sync your progress between devices, play audio, grade your answers, prevent
+          To run your account, sync your progress between devices, play audio, prevent
           abuse (we apply usage limits per account), and answer your questions. We do not sell your data, show
           ads, or build advertising profiles.
         </LegalParagraph>
@@ -65,10 +65,6 @@ export function PrivacyPolicyContent() {
               <strong>Microsoft</strong> text-to-speech: when you play neural audio, the word or sentence
               (up to 500 characters) is sent from our server to Microsoft to be turned into speech. Your
               name and email are not sent. The resulting audio is cached and reused for everyone.
-            </>,
-            <>
-              <strong>TypeSafe</strong> (AI grading): when a free-text answer is graded, your typed answer
-              and the expected answer are sent to TypeSafe&apos;s API. Your name and email are not sent.
             </>,
             <>
               <strong>Cloudflare R2</strong> may store audio files and lesson content. They contain no

@@ -1,6 +1,8 @@
 # 🔌 Express API Specification
 
-The backend (`server/index.ts`) runs under Node.js + Express and provides neural TTS synthesis + caching endpoints, as well as AI grading services. Static audio assets stream directly from the CDN edge / bucket storage (`VITE_AUDIO_BASE_URL`), bypassing the application server. Card audio may also be a complete HTTPS URL, including a temporary signed link. Playback does not require CDN CORS headers; background offline caching is best-effort and does. In development it also mounts the Vite dev-server middleware; in production it serves the built `dist/` directory and falls back to `index.html` for app routes.
+The backend (`server/index.ts`) runs under Node.js + Express and provides neural TTS synthesis + caching endpoints. Static audio assets stream directly from the CDN edge / bucket storage (`VITE_AUDIO_BASE_URL`), bypassing the application server. Card audio may also be a complete HTTPS URL, including a temporary signed link. Playback does not require CDN CORS headers; background offline caching is best-effort and does. In development it also mounts the Vite dev-server middleware; in production it serves the built `dist/` directory and falls back to `index.html` for app routes.
+
+There is no runtime Jev grading endpoint. `POST /api/jev/grade-answer` returns 404 without authenticating or calling a provider. Jev content-review scripts remain development tooling.
 
 ## 🚦 Rate limits
 
@@ -13,7 +15,6 @@ plus the standard `RateLimit-*` headers.
 | `POST /api/tts` | `apiLimiter` + authenticated user limiter | 1 min | 60/IP, 30/user; 600/user/day by default |
 | `GET /api/tts-cache/:text` | `apiLimiter` | 1 min | 60 |
 | `GET /api/tts/:voice/*` | `apiLimiter` | 1 min | 60 |
-| `POST /api/jev/grade-answer` | `apiLimiter` + authenticated user limiter | 1 min | 60/IP, 10/user; 200/user/day by default |
 
 ---
 

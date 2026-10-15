@@ -43,3 +43,17 @@ test('every tone is a complete role set with readable text', () => {
   }
   assert.equal(new Set(SAMPLE_BOOKS.map((b) => b.theme.primary)).size, 4);
 });
+
+test('beta locks lessons past BETA_LAST_LESSON and books 2-4', async () => {
+  const { SAMPLE_LESSONS, BETA_LAST_LESSON } = await import('../../src/data/books');
+  for (const l of SAMPLE_LESSONS) assert.equal(l.status, l.id > BETA_LAST_LESSON ? 'locked' : 'available');
+  assert.deepEqual(SAMPLE_BOOKS.map((b) => b.status === 'locked'), [false, true, true, true]);
+});
+
+test('isLessonLocked: Intro and 1-8 open, 9+ and books 2-4 locked', async () => {
+  const { isLessonLocked } = await import('../../src/data/books');
+  assert.equal(isLessonLocked(1, 0), false);
+  assert.equal(isLessonLocked(1, 8), false);
+  assert.equal(isLessonLocked(1, 9), true);
+  assert.equal(isLessonLocked(2, 1), true);
+});

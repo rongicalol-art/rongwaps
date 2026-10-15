@@ -47,6 +47,11 @@ type CourseBook = BookMeta & {
   theme: BookTheme;
 };
 
+/** Beta: only Book 1, Introduction + Lessons 1-8 are playable. Raise or remove to open more. */
+export const BETA_LAST_LESSON = 8;
+
+const BEYOND_BETA_BOOK_STATUS: BookMeta['status'] = 'locked';
+
 function buildBook(meta: BookMeta, theme: BookTheme): CourseBook {
   return {
     ...meta,
@@ -82,7 +87,7 @@ export const SAMPLE_BOOKS: CourseBook[] = [
     },
   ),
   buildBook(
-    { id: 2, label: 'Book 2', title: 'Modern Chinese 2', subtitle: '時代華語 2', level: 'A2', progress: 0, status: 'unlocked' },
+    { id: 2, label: 'Book 2', title: 'Modern Chinese 2', subtitle: '時代華語 2', level: 'A2', progress: 0, status: BEYOND_BETA_BOOK_STATUS },
     {
       primary: '#D4793A',
       primaryEdge: '#B05F27',
@@ -101,7 +106,7 @@ export const SAMPLE_BOOKS: CourseBook[] = [
     },
   ),
   buildBook(
-    { id: 3, label: 'Book 3', title: 'Modern Chinese 3', subtitle: '時代華語 3', level: 'B1', progress: 0, status: 'unlocked' },
+    { id: 3, label: 'Book 3', title: 'Modern Chinese 3', subtitle: '時代華語 3', level: 'B1', progress: 0, status: BEYOND_BETA_BOOK_STATUS },
     {
       primary: '#A0522D',
       primaryEdge: '#8B4513',
@@ -120,7 +125,7 @@ export const SAMPLE_BOOKS: CourseBook[] = [
     },
   ),
   buildBook(
-    { id: 4, label: 'Book 4', title: 'Modern Chinese 4', subtitle: '時代華語 4', level: 'B2', progress: 0, status: 'unlocked' },
+    { id: 4, label: 'Book 4', title: 'Modern Chinese 4', subtitle: '時代華語 4', level: 'B2', progress: 0, status: BEYOND_BETA_BOOK_STATUS },
     {
       primary: '#4F9F2A',
       primaryEdge: '#3F8420',
@@ -140,7 +145,7 @@ export const SAMPLE_BOOKS: CourseBook[] = [
   ),
 ];
 
-export const SAMPLE_LESSONS = [
+const BOOK_LESSONS = [
   { id: 1, label: 'Lesson 1', title: 'The New Classmate · 新同學', status: 'available' },
   { id: 2, label: 'Lesson 2', title: 'What Time Do You Go to School? · 你幾點去學校？', status: 'available' },
   { id: 3, label: 'Lesson 3', title: 'Buying Birthday Gifts · 買生日禮物', status: 'available' },
@@ -158,3 +163,15 @@ export const SAMPLE_LESSONS = [
   { id: 15, label: 'Lesson 15', title: 'The Chinese Animal Zodiac · 十二生肖', status: 'available' },
   { id: 16, label: 'Lesson 16', title: 'Traveling in Taiwan · 在台灣旅行', status: 'available' },
 ];
+
+export const SAMPLE_LESSONS = BOOK_LESSONS.map((lesson) => ({
+  ...lesson,
+  status: lesson.id > BETA_LAST_LESSON ? 'locked' : 'available',
+}));
+
+
+/** True for any lesson in a locked book or a locked lesson of Book 1 (Introduction, id 0, is open). */
+export function isLessonLocked(bookId: number, lessonId: number): boolean {
+  if (SAMPLE_BOOKS.find((book) => book.id === bookId)?.status === 'locked') return true;
+  return SAMPLE_LESSONS.find((lesson) => lesson.id === lessonId)?.status === 'locked';
+}

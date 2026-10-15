@@ -71,9 +71,9 @@ export function TermsContent() {
 
       <LegalSection title="Fair-use limits">
         <LegalParagraph>
-          Neural audio and AI answer grading cost us money per use, so they have per-minute and daily limits
-          for each account. When you reach a limit, the app falls back to simpler options (such as your
-          browser&apos;s voice or exact-match checking) until it resets. Limits may change during the beta.
+          Neural audio uses server resources, so it has per-minute and daily limits for each account.
+          When you reach a limit, the app falls back to your browser&apos;s voice when available until the
+          limit resets. Limits may change during the beta.
         </LegalParagraph>
       </LegalSection>
 

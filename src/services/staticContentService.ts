@@ -2,6 +2,7 @@ import { del, get, keys, set } from 'idb-keyval';
 import { timeDataRequest } from '../utils/debug/requestTiming';
 import { debugLogger } from '../utils/debug/debugLogger';
 import { NetworkError, PackMissError } from './errors';
+import { isSupabaseConfigured, supabase } from './supabaseClient';
 
 interface StaticJsonOptions {
   persistentKey?: string;
@@ -27,6 +28,35 @@ const CONTENT_BASE_URL = (import.meta.env?.VITE_CONTENT_BASE_URL || '/data').rep
  */
 export function contentUrl(path: string): string {
   return path.startsWith('/data/') ? `${CONTENT_BASE_URL}${path.slice('/data'.length)}` : path;
+}
+
+/** Lesson content: the server only serves these to a signed-in user (keep in sync with server/index.ts). */
+const GATED_CONTENT = /^\/data\/(vocabulary|readings|grammar|course-examples|dialogue-alignment|flashcard-extras|book-pages)\//;
+
+/** `fetch` for `/data/...` content; sends the session token for the gated lesson packs (same-origin only). */
+export async function fetchContent(path: string, init: RequestInit = {}): Promise<Response> {
+  const headers = new Headers(init.headers);
+  if (GATED_CONTENT.test(path) && !/^https?:/.test(CONTENT_BASE_URL) && isSupabaseConfigured()) {
+    const { data } = await supabase.auth.getSession();
+    if (data.session) headers.set('Authorization', `Bearer ${data.session.access_token}`);
+  }
+  return fetch(contentUrl(path), { ...init, headers });
+}
+
+const blobUrls = new Map<string, Promise<string>>();
+
+/** An object URL for a gated image (an `<img>` cannot send the token itself). Cached for the session. */
+export function fetchContentBlobUrl(path: string): Promise<string> {
+  let url = blobUrls.get(path);
+  if (!url) {
+    url = fetchContent(path).then(async (response) => {
+      if (!response.ok) throw new NetworkError(`${path} returned ${response.status}`, response.status);
+      return URL.createObjectURL(await response.blob());
+    });
+    url.catch(() => blobUrls.delete(path));
+    blobUrls.set(path, url);
+  }
+  return url;
 }
 
 function canUsePersistentCache(): boolean {
@@ -77,7 +107,7 @@ export async function fetchStaticJsonWithMetadata<T>(
 
   let response: Response;
   try {
-    response = await timeDataRequest(label, () => fetch(contentUrl(path), { cache: options.revalidate ? 'no-cache' : 'default' }));
+    response = await timeDataRequest(label, () => fetchContent(path, { cache: options.revalidate ? 'no-cache' : 'default' }));
   } catch (error) {
     if (fallback !== undefined) return { data: fallback, source: 'persistent-cache' };
     throw error;

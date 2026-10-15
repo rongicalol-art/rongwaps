@@ -64,6 +64,7 @@ class FakeAudio {
   }
 
   play(): Promise<void> {
+    this.paused = false;
     return new Promise(() => {});
   }
 
