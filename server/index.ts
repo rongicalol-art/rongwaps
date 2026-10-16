@@ -402,12 +402,10 @@ async function bootstrap() {
       "index.html", "sw.js", "registerSW.js", "manifest.json", "manifest.webmanifest",
     ]);
     const assetsMarker = `${path.sep}assets${path.sep}`;
-    // Lesson content is served to signed-in users only (keep in sync with GATED_CONTENT in
-    // src/services/staticContentService.ts). Dictionary, breakdown and other reference packs stay public.
-    const gatedDirs = [
-      "vocabulary", "readings", "grammar", "course-examples", "dialogue-alignment", "flashcard-extras", "book-pages",
-    ].map((dir) => path.join(distDataDir, dir) + path.sep);
-    const lessonContentLimiter = userLimiter(600);
+    // Authenticated content is same-origin so every pack request can be checked.
+    // Keep in sync with PROTECTED_CONTENT in src/services/staticContentService.ts.
+    const gatedDirs = [distDataDir + path.sep];
+    const contentRequestLimiter = userLimiter(600);
     // Inspect the decoded full path before express.static, rather than mounting
     // on /data: encoded mount names and duplicate slashes must hit the same gate.
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -425,7 +423,7 @@ async function bootstrap() {
         if (limitErr) return next(limitErr);
         requireAuth(req, res, (authErr?: unknown) => {
           if (authErr) return next(authErr);
-          lessonContentLimiter(req, res, next);
+          contentRequestLimiter(req, res, next);
         });
       });
     });
@@ -437,7 +435,7 @@ async function bootstrap() {
           res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
         } else if (gatedDirs.some((dir) => filePath.startsWith(dir))) {
           // Never let a shared cache (Cloudflare edge) hand lesson content to someone signed out.
-          res.setHeader("Cache-Control", "private, max-age=3600");
+          res.setHeader("Cache-Control", "private, no-store");
         } else if (
           filePath.startsWith(distDataDir)
           || path.basename(filePath) === "dictionary_trie.json"
