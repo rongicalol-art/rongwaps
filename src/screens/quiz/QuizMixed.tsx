@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { SAMPLE_BOOKS } from '../../data/books';
 import { useAppStore } from '../../store/useAppStore';
-import { buildMeasureWordChoices, createQuizRng, parseMeasureWord, type QuizFormat, type QuizTypeId } from '../../utils/vocabulary/quizDirector';
+import { buildMeasureWordChoices, createQuizRng, parseMeasureWord, type QuizBeat, type QuizFormat, type QuizTypeId } from '../../utils/vocabulary/quizDirector';
 import { useQuizMixed } from './hooks/useQuizMixed';
 import { cancelQuizLaunch } from './quizShuffle';
 import { QuizShell, type QuizModeProps } from './QuizShell';
@@ -45,45 +45,55 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
   const onBuildReady = useCallback((ready: boolean) => setBuildReady(ready), []);
   const session = useQuizMixed(cards, sessionKey, types ?? undefined);
   const { beat, currentCard, status, followUp, isReviewPass } = session;
-  const [audioPreparedFor, setAudioPreparedFor] = useState<string | null>(null);
+  const [audioPreparedFor, setAudioPreparedFor] = useState<{ key: string; beats: Set<QuizBeat> } | null>(null);
   const [audioProgress, setAudioProgress] = useState<AudioPreloadProgress | null>(null);
   const [audioPreparationError, setAudioPreparationError] = useState(false);
   const preparationAbort = useRef<AbortController | null>(null);
   const preparationKey = session.audioPreparationKey;
   // Keep the quiz shell mounted during review so its intro and honey tone survive round changes.
-  const preparingAudio = !isReviewPass && session.audioBeats.length > 0 && !session.completed && audioPreparedFor !== preparationKey;
+  const preparingAudio = !isReviewPass && session.audioBeats.length > 0 && !session.completed && (audioPreparedFor?.key !== preparationKey || !audioPreparedFor.beats.has(session.audioBeats[0]));
   useEffect(() => {
     if (!session.audioBeats.length) return;
     const controller = new AbortController();
     preparationAbort.current = controller;
     let active = true;
+    let currentReady = false;
     setAudioProgress(null);
     setAudioPreparationError(false);
     void (async () => {
-      let lookupFailed = false;
-      const files = new Set(session.audioBeats.flatMap((question) => question.cards.map((card) => card.audio)));
-      const builds = session.audioBeats.filter((question) => question.format === 'word-build');
-      if (builds.length) {
-        const [recordings, sounds, readings] = await Promise.all([
-          getCourseVocabLookupMap().catch(() => { lookupFailed = true; return new Map<string, Flashcard>(); }),
-          getPronunciationAudioIndex().catch(() => { lookupFailed = true; return new Map<string, string>(); }),
-          fetchPronunciationIndex().catch(() => { lookupFailed = true; return null; }),
-        ]);
+      for (const [index, question] of session.audioBeats.entries()) {
         if (!active) return;
-        for (const question of builds) for (const char of new Set(question.tiles ?? [])) {
-          files.add(resolveWordBuildTileAudio(question.cards[0], char, recordings, sounds, readings));
+        let lookupFailed = false;
+        const files = new Set(question.cards.map((card) => card.audio));
+        if (question.format === 'word-build') {
+          const [recordings, sounds, readings] = await Promise.all([
+            getCourseVocabLookupMap().catch(() => { lookupFailed = true; return new Map<string, Flashcard>(); }),
+            getPronunciationAudioIndex().catch(() => { lookupFailed = true; return new Map<string, string>(); }),
+            fetchPronunciationIndex().catch(() => { lookupFailed = true; return null; }),
+          ]);
+          if (!active) return;
+          for (const char of new Set(question.tiles ?? [])) {
+            files.add(resolveWordBuildTileAudio(question.cards[0], char, recordings, sounds, readings));
+          }
         }
+        let failed = 0;
+        await audioService.preload([...files], controller.signal, (progress) => {
+          failed = progress.failed;
+          if (active && index === 0) setAudioProgress(progress);
+        });
+        if (!active) return;
+        if (index === 0) {
+          setAudioPreparationError(failed > 0 || lookupFailed);
+          if (failed || lookupFailed) return;
+          // Open the current question before warming the following one.
+          currentReady = true;
+        }
+        if (!failed && !lookupFailed) setAudioPreparedFor((previous) => ({
+          key: preparationKey,
+          beats: new Set([...(previous?.key === preparationKey ? previous.beats : []), question]),
+        }));
       }
-      let failed = 0;
-      await audioService.preload([...files], controller.signal, (progress) => {
-        failed = progress.failed;
-        if (active) setAudioProgress(progress);
-      });
-      if (active) {
-        setAudioPreparationError(failed > 0 || lookupFailed);
-        if (!failed && !lookupFailed) setAudioPreparedFor(preparationKey);
-      }
-    })().catch(() => { if (active) setAudioPreparationError(true); });
+    })().catch(() => { if (active && !currentReady) setAudioPreparationError(true); });
     return () => {
       active = false;
       controller.abort();
@@ -124,7 +134,10 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
   const beatTitle = followUp === 'open' ? 'Choose the measure word' : isMatch ? matchTitle : beat ? TITLES[beat.format] : '';
   const startQuiz = () => {
     preparationAbort.current?.abort();
-    setAudioPreparedFor(preparationKey);
+    setAudioPreparedFor((previous) => ({
+      key: preparationKey,
+      beats: new Set([...(previous?.key === preparationKey ? previous.beats : []), ...session.audioBeats.slice(0, 1)]),
+    }));
   };
 
   if (preparingAudio) return (

@@ -162,8 +162,10 @@ export function isUsableAudioBlob(blob: Blob): boolean {
 
 /** Cache-only lookup: a miss must keep first playback streaming from the CDN. */
 export async function readCachedAudioBlob(fileName: string, allowStale = true): Promise<Blob | null> {
+  // Keep a longer disk budget offline; a stalled cache must not hold online audio.
+  const cacheWaitMs = typeof navigator !== 'undefined' && navigator.onLine === false ? 1000 : 100;
   let timer: ReturnType<typeof setTimeout>;
-  const deadline = new Promise<null>((resolve) => { timer = setTimeout(() => resolve(null), 1000); });
+  const deadline = new Promise<null>((resolve) => { timer = setTimeout(() => resolve(null), cacheWaitMs); });
   const read = (async () => {
     try {
       const cache = await getAudioFileCache();
@@ -315,19 +317,19 @@ export async function preloadAudioFiles(
   onProgress?.({ ...progress });
 
   const processNext = async (): Promise<void> => {
-    if (queue.length === 0 || signal?.aborted) return;
-    const fileName = queue.shift()!;
-    try {
-      if (!getCachedObjectUrl(objectUrls, fileName)) await getAudioObjectUrl(fileName);
-      if (!signal?.aborted) progress.ready++;
-    } catch (error) {
-      if (!signal?.aborted) { progress.failed++; debugLogger.warn('Audio', 'Failed to preload audio', { fileName: fileName.split('?')[0], error }); }
-      // fetch TypeError means transport/CORS failure, not a missing recording.
-      if (!signal?.aborted && (error instanceof TypeError || (error instanceof Error && error.name === 'AbortError'))) { progress.blocked = true; queue.length = 0; }
+    while (queue.length > 0 && !signal?.aborted) {
+      const fileName = queue.shift()!;
+      try {
+        if (!getCachedObjectUrl(objectUrls, fileName)) await getAudioObjectUrl(fileName);
+        if (!signal?.aborted) progress.ready++;
+      } catch (error) {
+        if (!signal?.aborted) { progress.failed++; debugLogger.warn('Audio', 'Failed to preload audio', { fileName: fileName.split('?')[0], error }); }
+        // fetch TypeError means transport/CORS failure, not a missing recording.
+        if (!signal?.aborted && (error instanceof TypeError || (error instanceof Error && error.name === 'AbortError'))) { progress.blocked = true; queue.length = 0; }
+      }
+      if (!signal?.aborted) onProgress?.({ ...progress });
     }
-    if (!signal?.aborted) onProgress?.({ ...progress });
-    await processNext();
   };
 
-  await processNext();
+  await Promise.all(Array.from({ length: Math.min(3, queue.length) }, processNext));
 }

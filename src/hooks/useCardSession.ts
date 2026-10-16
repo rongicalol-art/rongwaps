@@ -202,20 +202,24 @@ export function useCardSession(
     };
   }, [persistProgress]);
 
-  // Preload only the next two cards during idle time so slow connections stay free
-  // for the audio currently playing.
+  // Prepare the current recording first; look ahead only after it is ready.
   useEffect(() => {
     if (!activeCards || activeCards.length === 0) return;
     const upcomingAudios = activeCards
       .slice(currentIndex + 1, currentIndex + 3)
       .map((c) => c.audio)
       .filter((a): a is string => Boolean(a));
-    if (upcomingAudios.length === 0) return;
+    const currentAudio = activeCards[currentIndex]?.audio;
+    if (!currentAudio && upcomingAudios.length === 0) return;
 
     const controller = new AbortController();
-    const timeoutId = window.setTimeout(() => {
-      void audioService.preload(upcomingAudios, controller.signal);
-    }, 500);
+    let timeoutId: number | undefined;
+    void audioService.preload([currentAudio], controller.signal).then(() => {
+      if (controller.signal.aborted) return;
+      timeoutId = window.setTimeout(() => {
+        void audioService.preload(upcomingAudios, controller.signal);
+      }, 500);
+    });
     return () => { window.clearTimeout(timeoutId); controller.abort(); };
   }, [activeCards, currentIndex]);
 

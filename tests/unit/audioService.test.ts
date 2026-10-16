@@ -416,7 +416,7 @@ test('fetchAudioBlob aborts a stalled response body after its timeout', async ()
   }
 });
 
-test('audio preload deduplicates names and keeps only one fetch active', async () => {
+test('audio preload deduplicates names and caps parallel downloads at three', async () => {
   const { preloadAudioFiles } = await import('../../src/services/audio/audioCache');
   const objectUrls = new Map<string, string>();
   const calls: string[] = [];
@@ -424,7 +424,7 @@ test('audio preload deduplicates names and keeps only one fetch active', async (
   let maxActive = 0;
 
   await preloadAudioFiles(
-    ['one.mp3', 'one.mp3', 'two.mp3'],
+    ['one.mp3', 'one.mp3', 'two.mp3', 'three.mp3', 'four.mp3'],
     objectUrls,
     async (fileName) => {
       calls.push(fileName);
@@ -437,8 +437,8 @@ test('audio preload deduplicates names and keeps only one fetch active', async (
     },
   );
 
-  assert.deepEqual(calls, ['one.mp3', 'two.mp3']);
-  assert.equal(maxActive, 1);
+  assert.deepEqual(calls, ['one.mp3', 'two.mp3', 'three.mp3', 'four.mp3']);
+  assert.equal(maxActive, 3);
 });
 
 // A persistent cache shared by fresh AudioService instances; no network or real progress.
@@ -700,12 +700,12 @@ test('leaving a question aborts its active preload download as well as queued cl
     });
   };
   try {
-    const pending = service.preload(['https://audio.example.test/preload-abort.mp3', 'https://audio.example.test/queued.mp3'], controller.signal);
+    const pending = service.preload(['https://audio.example.test/preload-abort.mp3', 'https://audio.example.test/active-two.mp3', 'https://audio.example.test/active-three.mp3', 'https://audio.example.test/queued.mp3'], controller.signal);
     await tick();
     controller.abort();
     await pending;
     assert.equal(aborted, true);
-    assert.equal(requests, 1);
+    assert.equal(requests, 3);
   } finally { globalThis.fetch = savedFetch; }
 });
 
@@ -748,8 +748,8 @@ test('a shared transport failure stops quiz downloads without declaring remainin
     attempted.push(name);
     throw new TypeError('Failed to fetch');
   }, undefined, (state) => { progress = state; });
-  assert.equal(attempted.length, 1);
-  assert.deepEqual(progress, { ready: 0, failed: 1, total: 19, blocked: true });
+  assert.equal(attempted.length, 3);
+  assert.deepEqual(progress, { ready: 0, failed: 3, total: 19, blocked: true });
 });
 
 test('canceling one preload subscriber preserves the other subscriber and only fetches once', async () => {
@@ -1031,7 +1031,34 @@ test('an unresponsive cache body yields to streaming rather than holding playbac
   context.mock.timers.enable({ apis: ['setTimeout'] });
   try {
     const pending = readCachedAudioBlob('https://audio.example.test/cache-body-stall.mp3');
-    context.mock.timers.tick(1000);
+    context.mock.timers.tick(100);
     assert.equal(await pending, null);
   } finally { memoryCache.match = oldMatch; context.mock.timers.reset(); }
+});
+
+
+test('offline playback allows a slow local cache to finish before the longer deadline', async (context) => {
+  const { readCachedAudioBlob } = await import('../../src/services/audio/audioCache');
+  const oldNavigator = Object.getOwnPropertyDescriptor(globalThis, 'navigator');
+  const oldMatch = memoryCache.match;
+  let deliver!: (blob: Blob) => void;
+  const blob = new Blob(['offline recording'], { type: 'audio/mpeg' });
+  memoryCache.match = async () => ({ headers: new Headers(), blob: () => new Promise<Blob>((resolve) => { deliver = resolve; }) }) as Response;
+  Object.defineProperty(globalThis, 'navigator', { configurable: true, value: { onLine: false } });
+  context.mock.timers.enable({ apis: ['setTimeout'] });
+  try {
+    let settled = false;
+    const pending = readCachedAudioBlob('https://audio.example.test/slow-offline-cache.mp3').then((result) => { settled = true; return result; });
+    for (let i = 0; i < 5; i++) await Promise.resolve();
+    context.mock.timers.tick(350);
+    await Promise.resolve();
+    assert.equal(settled, false);
+    deliver(blob);
+    assert.equal(await pending, blob);
+  } finally {
+    memoryCache.match = oldMatch;
+    context.mock.timers.reset();
+    if (oldNavigator) Object.defineProperty(globalThis, 'navigator', oldNavigator);
+    else Reflect.deleteProperty(globalThis, 'navigator');
+  }
 });
