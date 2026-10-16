@@ -216,6 +216,14 @@ export interface Database {
     };
     Views: Record<never, never>;
     Functions: {
+      has_beta_access: {
+        Args: Record<PropertyKey, never>;
+        Returns: boolean;
+      };
+      require_school_beta_access: {
+        Args: Record<PropertyKey, never>;
+        Returns: undefined;
+      };
       upsert_card_progress: {
         Args: { p_records: Json };
         Returns: undefined;

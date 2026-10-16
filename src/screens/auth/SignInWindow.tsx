@@ -100,7 +100,7 @@ export function SignInWindow() {
               Sign In
             </h1>
             <p className="mt-1.5 text-sm font-bold text-ui-muted-strong">
-              Sign in with Google to sync your learning progress.
+              Use your Shu-Te student Google account (s…@stu.edu.tw).
             </p>
 
             {authError && (

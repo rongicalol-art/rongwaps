@@ -4,7 +4,7 @@ import rateLimit from "express-rate-limit";
 import path from "path";
 import dotenv from "dotenv";
 import { MsEdgeTTS, OUTPUT_FORMAT } from "msedge-tts";
-import { supabase } from "./supabase.js";
+import { createUserSupabaseClient, supabase } from "./supabase.js";
 import { getTtsObject, putTtsObject } from "./ttsStore.js";
 
 // Load local server configuration.
@@ -274,6 +274,17 @@ async function requireAuth(req: express.Request, res: express.Response, next: ex
       res.status(401).json({ error: "Unauthorized" });
       return;
     }
+    const { data: allowed, error: accessError, status } = await createUserSupabaseClient(token).rpc('has_beta_access');
+    if (accessError) {
+      res.status(status === 403 || status === 401 ? status : 503).json({
+        error: status === 403 ? 'Use your Shu-Te student Google account.' : 'Access verification unavailable.',
+      });
+      return;
+    }
+    if (allowed !== true) {
+      res.status(403).json({ error: 'Use your Shu-Te student Google account.' });
+      return;
+    }
     res.locals.userId = user.id;
   } catch (err: unknown) {
     console.error("Auth check failed:", err);
@@ -397,15 +408,19 @@ async function bootstrap() {
       "vocabulary", "readings", "grammar", "course-examples", "dialogue-alignment", "flashcard-extras", "book-pages",
     ].map((dir) => path.join(distDataDir, dir) + path.sep);
     const lessonContentLimiter = userLimiter(600);
-    app.use("/data", (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    // Inspect the decoded full path before express.static, rather than mounting
+    // on /data: encoded mount names and duplicate slashes must hit the same gate.
+    app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
       let requested: string;
       try {
-        requested = path.join(distDataDir, decodeURIComponent(req.path)); // decode so %-encoded paths cannot dodge the gate
+        requested = path.resolve(distPath, `.${decodeURIComponent(req.path)}`);
       } catch {
         res.status(400).json({ error: "Bad request" });
         return;
       }
       if (!gatedDirs.some((dir) => requested.startsWith(dir))) return next();
+      res.setHeader('Cache-Control', 'private, no-store');
+      res.vary('Authorization');
       apiLimiter(req, res, (limitErr?: unknown) => {
         if (limitErr) return next(limitErr);
         requireAuth(req, res, (authErr?: unknown) => {

@@ -13,6 +13,7 @@ One Node service (`npm run build`, then `npm start`) serves the SPA and the API.
 - `npm run build` ends with `scripts/build/trimBetaContent.ts`: it rewrites the built `dist/data` (never `public/data`) to Book 1, Introduction + Lessons 1..`BETA_LAST_LESSON` (`src/data/books.ts`) for vocabulary, readings, grammar, course examples, dialogue alignment, flashcard extras and the textbook page scans, and recomputes manifests. Dictionary, breakdowns, search and memory hooks stay whole. Launch day: remove that step from `build`.
 - The server (`server/index.ts`) serves those lesson packs and scans only with a valid Supabase bearer token (`Cache-Control: private`, 600/min per user); `staticContentService.fetchContent` sends the token and the book-page viewer loads scans as blobs. Keep the gated folder list in sync between the two files.
 - Probe after deploy: `curl -i https://<host>/data/vocabulary/book-1.json` must return 401; `/data/dictionary/manifest.json` must return 200.
+- Use `curl --path-as-is` to check encoded mount names (`/%64ata/grammar/book-1.json`) and duplicate slashes (`//data/grammar/book-1.json`) also return 401 without a token. The gate normalizes the full request path before static-file serving.
 
 ## Environment variables
 
@@ -25,6 +26,25 @@ Server (config): `TRUST_PROXY` (set behind Render/Cloudflare so rate limits see 
 `TYPESAFE_API_KEY` is used only by local/CI Jev content-review tools, not the deployed app server. Azure Speech credentials are not used. Remove obsolete `TYPESAFE_API_KEY`, `JEV_DAILY_LIMIT`, `AZURE_SPEECH_KEY` and `AZURE_SPEECH_REGION` settings from existing web-service environments; removing them from the Blueprint does not confirm deletion from an existing service.
 
 ## Supabase dashboard
+
+### School-only beta access
+
+Apply `supabase/migrations/20261016015445_school_beta_access.sql` before deploying the matching app/server. The database owns the authorization rule: a verified Google identity with a student email (`s` + digits + `@stu.edu.tw`) and Google Workspace `custom_claims.hd = stu.edu.tw`, or a verified Google email explicitly approved in `private.beta_owner_emails`. This confirms school-account membership, not current enrollment. No owner exception is seeded automatically.
+
+Enable these Authentication hooks after applying the migration:
+
+- Before User Created: `pg-functions://postgres/private/before_school_beta_signup`
+- Custom Access Token: `pg-functions://postgres/private/school_beta_access_token_hook`
+
+The first filters registrations; the second checks provider-owned identities on sign-in and refresh. The PostgREST pre-request function and restrictive user-table policies also block previously issued unauthorized tokens. Express verifies `has_beta_access` using each request's token; the client checks the same RPC before publishing a signed-in user. Existing users and progress are retained.
+
+Grant an owner exception only after the owner explicitly supplies the exact Google email; insert its lowercase value into `private.beta_owner_emails` through an administrative database connection. Removing that row immediately denies subsequent protected requests. Neither client-editable `user_metadata` nor Google's account-picker hints authorize access.
+
+Local security tests: use a disposable Supabase Postgres container, clone its initialized `postgres` database into `school_beta_test`, copy the migration into the container, then run `tests/database/schoolBetaAccess.test.sql` with psql's `migration` variable pointing to the copied file. The fixture refuses other database names and never uses real user progress.
+
+After `npm run build`, run `python3 tests/production/schoolBetaSmoke.py` to exercise the real Express gate with canonical, encoded, duplicate-slash and traversal paths using both GET and HEAD. It starts a temporary server and does not sign in or write progress.
+
+Remaining content exposure: dictionary/decomposition/memory-hook and other reference packs remain public; lesson/grammar/readings/scans already use the authenticated `/data` gate. Recorded audio remains on the public R2 CDN. School-only authentication does not make those reference packs or R2 URLs private, nor revoke files previously downloaded. Their protection is a separate content-delivery task.
 
 1. Authentication, URL Configuration: Site URL = production origin; add it (and any preview origin) to Redirect URLs.
 2. Providers: enable Google, add the production origin and Supabase callback to the Google OAuth client.
