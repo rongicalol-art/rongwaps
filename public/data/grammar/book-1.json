@@ -65588,15 +65588,27 @@
                     "segments": [
                       {
                         "type": "slot",
-                        "id": "answer",
+                        "id": "because",
                         "answers": [
                           "因為"
                         ]
                       },
                       {
                         "type": "text",
-                        "traditional": "他喜歡綠色。",
-                        "simplified": "他喜欢绿色。"
+                        "traditional": "他喜歡綠色，",
+                        "simplified": "他喜欢绿色，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "so",
+                        "answers": [
+                          "所以"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "他常常穿綠色的衣服。",
+                        "simplified": "他常常穿绿色的衣服。"
                       }
                     ],
                     "speaker": {
@@ -65625,31 +65637,36 @@
                 "repairs": [
                   {
                     "placed": [
-                      "所以"
+                      "為什麼"
                     ],
                     "mark": [
-                      "所以"
+                      "為什麼"
                     ],
-                    "note": "所以 introduces a result. A reason starts with 因為."
+                    "note": "為什麼 asks why. You are giving the reason and the result: 因為…所以…."
                   },
                   {
-                    "placed": [
-                      "為什麼"
-                    ],
-                    "mark": [
-                      "為什麼"
-                    ],
-                    "note": "為什麼 asks why. The answer gives the reason with 因為."
+                    "slot": {
+                      "id": "because",
+                      "tile": "所以"
+                    },
+                    "note": "The reason comes first, with 因為; 所以 starts the result."
+                  },
+                  {
+                    "slot": {
+                      "id": "so",
+                      "tile": "因為"
+                    },
+                    "note": "The result comes second, with 所以; 因為 starts the reason."
                   }
                 ],
-                "fallbackRepair": "A reason starts with 因為.",
+                "fallbackRepair": "Reason first with 因為, result second with 所以.",
                 "result": {
-                  "traditional": "因為他喜歡綠色。",
-                  "simplified": "因为他喜欢绿色。",
-                  "pinyin": "Yīnwèi tā xǐhuān lǜsè.",
-                  "english": "Because he likes green."
+                  "traditional": "因為他喜歡綠色，所以他常常穿綠色的衣服。",
+                  "simplified": "因为他喜欢绿色，所以他常常穿绿色的衣服。",
+                  "pinyin": "Yīnwèi tā xǐhuān lǜsè, suǒyǐ tā chángcháng chuān lǜsè de yīfu.",
+                  "english": "Because he likes green, he often wears green clothes."
                 },
-                "prompt": "Why does he often wear green? (He likes green.)"
+                "prompt": "Why does he often wear green? (He likes green.) Build your answer: reason, then result."
               },
               {
                 "id": "l8g2-p2",
@@ -65699,9 +65716,8 @@
                 ],
                 "tiles": [
                   {
-                    "traditional": "幾點",
-                    "simplified": "几点",
-                    "pinyin": "jǐ diǎn"
+                    "traditional": "所以",
+                    "pinyin": "suǒyǐ"
                   },
                   {
                     "traditional": "因為",
@@ -65717,12 +65733,12 @@
                 "repairs": [
                   {
                     "placed": [
-                      "幾點"
+                      "所以"
                     ],
                     "mark": [
-                      "幾點"
+                      "所以"
                     ],
-                    "note": "The reply gives reasons, not a time, so ask 為什麼."
+                    "note": "所以 introduces a result. To ask for a reason, use 為什麼."
                   },
                   {
                     "placed": [
@@ -65766,15 +65782,27 @@
                     "segments": [
                       {
                         "type": "slot",
-                        "id": "answer",
+                        "id": "because",
                         "answers": [
                           "因為"
                         ]
                       },
                       {
                         "type": "text",
-                        "traditional": "我想去臺灣玩。",
-                        "simplified": "我想去台湾玩。"
+                        "traditional": "我想去臺灣玩，",
+                        "simplified": "我想去台湾玩，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "so",
+                        "answers": [
+                          "所以"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "我想學中文。",
+                        "simplified": "我想学中文。"
                       }
                     ],
                     "speaker": {
@@ -65803,31 +65831,36 @@
                 "repairs": [
                   {
                     "placed": [
-                      "所以"
+                      "為什麼"
                     ],
                     "mark": [
-                      "所以"
+                      "為什麼"
                     ],
-                    "note": "所以 introduces a result. A reason starts with 因為."
+                    "note": "為什麼 asks why. You are giving the reason and the result: 因為…所以…."
                   },
                   {
-                    "placed": [
-                      "為什麼"
-                    ],
-                    "mark": [
-                      "為什麼"
-                    ],
-                    "note": "為什麼 asks why. The answer gives the reason with 因為."
+                    "slot": {
+                      "id": "because",
+                      "tile": "所以"
+                    },
+                    "note": "The reason comes first, with 因為; 所以 starts the result."
+                  },
+                  {
+                    "slot": {
+                      "id": "so",
+                      "tile": "因為"
+                    },
+                    "note": "The result comes second, with 所以; 因為 starts the reason."
                   }
                 ],
-                "fallbackRepair": "A reason starts with 因為.",
+                "fallbackRepair": "Reason first with 因為, result second with 所以.",
                 "result": {
-                  "traditional": "因為我想去臺灣玩。",
-                  "pinyin": "Yīnwèi wǒ xiǎng qù Táiwān wán.",
-                  "english": "Because I want to visit Taiwan.",
-                  "simplified": "因为我想去台湾玩。"
+                  "traditional": "因為我想去臺灣玩，所以我想學中文。",
+                  "simplified": "因为我想去台湾玩，所以我想学中文。",
+                  "pinyin": "Yīnwèi wǒ xiǎng qù Táiwān wán, suǒyǐ wǒ xiǎng xué Zhōngwén.",
+                  "english": "Because I want to visit Taiwan, I want to learn Chinese."
                 },
-                "prompt": "Why do you want to learn Chinese? (You want to visit Taiwan.)"
+                "prompt": "Why do you want to learn Chinese? (You want to visit Taiwan.) Build your answer: reason, then result."
               }
             ]
           }
