@@ -1324,24 +1324,43 @@
               },
               {
                 "type": "slot",
-                "id": "link",
+                "id": "gap-0",
                 "answers": [
                   "的"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "生日是二月二十四號。",
-                "simplified": "生日是二月二十四号。"
+                "traditional": "生日"
+              },
+              {
+                "type": "slot",
+                "id": "gap-1",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "是"
+              },
+              {
+                "type": "slot",
+                "id": "gap-2",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "二月二十四號。",
+                "simplified": "二月二十四号。"
+              },
+              {
+                "type": "slot",
+                "id": "gap-3",
+                "answers": []
               }
             ]
           }
         ],
         "tiles": [
-          {
-            "traditional": "有",
-            "pinyin": "yǒu"
-          },
           {
             "traditional": "的",
             "pinyin": "de"
@@ -1350,22 +1369,35 @@
         "repairs": [
           {
             "slot": {
-              "id": "link",
-              "tile": "有"
+              "id": "gap-1",
+              "tile": "的"
             },
-            "mark": [
-              "有"
-            ],
-            "note": "Use 的 to connect Mom to her birthday; 有 would say she has something."
+            "note": "的 joins Mom to her birthday, so it goes right after 媽媽, not after 生日."
+          },
+          {
+            "slot": {
+              "id": "gap-2",
+              "tile": "的"
+            },
+            "note": "的 never comes right after 是; it joins 媽媽 and 生日."
+          },
+          {
+            "slot": {
+              "id": "gap-3",
+              "tile": "的"
+            },
+            "note": "的 joins the owner to the thing owned, here 媽媽 and 生日."
           }
         ],
-        "fallbackRepair": "Connect 媽媽 and 生日 with 的.",
+        "fallbackRepair": "Think about which two words 的 joins.",
         "result": {
           "traditional": "媽媽的生日是二月二十四號。",
           "simplified": "妈妈的生日是二月二十四号。",
           "pinyin": "Māma de shēngrì shì èr yuè èrshísì hào.",
           "english": "Mom’s birthday is February 24."
-        }
+        },
+        "gaps": true,
+        "prompt": "Drag 的 to where it goes."
       },
       {
         "id": "l2g04-2",
@@ -1376,19 +1408,48 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "你喜歡台灣",
-                "simplified": "你喜欢台湾"
+                "traditional": "你"
               },
               {
                 "type": "slot",
-                "id": "link",
+                "id": "gap-0",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "喜歡",
+                "simplified": "喜欢"
+              },
+              {
+                "type": "slot",
+                "id": "gap-1",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "台灣",
+                "simplified": "台湾"
+              },
+              {
+                "type": "slot",
+                "id": "gap-2",
                 "answers": [
                   "的"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "水果嗎？"
+                "traditional": "水果"
+              },
+              {
+                "type": "slot",
+                "id": "gap-3",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "嗎？",
+                "simplified": "吗？"
               }
             ]
           }
@@ -1397,31 +1458,40 @@
           {
             "traditional": "的",
             "pinyin": "de"
-          },
-          {
-            "traditional": "是",
-            "pinyin": "shì"
           }
         ],
         "repairs": [
           {
             "slot": {
-              "id": "link",
-              "tile": "是"
+              "id": "gap-0",
+              "tile": "的"
             },
-            "mark": [
-              "是"
-            ],
-            "note": "台灣 describes where the fruit is from, so connect it to 水果 with 的."
+            "note": "你的 would mean \"your\", and the sentence would need a thing after it; 的 joins 台灣 and 水果."
+          },
+          {
+            "slot": {
+              "id": "gap-1",
+              "tile": "的"
+            },
+            "note": "喜歡的 would make 喜歡 describe the fruit; 的 joins 台灣 and 水果."
+          },
+          {
+            "slot": {
+              "id": "gap-3",
+              "tile": "的"
+            },
+            "note": "的 goes between 台灣 and 水果, not after 水果."
           }
         ],
-        "fallbackRepair": "Use 的 to connect 台灣 to 水果.",
+        "fallbackRepair": "Think about which two words 的 joins.",
         "result": {
           "traditional": "你喜歡台灣的水果嗎？",
           "simplified": "你喜欢台湾的水果吗？",
           "pinyin": "Nǐ xǐhuān Táiwān de shuǐguǒ ma?",
           "english": "Do you like Taiwanese fruit?"
-        }
+        },
+        "gaps": true,
+        "prompt": "Drag 的 to where it goes."
       },
       {
         "id": "l2g04-3",
@@ -1436,24 +1506,43 @@
               },
               {
                 "type": "slot",
-                "id": "link",
+                "id": "gap-0",
                 "answers": [
                   "的"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "孩子明天去美國。",
-                "simplified": "孩子明天去美国。"
+                "traditional": "孩子"
+              },
+              {
+                "type": "slot",
+                "id": "gap-1",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "明天"
+              },
+              {
+                "type": "slot",
+                "id": "gap-2",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "去美國。",
+                "simplified": "去美国。"
+              },
+              {
+                "type": "slot",
+                "id": "gap-3",
+                "answers": []
               }
             ]
           }
         ],
         "tiles": [
-          {
-            "traditional": "是",
-            "pinyin": "shì"
-          },
           {
             "traditional": "的",
             "pinyin": "de"
@@ -1462,78 +1551,35 @@
         "repairs": [
           {
             "slot": {
-              "id": "link",
-              "tile": "是"
+              "id": "gap-1",
+              "tile": "的"
             },
-            "mark": [
-              "是"
-            ],
-            "note": "Connect 我 to the child with 的 before saying that the child goes to the United States tomorrow."
+            "note": "的 joins 我 to the child, so it goes before 孩子, not after it."
+          },
+          {
+            "slot": {
+              "id": "gap-2",
+              "tile": "的"
+            },
+            "note": "的 joins 我 and 孩子; 明天的 would not name the owner."
+          },
+          {
+            "slot": {
+              "id": "gap-3",
+              "tile": "的"
+            },
+            "note": "的 joins 我 and 孩子, not the end of the sentence."
           }
         ],
-        "fallbackRepair": "Use 的 to connect the owner 我 to 孩子.",
+        "fallbackRepair": "Think about which two words 的 joins.",
         "result": {
           "traditional": "我的孩子明天去美國。",
           "simplified": "我的孩子明天去美国。",
           "pinyin": "Wǒ de háizi míngtiān qù Měiguó.",
           "english": "My child is going to the United States tomorrow."
         },
-        "prompt": "Your child is going to the United States tomorrow."
-      },
-      {
-        "id": "l2g04-4",
-        "source": "own",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "我"
-              },
-              {
-                "type": "slot",
-                "id": "verb",
-                "answers": [
-                  "有"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "孩子。"
-              }
-            ]
-          }
-        ],
-        "tiles": [
-          {
-            "traditional": "的",
-            "pinyin": "de"
-          },
-          {
-            "traditional": "有",
-            "pinyin": "yǒu"
-          }
-        ],
-        "repairs": [
-          {
-            "slot": {
-              "id": "verb",
-              "tile": "的"
-            },
-            "mark": [
-              "的"
-            ],
-            "note": "我的孩子 only names your child; use 有 to state that you have a child."
-          }
-        ],
-        "fallbackRepair": "Use 有 to state possession in a complete sentence.",
-        "result": {
-          "traditional": "我有孩子。",
-          "pinyin": "Wǒ yǒu háizi.",
-          "english": "I have a child."
-        },
-        "prompt": "Tell someone that you have a child."
+        "prompt": "Drag 的 to where it goes.",
+        "gaps": true
       }
     ],
     "allowWords": [
@@ -1942,8 +1988,15 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "台灣熱",
-                "simplified": "台湾热"
+                "traditional": "台灣",
+                "simplified": "台湾"
+              },
+              {
+                "type": "slot",
+                "id": "first",
+                "answers": [
+                  "熱"
+                ]
               },
               {
                 "type": "slot",
@@ -1953,8 +2006,15 @@
                 ]
               },
               {
+                "type": "slot",
+                "id": "second",
+                "answers": [
+                  "熱"
+                ]
+              },
+              {
                 "type": "text",
-                "traditional": "熱？"
+                "traditional": "？"
               }
             ],
             "speaker": {
@@ -1966,8 +2026,8 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "台灣很熱（rè）。",
-                "simplified": "台湾很热（rè）。"
+                "traditional": "台灣很熱。",
+                "simplified": "台湾很热。"
               }
             ],
             "speaker": {
@@ -1978,16 +2038,37 @@
         ],
         "tiles": [
           {
+            "traditional": "熱",
+            "simplified": "热",
+            "pinyin": "rè"
+          },
+          {
+            "traditional": "熱",
+            "simplified": "热",
+            "pinyin": "rè"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
             "traditional": "沒",
             "simplified": "没",
             "pinyin": "méi"
           },
           {
-            "traditional": "不",
-            "pinyin": "bù"
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "嗎"
+            ],
+            "note": "嗎 is never used in this pattern; 熱不熱 already makes the question."
+          },
           {
             "slot": {
               "id": "negative",
@@ -1997,9 +2078,29 @@
               "沒"
             ],
             "note": "The picture shows a quality, 熱, so pair it with 不 rather than 沒."
+          },
+          {
+            "slot": {
+              "id": "first",
+              "tile": "不"
+            },
+            "mark": [
+              "不"
+            ],
+            "note": "Start with the word you are asking about: 熱."
+          },
+          {
+            "slot": {
+              "id": "second",
+              "tile": "不"
+            },
+            "mark": [
+              "不"
+            ],
+            "note": "End with the word again: 熱 不 熱."
           }
         ],
-        "fallbackRepair": "Put 不 between the two copies of 熱.",
+        "fallbackRepair": "Say the word, then 不, then the word again: 熱不熱.",
         "result": {
           "traditional": "台灣熱不熱？",
           "simplified": "台湾热不热？",
@@ -2024,7 +2125,8 @@
             "pinyin": "rè",
             "english": "hot"
           }
-        ]
+        ],
+        "prompt": "Ask whether Taiwan is hot."
       },
       {
         "id": "l2g06-2",
@@ -2035,7 +2137,14 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "你喜"
+                "traditional": "你"
+              },
+              {
+                "type": "slot",
+                "id": "first",
+                "answers": [
+                  "喜歡"
+                ]
               },
               {
                 "type": "slot",
@@ -2045,9 +2154,15 @@
                 ]
               },
               {
+                "type": "slot",
+                "id": "second",
+                "answers": [
+                  "喜歡"
+                ]
+              },
+              {
                 "type": "text",
-                "traditional": "喜歡吃水果？",
-                "simplified": "喜欢吃水果？"
+                "traditional": "吃水果？"
               }
             ],
             "speaker": {
@@ -2071,16 +2186,37 @@
         ],
         "tiles": [
           {
-            "traditional": "沒",
-            "pinyin": "méi",
-            "simplified": "没"
+            "traditional": "喜歡",
+            "simplified": "喜欢",
+            "pinyin": "xǐhuān"
+          },
+          {
+            "traditional": "喜歡",
+            "simplified": "喜欢",
+            "pinyin": "xǐhuān"
           },
           {
             "traditional": "不",
             "pinyin": "bù"
+          },
+          {
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
+          },
+          {
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "嗎"
+            ],
+            "note": "嗎 is never used in this pattern; the verb, 不, then the verb again already asks the question."
+          },
           {
             "slot": {
               "id": "negative",
@@ -2089,16 +2225,37 @@
             "mark": [
               "沒"
             ],
-            "note": "喜歡 pairs its positive and negative forms with 不, giving 喜不喜歡."
+            "note": "喜歡 is negated with 不, not 沒."
+          },
+          {
+            "slot": {
+              "id": "first",
+              "tile": "不"
+            },
+            "mark": [
+              "不"
+            ],
+            "note": "Start with the verb you are asking about: 喜歡."
+          },
+          {
+            "slot": {
+              "id": "second",
+              "tile": "不"
+            },
+            "mark": [
+              "不"
+            ],
+            "note": "End with the verb again: 喜歡 不 喜歡."
           }
         ],
-        "fallbackRepair": "Put 不 between 喜 and 喜歡.",
+        "fallbackRepair": "Say the verb, then 不, then the verb again: 喜歡不喜歡.",
         "result": {
-          "traditional": "你喜不喜歡吃水果？",
-          "simplified": "你喜不喜欢吃水果？",
-          "pinyin": "Nǐ xǐ bù xǐhuān chī shuǐguǒ?",
+          "traditional": "你喜歡不喜歡吃水果？",
+          "simplified": "你喜欢不喜欢吃水果？",
+          "pinyin": "Nǐ xǐhuān bù xǐhuān chī shuǐguǒ?",
           "english": "Do you like eating fruit?"
-        }
+        },
+        "prompt": "Ask whether the person likes eating fruit."
       },
       {
         "id": "l2g06-3",
@@ -2113,7 +2270,7 @@
               },
               {
                 "type": "slot",
-                "id": "positive",
+                "id": "first",
                 "answers": [
                   "要"
                 ]
@@ -2122,7 +2279,14 @@
                 "type": "slot",
                 "id": "negative",
                 "answers": [
-                  "不要"
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "second",
+                "answers": [
+                  "要"
                 ]
               },
               {
@@ -2150,66 +2314,73 @@
         ],
         "tiles": [
           {
-            "traditional": "不要",
-            "pinyin": "bú yào"
-          },
-          {
-            "traditional": "不去",
-            "pinyin": "bú qù"
+            "traditional": "要",
+            "pinyin": "yào"
           },
           {
             "traditional": "要",
             "pinyin": "yào"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
+          },
+          {
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "positive",
-              "tile": "不要"
-            },
-            "mark": [
-              "不要"
+            "placed": [
+              "嗎"
             ],
-            "note": "Start the question with positive 要, then follow it with negative 不要."
-          },
-          {
-            "slot": {
-              "id": "positive",
-              "tile": "不去"
-            },
-            "mark": [
-              "不去"
-            ],
-            "note": "Ask about wanting with 要 before its negative 不要."
+            "note": "嗎 is never used in this pattern; 要不要 already makes the question."
           },
           {
             "slot": {
               "id": "negative",
-              "tile": "要"
+              "tile": "沒"
             },
             "mark": [
-              "要"
+              "沒"
             ],
-            "note": "Follow positive 要 with negative 不要 to make the question."
+            "note": "要 is negated with 不, not 沒."
           },
           {
             "slot": {
-              "id": "negative",
-              "tile": "不去"
+              "id": "first",
+              "tile": "不"
             },
             "mark": [
-              "不去"
+              "不"
             ],
-            "note": "Negate the wanting word as 不要 and leave 去他家 as the action."
+            "note": "Start with the word you are asking about: 要."
+          },
+          {
+            "slot": {
+              "id": "second",
+              "tile": "不"
+            },
+            "mark": [
+              "不"
+            ],
+            "note": "End with the word again: 要 不 要."
           }
         ],
-        "fallbackRepair": "Put 要 before 不要, then keep the action 去他家.",
+        "fallbackRepair": "Say 要, then 不, then 要 again: 要不要.",
         "result": {
           "traditional": "你要不要去他家？",
           "pinyin": "Nǐ yào bú yào qù tā jiā?",
           "english": "Do you want to go to his home?"
-        }
+        },
+        "prompt": "Ask whether the person wants to go to his home."
       },
       {
         "id": "l2g06-4",
@@ -2220,7 +2391,14 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "他有"
+                "traditional": "他"
+              },
+              {
+                "type": "slot",
+                "id": "first",
+                "answers": [
+                  "有"
+                ]
               },
               {
                 "type": "slot",
@@ -2230,25 +2408,51 @@
                 ]
               },
               {
+                "type": "slot",
+                "id": "second",
+                "answers": [
+                  "有"
+                ]
+              },
+              {
                 "type": "text",
-                "traditional": "有台灣朋友？",
-                "simplified": "有台湾朋友？"
+                "traditional": "台灣朋友？",
+                "simplified": "台湾朋友？"
               }
             ]
           }
         ],
         "tiles": [
           {
+            "traditional": "有",
+            "pinyin": "yǒu"
+          },
+          {
+            "traditional": "有",
+            "pinyin": "yǒu"
+          },
+          {
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
+          },
+          {
             "traditional": "不",
             "pinyin": "bù"
           },
           {
-            "traditional": "沒",
-            "pinyin": "méi",
-            "simplified": "没"
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "嗎"
+            ],
+            "note": "嗎 is never used in this pattern; 有沒有 already makes the question."
+          },
           {
             "slot": {
               "id": "negative",
@@ -2257,10 +2461,30 @@
             "mark": [
               "不"
             ],
-            "note": "有 takes the negative 沒有, so the question is 有沒有."
+            "note": "有 is negated with 沒, so the question is 有沒有, not 有不有."
+          },
+          {
+            "slot": {
+              "id": "first",
+              "tile": "沒"
+            },
+            "mark": [
+              "沒"
+            ],
+            "note": "Start with the word you are asking about: 有."
+          },
+          {
+            "slot": {
+              "id": "second",
+              "tile": "沒"
+            },
+            "mark": [
+              "沒"
+            ],
+            "note": "End with 有 again: 有 沒 有."
           }
         ],
-        "fallbackRepair": "Use 沒 to pair 有 with 沒有.",
+        "fallbackRepair": "Say 有, then 沒, then 有 again: 有沒有.",
         "result": {
           "traditional": "他有沒有台灣朋友？",
           "simplified": "他有没有台湾朋友？",

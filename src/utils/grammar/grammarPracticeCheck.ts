@@ -80,9 +80,10 @@ export function slotBuildResult(item: SlotBuildItem, placed: Record<string, stri
 /** Every right way to fill the slots (each tile used once). */
 export function slotBuildSolutions(item: SlotBuildItem): Array<Record<string, string>> {
   if (item.gaps) return practiceSlots(item).flatMap((slot) => slot.answers.map((answer) => ({ [slot.id]: answer })));
+  const owned = (answer: string) => item.tiles.filter((tile) => tile.traditional === answer).length;
   return practiceSlots(item).reduce<Array<Record<string, string>>>(
     (partial, slot) => partial.flatMap((filled) => slot.answers
-      .filter((answer) => !Object.values(filled).includes(answer))
+      .filter((answer) => Object.values(filled).filter((used) => used === answer).length < owned(answer))
       .map((answer) => ({ ...filled, [slot.id]: answer }))),
     [{}],
   );

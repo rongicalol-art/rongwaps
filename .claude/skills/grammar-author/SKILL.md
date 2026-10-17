@@ -5,7 +5,13 @@ description: Author, transcribe or review Ron's Mandarin grammar content (gramma
 
 # Grammar author
 
-> **PRACTICE PAUSED (owner, 2026-10-16):** do not create or edit any `content/grammar-practice/` file. Do grammar pages only. Exercises are being redesigned ("the context decides", one right answer) and get their own pass later.
+> **Exercise pass is live (owner, 2026-10-17). Six rules, from the owner's review of L1–L3:**
+> 1. **Test the point itself.** A measure-word group makes the learner pick the measure word (with 兩/二 as the number trap), not just the number.
+> 2. **Build multi-part patterns, one slot per part:** V不V (verb + 不 + verb, with 嗎 and 沒 as traps), 有沒有, number + measure word. A lone 不/沒 blank is too easy. Tiles may repeat (熱 twice) as often as slots use them.
+> 3. **No artefacts in sentences:** never type the book's picture caption or pinyin (`（rè）`) into a line; captions live in the picture crop or `glossary`.
+> 4. **No repeats:** an own item must test a mistake nothing else in the group covers (a test fails an own item with the same tiles as a book item).
+> 5. **Position particles use tap-where (`gaps: true`)**, with a repair per wrong gap (的 都 也 吧 嗎 在 有), never fill-in with a silly tile like 是.
+> 6. **Check every lesson for the same flaw**, not only the screen that was reported.
 
 > **Pipeline runs are non-interactive and pre-approved by the owner.** When a task comes from `.audit/grammar-run`, do it fully now: skip the plan-first / "wait for go" steps of `task-start` and `AGENTS.md`, and don't ask questions (write them under Unsure).
 

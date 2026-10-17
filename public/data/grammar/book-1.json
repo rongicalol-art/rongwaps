@@ -1308,107 +1308,6 @@
                   "pinyin": "Yìnní xuésheng xìng Lǐ, jiào Zhōngmíng.",
                   "english": "The Indonesian student is surnamed Li and called Zhongming."
                 }
-              },
-              {
-                "id": "l1g1-own1",
-                "source": "own",
-                "kind": "slot-build",
-                "scene": {
-                  "type": "cast",
-                  "page": 38,
-                  "alt": "The four new classmates as printed on page 38, each with name and nationality.",
-                  "people": [
-                    {
-                      "box": [
-                        0.18,
-                        0.694,
-                        0.116,
-                        0.109
-                      ],
-                      "name": "小林友美",
-                      "pinyin": "Xiǎolín Yǒuměi",
-                      "note": "日本人"
-                    },
-                    {
-                      "box": [
-                        0.368,
-                        0.692,
-                        0.106,
-                        0.112
-                      ],
-                      "name": "高家樂",
-                      "pinyin": "Gāo Jiālè",
-                      "note": "英國人"
-                    },
-                    {
-                      "box": [
-                        0.543,
-                        0.694,
-                        0.111,
-                        0.109
-                      ],
-                      "name": "王宜文",
-                      "pinyin": "Wáng Yíwén",
-                      "note": "美國人"
-                    },
-                    {
-                      "box": [
-                        0.727,
-                        0.692,
-                        0.109,
-                        0.111
-                      ],
-                      "name": "李中明",
-                      "pinyin": "Lǐ Zhōngmíng",
-                      "note": "印尼人"
-                    }
-                  ]
-                },
-                "lines": [
-                  {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "她"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "full-name",
-                        "answers": [
-                          "叫"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "小林友美。"
-                      }
-                    ]
-                  }
-                ],
-                "tiles": [
-                  {
-                    "traditional": "姓",
-                    "pinyin": "xìng"
-                  },
-                  {
-                    "traditional": "叫",
-                    "pinyin": "jiào"
-                  }
-                ],
-                "repairs": [
-                  {
-                    "placed": [
-                      "姓"
-                    ],
-                    "note": "小林友美 is a full name, so use 叫; 姓 takes only 小林."
-                  }
-                ],
-                "fallbackRepair": "小林友美 is a full name, so use 叫; 姓 takes only 小林.",
-                "result": {
-                  "traditional": "她叫小林友美。",
-                  "pinyin": "Tā jiào Xiǎolín Yǒuměi.",
-                  "english": "Her full name is Xiaolin Youmei."
-                }
               }
             ]
           }
@@ -2126,67 +2025,6 @@
                   "english": "She is tired; Zhongming is not tired."
                 },
                 "prompt": "Zhongming feels rested."
-              },
-              {
-                "id": "l1g2-own1",
-                "source": "own",
-                "kind": "slot-build",
-                "scene": {
-                  "type": "picture",
-                  "page": 39,
-                  "box": [
-                    0.211,
-                    0.685,
-                    0.106,
-                    0.1
-                  ],
-                  "alt": "Youmei seated at a desk with her hands under her chin."
-                },
-                "lines": [
-                  {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "她"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "description",
-                        "answers": [
-                          "很"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "漂亮。"
-                      }
-                    ]
-                  }
-                ],
-                "tiles": [
-                  {
-                    "traditional": "是",
-                    "pinyin": "shì"
-                  },
-                  {
-                    "traditional": "很",
-                    "pinyin": "hěn"
-                  }
-                ],
-                "repairs": [
-                  {
-                    "placed": [
-                      "是"
-                    ],
-                    "note": "漂亮 describes her appearance directly, so use 很 without adding 是."
-                  }
-                ],
-                "fallbackRepair": "Use 很 before the description 漂亮 without adding 是.",
-                "result": {
-                  "traditional": "她很漂亮。",
-                  "pinyin": "Tā hěn piàoliang.",
-                  "english": "She is pretty."
-                }
               }
             ]
           }
@@ -4206,57 +4044,6 @@
                   "pinyin": "Tā hěn máng, nǐ ne?",
                   "english": "He is busy. How about you?"
                 }
-              },
-              {
-                "id": "l1g4-own1",
-                "source": "own",
-                "kind": "slot-build",
-                "prompt": "Ask whether Mr. Wang is tired.",
-                "lines": [
-                  {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "王先生累"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "ending",
-                        "answers": [
-                          "嗎"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "？"
-                      }
-                    ]
-                  }
-                ],
-                "tiles": [
-                  {
-                    "traditional": "呢",
-                    "pinyin": "ne"
-                  },
-                  {
-                    "traditional": "嗎",
-                    "pinyin": "ma"
-                  }
-                ],
-                "repairs": [
-                  {
-                    "placed": [
-                      "呢"
-                    ],
-                    "note": "王先生累 is a full statement being checked, so end this yes/no question with 嗎."
-                  }
-                ],
-                "fallbackRepair": "王先生累 is a full statement being checked, so end this yes/no question with 嗎.",
-                "result": {
-                  "traditional": "王先生累嗎？",
-                  "pinyin": "Wáng xiānsheng lèi ma?",
-                  "english": "Is Mr. Wang tired?"
-                }
               }
             ]
           }
@@ -5027,57 +4814,6 @@
                   "traditional": "他愛王太太。",
                   "pinyin": "Tā ài Wáng tàitai.",
                   "english": "He loves Mrs. Wang."
-                }
-              },
-              {
-                "id": "l1g5-own1",
-                "source": "own",
-                "kind": "slot-build",
-                "prompt": "Say you do not like Miss Wang.",
-                "lines": [
-                  {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "我"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "verb",
-                        "answers": [
-                          "不喜歡"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "王小姐。"
-                      }
-                    ]
-                  }
-                ],
-                "tiles": [
-                  {
-                    "traditional": "喜歡",
-                    "pinyin": "xǐhuān"
-                  },
-                  {
-                    "traditional": "不喜歡",
-                    "pinyin": "bù xǐhuān"
-                  }
-                ],
-                "repairs": [
-                  {
-                    "placed": [
-                      "喜歡"
-                    ],
-                    "note": "The speaker does not like Miss Wang, so put 不 before 喜歡."
-                  }
-                ],
-                "fallbackRepair": "The speaker does not like Miss Wang, so put 不 before 喜歡.",
-                "result": {
-                  "traditional": "我不喜歡王小姐。",
-                  "pinyin": "Wǒ bù xǐhuān Wáng xiǎojiě.",
-                  "english": "I do not like Miss Wang."
                 }
               }
             ]
@@ -9597,24 +9333,43 @@
                       },
                       {
                         "type": "slot",
-                        "id": "link",
+                        "id": "gap-0",
                         "answers": [
                           "的"
                         ]
                       },
                       {
                         "type": "text",
-                        "traditional": "生日是二月二十四號。",
-                        "simplified": "生日是二月二十四号。"
+                        "traditional": "生日"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "gap-1",
+                        "answers": []
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "是"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "gap-2",
+                        "answers": []
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "二月二十四號。",
+                        "simplified": "二月二十四号。"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "gap-3",
+                        "answers": []
                       }
                     ]
                   }
                 ],
                 "tiles": [
-                  {
-                    "traditional": "有",
-                    "pinyin": "yǒu"
-                  },
                   {
                     "traditional": "的",
                     "pinyin": "de"
@@ -9623,22 +9378,35 @@
                 "repairs": [
                   {
                     "slot": {
-                      "id": "link",
-                      "tile": "有"
+                      "id": "gap-1",
+                      "tile": "的"
                     },
-                    "mark": [
-                      "有"
-                    ],
-                    "note": "Use 的 to connect Mom to her birthday; 有 would say she has something."
+                    "note": "的 joins Mom to her birthday, so it goes right after 媽媽, not after 生日."
+                  },
+                  {
+                    "slot": {
+                      "id": "gap-2",
+                      "tile": "的"
+                    },
+                    "note": "的 never comes right after 是; it joins 媽媽 and 生日."
+                  },
+                  {
+                    "slot": {
+                      "id": "gap-3",
+                      "tile": "的"
+                    },
+                    "note": "的 joins the owner to the thing owned, here 媽媽 and 生日."
                   }
                 ],
-                "fallbackRepair": "Connect 媽媽 and 生日 with 的.",
+                "fallbackRepair": "Think about which two words 的 joins.",
                 "result": {
                   "traditional": "媽媽的生日是二月二十四號。",
                   "simplified": "妈妈的生日是二月二十四号。",
                   "pinyin": "Māma de shēngrì shì èr yuè èrshísì hào.",
                   "english": "Mom’s birthday is February 24."
-                }
+                },
+                "gaps": true,
+                "prompt": "Drag 的 to where it goes."
               },
               {
                 "id": "l2g04-2",
@@ -9649,19 +9417,48 @@
                     "segments": [
                       {
                         "type": "text",
-                        "traditional": "你喜歡台灣",
-                        "simplified": "你喜欢台湾"
+                        "traditional": "你"
                       },
                       {
                         "type": "slot",
-                        "id": "link",
+                        "id": "gap-0",
+                        "answers": []
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "喜歡",
+                        "simplified": "喜欢"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "gap-1",
+                        "answers": []
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "台灣",
+                        "simplified": "台湾"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "gap-2",
                         "answers": [
                           "的"
                         ]
                       },
                       {
                         "type": "text",
-                        "traditional": "水果嗎？"
+                        "traditional": "水果"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "gap-3",
+                        "answers": []
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "嗎？",
+                        "simplified": "吗？"
                       }
                     ]
                   }
@@ -9670,31 +9467,40 @@
                   {
                     "traditional": "的",
                     "pinyin": "de"
-                  },
-                  {
-                    "traditional": "是",
-                    "pinyin": "shì"
                   }
                 ],
                 "repairs": [
                   {
                     "slot": {
-                      "id": "link",
-                      "tile": "是"
+                      "id": "gap-0",
+                      "tile": "的"
                     },
-                    "mark": [
-                      "是"
-                    ],
-                    "note": "台灣 describes where the fruit is from, so connect it to 水果 with 的."
+                    "note": "你的 would mean \"your\", and the sentence would need a thing after it; 的 joins 台灣 and 水果."
+                  },
+                  {
+                    "slot": {
+                      "id": "gap-1",
+                      "tile": "的"
+                    },
+                    "note": "喜歡的 would make 喜歡 describe the fruit; 的 joins 台灣 and 水果."
+                  },
+                  {
+                    "slot": {
+                      "id": "gap-3",
+                      "tile": "的"
+                    },
+                    "note": "的 goes between 台灣 and 水果, not after 水果."
                   }
                 ],
-                "fallbackRepair": "Use 的 to connect 台灣 to 水果.",
+                "fallbackRepair": "Think about which two words 的 joins.",
                 "result": {
                   "traditional": "你喜歡台灣的水果嗎？",
                   "simplified": "你喜欢台湾的水果吗？",
                   "pinyin": "Nǐ xǐhuān Táiwān de shuǐguǒ ma?",
                   "english": "Do you like Taiwanese fruit?"
-                }
+                },
+                "gaps": true,
+                "prompt": "Drag 的 to where it goes."
               },
               {
                 "id": "l2g04-3",
@@ -9709,24 +9515,43 @@
                       },
                       {
                         "type": "slot",
-                        "id": "link",
+                        "id": "gap-0",
                         "answers": [
                           "的"
                         ]
                       },
                       {
                         "type": "text",
-                        "traditional": "孩子明天去美國。",
-                        "simplified": "孩子明天去美国。"
+                        "traditional": "孩子"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "gap-1",
+                        "answers": []
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "明天"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "gap-2",
+                        "answers": []
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "去美國。",
+                        "simplified": "去美国。"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "gap-3",
+                        "answers": []
                       }
                     ]
                   }
                 ],
                 "tiles": [
-                  {
-                    "traditional": "是",
-                    "pinyin": "shì"
-                  },
                   {
                     "traditional": "的",
                     "pinyin": "de"
@@ -9735,78 +9560,35 @@
                 "repairs": [
                   {
                     "slot": {
-                      "id": "link",
-                      "tile": "是"
+                      "id": "gap-1",
+                      "tile": "的"
                     },
-                    "mark": [
-                      "是"
-                    ],
-                    "note": "Connect 我 to the child with 的 before saying that the child goes to the United States tomorrow."
+                    "note": "的 joins 我 to the child, so it goes before 孩子, not after it."
+                  },
+                  {
+                    "slot": {
+                      "id": "gap-2",
+                      "tile": "的"
+                    },
+                    "note": "的 joins 我 and 孩子; 明天的 would not name the owner."
+                  },
+                  {
+                    "slot": {
+                      "id": "gap-3",
+                      "tile": "的"
+                    },
+                    "note": "的 joins 我 and 孩子, not the end of the sentence."
                   }
                 ],
-                "fallbackRepair": "Use 的 to connect the owner 我 to 孩子.",
+                "fallbackRepair": "Think about which two words 的 joins.",
                 "result": {
                   "traditional": "我的孩子明天去美國。",
                   "simplified": "我的孩子明天去美国。",
                   "pinyin": "Wǒ de háizi míngtiān qù Měiguó.",
                   "english": "My child is going to the United States tomorrow."
                 },
-                "prompt": "Your child is going to the United States tomorrow."
-              },
-              {
-                "id": "l2g04-4",
-                "source": "own",
-                "kind": "slot-build",
-                "lines": [
-                  {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "我"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "verb",
-                        "answers": [
-                          "有"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "孩子。"
-                      }
-                    ]
-                  }
-                ],
-                "tiles": [
-                  {
-                    "traditional": "的",
-                    "pinyin": "de"
-                  },
-                  {
-                    "traditional": "有",
-                    "pinyin": "yǒu"
-                  }
-                ],
-                "repairs": [
-                  {
-                    "slot": {
-                      "id": "verb",
-                      "tile": "的"
-                    },
-                    "mark": [
-                      "的"
-                    ],
-                    "note": "我的孩子 only names your child; use 有 to state that you have a child."
-                  }
-                ],
-                "fallbackRepair": "Use 有 to state possession in a complete sentence.",
-                "result": {
-                  "traditional": "我有孩子。",
-                  "pinyin": "Wǒ yǒu háizi.",
-                  "english": "I have a child."
-                },
-                "prompt": "Tell someone that you have a child."
+                "prompt": "Drag 的 to where it goes.",
+                "gaps": true
               }
             ],
             "allowWords": [
@@ -11662,8 +11444,15 @@
                     "segments": [
                       {
                         "type": "text",
-                        "traditional": "台灣熱",
-                        "simplified": "台湾热"
+                        "traditional": "台灣",
+                        "simplified": "台湾"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "first",
+                        "answers": [
+                          "熱"
+                        ]
                       },
                       {
                         "type": "slot",
@@ -11673,8 +11462,15 @@
                         ]
                       },
                       {
+                        "type": "slot",
+                        "id": "second",
+                        "answers": [
+                          "熱"
+                        ]
+                      },
+                      {
                         "type": "text",
-                        "traditional": "熱？"
+                        "traditional": "？"
                       }
                     ],
                     "speaker": {
@@ -11686,8 +11482,8 @@
                     "segments": [
                       {
                         "type": "text",
-                        "traditional": "台灣很熱（rè）。",
-                        "simplified": "台湾很热（rè）。"
+                        "traditional": "台灣很熱。",
+                        "simplified": "台湾很热。"
                       }
                     ],
                     "speaker": {
@@ -11698,16 +11494,37 @@
                 ],
                 "tiles": [
                   {
+                    "traditional": "熱",
+                    "simplified": "热",
+                    "pinyin": "rè"
+                  },
+                  {
+                    "traditional": "熱",
+                    "simplified": "热",
+                    "pinyin": "rè"
+                  },
+                  {
+                    "traditional": "不",
+                    "pinyin": "bù"
+                  },
+                  {
                     "traditional": "沒",
                     "simplified": "没",
                     "pinyin": "méi"
                   },
                   {
-                    "traditional": "不",
-                    "pinyin": "bù"
+                    "traditional": "嗎",
+                    "simplified": "吗",
+                    "pinyin": "ma"
                   }
                 ],
                 "repairs": [
+                  {
+                    "placed": [
+                      "嗎"
+                    ],
+                    "note": "嗎 is never used in this pattern; 熱不熱 already makes the question."
+                  },
                   {
                     "slot": {
                       "id": "negative",
@@ -11717,9 +11534,29 @@
                       "沒"
                     ],
                     "note": "The picture shows a quality, 熱, so pair it with 不 rather than 沒."
+                  },
+                  {
+                    "slot": {
+                      "id": "first",
+                      "tile": "不"
+                    },
+                    "mark": [
+                      "不"
+                    ],
+                    "note": "Start with the word you are asking about: 熱."
+                  },
+                  {
+                    "slot": {
+                      "id": "second",
+                      "tile": "不"
+                    },
+                    "mark": [
+                      "不"
+                    ],
+                    "note": "End with the word again: 熱 不 熱."
                   }
                 ],
-                "fallbackRepair": "Put 不 between the two copies of 熱.",
+                "fallbackRepair": "Say the word, then 不, then the word again: 熱不熱.",
                 "result": {
                   "traditional": "台灣熱不熱？",
                   "simplified": "台湾热不热？",
@@ -11744,7 +11581,8 @@
                     "pinyin": "rè",
                     "english": "hot"
                   }
-                ]
+                ],
+                "prompt": "Ask whether Taiwan is hot."
               },
               {
                 "id": "l2g06-2",
@@ -11755,7 +11593,14 @@
                     "segments": [
                       {
                         "type": "text",
-                        "traditional": "你喜"
+                        "traditional": "你"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "first",
+                        "answers": [
+                          "喜歡"
+                        ]
                       },
                       {
                         "type": "slot",
@@ -11765,9 +11610,15 @@
                         ]
                       },
                       {
+                        "type": "slot",
+                        "id": "second",
+                        "answers": [
+                          "喜歡"
+                        ]
+                      },
+                      {
                         "type": "text",
-                        "traditional": "喜歡吃水果？",
-                        "simplified": "喜欢吃水果？"
+                        "traditional": "吃水果？"
                       }
                     ],
                     "speaker": {
@@ -11791,16 +11642,37 @@
                 ],
                 "tiles": [
                   {
-                    "traditional": "沒",
-                    "pinyin": "méi",
-                    "simplified": "没"
+                    "traditional": "喜歡",
+                    "simplified": "喜欢",
+                    "pinyin": "xǐhuān"
+                  },
+                  {
+                    "traditional": "喜歡",
+                    "simplified": "喜欢",
+                    "pinyin": "xǐhuān"
                   },
                   {
                     "traditional": "不",
                     "pinyin": "bù"
+                  },
+                  {
+                    "traditional": "沒",
+                    "simplified": "没",
+                    "pinyin": "méi"
+                  },
+                  {
+                    "traditional": "嗎",
+                    "simplified": "吗",
+                    "pinyin": "ma"
                   }
                 ],
                 "repairs": [
+                  {
+                    "placed": [
+                      "嗎"
+                    ],
+                    "note": "嗎 is never used in this pattern; the verb, 不, then the verb again already asks the question."
+                  },
                   {
                     "slot": {
                       "id": "negative",
@@ -11809,16 +11681,37 @@
                     "mark": [
                       "沒"
                     ],
-                    "note": "喜歡 pairs its positive and negative forms with 不, giving 喜不喜歡."
+                    "note": "喜歡 is negated with 不, not 沒."
+                  },
+                  {
+                    "slot": {
+                      "id": "first",
+                      "tile": "不"
+                    },
+                    "mark": [
+                      "不"
+                    ],
+                    "note": "Start with the verb you are asking about: 喜歡."
+                  },
+                  {
+                    "slot": {
+                      "id": "second",
+                      "tile": "不"
+                    },
+                    "mark": [
+                      "不"
+                    ],
+                    "note": "End with the verb again: 喜歡 不 喜歡."
                   }
                 ],
-                "fallbackRepair": "Put 不 between 喜 and 喜歡.",
+                "fallbackRepair": "Say the verb, then 不, then the verb again: 喜歡不喜歡.",
                 "result": {
-                  "traditional": "你喜不喜歡吃水果？",
-                  "simplified": "你喜不喜欢吃水果？",
-                  "pinyin": "Nǐ xǐ bù xǐhuān chī shuǐguǒ?",
+                  "traditional": "你喜歡不喜歡吃水果？",
+                  "simplified": "你喜欢不喜欢吃水果？",
+                  "pinyin": "Nǐ xǐhuān bù xǐhuān chī shuǐguǒ?",
                   "english": "Do you like eating fruit?"
-                }
+                },
+                "prompt": "Ask whether the person likes eating fruit."
               },
               {
                 "id": "l2g06-3",
@@ -11833,7 +11726,7 @@
                       },
                       {
                         "type": "slot",
-                        "id": "positive",
+                        "id": "first",
                         "answers": [
                           "要"
                         ]
@@ -11842,7 +11735,14 @@
                         "type": "slot",
                         "id": "negative",
                         "answers": [
-                          "不要"
+                          "不"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "second",
+                        "answers": [
+                          "要"
                         ]
                       },
                       {
@@ -11870,66 +11770,73 @@
                 ],
                 "tiles": [
                   {
-                    "traditional": "不要",
-                    "pinyin": "bú yào"
-                  },
-                  {
-                    "traditional": "不去",
-                    "pinyin": "bú qù"
+                    "traditional": "要",
+                    "pinyin": "yào"
                   },
                   {
                     "traditional": "要",
                     "pinyin": "yào"
+                  },
+                  {
+                    "traditional": "不",
+                    "pinyin": "bù"
+                  },
+                  {
+                    "traditional": "沒",
+                    "simplified": "没",
+                    "pinyin": "méi"
+                  },
+                  {
+                    "traditional": "嗎",
+                    "simplified": "吗",
+                    "pinyin": "ma"
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "positive",
-                      "tile": "不要"
-                    },
-                    "mark": [
-                      "不要"
+                    "placed": [
+                      "嗎"
                     ],
-                    "note": "Start the question with positive 要, then follow it with negative 不要."
-                  },
-                  {
-                    "slot": {
-                      "id": "positive",
-                      "tile": "不去"
-                    },
-                    "mark": [
-                      "不去"
-                    ],
-                    "note": "Ask about wanting with 要 before its negative 不要."
+                    "note": "嗎 is never used in this pattern; 要不要 already makes the question."
                   },
                   {
                     "slot": {
                       "id": "negative",
-                      "tile": "要"
+                      "tile": "沒"
                     },
                     "mark": [
-                      "要"
+                      "沒"
                     ],
-                    "note": "Follow positive 要 with negative 不要 to make the question."
+                    "note": "要 is negated with 不, not 沒."
                   },
                   {
                     "slot": {
-                      "id": "negative",
-                      "tile": "不去"
+                      "id": "first",
+                      "tile": "不"
                     },
                     "mark": [
-                      "不去"
+                      "不"
                     ],
-                    "note": "Negate the wanting word as 不要 and leave 去他家 as the action."
+                    "note": "Start with the word you are asking about: 要."
+                  },
+                  {
+                    "slot": {
+                      "id": "second",
+                      "tile": "不"
+                    },
+                    "mark": [
+                      "不"
+                    ],
+                    "note": "End with the word again: 要 不 要."
                   }
                 ],
-                "fallbackRepair": "Put 要 before 不要, then keep the action 去他家.",
+                "fallbackRepair": "Say 要, then 不, then 要 again: 要不要.",
                 "result": {
                   "traditional": "你要不要去他家？",
                   "pinyin": "Nǐ yào bú yào qù tā jiā?",
                   "english": "Do you want to go to his home?"
-                }
+                },
+                "prompt": "Ask whether the person wants to go to his home."
               },
               {
                 "id": "l2g06-4",
@@ -11940,7 +11847,14 @@
                     "segments": [
                       {
                         "type": "text",
-                        "traditional": "他有"
+                        "traditional": "他"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "first",
+                        "answers": [
+                          "有"
+                        ]
                       },
                       {
                         "type": "slot",
@@ -11950,25 +11864,51 @@
                         ]
                       },
                       {
+                        "type": "slot",
+                        "id": "second",
+                        "answers": [
+                          "有"
+                        ]
+                      },
+                      {
                         "type": "text",
-                        "traditional": "有台灣朋友？",
-                        "simplified": "有台湾朋友？"
+                        "traditional": "台灣朋友？",
+                        "simplified": "台湾朋友？"
                       }
                     ]
                   }
                 ],
                 "tiles": [
                   {
+                    "traditional": "有",
+                    "pinyin": "yǒu"
+                  },
+                  {
+                    "traditional": "有",
+                    "pinyin": "yǒu"
+                  },
+                  {
+                    "traditional": "沒",
+                    "simplified": "没",
+                    "pinyin": "méi"
+                  },
+                  {
                     "traditional": "不",
                     "pinyin": "bù"
                   },
                   {
-                    "traditional": "沒",
-                    "pinyin": "méi",
-                    "simplified": "没"
+                    "traditional": "嗎",
+                    "simplified": "吗",
+                    "pinyin": "ma"
                   }
                 ],
                 "repairs": [
+                  {
+                    "placed": [
+                      "嗎"
+                    ],
+                    "note": "嗎 is never used in this pattern; 有沒有 already makes the question."
+                  },
                   {
                     "slot": {
                       "id": "negative",
@@ -11977,10 +11917,30 @@
                     "mark": [
                       "不"
                     ],
-                    "note": "有 takes the negative 沒有, so the question is 有沒有."
+                    "note": "有 is negated with 沒, so the question is 有沒有, not 有不有."
+                  },
+                  {
+                    "slot": {
+                      "id": "first",
+                      "tile": "沒"
+                    },
+                    "mark": [
+                      "沒"
+                    ],
+                    "note": "Start with the word you are asking about: 有."
+                  },
+                  {
+                    "slot": {
+                      "id": "second",
+                      "tile": "沒"
+                    },
+                    "mark": [
+                      "沒"
+                    ],
+                    "note": "End with 有 again: 有 沒 有."
                   }
                 ],
-                "fallbackRepair": "Use 沒 to pair 有 with 沒有.",
+                "fallbackRepair": "Say 有, then 沒, then 有 again: 有沒有.",
                 "result": {
                   "traditional": "他有沒有台灣朋友？",
                   "simplified": "他有没有台湾朋友？",
@@ -13191,20 +13151,25 @@
                     "segments": [
                       {
                         "type": "text",
-                        "traditional": "她有",
-                        "simplified": "她有"
+                        "traditional": "她有"
                       },
                       {
                         "type": "slot",
-                        "id": "pick",
+                        "id": "number",
                         "answers": [
                           "兩"
                         ]
                       },
                       {
+                        "type": "slot",
+                        "id": "measure",
+                        "answers": [
+                          "朵"
+                        ]
+                      },
+                      {
                         "type": "text",
-                        "traditional": "朵花。",
-                        "simplified": "朵花。"
+                        "traditional": "花。"
                       }
                     ],
                     "speaker": {
@@ -13216,36 +13181,82 @@
                 ],
                 "tiles": [
                   {
-                    "traditional": "三",
-                    "simplified": "三",
-                    "pinyin": "sān"
-                  },
-                  {
                     "traditional": "兩",
                     "simplified": "两",
                     "pinyin": "liǎng"
                   },
                   {
-                    "traditional": "一",
-                    "simplified": "一",
-                    "pinyin": "yī"
+                    "traditional": "二",
+                    "pinyin": "èr"
+                  },
+                  {
+                    "traditional": "朵",
+                    "pinyin": "duǒ"
+                  },
+                  {
+                    "traditional": "本",
+                    "pinyin": "běn"
+                  },
+                  {
+                    "traditional": "個",
+                    "simplified": "个",
+                    "pinyin": "ge"
                   }
                 ],
                 "repairs": [
                   {
-                    "placed": [
-                      "三"
+                    "slot": {
+                      "id": "number",
+                      "tile": "二"
+                    },
+                    "mark": [
+                      "二"
                     ],
-                    "note": "There is one flower in each hand, so the total is two, not three."
+                    "note": "Before a measure word say 兩, not 二."
                   },
                   {
-                    "placed": [
-                      "一"
+                    "slot": {
+                      "id": "measure",
+                      "tile": "本"
+                    },
+                    "mark": [
+                      "本"
                     ],
-                    "note": "Count both hands: she has two flowers, not one."
+                    "note": "本 counts books; flowers take 朵."
+                  },
+                  {
+                    "slot": {
+                      "id": "measure",
+                      "tile": "個"
+                    },
+                    "mark": [
+                      "個"
+                    ],
+                    "note": "個 is the general measure word, but flowers have their own: 朵."
+                  },
+                  {
+                    "slot": {
+                      "id": "number",
+                      "tile": "朵"
+                    },
+                    "note": "Say the number first, then the measure word."
+                  },
+                  {
+                    "slot": {
+                      "id": "number",
+                      "tile": "本"
+                    },
+                    "note": "Say the number first, then the measure word."
+                  },
+                  {
+                    "slot": {
+                      "id": "number",
+                      "tile": "個"
+                    },
+                    "note": "Say the number first, then the measure word."
                   }
                 ],
-                "fallbackRepair": "There is one flower in each hand, so the total is two, not three.",
+                "fallbackRepair": "Say the number, then the measure word for flowers: 兩朵.",
                 "result": {
                   "traditional": "她有兩朵花。",
                   "simplified": "她有两朵花。",
@@ -13262,7 +13273,8 @@
                     0.113
                   ],
                   "alt": "A woman holds one flower in each hand."
-                }
+                },
+                "prompt": "Count the flowers: number, then measure word."
               },
               {
                 "id": "l3-g1-book-2",
@@ -13291,15 +13303,22 @@
                       },
                       {
                         "type": "slot",
-                        "id": "pick",
+                        "id": "number",
                         "answers": [
                           "兩"
                         ]
                       },
                       {
+                        "type": "slot",
+                        "id": "measure",
+                        "answers": [
+                          "本"
+                        ]
+                      },
+                      {
                         "type": "text",
-                        "traditional": "本書。",
-                        "simplified": "本书。"
+                        "traditional": "書。",
+                        "simplified": "书。"
                       }
                     ],
                     "speaker": {
@@ -13311,36 +13330,82 @@
                 ],
                 "tiles": [
                   {
-                    "traditional": "五",
-                    "simplified": "五",
-                    "pinyin": "wǔ"
-                  },
-                  {
-                    "traditional": "三",
-                    "simplified": "三",
-                    "pinyin": "sān"
-                  },
-                  {
                     "traditional": "兩",
                     "simplified": "两",
                     "pinyin": "liǎng"
+                  },
+                  {
+                    "traditional": "二",
+                    "pinyin": "èr"
+                  },
+                  {
+                    "traditional": "本",
+                    "pinyin": "běn"
+                  },
+                  {
+                    "traditional": "個",
+                    "simplified": "个",
+                    "pinyin": "ge"
+                  },
+                  {
+                    "traditional": "朵",
+                    "pinyin": "duǒ"
                   }
                 ],
                 "repairs": [
                   {
-                    "placed": [
-                      "五"
+                    "slot": {
+                      "id": "number",
+                      "tile": "二"
+                    },
+                    "mark": [
+                      "二"
                     ],
-                    "note": "The picture shows two books to buy, not five."
+                    "note": "Before a measure word say 兩, not 二."
                   },
                   {
-                    "placed": [
-                      "三"
+                    "slot": {
+                      "id": "measure",
+                      "tile": "朵"
+                    },
+                    "mark": [
+                      "朵"
                     ],
-                    "note": "Count the two separate books in the picture, not three."
+                    "note": "朵 counts flowers; books take 本."
+                  },
+                  {
+                    "slot": {
+                      "id": "measure",
+                      "tile": "個"
+                    },
+                    "mark": [
+                      "個"
+                    ],
+                    "note": "個 is the general measure word, but books have their own: 本."
+                  },
+                  {
+                    "slot": {
+                      "id": "number",
+                      "tile": "本"
+                    },
+                    "note": "Say the number first, then the measure word."
+                  },
+                  {
+                    "slot": {
+                      "id": "number",
+                      "tile": "個"
+                    },
+                    "note": "Say the number first, then the measure word."
+                  },
+                  {
+                    "slot": {
+                      "id": "number",
+                      "tile": "朵"
+                    },
+                    "note": "Say the number first, then the measure word."
                   }
                 ],
-                "fallbackRepair": "The picture shows two books to buy, not five.",
+                "fallbackRepair": "Say the number, then the measure word for books: 兩本.",
                 "result": {
                   "traditional": "我要買兩本書。",
                   "simplified": "我要买两本书。",
@@ -13369,14 +13434,20 @@
                     "segments": [
                       {
                         "type": "text",
-                        "traditional": "你有",
-                        "simplified": "你有"
+                        "traditional": "你有"
                       },
                       {
                         "type": "slot",
-                        "id": "pick",
+                        "id": "number",
                         "answers": [
-                          "幾本"
+                          "幾"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "measure",
+                        "answers": [
+                          "本"
                         ]
                       },
                       {
@@ -13407,25 +13478,82 @@
                 ],
                 "tiles": [
                   {
-                    "traditional": "四本",
-                    "simplified": "四本",
-                    "pinyin": "sì běn"
+                    "traditional": "幾",
+                    "simplified": "几",
+                    "pinyin": "jǐ"
                   },
                   {
-                    "traditional": "幾本",
-                    "simplified": "几本",
-                    "pinyin": "jǐ běn"
+                    "traditional": "四",
+                    "pinyin": "sì"
+                  },
+                  {
+                    "traditional": "本",
+                    "pinyin": "běn"
+                  },
+                  {
+                    "traditional": "個",
+                    "simplified": "个",
+                    "pinyin": "ge"
+                  },
+                  {
+                    "traditional": "朵",
+                    "pinyin": "duǒ"
                   }
                 ],
                 "repairs": [
                   {
-                    "placed": [
-                      "四本"
+                    "slot": {
+                      "id": "number",
+                      "tile": "四"
+                    },
+                    "mark": [
+                      "四"
                     ],
-                    "note": "四本 guesses four books; use 幾本 to ask for the number without guessing."
+                    "note": "You are asking how many, so use 幾 rather than guessing a number."
+                  },
+                  {
+                    "slot": {
+                      "id": "measure",
+                      "tile": "朵"
+                    },
+                    "mark": [
+                      "朵"
+                    ],
+                    "note": "朵 counts flowers; books take 本."
+                  },
+                  {
+                    "slot": {
+                      "id": "measure",
+                      "tile": "個"
+                    },
+                    "mark": [
+                      "個"
+                    ],
+                    "note": "個 is the general measure word, but books have their own: 本."
+                  },
+                  {
+                    "slot": {
+                      "id": "number",
+                      "tile": "本"
+                    },
+                    "note": "幾 comes first, then the measure word."
+                  },
+                  {
+                    "slot": {
+                      "id": "number",
+                      "tile": "個"
+                    },
+                    "note": "幾 comes first, then the measure word."
+                  },
+                  {
+                    "slot": {
+                      "id": "number",
+                      "tile": "朵"
+                    },
+                    "note": "幾 comes first, then the measure word."
                   }
                 ],
-                "fallbackRepair": "四本 guesses four books; use 幾本 to ask for the number without guessing.",
+                "fallbackRepair": "Ask with 幾 and the measure word for books: 幾本.",
                 "result": {
                   "traditional": "你有幾本英文書？",
                   "simplified": "你有几本英文书？",
@@ -13500,11 +13628,110 @@
                   "pinyin": "Wǒ yǒu wǔ běn Zhōngwén shū.",
                   "english": "I have five books in Chinese."
                 }
+              },
+              {
+                "id": "l3-g1-own-2",
+                "source": "own",
+                "kind": "slot-build",
+                "lines": [
+                  {
+                    "segments": [
+                      {
+                        "type": "text",
+                        "traditional": "我有"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "number",
+                        "answers": [
+                          "兩"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "measure",
+                        "answers": [
+                          "個"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "traditional": "朋友。"
+                      }
+                    ],
+                    "me": true
+                  }
+                ],
+                "tiles": [
+                  {
+                    "traditional": "兩",
+                    "simplified": "两",
+                    "pinyin": "liǎng"
+                  },
+                  {
+                    "traditional": "二",
+                    "pinyin": "èr"
+                  },
+                  {
+                    "traditional": "個",
+                    "simplified": "个",
+                    "pinyin": "ge"
+                  },
+                  {
+                    "traditional": "本",
+                    "pinyin": "běn"
+                  }
+                ],
+                "repairs": [
+                  {
+                    "slot": {
+                      "id": "number",
+                      "tile": "二"
+                    },
+                    "mark": [
+                      "二"
+                    ],
+                    "note": "Before a measure word say 兩, not 二."
+                  },
+                  {
+                    "slot": {
+                      "id": "measure",
+                      "tile": "本"
+                    },
+                    "mark": [
+                      "本"
+                    ],
+                    "note": "本 counts books; friends take the general 個."
+                  },
+                  {
+                    "slot": {
+                      "id": "number",
+                      "tile": "個"
+                    },
+                    "note": "Say the number first, then the measure word."
+                  },
+                  {
+                    "slot": {
+                      "id": "number",
+                      "tile": "本"
+                    },
+                    "note": "Say the number first, then the measure word."
+                  }
+                ],
+                "fallbackRepair": "Say the number, then 個 for people: 兩個.",
+                "result": {
+                  "traditional": "我有兩個朋友。",
+                  "simplified": "我有两个朋友。",
+                  "pinyin": "Wǒ yǒu liǎng ge péngyǒu.",
+                  "english": "I have two friends."
+                },
+                "prompt": "Say you have two friends."
               }
             ],
             "allowWords": [
               "英文",
-              "四"
+              "四",
+              "二"
             ]
           }
         },
@@ -25026,83 +25253,6 @@
                   "pinyin": "Zhōngmíng xǐhuān mǎi piányi de dōngxi, Yǒuměi yě xǐhuān mǎi piányi de dōngxi.",
                   "english": "Zhongming likes buying inexpensive things, and Youmei does too.",
                   "simplified": "中明喜欢买便宜的东西，友美也喜欢买便宜的东西。"
-                }
-              },
-              {
-                "id": "l04-g2-own1",
-                "source": "own",
-                "kind": "slot-build",
-                "gaps": true,
-                "prompt": "Neither person likes coffee; place 也 in Youmei’s answer.",
-                "lines": [
-                  {
-                    "segments": [
-                      {
-                        "type": "text",
-                        "traditional": "中明不喜歡咖啡，友美",
-                        "simplified": "中明不喜欢咖啡，友美"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-0",
-                        "answers": [
-                          "也"
-                        ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "不"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-1",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "喜歡咖啡",
-                        "simplified": "喜欢咖啡"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gap-2",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "。"
-                      }
-                    ]
-                  }
-                ],
-                "tiles": [
-                  {
-                    "traditional": "也",
-                    "pinyin": "yě"
-                  }
-                ],
-                "repairs": [
-                  {
-                    "slot": {
-                      "id": "gap-1",
-                      "tile": "也"
-                    },
-                    "note": "Both people dislike coffee, so put 也 before 不 to echo the negative preference."
-                  },
-                  {
-                    "slot": {
-                      "id": "gap-2",
-                      "tile": "也"
-                    },
-                    "note": "也 comes before the negative verb phrase, not after 咖啡."
-                  }
-                ],
-                "fallbackRepair": "Keep the sentence together and try another position.",
-                "result": {
-                  "traditional": "中明不喜歡咖啡，友美也不喜歡咖啡。",
-                  "pinyin": "Zhōngmíng bù xǐhuān kāfēi, Yǒuměi yě bù xǐhuān kāfēi.",
-                  "english": "Zhongming does not like coffee, and Youmei does not either.",
-                  "simplified": "中明不喜欢咖啡，友美也不喜欢咖啡。"
                 }
               }
             ]

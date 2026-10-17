@@ -25,20 +25,25 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "她有",
-                "simplified": "她有"
+                "traditional": "她有"
               },
               {
                 "type": "slot",
-                "id": "pick",
+                "id": "number",
                 "answers": [
                   "兩"
                 ]
               },
               {
+                "type": "slot",
+                "id": "measure",
+                "answers": [
+                  "朵"
+                ]
+              },
+              {
                 "type": "text",
-                "traditional": "朵花。",
-                "simplified": "朵花。"
+                "traditional": "花。"
               }
             ],
             "speaker": {
@@ -50,36 +55,82 @@
         ],
         "tiles": [
           {
-            "traditional": "三",
-            "simplified": "三",
-            "pinyin": "sān"
-          },
-          {
             "traditional": "兩",
             "simplified": "两",
             "pinyin": "liǎng"
           },
           {
-            "traditional": "一",
-            "simplified": "一",
-            "pinyin": "yī"
+            "traditional": "二",
+            "pinyin": "èr"
+          },
+          {
+            "traditional": "朵",
+            "pinyin": "duǒ"
+          },
+          {
+            "traditional": "本",
+            "pinyin": "běn"
+          },
+          {
+            "traditional": "個",
+            "simplified": "个",
+            "pinyin": "ge"
           }
         ],
         "repairs": [
           {
-            "placed": [
-              "三"
+            "slot": {
+              "id": "number",
+              "tile": "二"
+            },
+            "mark": [
+              "二"
             ],
-            "note": "There is one flower in each hand, so the total is two, not three."
+            "note": "Before a measure word say 兩, not 二."
           },
           {
-            "placed": [
-              "一"
+            "slot": {
+              "id": "measure",
+              "tile": "本"
+            },
+            "mark": [
+              "本"
             ],
-            "note": "Count both hands: she has two flowers, not one."
+            "note": "本 counts books; flowers take 朵."
+          },
+          {
+            "slot": {
+              "id": "measure",
+              "tile": "個"
+            },
+            "mark": [
+              "個"
+            ],
+            "note": "個 is the general measure word, but flowers have their own: 朵."
+          },
+          {
+            "slot": {
+              "id": "number",
+              "tile": "朵"
+            },
+            "note": "Say the number first, then the measure word."
+          },
+          {
+            "slot": {
+              "id": "number",
+              "tile": "本"
+            },
+            "note": "Say the number first, then the measure word."
+          },
+          {
+            "slot": {
+              "id": "number",
+              "tile": "個"
+            },
+            "note": "Say the number first, then the measure word."
           }
         ],
-        "fallbackRepair": "There is one flower in each hand, so the total is two, not three.",
+        "fallbackRepair": "Say the number, then the measure word for flowers: 兩朵.",
         "result": {
           "traditional": "她有兩朵花。",
           "simplified": "她有两朵花。",
@@ -96,7 +147,8 @@
             0.113
           ],
           "alt": "A woman holds one flower in each hand."
-        }
+        },
+        "prompt": "Count the flowers: number, then measure word."
       },
       {
         "id": "l3-g1-book-2",
@@ -125,15 +177,22 @@
               },
               {
                 "type": "slot",
-                "id": "pick",
+                "id": "number",
                 "answers": [
                   "兩"
                 ]
               },
               {
+                "type": "slot",
+                "id": "measure",
+                "answers": [
+                  "本"
+                ]
+              },
+              {
                 "type": "text",
-                "traditional": "本書。",
-                "simplified": "本书。"
+                "traditional": "書。",
+                "simplified": "书。"
               }
             ],
             "speaker": {
@@ -145,36 +204,82 @@
         ],
         "tiles": [
           {
-            "traditional": "五",
-            "simplified": "五",
-            "pinyin": "wǔ"
-          },
-          {
-            "traditional": "三",
-            "simplified": "三",
-            "pinyin": "sān"
-          },
-          {
             "traditional": "兩",
             "simplified": "两",
             "pinyin": "liǎng"
+          },
+          {
+            "traditional": "二",
+            "pinyin": "èr"
+          },
+          {
+            "traditional": "本",
+            "pinyin": "běn"
+          },
+          {
+            "traditional": "個",
+            "simplified": "个",
+            "pinyin": "ge"
+          },
+          {
+            "traditional": "朵",
+            "pinyin": "duǒ"
           }
         ],
         "repairs": [
           {
-            "placed": [
-              "五"
+            "slot": {
+              "id": "number",
+              "tile": "二"
+            },
+            "mark": [
+              "二"
             ],
-            "note": "The picture shows two books to buy, not five."
+            "note": "Before a measure word say 兩, not 二."
           },
           {
-            "placed": [
-              "三"
+            "slot": {
+              "id": "measure",
+              "tile": "朵"
+            },
+            "mark": [
+              "朵"
             ],
-            "note": "Count the two separate books in the picture, not three."
+            "note": "朵 counts flowers; books take 本."
+          },
+          {
+            "slot": {
+              "id": "measure",
+              "tile": "個"
+            },
+            "mark": [
+              "個"
+            ],
+            "note": "個 is the general measure word, but books have their own: 本."
+          },
+          {
+            "slot": {
+              "id": "number",
+              "tile": "本"
+            },
+            "note": "Say the number first, then the measure word."
+          },
+          {
+            "slot": {
+              "id": "number",
+              "tile": "個"
+            },
+            "note": "Say the number first, then the measure word."
+          },
+          {
+            "slot": {
+              "id": "number",
+              "tile": "朵"
+            },
+            "note": "Say the number first, then the measure word."
           }
         ],
-        "fallbackRepair": "The picture shows two books to buy, not five.",
+        "fallbackRepair": "Say the number, then the measure word for books: 兩本.",
         "result": {
           "traditional": "我要買兩本書。",
           "simplified": "我要买两本书。",
@@ -203,14 +308,20 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "你有",
-                "simplified": "你有"
+                "traditional": "你有"
               },
               {
                 "type": "slot",
-                "id": "pick",
+                "id": "number",
                 "answers": [
-                  "幾本"
+                  "幾"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "measure",
+                "answers": [
+                  "本"
                 ]
               },
               {
@@ -241,25 +352,82 @@
         ],
         "tiles": [
           {
-            "traditional": "四本",
-            "simplified": "四本",
-            "pinyin": "sì běn"
+            "traditional": "幾",
+            "simplified": "几",
+            "pinyin": "jǐ"
           },
           {
-            "traditional": "幾本",
-            "simplified": "几本",
-            "pinyin": "jǐ běn"
+            "traditional": "四",
+            "pinyin": "sì"
+          },
+          {
+            "traditional": "本",
+            "pinyin": "běn"
+          },
+          {
+            "traditional": "個",
+            "simplified": "个",
+            "pinyin": "ge"
+          },
+          {
+            "traditional": "朵",
+            "pinyin": "duǒ"
           }
         ],
         "repairs": [
           {
-            "placed": [
-              "四本"
+            "slot": {
+              "id": "number",
+              "tile": "四"
+            },
+            "mark": [
+              "四"
             ],
-            "note": "四本 guesses four books; use 幾本 to ask for the number without guessing."
+            "note": "You are asking how many, so use 幾 rather than guessing a number."
+          },
+          {
+            "slot": {
+              "id": "measure",
+              "tile": "朵"
+            },
+            "mark": [
+              "朵"
+            ],
+            "note": "朵 counts flowers; books take 本."
+          },
+          {
+            "slot": {
+              "id": "measure",
+              "tile": "個"
+            },
+            "mark": [
+              "個"
+            ],
+            "note": "個 is the general measure word, but books have their own: 本."
+          },
+          {
+            "slot": {
+              "id": "number",
+              "tile": "本"
+            },
+            "note": "幾 comes first, then the measure word."
+          },
+          {
+            "slot": {
+              "id": "number",
+              "tile": "個"
+            },
+            "note": "幾 comes first, then the measure word."
+          },
+          {
+            "slot": {
+              "id": "number",
+              "tile": "朵"
+            },
+            "note": "幾 comes first, then the measure word."
           }
         ],
-        "fallbackRepair": "四本 guesses four books; use 幾本 to ask for the number without guessing.",
+        "fallbackRepair": "Ask with 幾 and the measure word for books: 幾本.",
         "result": {
           "traditional": "你有幾本英文書？",
           "simplified": "你有几本英文书？",
@@ -334,11 +502,110 @@
           "pinyin": "Wǒ yǒu wǔ běn Zhōngwén shū.",
           "english": "I have five books in Chinese."
         }
+      },
+      {
+        "id": "l3-g1-own-2",
+        "source": "own",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我有"
+              },
+              {
+                "type": "slot",
+                "id": "number",
+                "answers": [
+                  "兩"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "measure",
+                "answers": [
+                  "個"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "朋友。"
+              }
+            ],
+            "me": true
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "兩",
+            "simplified": "两",
+            "pinyin": "liǎng"
+          },
+          {
+            "traditional": "二",
+            "pinyin": "èr"
+          },
+          {
+            "traditional": "個",
+            "simplified": "个",
+            "pinyin": "ge"
+          },
+          {
+            "traditional": "本",
+            "pinyin": "běn"
+          }
+        ],
+        "repairs": [
+          {
+            "slot": {
+              "id": "number",
+              "tile": "二"
+            },
+            "mark": [
+              "二"
+            ],
+            "note": "Before a measure word say 兩, not 二."
+          },
+          {
+            "slot": {
+              "id": "measure",
+              "tile": "本"
+            },
+            "mark": [
+              "本"
+            ],
+            "note": "本 counts books; friends take the general 個."
+          },
+          {
+            "slot": {
+              "id": "number",
+              "tile": "個"
+            },
+            "note": "Say the number first, then the measure word."
+          },
+          {
+            "slot": {
+              "id": "number",
+              "tile": "本"
+            },
+            "note": "Say the number first, then the measure word."
+          }
+        ],
+        "fallbackRepair": "Say the number, then 個 for people: 兩個.",
+        "result": {
+          "traditional": "我有兩個朋友。",
+          "simplified": "我有两个朋友。",
+          "pinyin": "Wǒ yǒu liǎng ge péngyǒu.",
+          "english": "I have two friends."
+        },
+        "prompt": "Say you have two friends."
       }
     ],
     "allowWords": [
       "英文",
-      "四"
+      "四",
+      "二"
     ]
   },
   "B1L03-G02-P74": {

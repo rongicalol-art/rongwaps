@@ -22,7 +22,9 @@ function itemIssues(item: PracticeItem): string[] {
   if (!item.source?.trim()) problems.push('source missing: the book item ("p.81 #3") or "own".');
   const tileNames = 'tiles' in item ? item.tiles.map((tile) => tile.traditional) : [];
   if ('tiles' in item) {
-    if (new Set(tileNames).size !== tileNames.length) problems.push('tiles repeat.');
+    // A pattern like 熱不熱 needs the same word twice: a tile may repeat only as often as slots use it.
+    const needed = (name: string) => (item.kind === 'slot-build' ? practiceSlots(item).filter((slot) => slot.answers[0] === name).length : 1);
+    new Set(tileNames).forEach((name) => { if (tileNames.filter((other) => other === name).length > Math.max(1, needed(name))) problems.push(`tile ${name} repeats.`); });
     // Simplicity: short tiles, a small dock, and at least one tile that is wrong.
     if (item.tiles.length > MAX_TILES) problems.push(`${item.tiles.length} tiles; keep the dock to ${MAX_TILES}.`);
     tileNames.forEach((tile) => { if (hanCount(tile) > MAX_TILE_HAN) problems.push(`tile ${tile} is longer than ${MAX_TILE_HAN} characters.`); });
@@ -46,10 +48,13 @@ function itemIssues(item: PracticeItem): string[] {
         });
       }
       const firstAnswers = slots.map((slot) => slot.answers[0]).filter(Boolean);
-      if (new Set(firstAnswers).size !== firstAnswers.length) problems.push('two slots need the same tile; tiles are used once.');
+      firstAnswers.forEach((answer) => {
+        if (firstAnswers.filter((other) => other === answer).length > item.tiles.filter((tile) => tile.traditional === answer).length) problems.push(`more slots need ${answer} than there are ${answer} tiles.`);
+      });
       problems.push(...sentenceIssues(item.result, 'result'));
       const solutions = slotBuildSolutions(item).length;
-      if (solutions !== 1) problems.push(`has ${solutions} right answers; exactly one must be right.`);
+      const expected = 1 + (item.alternatives?.length ?? 0);
+      if (solutions !== expected) problems.push(`has ${solutions} right answers; it lists ${expected} (result plus alternatives).`);
       break;
     }
     case 'chat-build':
