@@ -1,6 +1,6 @@
 import { debugLogger } from '../utils/debug/debugLogger';
 import { isSupabaseConfigured, supabase } from './supabaseClient';
-import { User } from '@supabase/supabase-js';
+import { type Session, type User } from '@supabase/supabase-js';
 
 const missingSupabaseMessage = 'Supabase is not configured for this local environment.';
 const productionAuthRedirectUrl = 'https://ronsmandarin.com/';
@@ -24,6 +24,10 @@ export function getOAuthCallbackErrorMessage(search: string, hash: string): stri
     queryParams.get('error_description'),
     hashParams.get('error_description'),
   ].filter(Boolean).join(' ').toLowerCase();
+
+  if (details.includes('school_beta_only')) {
+    return 'This beta is for Shu-Te student Google accounts. Use your s…@stu.edu.tw account.';
+  }
 
   if (errorCode === 'access_denied') {
     return 'Google sign-in was cancelled. Try again when you’re ready.';
@@ -75,6 +79,9 @@ export const authService = {
         provider: 'google',
         options: {
           redirectTo: getOAuthRedirectUrl(window.location.origin, Boolean(import.meta.env?.PROD)),
+          // Request the verified organization claim used by the database gate.
+          scopes: 'openid email profile',
+          queryParams: { prompt: 'select_account' },
         }
       });
       if (error) throw error;
@@ -102,16 +109,41 @@ export const authService = {
       callback(null);
       return () => {};
     }
+    let revision = 0;
+    let disposed = false;
+    let pendingCheck: ReturnType<typeof setTimeout> | undefined;
+    const notify = async (session: Session | null, expectedRevision: number) => {
+      if (disposed || expectedRevision !== revision) return;
+      if (!session) { callback(null); return; }
+      try {
+        const { data, error, status } = await supabase.rpc('has_beta_access');
+        if (disposed || expectedRevision !== revision) return;
+        callback(!error && data === true ? session.user : null);
+        if ((!error && data !== true) || status === 403 || status === 401) {
+          await supabase.auth.signOut({ scope: 'local' });
+        }
+        if (error) debugLogger.error('Auth', 'Beta access verification failed', error.code);
+      } catch (error) {
+        if (!disposed && expectedRevision === revision) callback(null);
+        debugLogger.error('Auth', 'Beta access verification unavailable', error);
+      }
+    };
     supabase.auth.getSession().then(({ data: { session } }) => {
-      callback(session?.user ?? null);
+      if (revision === 0) void notify(session, ++revision);
     }).catch((error) => {
-      debugLogger.error('Auth', "Session check failed", error);
-      callback(null);
+      if (!disposed && revision === 0) callback(null);
+      debugLogger.error('Auth', 'Session check failed', error);
     });
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      callback(session?.user ?? null);
+      const expectedRevision = ++revision;
+      clearTimeout(pendingCheck);
+      // Supabase operations must run after the auth callback releases its lock.
+      pendingCheck = setTimeout(() => { void notify(session, expectedRevision); }, 0);
     });
     return () => {
+      disposed = true;
+      revision++;
+      clearTimeout(pendingCheck);
       subscription.unsubscribe();
     };
   },

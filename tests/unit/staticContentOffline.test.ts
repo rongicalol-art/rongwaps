@@ -32,7 +32,7 @@ test('network-first metadata survives reload, offline, HTML and invalid updates'
     persistentKey: 'offline-regression-manifest', revalidate: true, fallbackToPersistent: true,
     validate: (value: unknown) => typeof value === 'object' && value !== null && Reflect.get(value, 'version') === 'valid',
   };
-  const load = () => fetchStaticJsonWithMetadata('/data/offline-test.json', 'offline test', options);
+  const load = () => fetchStaticJsonWithMetadata('/offline-test.json', 'offline test', options);
   const good = { version: 'valid' };
   try {
     globalThis.fetch = async () => Response.json(good);

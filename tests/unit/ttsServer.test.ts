@@ -38,6 +38,45 @@ test('audio ranges clamp long suffixes, reject invalid numbers, and honor valida
   assert.equal(unchanged.headers['Cache-Control'], 'public, max-age=86400');
 });
 
+test('protected API checks database beta access with a request-scoped token and fails closed', async (context) => {
+  process.env.VITE_SUPABASE_URL = 'https://beta-fixture.supabase.co';
+  process.env.VITE_SUPABASE_ANON_KEY = 'fixture-key';
+  const server = app.listen(0, '127.0.0.1');
+  await new Promise<void>(resolve => server.once('listening', resolve));
+  const address = server.address();
+  assert.ok(address && typeof address !== 'string');
+  const base = `http://127.0.0.1:${address.port}`;
+  const networkFetch = globalThis.fetch;
+  let allowed = true;
+  let rpcStatus = 200;
+  const seenTokens: string[] = [];
+  context.mock.method(globalThis, 'fetch', async (input: RequestInfo | URL, init?: RequestInit) => {
+    const url = new URL(String(input));
+    if (url.origin === base) return networkFetch(input, init);
+    assert.equal(url.origin, 'https://beta-fixture.supabase.co');
+    if (url.pathname === '/auth/v1/user') return Response.json({ id: 'fixture', email: 's25113312@stu.edu.tw' });
+    assert.equal(url.pathname, '/rest/v1/rpc/has_beta_access');
+    seenTokens.push(new Headers(init?.headers).get('Authorization') ?? '');
+    return rpcStatus === 200 ? Response.json(allowed) : Response.json({ message: 'fixture outage' }, { status: rpcStatus });
+  });
+  const request = (token?: string) => fetch(`${base}/api/tts`, {
+    method: 'POST', headers: token ? { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } : {}, body: '{}',
+  });
+  try {
+    assert.equal((await request()).status, 401);
+    assert.equal((await request('school-fixture')).status, 400, 'approved caller reaches request validation');
+    allowed = false;
+    assert.equal((await request('personal-fixture')).status, 403);
+    rpcStatus = 503;
+    assert.equal((await request('school-fixture')).status, 503);
+    assert.deepEqual(seenTokens, ['Bearer school-fixture', 'Bearer personal-fixture', 'Bearer school-fixture']);
+  } finally {
+    await new Promise<void>((resolve, reject) => server.close(error => error ? reject(error) : resolve()));
+    delete process.env.VITE_SUPABASE_URL;
+    delete process.env.VITE_SUPABASE_ANON_KEY;
+  }
+});
+
 test('neural synthesis escapes SSML and closes the provider even on empty output', async () => {
   const oldMetadata = MsEdgeTTS.prototype.setMetadata;
   const oldStream = MsEdgeTTS.prototype.toStream;

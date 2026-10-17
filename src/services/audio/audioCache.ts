@@ -162,8 +162,10 @@ export function isUsableAudioBlob(blob: Blob): boolean {
 
 /** Cache-only lookup: a miss must keep first playback streaming from the CDN. */
 export async function readCachedAudioBlob(fileName: string, allowStale = true): Promise<Blob | null> {
+  // Keep a longer disk budget offline; a stalled cache must not hold online audio.
+  const cacheWaitMs = typeof navigator !== 'undefined' && navigator.onLine === false ? 1000 : 100;
   let timer: ReturnType<typeof setTimeout>;
-  const deadline = new Promise<null>((resolve) => { timer = setTimeout(() => resolve(null), 1000); });
+  const deadline = new Promise<null>((resolve) => { timer = setTimeout(() => resolve(null), cacheWaitMs); });
   const read = (async () => {
     try {
       const cache = await getAudioFileCache();

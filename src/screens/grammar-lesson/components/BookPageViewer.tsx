@@ -10,7 +10,6 @@ import {
 } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
 import { fetchContentBlobUrl } from '../../../services/staticContentService';
-import { bookPagePath } from '../../../utils/grammar/bookPagePath';
 import { useModalFocus } from '../../../hooks/useModalFocus';
 import { useBookViewerHistory } from '../hooks/useBookViewerHistory';
 import { useBookViewerPinchPan } from '../hooks/useBookViewerPinchPan';
@@ -28,6 +27,10 @@ interface BookPageViewerProps {
   grammarTitle: string;
   pages: number[];
   onClose: () => void;
+}
+
+function bookPagePath(bookId: number, page: number) {
+  return (`/data/book-pages/modern-chinese-${bookId}/page-${String(page).padStart(3, '0')}.webp`);
 }
 
 /**

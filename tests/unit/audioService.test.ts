@@ -689,22 +689,22 @@ test('leaving a question aborts its active preload download as well as queued cl
   const controller = new AbortController();
   const savedFetch = globalThis.fetch;
   let requests = 0;
-  let aborted = 0;
+  let aborted = false;
   globalThis.fetch = async (_url, options) => {
     requests++;
     return new Promise((_resolve, reject) => {
       options?.signal?.addEventListener('abort', () => {
-        aborted++;
+        aborted = true;
         reject(new DOMException('Aborted', 'AbortError'));
       }, { once: true });
     });
   };
   try {
-    const pending = service.preload(['https://audio.example.test/preload-abort.mp3', 'https://audio.example.test/parallel.mp3', 'https://audio.example.test/third.mp3', 'https://audio.example.test/queued.mp3'], controller.signal);
+    const pending = service.preload(['https://audio.example.test/preload-abort.mp3', 'https://audio.example.test/active-two.mp3', 'https://audio.example.test/active-three.mp3', 'https://audio.example.test/queued.mp3'], controller.signal);
     await tick();
     controller.abort();
     await pending;
-    assert.equal(aborted, 3);
+    assert.equal(aborted, true);
     assert.equal(requests, 3);
   } finally { globalThis.fetch = savedFetch; }
 });
@@ -1031,7 +1031,34 @@ test('an unresponsive cache body yields to streaming rather than holding playbac
   context.mock.timers.enable({ apis: ['setTimeout'] });
   try {
     const pending = readCachedAudioBlob('https://audio.example.test/cache-body-stall.mp3');
-    context.mock.timers.tick(1000);
+    context.mock.timers.tick(100);
     assert.equal(await pending, null);
   } finally { memoryCache.match = oldMatch; context.mock.timers.reset(); }
+});
+
+
+test('offline playback allows a slow local cache to finish before the longer deadline', async (context) => {
+  const { readCachedAudioBlob } = await import('../../src/services/audio/audioCache');
+  const oldNavigator = Object.getOwnPropertyDescriptor(globalThis, 'navigator');
+  const oldMatch = memoryCache.match;
+  let deliver!: (blob: Blob) => void;
+  const blob = new Blob(['offline recording'], { type: 'audio/mpeg' });
+  memoryCache.match = async () => ({ headers: new Headers(), blob: () => new Promise<Blob>((resolve) => { deliver = resolve; }) }) as Response;
+  Object.defineProperty(globalThis, 'navigator', { configurable: true, value: { onLine: false } });
+  context.mock.timers.enable({ apis: ['setTimeout'] });
+  try {
+    let settled = false;
+    const pending = readCachedAudioBlob('https://audio.example.test/slow-offline-cache.mp3').then((result) => { settled = true; return result; });
+    for (let i = 0; i < 5; i++) await Promise.resolve();
+    context.mock.timers.tick(350);
+    await Promise.resolve();
+    assert.equal(settled, false);
+    deliver(blob);
+    assert.equal(await pending, blob);
+  } finally {
+    memoryCache.match = oldMatch;
+    context.mock.timers.reset();
+    if (oldNavigator) Object.defineProperty(globalThis, 'navigator', oldNavigator);
+    else Reflect.deleteProperty(globalThis, 'navigator');
+  }
 });

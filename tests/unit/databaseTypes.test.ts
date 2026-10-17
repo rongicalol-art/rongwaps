@@ -34,6 +34,8 @@ const EXPECTED_FUNCTIONS = [
   'export_my_data',
   'get_sync_state',
   'handle_new_user',
+  'has_beta_access',
+  'require_school_beta_access',
   'reset_user_learning_progress',
   'touch_user_profile_updated_at',
   'upsert_card_progress',
@@ -67,7 +69,7 @@ const MIGRATION_STATEMENTS: Record<
   'DROP FUNCTION': /\bDROP\s+FUNCTION\s+(?:IF\s+EXISTS\s+)?/gi,
 };
 
-const PUBLIC_OBJECT = /(?:"public"|public)\.(?:"([a-z_0-9]+)"|([a-z_0-9]+))/gi;
+const PUBLIC_OBJECT = /^(?:"public"|public)\.(?:"([a-z_0-9]+)"|([a-z_0-9]+))/i;
 
 /** Names of `public` objects a migration file creates or drops. */
 function migrationObjects(
@@ -115,6 +117,10 @@ function assertLiveSetMatches(expected: readonly string[], object: 'TABLE' | 'FU
 
 test('Database tables match the tables the migrations leave in public', () => {
   assertLiveSetMatches(EXPECTED_TABLES, 'TABLE');
+});
+
+test('private schema objects cannot be mistaken for a later public object', () => {
+  assert.equal(migrationObjects('create table private.owners (email text); create function public.access_check() returns boolean;', 'CREATE', 'TABLE').size, 0);
 });
 
 test('Database functions match the functions the migrations leave in public', () => {

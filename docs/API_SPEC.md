@@ -4,6 +4,8 @@ The backend (`server/index.ts`) runs under Node.js + Express and provides neural
 
 There is no runtime Jev grading endpoint. `POST /api/jev/grade-answer` returns 404 without authenticating or calling a provider. Jev content-review scripts remain development tooling.
 
+Protected synthesis and lesson-content requests require both a valid Supabase user and `has_beta_access() = true` from a request-scoped database client. Unauthorized school-beta accounts receive 403; an access-verification outage returns 503. The database owns the student/owner rule; Express does not duplicate it or trust editable user metadata.
+
 ## 🚦 Rate limits
 
 Every endpoint is rate limited per client IP. Exceeding a limit returns

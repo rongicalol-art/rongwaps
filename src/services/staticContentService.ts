@@ -18,8 +18,25 @@ export interface StaticJsonFetchMetadata<T> {
 
 const CACHE_PREFIX = 'rongwaps-content:';
 const prunedVersions = new Set<string>();
+let persistedContentPurge: Promise<void> | null = null;
+
+async function purgePersistedContentOnce(): Promise<void> {
+  if (!canUsePersistentCache()) return;
+  persistedContentPurge ??= (async () => {
+    const prefix = toCacheKey('');
+    const storedKeys = await keys();
+    await Promise.all(storedKeys
+      .filter((key): key is string => typeof key === 'string' && key.startsWith(prefix))
+      .map((key) => del(key)));
+  })().catch((error) => {
+    persistedContentPurge = null;
+    debugLogger.warn('Cache', 'Could not remove previously cached content packs', error);
+  });
+  await persistedContentPurge;
+}
 
 const CONTENT_BASE_URL = (import.meta.env?.VITE_CONTENT_BASE_URL || '/data').replace(/\/+$/, '');
+const PROTECTED_CONTENT = /^\/data\//;
 
 /**
  * Single owner of where `/data/...` content is served from. Logical paths stay
@@ -30,15 +47,21 @@ export function contentUrl(path: string): string {
   return path.startsWith('/data/') ? `${CONTENT_BASE_URL}${path.slice('/data'.length)}` : path;
 }
 
-/** Lesson content: the server only serves these to a signed-in user (keep in sync with server/index.ts). */
-const GATED_CONTENT = /^\/data\/(vocabulary|readings|grammar|course-examples|dialogue-alignment|flashcard-extras|book-pages)\//;
+/** All content packs require a school session; keep in sync with server/index.ts. */
 
 /** `fetch` for `/data/...` content; sends the session token for the gated lesson packs (same-origin only). */
 export async function fetchContent(path: string, init: RequestInit = {}): Promise<Response> {
   const headers = new Headers(init.headers);
-  if (GATED_CONTENT.test(path) && !/^https?:/.test(CONTENT_BASE_URL) && isSupabaseConfigured()) {
-    const { data } = await supabase.auth.getSession();
-    if (data.session) headers.set('Authorization', `Bearer ${data.session.access_token}`);
+  if (PROTECTED_CONTENT.test(path)) {
+    // A public content CDN would bypass Express's school-account check.
+    if (!CONTENT_BASE_URL.startsWith('/') || CONTENT_BASE_URL.startsWith('//')) {
+      throw new Error('Protected content must use the authenticated app origin');
+    }
+    if (isSupabaseConfigured()) {
+      const { data } = await supabase.auth.getSession();
+      if (data.session) headers.set('Authorization', `Bearer ${data.session.access_token}`);
+    }
+    return fetch(contentUrl(path), { ...init, cache: 'no-store', headers });
   }
   return fetch(contentUrl(path), { ...init, headers });
 }
@@ -72,7 +95,11 @@ export async function fetchStaticJsonWithMetadata<T>(
   label: string,
   options: StaticJsonOptions = {},
 ): Promise<StaticJsonFetchMetadata<T>> {
-  const cacheKey = options.persistentKey ? toCacheKey(options.persistentKey) : null;
+  const protectedContent = PROTECTED_CONTENT.test(path);
+  if (protectedContent) await purgePersistedContentOnce();
+  // Protected packs stay in memory only; IndexedDB would make them available offline
+  // as full reusable JSON files on the user's device.
+  const cacheKey = !protectedContent && options.persistentKey ? toCacheKey(options.persistentKey) : null;
   let fallback: T | undefined;
   if (cacheKey && canUsePersistentCache()) {
     try {
@@ -107,7 +134,7 @@ export async function fetchStaticJsonWithMetadata<T>(
 
   let response: Response;
   try {
-    response = await timeDataRequest(label, () => fetchContent(path, { cache: options.revalidate ? 'no-cache' : 'default' }));
+    response = await timeDataRequest(label, () => fetchContent(path, { cache: protectedContent ? 'no-store' : options.revalidate ? 'no-cache' : 'default' }));
   } catch (error) {
     if (fallback !== undefined) return { data: fallback, source: 'persistent-cache' };
     throw error;

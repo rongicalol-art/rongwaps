@@ -9,6 +9,15 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 let _client: SupabaseClient | null = null;
 
+/** Request-scoped auth: never replace Authorization on the shared client. */
+export function createUserSupabaseClient(token: string): SupabaseClient {
+  if (!isSupabaseConfigured()) throw new Error('Supabase environment variables are missing or invalid');
+  return createClient(process.env.VITE_SUPABASE_URL!, process.env.VITE_SUPABASE_ANON_KEY!, {
+    auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+    global: { headers: { Authorization: `Bearer ${token}` } },
+  });
+}
+
 function isPlaceholder(value: string): boolean {
   return value.trim() === '' || value.startsWith('your_') || value.includes('MY_');
 }
