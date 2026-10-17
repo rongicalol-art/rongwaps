@@ -52,7 +52,7 @@ Kinds (each lesson mixes them to fit its book page):
 
 Every item has exactly ONE right answer (the validator counts `slot-build` solutions and `chat-build` accepted orders) and a `source`: the book item (`"p.81 #3"`) or `"own"`.
 
-More `scene` types: `moment` (`{ moment }`: one calendar day or clock time with its caption), `month` (`{ year, month, highlight: [days] }`: the book's month calendar, weekday of day 1 computed), `picture` (`{ page, box: [left, top, width, height], alt }`: a crop of the printed Book 1 page, box as 0–1 fractions of the page).
+More `scene` types: `moment` (`{ moment }`: one calendar day or clock time with its caption), `month` (`{ year, month, highlight: [days] }`: the book's month calendar, weekday of day 1 computed), `picture` (`{ page, box: [left, top, width, height], alt }`: a crop of the printed Book 1 page, box as 0–1 fractions of the page), `cast` (`{ page, alt, people: [{ box, name, pinyin, note }] }`: several pictures side by side with their printed name and nationality, for exercises that need all of them to answer, e.g. L1 p.38).
 
 Pattern rows: `exampleId` on a `patternRows` entry shows that page example directly under the row (same item and audio button as the examples list), and the list then skips it.
 

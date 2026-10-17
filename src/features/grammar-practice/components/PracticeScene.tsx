@@ -3,7 +3,7 @@ import type { PracticePlace, PracticeRoutePin, PracticeScene as Scene, PracticeT
 import { ChangeScene } from './ChangeScene';
 import { CountdownScene, Moment } from './CountdownScene';
 import { MonthScene } from './MonthScene';
-import { PictureScene } from './PictureScene';
+import { CastScene, PictureScene } from './PictureScene';
 import { RouteScene } from './RouteScene';
 
 interface PracticeSceneProps {
@@ -27,6 +27,7 @@ export function PracticeScene({ scene, arrived, renderChinese, reelPlace }: Prac
     );
   }
   if (scene.type === 'month') return <MonthScene year={scene.year} month={scene.month} highlight={scene.highlight} renderChinese={renderChinese} />;
+  if (scene.type === 'cast') return <CastScene page={scene.page} people={scene.people} alt={scene.alt} />;
   if (scene.type === 'picture') return <PictureScene page={scene.page} box={scene.box} alt={scene.alt} />;
   const resolve = (pin?: PracticeRoutePin) => (!pin ? null : 'reel' in pin ? reelPlace?.(pin.reel) ?? null : pin);
   return (

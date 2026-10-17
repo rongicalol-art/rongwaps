@@ -45,6 +45,16 @@ export interface PracticeMoment {
   time?: string;
 }
 
+/** One person the book shows with a printed name and nationality. */
+export interface PracticeCastMember {
+  /** left, top, width, height of the picture alone (0–1 fractions of the page). */
+  box: [number, number, number, number];
+  name: string;
+  pinyin: string;
+  /** The printed note, e.g. 日本人. */
+  note: string;
+}
+
 export type PracticeScene =
   | { type: 'route'; from: PracticeRoutePin; to: PracticeRoutePin; purpose?: PracticeRoutePin }
   | { type: 'change'; before: { label: string; value: string }; now: { label: string; value: string } }
@@ -54,7 +64,9 @@ export type PracticeScene =
   /** The book's month calendar; `highlight` are day numbers. */
   | { type: 'month'; year: number; month: number; highlight: number[] }
   /** A crop of the printed book page (book 1); `box` = left, top, width, height as 0–1 fractions. */
-  | { type: 'picture'; page: number; box: [number, number, number, number]; alt: string };
+  | { type: 'picture'; page: number; box: [number, number, number, number]; alt: string }
+  /** Several pictures side by side, each captioned as printed; the learner reads across them. */
+  | { type: 'cast'; page: number; alt: string; people: PracticeCastMember[] };
 
 export type PracticeSegment =
   | ({ type: 'text' } & PracticeText)
