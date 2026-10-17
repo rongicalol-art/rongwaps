@@ -404,14 +404,7 @@
           "pinyin": "Nǐ yǒu jǐ běn Yīngwén shū?",
           "english": "How many books in English do you have?"
         },
-        "prompt": "Ask how many English books your friend has.",
-        "glossary": [
-          {
-            "traditional": "英文",
-            "pinyin": "Yīngwén",
-            "english": "English"
-          }
-        ]
+        "prompt": "Ask how many English books your friend has."
       },
       {
         "id": "l3-g1-own-1",
@@ -772,14 +765,7 @@
           ],
           "alt": "A boy hands a book to his father."
         },
-        "prompt": "What does the boy give his father?",
-        "glossary": [
-          {
-            "traditional": "爸爸",
-            "pinyin": "bàba",
-            "english": "dad"
-          }
-        ]
+        "prompt": "What does the boy give his father?"
       },
       {
         "id": "l3-g2-book-2",
@@ -1053,15 +1039,7 @@
           ],
           "alt": "A woman hands a book-shaped gift to a man."
         },
-        "prompt": "You are the woman. Say what you give your British classmate.",
-        "glossary": [
-          {
-            "traditional": "同學",
-            "simplified": "同学",
-            "pinyin": "tóngxué",
-            "english": "classmate"
-          }
-        ]
+        "prompt": "You are the woman. Say what you give your British classmate."
       }
     ],
     "allowWords": [
@@ -1167,19 +1145,7 @@
           ],
           "alt": "Three shirts hang beside one another."
         },
-        "prompt": "Your friend is by the shirts; you are far away. Answer.",
-        "glossary": [
-          {
-            "traditional": "件",
-            "pinyin": "jiàn",
-            "english": "measure word for clothes"
-          },
-          {
-            "traditional": "衣服",
-            "pinyin": "yīfú",
-            "english": "clothes"
-          }
-        ]
+        "prompt": "Your friend is by the shirts; you are far away. Answer."
       },
       {
         "id": "l3-g3-book-2",

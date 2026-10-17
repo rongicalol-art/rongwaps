@@ -968,15 +968,7 @@
           "alt": "Two people at a counter selling noodles and drinks."
         },
         "prompt": "Suggest going to eat together. Where does 吧 go?",
-        "gaps": true,
-        "glossary": [
-          {
-            "traditional": "一點兒",
-            "simplified": "一点儿",
-            "pinyin": "yìdiǎnr",
-            "english": "a little"
-          }
-        ]
+        "gaps": true
       }
     ],
     "allowWords": [

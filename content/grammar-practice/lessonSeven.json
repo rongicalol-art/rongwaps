@@ -1789,13 +1789,6 @@
           "english": "Do you like summer? Summer here is both hot and uncomfortable; I do not like it."
         },
         "prompt": "Summer here is so hot you can’t sleep. Do you like it? Where do the two 又 go?",
-        "glossary": [
-          {
-            "traditional": "夏天",
-            "pinyin": "xiàtiān",
-            "english": "summer"
-          }
-        ],
         "gaps": true
       },
       {
@@ -1929,14 +1922,6 @@
           "english": "What do you think of this restaurant’s beef noodles? They are both tasty and inexpensive."
         },
         "prompt": "The noodles here taste great and cost $50 (others cost $150). What do you think? Where do the two 又 go?",
-        "glossary": [
-          {
-            "traditional": "牛肉麵",
-            "simplified": "牛肉面",
-            "pinyin": "niúròu miàn",
-            "english": "beef noodles"
-          }
-        ],
         "gaps": true
       },
       {
@@ -2073,20 +2058,6 @@
           "english": "Does he often go to the seaside? He can swim and likes sunbathing and goes to the seaside every weekend."
         },
         "prompt": "Why does he go to the beach every weekend? Where do the two 又 go?",
-        "glossary": [
-          {
-            "traditional": "海邊",
-            "simplified": "海边",
-            "pinyin": "hǎibiān",
-            "english": "seaside"
-          },
-          {
-            "traditional": "曬太陽",
-            "simplified": "晒太阳",
-            "pinyin": "shài tàiyáng",
-            "english": "to sunbathe"
-          }
-        ],
         "gaps": true
       },
       {

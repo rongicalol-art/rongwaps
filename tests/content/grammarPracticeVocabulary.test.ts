@@ -65,3 +65,19 @@ test('Grammar practice uses only taught words', () => {
   }
   assert.deepEqual(problems, []);
 });
+
+test('a gloss only explains a word the vocabulary has not taught yet', () => {
+  const problems: string[] = [];
+  for (const part of grammar) {
+    for (const page of part.grammarPages) {
+      if (!page.practice) continue;
+      const taught = new Set(vocab.filter((item) => orderOf(item.id) <= page.lessonId * 10 + page.partId).flatMap((item) => forms(item.traditional)));
+      for (const item of page.practice.items) {
+        for (const entry of item.glossary ?? []) {
+          if (taught.has(entry.traditional)) problems.push(`${page.id} ${item.id}: ${entry.traditional} is already taught, so it needs no gloss.`);
+        }
+      }
+    }
+  }
+  assert.deepEqual(problems, []);
+});
