@@ -5,7 +5,7 @@
 import type { Flashcard } from '../../data/flashcards';
 import { expandSlashAndOptionalVariants, stripPinyinTones } from '../pinyin/pinyinNormalize';
 import { escapeRegExp } from '../escapeRegExp';
-import { stemEnglishPhrase, stemEnglishWord } from './englishStem';
+import { getSemanticSynonymStems, stemEnglishPhrase, stemEnglishWord } from './englishStem';
 
 export function getSmartScore(
   card: Flashcard,
@@ -21,6 +21,7 @@ export function getSmartScore(
   const cleanQuery = lowerQuery.trim().replace(/^(?:to |an? |the )/, '');
   const queryStem = stemEnglishPhrase(cleanQuery);
   const singleStem = !cleanQuery.includes(' ') ? stemEnglishWord(cleanQuery) : '';
+  const synonymStems = getSemanticSynonymStems(cleanQuery);
   const defWords = definitions
     .replace(/\[[^\]]*\]|\([^)]*\)/g, ' ')
     .split(/[^a-z]+/)
@@ -38,7 +39,7 @@ export function getSmartScore(
       if (front === rawQuery) score += 10000;
       if (joinedPinyin === normQuery && joinedPinyin.length > 0) score += 8000;
 
-      // Exact English meaning word match or morphological stem match.
+      // Exact English meaning word match, morphological stem match, or semantic synonym match.
       const escapedQuery = escapeRegExp(cleanQuery);
       const wordsRegex = escapedQuery ? new RegExp(`(?:^|[^A-Za-z])${escapedQuery}(?=$|[^A-Za-z])`, 'i') : null;
       if (wordsRegex && wordsRegex.test(definitions)) {
@@ -48,6 +49,8 @@ export function getSmartScore(
         score += 3200;
       } else if (queryStem.length >= 3 && defStems.join(' ').includes(queryStem)) {
         score += 2800;
+      } else if (synonymStems.length > 0 && synonymStems.some((syn) => defStems.includes(syn))) {
+        score += 2400;
       }
 
       // 2. Starts With (High Priority)

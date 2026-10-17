@@ -55,6 +55,40 @@ test('searchInIndex matches morphological derivations and inflections like procr
   assert.equal(wentResults[0]?.simplified, '去');
 });
 
+test('searchInIndex expands semantic and colloquial English synonyms', () => {
+  const slacker = searchInIndex(index, 'slacker', 10).map((r) => r.simplified);
+  assert.ok(slacker.includes('懒') || slacker.includes('懒惰'), `Expected slacker to find 懒/懒惰, got: ${slacker.join(', ')}`);
+
+  const dawdle = searchInIndex(index, 'dawdle', 10).map((r) => r.simplified);
+  assert.ok(dawdle.includes('拖延') || dawdle.includes('延迟'), `Expected dawdle to find 拖延/延迟, got: ${dawdle.join(', ')}`);
+
+  const brag = searchInIndex(index, 'bragging', 10).map((r) => r.simplified);
+  assert.ok(brag.includes('吹嘘') || brag.includes('吹牛') || brag.includes('夸耀'), `Expected bragging to find 吹嘘/吹牛/夸耀, got: ${brag.join(', ')}`);
+});
+
+test('searchInIndex supports Pleco-style wildcards (* and ?) for Chinese and Pinyin', () => {
+  const syndromeMatches = searchInIndex(index, '*症', 20).map((r) => r.simplified);
+  assert.ok(syndromeMatches.includes('拖延症'), `Expected *症 wildcard to find 拖延症, got: ${syndromeMatches.join(', ')}`);
+
+  const idiomPattern = searchInIndex(index, '不?不?', 20).map((r) => r.simplified);
+  assert.ok(
+    idiomPattern.every((w) => Array.from(w).length === 4 && w[0] === '不' && w[2] === '不'),
+    `Expected 不?不? to match 4-char 不X不Y idioms, got: ${idiomPattern.join(', ')}`,
+  );
+});
+
+test('searchInIndex filters by explicit Pinyin tone numbers and supports Mixed Hanzi+English/Pinyin queries', () => {
+  const ma3 = searchInIndex(index, 'ma3', 10);
+  assert.ok(ma3.length > 0, 'Expected matches for ma3');
+  assert.ok(
+    ma3.every((r) => /[ǎǒěǐǔǚ]/.test(r.pinyin_accented)),
+    `Expected all ma3 results to have 3rd tone, got: ${ma3.map((r) => r.pinyin_accented).join(', ')}`,
+  );
+
+  const mixed = searchInIndex(index, '心 anxious', 10).map((r) => r.simplified);
+  assert.ok(mixed.includes('担心'), `Expected mixed query "心 anxious" to find 担心, got: ${mixed.join(', ')}`);
+});
+
 test('searchInIndex returns matching results for Pinyin queries and Jianpin initials', () => {
   const results = searchInIndex(index, 'nihao', 10);
   assert.ok(results.length > 0, 'Expected matches for "nihao"');

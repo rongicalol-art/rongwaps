@@ -1,6 +1,6 @@
 /**
- * Lightweight, zero-dependency English stemmer & irregular lemma normalizer
- * for Chinese-English dictionary search.
+ * Lightweight, zero-dependency English stemmer, irregular lemma normalizer,
+ * and semantic/colloquial concept expander for Chinese-English dictionary search.
  *
  * Maps inflected and derived English words to a canonical stem so queries like:
  * - "procrastination" / "procrastinating" / "procrastinated" -> "procrastin"
@@ -91,7 +91,7 @@ const IRREGULAR_LEMMAS: Record<string, string> = {
   lent: 'lend',
   built: 'build',
   left: 'leave', leaving: 'leave',
-  sat: 'sat', sitting: 'sit',
+  sat: 'sit', sitting: 'sit',
   won: 'win', winning: 'win',
   dug: 'dig', digging: 'dig',
   hung: 'hang',
@@ -170,6 +170,128 @@ const IRREGULAR_LEMMAS: Record<string, string> = {
   wisdom: 'wise', wisely: 'wise',
 };
 
+/**
+ * Semantic & colloquial concept bridge:
+ * Maps everyday English / slang / phrasal queries to the canonical English glosses
+ * that CEDICT and textbook definitions actually use.
+ */
+const SEMANTIC_SYNONYMS: Record<string, string[]> = {
+  procrastinate: ['delay', 'postpone'],
+  procrastination: ['procrastinate', 'delay', 'postpone'],
+  dawdle: ['procrastinate', 'tarry', 'linger', 'dally'],
+  slacker: ['lazy', 'idle', 'loaf'],
+  slack: ['lazy', 'idle', 'negligent'],
+  lazy: ['idle', 'indolent', 'slothful'],
+  laziness: ['lazy', 'inertia', 'indolence'],
+  brag: ['boast', 'show off'],
+  bragging: ['boast', 'show off'],
+  cringe: ['embarrassing', 'awkward'],
+  awkward: ['embarrassed', 'uncomfortable'],
+  burnout: ['exhausted', 'overworked', 'weary'],
+  exhausted: ['tired', 'weary', 'fatigued'],
+  tired: ['weary', 'exhausted', 'fatigued'],
+  broke: ['penniless', 'poor', 'destitute'],
+  ghost: ['ignore', 'disappear'],
+  ghosted: ['ignore', 'cut off'],
+  introvert: ['shy', 'reserved', 'introverted'],
+  extrovert: ['outgoing', 'extroverted', 'sociable'],
+  overthink: ['worry', 'anxious', 'brood'],
+  hangry: ['hungry', 'irritable'],
+  chill: ['relax', 'calm', 'casual'],
+  stubborn: ['obstinate', 'headstrong'],
+  cheapskate: ['stingy', 'miserly', 'miser'],
+  stingy: ['miserly', 'tightfisted'],
+  annoying: ['irritating', 'troublesome', 'tiresome'],
+  annoyed: ['irritated', 'upset', 'vexed'],
+  mad: ['angry', 'furious', 'crazy'],
+  furious: ['angry', 'enraged', 'furious'],
+  scared: ['afraid', 'frightened', 'fear'],
+  afraid: ['scared', 'fear', 'frightened'],
+  smart: ['clever', 'intelligent', 'bright'],
+  dumb: ['stupid', 'foolish', 'silly'],
+  stupid: ['foolish', 'silly', 'idiotic'],
+  cute: ['adorable', 'lovely'],
+  pretty: ['beautiful', 'handsome', 'attractive'],
+  yummy: ['delicious', 'tasty'],
+  delicious: ['tasty', 'appetizing'],
+  gross: ['disgusting', 'nasty', 'repulsive'],
+  disgusting: ['nauseating', 'revolting', 'gross'],
+  fake: ['counterfeit', 'false', 'sham'],
+  bossy: ['domineering', 'arrogant'],
+  picky: ['fussy', 'fastidious', 'choosy'],
+  clumsy: ['awkward', 'bungling'],
+  chatty: ['talkative', 'garrulous'],
+  nosy: ['meddlesome', 'prying', 'curious'],
+  bathroom: ['toilet', 'restroom', 'lavatory'],
+  restroom: ['toilet', 'bathroom', 'lavatory'],
+  subway: ['metro', 'underground'],
+  boba: ['bubble tea', 'pearl milk tea'],
+  scooter: ['moped', 'motorcycle'],
+  cab: ['taxi'],
+  movie: ['film', 'cinema'],
+  vacation: ['holiday'],
+  holiday: ['vacation', 'festival'],
+  apartment: ['flat'],
+  trash: ['garbage', 'rubbish'],
+  garbage: ['rubbish', 'trash', 'refuse'],
+  elevator: ['lift'],
+  fall: ['autumn', 'drop'],
+  autumn: ['fall'],
+  soccer: ['football'],
+  cellphone: ['mobile phone', 'smartphone'],
+  phone: ['telephone', 'mobile'],
+  laptop: ['notebook computer'],
+  fridge: ['refrigerator'],
+  ac: ['air conditioning', 'air conditioner'],
+  gym: ['fitness center', 'gymnasium'],
+  workout: ['exercise', 'fitness'],
+  diet: ['lose weight', 'slim'],
+  hangover: ['hungover', 'drunk'],
+  drunk: ['intoxicated', 'tipsy'],
+  tipsy: ['slightly drunk', 'intoxicated'],
+  crush: ['infatuated', 'secretly in love'],
+  dump: ['break up', 'jilt', 'discard'],
+  fiance: ['betrothed', 'engaged'],
+  fiancee: ['betrothed', 'engaged'],
+  coworker: ['colleague'],
+  boss: ['manager', 'superior', 'employer'],
+  quit: ['resign', 'give up', 'stop'],
+  fired: ['dismiss', 'sack', 'lay off'],
+  salary: ['wage', 'pay', 'income'],
+  rent: ['lease', 'hire'],
+  discount: ['rebate', 'sale'],
+  receipt: ['invoice', 'bill'],
+  change: ['alter', 'small change', 'modify'],
+  fix: ['repair', 'mend', 'solve'],
+  guess: ['suppose', 'conjecture', 'estimate'],
+  chat: ['gossip', 'talk', 'converse'],
+  argue: ['quarrel', 'dispute', 'bicker'],
+  yell: ['shout', 'scream', 'scold'],
+  cry: ['weep', 'sob'],
+  laugh: ['smile', 'giggle', 'chuckle'],
+  hurry: ['rush', 'hasten', 'urgent'],
+  skip: ['omit', 'play truant', 'cut class'],
+  cheat: ['deceive', 'swindle', 'unfaithful'],
+  apologize: ['say sorry', 'excuse', 'apology'],
+  forgive: ['pardon', 'excuse'],
+  promise: ['vow', 'pledge', 'guarantee'],
+  cancel: ['call off', 'abolish', 'revoke'],
+  postpone: ['delay', 'put off', 'defer'],
+  put_off: ['delay', 'postpone', 'procrastinate'],
+  give_up: ['abandon', 'renounce', 'quit'],
+  show_off: ['boast', 'flaunt', 'brag'],
+  throw_up: ['vomit', 'puke'],
+  pass_out: ['faint', 'lose consciousness'],
+  freak_out: ['panic', 'lose control'],
+  hang_out: ['stroll', 'get together', 'chat'],
+  work_out: ['exercise', 'solve', 'succeed'],
+  find_out: ['discover', 'ascertain', 'learn'],
+  figure_out: ['understand', 'solve', 'work out'],
+  look_for: ['search', 'seek', 'find'],
+  take_care: ['look after', 'care for', 'beware'],
+  run_out: ['exhaust', 'deplete', 'use up'],
+};
+
 const stemCache = new Map<string, string>();
 const MAX_STEM_CACHE = 25000;
 
@@ -228,7 +350,6 @@ export function stemEnglishWord(raw: string): string {
   }
 
   // Step 2: Derivational suffixes (-ation, -ition, -ness, -ment, -ful, -less, -able, -ible, -ly, -er, -est)
-  // Normalize trailing 'y' to 'i' when preceded by consonant on words > 3 chars (lazy -> lazi, happy -> happi)
   const derivational: Array<[string, string, number]> = [
     ['ational', 'at', 7],
     ['fulness', '', 7],
@@ -273,7 +394,7 @@ export function stemEnglishWord(raw: string): string {
 
   // Step 3: Strip trailing silent -e or -ate -> -at so "procrastinate" and "procrastination" both hit "procrastinat"
   if (w.endsWith('ate') && w.length > 5) {
-    w = w.slice(0, -1); // procrastinate -> procrastinat (matches procrastin+ation -> procrastinat)
+    w = w.slice(0, -1);
   } else if (w.endsWith('e') && w.length > 3 && !w.endsWith('ee') && !w.endsWith('le') && hasVowel(w.slice(0, -1))) {
     w = w.slice(0, -1);
   }
@@ -298,4 +419,22 @@ export function stemEnglishPhrase(phrase: string): string {
     .filter(Boolean);
   if (words.length === 0) return '';
   return words.map(stemEnglishWord).join(' ');
+}
+
+/**
+ * Returns stemmed semantic synonym expansions for an English query (single word or phrasal verb).
+ */
+export function getSemanticSynonymStems(queryLower: string): string[] {
+  const normalizedKey = queryLower.trim().replace(/\s+/g, '_');
+  const direct = SEMANTIC_SYNONYMS[normalizedKey] ?? SEMANTIC_SYNONYMS[queryLower];
+  const lemma = IRREGULAR_LEMMAS[queryLower];
+  const fromLemma = lemma ? SEMANTIC_SYNONYMS[lemma] : undefined;
+  const rawList = [...(direct || []), ...(fromLemma || [])];
+  if (rawList.length === 0) return [];
+  const stems = new Set<string>();
+  for (const syn of rawList) {
+    const stemmed = stemEnglishPhrase(syn);
+    if (stemmed) stems.add(stemmed);
+  }
+  return [...stems];
 }

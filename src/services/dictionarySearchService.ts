@@ -4,7 +4,7 @@ import { debugLogger } from '../utils/debug/debugLogger';
 import { fetchStaticJson } from './staticContentService';
 import { fetchDictionaryRowsFromPacks } from './contentPacks';
 import { sanitizeDictionaryDefinitions } from '../utils/vocabulary/dictionaryDefinitions';
-import { stemEnglishPhrase, stemEnglishWord } from '../utils/vocabulary/englishStem';
+import { getSemanticSynonymStems, stemEnglishPhrase, stemEnglishWord } from '../utils/vocabulary/englishStem';
 
 export interface SearchResult {
   id: number;
@@ -65,7 +65,27 @@ async function getSearchIndex(): Promise<CompactSearchEntry[] | null> {
 }
 
 const HANZI_REGEX = /\p{Script=Han}/u;
+const HANZI_GLOBAL_REGEX = /\p{Script=Han}+/gu;
 const VARIANT_STUB_RE = /^(?:old |archaic |Japanese )?variant of\b/i;
+
+const TONE_CHAR_MAP: Record<string, number> = {
+  ā: 1, á: 2, ǎ: 3, à: 4,
+  ē: 1, é: 2, ě: 3, è: 4,
+  ī: 1, í: 2, ǐ: 3, ì: 4,
+  ō: 1, ó: 2, ǒ: 3, ò: 4,
+  ū: 1, ú: 2, ǔ: 3, ù: 4,
+  ǖ: 1, ǘ: 2, ǚ: 3, ǜ: 4,
+};
+
+function detectSyllableTone(accentedSyllable: string): number {
+  for (const ch of accentedSyllable) {
+    const t = TONE_CHAR_MAP[ch];
+    if (t) return t;
+  }
+  const numMatch = accentedSyllable.match(/[1-5]$/);
+  if (numMatch) return Number(numMatch[0]);
+  return 5;
+}
 
 function extractPinyinSyllables(pinyinAccented: string): string[] {
   return pinyinAccented
@@ -170,6 +190,64 @@ function isOneTypo(a: string, b: string): boolean {
     : a.slice(i) === b.slice(i + 1);
 }
 
+/**
+ * Parses explicit tone-numbered pinyin queries (e.g. "ma3", "ni3hao3", "tuo1 yan2")
+ * into [{ base: 'ma', tone: 3 }, ...] so tone numbers filter exact tones when provided.
+ */
+function parseToneNumberedPinyin(rawQuery: string): Array<{ base: string; tone: number | null }> | null {
+  if (!/[1-5]/.test(rawQuery) || HANZI_REGEX.test(rawQuery)) return null;
+  const normalized = rawQuery.toLowerCase().replace(/u:/g, 'u').replace(/v/g, 'u').trim();
+  if (!/^[a-z1-5\s']+$/i.test(normalized)) return null;
+  const tokens: Array<{ base: string; tone: number | null }> = [];
+  const re = /([a-z]+)([1-5])?/g;
+  let match: RegExpExecArray | null;
+  while ((match = re.exec(normalized)) !== null) {
+    tokens.push({
+      base: match[1],
+      tone: match[2] ? Number(match[2]) : null,
+    });
+  }
+  return tokens.length > 0 ? tokens : null;
+}
+
+function entryMatchesToneTokens(
+  pinyinAccented: string,
+  tokens: Array<{ base: string; tone: number | null }>,
+): 'exact' | 'prefix' | null {
+  const rawSyllables = pinyinAccented.split(/[\s,·]+/).filter(Boolean);
+  if (rawSyllables.length < tokens.length) return null;
+  for (let i = 0; i < tokens.length; i++) {
+    const sylFlat = stripPinyinTones(rawSyllables[i]);
+    const tok = tokens[i];
+    const isLast = i === tokens.length - 1;
+    if (tok.tone !== null) {
+      if (sylFlat !== tok.base) return null;
+      if (detectSyllableTone(rawSyllables[i]) !== tok.tone) return null;
+    } else if (isLast && rawSyllables.length === tokens.length) {
+      if (!sylFlat.startsWith(tok.base)) return null;
+    } else if (sylFlat !== tok.base) {
+      return null;
+    }
+  }
+  if (
+    rawSyllables.length === tokens.length &&
+    stripPinyinTones(rawSyllables[rawSyllables.length - 1]) === tokens[tokens.length - 1].base
+  ) {
+    return 'exact';
+  }
+  return 'prefix';
+}
+
+function buildWildcardRegex(pattern: string): RegExp | null {
+  if (!/[*?]/.test(pattern)) return null;
+  const parts = Array.from(pattern).map((ch) => {
+    if (ch === '*' || ch === '＊') return '.*';
+    if (ch === '?' || ch === '？') return '.';
+    return escapeRegExp(ch);
+  });
+  return new RegExp(`^${parts.join('')}$`, 'iu');
+}
+
 export function searchInIndex(
   index: CompactSearchEntry[] | null,
   searchQuery: string,
@@ -178,16 +256,69 @@ export function searchInIndex(
   const query = searchQuery.trim();
   if (!query || !index || resultLimit <= 0) return [];
 
+  // 1. Pleco-style Wildcard Search (* and ? / ＊ and ？)
+  if (/^[\p{Script=Han}a-zA-Z0-9*?＊？\s']+$/u.test(query) && /[*?＊？]/.test(query)) {
+    const isHanziWildcard = HANZI_REGEX.test(query);
+    const cleanPattern = isHanziWildcard ? query.replace(/\s+/g, '') : stripPinyinTones(query.replace(/[*?＊？]/g, (m) => m));
+    const wildcardRe = buildWildcardRegex(isHanziWildcard ? cleanPattern : query.toLowerCase().trim());
+    if (wildcardRe) {
+      const wildcardMatches: SearchResult[] = [];
+      const seen = new Set<string>();
+      for (const [id, s, t, py, flat, defs, freq] of index) {
+        const trad = t || s;
+        const matched = isHanziWildcard
+          ? wildcardRe.test(s) || wildcardRe.test(trad)
+          : wildcardRe.test(flat) || wildcardRe.test(py.toLowerCase());
+        if (matched && !seen.has(s) && !seen.has(trad)) {
+          seen.add(s);
+          seen.add(trad);
+          const sanitized = sanitizeDictionaryDefinitions(defs);
+          wildcardMatches.push({
+            id,
+            simplified: s,
+            traditional: trad,
+            pinyin_accented: py,
+            definitions: sanitized.definitions,
+            measure_words: sanitized.measure_words,
+            match_type: 'exact',
+            total_score: 5000 + Math.max(0, Math.min(100, freq)) * 4 - Array.from(s).length * 2,
+          });
+        }
+      }
+      wildcardMatches.sort((a, b) => b.total_score - a.total_score);
+      return wildcardMatches.slice(0, resultLimit);
+    }
+  }
+
+  // 2. Mixed Hanzi + Latin/English/Pinyin Query (e.g. "心 worried", "bu好", "言 delay")
+  const hasHanzi = HANZI_REGEX.test(query);
+  const hasLatin = /[a-zA-Z]/.test(query);
+  if (hasHanzi && hasLatin) {
+    const hanziParts = query.match(HANZI_GLOBAL_REGEX) ?? [];
+    const latinPart = query.replace(HANZI_GLOBAL_REGEX, ' ').trim();
+    if (hanziParts.length > 0 && latinPart.length > 0) {
+      const candidates = index.filter(([, s, t]) => {
+        const trad = t || s;
+        return hanziParts.every((hp) => s.includes(hp) || trad.includes(hp));
+      });
+      const subResults = searchInIndex(candidates, latinPart, resultLimit);
+      if (subResults.length > 0) return subResults;
+    }
+  }
+
   const queryLower = query.toLowerCase().replace(/\s+/g, ' ').replace(/^(?:to |an? |the )/, '');
-  const isHanzi = HANZI_REGEX.test(query);
+  const isHanzi = hasHanzi;
   const queryFlat = stripPinyinTones(query);
+  const toneTokens = !isHanzi ? parseToneNumberedPinyin(query) : null;
   const queryStemmed = !isHanzi ? stemEnglishPhrase(queryLower) : '';
   const querySingleStem = !isHanzi && !queryLower.includes(' ') ? stemEnglishWord(queryLower) : '';
+  const synonymStems = !isHanzi ? getSemanticSynonymStems(queryLower) : [];
   // Fast pre-filter prefix: the first 3 characters of the stem (or full stem for 2-3 char stems like "go"/"eat")
-  // must appear in the raw definition string before we pay to tokenize/stem an entry's definitions.
+  // or any semantic synonym prefix must appear in the raw definition string before we tokenize/stem.
   const stemRootPrefix = querySingleStem.length >= 2
     ? querySingleStem.slice(0, Math.min(3, querySingleStem.length))
     : queryLower.slice(0, Math.min(3, queryLower.length));
+  const synonymPrefixes = synonymStems.map((syn) => syn.slice(0, Math.min(3, syn.length))).filter((p) => p.length >= 2);
   const englishWord = new RegExp(`(?:^|[^a-z])${escapeRegExp(queryLower)}(?=$|[^a-z])`);
   const allowTypo = !isHanzi && /^[a-z]{5,}$/.test(queryLower);
   const matches: SearchResult[] = [];
@@ -213,8 +344,19 @@ export function searchInIndex(
         tier = 2;
       }
     } else {
-      // 1. Pinyin matching (exact -> syllable/flat prefix -> initialism jianpin)
-      if (queryFlat && flat === queryFlat) {
+      // 1. Pinyin matching (tone-exact -> flat-exact -> syllable/flat prefix -> initialism jianpin)
+      if (toneTokens) {
+        const toneMatch = entryMatchesToneTokens(py, toneTokens);
+        if (toneMatch === 'exact') {
+          matchType = 'exact';
+          tier = 6;
+          senseBonus = Math.max(senseBonus, 180);
+        } else if (toneMatch === 'prefix') {
+          matchType = 'prefix';
+          tier = 4;
+          senseBonus = Math.max(senseBonus, 80);
+        }
+      } else if (queryFlat && flat === queryFlat) {
         matchType = 'exact';
         tier = 6;
         senseBonus = Math.max(senseBonus, 160);
@@ -237,13 +379,14 @@ export function searchInIndex(
       }
 
       // 2. Fast pre-check before preparing English glosses:
-      // Does any definition contain the stem root prefix or query substring?
+      // Does any definition contain the stem root prefix, query substring, or semantic synonym prefix?
       let mightMatchEnglish = false;
       for (let d = 0; d < defs.length; d++) {
         const defLower = defs[d].toLowerCase();
         if (
           (stemRootPrefix && defLower.includes(stemRootPrefix)) ||
-          defLower.includes(queryLower)
+          defLower.includes(queryLower) ||
+          (synonymPrefixes.length > 0 && synonymPrefixes.some((sp) => defLower.includes(sp)))
         ) {
           mightMatchEnglish = true;
           break;
@@ -273,6 +416,13 @@ export function searchInIndex(
             // Exact word inside a multi-word gloss ("deliberate procrastination"); require >=3 chars so "nh" doesn't match "CO-NH"
             gTier = 5;
             gBonus += 60;
+          } else if (
+            synonymStems.length > 0 &&
+            synonymStems.includes(g.stemmedPhrase)
+          ) {
+            // Semantic synonym headword match ("put off" -> "to delay" / "to procrastinate", "slacker" -> "lazy")
+            gTier = 5;
+            gBonus += 45;
           } else if (querySingleStem.length >= 3 && g.stems.includes(querySingleStem)) {
             // Stemmed word inside a multi-word gloss ("to obstruct and procrastinate")
             gTier = 4;
@@ -422,8 +572,8 @@ export async function searchDictionaryOffline(
   const matches: SearchResult[] = [];
   const seenWords = new Set<string>();
 
-  // If Hanzi, do an exact lookup against dictionary shards to guarantee coverage even for rare words
-  if (HANZI_REGEX.test(query)) {
+  // If Hanzi (without wildcards or mixed Latin), do an exact lookup against dictionary shards
+  if (HANZI_REGEX.test(query) && !/[*?＊？a-zA-Z]/.test(query)) {
     try {
       const packed = await fetchDictionaryRowsFromPacks([query]);
       const rows = packed.get(query);

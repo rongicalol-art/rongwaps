@@ -1,6 +1,7 @@
 import { debugLogger } from '../utils/debug/debugLogger';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { executeRemoteSearch } from '../services/dictionaryService';
+import { getCourseVocabLookupMap } from '../services/courseVocabLookup';
 import { sanitizeDictionaryDefinitions } from '../utils/vocabulary/dictionaryDefinitions';
 
 export interface SearchResult {
@@ -12,6 +13,9 @@ export interface SearchResult {
   measure_words?: string[];
   match_type: 'exact' | 'prefix' | 'partial';
   total_score: number;
+  bookId?: number;
+  lessonId?: number;
+  pos?: string;
 }
 
 /** Recent results by normalized query: reopening the tab (or retyping) paints instantly instead of waiting out debounce + RPC. */
@@ -43,17 +47,30 @@ export function useDictionarySearch(externalQuery: string) {
     setSearchError(null);
 
     try {
-      const data = await executeRemoteSearch(queryNormalized);
+      const [data, courseMap] = await Promise.all([
+        executeRemoteSearch(queryNormalized),
+        getCourseVocabLookupMap().catch(() => null),
+      ]);
 
       if (currentId !== searchIdRef.current) return;
 
       if (data && data.length > 0) {
-        const cleanedData = (data as SearchResult[]).map(res => {
+        const cleanedData = (data as SearchResult[]).map((res) => {
           const sanitized = sanitizeDictionaryDefinitions(res.definitions);
+          const courseCard = courseMap
+            ? courseMap.get(res.traditional) ?? courseMap.get(res.simplified)
+            : undefined;
+          const courseDef = courseCard?.back?.trim();
+          const mergedDefs = courseDef
+            ? [courseDef, ...sanitized.definitions.filter((d) => d.toLowerCase() !== courseDef.toLowerCase())]
+            : sanitized.definitions;
           return {
             ...res,
-            definitions: sanitized.definitions,
-            measure_words: sanitized.measure_words
+            definitions: mergedDefs,
+            measure_words: sanitized.measure_words,
+            bookId: courseCard?.bookId ?? res.bookId,
+            lessonId: courseCard?.lessonId ?? res.lessonId,
+            pos: courseCard?.pos ?? res.pos,
           };
         });
         resultCache.set(queryNormalized, cleanedData);
@@ -99,6 +116,6 @@ export function useDictionarySearch(externalQuery: string) {
   return {
     results,
     isSearching,
-    searchError
+    searchError,
   };
 }
