@@ -40,9 +40,9 @@ export function getGrammarSemanticRole(text: string): GrammarSemanticRole {
 export function getSemanticRoleClasses(role: GrammarSemanticRole): string {
   switch (role) {
     case 'contrast':
-      return 'text-rose-700 dark:text-rose-400';
+      return 'text-rose-700';
     case 'number':
-      return 'text-teal-700 dark:text-teal-400';
+      return 'text-teal-700';
     case 'target':
     default:
       return 'text-brand-primary';
@@ -52,9 +52,9 @@ export function getSemanticRoleClasses(role: GrammarSemanticRole): string {
 export function getSemanticRoleSoftBgClasses(role: GrammarSemanticRole): string {
   switch (role) {
     case 'contrast':
-      return 'hover:bg-rose-50 dark:hover:bg-rose-950/30 focus-visible:bg-rose-50 active:bg-rose-50';
+      return 'hover:bg-rose-50 focus-visible:bg-rose-50 active:bg-rose-50';
     case 'number':
-      return 'hover:bg-teal-50 dark:hover:bg-teal-950/30 focus-visible:bg-teal-50 active:bg-teal-50';
+      return 'hover:bg-teal-50 focus-visible:bg-teal-50 active:bg-teal-50';
     case 'target':
     default:
       return 'hover:bg-brand-primary-soft focus-visible:bg-brand-primary-soft active:bg-brand-primary-soft';
