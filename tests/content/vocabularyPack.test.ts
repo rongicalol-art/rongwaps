@@ -28,6 +28,10 @@ const MANIFEST = readJson<{
 const AUDIO_SUPPLEMENTS = readJson<{
   recordings: Array<{ id: string; audio: string }>;
 }>('content/audio/book_audio_supplements.json');
+const AUDIO_TRIMS = readJson<{
+  results: Array<{ id: string; status: string; audio?: string }>;
+}>('content/audio/vocabulary_trim.json');
+const TRIMMED_AUDIO = new Map(AUDIO_TRIMS.results.filter((entry) => entry.status === 'trimmed').map((entry) => [entry.id, entry.audio]));
 
 const HAN = /\p{Script=Han}/u;
 const PINYIN_CHARSET = /^[\p{Script=Latin}\s/()?,、…0-9'’-]*$/u;
@@ -64,7 +68,7 @@ test('vocabulary rows keep id, audio, and part-of-speech shape', () => {
     for (const row of pack.items) {
       assert.match(row.id, /^B\dL\d{2}-\d-\d{2}$/, `bad id ${row.id}`);
       const supplement = AUDIO_SUPPLEMENTS.recordings.find((recording) => recording.id === row.id);
-      assert.ok(!row.audio || row.audio === `modernchinese-${row.id}.mp3` || row.audio === supplement?.audio, `${row.id} audio: ${row.audio}`);
+      assert.ok(!row.audio || row.audio === `modernchinese-${row.id}.mp3` || row.audio === supplement?.audio || row.audio === TRIMMED_AUDIO.get(row.id), `${row.id} audio: ${row.audio}`);
       assert.ok(row.pos && row.pos.split('/').every((atom) => POS_ATOMS.has(atom)), `${row.id} pos: ${row.pos}`);
     }
   }

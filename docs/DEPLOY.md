@@ -78,6 +78,12 @@ Set `VITE_AUDIO_BASE_URL` to an R2 custom domain in the Cloudflare zone. The `r2
 
 References: [R2 public buckets](https://developers.cloudflare.com/r2/buckets/public-buckets/), [R2 and Cloudflare Cache](https://developers.cloudflare.com/cache/interaction-cloudflare-products/r2/).
 
+### Vocabulary leading-silence pipeline
+
+`python3 scripts/audio/trimVocabularyAudio.py` audits original `modernchinese-B…mp3` vocabulary clips and stages candidates in `output/audio/vocabulary-trim-v1/`. It uses FFmpeg MP3 frame copy, a conservative -55 dB silence threshold, and a 100 ms target lead-in. Actual output must retain 80–160 ms before detected sound; decoded speech from 80 ms through the original last sound must match the original PCM exactly. Inconsistent MP3 seek metadata is handled by measuring the result and backing off. Unsafe candidates keep their original reference. This is waveform verification, not a claim of human listening review.
+
+After a complete audit, `node --import dotenv/config --import tsx scripts/audio/publishTrimmedVocabulary.ts` validates the local assets and vocabulary identities. Add `--upload --apply` to upload immutable, hash-named copies under `vocabulary-trimmed/v1/` and regenerate the vocabulary packs plus manifest. The publisher verifies the source R2 ETags and both copies' hashes before changing references, uses conditional writes, and records provenance in `content/audio/vocabulary_trim.json`. Re-run `npm run flashcard-extras:export` after changing the vocabulary manifest. Existing originals, character sounds, supplements, and aligned reader tracks are preserved. `VITE_AUDIO_BASE_URL` must point to the R2 custom domain serving these copies. Deploy/reload the app to pick up the new pack version; previously stored explicit original URLs still identify the original clips.
+
 ### Licensed character sounds
 
 The CNS11643 female pronunciation subset contains 1,262 MP3 files (19,835,565 bytes), including 24 source-labelled book neutral-tone WAVs encoded as mono 44.1 kHz 96 kbps MP3 under `pronunciation/cns-female-20250113/` in R2. It uses the [Open Government Data License 1.0](https://data.gov.tw/license); attribution is shown in Terms. Source labels identify syllable and tone. Neutral clips are reference sounds; full-word recordings remain authoritative for contextual pitch. This CNS import does not split, stitch, replace or generate word audio.

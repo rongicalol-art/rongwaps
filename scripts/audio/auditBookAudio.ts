@@ -19,7 +19,7 @@ if (checkR2) {
   const endpoint = process.env.R2_ENDPOINT || (process.env.R2_ACCOUNT_ID ? `https://${process.env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com` : '');
   if (!endpoint || !process.env.R2_ACCESS_KEY_ID || !process.env.R2_SECRET_ACCESS_KEY) throw new Error('R2 audit configuration unavailable.');
   const client = new S3Client({ region: 'auto', endpoint, credentials: { accessKeyId: process.env.R2_ACCESS_KEY_ID, secretAccessKey: process.env.R2_SECRET_ACCESS_KEY } });
-  for (const prefix of ['modernchinese-', 'pronunciation/cns-', 'book-supplement/']) {
+  for (const prefix of ['modernchinese-', 'vocabulary-trimmed/v1/', 'pronunciation/cns-', 'book-supplement/']) {
     let token: string | undefined;
     do {
       const result = await client.send(new ListObjectsV2Command({ Bucket: process.env.R2_BUCKET_NAME || 'rongwaps-audio', Prefix: prefix, ContinuationToken: token }));

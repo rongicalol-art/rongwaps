@@ -26,6 +26,8 @@ The client reuses course recordings for dictionary/custom cards only when the ex
 
 Recording playback checks the existing persistent audio cache before streaming a cache miss directly from the CDN. Card sessions preload the next two cards during idle time. Mixed quizzes prepare only the current and next question, including their eligible character clips, rather than the whole round. Retained recording object URLs are capped at 100 entries and 25 MiB; the existing persistent recording cache retains its 150 MiB limit. The separate local TTS cache is capped at 100 entries and 25 MiB. CacheStorage and IndexedDB availability, browser eviction, and CDN CORS determine offline availability.
 
+Vocabulary packs reference verified, hash-named copies under `vocabulary-trimmed/v1/` where leading silence was safely reduced. These copies retain 80–160 ms before detected sound and preserve decoded speech without MP3 re-encoding; `content/audio/vocabulary_trim.json` records source hashes and measured cut points. Already-short clips keep their original reference. Character sounds, supplements, and reader timing are unchanged; explicit legacy URLs still identify the preserved originals. Pipeline commands are in [DEPLOY.md](DEPLOY.md#vocabulary-leading-silence-pipeline).
+
 ### Neural TTS Synthesis
 Synthesizes Mandarin speech server-side, caches the MP3 in Cloudflare R2, and streams it back.
 The browser only uses this route for text with no recorded audio file.
