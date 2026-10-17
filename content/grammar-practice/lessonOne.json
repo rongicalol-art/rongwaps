@@ -1230,7 +1230,14 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "我是美國人，你"
+                "traditional": "我是美國人，"
+              },
+              {
+                "type": "slot",
+                "id": "who",
+                "answers": [
+                  "你"
+                ]
               },
               {
                 "type": "slot",
@@ -1263,9 +1270,12 @@
         ],
         "tiles": [
           {
-            "traditional": "什麼",
-            "simplified": "什么",
-            "pinyin": "shénme"
+            "traditional": "你",
+            "pinyin": "nǐ"
+          },
+          {
+            "traditional": "我",
+            "pinyin": "wǒ"
           },
           {
             "traditional": "呢",
@@ -1273,8 +1283,8 @@
           },
           {
             "traditional": "嗎",
-            "simplified": "吗",
-            "pinyin": "ma"
+            "pinyin": "ma",
+            "simplified": "吗"
           }
         ],
         "repairs": [
@@ -1282,22 +1292,36 @@
             "placed": [
               "嗎"
             ],
-            "note": "你嗎 is not a question on its own: 嗎 needs a whole statement before it. To ask \"and you?\", use 呢."
+            "note": "嗎 needs a whole statement before it. To ask \"and you?\", end with 呢: 你呢？"
           },
           {
             "placed": [
-              "什麼"
+              "我"
             ],
-            "note": "什麼 asks \"what\". To bounce the same question back (\"and you?\"), put 呢 after 你."
+            "note": "You are asking your friend, so it is 你, not 我: 你呢？"
+          },
+          {
+            "slot": {
+              "id": "who",
+              "tile": "呢"
+            },
+            "note": "你 comes first, then 呢: 你呢？"
+          },
+          {
+            "slot": {
+              "id": "ending",
+              "tile": "你"
+            },
+            "note": "你 comes first, then 呢: 你呢？"
           }
         ],
-        "fallbackRepair": "After 你, 呢 asks the same question back: 你呢？",
+        "fallbackRepair": "To ask the same question back: 你呢？",
         "result": {
           "traditional": "我是美國人，你呢？",
           "pinyin": "Wǒ shì Měiguó rén, nǐ ne?",
           "english": "I am American. How about you?"
         },
-        "prompt": "You are American. Ask your friend back: and you?"
+        "prompt": "You are American. Ask your friend back: and you? Build it."
       },
       {
         "id": "l1g4-p2",
@@ -1426,7 +1450,14 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "他很忙，你"
+                "traditional": "他很忙，"
+              },
+              {
+                "type": "slot",
+                "id": "who",
+                "answers": [
+                  "你"
+                ]
               },
               {
                 "type": "slot",
@@ -1459,9 +1490,12 @@
         ],
         "tiles": [
           {
-            "traditional": "什麼",
-            "simplified": "什么",
-            "pinyin": "shénme"
+            "traditional": "你",
+            "pinyin": "nǐ"
+          },
+          {
+            "traditional": "他",
+            "pinyin": "tā"
           },
           {
             "traditional": "呢",
@@ -1469,8 +1503,8 @@
           },
           {
             "traditional": "嗎",
-            "simplified": "吗",
-            "pinyin": "ma"
+            "pinyin": "ma",
+            "simplified": "吗"
           }
         ],
         "repairs": [
@@ -1478,22 +1512,36 @@
             "placed": [
               "嗎"
             ],
-            "note": "你嗎 is not a question on its own: 嗎 needs a whole statement before it. To ask \"and you?\", use 呢."
+            "note": "嗎 needs a whole statement before it. To ask \"and you?\", end with 呢: 你呢？"
           },
           {
             "placed": [
-              "什麼"
+              "他"
             ],
-            "note": "什麼 asks \"what\". To bounce the same question back (\"and you?\"), put 呢 after 你."
+            "note": "You are asking your friend, so it is 你, not 他: 你呢？"
+          },
+          {
+            "slot": {
+              "id": "who",
+              "tile": "呢"
+            },
+            "note": "你 comes first, then 呢: 你呢？"
+          },
+          {
+            "slot": {
+              "id": "ending",
+              "tile": "你"
+            },
+            "note": "你 comes first, then 呢: 你呢？"
           }
         ],
-        "fallbackRepair": "After 你, 呢 asks the same question back: 你呢？",
+        "fallbackRepair": "To ask the same question back: 你呢？",
         "result": {
           "traditional": "他很忙，你呢？",
           "pinyin": "Tā hěn máng, nǐ ne?",
           "english": "He is busy. How about you?"
         },
-        "prompt": "He is busy. Ask your friend: and you?",
+        "prompt": "He is busy. Ask your friend: and you? Build it.",
         "glossary": [
           {
             "traditional": "忙",

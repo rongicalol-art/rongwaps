@@ -1746,19 +1746,16 @@
           {
             "segments": [
               {
-                "type": "slot",
-                "id": "g0",
-                "answers": []
-              },
-              {
                 "type": "text",
                 "traditional": "我的",
                 "simplified": "我的"
               },
               {
                 "type": "slot",
-                "id": "g1",
-                "answers": []
+                "id": "soon",
+                "answers": [
+                  "快要"
+                ]
               },
               {
                 "type": "text",
@@ -1767,30 +1764,10 @@
               },
               {
                 "type": "slot",
-                "id": "g2",
+                "id": "le",
                 "answers": [
-                  "快要"
+                  "了"
                 ]
-              },
-              {
-                "type": "text",
-                "traditional": "來",
-                "simplified": "来"
-              },
-              {
-                "type": "slot",
-                "id": "gle",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "了",
-                "simplified": "了"
-              },
-              {
-                "type": "slot",
-                "id": "gend",
-                "answers": []
               },
               {
                 "type": "text",
@@ -1805,47 +1782,63 @@
           {
             "traditional": "快要",
             "pinyin": "kuàiyào"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "明天",
+            "pinyin": "míngtiān"
+          },
+          {
+            "traditional": "現在",
+            "pinyin": "xiànzài",
+            "simplified": "现在"
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "g0",
-              "tile": "快要"
-            },
-            "note": "快要 goes after the whole subject, before what happens: 我的日本朋友快要來了。"
+            "placed": [
+              "明天"
+            ],
+            "mark": [
+              "明天"
+            ],
+            "note": "Today is April 3 and the visit is April 5, not tomorrow: something close ahead is 快要…了."
+          },
+          {
+            "placed": [
+              "現在"
+            ],
+            "mark": [
+              "現在"
+            ],
+            "note": "He isn’t here now; he comes in two days: 快要…了."
           },
           {
             "slot": {
-              "id": "g1",
-              "tile": "快要"
+              "id": "soon",
+              "tile": "了"
             },
-            "note": "快要 goes after the whole subject, before what happens: 我的日本朋友快要來了。"
+            "note": "快要 comes first, before what is about to happen; 了 closes it: 我的日本朋友快要來了。"
           },
           {
             "slot": {
-              "id": "gle",
+              "id": "le",
               "tile": "快要"
             },
-            "note": "快要 goes before what is about to happen, not next to 了: 我的日本朋友快要來了。"
-          },
-          {
-            "slot": {
-              "id": "gend",
-              "tile": "快要"
-            },
-            "note": "快要 comes before 了, not after it: 我的日本朋友快要來了。"
+            "note": "了 closes the sentence; 快要 comes before the action: 我的日本朋友快要來了。"
           }
         ],
-        "fallbackRepair": "Something about to happen: 快要 goes before it, with 了 at the end.",
+        "fallbackRepair": "About to happen: 快要 before the action, 了 at the end.",
         "result": {
           "traditional": "我的日本朋友快要來了。",
           "pinyin": "Wǒ de Rìběn péngyǒu kuàiyào lái le.",
           "english": "My Japanese friend is coming soon.",
           "simplified": "我的日本朋友快要来了。"
         },
-        "prompt": "Today is April 3. Your Japanese friend comes on April 5. Where does 快要 go?",
-        "gaps": true
+        "prompt": "Today is April 3. Your Japanese friend comes on April 5. Build the sentence."
       },
       {
         "id": "l8g5-p2",
@@ -1866,18 +1859,13 @@
           {
             "segments": [
               {
-                "type": "slot",
-                "id": "g0",
-                "answers": []
-              },
-              {
                 "type": "text",
                 "traditional": "我們",
                 "simplified": "我们"
               },
               {
                 "type": "slot",
-                "id": "g1",
+                "id": "soon",
                 "answers": [
                   "快要"
                 ]
@@ -1889,18 +1877,10 @@
               },
               {
                 "type": "slot",
-                "id": "gle",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "了",
-                "simplified": "了"
-              },
-              {
-                "type": "slot",
-                "id": "gend",
-                "answers": []
+                "id": "le",
+                "answers": [
+                  "了"
+                ]
               },
               {
                 "type": "text",
@@ -1915,40 +1895,63 @@
           {
             "traditional": "快要",
             "pinyin": "kuàiyào"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "現在",
+            "pinyin": "xiànzài",
+            "simplified": "现在"
+          },
+          {
+            "traditional": "明天",
+            "pinyin": "míngtiān"
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "g0",
-              "tile": "快要"
-            },
-            "note": "快要 goes after the whole subject, before what happens: 我們快要休息了。"
+            "placed": [
+              "現在"
+            ],
+            "mark": [
+              "現在"
+            ],
+            "note": "It’s 11:50 and the break starts at 12:00, so it hasn’t started yet: 快要…了."
+          },
+          {
+            "placed": [
+              "明天"
+            ],
+            "mark": [
+              "明天"
+            ],
+            "note": "The break is ten minutes away, today, not tomorrow: 快要…了."
           },
           {
             "slot": {
-              "id": "gle",
-              "tile": "快要"
+              "id": "soon",
+              "tile": "了"
             },
-            "note": "快要 goes before what is about to happen, not next to 了: 我們快要休息了。"
+            "note": "快要 comes first, before what is about to happen; 了 closes it: 我們快要休息了。"
           },
           {
             "slot": {
-              "id": "gend",
+              "id": "le",
               "tile": "快要"
             },
-            "note": "快要 comes before 了, not after it: 我們快要休息了。"
+            "note": "了 closes the sentence; 快要 comes before the action: 我們快要休息了。"
           }
         ],
-        "fallbackRepair": "Something about to happen: 快要 goes before it, with 了 at the end.",
+        "fallbackRepair": "About to happen: 快要 before the action, 了 at the end.",
         "result": {
           "traditional": "我們快要休息了。",
           "pinyin": "Wǒmen kuàiyào xiūxí le.",
           "english": "We are about to take a break.",
           "simplified": "我们快要休息了。"
         },
-        "prompt": "It’s 11:50 and the break starts at 12:00. Where does 快要 go?",
-        "gaps": true
+        "prompt": "It’s 11:50. The break starts at 12:00. Build the sentence."
       },
       {
         "id": "l8g5-p3",
@@ -1969,18 +1972,13 @@
           {
             "segments": [
               {
-                "type": "slot",
-                "id": "g0",
-                "answers": []
-              },
-              {
                 "type": "text",
                 "traditional": "弟弟",
                 "simplified": "弟弟"
               },
               {
                 "type": "slot",
-                "id": "g1",
+                "id": "soon",
                 "answers": [
                   "快要"
                 ]
@@ -1992,18 +1990,10 @@
               },
               {
                 "type": "slot",
-                "id": "gle",
-                "answers": []
-              },
-              {
-                "type": "text",
-                "traditional": "了",
-                "simplified": "了"
-              },
-              {
-                "type": "slot",
-                "id": "gend",
-                "answers": []
+                "id": "le",
+                "answers": [
+                  "了"
+                ]
               },
               {
                 "type": "text",
@@ -2018,40 +2008,63 @@
           {
             "traditional": "快要",
             "pinyin": "kuàiyào"
+          },
+          {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "現在",
+            "pinyin": "xiànzài",
+            "simplified": "现在"
+          },
+          {
+            "traditional": "今天",
+            "pinyin": "jīntiān"
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "g0",
-              "tile": "快要"
-            },
-            "note": "快要 goes after the whole subject, before what happens: 弟弟快要十歲了。"
+            "placed": [
+              "現在"
+            ],
+            "mark": [
+              "現在"
+            ],
+            "note": "He turns ten on October 10, not now: 快要…了."
+          },
+          {
+            "placed": [
+              "今天"
+            ],
+            "mark": [
+              "今天"
+            ],
+            "note": "Today is October 1; his birthday is October 10: 快要…了."
           },
           {
             "slot": {
-              "id": "gle",
-              "tile": "快要"
+              "id": "soon",
+              "tile": "了"
             },
-            "note": "快要 goes before what is about to happen, not next to 了: 弟弟快要十歲了。"
+            "note": "快要 comes first, before what is about to happen; 了 closes it: 弟弟快要十歲了。"
           },
           {
             "slot": {
-              "id": "gend",
+              "id": "le",
               "tile": "快要"
             },
-            "note": "快要 comes before 了, not after it: 弟弟快要十歲了。"
+            "note": "了 closes the sentence; 快要 comes before the action: 弟弟快要十歲了。"
           }
         ],
-        "fallbackRepair": "Something about to happen: 快要 goes before it, with 了 at the end.",
+        "fallbackRepair": "About to happen: 快要 before the action, 了 at the end.",
         "result": {
           "traditional": "弟弟快要十歲了。",
           "pinyin": "Dìdi kuàiyào shí suì le.",
           "english": "My younger brother is about to turn ten.",
           "simplified": "弟弟快要十岁了。"
         },
-        "prompt": "Today is October 1. Your brother turns ten on October 10. Where does 快要 go?",
-        "gaps": true
+        "prompt": "Today is October 1. Your brother turns ten on October 10. Build the sentence."
       }
     ]
   }

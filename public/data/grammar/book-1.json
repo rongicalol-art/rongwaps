@@ -4113,7 +4113,14 @@
                     "segments": [
                       {
                         "type": "text",
-                        "traditional": "我是美國人，你"
+                        "traditional": "我是美國人，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "who",
+                        "answers": [
+                          "你"
+                        ]
                       },
                       {
                         "type": "slot",
@@ -4146,9 +4153,12 @@
                 ],
                 "tiles": [
                   {
-                    "traditional": "什麼",
-                    "simplified": "什么",
-                    "pinyin": "shénme"
+                    "traditional": "你",
+                    "pinyin": "nǐ"
+                  },
+                  {
+                    "traditional": "我",
+                    "pinyin": "wǒ"
                   },
                   {
                     "traditional": "呢",
@@ -4156,8 +4166,8 @@
                   },
                   {
                     "traditional": "嗎",
-                    "simplified": "吗",
-                    "pinyin": "ma"
+                    "pinyin": "ma",
+                    "simplified": "吗"
                   }
                 ],
                 "repairs": [
@@ -4165,22 +4175,36 @@
                     "placed": [
                       "嗎"
                     ],
-                    "note": "你嗎 is not a question on its own: 嗎 needs a whole statement before it. To ask \"and you?\", use 呢."
+                    "note": "嗎 needs a whole statement before it. To ask \"and you?\", end with 呢: 你呢？"
                   },
                   {
                     "placed": [
-                      "什麼"
+                      "我"
                     ],
-                    "note": "什麼 asks \"what\". To bounce the same question back (\"and you?\"), put 呢 after 你."
+                    "note": "You are asking your friend, so it is 你, not 我: 你呢？"
+                  },
+                  {
+                    "slot": {
+                      "id": "who",
+                      "tile": "呢"
+                    },
+                    "note": "你 comes first, then 呢: 你呢？"
+                  },
+                  {
+                    "slot": {
+                      "id": "ending",
+                      "tile": "你"
+                    },
+                    "note": "你 comes first, then 呢: 你呢？"
                   }
                 ],
-                "fallbackRepair": "After 你, 呢 asks the same question back: 你呢？",
+                "fallbackRepair": "To ask the same question back: 你呢？",
                 "result": {
                   "traditional": "我是美國人，你呢？",
                   "pinyin": "Wǒ shì Měiguó rén, nǐ ne?",
                   "english": "I am American. How about you?"
                 },
-                "prompt": "You are American. Ask your friend back: and you?"
+                "prompt": "You are American. Ask your friend back: and you? Build it."
               },
               {
                 "id": "l1g4-p2",
@@ -4309,7 +4333,14 @@
                     "segments": [
                       {
                         "type": "text",
-                        "traditional": "他很忙，你"
+                        "traditional": "他很忙，"
+                      },
+                      {
+                        "type": "slot",
+                        "id": "who",
+                        "answers": [
+                          "你"
+                        ]
                       },
                       {
                         "type": "slot",
@@ -4342,9 +4373,12 @@
                 ],
                 "tiles": [
                   {
-                    "traditional": "什麼",
-                    "simplified": "什么",
-                    "pinyin": "shénme"
+                    "traditional": "你",
+                    "pinyin": "nǐ"
+                  },
+                  {
+                    "traditional": "他",
+                    "pinyin": "tā"
                   },
                   {
                     "traditional": "呢",
@@ -4352,8 +4386,8 @@
                   },
                   {
                     "traditional": "嗎",
-                    "simplified": "吗",
-                    "pinyin": "ma"
+                    "pinyin": "ma",
+                    "simplified": "吗"
                   }
                 ],
                 "repairs": [
@@ -4361,22 +4395,36 @@
                     "placed": [
                       "嗎"
                     ],
-                    "note": "你嗎 is not a question on its own: 嗎 needs a whole statement before it. To ask \"and you?\", use 呢."
+                    "note": "嗎 needs a whole statement before it. To ask \"and you?\", end with 呢: 你呢？"
                   },
                   {
                     "placed": [
-                      "什麼"
+                      "他"
                     ],
-                    "note": "什麼 asks \"what\". To bounce the same question back (\"and you?\"), put 呢 after 你."
+                    "note": "You are asking your friend, so it is 你, not 他: 你呢？"
+                  },
+                  {
+                    "slot": {
+                      "id": "who",
+                      "tile": "呢"
+                    },
+                    "note": "你 comes first, then 呢: 你呢？"
+                  },
+                  {
+                    "slot": {
+                      "id": "ending",
+                      "tile": "你"
+                    },
+                    "note": "你 comes first, then 呢: 你呢？"
                   }
                 ],
-                "fallbackRepair": "After 你, 呢 asks the same question back: 你呢？",
+                "fallbackRepair": "To ask the same question back: 你呢？",
                 "result": {
                   "traditional": "他很忙，你呢？",
                   "pinyin": "Tā hěn máng, nǐ ne?",
                   "english": "He is busy. How about you?"
                 },
-                "prompt": "He is busy. Ask your friend: and you?",
+                "prompt": "He is busy. Ask your friend: and you? Build it.",
                 "glossary": [
                   {
                     "traditional": "忙",
@@ -57854,7 +57902,14 @@
                         "type": "slot",
                         "id": "state",
                         "answers": [
-                          "熱了"
+                          "熱"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "le",
+                        "answers": [
+                          "了"
                         ]
                       },
                       {
@@ -57866,41 +57921,58 @@
                 ],
                 "tiles": [
                   {
-                    "traditional": "冷了",
-                    "pinyin": "lěng le"
+                    "traditional": "熱",
+                    "pinyin": "rè",
+                    "simplified": "热"
                   },
                   {
-                    "traditional": "很熱",
-                    "simplified": "很热",
-                    "pinyin": "hěn rè"
+                    "traditional": "冷",
+                    "pinyin": "lěng"
                   },
                   {
-                    "traditional": "熱了",
-                    "simplified": "热了",
-                    "pinyin": "rè le"
+                    "traditional": "了",
+                    "pinyin": "le"
+                  },
+                  {
+                    "traditional": "很",
+                    "pinyin": "hěn"
                   }
                 ],
                 "repairs": [
                   {
                     "placed": [
-                      "冷了"
+                      "冷"
                     ],
                     "mark": [
-                      "冷了"
+                      "冷"
                     ],
-                    "note": "It went from 25°C to 30°C: warmer, so 熱了."
+                    "note": "It went from 25°C to 30°C: warmer, so 熱."
                   },
                   {
                     "placed": [
-                      "很熱"
+                      "很"
                     ],
                     "mark": [
-                      "很熱"
+                      "很"
                     ],
-                    "note": "很熱 just says it is hot. To say it has become hot, end with 了: 熱了."
+                    "note": "很 only says how much; a change needs 了 after the word."
+                  },
+                  {
+                    "slot": {
+                      "id": "state",
+                      "tile": "了"
+                    },
+                    "note": "了 comes after the word it changes, not before: 熱了."
+                  },
+                  {
+                    "slot": {
+                      "id": "le",
+                      "tile": "熱"
+                    },
+                    "note": "了 closes it: 熱了."
                   }
                 ],
-                "fallbackRepair": "了 at the end marks a change: 熱了.",
+                "fallbackRepair": "A change takes the word, then 了: 熱了.",
                 "result": {
                   "traditional": "今天天氣熱了。",
                   "simplified": "今天天气热了。",
@@ -57918,7 +57990,7 @@
                   ],
                   "alt": "Yesterday was 25°C; today is 30°C."
                 },
-                "prompt": "Yesterday 25°C, today 30°C. Say the weather has changed."
+                "prompt": "Yesterday 25°C, today 30°C. Build the sentence: the weather has changed."
               },
               {
                 "id": "l7g3-b2",
@@ -57936,7 +58008,14 @@
                         "type": "slot",
                         "id": "state",
                         "answers": [
-                          "貴了"
+                          "貴"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "le",
+                        "answers": [
+                          "了"
                         ]
                       },
                       {
@@ -57948,41 +58027,58 @@
                 ],
                 "tiles": [
                   {
-                    "traditional": "很貴",
-                    "simplified": "很贵",
-                    "pinyin": "hěn guì"
+                    "traditional": "貴",
+                    "pinyin": "guì",
+                    "simplified": "贵"
                   },
                   {
-                    "traditional": "貴了",
-                    "simplified": "贵了",
-                    "pinyin": "guì le"
+                    "traditional": "便宜",
+                    "pinyin": "piányí"
                   },
                   {
-                    "traditional": "便宜了",
-                    "pinyin": "piányí le"
+                    "traditional": "了",
+                    "pinyin": "le"
+                  },
+                  {
+                    "traditional": "很",
+                    "pinyin": "hěn"
                   }
                 ],
                 "repairs": [
                   {
                     "placed": [
-                      "便宜了"
+                      "便宜"
                     ],
                     "mark": [
-                      "便宜了"
+                      "便宜"
                     ],
-                    "note": "The bowl went from $80 to $120: dearer, so 貴了."
+                    "note": "The bowl went from $80 to $120: dearer, so 貴."
                   },
                   {
                     "placed": [
-                      "很貴"
+                      "很"
                     ],
                     "mark": [
-                      "很貴"
+                      "很"
                     ],
-                    "note": "很貴 just says it is expensive. To say prices have gone up, end with 了: 貴了."
+                    "note": "很 only says how much; a change needs 了 after the word."
+                  },
+                  {
+                    "slot": {
+                      "id": "state",
+                      "tile": "了"
+                    },
+                    "note": "了 comes after the word it changes, not before: 貴了."
+                  },
+                  {
+                    "slot": {
+                      "id": "le",
+                      "tile": "貴"
+                    },
+                    "note": "了 closes it: 貴了."
                   }
                 ],
-                "fallbackRepair": "了 at the end marks a change: 貴了.",
+                "fallbackRepair": "A change takes the word, then 了: 貴了.",
                 "result": {
                   "traditional": "現在東西都貴了。",
                   "simplified": "现在东西都贵了。",
@@ -58000,7 +58096,7 @@
                   ],
                   "alt": "A bowl costs $80 in 2016 and $120 now."
                 },
-                "prompt": "The bowl was $80, now $120. Say prices have gone up."
+                "prompt": "The bowl was $80, now $120. Build the sentence: prices have gone up."
               },
               {
                 "id": "l7g3-b3",
@@ -58024,9 +58120,16 @@
                     "segments": [
                       {
                         "type": "slot",
-                        "id": "reply",
+                        "id": "state",
                         "answers": [
-                          "懂了"
+                          "懂"
+                        ]
+                      },
+                      {
+                        "type": "slot",
+                        "id": "le",
+                        "answers": [
+                          "了"
                         ]
                       },
                       {
@@ -58048,42 +58151,60 @@
                     "pinyin": "dǒng"
                   },
                   {
-                    "traditional": "不懂",
-                    "pinyin": "bù dǒng"
+                    "traditional": "不",
+                    "pinyin": "bù"
                   },
                   {
-                    "traditional": "懂了",
-                    "pinyin": "dǒng le"
+                    "traditional": "了",
+                    "pinyin": "le"
+                  },
+                  {
+                    "traditional": "很",
+                    "pinyin": "hěn"
                   }
                 ],
                 "repairs": [
                   {
                     "placed": [
-                      "不懂"
+                      "不"
                     ],
                     "mark": [
-                      "不懂"
+                      "不"
                     ],
-                    "note": "You can explain it now, so you do understand."
+                    "note": "You can explain it now, so you do understand: 懂, not 不懂."
                   },
                   {
                     "placed": [
-                      "懂"
+                      "很"
                     ],
                     "mark": [
-                      "懂"
+                      "很"
                     ],
-                    "note": "懂 alone is a plain fact. You just got it, so mark the change: 懂了."
+                    "note": "很 only says how much; a change needs 了 after the word."
+                  },
+                  {
+                    "slot": {
+                      "id": "state",
+                      "tile": "了"
+                    },
+                    "note": "了 comes after the word it changes, not before: 懂了."
+                  },
+                  {
+                    "slot": {
+                      "id": "le",
+                      "tile": "懂"
+                    },
+                    "note": "了 closes it: 懂了."
                   }
                 ],
-                "fallbackRepair": "Something you just understood is 懂了.",
+                "fallbackRepair": "A change takes the word, then 了: 懂了.",
                 "result": {
                   "traditional": "不可以說「吃飯得很快」，應該說「吃飯吃得很快」。懂了！謝謝老師。",
                   "simplified": "不可以说「吃饭得很快」，应该说「吃饭吃得很快」。懂了！谢谢老师。",
                   "pinyin": "Bù kěyǐ shuō “chīfàn de hěn kuài”, yīnggāi shuō “chīfàn chī de hěn kuài”. Dǒng le! Xièxie lǎoshī.",
                   "english": "You cannot say “吃飯得很快”; you should say “吃飯吃得很快”. We understand now! Thank you, teacher."
                 },
-                "prompt": "You didn’t get it before, but now you do. Reply.",
+                "prompt": "You didn’t get it before, but now you do. Build your reply.",
                 "glossary": [
                   {
                     "traditional": "懂",
@@ -70479,19 +70600,16 @@
                   {
                     "segments": [
                       {
-                        "type": "slot",
-                        "id": "g0",
-                        "answers": []
-                      },
-                      {
                         "type": "text",
                         "traditional": "我的",
                         "simplified": "我的"
                       },
                       {
                         "type": "slot",
-                        "id": "g1",
-                        "answers": []
+                        "id": "soon",
+                        "answers": [
+                          "快要"
+                        ]
                       },
                       {
                         "type": "text",
@@ -70500,30 +70618,10 @@
                       },
                       {
                         "type": "slot",
-                        "id": "g2",
+                        "id": "le",
                         "answers": [
-                          "快要"
+                          "了"
                         ]
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "來",
-                        "simplified": "来"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gle",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "了",
-                        "simplified": "了"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gend",
-                        "answers": []
                       },
                       {
                         "type": "text",
@@ -70538,47 +70636,63 @@
                   {
                     "traditional": "快要",
                     "pinyin": "kuàiyào"
+                  },
+                  {
+                    "traditional": "了",
+                    "pinyin": "le"
+                  },
+                  {
+                    "traditional": "明天",
+                    "pinyin": "míngtiān"
+                  },
+                  {
+                    "traditional": "現在",
+                    "pinyin": "xiànzài",
+                    "simplified": "现在"
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "g0",
-                      "tile": "快要"
-                    },
-                    "note": "快要 goes after the whole subject, before what happens: 我的日本朋友快要來了。"
+                    "placed": [
+                      "明天"
+                    ],
+                    "mark": [
+                      "明天"
+                    ],
+                    "note": "Today is April 3 and the visit is April 5, not tomorrow: something close ahead is 快要…了."
+                  },
+                  {
+                    "placed": [
+                      "現在"
+                    ],
+                    "mark": [
+                      "現在"
+                    ],
+                    "note": "He isn’t here now; he comes in two days: 快要…了."
                   },
                   {
                     "slot": {
-                      "id": "g1",
-                      "tile": "快要"
+                      "id": "soon",
+                      "tile": "了"
                     },
-                    "note": "快要 goes after the whole subject, before what happens: 我的日本朋友快要來了。"
+                    "note": "快要 comes first, before what is about to happen; 了 closes it: 我的日本朋友快要來了。"
                   },
                   {
                     "slot": {
-                      "id": "gle",
+                      "id": "le",
                       "tile": "快要"
                     },
-                    "note": "快要 goes before what is about to happen, not next to 了: 我的日本朋友快要來了。"
-                  },
-                  {
-                    "slot": {
-                      "id": "gend",
-                      "tile": "快要"
-                    },
-                    "note": "快要 comes before 了, not after it: 我的日本朋友快要來了。"
+                    "note": "了 closes the sentence; 快要 comes before the action: 我的日本朋友快要來了。"
                   }
                 ],
-                "fallbackRepair": "Something about to happen: 快要 goes before it, with 了 at the end.",
+                "fallbackRepair": "About to happen: 快要 before the action, 了 at the end.",
                 "result": {
                   "traditional": "我的日本朋友快要來了。",
                   "pinyin": "Wǒ de Rìběn péngyǒu kuàiyào lái le.",
                   "english": "My Japanese friend is coming soon.",
                   "simplified": "我的日本朋友快要来了。"
                 },
-                "prompt": "Today is April 3. Your Japanese friend comes on April 5. Where does 快要 go?",
-                "gaps": true
+                "prompt": "Today is April 3. Your Japanese friend comes on April 5. Build the sentence."
               },
               {
                 "id": "l8g5-p2",
@@ -70599,18 +70713,13 @@
                   {
                     "segments": [
                       {
-                        "type": "slot",
-                        "id": "g0",
-                        "answers": []
-                      },
-                      {
                         "type": "text",
                         "traditional": "我們",
                         "simplified": "我们"
                       },
                       {
                         "type": "slot",
-                        "id": "g1",
+                        "id": "soon",
                         "answers": [
                           "快要"
                         ]
@@ -70622,18 +70731,10 @@
                       },
                       {
                         "type": "slot",
-                        "id": "gle",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "了",
-                        "simplified": "了"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gend",
-                        "answers": []
+                        "id": "le",
+                        "answers": [
+                          "了"
+                        ]
                       },
                       {
                         "type": "text",
@@ -70648,40 +70749,63 @@
                   {
                     "traditional": "快要",
                     "pinyin": "kuàiyào"
+                  },
+                  {
+                    "traditional": "了",
+                    "pinyin": "le"
+                  },
+                  {
+                    "traditional": "現在",
+                    "pinyin": "xiànzài",
+                    "simplified": "现在"
+                  },
+                  {
+                    "traditional": "明天",
+                    "pinyin": "míngtiān"
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "g0",
-                      "tile": "快要"
-                    },
-                    "note": "快要 goes after the whole subject, before what happens: 我們快要休息了。"
+                    "placed": [
+                      "現在"
+                    ],
+                    "mark": [
+                      "現在"
+                    ],
+                    "note": "It’s 11:50 and the break starts at 12:00, so it hasn’t started yet: 快要…了."
+                  },
+                  {
+                    "placed": [
+                      "明天"
+                    ],
+                    "mark": [
+                      "明天"
+                    ],
+                    "note": "The break is ten minutes away, today, not tomorrow: 快要…了."
                   },
                   {
                     "slot": {
-                      "id": "gle",
-                      "tile": "快要"
+                      "id": "soon",
+                      "tile": "了"
                     },
-                    "note": "快要 goes before what is about to happen, not next to 了: 我們快要休息了。"
+                    "note": "快要 comes first, before what is about to happen; 了 closes it: 我們快要休息了。"
                   },
                   {
                     "slot": {
-                      "id": "gend",
+                      "id": "le",
                       "tile": "快要"
                     },
-                    "note": "快要 comes before 了, not after it: 我們快要休息了。"
+                    "note": "了 closes the sentence; 快要 comes before the action: 我們快要休息了。"
                   }
                 ],
-                "fallbackRepair": "Something about to happen: 快要 goes before it, with 了 at the end.",
+                "fallbackRepair": "About to happen: 快要 before the action, 了 at the end.",
                 "result": {
                   "traditional": "我們快要休息了。",
                   "pinyin": "Wǒmen kuàiyào xiūxí le.",
                   "english": "We are about to take a break.",
                   "simplified": "我们快要休息了。"
                 },
-                "prompt": "It’s 11:50 and the break starts at 12:00. Where does 快要 go?",
-                "gaps": true
+                "prompt": "It’s 11:50. The break starts at 12:00. Build the sentence."
               },
               {
                 "id": "l8g5-p3",
@@ -70702,18 +70826,13 @@
                   {
                     "segments": [
                       {
-                        "type": "slot",
-                        "id": "g0",
-                        "answers": []
-                      },
-                      {
                         "type": "text",
                         "traditional": "弟弟",
                         "simplified": "弟弟"
                       },
                       {
                         "type": "slot",
-                        "id": "g1",
+                        "id": "soon",
                         "answers": [
                           "快要"
                         ]
@@ -70725,18 +70844,10 @@
                       },
                       {
                         "type": "slot",
-                        "id": "gle",
-                        "answers": []
-                      },
-                      {
-                        "type": "text",
-                        "traditional": "了",
-                        "simplified": "了"
-                      },
-                      {
-                        "type": "slot",
-                        "id": "gend",
-                        "answers": []
+                        "id": "le",
+                        "answers": [
+                          "了"
+                        ]
                       },
                       {
                         "type": "text",
@@ -70751,40 +70862,63 @@
                   {
                     "traditional": "快要",
                     "pinyin": "kuàiyào"
+                  },
+                  {
+                    "traditional": "了",
+                    "pinyin": "le"
+                  },
+                  {
+                    "traditional": "現在",
+                    "pinyin": "xiànzài",
+                    "simplified": "现在"
+                  },
+                  {
+                    "traditional": "今天",
+                    "pinyin": "jīntiān"
                   }
                 ],
                 "repairs": [
                   {
-                    "slot": {
-                      "id": "g0",
-                      "tile": "快要"
-                    },
-                    "note": "快要 goes after the whole subject, before what happens: 弟弟快要十歲了。"
+                    "placed": [
+                      "現在"
+                    ],
+                    "mark": [
+                      "現在"
+                    ],
+                    "note": "He turns ten on October 10, not now: 快要…了."
+                  },
+                  {
+                    "placed": [
+                      "今天"
+                    ],
+                    "mark": [
+                      "今天"
+                    ],
+                    "note": "Today is October 1; his birthday is October 10: 快要…了."
                   },
                   {
                     "slot": {
-                      "id": "gle",
-                      "tile": "快要"
+                      "id": "soon",
+                      "tile": "了"
                     },
-                    "note": "快要 goes before what is about to happen, not next to 了: 弟弟快要十歲了。"
+                    "note": "快要 comes first, before what is about to happen; 了 closes it: 弟弟快要十歲了。"
                   },
                   {
                     "slot": {
-                      "id": "gend",
+                      "id": "le",
                       "tile": "快要"
                     },
-                    "note": "快要 comes before 了, not after it: 弟弟快要十歲了。"
+                    "note": "了 closes the sentence; 快要 comes before the action: 弟弟快要十歲了。"
                   }
                 ],
-                "fallbackRepair": "Something about to happen: 快要 goes before it, with 了 at the end.",
+                "fallbackRepair": "About to happen: 快要 before the action, 了 at the end.",
                 "result": {
                   "traditional": "弟弟快要十歲了。",
                   "pinyin": "Dìdi kuàiyào shí suì le.",
                   "english": "My younger brother is about to turn ten.",
                   "simplified": "弟弟快要十岁了。"
                 },
-                "prompt": "Today is October 1. Your brother turns ten on October 10. Where does 快要 go?",
-                "gaps": true
+                "prompt": "Today is October 1. Your brother turns ten on October 10. Build the sentence."
               }
             ]
           }

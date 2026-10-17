@@ -958,7 +958,14 @@
                 "type": "slot",
                 "id": "state",
                 "answers": [
-                  "熱了"
+                  "熱"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "le",
+                "answers": [
+                  "了"
                 ]
               },
               {
@@ -970,41 +977,58 @@
         ],
         "tiles": [
           {
-            "traditional": "冷了",
-            "pinyin": "lěng le"
+            "traditional": "熱",
+            "pinyin": "rè",
+            "simplified": "热"
           },
           {
-            "traditional": "很熱",
-            "simplified": "很热",
-            "pinyin": "hěn rè"
+            "traditional": "冷",
+            "pinyin": "lěng"
           },
           {
-            "traditional": "熱了",
-            "simplified": "热了",
-            "pinyin": "rè le"
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "冷了"
+              "冷"
             ],
             "mark": [
-              "冷了"
+              "冷"
             ],
-            "note": "It went from 25°C to 30°C: warmer, so 熱了."
+            "note": "It went from 25°C to 30°C: warmer, so 熱."
           },
           {
             "placed": [
-              "很熱"
+              "很"
             ],
             "mark": [
-              "很熱"
+              "很"
             ],
-            "note": "很熱 just says it is hot. To say it has become hot, end with 了: 熱了."
+            "note": "很 only says how much; a change needs 了 after the word."
+          },
+          {
+            "slot": {
+              "id": "state",
+              "tile": "了"
+            },
+            "note": "了 comes after the word it changes, not before: 熱了."
+          },
+          {
+            "slot": {
+              "id": "le",
+              "tile": "熱"
+            },
+            "note": "了 closes it: 熱了."
           }
         ],
-        "fallbackRepair": "了 at the end marks a change: 熱了.",
+        "fallbackRepair": "A change takes the word, then 了: 熱了.",
         "result": {
           "traditional": "今天天氣熱了。",
           "simplified": "今天天气热了。",
@@ -1022,7 +1046,7 @@
           ],
           "alt": "Yesterday was 25°C; today is 30°C."
         },
-        "prompt": "Yesterday 25°C, today 30°C. Say the weather has changed."
+        "prompt": "Yesterday 25°C, today 30°C. Build the sentence: the weather has changed."
       },
       {
         "id": "l7g3-b2",
@@ -1040,7 +1064,14 @@
                 "type": "slot",
                 "id": "state",
                 "answers": [
-                  "貴了"
+                  "貴"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "le",
+                "answers": [
+                  "了"
                 ]
               },
               {
@@ -1052,41 +1083,58 @@
         ],
         "tiles": [
           {
-            "traditional": "很貴",
-            "simplified": "很贵",
-            "pinyin": "hěn guì"
+            "traditional": "貴",
+            "pinyin": "guì",
+            "simplified": "贵"
           },
           {
-            "traditional": "貴了",
-            "simplified": "贵了",
-            "pinyin": "guì le"
+            "traditional": "便宜",
+            "pinyin": "piányí"
           },
           {
-            "traditional": "便宜了",
-            "pinyin": "piányí le"
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "便宜了"
+              "便宜"
             ],
             "mark": [
-              "便宜了"
+              "便宜"
             ],
-            "note": "The bowl went from $80 to $120: dearer, so 貴了."
+            "note": "The bowl went from $80 to $120: dearer, so 貴."
           },
           {
             "placed": [
-              "很貴"
+              "很"
             ],
             "mark": [
-              "很貴"
+              "很"
             ],
-            "note": "很貴 just says it is expensive. To say prices have gone up, end with 了: 貴了."
+            "note": "很 only says how much; a change needs 了 after the word."
+          },
+          {
+            "slot": {
+              "id": "state",
+              "tile": "了"
+            },
+            "note": "了 comes after the word it changes, not before: 貴了."
+          },
+          {
+            "slot": {
+              "id": "le",
+              "tile": "貴"
+            },
+            "note": "了 closes it: 貴了."
           }
         ],
-        "fallbackRepair": "了 at the end marks a change: 貴了.",
+        "fallbackRepair": "A change takes the word, then 了: 貴了.",
         "result": {
           "traditional": "現在東西都貴了。",
           "simplified": "现在东西都贵了。",
@@ -1104,7 +1152,7 @@
           ],
           "alt": "A bowl costs $80 in 2016 and $120 now."
         },
-        "prompt": "The bowl was $80, now $120. Say prices have gone up."
+        "prompt": "The bowl was $80, now $120. Build the sentence: prices have gone up."
       },
       {
         "id": "l7g3-b3",
@@ -1128,9 +1176,16 @@
             "segments": [
               {
                 "type": "slot",
-                "id": "reply",
+                "id": "state",
                 "answers": [
-                  "懂了"
+                  "懂"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "le",
+                "answers": [
+                  "了"
                 ]
               },
               {
@@ -1152,42 +1207,60 @@
             "pinyin": "dǒng"
           },
           {
-            "traditional": "不懂",
-            "pinyin": "bù dǒng"
+            "traditional": "不",
+            "pinyin": "bù"
           },
           {
-            "traditional": "懂了",
-            "pinyin": "dǒng le"
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "不懂"
+              "不"
             ],
             "mark": [
-              "不懂"
+              "不"
             ],
-            "note": "You can explain it now, so you do understand."
+            "note": "You can explain it now, so you do understand: 懂, not 不懂."
           },
           {
             "placed": [
-              "懂"
+              "很"
             ],
             "mark": [
-              "懂"
+              "很"
             ],
-            "note": "懂 alone is a plain fact. You just got it, so mark the change: 懂了."
+            "note": "很 only says how much; a change needs 了 after the word."
+          },
+          {
+            "slot": {
+              "id": "state",
+              "tile": "了"
+            },
+            "note": "了 comes after the word it changes, not before: 懂了."
+          },
+          {
+            "slot": {
+              "id": "le",
+              "tile": "懂"
+            },
+            "note": "了 closes it: 懂了."
           }
         ],
-        "fallbackRepair": "Something you just understood is 懂了.",
+        "fallbackRepair": "A change takes the word, then 了: 懂了.",
         "result": {
           "traditional": "不可以說「吃飯得很快」，應該說「吃飯吃得很快」。懂了！謝謝老師。",
           "simplified": "不可以说「吃饭得很快」，应该说「吃饭吃得很快」。懂了！谢谢老师。",
           "pinyin": "Bù kěyǐ shuō “chīfàn de hěn kuài”, yīnggāi shuō “chīfàn chī de hěn kuài”. Dǒng le! Xièxie lǎoshī.",
           "english": "You cannot say “吃飯得很快”; you should say “吃飯吃得很快”. We understand now! Thank you, teacher."
         },
-        "prompt": "You didn’t get it before, but now you do. Reply.",
+        "prompt": "You didn’t get it before, but now you do. Build your reply.",
         "glossary": [
           {
             "traditional": "懂",
