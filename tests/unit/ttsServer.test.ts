@@ -123,7 +123,7 @@ test('neural synthesis expires a stalled provider and releases its connection', 
   }
 });
 
-test('concurrent TTS callers share the storage miss and synthesis, with non-blocking persistence', async () => {
+test('10,000 same-key TTS callers share one storage miss and synthesis, with non-blocking persistence', async () => {
   const oldSend = S3Client.prototype.send;
   const oldMetadata = MsEdgeTTS.prototype.setMetadata;
   const oldStream = MsEdgeTTS.prototype.toStream;
@@ -138,14 +138,40 @@ test('concurrent TTS callers share the storage miss and synthesis, with non-bloc
   MsEdgeTTS.prototype.toStream = () => ({ audioStream: Readable.from([Buffer.from('mp3')]), metadataStream: null });
   MsEdgeTTS.prototype.close = () => {};
   try {
-    const clips = await Promise.all([getTtsAudio('dedupe-server', 'zh-CN-XiaoxiaoNeural'), getTtsAudio('dedupe-server', 'zh-CN-XiaoxiaoNeural')]);
+    const clips = await Promise.all(Array.from({ length: 10_000 }, () => getTtsAudio('dedupe-server', 'zh-CN-XiaoxiaoNeural')));
     assert.equal(reads, 1);
     assert.equal(synthesis, 1);
+    assert.equal(clips.length, 10_000);
     assert.equal(clips[0].buffer.toString(), 'mp3');
     const cached = await getTtsAudio('dedupe-server', 'zh-CN-XiaoxiaoNeural');
     assert.equal(cached.buffer.toString(), 'mp3');
     assert.equal(reads, 1);
   } finally {
+    S3Client.prototype.send = oldSend;
+    MsEdgeTTS.prototype.setMetadata = oldMetadata;
+    MsEdgeTTS.prototype.toStream = oldStream;
+    MsEdgeTTS.prototype.close = oldClose;
+  }
+});
+
+test('four distinct TTS misses are admitted and a fifth is rejected without contacting the provider', async () => {
+  const oldSend = S3Client.prototype.send;
+  const oldMetadata = MsEdgeTTS.prototype.setMetadata;
+  const oldStream = MsEdgeTTS.prototype.toStream;
+  const oldClose = MsEdgeTTS.prototype.close;
+  const releases: Array<() => void> = [];
+  S3Client.prototype.send = (async () => ({})) as typeof S3Client.prototype.send;
+  MsEdgeTTS.prototype.setMetadata = () => new Promise<void>((resolve) => { releases.push(resolve); });
+  MsEdgeTTS.prototype.toStream = () => ({ audioStream: Readable.from([Buffer.from('mp3')]), metadataStream: null });
+  MsEdgeTTS.prototype.close = () => {};
+  const admitted = Array.from({ length: 4 }, (_, i) => getTtsAudio(`distinct-capacity-${i}`, 'zh-CN-XiaoxiaoNeural'));
+  try {
+    await assert.rejects(getTtsAudio('distinct-capacity-overflow', 'zh-CN-XiaoxiaoNeural'), /concurrency limit/);
+    await new Promise(resolve => setImmediate(resolve));
+    assert.equal(releases.length, 4);
+  } finally {
+    releases.forEach(release => release());
+    await Promise.allSettled(admitted);
     S3Client.prototype.send = oldSend;
     MsEdgeTTS.prototype.setMetadata = oldMetadata;
     MsEdgeTTS.prototype.toStream = oldStream;

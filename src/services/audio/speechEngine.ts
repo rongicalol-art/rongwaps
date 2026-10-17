@@ -1,6 +1,6 @@
 import { debugLogger } from '../../utils/debug/debugLogger';
 import { authService } from '../authService';
-import { isUsableAudioBlob, resolveRequestUrl } from './audioCache';
+import { isUsableAudioBlob, resolveRequestUrl, MAX_AUDIO_CACHE, MAX_AUDIO_MEMORY_BYTES } from './audioCache';
 import { playHtmlAudio, silenceAudio } from './playbackEngine';
 
 let speechVoicesCache: SpeechSynthesisVoice[] | null = null;
@@ -8,9 +8,35 @@ let speechVoicesPromise: Promise<SpeechSynthesisVoice[]> | null = null;
 let neuralCacheInstance: Cache | null = null;
 
 const neuralFetches: Map<string, Promise<Blob | null>> = new Map();
+const neuralMemory = new Map<string, { blob: Blob; url: string }>();
+const neuralUrls = new WeakMap<Blob, string>();
 let neuralRetryAfter = 0;
 const blobCleanups = new WeakMap<HTMLAudioElement, () => void>();
 const speechCleanups = new WeakMap<SpeechSynthesisUtterance, () => void>();
+
+/** Retain compressed clips and stable URLs for replay, within the recording memory budget. */
+function rememberNeuralBlob(key: string, blob: Blob): void {
+  if (blob.size > MAX_AUDIO_MEMORY_BYTES || neuralMemory.get(key)?.blob === blob) return;
+  const previous = neuralMemory.get(key);
+  if (previous) {
+    URL.revokeObjectURL(previous.url);
+    neuralUrls.delete(previous.blob);
+    neuralMemory.delete(key);
+  }
+  const url = URL.createObjectURL(blob);
+  neuralUrls.set(blob, url);
+  neuralMemory.set(key, { blob, url });
+  let bytes = [...neuralMemory.values()].reduce((sum, entry) => sum + entry.blob.size, 0);
+  while (neuralMemory.size > MAX_AUDIO_CACHE || bytes > MAX_AUDIO_MEMORY_BYTES) {
+    const oldest = neuralMemory.entries().next().value;
+    if (!oldest) break;
+    const [oldKey, entry] = oldest;
+    URL.revokeObjectURL(entry.url);
+    neuralUrls.delete(entry.blob);
+    neuralMemory.delete(oldKey);
+    bytes -= entry.blob.size;
+  }
+}
 
 export function releaseSpeechUtterance(utterance: SpeechSynthesisUtterance): void {
   speechCleanups.get(utterance)?.();
@@ -199,6 +225,12 @@ export async function fetchNeuralBlob(text: string, voice: string | undefined): 
   // Preserve long readings with browser speech rather than silently truncating them.
   if (!text || Array.from(text).length > 500) return null;
   const key = `${voice || 'zh-CN-XiaoxiaoNeural'}|${text}`;
+  const memory = neuralMemory.get(key);
+  if (memory) {
+    neuralMemory.delete(key);
+    neuralMemory.set(key, memory);
+    return memory.blob;
+  }
   const inFlight = neuralFetches.get(key);
   if (inFlight) return inFlight;
 
@@ -208,15 +240,19 @@ export async function fetchNeuralBlob(text: string, voice: string | undefined): 
     timeout = setTimeout(() => { controller.abort(); resolve(null); }, 10_000);
   });
   const work = (async (): Promise<Blob | null> => {
-    const cache = await getNeuralCache();
     const cacheReq = ttsCacheRequest(text, voice);
-    if (cache) {
-      const cached = await cache.match(cacheReq).catch(() => null);
-      if (cached) {
-        const blob = await cached.blob();
-        if (isUsableAudioBlob(blob)) return blob;
-      }
-    }
+    // As with recordings, slow browser storage must not hold up online audio.
+    const cacheWaitMs = typeof navigator !== 'undefined' && navigator.onLine === false ? 1000 : 100;
+    let cacheTimer: ReturnType<typeof setTimeout>;
+    const cachedBlob = await Promise.race([
+      (async () => {
+        const cache = await getNeuralCache();
+        const cached = await cache?.match(cacheReq);
+        return cached ? cached.blob() : null;
+      })().catch(() => null),
+      new Promise<null>((resolve) => { cacheTimer = setTimeout(() => resolve(null), cacheWaitMs); }),
+    ]).finally(() => clearTimeout(cacheTimer));
+    if (cachedBlob && isUsableAudioBlob(cachedBlob)) return cachedBlob;
 
     if (Date.now() < neuralRetryAfter) return null;
     const serverCached = await fetchTtsCacheEndpoint(text, voice, controller.signal);
@@ -258,7 +294,9 @@ export async function fetchNeuralBlob(text: string, voice: string | undefined): 
   const promise = Promise.race([work, deadline]);
   neuralFetches.set(key, promise);
   try {
-    return await promise;
+    const blob = await promise;
+    if (blob) rememberNeuralBlob(key, blob);
+    return blob;
   } finally {
     clearTimeout(timeout!);
     if (neuralFetches.get(key) === promise) {
@@ -297,9 +335,10 @@ export function playBlobAudio(
   onActiveAudio?: (audio: HTMLAudioElement | null) => void,
   unlockedAudio?: HTMLAudioElement,
 ): HTMLAudioElement {
-  const objectUrl = URL.createObjectURL(blob);
+  const retainedUrl = neuralUrls.get(blob);
+  const objectUrl = retainedUrl ?? URL.createObjectURL(blob);
   let audio: HTMLAudioElement;
-  try { audio = unlockedAudio ?? new Audio(); } catch (error) { URL.revokeObjectURL(objectUrl); throw error; }
+  try { audio = unlockedAudio ?? new Audio(); } catch (error) { if (!retainedUrl) URL.revokeObjectURL(objectUrl); throw error; }
   let released = false;
   let stopPlayback = () => {};
   const cleanup = () => {
@@ -309,7 +348,7 @@ export function playBlobAudio(
     blobCleanups.delete(audio);
     silenceAudio(audio);
     onActiveAudio?.(null);
-    URL.revokeObjectURL(objectUrl);
+    if (!retainedUrl) URL.revokeObjectURL(objectUrl);
   };
   blobCleanups.set(audio, cleanup);
   onActiveAudio?.(audio);

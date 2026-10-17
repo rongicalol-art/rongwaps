@@ -610,6 +610,104 @@ test('neural cache is bounded by both entries and bytes', async () => {
   cacheEntries.clear();
 });
 
+test('buffered recordings replay and seek ranges without waiting for disk or changing source', async () => {
+  const service = new AudioService();
+  const url = 'https://audio.example.test/buffered-replay.mp3';
+  const first = service.play(url);
+  await tick();
+  const audio = service.getGlobalAudio() as unknown as FakeAudio;
+  audio.readyState = 4;
+  audio.currentTime = 2;
+  service.pause();
+  await first;
+  const oldMatch = memoryCache.match;
+  let lookups = 0;
+  memoryCache.match = async () => { lookups++; return new Promise<Response>(() => {}); };
+  try {
+    const replay = service.play(url);
+    assert.equal(audio.src, url);
+    assert.equal(audio.currentTime, 0, 'replay seeks the existing resource synchronously');
+    service.pause();
+    await replay;
+    const range = service.playRange(url, 1, 3);
+    assert.equal(audio.currentTime, 1);
+    assert.equal(audio.src, url);
+    service.stop();
+    await range;
+    assert.equal(lookups, 0);
+  } finally { service.stop(); memoryCache.match = oldMatch; }
+});
+
+test('neural replay reuses memory and its URL after completion and interruption', async () => {
+  const { fetchNeuralBlob } = await import('../../src/services/audio/speechEngine');
+  const oldMatch = memoryCache.match;
+  let lookups = 0;
+  memoryCache.match = async () => { lookups++; return new Response(new Blob(['speech'], { type: 'audio/mpeg' })); };
+  const service = new AudioService();
+  try {
+    const text = 'stable-neural-replay';
+    const blob = await fetchNeuralBlob(text, undefined);
+    assert.ok(blob);
+    const first = service.speakNeural(text);
+    await tick();
+    const audio = service.getGlobalAudio() as unknown as FakeAudio;
+    const src = audio.src;
+    audio.onended?.();
+    await first;
+    const second = service.speakNeural(text);
+    await tick();
+    assert.equal(audio.src, src);
+    service.stop();
+    await second;
+    assert.equal(await fetchNeuralBlob(text, undefined), blob);
+    assert.equal(lookups, 1, 'replay and preload hits must not consult persistent storage');
+  } finally { service.stop(); memoryCache.match = oldMatch; }
+});
+
+test('neural memory evicts least-used clips by count and bytes and revokes their URLs', async () => {
+  const { fetchNeuralBlob } = await import('../../src/services/audio/speechEngine');
+  const oldMatch = memoryCache.match;
+  const oldRevoke = URL.revokeObjectURL;
+  let lookups = 0;
+  let revoked = 0;
+  let size = 3;
+  memoryCache.match = async () => { lookups++; return new Response(new Blob([new Uint8Array(size)], { type: 'audio/mpeg' })); };
+  URL.revokeObjectURL = () => { revoked++; };
+  try {
+    const hot = await fetchNeuralBlob('neural-memory-0', undefined);
+    for (let i = 1; i < 100; i++) await fetchNeuralBlob(`neural-memory-${i}`, undefined);
+    assert.equal(await fetchNeuralBlob('neural-memory-0', undefined), hot);
+    await fetchNeuralBlob('neural-memory-100', undefined);
+    const before = lookups;
+    assert.equal(await fetchNeuralBlob('neural-memory-0', undefined), hot);
+    await fetchNeuralBlob('neural-memory-1', undefined);
+    assert.equal(lookups, before + 1, 'the cold entry is evicted, the hot entry survives');
+    const beforeBytes = revoked;
+    size = 14 * 1024 * 1024;
+    const large = await fetchNeuralBlob('neural-memory-large-1', undefined);
+    await fetchNeuralBlob('neural-memory-large-2', undefined);
+    assert.notEqual(await fetchNeuralBlob('neural-memory-large-1', undefined), large);
+    assert.ok(revoked > beforeBytes, 'byte eviction releases retained object URLs');
+  } finally { memoryCache.match = oldMatch; URL.revokeObjectURL = oldRevoke; }
+});
+
+test('a stalled neural disk cache yields to the server after 100ms', async (context) => {
+  const { fetchNeuralBlob } = await import('../../src/services/audio/speechEngine');
+  const oldMatch = memoryCache.match;
+  const oldFetch = globalThis.fetch;
+  let requested = 0;
+  memoryCache.match = async () => new Promise<Response>(() => {});
+  globalThis.fetch = async () => { requested++; return new Response(new Blob(['speech'], { type: 'audio/mpeg' })); };
+  context.mock.timers.enable({ apis: ['setTimeout'] });
+  try {
+    const pending = fetchNeuralBlob('neural-disk-stall-regression', undefined);
+    await Promise.resolve();
+    context.mock.timers.tick(100);
+    assert.equal((await pending)?.size, 6);
+    assert.equal(requested, 1);
+  } finally { context.mock.timers.reset(); memoryCache.match = oldMatch; globalThis.fetch = oldFetch; }
+});
+
 test('aborted lookahead skips queued recordings and never treats text as a filename', async () => {
   const { preloadAudioFiles } = await import('../../src/services/audio/audioCache');
   const controller = new AbortController();
