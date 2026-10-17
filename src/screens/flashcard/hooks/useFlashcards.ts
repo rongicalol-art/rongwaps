@@ -5,12 +5,11 @@ import { useCardSession, type CardSessionQuality } from '../../../hooks/useCardS
 import { getDeckIdentityKey } from '../../../utils/lesson/lessonPartSelection';
 
 /**
- * UI rating level (1-3) → SRS quality (1-5). The UI skips quality 3
- * (difficult) — Hard and Unsure map to SRS 1 and 2; Got it maps to 4.
+ * Forgot / With effort / Got it: difficult-but-correct recall is a success.
  */
-function levelToQuality(level: number): CardSessionQuality {
+export function levelToQuality(level: number): CardSessionQuality {
   if (level === 1) return 1;
-  if (level === 2) return 2;
+  if (level === 2) return 3;
   if (level === 3) return 4;
   return 5;
 }
@@ -42,7 +41,12 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
   // on it so a fresh review run cannot skip ahead of what was shown.
   const [maxVisitedIndex, setMaxVisitedIndex] = useState(0);
 
+  const overlayOpen = useAppStore(state => state.dictionaryWord !== null || state.saveWordTarget !== null);
+
   const session = useCardSession(loadedCards, sessionKey, {
+    daily: isReviewDeck,
+    source: isReviewDeck ? 'daily' : 'flashcards',
+    paused: Boolean(activeBreakdown || overlayOpen),
     onSessionReset: () => {
       setIsFlipped(false);
       setActiveBreakdownState(null);
@@ -104,12 +108,14 @@ export function useFlashcards(activeBookId: number, selectedLessons: number[], i
   return {
     cards: activeCards,
     missedCards,
+    trickyCards: activeCards.filter(card => { const q = session.sessionResults[card.id]; return q !== undefined && q <= 3; }),
     currentCard,
     currentIndex,
     maxVisitedIndex,
     isFlipped,
     setIsFlipped,
     completed,
+    practiceOnly: session.practiceOnly,
     resumedReview: session.resumedReview,
     activeBreakdown,
     activeBreakdownIndex,

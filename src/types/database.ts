@@ -82,6 +82,12 @@ export type ProfileSettings = { [key: string]: Json | undefined };
 export interface Database {
   public: {
     Tables: {
+      user_review_events: {
+        Row: { user_id: string; event_id: string; card_id: string; reviewed_at: string; created_at: string; payload: Json };
+        Insert: { user_id: string; event_id: string; card_id: string; reviewed_at: string; created_at?: string; payload: Json };
+        Update: { user_id?: string; event_id?: string; card_id?: string; reviewed_at?: string; created_at?: string; payload?: Json };
+        Relationships: [];
+      };
       user_card_progress: {
         Row: {
           user_id: string;
@@ -94,6 +100,7 @@ export interface Database {
           last_updated: string | null;
           reviewed_at: string | null;
           learned_at: string | null;
+          scheduler_state: Json | null;
         };
         Insert: {
           user_id: string;
@@ -106,6 +113,7 @@ export interface Database {
           last_updated?: string | null;
           reviewed_at?: string | null;
           learned_at?: string | null;
+          scheduler_state?: Json | null;
         };
         Update: {
           user_id?: string;
@@ -118,6 +126,7 @@ export interface Database {
           last_updated?: string | null;
           reviewed_at?: string | null;
           learned_at?: string | null;
+          scheduler_state?: Json | null;
         };
         Relationships: [];
       };
@@ -224,6 +233,7 @@ export interface Database {
         Args: Record<PropertyKey, never>;
         Returns: undefined;
       };
+      append_review_events: { Args: { p_events: Json }; Returns: undefined };
       upsert_card_progress: {
         Args: { p_records: Json };
         Returns: undefined;

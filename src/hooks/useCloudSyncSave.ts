@@ -49,6 +49,9 @@ export function useCloudSyncSave({
     if (persistedOwnerRef.current !== userId) {
       return;
     }
+    await userService.syncReviewEvents(store.pendingReviewEvents);
+    if (persistedOwnerRef.current !== userId) return;
+    useAppStore.getState().acknowledgeReviewEvents(store.pendingReviewEvents.map(event => event.id));
     await userService.syncCardProgress(deltaSrsData, store.learnedCards);
     // Re-read: a pull may have advanced the checkpoint while this save ran.
     const checkpoint = checkpointForUser(useAppStore.getState().syncCheckpoint, userId);

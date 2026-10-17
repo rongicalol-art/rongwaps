@@ -1,3 +1,4 @@
+import type { ReviewContext, ReviewEvent } from './reviewEvents';
 import type { SessionProgress } from '../../types/models';
 import {
   calculateNextReview,
@@ -9,6 +10,7 @@ export interface ReviewProgressState {
   srsData: Record<string, SRSData>;
   learnedCards: string[];
   sessionProgress: SessionProgress;
+  reviewEvents?: ReviewEvent[];
 }
 
 export type ReviewProgressUpdate = Pick<
@@ -33,7 +35,11 @@ export function applyCardReview(
   state: ReviewProgressState,
   cardId: string,
   quality: Quality,
-): ReviewProgressUpdate {
+  context?: ReviewContext,
+): ReviewProgressUpdate & { reviewEvents?: ReviewEvent[]; pendingReviewEvents?: ReviewEvent[] } {
+  const now = Date.now();
+  const history = state.reviewEvents ?? [];
+  if (context && history.some(event => event.id === context.id)) return { srsData: state.srsData, learnedCards: state.learnedCards, sessionProgress: state.sessionProgress };
   const existingReview = state.srsData[cardId];
   const alreadyInLearnedCards = state.learnedCards.includes(cardId);
   const wasPreviouslyLearned = alreadyInLearnedCards || (existingReview?.repetition ?? 0) > 0;
@@ -41,10 +47,19 @@ export function applyCardReview(
   const isFirstSuccessfulReview = isSuccessfulReview && !wasPreviouslyLearned;
   const shouldRepairLearnedCards = isSuccessfulReview && !alreadyInLearnedCards;
 
+  // Immediate follow-up quizzes/replays are observations, not another spaced
+  // success. Only due cards (or genuinely new cards) advance the scheduler.
+  const scheduled = !context?.practiceOnly && (!existingReview || existingReview.nextReviewDate <= now);
+  const after = scheduled ? calculateNextReview(existingReview, cardId, quality, now) : existingReview;
+  const event: ReviewEvent | null = context ? {
+    ...context, durationMs: Math.max(0, Math.min(300_000, context.durationMs)),
+    cardId, quality, reviewedAt: now, scheduled, before: existingReview ?? null, after: after ?? null,
+  } : null;
   return {
+    ...(event ? { reviewEvents: [...history, event] } : {}),
     srsData: {
       ...state.srsData,
-      [cardId]: calculateNextReview(existingReview, cardId, quality),
+      ...(after ? { [cardId]: after } : {}),
     },
     learnedCards: shouldRepairLearnedCards
       ? [...state.learnedCards, cardId]

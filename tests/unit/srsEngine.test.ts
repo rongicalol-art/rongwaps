@@ -48,9 +48,9 @@ test('a card passes through each learning step and then graduates', () => {
 
     const graduated = calculateNextReview(step0, 'card-1', 4);
     assert.equal(graduated.learningStep, undefined);
-    assert.equal(graduated.repetition, 0);
+    assert.ok(graduated.repetition > 0);
     // Review-phase due dates land on the day rollover boundary, not NOW+24h.
-    assert.equal(graduated.nextReviewDate, dayBoundaryDueTimestamp(1, NOW));
+    assert.equal(graduated.nextReviewDate, dayBoundaryDueTimestamp(graduated.interval, NOW));
   });
 });
 
@@ -68,17 +68,20 @@ test('a legacy card without learningStep stays in the review phase', () => {
     const legacy = srs({ interval: 0, repetition: 0, nextReviewDate: NOW });
     const next = calculateNextReview(legacy, 'card-1', 4);
     assert.equal(next.learningStep, undefined);
-    assert.equal(next.interval, 1);
+    assert.ok(next.interval >= 1);
     assert.equal(next.repetition, 1);
-    assert.equal(next.nextReviewDate, dayBoundaryDueTimestamp(1, NOW));
+    assert.equal(next.fsrs?.version, 1);
+    assert.equal(next.nextReviewDate, dayBoundaryDueTimestamp(next.interval, NOW));
   });
 });
 
-test('review phase uses SM-2 progression and applies fuzz', () => {
+test('FSRS preserves memory state between delayed reviews', () => {
   withNow(() => {
     const next = calculateNextReview(srs({ interval: 3, repetition: 2 }), 'card-1', 4);
-    // interval * efactor = 3 * 2.5 = 7.5 -> rounded 8 -> fuzzed within [7, 9] days.
-    assert.ok(next.interval >= 7 && next.interval <= 9, 'expected interval within fuzz range');
+    assert.ok(next.fsrs && next.fsrs.stability > 0);
+    const later = calculateNextReview(next, 'card-1', 4, next.nextReviewDate);
+    assert.ok(later.fsrs!.reps > next.fsrs.reps);
+    assert.ok(later.fsrs!.stability > next.fsrs.stability);
     assert.equal(next.nextReviewDate, dayBoundaryDueTimestamp(next.interval, NOW));
   });
 });
@@ -120,7 +123,7 @@ test('review-phase nextReviewDate uses the day boundary, learning steps stay min
       4,
     );
     assert.equal(graduated.learningStep, undefined);
-    assert.equal(graduated.nextReviewDate, dayBoundaryDueTimestamp(1, NOW));
+    assert.equal(graduated.nextReviewDate, dayBoundaryDueTimestamp(graduated.interval, NOW));
 
     // Learning-phase card: exact minutes, no boundary alignment.
     const learning = calculateNextReview(
@@ -146,6 +149,6 @@ test('compounding practice never exceeds the database interval ceiling', () => {
       'card-1',
       5,
     );
-    assert.equal(next.interval, MAX_INTERVAL_DAYS);
+    assert.ok(next.interval > 0 && next.interval <= MAX_INTERVAL_DAYS);
   });
 });

@@ -29,11 +29,15 @@ export interface SessionStats {
   /** Every distinct word of the round (the chips that pour into the Words tile). */
   words: string[];
   firstTryPct: number;
+  /** Forgot and With effort words remain available after the following quiz. */
+  trickyCardIds?: string[];
   /** Epoch ms of the first flashcard. */
   startedAt: number;
 }
 
 export interface SessionCompleteProps {
+  headline?: string;
+  reviewLabel?: string;
   words: string[];
   /** The accuracy tile's value: quiz result, or first-try result when no quiz ran. */
   pct: number;
@@ -77,12 +81,12 @@ function StatTile({ label, icon, shown, format, frameClass, inkClass, bodyRef }:
 }
 
 /** Shared session end screen with a clear Continue action and optional review/restart choices. */
-export function SessionComplete({ words, pct, pctLabel, seconds, onContinue, onReviewMissed, missedCount = 0, onStudyAllAgain }: SessionCompleteProps) {
+export function SessionComplete({ headline: customHeadline, reviewLabel = 'Review missed', words, pct, pctLabel, seconds, onContinue, onReviewMissed, missedCount = 0, onStudyAllAgain }: SessionCompleteProps) {
   const reduceMotion = Boolean(useReducedMotion());
   const isPerfect = pct >= 100;
   const total = words.length;
   const chips = words.slice(0, MAX_CHIPS);
-  const headline = isPerfect ? ['Perfect', 'session!'] : ['Session', 'complete!'];
+  const headline = customHeadline ? [customHeadline] : isPerfect ? ['Perfect', 'session!'] : ['Session', 'complete!'];
   const [wordsShown, setWordsShown] = useState(reduceMotion ? total : 0);
   const [pctShown, setPctShown] = useState(reduceMotion ? pct : 0);
   const [secondsShown, setSecondsShown] = useState(reduceMotion ? seconds : 0);
@@ -310,9 +314,9 @@ export function SessionComplete({ words, pct, pctLabel, seconds, onContinue, onR
 
       <h1
         ref={titleRef}
-        className={`flex gap-[0.3em] text-center text-[28px] font-black md:text-[34px] ${isPerfect ? 'text-feedback-success-edge' : 'text-ui-ink-strong'}`}
+        className={`flex flex-wrap justify-center gap-[0.3em] text-center text-[28px] font-black md:text-[34px] ${isPerfect ? 'text-feedback-success-edge' : 'text-ui-ink-strong'}`}
       >
-        {headline.map((word) => <span key={word} className="inline-block">{word}</span>)}
+        {headline.map((word) => <span key={word} className="inline-block max-w-full">{word}</span>)}
       </h1>
 
       <div ref={tilesRef} className="relative z-10 mt-7 grid w-full max-w-[360px] grid-cols-3 gap-3 md:mt-8 md:max-w-[440px] md:gap-4">
@@ -338,7 +342,7 @@ export function SessionComplete({ words, pct, pctLabel, seconds, onContinue, onR
         <div className="mt-2 flex w-full flex-col gap-1">
           {onReviewMissed && (
             <ActionButton variant="secondary" size="lg" fullWidth edgeColor="var(--color-ui-border)" className="!bg-ui-surface !text-ui-muted-strong hover:!bg-ui-hover uppercase tracking-normal" onClick={onReviewMissed}>
-              Review missed ({missedCount})
+              {reviewLabel} ({missedCount})
             </ActionButton>
           )}
           {onStudyAllAgain && (

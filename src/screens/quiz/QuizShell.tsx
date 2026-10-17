@@ -33,6 +33,7 @@ interface QuizSession {
   inBeatDone?: number;
   currentCard: Flashcard;
   completed: boolean;
+  practiceOnly?: boolean;
   handleCheck: () => void;
   answerAudioPlaying?: boolean;
   resumedReview: boolean;
@@ -164,7 +165,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
   const [entrance, setEntrance] = useState<{ ghost: QuizHandoff | null } | null>(null);
   const firstPassRef = useRef<{ total: number; correct: number; cards: Flashcard[]; missedCards: Flashcard[] } | null>(null);
   const isReviewPass = reviewPass > 0 || resumedReview;
-  const isDone = completed && unlearnedCount === 0;
+  const isDone = completed && (session.practiceOnly || unlearnedCount === 0);
 
   useEffect(() => {
     if (resumedReview) setReviewPass((pass) => pass || 1);
@@ -172,7 +173,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
 
 
   useLayoutEffect(() => {
-    if (!completed || unlearnedCount === 0) return;
+    if (!completed || session.practiceOnly || unlearnedCount === 0) return;
     firstPassRef.current ??= { total: activeCards.length, correct: learnedCount, cards: activeCards, missedCards };
     reviewUnlearned();
     setReviewPass((pass) => pass + 1);
@@ -181,7 +182,7 @@ export const QuizShell: React.FC<QuizShellProps> = ({
     setDealStarted(false);
     setEntrance(null);
     setIntroActive(true);
-  }, [activeCards, completed, learnedCount, missedCards, reviewUnlearned, unlearnedCount]);
+  }, [activeCards, completed, learnedCount, missedCards, reviewUnlearned, unlearnedCount, session.practiceOnly]);
 
   const restart = useCallback(() => {
     firstPassRef.current = null;
@@ -265,16 +266,20 @@ export const QuizShell: React.FC<QuizShellProps> = ({
     finishedAtRef.current ??= Date.now();
     // Quiz % is the first pass's: a review round doesn't change it.
     const first = firstPassRef.current ?? { total: learnedCount, correct: learnedCount, cards: activeCards, missedCards: [] };
+    const trickyIds = new Set(sessionStats?.trickyCardIds ?? []);
+    const tricky = Array.from(new Map([...first.missedCards, ...first.cards.filter(card => trickyIds.has(card.id))].map(card => [card.id, card])).values());
     const words = sessionStats?.words ?? Array.from(new Set(first.cards.map((card) => card.front)));
     return (
       <SessionComplete
         words={words}
+        headline={session.practiceOnly ? 'Practice complete' : undefined}
+        reviewLabel="Practice tricky words"
         pct={Math.round((first.correct / Math.max(1, first.total)) * 100)}
         pctLabel="Quiz"
         seconds={Math.max(1, Math.round((finishedAtRef.current - (sessionStats?.startedAt ?? startedAtRef.current)) / 1000))}
         onContinue={onContinue ?? onEnd}
-        onReviewMissed={first.missedCards.length > 0 ? () => practiceCards(first.missedCards) : undefined}
-        missedCount={first.missedCards.length}
+        onReviewMissed={tricky.length > 0 ? () => practiceCards(tricky) : undefined}
+        missedCount={tricky.length}
         onStudyAllAgain={restart}
       />
     );

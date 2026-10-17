@@ -255,6 +255,8 @@ const PERSISTED_ARRAY_KEYS = [
   'customFolders',
   'localFlashcards',
   'learnedCards',
+  'reviewEvents',
+  'pendingReviewEvents',
   'selectedBooks',
   'startedPartIds',
   'completedPageIds',
@@ -265,6 +267,7 @@ const PERSISTED_ARRAY_KEYS = [
 const PERSISTED_RECORD_KEYS = [
   'selectedLessonParts',
   'srsData',
+  'learningBatches',
   'sessionProgressIndex',
   'sessionCardOrder',
   'deckExclusions',

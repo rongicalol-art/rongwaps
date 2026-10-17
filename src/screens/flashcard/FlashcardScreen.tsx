@@ -63,12 +63,14 @@ export function FlashcardScreen({
   const {
     cards,
     missedCards,
+    trickyCards,
     currentCard,
     currentIndex,
     maxVisitedIndex,
     isFlipped,
     setIsFlipped,
     completed,
+    practiceOnly,
     resumedReview,
     activeBreakdown,
     activeBreakdownIndex,
@@ -87,6 +89,8 @@ export function FlashcardScreen({
     error,
   } = useFlashcards(activeBookId, selectedLessons, isReviewDeck, isLibraryDeck);
 
+  const dailyPlan = useAppStore(state => state.dailyReviewPlan);
+
   const showPinyin = useAppStore((state) => state.showPinyin);
   const toneColors = useAppStore((state) => state.toneColors);
   const showTranslation = useAppStore((state) => state.showTranslation);
@@ -103,7 +107,7 @@ export function FlashcardScreen({
   const [finishedPassCards, setFinishedPassCards] = useState<Flashcard[]>([]);
   /** The first review's missed tiles are highlighted: the app turns honey from here. */
   const [introToned, setIntroToned] = useState(false);
-  const firstPassRef = useRef<{ total: number; correct: number; cards: Flashcard[]; missedCards: Flashcard[] } | null>(null);
+  const firstPassRef = useRef<{ total: number; correct: number; cards: Flashcard[]; missedCards: Flashcard[]; trickyCards: Flashcard[] } | null>(null);
   /** The honey tone has drained after the last card: Cards done releases it as the card lands in the sheet. */
   const [toneReleased, setToneReleased] = useState(false);
   /** Whether the last card was showing its answer when the deck ended: Cards done keeps it that way. */
@@ -123,8 +127,8 @@ export function FlashcardScreen({
   }, [currentCard]);
 
   useEffect(() => {
-    if (!completed || missedCount === 0) return;
-    firstPassRef.current ??= { total: cards.length, correct: learnedCount, cards, missedCards };
+    if (isReviewDeck || practiceOnly || !completed || missedCount === 0) return;
+    firstPassRef.current ??= { total: cards.length, correct: learnedCount, cards, missedCards, trickyCards };
     reviewUnlearned();
     setReviewPass((pass) => pass + 1);
     setFinishedPassSize(cards.length);
@@ -133,7 +137,7 @@ export function FlashcardScreen({
     setDealStarted(false);
     setIntroLanded(false);
     setIntroActive(true);
-  }, [cards, completed, learnedCount, missedCards, missedCount, reviewUnlearned]);
+  }, [cards, completed, isReviewDeck, learnedCount, missedCards, missedCount, reviewUnlearned, trickyCards, practiceOnly]);
 
   const resetAll = useCallback(() => {
     firstPassRef.current = null;
@@ -153,9 +157,9 @@ export function FlashcardScreen({
     restartDeckSession();
   }, [restartDeckSession]);
 
-  const isDeckDone = completed && missedCount === 0;
+  const isDeckDone = completed && (isReviewDeck || practiceOnly || missedCount === 0);
   /** A quiz follows: the last card shrinks into the Cards done sheet instead of the screen swapping. */
-  const cardsDone = isDeckDone && Boolean(onStartQuiz);
+  const cardsDone = isDeckDone && Boolean(onStartQuiz) && !isReviewDeck && !practiceOnly;
   if (!isDeckDone) lastFlippedRef.current = isFlipped;
 
   // The whole app turns warm for review passes (the intro included); after the last card it drains with Cards done.
@@ -280,27 +284,34 @@ export function FlashcardScreen({
   const deckCards = isDeckDone
     ? Array.from(new Map((firstPassRef.current?.cards ?? (sessionDeck?.length ? sessionDeck : cards)).map((card) => [card.id, card])).values())
     : [];
+  const reportedCards = isReviewDeck ? deckCards.filter(card => card.id in (dailyPlan?.answers ?? {})) : deckCards;
   const first = firstPassRef.current ?? { total: cards.length, correct: learnedCount, missedCards: [] as Flashcard[] };
   const sessionStats = (): SessionStats => {
     return {
-      words: deckCards.map((card) => card.front),
-      firstTryPct: Math.round((first.correct / Math.max(1, first.total)) * 100),
+      trickyCardIds: (firstPassRef.current?.trickyCards ?? trickyCards).map(card => card.id),
+      words: reportedCards.map((card) => card.front),
+      firstTryPct: isReviewDeck
+        ? Math.round(reportedCards.filter(card => (dailyPlan?.answers[card.id] ?? 0) >= 3).length / Math.max(1, reportedCards.length) * 100)
+        : Math.round((first.correct / Math.max(1, first.total)) * 100),
       startedAt: startedAtRef.current ?? Date.now(),
     };
   };
 
-  if (isDeckDone && !onStartQuiz) {
+  const tricky = firstPassRef.current?.trickyCards ?? trickyCards;
+  if (isDeckDone && (!onStartQuiz || isReviewDeck || practiceOnly)) {
     const stats = sessionStats();
     return (
       <SessionComplete
         words={stats.words}
+        headline={practiceOnly ? 'Practice complete' : isReviewDeck ? 'Today’s review complete' : undefined}
+        reviewLabel="Practice tricky words"
         pct={stats.firstTryPct}
         pctLabel="First try"
         seconds={Math.max(1, Math.round((Date.now() - stats.startedAt) / 1000))}
         onContinue={onContinue ?? onClose ?? (() => {})}
-        onReviewMissed={first.missedCards.length > 0 ? () => practiceCards(first.missedCards) : undefined}
-        missedCount={first.missedCards.length}
-        onStudyAllAgain={studyAllAgain}
+        onReviewMissed={tricky.length > 0 ? () => practiceCards(tricky) : undefined}
+        missedCount={tricky.length}
+        onStudyAllAgain={isReviewDeck ? undefined : studyAllAgain}
       />
     );
   }
@@ -376,10 +387,12 @@ export function FlashcardScreen({
             stageRef={stageRef}
             onTone={() => setToneReleased(true)}
             onStart={(types) => onStartQuiz(types, sessionStats())}
-            onReviewAgain={() => firstPassRef.current?.missedCards.length
-              ? practiceCards(firstPassRef.current.missedCards)
-              : studyAllAgain()}
-            missedCount={firstPassRef.current?.missedCards.length ?? 0}
+            onReviewAgain={() => {
+              firstPassRef.current ??= { total: cards.length, correct: learnedCount, cards, missedCards, trickyCards };
+              if (tricky.length) practiceCards(tricky);
+              else studyAllAgain();
+            }}
+            missedCount={tricky.length}
           />
         )}
         {introActive && (

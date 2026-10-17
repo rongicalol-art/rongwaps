@@ -1,3 +1,6 @@
+import { useStudyClock } from './useStudyClock';
+import { DAILY_REVIEW_MS } from '../utils/srs/reviewSession';
+import type { ReviewSource } from '../utils/srs/reviewEvents';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Flashcard } from '../data/flashcards';
 import { useAppStore } from '../store/useAppStore';
@@ -29,6 +32,9 @@ export interface UseCardSessionOptions {
   onAnswerStateReset: () => void;
   /** Re-queue a missed card inside the pass per the "repeat mistakes" setting (default). The quiz turns it off: its misses come back as a review round. */
   requeueMissed?: boolean;
+  source?: ReviewSource;
+  paused?: boolean;
+  daily?: boolean;
 }
 
 export type CardSessionQuality = 1 | 2 | 3 | 4 | 5;
@@ -38,11 +44,11 @@ export function useCardSession(
   sessionKey: string,
   options: UseCardSessionOptions,
 ) {
-  const { onSessionReset, onAnswerStateReset, requeueMissed = true } = options;
+  const { onSessionReset, onAnswerStateReset, requeueMissed = true, daily = false } = options;
   const markCardReviewed = useAppStore((state) => state.markCardReviewed);
   const clearSessionProgressIndex = useAppStore((state) => state.clearSessionProgressIndex);
   const repeatMistakesSetting = useAppStore((state) => state.repeatMistakes);
-  const repeatMistakes = requeueMissed ? repeatMistakesSetting : 'off';
+  const repeatMistakes = requeueMissed && !daily ? repeatMistakesSetting : 'off';
 
   const [activeCards, setActiveCards] = useState<Flashcard[]>(cards);
   const [isShuffled, setIsShuffled] = useState(false);
@@ -53,6 +59,11 @@ export function useCardSession(
   /** A manual replay of missed cards is practice only; it must not rewrite SRS history. */
   const practiceOnlyRef = useRef(false);
   const [completed, setCompleted] = useState(false);
+  const sessionIdRef = useRef(crypto.randomUUID());
+  const clock = useStudyClock(Boolean(completed || options.paused || activeCards.length === 0), daily ? ms => {
+    if (!practiceOnlyRef.current) useAppStore.getState().addDailyReviewTime(ms);
+  } : undefined);
+  const previousAnswerTime = useRef(0);
   /** The session reopened inside an unfinished flashcard review pass (activeCards is the missed list). */
   const [resumedReview, setResumedReview] = useState(false);
   /** activeCards is a review subset of the deck: saved so quitting mid-review can resume it. */
@@ -101,6 +112,7 @@ export function useCardSession(
         persistProgress(sessionKeyRef.current);
       }
       firstAttemptMissedRef.current.clear();
+      sessionIdRef.current = crypto.randomUUID();
       practiceOnlyRef.current = false;
       pendingSessionCardIdRef.current = currentCardIdRef.current;
       sessionKeyRef.current = sessionKey;
@@ -171,12 +183,17 @@ export function useCardSession(
     fullDeckRef.current = cards;
     sessionInitializedRef.current = true;
     if (plan.clearPendingCard) pendingSessionCardIdRef.current = null;
-    setCurrentIndex(restored || reviewCards
+    if (daily) {
+      const plan = useAppStore.getState().dailyReviewPlan;
+      setSessionResults(plan?.answers ?? {});
+      const firstUnanswered = nextCards.findIndex(card => !(card.id in (plan?.answers ?? {})));
+      setCurrentIndex(Math.max(0, firstUnanswered));
+    } else setCurrentIndex(restored || reviewCards
       ? getSessionStartIndex(useAppStore.getState().sessionProgressIndex, sessionKey, nextCards.length)
       : keptReview
       ? retainCurrentCardIndex(keptReview, currentCardIdRef.current, currentIndexRef.current)
       : plan.index);
-  }, [cards, sessionKey, persistProgress]);
+  }, [cards, daily, sessionKey, persistProgress]);
 
   useEffect(() => {
     if (activeCards.length > 0 && currentIndex >= activeCards.length) {
@@ -239,53 +256,61 @@ export function useCardSession(
 
   /** Records the result, feeds the mistake queue, and updates session tallies. */
   const recordAnswer = useCallback((card: Flashcard, quality: CardSessionQuality) => {
-    if (practiceOnlyRef.current) return;
     const wasMissed = firstAttemptMissedRef.current.has(card.id);
-
+    const activeActivity = useAppStore.getState().activeActivity;
+    const source: ReviewSource = practiceOnlyRef.current ? 'practice' : options.source
+      ?? (activeActivity === 'quiz' ? 'quiz' : activeActivity === 'listening' ? 'listening'
+        : activeActivity === 'writing' ? 'writing' : activeActivity === 'tones' ? 'tones' : 'flashcards');
+    const durationMs = Math.max(0, clock.current - previousAnswerTime.current);
+    previousAnswerTime.current = clock.current;
+    markCardReviewed(card.id, quality, {
+      id: crypto.randomUUID(), sessionId: sessionIdRef.current, source, durationMs,
+      practiceOnly: practiceOnlyRef.current || wasMissed,
+      ...(source === 'daily' ? { dailyTarget: useAppStore.getState().dailyReviewPlan?.cardIds.length } : {}),
+    });
+    if (practiceOnlyRef.current) {
+      setSessionResults(previous => ({ ...previous, [card.id]: quality }));
+      return;
+    }
+    if (!wasMissed) setSessionResults(previous => ({ ...previous, [card.id]: quality }));
     if (quality <= 2) {
-      if (!wasMissed) {
-        firstAttemptMissedRef.current.add(card.id);
-        markCardReviewed(card.id, quality);
-        setSessionResults((previous) => ({ ...previous, [card.id]: quality }));
-      }
+      firstAttemptMissedRef.current.add(card.id);
       if (repeatMistakes !== 'off') {
-        const nextItems = queueMissedItem(activeCardsRef.current, card, currentIndexRef.current, repeatMistakes);
-        if (nextItems !== activeCardsRef.current) {
-          activeCardsRef.current = nextItems;
-          setActiveCards(nextItems);
-        }
-      }
-    } else {
-      // For cards answered correctly on initial attempt, record success.
-      // If wasMissed is true, this is an immediate retry: allow the UI to advance,
-      // but do not grant SRS success or clear the mistake from sessionResults / reviewUnlearned.
-      if (!wasMissed) {
-        markCardReviewed(card.id, quality);
-        setSessionResults((previous) => ({ ...previous, [card.id]: quality }));
+        const next = queueMissedItem(activeCardsRef.current, card, currentIndexRef.current, repeatMistakes);
+        activeCardsRef.current = next;
+        setActiveCards(next);
       }
     }
-  }, [markCardReviewed, repeatMistakes]);
+  }, [clock, markCardReviewed, options.source, repeatMistakes]);
 
   const advanceOrComplete = useCallback((): 'advanced' | 'completed' => {
     const current = currentIndexRef.current;
     const cardsList = activeCardsRef.current;
-    if (current < cardsList.length - 1) {
-      const nextIndex = current + 1;
+    const plan = daily && !practiceOnlyRef.current ? useAppStore.getState().dailyReviewPlan : null;
+    const timeUp = Boolean(plan && plan.activeMs >= DAILY_REVIEW_MS);
+    const nextDailyIndex = plan ? cardsList.findIndex((card, index) => index > current && !(card.id in plan.answers)) : current + 1;
+    if (!timeUp && nextDailyIndex >= 0 && nextDailyIndex < cardsList.length) {
+      const nextIndex = nextDailyIndex;
       currentIndexRef.current = nextIndex;
       currentCardIdRef.current = cardsList[nextIndex]?.id ?? null;
       setCurrentIndex(nextIndex);
+      persistProgress(sessionKey);
       return 'advanced';
     }
     clearSessionProgressIndex(sessionKey);
     // The pinned due-set snapshot is a per-session pin: once the review
     // session completes, drop it so the next review entry recomputes from
     // the live SRS due set instead of replaying already-reviewed cards.
+    if (daily && !practiceOnlyRef.current) {
+      const plan = useAppStore.getState().dailyReviewPlan;
+      if (plan) useAppStore.getState().setDailyReviewPlan({ ...plan, completed: true });
+    }
     if (sessionKey === SHARED_REVIEW_SESSION_KEY) {
       useAppStore.getState().setActiveReviewSessionCards(null);
     }
     setCompleted(true);
     return 'completed';
-  }, [clearSessionProgressIndex, sessionKey]);
+  }, [clearSessionProgressIndex, daily, persistProgress, sessionKey]);
 
   /** Moves to an exact card, bounded (swipe/keyboard navigation). */
   const moveTo = useCallback((index: number) => {
@@ -352,7 +377,7 @@ export function useCardSession(
   }, [clearSessionProgressIndex, sessionKey]);
 
   const reviewUnlearned = useCallback(() => {
-    practiceOnlyRef.current = false;
+    practiceOnlyRef.current = true;
     firstAttemptMissedRef.current.clear();
     const unlearnedIds = Object.entries(sessionResults)
       .filter(([, quality]) => quality === 1 || quality === 2)
@@ -395,6 +420,7 @@ export function useCardSession(
     currentCard,
     sessionResults,
     completed,
+    practiceOnly: practiceOnlyRef.current,
     resumedReview,
     beginGrading,
     clearGrading,

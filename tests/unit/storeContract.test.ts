@@ -18,6 +18,10 @@ const EXPECTED_PERSISTED_KEYS = [
   'characterPreference',
   'favorites',
   'srsData',
+  'learningBatches',
+  'reviewEvents',
+  'pendingReviewEvents',
+  'dailyReviewPlan',
   'learnedCards',
   'sessionProgressIndex',
   'sessionCardOrder',
@@ -81,6 +85,10 @@ test('persisted key set matches the declared slices contract exactly', () => {
  */
 const ACCOUNT_SWITCH_RESET_KEYS = [
   'srsData',
+  'learningBatches',
+  'reviewEvents',
+  'pendingReviewEvents',
+  'dailyReviewPlan',
   'learnedCards',
   'favorites',
   'customFolders',

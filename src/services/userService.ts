@@ -1,3 +1,4 @@
+import { validReviewEvent, type ReviewEvent } from '../utils/srs/reviewEvents';
 import { debugLogger } from '../utils/debug/debugLogger';
 import { supabase } from './supabaseClient';
 import { SRSData } from '../utils/srs/srsEngine';
@@ -14,6 +15,7 @@ export interface UserFolderRow {
 /** Wire shape of the `get_sync_state` RPC (see 20261005 migration). */
 interface SyncStateWire {
   cards: CardProgressRow[] | null;
+  review_events?: ReviewEvent[] | null;
   cursor: string | null;
   profile: {
     updated_at: string | null;
@@ -25,6 +27,7 @@ interface SyncStateWire {
 }
 
 export interface UserSyncState {
+  reviewEvents: ReviewEvent[];
   srsData: Record<string, SRSData>;
   learnedCards: string[];
   /** Synced preferences from `user_profiles.settings`; empty for a new account. */
@@ -66,6 +69,12 @@ function overlapWindowStart(cursorIso: string): string {
 }
 
 export const userService = {
+  syncReviewEvents: async (events: ReviewEvent[]) => {
+    for (let i = 0; i < events.length; i += RPC_BATCH_SIZE) {
+      const { error } = await supabase.rpc('append_review_events', { p_events: events.slice(i, i + RPC_BATCH_SIZE) as unknown as Json });
+      if (error) throw error;
+    }
+  },
   // Everything the sync layer needs in one round trip: card rows (learned
   // flags included), profile settings and folders. Pass { since } to fetch
   // only card rows at/after that ISO timestamp (bounded incremental pull);
@@ -86,11 +95,12 @@ export const userService = {
     return {
       srsData,
       learnedCards,
+      reviewEvents: (wire.review_events ?? []).filter(validReviewEvent),
       settings: wire.profile?.settings ?? {},
       folders: wire.folders ?? [],
       lastUpdated: wire.profile?.updated_at ?? undefined,
       progressResetAt: wire.profile?.progress_reset_at ?? undefined,
-      hasDelta: cards.length > 0,
+      hasDelta: cards.length > 0 || (wire.review_events?.length ?? 0) > 0,
       cursor: wire.cursor ?? undefined,
     };
   },

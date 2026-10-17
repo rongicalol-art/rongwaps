@@ -55,7 +55,7 @@ export function FlashcardAnswerBar({ isFlipped, onFlip, onHard, onUnsure, onGotI
             className="!text-feedback-danger-edge/80"
           >
             <span className={hintedLabelClass}>
-              Hard
+              Forgot
               <KeyChip visible={hintsVisible} className="border-ui-border text-ui-muted">1</KeyChip>
             </span>
           </ActionButton>
@@ -68,7 +68,7 @@ export function FlashcardAnswerBar({ isFlipped, onFlip, onHard, onUnsure, onGotI
             className="!text-feedback-warning-ink/80"
           >
             <span className={hintedLabelClass}>
-              Unsure
+              With effort
               <KeyChip visible={hintsVisible} className="border-ui-border text-ui-muted">2</KeyChip>
             </span>
           </ActionButton>

@@ -6,7 +6,7 @@ import { debugLogger, DebugLog } from '../../utils/debug/debugLogger';
 import { WordDetailSkeleton } from '../../features/dictionary';
 import { BreakdownSkeleton } from '../../features/character-breakdown';
 import { CurriculumSkeleton } from '../curriculum';
-import { LibrarySkeleton, ReviewHubCard } from '../library';
+import { LibrarySkeleton, ReviewHubCard, DailyReviewPreview } from '../library';
 import { ProfileSkeleton } from '../profile';
 import { QuizPreview } from '../quiz';
 import { TonePreview } from '../tones';
@@ -15,7 +15,7 @@ import { GrammarPracticePreview } from '../../features/grammar-practice';
 const icons = import.meta.glob('/src/assets/icons/*.svg', { query: '?raw', import: 'default', eager: true });
 
 export const DebugWindow = () => {
-  const [activeTab, setActiveTab] = useState<'icons' | 'mnemonics' | 'logs' | 'skeletons' | 'previews' | 'performance'>('logs');
+  const [activeTab, setActiveTab] = useState<'icons' | 'mnemonics' | 'logs' | 'skeletons' | 'previews' | 'daily' | 'performance'>('logs');
   const [selectedSkeleton, setSelectedSkeleton] = useState<string>('dictionary');
   const [mnemonics, setMnemonics] = useState<Awaited<ReturnType<typeof fetchAllMnemonicsDebug>>>([]);
   const [loading, setLoading] = useState(false);
@@ -156,6 +156,7 @@ export const DebugWindow = () => {
         >
           UI Previews
         </button>
+          <button type="button" onClick={() => setActiveTab('daily')} className="rounded-control border-2 border-ui-border bg-ui-surface px-3 py-2 font-bold focus-ring">Daily review</button>
           <button type="button" onClick={() => setActiveTab('performance')} className="rounded-control border-2 border-ui-border bg-ui-surface px-3 py-2 font-bold focus-ring">Performance</button>
       </div>
 
@@ -310,6 +311,7 @@ export const DebugWindow = () => {
           </div>
         )}
 
+        {activeTab === 'daily' && <div className="h-full overflow-y-auto pb-10"><DailyReviewPreview /></div>}
         {activeTab === 'performance' && <PerformancePanel />}
         {activeTab === 'previews' && (
           <div className="flex h-full flex-col gap-8 overflow-y-auto pb-6">

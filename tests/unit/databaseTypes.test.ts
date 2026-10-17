@@ -25,10 +25,12 @@ const EXPECTED_TABLES = [
   'user_flashcards',
   'user_folders',
   'user_profiles',
+  'user_review_events',
 ] as const;
 
 /** Functions the migrations leave in `public` (post-drops, overloads collapsed by name). */
 const EXPECTED_FUNCTIONS = [
+  'append_review_events',
   'delete_my_account',
   'enforce_user_flashcard_cap',
   'export_my_data',

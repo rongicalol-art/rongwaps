@@ -1,181 +1,97 @@
-/**
- * Spaced Repetition System (SRS) Engine
- *
- * Based on the SM-2 algorithm (SuperMemo 2) with custom modifications:
- *
- *  • Binary quality scale optimized for "Again" vs "Got it" + quiz modes:
- *      - Fail (quality 0-2): resets interval to 1 day, decays ease factor gently
- *      - Pass (quality 3-5): advances interval using ease factor
- *
- *  • Modified interval progression (gentler than standard SM-2):
- *      - 1st review: 1 day → 2nd review: 3 days (vs SM-2's 6 days)
- *      - Subsequent: interval × ease factor
- *
- *  • Ease factor adjustments:
- *      - Failure: -0.15 (vs SM-2's harsher -0.54 which causes "ease hell")
- *      - Perfect recall (5): +0.15, Standard pass (4): +0.05, Difficult (3): no change
- *      - Clamped to [1.3, 3.0] to keep intervals productive
- *
- * Quality scale:
- *   0 = Complete blackout        3 = Correct with difficulty
- *   1 = Wrong, remembered answer  4 = Correct (standard "Got it")
- *   2 = Wrong, easy to recall     5 = Perfect recall (e.g. writing input)
- */
+import { createEmptyCard, fsrs, Rating, State, type Card, type Grade } from 'ts-fsrs';
+
+/** Old fields remain on the wire while existing installations migrate lazily. */
 export interface SRSData {
   cardId: string;
   interval: number;
   repetition: number;
   efactor: number;
   nextReviewDate: number;
-  /**
-   * Index into LEARNING_STEPS_MINUTES while the card is in the learning
-   * (intraday) phase. Absent or >= LEARNING_STEPS_MINUTES.length means the card
-   * is graduated into the review phase and uses `interval` (in days).
-   */
   learningStep?: number;
-  /**
-   * Epoch ms of the review that produced this state. Cloud sync resolves
-   * cross-device conflicts by it (newest review wins). Absent on cards stored
-   * before it existed.
-   */
   lastReviewedAt?: number;
+  fsrs?: {
+    version: 1;
+    stability: number;
+    difficulty: number;
+    state: State;
+    reps: number;
+    lapses: number;
+    learningSteps: number;
+    scheduledDays: number;
+    elapsedDays: number;
+  };
 }
 
-/** Hard ceiling for review intervals (100 years); also the database CHECK bound. */
 export const MAX_INTERVAL_DAYS = 36500;
-
-/**
- * Intraday learning-step schedule (minutes). New/failed cards re-appear after
- * these intervals instead of waiting a whole day. When a passed card exhausts
- * the steps it graduates to the review phase (interval measured in days).
- */
 export const LEARNING_STEPS_MINUTES = [1, 10];
+export const REVIEW_DAY_ROLLOVER_HOUR = 4;
+export type Quality = 0 | 1 | 2 | 3 | 4 | 5;
 
-/**
- * Fuzz factor applied to review-phase intervals only (never learning steps) so
- * reviews do not pile up on a single day. Interval is scaled within +/-10% and
- * never below one day.
- */
+const scheduler = fsrs({ request_retention: 0.9, maximum_interval: MAX_INTERVAL_DAYS, enable_fuzz: true });
+
 export function fuzzInterval(intervalDays: number): number {
-  const fuzzed = Math.round(intervalDays * (0.9 + Math.random() * 0.2));
-  return Math.max(1, fuzzed);
+  return Math.max(1, Math.round(intervalDays * (0.9 + Math.random() * 0.2)));
 }
 
-/**
- * Review-phase due dates are day-granular: a card scheduled N days out
- * becomes due at the day's rollover hour (local time), not N×24h after the
- * exact answer moment. This mirrors Anki's model and keeps reviews aligned
- * to a consistent time of day instead of drifting later with every session
- * (answer at 20:00 → next due 04:00, not 20:00+24h).
- *
- * The rollover is 04:00 local: an answer at 03:00 still belongs to the
- * previous study day, so a 1-day interval becomes due at today's 04:00 —
- * the same behavior Anki produces.
- */
-export const REVIEW_DAY_ROLLOVER_HOUR = 4;
-
-export function dayBoundaryDueTimestamp(
-  intervalDays: number,
-  nowMs: number = Date.now(),
-): number {
+export function dayBoundaryDueTimestamp(intervalDays: number, nowMs: number = Date.now()): number {
   const boundary = new Date(nowMs);
   boundary.setHours(REVIEW_DAY_ROLLOVER_HOUR, 0, 0, 0);
-  if (boundary.getTime() <= nowMs) {
-    boundary.setDate(boundary.getDate() + 1);
-  }
-  boundary.setDate(boundary.getDate() + (intervalDays - 1));
+  if (boundary.getTime() <= nowMs) boundary.setDate(boundary.getDate() + 1);
+  boundary.setDate(boundary.getDate() + intervalDays - 1);
   return boundary.getTime();
 }
 
-export type Quality = 0 | 1 | 2 | 3 | 4 | 5;
+export function qualityToRating(quality: Quality): Grade {
+  return quality < 3 ? Rating.Again : quality === 3 ? Rating.Hard : quality === 4 ? Rating.Good : Rating.Easy;
+}
 
-// Quality mapping optimized for binary "Again" & "Got it" + quizzes:
-// Pass (Got it / Correct): quality >= 3 (normally 3, 4, 5)
-// Fail (Again / Incorrect): quality < 3 (normally 0, 1, 2)
+/** Validate persisted/cloud memory state before handing it to the scheduler. */
+export function validFsrsState(value: unknown): value is NonNullable<SRSData['fsrs']> {
+  if (!value || typeof value !== 'object') return false;
+  const s = value as NonNullable<SRSData['fsrs']>;
+  return s.version === 1 && [0, 1, 2, 3].includes(s.state)
+    && Number.isFinite(s.stability) && s.stability >= 0 && s.stability <= MAX_INTERVAL_DAYS * 10
+    && Number.isFinite(s.difficulty) && s.difficulty >= 0 && s.difficulty <= 10
+    && [s.reps, s.lapses, s.learningSteps, s.scheduledDays, s.elapsedDays].every(n => Number.isFinite(n) && n >= 0);
+}
 
-export function calculateNextReview(current: SRSData | undefined, cardId: string, quality: Quality): SRSData {
-  // Brand-new cards (no existing SRSData) start in the intraday learning phase;
-  // a card that already exists but carries no learningStep is legacy data
-  // already graduated into the review phase.
-  let { interval, repetition, efactor, learningStep } = current || {
-    interval: 0, repetition: 0, efactor: 2.5, learningStep: 0,
-  };
-  let inLearning = learningStep !== undefined
-    && learningStep < LEARNING_STEPS_MINUTES.length;
-
-  // FAIL (Again/Incorrect): quality < 3 (0, 1, 2)
-  if (quality < 3) {
-    // Restart from the first learning step (intraday) and reset repetition.
-    repetition = 0;
-    learningStep = 0;
-    inLearning = true;
-    interval = LEARNING_STEPS_MINUTES[0];
-
-    // Moderate E-factor decay to avoid the notorious SM-2 "ease hell".
-    // Standard SM-2 drops efactor by 0.54 instantly, stalling cards.
-    // We decay by 0.15 per failure, keeping it safe and encouraging.
-    efactor = Math.max(1.3, efactor - 0.15);
+function toFsrsCard(current: SRSData | undefined, now: number): Card {
+  if (!current) return createEmptyCard(new Date(now));
+  if (validFsrsState(current.fsrs)) {
+    const f = current.fsrs;
+    return {
+      due: new Date(current.nextReviewDate), stability: f.stability, difficulty: f.difficulty,
+      state: f.state, reps: f.reps, lapses: f.lapses, learning_steps: f.learningSteps,
+      scheduled_days: f.scheduledDays, elapsed_days: f.elapsedDays,
+      last_review: new Date(current.lastReviewedAt ?? now),
+    };
   }
-  // PASS (Got it/Correct): quality >= 3 (3, 4, 5)
-  else {
-    if (inLearning) {
-      // Advance within the intraday learning steps; the final pass graduates
-      // the card to the review phase (interval measured in days).
-      learningStep = (learningStep ?? 0) + 1;
-      if (learningStep < LEARNING_STEPS_MINUTES.length) {
-        interval = LEARNING_STEPS_MINUTES[learningStep];
-      } else {
-        inLearning = false;
-        learningStep = undefined; // graduated into review phase
-        interval = 1; // 1 day, first review phase interval
-        repetition = 0;
-      }
-    } else {
-      if (repetition === 0) {
-        interval = 1; // 1 day
-      } else if (repetition === 1) {
-        interval = 3; // 3 days (much smoother, natural step than standard SM-2's 6 days)
-      } else {
-        interval = fuzzInterval(Math.round(interval * efactor));
-      }
-      repetition += 1;
-    }
-
-    // Adjust ease factor based on performance
-    if (quality === 5) {
-      // Perfect recall (e.g. correct writing screen input) - boost ease
-      efactor = Math.min(3.0, efactor + 0.15);
-    } else if (quality === 4) {
-      // Standard binary "Got it" - gradual ease increase to support consistent learning
-      efactor = Math.min(3.0, efactor + 0.05);
-    } else {
-      // quality === 3: correct but difficult memory recall - keep efactor stable
-      // no change to efactor
-    }
-  }
-
-  // Safety boundaries for the E-factor to keep intervals productive and healthy
-  if (efactor < 1.3) efactor = 1.3;
-  if (efactor > 3.0) efactor = 3.0;
-
-  // Repeated practice of already-scheduled cards compounds the interval; keep
-  // it inside the range the database accepts.
-  if (interval > MAX_INTERVAL_DAYS) interval = MAX_INTERVAL_DAYS;
-
-  // Learning phase schedules in minutes; review phase lands on the day's
-  // rollover boundary (day-granular scheduling).
-  const reviewedAt = Date.now();
-  const nextReviewDate = inLearning
-    ? reviewedAt + interval * 60 * 1000
-    : dayBoundaryDueTimestamp(interval, reviewedAt);
-
+  // Conservative legacy seed, not fabricated review history. Existing due dates
+  // stay untouched until the learner actually reviews this word.
+  const inLearning = current.learningStep !== undefined;
+  const days = Math.max(1, Math.min(MAX_INTERVAL_DAYS, current.interval || 1));
+  const last = current.lastReviewedAt ?? Math.min(now, current.nextReviewDate - days * 86_400_000);
   return {
-    cardId,
-    interval,
-    repetition,
-    efactor,
-    nextReviewDate,
-    learningStep,
-    lastReviewedAt: reviewedAt,
+    ...createEmptyCard(new Date(now)), due: new Date(current.nextReviewDate),
+    state: inLearning ? State.Learning : State.Review,
+    stability: inLearning ? 0.5 : days, difficulty: 5,
+    reps: Math.max(1, current.repetition), learning_steps: inLearning ? Math.min(1, current.learningStep ?? 0) : 0,
+    last_review: new Date(last), scheduled_days: inLearning ? 0 : days,
+  };
+}
+
+export function calculateNextReview(current: SRSData | undefined, cardId: string, quality: Quality, now = Date.now()): SRSData {
+  const { card } = scheduler.next(toFsrsCard(current, now), new Date(now), qualityToRating(quality));
+  const learning = card.state === State.Learning || card.state === State.Relearning;
+  const due = learning ? card.due.getTime() : dayBoundaryDueTimestamp(Math.max(1, card.scheduled_days), now);
+  return {
+    cardId, efactor: current?.efactor ?? 2.5,
+    interval: learning ? Math.max(0, Math.round((due - now) / 60_000)) : card.scheduled_days,
+    repetition: quality < 3 ? 0 : (current?.repetition ?? 0) + 1,
+    ...(learning ? { learningStep: card.learning_steps } : {}),
+    nextReviewDate: due, lastReviewedAt: now,
+    fsrs: { version: 1, stability: card.stability, difficulty: card.difficulty, state: card.state,
+      reps: card.reps, lapses: card.lapses, learningSteps: card.learning_steps,
+      scheduledDays: card.scheduled_days, elapsedDays: card.elapsed_days },
   };
 }

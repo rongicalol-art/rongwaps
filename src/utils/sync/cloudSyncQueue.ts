@@ -4,6 +4,7 @@ import type { SyncCheckpoint } from '../../store/slices/syncSlice';
 
 export interface CloudSyncFingerprintState {
   srsData: unknown;
+  pendingReviewEvents?: unknown;
   learnedCards: string[];
   favorites: string[];
   activeBookId: number;
@@ -28,6 +29,7 @@ export function createCloudSyncFingerprint(
   return JSON.stringify([
     userId,
     state.srsData,
+    state.pendingReviewEvents ?? [],
     state.learnedCards,
     state.favorites,
     state.activeBookId,

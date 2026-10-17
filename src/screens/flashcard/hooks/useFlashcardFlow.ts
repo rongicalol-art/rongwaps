@@ -60,8 +60,8 @@ export function useFlashcardFlow({
     (level: number) => {
       if (feedbackTimeoutRef.current) clearTimeout(feedbackTimeoutRef.current);
       setSwipeFeedback({
-        text: level === 3 || level === 4 ? 'Learned' : 'Review',
-        type: level === 3 || level === 4 ? 'learned' : 'review',
+        text: level >= 3 ? 'Got it' : level === 2 ? 'With effort' : 'Forgot',
+        type: level >= 2 ? 'learned' : 'review',
       });
       feedbackTimeoutRef.current = setTimeout(() => {
         setSwipeFeedback(null);

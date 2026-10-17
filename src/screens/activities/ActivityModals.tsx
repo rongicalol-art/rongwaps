@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { ActivityModalWrapper, AppIcon, type AppIconName, LoadingScreen } from '../../lib/widgets';
-import { peekQuizTypes, stashQuizTypes } from '../../utils/srs/resumeState';
+import { peekQuizTypes, stashQuizTypes, quizSessionKey } from '../../utils/srs/resumeState';
 import { useAppStore, selectIsActivityOverlayOpen } from '../../store/useAppStore';
 import { cn } from '../../utils/cn';
 import { useActivityDataLoader } from '../../hooks/useActivityDataLoader';
@@ -180,7 +180,10 @@ export function ActivityModals({
       isReviewDeck: isReviewMode || activeActivity === 'flashcards-review',
       isLibraryDeck: isLibraryMode || activeActivity === 'flashcards-library',
     });
-    useAppStore.getState().clearSessionProgressIndex(sharedKey);
+    const store = useAppStore.getState();
+    const batch = store.learningBatches[sharedKey];
+    const unfinishedQuiz = Object.keys(store.sessionProgressIndex).some(key => key === quizSessionKey(sharedKey) || key.startsWith(`${sharedKey}|types:`) || key === `${sharedKey}:typing`);
+    if (!unfinishedQuiz && batch?.every(id => store.learnedCards.includes(id))) store.setLearningBatch(sharedKey, null);
     useAppStore.getState().setActiveReviewSessionCards(null);
   };
 

@@ -1,3 +1,4 @@
+import { validFsrsState } from './srsEngine';
 import type { SRSData } from './srsEngine';
 
 /**
@@ -23,6 +24,7 @@ export interface CardProgressRow {
   reviewed_at?: string | null;
   /** When the card was first learned; null/absent while it is not. */
   learned_at?: string | null;
+  scheduler_state?: SRSData['fsrs'] | null;
 }
 
 /**
@@ -44,6 +46,7 @@ export type CardProgressUpsert = {
   reviewed_at?: string;
   /** Present when the card is learned; the server keeps the earliest value and never clears it. */
   learned_at?: string;
+  scheduler_state?: SRSData['fsrs'];
 };
 
 export function srsDataToUpsert(
@@ -53,6 +56,7 @@ export function srsDataToUpsert(
 ): CardProgressUpsert {
   return {
     card_id: cardId,
+    ...(data.fsrs ? { scheduler_state: data.fsrs } : {}),
     ease: data.efactor,
     interval: data.interval,
     repetitions: data.repetition,
@@ -89,6 +93,7 @@ export function rowToSrsData(row: CardProgressRowLike): SRSData {
   const reviewedAtMs = Number.isFinite(parsedReviewedAt) ? parsedReviewedAt : null;
   return {
     cardId: row.card_id,
+    ...(validFsrsState(row.scheduler_state) ? { fsrs: row.scheduler_state } : {}),
     efactor: Number(row.ease),
     interval: row.interval ?? 0,
     repetition: row.repetitions ?? 0,
@@ -107,6 +112,7 @@ interface CardProgressRowLike {
   next_review_date: string | null;
   learning_step: number | null;
   reviewed_at?: string | null;
+  scheduler_state?: SRSData['fsrs'] | null;
 }
 
 /**
@@ -125,7 +131,9 @@ export function isSameSrsData(a: SRSData | undefined, b: SRSData | undefined): b
   if (a === b) return true;
   if (!a || !b) return false;
   return (
-    a.efactor === b.efactor
+    (['version', 'stability', 'difficulty', 'state', 'reps', 'lapses', 'learningSteps', 'scheduledDays', 'elapsedDays'] as const)
+      .every(key => a.fsrs?.[key] === b.fsrs?.[key])
+    && a.efactor === b.efactor
     && a.interval === b.interval
     && a.repetition === b.repetition
     && a.nextReviewDate === b.nextReviewDate

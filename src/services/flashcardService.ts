@@ -74,6 +74,16 @@ class FlashcardService {
     }
   }
 
+  async getReviewCards(userId: string, ids: string[]): Promise<UserFlashcard[]> {
+    const cached = this.getCachedFlashcards(userId);
+    if (cached) return cached.filter(card => ids.includes(card.id));
+    const { data, error } = await supabase.from('user_flashcards').select('*').eq('user_id', userId).in('id', ids);
+    if (error) throw error;
+    return (data ?? []).map(d => ({ id: d.id, folderId: d.folder_id || 'custom', simplified: d.simplified,
+      traditional: d.traditional || undefined, pinyin: d.pinyin || undefined, translation: d.translation,
+      notes: d.notes || undefined, measure_words: d.measure_words || [], createdAt: d.created_at, userId: d.user_id }));
+  }
+
   async createFlashcard(card: UserFlashcard) {
     const generation = this.accountGeneration;
     try {

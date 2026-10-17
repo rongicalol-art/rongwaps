@@ -30,6 +30,8 @@ export interface WordStageCounts {
 }
 
 export interface ReviewOverview {
+  dailyCompleted?: boolean;
+  dailyCount?: number;
   /** Words due for review right now (any word with an SRS record past its date). */
   dueCount: number;
   /** Total words the learner has passed at least once. */

@@ -104,4 +104,5 @@ export const AUTO_SAVE_TRIGGER_SLICES = [
   'selectedBooks',
   'selectedLessonParts',
   'srsData',
+  'pendingReviewEvents',
 ] as const satisfies readonly (keyof AppStoreData)[];

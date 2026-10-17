@@ -133,6 +133,10 @@ export function useCloudSyncFetch({
         }
       }
 
+      useAppStore.getState().mergeReviewHistory(
+        cloudData.reviewEvents,
+        epoch?.wiped && cloudData.progressResetAt ? new Date(cloudData.progressResetAt).getTime() : 0,
+      );
       lastSyncedSettingsRef.current = cloudData.settings;
 
       // Folder writes go straight through flashcardService, so the pull is

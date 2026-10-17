@@ -1,3 +1,5 @@
+import { mergeReviewEvents, type ReviewContext, type ReviewEvent } from '../../utils/srs/reviewEvents';
+import { DAILY_REVIEW_MS, type DailyReviewPlan } from '../../utils/srs/reviewSession';
 import type { SRSData, Quality } from '../../utils/srs/srsEngine';
 import { reviewSessionKey } from '../../utils/srs/sessionProgress';
 import {
@@ -11,11 +13,20 @@ import type {
 } from '../../types/models';
 
 export interface LearningState {
+  learningBatches: Record<string, string[]>;
+  setLearningBatch: (key: string, ids: string[] | null) => void;
   // SRS and Tracking
   srsData: Record<string, SRSData>;
   learnedCards: string[];
   setSrsDataAndLearnedCards: (srs: Record<string, SRSData>, learned: string[]) => void;
-  markCardReviewed: (cardId: string, quality: Quality) => void;
+  markCardReviewed: (cardId: string, quality: Quality, context?: ReviewContext) => void;
+  reviewEvents: ReviewEvent[];
+  pendingReviewEvents: ReviewEvent[];
+  mergeReviewHistory: (events: ReviewEvent[], after?: number) => void;
+  acknowledgeReviewEvents: (ids: string[]) => void;
+  dailyReviewPlan: DailyReviewPlan | null;
+  setDailyReviewPlan: (plan: DailyReviewPlan | null) => void;
+  addDailyReviewTime: (ms: number) => void;
   /**
    * Per-user reset epoch last applied on this device (user id -> ISO time of
    * `user_profiles.progress_reset_at`). Keyed by user so it survives account
@@ -67,6 +78,10 @@ export interface LearningState {
 }
 
 interface LearningSetState {
+  learningBatches: Record<string, string[]>;
+  reviewEvents: ReviewEvent[];
+  pendingReviewEvents: ReviewEvent[];
+  dailyReviewPlan: DailyReviewPlan | null;
   srsData: Record<string, SRSData>;
   progressResetSeen: Record<string, string>;
   wordConfusions: Record<string, string[]>;
@@ -86,12 +101,44 @@ type SetState = (partial: Partial<LearningSetState> | ((state: LearningSetState)
 
 export function createLearningSlice(set: SetState): LearningState {
   return {
+    learningBatches: {},
+    setLearningBatch: (key, ids) => set(s => {
+      const next = { ...s.learningBatches };
+      if (ids?.length) next[key] = ids;
+      else delete next[key];
+      return { learningBatches: next };
+    }),
     srsData: {},
     learnedCards: [],
     setSrsDataAndLearnedCards: (srs, learned) => set({ srsData: srs, learnedCards: learned }),
-    markCardReviewed: (cardId, quality) => set((state) => (
-      applyCardReview(state, cardId, quality)
-    )),
+    reviewEvents: [],
+    pendingReviewEvents: [],
+    dailyReviewPlan: null,
+    setDailyReviewPlan: (dailyReviewPlan) => set({ dailyReviewPlan }),
+    addDailyReviewTime: (ms) => set(s => ({
+      dailyReviewPlan: s.dailyReviewPlan ? { ...s.dailyReviewPlan, activeMs: s.dailyReviewPlan.activeMs + Math.max(0, ms) } : null,
+    })),
+    mergeReviewHistory: (events, after = 0) => set(s => ({
+      reviewEvents: mergeReviewEvents(s.reviewEvents, events, after),
+      pendingReviewEvents: s.pendingReviewEvents.filter(e => e.reviewedAt > after && !events.some(incoming => incoming.id === e.id)),
+      dailyReviewPlan: after > 0 ? null : s.dailyReviewPlan,
+    })),
+    acknowledgeReviewEvents: (ids) => set(s => {
+      const uploaded = new Set(ids);
+      return { pendingReviewEvents: s.pendingReviewEvents.filter(e => !uploaded.has(e.id)) };
+    }),
+    markCardReviewed: (cardId, quality, context) => set((state) => {
+      const result = applyCardReview(state, cardId, quality, context);
+      const event = result.reviewEvents?.at(-1);
+      const isNewEvent = event && !state.reviewEvents.some(e => e.id === event.id);
+      const plan = state.dailyReviewPlan;
+      const dailyReviewPlan = context?.source === 'daily' && plan && !(cardId in plan.answers)
+        ? { ...plan, answers: { ...plan.answers, [cardId]: quality },
+            completed: plan.activeMs >= DAILY_REVIEW_MS || plan.cardIds.every(id => id === cardId || id in plan.answers) }
+        : plan;
+      return { ...result, dailyReviewPlan,
+        pendingReviewEvents: isNewEvent ? [...state.pendingReviewEvents, event] : state.pendingReviewEvents };
+    }),
     progressResetSeen: {},
     setProgressResetSeen: (userId, resetAt) => set((s) => (
       s.progressResetSeen[userId] === resetAt
@@ -177,7 +224,11 @@ export function createLearningSlice(set: SetState): LearningState {
 
     resetProgress: () => set({
       ...createClearedReviewProgress(),
+      learningBatches: {},
       wordConfusions: {},
+      reviewEvents: [],
+      pendingReviewEvents: [],
+      dailyReviewPlan: null,
       lastActivity: null,
       isReviewMode: false,
       activeReviewSessionCards: null,
@@ -189,6 +240,10 @@ export function createLearningSlice(set: SetState): LearningState {
 /** Persisted slices owned by this domain. */
 export const LEARNING_PERSISTED_KEYS = [
   'srsData',
+  'learningBatches',
+  'reviewEvents',
+  'pendingReviewEvents',
+  'dailyReviewPlan',
   'learnedCards',
   'sessionProgressIndex',
   'sessionCardOrder',
@@ -199,6 +254,10 @@ export const LEARNING_PERSISTED_KEYS = [
 
 /** Keys this domain clears when the signed-in account changes. */
 export const LEARNING_ACCOUNT_SWITCH_DEFAULTS = {
+  learningBatches: {},
+  reviewEvents: [],
+  pendingReviewEvents: [],
+  dailyReviewPlan: null,
   srsData: {},
   learnedCards: [],
   sessionProgress: createEmptySessionProgress(),
