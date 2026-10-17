@@ -331,13 +331,13 @@
             "note": "Put 在 before 咖啡廳 so the place comes before the action."
           }
         ],
-        "fallbackRepair": "Tap where 在 goes in the reply.",
+        "fallbackRepair": "Drag 在 to where it goes in the reply.",
         "result": {
           "traditional": "我在咖啡廳買咖啡。",
           "pinyin": "Wǒ zài kāfēitīng mǎi kāfēi.",
           "english": "I buy coffee at the café."
         },
-        "prompt": "Tap where 在 goes in the reply.",
+        "prompt": "Drag 在 to where it goes in the reply.",
         "gaps": true
       },
       {
@@ -431,13 +431,13 @@
             "note": "Put 在家 before 看書 to give the location of reading."
           }
         ],
-        "fallbackRepair": "Tap where 在 goes in the reply.",
+        "fallbackRepair": "Drag 在 to where it goes in the reply.",
         "result": {
           "traditional": "我喜歡在家看書。",
           "pinyin": "Wǒ xǐhuan zài jiā kànshū.",
           "english": "I like reading at home."
         },
-        "prompt": "Tap where 在 goes in the reply.",
+        "prompt": "Drag 在 to where it goes in the reply.",
         "gaps": true
       },
       {
@@ -531,13 +531,13 @@
             "note": "在 goes right before the place, so 不在家 comes before the action 吃晚飯."
           }
         ],
-        "fallbackRepair": "Tap where 在 goes in the reply.",
+        "fallbackRepair": "Drag 在 to where it goes in the reply.",
         "result": {
           "traditional": "我今天不在家吃晚飯。",
           "pinyin": "Wǒ jīntiān bú zài jiā chī wǎnfàn.",
           "english": "I am not eating dinner at home today."
         },
-        "prompt": "Tap where 在 goes in the reply.",
+        "prompt": "Drag 在 to where it goes in the reply.",
         "gaps": true
       }
     ]
@@ -614,7 +614,7 @@
             "note": "Keep 買便宜的 together and put 吧 at the end."
           }
         ],
-        "fallbackRepair": "Tap where 吧 goes in the reply.",
+        "fallbackRepair": "Drag 吧 to where it goes in the reply.",
         "result": {
           "traditional": "這枝筆太貴，你買便宜的吧。",
           "pinyin": "Zhè zhī bǐ tài guì, nǐ mǎi piányí de ba.",
@@ -631,7 +631,7 @@
           ],
           "alt": "Two pens, one priced $100 and the other $50."
         },
-        "prompt": "Tap where 吧 goes in the reply.",
+        "prompt": "Drag 吧 to where it goes in the reply.",
         "gaps": true
       },
       {
@@ -725,7 +725,7 @@
             "note": "Keep 喝熱咖啡 together and put 吧 at the end."
           }
         ],
-        "fallbackRepair": "Tap where 吧 goes in the reply.",
+        "fallbackRepair": "Drag 吧 to where it goes in the reply.",
         "result": {
           "traditional": "你喝熱咖啡吧。",
           "pinyin": "Nǐ hē rè kāfēi ba.",
@@ -742,7 +742,7 @@
           ],
           "alt": "A steaming cup on a saucer."
         },
-        "prompt": "Tap where 吧 goes in the reply.",
+        "prompt": "Drag 吧 to where it goes in the reply.",
         "gaps": true
       },
       {
@@ -840,7 +840,7 @@
             "note": "Keep 去吃東西 together and put 吧 after the action."
           }
         ],
-        "fallbackRepair": "Tap where 吧 goes in the reply.",
+        "fallbackRepair": "Drag 吧 to where it goes in the reply.",
         "result": {
           "traditional": "我也想吃一點兒東西，我們一起去吃東西吧。",
           "pinyin": "Wǒ yě xiǎng chī yìdiǎnr dōngxi, wǒmen yìqǐ qù chī dōngxi ba.",
@@ -857,7 +857,7 @@
           ],
           "alt": "Two people at a counter selling noodles and drinks."
         },
-        "prompt": "Tap where 吧 goes in the reply.",
+        "prompt": "Drag 吧 to where it goes in the reply.",
         "gaps": true
       }
     ],
@@ -1255,13 +1255,13 @@
             "note": "Put 有 before 一千個學生 to say how many students are at the school."
           }
         ],
-        "fallbackRepair": "Tap where 有 goes in the reply.",
+        "fallbackRepair": "Drag 有 to where it goes in the reply.",
         "result": {
           "traditional": "我們學校有一千個學生。",
           "pinyin": "Wǒmen xuéxiào yǒu yì qiān ge xuésheng.",
           "english": "There are one thousand students at our school."
         },
-        "prompt": "Tap where 有 goes in the reply.",
+        "prompt": "Drag 有 to where it goes in the reply.",
         "gaps": true
       },
       {
@@ -1404,13 +1404,13 @@
             "note": "Put 有 before 書, after the table location."
           }
         ],
-        "fallbackRepair": "Tap where 有 goes in the reply.",
+        "fallbackRepair": "Drag 有 to where it goes in the reply.",
         "result": {
           "traditional": "我的桌子上有書。",
           "pinyin": "Wǒ de zhuōzi shàng yǒu shū.",
           "english": "There is a book on my table."
         },
-        "prompt": "Tap where 有 goes in the reply.",
+        "prompt": "Drag 有 to where it goes in the reply.",
         "gaps": true
       }
     ]

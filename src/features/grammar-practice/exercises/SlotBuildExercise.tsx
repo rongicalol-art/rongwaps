@@ -10,6 +10,8 @@ import { PracticeBubble } from '../components/PracticeBubble';
 import { PracticePrompt } from '../components/PracticePrompt';
 import { PracticeScene } from '../components/PracticeScene';
 import { PracticeTileButton } from '../components/PracticeTileButton';
+import { TileGhost } from '../components/TileGhost';
+import { useTileDrag, type DragSource } from '../useTileDrag';
 import { textIn, type PracticeExerciseProps } from '../practiceTypes';
 
 const LEADING_CLOSING = /^[。？！，」]+/;
@@ -25,6 +27,8 @@ export function SlotBuildExercise({
   const slots = useMemo(() => practiceSlots(item), [item]);
   /** Slot id → tile index. */
   const [placed, setPlaced] = useState<Record<string, number>>({});
+  /** Tiles dropped by hand: they settle in place instead of flying in from the dock. */
+  const [byHand, setByHand] = useState<ReadonlySet<number>>(new Set());
   const locked = status !== 'idle';
   const gaps = item.gaps === true;
   const nextSlot = gaps ? undefined : slots.find((slot) => placed[slot.id] === undefined);
@@ -33,7 +37,7 @@ export function SlotBuildExercise({
   const bank = item.tiles.map((_, index) => index).filter((index) => !used.has(index));
   const tileText = (index: number) => item.tiles[index].traditional;
   const isRight = (slotId: string) => slots.find((slot) => slot.id === slotId)?.answers.includes(tileText(placed[slotId])) ?? false;
-  const layoutId = (tile: number) => `${item.id}-tile-${tile}`;
+  const layoutId = (tile: number) => (byHand.has(tile) ? undefined : `${item.id}-tile-${tile}`);
 
   useEffect(() => onReadyChange(ready && !locked), [locked, onReadyChange, ready]);
   useEffect(() => {
@@ -52,6 +56,7 @@ export function SlotBuildExercise({
   // Try again: wrong words go back to the dock, right ones stay.
   useEffect(() => {
     if (retryKey === 0) return;
+    setByHand(new Set());
     setPlaced((previous) => Object.fromEntries(Object.entries(previous).filter(([slotId, tile]) =>
       slots.find((slot) => slot.id === slotId)?.answers.includes(item.tiles[tile].traditional))));
   }, [item.tiles, retryKey, slots]);
@@ -66,12 +71,38 @@ export function SlotBuildExercise({
   };
   const takeBack = (slotId: string) => {
     if (locked) return;
+    const tile = placed[slotId];
+    if (tile !== undefined) setByHand((previous) => new Set([...previous].filter((index) => index !== tile)));
     setPlaced((previous) => {
       const next = { ...previous };
       delete next[slotId];
       return next;
     });
   };
+  /** A dragged word was let go: onto a spot (place or swap it) or away from the sentence (back to the dock). */
+  const handleDrop = (source: DragSource, slotId: string | null) => {
+    if (locked) return;
+    if (slotId === null) {
+      if (source.kind === 'placed') takeBack(source.slotId);
+      return;
+    }
+    setByHand((previous) => new Set(previous).add(source.tile));
+    if (gaps) {
+      setPlaced({ [slotId]: 0 });
+      return;
+    }
+    setPlaced((previous) => {
+      const next = { ...previous };
+      const displaced = previous[slotId];
+      if (source.kind === 'placed') {
+        delete next[source.slotId];
+        if (displaced !== undefined) next[source.slotId] = displaced;
+      }
+      next[slotId] = source.tile;
+      return next;
+    });
+  };
+  const { drag, bind } = useTileDrag({ disabled: locked, onDrop: handleDrop });
   useNumberKeySelection({ items: bank, onSelect: place, disabled: locked || shortcutsDisabled });
 
   const blankState = (slotId: string): BlankState => {
@@ -99,7 +130,16 @@ export function SlotBuildExercise({
         gap={gaps}
         onSelect={gaps && !locked ? () => putInGap(segment.id) : undefined}
         selectLabel={gaps ? `Put ${textIn(item.tiles[0], script)} here` : undefined}
-        word={tile === undefined ? undefined : { text: textIn(item.tiles[tile], script), layoutId: layoutId(tile), onTakeBack: () => takeBack(segment.id), disabled: locked }}
+        slotId={segment.id}
+        openFor={drag?.over === segment.id ? drag.width : undefined}
+        word={tile === undefined ? undefined : {
+          text: textIn(item.tiles[tile], script),
+          layoutId: layoutId(tile),
+          onTakeBack: () => takeBack(segment.id),
+          disabled: locked,
+          drag: locked ? undefined : bind({ kind: 'placed', tile, slotId: segment.id }, textIn(item.tiles[tile], script)),
+          carried: drag?.source.kind === 'placed' && drag.source.slotId === segment.id,
+        }}
       />
     );
     return closing ? <span key={segment.id} className="whitespace-nowrap">{blank}{closing}</span> : blank;
@@ -140,10 +180,20 @@ export function SlotBuildExercise({
       </div>
       {trayHost && createPortal(
         bank.map((tile) => (
-          <PracticeTileButton key={tile} tile={item.tiles[tile]} script={script} layoutId={layoutId(tile)} disabled={locked} onClick={() => (gaps ? undefined : place(tile))} />
+          <PracticeTileButton
+            key={tile}
+            tile={item.tiles[tile]}
+            script={script}
+            layoutId={layoutId(tile)}
+            drag={locked ? undefined : bind({ kind: 'bank', tile }, textIn(item.tiles[tile], script))}
+            carried={drag?.source.kind === 'bank' && drag.source.tile === tile}
+            disabled={locked}
+            onClick={() => (gaps ? undefined : place(tile))}
+          />
         )),
         trayHost,
       )}
+      <TileGhost drag={drag} />
     </LayoutGroup>
   );
 }
