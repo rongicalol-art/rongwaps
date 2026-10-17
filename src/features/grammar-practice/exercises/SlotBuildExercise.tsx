@@ -146,8 +146,12 @@ export function SlotBuildExercise({
   });
 
   const dialogue = item.lines.some((line) => line.speaker);
-  // The book prints its gloss after the question, so it rides under the last line before the reply.
-  const glossLine = item.lines.findLastIndex((line) => !line.me);
+  // The gloss rides under the line that holds the glossed word (else under the last line before the reply).
+  const glossed = item.glossary?.[0]?.traditional;
+  const glossIndex = glossed === undefined
+    ? -1
+    : item.lines.findIndex((line) => line.segments.some((segment) => segment.type === 'text' && segment.traditional.includes(glossed)));
+  const glossLine = glossIndex >= 0 ? glossIndex : item.lines.findLastIndex((line) => !line.me);
   const gloss = item.glossary?.map((entry) => `${textIn(entry, script)} ${entry.pinyin} · ${entry.english}`) ?? [];
 
   return (
@@ -174,7 +178,10 @@ export function SlotBuildExercise({
           </div>
         ) : (
           item.lines.map((line, index) => (
-            <p key={index} className="text-center font-chinese text-3xl leading-[1.7] text-ui-ink-strong sm:text-4xl">{renderLine(line, 'plain')}</p>
+            <div key={index} className="flex flex-col items-center gap-1">
+              <p className="text-center font-chinese text-3xl leading-[1.7] text-ui-ink-strong sm:text-4xl">{renderLine(line, 'plain')}</p>
+              {index === glossLine && gloss.map((note) => <p key={note} className="text-sm font-bold text-ui-muted-strong">{note}</p>)}
+            </div>
           ))
         )}
       </div>

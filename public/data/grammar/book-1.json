@@ -2112,7 +2112,15 @@
                   "pinyin": "Tā hěn máng.",
                   "english": "He is busy."
                 },
-                "prompt": "Describe the man in the picture."
+                "prompt": "Describe the man in the picture.",
+                "glossary": [
+                  {
+                    "traditional": "忙",
+                    "simplified": "忙",
+                    "pinyin": "máng",
+                    "english": "busy"
+                  }
+                ]
               },
               {
                 "id": "l1g2-p3",
@@ -2184,7 +2192,15 @@
                   "pinyin": "Tā hěn lèi, Zhōngmíng bú lèi.",
                   "english": "She is tired; Zhongming is not tired."
                 },
-                "prompt": "She is tired. What about Zhongming?"
+                "prompt": "She is tired. What about Zhongming?",
+                "glossary": [
+                  {
+                    "traditional": "累",
+                    "simplified": "累",
+                    "pinyin": "lèi",
+                    "english": "tired"
+                  }
+                ]
               }
             ]
           }
@@ -4330,7 +4346,15 @@
                   "pinyin": "Tā hěn máng, nǐ ne?",
                   "english": "He is busy. How about you?"
                 },
-                "prompt": "He is busy. Ask your friend: and you?"
+                "prompt": "He is busy. Ask your friend: and you?",
+                "glossary": [
+                  {
+                    "traditional": "忙",
+                    "simplified": "忙",
+                    "pinyin": "máng",
+                    "english": "busy"
+                  }
+                ]
               },
               {
                 "id": "l1g4-own2",
@@ -4415,7 +4439,15 @@
                     "note": "你忙很 is not Chinese: 很 goes before 忙, and a question still needs 嗎."
                   }
                 ],
-                "prompt": "Start the chat: ask whether your friend is busy."
+                "prompt": "Start the chat: ask whether your friend is busy.",
+                "glossary": [
+                  {
+                    "traditional": "忙",
+                    "simplified": "忙",
+                    "pinyin": "máng",
+                    "english": "busy"
+                  }
+                ]
               }
             ]
           }
