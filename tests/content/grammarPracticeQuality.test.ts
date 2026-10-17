@@ -37,7 +37,7 @@ test('every wrong tile explains itself wherever it lands', () => {
     const covered = new Set((item.repairs ?? []).flatMap((repair) => (repair.slot ? [`${repair.slot.id}|${repair.slot.tile}`] : [])));
     const tiles = [...new Set(item.tiles.map((tile) => tile.traditional))];
     return item.lines.flatMap((line) => line.segments.flatMap((segment) => (segment.type === 'slot' ? [segment] : [])))
-      .filter((slot) => !item.gaps || slot.answers.length === 0)
+      .filter((slot) => !item.gaps || item.tiles.length > 1 || slot.answers.length === 0)
       .flatMap((slot) => tiles
         .filter((tile) => !slot.answers.includes(tile) && !placed.has(tile) && !covered.has(`${slot.id}|${tile}`))
         .map((tile) => `${key} ${item.id} ${slot.id}←${tile}`));

@@ -44,10 +44,9 @@ function itemIssues(item: PracticeItem): string[] {
         if (!tileNames.includes(answer)) problems.push(`slot ${slot.id} answer ${answer} is not a tile.`);
       }));
       if (item.gaps) {
-        if (item.tiles.length !== 1) problems.push('a gaps item places exactly one tile.');
-        slots.filter((slot) => slot.answers.length === 0).forEach((slot) => {
-          if (!item.repairs?.some((repair) => repair.slot?.id === slot.id)) problems.push(`gap ${slot.id} needs a repair saying why the word can't go there.`);
-        });
+        slots.forEach((slot) => item.tiles.map((tile) => tile.traditional).filter((word) => !slot.answers.includes(word)).forEach((word) => {
+          if (!item.repairs?.some((repair) => repair.placed?.includes(word) || (repair.slot?.id === slot.id && repair.slot.tile === word))) problems.push(`gap ${slot.id} needs a repair saying why ${word} can't go there.`);
+        }));
       }
       const firstAnswers = slots.map((slot) => slot.answers[0]).filter(Boolean);
       firstAnswers.forEach((answer) => {

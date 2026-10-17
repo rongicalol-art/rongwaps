@@ -15,7 +15,8 @@ description: Author, transcribe or review Ron's Mandarin grammar content (gramma
 > 7. **The title is the item's own question** (`prompt`, e.g. "When does your class end today?"), never the book's general instruction, and never a giveaway. Extra context goes in `sub`.
 > 8. **At least 3 options**, each a real taught form that is right somewhere (不有 / 不是 for 沒有, 是 before an adjective, 的 for 得, 十多歲 vs 十歲多). Where the point is a pattern (time + action, 送 + person + gift, V得 + comment, 又…又…, VV看, 好/難 + V, 多 with measure words), the learner builds it, one slot per part.
 > 9. **Every wrong tile explains itself wherever it lands** (a `placed` note, or a `slot` note per wrong slot). 
-> 10. **A doubled tile must not give the answer away:** when the pattern doubles a word the context chooses (坐坐看), double a plausible wrong word too (騎騎, with a repair), and let the item's title decide which fits. Tests enforce 1, 7, 8 and 9.
+> 10. **A doubled tile must not give the answer away:** when the pattern doubles a word the context chooses (坐坐看), double a plausible wrong word too (騎騎, with a repair), and let the item's title decide which fits. 
+> 11. **Frames are tap-where too:** when the learner must place two or more words in a sentence (快要…了, 又…又), use `gaps: true` with several tiles (a tile per right gap, a repair for every wrong tile in every wrong gap) instead of blanks that show where each word goes. Tests enforce 1, 7, 8 and 9.
 
 > **Pipeline runs are non-interactive and pre-approved by the owner.** When a task comes from `.audit/grammar-run`, do it fully now: skip the plan-first / "wait for go" steps of `task-start` and `AGENTS.md`, and don't ask questions (write them under Unsure).
 

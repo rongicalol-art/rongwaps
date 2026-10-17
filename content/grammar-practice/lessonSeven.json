@@ -1675,37 +1675,53 @@
           {
             "segments": [
               {
+                "type": "slot",
+                "id": "g0",
+                "answers": []
+              },
+              {
                 "type": "text",
-                "traditional": "這裡的夏天",
-                "simplified": "这里的夏天"
+                "traditional": "這裡的",
+                "simplified": "这里的"
               },
               {
                 "type": "slot",
-                "id": "you0",
+                "id": "g1",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "夏天",
+                "simplified": "夏天"
+              },
+              {
+                "type": "slot",
+                "id": "g2",
                 "answers": [
                   "又"
                 ]
               },
               {
-                "type": "slot",
-                "id": "q0",
-                "answers": [
-                  "熱"
-                ]
+                "type": "text",
+                "traditional": "熱",
+                "simplified": "热"
               },
               {
                 "type": "slot",
-                "id": "you1",
+                "id": "g3",
                 "answers": [
                   "又"
                 ]
               },
               {
+                "type": "text",
+                "traditional": "不舒服",
+                "simplified": "不舒服"
+              },
+              {
                 "type": "slot",
-                "id": "q1",
-                "answers": [
-                  "不舒服"
-                ]
+                "id": "g4",
+                "answers": []
               },
               {
                 "type": "text",
@@ -1725,17 +1741,8 @@
             "pinyin": "yòu"
           },
           {
-            "traditional": "熱",
-            "simplified": "热",
-            "pinyin": "rè"
-          },
-          {
             "traditional": "又",
             "pinyin": "yòu"
-          },
-          {
-            "traditional": "不舒服",
-            "pinyin": "bù shūfú"
           },
           {
             "traditional": "很",
@@ -1754,76 +1761,42 @@
           },
           {
             "slot": {
-              "id": "you0",
-              "tile": "熱"
-            },
-            "note": "熱 follows the first 又."
-          },
-          {
-            "slot": {
-              "id": "you0",
-              "tile": "不舒服"
-            },
-            "note": "不舒服 follows the second 又."
-          },
-          {
-            "slot": {
-              "id": "q0",
+              "id": "g0",
               "tile": "又"
             },
-            "note": "又 goes before each quality: 又…又…."
+            "note": "又 goes before each quality, one on each side of the \"and\": 這裡的夏天又熱又不舒服，我不喜歡。"
           },
           {
             "slot": {
-              "id": "q0",
-              "tile": "不舒服"
-            },
-            "note": "不舒服 follows the second 又."
-          },
-          {
-            "slot": {
-              "id": "you1",
-              "tile": "熱"
-            },
-            "note": "熱 follows the first 又."
-          },
-          {
-            "slot": {
-              "id": "you1",
-              "tile": "不舒服"
-            },
-            "note": "不舒服 follows the second 又."
-          },
-          {
-            "slot": {
-              "id": "q1",
+              "id": "g1",
               "tile": "又"
             },
-            "note": "又 goes before each quality: 又…又…."
+            "note": "又 goes before each quality, one on each side of the \"and\": 這裡的夏天又熱又不舒服，我不喜歡。"
           },
           {
             "slot": {
-              "id": "q1",
-              "tile": "熱"
+              "id": "g4",
+              "tile": "又"
             },
-            "note": "熱 follows the first 又."
+            "note": "又 goes before each quality, one on each side of the \"and\": 這裡的夏天又熱又不舒服，我不喜歡。"
           }
         ],
-        "fallbackRepair": "又 before each part: 又熱又不舒服.",
+        "fallbackRepair": "又 goes before each quality: 又…又….",
         "result": {
           "traditional": "你喜歡夏天嗎？這裡的夏天又熱又不舒服，我不喜歡。",
           "simplified": "你喜欢夏天吗？这里的夏天又热又不舒服，我不喜欢。",
           "pinyin": "Nǐ xǐhuan xiàtiān ma? Zhèlǐ de xiàtiān yòu rè yòu bù shūfu, wǒ bù xǐhuan.",
           "english": "Do you like summer? Summer here is both hot and uncomfortable; I do not like it."
         },
-        "prompt": "Summer here is so hot you can’t sleep. Do you like it?",
+        "prompt": "Summer here is so hot you can’t sleep. Do you like it? Where do the two 又 go?",
         "glossary": [
           {
             "traditional": "夏天",
             "pinyin": "xiàtiān",
             "english": "summer"
           }
-        ]
+        ],
+        "gaps": true
       },
       {
         "id": "l7g5-b2",
@@ -1846,35 +1819,47 @@
             "segments": [
               {
                 "type": "slot",
-                "id": "you0",
+                "id": "g0",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "牛肉麵",
+                "simplified": "牛肉面"
+              },
+              {
+                "type": "slot",
+                "id": "g1",
                 "answers": [
                   "又"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "q0",
-                "answers": [
-                  "好吃"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "you1",
-                "answers": [
-                  "又"
-                ]
-              },
-              {
-                "type": "slot",
-                "id": "q1",
-                "answers": [
-                  "便宜"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "好吃",
+                "simplified": "好吃"
+              },
+              {
+                "type": "slot",
+                "id": "g2",
+                "answers": [
+                  "又"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "便宜",
+                "simplified": "便宜"
+              },
+              {
+                "type": "slot",
+                "id": "g3",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "。",
+                "simplified": "。"
               }
             ],
             "speaker": {
@@ -1889,21 +1874,13 @@
             "pinyin": "yòu"
           },
           {
-            "traditional": "好吃",
-            "pinyin": "hǎochī"
-          },
-          {
             "traditional": "又",
             "pinyin": "yòu"
           },
           {
-            "traditional": "便宜",
-            "pinyin": "piányí"
-          },
-          {
             "traditional": "貴",
-            "simplified": "贵",
-            "pinyin": "guì"
+            "pinyin": "guì",
+            "simplified": "贵"
           },
           {
             "traditional": "很",
@@ -1931,69 +1908,27 @@
           },
           {
             "slot": {
-              "id": "you0",
-              "tile": "好吃"
-            },
-            "note": "好吃 follows the first 又."
-          },
-          {
-            "slot": {
-              "id": "you0",
-              "tile": "便宜"
-            },
-            "note": "便宜 follows the second 又."
-          },
-          {
-            "slot": {
-              "id": "q0",
+              "id": "g0",
               "tile": "又"
             },
-            "note": "又 goes before each quality: 又…又…."
+            "note": "又 goes before each quality, one on each side of the \"and\": 牛肉麵又好吃又便宜。"
           },
           {
             "slot": {
-              "id": "q0",
-              "tile": "便宜"
-            },
-            "note": "便宜 follows the second 又."
-          },
-          {
-            "slot": {
-              "id": "you1",
-              "tile": "好吃"
-            },
-            "note": "好吃 follows the first 又."
-          },
-          {
-            "slot": {
-              "id": "you1",
-              "tile": "便宜"
-            },
-            "note": "便宜 follows the second 又."
-          },
-          {
-            "slot": {
-              "id": "q1",
+              "id": "g3",
               "tile": "又"
             },
-            "note": "又 goes before each quality: 又…又…."
-          },
-          {
-            "slot": {
-              "id": "q1",
-              "tile": "好吃"
-            },
-            "note": "好吃 follows the first 又."
+            "note": "又 goes before each quality, one on each side of the \"and\": 牛肉麵又好吃又便宜。"
           }
         ],
-        "fallbackRepair": "又 before each part: 又好吃又便宜.",
+        "fallbackRepair": "又 goes before each quality: 又…又….",
         "result": {
           "traditional": "你覺得這家餐廳的牛肉麵怎麼樣？又好吃又便宜。",
           "simplified": "你觉得这家餐厅的牛肉面怎么样？又好吃又便宜。",
           "pinyin": "Nǐ juéde zhè jiā cāntīng de niúròumiàn zěnmeyàng? Yòu hǎochī yòu piányi.",
           "english": "What do you think of this restaurant’s beef noodles? They are both tasty and inexpensive."
         },
-        "prompt": "The noodles here taste great and cost $50 (others cost $150). What do you think?",
+        "prompt": "The noodles here taste great and cost $50 (others cost $150). What do you think? Where do the two 又 go?",
         "glossary": [
           {
             "traditional": "牛肉麵",
@@ -2001,7 +1936,8 @@
             "pinyin": "niúròu miàn",
             "english": "beef noodles"
           }
-        ]
+        ],
+        "gaps": true
       },
       {
         "id": "l7g5-b3",
@@ -2023,41 +1959,58 @@
           {
             "segments": [
               {
+                "type": "slot",
+                "id": "g0",
+                "answers": []
+              },
+              {
                 "type": "text",
-                "traditional": "他"
+                "traditional": "他",
+                "simplified": "他"
               },
               {
                 "type": "slot",
-                "id": "you0",
+                "id": "g1",
                 "answers": [
                   "又"
                 ]
               },
               {
-                "type": "slot",
-                "id": "q0",
-                "answers": [
-                  "會游泳"
-                ]
+                "type": "text",
+                "traditional": "會游泳",
+                "simplified": "会游泳"
               },
               {
                 "type": "slot",
-                "id": "you1",
+                "id": "g2",
                 "answers": [
                   "又"
                 ]
               },
               {
+                "type": "text",
+                "traditional": "喜歡",
+                "simplified": "喜欢"
+              },
+              {
                 "type": "slot",
-                "id": "q1",
-                "answers": [
-                  "喜歡"
-                ]
+                "id": "g3",
+                "answers": []
               },
               {
                 "type": "text",
-                "traditional": "曬太陽，每個週末都去海邊。",
-                "simplified": "晒太阳，每个周末都去海边。"
+                "traditional": "曬太陽",
+                "simplified": "晒太阳"
+              },
+              {
+                "type": "slot",
+                "id": "g4",
+                "answers": []
+              },
+              {
+                "type": "text",
+                "traditional": "，每個週末都去海邊。",
+                "simplified": "，每个周末都去海边。"
               }
             ],
             "speaker": {
@@ -2072,18 +2025,8 @@
             "pinyin": "yòu"
           },
           {
-            "traditional": "會游泳",
-            "simplified": "会游泳",
-            "pinyin": "huì yóuyǒng"
-          },
-          {
             "traditional": "又",
             "pinyin": "yòu"
-          },
-          {
-            "traditional": "喜歡",
-            "simplified": "喜欢",
-            "pinyin": "xǐhuān"
           },
           {
             "traditional": "不想",
@@ -2102,69 +2045,34 @@
           },
           {
             "slot": {
-              "id": "you0",
-              "tile": "會游泳"
-            },
-            "note": "會游泳 follows the first 又."
-          },
-          {
-            "slot": {
-              "id": "you0",
-              "tile": "喜歡"
-            },
-            "note": "喜歡 follows the second 又."
-          },
-          {
-            "slot": {
-              "id": "q0",
+              "id": "g0",
               "tile": "又"
             },
-            "note": "又 goes before each quality: 又…又…."
+            "note": "又 goes before each quality, one on each side of the \"and\": 他又會游泳又喜歡曬太陽，每個週末都去海邊。"
           },
           {
             "slot": {
-              "id": "q0",
-              "tile": "喜歡"
-            },
-            "note": "喜歡 follows the second 又."
-          },
-          {
-            "slot": {
-              "id": "you1",
-              "tile": "會游泳"
-            },
-            "note": "會游泳 follows the first 又."
-          },
-          {
-            "slot": {
-              "id": "you1",
-              "tile": "喜歡"
-            },
-            "note": "喜歡 follows the second 又."
-          },
-          {
-            "slot": {
-              "id": "q1",
+              "id": "g3",
               "tile": "又"
             },
-            "note": "又 goes before each quality: 又…又…."
+            "note": "又 goes before each quality, one on each side of the \"and\": 他又會游泳又喜歡曬太陽，每個週末都去海邊。"
           },
           {
             "slot": {
-              "id": "q1",
-              "tile": "會游泳"
+              "id": "g4",
+              "tile": "又"
             },
-            "note": "會游泳 follows the first 又."
+            "note": "又 goes before each quality, one on each side of the \"and\": 他又會游泳又喜歡曬太陽，每個週末都去海邊。"
           }
         ],
-        "fallbackRepair": "又 before each part: 又會游泳又喜歡.",
+        "fallbackRepair": "又 goes before each quality: 又…又….",
         "result": {
           "traditional": "他常常去海邊嗎？他又會游泳又喜歡曬太陽，每個週末都去海邊。",
           "simplified": "他常常去海边吗？他又会游泳又喜欢晒太阳，每个周末都去海边。",
           "pinyin": "Tā chángcháng qù hǎibiān ma? Tā yòu huì yóuyǒng yòu xǐhuan shài tàiyáng, měi ge zhōumò dōu qù hǎibiān.",
           "english": "Does he often go to the seaside? He can swim and likes sunbathing and goes to the seaside every weekend."
         },
-        "prompt": "Why does he go to the beach every weekend?",
+        "prompt": "Why does he go to the beach every weekend? Where do the two 又 go?",
         "glossary": [
           {
             "traditional": "海邊",
@@ -2178,7 +2086,8 @@
             "pinyin": "shài tàiyáng",
             "english": "to sunbathe"
           }
-        ]
+        ],
+        "gaps": true
       },
       {
         "id": "l7g5-o1",

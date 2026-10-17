@@ -15,15 +15,17 @@ interface PracticeTileButtonProps {
   /** This tile is being carried; its copy follows the pointer. */
   carried?: boolean;
   disabled?: boolean;
+  /** Picked up, waiting to be dropped into a gap (place-the-words items). */
+  selected?: boolean;
   onClick: () => void;
 }
 
 /** A word in the dock's word bank, on the app's tactile choice button. Pinyin shows in the result, not on the tile. */
-export function PracticeTileButton({ tile, script, layoutId, drag, carried, disabled, onClick }: PracticeTileButtonProps) {
+export function PracticeTileButton({ tile, script, layoutId, drag, carried, disabled, selected, onClick }: PracticeTileButtonProps) {
   const text = textIn(tile, script);
   return (
     <motion.div layout="position" layoutId={layoutId} transition={WORD_FLIGHT} {...drag} className={carried ? 'shrink-0 select-none opacity-30' : 'shrink-0 select-none'}>
-      <PracticeChoiceButton compact disabled={disabled} onClick={onClick} aria-label={`Use ${text}`} className="w-auto">
+      <PracticeChoiceButton compact disabled={disabled} state={selected ? 'selected' : 'idle'} onClick={onClick} aria-label={`Use ${text}`} className="w-auto">
         <span className="min-w-6 font-chinese text-[22px] font-bold leading-none text-ui-ink-strong">{text}</span>
       </PracticeChoiceButton>
     </motion.div>

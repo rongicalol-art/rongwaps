@@ -79,7 +79,15 @@ export function slotBuildResult(item: SlotBuildItem, placed: Record<string, stri
 
 /** Every right way to fill the slots (each tile used once). */
 export function slotBuildSolutions(item: SlotBuildItem): Array<Record<string, string>> {
-  if (item.gaps) return practiceSlots(item).flatMap((slot) => slot.answers.map((answer) => ({ [slot.id]: answer })));
+  if (item.gaps) {
+    // One word: each right gap is a solution. Several words: every word in one of its right gaps (identical words swap freely).
+    const slots = practiceSlots(item);
+    const words = item.tiles.map((tile) => tile.traditional).filter((word) => slots.some((slot) => slot.answers.includes(word)));
+    const all = words.reduce<Array<Record<string, string>>>((partial, word) => partial.flatMap((filled) => slots
+      .filter((slot) => slot.answers.includes(word) && !(slot.id in filled))
+      .map((slot) => ({ ...filled, [slot.id]: word }))), [{}]);
+    return [...new Map(all.map((solution) => [JSON.stringify(Object.entries(solution).sort()), solution])).values()];
+  }
   const owned = (answer: string) => item.tiles.filter((tile) => tile.traditional === answer).length;
   return practiceSlots(item).reduce<Array<Record<string, string>>>(
     (partial, slot) => partial.flatMap((filled) => slot.answers

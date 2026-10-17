@@ -31,8 +31,12 @@ export function SlotBuildExercise({
   const [byHand, setByHand] = useState<ReadonlySet<number>>(new Set());
   const locked = status !== 'idle';
   const gaps = item.gaps === true;
+  /** Place-the-words: the dock word waiting to be dropped into a gap. */
+  const [picked, setPicked] = useState<number | null>(null);
   const nextSlot = gaps ? undefined : slots.find((slot) => placed[slot.id] === undefined);
-  const ready = gaps ? Object.keys(placed).length > 0 : !nextSlot;
+  /** Words that belong somewhere in the sentence (the rest are wrong words). */
+  const gapsToFill = item.tiles.filter((tile) => slots.some((slot) => slot.answers.includes(tile.traditional))).length;
+  const ready = gaps ? Object.keys(placed).length >= gapsToFill : !nextSlot;
   const used = new Set(Object.values(placed));
   const bank = item.tiles.map((_, index) => index).filter((index) => !used.has(index));
   const tileText = (index: number) => item.tiles[index].traditional;
@@ -57,6 +61,7 @@ export function SlotBuildExercise({
   useEffect(() => {
     if (retryKey === 0) return;
     setByHand(new Set());
+    setPicked(null);
     setPlaced((previous) => Object.fromEntries(Object.entries(previous).filter(([slotId, tile]) =>
       slots.find((slot) => slot.id === slotId)?.answers.includes(item.tiles[tile].traditional))));
   }, [item.tiles, retryKey, slots]);
@@ -65,9 +70,21 @@ export function SlotBuildExercise({
     if (locked || !nextSlot || used.has(tile)) return;
     setPlaced((previous) => ({ ...previous, [nextSlot.id]: tile }));
   };
-  /** Place-the-word: the one tile moves to the tapped gap. */
+  /** Place-the-words: the picked word (else the first in the dock) goes to the tapped gap; a word already there goes back. */
   const putInGap = (slotId: string) => {
-    if (!locked) setPlaced({ [slotId]: 0 });
+    if (locked) return;
+    const tile = picked !== null && !used.has(picked) ? picked : bank[0] ?? (item.tiles.length === 1 ? 0 : undefined);
+    if (tile === undefined) return;
+    setPlaced((previous) => {
+      const next = Object.fromEntries(Object.entries(previous).filter(([, other]) => other !== tile));
+      next[slotId] = tile;
+      return next;
+    });
+    setPicked(null);
+  };
+  /** Tapping a dock word in a place-the-words item picks it (tap again to put it down). */
+  const pick = (tile: number) => {
+    if (!locked) setPicked((current) => (current === tile ? null : tile));
   };
   const takeBack = (slotId: string) => {
     if (locked) return;
@@ -87,10 +104,7 @@ export function SlotBuildExercise({
       return;
     }
     setByHand((previous) => new Set(previous).add(source.tile));
-    if (gaps) {
-      setPlaced({ [slotId]: 0 });
-      return;
-    }
+    setPicked(null);
     setPlaced((previous) => {
       const next = { ...previous };
       const displaced = previous[slotId];
@@ -103,7 +117,7 @@ export function SlotBuildExercise({
     });
   };
   const { drag, bind } = useTileDrag({ disabled: locked, onDrop: handleDrop });
-  useNumberKeySelection({ items: bank, onSelect: place, disabled: locked || shortcutsDisabled });
+  useNumberKeySelection({ items: bank, onSelect: gaps ? pick : place, disabled: locked || shortcutsDisabled });
 
   const blankState = (slotId: string): BlankState => {
     if (placed[slotId] === undefined) return slotId === nextSlot?.id && !locked ? 'next' : 'empty';
@@ -129,7 +143,7 @@ export function SlotBuildExercise({
         state={blankState(segment.id)}
         gap={gaps}
         onSelect={gaps && !locked ? () => putInGap(segment.id) : undefined}
-        selectLabel={gaps ? `Put ${textIn(item.tiles[0], script)} here` : undefined}
+        selectLabel={gaps ? `Put ${textIn(item.tiles[picked !== null && !used.has(picked) ? picked : bank[0] ?? 0], script)} here` : undefined}
         slotId={segment.id}
         openFor={drag?.over === segment.id ? drag.width : undefined}
         word={tile === undefined ? undefined : {
@@ -195,7 +209,8 @@ export function SlotBuildExercise({
             drag={locked ? undefined : bind({ kind: 'bank', tile }, textIn(item.tiles[tile], script))}
             carried={drag?.source.kind === 'bank' && drag.source.tile === tile}
             disabled={locked}
-            onClick={() => (gaps ? undefined : place(tile))}
+            selected={gaps && picked === tile}
+            onClick={() => (gaps ? (bank.length > 1 ? pick(tile) : undefined) : place(tile))}
           />
         )),
         trayHost,

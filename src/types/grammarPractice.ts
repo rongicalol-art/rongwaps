@@ -127,8 +127,9 @@ export interface SlotBuildItem extends PracticeItemBase {
   /** The other accepted answers' sentences: feedback shows the one the learner built. */
   alternatives?: PracticeSentence[];
   /**
-   * Place the word: one tile, and every slot is a gap between words where it could go.
-   * Only the slot that lists it is right; a `slot` repair per wrong gap says why.
+   * Place the words: every slot is a gap between words where a tile could go. A slot that
+   * lists a tile is where it belongs; a `slot` (or `placed`) repair says why each other spot is wrong.
+   * One tile for a lone particle (吧), several for a frame (快要 and 了, 又 … 又).
    */
   gaps?: boolean;
   successNote?: string;
