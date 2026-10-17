@@ -49,3 +49,12 @@ test('a choice offers at least three options', () => {
   const found = lessons.flatMap(({ key, items }) => items.filter((item) => !item.gaps && item.tiles.length < 3).map((item) => `${key} ${item.id}`));
   assert.deepEqual(found, []);
 });
+
+test('no wall of text: a context line is one short line', () => {
+  const found = lessons.flatMap(({ key, items }) => items.flatMap((item) => item.lines
+    .filter((line) => line.segments.every((segment) => segment.type === 'text'))
+    .map((line) => line.segments.map((segment) => (segment.type === 'text' ? segment.traditional : '')).join(''))
+    .filter((text) => text.includes('\n') || text.length > 45)
+    .map((text) => `${key} ${item.id} ${text.slice(0, 20)}`)));
+  assert.deepEqual(found, []);
+});
