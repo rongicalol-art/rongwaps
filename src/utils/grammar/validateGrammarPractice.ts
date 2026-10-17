@@ -24,7 +24,9 @@ function itemIssues(item: PracticeItem): string[] {
   if ('tiles' in item) {
     // A pattern like 熱不熱 needs the same word twice: a tile may repeat only as often as slots use it.
     const needed = (name: string) => (item.kind === 'slot-build' ? practiceSlots(item).filter((slot) => slot.answers[0] === name).length : 1);
-    new Set(tileNames).forEach((name) => { if (tileNames.filter((other) => other === name).length > Math.max(1, needed(name))) problems.push(`tile ${name} repeats.`); });
+    // A wrong word may be doubled too, so the doubled tile alone never gives the answer away.
+    const pair = Math.max(1, ...tileNames.map(needed));
+    new Set(tileNames).forEach((name) => { if (tileNames.filter((other) => other === name).length > Math.max(needed(name), pair)) problems.push(`tile ${name} repeats.`); });
     // Simplicity: short tiles, a small dock, and at least one tile that is wrong.
     if (item.tiles.length > MAX_TILES) problems.push(`${item.tiles.length} tiles; keep the dock to ${MAX_TILES}.`);
     tileNames.forEach((tile) => { if (hanCount(tile) > MAX_TILE_HAN) problems.push(`tile ${tile} is longer than ${MAX_TILE_HAN} characters.`); });

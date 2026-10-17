@@ -1309,16 +1309,24 @@
             "pinyin": "děng"
           },
           {
+            "traditional": "等",
+            "pinyin": "děng"
+          },
+          {
+            "traditional": "走",
+            "pinyin": "zǒu"
+          },
+          {
+            "traditional": "走",
+            "pinyin": "zǒu"
+          },
+          {
             "traditional": "看",
             "pinyin": "kàn"
           },
           {
             "traditional": "看看",
             "pinyin": "kànkan"
-          },
-          {
-            "traditional": "等",
-            "pinyin": "děng"
           }
         ],
         "repairs": [
@@ -1330,6 +1338,15 @@
               "看看"
             ],
             "note": "Only one 看, at the end: 等等看."
+          },
+          {
+            "placed": [
+              "走"
+            ],
+            "mark": [
+              "走"
+            ],
+            "note": "The title says to keep waiting: 等等看, not 走走看."
           },
           {
             "slot": {
@@ -1427,8 +1444,8 @@
             "pinyin": "zuò"
           },
           {
-            "traditional": "看",
-            "pinyin": "kàn"
+            "traditional": "坐",
+            "pinyin": "zuò"
           },
           {
             "traditional": "騎",
@@ -1436,8 +1453,13 @@
             "pinyin": "qí"
           },
           {
-            "traditional": "坐",
-            "pinyin": "zuò"
+            "traditional": "騎",
+            "simplified": "骑",
+            "pinyin": "qí"
+          },
+          {
+            "traditional": "看",
+            "pinyin": "kàn"
           }
         ],
         "repairs": [
@@ -1556,8 +1578,21 @@
         "tiles": [
           {
             "traditional": "聽",
-            "simplified": "听",
-            "pinyin": "tīng"
+            "pinyin": "tīng",
+            "simplified": "听"
+          },
+          {
+            "traditional": "聽",
+            "pinyin": "tīng",
+            "simplified": "听"
+          },
+          {
+            "traditional": "說",
+            "pinyin": "shuō"
+          },
+          {
+            "traditional": "說",
+            "pinyin": "shuō"
           },
           {
             "traditional": "看",
@@ -1566,11 +1601,6 @@
           {
             "traditional": "看看",
             "pinyin": "kànkan"
-          },
-          {
-            "traditional": "聽",
-            "simplified": "听",
-            "pinyin": "tīng"
           }
         ],
         "repairs": [
@@ -1582,6 +1612,15 @@
               "看看"
             ],
             "note": "Only one 看, at the end: 聽聽看."
+          },
+          {
+            "placed": [
+              "說"
+            ],
+            "mark": [
+              "說"
+            ],
+            "note": "The title says to listen to the song: 聽聽看, not 說說看."
           },
           {
             "slot": {
