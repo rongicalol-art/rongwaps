@@ -1,5 +1,6 @@
 import React, { Fragment, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { SAMPLE_BOOKS } from '../../data/books';
+import { audioService } from '../../services/audioService';
 import type { Flashcard } from '../../data/flashcards';
 import { FeedbackBottomBar, PracticeFormatMenu, SessionComplete, type SessionStats } from '../../features/practice';
 import { CharacterBreakdownOverlay } from '../../features/character-breakdown';
@@ -130,29 +131,20 @@ export const QuizShell: React.FC<QuizShellProps> = ({
   } = session;
   const autoAdvanceCorrect = useAppStore((state) => state.autoAdvanceCorrect);
   const quizFormat = useAppStore((state) => state.quizFormat);
-  const [advanceAfterAudio, setAdvanceAfterAudio] = useState(false);
   const advance = useCallback(() => {
     if (preparation) return;
-    if (answerAudioPlaying) {
-      setAdvanceAfterAudio(true);
-      return;
-    }
-    setAdvanceAfterAudio(false);
+    // An explicit Continue interrupts audio, including a recording still loading.
+    audioService.stop();
     handleCheck();
-  }, [answerAudioPlaying, handleCheck, preparation]);
-  useEffect(() => {
-    if (!advanceAfterAudio || answerAudioPlaying) return;
-    setAdvanceAfterAudio(false);
-    handleCheck();
-  }, [advanceAfterAudio, answerAudioPlaying, handleCheck]);
+  }, [handleCheck, preparation]);
 
-  const autoAdvance = !preparation && status === 'correct' && autoAdvanceCorrect && !holdAutoAdvance && !answerAudioPlaying && !advanceAfterAudio;
+  const autoAdvance = !preparation && status === 'correct' && autoAdvanceCorrect && !holdAutoAdvance && !answerAudioPlaying;
 
   usePracticeAnswerAutomation({
     status,
     onAdvance: advance,
     advanceWrong: false,
-    blocked: Boolean(preparation) || Boolean(activeBreakdown) || Boolean(holdAutoAdvance) || answerAudioPlaying || advanceAfterAudio,
+    blocked: Boolean(preparation) || Boolean(activeBreakdown) || Boolean(holdAutoAdvance) || answerAudioPlaying,
   });
   const isNonCurriculum = sessionKey.includes('review') || sessionKey.includes('library');
   const partSegments = useMemo(
@@ -333,7 +325,6 @@ export const QuizShell: React.FC<QuizShellProps> = ({
         pinyin={pinyin}
         word={word}
         onContinue={advance}
-        continueLoading={advanceAfterAudio}
         onCheck={onCheck}
         showCheck={Boolean(onCheck)}
         isCheckDisabled={isCheckDisabled}
