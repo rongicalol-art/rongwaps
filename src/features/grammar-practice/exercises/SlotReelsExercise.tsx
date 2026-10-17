@@ -24,7 +24,9 @@ export function SlotReelsExercise({
   const [choice, setChoice] = useState<Record<string, number>>({});
   const [active, setActive] = useState<string | null>(reels[0]?.id ?? null);
   const locked = status !== 'idle';
-  const ready = reels.every((reel) => choice[reel.id] !== undefined);
+  // Check is offered after the first pick; an unfinished sentence is "not yet", never right.
+  const complete = reels.every((reel) => choice[reel.id] !== undefined);
+  const ready = reels.some((reel) => choice[reel.id] !== undefined);
   const chosen = (reelId: string): ReelOption | undefined => {
     const reel = reels.find((candidate) => candidate.id === reelId);
     return reel && choice[reelId] !== undefined ? reel.options[choice[reelId]] : undefined;
@@ -36,6 +38,10 @@ export function SlotReelsExercise({
   useEffect(() => {
     checkRef.current = ready && !locked
       ? () => {
+        if (!complete) {
+          onResult({ correct: false, title: 'Not finished yet', note: 'Pick a word for every blank first, then check.' });
+          return;
+        }
         const verdict = checkReels(item, values());
         onResult(verdict.correct
           ? { correct: true, title: 'Your sentence', sentence: reelSentence(item, values()) }

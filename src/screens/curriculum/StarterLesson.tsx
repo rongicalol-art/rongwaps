@@ -8,16 +8,21 @@ type CourseBook = (typeof SAMPLE_BOOKS)[number];
 interface StarterLessonProps {
   starterLesson: CourseLessonProgress;
   activeBook: CourseBook;
+  /** Tap on a lesson (picks it; Start opens it). */
   onOpen: (id: number) => void;
+  isSelecting?: boolean;
+  isSelected?: boolean;
+  onToggle?: (id: number) => void;
+  onLongPress?: (id: number) => void;
 }
 
 /** The Introduction is a lesson row like the rest, with its own label and art. */
-export function StarterLesson({ starterLesson, activeBook, onOpen }: StarterLessonProps) {
+export function StarterLesson({ starterLesson, activeBook, onOpen, isSelecting, isSelected, onToggle, onLongPress }: StarterLessonProps) {
   if (activeBook.id !== 1 || !starterLesson) return null;
 
   return (
     <div className="w-full max-w-[400px]">
-      <LessonItem lesson={{ ...starterLesson, label: 'Introduction' }} onOpen={onOpen} art={INTRODUCTION_ART} />
+      <LessonItem lesson={{ ...starterLesson, label: 'Introduction' }} onOpen={onOpen} onLongPress={onLongPress} onToggle={onToggle} isSelecting={isSelecting} isSelected={isSelected} art={INTRODUCTION_ART} />
       <div className="mx-auto mb-5 h-6 w-1 rounded-full bg-ui-border" />
     </div>
   );

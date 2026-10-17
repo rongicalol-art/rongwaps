@@ -37,9 +37,10 @@ export function GrammarContinueFooter({
           transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
           className="pointer-events-none absolute bottom-0 inset-x-0 z-30"
         >
-          <div className="bg-gradient-to-t from-ui-canvas via-ui-canvas/95 to-transparent pb-sheet-safe pt-6 sm:pt-8 pointer-events-none">
+          <div className="bg-gradient-to-t from-ui-canvas via-ui-canvas/95 to-transparent pb-sheet-safe pt-6 sm:pb-5 sm:pt-8 pointer-events-none">
             <div className="mx-auto w-full max-w-5xl xl:max-w-6xl px-4 sm:px-6 pointer-events-auto">
-              <div className="mx-auto flex w-full max-w-md items-stretch gap-3">
+              {/* Same width as the study page column (GrammarStudyPage), so the dock lines up with the cards above it. */}
+              <div className="mx-auto flex w-full max-w-3xl items-stretch gap-3 sm:max-w-4xl">
                 {previousPage && (
                   <ActionButton
                     variant="secondary"
@@ -47,7 +48,7 @@ export function GrammarContinueFooter({
                     onClick={onBack}
                     aria-label="Back"
                     title="Back"
-                    className="shrink-0"
+                    className="shrink-0 !text-ui-muted-strong"
                   >
                     <AppIcon name="back" size={22} />
                   </ActionButton>

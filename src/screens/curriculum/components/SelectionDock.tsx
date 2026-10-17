@@ -10,7 +10,7 @@ interface SelectionDockProps {
   onCancel: () => void;
 }
 
-/** Bottom bar while lessons are being picked: cancel on the left, Start with the count. */
+/** Bottom bar while lessons are being picked. One lesson: just Start (tap it again to drop it). Several: Cancel and Start with the count. */
 export function SelectionDock({ count, accentBgClassName, edgeHex, disabled, onStart, onCancel }: SelectionDockProps) {
   const reduceMotion = useReducedMotion();
   return (
@@ -24,6 +24,7 @@ export function SelectionDock({ count, accentBgClassName, edgeHex, disabled, onS
           className="workspace-window pointer-events-none fixed bottom-0 right-0 z-50 bg-gradient-to-t from-ui-canvas via-ui-canvas/95 to-transparent pb-sheet-safe pt-10"
         >
           <div className="mx-auto flex w-full max-w-2xl items-center gap-3 px-4 md:px-6">
+            {count > 1 && (
             <ActionButton
               variant="secondary"
               size="lg"
@@ -33,6 +34,7 @@ export function SelectionDock({ count, accentBgClassName, edgeHex, disabled, onS
             >
               Cancel
             </ActionButton>
+            )}
             <ActionButton
               size="lg"
               fullWidth
@@ -44,7 +46,7 @@ export function SelectionDock({ count, accentBgClassName, edgeHex, disabled, onS
             >
               <AppIcon name="play" size={20} />
               <span>Start</span>
-              <span className="font-bold opacity-80">· {count} {count === 1 ? 'lesson' : 'lessons'}</span>
+              {count > 1 && <span className="font-bold opacity-80">· {count} lessons</span>}
             </ActionButton>
           </div>
         </motion.div>

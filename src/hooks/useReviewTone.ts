@@ -7,6 +7,12 @@
 import { useEffect } from 'react';
 
 let holders = 0;
+
+/** Where the next tone change spreads out from (viewport px); cleared once the change finishes. */
+export function setToneOrigin(x: number, y: number) {
+  document.documentElement.style.setProperty('--tone-x', `${x}px`);
+  document.documentElement.style.setProperty('--tone-y', `${y}px`);
+}
 let transition: ViewTransition | undefined;
 
 function syncTone() {
@@ -25,6 +31,14 @@ function syncTone() {
     apply();
     return;
   }
+  // The spread ends exactly at the farthest corner, so its whole duration is visible (an oversized radius finishes early).
+  const ox = parseFloat(root.style.getPropertyValue('--tone-x'));
+  const oy = parseFloat(root.style.getPropertyValue('--tone-y'));
+  const x = Number.isFinite(ox) ? ox : window.innerWidth / 2;
+  const y = Number.isFinite(oy) ? oy : window.innerHeight / 2;
+  root.style.setProperty('--tone-x', `${x}px`);
+  root.style.setProperty('--tone-y', `${y}px`);
+  root.style.setProperty('--tone-r', `${Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y))}px`);
   root.classList.add('review-tone-transition');
   const current = document.startViewTransition(apply);
   transition = current;
@@ -32,6 +46,9 @@ function syncTone() {
     if (transition !== current) return;
     transition = undefined;
     root.classList.remove('review-tone-transition');
+    root.style.removeProperty('--tone-x');
+    root.style.removeProperty('--tone-y');
+    root.style.removeProperty('--tone-r');
   };
   void current.ready.catch(() => {}); // Skipping is expected during rapid navigation or StrictMode replay.
   void current.finished.then(clean, clean);

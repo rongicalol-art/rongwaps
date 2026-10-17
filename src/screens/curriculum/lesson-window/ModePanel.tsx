@@ -1,11 +1,13 @@
-import { ActionButton, AppIcon, PlayfulNavIcon, type PlayfulNavIconName } from '../../../lib/widgets';
+import { useEffect, useRef, useState } from 'react';
+import { ActionButton, AppIcon } from '../../../lib/widgets';
 import { cn } from '../../../utils/cn';
+import { ModeIcon } from './ModeIcon';
 import { isModeAvailable, type LessonWindowPart, type PartModeKey } from './useLessonWindowParts';
 
-const MODES: Array<{ key: PartModeKey; name: string; icon: PlayfulNavIconName }> = [
-  { key: 'vocab', name: 'Vocabulary', icon: 'flashcards' },
-  { key: 'grammar', name: 'Grammar', icon: 'grammarBook' },
-  { key: 'reading', name: 'Reading', icon: 'reading' },
+const MODES: Array<{ key: PartModeKey; name: string }> = [
+  { key: 'vocab', name: 'Vocabulary' },
+  { key: 'grammar', name: 'Grammar' },
+  { key: 'reading', name: 'Reading' },
 ];
 
 const DIVIDER_EDGE = 'var(--color-ui-divider)';
@@ -30,9 +32,23 @@ interface ModeButtonsProps {
 
 /** Vocab / Grammar / Reading: pick what "Start" launches. */
 export function ModeButtons({ part, selected, onSelect, large = false, className }: ModeButtonsProps) {
+  // Each icon plays on entrance (staggered), then again on hover or selection; never while it is still playing.
+  const [plays, setPlays] = useState<Record<string, number>>({});
+  const lastPlay = useRef<Record<string, number>>({});
+  const [entered, setEntered] = useState(false);
+  useEffect(() => {
+    const timer = window.setTimeout(() => setEntered(true), 1500);
+    return () => window.clearTimeout(timer);
+  }, []);
+  const replay = (key: string) => {
+    const now = Date.now();
+    if (now - (lastPlay.current[key] ?? 0) < 900) return;
+    lastPlay.current[key] = now;
+    setPlays((current) => ({ ...current, [key]: (current[key] ?? 0) + 1 }));
+  };
   return (
     <div className={cn('flex flex-col gap-2.5', className)}>
-      {MODES.filter(({ key }) => isModeAvailable(part, key)).map(({ key, name, icon }) => {
+      {MODES.filter(({ key }) => isModeAvailable(part, key)).map(({ key, name }, index) => {
         const isSelected = key === selected;
         const status = isSelected ? getModeStatus(part, key) : '';
         return (
@@ -42,7 +58,8 @@ export function ModeButtons({ part, selected, onSelect, large = false, className
             size="lg"
             fullWidth
             aria-pressed={isSelected}
-            onClick={() => onSelect(key)}
+            onClick={() => { onSelect(key); replay(key); }}
+            onPointerEnter={() => replay(key)}
             edgeColor={isSelected ? 'var(--color-brand-primary-edge)' : DIVIDER_EDGE}
             className={cn(
               'justify-start gap-3 px-3 py-2.5 text-left normal-case tracking-normal',
@@ -52,7 +69,7 @@ export function ModeButtons({ part, selected, onSelect, large = false, className
                 : '!border-ui-divider',
             )}
           >
-            <PlayfulNavIcon name={icon} className={large ? 'h-12 w-12' : 'h-9 w-9'} />
+            <ModeIcon mode={key} playKey={plays[key] ?? 0} motion={isSelected ? 'loop' : plays[key] || !entered ? 'once' : 'none'} delay={plays[key] ? 0 : 0.12 + index * 0.07} className={large ? 'h-12 w-12' : 'h-9 w-9'} />
             <span className="flex min-w-0 flex-1 flex-col justify-center">
               <span className={cn('font-black text-ui-ink-strong leading-tight', large ? 'text-lg' : 'text-[17px]')}>
                 {name}

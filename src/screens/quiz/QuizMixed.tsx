@@ -10,7 +10,7 @@ import { PairMatch } from './formats/PairMatch';
 import { PickOne, type PickChoice, type PickPrompt } from './formats/PickOne';
 import { TrueFalseFlip } from './formats/TrueFalseFlip';
 import { WordBuild } from './formats/WordBuild';
-import { LoadingScreen } from '../../lib/widgets';
+import { AudioBlocks } from './components/QuizAudioPreparation';
 import { audioService } from '../../services/audioService';
 import { getCourseVocabLookupMap } from '../../services/courseVocabLookup';
 import { getPronunciationAudioIndex } from '../../services/pronunciationAudio';
@@ -154,7 +154,12 @@ export const QuizMixed: React.FC<QuizModeProps & { types?: readonly QuizTypeId[]
       }}
       className="relative flex flex-1 cursor-pointer flex-col items-center justify-center pt-18 focus-ring"
     >
-      <LoadingScreen inline tone="practice" message={audioProgress?.blocked ? 'Audio downloads could not connect' : audioPreparationError ? 'Some audio could not load' : audioProgress ? 'Downloading audio…' : 'Finding quiz recordings…'} />
+      <div role="status" aria-live="polite" aria-busy className="flex flex-col items-center gap-8 px-4 py-12">
+        <AudioBlocks progress={audioProgress} error={Boolean(audioPreparationError || audioProgress?.failed || audioProgress?.blocked)} />
+        <h2 className="text-2xl font-black text-ui-ink-strong">
+          {audioProgress?.blocked ? 'Audio downloads could not connect' : audioPreparationError ? 'Some audio could not load' : 'Getting audio ready'}
+        </h2>
+      </div>
       {audioProgress?.failed ? <p role="alert" className="mb-3 text-center text-sm text-ui-muted-strong">{audioProgress.blocked ? 'Check your connection or site access. You can still start.' : `${audioProgress.failed} recordings could not download.`}</p> : null}
       <p className="pb-sheet-safe pt-4 text-sm font-extrabold text-ui-muted-strong">
         <span className="hidden pointer-fine:inline">Click anywhere to start</span>

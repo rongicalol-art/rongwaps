@@ -132,7 +132,7 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
     <LessonItem
       key={lesson.id}
       lesson={lesson}
-      onOpen={handleOpenLesson}
+      onOpen={selection.enter}
       onLongPress={selection.enter}
       onToggle={selection.toggle}
       isSelecting={selection.isSelecting}
@@ -189,7 +189,11 @@ export const CurriculumLibrary = memo(function CurriculumLibrary({
                   <StarterLesson
                     starterLesson={starterLesson}
                     activeBook={activeBook}
-                    onOpen={handleOpenLesson}
+                    onOpen={selection.enter}
+                    onLongPress={selection.enter}
+                    onToggle={selection.toggle}
+                    isSelecting={selection.isSelecting}
+                    isSelected={isPicked(starterLesson)}
                   />
                 )}
 

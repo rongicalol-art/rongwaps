@@ -36,7 +36,9 @@ export function SlotBuildExercise({
   const nextSlot = gaps ? undefined : slots.find((slot) => placed[slot.id] === undefined);
   /** Words that belong somewhere in the sentence (the rest are wrong words). */
   const gapsToFill = item.tiles.filter((tile) => slots.some((slot) => slot.answers.includes(tile.traditional))).length;
-  const ready = gaps ? Object.keys(placed).length >= gapsToFill : !nextSlot;
+  // Check is offered as soon as one word is placed; an unfinished answer is "not yet", never right.
+  const ready = Object.keys(placed).length > 0;
+  const unfinished = gaps && Object.keys(placed).length < gapsToFill;
   const used = new Set(Object.values(placed));
   const bank = item.tiles.map((_, index) => index).filter((index) => !used.has(index));
   const tileText = (index: number) => item.tiles[index].traditional;
@@ -47,6 +49,10 @@ export function SlotBuildExercise({
   useEffect(() => {
     checkRef.current = ready && !locked
       ? () => {
+        if (unfinished) {
+          onResult({ correct: false, title: 'Not finished yet', note: 'Place every word first, then check.' });
+          return;
+        }
         const answer = Object.fromEntries(slots.map((slot) => [slot.id, placed[slot.id] === undefined ? undefined : tileText(placed[slot.id])]));
         const verdict = checkSlotBuild(item, answer);
         onResult(verdict.correct

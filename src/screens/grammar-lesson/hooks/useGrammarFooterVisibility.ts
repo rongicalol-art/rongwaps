@@ -35,6 +35,9 @@ export function useGrammarFooterVisibility(
     const main = mainRef.current;
     if (!main) return;
 
+    // A new page or exercise starts hidden: the previous (shorter) content must not decide for it.
+    setIsFooterVisible(false);
+
     // Lesson content grows after mount (lazy sections, images), and growth inside
     // the scroller doesn't resize the scroller itself, so watch its children too.
     // Re-check on the next frame so a burst of changes costs one measurement.

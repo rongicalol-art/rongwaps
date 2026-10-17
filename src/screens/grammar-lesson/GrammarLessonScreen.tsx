@@ -140,8 +140,13 @@ export function GrammarLessonScreen({
     markPartStarted(part.id);
   }, [markPartStarted, part.id]);
 
+  // The footer waits for the outgoing page to finish leaving: while it fades, the content is short and would show it.
+  const pageKey = `${isPracticing ? 'practice' : 'study'}-${page.id}`;
+  const pageKeyRef = useRef(pageKey);
+  pageKeyRef.current = pageKey;
+  const [settledKey, setSettledKey] = useState(pageKey);
   const { isFooterVisible, resetFooter } =
-    useGrammarFooterVisibility(mainRef, currentGrammarIndex);
+    useGrammarFooterVisibility(mainRef, `${currentGrammarIndex}-${isPracticing}`);
 
   // The window column the practice feedback bar docks to (outside the scroller).
   const [barHost, setBarHost] = useState<HTMLDivElement | null>(null);
@@ -234,9 +239,9 @@ export function GrammarLessonScreen({
             <Suspense fallback={null}>
               <GrammarContentMount onMounted={markContentReady}>
                 <div className="mx-auto w-full max-w-5xl xl:max-w-6xl px-4 pb-32 pt-6 sm:px-6 sm:pb-32 sm:pt-8">
-                  <AnimatePresence mode="wait" initial={false}>
+                  <AnimatePresence mode="wait" initial={false} onExitComplete={() => setSettledKey(pageKeyRef.current)}>
                     <motion.div
-                      key={`${isPracticing ? 'practice' : 'study'}-${page.id}`}
+                      key={pageKey}
                       initial={{ opacity: 0, y: 6 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
@@ -253,6 +258,7 @@ export function GrammarLessonScreen({
                           contextTokens={getGrammarTeachingTokens(page)}
                           onOpenWord={setDictionaryWord}
                           onComplete={finishPractice}
+                          onExit={goBackToPreviousGrammar}
                           barHost={barHost}
                           shortcutsDisabled={isBookOpen || isConfusionOpen || Boolean(dictionaryWord)}
                         />
@@ -275,7 +281,7 @@ export function GrammarLessonScreen({
 
 
           <GrammarContinueFooter
-            isVisible={isFooterVisible && !isPracticing}
+            isVisible={isFooterVisible && !isPracticing && settledKey === pageKey}
             contentReady={contentReady}
             previousPage={previousPage}
             isLastPage={isLastPage}

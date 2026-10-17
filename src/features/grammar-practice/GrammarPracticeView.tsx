@@ -15,6 +15,8 @@ export interface GrammarPracticeViewProps {
   onOpenWord: (word: string) => void;
   /** All items done (or skipped): hand back to the lesson flow. */
   onComplete: () => void;
+  /** Back from the first item leaves the exercise (to its grammar page). */
+  onExit?: () => void;
   /** The window's non-scrolling column: the dock sits at its bottom. */
   barHost: HTMLElement | null;
   /** Start at this item (UI Previews). */
@@ -29,7 +31,7 @@ export interface GrammarPracticeViewProps {
  * Try again; nothing is recorded until the exercise is done.
  */
 export function GrammarPracticeView({
-  practice, script, showPinyin, showTranslation, contextTokens, onOpenWord, onComplete, barHost, initialIndex = 0, shortcutsDisabled = false,
+  practice, script, showPinyin, showTranslation, contextTokens, onOpenWord, onComplete, onExit, barHost, initialIndex = 0, shortcutsDisabled = false,
 }: GrammarPracticeViewProps) {
   const reduceMotion = useReducedMotion();
   const [index, setIndex] = useState(initialIndex);
@@ -60,6 +62,12 @@ export function GrammarPracticeView({
       return;
     }
     setIndex(index + 1);
+    setReady(false);
+    setStatus('idle');
+    setResult(null);
+  };
+  const goBack = () => {
+    setIndex(index - 1);
     setReady(false);
     setStatus('idle');
     setResult(null);
@@ -121,6 +129,7 @@ export function GrammarPracticeView({
           checkRef.current?.();
         }}
         onSkip={advance}
+        onBack={index > 0 ? goBack : onExit}
         onContinue={handleContinue}
       />
     </div>

@@ -26,7 +26,7 @@ export function ChatBuildExercise({
   const [sent, setSent] = useState<PracticeSentence | null>(null);
   const length = chatAnswerLength(item);
   const locked = status !== 'idle';
-  const ready = !locked && draft.length === length;
+  const ready = !locked && draft.length > 0;
   const bank = item.tiles.map((_, index) => index).filter((index) => !draft.includes(index));
   const layoutId = (tile: number) => `${item.id}-tile-${tile}`;
   const end = textIn(item.accepted[0].sentence, script).match(END_PUNCTUATION)?.[0] ?? '';

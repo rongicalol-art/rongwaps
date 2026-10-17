@@ -1,5 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState, type RefObject } from 'react';
 import { flushSync } from 'react-dom';
+import { rectMorphFrames } from '../../../utils/browser/rectMorph';
+import { setToneOrigin } from '../../../hooks/useReviewTone';
 import { useReducedMotion } from 'motion/react';
 import type { LottieRefCurrentProps } from 'lottie-react';
 import type { Flashcard } from '../../../data/flashcards';
@@ -205,7 +207,8 @@ export function CardsDone({ cards, deck, wordCount, stageRef, onTone, onStart, o
         setPicker({ kind: 'none' });
       };
     } else {
-      const start = real ? CLEAR_MS : 0;
+      // The tile takes over the card on the first frame (no wait on its answer), so the answer side is never seen holding still.
+      const start = 0;
       if (barInner) A(barInner, [{ opacity: 1 }, { opacity: 0 }], { duration: 160, easing: 'ease-out' });
       if (box && real) {
         box.querySelectorAll<HTMLElement>('.rw-rise').forEach((el) => A(el, [{ opacity: 1 }, { opacity: 0 }], { duration: CLEAR_MS, easing: 'ease-out' }));
@@ -220,7 +223,12 @@ export function CardsDone({ cards, deck, wordCount, stageRef, onTone, onStart, o
       A(subtitle, RISE, { delay: start + 350, duration: 440, easing: EASE_OUT });
       A(btnWrap, RISE, { delay: start + 420, duration: 440, easing: EASE_OUT });
       // The honey drains last: the screen has settled, so the tone change is only a colour cross-fade (no ghost of the big card).
-      at(start + 420 + 440, () => { ready = true; onToneRef.current(); });
+      at(start + 420 + 440, () => {
+        ready = true;
+        const tile = morphEl.getBoundingClientRect();
+        setToneOrigin(tile.left + tile.width / 2, tile.top + tile.height / 2);
+        onToneRef.current();
+      });
 
       if (real) {
         const r = real;
@@ -231,16 +239,10 @@ export function CardsDone({ cards, deck, wordCount, stageRef, onTone, onStart, o
           };
           morphEl.style.opacity = '1';
           hideRealCard();
-          if (r.displaced) A(morphEl, [{ opacity: 0 }, { opacity: 1 }], { duration: 200, easing: 'ease-out' });
+          A(morphEl, [{ opacity: 0 }, { opacity: 1 }], { duration: r.displaced ? 200 : 90, easing: 'ease-out' });
           const to = { left: parseFloat(finalBox.left), top: parseFloat(finalBox.top), width: parseFloat(finalBox.width), height: parseFloat(finalBox.height) };
-          // Real size, border and corner radius animate (not a scale), so the paper keeps true corners and edges.
-          const box = (v: { left: number; top: number; width: number; height: number }) => ({
-            left: `${v.left}px`, top: `${v.top}px`, width: `${v.width}px`, height: `${v.height}px`,
-          });
-          A(morphEl, [
-            { ...box(r), borderWidth: r.border, borderRadius: r.radius },
-            { ...box(to), borderWidth: TILE_BORDER, borderRadius: TILE_RADIUS },
-          ], { duration: GLIDE_MS, easing: SHRINK_EASE });
+          morphEl.style.transformOrigin = 'top left';
+          A(morphEl, rectMorphFrames(r, to), { duration: GLIDE_MS, easing: SHRINK_EASE });
           if (morphWord) {
             const word = morphWord.cloneNode(true) as HTMLElement;
             const x = to.left + to.width / 2;

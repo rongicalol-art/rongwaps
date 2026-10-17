@@ -1,19 +1,20 @@
 import { rectMorphFrames } from '../../../utils/browser/rectMorph';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type MutableRefObject } from 'react';
-import { ActionButton, PlayfulNavIcon, type PlayfulNavIconName } from '../../../lib/widgets';
+import { ActionButton, PlayfulNavIcon } from '../../../lib/widgets';
+import { QuizTypeIcon } from './QuizTypeIcon';
 import { PracticeChoiceButton, beginQuizLaunch } from '../../../features/practice';
 import type { Flashcard } from '../../../data/flashcards';
 import { availableQuizTypes, type QuizTypeId } from '../../../utils/vocabulary/quizDirector';
 import { cn } from '../../../utils/cn';
 import { EASE_OUT } from '../flashcardMotion';
 
-const TYPES: ReadonlyArray<{ id: QuizTypeId; label: string; icon: PlayfulNavIconName }> = [
-  { id: 'meaning', label: 'Meaning', icon: 'meaning' },
-  { id: 'listen', label: 'Listen', icon: 'listening' },
-  { id: 'hanzi', label: 'Characters', icon: 'characters' },
-  { id: 'match', label: 'Match pairs', icon: 'quiz' },
-  { id: 'true-false', label: 'True or false', icon: 'trueFalse' },
-  { id: 'build', label: 'Build the word', icon: 'build' },
+const TYPES: ReadonlyArray<{ id: QuizTypeId; label: string }> = [
+  { id: 'meaning', label: 'Meaning' },
+  { id: 'listen', label: 'Listen' },
+  { id: 'hanzi', label: 'Characters' },
+  { id: 'match', label: 'Match pairs' },
+  { id: 'true-false', label: 'True or false' },
+  { id: 'build', label: 'Build the word' },
 ];
 
 const MORPH_MS = 520;
@@ -87,6 +88,20 @@ export function QuizTypePicker({ entrance, deck, onStart, startRef }: QuizTypePi
   const gridRef = useRef<HTMLDivElement>(null);
   const dockRef = useRef<HTMLDivElement>(null);
   const leaving = useRef(false);
+  // Icons play once as the types settle (staggered), again on hover, and loop while a type is picked.
+  const [plays, setPlays] = useState<Record<string, number>>({});
+  const lastPlay = useRef<Record<string, number>>({});
+  const [entered, setEntered] = useState(false);
+  useEffect(() => {
+    const timer = window.setTimeout(() => setEntered(true), 1800);
+    return () => window.clearTimeout(timer);
+  }, []);
+  const replay = (id: string) => {
+    const now = Date.now();
+    if (now - (lastPlay.current[id] ?? 0) < 1000) return;
+    lastPlay.current[id] = now;
+    setPlays((current) => ({ ...current, [id]: (current[id] ?? 0) + 1 }));
+  };
 
   const toggle = (id: QuizTypeId) => setPicked((current) => {
     const next = current.includes(id) ? current.filter((type) => type !== id) : [...current, id];
@@ -273,7 +288,7 @@ export function QuizTypePicker({ entrance, deck, onStart, startRef }: QuizTypePi
         </div>
         {/* Rows of three; a short last row stays centred under the Mixed card. */}
         <div ref={gridRef} className="mt-5 flex w-full max-w-[344px] flex-wrap justify-center gap-3 lg:mt-6 lg:max-w-[432px] lg:gap-4">
-          {types.map((type) => {
+          {types.map((type, index) => {
             const on = picked.includes(type.id);
             return (
               <PracticeChoiceButton
@@ -282,16 +297,19 @@ export function QuizTypePicker({ entrance, deck, onStart, startRef }: QuizTypePi
                 state={on ? 'selected' : 'idle'}
                 selectedEdgeColor={SELECTED_EDGE}
                 aria-pressed={on}
-                onClick={() => toggle(type.id)}
+                onClick={() => { toggle(type.id); replay(type.id); }}
+                onPointerEnter={() => replay(type.id)}
                 className="w-[calc((100%-1.5rem)/3)] lg:w-[calc((100%-2rem)/3)]"
               >
                 {/* Icons share one line across the grid; a two-line label grows down, never pushes its icon. */}
                 <span className="flex h-[92px] flex-col items-center gap-2 pt-[13px] lg:h-[100px]">
-                  {type.id === 'hanzi' ? (
-                    <span aria-hidden className="flex h-10 w-10 items-center justify-center font-chinese text-4xl font-bold leading-none text-ui-ink-strong lg:h-12 lg:w-12 lg:text-5xl">字</span>
-                  ) : (
-                    <PlayfulNavIcon name={type.icon} className="h-10 w-10 lg:h-12 lg:w-12" />
-                  )}
+                  <QuizTypeIcon
+                    type={type.id}
+                    motion={on ? 'loop' : entrance.kind === 'none' ? 'none' : plays[type.id] || !entered ? 'once' : 'none'}
+                    playKey={plays[type.id] ?? 0}
+                    delay={plays[type.id] ? 0 : (entrance.kind === 'morph' ? 0.6 : 0.35) + (index % 3) * 0.05 + Math.floor(index / 3) * 0.06}
+                    className="h-10 w-10 lg:h-12 lg:w-12"
+                  />
                   <span className="text-[15px] font-black leading-tight">{type.label}</span>
                 </span>
               </PracticeChoiceButton>
