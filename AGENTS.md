@@ -39,7 +39,8 @@ Use the `verify-change` skill.
 - Never hand-edit `public/data/` packs; regenerate via npm scripts and commit manifests with them.
 - `output/`, `.audit/`, `materials/`, `.agents/` are gitignored scratch. Never depend on them in code.
 - Docs describe what EXISTS. Update `docs/WIDGETS.md` when adding a shared widget.
-- Smallest change that meets the requirement. Reuse widgets/tokens before adding new ones. Name the duplication before adding an abstraction.
+- **Ponytail ladder (stop at first rung):** (1) Does it need to exist? (YAGNI) → (2) Already in repo? (`src/lib/widgets/`, `src/utils/`, tokens) → (3) Stdlib / native platform / CSS over JS → (4) Existing dep → (5) Minimum code. Deletion over addition; no unrequested abstractions or "for later" scaffolding; name the duplication before adding an abstraction.
+- **Root-cause fixes only:** Before fixing a bug, grep all callers of the function you touch. Fix once at the shared root, never patch a single caller's symptom.
 
 ## Repo map (what ships vs what doesn't)
 
