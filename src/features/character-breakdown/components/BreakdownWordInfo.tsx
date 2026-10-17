@@ -9,6 +9,7 @@ import { DBCharacterBreakdown } from '../../../types/database';
 import { BreakdownComponentCard } from './breakdown/BreakdownComponentCard';
 import { ExtendedDefinitions } from './ExtendedDefinitions';
 import { SummaryQuickActions } from './SummaryQuickActions';
+import { V3MemoryHook } from './v3/V3MemoryHook';
 import { UsedAsComponentSection } from './breakdown/UsedAsComponentSection';
 import { RelatedWordsSection } from './breakdown/RelatedWordsSection';
 import { useCharDictionaryEntry } from '../hooks/useCharDictionaryEntry';
@@ -140,6 +141,9 @@ export const BreakdownWordInfo: React.FC<BreakdownWordInfoProps> = ({
         {/* Extended Dictionary Details — extends the summary card in place */}
         <ExtendedDefinitions key={activeChar} char={activeChar} />
       </section>
+
+      {/* Same hook card the new breakdown and the dictionary word view use (its own data, not the decomposition pack). */}
+      <V3MemoryHook character={activeChar} pinyin={pinyin} />
 
       {/* Component Breakdown Section */}
       {components.length > 0 && (
