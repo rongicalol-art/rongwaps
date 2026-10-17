@@ -25,3 +25,27 @@ test('an own item never repeats a book item in its group', () => {
     .map((own) => `${key} ${own.id}`));
   assert.deepEqual(found, []);
 });
+
+test('every item is titled by its own question or task', () => {
+  const found = lessons.flatMap(({ key, items }) => items.filter((item) => !item.prompt?.trim()).map((item) => `${key} ${item.id}`));
+  assert.deepEqual(found, []);
+});
+
+test('every wrong tile explains itself wherever it lands', () => {
+  const found = lessons.flatMap(({ key, items }) => items.flatMap((item) => {
+    const placed = new Set((item.repairs ?? []).flatMap((repair) => repair.placed ?? []));
+    const covered = new Set((item.repairs ?? []).flatMap((repair) => (repair.slot ? [`${repair.slot.id}|${repair.slot.tile}`] : [])));
+    const tiles = [...new Set(item.tiles.map((tile) => tile.traditional))];
+    return item.lines.flatMap((line) => line.segments.flatMap((segment) => (segment.type === 'slot' ? [segment] : [])))
+      .filter((slot) => !item.gaps || slot.answers.length === 0)
+      .flatMap((slot) => tiles
+        .filter((tile) => !slot.answers.includes(tile) && !placed.has(tile) && !covered.has(`${slot.id}|${tile}`))
+        .map((tile) => `${key} ${item.id} ${slot.id}←${tile}`));
+  }));
+  assert.deepEqual(found, []);
+});
+
+test('a choice offers at least three options', () => {
+  const found = lessons.flatMap(({ key, items }) => items.filter((item) => !item.gaps && item.tiles.length < 3).map((item) => `${key} ${item.id}`));
+  assert.deepEqual(found, []);
+});

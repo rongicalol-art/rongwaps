@@ -108,7 +108,7 @@ interface PracticeItemBase {
   id: string;
   /** The book item it comes from ("p.81 #3"), or "own" for an extra item. */
   source: string;
-  /** Short task line above the exercise. Omit when the scene says it all. */
+  /** The item's title: its question or task, phrased so it never gives the answer away. Falls back to the book's instruction. */
   prompt?: string;
   sub?: string;
   /** Words the book glosses beside its exercise, shown under the line the book prints them after. */

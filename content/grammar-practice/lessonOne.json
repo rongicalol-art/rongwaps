@@ -146,7 +146,8 @@
           "traditional": "小林友美是新學生，她是日本人。",
           "pinyin": "Xiǎolín Yǒuměi shì xīn xuésheng, tā shì Rìběn rén.",
           "english": "Xiaolin Youmei is the new student; she is Japanese."
-        }
+        },
+        "prompt": "Who is the new student?"
       },
       {
         "id": "l1g1-p2",
@@ -267,7 +268,8 @@
           "traditional": "家樂是英國人，他姓高。",
           "pinyin": "Jiālè shì Yīngguó rén, tā xìng Gāo.",
           "english": "Jiale is British; his surname is Gao."
-        }
+        },
+        "prompt": "Where is Jiale from?"
       },
       {
         "id": "l1g1-p3",
@@ -388,7 +390,8 @@
           "traditional": "王小姐是美國人，她叫宜文。",
           "pinyin": "Wáng xiǎojiě shì Měiguó rén, tā jiào Yíwén.",
           "english": "Miss Wang is American; her given name is Yiwen."
-        }
+        },
+        "prompt": "Where is Miss Wang from?"
       },
       {
         "id": "l1g1-p4",
@@ -450,18 +453,44 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "印尼學生姓李，"
+                "traditional": "印尼學生",
+                "simplified": "印尼学生"
               },
               {
                 "type": "slot",
-                "id": "name-verb",
+                "id": "verb1",
+                "answers": [
+                  "姓"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "surname",
+                "answers": [
+                  "李"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "，"
+              },
+              {
+                "type": "slot",
+                "id": "verb2",
                 "answers": [
                   "叫"
                 ]
               },
               {
+                "type": "slot",
+                "id": "given",
+                "answers": [
+                  "中明"
+                ]
+              },
+              {
                 "type": "text",
-                "traditional": "中明。"
+                "traditional": "。"
               }
             ]
           }
@@ -472,24 +501,124 @@
             "pinyin": "jiào"
           },
           {
+            "traditional": "中明",
+            "pinyin": "Zhōngmíng"
+          },
+          {
+            "traditional": "王",
+            "pinyin": "Wáng"
+          },
+          {
             "traditional": "姓",
             "pinyin": "xìng"
+          },
+          {
+            "traditional": "李",
+            "pinyin": "Lǐ"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "姓"
+              "王"
             ],
-            "note": "中明 is his given name, so use 叫; his surname is 李."
+            "mark": [
+              "王"
+            ],
+            "note": "The Indonesian student in the picture is 李中明, so his surname is 李; 王 is Yiwen’s."
+          },
+          {
+            "slot": {
+              "id": "verb1",
+              "tile": "李"
+            },
+            "note": "李 is the surname, so it follows 姓."
+          },
+          {
+            "slot": {
+              "id": "verb1",
+              "tile": "叫"
+            },
+            "note": "叫 goes before the given name: 叫中明."
+          },
+          {
+            "slot": {
+              "id": "verb1",
+              "tile": "中明"
+            },
+            "note": "中明 is the given name, so it follows 叫."
+          },
+          {
+            "slot": {
+              "id": "surname",
+              "tile": "姓"
+            },
+            "note": "姓 goes right before the surname: 姓李."
+          },
+          {
+            "slot": {
+              "id": "surname",
+              "tile": "叫"
+            },
+            "note": "叫 goes before the given name: 叫中明."
+          },
+          {
+            "slot": {
+              "id": "surname",
+              "tile": "中明"
+            },
+            "note": "中明 is the given name, so it follows 叫."
+          },
+          {
+            "slot": {
+              "id": "verb2",
+              "tile": "姓"
+            },
+            "note": "姓 goes right before the surname: 姓李."
+          },
+          {
+            "slot": {
+              "id": "verb2",
+              "tile": "李"
+            },
+            "note": "李 is the surname, so it follows 姓."
+          },
+          {
+            "slot": {
+              "id": "verb2",
+              "tile": "中明"
+            },
+            "note": "中明 is the given name, so it follows 叫."
+          },
+          {
+            "slot": {
+              "id": "given",
+              "tile": "姓"
+            },
+            "note": "姓 goes right before the surname: 姓李."
+          },
+          {
+            "slot": {
+              "id": "given",
+              "tile": "李"
+            },
+            "note": "李 is the surname, so it follows 姓."
+          },
+          {
+            "slot": {
+              "id": "given",
+              "tile": "叫"
+            },
+            "note": "叫 goes before the given name: 叫中明."
           }
         ],
-        "fallbackRepair": "中明 is his given name, so use 叫; his surname is 李.",
+        "fallbackRepair": "Surname with 姓, given name with 叫: 姓李，叫中明。",
         "result": {
           "traditional": "印尼學生姓李，叫中明。",
           "pinyin": "Yìnní xuésheng xìng Lǐ, jiào Zhōngmíng.",
           "english": "The Indonesian student is surnamed Li and called Zhongming."
-        }
+        },
+        "prompt": "Introduce the Indonesian student."
       }
     ]
   },
@@ -508,7 +637,7 @@
         "id": "l1g2-p1",
         "source": "p.39 #1",
         "kind": "slot-build",
-        "prompt": "You think Youmei looks pretty.",
+        "prompt": "You think Youmei is pretty. Say so.",
         "scene": {
           "type": "picture",
           "page": 39,
@@ -543,23 +672,33 @@
         ],
         "tiles": [
           {
-            "traditional": "不",
-            "pinyin": "bù"
-          },
-          {
             "traditional": "很",
             "pinyin": "hěn"
+          },
+          {
+            "traditional": "是",
+            "pinyin": "shì"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
           }
         ],
         "repairs": [
           {
             "placed": [
+              "是"
+            ],
+            "note": "Describing words like 漂亮 never take 是. Use 很 (or 不 to deny it)."
+          },
+          {
+            "placed": [
               "不"
             ],
-            "note": "You are describing Youmei as pretty, so use 很 rather than denying it with 不."
+            "note": "You think she is pretty, so say 很漂亮; 不 would deny it."
           }
         ],
-        "fallbackRepair": "You are describing Youmei as pretty, so use 很 rather than denying it with 不.",
+        "fallbackRepair": "You think she is pretty, so say 很漂亮; 不 would deny it.",
         "result": {
           "traditional": "友美很漂亮。",
           "pinyin": "Yǒuměi hěn piàoliang.",
@@ -608,6 +747,10 @@
             "pinyin": "hěn"
           },
           {
+            "traditional": "是",
+            "pinyin": "shì"
+          },
+          {
             "traditional": "不",
             "pinyin": "bù"
           }
@@ -615,17 +758,24 @@
         "repairs": [
           {
             "placed": [
+              "是"
+            ],
+            "note": "Describing words like 忙 never take 是. Use 很 (or 不 to deny it)."
+          },
+          {
+            "placed": [
               "不"
             ],
-            "note": "The piles of work show that he is busy, so use 很忙 rather than 不忙."
+            "note": "The piles of work show he is busy: 很忙. 不忙 says the opposite."
           }
         ],
-        "fallbackRepair": "The piles of work show that he is busy, so use 很忙 rather than 不忙.",
+        "fallbackRepair": "The piles of work show he is busy: 很忙. 不忙 says the opposite.",
         "result": {
           "traditional": "他很忙。",
           "pinyin": "Tā hěn máng.",
           "english": "He is busy."
-        }
+        },
+        "prompt": "Describe the man in the picture."
       },
       {
         "id": "l1g2-p3",
@@ -669,25 +819,35 @@
             "pinyin": "hěn"
           },
           {
+            "traditional": "是",
+            "pinyin": "shì"
+          },
+          {
             "traditional": "不",
-            "pinyin": "bú"
+            "pinyin": "bù"
           }
         ],
         "repairs": [
           {
             "placed": [
+              "是"
+            ],
+            "note": "Describing words like 累 never take 是. Use 很 (or 不 to deny it)."
+          },
+          {
+            "placed": [
               "很"
             ],
-            "note": "Zhongming feels rested, so use 不累 even though the woman beside him is tired."
+            "note": "Zhongming is waving and fresh, so he is not tired: 不累."
           }
         ],
-        "fallbackRepair": "Zhongming feels rested, so use 不累 even though the woman beside him is tired.",
+        "fallbackRepair": "Zhongming is waving and fresh, so he is not tired: 不累.",
         "result": {
           "traditional": "她很累，中明不累。",
           "pinyin": "Tā hěn lèi, Zhōngmíng bú lèi.",
           "english": "She is tired; Zhongming is not tired."
         },
-        "prompt": "Zhongming feels rested."
+        "prompt": "She is tired. What about Zhongming?"
       }
     ]
   },
@@ -799,7 +959,7 @@
           "pinyin": "Zhōngmíng xìng Wáng ma?",
           "english": "Is Zhongming surnamed Wang?"
         },
-        "prompt": "Drag 嗎 to where it goes.",
+        "prompt": "Where does 嗎 go?",
         "gaps": true
       },
       {
@@ -811,18 +971,29 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "李小姐是"
+                "traditional": "李小姐"
               },
               {
                 "type": "slot",
-                "id": "nationality",
+                "id": "verb",
                 "answers": [
-                  "日本人"
+                  "是"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "嗎？"
+                "traditional": "日本人"
+              },
+              {
+                "type": "slot",
+                "id": "ask",
+                "answers": [
+                  "嗎"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？"
               }
             ],
             "speaker": {
@@ -834,38 +1005,76 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "不是，她是臺灣人。"
+                "traditional": "不是，她是臺灣人。",
+                "simplified": "不是，她是台湾人。"
               }
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": false
           }
         ],
         "tiles": [
           {
-            "traditional": "臺灣人",
-            "pinyin": "Táiwān rén"
+            "traditional": "很",
+            "pinyin": "hěn"
           },
           {
-            "traditional": "日本人",
-            "pinyin": "Rìběn rén"
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "是",
+            "pinyin": "shì"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "臺灣人"
+              "很"
             ],
-            "note": "B rejects the nationality in the question and corrects it to 臺灣人, so the question asks about 日本人."
+            "mark": [
+              "很"
+            ],
+            "note": "很 goes before describing words, not before a noun like 日本人. Use 是."
+          },
+          {
+            "placed": [
+              "不"
+            ],
+            "mark": [
+              "不"
+            ],
+            "note": "不 can’t stand alone before a noun; and you are asking, not saying no. Use 是 … 嗎."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "嗎"
+            },
+            "note": "嗎 goes at the very end to make it a question."
+          },
+          {
+            "slot": {
+              "id": "ask",
+              "tile": "是"
+            },
+            "note": "是 links 李小姐 and 日本人: 李小姐是日本人."
           }
         ],
-        "fallbackRepair": "B rejects the nationality in the question and corrects it to 臺灣人, so the question asks about 日本人.",
+        "fallbackRepair": "Make the statement with 是, then add 嗎 at the end: 李小姐是日本人嗎？",
         "result": {
           "traditional": "李小姐是日本人嗎？",
           "pinyin": "Lǐ xiǎojiě shì Rìběn rén ma?",
           "english": "Is Miss Li Japanese?"
-        }
+        },
+        "prompt": "Ask whether Miss Li is Japanese."
       },
       {
         "id": "l1g3-p3",
@@ -920,28 +1129,39 @@
         ],
         "tiles": [
           {
-            "traditional": "不",
-            "pinyin": "bù"
-          },
-          {
             "traditional": "很",
             "pinyin": "hěn"
+          },
+          {
+            "traditional": "是",
+            "pinyin": "shì"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
           }
         ],
         "repairs": [
           {
             "placed": [
+              "是"
+            ],
+            "note": "Describing words like 可愛 never take 是. Use 很 (or 不 to deny it)."
+          },
+          {
+            "placed": [
               "不"
             ],
-            "note": "The smiling girl and hearts give a positive answer, so use 很可愛 rather than 不可愛."
+            "note": "The smile and hearts say yes: 很可愛. 不可愛 says no."
           }
         ],
-        "fallbackRepair": "The smiling girl and hearts give a positive answer, so use 很可愛 rather than 不可愛.",
+        "fallbackRepair": "The smile and hearts say yes: 很可愛. 不可愛 says no.",
         "result": {
           "traditional": "她很可愛。",
           "pinyin": "Tā hěn kěài.",
           "english": "She is cute."
-        }
+        },
+        "prompt": "Is she cute? Answer from the picture."
       }
     ]
   },
@@ -997,11 +1217,17 @@
         ],
         "tiles": [
           {
+            "traditional": "什麼",
+            "simplified": "什么",
+            "pinyin": "shénme"
+          },
+          {
             "traditional": "呢",
             "pinyin": "ne"
           },
           {
             "traditional": "嗎",
+            "simplified": "吗",
             "pinyin": "ma"
           }
         ],
@@ -1010,21 +1236,28 @@
             "placed": [
               "嗎"
             ],
-            "note": "Only the new topic 你 follows the statement, so use 呢 to carry the same question forward."
+            "note": "你嗎 is not a question on its own: 嗎 needs a whole statement before it. To ask \"and you?\", use 呢."
+          },
+          {
+            "placed": [
+              "什麼"
+            ],
+            "note": "什麼 asks \"what\". To bounce the same question back (\"and you?\"), put 呢 after 你."
           }
         ],
-        "fallbackRepair": "Only the new topic 你 follows the statement, so use 呢 to carry the same question forward.",
+        "fallbackRepair": "After 你, 呢 asks the same question back: 你呢？",
         "result": {
           "traditional": "我是美國人，你呢？",
           "pinyin": "Wǒ shì Měiguó rén, nǐ ne?",
           "english": "I am American. How about you?"
-        }
+        },
+        "prompt": "You are American. Ask your friend back: and you?"
       },
       {
         "id": "l1g4-p2",
         "source": "p.44 #2",
         "kind": "slot-build",
-        "prompt": "Reply as Gao Jiale.",
+        "prompt": "You are Gao Jiale. Reply.",
         "lines": [
           {
             "segments": [
@@ -1041,11 +1274,18 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "我姓"
+                "traditional": "我"
               },
               {
                 "type": "slot",
-                "id": "reply",
+                "id": "verb",
+                "answers": [
+                  "姓"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "name",
                 "answers": [
                   "高"
                 ]
@@ -1067,19 +1307,53 @@
             "pinyin": "Lǐ"
           },
           {
+            "traditional": "姓",
+            "pinyin": "xìng"
+          },
+          {
             "traditional": "高",
             "pinyin": "Gāo"
+          },
+          {
+            "traditional": "叫",
+            "pinyin": "jiào"
           }
         ],
         "repairs": [
           {
             "placed": [
+              "叫"
+            ],
+            "mark": [
+              "叫"
+            ],
+            "note": "叫 takes a given or full name. For the surname alone, use 姓: 姓高."
+          },
+          {
+            "placed": [
               "李"
             ],
-            "note": "You are replying as Gao Jiale, so give your surname 高 rather than the other speaker’s 李."
+            "mark": [
+              "李"
+            ],
+            "note": "李 is the other speaker’s surname; you are Gao Jiale."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "高"
+            },
+            "note": "Your surname 高 follows 姓."
+          },
+          {
+            "slot": {
+              "id": "name",
+              "tile": "姓"
+            },
+            "note": "姓 goes before the surname: 姓高."
           }
         ],
-        "fallbackRepair": "You are replying as Gao Jiale, so give your surname 高 rather than the other speaker’s 李.",
+        "fallbackRepair": "Give your surname with 姓: 我姓高。",
         "result": {
           "traditional": "我姓高。",
           "pinyin": "Wǒ xìng Gāo.",
@@ -1139,11 +1413,17 @@
         ],
         "tiles": [
           {
+            "traditional": "什麼",
+            "simplified": "什么",
+            "pinyin": "shénme"
+          },
+          {
             "traditional": "呢",
             "pinyin": "ne"
           },
           {
             "traditional": "嗎",
+            "simplified": "吗",
             "pinyin": "ma"
           }
         ],
@@ -1152,15 +1432,107 @@
             "placed": [
               "嗎"
             ],
-            "note": "Only the new topic 你 follows the statement, so use 呢 to carry the same question forward."
+            "note": "你嗎 is not a question on its own: 嗎 needs a whole statement before it. To ask \"and you?\", use 呢."
+          },
+          {
+            "placed": [
+              "什麼"
+            ],
+            "note": "什麼 asks \"what\". To bounce the same question back (\"and you?\"), put 呢 after 你."
           }
         ],
-        "fallbackRepair": "Only the new topic 你 follows the statement, so use 呢 to carry the same question forward.",
+        "fallbackRepair": "After 你, 呢 asks the same question back: 你呢？",
         "result": {
           "traditional": "他很忙，你呢？",
           "pinyin": "Tā hěn máng, nǐ ne?",
           "english": "He is busy. How about you?"
-        }
+        },
+        "prompt": "He is busy. Ask your friend: and you?"
+      },
+      {
+        "id": "l1g4-own2",
+        "source": "own",
+        "kind": "slot-build",
+        "lines": [
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "你忙"
+              },
+              {
+                "type": "slot",
+                "id": "ask",
+                "answers": [
+                  "嗎"
+                ]
+              },
+              {
+                "type": "text",
+                "traditional": "？"
+              }
+            ],
+            "speaker": {
+              "traditional": "A"
+            },
+            "me": true
+          },
+          {
+            "segments": [
+              {
+                "type": "text",
+                "traditional": "我很忙。"
+              }
+            ],
+            "speaker": {
+              "traditional": "B"
+            },
+            "me": false
+          }
+        ],
+        "tiles": [
+          {
+            "traditional": "呢",
+            "pinyin": "ne"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
+          }
+        ],
+        "fallbackRepair": "To start a yes/no question, put 嗎 at the end: 你忙嗎？",
+        "result": {
+          "traditional": "你忙嗎？",
+          "simplified": "你忙吗？",
+          "pinyin": "Nǐ máng ma?",
+          "english": "Are you busy?"
+        },
+        "repairs": [
+          {
+            "placed": [
+              "呢"
+            ],
+            "mark": [
+              "呢"
+            ],
+            "note": "呢 follows up on something already said (\"and you?\"). Nothing was said yet, so ask with 嗎."
+          },
+          {
+            "placed": [
+              "很"
+            ],
+            "mark": [
+              "很"
+            ],
+            "note": "你忙很 is not Chinese: 很 goes before 忙, and a question still needs 嗎."
+          }
+        ],
+        "prompt": "Start the chat: ask whether your friend is busy."
       }
     ]
   },
@@ -1175,7 +1547,7 @@
         "id": "l1g5-p1",
         "source": "p.45 #1",
         "kind": "slot-build",
-        "prompt": "You enjoy Taiwan.",
+        "prompt": "You enjoy Taiwan. Answer.",
         "lines": [
           {
             "segments": [
@@ -1214,12 +1586,22 @@
         ],
         "tiles": [
           {
-            "traditional": "不喜歡",
-            "pinyin": "bù xǐhuān"
+            "traditional": "是",
+            "pinyin": "shì"
           },
           {
             "traditional": "喜歡",
+            "simplified": "喜欢",
             "pinyin": "xǐhuān"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
+            "traditional": "不喜歡",
+            "simplified": "不喜欢",
+            "pinyin": "bù xǐhuān"
           }
         ],
         "repairs": [
@@ -1227,10 +1609,22 @@
             "placed": [
               "不喜歡"
             ],
-            "note": "You enjoy Taiwan, so answer with 喜歡 rather than 不喜歡."
+            "note": "You enjoy Taiwan, so answer 喜歡; 不喜歡 says the opposite."
+          },
+          {
+            "placed": [
+              "是"
+            ],
+            "note": "我是台灣 would mean \"I am Taiwan\". Liking takes 喜歡."
+          },
+          {
+            "placed": [
+              "很"
+            ],
+            "note": "很 alone can’t take 台灣 after it; it describes, it doesn’t like. Use 喜歡."
           }
         ],
-        "fallbackRepair": "You enjoy Taiwan, so answer with 喜歡 rather than 不喜歡.",
+        "fallbackRepair": "Answer with the verb from the question: 我喜歡台灣。",
         "result": {
           "traditional": "我喜歡台灣。",
           "pinyin": "Wǒ xǐhuān Táiwān.",
@@ -1279,29 +1673,51 @@
         ],
         "tiles": [
           {
+            "traditional": "誰",
+            "simplified": "谁",
+            "pinyin": "shéi"
+          },
+          {
             "traditional": "李小姐",
             "pinyin": "Lǐ xiǎojiě"
           },
           {
             "traditional": "王小姐",
             "pinyin": "Wáng xiǎojiě"
+          },
+          {
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
           }
         ],
         "repairs": [
           {
             "placed": [
+              "誰"
+            ],
+            "note": "誰 asks \"who\". In the answer, put the person in its place: 李小姐."
+          },
+          {
+            "placed": [
               "王小姐"
             ],
-            "note": "You like Miss Li and not Miss Wang, so answer the question with 李小姐."
+            "note": "You don’t like Miss Wang; you like Miss Li."
+          },
+          {
+            "placed": [
+              "嗎"
+            ],
+            "note": "You are answering, not asking. Put the person where 誰 was."
           }
         ],
-        "fallbackRepair": "You like Miss Li and not Miss Wang, so answer the question with 李小姐.",
+        "fallbackRepair": "Answer by putting the person where 誰 was: 我喜歡李小姐。",
         "result": {
           "traditional": "我喜歡李小姐。",
           "pinyin": "Wǒ xǐhuān Lǐ xiǎojiě.",
           "english": "I like Miss Li."
         },
-        "prompt": "You like Miss Li, but not Miss Wang."
+        "prompt": "You like Miss Li, not Miss Wang. Answer."
       },
       {
         "id": "l1g5-p3",
@@ -1356,12 +1772,18 @@
         ],
         "tiles": [
           {
-            "traditional": "愛",
-            "pinyin": "ài"
+            "traditional": "不愛",
+            "simplified": "不爱",
+            "pinyin": "bú ài"
           },
           {
-            "traditional": "不愛",
-            "pinyin": "bú ài"
+            "traditional": "是",
+            "pinyin": "shì"
+          },
+          {
+            "traditional": "愛",
+            "simplified": "爱",
+            "pinyin": "ài"
           }
         ],
         "repairs": [
@@ -1369,15 +1791,22 @@
             "placed": [
               "不愛"
             ],
-            "note": "The hearts in his thought bubble show love, so answer with 愛 rather than 不愛."
+            "note": "The hearts in his thoughts say yes: 愛."
+          },
+          {
+            "placed": [
+              "是"
+            ],
+            "note": "他是王太太 would mean \"he is Mrs. Wang\". Loving takes 愛."
           }
         ],
-        "fallbackRepair": "The hearts in his thought bubble show love, so answer with 愛 rather than 不愛.",
+        "fallbackRepair": "The hearts say yes: 他愛王太太。",
         "result": {
           "traditional": "他愛王太太。",
           "pinyin": "Tā ài Wáng tàitai.",
           "english": "He loves Mrs. Wang."
-        }
+        },
+        "prompt": "Does Mr. Wang love Mrs. Wang? Answer from the picture."
       }
     ]
   }

@@ -153,7 +153,7 @@ export function SlotBuildExercise({
   return (
     <LayoutGroup id={`slot-build-${item.id}`}>
       <div className="flex flex-col gap-7">
-        <PracticePrompt prompt={item.prompt} sub={item.sub} />
+        <PracticePrompt sub={item.sub} />
         {item.scene && (
           <PracticeScene
             scene={item.scene}

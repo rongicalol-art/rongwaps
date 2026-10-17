@@ -61,15 +61,18 @@ export function PictureScene({ page, box, alt }: PictureSceneProps) {
   if (failed) return null;
   return (
     <div
-      className="relative mx-auto w-full overflow-hidden rounded-feature border-2 border-ui-divider bg-ui-surface"
-      // Height capped so the dialogue below stays in view; width follows the crop's shape.
-      style={{ aspectRatio: `${width * pageRatio} / ${height}`, maxWidth: `min(28rem, calc(min(30vh, 220px) * ${(width * pageRatio) / height}))` }}
+      className="mx-auto w-full overflow-hidden rounded-feature border-2 border-ui-divider bg-ui-surface"
+      // Height capped so the dialogue below stays in view; width follows the crop's shape (plus the 4px border).
+      style={{ maxWidth: `calc(min(28rem, calc(min(30vh, 220px) * ${(width * pageRatio) / height})) + 4px)` }}
     >
-      {src ? (
-        <PageCrop src={src} box={box} alt={alt} onLoad={(event) => setPageRatio(event.currentTarget.naturalWidth / event.currentTarget.naturalHeight)} />
-      ) : (
-        <div role="status" aria-label="Loading picture" className="absolute inset-0 animate-pulse bg-ui-hover" />
-      )}
+      {/* The ratio lives inside the border, or the crop drifts off its box (tall crops most). */}
+      <div className="relative w-full" style={{ aspectRatio: `${width * pageRatio} / ${height}` }}>
+        {src ? (
+          <PageCrop src={src} box={box} alt={alt} onLoad={(event) => setPageRatio(event.currentTarget.naturalWidth / event.currentTarget.naturalHeight)} />
+        ) : (
+          <div role="status" aria-label="Loading picture" className="absolute inset-0 animate-pulse bg-ui-hover" />
+        )}
+      </div>
     </div>
   );
 }

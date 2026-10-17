@@ -79,58 +79,48 @@
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "number",
-              "tile": "二"
-            },
-            "mark": [
-              "二"
+            "placed": [
+              "本"
             ],
-            "note": "Before a measure word say 兩, not 二."
-          },
-          {
-            "slot": {
-              "id": "measure",
-              "tile": "本"
-            },
             "mark": [
               "本"
             ],
             "note": "本 counts books; flowers take 朵."
           },
           {
-            "slot": {
-              "id": "measure",
-              "tile": "個"
-            },
+            "placed": [
+              "個"
+            ],
             "mark": [
               "個"
             ],
-            "note": "個 is the general measure word, but flowers have their own: 朵."
+            "note": "個 is the general measure word (people, most things); flowers take 朵."
+          },
+          {
+            "placed": [
+              "二"
+            ],
+            "mark": [
+              "二"
+            ],
+            "note": "Before a measure word, two is 兩, not 二."
           },
           {
             "slot": {
               "id": "number",
               "tile": "朵"
             },
-            "note": "Say the number first, then the measure word."
+            "note": "The measure word follows the number: 兩朵."
           },
           {
             "slot": {
-              "id": "number",
-              "tile": "本"
+              "id": "measure",
+              "tile": "兩"
             },
-            "note": "Say the number first, then the measure word."
-          },
-          {
-            "slot": {
-              "id": "number",
-              "tile": "個"
-            },
-            "note": "Say the number first, then the measure word."
+            "note": "The number comes first: 兩朵."
           }
         ],
-        "fallbackRepair": "Say the number, then the measure word for flowers: 兩朵.",
+        "fallbackRepair": "Number first, then the measure word: 兩朵.",
         "result": {
           "traditional": "她有兩朵花。",
           "simplified": "她有两朵花。",
@@ -148,7 +138,7 @@
           ],
           "alt": "A woman holds one flower in each hand."
         },
-        "prompt": "Count the flowers: number, then measure word."
+        "prompt": "How many flowers does she have?"
       },
       {
         "id": "l3-g1-book-2",
@@ -228,58 +218,48 @@
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "number",
-              "tile": "二"
-            },
-            "mark": [
-              "二"
+            "placed": [
+              "個"
             ],
-            "note": "Before a measure word say 兩, not 二."
+            "mark": [
+              "個"
+            ],
+            "note": "個 is the general measure word (people, most things); books take 本."
           },
           {
-            "slot": {
-              "id": "measure",
-              "tile": "朵"
-            },
+            "placed": [
+              "朵"
+            ],
             "mark": [
               "朵"
             ],
             "note": "朵 counts flowers; books take 本."
           },
           {
-            "slot": {
-              "id": "measure",
-              "tile": "個"
-            },
-            "mark": [
-              "個"
+            "placed": [
+              "二"
             ],
-            "note": "個 is the general measure word, but books have their own: 本."
+            "mark": [
+              "二"
+            ],
+            "note": "Before a measure word, two is 兩, not 二."
           },
           {
             "slot": {
               "id": "number",
               "tile": "本"
             },
-            "note": "Say the number first, then the measure word."
+            "note": "The measure word follows the number: 兩本."
           },
           {
             "slot": {
-              "id": "number",
-              "tile": "個"
+              "id": "measure",
+              "tile": "兩"
             },
-            "note": "Say the number first, then the measure word."
-          },
-          {
-            "slot": {
-              "id": "number",
-              "tile": "朵"
-            },
-            "note": "Say the number first, then the measure word."
+            "note": "The number comes first: 兩本."
           }
         ],
-        "fallbackRepair": "Say the number, then the measure word for books: 兩本.",
+        "fallbackRepair": "Number first, then the measure word: 兩本.",
         "result": {
           "traditional": "我要買兩本書。",
           "simplified": "我要买两本书。",
@@ -297,7 +277,7 @@
           ],
           "alt": "Two books side by side."
         },
-        "prompt": "You want to buy the books in the picture."
+        "prompt": "How many books do you want to buy?"
       },
       {
         "id": "l3-g1-book-3",
@@ -376,65 +356,55 @@
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "number",
-              "tile": "四"
-            },
-            "mark": [
-              "四"
+            "placed": [
+              "個"
             ],
-            "note": "You are asking how many, so use 幾 rather than guessing a number."
+            "mark": [
+              "個"
+            ],
+            "note": "個 is the general measure word (people, most things); books take 本."
           },
           {
-            "slot": {
-              "id": "measure",
-              "tile": "朵"
-            },
+            "placed": [
+              "朵"
+            ],
             "mark": [
               "朵"
             ],
             "note": "朵 counts flowers; books take 本."
           },
           {
-            "slot": {
-              "id": "measure",
-              "tile": "個"
-            },
-            "mark": [
-              "個"
+            "placed": [
+              "四"
             ],
-            "note": "個 is the general measure word, but books have their own: 本."
+            "mark": [
+              "四"
+            ],
+            "note": "You don’t know the number yet, so ask with 幾."
           },
           {
             "slot": {
               "id": "number",
               "tile": "本"
             },
-            "note": "幾 comes first, then the measure word."
+            "note": "The measure word follows the number: 幾本."
           },
           {
             "slot": {
-              "id": "number",
-              "tile": "個"
+              "id": "measure",
+              "tile": "幾"
             },
-            "note": "幾 comes first, then the measure word."
-          },
-          {
-            "slot": {
-              "id": "number",
-              "tile": "朵"
-            },
-            "note": "幾 comes first, then the measure word."
+            "note": "The number comes first: 幾本."
           }
         ],
-        "fallbackRepair": "Ask with 幾 and the measure word for books: 幾本.",
+        "fallbackRepair": "Number first, then the measure word: 幾本.",
         "result": {
           "traditional": "你有幾本英文書？",
           "simplified": "你有几本英文书？",
           "pinyin": "Nǐ yǒu jǐ běn Yīngwén shū?",
           "english": "How many books in English do you have?"
         },
-        "prompt": "Ask how many books your friend has, without guessing a number."
+        "prompt": "Ask how many English books your friend has."
       },
       {
         "id": "l3-g1-own-1",
@@ -467,12 +437,10 @@
         "tiles": [
           {
             "traditional": "朵",
-            "simplified": "朵",
             "pinyin": "duǒ"
           },
           {
             "traditional": "本",
-            "simplified": "本",
             "pinyin": "běn"
           },
           {
@@ -486,22 +454,29 @@
             "placed": [
               "朵"
             ],
-            "note": "朵 counts flowers; use 本 for these books."
+            "mark": [
+              "朵"
+            ],
+            "note": "朵 counts flowers; books take 本."
           },
           {
             "placed": [
               "個"
             ],
-            "note": "Use the book measure word 本 rather than the general measure word 個."
+            "mark": [
+              "個"
+            ],
+            "note": "個 is the general word, but books have their own: 本."
           }
         ],
-        "fallbackRepair": "朵 counts flowers; use 本 for these books.",
+        "fallbackRepair": "Books take 本: 我有五本中文書。",
         "result": {
           "traditional": "我有五本中文書。",
           "simplified": "我有五本中文书。",
           "pinyin": "Wǒ yǒu wǔ běn Zhōngwén shū.",
           "english": "I have five books in Chinese."
-        }
+        },
+        "prompt": "Say you have five Chinese books."
       },
       {
         "id": "l3-g1-own-2",
@@ -558,41 +533,39 @@
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "number",
-              "tile": "二"
-            },
-            "mark": [
-              "二"
+            "placed": [
+              "本"
             ],
-            "note": "Before a measure word say 兩, not 二."
-          },
-          {
-            "slot": {
-              "id": "measure",
-              "tile": "本"
-            },
             "mark": [
               "本"
             ],
-            "note": "本 counts books; friends take the general 個."
+            "note": "本 counts books; friends take 個."
+          },
+          {
+            "placed": [
+              "二"
+            ],
+            "mark": [
+              "二"
+            ],
+            "note": "Before a measure word, two is 兩, not 二."
           },
           {
             "slot": {
               "id": "number",
               "tile": "個"
             },
-            "note": "Say the number first, then the measure word."
+            "note": "The measure word follows the number: 兩個."
           },
           {
             "slot": {
-              "id": "number",
-              "tile": "本"
+              "id": "measure",
+              "tile": "兩"
             },
-            "note": "Say the number first, then the measure word."
+            "note": "The number comes first: 兩個."
           }
         ],
-        "fallbackRepair": "Say the number, then 個 for people: 兩個.",
+        "fallbackRepair": "Number first, then the measure word: 兩個.",
         "result": {
           "traditional": "我有兩個朋友。",
           "simplified": "我有两个朋友。",
@@ -627,21 +600,29 @@
                 ]
               },
               {
-                "type": "text",
-                "traditional": "送",
-                "simplified": "送"
+                "type": "slot",
+                "id": "verb",
+                "answers": [
+                  "送"
+                ]
               },
               {
                 "type": "slot",
-                "id": "receiver",
+                "id": "person",
                 "answers": [
                   "爸爸"
                 ]
               },
               {
+                "type": "slot",
+                "id": "gift",
+                "answers": [
+                  "一本書"
+                ]
+              },
+              {
                 "type": "text",
-                "traditional": "一本書。",
-                "simplified": "一本书。"
+                "traditional": "。"
               }
             ],
             "me": true
@@ -649,9 +630,17 @@
         ],
         "tiles": [
           {
+            "traditional": "一本書",
+            "simplified": "一本书",
+            "pinyin": "yì běn shū"
+          },
+          {
             "traditional": "爸爸",
-            "simplified": "爸爸",
             "pinyin": "bàba"
+          },
+          {
+            "traditional": "送",
+            "pinyin": "sòng"
           },
           {
             "traditional": "媽媽",
@@ -660,7 +649,6 @@
           },
           {
             "traditional": "他",
-            "simplified": "他",
             "pinyin": "tā"
           }
         ],
@@ -669,24 +657,97 @@
             "placed": [
               "媽媽"
             ],
-            "note": "The adult receiving the book is the father, so choose 爸爸 rather than 媽媽."
+            "mark": [
+              "媽媽"
+            ],
+            "note": "The boy in the picture gives the book to his father, 爸爸."
+          },
+          {
+            "slot": {
+              "id": "giver",
+              "tile": "送"
+            },
+            "note": "送 follows the giver."
           },
           {
             "slot": {
               "id": "giver",
               "tile": "爸爸"
             },
-            "note": "The child gives the book, so put 他 before 送 and 爸爸 after it."
+            "note": "After 送, the person comes first: 送爸爸."
           },
           {
             "slot": {
-              "id": "receiver",
+              "id": "giver",
+              "tile": "一本書"
+            },
+            "note": "The gift comes last, after the person: 送爸爸一本書."
+          },
+          {
+            "slot": {
+              "id": "verb",
               "tile": "他"
             },
-            "note": "The father receives the book, so put 爸爸 after 送."
+            "note": "The giver comes first: 他送…."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "爸爸"
+            },
+            "note": "After 送, the person comes first: 送爸爸."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "一本書"
+            },
+            "note": "The gift comes last, after the person: 送爸爸一本書."
+          },
+          {
+            "slot": {
+              "id": "person",
+              "tile": "他"
+            },
+            "note": "The giver comes first: 他送…."
+          },
+          {
+            "slot": {
+              "id": "person",
+              "tile": "送"
+            },
+            "note": "送 follows the giver."
+          },
+          {
+            "slot": {
+              "id": "person",
+              "tile": "一本書"
+            },
+            "note": "The gift comes last, after the person: 送爸爸一本書."
+          },
+          {
+            "slot": {
+              "id": "gift",
+              "tile": "他"
+            },
+            "note": "The giver comes first: 他送…."
+          },
+          {
+            "slot": {
+              "id": "gift",
+              "tile": "送"
+            },
+            "note": "送 follows the giver."
+          },
+          {
+            "slot": {
+              "id": "gift",
+              "tile": "爸爸"
+            },
+            "note": "After 送, the person comes first: 送爸爸."
           }
         ],
-        "fallbackRepair": "Keep the people and things in the order that matches the picture.",
+        "fallbackRepair": "Giver, 送, person, then gift: 他送爸爸一本書。",
         "result": {
           "traditional": "他送爸爸一本書。",
           "simplified": "他送爸爸一本书。",
@@ -704,7 +765,7 @@
           ],
           "alt": "A boy hands a book to his father."
         },
-        "prompt": "Describe the boy giving his father a book."
+        "prompt": "What does the boy give his father?"
       },
       {
         "id": "l3-g2-book-2",
@@ -775,38 +836,55 @@
             "placed": [
               "一本"
             ],
-            "note": "本 counts books; the cake takes 個."
+            "mark": [
+              "一本"
+            ],
+            "note": "本 counts books; a cake takes 個: 一個大蛋糕."
           },
           {
             "slot": {
               "id": "verb",
               "tile": "她"
             },
-            "note": "Put 送 after 想, then name the girl who receives the cake."
+            "note": "After 送, the person comes first: 送她."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "一個"
+            },
+            "note": "The gift comes after the person: 送她一個大蛋糕."
+          },
+          {
+            "slot": {
+              "id": "receiver",
+              "tile": "送"
+            },
+            "note": "送 comes right after 想."
           },
           {
             "slot": {
               "id": "receiver",
               "tile": "一個"
             },
-            "note": "Name the receiver 她 immediately after 送, before the gift."
+            "note": "The gift comes after the person: 送她一個大蛋糕."
+          },
+          {
+            "slot": {
+              "id": "amount",
+              "tile": "送"
+            },
+            "note": "送 comes right after 想."
           },
           {
             "slot": {
               "id": "amount",
               "tile": "她"
             },
-            "note": "The girl receives the gift; put 她 after 送 and 一個 before 大蛋糕."
-          },
-          {
-            "before": [
-              "她",
-              "送"
-            ],
-            "note": "Use 想送她 to put wanting before giving and the receiver after 送."
+            "note": "After 送, the person comes first: 送她."
           }
         ],
-        "fallbackRepair": "Keep the people and things in the order that matches the picture.",
+        "fallbackRepair": "After 送: person first, then the gift: 我想送她一個大蛋糕。",
         "result": {
           "traditional": "我想送她一個大蛋糕。",
           "simplified": "我想送她一个大蛋糕。",
@@ -824,7 +902,7 @@
           ],
           "alt": "A boy imagines giving a girl a large cake."
         },
-        "prompt": "Speak as the boy thinking about the gift."
+        "prompt": "You are the boy. Say what you want to give her."
       },
       {
         "id": "l3-g2-book-3",
@@ -895,38 +973,55 @@
             "placed": [
               "一個"
             ],
-            "note": "The gift is a book, so count it with 一本 rather than 一個."
+            "mark": [
+              "一個"
+            ],
+            "note": "個 is the general word, but books take 本: 一本中文書."
           },
           {
             "slot": {
               "id": "verb",
               "tile": "英國同學"
             },
-            "note": "The woman is speaking as 我, so put 送 next and her classmate after it."
+            "note": "After 送, the person comes first: 送英國同學."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "一本"
+            },
+            "note": "The gift comes after the person: 一本中文書."
+          },
+          {
+            "slot": {
+              "id": "receiver",
+              "tile": "送"
+            },
+            "note": "送 comes right after 我."
           },
           {
             "slot": {
               "id": "receiver",
               "tile": "一本"
             },
-            "note": "The receiver 英國同學 comes before the gift 一本中文書."
+            "note": "The gift comes after the person: 一本中文書."
+          },
+          {
+            "slot": {
+              "id": "amount",
+              "tile": "送"
+            },
+            "note": "送 comes right after 我."
           },
           {
             "slot": {
               "id": "amount",
               "tile": "英國同學"
             },
-            "note": "Place 英國同學 immediately after 送, before 一本中文書."
-          },
-          {
-            "before": [
-              "英國同學",
-              "送"
-            ],
-            "note": "The classmate receives the book, so his name belongs after 送."
+            "note": "After 送, the person comes first: 送英國同學."
           }
         ],
-        "fallbackRepair": "Keep the people and things in the order that matches the picture.",
+        "fallbackRepair": "After 送: person first, then the gift: 我送英國同學一本中文書。",
         "result": {
           "traditional": "我送英國同學一本中文書。",
           "simplified": "我送英国同学一本中文书。",
@@ -944,7 +1039,7 @@
           ],
           "alt": "A woman hands a book-shaped gift to a man."
         },
-        "prompt": "You are the woman; the man receiving your book is your British classmate."
+        "prompt": "You are the woman. Say what you give your British classmate."
       }
     ],
     "allowWords": [
@@ -1012,6 +1107,10 @@
             "traditional": "那",
             "simplified": "那",
             "pinyin": "nà"
+          },
+          {
+            "traditional": "哪",
+            "pinyin": "nǎ"
           }
         ],
         "repairs": [
@@ -1019,10 +1118,16 @@
             "placed": [
               "這"
             ],
-            "note": "The shirts are beside your friend and far from you, so reply with 那."
+            "note": "The shirts are by your friend, far from you, so you say 那 even though your friend says 這."
+          },
+          {
+            "placed": [
+              "哪"
+            ],
+            "note": "哪 asks \"which\". In the answer, point with 這 or 那."
           }
         ],
-        "fallbackRepair": "The shirts are beside your friend and far from you, so reply with 那.",
+        "fallbackRepair": "The shirts are by your friend, far from you, so you say 那 even though your friend says 這.",
         "result": {
           "traditional": "那三件衣服很漂亮。",
           "simplified": "那三件衣服很漂亮。",
@@ -1040,7 +1145,7 @@
           ],
           "alt": "Three shirts hang beside one another."
         },
-        "prompt": "Your friend is beside the shirts; you are far away."
+        "prompt": "Your friend is by the shirts; you are far away. Answer."
       },
       {
         "id": "l3-g3-book-2",
@@ -1097,6 +1202,10 @@
             "traditional": "這",
             "simplified": "这",
             "pinyin": "zhè"
+          },
+          {
+            "traditional": "哪",
+            "pinyin": "nǎ"
           }
         ],
         "repairs": [
@@ -1104,10 +1213,16 @@
             "placed": [
               "那"
             ],
-            "note": "The flowers are beside you, so reply with 這 even though your distant friend says 那."
+            "note": "The flowers are by you, so you say 這 even though your far-away friend says 那."
+          },
+          {
+            "placed": [
+              "哪"
+            ],
+            "note": "哪 asks \"which\". In the answer, point with 這 or 那."
           }
         ],
-        "fallbackRepair": "The flowers are beside you, so reply with 這 even though your distant friend says 那.",
+        "fallbackRepair": "The flowers are by you, so you say 這 even though your far-away friend says 那.",
         "result": {
           "traditional": "這四朵花很好看。",
           "simplified": "这四朵花很好看。",
@@ -1125,7 +1240,7 @@
           ],
           "alt": "Four flowers in a row."
         },
-        "prompt": "You are beside the flowers; your friend is far away."
+        "prompt": "You are by the flowers; your friend is far away. Answer."
       },
       {
         "id": "l3-g3-book-3",
@@ -1182,6 +1297,11 @@
             "traditional": "這種",
             "simplified": "这种",
             "pinyin": "zhè zhǒng"
+          },
+          {
+            "traditional": "哪種",
+            "simplified": "哪种",
+            "pinyin": "nǎ zhǒng"
           }
         ],
         "repairs": [
@@ -1189,10 +1309,16 @@
             "placed": [
               "那種"
             ],
-            "note": "You are pointing to the pen beside you, so use 這種 for this kind."
+            "note": "The pen is right beside you, so it is 這種, this kind."
+          },
+          {
+            "placed": [
+              "哪種"
+            ],
+            "note": "哪種 asks \"which\". In the answer, point with 這 or 那."
           }
         ],
-        "fallbackRepair": "You are pointing to the pen beside you, so use 這種 for this kind.",
+        "fallbackRepair": "The pen is right beside you, so it is 這種, this kind.",
         "result": {
           "traditional": "我想買這種筆。",
           "simplified": "我想买这种笔。",
@@ -1210,7 +1336,7 @@
           ],
           "alt": "A shirt, a pen, a book, eggs, flowers, and a cake."
         },
-        "prompt": "You point to the pen beside you and choose this kind."
+        "prompt": "Point to the pen beside you. Which kind do you want?"
       },
       {
         "id": "l3-g3-own-1",
@@ -1255,30 +1381,50 @@
             "traditional": "這",
             "simplified": "这",
             "pinyin": "zhè"
+          },
+          {
+            "traditional": "什麼",
+            "simplified": "什么",
+            "pinyin": "shénme"
           }
         ],
         "repairs": [
           {
             "placed": [
+              "什麼"
+            ],
+            "mark": [
+              "什麼"
+            ],
+            "note": "Before a measure word like 種, \"which\" is 哪: 哪種茶."
+          },
+          {
+            "placed": [
               "那"
             ],
-            "note": "那 names a distant kind; use 哪 to ask your friend to choose a kind."
+            "mark": [
+              "那"
+            ],
+            "note": "那 points at a kind far away; to ask \"which kind\", use 哪."
           },
           {
             "placed": [
               "這"
             ],
-            "note": "這 names a nearby kind; use 哪 when the kind is still unknown."
+            "mark": [
+              "這"
+            ],
+            "note": "這 points at a kind near you; to ask \"which kind\", use 哪."
           }
         ],
-        "fallbackRepair": "那 names a distant kind; use 哪 to ask your friend to choose a kind.",
+        "fallbackRepair": "To ask \"which kind\", use 哪種: 你喜歡喝哪種茶？",
         "result": {
           "traditional": "你喜歡喝哪種茶？",
           "simplified": "你喜欢喝哪种茶？",
           "pinyin": "Nǐ xǐhuān hē nǎ zhǒng chá?",
           "english": "Which kind of tea do you like drinking?"
         },
-        "prompt": "Ask your friend to choose a kind of tea, without suggesting one."
+        "prompt": "Ask your friend which kind of tea they like."
       }
     ],
     "allowWords": [
@@ -1338,14 +1484,16 @@
         ],
         "tiles": [
           {
+            "traditional": "大的",
+            "pinyin": "dà de"
+          },
+          {
             "traditional": "小的",
-            "simplified": "小的",
             "pinyin": "xiǎo de"
           },
           {
-            "traditional": "大的",
-            "simplified": "大的",
-            "pinyin": "dà de"
+            "traditional": "很大",
+            "pinyin": "hěn dà"
           }
         ],
         "repairs": [
@@ -1353,10 +1501,16 @@
             "placed": [
               "小的"
             ],
-            "note": "The gift on the left is the big one, so choose 大的."
+            "note": "The gift on the left is the big one: 大的."
+          },
+          {
+            "placed": [
+              "很大"
+            ],
+            "note": "很大 describes something (\"it is …\"). To name \"the … one\", use 大的."
           }
         ],
-        "fallbackRepair": "The gift on the left is the big one, so choose 大的.",
+        "fallbackRepair": "Adjective + 的 names \"the … one\": 大的.",
         "result": {
           "traditional": "我喜歡大的。",
           "simplified": "我喜欢大的。",
@@ -1374,7 +1528,7 @@
           ],
           "alt": "A large wrapped gift on the left and a smaller one on the right."
         },
-        "prompt": "Choose the gift on the left."
+        "prompt": "You want the gift on the left. Answer."
       },
       {
         "id": "l3-g4-book-2",
@@ -1429,8 +1583,12 @@
           },
           {
             "traditional": "新的",
-            "simplified": "新的",
             "pinyin": "xīn de"
+          },
+          {
+            "traditional": "很舊",
+            "simplified": "很旧",
+            "pinyin": "hěn jiù"
           }
         ],
         "repairs": [
@@ -1438,10 +1596,16 @@
             "placed": [
               "新的"
             ],
-            "note": "The book on the right is the old one; 新的 describes the sparkling book on the left."
+            "note": "The book on the right is the old one: 舊的."
+          },
+          {
+            "placed": [
+              "很舊"
+            ],
+            "note": "很舊 describes something (\"it is …\"). To name \"the … one\", use 舊的."
           }
         ],
-        "fallbackRepair": "The book on the right is the old one; 新的 describes the sparkling book on the left.",
+        "fallbackRepair": "Adjective + 的 names \"the … one\": 舊的.",
         "result": {
           "traditional": "我要買舊的。",
           "simplified": "我要买旧的。",
@@ -1459,7 +1623,7 @@
           ],
           "alt": "A sparkling new book on the left and an old book on the right."
         },
-        "prompt": "Choose the book on the right.",
+        "prompt": "You want the book on the right. Answer.",
         "glossary": [
           {
             "traditional": "舊",
@@ -1516,25 +1680,43 @@
         ],
         "tiles": [
           {
+            "traditional": "好看的",
+            "pinyin": "hǎokàn de"
+          },
+          {
+            "traditional": "不好看的",
+            "pinyin": "bù hǎokàn de"
+          },
+          {
             "traditional": "很好看",
-            "simplified": "很好看",
             "pinyin": "hěn hǎokàn"
           },
           {
-            "traditional": "好看的",
-            "simplified": "好看的",
-            "pinyin": "hǎokàn de"
+            "traditional": "好看",
+            "pinyin": "hǎokàn"
           }
         ],
         "repairs": [
           {
             "placed": [
+              "不好看的"
+            ],
+            "note": "You like the decorated cake, so it is the good-looking one: 好看的."
+          },
+          {
+            "placed": [
               "很好看"
             ],
-            "note": "After 喜歡, use 好看的 to name the cake; 很好看 describes a subject instead."
+            "note": "很好看 describes something (\"it is …\"). To name \"the … one\", use 好看的."
+          },
+          {
+            "placed": [
+              "好看"
+            ],
+            "note": "好看 alone can’t name a thing; add 的: 好看的."
           }
         ],
-        "fallbackRepair": "After 喜歡, use 好看的 to name the cake; 很好看 describes a subject instead.",
+        "fallbackRepair": "Adjective + 的 names \"the … one\": 好看的.",
         "result": {
           "traditional": "我喜歡好看的。",
           "simplified": "我喜欢好看的。",
@@ -1552,7 +1734,7 @@
           ],
           "alt": "A plain cake on the left and a decorated cake on the right."
         },
-        "prompt": "Choose the decorated cake on the right; use 好看."
+        "prompt": "You like the decorated cake on the right. Answer."
       },
       {
         "id": "l3-g4-own-1",
@@ -1584,14 +1766,16 @@
         ],
         "tiles": [
           {
+            "traditional": "漂亮的",
+            "pinyin": "piàoliang de"
+          },
+          {
             "traditional": "很漂亮",
-            "simplified": "很漂亮",
             "pinyin": "hěn piàoliang"
           },
           {
-            "traditional": "漂亮的",
-            "simplified": "漂亮的",
-            "pinyin": "piàoliang de"
+            "traditional": "漂亮",
+            "pinyin": "piàoliang"
           }
         ],
         "repairs": [
@@ -1599,16 +1783,23 @@
             "placed": [
               "很漂亮"
             ],
-            "note": "The description modifies 花 here, so use 漂亮的 rather than the predicate 很漂亮."
+            "note": "很漂亮 says something is pretty. Before a noun like 花, use 漂亮的."
+          },
+          {
+            "placed": [
+              "漂亮"
+            ],
+            "note": "A two-syllable describing word needs 的 before the noun: 漂亮的花."
           }
         ],
-        "fallbackRepair": "The description modifies 花 here, so use 漂亮的 rather than the predicate 很漂亮.",
+        "fallbackRepair": "Before a noun, use 漂亮的: 我喜歡漂亮的花。",
         "result": {
           "traditional": "我喜歡漂亮的花。",
           "simplified": "我喜欢漂亮的花。",
           "pinyin": "Wǒ xǐhuān piàoliang de huā.",
           "english": "I like beautiful flowers."
-        }
+        },
+        "prompt": "Say you like pretty flowers."
       }
     ],
     "allowWords": [

@@ -17,7 +17,8 @@
                 "type": "text",
                 "traditional": "他們在哪裡？"
               }
-            ]
+            ],
+            "me": false
           },
           {
             "speaker": {
@@ -26,7 +27,15 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "他們在"
+                "traditional": "他們",
+                "simplified": "他们"
+              },
+              {
+                "type": "slot",
+                "id": "verb",
+                "answers": [
+                  "在"
+                ]
               },
               {
                 "type": "slot",
@@ -39,28 +48,65 @@
                 "type": "text",
                 "traditional": "。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
           {
-            "traditional": "咖啡廳",
-            "pinyin": "kāfēitīng"
+            "traditional": "圖書館",
+            "simplified": "图书馆",
+            "pinyin": "túshūguǎn"
           },
           {
-            "traditional": "圖書館",
-            "pinyin": "túshūguǎn"
+            "traditional": "是",
+            "pinyin": "shì"
+          },
+          {
+            "traditional": "在",
+            "pinyin": "zài"
+          },
+          {
+            "traditional": "咖啡廳",
+            "simplified": "咖啡厅",
+            "pinyin": "kāfēitīng"
           }
         ],
         "repairs": [
           {
             "placed": [
+              "是"
+            ],
+            "mark": [
+              "是"
+            ],
+            "note": "他們是圖書館 would mean \"they are a library\". To say where someone is, use 在."
+          },
+          {
+            "placed": [
               "咖啡廳"
             ],
-            "note": "The shelves and study tables show a library, so use 圖書館."
+            "mark": [
+              "咖啡廳"
+            ],
+            "note": "Shelves and study tables: it is a library, 圖書館."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "圖書館"
+            },
+            "note": "The place follows 在."
+          },
+          {
+            "slot": {
+              "id": "place",
+              "tile": "在"
+            },
+            "note": "在 comes before the place: 在圖書館."
           }
         ],
-        "fallbackRepair": "Read the whole reply and check it against the situation.",
+        "fallbackRepair": "Where someone is: 在 + place: 他們在圖書館。",
         "result": {
           "traditional": "他們在圖書館。",
           "pinyin": "Tāmen zài túshūguǎn.",
@@ -76,7 +122,8 @@
             0.107
           ],
           "alt": "Bookshelves and study tables, with people reading and one person asleep."
-        }
+        },
+        "prompt": "Where are they?"
       },
       {
         "id": "l05-g01-book-2",
@@ -92,7 +139,8 @@
                 "type": "text",
                 "traditional": "小美在圖書館嗎？"
               }
-            ]
+            ],
+            "me": false
           },
           {
             "speaker": {
@@ -105,16 +153,25 @@
               },
               {
                 "type": "slot",
-                "id": "location",
+                "id": "neg",
                 "answers": [
-                  "不在"
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "verb",
+                "answers": [
+                  "在"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "圖書館。"
+                "traditional": "圖書館。",
+                "simplified": "图书馆。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
@@ -123,19 +180,40 @@
             "pinyin": "zài"
           },
           {
-            "traditional": "不在",
-            "pinyin": "bú zài"
+            "traditional": "是",
+            "pinyin": "shì"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "在"
+              "是"
             ],
-            "note": "The bed shows she is at home, so deny the library location with 不在."
+            "mark": [
+              "是"
+            ],
+            "note": "For where someone is, use 在, not 是: 不在圖書館."
+          },
+          {
+            "slot": {
+              "id": "neg",
+              "tile": "在"
+            },
+            "note": "在 follows 不 and comes before the place."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "不"
+            },
+            "note": "不 goes right before 在: 不在."
           }
         ],
-        "fallbackRepair": "Read the whole reply and check it against the situation.",
+        "fallbackRepair": "She is at home, so: 她不在圖書館。",
         "result": {
           "traditional": "她不在圖書館。",
           "pinyin": "Tā bú zài túshūguǎn.",
@@ -151,7 +229,8 @@
             0.111
           ],
           "alt": "A girl reading at her desk beside a bed and a window."
-        }
+        },
+        "prompt": "Is Xiaomei at the library? Answer from the picture."
       },
       {
         "id": "l05-g01-book-3",
@@ -178,7 +257,8 @@
                 "type": "text",
                 "traditional": "？"
               }
-            ]
+            ],
+            "me": true
           },
           {
             "speaker": {
@@ -189,7 +269,8 @@
                 "type": "text",
                 "traditional": "李老師今天早上九點在學校。"
               }
-            ]
+            ],
+            "me": false
           }
         ],
         "tiles": [
@@ -198,7 +279,13 @@
             "pinyin": "ne"
           },
           {
+            "traditional": "什麼",
+            "simplified": "什么",
+            "pinyin": "shénme"
+          },
+          {
             "traditional": "嗎",
+            "simplified": "吗",
             "pinyin": "ma"
           }
         ],
@@ -207,10 +294,22 @@
             "placed": [
               "呢"
             ],
-            "note": "You are checking one statement, so use 嗎 rather than switching to another topic with 呢."
+            "mark": [
+              "呢"
+            ],
+            "note": "呢 asks \"and …?\" about a new topic. You are checking one yes/no fact, so use 嗎."
+          },
+          {
+            "placed": [
+              "什麼"
+            ],
+            "mark": [
+              "什麼"
+            ],
+            "note": "什麼 asks \"what\" and needs a slot for it. This is a yes/no check, so end with 嗎."
           }
         ],
-        "fallbackRepair": "Read the whole reply and check it against the situation.",
+        "fallbackRepair": "A yes/no question ends with 嗎.",
         "result": {
           "traditional": "李老師今天早上九點在學校嗎？",
           "pinyin": "Lǐ lǎoshī jīntiān zǎoshang jiǔ diǎn zài xuéxiào ma?",
@@ -227,7 +326,7 @@
           ],
           "alt": "A teacher at the board, students facing him, and a clock showing nine."
         },
-        "prompt": "Check whether Teacher Li is at school at nine this morning."
+        "prompt": "Ask whether Teacher Li is at school at nine this morning."
       }
     ],
     "allowWords": [
@@ -254,7 +353,8 @@
                 "type": "text",
                 "traditional": "你在哪裡買咖啡？"
               }
-            ]
+            ],
+            "me": false
           },
           {
             "speaker": {
@@ -299,7 +399,8 @@
                 "type": "text",
                 "traditional": "。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
@@ -337,7 +438,7 @@
           "pinyin": "Wǒ zài kāfēitīng mǎi kāfēi.",
           "english": "I buy coffee at the café."
         },
-        "prompt": "Drag 在 to where it goes in the reply.",
+        "prompt": "Where do you buy coffee? Where does 在 go?",
         "gaps": true
       },
       {
@@ -354,7 +455,8 @@
                 "type": "text",
                 "traditional": "你喜歡在家做什麼？"
               }
-            ]
+            ],
+            "me": false
           },
           {
             "speaker": {
@@ -399,7 +501,8 @@
                 "type": "text",
                 "traditional": "。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
@@ -437,7 +540,7 @@
           "pinyin": "Wǒ xǐhuan zài jiā kànshū.",
           "english": "I like reading at home."
         },
-        "prompt": "Drag 在 to where it goes in the reply.",
+        "prompt": "What do you like doing at home? Where does 在 go?",
         "gaps": true
       },
       {
@@ -454,7 +557,8 @@
                 "type": "text",
                 "traditional": "你今天要在家吃晚飯嗎？"
               }
-            ]
+            ],
+            "me": false
           },
           {
             "speaker": {
@@ -499,7 +603,8 @@
                 "type": "text",
                 "traditional": "。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
@@ -537,7 +642,7 @@
           "pinyin": "Wǒ jīntiān bú zài jiā chī wǎnfàn.",
           "english": "I am not eating dinner at home today."
         },
-        "prompt": "Drag 在 to where it goes in the reply.",
+        "prompt": "You’re not eating at home tonight. Where does 在 go?",
         "gaps": true
       }
     ]
@@ -589,7 +694,8 @@
                 "type": "text",
                 "traditional": "。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
@@ -631,7 +737,7 @@
           ],
           "alt": "Two pens, one priced $100 and the other $50."
         },
-        "prompt": "Drag 吧 to where it goes in the reply.",
+        "prompt": "Suggest the cheaper pen. Where does 吧 go?",
         "gaps": true
       },
       {
@@ -648,7 +754,8 @@
                 "type": "text",
                 "traditional": "今天好冷。"
               }
-            ]
+            ],
+            "me": false
           },
           {
             "speaker": {
@@ -693,7 +800,8 @@
                 "type": "text",
                 "traditional": "。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
@@ -742,7 +850,7 @@
           ],
           "alt": "A steaming cup on a saucer."
         },
-        "prompt": "Drag 吧 to where it goes in the reply.",
+        "prompt": "It’s cold. Suggest hot coffee. Where does 吧 go?",
         "gaps": true
       },
       {
@@ -759,7 +867,8 @@
                 "type": "text",
                 "traditional": "我很餓，也很渴。"
               }
-            ]
+            ],
+            "me": false
           },
           {
             "speaker": {
@@ -808,7 +917,8 @@
                 "type": "text",
                 "traditional": "。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
@@ -857,7 +967,7 @@
           ],
           "alt": "Two people at a counter selling noodles and drinks."
         },
-        "prompt": "Drag 吧 to where it goes in the reply.",
+        "prompt": "Suggest going to eat together. Where does 吧 go?",
         "gaps": true
       }
     ],
@@ -885,7 +995,8 @@
                 "type": "text",
                 "traditional": "我的書在哪裡？"
               }
-            ]
+            ],
+            "me": false
           },
           {
             "speaker": {
@@ -907,17 +1018,23 @@
                 "type": "text",
                 "traditional": "。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
+          {
+            "traditional": "上面",
+            "pinyin": "shàngmiàn"
+          },
           {
             "traditional": "下面",
             "pinyin": "xiàmiàn"
           },
           {
-            "traditional": "上面",
-            "pinyin": "shàngmiàn"
+            "traditional": "裡面",
+            "simplified": "里面",
+            "pinyin": "lǐmiàn"
           }
         ],
         "repairs": [
@@ -925,10 +1042,16 @@
             "placed": [
               "下面"
             ],
-            "note": "The book rests on the tabletop, so use 上面 rather than 下面."
+            "note": "The book lies on top of the table, not under it: 上面."
+          },
+          {
+            "placed": [
+              "裡面"
+            ],
+            "note": "A table has no inside; the book is on top: 上面."
           }
         ],
-        "fallbackRepair": "Read the whole reply and check it against the situation.",
+        "fallbackRepair": "The book lies on top of the table, not under it: 上面.",
         "result": {
           "traditional": "你的書在桌子上面。",
           "pinyin": "Nǐ de shū zài zhuōzi shàngmiàn.",
@@ -944,7 +1067,8 @@
             0.073
           ],
           "alt": "A book resting on the tabletop."
-        }
+        },
+        "prompt": "Where is my book?"
       },
       {
         "id": "l05-g04-book-2",
@@ -960,7 +1084,8 @@
                 "type": "text",
                 "traditional": "弟弟在哪裡？"
               }
-            ]
+            ],
+            "me": false
           },
           {
             "speaker": {
@@ -982,17 +1107,24 @@
                 "type": "text",
                 "traditional": "。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
           {
+            "traditional": "旁邊",
+            "simplified": "旁边",
+            "pinyin": "pángbiān"
+          },
+          {
             "traditional": "後面",
+            "simplified": "后面",
             "pinyin": "hòumiàn"
           },
           {
-            "traditional": "旁邊",
-            "pinyin": "pángbiān"
+            "traditional": "前面",
+            "pinyin": "qiánmiàn"
           }
         ],
         "repairs": [
@@ -1000,10 +1132,16 @@
             "placed": [
               "後面"
             ],
-            "note": "Both brothers stand side by side, so use 旁邊 rather than 後面."
+            "note": "The brothers stand side by side, so 弟弟 is beside him: 旁邊."
+          },
+          {
+            "placed": [
+              "前面"
+            ],
+            "note": "Neither stands in front; they are side by side: 旁邊."
           }
         ],
-        "fallbackRepair": "Read the whole reply and check it against the situation.",
+        "fallbackRepair": "The brothers stand side by side, so 弟弟 is beside him: 旁邊.",
         "result": {
           "traditional": "弟弟在哥哥旁邊。",
           "pinyin": "Dìdi zài gēge pángbiān.",
@@ -1019,7 +1157,8 @@
             0.118
           ],
           "alt": "An older brother and a younger brother standing side by side, with their labels below."
-        }
+        },
+        "prompt": "Where is the younger brother?"
       },
       {
         "id": "l05-g04-book-3",
@@ -1035,7 +1174,8 @@
                 "type": "text",
                 "traditional": "她在哪裡看書？"
               }
-            ]
+            ],
+            "me": false
           },
           {
             "speaker": {
@@ -1057,17 +1197,23 @@
                 "type": "text",
                 "traditional": "看書。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
           {
             "traditional": "裡面",
+            "simplified": "里面",
             "pinyin": "lǐmiàn"
           },
           {
             "traditional": "外面",
             "pinyin": "wàimiàn"
+          },
+          {
+            "traditional": "上面",
+            "pinyin": "shàngmiàn"
           }
         ],
         "repairs": [
@@ -1075,10 +1221,16 @@
             "placed": [
               "外面"
             ],
-            "note": "The girl is beside her bed inside the room, so use 裡面 rather than 外面."
+            "note": "She is by her bed, inside the room: 裡面."
+          },
+          {
+            "placed": [
+              "上面"
+            ],
+            "note": "上面 would put her on top of the room; she is inside it: 裡面."
           }
         ],
-        "fallbackRepair": "Read the whole reply and check it against the situation.",
+        "fallbackRepair": "She is by her bed, inside the room: 裡面.",
         "result": {
           "traditional": "她在房間裡面看書。",
           "pinyin": "Tā zài fángjiān lǐmiàn kànshū.",
@@ -1094,7 +1246,8 @@
             0.109
           ],
           "alt": "A girl reading at her desk beside a bed and a window."
-        }
+        },
+        "prompt": "Where does she read?"
       },
       {
         "id": "l05-g04-book-4",
@@ -1110,7 +1263,8 @@
                 "type": "text",
                 "traditional": "小明在圖書館裡面做什麼？"
               }
-            ]
+            ],
+            "me": false
           },
           {
             "speaker": {
@@ -1132,17 +1286,25 @@
                 "type": "text",
                 "traditional": "。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
           {
-            "traditional": "看書",
-            "pinyin": "kànshū"
+            "traditional": "睡覺",
+            "simplified": "睡觉",
+            "pinyin": "shuìjiào"
           },
           {
-            "traditional": "睡覺",
-            "pinyin": "shuìjiào"
+            "traditional": "看書",
+            "simplified": "看书",
+            "pinyin": "kàn shū"
+          },
+          {
+            "traditional": "吃飯",
+            "simplified": "吃饭",
+            "pinyin": "chī fàn"
           }
         ],
         "repairs": [
@@ -1150,10 +1312,16 @@
             "placed": [
               "看書"
             ],
-            "note": "The boy labelled 小明 has his head down with a sleep bubble, so choose 睡覺 rather than 看書."
+            "note": "Xiaoming has his head down with a \"zzz\": he is sleeping, 睡覺."
+          },
+          {
+            "placed": [
+              "吃飯"
+            ],
+            "note": "There is no food; Xiaoming is asleep: 睡覺."
           }
         ],
-        "fallbackRepair": "Read the whole reply and check it against the situation.",
+        "fallbackRepair": "Xiaoming has his head down with a \"zzz\": he is sleeping, 睡覺.",
         "result": {
           "traditional": "小明在圖書館裡面睡覺。",
           "pinyin": "Xiǎo Míng zài túshūguǎn lǐmiàn shuìjiào.",
@@ -1169,7 +1337,8 @@
             0.128
           ],
           "alt": "A library scene; Xiaoming is the boy sleeping at the front table, with his name below."
-        }
+        },
+        "prompt": "What is Xiaoming doing in the library?"
       }
     ],
     "allowWords": [
@@ -1194,7 +1363,8 @@
                 "type": "text",
                 "traditional": "我們學校有多少學生？"
               }
-            ]
+            ],
+            "me": false
           },
           {
             "speaker": {
@@ -1230,7 +1400,8 @@
                 "type": "text",
                 "traditional": "。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
@@ -1261,7 +1432,7 @@
           "pinyin": "Wǒmen xuéxiào yǒu yì qiān ge xuésheng.",
           "english": "There are one thousand students at our school."
         },
-        "prompt": "Drag 有 to where it goes in the reply.",
+        "prompt": "How many students does our school have? Where does 有 go?",
         "gaps": true
       },
       {
@@ -1278,7 +1449,8 @@
                 "type": "text",
                 "traditional": "你家旁邊有飲料店嗎？"
               }
-            ]
+            ],
+            "me": false
           },
           {
             "speaker": {
@@ -1300,7 +1472,8 @@
                 "type": "text",
                 "traditional": "飲料店。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
@@ -1309,8 +1482,17 @@
             "pinyin": "yǒu"
           },
           {
+            "traditional": "不有",
+            "pinyin": "bù yǒu"
+          },
+          {
             "traditional": "沒有",
+            "simplified": "没有",
             "pinyin": "méiyǒu"
+          },
+          {
+            "traditional": "不是",
+            "pinyin": "búshì"
           }
         ],
         "repairs": [
@@ -1318,16 +1500,37 @@
             "placed": [
               "有"
             ],
-            "note": "Your only neighbours are schools, so use 沒有 for the drink shop."
+            "mark": [
+              "有"
+            ],
+            "note": "Only two schools are next to your home, so there is no drink shop: 沒有."
+          },
+          {
+            "placed": [
+              "不有"
+            ],
+            "mark": [
+              "不有"
+            ],
+            "note": "有 is never negated with 不: 沒有."
+          },
+          {
+            "placed": [
+              "不是"
+            ],
+            "mark": [
+              "不是"
+            ],
+            "note": "不是 says something is not something else. For \"there isn’t\", use 沒有."
           }
         ],
-        "fallbackRepair": "Read the whole reply and check it against the situation.",
+        "fallbackRepair": "\"There isn’t\" is 沒有: 我家旁邊沒有飲料店。",
         "result": {
           "traditional": "我家旁邊沒有飲料店。",
           "pinyin": "Wǒ jiā pángbiān méiyǒu yǐnliào diàn.",
           "english": "There is no drink shop next to my home."
         },
-        "prompt": "Your only neighbours are two schools."
+        "prompt": "Only two schools are next to your home. Answer."
       },
       {
         "id": "l05-g05-book-3",
@@ -1343,7 +1546,8 @@
                 "type": "text",
                 "traditional": "你的桌子上有什麼東西？"
               }
-            ]
+            ],
+            "me": false
           },
           {
             "speaker": {
@@ -1379,7 +1583,8 @@
                 "type": "text",
                 "traditional": "。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
@@ -1410,7 +1615,7 @@
           "pinyin": "Wǒ de zhuōzi shàng yǒu shū.",
           "english": "There is a book on my table."
         },
-        "prompt": "Drag 有 to where it goes in the reply.",
+        "prompt": "What’s on your desk? Where does 有 go?",
         "gaps": true
       }
     ]

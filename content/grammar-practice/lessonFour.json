@@ -7,7 +7,7 @@
         "id": "l04-g1-book1",
         "source": "p.96 #1",
         "kind": "slot-build",
-        "prompt": "You like them.",
+        "prompt": "You like red clothes. Answer with the clothes as the topic.",
         "tiles": [
           {
             "traditional": "我喜歡",
@@ -35,31 +35,55 @@
             "placed": [
               "我不喜歡"
             ],
-            "note": "The context gives a positive answer, so use 我喜歡 rather than 我不喜歡."
-          },
-          {
-            "slot": {
-              "id": "topic-description",
-              "tile": "我喜歡"
-            },
-            "note": "The instruction asks for the object as the topic, so put 紅色的衣服 before the comment."
+            "mark": [
+              "我不喜歡"
+            ],
+            "note": "You do like them, so the comment is 我喜歡."
           },
           {
             "slot": {
               "id": "topic-description",
               "tile": "衣服"
             },
-            "note": "Put 紅色的 before 衣服 to keep the noun phrase together."
+            "note": "衣服 follows 紅色的 to finish the topic."
+          },
+          {
+            "slot": {
+              "id": "topic-description",
+              "tile": "我喜歡"
+            },
+            "note": "The comment comes after the topic: 紅色的衣服，我喜歡."
+          },
+          {
+            "slot": {
+              "id": "topic-noun",
+              "tile": "紅色的"
+            },
+            "note": "The topic comes first, describing word before the noun: 紅色的衣服."
           },
           {
             "slot": {
               "id": "topic-noun",
               "tile": "我喜歡"
             },
-            "note": "Keep the whole object together before the comment 我喜歡."
+            "note": "The comment comes after the topic: 紅色的衣服，我喜歡."
+          },
+          {
+            "slot": {
+              "id": "comment",
+              "tile": "紅色的"
+            },
+            "note": "The topic comes first, describing word before the noun: 紅色的衣服."
+          },
+          {
+            "slot": {
+              "id": "comment",
+              "tile": "衣服"
+            },
+            "note": "衣服 follows 紅色的 to finish the topic."
           }
         ],
-        "fallbackRepair": "Put the object first, followed by the comment.",
+        "fallbackRepair": "Topic first (紅色的衣服), then the comment (我喜歡).",
         "lines": [
           {
             "speaker": {
@@ -123,7 +147,7 @@
         "id": "l04-g1-book2",
         "source": "p.96 #2",
         "kind": "slot-build",
-        "prompt": "You want to buy them.",
+        "prompt": "You want this kind of pencil. Answer with the pencil as the topic.",
         "tiles": [
           {
             "traditional": "我要買",
@@ -151,31 +175,55 @@
             "placed": [
               "我不要買"
             ],
-            "note": "The context gives a positive answer, so use 我要買 rather than 我不要買."
-          },
-          {
-            "slot": {
-              "id": "topic-description",
-              "tile": "我要買"
-            },
-            "note": "The instruction asks for the object as the topic, so put 這種鉛筆 before the comment."
+            "mark": [
+              "我不要買"
+            ],
+            "note": "You do want them, so the comment is 我要買."
           },
           {
             "slot": {
               "id": "topic-description",
               "tile": "鉛筆"
             },
-            "note": "Put 這種 before 鉛筆 to keep the noun phrase together."
+            "note": "鉛筆 follows 這種 to finish the topic."
+          },
+          {
+            "slot": {
+              "id": "topic-description",
+              "tile": "我要買"
+            },
+            "note": "The comment comes after the topic: 這種鉛筆，我要買."
+          },
+          {
+            "slot": {
+              "id": "topic-noun",
+              "tile": "這種"
+            },
+            "note": "The topic comes first: 這種鉛筆."
           },
           {
             "slot": {
               "id": "topic-noun",
               "tile": "我要買"
             },
-            "note": "Keep the whole object together before the comment 我要買."
+            "note": "The comment comes after the topic: 這種鉛筆，我要買."
+          },
+          {
+            "slot": {
+              "id": "comment",
+              "tile": "這種"
+            },
+            "note": "The topic comes first: 這種鉛筆."
+          },
+          {
+            "slot": {
+              "id": "comment",
+              "tile": "鉛筆"
+            },
+            "note": "鉛筆 follows 這種 to finish the topic."
           }
         ],
-        "fallbackRepair": "Put the object first, followed by the comment.",
+        "fallbackRepair": "Topic first (這種鉛筆), then the comment (我要買).",
         "lines": [
           {
             "speaker": {
@@ -251,7 +299,7 @@
         "source": "p.96 #3",
         "kind": "slot-build",
         "gaps": true,
-        "prompt": "You like both foods; place 都.",
+        "prompt": "You like both foods. Where does 都 go?",
         "lines": [
           {
             "segments": [
@@ -345,7 +393,7 @@
         "source": "p.97 #4",
         "kind": "slot-build",
         "gaps": true,
-        "prompt": "You like all three gifts; place 都.",
+        "prompt": "You like all three gifts. Where does 都 go?",
         "lines": [
           {
             "segments": [
@@ -445,7 +493,7 @@
         "source": "p.98 #1",
         "kind": "slot-build",
         "gaps": true,
-        "prompt": "Place 也 to add your second choice.",
+        "prompt": "You’d like beef noodles too. Where does 也 go?",
         "lines": [
           {
             "segments": [
@@ -530,7 +578,7 @@
         "source": "p.98 #2",
         "kind": "slot-build",
         "gaps": true,
-        "prompt": "Both foods taste good; place 也 in the second part.",
+        "prompt": "The cake is good too. Where does 也 go?",
         "lines": [
           {
             "segments": [
@@ -623,7 +671,7 @@
         "source": "p.98 #3",
         "kind": "slot-build",
         "gaps": true,
-        "prompt": "Youmei shares Zhongming’s preference; place 也.",
+        "prompt": "Youmei likes cheap things too. Where does 也 go?",
         "lines": [
           {
             "segments": [
@@ -739,19 +787,29 @@
           {
             "segments": [
               {
-                "type": "text",
-                "traditional": "太"
+                "type": "slot",
+                "id": "too",
+                "answers": [
+                  "太"
+                ]
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "adj",
                 "answers": [
                   "小"
                 ]
               },
               {
+                "type": "slot",
+                "id": "le",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
                 "type": "text",
-                "traditional": "了。"
+                "traditional": "。"
               }
             ],
             "speaker": {
@@ -762,12 +820,20 @@
         ],
         "tiles": [
           {
-            "traditional": "大",
-            "pinyin": "dà"
+            "traditional": "了",
+            "pinyin": "le"
           },
           {
             "traditional": "小",
             "pinyin": "xiǎo"
+          },
+          {
+            "traditional": "太",
+            "pinyin": "tài"
+          },
+          {
+            "traditional": "大",
+            "pinyin": "dà"
           }
         ],
         "repairs": [
@@ -775,10 +841,55 @@
             "placed": [
               "大"
             ],
-            "note": "The shirt exposes his middle and fits tightly, so describe it as 小."
+            "mark": [
+              "大"
+            ],
+            "note": "The shirt barely covers him, so it is too small: 小."
+          },
+          {
+            "slot": {
+              "id": "too",
+              "tile": "小"
+            },
+            "note": "The describing word sits between 太 and 了: 太小了."
+          },
+          {
+            "slot": {
+              "id": "too",
+              "tile": "了"
+            },
+            "note": "了 closes the pattern after the describing word: 太…了."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "太"
+            },
+            "note": "太 comes first, right before the describing word."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "了"
+            },
+            "note": "了 closes the pattern after the describing word: 太…了."
+          },
+          {
+            "slot": {
+              "id": "le",
+              "tile": "太"
+            },
+            "note": "太 comes first, right before the describing word."
+          },
+          {
+            "slot": {
+              "id": "le",
+              "tile": "小"
+            },
+            "note": "The describing word sits between 太 and 了: 太小了."
           }
         ],
-        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "fallbackRepair": "Wrap the describing word in 太…了: 太小了.",
         "result": {
           "traditional": "太小了。",
           "pinyin": "Tài xiǎo le.",
@@ -794,7 +905,8 @@
             0.11
           ],
           "alt": "A boy pulling at a tight shirt that leaves his middle uncovered."
-        }
+        },
+        "prompt": "How does this shirt fit him?"
       },
       {
         "id": "l04-g3-book2",
@@ -818,18 +930,32 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "他太"
+                "traditional": "他"
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "too",
+                "answers": [
+                  "太"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "adj",
                 "answers": [
                   "累"
                 ]
               },
               {
+                "type": "slot",
+                "id": "le",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
                 "type": "text",
-                "traditional": "了。"
+                "traditional": "。"
               }
             ],
             "speaker": {
@@ -840,13 +966,21 @@
         ],
         "tiles": [
           {
-            "traditional": "餓",
-            "pinyin": "è",
-            "simplified": "饿"
+            "traditional": "了",
+            "pinyin": "le"
           },
           {
             "traditional": "累",
             "pinyin": "lèi"
+          },
+          {
+            "traditional": "太",
+            "pinyin": "tài"
+          },
+          {
+            "traditional": "餓",
+            "simplified": "饿",
+            "pinyin": "è"
           }
         ],
         "repairs": [
@@ -854,16 +988,61 @@
             "placed": [
               "餓"
             ],
-            "note": "He has eaten and needs sleep, so choose 累 for his tiredness."
+            "mark": [
+              "餓"
+            ],
+            "note": "He has just eaten, so he isn’t hungry; all this work has made him tired: 累."
+          },
+          {
+            "slot": {
+              "id": "too",
+              "tile": "累"
+            },
+            "note": "The describing word sits between 太 and 了: 太累了."
+          },
+          {
+            "slot": {
+              "id": "too",
+              "tile": "了"
+            },
+            "note": "了 closes the pattern after the describing word: 太…了."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "太"
+            },
+            "note": "太 comes first, right before the describing word."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "了"
+            },
+            "note": "了 closes the pattern after the describing word: 太…了."
+          },
+          {
+            "slot": {
+              "id": "le",
+              "tile": "太"
+            },
+            "note": "太 comes first, right before the describing word."
+          },
+          {
+            "slot": {
+              "id": "le",
+              "tile": "累"
+            },
+            "note": "The describing word sits between 太 and 了: 太累了."
           }
         ],
-        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "fallbackRepair": "Wrap the describing word in 太…了: 太累了.",
         "result": {
           "traditional": "他太累了。",
           "pinyin": "Tā tài lèi le.",
           "english": "He is so tired."
         },
-        "prompt": "He has eaten; after all this work, he wants to sleep.",
+        "prompt": "He has eaten but worked all day. How is he now?",
         "scene": {
           "type": "picture",
           "page": 99,
@@ -897,19 +1076,29 @@
           {
             "segments": [
               {
-                "type": "text",
-                "traditional": "太"
+                "type": "slot",
+                "id": "too",
+                "answers": [
+                  "太"
+                ]
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "adj",
                 "answers": [
                   "好喝"
                 ]
               },
               {
+                "type": "slot",
+                "id": "le",
+                "answers": [
+                  "了"
+                ]
+              },
+              {
                 "type": "text",
-                "traditional": "了，我和我的朋友都常常喝。"
+                "traditional": "，我和我的朋友都常常喝。"
               }
             ],
             "speaker": {
@@ -920,8 +1109,16 @@
         ],
         "tiles": [
           {
+            "traditional": "了",
+            "pinyin": "le"
+          },
+          {
             "traditional": "好喝",
             "pinyin": "hǎohē"
+          },
+          {
+            "traditional": "太",
+            "pinyin": "tài"
           },
           {
             "traditional": "好吃",
@@ -933,23 +1130,68 @@
             "placed": [
               "好吃"
             ],
-            "note": "The sentence says 喝, so use 好喝 to praise the drink’s taste."
+            "mark": [
+              "好吃"
+            ],
+            "note": "Milk tea is a drink, so it is 好喝; 好吃 is for food."
+          },
+          {
+            "slot": {
+              "id": "too",
+              "tile": "好喝"
+            },
+            "note": "The describing word sits between 太 and 了: 太好喝了."
+          },
+          {
+            "slot": {
+              "id": "too",
+              "tile": "了"
+            },
+            "note": "了 closes the pattern after the describing word: 太…了."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "太"
+            },
+            "note": "太 comes first, right before the describing word."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "了"
+            },
+            "note": "了 closes the pattern after the describing word: 太…了."
+          },
+          {
+            "slot": {
+              "id": "le",
+              "tile": "太"
+            },
+            "note": "太 comes first, right before the describing word."
+          },
+          {
+            "slot": {
+              "id": "le",
+              "tile": "好喝"
+            },
+            "note": "The describing word sits between 太 and 了: 太好喝了."
           }
         ],
-        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "fallbackRepair": "Wrap the describing word in 太…了: 太好喝了.",
         "result": {
           "traditional": "太好喝了，我和我的朋友都常常喝。",
           "pinyin": "Tài hǎohē le, wǒ hé wǒ de péngyou dōu chángcháng hē.",
           "english": "It tastes so good; my friends and I all drink it often."
         },
-        "prompt": "You are praising its taste."
+        "prompt": "You love bubble milk tea. What do you think of it?"
       },
       {
         "id": "l04-g3-own1",
         "source": "own",
         "kind": "slot-build",
         "gaps": true,
-        "prompt": "React to 40°C; place 了.",
+        "prompt": "It’s 40°C today. Where does 了 go?",
         "lines": [
           {
             "segments": [
@@ -1087,32 +1329,61 @@
           {
             "segments": [
               {
-                "type": "text",
-                "traditional": "五"
+                "type": "slot",
+                "id": "lead",
+                "answers": [
+                  "五"
+                ]
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "unit",
                 "answers": [
                   "千"
                 ]
               },
               {
+                "type": "slot",
+                "id": "zero",
+                "answers": [
+                  "零"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "rest",
+                "answers": [
+                  "八十"
+                ]
+              },
+              {
                 "type": "text",
-                "traditional": "零八十。"
+                "traditional": "。"
               }
             ]
           }
         ],
         "tiles": [
           {
+            "traditional": "八十",
+            "pinyin": "bāshí"
+          },
+          {
             "traditional": "千",
             "pinyin": "qiān"
           },
           {
+            "traditional": "五",
+            "pinyin": "wǔ"
+          },
+          {
             "traditional": "萬",
-            "pinyin": "wàn",
-            "simplified": "万"
+            "simplified": "万",
+            "pinyin": "wàn"
+          },
+          {
+            "traditional": "零",
+            "pinyin": "líng"
           }
         ],
         "repairs": [
@@ -1120,16 +1391,103 @@
             "placed": [
               "萬"
             ],
-            "note": "五萬 starts at 50,000, while 5,080 has five thousands."
+            "mark": [
+              "萬"
+            ],
+            "note": "萬 is ten thousand; 5,080 is five thousand: 五千."
+          },
+          {
+            "slot": {
+              "id": "lead",
+              "tile": "千"
+            },
+            "note": "千 follows 五: five thousand."
+          },
+          {
+            "slot": {
+              "id": "lead",
+              "tile": "零"
+            },
+            "note": "The hundreds place is empty, so 零 marks the gap before 八十."
+          },
+          {
+            "slot": {
+              "id": "lead",
+              "tile": "八十"
+            },
+            "note": "八十 comes last, after the 零."
+          },
+          {
+            "slot": {
+              "id": "unit",
+              "tile": "五"
+            },
+            "note": "Start with the biggest place: 五千."
+          },
+          {
+            "slot": {
+              "id": "unit",
+              "tile": "零"
+            },
+            "note": "The hundreds place is empty, so 零 marks the gap before 八十."
+          },
+          {
+            "slot": {
+              "id": "unit",
+              "tile": "八十"
+            },
+            "note": "八十 comes last, after the 零."
+          },
+          {
+            "slot": {
+              "id": "zero",
+              "tile": "五"
+            },
+            "note": "Start with the biggest place: 五千."
+          },
+          {
+            "slot": {
+              "id": "zero",
+              "tile": "千"
+            },
+            "note": "千 follows 五: five thousand."
+          },
+          {
+            "slot": {
+              "id": "zero",
+              "tile": "八十"
+            },
+            "note": "八十 comes last, after the 零."
+          },
+          {
+            "slot": {
+              "id": "rest",
+              "tile": "五"
+            },
+            "note": "Start with the biggest place: 五千."
+          },
+          {
+            "slot": {
+              "id": "rest",
+              "tile": "千"
+            },
+            "note": "千 follows 五: five thousand."
+          },
+          {
+            "slot": {
+              "id": "rest",
+              "tile": "零"
+            },
+            "note": "The hundreds place is empty, so 零 marks the gap before 八十."
           }
         ],
-        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "fallbackRepair": "Biggest place first, 零 for the empty hundreds: 五千零八十。",
         "result": {
           "traditional": "五千零八十。",
           "pinyin": "Wǔ qiān líng bāshí.",
           "english": "Five thousand and eighty."
         },
-        "prompt": "Please read the following numbers."
+        "prompt": "Read 5,080 aloud."
       },
       {
         "id": "l04-g4-book2",
@@ -1188,6 +1546,10 @@
           {
             "traditional": "四九三",
             "pinyin": "sì jiǔ sān"
+          },
+          {
+            "traditional": "三九四",
+            "pinyin": "sān jiǔ sì"
           }
         ],
         "repairs": [
@@ -1195,23 +1557,35 @@
             "placed": [
               "四三九"
             ],
-            "note": "The last group is 493, so keep the digits in the order 四、九、三."
+            "mark": [
+              "四三九"
+            ],
+            "note": "Phone numbers are read digit by digit, in order: 4-9-3."
+          },
+          {
+            "placed": [
+              "三九四"
+            ],
+            "mark": [
+              "三九四"
+            ],
+            "note": "Keep the digits in their printed order: 4-9-3."
           }
         ],
-        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "fallbackRepair": "Read each digit in order: 四九三.",
         "result": {
           "traditional": "零九三六零六八四九三。",
           "pinyin": "Líng jiǔ sān liù, líng liù bā, sì jiǔ sān.",
           "english": "0936-068-493."
         },
-        "prompt": "Read the following cell phone numbers."
+        "prompt": "Read the phone number 0936-068-493."
       },
       {
         "id": "l04-g4-book3",
         "source": "p.105 #3",
         "kind": "slot-build",
         "gaps": true,
-        "prompt": "Read the following nouns (with measure words).",
+        "prompt": "Read 5,005 people. Where does 零 go?",
         "lines": [
           {
             "segments": [
@@ -1332,12 +1706,16 @@
         "tiles": [
           {
             "traditional": "七千八百",
-            "pinyin": "qī qiān bā bǎi"
+            "pinyin": "qīqiān bābǎi"
+          },
+          {
+            "traditional": "七十八千",
+            "pinyin": "qīshíbā qiān"
           },
           {
             "traditional": "七萬八千",
             "simplified": "七万八千",
-            "pinyin": "qī wàn bā qiān"
+            "pinyin": "qīwàn bāqiān"
           }
         ],
         "repairs": [
@@ -1345,17 +1723,29 @@
             "placed": [
               "七千八百"
             ],
-            "note": "78,000 has seven ten-thousands and eight thousands, while 七千八百 is 7,800."
+            "mark": [
+              "七千八百"
+            ],
+            "note": "七千八百 is 7,800. 78,000 is 7 ten-thousands and 8 thousands: 七萬八千."
+          },
+          {
+            "placed": [
+              "七十八千"
+            ],
+            "mark": [
+              "七十八千"
+            ],
+            "note": "Chinese counts by 萬 (ten thousand), never \"seventy-eight thousand\": 七萬八千."
           }
         ],
-        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "fallbackRepair": "78,000 = 7 萬 + 8 千: 七萬八千.",
         "result": {
           "traditional": "七萬八千。",
           "simplified": "七万八千。",
           "pinyin": "Qī wàn bā qiān.",
           "english": "Seventy-eight thousand."
         },
-        "prompt": "Read 78,000."
+        "prompt": "Read 78,000 aloud."
       }
     ],
     "allowWords": [
@@ -1389,20 +1779,29 @@
           {
             "segments": [
               {
-                "type": "text",
-                "traditional": ""
+                "type": "slot",
+                "id": "n",
+                "answers": [
+                  "十"
+                ]
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "duo",
                 "answers": [
-                  "十多"
+                  "多"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "m",
+                "answers": [
+                  "個"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "個人。",
-                "simplified": "个人。"
+                "traditional": "人。"
               }
             ],
             "speaker": {
@@ -1413,23 +1812,77 @@
         ],
         "tiles": [
           {
-            "traditional": "十多",
-            "pinyin": "shí duō"
+            "traditional": "個",
+            "simplified": "个",
+            "pinyin": "ge"
           },
           {
-            "traditional": "二十多",
-            "pinyin": "èrshí duō"
+            "traditional": "多",
+            "pinyin": "duō"
+          },
+          {
+            "traditional": "二十",
+            "pinyin": "èrshí"
+          },
+          {
+            "traditional": "十",
+            "pinyin": "shí"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "二十多"
+              "二十"
             ],
-            "note": "The three rows contain fifteen people, so the total is over ten and below twenty."
+            "mark": [
+              "二十"
+            ],
+            "note": "There are fifteen faces, so it is 十多, not 二十多."
+          },
+          {
+            "slot": {
+              "id": "n",
+              "tile": "多"
+            },
+            "note": "With a round number like 十, 多 goes right after it, before the measure word: 十多個."
+          },
+          {
+            "slot": {
+              "id": "n",
+              "tile": "個"
+            },
+            "note": "The measure word follows 十多: 十多個人."
+          },
+          {
+            "slot": {
+              "id": "duo",
+              "tile": "十"
+            },
+            "note": "The number comes first."
+          },
+          {
+            "slot": {
+              "id": "duo",
+              "tile": "個"
+            },
+            "note": "The measure word follows 十多: 十多個人."
+          },
+          {
+            "slot": {
+              "id": "m",
+              "tile": "十"
+            },
+            "note": "The number comes first."
+          },
+          {
+            "slot": {
+              "id": "m",
+              "tile": "多"
+            },
+            "note": "With a round number like 十, 多 goes right after it, before the measure word: 十多個."
           }
         ],
-        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "fallbackRepair": "十多個人: number, 多, then the measure word.",
         "result": {
           "traditional": "十多個人。",
           "pinyin": "Shí duō ge rén.",
@@ -1446,7 +1899,8 @@
             0.094
           ],
           "alt": "Three rows of five faces."
-        }
+        },
+        "prompt": "How many people are there?"
       },
       {
         "id": "l04-g5-book2",
@@ -1469,20 +1923,29 @@
           {
             "segments": [
               {
-                "type": "text",
-                "traditional": ""
+                "type": "slot",
+                "id": "n",
+                "answers": [
+                  "一百"
+                ]
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "duo",
                 "answers": [
-                  "一百多塊"
+                  "多"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "m",
+                "answers": [
+                  "塊"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "錢。",
-                "simplified": "钱。"
+                "traditional": "錢。"
               }
             ],
             "speaker": {
@@ -1493,25 +1956,78 @@
         ],
         "tiles": [
           {
-            "traditional": "一百多塊",
-            "pinyin": "yì bǎi duō kuài",
-            "simplified": "一百多块"
+            "traditional": "塊",
+            "simplified": "块",
+            "pinyin": "kuài"
           },
           {
-            "traditional": "一百塊多",
-            "pinyin": "yì bǎi kuài duō",
-            "simplified": "一百块多"
+            "traditional": "一百",
+            "pinyin": "yìbǎi"
+          },
+          {
+            "traditional": "多",
+            "pinyin": "duō"
+          },
+          {
+            "traditional": "兩百",
+            "simplified": "两百",
+            "pinyin": "liǎngbǎi"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "一百塊多"
+              "兩百"
             ],
-            "note": "$180 is tens of dollars above $100, so put 多 before 塊 for the 101–199 range."
+            "mark": [
+              "兩百"
+            ],
+            "note": "$180 is over one hundred, not two hundred: 一百多."
+          },
+          {
+            "slot": {
+              "id": "n",
+              "tile": "多"
+            },
+            "note": "With a round number like 一百, 多 goes right after it, before the measure word: 一百多塊."
+          },
+          {
+            "slot": {
+              "id": "n",
+              "tile": "塊"
+            },
+            "note": "塊 follows 一百多: 一百多塊錢."
+          },
+          {
+            "slot": {
+              "id": "duo",
+              "tile": "一百"
+            },
+            "note": "The number comes first."
+          },
+          {
+            "slot": {
+              "id": "duo",
+              "tile": "塊"
+            },
+            "note": "塊 follows 一百多: 一百多塊錢."
+          },
+          {
+            "slot": {
+              "id": "m",
+              "tile": "一百"
+            },
+            "note": "The number comes first."
+          },
+          {
+            "slot": {
+              "id": "m",
+              "tile": "多"
+            },
+            "note": "With a round number like 一百, 多 goes right after it, before the measure word: 一百多塊."
           }
         ],
-        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "fallbackRepair": "一百多塊錢: round number, 多, then 塊.",
         "result": {
           "traditional": "一百多塊錢。",
           "pinyin": "Yì bǎi duō kuài qián.",
@@ -1528,7 +2044,8 @@
             0.074
           ],
           "alt": "Two cups of tea with a total price of $180."
-        }
+        },
+        "prompt": "How much are the two cups of black tea?"
       },
       {
         "id": "l04-g5-book3",
@@ -1551,20 +2068,29 @@
           {
             "segments": [
               {
-                "type": "text",
-                "traditional": ""
+                "type": "slot",
+                "id": "n",
+                "answers": [
+                  "兩千"
+                ]
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "duo",
                 "answers": [
-                  "兩千多塊"
+                  "多"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "m",
+                "answers": [
+                  "塊"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "錢。",
-                "simplified": "钱。"
+                "traditional": "錢。"
               }
             ],
             "speaker": {
@@ -1575,25 +2101,78 @@
         ],
         "tiles": [
           {
-            "traditional": "兩千塊多",
-            "pinyin": "liǎng qiān kuài duō",
-            "simplified": "两千块多"
+            "traditional": "多",
+            "pinyin": "duō"
           },
           {
-            "traditional": "兩千多塊",
-            "pinyin": "liǎng qiān duō kuài",
-            "simplified": "两千多块"
+            "traditional": "兩千",
+            "simplified": "两千",
+            "pinyin": "liǎngqiān"
+          },
+          {
+            "traditional": "塊",
+            "simplified": "块",
+            "pinyin": "kuài"
+          },
+          {
+            "traditional": "三千",
+            "pinyin": "sānqiān"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "兩千塊多"
+              "三千"
             ],
-            "note": "$2,200 is hundreds above $2,000, so put 多 before 塊 for the 2,001–2,999 range."
+            "mark": [
+              "三千"
+            ],
+            "note": "$2,200 is over two thousand: 兩千多."
+          },
+          {
+            "slot": {
+              "id": "n",
+              "tile": "多"
+            },
+            "note": "With a round number like 兩千, 多 goes right after it, before the measure word: 兩千多塊."
+          },
+          {
+            "slot": {
+              "id": "n",
+              "tile": "塊"
+            },
+            "note": "塊 follows 兩千多: 兩千多塊錢."
+          },
+          {
+            "slot": {
+              "id": "duo",
+              "tile": "兩千"
+            },
+            "note": "The number comes first."
+          },
+          {
+            "slot": {
+              "id": "duo",
+              "tile": "塊"
+            },
+            "note": "塊 follows 兩千多: 兩千多塊錢."
+          },
+          {
+            "slot": {
+              "id": "m",
+              "tile": "兩千"
+            },
+            "note": "The number comes first."
+          },
+          {
+            "slot": {
+              "id": "m",
+              "tile": "多"
+            },
+            "note": "With a round number like 兩千, 多 goes right after it, before the measure word: 兩千多塊."
           }
         ],
-        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "fallbackRepair": "兩千多塊錢: round number, 多, then 塊.",
         "result": {
           "traditional": "兩千多塊錢。",
           "pinyin": "Liǎng qiān duō kuài qián.",
@@ -1610,7 +2189,8 @@
             0.101
           ],
           "alt": "A jacket priced at $2,200."
-        }
+        },
+        "prompt": "How much is this jacket?"
       },
       {
         "id": "l04-g5-book4",
@@ -1633,14 +2213,24 @@
           {
             "segments": [
               {
-                "type": "text",
-                "traditional": ""
+                "type": "slot",
+                "id": "n",
+                "answers": [
+                  "十一"
+                ]
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "m",
                 "answers": [
-                  "十一點多"
+                  "點"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "duo",
+                "answers": [
+                  "多"
                 ]
               },
               {
@@ -1656,25 +2246,77 @@
         ],
         "tiles": [
           {
-            "traditional": "十二點多",
-            "pinyin": "shí’èr diǎn duō",
-            "simplified": "十二点多"
+            "traditional": "點",
+            "simplified": "点",
+            "pinyin": "diǎn"
           },
           {
-            "traditional": "十一點多",
-            "pinyin": "shíyī diǎn duō",
-            "simplified": "十一点多"
+            "traditional": "十二",
+            "pinyin": "shí'èr"
+          },
+          {
+            "traditional": "多",
+            "pinyin": "duō"
+          },
+          {
+            "traditional": "十一",
+            "pinyin": "shíyī"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "十二點多"
+              "十二"
             ],
-            "note": "The short hour hand points past XI, so the clock shows eleven-something rather than twelve-something."
+            "mark": [
+              "十二"
+            ],
+            "note": "The short hand is just past eleven: 十一點多."
+          },
+          {
+            "slot": {
+              "id": "n",
+              "tile": "點"
+            },
+            "note": "點 follows the hour: 十一點."
+          },
+          {
+            "slot": {
+              "id": "n",
+              "tile": "多"
+            },
+            "note": "A little past the hour: 多 goes after 點: 十一點多."
+          },
+          {
+            "slot": {
+              "id": "m",
+              "tile": "十一"
+            },
+            "note": "The hour comes first."
+          },
+          {
+            "slot": {
+              "id": "m",
+              "tile": "多"
+            },
+            "note": "A little past the hour: 多 goes after 點: 十一點多."
+          },
+          {
+            "slot": {
+              "id": "duo",
+              "tile": "十一"
+            },
+            "note": "The hour comes first."
+          },
+          {
+            "slot": {
+              "id": "duo",
+              "tile": "點"
+            },
+            "note": "點 follows the hour: 十一點."
           }
         ],
-        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "fallbackRepair": "A little past eleven: 十一點多.",
         "result": {
           "traditional": "十一點多。",
           "pinyin": "Shíyī diǎn duō.",
@@ -1691,7 +2333,8 @@
             0.107
           ],
           "alt": "A clock face with Roman numerals and ornate hands."
-        }
+        },
+        "prompt": "What time is it?"
       },
       {
         "id": "l04-g5-book5",
@@ -1719,9 +2362,23 @@
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "n",
                 "answers": [
-                  "十歲多"
+                  "十"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "m",
+                "answers": [
+                  "歲"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "duo",
+                "answers": [
+                  "多"
                 ]
               },
               {
@@ -1737,32 +2394,84 @@
         ],
         "tiles": [
           {
-            "traditional": "十歲多",
-            "pinyin": "shí suì duō",
-            "simplified": "十岁多"
+            "traditional": "多",
+            "pinyin": "duō"
           },
           {
-            "traditional": "九歲多",
-            "pinyin": "jiǔ suì duō",
-            "simplified": "九岁多"
+            "traditional": "十",
+            "pinyin": "shí"
+          },
+          {
+            "traditional": "歲",
+            "simplified": "岁",
+            "pinyin": "suì"
+          },
+          {
+            "traditional": "九",
+            "pinyin": "jiǔ"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "九歲多"
+              "九"
             ],
-            "note": "From 2016-01-01 to 2026-10-16, ten birthdays have passed, so the child is over ten."
+            "mark": [
+              "九"
+            ],
+            "note": "Born on 2016-1-1, the child turned ten this year: 十歲."
+          },
+          {
+            "slot": {
+              "id": "n",
+              "tile": "歲"
+            },
+            "note": "歲 follows the number: 十歲."
+          },
+          {
+            "slot": {
+              "id": "n",
+              "tile": "多"
+            },
+            "note": "He is a little over ten, so 多 goes after 歲: 十歲多. (十多歲 would mean 11 to 19.)"
+          },
+          {
+            "slot": {
+              "id": "m",
+              "tile": "十"
+            },
+            "note": "The age comes first."
+          },
+          {
+            "slot": {
+              "id": "m",
+              "tile": "多"
+            },
+            "note": "He is a little over ten, so 多 goes after 歲: 十歲多. (十多歲 would mean 11 to 19.)"
+          },
+          {
+            "slot": {
+              "id": "duo",
+              "tile": "十"
+            },
+            "note": "The age comes first."
+          },
+          {
+            "slot": {
+              "id": "duo",
+              "tile": "歲"
+            },
+            "note": "歲 follows the number: 十歲."
           }
         ],
-        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "fallbackRepair": "A little over ten: 十歲多.",
         "result": {
           "traditional": "他的孩子十歲多。",
           "pinyin": "Tā de háizi shí suì duō.",
           "english": "His child is a little over ten years old.",
           "simplified": "他的孩子十岁多。"
         },
-        "prompt": "For this picture, today is 2026-10-16.",
+        "prompt": "How old is Mr. Li’s child? (Today is 2026-10-16.)",
         "scene": {
           "type": "picture",
           "page": 107,
@@ -1801,15 +2510,28 @@
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "n",
                 "answers": [
-                  "八塊多"
+                  "八"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "m",
+                "answers": [
+                  "塊"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "duo",
+                "answers": [
+                  "多"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "錢。",
-                "simplified": "钱。"
+                "traditional": "錢。"
               }
             ],
             "speaker": {
@@ -1820,25 +2542,77 @@
         ],
         "tiles": [
           {
-            "traditional": "九塊多",
-            "simplified": "九块多",
-            "pinyin": "jiǔ kuài duō"
+            "traditional": "塊",
+            "simplified": "块",
+            "pinyin": "kuài"
           },
           {
-            "traditional": "八塊多",
-            "simplified": "八块多",
-            "pinyin": "bā kuài duō"
+            "traditional": "九",
+            "pinyin": "jiǔ"
+          },
+          {
+            "traditional": "多",
+            "pinyin": "duō"
+          },
+          {
+            "traditional": "八",
+            "pinyin": "bā"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "九塊多"
+              "九"
             ],
-            "note": "US$8.45 is still below nine dollars, so describe it as 八塊多 rather than rounding it up."
+            "mark": [
+              "九"
+            ],
+            "note": "US$8.45 is over eight dollars, not nine: 八塊多."
+          },
+          {
+            "slot": {
+              "id": "n",
+              "tile": "塊"
+            },
+            "note": "塊 follows 八: 八塊."
+          },
+          {
+            "slot": {
+              "id": "n",
+              "tile": "多"
+            },
+            "note": "Less than a dollar over, so 多 goes after 塊: 八塊多."
+          },
+          {
+            "slot": {
+              "id": "m",
+              "tile": "八"
+            },
+            "note": "The number comes first."
+          },
+          {
+            "slot": {
+              "id": "m",
+              "tile": "多"
+            },
+            "note": "Less than a dollar over, so 多 goes after 塊: 八塊多."
+          },
+          {
+            "slot": {
+              "id": "duo",
+              "tile": "八"
+            },
+            "note": "The number comes first."
+          },
+          {
+            "slot": {
+              "id": "duo",
+              "tile": "塊"
+            },
+            "note": "塊 follows 八: 八塊."
           }
         ],
-        "fallbackRepair": "Read the context again and choose the form that fits.",
+        "fallbackRepair": "Under a dollar over: 八塊多.",
         "result": {
           "traditional": "一共八塊多錢。",
           "pinyin": "Yígòng bā kuài duō qián.",
@@ -1855,7 +2629,8 @@
             0.104
           ],
           "alt": "Three pens and a flower priced together at US$8.45."
-        }
+        },
+        "prompt": "How much is all this together?"
       }
     ],
     "allowWords": [

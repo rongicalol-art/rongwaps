@@ -55,13 +55,18 @@
         ],
         "tiles": [
           {
+            "traditional": "十五分",
+            "pinyin": "shíwǔ fēn"
+          },
+          {
             "traditional": "十點",
             "simplified": "十点",
             "pinyin": "shí diǎn"
           },
           {
-            "traditional": "十五分",
-            "pinyin": "shíwǔ fēn"
+            "traditional": "十五點",
+            "simplified": "十五点",
+            "pinyin": "shíwǔ diǎn"
           },
           {
             "traditional": "十二點",
@@ -71,47 +76,39 @@
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "hour",
-              "tile": "十五分"
-            },
-            "mark": [
-              "十五分"
+            "placed": [
+              "十五點"
             ],
-            "note": "十五分 names the minutes; say the hour 十點 first."
+            "mark": [
+              "十五點"
+            ],
+            "note": "點 is for the hour and 分 for the minutes: fifteen minutes is 十五分, not 十五點."
+          },
+          {
+            "placed": [
+              "十二點"
+            ],
+            "mark": [
+              "十二點"
+            ],
+            "note": "The short hand points at ten, so the hour is 十點."
           },
           {
             "slot": {
               "id": "hour",
-              "tile": "十二點"
+              "tile": "十五分"
             },
-            "mark": [
-              "十二點"
-            ],
-            "note": "The clock shows ten, so the hour is 十點, not 十二點."
+            "note": "The minutes come after the hour: 十點十五分."
           },
           {
             "slot": {
               "id": "minute",
               "tile": "十點"
             },
-            "mark": [
-              "十點"
-            ],
-            "note": "十點 is the hour; the minutes 十五分 follow it."
-          },
-          {
-            "slot": {
-              "id": "minute",
-              "tile": "十二點"
-            },
-            "mark": [
-              "十二點"
-            ],
-            "note": "The clock shows fifteen past ten, so use 十五分."
+            "note": "Say the hour first: 十點, then the minutes."
           }
         ],
-        "fallbackRepair": "Say the hour 十點 before the minutes 十五分.",
+        "fallbackRepair": "Say the hour with 點, then the minutes with 分: 十點十五分.",
         "result": {
           "traditional": "現在十點十五分。",
           "simplified": "现在十点十五分。",
@@ -123,7 +120,8 @@
           "moment": {
             "time": "10:15"
           }
-        }
+        },
+        "prompt": "What time is it?"
       },
       {
         "id": "l2g01-2",
@@ -186,57 +184,53 @@
           {
             "traditional": "日",
             "pinyin": "rì"
+          },
+          {
+            "traditional": "幾",
+            "simplified": "几",
+            "pinyin": "jǐ"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "日"
+            ],
+            "mark": [
+              "日"
+            ],
+            "note": "星期日 is Sunday; the highlighted day is in the Monday column, so it is 星期一."
+          },
+          {
+            "placed": [
+              "幾"
+            ],
+            "mark": [
+              "幾"
+            ],
+            "note": "幾 asks the question; in the answer, say the day: 星期一."
+          },
           {
             "slot": {
               "id": "week",
               "tile": "一"
             },
-            "mark": [
-              "一"
-            ],
-            "note": "For Monday, put 星期 before 一."
-          },
-          {
-            "slot": {
-              "id": "week",
-              "tile": "日"
-            },
-            "mark": [
-              "日"
-            ],
-            "note": "This slot needs 星期; 日 belongs after it."
+            "note": "The number follows 星期: 星期一, never 一星期."
           },
           {
             "slot": {
               "id": "day",
               "tile": "星期"
             },
-            "mark": [
-              "星期"
-            ],
-            "note": "Put the weekday number 一 after 星期."
-          },
-          {
-            "slot": {
-              "id": "day",
-              "tile": "日"
-            },
-            "mark": [
-              "日"
-            ],
-            "note": "The highlighted date is in Monday’s column, so use 一; 日 would make 星期日, Sunday."
+            "note": "星期 comes first, then the number: 星期一."
           }
         ],
-        "fallbackRepair": "Name the day as 星期 plus its number.",
+        "fallbackRepair": "Say 星期 and then the day number: 星期一.",
         "result": {
           "traditional": "今天星期一。",
           "pinyin": "Jīntiān xīngqí yī.",
           "english": "Today is Monday."
         },
-        "prompt": "The highlighted day is today.",
         "scene": {
           "type": "month",
           "year": 2019,
@@ -244,7 +238,8 @@
           "highlight": [
             6
           ]
-        }
+        },
+        "prompt": "What day of the week is today?"
       },
       {
         "id": "l2g01-3",
@@ -297,69 +292,65 @@
         ],
         "tiles": [
           {
-            "traditional": "十二月",
-            "pinyin": "shí'èr yuè"
-          },
-          {
             "traditional": "七號",
             "simplified": "七号",
             "pinyin": "qī hào"
           },
           {
+            "traditional": "十二月",
+            "pinyin": "shí'èr yuè"
+          },
+          {
             "traditional": "十月",
             "pinyin": "shí yuè"
+          },
+          {
+            "traditional": "七月",
+            "pinyin": "qī yuè"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "十月"
+            ],
+            "mark": [
+              "十月"
+            ],
+            "note": "The highlighted month is the twelfth: 十二月."
+          },
+          {
+            "placed": [
+              "七月"
+            ],
+            "mark": [
+              "七月"
+            ],
+            "note": "七 is the day here, so it takes 號: 七號. The month is 十二月."
+          },
           {
             "slot": {
               "id": "month",
               "tile": "七號"
             },
-            "mark": [
-              "七號"
-            ],
-            "note": "Say the month 十二月 before the day 七號."
-          },
-          {
-            "slot": {
-              "id": "month",
-              "tile": "十月"
-            },
-            "mark": [
-              "十月"
-            ],
-            "note": "The highlighted month is the twelfth, so use 十二月."
+            "note": "The day comes after the month: 十二月七號."
           },
           {
             "slot": {
               "id": "day",
               "tile": "十二月"
             },
-            "mark": [
-              "十二月"
-            ],
-            "note": "The day 七號 follows the month 十二月."
-          },
-          {
-            "slot": {
-              "id": "day",
-              "tile": "十月"
-            },
-            "mark": [
-              "十月"
-            ],
-            "note": "The highlighted day is 七號, so use it after 十二月."
+            "note": "The month comes first, then the day: 十二月七號."
           }
         ],
-        "fallbackRepair": "Say the month first, then the day, ending with 號.",
+        "fallbackRepair": "Say the month, then the day with 號: 十二月七號.",
         "result": {
           "traditional": "今天十二月七號。",
           "simplified": "今天十二月七号。",
           "pinyin": "Jīntiān shí'èr yuè qī hào.",
           "english": "Today is December 7."
         },
-        "prompt": "The highlighted day is today.",
+        "prompt": "What is the date today?",
         "scene": {
           "type": "month",
           "year": 2019,
@@ -395,7 +386,7 @@
             "speaker": {
               "traditional": "A"
             },
-            "me": false
+            "me": true
           },
           {
             "segments": [
@@ -407,13 +398,23 @@
             "speaker": {
               "traditional": "B"
             },
-            "me": true
+            "me": false
           }
         ],
         "tiles": [
           {
             "traditional": "一",
             "pinyin": "yī"
+          },
+          {
+            "traditional": "什麼",
+            "simplified": "什么",
+            "pinyin": "shénme"
+          },
+          {
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
           },
           {
             "traditional": "幾",
@@ -423,24 +424,41 @@
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "ask",
-              "tile": "一"
-            },
+            "placed": [
+              "一"
+            ],
             "mark": [
               "一"
             ],
-            "note": "Use 幾 to ask for the unknown weekday; 一 states Monday."
+            "note": "一 tells the day; you are asking, so put 幾 where the number goes."
+          },
+          {
+            "placed": [
+              "什麼"
+            ],
+            "mark": [
+              "什麼"
+            ],
+            "note": "Weekdays are numbers, so ask with 幾: 星期幾. 什麼 asks \"what thing\"."
+          },
+          {
+            "placed": [
+              "嗎"
+            ],
+            "mark": [
+              "嗎"
+            ],
+            "note": "嗎 only asks yes or no. To ask which day, put 幾 where the number goes, with no 嗎."
           }
         ],
-        "fallbackRepair": "Use 幾 in place of the weekday number you are asking for.",
+        "fallbackRepair": "Ask for the number with 幾: 今天星期幾？",
         "result": {
           "traditional": "今天星期幾？",
           "simplified": "今天星期几？",
           "pinyin": "Jīntiān xīngqí jǐ?",
           "english": "What day of the week is it today?"
         },
-        "prompt": "You do not know today’s weekday; ask what it is."
+        "prompt": "Ask which day of the week it is."
       }
     ]
   },
@@ -470,7 +488,14 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "我今天"
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "day",
+                "answers": [
+                  "今天"
+                ]
               },
               {
                 "type": "slot",
@@ -512,58 +537,73 @@
             "traditional": "上課",
             "simplified": "上课",
             "pinyin": "shàngkè"
+          },
+          {
+            "traditional": "今天",
+            "pinyin": "jīntiān"
           }
         ],
         "repairs": [
+          {
+            "placed": [
+              "上課"
+            ],
+            "mark": [
+              "上課"
+            ],
+            "note": "上課 is when class starts; the question asks when it ends, 下課."
+          },
+          {
+            "slot": {
+              "id": "day",
+              "tile": "十點"
+            },
+            "note": "十點 comes after 今天 and before the action: 今天十點下課."
+          },
+          {
+            "slot": {
+              "id": "day",
+              "tile": "下課"
+            },
+            "note": "The action comes last, after every time word: 今天十點下課."
+          },
+          {
+            "slot": {
+              "id": "time",
+              "tile": "今天"
+            },
+            "note": "Times go before the action, the bigger one first: 今天, then 十點."
+          },
           {
             "slot": {
               "id": "time",
               "tile": "下課"
             },
-            "mark": [
-              "下課"
-            ],
-            "note": "Put 十點 before the action 下課."
+            "note": "The action comes last, after every time word: 今天十點下課."
           },
           {
             "slot": {
-              "id": "time",
-              "tile": "上課"
+              "id": "action",
+              "tile": "今天"
             },
-            "mark": [
-              "上課"
-            ],
-            "note": "The clock shows ten, so put 十點 before 下課."
+            "note": "Times go before the action, the bigger one first: 今天, then 十點."
           },
           {
             "slot": {
               "id": "action",
               "tile": "十點"
             },
-            "mark": [
-              "十點"
-            ],
-            "note": "The action 下課 follows the time 十點."
-          },
-          {
-            "slot": {
-              "id": "action",
-              "tile": "上課"
-            },
-            "mark": [
-              "上課"
-            ],
-            "note": "You are giving the end of class, so use 下課."
+            "note": "十點 comes after 今天 and before the action: 今天十點下課."
           }
         ],
-        "fallbackRepair": "Put the time before 下課.",
+        "fallbackRepair": "Times first, bigger to smaller, then the action: 我今天十點下課。",
         "result": {
           "traditional": "我今天十點下課。",
           "simplified": "我今天十点下课。",
           "pinyin": "Wǒ jīntiān shí diǎn xiàkè.",
           "english": "I finish class at ten today."
         },
-        "prompt": "Your class ends at the time shown.",
+        "prompt": "When does your class end today?",
         "scene": {
           "type": "moment",
           "moment": {
@@ -604,14 +644,22 @@
               },
               {
                 "type": "slot",
-                "id": "action",
+                "id": "negative",
                 "answers": [
-                  "不去學校"
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "verb",
+                "answers": [
+                  "去"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "學校。",
+                "simplified": "学校。"
               }
             ],
             "speaker": {
@@ -622,70 +670,83 @@
         ],
         "tiles": [
           {
-            "traditional": "不去學校",
-            "simplified": "不去学校",
-            "pinyin": "bú qù xuéxiào"
+            "traditional": "去",
+            "pinyin": "qù"
           },
           {
             "traditional": "星期一",
-            "pinyin": "xīngqí yī"
+            "pinyin": "xīngqíyī"
           },
           {
-            "traditional": "去學校",
-            "simplified": "去学校",
-            "pinyin": "qù xuéxiào"
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "星期日",
+            "pinyin": "xīngqírì"
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "time",
-              "tile": "不去學校"
-            },
-            "mark": [
-              "不去學校"
+            "placed": [
+              "星期日"
             ],
-            "note": "Put 星期一 before 不去學校."
+            "mark": [
+              "星期日"
+            ],
+            "note": "Your day off is Monday, 星期一; 星期日 is Sunday."
           },
           {
             "slot": {
               "id": "time",
-              "tile": "去學校"
+              "tile": "不"
             },
-            "mark": [
-              "去學校"
-            ],
-            "note": "Put the weekday 星期一 before the action 不去學校."
+            "note": "不 goes right before the verb it negates: 不去."
           },
           {
             "slot": {
-              "id": "action",
+              "id": "time",
+              "tile": "去"
+            },
+            "note": "The verb comes after 不: 不去學校."
+          },
+          {
+            "slot": {
+              "id": "negative",
               "tile": "星期一"
             },
-            "mark": [
-              "星期一"
-            ],
-            "note": "Put 不去學校 after the weekday to say you do not attend school that day."
+            "note": "The time comes first, before the action: 我星期一不去學校."
           },
           {
             "slot": {
-              "id": "action",
-              "tile": "去學校"
+              "id": "negative",
+              "tile": "去"
             },
-            "mark": [
-              "去學校"
-            ],
-            "note": "Monday is your day off, so choose 不去學校."
+            "note": "The verb comes after 不: 不去學校."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "星期一"
+            },
+            "note": "The time comes first, before the action: 我星期一不去學校."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "不"
+            },
+            "note": "不 goes right before the verb it negates: 不去."
           }
         ],
-        "fallbackRepair": "Put the weekday before 不去學校.",
+        "fallbackRepair": "Time first, then 不 + the action: 我星期一不去學校。",
         "result": {
           "traditional": "我星期一不去學校。",
           "simplified": "我星期一不去学校。",
           "pinyin": "Wǒ xīngqí yī bú qù xuéxiào.",
           "english": "I do not go to school on Monday."
         },
-        "prompt": "Monday is your day off school."
+        "prompt": "Monday is your day off. Which day don’t you go to school?"
       },
       {
         "id": "l2g02-3",
@@ -727,14 +788,14 @@
               },
               {
                 "type": "slot",
-                "id": "action",
+                "id": "verb",
                 "answers": [
-                  "去日本"
+                  "去"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "。"
+                "traditional": "日本。"
               }
             ],
             "speaker": {
@@ -745,13 +806,13 @@
         ],
         "tiles": [
           {
-            "traditional": "去日本",
-            "pinyin": "qù Rìběn"
-          },
-          {
             "traditional": "七號",
             "simplified": "七号",
             "pinyin": "qī hào"
+          },
+          {
+            "traditional": "去",
+            "pinyin": "qù"
           },
           {
             "traditional": "十二月",
@@ -764,104 +825,65 @@
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "month",
-              "tile": "去日本"
-            },
-            "mark": [
-              "去日本"
+            "placed": [
+              "十月"
             ],
-            "note": "Start the date with 十二月 and put 去日本 after the whole date."
+            "mark": [
+              "十月"
+            ],
+            "note": "The calendar shows the twelfth month: 十二月."
           },
           {
             "slot": {
               "id": "month",
               "tile": "七號"
             },
-            "mark": [
-              "七號"
-            ],
-            "note": "The month 十二月 comes before the day 七號."
+            "note": "The day follows the month: 十二月七號."
           },
           {
             "slot": {
               "id": "month",
-              "tile": "十月"
+              "tile": "去"
             },
-            "mark": [
-              "十月"
-            ],
-            "note": "Your departure is in the twelfth month, so use 十二月."
-          },
-          {
-            "slot": {
-              "id": "day",
-              "tile": "去日本"
-            },
-            "mark": [
-              "去日本"
-            ],
-            "note": "Finish the date with 七號 before 去日本."
+            "note": "The action comes after the whole date: 十二月七號去日本."
           },
           {
             "slot": {
               "id": "day",
               "tile": "十二月"
             },
-            "mark": [
-              "十二月"
-            ],
-            "note": "七號 follows 十二月 to complete the date."
+            "note": "The date goes before the action, month first: 十二月七號."
           },
           {
             "slot": {
               "id": "day",
-              "tile": "十月"
+              "tile": "去"
             },
-            "mark": [
-              "十月"
-            ],
-            "note": "The departure day is 七號, which follows 十二月."
+            "note": "The action comes after the whole date: 十二月七號去日本."
           },
           {
             "slot": {
-              "id": "action",
+              "id": "verb",
+              "tile": "十二月"
+            },
+            "note": "The date goes before the action, month first: 十二月七號."
+          },
+          {
+            "slot": {
+              "id": "verb",
               "tile": "七號"
             },
-            "mark": [
-              "七號"
-            ],
-            "note": "Put 去日本 after the complete date 十二月七號."
-          },
-          {
-            "slot": {
-              "id": "action",
-              "tile": "十二月"
-            },
-            "mark": [
-              "十二月"
-            ],
-            "note": "Put 去日本 after the complete date 十二月七號."
-          },
-          {
-            "slot": {
-              "id": "action",
-              "tile": "十月"
-            },
-            "mark": [
-              "十月"
-            ],
-            "note": "Use 去日本 for the action after the date."
+            "note": "The day follows the month: 十二月七號."
           }
         ],
-        "fallbackRepair": "Say the month and day before 去日本.",
+        "fallbackRepair": "Date first (month, then day), then the action: 我十二月七號去日本。",
         "result": {
           "traditional": "我十二月七號去日本。",
           "simplified": "我十二月七号去日本。",
           "pinyin": "Wǒ shí'èr yuè qī hào qù Rìběn.",
           "english": "I am going to Japan on December 7."
         },
-        "prompt": "You leave for Japan on the date shown.",
+        "prompt": "When are you going to Japan?",
         "scene": {
           "type": "moment",
           "moment": {
@@ -910,8 +932,15 @@
                 ]
               },
               {
+                "type": "slot",
+                "id": "verb",
+                "answers": [
+                  "回"
+                ]
+              },
+              {
                 "type": "text",
-                "traditional": "回家。"
+                "traditional": "家。"
               }
             ],
             "speaker": {
@@ -922,12 +951,16 @@
         ],
         "tiles": [
           {
-            "traditional": "不",
-            "pinyin": "bù"
+            "traditional": "回",
+            "pinyin": "huí"
           },
           {
             "traditional": "中午",
             "pinyin": "zhōngwǔ"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
           },
           {
             "traditional": "下午",
@@ -936,53 +969,64 @@
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "time",
-              "tile": "不"
-            },
-            "mark": [
-              "不"
+            "placed": [
+              "下午"
             ],
-            "note": "Put the time 中午 before 不回家."
+            "mark": [
+              "下午"
+            ],
+            "note": "The question is about noon, 中午."
           },
           {
             "slot": {
               "id": "time",
-              "tile": "下午"
+              "tile": "不"
             },
-            "mark": [
-              "下午"
-            ],
-            "note": "The question asks about noon, so answer with 中午."
+            "note": "不 goes right before the verb: 不回家."
+          },
+          {
+            "slot": {
+              "id": "time",
+              "tile": "回"
+            },
+            "note": "The verb follows 不: 不回家."
           },
           {
             "slot": {
               "id": "negative",
               "tile": "中午"
             },
-            "mark": [
-              "中午"
-            ],
-            "note": "Keep 不 directly before 回家, after 中午."
+            "note": "The time goes first: 我中午不回家."
           },
           {
             "slot": {
               "id": "negative",
-              "tile": "下午"
+              "tile": "回"
             },
-            "mark": [
-              "下午"
-            ],
-            "note": "Put 不 directly before 回家 to say you do not go home at noon."
+            "note": "The verb follows 不: 不回家."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "中午"
+            },
+            "note": "The time goes first: 我中午不回家."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "不"
+            },
+            "note": "不 goes right before the verb: 不回家."
           }
         ],
-        "fallbackRepair": "Put 中午 before the negative action 不回家.",
+        "fallbackRepair": "Time first, then 不 + the action: 我中午不回家。",
         "result": {
           "traditional": "我中午不回家。",
           "pinyin": "Wǒ zhōngwǔ bù huí jiā.",
           "english": "I do not go home at noon."
         },
-        "prompt": "You stay away from home at noon."
+        "prompt": "You stay at school at noon. Answer."
       }
     ],
     "allowWords": [
@@ -1042,31 +1086,56 @@
             "pinyin": "yǒu"
           },
           {
+            "traditional": "不有",
+            "pinyin": "bù yǒu"
+          },
+          {
             "traditional": "沒有",
-            "pinyin": "méi yǒu",
-            "simplified": "没有"
+            "simplified": "没有",
+            "pinyin": "méiyǒu"
+          },
+          {
+            "traditional": "不是",
+            "pinyin": "búshì"
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "have",
-              "tile": "有"
-            },
+            "placed": [
+              "有"
+            ],
             "mark": [
               "有"
             ],
-            "note": "None of your friends are American, so answer 沒有."
+            "note": "None of your friends are American, so say you don’t have any: 沒有."
+          },
+          {
+            "placed": [
+              "不有"
+            ],
+            "mark": [
+              "不有"
+            ],
+            "note": "有 is never negated with 不. Say 沒有."
+          },
+          {
+            "placed": [
+              "不是"
+            ],
+            "mark": [
+              "不是"
+            ],
+            "note": "不是 says you are not something. For not having, use 沒有."
           }
         ],
-        "fallbackRepair": "Use 沒有 to say you do not have American friends.",
+        "fallbackRepair": "Not having is 沒有: 我沒有美國朋友。",
         "result": {
           "traditional": "我沒有美國朋友。",
           "simplified": "我没有美国朋友。",
           "pinyin": "Wǒ méi yǒu Měiguó péngyǒu.",
           "english": "I do not have any American friends."
         },
-        "prompt": "All your friends are Taiwanese."
+        "prompt": "All your friends are Taiwanese. Answer."
       },
       {
         "id": "l2g03-2",
@@ -1096,7 +1165,7 @@
                 "type": "slot",
                 "id": "have",
                 "answers": [
-                  "沒有"
+                  "有"
                 ]
               },
               {
@@ -1113,35 +1182,60 @@
         ],
         "tiles": [
           {
+            "traditional": "是",
+            "pinyin": "shì"
+          },
+          {
             "traditional": "有",
             "pinyin": "yǒu"
           },
           {
+            "traditional": "很",
+            "pinyin": "hěn"
+          },
+          {
             "traditional": "沒有",
-            "pinyin": "méi yǒu",
-            "simplified": "没有"
+            "simplified": "没有",
+            "pinyin": "méiyǒu"
           }
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "have",
-              "tile": "有"
-            },
-            "mark": [
-              "有"
+            "placed": [
+              "是"
             ],
-            "note": "The pictured phone belongs to the questioner and you have none, so answer 沒有."
+            "mark": [
+              "是"
+            ],
+            "note": "我是手機 would mean \"I am a phone\". For owning, use 有."
+          },
+          {
+            "placed": [
+              "很"
+            ],
+            "mark": [
+              "很"
+            ],
+            "note": "很 goes before describing words like 忙, not before a thing. To own a phone, use 有."
+          },
+          {
+            "placed": [
+              "沒有"
+            ],
+            "mark": [
+              "沒有"
+            ],
+            "note": "The phone in the picture is yours, so you do have one: 有."
           }
         ],
-        "fallbackRepair": "Use 沒有 to say you have no phone.",
+        "fallbackRepair": "To say you own it, use 有: 我有手機。",
         "result": {
-          "traditional": "我沒有手機。",
-          "simplified": "我没有手机。",
-          "pinyin": "Wǒ méi yǒu shǒujī.",
-          "english": "I do not have a cell phone."
+          "traditional": "我有手機。",
+          "simplified": "我有手机。",
+          "pinyin": "Wǒ yǒu shǒujī.",
+          "english": "I have a cell phone."
         },
-        "prompt": "The pictured phone belongs to the person asking; you have no phone.",
+        "prompt": "The phone in the picture is yours. Answer.",
         "scene": {
           "type": "picture",
           "page": 56,
@@ -1216,90 +1310,31 @@
         ],
         "repairs": [
           {
-            "slot": {
-              "id": "person",
-              "tile": "我"
-            },
+            "placed": [
+              "我"
+            ],
             "mark": [
               "我"
             ],
-            "note": "The listener has the water, so address that person as 你."
+            "note": "The water is with the person asking you, so call them 你."
           },
           {
-            "slot": {
-              "id": "person",
-              "tile": "他"
-            },
+            "placed": [
+              "他"
+            ],
             "mark": [
               "他"
             ],
-            "note": "The water belongs to the person you are speaking to, so use 你."
+            "note": "他 is someone else; the person asking you has the water, so say 你."
           }
         ],
-        "fallbackRepair": "Use 你 for the listener who has the water.",
+        "fallbackRepair": "Point to the person you are talking to: 你有水。",
         "result": {
           "traditional": "你有水。",
           "pinyin": "Nǐ yǒu shuǐ.",
           "english": "You have water."
         },
-        "prompt": "Only the person asking you has water."
-      },
-      {
-        "id": "l2g03-4",
-        "source": "own",
-        "kind": "slot-build",
-        "lines": [
-          {
-            "segments": [
-              {
-                "type": "text",
-                "traditional": "王先生"
-              },
-              {
-                "type": "slot",
-                "id": "negative",
-                "answers": [
-                  "沒"
-                ]
-              },
-              {
-                "type": "text",
-                "traditional": "有孩子。"
-              }
-            ]
-          }
-        ],
-        "tiles": [
-          {
-            "traditional": "不",
-            "pinyin": "bù"
-          },
-          {
-            "traditional": "沒",
-            "pinyin": "méi",
-            "simplified": "没"
-          }
-        ],
-        "repairs": [
-          {
-            "slot": {
-              "id": "negative",
-              "tile": "不"
-            },
-            "mark": [
-              "不"
-            ],
-            "note": "To say Mr Wang has no children, negate 有 with 沒."
-          }
-        ],
-        "fallbackRepair": "Put 沒 before 有 to make 沒有.",
-        "result": {
-          "traditional": "王先生沒有孩子。",
-          "pinyin": "Wáng xiānshēng méi yǒu háizi.",
-          "english": "Mr Wang does not have any children.",
-          "simplified": "王先生没有孩子。"
-        },
-        "prompt": "Mr Wang has no children."
+        "prompt": "The person asking you is the one with water. Answer."
       }
     ],
     "allowWords": [
@@ -1397,7 +1432,7 @@
           "english": "Mom’s birthday is February 24."
         },
         "gaps": true,
-        "prompt": "Drag 的 to where it goes."
+        "prompt": "Where does 的 go?"
       },
       {
         "id": "l2g04-2",
@@ -1491,7 +1526,7 @@
           "english": "Do you like Taiwanese fruit?"
         },
         "gaps": true,
-        "prompt": "Drag 的 to where it goes."
+        "prompt": "Where does 的 go?"
       },
       {
         "id": "l2g04-3",
@@ -1578,7 +1613,7 @@
           "pinyin": "Wǒ de háizi míngtiān qù Měiguó.",
           "english": "My child is going to the United States tomorrow."
         },
-        "prompt": "Drag 的 to where it goes.",
+        "prompt": "Where does 的 go?",
         "gaps": true
       }
     ],
@@ -1616,14 +1651,28 @@
               },
               {
                 "type": "slot",
-                "id": "want",
+                "id": "negative",
                 "answers": [
-                  "不要"
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "aux",
+                "answers": [
+                  "要"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "verb",
+                "answers": [
+                  "吃"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "吃水果。"
+                "traditional": "水果。"
               }
             ],
             "speaker": {
@@ -1638,29 +1687,78 @@
             "pinyin": "yào"
           },
           {
-            "traditional": "不要",
-            "pinyin": "bú yào"
+            "traditional": "吃",
+            "pinyin": "chī"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "喝",
+            "pinyin": "hē"
           }
         ],
         "repairs": [
           {
+            "placed": [
+              "喝"
+            ],
+            "mark": [
+              "喝"
+            ],
+            "note": "Fruit is eaten, so the verb is 吃; 喝 is for drinks."
+          },
+          {
             "slot": {
-              "id": "want",
+              "id": "negative",
               "tile": "要"
             },
-            "mark": [
-              "要"
-            ],
-            "note": "You are declining the fruit, so put 不要 before 吃."
+            "note": "要 goes before the main verb: 不要吃."
+          },
+          {
+            "slot": {
+              "id": "negative",
+              "tile": "吃"
+            },
+            "note": "The main verb comes after 要: 不要吃水果."
+          },
+          {
+            "slot": {
+              "id": "aux",
+              "tile": "不"
+            },
+            "note": "不 goes first, before 要: 不要吃."
+          },
+          {
+            "slot": {
+              "id": "aux",
+              "tile": "吃"
+            },
+            "note": "The main verb comes after 要: 不要吃水果."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "不"
+            },
+            "note": "不 goes first, before 要: 不要吃."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "要"
+            },
+            "note": "要 goes before the main verb: 不要吃."
           }
         ],
-        "fallbackRepair": "Put 不要 before 吃 to decline the fruit.",
+        "fallbackRepair": "Negate 要, then the action: 我不要吃水果。",
         "result": {
           "traditional": "我不要吃水果。",
           "pinyin": "Wǒ bú yào chī shuǐguǒ.",
           "english": "I do not want to eat fruit."
         },
-        "prompt": "Decline the offer of fruit."
+        "prompt": "You don’t want any fruit. Answer."
       },
       {
         "id": "l2g05-2",
@@ -1688,15 +1786,29 @@
               },
               {
                 "type": "slot",
-                "id": "liking",
+                "id": "negative",
                 "answers": [
-                  "不喜歡"
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "aux",
+                "answers": [
+                  "喜歡"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "verb",
+                "answers": [
+                  "來"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "來學校。",
-                "simplified": "来学校。"
+                "traditional": "學校。",
+                "simplified": "学校。"
               }
             ],
             "speaker": {
@@ -1707,36 +1819,86 @@
         ],
         "tiles": [
           {
+            "traditional": "來",
+            "simplified": "来",
+            "pinyin": "lái"
+          },
+          {
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
             "traditional": "喜歡",
             "simplified": "喜欢",
             "pinyin": "xǐhuān"
           },
           {
-            "traditional": "不喜歡",
-            "simplified": "不喜欢",
-            "pinyin": "bù xǐhuān"
+            "traditional": "沒",
+            "simplified": "没",
+            "pinyin": "méi"
           }
         ],
         "repairs": [
           {
+            "placed": [
+              "沒"
+            ],
+            "mark": [
+              "沒"
+            ],
+            "note": "喜歡 is negated with 不, not 沒: 不喜歡."
+          },
+          {
             "slot": {
-              "id": "liking",
+              "id": "negative",
               "tile": "喜歡"
             },
-            "mark": [
-              "喜歡"
-            ],
-            "note": "Coming to school is unpleasant for you, so choose 不喜歡."
+            "note": "喜歡 comes before the action 來: 不喜歡來學校."
+          },
+          {
+            "slot": {
+              "id": "negative",
+              "tile": "來"
+            },
+            "note": "The action comes after 喜歡: 不喜歡來學校."
+          },
+          {
+            "slot": {
+              "id": "aux",
+              "tile": "不"
+            },
+            "note": "不 goes right before 喜歡: 不喜歡."
+          },
+          {
+            "slot": {
+              "id": "aux",
+              "tile": "來"
+            },
+            "note": "The action comes after 喜歡: 不喜歡來學校."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "不"
+            },
+            "note": "不 goes right before 喜歡: 不喜歡."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "喜歡"
+            },
+            "note": "喜歡 comes before the action 來: 不喜歡來學校."
           }
         ],
-        "fallbackRepair": "Put 不喜歡 before 來 to express your dislike.",
+        "fallbackRepair": "Say 不喜歡 and then the action: 我不喜歡來學校。",
         "result": {
           "traditional": "我不喜歡來學校。",
           "simplified": "我不喜欢来学校。",
           "pinyin": "Wǒ bù xǐhuān lái xuéxiào.",
           "english": "I do not like coming to school."
         },
-        "prompt": "You dislike coming to school."
+        "prompt": "You don’t like coming to school. Answer."
       },
       {
         "id": "l2g05-3",
@@ -1760,8 +1922,21 @@
             "segments": [
               {
                 "type": "text",
-                "traditional": "我愛喝",
-                "simplified": "我爱喝"
+                "traditional": "我"
+              },
+              {
+                "type": "slot",
+                "id": "aux",
+                "answers": [
+                  "愛"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "verb",
+                "answers": [
+                  "喝"
+                ]
               },
               {
                 "type": "slot",
@@ -1787,30 +1962,80 @@
             "pinyin": "nǎichá"
           },
           {
-            "traditional": "水",
-            "pinyin": "shuǐ"
+            "traditional": "喝",
+            "pinyin": "hē"
+          },
+          {
+            "traditional": "吃",
+            "pinyin": "chī"
+          },
+          {
+            "traditional": "愛",
+            "simplified": "爱",
+            "pinyin": "ài"
           }
         ],
         "repairs": [
           {
+            "placed": [
+              "吃"
+            ],
+            "mark": [
+              "吃"
+            ],
+            "note": "Milk tea is drunk, so the verb is 喝."
+          },
+          {
+            "slot": {
+              "id": "aux",
+              "tile": "喝"
+            },
+            "note": "The action follows 愛: 愛喝奶茶."
+          },
+          {
+            "slot": {
+              "id": "aux",
+              "tile": "奶茶"
+            },
+            "note": "The drink comes last, after 愛喝."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "愛"
+            },
+            "note": "愛 comes before the action: 愛喝."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "奶茶"
+            },
+            "note": "The drink comes last, after 愛喝."
+          },
+          {
             "slot": {
               "id": "drink",
-              "tile": "水"
+              "tile": "愛"
             },
-            "mark": [
-              "水"
-            ],
-            "note": "Your favourite is milk tea rather than water, so choose 奶茶."
+            "note": "愛 comes before the action: 愛喝."
+          },
+          {
+            "slot": {
+              "id": "drink",
+              "tile": "喝"
+            },
+            "note": "The action follows 愛: 愛喝奶茶."
           }
         ],
-        "fallbackRepair": "Name your favourite drink, 奶茶, after 愛喝.",
+        "fallbackRepair": "Say 愛, then the action, then the drink: 我愛喝奶茶。",
         "result": {
           "traditional": "我愛喝奶茶。",
           "simplified": "我爱喝奶茶。",
           "pinyin": "Wǒ ài hē nǎichá.",
           "english": "I love drinking milk tea."
         },
-        "prompt": "Milk tea is your favourite drink."
+        "prompt": "What do you love to drink? (Milk tea.)"
       },
       {
         "id": "l2g05-4",
@@ -2067,40 +2292,43 @@
             "placed": [
               "嗎"
             ],
+            "mark": [
+              "嗎"
+            ],
             "note": "嗎 is never used in this pattern; 熱不熱 already makes the question."
           },
           {
-            "slot": {
-              "id": "negative",
-              "tile": "沒"
-            },
+            "placed": [
+              "沒"
+            ],
             "mark": [
               "沒"
             ],
-            "note": "The picture shows a quality, 熱, so pair it with 不 rather than 沒."
+            "note": "熱 describes a quality, so it is negated with 不, not 沒."
           },
           {
             "slot": {
               "id": "first",
               "tile": "不"
             },
-            "mark": [
-              "不"
-            ],
-            "note": "Start with the word you are asking about: 熱."
+            "note": "不 goes in the middle: 熱不熱."
+          },
+          {
+            "slot": {
+              "id": "negative",
+              "tile": "熱"
+            },
+            "note": "熱 goes on both sides: 熱 不 熱."
           },
           {
             "slot": {
               "id": "second",
               "tile": "不"
             },
-            "mark": [
-              "不"
-            ],
-            "note": "End with the word again: 熱 不 熱."
+            "note": "不 goes in the middle: 熱不熱."
           }
         ],
-        "fallbackRepair": "Say the word, then 不, then the word again: 熱不熱.",
+        "fallbackRepair": "Say 熱, then 不, then 熱 again: 熱不熱.",
         "result": {
           "traditional": "台灣熱不熱？",
           "simplified": "台湾热不热？",
@@ -2114,7 +2342,7 @@
             0.635,
             0.631,
             0.153,
-            0.132
+            0.115
           ],
           "alt": "A person wipes sweat beneath a bright sun."
         },
@@ -2215,13 +2443,15 @@
             "placed": [
               "嗎"
             ],
-            "note": "嗎 is never used in this pattern; the verb, 不, then the verb again already asks the question."
+            "mark": [
+              "嗎"
+            ],
+            "note": "嗎 is never used in this pattern; 喜歡不喜歡 already makes the question."
           },
           {
-            "slot": {
-              "id": "negative",
-              "tile": "沒"
-            },
+            "placed": [
+              "沒"
+            ],
             "mark": [
               "沒"
             ],
@@ -2232,23 +2462,24 @@
               "id": "first",
               "tile": "不"
             },
-            "mark": [
-              "不"
-            ],
-            "note": "Start with the verb you are asking about: 喜歡."
+            "note": "不 goes in the middle: 喜歡不喜歡."
+          },
+          {
+            "slot": {
+              "id": "negative",
+              "tile": "喜歡"
+            },
+            "note": "喜歡 goes on both sides: 喜歡 不 喜歡."
           },
           {
             "slot": {
               "id": "second",
               "tile": "不"
             },
-            "mark": [
-              "不"
-            ],
-            "note": "End with the verb again: 喜歡 不 喜歡."
+            "note": "不 goes in the middle: 喜歡不喜歡."
           }
         ],
-        "fallbackRepair": "Say the verb, then 不, then the verb again: 喜歡不喜歡.",
+        "fallbackRepair": "Say 喜歡, then 不, then 喜歡 again: 喜歡不喜歡.",
         "result": {
           "traditional": "你喜歡不喜歡吃水果？",
           "simplified": "你喜欢不喜欢吃水果？",
@@ -2341,13 +2572,15 @@
             "placed": [
               "嗎"
             ],
+            "mark": [
+              "嗎"
+            ],
             "note": "嗎 is never used in this pattern; 要不要 already makes the question."
           },
           {
-            "slot": {
-              "id": "negative",
-              "tile": "沒"
-            },
+            "placed": [
+              "沒"
+            ],
             "mark": [
               "沒"
             ],
@@ -2358,20 +2591,21 @@
               "id": "first",
               "tile": "不"
             },
-            "mark": [
-              "不"
-            ],
-            "note": "Start with the word you are asking about: 要."
+            "note": "不 goes in the middle: 要不要."
+          },
+          {
+            "slot": {
+              "id": "negative",
+              "tile": "要"
+            },
+            "note": "要 goes on both sides: 要 不 要."
           },
           {
             "slot": {
               "id": "second",
               "tile": "不"
             },
-            "mark": [
-              "不"
-            ],
-            "note": "End with the word again: 要 不 要."
+            "note": "不 goes in the middle: 要不要."
           }
         ],
         "fallbackRepair": "Say 要, then 不, then 要 again: 要不要.",
@@ -2451,37 +2685,40 @@
             "placed": [
               "嗎"
             ],
+            "mark": [
+              "嗎"
+            ],
             "note": "嗎 is never used in this pattern; 有沒有 already makes the question."
           },
           {
-            "slot": {
-              "id": "negative",
-              "tile": "不"
-            },
+            "placed": [
+              "不"
+            ],
             "mark": [
               "不"
             ],
-            "note": "有 is negated with 沒, so the question is 有沒有, not 有不有."
+            "note": "有 is negated with 沒, so the question is 有沒有, never 有不有."
           },
           {
             "slot": {
               "id": "first",
               "tile": "沒"
             },
-            "mark": [
-              "沒"
-            ],
-            "note": "Start with the word you are asking about: 有."
+            "note": "沒 goes in the middle: 有沒有."
+          },
+          {
+            "slot": {
+              "id": "negative",
+              "tile": "有"
+            },
+            "note": "有 goes on both sides: 有 沒 有."
           },
           {
             "slot": {
               "id": "second",
               "tile": "沒"
             },
-            "mark": [
-              "沒"
-            ],
-            "note": "End with 有 again: 有 沒 有."
+            "note": "沒 goes in the middle: 有沒有."
           }
         ],
         "fallbackRepair": "Say 有, then 沒, then 有 again: 有沒有.",

@@ -17,7 +17,8 @@
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": false
           },
           {
             "segments": [
@@ -39,17 +40,25 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": true
           }
         ],
         "tiles": [
           {
             "traditional": "不會",
+            "simplified": "不会",
             "pinyin": "bú huì"
           },
           {
             "traditional": "會",
+            "simplified": "会",
             "pinyin": "huì"
+          },
+          {
+            "traditional": "會不會",
+            "simplified": "会不会",
+            "pinyin": "huì bu huì"
           }
         ],
         "repairs": [
@@ -57,16 +66,29 @@
             "placed": [
               "不會"
             ],
-            "note": "You can join the team because you know how to play, so use 會."
+            "mark": [
+              "不會"
+            ],
+            "note": "You learned from your brother and play on his team, so you can: 會."
+          },
+          {
+            "placed": [
+              "會不會"
+            ],
+            "mark": [
+              "會不會"
+            ],
+            "note": "會不會 asks the question. In your answer, say 會 or 不會."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "You can play: 我會踢足球。",
         "result": {
           "traditional": "我會踢足球。",
           "pinyin": "Wǒ huì tī zúqiú.",
           "english": "I know how to play soccer."
         },
-        "sub": "You learned to play from your brother and can join his team."
+        "sub": "You learned to play from your brother and can join his team.",
+        "prompt": "Can you play soccer?"
       },
       {
         "id": "b1l06-g01-p135-practice-2",
@@ -82,7 +104,8 @@
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": false
           },
           {
             "segments": [
@@ -104,16 +127,24 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": true
           }
         ],
         "tiles": [
           {
             "traditional": "會",
+            "simplified": "会",
             "pinyin": "huì"
           },
           {
+            "traditional": "會不會",
+            "simplified": "会不会",
+            "pinyin": "huì bu huì"
+          },
+          {
             "traditional": "不會",
+            "simplified": "不会",
             "pinyin": "bú huì"
           }
         ],
@@ -122,16 +153,29 @@
             "placed": [
               "會"
             ],
-            "note": "He cannot speak Chinese, so answer with 不會."
+            "mark": [
+              "會"
+            ],
+            "note": "He never learned Chinese, so he can’t: 不會."
+          },
+          {
+            "placed": [
+              "會不會"
+            ],
+            "mark": [
+              "會不會"
+            ],
+            "note": "會不會 asks the question. In your answer, say 會 or 不會."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "He never learned it: 他不會說中文。",
         "result": {
           "traditional": "他不會說中文。",
           "pinyin": "Tā bú huì shuō Zhōngwén.",
           "english": "He does not know how to speak Chinese."
         },
-        "sub": "Your brother has never learned Chinese and cannot speak it."
+        "sub": "Your brother has never learned Chinese and cannot speak it.",
+        "prompt": "Can your younger brother speak Chinese?"
       },
       {
         "id": "b1l06-g01-p135-practice-3",
@@ -146,19 +190,35 @@
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "first",
                 "answers": [
-                  "會不會"
+                  "會"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "neg",
+                "answers": [
+                  "不"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "second",
+                "answers": [
+                  "會"
                 ]
               },
               {
                 "type": "text",
-                "traditional": "做牛肉麵？"
+                "traditional": "做牛肉麵？",
+                "simplified": "做牛肉面？"
               }
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": true
           },
           {
             "segments": [
@@ -169,34 +229,83 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": false
           }
         ],
         "tiles": [
           {
-            "traditional": "想不想",
-            "pinyin": "xiǎng bu xiǎng"
+            "traditional": "會",
+            "simplified": "会",
+            "pinyin": "huì"
           },
           {
-            "traditional": "會不會",
-            "pinyin": "huì bú huì"
+            "traditional": "不",
+            "pinyin": "bù"
+          },
+          {
+            "traditional": "想",
+            "pinyin": "xiǎng"
+          },
+          {
+            "traditional": "會",
+            "simplified": "会",
+            "pinyin": "huì"
+          },
+          {
+            "traditional": "嗎",
+            "simplified": "吗",
+            "pinyin": "ma"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "想不想"
+              "想"
             ],
-            "note": "The reply describes a missing skill, so ask 會不會 rather than whether the person wants to cook."
+            "mark": [
+              "想"
+            ],
+            "note": "The answer 我不會做 is about skill, so ask with 會, not 想."
+          },
+          {
+            "placed": [
+              "嗎"
+            ],
+            "mark": [
+              "嗎"
+            ],
+            "note": "嗎 is never used with 會不會; the pattern already asks."
+          },
+          {
+            "slot": {
+              "id": "first",
+              "tile": "不"
+            },
+            "note": "不 goes in the middle: 會不會."
+          },
+          {
+            "slot": {
+              "id": "neg",
+              "tile": "會"
+            },
+            "note": "會 goes on both sides: 會不會."
+          },
+          {
+            "slot": {
+              "id": "second",
+              "tile": "不"
+            },
+            "note": "不 goes in the middle: 會不會."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "Ask about skill with 會不會: 你會不會做牛肉麵？",
         "result": {
           "traditional": "你會不會做牛肉麵？",
           "pinyin": "Nǐ huì bú huì zuò niúròumiàn?",
           "english": "Do you know how to make beef noodles?"
         },
-        "sub": "Ask whether your friend knows how to make the noodles."
+        "prompt": "Ask whether your friend knows how to make beef noodles."
       },
       {
         "id": "b1l06-g01-p135-practice-4",
@@ -212,7 +321,8 @@
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": false
           },
           {
             "segments": [
@@ -234,17 +344,23 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": true
           }
         ],
         "tiles": [
+          {
+            "traditional": "不會",
+            "simplified": "不会",
+            "pinyin": "bú huì"
+          },
           {
             "traditional": "不想",
             "pinyin": "bù xiǎng"
           },
           {
-            "traditional": "不會",
-            "pinyin": "bú huì"
+            "traditional": "不是",
+            "pinyin": "búshì"
           }
         ],
         "repairs": [
@@ -252,16 +368,29 @@
             "placed": [
               "不會"
             ],
-            "note": "You have the skill but prefer another activity, so use 不想 for your wish."
+            "mark": [
+              "不會"
+            ],
+            "note": "You know how to swim, so it isn’t 不會; you just don’t feel like it: 不想."
+          },
+          {
+            "placed": [
+              "不是"
+            ],
+            "mark": [
+              "不是"
+            ],
+            "note": "我不是游泳 is not Chinese. To say you don’t feel like swimming, use 不想."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "You can swim but don’t feel like it: 我不想游泳。",
         "result": {
           "traditional": "我不想游泳，我們去打球吧。",
           "pinyin": "Wǒ bù xiǎng yóuyǒng, wǒmen qù dǎqiú ba.",
           "english": "I do not want to swim; let’s play ball."
         },
-        "sub": "You know how to swim, but you prefer to play ball this afternoon."
+        "sub": "You know how to swim, but you prefer to play ball this afternoon.",
+        "prompt": "Your friend suggests swimming this afternoon. Answer."
       }
     ]
   },
@@ -283,19 +412,34 @@
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": false
           },
           {
             "segments": [
               {
                 "type": "text",
-                "traditional": "他喝得"
+                "traditional": "他喝"
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "de",
                 "answers": [
-                  "很多"
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "very",
+                "answers": [
+                  "很"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "adj",
+                "answers": [
+                  "多"
                 ]
               },
               {
@@ -305,28 +449,82 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": true
           }
         ],
         "tiles": [
           {
-            "traditional": "不多",
-            "pinyin": "bù duō"
+            "traditional": "很",
+            "pinyin": "hěn"
           },
           {
-            "traditional": "很多",
-            "pinyin": "hěn duō"
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "多",
+            "pinyin": "duō"
+          },
+          {
+            "traditional": "得",
+            "pinyin": "de"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "不多"
+              "的"
             ],
-            "note": "The many cans in the picture support 很多 rather than 不多."
+            "mark": [
+              "的"
+            ],
+            "note": "After a verb, the linking word is 得 (not 的): 喝得, 打得."
+          },
+          {
+            "slot": {
+              "id": "de",
+              "tile": "很"
+            },
+            "note": "很 goes before 多: 得很多."
+          },
+          {
+            "slot": {
+              "id": "de",
+              "tile": "多"
+            },
+            "note": "多 comes last: 得很多."
+          },
+          {
+            "slot": {
+              "id": "very",
+              "tile": "得"
+            },
+            "note": "得 comes right after the verb: 喝得."
+          },
+          {
+            "slot": {
+              "id": "very",
+              "tile": "多"
+            },
+            "note": "多 comes last: 得很多."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "得"
+            },
+            "note": "得 comes right after the verb: 喝得."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "很"
+            },
+            "note": "很 goes before 多: 得很多."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "Verb + 得 + comment: 喝得很多.",
         "result": {
           "traditional": "他喝得很多。",
           "pinyin": "Tā hē de hěn duō.",
@@ -342,7 +540,8 @@
             0.091
           ],
           "alt": "A person drinking from a can beside many cans on the table."
-        }
+        },
+        "prompt": "How much does he drink?"
       },
       {
         "id": "b1l06-g02-p136-practice-2",
@@ -358,17 +557,25 @@
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": false
           },
           {
             "segments": [
               {
                 "type": "text",
-                "traditional": "他吃得"
+                "traditional": "他吃"
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "de",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "adj",
                 "answers": [
                   "很多"
                 ]
@@ -380,7 +587,8 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": true
           }
         ],
         "tiles": [
@@ -389,19 +597,53 @@
             "pinyin": "hěn duō"
           },
           {
+            "traditional": "得",
+            "pinyin": "de"
+          },
+          {
             "traditional": "不多",
             "pinyin": "bù duō"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
           }
         ],
         "repairs": [
           {
             "placed": [
+              "的"
+            ],
+            "mark": [
+              "的"
+            ],
+            "note": "After a verb, the linking word is 得 (not 的): 喝得, 打得."
+          },
+          {
+            "placed": [
               "不多"
             ],
-            "note": "The tall stacks of bowls show a large amount, so choose 很多."
+            "mark": [
+              "不多"
+            ],
+            "note": "Look at the stacks of bowls: he eats a lot, 很多."
+          },
+          {
+            "slot": {
+              "id": "de",
+              "tile": "很多"
+            },
+            "note": "The comment comes last, after 得: 得很多."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "得"
+            },
+            "note": "得 comes right after the verb."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "Verb + 得 + comment: 得很多.",
         "result": {
           "traditional": "他吃得很多。",
           "pinyin": "Tā chī de hěn duō.",
@@ -417,7 +659,8 @@
             0.089
           ],
           "alt": "A person eating between tall stacks of bowls."
-        }
+        },
+        "prompt": "How does he eat?"
       },
       {
         "id": "b1l06-g02-p136-practice-3",
@@ -433,17 +676,25 @@
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": false
           },
           {
             "segments": [
               {
                 "type": "text",
-                "traditional": "我昨天晚上睡得"
+                "traditional": "我昨天晚上睡"
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "de",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "adj",
                 "answers": [
                   "很好"
                 ]
@@ -455,34 +706,70 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": true
           }
         ],
         "tiles": [
           {
-            "traditional": "不太好",
-            "pinyin": "bú tài hǎo"
-          },
-          {
             "traditional": "很好",
             "pinyin": "hěn hǎo"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "得",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "不太好",
+            "pinyin": "bú tài hǎo"
           }
         ],
         "repairs": [
           {
             "placed": [
+              "的"
+            ],
+            "mark": [
+              "的"
+            ],
+            "note": "After a verb, the linking word is 得 (not 的): 喝得, 打得."
+          },
+          {
+            "placed": [
               "不太好"
             ],
-            "note": "A comfortable night and a rested morning support 很好 rather than 不太好."
+            "mark": [
+              "不太好"
+            ],
+            "note": "You slept comfortably and feel rested: 很好."
+          },
+          {
+            "slot": {
+              "id": "de",
+              "tile": "很好"
+            },
+            "note": "The comment comes last, after 得: 得很好."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "得"
+            },
+            "note": "得 comes right after the verb."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "Verb + 得 + comment: 得很好.",
         "result": {
           "traditional": "我昨天晚上睡得很好。",
           "pinyin": "Wǒ zuótiān wǎnshang shuì de hěn hǎo.",
           "english": "I slept very well last night."
         },
-        "sub": "You were comfortable all night and feel rested this morning."
+        "sub": "You were comfortable all night and feel rested this morning.",
+        "prompt": "How did you sleep last night?"
       },
       {
         "id": "b1l06-g02-p136-practice-4",
@@ -498,17 +785,33 @@
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": false
           },
           {
             "segments": [
               {
                 "type": "text",
-                "traditional": "我朋友打網球打得"
+                "traditional": "我朋友打網球",
+                "simplified": "我朋友打网球"
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "verb",
+                "answers": [
+                  "打"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "de",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "adj",
                 "answers": [
                   "很好"
                 ]
@@ -520,34 +823,89 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": true
           }
         ],
         "tiles": [
+          {
+            "traditional": "得",
+            "pinyin": "de"
+          },
           {
             "traditional": "很好",
             "pinyin": "hěn hǎo"
           },
           {
-            "traditional": "不太好",
-            "pinyin": "bú tài hǎo"
+            "traditional": "打",
+            "pinyin": "dǎ"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "不太好"
+              "的"
             ],
-            "note": "Your friend’s skill and wins support 很好 rather than 不太好."
+            "mark": [
+              "的"
+            ],
+            "note": "After a verb, the linking word is 得 (not 的): 喝得, 打得."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "得"
+            },
+            "note": "得 comes right after the verb."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "很好"
+            },
+            "note": "The comment comes last, after 得: 得很好."
+          },
+          {
+            "slot": {
+              "id": "de",
+              "tile": "打"
+            },
+            "note": "Repeat the verb after the topic, then 得: 打得."
+          },
+          {
+            "slot": {
+              "id": "de",
+              "tile": "很好"
+            },
+            "note": "The comment comes last, after 得: 得很好."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "得"
+            },
+            "note": "得 comes right after the verb."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "打"
+            },
+            "note": "Repeat the verb after the topic, then 得: 打得."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "Verb + 得 + comment: 打得很好.",
         "result": {
           "traditional": "我朋友打網球打得很好。",
           "pinyin": "Wǒ péngyǒu dǎ wǎngqiú dǎ de hěn hǎo.",
           "english": "My friend plays tennis very well."
         },
-        "sub": "Your friend plays tennis skillfully and wins the school games."
+        "sub": "Your friend plays tennis skillfully and wins the school games.",
+        "prompt": "How well does your friend play tennis?"
       },
       {
         "id": "b1l06-g02-p136-practice-5",
@@ -563,17 +921,33 @@
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": false
           },
           {
             "segments": [
               {
                 "type": "text",
-                "traditional": "他睡覺睡得"
+                "traditional": "他睡覺",
+                "simplified": "他睡觉"
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "verb",
+                "answers": [
+                  "睡"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "de",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "adj",
                 "answers": [
                   "不太好"
                 ]
@@ -585,17 +959,26 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": true
           }
         ],
         "tiles": [
           {
-            "traditional": "很好",
-            "pinyin": "hěn hǎo"
-          },
-          {
             "traditional": "不太好",
             "pinyin": "bú tài hǎo"
+          },
+          {
+            "traditional": "得",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "睡",
+            "pinyin": "shuì"
+          },
+          {
+            "traditional": "很好",
+            "pinyin": "hěn hǎo"
           }
         ],
         "repairs": [
@@ -603,10 +986,55 @@
             "placed": [
               "很好"
             ],
-            "note": "The person is awake and uncomfortable at night, so choose 不太好."
+            "mark": [
+              "很好"
+            ],
+            "note": "He is awake and sweating in the night: 不太好."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "得"
+            },
+            "note": "得 comes right after the verb."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "不太好"
+            },
+            "note": "The comment comes last, after 得: 得不太好."
+          },
+          {
+            "slot": {
+              "id": "de",
+              "tile": "睡"
+            },
+            "note": "Repeat the verb after the topic, then 得: 睡得."
+          },
+          {
+            "slot": {
+              "id": "de",
+              "tile": "不太好"
+            },
+            "note": "The comment comes last, after 得: 得不太好."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "得"
+            },
+            "note": "得 comes right after the verb."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "睡"
+            },
+            "note": "Repeat the verb after the topic, then 得: 睡得."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "Verb + 得 + comment: 睡得不太好.",
         "result": {
           "traditional": "他睡覺睡得不太好。",
           "pinyin": "Tā shuìjiào shuì de bú tài hǎo.",
@@ -622,7 +1050,8 @@
             0.145
           ],
           "alt": "A person awake and sweating in bed beside a window with a crescent moon."
-        }
+        },
+        "prompt": "Did he sleep well last night?"
       },
       {
         "id": "b1l06-g02-p136-practice-6",
@@ -638,17 +1067,32 @@
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": false
           },
           {
             "segments": [
               {
                 "type": "text",
-                "traditional": "我踢足球踢得"
+                "traditional": "我踢足球"
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "verb",
+                "answers": [
+                  "踢"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "de",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "adj",
                 "answers": [
                   "不太好"
                 ]
@@ -660,34 +1104,89 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": true
           }
         ],
         "tiles": [
+          {
+            "traditional": "踢",
+            "pinyin": "tī"
+          },
           {
             "traditional": "不太好",
             "pinyin": "bú tài hǎo"
           },
           {
-            "traditional": "很好",
-            "pinyin": "hěn hǎo"
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "得",
+            "pinyin": "de"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "很好"
+              "的"
             ],
-            "note": "Often missing the ball describes poor performance, so choose 不太好."
+            "mark": [
+              "的"
+            ],
+            "note": "After a verb, the linking word is 得 (not 的): 喝得, 打得."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "得"
+            },
+            "note": "得 comes right after the verb."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "不太好"
+            },
+            "note": "The comment comes last, after 得: 得不太好."
+          },
+          {
+            "slot": {
+              "id": "de",
+              "tile": "踢"
+            },
+            "note": "Repeat the verb after the topic, then 得: 踢得."
+          },
+          {
+            "slot": {
+              "id": "de",
+              "tile": "不太好"
+            },
+            "note": "The comment comes last, after 得: 得不太好."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "得"
+            },
+            "note": "得 comes right after the verb."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "踢"
+            },
+            "note": "Repeat the verb after the topic, then 得: 踢得."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "Verb + 得 + comment: 踢得不太好.",
         "result": {
           "traditional": "我踢足球踢得不太好。",
           "pinyin": "Wǒ tī zúqiú tī de bú tài hǎo.",
           "english": "I do not play soccer very well."
         },
-        "sub": "You know the rules, but your kicks often miss the ball."
+        "sub": "You know the rules, but your kicks often miss the ball.",
+        "prompt": "Do you play soccer well?"
       },
       {
         "id": "b1l06-g02-p136-practice-7",
@@ -703,17 +1202,33 @@
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": false
           },
           {
             "segments": [
               {
                 "type": "text",
-                "traditional": "我媽媽牛肉麵做得"
+                "traditional": "我媽媽牛肉麵",
+                "simplified": "我妈妈牛肉面"
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "verb",
+                "answers": [
+                  "做"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "de",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "adj",
                 "answers": [
                   "很好"
                 ]
@@ -725,35 +1240,89 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": true
           }
         ],
         "tiles": [
           {
-            "traditional": "不太好",
-            "pinyin": "bú tài hǎo"
-          },
-          {
             "traditional": "很好",
             "pinyin": "hěn hǎo"
+          },
+          {
+            "traditional": "做",
+            "pinyin": "zuò"
+          },
+          {
+            "traditional": "得",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "不太好"
+              "的"
             ],
-            "note": "Everyone enjoys her cooking, so 很好 fits the situation."
+            "mark": [
+              "的"
+            ],
+            "note": "After a verb, the linking word is 得 (not 的): 喝得, 打得."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "得"
+            },
+            "note": "得 comes right after the verb."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "很好"
+            },
+            "note": "The comment comes last, after 得: 得很好."
+          },
+          {
+            "slot": {
+              "id": "de",
+              "tile": "做"
+            },
+            "note": "Repeat the verb after the topic, then 得: 做得."
+          },
+          {
+            "slot": {
+              "id": "de",
+              "tile": "很好"
+            },
+            "note": "The comment comes last, after 得: 得很好."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "得"
+            },
+            "note": "得 comes right after the verb."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "做"
+            },
+            "note": "Repeat the verb after the topic, then 得: 做得."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "Verb + 得 + comment: 做得很好.",
         "result": {
           "traditional": "我媽媽牛肉麵做得很好。",
           "pinyin": "Wǒ māma niúròumiàn zuò de hěn hǎo.",
           "english": "My mother makes beef noodles very well."
         },
         "sub": "Everyone enjoys your mother’s beef noodles and asks her to cook them again.",
-        "prompt": "Complete the following dialogues."
+        "prompt": "Does your mom make beef noodles well?"
       },
       {
         "id": "b1l06-g02-p136-practice-8",
@@ -769,17 +1338,33 @@
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": false
           },
           {
             "segments": [
               {
                 "type": "text",
-                "traditional": "我籃球打得"
+                "traditional": "我籃球",
+                "simplified": "我篮球"
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "verb",
+                "answers": [
+                  "打"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "de",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "adj",
                 "answers": [
                   "不太好"
                 ]
@@ -791,17 +1376,26 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": true
           }
         ],
         "tiles": [
+          {
+            "traditional": "打",
+            "pinyin": "dǎ"
+          },
+          {
+            "traditional": "不太好",
+            "pinyin": "bú tài hǎo"
+          },
           {
             "traditional": "很好",
             "pinyin": "hěn hǎo"
           },
           {
-            "traditional": "不太好",
-            "pinyin": "bú tài hǎo"
+            "traditional": "得",
+            "pinyin": "de"
           }
         ],
         "repairs": [
@@ -809,17 +1403,62 @@
             "placed": [
               "很好"
             ],
-            "note": "Losing the ball and missing the basket support 不太好 rather than 很好."
+            "mark": [
+              "很好"
+            ],
+            "note": "You often lose the ball and miss: 不太好."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "得"
+            },
+            "note": "得 comes right after the verb."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "不太好"
+            },
+            "note": "The comment comes last, after 得: 得不太好."
+          },
+          {
+            "slot": {
+              "id": "de",
+              "tile": "打"
+            },
+            "note": "Repeat the verb after the topic, then 得: 打得."
+          },
+          {
+            "slot": {
+              "id": "de",
+              "tile": "不太好"
+            },
+            "note": "The comment comes last, after 得: 得不太好."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "得"
+            },
+            "note": "得 comes right after the verb."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "打"
+            },
+            "note": "Repeat the verb after the topic, then 得: 打得."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "Verb + 得 + comment: 打得不太好.",
         "result": {
           "traditional": "我籃球打得不太好。",
           "pinyin": "Wǒ lánqiú dǎ de bú tài hǎo.",
           "english": "I do not play basketball very well."
         },
         "sub": "You often lose the ball and miss the basket.",
-        "prompt": "Complete the following dialogues."
+        "prompt": "How do you play basketball?"
       },
       {
         "id": "b1l06-g02-p136-practice-9",
@@ -846,7 +1485,8 @@
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": true
           },
           {
             "segments": [
@@ -857,7 +1497,8 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": false
           }
         ],
         "tiles": [
@@ -866,7 +1507,13 @@
             "pinyin": "duō bu duō"
           },
           {
+            "traditional": "什麼",
+            "simplified": "什么",
+            "pinyin": "shénme"
+          },
+          {
             "traditional": "怎麼樣",
+            "simplified": "怎么样",
             "pinyin": "zěnmeyàng"
           }
         ],
@@ -875,16 +1522,28 @@
             "placed": [
               "多不多"
             ],
-            "note": "The reply evaluates his playing rather than its amount, so ask 怎麼樣."
+            "mark": [
+              "多不多"
+            ],
+            "note": "多不多 asks \"a lot or not\". B answers 很好, a judgment, so ask 怎麼樣."
+          },
+          {
+            "placed": [
+              "什麼"
+            ],
+            "mark": [
+              "什麼"
+            ],
+            "note": "什麼 asks \"what thing\". To ask how well, use 怎麼樣."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "To ask how well, use V得怎麼樣.",
         "result": {
           "traditional": "你哥哥棒球打得怎麼樣？",
           "pinyin": "Nǐ gēge bàngqiú dǎ de zěnmeyàng?",
           "english": "How well does your older brother play baseball?"
         },
-        "prompt": "Complete the following dialogues."
+        "prompt": "Ask how well your older brother plays baseball."
       },
       {
         "id": "b1l06-g02-p136-practice-10",
@@ -900,17 +1559,33 @@
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": false
           },
           {
             "segments": [
               {
                 "type": "text",
-                "traditional": "我的飯做得"
+                "traditional": "我的飯",
+                "simplified": "我的饭"
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "verb",
+                "answers": [
+                  "做"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "de",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "adj",
                 "answers": [
                   "很好"
                 ]
@@ -922,35 +1597,89 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": true
           }
         ],
         "tiles": [
           {
-            "traditional": "很好",
-            "pinyin": "hěn hǎo"
+            "traditional": "吃",
+            "pinyin": "chī"
           },
           {
-            "traditional": "不太好",
-            "pinyin": "bú tài hǎo"
+            "traditional": "做",
+            "pinyin": "zuò"
+          },
+          {
+            "traditional": "得",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "很好",
+            "pinyin": "hěn hǎo"
           }
         ],
         "repairs": [
           {
             "placed": [
-              "不太好"
+              "吃"
             ],
-            "note": "People enjoying the food and asking for more support 很好."
+            "mark": [
+              "吃"
+            ],
+            "note": "The question is about cooking, so repeat 做: 做得很好."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "得"
+            },
+            "note": "得 comes right after the verb."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "很好"
+            },
+            "note": "The comment comes last, after 得: 得很好."
+          },
+          {
+            "slot": {
+              "id": "de",
+              "tile": "做"
+            },
+            "note": "Repeat the verb after the topic, then 得: 做得."
+          },
+          {
+            "slot": {
+              "id": "de",
+              "tile": "很好"
+            },
+            "note": "The comment comes last, after 得: 得很好."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "得"
+            },
+            "note": "得 comes right after the verb."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "做"
+            },
+            "note": "Repeat the verb after the topic, then 得: 做得."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "Verb + 得 + comment: 做得很好.",
         "result": {
           "traditional": "我的飯做得很好。",
           "pinyin": "Wǒ de fàn zuò de hěn hǎo.",
           "english": "I cook very well."
         },
         "sub": "Everyone enjoys your cooking and asks for more.",
-        "prompt": "Complete the following dialogues."
+        "prompt": "How is your cooking?"
       },
       {
         "id": "b1l06-g02-p136-practice-11",
@@ -966,17 +1695,33 @@
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": false
           },
           {
             "segments": [
               {
                 "type": "text",
-                "traditional": "我哥哥的籃球打得"
+                "traditional": "我哥哥的籃球",
+                "simplified": "我哥哥的篮球"
               },
               {
                 "type": "slot",
-                "id": "answer",
+                "id": "verb",
+                "answers": [
+                  "打"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "de",
+                "answers": [
+                  "得"
+                ]
+              },
+              {
+                "type": "slot",
+                "id": "adj",
                 "answers": [
                   "很好"
                 ]
@@ -988,13 +1733,22 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": true
           }
         ],
         "tiles": [
           {
-            "traditional": "不太好",
-            "pinyin": "bú tài hǎo"
+            "traditional": "得",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "的",
+            "pinyin": "de"
+          },
+          {
+            "traditional": "打",
+            "pinyin": "dǎ"
           },
           {
             "traditional": "很好",
@@ -1004,19 +1758,64 @@
         "repairs": [
           {
             "placed": [
-              "不太好"
+              "的"
             ],
-            "note": "His skillful play and wins support 很好 rather than 不太好."
+            "mark": [
+              "的"
+            ],
+            "note": "After a verb, the linking word is 得 (not 的): 喝得, 打得."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "得"
+            },
+            "note": "得 comes right after the verb."
+          },
+          {
+            "slot": {
+              "id": "verb",
+              "tile": "很好"
+            },
+            "note": "The comment comes last, after 得: 得很好."
+          },
+          {
+            "slot": {
+              "id": "de",
+              "tile": "打"
+            },
+            "note": "Repeat the verb after the topic, then 得: 打得."
+          },
+          {
+            "slot": {
+              "id": "de",
+              "tile": "很好"
+            },
+            "note": "The comment comes last, after 得: 得很好."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "得"
+            },
+            "note": "得 comes right after the verb."
+          },
+          {
+            "slot": {
+              "id": "adj",
+              "tile": "打"
+            },
+            "note": "Repeat the verb after the topic, then 得: 打得."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "Verb + 得 + comment: 打得很好.",
         "result": {
           "traditional": "我哥哥的籃球打得很好。",
           "pinyin": "Wǒ gēge de lánqiú dǎ de hěn hǎo.",
           "english": "My older brother plays basketball very well."
         },
         "sub": "Your older brother plays skillfully and wins the school basketball games.",
-        "prompt": "Complete the following dialogues."
+        "prompt": "Does your older brother play basketball well?"
       },
       {
         "id": "b1l06-g02-p136-practice-12",
@@ -1043,7 +1842,8 @@
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": true
           },
           {
             "segments": [
@@ -1054,17 +1854,24 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": false
           }
         ],
         "tiles": [
           {
-            "traditional": "怎麼樣",
-            "pinyin": "zěnmeyàng"
-          },
-          {
             "traditional": "多不多",
             "pinyin": "duō bu duō"
+          },
+          {
+            "traditional": "什麼",
+            "simplified": "什么",
+            "pinyin": "shénme"
+          },
+          {
+            "traditional": "怎麼樣",
+            "simplified": "怎么样",
+            "pinyin": "zěnmeyàng"
           }
         ],
         "repairs": [
@@ -1072,16 +1879,28 @@
             "placed": [
               "多不多"
             ],
-            "note": "The reply evaluates her English rather than how much she speaks, so ask 怎麼樣."
+            "mark": [
+              "多不多"
+            ],
+            "note": "多不多 asks \"a lot or not\". B answers 很好, a judgment, so ask 怎麼樣."
+          },
+          {
+            "placed": [
+              "什麼"
+            ],
+            "mark": [
+              "什麼"
+            ],
+            "note": "什麼 asks \"what thing\". To ask how well, use 怎麼樣."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "To ask how well, use V得怎麼樣.",
         "result": {
           "traditional": "她的英文說得怎麼樣？",
           "pinyin": "Tā de Yīngwén shuō de zěnmeyàng?",
           "english": "How well does she speak English?"
         },
-        "prompt": "Complete the following dialogues."
+        "prompt": "Ask how well she speaks English."
       }
     ]
   },
@@ -1111,7 +1930,8 @@
                 "type": "text",
                 "traditional": "，我想休息。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
@@ -1122,6 +1942,10 @@
           {
             "traditional": "渴",
             "pinyin": "kě"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
           }
         ],
         "repairs": [
@@ -1129,16 +1953,29 @@
             "placed": [
               "渴"
             ],
-            "note": "Struggling to keep your eyes open calls for rest, so choose 累 rather than thirst."
+            "mark": [
+              "渴"
+            ],
+            "note": "You can barely keep your eyes open: 累."
+          },
+          {
+            "placed": [
+              "很"
+            ],
+            "mark": [
+              "很"
+            ],
+            "note": "有點兒 already says \"a bit\"; it never takes 很 after it."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "有點兒 + how you feel: 有點兒累.",
         "result": {
           "traditional": "我有點兒累，我想休息。",
           "pinyin": "Wǒ yǒu diǎnr lèi, wǒ xiǎng xiūxí.",
           "english": "I am a little tired; I want to rest."
         },
-        "sub": "After a full day of work, you can barely keep your eyes open."
+        "sub": "After a full day of work, you can barely keep your eyes open.",
+        "prompt": "How do you feel after a full day of work?"
       },
       {
         "id": "b1l06-g03-p146-practice-2",
@@ -1162,7 +1999,8 @@
                 "type": "text",
                 "traditional": "，我想喝點兒飲料。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
@@ -1172,7 +2010,12 @@
           },
           {
             "traditional": "餓",
+            "simplified": "饿",
             "pinyin": "è"
+          },
+          {
+            "traditional": "很",
+            "pinyin": "hěn"
           }
         ],
         "repairs": [
@@ -1180,16 +2023,29 @@
             "placed": [
               "餓"
             ],
-            "note": "A dry mouth and wanting a drink point to 渴 rather than hunger."
+            "mark": [
+              "餓"
+            ],
+            "note": "A dry mouth means thirsty: 渴."
+          },
+          {
+            "placed": [
+              "很"
+            ],
+            "mark": [
+              "很"
+            ],
+            "note": "有點兒 already says \"a bit\"; it never takes 很 after it."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "有點兒 + how you feel: 有點兒渴.",
         "result": {
           "traditional": "我有點兒渴，我想喝點兒飲料。",
           "pinyin": "Wǒ yǒu diǎnr kě, wǒ xiǎng hē diǎnr yǐnliào.",
           "english": "I am a little thirsty; I want something to drink."
         },
-        "sub": "Your mouth feels dry."
+        "sub": "Your mouth feels dry.",
+        "prompt": "Your mouth feels dry. How do you feel?"
       },
       {
         "id": "b1l06-g03-p146-practice-3",
@@ -1213,17 +2069,22 @@
                 "type": "text",
                 "traditional": "。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
+          {
+            "traditional": "小",
+            "pinyin": "xiǎo"
+          },
           {
             "traditional": "大",
             "pinyin": "dà"
           },
           {
-            "traditional": "小",
-            "pinyin": "xiǎo"
+            "traditional": "很",
+            "pinyin": "hěn"
           }
         ],
         "repairs": [
@@ -1231,16 +2092,29 @@
             "placed": [
               "大"
             ],
-            "note": "The room cannot hold your things, so describe it as 小 rather than 大."
+            "mark": [
+              "大"
+            ],
+            "note": "Your things don’t fit, so the room is small: 小."
+          },
+          {
+            "placed": [
+              "很"
+            ],
+            "mark": [
+              "很"
+            ],
+            "note": "有點兒 already says \"a bit\"; it never takes 很 after it."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "有點兒 + how you feel: 有點兒小.",
         "result": {
           "traditional": "我的東西太多，我覺得這間房間有點兒小。",
           "pinyin": "Wǒ de dōngxi tài duō, wǒ juéde zhè jiān fángjiān yǒu diǎnr xiǎo.",
           "english": "I have too many things; I think this room is a little small."
         },
-        "sub": "Your things fill every shelf, and there is nowhere to put the rest."
+        "sub": "Your things fill every shelf, and there is nowhere to put the rest.",
+        "prompt": "Your things don’t fit. What do you think of the room?"
       },
       {
         "id": "b1l06-g03-p146-practice-4",
@@ -1264,17 +2138,25 @@
                 "type": "text",
                 "traditional": "貴。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
           {
             "traditional": "一點兒",
+            "simplified": "一点儿",
             "pinyin": "yìdiǎnr"
           },
           {
             "traditional": "有點兒",
-            "pinyin": "yǒu diǎnr"
+            "simplified": "有点儿",
+            "pinyin": "yǒudiǎnr"
+          },
+          {
+            "traditional": "一點",
+            "simplified": "一点",
+            "pinyin": "yìdiǎn"
           }
         ],
         "repairs": [
@@ -1282,16 +2164,29 @@
             "placed": [
               "一點兒"
             ],
-            "note": "貴 describes a quality, so put 有點兒 before it rather than the amount phrase 一點兒."
+            "mark": [
+              "一點兒"
+            ],
+            "note": "一點兒 goes after a verb or describing word (\"a little more\"). Before 貴, to complain, use 有點兒."
+          },
+          {
+            "placed": [
+              "一點"
+            ],
+            "mark": [
+              "一點"
+            ],
+            "note": "Before a describing word like 貴, use 有點兒, not 一點."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "To say \"a bit too\", put 有點兒 before it: 有點兒貴.",
         "result": {
           "traditional": "一杯咖啡一百八十塊錢，我覺得有點兒貴。",
           "pinyin": "Yì bēi kāfēi yìbǎi bāshí kuài qián, wǒ juéde yǒu diǎnr guì.",
           "english": "A cup of coffee is 180 dollars; I think it is a little expensive."
         },
-        "sub": "The drink costs more than you want to pay."
+        "sub": "The drink costs more than you want to pay.",
+        "prompt": "Is NT$180 for a coffee expensive?"
       }
     ]
   },
@@ -1313,7 +2208,8 @@
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": false
           },
           {
             "segments": [
@@ -1335,17 +2231,23 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": true
           }
         ],
         "tiles": [
           {
             "traditional": "點",
+            "simplified": "点",
             "pinyin": "diǎn"
           },
           {
             "traditional": "做",
             "pinyin": "zuò"
+          },
+          {
+            "traditional": "喝",
+            "pinyin": "hē"
           }
         ],
         "repairs": [
@@ -1353,10 +2255,22 @@
             "placed": [
               "做"
             ],
-            "note": "The menu offers food to order, so suggest 點 rather than making it yourself."
+            "mark": [
+              "做"
+            ],
+            "note": "You are a customer, not the cook: you order, 點."
+          },
+          {
+            "placed": [
+              "喝"
+            ],
+            "mark": [
+              "喝"
+            ],
+            "note": "A sandwich is eaten, not drunk; at a restaurant you order it: 點."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "At a restaurant, you order: 點.",
         "result": {
           "traditional": "你可以點一個三明治。",
           "pinyin": "Nǐ kěyǐ diǎn yì ge sānmíngzhì.",
@@ -1380,7 +2294,8 @@
             "pinyin": "sānmíngzhì",
             "english": "sandwich"
           }
-        ]
+        ],
+        "prompt": "Your friend isn’t hungry. Suggest something."
       },
       {
         "id": "b1l06-g04-p147-practice-2",
@@ -1396,7 +2311,8 @@
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": false
           },
           {
             "segments": [
@@ -1418,17 +2334,24 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": true
           }
         ],
         "tiles": [
           {
-            "traditional": "聽音樂",
-            "pinyin": "tīng yīnyuè"
+            "traditional": "看電視",
+            "simplified": "看电视",
+            "pinyin": "kàn diànshì"
           },
           {
-            "traditional": "看電視",
-            "pinyin": "kàn diànshì"
+            "traditional": "去外面",
+            "pinyin": "qù wàimiàn"
+          },
+          {
+            "traditional": "聽音樂",
+            "simplified": "听音乐",
+            "pinyin": "tīng yīnyuè"
           }
         ],
         "repairs": [
@@ -1436,10 +2359,22 @@
             "placed": [
               "聽音樂"
             ],
-            "note": "The picture shows someone watching a television, so choose 看電視 rather than listening to music."
+            "mark": [
+              "聽音樂"
+            ],
+            "note": "The picture shows a TV: 看電視."
+          },
+          {
+            "placed": [
+              "去外面"
+            ],
+            "mark": [
+              "去外面"
+            ],
+            "note": "Your friend doesn’t want to go out because it’s hot; stay in: 看電視."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "Stay in and watch TV: 看電視.",
         "result": {
           "traditional": "我們可以在家看電視。",
           "pinyin": "Wǒmen kěyǐ zài jiā kàn diànshì.",
@@ -1455,7 +2390,8 @@
             0.136
           ],
           "alt": "A person on a sofa facing a television in a living room."
-        }
+        },
+        "prompt": "It’s too hot to go out. Suggest something."
       },
       {
         "id": "b1l06-g04-p147-practice-3",
@@ -1471,7 +2407,8 @@
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": false
           },
           {
             "segments": [
@@ -1493,7 +2430,8 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": true
           }
         ],
         "tiles": [
@@ -1503,7 +2441,13 @@
           },
           {
             "traditional": "去那裡",
+            "simplified": "去那里",
             "pinyin": "qù nàlǐ"
+          },
+          {
+            "traditional": "那裡",
+            "simplified": "那里",
+            "pinyin": "nàlǐ"
           }
         ],
         "repairs": [
@@ -1511,10 +2455,22 @@
             "placed": [
               "在家"
             ],
-            "note": "The picture places the friends outside a cinema, so suggest going there rather than staying home."
+            "mark": [
+              "在家"
+            ],
+            "note": "The film is at the cinema, so suggest going there: 去那裡."
+          },
+          {
+            "placed": [
+              "那裡"
+            ],
+            "mark": [
+              "那裡"
+            ],
+            "note": "可以 needs a verb: 去那裡, not just 那裡."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "Suggest going there: 去那裡.",
         "result": {
           "traditional": "我們可以去那裡看電影。",
           "pinyin": "Wǒmen kěyǐ qù nàlǐ kàn diànyǐng.",
@@ -1530,7 +2486,8 @@
             0.152
           ],
           "alt": "Two people outside a cinema entrance and ticket window."
-        }
+        },
+        "prompt": "Your friend says the movie is good. Suggest something."
       },
       {
         "id": "b1l06-g04-p147-practice-4",
@@ -1554,7 +2511,8 @@
                 "type": "text",
                 "traditional": "吃冰淇淋。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
@@ -1565,6 +2523,11 @@
           {
             "traditional": "不可以",
             "pinyin": "bù kěyǐ"
+          },
+          {
+            "traditional": "不會",
+            "simplified": "不会",
+            "pinyin": "bú huì"
           }
         ],
         "repairs": [
@@ -1572,17 +2535,29 @@
             "placed": [
               "可以"
             ],
-            "note": "Your mother refuses permission because of the cold, so choose 不可以."
+            "mark": [
+              "可以"
+            ],
+            "note": "Your mother refused, so you may not: 不可以."
+          },
+          {
+            "placed": [
+              "不會"
+            ],
+            "mark": [
+              "不會"
+            ],
+            "note": "不會 is about skill. Your mother is refusing permission: 不可以."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "Refused permission is 不可以.",
         "result": {
           "traditional": "我媽媽說，我不可以吃冰淇淋。",
           "pinyin": "Wǒ māma shuō, wǒ bù kěyǐ chī bīngqílín.",
           "english": "My mother says I may not eat ice cream."
         },
         "sub": "Your mother refuses your request for ice cream because the weather is too cold.",
-        "prompt": "Complete the sentences with 可以."
+        "prompt": "Your mother refused. What did she say?"
       },
       {
         "id": "b1l06-g04-p147-practice-5",
@@ -1606,7 +2581,8 @@
                 "type": "text",
                 "traditional": "去洗手間。"
               }
-            ]
+            ],
+            "me": true
           }
         ],
         "tiles": [
@@ -1617,6 +2593,10 @@
           {
             "traditional": "不可以",
             "pinyin": "bù kěyǐ"
+          },
+          {
+            "traditional": "可不可以",
+            "pinyin": "kě bu kěyǐ"
           }
         ],
         "repairs": [
@@ -1624,17 +2604,29 @@
             "placed": [
               "不可以"
             ],
-            "note": "The teacher gives permission to leave, so choose 可以."
+            "mark": [
+              "不可以"
+            ],
+            "note": "The teacher gave permission: 可以."
+          },
+          {
+            "placed": [
+              "可不可以"
+            ],
+            "mark": [
+              "可不可以"
+            ],
+            "note": "You are reporting the teacher’s answer, not asking: 可以."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "Permission given is 可以.",
         "result": {
           "traditional": "老師說，我可以去洗手間。",
           "pinyin": "Lǎoshī shuō, wǒ kěyǐ qù xǐshǒujiān.",
           "english": "The teacher says I may go to the restroom."
         },
         "sub": "You ask to use the restroom; your teacher gives you permission to leave.",
-        "prompt": "Complete the sentences with 可以."
+        "prompt": "The teacher said yes. What did the teacher say?"
       },
       {
         "id": "b1l06-g04-p147-practice-6",
@@ -1661,7 +2653,8 @@
             ],
             "speaker": {
               "traditional": "A"
-            }
+            },
+            "me": true
           },
           {
             "segments": [
@@ -1672,12 +2665,18 @@
             ],
             "speaker": {
               "traditional": "B"
-            }
+            },
+            "me": false
           }
         ],
         "tiles": [
           {
+            "traditional": "可不可以",
+            "pinyin": "kě bu kěyǐ"
+          },
+          {
             "traditional": "會",
+            "simplified": "会",
             "pinyin": "huì"
           },
           {
@@ -1690,16 +2689,27 @@
             "placed": [
               "會"
             ],
-            "note": "You are asking to use this reading space, so ask permission with 可以 rather than describing a learned skill with 會."
+            "mark": [
+              "會"
+            ],
+            "note": "會 is about skill. You are asking permission: 可以."
+          },
+          {
+            "placed": [
+              "可不可以"
+            ],
+            "mark": [
+              "可不可以"
+            ],
+            "note": "可不可以 already asks; it never takes 嗎. With 嗎, use 可以."
           }
         ],
-        "fallbackRepair": "Read the situation and choose the option that fits this sentence.",
+        "fallbackRepair": "Asking permission: 可以 … 嗎？",
         "result": {
           "traditional": "我可以在這裡看書嗎？",
           "pinyin": "Wǒ kěyǐ zài zhèlǐ kàn shū ma?",
           "english": "May I read here?"
         },
-        "sub": "Ask the librarian for permission to use this reading space.",
         "scene": {
           "type": "picture",
           "page": 148,
@@ -1711,7 +2721,7 @@
           ],
           "alt": "Two people at a library desk beside bookshelves and a library sign."
         },
-        "prompt": "Complete the sentences with 可以."
+        "prompt": "Ask the librarian if you may read here."
       }
     ],
     "allowWords": [

@@ -12,6 +12,9 @@ description: Author, transcribe or review Ron's Mandarin grammar content (gramma
 > 4. **No repeats:** an own item must test a mistake nothing else in the group covers (a test fails an own item with the same tiles as a book item).
 > 5. **Position particles use tap-where (`gaps: true`)**, with a repair per wrong gap (的 都 也 吧 嗎 在 有), never fill-in with a silly tile like 是.
 > 6. **Check every lesson for the same flaw**, not only the screen that was reported.
+> 7. **The title is the item's own question** (`prompt`, e.g. "When does your class end today?"), never the book's general instruction, and never a giveaway. Extra context goes in `sub`.
+> 8. **At least 3 options**, each a real taught form that is right somewhere (不有 / 不是 for 沒有, 是 before an adjective, 的 for 得, 十多歲 vs 十歲多). Where the point is a pattern (time + action, 送 + person + gift, V得 + comment, 又…又…, VV看, 好/難 + V, 多 with measure words), the learner builds it, one slot per part.
+> 9. **Every wrong tile explains itself wherever it lands** (a `placed` note, or a `slot` note per wrong slot). Tests enforce 1, 7, 8 and 9.
 
 > **Pipeline runs are non-interactive and pre-approved by the owner.** When a task comes from `.audit/grammar-run`, do it fully now: skip the plan-first / "wait for go" steps of `task-start` and `AGENTS.md`, and don't ask questions (write them under Unsure).
 

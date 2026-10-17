@@ -78,7 +78,8 @@ export function GrammarPracticeView({
     <div className="mx-auto flex w-full max-w-2xl flex-col gap-7 pb-24">
       <header className="flex flex-col gap-1">
         <span className="ui-eyebrow text-ui-muted">Book exercise · p.{practice.bookPage}</span>
-        <h1 className="text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:text-3xl">{practice.title}</h1>
+        {/* The item's own question is the title; the book's general instruction only when an item has none. */}
+        <h1 className="text-2xl font-black leading-tight text-balance text-ui-ink-strong sm:text-3xl">{item.prompt ?? practice.title}</h1>
       </header>
 
       <AnimatePresence mode="wait" initial={false}>

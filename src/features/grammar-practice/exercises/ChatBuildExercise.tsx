@@ -62,7 +62,7 @@ export function ChatBuildExercise({
   return (
     <LayoutGroup id={`chat-${item.id}`}>
       <div className="flex flex-col gap-3">
-        <PracticePrompt prompt={item.prompt} sub={item.sub} />
+        <PracticePrompt sub={item.sub} />
         {item.before?.map((sentence) => (
           <PracticeBubble key={sentence.traditional} side="them" notes={notes(sentence)}>{say(sentence)}</PracticeBubble>
         ))}
