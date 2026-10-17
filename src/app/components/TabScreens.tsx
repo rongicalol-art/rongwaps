@@ -70,6 +70,14 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
     setActiveTab('profile');
   }, [setActiveTab]);
 
+  const handleNavigateToReview = useCallback(() => {
+    useAppStore.getState().setLibraryActiveView('home');
+    useAppStore.getState().setLibrarySearchQuery('');
+    setActiveTab('library');
+  }, [setActiveTab]);
+
+  const handleNavigateToPath = useCallback(() => setActiveTab('path'), [setActiveTab]);
+
   const handleNavigateToFavorites = useCallback(() => {
     useAppStore.getState().setLibraryActiveFolder('favorites');
     setActiveTab('library');
@@ -97,6 +105,8 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
         )}
         {activeTab === 'library' && LibraryScreen && (
           <LibraryScreen
+            onStartReview={handleStartReview}
+            onNavigateToPath={handleNavigateToPath}
             onAddCard={handleAddCard}
             onPlayFlashcards={handlePlayFlashcards}
             menuToggle={menuToggle}
@@ -108,7 +118,7 @@ export const TabScreens: React.FC<TabScreensProps> = memo(function TabScreens({
         )}
         {activeTab === 'profile' && ProfileScreen && (
           <ProfileScreen
-            onStartReview={handleStartReview}
+            onNavigateToReview={handleNavigateToReview}
             menuToggle={menuToggle}
             onNavigateToFavorites={handleNavigateToFavorites}
             onCreateCustomCard={handleAddCard}

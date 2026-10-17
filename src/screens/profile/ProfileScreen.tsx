@@ -5,19 +5,19 @@ import { useNavigate } from 'react-router';
 import { useAuth } from '../../hooks/useAuth';
 import { useAppStore } from '../../store/useAppStore';
 import {
+  ActionButton,
+  AppIcon,
   StickyWorkspaceHeader,
   type StickyWorkspaceHeaderMenuToggle,
 } from '../../lib/widgets';
 import { ProfileHeroCard } from './components/ProfileHeroCard';
-import { ReviewHubCard } from './components/ReviewHubCard';
 import { LearningStatsGrid } from './components/LearningStatsGrid';
 import { ProfileSkeleton } from './components/ProfileSkeleton';
 import { SignOutButton } from './components/SignOutButton';
-import { useReviewOverview } from './hooks/useReviewOverview';
 
 interface ProfileScreenProps {
-  /** Launches the review session over all SRS-due words. */
-  onStartReview: () => void;
+  /** Opens Daily review in the Library. */
+  onNavigateToReview: () => void;
   /** Mobile hamburger shown overlaid left in the sticky header. */
   menuToggle?: StickyWorkspaceHeaderMenuToggle;
   /** Optional override to navigate back to the curriculum path. */
@@ -29,7 +29,7 @@ interface ProfileScreenProps {
 }
 
 export function ProfileScreen({
-  onStartReview,
+  onNavigateToReview,
   menuToggle,
   onNavigateToPath,
   onNavigateToFavorites,
@@ -37,7 +37,6 @@ export function ProfileScreen({
 }: ProfileScreenProps) {
   const navigate = useNavigate();
   const { currentUser, isLoading: isAuthLoading, logout, isAuthActionLoading } = useAuth();
-  const overview = useReviewOverview();
   const [accountError, setAccountError] = useState<string | null>(null);
 
   // App store selectors: subscribe to primitive lengths to avoid re-rendering on element updates
@@ -117,11 +116,16 @@ export function ProfileScreen({
               />
 
               <div className="grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:items-start lg:gap-7">
-                <ReviewHubCard
-                  overview={overview}
-                  onStartReview={onStartReview}
-                  onNavigateToPath={handleNavigateToPath}
-                />
+                <div className="flex flex-col gap-3">
+                  <ActionButton variant="secondary" size="lg" fullWidth onClick={onNavigateToReview}>
+                    <AppIcon name="play" size={20} />
+                    Daily review
+                  </ActionButton>
+                  <ActionButton variant="secondary" fullWidth onClick={handleNavigateToPath}>
+                    <AppIcon name="books" size={20} />
+                    Course path
+                  </ActionButton>
+                </div>
                 <LearningStatsGrid
                   favoriteCount={favoriteCount}
                   localCardsCount={localCardsCount}

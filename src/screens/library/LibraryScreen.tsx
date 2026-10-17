@@ -11,6 +11,8 @@ import {
   type StickyWorkspaceHeaderMenuToggle,
 } from '../../lib/widgets';
 import { useLibrary } from './hooks/useLibrary';
+import { ReviewHubCard } from './components/ReviewHubCard';
+import { useReviewOverview } from './hooks/useReviewOverview';
 import { FolderModal } from './FolderModal';
 import { DeleteCardModal } from './DeleteCardModal';
 import { DeleteFolderModal } from './DeleteFolderModal';
@@ -24,6 +26,8 @@ import type { DBDictionaryEntry } from '../../types/database';
 import type { UserFlashcard } from '../../types/models';
 
 interface LibraryScreenProps {
+  onStartReview: () => void;
+  onNavigateToPath: () => void;
   onAddCard?: () => void;
   onPlayFlashcards?: () => void;
   /** Mobile hamburger shown overlaid left in the sticky header (Library home). */
@@ -31,7 +35,7 @@ interface LibraryScreenProps {
   onProfileClick?: () => void;
 }
 
-export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle, onProfileClick }: LibraryScreenProps) {
+export function LibraryScreen({ onStartReview, onNavigateToPath, onAddCard, onPlayFlashcards, menuToggle, onProfileClick }: LibraryScreenProps) {
   const {
     toggleFavorite,
     setDictionaryWord,
@@ -72,6 +76,8 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle, onProfi
     setMoveOpen,
     moveSelectedTo,
   } = useLibrary();
+
+  const overview = useReviewOverview();
 
   const isStarred = libraryActiveFolder === 'starred';
   const totalCount = activeCollection?.count ?? 0;
@@ -123,6 +129,12 @@ export function LibraryScreen({ onAddCard, onPlayFlashcards, menuToggle, onProfi
         }
         backLabel="Back to Library"
       />
+
+      {activeView === 'home' && (
+        <div className="mx-auto w-full max-w-5xl px-4 pb-6 md:px-8">
+          <ReviewHubCard overview={overview} onStartReview={onStartReview} onNavigateToPath={onNavigateToPath} />
+        </div>
+      )}
 
       <div className="mx-auto w-full max-w-5xl px-4 pb-5 md:px-8">
         <LibrarySearchField

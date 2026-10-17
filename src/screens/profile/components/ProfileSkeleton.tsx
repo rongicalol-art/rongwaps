@@ -19,32 +19,10 @@ export function ProfileSkeleton() {
         </div>
       </section>
 
-      {/* Review Hub Card Skeleton */}
-      <section className="rounded-feature border-b-[length:var(--depth-md)] border-ui-border bg-ui-surface p-5 sm:p-6">
-        <div className="flex items-center gap-2.5">
-          <Skeleton className="h-6 w-6 rounded-control" />
-          <Skeleton className="h-5 w-24" />
-        </div>
-
-        <div className="mt-5 flex items-baseline gap-2.5">
-          <Skeleton className="h-10 w-16 sm:h-12 sm:w-20" />
-          <Skeleton className="h-4 w-28" />
-        </div>
-
-        {/* Progress bar */}
-        <div className="mt-4">
-          <Skeleton className="h-3.5 w-full rounded-full" />
-          <div className="mt-3 flex items-center gap-4">
-            <Skeleton className="h-4 w-16" />
-            <Skeleton className="h-4 w-20" />
-          </div>
-        </div>
-
-        {/* Start Review Button */}
-        <div className="mt-6">
-          <Skeleton className="h-12 w-full rounded-control" />
-        </div>
-      </section>
+      <div className="flex flex-col gap-3">
+        <Skeleton className="h-14 w-full rounded-control" />
+        <Skeleton className="h-12 w-full rounded-control" />
+      </div>
 
       {/* Learning Stats Grid Skeleton (2x2 grid matching LearningStatsGrid) */}
       <section>

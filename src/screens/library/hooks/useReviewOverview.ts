@@ -3,9 +3,9 @@ import { useAppStore } from '../../../store/useAppStore';
 import { computeReviewOverview, type ReviewOverview } from '../../../utils/srs/reviewOverview';
 
 /**
- * Live Profile overview derived purely from local SRS state. Pure and fast
+ * Live Library overview derived purely from local SRS state. Pure and fast
  * (single pass over the SRS map), so it is safe to run on every render of
- * the Profile tab.
+ * the Library tab.
  *
  * When an active practice activity is open, subscription to srsData and
  * learnedCards is paused to avoid background re-renders on every card swipe.
