@@ -6,6 +6,7 @@ import {
   searchDictionaryOffline,
   type CompactSearchEntry,
 } from '../../src/services/dictionarySearchService';
+import { stemEnglishWord } from '../../src/utils/vocabulary/englishStem';
 
 const searchData = readJson<{ items: CompactSearchEntry[] }>('public/data/search/dictionary-search-index.json');
 const index = searchData.items;
@@ -29,11 +30,42 @@ test('searchInIndex returns matching results for English queries', () => {
   );
 });
 
-test('searchInIndex returns matching results for Pinyin queries', () => {
+test('searchInIndex matches morphological derivations and inflections like procrastination and laziness', () => {
+  assert.equal(stemEnglishWord('procrastination'), stemEnglishWord('procrastinate'));
+  assert.equal(stemEnglishWord('laziness'), stemEnglishWord('lazy'));
+  assert.equal(stemEnglishWord('went'), stemEnglishWord('go'));
+  assert.equal(stemEnglishWord('swimming'), stemEnglishWord('swim'));
+
+  const procResults = searchInIndex(index, 'procrastination', 10);
+  const procWords = procResults.map((r) => r.simplified);
+  assert.ok(
+    procWords.includes('拖延症') && procWords.includes('拖延'),
+    `Expected 拖延症 and 拖延 in top procrastination results, got: ${procWords.join(', ')}`,
+  );
+  assert.equal(procResults[0]?.simplified, '拖延症');
+
+  const lazyResults = searchInIndex(index, 'laziness', 10);
+  const lazyWords = lazyResults.map((r) => r.simplified);
+  assert.ok(
+    lazyWords.includes('懒') && lazyWords.includes('懒惰'),
+    `Expected 懒 and 懒惰 in top laziness results, got: ${lazyWords.join(', ')}`,
+  );
+
+  const wentResults = searchInIndex(index, 'went', 5);
+  assert.equal(wentResults[0]?.simplified, '去');
+});
+
+test('searchInIndex returns matching results for Pinyin queries and Jianpin initials', () => {
   const results = searchInIndex(index, 'nihao', 10);
   assert.ok(results.length > 0, 'Expected matches for "nihao"');
   assert.equal(results[0].simplified, '你好');
   assert.equal(results[0].match_type, 'exact');
+
+  const jianpin = searchInIndex(index, 'tyz', 10);
+  assert.ok(
+    jianpin.some((r) => r.simplified === '拖延症'),
+    'Expected Jianpin initialism "tyz" to find 拖延症',
+  );
 });
 
 test('searchInIndex matches prefix for Chinese characters', () => {
@@ -45,9 +77,16 @@ test('searchInIndex matches prefix for Chinese characters', () => {
   );
 });
 
-test('searchDictionaryOffline gracefully handles empty queries in any environment', async () => {
+test('searchDictionaryOffline gracefully handles empty queries and segments multi-word Chinese clauses', async () => {
   const empty = await searchDictionaryOffline('');
   assert.deepEqual(empty, []);
+
+  const segmented = await searchDictionaryOffline('我有拖延症', 10);
+  const words = segmented.map((r) => r.simplified);
+  assert.ok(
+    words.includes('拖延症') || words.includes('拖延'),
+    `Expected phrase segmentation to extract 拖延症 from 我有拖延症, got: ${words.join(', ')}`,
+  );
 });
 
 test('short English queries find meanings rather than substrings or dictionary notes', () => {

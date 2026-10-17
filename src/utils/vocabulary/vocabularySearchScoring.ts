@@ -5,6 +5,7 @@
 import type { Flashcard } from '../../data/flashcards';
 import { expandSlashAndOptionalVariants, stripPinyinTones } from '../pinyin/pinyinNormalize';
 import { escapeRegExp } from '../escapeRegExp';
+import { stemEnglishPhrase, stemEnglishWord } from './englishStem';
 
 export function getSmartScore(
   card: Flashcard,
@@ -17,6 +18,14 @@ export function getSmartScore(
   const frontVariations = expandSlashAndOptionalVariants(card.front || '');
   const pinyinVariations = expandSlashAndOptionalVariants(card.pinyin || '');
   const definitions = (card.back || '').toLowerCase();
+  const cleanQuery = lowerQuery.trim().replace(/^(?:to |an? |the )/, '');
+  const queryStem = stemEnglishPhrase(cleanQuery);
+  const singleStem = !cleanQuery.includes(' ') ? stemEnglishWord(cleanQuery) : '';
+  const defWords = definitions
+    .replace(/\[[^\]]*\]|\([^)]*\)/g, ' ')
+    .split(/[^a-z]+/)
+    .filter(Boolean);
+  const defStems = defWords.map(stemEnglishWord);
 
   for (const front of frontVariations) {
     const pinyinsToTest = pinyinVariations.length > 0 ? pinyinVariations : [''];
@@ -29,12 +38,16 @@ export function getSmartScore(
       if (front === rawQuery) score += 10000;
       if (joinedPinyin === normQuery && joinedPinyin.length > 0) score += 8000;
 
-      // Exact English meaning word match.
-      const escapedQuery = escapeRegExp(lowerQuery.trim());
+      // Exact English meaning word match or morphological stem match.
+      const escapedQuery = escapeRegExp(cleanQuery);
       const wordsRegex = escapedQuery ? new RegExp(`(?:^|[^A-Za-z])${escapedQuery}(?=$|[^A-Za-z])`, 'i') : null;
       if (wordsRegex && wordsRegex.test(definitions)) {
         score += 4000;
-        if (definitions.startsWith(lowerQuery)) score += 1000;
+        if (definitions.startsWith(cleanQuery) || definitions.startsWith(`to ${cleanQuery}`)) score += 1000;
+      } else if (singleStem.length >= 3 && defStems.includes(singleStem)) {
+        score += 3200;
+      } else if (queryStem.length >= 3 && defStems.join(' ').includes(queryStem)) {
+        score += 2800;
       }
 
       // 2. Starts With (High Priority)
@@ -44,7 +57,7 @@ export function getSmartScore(
       // 3. Partial or Substring matches
       if (front.includes(rawQuery)) score += 100;
       if (normQuery && joinedPinyin.includes(normQuery)) score += 50;
-      if (definitions.includes(lowerQuery)) score += 10;
+      if (cleanQuery.length >= 3 && definitions.includes(cleanQuery)) score += 10;
 
       // 4. Penalty for length so shorter, more exact matches float higher
       score -= front.length * 2;

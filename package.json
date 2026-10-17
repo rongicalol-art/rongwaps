@@ -35,6 +35,7 @@
     "book-pages:export": "tsx scripts/content/exportBookPages.ts",
     "breakdowns:patch": "tsx scripts/content/patchBreakdowns.ts",
     "dictionary:packs": "tsx scripts/dictionary/exportDictionaryPacks.ts",
+    "dictionary:search:build": "tsx scripts/dictionary/buildSearchIndex.ts",
     "dictionary:restore": "tsx scripts/dictionary/restoreDictionaryFromPacks.ts",
     "dictionary:frequency:build": "output/venv/bin/python scripts/dictionary/buildDictionaryFrequency.py",
     "dictionary:frequency:apply": "tsx scripts/dictionary/addDictionaryFrequency.ts",
