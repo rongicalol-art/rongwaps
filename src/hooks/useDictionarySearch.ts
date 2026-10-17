@@ -16,6 +16,7 @@ export interface SearchResult {
   bookId?: number;
   lessonId?: number;
   pos?: string;
+  audio?: string | null;
 }
 
 /** Recent results by normalized query: reopening the tab (or retyping) paints instantly instead of waiting out debounce + RPC. */
@@ -71,6 +72,7 @@ export function useDictionarySearch(externalQuery: string) {
             bookId: courseCard?.bookId ?? res.bookId,
             lessonId: courseCard?.lessonId ?? res.lessonId,
             pos: courseCard?.pos ?? res.pos,
+            audio: courseCard?.audio ?? res.audio,
           };
         });
         resultCache.set(queryNormalized, cleanedData);

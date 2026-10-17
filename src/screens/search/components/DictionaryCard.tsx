@@ -1,8 +1,9 @@
 import { memo, useMemo } from 'react';
-import { LevelTag } from '../../../lib/widgets';
+import { AppIcon, LevelTag } from '../../../lib/widgets';
 import { useLevels } from '../../../hooks/useLevels';
 import { resolveLevel } from '../../../utils/lesson/levels';
 import { FavoriteButton } from '../../../features/library';
+import { audioService } from '../../../services/audioService';
 import type { DictionaryListEntry } from '../../../types/models';
 import { DictionaryRow } from './DictionaryRow';
 
@@ -26,6 +27,7 @@ export const DictionaryCard = memo(function DictionaryCard({
   const levels = useLevels();
   const level = useMemo(() => resolveLevel(entry.traditional, levels), [entry.traditional, levels]);
   const meaning = formatDefinitions(entry.definitions);
+  const canPlayAudio = Boolean(entry.audio && audioService.isAudioFileName(entry.audio));
 
   return (
     <DictionaryRow
@@ -37,15 +39,31 @@ export const DictionaryCard = memo(function DictionaryCard({
       ariaLabel={`Open ${entry.traditional}: ${meaning}`}
       trailing={<LevelTag bookId={entry.bookId ?? undefined} lessonId={entry.lessonId ?? undefined} level={level} />}
       action={(
-        <FavoriteButton
-          word={entry.traditional}
-          traditional={entry.traditional}
-          simplified={entry.simplified}
-          pinyin={entry.pinyin_accented || undefined}
-          definitions={entry.definitions}
-          size="lg"
-          variant="ghost"
-        />
+        <div className="flex items-center gap-0.5">
+          {canPlayAudio && (
+            <button
+              type="button"
+              aria-label={`Hear pronunciation of ${entry.traditional}`}
+              onClick={() => {
+                if (!entry.audio) return;
+                audioService.stop();
+                void audioService.play(entry.audio, 1, undefined, undefined, 0, { fallback: 'none' }).catch(() => undefined);
+              }}
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-compact text-ui-muted transition-colors hover:bg-ui-hover hover:text-brand-primary active:scale-95 focus-ring"
+            >
+              <AppIcon name="pronounce" size={20} />
+            </button>
+          )}
+          <FavoriteButton
+            word={entry.traditional}
+            traditional={entry.traditional}
+            simplified={entry.simplified}
+            pinyin={entry.pinyin_accented || undefined}
+            definitions={entry.definitions}
+            size="lg"
+            variant="ghost"
+          />
+        </div>
       )}
     />
   );

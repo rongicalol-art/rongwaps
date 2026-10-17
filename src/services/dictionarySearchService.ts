@@ -2,7 +2,8 @@ import { stripPinyinTones } from '../utils/pinyin/pinyinNormalize';
 import { escapeRegExp } from '../utils/escapeRegExp';
 import { debugLogger } from '../utils/debug/debugLogger';
 import { fetchStaticJson } from './staticContentService';
-import { fetchDictionaryRowsFromPacks } from './contentPacks';
+import { fetchDictionaryRowsFromPacks, fetchPartsIndex } from './contentPacks';
+import { builtWith, type PartsIndex } from '../utils/characters/parts';
 import { sanitizeDictionaryDefinitions } from '../utils/vocabulary/dictionaryDefinitions';
 import { getSemanticSynonymStems, stemEnglishPhrase, stemEnglishWord } from '../utils/vocabulary/englishStem';
 
@@ -75,6 +76,25 @@ const TONE_CHAR_MAP: Record<string, number> = {
   ō: 1, ó: 2, ǒ: 3, ò: 4,
   ū: 1, ú: 2, ǔ: 3, ù: 4,
   ǖ: 1, ǘ: 2, ǚ: 3, ǜ: 4,
+};
+
+const RADICAL_VARIANTS: Record<string, string[]> = {
+  人: ['人', '亻'], 亻: ['亻', '人'],
+  心: ['心', '忄'], 忄: ['忄', '心'],
+  手: ['手', '扌'], 扌: ['扌', '手'],
+  水: ['水', '氵'], 氵: ['氵', '水'],
+  火: ['火', '灬'], 灬: ['灬', '火'],
+  言: ['言', '讠', '訁'], 讠: ['讠', '言', '訁'],
+  金: ['金', '钅', '釒'], 钅: ['钅', '金', '釒'],
+  食: ['食', '饣', '飠'], 饣: ['饣', '食', '飠'],
+  糸: ['糸', '纟', '糹'], 纟: ['纟', '糸', '糹'],
+  艸: ['艸', '艹'], 艹: ['艹', '艸'],
+  辵: ['辵', '辶'], 辶: ['辶', '辵'],
+  刀: ['刀', '刂'], 刂: ['刂', '刀'],
+  衣: ['衣', '衤'], 衤: ['衤', '衣'],
+  示: ['示', '礻'], 礻: ['礻', '示'],
+  犬: ['犬', '犭'], 犭: ['犭', '犬'],
+  玉: ['玉', '王'],
 };
 
 function detectSyllableTone(accentedSyllable: string): number {
@@ -246,6 +266,139 @@ function buildWildcardRegex(pattern: string): RegExp | null {
     return escapeRegExp(ch);
   });
   return new RegExp(`^${parts.join('')}$`, 'iu');
+}
+
+/**
+ * Resolves a character-component query (e.g. "女 子", "女+子", "言+舌") against
+ * the PartsIndex (`parts.json`) to find characters built from all specified parts.
+ */
+export function searchByCharacterComponents(
+  index: CompactSearchEntry[] | null,
+  partsIndex: PartsIndex | null,
+  searchQuery: string,
+  limit = 30,
+): SearchResult[] {
+  if (!index || !partsIndex) return [];
+  const trimmed = searchQuery.trim();
+  // Match space-separated or + separated single Hanzi components: e.g. "女 子" or "女+子"
+  if (!/^[\p{Script=Han}](?:[\s+＋]+[\p{Script=Han}])+$/u.test(trimmed)) return [];
+  const parts = trimmed.split(/[\s+＋]+/).filter(Boolean);
+  if (parts.length < 2) return [];
+
+  let intersection: Set<string> | null = null;
+  for (const part of parts) {
+    const variants = RADICAL_VARIANTS[part] ?? [part];
+    const memberSet = new Set<string>();
+    for (const v of variants) {
+      for (const m of builtWith(v, partsIndex)) {
+        memberSet.add(m.character);
+      }
+    }
+    if (intersection === null) {
+      intersection = memberSet;
+    } else {
+      const next = new Set<string>();
+      for (const ch of intersection) {
+        if (memberSet.has(ch)) next.add(ch);
+      }
+      intersection = next;
+    }
+  }
+
+  if (!intersection || intersection.size === 0) return [];
+
+  const results: SearchResult[] = [];
+  const seen = new Set<string>();
+  for (const [id, s, t, py, , defs, freq] of index) {
+    const trad = t || s;
+    if ((intersection.has(trad) || intersection.has(s)) && !seen.has(trad) && !seen.has(s)) {
+      seen.add(trad);
+      seen.add(s);
+      const sanitized = sanitizeDictionaryDefinitions(defs);
+      results.push({
+        id,
+        simplified: s,
+        traditional: trad,
+        pinyin_accented: py,
+        definitions: sanitized.definitions,
+        measure_words: sanitized.measure_words,
+        match_type: 'exact',
+        total_score: 5500 + Math.max(0, Math.min(100, freq)) * 4,
+      });
+    }
+  }
+
+  results.sort((a, b) => b.total_score - a.total_score);
+  return results.slice(0, limit);
+}
+
+/**
+ * Concatenated Pinyin sentence auto-splitter:
+ * When a user types an unspaced multi-word Pinyin phrase (e.g. "wohenlei", "woyouyidianlei")
+ * that has no single dictionary entry, segments it greedily into high-frequency words.
+ */
+export function segmentPinyinQuery(
+  index: CompactSearchEntry[] | null,
+  searchQuery: string,
+  limit = 30,
+): SearchResult[] {
+  if (!index) return [];
+  const flatQuery = stripPinyinTones(searchQuery);
+  if (flatQuery.length < 5 || HANZI_REGEX.test(searchQuery)) return [];
+
+  const bestByFlat = new Map<string, CompactSearchEntry>();
+  for (const entry of index) {
+    const [, s, , , flat, , freq] = entry;
+    if (!flat || freq < 15) continue;
+    const prev = bestByFlat.get(flat);
+    if (
+      !prev ||
+      freq > prev[6] ||
+      (freq === prev[6] && Array.from(s).length > Array.from(prev[1]).length)
+    ) {
+      bestByFlat.set(flat, entry);
+    }
+  }
+
+  const results: SearchResult[] = [];
+  const seen = new Set<string>();
+  let pos = 0;
+  while (pos < flatQuery.length && results.length < limit) {
+    let matched: CompactSearchEntry | undefined;
+    let matchedLen = 0;
+    for (let len = Math.min(14, flatQuery.length - pos); len >= 2; len--) {
+      const slice = flatQuery.slice(pos, pos + len);
+      const candidate = bestByFlat.get(slice);
+      if (candidate) {
+        matched = candidate;
+        matchedLen = len;
+        break;
+      }
+    }
+    if (!matched) {
+      return [];
+    }
+    const [id, s, t, py, , defs, freq] = matched;
+    const trad = t || s;
+    if (!seen.has(s) && !seen.has(trad)) {
+      seen.add(s);
+      seen.add(trad);
+      const sanitized = sanitizeDictionaryDefinitions(defs);
+      results.push({
+        id,
+        simplified: s,
+        traditional: trad,
+        pinyin_accented: py,
+        definitions: sanitized.definitions,
+        measure_words: sanitized.measure_words,
+        match_type: 'partial',
+        total_score: 1800 - pos * 10 + freq,
+      });
+    }
+    pos += matchedLen;
+  }
+
+  return results.length >= 2 ? results : [];
 }
 
 export function searchInIndex(
@@ -572,7 +725,16 @@ export async function searchDictionaryOffline(
   const matches: SearchResult[] = [];
   const seenWords = new Set<string>();
 
-  // If Hanzi (without wildcards or mixed Latin), do an exact lookup against dictionary shards
+  const index = await getSearchIndex();
+
+  // 1. Character component decomposition search (e.g. "女 子" or "女+子" -> 好, 姓, 她)
+  if (/^[\p{Script=Han}](?:[\s+＋]+[\p{Script=Han}])+$/u.test(query)) {
+    const partsIndex = await fetchPartsIndex().catch(() => null);
+    const componentMatches = searchByCharacterComponents(index, partsIndex, query, resultLimit);
+    if (componentMatches.length > 0) return componentMatches;
+  }
+
+  // 2. If Hanzi (without wildcards or mixed Latin), do an exact lookup against dictionary shards
   if (HANZI_REGEX.test(query) && !/[*?＊？a-zA-Z]/.test(query)) {
     try {
       const packed = await fetchDictionaryRowsFromPacks([query]);
@@ -599,7 +761,6 @@ export async function searchDictionaryOffline(
     }
   }
 
-  const index = await getSearchIndex();
   const indexMatches = searchInIndex(index, query, resultLimit);
 
   for (const m of indexMatches) {
@@ -610,9 +771,14 @@ export async function searchDictionaryOffline(
     }
   }
 
-  // If a multi-character Chinese phrase/sentence had no single-word matches, segment it into constituent words
+  // 3. If a multi-character Chinese phrase/sentence had no single-word matches, segment it into constituent words
   if (matches.length === 0 && HANZI_REGEX.test(query)) {
     return segmentChineseQuery(index, query, resultLimit);
+  }
+
+  // 4. If an unspaced Pinyin phrase (e.g. "wohenlei") had no single-word matches, segment its syllables
+  if (matches.length === 0 && !HANZI_REGEX.test(query)) {
+    return segmentPinyinQuery(index, query, resultLimit);
   }
 
   return matches.slice(0, resultLimit);

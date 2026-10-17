@@ -4,12 +4,17 @@ import { readJson } from '../acceptance_helpers';
 import {
   searchInIndex,
   searchDictionaryOffline,
+  searchByCharacterComponents,
+  segmentPinyinQuery,
   type CompactSearchEntry,
 } from '../../src/services/dictionarySearchService';
+import { partsPackToIndex, type PartsPack } from '../../src/utils/packValidators';
 import { stemEnglishWord } from '../../src/utils/vocabulary/englishStem';
 
 const searchData = readJson<{ items: CompactSearchEntry[] }>('public/data/search/dictionary-search-index.json');
 const index = searchData.items;
+const partsData = readJson<PartsPack>('public/data/relations/parts.json');
+const partsIndex = partsPackToIndex(partsData);
 
 test('searchInIndex handles empty or whitespace queries gracefully', () => {
   const empty = searchInIndex(index, '');
@@ -120,6 +125,20 @@ test('searchDictionaryOffline gracefully handles empty queries and segments mult
   assert.ok(
     words.includes('拖延症') || words.includes('拖延'),
     `Expected phrase segmentation to extract 拖延症 from 我有拖延症, got: ${words.join(', ')}`,
+  );
+});
+
+test('searchByCharacterComponents finds characters built from visual parts and segmentPinyinQuery splits unspaced Pinyin phrases', () => {
+  const compMatches = searchByCharacterComponents(index, partsIndex, '女 子', 10).map((r) => r.simplified);
+  assert.ok(compMatches.includes('好'), `Expected "女 子" component lookup to find 好, got: ${compMatches.join(', ')}`);
+
+  const plusMatches = searchByCharacterComponents(index, partsIndex, '女+子', 10).map((r) => r.simplified);
+  assert.ok(plusMatches.includes('好'), `Expected "女+子" component lookup to find 好, got: ${plusMatches.join(', ')}`);
+
+  const pinyinSeg = segmentPinyinQuery(index, 'wohenlei', 10).map((r) => r.simplified);
+  assert.ok(
+    pinyinSeg.length >= 2 && pinyinSeg.includes('我'),
+    `Expected segmentPinyinQuery("wohenlei") to segment into words including 我, got: ${pinyinSeg.join(', ')}`,
   );
 });
 
