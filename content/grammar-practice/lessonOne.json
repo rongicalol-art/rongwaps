@@ -147,7 +147,15 @@
           "pinyin": "Xiǎolín Yǒuměi shì xīn xuésheng, tā shì Rìběn rén.",
           "english": "Xiaolin Youmei is the new student; she is Japanese."
         },
-        "prompt": "Who is the new student?"
+        "prompt": "Who is the new student?",
+        "glossary": [
+          {
+            "traditional": "學生",
+            "simplified": "学生",
+            "pinyin": "xuésheng",
+            "english": "student"
+          }
+        ]
       },
       {
         "id": "l1g1-p2",
@@ -391,7 +399,14 @@
           "pinyin": "Wáng xiǎojiě shì Měiguó rén, tā jiào Yíwén.",
           "english": "Miss Wang is American; her given name is Yiwen."
         },
-        "prompt": "Where is Miss Wang from?"
+        "prompt": "Where is Miss Wang from?",
+        "glossary": [
+          {
+            "traditional": "小姐",
+            "pinyin": "xiǎojiě",
+            "english": "Miss"
+          }
+        ]
       },
       {
         "id": "l1g1-p4",
@@ -618,7 +633,15 @@
           "pinyin": "Yìnní xuésheng xìng Lǐ, jiào Zhōngmíng.",
           "english": "The Indonesian student is surnamed Li and called Zhongming."
         },
-        "prompt": "Introduce the Indonesian student."
+        "prompt": "Introduce the Indonesian student.",
+        "glossary": [
+          {
+            "traditional": "學生",
+            "simplified": "学生",
+            "pinyin": "xuésheng",
+            "english": "student"
+          }
+        ]
       }
     ]
   },
@@ -1090,7 +1113,14 @@
           "pinyin": "Lǐ xiǎojiě shì Rìběn rén ma?",
           "english": "Is Miss Li Japanese?"
         },
-        "prompt": "Ask whether Miss Li is Japanese."
+        "prompt": "Ask whether Miss Li is Japanese.",
+        "glossary": [
+          {
+            "traditional": "小姐",
+            "pinyin": "xiǎojiě",
+            "english": "Miss"
+          }
+        ]
       },
       {
         "id": "l1g3-p3",
@@ -1838,7 +1868,15 @@
           "pinyin": "Tā ài Wáng tàitai.",
           "english": "He loves Mrs. Wang."
         },
-        "prompt": "Does Mr. Wang love Mrs. Wang? Answer from the picture."
+        "prompt": "Does Mr. Wang love Mrs. Wang? Answer from the picture.",
+        "glossary": [
+          {
+            "traditional": "愛",
+            "simplified": "爱",
+            "pinyin": "ài",
+            "english": "to love"
+          }
+        ]
       }
     ]
   }

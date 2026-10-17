@@ -391,7 +391,15 @@
           "english": "I think he did not draw this picture well; it looks a little bad.",
           "simplified": "我觉得这张画他画得不好，有点儿难看。"
         },
-        "prompt": "He drew this picture badly. How does it look?"
+        "prompt": "He drew this picture badly. How does it look?",
+        "glossary": [
+          {
+            "traditional": "畫",
+            "simplified": "画",
+            "pinyin": "huà",
+            "english": "picture, drawing"
+          }
+        ]
       },
       {
         "id": "l8g1-p5",
@@ -487,7 +495,14 @@
           "english": "Bubble milk tea tastes good; everyone wants to buy a cup.",
           "simplified": "珍珠奶茶很好喝，大家都想买一杯。"
         },
-        "prompt": "Everyone wants a cup of bubble milk tea. How does it taste?"
+        "prompt": "Everyone wants a cup of bubble milk tea. How does it taste?",
+        "glossary": [
+          {
+            "traditional": "珍珠奶茶",
+            "pinyin": "zhēnzhū nǎichá",
+            "english": "bubble milk tea"
+          }
+        ]
       },
       {
         "id": "l8g1-p6",

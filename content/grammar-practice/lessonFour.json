@@ -2630,7 +2630,15 @@
           ],
           "alt": "Three pens and a flower priced together at US$8.45."
         },
-        "prompt": "How much is all this together?"
+        "prompt": "How much is all this together?",
+        "glossary": [
+          {
+            "traditional": "這些",
+            "simplified": "这些",
+            "pinyin": "zhèxiē",
+            "english": "these"
+          }
+        ]
       }
     ],
     "allowWords": [

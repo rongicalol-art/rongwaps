@@ -1743,7 +1743,14 @@
           "pinyin": "Nǐ xǐhuan xiàtiān ma? Zhèlǐ de xiàtiān yòu rè yòu bù shūfu, wǒ bù xǐhuan.",
           "english": "Do you like summer? Summer here is both hot and uncomfortable; I do not like it."
         },
-        "prompt": "Summer here is so hot you can’t sleep. Do you like it?"
+        "prompt": "Summer here is so hot you can’t sleep. Do you like it?",
+        "glossary": [
+          {
+            "traditional": "夏天",
+            "pinyin": "xiàtiān",
+            "english": "summer"
+          }
+        ]
       },
       {
         "id": "l7g5-b2",
@@ -1913,7 +1920,15 @@
           "pinyin": "Nǐ juéde zhè jiā cāntīng de niúròumiàn zěnmeyàng? Yòu hǎochī yòu piányi.",
           "english": "What do you think of this restaurant’s beef noodles? They are both tasty and inexpensive."
         },
-        "prompt": "The noodles here taste great and cost $50 (others cost $150). What do you think?"
+        "prompt": "The noodles here taste great and cost $50 (others cost $150). What do you think?",
+        "glossary": [
+          {
+            "traditional": "牛肉麵",
+            "simplified": "牛肉面",
+            "pinyin": "niúròu miàn",
+            "english": "beef noodles"
+          }
+        ]
       },
       {
         "id": "l7g5-b3",
@@ -2076,7 +2091,21 @@
           "pinyin": "Tā chángcháng qù hǎibiān ma? Tā yòu huì yóuyǒng yòu xǐhuan shài tàiyáng, měi ge zhōumò dōu qù hǎibiān.",
           "english": "Does he often go to the seaside? He can swim and likes sunbathing and goes to the seaside every weekend."
         },
-        "prompt": "Why does he go to the beach every weekend?"
+        "prompt": "Why does he go to the beach every weekend?",
+        "glossary": [
+          {
+            "traditional": "海邊",
+            "simplified": "海边",
+            "pinyin": "hǎibiān",
+            "english": "seaside"
+          },
+          {
+            "traditional": "曬太陽",
+            "simplified": "晒太阳",
+            "pinyin": "shài tàiyáng",
+            "english": "to sunbathe"
+          }
+        ]
       },
       {
         "id": "l7g5-o1",
